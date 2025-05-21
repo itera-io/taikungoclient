@@ -22,11 +22,11 @@ var _ MappedNullable = &EditVirtualClusterWorkloadResources{}
 
 // EditVirtualClusterWorkloadResources struct for EditVirtualClusterWorkloadResources
 type EditVirtualClusterWorkloadResources struct {
-	Pods int32 `json:"pods"`
-	Pvcs int32 `json:"pvcs"`
-	TotalPvcSize int64 `json:"totalPvcSize"`
-	Ingresses int32 `json:"ingresses"`
-	LoadBalancers int32 `json:"loadBalancers"`
+	MaxPods int32 `json:"maxPods"`
+	MaxPvcs int32 `json:"maxPvcs"`
+	MaxTotalPvcSize int64 `json:"maxTotalPvcSize"`
+	MaxIngresses int32 `json:"maxIngresses"`
+	MaxLoadBalancers int32 `json:"maxLoadBalancers"`
 }
 
 type _EditVirtualClusterWorkloadResources EditVirtualClusterWorkloadResources
@@ -35,13 +35,13 @@ type _EditVirtualClusterWorkloadResources EditVirtualClusterWorkloadResources
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEditVirtualClusterWorkloadResources(pods int32, pvcs int32, totalPvcSize int64, ingresses int32, loadBalancers int32) *EditVirtualClusterWorkloadResources {
+func NewEditVirtualClusterWorkloadResources(maxPods int32, maxPvcs int32, maxTotalPvcSize int64, maxIngresses int32, maxLoadBalancers int32) *EditVirtualClusterWorkloadResources {
 	this := EditVirtualClusterWorkloadResources{}
-	this.Pods = pods
-	this.Pvcs = pvcs
-	this.TotalPvcSize = totalPvcSize
-	this.Ingresses = ingresses
-	this.LoadBalancers = loadBalancers
+	this.MaxPods = maxPods
+	this.MaxPvcs = maxPvcs
+	this.MaxTotalPvcSize = maxTotalPvcSize
+	this.MaxIngresses = maxIngresses
+	this.MaxLoadBalancers = maxLoadBalancers
 	return &this
 }
 
@@ -53,124 +53,124 @@ func NewEditVirtualClusterWorkloadResourcesWithDefaults() *EditVirtualClusterWor
 	return &this
 }
 
-// GetPods returns the Pods field value
-func (o *EditVirtualClusterWorkloadResources) GetPods() int32 {
+// GetMaxPods returns the MaxPods field value
+func (o *EditVirtualClusterWorkloadResources) GetMaxPods() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.Pods
+	return o.MaxPods
 }
 
-// GetPodsOk returns a tuple with the Pods field value
+// GetMaxPodsOk returns a tuple with the MaxPods field value
 // and a boolean to check if the value has been set.
-func (o *EditVirtualClusterWorkloadResources) GetPodsOk() (*int32, bool) {
+func (o *EditVirtualClusterWorkloadResources) GetMaxPodsOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Pods, true
+	return &o.MaxPods, true
 }
 
-// SetPods sets field value
-func (o *EditVirtualClusterWorkloadResources) SetPods(v int32) {
-	o.Pods = v
+// SetMaxPods sets field value
+func (o *EditVirtualClusterWorkloadResources) SetMaxPods(v int32) {
+	o.MaxPods = v
 }
 
-// GetPvcs returns the Pvcs field value
-func (o *EditVirtualClusterWorkloadResources) GetPvcs() int32 {
+// GetMaxPvcs returns the MaxPvcs field value
+func (o *EditVirtualClusterWorkloadResources) GetMaxPvcs() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.Pvcs
+	return o.MaxPvcs
 }
 
-// GetPvcsOk returns a tuple with the Pvcs field value
+// GetMaxPvcsOk returns a tuple with the MaxPvcs field value
 // and a boolean to check if the value has been set.
-func (o *EditVirtualClusterWorkloadResources) GetPvcsOk() (*int32, bool) {
+func (o *EditVirtualClusterWorkloadResources) GetMaxPvcsOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Pvcs, true
+	return &o.MaxPvcs, true
 }
 
-// SetPvcs sets field value
-func (o *EditVirtualClusterWorkloadResources) SetPvcs(v int32) {
-	o.Pvcs = v
+// SetMaxPvcs sets field value
+func (o *EditVirtualClusterWorkloadResources) SetMaxPvcs(v int32) {
+	o.MaxPvcs = v
 }
 
-// GetTotalPvcSize returns the TotalPvcSize field value
-func (o *EditVirtualClusterWorkloadResources) GetTotalPvcSize() int64 {
+// GetMaxTotalPvcSize returns the MaxTotalPvcSize field value
+func (o *EditVirtualClusterWorkloadResources) GetMaxTotalPvcSize() int64 {
 	if o == nil {
 		var ret int64
 		return ret
 	}
 
-	return o.TotalPvcSize
+	return o.MaxTotalPvcSize
 }
 
-// GetTotalPvcSizeOk returns a tuple with the TotalPvcSize field value
+// GetMaxTotalPvcSizeOk returns a tuple with the MaxTotalPvcSize field value
 // and a boolean to check if the value has been set.
-func (o *EditVirtualClusterWorkloadResources) GetTotalPvcSizeOk() (*int64, bool) {
+func (o *EditVirtualClusterWorkloadResources) GetMaxTotalPvcSizeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.TotalPvcSize, true
+	return &o.MaxTotalPvcSize, true
 }
 
-// SetTotalPvcSize sets field value
-func (o *EditVirtualClusterWorkloadResources) SetTotalPvcSize(v int64) {
-	o.TotalPvcSize = v
+// SetMaxTotalPvcSize sets field value
+func (o *EditVirtualClusterWorkloadResources) SetMaxTotalPvcSize(v int64) {
+	o.MaxTotalPvcSize = v
 }
 
-// GetIngresses returns the Ingresses field value
-func (o *EditVirtualClusterWorkloadResources) GetIngresses() int32 {
+// GetMaxIngresses returns the MaxIngresses field value
+func (o *EditVirtualClusterWorkloadResources) GetMaxIngresses() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.Ingresses
+	return o.MaxIngresses
 }
 
-// GetIngressesOk returns a tuple with the Ingresses field value
+// GetMaxIngressesOk returns a tuple with the MaxIngresses field value
 // and a boolean to check if the value has been set.
-func (o *EditVirtualClusterWorkloadResources) GetIngressesOk() (*int32, bool) {
+func (o *EditVirtualClusterWorkloadResources) GetMaxIngressesOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Ingresses, true
+	return &o.MaxIngresses, true
 }
 
-// SetIngresses sets field value
-func (o *EditVirtualClusterWorkloadResources) SetIngresses(v int32) {
-	o.Ingresses = v
+// SetMaxIngresses sets field value
+func (o *EditVirtualClusterWorkloadResources) SetMaxIngresses(v int32) {
+	o.MaxIngresses = v
 }
 
-// GetLoadBalancers returns the LoadBalancers field value
-func (o *EditVirtualClusterWorkloadResources) GetLoadBalancers() int32 {
+// GetMaxLoadBalancers returns the MaxLoadBalancers field value
+func (o *EditVirtualClusterWorkloadResources) GetMaxLoadBalancers() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.LoadBalancers
+	return o.MaxLoadBalancers
 }
 
-// GetLoadBalancersOk returns a tuple with the LoadBalancers field value
+// GetMaxLoadBalancersOk returns a tuple with the MaxLoadBalancers field value
 // and a boolean to check if the value has been set.
-func (o *EditVirtualClusterWorkloadResources) GetLoadBalancersOk() (*int32, bool) {
+func (o *EditVirtualClusterWorkloadResources) GetMaxLoadBalancersOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.LoadBalancers, true
+	return &o.MaxLoadBalancers, true
 }
 
-// SetLoadBalancers sets field value
-func (o *EditVirtualClusterWorkloadResources) SetLoadBalancers(v int32) {
-	o.LoadBalancers = v
+// SetMaxLoadBalancers sets field value
+func (o *EditVirtualClusterWorkloadResources) SetMaxLoadBalancers(v int32) {
+	o.MaxLoadBalancers = v
 }
 
 func (o EditVirtualClusterWorkloadResources) MarshalJSON() ([]byte, error) {
@@ -183,11 +183,11 @@ func (o EditVirtualClusterWorkloadResources) MarshalJSON() ([]byte, error) {
 
 func (o EditVirtualClusterWorkloadResources) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["pods"] = o.Pods
-	toSerialize["pvcs"] = o.Pvcs
-	toSerialize["totalPvcSize"] = o.TotalPvcSize
-	toSerialize["ingresses"] = o.Ingresses
-	toSerialize["loadBalancers"] = o.LoadBalancers
+	toSerialize["maxPods"] = o.MaxPods
+	toSerialize["maxPvcs"] = o.MaxPvcs
+	toSerialize["maxTotalPvcSize"] = o.MaxTotalPvcSize
+	toSerialize["maxIngresses"] = o.MaxIngresses
+	toSerialize["maxLoadBalancers"] = o.MaxLoadBalancers
 	return toSerialize, nil
 }
 
@@ -196,11 +196,11 @@ func (o *EditVirtualClusterWorkloadResources) UnmarshalJSON(data []byte) (err er
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"pods",
-		"pvcs",
-		"totalPvcSize",
-		"ingresses",
-		"loadBalancers",
+		"maxPods",
+		"maxPvcs",
+		"maxTotalPvcSize",
+		"maxIngresses",
+		"maxLoadBalancers",
 	}
 
 	allProperties := make(map[string]interface{})

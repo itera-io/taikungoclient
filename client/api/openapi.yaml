@@ -6079,8 +6079,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-05-20T00:04:02.4632033Z
-                  createdAt: 2025-05-20T00:04:02.4632033Z
+                  lastValidated: 2025-05-20T15:41:50.072766Z
+                  createdAt: 2025-05-20T15:41:50.072766Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6185,14 +6185,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-05-20T00:04:02.4632033Z
+                    lastBackup: 2025-05-20T15:41:50.072766Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-05-20T00:04:02.4632033Z
+                  createdAt: 2025-05-20T15:41:50.072766Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-05-20T00:04:02.4632033Z
+                  lastBackup: 2025-05-20T15:41:50.072766Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6297,8 +6297,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-05-20T00:04:02.4632033Z
-                  expiration: 2025-05-20T00:04:02.4632033Z
+                  createdAt: 2025-05-20T15:41:50.072766Z
+                  expiration: 2025-05-20T15:41:50.072766Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6402,7 +6402,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-05-20T00:04:02.4632033Z
+                  createdAt: 2025-05-20T15:41:50.072766Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6512,9 +6512,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-05-20T00:04:02.4632033+00:00
-                  startTimeStamp: 2025-05-20T00:04:02.4632033+00:00
-                  createdAt: 2025-05-20T00:04:02.4632033Z
+                  completionDateTime: 2025-05-20T15:41:50.072766+00:00
+                  startTimeStamp: 2025-05-20T15:41:50.072766+00:00
+                  createdAt: 2025-05-20T15:41:50.072766Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -42706,6 +42706,7 @@ components:
           projectName: projectName
           linuxPrice: linuxPrice
           projectId: 5
+          localDiskSize: 2
           ram: 1.4658129805029452
           existsWindowsSpotPrice: true
           linuxSpotPrice: linuxSpotPrice
@@ -42720,10 +42721,11 @@ components:
           projectName: projectName
           linuxPrice: linuxPrice
           projectId: 5
+          localDiskSize: 2
           ram: 1.4658129805029452
           existsWindowsSpotPrice: true
           linuxSpotPrice: linuxSpotPrice
-        totalCount: 2
+        totalCount: 7
       properties:
         data:
           items:
@@ -42751,6 +42753,7 @@ components:
         projectName: projectName
         linuxPrice: linuxPrice
         projectId: 5
+        localDiskSize: 2
         ram: 1.4658129805029452
         existsWindowsSpotPrice: true
         linuxSpotPrice: linuxSpotPrice
@@ -42794,6 +42797,9 @@ components:
           type: string
         cloudType:
           $ref: '#/components/schemas/CloudType'
+        localDiskSize:
+          format: int32
+          type: integer
       required:
       - cloudType
       - cpu
@@ -46642,11 +46648,11 @@ components:
           defaultContainerLimit: 4.145608029883936
           maxClusterRequests: 3.616076749251911
         workloadResources:
-          ingresses: 7
-          pvcs: 5
-          loadBalancers: 9
-          pods: 5
-          totalPvcSize: 2
+          maxIngresses: 7
+          maxPvcs: 5
+          maxLoadBalancers: 9
+          maxPods: 5
+          maxTotalPvcSize: 2
         projectId: 6
         cpuLimits:
           maxClusterLimits: 2.027123023002322
@@ -46718,33 +46724,33 @@ components:
     CreateVirtualClusterWorkloadResources:
       additionalProperties: false
       example:
-        ingresses: 7
-        pvcs: 5
-        loadBalancers: 9
-        pods: 5
-        totalPvcSize: 2
+        maxIngresses: 7
+        maxPvcs: 5
+        maxLoadBalancers: 9
+        maxPods: 5
+        maxTotalPvcSize: 2
       properties:
-        pods:
+        maxPods:
           format: int32
           type: integer
-        pvcs:
+        maxPvcs:
           format: int32
           type: integer
-        totalPvcSize:
+        maxTotalPvcSize:
           format: int64
           type: integer
-        ingresses:
+        maxIngresses:
           format: int32
           type: integer
-        loadBalancers:
+        maxLoadBalancers:
           format: int32
           type: integer
       required:
-      - ingresses
-      - loadBalancers
-      - pods
-      - pvcs
-      - totalPvcSize
+      - maxIngresses
+      - maxLoadBalancers
+      - maxPods
+      - maxPvcs
+      - maxTotalPvcSize
       type: object
     CreateVsphereCommand:
       additionalProperties: false
@@ -49099,11 +49105,11 @@ components:
           defaultContainerLimit: 3.616076749251911
           maxClusterRequests: 7.061401241503109
         workloadResources:
-          ingresses: 5
-          pvcs: 1
-          loadBalancers: 2
-          pods: 6
-          totalPvcSize: 5
+          maxIngresses: 5
+          maxPvcs: 1
+          maxLoadBalancers: 2
+          maxPods: 6
+          maxTotalPvcSize: 5
         cpuLimits:
           maxClusterLimits: 9.301444243932576
           defaultContainerRequest: 2.027123023002322
@@ -49162,33 +49168,33 @@ components:
     EditVirtualClusterWorkloadResources:
       additionalProperties: false
       example:
-        ingresses: 5
-        pvcs: 1
-        loadBalancers: 2
-        pods: 6
-        totalPvcSize: 5
+        maxIngresses: 5
+        maxPvcs: 1
+        maxLoadBalancers: 2
+        maxPods: 6
+        maxTotalPvcSize: 5
       properties:
-        pods:
+        maxPods:
           format: int32
           type: integer
-        pvcs:
+        maxPvcs:
           format: int32
           type: integer
-        totalPvcSize:
+        maxTotalPvcSize:
           format: int64
           type: integer
-        ingresses:
+        maxIngresses:
           format: int32
           type: integer
-        loadBalancers:
+        maxLoadBalancers:
           format: int32
           type: integer
       required:
-      - ingresses
-      - loadBalancers
-      - pods
-      - pvcs
-      - totalPvcSize
+      - maxIngresses
+      - maxLoadBalancers
+      - maxPods
+      - maxPvcs
+      - maxTotalPvcSize
       type: object
     EmailMode:
       enum:
@@ -54338,23 +54344,39 @@ components:
     KubernetesQuotaListDto:
       additionalProperties: false
       example:
-        sumOfCpuUsage: 1.4658129805029452
-        podsCapacity: 5
-        sumOfRamInGb: 6.027456183070403
+        sumOfRamRequestsUsage: 9.301444243932576
+        sumOfRamRequestsInGb: 7.061401241503109
+        sumOfCpuUsage: 6.027456183070403
+        sumOfCpuRequestsUsage: 5.962133916683182
+        podsCapacity: 3
+        sumOfCpuRequests: 1.4658129805029452
+        sumOfRamInGb: 5.637376656633329
         podsTotalCount: 2
-        sumOfRamUsage: 5.962133916683182
+        sumOfRamUsage: 2.3021358869347655
         sumOfCpu: 0.8008281904610115
       properties:
         sumOfCpu:
           format: double
           type: number
-        sumOfRamInGb:
-          format: double
-          type: number
         sumOfCpuUsage:
           format: double
           type: number
+        sumOfCpuRequests:
+          format: double
+          type: number
+        sumOfCpuRequestsUsage:
+          format: double
+          type: number
+        sumOfRamInGb:
+          format: double
+          type: number
         sumOfRamUsage:
+          format: double
+          type: number
+        sumOfRamRequestsInGb:
+          format: double
+          type: number
+        sumOfRamRequestsUsage:
           format: double
           type: number
         podsCapacity:
@@ -54367,8 +54389,12 @@ components:
       - podsCapacity
       - podsTotalCount
       - sumOfCpu
+      - sumOfCpuRequests
+      - sumOfCpuRequestsUsage
       - sumOfCpuUsage
       - sumOfRamInGb
+      - sumOfRamRequestsInGb
+      - sumOfRamRequestsUsage
       - sumOfRamUsage
       type: object
     KubernetesResourcesDto:
@@ -68378,27 +68404,6 @@ components:
       - projectMaintenanceMode
       - unlock
       type: object
-    VClusterLimitRangeListDto:
-      additionalProperties: false
-      example:
-        resourceUnit: resourceUnit
-        defaultLimit: 6.84685269835264
-        defaultRequest: 7.457744773683766
-      properties:
-        resourceUnit:
-          nullable: true
-          type: string
-        defaultLimit:
-          format: double
-          type: number
-        defaultRequest:
-          format: double
-          type: number
-      required:
-      - defaultLimit
-      - defaultRequest
-      - resourceUnit
-      type: object
     VClusterList:
       additionalProperties: false
       example:
@@ -68415,22 +68420,16 @@ components:
             - reasons
             hidden: true
             enable: true
+          ephemeralStorageLimits:
+            maxClusterLimits: 4.145608029883936
+            defaultContainerRequest: 1.2315135367772556
+            resourceUnit: resourceUnit
+            defaultContainerLimit: 7.386281948385884
+            maxClusterRequests: 2.027123023002322
           organizationId: 6
           createdAt: createdAt
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
-          resourceQuotas:
-            ingresses: 7
-            pvcs: 2
-            ephemeralStorageRequests: 1
-            ephemeralStorageLimits: 1
-            loadBalancers: 1
-            pods: 5
-            ramRequests: 9
-            ramLimits: 3
-            cpuLimits: 7.061401241503109
-            cpuRequests: 2.3021358869347655
-            totalPvcSize: 4
           cloudType: AWS
           isLocked: true
           id: 0
@@ -68452,28 +68451,20 @@ components:
             enable: true
           lastModifiedBy: lastModifiedBy
           health: "Null"
-          resourceQuotaUsages:
-            ingresses: 7
-            pvcs: 2
-            ephemeralStorageRequests: 1
-            ephemeralStorageLimits: 1
-            loadBalancers: 1
-            pods: 5
-            ramRequests: 9
-            ramLimits: 3
-            cpuLimits: 7.061401241503109
-            cpuRequests: 2.3021358869347655
-            totalPvcSize: 4
-          ramLimitRanges:
-            resourceUnit: resourceUnit
-            defaultLimit: 6.84685269835264
-            defaultRequest: 7.457744773683766
           isVirtualCluster: true
-          hasKubeConfigFile: true
-          ephemeralStorageLimitRanges:
+          ramLimits:
+            maxClusterLimits: 4.145608029883936
+            defaultContainerRequest: 1.2315135367772556
             resourceUnit: resourceUnit
-            defaultLimit: 6.84685269835264
-            defaultRequest: 7.457744773683766
+            defaultContainerLimit: 7.386281948385884
+            maxClusterRequests: 2.027123023002322
+          workloadResources:
+            maxIngresses: 9
+            maxPvcs: 2
+            maxLoadBalancers: 3
+            maxPods: 5
+            maxTotalPvcSize: 7
+          hasKubeConfigFile: true
           kubeInfoButton:
             reasons:
             - reasons
@@ -68492,12 +68483,14 @@ components:
             - reasons
             hidden: true
             enable: true
+          cpuLimits:
+            maxClusterLimits: 4.145608029883936
+            defaultContainerRequest: 1.2315135367772556
+            resourceUnit: resourceUnit
+            defaultContainerLimit: 7.386281948385884
+            maxClusterRequests: 2.027123023002322
           isMaintenanceModeEnabled: true
           status: "Null"
-          cpuLimitRanges:
-            resourceUnit: resourceUnit
-            defaultLimit: 6.84685269835264
-            defaultRequest: 7.457744773683766
         - deleteButton:
             reasons:
             - reasons
@@ -68510,22 +68503,16 @@ components:
             - reasons
             hidden: true
             enable: true
+          ephemeralStorageLimits:
+            maxClusterLimits: 4.145608029883936
+            defaultContainerRequest: 1.2315135367772556
+            resourceUnit: resourceUnit
+            defaultContainerLimit: 7.386281948385884
+            maxClusterRequests: 2.027123023002322
           organizationId: 6
           createdAt: createdAt
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
-          resourceQuotas:
-            ingresses: 7
-            pvcs: 2
-            ephemeralStorageRequests: 1
-            ephemeralStorageLimits: 1
-            loadBalancers: 1
-            pods: 5
-            ramRequests: 9
-            ramLimits: 3
-            cpuLimits: 7.061401241503109
-            cpuRequests: 2.3021358869347655
-            totalPvcSize: 4
           cloudType: AWS
           isLocked: true
           id: 0
@@ -68547,28 +68534,20 @@ components:
             enable: true
           lastModifiedBy: lastModifiedBy
           health: "Null"
-          resourceQuotaUsages:
-            ingresses: 7
-            pvcs: 2
-            ephemeralStorageRequests: 1
-            ephemeralStorageLimits: 1
-            loadBalancers: 1
-            pods: 5
-            ramRequests: 9
-            ramLimits: 3
-            cpuLimits: 7.061401241503109
-            cpuRequests: 2.3021358869347655
-            totalPvcSize: 4
-          ramLimitRanges:
-            resourceUnit: resourceUnit
-            defaultLimit: 6.84685269835264
-            defaultRequest: 7.457744773683766
           isVirtualCluster: true
-          hasKubeConfigFile: true
-          ephemeralStorageLimitRanges:
+          ramLimits:
+            maxClusterLimits: 4.145608029883936
+            defaultContainerRequest: 1.2315135367772556
             resourceUnit: resourceUnit
-            defaultLimit: 6.84685269835264
-            defaultRequest: 7.457744773683766
+            defaultContainerLimit: 7.386281948385884
+            maxClusterRequests: 2.027123023002322
+          workloadResources:
+            maxIngresses: 9
+            maxPvcs: 2
+            maxLoadBalancers: 3
+            maxPods: 5
+            maxTotalPvcSize: 7
+          hasKubeConfigFile: true
           kubeInfoButton:
             reasons:
             - reasons
@@ -68587,12 +68566,14 @@ components:
             - reasons
             hidden: true
             enable: true
+          cpuLimits:
+            maxClusterLimits: 4.145608029883936
+            defaultContainerRequest: 1.2315135367772556
+            resourceUnit: resourceUnit
+            defaultContainerLimit: 7.386281948385884
+            maxClusterRequests: 2.027123023002322
           isMaintenanceModeEnabled: true
           status: "Null"
-          cpuLimitRanges:
-            resourceUnit: resourceUnit
-            defaultLimit: 6.84685269835264
-            defaultRequest: 7.457744773683766
         project:
           isProjectMaintenanceModeEnabled: true
           organizationName: organizationName
@@ -68653,22 +68634,16 @@ components:
           - reasons
           hidden: true
           enable: true
+        ephemeralStorageLimits:
+          maxClusterLimits: 4.145608029883936
+          defaultContainerRequest: 1.2315135367772556
+          resourceUnit: resourceUnit
+          defaultContainerLimit: 7.386281948385884
+          maxClusterRequests: 2.027123023002322
         organizationId: 6
         createdAt: createdAt
         expiredAt: expiredAt
         alertingProfileName: alertingProfileName
-        resourceQuotas:
-          ingresses: 7
-          pvcs: 2
-          ephemeralStorageRequests: 1
-          ephemeralStorageLimits: 1
-          loadBalancers: 1
-          pods: 5
-          ramRequests: 9
-          ramLimits: 3
-          cpuLimits: 7.061401241503109
-          cpuRequests: 2.3021358869347655
-          totalPvcSize: 4
         cloudType: AWS
         isLocked: true
         id: 0
@@ -68690,28 +68665,20 @@ components:
           enable: true
         lastModifiedBy: lastModifiedBy
         health: "Null"
-        resourceQuotaUsages:
-          ingresses: 7
-          pvcs: 2
-          ephemeralStorageRequests: 1
-          ephemeralStorageLimits: 1
-          loadBalancers: 1
-          pods: 5
-          ramRequests: 9
-          ramLimits: 3
-          cpuLimits: 7.061401241503109
-          cpuRequests: 2.3021358869347655
-          totalPvcSize: 4
-        ramLimitRanges:
-          resourceUnit: resourceUnit
-          defaultLimit: 6.84685269835264
-          defaultRequest: 7.457744773683766
         isVirtualCluster: true
-        hasKubeConfigFile: true
-        ephemeralStorageLimitRanges:
+        ramLimits:
+          maxClusterLimits: 4.145608029883936
+          defaultContainerRequest: 1.2315135367772556
           resourceUnit: resourceUnit
-          defaultLimit: 6.84685269835264
-          defaultRequest: 7.457744773683766
+          defaultContainerLimit: 7.386281948385884
+          maxClusterRequests: 2.027123023002322
+        workloadResources:
+          maxIngresses: 9
+          maxPvcs: 2
+          maxLoadBalancers: 3
+          maxPods: 5
+          maxTotalPvcSize: 7
+        hasKubeConfigFile: true
         kubeInfoButton:
           reasons:
           - reasons
@@ -68730,12 +68697,14 @@ components:
           - reasons
           hidden: true
           enable: true
+        cpuLimits:
+          maxClusterLimits: 4.145608029883936
+          defaultContainerRequest: 1.2315135367772556
+          resourceUnit: resourceUnit
+          defaultContainerLimit: 7.386281948385884
+          maxClusterRequests: 2.027123023002322
         isMaintenanceModeEnabled: true
         status: "Null"
-        cpuLimitRanges:
-          resourceUnit: resourceUnit
-          defaultLimit: 6.84685269835264
-          defaultRequest: 7.457744773683766
       properties:
         id:
           format: int32
@@ -68789,16 +68758,14 @@ components:
           $ref: '#/components/schemas/ProjectStatus'
         health:
           $ref: '#/components/schemas/ProjectHealth'
-        resourceQuotas:
-          $ref: '#/components/schemas/VClusterResourceQuotaListDto'
-        resourceQuotaUsages:
-          $ref: '#/components/schemas/VClusterResourceQuotaListDto'
-        cpuLimitRanges:
-          $ref: '#/components/schemas/VClusterLimitRangeListDto'
-        ramLimitRanges:
-          $ref: '#/components/schemas/VClusterLimitRangeListDto'
-        ephemeralStorageLimitRanges:
-          $ref: '#/components/schemas/VClusterLimitRangeListDto'
+        workloadResources:
+          $ref: '#/components/schemas/VClusterWorkloadResourcesListDto'
+        cpuLimits:
+          $ref: '#/components/schemas/VClusterResourceLimitsListDto'
+        ramLimits:
+          $ref: '#/components/schemas/VClusterResourceLimitsListDto'
+        ephemeralStorageLimits:
+          $ref: '#/components/schemas/VClusterResourceLimitsListDto'
         lockButton:
           $ref: '#/components/schemas/ButtonStatusDto'
         unlockButton:
@@ -68842,66 +68809,67 @@ components:
       - unlockButton
       - wasmEnabled
       type: object
-    VClusterResourceQuotaListDto:
+    VClusterResourceLimitsListDto:
       additionalProperties: false
       example:
-        ingresses: 7
-        pvcs: 2
-        ephemeralStorageRequests: 1
-        ephemeralStorageLimits: 1
-        loadBalancers: 1
-        pods: 5
-        ramRequests: 9
-        ramLimits: 3
-        cpuLimits: 7.061401241503109
-        cpuRequests: 2.3021358869347655
-        totalPvcSize: 4
+        maxClusterLimits: 4.145608029883936
+        defaultContainerRequest: 1.2315135367772556
+        resourceUnit: resourceUnit
+        defaultContainerLimit: 7.386281948385884
+        maxClusterRequests: 2.027123023002322
       properties:
-        pods:
-          format: int32
-          type: integer
-        cpuRequests:
+        resourceUnit:
+          nullable: true
+          type: string
+        maxClusterRequests:
           format: double
           type: number
-        cpuLimits:
+        maxClusterLimits:
           format: double
           type: number
-        ramRequests:
-          format: int64
-          type: integer
-        ramLimits:
-          format: int64
-          type: integer
-        pvcs:
+        defaultContainerLimit:
+          format: double
+          type: number
+        defaultContainerRequest:
+          format: double
+          type: number
+      required:
+      - defaultContainerLimit
+      - defaultContainerRequest
+      - maxClusterLimits
+      - maxClusterRequests
+      - resourceUnit
+      type: object
+    VClusterWorkloadResourcesListDto:
+      additionalProperties: false
+      example:
+        maxIngresses: 9
+        maxPvcs: 2
+        maxLoadBalancers: 3
+        maxPods: 5
+        maxTotalPvcSize: 7
+      properties:
+        maxPods:
           format: int32
           type: integer
-        totalPvcSize:
-          format: int64
-          type: integer
-        ingresses:
+        maxPvcs:
           format: int32
           type: integer
-        loadBalancers:
+        maxTotalPvcSize:
+          format: int64
+          type: integer
+        maxIngresses:
           format: int32
           type: integer
-        ephemeralStorageRequests:
-          format: int64
-          type: integer
-        ephemeralStorageLimits:
-          format: int64
+        maxLoadBalancers:
+          format: int32
           type: integer
       required:
-      - cpuLimits
-      - cpuRequests
-      - ephemeralStorageLimits
-      - ephemeralStorageRequests
-      - ingresses
-      - loadBalancers
-      - pods
-      - pvcs
-      - ramLimits
-      - ramRequests
-      - totalPvcSize
+      - maxIngresses
+      - maxLoadBalancers
+      - maxPods
+      - maxPvcs
+      - maxTotalPvcSize
       type: object
     ValidateVsphereCommand:
       additionalProperties: false

@@ -45,11 +45,10 @@ type VClusterListDto struct {
 	CloudType ECloudCredentialType `json:"cloudType"`
 	Status ProjectStatus `json:"status"`
 	Health ProjectHealth `json:"health"`
-	ResourceQuotas *VClusterResourceQuotaListDto `json:"resourceQuotas,omitempty"`
-	ResourceQuotaUsages *VClusterResourceQuotaListDto `json:"resourceQuotaUsages,omitempty"`
-	CpuLimitRanges *VClusterLimitRangeListDto `json:"cpuLimitRanges,omitempty"`
-	RamLimitRanges *VClusterLimitRangeListDto `json:"ramLimitRanges,omitempty"`
-	EphemeralStorageLimitRanges *VClusterLimitRangeListDto `json:"ephemeralStorageLimitRanges,omitempty"`
+	WorkloadResources *VClusterWorkloadResourcesListDto `json:"workloadResources,omitempty"`
+	CpuLimits *VClusterResourceLimitsListDto `json:"cpuLimits,omitempty"`
+	RamLimits *VClusterResourceLimitsListDto `json:"ramLimits,omitempty"`
+	EphemeralStorageLimits *VClusterResourceLimitsListDto `json:"ephemeralStorageLimits,omitempty"`
 	LockButton ButtonStatusDto `json:"lockButton"`
 	UnlockButton ButtonStatusDto `json:"unlockButton"`
 	DeleteButton ButtonStatusDto `json:"deleteButton"`
@@ -662,164 +661,132 @@ func (o *VClusterListDto) SetHealth(v ProjectHealth) {
 	o.Health = v
 }
 
-// GetResourceQuotas returns the ResourceQuotas field value if set, zero value otherwise.
-func (o *VClusterListDto) GetResourceQuotas() VClusterResourceQuotaListDto {
-	if o == nil || IsNil(o.ResourceQuotas) {
-		var ret VClusterResourceQuotaListDto
+// GetWorkloadResources returns the WorkloadResources field value if set, zero value otherwise.
+func (o *VClusterListDto) GetWorkloadResources() VClusterWorkloadResourcesListDto {
+	if o == nil || IsNil(o.WorkloadResources) {
+		var ret VClusterWorkloadResourcesListDto
 		return ret
 	}
-	return *o.ResourceQuotas
+	return *o.WorkloadResources
 }
 
-// GetResourceQuotasOk returns a tuple with the ResourceQuotas field value if set, nil otherwise
+// GetWorkloadResourcesOk returns a tuple with the WorkloadResources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VClusterListDto) GetResourceQuotasOk() (*VClusterResourceQuotaListDto, bool) {
-	if o == nil || IsNil(o.ResourceQuotas) {
+func (o *VClusterListDto) GetWorkloadResourcesOk() (*VClusterWorkloadResourcesListDto, bool) {
+	if o == nil || IsNil(o.WorkloadResources) {
 		return nil, false
 	}
-	return o.ResourceQuotas, true
+	return o.WorkloadResources, true
 }
 
-// HasResourceQuotas returns a boolean if a field has been set.
-func (o *VClusterListDto) HasResourceQuotas() bool {
-	if o != nil && !IsNil(o.ResourceQuotas) {
+// HasWorkloadResources returns a boolean if a field has been set.
+func (o *VClusterListDto) HasWorkloadResources() bool {
+	if o != nil && !IsNil(o.WorkloadResources) {
 		return true
 	}
 
 	return false
 }
 
-// SetResourceQuotas gets a reference to the given VClusterResourceQuotaListDto and assigns it to the ResourceQuotas field.
-func (o *VClusterListDto) SetResourceQuotas(v VClusterResourceQuotaListDto) {
-	o.ResourceQuotas = &v
+// SetWorkloadResources gets a reference to the given VClusterWorkloadResourcesListDto and assigns it to the WorkloadResources field.
+func (o *VClusterListDto) SetWorkloadResources(v VClusterWorkloadResourcesListDto) {
+	o.WorkloadResources = &v
 }
 
-// GetResourceQuotaUsages returns the ResourceQuotaUsages field value if set, zero value otherwise.
-func (o *VClusterListDto) GetResourceQuotaUsages() VClusterResourceQuotaListDto {
-	if o == nil || IsNil(o.ResourceQuotaUsages) {
-		var ret VClusterResourceQuotaListDto
+// GetCpuLimits returns the CpuLimits field value if set, zero value otherwise.
+func (o *VClusterListDto) GetCpuLimits() VClusterResourceLimitsListDto {
+	if o == nil || IsNil(o.CpuLimits) {
+		var ret VClusterResourceLimitsListDto
 		return ret
 	}
-	return *o.ResourceQuotaUsages
+	return *o.CpuLimits
 }
 
-// GetResourceQuotaUsagesOk returns a tuple with the ResourceQuotaUsages field value if set, nil otherwise
+// GetCpuLimitsOk returns a tuple with the CpuLimits field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VClusterListDto) GetResourceQuotaUsagesOk() (*VClusterResourceQuotaListDto, bool) {
-	if o == nil || IsNil(o.ResourceQuotaUsages) {
+func (o *VClusterListDto) GetCpuLimitsOk() (*VClusterResourceLimitsListDto, bool) {
+	if o == nil || IsNil(o.CpuLimits) {
 		return nil, false
 	}
-	return o.ResourceQuotaUsages, true
+	return o.CpuLimits, true
 }
 
-// HasResourceQuotaUsages returns a boolean if a field has been set.
-func (o *VClusterListDto) HasResourceQuotaUsages() bool {
-	if o != nil && !IsNil(o.ResourceQuotaUsages) {
+// HasCpuLimits returns a boolean if a field has been set.
+func (o *VClusterListDto) HasCpuLimits() bool {
+	if o != nil && !IsNil(o.CpuLimits) {
 		return true
 	}
 
 	return false
 }
 
-// SetResourceQuotaUsages gets a reference to the given VClusterResourceQuotaListDto and assigns it to the ResourceQuotaUsages field.
-func (o *VClusterListDto) SetResourceQuotaUsages(v VClusterResourceQuotaListDto) {
-	o.ResourceQuotaUsages = &v
+// SetCpuLimits gets a reference to the given VClusterResourceLimitsListDto and assigns it to the CpuLimits field.
+func (o *VClusterListDto) SetCpuLimits(v VClusterResourceLimitsListDto) {
+	o.CpuLimits = &v
 }
 
-// GetCpuLimitRanges returns the CpuLimitRanges field value if set, zero value otherwise.
-func (o *VClusterListDto) GetCpuLimitRanges() VClusterLimitRangeListDto {
-	if o == nil || IsNil(o.CpuLimitRanges) {
-		var ret VClusterLimitRangeListDto
+// GetRamLimits returns the RamLimits field value if set, zero value otherwise.
+func (o *VClusterListDto) GetRamLimits() VClusterResourceLimitsListDto {
+	if o == nil || IsNil(o.RamLimits) {
+		var ret VClusterResourceLimitsListDto
 		return ret
 	}
-	return *o.CpuLimitRanges
+	return *o.RamLimits
 }
 
-// GetCpuLimitRangesOk returns a tuple with the CpuLimitRanges field value if set, nil otherwise
+// GetRamLimitsOk returns a tuple with the RamLimits field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VClusterListDto) GetCpuLimitRangesOk() (*VClusterLimitRangeListDto, bool) {
-	if o == nil || IsNil(o.CpuLimitRanges) {
+func (o *VClusterListDto) GetRamLimitsOk() (*VClusterResourceLimitsListDto, bool) {
+	if o == nil || IsNil(o.RamLimits) {
 		return nil, false
 	}
-	return o.CpuLimitRanges, true
+	return o.RamLimits, true
 }
 
-// HasCpuLimitRanges returns a boolean if a field has been set.
-func (o *VClusterListDto) HasCpuLimitRanges() bool {
-	if o != nil && !IsNil(o.CpuLimitRanges) {
+// HasRamLimits returns a boolean if a field has been set.
+func (o *VClusterListDto) HasRamLimits() bool {
+	if o != nil && !IsNil(o.RamLimits) {
 		return true
 	}
 
 	return false
 }
 
-// SetCpuLimitRanges gets a reference to the given VClusterLimitRangeListDto and assigns it to the CpuLimitRanges field.
-func (o *VClusterListDto) SetCpuLimitRanges(v VClusterLimitRangeListDto) {
-	o.CpuLimitRanges = &v
+// SetRamLimits gets a reference to the given VClusterResourceLimitsListDto and assigns it to the RamLimits field.
+func (o *VClusterListDto) SetRamLimits(v VClusterResourceLimitsListDto) {
+	o.RamLimits = &v
 }
 
-// GetRamLimitRanges returns the RamLimitRanges field value if set, zero value otherwise.
-func (o *VClusterListDto) GetRamLimitRanges() VClusterLimitRangeListDto {
-	if o == nil || IsNil(o.RamLimitRanges) {
-		var ret VClusterLimitRangeListDto
+// GetEphemeralStorageLimits returns the EphemeralStorageLimits field value if set, zero value otherwise.
+func (o *VClusterListDto) GetEphemeralStorageLimits() VClusterResourceLimitsListDto {
+	if o == nil || IsNil(o.EphemeralStorageLimits) {
+		var ret VClusterResourceLimitsListDto
 		return ret
 	}
-	return *o.RamLimitRanges
+	return *o.EphemeralStorageLimits
 }
 
-// GetRamLimitRangesOk returns a tuple with the RamLimitRanges field value if set, nil otherwise
+// GetEphemeralStorageLimitsOk returns a tuple with the EphemeralStorageLimits field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VClusterListDto) GetRamLimitRangesOk() (*VClusterLimitRangeListDto, bool) {
-	if o == nil || IsNil(o.RamLimitRanges) {
+func (o *VClusterListDto) GetEphemeralStorageLimitsOk() (*VClusterResourceLimitsListDto, bool) {
+	if o == nil || IsNil(o.EphemeralStorageLimits) {
 		return nil, false
 	}
-	return o.RamLimitRanges, true
+	return o.EphemeralStorageLimits, true
 }
 
-// HasRamLimitRanges returns a boolean if a field has been set.
-func (o *VClusterListDto) HasRamLimitRanges() bool {
-	if o != nil && !IsNil(o.RamLimitRanges) {
+// HasEphemeralStorageLimits returns a boolean if a field has been set.
+func (o *VClusterListDto) HasEphemeralStorageLimits() bool {
+	if o != nil && !IsNil(o.EphemeralStorageLimits) {
 		return true
 	}
 
 	return false
 }
 
-// SetRamLimitRanges gets a reference to the given VClusterLimitRangeListDto and assigns it to the RamLimitRanges field.
-func (o *VClusterListDto) SetRamLimitRanges(v VClusterLimitRangeListDto) {
-	o.RamLimitRanges = &v
-}
-
-// GetEphemeralStorageLimitRanges returns the EphemeralStorageLimitRanges field value if set, zero value otherwise.
-func (o *VClusterListDto) GetEphemeralStorageLimitRanges() VClusterLimitRangeListDto {
-	if o == nil || IsNil(o.EphemeralStorageLimitRanges) {
-		var ret VClusterLimitRangeListDto
-		return ret
-	}
-	return *o.EphemeralStorageLimitRanges
-}
-
-// GetEphemeralStorageLimitRangesOk returns a tuple with the EphemeralStorageLimitRanges field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *VClusterListDto) GetEphemeralStorageLimitRangesOk() (*VClusterLimitRangeListDto, bool) {
-	if o == nil || IsNil(o.EphemeralStorageLimitRanges) {
-		return nil, false
-	}
-	return o.EphemeralStorageLimitRanges, true
-}
-
-// HasEphemeralStorageLimitRanges returns a boolean if a field has been set.
-func (o *VClusterListDto) HasEphemeralStorageLimitRanges() bool {
-	if o != nil && !IsNil(o.EphemeralStorageLimitRanges) {
-		return true
-	}
-
-	return false
-}
-
-// SetEphemeralStorageLimitRanges gets a reference to the given VClusterLimitRangeListDto and assigns it to the EphemeralStorageLimitRanges field.
-func (o *VClusterListDto) SetEphemeralStorageLimitRanges(v VClusterLimitRangeListDto) {
-	o.EphemeralStorageLimitRanges = &v
+// SetEphemeralStorageLimits gets a reference to the given VClusterResourceLimitsListDto and assigns it to the EphemeralStorageLimits field.
+func (o *VClusterListDto) SetEphemeralStorageLimits(v VClusterResourceLimitsListDto) {
+	o.EphemeralStorageLimits = &v
 }
 
 // GetLockButton returns the LockButton field value
@@ -999,20 +966,17 @@ func (o VClusterListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["cloudType"] = o.CloudType
 	toSerialize["status"] = o.Status
 	toSerialize["health"] = o.Health
-	if !IsNil(o.ResourceQuotas) {
-		toSerialize["resourceQuotas"] = o.ResourceQuotas
+	if !IsNil(o.WorkloadResources) {
+		toSerialize["workloadResources"] = o.WorkloadResources
 	}
-	if !IsNil(o.ResourceQuotaUsages) {
-		toSerialize["resourceQuotaUsages"] = o.ResourceQuotaUsages
+	if !IsNil(o.CpuLimits) {
+		toSerialize["cpuLimits"] = o.CpuLimits
 	}
-	if !IsNil(o.CpuLimitRanges) {
-		toSerialize["cpuLimitRanges"] = o.CpuLimitRanges
+	if !IsNil(o.RamLimits) {
+		toSerialize["ramLimits"] = o.RamLimits
 	}
-	if !IsNil(o.RamLimitRanges) {
-		toSerialize["ramLimitRanges"] = o.RamLimitRanges
-	}
-	if !IsNil(o.EphemeralStorageLimitRanges) {
-		toSerialize["ephemeralStorageLimitRanges"] = o.EphemeralStorageLimitRanges
+	if !IsNil(o.EphemeralStorageLimits) {
+		toSerialize["ephemeralStorageLimits"] = o.EphemeralStorageLimits
 	}
 	toSerialize["lockButton"] = o.LockButton
 	toSerialize["unlockButton"] = o.UnlockButton

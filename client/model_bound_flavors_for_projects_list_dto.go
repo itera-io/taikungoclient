@@ -36,6 +36,7 @@ type BoundFlavorsForProjectsListDto struct {
 	WindowsSpotPrice NullableString `json:"windowsSpotPrice"`
 	WindowsPrice NullableString `json:"windowsPrice"`
 	CloudType CloudType `json:"cloudType"`
+	LocalDiskSize *int32 `json:"localDiskSize,omitempty"`
 }
 
 type _BoundFlavorsForProjectsListDto BoundFlavorsForProjectsListDto
@@ -419,6 +420,38 @@ func (o *BoundFlavorsForProjectsListDto) SetCloudType(v CloudType) {
 	o.CloudType = v
 }
 
+// GetLocalDiskSize returns the LocalDiskSize field value if set, zero value otherwise.
+func (o *BoundFlavorsForProjectsListDto) GetLocalDiskSize() int32 {
+	if o == nil || IsNil(o.LocalDiskSize) {
+		var ret int32
+		return ret
+	}
+	return *o.LocalDiskSize
+}
+
+// GetLocalDiskSizeOk returns a tuple with the LocalDiskSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BoundFlavorsForProjectsListDto) GetLocalDiskSizeOk() (*int32, bool) {
+	if o == nil || IsNil(o.LocalDiskSize) {
+		return nil, false
+	}
+	return o.LocalDiskSize, true
+}
+
+// HasLocalDiskSize returns a boolean if a field has been set.
+func (o *BoundFlavorsForProjectsListDto) HasLocalDiskSize() bool {
+	if o != nil && !IsNil(o.LocalDiskSize) {
+		return true
+	}
+
+	return false
+}
+
+// SetLocalDiskSize gets a reference to the given int32 and assigns it to the LocalDiskSize field.
+func (o *BoundFlavorsForProjectsListDto) SetLocalDiskSize(v int32) {
+	o.LocalDiskSize = &v
+}
+
 func (o BoundFlavorsForProjectsListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -443,6 +476,9 @@ func (o BoundFlavorsForProjectsListDto) ToMap() (map[string]interface{}, error) 
 	toSerialize["windowsSpotPrice"] = o.WindowsSpotPrice.Get()
 	toSerialize["windowsPrice"] = o.WindowsPrice.Get()
 	toSerialize["cloudType"] = o.CloudType
+	if !IsNil(o.LocalDiskSize) {
+		toSerialize["localDiskSize"] = o.LocalDiskSize
+	}
 	return toSerialize, nil
 }
 

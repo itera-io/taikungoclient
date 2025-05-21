@@ -17,11 +17,11 @@ import (
 	"fmt"
 )
 
-// checks if the CreateVirtualClusterWorkloadResources type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CreateVirtualClusterWorkloadResources{}
+// checks if the VClusterWorkloadResourcesListDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VClusterWorkloadResourcesListDto{}
 
-// CreateVirtualClusterWorkloadResources struct for CreateVirtualClusterWorkloadResources
-type CreateVirtualClusterWorkloadResources struct {
+// VClusterWorkloadResourcesListDto struct for VClusterWorkloadResourcesListDto
+type VClusterWorkloadResourcesListDto struct {
 	MaxPods int32 `json:"maxPods"`
 	MaxPvcs int32 `json:"maxPvcs"`
 	MaxTotalPvcSize int64 `json:"maxTotalPvcSize"`
@@ -29,14 +29,14 @@ type CreateVirtualClusterWorkloadResources struct {
 	MaxLoadBalancers int32 `json:"maxLoadBalancers"`
 }
 
-type _CreateVirtualClusterWorkloadResources CreateVirtualClusterWorkloadResources
+type _VClusterWorkloadResourcesListDto VClusterWorkloadResourcesListDto
 
-// NewCreateVirtualClusterWorkloadResources instantiates a new CreateVirtualClusterWorkloadResources object
+// NewVClusterWorkloadResourcesListDto instantiates a new VClusterWorkloadResourcesListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateVirtualClusterWorkloadResources(maxPods int32, maxPvcs int32, maxTotalPvcSize int64, maxIngresses int32, maxLoadBalancers int32) *CreateVirtualClusterWorkloadResources {
-	this := CreateVirtualClusterWorkloadResources{}
+func NewVClusterWorkloadResourcesListDto(maxPods int32, maxPvcs int32, maxTotalPvcSize int64, maxIngresses int32, maxLoadBalancers int32) *VClusterWorkloadResourcesListDto {
+	this := VClusterWorkloadResourcesListDto{}
 	this.MaxPods = maxPods
 	this.MaxPvcs = maxPvcs
 	this.MaxTotalPvcSize = maxTotalPvcSize
@@ -45,16 +45,16 @@ func NewCreateVirtualClusterWorkloadResources(maxPods int32, maxPvcs int32, maxT
 	return &this
 }
 
-// NewCreateVirtualClusterWorkloadResourcesWithDefaults instantiates a new CreateVirtualClusterWorkloadResources object
+// NewVClusterWorkloadResourcesListDtoWithDefaults instantiates a new VClusterWorkloadResourcesListDto object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCreateVirtualClusterWorkloadResourcesWithDefaults() *CreateVirtualClusterWorkloadResources {
-	this := CreateVirtualClusterWorkloadResources{}
+func NewVClusterWorkloadResourcesListDtoWithDefaults() *VClusterWorkloadResourcesListDto {
+	this := VClusterWorkloadResourcesListDto{}
 	return &this
 }
 
 // GetMaxPods returns the MaxPods field value
-func (o *CreateVirtualClusterWorkloadResources) GetMaxPods() int32 {
+func (o *VClusterWorkloadResourcesListDto) GetMaxPods() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -65,7 +65,7 @@ func (o *CreateVirtualClusterWorkloadResources) GetMaxPods() int32 {
 
 // GetMaxPodsOk returns a tuple with the MaxPods field value
 // and a boolean to check if the value has been set.
-func (o *CreateVirtualClusterWorkloadResources) GetMaxPodsOk() (*int32, bool) {
+func (o *VClusterWorkloadResourcesListDto) GetMaxPodsOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -73,12 +73,12 @@ func (o *CreateVirtualClusterWorkloadResources) GetMaxPodsOk() (*int32, bool) {
 }
 
 // SetMaxPods sets field value
-func (o *CreateVirtualClusterWorkloadResources) SetMaxPods(v int32) {
+func (o *VClusterWorkloadResourcesListDto) SetMaxPods(v int32) {
 	o.MaxPods = v
 }
 
 // GetMaxPvcs returns the MaxPvcs field value
-func (o *CreateVirtualClusterWorkloadResources) GetMaxPvcs() int32 {
+func (o *VClusterWorkloadResourcesListDto) GetMaxPvcs() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -89,7 +89,7 @@ func (o *CreateVirtualClusterWorkloadResources) GetMaxPvcs() int32 {
 
 // GetMaxPvcsOk returns a tuple with the MaxPvcs field value
 // and a boolean to check if the value has been set.
-func (o *CreateVirtualClusterWorkloadResources) GetMaxPvcsOk() (*int32, bool) {
+func (o *VClusterWorkloadResourcesListDto) GetMaxPvcsOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -97,12 +97,12 @@ func (o *CreateVirtualClusterWorkloadResources) GetMaxPvcsOk() (*int32, bool) {
 }
 
 // SetMaxPvcs sets field value
-func (o *CreateVirtualClusterWorkloadResources) SetMaxPvcs(v int32) {
+func (o *VClusterWorkloadResourcesListDto) SetMaxPvcs(v int32) {
 	o.MaxPvcs = v
 }
 
 // GetMaxTotalPvcSize returns the MaxTotalPvcSize field value
-func (o *CreateVirtualClusterWorkloadResources) GetMaxTotalPvcSize() int64 {
+func (o *VClusterWorkloadResourcesListDto) GetMaxTotalPvcSize() int64 {
 	if o == nil {
 		var ret int64
 		return ret
@@ -113,7 +113,7 @@ func (o *CreateVirtualClusterWorkloadResources) GetMaxTotalPvcSize() int64 {
 
 // GetMaxTotalPvcSizeOk returns a tuple with the MaxTotalPvcSize field value
 // and a boolean to check if the value has been set.
-func (o *CreateVirtualClusterWorkloadResources) GetMaxTotalPvcSizeOk() (*int64, bool) {
+func (o *VClusterWorkloadResourcesListDto) GetMaxTotalPvcSizeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -121,12 +121,12 @@ func (o *CreateVirtualClusterWorkloadResources) GetMaxTotalPvcSizeOk() (*int64, 
 }
 
 // SetMaxTotalPvcSize sets field value
-func (o *CreateVirtualClusterWorkloadResources) SetMaxTotalPvcSize(v int64) {
+func (o *VClusterWorkloadResourcesListDto) SetMaxTotalPvcSize(v int64) {
 	o.MaxTotalPvcSize = v
 }
 
 // GetMaxIngresses returns the MaxIngresses field value
-func (o *CreateVirtualClusterWorkloadResources) GetMaxIngresses() int32 {
+func (o *VClusterWorkloadResourcesListDto) GetMaxIngresses() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -137,7 +137,7 @@ func (o *CreateVirtualClusterWorkloadResources) GetMaxIngresses() int32 {
 
 // GetMaxIngressesOk returns a tuple with the MaxIngresses field value
 // and a boolean to check if the value has been set.
-func (o *CreateVirtualClusterWorkloadResources) GetMaxIngressesOk() (*int32, bool) {
+func (o *VClusterWorkloadResourcesListDto) GetMaxIngressesOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -145,12 +145,12 @@ func (o *CreateVirtualClusterWorkloadResources) GetMaxIngressesOk() (*int32, boo
 }
 
 // SetMaxIngresses sets field value
-func (o *CreateVirtualClusterWorkloadResources) SetMaxIngresses(v int32) {
+func (o *VClusterWorkloadResourcesListDto) SetMaxIngresses(v int32) {
 	o.MaxIngresses = v
 }
 
 // GetMaxLoadBalancers returns the MaxLoadBalancers field value
-func (o *CreateVirtualClusterWorkloadResources) GetMaxLoadBalancers() int32 {
+func (o *VClusterWorkloadResourcesListDto) GetMaxLoadBalancers() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -161,7 +161,7 @@ func (o *CreateVirtualClusterWorkloadResources) GetMaxLoadBalancers() int32 {
 
 // GetMaxLoadBalancersOk returns a tuple with the MaxLoadBalancers field value
 // and a boolean to check if the value has been set.
-func (o *CreateVirtualClusterWorkloadResources) GetMaxLoadBalancersOk() (*int32, bool) {
+func (o *VClusterWorkloadResourcesListDto) GetMaxLoadBalancersOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -169,11 +169,11 @@ func (o *CreateVirtualClusterWorkloadResources) GetMaxLoadBalancersOk() (*int32,
 }
 
 // SetMaxLoadBalancers sets field value
-func (o *CreateVirtualClusterWorkloadResources) SetMaxLoadBalancers(v int32) {
+func (o *VClusterWorkloadResourcesListDto) SetMaxLoadBalancers(v int32) {
 	o.MaxLoadBalancers = v
 }
 
-func (o CreateVirtualClusterWorkloadResources) MarshalJSON() ([]byte, error) {
+func (o VClusterWorkloadResourcesListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -181,7 +181,7 @@ func (o CreateVirtualClusterWorkloadResources) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o CreateVirtualClusterWorkloadResources) ToMap() (map[string]interface{}, error) {
+func (o VClusterWorkloadResourcesListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["maxPods"] = o.MaxPods
 	toSerialize["maxPvcs"] = o.MaxPvcs
@@ -191,7 +191,7 @@ func (o CreateVirtualClusterWorkloadResources) ToMap() (map[string]interface{}, 
 	return toSerialize, nil
 }
 
-func (o *CreateVirtualClusterWorkloadResources) UnmarshalJSON(data []byte) (err error) {
+func (o *VClusterWorkloadResourcesListDto) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -217,53 +217,53 @@ func (o *CreateVirtualClusterWorkloadResources) UnmarshalJSON(data []byte) (err 
 		}
 	}
 
-	varCreateVirtualClusterWorkloadResources := _CreateVirtualClusterWorkloadResources{}
+	varVClusterWorkloadResourcesListDto := _VClusterWorkloadResourcesListDto{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCreateVirtualClusterWorkloadResources)
+	err = decoder.Decode(&varVClusterWorkloadResourcesListDto)
 
 	if err != nil {
 		return err
 	}
 
-	*o = CreateVirtualClusterWorkloadResources(varCreateVirtualClusterWorkloadResources)
+	*o = VClusterWorkloadResourcesListDto(varVClusterWorkloadResourcesListDto)
 
 	return err
 }
 
-type NullableCreateVirtualClusterWorkloadResources struct {
-	value *CreateVirtualClusterWorkloadResources
+type NullableVClusterWorkloadResourcesListDto struct {
+	value *VClusterWorkloadResourcesListDto
 	isSet bool
 }
 
-func (v NullableCreateVirtualClusterWorkloadResources) Get() *CreateVirtualClusterWorkloadResources {
+func (v NullableVClusterWorkloadResourcesListDto) Get() *VClusterWorkloadResourcesListDto {
 	return v.value
 }
 
-func (v *NullableCreateVirtualClusterWorkloadResources) Set(val *CreateVirtualClusterWorkloadResources) {
+func (v *NullableVClusterWorkloadResourcesListDto) Set(val *VClusterWorkloadResourcesListDto) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCreateVirtualClusterWorkloadResources) IsSet() bool {
+func (v NullableVClusterWorkloadResourcesListDto) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCreateVirtualClusterWorkloadResources) Unset() {
+func (v *NullableVClusterWorkloadResourcesListDto) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCreateVirtualClusterWorkloadResources(val *CreateVirtualClusterWorkloadResources) *NullableCreateVirtualClusterWorkloadResources {
-	return &NullableCreateVirtualClusterWorkloadResources{value: val, isSet: true}
+func NewNullableVClusterWorkloadResourcesListDto(val *VClusterWorkloadResourcesListDto) *NullableVClusterWorkloadResourcesListDto {
+	return &NullableVClusterWorkloadResourcesListDto{value: val, isSet: true}
 }
 
-func (v NullableCreateVirtualClusterWorkloadResources) MarshalJSON() ([]byte, error) {
+func (v NullableVClusterWorkloadResourcesListDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCreateVirtualClusterWorkloadResources) UnmarshalJSON(src []byte) error {
+func (v *NullableVClusterWorkloadResourcesListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

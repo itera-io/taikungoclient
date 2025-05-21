@@ -973,10 +973,10 @@ docs/UsersSearchCommand.md
 docs/UsersSearchList.md
 docs/UsersSearchResponseData.md
 docs/VClusterActionVisibilityDto.md
-docs/VClusterLimitRangeListDto.md
 docs/VClusterList.md
 docs/VClusterListDto.md
-docs/VClusterResourceQuotaListDto.md
+docs/VClusterResourceLimitsListDto.md
+docs/VClusterWorkloadResourcesListDto.md
 docs/ValidateVsphereCommand.md
 docs/VerifyEmailCommand.md
 docs/VerifySlackCredentialsCommand.md
@@ -1836,10 +1836,10 @@ model_users_search_command.go
 model_users_search_list.go
 model_users_search_response_data.go
 model_v_cluster_action_visibility_dto.go
-model_v_cluster_limit_range_list_dto.go
 model_v_cluster_list.go
 model_v_cluster_list_dto.go
-model_v_cluster_resource_quota_list_dto.go
+model_v_cluster_resource_limits_list_dto.go
+model_v_cluster_workload_resources_list_dto.go
 model_validate_vsphere_command.go
 model_verify_email_command.go
 model_verify_slack_credentials_command.go
