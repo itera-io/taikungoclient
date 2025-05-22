@@ -48,6 +48,7 @@ type UserForListDto struct {
 	IsNewOrganization bool `json:"isNewOrganization"`
 	Is2FAEnabled bool `json:"is2FAEnabled"`
 	LastLoginAt NullableString `json:"lastLoginAt,omitempty"`
+	IsForcedToEnableTwoFactorAuthentication bool `json:"isForcedToEnableTwoFactorAuthentication"`
 	BoundProjects []ProjectDto `json:"boundProjects"`
 	Partner PartnerDetailsForUserDto `json:"partner"`
 }
@@ -58,7 +59,7 @@ type _UserForListDto UserForListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserForListDto(id string, username string, organizationName string, hasCustomerId bool, hasPaymentMethod bool, organizationId int32, role UserRole, email string, displayName NullableString, createdAt string, isEmailConfirmed bool, isEmailNotificationEnabled bool, isForcedToResetPassword bool, isCsm bool, isEligibleUpdateSubscription bool, isLocked bool, isApprovedByPartner bool, owner bool, isReadOnly bool, hasRepo bool, isNewOrganization bool, is2FAEnabled bool, boundProjects []ProjectDto, partner PartnerDetailsForUserDto) *UserForListDto {
+func NewUserForListDto(id string, username string, organizationName string, hasCustomerId bool, hasPaymentMethod bool, organizationId int32, role UserRole, email string, displayName NullableString, createdAt string, isEmailConfirmed bool, isEmailNotificationEnabled bool, isForcedToResetPassword bool, isCsm bool, isEligibleUpdateSubscription bool, isLocked bool, isApprovedByPartner bool, owner bool, isReadOnly bool, hasRepo bool, isNewOrganization bool, is2FAEnabled bool, isForcedToEnableTwoFactorAuthentication bool, boundProjects []ProjectDto, partner PartnerDetailsForUserDto) *UserForListDto {
 	this := UserForListDto{}
 	this.Id = id
 	this.Username = username
@@ -82,6 +83,7 @@ func NewUserForListDto(id string, username string, organizationName string, hasC
 	this.HasRepo = hasRepo
 	this.IsNewOrganization = isNewOrganization
 	this.Is2FAEnabled = is2FAEnabled
+	this.IsForcedToEnableTwoFactorAuthentication = isForcedToEnableTwoFactorAuthentication
 	this.BoundProjects = boundProjects
 	this.Partner = partner
 	return &this
@@ -751,6 +753,30 @@ func (o *UserForListDto) UnsetLastLoginAt() {
 	o.LastLoginAt.Unset()
 }
 
+// GetIsForcedToEnableTwoFactorAuthentication returns the IsForcedToEnableTwoFactorAuthentication field value
+func (o *UserForListDto) GetIsForcedToEnableTwoFactorAuthentication() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.IsForcedToEnableTwoFactorAuthentication
+}
+
+// GetIsForcedToEnableTwoFactorAuthenticationOk returns a tuple with the IsForcedToEnableTwoFactorAuthentication field value
+// and a boolean to check if the value has been set.
+func (o *UserForListDto) GetIsForcedToEnableTwoFactorAuthenticationOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IsForcedToEnableTwoFactorAuthentication, true
+}
+
+// SetIsForcedToEnableTwoFactorAuthentication sets field value
+func (o *UserForListDto) SetIsForcedToEnableTwoFactorAuthentication(v bool) {
+	o.IsForcedToEnableTwoFactorAuthentication = v
+}
+
 // GetBoundProjects returns the BoundProjects field value
 func (o *UserForListDto) GetBoundProjects() []ProjectDto {
 	if o == nil {
@@ -840,6 +866,7 @@ func (o UserForListDto) ToMap() (map[string]interface{}, error) {
 	if o.LastLoginAt.IsSet() {
 		toSerialize["lastLoginAt"] = o.LastLoginAt.Get()
 	}
+	toSerialize["isForcedToEnableTwoFactorAuthentication"] = o.IsForcedToEnableTwoFactorAuthentication
 	toSerialize["boundProjects"] = o.BoundProjects
 	toSerialize["partner"] = o.Partner
 	return toSerialize, nil
@@ -872,6 +899,7 @@ func (o *UserForListDto) UnmarshalJSON(data []byte) (err error) {
 		"hasRepo",
 		"isNewOrganization",
 		"is2FAEnabled",
+		"isForcedToEnableTwoFactorAuthentication",
 		"boundProjects",
 		"partner",
 	}

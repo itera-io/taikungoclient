@@ -36,6 +36,7 @@ type ServerForCreateDto struct {
 	Hypervisor NullableString `json:"hypervisor,omitempty"`
 	KubernetesNodeLabels []KubernetesNodeLabelsDto `json:"kubernetesNodeLabels,omitempty"`
 	ReplicaCount NullableInt32 `json:"replicaCount,omitempty"`
+	UseLocalDisk *bool `json:"useLocalDisk,omitempty"`
 }
 
 // NewServerForCreateDto instantiates a new ServerForCreateDto object
@@ -638,6 +639,38 @@ func (o *ServerForCreateDto) UnsetReplicaCount() {
 	o.ReplicaCount.Unset()
 }
 
+// GetUseLocalDisk returns the UseLocalDisk field value if set, zero value otherwise.
+func (o *ServerForCreateDto) GetUseLocalDisk() bool {
+	if o == nil || IsNil(o.UseLocalDisk) {
+		var ret bool
+		return ret
+	}
+	return *o.UseLocalDisk
+}
+
+// GetUseLocalDiskOk returns a tuple with the UseLocalDisk field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServerForCreateDto) GetUseLocalDiskOk() (*bool, bool) {
+	if o == nil || IsNil(o.UseLocalDisk) {
+		return nil, false
+	}
+	return o.UseLocalDisk, true
+}
+
+// HasUseLocalDisk returns a boolean if a field has been set.
+func (o *ServerForCreateDto) HasUseLocalDisk() bool {
+	if o != nil && !IsNil(o.UseLocalDisk) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseLocalDisk gets a reference to the given bool and assigns it to the UseLocalDisk field.
+func (o *ServerForCreateDto) SetUseLocalDisk(v bool) {
+	o.UseLocalDisk = &v
+}
+
 func (o ServerForCreateDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -695,6 +728,9 @@ func (o ServerForCreateDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.ReplicaCount.IsSet() {
 		toSerialize["replicaCount"] = o.ReplicaCount.Get()
+	}
+	if !IsNil(o.UseLocalDisk) {
+		toSerialize["useLocalDisk"] = o.UseLocalDisk
 	}
 	return toSerialize, nil
 }

@@ -601,9 +601,6 @@ func (a *NotificationsAPIService) NotificationsOperationMessagesExecute(r ApiNot
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.getProjectOperationCommand == nil {
-		return localVarReturnValue, nil, reportError("getProjectOperationCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

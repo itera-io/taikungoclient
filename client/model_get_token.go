@@ -14,6 +14,8 @@ package taikuncore
 import (
 	"encoding/json"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the GetToken type satisfies the MappedNullable interface at compile time
@@ -21,18 +23,22 @@ var _ MappedNullable = &GetToken{}
 
 // GetToken struct for GetToken
 type GetToken struct {
-	Token NullableString `json:"token,omitempty"`
+	Token string `json:"token"`
 	RefreshToken NullableString `json:"refreshToken,omitempty"`
 	RefreshTokenExpireTime *time.Time `json:"refreshTokenExpireTime,omitempty"`
-	TempToken NullableString `json:"tempToken,omitempty"`
+	TwoFaEnabled NullableBool `json:"twoFaEnabled,omitempty"`
+	IsForcedToEnabled2Fa NullableBool `json:"isForcedToEnabled2Fa,omitempty"`
 }
+
+type _GetToken GetToken
 
 // NewGetToken instantiates a new GetToken object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetToken() *GetToken {
+func NewGetToken(token string) *GetToken {
 	this := GetToken{}
+	this.Token = token
 	return &this
 }
 
@@ -44,46 +50,28 @@ func NewGetTokenWithDefaults() *GetToken {
 	return &this
 }
 
-// GetToken returns the Token field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetToken returns the Token field value
 func (o *GetToken) GetToken() string {
-	if o == nil || IsNil(o.Token.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Token.Get()
+
+	return o.Token
 }
 
-// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
+// GetTokenOk returns a tuple with the Token field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GetToken) GetTokenOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Token.Get(), o.Token.IsSet()
+	return &o.Token, true
 }
 
-// HasToken returns a boolean if a field has been set.
-func (o *GetToken) HasToken() bool {
-	if o != nil && o.Token.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetToken gets a reference to the given NullableString and assigns it to the Token field.
+// SetToken sets field value
 func (o *GetToken) SetToken(v string) {
-	o.Token.Set(&v)
-}
-// SetTokenNil sets the value for Token to be an explicit nil
-func (o *GetToken) SetTokenNil() {
-	o.Token.Set(nil)
-}
-
-// UnsetToken ensures that no value is present for Token, not even an explicit nil
-func (o *GetToken) UnsetToken() {
-	o.Token.Unset()
+	o.Token = v
 }
 
 // GetRefreshToken returns the RefreshToken field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -160,46 +148,88 @@ func (o *GetToken) SetRefreshTokenExpireTime(v time.Time) {
 	o.RefreshTokenExpireTime = &v
 }
 
-// GetTempToken returns the TempToken field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GetToken) GetTempToken() string {
-	if o == nil || IsNil(o.TempToken.Get()) {
-		var ret string
+// GetTwoFaEnabled returns the TwoFaEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetToken) GetTwoFaEnabled() bool {
+	if o == nil || IsNil(o.TwoFaEnabled.Get()) {
+		var ret bool
 		return ret
 	}
-	return *o.TempToken.Get()
+	return *o.TwoFaEnabled.Get()
 }
 
-// GetTempTokenOk returns a tuple with the TempToken field value if set, nil otherwise
+// GetTwoFaEnabledOk returns a tuple with the TwoFaEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GetToken) GetTempTokenOk() (*string, bool) {
+func (o *GetToken) GetTwoFaEnabledOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.TempToken.Get(), o.TempToken.IsSet()
+	return o.TwoFaEnabled.Get(), o.TwoFaEnabled.IsSet()
 }
 
-// HasTempToken returns a boolean if a field has been set.
-func (o *GetToken) HasTempToken() bool {
-	if o != nil && o.TempToken.IsSet() {
+// HasTwoFaEnabled returns a boolean if a field has been set.
+func (o *GetToken) HasTwoFaEnabled() bool {
+	if o != nil && o.TwoFaEnabled.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTempToken gets a reference to the given NullableString and assigns it to the TempToken field.
-func (o *GetToken) SetTempToken(v string) {
-	o.TempToken.Set(&v)
+// SetTwoFaEnabled gets a reference to the given NullableBool and assigns it to the TwoFaEnabled field.
+func (o *GetToken) SetTwoFaEnabled(v bool) {
+	o.TwoFaEnabled.Set(&v)
 }
-// SetTempTokenNil sets the value for TempToken to be an explicit nil
-func (o *GetToken) SetTempTokenNil() {
-	o.TempToken.Set(nil)
+// SetTwoFaEnabledNil sets the value for TwoFaEnabled to be an explicit nil
+func (o *GetToken) SetTwoFaEnabledNil() {
+	o.TwoFaEnabled.Set(nil)
 }
 
-// UnsetTempToken ensures that no value is present for TempToken, not even an explicit nil
-func (o *GetToken) UnsetTempToken() {
-	o.TempToken.Unset()
+// UnsetTwoFaEnabled ensures that no value is present for TwoFaEnabled, not even an explicit nil
+func (o *GetToken) UnsetTwoFaEnabled() {
+	o.TwoFaEnabled.Unset()
+}
+
+// GetIsForcedToEnabled2Fa returns the IsForcedToEnabled2Fa field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetToken) GetIsForcedToEnabled2Fa() bool {
+	if o == nil || IsNil(o.IsForcedToEnabled2Fa.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.IsForcedToEnabled2Fa.Get()
+}
+
+// GetIsForcedToEnabled2FaOk returns a tuple with the IsForcedToEnabled2Fa field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GetToken) GetIsForcedToEnabled2FaOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IsForcedToEnabled2Fa.Get(), o.IsForcedToEnabled2Fa.IsSet()
+}
+
+// HasIsForcedToEnabled2Fa returns a boolean if a field has been set.
+func (o *GetToken) HasIsForcedToEnabled2Fa() bool {
+	if o != nil && o.IsForcedToEnabled2Fa.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIsForcedToEnabled2Fa gets a reference to the given NullableBool and assigns it to the IsForcedToEnabled2Fa field.
+func (o *GetToken) SetIsForcedToEnabled2Fa(v bool) {
+	o.IsForcedToEnabled2Fa.Set(&v)
+}
+// SetIsForcedToEnabled2FaNil sets the value for IsForcedToEnabled2Fa to be an explicit nil
+func (o *GetToken) SetIsForcedToEnabled2FaNil() {
+	o.IsForcedToEnabled2Fa.Set(nil)
+}
+
+// UnsetIsForcedToEnabled2Fa ensures that no value is present for IsForcedToEnabled2Fa, not even an explicit nil
+func (o *GetToken) UnsetIsForcedToEnabled2Fa() {
+	o.IsForcedToEnabled2Fa.Unset()
 }
 
 func (o GetToken) MarshalJSON() ([]byte, error) {
@@ -212,19 +242,57 @@ func (o GetToken) MarshalJSON() ([]byte, error) {
 
 func (o GetToken) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Token.IsSet() {
-		toSerialize["token"] = o.Token.Get()
-	}
+	toSerialize["token"] = o.Token
 	if o.RefreshToken.IsSet() {
 		toSerialize["refreshToken"] = o.RefreshToken.Get()
 	}
 	if !IsNil(o.RefreshTokenExpireTime) {
 		toSerialize["refreshTokenExpireTime"] = o.RefreshTokenExpireTime
 	}
-	if o.TempToken.IsSet() {
-		toSerialize["tempToken"] = o.TempToken.Get()
+	if o.TwoFaEnabled.IsSet() {
+		toSerialize["twoFaEnabled"] = o.TwoFaEnabled.Get()
+	}
+	if o.IsForcedToEnabled2Fa.IsSet() {
+		toSerialize["isForcedToEnabled2Fa"] = o.IsForcedToEnabled2Fa.Get()
 	}
 	return toSerialize, nil
+}
+
+func (o *GetToken) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"token",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varGetToken := _GetToken{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varGetToken)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GetToken(varGetToken)
+
+	return err
 }
 
 type NullableGetToken struct {

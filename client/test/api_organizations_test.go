@@ -28,10 +28,9 @@ func Test_taikuncore_OrganizationsAPIService(t *testing.T) {
 
 		var id int32
 
-		resp, httpRes, err := apiClient.OrganizationsAPI.OrganizationsAddPrometheusrules(context.Background(), id).Execute()
+		httpRes, err := apiClient.OrganizationsAPI.OrganizationsAddPrometheusrules(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -67,10 +66,9 @@ func Test_taikuncore_OrganizationsAPIService(t *testing.T) {
 
 		var id int32
 
-		resp, httpRes, err := apiClient.OrganizationsAPI.OrganizationsDeletePrometheusrules(context.Background(), id).Execute()
+		httpRes, err := apiClient.OrganizationsAPI.OrganizationsDeletePrometheusrules(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -83,6 +81,28 @@ func Test_taikuncore_OrganizationsAPIService(t *testing.T) {
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test OrganizationsAPIService OrganizationsDisable2faManagement", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.OrganizationsAPI.OrganizationsDisable2faManagement(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test OrganizationsAPIService OrganizationsEnable2faManagement", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.OrganizationsAPI.OrganizationsEnable2faManagement(context.Background()).Execute()
+
+		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -103,10 +123,9 @@ func Test_taikuncore_OrganizationsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.OrganizationsAPI.OrganizationsToggle(context.Background()).Execute()
+		httpRes, err := apiClient.OrganizationsAPI.OrganizationsToggle(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -115,10 +134,9 @@ func Test_taikuncore_OrganizationsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.OrganizationsAPI.OrganizationsUpdate(context.Background()).Execute()
+		httpRes, err := apiClient.OrganizationsAPI.OrganizationsUpdate(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

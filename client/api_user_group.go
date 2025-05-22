@@ -753,7 +753,7 @@ func (a *UserGroupAPIService) UsergroupsDelete(ctx context.Context) ApiUsergroup
 // Execute executes the request
 func (a *UserGroupAPIService) UsergroupsDeleteExecute(r ApiUsergroupsDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
@@ -768,9 +768,6 @@ func (a *UserGroupAPIService) UsergroupsDeleteExecute(r ApiUsergroupsDeleteReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.deleteUserGroupCommand == nil {
-		return nil, reportError("deleteUserGroupCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

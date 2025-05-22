@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.4
 info:
   contact:
     email: noreply@taikun.cloud
@@ -453,6 +453,53 @@ paths:
       summary: Delete access profile by Id
       tags:
       - Access Profiles
+  /api/v1/admin/users/{id}/unlock-2fa:
+    post:
+      operationId: admin-unlock-2fa
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+        "200":
+          description: OK
+      summary: Unlock 2FA
+      tags:
+      - Admin
   /api/v1/ai-credential/create:
     post:
       operationId: ai-credential-create
@@ -1176,13 +1223,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AttachDetachAlertingProfileCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -1291,13 +1333,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AttachDetachAlertingProfileCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -1986,10 +2023,6 @@ paths:
               $ref: '#/components/schemas/BindAppRepositoryCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -2032,13 +2065,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteRepositoryCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -2070,7 +2098,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-      summary: Delete repo from organization
+      summary: Unbind repo from organization
       tags:
       - App repositories
   /api/v1/repository/import:
@@ -2083,10 +2111,6 @@ paths:
               $ref: '#/components/schemas/ImportRepoCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -2129,13 +2153,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UnbindAppRepositoryCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -2168,6 +2187,50 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Unbind repo from organization
+      tags:
+      - App repositories
+  /api/v1/repository/update-password:
+    post:
+      operationId: repository-update-password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRepoPasswordCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Update repo password
       tags:
       - App repositories
   /api/v1/repository/list:
@@ -2388,6 +2451,290 @@ paths:
       summary: Retrieve taikun recommended repositories
       tags:
       - App repositories
+  /api/v1/two-factor-auth/disable:
+    post:
+      operationId: two-factor-auth-disable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DisableTwoFactorAuthCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Disable 2fa by code
+      tags:
+      - Auth management
+  /api/v1/two-factor-auth/complete:
+    post:
+      operationId: two-factor-auth-complete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnsureCodesDownloadedCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetToken'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Ensure recovery codes saved
+      tags:
+      - Auth management
+  /api/v1/two-factor-auth/login:
+    post:
+      operationId: two-factor-auth-login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TwoFactorAuthLoginCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetToken'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Login with TOTP
+      tags:
+      - Auth management
+  /api/v1/two-factor-auth/recovery:
+    post:
+      operationId: two-factor-auth-recovery
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TwoFactorAuthRecoveryCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetToken'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Login with recovery code
+      tags:
+      - Auth management
+  /api/v1/two-factor-auth/setup:
+    post:
+      operationId: two-factor-auth-setup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TwoFactorAuthSetupCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TwoFactorAuthSetupResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Setup 2fa
+      tags:
+      - Auth management
+  /api/v1/two-factor-auth/verify:
+    post:
+      operationId: two-factor-auth-verify
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TwoFactorAuthVerifyCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TwoFactorAuthVerifyResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Verify 2fa code
+      tags:
+      - Auth management
   /api/v1/auth/forgotpassword:
     post:
       operationId: auth-forgot-password
@@ -4798,8 +5145,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-04-28T00:22:09.4480439Z
-                  createdAt: 2025-04-28T00:22:09.4480439Z
+                  lastValidated: 2025-05-22T00:21:43.5256822Z
+                  createdAt: 2025-05-22T00:21:43.5256822Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -4904,14 +5251,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-04-28T00:22:09.4480439Z
+                    lastBackup: 2025-05-22T00:21:43.5256822Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-04-28T00:22:09.4480439Z
+                  createdAt: 2025-05-22T00:21:43.5256822Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-04-28T00:22:09.4480439Z
+                  lastBackup: 2025-05-22T00:21:43.5256822Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5016,8 +5363,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-28T00:22:09.4480439Z
-                  expiration: 2025-04-28T00:22:09.4480439Z
+                  createdAt: 2025-05-22T00:21:43.5256822Z
+                  expiration: 2025-05-22T00:21:43.5256822Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5121,7 +5468,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-28T00:22:09.4480439Z
+                  createdAt: 2025-05-22T00:21:43.5256822Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5231,9 +5578,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-04-28T00:22:09.4480439+00:00
-                  startTimeStamp: 2025-04-28T00:22:09.4480439+00:00
-                  createdAt: 2025-04-28T00:22:09.4480439Z
+                  completionDateTime: 2025-05-22T00:21:43.5256822+00:00
+                  startTimeStamp: 2025-05-22T00:21:43.5256822+00:00
+                  createdAt: 2025-05-22T00:21:43.5256822Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -7169,6 +7516,50 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Duplicate name
+      tags:
+      - Checker
+  /api/v1/checker/project-app:
+    post:
+      operationId: checker-project-app
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DuplicateProjectAppCheckerCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Check duplicate project app
       tags:
       - Checker
   /api/v1/checker/aws:
@@ -12321,6 +12712,36 @@ paths:
               schema:
                 $ref: '#/components/schemas/ImportedAsCloudCredentialList'
           description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
       summary: Imported cluster as cloud credential
       tags:
       - Imported Cluster
@@ -12413,7 +12834,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/InfraBillingListCommand'
-        required: true
       responses:
         "200":
           content:
@@ -12464,13 +12884,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/KeycloakEditCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -12513,13 +12928,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/KeycloakCreateCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -12562,13 +12972,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/KeycloakDeleteCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -12806,13 +13211,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteKubeConfigCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -12855,7 +13255,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DownloadKubeConfigCommand'
-        required: true
       responses:
         "200":
           content:
@@ -12904,7 +13303,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ExportKubeConfigCommand'
-        required: true
       responses:
         "200":
           content:
@@ -12953,7 +13351,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/KubeConfigInteractiveShellCommand'
-        required: true
       responses:
         "200":
           content:
@@ -13055,10 +13452,6 @@ paths:
               $ref: '#/components/schemas/CreateKubernetesResourceCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -13151,10 +13544,6 @@ paths:
               $ref: '#/components/schemas/DaemonsetActionCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -13197,13 +13586,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteAlertCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -13296,10 +13680,6 @@ paths:
               $ref: '#/components/schemas/DeploymentActionCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -13438,7 +13818,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/KubernetesPodLogsCommand'
-        required: true
       responses:
         "200":
           content:
@@ -13537,7 +13916,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/InteractiveShellSendCommand'
-        required: true
       responses:
         "200":
           content:
@@ -13588,10 +13966,6 @@ paths:
               $ref: '#/components/schemas/NodeActionCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -13636,10 +14010,6 @@ paths:
               $ref: '#/components/schemas/PatchKubernetesResourceCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -13674,156 +14044,6 @@ paths:
       summary: Patch kubernetes resource
       tags:
       - Kubernetes
-  /api/v1/kubernetes/restart/daemonset:
-    post:
-      deprecated: true
-      operationId: kubernetes-restart-daemon-set
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RestartDaemonSetCommand'
-        required: true
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Restart daemon set
-      tags:
-      - Kubernetes
-  /api/v1/kubernetes/restart/deployment:
-    post:
-      deprecated: true
-      operationId: kubernetes-restart-deployment
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RestartDeploymentCommand'
-        required: true
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Restart deployment
-      tags:
-      - Kubernetes
-  /api/v1/kubernetes/restart/sts:
-    post:
-      deprecated: true
-      operationId: kubernetes-restart-sts
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RestartStsCommand'
-        required: true
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Restart stateful set
-      tags:
-      - Kubernetes
   /api/v1/kubernetes/silencemanager:
     post:
       operationId: kubernetes-silence-manager
@@ -13832,13 +14052,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SilenceOperationsCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -13883,10 +14098,6 @@ paths:
               $ref: '#/components/schemas/StsActionCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -14027,315 +14238,6 @@ paths:
       summary: Forbidden namespaces for k8s actions
       tags:
       - Kubernetes
-  /api/v1/kubernetes/{projectId}/configmap:
-    get:
-      operationId: kubernetes-config-map-list
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SearchId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: FilterBy
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ConfigMaps'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Retrieve a list of k8s config map for all namespaces
-      tags:
-      - Kubernetes
-  /api/v1/kubernetes/{projectId}/crd:
-    get:
-      operationId: kubernetes-crd-list
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SearchId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: FilterBy
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Crds'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Retrieve a list of crd
-      tags:
-      - Kubernetes
-  /api/v1/kubernetes/{projectId}/cronjobs:
-    get:
-      operationId: kubernetes-cron-job-list
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SearchId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: FilterBy
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/KubernetesCronJobsList'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Retrieve a list of k8s cron jobs for all namespaces
-      tags:
-      - Kubernetes
   /api/v1/kubernetes/{projectId}/dashboard:
     get:
       operationId: kubernetes-dashboard-list
@@ -14386,418 +14288,6 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Retrieve a list of crd
-      tags:
-      - Kubernetes
-  /api/v1/kubernetes/{projectId}/deployment:
-    get:
-      operationId: kubernetes-deployment-list
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SearchId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: FilterBy
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Deployments'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Retrieve a list of k8s deployment for all namespaces
-      tags:
-      - Kubernetes
-  /api/v1/kubernetes/{projectId}/helmreleases:
-    get:
-      operationId: kubernetes-helm-release-list
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SearchId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: FilterBy
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HelmReleasesList'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Retrieve a list of k8s helm releases for all namespaces
-      tags:
-      - Kubernetes
-  /api/v1/kubernetes/{projectId}/ingress:
-    get:
-      operationId: kubernetes-ingress-list
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SearchId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: FilterBy
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Ingresses'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Retrieve a list of k8s ingress for all namespaces
-      tags:
-      - Kubernetes
-  /api/v1/kubernetes/{projectId}/jobs:
-    get:
-      operationId: kubernetes-jobs-list
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SearchId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: FilterBy
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/KubernetesJobList'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Retrieve a list of k8s jobs for all namespaces
       tags:
       - Kubernetes
   /api/v1/kubernetes/{projectId}/alerts:
@@ -14912,479 +14402,6 @@ paths:
       summary: Retrieve a list of alerts for project
       tags:
       - Kubernetes
-  /api/v1/kubernetes/{projectId}/network-policies:
-    get:
-      operationId: kubernetes-network-policy-list
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SearchId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: FilterBy
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NetworkPolicies'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Retrieve a list of k8s network-policies for all namespaces
-      tags:
-      - Kubernetes
-  /api/v1/kubernetes/{projectId}/node:
-    get:
-      operationId: kubernetes-node-list
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: SearchId
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/KubernetesNodeListDto'
-                type: array
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Retrieve a list of k8s node
-      tags:
-      - Kubernetes
-  /api/v1/kubernetes/{projectId}/pdb:
-    get:
-      operationId: kubernetes-pdb-list
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SearchId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: FilterBy
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PodDisruptions'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Retrieve a list of k8s pdb for all namespaces
-      tags:
-      - Kubernetes
-  /api/v1/kubernetes/{projectId}/pvc:
-    get:
-      operationId: kubernetes-pvc-list
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SearchId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: FilterBy
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Pvcs'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Retrieve a list of k8s pvc for all namespaces
-      tags:
-      - Kubernetes
-  /api/v1/kubernetes/{projectId}/pod:
-    get:
-      operationId: kubernetes-pod-list
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SearchId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: FilterBy
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Pods'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Retrieve a list of k8s pod for all namespaces
-      tags:
-      - Kubernetes
   /api/v1/kubernetes/{projectId}/quota:
     get:
       operationId: kubernetes-quota
@@ -15435,418 +14452,6 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: K8s quota usage
-      tags:
-      - Kubernetes
-  /api/v1/kubernetes/{projectId}/secret:
-    get:
-      operationId: kubernetes-secret-list
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SearchId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: FilterBy
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Secrets'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Retrieve a list of k8s secret for all namespaces
-      tags:
-      - Kubernetes
-  /api/v1/kubernetes/{projectId}/service:
-    get:
-      operationId: kubernetes-service-list
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SearchId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: FilterBy
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Services'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Retrieve a list of k8s service for all namespaces
-      tags:
-      - Kubernetes
-  /api/v1/kubernetes/{projectId}/storageclass:
-    get:
-      operationId: kubernetes-storage-class-list
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SearchId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: FilterBy
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StorageClasses'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Retrieve a list of k8s storageclass for all namespaces
-      tags:
-      - Kubernetes
-  /api/v1/kubernetes/{projectId}/sts:
-    get:
-      operationId: kubernetes-sts-list
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SearchId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: FilterBy
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StsList'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Retrieve a list of k8s sts for all namespaces
       tags:
       - Kubernetes
   /api/v1/kubernetes/supported/list:
@@ -16142,13 +14747,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/KubernetesProfilesLockManagerCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -16301,8 +14901,6 @@ paths:
         style: simple
       responses:
         "200":
-          content:
-            application/json: {}
           description: OK
         "400":
           content:
@@ -16345,7 +14943,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetProjectOperationCommand'
-        required: true
       responses:
         "200":
           content:
@@ -16970,10 +15567,6 @@ paths:
               $ref: '#/components/schemas/OpaProfileUpdateCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -17016,7 +15609,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateOpaProfileCommand'
-        required: true
       responses:
         "200":
           content:
@@ -17065,13 +15657,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OpaProfileLockManagerCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -17114,13 +15701,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OpaMakeDefaultCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -17230,8 +15812,6 @@ paths:
         style: simple
       responses:
         "200":
-          content:
-            application/json: {}
           description: OK
         "400":
           content:
@@ -18177,7 +16757,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OperationCredentialsCreateCommand'
-        required: true
       responses:
         "200":
           content:
@@ -18226,13 +16805,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OperationCredentialLockManagerCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -18275,13 +16849,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OperationCredentialsMakeDefaultCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -18434,8 +17003,6 @@ paths:
         style: simple
       responses:
         "200":
-          content:
-            application/json: {}
           description: OK
         "400":
           content:
@@ -18491,10 +17058,6 @@ paths:
               type: array
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -18550,10 +17113,6 @@ paths:
               type: array
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -18585,7 +17144,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-      summary: Delete prometheus rule(s) from organization
+      summary: Unbind prometheus rule(s) from organization
       tags:
       - Organizations
   /api/v1/organizations:
@@ -18731,6 +17290,94 @@ paths:
       summary: Add a new organization. Only available for admins.
       tags:
       - Organizations
+  /api/v1/organizations/disable-2fa-management:
+    post:
+      operationId: organizations-disable-2fa-management
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DisableTwoFaManagementCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Disable 2fa management
+      tags:
+      - Organizations
+  /api/v1/organizations/enable-2fa-management:
+    post:
+      operationId: organizations-enable-2fa-management
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnableTwoFaManagementCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Enable 2fa management
+      tags:
+      - Organizations
   /api/v1/organizations/toggle/keycloak:
     post:
       operationId: organizations-toggle
@@ -18739,13 +17386,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ToggleKeycloakCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -18790,10 +17432,6 @@ paths:
               $ref: '#/components/schemas/UpdateOrganizationCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -18894,8 +17532,6 @@ paths:
         style: simple
       responses:
         "200":
-          content:
-            application/json: {}
           description: OK
         "400":
           content:
@@ -18938,7 +17574,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetCatalogAppValueCommand'
-        required: true
       responses:
         "200":
           content:
@@ -18987,7 +17622,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetCatalogAppValueAutocompleteCommand'
-        required: true
       responses:
         "200":
           content:
@@ -19038,7 +17672,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ListCatalogAppAvailableVersionsCommand'
-        required: true
       responses:
         "200":
           content:
@@ -19316,13 +17949,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PrometheusDashboardCreateCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -19365,13 +17993,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PrometheusDashboardUpdateCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -19528,8 +18151,6 @@ paths:
         style: simple
       responses:
         "200":
-          content:
-            application/json: {}
           description: OK
         "400":
           content:
@@ -19631,13 +18252,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AutoSyncManagementCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -19680,13 +18296,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CancelProjectAppCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -19777,13 +18388,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/LockProjectAppCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -19826,13 +18432,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SyncProjectAppCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -19875,7 +18476,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/EditProjectAppExtraValuesCommand'
-        required: true
       responses:
         "200":
           content:
@@ -20074,7 +18674,7 @@ paths:
       tags:
       - Project apps
   /api/v1/projectapp/uninstall/{projectAppId}:
-    delete:
+    post:
       operationId: projectapp-delete
       parameters:
       - explode: false
@@ -20088,7 +18688,9 @@ paths:
       responses:
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UninstallProjectAppResult'
           description: OK
         "400":
           content:
@@ -20133,10 +18735,6 @@ paths:
               $ref: '#/components/schemas/ProjectDeploymentCommitCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -20179,13 +18777,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeploymentCommitVmCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -20228,13 +18821,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ProjectDeploymentDeleteServersCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -20277,13 +18865,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ProjectDeploymentDeleteVmsCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -20328,10 +18911,6 @@ paths:
               $ref: '#/components/schemas/DeleteVmDiskCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -20374,13 +18953,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeploymentDisableAiCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -20423,13 +18997,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeploymentDisableBackupCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -20472,13 +19041,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeploymentDisableMonitoringCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -20521,13 +19085,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeploymentDisableOpaCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -20570,13 +19129,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeploymentEnableAiCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -20619,13 +19173,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeploymentEnableBackupCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -20668,13 +19217,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeploymentEnableMonitoringCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -20717,13 +19261,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeploymentOpaEnableCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -20768,10 +19307,6 @@ paths:
               $ref: '#/components/schemas/ImportClusterCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -20814,13 +19349,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ProjectDeploymentRepairCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -20863,13 +19393,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ProjectDeploymentRepairVmCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -20912,13 +19437,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/TofuMigrateCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -21014,13 +19534,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BindProjectsToProjectGroupCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -21065,10 +19580,6 @@ paths:
               $ref: '#/components/schemas/BindUserGroupsToProjectGroupCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -21161,10 +19672,6 @@ paths:
               $ref: '#/components/schemas/UnbindProjectFromProjectGroupCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -21207,13 +19714,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UnbindUserGroupFromProjectGroupCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -21467,7 +19969,7 @@ paths:
       tags:
       - Project groups
   /api/v1/projectgroups:
-    delete:
+    post:
       operationId: projectgroups-delete
       requestBody:
         content:
@@ -21479,8 +19981,6 @@ paths:
               type: array
       responses:
         "200":
-          content:
-            application/json: {}
           description: OK
         "400":
           content:
@@ -21577,10 +20077,6 @@ paths:
               $ref: '#/components/schemas/UpdateQuotaCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -21768,13 +20264,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateProjectFromTemplateCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -21981,8 +20472,6 @@ paths:
         style: simple
       responses:
         "200":
-          content:
-            application/json: {}
           description: OK
         "400":
           content:
@@ -22038,10 +20527,6 @@ paths:
               type: array
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -22096,10 +20581,6 @@ paths:
               type: array
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -22131,7 +20612,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-      summary: Delete users from project
+      summary: Unbind users from project
       tags:
       - Projects
   /api/v1/projects:
@@ -22316,11 +20797,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteProjectCommand'
-        required: true
       responses:
         "200":
-          content:
-            application/json: {}
           description: OK
         "400":
           content:
@@ -22364,13 +20842,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ProjectExtendLifeTimeCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -22413,13 +20886,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/FullSpotOperationCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -22462,13 +20930,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ProjectLockManagerCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -22557,13 +21020,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ProjectMaintenanceModeCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -22704,13 +21162,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SpotVmOperationCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -22753,13 +21206,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SpotWorkerOperationCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -23012,7 +21460,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ProjectAlertsQuery'
-        required: true
       responses:
         "200":
           content:
@@ -23212,13 +21659,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PrometheusBillingCreateCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -23336,7 +21778,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GroupedPrometheusBillingListQuery'
-        required: true
       responses:
         "200":
           content:
@@ -23397,10 +21838,6 @@ paths:
               type: array
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -23456,10 +21893,6 @@ paths:
               type: array
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -23491,7 +21924,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-      summary: Delete organizations from prometheus rule
+      summary: Unbind organizations from prometheus rule
       tags:
       - Prometheus Rules
   /api/v1/prometheusrules/edit/{id}:
@@ -23513,10 +21946,6 @@ paths:
               $ref: '#/components/schemas/RuleForUpdateDto'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -23716,8 +22145,6 @@ paths:
         style: simple
       responses:
         "200":
-          content:
-            application/json: {}
           description: OK
         "400":
           content:
@@ -24646,7 +23073,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AccessProfilesSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -24695,7 +23121,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BackupCredentialsSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -24744,7 +23169,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BillingCredentialsSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -24793,7 +23217,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CloudCredentialsSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -24842,7 +23265,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ConfigMapSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -24891,7 +23313,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CrdSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -24940,7 +23361,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CronjobsSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -24989,7 +23409,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DaemonSetSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -25038,7 +23457,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeploymentSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -25087,7 +23505,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/HelmReleasesSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -25136,7 +23553,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/IngressSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -25185,7 +23601,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/JobsSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -25234,7 +23649,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PdbSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -25283,7 +23697,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/KubernetesProfilesSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -25332,7 +23745,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/NamespaceSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -25381,7 +23793,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/NetworkPoliciesSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -25430,7 +23841,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/NodesSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -25479,7 +23889,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OrganizationSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -25576,7 +23985,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PvcSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -25625,7 +24033,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PodsSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -25674,7 +24081,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ProjectsSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -25723,7 +24129,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PrometheusRulesSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -25772,7 +24177,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SecretSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -25821,7 +24225,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ServersSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -25870,7 +24273,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ServiceSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -25919,7 +24321,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/StandAloneProfilesSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -25968,7 +24369,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/StorageClassesSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -26017,7 +24417,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/StsSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -26066,7 +24465,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UsersSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -26315,7 +24713,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ConsoleScreenshotCommand'
-        required: true
       responses:
         "200":
           content:
@@ -26412,13 +24809,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RebootServerCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -26463,10 +24855,6 @@ paths:
               $ref: '#/components/schemas/ResetServerStatusCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -26812,10 +25200,6 @@ paths:
               $ref: '#/components/schemas/UpdateSlackConfigurationDto'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -26858,7 +25242,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateSlackConfigurationCommand'
-        required: true
       responses:
         "200":
           content:
@@ -26907,13 +25290,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteSlackConfigCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -26956,13 +25334,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/VerifySlackCredentialsCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -27780,7 +26153,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/VmConsoleScreenshotCommand'
-        required: true
       responses:
         "200":
           content:
@@ -27877,13 +26249,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RebootStandAloneVmCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -27926,13 +26293,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ShelveStandAloneVmCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -27975,13 +26337,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/StartStandaloneVmCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -28024,13 +26381,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/StopStandaloneVmCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -28073,13 +26425,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UnshelveStandaloneVmCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -28274,13 +26621,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteStandAloneProfileCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -28325,10 +26667,6 @@ paths:
               $ref: '#/components/schemas/StandAloneProfileUpdateCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -28371,13 +26709,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/StandAloneProfileLockManagementCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -30043,18 +28376,15 @@ paths:
       tags:
       - User group
   /api/v1/usergroups:
-    delete:
+    post:
       operationId: usergroups-delete
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteUserGroupCommand'
-        required: true
       responses:
         "200":
-          content:
-            application/json: {}
           description: OK
         "400":
           content:
@@ -30979,6 +29309,402 @@ paths:
       summary: Delete virtual cluster
       tags:
       - Virtual Cluster
+  /api/v1/virtual-cluster/disable-ai:
+    post:
+      operationId: virtual-cluster-disable-ai
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VirtualClusterDisableAiCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Disable ai for virtual cluster
+      tags:
+      - Virtual Cluster
+  /api/v1/virtual-cluster/disable-backup:
+    post:
+      operationId: virtual-cluster-disable-backup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VirtualClusterDisableBackupCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Disable backup for virtual cluster
+      tags:
+      - Virtual Cluster
+  /api/v1/virtual-cluster/disable-monitoring:
+    post:
+      operationId: virtual-cluster-disable-monitoring
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VirtualClusterDisableMonitoringCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Disable monitoring for virtual cluster
+      tags:
+      - Virtual Cluster
+  /api/v1/virtual-cluster/disable-opa:
+    post:
+      operationId: virtual-cluster-disable-opa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VirtualClusterDisableOpaCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Disable opa for virtual cluster
+      tags:
+      - Virtual Cluster
+  /api/v1/virtual-cluster/edit/quotas:
+    post:
+      operationId: virtual-cluster-edit-quotas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditVirtualClusterQuotasCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Edit virtual cluster resource quotas and limit ranges
+      tags:
+      - Virtual Cluster
+  /api/v1/virtual-cluster/enable-ai:
+    post:
+      operationId: virtual-cluster-enable-ai
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VirtualClusterEnableAiCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Enable ai for virtual cluster
+      tags:
+      - Virtual Cluster
+  /api/v1/virtual-cluster/enable-backup:
+    post:
+      operationId: virtual-cluster-enable-backup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VirtualClusterEnableBackupCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Enable backup for virtual cluster
+      tags:
+      - Virtual Cluster
+  /api/v1/virtual-cluster/enable-monitoring:
+    post:
+      operationId: virtual-cluster-enable-monitoring
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VirtualClusterEnableMonitoringCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Enable monitoring for virtual cluster
+      tags:
+      - Virtual Cluster
+  /api/v1/virtual-cluster/enable-opa:
+    post:
+      operationId: virtual-cluster-enable-opa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VirtualClusterEnableOpaCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Enable opa for virtual cluster
+      tags:
+      - Virtual Cluster
   /api/v1/virtual-cluster/{parentProjectId}:
     get:
       operationId: virtual-cluster-list
@@ -31133,6 +29859,49 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Retrieve vcluster quota details
+      tags:
+      - Virtual Cluster
+  /api/v1/virtual-cluster/quota-presets:
+    get:
+      operationId: virtual-cluster-quota-presets
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VirtualClusterQuotasDto'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve vCluster quota presets
       tags:
       - Virtual Cluster
   /api/v1/virtual-cluster/visibility/{projectId}:
@@ -33730,6 +32499,7 @@ components:
           isTaikun: true
           repositoryId: repositoryId
           name: name
+          passwordProtected: true
           disabled: true
         - organizationName: organizationName
           displayName: displayName
@@ -33743,6 +32513,7 @@ components:
           isTaikun: true
           repositoryId: repositoryId
           name: name
+          passwordProtected: true
           disabled: true
         totalCount: 6
       properties:
@@ -33846,6 +32617,7 @@ components:
         isTaikun: true
         repositoryId: repositoryId
         name: name
+        passwordProtected: true
         disabled: true
       properties:
         repositoryId:
@@ -33876,6 +32648,8 @@ components:
         isTaikun:
           type: boolean
         hasCatalogApp:
+          type: boolean
+        passwordProtected:
           type: boolean
       required:
       - appRepoId
@@ -35629,6 +34403,7 @@ components:
           projectName: projectName
           linuxPrice: linuxPrice
           projectId: 5
+          localDiskSize: 2
           ram: 1.4658129805029452
           existsWindowsSpotPrice: true
           linuxSpotPrice: linuxSpotPrice
@@ -35643,10 +34418,11 @@ components:
           projectName: projectName
           linuxPrice: linuxPrice
           projectId: 5
+          localDiskSize: 2
           ram: 1.4658129805029452
           existsWindowsSpotPrice: true
           linuxSpotPrice: linuxSpotPrice
-        totalCount: 2
+        totalCount: 7
       properties:
         data:
           items:
@@ -35674,6 +34450,7 @@ components:
         projectName: projectName
         linuxPrice: linuxPrice
         projectId: 5
+        localDiskSize: 2
         ram: 1.4658129805029452
         existsWindowsSpotPrice: true
         linuxSpotPrice: linuxSpotPrice
@@ -35717,6 +34494,9 @@ components:
           type: string
         cloudType:
           $ref: '#/components/schemas/CloudType'
+        localDiskSize:
+          format: int32
+          type: integer
       required:
       - cloudType
       - cpu
@@ -37298,6 +36078,7 @@ components:
     CloudCredentialsForOrganizationEntity:
       additionalProperties: false
       example:
+        organizationId: 6
         isDefault: true
         projects:
         - name: name
@@ -37323,6 +36104,9 @@ components:
           $ref: '#/components/schemas/CloudType'
         isDefault:
           type: boolean
+        organizationId:
+          format: int32
+          type: integer
       required:
       - cloudType
       - fullName
@@ -37539,25 +36323,6 @@ components:
           nullable: true
           type: string
       type: object
-    ConfigMapDto:
-      additionalProperties: false
-      example:
-        namespace: namespace
-        metadataName: metadataName
-        age: age
-      properties:
-        metadataName:
-          type: string
-        namespace:
-          type: string
-        age:
-          nullable: true
-          type: string
-      required:
-      - age
-      - metadataName
-      - namespace
-      type: object
     ConfigMapSearchCommand:
       additionalProperties: false
       example:
@@ -37607,30 +36372,6 @@ components:
         totalCount:
           format: int32
           type: integer
-      type: object
-    ConfigMaps:
-      additionalProperties: false
-      example:
-        data:
-        - namespace: namespace
-          metadataName: metadataName
-          age: age
-        - namespace: namespace
-          metadataName: metadataName
-          age: age
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ConfigMapDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      required:
-      - data
-      - totalCount
       type: object
     ConsoleScreenshotCommand:
       additionalProperties: false
@@ -37696,36 +36437,31 @@ components:
       - isEu
       - name
       type: object
-    CrdListDto:
+    CpuLimitsDto:
       additionalProperties: false
       example:
-        listKind: listKind
-        metadataName: metadataName
-        specNameKind: specNameKind
-        age: age
-        group: group
-        labels: ""
+        maxClusterLimits: 6.027456183070403
+        defaultContainerRequest: 1.4658129805029452
+        defaultContainerLimit: 5.962133916683182
+        maxClusterRequests: 0.8008281904610115
       properties:
-        metadataName:
-          type: string
-        specNameKind:
-          type: string
-        listKind:
-          type: string
-        group:
-          type: string
-        labels:
-          nullable: true
-        age:
-          nullable: true
-          type: string
+        maxClusterRequests:
+          format: double
+          type: number
+        maxClusterLimits:
+          format: double
+          type: number
+        defaultContainerRequest:
+          format: double
+          type: number
+        defaultContainerLimit:
+          format: double
+          type: number
       required:
-      - age
-      - group
-      - labels
-      - listKind
-      - metadataName
-      - specNameKind
+      - defaultContainerLimit
+      - defaultContainerRequest
+      - maxClusterLimits
+      - maxClusterRequests
       type: object
     CrdSearchCommand:
       additionalProperties: false
@@ -37776,36 +36512,6 @@ components:
         totalCount:
           format: int32
           type: integer
-      type: object
-    Crds:
-      additionalProperties: false
-      example:
-        data:
-        - listKind: listKind
-          metadataName: metadataName
-          specNameKind: specNameKind
-          age: age
-          group: group
-          labels: ""
-        - listKind: listKind
-          metadataName: metadataName
-          specNameKind: specNameKind
-          age: age
-          group: group
-          labels: ""
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/CrdListDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      required:
-      - data
-      - totalCount
       type: object
     CreateAccessProfileCommand:
       additionalProperties: false
@@ -38478,52 +37184,51 @@ components:
         - flavors
         - flavors
         taikunLBFlavor: taikunLBFlavor
-        routerIdStartRange: 3
-        accessProfileId: 5
+        routerIdStartRange: 9
+        accessProfileId: 1
         opaProfileId: 5
-        maxSize: 1
+        maxSize: 7
         autoscalingEnabled: true
         autoscalingGroupName: autoscalingGroupName
-        organizationId: 0
         expiredAt: 2000-01-23T04:56:07.000+00:00
-        diskSize: 1.0246457001441578
-        kubernetesProfileId: 2
-        minSize: 7
+        diskSize: 1.2315135367772556
+        kubernetesProfileId: 5
+        minSize: 4
         cidr: cidr
         autoscalingSpotEnabled: true
         kubernetesVersion: kubernetesVersion
-        s3CredentialId: 1
+        s3CredentialId: 6
         isAutoUpgrade: true
         isKubernetes: true
-        routerIdEndRange: 2
+        routerIdEndRange: 3
         allowSpotVMs: true
-        aiCredentialId: 7
+        aiCredentialId: 2
         netMask: 1
         aiEnabled: true
         isMonitoringEnabled: true
         allowSpotWorkers: true
-        maxSpotPrice: 4.145608029883936
+        maxSpotPrice: 2.027123023002322
         users:
         - users
         - users
         autoscalingFlavor: autoscalingFlavor
-        alertingProfileId: 9
+        alertingProfileId: 7
         deleteOnExpiration: true
         saveAsTemplate: true
         templateName: templateName
         name: name
-        cloudCredentialId: 6
+        cloudCredentialId: 0
         isBackupEnabled: true
         allowFullSpotKubernetes: true
         serverTemplates:
         - flavor: flavor
-          diskSize: 6.84685269835264
+          diskSize: 1.4894159098541704
           role: Bastion
-          count: 7
+          count: 6
         - flavor: flavor
-          diskSize: 6.84685269835264
+          diskSize: 1.4894159098541704
           role: Bastion
-          count: 7
+          count: 6
       properties:
         name:
           nullable: true
@@ -38531,10 +37236,6 @@ components:
         kubernetesVersion:
           nullable: true
           type: string
-        organizationId:
-          format: int32
-          nullable: true
-          type: integer
         cloudCredentialId:
           format: int32
           type: integer
@@ -38905,6 +37606,7 @@ components:
         hypervisor: hypervisor
         name: name
         standAloneProfileId: 6
+        useLocalDisk: true
         projectId: 1
         username: username
       properties:
@@ -38955,6 +37657,8 @@ components:
         hypervisor:
           nullable: true
           type: string
+        useLocalDisk:
+          type: boolean
         standAloneVmDisks:
           items:
             $ref: '#/components/schemas/StandAloneVmDiskDto'
@@ -39084,9 +37788,33 @@ components:
         exposeHostname: exposeHostname
         deleteOnExpiration: true
         alertingProfileId: 1
+        ephemeralStorageLimits:
+          maxClusterLimits: 2.027123023002322
+          defaultContainerRequest: 7.386281948385884
+          resourceUnit: Cores
+          defaultContainerLimit: 4.145608029883936
+          maxClusterRequests: 3.616076749251911
         cloudId: 0
         name: name
+        ramLimits:
+          maxClusterLimits: 2.027123023002322
+          defaultContainerRequest: 7.386281948385884
+          resourceUnit: Cores
+          defaultContainerLimit: 4.145608029883936
+          maxClusterRequests: 3.616076749251911
+        workloadResources:
+          maxIngresses: 7
+          maxPvcs: 5
+          maxLoadBalancers: 9
+          maxPods: 5
+          maxTotalPvcSize: 2
         projectId: 6
+        cpuLimits:
+          maxClusterLimits: 2.027123023002322
+          defaultContainerRequest: 7.386281948385884
+          resourceUnit: Cores
+          defaultContainerLimit: 4.145608029883936
+          maxClusterRequests: 3.616076749251911
       properties:
         cloudId:
           format: int32
@@ -39096,7 +37824,6 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         expiredAt:
           format: date-time
@@ -39109,8 +37836,76 @@ components:
           nullable: true
           type: integer
         exposeHostname:
-          nullable: true
           type: string
+        workloadResources:
+          $ref: '#/components/schemas/CreateVirtualClusterWorkloadResources'
+        cpuLimits:
+          $ref: '#/components/schemas/CreateVirtualClusterResourceLimits'
+        ramLimits:
+          $ref: '#/components/schemas/CreateVirtualClusterResourceLimits'
+        ephemeralStorageLimits:
+          $ref: '#/components/schemas/CreateVirtualClusterResourceLimits'
+      type: object
+    CreateVirtualClusterResourceLimits:
+      additionalProperties: false
+      example:
+        maxClusterLimits: 2.027123023002322
+        defaultContainerRequest: 7.386281948385884
+        resourceUnit: Cores
+        defaultContainerLimit: 4.145608029883936
+        maxClusterRequests: 3.616076749251911
+      properties:
+        resourceUnit:
+          $ref: '#/components/schemas/EProjectResourceUnit'
+        maxClusterRequests:
+          format: double
+          type: number
+        maxClusterLimits:
+          format: double
+          type: number
+        defaultContainerLimit:
+          format: double
+          type: number
+        defaultContainerRequest:
+          format: double
+          type: number
+      required:
+      - defaultContainerLimit
+      - defaultContainerRequest
+      - maxClusterLimits
+      - maxClusterRequests
+      - resourceUnit
+      type: object
+    CreateVirtualClusterWorkloadResources:
+      additionalProperties: false
+      example:
+        maxIngresses: 7
+        maxPvcs: 5
+        maxLoadBalancers: 9
+        maxPods: 5
+        maxTotalPvcSize: 2
+      properties:
+        maxPods:
+          format: int32
+          type: integer
+        maxPvcs:
+          format: int32
+          type: integer
+        maxTotalPvcSize:
+          format: int64
+          type: integer
+        maxIngresses:
+          format: int32
+          type: integer
+        maxLoadBalancers:
+          format: int32
+          type: integer
+      required:
+      - maxIngresses
+      - maxLoadBalancers
+      - maxPods
+      - maxPvcs
+      - maxTotalPvcSize
       type: object
     CreateVsphereCommand:
       additionalProperties: false
@@ -40523,29 +39318,6 @@ components:
           format: int32
           type: integer
       type: object
-    DeploymentDto:
-      additionalProperties: false
-      example:
-        namespace: namespace
-        metadataName: metadataName
-        age: age
-        status: status
-      properties:
-        metadataName:
-          type: string
-        status:
-          type: string
-        namespace:
-          type: string
-        age:
-          nullable: true
-          type: string
-      required:
-      - age
-      - metadataName
-      - namespace
-      - status
-      type: object
     DeploymentEnableAiCommand:
       additionalProperties: false
       example:
@@ -40643,32 +39415,6 @@ components:
         totalCount:
           format: int32
           type: integer
-      type: object
-    Deployments:
-      additionalProperties: false
-      example:
-        data:
-        - namespace: namespace
-          metadataName: metadataName
-          age: age
-          status: status
-        - namespace: namespace
-          metadataName: metadataName
-          age: age
-          status: status
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/DeploymentDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      required:
-      - data
-      - totalCount
       type: object
     DescribeKubernetesResourceCommand:
       additionalProperties: false
@@ -40879,6 +39625,27 @@ components:
           format: int32
           type: integer
       type: object
+    DisableTwoFaManagementCommand:
+      additionalProperties: false
+      example:
+        verificationCode: verificationCode
+      properties:
+        verificationCode:
+          nullable: true
+          type: string
+      type: object
+    DisableTwoFactorAuthCommand:
+      additionalProperties: false
+      example:
+        code: code
+        isRecoveryCode: true
+      properties:
+        code:
+          nullable: true
+          type: string
+        isRecoveryCode:
+          type: boolean
+      type: object
     DnsCommand:
       additionalProperties: false
       example:
@@ -41044,6 +39811,23 @@ components:
           nullable: true
           type: string
       type: object
+    DuplicateProjectAppCheckerCommand:
+      additionalProperties: false
+      example:
+        name: name
+        namespace: namespace
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+      type: object
     ECloudCredentialType:
       enum:
       - AWS
@@ -41116,25 +39900,20 @@ components:
       - Job
       - NetworkPolicy
       - Namespace
-      type: string
-    EKubernetesState:
-      enum:
-      - Terminating
-      - Unknown
-      - Evicted
-      - CrashLoopBackOff
-      - ImagePullBackOff
-      - OOMKilled
-      - Completed
-      - Running
-      - InitNM
-      - InitError
+      - PersistentVolume
+      - LimitRange
+      - ResourceQuota
       type: string
     ENodeAction:
       enum:
       - Cordon
       - Uncordon
       - Drain
+      type: string
+    EProjectResourceUnit:
+      enum:
+      - Cores
+      - Bytes
       type: string
     EStsAction:
       enum:
@@ -41366,6 +40145,114 @@ components:
           nullable: true
           type: string
       type: object
+    EditVirtualClusterQuotasCommand:
+      additionalProperties: false
+      example:
+        vClusterId: 0
+        ephemeralStorageLimits:
+          maxClusterLimits: 9.301444243932576
+          defaultContainerRequest: 2.027123023002322
+          resourceUnit: Cores
+          defaultContainerLimit: 3.616076749251911
+          maxClusterRequests: 7.061401241503109
+        ramLimits:
+          maxClusterLimits: 9.301444243932576
+          defaultContainerRequest: 2.027123023002322
+          resourceUnit: Cores
+          defaultContainerLimit: 3.616076749251911
+          maxClusterRequests: 7.061401241503109
+        workloadResources:
+          maxIngresses: 5
+          maxPvcs: 1
+          maxLoadBalancers: 2
+          maxPods: 6
+          maxTotalPvcSize: 5
+        cpuLimits:
+          maxClusterLimits: 9.301444243932576
+          defaultContainerRequest: 2.027123023002322
+          resourceUnit: Cores
+          defaultContainerLimit: 3.616076749251911
+          maxClusterRequests: 7.061401241503109
+      properties:
+        vClusterId:
+          format: int32
+          type: integer
+        workloadResources:
+          $ref: '#/components/schemas/EditVirtualClusterWorkloadResources'
+        cpuLimits:
+          $ref: '#/components/schemas/EditVirtualClusterResourceLimits'
+        ramLimits:
+          $ref: '#/components/schemas/EditVirtualClusterResourceLimits'
+        ephemeralStorageLimits:
+          $ref: '#/components/schemas/EditVirtualClusterResourceLimits'
+      required:
+      - cpuLimits
+      - ephemeralStorageLimits
+      - ramLimits
+      - vClusterId
+      - workloadResources
+      type: object
+    EditVirtualClusterResourceLimits:
+      additionalProperties: false
+      example:
+        maxClusterLimits: 9.301444243932576
+        defaultContainerRequest: 2.027123023002322
+        resourceUnit: Cores
+        defaultContainerLimit: 3.616076749251911
+        maxClusterRequests: 7.061401241503109
+      properties:
+        resourceUnit:
+          $ref: '#/components/schemas/EProjectResourceUnit'
+        maxClusterRequests:
+          format: double
+          type: number
+        maxClusterLimits:
+          format: double
+          type: number
+        defaultContainerLimit:
+          format: double
+          type: number
+        defaultContainerRequest:
+          format: double
+          type: number
+      required:
+      - defaultContainerLimit
+      - defaultContainerRequest
+      - maxClusterLimits
+      - maxClusterRequests
+      - resourceUnit
+      type: object
+    EditVirtualClusterWorkloadResources:
+      additionalProperties: false
+      example:
+        maxIngresses: 5
+        maxPvcs: 1
+        maxLoadBalancers: 2
+        maxPods: 6
+        maxTotalPvcSize: 5
+      properties:
+        maxPods:
+          format: int32
+          type: integer
+        maxPvcs:
+          format: int32
+          type: integer
+        maxTotalPvcSize:
+          format: int64
+          type: integer
+        maxIngresses:
+          format: int32
+          type: integer
+        maxLoadBalancers:
+          format: int32
+          type: integer
+      required:
+      - maxIngresses
+      - maxLoadBalancers
+      - maxPods
+      - maxPvcs
+      - maxTotalPvcSize
+      type: object
     EnableAutoscalingCommand:
       additionalProperties: false
       example:
@@ -41398,6 +40285,9 @@ components:
         spotEnabled:
           type: boolean
       type: object
+    EnableTwoFaManagementCommand:
+      additionalProperties: false
+      type: object
     EndpointElements:
       additionalProperties: false
       example:
@@ -41428,6 +40318,43 @@ components:
       - id
       - method
       - path
+      type: object
+    EnsureCodesDownloadedCommand:
+      additionalProperties: false
+      example:
+        data:
+          recoveryCodes:
+          - recoveryCodes
+          - recoveryCodes
+      properties:
+        data:
+          $ref: '#/components/schemas/TwoFactorAuthVerifyResult'
+      type: object
+    EphemeralStorageLimitsDto:
+      additionalProperties: false
+      example:
+        maxClusterLimits: 2
+        defaultContainerRequest: 4
+        defaultContainerLimit: 7
+        maxClusterRequests: 3
+      properties:
+        maxClusterRequests:
+          format: int64
+          type: integer
+        maxClusterLimits:
+          format: int64
+          type: integer
+        defaultContainerRequest:
+          format: int64
+          type: integer
+        defaultContainerLimit:
+          format: int64
+          type: integer
+      required:
+      - defaultContainerLimit
+      - defaultContainerRequest
+      - maxClusterLimits
+      - maxClusterRequests
       type: object
     EstimatedInfracost:
       additionalProperties: false
@@ -42801,13 +41728,13 @@ components:
     GetToken:
       additionalProperties: false
       example:
+        isForcedToEnabled2Fa: true
         refreshTokenExpireTime: 2000-01-23T04:56:07.000+00:00
-        tempToken: tempToken
+        twoFaEnabled: true
         token: token
         refreshToken: refreshToken
       properties:
         token:
-          nullable: true
           type: string
         refreshToken:
           nullable: true
@@ -42815,9 +41742,14 @@ components:
         refreshTokenExpireTime:
           format: date-time
           type: string
-        tempToken:
+        twoFaEnabled:
           nullable: true
-          type: string
+          type: boolean
+        isForcedToEnabled2Fa:
+          nullable: true
+          type: boolean
+      required:
+      - token
       type: object
     GkeClusterDto:
       additionalProperties: false
@@ -43187,27 +42119,6 @@ components:
         periodDuration:
           $ref: '#/components/schemas/BillingPeriod'
       type: object
-    HelmCondition:
-      additionalProperties: false
-      example:
-        reason: reason
-        message: message
-        type: type
-        status: status
-      properties:
-        message:
-          nullable: true
-          type: string
-        reason:
-          nullable: true
-          type: string
-        status:
-          nullable: true
-          type: string
-        type:
-          nullable: true
-          type: string
-      type: object
     HelmCredentialCommand:
       additionalProperties: false
       example:
@@ -43224,198 +42135,6 @@ components:
         password:
           nullable: true
           type: string
-      type: object
-    HelmReleaseChart:
-      additionalProperties: false
-      example:
-        spec:
-          sourceRef:
-            kind: kind
-            name: name
-          chart: chart
-          version: version
-      properties:
-        spec:
-          $ref: '#/components/schemas/HelmReleaseChartSpec'
-      type: object
-    HelmReleaseChartSpec:
-      additionalProperties: false
-      example:
-        sourceRef:
-          kind: kind
-          name: name
-        chart: chart
-        version: version
-      properties:
-        chart:
-          nullable: true
-          type: string
-        version:
-          nullable: true
-          type: string
-        sourceRef:
-          $ref: '#/components/schemas/HelmReleaseSourceRef'
-      type: object
-    HelmReleaseDto:
-      additionalProperties: false
-      example:
-        metadata:
-          creationTimestamp: creationTimestamp
-          name: name
-          namespace: namespace
-        apiVersion: apiVersion
-        kind: kind
-        spec:
-          targetNamespace: targetNamespace
-          chart:
-            spec:
-              sourceRef:
-                kind: kind
-                name: name
-              chart: chart
-              version: version
-        status:
-          failures: 0
-          conditions:
-          - reason: reason
-            message: message
-            type: type
-            status: status
-          - reason: reason
-            message: message
-            type: type
-            status: status
-      properties:
-        apiVersion:
-          nullable: true
-          type: string
-        kind:
-          nullable: true
-          type: string
-        metadata:
-          $ref: '#/components/schemas/HelmReleaseMetaData'
-        spec:
-          $ref: '#/components/schemas/HelmReleaseSpec'
-        status:
-          $ref: '#/components/schemas/HelmStatus'
-      type: object
-    HelmReleaseMetaData:
-      additionalProperties: false
-      example:
-        creationTimestamp: creationTimestamp
-        name: name
-        namespace: namespace
-      properties:
-        creationTimestamp:
-          nullable: true
-          type: string
-        name:
-          nullable: true
-          type: string
-        namespace:
-          nullable: true
-          type: string
-      type: object
-    HelmReleaseSourceRef:
-      additionalProperties: false
-      example:
-        kind: kind
-        name: name
-      properties:
-        kind:
-          nullable: true
-          type: string
-        name:
-          nullable: true
-          type: string
-      type: object
-    HelmReleaseSpec:
-      additionalProperties: false
-      example:
-        targetNamespace: targetNamespace
-        chart:
-          spec:
-            sourceRef:
-              kind: kind
-              name: name
-            chart: chart
-            version: version
-      properties:
-        targetNamespace:
-          nullable: true
-          type: string
-        chart:
-          $ref: '#/components/schemas/HelmReleaseChart'
-      type: object
-    HelmReleasesList:
-      additionalProperties: false
-      example:
-        data:
-        - metadata:
-            creationTimestamp: creationTimestamp
-            name: name
-            namespace: namespace
-          apiVersion: apiVersion
-          kind: kind
-          spec:
-            targetNamespace: targetNamespace
-            chart:
-              spec:
-                sourceRef:
-                  kind: kind
-                  name: name
-                chart: chart
-                version: version
-          status:
-            failures: 0
-            conditions:
-            - reason: reason
-              message: message
-              type: type
-              status: status
-            - reason: reason
-              message: message
-              type: type
-              status: status
-        - metadata:
-            creationTimestamp: creationTimestamp
-            name: name
-            namespace: namespace
-          apiVersion: apiVersion
-          kind: kind
-          spec:
-            targetNamespace: targetNamespace
-            chart:
-              spec:
-                sourceRef:
-                  kind: kind
-                  name: name
-                chart: chart
-                version: version
-          status:
-            failures: 0
-            conditions:
-            - reason: reason
-              message: message
-              type: type
-              status: status
-            - reason: reason
-              message: message
-              type: type
-              status: status
-        totalCount: 6
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/HelmReleaseDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      required:
-      - data
-      - totalCount
       type: object
     HelmReleasesSearchCommand:
       additionalProperties: false
@@ -43465,29 +42184,6 @@ components:
           type: array
         totalCount:
           format: int32
-          type: integer
-      type: object
-    HelmStatus:
-      additionalProperties: false
-      example:
-        failures: 0
-        conditions:
-        - reason: reason
-          message: message
-          type: type
-          status: status
-        - reason: reason
-          message: message
-          type: type
-          status: status
-      properties:
-        conditions:
-          items:
-            $ref: '#/components/schemas/HelmCondition'
-          nullable: true
-          type: array
-        failures:
-          format: int64
           type: integer
       type: object
     HypervisorListCommand:
@@ -44518,30 +43214,6 @@ components:
           nullable: true
           type: string
       type: object
-    IngressDto:
-      additionalProperties: false
-      example:
-        hosts: hosts
-        namespace: namespace
-        metadataName: metadataName
-        age: age
-      properties:
-        metadataName:
-          type: string
-        hosts:
-          nullable: true
-          type: string
-        namespace:
-          type: string
-        age:
-          nullable: true
-          type: string
-      required:
-      - age
-      - hosts
-      - metadataName
-      - namespace
-      type: object
     IngressSearchCommand:
       additionalProperties: false
       example:
@@ -44591,32 +43263,6 @@ components:
         totalCount:
           format: int32
           type: integer
-      type: object
-    Ingresses:
-      additionalProperties: false
-      example:
-        data:
-        - hosts: hosts
-          namespace: namespace
-          metadataName: metadataName
-          age: age
-        - hosts: hosts
-          namespace: namespace
-          metadataName: metadataName
-          age: age
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/IngressDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      required:
-      - data
-      - totalCount
       type: object
     InstanceAppListDto:
       additionalProperties: false
@@ -45284,70 +43930,6 @@ components:
       - data
       - totalCount
       type: object
-    KubernetesCronJobDto:
-      additionalProperties: false
-      example:
-        suspend: true
-        schedule: schedule
-        lastSchedule: lastSchedule
-        namespace: namespace
-        metadataName: metadataName
-        age: age
-      properties:
-        metadataName:
-          type: string
-        lastSchedule:
-          nullable: true
-          type: string
-        suspend:
-          nullable: true
-          type: boolean
-        schedule:
-          nullable: true
-          type: string
-        namespace:
-          type: string
-        age:
-          nullable: true
-          type: string
-      required:
-      - age
-      - lastSchedule
-      - metadataName
-      - namespace
-      - schedule
-      - suspend
-      type: object
-    KubernetesCronJobsList:
-      additionalProperties: false
-      example:
-        data:
-        - suspend: true
-          schedule: schedule
-          lastSchedule: lastSchedule
-          namespace: namespace
-          metadataName: metadataName
-          age: age
-        - suspend: true
-          schedule: schedule
-          lastSchedule: lastSchedule
-          namespace: namespace
-          metadataName: metadataName
-          age: age
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/KubernetesCronJobDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      required:
-      - data
-      - totalCount
-      type: object
     KubernetesCronjobActionRequest:
       additionalProperties: false
       example:
@@ -45442,64 +44024,6 @@ components:
           nullable: true
           type: string
       type: object
-    KubernetesJobDto:
-      additionalProperties: false
-      example:
-        namespace: namespace
-        metadataName: metadataName
-        completions: 0
-        conditions: conditions
-        age: age
-      properties:
-        metadataName:
-          type: string
-        namespace:
-          type: string
-        age:
-          nullable: true
-          type: string
-        completions:
-          format: int32
-          nullable: true
-          type: integer
-        conditions:
-          nullable: true
-          type: string
-      required:
-      - age
-      - completions
-      - conditions
-      - metadataName
-      - namespace
-      type: object
-    KubernetesJobList:
-      additionalProperties: false
-      example:
-        data:
-        - namespace: namespace
-          metadataName: metadataName
-          completions: 0
-          conditions: conditions
-          age: age
-        - namespace: namespace
-          metadataName: metadataName
-          completions: 0
-          conditions: conditions
-          age: age
-        totalCount: 6
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/KubernetesJobDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      required:
-      - data
-      - totalCount
-      type: object
     KubernetesNodeLabelsDto:
       additionalProperties: false
       example:
@@ -45515,53 +44039,6 @@ components:
       required:
       - key
       - value
-      type: object
-    KubernetesNodeListDto:
-      additionalProperties: false
-      example:
-        reason:
-        - reason
-        - reason
-        metadataName: metadataName
-        type:
-        - type
-        - type
-        message:
-        - message
-        - message
-        status:
-        - status
-        - status
-      properties:
-        metadataName:
-          nullable: true
-          type: string
-        type:
-          items:
-            type: string
-          nullable: true
-          type: array
-        status:
-          items:
-            type: string
-          nullable: true
-          type: array
-        reason:
-          items:
-            type: string
-          nullable: true
-          type: array
-        message:
-          items:
-            type: string
-          nullable: true
-          type: array
-      required:
-      - message
-      - metadataName
-      - reason
-      - status
-      - type
       type: object
     KubernetesOverviewDto:
       additionalProperties: false
@@ -45862,27 +44339,48 @@ components:
     KubernetesQuotaListDto:
       additionalProperties: false
       example:
-        sumOfCpuUsage: 1.4658129805029452
-        podsCapacity: 5
-        sumOfRamInGb: 6.027456183070403
+        sumOfRamRequestsUsage: 9.301444243932576
+        sumOfRamRequestsInGb: 7.061401241503109
+        sumOfCpuUsage: 6.027456183070403
+        sumOfCpuRequestsUsage: 5.962133916683182
+        podsCapacity: 3
+        sumOfCpuRequests: 1.4658129805029452
+        sumOfRamInGb: 5.637376656633329
         podsTotalCount: 2
-        sumOfRamUsage: 5.962133916683182
+        sumOfRamUsage: 2.3021358869347655
         sumOfCpu: 0.8008281904610115
       properties:
         sumOfCpu:
           format: double
-          type: number
-        sumOfRamInGb:
-          format: double
+          nullable: true
           type: number
         sumOfCpuUsage:
           format: double
           type: number
+        sumOfCpuRequests:
+          format: double
+          nullable: true
+          type: number
+        sumOfCpuRequestsUsage:
+          format: double
+          type: number
+        sumOfRamInGb:
+          format: double
+          nullable: true
+          type: number
         sumOfRamUsage:
+          format: double
+          type: number
+        sumOfRamRequestsInGb:
+          format: double
+          nullable: true
+          type: number
+        sumOfRamRequestsUsage:
           format: double
           type: number
         podsCapacity:
           format: int32
+          nullable: true
           type: integer
         podsTotalCount:
           format: int32
@@ -45891,8 +44389,12 @@ components:
       - podsCapacity
       - podsTotalCount
       - sumOfCpu
+      - sumOfCpuRequests
+      - sumOfCpuRequestsUsage
       - sumOfCpuUsage
       - sumOfRamInGb
+      - sumOfRamRequestsInGb
+      - sumOfRamRequestsUsage
       - sumOfRamUsage
       type: object
     KubernetesResourcesDto:
@@ -45990,18 +44492,6 @@ components:
       - services
       - statefulSets
       - storageClasses
-      type: object
-    KubernetesStateDto:
-      additionalProperties: false
-      example:
-        reason: Terminating
-        status: status
-      properties:
-        status:
-          nullable: true
-          type: string
-        reason:
-          $ref: '#/components/schemas/EKubernetesState'
       type: object
     KubernetesVersionListDto:
       additionalProperties: false
@@ -46512,34 +45002,6 @@ components:
           nullable: true
           type: string
       type: object
-    NetworkPolicies:
-      additionalProperties: false
-      example:
-        data:
-        - podSelector:
-            key: podSelector
-          namespace: namespace
-          metadataName: metadataName
-          age: age
-        - podSelector:
-            key: podSelector
-          namespace: namespace
-          metadataName: metadataName
-          age: age
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/NetworkPolicyDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      required:
-      - data
-      - totalCount
-      type: object
     NetworkPoliciesSearchCommand:
       additionalProperties: false
       example:
@@ -46589,32 +45051,6 @@ components:
         totalCount:
           format: int32
           type: integer
-      type: object
-    NetworkPolicyDto:
-      additionalProperties: false
-      example:
-        podSelector:
-          key: podSelector
-        namespace: namespace
-        metadataName: metadataName
-        age: age
-      properties:
-        metadataName:
-          type: string
-        podSelector:
-          additionalProperties:
-            type: string
-          type: object
-        namespace:
-          type: string
-        age:
-          nullable: true
-          type: string
-      required:
-      - age
-      - metadataName
-      - namespace
-      - podSelector
       type: object
     NetworkSummary:
       additionalProperties: false
@@ -48848,67 +47284,6 @@ components:
           format: int32
           type: integer
       type: object
-    PodDisruptionDto:
-      additionalProperties: false
-      example:
-        createdAt: createdAt
-        allowedDisruptions: ""
-        minAvailable: ""
-        name: name
-        namespace: namespace
-        maxAvailable: ""
-      properties:
-        name:
-          type: string
-        namespace:
-          type: string
-        minAvailable:
-          nullable: true
-        maxAvailable:
-          nullable: true
-        allowedDisruptions:
-          nullable: true
-        createdAt:
-          nullable: true
-          type: string
-      required:
-      - allowedDisruptions
-      - createdAt
-      - maxAvailable
-      - minAvailable
-      - name
-      - namespace
-      type: object
-    PodDisruptions:
-      additionalProperties: false
-      example:
-        data:
-        - createdAt: createdAt
-          allowedDisruptions: ""
-          minAvailable: ""
-          name: name
-          namespace: namespace
-          maxAvailable: ""
-        - createdAt: createdAt
-          allowedDisruptions: ""
-          minAvailable: ""
-          name: name
-          namespace: namespace
-          maxAvailable: ""
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/PodDisruptionDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      required:
-      - data
-      - totalCount
-      type: object
     PodDto:
       additionalProperties: false
       example:
@@ -48948,99 +47323,6 @@ components:
       - phase
       - restartCount
       - status
-      type: object
-    PodListDto:
-      additionalProperties: false
-      example:
-        container:
-        - container
-        - container
-        node: node
-        restartCount: 0
-        namespace: namespace
-        metadataName: metadataName
-        state:
-          reason: Terminating
-          status: status
-        type: ""
-        age: age
-        status: status
-      properties:
-        metadataName:
-          type: string
-        restartCount:
-          format: int32
-          type: integer
-        namespace:
-          type: string
-        node:
-          nullable: true
-          type: string
-        age:
-          nullable: true
-          type: string
-        status:
-          nullable: true
-          type: string
-        container:
-          items:
-            type: string
-          type: array
-        state:
-          $ref: '#/components/schemas/KubernetesStateDto'
-        type:
-          nullable: true
-      required:
-      - age
-      - container
-      - metadataName
-      - namespace
-      - node
-      - restartCount
-      type: object
-    Pods:
-      additionalProperties: false
-      example:
-        data:
-        - container:
-          - container
-          - container
-          node: node
-          restartCount: 0
-          namespace: namespace
-          metadataName: metadataName
-          state:
-            reason: Terminating
-            status: status
-          type: ""
-          age: age
-          status: status
-        - container:
-          - container
-          - container
-          node: node
-          restartCount: 0
-          namespace: namespace
-          metadataName: metadataName
-          state:
-            reason: Terminating
-            status: status
-          type: ""
-          age: age
-          status: status
-        totalCount: 6
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/PodListDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      required:
-      - data
-      - totalCount
       type: object
     PodsSearchCommand:
       additionalProperties: false
@@ -52856,40 +51138,6 @@ components:
       - data
       - totalCount
       type: object
-    PvcDto:
-      additionalProperties: false
-      example:
-        phase: phase
-        size: size
-        storageClassName: storageClassName
-        namespace: namespace
-        metadataName: metadataName
-        age: age
-      properties:
-        metadataName:
-          type: string
-        phase:
-          nullable: true
-          type: string
-        size:
-          nullable: true
-          type: string
-        namespace:
-          type: string
-        storageClassName:
-          nullable: true
-          type: string
-        age:
-          nullable: true
-          type: string
-      required:
-      - age
-      - metadataName
-      - namespace
-      - phase
-      - size
-      - storageClassName
-      type: object
     PvcSearchCommand:
       additionalProperties: false
       example:
@@ -52940,35 +51188,31 @@ components:
           format: int32
           type: integer
       type: object
-    Pvcs:
+    RamLimitsDto:
       additionalProperties: false
       example:
-        data:
-        - phase: phase
-          size: size
-          storageClassName: storageClassName
-          namespace: namespace
-          metadataName: metadataName
-          age: age
-        - phase: phase
-          size: size
-          storageClassName: storageClassName
-          namespace: namespace
-          metadataName: metadataName
-          age: age
-        totalCount: 0
+        maxClusterLimits: 2
+        defaultContainerRequest: 7
+        defaultContainerLimit: 9
+        maxClusterRequests: 5
       properties:
-        data:
-          items:
-            $ref: '#/components/schemas/PvcDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
+        maxClusterRequests:
+          format: int64
+          type: integer
+        maxClusterLimits:
+          format: int64
+          type: integer
+        defaultContainerRequest:
+          format: int64
+          type: integer
+        defaultContainerLimit:
+          format: int64
           type: integer
       required:
-      - data
-      - totalCount
+      - defaultContainerLimit
+      - defaultContainerRequest
+      - maxClusterLimits
+      - maxClusterRequests
       type: object
     RebootServerCommand:
       additionalProperties: false
@@ -53271,56 +51515,49 @@ components:
           nullable: true
           type: string
       type: object
-    RestartDaemonSetCommand:
+    ResourcePresetDto:
       additionalProperties: false
       example:
+        ephemeralStorage:
+          maxClusterLimits: 2
+          defaultContainerRequest: 4
+          defaultContainerLimit: 7
+          maxClusterRequests: 3
         name: name
-        namespace: namespace
-        projectId: 0
+        cpu:
+          maxClusterLimits: 6.027456183070403
+          defaultContainerRequest: 1.4658129805029452
+          defaultContainerLimit: 5.962133916683182
+          maxClusterRequests: 0.8008281904610115
+        workloadResources:
+          maxIngresses: 6
+          maxPvcs: 1
+          maxLoadBalancers: 7
+          maxPods: 1
+          maxTotalPvcSize: 1
+        ram:
+          maxClusterLimits: 2
+          defaultContainerRequest: 7
+          defaultContainerLimit: 9
+          maxClusterRequests: 5
       properties:
-        projectId:
-          format: int32
-          type: integer
         name:
           nullable: true
           type: string
-        namespace:
-          nullable: true
-          type: string
-      type: object
-    RestartDeploymentCommand:
-      additionalProperties: false
-      example:
-        name: name
-        namespace: namespace
-        projectId: 0
-      properties:
-        projectId:
-          format: int32
-          type: integer
-        name:
-          nullable: true
-          type: string
-        namespace:
-          nullable: true
-          type: string
-      type: object
-    RestartStsCommand:
-      additionalProperties: false
-      example:
-        name: name
-        namespace: namespace
-        projectId: 0
-      properties:
-        projectId:
-          format: int32
-          type: integer
-        name:
-          nullable: true
-          type: string
-        namespace:
-          nullable: true
-          type: string
+        cpu:
+          $ref: '#/components/schemas/CpuLimitsDto'
+        ram:
+          $ref: '#/components/schemas/RamLimitsDto'
+        ephemeralStorage:
+          $ref: '#/components/schemas/EphemeralStorageLimitsDto'
+        workloadResources:
+          $ref: '#/components/schemas/WorkloadResourceLimitsDto'
+      required:
+      - cpu
+      - ephemeralStorage
+      - name
+      - ram
+      - workloadResources
       type: object
     RestoreBackupCommand:
       additionalProperties: false
@@ -53444,25 +51681,6 @@ components:
           nullable: true
           type: integer
       type: object
-    SecretDto:
-      additionalProperties: false
-      example:
-        namespace: namespace
-        metadataName: metadataName
-        age: age
-      properties:
-        metadataName:
-          type: string
-        namespace:
-          type: string
-        age:
-          nullable: true
-          type: string
-      required:
-      - age
-      - metadataName
-      - namespace
-      type: object
     SecretSearchCommand:
       additionalProperties: false
       example:
@@ -53512,30 +51730,6 @@ components:
         totalCount:
           format: int32
           type: integer
-      type: object
-    Secrets:
-      additionalProperties: false
-      example:
-        data:
-        - namespace: namespace
-          metadataName: metadataName
-          age: age
-        - namespace: namespace
-          metadataName: metadataName
-          age: age
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/SecretDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      required:
-      - data
-      - totalCount
       type: object
     SecurityGroupListDto:
       additionalProperties: false
@@ -54066,6 +52260,7 @@ components:
         wasmEnabled: true
         hypervisor: hypervisor
         name: name
+        useLocalDisk: true
         kubernetesNodeLabels:
         - value: value
           key: key
@@ -54121,6 +52316,8 @@ components:
           format: int32
           nullable: true
           type: integer
+        useLocalDisk:
+          type: boolean
       type: object
     ServerListDto:
       additionalProperties: false
@@ -54301,9 +52498,9 @@ components:
       additionalProperties: false
       example:
         flavor: flavor
-        diskSize: 6.84685269835264
+        diskSize: 1.4894159098541704
         role: Bastion
-        count: 7
+        count: 6
       properties:
         role:
           $ref: '#/components/schemas/CloudRole'
@@ -54670,34 +52867,6 @@ components:
           nullable: true
           type: string
       type: object
-    ServiceDto:
-      additionalProperties: false
-      example:
-        ip: ""
-        namespace: namespace
-        metadataName: metadataName
-        type: type
-        age: age
-      properties:
-        metadataName:
-          type: string
-        namespace:
-          type: string
-        age:
-          nullable: true
-          type: string
-        type:
-          nullable: true
-          type: string
-        ip:
-          nullable: true
-      required:
-      - age
-      - ip
-      - metadataName
-      - namespace
-      - type
-      type: object
     ServiceSearchCommand:
       additionalProperties: false
       example:
@@ -54747,34 +52916,6 @@ components:
         totalCount:
           format: int32
           type: integer
-      type: object
-    Services:
-      additionalProperties: false
-      example:
-        data:
-        - ip: ""
-          namespace: namespace
-          metadataName: metadataName
-          type: type
-          age: age
-        - ip: ""
-          namespace: namespace
-          metadataName: metadataName
-          type: type
-          age: age
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ServiceDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      required:
-      - data
-      - totalCount
       type: object
     SetTicketPriorityCommand:
       additionalProperties: false
@@ -56200,71 +54341,6 @@ components:
           format: int32
           type: integer
       type: object
-    StorageClassDto:
-      additionalProperties: false
-      example:
-        volumeBindingMode: volumeBindingMode
-        provisioner: provisioner
-        reclaimPolicy: reclaimPolicy
-        allowVolumeExpansion: true
-        metadataName: metadataName
-        age: age
-      properties:
-        metadataName:
-          type: string
-        age:
-          nullable: true
-          type: string
-        provisioner:
-          nullable: true
-          type: string
-        reclaimPolicy:
-          nullable: true
-          type: string
-        volumeBindingMode:
-          nullable: true
-          type: string
-        allowVolumeExpansion:
-          nullable: true
-          type: boolean
-      required:
-      - age
-      - allowVolumeExpansion
-      - metadataName
-      - provisioner
-      - reclaimPolicy
-      - volumeBindingMode
-      type: object
-    StorageClasses:
-      additionalProperties: false
-      example:
-        data:
-        - volumeBindingMode: volumeBindingMode
-          provisioner: provisioner
-          reclaimPolicy: reclaimPolicy
-          allowVolumeExpansion: true
-          metadataName: metadataName
-          age: age
-        - volumeBindingMode: volumeBindingMode
-          provisioner: provisioner
-          reclaimPolicy: reclaimPolicy
-          allowVolumeExpansion: true
-          metadataName: metadataName
-          age: age
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/StorageClassDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      required:
-      - data
-      - totalCount
-      type: object
     StorageClassesSearchCommand:
       additionalProperties: false
       example:
@@ -56361,55 +54437,6 @@ components:
       - name
       - namespace
       - projectId
-      type: object
-    StsDto:
-      additionalProperties: false
-      example:
-        namespace: namespace
-        metadataName: metadataName
-        age: age
-        status: status
-      properties:
-        metadataName:
-          type: string
-        status:
-          type: string
-        namespace:
-          type: string
-        age:
-          nullable: true
-          type: string
-      required:
-      - age
-      - metadataName
-      - namespace
-      - status
-      type: object
-    StsList:
-      additionalProperties: false
-      example:
-        data:
-        - namespace: namespace
-          metadataName: metadataName
-          age: age
-          status: status
-        - namespace: namespace
-          metadataName: metadataName
-          age: age
-          status: status
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/StsDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      required:
-      - data
-      - totalCount
       type: object
     StsSearchCommand:
       additionalProperties: false
@@ -56833,6 +54860,65 @@ components:
           nullable: true
           type: string
       type: object
+    TwoFactorAuthLoginCommand:
+      additionalProperties: false
+      example:
+        verificationCode: verificationCode
+      properties:
+        verificationCode:
+          nullable: true
+          type: string
+      type: object
+    TwoFactorAuthRecoveryCommand:
+      additionalProperties: false
+      example:
+        recoveryCode: recoveryCode
+      properties:
+        recoveryCode:
+          nullable: true
+          type: string
+      type: object
+    TwoFactorAuthSetupCommand:
+      additionalProperties: false
+      type: object
+    TwoFactorAuthSetupResult:
+      additionalProperties: false
+      example:
+        sharedKey: sharedKey
+        qrCodeUri: qrCodeUri
+      properties:
+        sharedKey:
+          nullable: true
+          type: string
+        qrCodeUri:
+          nullable: true
+          type: string
+      required:
+      - qrCodeUri
+      - sharedKey
+      type: object
+    TwoFactorAuthVerifyCommand:
+      additionalProperties: false
+      example:
+        verificationCode: verificationCode
+      properties:
+        verificationCode:
+          nullable: true
+          type: string
+      type: object
+    TwoFactorAuthVerifyResult:
+      additionalProperties: false
+      example:
+        recoveryCodes:
+        - recoveryCodes
+        - recoveryCodes
+      properties:
+        recoveryCodes:
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
     UnbindAppRepositoryCommand:
       additionalProperties: false
       example:
@@ -56935,6 +55021,14 @@ components:
             type: integer
           nullable: true
           type: array
+      type: object
+    UninstallProjectAppResult:
+      additionalProperties: false
+      example:
+        isJobSkipped: true
+      properties:
+        isJobSkipped:
+          type: boolean
       type: object
     UnshelveStandaloneVmCommand:
       additionalProperties: false
@@ -57204,6 +55298,28 @@ components:
           format: double
           type: number
       type: object
+    UpdateRepoPasswordCommand:
+      additionalProperties: false
+      example:
+        organizationId: 0
+        password: password
+        repositoryId: repositoryId
+        username: username
+      properties:
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+        repositoryId:
+          nullable: true
+          type: string
+        organizationId:
+          format: int32
+          nullable: true
+          type: integer
+      type: object
     UpdateSlackConfigurationDto:
       additionalProperties: false
       example:
@@ -57394,6 +55510,7 @@ components:
           isLocked: true
           id: id
           email: email
+          isForcedToEnableTwoFactorAuthentication: true
           owner: true
           is2FAEnabled: true
           organizationName: organizationName
@@ -57464,6 +55581,7 @@ components:
         isLocked: true
         id: id
         email: email
+        isForcedToEnableTwoFactorAuthentication: true
         owner: true
         is2FAEnabled: true
         organizationName: organizationName
@@ -57541,6 +55659,8 @@ components:
         lastLoginAt:
           nullable: true
           type: string
+        isForcedToEnableTwoFactorAuthentication:
+          type: boolean
         boundProjects:
           items:
             $ref: '#/components/schemas/ProjectDto'
@@ -57562,6 +55682,7 @@ components:
       - isEligibleUpdateSubscription
       - isEmailConfirmed
       - isEmailNotificationEnabled
+      - isForcedToEnableTwoFactorAuthentication
       - isForcedToResetPassword
       - isLocked
       - isNewOrganization
@@ -57848,6 +55969,7 @@ components:
           isLocked: true
           id: id
           email: email
+          isForcedToEnableTwoFactorAuthentication: true
           owner: true
           is2FAEnabled: true
           organizationName: organizationName
@@ -57884,6 +56006,7 @@ components:
           isLocked: true
           id: id
           email: email
+          isForcedToEnableTwoFactorAuthentication: true
           owner: true
           is2FAEnabled: true
           organizationName: organizationName
@@ -58055,6 +56178,12 @@ components:
             - reasons
             hidden: true
             enable: true
+          ephemeralStorageLimits:
+            maxClusterLimits: 4.145608029883936
+            defaultContainerRequest: 1.2315135367772556
+            resourceUnit: resourceUnit
+            defaultContainerLimit: 7.386281948385884
+            maxClusterRequests: 2.027123023002322
           organizationId: 6
           createdAt: createdAt
           expiredAt: expiredAt
@@ -58081,6 +56210,18 @@ components:
           lastModifiedBy: lastModifiedBy
           health: "Null"
           isVirtualCluster: true
+          ramLimits:
+            maxClusterLimits: 4.145608029883936
+            defaultContainerRequest: 1.2315135367772556
+            resourceUnit: resourceUnit
+            defaultContainerLimit: 7.386281948385884
+            maxClusterRequests: 2.027123023002322
+          workloadResources:
+            maxIngresses: 9
+            maxPvcs: 2
+            maxLoadBalancers: 3
+            maxPods: 5
+            maxTotalPvcSize: 7
           hasKubeConfigFile: true
           kubeInfoButton:
             reasons:
@@ -58100,6 +56241,12 @@ components:
             - reasons
             hidden: true
             enable: true
+          cpuLimits:
+            maxClusterLimits: 4.145608029883936
+            defaultContainerRequest: 1.2315135367772556
+            resourceUnit: resourceUnit
+            defaultContainerLimit: 7.386281948385884
+            maxClusterRequests: 2.027123023002322
           isMaintenanceModeEnabled: true
           status: "Null"
         - deleteButton:
@@ -58114,6 +56261,12 @@ components:
             - reasons
             hidden: true
             enable: true
+          ephemeralStorageLimits:
+            maxClusterLimits: 4.145608029883936
+            defaultContainerRequest: 1.2315135367772556
+            resourceUnit: resourceUnit
+            defaultContainerLimit: 7.386281948385884
+            maxClusterRequests: 2.027123023002322
           organizationId: 6
           createdAt: createdAt
           expiredAt: expiredAt
@@ -58140,6 +56293,18 @@ components:
           lastModifiedBy: lastModifiedBy
           health: "Null"
           isVirtualCluster: true
+          ramLimits:
+            maxClusterLimits: 4.145608029883936
+            defaultContainerRequest: 1.2315135367772556
+            resourceUnit: resourceUnit
+            defaultContainerLimit: 7.386281948385884
+            maxClusterRequests: 2.027123023002322
+          workloadResources:
+            maxIngresses: 9
+            maxPvcs: 2
+            maxLoadBalancers: 3
+            maxPods: 5
+            maxTotalPvcSize: 7
           hasKubeConfigFile: true
           kubeInfoButton:
             reasons:
@@ -58159,6 +56324,12 @@ components:
             - reasons
             hidden: true
             enable: true
+          cpuLimits:
+            maxClusterLimits: 4.145608029883936
+            defaultContainerRequest: 1.2315135367772556
+            resourceUnit: resourceUnit
+            defaultContainerLimit: 7.386281948385884
+            maxClusterRequests: 2.027123023002322
           isMaintenanceModeEnabled: true
           status: "Null"
         project:
@@ -58189,7 +56360,7 @@ components:
           projectCloudRevision: 1
           status: "Null"
           isMaintenanceModeEnabled: true
-        totalCount: 5
+        totalCount: 1
       properties:
         data:
           items:
@@ -58221,6 +56392,12 @@ components:
           - reasons
           hidden: true
           enable: true
+        ephemeralStorageLimits:
+          maxClusterLimits: 4.145608029883936
+          defaultContainerRequest: 1.2315135367772556
+          resourceUnit: resourceUnit
+          defaultContainerLimit: 7.386281948385884
+          maxClusterRequests: 2.027123023002322
         organizationId: 6
         createdAt: createdAt
         expiredAt: expiredAt
@@ -58247,6 +56424,18 @@ components:
         lastModifiedBy: lastModifiedBy
         health: "Null"
         isVirtualCluster: true
+        ramLimits:
+          maxClusterLimits: 4.145608029883936
+          defaultContainerRequest: 1.2315135367772556
+          resourceUnit: resourceUnit
+          defaultContainerLimit: 7.386281948385884
+          maxClusterRequests: 2.027123023002322
+        workloadResources:
+          maxIngresses: 9
+          maxPvcs: 2
+          maxLoadBalancers: 3
+          maxPods: 5
+          maxTotalPvcSize: 7
         hasKubeConfigFile: true
         kubeInfoButton:
           reasons:
@@ -58266,6 +56455,12 @@ components:
           - reasons
           hidden: true
           enable: true
+        cpuLimits:
+          maxClusterLimits: 4.145608029883936
+          defaultContainerRequest: 1.2315135367772556
+          resourceUnit: resourceUnit
+          defaultContainerLimit: 7.386281948385884
+          maxClusterRequests: 2.027123023002322
         isMaintenanceModeEnabled: true
         status: "Null"
       properties:
@@ -58321,6 +56516,14 @@ components:
           $ref: '#/components/schemas/ProjectStatus'
         health:
           $ref: '#/components/schemas/ProjectHealth'
+        workloadResources:
+          $ref: '#/components/schemas/VClusterWorkloadResourcesListDto'
+        cpuLimits:
+          $ref: '#/components/schemas/VClusterResourceLimitsListDto'
+        ramLimits:
+          $ref: '#/components/schemas/VClusterResourceLimitsListDto'
+        ephemeralStorageLimits:
+          $ref: '#/components/schemas/VClusterResourceLimitsListDto'
         lockButton:
           $ref: '#/components/schemas/ButtonStatusDto'
         unlockButton:
@@ -58364,6 +56567,68 @@ components:
       - unlockButton
       - wasmEnabled
       type: object
+    VClusterResourceLimitsListDto:
+      additionalProperties: false
+      example:
+        maxClusterLimits: 4.145608029883936
+        defaultContainerRequest: 1.2315135367772556
+        resourceUnit: resourceUnit
+        defaultContainerLimit: 7.386281948385884
+        maxClusterRequests: 2.027123023002322
+      properties:
+        resourceUnit:
+          nullable: true
+          type: string
+        maxClusterRequests:
+          format: double
+          type: number
+        maxClusterLimits:
+          format: double
+          type: number
+        defaultContainerLimit:
+          format: double
+          type: number
+        defaultContainerRequest:
+          format: double
+          type: number
+      required:
+      - defaultContainerLimit
+      - defaultContainerRequest
+      - maxClusterLimits
+      - maxClusterRequests
+      - resourceUnit
+      type: object
+    VClusterWorkloadResourcesListDto:
+      additionalProperties: false
+      example:
+        maxIngresses: 9
+        maxPvcs: 2
+        maxLoadBalancers: 3
+        maxPods: 5
+        maxTotalPvcSize: 7
+      properties:
+        maxPods:
+          format: int32
+          type: integer
+        maxPvcs:
+          format: int32
+          type: integer
+        maxTotalPvcSize:
+          format: int64
+          type: integer
+        maxIngresses:
+          format: int32
+          type: integer
+        maxLoadBalancers:
+          format: int32
+          type: integer
+      required:
+      - maxIngresses
+      - maxLoadBalancers
+      - maxPods
+      - maxPvcs
+      - maxTotalPvcSize
+      type: object
     ValidateVsphereCommand:
       additionalProperties: false
       example:
@@ -58406,6 +56671,147 @@ components:
         url:
           nullable: true
           type: string
+      type: object
+    VirtualClusterDisableAiCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    VirtualClusterDisableBackupCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    VirtualClusterDisableMonitoringCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    VirtualClusterDisableOpaCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    VirtualClusterEnableAiCommand:
+      additionalProperties: false
+      example:
+        aiCredentialId: 6
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        aiCredentialId:
+          format: int32
+          type: integer
+      type: object
+    VirtualClusterEnableBackupCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+        backupCredentialId: 6
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        backupCredentialId:
+          format: int32
+          type: integer
+      type: object
+    VirtualClusterEnableMonitoringCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    VirtualClusterEnableOpaCommand:
+      additionalProperties: false
+      example:
+        opaProfileId: 6
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        opaProfileId:
+          format: int32
+          type: integer
+      type: object
+    VirtualClusterQuotasDto:
+      additionalProperties: false
+      example:
+        presets:
+        - ephemeralStorage:
+            maxClusterLimits: 2
+            defaultContainerRequest: 4
+            defaultContainerLimit: 7
+            maxClusterRequests: 3
+          name: name
+          cpu:
+            maxClusterLimits: 6.027456183070403
+            defaultContainerRequest: 1.4658129805029452
+            defaultContainerLimit: 5.962133916683182
+            maxClusterRequests: 0.8008281904610115
+          workloadResources:
+            maxIngresses: 6
+            maxPvcs: 1
+            maxLoadBalancers: 7
+            maxPods: 1
+            maxTotalPvcSize: 1
+          ram:
+            maxClusterLimits: 2
+            defaultContainerRequest: 7
+            defaultContainerLimit: 9
+            maxClusterRequests: 5
+        - ephemeralStorage:
+            maxClusterLimits: 2
+            defaultContainerRequest: 4
+            defaultContainerLimit: 7
+            maxClusterRequests: 3
+          name: name
+          cpu:
+            maxClusterLimits: 6.027456183070403
+            defaultContainerRequest: 1.4658129805029452
+            defaultContainerLimit: 5.962133916683182
+            maxClusterRequests: 0.8008281904610115
+          workloadResources:
+            maxIngresses: 6
+            maxPvcs: 1
+            maxLoadBalancers: 7
+            maxPods: 1
+            maxTotalPvcSize: 1
+          ram:
+            maxClusterLimits: 2
+            defaultContainerRequest: 7
+            defaultContainerLimit: 9
+            maxClusterRequests: 5
+      properties:
+        presets:
+          items:
+            $ref: '#/components/schemas/ResourcePresetDto'
+          nullable: true
+          type: array
+      required:
+      - presets
       type: object
     VmConsoleScreenshotCommand:
       additionalProperties: false
@@ -58872,6 +57278,37 @@ components:
           format: binary
           nullable: true
           type: string
+      type: object
+    WorkloadResourceLimitsDto:
+      additionalProperties: false
+      example:
+        maxIngresses: 6
+        maxPvcs: 1
+        maxLoadBalancers: 7
+        maxPods: 1
+        maxTotalPvcSize: 1
+      properties:
+        maxPods:
+          format: int32
+          type: integer
+        maxPvcs:
+          format: int32
+          type: integer
+        maxTotalPvcSize:
+          format: int64
+          type: integer
+        maxIngresses:
+          format: int32
+          type: integer
+        maxLoadBalancers:
+          format: int32
+          type: integer
+      required:
+      - maxIngresses
+      - maxLoadBalancers
+      - maxPods
+      - maxPvcs
+      - maxTotalPvcSize
       type: object
     YamlValidatorCommand:
       additionalProperties: false
