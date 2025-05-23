@@ -27,6 +27,7 @@ type VClusterActionVisibilityDto struct {
 	ProjectMaintenanceMode ButtonStatusDto `json:"projectMaintenanceMode"`
 	Lock ButtonStatusDto `json:"lock"`
 	Unlock ButtonStatusDto `json:"unlock"`
+	QuotaPresets ButtonStatusDto `json:"quotaPresets"`
 }
 
 type _VClusterActionVisibilityDto VClusterActionVisibilityDto
@@ -35,13 +36,14 @@ type _VClusterActionVisibilityDto VClusterActionVisibilityDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVClusterActionVisibilityDto(attachAlertingProfile ButtonStatusDto, detachAlertingProfile ButtonStatusDto, projectMaintenanceMode ButtonStatusDto, lock ButtonStatusDto, unlock ButtonStatusDto) *VClusterActionVisibilityDto {
+func NewVClusterActionVisibilityDto(attachAlertingProfile ButtonStatusDto, detachAlertingProfile ButtonStatusDto, projectMaintenanceMode ButtonStatusDto, lock ButtonStatusDto, unlock ButtonStatusDto, quotaPresets ButtonStatusDto) *VClusterActionVisibilityDto {
 	this := VClusterActionVisibilityDto{}
 	this.AttachAlertingProfile = attachAlertingProfile
 	this.DetachAlertingProfile = detachAlertingProfile
 	this.ProjectMaintenanceMode = projectMaintenanceMode
 	this.Lock = lock
 	this.Unlock = unlock
+	this.QuotaPresets = quotaPresets
 	return &this
 }
 
@@ -173,6 +175,30 @@ func (o *VClusterActionVisibilityDto) SetUnlock(v ButtonStatusDto) {
 	o.Unlock = v
 }
 
+// GetQuotaPresets returns the QuotaPresets field value
+func (o *VClusterActionVisibilityDto) GetQuotaPresets() ButtonStatusDto {
+	if o == nil {
+		var ret ButtonStatusDto
+		return ret
+	}
+
+	return o.QuotaPresets
+}
+
+// GetQuotaPresetsOk returns a tuple with the QuotaPresets field value
+// and a boolean to check if the value has been set.
+func (o *VClusterActionVisibilityDto) GetQuotaPresetsOk() (*ButtonStatusDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.QuotaPresets, true
+}
+
+// SetQuotaPresets sets field value
+func (o *VClusterActionVisibilityDto) SetQuotaPresets(v ButtonStatusDto) {
+	o.QuotaPresets = v
+}
+
 func (o VClusterActionVisibilityDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -188,6 +214,7 @@ func (o VClusterActionVisibilityDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["projectMaintenanceMode"] = o.ProjectMaintenanceMode
 	toSerialize["lock"] = o.Lock
 	toSerialize["unlock"] = o.Unlock
+	toSerialize["quotaPresets"] = o.QuotaPresets
 	return toSerialize, nil
 }
 
@@ -201,6 +228,7 @@ func (o *VClusterActionVisibilityDto) UnmarshalJSON(data []byte) (err error) {
 		"projectMaintenanceMode",
 		"lock",
 		"unlock",
+		"quotaPresets",
 	}
 
 	allProperties := make(map[string]interface{})
