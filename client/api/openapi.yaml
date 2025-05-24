@@ -5145,8 +5145,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-05-23T00:22:01.3995741Z
-                  createdAt: 2025-05-23T00:22:01.3995741Z
+                  lastValidated: 2025-05-24T00:21:04.9269403Z
+                  createdAt: 2025-05-24T00:21:04.9269403Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5251,14 +5251,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-05-23T00:22:01.3995741Z
+                    lastBackup: 2025-05-24T00:21:04.9269403Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-05-23T00:22:01.3995741Z
+                  createdAt: 2025-05-24T00:21:04.9269403Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-05-23T00:22:01.3995741Z
+                  lastBackup: 2025-05-24T00:21:04.9269403Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5363,8 +5363,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-05-23T00:22:01.3995741Z
-                  expiration: 2025-05-23T00:22:01.3995741Z
+                  createdAt: 2025-05-24T00:21:04.9269403Z
+                  expiration: 2025-05-24T00:21:04.9269403Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5468,7 +5468,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-05-23T00:22:01.3995741Z
+                  createdAt: 2025-05-24T00:21:04.9269403Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5578,9 +5578,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-05-23T00:22:01.3995741+00:00
-                  startTimeStamp: 2025-05-23T00:22:01.3995741+00:00
-                  createdAt: 2025-05-23T00:22:01.3995741Z
+                  completionDateTime: 2025-05-24T00:21:04.9269403+00:00
+                  startTimeStamp: 2025-05-24T00:21:04.9269403+00:00
+                  createdAt: 2025-05-24T00:21:04.9269403Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -24515,10 +24515,6 @@ paths:
               $ref: '#/components/schemas/EditSecurityGroupCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -24598,7 +24594,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-      summary: Create standalonealone profile security group
+      summary: Create standalone profile security group
       tags:
       - Security group
   /api/v1/securitygroup/list/{standAloneProfileId}:
@@ -24669,8 +24665,6 @@ paths:
         style: simple
       responses:
         "200":
-          content:
-            application/json: {}
           description: OK
         "400":
           content:
@@ -26971,10 +26965,6 @@ paths:
               $ref: '#/components/schemas/UpdateStandaloneVmDiskSizeCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -56114,6 +56104,12 @@ components:
     VClusterActionVisibilityDto:
       additionalProperties: false
       example:
+        quotaPresets:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
         projectMaintenanceMode:
           reasons:
           - reasons
@@ -56155,11 +56151,14 @@ components:
           $ref: '#/components/schemas/ButtonStatusDto'
         unlock:
           $ref: '#/components/schemas/ButtonStatusDto'
+        quotaPresets:
+          $ref: '#/components/schemas/ButtonStatusDto'
       required:
       - attachAlertingProfile
       - detachAlertingProfile
       - lock
       - projectMaintenanceMode
+      - quotaPresets
       - unlock
       type: object
     VClusterList:

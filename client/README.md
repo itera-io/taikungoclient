@@ -497,7 +497,7 @@ Class | Method | HTTP request | Description
 *SearchAPI* | [**SearchStorageClasses**](docs/SearchAPI.md#searchstorageclasses) | **Post** /api/v1/search/storage-classes | Global search for storage classes.
 *SearchAPI* | [**SearchSts**](docs/SearchAPI.md#searchsts) | **Post** /api/v1/search/sts | Global search for sts
 *SearchAPI* | [**SearchUsers**](docs/SearchAPI.md#searchusers) | **Post** /api/v1/search/users | Global search for users
-*SecurityGroupAPI* | [**SecuritygroupCreate**](docs/SecurityGroupAPI.md#securitygroupcreate) | **Post** /api/v1/securitygroup/create | Create standalonealone profile security group
+*SecurityGroupAPI* | [**SecuritygroupCreate**](docs/SecurityGroupAPI.md#securitygroupcreate) | **Post** /api/v1/securitygroup/create | Create standalone profile security group
 *SecurityGroupAPI* | [**SecuritygroupDelete**](docs/SecurityGroupAPI.md#securitygroupdelete) | **Delete** /api/v1/securitygroup/{id} | Delete standalone profile security group
 *SecurityGroupAPI* | [**SecuritygroupEdit**](docs/SecurityGroupAPI.md#securitygroupedit) | **Put** /api/v1/securitygroup/edit | Edit standalone profile security group
 *SecurityGroupAPI* | [**SecuritygroupList**](docs/SecurityGroupAPI.md#securitygrouplist) | **Get** /api/v1/securitygroup/list/{standAloneProfileId} | List stand alone security group by profile id
