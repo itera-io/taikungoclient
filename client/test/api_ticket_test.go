@@ -26,10 +26,9 @@ func Test_taikuncore_TicketAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.TicketAPI.TicketArchive(context.Background()).Execute()
+		httpRes, err := apiClient.TicketAPI.TicketArchive(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -38,10 +37,9 @@ func Test_taikuncore_TicketAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.TicketAPI.TicketClose(context.Background()).Execute()
+		httpRes, err := apiClient.TicketAPI.TicketClose(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -50,10 +48,9 @@ func Test_taikuncore_TicketAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.TicketAPI.TicketCreate(context.Background()).Execute()
+		httpRes, err := apiClient.TicketAPI.TicketCreate(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -88,10 +85,9 @@ func Test_taikuncore_TicketAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.TicketAPI.TicketEdit(context.Background()).Execute()
+		httpRes, err := apiClient.TicketAPI.TicketEdit(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -100,10 +96,9 @@ func Test_taikuncore_TicketAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.TicketAPI.TicketEditMessage(context.Background()).Execute()
+		httpRes, err := apiClient.TicketAPI.TicketEditMessage(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -138,10 +133,9 @@ func Test_taikuncore_TicketAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.TicketAPI.TicketOpen(context.Background()).Execute()
+		httpRes, err := apiClient.TicketAPI.TicketOpen(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -150,10 +144,9 @@ func Test_taikuncore_TicketAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.TicketAPI.TicketReply(context.Background()).Execute()
+		httpRes, err := apiClient.TicketAPI.TicketReply(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -162,10 +155,9 @@ func Test_taikuncore_TicketAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.TicketAPI.TicketSetPriority(context.Background()).Execute()
+		httpRes, err := apiClient.TicketAPI.TicketSetPriority(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -174,10 +166,9 @@ func Test_taikuncore_TicketAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.TicketAPI.TicketTransfer(context.Background()).Execute()
+		httpRes, err := apiClient.TicketAPI.TicketTransfer(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
