@@ -183,6 +183,7 @@ func (a *UsersAPIService) UsersAddUserProjectsExecute(r ApiUsersAddUserProjectsR
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
+			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1202,6 +1203,7 @@ func (a *UsersAPIService) UsersDeleteUserProjectsExecute(r ApiUsersDeleteUserPro
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
+			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
 	}
