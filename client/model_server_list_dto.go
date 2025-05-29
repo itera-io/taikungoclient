@@ -43,6 +43,7 @@ type ServerListDto struct {
 	SpotPrice float64 `json:"spotPrice"`
 	SpotInstance bool `json:"spotInstance"`
 	ShutOff bool `json:"shutOff"`
+	UseLocalDisk *bool `json:"useLocalDisk,omitempty"`
 	AutoscalingGroup NullableString `json:"autoscalingGroup"`
 	ProviderID NullableString `json:"providerID"`
 	InstanceId NullableString `json:"instanceId"`
@@ -622,6 +623,38 @@ func (o *ServerListDto) SetShutOff(v bool) {
 	o.ShutOff = v
 }
 
+// GetUseLocalDisk returns the UseLocalDisk field value if set, zero value otherwise.
+func (o *ServerListDto) GetUseLocalDisk() bool {
+	if o == nil || IsNil(o.UseLocalDisk) {
+		var ret bool
+		return ret
+	}
+	return *o.UseLocalDisk
+}
+
+// GetUseLocalDiskOk returns a tuple with the UseLocalDisk field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServerListDto) GetUseLocalDiskOk() (*bool, bool) {
+	if o == nil || IsNil(o.UseLocalDisk) {
+		return nil, false
+	}
+	return o.UseLocalDisk, true
+}
+
+// HasUseLocalDisk returns a boolean if a field has been set.
+func (o *ServerListDto) HasUseLocalDisk() bool {
+	if o != nil && !IsNil(o.UseLocalDisk) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseLocalDisk gets a reference to the given bool and assigns it to the UseLocalDisk field.
+func (o *ServerListDto) SetUseLocalDisk(v bool) {
+	o.UseLocalDisk = &v
+}
+
 // GetAutoscalingGroup returns the AutoscalingGroup field value
 // If the value is explicit nil, the zero value for string will be returned
 func (o *ServerListDto) GetAutoscalingGroup() string {
@@ -1015,6 +1048,9 @@ func (o ServerListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["spotPrice"] = o.SpotPrice
 	toSerialize["spotInstance"] = o.SpotInstance
 	toSerialize["shutOff"] = o.ShutOff
+	if !IsNil(o.UseLocalDisk) {
+		toSerialize["useLocalDisk"] = o.UseLocalDisk
+	}
 	toSerialize["autoscalingGroup"] = o.AutoscalingGroup.Get()
 	toSerialize["providerID"] = o.ProviderID.Get()
 	toSerialize["instanceId"] = o.InstanceId.Get()
