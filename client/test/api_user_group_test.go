@@ -26,10 +26,9 @@ func Test_taikuncore_UserGroupAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.UserGroupAPI.ProjectgroupsUnbindProjectGroup(context.Background()).Execute()
+		httpRes, err := apiClient.UserGroupAPI.ProjectgroupsUnbindProjectGroup(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -38,10 +37,9 @@ func Test_taikuncore_UserGroupAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.UserGroupAPI.UsergroupsBindProjectsGroup(context.Background()).Execute()
+		httpRes, err := apiClient.UserGroupAPI.UsergroupsBindProjectsGroup(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -50,10 +48,9 @@ func Test_taikuncore_UserGroupAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.UserGroupAPI.UsergroupsBindUser(context.Background()).Execute()
+		httpRes, err := apiClient.UserGroupAPI.UsergroupsBindUser(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -111,10 +108,9 @@ func Test_taikuncore_UserGroupAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.UserGroupAPI.UsergroupsUnbindUser(context.Background()).Execute()
+		httpRes, err := apiClient.UserGroupAPI.UsergroupsUnbindUser(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -125,10 +121,9 @@ func Test_taikuncore_UserGroupAPIService(t *testing.T) {
 
 		var userGroupId int32
 
-		resp, httpRes, err := apiClient.UserGroupAPI.UsergroupsUpdate(context.Background(), userGroupId).Execute()
+		httpRes, err := apiClient.UserGroupAPI.UsergroupsUpdate(context.Background(), userGroupId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

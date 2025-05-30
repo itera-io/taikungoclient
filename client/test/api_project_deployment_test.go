@@ -215,10 +215,9 @@ func Test_taikuncore_ProjectDeploymentAPIService(t *testing.T) {
 
 		var projectId int32
 
-		resp, httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentUpgrade(context.Background(), projectId).Execute()
+		httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentUpgrade(context.Background(), projectId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
