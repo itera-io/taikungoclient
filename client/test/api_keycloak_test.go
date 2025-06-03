@@ -26,10 +26,9 @@ func Test_taikuncore_KeycloakAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.KeycloakAPI.KeycloakCreate(context.Background()).Execute()
+		httpRes, err := apiClient.KeycloakAPI.KeycloakCreate(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -38,10 +37,9 @@ func Test_taikuncore_KeycloakAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.KeycloakAPI.KeycloakDelete(context.Background()).Execute()
+		httpRes, err := apiClient.KeycloakAPI.KeycloakDelete(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -50,10 +48,9 @@ func Test_taikuncore_KeycloakAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.KeycloakAPI.KeycloakEdit(context.Background()).Execute()
+		httpRes, err := apiClient.KeycloakAPI.KeycloakEdit(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

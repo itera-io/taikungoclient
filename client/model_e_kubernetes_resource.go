@@ -39,6 +39,9 @@ const (
 	EKUBERNETESRESOURCE_JOB EKubernetesResource = "Job"
 	EKUBERNETESRESOURCE_NETWORK_POLICY EKubernetesResource = "NetworkPolicy"
 	EKUBERNETESRESOURCE_NAMESPACE EKubernetesResource = "Namespace"
+	EKUBERNETESRESOURCE_PERSISTENT_VOLUME EKubernetesResource = "PersistentVolume"
+	EKUBERNETESRESOURCE_LIMIT_RANGE EKubernetesResource = "LimitRange"
+	EKUBERNETESRESOURCE_RESOURCE_QUOTA EKubernetesResource = "ResourceQuota"
 )
 
 // All allowed values of EKubernetesResource enum
@@ -61,6 +64,9 @@ var AllowedEKubernetesResourceEnumValues = []EKubernetesResource{
 	"Job",
 	"NetworkPolicy",
 	"Namespace",
+	"PersistentVolume",
+	"LimitRange",
+	"ResourceQuota",
 }
 
 func (v *EKubernetesResource) UnmarshalJSON(src []byte) error {

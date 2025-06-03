@@ -27,6 +27,7 @@ type CloudCredentialsForOrganizationEntity struct {
 	FullName NullableString `json:"fullName"`
 	CloudType CloudType `json:"cloudType"`
 	IsDefault bool `json:"isDefault"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
 }
 
 type _CloudCredentialsForOrganizationEntity CloudCredentialsForOrganizationEntity
@@ -177,6 +178,38 @@ func (o *CloudCredentialsForOrganizationEntity) SetIsDefault(v bool) {
 	o.IsDefault = v
 }
 
+// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
+func (o *CloudCredentialsForOrganizationEntity) GetOrganizationId() int32 {
+	if o == nil || IsNil(o.OrganizationId) {
+		var ret int32
+		return ret
+	}
+	return *o.OrganizationId
+}
+
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudCredentialsForOrganizationEntity) GetOrganizationIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.OrganizationId) {
+		return nil, false
+	}
+	return o.OrganizationId, true
+}
+
+// HasOrganizationId returns a boolean if a field has been set.
+func (o *CloudCredentialsForOrganizationEntity) HasOrganizationId() bool {
+	if o != nil && !IsNil(o.OrganizationId) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationId gets a reference to the given int32 and assigns it to the OrganizationId field.
+func (o *CloudCredentialsForOrganizationEntity) SetOrganizationId(v int32) {
+	o.OrganizationId = &v
+}
+
 func (o CloudCredentialsForOrganizationEntity) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -194,6 +227,9 @@ func (o CloudCredentialsForOrganizationEntity) ToMap() (map[string]interface{}, 
 	toSerialize["fullName"] = o.FullName.Get()
 	toSerialize["cloudType"] = o.CloudType
 	toSerialize["isDefault"] = o.IsDefault
+	if !IsNil(o.OrganizationId) {
+		toSerialize["organizationId"] = o.OrganizationId
+	}
 	return toSerialize, nil
 }
 

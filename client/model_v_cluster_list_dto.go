@@ -45,6 +45,10 @@ type VClusterListDto struct {
 	CloudType ECloudCredentialType `json:"cloudType"`
 	Status ProjectStatus `json:"status"`
 	Health ProjectHealth `json:"health"`
+	WorkloadResources *VClusterWorkloadResourcesListDto `json:"workloadResources,omitempty"`
+	CpuLimits *VClusterResourceLimitsListDto `json:"cpuLimits,omitempty"`
+	RamLimits *VClusterResourceLimitsListDto `json:"ramLimits,omitempty"`
+	EphemeralStorageLimits *VClusterResourceLimitsListDto `json:"ephemeralStorageLimits,omitempty"`
 	LockButton ButtonStatusDto `json:"lockButton"`
 	UnlockButton ButtonStatusDto `json:"unlockButton"`
 	DeleteButton ButtonStatusDto `json:"deleteButton"`
@@ -657,6 +661,134 @@ func (o *VClusterListDto) SetHealth(v ProjectHealth) {
 	o.Health = v
 }
 
+// GetWorkloadResources returns the WorkloadResources field value if set, zero value otherwise.
+func (o *VClusterListDto) GetWorkloadResources() VClusterWorkloadResourcesListDto {
+	if o == nil || IsNil(o.WorkloadResources) {
+		var ret VClusterWorkloadResourcesListDto
+		return ret
+	}
+	return *o.WorkloadResources
+}
+
+// GetWorkloadResourcesOk returns a tuple with the WorkloadResources field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VClusterListDto) GetWorkloadResourcesOk() (*VClusterWorkloadResourcesListDto, bool) {
+	if o == nil || IsNil(o.WorkloadResources) {
+		return nil, false
+	}
+	return o.WorkloadResources, true
+}
+
+// HasWorkloadResources returns a boolean if a field has been set.
+func (o *VClusterListDto) HasWorkloadResources() bool {
+	if o != nil && !IsNil(o.WorkloadResources) {
+		return true
+	}
+
+	return false
+}
+
+// SetWorkloadResources gets a reference to the given VClusterWorkloadResourcesListDto and assigns it to the WorkloadResources field.
+func (o *VClusterListDto) SetWorkloadResources(v VClusterWorkloadResourcesListDto) {
+	o.WorkloadResources = &v
+}
+
+// GetCpuLimits returns the CpuLimits field value if set, zero value otherwise.
+func (o *VClusterListDto) GetCpuLimits() VClusterResourceLimitsListDto {
+	if o == nil || IsNil(o.CpuLimits) {
+		var ret VClusterResourceLimitsListDto
+		return ret
+	}
+	return *o.CpuLimits
+}
+
+// GetCpuLimitsOk returns a tuple with the CpuLimits field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VClusterListDto) GetCpuLimitsOk() (*VClusterResourceLimitsListDto, bool) {
+	if o == nil || IsNil(o.CpuLimits) {
+		return nil, false
+	}
+	return o.CpuLimits, true
+}
+
+// HasCpuLimits returns a boolean if a field has been set.
+func (o *VClusterListDto) HasCpuLimits() bool {
+	if o != nil && !IsNil(o.CpuLimits) {
+		return true
+	}
+
+	return false
+}
+
+// SetCpuLimits gets a reference to the given VClusterResourceLimitsListDto and assigns it to the CpuLimits field.
+func (o *VClusterListDto) SetCpuLimits(v VClusterResourceLimitsListDto) {
+	o.CpuLimits = &v
+}
+
+// GetRamLimits returns the RamLimits field value if set, zero value otherwise.
+func (o *VClusterListDto) GetRamLimits() VClusterResourceLimitsListDto {
+	if o == nil || IsNil(o.RamLimits) {
+		var ret VClusterResourceLimitsListDto
+		return ret
+	}
+	return *o.RamLimits
+}
+
+// GetRamLimitsOk returns a tuple with the RamLimits field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VClusterListDto) GetRamLimitsOk() (*VClusterResourceLimitsListDto, bool) {
+	if o == nil || IsNil(o.RamLimits) {
+		return nil, false
+	}
+	return o.RamLimits, true
+}
+
+// HasRamLimits returns a boolean if a field has been set.
+func (o *VClusterListDto) HasRamLimits() bool {
+	if o != nil && !IsNil(o.RamLimits) {
+		return true
+	}
+
+	return false
+}
+
+// SetRamLimits gets a reference to the given VClusterResourceLimitsListDto and assigns it to the RamLimits field.
+func (o *VClusterListDto) SetRamLimits(v VClusterResourceLimitsListDto) {
+	o.RamLimits = &v
+}
+
+// GetEphemeralStorageLimits returns the EphemeralStorageLimits field value if set, zero value otherwise.
+func (o *VClusterListDto) GetEphemeralStorageLimits() VClusterResourceLimitsListDto {
+	if o == nil || IsNil(o.EphemeralStorageLimits) {
+		var ret VClusterResourceLimitsListDto
+		return ret
+	}
+	return *o.EphemeralStorageLimits
+}
+
+// GetEphemeralStorageLimitsOk returns a tuple with the EphemeralStorageLimits field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VClusterListDto) GetEphemeralStorageLimitsOk() (*VClusterResourceLimitsListDto, bool) {
+	if o == nil || IsNil(o.EphemeralStorageLimits) {
+		return nil, false
+	}
+	return o.EphemeralStorageLimits, true
+}
+
+// HasEphemeralStorageLimits returns a boolean if a field has been set.
+func (o *VClusterListDto) HasEphemeralStorageLimits() bool {
+	if o != nil && !IsNil(o.EphemeralStorageLimits) {
+		return true
+	}
+
+	return false
+}
+
+// SetEphemeralStorageLimits gets a reference to the given VClusterResourceLimitsListDto and assigns it to the EphemeralStorageLimits field.
+func (o *VClusterListDto) SetEphemeralStorageLimits(v VClusterResourceLimitsListDto) {
+	o.EphemeralStorageLimits = &v
+}
+
 // GetLockButton returns the LockButton field value
 func (o *VClusterListDto) GetLockButton() ButtonStatusDto {
 	if o == nil {
@@ -834,6 +966,18 @@ func (o VClusterListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["cloudType"] = o.CloudType
 	toSerialize["status"] = o.Status
 	toSerialize["health"] = o.Health
+	if !IsNil(o.WorkloadResources) {
+		toSerialize["workloadResources"] = o.WorkloadResources
+	}
+	if !IsNil(o.CpuLimits) {
+		toSerialize["cpuLimits"] = o.CpuLimits
+	}
+	if !IsNil(o.RamLimits) {
+		toSerialize["ramLimits"] = o.RamLimits
+	}
+	if !IsNil(o.EphemeralStorageLimits) {
+		toSerialize["ephemeralStorageLimits"] = o.EphemeralStorageLimits
+	}
 	toSerialize["lockButton"] = o.LockButton
 	toSerialize["unlockButton"] = o.UnlockButton
 	toSerialize["deleteButton"] = o.DeleteButton

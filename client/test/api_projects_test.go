@@ -28,10 +28,9 @@ func Test_taikuncore_ProjectsAPIService(t *testing.T) {
 
 		var id int32
 
-		resp, httpRes, err := apiClient.ProjectsAPI.ProjectsAddProjectUsers(context.Background(), id).Execute()
+		httpRes, err := apiClient.ProjectsAPI.ProjectsAddProjectUsers(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -131,10 +130,9 @@ func Test_taikuncore_ProjectsAPIService(t *testing.T) {
 
 		var id int32
 
-		resp, httpRes, err := apiClient.ProjectsAPI.ProjectsDeleteProjectUsers(context.Background(), id).Execute()
+		httpRes, err := apiClient.ProjectsAPI.ProjectsDeleteProjectUsers(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -169,10 +167,9 @@ func Test_taikuncore_ProjectsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProjectsAPI.ProjectsEditHealth(context.Background()).Execute()
+		httpRes, err := apiClient.ProjectsAPI.ProjectsEditHealth(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -181,10 +178,9 @@ func Test_taikuncore_ProjectsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProjectsAPI.ProjectsEditStatus(context.Background()).Execute()
+		httpRes, err := apiClient.ProjectsAPI.ProjectsEditStatus(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -193,10 +189,9 @@ func Test_taikuncore_ProjectsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProjectsAPI.ProjectsExtendLifetime(context.Background()).Execute()
+		httpRes, err := apiClient.ProjectsAPI.ProjectsExtendLifetime(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -255,10 +250,9 @@ func Test_taikuncore_ProjectsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProjectsAPI.ProjectsLockManager(context.Background()).Execute()
+		httpRes, err := apiClient.ProjectsAPI.ProjectsLockManager(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -278,10 +272,9 @@ func Test_taikuncore_ProjectsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProjectsAPI.ProjectsMaintenanceManager(context.Background()).Execute()
+		httpRes, err := apiClient.ProjectsAPI.ProjectsMaintenanceManager(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -326,10 +319,9 @@ func Test_taikuncore_ProjectsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProjectsAPI.ProjectsToggleFullSpot(context.Background()).Execute()
+		httpRes, err := apiClient.ProjectsAPI.ProjectsToggleFullSpot(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -338,10 +330,9 @@ func Test_taikuncore_ProjectsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProjectsAPI.ProjectsToggleSpotVms(context.Background()).Execute()
+		httpRes, err := apiClient.ProjectsAPI.ProjectsToggleSpotVms(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -350,10 +341,9 @@ func Test_taikuncore_ProjectsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProjectsAPI.ProjectsToggleSpotWorkers(context.Background()).Execute()
+		httpRes, err := apiClient.ProjectsAPI.ProjectsToggleSpotWorkers(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

@@ -75,10 +75,9 @@ func Test_taikuncore_OpaProfilesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.OpaProfilesAPI.OpaprofilesLockManager(context.Background()).Execute()
+		httpRes, err := apiClient.OpaProfilesAPI.OpaprofilesLockManager(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -87,10 +86,9 @@ func Test_taikuncore_OpaProfilesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.OpaProfilesAPI.OpaprofilesMakeDefault(context.Background()).Execute()
+		httpRes, err := apiClient.OpaProfilesAPI.OpaprofilesMakeDefault(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -99,10 +97,9 @@ func Test_taikuncore_OpaProfilesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.OpaProfilesAPI.OpaprofilesSync(context.Background()).Execute()
+		httpRes, err := apiClient.OpaProfilesAPI.OpaprofilesSync(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -111,10 +108,9 @@ func Test_taikuncore_OpaProfilesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.OpaProfilesAPI.OpaprofilesUpdate(context.Background()).Execute()
+		httpRes, err := apiClient.OpaProfilesAPI.OpaprofilesUpdate(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

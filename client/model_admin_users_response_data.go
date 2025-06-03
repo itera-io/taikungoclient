@@ -29,6 +29,7 @@ type AdminUsersResponseData struct {
 	OrganizationName NullableString `json:"organizationName"`
 	Owner bool `json:"owner"`
 	Csm bool `json:"csm"`
+	Is2FaEnabled bool `json:"is2FaEnabled"`
 }
 
 type _AdminUsersResponseData AdminUsersResponseData
@@ -37,7 +38,7 @@ type _AdminUsersResponseData AdminUsersResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAdminUsersResponseData(id NullableString, name NullableString, email NullableString, role UserRole, organizationName NullableString, owner bool, csm bool) *AdminUsersResponseData {
+func NewAdminUsersResponseData(id NullableString, name NullableString, email NullableString, role UserRole, organizationName NullableString, owner bool, csm bool, is2FaEnabled bool) *AdminUsersResponseData {
 	this := AdminUsersResponseData{}
 	this.Id = id
 	this.Name = name
@@ -46,6 +47,7 @@ func NewAdminUsersResponseData(id NullableString, name NullableString, email Nul
 	this.OrganizationName = organizationName
 	this.Owner = owner
 	this.Csm = csm
+	this.Is2FaEnabled = is2FaEnabled
 	return &this
 }
 
@@ -233,6 +235,30 @@ func (o *AdminUsersResponseData) SetCsm(v bool) {
 	o.Csm = v
 }
 
+// GetIs2FaEnabled returns the Is2FaEnabled field value
+func (o *AdminUsersResponseData) GetIs2FaEnabled() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.Is2FaEnabled
+}
+
+// GetIs2FaEnabledOk returns a tuple with the Is2FaEnabled field value
+// and a boolean to check if the value has been set.
+func (o *AdminUsersResponseData) GetIs2FaEnabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Is2FaEnabled, true
+}
+
+// SetIs2FaEnabled sets field value
+func (o *AdminUsersResponseData) SetIs2FaEnabled(v bool) {
+	o.Is2FaEnabled = v
+}
+
 func (o AdminUsersResponseData) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -250,6 +276,7 @@ func (o AdminUsersResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize["organizationName"] = o.OrganizationName.Get()
 	toSerialize["owner"] = o.Owner
 	toSerialize["csm"] = o.Csm
+	toSerialize["is2FaEnabled"] = o.Is2FaEnabled
 	return toSerialize, nil
 }
 
@@ -265,6 +292,7 @@ func (o *AdminUsersResponseData) UnmarshalJSON(data []byte) (err error) {
 		"organizationName",
 		"owner",
 		"csm",
+		"is2FaEnabled",
 	}
 
 	allProperties := make(map[string]interface{})

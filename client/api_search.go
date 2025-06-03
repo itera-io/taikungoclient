@@ -71,9 +71,6 @@ func (a *SearchAPIService) SearchAccessProfilesExecute(r ApiSearchAccessProfiles
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.accessProfilesSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("accessProfilesSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -247,9 +244,6 @@ func (a *SearchAPIService) SearchBackupCredentialsExecute(r ApiSearchBackupCrede
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.backupCredentialsSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("backupCredentialsSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -423,9 +417,6 @@ func (a *SearchAPIService) SearchBillingCredentialsExecute(r ApiSearchBillingCre
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.billingCredentialsSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("billingCredentialsSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -599,9 +590,6 @@ func (a *SearchAPIService) SearchCloudCredentialsExecute(r ApiSearchCloudCredent
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.cloudCredentialsSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("cloudCredentialsSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -775,9 +763,6 @@ func (a *SearchAPIService) SearchConfigMapsExecute(r ApiSearchConfigMapsRequest)
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.configMapSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("configMapSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -951,9 +936,6 @@ func (a *SearchAPIService) SearchCrdsExecute(r ApiSearchCrdsRequest) (*CrdSearch
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.crdSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("crdSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1127,9 +1109,6 @@ func (a *SearchAPIService) SearchCronJobsExecute(r ApiSearchCronJobsRequest) (*C
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.cronjobsSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("cronjobsSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1303,9 +1282,6 @@ func (a *SearchAPIService) SearchDaemonSetsExecute(r ApiSearchDaemonSetsRequest)
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.daemonSetSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("daemonSetSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1479,9 +1455,6 @@ func (a *SearchAPIService) SearchDeploymentsExecute(r ApiSearchDeploymentsReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.deploymentSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("deploymentSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1655,9 +1628,6 @@ func (a *SearchAPIService) SearchHelmReleasesExecute(r ApiSearchHelmReleasesRequ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.helmReleasesSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("helmReleasesSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1831,9 +1801,6 @@ func (a *SearchAPIService) SearchIngressExecute(r ApiSearchIngressRequest) (*Ing
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.ingressSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("ingressSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2007,9 +1974,6 @@ func (a *SearchAPIService) SearchJobsExecute(r ApiSearchJobsRequest) (*JobsSearc
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.jobsSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("jobsSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2183,9 +2147,6 @@ func (a *SearchAPIService) SearchKubernetesProfilesExecute(r ApiSearchKubernetes
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.kubernetesProfilesSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("kubernetesProfilesSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2359,9 +2320,6 @@ func (a *SearchAPIService) SearchNamespacesExecute(r ApiSearchNamespacesRequest)
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.namespaceSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("namespaceSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2535,9 +2493,6 @@ func (a *SearchAPIService) SearchNetworkPoliciesExecute(r ApiSearchNetworkPolici
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.networkPoliciesSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("networkPoliciesSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2711,9 +2666,6 @@ func (a *SearchAPIService) SearchNodesExecute(r ApiSearchNodesRequest) (*NodesSe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.nodesSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("nodesSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2887,9 +2839,6 @@ func (a *SearchAPIService) SearchOrganizationsExecute(r ApiSearchOrganizationsRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.organizationSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("organizationSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -3236,9 +3185,6 @@ func (a *SearchAPIService) SearchPdbExecute(r ApiSearchPdbRequest) (*PdbSearchLi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.pdbSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("pdbSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -3412,9 +3358,6 @@ func (a *SearchAPIService) SearchPodsExecute(r ApiSearchPodsRequest) (*PodsSearc
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.podsSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("podsSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -3588,9 +3531,6 @@ func (a *SearchAPIService) SearchProjectsExecute(r ApiSearchProjectsRequest) (*P
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.projectsSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("projectsSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -3764,9 +3704,6 @@ func (a *SearchAPIService) SearchPrometheusRulesExecute(r ApiSearchPrometheusRul
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.prometheusRulesSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("prometheusRulesSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -3940,9 +3877,6 @@ func (a *SearchAPIService) SearchPvcsExecute(r ApiSearchPvcsRequest) (*PvcSearch
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.pvcSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("pvcSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -4116,9 +4050,6 @@ func (a *SearchAPIService) SearchSecretsExecute(r ApiSearchSecretsRequest) (*Sec
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.secretSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("secretSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -4292,9 +4223,6 @@ func (a *SearchAPIService) SearchServersExecute(r ApiSearchServersRequest) (*Ser
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.serversSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("serversSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -4468,9 +4396,6 @@ func (a *SearchAPIService) SearchServicesExecute(r ApiSearchServicesRequest) (*S
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.serviceSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("serviceSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -4644,9 +4569,6 @@ func (a *SearchAPIService) SearchStandAloneProfilesExecute(r ApiSearchStandAlone
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.standAloneProfilesSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("standAloneProfilesSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -4820,9 +4742,6 @@ func (a *SearchAPIService) SearchStorageClassesExecute(r ApiSearchStorageClasses
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.storageClassesSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("storageClassesSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -4996,9 +4915,6 @@ func (a *SearchAPIService) SearchStsExecute(r ApiSearchStsRequest) (*StsSearchLi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.stsSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("stsSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -5172,9 +5088,6 @@ func (a *SearchAPIService) SearchUsersExecute(r ApiSearchUsersRequest) (*UsersSe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.usersSearchCommand == nil {
-		return localVarReturnValue, nil, reportError("usersSearchCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

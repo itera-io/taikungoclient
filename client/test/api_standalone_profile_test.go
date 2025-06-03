@@ -38,10 +38,9 @@ func Test_taikuncore_StandaloneProfileAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.StandaloneProfileAPI.StandaloneprofileDelete(context.Background()).Execute()
+		httpRes, err := apiClient.StandaloneProfileAPI.StandaloneprofileDelete(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -62,10 +61,9 @@ func Test_taikuncore_StandaloneProfileAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.StandaloneProfileAPI.StandaloneprofileEdit(context.Background()).Execute()
+		httpRes, err := apiClient.StandaloneProfileAPI.StandaloneprofileEdit(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -86,10 +84,9 @@ func Test_taikuncore_StandaloneProfileAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.StandaloneProfileAPI.StandaloneprofileLockManagement(context.Background()).Execute()
+		httpRes, err := apiClient.StandaloneProfileAPI.StandaloneprofileLockManagement(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

@@ -26,10 +26,9 @@ func Test_taikuncore_ProjectTemplatesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProjectTemplatesAPI.ProjectTemplatesCreate(context.Background()).Execute()
+		httpRes, err := apiClient.ProjectTemplatesAPI.ProjectTemplatesCreate(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

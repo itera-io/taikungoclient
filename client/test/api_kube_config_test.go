@@ -38,10 +38,9 @@ func Test_taikuncore_KubeConfigAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.KubeConfigAPI.KubeconfigDelete(context.Background()).Execute()
+		httpRes, err := apiClient.KubeConfigAPI.KubeconfigDelete(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -50,10 +49,9 @@ func Test_taikuncore_KubeConfigAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.KubeConfigAPI.KubeconfigDeleteByProjectId(context.Background()).Execute()
+		httpRes, err := apiClient.KubeConfigAPI.KubeconfigDeleteByProjectId(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

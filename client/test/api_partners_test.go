@@ -28,10 +28,9 @@ func Test_taikuncore_PartnersAPIService(t *testing.T) {
 
 		var id int32
 
-		resp, httpRes, err := apiClient.PartnersAPI.PartnerAddOrganizations(context.Background(), id).Execute()
+		httpRes, err := apiClient.PartnersAPI.PartnerAddOrganizations(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -40,10 +39,9 @@ func Test_taikuncore_PartnersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.PartnersAPI.PartnerAddWhitelistDomain(context.Background()).Execute()
+		httpRes, err := apiClient.PartnersAPI.PartnerAddWhitelistDomain(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -52,10 +50,9 @@ func Test_taikuncore_PartnersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.PartnersAPI.PartnerBecomeAPartner(context.Background()).Execute()
+		httpRes, err := apiClient.PartnersAPI.PartnerBecomeAPartner(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -64,10 +61,9 @@ func Test_taikuncore_PartnersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.PartnersAPI.PartnerContactUs(context.Background()).Execute()
+		httpRes, err := apiClient.PartnersAPI.PartnerContactUs(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -90,10 +86,9 @@ func Test_taikuncore_PartnersAPIService(t *testing.T) {
 
 		var id int32
 
-		resp, httpRes, err := apiClient.PartnersAPI.PartnerDeleteOrganizations(context.Background(), id).Execute()
+		httpRes, err := apiClient.PartnersAPI.PartnerDeleteOrganizations(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -102,10 +97,9 @@ func Test_taikuncore_PartnersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.PartnersAPI.PartnerDeleteWhitelistDomain(context.Background()).Execute()
+		httpRes, err := apiClient.PartnersAPI.PartnerDeleteWhitelistDomain(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -162,10 +156,9 @@ func Test_taikuncore_PartnersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.PartnersAPI.PartnerUpdate(context.Background()).Execute()
+		httpRes, err := apiClient.PartnersAPI.PartnerUpdate(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

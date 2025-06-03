@@ -509,9 +509,6 @@ func (a *PackageAPIService) PackageValueExecute(r ApiPackageValueRequest) (strin
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.getCatalogAppValueCommand == nil {
-		return localVarReturnValue, nil, reportError("getCatalogAppValueCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -685,9 +682,6 @@ func (a *PackageAPIService) PackageValueAutocompleteExecute(r ApiPackageValueAut
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.getCatalogAppValueAutocompleteCommand == nil {
-		return localVarReturnValue, nil, reportError("getCatalogAppValueAutocompleteCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -861,9 +855,6 @@ func (a *PackageAPIService) PackageVersionsExecute(r ApiPackageVersionsRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.listCatalogAppAvailableVersionsCommand == nil {
-		return localVarReturnValue, nil, reportError("listCatalogAppAvailableVersionsCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

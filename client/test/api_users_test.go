@@ -39,10 +39,9 @@ func Test_taikuncore_UsersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.UsersAPI.UsersChangePassword(context.Background()).Execute()
+		httpRes, err := apiClient.UsersAPI.UsersChangePassword(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -51,10 +50,9 @@ func Test_taikuncore_UsersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.UsersAPI.UsersConfirmEmail(context.Background()).Execute()
+		httpRes, err := apiClient.UsersAPI.UsersConfirmEmail(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -88,10 +86,9 @@ func Test_taikuncore_UsersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.UsersAPI.UsersDeleteMyAccount(context.Background()).Execute()
+		httpRes, err := apiClient.UsersAPI.UsersDeleteMyAccount(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -113,10 +110,9 @@ func Test_taikuncore_UsersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.UsersAPI.UsersDisable(context.Background()).Execute()
+		httpRes, err := apiClient.UsersAPI.UsersDisable(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -149,10 +145,9 @@ func Test_taikuncore_UsersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.UsersAPI.UsersForceToResetPassword(context.Background()).Execute()
+		httpRes, err := apiClient.UsersAPI.UsersForceToResetPassword(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -169,26 +164,13 @@ func Test_taikuncore_UsersAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test UsersAPIService UsersToggle2faMode", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.UsersAPI.UsersToggle2faMode(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test UsersAPIService UsersToggleMaintenanceMode", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.UsersAPI.UsersToggleMaintenanceMode(context.Background()).Execute()
+		httpRes, err := apiClient.UsersAPI.UsersToggleMaintenanceMode(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -197,10 +179,9 @@ func Test_taikuncore_UsersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.UsersAPI.UsersToggleNotificationMode(context.Background()).Execute()
+		httpRes, err := apiClient.UsersAPI.UsersToggleNotificationMode(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -209,10 +190,9 @@ func Test_taikuncore_UsersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.UsersAPI.UsersUpdateUser(context.Background()).Execute()
+		httpRes, err := apiClient.UsersAPI.UsersUpdateUser(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -233,10 +213,9 @@ func Test_taikuncore_UsersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.UsersAPI.UsersVerifyEmail(context.Background()).Execute()
+		httpRes, err := apiClient.UsersAPI.UsersVerifyEmail(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

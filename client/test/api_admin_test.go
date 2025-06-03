@@ -146,6 +146,19 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AdminAPIService AdminUnlock2fa", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		httpRes, err := apiClient.AdminAPI.AdminUnlock2fa(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AdminAPIService AdminUpdateProject", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

@@ -23,6 +23,7 @@ type ShowbackProjectsListDto struct {
 	Id *int32 `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	MonitoringUrl NullableString `json:"monitoringUrl,omitempty"`
+	MonitoringUrlHeader NullableString `json:"monitoringUrlHeader,omitempty"`
 	MonitoringUsername NullableString `json:"monitoringUsername,omitempty"`
 	MonitoringPassword NullableString `json:"monitoringPassword,omitempty"`
 	KubernetesCurrentVersion NullableString `json:"kubernetesCurrentVersion,omitempty"`
@@ -159,6 +160,48 @@ func (o *ShowbackProjectsListDto) SetMonitoringUrlNil() {
 // UnsetMonitoringUrl ensures that no value is present for MonitoringUrl, not even an explicit nil
 func (o *ShowbackProjectsListDto) UnsetMonitoringUrl() {
 	o.MonitoringUrl.Unset()
+}
+
+// GetMonitoringUrlHeader returns the MonitoringUrlHeader field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ShowbackProjectsListDto) GetMonitoringUrlHeader() string {
+	if o == nil || IsNil(o.MonitoringUrlHeader.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.MonitoringUrlHeader.Get()
+}
+
+// GetMonitoringUrlHeaderOk returns a tuple with the MonitoringUrlHeader field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ShowbackProjectsListDto) GetMonitoringUrlHeaderOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MonitoringUrlHeader.Get(), o.MonitoringUrlHeader.IsSet()
+}
+
+// HasMonitoringUrlHeader returns a boolean if a field has been set.
+func (o *ShowbackProjectsListDto) HasMonitoringUrlHeader() bool {
+	if o != nil && o.MonitoringUrlHeader.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMonitoringUrlHeader gets a reference to the given NullableString and assigns it to the MonitoringUrlHeader field.
+func (o *ShowbackProjectsListDto) SetMonitoringUrlHeader(v string) {
+	o.MonitoringUrlHeader.Set(&v)
+}
+// SetMonitoringUrlHeaderNil sets the value for MonitoringUrlHeader to be an explicit nil
+func (o *ShowbackProjectsListDto) SetMonitoringUrlHeaderNil() {
+	o.MonitoringUrlHeader.Set(nil)
+}
+
+// UnsetMonitoringUrlHeader ensures that no value is present for MonitoringUrlHeader, not even an explicit nil
+func (o *ShowbackProjectsListDto) UnsetMonitoringUrlHeader() {
+	o.MonitoringUrlHeader.Unset()
 }
 
 // GetMonitoringUsername returns the MonitoringUsername field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -305,6 +348,9 @@ func (o ShowbackProjectsListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.MonitoringUrl.IsSet() {
 		toSerialize["monitoringUrl"] = o.MonitoringUrl.Get()
+	}
+	if o.MonitoringUrlHeader.IsSet() {
+		toSerialize["monitoringUrlHeader"] = o.MonitoringUrlHeader.Get()
 	}
 	if o.MonitoringUsername.IsSet() {
 		toSerialize["monitoringUsername"] = o.MonitoringUsername.Get()

@@ -52,10 +52,9 @@ func Test_taikuncore_StandaloneActionsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.StandaloneActionsAPI.StandaloneactionsReboot(context.Background()).Execute()
+		httpRes, err := apiClient.StandaloneActionsAPI.StandaloneactionsReboot(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -64,10 +63,9 @@ func Test_taikuncore_StandaloneActionsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.StandaloneActionsAPI.StandaloneactionsShelve(context.Background()).Execute()
+		httpRes, err := apiClient.StandaloneActionsAPI.StandaloneactionsShelve(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -76,10 +74,9 @@ func Test_taikuncore_StandaloneActionsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.StandaloneActionsAPI.StandaloneactionsStart(context.Background()).Execute()
+		httpRes, err := apiClient.StandaloneActionsAPI.StandaloneactionsStart(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -102,10 +99,9 @@ func Test_taikuncore_StandaloneActionsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.StandaloneActionsAPI.StandaloneactionsStop(context.Background()).Execute()
+		httpRes, err := apiClient.StandaloneActionsAPI.StandaloneactionsStop(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -114,10 +110,9 @@ func Test_taikuncore_StandaloneActionsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.StandaloneActionsAPI.StandaloneactionsUnshelve(context.Background()).Execute()
+		httpRes, err := apiClient.StandaloneActionsAPI.StandaloneactionsUnshelve(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

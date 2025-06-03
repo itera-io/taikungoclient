@@ -52,10 +52,9 @@ func Test_taikuncore_StandaloneAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.StandaloneAPI.StandaloneIpManagement(context.Background()).Execute()
+		httpRes, err := apiClient.StandaloneAPI.StandaloneIpManagement(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -76,10 +75,9 @@ func Test_taikuncore_StandaloneAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.StandaloneAPI.StandaloneReset(context.Background()).Execute()
+		httpRes, err := apiClient.StandaloneAPI.StandaloneReset(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -88,10 +86,9 @@ func Test_taikuncore_StandaloneAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.StandaloneAPI.StandaloneUpdateFlavor(context.Background()).Execute()
+		httpRes, err := apiClient.StandaloneAPI.StandaloneUpdateFlavor(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
