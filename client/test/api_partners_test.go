@@ -80,6 +80,17 @@ func Test_taikuncore_PartnersAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PartnersAPIService PartnerDelete", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.PartnersAPI.PartnerDelete(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test PartnersAPIService PartnerDeleteOrganizations", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

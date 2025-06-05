@@ -364,6 +364,7 @@ docs/DeleteImportedProjectCommand.md
 docs/DeleteKubeConfigByProjectIdCommand.md
 docs/DeleteKubeConfigCommand.md
 docs/DeleteKubernetesResourceCommand.md
+docs/DeletePartnerCommand.md
 docs/DeleteProjectCommand.md
 docs/DeleteRepositoryCommand.md
 docs/DeleteRestoreCommand.md
@@ -1285,6 +1286,7 @@ model_delete_imported_project_command.go
 model_delete_kube_config_by_project_id_command.go
 model_delete_kube_config_command.go
 model_delete_kubernetes_resource_command.go
+model_delete_partner_command.go
 model_delete_project_command.go
 model_delete_repository_command.go
 model_delete_restore_command.go
