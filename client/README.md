@@ -470,6 +470,7 @@ Class | Method | HTTP request | Description
 *PartnersAPI* | [**PartnerBecomeAPartner**](docs/PartnersAPI.md#partnerbecomeapartner) | **Post** /api/v1/partner/become-a-partner | Become a partner
 *PartnersAPI* | [**PartnerContactUs**](docs/PartnersAPI.md#partnercontactus) | **Post** /api/v1/partner/contact-us | Contact with us
 *PartnersAPI* | [**PartnerCreate**](docs/PartnersAPI.md#partnercreate) | **Post** /api/v1/partner/create | Add a partner
+*PartnersAPI* | [**PartnerDelete**](docs/PartnersAPI.md#partnerdelete) | **Post** /api/v1/partner/delete | Delete partner
 *PartnersAPI* | [**PartnerDeleteOrganizations**](docs/PartnersAPI.md#partnerdeleteorganizations) | **Put** /api/v1/partner/{id}/organizations | Unbind organizations from a partner
 *PartnersAPI* | [**PartnerDeleteWhitelistDomain**](docs/PartnersAPI.md#partnerdeletewhitelistdomain) | **Post** /api/v1/partner/delete/whitelist/domain | Delete white list domain
 *PartnersAPI* | [**PartnerDetails**](docs/PartnersAPI.md#partnerdetails) | **Get** /api/v1/partner/details | Details of partners
@@ -1033,6 +1034,7 @@ Class | Method | HTTP request | Description
  - [DeleteKubeConfigByProjectIdCommand](docs/DeleteKubeConfigByProjectIdCommand.md)
  - [DeleteKubeConfigCommand](docs/DeleteKubeConfigCommand.md)
  - [DeleteKubernetesResourceCommand](docs/DeleteKubernetesResourceCommand.md)
+ - [DeletePartnerCommand](docs/DeletePartnerCommand.md)
  - [DeleteProjectCommand](docs/DeleteProjectCommand.md)
  - [DeleteRepositoryCommand](docs/DeleteRepositoryCommand.md)
  - [DeleteRestoreCommand](docs/DeleteRestoreCommand.md)
