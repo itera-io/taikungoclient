@@ -960,10 +960,6 @@ paths:
       - Access Profiles
   /api/v1/accessprofiles:
     get:
-      description: |-
-        <div style='font-family: Arial, sans-serif;'>
-                                <h2 style='color: #4A90E2;'>Description</h2>
-                                <ul><li><b>SortBy</b> - Options: <i>createdAt</i>, <i>name</i>, <i>organizationName</i></li><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i></li><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></li></ul></div>
       operationId: accessprofiles-list
       parameters:
       - explode: true
@@ -1343,10 +1339,6 @@ paths:
       - Ai Credentials
   /api/v1/ai-credential/list:
     get:
-      description: |-
-        <div style='font-family: Arial, sans-serif;'>
-                                <h2 style='color: #4A90E2;'>Description</h2>
-                                <ul><li><b>SortBy</b> - Options: <i>createdAt</i>, <i>name</i>, <i>organizationName</i></li><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i></li><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></li></ul></div>
       operationId: ai-credential-list
       parameters:
       - explode: true
@@ -2400,10 +2392,6 @@ paths:
       - Alerting Profiles
   /api/v1/alertingprofiles:
     get:
-      description: |-
-        <div style='font-family: Arial, sans-serif;'>
-                                <h2 style='color: #4A90E2;'>Description</h2>
-                                <ul><li><b>SortBy</b> - Options: <i>createdAt</i>, <i>name</i>, <i>organizationName</i></li><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i></li><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></li></ul></div>
       operationId: alertingprofiles-list
       parameters:
       - explode: true
@@ -5649,8 +5637,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-06-09T00:23:50.3891071Z
-                  createdAt: 2025-06-09T00:23:50.3891071Z
+                  lastValidated: 2025-06-10T00:22:14.7826446Z
+                  createdAt: 2025-06-10T00:22:14.7826446Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5761,14 +5749,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-06-09T00:23:50.3891071Z
+                    lastBackup: 2025-06-10T00:22:14.7826446Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-06-09T00:23:50.3891071Z
+                  createdAt: 2025-06-10T00:22:14.7826446Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-06-09T00:23:50.3891071Z
+                  lastBackup: 2025-06-10T00:22:14.7826446Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5879,8 +5867,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-06-09T00:23:50.3891071Z
-                  expiration: 2025-06-09T00:23:50.3891071Z
+                  createdAt: 2025-06-10T00:22:14.7826446Z
+                  expiration: 2025-06-10T00:22:14.7826446Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5990,7 +5978,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-06-09T00:23:50.3891071Z
+                  createdAt: 2025-06-10T00:22:14.7826446Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6106,9 +6094,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-06-09T00:23:50.3891071+00:00
-                  startTimeStamp: 2025-06-09T00:23:50.3891071+00:00
-                  createdAt: 2025-06-09T00:23:50.3891071Z
+                  completionDateTime: 2025-06-10T00:22:14.7826446+00:00
+                  startTimeStamp: 2025-06-10T00:22:14.7826446+00:00
+                  createdAt: 2025-06-10T00:22:14.7826446Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
