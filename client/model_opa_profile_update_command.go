@@ -29,6 +29,7 @@ type OpaProfileUpdateCommand struct {
 	UniqueServiceSelector NullableBool `json:"uniqueServiceSelector,omitempty"`
 	IsNodeNameForbiddenInVC NullableBool `json:"isNodeNameForbiddenInVC,omitempty"`
 	IsMasterTaintEnforced NullableBool `json:"isMasterTaintEnforced,omitempty"`
+	ForcePodResource NullableBool `json:"forcePodResource,omitempty"`
 	AllowedRepo []string `json:"allowedRepo,omitempty"`
 	ForbidSpecificTags []string `json:"forbidSpecificTags,omitempty"`
 	IngressWhitelist []string `json:"ingressWhitelist,omitempty"`
@@ -420,6 +421,48 @@ func (o *OpaProfileUpdateCommand) UnsetIsMasterTaintEnforced() {
 	o.IsMasterTaintEnforced.Unset()
 }
 
+// GetForcePodResource returns the ForcePodResource field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OpaProfileUpdateCommand) GetForcePodResource() bool {
+	if o == nil || IsNil(o.ForcePodResource.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.ForcePodResource.Get()
+}
+
+// GetForcePodResourceOk returns a tuple with the ForcePodResource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OpaProfileUpdateCommand) GetForcePodResourceOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ForcePodResource.Get(), o.ForcePodResource.IsSet()
+}
+
+// HasForcePodResource returns a boolean if a field has been set.
+func (o *OpaProfileUpdateCommand) HasForcePodResource() bool {
+	if o != nil && o.ForcePodResource.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetForcePodResource gets a reference to the given NullableBool and assigns it to the ForcePodResource field.
+func (o *OpaProfileUpdateCommand) SetForcePodResource(v bool) {
+	o.ForcePodResource.Set(&v)
+}
+// SetForcePodResourceNil sets the value for ForcePodResource to be an explicit nil
+func (o *OpaProfileUpdateCommand) SetForcePodResourceNil() {
+	o.ForcePodResource.Set(nil)
+}
+
+// UnsetForcePodResource ensures that no value is present for ForcePodResource, not even an explicit nil
+func (o *OpaProfileUpdateCommand) UnsetForcePodResource() {
+	o.ForcePodResource.Unset()
+}
+
 // GetAllowedRepo returns the AllowedRepo field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OpaProfileUpdateCommand) GetAllowedRepo() []string {
 	if o == nil {
@@ -588,6 +631,9 @@ func (o OpaProfileUpdateCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.IsMasterTaintEnforced.IsSet() {
 		toSerialize["isMasterTaintEnforced"] = o.IsMasterTaintEnforced.Get()
+	}
+	if o.ForcePodResource.IsSet() {
+		toSerialize["forcePodResource"] = o.ForcePodResource.Get()
 	}
 	if o.AllowedRepo != nil {
 		toSerialize["allowedRepo"] = o.AllowedRepo
