@@ -792,6 +792,7 @@ type ApiShowbacksummariesGroupedRequest struct {
 	organizationId *int32
 	fromDate *time.Time
 	toDate *time.Time
+	isDeleted *bool
 }
 
 func (r ApiShowbacksummariesGroupedRequest) OrganizationId(organizationId int32) ApiShowbacksummariesGroupedRequest {
@@ -806,6 +807,11 @@ func (r ApiShowbacksummariesGroupedRequest) FromDate(fromDate time.Time) ApiShow
 
 func (r ApiShowbacksummariesGroupedRequest) ToDate(toDate time.Time) ApiShowbacksummariesGroupedRequest {
 	r.toDate = &toDate
+	return r
+}
+
+func (r ApiShowbacksummariesGroupedRequest) IsDeleted(isDeleted bool) ApiShowbacksummariesGroupedRequest {
+	r.isDeleted = &isDeleted
 	return r
 }
 
@@ -855,6 +861,9 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesGroupedExecute(r ApiShowb
 	}
 	if r.toDate != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ToDate", r.toDate, "form", "")
+	}
+	if r.isDeleted != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "IsDeleted", r.isDeleted, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

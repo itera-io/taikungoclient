@@ -1067,6 +1067,13 @@ paths:
           format: date-time
           type: string
         style: form
+      - explode: true
+        in: query
+        name: IsDeleted
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
