@@ -1338,22 +1338,28 @@ components:
       additionalProperties: false
       example:
         byLabelValues:
-        - data:
+        - metricName: metricName
+          data:
           - byLabel: byLabel
             totalPrice: 6.027456183070403
           - byLabel: byLabel
             totalPrice: 6.027456183070403
           totalPrice: 0.8008281904610115
           ruleName: ruleName
+          labelValue: labelValue
           credentialName: credentialName
-        - data:
+          labelName: labelName
+        - metricName: metricName
+          data:
           - byLabel: byLabel
             totalPrice: 6.027456183070403
           - byLabel: byLabel
             totalPrice: 6.027456183070403
           totalPrice: 0.8008281904610115
           ruleName: ruleName
+          labelValue: labelValue
           credentialName: credentialName
+          labelName: labelName
       properties:
         byLabelValues:
           items:
@@ -1503,6 +1509,7 @@ components:
     GroupedShowbackSummaryByLabelInfo:
       additionalProperties: false
       example:
+        metricName: metricName
         data:
         - byLabel: byLabel
           totalPrice: 6.027456183070403
@@ -1510,7 +1517,9 @@ components:
           totalPrice: 6.027456183070403
         totalPrice: 0.8008281904610115
         ruleName: ruleName
+        labelValue: labelValue
         credentialName: credentialName
+        labelName: labelName
       properties:
         ruleName:
           nullable: true
@@ -1522,6 +1531,15 @@ components:
           format: double
           nullable: true
           type: number
+        labelName:
+          nullable: true
+          type: string
+        labelValue:
+          nullable: true
+          type: string
+        metricName:
+          nullable: true
+          type: string
         data:
           items:
             $ref: "#/components/schemas/GroupedShowbackSummariesByLabelDto"
