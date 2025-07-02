@@ -1,1 +1,1 @@
-548726721e9c037adae1945ff4c3f62f5c66bfa3  combined-swagger.json
+bc35b117e487c7add9f38c08cd3c024e4225eeb0  combined-swagger.json
