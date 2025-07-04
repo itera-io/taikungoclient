@@ -28,18 +28,12 @@ type ApiShowbacksummariesByLabelRequest struct {
 	ctx context.Context
 	ApiService *ShowbackSummariesAPIService
 	organizationId *int32
-	isDeleted *bool
 	fromDate *time.Time
 	toDate *time.Time
 }
 
 func (r ApiShowbacksummariesByLabelRequest) OrganizationId(organizationId int32) ApiShowbacksummariesByLabelRequest {
 	r.organizationId = &organizationId
-	return r
-}
-
-func (r ApiShowbacksummariesByLabelRequest) IsDeleted(isDeleted bool) ApiShowbacksummariesByLabelRequest {
-	r.isDeleted = &isDeleted
 	return r
 }
 
@@ -93,9 +87,6 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesByLabelExecute(r ApiShowb
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
-	}
-	if r.isDeleted != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "IsDeleted", r.isDeleted, "form", "")
 	}
 	if r.fromDate != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "FromDate", r.fromDate, "form", "")

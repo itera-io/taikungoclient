@@ -821,13 +821,6 @@ paths:
         style: form
       - explode: true
         in: query
-        name: IsDeleted
-        required: false
-        schema:
-          type: boolean
-        style: form
-      - explode: true
-        in: query
         name: FromDate
         required: false
         schema:
