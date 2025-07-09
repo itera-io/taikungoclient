@@ -450,10 +450,11 @@ Class | Method | HTTP request | Description
 *OrganizationsAPI* | [**OrganizationsCreate**](docs/OrganizationsAPI.md#organizationscreate) | **Post** /api/v1/organizations | Add a new organization. Only available for admins.
 *OrganizationsAPI* | [**OrganizationsDelete**](docs/OrganizationsAPI.md#organizationsdelete) | **Delete** /api/v1/organizations/{id} | Delete the specified organization. Only available for admins.
 *OrganizationsAPI* | [**OrganizationsDeletePrometheusrules**](docs/OrganizationsAPI.md#organizationsdeleteprometheusrules) | **Put** /api/v1/organizations/{id}/prometheusrules | Unbind prometheus rule(s) from organization
-*OrganizationsAPI* | [**OrganizationsDetawils**](docs/OrganizationsAPI.md#organizationsdetawils) | **Get** /api/v1/organizations/details | Retrieve all data about current organization by Id
+*OrganizationsAPI* | [**OrganizationsDetails**](docs/OrganizationsAPI.md#organizationsdetails) | **Get** /api/v1/organizations/details | Retrieve all data about current organization by Id
 *OrganizationsAPI* | [**OrganizationsDisable2faManagement**](docs/OrganizationsAPI.md#organizationsdisable2famanagement) | **Post** /api/v1/organizations/disable-2fa-management | Disable 2fa management
 *OrganizationsAPI* | [**OrganizationsEnable2faManagement**](docs/OrganizationsAPI.md#organizationsenable2famanagement) | **Post** /api/v1/organizations/enable-2fa-management | Enable 2fa management
 *OrganizationsAPI* | [**OrganizationsExportCsv**](docs/OrganizationsAPI.md#organizationsexportcsv) | **Get** /api/v1/organizations/export | Export Csv file
+*OrganizationsAPI* | [**OrganizationsInfo**](docs/OrganizationsAPI.md#organizationsinfo) | **Get** /api/v1/organizations/info | Retrieve all data about current organization by Id
 *OrganizationsAPI* | [**OrganizationsLeave**](docs/OrganizationsAPI.md#organizationsleave) | **Post** /api/v1/organizations/leave | Leave taikun
 *OrganizationsAPI* | [**OrganizationsList**](docs/OrganizationsAPI.md#organizationslist) | **Get** /api/v1/organizations | Retrieve all organizations
 *OrganizationsAPI* | [**OrganizationsOrganizationList**](docs/OrganizationsAPI.md#organizationsorganizationlist) | **Get** /api/v1/organizations/list | Retrieve organizations
