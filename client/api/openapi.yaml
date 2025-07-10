@@ -6679,8 +6679,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-07-09T00:04:05.1245264Z
-                  createdAt: 2025-07-09T00:04:05.1245264Z
+                  lastValidated: 2025-07-09T17:31:54.4612244Z
+                  createdAt: 2025-07-09T17:31:54.4612244Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6791,14 +6791,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-07-09T00:04:05.1245264Z
+                    lastBackup: 2025-07-09T17:31:54.4612244Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-07-09T00:04:05.1245264Z
+                  createdAt: 2025-07-09T17:31:54.4612244Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-07-09T00:04:05.1245264Z
+                  lastBackup: 2025-07-09T17:31:54.4612244Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6909,8 +6909,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-07-09T00:04:05.1245264Z
-                  expiration: 2025-07-09T00:04:05.1245264Z
+                  createdAt: 2025-07-09T17:31:54.4612244Z
+                  expiration: 2025-07-09T17:31:54.4612244Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -7020,7 +7020,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-07-09T00:04:05.1245264Z
+                  createdAt: 2025-07-09T17:31:54.4612244Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -7136,9 +7136,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-07-09T00:04:05.1245264+00:00
-                  startTimeStamp: 2025-07-09T00:04:05.1245264+00:00
-                  createdAt: 2025-07-09T00:04:05.1245264Z
+                  completionDateTime: 2025-07-09T17:31:54.4612244+00:00
+                  startTimeStamp: 2025-07-09T17:31:54.4612244+00:00
+                  createdAt: 2025-07-09T17:31:54.4612244Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -11463,56 +11463,6 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
       summary: Delete registration expired organizations
-      tags:
-      - Cron Job Service
-  /api/v1/cronjob/fetch-organization-details:
-    post:
-      operationId: cronjob-fetch-organization-details
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/FetchOrganizationDetailsCommand"
-      responses:
-        "200":
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Fetch organization details
       tags:
       - Cron Job Service
   /api/v1/cronjob/sync-organizations:
@@ -24039,64 +23989,6 @@ paths:
       summary: Export Csv file
       tags:
       - Organizations
-  /api/v1/organizations/info:
-    get:
-      operationId: organizations-info
-      parameters:
-      - explode: true
-        in: query
-        name: OrganizationId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DashboardChart"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve all data about current organization by Id
-      tags:
-      - Organizations
   /api/v1/organizations/list:
     get:
       operationId: organizations-organization-list
@@ -29333,6 +29225,58 @@ paths:
         state
       tags:
       - Projects
+  /api/v1/projects/loki-logs/download:
+    post:
+      operationId: projects-download-loki-logs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProjectsLogsCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Download loki logs
+      tags:
+      - Projects
   /api/v1/projects/extend/lifetime:
     post:
       operationId: projects-extend-lifetime
@@ -29483,18 +29427,22 @@ paths:
       summary: Lock/Unlock project
       tags:
       - Projects
-  /api/v1/projects/lokilogs:
+  /api/v1/projects/loki-logs:
     post:
       operationId: projects-loki-logs
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/LokiResponseDto"
+              $ref: "#/components/schemas/ProjectsLogsCommand"
       responses:
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/LokiResult"
+                type: array
           description: OK
         "400":
           content:
@@ -54842,9 +54790,6 @@ components:
     FetchKubernetesOverviewDataCommand:
       additionalProperties: false
       type: object
-    FetchOrganizationDetailsCommand:
-      additionalProperties: false
-      type: object
     FillArtifacthubOrganizationCommand:
       additionalProperties: false
       type: object
@@ -59086,58 +59031,31 @@ components:
           nullable: true
           type: string
       type: object
-    LokiResponseDto:
+    LokiResult:
       additionalProperties: false
       example:
-        start: 2000-01-23T04:56:07.000+00:00
-        limit: 6
-        canDownload: true
-        end: 2000-01-23T04:56:07.000+00:00
-        filters:
-        - value: value
-          operator: operator
-        - value: value
-          operator: operator
-        projectId: 0
-        parameters:
-        - label: label
-          value: value
-          operator: operator
-        - label: label
-          value: value
-          operator: operator
-        direction: direction
+        stream:
+          app: app
+          container: container
+          component: component
+          filename: filename
+          pod: pod
+          tier: tier
+          streamStream: streamStream
+          namespace: namespace
+          job: job
+          podTemplateHash: podTemplateHash
+        values:
+        - values
+        - values
       properties:
-        projectId:
-          format: int32
-          type: integer
-        parameters:
+        stream:
+          $ref: "#/components/schemas/Stream"
+        values:
           items:
-            $ref: "#/components/schemas/Parameter"
+            type: string
           nullable: true
           type: array
-        filters:
-          items:
-            $ref: "#/components/schemas/Filter"
-          nullable: true
-          type: array
-        start:
-          format: date-time
-          nullable: true
-          type: string
-        end:
-          format: date-time
-          nullable: true
-          type: string
-        limit:
-          format: int32
-          nullable: true
-          type: integer
-        direction:
-          nullable: true
-          type: string
-        canDownload:
-          type: boolean
       type: object
     MainProjectDto:
       additionalProperties: false
@@ -61581,23 +61499,6 @@ components:
           type: array
         isTaikunLink:
           type: boolean
-      type: object
-    Parameter:
-      additionalProperties: false
-      example:
-        label: label
-        value: value
-        operator: operator
-      properties:
-        label:
-          nullable: true
-          type: string
-        operator:
-          nullable: true
-          type: string
-        value:
-          nullable: true
-          type: string
       type: object
     ParameterType:
       enum:
@@ -65563,6 +65464,48 @@ components:
       required:
       - data
       - totalCount
+      type: object
+    ProjectsLogsCommand:
+      additionalProperties: false
+      example:
+        start: 2000-01-23T04:56:07.000+00:00
+        limit: 6
+        end: 2000-01-23T04:56:07.000+00:00
+        filters:
+        - value: value
+          operator: operator
+        - value: value
+          operator: operator
+        projectId: 0
+        parameters: parameters
+        direction: direction
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        parameters:
+          nullable: true
+          type: string
+        filters:
+          items:
+            $ref: "#/components/schemas/Filter"
+          nullable: true
+          type: array
+        start:
+          format: date-time
+          nullable: true
+          type: string
+        end:
+          format: date-time
+          nullable: true
+          type: string
+        limit:
+          format: int32
+          nullable: true
+          type: integer
+        direction:
+          nullable: true
+          type: string
       type: object
     ProjectsMonitoringAlertsCommand:
       additionalProperties: false
@@ -70112,6 +70055,51 @@ components:
           nullable: true
           type: string
         tokenSecret:
+          nullable: true
+          type: string
+      type: object
+    Stream:
+      additionalProperties: false
+      example:
+        app: app
+        container: container
+        component: component
+        filename: filename
+        pod: pod
+        tier: tier
+        streamStream: streamStream
+        namespace: namespace
+        job: job
+        podTemplateHash: podTemplateHash
+      properties:
+        job:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        pod:
+          nullable: true
+          type: string
+        podTemplateHash:
+          nullable: true
+          type: string
+        streamStream:
+          nullable: true
+          type: string
+        app:
+          nullable: true
+          type: string
+        container:
+          nullable: true
+          type: string
+        filename:
+          nullable: true
+          type: string
+        tier:
+          nullable: true
+          type: string
+        component:
           nullable: true
           type: string
       type: object

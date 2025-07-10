@@ -16,40 +16,39 @@ import (
 	"time"
 )
 
-// checks if the LokiResponseDto type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &LokiResponseDto{}
+// checks if the ProjectsLogsCommand type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProjectsLogsCommand{}
 
-// LokiResponseDto struct for LokiResponseDto
-type LokiResponseDto struct {
+// ProjectsLogsCommand struct for ProjectsLogsCommand
+type ProjectsLogsCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
-	Parameters []Parameter `json:"parameters,omitempty"`
+	Parameters NullableString `json:"parameters,omitempty"`
 	Filters []Filter `json:"filters,omitempty"`
 	Start NullableTime `json:"start,omitempty"`
 	End NullableTime `json:"end,omitempty"`
 	Limit NullableInt32 `json:"limit,omitempty"`
 	Direction NullableString `json:"direction,omitempty"`
-	CanDownload *bool `json:"canDownload,omitempty"`
 }
 
-// NewLokiResponseDto instantiates a new LokiResponseDto object
+// NewProjectsLogsCommand instantiates a new ProjectsLogsCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLokiResponseDto() *LokiResponseDto {
-	this := LokiResponseDto{}
+func NewProjectsLogsCommand() *ProjectsLogsCommand {
+	this := ProjectsLogsCommand{}
 	return &this
 }
 
-// NewLokiResponseDtoWithDefaults instantiates a new LokiResponseDto object
+// NewProjectsLogsCommandWithDefaults instantiates a new ProjectsLogsCommand object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewLokiResponseDtoWithDefaults() *LokiResponseDto {
-	this := LokiResponseDto{}
+func NewProjectsLogsCommandWithDefaults() *ProjectsLogsCommand {
+	this := ProjectsLogsCommand{}
 	return &this
 }
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
-func (o *LokiResponseDto) GetProjectId() int32 {
+func (o *ProjectsLogsCommand) GetProjectId() int32 {
 	if o == nil || IsNil(o.ProjectId) {
 		var ret int32
 		return ret
@@ -59,7 +58,7 @@ func (o *LokiResponseDto) GetProjectId() int32 {
 
 // GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LokiResponseDto) GetProjectIdOk() (*int32, bool) {
+func (o *ProjectsLogsCommand) GetProjectIdOk() (*int32, bool) {
 	if o == nil || IsNil(o.ProjectId) {
 		return nil, false
 	}
@@ -67,7 +66,7 @@ func (o *LokiResponseDto) GetProjectIdOk() (*int32, bool) {
 }
 
 // HasProjectId returns a boolean if a field has been set.
-func (o *LokiResponseDto) HasProjectId() bool {
+func (o *ProjectsLogsCommand) HasProjectId() bool {
 	if o != nil && !IsNil(o.ProjectId) {
 		return true
 	}
@@ -76,45 +75,54 @@ func (o *LokiResponseDto) HasProjectId() bool {
 }
 
 // SetProjectId gets a reference to the given int32 and assigns it to the ProjectId field.
-func (o *LokiResponseDto) SetProjectId(v int32) {
+func (o *ProjectsLogsCommand) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
 // GetParameters returns the Parameters field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *LokiResponseDto) GetParameters() []Parameter {
-	if o == nil {
-		var ret []Parameter
+func (o *ProjectsLogsCommand) GetParameters() string {
+	if o == nil || IsNil(o.Parameters.Get()) {
+		var ret string
 		return ret
 	}
-	return o.Parameters
+	return *o.Parameters.Get()
 }
 
 // GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *LokiResponseDto) GetParametersOk() ([]Parameter, bool) {
-	if o == nil || IsNil(o.Parameters) {
+func (o *ProjectsLogsCommand) GetParametersOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Parameters, true
+	return o.Parameters.Get(), o.Parameters.IsSet()
 }
 
 // HasParameters returns a boolean if a field has been set.
-func (o *LokiResponseDto) HasParameters() bool {
-	if o != nil && !IsNil(o.Parameters) {
+func (o *ProjectsLogsCommand) HasParameters() bool {
+	if o != nil && o.Parameters.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetParameters gets a reference to the given []Parameter and assigns it to the Parameters field.
-func (o *LokiResponseDto) SetParameters(v []Parameter) {
-	o.Parameters = v
+// SetParameters gets a reference to the given NullableString and assigns it to the Parameters field.
+func (o *ProjectsLogsCommand) SetParameters(v string) {
+	o.Parameters.Set(&v)
+}
+// SetParametersNil sets the value for Parameters to be an explicit nil
+func (o *ProjectsLogsCommand) SetParametersNil() {
+	o.Parameters.Set(nil)
+}
+
+// UnsetParameters ensures that no value is present for Parameters, not even an explicit nil
+func (o *ProjectsLogsCommand) UnsetParameters() {
+	o.Parameters.Unset()
 }
 
 // GetFilters returns the Filters field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *LokiResponseDto) GetFilters() []Filter {
+func (o *ProjectsLogsCommand) GetFilters() []Filter {
 	if o == nil {
 		var ret []Filter
 		return ret
@@ -125,7 +133,7 @@ func (o *LokiResponseDto) GetFilters() []Filter {
 // GetFiltersOk returns a tuple with the Filters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *LokiResponseDto) GetFiltersOk() ([]Filter, bool) {
+func (o *ProjectsLogsCommand) GetFiltersOk() ([]Filter, bool) {
 	if o == nil || IsNil(o.Filters) {
 		return nil, false
 	}
@@ -133,7 +141,7 @@ func (o *LokiResponseDto) GetFiltersOk() ([]Filter, bool) {
 }
 
 // HasFilters returns a boolean if a field has been set.
-func (o *LokiResponseDto) HasFilters() bool {
+func (o *ProjectsLogsCommand) HasFilters() bool {
 	if o != nil && !IsNil(o.Filters) {
 		return true
 	}
@@ -142,12 +150,12 @@ func (o *LokiResponseDto) HasFilters() bool {
 }
 
 // SetFilters gets a reference to the given []Filter and assigns it to the Filters field.
-func (o *LokiResponseDto) SetFilters(v []Filter) {
+func (o *ProjectsLogsCommand) SetFilters(v []Filter) {
 	o.Filters = v
 }
 
 // GetStart returns the Start field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *LokiResponseDto) GetStart() time.Time {
+func (o *ProjectsLogsCommand) GetStart() time.Time {
 	if o == nil || IsNil(o.Start.Get()) {
 		var ret time.Time
 		return ret
@@ -158,7 +166,7 @@ func (o *LokiResponseDto) GetStart() time.Time {
 // GetStartOk returns a tuple with the Start field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *LokiResponseDto) GetStartOk() (*time.Time, bool) {
+func (o *ProjectsLogsCommand) GetStartOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -166,7 +174,7 @@ func (o *LokiResponseDto) GetStartOk() (*time.Time, bool) {
 }
 
 // HasStart returns a boolean if a field has been set.
-func (o *LokiResponseDto) HasStart() bool {
+func (o *ProjectsLogsCommand) HasStart() bool {
 	if o != nil && o.Start.IsSet() {
 		return true
 	}
@@ -175,21 +183,21 @@ func (o *LokiResponseDto) HasStart() bool {
 }
 
 // SetStart gets a reference to the given NullableTime and assigns it to the Start field.
-func (o *LokiResponseDto) SetStart(v time.Time) {
+func (o *ProjectsLogsCommand) SetStart(v time.Time) {
 	o.Start.Set(&v)
 }
 // SetStartNil sets the value for Start to be an explicit nil
-func (o *LokiResponseDto) SetStartNil() {
+func (o *ProjectsLogsCommand) SetStartNil() {
 	o.Start.Set(nil)
 }
 
 // UnsetStart ensures that no value is present for Start, not even an explicit nil
-func (o *LokiResponseDto) UnsetStart() {
+func (o *ProjectsLogsCommand) UnsetStart() {
 	o.Start.Unset()
 }
 
 // GetEnd returns the End field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *LokiResponseDto) GetEnd() time.Time {
+func (o *ProjectsLogsCommand) GetEnd() time.Time {
 	if o == nil || IsNil(o.End.Get()) {
 		var ret time.Time
 		return ret
@@ -200,7 +208,7 @@ func (o *LokiResponseDto) GetEnd() time.Time {
 // GetEndOk returns a tuple with the End field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *LokiResponseDto) GetEndOk() (*time.Time, bool) {
+func (o *ProjectsLogsCommand) GetEndOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -208,7 +216,7 @@ func (o *LokiResponseDto) GetEndOk() (*time.Time, bool) {
 }
 
 // HasEnd returns a boolean if a field has been set.
-func (o *LokiResponseDto) HasEnd() bool {
+func (o *ProjectsLogsCommand) HasEnd() bool {
 	if o != nil && o.End.IsSet() {
 		return true
 	}
@@ -217,21 +225,21 @@ func (o *LokiResponseDto) HasEnd() bool {
 }
 
 // SetEnd gets a reference to the given NullableTime and assigns it to the End field.
-func (o *LokiResponseDto) SetEnd(v time.Time) {
+func (o *ProjectsLogsCommand) SetEnd(v time.Time) {
 	o.End.Set(&v)
 }
 // SetEndNil sets the value for End to be an explicit nil
-func (o *LokiResponseDto) SetEndNil() {
+func (o *ProjectsLogsCommand) SetEndNil() {
 	o.End.Set(nil)
 }
 
 // UnsetEnd ensures that no value is present for End, not even an explicit nil
-func (o *LokiResponseDto) UnsetEnd() {
+func (o *ProjectsLogsCommand) UnsetEnd() {
 	o.End.Unset()
 }
 
 // GetLimit returns the Limit field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *LokiResponseDto) GetLimit() int32 {
+func (o *ProjectsLogsCommand) GetLimit() int32 {
 	if o == nil || IsNil(o.Limit.Get()) {
 		var ret int32
 		return ret
@@ -242,7 +250,7 @@ func (o *LokiResponseDto) GetLimit() int32 {
 // GetLimitOk returns a tuple with the Limit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *LokiResponseDto) GetLimitOk() (*int32, bool) {
+func (o *ProjectsLogsCommand) GetLimitOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -250,7 +258,7 @@ func (o *LokiResponseDto) GetLimitOk() (*int32, bool) {
 }
 
 // HasLimit returns a boolean if a field has been set.
-func (o *LokiResponseDto) HasLimit() bool {
+func (o *ProjectsLogsCommand) HasLimit() bool {
 	if o != nil && o.Limit.IsSet() {
 		return true
 	}
@@ -259,21 +267,21 @@ func (o *LokiResponseDto) HasLimit() bool {
 }
 
 // SetLimit gets a reference to the given NullableInt32 and assigns it to the Limit field.
-func (o *LokiResponseDto) SetLimit(v int32) {
+func (o *ProjectsLogsCommand) SetLimit(v int32) {
 	o.Limit.Set(&v)
 }
 // SetLimitNil sets the value for Limit to be an explicit nil
-func (o *LokiResponseDto) SetLimitNil() {
+func (o *ProjectsLogsCommand) SetLimitNil() {
 	o.Limit.Set(nil)
 }
 
 // UnsetLimit ensures that no value is present for Limit, not even an explicit nil
-func (o *LokiResponseDto) UnsetLimit() {
+func (o *ProjectsLogsCommand) UnsetLimit() {
 	o.Limit.Unset()
 }
 
 // GetDirection returns the Direction field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *LokiResponseDto) GetDirection() string {
+func (o *ProjectsLogsCommand) GetDirection() string {
 	if o == nil || IsNil(o.Direction.Get()) {
 		var ret string
 		return ret
@@ -284,7 +292,7 @@ func (o *LokiResponseDto) GetDirection() string {
 // GetDirectionOk returns a tuple with the Direction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *LokiResponseDto) GetDirectionOk() (*string, bool) {
+func (o *ProjectsLogsCommand) GetDirectionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -292,7 +300,7 @@ func (o *LokiResponseDto) GetDirectionOk() (*string, bool) {
 }
 
 // HasDirection returns a boolean if a field has been set.
-func (o *LokiResponseDto) HasDirection() bool {
+func (o *ProjectsLogsCommand) HasDirection() bool {
 	if o != nil && o.Direction.IsSet() {
 		return true
 	}
@@ -301,52 +309,20 @@ func (o *LokiResponseDto) HasDirection() bool {
 }
 
 // SetDirection gets a reference to the given NullableString and assigns it to the Direction field.
-func (o *LokiResponseDto) SetDirection(v string) {
+func (o *ProjectsLogsCommand) SetDirection(v string) {
 	o.Direction.Set(&v)
 }
 // SetDirectionNil sets the value for Direction to be an explicit nil
-func (o *LokiResponseDto) SetDirectionNil() {
+func (o *ProjectsLogsCommand) SetDirectionNil() {
 	o.Direction.Set(nil)
 }
 
 // UnsetDirection ensures that no value is present for Direction, not even an explicit nil
-func (o *LokiResponseDto) UnsetDirection() {
+func (o *ProjectsLogsCommand) UnsetDirection() {
 	o.Direction.Unset()
 }
 
-// GetCanDownload returns the CanDownload field value if set, zero value otherwise.
-func (o *LokiResponseDto) GetCanDownload() bool {
-	if o == nil || IsNil(o.CanDownload) {
-		var ret bool
-		return ret
-	}
-	return *o.CanDownload
-}
-
-// GetCanDownloadOk returns a tuple with the CanDownload field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LokiResponseDto) GetCanDownloadOk() (*bool, bool) {
-	if o == nil || IsNil(o.CanDownload) {
-		return nil, false
-	}
-	return o.CanDownload, true
-}
-
-// HasCanDownload returns a boolean if a field has been set.
-func (o *LokiResponseDto) HasCanDownload() bool {
-	if o != nil && !IsNil(o.CanDownload) {
-		return true
-	}
-
-	return false
-}
-
-// SetCanDownload gets a reference to the given bool and assigns it to the CanDownload field.
-func (o *LokiResponseDto) SetCanDownload(v bool) {
-	o.CanDownload = &v
-}
-
-func (o LokiResponseDto) MarshalJSON() ([]byte, error) {
+func (o ProjectsLogsCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -354,13 +330,13 @@ func (o LokiResponseDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o LokiResponseDto) ToMap() (map[string]interface{}, error) {
+func (o ProjectsLogsCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if o.Parameters != nil {
-		toSerialize["parameters"] = o.Parameters
+	if o.Parameters.IsSet() {
+		toSerialize["parameters"] = o.Parameters.Get()
 	}
 	if o.Filters != nil {
 		toSerialize["filters"] = o.Filters
@@ -377,44 +353,41 @@ func (o LokiResponseDto) ToMap() (map[string]interface{}, error) {
 	if o.Direction.IsSet() {
 		toSerialize["direction"] = o.Direction.Get()
 	}
-	if !IsNil(o.CanDownload) {
-		toSerialize["canDownload"] = o.CanDownload
-	}
 	return toSerialize, nil
 }
 
-type NullableLokiResponseDto struct {
-	value *LokiResponseDto
+type NullableProjectsLogsCommand struct {
+	value *ProjectsLogsCommand
 	isSet bool
 }
 
-func (v NullableLokiResponseDto) Get() *LokiResponseDto {
+func (v NullableProjectsLogsCommand) Get() *ProjectsLogsCommand {
 	return v.value
 }
 
-func (v *NullableLokiResponseDto) Set(val *LokiResponseDto) {
+func (v *NullableProjectsLogsCommand) Set(val *ProjectsLogsCommand) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableLokiResponseDto) IsSet() bool {
+func (v NullableProjectsLogsCommand) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableLokiResponseDto) Unset() {
+func (v *NullableProjectsLogsCommand) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableLokiResponseDto(val *LokiResponseDto) *NullableLokiResponseDto {
-	return &NullableLokiResponseDto{value: val, isSet: true}
+func NewNullableProjectsLogsCommand(val *ProjectsLogsCommand) *NullableProjectsLogsCommand {
+	return &NullableProjectsLogsCommand{value: val, isSet: true}
 }
 
-func (v NullableLokiResponseDto) MarshalJSON() ([]byte, error) {
+func (v NullableProjectsLogsCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableLokiResponseDto) UnmarshalJSON(src []byte) error {
+func (v *NullableProjectsLogsCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

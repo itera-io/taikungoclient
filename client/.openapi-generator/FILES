@@ -581,7 +581,7 @@ docs/ListForOrganizationEditDto.md
 docs/ListForPartnersDto.md
 docs/LockProjectAppCommand.md
 docs/LoginCommand.md
-docs/LokiResponseDto.md
+docs/LokiResult.md
 docs/MainProjectDto.md
 docs/MakeCsmCommand.md
 docs/MakeOwnerCommand.md
@@ -663,7 +663,6 @@ docs/OrganizationsAPI.md
 docs/OrganizationsList.md
 docs/PackageAPI.md
 docs/PackageAutocompleteDto.md
-docs/Parameter.md
 docs/ParameterType.md
 docs/PartnerColorSettingsDto.md
 docs/PartnerDetailsDto.md
@@ -742,6 +741,7 @@ docs/ProjectWithFlavorsAndImagesDto.md
 docs/ProjectsAPI.md
 docs/ProjectsForBillingDto.md
 docs/ProjectsList.md
+docs/ProjectsLogsCommand.md
 docs/ProjectsMonitoringAlertsCommand.md
 docs/ProjectsSearchCommand.md
 docs/ProjectsSearchList.md
@@ -877,6 +877,7 @@ docs/StopStandaloneVmCommand.md
 docs/StorageClassesSearchCommand.md
 docs/StorageClassesSearchList.md
 docs/StorageListCommand.md
+docs/Stream.md
 docs/StripeAPI.md
 docs/StripeInvoiceListDto.md
 docs/StripeInvoices.md
@@ -1487,7 +1488,7 @@ model_list_for_organization_edit_dto.go
 model_list_for_partners_dto.go
 model_lock_project_app_command.go
 model_login_command.go
-model_loki_response_dto.go
+model_loki_result.go
 model_main_project_dto.go
 model_make_csm_command.go
 model_make_owner_command.go
@@ -1560,7 +1561,6 @@ model_organization_search_list.go
 model_organization_subscription_dto.go
 model_organizations_list.go
 model_package_autocomplete_dto.go
-model_parameter.go
 model_parameter_type.go
 model_partner_color_settings_dto.go
 model_partner_details_dto.go
@@ -1628,6 +1628,7 @@ model_project_type.go
 model_project_with_flavors_and_images_dto.go
 model_projects_for_billing_dto.go
 model_projects_list.go
+model_projects_logs_command.go
 model_projects_monitoring_alerts_command.go
 model_projects_search_command.go
 model_projects_search_list.go
@@ -1750,6 +1751,7 @@ model_stop_standalone_vm_command.go
 model_storage_classes_search_command.go
 model_storage_classes_search_list.go
 model_storage_list_command.go
+model_stream.go
 model_stripe_invoice_list_dto.go
 model_stripe_invoices.go
 model_stripe_subscription_item_dto.go

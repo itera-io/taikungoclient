@@ -270,7 +270,6 @@ Class | Method | HTTP request | Description
 *CronJobServiceAPI* | [**CronjobFetchAzureFlavorPrices**](docs/CronJobServiceAPI.md#cronjobfetchazureflavorprices) | **Post** /api/v1/cronjob/fetch-azure-flavor-prices | Fetch azure flavor prices
 *CronJobServiceAPI* | [**CronjobFetchK8sAlertData**](docs/CronJobServiceAPI.md#cronjobfetchk8salertdata) | **Post** /api/v1/cronjob/fetch-k8s-alert-data | Fetch k8s alert data
 *CronJobServiceAPI* | [**CronjobFetchK8sOverviewData**](docs/CronJobServiceAPI.md#cronjobfetchk8soverviewdata) | **Post** /api/v1/cronjob/fetch-k8s-overview-data | Fetch k8s overview data
-*CronJobServiceAPI* | [**CronjobFetchOrganizationDetails**](docs/CronJobServiceAPI.md#cronjobfetchorganizationdetails) | **Post** /api/v1/cronjob/fetch-organization-details | Fetch organization details
 *CronJobServiceAPI* | [**CronjobPurgeExpiredProjects**](docs/CronJobServiceAPI.md#cronjobpurgeexpiredprojects) | **Post** /api/v1/cronjob/purge-expired-projects | Purge expired projects
 *CronJobServiceAPI* | [**CronjobRemindUsersByAlertingProfile**](docs/CronJobServiceAPI.md#cronjobremindusersbyalertingprofile) | **Post** /api/v1/cronjob/remind-users-by-alerting-profile | Remind users by alerting profile
 *CronJobServiceAPI* | [**CronjobSyncBackupCredentials**](docs/CronJobServiceAPI.md#cronjobsyncbackupcredentials) | **Post** /api/v1/cronjob/sync-backup-credentials | Sync backup credentials
@@ -454,7 +453,6 @@ Class | Method | HTTP request | Description
 *OrganizationsAPI* | [**OrganizationsDisable2faManagement**](docs/OrganizationsAPI.md#organizationsdisable2famanagement) | **Post** /api/v1/organizations/disable-2fa-management | Disable 2fa management
 *OrganizationsAPI* | [**OrganizationsEnable2faManagement**](docs/OrganizationsAPI.md#organizationsenable2famanagement) | **Post** /api/v1/organizations/enable-2fa-management | Enable 2fa management
 *OrganizationsAPI* | [**OrganizationsExportCsv**](docs/OrganizationsAPI.md#organizationsexportcsv) | **Get** /api/v1/organizations/export | Export Csv file
-*OrganizationsAPI* | [**OrganizationsInfo**](docs/OrganizationsAPI.md#organizationsinfo) | **Get** /api/v1/organizations/info | Retrieve all data about current organization by Id
 *OrganizationsAPI* | [**OrganizationsLeave**](docs/OrganizationsAPI.md#organizationsleave) | **Post** /api/v1/organizations/leave | Leave taikun
 *OrganizationsAPI* | [**OrganizationsList**](docs/OrganizationsAPI.md#organizationslist) | **Get** /api/v1/organizations | Retrieve all organizations
 *OrganizationsAPI* | [**OrganizationsOrganizationList**](docs/OrganizationsAPI.md#organizationsorganizationlist) | **Get** /api/v1/organizations/list | Retrieve organizations
@@ -550,6 +548,7 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsDelete**](docs/ProjectsAPI.md#projectsdelete) | **Post** /api/v1/projects/delete | Delete the project. The project must be empty (no server) and in READY state
 *ProjectsAPI* | [**ProjectsDeleteProjectUsers**](docs/ProjectsAPI.md#projectsdeleteprojectusers) | **Put** /api/v1/projects/{id}/users | Unbind users from project
 *ProjectsAPI* | [**ProjectsDescribe**](docs/ProjectsAPI.md#projectsdescribe) | **Get** /api/v1/projects/describe/{projectId} | Describe project by Id
+*ProjectsAPI* | [**ProjectsDownloadLokiLogs**](docs/ProjectsAPI.md#projectsdownloadlokilogs) | **Post** /api/v1/projects/loki-logs/download | Download loki logs
 *ProjectsAPI* | [**ProjectsDropdown**](docs/ProjectsAPI.md#projectsdropdown) | **Get** /api/v1/projects/list | Retrieve list of projects for dropdown
 *ProjectsAPI* | [**ProjectsEditHealth**](docs/ProjectsAPI.md#projectsedithealth) | **Put** /api/v1/projects/edit/health | Update health status of the project by Id
 *ProjectsAPI* | [**ProjectsEditStatus**](docs/ProjectsAPI.md#projectseditstatus) | **Put** /api/v1/projects/edit/status | Change the project status for the given project. Only available for admin.
@@ -559,7 +558,7 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsImportedClusterDetails**](docs/ProjectsAPI.md#projectsimportedclusterdetails) | **Get** /api/v1/projects/imported/details/{projectId} | Imported cluster details
 *ProjectsAPI* | [**ProjectsList**](docs/ProjectsAPI.md#projectslist) | **Get** /api/v1/projects | Retrieve all projects
 *ProjectsAPI* | [**ProjectsLockManager**](docs/ProjectsAPI.md#projectslockmanager) | **Post** /api/v1/projects/lockmanager | Lock/Unlock project
-*ProjectsAPI* | [**ProjectsLokiLogs**](docs/ProjectsAPI.md#projectslokilogs) | **Post** /api/v1/projects/lokilogs | Retrieve loki logs
+*ProjectsAPI* | [**ProjectsLokiLogs**](docs/ProjectsAPI.md#projectslokilogs) | **Post** /api/v1/projects/loki-logs | Retrieve loki logs
 *ProjectsAPI* | [**ProjectsMaintenanceManager**](docs/ProjectsAPI.md#projectsmaintenancemanager) | **Post** /api/v1/projects/maintenance-manager | Enable/disable project&#39;s maintenance mode
 *ProjectsAPI* | [**ProjectsMonitoringAlerts**](docs/ProjectsAPI.md#projectsmonitoringalerts) | **Post** /api/v1/projects/monitoringalerts | Monitoring alerts for project
 *ProjectsAPI* | [**ProjectsPrometheusMetrics**](docs/ProjectsAPI.md#projectsprometheusmetrics) | **Post** /api/v1/projects/prometheusmetrics | Prometheus metrics data project
@@ -1236,7 +1235,7 @@ Class | Method | HTTP request | Description
  - [ListForPartnersDto](docs/ListForPartnersDto.md)
  - [LockProjectAppCommand](docs/LockProjectAppCommand.md)
  - [LoginCommand](docs/LoginCommand.md)
- - [LokiResponseDto](docs/LokiResponseDto.md)
+ - [LokiResult](docs/LokiResult.md)
  - [MainProjectDto](docs/MainProjectDto.md)
  - [MakeCsmCommand](docs/MakeCsmCommand.md)
  - [MakeOwnerCommand](docs/MakeOwnerCommand.md)
@@ -1309,7 +1308,6 @@ Class | Method | HTTP request | Description
  - [OrganizationSubscriptionDto](docs/OrganizationSubscriptionDto.md)
  - [OrganizationsList](docs/OrganizationsList.md)
  - [PackageAutocompleteDto](docs/PackageAutocompleteDto.md)
- - [Parameter](docs/Parameter.md)
  - [ParameterType](docs/ParameterType.md)
  - [PartnerColorSettingsDto](docs/PartnerColorSettingsDto.md)
  - [PartnerDetailsDto](docs/PartnerDetailsDto.md)
@@ -1377,6 +1375,7 @@ Class | Method | HTTP request | Description
  - [ProjectWithFlavorsAndImagesDto](docs/ProjectWithFlavorsAndImagesDto.md)
  - [ProjectsForBillingDto](docs/ProjectsForBillingDto.md)
  - [ProjectsList](docs/ProjectsList.md)
+ - [ProjectsLogsCommand](docs/ProjectsLogsCommand.md)
  - [ProjectsMonitoringAlertsCommand](docs/ProjectsMonitoringAlertsCommand.md)
  - [ProjectsSearchCommand](docs/ProjectsSearchCommand.md)
  - [ProjectsSearchList](docs/ProjectsSearchList.md)
@@ -1499,6 +1498,7 @@ Class | Method | HTTP request | Description
  - [StorageClassesSearchCommand](docs/StorageClassesSearchCommand.md)
  - [StorageClassesSearchList](docs/StorageClassesSearchList.md)
  - [StorageListCommand](docs/StorageListCommand.md)
+ - [Stream](docs/Stream.md)
  - [StripeInvoiceListDto](docs/StripeInvoiceListDto.md)
  - [StripeInvoices](docs/StripeInvoices.md)
  - [StripeSubscriptionItemDto](docs/StripeSubscriptionItemDto.md)
