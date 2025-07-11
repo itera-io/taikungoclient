@@ -548,10 +548,10 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsDelete**](docs/ProjectsAPI.md#projectsdelete) | **Post** /api/v1/projects/delete | Delete the project. The project must be empty (no server) and in READY state
 *ProjectsAPI* | [**ProjectsDeleteProjectUsers**](docs/ProjectsAPI.md#projectsdeleteprojectusers) | **Put** /api/v1/projects/{id}/users | Unbind users from project
 *ProjectsAPI* | [**ProjectsDescribe**](docs/ProjectsAPI.md#projectsdescribe) | **Get** /api/v1/projects/describe/{projectId} | Describe project by Id
-*ProjectsAPI* | [**ProjectsDownloadLokiLogs**](docs/ProjectsAPI.md#projectsdownloadlokilogs) | **Post** /api/v1/projects/loki-logs/download | Download loki logs
 *ProjectsAPI* | [**ProjectsDropdown**](docs/ProjectsAPI.md#projectsdropdown) | **Get** /api/v1/projects/list | Retrieve list of projects for dropdown
 *ProjectsAPI* | [**ProjectsEditHealth**](docs/ProjectsAPI.md#projectsedithealth) | **Put** /api/v1/projects/edit/health | Update health status of the project by Id
 *ProjectsAPI* | [**ProjectsEditStatus**](docs/ProjectsAPI.md#projectseditstatus) | **Put** /api/v1/projects/edit/status | Change the project status for the given project. Only available for admin.
+*ProjectsAPI* | [**ProjectsExportLokiLogs**](docs/ProjectsAPI.md#projectsexportlokilogs) | **Post** /api/v1/projects/loki-logs/export | Export loki logs
 *ProjectsAPI* | [**ProjectsExtendLifetime**](docs/ProjectsAPI.md#projectsextendlifetime) | **Post** /api/v1/projects/extend/lifetime | Extend life time of project
 *ProjectsAPI* | [**ProjectsForAlerting**](docs/ProjectsAPI.md#projectsforalerting) | **Get** /api/v1/projects/foralerting | Retrieve a list of projects for alert poller. Only available for admins.
 *ProjectsAPI* | [**ProjectsForBilling**](docs/ProjectsAPI.md#projectsforbilling) | **Get** /api/v1/projects/forbilling | Retrieve a list of projects for billing
@@ -1115,6 +1115,7 @@ Class | Method | HTTP request | Description
  - [ExecutorHealth](docs/ExecutorHealth.md)
  - [ExecutorListResponse](docs/ExecutorListResponse.md)
  - [ExportKubeConfigCommand](docs/ExportKubeConfigCommand.md)
+ - [ExportLokiLogsCommand](docs/ExportLokiLogsCommand.md)
  - [ExtendTrialPeriodCommand](docs/ExtendTrialPeriodCommand.md)
  - [Filter](docs/Filter.md)
  - [FilteringElementDto](docs/FilteringElementDto.md)
@@ -1235,6 +1236,7 @@ Class | Method | HTTP request | Description
  - [ListForPartnersDto](docs/ListForPartnersDto.md)
  - [LockProjectAppCommand](docs/LockProjectAppCommand.md)
  - [LoginCommand](docs/LoginCommand.md)
+ - [LokiLogsQuery](docs/LokiLogsQuery.md)
  - [LokiResult](docs/LokiResult.md)
  - [MainProjectDto](docs/MainProjectDto.md)
  - [MakeCsmCommand](docs/MakeCsmCommand.md)

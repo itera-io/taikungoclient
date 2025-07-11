@@ -6679,8 +6679,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-07-09T17:31:54.4612244Z
-                  createdAt: 2025-07-09T17:31:54.4612244Z
+                  lastValidated: 2025-07-10T15:15:38.597349Z
+                  createdAt: 2025-07-10T15:15:38.597349Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6791,14 +6791,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-07-09T17:31:54.4612244Z
+                    lastBackup: 2025-07-10T15:15:38.597349Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-07-09T17:31:54.4612244Z
+                  createdAt: 2025-07-10T15:15:38.597349Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-07-09T17:31:54.4612244Z
+                  lastBackup: 2025-07-10T15:15:38.597349Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6909,8 +6909,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-07-09T17:31:54.4612244Z
-                  expiration: 2025-07-09T17:31:54.4612244Z
+                  createdAt: 2025-07-10T15:15:38.597349Z
+                  expiration: 2025-07-10T15:15:38.597349Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -7020,7 +7020,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-07-09T17:31:54.4612244Z
+                  createdAt: 2025-07-10T15:15:38.597349Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -7136,9 +7136,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-07-09T17:31:54.4612244+00:00
-                  startTimeStamp: 2025-07-09T17:31:54.4612244+00:00
-                  createdAt: 2025-07-09T17:31:54.4612244Z
+                  completionDateTime: 2025-07-10T15:15:38.597349+00:00
+                  startTimeStamp: 2025-07-10T15:15:38.597349+00:00
+                  createdAt: 2025-07-10T15:15:38.597349Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -29225,14 +29225,14 @@ paths:
         state
       tags:
       - Projects
-  /api/v1/projects/loki-logs/download:
+  /api/v1/projects/loki-logs/export:
     post:
-      operationId: projects-download-loki-logs
+      operationId: projects-export-loki-logs
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ProjectsLogsCommand"
+              $ref: "#/components/schemas/ExportLokiLogsCommand"
       responses:
         "200":
           content:
@@ -29274,7 +29274,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
-      summary: Download loki logs
+      summary: Export loki logs
       tags:
       - Projects
   /api/v1/projects/extend/lifetime:
@@ -54768,6 +54768,25 @@ components:
           format: int32
           type: integer
       type: object
+    ExportLokiLogsCommand:
+      additionalProperties: false
+      example:
+        query:
+          endDate: 2000-01-23T04:56:07.000+00:00
+          limit: 6
+          filters:
+          - value: value
+            operator: operator
+          - value: value
+            operator: operator
+          projectId: 0
+          parameters: parameters
+          startDate: 2000-01-23T04:56:07.000+00:00
+          direction: direction
+      properties:
+        query:
+          $ref: "#/components/schemas/LokiLogsQuery"
+      type: object
     ExtendTrialPeriodCommand:
       additionalProperties: false
       example:
@@ -59028,6 +59047,48 @@ components:
           nullable: true
           type: string
         secretKey:
+          nullable: true
+          type: string
+      type: object
+    LokiLogsQuery:
+      additionalProperties: false
+      example:
+        endDate: 2000-01-23T04:56:07.000+00:00
+        limit: 6
+        filters:
+        - value: value
+          operator: operator
+        - value: value
+          operator: operator
+        projectId: 0
+        parameters: parameters
+        startDate: 2000-01-23T04:56:07.000+00:00
+        direction: direction
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        parameters:
+          nullable: true
+          type: string
+        filters:
+          items:
+            $ref: "#/components/schemas/Filter"
+          nullable: true
+          type: array
+        startDate:
+          format: date-time
+          nullable: true
+          type: string
+        endDate:
+          format: date-time
+          nullable: true
+          type: string
+        limit:
+          format: int32
+          nullable: true
+          type: integer
+        direction:
           nullable: true
           type: string
       type: object
@@ -65468,44 +65529,21 @@ components:
     ProjectsLogsCommand:
       additionalProperties: false
       example:
-        start: 2000-01-23T04:56:07.000+00:00
-        limit: 6
-        end: 2000-01-23T04:56:07.000+00:00
-        filters:
-        - value: value
-          operator: operator
-        - value: value
-          operator: operator
-        projectId: 0
-        parameters: parameters
-        direction: direction
+        query:
+          endDate: 2000-01-23T04:56:07.000+00:00
+          limit: 6
+          filters:
+          - value: value
+            operator: operator
+          - value: value
+            operator: operator
+          projectId: 0
+          parameters: parameters
+          startDate: 2000-01-23T04:56:07.000+00:00
+          direction: direction
       properties:
-        projectId:
-          format: int32
-          type: integer
-        parameters:
-          nullable: true
-          type: string
-        filters:
-          items:
-            $ref: "#/components/schemas/Filter"
-          nullable: true
-          type: array
-        start:
-          format: date-time
-          nullable: true
-          type: string
-        end:
-          format: date-time
-          nullable: true
-          type: string
-        limit:
-          format: int32
-          nullable: true
-          type: integer
-        direction:
-          nullable: true
-          type: string
+        query:
+          $ref: "#/components/schemas/LokiLogsQuery"
       type: object
     ProjectsMonitoringAlertsCommand:
       additionalProperties: false

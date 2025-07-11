@@ -447,6 +447,7 @@ docs/ExecutorHealth.md
 docs/ExecutorListResponse.md
 docs/ExecutorsAPI.md
 docs/ExportKubeConfigCommand.md
+docs/ExportLokiLogsCommand.md
 docs/ExtendTrialPeriodCommand.md
 docs/Filter.md
 docs/FilteringElementDto.md
@@ -581,6 +582,7 @@ docs/ListForOrganizationEditDto.md
 docs/ListForPartnersDto.md
 docs/LockProjectAppCommand.md
 docs/LoginCommand.md
+docs/LokiLogsQuery.md
 docs/LokiResult.md
 docs/MainProjectDto.md
 docs/MakeCsmCommand.md
@@ -1368,6 +1370,7 @@ model_executor_entity_dto.go
 model_executor_health.go
 model_executor_list_response.go
 model_export_kube_config_command.go
+model_export_loki_logs_command.go
 model_extend_trial_period_command.go
 model_filter.go
 model_filtering_element_dto.go
@@ -1488,6 +1491,7 @@ model_list_for_organization_edit_dto.go
 model_list_for_partners_dto.go
 model_lock_project_app_command.go
 model_login_command.go
+model_loki_logs_query.go
 model_loki_result.go
 model_main_project_dto.go
 model_make_csm_command.go

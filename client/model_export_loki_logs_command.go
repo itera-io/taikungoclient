@@ -15,33 +15,33 @@ import (
 	"encoding/json"
 )
 
-// checks if the ProjectsLogsCommand type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ProjectsLogsCommand{}
+// checks if the ExportLokiLogsCommand type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ExportLokiLogsCommand{}
 
-// ProjectsLogsCommand struct for ProjectsLogsCommand
-type ProjectsLogsCommand struct {
+// ExportLokiLogsCommand struct for ExportLokiLogsCommand
+type ExportLokiLogsCommand struct {
 	Query *LokiLogsQuery `json:"query,omitempty"`
 }
 
-// NewProjectsLogsCommand instantiates a new ProjectsLogsCommand object
+// NewExportLokiLogsCommand instantiates a new ExportLokiLogsCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectsLogsCommand() *ProjectsLogsCommand {
-	this := ProjectsLogsCommand{}
+func NewExportLokiLogsCommand() *ExportLokiLogsCommand {
+	this := ExportLokiLogsCommand{}
 	return &this
 }
 
-// NewProjectsLogsCommandWithDefaults instantiates a new ProjectsLogsCommand object
+// NewExportLokiLogsCommandWithDefaults instantiates a new ExportLokiLogsCommand object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewProjectsLogsCommandWithDefaults() *ProjectsLogsCommand {
-	this := ProjectsLogsCommand{}
+func NewExportLokiLogsCommandWithDefaults() *ExportLokiLogsCommand {
+	this := ExportLokiLogsCommand{}
 	return &this
 }
 
 // GetQuery returns the Query field value if set, zero value otherwise.
-func (o *ProjectsLogsCommand) GetQuery() LokiLogsQuery {
+func (o *ExportLokiLogsCommand) GetQuery() LokiLogsQuery {
 	if o == nil || IsNil(o.Query) {
 		var ret LokiLogsQuery
 		return ret
@@ -51,7 +51,7 @@ func (o *ProjectsLogsCommand) GetQuery() LokiLogsQuery {
 
 // GetQueryOk returns a tuple with the Query field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectsLogsCommand) GetQueryOk() (*LokiLogsQuery, bool) {
+func (o *ExportLokiLogsCommand) GetQueryOk() (*LokiLogsQuery, bool) {
 	if o == nil || IsNil(o.Query) {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *ProjectsLogsCommand) GetQueryOk() (*LokiLogsQuery, bool) {
 }
 
 // HasQuery returns a boolean if a field has been set.
-func (o *ProjectsLogsCommand) HasQuery() bool {
+func (o *ExportLokiLogsCommand) HasQuery() bool {
 	if o != nil && !IsNil(o.Query) {
 		return true
 	}
@@ -68,11 +68,11 @@ func (o *ProjectsLogsCommand) HasQuery() bool {
 }
 
 // SetQuery gets a reference to the given LokiLogsQuery and assigns it to the Query field.
-func (o *ProjectsLogsCommand) SetQuery(v LokiLogsQuery) {
+func (o *ExportLokiLogsCommand) SetQuery(v LokiLogsQuery) {
 	o.Query = &v
 }
 
-func (o ProjectsLogsCommand) MarshalJSON() ([]byte, error) {
+func (o ExportLokiLogsCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -80,7 +80,7 @@ func (o ProjectsLogsCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ProjectsLogsCommand) ToMap() (map[string]interface{}, error) {
+func (o ExportLokiLogsCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Query) {
 		toSerialize["query"] = o.Query
@@ -88,38 +88,38 @@ func (o ProjectsLogsCommand) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableProjectsLogsCommand struct {
-	value *ProjectsLogsCommand
+type NullableExportLokiLogsCommand struct {
+	value *ExportLokiLogsCommand
 	isSet bool
 }
 
-func (v NullableProjectsLogsCommand) Get() *ProjectsLogsCommand {
+func (v NullableExportLokiLogsCommand) Get() *ExportLokiLogsCommand {
 	return v.value
 }
 
-func (v *NullableProjectsLogsCommand) Set(val *ProjectsLogsCommand) {
+func (v *NullableExportLokiLogsCommand) Set(val *ExportLokiLogsCommand) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableProjectsLogsCommand) IsSet() bool {
+func (v NullableExportLokiLogsCommand) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableProjectsLogsCommand) Unset() {
+func (v *NullableExportLokiLogsCommand) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableProjectsLogsCommand(val *ProjectsLogsCommand) *NullableProjectsLogsCommand {
-	return &NullableProjectsLogsCommand{value: val, isSet: true}
+func NewNullableExportLokiLogsCommand(val *ExportLokiLogsCommand) *NullableExportLokiLogsCommand {
+	return &NullableExportLokiLogsCommand{value: val, isSet: true}
 }
 
-func (v NullableProjectsLogsCommand) MarshalJSON() ([]byte, error) {
+func (v NullableExportLokiLogsCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableProjectsLogsCommand) UnmarshalJSON(src []byte) error {
+func (v *NullableExportLokiLogsCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
