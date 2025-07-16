@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // checks if the BillingSummaryDto type satisfies the MappedNullable interface at compile time
@@ -23,8 +22,8 @@ var _ MappedNullable = &BillingSummaryDto{}
 type BillingSummaryDto struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	ProjectName NullableString `json:"projectName,omitempty"`
-	StartDate *time.Time `json:"startDate,omitempty"`
-	EndDate NullableTime `json:"endDate,omitempty"`
+	StartDate NullableString `json:"startDate,omitempty"`
+	EndDate NullableString `json:"endDate,omitempty"`
 	Tcu *float64 `json:"tcu,omitempty"`
 	IsDeleted *bool `json:"isDeleted,omitempty"`
 }
@@ -120,42 +119,52 @@ func (o *BillingSummaryDto) UnsetProjectName() {
 	o.ProjectName.Unset()
 }
 
-// GetStartDate returns the StartDate field value if set, zero value otherwise.
-func (o *BillingSummaryDto) GetStartDate() time.Time {
-	if o == nil || IsNil(o.StartDate) {
-		var ret time.Time
+// GetStartDate returns the StartDate field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *BillingSummaryDto) GetStartDate() string {
+	if o == nil || IsNil(o.StartDate.Get()) {
+		var ret string
 		return ret
 	}
-	return *o.StartDate
+	return *o.StartDate.Get()
 }
 
 // GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingSummaryDto) GetStartDateOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.StartDate) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *BillingSummaryDto) GetStartDateOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.StartDate, true
+	return o.StartDate.Get(), o.StartDate.IsSet()
 }
 
 // HasStartDate returns a boolean if a field has been set.
 func (o *BillingSummaryDto) HasStartDate() bool {
-	if o != nil && !IsNil(o.StartDate) {
+	if o != nil && o.StartDate.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStartDate gets a reference to the given time.Time and assigns it to the StartDate field.
-func (o *BillingSummaryDto) SetStartDate(v time.Time) {
-	o.StartDate = &v
+// SetStartDate gets a reference to the given NullableString and assigns it to the StartDate field.
+func (o *BillingSummaryDto) SetStartDate(v string) {
+	o.StartDate.Set(&v)
+}
+// SetStartDateNil sets the value for StartDate to be an explicit nil
+func (o *BillingSummaryDto) SetStartDateNil() {
+	o.StartDate.Set(nil)
+}
+
+// UnsetStartDate ensures that no value is present for StartDate, not even an explicit nil
+func (o *BillingSummaryDto) UnsetStartDate() {
+	o.StartDate.Unset()
 }
 
 // GetEndDate returns the EndDate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *BillingSummaryDto) GetEndDate() time.Time {
+func (o *BillingSummaryDto) GetEndDate() string {
 	if o == nil || IsNil(o.EndDate.Get()) {
-		var ret time.Time
+		var ret string
 		return ret
 	}
 	return *o.EndDate.Get()
@@ -164,7 +173,7 @@ func (o *BillingSummaryDto) GetEndDate() time.Time {
 // GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *BillingSummaryDto) GetEndDateOk() (*time.Time, bool) {
+func (o *BillingSummaryDto) GetEndDateOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -180,8 +189,8 @@ func (o *BillingSummaryDto) HasEndDate() bool {
 	return false
 }
 
-// SetEndDate gets a reference to the given NullableTime and assigns it to the EndDate field.
-func (o *BillingSummaryDto) SetEndDate(v time.Time) {
+// SetEndDate gets a reference to the given NullableString and assigns it to the EndDate field.
+func (o *BillingSummaryDto) SetEndDate(v string) {
 	o.EndDate.Set(&v)
 }
 // SetEndDateNil sets the value for EndDate to be an explicit nil
@@ -274,8 +283,8 @@ func (o BillingSummaryDto) ToMap() (map[string]interface{}, error) {
 	if o.ProjectName.IsSet() {
 		toSerialize["projectName"] = o.ProjectName.Get()
 	}
-	if !IsNil(o.StartDate) {
-		toSerialize["startDate"] = o.StartDate
+	if o.StartDate.IsSet() {
+		toSerialize["startDate"] = o.StartDate.Get()
 	}
 	if o.EndDate.IsSet() {
 		toSerialize["endDate"] = o.EndDate.Get()
