@@ -6679,8 +6679,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-07-12T00:02:24.1709365Z
-                  createdAt: 2025-07-12T00:02:24.1709365Z
+                  lastValidated: 2025-07-17T00:02:28.5073204Z
+                  createdAt: 2025-07-17T00:02:28.5073204Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6791,14 +6791,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-07-12T00:02:24.1709365Z
+                    lastBackup: 2025-07-17T00:02:28.5073204Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-07-12T00:02:24.1709365Z
+                  createdAt: 2025-07-17T00:02:28.5073204Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-07-12T00:02:24.1709365Z
+                  lastBackup: 2025-07-17T00:02:28.5073204Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6909,8 +6909,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-07-12T00:02:24.1709365Z
-                  expiration: 2025-07-12T00:02:24.1709365Z
+                  createdAt: 2025-07-17T00:02:28.5073204Z
+                  expiration: 2025-07-17T00:02:28.5073204Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -7020,7 +7020,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-07-12T00:02:24.1709365Z
+                  createdAt: 2025-07-17T00:02:28.5073204Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -7136,9 +7136,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-07-12T00:02:24.1709365+00:00
-                  startTimeStamp: 2025-07-12T00:02:24.1709365+00:00
-                  createdAt: 2025-07-12T00:02:24.1709365Z
+                  completionDateTime: 2025-07-17T00:02:28.5073204+00:00
+                  startTimeStamp: 2025-07-17T00:02:28.5073204+00:00
+                  createdAt: 2025-07-17T00:02:28.5073204Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -46347,17 +46347,17 @@ components:
       example:
         data:
         - isDeleted: true
-          endDate: 2000-01-23T04:56:07.000+00:00
+          endDate: endDate
           tcu: 6.027456183070403
           projectName: projectName
           projectId: 0
-          startDate: 2000-01-23T04:56:07.000+00:00
+          startDate: startDate
         - isDeleted: true
-          endDate: 2000-01-23T04:56:07.000+00:00
+          endDate: endDate
           tcu: 6.027456183070403
           projectName: projectName
           projectId: 0
-          startDate: 2000-01-23T04:56:07.000+00:00
+          startDate: startDate
         totalTcu: 1.4658129805029452
         totalCount: 5
       properties:
@@ -46420,11 +46420,11 @@ components:
       additionalProperties: false
       example:
         isDeleted: true
-        endDate: 2000-01-23T04:56:07.000+00:00
+        endDate: endDate
         tcu: 6.027456183070403
         projectName: projectName
         projectId: 0
-        startDate: 2000-01-23T04:56:07.000+00:00
+        startDate: startDate
       properties:
         projectId:
           format: int32
@@ -46433,10 +46433,9 @@ components:
           nullable: true
           type: string
         startDate:
-          format: date-time
+          nullable: true
           type: string
         endDate:
-          format: date-time
           nullable: true
           type: string
         tcu:
