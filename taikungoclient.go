@@ -38,6 +38,7 @@ type jwtData struct {
 type taikunError struct {
 	HTTPStatusCode int
 	Message        string
+	GoError        error // Optional underlying Go error (e.g., network, decoding)
 }
 
 type customTransport struct {
@@ -146,14 +147,19 @@ func (transport *customTransport) hasTokenExpired() bool {
 	return tm.Before(time.Now())
 }
 
-// Error is a method of struct taikunError used to pretty print the recieved HTTP error.
+// Error returns a readable string representation of a taikunError.
 func (e *taikunError) Error() string {
+	if e.GoError != nil {
+		return fmt.Sprintf("Taikun Error: %s (HTTP %d) + Go Error: %v", e.Message, e.HTTPStatusCode, e.GoError)
+	}
 	return fmt.Sprintf("Taikun Error: %s (HTTP %d)", e.Message, e.HTTPStatusCode)
 }
 
 // CreateError is a helper function to convert an unsuccessful HTTP response to a taikunError struct.
 // Function is exported because it is used by the Terraform taikun provider and Taikun CLI to show errors.
+// It attempts to read and parse the response body and combines it with any low-level error.
 func CreateError(resp *http.Response, err error) error {
+	// Case: No response available at all
 	if resp == nil {
 		if err != nil {
 			return err
@@ -161,40 +167,59 @@ func CreateError(resp *http.Response, err error) error {
 		return errors.New("unknown error: both response and error are nil")
 	}
 
-	if resp.Body != nil {
-		defer func() {
-			_ = resp.Body.Close()
-		}()
-	}
+	var bodyBytes []byte
+	var readErr error
 
-	bodyBytes, readErr := io.ReadAll(resp.Body)
-	if readErr != nil {
-		return fmt.Errorf("failed to read error response body (HTTP %d): %v", resp.StatusCode, readErr)
+	if resp.Body != nil {
+		defer func() { _ = resp.Body.Close() }()
+		bodyBytes, readErr = io.ReadAll(resp.Body)
 	}
 
 	bodyStr := strings.TrimSpace(string(bodyBytes))
-	if bodyStr == "" {
-		if err != nil {
-			return fmt.Errorf("empty response body (HTTP %d): %v", resp.StatusCode, err)
+
+	// Case: Response body unreadable
+	if readErr != nil {
+		return &taikunError{
+			HTTPStatusCode: resp.StatusCode,
+			Message:        fmt.Sprintf("failed to read error response body: %v", readErr),
+			GoError:        err,
 		}
-		return fmt.Errorf("empty response body (HTTP %d)", resp.StatusCode)
 	}
 
-	// Try parsing known error shape
+	// Case: Empty response body
+	if bodyStr == "" {
+		return &taikunError{
+			HTTPStatusCode: resp.StatusCode,
+			Message:        "empty response body",
+			GoError:        err,
+		}
+	}
+
+	// Attempt to parse known JSON error shapes
 	var parsed map[string]interface{}
 	if json.Unmarshal(bodyBytes, &parsed) == nil {
-		if detail, ok := parsed["detail"]; ok {
-			return &taikunError{
-				HTTPStatusCode: resp.StatusCode,
-				Message:        fmt.Sprintf("%v", detail),
+		for _, key := range []string{"detail", "message", "error"} {
+			if val, ok := parsed[key]; ok {
+				return &taikunError{
+					HTTPStatusCode: resp.StatusCode,
+					Message:        fmt.Sprintf("%v", val),
+					GoError:        err,
+				}
 			}
+		}
+		// Fallback: show whole parsed JSON
+		return &taikunError{
+			HTTPStatusCode: resp.StatusCode,
+			Message:        fmt.Sprintf("unstructured error: %v", parsed),
+			GoError:        err,
 		}
 	}
 
-	// Fallback to raw body
+	// Plain text fallback
 	return &taikunError{
 		HTTPStatusCode: resp.StatusCode,
 		Message:        bodyStr,
+		GoError:        err,
 	}
 }
 
