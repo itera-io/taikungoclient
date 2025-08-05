@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"time"
 	"bytes"
 	"fmt"
 )
@@ -30,12 +29,9 @@ type UserForListDto struct {
 	HasPaymentMethod bool `json:"hasPaymentMethod"`
 	OrganizationId int32 `json:"organizationId"`
 	Role UserRole `json:"role"`
-	RoleName NullableString `json:"roleName,omitempty"`
 	Email string `json:"email"`
 	DisplayName NullableString `json:"displayName"`
 	CreatedAt string `json:"createdAt"`
-	Created NullableTime `json:"created,omitempty"`
-	TrialEnds NullableTime `json:"trialEnds,omitempty"`
 	IsEmailConfirmed bool `json:"isEmailConfirmed"`
 	IsEmailNotificationEnabled bool `json:"isEmailNotificationEnabled"`
 	IsForcedToResetPassword bool `json:"isForcedToResetPassword"`
@@ -266,48 +262,6 @@ func (o *UserForListDto) SetRole(v UserRole) {
 	o.Role = v
 }
 
-// GetRoleName returns the RoleName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *UserForListDto) GetRoleName() string {
-	if o == nil || IsNil(o.RoleName.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.RoleName.Get()
-}
-
-// GetRoleNameOk returns a tuple with the RoleName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *UserForListDto) GetRoleNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.RoleName.Get(), o.RoleName.IsSet()
-}
-
-// HasRoleName returns a boolean if a field has been set.
-func (o *UserForListDto) HasRoleName() bool {
-	if o != nil && o.RoleName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetRoleName gets a reference to the given NullableString and assigns it to the RoleName field.
-func (o *UserForListDto) SetRoleName(v string) {
-	o.RoleName.Set(&v)
-}
-// SetRoleNameNil sets the value for RoleName to be an explicit nil
-func (o *UserForListDto) SetRoleNameNil() {
-	o.RoleName.Set(nil)
-}
-
-// UnsetRoleName ensures that no value is present for RoleName, not even an explicit nil
-func (o *UserForListDto) UnsetRoleName() {
-	o.RoleName.Unset()
-}
-
 // GetEmail returns the Email field value
 func (o *UserForListDto) GetEmail() string {
 	if o == nil {
@@ -380,90 +334,6 @@ func (o *UserForListDto) GetCreatedAtOk() (*string, bool) {
 // SetCreatedAt sets field value
 func (o *UserForListDto) SetCreatedAt(v string) {
 	o.CreatedAt = v
-}
-
-// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *UserForListDto) GetCreated() time.Time {
-	if o == nil || IsNil(o.Created.Get()) {
-		var ret time.Time
-		return ret
-	}
-	return *o.Created.Get()
-}
-
-// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *UserForListDto) GetCreatedOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Created.Get(), o.Created.IsSet()
-}
-
-// HasCreated returns a boolean if a field has been set.
-func (o *UserForListDto) HasCreated() bool {
-	if o != nil && o.Created.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
-func (o *UserForListDto) SetCreated(v time.Time) {
-	o.Created.Set(&v)
-}
-// SetCreatedNil sets the value for Created to be an explicit nil
-func (o *UserForListDto) SetCreatedNil() {
-	o.Created.Set(nil)
-}
-
-// UnsetCreated ensures that no value is present for Created, not even an explicit nil
-func (o *UserForListDto) UnsetCreated() {
-	o.Created.Unset()
-}
-
-// GetTrialEnds returns the TrialEnds field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *UserForListDto) GetTrialEnds() time.Time {
-	if o == nil || IsNil(o.TrialEnds.Get()) {
-		var ret time.Time
-		return ret
-	}
-	return *o.TrialEnds.Get()
-}
-
-// GetTrialEndsOk returns a tuple with the TrialEnds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *UserForListDto) GetTrialEndsOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.TrialEnds.Get(), o.TrialEnds.IsSet()
-}
-
-// HasTrialEnds returns a boolean if a field has been set.
-func (o *UserForListDto) HasTrialEnds() bool {
-	if o != nil && o.TrialEnds.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetTrialEnds gets a reference to the given NullableTime and assigns it to the TrialEnds field.
-func (o *UserForListDto) SetTrialEnds(v time.Time) {
-	o.TrialEnds.Set(&v)
-}
-// SetTrialEndsNil sets the value for TrialEnds to be an explicit nil
-func (o *UserForListDto) SetTrialEndsNil() {
-	o.TrialEnds.Set(nil)
-}
-
-// UnsetTrialEnds ensures that no value is present for TrialEnds, not even an explicit nil
-func (o *UserForListDto) UnsetTrialEnds() {
-	o.TrialEnds.Unset()
 }
 
 // GetIsEmailConfirmed returns the IsEmailConfirmed field value
@@ -885,18 +755,9 @@ func (o UserForListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["hasPaymentMethod"] = o.HasPaymentMethod
 	toSerialize["organizationId"] = o.OrganizationId
 	toSerialize["role"] = o.Role
-	if o.RoleName.IsSet() {
-		toSerialize["roleName"] = o.RoleName.Get()
-	}
 	toSerialize["email"] = o.Email
 	toSerialize["displayName"] = o.DisplayName.Get()
 	toSerialize["createdAt"] = o.CreatedAt
-	if o.Created.IsSet() {
-		toSerialize["created"] = o.Created.Get()
-	}
-	if o.TrialEnds.IsSet() {
-		toSerialize["trialEnds"] = o.TrialEnds.Get()
-	}
 	toSerialize["isEmailConfirmed"] = o.IsEmailConfirmed
 	toSerialize["isEmailNotificationEnabled"] = o.IsEmailNotificationEnabled
 	toSerialize["isForcedToResetPassword"] = o.IsForcedToResetPassword
