@@ -35,6 +35,7 @@ type UserForListDto struct {
 	DisplayName NullableString `json:"displayName"`
 	CreatedAt string `json:"createdAt"`
 	Created NullableTime `json:"created,omitempty"`
+	TrialEnds NullableTime `json:"trialEnds,omitempty"`
 	IsEmailConfirmed bool `json:"isEmailConfirmed"`
 	IsEmailNotificationEnabled bool `json:"isEmailNotificationEnabled"`
 	IsForcedToResetPassword bool `json:"isForcedToResetPassword"`
@@ -421,6 +422,48 @@ func (o *UserForListDto) SetCreatedNil() {
 // UnsetCreated ensures that no value is present for Created, not even an explicit nil
 func (o *UserForListDto) UnsetCreated() {
 	o.Created.Unset()
+}
+
+// GetTrialEnds returns the TrialEnds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UserForListDto) GetTrialEnds() time.Time {
+	if o == nil || IsNil(o.TrialEnds.Get()) {
+		var ret time.Time
+		return ret
+	}
+	return *o.TrialEnds.Get()
+}
+
+// GetTrialEndsOk returns a tuple with the TrialEnds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UserForListDto) GetTrialEndsOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.TrialEnds.Get(), o.TrialEnds.IsSet()
+}
+
+// HasTrialEnds returns a boolean if a field has been set.
+func (o *UserForListDto) HasTrialEnds() bool {
+	if o != nil && o.TrialEnds.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTrialEnds gets a reference to the given NullableTime and assigns it to the TrialEnds field.
+func (o *UserForListDto) SetTrialEnds(v time.Time) {
+	o.TrialEnds.Set(&v)
+}
+// SetTrialEndsNil sets the value for TrialEnds to be an explicit nil
+func (o *UserForListDto) SetTrialEndsNil() {
+	o.TrialEnds.Set(nil)
+}
+
+// UnsetTrialEnds ensures that no value is present for TrialEnds, not even an explicit nil
+func (o *UserForListDto) UnsetTrialEnds() {
+	o.TrialEnds.Unset()
 }
 
 // GetIsEmailConfirmed returns the IsEmailConfirmed field value
@@ -850,6 +893,9 @@ func (o UserForListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["createdAt"] = o.CreatedAt
 	if o.Created.IsSet() {
 		toSerialize["created"] = o.Created.Get()
+	}
+	if o.TrialEnds.IsSet() {
+		toSerialize["trialEnds"] = o.TrialEnds.Get()
 	}
 	toSerialize["isEmailConfirmed"] = o.IsEmailConfirmed
 	toSerialize["isEmailNotificationEnabled"] = o.IsEmailNotificationEnabled
