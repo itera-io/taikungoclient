@@ -4,6 +4,7 @@ import (
 	"crypto/tls"
 	"encoding/base64"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -153,22 +154,47 @@ func (e *taikunError) Error() string {
 // CreateError is a helper function to convert an unsuccessful HTTP response to a taikunError struct.
 // Function is exported because it is used by the Terraform taikun provider and Taikun CLI to show errors.
 func CreateError(resp *http.Response, err error) error {
-	if err == nil || resp == nil {
-		return err
+	if resp == nil {
+		if err != nil {
+			return err
+		}
+		return errors.New("unknown error: both response and error are nil")
 	}
 
-	// Decode into map for simple pretty printing (readMap["detail"]) - disabled because of background compatibility
-	//var readMap map[string]interface{}
-	//err2 := json.NewDecoder(resp.Body).Decode(&readMap)
-	// Read into byte array
-	body, err2 := io.ReadAll(resp.Body)
-	if err2 != nil {
-		// Reading/decoding failed. Give the user at least the deformed response.
-		return fmt.Errorf("Reply in unexpected format. Pasting the raw error: %v %v", resp.Body, err2)
+	if resp.Body != nil {
+		defer func() {
+			_ = resp.Body.Close()
+		}()
 	}
+
+	bodyBytes, readErr := io.ReadAll(resp.Body)
+	if readErr != nil {
+		return fmt.Errorf("failed to read error response body (HTTP %d): %v", resp.StatusCode, readErr)
+	}
+
+	bodyStr := strings.TrimSpace(string(bodyBytes))
+	if bodyStr == "" {
+		if err != nil {
+			return fmt.Errorf("empty response body (HTTP %d): %v", resp.StatusCode, err)
+		}
+		return fmt.Errorf("empty response body (HTTP %d)", resp.StatusCode)
+	}
+
+	// Try parsing known error shape
+	var parsed map[string]interface{}
+	if json.Unmarshal(bodyBytes, &parsed) == nil {
+		if detail, ok := parsed["detail"]; ok {
+			return &taikunError{
+				HTTPStatusCode: resp.StatusCode,
+				Message:        fmt.Sprintf("%v", detail),
+			}
+		}
+	}
+
+	// Fallback to raw body
 	return &taikunError{
 		HTTPStatusCode: resp.StatusCode,
-		Message:        fmt.Sprintf("%s", string(body)),
+		Message:        bodyStr,
 	}
 }
 
