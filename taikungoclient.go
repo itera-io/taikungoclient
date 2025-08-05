@@ -9,6 +9,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -159,7 +160,7 @@ func (e *taikunError) Error() string {
 // Function is exported because it is used by the Terraform taikun provider and Taikun CLI to show errors.
 // It attempts to read and parse the response body and combines it with any low-level error.
 func CreateError(resp *http.Response, err error) error {
-	// Case: No response available at all
+	// Case: No response at all — only Go-level error exists
 	if resp == nil {
 		if err != nil {
 			return err
@@ -177,12 +178,23 @@ func CreateError(resp *http.Response, err error) error {
 
 	bodyStr := strings.TrimSpace(string(bodyBytes))
 
+	// Conditionally include the err in GoError field
+	goError := err
+	if err != nil {
+		statusText := http.StatusText(resp.StatusCode)
+		if strings.Contains(err.Error(), strconv.Itoa(resp.StatusCode)) &&
+			strings.Contains(err.Error(), statusText) {
+			// It's just a restatement of the HTTP status — omit it
+			goError = nil
+		}
+	}
+
 	// Case: Response body unreadable
 	if readErr != nil {
 		return &taikunError{
 			HTTPStatusCode: resp.StatusCode,
 			Message:        fmt.Sprintf("failed to read error response body: %v", readErr),
-			GoError:        err,
+			GoError:        goError,
 		}
 	}
 
@@ -191,11 +203,11 @@ func CreateError(resp *http.Response, err error) error {
 		return &taikunError{
 			HTTPStatusCode: resp.StatusCode,
 			Message:        "empty response body",
-			GoError:        err,
+			GoError:        goError,
 		}
 	}
 
-	// Attempt to parse known JSON error shapes
+	// Case: JSON error body with known keys
 	var parsed map[string]interface{}
 	if json.Unmarshal(bodyBytes, &parsed) == nil {
 		for _, key := range []string{"detail", "message", "error"} {
@@ -203,23 +215,23 @@ func CreateError(resp *http.Response, err error) error {
 				return &taikunError{
 					HTTPStatusCode: resp.StatusCode,
 					Message:        fmt.Sprintf("%v", val),
-					GoError:        err,
+					GoError:        goError,
 				}
 			}
 		}
-		// Fallback: show whole parsed JSON
+		// Fallback: show raw map
 		return &taikunError{
 			HTTPStatusCode: resp.StatusCode,
 			Message:        fmt.Sprintf("unstructured error: %v", parsed),
-			GoError:        err,
+			GoError:        goError,
 		}
 	}
 
-	// Plain text fallback
+	// Fallback: Plain text body
 	return &taikunError{
 		HTTPStatusCode: resp.StatusCode,
 		Message:        bodyStr,
-		GoError:        err,
+		GoError:        goError,
 	}
 }
 
