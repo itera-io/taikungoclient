@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"time"
 	"bytes"
 	"fmt"
 )
@@ -49,7 +48,6 @@ type UserForListDto struct {
 	IsForcedToEnableTwoFactorAuthentication bool `json:"isForcedToEnableTwoFactorAuthentication"`
 	BoundProjects []ProjectDto `json:"boundProjects"`
 	Partner PartnerDetailsForUserDto `json:"partner"`
-	BadDate *time.Time `json:"badDate,omitempty"`
 }
 
 type _UserForListDto UserForListDto
@@ -740,38 +738,6 @@ func (o *UserForListDto) SetPartner(v PartnerDetailsForUserDto) {
 	o.Partner = v
 }
 
-// GetBadDate returns the BadDate field value if set, zero value otherwise.
-func (o *UserForListDto) GetBadDate() time.Time {
-	if o == nil || IsNil(o.BadDate) {
-		var ret time.Time
-		return ret
-	}
-	return *o.BadDate
-}
-
-// GetBadDateOk returns a tuple with the BadDate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UserForListDto) GetBadDateOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.BadDate) {
-		return nil, false
-	}
-	return o.BadDate, true
-}
-
-// HasBadDate returns a boolean if a field has been set.
-func (o *UserForListDto) HasBadDate() bool {
-	if o != nil && !IsNil(o.BadDate) {
-		return true
-	}
-
-	return false
-}
-
-// SetBadDate gets a reference to the given time.Time and assigns it to the BadDate field.
-func (o *UserForListDto) SetBadDate(v time.Time) {
-	o.BadDate = &v
-}
-
 func (o UserForListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -810,9 +776,6 @@ func (o UserForListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["isForcedToEnableTwoFactorAuthentication"] = o.IsForcedToEnableTwoFactorAuthentication
 	toSerialize["boundProjects"] = o.BoundProjects
 	toSerialize["partner"] = o.Partner
-	if !IsNil(o.BadDate) {
-		toSerialize["badDate"] = o.BadDate
-	}
 	return toSerialize, nil
 }
 
