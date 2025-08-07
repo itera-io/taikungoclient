@@ -210,19 +210,34 @@ func CreateError(resp *http.Response, err error) error {
 	// Case: JSON error body with known keys
 	var parsed map[string]interface{}
 	if json.Unmarshal(bodyBytes, &parsed) == nil {
+		var title string
+		var message string
+
+		if val, ok := parsed["title"]; ok {
+			title = fmt.Sprintf("%v", val)
+		}
+
 		for _, key := range []string{"detail", "message", "error"} {
 			if val, ok := parsed[key]; ok {
-				return &taikunError{
-					HTTPStatusCode: resp.StatusCode,
-					Message:        fmt.Sprintf("%v", val),
-					GoError:        goError,
-				}
+				message = fmt.Sprintf("%v", val)
+				break
 			}
 		}
-		// Fallback: show raw map
+
+		var combinedMsg string
+		if title != "" && message != "" {
+			combinedMsg = fmt.Sprintf("%s: %s", title, message)
+		} else if message != "" {
+			combinedMsg = message
+		} else if title != "" {
+			combinedMsg = title
+		} else {
+			combinedMsg = fmt.Sprintf("unstructured error: %v", parsed)
+		}
+
 		return &taikunError{
 			HTTPStatusCode: resp.StatusCode,
-			Message:        fmt.Sprintf("unstructured error: %v", parsed),
+			Message:        combinedMsg,
 			GoError:        goError,
 		}
 	}
