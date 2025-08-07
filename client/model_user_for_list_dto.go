@@ -28,7 +28,6 @@ type UserForListDto struct {
 	HasCustomerId bool `json:"hasCustomerId"`
 	HasPaymentMethod bool `json:"hasPaymentMethod"`
 	OrganizationId int32 `json:"organizationId"`
-	Role UserRole `json:"role"`
 	Email string `json:"email"`
 	DisplayName NullableString `json:"displayName"`
 	CreatedAt string `json:"createdAt"`
@@ -48,6 +47,7 @@ type UserForListDto struct {
 	IsForcedToEnableTwoFactorAuthentication bool `json:"isForcedToEnableTwoFactorAuthentication"`
 	BoundProjects []ProjectDto `json:"boundProjects"`
 	Partner PartnerDetailsForUserDto `json:"partner"`
+	Role UserRole `json:"role"`
 }
 
 type _UserForListDto UserForListDto
@@ -56,7 +56,7 @@ type _UserForListDto UserForListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserForListDto(id string, username string, organizationName string, hasCustomerId bool, hasPaymentMethod bool, organizationId int32, role UserRole, email string, displayName NullableString, createdAt string, isEmailConfirmed bool, isEmailNotificationEnabled bool, isForcedToResetPassword bool, isCsm bool, isEligibleUpdateSubscription bool, isLocked bool, isApprovedByPartner bool, owner bool, isReadOnly bool, hasRepo bool, isNewOrganization bool, is2FAEnabled bool, isForcedToEnableTwoFactorAuthentication bool, boundProjects []ProjectDto, partner PartnerDetailsForUserDto) *UserForListDto {
+func NewUserForListDto(id string, username string, organizationName string, hasCustomerId bool, hasPaymentMethod bool, organizationId int32, email string, displayName NullableString, createdAt string, isEmailConfirmed bool, isEmailNotificationEnabled bool, isForcedToResetPassword bool, isCsm bool, isEligibleUpdateSubscription bool, isLocked bool, isApprovedByPartner bool, owner bool, isReadOnly bool, hasRepo bool, isNewOrganization bool, is2FAEnabled bool, isForcedToEnableTwoFactorAuthentication bool, boundProjects []ProjectDto, partner PartnerDetailsForUserDto, role UserRole) *UserForListDto {
 	this := UserForListDto{}
 	this.Id = id
 	this.Username = username
@@ -64,7 +64,6 @@ func NewUserForListDto(id string, username string, organizationName string, hasC
 	this.HasCustomerId = hasCustomerId
 	this.HasPaymentMethod = hasPaymentMethod
 	this.OrganizationId = organizationId
-	this.Role = role
 	this.Email = email
 	this.DisplayName = displayName
 	this.CreatedAt = createdAt
@@ -83,6 +82,7 @@ func NewUserForListDto(id string, username string, organizationName string, hasC
 	this.IsForcedToEnableTwoFactorAuthentication = isForcedToEnableTwoFactorAuthentication
 	this.BoundProjects = boundProjects
 	this.Partner = partner
+	this.Role = role
 	return &this
 }
 
@@ -236,30 +236,6 @@ func (o *UserForListDto) GetOrganizationIdOk() (*int32, bool) {
 // SetOrganizationId sets field value
 func (o *UserForListDto) SetOrganizationId(v int32) {
 	o.OrganizationId = v
-}
-
-// GetRole returns the Role field value
-func (o *UserForListDto) GetRole() UserRole {
-	if o == nil {
-		var ret UserRole
-		return ret
-	}
-
-	return o.Role
-}
-
-// GetRoleOk returns a tuple with the Role field value
-// and a boolean to check if the value has been set.
-func (o *UserForListDto) GetRoleOk() (*UserRole, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Role, true
-}
-
-// SetRole sets field value
-func (o *UserForListDto) SetRole(v UserRole) {
-	o.Role = v
 }
 
 // GetEmail returns the Email field value
@@ -738,6 +714,30 @@ func (o *UserForListDto) SetPartner(v PartnerDetailsForUserDto) {
 	o.Partner = v
 }
 
+// GetRole returns the Role field value
+func (o *UserForListDto) GetRole() UserRole {
+	if o == nil {
+		var ret UserRole
+		return ret
+	}
+
+	return o.Role
+}
+
+// GetRoleOk returns a tuple with the Role field value
+// and a boolean to check if the value has been set.
+func (o *UserForListDto) GetRoleOk() (*UserRole, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Role, true
+}
+
+// SetRole sets field value
+func (o *UserForListDto) SetRole(v UserRole) {
+	o.Role = v
+}
+
 func (o UserForListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -754,7 +754,6 @@ func (o UserForListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["hasCustomerId"] = o.HasCustomerId
 	toSerialize["hasPaymentMethod"] = o.HasPaymentMethod
 	toSerialize["organizationId"] = o.OrganizationId
-	toSerialize["role"] = o.Role
 	toSerialize["email"] = o.Email
 	toSerialize["displayName"] = o.DisplayName.Get()
 	toSerialize["createdAt"] = o.CreatedAt
@@ -776,6 +775,7 @@ func (o UserForListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["isForcedToEnableTwoFactorAuthentication"] = o.IsForcedToEnableTwoFactorAuthentication
 	toSerialize["boundProjects"] = o.BoundProjects
 	toSerialize["partner"] = o.Partner
+	toSerialize["role"] = o.Role
 	return toSerialize, nil
 }
 
@@ -790,7 +790,6 @@ func (o *UserForListDto) UnmarshalJSON(data []byte) (err error) {
 		"hasCustomerId",
 		"hasPaymentMethod",
 		"organizationId",
-		"role",
 		"email",
 		"displayName",
 		"createdAt",
@@ -809,6 +808,7 @@ func (o *UserForListDto) UnmarshalJSON(data []byte) (err error) {
 		"isForcedToEnableTwoFactorAuthentication",
 		"boundProjects",
 		"partner",
+		"role",
 	}
 
 	allProperties := make(map[string]interface{})
