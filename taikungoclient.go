@@ -151,7 +151,7 @@ func (transport *customTransport) hasTokenExpired() bool {
 // Error returns a readable string representation of a taikunError.
 func (e *taikunError) Error() string {
 	if e.GoError != nil {
-		return fmt.Sprintf("Taikun Error: %s (HTTP %d) + Go Error: %v", e.Message, e.HTTPStatusCode, e.GoError)
+		return fmt.Sprintf("Taikun Error: %s (HTTP %d) (GO_ERROR %v)", e.Message, e.HTTPStatusCode, e.GoError)
 	}
 	return fmt.Sprintf("Taikun Error: %s (HTTP %d)", e.Message, e.HTTPStatusCode)
 }
@@ -184,7 +184,6 @@ func CreateError(resp *http.Response, err error) error {
 		statusText := http.StatusText(resp.StatusCode)
 		if strings.Contains(err.Error(), strconv.Itoa(resp.StatusCode)) &&
 			strings.Contains(err.Error(), statusText) {
-			// It's just a restatement of the HTTP status — omit it
 			goError = nil
 		}
 	}
@@ -224,15 +223,19 @@ func CreateError(resp *http.Response, err error) error {
 			}
 		}
 
+		// Sanitize newlines
+		title = strings.ReplaceAll(title, "\n", " ")
+		message = strings.ReplaceAll(message, "\n", " ")
+
 		var combinedMsg string
 		if title != "" && message != "" {
-			combinedMsg = fmt.Sprintf("%s: %s", title, message)
+			combinedMsg = fmt.Sprintf("(TITLE %s) (DETAIL %s)", title, message)
 		} else if message != "" {
 			combinedMsg = message
 		} else if title != "" {
 			combinedMsg = title
 		} else {
-			combinedMsg = fmt.Sprintf("unstructured error: %v", parsed)
+			combinedMsg = fmt.Sprintf("(RESPONSE %s)", strings.ReplaceAll(string(bodyBytes), "\n", " "))
 		}
 
 		return &taikunError{
@@ -242,7 +245,9 @@ func CreateError(resp *http.Response, err error) error {
 		}
 	}
 
-	// Fallback: Plain text body
+	// Fallback: Plain text body, sanitized
+	bodyStr = strings.ReplaceAll(bodyStr, "\n", " ")
+
 	return &taikunError{
 		HTTPStatusCode: resp.StatusCode,
 		Message:        bodyStr,
