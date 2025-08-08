@@ -4,7 +4,6 @@ import (
 	"crypto/tls"
 	"encoding/base64"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -156,21 +155,35 @@ func (e *taikunError) Error() string {
 	return fmt.Sprintf("Taikun Error: %s (HTTP %d)", e.Message, e.HTTPStatusCode)
 }
 
-// CreateError is a helper function to convert an unsuccessful HTTP response to a taikunError struct.
+// CreateError returns a taikunError describing the HTTP/Go-level error.
+// Returns nil for successful (2xx) responses with no Go error.
 // Function is exported because it is used by the Terraform taikun provider and Taikun CLI to show errors.
-// It attempts to read and parse the response body and combines it with any low-level error.
 func CreateError(resp *http.Response, err error) error {
-	// Case: No response at all — only Go-level error exists
+	// Case 1: No response at all — wrap the Go-level error into taikunError
 	if resp == nil {
 		if err != nil {
-			return err
+			return &taikunError{
+				HTTPStatusCode: 0, // no HTTP status available
+				Message:        "no HTTP response",
+				GoError:        err,
+			}
 		}
-		return errors.New("unknown error: both response and error are nil")
+		return &taikunError{
+			HTTPStatusCode: 0,
+			Message:        "unknown error: both response and error are nil",
+			GoError:        nil,
+		}
+	}
+
+	// Case 2: Successful HTTP response (2xx) and no Go-level error → return nil
+	if err == nil && resp.StatusCode >= 200 && resp.StatusCode < 300 {
+		return nil
 	}
 
 	var bodyBytes []byte
 	var readErr error
 
+	// Read the response body (if present)
 	if resp.Body != nil {
 		defer func() { _ = resp.Body.Close() }()
 		bodyBytes, readErr = io.ReadAll(resp.Body)
@@ -178,7 +191,7 @@ func CreateError(resp *http.Response, err error) error {
 
 	bodyStr := strings.TrimSpace(string(bodyBytes))
 
-	// Conditionally include the err in GoError field
+	// Remove duplicate Go-level errors that simply restate HTTP status
 	goError := err
 	if err != nil {
 		statusText := http.StatusText(resp.StatusCode)
@@ -188,7 +201,7 @@ func CreateError(resp *http.Response, err error) error {
 		}
 	}
 
-	// Case: Response body unreadable
+	// Case 3: Response body unreadable
 	if readErr != nil {
 		return &taikunError{
 			HTTPStatusCode: resp.StatusCode,
@@ -197,7 +210,7 @@ func CreateError(resp *http.Response, err error) error {
 		}
 	}
 
-	// Case: Empty response body
+	// Case 4: Empty response body
 	if bodyStr == "" {
 		return &taikunError{
 			HTTPStatusCode: resp.StatusCode,
@@ -206,16 +219,14 @@ func CreateError(resp *http.Response, err error) error {
 		}
 	}
 
-	// Case: JSON error body with known keys
+	// Case 5: JSON error body with known fields ("title", "detail", "message", "error")
 	var parsed map[string]interface{}
 	if json.Unmarshal(bodyBytes, &parsed) == nil {
-		var title string
-		var message string
+		var title, message string
 
 		if val, ok := parsed["title"]; ok {
 			title = fmt.Sprintf("%v", val)
 		}
-
 		for _, key := range []string{"detail", "message", "error"} {
 			if val, ok := parsed[key]; ok {
 				message = fmt.Sprintf("%v", val)
@@ -227,14 +238,16 @@ func CreateError(resp *http.Response, err error) error {
 		title = strings.ReplaceAll(title, "\n", " ")
 		message = strings.ReplaceAll(message, "\n", " ")
 
+		// Construct combined message
 		var combinedMsg string
-		if title != "" && message != "" {
+		switch {
+		case title != "" && message != "":
 			combinedMsg = fmt.Sprintf("(TITLE %s) (DETAIL %s)", title, message)
-		} else if message != "" {
+		case message != "":
 			combinedMsg = message
-		} else if title != "" {
+		case title != "":
 			combinedMsg = title
-		} else {
+		default:
 			combinedMsg = fmt.Sprintf("(RESPONSE %s)", strings.ReplaceAll(string(bodyBytes), "\n", " "))
 		}
 
@@ -245,7 +258,7 @@ func CreateError(resp *http.Response, err error) error {
 		}
 	}
 
-	// Fallback: Plain text body, sanitized
+	// Case 6: Fallback — plain text body, sanitized
 	bodyStr = strings.ReplaceAll(bodyStr, "\n", " ")
 
 	return &taikunError{
