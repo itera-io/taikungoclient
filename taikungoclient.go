@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	urlpkg "net/url"
 	"os"
 	"strconv"
 	"strings"
@@ -39,6 +40,10 @@ type taikunError struct {
 	HTTPStatusCode int
 	Message        string
 	GoError        error // Optional underlying Go error (e.g., network, decoding)
+
+	Method    string // HTTP method of the failed request
+	URL       string // URL of the failed request (with sensitive params redacted)
+	RequestID string // Request ID header from the server, if available
 }
 
 type customTransport struct {
@@ -90,7 +95,7 @@ func (c *customTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 						Mode:      *taikuncore.NewNullableString(&c.Client.authMode),
 					}
 				} else {
-					// I do not have and authMode specified
+					// I do not have an authMode specified
 					// Use authentication with email + password
 					loginCmd = &taikuncore.LoginCommand{
 						Email:    *taikuncore.NewNullableString(&c.Client.email),
@@ -103,7 +108,6 @@ func (c *customTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 				}
 				c.Client.token = result.Token
 				c.Client.refreshToken = *result.RefreshToken.Get()
-
 			}
 		} else { // We do have a token
 			if c.Client.token != "" && c.hasTokenExpired() {
@@ -149,16 +153,34 @@ func (transport *customTransport) hasTokenExpired() bool {
 
 // Error returns a readable string representation of a taikunError.
 func (e *taikunError) Error() string {
+	var base string
 	if e.GoError != nil {
-		return fmt.Sprintf("Taikun Error: %s (HTTP %d) (GO_ERROR %v)", e.Message, e.HTTPStatusCode, e.GoError)
+		base = fmt.Sprintf("Taikun Error: %s (HTTP %d) (GO_ERROR %v)", e.Message, e.HTTPStatusCode, e.GoError)
+	} else {
+		base = fmt.Sprintf("Taikun Error: %s (HTTP %d)", e.Message, e.HTTPStatusCode)
 	}
-	return fmt.Sprintf("Taikun Error: %s (HTTP %d)", e.Message, e.HTTPStatusCode)
+	// Append HTTP method, URL if available
+	if e.Method != "" || e.URL != "" {
+		base += fmt.Sprintf(" (%s %s)", e.Method, e.URL)
+	}
+	return base
 }
 
 // CreateError returns a taikunError describing the HTTP/Go-level error.
 // Returns nil for successful (2xx) responses with no Go error.
 // Function is exported because it is used by the Terraform taikun provider and Taikun CLI to show errors.
 func CreateError(resp *http.Response, err error) error {
+	// Capture request metadata for debugging
+	var method, urlStr string
+	if resp != nil && resp.Request != nil {
+		if resp.Request.Method != "" {
+			method = resp.Request.Method
+		}
+		if resp.Request.URL != nil {
+			urlStr = redactURL(resp.Request.URL)
+		}
+	}
+
 	// Case 1: No response at all — wrap the Go-level error into taikunError
 	if resp == nil {
 		if err != nil {
@@ -166,12 +188,16 @@ func CreateError(resp *http.Response, err error) error {
 				HTTPStatusCode: 0, // no HTTP status available
 				Message:        "no HTTP response",
 				GoError:        err,
+				Method:         method,
+				URL:            urlStr,
 			}
 		}
 		return &taikunError{
 			HTTPStatusCode: 0,
 			Message:        "unknown error: both response and error are nil",
 			GoError:        nil,
+			Method:         method,
+			URL:            urlStr,
 		}
 	}
 
@@ -207,6 +233,8 @@ func CreateError(resp *http.Response, err error) error {
 			HTTPStatusCode: resp.StatusCode,
 			Message:        fmt.Sprintf("failed to read error response body: %v", readErr),
 			GoError:        goError,
+			Method:         method,
+			URL:            urlStr,
 		}
 	}
 
@@ -216,6 +244,8 @@ func CreateError(resp *http.Response, err error) error {
 			HTTPStatusCode: resp.StatusCode,
 			Message:        "empty response body",
 			GoError:        goError,
+			Method:         method,
+			URL:            urlStr,
 		}
 	}
 
@@ -255,6 +285,8 @@ func CreateError(resp *http.Response, err error) error {
 			HTTPStatusCode: resp.StatusCode,
 			Message:        combinedMsg,
 			GoError:        goError,
+			Method:         method,
+			URL:            urlStr,
 		}
 	}
 
@@ -265,7 +297,25 @@ func CreateError(resp *http.Response, err error) error {
 		HTTPStatusCode: resp.StatusCode,
 		Message:        bodyStr,
 		GoError:        goError,
+		Method:         method,
+		URL:            urlStr,
 	}
+}
+
+// redactURL removes sensitive query values but keeps path visible
+func redactURL(u *urlpkg.URL) string {
+	if u == nil {
+		return ""
+	}
+	cp := *u
+	q := cp.Query()
+	for _, k := range []string{"token", "access_token", "auth", "authorization", "api_key", "apikey"} {
+		if _, ok := q[k]; ok {
+			q.Set(k, "REDACTED")
+		}
+	}
+	cp.RawQuery = q.Encode()
+	return cp.String()
 }
 
 // NewClientFromToken is a helper function not intended to be used by the user.
@@ -360,7 +410,6 @@ func NewClient() *Client {
 		if email == "" || password == "" {
 			fmt.Println("Please set your Taikun credentials. Password or Email was empty.")
 			os.Exit(1)
-			//panic(fmt.Errorf("Please set your Taikun credentials. Password or Email was empty."))
 		}
 		return NewClientFromCredentials(email, password, "", "", "", apiHost) // Create and return the client
 	}
@@ -369,7 +418,6 @@ func NewClient() *Client {
 	accessKey := os.Getenv(TaikunAccessKey)
 	secretKey := os.Getenv(TaikunSecretKey)
 	if accessKey == "" || secretKey == "" {
-		// panic(fmt.Errorf("Please set your Taikun credentials. AccessKey or SecretKey was empty."))
 		fmt.Println("Please set your Taikun credentials. AccessKey or SecretKey was empty.")
 		os.Exit(1)
 	}
