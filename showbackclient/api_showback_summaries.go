@@ -28,18 +28,12 @@ type ApiShowbacksummariesByLabelRequest struct {
 	ctx context.Context
 	ApiService *ShowbackSummariesAPIService
 	organizationId *int32
-	isDeleted *bool
 	fromDate *time.Time
 	toDate *time.Time
 }
 
 func (r ApiShowbacksummariesByLabelRequest) OrganizationId(organizationId int32) ApiShowbacksummariesByLabelRequest {
 	r.organizationId = &organizationId
-	return r
-}
-
-func (r ApiShowbacksummariesByLabelRequest) IsDeleted(isDeleted bool) ApiShowbacksummariesByLabelRequest {
-	r.isDeleted = &isDeleted
 	return r
 }
 
@@ -93,9 +87,6 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesByLabelExecute(r ApiShowb
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
-	}
-	if r.isDeleted != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "IsDeleted", r.isDeleted, "form", "")
 	}
 	if r.fromDate != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "FromDate", r.fromDate, "form", "")
@@ -792,6 +783,7 @@ type ApiShowbacksummariesGroupedRequest struct {
 	organizationId *int32
 	fromDate *time.Time
 	toDate *time.Time
+	isDeleted *bool
 }
 
 func (r ApiShowbacksummariesGroupedRequest) OrganizationId(organizationId int32) ApiShowbacksummariesGroupedRequest {
@@ -806,6 +798,11 @@ func (r ApiShowbacksummariesGroupedRequest) FromDate(fromDate time.Time) ApiShow
 
 func (r ApiShowbacksummariesGroupedRequest) ToDate(toDate time.Time) ApiShowbacksummariesGroupedRequest {
 	r.toDate = &toDate
+	return r
+}
+
+func (r ApiShowbacksummariesGroupedRequest) IsDeleted(isDeleted bool) ApiShowbacksummariesGroupedRequest {
+	r.isDeleted = &isDeleted
 	return r
 }
 
@@ -855,6 +852,9 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesGroupedExecute(r ApiShowb
 	}
 	if r.toDate != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ToDate", r.toDate, "form", "")
+	}
+	if r.isDeleted != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "IsDeleted", r.isDeleted, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -47,7 +47,6 @@ type CreateProjectCommand struct {
 	AllowSpotVMs *bool `json:"allowSpotVMs,omitempty"`
 	MaxSpotPrice NullableFloat64 `json:"maxSpotPrice,omitempty"`
 	AutoscalingEnabled *bool `json:"autoscalingEnabled,omitempty"`
-	AutoscalingGroupName NullableString `json:"autoscalingGroupName,omitempty"`
 	MinSize *int32 `json:"minSize,omitempty"`
 	MaxSize *int32 `json:"maxSize,omitempty"`
 	DiskSize *float64 `json:"diskSize,omitempty"`
@@ -1041,48 +1040,6 @@ func (o *CreateProjectCommand) SetAutoscalingEnabled(v bool) {
 	o.AutoscalingEnabled = &v
 }
 
-// GetAutoscalingGroupName returns the AutoscalingGroupName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateProjectCommand) GetAutoscalingGroupName() string {
-	if o == nil || IsNil(o.AutoscalingGroupName.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.AutoscalingGroupName.Get()
-}
-
-// GetAutoscalingGroupNameOk returns a tuple with the AutoscalingGroupName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateProjectCommand) GetAutoscalingGroupNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.AutoscalingGroupName.Get(), o.AutoscalingGroupName.IsSet()
-}
-
-// HasAutoscalingGroupName returns a boolean if a field has been set.
-func (o *CreateProjectCommand) HasAutoscalingGroupName() bool {
-	if o != nil && o.AutoscalingGroupName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAutoscalingGroupName gets a reference to the given NullableString and assigns it to the AutoscalingGroupName field.
-func (o *CreateProjectCommand) SetAutoscalingGroupName(v string) {
-	o.AutoscalingGroupName.Set(&v)
-}
-// SetAutoscalingGroupNameNil sets the value for AutoscalingGroupName to be an explicit nil
-func (o *CreateProjectCommand) SetAutoscalingGroupNameNil() {
-	o.AutoscalingGroupName.Set(nil)
-}
-
-// UnsetAutoscalingGroupName ensures that no value is present for AutoscalingGroupName, not even an explicit nil
-func (o *CreateProjectCommand) UnsetAutoscalingGroupName() {
-	o.AutoscalingGroupName.Unset()
-}
-
 // GetMinSize returns the MinSize field value if set, zero value otherwise.
 func (o *CreateProjectCommand) GetMinSize() int32 {
 	if o == nil || IsNil(o.MinSize) {
@@ -1531,9 +1488,6 @@ func (o CreateProjectCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AutoscalingEnabled) {
 		toSerialize["autoscalingEnabled"] = o.AutoscalingEnabled
-	}
-	if o.AutoscalingGroupName.IsSet() {
-		toSerialize["autoscalingGroupName"] = o.AutoscalingGroupName.Get()
 	}
 	if !IsNil(o.MinSize) {
 		toSerialize["minSize"] = o.MinSize

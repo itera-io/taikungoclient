@@ -361,7 +361,7 @@ Class | Method | HTTP request | Description
 *OrganizationsAPI* | [**OrganizationsCreate**](docs/OrganizationsAPI.md#organizationscreate) | **Post** /api/v1/organizations | Add a new organization. Only available for admins.
 *OrganizationsAPI* | [**OrganizationsDelete**](docs/OrganizationsAPI.md#organizationsdelete) | **Delete** /api/v1/organizations/{id} | Delete the specified organization. Only available for admins.
 *OrganizationsAPI* | [**OrganizationsDeletePrometheusrules**](docs/OrganizationsAPI.md#organizationsdeleteprometheusrules) | **Put** /api/v1/organizations/{id}/prometheusrules | Unbind prometheus rule(s) from organization
-*OrganizationsAPI* | [**OrganizationsDetawils**](docs/OrganizationsAPI.md#organizationsdetawils) | **Get** /api/v1/organizations/details | Retrieve all data about current organization by Id
+*OrganizationsAPI* | [**OrganizationsDetails**](docs/OrganizationsAPI.md#organizationsdetails) | **Get** /api/v1/organizations/details | Retrieve all data about current organization by Id
 *OrganizationsAPI* | [**OrganizationsDisable2faManagement**](docs/OrganizationsAPI.md#organizationsdisable2famanagement) | **Post** /api/v1/organizations/disable-2fa-management | Disable 2fa management
 *OrganizationsAPI* | [**OrganizationsEnable2faManagement**](docs/OrganizationsAPI.md#organizationsenable2famanagement) | **Post** /api/v1/organizations/enable-2fa-management | Enable 2fa management
 *OrganizationsAPI* | [**OrganizationsList**](docs/OrganizationsAPI.md#organizationslist) | **Get** /api/v1/organizations | Retrieve all organizations
@@ -430,11 +430,12 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsCreate**](docs/ProjectsAPI.md#projectscreate) | **Post** /api/v1/projects | Create a new project
 *ProjectsAPI* | [**ProjectsDelete**](docs/ProjectsAPI.md#projectsdelete) | **Post** /api/v1/projects/delete | Delete the project. The project must be empty (no server) and in READY state
 *ProjectsAPI* | [**ProjectsDeleteProjectUsers**](docs/ProjectsAPI.md#projectsdeleteprojectusers) | **Put** /api/v1/projects/{id}/users | Unbind users from project
+*ProjectsAPI* | [**ProjectsExportLokiLogs**](docs/ProjectsAPI.md#projectsexportlokilogs) | **Post** /api/v1/projects/loki-logs/export | Export loki logs
 *ProjectsAPI* | [**ProjectsExtendLifetime**](docs/ProjectsAPI.md#projectsextendlifetime) | **Post** /api/v1/projects/extend/lifetime | Extend life time of project
 *ProjectsAPI* | [**ProjectsImportedClusterDetails**](docs/ProjectsAPI.md#projectsimportedclusterdetails) | **Get** /api/v1/projects/imported/details/{projectId} | Imported cluster details
 *ProjectsAPI* | [**ProjectsList**](docs/ProjectsAPI.md#projectslist) | **Get** /api/v1/projects | Retrieve all projects
 *ProjectsAPI* | [**ProjectsLockManager**](docs/ProjectsAPI.md#projectslockmanager) | **Post** /api/v1/projects/lockmanager | Lock/Unlock project
-*ProjectsAPI* | [**ProjectsLokiLogs**](docs/ProjectsAPI.md#projectslokilogs) | **Post** /api/v1/projects/lokilogs | Retrieve loki logs
+*ProjectsAPI* | [**ProjectsLokiLogs**](docs/ProjectsAPI.md#projectslokilogs) | **Post** /api/v1/projects/loki-logs | Retrieve loki logs
 *ProjectsAPI* | [**ProjectsMaintenanceManager**](docs/ProjectsAPI.md#projectsmaintenancemanager) | **Post** /api/v1/projects/maintenance-manager | Enable/disable project&#39;s maintenance mode
 *ProjectsAPI* | [**ProjectsPrometheusMetrics**](docs/ProjectsAPI.md#projectsprometheusmetrics) | **Post** /api/v1/projects/prometheusmetrics | Prometheus metrics data project
 *ProjectsAPI* | [**ProjectsPrometheusMetricsAutocomplete**](docs/ProjectsAPI.md#projectsprometheusmetricsautocomplete) | **Post** /api/v1/projects/prometheusmetrics/autocomplete | Prometheus metrics autocomplete values
@@ -903,6 +904,7 @@ Class | Method | HTTP request | Description
  - [EphemeralStorageLimitsDto](docs/EphemeralStorageLimitsDto.md)
  - [EstimatedInfracost](docs/EstimatedInfracost.md)
  - [ExportKubeConfigCommand](docs/ExportKubeConfigCommand.md)
+ - [ExportLokiLogsCommand](docs/ExportLokiLogsCommand.md)
  - [Filter](docs/Filter.md)
  - [FilteringElementDto](docs/FilteringElementDto.md)
  - [FlavorsListDto](docs/FlavorsListDto.md)
@@ -996,7 +998,8 @@ Class | Method | HTTP request | Description
  - [ListCatalogAppAvailableVersionsCommand](docs/ListCatalogAppAvailableVersionsCommand.md)
  - [LockProjectAppCommand](docs/LockProjectAppCommand.md)
  - [LoginCommand](docs/LoginCommand.md)
- - [LokiResponseDto](docs/LokiResponseDto.md)
+ - [LokiLogsQuery](docs/LokiLogsQuery.md)
+ - [LokiResult](docs/LokiResult.md)
  - [MainProjectDto](docs/MainProjectDto.md)
  - [Metadata](docs/Metadata.md)
  - [MetricData](docs/MetricData.md)
@@ -1059,7 +1062,6 @@ Class | Method | HTTP request | Description
  - [OrganizationSearchList](docs/OrganizationSearchList.md)
  - [OrganizationsList](docs/OrganizationsList.md)
  - [PackageAutocompleteDto](docs/PackageAutocompleteDto.md)
- - [Parameter](docs/Parameter.md)
  - [ParameterType](docs/ParameterType.md)
  - [PartnerDetailsForOrganizationsDto](docs/PartnerDetailsForOrganizationsDto.md)
  - [PartnerDetailsForUserDto](docs/PartnerDetailsForUserDto.md)
@@ -1114,6 +1116,7 @@ Class | Method | HTTP request | Description
  - [ProjectTemplateListDto](docs/ProjectTemplateListDto.md)
  - [ProjectType](docs/ProjectType.md)
  - [ProjectsList](docs/ProjectsList.md)
+ - [ProjectsLogsCommand](docs/ProjectsLogsCommand.md)
  - [ProjectsSearchCommand](docs/ProjectsSearchCommand.md)
  - [ProjectsSearchList](docs/ProjectsSearchList.md)
  - [PrometheusBillingCreateCommand](docs/PrometheusBillingCreateCommand.md)
@@ -1226,6 +1229,7 @@ Class | Method | HTTP request | Description
  - [StorageClassesSearchCommand](docs/StorageClassesSearchCommand.md)
  - [StorageClassesSearchList](docs/StorageClassesSearchList.md)
  - [StorageListCommand](docs/StorageListCommand.md)
+ - [Stream](docs/Stream.md)
  - [StsActionCommand](docs/StsActionCommand.md)
  - [StsSearchCommand](docs/StsSearchCommand.md)
  - [StsSearchList](docs/StsSearchList.md)

@@ -378,6 +378,7 @@ docs/EnsureCodesDownloadedCommand.md
 docs/EphemeralStorageLimitsDto.md
 docs/EstimatedInfracost.md
 docs/ExportKubeConfigCommand.md
+docs/ExportLokiLogsCommand.md
 docs/Filter.md
 docs/FilteringElementDto.md
 docs/FlavorsAPI.md
@@ -483,7 +484,8 @@ docs/ListAllSchedules.md
 docs/ListCatalogAppAvailableVersionsCommand.md
 docs/LockProjectAppCommand.md
 docs/LoginCommand.md
-docs/LokiResponseDto.md
+docs/LokiLogsQuery.md
+docs/LokiResult.md
 docs/MainProjectDto.md
 docs/Metadata.md
 docs/MetricData.md
@@ -554,7 +556,6 @@ docs/OrganizationsAPI.md
 docs/OrganizationsList.md
 docs/PackageAPI.md
 docs/PackageAutocompleteDto.md
-docs/Parameter.md
 docs/ParameterType.md
 docs/PartnerDetailsForOrganizationsDto.md
 docs/PartnerDetailsForUserDto.md
@@ -619,6 +620,7 @@ docs/ProjectTemplatesAPI.md
 docs/ProjectType.md
 docs/ProjectsAPI.md
 docs/ProjectsList.md
+docs/ProjectsLogsCommand.md
 docs/ProjectsSearchCommand.md
 docs/ProjectsSearchList.md
 docs/PrometheusBillingCreateCommand.md
@@ -744,6 +746,7 @@ docs/StopStandaloneVmCommand.md
 docs/StorageClassesSearchCommand.md
 docs/StorageClassesSearchList.md
 docs/StorageListCommand.md
+docs/Stream.md
 docs/StsActionCommand.md
 docs/StsSearchCommand.md
 docs/StsSearchList.md
@@ -1146,6 +1149,7 @@ model_ensure_codes_downloaded_command.go
 model_ephemeral_storage_limits_dto.go
 model_estimated_infracost.go
 model_export_kube_config_command.go
+model_export_loki_logs_command.go
 model_filter.go
 model_filtering_element_dto.go
 model_flavors_list_dto.go
@@ -1239,7 +1243,8 @@ model_list_all_schedules.go
 model_list_catalog_app_available_versions_command.go
 model_lock_project_app_command.go
 model_login_command.go
-model_loki_response_dto.go
+model_loki_logs_query.go
+model_loki_result.go
 model_main_project_dto.go
 model_metadata.go
 model_metric_data.go
@@ -1302,7 +1307,6 @@ model_organization_search_command.go
 model_organization_search_list.go
 model_organizations_list.go
 model_package_autocomplete_dto.go
-model_parameter.go
 model_parameter_type.go
 model_partner_details_for_organizations_dto.go
 model_partner_details_for_user_dto.go
@@ -1357,6 +1361,7 @@ model_project_template_list.go
 model_project_template_list_dto.go
 model_project_type.go
 model_projects_list.go
+model_projects_logs_command.go
 model_projects_search_command.go
 model_projects_search_list.go
 model_prometheus_billing_create_command.go
@@ -1469,6 +1474,7 @@ model_stop_standalone_vm_command.go
 model_storage_classes_search_command.go
 model_storage_classes_search_list.go
 model_storage_list_command.go
+model_stream.go
 model_sts_action_command.go
 model_sts_search_command.go
 model_sts_search_list.go

@@ -731,29 +731,29 @@ func (a *OrganizationsAPIService) OrganizationsDeletePrometheusrulesExecute(r Ap
 	return localVarHTTPResponse, nil
 }
 
-type ApiOrganizationsDetawilsRequest struct {
+type ApiOrganizationsDetailsRequest struct {
 	ctx context.Context
 	ApiService *OrganizationsAPIService
 	organizationId *int32
 }
 
-func (r ApiOrganizationsDetawilsRequest) OrganizationId(organizationId int32) ApiOrganizationsDetawilsRequest {
+func (r ApiOrganizationsDetailsRequest) OrganizationId(organizationId int32) ApiOrganizationsDetailsRequest {
 	r.organizationId = &organizationId
 	return r
 }
 
-func (r ApiOrganizationsDetawilsRequest) Execute() (*DashboardChart, *http.Response, error) {
-	return r.ApiService.OrganizationsDetawilsExecute(r)
+func (r ApiOrganizationsDetailsRequest) Execute() (*DashboardChart, *http.Response, error) {
+	return r.ApiService.OrganizationsDetailsExecute(r)
 }
 
 /*
-OrganizationsDetawils Retrieve all data about current organization by Id
+OrganizationsDetails Retrieve all data about current organization by Id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOrganizationsDetawilsRequest
+ @return ApiOrganizationsDetailsRequest
 */
-func (a *OrganizationsAPIService) OrganizationsDetawils(ctx context.Context) ApiOrganizationsDetawilsRequest {
-	return ApiOrganizationsDetawilsRequest{
+func (a *OrganizationsAPIService) OrganizationsDetails(ctx context.Context) ApiOrganizationsDetailsRequest {
+	return ApiOrganizationsDetailsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -761,7 +761,7 @@ func (a *OrganizationsAPIService) OrganizationsDetawils(ctx context.Context) Api
 
 // Execute executes the request
 //  @return DashboardChart
-func (a *OrganizationsAPIService) OrganizationsDetawilsExecute(r ApiOrganizationsDetawilsRequest) (*DashboardChart, *http.Response, error) {
+func (a *OrganizationsAPIService) OrganizationsDetailsExecute(r ApiOrganizationsDetailsRequest) (*DashboardChart, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -769,7 +769,7 @@ func (a *OrganizationsAPIService) OrganizationsDetawilsExecute(r ApiOrganization
 		localVarReturnValue  *DashboardChart
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.OrganizationsDetawils")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.OrganizationsDetails")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

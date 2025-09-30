@@ -73,11 +73,11 @@ func Test_taikuncore_OrganizationsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OrganizationsAPIService OrganizationsDetawils", func(t *testing.T) {
+	t.Run("Test OrganizationsAPIService OrganizationsDetails", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.OrganizationsAPI.OrganizationsDetawils(context.Background()).Execute()
+		resp, httpRes, err := apiClient.OrganizationsAPI.OrganizationsDetails(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

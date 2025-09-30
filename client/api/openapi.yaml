@@ -3998,7 +3998,6 @@ paths:
           application/json:
             example:
               id: 1
-              autoscalingGroupName: taikun
               minSize: 1
               maxSize: 1
               diskSize: 32212254720
@@ -5637,8 +5636,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-08-20T00:21:19.3014913Z
-                  createdAt: 2025-08-20T00:21:19.3014913Z
+                  lastValidated: 2025-09-30T12:22:39.1783384Z
+                  createdAt: 2025-09-30T12:22:39.1783384Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5749,14 +5748,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-08-20T00:21:19.3014913Z
+                    lastBackup: 2025-09-30T12:22:39.1783384Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-08-20T00:21:19.3014913Z
+                  createdAt: 2025-09-30T12:22:39.1783384Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-08-20T00:21:19.3014913Z
+                  lastBackup: 2025-09-30T12:22:39.1783384Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5867,8 +5866,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-08-20T00:21:19.3014913Z
-                  expiration: 2025-08-20T00:21:19.3014913Z
+                  createdAt: 2025-09-30T12:22:39.1783384Z
+                  expiration: 2025-09-30T12:22:39.1783384Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5978,7 +5977,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-08-20T00:21:19.3014913Z
+                  createdAt: 2025-09-30T12:22:39.1783384Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6094,9 +6093,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-08-20T00:21:19.3014913+00:00
-                  startTimeStamp: 2025-08-20T00:21:19.3014913+00:00
-                  createdAt: 2025-08-20T00:21:19.3014913Z
+                  completionDateTime: 2025-09-30T12:22:39.1783384+00:00
+                  startTimeStamp: 2025-09-30T12:22:39.1783384+00:00
+                  createdAt: 2025-09-30T12:22:39.1783384Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -19136,7 +19135,7 @@ paths:
       - Organizations
   /api/v1/organizations/details:
     get:
-      operationId: organizations-detawils
+      operationId: organizations-details
       parameters:
       - explode: true
         in: query
@@ -22870,6 +22869,60 @@ paths:
         state
       tags:
       - Projects
+  /api/v1/projects/loki-logs/export:
+    post:
+      operationId: projects-export-loki-logs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ExportLokiLogsCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CsvExporter"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Export loki logs
+      tags:
+      - Projects
   /api/v1/projects/extend/lifetime:
     post:
       operationId: projects-extend-lifetime
@@ -23020,18 +23073,22 @@ paths:
       summary: Lock/Unlock project
       tags:
       - Projects
-  /api/v1/projects/lokilogs:
+  /api/v1/projects/loki-logs:
     post:
       operationId: projects-loki-logs
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/LokiResponseDto"
+              $ref: "#/components/schemas/ProjectsLogsCommand"
       responses:
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/LokiResult"
+                type: array
           description: OK
         "400":
           content:
@@ -25105,8 +25162,6 @@ paths:
       requestBody:
         content:
           application/json:
-            example:
-              id: 1
             schema:
               $ref: "#/components/schemas/BackupMakeDefaultCommand"
       responses:
@@ -37237,17 +37292,17 @@ components:
       example:
         data:
         - isDeleted: true
-          endDate: 2000-01-23T04:56:07.000+00:00
+          endDate: endDate
           tcu: 6.027456183070403
           projectName: projectName
           projectId: 0
-          startDate: 2000-01-23T04:56:07.000+00:00
+          startDate: startDate
         - isDeleted: true
-          endDate: 2000-01-23T04:56:07.000+00:00
+          endDate: endDate
           tcu: 6.027456183070403
           projectName: projectName
           projectId: 0
-          startDate: 2000-01-23T04:56:07.000+00:00
+          startDate: startDate
         totalTcu: 1.4658129805029452
         totalCount: 5
       properties:
@@ -37310,11 +37365,11 @@ components:
       additionalProperties: false
       example:
         isDeleted: true
-        endDate: 2000-01-23T04:56:07.000+00:00
+        endDate: endDate
         tcu: 6.027456183070403
         projectName: projectName
         projectId: 0
-        startDate: 2000-01-23T04:56:07.000+00:00
+        startDate: startDate
       properties:
         projectId:
           format: int32
@@ -37323,10 +37378,9 @@ components:
           nullable: true
           type: string
         startDate:
-          format: date-time
+          nullable: true
           type: string
         endDate:
-          format: date-time
           nullable: true
           type: string
         tcu:
@@ -40289,7 +40343,6 @@ components:
         opaProfileId: 5
         maxSize: 7
         autoscalingEnabled: true
-        autoscalingGroupName: autoscalingGroupName
         expiredAt: 2000-01-23T04:56:07.000+00:00
         diskSize: 1.2315135367772556
         kubernetesProfileId: 5
@@ -40412,9 +40465,6 @@ components:
           type: number
         autoscalingEnabled:
           type: boolean
-        autoscalingGroupName:
-          nullable: true
-          type: string
         minSize:
           format: int32
           type: integer
@@ -43362,14 +43412,10 @@ components:
         minSize: 6
         maxSize: 1
         id: 0
-        autoscalingGroupName: autoscalingGroupName
       properties:
         id:
           format: int32
           type: integer
-        autoscalingGroupName:
-          nullable: true
-          type: string
         minSize:
           format: int32
           type: integer
@@ -44543,6 +44589,25 @@ components:
         projectId:
           format: int32
           type: integer
+      type: object
+    ExportLokiLogsCommand:
+      additionalProperties: false
+      example:
+        query:
+          endDate: 2000-01-23T04:56:07.000+00:00
+          limit: 6
+          filters:
+          - value: value
+            operator: operator
+          - value: value
+            operator: operator
+          projectId: 0
+          parameters: parameters
+          startDate: 2000-01-23T04:56:07.000+00:00
+          direction: direction
+      properties:
+        query:
+          $ref: "#/components/schemas/LokiLogsQuery"
       type: object
     Filter:
       additionalProperties: false
@@ -47862,46 +47927,37 @@ components:
           nullable: true
           type: string
       type: object
-    LokiResponseDto:
+    LokiLogsQuery:
       additionalProperties: false
       example:
-        start: 2000-01-23T04:56:07.000+00:00
+        endDate: 2000-01-23T04:56:07.000+00:00
         limit: 6
-        canDownload: true
-        end: 2000-01-23T04:56:07.000+00:00
         filters:
         - value: value
           operator: operator
         - value: value
           operator: operator
         projectId: 0
-        parameters:
-        - label: label
-          value: value
-          operator: operator
-        - label: label
-          value: value
-          operator: operator
+        parameters: parameters
+        startDate: 2000-01-23T04:56:07.000+00:00
         direction: direction
       properties:
         projectId:
           format: int32
           type: integer
         parameters:
-          items:
-            $ref: "#/components/schemas/Parameter"
           nullable: true
-          type: array
+          type: string
         filters:
           items:
             $ref: "#/components/schemas/Filter"
           nullable: true
           type: array
-        start:
+        startDate:
           format: date-time
           nullable: true
           type: string
-        end:
+        endDate:
           format: date-time
           nullable: true
           type: string
@@ -47912,8 +47968,32 @@ components:
         direction:
           nullable: true
           type: string
-        canDownload:
-          type: boolean
+      type: object
+    LokiResult:
+      additionalProperties: false
+      example:
+        stream:
+          app: app
+          container: container
+          component: component
+          filename: filename
+          pod: pod
+          tier: tier
+          streamStream: streamStream
+          namespace: namespace
+          job: job
+          podTemplateHash: podTemplateHash
+        values:
+        - values
+        - values
+      properties:
+        stream:
+          $ref: "#/components/schemas/Stream"
+        values:
+          items:
+            type: string
+          nullable: true
+          type: array
       type: object
     MainProjectDto:
       additionalProperties: false
@@ -50156,23 +50236,6 @@ components:
           type: array
         isTaikunLink:
           type: boolean
-      type: object
-    Parameter:
-      additionalProperties: false
-      example:
-        label: label
-        value: value
-        operator: operator
-      properties:
-        label:
-          nullable: true
-          type: string
-        operator:
-          nullable: true
-          type: string
-        value:
-          nullable: true
-          type: string
       type: object
     ParameterType:
       enum:
@@ -53182,6 +53245,25 @@ components:
       required:
       - data
       - totalCount
+      type: object
+    ProjectsLogsCommand:
+      additionalProperties: false
+      example:
+        query:
+          endDate: 2000-01-23T04:56:07.000+00:00
+          limit: 6
+          filters:
+          - value: value
+            operator: operator
+          - value: value
+            operator: operator
+          projectId: 0
+          parameters: parameters
+          startDate: 2000-01-23T04:56:07.000+00:00
+          direction: direction
+      properties:
+        query:
+          $ref: "#/components/schemas/LokiLogsQuery"
       type: object
     ProjectsSearchCommand:
       additionalProperties: false
@@ -57519,6 +57601,51 @@ components:
           nullable: true
           type: string
       type: object
+    Stream:
+      additionalProperties: false
+      example:
+        app: app
+        container: container
+        component: component
+        filename: filename
+        pod: pod
+        tier: tier
+        streamStream: streamStream
+        namespace: namespace
+        job: job
+        podTemplateHash: podTemplateHash
+      properties:
+        job:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        pod:
+          nullable: true
+          type: string
+        podTemplateHash:
+          nullable: true
+          type: string
+        streamStream:
+          nullable: true
+          type: string
+        app:
+          nullable: true
+          type: string
+        container:
+          nullable: true
+          type: string
+        filename:
+          nullable: true
+          type: string
+        tier:
+          nullable: true
+          type: string
+        component:
+          nullable: true
+          type: string
+      type: object
     StsActionCommand:
       additionalProperties: false
       example:
@@ -58626,7 +58753,6 @@ components:
           is2FAEnabled: true
           organizationName: organizationName
           hasRepo: true
-          created: 2000-01-23T04:56:07.000+00:00
           hasPaymentMethod: true
           isForcedToResetPassword: true
           isNewOrganization: true
@@ -58638,7 +58764,6 @@ components:
             link: link
             logo: logo
             id: 1
-          roleName: roleName
           isEmailNotificationEnabled: true
           username: username
           isEmailConfirmed: true
@@ -58697,7 +58822,6 @@ components:
         is2FAEnabled: true
         organizationName: organizationName
         hasRepo: true
-        created: 2000-01-23T04:56:07.000+00:00
         hasPaymentMethod: true
         isForcedToResetPassword: true
         isNewOrganization: true
@@ -58709,7 +58833,6 @@ components:
           link: link
           logo: logo
           id: 1
-        roleName: roleName
         isEmailNotificationEnabled: true
         username: username
         isEmailConfirmed: true
@@ -58727,21 +58850,12 @@ components:
         organizationId:
           format: int32
           type: integer
-        role:
-          $ref: "#/components/schemas/UserRole"
-        roleName:
-          nullable: true
-          type: string
         email:
           type: string
         displayName:
           nullable: true
           type: string
         createdAt:
-          type: string
-        created:
-          format: date-time
-          nullable: true
           type: string
         isEmailConfirmed:
           type: boolean
@@ -58778,6 +58892,8 @@ components:
           type: array
         partner:
           $ref: "#/components/schemas/PartnerDetailsForUserDto"
+        role:
+          $ref: "#/components/schemas/UserRole"
       required:
       - boundProjects
       - createdAt
@@ -59085,7 +59201,6 @@ components:
           is2FAEnabled: true
           organizationName: organizationName
           hasRepo: true
-          created: 2000-01-23T04:56:07.000+00:00
           hasPaymentMethod: true
           isForcedToResetPassword: true
           isNewOrganization: true
@@ -59097,7 +59212,6 @@ components:
             link: link
             logo: logo
             id: 1
-          roleName: roleName
           isEmailNotificationEnabled: true
           username: username
           isEmailConfirmed: true
@@ -59122,7 +59236,6 @@ components:
           is2FAEnabled: true
           organizationName: organizationName
           hasRepo: true
-          created: 2000-01-23T04:56:07.000+00:00
           hasPaymentMethod: true
           isForcedToResetPassword: true
           isNewOrganization: true
@@ -59134,7 +59247,6 @@ components:
             link: link
             logo: logo
             id: 1
-          roleName: roleName
           isEmailNotificationEnabled: true
           username: username
           isEmailConfirmed: true
