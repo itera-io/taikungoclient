@@ -30,7 +30,7 @@ type ServerListDto struct {
 	ProjectId int32 `json:"projectId"`
 	IpAddress NullableString `json:"ipAddress"`
 	DiskSize float64 `json:"diskSize"`
-	KubernetesHealth string `json:"kubernetesHealth"`
+	KubernetesHealth NullableString `json:"kubernetesHealth"`
 	Cpu int32 `json:"cpu"`
 	Ram float64 `json:"ram"`
 	Role CloudRole `json:"role"`
@@ -66,7 +66,7 @@ type _ServerListDto ServerListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServerListDto(id int32, name string, projectName string, organizationName string, organizationId int32, projectId int32, ipAddress NullableString, diskSize float64, kubernetesHealth string, cpu int32, ram float64, role CloudRole, status string, createdAt string, cloudType CloudType, createdBy string, lastModified NullableString, lastModifiedBy NullableString, spotPrice float64, spotInstance bool, shutOff bool, autoscalingGroup NullableString, providerID NullableString, instanceId NullableString, awsHostName NullableString, availabilityZone NullableString, hypervisor NullableString, hypervisorId NullableString, proxmoxRole ProxmoxRole, proxmoxExtraDiskSize int32, kubernetesNodeLabels []KubernetesNodeLabelsDto, replicaCount NullableInt32, wasmEnabled bool, flavor NullableString) *ServerListDto {
+func NewServerListDto(id int32, name string, projectName string, organizationName string, organizationId int32, projectId int32, ipAddress NullableString, diskSize float64, kubernetesHealth NullableString, cpu int32, ram float64, role CloudRole, status string, createdAt string, cloudType CloudType, createdBy string, lastModified NullableString, lastModifiedBy NullableString, spotPrice float64, spotInstance bool, shutOff bool, autoscalingGroup NullableString, providerID NullableString, instanceId NullableString, awsHostName NullableString, availabilityZone NullableString, hypervisor NullableString, hypervisorId NullableString, proxmoxRole ProxmoxRole, proxmoxExtraDiskSize int32, kubernetesNodeLabels []KubernetesNodeLabelsDto, replicaCount NullableInt32, wasmEnabled bool, flavor NullableString) *ServerListDto {
 	this := ServerListDto{}
 	this.Id = id
 	this.Name = name
@@ -308,27 +308,29 @@ func (o *ServerListDto) SetDiskSize(v float64) {
 }
 
 // GetKubernetesHealth returns the KubernetesHealth field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ServerListDto) GetKubernetesHealth() string {
-	if o == nil {
+	if o == nil || o.KubernetesHealth.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.KubernetesHealth
+	return *o.KubernetesHealth.Get()
 }
 
 // GetKubernetesHealthOk returns a tuple with the KubernetesHealth field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerListDto) GetKubernetesHealthOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.KubernetesHealth, true
+	return o.KubernetesHealth.Get(), o.KubernetesHealth.IsSet()
 }
 
 // SetKubernetesHealth sets field value
 func (o *ServerListDto) SetKubernetesHealth(v string) {
-	o.KubernetesHealth = v
+	o.KubernetesHealth.Set(&v)
 }
 
 // GetCpu returns the Cpu field value
@@ -1035,7 +1037,7 @@ func (o ServerListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["projectId"] = o.ProjectId
 	toSerialize["ipAddress"] = o.IpAddress.Get()
 	toSerialize["diskSize"] = o.DiskSize
-	toSerialize["kubernetesHealth"] = o.KubernetesHealth
+	toSerialize["kubernetesHealth"] = o.KubernetesHealth.Get()
 	toSerialize["cpu"] = o.Cpu
 	toSerialize["ram"] = o.Ram
 	toSerialize["role"] = o.Role
