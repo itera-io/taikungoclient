@@ -76,6 +76,7 @@ api_subscription.go
 api_taikun_lb.go
 api_tanzu.go
 api_ticket.go
+api_trusted_registries.go
 api_user_group.go
 api_user_projects.go
 api_user_token.go
@@ -327,6 +328,7 @@ docs/CreateStripeCustomerCommand.md
 docs/CreateSubscriptionCommand.md
 docs/CreateTanzuCommand.md
 docs/CreateTicketCommand.md
+docs/CreateTrustedRegistriesCommand.md
 docs/CreateUserCommand.md
 docs/CreateUserGroupCommand.md
 docs/CreateVirtualClusterCommand.md
@@ -910,6 +912,10 @@ docs/ToggleMaintenanceModeCommand.md
 docs/ToggleNotificationModeCommand.md
 docs/TransferList.md
 docs/TransferTicketCommand.md
+docs/TrustedRegistriesAPI.md
+docs/TrustedRegistriesListDto.md
+docs/TrustedRegistryEditDto.md
+docs/TrustedRegistryListDto.md
 docs/TwoFactorAuthLoginCommand.md
 docs/TwoFactorAuthRecoveryCommand.md
 docs/TwoFactorAuthSetupResult.md
@@ -1253,6 +1259,7 @@ model_create_stripe_customer_command.go
 model_create_subscription_command.go
 model_create_tanzu_command.go
 model_create_ticket_command.go
+model_create_trusted_registries_command.go
 model_create_user_command.go
 model_create_user_group_command.go
 model_create_virtual_cluster_command.go
@@ -1781,6 +1788,9 @@ model_toggle_maintenance_mode_command.go
 model_toggle_notification_mode_command.go
 model_transfer_list.go
 model_transfer_ticket_command.go
+model_trusted_registries_list_dto.go
+model_trusted_registry_edit_dto.go
+model_trusted_registry_list_dto.go
 model_two_factor_auth_login_command.go
 model_two_factor_auth_recovery_command.go
 model_two_factor_auth_setup_result.go
@@ -1964,6 +1974,7 @@ test/api_subscription_test.go
 test/api_taikun_lb_test.go
 test/api_tanzu_test.go
 test/api_ticket_test.go
+test/api_trusted_registries_test.go
 test/api_user_group_test.go
 test/api_user_projects_test.go
 test/api_user_token_test.go

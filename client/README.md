@@ -699,6 +699,10 @@ Class | Method | HTTP request | Description
 *TicketAPI* | [**TicketSetPriority**](docs/TicketAPI.md#ticketsetpriority) | **Post** /api/v1/ticket/set-priority | Set priority
 *TicketAPI* | [**TicketTransfer**](docs/TicketAPI.md#tickettransfer) | **Post** /api/v1/ticket/transfer | Transfer ticket
 *TicketAPI* | [**TicketTransferList**](docs/TicketAPI.md#tickettransferlist) | **Get** /api/v1/ticket/transfer/list | Retrieve organization managers
+*TrustedRegistriesAPI* | [**TrustedregistriesCreate**](docs/TrustedRegistriesAPI.md#trustedregistriescreate) | **Post** /api/v1/trustedregistries/create | Create trusted registries for access profile
+*TrustedRegistriesAPI* | [**TrustedregistriesDelete**](docs/TrustedRegistriesAPI.md#trustedregistriesdelete) | **Delete** /api/v1/trustedregistries/{id} | Delete trusted registry
+*TrustedRegistriesAPI* | [**TrustedregistriesEdit**](docs/TrustedRegistriesAPI.md#trustedregistriesedit) | **Put** /api/v1/trustedregistries/edit/{id} | Edit trusted registry
+*TrustedRegistriesAPI* | [**TrustedregistriesList**](docs/TrustedRegistriesAPI.md#trustedregistrieslist) | **Get** /api/v1/trustedregistries/{accessProfileId} | List trusted registries by profile id
 *UserGroupAPI* | [**ProjectgroupsUnbindProjectGroup**](docs/UserGroupAPI.md#projectgroupsunbindprojectgroup) | **Post** /api/v1/projectgroups/unbind-project-group | Unbind project group from user group
 *UserGroupAPI* | [**UsergroupsBindProjectsGroup**](docs/UserGroupAPI.md#usergroupsbindprojectsgroup) | **Post** /api/v1/usergroups/bind-project-groups | Bind project groups
 *UserGroupAPI* | [**UsergroupsBindUser**](docs/UserGroupAPI.md#usergroupsbinduser) | **Post** /api/v1/usergroups/bind-user | Bind Users to group
@@ -998,6 +1002,7 @@ Class | Method | HTTP request | Description
  - [CreateSubscriptionCommand](docs/CreateSubscriptionCommand.md)
  - [CreateTanzuCommand](docs/CreateTanzuCommand.md)
  - [CreateTicketCommand](docs/CreateTicketCommand.md)
+ - [CreateTrustedRegistriesCommand](docs/CreateTrustedRegistriesCommand.md)
  - [CreateUserCommand](docs/CreateUserCommand.md)
  - [CreateUserGroupCommand](docs/CreateUserGroupCommand.md)
  - [CreateVirtualClusterCommand](docs/CreateVirtualClusterCommand.md)
@@ -1526,6 +1531,9 @@ Class | Method | HTTP request | Description
  - [ToggleNotificationModeCommand](docs/ToggleNotificationModeCommand.md)
  - [TransferList](docs/TransferList.md)
  - [TransferTicketCommand](docs/TransferTicketCommand.md)
+ - [TrustedRegistriesListDto](docs/TrustedRegistriesListDto.md)
+ - [TrustedRegistryEditDto](docs/TrustedRegistryEditDto.md)
+ - [TrustedRegistryListDto](docs/TrustedRegistryListDto.md)
  - [TwoFactorAuthLoginCommand](docs/TwoFactorAuthLoginCommand.md)
  - [TwoFactorAuthRecoveryCommand](docs/TwoFactorAuthRecoveryCommand.md)
  - [TwoFactorAuthSetupResult](docs/TwoFactorAuthSetupResult.md)

@@ -1039,6 +1039,9 @@ paths:
                   dnsServers:
                   - id: 1
                     address: 8.8.8.8
+                  trustedRegistries:
+                  - id: 1
+                    registry: 8.8.8.8
                   ntpServers:
                   - id: 1
                     address: 8.8.8.8
@@ -6678,8 +6681,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-10-07T00:03:39.1172307Z
-                  createdAt: 2025-10-07T00:03:39.1172307Z
+                  lastValidated: 2025-10-08T00:03:49.8877003Z
+                  createdAt: 2025-10-08T00:03:49.8877003Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6790,14 +6793,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-10-07T00:03:39.1172307Z
+                    lastBackup: 2025-10-08T00:03:49.8877003Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-10-07T00:03:39.1172307Z
+                  createdAt: 2025-10-08T00:03:49.8877003Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-10-07T00:03:39.1172307Z
+                  lastBackup: 2025-10-08T00:03:49.8877003Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6908,8 +6911,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-10-07T00:03:39.1172307Z
-                  expiration: 2025-10-07T00:03:39.1172307Z
+                  createdAt: 2025-10-08T00:03:49.8877003Z
+                  expiration: 2025-10-08T00:03:49.8877003Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -7019,7 +7022,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-10-07T00:03:39.1172307Z
+                  createdAt: 2025-10-08T00:03:49.8877003Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -7135,9 +7138,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-10-07T00:03:39.1172307+00:00
-                  startTimeStamp: 2025-10-07T00:03:39.1172307+00:00
-                  createdAt: 2025-10-07T00:03:39.1172307Z
+                  completionDateTime: 2025-10-08T00:03:49.8877003+00:00
+                  startTimeStamp: 2025-10-08T00:03:49.8877003+00:00
+                  createdAt: 2025-10-08T00:03:49.8877003Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -38464,6 +38467,244 @@ paths:
       summary: Delete ticket message
       tags:
       - Ticket
+  /api/v1/trustedregistries/edit/{id}:
+    put:
+      operationId: trustedregistries-edit
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TrustedRegistryEditDto"
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Edit trusted registry
+      tags:
+      - Trusted Registries
+  /api/v1/trustedregistries/create:
+    post:
+      operationId: trustedregistries-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateTrustedRegistriesCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Create trusted registries for access profile
+      tags:
+      - Trusted Registries
+  /api/v1/trustedregistries/{accessProfileId}:
+    get:
+      operationId: trustedregistries-list
+      parameters:
+      - explode: false
+        in: path
+        name: accessProfileId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - id: 1
+                registry: 8.8.8.8
+                accessProfileName: taikun
+              schema:
+                items:
+                  $ref: "#/components/schemas/TrustedRegistriesListDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: List trusted registries by profile id
+      tags:
+      - Trusted Registries
+  /api/v1/trustedregistries/{id}:
+    delete:
+      operationId: trustedregistries-delete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Delete trusted registry
+      tags:
+      - Trusted Registries
   /api/v1/usergroups/update/{userGroupId}:
     put:
       operationId: usergroups-update
@@ -42774,15 +43015,15 @@ components:
           - accessProfileName: accessProfileName
             ipAddress: ipAddress
             description: description
-            accessProfileId: 7
-            id: 5
-            maskBits: 2
+            accessProfileId: 9
+            id: 2
+            maskBits: 7
           - accessProfileName: accessProfileName
             ipAddress: ipAddress
             description: description
-            accessProfileId: 7
-            id: 5
-            maskBits: 2
+            accessProfileId: 9
+            id: 2
+            maskBits: 7
           projects:
           - name: name
             id: 5
@@ -42794,6 +43035,11 @@ components:
           organizationId: 6
           createdAt: createdAt
           createdBy: createdBy
+          trustedRegistries:
+          - registry: registry
+            id: 5
+          - registry: registry
+            id: 5
           ntpServers:
           - address: address
             id: 5
@@ -42812,15 +43058,15 @@ components:
           - accessProfileName: accessProfileName
             ipAddress: ipAddress
             description: description
-            accessProfileId: 7
-            id: 5
-            maskBits: 2
+            accessProfileId: 9
+            id: 2
+            maskBits: 7
           - accessProfileName: accessProfileName
             ipAddress: ipAddress
             description: description
-            accessProfileId: 7
-            id: 5
-            maskBits: 2
+            accessProfileId: 9
+            id: 2
+            maskBits: 7
           projects:
           - name: name
             id: 5
@@ -42832,6 +43078,11 @@ components:
           organizationId: 6
           createdAt: createdAt
           createdBy: createdBy
+          trustedRegistries:
+          - registry: registry
+            id: 5
+          - registry: registry
+            id: 5
           ntpServers:
           - address: address
             id: 5
@@ -42846,7 +43097,7 @@ components:
             id: 1
           - address: address
             id: 1
-        totalCount: 9
+        totalCount: 3
       properties:
         data:
           items:
@@ -42867,15 +43118,15 @@ components:
         - accessProfileName: accessProfileName
           ipAddress: ipAddress
           description: description
-          accessProfileId: 7
-          id: 5
-          maskBits: 2
+          accessProfileId: 9
+          id: 2
+          maskBits: 7
         - accessProfileName: accessProfileName
           ipAddress: ipAddress
           description: description
-          accessProfileId: 7
-          id: 5
-          maskBits: 2
+          accessProfileId: 9
+          id: 2
+          maskBits: 7
         projects:
         - name: name
           id: 5
@@ -42887,6 +43138,11 @@ components:
         organizationId: 6
         createdAt: createdAt
         createdBy: createdBy
+        trustedRegistries:
+        - registry: registry
+          id: 5
+        - registry: registry
+          id: 5
         ntpServers:
         - address: address
           id: 5
@@ -42921,6 +43177,10 @@ components:
         dnsServers:
           items:
             $ref: "#/components/schemas/DnsServerListDto"
+          type: array
+        trustedRegistries:
+          items:
+            $ref: "#/components/schemas/TrustedRegistryListDto"
           type: array
         ntpServers:
           items:
@@ -42960,6 +43220,7 @@ components:
       - organizationId
       - organizationName
       - projects
+      - trustedRegistries
       type: object
     AccessProfilesLockManagementCommand:
       additionalProperties: false
@@ -44460,15 +44721,15 @@ components:
         - accessProfileName: accessProfileName
           ipAddress: ipAddress
           description: description
-          accessProfileId: 7
-          id: 5
-          maskBits: 2
+          accessProfileId: 9
+          id: 2
+          maskBits: 7
         - accessProfileName: accessProfileName
           ipAddress: ipAddress
           description: description
-          accessProfileId: 7
-          id: 5
-          maskBits: 2
+          accessProfileId: 9
+          id: 2
+          maskBits: 7
         totalCount: 0
       properties:
         data:
@@ -44489,9 +44750,9 @@ components:
         accessProfileName: accessProfileName
         ipAddress: ipAddress
         description: description
-        accessProfileId: 7
-        id: 5
-        maskBits: 2
+        accessProfileId: 9
+        id: 2
+        maskBits: 7
       properties:
         id:
           format: int32
@@ -50533,6 +50794,19 @@ components:
           type: integer
         priority:
           $ref: "#/components/schemas/TicketPriority"
+      type: object
+    CreateTrustedRegistriesCommand:
+      additionalProperties: false
+      example:
+        registry: registry
+        accessProfileId: 0
+      properties:
+        registry:
+          nullable: true
+          type: string
+        accessProfileId:
+          format: int32
+          type: integer
       type: object
     CreateUserCommand:
       additionalProperties: false
@@ -70827,6 +71101,52 @@ components:
         userId:
           nullable: true
           type: string
+      type: object
+    TrustedRegistriesListDto:
+      additionalProperties: false
+      example:
+        registry: registry
+        accessProfileName: accessProfileName
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+        registry:
+          nullable: true
+          type: string
+        accessProfileName:
+          nullable: true
+          type: string
+      required:
+      - accessProfileName
+      - id
+      - registry
+      type: object
+    TrustedRegistryEditDto:
+      additionalProperties: false
+      example:
+        registry: registry
+      properties:
+        registry:
+          nullable: true
+          type: string
+      type: object
+    TrustedRegistryListDto:
+      additionalProperties: false
+      example:
+        registry: registry
+        id: 5
+      properties:
+        id:
+          format: int32
+          type: integer
+        registry:
+          nullable: true
+          type: string
+      required:
+      - id
+      - registry
       type: object
     TwoFactorAuthLoginCommand:
       additionalProperties: false
