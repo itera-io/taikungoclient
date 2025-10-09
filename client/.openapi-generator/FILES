@@ -912,6 +912,7 @@ docs/ToggleMaintenanceModeCommand.md
 docs/ToggleNotificationModeCommand.md
 docs/TransferList.md
 docs/TransferTicketCommand.md
+docs/TrustedRegisteredCreateDto.md
 docs/TrustedRegistriesAPI.md
 docs/TrustedRegistriesListDto.md
 docs/TrustedRegistryEditDto.md
@@ -1788,6 +1789,7 @@ model_toggle_maintenance_mode_command.go
 model_toggle_notification_mode_command.go
 model_transfer_list.go
 model_transfer_ticket_command.go
+model_trusted_registered_create_dto.go
 model_trusted_registries_list_dto.go
 model_trusted_registry_edit_dto.go
 model_trusted_registry_list_dto.go

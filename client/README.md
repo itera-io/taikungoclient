@@ -1531,6 +1531,7 @@ Class | Method | HTTP request | Description
  - [ToggleNotificationModeCommand](docs/ToggleNotificationModeCommand.md)
  - [TransferList](docs/TransferList.md)
  - [TransferTicketCommand](docs/TransferTicketCommand.md)
+ - [TrustedRegisteredCreateDto](docs/TrustedRegisteredCreateDto.md)
  - [TrustedRegistriesListDto](docs/TrustedRegistriesListDto.md)
  - [TrustedRegistryEditDto](docs/TrustedRegistryEditDto.md)
  - [TrustedRegistryListDto](docs/TrustedRegistryListDto.md)

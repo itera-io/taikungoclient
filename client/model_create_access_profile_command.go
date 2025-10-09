@@ -25,6 +25,7 @@ type CreateAccessProfileCommand struct {
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	SshUsers []SshUserCreateDto `json:"sshUsers,omitempty"`
 	DnsServers []DnsServerCreateDto `json:"dnsServers,omitempty"`
+	TrustedRegistries []TrustedRegisteredCreateDto `json:"trustedRegistries,omitempty"`
 	NtpServers []NtpServerCreateDto `json:"ntpServers,omitempty"`
 	AllowedHosts []AllowedHostCreateDto `json:"allowedHosts,omitempty"`
 }
@@ -238,6 +239,39 @@ func (o *CreateAccessProfileCommand) SetDnsServers(v []DnsServerCreateDto) {
 	o.DnsServers = v
 }
 
+// GetTrustedRegistries returns the TrustedRegistries field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateAccessProfileCommand) GetTrustedRegistries() []TrustedRegisteredCreateDto {
+	if o == nil {
+		var ret []TrustedRegisteredCreateDto
+		return ret
+	}
+	return o.TrustedRegistries
+}
+
+// GetTrustedRegistriesOk returns a tuple with the TrustedRegistries field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateAccessProfileCommand) GetTrustedRegistriesOk() ([]TrustedRegisteredCreateDto, bool) {
+	if o == nil || IsNil(o.TrustedRegistries) {
+		return nil, false
+	}
+	return o.TrustedRegistries, true
+}
+
+// HasTrustedRegistries returns a boolean if a field has been set.
+func (o *CreateAccessProfileCommand) HasTrustedRegistries() bool {
+	if o != nil && !IsNil(o.TrustedRegistries) {
+		return true
+	}
+
+	return false
+}
+
+// SetTrustedRegistries gets a reference to the given []TrustedRegisteredCreateDto and assigns it to the TrustedRegistries field.
+func (o *CreateAccessProfileCommand) SetTrustedRegistries(v []TrustedRegisteredCreateDto) {
+	o.TrustedRegistries = v
+}
+
 // GetNtpServers returns the NtpServers field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateAccessProfileCommand) GetNtpServers() []NtpServerCreateDto {
 	if o == nil {
@@ -328,6 +362,9 @@ func (o CreateAccessProfileCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.DnsServers != nil {
 		toSerialize["dnsServers"] = o.DnsServers
+	}
+	if o.TrustedRegistries != nil {
+		toSerialize["trustedRegistries"] = o.TrustedRegistries
 	}
 	if o.NtpServers != nil {
 		toSerialize["ntpServers"] = o.NtpServers
