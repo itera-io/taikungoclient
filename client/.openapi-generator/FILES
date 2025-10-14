@@ -158,7 +158,6 @@ docs/AttachDetachAlertingProfileCommand.md
 docs/AuthManagementAPI.md
 docs/AutoSyncManagementCommand.md
 docs/AutoscalingAPI.md
-docs/AutoscalingSyncCommand.md
 docs/AvailableEndpointData.md
 docs/AvailableEndpointsList.md
 docs/AvailablePackageDetailsDto.md
@@ -1098,7 +1097,6 @@ model_artifact_repository_dto.go
 model_artifact_url_checker_command.go
 model_attach_detach_alerting_profile_command.go
 model_auto_sync_management_command.go
-model_autoscaling_sync_command.go
 model_available_endpoint_data.go
 model_available_endpoints_list.go
 model_available_package_details_dto.go

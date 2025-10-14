@@ -160,7 +160,6 @@ Class | Method | HTTP request | Description
 *AutoscalingAPI* | [**AutoscalingDisable**](docs/AutoscalingAPI.md#autoscalingdisable) | **Post** /api/v1/autoscaling/disable | Disable autoscaling
 *AutoscalingAPI* | [**AutoscalingEdit**](docs/AutoscalingAPI.md#autoscalingedit) | **Post** /api/v1/autoscaling/edit | Edit autoscaling
 *AutoscalingAPI* | [**AutoscalingEnable**](docs/AutoscalingAPI.md#autoscalingenable) | **Post** /api/v1/autoscaling/enable | Enable autoscaling
-*AutoscalingAPI* | [**AutoscalingSync**](docs/AutoscalingAPI.md#autoscalingsync) | **Post** /api/v1/autoscaling/sync | Sync autoscaling
 *AzureCloudCredentialAPI* | [**AzureAksClusters**](docs/AzureCloudCredentialAPI.md#azureaksclusters) | **Post** /api/v1/azure/aks-clusters | Fetch AKS cluster list
 *AzureCloudCredentialAPI* | [**AzureCreate**](docs/AzureCloudCredentialAPI.md#azurecreate) | **Post** /api/v1/azure/create | Add Azure credentials
 *AzureCloudCredentialAPI* | [**AzureDashboard**](docs/AzureCloudCredentialAPI.md#azuredashboard) | **Post** /api/v1/azure/quota/list | Fetch Azure quota list
@@ -840,7 +839,6 @@ Class | Method | HTTP request | Description
  - [ArtifactUrlCheckerCommand](docs/ArtifactUrlCheckerCommand.md)
  - [AttachDetachAlertingProfileCommand](docs/AttachDetachAlertingProfileCommand.md)
  - [AutoSyncManagementCommand](docs/AutoSyncManagementCommand.md)
- - [AutoscalingSyncCommand](docs/AutoscalingSyncCommand.md)
  - [AvailableEndpointData](docs/AvailableEndpointData.md)
  - [AvailableEndpointsList](docs/AvailableEndpointsList.md)
  - [AvailablePackageDetailsDto](docs/AvailablePackageDetailsDto.md)
