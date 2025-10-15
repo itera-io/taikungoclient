@@ -179,6 +179,8 @@ type APIClient struct {
 
 	TicketAPI *TicketAPIService
 
+	TrustedRegistriesAPI *TrustedRegistriesAPIService
+
 	UserGroupAPI *UserGroupAPIService
 
 	UserProjectsAPI *UserProjectsAPIService
@@ -276,6 +278,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.StandaloneVMDisksAPI = (*StandaloneVMDisksAPIService)(&c.common)
 	c.TanzuAPI = (*TanzuAPIService)(&c.common)
 	c.TicketAPI = (*TicketAPIService)(&c.common)
+	c.TrustedRegistriesAPI = (*TrustedRegistriesAPIService)(&c.common)
 	c.UserGroupAPI = (*UserGroupAPIService)(&c.common)
 	c.UserProjectsAPI = (*UserProjectsAPIService)(&c.common)
 	c.UserTokenAPI = (*UserTokenAPIService)(&c.common)

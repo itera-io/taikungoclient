@@ -29,6 +29,7 @@ type AccessProfilesListDto struct {
 	OrganizationName string `json:"organizationName"`
 	IsLocked bool `json:"isLocked"`
 	DnsServers []DnsServerListDto `json:"dnsServers"`
+	TrustedRegistries []TrustedRegistryListDto `json:"trustedRegistries"`
 	NtpServers []NtpServerListDto `json:"ntpServers"`
 	AllowedHosts []AllowedHostListDto `json:"allowedHosts"`
 	Projects []CommonDropdownDto `json:"projects"`
@@ -44,7 +45,7 @@ type _AccessProfilesListDto AccessProfilesListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessProfilesListDto(id int32, name string, httpProxy NullableString, organizationId NullableInt32, organizationName string, isLocked bool, dnsServers []DnsServerListDto, ntpServers []NtpServerListDto, allowedHosts []AllowedHostListDto, projects []CommonDropdownDto, createdBy NullableString, lastModified NullableString, lastModifiedBy NullableString, createdAt string) *AccessProfilesListDto {
+func NewAccessProfilesListDto(id int32, name string, httpProxy NullableString, organizationId NullableInt32, organizationName string, isLocked bool, dnsServers []DnsServerListDto, trustedRegistries []TrustedRegistryListDto, ntpServers []NtpServerListDto, allowedHosts []AllowedHostListDto, projects []CommonDropdownDto, createdBy NullableString, lastModified NullableString, lastModifiedBy NullableString, createdAt string) *AccessProfilesListDto {
 	this := AccessProfilesListDto{}
 	this.Id = id
 	this.Name = name
@@ -53,6 +54,7 @@ func NewAccessProfilesListDto(id int32, name string, httpProxy NullableString, o
 	this.OrganizationName = organizationName
 	this.IsLocked = isLocked
 	this.DnsServers = dnsServers
+	this.TrustedRegistries = trustedRegistries
 	this.NtpServers = ntpServers
 	this.AllowedHosts = allowedHosts
 	this.Projects = projects
@@ -241,6 +243,30 @@ func (o *AccessProfilesListDto) GetDnsServersOk() ([]DnsServerListDto, bool) {
 // SetDnsServers sets field value
 func (o *AccessProfilesListDto) SetDnsServers(v []DnsServerListDto) {
 	o.DnsServers = v
+}
+
+// GetTrustedRegistries returns the TrustedRegistries field value
+func (o *AccessProfilesListDto) GetTrustedRegistries() []TrustedRegistryListDto {
+	if o == nil {
+		var ret []TrustedRegistryListDto
+		return ret
+	}
+
+	return o.TrustedRegistries
+}
+
+// GetTrustedRegistriesOk returns a tuple with the TrustedRegistries field value
+// and a boolean to check if the value has been set.
+func (o *AccessProfilesListDto) GetTrustedRegistriesOk() ([]TrustedRegistryListDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.TrustedRegistries, true
+}
+
+// SetTrustedRegistries sets field value
+func (o *AccessProfilesListDto) SetTrustedRegistries(v []TrustedRegistryListDto) {
+	o.TrustedRegistries = v
 }
 
 // GetNtpServers returns the NtpServers field value
@@ -434,6 +460,7 @@ func (o AccessProfilesListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["organizationName"] = o.OrganizationName
 	toSerialize["isLocked"] = o.IsLocked
 	toSerialize["dnsServers"] = o.DnsServers
+	toSerialize["trustedRegistries"] = o.TrustedRegistries
 	toSerialize["ntpServers"] = o.NtpServers
 	toSerialize["allowedHosts"] = o.AllowedHosts
 	toSerialize["projects"] = o.Projects
@@ -456,6 +483,7 @@ func (o *AccessProfilesListDto) UnmarshalJSON(data []byte) (err error) {
 		"organizationName",
 		"isLocked",
 		"dnsServers",
+		"trustedRegistries",
 		"ntpServers",
 		"allowedHosts",
 		"projects",

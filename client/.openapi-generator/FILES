@@ -67,6 +67,7 @@ api_standalone_profile.go
 api_standalone_vm_disks.go
 api_tanzu.go
 api_ticket.go
+api_trusted_registries.go
 api_user_group.go
 api_user_projects.go
 api_user_token.go
@@ -218,6 +219,7 @@ docs/CheckOpenstackCommand.md
 docs/CheckPrometheusCommand.md
 docs/CheckS3Command.md
 docs/CheckTanzuCommand.md
+docs/CheckTrustedRegistryCommand.md
 docs/CheckZadaraCommand.md
 docs/CheckerAPI.md
 docs/CidrCommand.md
@@ -274,6 +276,7 @@ docs/CreateStandAloneDiskCommand.md
 docs/CreateStandAloneVmCommand.md
 docs/CreateTanzuCommand.md
 docs/CreateTicketCommand.md
+docs/CreateTrustedRegistriesCommand.md
 docs/CreateUserCommand.md
 docs/CreateUserGroupCommand.md
 docs/CreateVirtualClusterCommand.md
@@ -764,6 +767,11 @@ docs/TicketAPI.md
 docs/TicketPriority.md
 docs/TofuMigrateCommand.md
 docs/ToggleKeycloakCommand.md
+docs/TrustedRegisteredCreateDto.md
+docs/TrustedRegistriesAPI.md
+docs/TrustedRegistriesListDto.md
+docs/TrustedRegistryEditDto.md
+docs/TrustedRegistryListDto.md
 docs/TwoFactorAuthLoginCommand.md
 docs/TwoFactorAuthRecoveryCommand.md
 docs/TwoFactorAuthSetupResult.md
@@ -992,6 +1000,7 @@ model_check_openstack_command.go
 model_check_prometheus_command.go
 model_check_s3_command.go
 model_check_tanzu_command.go
+model_check_trusted_registry_command.go
 model_check_zadara_command.go
 model_cidr_command.go
 model_cloud_credentials_for_organization_entity.go
@@ -1046,6 +1055,7 @@ model_create_stand_alone_disk_command.go
 model_create_stand_alone_vm_command.go
 model_create_tanzu_command.go
 model_create_ticket_command.go
+model_create_trusted_registries_command.go
 model_create_user_command.go
 model_create_user_group_command.go
 model_create_virtual_cluster_command.go
@@ -1490,6 +1500,10 @@ model_tanzu_storage_list_command.go
 model_ticket_priority.go
 model_tofu_migrate_command.go
 model_toggle_keycloak_command.go
+model_trusted_registered_create_dto.go
+model_trusted_registries_list_dto.go
+model_trusted_registry_edit_dto.go
+model_trusted_registry_list_dto.go
 model_two_factor_auth_login_command.go
 model_two_factor_auth_recovery_command.go
 model_two_factor_auth_setup_result.go
@@ -1647,6 +1661,7 @@ test/api_standalone_test.go
 test/api_standalone_vm_disks_test.go
 test/api_tanzu_test.go
 test/api_ticket_test.go
+test/api_trusted_registries_test.go
 test/api_user_group_test.go
 test/api_user_projects_test.go
 test/api_user_token_test.go

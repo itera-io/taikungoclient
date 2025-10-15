@@ -213,6 +213,7 @@ Class | Method | HTTP request | Description
 *CheckerAPI* | [**CheckerS3**](docs/CheckerAPI.md#checkers3) | **Post** /api/v1/checker/s3 | Check s3 credential
 *CheckerAPI* | [**CheckerSsh**](docs/CheckerAPI.md#checkerssh) | **Post** /api/v1/checker/ssh | Check valid ssh key format
 *CheckerAPI* | [**CheckerTanzu**](docs/CheckerAPI.md#checkertanzu) | **Post** /api/v1/checker/tanzu | Check tanzu credential
+*CheckerAPI* | [**CheckerTrustedRegistry**](docs/CheckerAPI.md#checkertrustedregistry) | **Post** /api/v1/checker/trusted-registry | Check trusted registry
 *CheckerAPI* | [**CheckerYaml**](docs/CheckerAPI.md#checkeryaml) | **Post** /api/v1/checker/yaml | Check yaml file
 *CheckerAPI* | [**CheckerZadara**](docs/CheckerAPI.md#checkerzadara) | **Post** /api/v1/checker/zadara | Check zadara credential
 *CheckerAPI* | [**CheckerZededa**](docs/CheckerAPI.md#checkerzededa) | **Post** /api/v1/checker/zededa | Check zededa credential
@@ -556,6 +557,10 @@ Class | Method | HTTP request | Description
 *TicketAPI* | [**TicketOpen**](docs/TicketAPI.md#ticketopen) | **Post** /api/v1/ticket/open | Open ticket
 *TicketAPI* | [**TicketReply**](docs/TicketAPI.md#ticketreply) | **Post** /api/v1/ticket/reply | Reply message
 *TicketAPI* | [**TicketSetPriority**](docs/TicketAPI.md#ticketsetpriority) | **Post** /api/v1/ticket/set-priority | Set priority
+*TrustedRegistriesAPI* | [**TrustedregistriesCreate**](docs/TrustedRegistriesAPI.md#trustedregistriescreate) | **Post** /api/v1/trustedregistries/create | Create trusted registries for access profile
+*TrustedRegistriesAPI* | [**TrustedregistriesDelete**](docs/TrustedRegistriesAPI.md#trustedregistriesdelete) | **Delete** /api/v1/trustedregistries/{id} | Delete trusted registry
+*TrustedRegistriesAPI* | [**TrustedregistriesEdit**](docs/TrustedRegistriesAPI.md#trustedregistriesedit) | **Put** /api/v1/trustedregistries/edit/{id} | Edit trusted registry
+*TrustedRegistriesAPI* | [**TrustedregistriesList**](docs/TrustedRegistriesAPI.md#trustedregistrieslist) | **Get** /api/v1/trustedregistries/{accessProfileId} | List trusted registries by profile id
 *UserGroupAPI* | [**ProjectgroupsUnbindProjectGroup**](docs/UserGroupAPI.md#projectgroupsunbindprojectgroup) | **Post** /api/v1/projectgroups/unbind-project-group | Unbind project group from user group
 *UserGroupAPI* | [**UsergroupsBindProjectsGroup**](docs/UserGroupAPI.md#usergroupsbindprojectsgroup) | **Post** /api/v1/usergroups/bind-project-groups | Bind project groups
 *UserGroupAPI* | [**UsergroupsBindUser**](docs/UserGroupAPI.md#usergroupsbinduser) | **Post** /api/v1/usergroups/bind-user | Bind Users to group
@@ -748,6 +753,7 @@ Class | Method | HTTP request | Description
  - [CheckPrometheusCommand](docs/CheckPrometheusCommand.md)
  - [CheckS3Command](docs/CheckS3Command.md)
  - [CheckTanzuCommand](docs/CheckTanzuCommand.md)
+ - [CheckTrustedRegistryCommand](docs/CheckTrustedRegistryCommand.md)
  - [CheckZadaraCommand](docs/CheckZadaraCommand.md)
  - [CidrCommand](docs/CidrCommand.md)
  - [CloudCredentialsForOrganizationEntity](docs/CloudCredentialsForOrganizationEntity.md)
@@ -801,6 +807,7 @@ Class | Method | HTTP request | Description
  - [CreateStandAloneVmCommand](docs/CreateStandAloneVmCommand.md)
  - [CreateTanzuCommand](docs/CreateTanzuCommand.md)
  - [CreateTicketCommand](docs/CreateTicketCommand.md)
+ - [CreateTrustedRegistriesCommand](docs/CreateTrustedRegistriesCommand.md)
  - [CreateUserCommand](docs/CreateUserCommand.md)
  - [CreateUserGroupCommand](docs/CreateUserGroupCommand.md)
  - [CreateVirtualClusterCommand](docs/CreateVirtualClusterCommand.md)
@@ -1245,6 +1252,10 @@ Class | Method | HTTP request | Description
  - [TicketPriority](docs/TicketPriority.md)
  - [TofuMigrateCommand](docs/TofuMigrateCommand.md)
  - [ToggleKeycloakCommand](docs/ToggleKeycloakCommand.md)
+ - [TrustedRegisteredCreateDto](docs/TrustedRegisteredCreateDto.md)
+ - [TrustedRegistriesListDto](docs/TrustedRegistriesListDto.md)
+ - [TrustedRegistryEditDto](docs/TrustedRegistryEditDto.md)
+ - [TrustedRegistryListDto](docs/TrustedRegistryListDto.md)
  - [TwoFactorAuthLoginCommand](docs/TwoFactorAuthLoginCommand.md)
  - [TwoFactorAuthRecoveryCommand](docs/TwoFactorAuthRecoveryCommand.md)
  - [TwoFactorAuthSetupResult](docs/TwoFactorAuthSetupResult.md)
