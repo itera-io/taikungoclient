@@ -255,6 +255,7 @@ docs/CheckOpenstackCommand.md
 docs/CheckPrometheusCommand.md
 docs/CheckS3Command.md
 docs/CheckTanzuCommand.md
+docs/CheckTrustedRegistryCommand.md
 docs/CheckZadaraCommand.md
 docs/CheckerAPI.md
 docs/CidrCommand.md
@@ -1188,6 +1189,7 @@ model_check_openstack_command.go
 model_check_prometheus_command.go
 model_check_s3_command.go
 model_check_tanzu_command.go
+model_check_trusted_registry_command.go
 model_check_zadara_command.go
 model_cidr_command.go
 model_close_ticket_command.go
