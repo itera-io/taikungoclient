@@ -23,6 +23,9 @@ type GroupedShowbackSummaryByLabelInfo struct {
 	RuleName NullableString `json:"ruleName,omitempty"`
 	CredentialName NullableString `json:"credentialName,omitempty"`
 	TotalPrice NullableFloat64 `json:"totalPrice,omitempty"`
+	LabelName NullableString `json:"labelName,omitempty"`
+	LabelValue NullableString `json:"labelValue,omitempty"`
+	MetricName NullableString `json:"metricName,omitempty"`
 	Data []GroupedShowbackSummariesByLabelDto `json:"data,omitempty"`
 }
 
@@ -169,6 +172,132 @@ func (o *GroupedShowbackSummaryByLabelInfo) UnsetTotalPrice() {
 	o.TotalPrice.Unset()
 }
 
+// GetLabelName returns the LabelName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GroupedShowbackSummaryByLabelInfo) GetLabelName() string {
+	if o == nil || IsNil(o.LabelName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.LabelName.Get()
+}
+
+// GetLabelNameOk returns a tuple with the LabelName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GroupedShowbackSummaryByLabelInfo) GetLabelNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LabelName.Get(), o.LabelName.IsSet()
+}
+
+// HasLabelName returns a boolean if a field has been set.
+func (o *GroupedShowbackSummaryByLabelInfo) HasLabelName() bool {
+	if o != nil && o.LabelName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLabelName gets a reference to the given NullableString and assigns it to the LabelName field.
+func (o *GroupedShowbackSummaryByLabelInfo) SetLabelName(v string) {
+	o.LabelName.Set(&v)
+}
+// SetLabelNameNil sets the value for LabelName to be an explicit nil
+func (o *GroupedShowbackSummaryByLabelInfo) SetLabelNameNil() {
+	o.LabelName.Set(nil)
+}
+
+// UnsetLabelName ensures that no value is present for LabelName, not even an explicit nil
+func (o *GroupedShowbackSummaryByLabelInfo) UnsetLabelName() {
+	o.LabelName.Unset()
+}
+
+// GetLabelValue returns the LabelValue field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GroupedShowbackSummaryByLabelInfo) GetLabelValue() string {
+	if o == nil || IsNil(o.LabelValue.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.LabelValue.Get()
+}
+
+// GetLabelValueOk returns a tuple with the LabelValue field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GroupedShowbackSummaryByLabelInfo) GetLabelValueOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LabelValue.Get(), o.LabelValue.IsSet()
+}
+
+// HasLabelValue returns a boolean if a field has been set.
+func (o *GroupedShowbackSummaryByLabelInfo) HasLabelValue() bool {
+	if o != nil && o.LabelValue.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLabelValue gets a reference to the given NullableString and assigns it to the LabelValue field.
+func (o *GroupedShowbackSummaryByLabelInfo) SetLabelValue(v string) {
+	o.LabelValue.Set(&v)
+}
+// SetLabelValueNil sets the value for LabelValue to be an explicit nil
+func (o *GroupedShowbackSummaryByLabelInfo) SetLabelValueNil() {
+	o.LabelValue.Set(nil)
+}
+
+// UnsetLabelValue ensures that no value is present for LabelValue, not even an explicit nil
+func (o *GroupedShowbackSummaryByLabelInfo) UnsetLabelValue() {
+	o.LabelValue.Unset()
+}
+
+// GetMetricName returns the MetricName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GroupedShowbackSummaryByLabelInfo) GetMetricName() string {
+	if o == nil || IsNil(o.MetricName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.MetricName.Get()
+}
+
+// GetMetricNameOk returns a tuple with the MetricName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GroupedShowbackSummaryByLabelInfo) GetMetricNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MetricName.Get(), o.MetricName.IsSet()
+}
+
+// HasMetricName returns a boolean if a field has been set.
+func (o *GroupedShowbackSummaryByLabelInfo) HasMetricName() bool {
+	if o != nil && o.MetricName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMetricName gets a reference to the given NullableString and assigns it to the MetricName field.
+func (o *GroupedShowbackSummaryByLabelInfo) SetMetricName(v string) {
+	o.MetricName.Set(&v)
+}
+// SetMetricNameNil sets the value for MetricName to be an explicit nil
+func (o *GroupedShowbackSummaryByLabelInfo) SetMetricNameNil() {
+	o.MetricName.Set(nil)
+}
+
+// UnsetMetricName ensures that no value is present for MetricName, not even an explicit nil
+func (o *GroupedShowbackSummaryByLabelInfo) UnsetMetricName() {
+	o.MetricName.Unset()
+}
+
 // GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GroupedShowbackSummaryByLabelInfo) GetData() []GroupedShowbackSummariesByLabelDto {
 	if o == nil {
@@ -220,6 +349,15 @@ func (o GroupedShowbackSummaryByLabelInfo) ToMap() (map[string]interface{}, erro
 	}
 	if o.TotalPrice.IsSet() {
 		toSerialize["totalPrice"] = o.TotalPrice.Get()
+	}
+	if o.LabelName.IsSet() {
+		toSerialize["labelName"] = o.LabelName.Get()
+	}
+	if o.LabelValue.IsSet() {
+		toSerialize["labelValue"] = o.LabelValue.Get()
+	}
+	if o.MetricName.IsSet() {
+		toSerialize["metricName"] = o.MetricName.Get()
 	}
 	if o.Data != nil {
 		toSerialize["data"] = o.Data

@@ -55,15 +55,4 @@ func Test_taikuncore_AutoscalingAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AutoscalingAPIService AutoscalingSync", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.AutoscalingAPI.AutoscalingSync(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 }

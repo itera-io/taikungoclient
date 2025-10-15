@@ -763,6 +763,8 @@ paths:
                   NrRFi9wrf+M7Q== taikun@taikun.local
               dnsServers:
               - address: 8.8.8.8
+              trustedRegistries:
+              - registry: 8.8.8.8
               ntpServers:
               - address: 8.8.8.8
               allowedHosts:
@@ -1039,6 +1041,9 @@ paths:
                   dnsServers:
                   - id: 1
                     address: 8.8.8.8
+                  trustedRegistries:
+                  - id: 1
+                    registry: 8.8.8.8
                   ntpServers:
                   - id: 1
                     address: 8.8.8.8
@@ -5024,7 +5029,6 @@ paths:
           application/json:
             example:
               id: 1
-              autoscalingGroupName: taikun
               minSize: 1
               maxSize: 1
               diskSize: 32212254720
@@ -5072,22 +5076,6 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
       summary: Enable autoscaling
-      tags:
-      - Autoscaling
-  /api/v1/autoscaling/sync:
-    post:
-      operationId: autoscaling-sync
-      requestBody:
-        content:
-          application/json:
-            example:
-              projectId: 1
-            schema:
-              $ref: "#/components/schemas/AutoscalingSyncCommand"
-      responses:
-        "200":
-          description: OK
-      summary: Sync autoscaling
       tags:
       - Autoscaling
   /api/v1/azure/aks-clusters:
@@ -6679,8 +6667,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-10-09T14:15:52.9866663Z
-                  createdAt: 2025-10-09T14:15:52.9866663Z
+                  lastValidated: 2025-10-15T11:26:54.8768597Z
+                  createdAt: 2025-10-15T11:26:54.8768597Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6791,14 +6779,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-10-09T14:15:52.9866663Z
+                    lastBackup: 2025-10-15T11:26:54.8768597Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-10-09T14:15:52.9866663Z
+                  createdAt: 2025-10-15T11:26:54.8768597Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-10-09T14:15:52.9866663Z
+                  lastBackup: 2025-10-15T11:26:54.8768597Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6909,8 +6897,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-10-09T14:15:52.9866663Z
-                  expiration: 2025-10-09T14:15:52.9866663Z
+                  createdAt: 2025-10-15T11:26:54.8768597Z
+                  expiration: 2025-10-15T11:26:54.8768597Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -7020,7 +7008,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-10-09T14:15:52.9866663Z
+                  createdAt: 2025-10-15T11:26:54.8768597Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -7136,9 +7124,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-10-09T14:15:52.9866663+00:00
-                  startTimeStamp: 2025-10-09T14:15:52.9866663+00:00
-                  createdAt: 2025-10-09T14:15:52.9866663Z
+                  completionDateTime: 2025-10-15T11:26:54.8768597+00:00
+                  startTimeStamp: 2025-10-15T11:26:54.8768597+00:00
+                  createdAt: 2025-10-15T11:26:54.8768597Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -9242,6 +9230,56 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
       summary: Check valid ssh key format
+      tags:
+      - Checker
+  /api/v1/checker/trusted-registry:
+    post:
+      operationId: checker-trusted-registry
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CheckTrustedRegistryCommand"
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Check trusted registry
       tags:
       - Checker
   /api/v1/checker/yaml:
@@ -11463,56 +11501,6 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
       summary: Delete registration expired organizations
-      tags:
-      - Cron Job Service
-  /api/v1/cronjob/fetch-organization-details:
-    post:
-      operationId: cronjob-fetch-organization-details
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/FetchOrganizationDetailsCommand"
-      responses:
-        "200":
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Fetch organization details
       tags:
       - Cron Job Service
   /api/v1/cronjob/sync-organizations:
@@ -23934,7 +23922,7 @@ paths:
       - Organizations
   /api/v1/organizations/details:
     get:
-      operationId: organizations-detawils
+      operationId: organizations-details
       parameters:
       - explode: true
         in: query
@@ -29275,6 +29263,60 @@ paths:
         state
       tags:
       - Projects
+  /api/v1/projects/loki-logs/export:
+    post:
+      operationId: projects-export-loki-logs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ExportLokiLogsCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CsvExporter"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Export loki logs
+      tags:
+      - Projects
   /api/v1/projects/extend/lifetime:
     post:
       operationId: projects-extend-lifetime
@@ -29425,18 +29467,22 @@ paths:
       summary: Lock/Unlock project
       tags:
       - Projects
-  /api/v1/projects/lokilogs:
+  /api/v1/projects/loki-logs:
     post:
       operationId: projects-loki-logs
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/LokiResponseDto"
+              $ref: "#/components/schemas/ProjectsLogsCommand"
       responses:
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/LokiResult"
+                type: array
           description: OK
         "400":
           content:
@@ -31969,8 +32015,6 @@ paths:
       requestBody:
         content:
           application/json:
-            example:
-              id: 1
             schema:
               $ref: "#/components/schemas/BackupMakeDefaultCommand"
       responses:
@@ -38459,6 +38503,244 @@ paths:
       summary: Delete ticket message
       tags:
       - Ticket
+  /api/v1/trustedregistries/edit/{id}:
+    put:
+      operationId: trustedregistries-edit
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TrustedRegistryEditDto"
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Edit trusted registry
+      tags:
+      - Trusted Registries
+  /api/v1/trustedregistries/create:
+    post:
+      operationId: trustedregistries-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateTrustedRegistriesCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Create trusted registries for access profile
+      tags:
+      - Trusted Registries
+  /api/v1/trustedregistries/{accessProfileId}:
+    get:
+      operationId: trustedregistries-list
+      parameters:
+      - explode: false
+        in: path
+        name: accessProfileId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - id: 1
+                registry: 8.8.8.8
+                accessProfileName: taikun
+              schema:
+                items:
+                  $ref: "#/components/schemas/TrustedRegistriesListDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: List trusted registries by profile id
+      tags:
+      - Trusted Registries
+  /api/v1/trustedregistries/{id}:
+    delete:
+      operationId: trustedregistries-delete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Delete trusted registry
+      tags:
+      - Trusted Registries
   /api/v1/usergroups/update/{userGroupId}:
     put:
       operationId: usergroups-update
@@ -42769,15 +43051,15 @@ components:
           - accessProfileName: accessProfileName
             ipAddress: ipAddress
             description: description
-            accessProfileId: 7
-            id: 5
-            maskBits: 2
+            accessProfileId: 9
+            id: 2
+            maskBits: 7
           - accessProfileName: accessProfileName
             ipAddress: ipAddress
             description: description
-            accessProfileId: 7
-            id: 5
-            maskBits: 2
+            accessProfileId: 9
+            id: 2
+            maskBits: 7
           projects:
           - name: name
             id: 5
@@ -42789,6 +43071,11 @@ components:
           organizationId: 6
           createdAt: createdAt
           createdBy: createdBy
+          trustedRegistries:
+          - registry: registry
+            id: 5
+          - registry: registry
+            id: 5
           ntpServers:
           - address: address
             id: 5
@@ -42807,15 +43094,15 @@ components:
           - accessProfileName: accessProfileName
             ipAddress: ipAddress
             description: description
-            accessProfileId: 7
-            id: 5
-            maskBits: 2
+            accessProfileId: 9
+            id: 2
+            maskBits: 7
           - accessProfileName: accessProfileName
             ipAddress: ipAddress
             description: description
-            accessProfileId: 7
-            id: 5
-            maskBits: 2
+            accessProfileId: 9
+            id: 2
+            maskBits: 7
           projects:
           - name: name
             id: 5
@@ -42827,6 +43114,11 @@ components:
           organizationId: 6
           createdAt: createdAt
           createdBy: createdBy
+          trustedRegistries:
+          - registry: registry
+            id: 5
+          - registry: registry
+            id: 5
           ntpServers:
           - address: address
             id: 5
@@ -42841,7 +43133,7 @@ components:
             id: 1
           - address: address
             id: 1
-        totalCount: 9
+        totalCount: 3
       properties:
         data:
           items:
@@ -42862,15 +43154,15 @@ components:
         - accessProfileName: accessProfileName
           ipAddress: ipAddress
           description: description
-          accessProfileId: 7
-          id: 5
-          maskBits: 2
+          accessProfileId: 9
+          id: 2
+          maskBits: 7
         - accessProfileName: accessProfileName
           ipAddress: ipAddress
           description: description
-          accessProfileId: 7
-          id: 5
-          maskBits: 2
+          accessProfileId: 9
+          id: 2
+          maskBits: 7
         projects:
         - name: name
           id: 5
@@ -42882,6 +43174,11 @@ components:
         organizationId: 6
         createdAt: createdAt
         createdBy: createdBy
+        trustedRegistries:
+        - registry: registry
+          id: 5
+        - registry: registry
+          id: 5
         ntpServers:
         - address: address
           id: 5
@@ -42916,6 +43213,10 @@ components:
         dnsServers:
           items:
             $ref: "#/components/schemas/DnsServerListDto"
+          type: array
+        trustedRegistries:
+          items:
+            $ref: "#/components/schemas/TrustedRegistryListDto"
           type: array
         ntpServers:
           items:
@@ -42955,6 +43256,7 @@ components:
       - organizationId
       - organizationName
       - projects
+      - trustedRegistries
       type: object
     AccessProfilesLockManagementCommand:
       additionalProperties: false
@@ -44455,15 +44757,15 @@ components:
         - accessProfileName: accessProfileName
           ipAddress: ipAddress
           description: description
-          accessProfileId: 7
-          id: 5
-          maskBits: 2
+          accessProfileId: 9
+          id: 2
+          maskBits: 7
         - accessProfileName: accessProfileName
           ipAddress: ipAddress
           description: description
-          accessProfileId: 7
-          id: 5
-          maskBits: 2
+          accessProfileId: 9
+          id: 2
+          maskBits: 7
         totalCount: 0
       properties:
         data:
@@ -44484,9 +44786,9 @@ components:
         accessProfileName: accessProfileName
         ipAddress: ipAddress
         description: description
-        accessProfileId: 7
-        id: 5
-        maskBits: 2
+        accessProfileId: 9
+        id: 2
+        maskBits: 7
       properties:
         id:
           format: int32
@@ -44897,15 +45199,6 @@ components:
       type: object
     AutoUpgradeProjectsCommand:
       additionalProperties: false
-      type: object
-    AutoscalingSyncCommand:
-      additionalProperties: false
-      example:
-        projectId: 0
-      properties:
-        projectId:
-          format: int32
-          type: integer
       type: object
     AvailableEndpointData:
       additionalProperties: false
@@ -48371,6 +48664,15 @@ components:
           nullable: true
           type: string
       type: object
+    CheckTrustedRegistryCommand:
+      additionalProperties: false
+      example:
+        registry: registry
+      properties:
+        registry:
+          nullable: true
+          type: string
+      type: object
     CheckZadaraCommand:
       additionalProperties: false
       example:
@@ -49036,6 +49338,9 @@ components:
           description: description
           maskBits: 6
         httpProxy: httpProxy
+        trustedRegistries:
+        - registry: registry
+        - registry: registry
         ntpServers:
         - address: address
         - address: address
@@ -49067,6 +49372,11 @@ components:
         dnsServers:
           items:
             $ref: "#/components/schemas/DnsServerCreateDto"
+          nullable: true
+          type: array
+        trustedRegistries:
+          items:
+            $ref: "#/components/schemas/TrustedRegisteredCreateDto"
           nullable: true
           type: array
         ntpServers:
@@ -49915,7 +50225,6 @@ components:
         opaProfileId: 5
         maxSize: 7
         autoscalingEnabled: true
-        autoscalingGroupName: autoscalingGroupName
         expiredAt: 2000-01-23T04:56:07.000+00:00
         diskSize: 1.2315135367772556
         kubernetesProfileId: 5
@@ -50038,9 +50347,6 @@ components:
           type: number
         autoscalingEnabled:
           type: boolean
-        autoscalingGroupName:
-          nullable: true
-          type: string
         minSize:
           format: int32
           type: integer
@@ -50532,6 +50838,19 @@ components:
           type: integer
         priority:
           $ref: "#/components/schemas/TicketPriority"
+      type: object
+    CreateTrustedRegistriesCommand:
+      additionalProperties: false
+      example:
+        registry: registry
+        accessProfileId: 0
+      properties:
+        registry:
+          nullable: true
+          type: string
+        accessProfileId:
+          format: int32
+          type: integer
       type: object
     CreateUserCommand:
       additionalProperties: false
@@ -53173,14 +53492,10 @@ components:
         minSize: 6
         maxSize: 1
         id: 0
-        autoscalingGroupName: autoscalingGroupName
       properties:
         id:
           format: int32
           type: integer
-        autoscalingGroupName:
-          nullable: true
-          type: string
         minSize:
           format: int32
           type: integer
@@ -54761,6 +55076,25 @@ components:
           format: int32
           type: integer
       type: object
+    ExportLokiLogsCommand:
+      additionalProperties: false
+      example:
+        query:
+          endDate: 2000-01-23T04:56:07.000+00:00
+          limit: 6
+          filters:
+          - value: value
+            operator: operator
+          - value: value
+            operator: operator
+          projectId: 0
+          parameters: parameters
+          startDate: 2000-01-23T04:56:07.000+00:00
+          direction: direction
+      properties:
+        query:
+          $ref: "#/components/schemas/LokiLogsQuery"
+      type: object
     ExtendTrialPeriodCommand:
       additionalProperties: false
       example:
@@ -54781,9 +55115,6 @@ components:
       additionalProperties: false
       type: object
     FetchKubernetesOverviewDataCommand:
-      additionalProperties: false
-      type: object
-    FetchOrganizationDetailsCommand:
       additionalProperties: false
       type: object
     FillArtifacthubOrganizationCommand:
@@ -59027,46 +59358,37 @@ components:
           nullable: true
           type: string
       type: object
-    LokiResponseDto:
+    LokiLogsQuery:
       additionalProperties: false
       example:
-        start: 2000-01-23T04:56:07.000+00:00
+        endDate: 2000-01-23T04:56:07.000+00:00
         limit: 6
-        canDownload: true
-        end: 2000-01-23T04:56:07.000+00:00
         filters:
         - value: value
           operator: operator
         - value: value
           operator: operator
         projectId: 0
-        parameters:
-        - label: label
-          value: value
-          operator: operator
-        - label: label
-          value: value
-          operator: operator
+        parameters: parameters
+        startDate: 2000-01-23T04:56:07.000+00:00
         direction: direction
       properties:
         projectId:
           format: int32
           type: integer
         parameters:
-          items:
-            $ref: "#/components/schemas/Parameter"
           nullable: true
-          type: array
+          type: string
         filters:
           items:
             $ref: "#/components/schemas/Filter"
           nullable: true
           type: array
-        start:
+        startDate:
           format: date-time
           nullable: true
           type: string
-        end:
+        endDate:
           format: date-time
           nullable: true
           type: string
@@ -59077,8 +59399,32 @@ components:
         direction:
           nullable: true
           type: string
-        canDownload:
-          type: boolean
+      type: object
+    LokiResult:
+      additionalProperties: false
+      example:
+        stream:
+          app: app
+          container: container
+          component: component
+          filename: filename
+          pod: pod
+          tier: tier
+          streamStream: streamStream
+          namespace: namespace
+          job: job
+          podTemplateHash: podTemplateHash
+        values:
+        - values
+        - values
+      properties:
+        stream:
+          $ref: "#/components/schemas/Stream"
+        values:
+          items:
+            type: string
+          nullable: true
+          type: array
       type: object
     MainProjectDto:
       additionalProperties: false
@@ -61522,23 +61868,6 @@ components:
           type: array
         isTaikunLink:
           type: boolean
-      type: object
-    Parameter:
-      additionalProperties: false
-      example:
-        label: label
-        value: value
-        operator: operator
-      properties:
-        label:
-          nullable: true
-          type: string
-        operator:
-          nullable: true
-          type: string
-        value:
-          nullable: true
-          type: string
       type: object
     ParameterType:
       enum:
@@ -65505,6 +65834,25 @@ components:
       - data
       - totalCount
       type: object
+    ProjectsLogsCommand:
+      additionalProperties: false
+      example:
+        query:
+          endDate: 2000-01-23T04:56:07.000+00:00
+          limit: 6
+          filters:
+          - value: value
+            operator: operator
+          - value: value
+            operator: operator
+          projectId: 0
+          parameters: parameters
+          startDate: 2000-01-23T04:56:07.000+00:00
+          direction: direction
+      properties:
+        query:
+          $ref: "#/components/schemas/LokiLogsQuery"
+      type: object
     ProjectsMonitoringAlertsCommand:
       additionalProperties: false
       example:
@@ -67997,6 +68345,7 @@ components:
           format: double
           type: number
         kubernetesHealth:
+          nullable: true
           type: string
         cpu:
           format: int32
@@ -70056,6 +70405,51 @@ components:
           nullable: true
           type: string
       type: object
+    Stream:
+      additionalProperties: false
+      example:
+        app: app
+        container: container
+        component: component
+        filename: filename
+        pod: pod
+        tier: tier
+        streamStream: streamStream
+        namespace: namespace
+        job: job
+        podTemplateHash: podTemplateHash
+      properties:
+        job:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        pod:
+          nullable: true
+          type: string
+        podTemplateHash:
+          nullable: true
+          type: string
+        streamStream:
+          nullable: true
+          type: string
+        app:
+          nullable: true
+          type: string
+        container:
+          nullable: true
+          type: string
+        filename:
+          nullable: true
+          type: string
+        tier:
+          nullable: true
+          type: string
+        component:
+          nullable: true
+          type: string
+      type: object
     StripeInvoiceListDto:
       additionalProperties: false
       example:
@@ -70751,6 +71145,61 @@ components:
         userId:
           nullable: true
           type: string
+      type: object
+    TrustedRegisteredCreateDto:
+      additionalProperties: false
+      example:
+        registry: registry
+      properties:
+        registry:
+          nullable: true
+          type: string
+      type: object
+    TrustedRegistriesListDto:
+      additionalProperties: false
+      example:
+        registry: registry
+        accessProfileName: accessProfileName
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+        registry:
+          nullable: true
+          type: string
+        accessProfileName:
+          nullable: true
+          type: string
+      required:
+      - accessProfileName
+      - id
+      - registry
+      type: object
+    TrustedRegistryEditDto:
+      additionalProperties: false
+      example:
+        registry: registry
+      properties:
+        registry:
+          nullable: true
+          type: string
+      type: object
+    TrustedRegistryListDto:
+      additionalProperties: false
+      example:
+        registry: registry
+        id: 5
+      properties:
+        id:
+          format: int32
+          type: integer
+        registry:
+          nullable: true
+          type: string
+      required:
+      - id
+      - registry
       type: object
     TwoFactorAuthLoginCommand:
       additionalProperties: false
@@ -71723,7 +72172,6 @@ components:
           is2FAEnabled: true
           organizationName: organizationName
           hasRepo: true
-          created: 2000-01-23T04:56:07.000+00:00
           hasPaymentMethod: true
           isForcedToResetPassword: true
           isNewOrganization: true
@@ -71735,7 +72183,6 @@ components:
             link: link
             logo: logo
             id: 1
-          roleName: roleName
           isEmailNotificationEnabled: true
           username: username
           isEmailConfirmed: true
@@ -71807,7 +72254,6 @@ components:
         is2FAEnabled: true
         organizationName: organizationName
         hasRepo: true
-        created: 2000-01-23T04:56:07.000+00:00
         hasPaymentMethod: true
         isForcedToResetPassword: true
         isNewOrganization: true
@@ -71819,7 +72265,6 @@ components:
           link: link
           logo: logo
           id: 1
-        roleName: roleName
         isEmailNotificationEnabled: true
         username: username
         isEmailConfirmed: true
@@ -71837,21 +72282,12 @@ components:
         organizationId:
           format: int32
           type: integer
-        role:
-          $ref: "#/components/schemas/UserRole"
-        roleName:
-          nullable: true
-          type: string
         email:
           type: string
         displayName:
           nullable: true
           type: string
         createdAt:
-          type: string
-        created:
-          format: date-time
-          nullable: true
           type: string
         isEmailConfirmed:
           type: boolean
@@ -71888,6 +72324,8 @@ components:
           type: array
         partner:
           $ref: "#/components/schemas/PartnerDetailsForUserDto"
+        role:
+          $ref: "#/components/schemas/UserRole"
       required:
       - boundProjects
       - createdAt
@@ -72195,7 +72633,6 @@ components:
           is2FAEnabled: true
           organizationName: organizationName
           hasRepo: true
-          created: 2000-01-23T04:56:07.000+00:00
           hasPaymentMethod: true
           isForcedToResetPassword: true
           isNewOrganization: true
@@ -72207,7 +72644,6 @@ components:
             link: link
             logo: logo
             id: 1
-          roleName: roleName
           isEmailNotificationEnabled: true
           username: username
           isEmailConfirmed: true
@@ -72232,7 +72668,6 @@ components:
           is2FAEnabled: true
           organizationName: organizationName
           hasRepo: true
-          created: 2000-01-23T04:56:07.000+00:00
           hasPaymentMethod: true
           isForcedToResetPassword: true
           isNewOrganization: true
@@ -72244,7 +72679,6 @@ components:
             link: link
             logo: logo
             id: 1
-          roleName: roleName
           isEmailNotificationEnabled: true
           username: username
           isEmailConfirmed: true

@@ -160,7 +160,6 @@ Class | Method | HTTP request | Description
 *AutoscalingAPI* | [**AutoscalingDisable**](docs/AutoscalingAPI.md#autoscalingdisable) | **Post** /api/v1/autoscaling/disable | Disable autoscaling
 *AutoscalingAPI* | [**AutoscalingEdit**](docs/AutoscalingAPI.md#autoscalingedit) | **Post** /api/v1/autoscaling/edit | Edit autoscaling
 *AutoscalingAPI* | [**AutoscalingEnable**](docs/AutoscalingAPI.md#autoscalingenable) | **Post** /api/v1/autoscaling/enable | Enable autoscaling
-*AutoscalingAPI* | [**AutoscalingSync**](docs/AutoscalingAPI.md#autoscalingsync) | **Post** /api/v1/autoscaling/sync | Sync autoscaling
 *AzureCloudCredentialAPI* | [**AzureAksClusters**](docs/AzureCloudCredentialAPI.md#azureaksclusters) | **Post** /api/v1/azure/aks-clusters | Fetch AKS cluster list
 *AzureCloudCredentialAPI* | [**AzureCreate**](docs/AzureCloudCredentialAPI.md#azurecreate) | **Post** /api/v1/azure/create | Add Azure credentials
 *AzureCloudCredentialAPI* | [**AzureDashboard**](docs/AzureCloudCredentialAPI.md#azuredashboard) | **Post** /api/v1/azure/quota/list | Fetch Azure quota list
@@ -236,6 +235,7 @@ Class | Method | HTTP request | Description
 *CheckerAPI* | [**CheckerS3**](docs/CheckerAPI.md#checkers3) | **Post** /api/v1/checker/s3 | Check s3 credential
 *CheckerAPI* | [**CheckerSsh**](docs/CheckerAPI.md#checkerssh) | **Post** /api/v1/checker/ssh | Check valid ssh key format
 *CheckerAPI* | [**CheckerTanzu**](docs/CheckerAPI.md#checkertanzu) | **Post** /api/v1/checker/tanzu | Check tanzu credential
+*CheckerAPI* | [**CheckerTrustedRegistry**](docs/CheckerAPI.md#checkertrustedregistry) | **Post** /api/v1/checker/trusted-registry | Check trusted registry
 *CheckerAPI* | [**CheckerUser**](docs/CheckerAPI.md#checkeruser) | **Post** /api/v1/checker/user | Check duplicate username
 *CheckerAPI* | [**CheckerYaml**](docs/CheckerAPI.md#checkeryaml) | **Post** /api/v1/checker/yaml | Check yaml file
 *CheckerAPI* | [**CheckerZadara**](docs/CheckerAPI.md#checkerzadara) | **Post** /api/v1/checker/zadara | Check zadara credential
@@ -270,7 +270,6 @@ Class | Method | HTTP request | Description
 *CronJobServiceAPI* | [**CronjobFetchAzureFlavorPrices**](docs/CronJobServiceAPI.md#cronjobfetchazureflavorprices) | **Post** /api/v1/cronjob/fetch-azure-flavor-prices | Fetch azure flavor prices
 *CronJobServiceAPI* | [**CronjobFetchK8sAlertData**](docs/CronJobServiceAPI.md#cronjobfetchk8salertdata) | **Post** /api/v1/cronjob/fetch-k8s-alert-data | Fetch k8s alert data
 *CronJobServiceAPI* | [**CronjobFetchK8sOverviewData**](docs/CronJobServiceAPI.md#cronjobfetchk8soverviewdata) | **Post** /api/v1/cronjob/fetch-k8s-overview-data | Fetch k8s overview data
-*CronJobServiceAPI* | [**CronjobFetchOrganizationDetails**](docs/CronJobServiceAPI.md#cronjobfetchorganizationdetails) | **Post** /api/v1/cronjob/fetch-organization-details | Fetch organization details
 *CronJobServiceAPI* | [**CronjobPurgeExpiredProjects**](docs/CronJobServiceAPI.md#cronjobpurgeexpiredprojects) | **Post** /api/v1/cronjob/purge-expired-projects | Purge expired projects
 *CronJobServiceAPI* | [**CronjobRemindUsersByAlertingProfile**](docs/CronJobServiceAPI.md#cronjobremindusersbyalertingprofile) | **Post** /api/v1/cronjob/remind-users-by-alerting-profile | Remind users by alerting profile
 *CronJobServiceAPI* | [**CronjobSyncBackupCredentials**](docs/CronJobServiceAPI.md#cronjobsyncbackupcredentials) | **Post** /api/v1/cronjob/sync-backup-credentials | Sync backup credentials
@@ -450,7 +449,7 @@ Class | Method | HTTP request | Description
 *OrganizationsAPI* | [**OrganizationsCreate**](docs/OrganizationsAPI.md#organizationscreate) | **Post** /api/v1/organizations | Add a new organization. Only available for admins.
 *OrganizationsAPI* | [**OrganizationsDelete**](docs/OrganizationsAPI.md#organizationsdelete) | **Delete** /api/v1/organizations/{id} | Delete the specified organization. Only available for admins.
 *OrganizationsAPI* | [**OrganizationsDeletePrometheusrules**](docs/OrganizationsAPI.md#organizationsdeleteprometheusrules) | **Put** /api/v1/organizations/{id}/prometheusrules | Unbind prometheus rule(s) from organization
-*OrganizationsAPI* | [**OrganizationsDetawils**](docs/OrganizationsAPI.md#organizationsdetawils) | **Get** /api/v1/organizations/details | Retrieve all data about current organization by Id
+*OrganizationsAPI* | [**OrganizationsDetails**](docs/OrganizationsAPI.md#organizationsdetails) | **Get** /api/v1/organizations/details | Retrieve all data about current organization by Id
 *OrganizationsAPI* | [**OrganizationsDisable2faManagement**](docs/OrganizationsAPI.md#organizationsdisable2famanagement) | **Post** /api/v1/organizations/disable-2fa-management | Disable 2fa management
 *OrganizationsAPI* | [**OrganizationsEnable2faManagement**](docs/OrganizationsAPI.md#organizationsenable2famanagement) | **Post** /api/v1/organizations/enable-2fa-management | Enable 2fa management
 *OrganizationsAPI* | [**OrganizationsExportCsv**](docs/OrganizationsAPI.md#organizationsexportcsv) | **Get** /api/v1/organizations/export | Export Csv file
@@ -552,13 +551,14 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsDropdown**](docs/ProjectsAPI.md#projectsdropdown) | **Get** /api/v1/projects/list | Retrieve list of projects for dropdown
 *ProjectsAPI* | [**ProjectsEditHealth**](docs/ProjectsAPI.md#projectsedithealth) | **Put** /api/v1/projects/edit/health | Update health status of the project by Id
 *ProjectsAPI* | [**ProjectsEditStatus**](docs/ProjectsAPI.md#projectseditstatus) | **Put** /api/v1/projects/edit/status | Change the project status for the given project. Only available for admin.
+*ProjectsAPI* | [**ProjectsExportLokiLogs**](docs/ProjectsAPI.md#projectsexportlokilogs) | **Post** /api/v1/projects/loki-logs/export | Export loki logs
 *ProjectsAPI* | [**ProjectsExtendLifetime**](docs/ProjectsAPI.md#projectsextendlifetime) | **Post** /api/v1/projects/extend/lifetime | Extend life time of project
 *ProjectsAPI* | [**ProjectsForAlerting**](docs/ProjectsAPI.md#projectsforalerting) | **Get** /api/v1/projects/foralerting | Retrieve a list of projects for alert poller. Only available for admins.
 *ProjectsAPI* | [**ProjectsForBilling**](docs/ProjectsAPI.md#projectsforbilling) | **Get** /api/v1/projects/forbilling | Retrieve a list of projects for billing
 *ProjectsAPI* | [**ProjectsImportedClusterDetails**](docs/ProjectsAPI.md#projectsimportedclusterdetails) | **Get** /api/v1/projects/imported/details/{projectId} | Imported cluster details
 *ProjectsAPI* | [**ProjectsList**](docs/ProjectsAPI.md#projectslist) | **Get** /api/v1/projects | Retrieve all projects
 *ProjectsAPI* | [**ProjectsLockManager**](docs/ProjectsAPI.md#projectslockmanager) | **Post** /api/v1/projects/lockmanager | Lock/Unlock project
-*ProjectsAPI* | [**ProjectsLokiLogs**](docs/ProjectsAPI.md#projectslokilogs) | **Post** /api/v1/projects/lokilogs | Retrieve loki logs
+*ProjectsAPI* | [**ProjectsLokiLogs**](docs/ProjectsAPI.md#projectslokilogs) | **Post** /api/v1/projects/loki-logs | Retrieve loki logs
 *ProjectsAPI* | [**ProjectsMaintenanceManager**](docs/ProjectsAPI.md#projectsmaintenancemanager) | **Post** /api/v1/projects/maintenance-manager | Enable/disable project&#39;s maintenance mode
 *ProjectsAPI* | [**ProjectsMonitoringAlerts**](docs/ProjectsAPI.md#projectsmonitoringalerts) | **Post** /api/v1/projects/monitoringalerts | Monitoring alerts for project
 *ProjectsAPI* | [**ProjectsPrometheusMetrics**](docs/ProjectsAPI.md#projectsprometheusmetrics) | **Post** /api/v1/projects/prometheusmetrics | Prometheus metrics data project
@@ -699,6 +699,10 @@ Class | Method | HTTP request | Description
 *TicketAPI* | [**TicketSetPriority**](docs/TicketAPI.md#ticketsetpriority) | **Post** /api/v1/ticket/set-priority | Set priority
 *TicketAPI* | [**TicketTransfer**](docs/TicketAPI.md#tickettransfer) | **Post** /api/v1/ticket/transfer | Transfer ticket
 *TicketAPI* | [**TicketTransferList**](docs/TicketAPI.md#tickettransferlist) | **Get** /api/v1/ticket/transfer/list | Retrieve organization managers
+*TrustedRegistriesAPI* | [**TrustedregistriesCreate**](docs/TrustedRegistriesAPI.md#trustedregistriescreate) | **Post** /api/v1/trustedregistries/create | Create trusted registries for access profile
+*TrustedRegistriesAPI* | [**TrustedregistriesDelete**](docs/TrustedRegistriesAPI.md#trustedregistriesdelete) | **Delete** /api/v1/trustedregistries/{id} | Delete trusted registry
+*TrustedRegistriesAPI* | [**TrustedregistriesEdit**](docs/TrustedRegistriesAPI.md#trustedregistriesedit) | **Put** /api/v1/trustedregistries/edit/{id} | Edit trusted registry
+*TrustedRegistriesAPI* | [**TrustedregistriesList**](docs/TrustedRegistriesAPI.md#trustedregistrieslist) | **Get** /api/v1/trustedregistries/{accessProfileId} | List trusted registries by profile id
 *UserGroupAPI* | [**ProjectgroupsUnbindProjectGroup**](docs/UserGroupAPI.md#projectgroupsunbindprojectgroup) | **Post** /api/v1/projectgroups/unbind-project-group | Unbind project group from user group
 *UserGroupAPI* | [**UsergroupsBindProjectsGroup**](docs/UserGroupAPI.md#usergroupsbindprojectsgroup) | **Post** /api/v1/usergroups/bind-project-groups | Bind project groups
 *UserGroupAPI* | [**UsergroupsBindUser**](docs/UserGroupAPI.md#usergroupsbinduser) | **Post** /api/v1/usergroups/bind-user | Bind Users to group
@@ -836,7 +840,6 @@ Class | Method | HTTP request | Description
  - [ArtifactUrlCheckerCommand](docs/ArtifactUrlCheckerCommand.md)
  - [AttachDetachAlertingProfileCommand](docs/AttachDetachAlertingProfileCommand.md)
  - [AutoSyncManagementCommand](docs/AutoSyncManagementCommand.md)
- - [AutoscalingSyncCommand](docs/AutoscalingSyncCommand.md)
  - [AvailableEndpointData](docs/AvailableEndpointData.md)
  - [AvailableEndpointsList](docs/AvailableEndpointsList.md)
  - [AvailablePackageDetailsDto](docs/AvailablePackageDetailsDto.md)
@@ -929,6 +932,7 @@ Class | Method | HTTP request | Description
  - [CheckPrometheusCommand](docs/CheckPrometheusCommand.md)
  - [CheckS3Command](docs/CheckS3Command.md)
  - [CheckTanzuCommand](docs/CheckTanzuCommand.md)
+ - [CheckTrustedRegistryCommand](docs/CheckTrustedRegistryCommand.md)
  - [CheckZadaraCommand](docs/CheckZadaraCommand.md)
  - [CidrCommand](docs/CidrCommand.md)
  - [CloseTicketCommand](docs/CloseTicketCommand.md)
@@ -998,6 +1002,7 @@ Class | Method | HTTP request | Description
  - [CreateSubscriptionCommand](docs/CreateSubscriptionCommand.md)
  - [CreateTanzuCommand](docs/CreateTanzuCommand.md)
  - [CreateTicketCommand](docs/CreateTicketCommand.md)
+ - [CreateTrustedRegistriesCommand](docs/CreateTrustedRegistriesCommand.md)
  - [CreateUserCommand](docs/CreateUserCommand.md)
  - [CreateUserGroupCommand](docs/CreateUserGroupCommand.md)
  - [CreateVirtualClusterCommand](docs/CreateVirtualClusterCommand.md)
@@ -1115,6 +1120,7 @@ Class | Method | HTTP request | Description
  - [ExecutorHealth](docs/ExecutorHealth.md)
  - [ExecutorListResponse](docs/ExecutorListResponse.md)
  - [ExportKubeConfigCommand](docs/ExportKubeConfigCommand.md)
+ - [ExportLokiLogsCommand](docs/ExportLokiLogsCommand.md)
  - [ExtendTrialPeriodCommand](docs/ExtendTrialPeriodCommand.md)
  - [Filter](docs/Filter.md)
  - [FilteringElementDto](docs/FilteringElementDto.md)
@@ -1235,7 +1241,8 @@ Class | Method | HTTP request | Description
  - [ListForPartnersDto](docs/ListForPartnersDto.md)
  - [LockProjectAppCommand](docs/LockProjectAppCommand.md)
  - [LoginCommand](docs/LoginCommand.md)
- - [LokiResponseDto](docs/LokiResponseDto.md)
+ - [LokiLogsQuery](docs/LokiLogsQuery.md)
+ - [LokiResult](docs/LokiResult.md)
  - [MainProjectDto](docs/MainProjectDto.md)
  - [MakeCsmCommand](docs/MakeCsmCommand.md)
  - [MakeOwnerCommand](docs/MakeOwnerCommand.md)
@@ -1308,7 +1315,6 @@ Class | Method | HTTP request | Description
  - [OrganizationSubscriptionDto](docs/OrganizationSubscriptionDto.md)
  - [OrganizationsList](docs/OrganizationsList.md)
  - [PackageAutocompleteDto](docs/PackageAutocompleteDto.md)
- - [Parameter](docs/Parameter.md)
  - [ParameterType](docs/ParameterType.md)
  - [PartnerColorSettingsDto](docs/PartnerColorSettingsDto.md)
  - [PartnerDetailsDto](docs/PartnerDetailsDto.md)
@@ -1376,6 +1382,7 @@ Class | Method | HTTP request | Description
  - [ProjectWithFlavorsAndImagesDto](docs/ProjectWithFlavorsAndImagesDto.md)
  - [ProjectsForBillingDto](docs/ProjectsForBillingDto.md)
  - [ProjectsList](docs/ProjectsList.md)
+ - [ProjectsLogsCommand](docs/ProjectsLogsCommand.md)
  - [ProjectsMonitoringAlertsCommand](docs/ProjectsMonitoringAlertsCommand.md)
  - [ProjectsSearchCommand](docs/ProjectsSearchCommand.md)
  - [ProjectsSearchList](docs/ProjectsSearchList.md)
@@ -1498,6 +1505,7 @@ Class | Method | HTTP request | Description
  - [StorageClassesSearchCommand](docs/StorageClassesSearchCommand.md)
  - [StorageClassesSearchList](docs/StorageClassesSearchList.md)
  - [StorageListCommand](docs/StorageListCommand.md)
+ - [Stream](docs/Stream.md)
  - [StripeInvoiceListDto](docs/StripeInvoiceListDto.md)
  - [StripeInvoices](docs/StripeInvoices.md)
  - [StripeSubscriptionItemDto](docs/StripeSubscriptionItemDto.md)
@@ -1523,6 +1531,10 @@ Class | Method | HTTP request | Description
  - [ToggleNotificationModeCommand](docs/ToggleNotificationModeCommand.md)
  - [TransferList](docs/TransferList.md)
  - [TransferTicketCommand](docs/TransferTicketCommand.md)
+ - [TrustedRegisteredCreateDto](docs/TrustedRegisteredCreateDto.md)
+ - [TrustedRegistriesListDto](docs/TrustedRegistriesListDto.md)
+ - [TrustedRegistryEditDto](docs/TrustedRegistryEditDto.md)
+ - [TrustedRegistryListDto](docs/TrustedRegistryListDto.md)
  - [TwoFactorAuthLoginCommand](docs/TwoFactorAuthLoginCommand.md)
  - [TwoFactorAuthRecoveryCommand](docs/TwoFactorAuthRecoveryCommand.md)
  - [TwoFactorAuthSetupResult](docs/TwoFactorAuthSetupResult.md)

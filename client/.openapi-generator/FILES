@@ -76,6 +76,7 @@ api_subscription.go
 api_taikun_lb.go
 api_tanzu.go
 api_ticket.go
+api_trusted_registries.go
 api_user_group.go
 api_user_projects.go
 api_user_token.go
@@ -157,7 +158,6 @@ docs/AttachDetachAlertingProfileCommand.md
 docs/AuthManagementAPI.md
 docs/AutoSyncManagementCommand.md
 docs/AutoscalingAPI.md
-docs/AutoscalingSyncCommand.md
 docs/AvailableEndpointData.md
 docs/AvailableEndpointsList.md
 docs/AvailablePackageDetailsDto.md
@@ -255,6 +255,7 @@ docs/CheckOpenstackCommand.md
 docs/CheckPrometheusCommand.md
 docs/CheckS3Command.md
 docs/CheckTanzuCommand.md
+docs/CheckTrustedRegistryCommand.md
 docs/CheckZadaraCommand.md
 docs/CheckerAPI.md
 docs/CidrCommand.md
@@ -327,6 +328,7 @@ docs/CreateStripeCustomerCommand.md
 docs/CreateSubscriptionCommand.md
 docs/CreateTanzuCommand.md
 docs/CreateTicketCommand.md
+docs/CreateTrustedRegistriesCommand.md
 docs/CreateUserCommand.md
 docs/CreateUserGroupCommand.md
 docs/CreateVirtualClusterCommand.md
@@ -447,6 +449,7 @@ docs/ExecutorHealth.md
 docs/ExecutorListResponse.md
 docs/ExecutorsAPI.md
 docs/ExportKubeConfigCommand.md
+docs/ExportLokiLogsCommand.md
 docs/ExtendTrialPeriodCommand.md
 docs/Filter.md
 docs/FilteringElementDto.md
@@ -581,7 +584,8 @@ docs/ListForOrganizationEditDto.md
 docs/ListForPartnersDto.md
 docs/LockProjectAppCommand.md
 docs/LoginCommand.md
-docs/LokiResponseDto.md
+docs/LokiLogsQuery.md
+docs/LokiResult.md
 docs/MainProjectDto.md
 docs/MakeCsmCommand.md
 docs/MakeOwnerCommand.md
@@ -663,7 +667,6 @@ docs/OrganizationsAPI.md
 docs/OrganizationsList.md
 docs/PackageAPI.md
 docs/PackageAutocompleteDto.md
-docs/Parameter.md
 docs/ParameterType.md
 docs/PartnerColorSettingsDto.md
 docs/PartnerDetailsDto.md
@@ -742,6 +745,7 @@ docs/ProjectWithFlavorsAndImagesDto.md
 docs/ProjectsAPI.md
 docs/ProjectsForBillingDto.md
 docs/ProjectsList.md
+docs/ProjectsLogsCommand.md
 docs/ProjectsMonitoringAlertsCommand.md
 docs/ProjectsSearchCommand.md
 docs/ProjectsSearchList.md
@@ -877,6 +881,7 @@ docs/StopStandaloneVmCommand.md
 docs/StorageClassesSearchCommand.md
 docs/StorageClassesSearchList.md
 docs/StorageListCommand.md
+docs/Stream.md
 docs/StripeAPI.md
 docs/StripeInvoiceListDto.md
 docs/StripeInvoices.md
@@ -907,6 +912,11 @@ docs/ToggleMaintenanceModeCommand.md
 docs/ToggleNotificationModeCommand.md
 docs/TransferList.md
 docs/TransferTicketCommand.md
+docs/TrustedRegisteredCreateDto.md
+docs/TrustedRegistriesAPI.md
+docs/TrustedRegistriesListDto.md
+docs/TrustedRegistryEditDto.md
+docs/TrustedRegistryListDto.md
 docs/TwoFactorAuthLoginCommand.md
 docs/TwoFactorAuthRecoveryCommand.md
 docs/TwoFactorAuthSetupResult.md
@@ -1088,7 +1098,6 @@ model_artifact_repository_dto.go
 model_artifact_url_checker_command.go
 model_attach_detach_alerting_profile_command.go
 model_auto_sync_management_command.go
-model_autoscaling_sync_command.go
 model_available_endpoint_data.go
 model_available_endpoints_list.go
 model_available_package_details_dto.go
@@ -1180,6 +1189,7 @@ model_check_openstack_command.go
 model_check_prometheus_command.go
 model_check_s3_command.go
 model_check_tanzu_command.go
+model_check_trusted_registry_command.go
 model_check_zadara_command.go
 model_cidr_command.go
 model_close_ticket_command.go
@@ -1250,6 +1260,7 @@ model_create_stripe_customer_command.go
 model_create_subscription_command.go
 model_create_tanzu_command.go
 model_create_ticket_command.go
+model_create_trusted_registries_command.go
 model_create_user_command.go
 model_create_user_group_command.go
 model_create_virtual_cluster_command.go
@@ -1367,6 +1378,7 @@ model_executor_entity_dto.go
 model_executor_health.go
 model_executor_list_response.go
 model_export_kube_config_command.go
+model_export_loki_logs_command.go
 model_extend_trial_period_command.go
 model_filter.go
 model_filtering_element_dto.go
@@ -1487,7 +1499,8 @@ model_list_for_organization_edit_dto.go
 model_list_for_partners_dto.go
 model_lock_project_app_command.go
 model_login_command.go
-model_loki_response_dto.go
+model_loki_logs_query.go
+model_loki_result.go
 model_main_project_dto.go
 model_make_csm_command.go
 model_make_owner_command.go
@@ -1560,7 +1573,6 @@ model_organization_search_list.go
 model_organization_subscription_dto.go
 model_organizations_list.go
 model_package_autocomplete_dto.go
-model_parameter.go
 model_parameter_type.go
 model_partner_color_settings_dto.go
 model_partner_details_dto.go
@@ -1628,6 +1640,7 @@ model_project_type.go
 model_project_with_flavors_and_images_dto.go
 model_projects_for_billing_dto.go
 model_projects_list.go
+model_projects_logs_command.go
 model_projects_monitoring_alerts_command.go
 model_projects_search_command.go
 model_projects_search_list.go
@@ -1750,6 +1763,7 @@ model_stop_standalone_vm_command.go
 model_storage_classes_search_command.go
 model_storage_classes_search_list.go
 model_storage_list_command.go
+model_stream.go
 model_stripe_invoice_list_dto.go
 model_stripe_invoices.go
 model_stripe_subscription_item_dto.go
@@ -1775,6 +1789,10 @@ model_toggle_maintenance_mode_command.go
 model_toggle_notification_mode_command.go
 model_transfer_list.go
 model_transfer_ticket_command.go
+model_trusted_registered_create_dto.go
+model_trusted_registries_list_dto.go
+model_trusted_registry_edit_dto.go
+model_trusted_registry_list_dto.go
 model_two_factor_auth_login_command.go
 model_two_factor_auth_recovery_command.go
 model_two_factor_auth_setup_result.go
@@ -1958,6 +1976,7 @@ test/api_subscription_test.go
 test/api_taikun_lb_test.go
 test/api_tanzu_test.go
 test/api_ticket_test.go
+test/api_trusted_registries_test.go
 test/api_user_group_test.go
 test/api_user_projects_test.go
 test/api_user_token_test.go

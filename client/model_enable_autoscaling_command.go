@@ -21,7 +21,6 @@ var _ MappedNullable = &EnableAutoscalingCommand{}
 // EnableAutoscalingCommand struct for EnableAutoscalingCommand
 type EnableAutoscalingCommand struct {
 	Id *int32 `json:"id,omitempty"`
-	AutoscalingGroupName NullableString `json:"autoscalingGroupName,omitempty"`
 	MinSize *int32 `json:"minSize,omitempty"`
 	MaxSize *int32 `json:"maxSize,omitempty"`
 	DiskSize *float64 `json:"diskSize,omitempty"`
@@ -76,48 +75,6 @@ func (o *EnableAutoscalingCommand) HasId() bool {
 // SetId gets a reference to the given int32 and assigns it to the Id field.
 func (o *EnableAutoscalingCommand) SetId(v int32) {
 	o.Id = &v
-}
-
-// GetAutoscalingGroupName returns the AutoscalingGroupName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *EnableAutoscalingCommand) GetAutoscalingGroupName() string {
-	if o == nil || IsNil(o.AutoscalingGroupName.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.AutoscalingGroupName.Get()
-}
-
-// GetAutoscalingGroupNameOk returns a tuple with the AutoscalingGroupName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *EnableAutoscalingCommand) GetAutoscalingGroupNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.AutoscalingGroupName.Get(), o.AutoscalingGroupName.IsSet()
-}
-
-// HasAutoscalingGroupName returns a boolean if a field has been set.
-func (o *EnableAutoscalingCommand) HasAutoscalingGroupName() bool {
-	if o != nil && o.AutoscalingGroupName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAutoscalingGroupName gets a reference to the given NullableString and assigns it to the AutoscalingGroupName field.
-func (o *EnableAutoscalingCommand) SetAutoscalingGroupName(v string) {
-	o.AutoscalingGroupName.Set(&v)
-}
-// SetAutoscalingGroupNameNil sets the value for AutoscalingGroupName to be an explicit nil
-func (o *EnableAutoscalingCommand) SetAutoscalingGroupNameNil() {
-	o.AutoscalingGroupName.Set(nil)
-}
-
-// UnsetAutoscalingGroupName ensures that no value is present for AutoscalingGroupName, not even an explicit nil
-func (o *EnableAutoscalingCommand) UnsetAutoscalingGroupName() {
-	o.AutoscalingGroupName.Unset()
 }
 
 // GetMinSize returns the MinSize field value if set, zero value otherwise.
@@ -302,9 +259,6 @@ func (o EnableAutoscalingCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
-	}
-	if o.AutoscalingGroupName.IsSet() {
-		toSerialize["autoscalingGroupName"] = o.AutoscalingGroupName.Get()
 	}
 	if !IsNil(o.MinSize) {
 		toSerialize["minSize"] = o.MinSize

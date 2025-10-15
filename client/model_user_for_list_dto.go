@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"time"
 	"bytes"
 	"fmt"
 )
@@ -29,12 +28,9 @@ type UserForListDto struct {
 	HasCustomerId bool `json:"hasCustomerId"`
 	HasPaymentMethod bool `json:"hasPaymentMethod"`
 	OrganizationId int32 `json:"organizationId"`
-	Role UserRole `json:"role"`
-	RoleName NullableString `json:"roleName,omitempty"`
 	Email string `json:"email"`
 	DisplayName NullableString `json:"displayName"`
 	CreatedAt string `json:"createdAt"`
-	Created NullableTime `json:"created,omitempty"`
 	IsEmailConfirmed bool `json:"isEmailConfirmed"`
 	IsEmailNotificationEnabled bool `json:"isEmailNotificationEnabled"`
 	IsForcedToResetPassword bool `json:"isForcedToResetPassword"`
@@ -51,6 +47,7 @@ type UserForListDto struct {
 	IsForcedToEnableTwoFactorAuthentication bool `json:"isForcedToEnableTwoFactorAuthentication"`
 	BoundProjects []ProjectDto `json:"boundProjects"`
 	Partner PartnerDetailsForUserDto `json:"partner"`
+	Role UserRole `json:"role"`
 }
 
 type _UserForListDto UserForListDto
@@ -59,7 +56,7 @@ type _UserForListDto UserForListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserForListDto(id string, username string, organizationName string, hasCustomerId bool, hasPaymentMethod bool, organizationId int32, role UserRole, email string, displayName NullableString, createdAt string, isEmailConfirmed bool, isEmailNotificationEnabled bool, isForcedToResetPassword bool, isCsm bool, isEligibleUpdateSubscription bool, isLocked bool, isApprovedByPartner bool, owner bool, isReadOnly bool, hasRepo bool, isNewOrganization bool, is2FAEnabled bool, isForcedToEnableTwoFactorAuthentication bool, boundProjects []ProjectDto, partner PartnerDetailsForUserDto) *UserForListDto {
+func NewUserForListDto(id string, username string, organizationName string, hasCustomerId bool, hasPaymentMethod bool, organizationId int32, email string, displayName NullableString, createdAt string, isEmailConfirmed bool, isEmailNotificationEnabled bool, isForcedToResetPassword bool, isCsm bool, isEligibleUpdateSubscription bool, isLocked bool, isApprovedByPartner bool, owner bool, isReadOnly bool, hasRepo bool, isNewOrganization bool, is2FAEnabled bool, isForcedToEnableTwoFactorAuthentication bool, boundProjects []ProjectDto, partner PartnerDetailsForUserDto, role UserRole) *UserForListDto {
 	this := UserForListDto{}
 	this.Id = id
 	this.Username = username
@@ -67,7 +64,6 @@ func NewUserForListDto(id string, username string, organizationName string, hasC
 	this.HasCustomerId = hasCustomerId
 	this.HasPaymentMethod = hasPaymentMethod
 	this.OrganizationId = organizationId
-	this.Role = role
 	this.Email = email
 	this.DisplayName = displayName
 	this.CreatedAt = createdAt
@@ -86,6 +82,7 @@ func NewUserForListDto(id string, username string, organizationName string, hasC
 	this.IsForcedToEnableTwoFactorAuthentication = isForcedToEnableTwoFactorAuthentication
 	this.BoundProjects = boundProjects
 	this.Partner = partner
+	this.Role = role
 	return &this
 }
 
@@ -241,72 +238,6 @@ func (o *UserForListDto) SetOrganizationId(v int32) {
 	o.OrganizationId = v
 }
 
-// GetRole returns the Role field value
-func (o *UserForListDto) GetRole() UserRole {
-	if o == nil {
-		var ret UserRole
-		return ret
-	}
-
-	return o.Role
-}
-
-// GetRoleOk returns a tuple with the Role field value
-// and a boolean to check if the value has been set.
-func (o *UserForListDto) GetRoleOk() (*UserRole, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Role, true
-}
-
-// SetRole sets field value
-func (o *UserForListDto) SetRole(v UserRole) {
-	o.Role = v
-}
-
-// GetRoleName returns the RoleName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *UserForListDto) GetRoleName() string {
-	if o == nil || IsNil(o.RoleName.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.RoleName.Get()
-}
-
-// GetRoleNameOk returns a tuple with the RoleName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *UserForListDto) GetRoleNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.RoleName.Get(), o.RoleName.IsSet()
-}
-
-// HasRoleName returns a boolean if a field has been set.
-func (o *UserForListDto) HasRoleName() bool {
-	if o != nil && o.RoleName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetRoleName gets a reference to the given NullableString and assigns it to the RoleName field.
-func (o *UserForListDto) SetRoleName(v string) {
-	o.RoleName.Set(&v)
-}
-// SetRoleNameNil sets the value for RoleName to be an explicit nil
-func (o *UserForListDto) SetRoleNameNil() {
-	o.RoleName.Set(nil)
-}
-
-// UnsetRoleName ensures that no value is present for RoleName, not even an explicit nil
-func (o *UserForListDto) UnsetRoleName() {
-	o.RoleName.Unset()
-}
-
 // GetEmail returns the Email field value
 func (o *UserForListDto) GetEmail() string {
 	if o == nil {
@@ -379,48 +310,6 @@ func (o *UserForListDto) GetCreatedAtOk() (*string, bool) {
 // SetCreatedAt sets field value
 func (o *UserForListDto) SetCreatedAt(v string) {
 	o.CreatedAt = v
-}
-
-// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *UserForListDto) GetCreated() time.Time {
-	if o == nil || IsNil(o.Created.Get()) {
-		var ret time.Time
-		return ret
-	}
-	return *o.Created.Get()
-}
-
-// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *UserForListDto) GetCreatedOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Created.Get(), o.Created.IsSet()
-}
-
-// HasCreated returns a boolean if a field has been set.
-func (o *UserForListDto) HasCreated() bool {
-	if o != nil && o.Created.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
-func (o *UserForListDto) SetCreated(v time.Time) {
-	o.Created.Set(&v)
-}
-// SetCreatedNil sets the value for Created to be an explicit nil
-func (o *UserForListDto) SetCreatedNil() {
-	o.Created.Set(nil)
-}
-
-// UnsetCreated ensures that no value is present for Created, not even an explicit nil
-func (o *UserForListDto) UnsetCreated() {
-	o.Created.Unset()
 }
 
 // GetIsEmailConfirmed returns the IsEmailConfirmed field value
@@ -825,6 +714,30 @@ func (o *UserForListDto) SetPartner(v PartnerDetailsForUserDto) {
 	o.Partner = v
 }
 
+// GetRole returns the Role field value
+func (o *UserForListDto) GetRole() UserRole {
+	if o == nil {
+		var ret UserRole
+		return ret
+	}
+
+	return o.Role
+}
+
+// GetRoleOk returns a tuple with the Role field value
+// and a boolean to check if the value has been set.
+func (o *UserForListDto) GetRoleOk() (*UserRole, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Role, true
+}
+
+// SetRole sets field value
+func (o *UserForListDto) SetRole(v UserRole) {
+	o.Role = v
+}
+
 func (o UserForListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -841,16 +754,9 @@ func (o UserForListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["hasCustomerId"] = o.HasCustomerId
 	toSerialize["hasPaymentMethod"] = o.HasPaymentMethod
 	toSerialize["organizationId"] = o.OrganizationId
-	toSerialize["role"] = o.Role
-	if o.RoleName.IsSet() {
-		toSerialize["roleName"] = o.RoleName.Get()
-	}
 	toSerialize["email"] = o.Email
 	toSerialize["displayName"] = o.DisplayName.Get()
 	toSerialize["createdAt"] = o.CreatedAt
-	if o.Created.IsSet() {
-		toSerialize["created"] = o.Created.Get()
-	}
 	toSerialize["isEmailConfirmed"] = o.IsEmailConfirmed
 	toSerialize["isEmailNotificationEnabled"] = o.IsEmailNotificationEnabled
 	toSerialize["isForcedToResetPassword"] = o.IsForcedToResetPassword
@@ -869,6 +775,7 @@ func (o UserForListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["isForcedToEnableTwoFactorAuthentication"] = o.IsForcedToEnableTwoFactorAuthentication
 	toSerialize["boundProjects"] = o.BoundProjects
 	toSerialize["partner"] = o.Partner
+	toSerialize["role"] = o.Role
 	return toSerialize, nil
 }
 
@@ -883,7 +790,6 @@ func (o *UserForListDto) UnmarshalJSON(data []byte) (err error) {
 		"hasCustomerId",
 		"hasPaymentMethod",
 		"organizationId",
-		"role",
 		"email",
 		"displayName",
 		"createdAt",
@@ -902,6 +808,7 @@ func (o *UserForListDto) UnmarshalJSON(data []byte) (err error) {
 		"isForcedToEnableTwoFactorAuthentication",
 		"boundProjects",
 		"partner",
+		"role",
 	}
 
 	allProperties := make(map[string]interface{})

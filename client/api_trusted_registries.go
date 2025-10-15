@@ -17,54 +17,57 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"strings"
 )
 
 
-// AutoscalingAPIService AutoscalingAPI service
-type AutoscalingAPIService service
+// TrustedRegistriesAPIService TrustedRegistriesAPI service
+type TrustedRegistriesAPIService service
 
-type ApiAutoscalingDisableRequest struct {
+type ApiTrustedregistriesCreateRequest struct {
 	ctx context.Context
-	ApiService *AutoscalingAPIService
-	disableAutoscalingCommand *DisableAutoscalingCommand
+	ApiService *TrustedRegistriesAPIService
+	createTrustedRegistriesCommand *CreateTrustedRegistriesCommand
 }
 
-func (r ApiAutoscalingDisableRequest) DisableAutoscalingCommand(disableAutoscalingCommand DisableAutoscalingCommand) ApiAutoscalingDisableRequest {
-	r.disableAutoscalingCommand = &disableAutoscalingCommand
+func (r ApiTrustedregistriesCreateRequest) CreateTrustedRegistriesCommand(createTrustedRegistriesCommand CreateTrustedRegistriesCommand) ApiTrustedregistriesCreateRequest {
+	r.createTrustedRegistriesCommand = &createTrustedRegistriesCommand
 	return r
 }
 
-func (r ApiAutoscalingDisableRequest) Execute() (*http.Response, error) {
-	return r.ApiService.AutoscalingDisableExecute(r)
+func (r ApiTrustedregistriesCreateRequest) Execute() (*ApiResponse, *http.Response, error) {
+	return r.ApiService.TrustedregistriesCreateExecute(r)
 }
 
 /*
-AutoscalingDisable Disable autoscaling
+TrustedregistriesCreate Create trusted registries for access profile
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAutoscalingDisableRequest
+ @return ApiTrustedregistriesCreateRequest
 */
-func (a *AutoscalingAPIService) AutoscalingDisable(ctx context.Context) ApiAutoscalingDisableRequest {
-	return ApiAutoscalingDisableRequest{
+func (a *TrustedRegistriesAPIService) TrustedregistriesCreate(ctx context.Context) ApiTrustedregistriesCreateRequest {
+	return ApiTrustedregistriesCreateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *AutoscalingAPIService) AutoscalingDisableExecute(r ApiAutoscalingDisableRequest) (*http.Response, error) {
+//  @return ApiResponse
+func (a *TrustedRegistriesAPIService) TrustedregistriesCreateExecute(r ApiTrustedregistriesCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *ApiResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AutoscalingAPIService.AutoscalingDisable")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TrustedRegistriesAPIService.TrustedregistriesCreate")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/autoscaling/disable"
+	localVarPath := localBasePath + "/api/v1/trustedregistries/create"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -88,7 +91,185 @@ func (a *AutoscalingAPIService) AutoscalingDisableExecute(r ApiAutoscalingDisabl
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.disableAutoscalingCommand
+	localVarPostBody = r.createTrustedRegistriesCommand
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiTrustedregistriesDeleteRequest struct {
+	ctx context.Context
+	ApiService *TrustedRegistriesAPIService
+	id int32
+}
+
+func (r ApiTrustedregistriesDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.TrustedregistriesDeleteExecute(r)
+}
+
+/*
+TrustedregistriesDelete Delete trusted registry
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiTrustedregistriesDeleteRequest
+*/
+func (a *TrustedRegistriesAPIService) TrustedregistriesDelete(ctx context.Context, id int32) ApiTrustedregistriesDeleteRequest {
+	return ApiTrustedregistriesDeleteRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *TrustedRegistriesAPIService) TrustedregistriesDeleteExecute(r ApiTrustedregistriesDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TrustedRegistriesAPIService.TrustedregistriesDelete")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/trustedregistries/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -196,48 +377,52 @@ func (a *AutoscalingAPIService) AutoscalingDisableExecute(r ApiAutoscalingDisabl
 	return localVarHTTPResponse, nil
 }
 
-type ApiAutoscalingEditRequest struct {
+type ApiTrustedregistriesEditRequest struct {
 	ctx context.Context
-	ApiService *AutoscalingAPIService
-	editAutoscalingCommand *EditAutoscalingCommand
+	ApiService *TrustedRegistriesAPIService
+	id int32
+	trustedRegistryEditDto *TrustedRegistryEditDto
 }
 
-func (r ApiAutoscalingEditRequest) EditAutoscalingCommand(editAutoscalingCommand EditAutoscalingCommand) ApiAutoscalingEditRequest {
-	r.editAutoscalingCommand = &editAutoscalingCommand
+func (r ApiTrustedregistriesEditRequest) TrustedRegistryEditDto(trustedRegistryEditDto TrustedRegistryEditDto) ApiTrustedregistriesEditRequest {
+	r.trustedRegistryEditDto = &trustedRegistryEditDto
 	return r
 }
 
-func (r ApiAutoscalingEditRequest) Execute() (*http.Response, error) {
-	return r.ApiService.AutoscalingEditExecute(r)
+func (r ApiTrustedregistriesEditRequest) Execute() (*http.Response, error) {
+	return r.ApiService.TrustedregistriesEditExecute(r)
 }
 
 /*
-AutoscalingEdit Edit autoscaling
+TrustedregistriesEdit Edit trusted registry
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAutoscalingEditRequest
+ @param id
+ @return ApiTrustedregistriesEditRequest
 */
-func (a *AutoscalingAPIService) AutoscalingEdit(ctx context.Context) ApiAutoscalingEditRequest {
-	return ApiAutoscalingEditRequest{
+func (a *TrustedRegistriesAPIService) TrustedregistriesEdit(ctx context.Context, id int32) ApiTrustedregistriesEditRequest {
+	return ApiTrustedregistriesEditRequest{
 		ApiService: a,
 		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-func (a *AutoscalingAPIService) AutoscalingEditExecute(r ApiAutoscalingEditRequest) (*http.Response, error) {
+func (a *TrustedRegistriesAPIService) TrustedregistriesEditExecute(r ApiTrustedregistriesEditRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AutoscalingAPIService.AutoscalingEdit")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TrustedRegistriesAPIService.TrustedregistriesEdit")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/autoscaling/edit"
+	localVarPath := localBasePath + "/api/v1/trustedregistries/edit/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -261,7 +446,7 @@ func (a *AutoscalingAPIService) AutoscalingEditExecute(r ApiAutoscalingEditReque
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.editAutoscalingCommand
+	localVarPostBody = r.trustedRegistryEditDto
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -369,55 +554,64 @@ func (a *AutoscalingAPIService) AutoscalingEditExecute(r ApiAutoscalingEditReque
 	return localVarHTTPResponse, nil
 }
 
-type ApiAutoscalingEnableRequest struct {
+type ApiTrustedregistriesListRequest struct {
 	ctx context.Context
-	ApiService *AutoscalingAPIService
-	enableAutoscalingCommand *EnableAutoscalingCommand
+	ApiService *TrustedRegistriesAPIService
+	accessProfileId int32
+	search *string
 }
 
-func (r ApiAutoscalingEnableRequest) EnableAutoscalingCommand(enableAutoscalingCommand EnableAutoscalingCommand) ApiAutoscalingEnableRequest {
-	r.enableAutoscalingCommand = &enableAutoscalingCommand
+func (r ApiTrustedregistriesListRequest) Search(search string) ApiTrustedregistriesListRequest {
+	r.search = &search
 	return r
 }
 
-func (r ApiAutoscalingEnableRequest) Execute() (*http.Response, error) {
-	return r.ApiService.AutoscalingEnableExecute(r)
+func (r ApiTrustedregistriesListRequest) Execute() ([]TrustedRegistriesListDto, *http.Response, error) {
+	return r.ApiService.TrustedregistriesListExecute(r)
 }
 
 /*
-AutoscalingEnable Enable autoscaling
+TrustedregistriesList List trusted registries by profile id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAutoscalingEnableRequest
+ @param accessProfileId
+ @return ApiTrustedregistriesListRequest
 */
-func (a *AutoscalingAPIService) AutoscalingEnable(ctx context.Context) ApiAutoscalingEnableRequest {
-	return ApiAutoscalingEnableRequest{
+func (a *TrustedRegistriesAPIService) TrustedregistriesList(ctx context.Context, accessProfileId int32) ApiTrustedregistriesListRequest {
+	return ApiTrustedregistriesListRequest{
 		ApiService: a,
 		ctx: ctx,
+		accessProfileId: accessProfileId,
 	}
 }
 
 // Execute executes the request
-func (a *AutoscalingAPIService) AutoscalingEnableExecute(r ApiAutoscalingEnableRequest) (*http.Response, error) {
+//  @return []TrustedRegistriesListDto
+func (a *TrustedRegistriesAPIService) TrustedregistriesListExecute(r ApiTrustedregistriesListRequest) ([]TrustedRegistriesListDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  []TrustedRegistriesListDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AutoscalingAPIService.AutoscalingEnable")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TrustedRegistriesAPIService.TrustedregistriesList")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/autoscaling/enable"
+	localVarPath := localBasePath + "/api/v1/trustedregistries/{accessProfileId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"accessProfileId"+"}", url.PathEscape(parameterValueToString(r.accessProfileId, "accessProfileId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -433,8 +627,6 @@ func (a *AutoscalingAPIService) AutoscalingEnableExecute(r ApiAutoscalingEnableR
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	// body params
-	localVarPostBody = r.enableAutoscalingCommand
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -451,19 +643,19 @@ func (a *AutoscalingAPIService) AutoscalingEnableExecute(r ApiAutoscalingEnableR
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -476,68 +668,77 @@ func (a *AutoscalingAPIService) AutoscalingEnableExecute(r ApiAutoscalingEnableR
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

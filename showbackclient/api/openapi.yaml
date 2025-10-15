@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.4
 info:
   contact:
     email: noreply@taikun.cloud
@@ -821,13 +821,6 @@ paths:
         style: form
       - explode: true
         in: query
-        name: IsDeleted
-        required: false
-        schema:
-          type: boolean
-        style: form
-      - explode: true
-        in: query
         name: FromDate
         required: false
         schema:
@@ -1066,6 +1059,13 @@ paths:
         schema:
           format: date-time
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: IsDeleted
+        required: false
+        schema:
+          type: boolean
         style: form
       responses:
         "200":
@@ -1331,22 +1331,28 @@ components:
       additionalProperties: false
       example:
         byLabelValues:
-        - data:
+        - metricName: metricName
+          data:
           - byLabel: byLabel
             totalPrice: 6.027456183070403
           - byLabel: byLabel
             totalPrice: 6.027456183070403
           totalPrice: 0.8008281904610115
           ruleName: ruleName
+          labelValue: labelValue
           credentialName: credentialName
-        - data:
+          labelName: labelName
+        - metricName: metricName
+          data:
           - byLabel: byLabel
             totalPrice: 6.027456183070403
           - byLabel: byLabel
             totalPrice: 6.027456183070403
           totalPrice: 0.8008281904610115
           ruleName: ruleName
+          labelValue: labelValue
           credentialName: credentialName
+          labelName: labelName
       properties:
         byLabelValues:
           items:
@@ -1496,6 +1502,7 @@ components:
     GroupedShowbackSummaryByLabelInfo:
       additionalProperties: false
       example:
+        metricName: metricName
         data:
         - byLabel: byLabel
           totalPrice: 6.027456183070403
@@ -1503,7 +1510,9 @@ components:
           totalPrice: 6.027456183070403
         totalPrice: 0.8008281904610115
         ruleName: ruleName
+        labelValue: labelValue
         credentialName: credentialName
+        labelName: labelName
       properties:
         ruleName:
           nullable: true
@@ -1515,6 +1524,15 @@ components:
           format: double
           nullable: true
           type: number
+        labelName:
+          nullable: true
+          type: string
+        labelValue:
+          nullable: true
+          type: string
+        metricName:
+          nullable: true
+          type: string
         data:
           items:
             $ref: "#/components/schemas/GroupedShowbackSummariesByLabelDto"
