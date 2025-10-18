@@ -234,12 +234,10 @@ Class | Method | HTTP request | Description
 *CheckerAPI* | [**CheckerProxmox**](docs/CheckerAPI.md#checkerproxmox) | **Post** /api/v1/checker/proxmox | Check proxmox credential
 *CheckerAPI* | [**CheckerS3**](docs/CheckerAPI.md#checkers3) | **Post** /api/v1/checker/s3 | Check s3 credential
 *CheckerAPI* | [**CheckerSsh**](docs/CheckerAPI.md#checkerssh) | **Post** /api/v1/checker/ssh | Check valid ssh key format
-*CheckerAPI* | [**CheckerTanzu**](docs/CheckerAPI.md#checkertanzu) | **Post** /api/v1/checker/tanzu | Check tanzu credential
 *CheckerAPI* | [**CheckerTrustedRegistry**](docs/CheckerAPI.md#checkertrustedregistry) | **Post** /api/v1/checker/trusted-registry | Check trusted registry
 *CheckerAPI* | [**CheckerUser**](docs/CheckerAPI.md#checkeruser) | **Post** /api/v1/checker/user | Check duplicate username
 *CheckerAPI* | [**CheckerYaml**](docs/CheckerAPI.md#checkeryaml) | **Post** /api/v1/checker/yaml | Check yaml file
 *CheckerAPI* | [**CheckerZadara**](docs/CheckerAPI.md#checkerzadara) | **Post** /api/v1/checker/zadara | Check zadara credential
-*CheckerAPI* | [**CheckerZededa**](docs/CheckerAPI.md#checkerzededa) | **Post** /api/v1/checker/zededa | Check zededa credential
 *CloudCredentialAPI* | [**CloudcredentialsAllFlavors**](docs/CloudCredentialAPI.md#cloudcredentialsallflavors) | **Get** /api/v1/cloudcredentials/flavors/{cloudId} | Retrieve all flavors
 *CloudCredentialAPI* | [**CloudcredentialsDelete**](docs/CloudCredentialAPI.md#cloudcredentialsdelete) | **Delete** /api/v1/cloudcredentials/{cloudId} | Remove cloud credential by cloud Id
 *CloudCredentialAPI* | [**CloudcredentialsExceeded**](docs/CloudCredentialAPI.md#cloudcredentialsexceeded) | **Get** /api/v1/cloudcredentials/exceeded-quotas | Retrieve cloud credentials exceeded quotas
@@ -298,11 +296,9 @@ Class | Method | HTTP request | Description
 *FlavorsAPI* | [**FlavorsOpenstackFlavors**](docs/FlavorsAPI.md#flavorsopenstackflavors) | **Get** /api/v1/flavors/openstack/{cloudId} | Retrieve openstack flavors
 *FlavorsAPI* | [**FlavorsProxmoxFlavors**](docs/FlavorsAPI.md#flavorsproxmoxflavors) | **Get** /api/v1/flavors/proxmox/{cloudId} | Retrieve proxmox flavors
 *FlavorsAPI* | [**FlavorsSelectedFlavorsForProject**](docs/FlavorsAPI.md#flavorsselectedflavorsforproject) | **Get** /api/v1/flavors/projects/list | Retrieve selected flavors for project
-*FlavorsAPI* | [**FlavorsTanzuFlavors**](docs/FlavorsAPI.md#flavorstanzuflavors) | **Get** /api/v1/flavors/tanzu/{cloudId} | Retrieve tanzu flavors
 *FlavorsAPI* | [**FlavorsUnbindFromProject**](docs/FlavorsAPI.md#flavorsunbindfromproject) | **Post** /api/v1/flavors/unbind | Unbind flavors from project
 *FlavorsAPI* | [**FlavorsVsphereFlavors**](docs/FlavorsAPI.md#flavorsvsphereflavors) | **Get** /api/v1/flavors/vsphere/{cloudId} | Retrieve vsphere flavors
 *FlavorsAPI* | [**FlavorsZadaraInstanceTypes**](docs/FlavorsAPI.md#flavorszadarainstancetypes) | **Get** /api/v1/flavors/zadara/{cloudId} | Retrieve zadara instance types
-*FlavorsAPI* | [**FlavorsZededaFlavors**](docs/FlavorsAPI.md#flavorszededaflavors) | **Get** /api/v1/flavors/zededa/{cloudId} | Retrieve zededa flavors
 *GenericKubernetesCloudCredentialAPI* | [**GenericKubernetesList**](docs/GenericKubernetesCloudCredentialAPI.md#generickuberneteslist) | **Get** /api/v1/generic-kubernetes/list | Retrieve list of generic kubernetes cloud credentials
 *GenericKubernetesCloudCredentialAPI* | [**GenericKubernetesUpdate**](docs/GenericKubernetesCloudCredentialAPI.md#generickubernetesupdate) | **Put** /api/v1/generic-kubernetes/update | Update Generic kubernetes credentials
 *GoogleAPI* | [**GooglecloudBillingAccountList**](docs/GoogleAPI.md#googlecloudbillingaccountlist) | **Post** /api/v1/googlecloud/billing-accounts | Retrieve google billing accounts list
@@ -325,7 +321,6 @@ Class | Method | HTTP request | Description
 *ImagesAPI* | [**ImagesOpenstackImages**](docs/ImagesAPI.md#imagesopenstackimages) | **Get** /api/v1/images/openstack/{cloudId} | Retrieve openstack images
 *ImagesAPI* | [**ImagesProxmoxImages**](docs/ImagesAPI.md#imagesproxmoximages) | **Get** /api/v1/images/proxmox/{cloudId} | Retrieve proxmox images
 *ImagesAPI* | [**ImagesSelectedImagesForProject**](docs/ImagesAPI.md#imagesselectedimagesforproject) | **Get** /api/v1/images/projects/list | Retrieve selected images for projects
-*ImagesAPI* | [**ImagesTanzuImages**](docs/ImagesAPI.md#imagestanzuimages) | **Get** /api/v1/images/tanzu/{cloudId} | Retrieve tanzu images
 *ImagesAPI* | [**ImagesUnbindImagesFromProject**](docs/ImagesAPI.md#imagesunbindimagesfromproject) | **Post** /api/v1/images/unbind | Unbind images from project
 *ImagesAPI* | [**ImagesVsphereImages**](docs/ImagesAPI.md#imagesvsphereimages) | **Get** /api/v1/images/vsphere/{cloudId} | Retrieve vsphere images
 *ImagesAPI* | [**ImagesZadaraImagesList**](docs/ImagesAPI.md#imageszadaraimageslist) | **Post** /api/v1/images/zadara/{cloudId} | Retrieve zadara images
@@ -680,11 +675,6 @@ Class | Method | HTTP request | Description
 *TaikunLBAPI* | [**TaikunLbCreateTaikunLb**](docs/TaikunLBAPI.md#taikunlbcreatetaikunlb) | **Post** /api/v1/taikun-lb/create/{projectId} | Create Taikun LB
 *TaikunLBAPI* | [**TaikunLbDeleteTaikunLb**](docs/TaikunLBAPI.md#taikunlbdeletetaikunlb) | **Post** /api/v1/taikun-lb/delete/{projectId} | Delete Taikun LB
 *TaikunLBAPI* | [**TaikunLbListTaikunLb**](docs/TaikunLBAPI.md#taikunlblisttaikunlb) | **Get** /api/v1/taikun-lb/list/{projectId} | Retrieve taikun lbs for project
-*TanzuAPI* | [**TanzuCreate**](docs/TanzuAPI.md#tanzucreate) | **Post** /api/v1/tanzu/create | Create tanzu credentials
-*TanzuAPI* | [**TanzuKubernetesVersions**](docs/TanzuAPI.md#tanzukubernetesversions) | **Get** /api/v1/tanzu/kubernetes-versions/{cloudId} | Tanzu available k8s version list
-*TanzuAPI* | [**TanzuList**](docs/TanzuAPI.md#tanzulist) | **Get** /api/v1/tanzu/list | Retrieve list of tanzu cloud credentials
-*TanzuAPI* | [**TanzuStorageList**](docs/TanzuAPI.md#tanzustoragelist) | **Post** /api/v1/tanzu/storage-list | Tanzu storage list
-*TanzuAPI* | [**TanzuUpdate**](docs/TanzuAPI.md#tanzuupdate) | **Post** /api/v1/tanzu/update | Update tanzu credentials
 *TicketAPI* | [**TicketArchive**](docs/TicketAPI.md#ticketarchive) | **Post** /api/v1/ticket/archive | Archive ticket
 *TicketAPI* | [**TicketClose**](docs/TicketAPI.md#ticketclose) | **Post** /api/v1/ticket/close | Close ticket
 *TicketAPI* | [**TicketCreate**](docs/TicketAPI.md#ticketcreate) | **Post** /api/v1/ticket/create | Create ticket
@@ -769,12 +759,6 @@ Class | Method | HTTP request | Description
 *ZadaraCloudCredentialAPI* | [**ZadaraUpdate**](docs/ZadaraCloudCredentialAPI.md#zadaraupdate) | **Post** /api/v1/zadara/update | Update zadara cloud credential
 *ZadaraCloudCredentialAPI* | [**ZadaraVolumeTypeList**](docs/ZadaraCloudCredentialAPI.md#zadaravolumetypelist) | **Get** /api/v1/zadara/volume-types | Retrieve volume type list
 *ZadaraCloudCredentialAPI* | [**ZadaraZonelist**](docs/ZadaraCloudCredentialAPI.md#zadarazonelist) | **Post** /api/v1/zadara/zones | Retrieve zadara zone list
-*ZededaCloudCredentialAPI* | [**ZededaCreate**](docs/ZededaCloudCredentialAPI.md#zededacreate) | **Post** /api/v1/zededa/create | Add Zededa credentials
-*ZededaCloudCredentialAPI* | [**ZededaEdgeNodes**](docs/ZededaCloudCredentialAPI.md#zededaedgenodes) | **Post** /api/v1/zededa/edge-nodes | Fetch edge nodes for zededa cloud credential
-*ZededaCloudCredentialAPI* | [**ZededaInterfaces**](docs/ZededaCloudCredentialAPI.md#zededainterfaces) | **Post** /api/v1/zededa/interfaces | Fetch interfaces for zededa cloud credential
-*ZededaCloudCredentialAPI* | [**ZededaList**](docs/ZededaCloudCredentialAPI.md#zededalist) | **Get** /api/v1/zededa/list | Retrieve list of Zededa cloud credentials
-*ZededaCloudCredentialAPI* | [**ZededaProjects**](docs/ZededaCloudCredentialAPI.md#zededaprojects) | **Post** /api/v1/zededa/projects | Fetch projects for zededa cloud credential
-*ZededaCloudCredentialAPI* | [**ZededaUpdateEdgeNodes**](docs/ZededaCloudCredentialAPI.md#zededaupdateedgenodes) | **Post** /api/v1/zededa/update/edge-nodes | Update zededa credentials
 
 
 ## Documentation For Models
@@ -931,7 +915,6 @@ Class | Method | HTTP request | Description
  - [CheckOpenstackCommand](docs/CheckOpenstackCommand.md)
  - [CheckPrometheusCommand](docs/CheckPrometheusCommand.md)
  - [CheckS3Command](docs/CheckS3Command.md)
- - [CheckTanzuCommand](docs/CheckTanzuCommand.md)
  - [CheckTrustedRegistryCommand](docs/CheckTrustedRegistryCommand.md)
  - [CheckZadaraCommand](docs/CheckZadaraCommand.md)
  - [CidrCommand](docs/CidrCommand.md)
@@ -1000,7 +983,6 @@ Class | Method | HTTP request | Description
  - [CreateStandAloneVmCommand](docs/CreateStandAloneVmCommand.md)
  - [CreateStripeCustomerCommand](docs/CreateStripeCustomerCommand.md)
  - [CreateSubscriptionCommand](docs/CreateSubscriptionCommand.md)
- - [CreateTanzuCommand](docs/CreateTanzuCommand.md)
  - [CreateTicketCommand](docs/CreateTicketCommand.md)
  - [CreateTrustedRegistriesCommand](docs/CreateTrustedRegistriesCommand.md)
  - [CreateUserCommand](docs/CreateUserCommand.md)
@@ -1011,8 +993,6 @@ Class | Method | HTTP request | Description
  - [CreateVsphereCommand](docs/CreateVsphereCommand.md)
  - [CreateVsphereNetworkDto](docs/CreateVsphereNetworkDto.md)
  - [CreateZadaraCloudCommand](docs/CreateZadaraCloudCommand.md)
- - [CreateZededaCommand](docs/CreateZededaCommand.md)
- - [CreateZededaNetworkDto](docs/CreateZededaNetworkDto.md)
  - [CredentialChartDto](docs/CredentialChartDto.md)
  - [CredentialMakeDefaultCommand](docs/CredentialMakeDefaultCommand.md)
  - [CronJobCommand](docs/CronJobCommand.md)
@@ -1518,11 +1498,6 @@ Class | Method | HTTP request | Description
  - [SyncProjectAppCommand](docs/SyncProjectAppCommand.md)
  - [SyncProjectAppsCommand](docs/SyncProjectAppsCommand.md)
  - [TaikunLbResponseDto](docs/TaikunLbResponseDto.md)
- - [TanzuCredentialsList](docs/TanzuCredentialsList.md)
- - [TanzuCredentialsListDto](docs/TanzuCredentialsListDto.md)
- - [TanzuFlavorList](docs/TanzuFlavorList.md)
- - [TanzuFlavorsListDto](docs/TanzuFlavorsListDto.md)
- - [TanzuStorageListCommand](docs/TanzuStorageListCommand.md)
  - [TicketPriority](docs/TicketPriority.md)
  - [TofuMigrateCommand](docs/TofuMigrateCommand.md)
  - [ToggleExecutorCommand](docs/ToggleExecutorCommand.md)
@@ -1552,7 +1527,6 @@ Class | Method | HTTP request | Description
  - [UpdateAlertingProfileCommand](docs/UpdateAlertingProfileCommand.md)
  - [UpdateAwsCommand](docs/UpdateAwsCommand.md)
  - [UpdateAzureCommand](docs/UpdateAzureCommand.md)
- - [UpdateEdgeNodesCommand](docs/UpdateEdgeNodesCommand.md)
  - [UpdateExecutorHealthStatusCommand](docs/UpdateExecutorHealthStatusCommand.md)
  - [UpdateGenericKubernetesCommand](docs/UpdateGenericKubernetesCommand.md)
  - [UpdateHealthStatusCommand](docs/UpdateHealthStatusCommand.md)
@@ -1573,7 +1547,6 @@ Class | Method | HTTP request | Description
  - [UpdateStandAloneVmFlavorCommand](docs/UpdateStandAloneVmFlavorCommand.md)
  - [UpdateStandaloneVmDiskSizeCommand](docs/UpdateStandaloneVmDiskSizeCommand.md)
  - [UpdateSubscriptionCommand](docs/UpdateSubscriptionCommand.md)
- - [UpdateTanzuCommand](docs/UpdateTanzuCommand.md)
  - [UpdateUsedIpAddressesCommand](docs/UpdateUsedIpAddressesCommand.md)
  - [UpdateUserCommand](docs/UpdateUserCommand.md)
  - [UpdateUserGroupDto](docs/UpdateUserGroupDto.md)
@@ -1636,14 +1609,6 @@ Class | Method | HTTP request | Description
  - [ZadaraCredentialList](docs/ZadaraCredentialList.md)
  - [ZadaraCredentialsListDto](docs/ZadaraCredentialsListDto.md)
  - [ZadaraRegionListCommand](docs/ZadaraRegionListCommand.md)
- - [ZededaCheckerCommand](docs/ZededaCheckerCommand.md)
- - [ZededaEdgeNodesCommand](docs/ZededaEdgeNodesCommand.md)
- - [ZededaFlavorList](docs/ZededaFlavorList.md)
- - [ZededaInterfaceCommand](docs/ZededaInterfaceCommand.md)
- - [ZededaList](docs/ZededaList.md)
- - [ZededaListDto](docs/ZededaListDto.md)
- - [ZededaNetworkListDto](docs/ZededaNetworkListDto.md)
- - [ZededaProjectsCommand](docs/ZededaProjectsCommand.md)
 
 
 ## Documentation For Authorization

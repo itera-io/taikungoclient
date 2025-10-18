@@ -24,7 +24,6 @@ type ServerChartDto struct {
 	Azure []ServerCommonRecordDto `json:"azure,omitempty"`
 	Openstack []ServerCommonRecordDto `json:"openstack,omitempty"`
 	Google []ServerCommonRecordDto `json:"google,omitempty"`
-	Tanzu []ServerCommonRecordDto `json:"tanzu,omitempty"`
 	Proxmox []ServerCommonRecordDto `json:"proxmox,omitempty"`
 	Vsphere []ServerCommonRecordDto `json:"vsphere,omitempty"`
 	Zadara []ServerCommonRecordDto `json:"zadara,omitempty"`
@@ -49,7 +48,6 @@ type ServerChartDto struct {
 	TotalAzureCount *int32 `json:"totalAzureCount,omitempty"`
 	TotalOpenstackCount *int32 `json:"totalOpenstackCount,omitempty"`
 	TotalGoogleCount *int32 `json:"totalGoogleCount,omitempty"`
-	TotalTanzuCount *int32 `json:"totalTanzuCount,omitempty"`
 	TotalOpenshiftCount *int32 `json:"totalOpenshiftCount,omitempty"`
 	TotalProxmoxCount *int32 `json:"totalProxmoxCount,omitempty"`
 	TotalVsphereCount *int32 `json:"totalVsphereCount,omitempty"`
@@ -206,39 +204,6 @@ func (o *ServerChartDto) HasGoogle() bool {
 // SetGoogle gets a reference to the given []ServerCommonRecordDto and assigns it to the Google field.
 func (o *ServerChartDto) SetGoogle(v []ServerCommonRecordDto) {
 	o.Google = v
-}
-
-// GetTanzu returns the Tanzu field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerChartDto) GetTanzu() []ServerCommonRecordDto {
-	if o == nil {
-		var ret []ServerCommonRecordDto
-		return ret
-	}
-	return o.Tanzu
-}
-
-// GetTanzuOk returns a tuple with the Tanzu field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerChartDto) GetTanzuOk() ([]ServerCommonRecordDto, bool) {
-	if o == nil || IsNil(o.Tanzu) {
-		return nil, false
-	}
-	return o.Tanzu, true
-}
-
-// HasTanzu returns a boolean if a field has been set.
-func (o *ServerChartDto) HasTanzu() bool {
-	if o != nil && !IsNil(o.Tanzu) {
-		return true
-	}
-
-	return false
-}
-
-// SetTanzu gets a reference to the given []ServerCommonRecordDto and assigns it to the Tanzu field.
-func (o *ServerChartDto) SetTanzu(v []ServerCommonRecordDto) {
-	o.Tanzu = v
 }
 
 // GetProxmox returns the Proxmox field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1021,38 +986,6 @@ func (o *ServerChartDto) SetTotalGoogleCount(v int32) {
 	o.TotalGoogleCount = &v
 }
 
-// GetTotalTanzuCount returns the TotalTanzuCount field value if set, zero value otherwise.
-func (o *ServerChartDto) GetTotalTanzuCount() int32 {
-	if o == nil || IsNil(o.TotalTanzuCount) {
-		var ret int32
-		return ret
-	}
-	return *o.TotalTanzuCount
-}
-
-// GetTotalTanzuCountOk returns a tuple with the TotalTanzuCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServerChartDto) GetTotalTanzuCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.TotalTanzuCount) {
-		return nil, false
-	}
-	return o.TotalTanzuCount, true
-}
-
-// HasTotalTanzuCount returns a boolean if a field has been set.
-func (o *ServerChartDto) HasTotalTanzuCount() bool {
-	if o != nil && !IsNil(o.TotalTanzuCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetTotalTanzuCount gets a reference to the given int32 and assigns it to the TotalTanzuCount field.
-func (o *ServerChartDto) SetTotalTanzuCount(v int32) {
-	o.TotalTanzuCount = &v
-}
-
 // GetTotalOpenshiftCount returns the TotalOpenshiftCount field value if set, zero value otherwise.
 func (o *ServerChartDto) GetTotalOpenshiftCount() int32 {
 	if o == nil || IsNil(o.TotalOpenshiftCount) {
@@ -1300,9 +1233,6 @@ func (o ServerChartDto) ToMap() (map[string]interface{}, error) {
 	if o.Google != nil {
 		toSerialize["google"] = o.Google
 	}
-	if o.Tanzu != nil {
-		toSerialize["tanzu"] = o.Tanzu
-	}
 	if o.Proxmox != nil {
 		toSerialize["proxmox"] = o.Proxmox
 	}
@@ -1374,9 +1304,6 @@ func (o ServerChartDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TotalGoogleCount) {
 		toSerialize["totalGoogleCount"] = o.TotalGoogleCount
-	}
-	if !IsNil(o.TotalTanzuCount) {
-		toSerialize["totalTanzuCount"] = o.TotalTanzuCount
 	}
 	if !IsNil(o.TotalOpenshiftCount) {
 		toSerialize["totalOpenshiftCount"] = o.TotalOpenshiftCount

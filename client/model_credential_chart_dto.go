@@ -24,7 +24,6 @@ type CredentialChartDto struct {
 	Azure *int32 `json:"azure,omitempty"`
 	Openstack *int32 `json:"openstack,omitempty"`
 	Google *int32 `json:"google,omitempty"`
-	Tanzu *int32 `json:"tanzu,omitempty"`
 	Proxmox *int32 `json:"proxmox,omitempty"`
 	Openshift *int32 `json:"openshift,omitempty"`
 	Vsphere *int32 `json:"vsphere,omitempty"`
@@ -177,38 +176,6 @@ func (o *CredentialChartDto) HasGoogle() bool {
 // SetGoogle gets a reference to the given int32 and assigns it to the Google field.
 func (o *CredentialChartDto) SetGoogle(v int32) {
 	o.Google = &v
-}
-
-// GetTanzu returns the Tanzu field value if set, zero value otherwise.
-func (o *CredentialChartDto) GetTanzu() int32 {
-	if o == nil || IsNil(o.Tanzu) {
-		var ret int32
-		return ret
-	}
-	return *o.Tanzu
-}
-
-// GetTanzuOk returns a tuple with the Tanzu field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CredentialChartDto) GetTanzuOk() (*int32, bool) {
-	if o == nil || IsNil(o.Tanzu) {
-		return nil, false
-	}
-	return o.Tanzu, true
-}
-
-// HasTanzu returns a boolean if a field has been set.
-func (o *CredentialChartDto) HasTanzu() bool {
-	if o != nil && !IsNil(o.Tanzu) {
-		return true
-	}
-
-	return false
-}
-
-// SetTanzu gets a reference to the given int32 and assigns it to the Tanzu field.
-func (o *CredentialChartDto) SetTanzu(v int32) {
-	o.Tanzu = &v
 }
 
 // GetProxmox returns the Proxmox field value if set, zero value otherwise.
@@ -456,9 +423,6 @@ func (o CredentialChartDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Google) {
 		toSerialize["google"] = o.Google
-	}
-	if !IsNil(o.Tanzu) {
-		toSerialize["tanzu"] = o.Tanzu
 	}
 	if !IsNil(o.Proxmox) {
 		toSerialize["proxmox"] = o.Proxmox

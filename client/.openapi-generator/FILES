@@ -74,7 +74,6 @@ api_standalone_vm_disks.go
 api_stripe.go
 api_subscription.go
 api_taikun_lb.go
-api_tanzu.go
 api_ticket.go
 api_trusted_registries.go
 api_user_group.go
@@ -84,7 +83,6 @@ api_users.go
 api_virtual_cluster.go
 api_vsphere_cloud_credential.go
 api_zadara_cloud_credential.go
-api_zededa_cloud_credential.go
 client.go
 configuration.go
 docs/AWSCloudCredentialAPI.md
@@ -254,7 +252,6 @@ docs/CheckAzureCpuQuotaCommand.md
 docs/CheckOpenstackCommand.md
 docs/CheckPrometheusCommand.md
 docs/CheckS3Command.md
-docs/CheckTanzuCommand.md
 docs/CheckTrustedRegistryCommand.md
 docs/CheckZadaraCommand.md
 docs/CheckerAPI.md
@@ -326,7 +323,6 @@ docs/CreateStandAloneDiskCommand.md
 docs/CreateStandAloneVmCommand.md
 docs/CreateStripeCustomerCommand.md
 docs/CreateSubscriptionCommand.md
-docs/CreateTanzuCommand.md
 docs/CreateTicketCommand.md
 docs/CreateTrustedRegistriesCommand.md
 docs/CreateUserCommand.md
@@ -337,8 +333,6 @@ docs/CreateVirtualClusterWorkloadResources.md
 docs/CreateVsphereCommand.md
 docs/CreateVsphereNetworkDto.md
 docs/CreateZadaraCloudCommand.md
-docs/CreateZededaCommand.md
-docs/CreateZededaNetworkDto.md
 docs/CredentialChartDto.md
 docs/CredentialMakeDefaultCommand.md
 docs/CronJobCommand.md
@@ -897,12 +891,6 @@ docs/SyncProjectAppCommand.md
 docs/SyncProjectAppsCommand.md
 docs/TaikunLBAPI.md
 docs/TaikunLbResponseDto.md
-docs/TanzuAPI.md
-docs/TanzuCredentialsList.md
-docs/TanzuCredentialsListDto.md
-docs/TanzuFlavorList.md
-docs/TanzuFlavorsListDto.md
-docs/TanzuStorageListCommand.md
 docs/TicketAPI.md
 docs/TicketPriority.md
 docs/TofuMigrateCommand.md
@@ -934,7 +922,6 @@ docs/UpdateAccessProfileDto.md
 docs/UpdateAlertingProfileCommand.md
 docs/UpdateAwsCommand.md
 docs/UpdateAzureCommand.md
-docs/UpdateEdgeNodesCommand.md
 docs/UpdateExecutorHealthStatusCommand.md
 docs/UpdateGenericKubernetesCommand.md
 docs/UpdateHealthStatusCommand.md
@@ -955,7 +942,6 @@ docs/UpdateStageCommand.md
 docs/UpdateStandAloneVmFlavorCommand.md
 docs/UpdateStandaloneVmDiskSizeCommand.md
 docs/UpdateSubscriptionCommand.md
-docs/UpdateTanzuCommand.md
 docs/UpdateUsedIpAddressesCommand.md
 docs/UpdateUserCommand.md
 docs/UpdateUserGroupDto.md
@@ -1025,15 +1011,6 @@ docs/ZadaraCloudCredentialAPI.md
 docs/ZadaraCredentialList.md
 docs/ZadaraCredentialsListDto.md
 docs/ZadaraRegionListCommand.md
-docs/ZededaCheckerCommand.md
-docs/ZededaCloudCredentialAPI.md
-docs/ZededaEdgeNodesCommand.md
-docs/ZededaFlavorList.md
-docs/ZededaInterfaceCommand.md
-docs/ZededaList.md
-docs/ZededaListDto.md
-docs/ZededaNetworkListDto.md
-docs/ZededaProjectsCommand.md
 git_push.sh
 go.mod
 go.sum
@@ -1188,7 +1165,6 @@ model_check_azure_cpu_quota_command.go
 model_check_openstack_command.go
 model_check_prometheus_command.go
 model_check_s3_command.go
-model_check_tanzu_command.go
 model_check_trusted_registry_command.go
 model_check_zadara_command.go
 model_cidr_command.go
@@ -1258,7 +1234,6 @@ model_create_stand_alone_disk_command.go
 model_create_stand_alone_vm_command.go
 model_create_stripe_customer_command.go
 model_create_subscription_command.go
-model_create_tanzu_command.go
 model_create_ticket_command.go
 model_create_trusted_registries_command.go
 model_create_user_command.go
@@ -1269,8 +1244,6 @@ model_create_virtual_cluster_workload_resources.go
 model_create_vsphere_command.go
 model_create_vsphere_network_dto.go
 model_create_zadara_cloud_command.go
-model_create_zededa_command.go
-model_create_zededa_network_dto.go
 model_credential_chart_dto.go
 model_credential_make_default_command.go
 model_cron_job_command.go
@@ -1776,11 +1749,6 @@ model_summary.go
 model_sync_project_app_command.go
 model_sync_project_apps_command.go
 model_taikun_lb_response_dto.go
-model_tanzu_credentials_list.go
-model_tanzu_credentials_list_dto.go
-model_tanzu_flavor_list.go
-model_tanzu_flavors_list_dto.go
-model_tanzu_storage_list_command.go
 model_ticket_priority.go
 model_tofu_migrate_command.go
 model_toggle_executor_command.go
@@ -1810,7 +1778,6 @@ model_update_access_profile_dto.go
 model_update_alerting_profile_command.go
 model_update_aws_command.go
 model_update_azure_command.go
-model_update_edge_nodes_command.go
 model_update_executor_health_status_command.go
 model_update_generic_kubernetes_command.go
 model_update_health_status_command.go
@@ -1831,7 +1798,6 @@ model_update_stage_command.go
 model_update_stand_alone_vm_flavor_command.go
 model_update_standalone_vm_disk_size_command.go
 model_update_subscription_command.go
-model_update_tanzu_command.go
 model_update_used_ip_addresses_command.go
 model_update_user_command.go
 model_update_user_group_dto.go
@@ -1894,14 +1860,6 @@ model_zadara_availability_zones_command.go
 model_zadara_credential_list.go
 model_zadara_credentials_list_dto.go
 model_zadara_region_list_command.go
-model_zededa_checker_command.go
-model_zededa_edge_nodes_command.go
-model_zededa_flavor_list.go
-model_zededa_interface_command.go
-model_zededa_list.go
-model_zededa_list_dto.go
-model_zededa_network_list_dto.go
-model_zededa_projects_command.go
 response.go
 test/api_access_profiles_test.go
 test/api_admin_test.go
@@ -1974,7 +1932,6 @@ test/api_standalone_vm_disks_test.go
 test/api_stripe_test.go
 test/api_subscription_test.go
 test/api_taikun_lb_test.go
-test/api_tanzu_test.go
 test/api_ticket_test.go
 test/api_trusted_registries_test.go
 test/api_user_group_test.go
@@ -1984,5 +1941,4 @@ test/api_users_test.go
 test/api_virtual_cluster_test.go
 test/api_vsphere_cloud_credential_test.go
 test/api_zadara_cloud_credential_test.go
-test/api_zededa_cloud_credential_test.go
 utils.go

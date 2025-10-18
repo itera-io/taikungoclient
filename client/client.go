@@ -193,8 +193,6 @@ type APIClient struct {
 
 	TaikunLBAPI *TaikunLBAPIService
 
-	TanzuAPI *TanzuAPIService
-
 	TicketAPI *TicketAPIService
 
 	TrustedRegistriesAPI *TrustedRegistriesAPIService
@@ -212,8 +210,6 @@ type APIClient struct {
 	VsphereCloudCredentialAPI *VsphereCloudCredentialAPIService
 
 	ZadaraCloudCredentialAPI *ZadaraCloudCredentialAPIService
-
-	ZededaCloudCredentialAPI *ZededaCloudCredentialAPIService
 }
 
 type service struct {
@@ -303,7 +299,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.StripeAPI = (*StripeAPIService)(&c.common)
 	c.SubscriptionAPI = (*SubscriptionAPIService)(&c.common)
 	c.TaikunLBAPI = (*TaikunLBAPIService)(&c.common)
-	c.TanzuAPI = (*TanzuAPIService)(&c.common)
 	c.TicketAPI = (*TicketAPIService)(&c.common)
 	c.TrustedRegistriesAPI = (*TrustedRegistriesAPIService)(&c.common)
 	c.UserGroupAPI = (*UserGroupAPIService)(&c.common)
@@ -313,7 +308,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.VirtualClusterAPI = (*VirtualClusterAPIService)(&c.common)
 	c.VsphereCloudCredentialAPI = (*VsphereCloudCredentialAPIService)(&c.common)
 	c.ZadaraCloudCredentialAPI = (*ZadaraCloudCredentialAPIService)(&c.common)
-	c.ZededaCloudCredentialAPI = (*ZededaCloudCredentialAPIService)(&c.common)
 
 	return c
 }

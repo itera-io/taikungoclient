@@ -6667,8 +6667,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-10-17T00:03:47.91971Z
-                  createdAt: 2025-10-17T00:03:47.91971Z
+                  lastValidated: 2025-10-18T00:03:33.8792958Z
+                  createdAt: 2025-10-18T00:03:33.8792958Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6779,14 +6779,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-10-17T00:03:47.91971Z
+                    lastBackup: 2025-10-18T00:03:33.8792958Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-10-17T00:03:47.91971Z
+                  createdAt: 2025-10-18T00:03:33.8792958Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-10-17T00:03:47.91971Z
+                  lastBackup: 2025-10-18T00:03:33.8792958Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6897,8 +6897,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-10-17T00:03:47.91971Z
-                  expiration: 2025-10-17T00:03:47.91971Z
+                  createdAt: 2025-10-18T00:03:33.8792958Z
+                  expiration: 2025-10-18T00:03:33.8792958Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -7008,7 +7008,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-10-17T00:03:47.91971Z
+                  createdAt: 2025-10-18T00:03:33.8792958Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -7124,9 +7124,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-10-17T00:03:47.91971+00:00
-                  startTimeStamp: 2025-10-17T00:03:47.91971+00:00
-                  createdAt: 2025-10-17T00:03:47.91971Z
+                  completionDateTime: 2025-10-18T00:03:33.8792958+00:00
+                  startTimeStamp: 2025-10-18T00:03:33.8792958+00:00
+                  createdAt: 2025-10-18T00:03:33.8792958Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -9998,56 +9998,6 @@ paths:
       summary: Check proxmox credential
       tags:
       - Checker
-  /api/v1/checker/tanzu:
-    post:
-      operationId: checker-tanzu
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CheckTanzuCommand"
-      responses:
-        "200":
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Check tanzu credential
-      tags:
-      - Checker
   /api/v1/checker/zadara:
     post:
       operationId: checker-zadara
@@ -10096,56 +10046,6 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
       summary: Check zadara credential
-      tags:
-      - Checker
-  /api/v1/checker/zededa:
-    post:
-      operationId: checker-zededa
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/ZededaCheckerCommand"
-      responses:
-        "200":
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Check zededa credential
       tags:
       - Checker
   /api/v1/cloudcredentials/lockmanager:
@@ -13856,141 +13756,6 @@ paths:
       summary: Retrieve proxmox flavors
       tags:
       - Flavors
-  /api/v1/flavors/tanzu/{cloudId}:
-    get:
-      operationId: flavors-tanzu-flavors
-      parameters:
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: false
-        in: path
-        name: cloudId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: StartRam
-        required: false
-        schema:
-          format: double
-          type: number
-        style: form
-      - explode: true
-        in: query
-        name: EndRam
-        required: false
-        schema:
-          format: double
-          type: number
-        style: form
-      - explode: true
-        in: query
-        name: StartCpu
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: EndCpu
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: ProjectId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TanzuFlavorList"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve tanzu flavors
-      tags:
-      - Flavors
   /api/v1/flavors/vsphere/{cloudId}:
     get:
       operationId: flavors-vsphere-flavors
@@ -14259,141 +14024,6 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
       summary: Retrieve zadara instance types
-      tags:
-      - Flavors
-  /api/v1/flavors/zededa/{cloudId}:
-    get:
-      operationId: flavors-zededa-flavors
-      parameters:
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: false
-        in: path
-        name: cloudId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: StartRam
-        required: false
-        schema:
-          format: double
-          type: number
-        style: form
-      - explode: true
-        in: query
-        name: EndRam
-        required: false
-        schema:
-          format: double
-          type: number
-        style: form
-      - explode: true
-        in: query
-        name: StartCpu
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: EndCpu
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: ProjectId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ZededaFlavorList"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve zededa flavors
       tags:
       - Flavors
   /api/v1/generic-kubernetes/update:
@@ -16275,109 +15905,6 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
       summary: Retrieve proxmox images
-      tags:
-      - Images
-  /api/v1/images/tanzu/{cloudId}:
-    get:
-      operationId: images-tanzu-images
-      parameters:
-      - explode: false
-        in: path
-        name: cloudId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: ProjectId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PublicImageList"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve tanzu images
       tags:
       - Images
   /api/v1/images/vsphere/{cloudId}:
@@ -37380,336 +36907,6 @@ paths:
       summary: Retrieve taikun lbs for project
       tags:
       - Taikun LB
-  /api/v1/tanzu/create:
-    post:
-      operationId: tanzu-create
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CreateTanzuCommand"
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ApiResponse"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Create tanzu credentials
-      tags:
-      - Tanzu
-  /api/v1/tanzu/storage-list:
-    post:
-      operationId: tanzu-storage-list
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/TanzuStorageListCommand"
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  type: string
-                type: array
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Tanzu storage list
-      tags:
-      - Tanzu
-  /api/v1/tanzu/update:
-    post:
-      operationId: tanzu-update
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/UpdateTanzuCommand"
-      responses:
-        "200":
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Update tanzu credentials
-      tags:
-      - Tanzu
-  /api/v1/tanzu/kubernetes-versions/{cloudId}:
-    get:
-      operationId: tanzu-kubernetes-versions
-      parameters:
-      - explode: false
-        in: path
-        name: cloudId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  type: string
-                type: array
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Tanzu available k8s version list
-      tags:
-      - Tanzu
-  /api/v1/tanzu/list:
-    get:
-      operationId: tanzu-list
-      parameters:
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: OrganizationId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SearchId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Id
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TanzuCredentialsList"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve list of tanzu cloud credentials
-      tags:
-      - Tanzu
   /api/v1/ticket/archive:
     post:
       operationId: ticket-archive
@@ -42650,394 +41847,6 @@ paths:
       summary: Retrieve volume type list
       tags:
       - Zadara cloud credential
-  /api/v1/zededa/create:
-    post:
-      operationId: zededa-create
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CreateZededaCommand"
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ApiResponse"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Add Zededa credentials
-      tags:
-      - Zededa cloud credential
-  /api/v1/zededa/edge-nodes:
-    post:
-      operationId: zededa-edge-nodes
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/ZededaEdgeNodesCommand"
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-              - id: "1"
-                name: taikun
-              schema:
-                items:
-                  $ref: "#/components/schemas/CommonStringBasedDropdownDto"
-                type: array
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Fetch edge nodes for zededa cloud credential
-      tags:
-      - Zededa cloud credential
-  /api/v1/zededa/interfaces:
-    post:
-      operationId: zededa-interfaces
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/ZededaInterfaceCommand"
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  type: string
-                type: array
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Fetch interfaces for zededa cloud credential
-      tags:
-      - Zededa cloud credential
-  /api/v1/zededa/projects:
-    post:
-      operationId: zededa-projects
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/ZededaProjectsCommand"
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-              - id: "1"
-                name: taikun
-              schema:
-                items:
-                  $ref: "#/components/schemas/CommonStringBasedDropdownDto"
-                type: array
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Fetch projects for zededa cloud credential
-      tags:
-      - Zededa cloud credential
-  /api/v1/zededa/update/edge-nodes:
-    post:
-      operationId: zededa-update-edge-nodes
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/UpdateEdgeNodesCommand"
-      responses:
-        "200":
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Update zededa credentials
-      tags:
-      - Zededa cloud credential
-  /api/v1/zededa/list:
-    get:
-      operationId: zededa-list
-      parameters:
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: OrganizationId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SearchId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Id
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ZededaList"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve list of Zededa cloud credentials
-      tags:
-      - Zededa cloud credential
 components:
   schemas:
     AcceptOfferCommand:
@@ -48634,36 +47443,6 @@ components:
           nullable: true
           type: string
       type: object
-    CheckTanzuCommand:
-      additionalProperties: false
-      example:
-        volumeType: volumeType
-        password: password
-        port: 0
-        namespace: namespace
-        url: url
-        username: username
-      properties:
-        username:
-          nullable: true
-          type: string
-        url:
-          nullable: true
-          type: string
-        password:
-          nullable: true
-          type: string
-        namespace:
-          nullable: true
-          type: string
-        port:
-          format: int32
-          nullable: true
-          type: integer
-        volumeType:
-          nullable: true
-          type: string
-      type: object
     CheckTrustedRegistryCommand:
       additionalProperties: false
       example:
@@ -48910,7 +47689,6 @@ components:
       - GOOGLE
       - OPENSTACK
       - PROXMOX
-      - TANZU
       - OPENSHIFT
       - VSPHERE
       - ZADARA
@@ -50775,49 +49553,6 @@ components:
           nullable: true
           type: number
       type: object
-    CreateTanzuCommand:
-      additionalProperties: false
-      example:
-        organizationId: 0
-        volumeType: volumeType
-        password: password
-        port: 6
-        tanzuContinent: tanzuContinent
-        name: name
-        namespace: namespace
-        url: url
-        username: username
-      properties:
-        organizationId:
-          format: int32
-          nullable: true
-          type: integer
-        name:
-          nullable: true
-          type: string
-        username:
-          nullable: true
-          type: string
-        url:
-          nullable: true
-          type: string
-        password:
-          nullable: true
-          type: string
-        volumeType:
-          nullable: true
-          type: string
-        namespace:
-          nullable: true
-          type: string
-        tanzuContinent:
-          nullable: true
-          type: string
-        port:
-          format: int32
-          nullable: true
-          type: integer
-      type: object
     CreateTicketCommand:
       additionalProperties: false
       example:
@@ -51178,111 +49913,18 @@ components:
           nullable: true
           type: string
       type: object
-    CreateZededaCommand:
-      additionalProperties: false
-      example:
-        continent: continent
-        organizationId: 0
-        apiToken: apiToken
-        apiUrl: apiUrl
-        privateNetwork:
-          vlanId: 1
-          endAllocationRange: endAllocationRange
-          netMask: 6
-          ipAddress: ipAddress
-          interface: interface
-          beginAllocationRange: beginAllocationRange
-          gateway: gateway
-        name: name
-        project: project
-        edgeNodes:
-        - edgeNodes
-        - edgeNodes
-        publicNetwork:
-          vlanId: 1
-          endAllocationRange: endAllocationRange
-          netMask: 6
-          ipAddress: ipAddress
-          interface: interface
-          beginAllocationRange: beginAllocationRange
-          gateway: gateway
-      properties:
-        name:
-          nullable: true
-          type: string
-        apiToken:
-          nullable: true
-          type: string
-        apiUrl:
-          nullable: true
-          type: string
-        project:
-          nullable: true
-          type: string
-        continent:
-          nullable: true
-          type: string
-        organizationId:
-          format: int32
-          nullable: true
-          type: integer
-        edgeNodes:
-          items:
-            type: string
-          nullable: true
-          type: array
-        publicNetwork:
-          $ref: "#/components/schemas/CreateZededaNetworkDto"
-        privateNetwork:
-          $ref: "#/components/schemas/CreateZededaNetworkDto"
-      type: object
-    CreateZededaNetworkDto:
-      additionalProperties: false
-      example:
-        vlanId: 1
-        endAllocationRange: endAllocationRange
-        netMask: 6
-        ipAddress: ipAddress
-        interface: interface
-        beginAllocationRange: beginAllocationRange
-        gateway: gateway
-      properties:
-        interface:
-          nullable: true
-          type: string
-        gateway:
-          nullable: true
-          type: string
-        ipAddress:
-          nullable: true
-          type: string
-        netMask:
-          format: int32
-          type: integer
-        vlanId:
-          format: int32
-          nullable: true
-          type: integer
-        beginAllocationRange:
-          nullable: true
-          type: string
-        endAllocationRange:
-          nullable: true
-          type: string
-      type: object
     CredentialChartDto:
       additionalProperties: false
       example:
-        vsphere: 7
+        vsphere: 4
         zededa: 1
-        zadara: 1
-        openshift: 4
+        zadara: 7
+        openshift: 2
         openstack: 7
         google: 9
         aws: 5
-        tanzu: 3
-        totalCount: 6
-        proxmox: 2
+        totalCount: 1
+        proxmox: 3
         genericK8S: 1
         azure: 2
       properties:
@@ -51296,9 +49938,6 @@ components:
           format: int32
           type: integer
         google:
-          format: int32
-          type: integer
-        tanzu:
           format: int32
           type: integer
         proxmox:
@@ -51566,468 +50205,443 @@ components:
             name: name
             id: 1
         servers:
-          totalOpenshiftCount: 6
-          totalGenericK8SCount: 3
+          totalOpenshiftCount: 1
+          totalGenericK8SCount: 6
           zededa:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           waiting:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           openshift:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
-          totalGoogleCount: 1
-          tanzu:
-          - names:
-            - names
-            - names
-            projectName: projectName
-            projectId: 7
-          - names:
-            - names
-            - names
-            projectName: projectName
-            projectId: 7
-          totalCount: 1
+            projectId: 6
+          totalGoogleCount: 6
+          totalCount: 7
           genericK8S:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           updating:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
-          totalCpu: 4
+            projectId: 6
+          totalCpu: 1
           totalZadaraCount: 6
-          totalAzureCount: 3
-          totalVsphereCount: 5
-          totalZededaCount: 3
+          totalAzureCount: 6
+          totalVsphereCount: 6
+          totalZededaCount: 5
           proxmox:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           azure:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
-          totalUpdatingCount: 8
-          totalDiskSize: 9
+            projectId: 6
+          totalUpdatingCount: 6
+          totalDiskSize: 5
           zadara:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           google:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           failed:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
-          totalRam: 5
-          totalSucceededCount: 6
-          totalOpenstackCount: 6
-          totalPendingCount: 9
+            projectId: 6
+          totalRam: 4
+          totalSucceededCount: 9
+          totalOpenstackCount: 3
+          totalPendingCount: 8
           usedResources:
-          - diskSize: 0
-            maxRam: 0
-            cpu: 6
-            maxCpu: 4
+          - diskSize: 3
+            maxRam: 7
+            cpu: 0
+            maxCpu: 6
             projectName: projectName
-            maxDiskSize: 8
-            projectId: 7
+            maxDiskSize: 0
+            projectId: 3
             ram: 7
-          - diskSize: 0
-            maxRam: 0
-            cpu: 6
-            maxCpu: 4
+          - diskSize: 3
+            maxRam: 7
+            cpu: 0
+            maxCpu: 6
             projectName: projectName
-            maxDiskSize: 8
-            projectId: 7
+            maxDiskSize: 0
+            projectId: 3
             ram: 7
-          totalProxmoxCount: 6
+          totalProxmoxCount: 2
           deleting:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           totalFailedCount: 9
           vsphere:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           openstack:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
-          totalAwsCount: 6
-          totalTanzuCount: 2
+            projectId: 6
+          totalAwsCount: 9
           aws:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           succeeded:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           purging:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
         standAloneVms:
-          totalOpenshiftCount: 6
-          totalGenericK8SCount: 3
+          totalOpenshiftCount: 1
+          totalGenericK8SCount: 6
           zededa:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           waiting:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           openshift:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
-          totalGoogleCount: 1
-          tanzu:
-          - names:
-            - names
-            - names
-            projectName: projectName
-            projectId: 7
-          - names:
-            - names
-            - names
-            projectName: projectName
-            projectId: 7
-          totalCount: 1
+            projectId: 6
+          totalGoogleCount: 6
+          totalCount: 7
           genericK8S:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           updating:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
-          totalCpu: 4
+            projectId: 6
+          totalCpu: 1
           totalZadaraCount: 6
-          totalAzureCount: 3
-          totalVsphereCount: 5
-          totalZededaCount: 3
+          totalAzureCount: 6
+          totalVsphereCount: 6
+          totalZededaCount: 5
           proxmox:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           azure:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
-          totalUpdatingCount: 8
-          totalDiskSize: 9
+            projectId: 6
+          totalUpdatingCount: 6
+          totalDiskSize: 5
           zadara:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           google:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           failed:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
-          totalRam: 5
-          totalSucceededCount: 6
-          totalOpenstackCount: 6
-          totalPendingCount: 9
+            projectId: 6
+          totalRam: 4
+          totalSucceededCount: 9
+          totalOpenstackCount: 3
+          totalPendingCount: 8
           usedResources:
-          - diskSize: 0
-            maxRam: 0
-            cpu: 6
-            maxCpu: 4
+          - diskSize: 3
+            maxRam: 7
+            cpu: 0
+            maxCpu: 6
             projectName: projectName
-            maxDiskSize: 8
-            projectId: 7
+            maxDiskSize: 0
+            projectId: 3
             ram: 7
-          - diskSize: 0
-            maxRam: 0
-            cpu: 6
-            maxCpu: 4
+          - diskSize: 3
+            maxRam: 7
+            cpu: 0
+            maxCpu: 6
             projectName: projectName
-            maxDiskSize: 8
-            projectId: 7
+            maxDiskSize: 0
+            projectId: 3
             ram: 7
-          totalProxmoxCount: 6
+          totalProxmoxCount: 2
           deleting:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           totalFailedCount: 9
           vsphere:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           openstack:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
-          totalAwsCount: 6
-          totalTanzuCount: 2
+            projectId: 6
+          totalAwsCount: 9
           aws:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           succeeded:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           purging:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 7
+            projectId: 6
         organization:
           name: name
           id: 0
           users: 6
         cloudCredentials:
-          vsphere: 7
+          vsphere: 4
           zededa: 1
-          zadara: 1
-          openshift: 4
+          zadara: 7
+          openshift: 2
           openstack: 7
           google: 9
           aws: 5
-          tanzu: 3
-          totalCount: 6
-          proxmox: 2
+          totalCount: 1
+          proxmox: 3
           genericK8S: 1
           azure: 2
       properties:
@@ -53060,11 +51674,9 @@ components:
       - GOOGLE
       - OPENSTACK
       - PROXMOX
-      - TANZU
       - OPENSHIFT
       - VSPHERE
       - ZADARA
-      - ZEDEDA
       - EKS
       - AKS
       - GKE
@@ -67807,229 +66419,217 @@ components:
     ServerChartDto:
       additionalProperties: false
       example:
-        totalOpenshiftCount: 6
-        totalGenericK8SCount: 3
+        totalOpenshiftCount: 1
+        totalGenericK8SCount: 6
         zededa:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         waiting:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         openshift:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
-        totalGoogleCount: 1
-        tanzu:
-        - names:
-          - names
-          - names
-          projectName: projectName
-          projectId: 7
-        - names:
-          - names
-          - names
-          projectName: projectName
-          projectId: 7
-        totalCount: 1
+          projectId: 6
+        totalGoogleCount: 6
+        totalCount: 7
         genericK8S:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         updating:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
-        totalCpu: 4
+          projectId: 6
+        totalCpu: 1
         totalZadaraCount: 6
-        totalAzureCount: 3
-        totalVsphereCount: 5
-        totalZededaCount: 3
+        totalAzureCount: 6
+        totalVsphereCount: 6
+        totalZededaCount: 5
         proxmox:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         azure:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
-        totalUpdatingCount: 8
-        totalDiskSize: 9
+          projectId: 6
+        totalUpdatingCount: 6
+        totalDiskSize: 5
         zadara:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         google:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         failed:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
-        totalRam: 5
-        totalSucceededCount: 6
-        totalOpenstackCount: 6
-        totalPendingCount: 9
+          projectId: 6
+        totalRam: 4
+        totalSucceededCount: 9
+        totalOpenstackCount: 3
+        totalPendingCount: 8
         usedResources:
-        - diskSize: 0
-          maxRam: 0
-          cpu: 6
-          maxCpu: 4
+        - diskSize: 3
+          maxRam: 7
+          cpu: 0
+          maxCpu: 6
           projectName: projectName
-          maxDiskSize: 8
-          projectId: 7
+          maxDiskSize: 0
+          projectId: 3
           ram: 7
-        - diskSize: 0
-          maxRam: 0
-          cpu: 6
-          maxCpu: 4
+        - diskSize: 3
+          maxRam: 7
+          cpu: 0
+          maxCpu: 6
           projectName: projectName
-          maxDiskSize: 8
-          projectId: 7
+          maxDiskSize: 0
+          projectId: 3
           ram: 7
-        totalProxmoxCount: 6
+        totalProxmoxCount: 2
         deleting:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         totalFailedCount: 9
         vsphere:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         openstack:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
-        totalAwsCount: 6
-        totalTanzuCount: 2
+          projectId: 6
+        totalAwsCount: 9
         aws:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         succeeded:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         purging:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 7
+          projectId: 6
       properties:
         aws:
           items:
@@ -68047,11 +66647,6 @@ components:
           nullable: true
           type: array
         google:
-          items:
-            $ref: "#/components/schemas/ServerCommonRecordDto"
-          nullable: true
-          type: array
-        tanzu:
           items:
             $ref: "#/components/schemas/ServerCommonRecordDto"
           nullable: true
@@ -68152,9 +66747,6 @@ components:
         totalGoogleCount:
           format: int32
           type: integer
-        totalTanzuCount:
-          format: int32
-          type: integer
         totalOpenshiftCount:
           format: int32
           type: integer
@@ -68186,7 +66778,7 @@ components:
         - names
         - names
         projectName: projectName
-        projectId: 7
+        projectId: 6
       properties:
         projectId:
           format: int32
@@ -70827,231 +69419,6 @@ components:
       - virtualLbIpSecond
       - virtualRouterId
       type: object
-    TanzuCredentialsList:
-      additionalProperties: false
-      example:
-        data:
-        - volumeType: volumeType
-          projectCount: 6
-          projects:
-          - name: name
-            id: 5
-          - name: name
-            id: 5
-          organizationName: organizationName
-          lastModifiedBy: lastModifiedBy
-          url: url
-          organizationId: 5
-          createdAt: createdAt
-          isDefault: true
-          port: 1
-          createdBy: createdBy
-          isLocked: true
-          name: name
-          namespace: namespace
-          id: 0
-          lastModified: lastModified
-          continentName: continentName
-          username: username
-        - volumeType: volumeType
-          projectCount: 6
-          projects:
-          - name: name
-            id: 5
-          - name: name
-            id: 5
-          organizationName: organizationName
-          lastModifiedBy: lastModifiedBy
-          url: url
-          organizationId: 5
-          createdAt: createdAt
-          isDefault: true
-          port: 1
-          createdBy: createdBy
-          isLocked: true
-          name: name
-          namespace: namespace
-          id: 0
-          lastModified: lastModified
-          continentName: continentName
-          username: username
-        totalCount: 5
-      properties:
-        data:
-          items:
-            $ref: "#/components/schemas/TanzuCredentialsListDto"
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      required:
-      - data
-      - totalCount
-      type: object
-    TanzuCredentialsListDto:
-      additionalProperties: false
-      example:
-        volumeType: volumeType
-        projectCount: 6
-        projects:
-        - name: name
-          id: 5
-        - name: name
-          id: 5
-        organizationName: organizationName
-        lastModifiedBy: lastModifiedBy
-        url: url
-        organizationId: 5
-        createdAt: createdAt
-        isDefault: true
-        port: 1
-        createdBy: createdBy
-        isLocked: true
-        name: name
-        namespace: namespace
-        id: 0
-        lastModified: lastModified
-        continentName: continentName
-        username: username
-      properties:
-        id:
-          format: int32
-          type: integer
-        projectCount:
-          format: int32
-          type: integer
-        isLocked:
-          type: boolean
-        name:
-          type: string
-        username:
-          type: string
-        url:
-          type: string
-        volumeType:
-          type: string
-        namespace:
-          type: string
-        port:
-          format: int32
-          nullable: true
-          type: integer
-        projects:
-          items:
-            $ref: "#/components/schemas/CommonDropdownDto"
-          type: array
-        createdBy:
-          type: string
-        createdAt:
-          type: string
-        lastModified:
-          nullable: true
-          type: string
-        lastModifiedBy:
-          nullable: true
-          type: string
-        isDefault:
-          type: boolean
-        organizationId:
-          format: int32
-          type: integer
-        organizationName:
-          type: string
-        continentName:
-          nullable: true
-          type: string
-      required:
-      - continentName
-      - createdAt
-      - createdBy
-      - id
-      - isDefault
-      - isLocked
-      - lastModified
-      - lastModifiedBy
-      - name
-      - namespace
-      - organizationId
-      - organizationName
-      - port
-      - projectCount
-      - projects
-      - url
-      - username
-      - volumeType
-      type: object
-    TanzuFlavorList:
-      additionalProperties: false
-      example:
-        data:
-        - name: name
-          cpu: 0
-          ram: 6.027456183070403
-        - name: name
-          cpu: 0
-          ram: 6.027456183070403
-        totalCount: 1
-      properties:
-        data:
-          items:
-            $ref: "#/components/schemas/TanzuFlavorsListDto"
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      required:
-      - data
-      - totalCount
-      type: object
-    TanzuFlavorsListDto:
-      additionalProperties: false
-      example:
-        name: name
-        cpu: 0
-        ram: 6.027456183070403
-      properties:
-        name:
-          nullable: true
-          type: string
-        cpu:
-          format: int32
-          type: integer
-        ram:
-          format: double
-          type: number
-      required:
-      - cpu
-      - name
-      - ram
-      type: object
-    TanzuStorageListCommand:
-      additionalProperties: false
-      example:
-        password: password
-        port: 0
-        namespace: namespace
-        url: url
-        username: username
-      properties:
-        username:
-          nullable: true
-          type: string
-        url:
-          nullable: true
-          type: string
-        password:
-          nullable: true
-          type: string
-        namespace:
-          nullable: true
-          type: string
-        port:
-          format: int32
-          nullable: true
-          type: integer
-      type: object
     TektonPipelinesCommand:
       additionalProperties: false
       type: object
@@ -71460,23 +69827,6 @@ components:
         azureClientId:
           nullable: true
           type: string
-      type: object
-    UpdateEdgeNodesCommand:
-      additionalProperties: false
-      example:
-        id: 0
-        edgeNodes:
-        - edgeNodes
-        - edgeNodes
-      properties:
-        id:
-          format: int32
-          type: integer
-        edgeNodes:
-          items:
-            type: string
-          nullable: true
-          type: array
       type: object
     UpdateExecutorHealthStatusCommand:
       additionalProperties: false
@@ -72015,23 +70365,6 @@ components:
           format: int32
           type: integer
       type: object
-    UpdateTanzuCommand:
-      additionalProperties: false
-      example:
-        password: password
-        name: name
-        id: 0
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          nullable: true
-          type: string
-        password:
-          nullable: true
-          type: string
-      type: object
     UpdateUsedIpAddressesCommand:
       additionalProperties: false
       example:
@@ -72482,13 +70815,13 @@ components:
     UserResourceChartDto:
       additionalProperties: false
       example:
-        diskSize: 0
-        maxRam: 0
-        cpu: 6
-        maxCpu: 4
+        diskSize: 3
+        maxRam: 7
+        cpu: 0
+        maxCpu: 6
         projectName: projectName
-        maxDiskSize: 8
-        projectId: 7
+        maxDiskSize: 0
+        projectId: 3
         ram: 7
       properties:
         projectName:
@@ -74246,370 +72579,6 @@ components:
           nullable: true
           type: string
         zadaraSecretAccessKey:
-          nullable: true
-          type: string
-      type: object
-    ZededaCheckerCommand:
-      additionalProperties: false
-      example:
-        url: url
-        token: token
-      properties:
-        url:
-          nullable: true
-          type: string
-        token:
-          nullable: true
-          type: string
-      type: object
-    ZededaEdgeNodesCommand:
-      additionalProperties: false
-      example:
-        apiToken: apiToken
-        apiUrl: apiUrl
-        project: project
-      properties:
-        apiUrl:
-          nullable: true
-          type: string
-        apiToken:
-          nullable: true
-          type: string
-        project:
-          nullable: true
-          type: string
-      type: object
-    ZededaFlavorList:
-      additionalProperties: false
-      example:
-        data:
-        - name: name
-          cpu: 0
-          ram: 6.027456183070403
-        - name: name
-          cpu: 0
-          ram: 6.027456183070403
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: "#/components/schemas/ProxmoxFlavorData"
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      required:
-      - data
-      - totalCount
-      type: object
-    ZededaInterfaceCommand:
-      additionalProperties: false
-      example:
-        edgeNode: edgeNode
-        apiToken: apiToken
-        apiUrl: apiUrl
-        project: project
-      properties:
-        apiUrl:
-          nullable: true
-          type: string
-        apiToken:
-          nullable: true
-          type: string
-        project:
-          nullable: true
-          type: string
-        edgeNode:
-          nullable: true
-          type: string
-      type: object
-    ZededaList:
-      additionalProperties: false
-      example:
-        data:
-        - projectCount: 6
-          projects:
-          - name: name
-            id: 5
-          - name: name
-            id: 5
-          organizationName: organizationName
-          lastModifiedBy: lastModifiedBy
-          project: project
-          zededaNetworks:
-          - endAllocationRange: endAllocationRange
-            vlanId: 5
-            netMask: 5
-            ipAddress: ipAddress
-            bridge: bridge
-            isPrivate: true
-            beginAllocationRange: beginAllocationRange
-            gateway: gateway
-            isVirtualLbNetwork: true
-          - endAllocationRange: endAllocationRange
-            vlanId: 5
-            netMask: 5
-            ipAddress: ipAddress
-            bridge: bridge
-            isPrivate: true
-            beginAllocationRange: beginAllocationRange
-            gateway: gateway
-            isVirtualLbNetwork: true
-          organizationId: 1
-          createdAt: createdAt
-          isDefault: true
-          apiToken: apiToken
-          apiUrl: apiUrl
-          createdBy: createdBy
-          isLocked: true
-          name: name
-          id: 0
-          lastModified: lastModified
-          edgeNodes:
-          - name: name
-            id: 5
-          - name: name
-            id: 5
-          continentName: continentName
-          projectId: projectId
-        - projectCount: 6
-          projects:
-          - name: name
-            id: 5
-          - name: name
-            id: 5
-          organizationName: organizationName
-          lastModifiedBy: lastModifiedBy
-          project: project
-          zededaNetworks:
-          - endAllocationRange: endAllocationRange
-            vlanId: 5
-            netMask: 5
-            ipAddress: ipAddress
-            bridge: bridge
-            isPrivate: true
-            beginAllocationRange: beginAllocationRange
-            gateway: gateway
-            isVirtualLbNetwork: true
-          - endAllocationRange: endAllocationRange
-            vlanId: 5
-            netMask: 5
-            ipAddress: ipAddress
-            bridge: bridge
-            isPrivate: true
-            beginAllocationRange: beginAllocationRange
-            gateway: gateway
-            isVirtualLbNetwork: true
-          organizationId: 1
-          createdAt: createdAt
-          isDefault: true
-          apiToken: apiToken
-          apiUrl: apiUrl
-          createdBy: createdBy
-          isLocked: true
-          name: name
-          id: 0
-          lastModified: lastModified
-          edgeNodes:
-          - name: name
-            id: 5
-          - name: name
-            id: 5
-          continentName: continentName
-          projectId: projectId
-        totalCount: 2
-      properties:
-        data:
-          items:
-            $ref: "#/components/schemas/ZededaListDto"
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      required:
-      - data
-      - totalCount
-      type: object
-    ZededaListDto:
-      additionalProperties: false
-      example:
-        projectCount: 6
-        projects:
-        - name: name
-          id: 5
-        - name: name
-          id: 5
-        organizationName: organizationName
-        lastModifiedBy: lastModifiedBy
-        project: project
-        zededaNetworks:
-        - endAllocationRange: endAllocationRange
-          vlanId: 5
-          netMask: 5
-          ipAddress: ipAddress
-          bridge: bridge
-          isPrivate: true
-          beginAllocationRange: beginAllocationRange
-          gateway: gateway
-          isVirtualLbNetwork: true
-        - endAllocationRange: endAllocationRange
-          vlanId: 5
-          netMask: 5
-          ipAddress: ipAddress
-          bridge: bridge
-          isPrivate: true
-          beginAllocationRange: beginAllocationRange
-          gateway: gateway
-          isVirtualLbNetwork: true
-        organizationId: 1
-        createdAt: createdAt
-        isDefault: true
-        apiToken: apiToken
-        apiUrl: apiUrl
-        createdBy: createdBy
-        isLocked: true
-        name: name
-        id: 0
-        lastModified: lastModified
-        edgeNodes:
-        - name: name
-          id: 5
-        - name: name
-          id: 5
-        continentName: continentName
-        projectId: projectId
-      properties:
-        id:
-          format: int32
-          type: integer
-        projectCount:
-          format: int32
-          type: integer
-        isLocked:
-          type: boolean
-        name:
-          type: string
-        projects:
-          items:
-            $ref: "#/components/schemas/CommonDropdownDto"
-          type: array
-        createdBy:
-          nullable: true
-          type: string
-        createdAt:
-          nullable: true
-          type: string
-        lastModified:
-          nullable: true
-          type: string
-        lastModifiedBy:
-          nullable: true
-          type: string
-        isDefault:
-          type: boolean
-        organizationId:
-          format: int32
-          type: integer
-        organizationName:
-          type: string
-        continentName:
-          nullable: true
-          type: string
-        edgeNodes:
-          items:
-            $ref: "#/components/schemas/CommonDropdownDto"
-          type: array
-        apiToken:
-          type: string
-        apiUrl:
-          type: string
-        project:
-          type: string
-        projectId:
-          type: string
-        zededaNetworks:
-          items:
-            $ref: "#/components/schemas/ZededaNetworkListDto"
-          type: array
-      required:
-      - apiToken
-      - apiUrl
-      - continentName
-      - createdAt
-      - createdBy
-      - edgeNodes
-      - id
-      - isDefault
-      - isLocked
-      - lastModified
-      - lastModifiedBy
-      - name
-      - organizationId
-      - organizationName
-      - project
-      - projectCount
-      - projectId
-      - projects
-      - zededaNetworks
-      type: object
-    ZededaNetworkListDto:
-      additionalProperties: false
-      example:
-        endAllocationRange: endAllocationRange
-        vlanId: 5
-        netMask: 5
-        ipAddress: ipAddress
-        bridge: bridge
-        isPrivate: true
-        beginAllocationRange: beginAllocationRange
-        gateway: gateway
-        isVirtualLbNetwork: true
-      properties:
-        bridge:
-          nullable: true
-          type: string
-        gateway:
-          type: string
-        ipAddress:
-          type: string
-        netMask:
-          format: int32
-          type: integer
-        beginAllocationRange:
-          type: string
-        endAllocationRange:
-          type: string
-        isPrivate:
-          type: boolean
-        isVirtualLbNetwork:
-          type: boolean
-        vlanId:
-          format: int32
-          nullable: true
-          type: integer
-      required:
-      - beginAllocationRange
-      - bridge
-      - endAllocationRange
-      - gateway
-      - ipAddress
-      - isPrivate
-      - isVirtualLbNetwork
-      - netMask
-      - vlanId
-      type: object
-    ZededaProjectsCommand:
-      additionalProperties: false
-      example:
-        apiToken: apiToken
-        apiUrl: apiUrl
-      properties:
-        apiUrl:
-          nullable: true
-          type: string
-        apiToken:
           nullable: true
           type: string
       type: object
