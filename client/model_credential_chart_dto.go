@@ -28,7 +28,6 @@ type CredentialChartDto struct {
 	Openshift *int32 `json:"openshift,omitempty"`
 	Vsphere *int32 `json:"vsphere,omitempty"`
 	Zadara *int32 `json:"zadara,omitempty"`
-	Zededa *int32 `json:"zededa,omitempty"`
 	GenericK8S *int32 `json:"genericK8S,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
 }
@@ -306,38 +305,6 @@ func (o *CredentialChartDto) SetZadara(v int32) {
 	o.Zadara = &v
 }
 
-// GetZededa returns the Zededa field value if set, zero value otherwise.
-func (o *CredentialChartDto) GetZededa() int32 {
-	if o == nil || IsNil(o.Zededa) {
-		var ret int32
-		return ret
-	}
-	return *o.Zededa
-}
-
-// GetZededaOk returns a tuple with the Zededa field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CredentialChartDto) GetZededaOk() (*int32, bool) {
-	if o == nil || IsNil(o.Zededa) {
-		return nil, false
-	}
-	return o.Zededa, true
-}
-
-// HasZededa returns a boolean if a field has been set.
-func (o *CredentialChartDto) HasZededa() bool {
-	if o != nil && !IsNil(o.Zededa) {
-		return true
-	}
-
-	return false
-}
-
-// SetZededa gets a reference to the given int32 and assigns it to the Zededa field.
-func (o *CredentialChartDto) SetZededa(v int32) {
-	o.Zededa = &v
-}
-
 // GetGenericK8S returns the GenericK8S field value if set, zero value otherwise.
 func (o *CredentialChartDto) GetGenericK8S() int32 {
 	if o == nil || IsNil(o.GenericK8S) {
@@ -435,9 +402,6 @@ func (o CredentialChartDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Zadara) {
 		toSerialize["zadara"] = o.Zadara
-	}
-	if !IsNil(o.Zededa) {
-		toSerialize["zededa"] = o.Zededa
 	}
 	if !IsNil(o.GenericK8S) {
 		toSerialize["genericK8S"] = o.GenericK8S
