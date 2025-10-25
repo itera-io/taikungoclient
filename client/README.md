@@ -146,7 +146,6 @@ Class | Method | HTTP request | Description
 *AppRepositoriesAPI* | [**RepositoryUnbind**](docs/AppRepositoriesAPI.md#repositoryunbind) | **Post** /api/v1/repository/unbind | Unbind repo from organization
 *AppRepositoriesAPI* | [**RepositoryUpdatePassword**](docs/AppRepositoriesAPI.md#repositoryupdatepassword) | **Post** /api/v1/repository/update-password | Update repo password
 *AuthManagementAPI* | [**AuthForgotPassword**](docs/AuthManagementAPI.md#authforgotpassword) | **Post** /api/v1/auth/forgotpassword | Generate reset password token if you forgot password
-*AuthManagementAPI* | [**AuthGoogle**](docs/AuthManagementAPI.md#authgoogle) | **Get** /api/v1/auth/google | Consent to Google
 *AuthManagementAPI* | [**AuthLogin**](docs/AuthManagementAPI.md#authlogin) | **Post** /api/v1/auth/login | Login to API
 *AuthManagementAPI* | [**AuthRefresh**](docs/AuthManagementAPI.md#authrefresh) | **Post** /api/v1/auth/refresh | Refresh bearer token that generated automatically by API
 *AuthManagementAPI* | [**AuthResetPassword**](docs/AuthManagementAPI.md#authresetpassword) | **Post** /api/v1/auth/resetpassword | Reset password
