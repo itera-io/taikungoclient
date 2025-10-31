@@ -53,7 +53,6 @@ api_pre_defined_queries.go
 api_project_app_params.go
 api_project_apps.go
 api_project_deployment.go
-api_project_groups.go
 api_project_infracosts.go
 api_project_quotas.go
 api_project_templates.go
@@ -76,7 +75,6 @@ api_subscription.go
 api_taikun_lb.go
 api_ticket.go
 api_trusted_registries.go
-api_user_group.go
 api_user_projects.go
 api_user_token.go
 api_users.go
@@ -207,13 +205,9 @@ docs/BillingSummaryDto.md
 docs/BindAppRepositoryCommand.md
 docs/BindFlavorToProjectCommand.md
 docs/BindImageToProjectCommand.md
-docs/BindProjectGroupsToUserGroupCommand.md
-docs/BindProjectsToProjectGroupCommand.md
 docs/BindSubscriptionCommand.md
 docs/BindSubscriptionResponseDto.md
 docs/BindUnbindEndpointToTokenCommand.md
-docs/BindUserGroupsToProjectGroupCommand.md
-docs/BindUsersToUserGroupCommand.md
 docs/BoundFlavorsForProjectsList.md
 docs/BoundFlavorsForProjectsListDto.md
 docs/BoundImagesForProjectsList.md
@@ -313,7 +307,6 @@ docs/CreateOpenstackCloudCommand.md
 docs/CreateProjectAppCommand.md
 docs/CreateProjectCommand.md
 docs/CreateProjectFromTemplateCommand.md
-docs/CreateProjectGroupCommand.md
 docs/CreateProxmoxCommand.md
 docs/CreateProxmoxNetworkDto.md
 docs/CreateSecurityGroupCommand.md
@@ -326,7 +319,6 @@ docs/CreateSubscriptionCommand.md
 docs/CreateTicketCommand.md
 docs/CreateTrustedRegistriesCommand.md
 docs/CreateUserCommand.md
-docs/CreateUserGroupCommand.md
 docs/CreateVirtualClusterCommand.md
 docs/CreateVirtualClusterResourceLimits.md
 docs/CreateVirtualClusterWorkloadResources.md
@@ -369,7 +361,6 @@ docs/DeleteSlackConfigCommand.md
 docs/DeleteSshUserCommand.md
 docs/DeleteStandAloneProfileCommand.md
 docs/DeleteSubscriptionCommand.md
-docs/DeleteUserGroupCommand.md
 docs/DeleteVirtualClusterCommand.md
 docs/DeleteVmDiskCommand.md
 docs/DeploymentActionCommand.md
@@ -712,15 +703,10 @@ docs/ProjectDetailsForServersDto.md
 docs/ProjectDetailsForVmsDto.md
 docs/ProjectDto.md
 docs/ProjectExtendLifeTimeCommand.md
-docs/ProjectGroupDetailsListDto.md
-docs/ProjectGroupEntityListDto.md
-docs/ProjectGroupList.md
-docs/ProjectGroupsAPI.md
 docs/ProjectHealth.md
 docs/ProjectInfracost.md
 docs/ProjectInfracostsAPI.md
 docs/ProjectListDetailDto.md
-docs/ProjectListDto.md
 docs/ProjectListForAlert.md
 docs/ProjectLockManagerCommand.md
 docs/ProjectMaintenanceModeCommand.md
@@ -912,10 +898,6 @@ docs/TwoFactorAuthVerifyCommand.md
 docs/TwoFactorAuthVerifyResult.md
 docs/UnbindAppRepositoryCommand.md
 docs/UnbindFlavorFromProjectCommand.md
-docs/UnbindProjectFromProjectGroupCommand.md
-docs/UnbindProjectGroupFromUserGroupCommand.md
-docs/UnbindUserFromUserGroupCommand.md
-docs/UnbindUserGroupFromProjectGroupCommand.md
 docs/UninstallProjectAppResult.md
 docs/UnshelveStandaloneVmCommand.md
 docs/UpdateAccessProfileDto.md
@@ -944,7 +926,6 @@ docs/UpdateStandaloneVmDiskSizeCommand.md
 docs/UpdateSubscriptionCommand.md
 docs/UpdateUsedIpAddressesCommand.md
 docs/UpdateUserCommand.md
-docs/UpdateUserGroupDto.md
 docs/UpdateVsphereCommand.md
 docs/UpdateVsphereHypervisorsCommand.md
 docs/UpdateZadaraCommand.md
@@ -952,11 +933,6 @@ docs/UserDetails.md
 docs/UserDto.md
 docs/UserExistCommand.md
 docs/UserForListDto.md
-docs/UserGroupAPI.md
-docs/UserGroupDetailsListDto.md
-docs/UserGroupEntityListDto.md
-docs/UserGroupList.md
-docs/UserListDto.md
 docs/UserProjectsAPI.md
 docs/UserResourceChartDto.md
 docs/UserRole.md
@@ -1123,13 +1099,9 @@ model_billing_summary_dto.go
 model_bind_app_repository_command.go
 model_bind_flavor_to_project_command.go
 model_bind_image_to_project_command.go
-model_bind_project_groups_to_user_group_command.go
-model_bind_projects_to_project_group_command.go
 model_bind_subscription_command.go
 model_bind_subscription_response_dto.go
 model_bind_unbind_endpoint_to_token_command.go
-model_bind_user_groups_to_project_group_command.go
-model_bind_users_to_user_group_command.go
 model_bound_flavors_for_projects_list.go
 model_bound_flavors_for_projects_list_dto.go
 model_bound_images_for_projects_list.go
@@ -1224,7 +1196,6 @@ model_create_openstack_cloud_command.go
 model_create_project_app_command.go
 model_create_project_command.go
 model_create_project_from_template_command.go
-model_create_project_group_command.go
 model_create_proxmox_command.go
 model_create_proxmox_network_dto.go
 model_create_security_group_command.go
@@ -1237,7 +1208,6 @@ model_create_subscription_command.go
 model_create_ticket_command.go
 model_create_trusted_registries_command.go
 model_create_user_command.go
-model_create_user_group_command.go
 model_create_virtual_cluster_command.go
 model_create_virtual_cluster_resource_limits.go
 model_create_virtual_cluster_workload_resources.go
@@ -1279,7 +1249,6 @@ model_delete_slack_config_command.go
 model_delete_ssh_user_command.go
 model_delete_stand_alone_profile_command.go
 model_delete_subscription_command.go
-model_delete_user_group_command.go
 model_delete_virtual_cluster_command.go
 model_delete_vm_disk_command.go
 model_deployment_action_command.go
@@ -1591,13 +1560,9 @@ model_project_details_for_servers_dto.go
 model_project_details_for_vms_dto.go
 model_project_dto.go
 model_project_extend_life_time_command.go
-model_project_group_details_list_dto.go
-model_project_group_entity_list_dto.go
-model_project_group_list.go
 model_project_health.go
 model_project_infracost.go
 model_project_list_detail_dto.go
-model_project_list_dto.go
 model_project_list_for_alert.go
 model_project_lock_manager_command.go
 model_project_maintenance_mode_command.go
@@ -1768,10 +1733,6 @@ model_two_factor_auth_verify_command.go
 model_two_factor_auth_verify_result.go
 model_unbind_app_repository_command.go
 model_unbind_flavor_from_project_command.go
-model_unbind_project_from_project_group_command.go
-model_unbind_project_group_from_user_group_command.go
-model_unbind_user_from_user_group_command.go
-model_unbind_user_group_from_project_group_command.go
 model_uninstall_project_app_result.go
 model_unshelve_standalone_vm_command.go
 model_update_access_profile_dto.go
@@ -1800,7 +1761,6 @@ model_update_standalone_vm_disk_size_command.go
 model_update_subscription_command.go
 model_update_used_ip_addresses_command.go
 model_update_user_command.go
-model_update_user_group_dto.go
 model_update_vsphere_command.go
 model_update_vsphere_hypervisors_command.go
 model_update_zadara_command.go
@@ -1808,10 +1768,6 @@ model_user_details.go
 model_user_dto.go
 model_user_exist_command.go
 model_user_for_list_dto.go
-model_user_group_details_list_dto.go
-model_user_group_entity_list_dto.go
-model_user_group_list.go
-model_user_list_dto.go
 model_user_resource_chart_dto.go
 model_user_role.go
 model_user_token_create_command.go
@@ -1911,7 +1867,6 @@ test/api_pre_defined_queries_test.go
 test/api_project_app_params_test.go
 test/api_project_apps_test.go
 test/api_project_deployment_test.go
-test/api_project_groups_test.go
 test/api_project_infracosts_test.go
 test/api_project_quotas_test.go
 test/api_project_templates_test.go
@@ -1934,7 +1889,6 @@ test/api_subscription_test.go
 test/api_taikun_lb_test.go
 test/api_ticket_test.go
 test/api_trusted_registries_test.go
-test/api_user_group_test.go
 test/api_user_projects_test.go
 test/api_user_token_test.go
 test/api_users_test.go

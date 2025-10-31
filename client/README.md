@@ -516,15 +516,6 @@ Class | Method | HTTP request | Description
 *ProjectDeploymentAPI* | [**ProjectDeploymentTofuMigrate**](docs/ProjectDeploymentAPI.md#projectdeploymenttofumigrate) | **Post** /api/v1/project-deployment/tofu-migrate | Tofu migrate
 *ProjectDeploymentAPI* | [**ProjectDeploymentUpdate**](docs/ProjectDeploymentAPI.md#projectdeploymentupdate) | **Post** /api/v1/project-deployment/update | Update stage of project
 *ProjectDeploymentAPI* | [**ProjectDeploymentUpgrade**](docs/ProjectDeploymentAPI.md#projectdeploymentupgrade) | **Post** /api/v1/project-deployment/upgrade/{projectId} | Upgrade the project&#39;s Kubernetes to the next available version. Project must be READY.
-*ProjectGroupsAPI* | [**ProjectgroupsBindProject**](docs/ProjectGroupsAPI.md#projectgroupsbindproject) | **Post** /api/v1/projectgroups/bind-project | Bind Projects to group
-*ProjectGroupsAPI* | [**ProjectgroupsBindUserGroup**](docs/ProjectGroupsAPI.md#projectgroupsbindusergroup) | **Post** /api/v1/projectgroups/bind-user-group | Bind User groups
-*ProjectGroupsAPI* | [**ProjectgroupsCreate**](docs/ProjectGroupsAPI.md#projectgroupscreate) | **Post** /api/v1/projectgroups/create | Add Project groups
-*ProjectGroupsAPI* | [**ProjectgroupsDelete**](docs/ProjectGroupsAPI.md#projectgroupsdelete) | **Post** /api/v1/projectgroups | Remove Project group(s)
-*ProjectGroupsAPI* | [**ProjectgroupsList**](docs/ProjectGroupsAPI.md#projectgroupslist) | **Get** /api/v1/projectgroups/list | Retrieve list of Project groups
-*ProjectGroupsAPI* | [**ProjectgroupsListByUserId**](docs/ProjectGroupsAPI.md#projectgroupslistbyuserid) | **Get** /api/v1/projectgroups/list/{userGroupId} | Retrieve list of Project groups by user group id for dropdown
-*ProjectGroupsAPI* | [**ProjectgroupsProjectList**](docs/ProjectGroupsAPI.md#projectgroupsprojectlist) | **Get** /api/v1/projectgroups/{projectGroupId}/projects | Retrieve list of projects by project group id
-*ProjectGroupsAPI* | [**ProjectgroupsUnbindProject**](docs/ProjectGroupsAPI.md#projectgroupsunbindproject) | **Post** /api/v1/projectgroups/unbind-project | Unbind Projects from group
-*ProjectGroupsAPI* | [**ProjectgroupsUnbindUserGroup**](docs/ProjectGroupsAPI.md#projectgroupsunbindusergroup) | **Post** /api/v1/projectgroups/unbind-user-group | Unbind user group from project group
 *ProjectInfracostsAPI* | [**ProjectinfracostsDetails**](docs/ProjectInfracostsAPI.md#projectinfracostsdetails) | **Get** /api/v1/projectinfracosts/{projectId} | Project Infracost details
 *ProjectQuotasAPI* | [**ProjectquotasList**](docs/ProjectQuotasAPI.md#projectquotaslist) | **Get** /api/v1/projectquotas | Retrieve all project quotas
 *ProjectQuotasAPI* | [**ProjectquotasUpdate**](docs/ProjectQuotasAPI.md#projectquotasupdate) | **Post** /api/v1/projectquotas/update | Edit project quota
@@ -692,16 +683,6 @@ Class | Method | HTTP request | Description
 *TrustedRegistriesAPI* | [**TrustedregistriesDelete**](docs/TrustedRegistriesAPI.md#trustedregistriesdelete) | **Delete** /api/v1/trustedregistries/{id} | Delete trusted registry
 *TrustedRegistriesAPI* | [**TrustedregistriesEdit**](docs/TrustedRegistriesAPI.md#trustedregistriesedit) | **Put** /api/v1/trustedregistries/edit/{id} | Edit trusted registry
 *TrustedRegistriesAPI* | [**TrustedregistriesList**](docs/TrustedRegistriesAPI.md#trustedregistrieslist) | **Get** /api/v1/trustedregistries/{accessProfileId} | List trusted registries by profile id
-*UserGroupAPI* | [**ProjectgroupsUnbindProjectGroup**](docs/UserGroupAPI.md#projectgroupsunbindprojectgroup) | **Post** /api/v1/projectgroups/unbind-project-group | Unbind project group from user group
-*UserGroupAPI* | [**UsergroupsBindProjectsGroup**](docs/UserGroupAPI.md#usergroupsbindprojectsgroup) | **Post** /api/v1/usergroups/bind-project-groups | Bind project groups
-*UserGroupAPI* | [**UsergroupsBindUser**](docs/UserGroupAPI.md#usergroupsbinduser) | **Post** /api/v1/usergroups/bind-user | Bind Users to group
-*UserGroupAPI* | [**UsergroupsCreate**](docs/UserGroupAPI.md#usergroupscreate) | **Post** /api/v1/usergroups/create | Add user groups
-*UserGroupAPI* | [**UsergroupsDelete**](docs/UserGroupAPI.md#usergroupsdelete) | **Post** /api/v1/usergroups | Remove user group(s)
-*UserGroupAPI* | [**UsergroupsList**](docs/UserGroupAPI.md#usergroupslist) | **Get** /api/v1/usergroups/list | Retrieve list of user groups
-*UserGroupAPI* | [**UsergroupsListByProjectGroupId**](docs/UserGroupAPI.md#usergroupslistbyprojectgroupid) | **Get** /api/v1/usergroups/list/{projectGroupId} | Dropdown list
-*UserGroupAPI* | [**UsergroupsUnbindUser**](docs/UserGroupAPI.md#usergroupsunbinduser) | **Post** /api/v1/usergroups/unbind-user | Unbind Users from group
-*UserGroupAPI* | [**UsergroupsUpdate**](docs/UserGroupAPI.md#usergroupsupdate) | **Put** /api/v1/usergroups/update/{userGroupId} | Update user groups
-*UserGroupAPI* | [**UsergroupsUserGroupUsers**](docs/UserGroupAPI.md#usergroupsusergroupusers) | **Get** /api/v1/usergroups/{userGroupId}/users | Retrieve list of users by user group id
 *UserProjectsAPI* | [**UserprojectsProjectListByUser**](docs/UserProjectsAPI.md#userprojectsprojectlistbyuser) | **Get** /api/v1/userprojects/projects/list | Projects list for user
 *UserProjectsAPI* | [**UserprojectsUserListByProject**](docs/UserProjectsAPI.md#userprojectsuserlistbyproject) | **Get** /api/v1/userprojects/users/list/{projectId} | Users list by project id
 *UserTokenAPI* | [**UsertokenAvailableEndpoints**](docs/UserTokenAPI.md#usertokenavailableendpoints) | **Get** /api/v1/usertoken/available-endpoints | Get available endpoint list
@@ -871,13 +852,9 @@ Class | Method | HTTP request | Description
  - [BindAppRepositoryCommand](docs/BindAppRepositoryCommand.md)
  - [BindFlavorToProjectCommand](docs/BindFlavorToProjectCommand.md)
  - [BindImageToProjectCommand](docs/BindImageToProjectCommand.md)
- - [BindProjectGroupsToUserGroupCommand](docs/BindProjectGroupsToUserGroupCommand.md)
- - [BindProjectsToProjectGroupCommand](docs/BindProjectsToProjectGroupCommand.md)
  - [BindSubscriptionCommand](docs/BindSubscriptionCommand.md)
  - [BindSubscriptionResponseDto](docs/BindSubscriptionResponseDto.md)
  - [BindUnbindEndpointToTokenCommand](docs/BindUnbindEndpointToTokenCommand.md)
- - [BindUserGroupsToProjectGroupCommand](docs/BindUserGroupsToProjectGroupCommand.md)
- - [BindUsersToUserGroupCommand](docs/BindUsersToUserGroupCommand.md)
  - [BoundFlavorsForProjectsList](docs/BoundFlavorsForProjectsList.md)
  - [BoundFlavorsForProjectsListDto](docs/BoundFlavorsForProjectsListDto.md)
  - [BoundImagesForProjectsList](docs/BoundImagesForProjectsList.md)
@@ -972,7 +949,6 @@ Class | Method | HTTP request | Description
  - [CreateProjectAppCommand](docs/CreateProjectAppCommand.md)
  - [CreateProjectCommand](docs/CreateProjectCommand.md)
  - [CreateProjectFromTemplateCommand](docs/CreateProjectFromTemplateCommand.md)
- - [CreateProjectGroupCommand](docs/CreateProjectGroupCommand.md)
  - [CreateProxmoxCommand](docs/CreateProxmoxCommand.md)
  - [CreateProxmoxNetworkDto](docs/CreateProxmoxNetworkDto.md)
  - [CreateSecurityGroupCommand](docs/CreateSecurityGroupCommand.md)
@@ -985,7 +961,6 @@ Class | Method | HTTP request | Description
  - [CreateTicketCommand](docs/CreateTicketCommand.md)
  - [CreateTrustedRegistriesCommand](docs/CreateTrustedRegistriesCommand.md)
  - [CreateUserCommand](docs/CreateUserCommand.md)
- - [CreateUserGroupCommand](docs/CreateUserGroupCommand.md)
  - [CreateVirtualClusterCommand](docs/CreateVirtualClusterCommand.md)
  - [CreateVirtualClusterResourceLimits](docs/CreateVirtualClusterResourceLimits.md)
  - [CreateVirtualClusterWorkloadResources](docs/CreateVirtualClusterWorkloadResources.md)
@@ -1027,7 +1002,6 @@ Class | Method | HTTP request | Description
  - [DeleteSshUserCommand](docs/DeleteSshUserCommand.md)
  - [DeleteStandAloneProfileCommand](docs/DeleteStandAloneProfileCommand.md)
  - [DeleteSubscriptionCommand](docs/DeleteSubscriptionCommand.md)
- - [DeleteUserGroupCommand](docs/DeleteUserGroupCommand.md)
  - [DeleteVirtualClusterCommand](docs/DeleteVirtualClusterCommand.md)
  - [DeleteVmDiskCommand](docs/DeleteVmDiskCommand.md)
  - [DeploymentActionCommand](docs/DeploymentActionCommand.md)
@@ -1339,13 +1313,9 @@ Class | Method | HTTP request | Description
  - [ProjectDetailsForVmsDto](docs/ProjectDetailsForVmsDto.md)
  - [ProjectDto](docs/ProjectDto.md)
  - [ProjectExtendLifeTimeCommand](docs/ProjectExtendLifeTimeCommand.md)
- - [ProjectGroupDetailsListDto](docs/ProjectGroupDetailsListDto.md)
- - [ProjectGroupEntityListDto](docs/ProjectGroupEntityListDto.md)
- - [ProjectGroupList](docs/ProjectGroupList.md)
  - [ProjectHealth](docs/ProjectHealth.md)
  - [ProjectInfracost](docs/ProjectInfracost.md)
  - [ProjectListDetailDto](docs/ProjectListDetailDto.md)
- - [ProjectListDto](docs/ProjectListDto.md)
  - [ProjectListForAlert](docs/ProjectListForAlert.md)
  - [ProjectLockManagerCommand](docs/ProjectLockManagerCommand.md)
  - [ProjectMaintenanceModeCommand](docs/ProjectMaintenanceModeCommand.md)
@@ -1516,10 +1486,6 @@ Class | Method | HTTP request | Description
  - [TwoFactorAuthVerifyResult](docs/TwoFactorAuthVerifyResult.md)
  - [UnbindAppRepositoryCommand](docs/UnbindAppRepositoryCommand.md)
  - [UnbindFlavorFromProjectCommand](docs/UnbindFlavorFromProjectCommand.md)
- - [UnbindProjectFromProjectGroupCommand](docs/UnbindProjectFromProjectGroupCommand.md)
- - [UnbindProjectGroupFromUserGroupCommand](docs/UnbindProjectGroupFromUserGroupCommand.md)
- - [UnbindUserFromUserGroupCommand](docs/UnbindUserFromUserGroupCommand.md)
- - [UnbindUserGroupFromProjectGroupCommand](docs/UnbindUserGroupFromProjectGroupCommand.md)
  - [UninstallProjectAppResult](docs/UninstallProjectAppResult.md)
  - [UnshelveStandaloneVmCommand](docs/UnshelveStandaloneVmCommand.md)
  - [UpdateAccessProfileDto](docs/UpdateAccessProfileDto.md)
@@ -1548,7 +1514,6 @@ Class | Method | HTTP request | Description
  - [UpdateSubscriptionCommand](docs/UpdateSubscriptionCommand.md)
  - [UpdateUsedIpAddressesCommand](docs/UpdateUsedIpAddressesCommand.md)
  - [UpdateUserCommand](docs/UpdateUserCommand.md)
- - [UpdateUserGroupDto](docs/UpdateUserGroupDto.md)
  - [UpdateVsphereCommand](docs/UpdateVsphereCommand.md)
  - [UpdateVsphereHypervisorsCommand](docs/UpdateVsphereHypervisorsCommand.md)
  - [UpdateZadaraCommand](docs/UpdateZadaraCommand.md)
@@ -1556,10 +1521,6 @@ Class | Method | HTTP request | Description
  - [UserDto](docs/UserDto.md)
  - [UserExistCommand](docs/UserExistCommand.md)
  - [UserForListDto](docs/UserForListDto.md)
- - [UserGroupDetailsListDto](docs/UserGroupDetailsListDto.md)
- - [UserGroupEntityListDto](docs/UserGroupEntityListDto.md)
- - [UserGroupList](docs/UserGroupList.md)
- - [UserListDto](docs/UserListDto.md)
  - [UserResourceChartDto](docs/UserResourceChartDto.md)
  - [UserRole](docs/UserRole.md)
  - [UserTokenCreateCommand](docs/UserTokenCreateCommand.md)

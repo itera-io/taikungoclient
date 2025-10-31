@@ -151,8 +151,6 @@ type APIClient struct {
 
 	ProjectDeploymentAPI *ProjectDeploymentAPIService
 
-	ProjectGroupsAPI *ProjectGroupsAPIService
-
 	ProjectInfracostsAPI *ProjectInfracostsAPIService
 
 	ProjectQuotasAPI *ProjectQuotasAPIService
@@ -196,8 +194,6 @@ type APIClient struct {
 	TicketAPI *TicketAPIService
 
 	TrustedRegistriesAPI *TrustedRegistriesAPIService
-
-	UserGroupAPI *UserGroupAPIService
 
 	UserProjectsAPI *UserProjectsAPIService
 
@@ -278,7 +274,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ProjectAppParamsAPI = (*ProjectAppParamsAPIService)(&c.common)
 	c.ProjectAppsAPI = (*ProjectAppsAPIService)(&c.common)
 	c.ProjectDeploymentAPI = (*ProjectDeploymentAPIService)(&c.common)
-	c.ProjectGroupsAPI = (*ProjectGroupsAPIService)(&c.common)
 	c.ProjectInfracostsAPI = (*ProjectInfracostsAPIService)(&c.common)
 	c.ProjectQuotasAPI = (*ProjectQuotasAPIService)(&c.common)
 	c.ProjectTemplatesAPI = (*ProjectTemplatesAPIService)(&c.common)
@@ -301,7 +296,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.TaikunLBAPI = (*TaikunLBAPIService)(&c.common)
 	c.TicketAPI = (*TicketAPIService)(&c.common)
 	c.TrustedRegistriesAPI = (*TrustedRegistriesAPIService)(&c.common)
-	c.UserGroupAPI = (*UserGroupAPIService)(&c.common)
 	c.UserProjectsAPI = (*UserProjectsAPIService)(&c.common)
 	c.UserTokenAPI = (*UserTokenAPIService)(&c.common)
 	c.UsersAPI = (*UsersAPIService)(&c.common)
