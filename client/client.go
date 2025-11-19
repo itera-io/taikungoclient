@@ -99,6 +99,8 @@ type APIClient struct {
 
 	GoogleAPI *GoogleAPIService
 
+	GroupsAPI *GroupsAPIService
+
 	ImagesAPI *ImagesAPIService
 
 	ImportedClusterAPI *ImportedClusterAPIService
@@ -248,6 +250,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.FlavorsAPI = (*FlavorsAPIService)(&c.common)
 	c.GenericKubernetesCloudCredentialAPI = (*GenericKubernetesCloudCredentialAPIService)(&c.common)
 	c.GoogleAPI = (*GoogleAPIService)(&c.common)
+	c.GroupsAPI = (*GroupsAPIService)(&c.common)
 	c.ImagesAPI = (*ImagesAPIService)(&c.common)
 	c.ImportedClusterAPI = (*ImportedClusterAPIService)(&c.common)
 	c.InfraAPI = (*InfraAPIService)(&c.common)

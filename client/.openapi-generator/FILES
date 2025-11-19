@@ -27,6 +27,7 @@ api_executors.go
 api_flavors.go
 api_generic_kubernetes_cloud_credential.go
 api_google.go
+api_groups.go
 api_images.go
 api_imported_cluster.go
 api_infra.go
@@ -92,6 +93,7 @@ docs/AccessProfilesSearchCommand.md
 docs/AccessProfilesSearchList.md
 docs/ActionStatus.md
 docs/ActionType.md
+docs/AddOrganizationToGroupCommand.md
 docs/AddOrganizationsToRuleDto.md
 docs/AddPrometheusRulesToOrganizationDto.md
 docs/AdminAPI.md
@@ -296,6 +298,9 @@ docs/CreateCatalogCommand.md
 docs/CreateDnsServerCommand.md
 docs/CreateExecutorCommand.md
 docs/CreateGenericTaikunLbDto.md
+docs/CreateGroupCommand.md
+docs/CreateGroupOrganizationDto.md
+docs/CreateGroupUserDto.md
 docs/CreateInfraProductCommand.md
 docs/CreateInvoiceCommand.md
 docs/CreateKubeConfigCommand.md
@@ -352,6 +357,7 @@ docs/DeleteImportedProjectCommand.md
 docs/DeleteKubeConfigByProjectIdCommand.md
 docs/DeleteKubeConfigCommand.md
 docs/DeleteKubernetesResourceCommand.md
+docs/DeleteOrganizationFromGroupCommand.md
 docs/DeletePartnerCommand.md
 docs/DeleteProjectCommand.md
 docs/DeleteRepositoryCommand.md
@@ -461,10 +467,15 @@ docs/GoogleCredentialsListDto.md
 docs/GoogleFlavorDto.md
 docs/GoogleFlavorList.md
 docs/Group.md
+docs/GroupList.md
+docs/GroupListDto.md
+docs/GroupOrganizationsDto.md
+docs/GroupUsersDto.md
 docs/GroupedBillingInfo.md
 docs/GroupedBillingListQuery.md
 docs/GroupedBillings.md
 docs/GroupedPrometheusBillingListQuery.md
+docs/GroupsAPI.md
 docs/HelmCredentialCommand.md
 docs/HelmReleasesSearchCommand.md
 docs/HelmReleasesSearchList.md
@@ -997,6 +1008,7 @@ model_access_profiles_search_command.go
 model_access_profiles_search_list.go
 model_action_status.go
 model_action_type.go
+model_add_organization_to_group_command.go
 model_add_organizations_to_rule_dto.go
 model_add_prometheus_rules_to_organization_dto.go
 model_admin_add_balance_command.go
@@ -1185,6 +1197,9 @@ model_create_catalog_command.go
 model_create_dns_server_command.go
 model_create_executor_command.go
 model_create_generic_taikun_lb_dto.go
+model_create_group_command.go
+model_create_group_organization_dto.go
+model_create_group_user_dto.go
 model_create_infra_product_command.go
 model_create_invoice_command.go
 model_create_kube_config_command.go
@@ -1240,6 +1255,7 @@ model_delete_imported_project_command.go
 model_delete_kube_config_by_project_id_command.go
 model_delete_kube_config_command.go
 model_delete_kubernetes_resource_command.go
+model_delete_organization_from_group_command.go
 model_delete_partner_command.go
 model_delete_project_command.go
 model_delete_repository_command.go
@@ -1344,6 +1360,10 @@ model_google_credentials_list_dto.go
 model_google_flavor_dto.go
 model_google_flavor_list.go
 model_group.go
+model_group_list.go
+model_group_list_dto.go
+model_group_organizations_dto.go
+model_group_users_dto.go
 model_grouped_billing_info.go
 model_grouped_billing_list_query.go
 model_grouped_billings.go
@@ -1841,6 +1861,7 @@ test/api_executors_test.go
 test/api_flavors_test.go
 test/api_generic_kubernetes_cloud_credential_test.go
 test/api_google_test.go
+test/api_groups_test.go
 test/api_images_test.go
 test/api_imported_cluster_test.go
 test/api_infra_billing_summary_test.go

@@ -306,6 +306,12 @@ Class | Method | HTTP request | Description
 *GoogleAPI* | [**GooglecloudList**](docs/GoogleAPI.md#googlecloudlist) | **Get** /api/v1/googlecloud/list | Retrieve list of google cloud credentials
 *GoogleAPI* | [**GooglecloudRegionList**](docs/GoogleAPI.md#googlecloudregionlist) | **Post** /api/v1/googlecloud/regions | Retrieve google region list
 *GoogleAPI* | [**GooglecloudZoneList**](docs/GoogleAPI.md#googlecloudzonelist) | **Post** /api/v1/googlecloud/zones | Google zones list
+*GroupsAPI* | [**GroupsAddOrganizations**](docs/GroupsAPI.md#groupsaddorganizations) | **Post** /api/v1/groups/add-organizations | Add organizations to group
+*GroupsAPI* | [**GroupsCreate**](docs/GroupsAPI.md#groupscreate) | **Post** /api/v1/groups/create | Create group
+*GroupsAPI* | [**GroupsDelete**](docs/GroupsAPI.md#groupsdelete) | **Delete** /api/v1/groups/{id} | Delete group
+*GroupsAPI* | [**GroupsDeleteOrganizations**](docs/GroupsAPI.md#groupsdeleteorganizations) | **Post** /api/v1/groups/delete-organizations | Remove organizations from group
+*GroupsAPI* | [**GroupsDetails**](docs/GroupsAPI.md#groupsdetails) | **Get** /api/v1/groups/{id} | Group details
+*GroupsAPI* | [**GroupsList**](docs/GroupsAPI.md#groupslist) | **Get** /api/v1/groups | Group list for account
 *ImagesAPI* | [**ImagesAwsCommonImages**](docs/ImagesAPI.md#imagesawscommonimages) | **Get** /api/v1/images/aws/common/{cloudId} | Commonly used aws images
 *ImagesAPI* | [**ImagesAwsImagesList**](docs/ImagesAPI.md#imagesawsimageslist) | **Post** /api/v1/images/aws | Retrieve aws images
 *ImagesAPI* | [**ImagesAwsPersonalImages**](docs/ImagesAPI.md#imagesawspersonalimages) | **Get** /api/v1/images/aws/personal/{cloudId} | Aws personal images
@@ -750,6 +756,7 @@ Class | Method | HTTP request | Description
  - [AccessProfilesSearchList](docs/AccessProfilesSearchList.md)
  - [ActionStatus](docs/ActionStatus.md)
  - [ActionType](docs/ActionType.md)
+ - [AddOrganizationToGroupCommand](docs/AddOrganizationToGroupCommand.md)
  - [AddOrganizationsToRuleDto](docs/AddOrganizationsToRuleDto.md)
  - [AddPrometheusRulesToOrganizationDto](docs/AddPrometheusRulesToOrganizationDto.md)
  - [AdminAddBalanceCommand](docs/AdminAddBalanceCommand.md)
@@ -938,6 +945,9 @@ Class | Method | HTTP request | Description
  - [CreateDnsServerCommand](docs/CreateDnsServerCommand.md)
  - [CreateExecutorCommand](docs/CreateExecutorCommand.md)
  - [CreateGenericTaikunLbDto](docs/CreateGenericTaikunLbDto.md)
+ - [CreateGroupCommand](docs/CreateGroupCommand.md)
+ - [CreateGroupOrganizationDto](docs/CreateGroupOrganizationDto.md)
+ - [CreateGroupUserDto](docs/CreateGroupUserDto.md)
  - [CreateInfraProductCommand](docs/CreateInfraProductCommand.md)
  - [CreateInvoiceCommand](docs/CreateInvoiceCommand.md)
  - [CreateKubeConfigCommand](docs/CreateKubeConfigCommand.md)
@@ -993,6 +1003,7 @@ Class | Method | HTTP request | Description
  - [DeleteKubeConfigByProjectIdCommand](docs/DeleteKubeConfigByProjectIdCommand.md)
  - [DeleteKubeConfigCommand](docs/DeleteKubeConfigCommand.md)
  - [DeleteKubernetesResourceCommand](docs/DeleteKubernetesResourceCommand.md)
+ - [DeleteOrganizationFromGroupCommand](docs/DeleteOrganizationFromGroupCommand.md)
  - [DeletePartnerCommand](docs/DeletePartnerCommand.md)
  - [DeleteProjectCommand](docs/DeleteProjectCommand.md)
  - [DeleteRepositoryCommand](docs/DeleteRepositoryCommand.md)
@@ -1097,6 +1108,10 @@ Class | Method | HTTP request | Description
  - [GoogleFlavorDto](docs/GoogleFlavorDto.md)
  - [GoogleFlavorList](docs/GoogleFlavorList.md)
  - [Group](docs/Group.md)
+ - [GroupList](docs/GroupList.md)
+ - [GroupListDto](docs/GroupListDto.md)
+ - [GroupOrganizationsDto](docs/GroupOrganizationsDto.md)
+ - [GroupUsersDto](docs/GroupUsersDto.md)
  - [GroupedBillingInfo](docs/GroupedBillingInfo.md)
  - [GroupedBillingListQuery](docs/GroupedBillingListQuery.md)
  - [GroupedBillings](docs/GroupedBillings.md)
