@@ -1158,6 +1158,56 @@ paths:
       summary: Delete access profile by Id
       tags:
       - Access Profiles
+  /api/v1/account/add-account-admin:
+    post:
+      operationId: account-add-account-admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddAccountAdminCommand"
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Add account admin to account
+      tags:
+      - Accounts
   /api/v1/admin/organizations/add/balance:
     post:
       operationId: admin-add-balance
@@ -1506,6 +1556,56 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
       summary: Make owner
+      tags:
+      - Admin
+  /api/v1/admin/orgnanizations/move:
+    post:
+      operationId: admin-move-organization
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MoveOrganizationCommand"
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Move organization
       tags:
       - Admin
   /api/v1/admin/users/remove/owner:
@@ -6618,8 +6718,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-11-19T00:03:52.6962524Z
-                  createdAt: 2025-11-19T00:03:52.6962524Z
+                  lastValidated: 2025-11-20T00:03:38.6014956Z
+                  createdAt: 2025-11-20T00:03:38.6014956Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6730,14 +6830,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-11-19T00:03:52.6962524Z
+                    lastBackup: 2025-11-20T00:03:38.6014956Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-11-19T00:03:52.6962524Z
+                  createdAt: 2025-11-20T00:03:38.6014956Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-11-19T00:03:52.6962524Z
+                  lastBackup: 2025-11-20T00:03:38.6014956Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6848,8 +6948,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-11-19T00:03:52.6962524Z
-                  expiration: 2025-11-19T00:03:52.6962524Z
+                  createdAt: 2025-11-20T00:03:38.6014956Z
+                  expiration: 2025-11-20T00:03:38.6014956Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6959,7 +7059,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-11-19T00:03:52.6962524Z
+                  createdAt: 2025-11-20T00:03:38.6014956Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -7075,9 +7175,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-11-19T00:03:52.6962524+00:00
-                  startTimeStamp: 2025-11-19T00:03:52.6962524+00:00
-                  createdAt: 2025-11-19T00:03:52.6962524Z
+                  completionDateTime: 2025-11-20T00:03:38.6014956+00:00
+                  startTimeStamp: 2025-11-20T00:03:38.6014956+00:00
+                  createdAt: 2025-11-20T00:03:38.6014956Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -14534,6 +14634,65 @@ paths:
       summary: Retrieve list of google cloud credentials
       tags:
       - Google
+  /api/v1/groups/update/{id}:
+    put:
+      operationId: groups-update
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateGroupDto"
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Update group
+      tags:
+      - Groups
   /api/v1/groups/add-organizations:
     post:
       operationId: groups-add-organizations
@@ -14584,6 +14743,56 @@ paths:
       summary: Add organizations to group
       tags:
       - Groups
+  /api/v1/groups/add-users:
+    post:
+      operationId: groups-add-users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddUserToGroupCommand"
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Add users to group
+      tags:
+      - Groups
   /api/v1/groups/create:
     post:
       operationId: groups-create
@@ -14632,6 +14841,106 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
       summary: Create group
+      tags:
+      - Groups
+  /api/v1/groups/delete-organizations:
+    post:
+      operationId: groups-delete-organizations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DeleteOrganizationFromGroupCommand"
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Remove organizations from group
+      tags:
+      - Groups
+  /api/v1/groups/delete-users:
+    post:
+      operationId: groups-delete-users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DeleteUserFromGroupCommand"
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Remove users from group
       tags:
       - Groups
   /api/v1/groups/{id}:
@@ -14745,59 +15054,18 @@ paths:
       summary: Group details
       tags:
       - Groups
-  /api/v1/groups/delete-organizations:
-    post:
-      operationId: groups-delete-organizations
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/DeleteOrganizationFromGroupCommand"
-      responses:
-        "200":
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Remove organizations from group
-      tags:
-      - Groups
   /api/v1/groups:
     get:
       operationId: groups-list
+      parameters:
+      - explode: true
+        in: query
+        name: AccountId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -41334,6 +41602,22 @@ components:
       - KubernetesAction
       - DeletedProject
       type: string
+    AddAccountAdminCommand:
+      additionalProperties: false
+      example:
+        accountId: 0
+        userId: userId
+      properties:
+        accountId:
+          format: int32
+          nullable: true
+          type: integer
+        userId:
+          nullable: true
+          type: string
+      required:
+      - userId
+      type: object
     AddOrganizationToGroupCommand:
       additionalProperties: false
       example:
@@ -41385,6 +41669,26 @@ components:
           format: double
           nullable: true
           type: number
+      type: object
+    AddUserToGroupCommand:
+      additionalProperties: false
+      example:
+        groupId: 0
+        users:
+        - id: id
+        - id: id
+      properties:
+        groupId:
+          format: int32
+          type: integer
+        users:
+          items:
+            $ref: "#/components/schemas/CreateGroupUserDto"
+          nullable: true
+          type: array
+      required:
+      - groupId
+      - users
       type: object
     AdminAddBalanceCommand:
       additionalProperties: false
@@ -47645,6 +47949,7 @@ components:
     CreateGroupCommand:
       additionalProperties: false
       example:
+        accountId: 0
         name: name
         organizations:
         - role: role
@@ -47663,6 +47968,10 @@ components:
         claimValue:
           nullable: true
           type: string
+        accountId:
+          format: int32
+          nullable: true
+          type: integer
         organizations:
           items:
             $ref: "#/components/schemas/CreateGroupOrganizationDto"
@@ -50081,6 +50390,26 @@ components:
         id:
           format: int32
           type: integer
+      type: object
+    DeleteUserFromGroupCommand:
+      additionalProperties: false
+      example:
+        groupId: 0
+        users:
+        - users
+        - users
+      properties:
+        groupId:
+          format: int32
+          type: integer
+        users:
+          items:
+            type: string
+          nullable: true
+          type: array
+      required:
+      - groupId
+      - users
       type: object
     DeleteVirtualClusterCommand:
       additionalProperties: false
@@ -57408,6 +57737,15 @@ components:
       - password
       - prometheusUrl
       - username
+      type: object
+    MoveOrganizationCommand:
+      additionalProperties: false
+      example:
+        organizationId: 0
+      properties:
+        organizationId:
+          format: int32
+          type: integer
       type: object
     NamespaceSearchCommand:
       additionalProperties: false
@@ -68838,6 +69176,19 @@ components:
           format: int32
           type: integer
         name:
+          nullable: true
+          type: string
+      type: object
+    UpdateGroupDto:
+      additionalProperties: false
+      example:
+        name: name
+        claimValue: claimValue
+      properties:
+        name:
+          nullable: true
+          type: string
+        claimValue:
           nullable: true
           type: string
       type: object

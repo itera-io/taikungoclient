@@ -24,6 +24,7 @@ var _ MappedNullable = &CreateGroupCommand{}
 type CreateGroupCommand struct {
 	Name string `json:"name"`
 	ClaimValue NullableString `json:"claimValue,omitempty"`
+	AccountId NullableInt32 `json:"accountId,omitempty"`
 	Organizations []CreateGroupOrganizationDto `json:"organizations,omitempty"`
 	Users []CreateGroupUserDto `json:"users,omitempty"`
 }
@@ -114,6 +115,48 @@ func (o *CreateGroupCommand) UnsetClaimValue() {
 	o.ClaimValue.Unset()
 }
 
+// GetAccountId returns the AccountId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateGroupCommand) GetAccountId() int32 {
+	if o == nil || IsNil(o.AccountId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.AccountId.Get()
+}
+
+// GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateGroupCommand) GetAccountIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AccountId.Get(), o.AccountId.IsSet()
+}
+
+// HasAccountId returns a boolean if a field has been set.
+func (o *CreateGroupCommand) HasAccountId() bool {
+	if o != nil && o.AccountId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountId gets a reference to the given NullableInt32 and assigns it to the AccountId field.
+func (o *CreateGroupCommand) SetAccountId(v int32) {
+	o.AccountId.Set(&v)
+}
+// SetAccountIdNil sets the value for AccountId to be an explicit nil
+func (o *CreateGroupCommand) SetAccountIdNil() {
+	o.AccountId.Set(nil)
+}
+
+// UnsetAccountId ensures that no value is present for AccountId, not even an explicit nil
+func (o *CreateGroupCommand) UnsetAccountId() {
+	o.AccountId.Unset()
+}
+
 // GetOrganizations returns the Organizations field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateGroupCommand) GetOrganizations() []CreateGroupOrganizationDto {
 	if o == nil {
@@ -193,6 +236,9 @@ func (o CreateGroupCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	if o.ClaimValue.IsSet() {
 		toSerialize["claimValue"] = o.ClaimValue.Get()
+	}
+	if o.AccountId.IsSet() {
+		toSerialize["accountId"] = o.AccountId.Get()
 	}
 	if o.Organizations != nil {
 		toSerialize["organizations"] = o.Organizations

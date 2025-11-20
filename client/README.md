@@ -95,6 +95,7 @@ Class | Method | HTTP request | Description
 *AccessProfilesAPI* | [**AccessprofilesList**](docs/AccessProfilesAPI.md#accessprofileslist) | **Get** /api/v1/accessprofiles | Retrieve all access profiles
 *AccessProfilesAPI* | [**AccessprofilesLockManager**](docs/AccessProfilesAPI.md#accessprofileslockmanager) | **Post** /api/v1/accessprofiles/lockmanager | Lock/unlock access profiles
 *AccessProfilesAPI* | [**AccessprofilesUpdate**](docs/AccessProfilesAPI.md#accessprofilesupdate) | **Put** /api/v1/accessprofiles/update/{id} | Update access profile
+*AccountsAPI* | [**AccountAddAccountAdmin**](docs/AccountsAPI.md#accountaddaccountadmin) | **Post** /api/v1/account/add-account-admin | Add account admin to account
 *AdminAPI* | [**AdminAddBalance**](docs/AdminAPI.md#adminaddbalance) | **Post** /api/v1/admin/organizations/add/balance | Add balance for organization
 *AdminAPI* | [**AdminBillingOperations**](docs/AdminAPI.md#adminbillingoperations) | **Post** /api/v1/admin/cloudcredentials/billing | Billing operations: enable/disable billing 
 *AdminAPI* | [**AdminCreateUser**](docs/AdminAPI.md#admincreateuser) | **Post** /api/v1/admin/users/create | User creation for admin
@@ -103,6 +104,7 @@ Class | Method | HTTP request | Description
 *AdminAPI* | [**AdminKeycloakList**](docs/AdminAPI.md#adminkeycloaklist) | **Get** /api/v1/admin/keycloak/list | Keycloak list for admin
 *AdminAPI* | [**AdminMakeCsm**](docs/AdminAPI.md#adminmakecsm) | **Post** /api/v1/admin/users/make/csm | User csm update for admin
 *AdminAPI* | [**AdminMakeOwner**](docs/AdminAPI.md#adminmakeowner) | **Post** /api/v1/admin/users/make/owner | Make owner
+*AdminAPI* | [**AdminMoveOrganization**](docs/AdminAPI.md#adminmoveorganization) | **Post** /api/v1/admin/orgnanizations/move | Move organization
 *AdminAPI* | [**AdminOrganizations**](docs/AdminAPI.md#adminorganizations) | **Get** /api/v1/admin/organizations/list |  Organizations for admin
 *AdminAPI* | [**AdminProjectList**](docs/AdminAPI.md#adminprojectlist) | **Get** /api/v1/admin/projects/list | Projects for admin
 *AdminAPI* | [**AdminRemoveOwner**](docs/AdminAPI.md#adminremoveowner) | **Post** /api/v1/admin/users/remove/owner | Remove owner
@@ -307,11 +309,14 @@ Class | Method | HTTP request | Description
 *GoogleAPI* | [**GooglecloudRegionList**](docs/GoogleAPI.md#googlecloudregionlist) | **Post** /api/v1/googlecloud/regions | Retrieve google region list
 *GoogleAPI* | [**GooglecloudZoneList**](docs/GoogleAPI.md#googlecloudzonelist) | **Post** /api/v1/googlecloud/zones | Google zones list
 *GroupsAPI* | [**GroupsAddOrganizations**](docs/GroupsAPI.md#groupsaddorganizations) | **Post** /api/v1/groups/add-organizations | Add organizations to group
+*GroupsAPI* | [**GroupsAddUsers**](docs/GroupsAPI.md#groupsaddusers) | **Post** /api/v1/groups/add-users | Add users to group
 *GroupsAPI* | [**GroupsCreate**](docs/GroupsAPI.md#groupscreate) | **Post** /api/v1/groups/create | Create group
 *GroupsAPI* | [**GroupsDelete**](docs/GroupsAPI.md#groupsdelete) | **Delete** /api/v1/groups/{id} | Delete group
 *GroupsAPI* | [**GroupsDeleteOrganizations**](docs/GroupsAPI.md#groupsdeleteorganizations) | **Post** /api/v1/groups/delete-organizations | Remove organizations from group
+*GroupsAPI* | [**GroupsDeleteUsers**](docs/GroupsAPI.md#groupsdeleteusers) | **Post** /api/v1/groups/delete-users | Remove users from group
 *GroupsAPI* | [**GroupsDetails**](docs/GroupsAPI.md#groupsdetails) | **Get** /api/v1/groups/{id} | Group details
 *GroupsAPI* | [**GroupsList**](docs/GroupsAPI.md#groupslist) | **Get** /api/v1/groups | Group list for account
+*GroupsAPI* | [**GroupsUpdate**](docs/GroupsAPI.md#groupsupdate) | **Put** /api/v1/groups/update/{id} | Update group
 *ImagesAPI* | [**ImagesAwsCommonImages**](docs/ImagesAPI.md#imagesawscommonimages) | **Get** /api/v1/images/aws/common/{cloudId} | Commonly used aws images
 *ImagesAPI* | [**ImagesAwsImagesList**](docs/ImagesAPI.md#imagesawsimageslist) | **Post** /api/v1/images/aws | Retrieve aws images
 *ImagesAPI* | [**ImagesAwsPersonalImages**](docs/ImagesAPI.md#imagesawspersonalimages) | **Get** /api/v1/images/aws/personal/{cloudId} | Aws personal images
@@ -756,9 +761,11 @@ Class | Method | HTTP request | Description
  - [AccessProfilesSearchList](docs/AccessProfilesSearchList.md)
  - [ActionStatus](docs/ActionStatus.md)
  - [ActionType](docs/ActionType.md)
+ - [AddAccountAdminCommand](docs/AddAccountAdminCommand.md)
  - [AddOrganizationToGroupCommand](docs/AddOrganizationToGroupCommand.md)
  - [AddOrganizationsToRuleDto](docs/AddOrganizationsToRuleDto.md)
  - [AddPrometheusRulesToOrganizationDto](docs/AddPrometheusRulesToOrganizationDto.md)
+ - [AddUserToGroupCommand](docs/AddUserToGroupCommand.md)
  - [AdminAddBalanceCommand](docs/AdminAddBalanceCommand.md)
  - [AdminBillingOperationCommand](docs/AdminBillingOperationCommand.md)
  - [AdminOrganizationsDeleteCommand](docs/AdminOrganizationsDeleteCommand.md)
@@ -1013,6 +1020,7 @@ Class | Method | HTTP request | Description
  - [DeleteSshUserCommand](docs/DeleteSshUserCommand.md)
  - [DeleteStandAloneProfileCommand](docs/DeleteStandAloneProfileCommand.md)
  - [DeleteSubscriptionCommand](docs/DeleteSubscriptionCommand.md)
+ - [DeleteUserFromGroupCommand](docs/DeleteUserFromGroupCommand.md)
  - [DeleteVirtualClusterCommand](docs/DeleteVirtualClusterCommand.md)
  - [DeleteVmDiskCommand](docs/DeleteVmDiskCommand.md)
  - [DeploymentActionCommand](docs/DeploymentActionCommand.md)
@@ -1218,6 +1226,7 @@ Class | Method | HTTP request | Description
  - [MetricData](docs/MetricData.md)
  - [MetricResult](docs/MetricResult.md)
  - [MonitoringCredentialsListDto](docs/MonitoringCredentialsListDto.md)
+ - [MoveOrganizationCommand](docs/MoveOrganizationCommand.md)
  - [NamespaceSearchCommand](docs/NamespaceSearchCommand.md)
  - [NamespaceSearchList](docs/NamespaceSearchList.md)
  - [NetworkListCommand](docs/NetworkListCommand.md)
@@ -1509,6 +1518,7 @@ Class | Method | HTTP request | Description
  - [UpdateAzureCommand](docs/UpdateAzureCommand.md)
  - [UpdateExecutorHealthStatusCommand](docs/UpdateExecutorHealthStatusCommand.md)
  - [UpdateGenericKubernetesCommand](docs/UpdateGenericKubernetesCommand.md)
+ - [UpdateGroupDto](docs/UpdateGroupDto.md)
  - [UpdateHealthStatusCommand](docs/UpdateHealthStatusCommand.md)
  - [UpdateHypervisorsCommand](docs/UpdateHypervisorsCommand.md)
  - [UpdateInvoiceDto](docs/UpdateInvoiceDto.md)

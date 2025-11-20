@@ -55,6 +55,8 @@ type APIClient struct {
 
 	AccessProfilesAPI *AccessProfilesAPIService
 
+	AccountsAPI *AccountsAPIService
+
 	AdminAPI *AdminAPIService
 
 	AiCredentialsAPI *AiCredentialsAPIService
@@ -228,6 +230,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.AWSCloudCredentialAPI = (*AWSCloudCredentialAPIService)(&c.common)
 	c.AccessProfilesAPI = (*AccessProfilesAPIService)(&c.common)
+	c.AccountsAPI = (*AccountsAPIService)(&c.common)
 	c.AdminAPI = (*AdminAPIService)(&c.common)
 	c.AiCredentialsAPI = (*AiCredentialsAPIService)(&c.common)
 	c.AlertingIntegrationsAPI = (*AlertingIntegrationsAPIService)(&c.common)

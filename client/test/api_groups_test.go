@@ -33,6 +33,17 @@ func Test_taikuncore_GroupsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test GroupsAPIService GroupsAddUsers", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.GroupsAPI.GroupsAddUsers(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test GroupsAPIService GroupsCreate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -68,6 +79,17 @@ func Test_taikuncore_GroupsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test GroupsAPIService GroupsDeleteUsers", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.GroupsAPI.GroupsDeleteUsers(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test GroupsAPIService GroupsDetails", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -90,6 +112,19 @@ func Test_taikuncore_GroupsAPIService(t *testing.T) {
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GroupsAPIService GroupsUpdate", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int32
+
+		httpRes, err := apiClient.GroupsAPI.GroupsUpdate(context.Background(), id).Execute()
+
+		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
