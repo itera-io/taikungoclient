@@ -249,6 +249,7 @@ docs/ChatCompletionsCommand.md
 docs/CheckAwsCommand.md
 docs/CheckAzureCommand.md
 docs/CheckAzureCpuQuotaCommand.md
+docs/CheckOpenstackAvailabilityResponse.md
 docs/CheckOpenstackCommand.md
 docs/CheckPrometheusCommand.md
 docs/CheckS3Command.md
@@ -645,6 +646,7 @@ docs/OpenstackFlavorListDto.md
 docs/OpenstackNetworkDto.md
 docs/OpenstackQuotaList.md
 docs/OpenstackQuotasCommand.md
+docs/OpenstackStorageTypeListQuery.md
 docs/OpenstackSubnetListQuery.md
 docs/OpenstackVolumeQuotaDto.md
 docs/OpenstackVolumeTypeListQuery.md
@@ -1155,6 +1157,7 @@ model_chat_completions_command.go
 model_check_aws_command.go
 model_check_azure_command.go
 model_check_azure_cpu_quota_command.go
+model_check_openstack_availability_response.go
 model_check_openstack_command.go
 model_check_prometheus_command.go
 model_check_s3_command.go
@@ -1526,6 +1529,7 @@ model_openstack_flavor_list_dto.go
 model_openstack_network_dto.go
 model_openstack_quota_list.go
 model_openstack_quotas_command.go
+model_openstack_storage_type_list_query.go
 model_openstack_subnet_list_query.go
 model_openstack_volume_quota_dto.go
 model_openstack_volume_type_list_query.go

@@ -35,6 +35,8 @@ type CreateOpenstackCloudCommand struct {
 	OpenStackInternalSubnetId NullableString `json:"openStackInternalSubnetId,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	ApplicationCredEnabled *bool `json:"applicationCredEnabled,omitempty"`
+	ManilaEnabled *bool `json:"manilaEnabled,omitempty"`
+	ManilaStorageType NullableString `json:"manilaStorageType,omitempty"`
 	IsAdmin *bool `json:"isAdmin,omitempty"`
 	SkipTlsFlag *bool `json:"skipTlsFlag,omitempty"`
 }
@@ -666,6 +668,80 @@ func (o *CreateOpenstackCloudCommand) SetApplicationCredEnabled(v bool) {
 	o.ApplicationCredEnabled = &v
 }
 
+// GetManilaEnabled returns the ManilaEnabled field value if set, zero value otherwise.
+func (o *CreateOpenstackCloudCommand) GetManilaEnabled() bool {
+	if o == nil || IsNil(o.ManilaEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.ManilaEnabled
+}
+
+// GetManilaEnabledOk returns a tuple with the ManilaEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateOpenstackCloudCommand) GetManilaEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.ManilaEnabled) {
+		return nil, false
+	}
+	return o.ManilaEnabled, true
+}
+
+// HasManilaEnabled returns a boolean if a field has been set.
+func (o *CreateOpenstackCloudCommand) HasManilaEnabled() bool {
+	if o != nil && !IsNil(o.ManilaEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetManilaEnabled gets a reference to the given bool and assigns it to the ManilaEnabled field.
+func (o *CreateOpenstackCloudCommand) SetManilaEnabled(v bool) {
+	o.ManilaEnabled = &v
+}
+
+// GetManilaStorageType returns the ManilaStorageType field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateOpenstackCloudCommand) GetManilaStorageType() string {
+	if o == nil || IsNil(o.ManilaStorageType.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ManilaStorageType.Get()
+}
+
+// GetManilaStorageTypeOk returns a tuple with the ManilaStorageType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateOpenstackCloudCommand) GetManilaStorageTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ManilaStorageType.Get(), o.ManilaStorageType.IsSet()
+}
+
+// HasManilaStorageType returns a boolean if a field has been set.
+func (o *CreateOpenstackCloudCommand) HasManilaStorageType() bool {
+	if o != nil && o.ManilaStorageType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetManilaStorageType gets a reference to the given NullableString and assigns it to the ManilaStorageType field.
+func (o *CreateOpenstackCloudCommand) SetManilaStorageType(v string) {
+	o.ManilaStorageType.Set(&v)
+}
+// SetManilaStorageTypeNil sets the value for ManilaStorageType to be an explicit nil
+func (o *CreateOpenstackCloudCommand) SetManilaStorageTypeNil() {
+	o.ManilaStorageType.Set(nil)
+}
+
+// UnsetManilaStorageType ensures that no value is present for ManilaStorageType, not even an explicit nil
+func (o *CreateOpenstackCloudCommand) UnsetManilaStorageType() {
+	o.ManilaStorageType.Unset()
+}
+
 // GetIsAdmin returns the IsAdmin field value if set, zero value otherwise.
 func (o *CreateOpenstackCloudCommand) GetIsAdmin() bool {
 	if o == nil || IsNil(o.IsAdmin) {
@@ -784,6 +860,12 @@ func (o CreateOpenstackCloudCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ApplicationCredEnabled) {
 		toSerialize["applicationCredEnabled"] = o.ApplicationCredEnabled
+	}
+	if !IsNil(o.ManilaEnabled) {
+		toSerialize["manilaEnabled"] = o.ManilaEnabled
+	}
+	if o.ManilaStorageType.IsSet() {
+		toSerialize["manilaStorageType"] = o.ManilaStorageType.Get()
 	}
 	if !IsNil(o.IsAdmin) {
 		toSerialize["isAdmin"] = o.IsAdmin

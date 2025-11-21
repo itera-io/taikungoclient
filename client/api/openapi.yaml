@@ -6718,8 +6718,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-11-20T00:03:38.6014956Z
-                  createdAt: 2025-11-20T00:03:38.6014956Z
+                  lastValidated: 2025-11-21T00:03:47.1143991Z
+                  createdAt: 2025-11-21T00:03:47.1143991Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6830,14 +6830,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-11-20T00:03:38.6014956Z
+                    lastBackup: 2025-11-21T00:03:47.1143991Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-11-20T00:03:38.6014956Z
+                  createdAt: 2025-11-21T00:03:47.1143991Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-11-20T00:03:38.6014956Z
+                  lastBackup: 2025-11-21T00:03:47.1143991Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6948,8 +6948,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-11-20T00:03:38.6014956Z
-                  expiration: 2025-11-20T00:03:38.6014956Z
+                  createdAt: 2025-11-21T00:03:47.1143991Z
+                  expiration: 2025-11-21T00:03:47.1143991Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -7059,7 +7059,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-11-20T00:03:38.6014956Z
+                  createdAt: 2025-11-21T00:03:47.1143991Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -7175,9 +7175,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-11-20T00:03:38.6014956+00:00
-                  startTimeStamp: 2025-11-20T00:03:38.6014956+00:00
-                  createdAt: 2025-11-20T00:03:38.6014956Z
+                  completionDateTime: 2025-11-21T00:03:47.1143991+00:00
+                  startTimeStamp: 2025-11-21T00:03:47.1143991+00:00
+                  createdAt: 2025-11-21T00:03:47.1143991Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -9851,6 +9851,10 @@ paths:
               $ref: "#/components/schemas/CheckOpenstackCommand"
       responses:
         "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CheckOpenstackAvailabilityResponse"
           description: OK
         "400":
           content:
@@ -22459,6 +22463,62 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
       summary: Retrieve Openstack regions
+      tags:
+      - Openstack cloud credential
+  /api/v1/openstack/storage-types:
+    post:
+      operationId: openstack-storage-types
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OpenstackStorageTypeListQuery"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Openstack storage type list
       tags:
       - Openstack cloud credential
   /api/v1/openstack/subnets:
@@ -46753,6 +46813,21 @@ components:
           nullable: true
           type: string
       type: object
+    CheckOpenstackAvailabilityResponse:
+      additionalProperties: false
+      example:
+        errorMessage: errorMessage
+        isOpenstackAvailable: true
+        isManilaAvailable: true
+      properties:
+        isOpenstackAvailable:
+          type: boolean
+        isManilaAvailable:
+          type: boolean
+        errorMessage:
+          nullable: true
+          type: string
+      type: object
     CheckOpenstackCommand:
       additionalProperties: false
       example:
@@ -48246,11 +48321,13 @@ components:
         applicationCredEnabled: true
         openStackPassword: openStackPassword
         openStackUser: openStackUser
+        manilaEnabled: true
         isAdmin: true
         openStackVolumeType: openStackVolumeType
         openStackProject: openStackProject
         organizationId: 0
         openStackContinent: openStackContinent
+        manilaStorageType: manilaStorageType
         openStackDomain: openStackDomain
         openStackInternalSubnetId: openStackInternalSubnetId
         name: name
@@ -48304,6 +48381,11 @@ components:
           type: integer
         applicationCredEnabled:
           type: boolean
+        manilaEnabled:
+          type: boolean
+        manilaStorageType:
+          nullable: true
+          type: string
         isAdmin:
           type: boolean
         skipTlsFlag:
@@ -59272,6 +59354,41 @@ components:
         id:
           format: int32
           type: integer
+      type: object
+    OpenstackStorageTypeListQuery:
+      additionalProperties: false
+      example:
+        openstackProject: openstackProject
+        openStackUrl: openStackUrl
+        applicationCredEnabled: true
+        openStackPassword: openStackPassword
+        openStackDomain: openStackDomain
+        openStackUser: openStackUser
+        openStackRegion: openStackRegion
+        isAdmin: true
+      properties:
+        openStackUser:
+          nullable: true
+          type: string
+        openStackPassword:
+          nullable: true
+          type: string
+        openStackUrl:
+          nullable: true
+          type: string
+        openStackDomain:
+          nullable: true
+          type: string
+        openStackRegion:
+          nullable: true
+          type: string
+        applicationCredEnabled:
+          type: boolean
+        isAdmin:
+          type: boolean
+        openstackProject:
+          nullable: true
+          type: string
       type: object
     OpenstackSubnetListQuery:
       additionalProperties: false

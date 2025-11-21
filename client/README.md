@@ -436,6 +436,7 @@ Class | Method | HTTP request | Description
 *OpenstackCloudCredentialAPI* | [**OpenstackProjects**](docs/OpenstackCloudCredentialAPI.md#openstackprojects) | **Post** /api/v1/openstack/projects | Openstack project list
 *OpenstackCloudCredentialAPI* | [**OpenstackQuotas**](docs/OpenstackCloudCredentialAPI.md#openstackquotas) | **Post** /api/v1/openstack/quotas | Openstack quota list
 *OpenstackCloudCredentialAPI* | [**OpenstackRegionList**](docs/OpenstackCloudCredentialAPI.md#openstackregionlist) | **Post** /api/v1/openstack/regions | Retrieve Openstack regions
+*OpenstackCloudCredentialAPI* | [**OpenstackStorageTypes**](docs/OpenstackCloudCredentialAPI.md#openstackstoragetypes) | **Post** /api/v1/openstack/storage-types | Openstack storage type list
 *OpenstackCloudCredentialAPI* | [**OpenstackSubnet**](docs/OpenstackCloudCredentialAPI.md#openstacksubnet) | **Post** /api/v1/openstack/subnets | Retrieve Openstack subnets
 *OpenstackCloudCredentialAPI* | [**OpenstackUpdate**](docs/OpenstackCloudCredentialAPI.md#openstackupdate) | **Post** /api/v1/openstack/update | Update Openstack credentials
 *OpenstackCloudCredentialAPI* | [**OpenstackVolumes**](docs/OpenstackCloudCredentialAPI.md#openstackvolumes) | **Post** /api/v1/openstack/volumes | Openstack volume list
@@ -902,6 +903,7 @@ Class | Method | HTTP request | Description
  - [CheckAwsCommand](docs/CheckAwsCommand.md)
  - [CheckAzureCommand](docs/CheckAzureCommand.md)
  - [CheckAzureCpuQuotaCommand](docs/CheckAzureCpuQuotaCommand.md)
+ - [CheckOpenstackAvailabilityResponse](docs/CheckOpenstackAvailabilityResponse.md)
  - [CheckOpenstackCommand](docs/CheckOpenstackCommand.md)
  - [CheckPrometheusCommand](docs/CheckPrometheusCommand.md)
  - [CheckS3Command](docs/CheckS3Command.md)
@@ -1272,6 +1274,7 @@ Class | Method | HTTP request | Description
  - [OpenstackNetworkDto](docs/OpenstackNetworkDto.md)
  - [OpenstackQuotaList](docs/OpenstackQuotaList.md)
  - [OpenstackQuotasCommand](docs/OpenstackQuotasCommand.md)
+ - [OpenstackStorageTypeListQuery](docs/OpenstackStorageTypeListQuery.md)
  - [OpenstackSubnetListQuery](docs/OpenstackSubnetListQuery.md)
  - [OpenstackVolumeQuotaDto](docs/OpenstackVolumeQuotaDto.md)
  - [OpenstackVolumeTypeListQuery](docs/OpenstackVolumeTypeListQuery.md)
