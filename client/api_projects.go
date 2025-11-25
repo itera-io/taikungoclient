@@ -1834,6 +1834,7 @@ type ApiProjectsDropdownRequest struct {
 	userId *string
 	ready *bool
 	isBoundToCatalog *bool
+	isLocked *bool
 }
 
 func (r ApiProjectsDropdownRequest) OrganizationId(organizationId int32) ApiProjectsDropdownRequest {
@@ -1868,6 +1869,11 @@ func (r ApiProjectsDropdownRequest) Ready(ready bool) ApiProjectsDropdownRequest
 
 func (r ApiProjectsDropdownRequest) IsBoundToCatalog(isBoundToCatalog bool) ApiProjectsDropdownRequest {
 	r.isBoundToCatalog = &isBoundToCatalog
+	return r
+}
+
+func (r ApiProjectsDropdownRequest) IsLocked(isLocked bool) ApiProjectsDropdownRequest {
+	r.isLocked = &isLocked
 	return r
 }
 
@@ -1929,6 +1935,9 @@ func (a *ProjectsAPIService) ProjectsDropdownExecute(r ApiProjectsDropdownReques
 	}
 	if r.isBoundToCatalog != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "IsBoundToCatalog", r.isBoundToCatalog, "form", "")
+	}
+	if r.isLocked != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "IsLocked", r.isLocked, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
