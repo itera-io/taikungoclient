@@ -111,6 +111,8 @@ type APIClient struct {
 
 	InfraBillingSummaryAPI *InfraBillingSummaryAPIService
 
+	InternalAPI *InternalAPIService
+
 	InvoicesAPI *InvoicesAPIService
 
 	KeycloakAPI *KeycloakAPIService
@@ -258,6 +260,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ImportedClusterAPI = (*ImportedClusterAPIService)(&c.common)
 	c.InfraAPI = (*InfraAPIService)(&c.common)
 	c.InfraBillingSummaryAPI = (*InfraBillingSummaryAPIService)(&c.common)
+	c.InternalAPI = (*InternalAPIService)(&c.common)
 	c.InvoicesAPI = (*InvoicesAPIService)(&c.common)
 	c.KeycloakAPI = (*KeycloakAPIService)(&c.common)
 	c.KubeConfigAPI = (*KubeConfigAPIService)(&c.common)

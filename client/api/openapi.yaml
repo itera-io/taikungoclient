@@ -6718,8 +6718,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-12-12T00:03:56.2569521Z
-                  createdAt: 2025-12-12T00:03:56.2569521Z
+                  lastValidated: 2025-12-12T08:16:43.7786078Z
+                  createdAt: 2025-12-12T08:16:43.7786078Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6830,14 +6830,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-12-12T00:03:56.2569521Z
+                    lastBackup: 2025-12-12T08:16:43.7786078Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-12-12T00:03:56.2569521Z
+                  createdAt: 2025-12-12T08:16:43.7786078Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-12-12T00:03:56.2569521Z
+                  lastBackup: 2025-12-12T08:16:43.7786078Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6948,8 +6948,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-12-12T00:03:56.2569521Z
-                  expiration: 2025-12-12T00:03:56.2569521Z
+                  createdAt: 2025-12-12T08:16:43.7786078Z
+                  expiration: 2025-12-12T08:16:43.7786078Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -7059,7 +7059,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-12-12T00:03:56.2569521Z
+                  createdAt: 2025-12-12T08:16:43.7786078Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -7175,9 +7175,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-12-12T00:03:56.2569521+00:00
-                  startTimeStamp: 2025-12-12T00:03:56.2569521+00:00
-                  createdAt: 2025-12-12T00:03:56.2569521Z
+                  completionDateTime: 2025-12-12T08:16:43.7786078+00:00
+                  startTimeStamp: 2025-12-12T08:16:43.7786078+00:00
+                  createdAt: 2025-12-12T08:16:43.7786078Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -17515,6 +17515,150 @@ paths:
       summary: Retrieve infra billing info
       tags:
       - Infra billing summary
+  /api/v1/internal/alerts:
+    get:
+      operationId: internal-alerts-list
+      parameters:
+      - explode: true
+        in: query
+        name: ProjectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: LastAlertId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/InternalAlertDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve alerts list
+      tags:
+      - Internal
+  /api/v1/internal/projects:
+    get:
+      operationId: internal-projects-list
+      parameters:
+      - explode: true
+        in: query
+        name: Limit
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: LastProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/InternalProjectListDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve projects list
+      tags:
+      - Internal
   /api/v1/invoices/update/{invoiceId}:
     put:
       operationId: invoices-update
@@ -55527,6 +55671,83 @@ components:
           format: int32
           nullable: true
           type: integer
+      type: object
+    InternalAlertDto:
+      additionalProperties: false
+      example:
+        fingerprint: fingerprint
+        description: description
+        id: 0
+        projectId: 6
+      properties:
+        id:
+          format: int32
+          type: integer
+        fingerprint:
+          nullable: true
+          type: string
+        description:
+          nullable: true
+          type: string
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    InternalProjectListDto:
+      additionalProperties: false
+      example:
+        accessIp: accessIp
+        prometheusUrl: prometheusUrl
+        health: 5
+        isMonitoringEnabled: true
+        token: token
+        organizationId: 1
+        lokiUrl: lokiUrl
+        password: password
+        alertManagerUrl: alertManagerUrl
+        name: name
+        id: 0
+        status: 6
+        kubernetesVersion: kubernetesVersion
+        username: username
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          type: string
+        token:
+          type: string
+        status:
+          format: int32
+          type: integer
+        organizationId:
+          format: int32
+          type: integer
+        health:
+          format: int32
+          type: integer
+        kubernetesVersion:
+          type: string
+        accessIp:
+          type: string
+        isMonitoringEnabled:
+          type: boolean
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+        prometheusUrl:
+          nullable: true
+          type: string
+        alertManagerUrl:
+          nullable: true
+          type: string
+        lokiUrl:
+          nullable: true
+          type: string
       type: object
     InvoiceDto:
       additionalProperties: false

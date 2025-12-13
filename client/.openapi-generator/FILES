@@ -33,6 +33,7 @@ api_images.go
 api_imported_cluster.go
 api_infra.go
 api_infra_billing_summary.go
+api_internal.go
 api_invoices.go
 api_keycloak.go
 api_kube_config.go
@@ -521,6 +522,9 @@ docs/IngressSearchList.md
 docs/InstanceAppListDto.md
 docs/InteractiveShellDto.md
 docs/InteractiveShellSendCommand.md
+docs/InternalAPI.md
+docs/InternalAlertDto.md
+docs/InternalProjectListDto.md
 docs/InvoiceDto.md
 docs/InvoiceListDto.md
 docs/InvoiceSecret.md
@@ -1416,6 +1420,8 @@ model_ingress_search_list.go
 model_instance_app_list_dto.go
 model_interactive_shell_dto.go
 model_interactive_shell_send_command.go
+model_internal_alert_dto.go
+model_internal_project_list_dto.go
 model_invoice_dto.go
 model_invoice_list_dto.go
 model_invoice_secret.go
@@ -1883,6 +1889,7 @@ test/api_images_test.go
 test/api_imported_cluster_test.go
 test/api_infra_billing_summary_test.go
 test/api_infra_test.go
+test/api_internal_test.go
 test/api_invoices_test.go
 test/api_keycloak_test.go
 test/api_kube_config_role_test.go

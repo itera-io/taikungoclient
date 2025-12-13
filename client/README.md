@@ -354,6 +354,8 @@ Class | Method | HTTP request | Description
 *InfraAPI* | [**InfraProductList**](docs/InfraAPI.md#infraproductlist) | **Get** /api/v1/infra/list | Retrieve infra products list
 *InfraBillingSummaryAPI* | [**InfraBillingSummaryCreate**](docs/InfraBillingSummaryAPI.md#infrabillingsummarycreate) | **Post** /api/v1/infra-billing-summary/create | Add infra billing summary
 *InfraBillingSummaryAPI* | [**InfraBillingSummaryList**](docs/InfraBillingSummaryAPI.md#infrabillingsummarylist) | **Post** /api/v1/infra-billing-summary/list | Retrieve infra billing info
+*InternalAPI* | [**InternalAlertsList**](docs/InternalAPI.md#internalalertslist) | **Get** /api/v1/internal/alerts | Retrieve alerts list
+*InternalAPI* | [**InternalProjectsList**](docs/InternalAPI.md#internalprojectslist) | **Get** /api/v1/internal/projects | Retrieve projects list
 *InvoicesAPI* | [**InvoicesCreate**](docs/InvoicesAPI.md#invoicescreate) | **Post** /api/v1/invoices/create | Create invoice
 *InvoicesAPI* | [**InvoicesDownload**](docs/InvoicesAPI.md#invoicesdownload) | **Post** /api/v1/invoices/download | Download invoice
 *InvoicesAPI* | [**InvoicesList**](docs/InvoicesAPI.md#invoiceslist) | **Get** /api/v1/invoices/list | Invoices list
@@ -1161,6 +1163,8 @@ Class | Method | HTTP request | Description
  - [InstanceAppListDto](docs/InstanceAppListDto.md)
  - [InteractiveShellDto](docs/InteractiveShellDto.md)
  - [InteractiveShellSendCommand](docs/InteractiveShellSendCommand.md)
+ - [InternalAlertDto](docs/InternalAlertDto.md)
+ - [InternalProjectListDto](docs/InternalProjectListDto.md)
  - [InvoiceDto](docs/InvoiceDto.md)
  - [InvoiceListDto](docs/InvoiceListDto.md)
  - [InvoiceSecret](docs/InvoiceSecret.md)
