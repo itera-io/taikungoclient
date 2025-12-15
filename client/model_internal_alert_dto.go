@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the InternalAlertDto type satisfies the MappedNullable interface at compile time
@@ -23,6 +24,7 @@ type InternalAlertDto struct {
 	Id *int32 `json:"id,omitempty"`
 	Fingerprint NullableString `json:"fingerprint,omitempty"`
 	Description NullableString `json:"description,omitempty"`
+	StartsAt *time.Time `json:"startsAt,omitempty"`
 	ProjectId *int32 `json:"projectId,omitempty"`
 }
 
@@ -159,6 +161,38 @@ func (o *InternalAlertDto) UnsetDescription() {
 	o.Description.Unset()
 }
 
+// GetStartsAt returns the StartsAt field value if set, zero value otherwise.
+func (o *InternalAlertDto) GetStartsAt() time.Time {
+	if o == nil || IsNil(o.StartsAt) {
+		var ret time.Time
+		return ret
+	}
+	return *o.StartsAt
+}
+
+// GetStartsAtOk returns a tuple with the StartsAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InternalAlertDto) GetStartsAtOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.StartsAt) {
+		return nil, false
+	}
+	return o.StartsAt, true
+}
+
+// HasStartsAt returns a boolean if a field has been set.
+func (o *InternalAlertDto) HasStartsAt() bool {
+	if o != nil && !IsNil(o.StartsAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetStartsAt gets a reference to the given time.Time and assigns it to the StartsAt field.
+func (o *InternalAlertDto) SetStartsAt(v time.Time) {
+	o.StartsAt = &v
+}
+
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
 func (o *InternalAlertDto) GetProjectId() int32 {
 	if o == nil || IsNil(o.ProjectId) {
@@ -209,6 +243,9 @@ func (o InternalAlertDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
+	}
+	if !IsNil(o.StartsAt) {
+		toSerialize["startsAt"] = o.StartsAt
 	}
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId

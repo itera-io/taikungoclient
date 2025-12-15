@@ -232,11 +232,17 @@ type ApiInternalProjectsListRequest struct {
 	ctx context.Context
 	ApiService *InternalAPIService
 	limit *int32
+	projectId *int32
 	lastProjectId *int32
 }
 
 func (r ApiInternalProjectsListRequest) Limit(limit int32) ApiInternalProjectsListRequest {
 	r.limit = &limit
+	return r
+}
+
+func (r ApiInternalProjectsListRequest) ProjectId(projectId int32) ApiInternalProjectsListRequest {
+	r.projectId = &projectId
 	return r
 }
 
@@ -287,6 +293,9 @@ func (a *InternalAPIService) InternalProjectsListExecute(r ApiInternalProjectsLi
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
+	}
 	if r.lastProjectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "LastProjectId", r.lastProjectId, "form", "")
 	}
