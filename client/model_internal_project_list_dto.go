@@ -22,12 +22,13 @@ var _ MappedNullable = &InternalProjectListDto{}
 type InternalProjectListDto struct {
 	Id *int32 `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Token *string `json:"token,omitempty"`
+	Token NullableString `json:"token,omitempty"`
 	Status *int32 `json:"status,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
 	Health *int32 `json:"health,omitempty"`
-	KubernetesVersion *string `json:"kubernetesVersion,omitempty"`
-	AccessIp *string `json:"accessIp,omitempty"`
+	ImportClusterType *int32 `json:"importClusterType,omitempty"`
+	KubernetesVersion NullableString `json:"kubernetesVersion,omitempty"`
+	AccessIp NullableString `json:"accessIp,omitempty"`
 	IsMonitoringEnabled *bool `json:"isMonitoringEnabled,omitempty"`
 	Username NullableString `json:"username,omitempty"`
 	Password NullableString `json:"password,omitempty"`
@@ -117,36 +118,46 @@ func (o *InternalProjectListDto) SetName(v string) {
 	o.Name = &v
 }
 
-// GetToken returns the Token field value if set, zero value otherwise.
+// GetToken returns the Token field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InternalProjectListDto) GetToken() string {
-	if o == nil || IsNil(o.Token) {
+	if o == nil || IsNil(o.Token.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Token
+	return *o.Token.Get()
 }
 
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InternalProjectListDto) GetTokenOk() (*string, bool) {
-	if o == nil || IsNil(o.Token) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Token, true
+	return o.Token.Get(), o.Token.IsSet()
 }
 
 // HasToken returns a boolean if a field has been set.
 func (o *InternalProjectListDto) HasToken() bool {
-	if o != nil && !IsNil(o.Token) {
+	if o != nil && o.Token.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetToken gets a reference to the given string and assigns it to the Token field.
+// SetToken gets a reference to the given NullableString and assigns it to the Token field.
 func (o *InternalProjectListDto) SetToken(v string) {
-	o.Token = &v
+	o.Token.Set(&v)
+}
+// SetTokenNil sets the value for Token to be an explicit nil
+func (o *InternalProjectListDto) SetTokenNil() {
+	o.Token.Set(nil)
+}
+
+// UnsetToken ensures that no value is present for Token, not even an explicit nil
+func (o *InternalProjectListDto) UnsetToken() {
+	o.Token.Unset()
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -245,68 +256,120 @@ func (o *InternalProjectListDto) SetHealth(v int32) {
 	o.Health = &v
 }
 
-// GetKubernetesVersion returns the KubernetesVersion field value if set, zero value otherwise.
+// GetImportClusterType returns the ImportClusterType field value if set, zero value otherwise.
+func (o *InternalProjectListDto) GetImportClusterType() int32 {
+	if o == nil || IsNil(o.ImportClusterType) {
+		var ret int32
+		return ret
+	}
+	return *o.ImportClusterType
+}
+
+// GetImportClusterTypeOk returns a tuple with the ImportClusterType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InternalProjectListDto) GetImportClusterTypeOk() (*int32, bool) {
+	if o == nil || IsNil(o.ImportClusterType) {
+		return nil, false
+	}
+	return o.ImportClusterType, true
+}
+
+// HasImportClusterType returns a boolean if a field has been set.
+func (o *InternalProjectListDto) HasImportClusterType() bool {
+	if o != nil && !IsNil(o.ImportClusterType) {
+		return true
+	}
+
+	return false
+}
+
+// SetImportClusterType gets a reference to the given int32 and assigns it to the ImportClusterType field.
+func (o *InternalProjectListDto) SetImportClusterType(v int32) {
+	o.ImportClusterType = &v
+}
+
+// GetKubernetesVersion returns the KubernetesVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InternalProjectListDto) GetKubernetesVersion() string {
-	if o == nil || IsNil(o.KubernetesVersion) {
+	if o == nil || IsNil(o.KubernetesVersion.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.KubernetesVersion
+	return *o.KubernetesVersion.Get()
 }
 
 // GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InternalProjectListDto) GetKubernetesVersionOk() (*string, bool) {
-	if o == nil || IsNil(o.KubernetesVersion) {
+	if o == nil {
 		return nil, false
 	}
-	return o.KubernetesVersion, true
+	return o.KubernetesVersion.Get(), o.KubernetesVersion.IsSet()
 }
 
 // HasKubernetesVersion returns a boolean if a field has been set.
 func (o *InternalProjectListDto) HasKubernetesVersion() bool {
-	if o != nil && !IsNil(o.KubernetesVersion) {
+	if o != nil && o.KubernetesVersion.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetKubernetesVersion gets a reference to the given string and assigns it to the KubernetesVersion field.
+// SetKubernetesVersion gets a reference to the given NullableString and assigns it to the KubernetesVersion field.
 func (o *InternalProjectListDto) SetKubernetesVersion(v string) {
-	o.KubernetesVersion = &v
+	o.KubernetesVersion.Set(&v)
+}
+// SetKubernetesVersionNil sets the value for KubernetesVersion to be an explicit nil
+func (o *InternalProjectListDto) SetKubernetesVersionNil() {
+	o.KubernetesVersion.Set(nil)
 }
 
-// GetAccessIp returns the AccessIp field value if set, zero value otherwise.
+// UnsetKubernetesVersion ensures that no value is present for KubernetesVersion, not even an explicit nil
+func (o *InternalProjectListDto) UnsetKubernetesVersion() {
+	o.KubernetesVersion.Unset()
+}
+
+// GetAccessIp returns the AccessIp field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InternalProjectListDto) GetAccessIp() string {
-	if o == nil || IsNil(o.AccessIp) {
+	if o == nil || IsNil(o.AccessIp.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AccessIp
+	return *o.AccessIp.Get()
 }
 
 // GetAccessIpOk returns a tuple with the AccessIp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InternalProjectListDto) GetAccessIpOk() (*string, bool) {
-	if o == nil || IsNil(o.AccessIp) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AccessIp, true
+	return o.AccessIp.Get(), o.AccessIp.IsSet()
 }
 
 // HasAccessIp returns a boolean if a field has been set.
 func (o *InternalProjectListDto) HasAccessIp() bool {
-	if o != nil && !IsNil(o.AccessIp) {
+	if o != nil && o.AccessIp.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAccessIp gets a reference to the given string and assigns it to the AccessIp field.
+// SetAccessIp gets a reference to the given NullableString and assigns it to the AccessIp field.
 func (o *InternalProjectListDto) SetAccessIp(v string) {
-	o.AccessIp = &v
+	o.AccessIp.Set(&v)
+}
+// SetAccessIpNil sets the value for AccessIp to be an explicit nil
+func (o *InternalProjectListDto) SetAccessIpNil() {
+	o.AccessIp.Set(nil)
+}
+
+// UnsetAccessIp ensures that no value is present for AccessIp, not even an explicit nil
+func (o *InternalProjectListDto) UnsetAccessIp() {
+	o.AccessIp.Unset()
 }
 
 // GetIsMonitoringEnabled returns the IsMonitoringEnabled field value if set, zero value otherwise.
@@ -567,8 +630,8 @@ func (o InternalProjectListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.Token) {
-		toSerialize["token"] = o.Token
+	if o.Token.IsSet() {
+		toSerialize["token"] = o.Token.Get()
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
@@ -579,11 +642,14 @@ func (o InternalProjectListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Health) {
 		toSerialize["health"] = o.Health
 	}
-	if !IsNil(o.KubernetesVersion) {
-		toSerialize["kubernetesVersion"] = o.KubernetesVersion
+	if !IsNil(o.ImportClusterType) {
+		toSerialize["importClusterType"] = o.ImportClusterType
 	}
-	if !IsNil(o.AccessIp) {
-		toSerialize["accessIp"] = o.AccessIp
+	if o.KubernetesVersion.IsSet() {
+		toSerialize["kubernetesVersion"] = o.KubernetesVersion.Get()
+	}
+	if o.AccessIp.IsSet() {
+		toSerialize["accessIp"] = o.AccessIp.Get()
 	}
 	if !IsNil(o.IsMonitoringEnabled) {
 		toSerialize["isMonitoringEnabled"] = o.IsMonitoringEnabled
