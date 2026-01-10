@@ -563,28 +563,13 @@ func (a *ProjectTemplatesAPIService) ProjectTemplatesDropdownExecute(r ApiProjec
 type ApiProjectTemplatesListRequest struct {
 	ctx context.Context
 	ApiService *ProjectTemplatesAPIService
-	limit *int32
-	offset *int32
-	organizationId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	id *int32
-}
-
-func (r ApiProjectTemplatesListRequest) Limit(limit int32) ApiProjectTemplatesListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiProjectTemplatesListRequest) Offset(offset int32) ApiProjectTemplatesListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiProjectTemplatesListRequest) OrganizationId(organizationId int32) ApiProjectTemplatesListRequest {
-	r.organizationId = &organizationId
-	return r
+	organizationId *int32
+	offset *int32
+	limit *int32
 }
 
 func (r ApiProjectTemplatesListRequest) SortBy(sortBy string) ApiProjectTemplatesListRequest {
@@ -604,6 +589,21 @@ func (r ApiProjectTemplatesListRequest) Search(search string) ApiProjectTemplate
 
 func (r ApiProjectTemplatesListRequest) Id(id int32) ApiProjectTemplatesListRequest {
 	r.id = &id
+	return r
+}
+
+func (r ApiProjectTemplatesListRequest) OrganizationId(organizationId int32) ApiProjectTemplatesListRequest {
+	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiProjectTemplatesListRequest) Offset(offset int32) ApiProjectTemplatesListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiProjectTemplatesListRequest) Limit(limit int32) ApiProjectTemplatesListRequest {
+	r.limit = &limit
 	return r
 }
 
@@ -645,15 +645,6 @@ func (a *ProjectTemplatesAPIService) ProjectTemplatesListExecute(r ApiProjectTem
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	}
-	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
-	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
@@ -665,6 +656,15 @@ func (a *ProjectTemplatesAPIService) ProjectTemplatesListExecute(r ApiProjectTem
 	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
+	}
+	if r.organizationId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

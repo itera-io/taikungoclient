@@ -892,17 +892,17 @@ func (a *AdminAPIService) AdminExtendTrialPeriodExecute(r ApiAdminExtendTrialPer
 type ApiAdminKeycloakListRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
-	limit *int32
 	offset *int32
-}
-
-func (r ApiAdminKeycloakListRequest) Limit(limit int32) ApiAdminKeycloakListRequest {
-	r.limit = &limit
-	return r
+	limit *int32
 }
 
 func (r ApiAdminKeycloakListRequest) Offset(offset int32) ApiAdminKeycloakListRequest {
 	r.offset = &offset
+	return r
+}
+
+func (r ApiAdminKeycloakListRequest) Limit(limit int32) ApiAdminKeycloakListRequest {
+	r.limit = &limit
 	return r
 }
 
@@ -944,11 +944,11 @@ func (a *AdminAPIService) AdminKeycloakListExecute(r ApiAdminKeycloakListRequest
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
-	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1605,20 +1605,10 @@ func (a *AdminAPIService) AdminMoveOrganizationExecute(r ApiAdminMoveOrganizatio
 type ApiAdminOrganizationsRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
-	limit *int32
-	offset *int32
 	partnerId *int32
 	search *string
-}
-
-func (r ApiAdminOrganizationsRequest) Limit(limit int32) ApiAdminOrganizationsRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiAdminOrganizationsRequest) Offset(offset int32) ApiAdminOrganizationsRequest {
-	r.offset = &offset
-	return r
+	offset *int32
+	limit *int32
 }
 
 func (r ApiAdminOrganizationsRequest) PartnerId(partnerId int32) ApiAdminOrganizationsRequest {
@@ -1628,6 +1618,16 @@ func (r ApiAdminOrganizationsRequest) PartnerId(partnerId int32) ApiAdminOrganiz
 
 func (r ApiAdminOrganizationsRequest) Search(search string) ApiAdminOrganizationsRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiAdminOrganizationsRequest) Offset(offset int32) ApiAdminOrganizationsRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiAdminOrganizationsRequest) Limit(limit int32) ApiAdminOrganizationsRequest {
+	r.limit = &limit
 	return r
 }
 
@@ -1669,17 +1669,17 @@ func (a *AdminAPIService) AdminOrganizationsExecute(r ApiAdminOrganizationsReque
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	}
 	if r.partnerId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "PartnerId", r.partnerId, "form", "")
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1817,20 +1817,10 @@ func (a *AdminAPIService) AdminOrganizationsExecute(r ApiAdminOrganizationsReque
 type ApiAdminProjectListRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
-	limit *int32
-	offset *int32
 	organizationId *int32
 	search *string
-}
-
-func (r ApiAdminProjectListRequest) Limit(limit int32) ApiAdminProjectListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiAdminProjectListRequest) Offset(offset int32) ApiAdminProjectListRequest {
-	r.offset = &offset
-	return r
+	offset *int32
+	limit *int32
 }
 
 func (r ApiAdminProjectListRequest) OrganizationId(organizationId int32) ApiAdminProjectListRequest {
@@ -1840,6 +1830,16 @@ func (r ApiAdminProjectListRequest) OrganizationId(organizationId int32) ApiAdmi
 
 func (r ApiAdminProjectListRequest) Search(search string) ApiAdminProjectListRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiAdminProjectListRequest) Offset(offset int32) ApiAdminProjectListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiAdminProjectListRequest) Limit(limit int32) ApiAdminProjectListRequest {
+	r.limit = &limit
 	return r
 }
 
@@ -1881,17 +1881,17 @@ func (a *AdminAPIService) AdminProjectListExecute(r ApiAdminProjectListRequest) 
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	}
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

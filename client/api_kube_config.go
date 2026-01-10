@@ -1110,12 +1110,12 @@ type ApiKubeconfigListRequest struct {
 	ApiService *KubeConfigAPIService
 	projectId *int32
 	organizationId *int32
-	limit *int32
-	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	id *int32
+	offset *int32
+	limit *int32
 }
 
 func (r ApiKubeconfigListRequest) ProjectId(projectId int32) ApiKubeconfigListRequest {
@@ -1125,16 +1125,6 @@ func (r ApiKubeconfigListRequest) ProjectId(projectId int32) ApiKubeconfigListRe
 
 func (r ApiKubeconfigListRequest) OrganizationId(organizationId int32) ApiKubeconfigListRequest {
 	r.organizationId = &organizationId
-	return r
-}
-
-func (r ApiKubeconfigListRequest) Limit(limit int32) ApiKubeconfigListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiKubeconfigListRequest) Offset(offset int32) ApiKubeconfigListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -1155,6 +1145,16 @@ func (r ApiKubeconfigListRequest) Search(search string) ApiKubeconfigListRequest
 
 func (r ApiKubeconfigListRequest) Id(id int32) ApiKubeconfigListRequest {
 	r.id = &id
+	return r
+}
+
+func (r ApiKubeconfigListRequest) Offset(offset int32) ApiKubeconfigListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiKubeconfigListRequest) Limit(limit int32) ApiKubeconfigListRequest {
+	r.limit = &limit
 	return r
 }
 
@@ -1203,12 +1203,6 @@ func (a *KubeConfigAPIService) KubeconfigListExecute(r ApiKubeconfigListRequest)
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
 	parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
@@ -1220,6 +1214,12 @@ func (a *KubeConfigAPIService) KubeconfigListExecute(r ApiKubeconfigListRequest)
 	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

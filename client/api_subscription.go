@@ -568,21 +568,11 @@ func (a *SubscriptionAPIService) SubscriptionDeleteExecute(r ApiSubscriptionDele
 type ApiSubscriptionListRequest struct {
 	ctx context.Context
 	ApiService *SubscriptionAPIService
-	offset *int32
-	limit *int32
 	sortBy *string
 	sortDirection *string
 	search *string
-}
-
-func (r ApiSubscriptionListRequest) Offset(offset int32) ApiSubscriptionListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiSubscriptionListRequest) Limit(limit int32) ApiSubscriptionListRequest {
-	r.limit = &limit
-	return r
+	offset *int32
+	limit *int32
 }
 
 func (r ApiSubscriptionListRequest) SortBy(sortBy string) ApiSubscriptionListRequest {
@@ -597,6 +587,16 @@ func (r ApiSubscriptionListRequest) SortDirection(sortDirection string) ApiSubsc
 
 func (r ApiSubscriptionListRequest) Search(search string) ApiSubscriptionListRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiSubscriptionListRequest) Offset(offset int32) ApiSubscriptionListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiSubscriptionListRequest) Limit(limit int32) ApiSubscriptionListRequest {
+	r.limit = &limit
 	return r
 }
 
@@ -638,12 +638,6 @@ func (a *SubscriptionAPIService) SubscriptionListExecute(r ApiSubscriptionListRe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
-	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
@@ -652,6 +646,12 @@ func (a *SubscriptionAPIService) SubscriptionListExecute(r ApiSubscriptionListRe
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

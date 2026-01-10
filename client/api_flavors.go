@@ -2032,8 +2032,6 @@ func (a *FlavorsAPIService) FlavorsProxmoxFlavorsExecute(r ApiFlavorsProxmoxFlav
 type ApiFlavorsSelectedFlavorsForProjectRequest struct {
 	ctx context.Context
 	ApiService *FlavorsAPIService
-	limit *int32
-	offset *int32
 	projectId *int32
 	sortBy *string
 	sortDirection *string
@@ -2042,16 +2040,8 @@ type ApiFlavorsSelectedFlavorsForProjectRequest struct {
 	organizationId *int32
 	flavorName *string
 	withPrice *bool
-}
-
-func (r ApiFlavorsSelectedFlavorsForProjectRequest) Limit(limit int32) ApiFlavorsSelectedFlavorsForProjectRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiFlavorsSelectedFlavorsForProjectRequest) Offset(offset int32) ApiFlavorsSelectedFlavorsForProjectRequest {
-	r.offset = &offset
-	return r
+	offset *int32
+	limit *int32
 }
 
 func (r ApiFlavorsSelectedFlavorsForProjectRequest) ProjectId(projectId int32) ApiFlavorsSelectedFlavorsForProjectRequest {
@@ -2094,6 +2084,16 @@ func (r ApiFlavorsSelectedFlavorsForProjectRequest) WithPrice(withPrice bool) Ap
 	return r
 }
 
+func (r ApiFlavorsSelectedFlavorsForProjectRequest) Offset(offset int32) ApiFlavorsSelectedFlavorsForProjectRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiFlavorsSelectedFlavorsForProjectRequest) Limit(limit int32) ApiFlavorsSelectedFlavorsForProjectRequest {
+	r.limit = &limit
+	return r
+}
+
 func (r ApiFlavorsSelectedFlavorsForProjectRequest) Execute() (*BoundFlavorsForProjectsList, *http.Response, error) {
 	return r.ApiService.FlavorsSelectedFlavorsForProjectExecute(r)
 }
@@ -2132,12 +2132,6 @@ func (a *FlavorsAPIService) FlavorsSelectedFlavorsForProjectExecute(r ApiFlavors
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	}
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
@@ -2161,6 +2155,12 @@ func (a *FlavorsAPIService) FlavorsSelectedFlavorsForProjectExecute(r ApiFlavors
 	}
 	if r.withPrice != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "WithPrice", r.withPrice, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

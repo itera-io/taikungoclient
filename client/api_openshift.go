@@ -200,24 +200,12 @@ func (a *OpenshiftAPIService) OpenshiftCreateExecute(r ApiOpenshiftCreateRequest
 type ApiOpenshiftListRequest struct {
 	ctx context.Context
 	ApiService *OpenshiftAPIService
-	limit *int32
-	offset *int32
 	organizationId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
 	id *int32
-}
-
-func (r ApiOpenshiftListRequest) Limit(limit int32) ApiOpenshiftListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiOpenshiftListRequest) Offset(offset int32) ApiOpenshiftListRequest {
-	r.offset = &offset
-	return r
 }
 
 func (r ApiOpenshiftListRequest) OrganizationId(organizationId int32) ApiOpenshiftListRequest {
@@ -288,12 +276,6 @@ func (a *OpenshiftAPIService) OpenshiftListExecute(r ApiOpenshiftListRequest) (*
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	}
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}

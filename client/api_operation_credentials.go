@@ -380,24 +380,14 @@ func (a *OperationCredentialsAPIService) OpscredentialsDeleteExecute(r ApiOpscre
 type ApiOpscredentialsListRequest struct {
 	ctx context.Context
 	ApiService *OperationCredentialsAPIService
-	limit *int32
-	offset *int32
 	organizationId *int32
 	search *string
 	searchId *string
 	id *int32
 	sortBy *string
 	sortDirection *string
-}
-
-func (r ApiOpscredentialsListRequest) Limit(limit int32) ApiOpscredentialsListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiOpscredentialsListRequest) Offset(offset int32) ApiOpscredentialsListRequest {
-	r.offset = &offset
-	return r
+	offset *int32
+	limit *int32
 }
 
 func (r ApiOpscredentialsListRequest) OrganizationId(organizationId int32) ApiOpscredentialsListRequest {
@@ -427,6 +417,16 @@ func (r ApiOpscredentialsListRequest) SortBy(sortBy string) ApiOpscredentialsLis
 
 func (r ApiOpscredentialsListRequest) SortDirection(sortDirection string) ApiOpscredentialsListRequest {
 	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiOpscredentialsListRequest) Offset(offset int32) ApiOpscredentialsListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiOpscredentialsListRequest) Limit(limit int32) ApiOpscredentialsListRequest {
+	r.limit = &limit
 	return r
 }
 
@@ -468,12 +468,6 @@ func (a *OperationCredentialsAPIService) OpscredentialsListExecute(r ApiOpscrede
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	}
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
@@ -491,6 +485,12 @@ func (a *OperationCredentialsAPIService) OpscredentialsListExecute(r ApiOpscrede
 	}
 	if r.sortDirection != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

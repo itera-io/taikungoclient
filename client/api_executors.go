@@ -545,22 +545,12 @@ func (a *ExecutorsAPIService) ExecutorsEditHealthExecute(r ApiExecutorsEditHealt
 type ApiExecutorsListRequest struct {
 	ctx context.Context
 	ApiService *ExecutorsAPIService
-	offset *int32
-	limit *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	id *int32
-}
-
-func (r ApiExecutorsListRequest) Offset(offset int32) ApiExecutorsListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiExecutorsListRequest) Limit(limit int32) ApiExecutorsListRequest {
-	r.limit = &limit
-	return r
+	offset *int32
+	limit *int32
 }
 
 func (r ApiExecutorsListRequest) SortBy(sortBy string) ApiExecutorsListRequest {
@@ -580,6 +570,16 @@ func (r ApiExecutorsListRequest) Search(search string) ApiExecutorsListRequest {
 
 func (r ApiExecutorsListRequest) Id(id int32) ApiExecutorsListRequest {
 	r.id = &id
+	return r
+}
+
+func (r ApiExecutorsListRequest) Offset(offset int32) ApiExecutorsListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiExecutorsListRequest) Limit(limit int32) ApiExecutorsListRequest {
+	r.limit = &limit
 	return r
 }
 
@@ -621,12 +621,6 @@ func (a *ExecutorsAPIService) ExecutorsListExecute(r ApiExecutorsListRequest) (*
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
-	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
@@ -638,6 +632,12 @@ func (a *ExecutorsAPIService) ExecutorsListExecute(r ApiExecutorsListRequest) (*
 	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

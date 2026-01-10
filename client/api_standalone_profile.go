@@ -750,29 +750,14 @@ func (a *StandaloneProfileAPIService) StandaloneprofileEditExecute(r ApiStandalo
 type ApiStandaloneprofileListRequest struct {
 	ctx context.Context
 	ApiService *StandaloneProfileAPIService
-	limit *int32
-	offset *int32
-	organizationId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
 	id *int32
-}
-
-func (r ApiStandaloneprofileListRequest) Limit(limit int32) ApiStandaloneprofileListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiStandaloneprofileListRequest) Offset(offset int32) ApiStandaloneprofileListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiStandaloneprofileListRequest) OrganizationId(organizationId int32) ApiStandaloneprofileListRequest {
-	r.organizationId = &organizationId
-	return r
+	organizationId *int32
+	offset *int32
+	limit *int32
 }
 
 func (r ApiStandaloneprofileListRequest) SortBy(sortBy string) ApiStandaloneprofileListRequest {
@@ -797,6 +782,21 @@ func (r ApiStandaloneprofileListRequest) SearchId(searchId string) ApiStandalone
 
 func (r ApiStandaloneprofileListRequest) Id(id int32) ApiStandaloneprofileListRequest {
 	r.id = &id
+	return r
+}
+
+func (r ApiStandaloneprofileListRequest) OrganizationId(organizationId int32) ApiStandaloneprofileListRequest {
+	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiStandaloneprofileListRequest) Offset(offset int32) ApiStandaloneprofileListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiStandaloneprofileListRequest) Limit(limit int32) ApiStandaloneprofileListRequest {
+	r.limit = &limit
 	return r
 }
 
@@ -838,15 +838,6 @@ func (a *StandaloneProfileAPIService) StandaloneprofileListExecute(r ApiStandalo
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	}
-	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
-	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
@@ -861,6 +852,15 @@ func (a *StandaloneProfileAPIService) StandaloneprofileListExecute(r ApiStandalo
 	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
+	}
+	if r.organizationId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

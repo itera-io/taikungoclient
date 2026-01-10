@@ -1010,19 +1010,17 @@ paths:
         style: form
       - explode: true
         in: query
-        name: Limit
+        name: Offset
         required: false
         schema:
-          default: 50
           format: int32
           type: integer
         style: form
       - explode: true
         in: query
-        name: Offset
+        name: Limit
         required: false
         schema:
-          default: 0
           format: int32
           type: integer
         style: form
@@ -1061,6 +1059,10 @@ paths:
                   lastModified: 2023-11-21T12:09:23Z
                   lastModifiedBy: taikun
                   createdAt: 2023-11-21T12:09:23Z
+                offset: 0
+                limit: 50
+                hasMore: false
+                nextOffset: null
                 totalCount: 0
               schema:
                 $ref: "#/components/schemas/AccessProfilesList"
@@ -1967,7 +1969,7 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: Limit
+        name: Offset
         required: false
         schema:
           format: int32
@@ -1975,7 +1977,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: Offset
+        name: Limit
         required: false
         schema:
           format: int32
@@ -2033,22 +2035,6 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: PartnerId
         required: false
         schema:
@@ -2061,6 +2047,22 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -2114,22 +2116,6 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: OrganizationId
         required: false
         schema:
@@ -2142,6 +2128,22 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -3775,22 +3777,6 @@ paths:
         style: simple
       - explode: true
         in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: Search
         required: false
         schema:
@@ -3809,6 +3795,22 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -6718,8 +6720,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2026-01-06T16:49:26.0218618Z
-                  createdAt: 2026-01-06T16:49:26.0218618Z
+                  lastValidated: 2026-01-09T18:01:44.6147219Z
+                  createdAt: 2026-01-09T18:01:44.6147219Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6830,14 +6832,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2026-01-06T16:49:26.0218618Z
+                    lastBackup: 2026-01-09T18:01:44.6147219Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2026-01-06T16:49:26.0218618Z
+                  createdAt: 2026-01-09T18:01:44.6147219Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2026-01-06T16:49:26.0218618Z
+                  lastBackup: 2026-01-09T18:01:44.6147219Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6948,8 +6950,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2026-01-06T16:49:26.0218618Z
-                  expiration: 2026-01-06T16:49:26.0218618Z
+                  createdAt: 2026-01-09T18:01:44.6147219Z
+                  expiration: 2026-01-09T18:01:44.6147219Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -7059,7 +7061,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2026-01-06T16:49:26.0218618Z
+                  createdAt: 2026-01-09T18:01:44.6147219Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -7175,9 +7177,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2026-01-06T16:49:26.0218618+00:00
-                  startTimeStamp: 2026-01-06T16:49:26.0218618+00:00
-                  createdAt: 2026-01-06T16:49:26.0218618Z
+                  completionDateTime: 2026-01-09T18:01:44.6147219+00:00
+                  startTimeStamp: 2026-01-09T18:01:44.6147219+00:00
+                  createdAt: 2026-01-09T18:01:44.6147219Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -12607,22 +12609,6 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: SortBy
         required: false
         schema:
@@ -12645,6 +12631,22 @@ paths:
       - explode: true
         in: query
         name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
         required: false
         schema:
           format: int32
@@ -13153,22 +13155,6 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: ProjectId
         required: false
         schema:
@@ -13224,6 +13210,22 @@ paths:
         required: false
         schema:
           type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -15675,22 +15677,6 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: ProjectId
         required: false
         schema:
@@ -15728,6 +15714,22 @@ paths:
       - explode: true
         in: query
         name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
         required: false
         schema:
           format: int32
@@ -17117,22 +17119,6 @@ paths:
         style: simple
       - explode: true
         in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: SortBy
         required: false
         schema:
@@ -17158,6 +17144,22 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -18182,22 +18184,6 @@ paths:
         style: form
       - explode: true
         in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: SortBy
         required: false
         schema:
@@ -18220,6 +18206,22 @@ paths:
       - explode: true
         in: query
         name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
         required: false
         schema:
           format: int32
@@ -19959,22 +19961,6 @@ paths:
         style: simple
       - explode: true
         in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: SortBy
         required: false
         schema:
@@ -20016,6 +20002,22 @@ paths:
         schema:
           format: date-time
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -22231,22 +22233,6 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: OrganizationId
         required: false
         schema:
@@ -23234,22 +23220,6 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: OrganizationId
         required: false
         schema:
@@ -23291,6 +23261,22 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -24675,22 +24661,6 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: SortBy
         required: false
         schema:
@@ -24742,6 +24712,22 @@ paths:
       - explode: true
         in: query
         name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
         required: false
         schema:
           format: int32
@@ -25326,22 +25312,6 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: OrganizationId
         required: false
         schema:
@@ -25375,6 +25345,22 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -26775,22 +26761,6 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: SortBy
         required: false
         schema:
@@ -26829,6 +26799,22 @@ paths:
       - explode: true
         in: query
         name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
         required: false
         schema:
           format: int32
@@ -28057,22 +28043,6 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: SortBy
         required: false
         schema:
@@ -28151,6 +28121,22 @@ paths:
       - explode: true
         in: query
         name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
         required: false
         schema:
           format: int32
@@ -28258,30 +28244,6 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: OrganizationId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: SortBy
         required: false
         schema:
@@ -28304,6 +28266,30 @@ paths:
       - explode: true
         in: query
         name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
         required: false
         schema:
           format: int32
@@ -30218,22 +30204,6 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: SortBy
         required: false
         schema:
@@ -30265,6 +30235,22 @@ paths:
       - explode: true
         in: query
         name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
         required: false
         schema:
           format: int32
@@ -30686,22 +30672,6 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: PartnerId
         required: false
         schema:
@@ -30739,6 +30709,22 @@ paths:
       - explode: true
         in: query
         name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
         required: false
         schema:
           format: int32
@@ -31845,19 +31831,17 @@ paths:
         style: form
       - explode: true
         in: query
-        name: Limit
+        name: Offset
         required: false
         schema:
-          default: 50
           format: int32
           type: integer
         style: form
       - explode: true
         in: query
-        name: Offset
+        name: Limit
         required: false
         schema:
-          default: 0
           format: int32
           type: integer
         style: form
@@ -34173,22 +34157,6 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: ProjectId
         required: false
         schema:
@@ -34293,6 +34261,22 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -34695,22 +34679,6 @@ paths:
         style: form
       - explode: true
         in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: SortBy
         required: false
         schema:
@@ -34733,6 +34701,22 @@ paths:
       - explode: true
         in: query
         name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
         required: false
         schema:
           format: int32
@@ -35327,22 +35311,6 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: ProjectId
         required: false
         schema:
@@ -35447,6 +35415,22 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -36352,30 +36336,6 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: OrganizationId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: SortBy
         required: false
         schema:
@@ -36405,6 +36365,30 @@ paths:
       - explode: true
         in: query
         name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
         required: false
         schema:
           format: int32
@@ -36725,22 +36709,6 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: SortBy
         required: false
         schema:
@@ -36759,6 +36727,22 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -37575,7 +37559,7 @@ paths:
         style: simple
       - explode: true
         in: query
-        name: Limit
+        name: Offset
         required: false
         schema:
           format: int32
@@ -37583,7 +37567,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: Offset
+        name: Limit
         required: false
         schema:
           format: int32
@@ -37701,22 +37685,6 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: OrganizationId
         required: false
         schema:
@@ -37752,6 +37720,22 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -39380,22 +39364,6 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: OrganizationId
         required: false
         schema:
@@ -39443,6 +39411,22 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -40097,30 +40081,6 @@ paths:
     get:
       operationId: virtual-cluster-list
       parameters:
-      - explode: false
-        in: path
-        name: parentProjectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
       - explode: true
         in: query
         name: SortBy
@@ -40152,6 +40112,30 @@ paths:
       - explode: true
         in: query
         name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: false
+        in: path
+        name: parentProjectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
         required: false
         schema:
           format: int32
@@ -41548,18 +41532,37 @@ components:
             id: 1
           - address: address
             id: 1
-        totalCount: 3
+        offset: 3
+        limit: 2
+        hasMore: true
+        nextOffset: 4
+        totalCount: 7
       properties:
         data:
           items:
             $ref: "#/components/schemas/AccessProfilesListDto"
           nullable: true
           type: array
+        offset:
+          format: int32
+          type: integer
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
         totalCount:
           format: int32
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     AccessProfilesListDto:
@@ -41958,18 +41961,37 @@ components:
           name: name
           customerId: customerId
           id: 0
-        totalCount: 6
+        offset: 6
+        limit: 1
+        hasMore: true
+        nextOffset: 5
+        totalCount: 5
       properties:
         data:
           items:
             $ref: "#/components/schemas/AdminOrganizationsListDto"
           nullable: true
           type: array
+        offset:
+          format: int32
+          type: integer
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
         totalCount:
           format: int32
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     AdminOrganizationsListDto:
@@ -42053,18 +42075,37 @@ components:
           kubesprayCurrentVersion: kubesprayCurrentVersion
           id: 0
           status: "Null"
-        totalCount: 5
+        offset: 5
+        limit: 5
+        hasMore: true
+        nextOffset: 2
+        totalCount: 7
       properties:
         data:
           items:
             $ref: "#/components/schemas/AdminProjectsResponseData"
           nullable: true
           type: array
+        offset:
+          format: int32
+          type: integer
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
         totalCount:
           format: int32
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     AdminProjectsResponseData:
@@ -43194,18 +43235,37 @@ components:
           name: name
           id: id
           status: status
-        totalCount: 1
+        offset: 1
+        limit: 5
+        hasMore: true
+        nextOffset: 5
+        totalCount: 2
       properties:
         data:
           items:
             $ref: "#/components/schemas/AllTicketsDto"
           nullable: true
           type: array
+        offset:
+          format: int32
+          type: integer
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
         totalCount:
           format: int32
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     AllowedHostCreateDto:
@@ -43515,18 +43575,37 @@ components:
           userId: userId
           createAt: createAt
           isCsm: true
-        totalCount: 0
+        offset: 0
+        limit: 6
+        hasMore: true
+        nextOffset: 1
+        totalCount: 5
       properties:
         data:
           items:
             $ref: "#/components/schemas/ArticlesListDto"
           nullable: true
           type: array
+        offset:
+          format: int32
+          type: integer
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
         totalCount:
           format: int32
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     ArticlesListDto:
@@ -45372,18 +45451,37 @@ components:
           ram: 1.4658129805029452
           existsWindowsSpotPrice: true
           linuxSpotPrice: linuxSpotPrice
-        totalCount: 7
+        offset: 7
+        limit: 9
+        hasMore: true
+        nextOffset: 3
+        totalCount: 2
       properties:
         data:
           items:
             $ref: "#/components/schemas/BoundFlavorsForProjectsListDto"
           nullable: true
           type: array
+        offset:
+          format: int32
+          type: integer
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
         totalCount:
           format: int32
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     BoundFlavorsForProjectsListDto:
@@ -45485,18 +45583,37 @@ components:
           id: 0
           projectName: projectName
           projectId: 6
-        totalCount: 5
+        offset: 5
+        limit: 2
+        hasMore: true
+        nextOffset: 7
+        totalCount: 9
       properties:
         data:
           items:
             $ref: "#/components/schemas/BoundImagesForProjectsListDto"
           nullable: true
           type: array
+        offset:
+          format: int32
+          type: integer
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
         totalCount:
           format: int32
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     BoundImagesForProjectsListDto:
@@ -54592,28 +54709,28 @@ components:
             hidden: true
             enable: true
         data:
-          s3CredentialId: 2
+          s3CredentialId: 1
           accessIp: accessIp
           organizationName: organizationName
-          alertsCount: 7
+          alertsCount: 6
           isOpaEnabled: true
-          aiCredentialId: 4
+          aiCredentialId: 1
           importClusterType: None
           aiEnabled: true
           health: null
           isMonitoringEnabled: true
-          opaProfileId: 3
+          opaProfileId: 1
           cloudCredentialName: cloudCredentialName
           organizationId: 2
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
-          alertingProfileId: 9
+          alertingProfileId: 7
           cloudType: AWS
           isLocked: true
           name: name
-          cloudCredentialId: 7
+          cloudCredentialId: 4
           isBackupEnabled: true
-          id: 5
+          id: 3
           kubernetesVersion: kubernetesVersion
           status: null
       properties:
@@ -54747,28 +54864,28 @@ components:
             hidden: true
             enable: true
         data:
-          s3CredentialId: 2
+          s3CredentialId: 1
           accessIp: accessIp
           organizationName: organizationName
-          alertsCount: 7
+          alertsCount: 6
           isOpaEnabled: true
-          aiCredentialId: 4
+          aiCredentialId: 1
           importClusterType: None
           aiEnabled: true
           health: null
           isMonitoringEnabled: true
-          opaProfileId: 3
+          opaProfileId: 1
           cloudCredentialName: cloudCredentialName
           organizationId: 2
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
-          alertingProfileId: 9
+          alertingProfileId: 7
           cloudType: AWS
           isLocked: true
           name: name
-          cloudCredentialId: 7
+          cloudCredentialId: 4
           isBackupEnabled: true
-          id: 5
+          id: 3
           kubernetesVersion: kubernetesVersion
           status: null
       properties:
@@ -54929,28 +55046,28 @@ components:
             hidden: true
             enable: true
         data:
-          s3CredentialId: 2
+          s3CredentialId: 1
           accessIp: accessIp
           organizationName: organizationName
-          alertsCount: 7
+          alertsCount: 6
           isOpaEnabled: true
-          aiCredentialId: 4
+          aiCredentialId: 1
           importClusterType: None
           aiEnabled: true
           health: null
           isMonitoringEnabled: true
-          opaProfileId: 3
+          opaProfileId: 1
           cloudCredentialName: cloudCredentialName
           organizationId: 2
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
-          alertingProfileId: 9
+          alertingProfileId: 7
           cloudType: AWS
           isLocked: true
           name: name
-          cloudCredentialId: 7
+          cloudCredentialId: 4
           isBackupEnabled: true
-          id: 5
+          id: 3
           kubernetesVersion: kubernetesVersion
           status: null
       properties:
@@ -54989,28 +55106,28 @@ components:
     ImportedClusterDetailsDto:
       additionalProperties: false
       example:
-        s3CredentialId: 2
+        s3CredentialId: 1
         accessIp: accessIp
         organizationName: organizationName
-        alertsCount: 7
+        alertsCount: 6
         isOpaEnabled: true
-        aiCredentialId: 4
+        aiCredentialId: 1
         importClusterType: None
         aiEnabled: true
         health: null
         isMonitoringEnabled: true
-        opaProfileId: 3
+        opaProfileId: 1
         cloudCredentialName: cloudCredentialName
         organizationId: 2
         expiredAt: expiredAt
         alertingProfileName: alertingProfileName
-        alertingProfileId: 9
+        alertingProfileId: 7
         cloudType: AWS
         isLocked: true
         name: name
-        cloudCredentialId: 7
+        cloudCredentialId: 4
         isBackupEnabled: true
-        id: 5
+        id: 3
         kubernetesVersion: kubernetesVersion
         status: null
       properties:
@@ -55237,42 +55354,66 @@ components:
           isMaintenanceModeEnabled: true
           kubernetesVersion: kubernetesVersion
           status: "Null"
+        offset: 5
+        limit: 2
+        hasMore: true
         project:
-          s3CredentialId: 2
+          s3CredentialId: 1
           accessIp: accessIp
           organizationName: organizationName
-          alertsCount: 7
+          alertsCount: 6
           isOpaEnabled: true
-          aiCredentialId: 4
+          aiCredentialId: 1
           importClusterType: None
           aiEnabled: true
           health: null
           isMonitoringEnabled: true
-          opaProfileId: 3
+          opaProfileId: 1
           cloudCredentialName: cloudCredentialName
           organizationId: 2
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
-          alertingProfileId: 9
+          alertingProfileId: 7
           cloudType: AWS
           isLocked: true
           name: name
-          cloudCredentialId: 7
+          cloudCredentialId: 4
           isBackupEnabled: true
-          id: 5
+          id: 3
           kubernetesVersion: kubernetesVersion
           status: null
+        nextOffset: 7
+        totalCount: 9
       properties:
         data:
           items:
             $ref: "#/components/schemas/ImportedClusterListDto"
           nullable: true
           type: array
+        offset:
+          format: int32
+          type: integer
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
+        totalCount:
+          format: int32
+          type: integer
         project:
           $ref: "#/components/schemas/ImportedClusterDetailsDto"
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - project
+      - totalCount
       type: object
     ImportedClusterListDto:
       additionalProperties: false
@@ -59077,18 +59218,37 @@ components:
           id: 0
           lastModified: lastModified
           continentName: continentName
-        totalCount: 5
+        offset: 5
+        limit: 5
+        hasMore: true
+        nextOffset: 2
+        totalCount: 7
       properties:
         data:
           items:
             $ref: "#/components/schemas/OpenshiftListDto"
           nullable: true
           type: array
+        offset:
+          format: int32
+          type: integer
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
         totalCount:
           format: int32
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     OpenshiftListDto:
@@ -61114,13 +61274,29 @@ components:
           currency: currency
           id: 0
           userLimit: 5
-        totalCount: 4
+        offset: 4
+        limit: 7
+        hasMore: true
+        nextOffset: 1
+        totalCount: 1
       properties:
         data:
           items:
             $ref: "#/components/schemas/ListForPartnersDto"
           nullable: true
           type: array
+        offset:
+          format: int32
+          type: integer
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
         totalCount:
           format: int32
           type: integer
@@ -61132,7 +61308,10 @@ components:
       required:
       - activeSubscriptionStatus
       - data
+      - hasMore
       - isEligibleToSwitch
+      - limit
+      - offset
       - totalCount
       type: object
     ProblemDetails:
@@ -61637,18 +61816,37 @@ components:
           projectId: 5
           logs: logs
           status: None
-        totalCount: 5
+        offset: 5
+        limit: 2
+        hasMore: true
+        nextOffset: 7
+        totalCount: 9
       properties:
         data:
           items:
             $ref: "#/components/schemas/InstanceAppListDto"
           nullable: true
           type: array
+        offset:
+          format: int32
+          type: integer
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
         totalCount:
           format: int32
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     ProjectAppParamDto:
@@ -63856,18 +64054,37 @@ components:
           allowSpotWorkers: true
           monitoringEnabled: true
           kubernetesVersion: kubernetesVersion
-        totalCount: 1
+        offset: 1
+        limit: 5
+        hasMore: true
+        nextOffset: 5
+        totalCount: 2
       properties:
         data:
           items:
             $ref: "#/components/schemas/ProjectTemplateListDto"
           nullable: true
           type: array
+        offset:
+          format: int32
+          type: integer
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
         totalCount:
           format: int32
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     ProjectTemplateListDto:
@@ -67704,18 +67921,37 @@ components:
           name: name
           id: 0
           publicKey: publicKey
-        totalCount: 5
+        offset: 5
+        limit: 2
+        hasMore: true
+        nextOffset: 7
+        totalCount: 9
       properties:
         data:
           items:
             $ref: "#/components/schemas/StandAloneProfilesListDto"
           nullable: true
           type: array
+        offset:
+          format: int32
+          type: integer
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
         totalCount:
           format: int32
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     StandAloneProfilesListDto:
@@ -70910,6 +71146,9 @@ components:
             maxClusterRequests: 2.027123023002322
           isMaintenanceModeEnabled: true
           status: "Null"
+        offset: 1
+        limit: 1
+        hasMore: true
         project:
           isProjectMaintenanceModeEnabled: true
           organizationName: organizationName
@@ -70938,13 +71177,26 @@ components:
           projectCloudRevision: 1
           status: "Null"
           isMaintenanceModeEnabled: true
-        totalCount: 1
+        nextOffset: 6
+        totalCount: 7
       properties:
         data:
           items:
             $ref: "#/components/schemas/VClusterListDto"
           nullable: true
           type: array
+        offset:
+          format: int32
+          type: integer
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
         totalCount:
           format: int32
           type: integer
@@ -70952,6 +71204,9 @@ components:
           $ref: "#/components/schemas/ProjectDetailsForVmsDto"
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - project
       - totalCount
       type: object

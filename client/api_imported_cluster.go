@@ -611,22 +611,12 @@ type ApiImportedClusterDetailsRequest struct {
 	ctx context.Context
 	ApiService *ImportedClusterAPIService
 	id int32
-	limit *int32
-	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
-}
-
-func (r ApiImportedClusterDetailsRequest) Limit(limit int32) ApiImportedClusterDetailsRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiImportedClusterDetailsRequest) Offset(offset int32) ApiImportedClusterDetailsRequest {
-	r.offset = &offset
-	return r
+	offset *int32
+	limit *int32
 }
 
 func (r ApiImportedClusterDetailsRequest) SortBy(sortBy string) ApiImportedClusterDetailsRequest {
@@ -646,6 +636,16 @@ func (r ApiImportedClusterDetailsRequest) Search(search string) ApiImportedClust
 
 func (r ApiImportedClusterDetailsRequest) SearchId(searchId string) ApiImportedClusterDetailsRequest {
 	r.searchId = &searchId
+	return r
+}
+
+func (r ApiImportedClusterDetailsRequest) Offset(offset int32) ApiImportedClusterDetailsRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiImportedClusterDetailsRequest) Limit(limit int32) ApiImportedClusterDetailsRequest {
+	r.limit = &limit
 	return r
 }
 
@@ -690,12 +690,6 @@ func (a *ImportedClusterAPIService) ImportedClusterDetailsExecute(r ApiImportedC
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
@@ -707,6 +701,12 @@ func (a *ImportedClusterAPIService) ImportedClusterDetailsExecute(r ApiImportedC
 	}
 	if r.searchId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

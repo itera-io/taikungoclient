@@ -1981,8 +1981,6 @@ func (a *UsersAPIService) UsersForceToResetPasswordExecute(r ApiUsersForceToRese
 type ApiUsersListRequest struct {
 	ctx context.Context
 	ApiService *UsersAPIService
-	limit *int32
-	offset *int32
 	organizationId *int32
 	sortBy *string
 	sortDirection *string
@@ -1990,16 +1988,8 @@ type ApiUsersListRequest struct {
 	searchId *string
 	id *string
 	filterBy *string
-}
-
-func (r ApiUsersListRequest) Limit(limit int32) ApiUsersListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiUsersListRequest) Offset(offset int32) ApiUsersListRequest {
-	r.offset = &offset
-	return r
+	offset *int32
+	limit *int32
 }
 
 func (r ApiUsersListRequest) OrganizationId(organizationId int32) ApiUsersListRequest {
@@ -2034,6 +2024,16 @@ func (r ApiUsersListRequest) Id(id string) ApiUsersListRequest {
 
 func (r ApiUsersListRequest) FilterBy(filterBy string) ApiUsersListRequest {
 	r.filterBy = &filterBy
+	return r
+}
+
+func (r ApiUsersListRequest) Offset(offset int32) ApiUsersListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiUsersListRequest) Limit(limit int32) ApiUsersListRequest {
+	r.limit = &limit
 	return r
 }
 
@@ -2075,12 +2075,6 @@ func (a *UsersAPIService) UsersListExecute(r ApiUsersListRequest) (*UsersList, *
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	}
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
@@ -2101,6 +2095,12 @@ func (a *UsersAPIService) UsersListExecute(r ApiUsersListRequest) (*UsersList, *
 	}
 	if r.filterBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -584,8 +584,8 @@ type ApiS3credentialsListRequest struct {
 	id *int32
 	sortBy *string
 	sortDirection *string
-	limit *int32
 	offset *int32
+	limit *int32
 }
 
 func (r ApiS3credentialsListRequest) OrganizationId(organizationId int32) ApiS3credentialsListRequest {
@@ -618,13 +618,13 @@ func (r ApiS3credentialsListRequest) SortDirection(sortDirection string) ApiS3cr
 	return r
 }
 
-func (r ApiS3credentialsListRequest) Limit(limit int32) ApiS3credentialsListRequest {
-	r.limit = &limit
+func (r ApiS3credentialsListRequest) Offset(offset int32) ApiS3credentialsListRequest {
+	r.offset = &offset
 	return r
 }
 
-func (r ApiS3credentialsListRequest) Offset(offset int32) ApiS3credentialsListRequest {
-	r.offset = &offset
+func (r ApiS3credentialsListRequest) Limit(limit int32) ApiS3credentialsListRequest {
+	r.limit = &limit
 	return r
 }
 
@@ -688,19 +688,11 @@ func (a *S3CredentialsAPIService) S3credentialsListExecute(r ApiS3credentialsLis
 	if r.sortDirection != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
-	} else {
-        var defaultValue int32 = 50
-        parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", defaultValue, "form", "")
-        r.limit = &defaultValue
-	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	} else {
-        var defaultValue int32 = 0
-        parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", defaultValue, "form", "")
-        r.offset = &defaultValue
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

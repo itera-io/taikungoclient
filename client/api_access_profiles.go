@@ -606,8 +606,8 @@ type ApiAccessprofilesListRequest struct {
 	search *string
 	searchId *string
 	id *int32
-	limit *int32
 	offset *int32
+	limit *int32
 }
 
 func (r ApiAccessprofilesListRequest) OrganizationId(organizationId int32) ApiAccessprofilesListRequest {
@@ -640,13 +640,13 @@ func (r ApiAccessprofilesListRequest) Id(id int32) ApiAccessprofilesListRequest 
 	return r
 }
 
-func (r ApiAccessprofilesListRequest) Limit(limit int32) ApiAccessprofilesListRequest {
-	r.limit = &limit
+func (r ApiAccessprofilesListRequest) Offset(offset int32) ApiAccessprofilesListRequest {
+	r.offset = &offset
 	return r
 }
 
-func (r ApiAccessprofilesListRequest) Offset(offset int32) ApiAccessprofilesListRequest {
-	r.offset = &offset
+func (r ApiAccessprofilesListRequest) Limit(limit int32) ApiAccessprofilesListRequest {
+	r.limit = &limit
 	return r
 }
 
@@ -706,19 +706,11 @@ func (a *AccessProfilesAPIService) AccessprofilesListExecute(r ApiAccessprofiles
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
-	} else {
-        var defaultValue int32 = 50
-        parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", defaultValue, "form", "")
-        r.limit = &defaultValue
-	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	} else {
-        var defaultValue int32 = 0
-        parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", defaultValue, "form", "")
-        r.offset = &defaultValue
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

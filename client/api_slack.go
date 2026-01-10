@@ -579,26 +579,16 @@ type ApiSlackListRequest struct {
 	ctx context.Context
 	ApiService *SlackAPIService
 	organizationId *int32
-	limit *int32
-	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	id *int32
+	offset *int32
+	limit *int32
 }
 
 func (r ApiSlackListRequest) OrganizationId(organizationId int32) ApiSlackListRequest {
 	r.organizationId = &organizationId
-	return r
-}
-
-func (r ApiSlackListRequest) Limit(limit int32) ApiSlackListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiSlackListRequest) Offset(offset int32) ApiSlackListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -619,6 +609,16 @@ func (r ApiSlackListRequest) Search(search string) ApiSlackListRequest {
 
 func (r ApiSlackListRequest) Id(id int32) ApiSlackListRequest {
 	r.id = &id
+	return r
+}
+
+func (r ApiSlackListRequest) Offset(offset int32) ApiSlackListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiSlackListRequest) Limit(limit int32) ApiSlackListRequest {
+	r.limit = &limit
 	return r
 }
 
@@ -663,12 +663,6 @@ func (a *SlackAPIService) SlackListExecute(r ApiSlackListRequest) (*SlackConfigu
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
@@ -680,6 +674,12 @@ func (a *SlackAPIService) SlackListExecute(r ApiSlackListRequest) (*SlackConfigu
 	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
