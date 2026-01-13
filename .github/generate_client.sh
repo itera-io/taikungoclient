@@ -19,6 +19,7 @@ java -jar openapi-generator-cli.jar generate -i ./"$FILE_WEB" \
 --additional-properties=enumClassPrefix=true \
 --git-user-id="$GITHUB_USERNAME" \
 --git-repo-id="$GITHUB_REPO/client" \
+--skip-validate-spec \
 -o ./client
 
 # Delete automatically generated go.mod and go.sum. This interferes with our own package.
@@ -41,6 +42,7 @@ java -jar openapi-generator-cli.jar generate -i ./"$FILE_SHOWBACK" \
 --additional-properties=enumClassPrefix=true \
 --git-user-id="$GITHUB_USERNAME" \
 --git-repo-id="$GITHUB_REPO/showbackclient" \
+--skip-validate-spec \
 -o ./showbackclient
 
 # Delete automatically generated go.mod and go.sum. This interferes with our own package.
