@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the ListCatalogAppAvailableVersionsCommand type satisfies the MappedNullable interface at compile time
@@ -22,22 +20,17 @@ var _ MappedNullable = &ListCatalogAppAvailableVersionsCommand{}
 
 // ListCatalogAppAvailableVersionsCommand struct for ListCatalogAppAvailableVersionsCommand
 type ListCatalogAppAvailableVersionsCommand struct {
-	RepoName string `json:"repoName"`
-	PackageName string `json:"packageName"`
-	CurrentVersion string `json:"currentVersion"`
+	RepoName *string `json:"repoName,omitempty"`
+	PackageName *string `json:"packageName,omitempty"`
+	CurrentVersion *string `json:"currentVersion,omitempty"`
 }
-
-type _ListCatalogAppAvailableVersionsCommand ListCatalogAppAvailableVersionsCommand
 
 // NewListCatalogAppAvailableVersionsCommand instantiates a new ListCatalogAppAvailableVersionsCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewListCatalogAppAvailableVersionsCommand(repoName string, packageName string, currentVersion string) *ListCatalogAppAvailableVersionsCommand {
+func NewListCatalogAppAvailableVersionsCommand() *ListCatalogAppAvailableVersionsCommand {
 	this := ListCatalogAppAvailableVersionsCommand{}
-	this.RepoName = repoName
-	this.PackageName = packageName
-	this.CurrentVersion = currentVersion
 	return &this
 }
 
@@ -49,76 +42,100 @@ func NewListCatalogAppAvailableVersionsCommandWithDefaults() *ListCatalogAppAvai
 	return &this
 }
 
-// GetRepoName returns the RepoName field value
+// GetRepoName returns the RepoName field value if set, zero value otherwise.
 func (o *ListCatalogAppAvailableVersionsCommand) GetRepoName() string {
-	if o == nil {
+	if o == nil || IsNil(o.RepoName) {
 		var ret string
 		return ret
 	}
-
-	return o.RepoName
+	return *o.RepoName
 }
 
-// GetRepoNameOk returns a tuple with the RepoName field value
+// GetRepoNameOk returns a tuple with the RepoName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListCatalogAppAvailableVersionsCommand) GetRepoNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RepoName) {
 		return nil, false
 	}
-	return &o.RepoName, true
+	return o.RepoName, true
 }
 
-// SetRepoName sets field value
+// HasRepoName returns a boolean if a field has been set.
+func (o *ListCatalogAppAvailableVersionsCommand) HasRepoName() bool {
+	if o != nil && !IsNil(o.RepoName) {
+		return true
+	}
+
+	return false
+}
+
+// SetRepoName gets a reference to the given string and assigns it to the RepoName field.
 func (o *ListCatalogAppAvailableVersionsCommand) SetRepoName(v string) {
-	o.RepoName = v
+	o.RepoName = &v
 }
 
-// GetPackageName returns the PackageName field value
+// GetPackageName returns the PackageName field value if set, zero value otherwise.
 func (o *ListCatalogAppAvailableVersionsCommand) GetPackageName() string {
-	if o == nil {
+	if o == nil || IsNil(o.PackageName) {
 		var ret string
 		return ret
 	}
-
-	return o.PackageName
+	return *o.PackageName
 }
 
-// GetPackageNameOk returns a tuple with the PackageName field value
+// GetPackageNameOk returns a tuple with the PackageName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListCatalogAppAvailableVersionsCommand) GetPackageNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PackageName) {
 		return nil, false
 	}
-	return &o.PackageName, true
+	return o.PackageName, true
 }
 
-// SetPackageName sets field value
+// HasPackageName returns a boolean if a field has been set.
+func (o *ListCatalogAppAvailableVersionsCommand) HasPackageName() bool {
+	if o != nil && !IsNil(o.PackageName) {
+		return true
+	}
+
+	return false
+}
+
+// SetPackageName gets a reference to the given string and assigns it to the PackageName field.
 func (o *ListCatalogAppAvailableVersionsCommand) SetPackageName(v string) {
-	o.PackageName = v
+	o.PackageName = &v
 }
 
-// GetCurrentVersion returns the CurrentVersion field value
+// GetCurrentVersion returns the CurrentVersion field value if set, zero value otherwise.
 func (o *ListCatalogAppAvailableVersionsCommand) GetCurrentVersion() string {
-	if o == nil {
+	if o == nil || IsNil(o.CurrentVersion) {
 		var ret string
 		return ret
 	}
-
-	return o.CurrentVersion
+	return *o.CurrentVersion
 }
 
-// GetCurrentVersionOk returns a tuple with the CurrentVersion field value
+// GetCurrentVersionOk returns a tuple with the CurrentVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ListCatalogAppAvailableVersionsCommand) GetCurrentVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CurrentVersion) {
 		return nil, false
 	}
-	return &o.CurrentVersion, true
+	return o.CurrentVersion, true
 }
 
-// SetCurrentVersion sets field value
+// HasCurrentVersion returns a boolean if a field has been set.
+func (o *ListCatalogAppAvailableVersionsCommand) HasCurrentVersion() bool {
+	if o != nil && !IsNil(o.CurrentVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrentVersion gets a reference to the given string and assigns it to the CurrentVersion field.
 func (o *ListCatalogAppAvailableVersionsCommand) SetCurrentVersion(v string) {
-	o.CurrentVersion = v
+	o.CurrentVersion = &v
 }
 
 func (o ListCatalogAppAvailableVersionsCommand) MarshalJSON() ([]byte, error) {
@@ -131,49 +148,16 @@ func (o ListCatalogAppAvailableVersionsCommand) MarshalJSON() ([]byte, error) {
 
 func (o ListCatalogAppAvailableVersionsCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["repoName"] = o.RepoName
-	toSerialize["packageName"] = o.PackageName
-	toSerialize["currentVersion"] = o.CurrentVersion
+	if !IsNil(o.RepoName) {
+		toSerialize["repoName"] = o.RepoName
+	}
+	if !IsNil(o.PackageName) {
+		toSerialize["packageName"] = o.PackageName
+	}
+	if !IsNil(o.CurrentVersion) {
+		toSerialize["currentVersion"] = o.CurrentVersion
+	}
 	return toSerialize, nil
-}
-
-func (o *ListCatalogAppAvailableVersionsCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"repoName",
-		"packageName",
-		"currentVersion",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varListCatalogAppAvailableVersionsCommand := _ListCatalogAppAvailableVersionsCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varListCatalogAppAvailableVersionsCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ListCatalogAppAvailableVersionsCommand(varListCatalogAppAvailableVersionsCommand)
-
-	return err
 }
 
 type NullableListCatalogAppAvailableVersionsCommand struct {

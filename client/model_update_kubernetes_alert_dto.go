@@ -23,13 +23,13 @@ var _ MappedNullable = &UpdateKubernetesAlertDto{}
 
 // UpdateKubernetesAlertDto struct for UpdateKubernetesAlertDto
 type UpdateKubernetesAlertDto struct {
-	Status string `json:"status"`
-	Labels interface{} `json:"labels"`
+	Status *string `json:"status,omitempty"`
+	Labels interface{} `json:"labels,omitempty"`
 	StartsAt time.Time `json:"startsAt"`
 	EndsAt time.Time `json:"endsAt"`
-	Fingerprint string `json:"fingerprint"`
+	Fingerprint *string `json:"fingerprint,omitempty"`
 	IsSilenced NullableBool `json:"isSilenced,omitempty"`
-	SilenceReason string `json:"silenceReason"`
+	SilenceReason *string `json:"silenceReason,omitempty"`
 }
 
 type _UpdateKubernetesAlertDto UpdateKubernetesAlertDto
@@ -38,14 +38,10 @@ type _UpdateKubernetesAlertDto UpdateKubernetesAlertDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateKubernetesAlertDto(status string, labels interface{}, startsAt time.Time, endsAt time.Time, fingerprint string, silenceReason string) *UpdateKubernetesAlertDto {
+func NewUpdateKubernetesAlertDto(startsAt time.Time, endsAt time.Time) *UpdateKubernetesAlertDto {
 	this := UpdateKubernetesAlertDto{}
-	this.Status = status
-	this.Labels = labels
 	this.StartsAt = startsAt
 	this.EndsAt = endsAt
-	this.Fingerprint = fingerprint
-	this.SilenceReason = silenceReason
 	return &this
 }
 
@@ -57,42 +53,48 @@ func NewUpdateKubernetesAlertDtoWithDefaults() *UpdateKubernetesAlertDto {
 	return &this
 }
 
-// GetStatus returns the Status field value
+// GetStatus returns the Status field value if set, zero value otherwise.
 func (o *UpdateKubernetesAlertDto) GetStatus() string {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
-
-	return o.Status
+	return *o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateKubernetesAlertDto) GetStatusOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
-	return &o.Status, true
+	return o.Status, true
 }
 
-// SetStatus sets field value
+// HasStatus returns a boolean if a field has been set.
+func (o *UpdateKubernetesAlertDto) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *UpdateKubernetesAlertDto) SetStatus(v string) {
-	o.Status = v
+	o.Status = &v
 }
 
-// GetLabels returns the Labels field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetLabels returns the Labels field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateKubernetesAlertDto) GetLabels() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.Labels
 }
 
-// GetLabelsOk returns a tuple with the Labels field value
+// GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateKubernetesAlertDto) GetLabelsOk() (*interface{}, bool) {
@@ -102,7 +104,16 @@ func (o *UpdateKubernetesAlertDto) GetLabelsOk() (*interface{}, bool) {
 	return &o.Labels, true
 }
 
-// SetLabels sets field value
+// HasLabels returns a boolean if a field has been set.
+func (o *UpdateKubernetesAlertDto) HasLabels() bool {
+	if o != nil && !IsNil(o.Labels) {
+		return true
+	}
+
+	return false
+}
+
+// SetLabels gets a reference to the given interface{} and assigns it to the Labels field.
 func (o *UpdateKubernetesAlertDto) SetLabels(v interface{}) {
 	o.Labels = v
 }
@@ -155,28 +166,36 @@ func (o *UpdateKubernetesAlertDto) SetEndsAt(v time.Time) {
 	o.EndsAt = v
 }
 
-// GetFingerprint returns the Fingerprint field value
+// GetFingerprint returns the Fingerprint field value if set, zero value otherwise.
 func (o *UpdateKubernetesAlertDto) GetFingerprint() string {
-	if o == nil {
+	if o == nil || IsNil(o.Fingerprint) {
 		var ret string
 		return ret
 	}
-
-	return o.Fingerprint
+	return *o.Fingerprint
 }
 
-// GetFingerprintOk returns a tuple with the Fingerprint field value
+// GetFingerprintOk returns a tuple with the Fingerprint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateKubernetesAlertDto) GetFingerprintOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Fingerprint) {
 		return nil, false
 	}
-	return &o.Fingerprint, true
+	return o.Fingerprint, true
 }
 
-// SetFingerprint sets field value
+// HasFingerprint returns a boolean if a field has been set.
+func (o *UpdateKubernetesAlertDto) HasFingerprint() bool {
+	if o != nil && !IsNil(o.Fingerprint) {
+		return true
+	}
+
+	return false
+}
+
+// SetFingerprint gets a reference to the given string and assigns it to the Fingerprint field.
 func (o *UpdateKubernetesAlertDto) SetFingerprint(v string) {
-	o.Fingerprint = v
+	o.Fingerprint = &v
 }
 
 // GetIsSilenced returns the IsSilenced field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -221,28 +240,36 @@ func (o *UpdateKubernetesAlertDto) UnsetIsSilenced() {
 	o.IsSilenced.Unset()
 }
 
-// GetSilenceReason returns the SilenceReason field value
+// GetSilenceReason returns the SilenceReason field value if set, zero value otherwise.
 func (o *UpdateKubernetesAlertDto) GetSilenceReason() string {
-	if o == nil {
+	if o == nil || IsNil(o.SilenceReason) {
 		var ret string
 		return ret
 	}
-
-	return o.SilenceReason
+	return *o.SilenceReason
 }
 
-// GetSilenceReasonOk returns a tuple with the SilenceReason field value
+// GetSilenceReasonOk returns a tuple with the SilenceReason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateKubernetesAlertDto) GetSilenceReasonOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SilenceReason) {
 		return nil, false
 	}
-	return &o.SilenceReason, true
+	return o.SilenceReason, true
 }
 
-// SetSilenceReason sets field value
+// HasSilenceReason returns a boolean if a field has been set.
+func (o *UpdateKubernetesAlertDto) HasSilenceReason() bool {
+	if o != nil && !IsNil(o.SilenceReason) {
+		return true
+	}
+
+	return false
+}
+
+// SetSilenceReason gets a reference to the given string and assigns it to the SilenceReason field.
 func (o *UpdateKubernetesAlertDto) SetSilenceReason(v string) {
-	o.SilenceReason = v
+	o.SilenceReason = &v
 }
 
 func (o UpdateKubernetesAlertDto) MarshalJSON() ([]byte, error) {
@@ -255,17 +282,23 @@ func (o UpdateKubernetesAlertDto) MarshalJSON() ([]byte, error) {
 
 func (o UpdateKubernetesAlertDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["status"] = o.Status
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
 	if o.Labels != nil {
 		toSerialize["labels"] = o.Labels
 	}
 	toSerialize["startsAt"] = o.StartsAt
 	toSerialize["endsAt"] = o.EndsAt
-	toSerialize["fingerprint"] = o.Fingerprint
+	if !IsNil(o.Fingerprint) {
+		toSerialize["fingerprint"] = o.Fingerprint
+	}
 	if o.IsSilenced.IsSet() {
 		toSerialize["isSilenced"] = o.IsSilenced.Get()
 	}
-	toSerialize["silenceReason"] = o.SilenceReason
+	if !IsNil(o.SilenceReason) {
+		toSerialize["silenceReason"] = o.SilenceReason
+	}
 	return toSerialize, nil
 }
 
@@ -274,12 +307,8 @@ func (o *UpdateKubernetesAlertDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"status",
-		"labels",
 		"startsAt",
 		"endsAt",
-		"fingerprint",
-		"silenceReason",
 	}
 
 	allProperties := make(map[string]interface{})

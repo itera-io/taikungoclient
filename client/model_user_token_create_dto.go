@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the UserTokenCreateDto type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &UserTokenCreateDto{}
 
 // UserTokenCreateDto struct for UserTokenCreateDto
 type UserTokenCreateDto struct {
-	AccessKey string `json:"accessKey"`
-	SecretKey string `json:"secretKey"`
+	AccessKey *string `json:"accessKey,omitempty"`
+	SecretKey *string `json:"secretKey,omitempty"`
 }
-
-type _UserTokenCreateDto UserTokenCreateDto
 
 // NewUserTokenCreateDto instantiates a new UserTokenCreateDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserTokenCreateDto(accessKey string, secretKey string) *UserTokenCreateDto {
+func NewUserTokenCreateDto() *UserTokenCreateDto {
 	this := UserTokenCreateDto{}
-	this.AccessKey = accessKey
-	this.SecretKey = secretKey
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewUserTokenCreateDtoWithDefaults() *UserTokenCreateDto {
 	return &this
 }
 
-// GetAccessKey returns the AccessKey field value
+// GetAccessKey returns the AccessKey field value if set, zero value otherwise.
 func (o *UserTokenCreateDto) GetAccessKey() string {
-	if o == nil {
+	if o == nil || IsNil(o.AccessKey) {
 		var ret string
 		return ret
 	}
-
-	return o.AccessKey
+	return *o.AccessKey
 }
 
-// GetAccessKeyOk returns a tuple with the AccessKey field value
+// GetAccessKeyOk returns a tuple with the AccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserTokenCreateDto) GetAccessKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AccessKey) {
 		return nil, false
 	}
-	return &o.AccessKey, true
+	return o.AccessKey, true
 }
 
-// SetAccessKey sets field value
+// HasAccessKey returns a boolean if a field has been set.
+func (o *UserTokenCreateDto) HasAccessKey() bool {
+	if o != nil && !IsNil(o.AccessKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessKey gets a reference to the given string and assigns it to the AccessKey field.
 func (o *UserTokenCreateDto) SetAccessKey(v string) {
-	o.AccessKey = v
+	o.AccessKey = &v
 }
 
-// GetSecretKey returns the SecretKey field value
+// GetSecretKey returns the SecretKey field value if set, zero value otherwise.
 func (o *UserTokenCreateDto) GetSecretKey() string {
-	if o == nil {
+	if o == nil || IsNil(o.SecretKey) {
 		var ret string
 		return ret
 	}
-
-	return o.SecretKey
+	return *o.SecretKey
 }
 
-// GetSecretKeyOk returns a tuple with the SecretKey field value
+// GetSecretKeyOk returns a tuple with the SecretKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserTokenCreateDto) GetSecretKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SecretKey) {
 		return nil, false
 	}
-	return &o.SecretKey, true
+	return o.SecretKey, true
 }
 
-// SetSecretKey sets field value
+// HasSecretKey returns a boolean if a field has been set.
+func (o *UserTokenCreateDto) HasSecretKey() bool {
+	if o != nil && !IsNil(o.SecretKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecretKey gets a reference to the given string and assigns it to the SecretKey field.
 func (o *UserTokenCreateDto) SetSecretKey(v string) {
-	o.SecretKey = v
+	o.SecretKey = &v
 }
 
 func (o UserTokenCreateDto) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o UserTokenCreateDto) MarshalJSON() ([]byte, error) {
 
 func (o UserTokenCreateDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["accessKey"] = o.AccessKey
-	toSerialize["secretKey"] = o.SecretKey
+	if !IsNil(o.AccessKey) {
+		toSerialize["accessKey"] = o.AccessKey
+	}
+	if !IsNil(o.SecretKey) {
+		toSerialize["secretKey"] = o.SecretKey
+	}
 	return toSerialize, nil
-}
-
-func (o *UserTokenCreateDto) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"accessKey",
-		"secretKey",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varUserTokenCreateDto := _UserTokenCreateDto{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserTokenCreateDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = UserTokenCreateDto(varUserTokenCreateDto)
-
-	return err
 }
 
 type NullableUserTokenCreateDto struct {

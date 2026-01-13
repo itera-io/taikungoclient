@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the StandAloneProfileCreateCommand type satisfies the MappedNullable interface at compile time
@@ -22,23 +20,18 @@ var _ MappedNullable = &StandAloneProfileCreateCommand{}
 
 // StandAloneProfileCreateCommand struct for StandAloneProfileCreateCommand
 type StandAloneProfileCreateCommand struct {
-	Name string `json:"name"`
-	PublicKey string `json:"publicKey"`
-	SecurityGroups []StandAloneProfileSecurityGroupDto `json:"securityGroups"`
+	Name *string `json:"name,omitempty"`
+	PublicKey *string `json:"publicKey,omitempty"`
+	SecurityGroups []StandAloneProfileSecurityGroupDto `json:"securityGroups,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 }
-
-type _StandAloneProfileCreateCommand StandAloneProfileCreateCommand
 
 // NewStandAloneProfileCreateCommand instantiates a new StandAloneProfileCreateCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStandAloneProfileCreateCommand(name string, publicKey string, securityGroups []StandAloneProfileSecurityGroupDto) *StandAloneProfileCreateCommand {
+func NewStandAloneProfileCreateCommand() *StandAloneProfileCreateCommand {
 	this := StandAloneProfileCreateCommand{}
-	this.Name = name
-	this.PublicKey = publicKey
-	this.SecurityGroups = securityGroups
 	return &this
 }
 
@@ -50,74 +43,98 @@ func NewStandAloneProfileCreateCommandWithDefaults() *StandAloneProfileCreateCom
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *StandAloneProfileCreateCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StandAloneProfileCreateCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *StandAloneProfileCreateCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *StandAloneProfileCreateCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetPublicKey returns the PublicKey field value
+// GetPublicKey returns the PublicKey field value if set, zero value otherwise.
 func (o *StandAloneProfileCreateCommand) GetPublicKey() string {
-	if o == nil {
+	if o == nil || IsNil(o.PublicKey) {
 		var ret string
 		return ret
 	}
-
-	return o.PublicKey
+	return *o.PublicKey
 }
 
-// GetPublicKeyOk returns a tuple with the PublicKey field value
+// GetPublicKeyOk returns a tuple with the PublicKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StandAloneProfileCreateCommand) GetPublicKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PublicKey) {
 		return nil, false
 	}
-	return &o.PublicKey, true
+	return o.PublicKey, true
 }
 
-// SetPublicKey sets field value
+// HasPublicKey returns a boolean if a field has been set.
+func (o *StandAloneProfileCreateCommand) HasPublicKey() bool {
+	if o != nil && !IsNil(o.PublicKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetPublicKey gets a reference to the given string and assigns it to the PublicKey field.
 func (o *StandAloneProfileCreateCommand) SetPublicKey(v string) {
-	o.PublicKey = v
+	o.PublicKey = &v
 }
 
-// GetSecurityGroups returns the SecurityGroups field value
+// GetSecurityGroups returns the SecurityGroups field value if set, zero value otherwise.
 func (o *StandAloneProfileCreateCommand) GetSecurityGroups() []StandAloneProfileSecurityGroupDto {
-	if o == nil {
+	if o == nil || IsNil(o.SecurityGroups) {
 		var ret []StandAloneProfileSecurityGroupDto
 		return ret
 	}
-
 	return o.SecurityGroups
 }
 
-// GetSecurityGroupsOk returns a tuple with the SecurityGroups field value
+// GetSecurityGroupsOk returns a tuple with the SecurityGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StandAloneProfileCreateCommand) GetSecurityGroupsOk() ([]StandAloneProfileSecurityGroupDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SecurityGroups) {
 		return nil, false
 	}
 	return o.SecurityGroups, true
 }
 
-// SetSecurityGroups sets field value
+// HasSecurityGroups returns a boolean if a field has been set.
+func (o *StandAloneProfileCreateCommand) HasSecurityGroups() bool {
+	if o != nil && !IsNil(o.SecurityGroups) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecurityGroups gets a reference to the given []StandAloneProfileSecurityGroupDto and assigns it to the SecurityGroups field.
 func (o *StandAloneProfileCreateCommand) SetSecurityGroups(v []StandAloneProfileSecurityGroupDto) {
 	o.SecurityGroups = v
 }
@@ -174,52 +191,19 @@ func (o StandAloneProfileCreateCommand) MarshalJSON() ([]byte, error) {
 
 func (o StandAloneProfileCreateCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["publicKey"] = o.PublicKey
-	toSerialize["securityGroups"] = o.SecurityGroups
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.PublicKey) {
+		toSerialize["publicKey"] = o.PublicKey
+	}
+	if !IsNil(o.SecurityGroups) {
+		toSerialize["securityGroups"] = o.SecurityGroups
+	}
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
 	return toSerialize, nil
-}
-
-func (o *StandAloneProfileCreateCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"publicKey",
-		"securityGroups",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varStandAloneProfileCreateCommand := _StandAloneProfileCreateCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStandAloneProfileCreateCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = StandAloneProfileCreateCommand(varStandAloneProfileCreateCommand)
-
-	return err
 }
 
 type NullableStandAloneProfileCreateCommand struct {

@@ -22,23 +22,23 @@ var _ MappedNullable = &CreateOpenstackCloudCommand{}
 
 // CreateOpenstackCloudCommand struct for CreateOpenstackCloudCommand
 type CreateOpenstackCloudCommand struct {
-	Name string `json:"name"`
-	OpenStackUser string `json:"openStackUser"`
-	OpenStackPassword string `json:"openStackPassword"`
-	OpenStackUrl string `json:"openStackUrl"`
-	OpenStackProject string `json:"openStackProject"`
-	OpenStackPublicNetwork string `json:"openStackPublicNetwork"`
-	OpenStackAvailabilityZone string `json:"openStackAvailabilityZone"`
-	OpenStackDomain string `json:"openStackDomain"`
-	OpenStackRegion string `json:"openStackRegion"`
-	OpenStackContinent string `json:"openStackContinent"`
-	OpenStackVolumeType string `json:"openStackVolumeType"`
+	Name *string `json:"name,omitempty"`
+	OpenStackUser *string `json:"openStackUser,omitempty"`
+	OpenStackPassword *string `json:"openStackPassword,omitempty"`
+	OpenStackUrl *string `json:"openStackUrl,omitempty"`
+	OpenStackProject *string `json:"openStackProject,omitempty"`
+	OpenStackPublicNetwork *string `json:"openStackPublicNetwork,omitempty"`
+	OpenStackAvailabilityZone *string `json:"openStackAvailabilityZone,omitempty"`
+	OpenStackDomain *string `json:"openStackDomain,omitempty"`
+	OpenStackRegion *string `json:"openStackRegion,omitempty"`
+	OpenStackContinent *string `json:"openStackContinent,omitempty"`
+	OpenStackVolumeType *string `json:"openStackVolumeType,omitempty"`
 	OpenStackImportNetwork bool `json:"openStackImportNetwork"`
-	OpenStackInternalSubnetId string `json:"openStackInternalSubnetId"`
+	OpenStackInternalSubnetId *string `json:"openStackInternalSubnetId,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	ApplicationCredEnabled bool `json:"applicationCredEnabled"`
 	ManilaEnabled bool `json:"manilaEnabled"`
-	ManilaStorageType string `json:"manilaStorageType"`
+	ManilaStorageType *string `json:"manilaStorageType,omitempty"`
 	IsAdmin bool `json:"isAdmin"`
 	SkipTlsFlag bool `json:"skipTlsFlag"`
 }
@@ -49,24 +49,11 @@ type _CreateOpenstackCloudCommand CreateOpenstackCloudCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateOpenstackCloudCommand(name string, openStackUser string, openStackPassword string, openStackUrl string, openStackProject string, openStackPublicNetwork string, openStackAvailabilityZone string, openStackDomain string, openStackRegion string, openStackContinent string, openStackVolumeType string, openStackImportNetwork bool, openStackInternalSubnetId string, applicationCredEnabled bool, manilaEnabled bool, manilaStorageType string, isAdmin bool, skipTlsFlag bool) *CreateOpenstackCloudCommand {
+func NewCreateOpenstackCloudCommand(openStackImportNetwork bool, applicationCredEnabled bool, manilaEnabled bool, isAdmin bool, skipTlsFlag bool) *CreateOpenstackCloudCommand {
 	this := CreateOpenstackCloudCommand{}
-	this.Name = name
-	this.OpenStackUser = openStackUser
-	this.OpenStackPassword = openStackPassword
-	this.OpenStackUrl = openStackUrl
-	this.OpenStackProject = openStackProject
-	this.OpenStackPublicNetwork = openStackPublicNetwork
-	this.OpenStackAvailabilityZone = openStackAvailabilityZone
-	this.OpenStackDomain = openStackDomain
-	this.OpenStackRegion = openStackRegion
-	this.OpenStackContinent = openStackContinent
-	this.OpenStackVolumeType = openStackVolumeType
 	this.OpenStackImportNetwork = openStackImportNetwork
-	this.OpenStackInternalSubnetId = openStackInternalSubnetId
 	this.ApplicationCredEnabled = applicationCredEnabled
 	this.ManilaEnabled = manilaEnabled
-	this.ManilaStorageType = manilaStorageType
 	this.IsAdmin = isAdmin
 	this.SkipTlsFlag = skipTlsFlag
 	return &this
@@ -80,268 +67,356 @@ func NewCreateOpenstackCloudCommandWithDefaults() *CreateOpenstackCloudCommand {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateOpenstackCloudCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOpenstackCloudCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CreateOpenstackCloudCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateOpenstackCloudCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetOpenStackUser returns the OpenStackUser field value
+// GetOpenStackUser returns the OpenStackUser field value if set, zero value otherwise.
 func (o *CreateOpenstackCloudCommand) GetOpenStackUser() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackUser) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackUser
+	return *o.OpenStackUser
 }
 
-// GetOpenStackUserOk returns a tuple with the OpenStackUser field value
+// GetOpenStackUserOk returns a tuple with the OpenStackUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOpenstackCloudCommand) GetOpenStackUserOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackUser) {
 		return nil, false
 	}
-	return &o.OpenStackUser, true
+	return o.OpenStackUser, true
 }
 
-// SetOpenStackUser sets field value
+// HasOpenStackUser returns a boolean if a field has been set.
+func (o *CreateOpenstackCloudCommand) HasOpenStackUser() bool {
+	if o != nil && !IsNil(o.OpenStackUser) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackUser gets a reference to the given string and assigns it to the OpenStackUser field.
 func (o *CreateOpenstackCloudCommand) SetOpenStackUser(v string) {
-	o.OpenStackUser = v
+	o.OpenStackUser = &v
 }
 
-// GetOpenStackPassword returns the OpenStackPassword field value
+// GetOpenStackPassword returns the OpenStackPassword field value if set, zero value otherwise.
 func (o *CreateOpenstackCloudCommand) GetOpenStackPassword() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackPassword) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackPassword
+	return *o.OpenStackPassword
 }
 
-// GetOpenStackPasswordOk returns a tuple with the OpenStackPassword field value
+// GetOpenStackPasswordOk returns a tuple with the OpenStackPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOpenstackCloudCommand) GetOpenStackPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackPassword) {
 		return nil, false
 	}
-	return &o.OpenStackPassword, true
+	return o.OpenStackPassword, true
 }
 
-// SetOpenStackPassword sets field value
+// HasOpenStackPassword returns a boolean if a field has been set.
+func (o *CreateOpenstackCloudCommand) HasOpenStackPassword() bool {
+	if o != nil && !IsNil(o.OpenStackPassword) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackPassword gets a reference to the given string and assigns it to the OpenStackPassword field.
 func (o *CreateOpenstackCloudCommand) SetOpenStackPassword(v string) {
-	o.OpenStackPassword = v
+	o.OpenStackPassword = &v
 }
 
-// GetOpenStackUrl returns the OpenStackUrl field value
+// GetOpenStackUrl returns the OpenStackUrl field value if set, zero value otherwise.
 func (o *CreateOpenstackCloudCommand) GetOpenStackUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackUrl) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackUrl
+	return *o.OpenStackUrl
 }
 
-// GetOpenStackUrlOk returns a tuple with the OpenStackUrl field value
+// GetOpenStackUrlOk returns a tuple with the OpenStackUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOpenstackCloudCommand) GetOpenStackUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackUrl) {
 		return nil, false
 	}
-	return &o.OpenStackUrl, true
+	return o.OpenStackUrl, true
 }
 
-// SetOpenStackUrl sets field value
+// HasOpenStackUrl returns a boolean if a field has been set.
+func (o *CreateOpenstackCloudCommand) HasOpenStackUrl() bool {
+	if o != nil && !IsNil(o.OpenStackUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackUrl gets a reference to the given string and assigns it to the OpenStackUrl field.
 func (o *CreateOpenstackCloudCommand) SetOpenStackUrl(v string) {
-	o.OpenStackUrl = v
+	o.OpenStackUrl = &v
 }
 
-// GetOpenStackProject returns the OpenStackProject field value
+// GetOpenStackProject returns the OpenStackProject field value if set, zero value otherwise.
 func (o *CreateOpenstackCloudCommand) GetOpenStackProject() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackProject) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackProject
+	return *o.OpenStackProject
 }
 
-// GetOpenStackProjectOk returns a tuple with the OpenStackProject field value
+// GetOpenStackProjectOk returns a tuple with the OpenStackProject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOpenstackCloudCommand) GetOpenStackProjectOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackProject) {
 		return nil, false
 	}
-	return &o.OpenStackProject, true
+	return o.OpenStackProject, true
 }
 
-// SetOpenStackProject sets field value
+// HasOpenStackProject returns a boolean if a field has been set.
+func (o *CreateOpenstackCloudCommand) HasOpenStackProject() bool {
+	if o != nil && !IsNil(o.OpenStackProject) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackProject gets a reference to the given string and assigns it to the OpenStackProject field.
 func (o *CreateOpenstackCloudCommand) SetOpenStackProject(v string) {
-	o.OpenStackProject = v
+	o.OpenStackProject = &v
 }
 
-// GetOpenStackPublicNetwork returns the OpenStackPublicNetwork field value
+// GetOpenStackPublicNetwork returns the OpenStackPublicNetwork field value if set, zero value otherwise.
 func (o *CreateOpenstackCloudCommand) GetOpenStackPublicNetwork() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackPublicNetwork) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackPublicNetwork
+	return *o.OpenStackPublicNetwork
 }
 
-// GetOpenStackPublicNetworkOk returns a tuple with the OpenStackPublicNetwork field value
+// GetOpenStackPublicNetworkOk returns a tuple with the OpenStackPublicNetwork field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOpenstackCloudCommand) GetOpenStackPublicNetworkOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackPublicNetwork) {
 		return nil, false
 	}
-	return &o.OpenStackPublicNetwork, true
+	return o.OpenStackPublicNetwork, true
 }
 
-// SetOpenStackPublicNetwork sets field value
+// HasOpenStackPublicNetwork returns a boolean if a field has been set.
+func (o *CreateOpenstackCloudCommand) HasOpenStackPublicNetwork() bool {
+	if o != nil && !IsNil(o.OpenStackPublicNetwork) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackPublicNetwork gets a reference to the given string and assigns it to the OpenStackPublicNetwork field.
 func (o *CreateOpenstackCloudCommand) SetOpenStackPublicNetwork(v string) {
-	o.OpenStackPublicNetwork = v
+	o.OpenStackPublicNetwork = &v
 }
 
-// GetOpenStackAvailabilityZone returns the OpenStackAvailabilityZone field value
+// GetOpenStackAvailabilityZone returns the OpenStackAvailabilityZone field value if set, zero value otherwise.
 func (o *CreateOpenstackCloudCommand) GetOpenStackAvailabilityZone() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackAvailabilityZone) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackAvailabilityZone
+	return *o.OpenStackAvailabilityZone
 }
 
-// GetOpenStackAvailabilityZoneOk returns a tuple with the OpenStackAvailabilityZone field value
+// GetOpenStackAvailabilityZoneOk returns a tuple with the OpenStackAvailabilityZone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOpenstackCloudCommand) GetOpenStackAvailabilityZoneOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackAvailabilityZone) {
 		return nil, false
 	}
-	return &o.OpenStackAvailabilityZone, true
+	return o.OpenStackAvailabilityZone, true
 }
 
-// SetOpenStackAvailabilityZone sets field value
+// HasOpenStackAvailabilityZone returns a boolean if a field has been set.
+func (o *CreateOpenstackCloudCommand) HasOpenStackAvailabilityZone() bool {
+	if o != nil && !IsNil(o.OpenStackAvailabilityZone) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackAvailabilityZone gets a reference to the given string and assigns it to the OpenStackAvailabilityZone field.
 func (o *CreateOpenstackCloudCommand) SetOpenStackAvailabilityZone(v string) {
-	o.OpenStackAvailabilityZone = v
+	o.OpenStackAvailabilityZone = &v
 }
 
-// GetOpenStackDomain returns the OpenStackDomain field value
+// GetOpenStackDomain returns the OpenStackDomain field value if set, zero value otherwise.
 func (o *CreateOpenstackCloudCommand) GetOpenStackDomain() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackDomain) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackDomain
+	return *o.OpenStackDomain
 }
 
-// GetOpenStackDomainOk returns a tuple with the OpenStackDomain field value
+// GetOpenStackDomainOk returns a tuple with the OpenStackDomain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOpenstackCloudCommand) GetOpenStackDomainOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackDomain) {
 		return nil, false
 	}
-	return &o.OpenStackDomain, true
+	return o.OpenStackDomain, true
 }
 
-// SetOpenStackDomain sets field value
+// HasOpenStackDomain returns a boolean if a field has been set.
+func (o *CreateOpenstackCloudCommand) HasOpenStackDomain() bool {
+	if o != nil && !IsNil(o.OpenStackDomain) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackDomain gets a reference to the given string and assigns it to the OpenStackDomain field.
 func (o *CreateOpenstackCloudCommand) SetOpenStackDomain(v string) {
-	o.OpenStackDomain = v
+	o.OpenStackDomain = &v
 }
 
-// GetOpenStackRegion returns the OpenStackRegion field value
+// GetOpenStackRegion returns the OpenStackRegion field value if set, zero value otherwise.
 func (o *CreateOpenstackCloudCommand) GetOpenStackRegion() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackRegion) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackRegion
+	return *o.OpenStackRegion
 }
 
-// GetOpenStackRegionOk returns a tuple with the OpenStackRegion field value
+// GetOpenStackRegionOk returns a tuple with the OpenStackRegion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOpenstackCloudCommand) GetOpenStackRegionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackRegion) {
 		return nil, false
 	}
-	return &o.OpenStackRegion, true
+	return o.OpenStackRegion, true
 }
 
-// SetOpenStackRegion sets field value
+// HasOpenStackRegion returns a boolean if a field has been set.
+func (o *CreateOpenstackCloudCommand) HasOpenStackRegion() bool {
+	if o != nil && !IsNil(o.OpenStackRegion) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackRegion gets a reference to the given string and assigns it to the OpenStackRegion field.
 func (o *CreateOpenstackCloudCommand) SetOpenStackRegion(v string) {
-	o.OpenStackRegion = v
+	o.OpenStackRegion = &v
 }
 
-// GetOpenStackContinent returns the OpenStackContinent field value
+// GetOpenStackContinent returns the OpenStackContinent field value if set, zero value otherwise.
 func (o *CreateOpenstackCloudCommand) GetOpenStackContinent() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackContinent) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackContinent
+	return *o.OpenStackContinent
 }
 
-// GetOpenStackContinentOk returns a tuple with the OpenStackContinent field value
+// GetOpenStackContinentOk returns a tuple with the OpenStackContinent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOpenstackCloudCommand) GetOpenStackContinentOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackContinent) {
 		return nil, false
 	}
-	return &o.OpenStackContinent, true
+	return o.OpenStackContinent, true
 }
 
-// SetOpenStackContinent sets field value
+// HasOpenStackContinent returns a boolean if a field has been set.
+func (o *CreateOpenstackCloudCommand) HasOpenStackContinent() bool {
+	if o != nil && !IsNil(o.OpenStackContinent) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackContinent gets a reference to the given string and assigns it to the OpenStackContinent field.
 func (o *CreateOpenstackCloudCommand) SetOpenStackContinent(v string) {
-	o.OpenStackContinent = v
+	o.OpenStackContinent = &v
 }
 
-// GetOpenStackVolumeType returns the OpenStackVolumeType field value
+// GetOpenStackVolumeType returns the OpenStackVolumeType field value if set, zero value otherwise.
 func (o *CreateOpenstackCloudCommand) GetOpenStackVolumeType() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackVolumeType) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackVolumeType
+	return *o.OpenStackVolumeType
 }
 
-// GetOpenStackVolumeTypeOk returns a tuple with the OpenStackVolumeType field value
+// GetOpenStackVolumeTypeOk returns a tuple with the OpenStackVolumeType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOpenstackCloudCommand) GetOpenStackVolumeTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackVolumeType) {
 		return nil, false
 	}
-	return &o.OpenStackVolumeType, true
+	return o.OpenStackVolumeType, true
 }
 
-// SetOpenStackVolumeType sets field value
+// HasOpenStackVolumeType returns a boolean if a field has been set.
+func (o *CreateOpenstackCloudCommand) HasOpenStackVolumeType() bool {
+	if o != nil && !IsNil(o.OpenStackVolumeType) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackVolumeType gets a reference to the given string and assigns it to the OpenStackVolumeType field.
 func (o *CreateOpenstackCloudCommand) SetOpenStackVolumeType(v string) {
-	o.OpenStackVolumeType = v
+	o.OpenStackVolumeType = &v
 }
 
 // GetOpenStackImportNetwork returns the OpenStackImportNetwork field value
@@ -368,28 +443,36 @@ func (o *CreateOpenstackCloudCommand) SetOpenStackImportNetwork(v bool) {
 	o.OpenStackImportNetwork = v
 }
 
-// GetOpenStackInternalSubnetId returns the OpenStackInternalSubnetId field value
+// GetOpenStackInternalSubnetId returns the OpenStackInternalSubnetId field value if set, zero value otherwise.
 func (o *CreateOpenstackCloudCommand) GetOpenStackInternalSubnetId() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackInternalSubnetId) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackInternalSubnetId
+	return *o.OpenStackInternalSubnetId
 }
 
-// GetOpenStackInternalSubnetIdOk returns a tuple with the OpenStackInternalSubnetId field value
+// GetOpenStackInternalSubnetIdOk returns a tuple with the OpenStackInternalSubnetId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOpenstackCloudCommand) GetOpenStackInternalSubnetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackInternalSubnetId) {
 		return nil, false
 	}
-	return &o.OpenStackInternalSubnetId, true
+	return o.OpenStackInternalSubnetId, true
 }
 
-// SetOpenStackInternalSubnetId sets field value
+// HasOpenStackInternalSubnetId returns a boolean if a field has been set.
+func (o *CreateOpenstackCloudCommand) HasOpenStackInternalSubnetId() bool {
+	if o != nil && !IsNil(o.OpenStackInternalSubnetId) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackInternalSubnetId gets a reference to the given string and assigns it to the OpenStackInternalSubnetId field.
 func (o *CreateOpenstackCloudCommand) SetOpenStackInternalSubnetId(v string) {
-	o.OpenStackInternalSubnetId = v
+	o.OpenStackInternalSubnetId = &v
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -482,28 +565,36 @@ func (o *CreateOpenstackCloudCommand) SetManilaEnabled(v bool) {
 	o.ManilaEnabled = v
 }
 
-// GetManilaStorageType returns the ManilaStorageType field value
+// GetManilaStorageType returns the ManilaStorageType field value if set, zero value otherwise.
 func (o *CreateOpenstackCloudCommand) GetManilaStorageType() string {
-	if o == nil {
+	if o == nil || IsNil(o.ManilaStorageType) {
 		var ret string
 		return ret
 	}
-
-	return o.ManilaStorageType
+	return *o.ManilaStorageType
 }
 
-// GetManilaStorageTypeOk returns a tuple with the ManilaStorageType field value
+// GetManilaStorageTypeOk returns a tuple with the ManilaStorageType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateOpenstackCloudCommand) GetManilaStorageTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ManilaStorageType) {
 		return nil, false
 	}
-	return &o.ManilaStorageType, true
+	return o.ManilaStorageType, true
 }
 
-// SetManilaStorageType sets field value
+// HasManilaStorageType returns a boolean if a field has been set.
+func (o *CreateOpenstackCloudCommand) HasManilaStorageType() bool {
+	if o != nil && !IsNil(o.ManilaStorageType) {
+		return true
+	}
+
+	return false
+}
+
+// SetManilaStorageType gets a reference to the given string and assigns it to the ManilaStorageType field.
 func (o *CreateOpenstackCloudCommand) SetManilaStorageType(v string) {
-	o.ManilaStorageType = v
+	o.ManilaStorageType = &v
 }
 
 // GetIsAdmin returns the IsAdmin field value
@@ -564,25 +655,51 @@ func (o CreateOpenstackCloudCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateOpenstackCloudCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["openStackUser"] = o.OpenStackUser
-	toSerialize["openStackPassword"] = o.OpenStackPassword
-	toSerialize["openStackUrl"] = o.OpenStackUrl
-	toSerialize["openStackProject"] = o.OpenStackProject
-	toSerialize["openStackPublicNetwork"] = o.OpenStackPublicNetwork
-	toSerialize["openStackAvailabilityZone"] = o.OpenStackAvailabilityZone
-	toSerialize["openStackDomain"] = o.OpenStackDomain
-	toSerialize["openStackRegion"] = o.OpenStackRegion
-	toSerialize["openStackContinent"] = o.OpenStackContinent
-	toSerialize["openStackVolumeType"] = o.OpenStackVolumeType
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.OpenStackUser) {
+		toSerialize["openStackUser"] = o.OpenStackUser
+	}
+	if !IsNil(o.OpenStackPassword) {
+		toSerialize["openStackPassword"] = o.OpenStackPassword
+	}
+	if !IsNil(o.OpenStackUrl) {
+		toSerialize["openStackUrl"] = o.OpenStackUrl
+	}
+	if !IsNil(o.OpenStackProject) {
+		toSerialize["openStackProject"] = o.OpenStackProject
+	}
+	if !IsNil(o.OpenStackPublicNetwork) {
+		toSerialize["openStackPublicNetwork"] = o.OpenStackPublicNetwork
+	}
+	if !IsNil(o.OpenStackAvailabilityZone) {
+		toSerialize["openStackAvailabilityZone"] = o.OpenStackAvailabilityZone
+	}
+	if !IsNil(o.OpenStackDomain) {
+		toSerialize["openStackDomain"] = o.OpenStackDomain
+	}
+	if !IsNil(o.OpenStackRegion) {
+		toSerialize["openStackRegion"] = o.OpenStackRegion
+	}
+	if !IsNil(o.OpenStackContinent) {
+		toSerialize["openStackContinent"] = o.OpenStackContinent
+	}
+	if !IsNil(o.OpenStackVolumeType) {
+		toSerialize["openStackVolumeType"] = o.OpenStackVolumeType
+	}
 	toSerialize["openStackImportNetwork"] = o.OpenStackImportNetwork
-	toSerialize["openStackInternalSubnetId"] = o.OpenStackInternalSubnetId
+	if !IsNil(o.OpenStackInternalSubnetId) {
+		toSerialize["openStackInternalSubnetId"] = o.OpenStackInternalSubnetId
+	}
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
 	toSerialize["applicationCredEnabled"] = o.ApplicationCredEnabled
 	toSerialize["manilaEnabled"] = o.ManilaEnabled
-	toSerialize["manilaStorageType"] = o.ManilaStorageType
+	if !IsNil(o.ManilaStorageType) {
+		toSerialize["manilaStorageType"] = o.ManilaStorageType
+	}
 	toSerialize["isAdmin"] = o.IsAdmin
 	toSerialize["skipTlsFlag"] = o.SkipTlsFlag
 	return toSerialize, nil
@@ -593,22 +710,9 @@ func (o *CreateOpenstackCloudCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
-		"openStackUser",
-		"openStackPassword",
-		"openStackUrl",
-		"openStackProject",
-		"openStackPublicNetwork",
-		"openStackAvailabilityZone",
-		"openStackDomain",
-		"openStackRegion",
-		"openStackContinent",
-		"openStackVolumeType",
 		"openStackImportNetwork",
-		"openStackInternalSubnetId",
 		"applicationCredEnabled",
 		"manilaEnabled",
-		"manilaStorageType",
 		"isAdmin",
 		"skipTlsFlag",
 	}

@@ -23,9 +23,9 @@ var _ MappedNullable = &KubernetesPodLogsCommand{}
 // KubernetesPodLogsCommand struct for KubernetesPodLogsCommand
 type KubernetesPodLogsCommand struct {
 	ProjectId int32 `json:"projectId"`
-	Name string `json:"name"`
-	Namespace string `json:"namespace"`
-	Container string `json:"container"`
+	Name *string `json:"name,omitempty"`
+	Namespace *string `json:"namespace,omitempty"`
+	Container *string `json:"container,omitempty"`
 }
 
 type _KubernetesPodLogsCommand KubernetesPodLogsCommand
@@ -34,12 +34,9 @@ type _KubernetesPodLogsCommand KubernetesPodLogsCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubernetesPodLogsCommand(projectId int32, name string, namespace string, container string) *KubernetesPodLogsCommand {
+func NewKubernetesPodLogsCommand(projectId int32) *KubernetesPodLogsCommand {
 	this := KubernetesPodLogsCommand{}
 	this.ProjectId = projectId
-	this.Name = name
-	this.Namespace = namespace
-	this.Container = container
 	return &this
 }
 
@@ -75,76 +72,100 @@ func (o *KubernetesPodLogsCommand) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *KubernetesPodLogsCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KubernetesPodLogsCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *KubernetesPodLogsCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *KubernetesPodLogsCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetNamespace returns the Namespace field value
+// GetNamespace returns the Namespace field value if set, zero value otherwise.
 func (o *KubernetesPodLogsCommand) GetNamespace() string {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		var ret string
 		return ret
 	}
-
-	return o.Namespace
+	return *o.Namespace
 }
 
-// GetNamespaceOk returns a tuple with the Namespace field value
+// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KubernetesPodLogsCommand) GetNamespaceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		return nil, false
 	}
-	return &o.Namespace, true
+	return o.Namespace, true
 }
 
-// SetNamespace sets field value
+// HasNamespace returns a boolean if a field has been set.
+func (o *KubernetesPodLogsCommand) HasNamespace() bool {
+	if o != nil && !IsNil(o.Namespace) {
+		return true
+	}
+
+	return false
+}
+
+// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *KubernetesPodLogsCommand) SetNamespace(v string) {
-	o.Namespace = v
+	o.Namespace = &v
 }
 
-// GetContainer returns the Container field value
+// GetContainer returns the Container field value if set, zero value otherwise.
 func (o *KubernetesPodLogsCommand) GetContainer() string {
-	if o == nil {
+	if o == nil || IsNil(o.Container) {
 		var ret string
 		return ret
 	}
-
-	return o.Container
+	return *o.Container
 }
 
-// GetContainerOk returns a tuple with the Container field value
+// GetContainerOk returns a tuple with the Container field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KubernetesPodLogsCommand) GetContainerOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Container) {
 		return nil, false
 	}
-	return &o.Container, true
+	return o.Container, true
 }
 
-// SetContainer sets field value
+// HasContainer returns a boolean if a field has been set.
+func (o *KubernetesPodLogsCommand) HasContainer() bool {
+	if o != nil && !IsNil(o.Container) {
+		return true
+	}
+
+	return false
+}
+
+// SetContainer gets a reference to the given string and assigns it to the Container field.
 func (o *KubernetesPodLogsCommand) SetContainer(v string) {
-	o.Container = v
+	o.Container = &v
 }
 
 func (o KubernetesPodLogsCommand) MarshalJSON() ([]byte, error) {
@@ -158,9 +179,15 @@ func (o KubernetesPodLogsCommand) MarshalJSON() ([]byte, error) {
 func (o KubernetesPodLogsCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["name"] = o.Name
-	toSerialize["namespace"] = o.Namespace
-	toSerialize["container"] = o.Container
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Namespace) {
+		toSerialize["namespace"] = o.Namespace
+	}
+	if !IsNil(o.Container) {
+		toSerialize["container"] = o.Container
+	}
 	return toSerialize, nil
 }
 
@@ -170,9 +197,6 @@ func (o *KubernetesPodLogsCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"name",
-		"namespace",
-		"container",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -72,9 +72,6 @@ func (a *GoogleAPIService) GooglecloudBillingAccountListExecute(r ApiGooglecloud
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.config == nil {
-		return localVarReturnValue, nil, reportError("config is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
@@ -227,14 +224,24 @@ func (a *GoogleAPIService) GooglecloudBillingAccountListExecute(r ApiGooglecloud
 type ApiGooglecloudCreateRequest struct {
 	ctx context.Context
 	ApiService *GoogleAPIService
+	importProject *bool
+	azCount *int32
 	config *os.File
 	name *string
-	importProject *bool
 	folderId *string
 	billingAccountId *string
-	azCount *int32
 	region *string
 	organizationId *int32
+}
+
+func (r ApiGooglecloudCreateRequest) ImportProject(importProject bool) ApiGooglecloudCreateRequest {
+	r.importProject = &importProject
+	return r
+}
+
+func (r ApiGooglecloudCreateRequest) AzCount(azCount int32) ApiGooglecloudCreateRequest {
+	r.azCount = &azCount
+	return r
 }
 
 func (r ApiGooglecloudCreateRequest) Config(config *os.File) ApiGooglecloudCreateRequest {
@@ -247,11 +254,6 @@ func (r ApiGooglecloudCreateRequest) Name(name string) ApiGooglecloudCreateReque
 	return r
 }
 
-func (r ApiGooglecloudCreateRequest) ImportProject(importProject bool) ApiGooglecloudCreateRequest {
-	r.importProject = &importProject
-	return r
-}
-
 func (r ApiGooglecloudCreateRequest) FolderId(folderId string) ApiGooglecloudCreateRequest {
 	r.folderId = &folderId
 	return r
@@ -259,11 +261,6 @@ func (r ApiGooglecloudCreateRequest) FolderId(folderId string) ApiGooglecloudCre
 
 func (r ApiGooglecloudCreateRequest) BillingAccountId(billingAccountId string) ApiGooglecloudCreateRequest {
 	r.billingAccountId = &billingAccountId
-	return r
-}
-
-func (r ApiGooglecloudCreateRequest) AzCount(azCount int32) ApiGooglecloudCreateRequest {
-	r.azCount = &azCount
 	return r
 }
 
@@ -314,26 +311,11 @@ func (a *GoogleAPIService) GooglecloudCreateExecute(r ApiGooglecloudCreateReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.config == nil {
-		return localVarReturnValue, nil, reportError("config is required and must be specified")
-	}
-	if r.name == nil {
-		return localVarReturnValue, nil, reportError("name is required and must be specified")
-	}
 	if r.importProject == nil {
 		return localVarReturnValue, nil, reportError("importProject is required and must be specified")
 	}
-	if r.folderId == nil {
-		return localVarReturnValue, nil, reportError("folderId is required and must be specified")
-	}
-	if r.billingAccountId == nil {
-		return localVarReturnValue, nil, reportError("billingAccountId is required and must be specified")
-	}
 	if r.azCount == nil {
 		return localVarReturnValue, nil, reportError("azCount is required and must be specified")
-	}
-	if r.region == nil {
-		return localVarReturnValue, nil, reportError("region is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -368,12 +350,20 @@ func (a *GoogleAPIService) GooglecloudCreateExecute(r ApiGooglecloudCreateReques
 		configLocalVarFile.Close()
 		formFiles = append(formFiles, formFile{fileBytes: configLocalVarFileBytes, fileName: configLocalVarFileName, formFileName: configLocalVarFormFileName})
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
+	if r.name != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
+	}
 	parameterAddToHeaderOrQuery(localVarFormParams, "importProject", r.importProject, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "folderId", r.folderId, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "billingAccountId", r.billingAccountId, "", "")
+	if r.folderId != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "folderId", r.folderId, "", "")
+	}
+	if r.billingAccountId != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "billingAccountId", r.billingAccountId, "", "")
+	}
 	parameterAddToHeaderOrQuery(localVarFormParams, "azCount", r.azCount, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "region", r.region, "", "")
+	if r.region != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "region", r.region, "", "")
+	}
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "organizationId", r.organizationId, "", "")
 	}
@@ -973,9 +963,6 @@ func (a *GoogleAPIService) GooglecloudRegionListExecute(r ApiGooglecloudRegionLi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.config == nil {
-		return localVarReturnValue, nil, reportError("config is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
@@ -1185,12 +1172,6 @@ func (a *GoogleAPIService) GooglecloudZoneListExecute(r ApiGooglecloudZoneListRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.config == nil {
-		return localVarReturnValue, nil, reportError("config is required and must be specified")
-	}
-	if r.region == nil {
-		return localVarReturnValue, nil, reportError("region is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
@@ -1224,7 +1205,9 @@ func (a *GoogleAPIService) GooglecloudZoneListExecute(r ApiGooglecloudZoneListRe
 		configLocalVarFile.Close()
 		formFiles = append(formFiles, formFile{fileBytes: configLocalVarFileBytes, fileName: configLocalVarFileName, formFileName: configLocalVarFormFileName})
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "region", r.region, "", "")
+	if r.region != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "region", r.region, "", "")
+	}
 	if r.cloudId != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "cloudId", r.cloudId, "", "")
 	}

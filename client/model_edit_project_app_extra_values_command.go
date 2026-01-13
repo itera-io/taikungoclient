@@ -23,8 +23,8 @@ var _ MappedNullable = &EditProjectAppExtraValuesCommand{}
 // EditProjectAppExtraValuesCommand struct for EditProjectAppExtraValuesCommand
 type EditProjectAppExtraValuesCommand struct {
 	ProjectAppId int32 `json:"projectAppId"`
-	ExtraValues string `json:"extraValues"`
-	Timeout NullableInt32 `json:"timeout"`
+	ExtraValues *string `json:"extraValues,omitempty"`
+	Timeout NullableInt32 `json:"timeout,omitempty"`
 }
 
 type _EditProjectAppExtraValuesCommand EditProjectAppExtraValuesCommand
@@ -33,11 +33,9 @@ type _EditProjectAppExtraValuesCommand EditProjectAppExtraValuesCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEditProjectAppExtraValuesCommand(projectAppId int32, extraValues string, timeout NullableInt32) *EditProjectAppExtraValuesCommand {
+func NewEditProjectAppExtraValuesCommand(projectAppId int32) *EditProjectAppExtraValuesCommand {
 	this := EditProjectAppExtraValuesCommand{}
 	this.ProjectAppId = projectAppId
-	this.ExtraValues = extraValues
-	this.Timeout = timeout
 	return &this
 }
 
@@ -73,42 +71,48 @@ func (o *EditProjectAppExtraValuesCommand) SetProjectAppId(v int32) {
 	o.ProjectAppId = v
 }
 
-// GetExtraValues returns the ExtraValues field value
+// GetExtraValues returns the ExtraValues field value if set, zero value otherwise.
 func (o *EditProjectAppExtraValuesCommand) GetExtraValues() string {
-	if o == nil {
+	if o == nil || IsNil(o.ExtraValues) {
 		var ret string
 		return ret
 	}
-
-	return o.ExtraValues
+	return *o.ExtraValues
 }
 
-// GetExtraValuesOk returns a tuple with the ExtraValues field value
+// GetExtraValuesOk returns a tuple with the ExtraValues field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EditProjectAppExtraValuesCommand) GetExtraValuesOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ExtraValues) {
 		return nil, false
 	}
-	return &o.ExtraValues, true
+	return o.ExtraValues, true
 }
 
-// SetExtraValues sets field value
+// HasExtraValues returns a boolean if a field has been set.
+func (o *EditProjectAppExtraValuesCommand) HasExtraValues() bool {
+	if o != nil && !IsNil(o.ExtraValues) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtraValues gets a reference to the given string and assigns it to the ExtraValues field.
 func (o *EditProjectAppExtraValuesCommand) SetExtraValues(v string) {
-	o.ExtraValues = v
+	o.ExtraValues = &v
 }
 
-// GetTimeout returns the Timeout field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetTimeout returns the Timeout field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EditProjectAppExtraValuesCommand) GetTimeout() int32 {
-	if o == nil || o.Timeout.Get() == nil {
+	if o == nil || IsNil(o.Timeout.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.Timeout.Get()
 }
 
-// GetTimeoutOk returns a tuple with the Timeout field value
+// GetTimeoutOk returns a tuple with the Timeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EditProjectAppExtraValuesCommand) GetTimeoutOk() (*int32, bool) {
@@ -118,9 +122,27 @@ func (o *EditProjectAppExtraValuesCommand) GetTimeoutOk() (*int32, bool) {
 	return o.Timeout.Get(), o.Timeout.IsSet()
 }
 
-// SetTimeout sets field value
+// HasTimeout returns a boolean if a field has been set.
+func (o *EditProjectAppExtraValuesCommand) HasTimeout() bool {
+	if o != nil && o.Timeout.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTimeout gets a reference to the given NullableInt32 and assigns it to the Timeout field.
 func (o *EditProjectAppExtraValuesCommand) SetTimeout(v int32) {
 	o.Timeout.Set(&v)
+}
+// SetTimeoutNil sets the value for Timeout to be an explicit nil
+func (o *EditProjectAppExtraValuesCommand) SetTimeoutNil() {
+	o.Timeout.Set(nil)
+}
+
+// UnsetTimeout ensures that no value is present for Timeout, not even an explicit nil
+func (o *EditProjectAppExtraValuesCommand) UnsetTimeout() {
+	o.Timeout.Unset()
 }
 
 func (o EditProjectAppExtraValuesCommand) MarshalJSON() ([]byte, error) {
@@ -134,8 +156,12 @@ func (o EditProjectAppExtraValuesCommand) MarshalJSON() ([]byte, error) {
 func (o EditProjectAppExtraValuesCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectAppId"] = o.ProjectAppId
-	toSerialize["extraValues"] = o.ExtraValues
-	toSerialize["timeout"] = o.Timeout.Get()
+	if !IsNil(o.ExtraValues) {
+		toSerialize["extraValues"] = o.ExtraValues
+	}
+	if o.Timeout.IsSet() {
+		toSerialize["timeout"] = o.Timeout.Get()
+	}
 	return toSerialize, nil
 }
 
@@ -145,8 +171,6 @@ func (o *EditProjectAppExtraValuesCommand) UnmarshalJSON(data []byte) (err error
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectAppId",
-		"extraValues",
-		"timeout",
 	}
 
 	allProperties := make(map[string]interface{})

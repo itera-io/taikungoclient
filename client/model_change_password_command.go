@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the ChangePasswordCommand type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &ChangePasswordCommand{}
 
 // ChangePasswordCommand struct for ChangePasswordCommand
 type ChangePasswordCommand struct {
-	Password string `json:"password"`
-	NewPassword string `json:"newPassword"`
+	Password *string `json:"password,omitempty"`
+	NewPassword *string `json:"newPassword,omitempty"`
 }
-
-type _ChangePasswordCommand ChangePasswordCommand
 
 // NewChangePasswordCommand instantiates a new ChangePasswordCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChangePasswordCommand(password string, newPassword string) *ChangePasswordCommand {
+func NewChangePasswordCommand() *ChangePasswordCommand {
 	this := ChangePasswordCommand{}
-	this.Password = password
-	this.NewPassword = newPassword
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewChangePasswordCommandWithDefaults() *ChangePasswordCommand {
 	return &this
 }
 
-// GetPassword returns the Password field value
+// GetPassword returns the Password field value if set, zero value otherwise.
 func (o *ChangePasswordCommand) GetPassword() string {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
 	}
-
-	return o.Password
+	return *o.Password
 }
 
-// GetPasswordOk returns a tuple with the Password field value
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChangePasswordCommand) GetPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
-	return &o.Password, true
+	return o.Password, true
 }
 
-// SetPassword sets field value
+// HasPassword returns a boolean if a field has been set.
+func (o *ChangePasswordCommand) HasPassword() bool {
+	if o != nil && !IsNil(o.Password) {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *ChangePasswordCommand) SetPassword(v string) {
-	o.Password = v
+	o.Password = &v
 }
 
-// GetNewPassword returns the NewPassword field value
+// GetNewPassword returns the NewPassword field value if set, zero value otherwise.
 func (o *ChangePasswordCommand) GetNewPassword() string {
-	if o == nil {
+	if o == nil || IsNil(o.NewPassword) {
 		var ret string
 		return ret
 	}
-
-	return o.NewPassword
+	return *o.NewPassword
 }
 
-// GetNewPasswordOk returns a tuple with the NewPassword field value
+// GetNewPasswordOk returns a tuple with the NewPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChangePasswordCommand) GetNewPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.NewPassword) {
 		return nil, false
 	}
-	return &o.NewPassword, true
+	return o.NewPassword, true
 }
 
-// SetNewPassword sets field value
+// HasNewPassword returns a boolean if a field has been set.
+func (o *ChangePasswordCommand) HasNewPassword() bool {
+	if o != nil && !IsNil(o.NewPassword) {
+		return true
+	}
+
+	return false
+}
+
+// SetNewPassword gets a reference to the given string and assigns it to the NewPassword field.
 func (o *ChangePasswordCommand) SetNewPassword(v string) {
-	o.NewPassword = v
+	o.NewPassword = &v
 }
 
 func (o ChangePasswordCommand) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o ChangePasswordCommand) MarshalJSON() ([]byte, error) {
 
 func (o ChangePasswordCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["password"] = o.Password
-	toSerialize["newPassword"] = o.NewPassword
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
+	}
+	if !IsNil(o.NewPassword) {
+		toSerialize["newPassword"] = o.NewPassword
+	}
 	return toSerialize, nil
-}
-
-func (o *ChangePasswordCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"password",
-		"newPassword",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varChangePasswordCommand := _ChangePasswordCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varChangePasswordCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ChangePasswordCommand(varChangePasswordCommand)
-
-	return err
 }
 
 type NullableChangePasswordCommand struct {

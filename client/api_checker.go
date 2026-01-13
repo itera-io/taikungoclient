@@ -1468,9 +1468,6 @@ func (a *CheckerAPIService) CheckerGoogleExecute(r ApiCheckerGoogleRequest) (boo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.config == nil {
-		return localVarReturnValue, nil, reportError("config is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
@@ -2246,9 +2243,6 @@ func (a *CheckerAPIService) CheckerKubeConfigExecute(r ApiCheckerKubeConfigReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.config == nil {
-		return localVarReturnValue, nil, reportError("config is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}

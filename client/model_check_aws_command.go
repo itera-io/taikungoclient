@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the CheckAwsCommand type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &CheckAwsCommand{}
 
 // CheckAwsCommand struct for CheckAwsCommand
 type CheckAwsCommand struct {
-	AwsAccessKeyId string `json:"awsAccessKeyId"`
-	AwsSecretAccessKey string `json:"awsSecretAccessKey"`
+	AwsAccessKeyId *string `json:"awsAccessKeyId,omitempty"`
+	AwsSecretAccessKey *string `json:"awsSecretAccessKey,omitempty"`
 }
-
-type _CheckAwsCommand CheckAwsCommand
 
 // NewCheckAwsCommand instantiates a new CheckAwsCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCheckAwsCommand(awsAccessKeyId string, awsSecretAccessKey string) *CheckAwsCommand {
+func NewCheckAwsCommand() *CheckAwsCommand {
 	this := CheckAwsCommand{}
-	this.AwsAccessKeyId = awsAccessKeyId
-	this.AwsSecretAccessKey = awsSecretAccessKey
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewCheckAwsCommandWithDefaults() *CheckAwsCommand {
 	return &this
 }
 
-// GetAwsAccessKeyId returns the AwsAccessKeyId field value
+// GetAwsAccessKeyId returns the AwsAccessKeyId field value if set, zero value otherwise.
 func (o *CheckAwsCommand) GetAwsAccessKeyId() string {
-	if o == nil {
+	if o == nil || IsNil(o.AwsAccessKeyId) {
 		var ret string
 		return ret
 	}
-
-	return o.AwsAccessKeyId
+	return *o.AwsAccessKeyId
 }
 
-// GetAwsAccessKeyIdOk returns a tuple with the AwsAccessKeyId field value
+// GetAwsAccessKeyIdOk returns a tuple with the AwsAccessKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CheckAwsCommand) GetAwsAccessKeyIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AwsAccessKeyId) {
 		return nil, false
 	}
-	return &o.AwsAccessKeyId, true
+	return o.AwsAccessKeyId, true
 }
 
-// SetAwsAccessKeyId sets field value
+// HasAwsAccessKeyId returns a boolean if a field has been set.
+func (o *CheckAwsCommand) HasAwsAccessKeyId() bool {
+	if o != nil && !IsNil(o.AwsAccessKeyId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsAccessKeyId gets a reference to the given string and assigns it to the AwsAccessKeyId field.
 func (o *CheckAwsCommand) SetAwsAccessKeyId(v string) {
-	o.AwsAccessKeyId = v
+	o.AwsAccessKeyId = &v
 }
 
-// GetAwsSecretAccessKey returns the AwsSecretAccessKey field value
+// GetAwsSecretAccessKey returns the AwsSecretAccessKey field value if set, zero value otherwise.
 func (o *CheckAwsCommand) GetAwsSecretAccessKey() string {
-	if o == nil {
+	if o == nil || IsNil(o.AwsSecretAccessKey) {
 		var ret string
 		return ret
 	}
-
-	return o.AwsSecretAccessKey
+	return *o.AwsSecretAccessKey
 }
 
-// GetAwsSecretAccessKeyOk returns a tuple with the AwsSecretAccessKey field value
+// GetAwsSecretAccessKeyOk returns a tuple with the AwsSecretAccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CheckAwsCommand) GetAwsSecretAccessKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AwsSecretAccessKey) {
 		return nil, false
 	}
-	return &o.AwsSecretAccessKey, true
+	return o.AwsSecretAccessKey, true
 }
 
-// SetAwsSecretAccessKey sets field value
+// HasAwsSecretAccessKey returns a boolean if a field has been set.
+func (o *CheckAwsCommand) HasAwsSecretAccessKey() bool {
+	if o != nil && !IsNil(o.AwsSecretAccessKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsSecretAccessKey gets a reference to the given string and assigns it to the AwsSecretAccessKey field.
 func (o *CheckAwsCommand) SetAwsSecretAccessKey(v string) {
-	o.AwsSecretAccessKey = v
+	o.AwsSecretAccessKey = &v
 }
 
 func (o CheckAwsCommand) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o CheckAwsCommand) MarshalJSON() ([]byte, error) {
 
 func (o CheckAwsCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["awsAccessKeyId"] = o.AwsAccessKeyId
-	toSerialize["awsSecretAccessKey"] = o.AwsSecretAccessKey
+	if !IsNil(o.AwsAccessKeyId) {
+		toSerialize["awsAccessKeyId"] = o.AwsAccessKeyId
+	}
+	if !IsNil(o.AwsSecretAccessKey) {
+		toSerialize["awsSecretAccessKey"] = o.AwsSecretAccessKey
+	}
 	return toSerialize, nil
-}
-
-func (o *CheckAwsCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"awsAccessKeyId",
-		"awsSecretAccessKey",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varCheckAwsCommand := _CheckAwsCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCheckAwsCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CheckAwsCommand(varCheckAwsCommand)
-
-	return err
 }
 
 type NullableCheckAwsCommand struct {

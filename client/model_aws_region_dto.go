@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the AwsRegionDto type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &AwsRegionDto{}
 
 // AwsRegionDto struct for AwsRegionDto
 type AwsRegionDto struct {
-	Name string `json:"name"`
-	Region string `json:"region"`
+	Name *string `json:"name,omitempty"`
+	Region *string `json:"region,omitempty"`
 }
-
-type _AwsRegionDto AwsRegionDto
 
 // NewAwsRegionDto instantiates a new AwsRegionDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAwsRegionDto(name string, region string) *AwsRegionDto {
+func NewAwsRegionDto() *AwsRegionDto {
 	this := AwsRegionDto{}
-	this.Name = name
-	this.Region = region
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewAwsRegionDtoWithDefaults() *AwsRegionDto {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *AwsRegionDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AwsRegionDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *AwsRegionDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *AwsRegionDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetRegion returns the Region field value
+// GetRegion returns the Region field value if set, zero value otherwise.
 func (o *AwsRegionDto) GetRegion() string {
-	if o == nil {
+	if o == nil || IsNil(o.Region) {
 		var ret string
 		return ret
 	}
-
-	return o.Region
+	return *o.Region
 }
 
-// GetRegionOk returns a tuple with the Region field value
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AwsRegionDto) GetRegionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
-	return &o.Region, true
+	return o.Region, true
 }
 
-// SetRegion sets field value
+// HasRegion returns a boolean if a field has been set.
+func (o *AwsRegionDto) HasRegion() bool {
+	if o != nil && !IsNil(o.Region) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *AwsRegionDto) SetRegion(v string) {
-	o.Region = v
+	o.Region = &v
 }
 
 func (o AwsRegionDto) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o AwsRegionDto) MarshalJSON() ([]byte, error) {
 
 func (o AwsRegionDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["region"] = o.Region
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
+	}
 	return toSerialize, nil
-}
-
-func (o *AwsRegionDto) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"region",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varAwsRegionDto := _AwsRegionDto{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAwsRegionDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AwsRegionDto(varAwsRegionDto)
-
-	return err
 }
 
 type NullableAwsRegionDto struct {

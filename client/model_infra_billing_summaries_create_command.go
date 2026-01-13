@@ -25,8 +25,8 @@ var _ MappedNullable = &InfraBillingSummariesCreateCommand{}
 type InfraBillingSummariesCreateCommand struct {
 	Price float64 `json:"price"`
 	OrganizationId int32 `json:"organizationId"`
-	BeginApply NullableTime `json:"beginApply"`
-	EndApply NullableTime `json:"endApply"`
+	BeginApply NullableTime `json:"beginApply,omitempty"`
+	EndApply NullableTime `json:"endApply,omitempty"`
 	ProductId int32 `json:"productId"`
 }
 
@@ -36,12 +36,10 @@ type _InfraBillingSummariesCreateCommand InfraBillingSummariesCreateCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInfraBillingSummariesCreateCommand(price float64, organizationId int32, beginApply NullableTime, endApply NullableTime, productId int32) *InfraBillingSummariesCreateCommand {
+func NewInfraBillingSummariesCreateCommand(price float64, organizationId int32, productId int32) *InfraBillingSummariesCreateCommand {
 	this := InfraBillingSummariesCreateCommand{}
 	this.Price = price
 	this.OrganizationId = organizationId
-	this.BeginApply = beginApply
-	this.EndApply = endApply
 	this.ProductId = productId
 	return &this
 }
@@ -102,18 +100,16 @@ func (o *InfraBillingSummariesCreateCommand) SetOrganizationId(v int32) {
 	o.OrganizationId = v
 }
 
-// GetBeginApply returns the BeginApply field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetBeginApply returns the BeginApply field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InfraBillingSummariesCreateCommand) GetBeginApply() time.Time {
-	if o == nil || o.BeginApply.Get() == nil {
+	if o == nil || IsNil(o.BeginApply.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.BeginApply.Get()
 }
 
-// GetBeginApplyOk returns a tuple with the BeginApply field value
+// GetBeginApplyOk returns a tuple with the BeginApply field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InfraBillingSummariesCreateCommand) GetBeginApplyOk() (*time.Time, bool) {
@@ -123,23 +119,39 @@ func (o *InfraBillingSummariesCreateCommand) GetBeginApplyOk() (*time.Time, bool
 	return o.BeginApply.Get(), o.BeginApply.IsSet()
 }
 
-// SetBeginApply sets field value
+// HasBeginApply returns a boolean if a field has been set.
+func (o *InfraBillingSummariesCreateCommand) HasBeginApply() bool {
+	if o != nil && o.BeginApply.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetBeginApply gets a reference to the given NullableTime and assigns it to the BeginApply field.
 func (o *InfraBillingSummariesCreateCommand) SetBeginApply(v time.Time) {
 	o.BeginApply.Set(&v)
 }
+// SetBeginApplyNil sets the value for BeginApply to be an explicit nil
+func (o *InfraBillingSummariesCreateCommand) SetBeginApplyNil() {
+	o.BeginApply.Set(nil)
+}
 
-// GetEndApply returns the EndApply field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// UnsetBeginApply ensures that no value is present for BeginApply, not even an explicit nil
+func (o *InfraBillingSummariesCreateCommand) UnsetBeginApply() {
+	o.BeginApply.Unset()
+}
+
+// GetEndApply returns the EndApply field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InfraBillingSummariesCreateCommand) GetEndApply() time.Time {
-	if o == nil || o.EndApply.Get() == nil {
+	if o == nil || IsNil(o.EndApply.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.EndApply.Get()
 }
 
-// GetEndApplyOk returns a tuple with the EndApply field value
+// GetEndApplyOk returns a tuple with the EndApply field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InfraBillingSummariesCreateCommand) GetEndApplyOk() (*time.Time, bool) {
@@ -149,9 +161,27 @@ func (o *InfraBillingSummariesCreateCommand) GetEndApplyOk() (*time.Time, bool) 
 	return o.EndApply.Get(), o.EndApply.IsSet()
 }
 
-// SetEndApply sets field value
+// HasEndApply returns a boolean if a field has been set.
+func (o *InfraBillingSummariesCreateCommand) HasEndApply() bool {
+	if o != nil && o.EndApply.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEndApply gets a reference to the given NullableTime and assigns it to the EndApply field.
 func (o *InfraBillingSummariesCreateCommand) SetEndApply(v time.Time) {
 	o.EndApply.Set(&v)
+}
+// SetEndApplyNil sets the value for EndApply to be an explicit nil
+func (o *InfraBillingSummariesCreateCommand) SetEndApplyNil() {
+	o.EndApply.Set(nil)
+}
+
+// UnsetEndApply ensures that no value is present for EndApply, not even an explicit nil
+func (o *InfraBillingSummariesCreateCommand) UnsetEndApply() {
+	o.EndApply.Unset()
 }
 
 // GetProductId returns the ProductId field value
@@ -190,8 +220,12 @@ func (o InfraBillingSummariesCreateCommand) ToMap() (map[string]interface{}, err
 	toSerialize := map[string]interface{}{}
 	toSerialize["price"] = o.Price
 	toSerialize["organizationId"] = o.OrganizationId
-	toSerialize["beginApply"] = o.BeginApply.Get()
-	toSerialize["endApply"] = o.EndApply.Get()
+	if o.BeginApply.IsSet() {
+		toSerialize["beginApply"] = o.BeginApply.Get()
+	}
+	if o.EndApply.IsSet() {
+		toSerialize["endApply"] = o.EndApply.Get()
+	}
 	toSerialize["productId"] = o.ProductId
 	return toSerialize, nil
 }
@@ -203,8 +237,6 @@ func (o *InfraBillingSummariesCreateCommand) UnmarshalJSON(data []byte) (err err
 	requiredProperties := []string{
 		"price",
 		"organizationId",
-		"beginApply",
-		"endApply",
 		"productId",
 	}
 

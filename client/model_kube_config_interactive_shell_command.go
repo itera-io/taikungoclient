@@ -23,7 +23,7 @@ var _ MappedNullable = &KubeConfigInteractiveShellCommand{}
 // KubeConfigInteractiveShellCommand struct for KubeConfigInteractiveShellCommand
 type KubeConfigInteractiveShellCommand struct {
 	KubeConfigId int32 `json:"kubeConfigId"`
-	Token string `json:"token"`
+	Token *string `json:"token,omitempty"`
 	ProjectId int32 `json:"projectId"`
 }
 
@@ -33,10 +33,9 @@ type _KubeConfigInteractiveShellCommand KubeConfigInteractiveShellCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubeConfigInteractiveShellCommand(kubeConfigId int32, token string, projectId int32) *KubeConfigInteractiveShellCommand {
+func NewKubeConfigInteractiveShellCommand(kubeConfigId int32, projectId int32) *KubeConfigInteractiveShellCommand {
 	this := KubeConfigInteractiveShellCommand{}
 	this.KubeConfigId = kubeConfigId
-	this.Token = token
 	this.ProjectId = projectId
 	return &this
 }
@@ -73,28 +72,36 @@ func (o *KubeConfigInteractiveShellCommand) SetKubeConfigId(v int32) {
 	o.KubeConfigId = v
 }
 
-// GetToken returns the Token field value
+// GetToken returns the Token field value if set, zero value otherwise.
 func (o *KubeConfigInteractiveShellCommand) GetToken() string {
-	if o == nil {
+	if o == nil || IsNil(o.Token) {
 		var ret string
 		return ret
 	}
-
-	return o.Token
+	return *o.Token
 }
 
-// GetTokenOk returns a tuple with the Token field value
+// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KubeConfigInteractiveShellCommand) GetTokenOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Token) {
 		return nil, false
 	}
-	return &o.Token, true
+	return o.Token, true
 }
 
-// SetToken sets field value
+// HasToken returns a boolean if a field has been set.
+func (o *KubeConfigInteractiveShellCommand) HasToken() bool {
+	if o != nil && !IsNil(o.Token) {
+		return true
+	}
+
+	return false
+}
+
+// SetToken gets a reference to the given string and assigns it to the Token field.
 func (o *KubeConfigInteractiveShellCommand) SetToken(v string) {
-	o.Token = v
+	o.Token = &v
 }
 
 // GetProjectId returns the ProjectId field value
@@ -132,7 +139,9 @@ func (o KubeConfigInteractiveShellCommand) MarshalJSON() ([]byte, error) {
 func (o KubeConfigInteractiveShellCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["kubeConfigId"] = o.KubeConfigId
-	toSerialize["token"] = o.Token
+	if !IsNil(o.Token) {
+		toSerialize["token"] = o.Token
+	}
 	toSerialize["projectId"] = o.ProjectId
 	return toSerialize, nil
 }
@@ -143,7 +152,6 @@ func (o *KubeConfigInteractiveShellCommand) UnmarshalJSON(data []byte) (err erro
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"kubeConfigId",
-		"token",
 		"projectId",
 	}
 

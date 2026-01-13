@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the CheckTrustedRegistryCommand type satisfies the MappedNullable interface at compile time
@@ -22,18 +20,15 @@ var _ MappedNullable = &CheckTrustedRegistryCommand{}
 
 // CheckTrustedRegistryCommand struct for CheckTrustedRegistryCommand
 type CheckTrustedRegistryCommand struct {
-	Registry string `json:"registry"`
+	Registry *string `json:"registry,omitempty"`
 }
-
-type _CheckTrustedRegistryCommand CheckTrustedRegistryCommand
 
 // NewCheckTrustedRegistryCommand instantiates a new CheckTrustedRegistryCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCheckTrustedRegistryCommand(registry string) *CheckTrustedRegistryCommand {
+func NewCheckTrustedRegistryCommand() *CheckTrustedRegistryCommand {
 	this := CheckTrustedRegistryCommand{}
-	this.Registry = registry
 	return &this
 }
 
@@ -45,28 +40,36 @@ func NewCheckTrustedRegistryCommandWithDefaults() *CheckTrustedRegistryCommand {
 	return &this
 }
 
-// GetRegistry returns the Registry field value
+// GetRegistry returns the Registry field value if set, zero value otherwise.
 func (o *CheckTrustedRegistryCommand) GetRegistry() string {
-	if o == nil {
+	if o == nil || IsNil(o.Registry) {
 		var ret string
 		return ret
 	}
-
-	return o.Registry
+	return *o.Registry
 }
 
-// GetRegistryOk returns a tuple with the Registry field value
+// GetRegistryOk returns a tuple with the Registry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CheckTrustedRegistryCommand) GetRegistryOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Registry) {
 		return nil, false
 	}
-	return &o.Registry, true
+	return o.Registry, true
 }
 
-// SetRegistry sets field value
+// HasRegistry returns a boolean if a field has been set.
+func (o *CheckTrustedRegistryCommand) HasRegistry() bool {
+	if o != nil && !IsNil(o.Registry) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegistry gets a reference to the given string and assigns it to the Registry field.
 func (o *CheckTrustedRegistryCommand) SetRegistry(v string) {
-	o.Registry = v
+	o.Registry = &v
 }
 
 func (o CheckTrustedRegistryCommand) MarshalJSON() ([]byte, error) {
@@ -79,45 +82,10 @@ func (o CheckTrustedRegistryCommand) MarshalJSON() ([]byte, error) {
 
 func (o CheckTrustedRegistryCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["registry"] = o.Registry
+	if !IsNil(o.Registry) {
+		toSerialize["registry"] = o.Registry
+	}
 	return toSerialize, nil
-}
-
-func (o *CheckTrustedRegistryCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"registry",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varCheckTrustedRegistryCommand := _CheckTrustedRegistryCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCheckTrustedRegistryCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CheckTrustedRegistryCommand(varCheckTrustedRegistryCommand)
-
-	return err
 }
 
 type NullableCheckTrustedRegistryCommand struct {

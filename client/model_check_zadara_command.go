@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the CheckZadaraCommand type satisfies the MappedNullable interface at compile time
@@ -22,22 +20,17 @@ var _ MappedNullable = &CheckZadaraCommand{}
 
 // CheckZadaraCommand struct for CheckZadaraCommand
 type CheckZadaraCommand struct {
-	ZadaraSecretAccessKey string `json:"zadaraSecretAccessKey"`
-	ZadaraAccessKeyId string `json:"zadaraAccessKeyId"`
-	ZadaraUrl string `json:"zadaraUrl"`
+	ZadaraSecretAccessKey *string `json:"zadaraSecretAccessKey,omitempty"`
+	ZadaraAccessKeyId *string `json:"zadaraAccessKeyId,omitempty"`
+	ZadaraUrl *string `json:"zadaraUrl,omitempty"`
 }
-
-type _CheckZadaraCommand CheckZadaraCommand
 
 // NewCheckZadaraCommand instantiates a new CheckZadaraCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCheckZadaraCommand(zadaraSecretAccessKey string, zadaraAccessKeyId string, zadaraUrl string) *CheckZadaraCommand {
+func NewCheckZadaraCommand() *CheckZadaraCommand {
 	this := CheckZadaraCommand{}
-	this.ZadaraSecretAccessKey = zadaraSecretAccessKey
-	this.ZadaraAccessKeyId = zadaraAccessKeyId
-	this.ZadaraUrl = zadaraUrl
 	return &this
 }
 
@@ -49,76 +42,100 @@ func NewCheckZadaraCommandWithDefaults() *CheckZadaraCommand {
 	return &this
 }
 
-// GetZadaraSecretAccessKey returns the ZadaraSecretAccessKey field value
+// GetZadaraSecretAccessKey returns the ZadaraSecretAccessKey field value if set, zero value otherwise.
 func (o *CheckZadaraCommand) GetZadaraSecretAccessKey() string {
-	if o == nil {
+	if o == nil || IsNil(o.ZadaraSecretAccessKey) {
 		var ret string
 		return ret
 	}
-
-	return o.ZadaraSecretAccessKey
+	return *o.ZadaraSecretAccessKey
 }
 
-// GetZadaraSecretAccessKeyOk returns a tuple with the ZadaraSecretAccessKey field value
+// GetZadaraSecretAccessKeyOk returns a tuple with the ZadaraSecretAccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CheckZadaraCommand) GetZadaraSecretAccessKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ZadaraSecretAccessKey) {
 		return nil, false
 	}
-	return &o.ZadaraSecretAccessKey, true
+	return o.ZadaraSecretAccessKey, true
 }
 
-// SetZadaraSecretAccessKey sets field value
+// HasZadaraSecretAccessKey returns a boolean if a field has been set.
+func (o *CheckZadaraCommand) HasZadaraSecretAccessKey() bool {
+	if o != nil && !IsNil(o.ZadaraSecretAccessKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetZadaraSecretAccessKey gets a reference to the given string and assigns it to the ZadaraSecretAccessKey field.
 func (o *CheckZadaraCommand) SetZadaraSecretAccessKey(v string) {
-	o.ZadaraSecretAccessKey = v
+	o.ZadaraSecretAccessKey = &v
 }
 
-// GetZadaraAccessKeyId returns the ZadaraAccessKeyId field value
+// GetZadaraAccessKeyId returns the ZadaraAccessKeyId field value if set, zero value otherwise.
 func (o *CheckZadaraCommand) GetZadaraAccessKeyId() string {
-	if o == nil {
+	if o == nil || IsNil(o.ZadaraAccessKeyId) {
 		var ret string
 		return ret
 	}
-
-	return o.ZadaraAccessKeyId
+	return *o.ZadaraAccessKeyId
 }
 
-// GetZadaraAccessKeyIdOk returns a tuple with the ZadaraAccessKeyId field value
+// GetZadaraAccessKeyIdOk returns a tuple with the ZadaraAccessKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CheckZadaraCommand) GetZadaraAccessKeyIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ZadaraAccessKeyId) {
 		return nil, false
 	}
-	return &o.ZadaraAccessKeyId, true
+	return o.ZadaraAccessKeyId, true
 }
 
-// SetZadaraAccessKeyId sets field value
+// HasZadaraAccessKeyId returns a boolean if a field has been set.
+func (o *CheckZadaraCommand) HasZadaraAccessKeyId() bool {
+	if o != nil && !IsNil(o.ZadaraAccessKeyId) {
+		return true
+	}
+
+	return false
+}
+
+// SetZadaraAccessKeyId gets a reference to the given string and assigns it to the ZadaraAccessKeyId field.
 func (o *CheckZadaraCommand) SetZadaraAccessKeyId(v string) {
-	o.ZadaraAccessKeyId = v
+	o.ZadaraAccessKeyId = &v
 }
 
-// GetZadaraUrl returns the ZadaraUrl field value
+// GetZadaraUrl returns the ZadaraUrl field value if set, zero value otherwise.
 func (o *CheckZadaraCommand) GetZadaraUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.ZadaraUrl) {
 		var ret string
 		return ret
 	}
-
-	return o.ZadaraUrl
+	return *o.ZadaraUrl
 }
 
-// GetZadaraUrlOk returns a tuple with the ZadaraUrl field value
+// GetZadaraUrlOk returns a tuple with the ZadaraUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CheckZadaraCommand) GetZadaraUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ZadaraUrl) {
 		return nil, false
 	}
-	return &o.ZadaraUrl, true
+	return o.ZadaraUrl, true
 }
 
-// SetZadaraUrl sets field value
+// HasZadaraUrl returns a boolean if a field has been set.
+func (o *CheckZadaraCommand) HasZadaraUrl() bool {
+	if o != nil && !IsNil(o.ZadaraUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetZadaraUrl gets a reference to the given string and assigns it to the ZadaraUrl field.
 func (o *CheckZadaraCommand) SetZadaraUrl(v string) {
-	o.ZadaraUrl = v
+	o.ZadaraUrl = &v
 }
 
 func (o CheckZadaraCommand) MarshalJSON() ([]byte, error) {
@@ -131,49 +148,16 @@ func (o CheckZadaraCommand) MarshalJSON() ([]byte, error) {
 
 func (o CheckZadaraCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["zadaraSecretAccessKey"] = o.ZadaraSecretAccessKey
-	toSerialize["zadaraAccessKeyId"] = o.ZadaraAccessKeyId
-	toSerialize["zadaraUrl"] = o.ZadaraUrl
+	if !IsNil(o.ZadaraSecretAccessKey) {
+		toSerialize["zadaraSecretAccessKey"] = o.ZadaraSecretAccessKey
+	}
+	if !IsNil(o.ZadaraAccessKeyId) {
+		toSerialize["zadaraAccessKeyId"] = o.ZadaraAccessKeyId
+	}
+	if !IsNil(o.ZadaraUrl) {
+		toSerialize["zadaraUrl"] = o.ZadaraUrl
+	}
 	return toSerialize, nil
-}
-
-func (o *CheckZadaraCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"zadaraSecretAccessKey",
-		"zadaraAccessKeyId",
-		"zadaraUrl",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varCheckZadaraCommand := _CheckZadaraCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCheckZadaraCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CheckZadaraCommand(varCheckZadaraCommand)
-
-	return err
 }
 
 type NullableCheckZadaraCommand struct {

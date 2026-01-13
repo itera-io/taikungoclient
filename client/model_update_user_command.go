@@ -22,10 +22,10 @@ var _ MappedNullable = &UpdateUserCommand{}
 
 // UpdateUserCommand struct for UpdateUserCommand
 type UpdateUserCommand struct {
-	Id string `json:"id"`
-	DisplayName string `json:"displayName"`
-	Username string `json:"username"`
-	Email string `json:"email"`
+	Id *string `json:"id,omitempty"`
+	DisplayName *string `json:"displayName,omitempty"`
+	Username *string `json:"username,omitempty"`
+	Email *string `json:"email,omitempty"`
 	Role UserRole `json:"role"`
 	ForceToResetPassword bool `json:"forceToResetPassword"`
 	Disable bool `json:"disable"`
@@ -38,12 +38,8 @@ type _UpdateUserCommand UpdateUserCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateUserCommand(id string, displayName string, username string, email string, role UserRole, forceToResetPassword bool, disable bool, isApprovedByPartner bool) *UpdateUserCommand {
+func NewUpdateUserCommand(role UserRole, forceToResetPassword bool, disable bool, isApprovedByPartner bool) *UpdateUserCommand {
 	this := UpdateUserCommand{}
-	this.Id = id
-	this.DisplayName = displayName
-	this.Username = username
-	this.Email = email
 	this.Role = role
 	this.ForceToResetPassword = forceToResetPassword
 	this.Disable = disable
@@ -59,100 +55,132 @@ func NewUpdateUserCommandWithDefaults() *UpdateUserCommand {
 	return &this
 }
 
-// GetId returns the Id field value
+// GetId returns the Id field value if set, zero value otherwise.
 func (o *UpdateUserCommand) GetId() string {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-
-	return o.Id
+	return *o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateUserCommand) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return &o.Id, true
+	return o.Id, true
 }
 
-// SetId sets field value
+// HasId returns a boolean if a field has been set.
+func (o *UpdateUserCommand) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
 func (o *UpdateUserCommand) SetId(v string) {
-	o.Id = v
+	o.Id = &v
 }
 
-// GetDisplayName returns the DisplayName field value
+// GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *UpdateUserCommand) GetDisplayName() string {
-	if o == nil {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
-
-	return o.DisplayName
+	return *o.DisplayName
 }
 
-// GetDisplayNameOk returns a tuple with the DisplayName field value
+// GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateUserCommand) GetDisplayNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
-	return &o.DisplayName, true
+	return o.DisplayName, true
 }
 
-// SetDisplayName sets field value
+// HasDisplayName returns a boolean if a field has been set.
+func (o *UpdateUserCommand) HasDisplayName() bool {
+	if o != nil && !IsNil(o.DisplayName) {
+		return true
+	}
+
+	return false
+}
+
+// SetDisplayName gets a reference to the given string and assigns it to the DisplayName field.
 func (o *UpdateUserCommand) SetDisplayName(v string) {
-	o.DisplayName = v
+	o.DisplayName = &v
 }
 
-// GetUsername returns the Username field value
+// GetUsername returns the Username field value if set, zero value otherwise.
 func (o *UpdateUserCommand) GetUsername() string {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
-
-	return o.Username
+	return *o.Username
 }
 
-// GetUsernameOk returns a tuple with the Username field value
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateUserCommand) GetUsernameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
-	return &o.Username, true
+	return o.Username, true
 }
 
-// SetUsername sets field value
+// HasUsername returns a boolean if a field has been set.
+func (o *UpdateUserCommand) HasUsername() bool {
+	if o != nil && !IsNil(o.Username) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *UpdateUserCommand) SetUsername(v string) {
-	o.Username = v
+	o.Username = &v
 }
 
-// GetEmail returns the Email field value
+// GetEmail returns the Email field value if set, zero value otherwise.
 func (o *UpdateUserCommand) GetEmail() string {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
-
-	return o.Email
+	return *o.Email
 }
 
-// GetEmailOk returns a tuple with the Email field value
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateUserCommand) GetEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
-	return &o.Email, true
+	return o.Email, true
 }
 
-// SetEmail sets field value
+// HasEmail returns a boolean if a field has been set.
+func (o *UpdateUserCommand) HasEmail() bool {
+	if o != nil && !IsNil(o.Email) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmail gets a reference to the given string and assigns it to the Email field.
 func (o *UpdateUserCommand) SetEmail(v string) {
-	o.Email = v
+	o.Email = &v
 }
 
 // GetRole returns the Role field value
@@ -261,10 +289,18 @@ func (o UpdateUserCommand) MarshalJSON() ([]byte, error) {
 
 func (o UpdateUserCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["displayName"] = o.DisplayName
-	toSerialize["username"] = o.Username
-	toSerialize["email"] = o.Email
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.DisplayName) {
+		toSerialize["displayName"] = o.DisplayName
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
 	toSerialize["role"] = o.Role
 	toSerialize["forceToResetPassword"] = o.ForceToResetPassword
 	toSerialize["disable"] = o.Disable
@@ -277,10 +313,6 @@ func (o *UpdateUserCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"id",
-		"displayName",
-		"username",
-		"email",
 		"role",
 		"forceToResetPassword",
 		"disable",

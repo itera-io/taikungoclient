@@ -22,12 +22,12 @@ var _ MappedNullable = &CreateAzureCloudCommand{}
 
 // CreateAzureCloudCommand struct for CreateAzureCloudCommand
 type CreateAzureCloudCommand struct {
-	Name string `json:"name"`
-	AzureSubscriptionId string `json:"azureSubscriptionId"`
-	AzureClientId string `json:"azureClientId"`
-	AzureClientSecret string `json:"azureClientSecret"`
-	AzureTenantId string `json:"azureTenantId"`
-	AzureLocation string `json:"azureLocation"`
+	Name *string `json:"name,omitempty"`
+	AzureSubscriptionId *string `json:"azureSubscriptionId,omitempty"`
+	AzureClientId *string `json:"azureClientId,omitempty"`
+	AzureClientSecret *string `json:"azureClientSecret,omitempty"`
+	AzureTenantId *string `json:"azureTenantId,omitempty"`
+	AzureLocation *string `json:"azureLocation,omitempty"`
 	AzCount int32 `json:"azCount"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 }
@@ -38,14 +38,8 @@ type _CreateAzureCloudCommand CreateAzureCloudCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateAzureCloudCommand(name string, azureSubscriptionId string, azureClientId string, azureClientSecret string, azureTenantId string, azureLocation string, azCount int32) *CreateAzureCloudCommand {
+func NewCreateAzureCloudCommand(azCount int32) *CreateAzureCloudCommand {
 	this := CreateAzureCloudCommand{}
-	this.Name = name
-	this.AzureSubscriptionId = azureSubscriptionId
-	this.AzureClientId = azureClientId
-	this.AzureClientSecret = azureClientSecret
-	this.AzureTenantId = azureTenantId
-	this.AzureLocation = azureLocation
 	this.AzCount = azCount
 	return &this
 }
@@ -58,148 +52,196 @@ func NewCreateAzureCloudCommandWithDefaults() *CreateAzureCloudCommand {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateAzureCloudCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateAzureCloudCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CreateAzureCloudCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateAzureCloudCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetAzureSubscriptionId returns the AzureSubscriptionId field value
+// GetAzureSubscriptionId returns the AzureSubscriptionId field value if set, zero value otherwise.
 func (o *CreateAzureCloudCommand) GetAzureSubscriptionId() string {
-	if o == nil {
+	if o == nil || IsNil(o.AzureSubscriptionId) {
 		var ret string
 		return ret
 	}
-
-	return o.AzureSubscriptionId
+	return *o.AzureSubscriptionId
 }
 
-// GetAzureSubscriptionIdOk returns a tuple with the AzureSubscriptionId field value
+// GetAzureSubscriptionIdOk returns a tuple with the AzureSubscriptionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateAzureCloudCommand) GetAzureSubscriptionIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AzureSubscriptionId) {
 		return nil, false
 	}
-	return &o.AzureSubscriptionId, true
+	return o.AzureSubscriptionId, true
 }
 
-// SetAzureSubscriptionId sets field value
+// HasAzureSubscriptionId returns a boolean if a field has been set.
+func (o *CreateAzureCloudCommand) HasAzureSubscriptionId() bool {
+	if o != nil && !IsNil(o.AzureSubscriptionId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureSubscriptionId gets a reference to the given string and assigns it to the AzureSubscriptionId field.
 func (o *CreateAzureCloudCommand) SetAzureSubscriptionId(v string) {
-	o.AzureSubscriptionId = v
+	o.AzureSubscriptionId = &v
 }
 
-// GetAzureClientId returns the AzureClientId field value
+// GetAzureClientId returns the AzureClientId field value if set, zero value otherwise.
 func (o *CreateAzureCloudCommand) GetAzureClientId() string {
-	if o == nil {
+	if o == nil || IsNil(o.AzureClientId) {
 		var ret string
 		return ret
 	}
-
-	return o.AzureClientId
+	return *o.AzureClientId
 }
 
-// GetAzureClientIdOk returns a tuple with the AzureClientId field value
+// GetAzureClientIdOk returns a tuple with the AzureClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateAzureCloudCommand) GetAzureClientIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AzureClientId) {
 		return nil, false
 	}
-	return &o.AzureClientId, true
+	return o.AzureClientId, true
 }
 
-// SetAzureClientId sets field value
+// HasAzureClientId returns a boolean if a field has been set.
+func (o *CreateAzureCloudCommand) HasAzureClientId() bool {
+	if o != nil && !IsNil(o.AzureClientId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureClientId gets a reference to the given string and assigns it to the AzureClientId field.
 func (o *CreateAzureCloudCommand) SetAzureClientId(v string) {
-	o.AzureClientId = v
+	o.AzureClientId = &v
 }
 
-// GetAzureClientSecret returns the AzureClientSecret field value
+// GetAzureClientSecret returns the AzureClientSecret field value if set, zero value otherwise.
 func (o *CreateAzureCloudCommand) GetAzureClientSecret() string {
-	if o == nil {
+	if o == nil || IsNil(o.AzureClientSecret) {
 		var ret string
 		return ret
 	}
-
-	return o.AzureClientSecret
+	return *o.AzureClientSecret
 }
 
-// GetAzureClientSecretOk returns a tuple with the AzureClientSecret field value
+// GetAzureClientSecretOk returns a tuple with the AzureClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateAzureCloudCommand) GetAzureClientSecretOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AzureClientSecret) {
 		return nil, false
 	}
-	return &o.AzureClientSecret, true
+	return o.AzureClientSecret, true
 }
 
-// SetAzureClientSecret sets field value
+// HasAzureClientSecret returns a boolean if a field has been set.
+func (o *CreateAzureCloudCommand) HasAzureClientSecret() bool {
+	if o != nil && !IsNil(o.AzureClientSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureClientSecret gets a reference to the given string and assigns it to the AzureClientSecret field.
 func (o *CreateAzureCloudCommand) SetAzureClientSecret(v string) {
-	o.AzureClientSecret = v
+	o.AzureClientSecret = &v
 }
 
-// GetAzureTenantId returns the AzureTenantId field value
+// GetAzureTenantId returns the AzureTenantId field value if set, zero value otherwise.
 func (o *CreateAzureCloudCommand) GetAzureTenantId() string {
-	if o == nil {
+	if o == nil || IsNil(o.AzureTenantId) {
 		var ret string
 		return ret
 	}
-
-	return o.AzureTenantId
+	return *o.AzureTenantId
 }
 
-// GetAzureTenantIdOk returns a tuple with the AzureTenantId field value
+// GetAzureTenantIdOk returns a tuple with the AzureTenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateAzureCloudCommand) GetAzureTenantIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AzureTenantId) {
 		return nil, false
 	}
-	return &o.AzureTenantId, true
+	return o.AzureTenantId, true
 }
 
-// SetAzureTenantId sets field value
+// HasAzureTenantId returns a boolean if a field has been set.
+func (o *CreateAzureCloudCommand) HasAzureTenantId() bool {
+	if o != nil && !IsNil(o.AzureTenantId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureTenantId gets a reference to the given string and assigns it to the AzureTenantId field.
 func (o *CreateAzureCloudCommand) SetAzureTenantId(v string) {
-	o.AzureTenantId = v
+	o.AzureTenantId = &v
 }
 
-// GetAzureLocation returns the AzureLocation field value
+// GetAzureLocation returns the AzureLocation field value if set, zero value otherwise.
 func (o *CreateAzureCloudCommand) GetAzureLocation() string {
-	if o == nil {
+	if o == nil || IsNil(o.AzureLocation) {
 		var ret string
 		return ret
 	}
-
-	return o.AzureLocation
+	return *o.AzureLocation
 }
 
-// GetAzureLocationOk returns a tuple with the AzureLocation field value
+// GetAzureLocationOk returns a tuple with the AzureLocation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateAzureCloudCommand) GetAzureLocationOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AzureLocation) {
 		return nil, false
 	}
-	return &o.AzureLocation, true
+	return o.AzureLocation, true
 }
 
-// SetAzureLocation sets field value
+// HasAzureLocation returns a boolean if a field has been set.
+func (o *CreateAzureCloudCommand) HasAzureLocation() bool {
+	if o != nil && !IsNil(o.AzureLocation) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureLocation gets a reference to the given string and assigns it to the AzureLocation field.
 func (o *CreateAzureCloudCommand) SetAzureLocation(v string) {
-	o.AzureLocation = v
+	o.AzureLocation = &v
 }
 
 // GetAzCount returns the AzCount field value
@@ -278,12 +320,24 @@ func (o CreateAzureCloudCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateAzureCloudCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["azureSubscriptionId"] = o.AzureSubscriptionId
-	toSerialize["azureClientId"] = o.AzureClientId
-	toSerialize["azureClientSecret"] = o.AzureClientSecret
-	toSerialize["azureTenantId"] = o.AzureTenantId
-	toSerialize["azureLocation"] = o.AzureLocation
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.AzureSubscriptionId) {
+		toSerialize["azureSubscriptionId"] = o.AzureSubscriptionId
+	}
+	if !IsNil(o.AzureClientId) {
+		toSerialize["azureClientId"] = o.AzureClientId
+	}
+	if !IsNil(o.AzureClientSecret) {
+		toSerialize["azureClientSecret"] = o.AzureClientSecret
+	}
+	if !IsNil(o.AzureTenantId) {
+		toSerialize["azureTenantId"] = o.AzureTenantId
+	}
+	if !IsNil(o.AzureLocation) {
+		toSerialize["azureLocation"] = o.AzureLocation
+	}
 	toSerialize["azCount"] = o.AzCount
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
@@ -296,12 +350,6 @@ func (o *CreateAzureCloudCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
-		"azureSubscriptionId",
-		"azureClientId",
-		"azureClientSecret",
-		"azureTenantId",
-		"azureLocation",
 		"azCount",
 	}
 

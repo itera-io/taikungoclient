@@ -23,7 +23,7 @@ var _ MappedNullable = &ProjectDeploymentDeleteServersCommand{}
 // ProjectDeploymentDeleteServersCommand struct for ProjectDeploymentDeleteServersCommand
 type ProjectDeploymentDeleteServersCommand struct {
 	ProjectId int32 `json:"projectId"`
-	ServerIds []int32 `json:"serverIds"`
+	ServerIds []int32 `json:"serverIds,omitempty"`
 	ForceDeleteVClusters bool `json:"forceDeleteVClusters"`
 	DeleteAutoscalingServers bool `json:"deleteAutoscalingServers"`
 }
@@ -34,10 +34,9 @@ type _ProjectDeploymentDeleteServersCommand ProjectDeploymentDeleteServersComman
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectDeploymentDeleteServersCommand(projectId int32, serverIds []int32, forceDeleteVClusters bool, deleteAutoscalingServers bool) *ProjectDeploymentDeleteServersCommand {
+func NewProjectDeploymentDeleteServersCommand(projectId int32, forceDeleteVClusters bool, deleteAutoscalingServers bool) *ProjectDeploymentDeleteServersCommand {
 	this := ProjectDeploymentDeleteServersCommand{}
 	this.ProjectId = projectId
-	this.ServerIds = serverIds
 	this.ForceDeleteVClusters = forceDeleteVClusters
 	this.DeleteAutoscalingServers = deleteAutoscalingServers
 	return &this
@@ -75,26 +74,34 @@ func (o *ProjectDeploymentDeleteServersCommand) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetServerIds returns the ServerIds field value
+// GetServerIds returns the ServerIds field value if set, zero value otherwise.
 func (o *ProjectDeploymentDeleteServersCommand) GetServerIds() []int32 {
-	if o == nil {
+	if o == nil || IsNil(o.ServerIds) {
 		var ret []int32
 		return ret
 	}
-
 	return o.ServerIds
 }
 
-// GetServerIdsOk returns a tuple with the ServerIds field value
+// GetServerIdsOk returns a tuple with the ServerIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDeploymentDeleteServersCommand) GetServerIdsOk() ([]int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ServerIds) {
 		return nil, false
 	}
 	return o.ServerIds, true
 }
 
-// SetServerIds sets field value
+// HasServerIds returns a boolean if a field has been set.
+func (o *ProjectDeploymentDeleteServersCommand) HasServerIds() bool {
+	if o != nil && !IsNil(o.ServerIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetServerIds gets a reference to the given []int32 and assigns it to the ServerIds field.
 func (o *ProjectDeploymentDeleteServersCommand) SetServerIds(v []int32) {
 	o.ServerIds = v
 }
@@ -158,7 +165,9 @@ func (o ProjectDeploymentDeleteServersCommand) MarshalJSON() ([]byte, error) {
 func (o ProjectDeploymentDeleteServersCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["serverIds"] = o.ServerIds
+	if !IsNil(o.ServerIds) {
+		toSerialize["serverIds"] = o.ServerIds
+	}
 	toSerialize["forceDeleteVClusters"] = o.ForceDeleteVClusters
 	toSerialize["deleteAutoscalingServers"] = o.DeleteAutoscalingServers
 	return toSerialize, nil
@@ -170,7 +179,6 @@ func (o *ProjectDeploymentDeleteServersCommand) UnmarshalJSON(data []byte) (err 
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"serverIds",
 		"forceDeleteVClusters",
 		"deleteAutoscalingServers",
 	}

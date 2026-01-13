@@ -22,9 +22,9 @@ var _ MappedNullable = &GroupedBillingListQuery{}
 
 // GroupedBillingListQuery struct for GroupedBillingListQuery
 type GroupedBillingListQuery struct {
-	OrganizationId NullableInt32 `json:"organizationId"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	PeriodDuration BillingPeriod `json:"periodDuration"`
-	IsDeleted NullableBool `json:"isDeleted"`
+	IsDeleted NullableBool `json:"isDeleted,omitempty"`
 }
 
 type _GroupedBillingListQuery GroupedBillingListQuery
@@ -33,11 +33,9 @@ type _GroupedBillingListQuery GroupedBillingListQuery
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroupedBillingListQuery(organizationId NullableInt32, periodDuration BillingPeriod, isDeleted NullableBool) *GroupedBillingListQuery {
+func NewGroupedBillingListQuery(periodDuration BillingPeriod) *GroupedBillingListQuery {
 	this := GroupedBillingListQuery{}
-	this.OrganizationId = organizationId
 	this.PeriodDuration = periodDuration
-	this.IsDeleted = isDeleted
 	return &this
 }
 
@@ -49,18 +47,16 @@ func NewGroupedBillingListQueryWithDefaults() *GroupedBillingListQuery {
 	return &this
 }
 
-// GetOrganizationId returns the OrganizationId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GroupedBillingListQuery) GetOrganizationId() int32 {
-	if o == nil || o.OrganizationId.Get() == nil {
+	if o == nil || IsNil(o.OrganizationId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.OrganizationId.Get()
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GroupedBillingListQuery) GetOrganizationIdOk() (*int32, bool) {
@@ -70,9 +66,27 @@ func (o *GroupedBillingListQuery) GetOrganizationIdOk() (*int32, bool) {
 	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
 }
 
-// SetOrganizationId sets field value
+// HasOrganizationId returns a boolean if a field has been set.
+func (o *GroupedBillingListQuery) HasOrganizationId() bool {
+	if o != nil && o.OrganizationId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
 func (o *GroupedBillingListQuery) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
+}
+// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
+func (o *GroupedBillingListQuery) SetOrganizationIdNil() {
+	o.OrganizationId.Set(nil)
+}
+
+// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
+func (o *GroupedBillingListQuery) UnsetOrganizationId() {
+	o.OrganizationId.Unset()
 }
 
 // GetPeriodDuration returns the PeriodDuration field value
@@ -99,18 +113,16 @@ func (o *GroupedBillingListQuery) SetPeriodDuration(v BillingPeriod) {
 	o.PeriodDuration = v
 }
 
-// GetIsDeleted returns the IsDeleted field value
-// If the value is explicit nil, the zero value for bool will be returned
+// GetIsDeleted returns the IsDeleted field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GroupedBillingListQuery) GetIsDeleted() bool {
-	if o == nil || o.IsDeleted.Get() == nil {
+	if o == nil || IsNil(o.IsDeleted.Get()) {
 		var ret bool
 		return ret
 	}
-
 	return *o.IsDeleted.Get()
 }
 
-// GetIsDeletedOk returns a tuple with the IsDeleted field value
+// GetIsDeletedOk returns a tuple with the IsDeleted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GroupedBillingListQuery) GetIsDeletedOk() (*bool, bool) {
@@ -120,9 +132,27 @@ func (o *GroupedBillingListQuery) GetIsDeletedOk() (*bool, bool) {
 	return o.IsDeleted.Get(), o.IsDeleted.IsSet()
 }
 
-// SetIsDeleted sets field value
+// HasIsDeleted returns a boolean if a field has been set.
+func (o *GroupedBillingListQuery) HasIsDeleted() bool {
+	if o != nil && o.IsDeleted.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDeleted gets a reference to the given NullableBool and assigns it to the IsDeleted field.
 func (o *GroupedBillingListQuery) SetIsDeleted(v bool) {
 	o.IsDeleted.Set(&v)
+}
+// SetIsDeletedNil sets the value for IsDeleted to be an explicit nil
+func (o *GroupedBillingListQuery) SetIsDeletedNil() {
+	o.IsDeleted.Set(nil)
+}
+
+// UnsetIsDeleted ensures that no value is present for IsDeleted, not even an explicit nil
+func (o *GroupedBillingListQuery) UnsetIsDeleted() {
+	o.IsDeleted.Unset()
 }
 
 func (o GroupedBillingListQuery) MarshalJSON() ([]byte, error) {
@@ -135,9 +165,13 @@ func (o GroupedBillingListQuery) MarshalJSON() ([]byte, error) {
 
 func (o GroupedBillingListQuery) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["organizationId"] = o.OrganizationId.Get()
+	if o.OrganizationId.IsSet() {
+		toSerialize["organizationId"] = o.OrganizationId.Get()
+	}
 	toSerialize["periodDuration"] = o.PeriodDuration
-	toSerialize["isDeleted"] = o.IsDeleted.Get()
+	if o.IsDeleted.IsSet() {
+		toSerialize["isDeleted"] = o.IsDeleted.Get()
+	}
 	return toSerialize, nil
 }
 
@@ -146,9 +180,7 @@ func (o *GroupedBillingListQuery) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"organizationId",
 		"periodDuration",
-		"isDeleted",
 	}
 
 	allProperties := make(map[string]interface{})

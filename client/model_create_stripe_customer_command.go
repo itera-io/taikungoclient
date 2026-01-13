@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the CreateStripeCustomerCommand type satisfies the MappedNullable interface at compile time
@@ -22,28 +20,20 @@ var _ MappedNullable = &CreateStripeCustomerCommand{}
 
 // CreateStripeCustomerCommand struct for CreateStripeCustomerCommand
 type CreateStripeCustomerCommand struct {
-	LegalName string `json:"legalName"`
-	BillingEmail string `json:"billingEmail"`
-	Country string `json:"country"`
-	Address string `json:"address"`
-	City string `json:"city"`
-	VatNumber string `json:"vatNumber"`
+	LegalName *string `json:"legalName,omitempty"`
+	BillingEmail *string `json:"billingEmail,omitempty"`
+	Country *string `json:"country,omitempty"`
+	Address *string `json:"address,omitempty"`
+	City *string `json:"city,omitempty"`
+	VatNumber *string `json:"vatNumber,omitempty"`
 }
-
-type _CreateStripeCustomerCommand CreateStripeCustomerCommand
 
 // NewCreateStripeCustomerCommand instantiates a new CreateStripeCustomerCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateStripeCustomerCommand(legalName string, billingEmail string, country string, address string, city string, vatNumber string) *CreateStripeCustomerCommand {
+func NewCreateStripeCustomerCommand() *CreateStripeCustomerCommand {
 	this := CreateStripeCustomerCommand{}
-	this.LegalName = legalName
-	this.BillingEmail = billingEmail
-	this.Country = country
-	this.Address = address
-	this.City = city
-	this.VatNumber = vatNumber
 	return &this
 }
 
@@ -55,148 +45,196 @@ func NewCreateStripeCustomerCommandWithDefaults() *CreateStripeCustomerCommand {
 	return &this
 }
 
-// GetLegalName returns the LegalName field value
+// GetLegalName returns the LegalName field value if set, zero value otherwise.
 func (o *CreateStripeCustomerCommand) GetLegalName() string {
-	if o == nil {
+	if o == nil || IsNil(o.LegalName) {
 		var ret string
 		return ret
 	}
-
-	return o.LegalName
+	return *o.LegalName
 }
 
-// GetLegalNameOk returns a tuple with the LegalName field value
+// GetLegalNameOk returns a tuple with the LegalName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateStripeCustomerCommand) GetLegalNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LegalName) {
 		return nil, false
 	}
-	return &o.LegalName, true
+	return o.LegalName, true
 }
 
-// SetLegalName sets field value
+// HasLegalName returns a boolean if a field has been set.
+func (o *CreateStripeCustomerCommand) HasLegalName() bool {
+	if o != nil && !IsNil(o.LegalName) {
+		return true
+	}
+
+	return false
+}
+
+// SetLegalName gets a reference to the given string and assigns it to the LegalName field.
 func (o *CreateStripeCustomerCommand) SetLegalName(v string) {
-	o.LegalName = v
+	o.LegalName = &v
 }
 
-// GetBillingEmail returns the BillingEmail field value
+// GetBillingEmail returns the BillingEmail field value if set, zero value otherwise.
 func (o *CreateStripeCustomerCommand) GetBillingEmail() string {
-	if o == nil {
+	if o == nil || IsNil(o.BillingEmail) {
 		var ret string
 		return ret
 	}
-
-	return o.BillingEmail
+	return *o.BillingEmail
 }
 
-// GetBillingEmailOk returns a tuple with the BillingEmail field value
+// GetBillingEmailOk returns a tuple with the BillingEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateStripeCustomerCommand) GetBillingEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BillingEmail) {
 		return nil, false
 	}
-	return &o.BillingEmail, true
+	return o.BillingEmail, true
 }
 
-// SetBillingEmail sets field value
+// HasBillingEmail returns a boolean if a field has been set.
+func (o *CreateStripeCustomerCommand) HasBillingEmail() bool {
+	if o != nil && !IsNil(o.BillingEmail) {
+		return true
+	}
+
+	return false
+}
+
+// SetBillingEmail gets a reference to the given string and assigns it to the BillingEmail field.
 func (o *CreateStripeCustomerCommand) SetBillingEmail(v string) {
-	o.BillingEmail = v
+	o.BillingEmail = &v
 }
 
-// GetCountry returns the Country field value
+// GetCountry returns the Country field value if set, zero value otherwise.
 func (o *CreateStripeCustomerCommand) GetCountry() string {
-	if o == nil {
+	if o == nil || IsNil(o.Country) {
 		var ret string
 		return ret
 	}
-
-	return o.Country
+	return *o.Country
 }
 
-// GetCountryOk returns a tuple with the Country field value
+// GetCountryOk returns a tuple with the Country field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateStripeCustomerCommand) GetCountryOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Country) {
 		return nil, false
 	}
-	return &o.Country, true
+	return o.Country, true
 }
 
-// SetCountry sets field value
+// HasCountry returns a boolean if a field has been set.
+func (o *CreateStripeCustomerCommand) HasCountry() bool {
+	if o != nil && !IsNil(o.Country) {
+		return true
+	}
+
+	return false
+}
+
+// SetCountry gets a reference to the given string and assigns it to the Country field.
 func (o *CreateStripeCustomerCommand) SetCountry(v string) {
-	o.Country = v
+	o.Country = &v
 }
 
-// GetAddress returns the Address field value
+// GetAddress returns the Address field value if set, zero value otherwise.
 func (o *CreateStripeCustomerCommand) GetAddress() string {
-	if o == nil {
+	if o == nil || IsNil(o.Address) {
 		var ret string
 		return ret
 	}
-
-	return o.Address
+	return *o.Address
 }
 
-// GetAddressOk returns a tuple with the Address field value
+// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateStripeCustomerCommand) GetAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Address) {
 		return nil, false
 	}
-	return &o.Address, true
+	return o.Address, true
 }
 
-// SetAddress sets field value
+// HasAddress returns a boolean if a field has been set.
+func (o *CreateStripeCustomerCommand) HasAddress() bool {
+	if o != nil && !IsNil(o.Address) {
+		return true
+	}
+
+	return false
+}
+
+// SetAddress gets a reference to the given string and assigns it to the Address field.
 func (o *CreateStripeCustomerCommand) SetAddress(v string) {
-	o.Address = v
+	o.Address = &v
 }
 
-// GetCity returns the City field value
+// GetCity returns the City field value if set, zero value otherwise.
 func (o *CreateStripeCustomerCommand) GetCity() string {
-	if o == nil {
+	if o == nil || IsNil(o.City) {
 		var ret string
 		return ret
 	}
-
-	return o.City
+	return *o.City
 }
 
-// GetCityOk returns a tuple with the City field value
+// GetCityOk returns a tuple with the City field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateStripeCustomerCommand) GetCityOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.City) {
 		return nil, false
 	}
-	return &o.City, true
+	return o.City, true
 }
 
-// SetCity sets field value
+// HasCity returns a boolean if a field has been set.
+func (o *CreateStripeCustomerCommand) HasCity() bool {
+	if o != nil && !IsNil(o.City) {
+		return true
+	}
+
+	return false
+}
+
+// SetCity gets a reference to the given string and assigns it to the City field.
 func (o *CreateStripeCustomerCommand) SetCity(v string) {
-	o.City = v
+	o.City = &v
 }
 
-// GetVatNumber returns the VatNumber field value
+// GetVatNumber returns the VatNumber field value if set, zero value otherwise.
 func (o *CreateStripeCustomerCommand) GetVatNumber() string {
-	if o == nil {
+	if o == nil || IsNil(o.VatNumber) {
 		var ret string
 		return ret
 	}
-
-	return o.VatNumber
+	return *o.VatNumber
 }
 
-// GetVatNumberOk returns a tuple with the VatNumber field value
+// GetVatNumberOk returns a tuple with the VatNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateStripeCustomerCommand) GetVatNumberOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VatNumber) {
 		return nil, false
 	}
-	return &o.VatNumber, true
+	return o.VatNumber, true
 }
 
-// SetVatNumber sets field value
+// HasVatNumber returns a boolean if a field has been set.
+func (o *CreateStripeCustomerCommand) HasVatNumber() bool {
+	if o != nil && !IsNil(o.VatNumber) {
+		return true
+	}
+
+	return false
+}
+
+// SetVatNumber gets a reference to the given string and assigns it to the VatNumber field.
 func (o *CreateStripeCustomerCommand) SetVatNumber(v string) {
-	o.VatNumber = v
+	o.VatNumber = &v
 }
 
 func (o CreateStripeCustomerCommand) MarshalJSON() ([]byte, error) {
@@ -209,55 +247,25 @@ func (o CreateStripeCustomerCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateStripeCustomerCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["legalName"] = o.LegalName
-	toSerialize["billingEmail"] = o.BillingEmail
-	toSerialize["country"] = o.Country
-	toSerialize["address"] = o.Address
-	toSerialize["city"] = o.City
-	toSerialize["vatNumber"] = o.VatNumber
+	if !IsNil(o.LegalName) {
+		toSerialize["legalName"] = o.LegalName
+	}
+	if !IsNil(o.BillingEmail) {
+		toSerialize["billingEmail"] = o.BillingEmail
+	}
+	if !IsNil(o.Country) {
+		toSerialize["country"] = o.Country
+	}
+	if !IsNil(o.Address) {
+		toSerialize["address"] = o.Address
+	}
+	if !IsNil(o.City) {
+		toSerialize["city"] = o.City
+	}
+	if !IsNil(o.VatNumber) {
+		toSerialize["vatNumber"] = o.VatNumber
+	}
 	return toSerialize, nil
-}
-
-func (o *CreateStripeCustomerCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"legalName",
-		"billingEmail",
-		"country",
-		"address",
-		"city",
-		"vatNumber",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varCreateStripeCustomerCommand := _CreateStripeCustomerCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCreateStripeCustomerCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CreateStripeCustomerCommand(varCreateStripeCustomerCommand)
-
-	return err
 }
 
 type NullableCreateStripeCustomerCommand struct {

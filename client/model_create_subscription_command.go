@@ -22,7 +22,7 @@ var _ MappedNullable = &CreateSubscriptionCommand{}
 
 // CreateSubscriptionCommand struct for CreateSubscriptionCommand
 type CreateSubscriptionCommand struct {
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	ProjectLimit int32 `json:"projectLimit"`
 	ServerLimit int32 `json:"serverLimit"`
 	UserLimit int32 `json:"userLimit"`
@@ -39,9 +39,8 @@ type _CreateSubscriptionCommand CreateSubscriptionCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateSubscriptionCommand(name string, projectLimit int32, serverLimit int32, userLimit int32, cloudCredentialLimit int32, trialDays int32) *CreateSubscriptionCommand {
+func NewCreateSubscriptionCommand(projectLimit int32, serverLimit int32, userLimit int32, cloudCredentialLimit int32, trialDays int32) *CreateSubscriptionCommand {
 	this := CreateSubscriptionCommand{}
-	this.Name = name
 	this.ProjectLimit = projectLimit
 	this.ServerLimit = serverLimit
 	this.UserLimit = userLimit
@@ -58,28 +57,36 @@ func NewCreateSubscriptionCommandWithDefaults() *CreateSubscriptionCommand {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateSubscriptionCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateSubscriptionCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CreateSubscriptionCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateSubscriptionCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetProjectLimit returns the ProjectLimit field value
@@ -338,7 +345,9 @@ func (o CreateSubscriptionCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateSubscriptionCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	toSerialize["projectLimit"] = o.ProjectLimit
 	toSerialize["serverLimit"] = o.ServerLimit
 	toSerialize["userLimit"] = o.UserLimit
@@ -361,7 +370,6 @@ func (o *CreateSubscriptionCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
 		"projectLimit",
 		"serverLimit",
 		"userLimit",

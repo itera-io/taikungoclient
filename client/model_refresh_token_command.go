@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the RefreshTokenCommand type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &RefreshTokenCommand{}
 
 // RefreshTokenCommand struct for RefreshTokenCommand
 type RefreshTokenCommand struct {
-	Token string `json:"token"`
-	RefreshToken string `json:"refreshToken"`
+	Token *string `json:"token,omitempty"`
+	RefreshToken *string `json:"refreshToken,omitempty"`
 }
-
-type _RefreshTokenCommand RefreshTokenCommand
 
 // NewRefreshTokenCommand instantiates a new RefreshTokenCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRefreshTokenCommand(token string, refreshToken string) *RefreshTokenCommand {
+func NewRefreshTokenCommand() *RefreshTokenCommand {
 	this := RefreshTokenCommand{}
-	this.Token = token
-	this.RefreshToken = refreshToken
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewRefreshTokenCommandWithDefaults() *RefreshTokenCommand {
 	return &this
 }
 
-// GetToken returns the Token field value
+// GetToken returns the Token field value if set, zero value otherwise.
 func (o *RefreshTokenCommand) GetToken() string {
-	if o == nil {
+	if o == nil || IsNil(o.Token) {
 		var ret string
 		return ret
 	}
-
-	return o.Token
+	return *o.Token
 }
 
-// GetTokenOk returns a tuple with the Token field value
+// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RefreshTokenCommand) GetTokenOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Token) {
 		return nil, false
 	}
-	return &o.Token, true
+	return o.Token, true
 }
 
-// SetToken sets field value
+// HasToken returns a boolean if a field has been set.
+func (o *RefreshTokenCommand) HasToken() bool {
+	if o != nil && !IsNil(o.Token) {
+		return true
+	}
+
+	return false
+}
+
+// SetToken gets a reference to the given string and assigns it to the Token field.
 func (o *RefreshTokenCommand) SetToken(v string) {
-	o.Token = v
+	o.Token = &v
 }
 
-// GetRefreshToken returns the RefreshToken field value
+// GetRefreshToken returns the RefreshToken field value if set, zero value otherwise.
 func (o *RefreshTokenCommand) GetRefreshToken() string {
-	if o == nil {
+	if o == nil || IsNil(o.RefreshToken) {
 		var ret string
 		return ret
 	}
-
-	return o.RefreshToken
+	return *o.RefreshToken
 }
 
-// GetRefreshTokenOk returns a tuple with the RefreshToken field value
+// GetRefreshTokenOk returns a tuple with the RefreshToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RefreshTokenCommand) GetRefreshTokenOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RefreshToken) {
 		return nil, false
 	}
-	return &o.RefreshToken, true
+	return o.RefreshToken, true
 }
 
-// SetRefreshToken sets field value
+// HasRefreshToken returns a boolean if a field has been set.
+func (o *RefreshTokenCommand) HasRefreshToken() bool {
+	if o != nil && !IsNil(o.RefreshToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetRefreshToken gets a reference to the given string and assigns it to the RefreshToken field.
 func (o *RefreshTokenCommand) SetRefreshToken(v string) {
-	o.RefreshToken = v
+	o.RefreshToken = &v
 }
 
 func (o RefreshTokenCommand) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o RefreshTokenCommand) MarshalJSON() ([]byte, error) {
 
 func (o RefreshTokenCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["token"] = o.Token
-	toSerialize["refreshToken"] = o.RefreshToken
+	if !IsNil(o.Token) {
+		toSerialize["token"] = o.Token
+	}
+	if !IsNil(o.RefreshToken) {
+		toSerialize["refreshToken"] = o.RefreshToken
+	}
 	return toSerialize, nil
-}
-
-func (o *RefreshTokenCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"token",
-		"refreshToken",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varRefreshTokenCommand := _RefreshTokenCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRefreshTokenCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RefreshTokenCommand(varRefreshTokenCommand)
-
-	return err
 }
 
 type NullableRefreshTokenCommand struct {

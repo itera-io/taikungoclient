@@ -22,21 +22,21 @@ var _ MappedNullable = &EstimatedInfracost{}
 
 // EstimatedInfracost struct for EstimatedInfracost
 type EstimatedInfracost struct {
-	Version string `json:"version"`
-	Metadata Metadata `json:"metadata"`
-	Currency string `json:"currency"`
+	Version *string `json:"version,omitempty"`
+	Metadata *Metadata `json:"metadata,omitempty"`
+	Currency *string `json:"currency,omitempty"`
 	Projects []ProjectInfracost `json:"projects"`
-	TotalHourlyCost string `json:"totalHourlyCost"`
-	TotalMonthlyCost string `json:"totalMonthlyCost"`
-	TotalMonthlyUsageCost string `json:"totalMonthlyUsageCost"`
-	PastTotalHourlyCost string `json:"pastTotalHourlyCost"`
-	PastTotalMonthlyCost string `json:"pastTotalMonthlyCost"`
-	PastTotalMonthlyUsageCost string `json:"pastTotalMonthlyUsageCost"`
-	DiffTotalHourlyCost string `json:"diffTotalHourlyCost"`
-	DiffTotalMonthlyCost string `json:"diffTotalMonthlyCost"`
-	DiffTotalMonthlyUsageCost string `json:"diffTotalMonthlyUsageCost"`
-	TimeGenerated string `json:"timeGenerated"`
-	Summary Summary `json:"summary"`
+	TotalHourlyCost *string `json:"totalHourlyCost,omitempty"`
+	TotalMonthlyCost *string `json:"totalMonthlyCost,omitempty"`
+	TotalMonthlyUsageCost *string `json:"totalMonthlyUsageCost,omitempty"`
+	PastTotalHourlyCost *string `json:"pastTotalHourlyCost,omitempty"`
+	PastTotalMonthlyCost *string `json:"pastTotalMonthlyCost,omitempty"`
+	PastTotalMonthlyUsageCost *string `json:"pastTotalMonthlyUsageCost,omitempty"`
+	DiffTotalHourlyCost *string `json:"diffTotalHourlyCost,omitempty"`
+	DiffTotalMonthlyCost *string `json:"diffTotalMonthlyCost,omitempty"`
+	DiffTotalMonthlyUsageCost *string `json:"diffTotalMonthlyUsageCost,omitempty"`
+	TimeGenerated *string `json:"timeGenerated,omitempty"`
+	Summary *Summary `json:"summary,omitempty"`
 }
 
 type _EstimatedInfracost EstimatedInfracost
@@ -45,23 +45,9 @@ type _EstimatedInfracost EstimatedInfracost
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEstimatedInfracost(version string, metadata Metadata, currency string, projects []ProjectInfracost, totalHourlyCost string, totalMonthlyCost string, totalMonthlyUsageCost string, pastTotalHourlyCost string, pastTotalMonthlyCost string, pastTotalMonthlyUsageCost string, diffTotalHourlyCost string, diffTotalMonthlyCost string, diffTotalMonthlyUsageCost string, timeGenerated string, summary Summary) *EstimatedInfracost {
+func NewEstimatedInfracost(projects []ProjectInfracost) *EstimatedInfracost {
 	this := EstimatedInfracost{}
-	this.Version = version
-	this.Metadata = metadata
-	this.Currency = currency
 	this.Projects = projects
-	this.TotalHourlyCost = totalHourlyCost
-	this.TotalMonthlyCost = totalMonthlyCost
-	this.TotalMonthlyUsageCost = totalMonthlyUsageCost
-	this.PastTotalHourlyCost = pastTotalHourlyCost
-	this.PastTotalMonthlyCost = pastTotalMonthlyCost
-	this.PastTotalMonthlyUsageCost = pastTotalMonthlyUsageCost
-	this.DiffTotalHourlyCost = diffTotalHourlyCost
-	this.DiffTotalMonthlyCost = diffTotalMonthlyCost
-	this.DiffTotalMonthlyUsageCost = diffTotalMonthlyUsageCost
-	this.TimeGenerated = timeGenerated
-	this.Summary = summary
 	return &this
 }
 
@@ -73,76 +59,100 @@ func NewEstimatedInfracostWithDefaults() *EstimatedInfracost {
 	return &this
 }
 
-// GetVersion returns the Version field value
+// GetVersion returns the Version field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetVersion() string {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
-
-	return o.Version
+	return *o.Version
 }
 
-// GetVersionOk returns a tuple with the Version field value
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EstimatedInfracost) GetVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
-	return &o.Version, true
+	return o.Version, true
 }
 
-// SetVersion sets field value
+// HasVersion returns a boolean if a field has been set.
+func (o *EstimatedInfracost) HasVersion() bool {
+	if o != nil && !IsNil(o.Version) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *EstimatedInfracost) SetVersion(v string) {
-	o.Version = v
+	o.Version = &v
 }
 
-// GetMetadata returns the Metadata field value
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetMetadata() Metadata {
-	if o == nil {
+	if o == nil || IsNil(o.Metadata) {
 		var ret Metadata
 		return ret
 	}
-
-	return o.Metadata
+	return *o.Metadata
 }
 
-// GetMetadataOk returns a tuple with the Metadata field value
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EstimatedInfracost) GetMetadataOk() (*Metadata, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
-	return &o.Metadata, true
+	return o.Metadata, true
 }
 
-// SetMetadata sets field value
+// HasMetadata returns a boolean if a field has been set.
+func (o *EstimatedInfracost) HasMetadata() bool {
+	if o != nil && !IsNil(o.Metadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given Metadata and assigns it to the Metadata field.
 func (o *EstimatedInfracost) SetMetadata(v Metadata) {
-	o.Metadata = v
+	o.Metadata = &v
 }
 
-// GetCurrency returns the Currency field value
+// GetCurrency returns the Currency field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetCurrency() string {
-	if o == nil {
+	if o == nil || IsNil(o.Currency) {
 		var ret string
 		return ret
 	}
-
-	return o.Currency
+	return *o.Currency
 }
 
-// GetCurrencyOk returns a tuple with the Currency field value
+// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EstimatedInfracost) GetCurrencyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Currency) {
 		return nil, false
 	}
-	return &o.Currency, true
+	return o.Currency, true
 }
 
-// SetCurrency sets field value
+// HasCurrency returns a boolean if a field has been set.
+func (o *EstimatedInfracost) HasCurrency() bool {
+	if o != nil && !IsNil(o.Currency) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrency gets a reference to the given string and assigns it to the Currency field.
 func (o *EstimatedInfracost) SetCurrency(v string) {
-	o.Currency = v
+	o.Currency = &v
 }
 
 // GetProjects returns the Projects field value
@@ -171,268 +181,356 @@ func (o *EstimatedInfracost) SetProjects(v []ProjectInfracost) {
 	o.Projects = v
 }
 
-// GetTotalHourlyCost returns the TotalHourlyCost field value
+// GetTotalHourlyCost returns the TotalHourlyCost field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetTotalHourlyCost() string {
-	if o == nil {
+	if o == nil || IsNil(o.TotalHourlyCost) {
 		var ret string
 		return ret
 	}
-
-	return o.TotalHourlyCost
+	return *o.TotalHourlyCost
 }
 
-// GetTotalHourlyCostOk returns a tuple with the TotalHourlyCost field value
+// GetTotalHourlyCostOk returns a tuple with the TotalHourlyCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EstimatedInfracost) GetTotalHourlyCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TotalHourlyCost) {
 		return nil, false
 	}
-	return &o.TotalHourlyCost, true
+	return o.TotalHourlyCost, true
 }
 
-// SetTotalHourlyCost sets field value
+// HasTotalHourlyCost returns a boolean if a field has been set.
+func (o *EstimatedInfracost) HasTotalHourlyCost() bool {
+	if o != nil && !IsNil(o.TotalHourlyCost) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalHourlyCost gets a reference to the given string and assigns it to the TotalHourlyCost field.
 func (o *EstimatedInfracost) SetTotalHourlyCost(v string) {
-	o.TotalHourlyCost = v
+	o.TotalHourlyCost = &v
 }
 
-// GetTotalMonthlyCost returns the TotalMonthlyCost field value
+// GetTotalMonthlyCost returns the TotalMonthlyCost field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetTotalMonthlyCost() string {
-	if o == nil {
+	if o == nil || IsNil(o.TotalMonthlyCost) {
 		var ret string
 		return ret
 	}
-
-	return o.TotalMonthlyCost
+	return *o.TotalMonthlyCost
 }
 
-// GetTotalMonthlyCostOk returns a tuple with the TotalMonthlyCost field value
+// GetTotalMonthlyCostOk returns a tuple with the TotalMonthlyCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EstimatedInfracost) GetTotalMonthlyCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TotalMonthlyCost) {
 		return nil, false
 	}
-	return &o.TotalMonthlyCost, true
+	return o.TotalMonthlyCost, true
 }
 
-// SetTotalMonthlyCost sets field value
+// HasTotalMonthlyCost returns a boolean if a field has been set.
+func (o *EstimatedInfracost) HasTotalMonthlyCost() bool {
+	if o != nil && !IsNil(o.TotalMonthlyCost) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalMonthlyCost gets a reference to the given string and assigns it to the TotalMonthlyCost field.
 func (o *EstimatedInfracost) SetTotalMonthlyCost(v string) {
-	o.TotalMonthlyCost = v
+	o.TotalMonthlyCost = &v
 }
 
-// GetTotalMonthlyUsageCost returns the TotalMonthlyUsageCost field value
+// GetTotalMonthlyUsageCost returns the TotalMonthlyUsageCost field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetTotalMonthlyUsageCost() string {
-	if o == nil {
+	if o == nil || IsNil(o.TotalMonthlyUsageCost) {
 		var ret string
 		return ret
 	}
-
-	return o.TotalMonthlyUsageCost
+	return *o.TotalMonthlyUsageCost
 }
 
-// GetTotalMonthlyUsageCostOk returns a tuple with the TotalMonthlyUsageCost field value
+// GetTotalMonthlyUsageCostOk returns a tuple with the TotalMonthlyUsageCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EstimatedInfracost) GetTotalMonthlyUsageCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TotalMonthlyUsageCost) {
 		return nil, false
 	}
-	return &o.TotalMonthlyUsageCost, true
+	return o.TotalMonthlyUsageCost, true
 }
 
-// SetTotalMonthlyUsageCost sets field value
+// HasTotalMonthlyUsageCost returns a boolean if a field has been set.
+func (o *EstimatedInfracost) HasTotalMonthlyUsageCost() bool {
+	if o != nil && !IsNil(o.TotalMonthlyUsageCost) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalMonthlyUsageCost gets a reference to the given string and assigns it to the TotalMonthlyUsageCost field.
 func (o *EstimatedInfracost) SetTotalMonthlyUsageCost(v string) {
-	o.TotalMonthlyUsageCost = v
+	o.TotalMonthlyUsageCost = &v
 }
 
-// GetPastTotalHourlyCost returns the PastTotalHourlyCost field value
+// GetPastTotalHourlyCost returns the PastTotalHourlyCost field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetPastTotalHourlyCost() string {
-	if o == nil {
+	if o == nil || IsNil(o.PastTotalHourlyCost) {
 		var ret string
 		return ret
 	}
-
-	return o.PastTotalHourlyCost
+	return *o.PastTotalHourlyCost
 }
 
-// GetPastTotalHourlyCostOk returns a tuple with the PastTotalHourlyCost field value
+// GetPastTotalHourlyCostOk returns a tuple with the PastTotalHourlyCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EstimatedInfracost) GetPastTotalHourlyCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PastTotalHourlyCost) {
 		return nil, false
 	}
-	return &o.PastTotalHourlyCost, true
+	return o.PastTotalHourlyCost, true
 }
 
-// SetPastTotalHourlyCost sets field value
+// HasPastTotalHourlyCost returns a boolean if a field has been set.
+func (o *EstimatedInfracost) HasPastTotalHourlyCost() bool {
+	if o != nil && !IsNil(o.PastTotalHourlyCost) {
+		return true
+	}
+
+	return false
+}
+
+// SetPastTotalHourlyCost gets a reference to the given string and assigns it to the PastTotalHourlyCost field.
 func (o *EstimatedInfracost) SetPastTotalHourlyCost(v string) {
-	o.PastTotalHourlyCost = v
+	o.PastTotalHourlyCost = &v
 }
 
-// GetPastTotalMonthlyCost returns the PastTotalMonthlyCost field value
+// GetPastTotalMonthlyCost returns the PastTotalMonthlyCost field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetPastTotalMonthlyCost() string {
-	if o == nil {
+	if o == nil || IsNil(o.PastTotalMonthlyCost) {
 		var ret string
 		return ret
 	}
-
-	return o.PastTotalMonthlyCost
+	return *o.PastTotalMonthlyCost
 }
 
-// GetPastTotalMonthlyCostOk returns a tuple with the PastTotalMonthlyCost field value
+// GetPastTotalMonthlyCostOk returns a tuple with the PastTotalMonthlyCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EstimatedInfracost) GetPastTotalMonthlyCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PastTotalMonthlyCost) {
 		return nil, false
 	}
-	return &o.PastTotalMonthlyCost, true
+	return o.PastTotalMonthlyCost, true
 }
 
-// SetPastTotalMonthlyCost sets field value
+// HasPastTotalMonthlyCost returns a boolean if a field has been set.
+func (o *EstimatedInfracost) HasPastTotalMonthlyCost() bool {
+	if o != nil && !IsNil(o.PastTotalMonthlyCost) {
+		return true
+	}
+
+	return false
+}
+
+// SetPastTotalMonthlyCost gets a reference to the given string and assigns it to the PastTotalMonthlyCost field.
 func (o *EstimatedInfracost) SetPastTotalMonthlyCost(v string) {
-	o.PastTotalMonthlyCost = v
+	o.PastTotalMonthlyCost = &v
 }
 
-// GetPastTotalMonthlyUsageCost returns the PastTotalMonthlyUsageCost field value
+// GetPastTotalMonthlyUsageCost returns the PastTotalMonthlyUsageCost field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetPastTotalMonthlyUsageCost() string {
-	if o == nil {
+	if o == nil || IsNil(o.PastTotalMonthlyUsageCost) {
 		var ret string
 		return ret
 	}
-
-	return o.PastTotalMonthlyUsageCost
+	return *o.PastTotalMonthlyUsageCost
 }
 
-// GetPastTotalMonthlyUsageCostOk returns a tuple with the PastTotalMonthlyUsageCost field value
+// GetPastTotalMonthlyUsageCostOk returns a tuple with the PastTotalMonthlyUsageCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EstimatedInfracost) GetPastTotalMonthlyUsageCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PastTotalMonthlyUsageCost) {
 		return nil, false
 	}
-	return &o.PastTotalMonthlyUsageCost, true
+	return o.PastTotalMonthlyUsageCost, true
 }
 
-// SetPastTotalMonthlyUsageCost sets field value
+// HasPastTotalMonthlyUsageCost returns a boolean if a field has been set.
+func (o *EstimatedInfracost) HasPastTotalMonthlyUsageCost() bool {
+	if o != nil && !IsNil(o.PastTotalMonthlyUsageCost) {
+		return true
+	}
+
+	return false
+}
+
+// SetPastTotalMonthlyUsageCost gets a reference to the given string and assigns it to the PastTotalMonthlyUsageCost field.
 func (o *EstimatedInfracost) SetPastTotalMonthlyUsageCost(v string) {
-	o.PastTotalMonthlyUsageCost = v
+	o.PastTotalMonthlyUsageCost = &v
 }
 
-// GetDiffTotalHourlyCost returns the DiffTotalHourlyCost field value
+// GetDiffTotalHourlyCost returns the DiffTotalHourlyCost field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetDiffTotalHourlyCost() string {
-	if o == nil {
+	if o == nil || IsNil(o.DiffTotalHourlyCost) {
 		var ret string
 		return ret
 	}
-
-	return o.DiffTotalHourlyCost
+	return *o.DiffTotalHourlyCost
 }
 
-// GetDiffTotalHourlyCostOk returns a tuple with the DiffTotalHourlyCost field value
+// GetDiffTotalHourlyCostOk returns a tuple with the DiffTotalHourlyCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EstimatedInfracost) GetDiffTotalHourlyCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DiffTotalHourlyCost) {
 		return nil, false
 	}
-	return &o.DiffTotalHourlyCost, true
+	return o.DiffTotalHourlyCost, true
 }
 
-// SetDiffTotalHourlyCost sets field value
+// HasDiffTotalHourlyCost returns a boolean if a field has been set.
+func (o *EstimatedInfracost) HasDiffTotalHourlyCost() bool {
+	if o != nil && !IsNil(o.DiffTotalHourlyCost) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiffTotalHourlyCost gets a reference to the given string and assigns it to the DiffTotalHourlyCost field.
 func (o *EstimatedInfracost) SetDiffTotalHourlyCost(v string) {
-	o.DiffTotalHourlyCost = v
+	o.DiffTotalHourlyCost = &v
 }
 
-// GetDiffTotalMonthlyCost returns the DiffTotalMonthlyCost field value
+// GetDiffTotalMonthlyCost returns the DiffTotalMonthlyCost field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetDiffTotalMonthlyCost() string {
-	if o == nil {
+	if o == nil || IsNil(o.DiffTotalMonthlyCost) {
 		var ret string
 		return ret
 	}
-
-	return o.DiffTotalMonthlyCost
+	return *o.DiffTotalMonthlyCost
 }
 
-// GetDiffTotalMonthlyCostOk returns a tuple with the DiffTotalMonthlyCost field value
+// GetDiffTotalMonthlyCostOk returns a tuple with the DiffTotalMonthlyCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EstimatedInfracost) GetDiffTotalMonthlyCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DiffTotalMonthlyCost) {
 		return nil, false
 	}
-	return &o.DiffTotalMonthlyCost, true
+	return o.DiffTotalMonthlyCost, true
 }
 
-// SetDiffTotalMonthlyCost sets field value
+// HasDiffTotalMonthlyCost returns a boolean if a field has been set.
+func (o *EstimatedInfracost) HasDiffTotalMonthlyCost() bool {
+	if o != nil && !IsNil(o.DiffTotalMonthlyCost) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiffTotalMonthlyCost gets a reference to the given string and assigns it to the DiffTotalMonthlyCost field.
 func (o *EstimatedInfracost) SetDiffTotalMonthlyCost(v string) {
-	o.DiffTotalMonthlyCost = v
+	o.DiffTotalMonthlyCost = &v
 }
 
-// GetDiffTotalMonthlyUsageCost returns the DiffTotalMonthlyUsageCost field value
+// GetDiffTotalMonthlyUsageCost returns the DiffTotalMonthlyUsageCost field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetDiffTotalMonthlyUsageCost() string {
-	if o == nil {
+	if o == nil || IsNil(o.DiffTotalMonthlyUsageCost) {
 		var ret string
 		return ret
 	}
-
-	return o.DiffTotalMonthlyUsageCost
+	return *o.DiffTotalMonthlyUsageCost
 }
 
-// GetDiffTotalMonthlyUsageCostOk returns a tuple with the DiffTotalMonthlyUsageCost field value
+// GetDiffTotalMonthlyUsageCostOk returns a tuple with the DiffTotalMonthlyUsageCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EstimatedInfracost) GetDiffTotalMonthlyUsageCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DiffTotalMonthlyUsageCost) {
 		return nil, false
 	}
-	return &o.DiffTotalMonthlyUsageCost, true
+	return o.DiffTotalMonthlyUsageCost, true
 }
 
-// SetDiffTotalMonthlyUsageCost sets field value
+// HasDiffTotalMonthlyUsageCost returns a boolean if a field has been set.
+func (o *EstimatedInfracost) HasDiffTotalMonthlyUsageCost() bool {
+	if o != nil && !IsNil(o.DiffTotalMonthlyUsageCost) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiffTotalMonthlyUsageCost gets a reference to the given string and assigns it to the DiffTotalMonthlyUsageCost field.
 func (o *EstimatedInfracost) SetDiffTotalMonthlyUsageCost(v string) {
-	o.DiffTotalMonthlyUsageCost = v
+	o.DiffTotalMonthlyUsageCost = &v
 }
 
-// GetTimeGenerated returns the TimeGenerated field value
+// GetTimeGenerated returns the TimeGenerated field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetTimeGenerated() string {
-	if o == nil {
+	if o == nil || IsNil(o.TimeGenerated) {
 		var ret string
 		return ret
 	}
-
-	return o.TimeGenerated
+	return *o.TimeGenerated
 }
 
-// GetTimeGeneratedOk returns a tuple with the TimeGenerated field value
+// GetTimeGeneratedOk returns a tuple with the TimeGenerated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EstimatedInfracost) GetTimeGeneratedOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TimeGenerated) {
 		return nil, false
 	}
-	return &o.TimeGenerated, true
+	return o.TimeGenerated, true
 }
 
-// SetTimeGenerated sets field value
+// HasTimeGenerated returns a boolean if a field has been set.
+func (o *EstimatedInfracost) HasTimeGenerated() bool {
+	if o != nil && !IsNil(o.TimeGenerated) {
+		return true
+	}
+
+	return false
+}
+
+// SetTimeGenerated gets a reference to the given string and assigns it to the TimeGenerated field.
 func (o *EstimatedInfracost) SetTimeGenerated(v string) {
-	o.TimeGenerated = v
+	o.TimeGenerated = &v
 }
 
-// GetSummary returns the Summary field value
+// GetSummary returns the Summary field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetSummary() Summary {
-	if o == nil {
+	if o == nil || IsNil(o.Summary) {
 		var ret Summary
 		return ret
 	}
-
-	return o.Summary
+	return *o.Summary
 }
 
-// GetSummaryOk returns a tuple with the Summary field value
+// GetSummaryOk returns a tuple with the Summary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EstimatedInfracost) GetSummaryOk() (*Summary, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Summary) {
 		return nil, false
 	}
-	return &o.Summary, true
+	return o.Summary, true
 }
 
-// SetSummary sets field value
+// HasSummary returns a boolean if a field has been set.
+func (o *EstimatedInfracost) HasSummary() bool {
+	if o != nil && !IsNil(o.Summary) {
+		return true
+	}
+
+	return false
+}
+
+// SetSummary gets a reference to the given Summary and assigns it to the Summary field.
 func (o *EstimatedInfracost) SetSummary(v Summary) {
-	o.Summary = v
+	o.Summary = &v
 }
 
 func (o EstimatedInfracost) MarshalJSON() ([]byte, error) {
@@ -445,23 +543,51 @@ func (o EstimatedInfracost) MarshalJSON() ([]byte, error) {
 
 func (o EstimatedInfracost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["version"] = o.Version
-	toSerialize["metadata"] = o.Metadata
-	toSerialize["currency"] = o.Currency
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
+	}
+	if !IsNil(o.Currency) {
+		toSerialize["currency"] = o.Currency
+	}
 	if o.Projects != nil {
 		toSerialize["projects"] = o.Projects
 	}
-	toSerialize["totalHourlyCost"] = o.TotalHourlyCost
-	toSerialize["totalMonthlyCost"] = o.TotalMonthlyCost
-	toSerialize["totalMonthlyUsageCost"] = o.TotalMonthlyUsageCost
-	toSerialize["pastTotalHourlyCost"] = o.PastTotalHourlyCost
-	toSerialize["pastTotalMonthlyCost"] = o.PastTotalMonthlyCost
-	toSerialize["pastTotalMonthlyUsageCost"] = o.PastTotalMonthlyUsageCost
-	toSerialize["diffTotalHourlyCost"] = o.DiffTotalHourlyCost
-	toSerialize["diffTotalMonthlyCost"] = o.DiffTotalMonthlyCost
-	toSerialize["diffTotalMonthlyUsageCost"] = o.DiffTotalMonthlyUsageCost
-	toSerialize["timeGenerated"] = o.TimeGenerated
-	toSerialize["summary"] = o.Summary
+	if !IsNil(o.TotalHourlyCost) {
+		toSerialize["totalHourlyCost"] = o.TotalHourlyCost
+	}
+	if !IsNil(o.TotalMonthlyCost) {
+		toSerialize["totalMonthlyCost"] = o.TotalMonthlyCost
+	}
+	if !IsNil(o.TotalMonthlyUsageCost) {
+		toSerialize["totalMonthlyUsageCost"] = o.TotalMonthlyUsageCost
+	}
+	if !IsNil(o.PastTotalHourlyCost) {
+		toSerialize["pastTotalHourlyCost"] = o.PastTotalHourlyCost
+	}
+	if !IsNil(o.PastTotalMonthlyCost) {
+		toSerialize["pastTotalMonthlyCost"] = o.PastTotalMonthlyCost
+	}
+	if !IsNil(o.PastTotalMonthlyUsageCost) {
+		toSerialize["pastTotalMonthlyUsageCost"] = o.PastTotalMonthlyUsageCost
+	}
+	if !IsNil(o.DiffTotalHourlyCost) {
+		toSerialize["diffTotalHourlyCost"] = o.DiffTotalHourlyCost
+	}
+	if !IsNil(o.DiffTotalMonthlyCost) {
+		toSerialize["diffTotalMonthlyCost"] = o.DiffTotalMonthlyCost
+	}
+	if !IsNil(o.DiffTotalMonthlyUsageCost) {
+		toSerialize["diffTotalMonthlyUsageCost"] = o.DiffTotalMonthlyUsageCost
+	}
+	if !IsNil(o.TimeGenerated) {
+		toSerialize["timeGenerated"] = o.TimeGenerated
+	}
+	if !IsNil(o.Summary) {
+		toSerialize["summary"] = o.Summary
+	}
 	return toSerialize, nil
 }
 
@@ -470,21 +596,7 @@ func (o *EstimatedInfracost) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"version",
-		"metadata",
-		"currency",
 		"projects",
-		"totalHourlyCost",
-		"totalMonthlyCost",
-		"totalMonthlyUsageCost",
-		"pastTotalHourlyCost",
-		"pastTotalMonthlyCost",
-		"pastTotalMonthlyUsageCost",
-		"diffTotalHourlyCost",
-		"diffTotalMonthlyCost",
-		"diffTotalMonthlyUsageCost",
-		"timeGenerated",
-		"summary",
 	}
 
 	allProperties := make(map[string]interface{})

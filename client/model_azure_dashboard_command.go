@@ -23,7 +23,7 @@ var _ MappedNullable = &AzureDashboardCommand{}
 // AzureDashboardCommand struct for AzureDashboardCommand
 type AzureDashboardCommand struct {
 	CloudId int32 `json:"cloudId"`
-	FilterBy string `json:"filterBy"`
+	FilterBy *string `json:"filterBy,omitempty"`
 }
 
 type _AzureDashboardCommand AzureDashboardCommand
@@ -32,10 +32,9 @@ type _AzureDashboardCommand AzureDashboardCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAzureDashboardCommand(cloudId int32, filterBy string) *AzureDashboardCommand {
+func NewAzureDashboardCommand(cloudId int32) *AzureDashboardCommand {
 	this := AzureDashboardCommand{}
 	this.CloudId = cloudId
-	this.FilterBy = filterBy
 	return &this
 }
 
@@ -71,28 +70,36 @@ func (o *AzureDashboardCommand) SetCloudId(v int32) {
 	o.CloudId = v
 }
 
-// GetFilterBy returns the FilterBy field value
+// GetFilterBy returns the FilterBy field value if set, zero value otherwise.
 func (o *AzureDashboardCommand) GetFilterBy() string {
-	if o == nil {
+	if o == nil || IsNil(o.FilterBy) {
 		var ret string
 		return ret
 	}
-
-	return o.FilterBy
+	return *o.FilterBy
 }
 
-// GetFilterByOk returns a tuple with the FilterBy field value
+// GetFilterByOk returns a tuple with the FilterBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AzureDashboardCommand) GetFilterByOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.FilterBy) {
 		return nil, false
 	}
-	return &o.FilterBy, true
+	return o.FilterBy, true
 }
 
-// SetFilterBy sets field value
+// HasFilterBy returns a boolean if a field has been set.
+func (o *AzureDashboardCommand) HasFilterBy() bool {
+	if o != nil && !IsNil(o.FilterBy) {
+		return true
+	}
+
+	return false
+}
+
+// SetFilterBy gets a reference to the given string and assigns it to the FilterBy field.
 func (o *AzureDashboardCommand) SetFilterBy(v string) {
-	o.FilterBy = v
+	o.FilterBy = &v
 }
 
 func (o AzureDashboardCommand) MarshalJSON() ([]byte, error) {
@@ -106,7 +113,9 @@ func (o AzureDashboardCommand) MarshalJSON() ([]byte, error) {
 func (o AzureDashboardCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["cloudId"] = o.CloudId
-	toSerialize["filterBy"] = o.FilterBy
+	if !IsNil(o.FilterBy) {
+		toSerialize["filterBy"] = o.FilterBy
+	}
 	return toSerialize, nil
 }
 
@@ -116,7 +125,6 @@ func (o *AzureDashboardCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"cloudId",
-		"filterBy",
 	}
 
 	allProperties := make(map[string]interface{})

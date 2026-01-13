@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the AccessProfilesSearchCommand type satisfies the MappedNullable interface at compile time
@@ -22,22 +20,17 @@ var _ MappedNullable = &AccessProfilesSearchCommand{}
 
 // AccessProfilesSearchCommand struct for AccessProfilesSearchCommand
 type AccessProfilesSearchCommand struct {
-	Limit NullableInt32 `json:"limit"`
-	Offset NullableInt32 `json:"offset"`
-	SearchTerm NullableString `json:"searchTerm"`
+	Limit NullableInt32 `json:"limit,omitempty"`
+	Offset NullableInt32 `json:"offset,omitempty"`
+	SearchTerm NullableString `json:"searchTerm,omitempty"`
 }
-
-type _AccessProfilesSearchCommand AccessProfilesSearchCommand
 
 // NewAccessProfilesSearchCommand instantiates a new AccessProfilesSearchCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessProfilesSearchCommand(limit NullableInt32, offset NullableInt32, searchTerm NullableString) *AccessProfilesSearchCommand {
+func NewAccessProfilesSearchCommand() *AccessProfilesSearchCommand {
 	this := AccessProfilesSearchCommand{}
-	this.Limit = limit
-	this.Offset = offset
-	this.SearchTerm = searchTerm
 	return &this
 }
 
@@ -49,18 +42,16 @@ func NewAccessProfilesSearchCommandWithDefaults() *AccessProfilesSearchCommand {
 	return &this
 }
 
-// GetLimit returns the Limit field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetLimit returns the Limit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessProfilesSearchCommand) GetLimit() int32 {
-	if o == nil || o.Limit.Get() == nil {
+	if o == nil || IsNil(o.Limit.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.Limit.Get()
 }
 
-// GetLimitOk returns a tuple with the Limit field value
+// GetLimitOk returns a tuple with the Limit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessProfilesSearchCommand) GetLimitOk() (*int32, bool) {
@@ -70,23 +61,39 @@ func (o *AccessProfilesSearchCommand) GetLimitOk() (*int32, bool) {
 	return o.Limit.Get(), o.Limit.IsSet()
 }
 
-// SetLimit sets field value
+// HasLimit returns a boolean if a field has been set.
+func (o *AccessProfilesSearchCommand) HasLimit() bool {
+	if o != nil && o.Limit.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLimit gets a reference to the given NullableInt32 and assigns it to the Limit field.
 func (o *AccessProfilesSearchCommand) SetLimit(v int32) {
 	o.Limit.Set(&v)
 }
+// SetLimitNil sets the value for Limit to be an explicit nil
+func (o *AccessProfilesSearchCommand) SetLimitNil() {
+	o.Limit.Set(nil)
+}
 
-// GetOffset returns the Offset field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// UnsetLimit ensures that no value is present for Limit, not even an explicit nil
+func (o *AccessProfilesSearchCommand) UnsetLimit() {
+	o.Limit.Unset()
+}
+
+// GetOffset returns the Offset field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessProfilesSearchCommand) GetOffset() int32 {
-	if o == nil || o.Offset.Get() == nil {
+	if o == nil || IsNil(o.Offset.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.Offset.Get()
 }
 
-// GetOffsetOk returns a tuple with the Offset field value
+// GetOffsetOk returns a tuple with the Offset field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessProfilesSearchCommand) GetOffsetOk() (*int32, bool) {
@@ -96,23 +103,39 @@ func (o *AccessProfilesSearchCommand) GetOffsetOk() (*int32, bool) {
 	return o.Offset.Get(), o.Offset.IsSet()
 }
 
-// SetOffset sets field value
+// HasOffset returns a boolean if a field has been set.
+func (o *AccessProfilesSearchCommand) HasOffset() bool {
+	if o != nil && o.Offset.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOffset gets a reference to the given NullableInt32 and assigns it to the Offset field.
 func (o *AccessProfilesSearchCommand) SetOffset(v int32) {
 	o.Offset.Set(&v)
 }
+// SetOffsetNil sets the value for Offset to be an explicit nil
+func (o *AccessProfilesSearchCommand) SetOffsetNil() {
+	o.Offset.Set(nil)
+}
 
-// GetSearchTerm returns the SearchTerm field value
-// If the value is explicit nil, the zero value for string will be returned
+// UnsetOffset ensures that no value is present for Offset, not even an explicit nil
+func (o *AccessProfilesSearchCommand) UnsetOffset() {
+	o.Offset.Unset()
+}
+
+// GetSearchTerm returns the SearchTerm field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessProfilesSearchCommand) GetSearchTerm() string {
-	if o == nil || o.SearchTerm.Get() == nil {
+	if o == nil || IsNil(o.SearchTerm.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.SearchTerm.Get()
 }
 
-// GetSearchTermOk returns a tuple with the SearchTerm field value
+// GetSearchTermOk returns a tuple with the SearchTerm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessProfilesSearchCommand) GetSearchTermOk() (*string, bool) {
@@ -122,9 +145,27 @@ func (o *AccessProfilesSearchCommand) GetSearchTermOk() (*string, bool) {
 	return o.SearchTerm.Get(), o.SearchTerm.IsSet()
 }
 
-// SetSearchTerm sets field value
+// HasSearchTerm returns a boolean if a field has been set.
+func (o *AccessProfilesSearchCommand) HasSearchTerm() bool {
+	if o != nil && o.SearchTerm.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSearchTerm gets a reference to the given NullableString and assigns it to the SearchTerm field.
 func (o *AccessProfilesSearchCommand) SetSearchTerm(v string) {
 	o.SearchTerm.Set(&v)
+}
+// SetSearchTermNil sets the value for SearchTerm to be an explicit nil
+func (o *AccessProfilesSearchCommand) SetSearchTermNil() {
+	o.SearchTerm.Set(nil)
+}
+
+// UnsetSearchTerm ensures that no value is present for SearchTerm, not even an explicit nil
+func (o *AccessProfilesSearchCommand) UnsetSearchTerm() {
+	o.SearchTerm.Unset()
 }
 
 func (o AccessProfilesSearchCommand) MarshalJSON() ([]byte, error) {
@@ -137,49 +178,16 @@ func (o AccessProfilesSearchCommand) MarshalJSON() ([]byte, error) {
 
 func (o AccessProfilesSearchCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["limit"] = o.Limit.Get()
-	toSerialize["offset"] = o.Offset.Get()
-	toSerialize["searchTerm"] = o.SearchTerm.Get()
+	if o.Limit.IsSet() {
+		toSerialize["limit"] = o.Limit.Get()
+	}
+	if o.Offset.IsSet() {
+		toSerialize["offset"] = o.Offset.Get()
+	}
+	if o.SearchTerm.IsSet() {
+		toSerialize["searchTerm"] = o.SearchTerm.Get()
+	}
 	return toSerialize, nil
-}
-
-func (o *AccessProfilesSearchCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"limit",
-		"offset",
-		"searchTerm",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varAccessProfilesSearchCommand := _AccessProfilesSearchCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAccessProfilesSearchCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AccessProfilesSearchCommand(varAccessProfilesSearchCommand)
-
-	return err
 }
 
 type NullableAccessProfilesSearchCommand struct {

@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the CronjobsSearchCommand type satisfies the MappedNullable interface at compile time
@@ -22,24 +20,18 @@ var _ MappedNullable = &CronjobsSearchCommand{}
 
 // CronjobsSearchCommand struct for CronjobsSearchCommand
 type CronjobsSearchCommand struct {
-	Limit NullableInt32 `json:"limit"`
-	Offset NullableInt32 `json:"offset"`
-	SearchTerm string `json:"searchTerm"`
-	IncludePublicImportedClusters NullableBool `json:"includePublicImportedClusters"`
+	Limit NullableInt32 `json:"limit,omitempty"`
+	Offset NullableInt32 `json:"offset,omitempty"`
+	SearchTerm *string `json:"searchTerm,omitempty"`
+	IncludePublicImportedClusters NullableBool `json:"includePublicImportedClusters,omitempty"`
 }
-
-type _CronjobsSearchCommand CronjobsSearchCommand
 
 // NewCronjobsSearchCommand instantiates a new CronjobsSearchCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCronjobsSearchCommand(limit NullableInt32, offset NullableInt32, searchTerm string, includePublicImportedClusters NullableBool) *CronjobsSearchCommand {
+func NewCronjobsSearchCommand() *CronjobsSearchCommand {
 	this := CronjobsSearchCommand{}
-	this.Limit = limit
-	this.Offset = offset
-	this.SearchTerm = searchTerm
-	this.IncludePublicImportedClusters = includePublicImportedClusters
 	return &this
 }
 
@@ -51,18 +43,16 @@ func NewCronjobsSearchCommandWithDefaults() *CronjobsSearchCommand {
 	return &this
 }
 
-// GetLimit returns the Limit field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetLimit returns the Limit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CronjobsSearchCommand) GetLimit() int32 {
-	if o == nil || o.Limit.Get() == nil {
+	if o == nil || IsNil(o.Limit.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.Limit.Get()
 }
 
-// GetLimitOk returns a tuple with the Limit field value
+// GetLimitOk returns a tuple with the Limit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CronjobsSearchCommand) GetLimitOk() (*int32, bool) {
@@ -72,23 +62,39 @@ func (o *CronjobsSearchCommand) GetLimitOk() (*int32, bool) {
 	return o.Limit.Get(), o.Limit.IsSet()
 }
 
-// SetLimit sets field value
+// HasLimit returns a boolean if a field has been set.
+func (o *CronjobsSearchCommand) HasLimit() bool {
+	if o != nil && o.Limit.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLimit gets a reference to the given NullableInt32 and assigns it to the Limit field.
 func (o *CronjobsSearchCommand) SetLimit(v int32) {
 	o.Limit.Set(&v)
 }
+// SetLimitNil sets the value for Limit to be an explicit nil
+func (o *CronjobsSearchCommand) SetLimitNil() {
+	o.Limit.Set(nil)
+}
 
-// GetOffset returns the Offset field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// UnsetLimit ensures that no value is present for Limit, not even an explicit nil
+func (o *CronjobsSearchCommand) UnsetLimit() {
+	o.Limit.Unset()
+}
+
+// GetOffset returns the Offset field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CronjobsSearchCommand) GetOffset() int32 {
-	if o == nil || o.Offset.Get() == nil {
+	if o == nil || IsNil(o.Offset.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.Offset.Get()
 }
 
-// GetOffsetOk returns a tuple with the Offset field value
+// GetOffsetOk returns a tuple with the Offset field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CronjobsSearchCommand) GetOffsetOk() (*int32, bool) {
@@ -98,47 +104,71 @@ func (o *CronjobsSearchCommand) GetOffsetOk() (*int32, bool) {
 	return o.Offset.Get(), o.Offset.IsSet()
 }
 
-// SetOffset sets field value
+// HasOffset returns a boolean if a field has been set.
+func (o *CronjobsSearchCommand) HasOffset() bool {
+	if o != nil && o.Offset.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOffset gets a reference to the given NullableInt32 and assigns it to the Offset field.
 func (o *CronjobsSearchCommand) SetOffset(v int32) {
 	o.Offset.Set(&v)
 }
+// SetOffsetNil sets the value for Offset to be an explicit nil
+func (o *CronjobsSearchCommand) SetOffsetNil() {
+	o.Offset.Set(nil)
+}
 
-// GetSearchTerm returns the SearchTerm field value
+// UnsetOffset ensures that no value is present for Offset, not even an explicit nil
+func (o *CronjobsSearchCommand) UnsetOffset() {
+	o.Offset.Unset()
+}
+
+// GetSearchTerm returns the SearchTerm field value if set, zero value otherwise.
 func (o *CronjobsSearchCommand) GetSearchTerm() string {
-	if o == nil {
+	if o == nil || IsNil(o.SearchTerm) {
 		var ret string
 		return ret
 	}
-
-	return o.SearchTerm
+	return *o.SearchTerm
 }
 
-// GetSearchTermOk returns a tuple with the SearchTerm field value
+// GetSearchTermOk returns a tuple with the SearchTerm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CronjobsSearchCommand) GetSearchTermOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SearchTerm) {
 		return nil, false
 	}
-	return &o.SearchTerm, true
+	return o.SearchTerm, true
 }
 
-// SetSearchTerm sets field value
+// HasSearchTerm returns a boolean if a field has been set.
+func (o *CronjobsSearchCommand) HasSearchTerm() bool {
+	if o != nil && !IsNil(o.SearchTerm) {
+		return true
+	}
+
+	return false
+}
+
+// SetSearchTerm gets a reference to the given string and assigns it to the SearchTerm field.
 func (o *CronjobsSearchCommand) SetSearchTerm(v string) {
-	o.SearchTerm = v
+	o.SearchTerm = &v
 }
 
-// GetIncludePublicImportedClusters returns the IncludePublicImportedClusters field value
-// If the value is explicit nil, the zero value for bool will be returned
+// GetIncludePublicImportedClusters returns the IncludePublicImportedClusters field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CronjobsSearchCommand) GetIncludePublicImportedClusters() bool {
-	if o == nil || o.IncludePublicImportedClusters.Get() == nil {
+	if o == nil || IsNil(o.IncludePublicImportedClusters.Get()) {
 		var ret bool
 		return ret
 	}
-
 	return *o.IncludePublicImportedClusters.Get()
 }
 
-// GetIncludePublicImportedClustersOk returns a tuple with the IncludePublicImportedClusters field value
+// GetIncludePublicImportedClustersOk returns a tuple with the IncludePublicImportedClusters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CronjobsSearchCommand) GetIncludePublicImportedClustersOk() (*bool, bool) {
@@ -148,9 +178,27 @@ func (o *CronjobsSearchCommand) GetIncludePublicImportedClustersOk() (*bool, boo
 	return o.IncludePublicImportedClusters.Get(), o.IncludePublicImportedClusters.IsSet()
 }
 
-// SetIncludePublicImportedClusters sets field value
+// HasIncludePublicImportedClusters returns a boolean if a field has been set.
+func (o *CronjobsSearchCommand) HasIncludePublicImportedClusters() bool {
+	if o != nil && o.IncludePublicImportedClusters.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIncludePublicImportedClusters gets a reference to the given NullableBool and assigns it to the IncludePublicImportedClusters field.
 func (o *CronjobsSearchCommand) SetIncludePublicImportedClusters(v bool) {
 	o.IncludePublicImportedClusters.Set(&v)
+}
+// SetIncludePublicImportedClustersNil sets the value for IncludePublicImportedClusters to be an explicit nil
+func (o *CronjobsSearchCommand) SetIncludePublicImportedClustersNil() {
+	o.IncludePublicImportedClusters.Set(nil)
+}
+
+// UnsetIncludePublicImportedClusters ensures that no value is present for IncludePublicImportedClusters, not even an explicit nil
+func (o *CronjobsSearchCommand) UnsetIncludePublicImportedClusters() {
+	o.IncludePublicImportedClusters.Unset()
 }
 
 func (o CronjobsSearchCommand) MarshalJSON() ([]byte, error) {
@@ -163,51 +211,19 @@ func (o CronjobsSearchCommand) MarshalJSON() ([]byte, error) {
 
 func (o CronjobsSearchCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["limit"] = o.Limit.Get()
-	toSerialize["offset"] = o.Offset.Get()
-	toSerialize["searchTerm"] = o.SearchTerm
-	toSerialize["includePublicImportedClusters"] = o.IncludePublicImportedClusters.Get()
+	if o.Limit.IsSet() {
+		toSerialize["limit"] = o.Limit.Get()
+	}
+	if o.Offset.IsSet() {
+		toSerialize["offset"] = o.Offset.Get()
+	}
+	if !IsNil(o.SearchTerm) {
+		toSerialize["searchTerm"] = o.SearchTerm
+	}
+	if o.IncludePublicImportedClusters.IsSet() {
+		toSerialize["includePublicImportedClusters"] = o.IncludePublicImportedClusters.Get()
+	}
 	return toSerialize, nil
-}
-
-func (o *CronjobsSearchCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"limit",
-		"offset",
-		"searchTerm",
-		"includePublicImportedClusters",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varCronjobsSearchCommand := _CronjobsSearchCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCronjobsSearchCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CronjobsSearchCommand(varCronjobsSearchCommand)
-
-	return err
 }
 
 type NullableCronjobsSearchCommand struct {

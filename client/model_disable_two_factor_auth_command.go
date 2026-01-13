@@ -22,7 +22,7 @@ var _ MappedNullable = &DisableTwoFactorAuthCommand{}
 
 // DisableTwoFactorAuthCommand struct for DisableTwoFactorAuthCommand
 type DisableTwoFactorAuthCommand struct {
-	Code string `json:"code"`
+	Code *string `json:"code,omitempty"`
 	IsRecoveryCode bool `json:"isRecoveryCode"`
 }
 
@@ -32,9 +32,8 @@ type _DisableTwoFactorAuthCommand DisableTwoFactorAuthCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDisableTwoFactorAuthCommand(code string, isRecoveryCode bool) *DisableTwoFactorAuthCommand {
+func NewDisableTwoFactorAuthCommand(isRecoveryCode bool) *DisableTwoFactorAuthCommand {
 	this := DisableTwoFactorAuthCommand{}
-	this.Code = code
 	this.IsRecoveryCode = isRecoveryCode
 	return &this
 }
@@ -47,28 +46,36 @@ func NewDisableTwoFactorAuthCommandWithDefaults() *DisableTwoFactorAuthCommand {
 	return &this
 }
 
-// GetCode returns the Code field value
+// GetCode returns the Code field value if set, zero value otherwise.
 func (o *DisableTwoFactorAuthCommand) GetCode() string {
-	if o == nil {
+	if o == nil || IsNil(o.Code) {
 		var ret string
 		return ret
 	}
-
-	return o.Code
+	return *o.Code
 }
 
-// GetCodeOk returns a tuple with the Code field value
+// GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DisableTwoFactorAuthCommand) GetCodeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Code) {
 		return nil, false
 	}
-	return &o.Code, true
+	return o.Code, true
 }
 
-// SetCode sets field value
+// HasCode returns a boolean if a field has been set.
+func (o *DisableTwoFactorAuthCommand) HasCode() bool {
+	if o != nil && !IsNil(o.Code) {
+		return true
+	}
+
+	return false
+}
+
+// SetCode gets a reference to the given string and assigns it to the Code field.
 func (o *DisableTwoFactorAuthCommand) SetCode(v string) {
-	o.Code = v
+	o.Code = &v
 }
 
 // GetIsRecoveryCode returns the IsRecoveryCode field value
@@ -105,7 +112,9 @@ func (o DisableTwoFactorAuthCommand) MarshalJSON() ([]byte, error) {
 
 func (o DisableTwoFactorAuthCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["code"] = o.Code
+	if !IsNil(o.Code) {
+		toSerialize["code"] = o.Code
+	}
 	toSerialize["isRecoveryCode"] = o.IsRecoveryCode
 	return toSerialize, nil
 }
@@ -115,7 +124,6 @@ func (o *DisableTwoFactorAuthCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"code",
 		"isRecoveryCode",
 	}
 

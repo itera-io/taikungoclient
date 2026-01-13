@@ -23,7 +23,7 @@ var _ MappedNullable = &SyncProjectAppCommand{}
 // SyncProjectAppCommand struct for SyncProjectAppCommand
 type SyncProjectAppCommand struct {
 	ProjectAppId int32 `json:"projectAppId"`
-	Timeout NullableInt32 `json:"timeout"`
+	Timeout NullableInt32 `json:"timeout,omitempty"`
 }
 
 type _SyncProjectAppCommand SyncProjectAppCommand
@@ -32,10 +32,9 @@ type _SyncProjectAppCommand SyncProjectAppCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSyncProjectAppCommand(projectAppId int32, timeout NullableInt32) *SyncProjectAppCommand {
+func NewSyncProjectAppCommand(projectAppId int32) *SyncProjectAppCommand {
 	this := SyncProjectAppCommand{}
 	this.ProjectAppId = projectAppId
-	this.Timeout = timeout
 	return &this
 }
 
@@ -71,18 +70,16 @@ func (o *SyncProjectAppCommand) SetProjectAppId(v int32) {
 	o.ProjectAppId = v
 }
 
-// GetTimeout returns the Timeout field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetTimeout returns the Timeout field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SyncProjectAppCommand) GetTimeout() int32 {
-	if o == nil || o.Timeout.Get() == nil {
+	if o == nil || IsNil(o.Timeout.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.Timeout.Get()
 }
 
-// GetTimeoutOk returns a tuple with the Timeout field value
+// GetTimeoutOk returns a tuple with the Timeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SyncProjectAppCommand) GetTimeoutOk() (*int32, bool) {
@@ -92,9 +89,27 @@ func (o *SyncProjectAppCommand) GetTimeoutOk() (*int32, bool) {
 	return o.Timeout.Get(), o.Timeout.IsSet()
 }
 
-// SetTimeout sets field value
+// HasTimeout returns a boolean if a field has been set.
+func (o *SyncProjectAppCommand) HasTimeout() bool {
+	if o != nil && o.Timeout.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTimeout gets a reference to the given NullableInt32 and assigns it to the Timeout field.
 func (o *SyncProjectAppCommand) SetTimeout(v int32) {
 	o.Timeout.Set(&v)
+}
+// SetTimeoutNil sets the value for Timeout to be an explicit nil
+func (o *SyncProjectAppCommand) SetTimeoutNil() {
+	o.Timeout.Set(nil)
+}
+
+// UnsetTimeout ensures that no value is present for Timeout, not even an explicit nil
+func (o *SyncProjectAppCommand) UnsetTimeout() {
+	o.Timeout.Unset()
 }
 
 func (o SyncProjectAppCommand) MarshalJSON() ([]byte, error) {
@@ -108,7 +123,9 @@ func (o SyncProjectAppCommand) MarshalJSON() ([]byte, error) {
 func (o SyncProjectAppCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectAppId"] = o.ProjectAppId
-	toSerialize["timeout"] = o.Timeout.Get()
+	if o.Timeout.IsSet() {
+		toSerialize["timeout"] = o.Timeout.Get()
+	}
 	return toSerialize, nil
 }
 
@@ -118,7 +135,6 @@ func (o *SyncProjectAppCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectAppId",
-		"timeout",
 	}
 
 	allProperties := make(map[string]interface{})

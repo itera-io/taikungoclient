@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the AdminUserCreateCommand type satisfies the MappedNullable interface at compile time
@@ -22,24 +20,19 @@ var _ MappedNullable = &AdminUserCreateCommand{}
 
 // AdminUserCreateCommand struct for AdminUserCreateCommand
 type AdminUserCreateCommand struct {
-	Email string `json:"email"`
-	Username string `json:"username"`
-	Password string `json:"password"`
+	Email *string `json:"email,omitempty"`
+	Username *string `json:"username,omitempty"`
+	Password *string `json:"password,omitempty"`
 	Role *UserRole `json:"role,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 }
-
-type _AdminUserCreateCommand AdminUserCreateCommand
 
 // NewAdminUserCreateCommand instantiates a new AdminUserCreateCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAdminUserCreateCommand(email string, username string, password string) *AdminUserCreateCommand {
+func NewAdminUserCreateCommand() *AdminUserCreateCommand {
 	this := AdminUserCreateCommand{}
-	this.Email = email
-	this.Username = username
-	this.Password = password
 	return &this
 }
 
@@ -51,76 +44,100 @@ func NewAdminUserCreateCommandWithDefaults() *AdminUserCreateCommand {
 	return &this
 }
 
-// GetEmail returns the Email field value
+// GetEmail returns the Email field value if set, zero value otherwise.
 func (o *AdminUserCreateCommand) GetEmail() string {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
-
-	return o.Email
+	return *o.Email
 }
 
-// GetEmailOk returns a tuple with the Email field value
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AdminUserCreateCommand) GetEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
-	return &o.Email, true
+	return o.Email, true
 }
 
-// SetEmail sets field value
+// HasEmail returns a boolean if a field has been set.
+func (o *AdminUserCreateCommand) HasEmail() bool {
+	if o != nil && !IsNil(o.Email) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmail gets a reference to the given string and assigns it to the Email field.
 func (o *AdminUserCreateCommand) SetEmail(v string) {
-	o.Email = v
+	o.Email = &v
 }
 
-// GetUsername returns the Username field value
+// GetUsername returns the Username field value if set, zero value otherwise.
 func (o *AdminUserCreateCommand) GetUsername() string {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
-
-	return o.Username
+	return *o.Username
 }
 
-// GetUsernameOk returns a tuple with the Username field value
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AdminUserCreateCommand) GetUsernameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
-	return &o.Username, true
+	return o.Username, true
 }
 
-// SetUsername sets field value
+// HasUsername returns a boolean if a field has been set.
+func (o *AdminUserCreateCommand) HasUsername() bool {
+	if o != nil && !IsNil(o.Username) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *AdminUserCreateCommand) SetUsername(v string) {
-	o.Username = v
+	o.Username = &v
 }
 
-// GetPassword returns the Password field value
+// GetPassword returns the Password field value if set, zero value otherwise.
 func (o *AdminUserCreateCommand) GetPassword() string {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
 	}
-
-	return o.Password
+	return *o.Password
 }
 
-// GetPasswordOk returns a tuple with the Password field value
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AdminUserCreateCommand) GetPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
-	return &o.Password, true
+	return o.Password, true
 }
 
-// SetPassword sets field value
+// HasPassword returns a boolean if a field has been set.
+func (o *AdminUserCreateCommand) HasPassword() bool {
+	if o != nil && !IsNil(o.Password) {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *AdminUserCreateCommand) SetPassword(v string) {
-	o.Password = v
+	o.Password = &v
 }
 
 // GetRole returns the Role field value if set, zero value otherwise.
@@ -207,9 +224,15 @@ func (o AdminUserCreateCommand) MarshalJSON() ([]byte, error) {
 
 func (o AdminUserCreateCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["email"] = o.Email
-	toSerialize["username"] = o.Username
-	toSerialize["password"] = o.Password
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
+	}
 	if !IsNil(o.Role) {
 		toSerialize["role"] = o.Role
 	}
@@ -217,45 +240,6 @@ func (o AdminUserCreateCommand) ToMap() (map[string]interface{}, error) {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
 	return toSerialize, nil
-}
-
-func (o *AdminUserCreateCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"email",
-		"username",
-		"password",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varAdminUserCreateCommand := _AdminUserCreateCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAdminUserCreateCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AdminUserCreateCommand(varAdminUserCreateCommand)
-
-	return err
 }
 
 type NullableAdminUserCreateCommand struct {

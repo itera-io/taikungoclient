@@ -23,7 +23,7 @@ var _ MappedNullable = &AlertingProfilesLockManagerCommand{}
 // AlertingProfilesLockManagerCommand struct for AlertingProfilesLockManagerCommand
 type AlertingProfilesLockManagerCommand struct {
 	Id int32 `json:"id"`
-	Mode string `json:"mode"`
+	Mode *string `json:"mode,omitempty"`
 }
 
 type _AlertingProfilesLockManagerCommand AlertingProfilesLockManagerCommand
@@ -32,10 +32,9 @@ type _AlertingProfilesLockManagerCommand AlertingProfilesLockManagerCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlertingProfilesLockManagerCommand(id int32, mode string) *AlertingProfilesLockManagerCommand {
+func NewAlertingProfilesLockManagerCommand(id int32) *AlertingProfilesLockManagerCommand {
 	this := AlertingProfilesLockManagerCommand{}
 	this.Id = id
-	this.Mode = mode
 	return &this
 }
 
@@ -71,28 +70,36 @@ func (o *AlertingProfilesLockManagerCommand) SetId(v int32) {
 	o.Id = v
 }
 
-// GetMode returns the Mode field value
+// GetMode returns the Mode field value if set, zero value otherwise.
 func (o *AlertingProfilesLockManagerCommand) GetMode() string {
-	if o == nil {
+	if o == nil || IsNil(o.Mode) {
 		var ret string
 		return ret
 	}
-
-	return o.Mode
+	return *o.Mode
 }
 
-// GetModeOk returns a tuple with the Mode field value
+// GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AlertingProfilesLockManagerCommand) GetModeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
-	return &o.Mode, true
+	return o.Mode, true
 }
 
-// SetMode sets field value
+// HasMode returns a boolean if a field has been set.
+func (o *AlertingProfilesLockManagerCommand) HasMode() bool {
+	if o != nil && !IsNil(o.Mode) {
+		return true
+	}
+
+	return false
+}
+
+// SetMode gets a reference to the given string and assigns it to the Mode field.
 func (o *AlertingProfilesLockManagerCommand) SetMode(v string) {
-	o.Mode = v
+	o.Mode = &v
 }
 
 func (o AlertingProfilesLockManagerCommand) MarshalJSON() ([]byte, error) {
@@ -106,7 +113,9 @@ func (o AlertingProfilesLockManagerCommand) MarshalJSON() ([]byte, error) {
 func (o AlertingProfilesLockManagerCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["mode"] = o.Mode
+	if !IsNil(o.Mode) {
+		toSerialize["mode"] = o.Mode
+	}
 	return toSerialize, nil
 }
 
@@ -116,7 +125,6 @@ func (o *AlertingProfilesLockManagerCommand) UnmarshalJSON(data []byte) (err err
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"mode",
 	}
 
 	allProperties := make(map[string]interface{})

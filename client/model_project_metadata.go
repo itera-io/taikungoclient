@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the ProjectMetadata type satisfies the MappedNullable interface at compile time
@@ -22,24 +20,18 @@ var _ MappedNullable = &ProjectMetadata{}
 
 // ProjectMetadata struct for ProjectMetadata
 type ProjectMetadata struct {
-	Path string `json:"path"`
-	Type string `json:"type"`
-	VcsSubPath string `json:"vcsSubPath"`
-	Providers []Provider `json:"providers"`
+	Path *string `json:"path,omitempty"`
+	Type *string `json:"type,omitempty"`
+	VcsSubPath *string `json:"vcsSubPath,omitempty"`
+	Providers []Provider `json:"providers,omitempty"`
 }
-
-type _ProjectMetadata ProjectMetadata
 
 // NewProjectMetadata instantiates a new ProjectMetadata object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectMetadata(path string, type_ string, vcsSubPath string, providers []Provider) *ProjectMetadata {
+func NewProjectMetadata() *ProjectMetadata {
 	this := ProjectMetadata{}
-	this.Path = path
-	this.Type = type_
-	this.VcsSubPath = vcsSubPath
-	this.Providers = providers
 	return &this
 }
 
@@ -51,98 +43,130 @@ func NewProjectMetadataWithDefaults() *ProjectMetadata {
 	return &this
 }
 
-// GetPath returns the Path field value
+// GetPath returns the Path field value if set, zero value otherwise.
 func (o *ProjectMetadata) GetPath() string {
-	if o == nil {
+	if o == nil || IsNil(o.Path) {
 		var ret string
 		return ret
 	}
-
-	return o.Path
+	return *o.Path
 }
 
-// GetPathOk returns a tuple with the Path field value
+// GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectMetadata) GetPathOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Path) {
 		return nil, false
 	}
-	return &o.Path, true
+	return o.Path, true
 }
 
-// SetPath sets field value
+// HasPath returns a boolean if a field has been set.
+func (o *ProjectMetadata) HasPath() bool {
+	if o != nil && !IsNil(o.Path) {
+		return true
+	}
+
+	return false
+}
+
+// SetPath gets a reference to the given string and assigns it to the Path field.
 func (o *ProjectMetadata) SetPath(v string) {
-	o.Path = v
+	o.Path = &v
 }
 
-// GetType returns the Type field value
+// GetType returns the Type field value if set, zero value otherwise.
 func (o *ProjectMetadata) GetType() string {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
-
-	return o.Type
+	return *o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectMetadata) GetTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return &o.Type, true
+	return o.Type, true
 }
 
-// SetType sets field value
+// HasType returns a boolean if a field has been set.
+func (o *ProjectMetadata) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
 func (o *ProjectMetadata) SetType(v string) {
-	o.Type = v
+	o.Type = &v
 }
 
-// GetVcsSubPath returns the VcsSubPath field value
+// GetVcsSubPath returns the VcsSubPath field value if set, zero value otherwise.
 func (o *ProjectMetadata) GetVcsSubPath() string {
-	if o == nil {
+	if o == nil || IsNil(o.VcsSubPath) {
 		var ret string
 		return ret
 	}
-
-	return o.VcsSubPath
+	return *o.VcsSubPath
 }
 
-// GetVcsSubPathOk returns a tuple with the VcsSubPath field value
+// GetVcsSubPathOk returns a tuple with the VcsSubPath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectMetadata) GetVcsSubPathOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VcsSubPath) {
 		return nil, false
 	}
-	return &o.VcsSubPath, true
+	return o.VcsSubPath, true
 }
 
-// SetVcsSubPath sets field value
+// HasVcsSubPath returns a boolean if a field has been set.
+func (o *ProjectMetadata) HasVcsSubPath() bool {
+	if o != nil && !IsNil(o.VcsSubPath) {
+		return true
+	}
+
+	return false
+}
+
+// SetVcsSubPath gets a reference to the given string and assigns it to the VcsSubPath field.
 func (o *ProjectMetadata) SetVcsSubPath(v string) {
-	o.VcsSubPath = v
+	o.VcsSubPath = &v
 }
 
-// GetProviders returns the Providers field value
+// GetProviders returns the Providers field value if set, zero value otherwise.
 func (o *ProjectMetadata) GetProviders() []Provider {
-	if o == nil {
+	if o == nil || IsNil(o.Providers) {
 		var ret []Provider
 		return ret
 	}
-
 	return o.Providers
 }
 
-// GetProvidersOk returns a tuple with the Providers field value
+// GetProvidersOk returns a tuple with the Providers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectMetadata) GetProvidersOk() ([]Provider, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Providers) {
 		return nil, false
 	}
 	return o.Providers, true
 }
 
-// SetProviders sets field value
+// HasProviders returns a boolean if a field has been set.
+func (o *ProjectMetadata) HasProviders() bool {
+	if o != nil && !IsNil(o.Providers) {
+		return true
+	}
+
+	return false
+}
+
+// SetProviders gets a reference to the given []Provider and assigns it to the Providers field.
 func (o *ProjectMetadata) SetProviders(v []Provider) {
 	o.Providers = v
 }
@@ -157,51 +181,19 @@ func (o ProjectMetadata) MarshalJSON() ([]byte, error) {
 
 func (o ProjectMetadata) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["path"] = o.Path
-	toSerialize["type"] = o.Type
-	toSerialize["vcsSubPath"] = o.VcsSubPath
-	toSerialize["providers"] = o.Providers
+	if !IsNil(o.Path) {
+		toSerialize["path"] = o.Path
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.VcsSubPath) {
+		toSerialize["vcsSubPath"] = o.VcsSubPath
+	}
+	if !IsNil(o.Providers) {
+		toSerialize["providers"] = o.Providers
+	}
 	return toSerialize, nil
-}
-
-func (o *ProjectMetadata) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"path",
-		"type",
-		"vcsSubPath",
-		"providers",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varProjectMetadata := _ProjectMetadata{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectMetadata)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ProjectMetadata(varProjectMetadata)
-
-	return err
 }
 
 type NullableProjectMetadata struct {

@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the AzureSubscriptionListCommand type satisfies the MappedNullable interface at compile time
@@ -22,22 +20,17 @@ var _ MappedNullable = &AzureSubscriptionListCommand{}
 
 // AzureSubscriptionListCommand struct for AzureSubscriptionListCommand
 type AzureSubscriptionListCommand struct {
-	ClientId string `json:"clientId"`
-	ClientSecret string `json:"clientSecret"`
-	TenantId string `json:"tenantId"`
+	ClientId *string `json:"clientId,omitempty"`
+	ClientSecret *string `json:"clientSecret,omitempty"`
+	TenantId *string `json:"tenantId,omitempty"`
 }
-
-type _AzureSubscriptionListCommand AzureSubscriptionListCommand
 
 // NewAzureSubscriptionListCommand instantiates a new AzureSubscriptionListCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAzureSubscriptionListCommand(clientId string, clientSecret string, tenantId string) *AzureSubscriptionListCommand {
+func NewAzureSubscriptionListCommand() *AzureSubscriptionListCommand {
 	this := AzureSubscriptionListCommand{}
-	this.ClientId = clientId
-	this.ClientSecret = clientSecret
-	this.TenantId = tenantId
 	return &this
 }
 
@@ -49,76 +42,100 @@ func NewAzureSubscriptionListCommandWithDefaults() *AzureSubscriptionListCommand
 	return &this
 }
 
-// GetClientId returns the ClientId field value
+// GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *AzureSubscriptionListCommand) GetClientId() string {
-	if o == nil {
+	if o == nil || IsNil(o.ClientId) {
 		var ret string
 		return ret
 	}
-
-	return o.ClientId
+	return *o.ClientId
 }
 
-// GetClientIdOk returns a tuple with the ClientId field value
+// GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AzureSubscriptionListCommand) GetClientIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ClientId) {
 		return nil, false
 	}
-	return &o.ClientId, true
+	return o.ClientId, true
 }
 
-// SetClientId sets field value
+// HasClientId returns a boolean if a field has been set.
+func (o *AzureSubscriptionListCommand) HasClientId() bool {
+	if o != nil && !IsNil(o.ClientId) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientId gets a reference to the given string and assigns it to the ClientId field.
 func (o *AzureSubscriptionListCommand) SetClientId(v string) {
-	o.ClientId = v
+	o.ClientId = &v
 }
 
-// GetClientSecret returns the ClientSecret field value
+// GetClientSecret returns the ClientSecret field value if set, zero value otherwise.
 func (o *AzureSubscriptionListCommand) GetClientSecret() string {
-	if o == nil {
+	if o == nil || IsNil(o.ClientSecret) {
 		var ret string
 		return ret
 	}
-
-	return o.ClientSecret
+	return *o.ClientSecret
 }
 
-// GetClientSecretOk returns a tuple with the ClientSecret field value
+// GetClientSecretOk returns a tuple with the ClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AzureSubscriptionListCommand) GetClientSecretOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ClientSecret) {
 		return nil, false
 	}
-	return &o.ClientSecret, true
+	return o.ClientSecret, true
 }
 
-// SetClientSecret sets field value
+// HasClientSecret returns a boolean if a field has been set.
+func (o *AzureSubscriptionListCommand) HasClientSecret() bool {
+	if o != nil && !IsNil(o.ClientSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientSecret gets a reference to the given string and assigns it to the ClientSecret field.
 func (o *AzureSubscriptionListCommand) SetClientSecret(v string) {
-	o.ClientSecret = v
+	o.ClientSecret = &v
 }
 
-// GetTenantId returns the TenantId field value
+// GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *AzureSubscriptionListCommand) GetTenantId() string {
-	if o == nil {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
-
-	return o.TenantId
+	return *o.TenantId
 }
 
-// GetTenantIdOk returns a tuple with the TenantId field value
+// GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AzureSubscriptionListCommand) GetTenantIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TenantId) {
 		return nil, false
 	}
-	return &o.TenantId, true
+	return o.TenantId, true
 }
 
-// SetTenantId sets field value
+// HasTenantId returns a boolean if a field has been set.
+func (o *AzureSubscriptionListCommand) HasTenantId() bool {
+	if o != nil && !IsNil(o.TenantId) {
+		return true
+	}
+
+	return false
+}
+
+// SetTenantId gets a reference to the given string and assigns it to the TenantId field.
 func (o *AzureSubscriptionListCommand) SetTenantId(v string) {
-	o.TenantId = v
+	o.TenantId = &v
 }
 
 func (o AzureSubscriptionListCommand) MarshalJSON() ([]byte, error) {
@@ -131,49 +148,16 @@ func (o AzureSubscriptionListCommand) MarshalJSON() ([]byte, error) {
 
 func (o AzureSubscriptionListCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["clientId"] = o.ClientId
-	toSerialize["clientSecret"] = o.ClientSecret
-	toSerialize["tenantId"] = o.TenantId
+	if !IsNil(o.ClientId) {
+		toSerialize["clientId"] = o.ClientId
+	}
+	if !IsNil(o.ClientSecret) {
+		toSerialize["clientSecret"] = o.ClientSecret
+	}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenantId"] = o.TenantId
+	}
 	return toSerialize, nil
-}
-
-func (o *AzureSubscriptionListCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"clientId",
-		"clientSecret",
-		"tenantId",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varAzureSubscriptionListCommand := _AzureSubscriptionListCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAzureSubscriptionListCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AzureSubscriptionListCommand(varAzureSubscriptionListCommand)
-
-	return err
 }
 
 type NullableAzureSubscriptionListCommand struct {

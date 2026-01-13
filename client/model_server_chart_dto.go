@@ -22,21 +22,21 @@ var _ MappedNullable = &ServerChartDto{}
 
 // ServerChartDto struct for ServerChartDto
 type ServerChartDto struct {
-	Aws []ServerCommonRecordDto `json:"aws"`
-	Azure []interface{} `json:"azure"`
-	Openstack []interface{} `json:"openstack"`
-	Google []interface{} `json:"google"`
-	Proxmox []interface{} `json:"proxmox"`
-	Vsphere []interface{} `json:"vsphere"`
-	Zadara []interface{} `json:"zadara"`
-	Openshift []interface{} `json:"openshift"`
-	GenericK8S []interface{} `json:"genericK8S"`
-	Failed []interface{} `json:"failed"`
-	Succeeded []interface{} `json:"succeeded"`
-	Waiting []interface{} `json:"waiting"`
-	Updating []interface{} `json:"updating"`
-	Deleting []interface{} `json:"deleting"`
-	Purging []interface{} `json:"purging"`
+	Aws []ServerCommonRecordDto `json:"aws,omitempty"`
+	Azure []interface{} `json:"azure,omitempty"`
+	Openstack []interface{} `json:"openstack,omitempty"`
+	Google []interface{} `json:"google,omitempty"`
+	Proxmox []interface{} `json:"proxmox,omitempty"`
+	Vsphere []interface{} `json:"vsphere,omitempty"`
+	Zadara []interface{} `json:"zadara,omitempty"`
+	Openshift []interface{} `json:"openshift,omitempty"`
+	GenericK8S []interface{} `json:"genericK8S,omitempty"`
+	Failed []interface{} `json:"failed,omitempty"`
+	Succeeded []interface{} `json:"succeeded,omitempty"`
+	Waiting []interface{} `json:"waiting,omitempty"`
+	Updating []interface{} `json:"updating,omitempty"`
+	Deleting []interface{} `json:"deleting,omitempty"`
+	Purging []interface{} `json:"purging,omitempty"`
 	TotalCount int32 `json:"totalCount"`
 	TotalCpu int32 `json:"totalCpu"`
 	TotalRam int64 `json:"totalRam"`
@@ -54,7 +54,7 @@ type ServerChartDto struct {
 	TotalVsphereCount int32 `json:"totalVsphereCount"`
 	TotalZadaraCount int32 `json:"totalZadaraCount"`
 	TotalGenericK8SCount int32 `json:"totalGenericK8SCount"`
-	UsedResources []UserResourceChartDto `json:"usedResources"`
+	UsedResources []UserResourceChartDto `json:"usedResources,omitempty"`
 }
 
 type _ServerChartDto ServerChartDto
@@ -63,23 +63,8 @@ type _ServerChartDto ServerChartDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServerChartDto(aws []ServerCommonRecordDto, azure []interface{}, openstack []interface{}, google []interface{}, proxmox []interface{}, vsphere []interface{}, zadara []interface{}, openshift []interface{}, genericK8S []interface{}, failed []interface{}, succeeded []interface{}, waiting []interface{}, updating []interface{}, deleting []interface{}, purging []interface{}, totalCount int32, totalCpu int32, totalRam int64, totalDiskSize int64, totalFailedCount int32, totalSucceededCount int32, totalUpdatingCount int32, totalPendingCount int32, totalAwsCount int32, totalAzureCount int32, totalOpenstackCount int32, totalGoogleCount int32, totalOpenshiftCount int32, totalProxmoxCount int32, totalVsphereCount int32, totalZadaraCount int32, totalGenericK8SCount int32, usedResources []UserResourceChartDto) *ServerChartDto {
+func NewServerChartDto(totalCount int32, totalCpu int32, totalRam int64, totalDiskSize int64, totalFailedCount int32, totalSucceededCount int32, totalUpdatingCount int32, totalPendingCount int32, totalAwsCount int32, totalAzureCount int32, totalOpenstackCount int32, totalGoogleCount int32, totalOpenshiftCount int32, totalProxmoxCount int32, totalVsphereCount int32, totalZadaraCount int32, totalGenericK8SCount int32) *ServerChartDto {
 	this := ServerChartDto{}
-	this.Aws = aws
-	this.Azure = azure
-	this.Openstack = openstack
-	this.Google = google
-	this.Proxmox = proxmox
-	this.Vsphere = vsphere
-	this.Zadara = zadara
-	this.Openshift = openshift
-	this.GenericK8S = genericK8S
-	this.Failed = failed
-	this.Succeeded = succeeded
-	this.Waiting = waiting
-	this.Updating = updating
-	this.Deleting = deleting
-	this.Purging = purging
 	this.TotalCount = totalCount
 	this.TotalCpu = totalCpu
 	this.TotalRam = totalRam
@@ -97,7 +82,6 @@ func NewServerChartDto(aws []ServerCommonRecordDto, azure []interface{}, opensta
 	this.TotalVsphereCount = totalVsphereCount
 	this.TotalZadaraCount = totalZadaraCount
 	this.TotalGenericK8SCount = totalGenericK8SCount
-	this.UsedResources = usedResources
 	return &this
 }
 
@@ -109,362 +93,482 @@ func NewServerChartDtoWithDefaults() *ServerChartDto {
 	return &this
 }
 
-// GetAws returns the Aws field value
+// GetAws returns the Aws field value if set, zero value otherwise.
 func (o *ServerChartDto) GetAws() []ServerCommonRecordDto {
-	if o == nil {
+	if o == nil || IsNil(o.Aws) {
 		var ret []ServerCommonRecordDto
 		return ret
 	}
-
 	return o.Aws
 }
 
-// GetAwsOk returns a tuple with the Aws field value
+// GetAwsOk returns a tuple with the Aws field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerChartDto) GetAwsOk() ([]ServerCommonRecordDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Aws) {
 		return nil, false
 	}
 	return o.Aws, true
 }
 
-// SetAws sets field value
+// HasAws returns a boolean if a field has been set.
+func (o *ServerChartDto) HasAws() bool {
+	if o != nil && !IsNil(o.Aws) {
+		return true
+	}
+
+	return false
+}
+
+// SetAws gets a reference to the given []ServerCommonRecordDto and assigns it to the Aws field.
 func (o *ServerChartDto) SetAws(v []ServerCommonRecordDto) {
 	o.Aws = v
 }
 
-// GetAzure returns the Azure field value
+// GetAzure returns the Azure field value if set, zero value otherwise.
 func (o *ServerChartDto) GetAzure() []interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.Azure) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.Azure
 }
 
-// GetAzureOk returns a tuple with the Azure field value
+// GetAzureOk returns a tuple with the Azure field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerChartDto) GetAzureOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Azure) {
 		return nil, false
 	}
 	return o.Azure, true
 }
 
-// SetAzure sets field value
+// HasAzure returns a boolean if a field has been set.
+func (o *ServerChartDto) HasAzure() bool {
+	if o != nil && !IsNil(o.Azure) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzure gets a reference to the given []interface{} and assigns it to the Azure field.
 func (o *ServerChartDto) SetAzure(v []interface{}) {
 	o.Azure = v
 }
 
-// GetOpenstack returns the Openstack field value
+// GetOpenstack returns the Openstack field value if set, zero value otherwise.
 func (o *ServerChartDto) GetOpenstack() []interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.Openstack) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.Openstack
 }
 
-// GetOpenstackOk returns a tuple with the Openstack field value
+// GetOpenstackOk returns a tuple with the Openstack field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerChartDto) GetOpenstackOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Openstack) {
 		return nil, false
 	}
 	return o.Openstack, true
 }
 
-// SetOpenstack sets field value
+// HasOpenstack returns a boolean if a field has been set.
+func (o *ServerChartDto) HasOpenstack() bool {
+	if o != nil && !IsNil(o.Openstack) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenstack gets a reference to the given []interface{} and assigns it to the Openstack field.
 func (o *ServerChartDto) SetOpenstack(v []interface{}) {
 	o.Openstack = v
 }
 
-// GetGoogle returns the Google field value
+// GetGoogle returns the Google field value if set, zero value otherwise.
 func (o *ServerChartDto) GetGoogle() []interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.Google) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.Google
 }
 
-// GetGoogleOk returns a tuple with the Google field value
+// GetGoogleOk returns a tuple with the Google field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerChartDto) GetGoogleOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Google) {
 		return nil, false
 	}
 	return o.Google, true
 }
 
-// SetGoogle sets field value
+// HasGoogle returns a boolean if a field has been set.
+func (o *ServerChartDto) HasGoogle() bool {
+	if o != nil && !IsNil(o.Google) {
+		return true
+	}
+
+	return false
+}
+
+// SetGoogle gets a reference to the given []interface{} and assigns it to the Google field.
 func (o *ServerChartDto) SetGoogle(v []interface{}) {
 	o.Google = v
 }
 
-// GetProxmox returns the Proxmox field value
+// GetProxmox returns the Proxmox field value if set, zero value otherwise.
 func (o *ServerChartDto) GetProxmox() []interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.Proxmox) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.Proxmox
 }
 
-// GetProxmoxOk returns a tuple with the Proxmox field value
+// GetProxmoxOk returns a tuple with the Proxmox field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerChartDto) GetProxmoxOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Proxmox) {
 		return nil, false
 	}
 	return o.Proxmox, true
 }
 
-// SetProxmox sets field value
+// HasProxmox returns a boolean if a field has been set.
+func (o *ServerChartDto) HasProxmox() bool {
+	if o != nil && !IsNil(o.Proxmox) {
+		return true
+	}
+
+	return false
+}
+
+// SetProxmox gets a reference to the given []interface{} and assigns it to the Proxmox field.
 func (o *ServerChartDto) SetProxmox(v []interface{}) {
 	o.Proxmox = v
 }
 
-// GetVsphere returns the Vsphere field value
+// GetVsphere returns the Vsphere field value if set, zero value otherwise.
 func (o *ServerChartDto) GetVsphere() []interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.Vsphere) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.Vsphere
 }
 
-// GetVsphereOk returns a tuple with the Vsphere field value
+// GetVsphereOk returns a tuple with the Vsphere field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerChartDto) GetVsphereOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Vsphere) {
 		return nil, false
 	}
 	return o.Vsphere, true
 }
 
-// SetVsphere sets field value
+// HasVsphere returns a boolean if a field has been set.
+func (o *ServerChartDto) HasVsphere() bool {
+	if o != nil && !IsNil(o.Vsphere) {
+		return true
+	}
+
+	return false
+}
+
+// SetVsphere gets a reference to the given []interface{} and assigns it to the Vsphere field.
 func (o *ServerChartDto) SetVsphere(v []interface{}) {
 	o.Vsphere = v
 }
 
-// GetZadara returns the Zadara field value
+// GetZadara returns the Zadara field value if set, zero value otherwise.
 func (o *ServerChartDto) GetZadara() []interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.Zadara) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.Zadara
 }
 
-// GetZadaraOk returns a tuple with the Zadara field value
+// GetZadaraOk returns a tuple with the Zadara field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerChartDto) GetZadaraOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Zadara) {
 		return nil, false
 	}
 	return o.Zadara, true
 }
 
-// SetZadara sets field value
+// HasZadara returns a boolean if a field has been set.
+func (o *ServerChartDto) HasZadara() bool {
+	if o != nil && !IsNil(o.Zadara) {
+		return true
+	}
+
+	return false
+}
+
+// SetZadara gets a reference to the given []interface{} and assigns it to the Zadara field.
 func (o *ServerChartDto) SetZadara(v []interface{}) {
 	o.Zadara = v
 }
 
-// GetOpenshift returns the Openshift field value
+// GetOpenshift returns the Openshift field value if set, zero value otherwise.
 func (o *ServerChartDto) GetOpenshift() []interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.Openshift) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.Openshift
 }
 
-// GetOpenshiftOk returns a tuple with the Openshift field value
+// GetOpenshiftOk returns a tuple with the Openshift field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerChartDto) GetOpenshiftOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Openshift) {
 		return nil, false
 	}
 	return o.Openshift, true
 }
 
-// SetOpenshift sets field value
+// HasOpenshift returns a boolean if a field has been set.
+func (o *ServerChartDto) HasOpenshift() bool {
+	if o != nil && !IsNil(o.Openshift) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenshift gets a reference to the given []interface{} and assigns it to the Openshift field.
 func (o *ServerChartDto) SetOpenshift(v []interface{}) {
 	o.Openshift = v
 }
 
-// GetGenericK8S returns the GenericK8S field value
+// GetGenericK8S returns the GenericK8S field value if set, zero value otherwise.
 func (o *ServerChartDto) GetGenericK8S() []interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.GenericK8S) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.GenericK8S
 }
 
-// GetGenericK8SOk returns a tuple with the GenericK8S field value
+// GetGenericK8SOk returns a tuple with the GenericK8S field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerChartDto) GetGenericK8SOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.GenericK8S) {
 		return nil, false
 	}
 	return o.GenericK8S, true
 }
 
-// SetGenericK8S sets field value
+// HasGenericK8S returns a boolean if a field has been set.
+func (o *ServerChartDto) HasGenericK8S() bool {
+	if o != nil && !IsNil(o.GenericK8S) {
+		return true
+	}
+
+	return false
+}
+
+// SetGenericK8S gets a reference to the given []interface{} and assigns it to the GenericK8S field.
 func (o *ServerChartDto) SetGenericK8S(v []interface{}) {
 	o.GenericK8S = v
 }
 
-// GetFailed returns the Failed field value
+// GetFailed returns the Failed field value if set, zero value otherwise.
 func (o *ServerChartDto) GetFailed() []interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.Failed) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.Failed
 }
 
-// GetFailedOk returns a tuple with the Failed field value
+// GetFailedOk returns a tuple with the Failed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerChartDto) GetFailedOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Failed) {
 		return nil, false
 	}
 	return o.Failed, true
 }
 
-// SetFailed sets field value
+// HasFailed returns a boolean if a field has been set.
+func (o *ServerChartDto) HasFailed() bool {
+	if o != nil && !IsNil(o.Failed) {
+		return true
+	}
+
+	return false
+}
+
+// SetFailed gets a reference to the given []interface{} and assigns it to the Failed field.
 func (o *ServerChartDto) SetFailed(v []interface{}) {
 	o.Failed = v
 }
 
-// GetSucceeded returns the Succeeded field value
+// GetSucceeded returns the Succeeded field value if set, zero value otherwise.
 func (o *ServerChartDto) GetSucceeded() []interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.Succeeded) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.Succeeded
 }
 
-// GetSucceededOk returns a tuple with the Succeeded field value
+// GetSucceededOk returns a tuple with the Succeeded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerChartDto) GetSucceededOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Succeeded) {
 		return nil, false
 	}
 	return o.Succeeded, true
 }
 
-// SetSucceeded sets field value
+// HasSucceeded returns a boolean if a field has been set.
+func (o *ServerChartDto) HasSucceeded() bool {
+	if o != nil && !IsNil(o.Succeeded) {
+		return true
+	}
+
+	return false
+}
+
+// SetSucceeded gets a reference to the given []interface{} and assigns it to the Succeeded field.
 func (o *ServerChartDto) SetSucceeded(v []interface{}) {
 	o.Succeeded = v
 }
 
-// GetWaiting returns the Waiting field value
+// GetWaiting returns the Waiting field value if set, zero value otherwise.
 func (o *ServerChartDto) GetWaiting() []interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.Waiting) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.Waiting
 }
 
-// GetWaitingOk returns a tuple with the Waiting field value
+// GetWaitingOk returns a tuple with the Waiting field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerChartDto) GetWaitingOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Waiting) {
 		return nil, false
 	}
 	return o.Waiting, true
 }
 
-// SetWaiting sets field value
+// HasWaiting returns a boolean if a field has been set.
+func (o *ServerChartDto) HasWaiting() bool {
+	if o != nil && !IsNil(o.Waiting) {
+		return true
+	}
+
+	return false
+}
+
+// SetWaiting gets a reference to the given []interface{} and assigns it to the Waiting field.
 func (o *ServerChartDto) SetWaiting(v []interface{}) {
 	o.Waiting = v
 }
 
-// GetUpdating returns the Updating field value
+// GetUpdating returns the Updating field value if set, zero value otherwise.
 func (o *ServerChartDto) GetUpdating() []interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.Updating) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.Updating
 }
 
-// GetUpdatingOk returns a tuple with the Updating field value
+// GetUpdatingOk returns a tuple with the Updating field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerChartDto) GetUpdatingOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Updating) {
 		return nil, false
 	}
 	return o.Updating, true
 }
 
-// SetUpdating sets field value
+// HasUpdating returns a boolean if a field has been set.
+func (o *ServerChartDto) HasUpdating() bool {
+	if o != nil && !IsNil(o.Updating) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdating gets a reference to the given []interface{} and assigns it to the Updating field.
 func (o *ServerChartDto) SetUpdating(v []interface{}) {
 	o.Updating = v
 }
 
-// GetDeleting returns the Deleting field value
+// GetDeleting returns the Deleting field value if set, zero value otherwise.
 func (o *ServerChartDto) GetDeleting() []interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.Deleting) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.Deleting
 }
 
-// GetDeletingOk returns a tuple with the Deleting field value
+// GetDeletingOk returns a tuple with the Deleting field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerChartDto) GetDeletingOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Deleting) {
 		return nil, false
 	}
 	return o.Deleting, true
 }
 
-// SetDeleting sets field value
+// HasDeleting returns a boolean if a field has been set.
+func (o *ServerChartDto) HasDeleting() bool {
+	if o != nil && !IsNil(o.Deleting) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleting gets a reference to the given []interface{} and assigns it to the Deleting field.
 func (o *ServerChartDto) SetDeleting(v []interface{}) {
 	o.Deleting = v
 }
 
-// GetPurging returns the Purging field value
+// GetPurging returns the Purging field value if set, zero value otherwise.
 func (o *ServerChartDto) GetPurging() []interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.Purging) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.Purging
 }
 
-// GetPurgingOk returns a tuple with the Purging field value
+// GetPurgingOk returns a tuple with the Purging field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerChartDto) GetPurgingOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Purging) {
 		return nil, false
 	}
 	return o.Purging, true
 }
 
-// SetPurging sets field value
+// HasPurging returns a boolean if a field has been set.
+func (o *ServerChartDto) HasPurging() bool {
+	if o != nil && !IsNil(o.Purging) {
+		return true
+	}
+
+	return false
+}
+
+// SetPurging gets a reference to the given []interface{} and assigns it to the Purging field.
 func (o *ServerChartDto) SetPurging(v []interface{}) {
 	o.Purging = v
 }
@@ -877,26 +981,34 @@ func (o *ServerChartDto) SetTotalGenericK8SCount(v int32) {
 	o.TotalGenericK8SCount = v
 }
 
-// GetUsedResources returns the UsedResources field value
+// GetUsedResources returns the UsedResources field value if set, zero value otherwise.
 func (o *ServerChartDto) GetUsedResources() []UserResourceChartDto {
-	if o == nil {
+	if o == nil || IsNil(o.UsedResources) {
 		var ret []UserResourceChartDto
 		return ret
 	}
-
 	return o.UsedResources
 }
 
-// GetUsedResourcesOk returns a tuple with the UsedResources field value
+// GetUsedResourcesOk returns a tuple with the UsedResources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerChartDto) GetUsedResourcesOk() ([]UserResourceChartDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UsedResources) {
 		return nil, false
 	}
 	return o.UsedResources, true
 }
 
-// SetUsedResources sets field value
+// HasUsedResources returns a boolean if a field has been set.
+func (o *ServerChartDto) HasUsedResources() bool {
+	if o != nil && !IsNil(o.UsedResources) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsedResources gets a reference to the given []UserResourceChartDto and assigns it to the UsedResources field.
 func (o *ServerChartDto) SetUsedResources(v []UserResourceChartDto) {
 	o.UsedResources = v
 }
@@ -911,21 +1023,51 @@ func (o ServerChartDto) MarshalJSON() ([]byte, error) {
 
 func (o ServerChartDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["aws"] = o.Aws
-	toSerialize["azure"] = o.Azure
-	toSerialize["openstack"] = o.Openstack
-	toSerialize["google"] = o.Google
-	toSerialize["proxmox"] = o.Proxmox
-	toSerialize["vsphere"] = o.Vsphere
-	toSerialize["zadara"] = o.Zadara
-	toSerialize["openshift"] = o.Openshift
-	toSerialize["genericK8S"] = o.GenericK8S
-	toSerialize["failed"] = o.Failed
-	toSerialize["succeeded"] = o.Succeeded
-	toSerialize["waiting"] = o.Waiting
-	toSerialize["updating"] = o.Updating
-	toSerialize["deleting"] = o.Deleting
-	toSerialize["purging"] = o.Purging
+	if !IsNil(o.Aws) {
+		toSerialize["aws"] = o.Aws
+	}
+	if !IsNil(o.Azure) {
+		toSerialize["azure"] = o.Azure
+	}
+	if !IsNil(o.Openstack) {
+		toSerialize["openstack"] = o.Openstack
+	}
+	if !IsNil(o.Google) {
+		toSerialize["google"] = o.Google
+	}
+	if !IsNil(o.Proxmox) {
+		toSerialize["proxmox"] = o.Proxmox
+	}
+	if !IsNil(o.Vsphere) {
+		toSerialize["vsphere"] = o.Vsphere
+	}
+	if !IsNil(o.Zadara) {
+		toSerialize["zadara"] = o.Zadara
+	}
+	if !IsNil(o.Openshift) {
+		toSerialize["openshift"] = o.Openshift
+	}
+	if !IsNil(o.GenericK8S) {
+		toSerialize["genericK8S"] = o.GenericK8S
+	}
+	if !IsNil(o.Failed) {
+		toSerialize["failed"] = o.Failed
+	}
+	if !IsNil(o.Succeeded) {
+		toSerialize["succeeded"] = o.Succeeded
+	}
+	if !IsNil(o.Waiting) {
+		toSerialize["waiting"] = o.Waiting
+	}
+	if !IsNil(o.Updating) {
+		toSerialize["updating"] = o.Updating
+	}
+	if !IsNil(o.Deleting) {
+		toSerialize["deleting"] = o.Deleting
+	}
+	if !IsNil(o.Purging) {
+		toSerialize["purging"] = o.Purging
+	}
 	toSerialize["totalCount"] = o.TotalCount
 	toSerialize["totalCpu"] = o.TotalCpu
 	toSerialize["totalRam"] = o.TotalRam
@@ -943,7 +1085,9 @@ func (o ServerChartDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["totalVsphereCount"] = o.TotalVsphereCount
 	toSerialize["totalZadaraCount"] = o.TotalZadaraCount
 	toSerialize["totalGenericK8SCount"] = o.TotalGenericK8SCount
-	toSerialize["usedResources"] = o.UsedResources
+	if !IsNil(o.UsedResources) {
+		toSerialize["usedResources"] = o.UsedResources
+	}
 	return toSerialize, nil
 }
 
@@ -952,21 +1096,6 @@ func (o *ServerChartDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"aws",
-		"azure",
-		"openstack",
-		"google",
-		"proxmox",
-		"vsphere",
-		"zadara",
-		"openshift",
-		"genericK8S",
-		"failed",
-		"succeeded",
-		"waiting",
-		"updating",
-		"deleting",
-		"purging",
 		"totalCount",
 		"totalCpu",
 		"totalRam",
@@ -984,7 +1113,6 @@ func (o *ServerChartDto) UnmarshalJSON(data []byte) (err error) {
 		"totalVsphereCount",
 		"totalZadaraCount",
 		"totalGenericK8SCount",
-		"usedResources",
 	}
 
 	allProperties := make(map[string]interface{})

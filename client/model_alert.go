@@ -23,11 +23,11 @@ var _ MappedNullable = &Alert{}
 
 // Alert struct for Alert
 type Alert struct {
-	Labels AlertLabels `json:"labels"`
-	Annotations Annotations `json:"annotations"`
-	State string `json:"state"`
+	Labels *AlertLabels `json:"labels,omitempty"`
+	Annotations *Annotations `json:"annotations,omitempty"`
+	State *string `json:"state,omitempty"`
 	ActiveAt time.Time `json:"activeAt"`
-	Value string `json:"value"`
+	Value *string `json:"value,omitempty"`
 }
 
 type _Alert Alert
@@ -36,13 +36,9 @@ type _Alert Alert
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlert(labels AlertLabels, annotations Annotations, state string, activeAt time.Time, value string) *Alert {
+func NewAlert(activeAt time.Time) *Alert {
 	this := Alert{}
-	this.Labels = labels
-	this.Annotations = annotations
-	this.State = state
 	this.ActiveAt = activeAt
-	this.Value = value
 	return &this
 }
 
@@ -54,76 +50,100 @@ func NewAlertWithDefaults() *Alert {
 	return &this
 }
 
-// GetLabels returns the Labels field value
+// GetLabels returns the Labels field value if set, zero value otherwise.
 func (o *Alert) GetLabels() AlertLabels {
-	if o == nil {
+	if o == nil || IsNil(o.Labels) {
 		var ret AlertLabels
 		return ret
 	}
-
-	return o.Labels
+	return *o.Labels
 }
 
-// GetLabelsOk returns a tuple with the Labels field value
+// GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Alert) GetLabelsOk() (*AlertLabels, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Labels) {
 		return nil, false
 	}
-	return &o.Labels, true
+	return o.Labels, true
 }
 
-// SetLabels sets field value
+// HasLabels returns a boolean if a field has been set.
+func (o *Alert) HasLabels() bool {
+	if o != nil && !IsNil(o.Labels) {
+		return true
+	}
+
+	return false
+}
+
+// SetLabels gets a reference to the given AlertLabels and assigns it to the Labels field.
 func (o *Alert) SetLabels(v AlertLabels) {
-	o.Labels = v
+	o.Labels = &v
 }
 
-// GetAnnotations returns the Annotations field value
+// GetAnnotations returns the Annotations field value if set, zero value otherwise.
 func (o *Alert) GetAnnotations() Annotations {
-	if o == nil {
+	if o == nil || IsNil(o.Annotations) {
 		var ret Annotations
 		return ret
 	}
-
-	return o.Annotations
+	return *o.Annotations
 }
 
-// GetAnnotationsOk returns a tuple with the Annotations field value
+// GetAnnotationsOk returns a tuple with the Annotations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Alert) GetAnnotationsOk() (*Annotations, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Annotations) {
 		return nil, false
 	}
-	return &o.Annotations, true
+	return o.Annotations, true
 }
 
-// SetAnnotations sets field value
+// HasAnnotations returns a boolean if a field has been set.
+func (o *Alert) HasAnnotations() bool {
+	if o != nil && !IsNil(o.Annotations) {
+		return true
+	}
+
+	return false
+}
+
+// SetAnnotations gets a reference to the given Annotations and assigns it to the Annotations field.
 func (o *Alert) SetAnnotations(v Annotations) {
-	o.Annotations = v
+	o.Annotations = &v
 }
 
-// GetState returns the State field value
+// GetState returns the State field value if set, zero value otherwise.
 func (o *Alert) GetState() string {
-	if o == nil {
+	if o == nil || IsNil(o.State) {
 		var ret string
 		return ret
 	}
-
-	return o.State
+	return *o.State
 }
 
-// GetStateOk returns a tuple with the State field value
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Alert) GetStateOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
-	return &o.State, true
+	return o.State, true
 }
 
-// SetState sets field value
+// HasState returns a boolean if a field has been set.
+func (o *Alert) HasState() bool {
+	if o != nil && !IsNil(o.State) {
+		return true
+	}
+
+	return false
+}
+
+// SetState gets a reference to the given string and assigns it to the State field.
 func (o *Alert) SetState(v string) {
-	o.State = v
+	o.State = &v
 }
 
 // GetActiveAt returns the ActiveAt field value
@@ -150,28 +170,36 @@ func (o *Alert) SetActiveAt(v time.Time) {
 	o.ActiveAt = v
 }
 
-// GetValue returns the Value field value
+// GetValue returns the Value field value if set, zero value otherwise.
 func (o *Alert) GetValue() string {
-	if o == nil {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
-
-	return o.Value
+	return *o.Value
 }
 
-// GetValueOk returns a tuple with the Value field value
+// GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Alert) GetValueOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
-	return &o.Value, true
+	return o.Value, true
 }
 
-// SetValue sets field value
+// HasValue returns a boolean if a field has been set.
+func (o *Alert) HasValue() bool {
+	if o != nil && !IsNil(o.Value) {
+		return true
+	}
+
+	return false
+}
+
+// SetValue gets a reference to the given string and assigns it to the Value field.
 func (o *Alert) SetValue(v string) {
-	o.Value = v
+	o.Value = &v
 }
 
 func (o Alert) MarshalJSON() ([]byte, error) {
@@ -184,11 +212,19 @@ func (o Alert) MarshalJSON() ([]byte, error) {
 
 func (o Alert) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["labels"] = o.Labels
-	toSerialize["annotations"] = o.Annotations
-	toSerialize["state"] = o.State
+	if !IsNil(o.Labels) {
+		toSerialize["labels"] = o.Labels
+	}
+	if !IsNil(o.Annotations) {
+		toSerialize["annotations"] = o.Annotations
+	}
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
+	}
 	toSerialize["activeAt"] = o.ActiveAt
-	toSerialize["value"] = o.Value
+	if !IsNil(o.Value) {
+		toSerialize["value"] = o.Value
+	}
 	return toSerialize, nil
 }
 
@@ -197,11 +233,7 @@ func (o *Alert) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"labels",
-		"annotations",
-		"state",
 		"activeAt",
-		"value",
 	}
 
 	allProperties := make(map[string]interface{})

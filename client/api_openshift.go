@@ -473,9 +473,6 @@ func (a *OpenshiftAPIService) OpenshiftPullSecretExecute(r ApiOpenshiftPullSecre
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.config == nil {
-		return nil, reportError("config is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
@@ -664,9 +661,6 @@ func (a *OpenshiftAPIService) OpenshiftStorageClassExecute(r ApiOpenshiftStorage
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.config == nil {
-		return localVarReturnValue, nil, reportError("config is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
@@ -862,9 +856,6 @@ func (a *OpenshiftAPIService) OpenshiftValidateExecute(r ApiOpenshiftValidateReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.config == nil {
-		return nil, reportError("config is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}

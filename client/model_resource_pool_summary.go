@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the ResourcePoolSummary type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &ResourcePoolSummary{}
 
 // ResourcePoolSummary struct for ResourcePoolSummary
 type ResourcePoolSummary struct {
-	Name string `json:"name"`
-	ResourcePool string `json:"resourcePool"`
+	Name *string `json:"name,omitempty"`
+	ResourcePool *string `json:"resourcePool,omitempty"`
 }
-
-type _ResourcePoolSummary ResourcePoolSummary
 
 // NewResourcePoolSummary instantiates a new ResourcePoolSummary object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResourcePoolSummary(name string, resourcePool string) *ResourcePoolSummary {
+func NewResourcePoolSummary() *ResourcePoolSummary {
 	this := ResourcePoolSummary{}
-	this.Name = name
-	this.ResourcePool = resourcePool
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewResourcePoolSummaryWithDefaults() *ResourcePoolSummary {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *ResourcePoolSummary) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourcePoolSummary) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *ResourcePoolSummary) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ResourcePoolSummary) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetResourcePool returns the ResourcePool field value
+// GetResourcePool returns the ResourcePool field value if set, zero value otherwise.
 func (o *ResourcePoolSummary) GetResourcePool() string {
-	if o == nil {
+	if o == nil || IsNil(o.ResourcePool) {
 		var ret string
 		return ret
 	}
-
-	return o.ResourcePool
+	return *o.ResourcePool
 }
 
-// GetResourcePoolOk returns a tuple with the ResourcePool field value
+// GetResourcePoolOk returns a tuple with the ResourcePool field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourcePoolSummary) GetResourcePoolOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ResourcePool) {
 		return nil, false
 	}
-	return &o.ResourcePool, true
+	return o.ResourcePool, true
 }
 
-// SetResourcePool sets field value
+// HasResourcePool returns a boolean if a field has been set.
+func (o *ResourcePoolSummary) HasResourcePool() bool {
+	if o != nil && !IsNil(o.ResourcePool) {
+		return true
+	}
+
+	return false
+}
+
+// SetResourcePool gets a reference to the given string and assigns it to the ResourcePool field.
 func (o *ResourcePoolSummary) SetResourcePool(v string) {
-	o.ResourcePool = v
+	o.ResourcePool = &v
 }
 
 func (o ResourcePoolSummary) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o ResourcePoolSummary) MarshalJSON() ([]byte, error) {
 
 func (o ResourcePoolSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["resourcePool"] = o.ResourcePool
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.ResourcePool) {
+		toSerialize["resourcePool"] = o.ResourcePool
+	}
 	return toSerialize, nil
-}
-
-func (o *ResourcePoolSummary) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"resourcePool",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varResourcePoolSummary := _ResourcePoolSummary{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varResourcePoolSummary)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ResourcePoolSummary(varResourcePoolSummary)
-
-	return err
 }
 
 type NullableResourcePoolSummary struct {

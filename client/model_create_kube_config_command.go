@@ -22,13 +22,13 @@ var _ MappedNullable = &CreateKubeConfigCommand{}
 
 // CreateKubeConfigCommand struct for CreateKubeConfigCommand
 type CreateKubeConfigCommand struct {
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	ProjectId int32 `json:"projectId"`
 	IsAccessibleForAll bool `json:"isAccessibleForAll"`
 	IsAccessibleForManager bool `json:"isAccessibleForManager"`
 	KubeConfigRoleId int32 `json:"kubeConfigRoleId"`
-	UserId string `json:"userId"`
-	Namespace string `json:"namespace"`
+	UserId *string `json:"userId,omitempty"`
+	Namespace *string `json:"namespace,omitempty"`
 	Ttl NullableInt32 `json:"ttl,omitempty"`
 }
 
@@ -38,15 +38,12 @@ type _CreateKubeConfigCommand CreateKubeConfigCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateKubeConfigCommand(name string, projectId int32, isAccessibleForAll bool, isAccessibleForManager bool, kubeConfigRoleId int32, userId string, namespace string) *CreateKubeConfigCommand {
+func NewCreateKubeConfigCommand(projectId int32, isAccessibleForAll bool, isAccessibleForManager bool, kubeConfigRoleId int32) *CreateKubeConfigCommand {
 	this := CreateKubeConfigCommand{}
-	this.Name = name
 	this.ProjectId = projectId
 	this.IsAccessibleForAll = isAccessibleForAll
 	this.IsAccessibleForManager = isAccessibleForManager
 	this.KubeConfigRoleId = kubeConfigRoleId
-	this.UserId = userId
-	this.Namespace = namespace
 	return &this
 }
 
@@ -58,28 +55,36 @@ func NewCreateKubeConfigCommandWithDefaults() *CreateKubeConfigCommand {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateKubeConfigCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateKubeConfigCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CreateKubeConfigCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateKubeConfigCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetProjectId returns the ProjectId field value
@@ -178,52 +183,68 @@ func (o *CreateKubeConfigCommand) SetKubeConfigRoleId(v int32) {
 	o.KubeConfigRoleId = v
 }
 
-// GetUserId returns the UserId field value
+// GetUserId returns the UserId field value if set, zero value otherwise.
 func (o *CreateKubeConfigCommand) GetUserId() string {
-	if o == nil {
+	if o == nil || IsNil(o.UserId) {
 		var ret string
 		return ret
 	}
-
-	return o.UserId
+	return *o.UserId
 }
 
-// GetUserIdOk returns a tuple with the UserId field value
+// GetUserIdOk returns a tuple with the UserId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateKubeConfigCommand) GetUserIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UserId) {
 		return nil, false
 	}
-	return &o.UserId, true
+	return o.UserId, true
 }
 
-// SetUserId sets field value
+// HasUserId returns a boolean if a field has been set.
+func (o *CreateKubeConfigCommand) HasUserId() bool {
+	if o != nil && !IsNil(o.UserId) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserId gets a reference to the given string and assigns it to the UserId field.
 func (o *CreateKubeConfigCommand) SetUserId(v string) {
-	o.UserId = v
+	o.UserId = &v
 }
 
-// GetNamespace returns the Namespace field value
+// GetNamespace returns the Namespace field value if set, zero value otherwise.
 func (o *CreateKubeConfigCommand) GetNamespace() string {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		var ret string
 		return ret
 	}
-
-	return o.Namespace
+	return *o.Namespace
 }
 
-// GetNamespaceOk returns a tuple with the Namespace field value
+// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateKubeConfigCommand) GetNamespaceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		return nil, false
 	}
-	return &o.Namespace, true
+	return o.Namespace, true
 }
 
-// SetNamespace sets field value
+// HasNamespace returns a boolean if a field has been set.
+func (o *CreateKubeConfigCommand) HasNamespace() bool {
+	if o != nil && !IsNil(o.Namespace) {
+		return true
+	}
+
+	return false
+}
+
+// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *CreateKubeConfigCommand) SetNamespace(v string) {
-	o.Namespace = v
+	o.Namespace = &v
 }
 
 // GetTtl returns the Ttl field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -278,13 +299,19 @@ func (o CreateKubeConfigCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateKubeConfigCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	toSerialize["projectId"] = o.ProjectId
 	toSerialize["isAccessibleForAll"] = o.IsAccessibleForAll
 	toSerialize["isAccessibleForManager"] = o.IsAccessibleForManager
 	toSerialize["kubeConfigRoleId"] = o.KubeConfigRoleId
-	toSerialize["userId"] = o.UserId
-	toSerialize["namespace"] = o.Namespace
+	if !IsNil(o.UserId) {
+		toSerialize["userId"] = o.UserId
+	}
+	if !IsNil(o.Namespace) {
+		toSerialize["namespace"] = o.Namespace
+	}
 	if o.Ttl.IsSet() {
 		toSerialize["ttl"] = o.Ttl.Get()
 	}
@@ -296,13 +323,10 @@ func (o *CreateKubeConfigCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
 		"projectId",
 		"isAccessibleForAll",
 		"isAccessibleForManager",
 		"kubeConfigRoleId",
-		"userId",
-		"namespace",
 	}
 
 	allProperties := make(map[string]interface{})

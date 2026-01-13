@@ -22,7 +22,7 @@ var _ MappedNullable = &DeploymentSearchList{}
 
 // DeploymentSearchList struct for DeploymentSearchList
 type DeploymentSearchList struct {
-	Data []CommonSearchKubernetesResponseData `json:"data"`
+	Data []CommonSearchKubernetesResponseData `json:"data,omitempty"`
 	TotalCount int32 `json:"totalCount"`
 }
 
@@ -32,9 +32,8 @@ type _DeploymentSearchList DeploymentSearchList
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeploymentSearchList(data []CommonSearchKubernetesResponseData, totalCount int32) *DeploymentSearchList {
+func NewDeploymentSearchList(totalCount int32) *DeploymentSearchList {
 	this := DeploymentSearchList{}
-	this.Data = data
 	this.TotalCount = totalCount
 	return &this
 }
@@ -47,26 +46,34 @@ func NewDeploymentSearchListWithDefaults() *DeploymentSearchList {
 	return &this
 }
 
-// GetData returns the Data field value
+// GetData returns the Data field value if set, zero value otherwise.
 func (o *DeploymentSearchList) GetData() []CommonSearchKubernetesResponseData {
-	if o == nil {
+	if o == nil || IsNil(o.Data) {
 		var ret []CommonSearchKubernetesResponseData
 		return ret
 	}
-
 	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value
+// GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentSearchList) GetDataOk() ([]CommonSearchKubernetesResponseData, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
 	return o.Data, true
 }
 
-// SetData sets field value
+// HasData returns a boolean if a field has been set.
+func (o *DeploymentSearchList) HasData() bool {
+	if o != nil && !IsNil(o.Data) {
+		return true
+	}
+
+	return false
+}
+
+// SetData gets a reference to the given []CommonSearchKubernetesResponseData and assigns it to the Data field.
 func (o *DeploymentSearchList) SetData(v []CommonSearchKubernetesResponseData) {
 	o.Data = v
 }
@@ -105,7 +112,9 @@ func (o DeploymentSearchList) MarshalJSON() ([]byte, error) {
 
 func (o DeploymentSearchList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["data"] = o.Data
+	if !IsNil(o.Data) {
+		toSerialize["data"] = o.Data
+	}
 	toSerialize["totalCount"] = o.TotalCount
 	return toSerialize, nil
 }
@@ -115,7 +124,6 @@ func (o *DeploymentSearchList) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"data",
 		"totalCount",
 	}
 

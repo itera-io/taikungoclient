@@ -23,7 +23,7 @@ var _ MappedNullable = &RebootServerCommand{}
 // RebootServerCommand struct for RebootServerCommand
 type RebootServerCommand struct {
 	ServerId int32 `json:"serverId"`
-	Type string `json:"type"`
+	Type *string `json:"type,omitempty"`
 }
 
 type _RebootServerCommand RebootServerCommand
@@ -32,10 +32,9 @@ type _RebootServerCommand RebootServerCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRebootServerCommand(serverId int32, type_ string) *RebootServerCommand {
+func NewRebootServerCommand(serverId int32) *RebootServerCommand {
 	this := RebootServerCommand{}
 	this.ServerId = serverId
-	this.Type = type_
 	return &this
 }
 
@@ -71,28 +70,36 @@ func (o *RebootServerCommand) SetServerId(v int32) {
 	o.ServerId = v
 }
 
-// GetType returns the Type field value
+// GetType returns the Type field value if set, zero value otherwise.
 func (o *RebootServerCommand) GetType() string {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
-
-	return o.Type
+	return *o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RebootServerCommand) GetTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return &o.Type, true
+	return o.Type, true
 }
 
-// SetType sets field value
+// HasType returns a boolean if a field has been set.
+func (o *RebootServerCommand) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
 func (o *RebootServerCommand) SetType(v string) {
-	o.Type = v
+	o.Type = &v
 }
 
 func (o RebootServerCommand) MarshalJSON() ([]byte, error) {
@@ -106,7 +113,9 @@ func (o RebootServerCommand) MarshalJSON() ([]byte, error) {
 func (o RebootServerCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["serverId"] = o.ServerId
-	toSerialize["type"] = o.Type
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
 	return toSerialize, nil
 }
 
@@ -116,7 +125,6 @@ func (o *RebootServerCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"serverId",
-		"type",
 	}
 
 	allProperties := make(map[string]interface{})

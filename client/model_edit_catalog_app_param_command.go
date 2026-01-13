@@ -23,7 +23,7 @@ var _ MappedNullable = &EditCatalogAppParamCommand{}
 // EditCatalogAppParamCommand struct for EditCatalogAppParamCommand
 type EditCatalogAppParamCommand struct {
 	CatalogAppId int32 `json:"catalogAppId"`
-	Parameters []CatalogAppParamsDto `json:"parameters"`
+	Parameters []CatalogAppParamsDto `json:"parameters,omitempty"`
 }
 
 type _EditCatalogAppParamCommand EditCatalogAppParamCommand
@@ -32,10 +32,9 @@ type _EditCatalogAppParamCommand EditCatalogAppParamCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEditCatalogAppParamCommand(catalogAppId int32, parameters []CatalogAppParamsDto) *EditCatalogAppParamCommand {
+func NewEditCatalogAppParamCommand(catalogAppId int32) *EditCatalogAppParamCommand {
 	this := EditCatalogAppParamCommand{}
 	this.CatalogAppId = catalogAppId
-	this.Parameters = parameters
 	return &this
 }
 
@@ -71,26 +70,34 @@ func (o *EditCatalogAppParamCommand) SetCatalogAppId(v int32) {
 	o.CatalogAppId = v
 }
 
-// GetParameters returns the Parameters field value
+// GetParameters returns the Parameters field value if set, zero value otherwise.
 func (o *EditCatalogAppParamCommand) GetParameters() []CatalogAppParamsDto {
-	if o == nil {
+	if o == nil || IsNil(o.Parameters) {
 		var ret []CatalogAppParamsDto
 		return ret
 	}
-
 	return o.Parameters
 }
 
-// GetParametersOk returns a tuple with the Parameters field value
+// GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EditCatalogAppParamCommand) GetParametersOk() ([]CatalogAppParamsDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Parameters) {
 		return nil, false
 	}
 	return o.Parameters, true
 }
 
-// SetParameters sets field value
+// HasParameters returns a boolean if a field has been set.
+func (o *EditCatalogAppParamCommand) HasParameters() bool {
+	if o != nil && !IsNil(o.Parameters) {
+		return true
+	}
+
+	return false
+}
+
+// SetParameters gets a reference to the given []CatalogAppParamsDto and assigns it to the Parameters field.
 func (o *EditCatalogAppParamCommand) SetParameters(v []CatalogAppParamsDto) {
 	o.Parameters = v
 }
@@ -106,7 +113,9 @@ func (o EditCatalogAppParamCommand) MarshalJSON() ([]byte, error) {
 func (o EditCatalogAppParamCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["catalogAppId"] = o.CatalogAppId
-	toSerialize["parameters"] = o.Parameters
+	if !IsNil(o.Parameters) {
+		toSerialize["parameters"] = o.Parameters
+	}
 	return toSerialize, nil
 }
 
@@ -116,7 +125,6 @@ func (o *EditCatalogAppParamCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"catalogAppId",
-		"parameters",
 	}
 
 	allProperties := make(map[string]interface{})

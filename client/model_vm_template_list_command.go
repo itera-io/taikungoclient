@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the VmTemplateListCommand type satisfies the MappedNullable interface at compile time
@@ -22,24 +20,18 @@ var _ MappedNullable = &VmTemplateListCommand{}
 
 // VmTemplateListCommand struct for VmTemplateListCommand
 type VmTemplateListCommand struct {
-	CloudId NullableInt32 `json:"cloudId"`
-	Url string `json:"url"`
-	TokenId string `json:"tokenId"`
-	TokenSecret string `json:"tokenSecret"`
+	CloudId NullableInt32 `json:"cloudId,omitempty"`
+	Url *string `json:"url,omitempty"`
+	TokenId *string `json:"tokenId,omitempty"`
+	TokenSecret *string `json:"tokenSecret,omitempty"`
 }
-
-type _VmTemplateListCommand VmTemplateListCommand
 
 // NewVmTemplateListCommand instantiates a new VmTemplateListCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVmTemplateListCommand(cloudId NullableInt32, url string, tokenId string, tokenSecret string) *VmTemplateListCommand {
+func NewVmTemplateListCommand() *VmTemplateListCommand {
 	this := VmTemplateListCommand{}
-	this.CloudId = cloudId
-	this.Url = url
-	this.TokenId = tokenId
-	this.TokenSecret = tokenSecret
 	return &this
 }
 
@@ -51,18 +43,16 @@ func NewVmTemplateListCommandWithDefaults() *VmTemplateListCommand {
 	return &this
 }
 
-// GetCloudId returns the CloudId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetCloudId returns the CloudId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VmTemplateListCommand) GetCloudId() int32 {
-	if o == nil || o.CloudId.Get() == nil {
+	if o == nil || IsNil(o.CloudId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.CloudId.Get()
 }
 
-// GetCloudIdOk returns a tuple with the CloudId field value
+// GetCloudIdOk returns a tuple with the CloudId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VmTemplateListCommand) GetCloudIdOk() (*int32, bool) {
@@ -72,81 +62,123 @@ func (o *VmTemplateListCommand) GetCloudIdOk() (*int32, bool) {
 	return o.CloudId.Get(), o.CloudId.IsSet()
 }
 
-// SetCloudId sets field value
+// HasCloudId returns a boolean if a field has been set.
+func (o *VmTemplateListCommand) HasCloudId() bool {
+	if o != nil && o.CloudId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudId gets a reference to the given NullableInt32 and assigns it to the CloudId field.
 func (o *VmTemplateListCommand) SetCloudId(v int32) {
 	o.CloudId.Set(&v)
 }
+// SetCloudIdNil sets the value for CloudId to be an explicit nil
+func (o *VmTemplateListCommand) SetCloudIdNil() {
+	o.CloudId.Set(nil)
+}
 
-// GetUrl returns the Url field value
+// UnsetCloudId ensures that no value is present for CloudId, not even an explicit nil
+func (o *VmTemplateListCommand) UnsetCloudId() {
+	o.CloudId.Unset()
+}
+
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *VmTemplateListCommand) GetUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-
-	return o.Url
+	return *o.Url
 }
 
-// GetUrlOk returns a tuple with the Url field value
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VmTemplateListCommand) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return &o.Url, true
+	return o.Url, true
 }
 
-// SetUrl sets field value
+// HasUrl returns a boolean if a field has been set.
+func (o *VmTemplateListCommand) HasUrl() bool {
+	if o != nil && !IsNil(o.Url) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *VmTemplateListCommand) SetUrl(v string) {
-	o.Url = v
+	o.Url = &v
 }
 
-// GetTokenId returns the TokenId field value
+// GetTokenId returns the TokenId field value if set, zero value otherwise.
 func (o *VmTemplateListCommand) GetTokenId() string {
-	if o == nil {
+	if o == nil || IsNil(o.TokenId) {
 		var ret string
 		return ret
 	}
-
-	return o.TokenId
+	return *o.TokenId
 }
 
-// GetTokenIdOk returns a tuple with the TokenId field value
+// GetTokenIdOk returns a tuple with the TokenId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VmTemplateListCommand) GetTokenIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TokenId) {
 		return nil, false
 	}
-	return &o.TokenId, true
+	return o.TokenId, true
 }
 
-// SetTokenId sets field value
+// HasTokenId returns a boolean if a field has been set.
+func (o *VmTemplateListCommand) HasTokenId() bool {
+	if o != nil && !IsNil(o.TokenId) {
+		return true
+	}
+
+	return false
+}
+
+// SetTokenId gets a reference to the given string and assigns it to the TokenId field.
 func (o *VmTemplateListCommand) SetTokenId(v string) {
-	o.TokenId = v
+	o.TokenId = &v
 }
 
-// GetTokenSecret returns the TokenSecret field value
+// GetTokenSecret returns the TokenSecret field value if set, zero value otherwise.
 func (o *VmTemplateListCommand) GetTokenSecret() string {
-	if o == nil {
+	if o == nil || IsNil(o.TokenSecret) {
 		var ret string
 		return ret
 	}
-
-	return o.TokenSecret
+	return *o.TokenSecret
 }
 
-// GetTokenSecretOk returns a tuple with the TokenSecret field value
+// GetTokenSecretOk returns a tuple with the TokenSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VmTemplateListCommand) GetTokenSecretOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TokenSecret) {
 		return nil, false
 	}
-	return &o.TokenSecret, true
+	return o.TokenSecret, true
 }
 
-// SetTokenSecret sets field value
+// HasTokenSecret returns a boolean if a field has been set.
+func (o *VmTemplateListCommand) HasTokenSecret() bool {
+	if o != nil && !IsNil(o.TokenSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetTokenSecret gets a reference to the given string and assigns it to the TokenSecret field.
 func (o *VmTemplateListCommand) SetTokenSecret(v string) {
-	o.TokenSecret = v
+	o.TokenSecret = &v
 }
 
 func (o VmTemplateListCommand) MarshalJSON() ([]byte, error) {
@@ -159,51 +191,19 @@ func (o VmTemplateListCommand) MarshalJSON() ([]byte, error) {
 
 func (o VmTemplateListCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["cloudId"] = o.CloudId.Get()
-	toSerialize["url"] = o.Url
-	toSerialize["tokenId"] = o.TokenId
-	toSerialize["tokenSecret"] = o.TokenSecret
+	if o.CloudId.IsSet() {
+		toSerialize["cloudId"] = o.CloudId.Get()
+	}
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
+	if !IsNil(o.TokenId) {
+		toSerialize["tokenId"] = o.TokenId
+	}
+	if !IsNil(o.TokenSecret) {
+		toSerialize["tokenSecret"] = o.TokenSecret
+	}
 	return toSerialize, nil
-}
-
-func (o *VmTemplateListCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"cloudId",
-		"url",
-		"tokenId",
-		"tokenSecret",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varVmTemplateListCommand := _VmTemplateListCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVmTemplateListCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = VmTemplateListCommand(varVmTemplateListCommand)
-
-	return err
 }
 
 type NullableVmTemplateListCommand struct {

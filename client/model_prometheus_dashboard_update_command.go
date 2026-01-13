@@ -23,10 +23,10 @@ var _ MappedNullable = &PrometheusDashboardUpdateCommand{}
 // PrometheusDashboardUpdateCommand struct for PrometheusDashboardUpdateCommand
 type PrometheusDashboardUpdateCommand struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
-	Expression string `json:"expression"`
-	Description string `json:"description"`
-	CategoryName string `json:"categoryName"`
+	Name *string `json:"name,omitempty"`
+	Expression *string `json:"expression,omitempty"`
+	Description *string `json:"description,omitempty"`
+	CategoryName *string `json:"categoryName,omitempty"`
 }
 
 type _PrometheusDashboardUpdateCommand PrometheusDashboardUpdateCommand
@@ -35,13 +35,9 @@ type _PrometheusDashboardUpdateCommand PrometheusDashboardUpdateCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrometheusDashboardUpdateCommand(id int32, name string, expression string, description string, categoryName string) *PrometheusDashboardUpdateCommand {
+func NewPrometheusDashboardUpdateCommand(id int32) *PrometheusDashboardUpdateCommand {
 	this := PrometheusDashboardUpdateCommand{}
 	this.Id = id
-	this.Name = name
-	this.Expression = expression
-	this.Description = description
-	this.CategoryName = categoryName
 	return &this
 }
 
@@ -77,100 +73,132 @@ func (o *PrometheusDashboardUpdateCommand) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *PrometheusDashboardUpdateCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrometheusDashboardUpdateCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *PrometheusDashboardUpdateCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *PrometheusDashboardUpdateCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetExpression returns the Expression field value
+// GetExpression returns the Expression field value if set, zero value otherwise.
 func (o *PrometheusDashboardUpdateCommand) GetExpression() string {
-	if o == nil {
+	if o == nil || IsNil(o.Expression) {
 		var ret string
 		return ret
 	}
-
-	return o.Expression
+	return *o.Expression
 }
 
-// GetExpressionOk returns a tuple with the Expression field value
+// GetExpressionOk returns a tuple with the Expression field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrometheusDashboardUpdateCommand) GetExpressionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Expression) {
 		return nil, false
 	}
-	return &o.Expression, true
+	return o.Expression, true
 }
 
-// SetExpression sets field value
+// HasExpression returns a boolean if a field has been set.
+func (o *PrometheusDashboardUpdateCommand) HasExpression() bool {
+	if o != nil && !IsNil(o.Expression) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpression gets a reference to the given string and assigns it to the Expression field.
 func (o *PrometheusDashboardUpdateCommand) SetExpression(v string) {
-	o.Expression = v
+	o.Expression = &v
 }
 
-// GetDescription returns the Description field value
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *PrometheusDashboardUpdateCommand) GetDescription() string {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-
-	return o.Description
+	return *o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrometheusDashboardUpdateCommand) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description, true
 }
 
-// SetDescription sets field value
+// HasDescription returns a boolean if a field has been set.
+func (o *PrometheusDashboardUpdateCommand) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *PrometheusDashboardUpdateCommand) SetDescription(v string) {
-	o.Description = v
+	o.Description = &v
 }
 
-// GetCategoryName returns the CategoryName field value
+// GetCategoryName returns the CategoryName field value if set, zero value otherwise.
 func (o *PrometheusDashboardUpdateCommand) GetCategoryName() string {
-	if o == nil {
+	if o == nil || IsNil(o.CategoryName) {
 		var ret string
 		return ret
 	}
-
-	return o.CategoryName
+	return *o.CategoryName
 }
 
-// GetCategoryNameOk returns a tuple with the CategoryName field value
+// GetCategoryNameOk returns a tuple with the CategoryName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrometheusDashboardUpdateCommand) GetCategoryNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CategoryName) {
 		return nil, false
 	}
-	return &o.CategoryName, true
+	return o.CategoryName, true
 }
 
-// SetCategoryName sets field value
+// HasCategoryName returns a boolean if a field has been set.
+func (o *PrometheusDashboardUpdateCommand) HasCategoryName() bool {
+	if o != nil && !IsNil(o.CategoryName) {
+		return true
+	}
+
+	return false
+}
+
+// SetCategoryName gets a reference to the given string and assigns it to the CategoryName field.
 func (o *PrometheusDashboardUpdateCommand) SetCategoryName(v string) {
-	o.CategoryName = v
+	o.CategoryName = &v
 }
 
 func (o PrometheusDashboardUpdateCommand) MarshalJSON() ([]byte, error) {
@@ -184,10 +212,18 @@ func (o PrometheusDashboardUpdateCommand) MarshalJSON() ([]byte, error) {
 func (o PrometheusDashboardUpdateCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
-	toSerialize["expression"] = o.Expression
-	toSerialize["description"] = o.Description
-	toSerialize["categoryName"] = o.CategoryName
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Expression) {
+		toSerialize["expression"] = o.Expression
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.CategoryName) {
+		toSerialize["categoryName"] = o.CategoryName
+	}
 	return toSerialize, nil
 }
 
@@ -197,10 +233,6 @@ func (o *PrometheusDashboardUpdateCommand) UnmarshalJSON(data []byte) (err error
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
-		"expression",
-		"description",
-		"categoryName",
 	}
 
 	allProperties := make(map[string]interface{})

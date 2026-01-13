@@ -22,7 +22,7 @@ var _ MappedNullable = &ConfirmEmailCommand{}
 
 // ConfirmEmailCommand struct for ConfirmEmailCommand
 type ConfirmEmailCommand struct {
-	NewEmail string `json:"newEmail"`
+	NewEmail *string `json:"newEmail,omitempty"`
 	Mode EmailMode `json:"mode"`
 }
 
@@ -32,9 +32,8 @@ type _ConfirmEmailCommand ConfirmEmailCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConfirmEmailCommand(newEmail string, mode EmailMode) *ConfirmEmailCommand {
+func NewConfirmEmailCommand(mode EmailMode) *ConfirmEmailCommand {
 	this := ConfirmEmailCommand{}
-	this.NewEmail = newEmail
 	this.Mode = mode
 	return &this
 }
@@ -47,28 +46,36 @@ func NewConfirmEmailCommandWithDefaults() *ConfirmEmailCommand {
 	return &this
 }
 
-// GetNewEmail returns the NewEmail field value
+// GetNewEmail returns the NewEmail field value if set, zero value otherwise.
 func (o *ConfirmEmailCommand) GetNewEmail() string {
-	if o == nil {
+	if o == nil || IsNil(o.NewEmail) {
 		var ret string
 		return ret
 	}
-
-	return o.NewEmail
+	return *o.NewEmail
 }
 
-// GetNewEmailOk returns a tuple with the NewEmail field value
+// GetNewEmailOk returns a tuple with the NewEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfirmEmailCommand) GetNewEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.NewEmail) {
 		return nil, false
 	}
-	return &o.NewEmail, true
+	return o.NewEmail, true
 }
 
-// SetNewEmail sets field value
+// HasNewEmail returns a boolean if a field has been set.
+func (o *ConfirmEmailCommand) HasNewEmail() bool {
+	if o != nil && !IsNil(o.NewEmail) {
+		return true
+	}
+
+	return false
+}
+
+// SetNewEmail gets a reference to the given string and assigns it to the NewEmail field.
 func (o *ConfirmEmailCommand) SetNewEmail(v string) {
-	o.NewEmail = v
+	o.NewEmail = &v
 }
 
 // GetMode returns the Mode field value
@@ -105,7 +112,9 @@ func (o ConfirmEmailCommand) MarshalJSON() ([]byte, error) {
 
 func (o ConfirmEmailCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["newEmail"] = o.NewEmail
+	if !IsNil(o.NewEmail) {
+		toSerialize["newEmail"] = o.NewEmail
+	}
 	toSerialize["mode"] = o.Mode
 	return toSerialize, nil
 }
@@ -115,7 +124,6 @@ func (o *ConfirmEmailCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"newEmail",
 		"mode",
 	}
 

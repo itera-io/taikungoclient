@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the OpenTicketCommand type satisfies the MappedNullable interface at compile time
@@ -22,18 +20,15 @@ var _ MappedNullable = &OpenTicketCommand{}
 
 // OpenTicketCommand struct for OpenTicketCommand
 type OpenTicketCommand struct {
-	TicketId string `json:"ticketId"`
+	TicketId *string `json:"ticketId,omitempty"`
 }
-
-type _OpenTicketCommand OpenTicketCommand
 
 // NewOpenTicketCommand instantiates a new OpenTicketCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOpenTicketCommand(ticketId string) *OpenTicketCommand {
+func NewOpenTicketCommand() *OpenTicketCommand {
 	this := OpenTicketCommand{}
-	this.TicketId = ticketId
 	return &this
 }
 
@@ -45,28 +40,36 @@ func NewOpenTicketCommandWithDefaults() *OpenTicketCommand {
 	return &this
 }
 
-// GetTicketId returns the TicketId field value
+// GetTicketId returns the TicketId field value if set, zero value otherwise.
 func (o *OpenTicketCommand) GetTicketId() string {
-	if o == nil {
+	if o == nil || IsNil(o.TicketId) {
 		var ret string
 		return ret
 	}
-
-	return o.TicketId
+	return *o.TicketId
 }
 
-// GetTicketIdOk returns a tuple with the TicketId field value
+// GetTicketIdOk returns a tuple with the TicketId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpenTicketCommand) GetTicketIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TicketId) {
 		return nil, false
 	}
-	return &o.TicketId, true
+	return o.TicketId, true
 }
 
-// SetTicketId sets field value
+// HasTicketId returns a boolean if a field has been set.
+func (o *OpenTicketCommand) HasTicketId() bool {
+	if o != nil && !IsNil(o.TicketId) {
+		return true
+	}
+
+	return false
+}
+
+// SetTicketId gets a reference to the given string and assigns it to the TicketId field.
 func (o *OpenTicketCommand) SetTicketId(v string) {
-	o.TicketId = v
+	o.TicketId = &v
 }
 
 func (o OpenTicketCommand) MarshalJSON() ([]byte, error) {
@@ -79,45 +82,10 @@ func (o OpenTicketCommand) MarshalJSON() ([]byte, error) {
 
 func (o OpenTicketCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["ticketId"] = o.TicketId
+	if !IsNil(o.TicketId) {
+		toSerialize["ticketId"] = o.TicketId
+	}
 	return toSerialize, nil
-}
-
-func (o *OpenTicketCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"ticketId",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varOpenTicketCommand := _OpenTicketCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOpenTicketCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OpenTicketCommand(varOpenTicketCommand)
-
-	return err
 }
 
 type NullableOpenTicketCommand struct {

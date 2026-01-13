@@ -22,10 +22,10 @@ var _ MappedNullable = &StandAloneVmDiskDto{}
 
 // StandAloneVmDiskDto struct for StandAloneVmDiskDto
 type StandAloneVmDiskDto struct {
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	Size int64 `json:"size"`
-	VolumeType string `json:"volumeType"`
-	DeviceName string `json:"deviceName"`
+	VolumeType *string `json:"volumeType,omitempty"`
+	DeviceName *string `json:"deviceName,omitempty"`
 	LunId NullableInt32 `json:"lunId,omitempty"`
 }
 
@@ -35,12 +35,9 @@ type _StandAloneVmDiskDto StandAloneVmDiskDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStandAloneVmDiskDto(name string, size int64, volumeType string, deviceName string) *StandAloneVmDiskDto {
+func NewStandAloneVmDiskDto(size int64) *StandAloneVmDiskDto {
 	this := StandAloneVmDiskDto{}
-	this.Name = name
 	this.Size = size
-	this.VolumeType = volumeType
-	this.DeviceName = deviceName
 	return &this
 }
 
@@ -52,28 +49,36 @@ func NewStandAloneVmDiskDtoWithDefaults() *StandAloneVmDiskDto {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *StandAloneVmDiskDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StandAloneVmDiskDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *StandAloneVmDiskDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *StandAloneVmDiskDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetSize returns the Size field value
@@ -100,52 +105,68 @@ func (o *StandAloneVmDiskDto) SetSize(v int64) {
 	o.Size = v
 }
 
-// GetVolumeType returns the VolumeType field value
+// GetVolumeType returns the VolumeType field value if set, zero value otherwise.
 func (o *StandAloneVmDiskDto) GetVolumeType() string {
-	if o == nil {
+	if o == nil || IsNil(o.VolumeType) {
 		var ret string
 		return ret
 	}
-
-	return o.VolumeType
+	return *o.VolumeType
 }
 
-// GetVolumeTypeOk returns a tuple with the VolumeType field value
+// GetVolumeTypeOk returns a tuple with the VolumeType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StandAloneVmDiskDto) GetVolumeTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VolumeType) {
 		return nil, false
 	}
-	return &o.VolumeType, true
+	return o.VolumeType, true
 }
 
-// SetVolumeType sets field value
+// HasVolumeType returns a boolean if a field has been set.
+func (o *StandAloneVmDiskDto) HasVolumeType() bool {
+	if o != nil && !IsNil(o.VolumeType) {
+		return true
+	}
+
+	return false
+}
+
+// SetVolumeType gets a reference to the given string and assigns it to the VolumeType field.
 func (o *StandAloneVmDiskDto) SetVolumeType(v string) {
-	o.VolumeType = v
+	o.VolumeType = &v
 }
 
-// GetDeviceName returns the DeviceName field value
+// GetDeviceName returns the DeviceName field value if set, zero value otherwise.
 func (o *StandAloneVmDiskDto) GetDeviceName() string {
-	if o == nil {
+	if o == nil || IsNil(o.DeviceName) {
 		var ret string
 		return ret
 	}
-
-	return o.DeviceName
+	return *o.DeviceName
 }
 
-// GetDeviceNameOk returns a tuple with the DeviceName field value
+// GetDeviceNameOk returns a tuple with the DeviceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StandAloneVmDiskDto) GetDeviceNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DeviceName) {
 		return nil, false
 	}
-	return &o.DeviceName, true
+	return o.DeviceName, true
 }
 
-// SetDeviceName sets field value
+// HasDeviceName returns a boolean if a field has been set.
+func (o *StandAloneVmDiskDto) HasDeviceName() bool {
+	if o != nil && !IsNil(o.DeviceName) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeviceName gets a reference to the given string and assigns it to the DeviceName field.
 func (o *StandAloneVmDiskDto) SetDeviceName(v string) {
-	o.DeviceName = v
+	o.DeviceName = &v
 }
 
 // GetLunId returns the LunId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -200,10 +221,16 @@ func (o StandAloneVmDiskDto) MarshalJSON() ([]byte, error) {
 
 func (o StandAloneVmDiskDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	toSerialize["size"] = o.Size
-	toSerialize["volumeType"] = o.VolumeType
-	toSerialize["deviceName"] = o.DeviceName
+	if !IsNil(o.VolumeType) {
+		toSerialize["volumeType"] = o.VolumeType
+	}
+	if !IsNil(o.DeviceName) {
+		toSerialize["deviceName"] = o.DeviceName
+	}
 	if o.LunId.IsSet() {
 		toSerialize["lunId"] = o.LunId.Get()
 	}
@@ -215,10 +242,7 @@ func (o *StandAloneVmDiskDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
 		"size",
-		"volumeType",
-		"deviceName",
 	}
 
 	allProperties := make(map[string]interface{})

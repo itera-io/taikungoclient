@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the Stream type satisfies the MappedNullable interface at compile time
@@ -22,36 +20,24 @@ var _ MappedNullable = &Stream{}
 
 // Stream struct for Stream
 type Stream struct {
-	Job string `json:"job"`
-	Namespace string `json:"namespace"`
-	Pod string `json:"pod"`
-	PodTemplateHash string `json:"podTemplateHash"`
-	StreamStream string `json:"streamStream"`
-	App string `json:"app"`
-	Container string `json:"container"`
-	Filename string `json:"filename"`
-	Tier string `json:"tier"`
-	Component string `json:"component"`
+	Job *string `json:"job,omitempty"`
+	Namespace *string `json:"namespace,omitempty"`
+	Pod *string `json:"pod,omitempty"`
+	PodTemplateHash *string `json:"podTemplateHash,omitempty"`
+	StreamStream *string `json:"streamStream,omitempty"`
+	App *string `json:"app,omitempty"`
+	Container *string `json:"container,omitempty"`
+	Filename *string `json:"filename,omitempty"`
+	Tier *string `json:"tier,omitempty"`
+	Component *string `json:"component,omitempty"`
 }
-
-type _Stream Stream
 
 // NewStream instantiates a new Stream object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStream(job string, namespace string, pod string, podTemplateHash string, streamStream string, app string, container string, filename string, tier string, component string) *Stream {
+func NewStream() *Stream {
 	this := Stream{}
-	this.Job = job
-	this.Namespace = namespace
-	this.Pod = pod
-	this.PodTemplateHash = podTemplateHash
-	this.StreamStream = streamStream
-	this.App = app
-	this.Container = container
-	this.Filename = filename
-	this.Tier = tier
-	this.Component = component
 	return &this
 }
 
@@ -63,244 +49,324 @@ func NewStreamWithDefaults() *Stream {
 	return &this
 }
 
-// GetJob returns the Job field value
+// GetJob returns the Job field value if set, zero value otherwise.
 func (o *Stream) GetJob() string {
-	if o == nil {
+	if o == nil || IsNil(o.Job) {
 		var ret string
 		return ret
 	}
-
-	return o.Job
+	return *o.Job
 }
 
-// GetJobOk returns a tuple with the Job field value
+// GetJobOk returns a tuple with the Job field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Stream) GetJobOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Job) {
 		return nil, false
 	}
-	return &o.Job, true
+	return o.Job, true
 }
 
-// SetJob sets field value
+// HasJob returns a boolean if a field has been set.
+func (o *Stream) HasJob() bool {
+	if o != nil && !IsNil(o.Job) {
+		return true
+	}
+
+	return false
+}
+
+// SetJob gets a reference to the given string and assigns it to the Job field.
 func (o *Stream) SetJob(v string) {
-	o.Job = v
+	o.Job = &v
 }
 
-// GetNamespace returns the Namespace field value
+// GetNamespace returns the Namespace field value if set, zero value otherwise.
 func (o *Stream) GetNamespace() string {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		var ret string
 		return ret
 	}
-
-	return o.Namespace
+	return *o.Namespace
 }
 
-// GetNamespaceOk returns a tuple with the Namespace field value
+// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Stream) GetNamespaceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		return nil, false
 	}
-	return &o.Namespace, true
+	return o.Namespace, true
 }
 
-// SetNamespace sets field value
+// HasNamespace returns a boolean if a field has been set.
+func (o *Stream) HasNamespace() bool {
+	if o != nil && !IsNil(o.Namespace) {
+		return true
+	}
+
+	return false
+}
+
+// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *Stream) SetNamespace(v string) {
-	o.Namespace = v
+	o.Namespace = &v
 }
 
-// GetPod returns the Pod field value
+// GetPod returns the Pod field value if set, zero value otherwise.
 func (o *Stream) GetPod() string {
-	if o == nil {
+	if o == nil || IsNil(o.Pod) {
 		var ret string
 		return ret
 	}
-
-	return o.Pod
+	return *o.Pod
 }
 
-// GetPodOk returns a tuple with the Pod field value
+// GetPodOk returns a tuple with the Pod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Stream) GetPodOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Pod) {
 		return nil, false
 	}
-	return &o.Pod, true
+	return o.Pod, true
 }
 
-// SetPod sets field value
+// HasPod returns a boolean if a field has been set.
+func (o *Stream) HasPod() bool {
+	if o != nil && !IsNil(o.Pod) {
+		return true
+	}
+
+	return false
+}
+
+// SetPod gets a reference to the given string and assigns it to the Pod field.
 func (o *Stream) SetPod(v string) {
-	o.Pod = v
+	o.Pod = &v
 }
 
-// GetPodTemplateHash returns the PodTemplateHash field value
+// GetPodTemplateHash returns the PodTemplateHash field value if set, zero value otherwise.
 func (o *Stream) GetPodTemplateHash() string {
-	if o == nil {
+	if o == nil || IsNil(o.PodTemplateHash) {
 		var ret string
 		return ret
 	}
-
-	return o.PodTemplateHash
+	return *o.PodTemplateHash
 }
 
-// GetPodTemplateHashOk returns a tuple with the PodTemplateHash field value
+// GetPodTemplateHashOk returns a tuple with the PodTemplateHash field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Stream) GetPodTemplateHashOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PodTemplateHash) {
 		return nil, false
 	}
-	return &o.PodTemplateHash, true
+	return o.PodTemplateHash, true
 }
 
-// SetPodTemplateHash sets field value
+// HasPodTemplateHash returns a boolean if a field has been set.
+func (o *Stream) HasPodTemplateHash() bool {
+	if o != nil && !IsNil(o.PodTemplateHash) {
+		return true
+	}
+
+	return false
+}
+
+// SetPodTemplateHash gets a reference to the given string and assigns it to the PodTemplateHash field.
 func (o *Stream) SetPodTemplateHash(v string) {
-	o.PodTemplateHash = v
+	o.PodTemplateHash = &v
 }
 
-// GetStreamStream returns the StreamStream field value
+// GetStreamStream returns the StreamStream field value if set, zero value otherwise.
 func (o *Stream) GetStreamStream() string {
-	if o == nil {
+	if o == nil || IsNil(o.StreamStream) {
 		var ret string
 		return ret
 	}
-
-	return o.StreamStream
+	return *o.StreamStream
 }
 
-// GetStreamStreamOk returns a tuple with the StreamStream field value
+// GetStreamStreamOk returns a tuple with the StreamStream field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Stream) GetStreamStreamOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.StreamStream) {
 		return nil, false
 	}
-	return &o.StreamStream, true
+	return o.StreamStream, true
 }
 
-// SetStreamStream sets field value
+// HasStreamStream returns a boolean if a field has been set.
+func (o *Stream) HasStreamStream() bool {
+	if o != nil && !IsNil(o.StreamStream) {
+		return true
+	}
+
+	return false
+}
+
+// SetStreamStream gets a reference to the given string and assigns it to the StreamStream field.
 func (o *Stream) SetStreamStream(v string) {
-	o.StreamStream = v
+	o.StreamStream = &v
 }
 
-// GetApp returns the App field value
+// GetApp returns the App field value if set, zero value otherwise.
 func (o *Stream) GetApp() string {
-	if o == nil {
+	if o == nil || IsNil(o.App) {
 		var ret string
 		return ret
 	}
-
-	return o.App
+	return *o.App
 }
 
-// GetAppOk returns a tuple with the App field value
+// GetAppOk returns a tuple with the App field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Stream) GetAppOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.App) {
 		return nil, false
 	}
-	return &o.App, true
+	return o.App, true
 }
 
-// SetApp sets field value
+// HasApp returns a boolean if a field has been set.
+func (o *Stream) HasApp() bool {
+	if o != nil && !IsNil(o.App) {
+		return true
+	}
+
+	return false
+}
+
+// SetApp gets a reference to the given string and assigns it to the App field.
 func (o *Stream) SetApp(v string) {
-	o.App = v
+	o.App = &v
 }
 
-// GetContainer returns the Container field value
+// GetContainer returns the Container field value if set, zero value otherwise.
 func (o *Stream) GetContainer() string {
-	if o == nil {
+	if o == nil || IsNil(o.Container) {
 		var ret string
 		return ret
 	}
-
-	return o.Container
+	return *o.Container
 }
 
-// GetContainerOk returns a tuple with the Container field value
+// GetContainerOk returns a tuple with the Container field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Stream) GetContainerOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Container) {
 		return nil, false
 	}
-	return &o.Container, true
+	return o.Container, true
 }
 
-// SetContainer sets field value
+// HasContainer returns a boolean if a field has been set.
+func (o *Stream) HasContainer() bool {
+	if o != nil && !IsNil(o.Container) {
+		return true
+	}
+
+	return false
+}
+
+// SetContainer gets a reference to the given string and assigns it to the Container field.
 func (o *Stream) SetContainer(v string) {
-	o.Container = v
+	o.Container = &v
 }
 
-// GetFilename returns the Filename field value
+// GetFilename returns the Filename field value if set, zero value otherwise.
 func (o *Stream) GetFilename() string {
-	if o == nil {
+	if o == nil || IsNil(o.Filename) {
 		var ret string
 		return ret
 	}
-
-	return o.Filename
+	return *o.Filename
 }
 
-// GetFilenameOk returns a tuple with the Filename field value
+// GetFilenameOk returns a tuple with the Filename field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Stream) GetFilenameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Filename) {
 		return nil, false
 	}
-	return &o.Filename, true
+	return o.Filename, true
 }
 
-// SetFilename sets field value
+// HasFilename returns a boolean if a field has been set.
+func (o *Stream) HasFilename() bool {
+	if o != nil && !IsNil(o.Filename) {
+		return true
+	}
+
+	return false
+}
+
+// SetFilename gets a reference to the given string and assigns it to the Filename field.
 func (o *Stream) SetFilename(v string) {
-	o.Filename = v
+	o.Filename = &v
 }
 
-// GetTier returns the Tier field value
+// GetTier returns the Tier field value if set, zero value otherwise.
 func (o *Stream) GetTier() string {
-	if o == nil {
+	if o == nil || IsNil(o.Tier) {
 		var ret string
 		return ret
 	}
-
-	return o.Tier
+	return *o.Tier
 }
 
-// GetTierOk returns a tuple with the Tier field value
+// GetTierOk returns a tuple with the Tier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Stream) GetTierOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Tier) {
 		return nil, false
 	}
-	return &o.Tier, true
+	return o.Tier, true
 }
 
-// SetTier sets field value
+// HasTier returns a boolean if a field has been set.
+func (o *Stream) HasTier() bool {
+	if o != nil && !IsNil(o.Tier) {
+		return true
+	}
+
+	return false
+}
+
+// SetTier gets a reference to the given string and assigns it to the Tier field.
 func (o *Stream) SetTier(v string) {
-	o.Tier = v
+	o.Tier = &v
 }
 
-// GetComponent returns the Component field value
+// GetComponent returns the Component field value if set, zero value otherwise.
 func (o *Stream) GetComponent() string {
-	if o == nil {
+	if o == nil || IsNil(o.Component) {
 		var ret string
 		return ret
 	}
-
-	return o.Component
+	return *o.Component
 }
 
-// GetComponentOk returns a tuple with the Component field value
+// GetComponentOk returns a tuple with the Component field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Stream) GetComponentOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Component) {
 		return nil, false
 	}
-	return &o.Component, true
+	return o.Component, true
 }
 
-// SetComponent sets field value
+// HasComponent returns a boolean if a field has been set.
+func (o *Stream) HasComponent() bool {
+	if o != nil && !IsNil(o.Component) {
+		return true
+	}
+
+	return false
+}
+
+// SetComponent gets a reference to the given string and assigns it to the Component field.
 func (o *Stream) SetComponent(v string) {
-	o.Component = v
+	o.Component = &v
 }
 
 func (o Stream) MarshalJSON() ([]byte, error) {
@@ -313,63 +379,37 @@ func (o Stream) MarshalJSON() ([]byte, error) {
 
 func (o Stream) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["job"] = o.Job
-	toSerialize["namespace"] = o.Namespace
-	toSerialize["pod"] = o.Pod
-	toSerialize["podTemplateHash"] = o.PodTemplateHash
-	toSerialize["streamStream"] = o.StreamStream
-	toSerialize["app"] = o.App
-	toSerialize["container"] = o.Container
-	toSerialize["filename"] = o.Filename
-	toSerialize["tier"] = o.Tier
-	toSerialize["component"] = o.Component
+	if !IsNil(o.Job) {
+		toSerialize["job"] = o.Job
+	}
+	if !IsNil(o.Namespace) {
+		toSerialize["namespace"] = o.Namespace
+	}
+	if !IsNil(o.Pod) {
+		toSerialize["pod"] = o.Pod
+	}
+	if !IsNil(o.PodTemplateHash) {
+		toSerialize["podTemplateHash"] = o.PodTemplateHash
+	}
+	if !IsNil(o.StreamStream) {
+		toSerialize["streamStream"] = o.StreamStream
+	}
+	if !IsNil(o.App) {
+		toSerialize["app"] = o.App
+	}
+	if !IsNil(o.Container) {
+		toSerialize["container"] = o.Container
+	}
+	if !IsNil(o.Filename) {
+		toSerialize["filename"] = o.Filename
+	}
+	if !IsNil(o.Tier) {
+		toSerialize["tier"] = o.Tier
+	}
+	if !IsNil(o.Component) {
+		toSerialize["component"] = o.Component
+	}
 	return toSerialize, nil
-}
-
-func (o *Stream) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"job",
-		"namespace",
-		"pod",
-		"podTemplateHash",
-		"streamStream",
-		"app",
-		"container",
-		"filename",
-		"tier",
-		"component",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varStream := _Stream{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStream)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Stream(varStream)
-
-	return err
 }
 
 type NullableStream struct {

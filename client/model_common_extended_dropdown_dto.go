@@ -23,7 +23,7 @@ var _ MappedNullable = &CommonExtendedDropdownDto{}
 // CommonExtendedDropdownDto struct for CommonExtendedDropdownDto
 type CommonExtendedDropdownDto struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	IsDefault bool `json:"isDefault"`
 }
 
@@ -33,10 +33,9 @@ type _CommonExtendedDropdownDto CommonExtendedDropdownDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCommonExtendedDropdownDto(id int32, name string, isDefault bool) *CommonExtendedDropdownDto {
+func NewCommonExtendedDropdownDto(id int32, isDefault bool) *CommonExtendedDropdownDto {
 	this := CommonExtendedDropdownDto{}
 	this.Id = id
-	this.Name = name
 	this.IsDefault = isDefault
 	return &this
 }
@@ -73,28 +72,36 @@ func (o *CommonExtendedDropdownDto) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CommonExtendedDropdownDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommonExtendedDropdownDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CommonExtendedDropdownDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CommonExtendedDropdownDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetIsDefault returns the IsDefault field value
@@ -132,7 +139,9 @@ func (o CommonExtendedDropdownDto) MarshalJSON() ([]byte, error) {
 func (o CommonExtendedDropdownDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	toSerialize["isDefault"] = o.IsDefault
 	return toSerialize, nil
 }
@@ -143,7 +152,6 @@ func (o *CommonExtendedDropdownDto) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
 		"isDefault",
 	}
 

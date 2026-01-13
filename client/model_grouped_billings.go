@@ -22,7 +22,7 @@ var _ MappedNullable = &GroupedBillings{}
 
 // GroupedBillings struct for GroupedBillings
 type GroupedBillings struct {
-	StartDate string `json:"startDate"`
+	StartDate *string `json:"startDate,omitempty"`
 	Tcu int64 `json:"tcu"`
 }
 
@@ -32,9 +32,8 @@ type _GroupedBillings GroupedBillings
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroupedBillings(startDate string, tcu int64) *GroupedBillings {
+func NewGroupedBillings(tcu int64) *GroupedBillings {
 	this := GroupedBillings{}
-	this.StartDate = startDate
 	this.Tcu = tcu
 	return &this
 }
@@ -47,28 +46,36 @@ func NewGroupedBillingsWithDefaults() *GroupedBillings {
 	return &this
 }
 
-// GetStartDate returns the StartDate field value
+// GetStartDate returns the StartDate field value if set, zero value otherwise.
 func (o *GroupedBillings) GetStartDate() string {
-	if o == nil {
+	if o == nil || IsNil(o.StartDate) {
 		var ret string
 		return ret
 	}
-
-	return o.StartDate
+	return *o.StartDate
 }
 
-// GetStartDateOk returns a tuple with the StartDate field value
+// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupedBillings) GetStartDateOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.StartDate) {
 		return nil, false
 	}
-	return &o.StartDate, true
+	return o.StartDate, true
 }
 
-// SetStartDate sets field value
+// HasStartDate returns a boolean if a field has been set.
+func (o *GroupedBillings) HasStartDate() bool {
+	if o != nil && !IsNil(o.StartDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetStartDate gets a reference to the given string and assigns it to the StartDate field.
 func (o *GroupedBillings) SetStartDate(v string) {
-	o.StartDate = v
+	o.StartDate = &v
 }
 
 // GetTcu returns the Tcu field value
@@ -105,7 +112,9 @@ func (o GroupedBillings) MarshalJSON() ([]byte, error) {
 
 func (o GroupedBillings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["startDate"] = o.StartDate
+	if !IsNil(o.StartDate) {
+		toSerialize["startDate"] = o.StartDate
+	}
 	toSerialize["tcu"] = o.Tcu
 	return toSerialize, nil
 }
@@ -115,7 +124,6 @@ func (o *GroupedBillings) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"startDate",
 		"tcu",
 	}
 

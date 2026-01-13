@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the KubernetesInteractiveShellDto type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &KubernetesInteractiveShellDto{}
 
 // KubernetesInteractiveShellDto struct for KubernetesInteractiveShellDto
 type KubernetesInteractiveShellDto struct {
-	KubeConfig string `json:"kubeConfig"`
-	PodName string `json:"podName"`
+	KubeConfig *string `json:"kubeConfig,omitempty"`
+	PodName *string `json:"podName,omitempty"`
 }
-
-type _KubernetesInteractiveShellDto KubernetesInteractiveShellDto
 
 // NewKubernetesInteractiveShellDto instantiates a new KubernetesInteractiveShellDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubernetesInteractiveShellDto(kubeConfig string, podName string) *KubernetesInteractiveShellDto {
+func NewKubernetesInteractiveShellDto() *KubernetesInteractiveShellDto {
 	this := KubernetesInteractiveShellDto{}
-	this.KubeConfig = kubeConfig
-	this.PodName = podName
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewKubernetesInteractiveShellDtoWithDefaults() *KubernetesInteractiveShellD
 	return &this
 }
 
-// GetKubeConfig returns the KubeConfig field value
+// GetKubeConfig returns the KubeConfig field value if set, zero value otherwise.
 func (o *KubernetesInteractiveShellDto) GetKubeConfig() string {
-	if o == nil {
+	if o == nil || IsNil(o.KubeConfig) {
 		var ret string
 		return ret
 	}
-
-	return o.KubeConfig
+	return *o.KubeConfig
 }
 
-// GetKubeConfigOk returns a tuple with the KubeConfig field value
+// GetKubeConfigOk returns a tuple with the KubeConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KubernetesInteractiveShellDto) GetKubeConfigOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.KubeConfig) {
 		return nil, false
 	}
-	return &o.KubeConfig, true
+	return o.KubeConfig, true
 }
 
-// SetKubeConfig sets field value
+// HasKubeConfig returns a boolean if a field has been set.
+func (o *KubernetesInteractiveShellDto) HasKubeConfig() bool {
+	if o != nil && !IsNil(o.KubeConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetKubeConfig gets a reference to the given string and assigns it to the KubeConfig field.
 func (o *KubernetesInteractiveShellDto) SetKubeConfig(v string) {
-	o.KubeConfig = v
+	o.KubeConfig = &v
 }
 
-// GetPodName returns the PodName field value
+// GetPodName returns the PodName field value if set, zero value otherwise.
 func (o *KubernetesInteractiveShellDto) GetPodName() string {
-	if o == nil {
+	if o == nil || IsNil(o.PodName) {
 		var ret string
 		return ret
 	}
-
-	return o.PodName
+	return *o.PodName
 }
 
-// GetPodNameOk returns a tuple with the PodName field value
+// GetPodNameOk returns a tuple with the PodName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KubernetesInteractiveShellDto) GetPodNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PodName) {
 		return nil, false
 	}
-	return &o.PodName, true
+	return o.PodName, true
 }
 
-// SetPodName sets field value
+// HasPodName returns a boolean if a field has been set.
+func (o *KubernetesInteractiveShellDto) HasPodName() bool {
+	if o != nil && !IsNil(o.PodName) {
+		return true
+	}
+
+	return false
+}
+
+// SetPodName gets a reference to the given string and assigns it to the PodName field.
 func (o *KubernetesInteractiveShellDto) SetPodName(v string) {
-	o.PodName = v
+	o.PodName = &v
 }
 
 func (o KubernetesInteractiveShellDto) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o KubernetesInteractiveShellDto) MarshalJSON() ([]byte, error) {
 
 func (o KubernetesInteractiveShellDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["kubeConfig"] = o.KubeConfig
-	toSerialize["podName"] = o.PodName
+	if !IsNil(o.KubeConfig) {
+		toSerialize["kubeConfig"] = o.KubeConfig
+	}
+	if !IsNil(o.PodName) {
+		toSerialize["podName"] = o.PodName
+	}
 	return toSerialize, nil
-}
-
-func (o *KubernetesInteractiveShellDto) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"kubeConfig",
-		"podName",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varKubernetesInteractiveShellDto := _KubernetesInteractiveShellDto{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKubernetesInteractiveShellDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = KubernetesInteractiveShellDto(varKubernetesInteractiveShellDto)
-
-	return err
 }
 
 type NullableKubernetesInteractiveShellDto struct {

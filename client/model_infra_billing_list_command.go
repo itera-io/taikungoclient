@@ -22,7 +22,7 @@ var _ MappedNullable = &InfraBillingListCommand{}
 
 // InfraBillingListCommand struct for InfraBillingListCommand
 type InfraBillingListCommand struct {
-	OrganizationId NullableInt32 `json:"organizationId"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	Filter DateFilter `json:"filter"`
 }
 
@@ -32,9 +32,8 @@ type _InfraBillingListCommand InfraBillingListCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInfraBillingListCommand(organizationId NullableInt32, filter DateFilter) *InfraBillingListCommand {
+func NewInfraBillingListCommand(filter DateFilter) *InfraBillingListCommand {
 	this := InfraBillingListCommand{}
-	this.OrganizationId = organizationId
 	this.Filter = filter
 	return &this
 }
@@ -47,18 +46,16 @@ func NewInfraBillingListCommandWithDefaults() *InfraBillingListCommand {
 	return &this
 }
 
-// GetOrganizationId returns the OrganizationId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InfraBillingListCommand) GetOrganizationId() int32 {
-	if o == nil || o.OrganizationId.Get() == nil {
+	if o == nil || IsNil(o.OrganizationId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.OrganizationId.Get()
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InfraBillingListCommand) GetOrganizationIdOk() (*int32, bool) {
@@ -68,9 +65,27 @@ func (o *InfraBillingListCommand) GetOrganizationIdOk() (*int32, bool) {
 	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
 }
 
-// SetOrganizationId sets field value
+// HasOrganizationId returns a boolean if a field has been set.
+func (o *InfraBillingListCommand) HasOrganizationId() bool {
+	if o != nil && o.OrganizationId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
 func (o *InfraBillingListCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
+}
+// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
+func (o *InfraBillingListCommand) SetOrganizationIdNil() {
+	o.OrganizationId.Set(nil)
+}
+
+// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
+func (o *InfraBillingListCommand) UnsetOrganizationId() {
+	o.OrganizationId.Unset()
 }
 
 // GetFilter returns the Filter field value
@@ -107,7 +122,9 @@ func (o InfraBillingListCommand) MarshalJSON() ([]byte, error) {
 
 func (o InfraBillingListCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["organizationId"] = o.OrganizationId.Get()
+	if o.OrganizationId.IsSet() {
+		toSerialize["organizationId"] = o.OrganizationId.Get()
+	}
 	toSerialize["filter"] = o.Filter
 	return toSerialize, nil
 }
@@ -117,7 +134,6 @@ func (o *InfraBillingListCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"organizationId",
 		"filter",
 	}
 

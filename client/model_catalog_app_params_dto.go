@@ -22,8 +22,8 @@ var _ MappedNullable = &CatalogAppParamsDto{}
 
 // CatalogAppParamsDto struct for CatalogAppParamsDto
 type CatalogAppParamsDto struct {
-	Key string `json:"key"`
-	Value string `json:"value"`
+	Key *string `json:"key,omitempty"`
+	Value *string `json:"value,omitempty"`
 	IsEditableWhenInstalling bool `json:"isEditableWhenInstalling"`
 	IsEditableAfterInstallation bool `json:"isEditableAfterInstallation"`
 	IsMandatory bool `json:"isMandatory"`
@@ -35,10 +35,8 @@ type _CatalogAppParamsDto CatalogAppParamsDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogAppParamsDto(key string, value string, isEditableWhenInstalling bool, isEditableAfterInstallation bool, isMandatory bool) *CatalogAppParamsDto {
+func NewCatalogAppParamsDto(isEditableWhenInstalling bool, isEditableAfterInstallation bool, isMandatory bool) *CatalogAppParamsDto {
 	this := CatalogAppParamsDto{}
-	this.Key = key
-	this.Value = value
 	this.IsEditableWhenInstalling = isEditableWhenInstalling
 	this.IsEditableAfterInstallation = isEditableAfterInstallation
 	this.IsMandatory = isMandatory
@@ -53,52 +51,68 @@ func NewCatalogAppParamsDtoWithDefaults() *CatalogAppParamsDto {
 	return &this
 }
 
-// GetKey returns the Key field value
+// GetKey returns the Key field value if set, zero value otherwise.
 func (o *CatalogAppParamsDto) GetKey() string {
-	if o == nil {
+	if o == nil || IsNil(o.Key) {
 		var ret string
 		return ret
 	}
-
-	return o.Key
+	return *o.Key
 }
 
-// GetKeyOk returns a tuple with the Key field value
+// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CatalogAppParamsDto) GetKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
-	return &o.Key, true
+	return o.Key, true
 }
 
-// SetKey sets field value
+// HasKey returns a boolean if a field has been set.
+func (o *CatalogAppParamsDto) HasKey() bool {
+	if o != nil && !IsNil(o.Key) {
+		return true
+	}
+
+	return false
+}
+
+// SetKey gets a reference to the given string and assigns it to the Key field.
 func (o *CatalogAppParamsDto) SetKey(v string) {
-	o.Key = v
+	o.Key = &v
 }
 
-// GetValue returns the Value field value
+// GetValue returns the Value field value if set, zero value otherwise.
 func (o *CatalogAppParamsDto) GetValue() string {
-	if o == nil {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
-
-	return o.Value
+	return *o.Value
 }
 
-// GetValueOk returns a tuple with the Value field value
+// GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CatalogAppParamsDto) GetValueOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
-	return &o.Value, true
+	return o.Value, true
 }
 
-// SetValue sets field value
+// HasValue returns a boolean if a field has been set.
+func (o *CatalogAppParamsDto) HasValue() bool {
+	if o != nil && !IsNil(o.Value) {
+		return true
+	}
+
+	return false
+}
+
+// SetValue gets a reference to the given string and assigns it to the Value field.
 func (o *CatalogAppParamsDto) SetValue(v string) {
-	o.Value = v
+	o.Value = &v
 }
 
 // GetIsEditableWhenInstalling returns the IsEditableWhenInstalling field value
@@ -183,8 +197,12 @@ func (o CatalogAppParamsDto) MarshalJSON() ([]byte, error) {
 
 func (o CatalogAppParamsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["key"] = o.Key
-	toSerialize["value"] = o.Value
+	if !IsNil(o.Key) {
+		toSerialize["key"] = o.Key
+	}
+	if !IsNil(o.Value) {
+		toSerialize["value"] = o.Value
+	}
 	toSerialize["isEditableWhenInstalling"] = o.IsEditableWhenInstalling
 	toSerialize["isEditableAfterInstallation"] = o.IsEditableAfterInstallation
 	toSerialize["isMandatory"] = o.IsMandatory
@@ -196,8 +214,6 @@ func (o *CatalogAppParamsDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"key",
-		"value",
 		"isEditableWhenInstalling",
 		"isEditableAfterInstallation",
 		"isMandatory",

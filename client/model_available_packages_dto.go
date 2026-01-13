@@ -22,23 +22,23 @@ var _ MappedNullable = &AvailablePackagesDto{}
 
 // AvailablePackagesDto struct for AvailablePackagesDto
 type AvailablePackagesDto struct {
-	PackageId string `json:"packageId"`
+	PackageId *string `json:"packageId,omitempty"`
 	CatalogId int32 `json:"catalogId"`
 	CatalogAppId NullableInt32 `json:"catalogAppId,omitempty"`
 	InstalledInstanceCount NullableInt32 `json:"installedInstanceCount,omitempty"`
-	Name string `json:"name"`
-	NormalizedName string `json:"normalizedName"`
-	LogoImageId string `json:"logoImageId"`
+	Name *string `json:"name,omitempty"`
+	NormalizedName *string `json:"normalizedName,omitempty"`
+	LogoImageId *string `json:"logoImageId,omitempty"`
 	Stars int64 `json:"stars"`
-	Description string `json:"description"`
-	Version string `json:"version"`
-	AppVersion string `json:"appVersion"`
+	Description *string `json:"description,omitempty"`
+	Version *string `json:"version,omitempty"`
+	AppVersion *string `json:"appVersion,omitempty"`
 	Deprecated bool `json:"deprecated"`
 	Signed bool `json:"signed"`
 	IsLocked bool `json:"isLocked"`
-	SecurityReportSummary SecurityReportSummary `json:"securityReportSummary"`
-	Ts string `json:"ts"`
-	Repository Repository `json:"repository"`
+	SecurityReportSummary *SecurityReportSummary `json:"securityReportSummary,omitempty"`
+	Ts *string `json:"ts,omitempty"`
+	Repository *Repository `json:"repository,omitempty"`
 	IsAdded NullableBool `json:"isAdded,omitempty"`
 }
 
@@ -48,23 +48,13 @@ type _AvailablePackagesDto AvailablePackagesDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAvailablePackagesDto(packageId string, catalogId int32, name string, normalizedName string, logoImageId string, stars int64, description string, version string, appVersion string, deprecated bool, signed bool, isLocked bool, securityReportSummary SecurityReportSummary, ts string, repository Repository) *AvailablePackagesDto {
+func NewAvailablePackagesDto(catalogId int32, stars int64, deprecated bool, signed bool, isLocked bool) *AvailablePackagesDto {
 	this := AvailablePackagesDto{}
-	this.PackageId = packageId
 	this.CatalogId = catalogId
-	this.Name = name
-	this.NormalizedName = normalizedName
-	this.LogoImageId = logoImageId
 	this.Stars = stars
-	this.Description = description
-	this.Version = version
-	this.AppVersion = appVersion
 	this.Deprecated = deprecated
 	this.Signed = signed
 	this.IsLocked = isLocked
-	this.SecurityReportSummary = securityReportSummary
-	this.Ts = ts
-	this.Repository = repository
 	return &this
 }
 
@@ -76,28 +66,36 @@ func NewAvailablePackagesDtoWithDefaults() *AvailablePackagesDto {
 	return &this
 }
 
-// GetPackageId returns the PackageId field value
+// GetPackageId returns the PackageId field value if set, zero value otherwise.
 func (o *AvailablePackagesDto) GetPackageId() string {
-	if o == nil {
+	if o == nil || IsNil(o.PackageId) {
 		var ret string
 		return ret
 	}
-
-	return o.PackageId
+	return *o.PackageId
 }
 
-// GetPackageIdOk returns a tuple with the PackageId field value
+// GetPackageIdOk returns a tuple with the PackageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AvailablePackagesDto) GetPackageIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PackageId) {
 		return nil, false
 	}
-	return &o.PackageId, true
+	return o.PackageId, true
 }
 
-// SetPackageId sets field value
+// HasPackageId returns a boolean if a field has been set.
+func (o *AvailablePackagesDto) HasPackageId() bool {
+	if o != nil && !IsNil(o.PackageId) {
+		return true
+	}
+
+	return false
+}
+
+// SetPackageId gets a reference to the given string and assigns it to the PackageId field.
 func (o *AvailablePackagesDto) SetPackageId(v string) {
-	o.PackageId = v
+	o.PackageId = &v
 }
 
 // GetCatalogId returns the CatalogId field value
@@ -208,76 +206,100 @@ func (o *AvailablePackagesDto) UnsetInstalledInstanceCount() {
 	o.InstalledInstanceCount.Unset()
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *AvailablePackagesDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AvailablePackagesDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *AvailablePackagesDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *AvailablePackagesDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetNormalizedName returns the NormalizedName field value
+// GetNormalizedName returns the NormalizedName field value if set, zero value otherwise.
 func (o *AvailablePackagesDto) GetNormalizedName() string {
-	if o == nil {
+	if o == nil || IsNil(o.NormalizedName) {
 		var ret string
 		return ret
 	}
-
-	return o.NormalizedName
+	return *o.NormalizedName
 }
 
-// GetNormalizedNameOk returns a tuple with the NormalizedName field value
+// GetNormalizedNameOk returns a tuple with the NormalizedName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AvailablePackagesDto) GetNormalizedNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.NormalizedName) {
 		return nil, false
 	}
-	return &o.NormalizedName, true
+	return o.NormalizedName, true
 }
 
-// SetNormalizedName sets field value
+// HasNormalizedName returns a boolean if a field has been set.
+func (o *AvailablePackagesDto) HasNormalizedName() bool {
+	if o != nil && !IsNil(o.NormalizedName) {
+		return true
+	}
+
+	return false
+}
+
+// SetNormalizedName gets a reference to the given string and assigns it to the NormalizedName field.
 func (o *AvailablePackagesDto) SetNormalizedName(v string) {
-	o.NormalizedName = v
+	o.NormalizedName = &v
 }
 
-// GetLogoImageId returns the LogoImageId field value
+// GetLogoImageId returns the LogoImageId field value if set, zero value otherwise.
 func (o *AvailablePackagesDto) GetLogoImageId() string {
-	if o == nil {
+	if o == nil || IsNil(o.LogoImageId) {
 		var ret string
 		return ret
 	}
-
-	return o.LogoImageId
+	return *o.LogoImageId
 }
 
-// GetLogoImageIdOk returns a tuple with the LogoImageId field value
+// GetLogoImageIdOk returns a tuple with the LogoImageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AvailablePackagesDto) GetLogoImageIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LogoImageId) {
 		return nil, false
 	}
-	return &o.LogoImageId, true
+	return o.LogoImageId, true
 }
 
-// SetLogoImageId sets field value
+// HasLogoImageId returns a boolean if a field has been set.
+func (o *AvailablePackagesDto) HasLogoImageId() bool {
+	if o != nil && !IsNil(o.LogoImageId) {
+		return true
+	}
+
+	return false
+}
+
+// SetLogoImageId gets a reference to the given string and assigns it to the LogoImageId field.
 func (o *AvailablePackagesDto) SetLogoImageId(v string) {
-	o.LogoImageId = v
+	o.LogoImageId = &v
 }
 
 // GetStars returns the Stars field value
@@ -304,76 +326,100 @@ func (o *AvailablePackagesDto) SetStars(v int64) {
 	o.Stars = v
 }
 
-// GetDescription returns the Description field value
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *AvailablePackagesDto) GetDescription() string {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-
-	return o.Description
+	return *o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AvailablePackagesDto) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description, true
 }
 
-// SetDescription sets field value
+// HasDescription returns a boolean if a field has been set.
+func (o *AvailablePackagesDto) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *AvailablePackagesDto) SetDescription(v string) {
-	o.Description = v
+	o.Description = &v
 }
 
-// GetVersion returns the Version field value
+// GetVersion returns the Version field value if set, zero value otherwise.
 func (o *AvailablePackagesDto) GetVersion() string {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
-
-	return o.Version
+	return *o.Version
 }
 
-// GetVersionOk returns a tuple with the Version field value
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AvailablePackagesDto) GetVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
-	return &o.Version, true
+	return o.Version, true
 }
 
-// SetVersion sets field value
+// HasVersion returns a boolean if a field has been set.
+func (o *AvailablePackagesDto) HasVersion() bool {
+	if o != nil && !IsNil(o.Version) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *AvailablePackagesDto) SetVersion(v string) {
-	o.Version = v
+	o.Version = &v
 }
 
-// GetAppVersion returns the AppVersion field value
+// GetAppVersion returns the AppVersion field value if set, zero value otherwise.
 func (o *AvailablePackagesDto) GetAppVersion() string {
-	if o == nil {
+	if o == nil || IsNil(o.AppVersion) {
 		var ret string
 		return ret
 	}
-
-	return o.AppVersion
+	return *o.AppVersion
 }
 
-// GetAppVersionOk returns a tuple with the AppVersion field value
+// GetAppVersionOk returns a tuple with the AppVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AvailablePackagesDto) GetAppVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AppVersion) {
 		return nil, false
 	}
-	return &o.AppVersion, true
+	return o.AppVersion, true
 }
 
-// SetAppVersion sets field value
+// HasAppVersion returns a boolean if a field has been set.
+func (o *AvailablePackagesDto) HasAppVersion() bool {
+	if o != nil && !IsNil(o.AppVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetAppVersion gets a reference to the given string and assigns it to the AppVersion field.
 func (o *AvailablePackagesDto) SetAppVersion(v string) {
-	o.AppVersion = v
+	o.AppVersion = &v
 }
 
 // GetDeprecated returns the Deprecated field value
@@ -448,76 +494,100 @@ func (o *AvailablePackagesDto) SetIsLocked(v bool) {
 	o.IsLocked = v
 }
 
-// GetSecurityReportSummary returns the SecurityReportSummary field value
+// GetSecurityReportSummary returns the SecurityReportSummary field value if set, zero value otherwise.
 func (o *AvailablePackagesDto) GetSecurityReportSummary() SecurityReportSummary {
-	if o == nil {
+	if o == nil || IsNil(o.SecurityReportSummary) {
 		var ret SecurityReportSummary
 		return ret
 	}
-
-	return o.SecurityReportSummary
+	return *o.SecurityReportSummary
 }
 
-// GetSecurityReportSummaryOk returns a tuple with the SecurityReportSummary field value
+// GetSecurityReportSummaryOk returns a tuple with the SecurityReportSummary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AvailablePackagesDto) GetSecurityReportSummaryOk() (*SecurityReportSummary, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SecurityReportSummary) {
 		return nil, false
 	}
-	return &o.SecurityReportSummary, true
+	return o.SecurityReportSummary, true
 }
 
-// SetSecurityReportSummary sets field value
+// HasSecurityReportSummary returns a boolean if a field has been set.
+func (o *AvailablePackagesDto) HasSecurityReportSummary() bool {
+	if o != nil && !IsNil(o.SecurityReportSummary) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecurityReportSummary gets a reference to the given SecurityReportSummary and assigns it to the SecurityReportSummary field.
 func (o *AvailablePackagesDto) SetSecurityReportSummary(v SecurityReportSummary) {
-	o.SecurityReportSummary = v
+	o.SecurityReportSummary = &v
 }
 
-// GetTs returns the Ts field value
+// GetTs returns the Ts field value if set, zero value otherwise.
 func (o *AvailablePackagesDto) GetTs() string {
-	if o == nil {
+	if o == nil || IsNil(o.Ts) {
 		var ret string
 		return ret
 	}
-
-	return o.Ts
+	return *o.Ts
 }
 
-// GetTsOk returns a tuple with the Ts field value
+// GetTsOk returns a tuple with the Ts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AvailablePackagesDto) GetTsOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Ts) {
 		return nil, false
 	}
-	return &o.Ts, true
+	return o.Ts, true
 }
 
-// SetTs sets field value
+// HasTs returns a boolean if a field has been set.
+func (o *AvailablePackagesDto) HasTs() bool {
+	if o != nil && !IsNil(o.Ts) {
+		return true
+	}
+
+	return false
+}
+
+// SetTs gets a reference to the given string and assigns it to the Ts field.
 func (o *AvailablePackagesDto) SetTs(v string) {
-	o.Ts = v
+	o.Ts = &v
 }
 
-// GetRepository returns the Repository field value
+// GetRepository returns the Repository field value if set, zero value otherwise.
 func (o *AvailablePackagesDto) GetRepository() Repository {
-	if o == nil {
+	if o == nil || IsNil(o.Repository) {
 		var ret Repository
 		return ret
 	}
-
-	return o.Repository
+	return *o.Repository
 }
 
-// GetRepositoryOk returns a tuple with the Repository field value
+// GetRepositoryOk returns a tuple with the Repository field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AvailablePackagesDto) GetRepositoryOk() (*Repository, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Repository) {
 		return nil, false
 	}
-	return &o.Repository, true
+	return o.Repository, true
 }
 
-// SetRepository sets field value
+// HasRepository returns a boolean if a field has been set.
+func (o *AvailablePackagesDto) HasRepository() bool {
+	if o != nil && !IsNil(o.Repository) {
+		return true
+	}
+
+	return false
+}
+
+// SetRepository gets a reference to the given Repository and assigns it to the Repository field.
 func (o *AvailablePackagesDto) SetRepository(v Repository) {
-	o.Repository = v
+	o.Repository = &v
 }
 
 // GetIsAdded returns the IsAdded field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -572,7 +642,9 @@ func (o AvailablePackagesDto) MarshalJSON() ([]byte, error) {
 
 func (o AvailablePackagesDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["packageId"] = o.PackageId
+	if !IsNil(o.PackageId) {
+		toSerialize["packageId"] = o.PackageId
+	}
 	toSerialize["catalogId"] = o.CatalogId
 	if o.CatalogAppId.IsSet() {
 		toSerialize["catalogAppId"] = o.CatalogAppId.Get()
@@ -580,19 +652,37 @@ func (o AvailablePackagesDto) ToMap() (map[string]interface{}, error) {
 	if o.InstalledInstanceCount.IsSet() {
 		toSerialize["installedInstanceCount"] = o.InstalledInstanceCount.Get()
 	}
-	toSerialize["name"] = o.Name
-	toSerialize["normalizedName"] = o.NormalizedName
-	toSerialize["logoImageId"] = o.LogoImageId
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.NormalizedName) {
+		toSerialize["normalizedName"] = o.NormalizedName
+	}
+	if !IsNil(o.LogoImageId) {
+		toSerialize["logoImageId"] = o.LogoImageId
+	}
 	toSerialize["stars"] = o.Stars
-	toSerialize["description"] = o.Description
-	toSerialize["version"] = o.Version
-	toSerialize["appVersion"] = o.AppVersion
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.AppVersion) {
+		toSerialize["appVersion"] = o.AppVersion
+	}
 	toSerialize["deprecated"] = o.Deprecated
 	toSerialize["signed"] = o.Signed
 	toSerialize["isLocked"] = o.IsLocked
-	toSerialize["securityReportSummary"] = o.SecurityReportSummary
-	toSerialize["ts"] = o.Ts
-	toSerialize["repository"] = o.Repository
+	if !IsNil(o.SecurityReportSummary) {
+		toSerialize["securityReportSummary"] = o.SecurityReportSummary
+	}
+	if !IsNil(o.Ts) {
+		toSerialize["ts"] = o.Ts
+	}
+	if !IsNil(o.Repository) {
+		toSerialize["repository"] = o.Repository
+	}
 	if o.IsAdded.IsSet() {
 		toSerialize["isAdded"] = o.IsAdded.Get()
 	}
@@ -604,21 +694,11 @@ func (o *AvailablePackagesDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"packageId",
 		"catalogId",
-		"name",
-		"normalizedName",
-		"logoImageId",
 		"stars",
-		"description",
-		"version",
-		"appVersion",
 		"deprecated",
 		"signed",
 		"isLocked",
-		"securityReportSummary",
-		"ts",
-		"repository",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the KubesprayCreateCommand type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &KubesprayCreateCommand{}
 
 // KubesprayCreateCommand struct for KubesprayCreateCommand
 type KubesprayCreateCommand struct {
-	Version string `json:"version"`
-	KubernetesVersion string `json:"kubernetesVersion"`
+	Version *string `json:"version,omitempty"`
+	KubernetesVersion *string `json:"kubernetesVersion,omitempty"`
 }
-
-type _KubesprayCreateCommand KubesprayCreateCommand
 
 // NewKubesprayCreateCommand instantiates a new KubesprayCreateCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubesprayCreateCommand(version string, kubernetesVersion string) *KubesprayCreateCommand {
+func NewKubesprayCreateCommand() *KubesprayCreateCommand {
 	this := KubesprayCreateCommand{}
-	this.Version = version
-	this.KubernetesVersion = kubernetesVersion
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewKubesprayCreateCommandWithDefaults() *KubesprayCreateCommand {
 	return &this
 }
 
-// GetVersion returns the Version field value
+// GetVersion returns the Version field value if set, zero value otherwise.
 func (o *KubesprayCreateCommand) GetVersion() string {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
-
-	return o.Version
+	return *o.Version
 }
 
-// GetVersionOk returns a tuple with the Version field value
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KubesprayCreateCommand) GetVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
-	return &o.Version, true
+	return o.Version, true
 }
 
-// SetVersion sets field value
+// HasVersion returns a boolean if a field has been set.
+func (o *KubesprayCreateCommand) HasVersion() bool {
+	if o != nil && !IsNil(o.Version) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *KubesprayCreateCommand) SetVersion(v string) {
-	o.Version = v
+	o.Version = &v
 }
 
-// GetKubernetesVersion returns the KubernetesVersion field value
+// GetKubernetesVersion returns the KubernetesVersion field value if set, zero value otherwise.
 func (o *KubesprayCreateCommand) GetKubernetesVersion() string {
-	if o == nil {
+	if o == nil || IsNil(o.KubernetesVersion) {
 		var ret string
 		return ret
 	}
-
-	return o.KubernetesVersion
+	return *o.KubernetesVersion
 }
 
-// GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value
+// GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KubesprayCreateCommand) GetKubernetesVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.KubernetesVersion) {
 		return nil, false
 	}
-	return &o.KubernetesVersion, true
+	return o.KubernetesVersion, true
 }
 
-// SetKubernetesVersion sets field value
+// HasKubernetesVersion returns a boolean if a field has been set.
+func (o *KubesprayCreateCommand) HasKubernetesVersion() bool {
+	if o != nil && !IsNil(o.KubernetesVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetKubernetesVersion gets a reference to the given string and assigns it to the KubernetesVersion field.
 func (o *KubesprayCreateCommand) SetKubernetesVersion(v string) {
-	o.KubernetesVersion = v
+	o.KubernetesVersion = &v
 }
 
 func (o KubesprayCreateCommand) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o KubesprayCreateCommand) MarshalJSON() ([]byte, error) {
 
 func (o KubesprayCreateCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["version"] = o.Version
-	toSerialize["kubernetesVersion"] = o.KubernetesVersion
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.KubernetesVersion) {
+		toSerialize["kubernetesVersion"] = o.KubernetesVersion
+	}
 	return toSerialize, nil
-}
-
-func (o *KubesprayCreateCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"version",
-		"kubernetesVersion",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varKubesprayCreateCommand := _KubesprayCreateCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKubesprayCreateCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = KubesprayCreateCommand(varKubesprayCreateCommand)
-
-	return err
 }
 
 type NullableKubesprayCreateCommand struct {

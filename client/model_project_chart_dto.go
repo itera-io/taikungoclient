@@ -22,14 +22,14 @@ var _ MappedNullable = &ProjectChartDto{}
 
 // ProjectChartDto struct for ProjectChartDto
 type ProjectChartDto struct {
-	Succeeded []ProjectCommonRecordDto `json:"succeeded"`
-	Updating []interface{} `json:"updating"`
+	Succeeded []ProjectCommonRecordDto `json:"succeeded,omitempty"`
+	Updating []interface{} `json:"updating,omitempty"`
 	TotalCount int32 `json:"totalCount"`
-	Failed []interface{} `json:"failed"`
-	Purging []interface{} `json:"purging"`
-	Deleting []interface{} `json:"deleting"`
-	Importing []interface{} `json:"importing"`
-	FailedToImport []interface{} `json:"failedToImport"`
+	Failed []interface{} `json:"failed,omitempty"`
+	Purging []interface{} `json:"purging,omitempty"`
+	Deleting []interface{} `json:"deleting,omitempty"`
+	Importing []interface{} `json:"importing,omitempty"`
+	FailedToImport []interface{} `json:"failedToImport,omitempty"`
 }
 
 type _ProjectChartDto ProjectChartDto
@@ -38,16 +38,9 @@ type _ProjectChartDto ProjectChartDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectChartDto(succeeded []ProjectCommonRecordDto, updating []interface{}, totalCount int32, failed []interface{}, purging []interface{}, deleting []interface{}, importing []interface{}, failedToImport []interface{}) *ProjectChartDto {
+func NewProjectChartDto(totalCount int32) *ProjectChartDto {
 	this := ProjectChartDto{}
-	this.Succeeded = succeeded
-	this.Updating = updating
 	this.TotalCount = totalCount
-	this.Failed = failed
-	this.Purging = purging
-	this.Deleting = deleting
-	this.Importing = importing
-	this.FailedToImport = failedToImport
 	return &this
 }
 
@@ -59,50 +52,66 @@ func NewProjectChartDtoWithDefaults() *ProjectChartDto {
 	return &this
 }
 
-// GetSucceeded returns the Succeeded field value
+// GetSucceeded returns the Succeeded field value if set, zero value otherwise.
 func (o *ProjectChartDto) GetSucceeded() []ProjectCommonRecordDto {
-	if o == nil {
+	if o == nil || IsNil(o.Succeeded) {
 		var ret []ProjectCommonRecordDto
 		return ret
 	}
-
 	return o.Succeeded
 }
 
-// GetSucceededOk returns a tuple with the Succeeded field value
+// GetSucceededOk returns a tuple with the Succeeded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectChartDto) GetSucceededOk() ([]ProjectCommonRecordDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Succeeded) {
 		return nil, false
 	}
 	return o.Succeeded, true
 }
 
-// SetSucceeded sets field value
+// HasSucceeded returns a boolean if a field has been set.
+func (o *ProjectChartDto) HasSucceeded() bool {
+	if o != nil && !IsNil(o.Succeeded) {
+		return true
+	}
+
+	return false
+}
+
+// SetSucceeded gets a reference to the given []ProjectCommonRecordDto and assigns it to the Succeeded field.
 func (o *ProjectChartDto) SetSucceeded(v []ProjectCommonRecordDto) {
 	o.Succeeded = v
 }
 
-// GetUpdating returns the Updating field value
+// GetUpdating returns the Updating field value if set, zero value otherwise.
 func (o *ProjectChartDto) GetUpdating() []interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.Updating) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.Updating
 }
 
-// GetUpdatingOk returns a tuple with the Updating field value
+// GetUpdatingOk returns a tuple with the Updating field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectChartDto) GetUpdatingOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Updating) {
 		return nil, false
 	}
 	return o.Updating, true
 }
 
-// SetUpdating sets field value
+// HasUpdating returns a boolean if a field has been set.
+func (o *ProjectChartDto) HasUpdating() bool {
+	if o != nil && !IsNil(o.Updating) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdating gets a reference to the given []interface{} and assigns it to the Updating field.
 func (o *ProjectChartDto) SetUpdating(v []interface{}) {
 	o.Updating = v
 }
@@ -131,122 +140,162 @@ func (o *ProjectChartDto) SetTotalCount(v int32) {
 	o.TotalCount = v
 }
 
-// GetFailed returns the Failed field value
+// GetFailed returns the Failed field value if set, zero value otherwise.
 func (o *ProjectChartDto) GetFailed() []interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.Failed) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.Failed
 }
 
-// GetFailedOk returns a tuple with the Failed field value
+// GetFailedOk returns a tuple with the Failed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectChartDto) GetFailedOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Failed) {
 		return nil, false
 	}
 	return o.Failed, true
 }
 
-// SetFailed sets field value
+// HasFailed returns a boolean if a field has been set.
+func (o *ProjectChartDto) HasFailed() bool {
+	if o != nil && !IsNil(o.Failed) {
+		return true
+	}
+
+	return false
+}
+
+// SetFailed gets a reference to the given []interface{} and assigns it to the Failed field.
 func (o *ProjectChartDto) SetFailed(v []interface{}) {
 	o.Failed = v
 }
 
-// GetPurging returns the Purging field value
+// GetPurging returns the Purging field value if set, zero value otherwise.
 func (o *ProjectChartDto) GetPurging() []interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.Purging) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.Purging
 }
 
-// GetPurgingOk returns a tuple with the Purging field value
+// GetPurgingOk returns a tuple with the Purging field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectChartDto) GetPurgingOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Purging) {
 		return nil, false
 	}
 	return o.Purging, true
 }
 
-// SetPurging sets field value
+// HasPurging returns a boolean if a field has been set.
+func (o *ProjectChartDto) HasPurging() bool {
+	if o != nil && !IsNil(o.Purging) {
+		return true
+	}
+
+	return false
+}
+
+// SetPurging gets a reference to the given []interface{} and assigns it to the Purging field.
 func (o *ProjectChartDto) SetPurging(v []interface{}) {
 	o.Purging = v
 }
 
-// GetDeleting returns the Deleting field value
+// GetDeleting returns the Deleting field value if set, zero value otherwise.
 func (o *ProjectChartDto) GetDeleting() []interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.Deleting) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.Deleting
 }
 
-// GetDeletingOk returns a tuple with the Deleting field value
+// GetDeletingOk returns a tuple with the Deleting field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectChartDto) GetDeletingOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Deleting) {
 		return nil, false
 	}
 	return o.Deleting, true
 }
 
-// SetDeleting sets field value
+// HasDeleting returns a boolean if a field has been set.
+func (o *ProjectChartDto) HasDeleting() bool {
+	if o != nil && !IsNil(o.Deleting) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleting gets a reference to the given []interface{} and assigns it to the Deleting field.
 func (o *ProjectChartDto) SetDeleting(v []interface{}) {
 	o.Deleting = v
 }
 
-// GetImporting returns the Importing field value
+// GetImporting returns the Importing field value if set, zero value otherwise.
 func (o *ProjectChartDto) GetImporting() []interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.Importing) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.Importing
 }
 
-// GetImportingOk returns a tuple with the Importing field value
+// GetImportingOk returns a tuple with the Importing field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectChartDto) GetImportingOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Importing) {
 		return nil, false
 	}
 	return o.Importing, true
 }
 
-// SetImporting sets field value
+// HasImporting returns a boolean if a field has been set.
+func (o *ProjectChartDto) HasImporting() bool {
+	if o != nil && !IsNil(o.Importing) {
+		return true
+	}
+
+	return false
+}
+
+// SetImporting gets a reference to the given []interface{} and assigns it to the Importing field.
 func (o *ProjectChartDto) SetImporting(v []interface{}) {
 	o.Importing = v
 }
 
-// GetFailedToImport returns the FailedToImport field value
+// GetFailedToImport returns the FailedToImport field value if set, zero value otherwise.
 func (o *ProjectChartDto) GetFailedToImport() []interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.FailedToImport) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.FailedToImport
 }
 
-// GetFailedToImportOk returns a tuple with the FailedToImport field value
+// GetFailedToImportOk returns a tuple with the FailedToImport field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectChartDto) GetFailedToImportOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.FailedToImport) {
 		return nil, false
 	}
 	return o.FailedToImport, true
 }
 
-// SetFailedToImport sets field value
+// HasFailedToImport returns a boolean if a field has been set.
+func (o *ProjectChartDto) HasFailedToImport() bool {
+	if o != nil && !IsNil(o.FailedToImport) {
+		return true
+	}
+
+	return false
+}
+
+// SetFailedToImport gets a reference to the given []interface{} and assigns it to the FailedToImport field.
 func (o *ProjectChartDto) SetFailedToImport(v []interface{}) {
 	o.FailedToImport = v
 }
@@ -261,14 +310,28 @@ func (o ProjectChartDto) MarshalJSON() ([]byte, error) {
 
 func (o ProjectChartDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["succeeded"] = o.Succeeded
-	toSerialize["updating"] = o.Updating
+	if !IsNil(o.Succeeded) {
+		toSerialize["succeeded"] = o.Succeeded
+	}
+	if !IsNil(o.Updating) {
+		toSerialize["updating"] = o.Updating
+	}
 	toSerialize["totalCount"] = o.TotalCount
-	toSerialize["failed"] = o.Failed
-	toSerialize["purging"] = o.Purging
-	toSerialize["deleting"] = o.Deleting
-	toSerialize["importing"] = o.Importing
-	toSerialize["failedToImport"] = o.FailedToImport
+	if !IsNil(o.Failed) {
+		toSerialize["failed"] = o.Failed
+	}
+	if !IsNil(o.Purging) {
+		toSerialize["purging"] = o.Purging
+	}
+	if !IsNil(o.Deleting) {
+		toSerialize["deleting"] = o.Deleting
+	}
+	if !IsNil(o.Importing) {
+		toSerialize["importing"] = o.Importing
+	}
+	if !IsNil(o.FailedToImport) {
+		toSerialize["failedToImport"] = o.FailedToImport
+	}
 	return toSerialize, nil
 }
 
@@ -277,14 +340,7 @@ func (o *ProjectChartDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"succeeded",
-		"updating",
 		"totalCount",
-		"failed",
-		"purging",
-		"deleting",
-		"importing",
-		"failedToImport",
 	}
 
 	allProperties := make(map[string]interface{})

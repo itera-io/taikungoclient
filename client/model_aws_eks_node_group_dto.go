@@ -22,21 +22,21 @@ var _ MappedNullable = &AwsEksNodeGroupDto{}
 
 // AwsEksNodeGroupDto struct for AwsEksNodeGroupDto
 type AwsEksNodeGroupDto struct {
-	Name string `json:"name"`
-	Role string `json:"role"`
-	AmiType string `json:"amiType"`
-	AmiReleaseVersion string `json:"amiReleaseVersion"`
-	Arn string `json:"arn"`
-	CapacityType string `json:"capacityType"`
-	HealthIssues []string `json:"healthIssues"`
-	Status string `json:"status"`
-	Version string `json:"version"`
-	Created string `json:"created"`
+	Name *string `json:"name,omitempty"`
+	Role *string `json:"role,omitempty"`
+	AmiType *string `json:"amiType,omitempty"`
+	AmiReleaseVersion *string `json:"amiReleaseVersion,omitempty"`
+	Arn *string `json:"arn,omitempty"`
+	CapacityType *string `json:"capacityType,omitempty"`
+	HealthIssues []string `json:"healthIssues,omitempty"`
+	Status *string `json:"status,omitempty"`
+	Version *string `json:"version,omitempty"`
+	Created *string `json:"created,omitempty"`
 	DiskSize int32 `json:"diskSize"`
 	DesiredSize int32 `json:"desiredSize"`
 	MaxSize int32 `json:"maxSize"`
 	MinSize int32 `json:"minSize"`
-	InstanceTypes []string `json:"instanceTypes"`
+	InstanceTypes []string `json:"instanceTypes,omitempty"`
 }
 
 type _AwsEksNodeGroupDto AwsEksNodeGroupDto
@@ -45,23 +45,12 @@ type _AwsEksNodeGroupDto AwsEksNodeGroupDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAwsEksNodeGroupDto(name string, role string, amiType string, amiReleaseVersion string, arn string, capacityType string, healthIssues []string, status string, version string, created string, diskSize int32, desiredSize int32, maxSize int32, minSize int32, instanceTypes []string) *AwsEksNodeGroupDto {
+func NewAwsEksNodeGroupDto(diskSize int32, desiredSize int32, maxSize int32, minSize int32) *AwsEksNodeGroupDto {
 	this := AwsEksNodeGroupDto{}
-	this.Name = name
-	this.Role = role
-	this.AmiType = amiType
-	this.AmiReleaseVersion = amiReleaseVersion
-	this.Arn = arn
-	this.CapacityType = capacityType
-	this.HealthIssues = healthIssues
-	this.Status = status
-	this.Version = version
-	this.Created = created
 	this.DiskSize = diskSize
 	this.DesiredSize = desiredSize
 	this.MaxSize = maxSize
 	this.MinSize = minSize
-	this.InstanceTypes = instanceTypes
 	return &this
 }
 
@@ -73,244 +62,324 @@ func NewAwsEksNodeGroupDtoWithDefaults() *AwsEksNodeGroupDto {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *AwsEksNodeGroupDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AwsEksNodeGroupDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *AwsEksNodeGroupDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *AwsEksNodeGroupDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetRole returns the Role field value
+// GetRole returns the Role field value if set, zero value otherwise.
 func (o *AwsEksNodeGroupDto) GetRole() string {
-	if o == nil {
+	if o == nil || IsNil(o.Role) {
 		var ret string
 		return ret
 	}
-
-	return o.Role
+	return *o.Role
 }
 
-// GetRoleOk returns a tuple with the Role field value
+// GetRoleOk returns a tuple with the Role field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AwsEksNodeGroupDto) GetRoleOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Role) {
 		return nil, false
 	}
-	return &o.Role, true
+	return o.Role, true
 }
 
-// SetRole sets field value
+// HasRole returns a boolean if a field has been set.
+func (o *AwsEksNodeGroupDto) HasRole() bool {
+	if o != nil && !IsNil(o.Role) {
+		return true
+	}
+
+	return false
+}
+
+// SetRole gets a reference to the given string and assigns it to the Role field.
 func (o *AwsEksNodeGroupDto) SetRole(v string) {
-	o.Role = v
+	o.Role = &v
 }
 
-// GetAmiType returns the AmiType field value
+// GetAmiType returns the AmiType field value if set, zero value otherwise.
 func (o *AwsEksNodeGroupDto) GetAmiType() string {
-	if o == nil {
+	if o == nil || IsNil(o.AmiType) {
 		var ret string
 		return ret
 	}
-
-	return o.AmiType
+	return *o.AmiType
 }
 
-// GetAmiTypeOk returns a tuple with the AmiType field value
+// GetAmiTypeOk returns a tuple with the AmiType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AwsEksNodeGroupDto) GetAmiTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AmiType) {
 		return nil, false
 	}
-	return &o.AmiType, true
+	return o.AmiType, true
 }
 
-// SetAmiType sets field value
+// HasAmiType returns a boolean if a field has been set.
+func (o *AwsEksNodeGroupDto) HasAmiType() bool {
+	if o != nil && !IsNil(o.AmiType) {
+		return true
+	}
+
+	return false
+}
+
+// SetAmiType gets a reference to the given string and assigns it to the AmiType field.
 func (o *AwsEksNodeGroupDto) SetAmiType(v string) {
-	o.AmiType = v
+	o.AmiType = &v
 }
 
-// GetAmiReleaseVersion returns the AmiReleaseVersion field value
+// GetAmiReleaseVersion returns the AmiReleaseVersion field value if set, zero value otherwise.
 func (o *AwsEksNodeGroupDto) GetAmiReleaseVersion() string {
-	if o == nil {
+	if o == nil || IsNil(o.AmiReleaseVersion) {
 		var ret string
 		return ret
 	}
-
-	return o.AmiReleaseVersion
+	return *o.AmiReleaseVersion
 }
 
-// GetAmiReleaseVersionOk returns a tuple with the AmiReleaseVersion field value
+// GetAmiReleaseVersionOk returns a tuple with the AmiReleaseVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AwsEksNodeGroupDto) GetAmiReleaseVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AmiReleaseVersion) {
 		return nil, false
 	}
-	return &o.AmiReleaseVersion, true
+	return o.AmiReleaseVersion, true
 }
 
-// SetAmiReleaseVersion sets field value
+// HasAmiReleaseVersion returns a boolean if a field has been set.
+func (o *AwsEksNodeGroupDto) HasAmiReleaseVersion() bool {
+	if o != nil && !IsNil(o.AmiReleaseVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetAmiReleaseVersion gets a reference to the given string and assigns it to the AmiReleaseVersion field.
 func (o *AwsEksNodeGroupDto) SetAmiReleaseVersion(v string) {
-	o.AmiReleaseVersion = v
+	o.AmiReleaseVersion = &v
 }
 
-// GetArn returns the Arn field value
+// GetArn returns the Arn field value if set, zero value otherwise.
 func (o *AwsEksNodeGroupDto) GetArn() string {
-	if o == nil {
+	if o == nil || IsNil(o.Arn) {
 		var ret string
 		return ret
 	}
-
-	return o.Arn
+	return *o.Arn
 }
 
-// GetArnOk returns a tuple with the Arn field value
+// GetArnOk returns a tuple with the Arn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AwsEksNodeGroupDto) GetArnOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Arn) {
 		return nil, false
 	}
-	return &o.Arn, true
+	return o.Arn, true
 }
 
-// SetArn sets field value
+// HasArn returns a boolean if a field has been set.
+func (o *AwsEksNodeGroupDto) HasArn() bool {
+	if o != nil && !IsNil(o.Arn) {
+		return true
+	}
+
+	return false
+}
+
+// SetArn gets a reference to the given string and assigns it to the Arn field.
 func (o *AwsEksNodeGroupDto) SetArn(v string) {
-	o.Arn = v
+	o.Arn = &v
 }
 
-// GetCapacityType returns the CapacityType field value
+// GetCapacityType returns the CapacityType field value if set, zero value otherwise.
 func (o *AwsEksNodeGroupDto) GetCapacityType() string {
-	if o == nil {
+	if o == nil || IsNil(o.CapacityType) {
 		var ret string
 		return ret
 	}
-
-	return o.CapacityType
+	return *o.CapacityType
 }
 
-// GetCapacityTypeOk returns a tuple with the CapacityType field value
+// GetCapacityTypeOk returns a tuple with the CapacityType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AwsEksNodeGroupDto) GetCapacityTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CapacityType) {
 		return nil, false
 	}
-	return &o.CapacityType, true
+	return o.CapacityType, true
 }
 
-// SetCapacityType sets field value
+// HasCapacityType returns a boolean if a field has been set.
+func (o *AwsEksNodeGroupDto) HasCapacityType() bool {
+	if o != nil && !IsNil(o.CapacityType) {
+		return true
+	}
+
+	return false
+}
+
+// SetCapacityType gets a reference to the given string and assigns it to the CapacityType field.
 func (o *AwsEksNodeGroupDto) SetCapacityType(v string) {
-	o.CapacityType = v
+	o.CapacityType = &v
 }
 
-// GetHealthIssues returns the HealthIssues field value
+// GetHealthIssues returns the HealthIssues field value if set, zero value otherwise.
 func (o *AwsEksNodeGroupDto) GetHealthIssues() []string {
-	if o == nil {
+	if o == nil || IsNil(o.HealthIssues) {
 		var ret []string
 		return ret
 	}
-
 	return o.HealthIssues
 }
 
-// GetHealthIssuesOk returns a tuple with the HealthIssues field value
+// GetHealthIssuesOk returns a tuple with the HealthIssues field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AwsEksNodeGroupDto) GetHealthIssuesOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.HealthIssues) {
 		return nil, false
 	}
 	return o.HealthIssues, true
 }
 
-// SetHealthIssues sets field value
+// HasHealthIssues returns a boolean if a field has been set.
+func (o *AwsEksNodeGroupDto) HasHealthIssues() bool {
+	if o != nil && !IsNil(o.HealthIssues) {
+		return true
+	}
+
+	return false
+}
+
+// SetHealthIssues gets a reference to the given []string and assigns it to the HealthIssues field.
 func (o *AwsEksNodeGroupDto) SetHealthIssues(v []string) {
 	o.HealthIssues = v
 }
 
-// GetStatus returns the Status field value
+// GetStatus returns the Status field value if set, zero value otherwise.
 func (o *AwsEksNodeGroupDto) GetStatus() string {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
-
-	return o.Status
+	return *o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AwsEksNodeGroupDto) GetStatusOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
-	return &o.Status, true
+	return o.Status, true
 }
 
-// SetStatus sets field value
+// HasStatus returns a boolean if a field has been set.
+func (o *AwsEksNodeGroupDto) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *AwsEksNodeGroupDto) SetStatus(v string) {
-	o.Status = v
+	o.Status = &v
 }
 
-// GetVersion returns the Version field value
+// GetVersion returns the Version field value if set, zero value otherwise.
 func (o *AwsEksNodeGroupDto) GetVersion() string {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
-
-	return o.Version
+	return *o.Version
 }
 
-// GetVersionOk returns a tuple with the Version field value
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AwsEksNodeGroupDto) GetVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
-	return &o.Version, true
+	return o.Version, true
 }
 
-// SetVersion sets field value
+// HasVersion returns a boolean if a field has been set.
+func (o *AwsEksNodeGroupDto) HasVersion() bool {
+	if o != nil && !IsNil(o.Version) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *AwsEksNodeGroupDto) SetVersion(v string) {
-	o.Version = v
+	o.Version = &v
 }
 
-// GetCreated returns the Created field value
+// GetCreated returns the Created field value if set, zero value otherwise.
 func (o *AwsEksNodeGroupDto) GetCreated() string {
-	if o == nil {
+	if o == nil || IsNil(o.Created) {
 		var ret string
 		return ret
 	}
-
-	return o.Created
+	return *o.Created
 }
 
-// GetCreatedOk returns a tuple with the Created field value
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AwsEksNodeGroupDto) GetCreatedOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
-	return &o.Created, true
+	return o.Created, true
 }
 
-// SetCreated sets field value
+// HasCreated returns a boolean if a field has been set.
+func (o *AwsEksNodeGroupDto) HasCreated() bool {
+	if o != nil && !IsNil(o.Created) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given string and assigns it to the Created field.
 func (o *AwsEksNodeGroupDto) SetCreated(v string) {
-	o.Created = v
+	o.Created = &v
 }
 
 // GetDiskSize returns the DiskSize field value
@@ -409,26 +478,34 @@ func (o *AwsEksNodeGroupDto) SetMinSize(v int32) {
 	o.MinSize = v
 }
 
-// GetInstanceTypes returns the InstanceTypes field value
+// GetInstanceTypes returns the InstanceTypes field value if set, zero value otherwise.
 func (o *AwsEksNodeGroupDto) GetInstanceTypes() []string {
-	if o == nil {
+	if o == nil || IsNil(o.InstanceTypes) {
 		var ret []string
 		return ret
 	}
-
 	return o.InstanceTypes
 }
 
-// GetInstanceTypesOk returns a tuple with the InstanceTypes field value
+// GetInstanceTypesOk returns a tuple with the InstanceTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AwsEksNodeGroupDto) GetInstanceTypesOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.InstanceTypes) {
 		return nil, false
 	}
 	return o.InstanceTypes, true
 }
 
-// SetInstanceTypes sets field value
+// HasInstanceTypes returns a boolean if a field has been set.
+func (o *AwsEksNodeGroupDto) HasInstanceTypes() bool {
+	if o != nil && !IsNil(o.InstanceTypes) {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceTypes gets a reference to the given []string and assigns it to the InstanceTypes field.
 func (o *AwsEksNodeGroupDto) SetInstanceTypes(v []string) {
 	o.InstanceTypes = v
 }
@@ -443,21 +520,43 @@ func (o AwsEksNodeGroupDto) MarshalJSON() ([]byte, error) {
 
 func (o AwsEksNodeGroupDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["role"] = o.Role
-	toSerialize["amiType"] = o.AmiType
-	toSerialize["amiReleaseVersion"] = o.AmiReleaseVersion
-	toSerialize["arn"] = o.Arn
-	toSerialize["capacityType"] = o.CapacityType
-	toSerialize["healthIssues"] = o.HealthIssues
-	toSerialize["status"] = o.Status
-	toSerialize["version"] = o.Version
-	toSerialize["created"] = o.Created
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Role) {
+		toSerialize["role"] = o.Role
+	}
+	if !IsNil(o.AmiType) {
+		toSerialize["amiType"] = o.AmiType
+	}
+	if !IsNil(o.AmiReleaseVersion) {
+		toSerialize["amiReleaseVersion"] = o.AmiReleaseVersion
+	}
+	if !IsNil(o.Arn) {
+		toSerialize["arn"] = o.Arn
+	}
+	if !IsNil(o.CapacityType) {
+		toSerialize["capacityType"] = o.CapacityType
+	}
+	if !IsNil(o.HealthIssues) {
+		toSerialize["healthIssues"] = o.HealthIssues
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
 	toSerialize["diskSize"] = o.DiskSize
 	toSerialize["desiredSize"] = o.DesiredSize
 	toSerialize["maxSize"] = o.MaxSize
 	toSerialize["minSize"] = o.MinSize
-	toSerialize["instanceTypes"] = o.InstanceTypes
+	if !IsNil(o.InstanceTypes) {
+		toSerialize["instanceTypes"] = o.InstanceTypes
+	}
 	return toSerialize, nil
 }
 
@@ -466,21 +565,10 @@ func (o *AwsEksNodeGroupDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
-		"role",
-		"amiType",
-		"amiReleaseVersion",
-		"arn",
-		"capacityType",
-		"healthIssues",
-		"status",
-		"version",
-		"created",
 		"diskSize",
 		"desiredSize",
 		"maxSize",
 		"minSize",
-		"instanceTypes",
 	}
 
 	allProperties := make(map[string]interface{})

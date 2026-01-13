@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the ProjectInfracost type satisfies the MappedNullable interface at compile time
@@ -22,30 +20,21 @@ var _ MappedNullable = &ProjectInfracost{}
 
 // ProjectInfracost struct for ProjectInfracost
 type ProjectInfracost struct {
-	Name string `json:"name"`
-	DisplayName string `json:"displayName"`
-	Metadata ProjectMetadata `json:"metadata"`
-	PastBreakdown Breakdown `json:"pastBreakdown"`
-	Breakdown Breakdown `json:"breakdown"`
-	Diff Diff `json:"diff"`
-	Summary Summary `json:"summary"`
+	Name *string `json:"name,omitempty"`
+	DisplayName *string `json:"displayName,omitempty"`
+	Metadata *ProjectMetadata `json:"metadata,omitempty"`
+	PastBreakdown *Breakdown `json:"pastBreakdown,omitempty"`
+	Breakdown *Breakdown `json:"breakdown,omitempty"`
+	Diff *Diff `json:"diff,omitempty"`
+	Summary *Summary `json:"summary,omitempty"`
 }
-
-type _ProjectInfracost ProjectInfracost
 
 // NewProjectInfracost instantiates a new ProjectInfracost object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectInfracost(name string, displayName string, metadata ProjectMetadata, pastBreakdown Breakdown, breakdown Breakdown, diff Diff, summary Summary) *ProjectInfracost {
+func NewProjectInfracost() *ProjectInfracost {
 	this := ProjectInfracost{}
-	this.Name = name
-	this.DisplayName = displayName
-	this.Metadata = metadata
-	this.PastBreakdown = pastBreakdown
-	this.Breakdown = breakdown
-	this.Diff = diff
-	this.Summary = summary
 	return &this
 }
 
@@ -57,172 +46,228 @@ func NewProjectInfracostWithDefaults() *ProjectInfracost {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *ProjectInfracost) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectInfracost) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *ProjectInfracost) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ProjectInfracost) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetDisplayName returns the DisplayName field value
+// GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *ProjectInfracost) GetDisplayName() string {
-	if o == nil {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
-
-	return o.DisplayName
+	return *o.DisplayName
 }
 
-// GetDisplayNameOk returns a tuple with the DisplayName field value
+// GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectInfracost) GetDisplayNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
-	return &o.DisplayName, true
+	return o.DisplayName, true
 }
 
-// SetDisplayName sets field value
+// HasDisplayName returns a boolean if a field has been set.
+func (o *ProjectInfracost) HasDisplayName() bool {
+	if o != nil && !IsNil(o.DisplayName) {
+		return true
+	}
+
+	return false
+}
+
+// SetDisplayName gets a reference to the given string and assigns it to the DisplayName field.
 func (o *ProjectInfracost) SetDisplayName(v string) {
-	o.DisplayName = v
+	o.DisplayName = &v
 }
 
-// GetMetadata returns the Metadata field value
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *ProjectInfracost) GetMetadata() ProjectMetadata {
-	if o == nil {
+	if o == nil || IsNil(o.Metadata) {
 		var ret ProjectMetadata
 		return ret
 	}
-
-	return o.Metadata
+	return *o.Metadata
 }
 
-// GetMetadataOk returns a tuple with the Metadata field value
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectInfracost) GetMetadataOk() (*ProjectMetadata, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
-	return &o.Metadata, true
+	return o.Metadata, true
 }
 
-// SetMetadata sets field value
+// HasMetadata returns a boolean if a field has been set.
+func (o *ProjectInfracost) HasMetadata() bool {
+	if o != nil && !IsNil(o.Metadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given ProjectMetadata and assigns it to the Metadata field.
 func (o *ProjectInfracost) SetMetadata(v ProjectMetadata) {
-	o.Metadata = v
+	o.Metadata = &v
 }
 
-// GetPastBreakdown returns the PastBreakdown field value
+// GetPastBreakdown returns the PastBreakdown field value if set, zero value otherwise.
 func (o *ProjectInfracost) GetPastBreakdown() Breakdown {
-	if o == nil {
+	if o == nil || IsNil(o.PastBreakdown) {
 		var ret Breakdown
 		return ret
 	}
-
-	return o.PastBreakdown
+	return *o.PastBreakdown
 }
 
-// GetPastBreakdownOk returns a tuple with the PastBreakdown field value
+// GetPastBreakdownOk returns a tuple with the PastBreakdown field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectInfracost) GetPastBreakdownOk() (*Breakdown, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PastBreakdown) {
 		return nil, false
 	}
-	return &o.PastBreakdown, true
+	return o.PastBreakdown, true
 }
 
-// SetPastBreakdown sets field value
+// HasPastBreakdown returns a boolean if a field has been set.
+func (o *ProjectInfracost) HasPastBreakdown() bool {
+	if o != nil && !IsNil(o.PastBreakdown) {
+		return true
+	}
+
+	return false
+}
+
+// SetPastBreakdown gets a reference to the given Breakdown and assigns it to the PastBreakdown field.
 func (o *ProjectInfracost) SetPastBreakdown(v Breakdown) {
-	o.PastBreakdown = v
+	o.PastBreakdown = &v
 }
 
-// GetBreakdown returns the Breakdown field value
+// GetBreakdown returns the Breakdown field value if set, zero value otherwise.
 func (o *ProjectInfracost) GetBreakdown() Breakdown {
-	if o == nil {
+	if o == nil || IsNil(o.Breakdown) {
 		var ret Breakdown
 		return ret
 	}
-
-	return o.Breakdown
+	return *o.Breakdown
 }
 
-// GetBreakdownOk returns a tuple with the Breakdown field value
+// GetBreakdownOk returns a tuple with the Breakdown field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectInfracost) GetBreakdownOk() (*Breakdown, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Breakdown) {
 		return nil, false
 	}
-	return &o.Breakdown, true
+	return o.Breakdown, true
 }
 
-// SetBreakdown sets field value
+// HasBreakdown returns a boolean if a field has been set.
+func (o *ProjectInfracost) HasBreakdown() bool {
+	if o != nil && !IsNil(o.Breakdown) {
+		return true
+	}
+
+	return false
+}
+
+// SetBreakdown gets a reference to the given Breakdown and assigns it to the Breakdown field.
 func (o *ProjectInfracost) SetBreakdown(v Breakdown) {
-	o.Breakdown = v
+	o.Breakdown = &v
 }
 
-// GetDiff returns the Diff field value
+// GetDiff returns the Diff field value if set, zero value otherwise.
 func (o *ProjectInfracost) GetDiff() Diff {
-	if o == nil {
+	if o == nil || IsNil(o.Diff) {
 		var ret Diff
 		return ret
 	}
-
-	return o.Diff
+	return *o.Diff
 }
 
-// GetDiffOk returns a tuple with the Diff field value
+// GetDiffOk returns a tuple with the Diff field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectInfracost) GetDiffOk() (*Diff, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Diff) {
 		return nil, false
 	}
-	return &o.Diff, true
+	return o.Diff, true
 }
 
-// SetDiff sets field value
+// HasDiff returns a boolean if a field has been set.
+func (o *ProjectInfracost) HasDiff() bool {
+	if o != nil && !IsNil(o.Diff) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiff gets a reference to the given Diff and assigns it to the Diff field.
 func (o *ProjectInfracost) SetDiff(v Diff) {
-	o.Diff = v
+	o.Diff = &v
 }
 
-// GetSummary returns the Summary field value
+// GetSummary returns the Summary field value if set, zero value otherwise.
 func (o *ProjectInfracost) GetSummary() Summary {
-	if o == nil {
+	if o == nil || IsNil(o.Summary) {
 		var ret Summary
 		return ret
 	}
-
-	return o.Summary
+	return *o.Summary
 }
 
-// GetSummaryOk returns a tuple with the Summary field value
+// GetSummaryOk returns a tuple with the Summary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectInfracost) GetSummaryOk() (*Summary, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Summary) {
 		return nil, false
 	}
-	return &o.Summary, true
+	return o.Summary, true
 }
 
-// SetSummary sets field value
+// HasSummary returns a boolean if a field has been set.
+func (o *ProjectInfracost) HasSummary() bool {
+	if o != nil && !IsNil(o.Summary) {
+		return true
+	}
+
+	return false
+}
+
+// SetSummary gets a reference to the given Summary and assigns it to the Summary field.
 func (o *ProjectInfracost) SetSummary(v Summary) {
-	o.Summary = v
+	o.Summary = &v
 }
 
 func (o ProjectInfracost) MarshalJSON() ([]byte, error) {
@@ -235,57 +280,28 @@ func (o ProjectInfracost) MarshalJSON() ([]byte, error) {
 
 func (o ProjectInfracost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["displayName"] = o.DisplayName
-	toSerialize["metadata"] = o.Metadata
-	toSerialize["pastBreakdown"] = o.PastBreakdown
-	toSerialize["breakdown"] = o.Breakdown
-	toSerialize["diff"] = o.Diff
-	toSerialize["summary"] = o.Summary
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.DisplayName) {
+		toSerialize["displayName"] = o.DisplayName
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
+	}
+	if !IsNil(o.PastBreakdown) {
+		toSerialize["pastBreakdown"] = o.PastBreakdown
+	}
+	if !IsNil(o.Breakdown) {
+		toSerialize["breakdown"] = o.Breakdown
+	}
+	if !IsNil(o.Diff) {
+		toSerialize["diff"] = o.Diff
+	}
+	if !IsNil(o.Summary) {
+		toSerialize["summary"] = o.Summary
+	}
 	return toSerialize, nil
-}
-
-func (o *ProjectInfracost) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"displayName",
-		"metadata",
-		"pastBreakdown",
-		"breakdown",
-		"diff",
-		"summary",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varProjectInfracost := _ProjectInfracost{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectInfracost)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ProjectInfracost(varProjectInfracost)
-
-	return err
 }
 
 type NullableProjectInfracost struct {

@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the CreateAlertDto type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &CreateAlertDto{}
 
 // CreateAlertDto struct for CreateAlertDto
 type CreateAlertDto struct {
-	Alerts []KubernetesAlertCreateDto `json:"alerts"`
-	Status string `json:"status"`
+	Alerts []KubernetesAlertCreateDto `json:"alerts,omitempty"`
+	Status *string `json:"status,omitempty"`
 }
-
-type _CreateAlertDto CreateAlertDto
 
 // NewCreateAlertDto instantiates a new CreateAlertDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateAlertDto(alerts []KubernetesAlertCreateDto, status string) *CreateAlertDto {
+func NewCreateAlertDto() *CreateAlertDto {
 	this := CreateAlertDto{}
-	this.Alerts = alerts
-	this.Status = status
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewCreateAlertDtoWithDefaults() *CreateAlertDto {
 	return &this
 }
 
-// GetAlerts returns the Alerts field value
+// GetAlerts returns the Alerts field value if set, zero value otherwise.
 func (o *CreateAlertDto) GetAlerts() []KubernetesAlertCreateDto {
-	if o == nil {
+	if o == nil || IsNil(o.Alerts) {
 		var ret []KubernetesAlertCreateDto
 		return ret
 	}
-
 	return o.Alerts
 }
 
-// GetAlertsOk returns a tuple with the Alerts field value
+// GetAlertsOk returns a tuple with the Alerts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateAlertDto) GetAlertsOk() ([]KubernetesAlertCreateDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Alerts) {
 		return nil, false
 	}
 	return o.Alerts, true
 }
 
-// SetAlerts sets field value
+// HasAlerts returns a boolean if a field has been set.
+func (o *CreateAlertDto) HasAlerts() bool {
+	if o != nil && !IsNil(o.Alerts) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlerts gets a reference to the given []KubernetesAlertCreateDto and assigns it to the Alerts field.
 func (o *CreateAlertDto) SetAlerts(v []KubernetesAlertCreateDto) {
 	o.Alerts = v
 }
 
-// GetStatus returns the Status field value
+// GetStatus returns the Status field value if set, zero value otherwise.
 func (o *CreateAlertDto) GetStatus() string {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
-
-	return o.Status
+	return *o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateAlertDto) GetStatusOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
-	return &o.Status, true
+	return o.Status, true
 }
 
-// SetStatus sets field value
+// HasStatus returns a boolean if a field has been set.
+func (o *CreateAlertDto) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *CreateAlertDto) SetStatus(v string) {
-	o.Status = v
+	o.Status = &v
 }
 
 func (o CreateAlertDto) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o CreateAlertDto) MarshalJSON() ([]byte, error) {
 
 func (o CreateAlertDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["alerts"] = o.Alerts
-	toSerialize["status"] = o.Status
+	if !IsNil(o.Alerts) {
+		toSerialize["alerts"] = o.Alerts
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
 	return toSerialize, nil
-}
-
-func (o *CreateAlertDto) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"alerts",
-		"status",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varCreateAlertDto := _CreateAlertDto{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCreateAlertDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CreateAlertDto(varCreateAlertDto)
-
-	return err
 }
 
 type NullableCreateAlertDto struct {

@@ -22,21 +22,21 @@ var _ MappedNullable = &ServerForCreateDto{}
 
 // ServerForCreateDto struct for ServerForCreateDto
 type ServerForCreateDto struct {
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	Role CloudRole `json:"role"`
 	ProjectId int32 `json:"projectId"`
 	DiskSize int64 `json:"diskSize"`
-	Flavor string `json:"flavor"`
+	Flavor *string `json:"flavor,omitempty"`
 	Count int32 `json:"count"`
 	SpotPrice NullableFloat64 `json:"spotPrice,omitempty"`
 	SpotInstance bool `json:"spotInstance"`
 	WasmEnabled bool `json:"wasmEnabled"`
-	AutoscalingGroup string `json:"autoscalingGroup"`
-	AvailabilityZone string `json:"availabilityZone"`
+	AutoscalingGroup *string `json:"autoscalingGroup,omitempty"`
+	AvailabilityZone *string `json:"availabilityZone,omitempty"`
 	ProxmoxExtraDiskSize int32 `json:"proxmoxExtraDiskSize"`
 	ProxmoxRole ProxmoxRole `json:"proxmoxRole"`
-	Hypervisor string `json:"hypervisor"`
-	KubernetesNodeLabels []KubernetesNodeLabelsDto `json:"kubernetesNodeLabels"`
+	Hypervisor *string `json:"hypervisor,omitempty"`
+	KubernetesNodeLabels []KubernetesNodeLabelsDto `json:"kubernetesNodeLabels,omitempty"`
 	ReplicaCount NullableInt32 `json:"replicaCount,omitempty"`
 	UseLocalDisk bool `json:"useLocalDisk"`
 }
@@ -47,22 +47,16 @@ type _ServerForCreateDto ServerForCreateDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServerForCreateDto(name string, role CloudRole, projectId int32, diskSize int64, flavor string, count int32, spotInstance bool, wasmEnabled bool, autoscalingGroup string, availabilityZone string, proxmoxExtraDiskSize int32, proxmoxRole ProxmoxRole, hypervisor string, kubernetesNodeLabels []KubernetesNodeLabelsDto, useLocalDisk bool) *ServerForCreateDto {
+func NewServerForCreateDto(role CloudRole, projectId int32, diskSize int64, count int32, spotInstance bool, wasmEnabled bool, proxmoxExtraDiskSize int32, proxmoxRole ProxmoxRole, useLocalDisk bool) *ServerForCreateDto {
 	this := ServerForCreateDto{}
-	this.Name = name
 	this.Role = role
 	this.ProjectId = projectId
 	this.DiskSize = diskSize
-	this.Flavor = flavor
 	this.Count = count
 	this.SpotInstance = spotInstance
 	this.WasmEnabled = wasmEnabled
-	this.AutoscalingGroup = autoscalingGroup
-	this.AvailabilityZone = availabilityZone
 	this.ProxmoxExtraDiskSize = proxmoxExtraDiskSize
 	this.ProxmoxRole = proxmoxRole
-	this.Hypervisor = hypervisor
-	this.KubernetesNodeLabels = kubernetesNodeLabels
 	this.UseLocalDisk = useLocalDisk
 	return &this
 }
@@ -75,28 +69,36 @@ func NewServerForCreateDtoWithDefaults() *ServerForCreateDto {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *ServerForCreateDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerForCreateDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *ServerForCreateDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ServerForCreateDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetRole returns the Role field value
@@ -171,28 +173,36 @@ func (o *ServerForCreateDto) SetDiskSize(v int64) {
 	o.DiskSize = v
 }
 
-// GetFlavor returns the Flavor field value
+// GetFlavor returns the Flavor field value if set, zero value otherwise.
 func (o *ServerForCreateDto) GetFlavor() string {
-	if o == nil {
+	if o == nil || IsNil(o.Flavor) {
 		var ret string
 		return ret
 	}
-
-	return o.Flavor
+	return *o.Flavor
 }
 
-// GetFlavorOk returns a tuple with the Flavor field value
+// GetFlavorOk returns a tuple with the Flavor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerForCreateDto) GetFlavorOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Flavor) {
 		return nil, false
 	}
-	return &o.Flavor, true
+	return o.Flavor, true
 }
 
-// SetFlavor sets field value
+// HasFlavor returns a boolean if a field has been set.
+func (o *ServerForCreateDto) HasFlavor() bool {
+	if o != nil && !IsNil(o.Flavor) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlavor gets a reference to the given string and assigns it to the Flavor field.
 func (o *ServerForCreateDto) SetFlavor(v string) {
-	o.Flavor = v
+	o.Flavor = &v
 }
 
 // GetCount returns the Count field value
@@ -309,52 +319,68 @@ func (o *ServerForCreateDto) SetWasmEnabled(v bool) {
 	o.WasmEnabled = v
 }
 
-// GetAutoscalingGroup returns the AutoscalingGroup field value
+// GetAutoscalingGroup returns the AutoscalingGroup field value if set, zero value otherwise.
 func (o *ServerForCreateDto) GetAutoscalingGroup() string {
-	if o == nil {
+	if o == nil || IsNil(o.AutoscalingGroup) {
 		var ret string
 		return ret
 	}
-
-	return o.AutoscalingGroup
+	return *o.AutoscalingGroup
 }
 
-// GetAutoscalingGroupOk returns a tuple with the AutoscalingGroup field value
+// GetAutoscalingGroupOk returns a tuple with the AutoscalingGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerForCreateDto) GetAutoscalingGroupOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AutoscalingGroup) {
 		return nil, false
 	}
-	return &o.AutoscalingGroup, true
+	return o.AutoscalingGroup, true
 }
 
-// SetAutoscalingGroup sets field value
+// HasAutoscalingGroup returns a boolean if a field has been set.
+func (o *ServerForCreateDto) HasAutoscalingGroup() bool {
+	if o != nil && !IsNil(o.AutoscalingGroup) {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoscalingGroup gets a reference to the given string and assigns it to the AutoscalingGroup field.
 func (o *ServerForCreateDto) SetAutoscalingGroup(v string) {
-	o.AutoscalingGroup = v
+	o.AutoscalingGroup = &v
 }
 
-// GetAvailabilityZone returns the AvailabilityZone field value
+// GetAvailabilityZone returns the AvailabilityZone field value if set, zero value otherwise.
 func (o *ServerForCreateDto) GetAvailabilityZone() string {
-	if o == nil {
+	if o == nil || IsNil(o.AvailabilityZone) {
 		var ret string
 		return ret
 	}
-
-	return o.AvailabilityZone
+	return *o.AvailabilityZone
 }
 
-// GetAvailabilityZoneOk returns a tuple with the AvailabilityZone field value
+// GetAvailabilityZoneOk returns a tuple with the AvailabilityZone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerForCreateDto) GetAvailabilityZoneOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AvailabilityZone) {
 		return nil, false
 	}
-	return &o.AvailabilityZone, true
+	return o.AvailabilityZone, true
 }
 
-// SetAvailabilityZone sets field value
+// HasAvailabilityZone returns a boolean if a field has been set.
+func (o *ServerForCreateDto) HasAvailabilityZone() bool {
+	if o != nil && !IsNil(o.AvailabilityZone) {
+		return true
+	}
+
+	return false
+}
+
+// SetAvailabilityZone gets a reference to the given string and assigns it to the AvailabilityZone field.
 func (o *ServerForCreateDto) SetAvailabilityZone(v string) {
-	o.AvailabilityZone = v
+	o.AvailabilityZone = &v
 }
 
 // GetProxmoxExtraDiskSize returns the ProxmoxExtraDiskSize field value
@@ -405,50 +431,66 @@ func (o *ServerForCreateDto) SetProxmoxRole(v ProxmoxRole) {
 	o.ProxmoxRole = v
 }
 
-// GetHypervisor returns the Hypervisor field value
+// GetHypervisor returns the Hypervisor field value if set, zero value otherwise.
 func (o *ServerForCreateDto) GetHypervisor() string {
-	if o == nil {
+	if o == nil || IsNil(o.Hypervisor) {
 		var ret string
 		return ret
 	}
-
-	return o.Hypervisor
+	return *o.Hypervisor
 }
 
-// GetHypervisorOk returns a tuple with the Hypervisor field value
+// GetHypervisorOk returns a tuple with the Hypervisor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerForCreateDto) GetHypervisorOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Hypervisor) {
 		return nil, false
 	}
-	return &o.Hypervisor, true
+	return o.Hypervisor, true
 }
 
-// SetHypervisor sets field value
+// HasHypervisor returns a boolean if a field has been set.
+func (o *ServerForCreateDto) HasHypervisor() bool {
+	if o != nil && !IsNil(o.Hypervisor) {
+		return true
+	}
+
+	return false
+}
+
+// SetHypervisor gets a reference to the given string and assigns it to the Hypervisor field.
 func (o *ServerForCreateDto) SetHypervisor(v string) {
-	o.Hypervisor = v
+	o.Hypervisor = &v
 }
 
-// GetKubernetesNodeLabels returns the KubernetesNodeLabels field value
+// GetKubernetesNodeLabels returns the KubernetesNodeLabels field value if set, zero value otherwise.
 func (o *ServerForCreateDto) GetKubernetesNodeLabels() []KubernetesNodeLabelsDto {
-	if o == nil {
+	if o == nil || IsNil(o.KubernetesNodeLabels) {
 		var ret []KubernetesNodeLabelsDto
 		return ret
 	}
-
 	return o.KubernetesNodeLabels
 }
 
-// GetKubernetesNodeLabelsOk returns a tuple with the KubernetesNodeLabels field value
+// GetKubernetesNodeLabelsOk returns a tuple with the KubernetesNodeLabels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerForCreateDto) GetKubernetesNodeLabelsOk() ([]KubernetesNodeLabelsDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.KubernetesNodeLabels) {
 		return nil, false
 	}
 	return o.KubernetesNodeLabels, true
 }
 
-// SetKubernetesNodeLabels sets field value
+// HasKubernetesNodeLabels returns a boolean if a field has been set.
+func (o *ServerForCreateDto) HasKubernetesNodeLabels() bool {
+	if o != nil && !IsNil(o.KubernetesNodeLabels) {
+		return true
+	}
+
+	return false
+}
+
+// SetKubernetesNodeLabels gets a reference to the given []KubernetesNodeLabelsDto and assigns it to the KubernetesNodeLabels field.
 func (o *ServerForCreateDto) SetKubernetesNodeLabels(v []KubernetesNodeLabelsDto) {
 	o.KubernetesNodeLabels = v
 }
@@ -529,23 +571,35 @@ func (o ServerForCreateDto) MarshalJSON() ([]byte, error) {
 
 func (o ServerForCreateDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	toSerialize["role"] = o.Role
 	toSerialize["projectId"] = o.ProjectId
 	toSerialize["diskSize"] = o.DiskSize
-	toSerialize["flavor"] = o.Flavor
+	if !IsNil(o.Flavor) {
+		toSerialize["flavor"] = o.Flavor
+	}
 	toSerialize["count"] = o.Count
 	if o.SpotPrice.IsSet() {
 		toSerialize["spotPrice"] = o.SpotPrice.Get()
 	}
 	toSerialize["spotInstance"] = o.SpotInstance
 	toSerialize["wasmEnabled"] = o.WasmEnabled
-	toSerialize["autoscalingGroup"] = o.AutoscalingGroup
-	toSerialize["availabilityZone"] = o.AvailabilityZone
+	if !IsNil(o.AutoscalingGroup) {
+		toSerialize["autoscalingGroup"] = o.AutoscalingGroup
+	}
+	if !IsNil(o.AvailabilityZone) {
+		toSerialize["availabilityZone"] = o.AvailabilityZone
+	}
 	toSerialize["proxmoxExtraDiskSize"] = o.ProxmoxExtraDiskSize
 	toSerialize["proxmoxRole"] = o.ProxmoxRole
-	toSerialize["hypervisor"] = o.Hypervisor
-	toSerialize["kubernetesNodeLabels"] = o.KubernetesNodeLabels
+	if !IsNil(o.Hypervisor) {
+		toSerialize["hypervisor"] = o.Hypervisor
+	}
+	if !IsNil(o.KubernetesNodeLabels) {
+		toSerialize["kubernetesNodeLabels"] = o.KubernetesNodeLabels
+	}
 	if o.ReplicaCount.IsSet() {
 		toSerialize["replicaCount"] = o.ReplicaCount.Get()
 	}
@@ -558,20 +612,14 @@ func (o *ServerForCreateDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
 		"role",
 		"projectId",
 		"diskSize",
-		"flavor",
 		"count",
 		"spotInstance",
 		"wasmEnabled",
-		"autoscalingGroup",
-		"availabilityZone",
 		"proxmoxExtraDiskSize",
 		"proxmoxRole",
-		"hypervisor",
-		"kubernetesNodeLabels",
 		"useLocalDisk",
 	}
 

@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the GetCatalogAppValueAutocompleteCommand type satisfies the MappedNullable interface at compile time
@@ -22,24 +20,18 @@ var _ MappedNullable = &GetCatalogAppValueAutocompleteCommand{}
 
 // GetCatalogAppValueAutocompleteCommand struct for GetCatalogAppValueAutocompleteCommand
 type GetCatalogAppValueAutocompleteCommand struct {
-	PackageId string `json:"packageId"`
-	Version string `json:"version"`
-	CatalogAppId NullableInt32 `json:"catalogAppId"`
-	IsQuestion NullableBool `json:"isQuestion"`
+	PackageId *string `json:"packageId,omitempty"`
+	Version *string `json:"version,omitempty"`
+	CatalogAppId NullableInt32 `json:"catalogAppId,omitempty"`
+	IsQuestion NullableBool `json:"isQuestion,omitempty"`
 }
-
-type _GetCatalogAppValueAutocompleteCommand GetCatalogAppValueAutocompleteCommand
 
 // NewGetCatalogAppValueAutocompleteCommand instantiates a new GetCatalogAppValueAutocompleteCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetCatalogAppValueAutocompleteCommand(packageId string, version string, catalogAppId NullableInt32, isQuestion NullableBool) *GetCatalogAppValueAutocompleteCommand {
+func NewGetCatalogAppValueAutocompleteCommand() *GetCatalogAppValueAutocompleteCommand {
 	this := GetCatalogAppValueAutocompleteCommand{}
-	this.PackageId = packageId
-	this.Version = version
-	this.CatalogAppId = catalogAppId
-	this.IsQuestion = isQuestion
 	return &this
 }
 
@@ -51,66 +43,80 @@ func NewGetCatalogAppValueAutocompleteCommandWithDefaults() *GetCatalogAppValueA
 	return &this
 }
 
-// GetPackageId returns the PackageId field value
+// GetPackageId returns the PackageId field value if set, zero value otherwise.
 func (o *GetCatalogAppValueAutocompleteCommand) GetPackageId() string {
-	if o == nil {
+	if o == nil || IsNil(o.PackageId) {
 		var ret string
 		return ret
 	}
-
-	return o.PackageId
+	return *o.PackageId
 }
 
-// GetPackageIdOk returns a tuple with the PackageId field value
+// GetPackageIdOk returns a tuple with the PackageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetCatalogAppValueAutocompleteCommand) GetPackageIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PackageId) {
 		return nil, false
 	}
-	return &o.PackageId, true
+	return o.PackageId, true
 }
 
-// SetPackageId sets field value
+// HasPackageId returns a boolean if a field has been set.
+func (o *GetCatalogAppValueAutocompleteCommand) HasPackageId() bool {
+	if o != nil && !IsNil(o.PackageId) {
+		return true
+	}
+
+	return false
+}
+
+// SetPackageId gets a reference to the given string and assigns it to the PackageId field.
 func (o *GetCatalogAppValueAutocompleteCommand) SetPackageId(v string) {
-	o.PackageId = v
+	o.PackageId = &v
 }
 
-// GetVersion returns the Version field value
+// GetVersion returns the Version field value if set, zero value otherwise.
 func (o *GetCatalogAppValueAutocompleteCommand) GetVersion() string {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
-
-	return o.Version
+	return *o.Version
 }
 
-// GetVersionOk returns a tuple with the Version field value
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetCatalogAppValueAutocompleteCommand) GetVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
-	return &o.Version, true
+	return o.Version, true
 }
 
-// SetVersion sets field value
+// HasVersion returns a boolean if a field has been set.
+func (o *GetCatalogAppValueAutocompleteCommand) HasVersion() bool {
+	if o != nil && !IsNil(o.Version) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *GetCatalogAppValueAutocompleteCommand) SetVersion(v string) {
-	o.Version = v
+	o.Version = &v
 }
 
-// GetCatalogAppId returns the CatalogAppId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetCatalogAppId returns the CatalogAppId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GetCatalogAppValueAutocompleteCommand) GetCatalogAppId() int32 {
-	if o == nil || o.CatalogAppId.Get() == nil {
+	if o == nil || IsNil(o.CatalogAppId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.CatalogAppId.Get()
 }
 
-// GetCatalogAppIdOk returns a tuple with the CatalogAppId field value
+// GetCatalogAppIdOk returns a tuple with the CatalogAppId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GetCatalogAppValueAutocompleteCommand) GetCatalogAppIdOk() (*int32, bool) {
@@ -120,23 +126,39 @@ func (o *GetCatalogAppValueAutocompleteCommand) GetCatalogAppIdOk() (*int32, boo
 	return o.CatalogAppId.Get(), o.CatalogAppId.IsSet()
 }
 
-// SetCatalogAppId sets field value
+// HasCatalogAppId returns a boolean if a field has been set.
+func (o *GetCatalogAppValueAutocompleteCommand) HasCatalogAppId() bool {
+	if o != nil && o.CatalogAppId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCatalogAppId gets a reference to the given NullableInt32 and assigns it to the CatalogAppId field.
 func (o *GetCatalogAppValueAutocompleteCommand) SetCatalogAppId(v int32) {
 	o.CatalogAppId.Set(&v)
 }
+// SetCatalogAppIdNil sets the value for CatalogAppId to be an explicit nil
+func (o *GetCatalogAppValueAutocompleteCommand) SetCatalogAppIdNil() {
+	o.CatalogAppId.Set(nil)
+}
 
-// GetIsQuestion returns the IsQuestion field value
-// If the value is explicit nil, the zero value for bool will be returned
+// UnsetCatalogAppId ensures that no value is present for CatalogAppId, not even an explicit nil
+func (o *GetCatalogAppValueAutocompleteCommand) UnsetCatalogAppId() {
+	o.CatalogAppId.Unset()
+}
+
+// GetIsQuestion returns the IsQuestion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GetCatalogAppValueAutocompleteCommand) GetIsQuestion() bool {
-	if o == nil || o.IsQuestion.Get() == nil {
+	if o == nil || IsNil(o.IsQuestion.Get()) {
 		var ret bool
 		return ret
 	}
-
 	return *o.IsQuestion.Get()
 }
 
-// GetIsQuestionOk returns a tuple with the IsQuestion field value
+// GetIsQuestionOk returns a tuple with the IsQuestion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GetCatalogAppValueAutocompleteCommand) GetIsQuestionOk() (*bool, bool) {
@@ -146,9 +168,27 @@ func (o *GetCatalogAppValueAutocompleteCommand) GetIsQuestionOk() (*bool, bool) 
 	return o.IsQuestion.Get(), o.IsQuestion.IsSet()
 }
 
-// SetIsQuestion sets field value
+// HasIsQuestion returns a boolean if a field has been set.
+func (o *GetCatalogAppValueAutocompleteCommand) HasIsQuestion() bool {
+	if o != nil && o.IsQuestion.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIsQuestion gets a reference to the given NullableBool and assigns it to the IsQuestion field.
 func (o *GetCatalogAppValueAutocompleteCommand) SetIsQuestion(v bool) {
 	o.IsQuestion.Set(&v)
+}
+// SetIsQuestionNil sets the value for IsQuestion to be an explicit nil
+func (o *GetCatalogAppValueAutocompleteCommand) SetIsQuestionNil() {
+	o.IsQuestion.Set(nil)
+}
+
+// UnsetIsQuestion ensures that no value is present for IsQuestion, not even an explicit nil
+func (o *GetCatalogAppValueAutocompleteCommand) UnsetIsQuestion() {
+	o.IsQuestion.Unset()
 }
 
 func (o GetCatalogAppValueAutocompleteCommand) MarshalJSON() ([]byte, error) {
@@ -161,51 +201,19 @@ func (o GetCatalogAppValueAutocompleteCommand) MarshalJSON() ([]byte, error) {
 
 func (o GetCatalogAppValueAutocompleteCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["packageId"] = o.PackageId
-	toSerialize["version"] = o.Version
-	toSerialize["catalogAppId"] = o.CatalogAppId.Get()
-	toSerialize["isQuestion"] = o.IsQuestion.Get()
+	if !IsNil(o.PackageId) {
+		toSerialize["packageId"] = o.PackageId
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if o.CatalogAppId.IsSet() {
+		toSerialize["catalogAppId"] = o.CatalogAppId.Get()
+	}
+	if o.IsQuestion.IsSet() {
+		toSerialize["isQuestion"] = o.IsQuestion.Get()
+	}
 	return toSerialize, nil
-}
-
-func (o *GetCatalogAppValueAutocompleteCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"packageId",
-		"version",
-		"catalogAppId",
-		"isQuestion",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varGetCatalogAppValueAutocompleteCommand := _GetCatalogAppValueAutocompleteCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGetCatalogAppValueAutocompleteCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GetCatalogAppValueAutocompleteCommand(varGetCatalogAppValueAutocompleteCommand)
-
-	return err
 }
 
 type NullableGetCatalogAppValueAutocompleteCommand struct {

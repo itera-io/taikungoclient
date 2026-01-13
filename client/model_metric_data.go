@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the MetricData type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &MetricData{}
 
 // MetricData struct for MetricData
 type MetricData struct {
-	ResultType string `json:"resultType"`
-	Result []MetricResult `json:"result"`
+	ResultType *string `json:"resultType,omitempty"`
+	Result []MetricResult `json:"result,omitempty"`
 }
-
-type _MetricData MetricData
 
 // NewMetricData instantiates a new MetricData object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMetricData(resultType string, result []MetricResult) *MetricData {
+func NewMetricData() *MetricData {
 	this := MetricData{}
-	this.ResultType = resultType
-	this.Result = result
 	return &this
 }
 
@@ -47,50 +41,66 @@ func NewMetricDataWithDefaults() *MetricData {
 	return &this
 }
 
-// GetResultType returns the ResultType field value
+// GetResultType returns the ResultType field value if set, zero value otherwise.
 func (o *MetricData) GetResultType() string {
-	if o == nil {
+	if o == nil || IsNil(o.ResultType) {
 		var ret string
 		return ret
 	}
-
-	return o.ResultType
+	return *o.ResultType
 }
 
-// GetResultTypeOk returns a tuple with the ResultType field value
+// GetResultTypeOk returns a tuple with the ResultType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MetricData) GetResultTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ResultType) {
 		return nil, false
 	}
-	return &o.ResultType, true
+	return o.ResultType, true
 }
 
-// SetResultType sets field value
+// HasResultType returns a boolean if a field has been set.
+func (o *MetricData) HasResultType() bool {
+	if o != nil && !IsNil(o.ResultType) {
+		return true
+	}
+
+	return false
+}
+
+// SetResultType gets a reference to the given string and assigns it to the ResultType field.
 func (o *MetricData) SetResultType(v string) {
-	o.ResultType = v
+	o.ResultType = &v
 }
 
-// GetResult returns the Result field value
+// GetResult returns the Result field value if set, zero value otherwise.
 func (o *MetricData) GetResult() []MetricResult {
-	if o == nil {
+	if o == nil || IsNil(o.Result) {
 		var ret []MetricResult
 		return ret
 	}
-
 	return o.Result
 }
 
-// GetResultOk returns a tuple with the Result field value
+// GetResultOk returns a tuple with the Result field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MetricData) GetResultOk() ([]MetricResult, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Result) {
 		return nil, false
 	}
 	return o.Result, true
 }
 
-// SetResult sets field value
+// HasResult returns a boolean if a field has been set.
+func (o *MetricData) HasResult() bool {
+	if o != nil && !IsNil(o.Result) {
+		return true
+	}
+
+	return false
+}
+
+// SetResult gets a reference to the given []MetricResult and assigns it to the Result field.
 func (o *MetricData) SetResult(v []MetricResult) {
 	o.Result = v
 }
@@ -105,47 +115,13 @@ func (o MetricData) MarshalJSON() ([]byte, error) {
 
 func (o MetricData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["resultType"] = o.ResultType
-	toSerialize["result"] = o.Result
+	if !IsNil(o.ResultType) {
+		toSerialize["resultType"] = o.ResultType
+	}
+	if !IsNil(o.Result) {
+		toSerialize["result"] = o.Result
+	}
 	return toSerialize, nil
-}
-
-func (o *MetricData) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"resultType",
-		"result",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varMetricData := _MetricData{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varMetricData)
-
-	if err != nil {
-		return err
-	}
-
-	*o = MetricData(varMetricData)
-
-	return err
 }
 
 type NullableMetricData struct {

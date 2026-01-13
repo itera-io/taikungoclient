@@ -23,9 +23,9 @@ var _ MappedNullable = &BackupCredentialsUpdateCommand{}
 // BackupCredentialsUpdateCommand struct for BackupCredentialsUpdateCommand
 type BackupCredentialsUpdateCommand struct {
 	Id int32 `json:"id"`
-	S3Name string `json:"s3Name"`
-	S3AccessKeyId string `json:"s3AccessKeyId"`
-	S3SecretKey string `json:"s3SecretKey"`
+	S3Name *string `json:"s3Name,omitempty"`
+	S3AccessKeyId *string `json:"s3AccessKeyId,omitempty"`
+	S3SecretKey *string `json:"s3SecretKey,omitempty"`
 }
 
 type _BackupCredentialsUpdateCommand BackupCredentialsUpdateCommand
@@ -34,12 +34,9 @@ type _BackupCredentialsUpdateCommand BackupCredentialsUpdateCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBackupCredentialsUpdateCommand(id int32, s3Name string, s3AccessKeyId string, s3SecretKey string) *BackupCredentialsUpdateCommand {
+func NewBackupCredentialsUpdateCommand(id int32) *BackupCredentialsUpdateCommand {
 	this := BackupCredentialsUpdateCommand{}
 	this.Id = id
-	this.S3Name = s3Name
-	this.S3AccessKeyId = s3AccessKeyId
-	this.S3SecretKey = s3SecretKey
 	return &this
 }
 
@@ -75,76 +72,100 @@ func (o *BackupCredentialsUpdateCommand) SetId(v int32) {
 	o.Id = v
 }
 
-// GetS3Name returns the S3Name field value
+// GetS3Name returns the S3Name field value if set, zero value otherwise.
 func (o *BackupCredentialsUpdateCommand) GetS3Name() string {
-	if o == nil {
+	if o == nil || IsNil(o.S3Name) {
 		var ret string
 		return ret
 	}
-
-	return o.S3Name
+	return *o.S3Name
 }
 
-// GetS3NameOk returns a tuple with the S3Name field value
+// GetS3NameOk returns a tuple with the S3Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackupCredentialsUpdateCommand) GetS3NameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.S3Name) {
 		return nil, false
 	}
-	return &o.S3Name, true
+	return o.S3Name, true
 }
 
-// SetS3Name sets field value
+// HasS3Name returns a boolean if a field has been set.
+func (o *BackupCredentialsUpdateCommand) HasS3Name() bool {
+	if o != nil && !IsNil(o.S3Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetS3Name gets a reference to the given string and assigns it to the S3Name field.
 func (o *BackupCredentialsUpdateCommand) SetS3Name(v string) {
-	o.S3Name = v
+	o.S3Name = &v
 }
 
-// GetS3AccessKeyId returns the S3AccessKeyId field value
+// GetS3AccessKeyId returns the S3AccessKeyId field value if set, zero value otherwise.
 func (o *BackupCredentialsUpdateCommand) GetS3AccessKeyId() string {
-	if o == nil {
+	if o == nil || IsNil(o.S3AccessKeyId) {
 		var ret string
 		return ret
 	}
-
-	return o.S3AccessKeyId
+	return *o.S3AccessKeyId
 }
 
-// GetS3AccessKeyIdOk returns a tuple with the S3AccessKeyId field value
+// GetS3AccessKeyIdOk returns a tuple with the S3AccessKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackupCredentialsUpdateCommand) GetS3AccessKeyIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.S3AccessKeyId) {
 		return nil, false
 	}
-	return &o.S3AccessKeyId, true
+	return o.S3AccessKeyId, true
 }
 
-// SetS3AccessKeyId sets field value
+// HasS3AccessKeyId returns a boolean if a field has been set.
+func (o *BackupCredentialsUpdateCommand) HasS3AccessKeyId() bool {
+	if o != nil && !IsNil(o.S3AccessKeyId) {
+		return true
+	}
+
+	return false
+}
+
+// SetS3AccessKeyId gets a reference to the given string and assigns it to the S3AccessKeyId field.
 func (o *BackupCredentialsUpdateCommand) SetS3AccessKeyId(v string) {
-	o.S3AccessKeyId = v
+	o.S3AccessKeyId = &v
 }
 
-// GetS3SecretKey returns the S3SecretKey field value
+// GetS3SecretKey returns the S3SecretKey field value if set, zero value otherwise.
 func (o *BackupCredentialsUpdateCommand) GetS3SecretKey() string {
-	if o == nil {
+	if o == nil || IsNil(o.S3SecretKey) {
 		var ret string
 		return ret
 	}
-
-	return o.S3SecretKey
+	return *o.S3SecretKey
 }
 
-// GetS3SecretKeyOk returns a tuple with the S3SecretKey field value
+// GetS3SecretKeyOk returns a tuple with the S3SecretKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackupCredentialsUpdateCommand) GetS3SecretKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.S3SecretKey) {
 		return nil, false
 	}
-	return &o.S3SecretKey, true
+	return o.S3SecretKey, true
 }
 
-// SetS3SecretKey sets field value
+// HasS3SecretKey returns a boolean if a field has been set.
+func (o *BackupCredentialsUpdateCommand) HasS3SecretKey() bool {
+	if o != nil && !IsNil(o.S3SecretKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetS3SecretKey gets a reference to the given string and assigns it to the S3SecretKey field.
 func (o *BackupCredentialsUpdateCommand) SetS3SecretKey(v string) {
-	o.S3SecretKey = v
+	o.S3SecretKey = &v
 }
 
 func (o BackupCredentialsUpdateCommand) MarshalJSON() ([]byte, error) {
@@ -158,9 +179,15 @@ func (o BackupCredentialsUpdateCommand) MarshalJSON() ([]byte, error) {
 func (o BackupCredentialsUpdateCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["s3Name"] = o.S3Name
-	toSerialize["s3AccessKeyId"] = o.S3AccessKeyId
-	toSerialize["s3SecretKey"] = o.S3SecretKey
+	if !IsNil(o.S3Name) {
+		toSerialize["s3Name"] = o.S3Name
+	}
+	if !IsNil(o.S3AccessKeyId) {
+		toSerialize["s3AccessKeyId"] = o.S3AccessKeyId
+	}
+	if !IsNil(o.S3SecretKey) {
+		toSerialize["s3SecretKey"] = o.S3SecretKey
+	}
 	return toSerialize, nil
 }
 
@@ -170,9 +197,6 @@ func (o *BackupCredentialsUpdateCommand) UnmarshalJSON(data []byte) (err error) 
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"s3Name",
-		"s3AccessKeyId",
-		"s3SecretKey",
 	}
 
 	allProperties := make(map[string]interface{})

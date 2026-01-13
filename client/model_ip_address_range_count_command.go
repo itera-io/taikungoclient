@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the IpAddressRangeCountCommand type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &IpAddressRangeCountCommand{}
 
 // IpAddressRangeCountCommand struct for IpAddressRangeCountCommand
 type IpAddressRangeCountCommand struct {
-	Begin string `json:"begin"`
-	End string `json:"end"`
+	Begin *string `json:"begin,omitempty"`
+	End *string `json:"end,omitempty"`
 }
-
-type _IpAddressRangeCountCommand IpAddressRangeCountCommand
 
 // NewIpAddressRangeCountCommand instantiates a new IpAddressRangeCountCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIpAddressRangeCountCommand(begin string, end string) *IpAddressRangeCountCommand {
+func NewIpAddressRangeCountCommand() *IpAddressRangeCountCommand {
 	this := IpAddressRangeCountCommand{}
-	this.Begin = begin
-	this.End = end
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewIpAddressRangeCountCommandWithDefaults() *IpAddressRangeCountCommand {
 	return &this
 }
 
-// GetBegin returns the Begin field value
+// GetBegin returns the Begin field value if set, zero value otherwise.
 func (o *IpAddressRangeCountCommand) GetBegin() string {
-	if o == nil {
+	if o == nil || IsNil(o.Begin) {
 		var ret string
 		return ret
 	}
-
-	return o.Begin
+	return *o.Begin
 }
 
-// GetBeginOk returns a tuple with the Begin field value
+// GetBeginOk returns a tuple with the Begin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IpAddressRangeCountCommand) GetBeginOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Begin) {
 		return nil, false
 	}
-	return &o.Begin, true
+	return o.Begin, true
 }
 
-// SetBegin sets field value
+// HasBegin returns a boolean if a field has been set.
+func (o *IpAddressRangeCountCommand) HasBegin() bool {
+	if o != nil && !IsNil(o.Begin) {
+		return true
+	}
+
+	return false
+}
+
+// SetBegin gets a reference to the given string and assigns it to the Begin field.
 func (o *IpAddressRangeCountCommand) SetBegin(v string) {
-	o.Begin = v
+	o.Begin = &v
 }
 
-// GetEnd returns the End field value
+// GetEnd returns the End field value if set, zero value otherwise.
 func (o *IpAddressRangeCountCommand) GetEnd() string {
-	if o == nil {
+	if o == nil || IsNil(o.End) {
 		var ret string
 		return ret
 	}
-
-	return o.End
+	return *o.End
 }
 
-// GetEndOk returns a tuple with the End field value
+// GetEndOk returns a tuple with the End field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IpAddressRangeCountCommand) GetEndOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.End) {
 		return nil, false
 	}
-	return &o.End, true
+	return o.End, true
 }
 
-// SetEnd sets field value
+// HasEnd returns a boolean if a field has been set.
+func (o *IpAddressRangeCountCommand) HasEnd() bool {
+	if o != nil && !IsNil(o.End) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnd gets a reference to the given string and assigns it to the End field.
 func (o *IpAddressRangeCountCommand) SetEnd(v string) {
-	o.End = v
+	o.End = &v
 }
 
 func (o IpAddressRangeCountCommand) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o IpAddressRangeCountCommand) MarshalJSON() ([]byte, error) {
 
 func (o IpAddressRangeCountCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["begin"] = o.Begin
-	toSerialize["end"] = o.End
+	if !IsNil(o.Begin) {
+		toSerialize["begin"] = o.Begin
+	}
+	if !IsNil(o.End) {
+		toSerialize["end"] = o.End
+	}
 	return toSerialize, nil
-}
-
-func (o *IpAddressRangeCountCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"begin",
-		"end",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varIpAddressRangeCountCommand := _IpAddressRangeCountCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varIpAddressRangeCountCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = IpAddressRangeCountCommand(varIpAddressRangeCountCommand)
-
-	return err
 }
 
 type NullableIpAddressRangeCountCommand struct {

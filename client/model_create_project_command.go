@@ -23,8 +23,8 @@ var _ MappedNullable = &CreateProjectCommand{}
 
 // CreateProjectCommand struct for CreateProjectCommand
 type CreateProjectCommand struct {
-	Name string `json:"name"`
-	KubernetesVersion string `json:"kubernetesVersion"`
+	Name *string `json:"name,omitempty"`
+	KubernetesVersion *string `json:"kubernetesVersion,omitempty"`
 	CloudCredentialId int32 `json:"cloudCredentialId"`
 	S3CredentialId NullableInt32 `json:"s3CredentialId,omitempty"`
 	AccessProfileId NullableInt32 `json:"accessProfileId,omitempty"`
@@ -36,10 +36,10 @@ type CreateProjectCommand struct {
 	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
 	AiEnabled bool `json:"aiEnabled"`
 	AiCredentialId NullableInt32 `json:"aiCredentialId,omitempty"`
-	Flavors []string `json:"flavors"`
-	Users []string `json:"users"`
+	Flavors []string `json:"flavors,omitempty"`
+	Users []string `json:"users,omitempty"`
 	AlertingProfileId NullableInt32 `json:"alertingProfileId,omitempty"`
-	TaikunLBFlavor string `json:"taikunLBFlavor"`
+	TaikunLBFlavor *string `json:"taikunLBFlavor,omitempty"`
 	RouterIdStartRange NullableInt32 `json:"routerIdStartRange,omitempty"`
 	RouterIdEndRange NullableInt32 `json:"routerIdEndRange,omitempty"`
 	ExpiredAt NullableTime `json:"expiredAt,omitempty"`
@@ -52,13 +52,13 @@ type CreateProjectCommand struct {
 	MinSize int32 `json:"minSize"`
 	MaxSize int32 `json:"maxSize"`
 	DiskSize float64 `json:"diskSize"`
-	AutoscalingFlavor string `json:"autoscalingFlavor"`
+	AutoscalingFlavor *string `json:"autoscalingFlavor,omitempty"`
 	AutoscalingSpotEnabled bool `json:"autoscalingSpotEnabled"`
-	Cidr string `json:"cidr"`
+	Cidr *string `json:"cidr,omitempty"`
 	NetMask NullableInt32 `json:"netMask,omitempty"`
 	SaveAsTemplate bool `json:"saveAsTemplate"`
-	TemplateName string `json:"templateName"`
-	ServerTemplates []ServerTemplateDto `json:"serverTemplates"`
+	TemplateName *string `json:"templateName,omitempty"`
+	ServerTemplates []ServerTemplateDto `json:"serverTemplates,omitempty"`
 }
 
 type _CreateProjectCommand CreateProjectCommand
@@ -67,19 +67,14 @@ type _CreateProjectCommand CreateProjectCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateProjectCommand(name string, kubernetesVersion string, cloudCredentialId int32, isKubernetes bool, isAutoUpgrade bool, isBackupEnabled bool, isMonitoringEnabled bool, aiEnabled bool, flavors []string, users []string, taikunLBFlavor string, deleteOnExpiration bool, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, autoscalingEnabled bool, minSize int32, maxSize int32, diskSize float64, autoscalingFlavor string, autoscalingSpotEnabled bool, cidr string, saveAsTemplate bool, templateName string, serverTemplates []ServerTemplateDto) *CreateProjectCommand {
+func NewCreateProjectCommand(cloudCredentialId int32, isKubernetes bool, isAutoUpgrade bool, isBackupEnabled bool, isMonitoringEnabled bool, aiEnabled bool, deleteOnExpiration bool, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, autoscalingEnabled bool, minSize int32, maxSize int32, diskSize float64, autoscalingSpotEnabled bool, saveAsTemplate bool) *CreateProjectCommand {
 	this := CreateProjectCommand{}
-	this.Name = name
-	this.KubernetesVersion = kubernetesVersion
 	this.CloudCredentialId = cloudCredentialId
 	this.IsKubernetes = isKubernetes
 	this.IsAutoUpgrade = isAutoUpgrade
 	this.IsBackupEnabled = isBackupEnabled
 	this.IsMonitoringEnabled = isMonitoringEnabled
 	this.AiEnabled = aiEnabled
-	this.Flavors = flavors
-	this.Users = users
-	this.TaikunLBFlavor = taikunLBFlavor
 	this.DeleteOnExpiration = deleteOnExpiration
 	this.AllowFullSpotKubernetes = allowFullSpotKubernetes
 	this.AllowSpotWorkers = allowSpotWorkers
@@ -88,12 +83,8 @@ func NewCreateProjectCommand(name string, kubernetesVersion string, cloudCredent
 	this.MinSize = minSize
 	this.MaxSize = maxSize
 	this.DiskSize = diskSize
-	this.AutoscalingFlavor = autoscalingFlavor
 	this.AutoscalingSpotEnabled = autoscalingSpotEnabled
-	this.Cidr = cidr
 	this.SaveAsTemplate = saveAsTemplate
-	this.TemplateName = templateName
-	this.ServerTemplates = serverTemplates
 	return &this
 }
 
@@ -105,52 +96,68 @@ func NewCreateProjectCommandWithDefaults() *CreateProjectCommand {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateProjectCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProjectCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CreateProjectCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateProjectCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetKubernetesVersion returns the KubernetesVersion field value
+// GetKubernetesVersion returns the KubernetesVersion field value if set, zero value otherwise.
 func (o *CreateProjectCommand) GetKubernetesVersion() string {
-	if o == nil {
+	if o == nil || IsNil(o.KubernetesVersion) {
 		var ret string
 		return ret
 	}
-
-	return o.KubernetesVersion
+	return *o.KubernetesVersion
 }
 
-// GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value
+// GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProjectCommand) GetKubernetesVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.KubernetesVersion) {
 		return nil, false
 	}
-	return &o.KubernetesVersion, true
+	return o.KubernetesVersion, true
 }
 
-// SetKubernetesVersion sets field value
+// HasKubernetesVersion returns a boolean if a field has been set.
+func (o *CreateProjectCommand) HasKubernetesVersion() bool {
+	if o != nil && !IsNil(o.KubernetesVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetKubernetesVersion gets a reference to the given string and assigns it to the KubernetesVersion field.
 func (o *CreateProjectCommand) SetKubernetesVersion(v string) {
-	o.KubernetesVersion = v
+	o.KubernetesVersion = &v
 }
 
 // GetCloudCredentialId returns the CloudCredentialId field value
@@ -507,50 +514,66 @@ func (o *CreateProjectCommand) UnsetAiCredentialId() {
 	o.AiCredentialId.Unset()
 }
 
-// GetFlavors returns the Flavors field value
+// GetFlavors returns the Flavors field value if set, zero value otherwise.
 func (o *CreateProjectCommand) GetFlavors() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Flavors) {
 		var ret []string
 		return ret
 	}
-
 	return o.Flavors
 }
 
-// GetFlavorsOk returns a tuple with the Flavors field value
+// GetFlavorsOk returns a tuple with the Flavors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProjectCommand) GetFlavorsOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Flavors) {
 		return nil, false
 	}
 	return o.Flavors, true
 }
 
-// SetFlavors sets field value
+// HasFlavors returns a boolean if a field has been set.
+func (o *CreateProjectCommand) HasFlavors() bool {
+	if o != nil && !IsNil(o.Flavors) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlavors gets a reference to the given []string and assigns it to the Flavors field.
 func (o *CreateProjectCommand) SetFlavors(v []string) {
 	o.Flavors = v
 }
 
-// GetUsers returns the Users field value
+// GetUsers returns the Users field value if set, zero value otherwise.
 func (o *CreateProjectCommand) GetUsers() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Users) {
 		var ret []string
 		return ret
 	}
-
 	return o.Users
 }
 
-// GetUsersOk returns a tuple with the Users field value
+// GetUsersOk returns a tuple with the Users field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProjectCommand) GetUsersOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Users) {
 		return nil, false
 	}
 	return o.Users, true
 }
 
-// SetUsers sets field value
+// HasUsers returns a boolean if a field has been set.
+func (o *CreateProjectCommand) HasUsers() bool {
+	if o != nil && !IsNil(o.Users) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsers gets a reference to the given []string and assigns it to the Users field.
 func (o *CreateProjectCommand) SetUsers(v []string) {
 	o.Users = v
 }
@@ -597,28 +620,36 @@ func (o *CreateProjectCommand) UnsetAlertingProfileId() {
 	o.AlertingProfileId.Unset()
 }
 
-// GetTaikunLBFlavor returns the TaikunLBFlavor field value
+// GetTaikunLBFlavor returns the TaikunLBFlavor field value if set, zero value otherwise.
 func (o *CreateProjectCommand) GetTaikunLBFlavor() string {
-	if o == nil {
+	if o == nil || IsNil(o.TaikunLBFlavor) {
 		var ret string
 		return ret
 	}
-
-	return o.TaikunLBFlavor
+	return *o.TaikunLBFlavor
 }
 
-// GetTaikunLBFlavorOk returns a tuple with the TaikunLBFlavor field value
+// GetTaikunLBFlavorOk returns a tuple with the TaikunLBFlavor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProjectCommand) GetTaikunLBFlavorOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TaikunLBFlavor) {
 		return nil, false
 	}
-	return &o.TaikunLBFlavor, true
+	return o.TaikunLBFlavor, true
 }
 
-// SetTaikunLBFlavor sets field value
+// HasTaikunLBFlavor returns a boolean if a field has been set.
+func (o *CreateProjectCommand) HasTaikunLBFlavor() bool {
+	if o != nil && !IsNil(o.TaikunLBFlavor) {
+		return true
+	}
+
+	return false
+}
+
+// SetTaikunLBFlavor gets a reference to the given string and assigns it to the TaikunLBFlavor field.
 func (o *CreateProjectCommand) SetTaikunLBFlavor(v string) {
-	o.TaikunLBFlavor = v
+	o.TaikunLBFlavor = &v
 }
 
 // GetRouterIdStartRange returns the RouterIdStartRange field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -981,28 +1012,36 @@ func (o *CreateProjectCommand) SetDiskSize(v float64) {
 	o.DiskSize = v
 }
 
-// GetAutoscalingFlavor returns the AutoscalingFlavor field value
+// GetAutoscalingFlavor returns the AutoscalingFlavor field value if set, zero value otherwise.
 func (o *CreateProjectCommand) GetAutoscalingFlavor() string {
-	if o == nil {
+	if o == nil || IsNil(o.AutoscalingFlavor) {
 		var ret string
 		return ret
 	}
-
-	return o.AutoscalingFlavor
+	return *o.AutoscalingFlavor
 }
 
-// GetAutoscalingFlavorOk returns a tuple with the AutoscalingFlavor field value
+// GetAutoscalingFlavorOk returns a tuple with the AutoscalingFlavor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProjectCommand) GetAutoscalingFlavorOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AutoscalingFlavor) {
 		return nil, false
 	}
-	return &o.AutoscalingFlavor, true
+	return o.AutoscalingFlavor, true
 }
 
-// SetAutoscalingFlavor sets field value
+// HasAutoscalingFlavor returns a boolean if a field has been set.
+func (o *CreateProjectCommand) HasAutoscalingFlavor() bool {
+	if o != nil && !IsNil(o.AutoscalingFlavor) {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoscalingFlavor gets a reference to the given string and assigns it to the AutoscalingFlavor field.
 func (o *CreateProjectCommand) SetAutoscalingFlavor(v string) {
-	o.AutoscalingFlavor = v
+	o.AutoscalingFlavor = &v
 }
 
 // GetAutoscalingSpotEnabled returns the AutoscalingSpotEnabled field value
@@ -1029,28 +1068,36 @@ func (o *CreateProjectCommand) SetAutoscalingSpotEnabled(v bool) {
 	o.AutoscalingSpotEnabled = v
 }
 
-// GetCidr returns the Cidr field value
+// GetCidr returns the Cidr field value if set, zero value otherwise.
 func (o *CreateProjectCommand) GetCidr() string {
-	if o == nil {
+	if o == nil || IsNil(o.Cidr) {
 		var ret string
 		return ret
 	}
-
-	return o.Cidr
+	return *o.Cidr
 }
 
-// GetCidrOk returns a tuple with the Cidr field value
+// GetCidrOk returns a tuple with the Cidr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProjectCommand) GetCidrOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Cidr) {
 		return nil, false
 	}
-	return &o.Cidr, true
+	return o.Cidr, true
 }
 
-// SetCidr sets field value
+// HasCidr returns a boolean if a field has been set.
+func (o *CreateProjectCommand) HasCidr() bool {
+	if o != nil && !IsNil(o.Cidr) {
+		return true
+	}
+
+	return false
+}
+
+// SetCidr gets a reference to the given string and assigns it to the Cidr field.
 func (o *CreateProjectCommand) SetCidr(v string) {
-	o.Cidr = v
+	o.Cidr = &v
 }
 
 // GetNetMask returns the NetMask field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1119,50 +1166,66 @@ func (o *CreateProjectCommand) SetSaveAsTemplate(v bool) {
 	o.SaveAsTemplate = v
 }
 
-// GetTemplateName returns the TemplateName field value
+// GetTemplateName returns the TemplateName field value if set, zero value otherwise.
 func (o *CreateProjectCommand) GetTemplateName() string {
-	if o == nil {
+	if o == nil || IsNil(o.TemplateName) {
 		var ret string
 		return ret
 	}
-
-	return o.TemplateName
+	return *o.TemplateName
 }
 
-// GetTemplateNameOk returns a tuple with the TemplateName field value
+// GetTemplateNameOk returns a tuple with the TemplateName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProjectCommand) GetTemplateNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TemplateName) {
 		return nil, false
 	}
-	return &o.TemplateName, true
+	return o.TemplateName, true
 }
 
-// SetTemplateName sets field value
+// HasTemplateName returns a boolean if a field has been set.
+func (o *CreateProjectCommand) HasTemplateName() bool {
+	if o != nil && !IsNil(o.TemplateName) {
+		return true
+	}
+
+	return false
+}
+
+// SetTemplateName gets a reference to the given string and assigns it to the TemplateName field.
 func (o *CreateProjectCommand) SetTemplateName(v string) {
-	o.TemplateName = v
+	o.TemplateName = &v
 }
 
-// GetServerTemplates returns the ServerTemplates field value
+// GetServerTemplates returns the ServerTemplates field value if set, zero value otherwise.
 func (o *CreateProjectCommand) GetServerTemplates() []ServerTemplateDto {
-	if o == nil {
+	if o == nil || IsNil(o.ServerTemplates) {
 		var ret []ServerTemplateDto
 		return ret
 	}
-
 	return o.ServerTemplates
 }
 
-// GetServerTemplatesOk returns a tuple with the ServerTemplates field value
+// GetServerTemplatesOk returns a tuple with the ServerTemplates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProjectCommand) GetServerTemplatesOk() ([]ServerTemplateDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ServerTemplates) {
 		return nil, false
 	}
 	return o.ServerTemplates, true
 }
 
-// SetServerTemplates sets field value
+// HasServerTemplates returns a boolean if a field has been set.
+func (o *CreateProjectCommand) HasServerTemplates() bool {
+	if o != nil && !IsNil(o.ServerTemplates) {
+		return true
+	}
+
+	return false
+}
+
+// SetServerTemplates gets a reference to the given []ServerTemplateDto and assigns it to the ServerTemplates field.
 func (o *CreateProjectCommand) SetServerTemplates(v []ServerTemplateDto) {
 	o.ServerTemplates = v
 }
@@ -1177,8 +1240,12 @@ func (o CreateProjectCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateProjectCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["kubernetesVersion"] = o.KubernetesVersion
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.KubernetesVersion) {
+		toSerialize["kubernetesVersion"] = o.KubernetesVersion
+	}
 	toSerialize["cloudCredentialId"] = o.CloudCredentialId
 	if o.S3CredentialId.IsSet() {
 		toSerialize["s3CredentialId"] = o.S3CredentialId.Get()
@@ -1200,12 +1267,18 @@ func (o CreateProjectCommand) ToMap() (map[string]interface{}, error) {
 	if o.AiCredentialId.IsSet() {
 		toSerialize["aiCredentialId"] = o.AiCredentialId.Get()
 	}
-	toSerialize["flavors"] = o.Flavors
-	toSerialize["users"] = o.Users
+	if !IsNil(o.Flavors) {
+		toSerialize["flavors"] = o.Flavors
+	}
+	if !IsNil(o.Users) {
+		toSerialize["users"] = o.Users
+	}
 	if o.AlertingProfileId.IsSet() {
 		toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
 	}
-	toSerialize["taikunLBFlavor"] = o.TaikunLBFlavor
+	if !IsNil(o.TaikunLBFlavor) {
+		toSerialize["taikunLBFlavor"] = o.TaikunLBFlavor
+	}
 	if o.RouterIdStartRange.IsSet() {
 		toSerialize["routerIdStartRange"] = o.RouterIdStartRange.Get()
 	}
@@ -1226,15 +1299,23 @@ func (o CreateProjectCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize["minSize"] = o.MinSize
 	toSerialize["maxSize"] = o.MaxSize
 	toSerialize["diskSize"] = o.DiskSize
-	toSerialize["autoscalingFlavor"] = o.AutoscalingFlavor
+	if !IsNil(o.AutoscalingFlavor) {
+		toSerialize["autoscalingFlavor"] = o.AutoscalingFlavor
+	}
 	toSerialize["autoscalingSpotEnabled"] = o.AutoscalingSpotEnabled
-	toSerialize["cidr"] = o.Cidr
+	if !IsNil(o.Cidr) {
+		toSerialize["cidr"] = o.Cidr
+	}
 	if o.NetMask.IsSet() {
 		toSerialize["netMask"] = o.NetMask.Get()
 	}
 	toSerialize["saveAsTemplate"] = o.SaveAsTemplate
-	toSerialize["templateName"] = o.TemplateName
-	toSerialize["serverTemplates"] = o.ServerTemplates
+	if !IsNil(o.TemplateName) {
+		toSerialize["templateName"] = o.TemplateName
+	}
+	if !IsNil(o.ServerTemplates) {
+		toSerialize["serverTemplates"] = o.ServerTemplates
+	}
 	return toSerialize, nil
 }
 
@@ -1243,17 +1324,12 @@ func (o *CreateProjectCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
-		"kubernetesVersion",
 		"cloudCredentialId",
 		"isKubernetes",
 		"isAutoUpgrade",
 		"isBackupEnabled",
 		"isMonitoringEnabled",
 		"aiEnabled",
-		"flavors",
-		"users",
-		"taikunLBFlavor",
 		"deleteOnExpiration",
 		"allowFullSpotKubernetes",
 		"allowSpotWorkers",
@@ -1262,12 +1338,8 @@ func (o *CreateProjectCommand) UnmarshalJSON(data []byte) (err error) {
 		"minSize",
 		"maxSize",
 		"diskSize",
-		"autoscalingFlavor",
 		"autoscalingSpotEnabled",
-		"cidr",
 		"saveAsTemplate",
-		"templateName",
-		"serverTemplates",
 	}
 
 	allProperties := make(map[string]interface{})

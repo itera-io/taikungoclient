@@ -23,11 +23,11 @@ var _ MappedNullable = &InfraProductDto{}
 // InfraProductDto struct for InfraProductDto
 type InfraProductDto struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	Price float64 `json:"price"`
-	PriceId string `json:"priceId"`
-	YearlyPriceId string `json:"yearlyPriceId"`
-	ProductId string `json:"productId"`
+	PriceId *string `json:"priceId,omitempty"`
+	YearlyPriceId *string `json:"yearlyPriceId,omitempty"`
+	ProductId *string `json:"productId,omitempty"`
 }
 
 type _InfraProductDto InfraProductDto
@@ -36,14 +36,10 @@ type _InfraProductDto InfraProductDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInfraProductDto(id int32, name string, price float64, priceId string, yearlyPriceId string, productId string) *InfraProductDto {
+func NewInfraProductDto(id int32, price float64) *InfraProductDto {
 	this := InfraProductDto{}
 	this.Id = id
-	this.Name = name
 	this.Price = price
-	this.PriceId = priceId
-	this.YearlyPriceId = yearlyPriceId
-	this.ProductId = productId
 	return &this
 }
 
@@ -79,28 +75,36 @@ func (o *InfraProductDto) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *InfraProductDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InfraProductDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *InfraProductDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *InfraProductDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetPrice returns the Price field value
@@ -127,76 +131,100 @@ func (o *InfraProductDto) SetPrice(v float64) {
 	o.Price = v
 }
 
-// GetPriceId returns the PriceId field value
+// GetPriceId returns the PriceId field value if set, zero value otherwise.
 func (o *InfraProductDto) GetPriceId() string {
-	if o == nil {
+	if o == nil || IsNil(o.PriceId) {
 		var ret string
 		return ret
 	}
-
-	return o.PriceId
+	return *o.PriceId
 }
 
-// GetPriceIdOk returns a tuple with the PriceId field value
+// GetPriceIdOk returns a tuple with the PriceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InfraProductDto) GetPriceIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PriceId) {
 		return nil, false
 	}
-	return &o.PriceId, true
+	return o.PriceId, true
 }
 
-// SetPriceId sets field value
+// HasPriceId returns a boolean if a field has been set.
+func (o *InfraProductDto) HasPriceId() bool {
+	if o != nil && !IsNil(o.PriceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetPriceId gets a reference to the given string and assigns it to the PriceId field.
 func (o *InfraProductDto) SetPriceId(v string) {
-	o.PriceId = v
+	o.PriceId = &v
 }
 
-// GetYearlyPriceId returns the YearlyPriceId field value
+// GetYearlyPriceId returns the YearlyPriceId field value if set, zero value otherwise.
 func (o *InfraProductDto) GetYearlyPriceId() string {
-	if o == nil {
+	if o == nil || IsNil(o.YearlyPriceId) {
 		var ret string
 		return ret
 	}
-
-	return o.YearlyPriceId
+	return *o.YearlyPriceId
 }
 
-// GetYearlyPriceIdOk returns a tuple with the YearlyPriceId field value
+// GetYearlyPriceIdOk returns a tuple with the YearlyPriceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InfraProductDto) GetYearlyPriceIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.YearlyPriceId) {
 		return nil, false
 	}
-	return &o.YearlyPriceId, true
+	return o.YearlyPriceId, true
 }
 
-// SetYearlyPriceId sets field value
+// HasYearlyPriceId returns a boolean if a field has been set.
+func (o *InfraProductDto) HasYearlyPriceId() bool {
+	if o != nil && !IsNil(o.YearlyPriceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetYearlyPriceId gets a reference to the given string and assigns it to the YearlyPriceId field.
 func (o *InfraProductDto) SetYearlyPriceId(v string) {
-	o.YearlyPriceId = v
+	o.YearlyPriceId = &v
 }
 
-// GetProductId returns the ProductId field value
+// GetProductId returns the ProductId field value if set, zero value otherwise.
 func (o *InfraProductDto) GetProductId() string {
-	if o == nil {
+	if o == nil || IsNil(o.ProductId) {
 		var ret string
 		return ret
 	}
-
-	return o.ProductId
+	return *o.ProductId
 }
 
-// GetProductIdOk returns a tuple with the ProductId field value
+// GetProductIdOk returns a tuple with the ProductId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InfraProductDto) GetProductIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProductId) {
 		return nil, false
 	}
-	return &o.ProductId, true
+	return o.ProductId, true
 }
 
-// SetProductId sets field value
+// HasProductId returns a boolean if a field has been set.
+func (o *InfraProductDto) HasProductId() bool {
+	if o != nil && !IsNil(o.ProductId) {
+		return true
+	}
+
+	return false
+}
+
+// SetProductId gets a reference to the given string and assigns it to the ProductId field.
 func (o *InfraProductDto) SetProductId(v string) {
-	o.ProductId = v
+	o.ProductId = &v
 }
 
 func (o InfraProductDto) MarshalJSON() ([]byte, error) {
@@ -210,11 +238,19 @@ func (o InfraProductDto) MarshalJSON() ([]byte, error) {
 func (o InfraProductDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	toSerialize["price"] = o.Price
-	toSerialize["priceId"] = o.PriceId
-	toSerialize["yearlyPriceId"] = o.YearlyPriceId
-	toSerialize["productId"] = o.ProductId
+	if !IsNil(o.PriceId) {
+		toSerialize["priceId"] = o.PriceId
+	}
+	if !IsNil(o.YearlyPriceId) {
+		toSerialize["yearlyPriceId"] = o.YearlyPriceId
+	}
+	if !IsNil(o.ProductId) {
+		toSerialize["productId"] = o.ProductId
+	}
 	return toSerialize, nil
 }
 
@@ -224,11 +260,7 @@ func (o *InfraProductDto) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
 		"price",
-		"priceId",
-		"yearlyPriceId",
-		"productId",
 	}
 
 	allProperties := make(map[string]interface{})

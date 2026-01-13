@@ -23,14 +23,14 @@ var _ MappedNullable = &CommonDropdownIsBoundDtoForProject{}
 // CommonDropdownIsBoundDtoForProject struct for CommonDropdownIsBoundDtoForProject
 type CommonDropdownIsBoundDtoForProject struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	IsBound bool `json:"isBound"`
 	HasKubeConfigFile bool `json:"hasKubeConfigFile"`
-	KubernetesVersion string `json:"kubernetesVersion"`
+	KubernetesVersion *string `json:"kubernetesVersion,omitempty"`
 	IsLocked bool `json:"isLocked"`
 	MaintenanceModeEnabled bool `json:"maintenanceModeEnabled"`
 	IsVirtualCluster bool `json:"isVirtualCluster"`
-	AlertingProfileId NullableInt32 `json:"alertingProfileId"`
+	AlertingProfileId NullableInt32 `json:"alertingProfileId,omitempty"`
 	CloudType ECloudCredentialType `json:"cloudType"`
 	Status ProjectStatus `json:"status"`
 	Health ProjectHealth `json:"health"`
@@ -43,17 +43,14 @@ type _CommonDropdownIsBoundDtoForProject CommonDropdownIsBoundDtoForProject
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCommonDropdownIsBoundDtoForProject(id int32, name string, isBound bool, hasKubeConfigFile bool, kubernetesVersion string, isLocked bool, maintenanceModeEnabled bool, isVirtualCluster bool, alertingProfileId NullableInt32, cloudType ECloudCredentialType, status ProjectStatus, health ProjectHealth, importClusterType ImportClusterType) *CommonDropdownIsBoundDtoForProject {
+func NewCommonDropdownIsBoundDtoForProject(id int32, isBound bool, hasKubeConfigFile bool, isLocked bool, maintenanceModeEnabled bool, isVirtualCluster bool, cloudType ECloudCredentialType, status ProjectStatus, health ProjectHealth, importClusterType ImportClusterType) *CommonDropdownIsBoundDtoForProject {
 	this := CommonDropdownIsBoundDtoForProject{}
 	this.Id = id
-	this.Name = name
 	this.IsBound = isBound
 	this.HasKubeConfigFile = hasKubeConfigFile
-	this.KubernetesVersion = kubernetesVersion
 	this.IsLocked = isLocked
 	this.MaintenanceModeEnabled = maintenanceModeEnabled
 	this.IsVirtualCluster = isVirtualCluster
-	this.AlertingProfileId = alertingProfileId
 	this.CloudType = cloudType
 	this.Status = status
 	this.Health = health
@@ -93,28 +90,36 @@ func (o *CommonDropdownIsBoundDtoForProject) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CommonDropdownIsBoundDtoForProject) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommonDropdownIsBoundDtoForProject) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CommonDropdownIsBoundDtoForProject) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CommonDropdownIsBoundDtoForProject) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetIsBound returns the IsBound field value
@@ -165,28 +170,36 @@ func (o *CommonDropdownIsBoundDtoForProject) SetHasKubeConfigFile(v bool) {
 	o.HasKubeConfigFile = v
 }
 
-// GetKubernetesVersion returns the KubernetesVersion field value
+// GetKubernetesVersion returns the KubernetesVersion field value if set, zero value otherwise.
 func (o *CommonDropdownIsBoundDtoForProject) GetKubernetesVersion() string {
-	if o == nil {
+	if o == nil || IsNil(o.KubernetesVersion) {
 		var ret string
 		return ret
 	}
-
-	return o.KubernetesVersion
+	return *o.KubernetesVersion
 }
 
-// GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value
+// GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommonDropdownIsBoundDtoForProject) GetKubernetesVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.KubernetesVersion) {
 		return nil, false
 	}
-	return &o.KubernetesVersion, true
+	return o.KubernetesVersion, true
 }
 
-// SetKubernetesVersion sets field value
+// HasKubernetesVersion returns a boolean if a field has been set.
+func (o *CommonDropdownIsBoundDtoForProject) HasKubernetesVersion() bool {
+	if o != nil && !IsNil(o.KubernetesVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetKubernetesVersion gets a reference to the given string and assigns it to the KubernetesVersion field.
 func (o *CommonDropdownIsBoundDtoForProject) SetKubernetesVersion(v string) {
-	o.KubernetesVersion = v
+	o.KubernetesVersion = &v
 }
 
 // GetIsLocked returns the IsLocked field value
@@ -261,18 +274,16 @@ func (o *CommonDropdownIsBoundDtoForProject) SetIsVirtualCluster(v bool) {
 	o.IsVirtualCluster = v
 }
 
-// GetAlertingProfileId returns the AlertingProfileId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetAlertingProfileId returns the AlertingProfileId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CommonDropdownIsBoundDtoForProject) GetAlertingProfileId() int32 {
-	if o == nil || o.AlertingProfileId.Get() == nil {
+	if o == nil || IsNil(o.AlertingProfileId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.AlertingProfileId.Get()
 }
 
-// GetAlertingProfileIdOk returns a tuple with the AlertingProfileId field value
+// GetAlertingProfileIdOk returns a tuple with the AlertingProfileId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CommonDropdownIsBoundDtoForProject) GetAlertingProfileIdOk() (*int32, bool) {
@@ -282,9 +293,27 @@ func (o *CommonDropdownIsBoundDtoForProject) GetAlertingProfileIdOk() (*int32, b
 	return o.AlertingProfileId.Get(), o.AlertingProfileId.IsSet()
 }
 
-// SetAlertingProfileId sets field value
+// HasAlertingProfileId returns a boolean if a field has been set.
+func (o *CommonDropdownIsBoundDtoForProject) HasAlertingProfileId() bool {
+	if o != nil && o.AlertingProfileId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAlertingProfileId gets a reference to the given NullableInt32 and assigns it to the AlertingProfileId field.
 func (o *CommonDropdownIsBoundDtoForProject) SetAlertingProfileId(v int32) {
 	o.AlertingProfileId.Set(&v)
+}
+// SetAlertingProfileIdNil sets the value for AlertingProfileId to be an explicit nil
+func (o *CommonDropdownIsBoundDtoForProject) SetAlertingProfileIdNil() {
+	o.AlertingProfileId.Set(nil)
+}
+
+// UnsetAlertingProfileId ensures that no value is present for AlertingProfileId, not even an explicit nil
+func (o *CommonDropdownIsBoundDtoForProject) UnsetAlertingProfileId() {
+	o.AlertingProfileId.Unset()
 }
 
 // GetCloudType returns the CloudType field value
@@ -394,14 +423,20 @@ func (o CommonDropdownIsBoundDtoForProject) MarshalJSON() ([]byte, error) {
 func (o CommonDropdownIsBoundDtoForProject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	toSerialize["isBound"] = o.IsBound
 	toSerialize["hasKubeConfigFile"] = o.HasKubeConfigFile
-	toSerialize["kubernetesVersion"] = o.KubernetesVersion
+	if !IsNil(o.KubernetesVersion) {
+		toSerialize["kubernetesVersion"] = o.KubernetesVersion
+	}
 	toSerialize["isLocked"] = o.IsLocked
 	toSerialize["maintenanceModeEnabled"] = o.MaintenanceModeEnabled
 	toSerialize["isVirtualCluster"] = o.IsVirtualCluster
-	toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
+	if o.AlertingProfileId.IsSet() {
+		toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
+	}
 	toSerialize["cloudType"] = o.CloudType
 	toSerialize["status"] = o.Status
 	toSerialize["health"] = o.Health
@@ -415,14 +450,11 @@ func (o *CommonDropdownIsBoundDtoForProject) UnmarshalJSON(data []byte) (err err
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
 		"isBound",
 		"hasKubeConfigFile",
-		"kubernetesVersion",
 		"isLocked",
 		"maintenanceModeEnabled",
 		"isVirtualCluster",
-		"alertingProfileId",
 		"cloudType",
 		"status",
 		"health",

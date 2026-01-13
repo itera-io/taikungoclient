@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the CidrCommand type satisfies the MappedNullable interface at compile time
@@ -22,18 +20,15 @@ var _ MappedNullable = &CidrCommand{}
 
 // CidrCommand struct for CidrCommand
 type CidrCommand struct {
-	Cidr string `json:"cidr"`
+	Cidr *string `json:"cidr,omitempty"`
 }
-
-type _CidrCommand CidrCommand
 
 // NewCidrCommand instantiates a new CidrCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCidrCommand(cidr string) *CidrCommand {
+func NewCidrCommand() *CidrCommand {
 	this := CidrCommand{}
-	this.Cidr = cidr
 	return &this
 }
 
@@ -45,28 +40,36 @@ func NewCidrCommandWithDefaults() *CidrCommand {
 	return &this
 }
 
-// GetCidr returns the Cidr field value
+// GetCidr returns the Cidr field value if set, zero value otherwise.
 func (o *CidrCommand) GetCidr() string {
-	if o == nil {
+	if o == nil || IsNil(o.Cidr) {
 		var ret string
 		return ret
 	}
-
-	return o.Cidr
+	return *o.Cidr
 }
 
-// GetCidrOk returns a tuple with the Cidr field value
+// GetCidrOk returns a tuple with the Cidr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CidrCommand) GetCidrOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Cidr) {
 		return nil, false
 	}
-	return &o.Cidr, true
+	return o.Cidr, true
 }
 
-// SetCidr sets field value
+// HasCidr returns a boolean if a field has been set.
+func (o *CidrCommand) HasCidr() bool {
+	if o != nil && !IsNil(o.Cidr) {
+		return true
+	}
+
+	return false
+}
+
+// SetCidr gets a reference to the given string and assigns it to the Cidr field.
 func (o *CidrCommand) SetCidr(v string) {
-	o.Cidr = v
+	o.Cidr = &v
 }
 
 func (o CidrCommand) MarshalJSON() ([]byte, error) {
@@ -79,45 +82,10 @@ func (o CidrCommand) MarshalJSON() ([]byte, error) {
 
 func (o CidrCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["cidr"] = o.Cidr
+	if !IsNil(o.Cidr) {
+		toSerialize["cidr"] = o.Cidr
+	}
 	return toSerialize, nil
-}
-
-func (o *CidrCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"cidr",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varCidrCommand := _CidrCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCidrCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CidrCommand(varCidrCommand)
-
-	return err
 }
 
 type NullableCidrCommand struct {

@@ -23,7 +23,7 @@ var _ MappedNullable = &BindImageToProjectCommand{}
 // BindImageToProjectCommand struct for BindImageToProjectCommand
 type BindImageToProjectCommand struct {
 	ProjectId int32 `json:"projectId"`
-	Images []string `json:"images"`
+	Images []string `json:"images,omitempty"`
 }
 
 type _BindImageToProjectCommand BindImageToProjectCommand
@@ -32,10 +32,9 @@ type _BindImageToProjectCommand BindImageToProjectCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBindImageToProjectCommand(projectId int32, images []string) *BindImageToProjectCommand {
+func NewBindImageToProjectCommand(projectId int32) *BindImageToProjectCommand {
 	this := BindImageToProjectCommand{}
 	this.ProjectId = projectId
-	this.Images = images
 	return &this
 }
 
@@ -71,26 +70,34 @@ func (o *BindImageToProjectCommand) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetImages returns the Images field value
+// GetImages returns the Images field value if set, zero value otherwise.
 func (o *BindImageToProjectCommand) GetImages() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Images) {
 		var ret []string
 		return ret
 	}
-
 	return o.Images
 }
 
-// GetImagesOk returns a tuple with the Images field value
+// GetImagesOk returns a tuple with the Images field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BindImageToProjectCommand) GetImagesOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Images) {
 		return nil, false
 	}
 	return o.Images, true
 }
 
-// SetImages sets field value
+// HasImages returns a boolean if a field has been set.
+func (o *BindImageToProjectCommand) HasImages() bool {
+	if o != nil && !IsNil(o.Images) {
+		return true
+	}
+
+	return false
+}
+
+// SetImages gets a reference to the given []string and assigns it to the Images field.
 func (o *BindImageToProjectCommand) SetImages(v []string) {
 	o.Images = v
 }
@@ -106,7 +113,9 @@ func (o BindImageToProjectCommand) MarshalJSON() ([]byte, error) {
 func (o BindImageToProjectCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["images"] = o.Images
+	if !IsNil(o.Images) {
+		toSerialize["images"] = o.Images
+	}
 	return toSerialize, nil
 }
 
@@ -116,7 +125,6 @@ func (o *BindImageToProjectCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"images",
 	}
 
 	allProperties := make(map[string]interface{})

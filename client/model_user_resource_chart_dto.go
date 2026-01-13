@@ -22,7 +22,7 @@ var _ MappedNullable = &UserResourceChartDto{}
 
 // UserResourceChartDto struct for UserResourceChartDto
 type UserResourceChartDto struct {
-	ProjectName string `json:"projectName"`
+	ProjectName *string `json:"projectName,omitempty"`
 	ProjectId int32 `json:"projectId"`
 	DiskSize int64 `json:"diskSize"`
 	Ram int64 `json:"ram"`
@@ -38,9 +38,8 @@ type _UserResourceChartDto UserResourceChartDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserResourceChartDto(projectName string, projectId int32, diskSize int64, ram int64, cpu int64, maxRam int64, maxCpu int64, maxDiskSize int64) *UserResourceChartDto {
+func NewUserResourceChartDto(projectId int32, diskSize int64, ram int64, cpu int64, maxRam int64, maxCpu int64, maxDiskSize int64) *UserResourceChartDto {
 	this := UserResourceChartDto{}
-	this.ProjectName = projectName
 	this.ProjectId = projectId
 	this.DiskSize = diskSize
 	this.Ram = ram
@@ -59,28 +58,36 @@ func NewUserResourceChartDtoWithDefaults() *UserResourceChartDto {
 	return &this
 }
 
-// GetProjectName returns the ProjectName field value
+// GetProjectName returns the ProjectName field value if set, zero value otherwise.
 func (o *UserResourceChartDto) GetProjectName() string {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		var ret string
 		return ret
 	}
-
-	return o.ProjectName
+	return *o.ProjectName
 }
 
-// GetProjectNameOk returns a tuple with the ProjectName field value
+// GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserResourceChartDto) GetProjectNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		return nil, false
 	}
-	return &o.ProjectName, true
+	return o.ProjectName, true
 }
 
-// SetProjectName sets field value
+// HasProjectName returns a boolean if a field has been set.
+func (o *UserResourceChartDto) HasProjectName() bool {
+	if o != nil && !IsNil(o.ProjectName) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectName gets a reference to the given string and assigns it to the ProjectName field.
 func (o *UserResourceChartDto) SetProjectName(v string) {
-	o.ProjectName = v
+	o.ProjectName = &v
 }
 
 // GetProjectId returns the ProjectId field value
@@ -261,7 +268,9 @@ func (o UserResourceChartDto) MarshalJSON() ([]byte, error) {
 
 func (o UserResourceChartDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["projectName"] = o.ProjectName
+	if !IsNil(o.ProjectName) {
+		toSerialize["projectName"] = o.ProjectName
+	}
 	toSerialize["projectId"] = o.ProjectId
 	toSerialize["diskSize"] = o.DiskSize
 	toSerialize["ram"] = o.Ram
@@ -277,7 +286,6 @@ func (o *UserResourceChartDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"projectName",
 		"projectId",
 		"diskSize",
 		"ram",

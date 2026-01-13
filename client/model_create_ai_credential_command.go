@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the CreateAiCredentialCommand type satisfies the MappedNullable interface at compile time
@@ -22,22 +20,17 @@ var _ MappedNullable = &CreateAiCredentialCommand{}
 
 // CreateAiCredentialCommand struct for CreateAiCredentialCommand
 type CreateAiCredentialCommand struct {
-	Name string `json:"name"`
-	ApiKey string `json:"apiKey"`
-	OrganizationId NullableInt32 `json:"organizationId"`
+	Name *string `json:"name,omitempty"`
+	ApiKey *string `json:"apiKey,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 }
-
-type _CreateAiCredentialCommand CreateAiCredentialCommand
 
 // NewCreateAiCredentialCommand instantiates a new CreateAiCredentialCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateAiCredentialCommand(name string, apiKey string, organizationId NullableInt32) *CreateAiCredentialCommand {
+func NewCreateAiCredentialCommand() *CreateAiCredentialCommand {
 	this := CreateAiCredentialCommand{}
-	this.Name = name
-	this.ApiKey = apiKey
-	this.OrganizationId = organizationId
 	return &this
 }
 
@@ -49,66 +42,80 @@ func NewCreateAiCredentialCommandWithDefaults() *CreateAiCredentialCommand {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateAiCredentialCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateAiCredentialCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CreateAiCredentialCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateAiCredentialCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetApiKey returns the ApiKey field value
+// GetApiKey returns the ApiKey field value if set, zero value otherwise.
 func (o *CreateAiCredentialCommand) GetApiKey() string {
-	if o == nil {
+	if o == nil || IsNil(o.ApiKey) {
 		var ret string
 		return ret
 	}
-
-	return o.ApiKey
+	return *o.ApiKey
 }
 
-// GetApiKeyOk returns a tuple with the ApiKey field value
+// GetApiKeyOk returns a tuple with the ApiKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateAiCredentialCommand) GetApiKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ApiKey) {
 		return nil, false
 	}
-	return &o.ApiKey, true
+	return o.ApiKey, true
 }
 
-// SetApiKey sets field value
+// HasApiKey returns a boolean if a field has been set.
+func (o *CreateAiCredentialCommand) HasApiKey() bool {
+	if o != nil && !IsNil(o.ApiKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetApiKey gets a reference to the given string and assigns it to the ApiKey field.
 func (o *CreateAiCredentialCommand) SetApiKey(v string) {
-	o.ApiKey = v
+	o.ApiKey = &v
 }
 
-// GetOrganizationId returns the OrganizationId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateAiCredentialCommand) GetOrganizationId() int32 {
-	if o == nil || o.OrganizationId.Get() == nil {
+	if o == nil || IsNil(o.OrganizationId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.OrganizationId.Get()
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAiCredentialCommand) GetOrganizationIdOk() (*int32, bool) {
@@ -118,9 +125,27 @@ func (o *CreateAiCredentialCommand) GetOrganizationIdOk() (*int32, bool) {
 	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
 }
 
-// SetOrganizationId sets field value
+// HasOrganizationId returns a boolean if a field has been set.
+func (o *CreateAiCredentialCommand) HasOrganizationId() bool {
+	if o != nil && o.OrganizationId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
 func (o *CreateAiCredentialCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
+}
+// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
+func (o *CreateAiCredentialCommand) SetOrganizationIdNil() {
+	o.OrganizationId.Set(nil)
+}
+
+// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
+func (o *CreateAiCredentialCommand) UnsetOrganizationId() {
+	o.OrganizationId.Unset()
 }
 
 func (o CreateAiCredentialCommand) MarshalJSON() ([]byte, error) {
@@ -133,49 +158,16 @@ func (o CreateAiCredentialCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateAiCredentialCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["apiKey"] = o.ApiKey
-	toSerialize["organizationId"] = o.OrganizationId.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.ApiKey) {
+		toSerialize["apiKey"] = o.ApiKey
+	}
+	if o.OrganizationId.IsSet() {
+		toSerialize["organizationId"] = o.OrganizationId.Get()
+	}
 	return toSerialize, nil
-}
-
-func (o *CreateAiCredentialCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"apiKey",
-		"organizationId",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varCreateAiCredentialCommand := _CreateAiCredentialCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCreateAiCredentialCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CreateAiCredentialCommand(varCreateAiCredentialCommand)
-
-	return err
 }
 
 type NullableCreateAiCredentialCommand struct {

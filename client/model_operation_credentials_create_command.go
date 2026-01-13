@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the OperationCredentialsCreateCommand type satisfies the MappedNullable interface at compile time
@@ -22,26 +20,19 @@ var _ MappedNullable = &OperationCredentialsCreateCommand{}
 
 // OperationCredentialsCreateCommand struct for OperationCredentialsCreateCommand
 type OperationCredentialsCreateCommand struct {
-	Name string `json:"name"`
-	PrometheusUsername string `json:"prometheusUsername"`
-	PrometheusPassword string `json:"prometheusPassword"`
-	PrometheusUrl string `json:"prometheusUrl"`
-	OrganizationId NullableInt32 `json:"organizationId"`
+	Name *string `json:"name,omitempty"`
+	PrometheusUsername *string `json:"prometheusUsername,omitempty"`
+	PrometheusPassword *string `json:"prometheusPassword,omitempty"`
+	PrometheusUrl *string `json:"prometheusUrl,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 }
-
-type _OperationCredentialsCreateCommand OperationCredentialsCreateCommand
 
 // NewOperationCredentialsCreateCommand instantiates a new OperationCredentialsCreateCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOperationCredentialsCreateCommand(name string, prometheusUsername string, prometheusPassword string, prometheusUrl string, organizationId NullableInt32) *OperationCredentialsCreateCommand {
+func NewOperationCredentialsCreateCommand() *OperationCredentialsCreateCommand {
 	this := OperationCredentialsCreateCommand{}
-	this.Name = name
-	this.PrometheusUsername = prometheusUsername
-	this.PrometheusPassword = prometheusPassword
-	this.PrometheusUrl = prometheusUrl
-	this.OrganizationId = organizationId
 	return &this
 }
 
@@ -53,114 +44,144 @@ func NewOperationCredentialsCreateCommandWithDefaults() *OperationCredentialsCre
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *OperationCredentialsCreateCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OperationCredentialsCreateCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *OperationCredentialsCreateCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *OperationCredentialsCreateCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetPrometheusUsername returns the PrometheusUsername field value
+// GetPrometheusUsername returns the PrometheusUsername field value if set, zero value otherwise.
 func (o *OperationCredentialsCreateCommand) GetPrometheusUsername() string {
-	if o == nil {
+	if o == nil || IsNil(o.PrometheusUsername) {
 		var ret string
 		return ret
 	}
-
-	return o.PrometheusUsername
+	return *o.PrometheusUsername
 }
 
-// GetPrometheusUsernameOk returns a tuple with the PrometheusUsername field value
+// GetPrometheusUsernameOk returns a tuple with the PrometheusUsername field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OperationCredentialsCreateCommand) GetPrometheusUsernameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PrometheusUsername) {
 		return nil, false
 	}
-	return &o.PrometheusUsername, true
+	return o.PrometheusUsername, true
 }
 
-// SetPrometheusUsername sets field value
+// HasPrometheusUsername returns a boolean if a field has been set.
+func (o *OperationCredentialsCreateCommand) HasPrometheusUsername() bool {
+	if o != nil && !IsNil(o.PrometheusUsername) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrometheusUsername gets a reference to the given string and assigns it to the PrometheusUsername field.
 func (o *OperationCredentialsCreateCommand) SetPrometheusUsername(v string) {
-	o.PrometheusUsername = v
+	o.PrometheusUsername = &v
 }
 
-// GetPrometheusPassword returns the PrometheusPassword field value
+// GetPrometheusPassword returns the PrometheusPassword field value if set, zero value otherwise.
 func (o *OperationCredentialsCreateCommand) GetPrometheusPassword() string {
-	if o == nil {
+	if o == nil || IsNil(o.PrometheusPassword) {
 		var ret string
 		return ret
 	}
-
-	return o.PrometheusPassword
+	return *o.PrometheusPassword
 }
 
-// GetPrometheusPasswordOk returns a tuple with the PrometheusPassword field value
+// GetPrometheusPasswordOk returns a tuple with the PrometheusPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OperationCredentialsCreateCommand) GetPrometheusPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PrometheusPassword) {
 		return nil, false
 	}
-	return &o.PrometheusPassword, true
+	return o.PrometheusPassword, true
 }
 
-// SetPrometheusPassword sets field value
+// HasPrometheusPassword returns a boolean if a field has been set.
+func (o *OperationCredentialsCreateCommand) HasPrometheusPassword() bool {
+	if o != nil && !IsNil(o.PrometheusPassword) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrometheusPassword gets a reference to the given string and assigns it to the PrometheusPassword field.
 func (o *OperationCredentialsCreateCommand) SetPrometheusPassword(v string) {
-	o.PrometheusPassword = v
+	o.PrometheusPassword = &v
 }
 
-// GetPrometheusUrl returns the PrometheusUrl field value
+// GetPrometheusUrl returns the PrometheusUrl field value if set, zero value otherwise.
 func (o *OperationCredentialsCreateCommand) GetPrometheusUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.PrometheusUrl) {
 		var ret string
 		return ret
 	}
-
-	return o.PrometheusUrl
+	return *o.PrometheusUrl
 }
 
-// GetPrometheusUrlOk returns a tuple with the PrometheusUrl field value
+// GetPrometheusUrlOk returns a tuple with the PrometheusUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OperationCredentialsCreateCommand) GetPrometheusUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PrometheusUrl) {
 		return nil, false
 	}
-	return &o.PrometheusUrl, true
+	return o.PrometheusUrl, true
 }
 
-// SetPrometheusUrl sets field value
+// HasPrometheusUrl returns a boolean if a field has been set.
+func (o *OperationCredentialsCreateCommand) HasPrometheusUrl() bool {
+	if o != nil && !IsNil(o.PrometheusUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrometheusUrl gets a reference to the given string and assigns it to the PrometheusUrl field.
 func (o *OperationCredentialsCreateCommand) SetPrometheusUrl(v string) {
-	o.PrometheusUrl = v
+	o.PrometheusUrl = &v
 }
 
-// GetOrganizationId returns the OrganizationId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OperationCredentialsCreateCommand) GetOrganizationId() int32 {
-	if o == nil || o.OrganizationId.Get() == nil {
+	if o == nil || IsNil(o.OrganizationId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.OrganizationId.Get()
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OperationCredentialsCreateCommand) GetOrganizationIdOk() (*int32, bool) {
@@ -170,9 +191,27 @@ func (o *OperationCredentialsCreateCommand) GetOrganizationIdOk() (*int32, bool)
 	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
 }
 
-// SetOrganizationId sets field value
+// HasOrganizationId returns a boolean if a field has been set.
+func (o *OperationCredentialsCreateCommand) HasOrganizationId() bool {
+	if o != nil && o.OrganizationId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
 func (o *OperationCredentialsCreateCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
+}
+// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
+func (o *OperationCredentialsCreateCommand) SetOrganizationIdNil() {
+	o.OrganizationId.Set(nil)
+}
+
+// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
+func (o *OperationCredentialsCreateCommand) UnsetOrganizationId() {
+	o.OrganizationId.Unset()
 }
 
 func (o OperationCredentialsCreateCommand) MarshalJSON() ([]byte, error) {
@@ -185,53 +224,22 @@ func (o OperationCredentialsCreateCommand) MarshalJSON() ([]byte, error) {
 
 func (o OperationCredentialsCreateCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["prometheusUsername"] = o.PrometheusUsername
-	toSerialize["prometheusPassword"] = o.PrometheusPassword
-	toSerialize["prometheusUrl"] = o.PrometheusUrl
-	toSerialize["organizationId"] = o.OrganizationId.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.PrometheusUsername) {
+		toSerialize["prometheusUsername"] = o.PrometheusUsername
+	}
+	if !IsNil(o.PrometheusPassword) {
+		toSerialize["prometheusPassword"] = o.PrometheusPassword
+	}
+	if !IsNil(o.PrometheusUrl) {
+		toSerialize["prometheusUrl"] = o.PrometheusUrl
+	}
+	if o.OrganizationId.IsSet() {
+		toSerialize["organizationId"] = o.OrganizationId.Get()
+	}
 	return toSerialize, nil
-}
-
-func (o *OperationCredentialsCreateCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"prometheusUsername",
-		"prometheusPassword",
-		"prometheusUrl",
-		"organizationId",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varOperationCredentialsCreateCommand := _OperationCredentialsCreateCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOperationCredentialsCreateCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OperationCredentialsCreateCommand(varOperationCredentialsCreateCommand)
-
-	return err
 }
 
 type NullableOperationCredentialsCreateCommand struct {

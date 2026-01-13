@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the AlertData type satisfies the MappedNullable interface at compile time
@@ -22,18 +20,15 @@ var _ MappedNullable = &AlertData{}
 
 // AlertData struct for AlertData
 type AlertData struct {
-	Groups []Group `json:"groups"`
+	Groups []Group `json:"groups,omitempty"`
 }
-
-type _AlertData AlertData
 
 // NewAlertData instantiates a new AlertData object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlertData(groups []Group) *AlertData {
+func NewAlertData() *AlertData {
 	this := AlertData{}
-	this.Groups = groups
 	return &this
 }
 
@@ -45,26 +40,34 @@ func NewAlertDataWithDefaults() *AlertData {
 	return &this
 }
 
-// GetGroups returns the Groups field value
+// GetGroups returns the Groups field value if set, zero value otherwise.
 func (o *AlertData) GetGroups() []Group {
-	if o == nil {
+	if o == nil || IsNil(o.Groups) {
 		var ret []Group
 		return ret
 	}
-
 	return o.Groups
 }
 
-// GetGroupsOk returns a tuple with the Groups field value
+// GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AlertData) GetGroupsOk() ([]Group, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Groups) {
 		return nil, false
 	}
 	return o.Groups, true
 }
 
-// SetGroups sets field value
+// HasGroups returns a boolean if a field has been set.
+func (o *AlertData) HasGroups() bool {
+	if o != nil && !IsNil(o.Groups) {
+		return true
+	}
+
+	return false
+}
+
+// SetGroups gets a reference to the given []Group and assigns it to the Groups field.
 func (o *AlertData) SetGroups(v []Group) {
 	o.Groups = v
 }
@@ -79,45 +82,10 @@ func (o AlertData) MarshalJSON() ([]byte, error) {
 
 func (o AlertData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["groups"] = o.Groups
+	if !IsNil(o.Groups) {
+		toSerialize["groups"] = o.Groups
+	}
 	return toSerialize, nil
-}
-
-func (o *AlertData) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"groups",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varAlertData := _AlertData{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAlertData)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AlertData(varAlertData)
-
-	return err
 }
 
 type NullableAlertData struct {

@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the UpdateRepoPasswordCommand type satisfies the MappedNullable interface at compile time
@@ -22,24 +20,18 @@ var _ MappedNullable = &UpdateRepoPasswordCommand{}
 
 // UpdateRepoPasswordCommand struct for UpdateRepoPasswordCommand
 type UpdateRepoPasswordCommand struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
-	RepositoryId string `json:"repositoryId"`
-	OrganizationId NullableInt32 `json:"organizationId"`
+	Username *string `json:"username,omitempty"`
+	Password *string `json:"password,omitempty"`
+	RepositoryId *string `json:"repositoryId,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 }
-
-type _UpdateRepoPasswordCommand UpdateRepoPasswordCommand
 
 // NewUpdateRepoPasswordCommand instantiates a new UpdateRepoPasswordCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateRepoPasswordCommand(username string, password string, repositoryId string, organizationId NullableInt32) *UpdateRepoPasswordCommand {
+func NewUpdateRepoPasswordCommand() *UpdateRepoPasswordCommand {
 	this := UpdateRepoPasswordCommand{}
-	this.Username = username
-	this.Password = password
-	this.RepositoryId = repositoryId
-	this.OrganizationId = organizationId
 	return &this
 }
 
@@ -51,90 +43,112 @@ func NewUpdateRepoPasswordCommandWithDefaults() *UpdateRepoPasswordCommand {
 	return &this
 }
 
-// GetUsername returns the Username field value
+// GetUsername returns the Username field value if set, zero value otherwise.
 func (o *UpdateRepoPasswordCommand) GetUsername() string {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
-
-	return o.Username
+	return *o.Username
 }
 
-// GetUsernameOk returns a tuple with the Username field value
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateRepoPasswordCommand) GetUsernameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
-	return &o.Username, true
+	return o.Username, true
 }
 
-// SetUsername sets field value
+// HasUsername returns a boolean if a field has been set.
+func (o *UpdateRepoPasswordCommand) HasUsername() bool {
+	if o != nil && !IsNil(o.Username) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *UpdateRepoPasswordCommand) SetUsername(v string) {
-	o.Username = v
+	o.Username = &v
 }
 
-// GetPassword returns the Password field value
+// GetPassword returns the Password field value if set, zero value otherwise.
 func (o *UpdateRepoPasswordCommand) GetPassword() string {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
 	}
-
-	return o.Password
+	return *o.Password
 }
 
-// GetPasswordOk returns a tuple with the Password field value
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateRepoPasswordCommand) GetPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
-	return &o.Password, true
+	return o.Password, true
 }
 
-// SetPassword sets field value
+// HasPassword returns a boolean if a field has been set.
+func (o *UpdateRepoPasswordCommand) HasPassword() bool {
+	if o != nil && !IsNil(o.Password) {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *UpdateRepoPasswordCommand) SetPassword(v string) {
-	o.Password = v
+	o.Password = &v
 }
 
-// GetRepositoryId returns the RepositoryId field value
+// GetRepositoryId returns the RepositoryId field value if set, zero value otherwise.
 func (o *UpdateRepoPasswordCommand) GetRepositoryId() string {
-	if o == nil {
+	if o == nil || IsNil(o.RepositoryId) {
 		var ret string
 		return ret
 	}
-
-	return o.RepositoryId
+	return *o.RepositoryId
 }
 
-// GetRepositoryIdOk returns a tuple with the RepositoryId field value
+// GetRepositoryIdOk returns a tuple with the RepositoryId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateRepoPasswordCommand) GetRepositoryIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RepositoryId) {
 		return nil, false
 	}
-	return &o.RepositoryId, true
+	return o.RepositoryId, true
 }
 
-// SetRepositoryId sets field value
+// HasRepositoryId returns a boolean if a field has been set.
+func (o *UpdateRepoPasswordCommand) HasRepositoryId() bool {
+	if o != nil && !IsNil(o.RepositoryId) {
+		return true
+	}
+
+	return false
+}
+
+// SetRepositoryId gets a reference to the given string and assigns it to the RepositoryId field.
 func (o *UpdateRepoPasswordCommand) SetRepositoryId(v string) {
-	o.RepositoryId = v
+	o.RepositoryId = &v
 }
 
-// GetOrganizationId returns the OrganizationId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateRepoPasswordCommand) GetOrganizationId() int32 {
-	if o == nil || o.OrganizationId.Get() == nil {
+	if o == nil || IsNil(o.OrganizationId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.OrganizationId.Get()
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateRepoPasswordCommand) GetOrganizationIdOk() (*int32, bool) {
@@ -144,9 +158,27 @@ func (o *UpdateRepoPasswordCommand) GetOrganizationIdOk() (*int32, bool) {
 	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
 }
 
-// SetOrganizationId sets field value
+// HasOrganizationId returns a boolean if a field has been set.
+func (o *UpdateRepoPasswordCommand) HasOrganizationId() bool {
+	if o != nil && o.OrganizationId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
 func (o *UpdateRepoPasswordCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
+}
+// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
+func (o *UpdateRepoPasswordCommand) SetOrganizationIdNil() {
+	o.OrganizationId.Set(nil)
+}
+
+// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
+func (o *UpdateRepoPasswordCommand) UnsetOrganizationId() {
+	o.OrganizationId.Unset()
 }
 
 func (o UpdateRepoPasswordCommand) MarshalJSON() ([]byte, error) {
@@ -159,51 +191,19 @@ func (o UpdateRepoPasswordCommand) MarshalJSON() ([]byte, error) {
 
 func (o UpdateRepoPasswordCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["username"] = o.Username
-	toSerialize["password"] = o.Password
-	toSerialize["repositoryId"] = o.RepositoryId
-	toSerialize["organizationId"] = o.OrganizationId.Get()
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
+	}
+	if !IsNil(o.RepositoryId) {
+		toSerialize["repositoryId"] = o.RepositoryId
+	}
+	if o.OrganizationId.IsSet() {
+		toSerialize["organizationId"] = o.OrganizationId.Get()
+	}
 	return toSerialize, nil
-}
-
-func (o *UpdateRepoPasswordCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"username",
-		"password",
-		"repositoryId",
-		"organizationId",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varUpdateRepoPasswordCommand := _UpdateRepoPasswordCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUpdateRepoPasswordCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = UpdateRepoPasswordCommand(varUpdateRepoPasswordCommand)
-
-	return err
 }
 
 type NullableUpdateRepoPasswordCommand struct {

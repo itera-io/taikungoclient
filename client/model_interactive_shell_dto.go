@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the InteractiveShellDto type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &InteractiveShellDto{}
 
 // InteractiveShellDto struct for InteractiveShellDto
 type InteractiveShellDto struct {
-	KubeConfig string `json:"kubeConfig"`
-	AdminKubeConfig string `json:"adminKubeConfig"`
+	KubeConfig *string `json:"kubeConfig,omitempty"`
+	AdminKubeConfig *string `json:"adminKubeConfig,omitempty"`
 }
-
-type _InteractiveShellDto InteractiveShellDto
 
 // NewInteractiveShellDto instantiates a new InteractiveShellDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInteractiveShellDto(kubeConfig string, adminKubeConfig string) *InteractiveShellDto {
+func NewInteractiveShellDto() *InteractiveShellDto {
 	this := InteractiveShellDto{}
-	this.KubeConfig = kubeConfig
-	this.AdminKubeConfig = adminKubeConfig
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewInteractiveShellDtoWithDefaults() *InteractiveShellDto {
 	return &this
 }
 
-// GetKubeConfig returns the KubeConfig field value
+// GetKubeConfig returns the KubeConfig field value if set, zero value otherwise.
 func (o *InteractiveShellDto) GetKubeConfig() string {
-	if o == nil {
+	if o == nil || IsNil(o.KubeConfig) {
 		var ret string
 		return ret
 	}
-
-	return o.KubeConfig
+	return *o.KubeConfig
 }
 
-// GetKubeConfigOk returns a tuple with the KubeConfig field value
+// GetKubeConfigOk returns a tuple with the KubeConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InteractiveShellDto) GetKubeConfigOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.KubeConfig) {
 		return nil, false
 	}
-	return &o.KubeConfig, true
+	return o.KubeConfig, true
 }
 
-// SetKubeConfig sets field value
+// HasKubeConfig returns a boolean if a field has been set.
+func (o *InteractiveShellDto) HasKubeConfig() bool {
+	if o != nil && !IsNil(o.KubeConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetKubeConfig gets a reference to the given string and assigns it to the KubeConfig field.
 func (o *InteractiveShellDto) SetKubeConfig(v string) {
-	o.KubeConfig = v
+	o.KubeConfig = &v
 }
 
-// GetAdminKubeConfig returns the AdminKubeConfig field value
+// GetAdminKubeConfig returns the AdminKubeConfig field value if set, zero value otherwise.
 func (o *InteractiveShellDto) GetAdminKubeConfig() string {
-	if o == nil {
+	if o == nil || IsNil(o.AdminKubeConfig) {
 		var ret string
 		return ret
 	}
-
-	return o.AdminKubeConfig
+	return *o.AdminKubeConfig
 }
 
-// GetAdminKubeConfigOk returns a tuple with the AdminKubeConfig field value
+// GetAdminKubeConfigOk returns a tuple with the AdminKubeConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InteractiveShellDto) GetAdminKubeConfigOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AdminKubeConfig) {
 		return nil, false
 	}
-	return &o.AdminKubeConfig, true
+	return o.AdminKubeConfig, true
 }
 
-// SetAdminKubeConfig sets field value
+// HasAdminKubeConfig returns a boolean if a field has been set.
+func (o *InteractiveShellDto) HasAdminKubeConfig() bool {
+	if o != nil && !IsNil(o.AdminKubeConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdminKubeConfig gets a reference to the given string and assigns it to the AdminKubeConfig field.
 func (o *InteractiveShellDto) SetAdminKubeConfig(v string) {
-	o.AdminKubeConfig = v
+	o.AdminKubeConfig = &v
 }
 
 func (o InteractiveShellDto) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o InteractiveShellDto) MarshalJSON() ([]byte, error) {
 
 func (o InteractiveShellDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["kubeConfig"] = o.KubeConfig
-	toSerialize["adminKubeConfig"] = o.AdminKubeConfig
+	if !IsNil(o.KubeConfig) {
+		toSerialize["kubeConfig"] = o.KubeConfig
+	}
+	if !IsNil(o.AdminKubeConfig) {
+		toSerialize["adminKubeConfig"] = o.AdminKubeConfig
+	}
 	return toSerialize, nil
-}
-
-func (o *InteractiveShellDto) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"kubeConfig",
-		"adminKubeConfig",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varInteractiveShellDto := _InteractiveShellDto{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varInteractiveShellDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = InteractiveShellDto(varInteractiveShellDto)
-
-	return err
 }
 
 type NullableInteractiveShellDto struct {

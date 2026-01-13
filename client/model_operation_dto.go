@@ -23,7 +23,7 @@ var _ MappedNullable = &OperationDto{}
 // OperationDto struct for OperationDto
 type OperationDto struct {
 	ProjectId int32 `json:"projectId"`
-	Operation string `json:"operation"`
+	Operation *string `json:"operation,omitempty"`
 }
 
 type _OperationDto OperationDto
@@ -32,10 +32,9 @@ type _OperationDto OperationDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOperationDto(projectId int32, operation string) *OperationDto {
+func NewOperationDto(projectId int32) *OperationDto {
 	this := OperationDto{}
 	this.ProjectId = projectId
-	this.Operation = operation
 	return &this
 }
 
@@ -71,28 +70,36 @@ func (o *OperationDto) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetOperation returns the Operation field value
+// GetOperation returns the Operation field value if set, zero value otherwise.
 func (o *OperationDto) GetOperation() string {
-	if o == nil {
+	if o == nil || IsNil(o.Operation) {
 		var ret string
 		return ret
 	}
-
-	return o.Operation
+	return *o.Operation
 }
 
-// GetOperationOk returns a tuple with the Operation field value
+// GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OperationDto) GetOperationOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Operation) {
 		return nil, false
 	}
-	return &o.Operation, true
+	return o.Operation, true
 }
 
-// SetOperation sets field value
+// HasOperation returns a boolean if a field has been set.
+func (o *OperationDto) HasOperation() bool {
+	if o != nil && !IsNil(o.Operation) {
+		return true
+	}
+
+	return false
+}
+
+// SetOperation gets a reference to the given string and assigns it to the Operation field.
 func (o *OperationDto) SetOperation(v string) {
-	o.Operation = v
+	o.Operation = &v
 }
 
 func (o OperationDto) MarshalJSON() ([]byte, error) {
@@ -106,7 +113,9 @@ func (o OperationDto) MarshalJSON() ([]byte, error) {
 func (o OperationDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["operation"] = o.Operation
+	if !IsNil(o.Operation) {
+		toSerialize["operation"] = o.Operation
+	}
 	return toSerialize, nil
 }
 
@@ -116,7 +125,6 @@ func (o *OperationDto) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"operation",
 	}
 
 	allProperties := make(map[string]interface{})

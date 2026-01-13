@@ -23,9 +23,9 @@ var _ MappedNullable = &ExecutorEntityDto{}
 // ExecutorEntityDto struct for ExecutorEntityDto
 type ExecutorEntityDto struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	Health ExecutorHealth `json:"health"`
-	KubeConfig string `json:"kubeConfig"`
+	KubeConfig *string `json:"kubeConfig,omitempty"`
 	IsLocal bool `json:"isLocal"`
 }
 
@@ -35,12 +35,10 @@ type _ExecutorEntityDto ExecutorEntityDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewExecutorEntityDto(id int32, name string, health ExecutorHealth, kubeConfig string, isLocal bool) *ExecutorEntityDto {
+func NewExecutorEntityDto(id int32, health ExecutorHealth, isLocal bool) *ExecutorEntityDto {
 	this := ExecutorEntityDto{}
 	this.Id = id
-	this.Name = name
 	this.Health = health
-	this.KubeConfig = kubeConfig
 	this.IsLocal = isLocal
 	return &this
 }
@@ -77,28 +75,36 @@ func (o *ExecutorEntityDto) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *ExecutorEntityDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExecutorEntityDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *ExecutorEntityDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ExecutorEntityDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetHealth returns the Health field value
@@ -125,28 +131,36 @@ func (o *ExecutorEntityDto) SetHealth(v ExecutorHealth) {
 	o.Health = v
 }
 
-// GetKubeConfig returns the KubeConfig field value
+// GetKubeConfig returns the KubeConfig field value if set, zero value otherwise.
 func (o *ExecutorEntityDto) GetKubeConfig() string {
-	if o == nil {
+	if o == nil || IsNil(o.KubeConfig) {
 		var ret string
 		return ret
 	}
-
-	return o.KubeConfig
+	return *o.KubeConfig
 }
 
-// GetKubeConfigOk returns a tuple with the KubeConfig field value
+// GetKubeConfigOk returns a tuple with the KubeConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExecutorEntityDto) GetKubeConfigOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.KubeConfig) {
 		return nil, false
 	}
-	return &o.KubeConfig, true
+	return o.KubeConfig, true
 }
 
-// SetKubeConfig sets field value
+// HasKubeConfig returns a boolean if a field has been set.
+func (o *ExecutorEntityDto) HasKubeConfig() bool {
+	if o != nil && !IsNil(o.KubeConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetKubeConfig gets a reference to the given string and assigns it to the KubeConfig field.
 func (o *ExecutorEntityDto) SetKubeConfig(v string) {
-	o.KubeConfig = v
+	o.KubeConfig = &v
 }
 
 // GetIsLocal returns the IsLocal field value
@@ -184,9 +198,13 @@ func (o ExecutorEntityDto) MarshalJSON() ([]byte, error) {
 func (o ExecutorEntityDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	toSerialize["health"] = o.Health
-	toSerialize["kubeConfig"] = o.KubeConfig
+	if !IsNil(o.KubeConfig) {
+		toSerialize["kubeConfig"] = o.KubeConfig
+	}
 	toSerialize["isLocal"] = o.IsLocal
 	return toSerialize, nil
 }
@@ -197,9 +215,7 @@ func (o *ExecutorEntityDto) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
 		"health",
-		"kubeConfig",
 		"isLocal",
 	}
 

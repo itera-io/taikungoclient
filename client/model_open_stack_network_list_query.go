@@ -22,12 +22,12 @@ var _ MappedNullable = &OpenStackNetworkListQuery{}
 
 // OpenStackNetworkListQuery struct for OpenStackNetworkListQuery
 type OpenStackNetworkListQuery struct {
-	OpenStackUser string `json:"openStackUser"`
-	OpenStackPassword string `json:"openStackPassword"`
-	OpenStackUrl string `json:"openStackUrl"`
-	OpenStackProjectId string `json:"openStackProjectId"`
-	OpenStackDomain string `json:"openStackDomain"`
-	OpenStackRegion string `json:"openStackRegion"`
+	OpenStackUser *string `json:"openStackUser,omitempty"`
+	OpenStackPassword *string `json:"openStackPassword,omitempty"`
+	OpenStackUrl *string `json:"openStackUrl,omitempty"`
+	OpenStackProjectId *string `json:"openStackProjectId,omitempty"`
+	OpenStackDomain *string `json:"openStackDomain,omitempty"`
+	OpenStackRegion *string `json:"openStackRegion,omitempty"`
 	ApplicationCredEnabled bool `json:"applicationCredEnabled"`
 	IsAdmin bool `json:"isAdmin"`
 }
@@ -38,14 +38,8 @@ type _OpenStackNetworkListQuery OpenStackNetworkListQuery
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOpenStackNetworkListQuery(openStackUser string, openStackPassword string, openStackUrl string, openStackProjectId string, openStackDomain string, openStackRegion string, applicationCredEnabled bool, isAdmin bool) *OpenStackNetworkListQuery {
+func NewOpenStackNetworkListQuery(applicationCredEnabled bool, isAdmin bool) *OpenStackNetworkListQuery {
 	this := OpenStackNetworkListQuery{}
-	this.OpenStackUser = openStackUser
-	this.OpenStackPassword = openStackPassword
-	this.OpenStackUrl = openStackUrl
-	this.OpenStackProjectId = openStackProjectId
-	this.OpenStackDomain = openStackDomain
-	this.OpenStackRegion = openStackRegion
 	this.ApplicationCredEnabled = applicationCredEnabled
 	this.IsAdmin = isAdmin
 	return &this
@@ -59,148 +53,196 @@ func NewOpenStackNetworkListQueryWithDefaults() *OpenStackNetworkListQuery {
 	return &this
 }
 
-// GetOpenStackUser returns the OpenStackUser field value
+// GetOpenStackUser returns the OpenStackUser field value if set, zero value otherwise.
 func (o *OpenStackNetworkListQuery) GetOpenStackUser() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackUser) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackUser
+	return *o.OpenStackUser
 }
 
-// GetOpenStackUserOk returns a tuple with the OpenStackUser field value
+// GetOpenStackUserOk returns a tuple with the OpenStackUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpenStackNetworkListQuery) GetOpenStackUserOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackUser) {
 		return nil, false
 	}
-	return &o.OpenStackUser, true
+	return o.OpenStackUser, true
 }
 
-// SetOpenStackUser sets field value
+// HasOpenStackUser returns a boolean if a field has been set.
+func (o *OpenStackNetworkListQuery) HasOpenStackUser() bool {
+	if o != nil && !IsNil(o.OpenStackUser) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackUser gets a reference to the given string and assigns it to the OpenStackUser field.
 func (o *OpenStackNetworkListQuery) SetOpenStackUser(v string) {
-	o.OpenStackUser = v
+	o.OpenStackUser = &v
 }
 
-// GetOpenStackPassword returns the OpenStackPassword field value
+// GetOpenStackPassword returns the OpenStackPassword field value if set, zero value otherwise.
 func (o *OpenStackNetworkListQuery) GetOpenStackPassword() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackPassword) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackPassword
+	return *o.OpenStackPassword
 }
 
-// GetOpenStackPasswordOk returns a tuple with the OpenStackPassword field value
+// GetOpenStackPasswordOk returns a tuple with the OpenStackPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpenStackNetworkListQuery) GetOpenStackPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackPassword) {
 		return nil, false
 	}
-	return &o.OpenStackPassword, true
+	return o.OpenStackPassword, true
 }
 
-// SetOpenStackPassword sets field value
+// HasOpenStackPassword returns a boolean if a field has been set.
+func (o *OpenStackNetworkListQuery) HasOpenStackPassword() bool {
+	if o != nil && !IsNil(o.OpenStackPassword) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackPassword gets a reference to the given string and assigns it to the OpenStackPassword field.
 func (o *OpenStackNetworkListQuery) SetOpenStackPassword(v string) {
-	o.OpenStackPassword = v
+	o.OpenStackPassword = &v
 }
 
-// GetOpenStackUrl returns the OpenStackUrl field value
+// GetOpenStackUrl returns the OpenStackUrl field value if set, zero value otherwise.
 func (o *OpenStackNetworkListQuery) GetOpenStackUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackUrl) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackUrl
+	return *o.OpenStackUrl
 }
 
-// GetOpenStackUrlOk returns a tuple with the OpenStackUrl field value
+// GetOpenStackUrlOk returns a tuple with the OpenStackUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpenStackNetworkListQuery) GetOpenStackUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackUrl) {
 		return nil, false
 	}
-	return &o.OpenStackUrl, true
+	return o.OpenStackUrl, true
 }
 
-// SetOpenStackUrl sets field value
+// HasOpenStackUrl returns a boolean if a field has been set.
+func (o *OpenStackNetworkListQuery) HasOpenStackUrl() bool {
+	if o != nil && !IsNil(o.OpenStackUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackUrl gets a reference to the given string and assigns it to the OpenStackUrl field.
 func (o *OpenStackNetworkListQuery) SetOpenStackUrl(v string) {
-	o.OpenStackUrl = v
+	o.OpenStackUrl = &v
 }
 
-// GetOpenStackProjectId returns the OpenStackProjectId field value
+// GetOpenStackProjectId returns the OpenStackProjectId field value if set, zero value otherwise.
 func (o *OpenStackNetworkListQuery) GetOpenStackProjectId() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackProjectId) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackProjectId
+	return *o.OpenStackProjectId
 }
 
-// GetOpenStackProjectIdOk returns a tuple with the OpenStackProjectId field value
+// GetOpenStackProjectIdOk returns a tuple with the OpenStackProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpenStackNetworkListQuery) GetOpenStackProjectIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackProjectId) {
 		return nil, false
 	}
-	return &o.OpenStackProjectId, true
+	return o.OpenStackProjectId, true
 }
 
-// SetOpenStackProjectId sets field value
+// HasOpenStackProjectId returns a boolean if a field has been set.
+func (o *OpenStackNetworkListQuery) HasOpenStackProjectId() bool {
+	if o != nil && !IsNil(o.OpenStackProjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackProjectId gets a reference to the given string and assigns it to the OpenStackProjectId field.
 func (o *OpenStackNetworkListQuery) SetOpenStackProjectId(v string) {
-	o.OpenStackProjectId = v
+	o.OpenStackProjectId = &v
 }
 
-// GetOpenStackDomain returns the OpenStackDomain field value
+// GetOpenStackDomain returns the OpenStackDomain field value if set, zero value otherwise.
 func (o *OpenStackNetworkListQuery) GetOpenStackDomain() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackDomain) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackDomain
+	return *o.OpenStackDomain
 }
 
-// GetOpenStackDomainOk returns a tuple with the OpenStackDomain field value
+// GetOpenStackDomainOk returns a tuple with the OpenStackDomain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpenStackNetworkListQuery) GetOpenStackDomainOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackDomain) {
 		return nil, false
 	}
-	return &o.OpenStackDomain, true
+	return o.OpenStackDomain, true
 }
 
-// SetOpenStackDomain sets field value
+// HasOpenStackDomain returns a boolean if a field has been set.
+func (o *OpenStackNetworkListQuery) HasOpenStackDomain() bool {
+	if o != nil && !IsNil(o.OpenStackDomain) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackDomain gets a reference to the given string and assigns it to the OpenStackDomain field.
 func (o *OpenStackNetworkListQuery) SetOpenStackDomain(v string) {
-	o.OpenStackDomain = v
+	o.OpenStackDomain = &v
 }
 
-// GetOpenStackRegion returns the OpenStackRegion field value
+// GetOpenStackRegion returns the OpenStackRegion field value if set, zero value otherwise.
 func (o *OpenStackNetworkListQuery) GetOpenStackRegion() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackRegion) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackRegion
+	return *o.OpenStackRegion
 }
 
-// GetOpenStackRegionOk returns a tuple with the OpenStackRegion field value
+// GetOpenStackRegionOk returns a tuple with the OpenStackRegion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpenStackNetworkListQuery) GetOpenStackRegionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackRegion) {
 		return nil, false
 	}
-	return &o.OpenStackRegion, true
+	return o.OpenStackRegion, true
 }
 
-// SetOpenStackRegion sets field value
+// HasOpenStackRegion returns a boolean if a field has been set.
+func (o *OpenStackNetworkListQuery) HasOpenStackRegion() bool {
+	if o != nil && !IsNil(o.OpenStackRegion) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackRegion gets a reference to the given string and assigns it to the OpenStackRegion field.
 func (o *OpenStackNetworkListQuery) SetOpenStackRegion(v string) {
-	o.OpenStackRegion = v
+	o.OpenStackRegion = &v
 }
 
 // GetApplicationCredEnabled returns the ApplicationCredEnabled field value
@@ -261,12 +303,24 @@ func (o OpenStackNetworkListQuery) MarshalJSON() ([]byte, error) {
 
 func (o OpenStackNetworkListQuery) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["openStackUser"] = o.OpenStackUser
-	toSerialize["openStackPassword"] = o.OpenStackPassword
-	toSerialize["openStackUrl"] = o.OpenStackUrl
-	toSerialize["openStackProjectId"] = o.OpenStackProjectId
-	toSerialize["openStackDomain"] = o.OpenStackDomain
-	toSerialize["openStackRegion"] = o.OpenStackRegion
+	if !IsNil(o.OpenStackUser) {
+		toSerialize["openStackUser"] = o.OpenStackUser
+	}
+	if !IsNil(o.OpenStackPassword) {
+		toSerialize["openStackPassword"] = o.OpenStackPassword
+	}
+	if !IsNil(o.OpenStackUrl) {
+		toSerialize["openStackUrl"] = o.OpenStackUrl
+	}
+	if !IsNil(o.OpenStackProjectId) {
+		toSerialize["openStackProjectId"] = o.OpenStackProjectId
+	}
+	if !IsNil(o.OpenStackDomain) {
+		toSerialize["openStackDomain"] = o.OpenStackDomain
+	}
+	if !IsNil(o.OpenStackRegion) {
+		toSerialize["openStackRegion"] = o.OpenStackRegion
+	}
 	toSerialize["applicationCredEnabled"] = o.ApplicationCredEnabled
 	toSerialize["isAdmin"] = o.IsAdmin
 	return toSerialize, nil
@@ -277,12 +331,6 @@ func (o *OpenStackNetworkListQuery) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"openStackUser",
-		"openStackPassword",
-		"openStackUrl",
-		"openStackProjectId",
-		"openStackDomain",
-		"openStackRegion",
 		"applicationCredEnabled",
 		"isAdmin",
 	}

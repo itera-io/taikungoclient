@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the AdminUsersUpdatePasswordCommand type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &AdminUsersUpdatePasswordCommand{}
 
 // AdminUsersUpdatePasswordCommand struct for AdminUsersUpdatePasswordCommand
 type AdminUsersUpdatePasswordCommand struct {
-	Id string `json:"id"`
-	Password string `json:"password"`
+	Id *string `json:"id,omitempty"`
+	Password *string `json:"password,omitempty"`
 }
-
-type _AdminUsersUpdatePasswordCommand AdminUsersUpdatePasswordCommand
 
 // NewAdminUsersUpdatePasswordCommand instantiates a new AdminUsersUpdatePasswordCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAdminUsersUpdatePasswordCommand(id string, password string) *AdminUsersUpdatePasswordCommand {
+func NewAdminUsersUpdatePasswordCommand() *AdminUsersUpdatePasswordCommand {
 	this := AdminUsersUpdatePasswordCommand{}
-	this.Id = id
-	this.Password = password
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewAdminUsersUpdatePasswordCommandWithDefaults() *AdminUsersUpdatePasswordC
 	return &this
 }
 
-// GetId returns the Id field value
+// GetId returns the Id field value if set, zero value otherwise.
 func (o *AdminUsersUpdatePasswordCommand) GetId() string {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-
-	return o.Id
+	return *o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AdminUsersUpdatePasswordCommand) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return &o.Id, true
+	return o.Id, true
 }
 
-// SetId sets field value
+// HasId returns a boolean if a field has been set.
+func (o *AdminUsersUpdatePasswordCommand) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
 func (o *AdminUsersUpdatePasswordCommand) SetId(v string) {
-	o.Id = v
+	o.Id = &v
 }
 
-// GetPassword returns the Password field value
+// GetPassword returns the Password field value if set, zero value otherwise.
 func (o *AdminUsersUpdatePasswordCommand) GetPassword() string {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
 	}
-
-	return o.Password
+	return *o.Password
 }
 
-// GetPasswordOk returns a tuple with the Password field value
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AdminUsersUpdatePasswordCommand) GetPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
-	return &o.Password, true
+	return o.Password, true
 }
 
-// SetPassword sets field value
+// HasPassword returns a boolean if a field has been set.
+func (o *AdminUsersUpdatePasswordCommand) HasPassword() bool {
+	if o != nil && !IsNil(o.Password) {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *AdminUsersUpdatePasswordCommand) SetPassword(v string) {
-	o.Password = v
+	o.Password = &v
 }
 
 func (o AdminUsersUpdatePasswordCommand) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o AdminUsersUpdatePasswordCommand) MarshalJSON() ([]byte, error) {
 
 func (o AdminUsersUpdatePasswordCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["password"] = o.Password
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
+	}
 	return toSerialize, nil
-}
-
-func (o *AdminUsersUpdatePasswordCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"password",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varAdminUsersUpdatePasswordCommand := _AdminUsersUpdatePasswordCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAdminUsersUpdatePasswordCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AdminUsersUpdatePasswordCommand(varAdminUsersUpdatePasswordCommand)
-
-	return err
 }
 
 type NullableAdminUsersUpdatePasswordCommand struct {

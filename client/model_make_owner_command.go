@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the MakeOwnerCommand type satisfies the MappedNullable interface at compile time
@@ -22,18 +20,15 @@ var _ MappedNullable = &MakeOwnerCommand{}
 
 // MakeOwnerCommand struct for MakeOwnerCommand
 type MakeOwnerCommand struct {
-	UserId string `json:"userId"`
+	UserId *string `json:"userId,omitempty"`
 }
-
-type _MakeOwnerCommand MakeOwnerCommand
 
 // NewMakeOwnerCommand instantiates a new MakeOwnerCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMakeOwnerCommand(userId string) *MakeOwnerCommand {
+func NewMakeOwnerCommand() *MakeOwnerCommand {
 	this := MakeOwnerCommand{}
-	this.UserId = userId
 	return &this
 }
 
@@ -45,28 +40,36 @@ func NewMakeOwnerCommandWithDefaults() *MakeOwnerCommand {
 	return &this
 }
 
-// GetUserId returns the UserId field value
+// GetUserId returns the UserId field value if set, zero value otherwise.
 func (o *MakeOwnerCommand) GetUserId() string {
-	if o == nil {
+	if o == nil || IsNil(o.UserId) {
 		var ret string
 		return ret
 	}
-
-	return o.UserId
+	return *o.UserId
 }
 
-// GetUserIdOk returns a tuple with the UserId field value
+// GetUserIdOk returns a tuple with the UserId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MakeOwnerCommand) GetUserIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UserId) {
 		return nil, false
 	}
-	return &o.UserId, true
+	return o.UserId, true
 }
 
-// SetUserId sets field value
+// HasUserId returns a boolean if a field has been set.
+func (o *MakeOwnerCommand) HasUserId() bool {
+	if o != nil && !IsNil(o.UserId) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserId gets a reference to the given string and assigns it to the UserId field.
 func (o *MakeOwnerCommand) SetUserId(v string) {
-	o.UserId = v
+	o.UserId = &v
 }
 
 func (o MakeOwnerCommand) MarshalJSON() ([]byte, error) {
@@ -79,45 +82,10 @@ func (o MakeOwnerCommand) MarshalJSON() ([]byte, error) {
 
 func (o MakeOwnerCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["userId"] = o.UserId
+	if !IsNil(o.UserId) {
+		toSerialize["userId"] = o.UserId
+	}
 	return toSerialize, nil
-}
-
-func (o *MakeOwnerCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"userId",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varMakeOwnerCommand := _MakeOwnerCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varMakeOwnerCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = MakeOwnerCommand(varMakeOwnerCommand)
-
-	return err
 }
 
 type NullableMakeOwnerCommand struct {

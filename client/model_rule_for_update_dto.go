@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the RuleForUpdateDto type satisfies the MappedNullable interface at compile time
@@ -22,25 +20,20 @@ var _ MappedNullable = &RuleForUpdateDto{}
 
 // RuleForUpdateDto struct for RuleForUpdateDto
 type RuleForUpdateDto struct {
-	Name string `json:"name"`
-	MetricName string `json:"metricName"`
+	Name *string `json:"name,omitempty"`
+	MetricName *string `json:"metricName,omitempty"`
 	Type *PrometheusType `json:"type,omitempty"`
 	Price NullableFloat64 `json:"price,omitempty"`
-	Labels []PrometheusLabelListDto `json:"labels"`
+	Labels []PrometheusLabelListDto `json:"labels,omitempty"`
 	OperationCredentialId NullableInt32 `json:"operationCredentialId,omitempty"`
 }
-
-type _RuleForUpdateDto RuleForUpdateDto
 
 // NewRuleForUpdateDto instantiates a new RuleForUpdateDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRuleForUpdateDto(name string, metricName string, labels []PrometheusLabelListDto) *RuleForUpdateDto {
+func NewRuleForUpdateDto() *RuleForUpdateDto {
 	this := RuleForUpdateDto{}
-	this.Name = name
-	this.MetricName = metricName
-	this.Labels = labels
 	return &this
 }
 
@@ -52,52 +45,68 @@ func NewRuleForUpdateDtoWithDefaults() *RuleForUpdateDto {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *RuleForUpdateDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RuleForUpdateDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *RuleForUpdateDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *RuleForUpdateDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetMetricName returns the MetricName field value
+// GetMetricName returns the MetricName field value if set, zero value otherwise.
 func (o *RuleForUpdateDto) GetMetricName() string {
-	if o == nil {
+	if o == nil || IsNil(o.MetricName) {
 		var ret string
 		return ret
 	}
-
-	return o.MetricName
+	return *o.MetricName
 }
 
-// GetMetricNameOk returns a tuple with the MetricName field value
+// GetMetricNameOk returns a tuple with the MetricName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RuleForUpdateDto) GetMetricNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.MetricName) {
 		return nil, false
 	}
-	return &o.MetricName, true
+	return o.MetricName, true
 }
 
-// SetMetricName sets field value
+// HasMetricName returns a boolean if a field has been set.
+func (o *RuleForUpdateDto) HasMetricName() bool {
+	if o != nil && !IsNil(o.MetricName) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetricName gets a reference to the given string and assigns it to the MetricName field.
 func (o *RuleForUpdateDto) SetMetricName(v string) {
-	o.MetricName = v
+	o.MetricName = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -174,26 +183,34 @@ func (o *RuleForUpdateDto) UnsetPrice() {
 	o.Price.Unset()
 }
 
-// GetLabels returns the Labels field value
+// GetLabels returns the Labels field value if set, zero value otherwise.
 func (o *RuleForUpdateDto) GetLabels() []PrometheusLabelListDto {
-	if o == nil {
+	if o == nil || IsNil(o.Labels) {
 		var ret []PrometheusLabelListDto
 		return ret
 	}
-
 	return o.Labels
 }
 
-// GetLabelsOk returns a tuple with the Labels field value
+// GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RuleForUpdateDto) GetLabelsOk() ([]PrometheusLabelListDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Labels) {
 		return nil, false
 	}
 	return o.Labels, true
 }
 
-// SetLabels sets field value
+// HasLabels returns a boolean if a field has been set.
+func (o *RuleForUpdateDto) HasLabels() bool {
+	if o != nil && !IsNil(o.Labels) {
+		return true
+	}
+
+	return false
+}
+
+// SetLabels gets a reference to the given []PrometheusLabelListDto and assigns it to the Labels field.
 func (o *RuleForUpdateDto) SetLabels(v []PrometheusLabelListDto) {
 	o.Labels = v
 }
@@ -250,58 +267,25 @@ func (o RuleForUpdateDto) MarshalJSON() ([]byte, error) {
 
 func (o RuleForUpdateDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["metricName"] = o.MetricName
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.MetricName) {
+		toSerialize["metricName"] = o.MetricName
+	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
 	if o.Price.IsSet() {
 		toSerialize["price"] = o.Price.Get()
 	}
-	toSerialize["labels"] = o.Labels
+	if !IsNil(o.Labels) {
+		toSerialize["labels"] = o.Labels
+	}
 	if o.OperationCredentialId.IsSet() {
 		toSerialize["operationCredentialId"] = o.OperationCredentialId.Get()
 	}
 	return toSerialize, nil
-}
-
-func (o *RuleForUpdateDto) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"metricName",
-		"labels",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varRuleForUpdateDto := _RuleForUpdateDto{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRuleForUpdateDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RuleForUpdateDto(varRuleForUpdateDto)
-
-	return err
 }
 
 type NullableRuleForUpdateDto struct {

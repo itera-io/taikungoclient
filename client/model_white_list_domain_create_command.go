@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the WhiteListDomainCreateCommand type satisfies the MappedNullable interface at compile time
@@ -22,19 +20,16 @@ var _ MappedNullable = &WhiteListDomainCreateCommand{}
 
 // WhiteListDomainCreateCommand struct for WhiteListDomainCreateCommand
 type WhiteListDomainCreateCommand struct {
-	WhiteListDomains []WhiteListDomainCreateDto `json:"whiteListDomains"`
+	WhiteListDomains []WhiteListDomainCreateDto `json:"whiteListDomains,omitempty"`
 	PartnerId NullableInt32 `json:"partnerId,omitempty"`
 }
-
-type _WhiteListDomainCreateCommand WhiteListDomainCreateCommand
 
 // NewWhiteListDomainCreateCommand instantiates a new WhiteListDomainCreateCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWhiteListDomainCreateCommand(whiteListDomains []WhiteListDomainCreateDto) *WhiteListDomainCreateCommand {
+func NewWhiteListDomainCreateCommand() *WhiteListDomainCreateCommand {
 	this := WhiteListDomainCreateCommand{}
-	this.WhiteListDomains = whiteListDomains
 	return &this
 }
 
@@ -46,26 +41,34 @@ func NewWhiteListDomainCreateCommandWithDefaults() *WhiteListDomainCreateCommand
 	return &this
 }
 
-// GetWhiteListDomains returns the WhiteListDomains field value
+// GetWhiteListDomains returns the WhiteListDomains field value if set, zero value otherwise.
 func (o *WhiteListDomainCreateCommand) GetWhiteListDomains() []WhiteListDomainCreateDto {
-	if o == nil {
+	if o == nil || IsNil(o.WhiteListDomains) {
 		var ret []WhiteListDomainCreateDto
 		return ret
 	}
-
 	return o.WhiteListDomains
 }
 
-// GetWhiteListDomainsOk returns a tuple with the WhiteListDomains field value
+// GetWhiteListDomainsOk returns a tuple with the WhiteListDomains field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WhiteListDomainCreateCommand) GetWhiteListDomainsOk() ([]WhiteListDomainCreateDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.WhiteListDomains) {
 		return nil, false
 	}
 	return o.WhiteListDomains, true
 }
 
-// SetWhiteListDomains sets field value
+// HasWhiteListDomains returns a boolean if a field has been set.
+func (o *WhiteListDomainCreateCommand) HasWhiteListDomains() bool {
+	if o != nil && !IsNil(o.WhiteListDomains) {
+		return true
+	}
+
+	return false
+}
+
+// SetWhiteListDomains gets a reference to the given []WhiteListDomainCreateDto and assigns it to the WhiteListDomains field.
 func (o *WhiteListDomainCreateCommand) SetWhiteListDomains(v []WhiteListDomainCreateDto) {
 	o.WhiteListDomains = v
 }
@@ -122,48 +125,13 @@ func (o WhiteListDomainCreateCommand) MarshalJSON() ([]byte, error) {
 
 func (o WhiteListDomainCreateCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["whiteListDomains"] = o.WhiteListDomains
+	if !IsNil(o.WhiteListDomains) {
+		toSerialize["whiteListDomains"] = o.WhiteListDomains
+	}
 	if o.PartnerId.IsSet() {
 		toSerialize["partnerId"] = o.PartnerId.Get()
 	}
 	return toSerialize, nil
-}
-
-func (o *WhiteListDomainCreateCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"whiteListDomains",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varWhiteListDomainCreateCommand := _WhiteListDomainCreateCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varWhiteListDomainCreateCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = WhiteListDomainCreateCommand(varWhiteListDomainCreateCommand)
-
-	return err
 }
 
 type NullableWhiteListDomainCreateCommand struct {

@@ -23,19 +23,19 @@ var _ MappedNullable = &CatalogAppListDto{}
 // CatalogAppListDto struct for CatalogAppListDto
 type CatalogAppListDto struct {
 	CatalogAppId int32 `json:"catalogAppId"`
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	RepoId int32 `json:"repoId"`
-	RepoName string `json:"repoName"`
+	RepoName *string `json:"repoName,omitempty"`
 	CatalogId int32 `json:"catalogId"`
-	CatalogName string `json:"catalogName"`
-	PackageId string `json:"packageId"`
-	Version string `json:"version"`
-	LogoImageId string `json:"logoImageId"`
+	CatalogName *string `json:"catalogName,omitempty"`
+	PackageId *string `json:"packageId,omitempty"`
+	Version *string `json:"version,omitempty"`
+	LogoImageId *string `json:"logoImageId,omitempty"`
 	IsLocked bool `json:"isLocked"`
-	AppVersion string `json:"appVersion"`
-	Description string `json:"description"`
-	SecurityReportSummary SecurityReportSummary `json:"securityReportSummary"`
-	Repository Repository `json:"repository"`
+	AppVersion *string `json:"appVersion,omitempty"`
+	Description *string `json:"description,omitempty"`
+	SecurityReportSummary *SecurityReportSummary `json:"securityReportSummary,omitempty"`
+	Repository *Repository `json:"repository,omitempty"`
 	Stars int64 `json:"stars"`
 	InstalledInstanceCount NullableInt32 `json:"installedInstanceCount,omitempty"`
 }
@@ -46,22 +46,12 @@ type _CatalogAppListDto CatalogAppListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogAppListDto(catalogAppId int32, name string, repoId int32, repoName string, catalogId int32, catalogName string, packageId string, version string, logoImageId string, isLocked bool, appVersion string, description string, securityReportSummary SecurityReportSummary, repository Repository, stars int64) *CatalogAppListDto {
+func NewCatalogAppListDto(catalogAppId int32, repoId int32, catalogId int32, isLocked bool, stars int64) *CatalogAppListDto {
 	this := CatalogAppListDto{}
 	this.CatalogAppId = catalogAppId
-	this.Name = name
 	this.RepoId = repoId
-	this.RepoName = repoName
 	this.CatalogId = catalogId
-	this.CatalogName = catalogName
-	this.PackageId = packageId
-	this.Version = version
-	this.LogoImageId = logoImageId
 	this.IsLocked = isLocked
-	this.AppVersion = appVersion
-	this.Description = description
-	this.SecurityReportSummary = securityReportSummary
-	this.Repository = repository
 	this.Stars = stars
 	return &this
 }
@@ -98,28 +88,36 @@ func (o *CatalogAppListDto) SetCatalogAppId(v int32) {
 	o.CatalogAppId = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CatalogAppListDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CatalogAppListDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CatalogAppListDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CatalogAppListDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetRepoId returns the RepoId field value
@@ -146,28 +144,36 @@ func (o *CatalogAppListDto) SetRepoId(v int32) {
 	o.RepoId = v
 }
 
-// GetRepoName returns the RepoName field value
+// GetRepoName returns the RepoName field value if set, zero value otherwise.
 func (o *CatalogAppListDto) GetRepoName() string {
-	if o == nil {
+	if o == nil || IsNil(o.RepoName) {
 		var ret string
 		return ret
 	}
-
-	return o.RepoName
+	return *o.RepoName
 }
 
-// GetRepoNameOk returns a tuple with the RepoName field value
+// GetRepoNameOk returns a tuple with the RepoName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CatalogAppListDto) GetRepoNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RepoName) {
 		return nil, false
 	}
-	return &o.RepoName, true
+	return o.RepoName, true
 }
 
-// SetRepoName sets field value
+// HasRepoName returns a boolean if a field has been set.
+func (o *CatalogAppListDto) HasRepoName() bool {
+	if o != nil && !IsNil(o.RepoName) {
+		return true
+	}
+
+	return false
+}
+
+// SetRepoName gets a reference to the given string and assigns it to the RepoName field.
 func (o *CatalogAppListDto) SetRepoName(v string) {
-	o.RepoName = v
+	o.RepoName = &v
 }
 
 // GetCatalogId returns the CatalogId field value
@@ -194,100 +200,132 @@ func (o *CatalogAppListDto) SetCatalogId(v int32) {
 	o.CatalogId = v
 }
 
-// GetCatalogName returns the CatalogName field value
+// GetCatalogName returns the CatalogName field value if set, zero value otherwise.
 func (o *CatalogAppListDto) GetCatalogName() string {
-	if o == nil {
+	if o == nil || IsNil(o.CatalogName) {
 		var ret string
 		return ret
 	}
-
-	return o.CatalogName
+	return *o.CatalogName
 }
 
-// GetCatalogNameOk returns a tuple with the CatalogName field value
+// GetCatalogNameOk returns a tuple with the CatalogName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CatalogAppListDto) GetCatalogNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CatalogName) {
 		return nil, false
 	}
-	return &o.CatalogName, true
+	return o.CatalogName, true
 }
 
-// SetCatalogName sets field value
+// HasCatalogName returns a boolean if a field has been set.
+func (o *CatalogAppListDto) HasCatalogName() bool {
+	if o != nil && !IsNil(o.CatalogName) {
+		return true
+	}
+
+	return false
+}
+
+// SetCatalogName gets a reference to the given string and assigns it to the CatalogName field.
 func (o *CatalogAppListDto) SetCatalogName(v string) {
-	o.CatalogName = v
+	o.CatalogName = &v
 }
 
-// GetPackageId returns the PackageId field value
+// GetPackageId returns the PackageId field value if set, zero value otherwise.
 func (o *CatalogAppListDto) GetPackageId() string {
-	if o == nil {
+	if o == nil || IsNil(o.PackageId) {
 		var ret string
 		return ret
 	}
-
-	return o.PackageId
+	return *o.PackageId
 }
 
-// GetPackageIdOk returns a tuple with the PackageId field value
+// GetPackageIdOk returns a tuple with the PackageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CatalogAppListDto) GetPackageIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PackageId) {
 		return nil, false
 	}
-	return &o.PackageId, true
+	return o.PackageId, true
 }
 
-// SetPackageId sets field value
+// HasPackageId returns a boolean if a field has been set.
+func (o *CatalogAppListDto) HasPackageId() bool {
+	if o != nil && !IsNil(o.PackageId) {
+		return true
+	}
+
+	return false
+}
+
+// SetPackageId gets a reference to the given string and assigns it to the PackageId field.
 func (o *CatalogAppListDto) SetPackageId(v string) {
-	o.PackageId = v
+	o.PackageId = &v
 }
 
-// GetVersion returns the Version field value
+// GetVersion returns the Version field value if set, zero value otherwise.
 func (o *CatalogAppListDto) GetVersion() string {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
-
-	return o.Version
+	return *o.Version
 }
 
-// GetVersionOk returns a tuple with the Version field value
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CatalogAppListDto) GetVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
-	return &o.Version, true
+	return o.Version, true
 }
 
-// SetVersion sets field value
+// HasVersion returns a boolean if a field has been set.
+func (o *CatalogAppListDto) HasVersion() bool {
+	if o != nil && !IsNil(o.Version) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *CatalogAppListDto) SetVersion(v string) {
-	o.Version = v
+	o.Version = &v
 }
 
-// GetLogoImageId returns the LogoImageId field value
+// GetLogoImageId returns the LogoImageId field value if set, zero value otherwise.
 func (o *CatalogAppListDto) GetLogoImageId() string {
-	if o == nil {
+	if o == nil || IsNil(o.LogoImageId) {
 		var ret string
 		return ret
 	}
-
-	return o.LogoImageId
+	return *o.LogoImageId
 }
 
-// GetLogoImageIdOk returns a tuple with the LogoImageId field value
+// GetLogoImageIdOk returns a tuple with the LogoImageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CatalogAppListDto) GetLogoImageIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LogoImageId) {
 		return nil, false
 	}
-	return &o.LogoImageId, true
+	return o.LogoImageId, true
 }
 
-// SetLogoImageId sets field value
+// HasLogoImageId returns a boolean if a field has been set.
+func (o *CatalogAppListDto) HasLogoImageId() bool {
+	if o != nil && !IsNil(o.LogoImageId) {
+		return true
+	}
+
+	return false
+}
+
+// SetLogoImageId gets a reference to the given string and assigns it to the LogoImageId field.
 func (o *CatalogAppListDto) SetLogoImageId(v string) {
-	o.LogoImageId = v
+	o.LogoImageId = &v
 }
 
 // GetIsLocked returns the IsLocked field value
@@ -314,100 +352,132 @@ func (o *CatalogAppListDto) SetIsLocked(v bool) {
 	o.IsLocked = v
 }
 
-// GetAppVersion returns the AppVersion field value
+// GetAppVersion returns the AppVersion field value if set, zero value otherwise.
 func (o *CatalogAppListDto) GetAppVersion() string {
-	if o == nil {
+	if o == nil || IsNil(o.AppVersion) {
 		var ret string
 		return ret
 	}
-
-	return o.AppVersion
+	return *o.AppVersion
 }
 
-// GetAppVersionOk returns a tuple with the AppVersion field value
+// GetAppVersionOk returns a tuple with the AppVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CatalogAppListDto) GetAppVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AppVersion) {
 		return nil, false
 	}
-	return &o.AppVersion, true
+	return o.AppVersion, true
 }
 
-// SetAppVersion sets field value
+// HasAppVersion returns a boolean if a field has been set.
+func (o *CatalogAppListDto) HasAppVersion() bool {
+	if o != nil && !IsNil(o.AppVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetAppVersion gets a reference to the given string and assigns it to the AppVersion field.
 func (o *CatalogAppListDto) SetAppVersion(v string) {
-	o.AppVersion = v
+	o.AppVersion = &v
 }
 
-// GetDescription returns the Description field value
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *CatalogAppListDto) GetDescription() string {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-
-	return o.Description
+	return *o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CatalogAppListDto) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description, true
 }
 
-// SetDescription sets field value
+// HasDescription returns a boolean if a field has been set.
+func (o *CatalogAppListDto) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *CatalogAppListDto) SetDescription(v string) {
-	o.Description = v
+	o.Description = &v
 }
 
-// GetSecurityReportSummary returns the SecurityReportSummary field value
+// GetSecurityReportSummary returns the SecurityReportSummary field value if set, zero value otherwise.
 func (o *CatalogAppListDto) GetSecurityReportSummary() SecurityReportSummary {
-	if o == nil {
+	if o == nil || IsNil(o.SecurityReportSummary) {
 		var ret SecurityReportSummary
 		return ret
 	}
-
-	return o.SecurityReportSummary
+	return *o.SecurityReportSummary
 }
 
-// GetSecurityReportSummaryOk returns a tuple with the SecurityReportSummary field value
+// GetSecurityReportSummaryOk returns a tuple with the SecurityReportSummary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CatalogAppListDto) GetSecurityReportSummaryOk() (*SecurityReportSummary, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SecurityReportSummary) {
 		return nil, false
 	}
-	return &o.SecurityReportSummary, true
+	return o.SecurityReportSummary, true
 }
 
-// SetSecurityReportSummary sets field value
+// HasSecurityReportSummary returns a boolean if a field has been set.
+func (o *CatalogAppListDto) HasSecurityReportSummary() bool {
+	if o != nil && !IsNil(o.SecurityReportSummary) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecurityReportSummary gets a reference to the given SecurityReportSummary and assigns it to the SecurityReportSummary field.
 func (o *CatalogAppListDto) SetSecurityReportSummary(v SecurityReportSummary) {
-	o.SecurityReportSummary = v
+	o.SecurityReportSummary = &v
 }
 
-// GetRepository returns the Repository field value
+// GetRepository returns the Repository field value if set, zero value otherwise.
 func (o *CatalogAppListDto) GetRepository() Repository {
-	if o == nil {
+	if o == nil || IsNil(o.Repository) {
 		var ret Repository
 		return ret
 	}
-
-	return o.Repository
+	return *o.Repository
 }
 
-// GetRepositoryOk returns a tuple with the Repository field value
+// GetRepositoryOk returns a tuple with the Repository field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CatalogAppListDto) GetRepositoryOk() (*Repository, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Repository) {
 		return nil, false
 	}
-	return &o.Repository, true
+	return o.Repository, true
 }
 
-// SetRepository sets field value
+// HasRepository returns a boolean if a field has been set.
+func (o *CatalogAppListDto) HasRepository() bool {
+	if o != nil && !IsNil(o.Repository) {
+		return true
+	}
+
+	return false
+}
+
+// SetRepository gets a reference to the given Repository and assigns it to the Repository field.
 func (o *CatalogAppListDto) SetRepository(v Repository) {
-	o.Repository = v
+	o.Repository = &v
 }
 
 // GetStars returns the Stars field value
@@ -487,19 +557,39 @@ func (o CatalogAppListDto) MarshalJSON() ([]byte, error) {
 func (o CatalogAppListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["catalogAppId"] = o.CatalogAppId
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	toSerialize["repoId"] = o.RepoId
-	toSerialize["repoName"] = o.RepoName
+	if !IsNil(o.RepoName) {
+		toSerialize["repoName"] = o.RepoName
+	}
 	toSerialize["catalogId"] = o.CatalogId
-	toSerialize["catalogName"] = o.CatalogName
-	toSerialize["packageId"] = o.PackageId
-	toSerialize["version"] = o.Version
-	toSerialize["logoImageId"] = o.LogoImageId
+	if !IsNil(o.CatalogName) {
+		toSerialize["catalogName"] = o.CatalogName
+	}
+	if !IsNil(o.PackageId) {
+		toSerialize["packageId"] = o.PackageId
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.LogoImageId) {
+		toSerialize["logoImageId"] = o.LogoImageId
+	}
 	toSerialize["isLocked"] = o.IsLocked
-	toSerialize["appVersion"] = o.AppVersion
-	toSerialize["description"] = o.Description
-	toSerialize["securityReportSummary"] = o.SecurityReportSummary
-	toSerialize["repository"] = o.Repository
+	if !IsNil(o.AppVersion) {
+		toSerialize["appVersion"] = o.AppVersion
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.SecurityReportSummary) {
+		toSerialize["securityReportSummary"] = o.SecurityReportSummary
+	}
+	if !IsNil(o.Repository) {
+		toSerialize["repository"] = o.Repository
+	}
 	toSerialize["stars"] = o.Stars
 	if o.InstalledInstanceCount.IsSet() {
 		toSerialize["installedInstanceCount"] = o.InstalledInstanceCount.Get()
@@ -513,19 +603,9 @@ func (o *CatalogAppListDto) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"catalogAppId",
-		"name",
 		"repoId",
-		"repoName",
 		"catalogId",
-		"catalogName",
-		"packageId",
-		"version",
-		"logoImageId",
 		"isLocked",
-		"appVersion",
-		"description",
-		"securityReportSummary",
-		"repository",
 		"stars",
 	}
 

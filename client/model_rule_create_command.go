@@ -22,14 +22,14 @@ var _ MappedNullable = &RuleCreateCommand{}
 
 // RuleCreateCommand struct for RuleCreateCommand
 type RuleCreateCommand struct {
-	Name string `json:"name"`
-	MetricName string `json:"metricName"`
-	Labels []PrometheusLabelListDto `json:"labels"`
+	Name *string `json:"name,omitempty"`
+	MetricName *string `json:"metricName,omitempty"`
+	Labels []PrometheusLabelListDto `json:"labels,omitempty"`
 	Type PrometheusType `json:"type"`
 	Price float64 `json:"price"`
 	PartnerId NullableInt32 `json:"partnerId,omitempty"`
 	OperationCredentialId int32 `json:"operationCredentialId"`
-	OrganizationId []int32 `json:"organizationId"`
+	OrganizationId []int32 `json:"organizationId,omitempty"`
 	RuleDiscountRate NullableInt32 `json:"ruleDiscountRate,omitempty"`
 }
 
@@ -39,15 +39,11 @@ type _RuleCreateCommand RuleCreateCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRuleCreateCommand(name string, metricName string, labels []PrometheusLabelListDto, type_ PrometheusType, price float64, operationCredentialId int32, organizationId []int32) *RuleCreateCommand {
+func NewRuleCreateCommand(type_ PrometheusType, price float64, operationCredentialId int32) *RuleCreateCommand {
 	this := RuleCreateCommand{}
-	this.Name = name
-	this.MetricName = metricName
-	this.Labels = labels
 	this.Type = type_
 	this.Price = price
 	this.OperationCredentialId = operationCredentialId
-	this.OrganizationId = organizationId
 	return &this
 }
 
@@ -59,74 +55,98 @@ func NewRuleCreateCommandWithDefaults() *RuleCreateCommand {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *RuleCreateCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RuleCreateCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *RuleCreateCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *RuleCreateCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetMetricName returns the MetricName field value
+// GetMetricName returns the MetricName field value if set, zero value otherwise.
 func (o *RuleCreateCommand) GetMetricName() string {
-	if o == nil {
+	if o == nil || IsNil(o.MetricName) {
 		var ret string
 		return ret
 	}
-
-	return o.MetricName
+	return *o.MetricName
 }
 
-// GetMetricNameOk returns a tuple with the MetricName field value
+// GetMetricNameOk returns a tuple with the MetricName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RuleCreateCommand) GetMetricNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.MetricName) {
 		return nil, false
 	}
-	return &o.MetricName, true
+	return o.MetricName, true
 }
 
-// SetMetricName sets field value
+// HasMetricName returns a boolean if a field has been set.
+func (o *RuleCreateCommand) HasMetricName() bool {
+	if o != nil && !IsNil(o.MetricName) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetricName gets a reference to the given string and assigns it to the MetricName field.
 func (o *RuleCreateCommand) SetMetricName(v string) {
-	o.MetricName = v
+	o.MetricName = &v
 }
 
-// GetLabels returns the Labels field value
+// GetLabels returns the Labels field value if set, zero value otherwise.
 func (o *RuleCreateCommand) GetLabels() []PrometheusLabelListDto {
-	if o == nil {
+	if o == nil || IsNil(o.Labels) {
 		var ret []PrometheusLabelListDto
 		return ret
 	}
-
 	return o.Labels
 }
 
-// GetLabelsOk returns a tuple with the Labels field value
+// GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RuleCreateCommand) GetLabelsOk() ([]PrometheusLabelListDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Labels) {
 		return nil, false
 	}
 	return o.Labels, true
 }
 
-// SetLabels sets field value
+// HasLabels returns a boolean if a field has been set.
+func (o *RuleCreateCommand) HasLabels() bool {
+	if o != nil && !IsNil(o.Labels) {
+		return true
+	}
+
+	return false
+}
+
+// SetLabels gets a reference to the given []PrometheusLabelListDto and assigns it to the Labels field.
 func (o *RuleCreateCommand) SetLabels(v []PrometheusLabelListDto) {
 	o.Labels = v
 }
@@ -245,26 +265,34 @@ func (o *RuleCreateCommand) SetOperationCredentialId(v int32) {
 	o.OperationCredentialId = v
 }
 
-// GetOrganizationId returns the OrganizationId field value
+// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
 func (o *RuleCreateCommand) GetOrganizationId() []int32 {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationId) {
 		var ret []int32
 		return ret
 	}
-
 	return o.OrganizationId
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RuleCreateCommand) GetOrganizationIdOk() ([]int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationId) {
 		return nil, false
 	}
 	return o.OrganizationId, true
 }
 
-// SetOrganizationId sets field value
+// HasOrganizationId returns a boolean if a field has been set.
+func (o *RuleCreateCommand) HasOrganizationId() bool {
+	if o != nil && !IsNil(o.OrganizationId) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationId gets a reference to the given []int32 and assigns it to the OrganizationId field.
 func (o *RuleCreateCommand) SetOrganizationId(v []int32) {
 	o.OrganizationId = v
 }
@@ -321,16 +349,24 @@ func (o RuleCreateCommand) MarshalJSON() ([]byte, error) {
 
 func (o RuleCreateCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["metricName"] = o.MetricName
-	toSerialize["labels"] = o.Labels
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.MetricName) {
+		toSerialize["metricName"] = o.MetricName
+	}
+	if !IsNil(o.Labels) {
+		toSerialize["labels"] = o.Labels
+	}
 	toSerialize["type"] = o.Type
 	toSerialize["price"] = o.Price
 	if o.PartnerId.IsSet() {
 		toSerialize["partnerId"] = o.PartnerId.Get()
 	}
 	toSerialize["operationCredentialId"] = o.OperationCredentialId
-	toSerialize["organizationId"] = o.OrganizationId
+	if !IsNil(o.OrganizationId) {
+		toSerialize["organizationId"] = o.OrganizationId
+	}
 	if o.RuleDiscountRate.IsSet() {
 		toSerialize["ruleDiscountRate"] = o.RuleDiscountRate.Get()
 	}
@@ -342,13 +378,9 @@ func (o *RuleCreateCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
-		"metricName",
-		"labels",
 		"type",
 		"price",
 		"operationCredentialId",
-		"organizationId",
 	}
 
 	allProperties := make(map[string]interface{})

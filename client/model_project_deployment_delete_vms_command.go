@@ -23,7 +23,7 @@ var _ MappedNullable = &ProjectDeploymentDeleteVmsCommand{}
 // ProjectDeploymentDeleteVmsCommand struct for ProjectDeploymentDeleteVmsCommand
 type ProjectDeploymentDeleteVmsCommand struct {
 	ProjectId int32 `json:"projectId"`
-	VmIds []int32 `json:"vmIds"`
+	VmIds []int32 `json:"vmIds,omitempty"`
 }
 
 type _ProjectDeploymentDeleteVmsCommand ProjectDeploymentDeleteVmsCommand
@@ -32,10 +32,9 @@ type _ProjectDeploymentDeleteVmsCommand ProjectDeploymentDeleteVmsCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectDeploymentDeleteVmsCommand(projectId int32, vmIds []int32) *ProjectDeploymentDeleteVmsCommand {
+func NewProjectDeploymentDeleteVmsCommand(projectId int32) *ProjectDeploymentDeleteVmsCommand {
 	this := ProjectDeploymentDeleteVmsCommand{}
 	this.ProjectId = projectId
-	this.VmIds = vmIds
 	return &this
 }
 
@@ -71,26 +70,34 @@ func (o *ProjectDeploymentDeleteVmsCommand) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetVmIds returns the VmIds field value
+// GetVmIds returns the VmIds field value if set, zero value otherwise.
 func (o *ProjectDeploymentDeleteVmsCommand) GetVmIds() []int32 {
-	if o == nil {
+	if o == nil || IsNil(o.VmIds) {
 		var ret []int32
 		return ret
 	}
-
 	return o.VmIds
 }
 
-// GetVmIdsOk returns a tuple with the VmIds field value
+// GetVmIdsOk returns a tuple with the VmIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDeploymentDeleteVmsCommand) GetVmIdsOk() ([]int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VmIds) {
 		return nil, false
 	}
 	return o.VmIds, true
 }
 
-// SetVmIds sets field value
+// HasVmIds returns a boolean if a field has been set.
+func (o *ProjectDeploymentDeleteVmsCommand) HasVmIds() bool {
+	if o != nil && !IsNil(o.VmIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetVmIds gets a reference to the given []int32 and assigns it to the VmIds field.
 func (o *ProjectDeploymentDeleteVmsCommand) SetVmIds(v []int32) {
 	o.VmIds = v
 }
@@ -106,7 +113,9 @@ func (o ProjectDeploymentDeleteVmsCommand) MarshalJSON() ([]byte, error) {
 func (o ProjectDeploymentDeleteVmsCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["vmIds"] = o.VmIds
+	if !IsNil(o.VmIds) {
+		toSerialize["vmIds"] = o.VmIds
+	}
 	return toSerialize, nil
 }
 
@@ -116,7 +125,6 @@ func (o *ProjectDeploymentDeleteVmsCommand) UnmarshalJSON(data []byte) (err erro
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"vmIds",
 	}
 
 	allProperties := make(map[string]interface{})

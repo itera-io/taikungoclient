@@ -22,7 +22,7 @@ var _ MappedNullable = &ServersSearchList{}
 
 // ServersSearchList struct for ServersSearchList
 type ServersSearchList struct {
-	Data []ServersSearchResponseData `json:"data"`
+	Data []ServersSearchResponseData `json:"data,omitempty"`
 	TotalCount int32 `json:"totalCount"`
 }
 
@@ -32,9 +32,8 @@ type _ServersSearchList ServersSearchList
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServersSearchList(data []ServersSearchResponseData, totalCount int32) *ServersSearchList {
+func NewServersSearchList(totalCount int32) *ServersSearchList {
 	this := ServersSearchList{}
-	this.Data = data
 	this.TotalCount = totalCount
 	return &this
 }
@@ -47,26 +46,34 @@ func NewServersSearchListWithDefaults() *ServersSearchList {
 	return &this
 }
 
-// GetData returns the Data field value
+// GetData returns the Data field value if set, zero value otherwise.
 func (o *ServersSearchList) GetData() []ServersSearchResponseData {
-	if o == nil {
+	if o == nil || IsNil(o.Data) {
 		var ret []ServersSearchResponseData
 		return ret
 	}
-
 	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value
+// GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServersSearchList) GetDataOk() ([]ServersSearchResponseData, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
 	return o.Data, true
 }
 
-// SetData sets field value
+// HasData returns a boolean if a field has been set.
+func (o *ServersSearchList) HasData() bool {
+	if o != nil && !IsNil(o.Data) {
+		return true
+	}
+
+	return false
+}
+
+// SetData gets a reference to the given []ServersSearchResponseData and assigns it to the Data field.
 func (o *ServersSearchList) SetData(v []ServersSearchResponseData) {
 	o.Data = v
 }
@@ -105,7 +112,9 @@ func (o ServersSearchList) MarshalJSON() ([]byte, error) {
 
 func (o ServersSearchList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["data"] = o.Data
+	if !IsNil(o.Data) {
+		toSerialize["data"] = o.Data
+	}
 	toSerialize["totalCount"] = o.TotalCount
 	return toSerialize, nil
 }
@@ -115,7 +124,6 @@ func (o *ServersSearchList) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"data",
 		"totalCount",
 	}
 

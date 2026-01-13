@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the DashboardChart type satisfies the MappedNullable interface at compile time
@@ -22,26 +20,19 @@ var _ MappedNullable = &DashboardChart{}
 
 // DashboardChart struct for DashboardChart
 type DashboardChart struct {
-	Organization OrganizationEntityForDashboard `json:"organization"`
-	Projects ProjectChartDto `json:"projects"`
-	CloudCredentials CredentialChartDto `json:"cloudCredentials"`
-	Servers ServerChartDto `json:"servers"`
-	StandAloneVms ServerChartDto `json:"standAloneVms"`
+	Organization *OrganizationEntityForDashboard `json:"organization,omitempty"`
+	Projects *ProjectChartDto `json:"projects,omitempty"`
+	CloudCredentials *CredentialChartDto `json:"cloudCredentials,omitempty"`
+	Servers *ServerChartDto `json:"servers,omitempty"`
+	StandAloneVms *ServerChartDto `json:"standAloneVms,omitempty"`
 }
-
-type _DashboardChart DashboardChart
 
 // NewDashboardChart instantiates a new DashboardChart object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDashboardChart(organization OrganizationEntityForDashboard, projects ProjectChartDto, cloudCredentials CredentialChartDto, servers ServerChartDto, standAloneVms ServerChartDto) *DashboardChart {
+func NewDashboardChart() *DashboardChart {
 	this := DashboardChart{}
-	this.Organization = organization
-	this.Projects = projects
-	this.CloudCredentials = cloudCredentials
-	this.Servers = servers
-	this.StandAloneVms = standAloneVms
 	return &this
 }
 
@@ -53,124 +44,164 @@ func NewDashboardChartWithDefaults() *DashboardChart {
 	return &this
 }
 
-// GetOrganization returns the Organization field value
+// GetOrganization returns the Organization field value if set, zero value otherwise.
 func (o *DashboardChart) GetOrganization() OrganizationEntityForDashboard {
-	if o == nil {
+	if o == nil || IsNil(o.Organization) {
 		var ret OrganizationEntityForDashboard
 		return ret
 	}
-
-	return o.Organization
+	return *o.Organization
 }
 
-// GetOrganizationOk returns a tuple with the Organization field value
+// GetOrganizationOk returns a tuple with the Organization field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DashboardChart) GetOrganizationOk() (*OrganizationEntityForDashboard, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Organization) {
 		return nil, false
 	}
-	return &o.Organization, true
+	return o.Organization, true
 }
 
-// SetOrganization sets field value
+// HasOrganization returns a boolean if a field has been set.
+func (o *DashboardChart) HasOrganization() bool {
+	if o != nil && !IsNil(o.Organization) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganization gets a reference to the given OrganizationEntityForDashboard and assigns it to the Organization field.
 func (o *DashboardChart) SetOrganization(v OrganizationEntityForDashboard) {
-	o.Organization = v
+	o.Organization = &v
 }
 
-// GetProjects returns the Projects field value
+// GetProjects returns the Projects field value if set, zero value otherwise.
 func (o *DashboardChart) GetProjects() ProjectChartDto {
-	if o == nil {
+	if o == nil || IsNil(o.Projects) {
 		var ret ProjectChartDto
 		return ret
 	}
-
-	return o.Projects
+	return *o.Projects
 }
 
-// GetProjectsOk returns a tuple with the Projects field value
+// GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DashboardChart) GetProjectsOk() (*ProjectChartDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Projects) {
 		return nil, false
 	}
-	return &o.Projects, true
+	return o.Projects, true
 }
 
-// SetProjects sets field value
+// HasProjects returns a boolean if a field has been set.
+func (o *DashboardChart) HasProjects() bool {
+	if o != nil && !IsNil(o.Projects) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjects gets a reference to the given ProjectChartDto and assigns it to the Projects field.
 func (o *DashboardChart) SetProjects(v ProjectChartDto) {
-	o.Projects = v
+	o.Projects = &v
 }
 
-// GetCloudCredentials returns the CloudCredentials field value
+// GetCloudCredentials returns the CloudCredentials field value if set, zero value otherwise.
 func (o *DashboardChart) GetCloudCredentials() CredentialChartDto {
-	if o == nil {
+	if o == nil || IsNil(o.CloudCredentials) {
 		var ret CredentialChartDto
 		return ret
 	}
-
-	return o.CloudCredentials
+	return *o.CloudCredentials
 }
 
-// GetCloudCredentialsOk returns a tuple with the CloudCredentials field value
+// GetCloudCredentialsOk returns a tuple with the CloudCredentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DashboardChart) GetCloudCredentialsOk() (*CredentialChartDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CloudCredentials) {
 		return nil, false
 	}
-	return &o.CloudCredentials, true
+	return o.CloudCredentials, true
 }
 
-// SetCloudCredentials sets field value
+// HasCloudCredentials returns a boolean if a field has been set.
+func (o *DashboardChart) HasCloudCredentials() bool {
+	if o != nil && !IsNil(o.CloudCredentials) {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudCredentials gets a reference to the given CredentialChartDto and assigns it to the CloudCredentials field.
 func (o *DashboardChart) SetCloudCredentials(v CredentialChartDto) {
-	o.CloudCredentials = v
+	o.CloudCredentials = &v
 }
 
-// GetServers returns the Servers field value
+// GetServers returns the Servers field value if set, zero value otherwise.
 func (o *DashboardChart) GetServers() ServerChartDto {
-	if o == nil {
+	if o == nil || IsNil(o.Servers) {
 		var ret ServerChartDto
 		return ret
 	}
-
-	return o.Servers
+	return *o.Servers
 }
 
-// GetServersOk returns a tuple with the Servers field value
+// GetServersOk returns a tuple with the Servers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DashboardChart) GetServersOk() (*ServerChartDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Servers) {
 		return nil, false
 	}
-	return &o.Servers, true
+	return o.Servers, true
 }
 
-// SetServers sets field value
+// HasServers returns a boolean if a field has been set.
+func (o *DashboardChart) HasServers() bool {
+	if o != nil && !IsNil(o.Servers) {
+		return true
+	}
+
+	return false
+}
+
+// SetServers gets a reference to the given ServerChartDto and assigns it to the Servers field.
 func (o *DashboardChart) SetServers(v ServerChartDto) {
-	o.Servers = v
+	o.Servers = &v
 }
 
-// GetStandAloneVms returns the StandAloneVms field value
+// GetStandAloneVms returns the StandAloneVms field value if set, zero value otherwise.
 func (o *DashboardChart) GetStandAloneVms() ServerChartDto {
-	if o == nil {
+	if o == nil || IsNil(o.StandAloneVms) {
 		var ret ServerChartDto
 		return ret
 	}
-
-	return o.StandAloneVms
+	return *o.StandAloneVms
 }
 
-// GetStandAloneVmsOk returns a tuple with the StandAloneVms field value
+// GetStandAloneVmsOk returns a tuple with the StandAloneVms field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DashboardChart) GetStandAloneVmsOk() (*ServerChartDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.StandAloneVms) {
 		return nil, false
 	}
-	return &o.StandAloneVms, true
+	return o.StandAloneVms, true
 }
 
-// SetStandAloneVms sets field value
+// HasStandAloneVms returns a boolean if a field has been set.
+func (o *DashboardChart) HasStandAloneVms() bool {
+	if o != nil && !IsNil(o.StandAloneVms) {
+		return true
+	}
+
+	return false
+}
+
+// SetStandAloneVms gets a reference to the given ServerChartDto and assigns it to the StandAloneVms field.
 func (o *DashboardChart) SetStandAloneVms(v ServerChartDto) {
-	o.StandAloneVms = v
+	o.StandAloneVms = &v
 }
 
 func (o DashboardChart) MarshalJSON() ([]byte, error) {
@@ -183,53 +214,22 @@ func (o DashboardChart) MarshalJSON() ([]byte, error) {
 
 func (o DashboardChart) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["organization"] = o.Organization
-	toSerialize["projects"] = o.Projects
-	toSerialize["cloudCredentials"] = o.CloudCredentials
-	toSerialize["servers"] = o.Servers
-	toSerialize["standAloneVms"] = o.StandAloneVms
+	if !IsNil(o.Organization) {
+		toSerialize["organization"] = o.Organization
+	}
+	if !IsNil(o.Projects) {
+		toSerialize["projects"] = o.Projects
+	}
+	if !IsNil(o.CloudCredentials) {
+		toSerialize["cloudCredentials"] = o.CloudCredentials
+	}
+	if !IsNil(o.Servers) {
+		toSerialize["servers"] = o.Servers
+	}
+	if !IsNil(o.StandAloneVms) {
+		toSerialize["standAloneVms"] = o.StandAloneVms
+	}
 	return toSerialize, nil
-}
-
-func (o *DashboardChart) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"organization",
-		"projects",
-		"cloudCredentials",
-		"servers",
-		"standAloneVms",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDashboardChart := _DashboardChart{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDashboardChart)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DashboardChart(varDashboardChart)
-
-	return err
 }
 
 type NullableDashboardChart struct {

@@ -23,7 +23,7 @@ var _ MappedNullable = &ResetServerStatusCommand{}
 // ResetServerStatusCommand struct for ResetServerStatusCommand
 type ResetServerStatusCommand struct {
 	ProjectId int32 `json:"projectId"`
-	ServerIds []int32 `json:"serverIds"`
+	ServerIds []int32 `json:"serverIds,omitempty"`
 	Status CloudStatus `json:"status"`
 }
 
@@ -33,10 +33,9 @@ type _ResetServerStatusCommand ResetServerStatusCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResetServerStatusCommand(projectId int32, serverIds []int32, status CloudStatus) *ResetServerStatusCommand {
+func NewResetServerStatusCommand(projectId int32, status CloudStatus) *ResetServerStatusCommand {
 	this := ResetServerStatusCommand{}
 	this.ProjectId = projectId
-	this.ServerIds = serverIds
 	this.Status = status
 	return &this
 }
@@ -73,26 +72,34 @@ func (o *ResetServerStatusCommand) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetServerIds returns the ServerIds field value
+// GetServerIds returns the ServerIds field value if set, zero value otherwise.
 func (o *ResetServerStatusCommand) GetServerIds() []int32 {
-	if o == nil {
+	if o == nil || IsNil(o.ServerIds) {
 		var ret []int32
 		return ret
 	}
-
 	return o.ServerIds
 }
 
-// GetServerIdsOk returns a tuple with the ServerIds field value
+// GetServerIdsOk returns a tuple with the ServerIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResetServerStatusCommand) GetServerIdsOk() ([]int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ServerIds) {
 		return nil, false
 	}
 	return o.ServerIds, true
 }
 
-// SetServerIds sets field value
+// HasServerIds returns a boolean if a field has been set.
+func (o *ResetServerStatusCommand) HasServerIds() bool {
+	if o != nil && !IsNil(o.ServerIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetServerIds gets a reference to the given []int32 and assigns it to the ServerIds field.
 func (o *ResetServerStatusCommand) SetServerIds(v []int32) {
 	o.ServerIds = v
 }
@@ -132,7 +139,9 @@ func (o ResetServerStatusCommand) MarshalJSON() ([]byte, error) {
 func (o ResetServerStatusCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["serverIds"] = o.ServerIds
+	if !IsNil(o.ServerIds) {
+		toSerialize["serverIds"] = o.ServerIds
+	}
 	toSerialize["status"] = o.Status
 	return toSerialize, nil
 }
@@ -143,7 +152,6 @@ func (o *ResetServerStatusCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"serverIds",
 		"status",
 	}
 

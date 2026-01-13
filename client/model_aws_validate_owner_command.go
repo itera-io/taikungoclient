@@ -23,7 +23,7 @@ var _ MappedNullable = &AwsValidateOwnerCommand{}
 // AwsValidateOwnerCommand struct for AwsValidateOwnerCommand
 type AwsValidateOwnerCommand struct {
 	CloudId int32 `json:"cloudId"`
-	Owners []string `json:"owners"`
+	Owners []string `json:"owners,omitempty"`
 }
 
 type _AwsValidateOwnerCommand AwsValidateOwnerCommand
@@ -32,10 +32,9 @@ type _AwsValidateOwnerCommand AwsValidateOwnerCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAwsValidateOwnerCommand(cloudId int32, owners []string) *AwsValidateOwnerCommand {
+func NewAwsValidateOwnerCommand(cloudId int32) *AwsValidateOwnerCommand {
 	this := AwsValidateOwnerCommand{}
 	this.CloudId = cloudId
-	this.Owners = owners
 	return &this
 }
 
@@ -71,26 +70,34 @@ func (o *AwsValidateOwnerCommand) SetCloudId(v int32) {
 	o.CloudId = v
 }
 
-// GetOwners returns the Owners field value
+// GetOwners returns the Owners field value if set, zero value otherwise.
 func (o *AwsValidateOwnerCommand) GetOwners() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Owners) {
 		var ret []string
 		return ret
 	}
-
 	return o.Owners
 }
 
-// GetOwnersOk returns a tuple with the Owners field value
+// GetOwnersOk returns a tuple with the Owners field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AwsValidateOwnerCommand) GetOwnersOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Owners) {
 		return nil, false
 	}
 	return o.Owners, true
 }
 
-// SetOwners sets field value
+// HasOwners returns a boolean if a field has been set.
+func (o *AwsValidateOwnerCommand) HasOwners() bool {
+	if o != nil && !IsNil(o.Owners) {
+		return true
+	}
+
+	return false
+}
+
+// SetOwners gets a reference to the given []string and assigns it to the Owners field.
 func (o *AwsValidateOwnerCommand) SetOwners(v []string) {
 	o.Owners = v
 }
@@ -106,7 +113,9 @@ func (o AwsValidateOwnerCommand) MarshalJSON() ([]byte, error) {
 func (o AwsValidateOwnerCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["cloudId"] = o.CloudId
-	toSerialize["owners"] = o.Owners
+	if !IsNil(o.Owners) {
+		toSerialize["owners"] = o.Owners
+	}
 	return toSerialize, nil
 }
 
@@ -116,7 +125,6 @@ func (o *AwsValidateOwnerCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"cloudId",
-		"owners",
 	}
 
 	allProperties := make(map[string]interface{})

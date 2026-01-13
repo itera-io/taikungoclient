@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the UpdateUsedIpAddressesCommand type satisfies the MappedNullable interface at compile time
@@ -22,18 +20,15 @@ var _ MappedNullable = &UpdateUsedIpAddressesCommand{}
 
 // UpdateUsedIpAddressesCommand struct for UpdateUsedIpAddressesCommand
 type UpdateUsedIpAddressesCommand struct {
-	IpAddress []string `json:"ipAddress"`
+	IpAddress []string `json:"ipAddress,omitempty"`
 }
-
-type _UpdateUsedIpAddressesCommand UpdateUsedIpAddressesCommand
 
 // NewUpdateUsedIpAddressesCommand instantiates a new UpdateUsedIpAddressesCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateUsedIpAddressesCommand(ipAddress []string) *UpdateUsedIpAddressesCommand {
+func NewUpdateUsedIpAddressesCommand() *UpdateUsedIpAddressesCommand {
 	this := UpdateUsedIpAddressesCommand{}
-	this.IpAddress = ipAddress
 	return &this
 }
 
@@ -45,26 +40,34 @@ func NewUpdateUsedIpAddressesCommandWithDefaults() *UpdateUsedIpAddressesCommand
 	return &this
 }
 
-// GetIpAddress returns the IpAddress field value
+// GetIpAddress returns the IpAddress field value if set, zero value otherwise.
 func (o *UpdateUsedIpAddressesCommand) GetIpAddress() []string {
-	if o == nil {
+	if o == nil || IsNil(o.IpAddress) {
 		var ret []string
 		return ret
 	}
-
 	return o.IpAddress
 }
 
-// GetIpAddressOk returns a tuple with the IpAddress field value
+// GetIpAddressOk returns a tuple with the IpAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateUsedIpAddressesCommand) GetIpAddressOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.IpAddress) {
 		return nil, false
 	}
 	return o.IpAddress, true
 }
 
-// SetIpAddress sets field value
+// HasIpAddress returns a boolean if a field has been set.
+func (o *UpdateUsedIpAddressesCommand) HasIpAddress() bool {
+	if o != nil && !IsNil(o.IpAddress) {
+		return true
+	}
+
+	return false
+}
+
+// SetIpAddress gets a reference to the given []string and assigns it to the IpAddress field.
 func (o *UpdateUsedIpAddressesCommand) SetIpAddress(v []string) {
 	o.IpAddress = v
 }
@@ -79,45 +82,10 @@ func (o UpdateUsedIpAddressesCommand) MarshalJSON() ([]byte, error) {
 
 func (o UpdateUsedIpAddressesCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["ipAddress"] = o.IpAddress
+	if !IsNil(o.IpAddress) {
+		toSerialize["ipAddress"] = o.IpAddress
+	}
 	return toSerialize, nil
-}
-
-func (o *UpdateUsedIpAddressesCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"ipAddress",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varUpdateUsedIpAddressesCommand := _UpdateUsedIpAddressesCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUpdateUsedIpAddressesCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = UpdateUsedIpAddressesCommand(varUpdateUsedIpAddressesCommand)
-
-	return err
 }
 
 type NullableUpdateUsedIpAddressesCommand struct {

@@ -23,11 +23,11 @@ var _ MappedNullable = &ProjectAppDto{}
 // ProjectAppDto struct for ProjectAppDto
 type ProjectAppDto struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
-	Namespace string `json:"namespace"`
-	ProjectName string `json:"projectName"`
+	Name *string `json:"name,omitempty"`
+	Namespace *string `json:"namespace,omitempty"`
+	ProjectName *string `json:"projectName,omitempty"`
 	ProjectId int32 `json:"projectId"`
-	Version string `json:"version"`
+	Version *string `json:"version,omitempty"`
 	IsLocked bool `json:"isLocked"`
 	Status EInstanceStatus `json:"status"`
 	AutoSync bool `json:"autoSync"`
@@ -39,14 +39,10 @@ type _ProjectAppDto ProjectAppDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectAppDto(id int32, name string, namespace string, projectName string, projectId int32, version string, isLocked bool, status EInstanceStatus, autoSync bool) *ProjectAppDto {
+func NewProjectAppDto(id int32, projectId int32, isLocked bool, status EInstanceStatus, autoSync bool) *ProjectAppDto {
 	this := ProjectAppDto{}
 	this.Id = id
-	this.Name = name
-	this.Namespace = namespace
-	this.ProjectName = projectName
 	this.ProjectId = projectId
-	this.Version = version
 	this.IsLocked = isLocked
 	this.Status = status
 	this.AutoSync = autoSync
@@ -85,76 +81,100 @@ func (o *ProjectAppDto) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *ProjectAppDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectAppDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *ProjectAppDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ProjectAppDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetNamespace returns the Namespace field value
+// GetNamespace returns the Namespace field value if set, zero value otherwise.
 func (o *ProjectAppDto) GetNamespace() string {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		var ret string
 		return ret
 	}
-
-	return o.Namespace
+	return *o.Namespace
 }
 
-// GetNamespaceOk returns a tuple with the Namespace field value
+// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectAppDto) GetNamespaceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		return nil, false
 	}
-	return &o.Namespace, true
+	return o.Namespace, true
 }
 
-// SetNamespace sets field value
+// HasNamespace returns a boolean if a field has been set.
+func (o *ProjectAppDto) HasNamespace() bool {
+	if o != nil && !IsNil(o.Namespace) {
+		return true
+	}
+
+	return false
+}
+
+// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *ProjectAppDto) SetNamespace(v string) {
-	o.Namespace = v
+	o.Namespace = &v
 }
 
-// GetProjectName returns the ProjectName field value
+// GetProjectName returns the ProjectName field value if set, zero value otherwise.
 func (o *ProjectAppDto) GetProjectName() string {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		var ret string
 		return ret
 	}
-
-	return o.ProjectName
+	return *o.ProjectName
 }
 
-// GetProjectNameOk returns a tuple with the ProjectName field value
+// GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectAppDto) GetProjectNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		return nil, false
 	}
-	return &o.ProjectName, true
+	return o.ProjectName, true
 }
 
-// SetProjectName sets field value
+// HasProjectName returns a boolean if a field has been set.
+func (o *ProjectAppDto) HasProjectName() bool {
+	if o != nil && !IsNil(o.ProjectName) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectName gets a reference to the given string and assigns it to the ProjectName field.
 func (o *ProjectAppDto) SetProjectName(v string) {
-	o.ProjectName = v
+	o.ProjectName = &v
 }
 
 // GetProjectId returns the ProjectId field value
@@ -181,28 +201,36 @@ func (o *ProjectAppDto) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetVersion returns the Version field value
+// GetVersion returns the Version field value if set, zero value otherwise.
 func (o *ProjectAppDto) GetVersion() string {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
-
-	return o.Version
+	return *o.Version
 }
 
-// GetVersionOk returns a tuple with the Version field value
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectAppDto) GetVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
-	return &o.Version, true
+	return o.Version, true
 }
 
-// SetVersion sets field value
+// HasVersion returns a boolean if a field has been set.
+func (o *ProjectAppDto) HasVersion() bool {
+	if o != nil && !IsNil(o.Version) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *ProjectAppDto) SetVersion(v string) {
-	o.Version = v
+	o.Version = &v
 }
 
 // GetIsLocked returns the IsLocked field value
@@ -288,11 +316,19 @@ func (o ProjectAppDto) MarshalJSON() ([]byte, error) {
 func (o ProjectAppDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
-	toSerialize["namespace"] = o.Namespace
-	toSerialize["projectName"] = o.ProjectName
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Namespace) {
+		toSerialize["namespace"] = o.Namespace
+	}
+	if !IsNil(o.ProjectName) {
+		toSerialize["projectName"] = o.ProjectName
+	}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["version"] = o.Version
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
 	toSerialize["isLocked"] = o.IsLocked
 	toSerialize["status"] = o.Status
 	toSerialize["autoSync"] = o.AutoSync
@@ -305,11 +341,7 @@ func (o *ProjectAppDto) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
-		"namespace",
-		"projectName",
 		"projectId",
-		"version",
 		"isLocked",
 		"status",
 		"autoSync",

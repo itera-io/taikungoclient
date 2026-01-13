@@ -23,10 +23,10 @@ var _ MappedNullable = &AvailableEndpointData{}
 // AvailableEndpointData struct for AvailableEndpointData
 type AvailableEndpointData struct {
 	Id int32 `json:"id"`
-	Path string `json:"path"`
-	Method string `json:"method"`
-	Description string `json:"description"`
-	Controller string `json:"controller"`
+	Path *string `json:"path,omitempty"`
+	Method *string `json:"method,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Controller *string `json:"controller,omitempty"`
 }
 
 type _AvailableEndpointData AvailableEndpointData
@@ -35,13 +35,9 @@ type _AvailableEndpointData AvailableEndpointData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAvailableEndpointData(id int32, path string, method string, description string, controller string) *AvailableEndpointData {
+func NewAvailableEndpointData(id int32) *AvailableEndpointData {
 	this := AvailableEndpointData{}
 	this.Id = id
-	this.Path = path
-	this.Method = method
-	this.Description = description
-	this.Controller = controller
 	return &this
 }
 
@@ -77,100 +73,132 @@ func (o *AvailableEndpointData) SetId(v int32) {
 	o.Id = v
 }
 
-// GetPath returns the Path field value
+// GetPath returns the Path field value if set, zero value otherwise.
 func (o *AvailableEndpointData) GetPath() string {
-	if o == nil {
+	if o == nil || IsNil(o.Path) {
 		var ret string
 		return ret
 	}
-
-	return o.Path
+	return *o.Path
 }
 
-// GetPathOk returns a tuple with the Path field value
+// GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AvailableEndpointData) GetPathOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Path) {
 		return nil, false
 	}
-	return &o.Path, true
+	return o.Path, true
 }
 
-// SetPath sets field value
+// HasPath returns a boolean if a field has been set.
+func (o *AvailableEndpointData) HasPath() bool {
+	if o != nil && !IsNil(o.Path) {
+		return true
+	}
+
+	return false
+}
+
+// SetPath gets a reference to the given string and assigns it to the Path field.
 func (o *AvailableEndpointData) SetPath(v string) {
-	o.Path = v
+	o.Path = &v
 }
 
-// GetMethod returns the Method field value
+// GetMethod returns the Method field value if set, zero value otherwise.
 func (o *AvailableEndpointData) GetMethod() string {
-	if o == nil {
+	if o == nil || IsNil(o.Method) {
 		var ret string
 		return ret
 	}
-
-	return o.Method
+	return *o.Method
 }
 
-// GetMethodOk returns a tuple with the Method field value
+// GetMethodOk returns a tuple with the Method field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AvailableEndpointData) GetMethodOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Method) {
 		return nil, false
 	}
-	return &o.Method, true
+	return o.Method, true
 }
 
-// SetMethod sets field value
+// HasMethod returns a boolean if a field has been set.
+func (o *AvailableEndpointData) HasMethod() bool {
+	if o != nil && !IsNil(o.Method) {
+		return true
+	}
+
+	return false
+}
+
+// SetMethod gets a reference to the given string and assigns it to the Method field.
 func (o *AvailableEndpointData) SetMethod(v string) {
-	o.Method = v
+	o.Method = &v
 }
 
-// GetDescription returns the Description field value
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *AvailableEndpointData) GetDescription() string {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-
-	return o.Description
+	return *o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AvailableEndpointData) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description, true
 }
 
-// SetDescription sets field value
+// HasDescription returns a boolean if a field has been set.
+func (o *AvailableEndpointData) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *AvailableEndpointData) SetDescription(v string) {
-	o.Description = v
+	o.Description = &v
 }
 
-// GetController returns the Controller field value
+// GetController returns the Controller field value if set, zero value otherwise.
 func (o *AvailableEndpointData) GetController() string {
-	if o == nil {
+	if o == nil || IsNil(o.Controller) {
 		var ret string
 		return ret
 	}
-
-	return o.Controller
+	return *o.Controller
 }
 
-// GetControllerOk returns a tuple with the Controller field value
+// GetControllerOk returns a tuple with the Controller field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AvailableEndpointData) GetControllerOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Controller) {
 		return nil, false
 	}
-	return &o.Controller, true
+	return o.Controller, true
 }
 
-// SetController sets field value
+// HasController returns a boolean if a field has been set.
+func (o *AvailableEndpointData) HasController() bool {
+	if o != nil && !IsNil(o.Controller) {
+		return true
+	}
+
+	return false
+}
+
+// SetController gets a reference to the given string and assigns it to the Controller field.
 func (o *AvailableEndpointData) SetController(v string) {
-	o.Controller = v
+	o.Controller = &v
 }
 
 func (o AvailableEndpointData) MarshalJSON() ([]byte, error) {
@@ -184,10 +212,18 @@ func (o AvailableEndpointData) MarshalJSON() ([]byte, error) {
 func (o AvailableEndpointData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["path"] = o.Path
-	toSerialize["method"] = o.Method
-	toSerialize["description"] = o.Description
-	toSerialize["controller"] = o.Controller
+	if !IsNil(o.Path) {
+		toSerialize["path"] = o.Path
+	}
+	if !IsNil(o.Method) {
+		toSerialize["method"] = o.Method
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Controller) {
+		toSerialize["controller"] = o.Controller
+	}
 	return toSerialize, nil
 }
 
@@ -197,10 +233,6 @@ func (o *AvailableEndpointData) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"path",
-		"method",
-		"description",
-		"controller",
 	}
 
 	allProperties := make(map[string]interface{})

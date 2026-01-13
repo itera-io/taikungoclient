@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the DisableTwoFaManagementCommand type satisfies the MappedNullable interface at compile time
@@ -22,18 +20,15 @@ var _ MappedNullable = &DisableTwoFaManagementCommand{}
 
 // DisableTwoFaManagementCommand struct for DisableTwoFaManagementCommand
 type DisableTwoFaManagementCommand struct {
-	VerificationCode string `json:"verificationCode"`
+	VerificationCode *string `json:"verificationCode,omitempty"`
 }
-
-type _DisableTwoFaManagementCommand DisableTwoFaManagementCommand
 
 // NewDisableTwoFaManagementCommand instantiates a new DisableTwoFaManagementCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDisableTwoFaManagementCommand(verificationCode string) *DisableTwoFaManagementCommand {
+func NewDisableTwoFaManagementCommand() *DisableTwoFaManagementCommand {
 	this := DisableTwoFaManagementCommand{}
-	this.VerificationCode = verificationCode
 	return &this
 }
 
@@ -45,28 +40,36 @@ func NewDisableTwoFaManagementCommandWithDefaults() *DisableTwoFaManagementComma
 	return &this
 }
 
-// GetVerificationCode returns the VerificationCode field value
+// GetVerificationCode returns the VerificationCode field value if set, zero value otherwise.
 func (o *DisableTwoFaManagementCommand) GetVerificationCode() string {
-	if o == nil {
+	if o == nil || IsNil(o.VerificationCode) {
 		var ret string
 		return ret
 	}
-
-	return o.VerificationCode
+	return *o.VerificationCode
 }
 
-// GetVerificationCodeOk returns a tuple with the VerificationCode field value
+// GetVerificationCodeOk returns a tuple with the VerificationCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DisableTwoFaManagementCommand) GetVerificationCodeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VerificationCode) {
 		return nil, false
 	}
-	return &o.VerificationCode, true
+	return o.VerificationCode, true
 }
 
-// SetVerificationCode sets field value
+// HasVerificationCode returns a boolean if a field has been set.
+func (o *DisableTwoFaManagementCommand) HasVerificationCode() bool {
+	if o != nil && !IsNil(o.VerificationCode) {
+		return true
+	}
+
+	return false
+}
+
+// SetVerificationCode gets a reference to the given string and assigns it to the VerificationCode field.
 func (o *DisableTwoFaManagementCommand) SetVerificationCode(v string) {
-	o.VerificationCode = v
+	o.VerificationCode = &v
 }
 
 func (o DisableTwoFaManagementCommand) MarshalJSON() ([]byte, error) {
@@ -79,45 +82,10 @@ func (o DisableTwoFaManagementCommand) MarshalJSON() ([]byte, error) {
 
 func (o DisableTwoFaManagementCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["verificationCode"] = o.VerificationCode
+	if !IsNil(o.VerificationCode) {
+		toSerialize["verificationCode"] = o.VerificationCode
+	}
 	return toSerialize, nil
-}
-
-func (o *DisableTwoFaManagementCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"verificationCode",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDisableTwoFaManagementCommand := _DisableTwoFaManagementCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDisableTwoFaManagementCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DisableTwoFaManagementCommand(varDisableTwoFaManagementCommand)
-
-	return err
 }
 
 type NullableDisableTwoFaManagementCommand struct {

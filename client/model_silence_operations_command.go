@@ -23,8 +23,8 @@ var _ MappedNullable = &SilenceOperationsCommand{}
 // SilenceOperationsCommand struct for SilenceOperationsCommand
 type SilenceOperationsCommand struct {
 	Id int32 `json:"id"`
-	Mode string `json:"mode"`
-	Reason string `json:"reason"`
+	Mode *string `json:"mode,omitempty"`
+	Reason *string `json:"reason,omitempty"`
 }
 
 type _SilenceOperationsCommand SilenceOperationsCommand
@@ -33,11 +33,9 @@ type _SilenceOperationsCommand SilenceOperationsCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSilenceOperationsCommand(id int32, mode string, reason string) *SilenceOperationsCommand {
+func NewSilenceOperationsCommand(id int32) *SilenceOperationsCommand {
 	this := SilenceOperationsCommand{}
 	this.Id = id
-	this.Mode = mode
-	this.Reason = reason
 	return &this
 }
 
@@ -73,52 +71,68 @@ func (o *SilenceOperationsCommand) SetId(v int32) {
 	o.Id = v
 }
 
-// GetMode returns the Mode field value
+// GetMode returns the Mode field value if set, zero value otherwise.
 func (o *SilenceOperationsCommand) GetMode() string {
-	if o == nil {
+	if o == nil || IsNil(o.Mode) {
 		var ret string
 		return ret
 	}
-
-	return o.Mode
+	return *o.Mode
 }
 
-// GetModeOk returns a tuple with the Mode field value
+// GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SilenceOperationsCommand) GetModeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
-	return &o.Mode, true
+	return o.Mode, true
 }
 
-// SetMode sets field value
+// HasMode returns a boolean if a field has been set.
+func (o *SilenceOperationsCommand) HasMode() bool {
+	if o != nil && !IsNil(o.Mode) {
+		return true
+	}
+
+	return false
+}
+
+// SetMode gets a reference to the given string and assigns it to the Mode field.
 func (o *SilenceOperationsCommand) SetMode(v string) {
-	o.Mode = v
+	o.Mode = &v
 }
 
-// GetReason returns the Reason field value
+// GetReason returns the Reason field value if set, zero value otherwise.
 func (o *SilenceOperationsCommand) GetReason() string {
-	if o == nil {
+	if o == nil || IsNil(o.Reason) {
 		var ret string
 		return ret
 	}
-
-	return o.Reason
+	return *o.Reason
 }
 
-// GetReasonOk returns a tuple with the Reason field value
+// GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SilenceOperationsCommand) GetReasonOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Reason) {
 		return nil, false
 	}
-	return &o.Reason, true
+	return o.Reason, true
 }
 
-// SetReason sets field value
+// HasReason returns a boolean if a field has been set.
+func (o *SilenceOperationsCommand) HasReason() bool {
+	if o != nil && !IsNil(o.Reason) {
+		return true
+	}
+
+	return false
+}
+
+// SetReason gets a reference to the given string and assigns it to the Reason field.
 func (o *SilenceOperationsCommand) SetReason(v string) {
-	o.Reason = v
+	o.Reason = &v
 }
 
 func (o SilenceOperationsCommand) MarshalJSON() ([]byte, error) {
@@ -132,8 +146,12 @@ func (o SilenceOperationsCommand) MarshalJSON() ([]byte, error) {
 func (o SilenceOperationsCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["mode"] = o.Mode
-	toSerialize["reason"] = o.Reason
+	if !IsNil(o.Mode) {
+		toSerialize["mode"] = o.Mode
+	}
+	if !IsNil(o.Reason) {
+		toSerialize["reason"] = o.Reason
+	}
 	return toSerialize, nil
 }
 
@@ -143,8 +161,6 @@ func (o *SilenceOperationsCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"mode",
-		"reason",
 	}
 
 	allProperties := make(map[string]interface{})

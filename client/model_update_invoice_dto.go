@@ -14,8 +14,6 @@ package taikuncore
 import (
 	"encoding/json"
 	"time"
-	"bytes"
-	"fmt"
 )
 
 // checks if the UpdateInvoiceDto type satisfies the MappedNullable interface at compile time
@@ -23,27 +21,23 @@ var _ MappedNullable = &UpdateInvoiceDto{}
 
 // UpdateInvoiceDto struct for UpdateInvoiceDto
 type UpdateInvoiceDto struct {
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	OrganizationSubscriptionId NullableInt32 `json:"organizationSubscriptionId,omitempty"`
 	StartDate NullableTime `json:"startDate,omitempty"`
 	EndDate NullableTime `json:"endDate,omitempty"`
 	DueDate NullableTime `json:"dueDate,omitempty"`
 	IsPaid NullableBool `json:"isPaid,omitempty"`
 	RequiredPaymentAction NullableBool `json:"requiredPaymentAction,omitempty"`
-	StripeInvoiceId string `json:"stripeInvoiceId"`
+	StripeInvoiceId *string `json:"stripeInvoiceId,omitempty"`
 	Price NullableFloat64 `json:"price,omitempty"`
 }
-
-type _UpdateInvoiceDto UpdateInvoiceDto
 
 // NewUpdateInvoiceDto instantiates a new UpdateInvoiceDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateInvoiceDto(name string, stripeInvoiceId string) *UpdateInvoiceDto {
+func NewUpdateInvoiceDto() *UpdateInvoiceDto {
 	this := UpdateInvoiceDto{}
-	this.Name = name
-	this.StripeInvoiceId = stripeInvoiceId
 	return &this
 }
 
@@ -55,28 +49,36 @@ func NewUpdateInvoiceDtoWithDefaults() *UpdateInvoiceDto {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *UpdateInvoiceDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateInvoiceDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *UpdateInvoiceDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *UpdateInvoiceDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetOrganizationSubscriptionId returns the OrganizationSubscriptionId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -331,28 +333,36 @@ func (o *UpdateInvoiceDto) UnsetRequiredPaymentAction() {
 	o.RequiredPaymentAction.Unset()
 }
 
-// GetStripeInvoiceId returns the StripeInvoiceId field value
+// GetStripeInvoiceId returns the StripeInvoiceId field value if set, zero value otherwise.
 func (o *UpdateInvoiceDto) GetStripeInvoiceId() string {
-	if o == nil {
+	if o == nil || IsNil(o.StripeInvoiceId) {
 		var ret string
 		return ret
 	}
-
-	return o.StripeInvoiceId
+	return *o.StripeInvoiceId
 }
 
-// GetStripeInvoiceIdOk returns a tuple with the StripeInvoiceId field value
+// GetStripeInvoiceIdOk returns a tuple with the StripeInvoiceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateInvoiceDto) GetStripeInvoiceIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.StripeInvoiceId) {
 		return nil, false
 	}
-	return &o.StripeInvoiceId, true
+	return o.StripeInvoiceId, true
 }
 
-// SetStripeInvoiceId sets field value
+// HasStripeInvoiceId returns a boolean if a field has been set.
+func (o *UpdateInvoiceDto) HasStripeInvoiceId() bool {
+	if o != nil && !IsNil(o.StripeInvoiceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetStripeInvoiceId gets a reference to the given string and assigns it to the StripeInvoiceId field.
 func (o *UpdateInvoiceDto) SetStripeInvoiceId(v string) {
-	o.StripeInvoiceId = v
+	o.StripeInvoiceId = &v
 }
 
 // GetPrice returns the Price field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -407,7 +417,9 @@ func (o UpdateInvoiceDto) MarshalJSON() ([]byte, error) {
 
 func (o UpdateInvoiceDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	if o.OrganizationSubscriptionId.IsSet() {
 		toSerialize["organizationSubscriptionId"] = o.OrganizationSubscriptionId.Get()
 	}
@@ -426,49 +438,13 @@ func (o UpdateInvoiceDto) ToMap() (map[string]interface{}, error) {
 	if o.RequiredPaymentAction.IsSet() {
 		toSerialize["requiredPaymentAction"] = o.RequiredPaymentAction.Get()
 	}
-	toSerialize["stripeInvoiceId"] = o.StripeInvoiceId
+	if !IsNil(o.StripeInvoiceId) {
+		toSerialize["stripeInvoiceId"] = o.StripeInvoiceId
+	}
 	if o.Price.IsSet() {
 		toSerialize["price"] = o.Price.Get()
 	}
 	return toSerialize, nil
-}
-
-func (o *UpdateInvoiceDto) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"stripeInvoiceId",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varUpdateInvoiceDto := _UpdateInvoiceDto{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUpdateInvoiceDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = UpdateInvoiceDto(varUpdateInvoiceDto)
-
-	return err
 }
 
 type NullableUpdateInvoiceDto struct {

@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the ResetPasswordCommand type satisfies the MappedNullable interface at compile time
@@ -22,22 +20,17 @@ var _ MappedNullable = &ResetPasswordCommand{}
 
 // ResetPasswordCommand struct for ResetPasswordCommand
 type ResetPasswordCommand struct {
-	Token string `json:"token"`
-	Email string `json:"email"`
-	NewPassword string `json:"newPassword"`
+	Token *string `json:"token,omitempty"`
+	Email *string `json:"email,omitempty"`
+	NewPassword *string `json:"newPassword,omitempty"`
 }
-
-type _ResetPasswordCommand ResetPasswordCommand
 
 // NewResetPasswordCommand instantiates a new ResetPasswordCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResetPasswordCommand(token string, email string, newPassword string) *ResetPasswordCommand {
+func NewResetPasswordCommand() *ResetPasswordCommand {
 	this := ResetPasswordCommand{}
-	this.Token = token
-	this.Email = email
-	this.NewPassword = newPassword
 	return &this
 }
 
@@ -49,76 +42,100 @@ func NewResetPasswordCommandWithDefaults() *ResetPasswordCommand {
 	return &this
 }
 
-// GetToken returns the Token field value
+// GetToken returns the Token field value if set, zero value otherwise.
 func (o *ResetPasswordCommand) GetToken() string {
-	if o == nil {
+	if o == nil || IsNil(o.Token) {
 		var ret string
 		return ret
 	}
-
-	return o.Token
+	return *o.Token
 }
 
-// GetTokenOk returns a tuple with the Token field value
+// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResetPasswordCommand) GetTokenOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Token) {
 		return nil, false
 	}
-	return &o.Token, true
+	return o.Token, true
 }
 
-// SetToken sets field value
+// HasToken returns a boolean if a field has been set.
+func (o *ResetPasswordCommand) HasToken() bool {
+	if o != nil && !IsNil(o.Token) {
+		return true
+	}
+
+	return false
+}
+
+// SetToken gets a reference to the given string and assigns it to the Token field.
 func (o *ResetPasswordCommand) SetToken(v string) {
-	o.Token = v
+	o.Token = &v
 }
 
-// GetEmail returns the Email field value
+// GetEmail returns the Email field value if set, zero value otherwise.
 func (o *ResetPasswordCommand) GetEmail() string {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
-
-	return o.Email
+	return *o.Email
 }
 
-// GetEmailOk returns a tuple with the Email field value
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResetPasswordCommand) GetEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
-	return &o.Email, true
+	return o.Email, true
 }
 
-// SetEmail sets field value
+// HasEmail returns a boolean if a field has been set.
+func (o *ResetPasswordCommand) HasEmail() bool {
+	if o != nil && !IsNil(o.Email) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmail gets a reference to the given string and assigns it to the Email field.
 func (o *ResetPasswordCommand) SetEmail(v string) {
-	o.Email = v
+	o.Email = &v
 }
 
-// GetNewPassword returns the NewPassword field value
+// GetNewPassword returns the NewPassword field value if set, zero value otherwise.
 func (o *ResetPasswordCommand) GetNewPassword() string {
-	if o == nil {
+	if o == nil || IsNil(o.NewPassword) {
 		var ret string
 		return ret
 	}
-
-	return o.NewPassword
+	return *o.NewPassword
 }
 
-// GetNewPasswordOk returns a tuple with the NewPassword field value
+// GetNewPasswordOk returns a tuple with the NewPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResetPasswordCommand) GetNewPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.NewPassword) {
 		return nil, false
 	}
-	return &o.NewPassword, true
+	return o.NewPassword, true
 }
 
-// SetNewPassword sets field value
+// HasNewPassword returns a boolean if a field has been set.
+func (o *ResetPasswordCommand) HasNewPassword() bool {
+	if o != nil && !IsNil(o.NewPassword) {
+		return true
+	}
+
+	return false
+}
+
+// SetNewPassword gets a reference to the given string and assigns it to the NewPassword field.
 func (o *ResetPasswordCommand) SetNewPassword(v string) {
-	o.NewPassword = v
+	o.NewPassword = &v
 }
 
 func (o ResetPasswordCommand) MarshalJSON() ([]byte, error) {
@@ -131,49 +148,16 @@ func (o ResetPasswordCommand) MarshalJSON() ([]byte, error) {
 
 func (o ResetPasswordCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["token"] = o.Token
-	toSerialize["email"] = o.Email
-	toSerialize["newPassword"] = o.NewPassword
+	if !IsNil(o.Token) {
+		toSerialize["token"] = o.Token
+	}
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
+	if !IsNil(o.NewPassword) {
+		toSerialize["newPassword"] = o.NewPassword
+	}
 	return toSerialize, nil
-}
-
-func (o *ResetPasswordCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"token",
-		"email",
-		"newPassword",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varResetPasswordCommand := _ResetPasswordCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varResetPasswordCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ResetPasswordCommand(varResetPasswordCommand)
-
-	return err
 }
 
 type NullableResetPasswordCommand struct {

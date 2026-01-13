@@ -23,8 +23,8 @@ var _ MappedNullable = &EditSshUserCommand{}
 // EditSshUserCommand struct for EditSshUserCommand
 type EditSshUserCommand struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
-	SshPublicKey string `json:"sshPublicKey"`
+	Name *string `json:"name,omitempty"`
+	SshPublicKey *string `json:"sshPublicKey,omitempty"`
 	AccessProfileId int32 `json:"accessProfileId"`
 }
 
@@ -34,11 +34,9 @@ type _EditSshUserCommand EditSshUserCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEditSshUserCommand(id int32, name string, sshPublicKey string, accessProfileId int32) *EditSshUserCommand {
+func NewEditSshUserCommand(id int32, accessProfileId int32) *EditSshUserCommand {
 	this := EditSshUserCommand{}
 	this.Id = id
-	this.Name = name
-	this.SshPublicKey = sshPublicKey
 	this.AccessProfileId = accessProfileId
 	return &this
 }
@@ -75,52 +73,68 @@ func (o *EditSshUserCommand) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *EditSshUserCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EditSshUserCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *EditSshUserCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *EditSshUserCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetSshPublicKey returns the SshPublicKey field value
+// GetSshPublicKey returns the SshPublicKey field value if set, zero value otherwise.
 func (o *EditSshUserCommand) GetSshPublicKey() string {
-	if o == nil {
+	if o == nil || IsNil(o.SshPublicKey) {
 		var ret string
 		return ret
 	}
-
-	return o.SshPublicKey
+	return *o.SshPublicKey
 }
 
-// GetSshPublicKeyOk returns a tuple with the SshPublicKey field value
+// GetSshPublicKeyOk returns a tuple with the SshPublicKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EditSshUserCommand) GetSshPublicKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SshPublicKey) {
 		return nil, false
 	}
-	return &o.SshPublicKey, true
+	return o.SshPublicKey, true
 }
 
-// SetSshPublicKey sets field value
+// HasSshPublicKey returns a boolean if a field has been set.
+func (o *EditSshUserCommand) HasSshPublicKey() bool {
+	if o != nil && !IsNil(o.SshPublicKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetSshPublicKey gets a reference to the given string and assigns it to the SshPublicKey field.
 func (o *EditSshUserCommand) SetSshPublicKey(v string) {
-	o.SshPublicKey = v
+	o.SshPublicKey = &v
 }
 
 // GetAccessProfileId returns the AccessProfileId field value
@@ -158,8 +172,12 @@ func (o EditSshUserCommand) MarshalJSON() ([]byte, error) {
 func (o EditSshUserCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
-	toSerialize["sshPublicKey"] = o.SshPublicKey
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.SshPublicKey) {
+		toSerialize["sshPublicKey"] = o.SshPublicKey
+	}
 	toSerialize["accessProfileId"] = o.AccessProfileId
 	return toSerialize, nil
 }
@@ -170,8 +188,6 @@ func (o *EditSshUserCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
-		"sshPublicKey",
 		"accessProfileId",
 	}
 

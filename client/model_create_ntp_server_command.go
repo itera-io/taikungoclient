@@ -22,7 +22,7 @@ var _ MappedNullable = &CreateNtpServerCommand{}
 
 // CreateNtpServerCommand struct for CreateNtpServerCommand
 type CreateNtpServerCommand struct {
-	Address string `json:"address"`
+	Address *string `json:"address,omitempty"`
 	AccessProfileId int32 `json:"accessProfileId"`
 }
 
@@ -32,9 +32,8 @@ type _CreateNtpServerCommand CreateNtpServerCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateNtpServerCommand(address string, accessProfileId int32) *CreateNtpServerCommand {
+func NewCreateNtpServerCommand(accessProfileId int32) *CreateNtpServerCommand {
 	this := CreateNtpServerCommand{}
-	this.Address = address
 	this.AccessProfileId = accessProfileId
 	return &this
 }
@@ -47,28 +46,36 @@ func NewCreateNtpServerCommandWithDefaults() *CreateNtpServerCommand {
 	return &this
 }
 
-// GetAddress returns the Address field value
+// GetAddress returns the Address field value if set, zero value otherwise.
 func (o *CreateNtpServerCommand) GetAddress() string {
-	if o == nil {
+	if o == nil || IsNil(o.Address) {
 		var ret string
 		return ret
 	}
-
-	return o.Address
+	return *o.Address
 }
 
-// GetAddressOk returns a tuple with the Address field value
+// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateNtpServerCommand) GetAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Address) {
 		return nil, false
 	}
-	return &o.Address, true
+	return o.Address, true
 }
 
-// SetAddress sets field value
+// HasAddress returns a boolean if a field has been set.
+func (o *CreateNtpServerCommand) HasAddress() bool {
+	if o != nil && !IsNil(o.Address) {
+		return true
+	}
+
+	return false
+}
+
+// SetAddress gets a reference to the given string and assigns it to the Address field.
 func (o *CreateNtpServerCommand) SetAddress(v string) {
-	o.Address = v
+	o.Address = &v
 }
 
 // GetAccessProfileId returns the AccessProfileId field value
@@ -105,7 +112,9 @@ func (o CreateNtpServerCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateNtpServerCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["address"] = o.Address
+	if !IsNil(o.Address) {
+		toSerialize["address"] = o.Address
+	}
 	toSerialize["accessProfileId"] = o.AccessProfileId
 	return toSerialize, nil
 }
@@ -115,7 +124,6 @@ func (o *CreateNtpServerCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"address",
 		"accessProfileId",
 	}
 

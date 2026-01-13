@@ -22,17 +22,17 @@ var _ MappedNullable = &CreateProxmoxCommand{}
 
 // CreateProxmoxCommand struct for CreateProxmoxCommand
 type CreateProxmoxCommand struct {
-	Name string `json:"name"`
-	TokenId string `json:"tokenId"`
-	Url string `json:"url"`
-	TokenSecret string `json:"tokenSecret"`
-	Storage string `json:"storage"`
-	VmTemplateName string `json:"vmTemplateName"`
-	Continent string `json:"continent"`
+	Name *string `json:"name,omitempty"`
+	TokenId *string `json:"tokenId,omitempty"`
+	Url *string `json:"url,omitempty"`
+	TokenSecret *string `json:"tokenSecret,omitempty"`
+	Storage *string `json:"storage,omitempty"`
+	VmTemplateName *string `json:"vmTemplateName,omitempty"`
+	Continent *string `json:"continent,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	Hypervisors []string `json:"hypervisors"`
-	PublicNetwork CreateProxmoxNetworkDto `json:"publicNetwork"`
-	PrivateNetwork CreateProxmoxNetworkDto `json:"privateNetwork"`
+	Hypervisors []string `json:"hypervisors,omitempty"`
+	PublicNetwork *CreateProxmoxNetworkDto `json:"publicNetwork,omitempty"`
+	PrivateNetwork *CreateProxmoxNetworkDto `json:"privateNetwork,omitempty"`
 	SkipTlsFlag bool `json:"skipTlsFlag"`
 }
 
@@ -42,18 +42,8 @@ type _CreateProxmoxCommand CreateProxmoxCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateProxmoxCommand(name string, tokenId string, url string, tokenSecret string, storage string, vmTemplateName string, continent string, hypervisors []string, publicNetwork CreateProxmoxNetworkDto, privateNetwork CreateProxmoxNetworkDto, skipTlsFlag bool) *CreateProxmoxCommand {
+func NewCreateProxmoxCommand(skipTlsFlag bool) *CreateProxmoxCommand {
 	this := CreateProxmoxCommand{}
-	this.Name = name
-	this.TokenId = tokenId
-	this.Url = url
-	this.TokenSecret = tokenSecret
-	this.Storage = storage
-	this.VmTemplateName = vmTemplateName
-	this.Continent = continent
-	this.Hypervisors = hypervisors
-	this.PublicNetwork = publicNetwork
-	this.PrivateNetwork = privateNetwork
 	this.SkipTlsFlag = skipTlsFlag
 	return &this
 }
@@ -66,172 +56,228 @@ func NewCreateProxmoxCommandWithDefaults() *CreateProxmoxCommand {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateProxmoxCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProxmoxCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CreateProxmoxCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateProxmoxCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetTokenId returns the TokenId field value
+// GetTokenId returns the TokenId field value if set, zero value otherwise.
 func (o *CreateProxmoxCommand) GetTokenId() string {
-	if o == nil {
+	if o == nil || IsNil(o.TokenId) {
 		var ret string
 		return ret
 	}
-
-	return o.TokenId
+	return *o.TokenId
 }
 
-// GetTokenIdOk returns a tuple with the TokenId field value
+// GetTokenIdOk returns a tuple with the TokenId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProxmoxCommand) GetTokenIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TokenId) {
 		return nil, false
 	}
-	return &o.TokenId, true
+	return o.TokenId, true
 }
 
-// SetTokenId sets field value
+// HasTokenId returns a boolean if a field has been set.
+func (o *CreateProxmoxCommand) HasTokenId() bool {
+	if o != nil && !IsNil(o.TokenId) {
+		return true
+	}
+
+	return false
+}
+
+// SetTokenId gets a reference to the given string and assigns it to the TokenId field.
 func (o *CreateProxmoxCommand) SetTokenId(v string) {
-	o.TokenId = v
+	o.TokenId = &v
 }
 
-// GetUrl returns the Url field value
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *CreateProxmoxCommand) GetUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-
-	return o.Url
+	return *o.Url
 }
 
-// GetUrlOk returns a tuple with the Url field value
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProxmoxCommand) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return &o.Url, true
+	return o.Url, true
 }
 
-// SetUrl sets field value
+// HasUrl returns a boolean if a field has been set.
+func (o *CreateProxmoxCommand) HasUrl() bool {
+	if o != nil && !IsNil(o.Url) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *CreateProxmoxCommand) SetUrl(v string) {
-	o.Url = v
+	o.Url = &v
 }
 
-// GetTokenSecret returns the TokenSecret field value
+// GetTokenSecret returns the TokenSecret field value if set, zero value otherwise.
 func (o *CreateProxmoxCommand) GetTokenSecret() string {
-	if o == nil {
+	if o == nil || IsNil(o.TokenSecret) {
 		var ret string
 		return ret
 	}
-
-	return o.TokenSecret
+	return *o.TokenSecret
 }
 
-// GetTokenSecretOk returns a tuple with the TokenSecret field value
+// GetTokenSecretOk returns a tuple with the TokenSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProxmoxCommand) GetTokenSecretOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TokenSecret) {
 		return nil, false
 	}
-	return &o.TokenSecret, true
+	return o.TokenSecret, true
 }
 
-// SetTokenSecret sets field value
+// HasTokenSecret returns a boolean if a field has been set.
+func (o *CreateProxmoxCommand) HasTokenSecret() bool {
+	if o != nil && !IsNil(o.TokenSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetTokenSecret gets a reference to the given string and assigns it to the TokenSecret field.
 func (o *CreateProxmoxCommand) SetTokenSecret(v string) {
-	o.TokenSecret = v
+	o.TokenSecret = &v
 }
 
-// GetStorage returns the Storage field value
+// GetStorage returns the Storage field value if set, zero value otherwise.
 func (o *CreateProxmoxCommand) GetStorage() string {
-	if o == nil {
+	if o == nil || IsNil(o.Storage) {
 		var ret string
 		return ret
 	}
-
-	return o.Storage
+	return *o.Storage
 }
 
-// GetStorageOk returns a tuple with the Storage field value
+// GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProxmoxCommand) GetStorageOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Storage) {
 		return nil, false
 	}
-	return &o.Storage, true
+	return o.Storage, true
 }
 
-// SetStorage sets field value
+// HasStorage returns a boolean if a field has been set.
+func (o *CreateProxmoxCommand) HasStorage() bool {
+	if o != nil && !IsNil(o.Storage) {
+		return true
+	}
+
+	return false
+}
+
+// SetStorage gets a reference to the given string and assigns it to the Storage field.
 func (o *CreateProxmoxCommand) SetStorage(v string) {
-	o.Storage = v
+	o.Storage = &v
 }
 
-// GetVmTemplateName returns the VmTemplateName field value
+// GetVmTemplateName returns the VmTemplateName field value if set, zero value otherwise.
 func (o *CreateProxmoxCommand) GetVmTemplateName() string {
-	if o == nil {
+	if o == nil || IsNil(o.VmTemplateName) {
 		var ret string
 		return ret
 	}
-
-	return o.VmTemplateName
+	return *o.VmTemplateName
 }
 
-// GetVmTemplateNameOk returns a tuple with the VmTemplateName field value
+// GetVmTemplateNameOk returns a tuple with the VmTemplateName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProxmoxCommand) GetVmTemplateNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VmTemplateName) {
 		return nil, false
 	}
-	return &o.VmTemplateName, true
+	return o.VmTemplateName, true
 }
 
-// SetVmTemplateName sets field value
+// HasVmTemplateName returns a boolean if a field has been set.
+func (o *CreateProxmoxCommand) HasVmTemplateName() bool {
+	if o != nil && !IsNil(o.VmTemplateName) {
+		return true
+	}
+
+	return false
+}
+
+// SetVmTemplateName gets a reference to the given string and assigns it to the VmTemplateName field.
 func (o *CreateProxmoxCommand) SetVmTemplateName(v string) {
-	o.VmTemplateName = v
+	o.VmTemplateName = &v
 }
 
-// GetContinent returns the Continent field value
+// GetContinent returns the Continent field value if set, zero value otherwise.
 func (o *CreateProxmoxCommand) GetContinent() string {
-	if o == nil {
+	if o == nil || IsNil(o.Continent) {
 		var ret string
 		return ret
 	}
-
-	return o.Continent
+	return *o.Continent
 }
 
-// GetContinentOk returns a tuple with the Continent field value
+// GetContinentOk returns a tuple with the Continent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProxmoxCommand) GetContinentOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Continent) {
 		return nil, false
 	}
-	return &o.Continent, true
+	return o.Continent, true
 }
 
-// SetContinent sets field value
+// HasContinent returns a boolean if a field has been set.
+func (o *CreateProxmoxCommand) HasContinent() bool {
+	if o != nil && !IsNil(o.Continent) {
+		return true
+	}
+
+	return false
+}
+
+// SetContinent gets a reference to the given string and assigns it to the Continent field.
 func (o *CreateProxmoxCommand) SetContinent(v string) {
-	o.Continent = v
+	o.Continent = &v
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -276,76 +322,100 @@ func (o *CreateProxmoxCommand) UnsetOrganizationId() {
 	o.OrganizationId.Unset()
 }
 
-// GetHypervisors returns the Hypervisors field value
+// GetHypervisors returns the Hypervisors field value if set, zero value otherwise.
 func (o *CreateProxmoxCommand) GetHypervisors() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Hypervisors) {
 		var ret []string
 		return ret
 	}
-
 	return o.Hypervisors
 }
 
-// GetHypervisorsOk returns a tuple with the Hypervisors field value
+// GetHypervisorsOk returns a tuple with the Hypervisors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProxmoxCommand) GetHypervisorsOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Hypervisors) {
 		return nil, false
 	}
 	return o.Hypervisors, true
 }
 
-// SetHypervisors sets field value
+// HasHypervisors returns a boolean if a field has been set.
+func (o *CreateProxmoxCommand) HasHypervisors() bool {
+	if o != nil && !IsNil(o.Hypervisors) {
+		return true
+	}
+
+	return false
+}
+
+// SetHypervisors gets a reference to the given []string and assigns it to the Hypervisors field.
 func (o *CreateProxmoxCommand) SetHypervisors(v []string) {
 	o.Hypervisors = v
 }
 
-// GetPublicNetwork returns the PublicNetwork field value
+// GetPublicNetwork returns the PublicNetwork field value if set, zero value otherwise.
 func (o *CreateProxmoxCommand) GetPublicNetwork() CreateProxmoxNetworkDto {
-	if o == nil {
+	if o == nil || IsNil(o.PublicNetwork) {
 		var ret CreateProxmoxNetworkDto
 		return ret
 	}
-
-	return o.PublicNetwork
+	return *o.PublicNetwork
 }
 
-// GetPublicNetworkOk returns a tuple with the PublicNetwork field value
+// GetPublicNetworkOk returns a tuple with the PublicNetwork field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProxmoxCommand) GetPublicNetworkOk() (*CreateProxmoxNetworkDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PublicNetwork) {
 		return nil, false
 	}
-	return &o.PublicNetwork, true
+	return o.PublicNetwork, true
 }
 
-// SetPublicNetwork sets field value
+// HasPublicNetwork returns a boolean if a field has been set.
+func (o *CreateProxmoxCommand) HasPublicNetwork() bool {
+	if o != nil && !IsNil(o.PublicNetwork) {
+		return true
+	}
+
+	return false
+}
+
+// SetPublicNetwork gets a reference to the given CreateProxmoxNetworkDto and assigns it to the PublicNetwork field.
 func (o *CreateProxmoxCommand) SetPublicNetwork(v CreateProxmoxNetworkDto) {
-	o.PublicNetwork = v
+	o.PublicNetwork = &v
 }
 
-// GetPrivateNetwork returns the PrivateNetwork field value
+// GetPrivateNetwork returns the PrivateNetwork field value if set, zero value otherwise.
 func (o *CreateProxmoxCommand) GetPrivateNetwork() CreateProxmoxNetworkDto {
-	if o == nil {
+	if o == nil || IsNil(o.PrivateNetwork) {
 		var ret CreateProxmoxNetworkDto
 		return ret
 	}
-
-	return o.PrivateNetwork
+	return *o.PrivateNetwork
 }
 
-// GetPrivateNetworkOk returns a tuple with the PrivateNetwork field value
+// GetPrivateNetworkOk returns a tuple with the PrivateNetwork field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProxmoxCommand) GetPrivateNetworkOk() (*CreateProxmoxNetworkDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PrivateNetwork) {
 		return nil, false
 	}
-	return &o.PrivateNetwork, true
+	return o.PrivateNetwork, true
 }
 
-// SetPrivateNetwork sets field value
+// HasPrivateNetwork returns a boolean if a field has been set.
+func (o *CreateProxmoxCommand) HasPrivateNetwork() bool {
+	if o != nil && !IsNil(o.PrivateNetwork) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateNetwork gets a reference to the given CreateProxmoxNetworkDto and assigns it to the PrivateNetwork field.
 func (o *CreateProxmoxCommand) SetPrivateNetwork(v CreateProxmoxNetworkDto) {
-	o.PrivateNetwork = v
+	o.PrivateNetwork = &v
 }
 
 // GetSkipTlsFlag returns the SkipTlsFlag field value
@@ -382,19 +452,39 @@ func (o CreateProxmoxCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateProxmoxCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["tokenId"] = o.TokenId
-	toSerialize["url"] = o.Url
-	toSerialize["tokenSecret"] = o.TokenSecret
-	toSerialize["storage"] = o.Storage
-	toSerialize["vmTemplateName"] = o.VmTemplateName
-	toSerialize["continent"] = o.Continent
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.TokenId) {
+		toSerialize["tokenId"] = o.TokenId
+	}
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
+	if !IsNil(o.TokenSecret) {
+		toSerialize["tokenSecret"] = o.TokenSecret
+	}
+	if !IsNil(o.Storage) {
+		toSerialize["storage"] = o.Storage
+	}
+	if !IsNil(o.VmTemplateName) {
+		toSerialize["vmTemplateName"] = o.VmTemplateName
+	}
+	if !IsNil(o.Continent) {
+		toSerialize["continent"] = o.Continent
+	}
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
-	toSerialize["hypervisors"] = o.Hypervisors
-	toSerialize["publicNetwork"] = o.PublicNetwork
-	toSerialize["privateNetwork"] = o.PrivateNetwork
+	if !IsNil(o.Hypervisors) {
+		toSerialize["hypervisors"] = o.Hypervisors
+	}
+	if !IsNil(o.PublicNetwork) {
+		toSerialize["publicNetwork"] = o.PublicNetwork
+	}
+	if !IsNil(o.PrivateNetwork) {
+		toSerialize["privateNetwork"] = o.PrivateNetwork
+	}
 	toSerialize["skipTlsFlag"] = o.SkipTlsFlag
 	return toSerialize, nil
 }
@@ -404,16 +494,6 @@ func (o *CreateProxmoxCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
-		"tokenId",
-		"url",
-		"tokenSecret",
-		"storage",
-		"vmTemplateName",
-		"continent",
-		"hypervisors",
-		"publicNetwork",
-		"privateNetwork",
 		"skipTlsFlag",
 	}
 

@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the AlertLabels type satisfies the MappedNullable interface at compile time
@@ -22,42 +20,27 @@ var _ MappedNullable = &AlertLabels{}
 
 // AlertLabels struct for AlertLabels
 type AlertLabels struct {
-	Alertname string `json:"alertname"`
-	Condition string `json:"condition"`
-	Container string `json:"container"`
-	Endpoint string `json:"endpoint"`
-	Instance string `json:"instance"`
-	Job string `json:"job"`
-	Namespace string `json:"namespace"`
-	Node string `json:"node"`
-	Pod string `json:"pod"`
-	Service string `json:"service"`
-	Severity string `json:"severity"`
-	Status string `json:"status"`
-	Daemonset string `json:"daemonset"`
+	Alertname *string `json:"alertname,omitempty"`
+	Condition *string `json:"condition,omitempty"`
+	Container *string `json:"container,omitempty"`
+	Endpoint *string `json:"endpoint,omitempty"`
+	Instance *string `json:"instance,omitempty"`
+	Job *string `json:"job,omitempty"`
+	Namespace *string `json:"namespace,omitempty"`
+	Node *string `json:"node,omitempty"`
+	Pod *string `json:"pod,omitempty"`
+	Service *string `json:"service,omitempty"`
+	Severity *string `json:"severity,omitempty"`
+	Status *string `json:"status,omitempty"`
+	Daemonset *string `json:"daemonset,omitempty"`
 }
-
-type _AlertLabels AlertLabels
 
 // NewAlertLabels instantiates a new AlertLabels object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlertLabels(alertname string, condition string, container string, endpoint string, instance string, job string, namespace string, node string, pod string, service string, severity string, status string, daemonset string) *AlertLabels {
+func NewAlertLabels() *AlertLabels {
 	this := AlertLabels{}
-	this.Alertname = alertname
-	this.Condition = condition
-	this.Container = container
-	this.Endpoint = endpoint
-	this.Instance = instance
-	this.Job = job
-	this.Namespace = namespace
-	this.Node = node
-	this.Pod = pod
-	this.Service = service
-	this.Severity = severity
-	this.Status = status
-	this.Daemonset = daemonset
 	return &this
 }
 
@@ -69,316 +52,420 @@ func NewAlertLabelsWithDefaults() *AlertLabels {
 	return &this
 }
 
-// GetAlertname returns the Alertname field value
+// GetAlertname returns the Alertname field value if set, zero value otherwise.
 func (o *AlertLabels) GetAlertname() string {
-	if o == nil {
+	if o == nil || IsNil(o.Alertname) {
 		var ret string
 		return ret
 	}
-
-	return o.Alertname
+	return *o.Alertname
 }
 
-// GetAlertnameOk returns a tuple with the Alertname field value
+// GetAlertnameOk returns a tuple with the Alertname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AlertLabels) GetAlertnameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Alertname) {
 		return nil, false
 	}
-	return &o.Alertname, true
+	return o.Alertname, true
 }
 
-// SetAlertname sets field value
+// HasAlertname returns a boolean if a field has been set.
+func (o *AlertLabels) HasAlertname() bool {
+	if o != nil && !IsNil(o.Alertname) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlertname gets a reference to the given string and assigns it to the Alertname field.
 func (o *AlertLabels) SetAlertname(v string) {
-	o.Alertname = v
+	o.Alertname = &v
 }
 
-// GetCondition returns the Condition field value
+// GetCondition returns the Condition field value if set, zero value otherwise.
 func (o *AlertLabels) GetCondition() string {
-	if o == nil {
+	if o == nil || IsNil(o.Condition) {
 		var ret string
 		return ret
 	}
-
-	return o.Condition
+	return *o.Condition
 }
 
-// GetConditionOk returns a tuple with the Condition field value
+// GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AlertLabels) GetConditionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Condition) {
 		return nil, false
 	}
-	return &o.Condition, true
+	return o.Condition, true
 }
 
-// SetCondition sets field value
+// HasCondition returns a boolean if a field has been set.
+func (o *AlertLabels) HasCondition() bool {
+	if o != nil && !IsNil(o.Condition) {
+		return true
+	}
+
+	return false
+}
+
+// SetCondition gets a reference to the given string and assigns it to the Condition field.
 func (o *AlertLabels) SetCondition(v string) {
-	o.Condition = v
+	o.Condition = &v
 }
 
-// GetContainer returns the Container field value
+// GetContainer returns the Container field value if set, zero value otherwise.
 func (o *AlertLabels) GetContainer() string {
-	if o == nil {
+	if o == nil || IsNil(o.Container) {
 		var ret string
 		return ret
 	}
-
-	return o.Container
+	return *o.Container
 }
 
-// GetContainerOk returns a tuple with the Container field value
+// GetContainerOk returns a tuple with the Container field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AlertLabels) GetContainerOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Container) {
 		return nil, false
 	}
-	return &o.Container, true
+	return o.Container, true
 }
 
-// SetContainer sets field value
+// HasContainer returns a boolean if a field has been set.
+func (o *AlertLabels) HasContainer() bool {
+	if o != nil && !IsNil(o.Container) {
+		return true
+	}
+
+	return false
+}
+
+// SetContainer gets a reference to the given string and assigns it to the Container field.
 func (o *AlertLabels) SetContainer(v string) {
-	o.Container = v
+	o.Container = &v
 }
 
-// GetEndpoint returns the Endpoint field value
+// GetEndpoint returns the Endpoint field value if set, zero value otherwise.
 func (o *AlertLabels) GetEndpoint() string {
-	if o == nil {
+	if o == nil || IsNil(o.Endpoint) {
 		var ret string
 		return ret
 	}
-
-	return o.Endpoint
+	return *o.Endpoint
 }
 
-// GetEndpointOk returns a tuple with the Endpoint field value
+// GetEndpointOk returns a tuple with the Endpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AlertLabels) GetEndpointOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Endpoint) {
 		return nil, false
 	}
-	return &o.Endpoint, true
+	return o.Endpoint, true
 }
 
-// SetEndpoint sets field value
+// HasEndpoint returns a boolean if a field has been set.
+func (o *AlertLabels) HasEndpoint() bool {
+	if o != nil && !IsNil(o.Endpoint) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndpoint gets a reference to the given string and assigns it to the Endpoint field.
 func (o *AlertLabels) SetEndpoint(v string) {
-	o.Endpoint = v
+	o.Endpoint = &v
 }
 
-// GetInstance returns the Instance field value
+// GetInstance returns the Instance field value if set, zero value otherwise.
 func (o *AlertLabels) GetInstance() string {
-	if o == nil {
+	if o == nil || IsNil(o.Instance) {
 		var ret string
 		return ret
 	}
-
-	return o.Instance
+	return *o.Instance
 }
 
-// GetInstanceOk returns a tuple with the Instance field value
+// GetInstanceOk returns a tuple with the Instance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AlertLabels) GetInstanceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Instance) {
 		return nil, false
 	}
-	return &o.Instance, true
+	return o.Instance, true
 }
 
-// SetInstance sets field value
+// HasInstance returns a boolean if a field has been set.
+func (o *AlertLabels) HasInstance() bool {
+	if o != nil && !IsNil(o.Instance) {
+		return true
+	}
+
+	return false
+}
+
+// SetInstance gets a reference to the given string and assigns it to the Instance field.
 func (o *AlertLabels) SetInstance(v string) {
-	o.Instance = v
+	o.Instance = &v
 }
 
-// GetJob returns the Job field value
+// GetJob returns the Job field value if set, zero value otherwise.
 func (o *AlertLabels) GetJob() string {
-	if o == nil {
+	if o == nil || IsNil(o.Job) {
 		var ret string
 		return ret
 	}
-
-	return o.Job
+	return *o.Job
 }
 
-// GetJobOk returns a tuple with the Job field value
+// GetJobOk returns a tuple with the Job field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AlertLabels) GetJobOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Job) {
 		return nil, false
 	}
-	return &o.Job, true
+	return o.Job, true
 }
 
-// SetJob sets field value
+// HasJob returns a boolean if a field has been set.
+func (o *AlertLabels) HasJob() bool {
+	if o != nil && !IsNil(o.Job) {
+		return true
+	}
+
+	return false
+}
+
+// SetJob gets a reference to the given string and assigns it to the Job field.
 func (o *AlertLabels) SetJob(v string) {
-	o.Job = v
+	o.Job = &v
 }
 
-// GetNamespace returns the Namespace field value
+// GetNamespace returns the Namespace field value if set, zero value otherwise.
 func (o *AlertLabels) GetNamespace() string {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		var ret string
 		return ret
 	}
-
-	return o.Namespace
+	return *o.Namespace
 }
 
-// GetNamespaceOk returns a tuple with the Namespace field value
+// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AlertLabels) GetNamespaceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		return nil, false
 	}
-	return &o.Namespace, true
+	return o.Namespace, true
 }
 
-// SetNamespace sets field value
+// HasNamespace returns a boolean if a field has been set.
+func (o *AlertLabels) HasNamespace() bool {
+	if o != nil && !IsNil(o.Namespace) {
+		return true
+	}
+
+	return false
+}
+
+// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *AlertLabels) SetNamespace(v string) {
-	o.Namespace = v
+	o.Namespace = &v
 }
 
-// GetNode returns the Node field value
+// GetNode returns the Node field value if set, zero value otherwise.
 func (o *AlertLabels) GetNode() string {
-	if o == nil {
+	if o == nil || IsNil(o.Node) {
 		var ret string
 		return ret
 	}
-
-	return o.Node
+	return *o.Node
 }
 
-// GetNodeOk returns a tuple with the Node field value
+// GetNodeOk returns a tuple with the Node field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AlertLabels) GetNodeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Node) {
 		return nil, false
 	}
-	return &o.Node, true
+	return o.Node, true
 }
 
-// SetNode sets field value
+// HasNode returns a boolean if a field has been set.
+func (o *AlertLabels) HasNode() bool {
+	if o != nil && !IsNil(o.Node) {
+		return true
+	}
+
+	return false
+}
+
+// SetNode gets a reference to the given string and assigns it to the Node field.
 func (o *AlertLabels) SetNode(v string) {
-	o.Node = v
+	o.Node = &v
 }
 
-// GetPod returns the Pod field value
+// GetPod returns the Pod field value if set, zero value otherwise.
 func (o *AlertLabels) GetPod() string {
-	if o == nil {
+	if o == nil || IsNil(o.Pod) {
 		var ret string
 		return ret
 	}
-
-	return o.Pod
+	return *o.Pod
 }
 
-// GetPodOk returns a tuple with the Pod field value
+// GetPodOk returns a tuple with the Pod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AlertLabels) GetPodOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Pod) {
 		return nil, false
 	}
-	return &o.Pod, true
+	return o.Pod, true
 }
 
-// SetPod sets field value
+// HasPod returns a boolean if a field has been set.
+func (o *AlertLabels) HasPod() bool {
+	if o != nil && !IsNil(o.Pod) {
+		return true
+	}
+
+	return false
+}
+
+// SetPod gets a reference to the given string and assigns it to the Pod field.
 func (o *AlertLabels) SetPod(v string) {
-	o.Pod = v
+	o.Pod = &v
 }
 
-// GetService returns the Service field value
+// GetService returns the Service field value if set, zero value otherwise.
 func (o *AlertLabels) GetService() string {
-	if o == nil {
+	if o == nil || IsNil(o.Service) {
 		var ret string
 		return ret
 	}
-
-	return o.Service
+	return *o.Service
 }
 
-// GetServiceOk returns a tuple with the Service field value
+// GetServiceOk returns a tuple with the Service field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AlertLabels) GetServiceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Service) {
 		return nil, false
 	}
-	return &o.Service, true
+	return o.Service, true
 }
 
-// SetService sets field value
+// HasService returns a boolean if a field has been set.
+func (o *AlertLabels) HasService() bool {
+	if o != nil && !IsNil(o.Service) {
+		return true
+	}
+
+	return false
+}
+
+// SetService gets a reference to the given string and assigns it to the Service field.
 func (o *AlertLabels) SetService(v string) {
-	o.Service = v
+	o.Service = &v
 }
 
-// GetSeverity returns the Severity field value
+// GetSeverity returns the Severity field value if set, zero value otherwise.
 func (o *AlertLabels) GetSeverity() string {
-	if o == nil {
+	if o == nil || IsNil(o.Severity) {
 		var ret string
 		return ret
 	}
-
-	return o.Severity
+	return *o.Severity
 }
 
-// GetSeverityOk returns a tuple with the Severity field value
+// GetSeverityOk returns a tuple with the Severity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AlertLabels) GetSeverityOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Severity) {
 		return nil, false
 	}
-	return &o.Severity, true
+	return o.Severity, true
 }
 
-// SetSeverity sets field value
+// HasSeverity returns a boolean if a field has been set.
+func (o *AlertLabels) HasSeverity() bool {
+	if o != nil && !IsNil(o.Severity) {
+		return true
+	}
+
+	return false
+}
+
+// SetSeverity gets a reference to the given string and assigns it to the Severity field.
 func (o *AlertLabels) SetSeverity(v string) {
-	o.Severity = v
+	o.Severity = &v
 }
 
-// GetStatus returns the Status field value
+// GetStatus returns the Status field value if set, zero value otherwise.
 func (o *AlertLabels) GetStatus() string {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
-
-	return o.Status
+	return *o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AlertLabels) GetStatusOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
-	return &o.Status, true
+	return o.Status, true
 }
 
-// SetStatus sets field value
+// HasStatus returns a boolean if a field has been set.
+func (o *AlertLabels) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *AlertLabels) SetStatus(v string) {
-	o.Status = v
+	o.Status = &v
 }
 
-// GetDaemonset returns the Daemonset field value
+// GetDaemonset returns the Daemonset field value if set, zero value otherwise.
 func (o *AlertLabels) GetDaemonset() string {
-	if o == nil {
+	if o == nil || IsNil(o.Daemonset) {
 		var ret string
 		return ret
 	}
-
-	return o.Daemonset
+	return *o.Daemonset
 }
 
-// GetDaemonsetOk returns a tuple with the Daemonset field value
+// GetDaemonsetOk returns a tuple with the Daemonset field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AlertLabels) GetDaemonsetOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Daemonset) {
 		return nil, false
 	}
-	return &o.Daemonset, true
+	return o.Daemonset, true
 }
 
-// SetDaemonset sets field value
+// HasDaemonset returns a boolean if a field has been set.
+func (o *AlertLabels) HasDaemonset() bool {
+	if o != nil && !IsNil(o.Daemonset) {
+		return true
+	}
+
+	return false
+}
+
+// SetDaemonset gets a reference to the given string and assigns it to the Daemonset field.
 func (o *AlertLabels) SetDaemonset(v string) {
-	o.Daemonset = v
+	o.Daemonset = &v
 }
 
 func (o AlertLabels) MarshalJSON() ([]byte, error) {
@@ -391,69 +478,46 @@ func (o AlertLabels) MarshalJSON() ([]byte, error) {
 
 func (o AlertLabels) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["alertname"] = o.Alertname
-	toSerialize["condition"] = o.Condition
-	toSerialize["container"] = o.Container
-	toSerialize["endpoint"] = o.Endpoint
-	toSerialize["instance"] = o.Instance
-	toSerialize["job"] = o.Job
-	toSerialize["namespace"] = o.Namespace
-	toSerialize["node"] = o.Node
-	toSerialize["pod"] = o.Pod
-	toSerialize["service"] = o.Service
-	toSerialize["severity"] = o.Severity
-	toSerialize["status"] = o.Status
-	toSerialize["daemonset"] = o.Daemonset
+	if !IsNil(o.Alertname) {
+		toSerialize["alertname"] = o.Alertname
+	}
+	if !IsNil(o.Condition) {
+		toSerialize["condition"] = o.Condition
+	}
+	if !IsNil(o.Container) {
+		toSerialize["container"] = o.Container
+	}
+	if !IsNil(o.Endpoint) {
+		toSerialize["endpoint"] = o.Endpoint
+	}
+	if !IsNil(o.Instance) {
+		toSerialize["instance"] = o.Instance
+	}
+	if !IsNil(o.Job) {
+		toSerialize["job"] = o.Job
+	}
+	if !IsNil(o.Namespace) {
+		toSerialize["namespace"] = o.Namespace
+	}
+	if !IsNil(o.Node) {
+		toSerialize["node"] = o.Node
+	}
+	if !IsNil(o.Pod) {
+		toSerialize["pod"] = o.Pod
+	}
+	if !IsNil(o.Service) {
+		toSerialize["service"] = o.Service
+	}
+	if !IsNil(o.Severity) {
+		toSerialize["severity"] = o.Severity
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.Daemonset) {
+		toSerialize["daemonset"] = o.Daemonset
+	}
 	return toSerialize, nil
-}
-
-func (o *AlertLabels) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"alertname",
-		"condition",
-		"container",
-		"endpoint",
-		"instance",
-		"job",
-		"namespace",
-		"node",
-		"pod",
-		"service",
-		"severity",
-		"status",
-		"daemonset",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varAlertLabels := _AlertLabels{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAlertLabels)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AlertLabels(varAlertLabels)
-
-	return err
 }
 
 type NullableAlertLabels struct {

@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the GroupedPrometheusBillingListQuery type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &GroupedPrometheusBillingListQuery{}
 
 // GroupedPrometheusBillingListQuery struct for GroupedPrometheusBillingListQuery
 type GroupedPrometheusBillingListQuery struct {
-	OrganizationId NullableInt32 `json:"organizationId"`
-	PeriodDuration BillingPeriod `json:"periodDuration"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	PeriodDuration *BillingPeriod `json:"periodDuration,omitempty"`
 }
-
-type _GroupedPrometheusBillingListQuery GroupedPrometheusBillingListQuery
 
 // NewGroupedPrometheusBillingListQuery instantiates a new GroupedPrometheusBillingListQuery object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroupedPrometheusBillingListQuery(organizationId NullableInt32, periodDuration BillingPeriod) *GroupedPrometheusBillingListQuery {
+func NewGroupedPrometheusBillingListQuery() *GroupedPrometheusBillingListQuery {
 	this := GroupedPrometheusBillingListQuery{}
-	this.OrganizationId = organizationId
-	this.PeriodDuration = periodDuration
 	return &this
 }
 
@@ -47,18 +41,16 @@ func NewGroupedPrometheusBillingListQueryWithDefaults() *GroupedPrometheusBillin
 	return &this
 }
 
-// GetOrganizationId returns the OrganizationId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GroupedPrometheusBillingListQuery) GetOrganizationId() int32 {
-	if o == nil || o.OrganizationId.Get() == nil {
+	if o == nil || IsNil(o.OrganizationId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.OrganizationId.Get()
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GroupedPrometheusBillingListQuery) GetOrganizationIdOk() (*int32, bool) {
@@ -68,33 +60,59 @@ func (o *GroupedPrometheusBillingListQuery) GetOrganizationIdOk() (*int32, bool)
 	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
 }
 
-// SetOrganizationId sets field value
+// HasOrganizationId returns a boolean if a field has been set.
+func (o *GroupedPrometheusBillingListQuery) HasOrganizationId() bool {
+	if o != nil && o.OrganizationId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
 func (o *GroupedPrometheusBillingListQuery) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
+// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
+func (o *GroupedPrometheusBillingListQuery) SetOrganizationIdNil() {
+	o.OrganizationId.Set(nil)
+}
 
-// GetPeriodDuration returns the PeriodDuration field value
+// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
+func (o *GroupedPrometheusBillingListQuery) UnsetOrganizationId() {
+	o.OrganizationId.Unset()
+}
+
+// GetPeriodDuration returns the PeriodDuration field value if set, zero value otherwise.
 func (o *GroupedPrometheusBillingListQuery) GetPeriodDuration() BillingPeriod {
-	if o == nil {
+	if o == nil || IsNil(o.PeriodDuration) {
 		var ret BillingPeriod
 		return ret
 	}
-
-	return o.PeriodDuration
+	return *o.PeriodDuration
 }
 
-// GetPeriodDurationOk returns a tuple with the PeriodDuration field value
+// GetPeriodDurationOk returns a tuple with the PeriodDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupedPrometheusBillingListQuery) GetPeriodDurationOk() (*BillingPeriod, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PeriodDuration) {
 		return nil, false
 	}
-	return &o.PeriodDuration, true
+	return o.PeriodDuration, true
 }
 
-// SetPeriodDuration sets field value
+// HasPeriodDuration returns a boolean if a field has been set.
+func (o *GroupedPrometheusBillingListQuery) HasPeriodDuration() bool {
+	if o != nil && !IsNil(o.PeriodDuration) {
+		return true
+	}
+
+	return false
+}
+
+// SetPeriodDuration gets a reference to the given BillingPeriod and assigns it to the PeriodDuration field.
 func (o *GroupedPrometheusBillingListQuery) SetPeriodDuration(v BillingPeriod) {
-	o.PeriodDuration = v
+	o.PeriodDuration = &v
 }
 
 func (o GroupedPrometheusBillingListQuery) MarshalJSON() ([]byte, error) {
@@ -107,47 +125,13 @@ func (o GroupedPrometheusBillingListQuery) MarshalJSON() ([]byte, error) {
 
 func (o GroupedPrometheusBillingListQuery) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["organizationId"] = o.OrganizationId.Get()
-	toSerialize["periodDuration"] = o.PeriodDuration
+	if o.OrganizationId.IsSet() {
+		toSerialize["organizationId"] = o.OrganizationId.Get()
+	}
+	if !IsNil(o.PeriodDuration) {
+		toSerialize["periodDuration"] = o.PeriodDuration
+	}
 	return toSerialize, nil
-}
-
-func (o *GroupedPrometheusBillingListQuery) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"organizationId",
-		"periodDuration",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varGroupedPrometheusBillingListQuery := _GroupedPrometheusBillingListQuery{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGroupedPrometheusBillingListQuery)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GroupedPrometheusBillingListQuery(varGroupedPrometheusBillingListQuery)
-
-	return err
 }
 
 type NullableGroupedPrometheusBillingListQuery struct {

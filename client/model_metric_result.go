@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the MetricResult type satisfies the MappedNullable interface at compile time
@@ -22,22 +20,17 @@ var _ MappedNullable = &MetricResult{}
 
 // MetricResult struct for MetricResult
 type MetricResult struct {
-	Metric map[string]string `json:"metric"`
-	Value interface{} `json:"value"`
-	Values [][]float64 `json:"values"`
+	Metric *map[string]string `json:"metric,omitempty"`
+	Value interface{} `json:"value,omitempty"`
+	Values [][]float64 `json:"values,omitempty"`
 }
-
-type _MetricResult MetricResult
 
 // NewMetricResult instantiates a new MetricResult object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMetricResult(metric map[string]string, value interface{}, values [][]float64) *MetricResult {
+func NewMetricResult() *MetricResult {
 	this := MetricResult{}
-	this.Metric = metric
-	this.Value = value
-	this.Values = values
 	return &this
 }
 
@@ -49,42 +42,48 @@ func NewMetricResultWithDefaults() *MetricResult {
 	return &this
 }
 
-// GetMetric returns the Metric field value
+// GetMetric returns the Metric field value if set, zero value otherwise.
 func (o *MetricResult) GetMetric() map[string]string {
-	if o == nil {
+	if o == nil || IsNil(o.Metric) {
 		var ret map[string]string
 		return ret
 	}
-
-	return o.Metric
+	return *o.Metric
 }
 
-// GetMetricOk returns a tuple with the Metric field value
+// GetMetricOk returns a tuple with the Metric field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MetricResult) GetMetricOk() (*map[string]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Metric) {
 		return nil, false
 	}
-	return &o.Metric, true
+	return o.Metric, true
 }
 
-// SetMetric sets field value
+// HasMetric returns a boolean if a field has been set.
+func (o *MetricResult) HasMetric() bool {
+	if o != nil && !IsNil(o.Metric) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetric gets a reference to the given map[string]string and assigns it to the Metric field.
 func (o *MetricResult) SetMetric(v map[string]string) {
-	o.Metric = v
+	o.Metric = &v
 }
 
-// GetValue returns the Value field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *MetricResult) GetValue() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.Value
 }
 
-// GetValueOk returns a tuple with the Value field value
+// GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MetricResult) GetValueOk() (*interface{}, bool) {
@@ -94,31 +93,48 @@ func (o *MetricResult) GetValueOk() (*interface{}, bool) {
 	return &o.Value, true
 }
 
-// SetValue sets field value
+// HasValue returns a boolean if a field has been set.
+func (o *MetricResult) HasValue() bool {
+	if o != nil && !IsNil(o.Value) {
+		return true
+	}
+
+	return false
+}
+
+// SetValue gets a reference to the given interface{} and assigns it to the Value field.
 func (o *MetricResult) SetValue(v interface{}) {
 	o.Value = v
 }
 
-// GetValues returns the Values field value
+// GetValues returns the Values field value if set, zero value otherwise.
 func (o *MetricResult) GetValues() [][]float64 {
-	if o == nil {
+	if o == nil || IsNil(o.Values) {
 		var ret [][]float64
 		return ret
 	}
-
 	return o.Values
 }
 
-// GetValuesOk returns a tuple with the Values field value
+// GetValuesOk returns a tuple with the Values field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MetricResult) GetValuesOk() ([][]float64, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Values) {
 		return nil, false
 	}
 	return o.Values, true
 }
 
-// SetValues sets field value
+// HasValues returns a boolean if a field has been set.
+func (o *MetricResult) HasValues() bool {
+	if o != nil && !IsNil(o.Values) {
+		return true
+	}
+
+	return false
+}
+
+// SetValues gets a reference to the given [][]float64 and assigns it to the Values field.
 func (o *MetricResult) SetValues(v [][]float64) {
 	o.Values = v
 }
@@ -133,51 +149,16 @@ func (o MetricResult) MarshalJSON() ([]byte, error) {
 
 func (o MetricResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["metric"] = o.Metric
+	if !IsNil(o.Metric) {
+		toSerialize["metric"] = o.Metric
+	}
 	if o.Value != nil {
 		toSerialize["value"] = o.Value
 	}
-	toSerialize["values"] = o.Values
+	if !IsNil(o.Values) {
+		toSerialize["values"] = o.Values
+	}
 	return toSerialize, nil
-}
-
-func (o *MetricResult) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"metric",
-		"value",
-		"values",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varMetricResult := _MetricResult{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varMetricResult)
-
-	if err != nil {
-		return err
-	}
-
-	*o = MetricResult(varMetricResult)
-
-	return err
 }
 
 type NullableMetricResult struct {

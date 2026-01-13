@@ -22,15 +22,15 @@ var _ MappedNullable = &OrganizationCreateCommand{}
 
 // OrganizationCreateCommand struct for OrganizationCreateCommand
 type OrganizationCreateCommand struct {
-	Name string `json:"name"`
-	FullName string `json:"fullName"`
-	Phone string `json:"phone"`
-	Email string `json:"email"`
-	BillingEmail string `json:"billingEmail"`
-	Address string `json:"address"`
-	Country string `json:"country"`
-	City string `json:"city"`
-	VatNumber string `json:"vatNumber"`
+	Name *string `json:"name,omitempty"`
+	FullName *string `json:"fullName,omitempty"`
+	Phone *string `json:"phone,omitempty"`
+	Email *string `json:"email,omitempty"`
+	BillingEmail *string `json:"billingEmail,omitempty"`
+	Address *string `json:"address,omitempty"`
+	Country *string `json:"country,omitempty"`
+	City *string `json:"city,omitempty"`
+	VatNumber *string `json:"vatNumber,omitempty"`
 	DiscountRate NullableFloat64 `json:"discountRate,omitempty"`
 	IsEligibleUpdateSubscription bool `json:"isEligibleUpdateSubscription"`
 	AdminCloudCredentialId NullableInt32 `json:"adminCloudCredentialId,omitempty"`
@@ -42,17 +42,8 @@ type _OrganizationCreateCommand OrganizationCreateCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationCreateCommand(name string, fullName string, phone string, email string, billingEmail string, address string, country string, city string, vatNumber string, isEligibleUpdateSubscription bool) *OrganizationCreateCommand {
+func NewOrganizationCreateCommand(isEligibleUpdateSubscription bool) *OrganizationCreateCommand {
 	this := OrganizationCreateCommand{}
-	this.Name = name
-	this.FullName = fullName
-	this.Phone = phone
-	this.Email = email
-	this.BillingEmail = billingEmail
-	this.Address = address
-	this.Country = country
-	this.City = city
-	this.VatNumber = vatNumber
 	this.IsEligibleUpdateSubscription = isEligibleUpdateSubscription
 	return &this
 }
@@ -65,220 +56,292 @@ func NewOrganizationCreateCommandWithDefaults() *OrganizationCreateCommand {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *OrganizationCreateCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCreateCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *OrganizationCreateCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *OrganizationCreateCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetFullName returns the FullName field value
+// GetFullName returns the FullName field value if set, zero value otherwise.
 func (o *OrganizationCreateCommand) GetFullName() string {
-	if o == nil {
+	if o == nil || IsNil(o.FullName) {
 		var ret string
 		return ret
 	}
-
-	return o.FullName
+	return *o.FullName
 }
 
-// GetFullNameOk returns a tuple with the FullName field value
+// GetFullNameOk returns a tuple with the FullName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCreateCommand) GetFullNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.FullName) {
 		return nil, false
 	}
-	return &o.FullName, true
+	return o.FullName, true
 }
 
-// SetFullName sets field value
+// HasFullName returns a boolean if a field has been set.
+func (o *OrganizationCreateCommand) HasFullName() bool {
+	if o != nil && !IsNil(o.FullName) {
+		return true
+	}
+
+	return false
+}
+
+// SetFullName gets a reference to the given string and assigns it to the FullName field.
 func (o *OrganizationCreateCommand) SetFullName(v string) {
-	o.FullName = v
+	o.FullName = &v
 }
 
-// GetPhone returns the Phone field value
+// GetPhone returns the Phone field value if set, zero value otherwise.
 func (o *OrganizationCreateCommand) GetPhone() string {
-	if o == nil {
+	if o == nil || IsNil(o.Phone) {
 		var ret string
 		return ret
 	}
-
-	return o.Phone
+	return *o.Phone
 }
 
-// GetPhoneOk returns a tuple with the Phone field value
+// GetPhoneOk returns a tuple with the Phone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCreateCommand) GetPhoneOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Phone) {
 		return nil, false
 	}
-	return &o.Phone, true
+	return o.Phone, true
 }
 
-// SetPhone sets field value
+// HasPhone returns a boolean if a field has been set.
+func (o *OrganizationCreateCommand) HasPhone() bool {
+	if o != nil && !IsNil(o.Phone) {
+		return true
+	}
+
+	return false
+}
+
+// SetPhone gets a reference to the given string and assigns it to the Phone field.
 func (o *OrganizationCreateCommand) SetPhone(v string) {
-	o.Phone = v
+	o.Phone = &v
 }
 
-// GetEmail returns the Email field value
+// GetEmail returns the Email field value if set, zero value otherwise.
 func (o *OrganizationCreateCommand) GetEmail() string {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
-
-	return o.Email
+	return *o.Email
 }
 
-// GetEmailOk returns a tuple with the Email field value
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCreateCommand) GetEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
-	return &o.Email, true
+	return o.Email, true
 }
 
-// SetEmail sets field value
+// HasEmail returns a boolean if a field has been set.
+func (o *OrganizationCreateCommand) HasEmail() bool {
+	if o != nil && !IsNil(o.Email) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmail gets a reference to the given string and assigns it to the Email field.
 func (o *OrganizationCreateCommand) SetEmail(v string) {
-	o.Email = v
+	o.Email = &v
 }
 
-// GetBillingEmail returns the BillingEmail field value
+// GetBillingEmail returns the BillingEmail field value if set, zero value otherwise.
 func (o *OrganizationCreateCommand) GetBillingEmail() string {
-	if o == nil {
+	if o == nil || IsNil(o.BillingEmail) {
 		var ret string
 		return ret
 	}
-
-	return o.BillingEmail
+	return *o.BillingEmail
 }
 
-// GetBillingEmailOk returns a tuple with the BillingEmail field value
+// GetBillingEmailOk returns a tuple with the BillingEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCreateCommand) GetBillingEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BillingEmail) {
 		return nil, false
 	}
-	return &o.BillingEmail, true
+	return o.BillingEmail, true
 }
 
-// SetBillingEmail sets field value
+// HasBillingEmail returns a boolean if a field has been set.
+func (o *OrganizationCreateCommand) HasBillingEmail() bool {
+	if o != nil && !IsNil(o.BillingEmail) {
+		return true
+	}
+
+	return false
+}
+
+// SetBillingEmail gets a reference to the given string and assigns it to the BillingEmail field.
 func (o *OrganizationCreateCommand) SetBillingEmail(v string) {
-	o.BillingEmail = v
+	o.BillingEmail = &v
 }
 
-// GetAddress returns the Address field value
+// GetAddress returns the Address field value if set, zero value otherwise.
 func (o *OrganizationCreateCommand) GetAddress() string {
-	if o == nil {
+	if o == nil || IsNil(o.Address) {
 		var ret string
 		return ret
 	}
-
-	return o.Address
+	return *o.Address
 }
 
-// GetAddressOk returns a tuple with the Address field value
+// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCreateCommand) GetAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Address) {
 		return nil, false
 	}
-	return &o.Address, true
+	return o.Address, true
 }
 
-// SetAddress sets field value
+// HasAddress returns a boolean if a field has been set.
+func (o *OrganizationCreateCommand) HasAddress() bool {
+	if o != nil && !IsNil(o.Address) {
+		return true
+	}
+
+	return false
+}
+
+// SetAddress gets a reference to the given string and assigns it to the Address field.
 func (o *OrganizationCreateCommand) SetAddress(v string) {
-	o.Address = v
+	o.Address = &v
 }
 
-// GetCountry returns the Country field value
+// GetCountry returns the Country field value if set, zero value otherwise.
 func (o *OrganizationCreateCommand) GetCountry() string {
-	if o == nil {
+	if o == nil || IsNil(o.Country) {
 		var ret string
 		return ret
 	}
-
-	return o.Country
+	return *o.Country
 }
 
-// GetCountryOk returns a tuple with the Country field value
+// GetCountryOk returns a tuple with the Country field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCreateCommand) GetCountryOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Country) {
 		return nil, false
 	}
-	return &o.Country, true
+	return o.Country, true
 }
 
-// SetCountry sets field value
+// HasCountry returns a boolean if a field has been set.
+func (o *OrganizationCreateCommand) HasCountry() bool {
+	if o != nil && !IsNil(o.Country) {
+		return true
+	}
+
+	return false
+}
+
+// SetCountry gets a reference to the given string and assigns it to the Country field.
 func (o *OrganizationCreateCommand) SetCountry(v string) {
-	o.Country = v
+	o.Country = &v
 }
 
-// GetCity returns the City field value
+// GetCity returns the City field value if set, zero value otherwise.
 func (o *OrganizationCreateCommand) GetCity() string {
-	if o == nil {
+	if o == nil || IsNil(o.City) {
 		var ret string
 		return ret
 	}
-
-	return o.City
+	return *o.City
 }
 
-// GetCityOk returns a tuple with the City field value
+// GetCityOk returns a tuple with the City field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCreateCommand) GetCityOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.City) {
 		return nil, false
 	}
-	return &o.City, true
+	return o.City, true
 }
 
-// SetCity sets field value
+// HasCity returns a boolean if a field has been set.
+func (o *OrganizationCreateCommand) HasCity() bool {
+	if o != nil && !IsNil(o.City) {
+		return true
+	}
+
+	return false
+}
+
+// SetCity gets a reference to the given string and assigns it to the City field.
 func (o *OrganizationCreateCommand) SetCity(v string) {
-	o.City = v
+	o.City = &v
 }
 
-// GetVatNumber returns the VatNumber field value
+// GetVatNumber returns the VatNumber field value if set, zero value otherwise.
 func (o *OrganizationCreateCommand) GetVatNumber() string {
-	if o == nil {
+	if o == nil || IsNil(o.VatNumber) {
 		var ret string
 		return ret
 	}
-
-	return o.VatNumber
+	return *o.VatNumber
 }
 
-// GetVatNumberOk returns a tuple with the VatNumber field value
+// GetVatNumberOk returns a tuple with the VatNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCreateCommand) GetVatNumberOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VatNumber) {
 		return nil, false
 	}
-	return &o.VatNumber, true
+	return o.VatNumber, true
 }
 
-// SetVatNumber sets field value
+// HasVatNumber returns a boolean if a field has been set.
+func (o *OrganizationCreateCommand) HasVatNumber() bool {
+	if o != nil && !IsNil(o.VatNumber) {
+		return true
+	}
+
+	return false
+}
+
+// SetVatNumber gets a reference to the given string and assigns it to the VatNumber field.
 func (o *OrganizationCreateCommand) SetVatNumber(v string) {
-	o.VatNumber = v
+	o.VatNumber = &v
 }
 
 // GetDiscountRate returns the DiscountRate field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -399,15 +462,33 @@ func (o OrganizationCreateCommand) MarshalJSON() ([]byte, error) {
 
 func (o OrganizationCreateCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["fullName"] = o.FullName
-	toSerialize["phone"] = o.Phone
-	toSerialize["email"] = o.Email
-	toSerialize["billingEmail"] = o.BillingEmail
-	toSerialize["address"] = o.Address
-	toSerialize["country"] = o.Country
-	toSerialize["city"] = o.City
-	toSerialize["vatNumber"] = o.VatNumber
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.FullName) {
+		toSerialize["fullName"] = o.FullName
+	}
+	if !IsNil(o.Phone) {
+		toSerialize["phone"] = o.Phone
+	}
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
+	if !IsNil(o.BillingEmail) {
+		toSerialize["billingEmail"] = o.BillingEmail
+	}
+	if !IsNil(o.Address) {
+		toSerialize["address"] = o.Address
+	}
+	if !IsNil(o.Country) {
+		toSerialize["country"] = o.Country
+	}
+	if !IsNil(o.City) {
+		toSerialize["city"] = o.City
+	}
+	if !IsNil(o.VatNumber) {
+		toSerialize["vatNumber"] = o.VatNumber
+	}
 	if o.DiscountRate.IsSet() {
 		toSerialize["discountRate"] = o.DiscountRate.Get()
 	}
@@ -423,15 +504,6 @@ func (o *OrganizationCreateCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
-		"fullName",
-		"phone",
-		"email",
-		"billingEmail",
-		"address",
-		"country",
-		"city",
-		"vatNumber",
 		"isEligibleUpdateSubscription",
 	}
 

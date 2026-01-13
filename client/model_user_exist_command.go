@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the UserExistCommand type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &UserExistCommand{}
 
 // UserExistCommand struct for UserExistCommand
 type UserExistCommand struct {
-	Email string `json:"email"`
-	UserName string `json:"userName"`
+	Email *string `json:"email,omitempty"`
+	UserName *string `json:"userName,omitempty"`
 }
-
-type _UserExistCommand UserExistCommand
 
 // NewUserExistCommand instantiates a new UserExistCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserExistCommand(email string, userName string) *UserExistCommand {
+func NewUserExistCommand() *UserExistCommand {
 	this := UserExistCommand{}
-	this.Email = email
-	this.UserName = userName
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewUserExistCommandWithDefaults() *UserExistCommand {
 	return &this
 }
 
-// GetEmail returns the Email field value
+// GetEmail returns the Email field value if set, zero value otherwise.
 func (o *UserExistCommand) GetEmail() string {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
-
-	return o.Email
+	return *o.Email
 }
 
-// GetEmailOk returns a tuple with the Email field value
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserExistCommand) GetEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
-	return &o.Email, true
+	return o.Email, true
 }
 
-// SetEmail sets field value
+// HasEmail returns a boolean if a field has been set.
+func (o *UserExistCommand) HasEmail() bool {
+	if o != nil && !IsNil(o.Email) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmail gets a reference to the given string and assigns it to the Email field.
 func (o *UserExistCommand) SetEmail(v string) {
-	o.Email = v
+	o.Email = &v
 }
 
-// GetUserName returns the UserName field value
+// GetUserName returns the UserName field value if set, zero value otherwise.
 func (o *UserExistCommand) GetUserName() string {
-	if o == nil {
+	if o == nil || IsNil(o.UserName) {
 		var ret string
 		return ret
 	}
-
-	return o.UserName
+	return *o.UserName
 }
 
-// GetUserNameOk returns a tuple with the UserName field value
+// GetUserNameOk returns a tuple with the UserName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserExistCommand) GetUserNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UserName) {
 		return nil, false
 	}
-	return &o.UserName, true
+	return o.UserName, true
 }
 
-// SetUserName sets field value
+// HasUserName returns a boolean if a field has been set.
+func (o *UserExistCommand) HasUserName() bool {
+	if o != nil && !IsNil(o.UserName) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserName gets a reference to the given string and assigns it to the UserName field.
 func (o *UserExistCommand) SetUserName(v string) {
-	o.UserName = v
+	o.UserName = &v
 }
 
 func (o UserExistCommand) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o UserExistCommand) MarshalJSON() ([]byte, error) {
 
 func (o UserExistCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["email"] = o.Email
-	toSerialize["userName"] = o.UserName
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
+	if !IsNil(o.UserName) {
+		toSerialize["userName"] = o.UserName
+	}
 	return toSerialize, nil
-}
-
-func (o *UserExistCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"email",
-		"userName",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varUserExistCommand := _UserExistCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserExistCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = UserExistCommand(varUserExistCommand)
-
-	return err
 }
 
 type NullableUserExistCommand struct {

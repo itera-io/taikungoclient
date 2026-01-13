@@ -23,7 +23,7 @@ var _ MappedNullable = &ImageByIdCommand{}
 // ImageByIdCommand struct for ImageByIdCommand
 type ImageByIdCommand struct {
 	CloudId int32 `json:"cloudId"`
-	ImageId string `json:"imageId"`
+	ImageId *string `json:"imageId,omitempty"`
 }
 
 type _ImageByIdCommand ImageByIdCommand
@@ -32,10 +32,9 @@ type _ImageByIdCommand ImageByIdCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewImageByIdCommand(cloudId int32, imageId string) *ImageByIdCommand {
+func NewImageByIdCommand(cloudId int32) *ImageByIdCommand {
 	this := ImageByIdCommand{}
 	this.CloudId = cloudId
-	this.ImageId = imageId
 	return &this
 }
 
@@ -71,28 +70,36 @@ func (o *ImageByIdCommand) SetCloudId(v int32) {
 	o.CloudId = v
 }
 
-// GetImageId returns the ImageId field value
+// GetImageId returns the ImageId field value if set, zero value otherwise.
 func (o *ImageByIdCommand) GetImageId() string {
-	if o == nil {
+	if o == nil || IsNil(o.ImageId) {
 		var ret string
 		return ret
 	}
-
-	return o.ImageId
+	return *o.ImageId
 }
 
-// GetImageIdOk returns a tuple with the ImageId field value
+// GetImageIdOk returns a tuple with the ImageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImageByIdCommand) GetImageIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ImageId) {
 		return nil, false
 	}
-	return &o.ImageId, true
+	return o.ImageId, true
 }
 
-// SetImageId sets field value
+// HasImageId returns a boolean if a field has been set.
+func (o *ImageByIdCommand) HasImageId() bool {
+	if o != nil && !IsNil(o.ImageId) {
+		return true
+	}
+
+	return false
+}
+
+// SetImageId gets a reference to the given string and assigns it to the ImageId field.
 func (o *ImageByIdCommand) SetImageId(v string) {
-	o.ImageId = v
+	o.ImageId = &v
 }
 
 func (o ImageByIdCommand) MarshalJSON() ([]byte, error) {
@@ -106,7 +113,9 @@ func (o ImageByIdCommand) MarshalJSON() ([]byte, error) {
 func (o ImageByIdCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["cloudId"] = o.CloudId
-	toSerialize["imageId"] = o.ImageId
+	if !IsNil(o.ImageId) {
+		toSerialize["imageId"] = o.ImageId
+	}
 	return toSerialize, nil
 }
 
@@ -116,7 +125,6 @@ func (o *ImageByIdCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"cloudId",
-		"imageId",
 	}
 
 	allProperties := make(map[string]interface{})

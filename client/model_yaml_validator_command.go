@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the YamlValidatorCommand type satisfies the MappedNullable interface at compile time
@@ -22,18 +20,15 @@ var _ MappedNullable = &YamlValidatorCommand{}
 
 // YamlValidatorCommand struct for YamlValidatorCommand
 type YamlValidatorCommand struct {
-	Yaml string `json:"yaml"`
+	Yaml *string `json:"yaml,omitempty"`
 }
-
-type _YamlValidatorCommand YamlValidatorCommand
 
 // NewYamlValidatorCommand instantiates a new YamlValidatorCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewYamlValidatorCommand(yaml string) *YamlValidatorCommand {
+func NewYamlValidatorCommand() *YamlValidatorCommand {
 	this := YamlValidatorCommand{}
-	this.Yaml = yaml
 	return &this
 }
 
@@ -45,28 +40,36 @@ func NewYamlValidatorCommandWithDefaults() *YamlValidatorCommand {
 	return &this
 }
 
-// GetYaml returns the Yaml field value
+// GetYaml returns the Yaml field value if set, zero value otherwise.
 func (o *YamlValidatorCommand) GetYaml() string {
-	if o == nil {
+	if o == nil || IsNil(o.Yaml) {
 		var ret string
 		return ret
 	}
-
-	return o.Yaml
+	return *o.Yaml
 }
 
-// GetYamlOk returns a tuple with the Yaml field value
+// GetYamlOk returns a tuple with the Yaml field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *YamlValidatorCommand) GetYamlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Yaml) {
 		return nil, false
 	}
-	return &o.Yaml, true
+	return o.Yaml, true
 }
 
-// SetYaml sets field value
+// HasYaml returns a boolean if a field has been set.
+func (o *YamlValidatorCommand) HasYaml() bool {
+	if o != nil && !IsNil(o.Yaml) {
+		return true
+	}
+
+	return false
+}
+
+// SetYaml gets a reference to the given string and assigns it to the Yaml field.
 func (o *YamlValidatorCommand) SetYaml(v string) {
-	o.Yaml = v
+	o.Yaml = &v
 }
 
 func (o YamlValidatorCommand) MarshalJSON() ([]byte, error) {
@@ -79,45 +82,10 @@ func (o YamlValidatorCommand) MarshalJSON() ([]byte, error) {
 
 func (o YamlValidatorCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["yaml"] = o.Yaml
+	if !IsNil(o.Yaml) {
+		toSerialize["yaml"] = o.Yaml
+	}
 	return toSerialize, nil
-}
-
-func (o *YamlValidatorCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"yaml",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varYamlValidatorCommand := _YamlValidatorCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varYamlValidatorCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = YamlValidatorCommand(varYamlValidatorCommand)
-
-	return err
 }
 
 type NullableYamlValidatorCommand struct {

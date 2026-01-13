@@ -23,14 +23,14 @@ var _ MappedNullable = &CatalogDetails{}
 // CatalogDetails struct for CatalogDetails
 type CatalogDetails struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
-	Description string `json:"description"`
+	Name *string `json:"name,omitempty"`
+	Description *string `json:"description,omitempty"`
 	IsLocked bool `json:"isLocked"`
 	IsDefault bool `json:"isDefault"`
 	OrganizationId int32 `json:"organizationId"`
-	PackageIds []string `json:"packageIds"`
-	BoundProjects []ProjectCatalogDto `json:"boundProjects"`
-	BoundApplications []AvailablePackagesDto `json:"boundApplications"`
+	PackageIds []string `json:"packageIds,omitempty"`
+	BoundProjects []ProjectCatalogDto `json:"boundProjects,omitempty"`
+	BoundApplications []AvailablePackagesDto `json:"boundApplications,omitempty"`
 }
 
 type _CatalogDetails CatalogDetails
@@ -39,17 +39,12 @@ type _CatalogDetails CatalogDetails
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogDetails(id int32, name string, description string, isLocked bool, isDefault bool, organizationId int32, packageIds []string, boundProjects []ProjectCatalogDto, boundApplications []AvailablePackagesDto) *CatalogDetails {
+func NewCatalogDetails(id int32, isLocked bool, isDefault bool, organizationId int32) *CatalogDetails {
 	this := CatalogDetails{}
 	this.Id = id
-	this.Name = name
-	this.Description = description
 	this.IsLocked = isLocked
 	this.IsDefault = isDefault
 	this.OrganizationId = organizationId
-	this.PackageIds = packageIds
-	this.BoundProjects = boundProjects
-	this.BoundApplications = boundApplications
 	return &this
 }
 
@@ -85,52 +80,68 @@ func (o *CatalogDetails) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CatalogDetails) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CatalogDetails) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CatalogDetails) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CatalogDetails) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetDescription returns the Description field value
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *CatalogDetails) GetDescription() string {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-
-	return o.Description
+	return *o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CatalogDetails) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description, true
 }
 
-// SetDescription sets field value
+// HasDescription returns a boolean if a field has been set.
+func (o *CatalogDetails) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *CatalogDetails) SetDescription(v string) {
-	o.Description = v
+	o.Description = &v
 }
 
 // GetIsLocked returns the IsLocked field value
@@ -205,74 +216,98 @@ func (o *CatalogDetails) SetOrganizationId(v int32) {
 	o.OrganizationId = v
 }
 
-// GetPackageIds returns the PackageIds field value
+// GetPackageIds returns the PackageIds field value if set, zero value otherwise.
 func (o *CatalogDetails) GetPackageIds() []string {
-	if o == nil {
+	if o == nil || IsNil(o.PackageIds) {
 		var ret []string
 		return ret
 	}
-
 	return o.PackageIds
 }
 
-// GetPackageIdsOk returns a tuple with the PackageIds field value
+// GetPackageIdsOk returns a tuple with the PackageIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CatalogDetails) GetPackageIdsOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PackageIds) {
 		return nil, false
 	}
 	return o.PackageIds, true
 }
 
-// SetPackageIds sets field value
+// HasPackageIds returns a boolean if a field has been set.
+func (o *CatalogDetails) HasPackageIds() bool {
+	if o != nil && !IsNil(o.PackageIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetPackageIds gets a reference to the given []string and assigns it to the PackageIds field.
 func (o *CatalogDetails) SetPackageIds(v []string) {
 	o.PackageIds = v
 }
 
-// GetBoundProjects returns the BoundProjects field value
+// GetBoundProjects returns the BoundProjects field value if set, zero value otherwise.
 func (o *CatalogDetails) GetBoundProjects() []ProjectCatalogDto {
-	if o == nil {
+	if o == nil || IsNil(o.BoundProjects) {
 		var ret []ProjectCatalogDto
 		return ret
 	}
-
 	return o.BoundProjects
 }
 
-// GetBoundProjectsOk returns a tuple with the BoundProjects field value
+// GetBoundProjectsOk returns a tuple with the BoundProjects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CatalogDetails) GetBoundProjectsOk() ([]ProjectCatalogDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BoundProjects) {
 		return nil, false
 	}
 	return o.BoundProjects, true
 }
 
-// SetBoundProjects sets field value
+// HasBoundProjects returns a boolean if a field has been set.
+func (o *CatalogDetails) HasBoundProjects() bool {
+	if o != nil && !IsNil(o.BoundProjects) {
+		return true
+	}
+
+	return false
+}
+
+// SetBoundProjects gets a reference to the given []ProjectCatalogDto and assigns it to the BoundProjects field.
 func (o *CatalogDetails) SetBoundProjects(v []ProjectCatalogDto) {
 	o.BoundProjects = v
 }
 
-// GetBoundApplications returns the BoundApplications field value
+// GetBoundApplications returns the BoundApplications field value if set, zero value otherwise.
 func (o *CatalogDetails) GetBoundApplications() []AvailablePackagesDto {
-	if o == nil {
+	if o == nil || IsNil(o.BoundApplications) {
 		var ret []AvailablePackagesDto
 		return ret
 	}
-
 	return o.BoundApplications
 }
 
-// GetBoundApplicationsOk returns a tuple with the BoundApplications field value
+// GetBoundApplicationsOk returns a tuple with the BoundApplications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CatalogDetails) GetBoundApplicationsOk() ([]AvailablePackagesDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BoundApplications) {
 		return nil, false
 	}
 	return o.BoundApplications, true
 }
 
-// SetBoundApplications sets field value
+// HasBoundApplications returns a boolean if a field has been set.
+func (o *CatalogDetails) HasBoundApplications() bool {
+	if o != nil && !IsNil(o.BoundApplications) {
+		return true
+	}
+
+	return false
+}
+
+// SetBoundApplications gets a reference to the given []AvailablePackagesDto and assigns it to the BoundApplications field.
 func (o *CatalogDetails) SetBoundApplications(v []AvailablePackagesDto) {
 	o.BoundApplications = v
 }
@@ -288,14 +323,24 @@ func (o CatalogDetails) MarshalJSON() ([]byte, error) {
 func (o CatalogDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
-	toSerialize["description"] = o.Description
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
 	toSerialize["isLocked"] = o.IsLocked
 	toSerialize["isDefault"] = o.IsDefault
 	toSerialize["organizationId"] = o.OrganizationId
-	toSerialize["packageIds"] = o.PackageIds
-	toSerialize["boundProjects"] = o.BoundProjects
-	toSerialize["boundApplications"] = o.BoundApplications
+	if !IsNil(o.PackageIds) {
+		toSerialize["packageIds"] = o.PackageIds
+	}
+	if !IsNil(o.BoundProjects) {
+		toSerialize["boundProjects"] = o.BoundProjects
+	}
+	if !IsNil(o.BoundApplications) {
+		toSerialize["boundApplications"] = o.BoundApplications
+	}
 	return toSerialize, nil
 }
 
@@ -305,14 +350,9 @@ func (o *CatalogDetails) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
-		"description",
 		"isLocked",
 		"isDefault",
 		"organizationId",
-		"packageIds",
-		"boundProjects",
-		"boundApplications",
 	}
 
 	allProperties := make(map[string]interface{})

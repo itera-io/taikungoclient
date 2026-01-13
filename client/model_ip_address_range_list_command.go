@@ -22,9 +22,9 @@ var _ MappedNullable = &IpAddressRangeListCommand{}
 
 // IpAddressRangeListCommand struct for IpAddressRangeListCommand
 type IpAddressRangeListCommand struct {
-	IpAddress string `json:"ipAddress"`
+	IpAddress *string `json:"ipAddress,omitempty"`
 	NetMask int32 `json:"netMask"`
-	Gateway string `json:"gateway"`
+	Gateway *string `json:"gateway,omitempty"`
 }
 
 type _IpAddressRangeListCommand IpAddressRangeListCommand
@@ -33,11 +33,9 @@ type _IpAddressRangeListCommand IpAddressRangeListCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIpAddressRangeListCommand(ipAddress string, netMask int32, gateway string) *IpAddressRangeListCommand {
+func NewIpAddressRangeListCommand(netMask int32) *IpAddressRangeListCommand {
 	this := IpAddressRangeListCommand{}
-	this.IpAddress = ipAddress
 	this.NetMask = netMask
-	this.Gateway = gateway
 	return &this
 }
 
@@ -49,28 +47,36 @@ func NewIpAddressRangeListCommandWithDefaults() *IpAddressRangeListCommand {
 	return &this
 }
 
-// GetIpAddress returns the IpAddress field value
+// GetIpAddress returns the IpAddress field value if set, zero value otherwise.
 func (o *IpAddressRangeListCommand) GetIpAddress() string {
-	if o == nil {
+	if o == nil || IsNil(o.IpAddress) {
 		var ret string
 		return ret
 	}
-
-	return o.IpAddress
+	return *o.IpAddress
 }
 
-// GetIpAddressOk returns a tuple with the IpAddress field value
+// GetIpAddressOk returns a tuple with the IpAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IpAddressRangeListCommand) GetIpAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.IpAddress) {
 		return nil, false
 	}
-	return &o.IpAddress, true
+	return o.IpAddress, true
 }
 
-// SetIpAddress sets field value
+// HasIpAddress returns a boolean if a field has been set.
+func (o *IpAddressRangeListCommand) HasIpAddress() bool {
+	if o != nil && !IsNil(o.IpAddress) {
+		return true
+	}
+
+	return false
+}
+
+// SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
 func (o *IpAddressRangeListCommand) SetIpAddress(v string) {
-	o.IpAddress = v
+	o.IpAddress = &v
 }
 
 // GetNetMask returns the NetMask field value
@@ -97,28 +103,36 @@ func (o *IpAddressRangeListCommand) SetNetMask(v int32) {
 	o.NetMask = v
 }
 
-// GetGateway returns the Gateway field value
+// GetGateway returns the Gateway field value if set, zero value otherwise.
 func (o *IpAddressRangeListCommand) GetGateway() string {
-	if o == nil {
+	if o == nil || IsNil(o.Gateway) {
 		var ret string
 		return ret
 	}
-
-	return o.Gateway
+	return *o.Gateway
 }
 
-// GetGatewayOk returns a tuple with the Gateway field value
+// GetGatewayOk returns a tuple with the Gateway field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IpAddressRangeListCommand) GetGatewayOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Gateway) {
 		return nil, false
 	}
-	return &o.Gateway, true
+	return o.Gateway, true
 }
 
-// SetGateway sets field value
+// HasGateway returns a boolean if a field has been set.
+func (o *IpAddressRangeListCommand) HasGateway() bool {
+	if o != nil && !IsNil(o.Gateway) {
+		return true
+	}
+
+	return false
+}
+
+// SetGateway gets a reference to the given string and assigns it to the Gateway field.
 func (o *IpAddressRangeListCommand) SetGateway(v string) {
-	o.Gateway = v
+	o.Gateway = &v
 }
 
 func (o IpAddressRangeListCommand) MarshalJSON() ([]byte, error) {
@@ -131,9 +145,13 @@ func (o IpAddressRangeListCommand) MarshalJSON() ([]byte, error) {
 
 func (o IpAddressRangeListCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["ipAddress"] = o.IpAddress
+	if !IsNil(o.IpAddress) {
+		toSerialize["ipAddress"] = o.IpAddress
+	}
 	toSerialize["netMask"] = o.NetMask
-	toSerialize["gateway"] = o.Gateway
+	if !IsNil(o.Gateway) {
+		toSerialize["gateway"] = o.Gateway
+	}
 	return toSerialize, nil
 }
 
@@ -142,9 +160,7 @@ func (o *IpAddressRangeListCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"ipAddress",
 		"netMask",
-		"gateway",
 	}
 
 	allProperties := make(map[string]interface{})

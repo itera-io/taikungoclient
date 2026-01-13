@@ -23,7 +23,7 @@ var _ MappedNullable = &DeleteVmDiskCommand{}
 // DeleteVmDiskCommand struct for DeleteVmDiskCommand
 type DeleteVmDiskCommand struct {
 	StandaloneVmId int32 `json:"standaloneVmId"`
-	VmDiskIds []int32 `json:"vmDiskIds"`
+	VmDiskIds []int32 `json:"vmDiskIds,omitempty"`
 }
 
 type _DeleteVmDiskCommand DeleteVmDiskCommand
@@ -32,10 +32,9 @@ type _DeleteVmDiskCommand DeleteVmDiskCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeleteVmDiskCommand(standaloneVmId int32, vmDiskIds []int32) *DeleteVmDiskCommand {
+func NewDeleteVmDiskCommand(standaloneVmId int32) *DeleteVmDiskCommand {
 	this := DeleteVmDiskCommand{}
 	this.StandaloneVmId = standaloneVmId
-	this.VmDiskIds = vmDiskIds
 	return &this
 }
 
@@ -71,26 +70,34 @@ func (o *DeleteVmDiskCommand) SetStandaloneVmId(v int32) {
 	o.StandaloneVmId = v
 }
 
-// GetVmDiskIds returns the VmDiskIds field value
+// GetVmDiskIds returns the VmDiskIds field value if set, zero value otherwise.
 func (o *DeleteVmDiskCommand) GetVmDiskIds() []int32 {
-	if o == nil {
+	if o == nil || IsNil(o.VmDiskIds) {
 		var ret []int32
 		return ret
 	}
-
 	return o.VmDiskIds
 }
 
-// GetVmDiskIdsOk returns a tuple with the VmDiskIds field value
+// GetVmDiskIdsOk returns a tuple with the VmDiskIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeleteVmDiskCommand) GetVmDiskIdsOk() ([]int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VmDiskIds) {
 		return nil, false
 	}
 	return o.VmDiskIds, true
 }
 
-// SetVmDiskIds sets field value
+// HasVmDiskIds returns a boolean if a field has been set.
+func (o *DeleteVmDiskCommand) HasVmDiskIds() bool {
+	if o != nil && !IsNil(o.VmDiskIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetVmDiskIds gets a reference to the given []int32 and assigns it to the VmDiskIds field.
 func (o *DeleteVmDiskCommand) SetVmDiskIds(v []int32) {
 	o.VmDiskIds = v
 }
@@ -106,7 +113,9 @@ func (o DeleteVmDiskCommand) MarshalJSON() ([]byte, error) {
 func (o DeleteVmDiskCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["standaloneVmId"] = o.StandaloneVmId
-	toSerialize["vmDiskIds"] = o.VmDiskIds
+	if !IsNil(o.VmDiskIds) {
+		toSerialize["vmDiskIds"] = o.VmDiskIds
+	}
 	return toSerialize, nil
 }
 
@@ -116,7 +125,6 @@ func (o *DeleteVmDiskCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"standaloneVmId",
-		"vmDiskIds",
 	}
 
 	allProperties := make(map[string]interface{})

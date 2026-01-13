@@ -22,15 +22,15 @@ var _ MappedNullable = &CostComponent{}
 
 // CostComponent struct for CostComponent
 type CostComponent struct {
-	Name string `json:"name"`
-	Unit string `json:"unit"`
-	HourlyQuantity string `json:"hourlyQuantity"`
-	MonthlyQuantity string `json:"monthlyQuantity"`
-	Price string `json:"price"`
-	HourlyCost string `json:"hourlyCost"`
-	MonthlyCost string `json:"monthlyCost"`
+	Name *string `json:"name,omitempty"`
+	Unit *string `json:"unit,omitempty"`
+	HourlyQuantity *string `json:"hourlyQuantity,omitempty"`
+	MonthlyQuantity *string `json:"monthlyQuantity,omitempty"`
+	Price *string `json:"price,omitempty"`
+	HourlyCost *string `json:"hourlyCost,omitempty"`
+	MonthlyCost *string `json:"monthlyCost,omitempty"`
 	PriceNotFound bool `json:"priceNotFound"`
-	UsageBased NullableBool `json:"usageBased"`
+	UsageBased NullableBool `json:"usageBased,omitempty"`
 }
 
 type _CostComponent CostComponent
@@ -39,17 +39,9 @@ type _CostComponent CostComponent
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCostComponent(name string, unit string, hourlyQuantity string, monthlyQuantity string, price string, hourlyCost string, monthlyCost string, priceNotFound bool, usageBased NullableBool) *CostComponent {
+func NewCostComponent(priceNotFound bool) *CostComponent {
 	this := CostComponent{}
-	this.Name = name
-	this.Unit = unit
-	this.HourlyQuantity = hourlyQuantity
-	this.MonthlyQuantity = monthlyQuantity
-	this.Price = price
-	this.HourlyCost = hourlyCost
-	this.MonthlyCost = monthlyCost
 	this.PriceNotFound = priceNotFound
-	this.UsageBased = usageBased
 	return &this
 }
 
@@ -61,172 +53,228 @@ func NewCostComponentWithDefaults() *CostComponent {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CostComponent) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CostComponent) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CostComponent) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CostComponent) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetUnit returns the Unit field value
+// GetUnit returns the Unit field value if set, zero value otherwise.
 func (o *CostComponent) GetUnit() string {
-	if o == nil {
+	if o == nil || IsNil(o.Unit) {
 		var ret string
 		return ret
 	}
-
-	return o.Unit
+	return *o.Unit
 }
 
-// GetUnitOk returns a tuple with the Unit field value
+// GetUnitOk returns a tuple with the Unit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CostComponent) GetUnitOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Unit) {
 		return nil, false
 	}
-	return &o.Unit, true
+	return o.Unit, true
 }
 
-// SetUnit sets field value
+// HasUnit returns a boolean if a field has been set.
+func (o *CostComponent) HasUnit() bool {
+	if o != nil && !IsNil(o.Unit) {
+		return true
+	}
+
+	return false
+}
+
+// SetUnit gets a reference to the given string and assigns it to the Unit field.
 func (o *CostComponent) SetUnit(v string) {
-	o.Unit = v
+	o.Unit = &v
 }
 
-// GetHourlyQuantity returns the HourlyQuantity field value
+// GetHourlyQuantity returns the HourlyQuantity field value if set, zero value otherwise.
 func (o *CostComponent) GetHourlyQuantity() string {
-	if o == nil {
+	if o == nil || IsNil(o.HourlyQuantity) {
 		var ret string
 		return ret
 	}
-
-	return o.HourlyQuantity
+	return *o.HourlyQuantity
 }
 
-// GetHourlyQuantityOk returns a tuple with the HourlyQuantity field value
+// GetHourlyQuantityOk returns a tuple with the HourlyQuantity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CostComponent) GetHourlyQuantityOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.HourlyQuantity) {
 		return nil, false
 	}
-	return &o.HourlyQuantity, true
+	return o.HourlyQuantity, true
 }
 
-// SetHourlyQuantity sets field value
+// HasHourlyQuantity returns a boolean if a field has been set.
+func (o *CostComponent) HasHourlyQuantity() bool {
+	if o != nil && !IsNil(o.HourlyQuantity) {
+		return true
+	}
+
+	return false
+}
+
+// SetHourlyQuantity gets a reference to the given string and assigns it to the HourlyQuantity field.
 func (o *CostComponent) SetHourlyQuantity(v string) {
-	o.HourlyQuantity = v
+	o.HourlyQuantity = &v
 }
 
-// GetMonthlyQuantity returns the MonthlyQuantity field value
+// GetMonthlyQuantity returns the MonthlyQuantity field value if set, zero value otherwise.
 func (o *CostComponent) GetMonthlyQuantity() string {
-	if o == nil {
+	if o == nil || IsNil(o.MonthlyQuantity) {
 		var ret string
 		return ret
 	}
-
-	return o.MonthlyQuantity
+	return *o.MonthlyQuantity
 }
 
-// GetMonthlyQuantityOk returns a tuple with the MonthlyQuantity field value
+// GetMonthlyQuantityOk returns a tuple with the MonthlyQuantity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CostComponent) GetMonthlyQuantityOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.MonthlyQuantity) {
 		return nil, false
 	}
-	return &o.MonthlyQuantity, true
+	return o.MonthlyQuantity, true
 }
 
-// SetMonthlyQuantity sets field value
+// HasMonthlyQuantity returns a boolean if a field has been set.
+func (o *CostComponent) HasMonthlyQuantity() bool {
+	if o != nil && !IsNil(o.MonthlyQuantity) {
+		return true
+	}
+
+	return false
+}
+
+// SetMonthlyQuantity gets a reference to the given string and assigns it to the MonthlyQuantity field.
 func (o *CostComponent) SetMonthlyQuantity(v string) {
-	o.MonthlyQuantity = v
+	o.MonthlyQuantity = &v
 }
 
-// GetPrice returns the Price field value
+// GetPrice returns the Price field value if set, zero value otherwise.
 func (o *CostComponent) GetPrice() string {
-	if o == nil {
+	if o == nil || IsNil(o.Price) {
 		var ret string
 		return ret
 	}
-
-	return o.Price
+	return *o.Price
 }
 
-// GetPriceOk returns a tuple with the Price field value
+// GetPriceOk returns a tuple with the Price field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CostComponent) GetPriceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Price) {
 		return nil, false
 	}
-	return &o.Price, true
+	return o.Price, true
 }
 
-// SetPrice sets field value
+// HasPrice returns a boolean if a field has been set.
+func (o *CostComponent) HasPrice() bool {
+	if o != nil && !IsNil(o.Price) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrice gets a reference to the given string and assigns it to the Price field.
 func (o *CostComponent) SetPrice(v string) {
-	o.Price = v
+	o.Price = &v
 }
 
-// GetHourlyCost returns the HourlyCost field value
+// GetHourlyCost returns the HourlyCost field value if set, zero value otherwise.
 func (o *CostComponent) GetHourlyCost() string {
-	if o == nil {
+	if o == nil || IsNil(o.HourlyCost) {
 		var ret string
 		return ret
 	}
-
-	return o.HourlyCost
+	return *o.HourlyCost
 }
 
-// GetHourlyCostOk returns a tuple with the HourlyCost field value
+// GetHourlyCostOk returns a tuple with the HourlyCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CostComponent) GetHourlyCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.HourlyCost) {
 		return nil, false
 	}
-	return &o.HourlyCost, true
+	return o.HourlyCost, true
 }
 
-// SetHourlyCost sets field value
+// HasHourlyCost returns a boolean if a field has been set.
+func (o *CostComponent) HasHourlyCost() bool {
+	if o != nil && !IsNil(o.HourlyCost) {
+		return true
+	}
+
+	return false
+}
+
+// SetHourlyCost gets a reference to the given string and assigns it to the HourlyCost field.
 func (o *CostComponent) SetHourlyCost(v string) {
-	o.HourlyCost = v
+	o.HourlyCost = &v
 }
 
-// GetMonthlyCost returns the MonthlyCost field value
+// GetMonthlyCost returns the MonthlyCost field value if set, zero value otherwise.
 func (o *CostComponent) GetMonthlyCost() string {
-	if o == nil {
+	if o == nil || IsNil(o.MonthlyCost) {
 		var ret string
 		return ret
 	}
-
-	return o.MonthlyCost
+	return *o.MonthlyCost
 }
 
-// GetMonthlyCostOk returns a tuple with the MonthlyCost field value
+// GetMonthlyCostOk returns a tuple with the MonthlyCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CostComponent) GetMonthlyCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.MonthlyCost) {
 		return nil, false
 	}
-	return &o.MonthlyCost, true
+	return o.MonthlyCost, true
 }
 
-// SetMonthlyCost sets field value
+// HasMonthlyCost returns a boolean if a field has been set.
+func (o *CostComponent) HasMonthlyCost() bool {
+	if o != nil && !IsNil(o.MonthlyCost) {
+		return true
+	}
+
+	return false
+}
+
+// SetMonthlyCost gets a reference to the given string and assigns it to the MonthlyCost field.
 func (o *CostComponent) SetMonthlyCost(v string) {
-	o.MonthlyCost = v
+	o.MonthlyCost = &v
 }
 
 // GetPriceNotFound returns the PriceNotFound field value
@@ -253,18 +301,16 @@ func (o *CostComponent) SetPriceNotFound(v bool) {
 	o.PriceNotFound = v
 }
 
-// GetUsageBased returns the UsageBased field value
-// If the value is explicit nil, the zero value for bool will be returned
+// GetUsageBased returns the UsageBased field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CostComponent) GetUsageBased() bool {
-	if o == nil || o.UsageBased.Get() == nil {
+	if o == nil || IsNil(o.UsageBased.Get()) {
 		var ret bool
 		return ret
 	}
-
 	return *o.UsageBased.Get()
 }
 
-// GetUsageBasedOk returns a tuple with the UsageBased field value
+// GetUsageBasedOk returns a tuple with the UsageBased field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CostComponent) GetUsageBasedOk() (*bool, bool) {
@@ -274,9 +320,27 @@ func (o *CostComponent) GetUsageBasedOk() (*bool, bool) {
 	return o.UsageBased.Get(), o.UsageBased.IsSet()
 }
 
-// SetUsageBased sets field value
+// HasUsageBased returns a boolean if a field has been set.
+func (o *CostComponent) HasUsageBased() bool {
+	if o != nil && o.UsageBased.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageBased gets a reference to the given NullableBool and assigns it to the UsageBased field.
 func (o *CostComponent) SetUsageBased(v bool) {
 	o.UsageBased.Set(&v)
+}
+// SetUsageBasedNil sets the value for UsageBased to be an explicit nil
+func (o *CostComponent) SetUsageBasedNil() {
+	o.UsageBased.Set(nil)
+}
+
+// UnsetUsageBased ensures that no value is present for UsageBased, not even an explicit nil
+func (o *CostComponent) UnsetUsageBased() {
+	o.UsageBased.Unset()
 }
 
 func (o CostComponent) MarshalJSON() ([]byte, error) {
@@ -289,15 +353,31 @@ func (o CostComponent) MarshalJSON() ([]byte, error) {
 
 func (o CostComponent) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["unit"] = o.Unit
-	toSerialize["hourlyQuantity"] = o.HourlyQuantity
-	toSerialize["monthlyQuantity"] = o.MonthlyQuantity
-	toSerialize["price"] = o.Price
-	toSerialize["hourlyCost"] = o.HourlyCost
-	toSerialize["monthlyCost"] = o.MonthlyCost
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Unit) {
+		toSerialize["unit"] = o.Unit
+	}
+	if !IsNil(o.HourlyQuantity) {
+		toSerialize["hourlyQuantity"] = o.HourlyQuantity
+	}
+	if !IsNil(o.MonthlyQuantity) {
+		toSerialize["monthlyQuantity"] = o.MonthlyQuantity
+	}
+	if !IsNil(o.Price) {
+		toSerialize["price"] = o.Price
+	}
+	if !IsNil(o.HourlyCost) {
+		toSerialize["hourlyCost"] = o.HourlyCost
+	}
+	if !IsNil(o.MonthlyCost) {
+		toSerialize["monthlyCost"] = o.MonthlyCost
+	}
 	toSerialize["priceNotFound"] = o.PriceNotFound
-	toSerialize["usageBased"] = o.UsageBased.Get()
+	if o.UsageBased.IsSet() {
+		toSerialize["usageBased"] = o.UsageBased.Get()
+	}
 	return toSerialize, nil
 }
 
@@ -306,15 +386,7 @@ func (o *CostComponent) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
-		"unit",
-		"hourlyQuantity",
-		"monthlyQuantity",
-		"price",
-		"hourlyCost",
-		"monthlyCost",
 		"priceNotFound",
-		"usageBased",
 	}
 
 	allProperties := make(map[string]interface{})

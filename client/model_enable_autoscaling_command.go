@@ -26,7 +26,7 @@ type EnableAutoscalingCommand struct {
 	MinSize int32 `json:"minSize"`
 	MaxSize int32 `json:"maxSize"`
 	DiskSize float64 `json:"diskSize"`
-	Flavor string `json:"flavor"`
+	Flavor *string `json:"flavor,omitempty"`
 	SpotEnabled bool `json:"spotEnabled"`
 }
 
@@ -36,13 +36,12 @@ type _EnableAutoscalingCommand EnableAutoscalingCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnableAutoscalingCommand(id int32, minSize int32, maxSize int32, diskSize float64, flavor string, spotEnabled bool) *EnableAutoscalingCommand {
+func NewEnableAutoscalingCommand(id int32, minSize int32, maxSize int32, diskSize float64, spotEnabled bool) *EnableAutoscalingCommand {
 	this := EnableAutoscalingCommand{}
 	this.Id = id
 	this.MinSize = minSize
 	this.MaxSize = maxSize
 	this.DiskSize = diskSize
-	this.Flavor = flavor
 	this.SpotEnabled = spotEnabled
 	return &this
 }
@@ -151,28 +150,36 @@ func (o *EnableAutoscalingCommand) SetDiskSize(v float64) {
 	o.DiskSize = v
 }
 
-// GetFlavor returns the Flavor field value
+// GetFlavor returns the Flavor field value if set, zero value otherwise.
 func (o *EnableAutoscalingCommand) GetFlavor() string {
-	if o == nil {
+	if o == nil || IsNil(o.Flavor) {
 		var ret string
 		return ret
 	}
-
-	return o.Flavor
+	return *o.Flavor
 }
 
-// GetFlavorOk returns a tuple with the Flavor field value
+// GetFlavorOk returns a tuple with the Flavor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnableAutoscalingCommand) GetFlavorOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Flavor) {
 		return nil, false
 	}
-	return &o.Flavor, true
+	return o.Flavor, true
 }
 
-// SetFlavor sets field value
+// HasFlavor returns a boolean if a field has been set.
+func (o *EnableAutoscalingCommand) HasFlavor() bool {
+	if o != nil && !IsNil(o.Flavor) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlavor gets a reference to the given string and assigns it to the Flavor field.
 func (o *EnableAutoscalingCommand) SetFlavor(v string) {
-	o.Flavor = v
+	o.Flavor = &v
 }
 
 // GetSpotEnabled returns the SpotEnabled field value
@@ -213,7 +220,9 @@ func (o EnableAutoscalingCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize["minSize"] = o.MinSize
 	toSerialize["maxSize"] = o.MaxSize
 	toSerialize["diskSize"] = o.DiskSize
-	toSerialize["flavor"] = o.Flavor
+	if !IsNil(o.Flavor) {
+		toSerialize["flavor"] = o.Flavor
+	}
 	toSerialize["spotEnabled"] = o.SpotEnabled
 	return toSerialize, nil
 }
@@ -227,7 +236,6 @@ func (o *EnableAutoscalingCommand) UnmarshalJSON(data []byte) (err error) {
 		"minSize",
 		"maxSize",
 		"diskSize",
-		"flavor",
 		"spotEnabled",
 	}
 

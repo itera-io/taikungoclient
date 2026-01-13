@@ -22,10 +22,10 @@ var _ MappedNullable = &CheckOpenstackCommand{}
 
 // CheckOpenstackCommand struct for CheckOpenstackCommand
 type CheckOpenstackCommand struct {
-	OpenStackUser string `json:"openStackUser"`
-	OpenStackPassword string `json:"openStackPassword"`
-	OpenStackUrl string `json:"openStackUrl"`
-	OpenStackDomain string `json:"openStackDomain"`
+	OpenStackUser *string `json:"openStackUser,omitempty"`
+	OpenStackPassword *string `json:"openStackPassword,omitempty"`
+	OpenStackUrl *string `json:"openStackUrl,omitempty"`
+	OpenStackDomain *string `json:"openStackDomain,omitempty"`
 	IsAdmin bool `json:"isAdmin"`
 	ApplicationCredEnabled NullableBool `json:"applicationCredEnabled,omitempty"`
 }
@@ -36,12 +36,8 @@ type _CheckOpenstackCommand CheckOpenstackCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCheckOpenstackCommand(openStackUser string, openStackPassword string, openStackUrl string, openStackDomain string, isAdmin bool) *CheckOpenstackCommand {
+func NewCheckOpenstackCommand(isAdmin bool) *CheckOpenstackCommand {
 	this := CheckOpenstackCommand{}
-	this.OpenStackUser = openStackUser
-	this.OpenStackPassword = openStackPassword
-	this.OpenStackUrl = openStackUrl
-	this.OpenStackDomain = openStackDomain
 	this.IsAdmin = isAdmin
 	return &this
 }
@@ -54,100 +50,132 @@ func NewCheckOpenstackCommandWithDefaults() *CheckOpenstackCommand {
 	return &this
 }
 
-// GetOpenStackUser returns the OpenStackUser field value
+// GetOpenStackUser returns the OpenStackUser field value if set, zero value otherwise.
 func (o *CheckOpenstackCommand) GetOpenStackUser() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackUser) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackUser
+	return *o.OpenStackUser
 }
 
-// GetOpenStackUserOk returns a tuple with the OpenStackUser field value
+// GetOpenStackUserOk returns a tuple with the OpenStackUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CheckOpenstackCommand) GetOpenStackUserOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackUser) {
 		return nil, false
 	}
-	return &o.OpenStackUser, true
+	return o.OpenStackUser, true
 }
 
-// SetOpenStackUser sets field value
+// HasOpenStackUser returns a boolean if a field has been set.
+func (o *CheckOpenstackCommand) HasOpenStackUser() bool {
+	if o != nil && !IsNil(o.OpenStackUser) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackUser gets a reference to the given string and assigns it to the OpenStackUser field.
 func (o *CheckOpenstackCommand) SetOpenStackUser(v string) {
-	o.OpenStackUser = v
+	o.OpenStackUser = &v
 }
 
-// GetOpenStackPassword returns the OpenStackPassword field value
+// GetOpenStackPassword returns the OpenStackPassword field value if set, zero value otherwise.
 func (o *CheckOpenstackCommand) GetOpenStackPassword() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackPassword) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackPassword
+	return *o.OpenStackPassword
 }
 
-// GetOpenStackPasswordOk returns a tuple with the OpenStackPassword field value
+// GetOpenStackPasswordOk returns a tuple with the OpenStackPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CheckOpenstackCommand) GetOpenStackPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackPassword) {
 		return nil, false
 	}
-	return &o.OpenStackPassword, true
+	return o.OpenStackPassword, true
 }
 
-// SetOpenStackPassword sets field value
+// HasOpenStackPassword returns a boolean if a field has been set.
+func (o *CheckOpenstackCommand) HasOpenStackPassword() bool {
+	if o != nil && !IsNil(o.OpenStackPassword) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackPassword gets a reference to the given string and assigns it to the OpenStackPassword field.
 func (o *CheckOpenstackCommand) SetOpenStackPassword(v string) {
-	o.OpenStackPassword = v
+	o.OpenStackPassword = &v
 }
 
-// GetOpenStackUrl returns the OpenStackUrl field value
+// GetOpenStackUrl returns the OpenStackUrl field value if set, zero value otherwise.
 func (o *CheckOpenstackCommand) GetOpenStackUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackUrl) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackUrl
+	return *o.OpenStackUrl
 }
 
-// GetOpenStackUrlOk returns a tuple with the OpenStackUrl field value
+// GetOpenStackUrlOk returns a tuple with the OpenStackUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CheckOpenstackCommand) GetOpenStackUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackUrl) {
 		return nil, false
 	}
-	return &o.OpenStackUrl, true
+	return o.OpenStackUrl, true
 }
 
-// SetOpenStackUrl sets field value
+// HasOpenStackUrl returns a boolean if a field has been set.
+func (o *CheckOpenstackCommand) HasOpenStackUrl() bool {
+	if o != nil && !IsNil(o.OpenStackUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackUrl gets a reference to the given string and assigns it to the OpenStackUrl field.
 func (o *CheckOpenstackCommand) SetOpenStackUrl(v string) {
-	o.OpenStackUrl = v
+	o.OpenStackUrl = &v
 }
 
-// GetOpenStackDomain returns the OpenStackDomain field value
+// GetOpenStackDomain returns the OpenStackDomain field value if set, zero value otherwise.
 func (o *CheckOpenstackCommand) GetOpenStackDomain() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackDomain) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackDomain
+	return *o.OpenStackDomain
 }
 
-// GetOpenStackDomainOk returns a tuple with the OpenStackDomain field value
+// GetOpenStackDomainOk returns a tuple with the OpenStackDomain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CheckOpenstackCommand) GetOpenStackDomainOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackDomain) {
 		return nil, false
 	}
-	return &o.OpenStackDomain, true
+	return o.OpenStackDomain, true
 }
 
-// SetOpenStackDomain sets field value
+// HasOpenStackDomain returns a boolean if a field has been set.
+func (o *CheckOpenstackCommand) HasOpenStackDomain() bool {
+	if o != nil && !IsNil(o.OpenStackDomain) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackDomain gets a reference to the given string and assigns it to the OpenStackDomain field.
 func (o *CheckOpenstackCommand) SetOpenStackDomain(v string) {
-	o.OpenStackDomain = v
+	o.OpenStackDomain = &v
 }
 
 // GetIsAdmin returns the IsAdmin field value
@@ -226,10 +254,18 @@ func (o CheckOpenstackCommand) MarshalJSON() ([]byte, error) {
 
 func (o CheckOpenstackCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["openStackUser"] = o.OpenStackUser
-	toSerialize["openStackPassword"] = o.OpenStackPassword
-	toSerialize["openStackUrl"] = o.OpenStackUrl
-	toSerialize["openStackDomain"] = o.OpenStackDomain
+	if !IsNil(o.OpenStackUser) {
+		toSerialize["openStackUser"] = o.OpenStackUser
+	}
+	if !IsNil(o.OpenStackPassword) {
+		toSerialize["openStackPassword"] = o.OpenStackPassword
+	}
+	if !IsNil(o.OpenStackUrl) {
+		toSerialize["openStackUrl"] = o.OpenStackUrl
+	}
+	if !IsNil(o.OpenStackDomain) {
+		toSerialize["openStackDomain"] = o.OpenStackDomain
+	}
 	toSerialize["isAdmin"] = o.IsAdmin
 	if o.ApplicationCredEnabled.IsSet() {
 		toSerialize["applicationCredEnabled"] = o.ApplicationCredEnabled.Get()
@@ -242,10 +278,6 @@ func (o *CheckOpenstackCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"openStackUser",
-		"openStackPassword",
-		"openStackUrl",
-		"openStackDomain",
 		"isAdmin",
 	}
 

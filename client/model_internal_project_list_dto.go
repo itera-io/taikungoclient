@@ -23,20 +23,20 @@ var _ MappedNullable = &InternalProjectListDto{}
 // InternalProjectListDto struct for InternalProjectListDto
 type InternalProjectListDto struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
-	Token NullableString `json:"token"`
+	Name *string `json:"name,omitempty"`
+	Token NullableString `json:"token,omitempty"`
 	Status int32 `json:"status"`
 	OrganizationId int32 `json:"organizationId"`
 	Health int32 `json:"health"`
 	ImportClusterType int32 `json:"importClusterType"`
-	KubernetesVersion NullableString `json:"kubernetesVersion"`
-	AccessIp NullableString `json:"accessIp"`
+	KubernetesVersion NullableString `json:"kubernetesVersion,omitempty"`
+	AccessIp NullableString `json:"accessIp,omitempty"`
 	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
-	Username NullableString `json:"username"`
-	Password NullableString `json:"password"`
-	PrometheusUrl NullableString `json:"prometheusUrl"`
-	AlertManagerUrl NullableString `json:"alertManagerUrl"`
-	LokiUrl NullableString `json:"lokiUrl"`
+	Username NullableString `json:"username,omitempty"`
+	Password NullableString `json:"password,omitempty"`
+	PrometheusUrl NullableString `json:"prometheusUrl,omitempty"`
+	AlertManagerUrl NullableString `json:"alertManagerUrl,omitempty"`
+	LokiUrl NullableString `json:"lokiUrl,omitempty"`
 }
 
 type _InternalProjectListDto InternalProjectListDto
@@ -45,23 +45,14 @@ type _InternalProjectListDto InternalProjectListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInternalProjectListDto(id int32, name string, token NullableString, status int32, organizationId int32, health int32, importClusterType int32, kubernetesVersion NullableString, accessIp NullableString, isMonitoringEnabled bool, username NullableString, password NullableString, prometheusUrl NullableString, alertManagerUrl NullableString, lokiUrl NullableString) *InternalProjectListDto {
+func NewInternalProjectListDto(id int32, status int32, organizationId int32, health int32, importClusterType int32, isMonitoringEnabled bool) *InternalProjectListDto {
 	this := InternalProjectListDto{}
 	this.Id = id
-	this.Name = name
-	this.Token = token
 	this.Status = status
 	this.OrganizationId = organizationId
 	this.Health = health
 	this.ImportClusterType = importClusterType
-	this.KubernetesVersion = kubernetesVersion
-	this.AccessIp = accessIp
 	this.IsMonitoringEnabled = isMonitoringEnabled
-	this.Username = username
-	this.Password = password
-	this.PrometheusUrl = prometheusUrl
-	this.AlertManagerUrl = alertManagerUrl
-	this.LokiUrl = lokiUrl
 	return &this
 }
 
@@ -97,42 +88,48 @@ func (o *InternalProjectListDto) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *InternalProjectListDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InternalProjectListDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *InternalProjectListDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *InternalProjectListDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetToken returns the Token field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetToken returns the Token field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InternalProjectListDto) GetToken() string {
-	if o == nil || o.Token.Get() == nil {
+	if o == nil || IsNil(o.Token.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.Token.Get()
 }
 
-// GetTokenOk returns a tuple with the Token field value
+// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InternalProjectListDto) GetTokenOk() (*string, bool) {
@@ -142,9 +139,27 @@ func (o *InternalProjectListDto) GetTokenOk() (*string, bool) {
 	return o.Token.Get(), o.Token.IsSet()
 }
 
-// SetToken sets field value
+// HasToken returns a boolean if a field has been set.
+func (o *InternalProjectListDto) HasToken() bool {
+	if o != nil && o.Token.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetToken gets a reference to the given NullableString and assigns it to the Token field.
 func (o *InternalProjectListDto) SetToken(v string) {
 	o.Token.Set(&v)
+}
+// SetTokenNil sets the value for Token to be an explicit nil
+func (o *InternalProjectListDto) SetTokenNil() {
+	o.Token.Set(nil)
+}
+
+// UnsetToken ensures that no value is present for Token, not even an explicit nil
+func (o *InternalProjectListDto) UnsetToken() {
+	o.Token.Unset()
 }
 
 // GetStatus returns the Status field value
@@ -243,18 +258,16 @@ func (o *InternalProjectListDto) SetImportClusterType(v int32) {
 	o.ImportClusterType = v
 }
 
-// GetKubernetesVersion returns the KubernetesVersion field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetKubernetesVersion returns the KubernetesVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InternalProjectListDto) GetKubernetesVersion() string {
-	if o == nil || o.KubernetesVersion.Get() == nil {
+	if o == nil || IsNil(o.KubernetesVersion.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.KubernetesVersion.Get()
 }
 
-// GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value
+// GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InternalProjectListDto) GetKubernetesVersionOk() (*string, bool) {
@@ -264,23 +277,39 @@ func (o *InternalProjectListDto) GetKubernetesVersionOk() (*string, bool) {
 	return o.KubernetesVersion.Get(), o.KubernetesVersion.IsSet()
 }
 
-// SetKubernetesVersion sets field value
+// HasKubernetesVersion returns a boolean if a field has been set.
+func (o *InternalProjectListDto) HasKubernetesVersion() bool {
+	if o != nil && o.KubernetesVersion.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetKubernetesVersion gets a reference to the given NullableString and assigns it to the KubernetesVersion field.
 func (o *InternalProjectListDto) SetKubernetesVersion(v string) {
 	o.KubernetesVersion.Set(&v)
 }
+// SetKubernetesVersionNil sets the value for KubernetesVersion to be an explicit nil
+func (o *InternalProjectListDto) SetKubernetesVersionNil() {
+	o.KubernetesVersion.Set(nil)
+}
 
-// GetAccessIp returns the AccessIp field value
-// If the value is explicit nil, the zero value for string will be returned
+// UnsetKubernetesVersion ensures that no value is present for KubernetesVersion, not even an explicit nil
+func (o *InternalProjectListDto) UnsetKubernetesVersion() {
+	o.KubernetesVersion.Unset()
+}
+
+// GetAccessIp returns the AccessIp field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InternalProjectListDto) GetAccessIp() string {
-	if o == nil || o.AccessIp.Get() == nil {
+	if o == nil || IsNil(o.AccessIp.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.AccessIp.Get()
 }
 
-// GetAccessIpOk returns a tuple with the AccessIp field value
+// GetAccessIpOk returns a tuple with the AccessIp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InternalProjectListDto) GetAccessIpOk() (*string, bool) {
@@ -290,9 +319,27 @@ func (o *InternalProjectListDto) GetAccessIpOk() (*string, bool) {
 	return o.AccessIp.Get(), o.AccessIp.IsSet()
 }
 
-// SetAccessIp sets field value
+// HasAccessIp returns a boolean if a field has been set.
+func (o *InternalProjectListDto) HasAccessIp() bool {
+	if o != nil && o.AccessIp.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessIp gets a reference to the given NullableString and assigns it to the AccessIp field.
 func (o *InternalProjectListDto) SetAccessIp(v string) {
 	o.AccessIp.Set(&v)
+}
+// SetAccessIpNil sets the value for AccessIp to be an explicit nil
+func (o *InternalProjectListDto) SetAccessIpNil() {
+	o.AccessIp.Set(nil)
+}
+
+// UnsetAccessIp ensures that no value is present for AccessIp, not even an explicit nil
+func (o *InternalProjectListDto) UnsetAccessIp() {
+	o.AccessIp.Unset()
 }
 
 // GetIsMonitoringEnabled returns the IsMonitoringEnabled field value
@@ -319,18 +366,16 @@ func (o *InternalProjectListDto) SetIsMonitoringEnabled(v bool) {
 	o.IsMonitoringEnabled = v
 }
 
-// GetUsername returns the Username field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InternalProjectListDto) GetUsername() string {
-	if o == nil || o.Username.Get() == nil {
+	if o == nil || IsNil(o.Username.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.Username.Get()
 }
 
-// GetUsernameOk returns a tuple with the Username field value
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InternalProjectListDto) GetUsernameOk() (*string, bool) {
@@ -340,23 +385,39 @@ func (o *InternalProjectListDto) GetUsernameOk() (*string, bool) {
 	return o.Username.Get(), o.Username.IsSet()
 }
 
-// SetUsername sets field value
+// HasUsername returns a boolean if a field has been set.
+func (o *InternalProjectListDto) HasUsername() bool {
+	if o != nil && o.Username.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given NullableString and assigns it to the Username field.
 func (o *InternalProjectListDto) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+// SetUsernameNil sets the value for Username to be an explicit nil
+func (o *InternalProjectListDto) SetUsernameNil() {
+	o.Username.Set(nil)
+}
 
-// GetPassword returns the Password field value
-// If the value is explicit nil, the zero value for string will be returned
+// UnsetUsername ensures that no value is present for Username, not even an explicit nil
+func (o *InternalProjectListDto) UnsetUsername() {
+	o.Username.Unset()
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InternalProjectListDto) GetPassword() string {
-	if o == nil || o.Password.Get() == nil {
+	if o == nil || IsNil(o.Password.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.Password.Get()
 }
 
-// GetPasswordOk returns a tuple with the Password field value
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InternalProjectListDto) GetPasswordOk() (*string, bool) {
@@ -366,23 +427,39 @@ func (o *InternalProjectListDto) GetPasswordOk() (*string, bool) {
 	return o.Password.Get(), o.Password.IsSet()
 }
 
-// SetPassword sets field value
+// HasPassword returns a boolean if a field has been set.
+func (o *InternalProjectListDto) HasPassword() bool {
+	if o != nil && o.Password.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given NullableString and assigns it to the Password field.
 func (o *InternalProjectListDto) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+// SetPasswordNil sets the value for Password to be an explicit nil
+func (o *InternalProjectListDto) SetPasswordNil() {
+	o.Password.Set(nil)
+}
 
-// GetPrometheusUrl returns the PrometheusUrl field value
-// If the value is explicit nil, the zero value for string will be returned
+// UnsetPassword ensures that no value is present for Password, not even an explicit nil
+func (o *InternalProjectListDto) UnsetPassword() {
+	o.Password.Unset()
+}
+
+// GetPrometheusUrl returns the PrometheusUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InternalProjectListDto) GetPrometheusUrl() string {
-	if o == nil || o.PrometheusUrl.Get() == nil {
+	if o == nil || IsNil(o.PrometheusUrl.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.PrometheusUrl.Get()
 }
 
-// GetPrometheusUrlOk returns a tuple with the PrometheusUrl field value
+// GetPrometheusUrlOk returns a tuple with the PrometheusUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InternalProjectListDto) GetPrometheusUrlOk() (*string, bool) {
@@ -392,23 +469,39 @@ func (o *InternalProjectListDto) GetPrometheusUrlOk() (*string, bool) {
 	return o.PrometheusUrl.Get(), o.PrometheusUrl.IsSet()
 }
 
-// SetPrometheusUrl sets field value
+// HasPrometheusUrl returns a boolean if a field has been set.
+func (o *InternalProjectListDto) HasPrometheusUrl() bool {
+	if o != nil && o.PrometheusUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPrometheusUrl gets a reference to the given NullableString and assigns it to the PrometheusUrl field.
 func (o *InternalProjectListDto) SetPrometheusUrl(v string) {
 	o.PrometheusUrl.Set(&v)
 }
+// SetPrometheusUrlNil sets the value for PrometheusUrl to be an explicit nil
+func (o *InternalProjectListDto) SetPrometheusUrlNil() {
+	o.PrometheusUrl.Set(nil)
+}
 
-// GetAlertManagerUrl returns the AlertManagerUrl field value
-// If the value is explicit nil, the zero value for string will be returned
+// UnsetPrometheusUrl ensures that no value is present for PrometheusUrl, not even an explicit nil
+func (o *InternalProjectListDto) UnsetPrometheusUrl() {
+	o.PrometheusUrl.Unset()
+}
+
+// GetAlertManagerUrl returns the AlertManagerUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InternalProjectListDto) GetAlertManagerUrl() string {
-	if o == nil || o.AlertManagerUrl.Get() == nil {
+	if o == nil || IsNil(o.AlertManagerUrl.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.AlertManagerUrl.Get()
 }
 
-// GetAlertManagerUrlOk returns a tuple with the AlertManagerUrl field value
+// GetAlertManagerUrlOk returns a tuple with the AlertManagerUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InternalProjectListDto) GetAlertManagerUrlOk() (*string, bool) {
@@ -418,23 +511,39 @@ func (o *InternalProjectListDto) GetAlertManagerUrlOk() (*string, bool) {
 	return o.AlertManagerUrl.Get(), o.AlertManagerUrl.IsSet()
 }
 
-// SetAlertManagerUrl sets field value
+// HasAlertManagerUrl returns a boolean if a field has been set.
+func (o *InternalProjectListDto) HasAlertManagerUrl() bool {
+	if o != nil && o.AlertManagerUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAlertManagerUrl gets a reference to the given NullableString and assigns it to the AlertManagerUrl field.
 func (o *InternalProjectListDto) SetAlertManagerUrl(v string) {
 	o.AlertManagerUrl.Set(&v)
 }
+// SetAlertManagerUrlNil sets the value for AlertManagerUrl to be an explicit nil
+func (o *InternalProjectListDto) SetAlertManagerUrlNil() {
+	o.AlertManagerUrl.Set(nil)
+}
 
-// GetLokiUrl returns the LokiUrl field value
-// If the value is explicit nil, the zero value for string will be returned
+// UnsetAlertManagerUrl ensures that no value is present for AlertManagerUrl, not even an explicit nil
+func (o *InternalProjectListDto) UnsetAlertManagerUrl() {
+	o.AlertManagerUrl.Unset()
+}
+
+// GetLokiUrl returns the LokiUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InternalProjectListDto) GetLokiUrl() string {
-	if o == nil || o.LokiUrl.Get() == nil {
+	if o == nil || IsNil(o.LokiUrl.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.LokiUrl.Get()
 }
 
-// GetLokiUrlOk returns a tuple with the LokiUrl field value
+// GetLokiUrlOk returns a tuple with the LokiUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InternalProjectListDto) GetLokiUrlOk() (*string, bool) {
@@ -444,9 +553,27 @@ func (o *InternalProjectListDto) GetLokiUrlOk() (*string, bool) {
 	return o.LokiUrl.Get(), o.LokiUrl.IsSet()
 }
 
-// SetLokiUrl sets field value
+// HasLokiUrl returns a boolean if a field has been set.
+func (o *InternalProjectListDto) HasLokiUrl() bool {
+	if o != nil && o.LokiUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLokiUrl gets a reference to the given NullableString and assigns it to the LokiUrl field.
 func (o *InternalProjectListDto) SetLokiUrl(v string) {
 	o.LokiUrl.Set(&v)
+}
+// SetLokiUrlNil sets the value for LokiUrl to be an explicit nil
+func (o *InternalProjectListDto) SetLokiUrlNil() {
+	o.LokiUrl.Set(nil)
+}
+
+// UnsetLokiUrl ensures that no value is present for LokiUrl, not even an explicit nil
+func (o *InternalProjectListDto) UnsetLokiUrl() {
+	o.LokiUrl.Unset()
 }
 
 func (o InternalProjectListDto) MarshalJSON() ([]byte, error) {
@@ -460,20 +587,38 @@ func (o InternalProjectListDto) MarshalJSON() ([]byte, error) {
 func (o InternalProjectListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
-	toSerialize["token"] = o.Token.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if o.Token.IsSet() {
+		toSerialize["token"] = o.Token.Get()
+	}
 	toSerialize["status"] = o.Status
 	toSerialize["organizationId"] = o.OrganizationId
 	toSerialize["health"] = o.Health
 	toSerialize["importClusterType"] = o.ImportClusterType
-	toSerialize["kubernetesVersion"] = o.KubernetesVersion.Get()
-	toSerialize["accessIp"] = o.AccessIp.Get()
+	if o.KubernetesVersion.IsSet() {
+		toSerialize["kubernetesVersion"] = o.KubernetesVersion.Get()
+	}
+	if o.AccessIp.IsSet() {
+		toSerialize["accessIp"] = o.AccessIp.Get()
+	}
 	toSerialize["isMonitoringEnabled"] = o.IsMonitoringEnabled
-	toSerialize["username"] = o.Username.Get()
-	toSerialize["password"] = o.Password.Get()
-	toSerialize["prometheusUrl"] = o.PrometheusUrl.Get()
-	toSerialize["alertManagerUrl"] = o.AlertManagerUrl.Get()
-	toSerialize["lokiUrl"] = o.LokiUrl.Get()
+	if o.Username.IsSet() {
+		toSerialize["username"] = o.Username.Get()
+	}
+	if o.Password.IsSet() {
+		toSerialize["password"] = o.Password.Get()
+	}
+	if o.PrometheusUrl.IsSet() {
+		toSerialize["prometheusUrl"] = o.PrometheusUrl.Get()
+	}
+	if o.AlertManagerUrl.IsSet() {
+		toSerialize["alertManagerUrl"] = o.AlertManagerUrl.Get()
+	}
+	if o.LokiUrl.IsSet() {
+		toSerialize["lokiUrl"] = o.LokiUrl.Get()
+	}
 	return toSerialize, nil
 }
 
@@ -483,20 +628,11 @@ func (o *InternalProjectListDto) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
-		"token",
 		"status",
 		"organizationId",
 		"health",
 		"importClusterType",
-		"kubernetesVersion",
-		"accessIp",
 		"isMonitoringEnabled",
-		"username",
-		"password",
-		"prometheusUrl",
-		"alertManagerUrl",
-		"lokiUrl",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the AwsEksClusterDto type satisfies the MappedNullable interface at compile time
@@ -22,22 +20,17 @@ var _ MappedNullable = &AwsEksClusterDto{}
 
 // AwsEksClusterDto struct for AwsEksClusterDto
 type AwsEksClusterDto struct {
-	Token string `json:"token"`
-	TargetUrl string `json:"targetUrl"`
-	Certificate string `json:"certificate"`
+	Token *string `json:"token,omitempty"`
+	TargetUrl *string `json:"targetUrl,omitempty"`
+	Certificate *string `json:"certificate,omitempty"`
 }
-
-type _AwsEksClusterDto AwsEksClusterDto
 
 // NewAwsEksClusterDto instantiates a new AwsEksClusterDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAwsEksClusterDto(token string, targetUrl string, certificate string) *AwsEksClusterDto {
+func NewAwsEksClusterDto() *AwsEksClusterDto {
 	this := AwsEksClusterDto{}
-	this.Token = token
-	this.TargetUrl = targetUrl
-	this.Certificate = certificate
 	return &this
 }
 
@@ -49,76 +42,100 @@ func NewAwsEksClusterDtoWithDefaults() *AwsEksClusterDto {
 	return &this
 }
 
-// GetToken returns the Token field value
+// GetToken returns the Token field value if set, zero value otherwise.
 func (o *AwsEksClusterDto) GetToken() string {
-	if o == nil {
+	if o == nil || IsNil(o.Token) {
 		var ret string
 		return ret
 	}
-
-	return o.Token
+	return *o.Token
 }
 
-// GetTokenOk returns a tuple with the Token field value
+// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AwsEksClusterDto) GetTokenOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Token) {
 		return nil, false
 	}
-	return &o.Token, true
+	return o.Token, true
 }
 
-// SetToken sets field value
+// HasToken returns a boolean if a field has been set.
+func (o *AwsEksClusterDto) HasToken() bool {
+	if o != nil && !IsNil(o.Token) {
+		return true
+	}
+
+	return false
+}
+
+// SetToken gets a reference to the given string and assigns it to the Token field.
 func (o *AwsEksClusterDto) SetToken(v string) {
-	o.Token = v
+	o.Token = &v
 }
 
-// GetTargetUrl returns the TargetUrl field value
+// GetTargetUrl returns the TargetUrl field value if set, zero value otherwise.
 func (o *AwsEksClusterDto) GetTargetUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.TargetUrl) {
 		var ret string
 		return ret
 	}
-
-	return o.TargetUrl
+	return *o.TargetUrl
 }
 
-// GetTargetUrlOk returns a tuple with the TargetUrl field value
+// GetTargetUrlOk returns a tuple with the TargetUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AwsEksClusterDto) GetTargetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TargetUrl) {
 		return nil, false
 	}
-	return &o.TargetUrl, true
+	return o.TargetUrl, true
 }
 
-// SetTargetUrl sets field value
+// HasTargetUrl returns a boolean if a field has been set.
+func (o *AwsEksClusterDto) HasTargetUrl() bool {
+	if o != nil && !IsNil(o.TargetUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetUrl gets a reference to the given string and assigns it to the TargetUrl field.
 func (o *AwsEksClusterDto) SetTargetUrl(v string) {
-	o.TargetUrl = v
+	o.TargetUrl = &v
 }
 
-// GetCertificate returns the Certificate field value
+// GetCertificate returns the Certificate field value if set, zero value otherwise.
 func (o *AwsEksClusterDto) GetCertificate() string {
-	if o == nil {
+	if o == nil || IsNil(o.Certificate) {
 		var ret string
 		return ret
 	}
-
-	return o.Certificate
+	return *o.Certificate
 }
 
-// GetCertificateOk returns a tuple with the Certificate field value
+// GetCertificateOk returns a tuple with the Certificate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AwsEksClusterDto) GetCertificateOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Certificate) {
 		return nil, false
 	}
-	return &o.Certificate, true
+	return o.Certificate, true
 }
 
-// SetCertificate sets field value
+// HasCertificate returns a boolean if a field has been set.
+func (o *AwsEksClusterDto) HasCertificate() bool {
+	if o != nil && !IsNil(o.Certificate) {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificate gets a reference to the given string and assigns it to the Certificate field.
 func (o *AwsEksClusterDto) SetCertificate(v string) {
-	o.Certificate = v
+	o.Certificate = &v
 }
 
 func (o AwsEksClusterDto) MarshalJSON() ([]byte, error) {
@@ -131,49 +148,16 @@ func (o AwsEksClusterDto) MarshalJSON() ([]byte, error) {
 
 func (o AwsEksClusterDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["token"] = o.Token
-	toSerialize["targetUrl"] = o.TargetUrl
-	toSerialize["certificate"] = o.Certificate
+	if !IsNil(o.Token) {
+		toSerialize["token"] = o.Token
+	}
+	if !IsNil(o.TargetUrl) {
+		toSerialize["targetUrl"] = o.TargetUrl
+	}
+	if !IsNil(o.Certificate) {
+		toSerialize["certificate"] = o.Certificate
+	}
 	return toSerialize, nil
-}
-
-func (o *AwsEksClusterDto) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"token",
-		"targetUrl",
-		"certificate",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varAwsEksClusterDto := _AwsEksClusterDto{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAwsEksClusterDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AwsEksClusterDto(varAwsEksClusterDto)
-
-	return err
 }
 
 type NullableAwsEksClusterDto struct {

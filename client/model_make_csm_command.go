@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the MakeCsmCommand type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &MakeCsmCommand{}
 
 // MakeCsmCommand struct for MakeCsmCommand
 type MakeCsmCommand struct {
-	UserId string `json:"userId"`
-	Mode string `json:"mode"`
+	UserId *string `json:"userId,omitempty"`
+	Mode *string `json:"mode,omitempty"`
 }
-
-type _MakeCsmCommand MakeCsmCommand
 
 // NewMakeCsmCommand instantiates a new MakeCsmCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMakeCsmCommand(userId string, mode string) *MakeCsmCommand {
+func NewMakeCsmCommand() *MakeCsmCommand {
 	this := MakeCsmCommand{}
-	this.UserId = userId
-	this.Mode = mode
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewMakeCsmCommandWithDefaults() *MakeCsmCommand {
 	return &this
 }
 
-// GetUserId returns the UserId field value
+// GetUserId returns the UserId field value if set, zero value otherwise.
 func (o *MakeCsmCommand) GetUserId() string {
-	if o == nil {
+	if o == nil || IsNil(o.UserId) {
 		var ret string
 		return ret
 	}
-
-	return o.UserId
+	return *o.UserId
 }
 
-// GetUserIdOk returns a tuple with the UserId field value
+// GetUserIdOk returns a tuple with the UserId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MakeCsmCommand) GetUserIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UserId) {
 		return nil, false
 	}
-	return &o.UserId, true
+	return o.UserId, true
 }
 
-// SetUserId sets field value
+// HasUserId returns a boolean if a field has been set.
+func (o *MakeCsmCommand) HasUserId() bool {
+	if o != nil && !IsNil(o.UserId) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserId gets a reference to the given string and assigns it to the UserId field.
 func (o *MakeCsmCommand) SetUserId(v string) {
-	o.UserId = v
+	o.UserId = &v
 }
 
-// GetMode returns the Mode field value
+// GetMode returns the Mode field value if set, zero value otherwise.
 func (o *MakeCsmCommand) GetMode() string {
-	if o == nil {
+	if o == nil || IsNil(o.Mode) {
 		var ret string
 		return ret
 	}
-
-	return o.Mode
+	return *o.Mode
 }
 
-// GetModeOk returns a tuple with the Mode field value
+// GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MakeCsmCommand) GetModeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
-	return &o.Mode, true
+	return o.Mode, true
 }
 
-// SetMode sets field value
+// HasMode returns a boolean if a field has been set.
+func (o *MakeCsmCommand) HasMode() bool {
+	if o != nil && !IsNil(o.Mode) {
+		return true
+	}
+
+	return false
+}
+
+// SetMode gets a reference to the given string and assigns it to the Mode field.
 func (o *MakeCsmCommand) SetMode(v string) {
-	o.Mode = v
+	o.Mode = &v
 }
 
 func (o MakeCsmCommand) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o MakeCsmCommand) MarshalJSON() ([]byte, error) {
 
 func (o MakeCsmCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["userId"] = o.UserId
-	toSerialize["mode"] = o.Mode
+	if !IsNil(o.UserId) {
+		toSerialize["userId"] = o.UserId
+	}
+	if !IsNil(o.Mode) {
+		toSerialize["mode"] = o.Mode
+	}
 	return toSerialize, nil
-}
-
-func (o *MakeCsmCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"userId",
-		"mode",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varMakeCsmCommand := _MakeCsmCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varMakeCsmCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = MakeCsmCommand(varMakeCsmCommand)
-
-	return err
 }
 
 type NullableMakeCsmCommand struct {

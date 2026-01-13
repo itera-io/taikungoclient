@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the GetCatalogAppValueCommand type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &GetCatalogAppValueCommand{}
 
 // GetCatalogAppValueCommand struct for GetCatalogAppValueCommand
 type GetCatalogAppValueCommand struct {
-	PackageId string `json:"packageId"`
-	Version string `json:"version"`
+	PackageId *string `json:"packageId,omitempty"`
+	Version *string `json:"version,omitempty"`
 }
-
-type _GetCatalogAppValueCommand GetCatalogAppValueCommand
 
 // NewGetCatalogAppValueCommand instantiates a new GetCatalogAppValueCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetCatalogAppValueCommand(packageId string, version string) *GetCatalogAppValueCommand {
+func NewGetCatalogAppValueCommand() *GetCatalogAppValueCommand {
 	this := GetCatalogAppValueCommand{}
-	this.PackageId = packageId
-	this.Version = version
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewGetCatalogAppValueCommandWithDefaults() *GetCatalogAppValueCommand {
 	return &this
 }
 
-// GetPackageId returns the PackageId field value
+// GetPackageId returns the PackageId field value if set, zero value otherwise.
 func (o *GetCatalogAppValueCommand) GetPackageId() string {
-	if o == nil {
+	if o == nil || IsNil(o.PackageId) {
 		var ret string
 		return ret
 	}
-
-	return o.PackageId
+	return *o.PackageId
 }
 
-// GetPackageIdOk returns a tuple with the PackageId field value
+// GetPackageIdOk returns a tuple with the PackageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetCatalogAppValueCommand) GetPackageIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PackageId) {
 		return nil, false
 	}
-	return &o.PackageId, true
+	return o.PackageId, true
 }
 
-// SetPackageId sets field value
+// HasPackageId returns a boolean if a field has been set.
+func (o *GetCatalogAppValueCommand) HasPackageId() bool {
+	if o != nil && !IsNil(o.PackageId) {
+		return true
+	}
+
+	return false
+}
+
+// SetPackageId gets a reference to the given string and assigns it to the PackageId field.
 func (o *GetCatalogAppValueCommand) SetPackageId(v string) {
-	o.PackageId = v
+	o.PackageId = &v
 }
 
-// GetVersion returns the Version field value
+// GetVersion returns the Version field value if set, zero value otherwise.
 func (o *GetCatalogAppValueCommand) GetVersion() string {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
-
-	return o.Version
+	return *o.Version
 }
 
-// GetVersionOk returns a tuple with the Version field value
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetCatalogAppValueCommand) GetVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
-	return &o.Version, true
+	return o.Version, true
 }
 
-// SetVersion sets field value
+// HasVersion returns a boolean if a field has been set.
+func (o *GetCatalogAppValueCommand) HasVersion() bool {
+	if o != nil && !IsNil(o.Version) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *GetCatalogAppValueCommand) SetVersion(v string) {
-	o.Version = v
+	o.Version = &v
 }
 
 func (o GetCatalogAppValueCommand) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o GetCatalogAppValueCommand) MarshalJSON() ([]byte, error) {
 
 func (o GetCatalogAppValueCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["packageId"] = o.PackageId
-	toSerialize["version"] = o.Version
+	if !IsNil(o.PackageId) {
+		toSerialize["packageId"] = o.PackageId
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
 	return toSerialize, nil
-}
-
-func (o *GetCatalogAppValueCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"packageId",
-		"version",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varGetCatalogAppValueCommand := _GetCatalogAppValueCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGetCatalogAppValueCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GetCatalogAppValueCommand(varGetCatalogAppValueCommand)
-
-	return err
 }
 
 type NullableGetCatalogAppValueCommand struct {

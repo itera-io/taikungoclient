@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the ChangeCardCommand type satisfies the MappedNullable interface at compile time
@@ -22,18 +20,15 @@ var _ MappedNullable = &ChangeCardCommand{}
 
 // ChangeCardCommand struct for ChangeCardCommand
 type ChangeCardCommand struct {
-	PaymentMethodId string `json:"paymentMethodId"`
+	PaymentMethodId *string `json:"paymentMethodId,omitempty"`
 }
-
-type _ChangeCardCommand ChangeCardCommand
 
 // NewChangeCardCommand instantiates a new ChangeCardCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChangeCardCommand(paymentMethodId string) *ChangeCardCommand {
+func NewChangeCardCommand() *ChangeCardCommand {
 	this := ChangeCardCommand{}
-	this.PaymentMethodId = paymentMethodId
 	return &this
 }
 
@@ -45,28 +40,36 @@ func NewChangeCardCommandWithDefaults() *ChangeCardCommand {
 	return &this
 }
 
-// GetPaymentMethodId returns the PaymentMethodId field value
+// GetPaymentMethodId returns the PaymentMethodId field value if set, zero value otherwise.
 func (o *ChangeCardCommand) GetPaymentMethodId() string {
-	if o == nil {
+	if o == nil || IsNil(o.PaymentMethodId) {
 		var ret string
 		return ret
 	}
-
-	return o.PaymentMethodId
+	return *o.PaymentMethodId
 }
 
-// GetPaymentMethodIdOk returns a tuple with the PaymentMethodId field value
+// GetPaymentMethodIdOk returns a tuple with the PaymentMethodId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ChangeCardCommand) GetPaymentMethodIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PaymentMethodId) {
 		return nil, false
 	}
-	return &o.PaymentMethodId, true
+	return o.PaymentMethodId, true
 }
 
-// SetPaymentMethodId sets field value
+// HasPaymentMethodId returns a boolean if a field has been set.
+func (o *ChangeCardCommand) HasPaymentMethodId() bool {
+	if o != nil && !IsNil(o.PaymentMethodId) {
+		return true
+	}
+
+	return false
+}
+
+// SetPaymentMethodId gets a reference to the given string and assigns it to the PaymentMethodId field.
 func (o *ChangeCardCommand) SetPaymentMethodId(v string) {
-	o.PaymentMethodId = v
+	o.PaymentMethodId = &v
 }
 
 func (o ChangeCardCommand) MarshalJSON() ([]byte, error) {
@@ -79,45 +82,10 @@ func (o ChangeCardCommand) MarshalJSON() ([]byte, error) {
 
 func (o ChangeCardCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["paymentMethodId"] = o.PaymentMethodId
+	if !IsNil(o.PaymentMethodId) {
+		toSerialize["paymentMethodId"] = o.PaymentMethodId
+	}
 	return toSerialize, nil
-}
-
-func (o *ChangeCardCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"paymentMethodId",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varChangeCardCommand := _ChangeCardCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varChangeCardCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ChangeCardCommand(varChangeCardCommand)
-
-	return err
 }
 
 type NullableChangeCardCommand struct {

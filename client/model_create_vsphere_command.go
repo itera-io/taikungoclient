@@ -22,21 +22,21 @@ var _ MappedNullable = &CreateVsphereCommand{}
 
 // CreateVsphereCommand struct for CreateVsphereCommand
 type CreateVsphereCommand struct {
-	Name string `json:"name"`
-	Username string `json:"username"`
-	Url string `json:"url"`
-	Password string `json:"password"`
-	DatacenterId string `json:"datacenterId"`
-	DatacenterName string `json:"datacenterName"`
-	DatastoreName string `json:"datastoreName"`
-	ResourcePoolName string `json:"resourcePoolName"`
+	Name *string `json:"name,omitempty"`
+	Username *string `json:"username,omitempty"`
+	Url *string `json:"url,omitempty"`
+	Password *string `json:"password,omitempty"`
+	DatacenterId *string `json:"datacenterId,omitempty"`
+	DatacenterName *string `json:"datacenterName,omitempty"`
+	DatastoreName *string `json:"datastoreName,omitempty"`
+	ResourcePoolName *string `json:"resourcePoolName,omitempty"`
 	DrsEnabled bool `json:"drsEnabled"`
-	VmTemplateName string `json:"vmTemplateName"`
-	Continent string `json:"continent"`
+	VmTemplateName *string `json:"vmTemplateName,omitempty"`
+	Continent *string `json:"continent,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	Hypervisors []string `json:"hypervisors"`
-	PublicNetwork CreateVsphereNetworkDto `json:"publicNetwork"`
-	PrivateNetwork CreateVsphereNetworkDto `json:"privateNetwork"`
+	Hypervisors []string `json:"hypervisors,omitempty"`
+	PublicNetwork *CreateVsphereNetworkDto `json:"publicNetwork,omitempty"`
+	PrivateNetwork *CreateVsphereNetworkDto `json:"privateNetwork,omitempty"`
 	SkipTlsFlag bool `json:"skipTlsFlag"`
 }
 
@@ -46,22 +46,9 @@ type _CreateVsphereCommand CreateVsphereCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateVsphereCommand(name string, username string, url string, password string, datacenterId string, datacenterName string, datastoreName string, resourcePoolName string, drsEnabled bool, vmTemplateName string, continent string, hypervisors []string, publicNetwork CreateVsphereNetworkDto, privateNetwork CreateVsphereNetworkDto, skipTlsFlag bool) *CreateVsphereCommand {
+func NewCreateVsphereCommand(drsEnabled bool, skipTlsFlag bool) *CreateVsphereCommand {
 	this := CreateVsphereCommand{}
-	this.Name = name
-	this.Username = username
-	this.Url = url
-	this.Password = password
-	this.DatacenterId = datacenterId
-	this.DatacenterName = datacenterName
-	this.DatastoreName = datastoreName
-	this.ResourcePoolName = resourcePoolName
 	this.DrsEnabled = drsEnabled
-	this.VmTemplateName = vmTemplateName
-	this.Continent = continent
-	this.Hypervisors = hypervisors
-	this.PublicNetwork = publicNetwork
-	this.PrivateNetwork = privateNetwork
 	this.SkipTlsFlag = skipTlsFlag
 	return &this
 }
@@ -74,196 +61,260 @@ func NewCreateVsphereCommandWithDefaults() *CreateVsphereCommand {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateVsphereCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateVsphereCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CreateVsphereCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateVsphereCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetUsername returns the Username field value
+// GetUsername returns the Username field value if set, zero value otherwise.
 func (o *CreateVsphereCommand) GetUsername() string {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
-
-	return o.Username
+	return *o.Username
 }
 
-// GetUsernameOk returns a tuple with the Username field value
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateVsphereCommand) GetUsernameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
-	return &o.Username, true
+	return o.Username, true
 }
 
-// SetUsername sets field value
+// HasUsername returns a boolean if a field has been set.
+func (o *CreateVsphereCommand) HasUsername() bool {
+	if o != nil && !IsNil(o.Username) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *CreateVsphereCommand) SetUsername(v string) {
-	o.Username = v
+	o.Username = &v
 }
 
-// GetUrl returns the Url field value
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *CreateVsphereCommand) GetUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-
-	return o.Url
+	return *o.Url
 }
 
-// GetUrlOk returns a tuple with the Url field value
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateVsphereCommand) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return &o.Url, true
+	return o.Url, true
 }
 
-// SetUrl sets field value
+// HasUrl returns a boolean if a field has been set.
+func (o *CreateVsphereCommand) HasUrl() bool {
+	if o != nil && !IsNil(o.Url) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *CreateVsphereCommand) SetUrl(v string) {
-	o.Url = v
+	o.Url = &v
 }
 
-// GetPassword returns the Password field value
+// GetPassword returns the Password field value if set, zero value otherwise.
 func (o *CreateVsphereCommand) GetPassword() string {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
 	}
-
-	return o.Password
+	return *o.Password
 }
 
-// GetPasswordOk returns a tuple with the Password field value
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateVsphereCommand) GetPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
-	return &o.Password, true
+	return o.Password, true
 }
 
-// SetPassword sets field value
+// HasPassword returns a boolean if a field has been set.
+func (o *CreateVsphereCommand) HasPassword() bool {
+	if o != nil && !IsNil(o.Password) {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *CreateVsphereCommand) SetPassword(v string) {
-	o.Password = v
+	o.Password = &v
 }
 
-// GetDatacenterId returns the DatacenterId field value
+// GetDatacenterId returns the DatacenterId field value if set, zero value otherwise.
 func (o *CreateVsphereCommand) GetDatacenterId() string {
-	if o == nil {
+	if o == nil || IsNil(o.DatacenterId) {
 		var ret string
 		return ret
 	}
-
-	return o.DatacenterId
+	return *o.DatacenterId
 }
 
-// GetDatacenterIdOk returns a tuple with the DatacenterId field value
+// GetDatacenterIdOk returns a tuple with the DatacenterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateVsphereCommand) GetDatacenterIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DatacenterId) {
 		return nil, false
 	}
-	return &o.DatacenterId, true
+	return o.DatacenterId, true
 }
 
-// SetDatacenterId sets field value
+// HasDatacenterId returns a boolean if a field has been set.
+func (o *CreateVsphereCommand) HasDatacenterId() bool {
+	if o != nil && !IsNil(o.DatacenterId) {
+		return true
+	}
+
+	return false
+}
+
+// SetDatacenterId gets a reference to the given string and assigns it to the DatacenterId field.
 func (o *CreateVsphereCommand) SetDatacenterId(v string) {
-	o.DatacenterId = v
+	o.DatacenterId = &v
 }
 
-// GetDatacenterName returns the DatacenterName field value
+// GetDatacenterName returns the DatacenterName field value if set, zero value otherwise.
 func (o *CreateVsphereCommand) GetDatacenterName() string {
-	if o == nil {
+	if o == nil || IsNil(o.DatacenterName) {
 		var ret string
 		return ret
 	}
-
-	return o.DatacenterName
+	return *o.DatacenterName
 }
 
-// GetDatacenterNameOk returns a tuple with the DatacenterName field value
+// GetDatacenterNameOk returns a tuple with the DatacenterName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateVsphereCommand) GetDatacenterNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DatacenterName) {
 		return nil, false
 	}
-	return &o.DatacenterName, true
+	return o.DatacenterName, true
 }
 
-// SetDatacenterName sets field value
+// HasDatacenterName returns a boolean if a field has been set.
+func (o *CreateVsphereCommand) HasDatacenterName() bool {
+	if o != nil && !IsNil(o.DatacenterName) {
+		return true
+	}
+
+	return false
+}
+
+// SetDatacenterName gets a reference to the given string and assigns it to the DatacenterName field.
 func (o *CreateVsphereCommand) SetDatacenterName(v string) {
-	o.DatacenterName = v
+	o.DatacenterName = &v
 }
 
-// GetDatastoreName returns the DatastoreName field value
+// GetDatastoreName returns the DatastoreName field value if set, zero value otherwise.
 func (o *CreateVsphereCommand) GetDatastoreName() string {
-	if o == nil {
+	if o == nil || IsNil(o.DatastoreName) {
 		var ret string
 		return ret
 	}
-
-	return o.DatastoreName
+	return *o.DatastoreName
 }
 
-// GetDatastoreNameOk returns a tuple with the DatastoreName field value
+// GetDatastoreNameOk returns a tuple with the DatastoreName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateVsphereCommand) GetDatastoreNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DatastoreName) {
 		return nil, false
 	}
-	return &o.DatastoreName, true
+	return o.DatastoreName, true
 }
 
-// SetDatastoreName sets field value
+// HasDatastoreName returns a boolean if a field has been set.
+func (o *CreateVsphereCommand) HasDatastoreName() bool {
+	if o != nil && !IsNil(o.DatastoreName) {
+		return true
+	}
+
+	return false
+}
+
+// SetDatastoreName gets a reference to the given string and assigns it to the DatastoreName field.
 func (o *CreateVsphereCommand) SetDatastoreName(v string) {
-	o.DatastoreName = v
+	o.DatastoreName = &v
 }
 
-// GetResourcePoolName returns the ResourcePoolName field value
+// GetResourcePoolName returns the ResourcePoolName field value if set, zero value otherwise.
 func (o *CreateVsphereCommand) GetResourcePoolName() string {
-	if o == nil {
+	if o == nil || IsNil(o.ResourcePoolName) {
 		var ret string
 		return ret
 	}
-
-	return o.ResourcePoolName
+	return *o.ResourcePoolName
 }
 
-// GetResourcePoolNameOk returns a tuple with the ResourcePoolName field value
+// GetResourcePoolNameOk returns a tuple with the ResourcePoolName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateVsphereCommand) GetResourcePoolNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ResourcePoolName) {
 		return nil, false
 	}
-	return &o.ResourcePoolName, true
+	return o.ResourcePoolName, true
 }
 
-// SetResourcePoolName sets field value
+// HasResourcePoolName returns a boolean if a field has been set.
+func (o *CreateVsphereCommand) HasResourcePoolName() bool {
+	if o != nil && !IsNil(o.ResourcePoolName) {
+		return true
+	}
+
+	return false
+}
+
+// SetResourcePoolName gets a reference to the given string and assigns it to the ResourcePoolName field.
 func (o *CreateVsphereCommand) SetResourcePoolName(v string) {
-	o.ResourcePoolName = v
+	o.ResourcePoolName = &v
 }
 
 // GetDrsEnabled returns the DrsEnabled field value
@@ -290,52 +341,68 @@ func (o *CreateVsphereCommand) SetDrsEnabled(v bool) {
 	o.DrsEnabled = v
 }
 
-// GetVmTemplateName returns the VmTemplateName field value
+// GetVmTemplateName returns the VmTemplateName field value if set, zero value otherwise.
 func (o *CreateVsphereCommand) GetVmTemplateName() string {
-	if o == nil {
+	if o == nil || IsNil(o.VmTemplateName) {
 		var ret string
 		return ret
 	}
-
-	return o.VmTemplateName
+	return *o.VmTemplateName
 }
 
-// GetVmTemplateNameOk returns a tuple with the VmTemplateName field value
+// GetVmTemplateNameOk returns a tuple with the VmTemplateName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateVsphereCommand) GetVmTemplateNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VmTemplateName) {
 		return nil, false
 	}
-	return &o.VmTemplateName, true
+	return o.VmTemplateName, true
 }
 
-// SetVmTemplateName sets field value
+// HasVmTemplateName returns a boolean if a field has been set.
+func (o *CreateVsphereCommand) HasVmTemplateName() bool {
+	if o != nil && !IsNil(o.VmTemplateName) {
+		return true
+	}
+
+	return false
+}
+
+// SetVmTemplateName gets a reference to the given string and assigns it to the VmTemplateName field.
 func (o *CreateVsphereCommand) SetVmTemplateName(v string) {
-	o.VmTemplateName = v
+	o.VmTemplateName = &v
 }
 
-// GetContinent returns the Continent field value
+// GetContinent returns the Continent field value if set, zero value otherwise.
 func (o *CreateVsphereCommand) GetContinent() string {
-	if o == nil {
+	if o == nil || IsNil(o.Continent) {
 		var ret string
 		return ret
 	}
-
-	return o.Continent
+	return *o.Continent
 }
 
-// GetContinentOk returns a tuple with the Continent field value
+// GetContinentOk returns a tuple with the Continent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateVsphereCommand) GetContinentOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Continent) {
 		return nil, false
 	}
-	return &o.Continent, true
+	return o.Continent, true
 }
 
-// SetContinent sets field value
+// HasContinent returns a boolean if a field has been set.
+func (o *CreateVsphereCommand) HasContinent() bool {
+	if o != nil && !IsNil(o.Continent) {
+		return true
+	}
+
+	return false
+}
+
+// SetContinent gets a reference to the given string and assigns it to the Continent field.
 func (o *CreateVsphereCommand) SetContinent(v string) {
-	o.Continent = v
+	o.Continent = &v
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -380,76 +447,100 @@ func (o *CreateVsphereCommand) UnsetOrganizationId() {
 	o.OrganizationId.Unset()
 }
 
-// GetHypervisors returns the Hypervisors field value
+// GetHypervisors returns the Hypervisors field value if set, zero value otherwise.
 func (o *CreateVsphereCommand) GetHypervisors() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Hypervisors) {
 		var ret []string
 		return ret
 	}
-
 	return o.Hypervisors
 }
 
-// GetHypervisorsOk returns a tuple with the Hypervisors field value
+// GetHypervisorsOk returns a tuple with the Hypervisors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateVsphereCommand) GetHypervisorsOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Hypervisors) {
 		return nil, false
 	}
 	return o.Hypervisors, true
 }
 
-// SetHypervisors sets field value
+// HasHypervisors returns a boolean if a field has been set.
+func (o *CreateVsphereCommand) HasHypervisors() bool {
+	if o != nil && !IsNil(o.Hypervisors) {
+		return true
+	}
+
+	return false
+}
+
+// SetHypervisors gets a reference to the given []string and assigns it to the Hypervisors field.
 func (o *CreateVsphereCommand) SetHypervisors(v []string) {
 	o.Hypervisors = v
 }
 
-// GetPublicNetwork returns the PublicNetwork field value
+// GetPublicNetwork returns the PublicNetwork field value if set, zero value otherwise.
 func (o *CreateVsphereCommand) GetPublicNetwork() CreateVsphereNetworkDto {
-	if o == nil {
+	if o == nil || IsNil(o.PublicNetwork) {
 		var ret CreateVsphereNetworkDto
 		return ret
 	}
-
-	return o.PublicNetwork
+	return *o.PublicNetwork
 }
 
-// GetPublicNetworkOk returns a tuple with the PublicNetwork field value
+// GetPublicNetworkOk returns a tuple with the PublicNetwork field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateVsphereCommand) GetPublicNetworkOk() (*CreateVsphereNetworkDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PublicNetwork) {
 		return nil, false
 	}
-	return &o.PublicNetwork, true
+	return o.PublicNetwork, true
 }
 
-// SetPublicNetwork sets field value
+// HasPublicNetwork returns a boolean if a field has been set.
+func (o *CreateVsphereCommand) HasPublicNetwork() bool {
+	if o != nil && !IsNil(o.PublicNetwork) {
+		return true
+	}
+
+	return false
+}
+
+// SetPublicNetwork gets a reference to the given CreateVsphereNetworkDto and assigns it to the PublicNetwork field.
 func (o *CreateVsphereCommand) SetPublicNetwork(v CreateVsphereNetworkDto) {
-	o.PublicNetwork = v
+	o.PublicNetwork = &v
 }
 
-// GetPrivateNetwork returns the PrivateNetwork field value
+// GetPrivateNetwork returns the PrivateNetwork field value if set, zero value otherwise.
 func (o *CreateVsphereCommand) GetPrivateNetwork() CreateVsphereNetworkDto {
-	if o == nil {
+	if o == nil || IsNil(o.PrivateNetwork) {
 		var ret CreateVsphereNetworkDto
 		return ret
 	}
-
-	return o.PrivateNetwork
+	return *o.PrivateNetwork
 }
 
-// GetPrivateNetworkOk returns a tuple with the PrivateNetwork field value
+// GetPrivateNetworkOk returns a tuple with the PrivateNetwork field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateVsphereCommand) GetPrivateNetworkOk() (*CreateVsphereNetworkDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PrivateNetwork) {
 		return nil, false
 	}
-	return &o.PrivateNetwork, true
+	return o.PrivateNetwork, true
 }
 
-// SetPrivateNetwork sets field value
+// HasPrivateNetwork returns a boolean if a field has been set.
+func (o *CreateVsphereCommand) HasPrivateNetwork() bool {
+	if o != nil && !IsNil(o.PrivateNetwork) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateNetwork gets a reference to the given CreateVsphereNetworkDto and assigns it to the PrivateNetwork field.
 func (o *CreateVsphereCommand) SetPrivateNetwork(v CreateVsphereNetworkDto) {
-	o.PrivateNetwork = v
+	o.PrivateNetwork = &v
 }
 
 // GetSkipTlsFlag returns the SkipTlsFlag field value
@@ -486,23 +577,49 @@ func (o CreateVsphereCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateVsphereCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["username"] = o.Username
-	toSerialize["url"] = o.Url
-	toSerialize["password"] = o.Password
-	toSerialize["datacenterId"] = o.DatacenterId
-	toSerialize["datacenterName"] = o.DatacenterName
-	toSerialize["datastoreName"] = o.DatastoreName
-	toSerialize["resourcePoolName"] = o.ResourcePoolName
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
+	}
+	if !IsNil(o.DatacenterId) {
+		toSerialize["datacenterId"] = o.DatacenterId
+	}
+	if !IsNil(o.DatacenterName) {
+		toSerialize["datacenterName"] = o.DatacenterName
+	}
+	if !IsNil(o.DatastoreName) {
+		toSerialize["datastoreName"] = o.DatastoreName
+	}
+	if !IsNil(o.ResourcePoolName) {
+		toSerialize["resourcePoolName"] = o.ResourcePoolName
+	}
 	toSerialize["drsEnabled"] = o.DrsEnabled
-	toSerialize["vmTemplateName"] = o.VmTemplateName
-	toSerialize["continent"] = o.Continent
+	if !IsNil(o.VmTemplateName) {
+		toSerialize["vmTemplateName"] = o.VmTemplateName
+	}
+	if !IsNil(o.Continent) {
+		toSerialize["continent"] = o.Continent
+	}
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
-	toSerialize["hypervisors"] = o.Hypervisors
-	toSerialize["publicNetwork"] = o.PublicNetwork
-	toSerialize["privateNetwork"] = o.PrivateNetwork
+	if !IsNil(o.Hypervisors) {
+		toSerialize["hypervisors"] = o.Hypervisors
+	}
+	if !IsNil(o.PublicNetwork) {
+		toSerialize["publicNetwork"] = o.PublicNetwork
+	}
+	if !IsNil(o.PrivateNetwork) {
+		toSerialize["privateNetwork"] = o.PrivateNetwork
+	}
 	toSerialize["skipTlsFlag"] = o.SkipTlsFlag
 	return toSerialize, nil
 }
@@ -512,20 +629,7 @@ func (o *CreateVsphereCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
-		"username",
-		"url",
-		"password",
-		"datacenterId",
-		"datacenterName",
-		"datastoreName",
-		"resourcePoolName",
 		"drsEnabled",
-		"vmTemplateName",
-		"continent",
-		"hypervisors",
-		"publicNetwork",
-		"privateNetwork",
 		"skipTlsFlag",
 	}
 

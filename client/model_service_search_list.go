@@ -22,7 +22,7 @@ var _ MappedNullable = &ServiceSearchList{}
 
 // ServiceSearchList struct for ServiceSearchList
 type ServiceSearchList struct {
-	Data []CommonSearchKubernetesResponseData `json:"data"`
+	Data []CommonSearchKubernetesResponseData `json:"data,omitempty"`
 	TotalCount int32 `json:"totalCount"`
 }
 
@@ -32,9 +32,8 @@ type _ServiceSearchList ServiceSearchList
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServiceSearchList(data []CommonSearchKubernetesResponseData, totalCount int32) *ServiceSearchList {
+func NewServiceSearchList(totalCount int32) *ServiceSearchList {
 	this := ServiceSearchList{}
-	this.Data = data
 	this.TotalCount = totalCount
 	return &this
 }
@@ -47,26 +46,34 @@ func NewServiceSearchListWithDefaults() *ServiceSearchList {
 	return &this
 }
 
-// GetData returns the Data field value
+// GetData returns the Data field value if set, zero value otherwise.
 func (o *ServiceSearchList) GetData() []CommonSearchKubernetesResponseData {
-	if o == nil {
+	if o == nil || IsNil(o.Data) {
 		var ret []CommonSearchKubernetesResponseData
 		return ret
 	}
-
 	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value
+// GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceSearchList) GetDataOk() ([]CommonSearchKubernetesResponseData, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
 	return o.Data, true
 }
 
-// SetData sets field value
+// HasData returns a boolean if a field has been set.
+func (o *ServiceSearchList) HasData() bool {
+	if o != nil && !IsNil(o.Data) {
+		return true
+	}
+
+	return false
+}
+
+// SetData gets a reference to the given []CommonSearchKubernetesResponseData and assigns it to the Data field.
 func (o *ServiceSearchList) SetData(v []CommonSearchKubernetesResponseData) {
 	o.Data = v
 }
@@ -105,7 +112,9 @@ func (o ServiceSearchList) MarshalJSON() ([]byte, error) {
 
 func (o ServiceSearchList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["data"] = o.Data
+	if !IsNil(o.Data) {
+		toSerialize["data"] = o.Data
+	}
 	toSerialize["totalCount"] = o.TotalCount
 	return toSerialize, nil
 }
@@ -115,7 +124,6 @@ func (o *ServiceSearchList) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"data",
 		"totalCount",
 	}
 

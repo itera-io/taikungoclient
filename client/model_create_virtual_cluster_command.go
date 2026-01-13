@@ -23,17 +23,17 @@ var _ MappedNullable = &CreateVirtualClusterCommand{}
 
 // CreateVirtualClusterCommand struct for CreateVirtualClusterCommand
 type CreateVirtualClusterCommand struct {
-	CloudId NullableInt32 `json:"cloudId"`
+	CloudId NullableInt32 `json:"cloudId,omitempty"`
 	ProjectId int32 `json:"projectId"`
-	Name string `json:"name"`
-	ExpiredAt NullableTime `json:"expiredAt"`
+	Name *string `json:"name,omitempty"`
+	ExpiredAt NullableTime `json:"expiredAt,omitempty"`
 	DeleteOnExpiration bool `json:"deleteOnExpiration"`
-	AlertingProfileId NullableInt32 `json:"alertingProfileId"`
-	ExposeHostname string `json:"exposeHostname"`
-	WorkloadResources NullableCreateVirtualClusterWorkloadResources `json:"workloadResources"`
-	CpuLimits NullableCreateVirtualClusterResourceLimits `json:"cpuLimits"`
-	RamLimits NullableCreateVirtualClusterResourceLimits `json:"ramLimits"`
-	EphemeralStorageLimits NullableCreateVirtualClusterResourceLimits `json:"ephemeralStorageLimits"`
+	AlertingProfileId NullableInt32 `json:"alertingProfileId,omitempty"`
+	ExposeHostname *string `json:"exposeHostname,omitempty"`
+	WorkloadResources NullableCreateVirtualClusterWorkloadResources `json:"workloadResources,omitempty"`
+	CpuLimits NullableCreateVirtualClusterResourceLimits `json:"cpuLimits,omitempty"`
+	RamLimits NullableCreateVirtualClusterResourceLimits `json:"ramLimits,omitempty"`
+	EphemeralStorageLimits NullableCreateVirtualClusterResourceLimits `json:"ephemeralStorageLimits,omitempty"`
 }
 
 type _CreateVirtualClusterCommand CreateVirtualClusterCommand
@@ -42,19 +42,10 @@ type _CreateVirtualClusterCommand CreateVirtualClusterCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateVirtualClusterCommand(cloudId NullableInt32, projectId int32, name string, expiredAt NullableTime, deleteOnExpiration bool, alertingProfileId NullableInt32, exposeHostname string, workloadResources NullableCreateVirtualClusterWorkloadResources, cpuLimits NullableCreateVirtualClusterResourceLimits, ramLimits NullableCreateVirtualClusterResourceLimits, ephemeralStorageLimits NullableCreateVirtualClusterResourceLimits) *CreateVirtualClusterCommand {
+func NewCreateVirtualClusterCommand(projectId int32, deleteOnExpiration bool) *CreateVirtualClusterCommand {
 	this := CreateVirtualClusterCommand{}
-	this.CloudId = cloudId
 	this.ProjectId = projectId
-	this.Name = name
-	this.ExpiredAt = expiredAt
 	this.DeleteOnExpiration = deleteOnExpiration
-	this.AlertingProfileId = alertingProfileId
-	this.ExposeHostname = exposeHostname
-	this.WorkloadResources = workloadResources
-	this.CpuLimits = cpuLimits
-	this.RamLimits = ramLimits
-	this.EphemeralStorageLimits = ephemeralStorageLimits
 	return &this
 }
 
@@ -66,18 +57,16 @@ func NewCreateVirtualClusterCommandWithDefaults() *CreateVirtualClusterCommand {
 	return &this
 }
 
-// GetCloudId returns the CloudId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetCloudId returns the CloudId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateVirtualClusterCommand) GetCloudId() int32 {
-	if o == nil || o.CloudId.Get() == nil {
+	if o == nil || IsNil(o.CloudId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.CloudId.Get()
 }
 
-// GetCloudIdOk returns a tuple with the CloudId field value
+// GetCloudIdOk returns a tuple with the CloudId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateVirtualClusterCommand) GetCloudIdOk() (*int32, bool) {
@@ -87,9 +76,27 @@ func (o *CreateVirtualClusterCommand) GetCloudIdOk() (*int32, bool) {
 	return o.CloudId.Get(), o.CloudId.IsSet()
 }
 
-// SetCloudId sets field value
+// HasCloudId returns a boolean if a field has been set.
+func (o *CreateVirtualClusterCommand) HasCloudId() bool {
+	if o != nil && o.CloudId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudId gets a reference to the given NullableInt32 and assigns it to the CloudId field.
 func (o *CreateVirtualClusterCommand) SetCloudId(v int32) {
 	o.CloudId.Set(&v)
+}
+// SetCloudIdNil sets the value for CloudId to be an explicit nil
+func (o *CreateVirtualClusterCommand) SetCloudIdNil() {
+	o.CloudId.Set(nil)
+}
+
+// UnsetCloudId ensures that no value is present for CloudId, not even an explicit nil
+func (o *CreateVirtualClusterCommand) UnsetCloudId() {
+	o.CloudId.Unset()
 }
 
 // GetProjectId returns the ProjectId field value
@@ -116,42 +123,48 @@ func (o *CreateVirtualClusterCommand) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateVirtualClusterCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateVirtualClusterCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CreateVirtualClusterCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateVirtualClusterCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetExpiredAt returns the ExpiredAt field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetExpiredAt returns the ExpiredAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateVirtualClusterCommand) GetExpiredAt() time.Time {
-	if o == nil || o.ExpiredAt.Get() == nil {
+	if o == nil || IsNil(o.ExpiredAt.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.ExpiredAt.Get()
 }
 
-// GetExpiredAtOk returns a tuple with the ExpiredAt field value
+// GetExpiredAtOk returns a tuple with the ExpiredAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateVirtualClusterCommand) GetExpiredAtOk() (*time.Time, bool) {
@@ -161,9 +174,27 @@ func (o *CreateVirtualClusterCommand) GetExpiredAtOk() (*time.Time, bool) {
 	return o.ExpiredAt.Get(), o.ExpiredAt.IsSet()
 }
 
-// SetExpiredAt sets field value
+// HasExpiredAt returns a boolean if a field has been set.
+func (o *CreateVirtualClusterCommand) HasExpiredAt() bool {
+	if o != nil && o.ExpiredAt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetExpiredAt gets a reference to the given NullableTime and assigns it to the ExpiredAt field.
 func (o *CreateVirtualClusterCommand) SetExpiredAt(v time.Time) {
 	o.ExpiredAt.Set(&v)
+}
+// SetExpiredAtNil sets the value for ExpiredAt to be an explicit nil
+func (o *CreateVirtualClusterCommand) SetExpiredAtNil() {
+	o.ExpiredAt.Set(nil)
+}
+
+// UnsetExpiredAt ensures that no value is present for ExpiredAt, not even an explicit nil
+func (o *CreateVirtualClusterCommand) UnsetExpiredAt() {
+	o.ExpiredAt.Unset()
 }
 
 // GetDeleteOnExpiration returns the DeleteOnExpiration field value
@@ -190,18 +221,16 @@ func (o *CreateVirtualClusterCommand) SetDeleteOnExpiration(v bool) {
 	o.DeleteOnExpiration = v
 }
 
-// GetAlertingProfileId returns the AlertingProfileId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetAlertingProfileId returns the AlertingProfileId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateVirtualClusterCommand) GetAlertingProfileId() int32 {
-	if o == nil || o.AlertingProfileId.Get() == nil {
+	if o == nil || IsNil(o.AlertingProfileId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.AlertingProfileId.Get()
 }
 
-// GetAlertingProfileIdOk returns a tuple with the AlertingProfileId field value
+// GetAlertingProfileIdOk returns a tuple with the AlertingProfileId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateVirtualClusterCommand) GetAlertingProfileIdOk() (*int32, bool) {
@@ -211,47 +240,71 @@ func (o *CreateVirtualClusterCommand) GetAlertingProfileIdOk() (*int32, bool) {
 	return o.AlertingProfileId.Get(), o.AlertingProfileId.IsSet()
 }
 
-// SetAlertingProfileId sets field value
+// HasAlertingProfileId returns a boolean if a field has been set.
+func (o *CreateVirtualClusterCommand) HasAlertingProfileId() bool {
+	if o != nil && o.AlertingProfileId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAlertingProfileId gets a reference to the given NullableInt32 and assigns it to the AlertingProfileId field.
 func (o *CreateVirtualClusterCommand) SetAlertingProfileId(v int32) {
 	o.AlertingProfileId.Set(&v)
 }
+// SetAlertingProfileIdNil sets the value for AlertingProfileId to be an explicit nil
+func (o *CreateVirtualClusterCommand) SetAlertingProfileIdNil() {
+	o.AlertingProfileId.Set(nil)
+}
 
-// GetExposeHostname returns the ExposeHostname field value
+// UnsetAlertingProfileId ensures that no value is present for AlertingProfileId, not even an explicit nil
+func (o *CreateVirtualClusterCommand) UnsetAlertingProfileId() {
+	o.AlertingProfileId.Unset()
+}
+
+// GetExposeHostname returns the ExposeHostname field value if set, zero value otherwise.
 func (o *CreateVirtualClusterCommand) GetExposeHostname() string {
-	if o == nil {
+	if o == nil || IsNil(o.ExposeHostname) {
 		var ret string
 		return ret
 	}
-
-	return o.ExposeHostname
+	return *o.ExposeHostname
 }
 
-// GetExposeHostnameOk returns a tuple with the ExposeHostname field value
+// GetExposeHostnameOk returns a tuple with the ExposeHostname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateVirtualClusterCommand) GetExposeHostnameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ExposeHostname) {
 		return nil, false
 	}
-	return &o.ExposeHostname, true
+	return o.ExposeHostname, true
 }
 
-// SetExposeHostname sets field value
+// HasExposeHostname returns a boolean if a field has been set.
+func (o *CreateVirtualClusterCommand) HasExposeHostname() bool {
+	if o != nil && !IsNil(o.ExposeHostname) {
+		return true
+	}
+
+	return false
+}
+
+// SetExposeHostname gets a reference to the given string and assigns it to the ExposeHostname field.
 func (o *CreateVirtualClusterCommand) SetExposeHostname(v string) {
-	o.ExposeHostname = v
+	o.ExposeHostname = &v
 }
 
-// GetWorkloadResources returns the WorkloadResources field value
-// If the value is explicit nil, the zero value for CreateVirtualClusterWorkloadResources will be returned
+// GetWorkloadResources returns the WorkloadResources field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateVirtualClusterCommand) GetWorkloadResources() CreateVirtualClusterWorkloadResources {
-	if o == nil || o.WorkloadResources.Get() == nil {
+	if o == nil || IsNil(o.WorkloadResources.Get()) {
 		var ret CreateVirtualClusterWorkloadResources
 		return ret
 	}
-
 	return *o.WorkloadResources.Get()
 }
 
-// GetWorkloadResourcesOk returns a tuple with the WorkloadResources field value
+// GetWorkloadResourcesOk returns a tuple with the WorkloadResources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateVirtualClusterCommand) GetWorkloadResourcesOk() (*CreateVirtualClusterWorkloadResources, bool) {
@@ -261,23 +314,39 @@ func (o *CreateVirtualClusterCommand) GetWorkloadResourcesOk() (*CreateVirtualCl
 	return o.WorkloadResources.Get(), o.WorkloadResources.IsSet()
 }
 
-// SetWorkloadResources sets field value
+// HasWorkloadResources returns a boolean if a field has been set.
+func (o *CreateVirtualClusterCommand) HasWorkloadResources() bool {
+	if o != nil && o.WorkloadResources.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetWorkloadResources gets a reference to the given NullableCreateVirtualClusterWorkloadResources and assigns it to the WorkloadResources field.
 func (o *CreateVirtualClusterCommand) SetWorkloadResources(v CreateVirtualClusterWorkloadResources) {
 	o.WorkloadResources.Set(&v)
 }
+// SetWorkloadResourcesNil sets the value for WorkloadResources to be an explicit nil
+func (o *CreateVirtualClusterCommand) SetWorkloadResourcesNil() {
+	o.WorkloadResources.Set(nil)
+}
 
-// GetCpuLimits returns the CpuLimits field value
-// If the value is explicit nil, the zero value for CreateVirtualClusterResourceLimits will be returned
+// UnsetWorkloadResources ensures that no value is present for WorkloadResources, not even an explicit nil
+func (o *CreateVirtualClusterCommand) UnsetWorkloadResources() {
+	o.WorkloadResources.Unset()
+}
+
+// GetCpuLimits returns the CpuLimits field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateVirtualClusterCommand) GetCpuLimits() CreateVirtualClusterResourceLimits {
-	if o == nil || o.CpuLimits.Get() == nil {
+	if o == nil || IsNil(o.CpuLimits.Get()) {
 		var ret CreateVirtualClusterResourceLimits
 		return ret
 	}
-
 	return *o.CpuLimits.Get()
 }
 
-// GetCpuLimitsOk returns a tuple with the CpuLimits field value
+// GetCpuLimitsOk returns a tuple with the CpuLimits field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateVirtualClusterCommand) GetCpuLimitsOk() (*CreateVirtualClusterResourceLimits, bool) {
@@ -287,23 +356,39 @@ func (o *CreateVirtualClusterCommand) GetCpuLimitsOk() (*CreateVirtualClusterRes
 	return o.CpuLimits.Get(), o.CpuLimits.IsSet()
 }
 
-// SetCpuLimits sets field value
+// HasCpuLimits returns a boolean if a field has been set.
+func (o *CreateVirtualClusterCommand) HasCpuLimits() bool {
+	if o != nil && o.CpuLimits.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCpuLimits gets a reference to the given NullableCreateVirtualClusterResourceLimits and assigns it to the CpuLimits field.
 func (o *CreateVirtualClusterCommand) SetCpuLimits(v CreateVirtualClusterResourceLimits) {
 	o.CpuLimits.Set(&v)
 }
+// SetCpuLimitsNil sets the value for CpuLimits to be an explicit nil
+func (o *CreateVirtualClusterCommand) SetCpuLimitsNil() {
+	o.CpuLimits.Set(nil)
+}
 
-// GetRamLimits returns the RamLimits field value
-// If the value is explicit nil, the zero value for CreateVirtualClusterResourceLimits will be returned
+// UnsetCpuLimits ensures that no value is present for CpuLimits, not even an explicit nil
+func (o *CreateVirtualClusterCommand) UnsetCpuLimits() {
+	o.CpuLimits.Unset()
+}
+
+// GetRamLimits returns the RamLimits field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateVirtualClusterCommand) GetRamLimits() CreateVirtualClusterResourceLimits {
-	if o == nil || o.RamLimits.Get() == nil {
+	if o == nil || IsNil(o.RamLimits.Get()) {
 		var ret CreateVirtualClusterResourceLimits
 		return ret
 	}
-
 	return *o.RamLimits.Get()
 }
 
-// GetRamLimitsOk returns a tuple with the RamLimits field value
+// GetRamLimitsOk returns a tuple with the RamLimits field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateVirtualClusterCommand) GetRamLimitsOk() (*CreateVirtualClusterResourceLimits, bool) {
@@ -313,23 +398,39 @@ func (o *CreateVirtualClusterCommand) GetRamLimitsOk() (*CreateVirtualClusterRes
 	return o.RamLimits.Get(), o.RamLimits.IsSet()
 }
 
-// SetRamLimits sets field value
+// HasRamLimits returns a boolean if a field has been set.
+func (o *CreateVirtualClusterCommand) HasRamLimits() bool {
+	if o != nil && o.RamLimits.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRamLimits gets a reference to the given NullableCreateVirtualClusterResourceLimits and assigns it to the RamLimits field.
 func (o *CreateVirtualClusterCommand) SetRamLimits(v CreateVirtualClusterResourceLimits) {
 	o.RamLimits.Set(&v)
 }
+// SetRamLimitsNil sets the value for RamLimits to be an explicit nil
+func (o *CreateVirtualClusterCommand) SetRamLimitsNil() {
+	o.RamLimits.Set(nil)
+}
 
-// GetEphemeralStorageLimits returns the EphemeralStorageLimits field value
-// If the value is explicit nil, the zero value for CreateVirtualClusterResourceLimits will be returned
+// UnsetRamLimits ensures that no value is present for RamLimits, not even an explicit nil
+func (o *CreateVirtualClusterCommand) UnsetRamLimits() {
+	o.RamLimits.Unset()
+}
+
+// GetEphemeralStorageLimits returns the EphemeralStorageLimits field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateVirtualClusterCommand) GetEphemeralStorageLimits() CreateVirtualClusterResourceLimits {
-	if o == nil || o.EphemeralStorageLimits.Get() == nil {
+	if o == nil || IsNil(o.EphemeralStorageLimits.Get()) {
 		var ret CreateVirtualClusterResourceLimits
 		return ret
 	}
-
 	return *o.EphemeralStorageLimits.Get()
 }
 
-// GetEphemeralStorageLimitsOk returns a tuple with the EphemeralStorageLimits field value
+// GetEphemeralStorageLimitsOk returns a tuple with the EphemeralStorageLimits field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateVirtualClusterCommand) GetEphemeralStorageLimitsOk() (*CreateVirtualClusterResourceLimits, bool) {
@@ -339,9 +440,27 @@ func (o *CreateVirtualClusterCommand) GetEphemeralStorageLimitsOk() (*CreateVirt
 	return o.EphemeralStorageLimits.Get(), o.EphemeralStorageLimits.IsSet()
 }
 
-// SetEphemeralStorageLimits sets field value
+// HasEphemeralStorageLimits returns a boolean if a field has been set.
+func (o *CreateVirtualClusterCommand) HasEphemeralStorageLimits() bool {
+	if o != nil && o.EphemeralStorageLimits.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEphemeralStorageLimits gets a reference to the given NullableCreateVirtualClusterResourceLimits and assigns it to the EphemeralStorageLimits field.
 func (o *CreateVirtualClusterCommand) SetEphemeralStorageLimits(v CreateVirtualClusterResourceLimits) {
 	o.EphemeralStorageLimits.Set(&v)
+}
+// SetEphemeralStorageLimitsNil sets the value for EphemeralStorageLimits to be an explicit nil
+func (o *CreateVirtualClusterCommand) SetEphemeralStorageLimitsNil() {
+	o.EphemeralStorageLimits.Set(nil)
+}
+
+// UnsetEphemeralStorageLimits ensures that no value is present for EphemeralStorageLimits, not even an explicit nil
+func (o *CreateVirtualClusterCommand) UnsetEphemeralStorageLimits() {
+	o.EphemeralStorageLimits.Unset()
 }
 
 func (o CreateVirtualClusterCommand) MarshalJSON() ([]byte, error) {
@@ -354,17 +473,35 @@ func (o CreateVirtualClusterCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateVirtualClusterCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["cloudId"] = o.CloudId.Get()
+	if o.CloudId.IsSet() {
+		toSerialize["cloudId"] = o.CloudId.Get()
+	}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["name"] = o.Name
-	toSerialize["expiredAt"] = o.ExpiredAt.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if o.ExpiredAt.IsSet() {
+		toSerialize["expiredAt"] = o.ExpiredAt.Get()
+	}
 	toSerialize["deleteOnExpiration"] = o.DeleteOnExpiration
-	toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
-	toSerialize["exposeHostname"] = o.ExposeHostname
-	toSerialize["workloadResources"] = o.WorkloadResources.Get()
-	toSerialize["cpuLimits"] = o.CpuLimits.Get()
-	toSerialize["ramLimits"] = o.RamLimits.Get()
-	toSerialize["ephemeralStorageLimits"] = o.EphemeralStorageLimits.Get()
+	if o.AlertingProfileId.IsSet() {
+		toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
+	}
+	if !IsNil(o.ExposeHostname) {
+		toSerialize["exposeHostname"] = o.ExposeHostname
+	}
+	if o.WorkloadResources.IsSet() {
+		toSerialize["workloadResources"] = o.WorkloadResources.Get()
+	}
+	if o.CpuLimits.IsSet() {
+		toSerialize["cpuLimits"] = o.CpuLimits.Get()
+	}
+	if o.RamLimits.IsSet() {
+		toSerialize["ramLimits"] = o.RamLimits.Get()
+	}
+	if o.EphemeralStorageLimits.IsSet() {
+		toSerialize["ephemeralStorageLimits"] = o.EphemeralStorageLimits.Get()
+	}
 	return toSerialize, nil
 }
 
@@ -373,17 +510,8 @@ func (o *CreateVirtualClusterCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"cloudId",
 		"projectId",
-		"name",
-		"expiredAt",
 		"deleteOnExpiration",
-		"alertingProfileId",
-		"exposeHostname",
-		"workloadResources",
-		"cpuLimits",
-		"ramLimits",
-		"ephemeralStorageLimits",
 	}
 
 	allProperties := make(map[string]interface{})

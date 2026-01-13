@@ -22,9 +22,9 @@ var _ MappedNullable = &GroupedBillingInfo{}
 
 // GroupedBillingInfo struct for GroupedBillingInfo
 type GroupedBillingInfo struct {
-	Data []GroupedBillings `json:"data"`
+	Data []GroupedBillings `json:"data,omitempty"`
 	ProjectId int32 `json:"projectId"`
-	ProjectName string `json:"projectName"`
+	ProjectName *string `json:"projectName,omitempty"`
 }
 
 type _GroupedBillingInfo GroupedBillingInfo
@@ -33,11 +33,9 @@ type _GroupedBillingInfo GroupedBillingInfo
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroupedBillingInfo(data []GroupedBillings, projectId int32, projectName string) *GroupedBillingInfo {
+func NewGroupedBillingInfo(projectId int32) *GroupedBillingInfo {
 	this := GroupedBillingInfo{}
-	this.Data = data
 	this.ProjectId = projectId
-	this.ProjectName = projectName
 	return &this
 }
 
@@ -49,26 +47,34 @@ func NewGroupedBillingInfoWithDefaults() *GroupedBillingInfo {
 	return &this
 }
 
-// GetData returns the Data field value
+// GetData returns the Data field value if set, zero value otherwise.
 func (o *GroupedBillingInfo) GetData() []GroupedBillings {
-	if o == nil {
+	if o == nil || IsNil(o.Data) {
 		var ret []GroupedBillings
 		return ret
 	}
-
 	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value
+// GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupedBillingInfo) GetDataOk() ([]GroupedBillings, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
 	return o.Data, true
 }
 
-// SetData sets field value
+// HasData returns a boolean if a field has been set.
+func (o *GroupedBillingInfo) HasData() bool {
+	if o != nil && !IsNil(o.Data) {
+		return true
+	}
+
+	return false
+}
+
+// SetData gets a reference to the given []GroupedBillings and assigns it to the Data field.
 func (o *GroupedBillingInfo) SetData(v []GroupedBillings) {
 	o.Data = v
 }
@@ -97,28 +103,36 @@ func (o *GroupedBillingInfo) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetProjectName returns the ProjectName field value
+// GetProjectName returns the ProjectName field value if set, zero value otherwise.
 func (o *GroupedBillingInfo) GetProjectName() string {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		var ret string
 		return ret
 	}
-
-	return o.ProjectName
+	return *o.ProjectName
 }
 
-// GetProjectNameOk returns a tuple with the ProjectName field value
+// GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupedBillingInfo) GetProjectNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		return nil, false
 	}
-	return &o.ProjectName, true
+	return o.ProjectName, true
 }
 
-// SetProjectName sets field value
+// HasProjectName returns a boolean if a field has been set.
+func (o *GroupedBillingInfo) HasProjectName() bool {
+	if o != nil && !IsNil(o.ProjectName) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectName gets a reference to the given string and assigns it to the ProjectName field.
 func (o *GroupedBillingInfo) SetProjectName(v string) {
-	o.ProjectName = v
+	o.ProjectName = &v
 }
 
 func (o GroupedBillingInfo) MarshalJSON() ([]byte, error) {
@@ -131,9 +145,13 @@ func (o GroupedBillingInfo) MarshalJSON() ([]byte, error) {
 
 func (o GroupedBillingInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["data"] = o.Data
+	if !IsNil(o.Data) {
+		toSerialize["data"] = o.Data
+	}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["projectName"] = o.ProjectName
+	if !IsNil(o.ProjectName) {
+		toSerialize["projectName"] = o.ProjectName
+	}
 	return toSerialize, nil
 }
 
@@ -142,9 +160,7 @@ func (o *GroupedBillingInfo) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"data",
 		"projectId",
-		"projectName",
 	}
 
 	allProperties := make(map[string]interface{})

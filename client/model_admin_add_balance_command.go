@@ -22,7 +22,7 @@ var _ MappedNullable = &AdminAddBalanceCommand{}
 
 // AdminAddBalanceCommand struct for AdminAddBalanceCommand
 type AdminAddBalanceCommand struct {
-	CustomerId string `json:"customerId"`
+	CustomerId *string `json:"customerId,omitempty"`
 	Balance int64 `json:"balance"`
 }
 
@@ -32,9 +32,8 @@ type _AdminAddBalanceCommand AdminAddBalanceCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAdminAddBalanceCommand(customerId string, balance int64) *AdminAddBalanceCommand {
+func NewAdminAddBalanceCommand(balance int64) *AdminAddBalanceCommand {
 	this := AdminAddBalanceCommand{}
-	this.CustomerId = customerId
 	this.Balance = balance
 	return &this
 }
@@ -47,28 +46,36 @@ func NewAdminAddBalanceCommandWithDefaults() *AdminAddBalanceCommand {
 	return &this
 }
 
-// GetCustomerId returns the CustomerId field value
+// GetCustomerId returns the CustomerId field value if set, zero value otherwise.
 func (o *AdminAddBalanceCommand) GetCustomerId() string {
-	if o == nil {
+	if o == nil || IsNil(o.CustomerId) {
 		var ret string
 		return ret
 	}
-
-	return o.CustomerId
+	return *o.CustomerId
 }
 
-// GetCustomerIdOk returns a tuple with the CustomerId field value
+// GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AdminAddBalanceCommand) GetCustomerIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CustomerId) {
 		return nil, false
 	}
-	return &o.CustomerId, true
+	return o.CustomerId, true
 }
 
-// SetCustomerId sets field value
+// HasCustomerId returns a boolean if a field has been set.
+func (o *AdminAddBalanceCommand) HasCustomerId() bool {
+	if o != nil && !IsNil(o.CustomerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomerId gets a reference to the given string and assigns it to the CustomerId field.
 func (o *AdminAddBalanceCommand) SetCustomerId(v string) {
-	o.CustomerId = v
+	o.CustomerId = &v
 }
 
 // GetBalance returns the Balance field value
@@ -105,7 +112,9 @@ func (o AdminAddBalanceCommand) MarshalJSON() ([]byte, error) {
 
 func (o AdminAddBalanceCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["customerId"] = o.CustomerId
+	if !IsNil(o.CustomerId) {
+		toSerialize["customerId"] = o.CustomerId
+	}
 	toSerialize["balance"] = o.Balance
 	return toSerialize, nil
 }
@@ -115,7 +124,6 @@ func (o *AdminAddBalanceCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"customerId",
 		"balance",
 	}
 

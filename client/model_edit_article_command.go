@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the EditArticleCommand type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &EditArticleCommand{}
 
 // EditArticleCommand struct for EditArticleCommand
 type EditArticleCommand struct {
-	MessageId string `json:"messageId"`
-	Body string `json:"body"`
+	MessageId *string `json:"messageId,omitempty"`
+	Body *string `json:"body,omitempty"`
 }
-
-type _EditArticleCommand EditArticleCommand
 
 // NewEditArticleCommand instantiates a new EditArticleCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEditArticleCommand(messageId string, body string) *EditArticleCommand {
+func NewEditArticleCommand() *EditArticleCommand {
 	this := EditArticleCommand{}
-	this.MessageId = messageId
-	this.Body = body
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewEditArticleCommandWithDefaults() *EditArticleCommand {
 	return &this
 }
 
-// GetMessageId returns the MessageId field value
+// GetMessageId returns the MessageId field value if set, zero value otherwise.
 func (o *EditArticleCommand) GetMessageId() string {
-	if o == nil {
+	if o == nil || IsNil(o.MessageId) {
 		var ret string
 		return ret
 	}
-
-	return o.MessageId
+	return *o.MessageId
 }
 
-// GetMessageIdOk returns a tuple with the MessageId field value
+// GetMessageIdOk returns a tuple with the MessageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EditArticleCommand) GetMessageIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.MessageId) {
 		return nil, false
 	}
-	return &o.MessageId, true
+	return o.MessageId, true
 }
 
-// SetMessageId sets field value
+// HasMessageId returns a boolean if a field has been set.
+func (o *EditArticleCommand) HasMessageId() bool {
+	if o != nil && !IsNil(o.MessageId) {
+		return true
+	}
+
+	return false
+}
+
+// SetMessageId gets a reference to the given string and assigns it to the MessageId field.
 func (o *EditArticleCommand) SetMessageId(v string) {
-	o.MessageId = v
+	o.MessageId = &v
 }
 
-// GetBody returns the Body field value
+// GetBody returns the Body field value if set, zero value otherwise.
 func (o *EditArticleCommand) GetBody() string {
-	if o == nil {
+	if o == nil || IsNil(o.Body) {
 		var ret string
 		return ret
 	}
-
-	return o.Body
+	return *o.Body
 }
 
-// GetBodyOk returns a tuple with the Body field value
+// GetBodyOk returns a tuple with the Body field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EditArticleCommand) GetBodyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Body) {
 		return nil, false
 	}
-	return &o.Body, true
+	return o.Body, true
 }
 
-// SetBody sets field value
+// HasBody returns a boolean if a field has been set.
+func (o *EditArticleCommand) HasBody() bool {
+	if o != nil && !IsNil(o.Body) {
+		return true
+	}
+
+	return false
+}
+
+// SetBody gets a reference to the given string and assigns it to the Body field.
 func (o *EditArticleCommand) SetBody(v string) {
-	o.Body = v
+	o.Body = &v
 }
 
 func (o EditArticleCommand) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o EditArticleCommand) MarshalJSON() ([]byte, error) {
 
 func (o EditArticleCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["messageId"] = o.MessageId
-	toSerialize["body"] = o.Body
+	if !IsNil(o.MessageId) {
+		toSerialize["messageId"] = o.MessageId
+	}
+	if !IsNil(o.Body) {
+		toSerialize["body"] = o.Body
+	}
 	return toSerialize, nil
-}
-
-func (o *EditArticleCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"messageId",
-		"body",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varEditArticleCommand := _EditArticleCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEditArticleCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = EditArticleCommand(varEditArticleCommand)
-
-	return err
 }
 
 type NullableEditArticleCommand struct {

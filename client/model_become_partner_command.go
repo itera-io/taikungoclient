@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the BecomePartnerCommand type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &BecomePartnerCommand{}
 
 // BecomePartnerCommand struct for BecomePartnerCommand
 type BecomePartnerCommand struct {
-	FullName string `json:"fullName"`
-	Email string `json:"email"`
+	FullName *string `json:"fullName,omitempty"`
+	Email *string `json:"email,omitempty"`
 }
-
-type _BecomePartnerCommand BecomePartnerCommand
 
 // NewBecomePartnerCommand instantiates a new BecomePartnerCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBecomePartnerCommand(fullName string, email string) *BecomePartnerCommand {
+func NewBecomePartnerCommand() *BecomePartnerCommand {
 	this := BecomePartnerCommand{}
-	this.FullName = fullName
-	this.Email = email
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewBecomePartnerCommandWithDefaults() *BecomePartnerCommand {
 	return &this
 }
 
-// GetFullName returns the FullName field value
+// GetFullName returns the FullName field value if set, zero value otherwise.
 func (o *BecomePartnerCommand) GetFullName() string {
-	if o == nil {
+	if o == nil || IsNil(o.FullName) {
 		var ret string
 		return ret
 	}
-
-	return o.FullName
+	return *o.FullName
 }
 
-// GetFullNameOk returns a tuple with the FullName field value
+// GetFullNameOk returns a tuple with the FullName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BecomePartnerCommand) GetFullNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.FullName) {
 		return nil, false
 	}
-	return &o.FullName, true
+	return o.FullName, true
 }
 
-// SetFullName sets field value
+// HasFullName returns a boolean if a field has been set.
+func (o *BecomePartnerCommand) HasFullName() bool {
+	if o != nil && !IsNil(o.FullName) {
+		return true
+	}
+
+	return false
+}
+
+// SetFullName gets a reference to the given string and assigns it to the FullName field.
 func (o *BecomePartnerCommand) SetFullName(v string) {
-	o.FullName = v
+	o.FullName = &v
 }
 
-// GetEmail returns the Email field value
+// GetEmail returns the Email field value if set, zero value otherwise.
 func (o *BecomePartnerCommand) GetEmail() string {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
-
-	return o.Email
+	return *o.Email
 }
 
-// GetEmailOk returns a tuple with the Email field value
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BecomePartnerCommand) GetEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
-	return &o.Email, true
+	return o.Email, true
 }
 
-// SetEmail sets field value
+// HasEmail returns a boolean if a field has been set.
+func (o *BecomePartnerCommand) HasEmail() bool {
+	if o != nil && !IsNil(o.Email) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmail gets a reference to the given string and assigns it to the Email field.
 func (o *BecomePartnerCommand) SetEmail(v string) {
-	o.Email = v
+	o.Email = &v
 }
 
 func (o BecomePartnerCommand) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o BecomePartnerCommand) MarshalJSON() ([]byte, error) {
 
 func (o BecomePartnerCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["fullName"] = o.FullName
-	toSerialize["email"] = o.Email
+	if !IsNil(o.FullName) {
+		toSerialize["fullName"] = o.FullName
+	}
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
 	return toSerialize, nil
-}
-
-func (o *BecomePartnerCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"fullName",
-		"email",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varBecomePartnerCommand := _BecomePartnerCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBecomePartnerCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = BecomePartnerCommand(varBecomePartnerCommand)
-
-	return err
 }
 
 type NullableBecomePartnerCommand struct {

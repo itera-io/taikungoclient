@@ -22,11 +22,11 @@ var _ MappedNullable = &ApiResponse{}
 
 // ApiResponse struct for ApiResponse
 type ApiResponse struct {
-	Id string `json:"id"`
+	Id *string `json:"id,omitempty"`
 	Status int32 `json:"status"`
-	Message string `json:"message"`
+	Message *string `json:"message,omitempty"`
 	IsError bool `json:"isError"`
-	Result interface{} `json:"result"`
+	Result interface{} `json:"result,omitempty"`
 }
 
 type _ApiResponse ApiResponse
@@ -35,13 +35,10 @@ type _ApiResponse ApiResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApiResponse(id string, status int32, message string, isError bool, result interface{}) *ApiResponse {
+func NewApiResponse(status int32, isError bool) *ApiResponse {
 	this := ApiResponse{}
-	this.Id = id
 	this.Status = status
-	this.Message = message
 	this.IsError = isError
-	this.Result = result
 	return &this
 }
 
@@ -53,28 +50,36 @@ func NewApiResponseWithDefaults() *ApiResponse {
 	return &this
 }
 
-// GetId returns the Id field value
+// GetId returns the Id field value if set, zero value otherwise.
 func (o *ApiResponse) GetId() string {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-
-	return o.Id
+	return *o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApiResponse) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return &o.Id, true
+	return o.Id, true
 }
 
-// SetId sets field value
+// HasId returns a boolean if a field has been set.
+func (o *ApiResponse) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ApiResponse) SetId(v string) {
-	o.Id = v
+	o.Id = &v
 }
 
 // GetStatus returns the Status field value
@@ -101,28 +106,36 @@ func (o *ApiResponse) SetStatus(v int32) {
 	o.Status = v
 }
 
-// GetMessage returns the Message field value
+// GetMessage returns the Message field value if set, zero value otherwise.
 func (o *ApiResponse) GetMessage() string {
-	if o == nil {
+	if o == nil || IsNil(o.Message) {
 		var ret string
 		return ret
 	}
-
-	return o.Message
+	return *o.Message
 }
 
-// GetMessageOk returns a tuple with the Message field value
+// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApiResponse) GetMessageOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Message) {
 		return nil, false
 	}
-	return &o.Message, true
+	return o.Message, true
 }
 
-// SetMessage sets field value
+// HasMessage returns a boolean if a field has been set.
+func (o *ApiResponse) HasMessage() bool {
+	if o != nil && !IsNil(o.Message) {
+		return true
+	}
+
+	return false
+}
+
+// SetMessage gets a reference to the given string and assigns it to the Message field.
 func (o *ApiResponse) SetMessage(v string) {
-	o.Message = v
+	o.Message = &v
 }
 
 // GetIsError returns the IsError field value
@@ -149,18 +162,16 @@ func (o *ApiResponse) SetIsError(v bool) {
 	o.IsError = v
 }
 
-// GetResult returns the Result field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetResult returns the Result field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApiResponse) GetResult() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.Result
 }
 
-// GetResultOk returns a tuple with the Result field value
+// GetResultOk returns a tuple with the Result field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApiResponse) GetResultOk() (*interface{}, bool) {
@@ -170,7 +181,16 @@ func (o *ApiResponse) GetResultOk() (*interface{}, bool) {
 	return &o.Result, true
 }
 
-// SetResult sets field value
+// HasResult returns a boolean if a field has been set.
+func (o *ApiResponse) HasResult() bool {
+	if o != nil && !IsNil(o.Result) {
+		return true
+	}
+
+	return false
+}
+
+// SetResult gets a reference to the given interface{} and assigns it to the Result field.
 func (o *ApiResponse) SetResult(v interface{}) {
 	o.Result = v
 }
@@ -185,9 +205,13 @@ func (o ApiResponse) MarshalJSON() ([]byte, error) {
 
 func (o ApiResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["status"] = o.Status
-	toSerialize["message"] = o.Message
+	if !IsNil(o.Message) {
+		toSerialize["message"] = o.Message
+	}
 	toSerialize["isError"] = o.IsError
 	if o.Result != nil {
 		toSerialize["result"] = o.Result
@@ -200,11 +224,8 @@ func (o *ApiResponse) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"id",
 		"status",
-		"message",
 		"isError",
-		"result",
 	}
 
 	allProperties := make(map[string]interface{})

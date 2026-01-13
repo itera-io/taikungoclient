@@ -24,8 +24,8 @@ var _ MappedNullable = &InternalAlertDto{}
 // InternalAlertDto struct for InternalAlertDto
 type InternalAlertDto struct {
 	Id int32 `json:"id"`
-	Fingerprint string `json:"fingerprint"`
-	Description string `json:"description"`
+	Fingerprint *string `json:"fingerprint,omitempty"`
+	Description *string `json:"description,omitempty"`
 	StartsAt time.Time `json:"startsAt"`
 	ProjectId int32 `json:"projectId"`
 }
@@ -36,11 +36,9 @@ type _InternalAlertDto InternalAlertDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInternalAlertDto(id int32, fingerprint string, description string, startsAt time.Time, projectId int32) *InternalAlertDto {
+func NewInternalAlertDto(id int32, startsAt time.Time, projectId int32) *InternalAlertDto {
 	this := InternalAlertDto{}
 	this.Id = id
-	this.Fingerprint = fingerprint
-	this.Description = description
 	this.StartsAt = startsAt
 	this.ProjectId = projectId
 	return &this
@@ -78,52 +76,68 @@ func (o *InternalAlertDto) SetId(v int32) {
 	o.Id = v
 }
 
-// GetFingerprint returns the Fingerprint field value
+// GetFingerprint returns the Fingerprint field value if set, zero value otherwise.
 func (o *InternalAlertDto) GetFingerprint() string {
-	if o == nil {
+	if o == nil || IsNil(o.Fingerprint) {
 		var ret string
 		return ret
 	}
-
-	return o.Fingerprint
+	return *o.Fingerprint
 }
 
-// GetFingerprintOk returns a tuple with the Fingerprint field value
+// GetFingerprintOk returns a tuple with the Fingerprint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InternalAlertDto) GetFingerprintOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Fingerprint) {
 		return nil, false
 	}
-	return &o.Fingerprint, true
+	return o.Fingerprint, true
 }
 
-// SetFingerprint sets field value
+// HasFingerprint returns a boolean if a field has been set.
+func (o *InternalAlertDto) HasFingerprint() bool {
+	if o != nil && !IsNil(o.Fingerprint) {
+		return true
+	}
+
+	return false
+}
+
+// SetFingerprint gets a reference to the given string and assigns it to the Fingerprint field.
 func (o *InternalAlertDto) SetFingerprint(v string) {
-	o.Fingerprint = v
+	o.Fingerprint = &v
 }
 
-// GetDescription returns the Description field value
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *InternalAlertDto) GetDescription() string {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-
-	return o.Description
+	return *o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InternalAlertDto) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description, true
 }
 
-// SetDescription sets field value
+// HasDescription returns a boolean if a field has been set.
+func (o *InternalAlertDto) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *InternalAlertDto) SetDescription(v string) {
-	o.Description = v
+	o.Description = &v
 }
 
 // GetStartsAt returns the StartsAt field value
@@ -185,8 +199,12 @@ func (o InternalAlertDto) MarshalJSON() ([]byte, error) {
 func (o InternalAlertDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["fingerprint"] = o.Fingerprint
-	toSerialize["description"] = o.Description
+	if !IsNil(o.Fingerprint) {
+		toSerialize["fingerprint"] = o.Fingerprint
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
 	toSerialize["startsAt"] = o.StartsAt
 	toSerialize["projectId"] = o.ProjectId
 	return toSerialize, nil
@@ -198,8 +216,6 @@ func (o *InternalAlertDto) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"fingerprint",
-		"description",
 		"startsAt",
 		"projectId",
 	}

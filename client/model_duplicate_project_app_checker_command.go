@@ -23,8 +23,8 @@ var _ MappedNullable = &DuplicateProjectAppCheckerCommand{}
 // DuplicateProjectAppCheckerCommand struct for DuplicateProjectAppCheckerCommand
 type DuplicateProjectAppCheckerCommand struct {
 	ProjectId int32 `json:"projectId"`
-	Name string `json:"name"`
-	Namespace string `json:"namespace"`
+	Name *string `json:"name,omitempty"`
+	Namespace *string `json:"namespace,omitempty"`
 }
 
 type _DuplicateProjectAppCheckerCommand DuplicateProjectAppCheckerCommand
@@ -33,11 +33,9 @@ type _DuplicateProjectAppCheckerCommand DuplicateProjectAppCheckerCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDuplicateProjectAppCheckerCommand(projectId int32, name string, namespace string) *DuplicateProjectAppCheckerCommand {
+func NewDuplicateProjectAppCheckerCommand(projectId int32) *DuplicateProjectAppCheckerCommand {
 	this := DuplicateProjectAppCheckerCommand{}
 	this.ProjectId = projectId
-	this.Name = name
-	this.Namespace = namespace
 	return &this
 }
 
@@ -73,52 +71,68 @@ func (o *DuplicateProjectAppCheckerCommand) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *DuplicateProjectAppCheckerCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DuplicateProjectAppCheckerCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *DuplicateProjectAppCheckerCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DuplicateProjectAppCheckerCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetNamespace returns the Namespace field value
+// GetNamespace returns the Namespace field value if set, zero value otherwise.
 func (o *DuplicateProjectAppCheckerCommand) GetNamespace() string {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		var ret string
 		return ret
 	}
-
-	return o.Namespace
+	return *o.Namespace
 }
 
-// GetNamespaceOk returns a tuple with the Namespace field value
+// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DuplicateProjectAppCheckerCommand) GetNamespaceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		return nil, false
 	}
-	return &o.Namespace, true
+	return o.Namespace, true
 }
 
-// SetNamespace sets field value
+// HasNamespace returns a boolean if a field has been set.
+func (o *DuplicateProjectAppCheckerCommand) HasNamespace() bool {
+	if o != nil && !IsNil(o.Namespace) {
+		return true
+	}
+
+	return false
+}
+
+// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *DuplicateProjectAppCheckerCommand) SetNamespace(v string) {
-	o.Namespace = v
+	o.Namespace = &v
 }
 
 func (o DuplicateProjectAppCheckerCommand) MarshalJSON() ([]byte, error) {
@@ -132,8 +146,12 @@ func (o DuplicateProjectAppCheckerCommand) MarshalJSON() ([]byte, error) {
 func (o DuplicateProjectAppCheckerCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["name"] = o.Name
-	toSerialize["namespace"] = o.Namespace
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Namespace) {
+		toSerialize["namespace"] = o.Namespace
+	}
 	return toSerialize, nil
 }
 
@@ -143,8 +161,6 @@ func (o *DuplicateProjectAppCheckerCommand) UnmarshalJSON(data []byte) (err erro
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"name",
-		"namespace",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -23,7 +23,7 @@ var _ MappedNullable = &OpaProfileUpdateCommand{}
 // OpaProfileUpdateCommand struct for OpaProfileUpdateCommand
 type OpaProfileUpdateCommand struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	ForbidNodePort NullableBool `json:"forbidNodePort,omitempty"`
 	ForbidHttpIngress NullableBool `json:"forbidHttpIngress,omitempty"`
 	RequireProbe NullableBool `json:"requireProbe,omitempty"`
@@ -32,10 +32,10 @@ type OpaProfileUpdateCommand struct {
 	IsNodeNameForbiddenInVC NullableBool `json:"isNodeNameForbiddenInVC,omitempty"`
 	IsMasterTaintEnforced NullableBool `json:"isMasterTaintEnforced,omitempty"`
 	ForcePodResource NullableBool `json:"forcePodResource,omitempty"`
-	AllowedRepo []string `json:"allowedRepo"`
-	ForbidSpecificTags []string `json:"forbidSpecificTags"`
-	IngressWhitelist []string `json:"ingressWhitelist"`
-	WhitelistMasterTaintNamespaces []string `json:"whitelistMasterTaintNamespaces"`
+	AllowedRepo []string `json:"allowedRepo,omitempty"`
+	ForbidSpecificTags []string `json:"forbidSpecificTags,omitempty"`
+	IngressWhitelist []string `json:"ingressWhitelist,omitempty"`
+	WhitelistMasterTaintNamespaces []string `json:"whitelistMasterTaintNamespaces,omitempty"`
 }
 
 type _OpaProfileUpdateCommand OpaProfileUpdateCommand
@@ -44,14 +44,9 @@ type _OpaProfileUpdateCommand OpaProfileUpdateCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOpaProfileUpdateCommand(id int32, name string, allowedRepo []string, forbidSpecificTags []string, ingressWhitelist []string, whitelistMasterTaintNamespaces []string) *OpaProfileUpdateCommand {
+func NewOpaProfileUpdateCommand(id int32) *OpaProfileUpdateCommand {
 	this := OpaProfileUpdateCommand{}
 	this.Id = id
-	this.Name = name
-	this.AllowedRepo = allowedRepo
-	this.ForbidSpecificTags = forbidSpecificTags
-	this.IngressWhitelist = ingressWhitelist
-	this.WhitelistMasterTaintNamespaces = whitelistMasterTaintNamespaces
 	return &this
 }
 
@@ -87,28 +82,36 @@ func (o *OpaProfileUpdateCommand) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *OpaProfileUpdateCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpaProfileUpdateCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *OpaProfileUpdateCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *OpaProfileUpdateCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetForbidNodePort returns the ForbidNodePort field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -447,98 +450,130 @@ func (o *OpaProfileUpdateCommand) UnsetForcePodResource() {
 	o.ForcePodResource.Unset()
 }
 
-// GetAllowedRepo returns the AllowedRepo field value
+// GetAllowedRepo returns the AllowedRepo field value if set, zero value otherwise.
 func (o *OpaProfileUpdateCommand) GetAllowedRepo() []string {
-	if o == nil {
+	if o == nil || IsNil(o.AllowedRepo) {
 		var ret []string
 		return ret
 	}
-
 	return o.AllowedRepo
 }
 
-// GetAllowedRepoOk returns a tuple with the AllowedRepo field value
+// GetAllowedRepoOk returns a tuple with the AllowedRepo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpaProfileUpdateCommand) GetAllowedRepoOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AllowedRepo) {
 		return nil, false
 	}
 	return o.AllowedRepo, true
 }
 
-// SetAllowedRepo sets field value
+// HasAllowedRepo returns a boolean if a field has been set.
+func (o *OpaProfileUpdateCommand) HasAllowedRepo() bool {
+	if o != nil && !IsNil(o.AllowedRepo) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedRepo gets a reference to the given []string and assigns it to the AllowedRepo field.
 func (o *OpaProfileUpdateCommand) SetAllowedRepo(v []string) {
 	o.AllowedRepo = v
 }
 
-// GetForbidSpecificTags returns the ForbidSpecificTags field value
+// GetForbidSpecificTags returns the ForbidSpecificTags field value if set, zero value otherwise.
 func (o *OpaProfileUpdateCommand) GetForbidSpecificTags() []string {
-	if o == nil {
+	if o == nil || IsNil(o.ForbidSpecificTags) {
 		var ret []string
 		return ret
 	}
-
 	return o.ForbidSpecificTags
 }
 
-// GetForbidSpecificTagsOk returns a tuple with the ForbidSpecificTags field value
+// GetForbidSpecificTagsOk returns a tuple with the ForbidSpecificTags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpaProfileUpdateCommand) GetForbidSpecificTagsOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ForbidSpecificTags) {
 		return nil, false
 	}
 	return o.ForbidSpecificTags, true
 }
 
-// SetForbidSpecificTags sets field value
+// HasForbidSpecificTags returns a boolean if a field has been set.
+func (o *OpaProfileUpdateCommand) HasForbidSpecificTags() bool {
+	if o != nil && !IsNil(o.ForbidSpecificTags) {
+		return true
+	}
+
+	return false
+}
+
+// SetForbidSpecificTags gets a reference to the given []string and assigns it to the ForbidSpecificTags field.
 func (o *OpaProfileUpdateCommand) SetForbidSpecificTags(v []string) {
 	o.ForbidSpecificTags = v
 }
 
-// GetIngressWhitelist returns the IngressWhitelist field value
+// GetIngressWhitelist returns the IngressWhitelist field value if set, zero value otherwise.
 func (o *OpaProfileUpdateCommand) GetIngressWhitelist() []string {
-	if o == nil {
+	if o == nil || IsNil(o.IngressWhitelist) {
 		var ret []string
 		return ret
 	}
-
 	return o.IngressWhitelist
 }
 
-// GetIngressWhitelistOk returns a tuple with the IngressWhitelist field value
+// GetIngressWhitelistOk returns a tuple with the IngressWhitelist field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpaProfileUpdateCommand) GetIngressWhitelistOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.IngressWhitelist) {
 		return nil, false
 	}
 	return o.IngressWhitelist, true
 }
 
-// SetIngressWhitelist sets field value
+// HasIngressWhitelist returns a boolean if a field has been set.
+func (o *OpaProfileUpdateCommand) HasIngressWhitelist() bool {
+	if o != nil && !IsNil(o.IngressWhitelist) {
+		return true
+	}
+
+	return false
+}
+
+// SetIngressWhitelist gets a reference to the given []string and assigns it to the IngressWhitelist field.
 func (o *OpaProfileUpdateCommand) SetIngressWhitelist(v []string) {
 	o.IngressWhitelist = v
 }
 
-// GetWhitelistMasterTaintNamespaces returns the WhitelistMasterTaintNamespaces field value
+// GetWhitelistMasterTaintNamespaces returns the WhitelistMasterTaintNamespaces field value if set, zero value otherwise.
 func (o *OpaProfileUpdateCommand) GetWhitelistMasterTaintNamespaces() []string {
-	if o == nil {
+	if o == nil || IsNil(o.WhitelistMasterTaintNamespaces) {
 		var ret []string
 		return ret
 	}
-
 	return o.WhitelistMasterTaintNamespaces
 }
 
-// GetWhitelistMasterTaintNamespacesOk returns a tuple with the WhitelistMasterTaintNamespaces field value
+// GetWhitelistMasterTaintNamespacesOk returns a tuple with the WhitelistMasterTaintNamespaces field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpaProfileUpdateCommand) GetWhitelistMasterTaintNamespacesOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.WhitelistMasterTaintNamespaces) {
 		return nil, false
 	}
 	return o.WhitelistMasterTaintNamespaces, true
 }
 
-// SetWhitelistMasterTaintNamespaces sets field value
+// HasWhitelistMasterTaintNamespaces returns a boolean if a field has been set.
+func (o *OpaProfileUpdateCommand) HasWhitelistMasterTaintNamespaces() bool {
+	if o != nil && !IsNil(o.WhitelistMasterTaintNamespaces) {
+		return true
+	}
+
+	return false
+}
+
+// SetWhitelistMasterTaintNamespaces gets a reference to the given []string and assigns it to the WhitelistMasterTaintNamespaces field.
 func (o *OpaProfileUpdateCommand) SetWhitelistMasterTaintNamespaces(v []string) {
 	o.WhitelistMasterTaintNamespaces = v
 }
@@ -554,7 +589,9 @@ func (o OpaProfileUpdateCommand) MarshalJSON() ([]byte, error) {
 func (o OpaProfileUpdateCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	if o.ForbidNodePort.IsSet() {
 		toSerialize["forbidNodePort"] = o.ForbidNodePort.Get()
 	}
@@ -579,10 +616,18 @@ func (o OpaProfileUpdateCommand) ToMap() (map[string]interface{}, error) {
 	if o.ForcePodResource.IsSet() {
 		toSerialize["forcePodResource"] = o.ForcePodResource.Get()
 	}
-	toSerialize["allowedRepo"] = o.AllowedRepo
-	toSerialize["forbidSpecificTags"] = o.ForbidSpecificTags
-	toSerialize["ingressWhitelist"] = o.IngressWhitelist
-	toSerialize["whitelistMasterTaintNamespaces"] = o.WhitelistMasterTaintNamespaces
+	if !IsNil(o.AllowedRepo) {
+		toSerialize["allowedRepo"] = o.AllowedRepo
+	}
+	if !IsNil(o.ForbidSpecificTags) {
+		toSerialize["forbidSpecificTags"] = o.ForbidSpecificTags
+	}
+	if !IsNil(o.IngressWhitelist) {
+		toSerialize["ingressWhitelist"] = o.IngressWhitelist
+	}
+	if !IsNil(o.WhitelistMasterTaintNamespaces) {
+		toSerialize["whitelistMasterTaintNamespaces"] = o.WhitelistMasterTaintNamespaces
+	}
 	return toSerialize, nil
 }
 
@@ -592,11 +637,6 @@ func (o *OpaProfileUpdateCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
-		"allowedRepo",
-		"forbidSpecificTags",
-		"ingressWhitelist",
-		"whitelistMasterTaintNamespaces",
 	}
 
 	allProperties := make(map[string]interface{})

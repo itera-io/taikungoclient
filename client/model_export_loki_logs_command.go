@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the ExportLokiLogsCommand type satisfies the MappedNullable interface at compile time
@@ -22,18 +20,15 @@ var _ MappedNullable = &ExportLokiLogsCommand{}
 
 // ExportLokiLogsCommand struct for ExportLokiLogsCommand
 type ExportLokiLogsCommand struct {
-	Query LokiLogsQuery `json:"query"`
+	Query *LokiLogsQuery `json:"query,omitempty"`
 }
-
-type _ExportLokiLogsCommand ExportLokiLogsCommand
 
 // NewExportLokiLogsCommand instantiates a new ExportLokiLogsCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewExportLokiLogsCommand(query LokiLogsQuery) *ExportLokiLogsCommand {
+func NewExportLokiLogsCommand() *ExportLokiLogsCommand {
 	this := ExportLokiLogsCommand{}
-	this.Query = query
 	return &this
 }
 
@@ -45,28 +40,36 @@ func NewExportLokiLogsCommandWithDefaults() *ExportLokiLogsCommand {
 	return &this
 }
 
-// GetQuery returns the Query field value
+// GetQuery returns the Query field value if set, zero value otherwise.
 func (o *ExportLokiLogsCommand) GetQuery() LokiLogsQuery {
-	if o == nil {
+	if o == nil || IsNil(o.Query) {
 		var ret LokiLogsQuery
 		return ret
 	}
-
-	return o.Query
+	return *o.Query
 }
 
-// GetQueryOk returns a tuple with the Query field value
+// GetQueryOk returns a tuple with the Query field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExportLokiLogsCommand) GetQueryOk() (*LokiLogsQuery, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Query) {
 		return nil, false
 	}
-	return &o.Query, true
+	return o.Query, true
 }
 
-// SetQuery sets field value
+// HasQuery returns a boolean if a field has been set.
+func (o *ExportLokiLogsCommand) HasQuery() bool {
+	if o != nil && !IsNil(o.Query) {
+		return true
+	}
+
+	return false
+}
+
+// SetQuery gets a reference to the given LokiLogsQuery and assigns it to the Query field.
 func (o *ExportLokiLogsCommand) SetQuery(v LokiLogsQuery) {
-	o.Query = v
+	o.Query = &v
 }
 
 func (o ExportLokiLogsCommand) MarshalJSON() ([]byte, error) {
@@ -79,45 +82,10 @@ func (o ExportLokiLogsCommand) MarshalJSON() ([]byte, error) {
 
 func (o ExportLokiLogsCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["query"] = o.Query
+	if !IsNil(o.Query) {
+		toSerialize["query"] = o.Query
+	}
 	return toSerialize, nil
-}
-
-func (o *ExportLokiLogsCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"query",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varExportLokiLogsCommand := _ExportLokiLogsCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varExportLokiLogsCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ExportLokiLogsCommand(varExportLokiLogsCommand)
-
-	return err
 }
 
 type NullableExportLokiLogsCommand struct {

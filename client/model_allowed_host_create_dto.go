@@ -22,8 +22,8 @@ var _ MappedNullable = &AllowedHostCreateDto{}
 
 // AllowedHostCreateDto struct for AllowedHostCreateDto
 type AllowedHostCreateDto struct {
-	Description string `json:"description"`
-	IpAddress string `json:"ipAddress"`
+	Description *string `json:"description,omitempty"`
+	IpAddress *string `json:"ipAddress,omitempty"`
 	MaskBits int32 `json:"maskBits"`
 }
 
@@ -33,10 +33,8 @@ type _AllowedHostCreateDto AllowedHostCreateDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAllowedHostCreateDto(description string, ipAddress string, maskBits int32) *AllowedHostCreateDto {
+func NewAllowedHostCreateDto(maskBits int32) *AllowedHostCreateDto {
 	this := AllowedHostCreateDto{}
-	this.Description = description
-	this.IpAddress = ipAddress
 	this.MaskBits = maskBits
 	return &this
 }
@@ -49,52 +47,68 @@ func NewAllowedHostCreateDtoWithDefaults() *AllowedHostCreateDto {
 	return &this
 }
 
-// GetDescription returns the Description field value
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *AllowedHostCreateDto) GetDescription() string {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-
-	return o.Description
+	return *o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AllowedHostCreateDto) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description, true
 }
 
-// SetDescription sets field value
+// HasDescription returns a boolean if a field has been set.
+func (o *AllowedHostCreateDto) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *AllowedHostCreateDto) SetDescription(v string) {
-	o.Description = v
+	o.Description = &v
 }
 
-// GetIpAddress returns the IpAddress field value
+// GetIpAddress returns the IpAddress field value if set, zero value otherwise.
 func (o *AllowedHostCreateDto) GetIpAddress() string {
-	if o == nil {
+	if o == nil || IsNil(o.IpAddress) {
 		var ret string
 		return ret
 	}
-
-	return o.IpAddress
+	return *o.IpAddress
 }
 
-// GetIpAddressOk returns a tuple with the IpAddress field value
+// GetIpAddressOk returns a tuple with the IpAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AllowedHostCreateDto) GetIpAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.IpAddress) {
 		return nil, false
 	}
-	return &o.IpAddress, true
+	return o.IpAddress, true
 }
 
-// SetIpAddress sets field value
+// HasIpAddress returns a boolean if a field has been set.
+func (o *AllowedHostCreateDto) HasIpAddress() bool {
+	if o != nil && !IsNil(o.IpAddress) {
+		return true
+	}
+
+	return false
+}
+
+// SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
 func (o *AllowedHostCreateDto) SetIpAddress(v string) {
-	o.IpAddress = v
+	o.IpAddress = &v
 }
 
 // GetMaskBits returns the MaskBits field value
@@ -131,8 +145,12 @@ func (o AllowedHostCreateDto) MarshalJSON() ([]byte, error) {
 
 func (o AllowedHostCreateDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["description"] = o.Description
-	toSerialize["ipAddress"] = o.IpAddress
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.IpAddress) {
+		toSerialize["ipAddress"] = o.IpAddress
+	}
 	toSerialize["maskBits"] = o.MaskBits
 	return toSerialize, nil
 }
@@ -142,8 +160,6 @@ func (o *AllowedHostCreateDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"description",
-		"ipAddress",
 		"maskBits",
 	}
 

@@ -23,8 +23,8 @@ var _ MappedNullable = &CatalogDropdownDto{}
 // CatalogDropdownDto struct for CatalogDropdownDto
 type CatalogDropdownDto struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
-	PackageIds []string `json:"packageIds"`
+	Name *string `json:"name,omitempty"`
+	PackageIds []string `json:"packageIds,omitempty"`
 	IsDefault bool `json:"isDefault"`
 }
 
@@ -34,11 +34,9 @@ type _CatalogDropdownDto CatalogDropdownDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogDropdownDto(id int32, name string, packageIds []string, isDefault bool) *CatalogDropdownDto {
+func NewCatalogDropdownDto(id int32, isDefault bool) *CatalogDropdownDto {
 	this := CatalogDropdownDto{}
 	this.Id = id
-	this.Name = name
-	this.PackageIds = packageIds
 	this.IsDefault = isDefault
 	return &this
 }
@@ -75,50 +73,66 @@ func (o *CatalogDropdownDto) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CatalogDropdownDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CatalogDropdownDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CatalogDropdownDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CatalogDropdownDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetPackageIds returns the PackageIds field value
+// GetPackageIds returns the PackageIds field value if set, zero value otherwise.
 func (o *CatalogDropdownDto) GetPackageIds() []string {
-	if o == nil {
+	if o == nil || IsNil(o.PackageIds) {
 		var ret []string
 		return ret
 	}
-
 	return o.PackageIds
 }
 
-// GetPackageIdsOk returns a tuple with the PackageIds field value
+// GetPackageIdsOk returns a tuple with the PackageIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CatalogDropdownDto) GetPackageIdsOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PackageIds) {
 		return nil, false
 	}
 	return o.PackageIds, true
 }
 
-// SetPackageIds sets field value
+// HasPackageIds returns a boolean if a field has been set.
+func (o *CatalogDropdownDto) HasPackageIds() bool {
+	if o != nil && !IsNil(o.PackageIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetPackageIds gets a reference to the given []string and assigns it to the PackageIds field.
 func (o *CatalogDropdownDto) SetPackageIds(v []string) {
 	o.PackageIds = v
 }
@@ -158,8 +172,12 @@ func (o CatalogDropdownDto) MarshalJSON() ([]byte, error) {
 func (o CatalogDropdownDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
-	toSerialize["packageIds"] = o.PackageIds
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.PackageIds) {
+		toSerialize["packageIds"] = o.PackageIds
+	}
 	toSerialize["isDefault"] = o.IsDefault
 	return toSerialize, nil
 }
@@ -170,8 +188,6 @@ func (o *CatalogDropdownDto) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
-		"packageIds",
 		"isDefault",
 	}
 

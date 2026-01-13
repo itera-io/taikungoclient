@@ -23,7 +23,7 @@ var _ MappedNullable = &BindFlavorToProjectCommand{}
 // BindFlavorToProjectCommand struct for BindFlavorToProjectCommand
 type BindFlavorToProjectCommand struct {
 	ProjectId int32 `json:"projectId"`
-	Flavors []string `json:"flavors"`
+	Flavors []string `json:"flavors,omitempty"`
 }
 
 type _BindFlavorToProjectCommand BindFlavorToProjectCommand
@@ -32,10 +32,9 @@ type _BindFlavorToProjectCommand BindFlavorToProjectCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBindFlavorToProjectCommand(projectId int32, flavors []string) *BindFlavorToProjectCommand {
+func NewBindFlavorToProjectCommand(projectId int32) *BindFlavorToProjectCommand {
 	this := BindFlavorToProjectCommand{}
 	this.ProjectId = projectId
-	this.Flavors = flavors
 	return &this
 }
 
@@ -71,26 +70,34 @@ func (o *BindFlavorToProjectCommand) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetFlavors returns the Flavors field value
+// GetFlavors returns the Flavors field value if set, zero value otherwise.
 func (o *BindFlavorToProjectCommand) GetFlavors() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Flavors) {
 		var ret []string
 		return ret
 	}
-
 	return o.Flavors
 }
 
-// GetFlavorsOk returns a tuple with the Flavors field value
+// GetFlavorsOk returns a tuple with the Flavors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BindFlavorToProjectCommand) GetFlavorsOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Flavors) {
 		return nil, false
 	}
 	return o.Flavors, true
 }
 
-// SetFlavors sets field value
+// HasFlavors returns a boolean if a field has been set.
+func (o *BindFlavorToProjectCommand) HasFlavors() bool {
+	if o != nil && !IsNil(o.Flavors) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlavors gets a reference to the given []string and assigns it to the Flavors field.
 func (o *BindFlavorToProjectCommand) SetFlavors(v []string) {
 	o.Flavors = v
 }
@@ -106,7 +113,9 @@ func (o BindFlavorToProjectCommand) MarshalJSON() ([]byte, error) {
 func (o BindFlavorToProjectCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["flavors"] = o.Flavors
+	if !IsNil(o.Flavors) {
+		toSerialize["flavors"] = o.Flavors
+	}
 	return toSerialize, nil
 }
 
@@ -116,7 +125,6 @@ func (o *BindFlavorToProjectCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"flavors",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the VerifyWebhookCommand type satisfies the MappedNullable interface at compile time
@@ -22,18 +20,15 @@ var _ MappedNullable = &VerifyWebhookCommand{}
 
 // VerifyWebhookCommand struct for VerifyWebhookCommand
 type VerifyWebhookCommand struct {
-	Url string `json:"url"`
+	Url *string `json:"url,omitempty"`
 }
-
-type _VerifyWebhookCommand VerifyWebhookCommand
 
 // NewVerifyWebhookCommand instantiates a new VerifyWebhookCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVerifyWebhookCommand(url string) *VerifyWebhookCommand {
+func NewVerifyWebhookCommand() *VerifyWebhookCommand {
 	this := VerifyWebhookCommand{}
-	this.Url = url
 	return &this
 }
 
@@ -45,28 +40,36 @@ func NewVerifyWebhookCommandWithDefaults() *VerifyWebhookCommand {
 	return &this
 }
 
-// GetUrl returns the Url field value
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *VerifyWebhookCommand) GetUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-
-	return o.Url
+	return *o.Url
 }
 
-// GetUrlOk returns a tuple with the Url field value
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VerifyWebhookCommand) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return &o.Url, true
+	return o.Url, true
 }
 
-// SetUrl sets field value
+// HasUrl returns a boolean if a field has been set.
+func (o *VerifyWebhookCommand) HasUrl() bool {
+	if o != nil && !IsNil(o.Url) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *VerifyWebhookCommand) SetUrl(v string) {
-	o.Url = v
+	o.Url = &v
 }
 
 func (o VerifyWebhookCommand) MarshalJSON() ([]byte, error) {
@@ -79,45 +82,10 @@ func (o VerifyWebhookCommand) MarshalJSON() ([]byte, error) {
 
 func (o VerifyWebhookCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["url"] = o.Url
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
 	return toSerialize, nil
-}
-
-func (o *VerifyWebhookCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"url",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varVerifyWebhookCommand := _VerifyWebhookCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVerifyWebhookCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = VerifyWebhookCommand(varVerifyWebhookCommand)
-
-	return err
 }
 
 type NullableVerifyWebhookCommand struct {

@@ -42440,7 +42440,6 @@ components:
           type: string
       required:
       - id
-      - mode
       type: object
     AccessProfilesSearchCommand:
       example:
@@ -42459,10 +42458,6 @@ components:
         searchTerm:
           nullable: true
           type: string
-      required:
-      - limit
-      - offset
-      - searchTerm
       type: object
     AccessProfilesSearchList:
       example:
@@ -42485,7 +42480,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     ActionStatus:
@@ -42677,7 +42671,6 @@ components:
           type: integer
       required:
       - balance
-      - customerId
       type: object
     AdminBillingOperationCommand:
       example:
@@ -42800,8 +42793,6 @@ components:
           type: string
       required:
       - id
-      - kubernetesCurrentVersion
-      - kubesprayCurrentVersion
       type: object
     AdminProjectsList:
       example:
@@ -42952,10 +42943,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      required:
-      - email
-      - password
-      - username
       type: object
     AdminUsersList:
       example:
@@ -43035,9 +43022,6 @@ components:
           type: string
         email:
           type: string
-      required:
-      - email
-      - id
       type: object
     AdminUsersUpdatePasswordCommand:
       example:
@@ -43048,9 +43032,6 @@ components:
           type: string
         password:
           type: string
-      required:
-      - id
-      - password
       type: object
     AiCredentials:
       example:
@@ -43228,10 +43209,6 @@ components:
           type: string
       required:
       - activeAt
-      - annotations
-      - labels
-      - state
-      - value
       type: object
     AlertData:
       example:
@@ -43469,8 +43446,6 @@ components:
           items:
             $ref: "#/components/schemas/Group"
           type: array
-      required:
-      - groups
       type: object
     AlertLabels:
       example:
@@ -43514,20 +43489,6 @@ components:
           type: string
         daemonset:
           type: string
-      required:
-      - alertname
-      - condition
-      - container
-      - daemonset
-      - endpoint
-      - instance
-      - job
-      - namespace
-      - node
-      - pod
-      - service
-      - severity
-      - status
       type: object
     AlertingEmailDto:
       example:
@@ -43801,7 +43762,6 @@ components:
           type: string
       required:
       - id
-      - mode
       type: object
     AlertingReminder:
       enum:
@@ -43832,9 +43792,7 @@ components:
             $ref: "#/components/schemas/WebhookHeaderDto"
           type: array
       required:
-      - headers
       - id
-      - url
       type: object
     AllFlavorsList:
       example:
@@ -44010,8 +43968,6 @@ components:
           format: int32
           type: integer
       required:
-      - description
-      - ipAddress
       - maskBits
       type: object
     AllowedHostList:
@@ -44092,11 +44048,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      required:
-      - awsAccessKeyId
-      - awsSecretAccessKey
-      - cloudId
-      - region
       type: object
     AmazonCredentialsListDto:
       example:
@@ -44195,9 +44146,6 @@ components:
           type: string
         title:
           type: string
-      required:
-      - description
-      - title
       type: object
     ApiResponse:
       example:
@@ -44218,10 +44166,7 @@ components:
           type: boolean
         result: {}
       required:
-      - id
       - isError
-      - message
-      - result
       - status
       type: object
     AppRepositoryList:
@@ -44283,8 +44228,6 @@ components:
       properties:
         ticketId:
           type: string
-      required:
-      - ticketId
       type: object
     ArticleList:
       example:
@@ -44440,10 +44383,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      required:
-      - name
-      - organizationId
-      - url
       type: object
     AttachDetachAlertingProfileCommand:
       example:
@@ -44458,7 +44397,6 @@ components:
           nullable: true
           type: integer
       required:
-      - alertingProfileId
       - projectId
       type: object
     AutoSyncManagementCommand:
@@ -44473,7 +44411,6 @@ components:
           type: string
       required:
       - id
-      - mode
       type: object
     AutoUpgradeProjectsCommand:
       type: object
@@ -44497,11 +44434,7 @@ components:
         controller:
           type: string
       required:
-      - controller
-      - description
       - id
-      - method
-      - path
       type: object
     AvailableEndpointsList:
       example:
@@ -44593,22 +44526,10 @@ components:
         hasJsonSchema:
           type: boolean
       required:
-      - appRepoId
-      - appRepoName
-      - appRepoOrganizationName
-      - appVersion
-      - boundCatalogs
-      - description
       - hasJsonSchema
-      - logoId
-      - name
       - official
-      - packageId
-      - readme
-      - securityReport
       - stars
       - verifiedPublisher
-      - version
       type: object
     AvailablePackagesDto:
       example:
@@ -44690,21 +44611,11 @@ components:
           nullable: true
           type: boolean
       required:
-      - appVersion
       - catalogId
       - deprecated
-      - description
       - isLocked
-      - logoImageId
-      - name
-      - normalizedName
-      - packageId
-      - repository
-      - securityReportSummary
       - signed
       - stars
-      - ts
-      - version
       type: object
     AvailablePackagesList:
       example:
@@ -44785,7 +44696,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     AwsCredentialList:
@@ -44860,10 +44770,6 @@ components:
           type: string
         certificate:
           type: string
-      required:
-      - certificate
-      - targetUrl
-      - token
       type: object
     AwsEksNodeGroupDto:
       example:
@@ -44926,21 +44832,10 @@ components:
             type: string
           type: array
       required:
-      - amiReleaseVersion
-      - amiType
-      - arn
-      - capacityType
-      - created
       - desiredSize
       - diskSize
-      - healthIssues
-      - instanceTypes
       - maxSize
       - minSize
-      - name
-      - role
-      - status
-      - version
       type: object
     AwsFlavorList:
       example:
@@ -45017,14 +44912,7 @@ components:
           type: array
       required:
       - cpu
-      - description
-      - linuxPrice
-      - linuxSpotPrice
-      - name
       - ram
-      - windowsPrice
-      - windowsSpotPrice
-      - zones
       type: object
     AwsImagesPostListCommand:
       example:
@@ -45070,13 +44958,6 @@ components:
       required:
       - cloudId
       - latest
-      - limit
-      - offset
-      - owners
-      - projectId
-      - search
-      - sortBy
-      - sortDirection
       type: object
     AwsRegionDto:
       example:
@@ -45087,9 +44968,6 @@ components:
           type: string
         region:
           type: string
-      required:
-      - name
-      - region
       type: object
     AwsValidateOwnerCommand:
       example:
@@ -45107,7 +44985,6 @@ components:
           type: array
       required:
       - cloudId
-      - owners
       type: object
     AzResult:
       example:
@@ -45139,10 +45016,6 @@ components:
           type: string
         location:
           type: string
-      required:
-      - clusterName
-      - location
-      - resourceGroupName
       type: object
     AzureCredentialList:
       example:
@@ -45310,7 +45183,6 @@ components:
           type: string
       required:
       - cloudId
-      - filterBy
       type: object
     AzureFlavorList:
       example:
@@ -45381,13 +45253,7 @@ components:
           type: number
       required:
       - cpu
-      - description
-      - linuxPrice
-      - linuxSpotPrice
-      - name
       - ram
-      - windowsPrice
-      - windowsSpotPrice
       type: object
     AzureLocationsCommand:
       example:
@@ -45404,11 +45270,6 @@ components:
           type: string
         azureTenantId:
           type: string
-      required:
-      - azureClientId
-      - azureClientSecret
-      - azureSubscriptionId
-      - azureTenantId
       type: object
     AzureOffersList:
       example:
@@ -45462,7 +45323,6 @@ components:
           type: string
       required:
       - currentUsage
-      - name
       - totalCores
       type: object
     AzureSkusList:
@@ -45495,10 +45355,6 @@ components:
           type: string
         tenantId:
           type: string
-      required:
-      - clientId
-      - clientSecret
-      - tenantId
       type: object
     AzureZonesCommand:
       example:
@@ -45523,13 +45379,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      required:
-      - azureClientId
-      - azureClientSecret
-      - azureLocation
-      - azureSubscriptionId
-      - azureTenantId
-      - cloudId
       type: object
     BackupCredentials:
       example:
@@ -45608,13 +45457,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      required:
-      - organizationId
-      - s3AccessKeyId
-      - s3Endpoint
-      - s3Name
-      - s3Region
-      - s3SecretKey
       type: object
     BackupCredentialsForOrganizationEntity:
       example:
@@ -45636,7 +45478,6 @@ components:
       - backupCredentialId
       - isDefault
       - isInfra
-      - name
       type: object
     BackupCredentialsListDto:
       example:
@@ -45733,10 +45574,6 @@ components:
           type: integer
         searchTerm:
           type: string
-      required:
-      - limit
-      - offset
-      - searchTerm
       type: object
     BackupCredentialsSearchList:
       example:
@@ -45759,7 +45596,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     BackupCredentialsUpdateCommand:
@@ -45780,9 +45616,6 @@ components:
           type: string
       required:
       - id
-      - s3AccessKeyId
-      - s3Name
-      - s3SecretKey
       type: object
     BackupDto:
       example:
@@ -45817,7 +45650,6 @@ components:
           type: string
       required:
       - id
-      - mode
       type: object
     BackupMakeDefaultCommand:
       example:
@@ -45882,9 +45714,6 @@ components:
           type: string
         email:
           type: string
-      required:
-      - email
-      - fullName
       type: object
     BillingCredentialsSearchCommand:
       example:
@@ -45902,10 +45731,6 @@ components:
           type: integer
         searchTerm:
           type: string
-      required:
-      - limit
-      - offset
-      - searchTerm
       type: object
     BillingCredentialsSearchList:
       example:
@@ -45928,7 +45753,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     BillingInfo:
@@ -45960,7 +45784,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       - totalTcu
       type: object
@@ -45993,6 +45816,13 @@ components:
       - legalName
       - vatNumber
       type: object
+    BillingPeriod:
+      enum:
+      - none
+      - daily
+      - monthly
+      - yearly
+      type: string
     BillingSummaryDto:
       example:
         isDeleted: true
@@ -46017,11 +45847,8 @@ components:
         isDeleted:
           type: boolean
       required:
-      - endDate
       - isDeleted
       - projectId
-      - projectName
-      - startDate
       - tcu
       type: object
     BindAppRepositoryCommand:
@@ -46041,9 +45868,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      required:
-      - filteringElements
-      - organizationId
       type: object
     BindFlavorToProjectCommand:
       example:
@@ -46060,7 +45884,6 @@ components:
             type: string
           type: array
       required:
-      - flavors
       - projectId
       type: object
     BindImageToProjectCommand:
@@ -46078,7 +45901,6 @@ components:
             type: string
           type: array
       required:
-      - images
       - projectId
       type: object
     BindSubscriptionCommand:
@@ -46116,13 +45938,6 @@ components:
           type: string
         invoiceFailureReason:
           type: string
-      required:
-      - invoiceFailureCode
-      - invoiceFailureMessage
-      - invoiceFailureReason
-      - paymentIntentClientSecret
-      - paymentIntentId
-      - status
       type: object
     BindUnbindEndpointToTokenCommand:
       example:
@@ -46150,8 +45965,6 @@ components:
           type: boolean
       required:
       - bindAll
-      - endpoints
-      - tokenId
       type: object
     BlockOrganizationCommand:
       type: object
@@ -46499,11 +46312,6 @@ components:
           type: string
         totalMonthlyUsageCost:
           type: string
-      required:
-      - resources
-      - totalHourlyCost
-      - totalMonthlyCost
-      - totalMonthlyUsageCost
       type: object
     BridgeListCommand:
       example:
@@ -46520,11 +46328,6 @@ components:
           type: string
         hypervisor:
           type: string
-      required:
-      - hypervisor
-      - tokenId
-      - tokenSecret
-      - url
       type: object
     ButtonStatusDto:
       example:
@@ -46546,7 +46349,6 @@ components:
       required:
       - enable
       - hidden
-      - reasons
       type: object
     ButtonStatusDto2:
       example:
@@ -46567,7 +46369,6 @@ components:
       required:
       - enable
       - hidden
-      - reasons
       type: object
     CBackupDto:
       example:
@@ -46904,24 +46705,12 @@ components:
           type: boolean
       required:
       - appRepoId
-      - appRepoName
-      - appRepoOrganizationName
-      - appVersion
       - catalogId
-      - catalogName
-      - description
       - hasJsonSchema
       - id
-      - logoId
-      - name
       - official
-      - packageId
-      - projectApps
-      - readme
-      - securityReport
       - stars
       - verifiedPublisher
-      - version
       type: object
     CatalogAppList:
       example:
@@ -46998,7 +46787,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     CatalogAppListDto:
@@ -47074,21 +46862,11 @@ components:
           nullable: true
           type: integer
       required:
-      - appVersion
       - catalogAppId
       - catalogId
-      - catalogName
-      - description
       - isLocked
-      - logoImageId
-      - name
-      - packageId
       - repoId
-      - repoName
-      - repository
-      - securityReportSummary
       - stars
-      - version
       type: object
     CatalogAppLockManagement:
       example:
@@ -47102,7 +46880,6 @@ components:
           type: string
       required:
       - id
-      - mode
       type: object
     CatalogAppParamsDetailsDto:
       example:
@@ -47168,8 +46945,6 @@ components:
       - isEditableAfterInstallation
       - isEditableWhenInstalling
       - isMandatory
-      - key
-      - value
       type: object
     CatalogDetails:
       example:
@@ -47296,15 +47071,10 @@ components:
             $ref: "#/components/schemas/AvailablePackagesDto"
           type: array
       required:
-      - boundApplications
-      - boundProjects
-      - description
       - id
       - isDefault
       - isLocked
-      - name
       - organizationId
-      - packageIds
       type: object
     CatalogDropdownDto:
       example:
@@ -47329,8 +47099,6 @@ components:
       required:
       - id
       - isDefault
-      - name
-      - packageIds
       type: object
     CatalogList:
       example:
@@ -47535,7 +47303,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     CatalogListDto:
@@ -47663,15 +47430,10 @@ components:
             $ref: "#/components/schemas/AvailablePackagesDto"
           type: array
       required:
-      - boundApplications
-      - boundProjects
-      - description
       - id
       - isDefault
       - isLocked
-      - name
       - organizationId
-      - packageIds
       type: object
     CatalogLockManagementCommand:
       example:
@@ -47685,7 +47447,6 @@ components:
           type: string
       required:
       - id
-      - mode
       type: object
     CatalogMakeDefaultCommand:
       example:
@@ -47721,8 +47482,6 @@ components:
       properties:
         paymentMethodId:
           type: string
-      required:
-      - paymentMethodId
       type: object
     ChangePasswordCommand:
       example:
@@ -47733,17 +47492,12 @@ components:
           type: string
         newPassword:
           type: string
-      required:
-      - newPassword
-      - password
       type: object
     ChatCompletionsCommand:
       example:
         messages: ""
       properties:
         messages: {}
-      required:
-      - messages
       type: object
     CheckAwsCommand:
       example:
@@ -47754,9 +47508,6 @@ components:
           type: string
         awsSecretAccessKey:
           type: string
-      required:
-      - awsAccessKeyId
-      - awsSecretAccessKey
       type: object
     CheckAzureCommand:
       example:
@@ -47770,10 +47521,6 @@ components:
           type: string
         azureTenantId:
           type: string
-      required:
-      - azureClientId
-      - azureClientSecret
-      - azureTenantId
       type: object
     CheckAzureCpuQuotaCommand:
       example:
@@ -47798,7 +47545,6 @@ components:
         errorMessage:
           type: string
       required:
-      - errorMessage
       - isManilaAvailable
       - isOpenstackAvailable
       type: object
@@ -47826,10 +47572,6 @@ components:
           type: boolean
       required:
       - isAdmin
-      - openStackDomain
-      - openStackPassword
-      - openStackUrl
-      - openStackUser
       type: object
     CheckPrometheusCommand:
       example:
@@ -47843,10 +47585,6 @@ components:
           type: string
         url:
           type: string
-      required:
-      - password
-      - url
-      - userName
       type: object
     CheckS3Command:
       example:
@@ -47863,11 +47601,6 @@ components:
           type: string
         s3Region:
           type: string
-      required:
-      - s3AccessKeyId
-      - s3Endpoint
-      - s3Region
-      - s3SecretKey
       type: object
     CheckTrustedRegistryCommand:
       example:
@@ -47875,8 +47608,6 @@ components:
       properties:
         registry:
           type: string
-      required:
-      - registry
       type: object
     CheckZadaraCommand:
       example:
@@ -47890,10 +47621,6 @@ components:
           type: string
         zadaraUrl:
           type: string
-      required:
-      - zadaraAccessKeyId
-      - zadaraSecretAccessKey
-      - zadaraUrl
       type: object
     CidrCommand:
       example:
@@ -47901,8 +47628,6 @@ components:
       properties:
         cidr:
           type: string
-      required:
-      - cidr
       type: object
     ClearCanceledPaymentMethodCommand:
       type: object
@@ -47912,8 +47637,6 @@ components:
       properties:
         ticketId:
           type: string
-      required:
-      - ticketId
       type: object
     CloudCredentialsDropdownRecordDto:
       example:
@@ -48022,11 +47745,7 @@ components:
         organizationName:
           type: string
       required:
-      - cloudType
       - id
-      - name
-      - organizationId
-      - organizationName
       type: object
     CloudCredentialsSearchCommand:
       example:
@@ -48044,10 +47763,6 @@ components:
           type: integer
         searchTerm:
           type: string
-      required:
-      - limit
-      - offset
-      - searchTerm
       type: object
     CloudCredentialsSearchList:
       example:
@@ -48072,7 +47787,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     CloudLockManagerCommand:
@@ -48087,7 +47801,6 @@ components:
           type: string
       required:
       - id
-      - mode
       type: object
     CloudRole:
       enum:
@@ -48131,7 +47844,6 @@ components:
           type: string
       required:
       - id
-      - name
       type: object
     CommonDropdownDto:
       example:
@@ -48145,7 +47857,6 @@ components:
           type: string
       required:
       - id
-      - name
       type: object
     CommonDropdownIsBoundDto:
       example:
@@ -48163,7 +47874,6 @@ components:
       required:
       - id
       - isBound
-      - name
       type: object
     CommonDropdownIsBoundDtoForProject:
       example:
@@ -48211,7 +47921,6 @@ components:
         importClusterType:
           $ref: "#/components/schemas/ImportClusterType"
       required:
-      - alertingProfileId
       - cloudType
       - hasKubeConfigFile
       - health
@@ -48220,9 +47929,7 @@ components:
       - isBound
       - isLocked
       - isVirtualCluster
-      - kubernetesVersion
       - maintenanceModeEnabled
-      - name
       - status
       type: object
     CommonExtendedDropdownDto:
@@ -48241,7 +47948,6 @@ components:
       required:
       - id
       - isDefault
-      - name
       type: object
     CommonSearchKubernetesResponseData:
       example:
@@ -48267,12 +47973,8 @@ components:
         organizationName:
           type: string
       required:
-      - metadataName
-      - namespace
       - organizationId
-      - organizationName
       - projectId
-      - projectName
       type: object
     CommonSearchResponseData:
       example:
@@ -48294,9 +47996,6 @@ components:
           type: string
       required:
       - id
-      - name
-      - organizationId
-      - organizationName
       type: object
     CommonStringBasedDropdownDto:
       example:
@@ -48307,9 +48006,6 @@ components:
           type: string
         name:
           type: string
-      required:
-      - id
-      - name
       type: object
     CommonStringDropdownIsBoundDto:
       example:
@@ -48324,9 +48020,7 @@ components:
         isBound:
           type: boolean
       required:
-      - id
       - isBound
-      - name
       type: object
     ConfigMapSearchCommand:
       example:
@@ -48348,11 +48042,6 @@ components:
         includePublicImportedClusters:
           nullable: true
           type: boolean
-      required:
-      - includePublicImportedClusters
-      - limit
-      - offset
-      - searchTerm
       type: object
     ConfigMapSearchList:
       example:
@@ -48379,7 +48068,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     ConfirmEmailCommand:
@@ -48393,7 +48081,6 @@ components:
           $ref: "#/components/schemas/EmailMode"
       required:
       - mode
-      - newEmail
       type: object
     ConsoleScreenshotCommand:
       example:
@@ -48420,11 +48107,6 @@ components:
           type: string
         comment:
           type: string
-      required:
-      - businessEmail
-      - comment
-      - companyName
-      - name
       type: object
     CostComponent:
       example:
@@ -48458,15 +48140,7 @@ components:
           nullable: true
           type: boolean
       required:
-      - hourlyCost
-      - hourlyQuantity
-      - monthlyCost
-      - monthlyQuantity
-      - name
-      - price
       - priceNotFound
-      - unit
-      - usageBased
       type: object
     CountryListDto:
       example:
@@ -48526,11 +48200,6 @@ components:
         includePublicImportedClusters:
           nullable: true
           type: boolean
-      required:
-      - includePublicImportedClusters
-      - limit
-      - offset
-      - searchTerm
       type: object
     CrdSearchList:
       example:
@@ -48557,7 +48226,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     CreateAccessProfileCommand:
@@ -48615,14 +48283,6 @@ components:
           items:
             $ref: "#/components/schemas/AllowedHostCreateDto"
           type: array
-      required:
-      - allowedHosts
-      - dnsServers
-      - httpProxy
-      - name
-      - ntpServers
-      - sshUsers
-      - trustedRegistries
       type: object
     CreateAiCredentialCommand:
       example:
@@ -48638,10 +48298,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      required:
-      - apiKey
-      - name
-      - organizationId
       type: object
     CreateAlertDto:
       example:
@@ -48670,9 +48326,6 @@ components:
           type: array
         status:
           type: string
-      required:
-      - alerts
-      - status
       type: object
     CreateAlertingIntegrationCommand:
       example:
@@ -48693,8 +48346,6 @@ components:
       required:
       - alertingIntegrationType
       - alertingProfileId
-      - token
-      - url
       type: object
     CreateAlertingProfileCommand:
       example:
@@ -48756,11 +48407,6 @@ components:
           type: array
         reminder:
           $ref: "#/components/schemas/AlertingReminder"
-      required:
-      - alertingIntegrations
-      - emails
-      - name
-      - webhooks
       type: object
     CreateAllowedHostCommand:
       example:
@@ -48781,8 +48427,6 @@ components:
           type: integer
       required:
       - accessProfileId
-      - description
-      - ipAddress
       - maskBits
       type: object
     CreateAwsCloudCommand:
@@ -48810,12 +48454,7 @@ components:
           nullable: true
           type: integer
       required:
-      - awsAccessKeyId
-      - awsRegion
-      - awsSecretAccessKey
       - azCount
-      - name
-      - organizationId
       type: object
     CreateAzureCloudCommand:
       example:
@@ -48849,12 +48488,6 @@ components:
           type: integer
       required:
       - azCount
-      - azureClientId
-      - azureClientSecret
-      - azureLocation
-      - azureSubscriptionId
-      - azureTenantId
-      - name
       type: object
     CreateBackupPolicyCommand:
       example:
@@ -48881,11 +48514,7 @@ components:
           default: 720h
           type: string
       required:
-      - cronPeriod
-      - includeNamespaces
-      - name
       - projectId
-      - retentionPeriod
       type: object
     CreateBillingSummaryCommand:
       example:
@@ -48940,10 +48569,6 @@ components:
           type: array
       required:
       - catalogId
-      - packageName
-      - parameters
-      - repoName
-      - version
       type: object
     CreateCatalogCommand:
       example:
@@ -48959,10 +48584,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      required:
-      - description
-      - name
-      - organizationId
       type: object
     CreateDnsServerCommand:
       example:
@@ -48976,7 +48597,6 @@ components:
           type: integer
       required:
       - accessProfileId
-      - address
       type: object
     CreateExecutorCommand:
       example:
@@ -48997,11 +48617,8 @@ components:
         kubeConfig:
           type: string
       required:
-      - continent
       - enabled
-      - kubeConfig
       - localCluster
-      - name
       type: object
     CreateGenericTaikunLbDto:
       example:
@@ -49012,9 +48629,6 @@ components:
           type: string
         svcNamespace:
           type: string
-      required:
-      - svcName
-      - svcNamespace
       type: object
     CreateGroupCommand:
       example:
@@ -49087,8 +48701,6 @@ components:
       properties:
         name:
           type: string
-      required:
-      - name
       type: object
     CreateInvoiceCommand:
       example:
@@ -49129,12 +48741,10 @@ components:
       - dueDate
       - endDate
       - isPaid
-      - name
       - organizationSubscriptionId
       - price
       - requiredPaymentAction
       - startDate
-      - stripeInvoiceId
       type: object
     CreateKeyPoolCommand:
       type: object
@@ -49173,10 +48783,7 @@ components:
       - isAccessibleForAll
       - isAccessibleForManager
       - kubeConfigRoleId
-      - name
-      - namespace
       - projectId
-      - userId
       type: object
     CreateKubernetesProfileCommand:
       example:
@@ -49216,11 +48823,8 @@ components:
       required:
       - allowSchedulingOnMaster
       - exposeNodePortOnBastion
-      - name
       - nvidiaGpuOperatorEnabled
       - octaviaEnabled
-      - organizationId
-      - proxmoxStorage
       - taikunLBEnabled
       - uniqueClusterName
       - wasmEnabled
@@ -49251,7 +48855,6 @@ components:
           type: integer
       required:
       - accessProfileId
-      - address
       type: object
     CreateOpaProfileCommand:
       example:
@@ -49317,20 +48920,14 @@ components:
           nullable: true
           type: integer
       required:
-      - allowedRepo
       - forbidHttpIngress
       - forbidNodePort
-      - forbidSpecificTags
       - forcePodResource
-      - ingressWhitelist
       - isMasterTaintEnforced
       - isNodeNameForbiddenInVC
-      - name
-      - organizationId
       - requireProbe
       - uniqueIngresses
       - uniqueServiceSelector
-      - whitelistMasterTaintNamespaces
       type: object
     CreateOpenstackCloudCommand:
       example:
@@ -49398,20 +48995,7 @@ components:
       - applicationCredEnabled
       - isAdmin
       - manilaEnabled
-      - manilaStorageType
-      - name
-      - openStackAvailabilityZone
-      - openStackContinent
-      - openStackDomain
       - openStackImportNetwork
-      - openStackInternalSubnetId
-      - openStackPassword
-      - openStackProject
-      - openStackPublicNetwork
-      - openStackRegion
-      - openStackUrl
-      - openStackUser
-      - openStackVolumeType
       - skipTlsFlag
       type: object
     CreateProjectAppCommand:
@@ -49457,10 +49041,6 @@ components:
       required:
       - autoSync
       - catalogAppId
-      - extraValues
-      - name
-      - namespace
-      - parameters
       - projectId
       - taikunLinkEnabled
       type: object
@@ -49625,26 +49205,17 @@ components:
       - allowSpotVMs
       - allowSpotWorkers
       - autoscalingEnabled
-      - autoscalingFlavor
       - autoscalingSpotEnabled
-      - cidr
       - cloudCredentialId
       - deleteOnExpiration
       - diskSize
-      - flavors
       - isAutoUpgrade
       - isBackupEnabled
       - isKubernetes
       - isMonitoringEnabled
-      - kubernetesVersion
       - maxSize
       - minSize
-      - name
       - saveAsTemplate
-      - serverTemplates
-      - taikunLBFlavor
-      - templateName
-      - users
       type: object
     CreateProjectFromTemplateCommand:
       example:
@@ -49662,7 +49233,6 @@ components:
       required:
       - canCommit
       - id
-      - projectName
       type: object
     CreateProxmoxCommand:
       example:
@@ -49722,17 +49292,7 @@ components:
         skipTlsFlag:
           type: boolean
       required:
-      - continent
-      - hypervisors
-      - name
-      - privateNetwork
-      - publicNetwork
       - skipTlsFlag
-      - storage
-      - tokenId
-      - tokenSecret
-      - url
-      - vmTemplateName
       type: object
     CreateProxmoxNetworkDto:
       example:
@@ -49757,11 +49317,6 @@ components:
         endAllocationRange:
           type: string
       required:
-      - beginAllocationRange
-      - bridge
-      - endAllocationRange
-      - gateway
-      - ipAddress
       - netMask
       type: object
     CreateSecurityGroupCommand:
@@ -49789,11 +49344,9 @@ components:
           format: int32
           type: integer
       required:
-      - name
       - portMaxRange
       - portMinRange
       - protocol
-      - remoteIpPrefix
       - standAloneProfileId
       type: object
     CreateSlackConfigurationCommand:
@@ -49817,11 +49370,7 @@ components:
         slackType:
           $ref: "#/components/schemas/SlackType"
       required:
-      - channel
-      - name
-      - organizationId
       - slackType
-      - url
       type: object
     CreateSshUserCommand:
       example:
@@ -49838,8 +49387,6 @@ components:
           type: integer
       required:
       - accessProfileId
-      - name
-      - sshPublicKey
       type: object
     CreateStandAloneDiskCommand:
       example:
@@ -49859,10 +49406,8 @@ components:
         volumeType:
           type: string
       required:
-      - name
       - size
       - standaloneVmId
-      - volumeType
       type: object
     CreateStandAloneVmCommand:
       example:
@@ -49949,24 +49494,13 @@ components:
             $ref: "#/components/schemas/StandAloneMetaDataDto"
           type: array
       required:
-      - availabilityZone
-      - cloudInit
       - count
-      - flavorName
-      - hypervisor
-      - image
-      - name
-      - password
       - projectId
       - publicIpEnabled
       - spotInstance
-      - standAloneMetaDatas
       - standAloneProfileId
-      - standAloneVmDisks
       - useLocalDisk
-      - username
       - volumeSize
-      - volumeType
       type: object
     CreateStripeCustomerCommand:
       example:
@@ -49989,13 +49523,6 @@ components:
           type: string
         vatNumber:
           type: string
-      required:
-      - address
-      - billingEmail
-      - city
-      - country
-      - legalName
-      - vatNumber
       type: object
     CreateSubscriptionCommand:
       example:
@@ -50040,7 +49567,6 @@ components:
           type: number
       required:
       - cloudCredentialLimit
-      - name
       - projectLimit
       - serverLimit
       - trialDays
@@ -50063,11 +49589,6 @@ components:
           type: integer
         priority:
           $ref: "#/components/schemas/TicketPriority"
-      required:
-      - description
-      - name
-      - organizationId
-      - priority
       type: object
     CreateTrustedRegistriesCommand:
       example:
@@ -50081,7 +49602,6 @@ components:
           type: integer
       required:
       - accessProfileId
-      - registry
       type: object
     CreateUserCommand:
       example:
@@ -50103,10 +49623,6 @@ components:
           type: integer
         role:
           $ref: "#/components/schemas/UserRole"
-      required:
-      - displayName
-      - email
-      - username
       type: object
     CreateVirtualClusterCommand:
       example:
@@ -50172,17 +49688,8 @@ components:
         ephemeralStorageLimits:
           $ref: "#/components/schemas/CreateVirtualClusterResourceLimits"
       required:
-      - alertingProfileId
-      - cloudId
-      - cpuLimits
       - deleteOnExpiration
-      - ephemeralStorageLimits
-      - expiredAt
-      - exposeHostname
-      - name
       - projectId
-      - ramLimits
-      - workloadResources
       type: object
     CreateVirtualClusterResourceLimits:
       example:
@@ -50315,21 +49822,8 @@ components:
         skipTlsFlag:
           type: boolean
       required:
-      - continent
-      - datacenterId
-      - datacenterName
-      - datastoreName
       - drsEnabled
-      - hypervisors
-      - name
-      - password
-      - privateNetwork
-      - publicNetwork
-      - resourcePoolName
       - skipTlsFlag
-      - url
-      - username
-      - vmTemplateName
       type: object
     CreateVsphereNetworkDto:
       example:
@@ -50354,11 +49848,6 @@ components:
         endAllocationRange:
           type: string
       required:
-      - beginAllocationRange
-      - endAllocationRange
-      - gateway
-      - ipAddress
-      - name
       - netMask
       type: object
     CreateZadaraCloudCommand:
@@ -50396,14 +49885,6 @@ components:
           type: string
       required:
       - azCount
-      - name
-      - organizationId
-      - zadaraAccessKeyId
-      - zadaraContinent
-      - zadaraRegion
-      - zadaraSecretAccessKey
-      - zadaraUrl
-      - zadaraVolumeType
       type: object
     CredentialChartDto:
       example:
@@ -50476,8 +49957,6 @@ components:
       properties:
         cronPeriod:
           type: string
-      required:
-      - cronPeriod
       type: object
     CronjobActionCommand:
       example:
@@ -50523,11 +50002,6 @@ components:
         includePublicImportedClusters:
           nullable: true
           type: boolean
-      required:
-      - includePublicImportedClusters
-      - limit
-      - offset
-      - searchTerm
       type: object
     CronjobsSearchList:
       example:
@@ -50554,7 +50028,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     CsvExporter:
@@ -50595,11 +50068,6 @@ components:
         includePublicImportedClusters:
           nullable: true
           type: boolean
-      required:
-      - includePublicImportedClusters
-      - limit
-      - offset
-      - searchTerm
       type: object
     DaemonSetSearchList:
       example:
@@ -50626,7 +50094,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     DaemonsetActionCommand:
@@ -50882,12 +50349,6 @@ components:
           $ref: "#/components/schemas/ServerChartDto"
         standAloneVms:
           $ref: "#/components/schemas/ServerChartDto"
-      required:
-      - cloudCredentials
-      - organization
-      - projects
-      - servers
-      - standAloneVms
       type: object
     DatacenterListCommand:
       example:
@@ -50904,11 +50365,6 @@ components:
           type: string
         datacenterName:
           type: string
-      required:
-      - datacenterName
-      - password
-      - url
-      - username
       type: object
     DatacenterSummary:
       example:
@@ -50919,9 +50375,6 @@ components:
           type: string
         name:
           type: string
-      required:
-      - datacenter
-      - name
       type: object
     DatastoreListCommand:
       example:
@@ -50938,11 +50391,6 @@ components:
           type: string
         datacenterId:
           type: string
-      required:
-      - datacenterId
-      - password
-      - url
-      - username
       type: object
     DatastoreSummary:
       example:
@@ -50966,11 +50414,15 @@ components:
           type: string
       required:
       - capacity
-      - datastore
       - freeSpace
-      - name
-      - type
       type: object
+    DateFilter:
+      enum:
+      - Monthly
+      - ThreeMonthly
+      - SixMonthly
+      - Yearly
+      type: string
     DateInterval:
       example:
         price: 6.027456183070403
@@ -51012,7 +50464,6 @@ components:
         name:
           type: string
       required:
-      - name
       - projectId
       type: object
     DeleteBackupStorageLocationCommand:
@@ -51027,7 +50478,6 @@ components:
           type: string
       required:
       - projectId
-      - storageLocation
       type: object
     DeleteExecutorCommand:
       example:
@@ -51058,8 +50508,6 @@ components:
             format: int32
             type: integer
           type: array
-      required:
-      - ids
       type: object
     DeleteImportedBackupLocationsCommand:
       type: object
@@ -51195,7 +50643,6 @@ components:
         name:
           type: string
       required:
-      - name
       - projectId
       type: object
     DeleteScheduleCommand:
@@ -51209,7 +50656,6 @@ components:
         name:
           type: string
       required:
-      - name
       - projectId
       type: object
     DeleteSlackConfigCommand:
@@ -51223,8 +50669,6 @@ components:
             format: int32
             type: integer
           type: array
-      required:
-      - ids
       type: object
     DeleteSshUserCommand:
       example:
@@ -51301,7 +50745,6 @@ components:
           type: array
       required:
       - standaloneVmId
-      - vmDiskIds
       type: object
     DeploymentActionCommand:
       example:
@@ -51357,7 +50800,6 @@ components:
       required:
       - fromCronJob
       - projectId
-      - result
       type: object
     DeploymentDisableAiCommand:
       example:
@@ -51474,11 +50916,6 @@ components:
         includePublicImportedClusters:
           nullable: true
           type: boolean
-      required:
-      - includePublicImportedClusters
-      - limit
-      - offset
-      - searchTerm
       type: object
     DeploymentSearchList:
       example:
@@ -51505,7 +50942,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     DescribeKubernetesResourceCommand:
@@ -51548,11 +50984,6 @@ components:
           type: string
         totalMonthlyUsageCost:
           type: string
-      required:
-      - resources
-      - totalHourlyCost
-      - totalMonthlyCost
-      - totalMonthlyUsageCost
       type: object
     DisableAutoscalingCommand:
       example:
@@ -51570,8 +51001,6 @@ components:
       properties:
         verificationCode:
           type: string
-      required:
-      - verificationCode
       type: object
     DisableTwoFactorAuthCommand:
       example:
@@ -51583,7 +51012,6 @@ components:
         isRecoveryCode:
           type: boolean
       required:
-      - code
       - isRecoveryCode
       type: object
     DisableUserCommand:
@@ -51597,7 +51025,6 @@ components:
           type: boolean
       required:
       - disable
-      - id
       type: object
     DnsCommand:
       example:
@@ -51605,8 +51032,6 @@ components:
       properties:
         address:
           type: string
-      required:
-      - address
       type: object
     DnsNtpAddressEditDto:
       example:
@@ -51614,8 +51039,6 @@ components:
       properties:
         address:
           type: string
-      required:
-      - address
       type: object
     DnsServerCreateDto:
       example:
@@ -51623,8 +51046,6 @@ components:
       properties:
         address:
           type: string
-      required:
-      - address
       type: object
     DnsServerListDto:
       example:
@@ -51676,9 +51097,6 @@ components:
           type: string
       required:
       - id
-      - key
-      - link
-      - role
       type: object
     DocumentationsList:
       example:
@@ -51716,7 +51134,6 @@ components:
           type: string
       required:
       - id
-      - name
       type: object
     DownloadKubeConfigCommand:
       example:
@@ -51769,10 +51186,6 @@ components:
           type: string
         name:
           type: string
-      required:
-      - name
-      - organizationId
-      - type
       type: object
     DuplicateProjectAppCheckerCommand:
       example:
@@ -51788,8 +51201,6 @@ components:
         namespace:
           type: string
       required:
-      - name
-      - namespace
       - projectId
       type: object
     ECloudCredentialType:
@@ -51907,8 +51318,6 @@ components:
       - alertingIntegrationType
       - alertingProfileId
       - id
-      - token
-      - url
       type: object
     EditAllowedHostDto:
       example:
@@ -51924,8 +51333,6 @@ components:
           format: int32
           type: integer
       required:
-      - description
-      - ipAddress
       - maskBits
       type: object
     EditArticleCommand:
@@ -51937,9 +51344,6 @@ components:
           type: string
         body:
           type: string
-      required:
-      - body
-      - messageId
       type: object
     EditAutoscalingCommand:
       example:
@@ -51985,7 +51389,6 @@ components:
           type: array
       required:
       - catalogAppId
-      - parameters
       type: object
     EditCatalogAppVersionCommand:
       example:
@@ -51999,7 +51402,6 @@ components:
           type: string
       required:
       - catalogAppId
-      - version
       type: object
     EditCatalogCommand:
       example:
@@ -52015,9 +51417,7 @@ components:
         description:
           type: string
       required:
-      - description
       - id
-      - name
       type: object
     EditProjectAppExtraValuesCommand:
       example:
@@ -52035,9 +51435,7 @@ components:
           nullable: true
           type: integer
       required:
-      - extraValues
       - projectAppId
-      - timeout
       type: object
     EditProjectAppParamsDto:
       example:
@@ -52048,9 +51446,6 @@ components:
           type: string
         value:
           type: string
-      required:
-      - key
-      - value
       type: object
     EditSecurityGroupCommand:
       example:
@@ -52078,11 +51473,8 @@ components:
           type: string
       required:
       - id
-      - name
       - portMaxRange
       - portMinRange
-      - protocol
-      - remoteIpPrefix
       type: object
     EditSshUserCommand:
       example:
@@ -52104,8 +51496,6 @@ components:
       required:
       - accessProfileId
       - id
-      - name
-      - sshPublicKey
       type: object
     EditTicketCommand:
       example:
@@ -52119,10 +51509,6 @@ components:
           type: string
         description:
           type: string
-      required:
-      - description
-      - name
-      - ticketId
       type: object
     EditVirtualClusterQuotasCommand:
       example:
@@ -52261,7 +51647,6 @@ components:
           type: boolean
       required:
       - diskSize
-      - flavor
       - id
       - maxSize
       - minSize
@@ -52304,8 +51689,6 @@ components:
       properties:
         data:
           $ref: "#/components/schemas/TwoFactorAuthVerifyResult"
-      required:
-      - data
       type: object
     EnumList:
       example:
@@ -53020,21 +52403,7 @@ components:
         summary:
           $ref: "#/components/schemas/Summary"
       required:
-      - currency
-      - diffTotalHourlyCost
-      - diffTotalMonthlyCost
-      - diffTotalMonthlyUsageCost
-      - metadata
-      - pastTotalHourlyCost
-      - pastTotalMonthlyCost
-      - pastTotalMonthlyUsageCost
       - projects
-      - summary
-      - timeGenerated
-      - totalHourlyCost
-      - totalMonthlyCost
-      - totalMonthlyUsageCost
-      - version
       type: object
     ExceededQuotaDto:
       example:
@@ -53093,8 +52462,6 @@ components:
       - health
       - id
       - isLocal
-      - kubeConfig
-      - name
       type: object
     ExecutorHealth:
       enum:
@@ -53162,8 +52529,6 @@ components:
       properties:
         query:
           $ref: "#/components/schemas/LokiLogsQuery"
-      required:
-      - query
       type: object
     ExtendTrialPeriodCommand:
       example:
@@ -53197,9 +52562,6 @@ components:
           type: string
         value:
           type: string
-      required:
-      - operator
-      - value
       type: object
     FilteringElementDto:
       example:
@@ -53210,9 +52572,6 @@ components:
           type: string
         name:
           type: string
-      required:
-      - name
-      - organizationName
       type: object
     FinalPriceCommand:
       example:
@@ -53274,8 +52633,6 @@ components:
       properties:
         id:
           type: string
-      required:
-      - id
       type: object
     ForgotPasswordCommand:
       example:
@@ -53283,8 +52640,6 @@ components:
       properties:
         email:
           type: string
-      required:
-      - email
       type: object
     FullSpotOperationCommand:
       example:
@@ -53298,7 +52653,6 @@ components:
           type: string
       required:
       - id
-      - mode
       type: object
     GenericKubernetesList:
       example:
@@ -53449,11 +52803,6 @@ components:
         isQuestion:
           nullable: true
           type: boolean
-      required:
-      - catalogAppId
-      - isQuestion
-      - packageId
-      - version
       type: object
     GetCatalogAppValueCommand:
       example:
@@ -53464,9 +52813,6 @@ components:
           type: string
         version:
           type: string
-      required:
-      - packageId
-      - version
       type: object
     GetEksClusterAuthCommand:
       example:
@@ -53482,8 +52828,6 @@ components:
         configToken:
           type: string
       required:
-      - configToken
-      - kubeConfigName
       - projectId
       type: object
     GetProjectOperationCommand:
@@ -53531,9 +52875,6 @@ components:
           type: string
         name:
           type: string
-      required:
-      - location
-      - name
       type: object
     GkeClustersListCommand:
       example:
@@ -53924,11 +53265,8 @@ components:
           type: string
       required:
       - evaluationTime
-      - file
       - interval
       - lastEvaluation
-      - name
-      - rules
       type: object
     GroupList:
       example:
@@ -54077,14 +53415,12 @@ components:
         projectName:
           type: string
       required:
-      - data
       - projectId
-      - projectName
       type: object
     GroupedBillingListQuery:
       example:
         organizationId: 0
-        periodDuration: "{}"
+        periodDuration: none
         isDeleted: true
       properties:
         organizationId:
@@ -54097,8 +53433,6 @@ components:
           nullable: true
           type: boolean
       required:
-      - isDeleted
-      - organizationId
       - periodDuration
       type: object
     GroupedBillings:
@@ -54112,13 +53446,12 @@ components:
           format: int64
           type: integer
       required:
-      - startDate
       - tcu
       type: object
     GroupedPrometheusBillingListQuery:
       example:
         organizationId: 0
-        periodDuration: "{}"
+        periodDuration: none
       properties:
         organizationId:
           format: int32
@@ -54126,9 +53459,6 @@ components:
           type: integer
         periodDuration:
           $ref: "#/components/schemas/BillingPeriod"
-      required:
-      - organizationId
-      - periodDuration
       type: object
     HelmCredentialCommand:
       example:
@@ -54142,10 +53472,6 @@ components:
           type: string
         password:
           type: string
-      required:
-      - password
-      - url
-      - username
       type: object
     HelmReleasesSearchCommand:
       example:
@@ -54167,11 +53493,6 @@ components:
         includePublicImportedClusters:
           nullable: true
           type: boolean
-      required:
-      - includePublicImportedClusters
-      - limit
-      - offset
-      - searchTerm
       type: object
     HelmReleasesSearchList:
       example:
@@ -54198,7 +53519,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     HypervisorListCommand:
@@ -54218,11 +53538,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      required:
-      - cloudId
-      - tokenId
-      - tokenSecret
-      - url
       type: object
     IFormFile:
       format: binary
@@ -54243,7 +53558,6 @@ components:
           type: string
       required:
       - cloudId
-      - imageId
       type: object
     ImportBackupStorageLocationCommand:
       example:
@@ -54287,12 +53601,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      required:
-      - name
-      - organizationId
-      - password
-      - url
-      - username
       type: object
     ImportedAsCloudCredentialList:
       example:
@@ -55131,7 +54439,7 @@ components:
     InfraBillingListCommand:
       example:
         organizationId: 0
-        filter: "{}"
+        filter: Monthly
       properties:
         organizationId:
           format: int32
@@ -55141,7 +54449,6 @@ components:
           $ref: "#/components/schemas/DateFilter"
       required:
       - filter
-      - organizationId
       type: object
     InfraBillingSummariesCreateCommand:
       example:
@@ -55169,8 +54476,6 @@ components:
           format: int32
           type: integer
       required:
-      - beginApply
-      - endApply
       - organizationId
       - price
       - productId
@@ -55202,8 +54507,6 @@ components:
           type: number
       required:
       - infraProductId
-      - infraProductName
-      - intervals
       - totalPrice
       type: object
     InfraOrganizationsListDto:
@@ -55232,11 +54535,8 @@ components:
         yearly:
           type: boolean
       required:
-      - billingStartDate
       - createdAt
       - organizationId
-      - organizationName
-      - subscriptionId
       - yearly
       type: object
     InfraProductDto:
@@ -55264,11 +54564,7 @@ components:
           type: string
       required:
       - id
-      - name
       - price
-      - priceId
-      - productId
-      - yearlyPriceId
       type: object
     IngressSearchCommand:
       example:
@@ -55290,11 +54586,6 @@ components:
         includePublicImportedClusters:
           nullable: true
           type: boolean
-      required:
-      - includePublicImportedClusters
-      - limit
-      - offset
-      - searchTerm
       type: object
     IngressSearchList:
       example:
@@ -55321,7 +54612,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     InstanceAppListDto:
@@ -55418,9 +54708,6 @@ components:
           type: string
         adminKubeConfig:
           type: string
-      required:
-      - adminKubeConfig
-      - kubeConfig
       type: object
     InteractiveShellSendCommand:
       example:
@@ -55438,9 +54725,7 @@ components:
           nullable: true
           type: integer
       required:
-      - instanceId
       - projectId
-      - token
       type: object
     InternalAlertDto:
       example:
@@ -55464,8 +54749,6 @@ components:
           format: int32
           type: integer
       required:
-      - description
-      - fingerprint
       - id
       - projectId
       - startsAt
@@ -55532,21 +54815,12 @@ components:
           nullable: true
           type: string
       required:
-      - accessIp
-      - alertManagerUrl
       - health
       - id
       - importClusterType
       - isMonitoringEnabled
-      - kubernetesVersion
-      - lokiUrl
-      - name
       - organizationId
-      - password
-      - prometheusUrl
       - status
-      - token
-      - username
       type: object
     InvoiceDto:
       example:
@@ -55676,8 +54950,6 @@ components:
       properties:
         secret:
           type: string
-      required:
-      - secret
       type: object
     Invoices:
       example:
@@ -55732,9 +55004,6 @@ components:
           type: string
         end:
           type: string
-      required:
-      - begin
-      - end
       type: object
     IpAddressRangeListCommand:
       example:
@@ -55750,8 +55019,6 @@ components:
         gateway:
           type: string
       required:
-      - gateway
-      - ipAddress
       - netMask
       type: object
     JobsSearchCommand:
@@ -55774,11 +55041,6 @@ components:
         includePublicImportedClusters:
           nullable: true
           type: boolean
-      required:
-      - includePublicImportedClusters
-      - limit
-      - offset
-      - searchTerm
       type: object
     JobsSearchList:
       example:
@@ -55805,7 +55067,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     KeycloakCheckerCommand:
@@ -55826,12 +55087,6 @@ components:
           type: string
         clientSecret:
           type: string
-      required:
-      - clientId
-      - clientSecret
-      - name
-      - realmsName
-      - url
       type: object
     KeycloakCreateCommand:
       example:
@@ -55851,12 +55106,6 @@ components:
           type: string
         clientSecret:
           type: string
-      required:
-      - clientId
-      - clientSecret
-      - name
-      - realmsName
-      - url
       type: object
     KeycloakDeleteCommand:
       example:
@@ -55891,12 +55140,7 @@ components:
         clientSecret:
           type: string
       required:
-      - clientId
-      - clientSecret
       - id
-      - name
-      - realmsName
-      - url
       type: object
     KeycloakListDto:
       example:
@@ -56104,7 +55348,6 @@ components:
       required:
       - kubeConfigId
       - projectId
-      - token
       type: object
     KubeConfigResponse:
       example:
@@ -56165,9 +55408,6 @@ components:
           items:
             type: string
           type: array
-      required:
-      - failed
-      - succeeded
       type: object
     KubernetesAlertCreateDto:
       example:
@@ -56194,12 +55434,8 @@ components:
         fingerprint:
           type: string
       required:
-      - annotations
       - endsAt
-      - fingerprint
-      - labels
       - startsAt
-      - status
       type: object
     KubernetesAlertDto:
       example:
@@ -56404,9 +55640,6 @@ components:
           type: string
         title:
           type: string
-      required:
-      - description
-      - title
       type: object
     KubernetesCliCommand:
       example:
@@ -56421,7 +55654,6 @@ components:
           nullable: true
           type: integer
       required:
-      - kubeConfigId
       - projectId
       type: object
     KubernetesCronjobActionRequest:
@@ -56512,12 +55744,6 @@ components:
           type: integer
       required:
       - count
-      - involvedObject
-      - message
-      - metadata
-      - reason
-      - source
-      - type
       type: object
     KubernetesInteractiveShellDto:
       example:
@@ -56528,9 +55754,6 @@ components:
           type: string
         podName:
           type: string
-      required:
-      - kubeConfig
-      - podName
       type: object
     KubernetesNodeLabelsDto:
       example:
@@ -56606,9 +55829,6 @@ components:
         container:
           type: string
       required:
-      - container
-      - name
-      - namespace
       - projectId
       type: object
     KubernetesProfilesEntity:
@@ -56626,7 +55846,6 @@ components:
           type: boolean
       required:
       - id
-      - name
       - taikunLBEnabled
       type: object
     KubernetesProfilesList:
@@ -56797,7 +56016,6 @@ components:
           type: string
       required:
       - id
-      - mode
       type: object
     KubernetesProfilesSearchCommand:
       example:
@@ -56815,10 +56033,6 @@ components:
           type: integer
         searchTerm:
           type: string
-      required:
-      - limit
-      - offset
-      - searchTerm
       type: object
     KubernetesProfilesSearchList:
       example:
@@ -56841,7 +56055,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     KubernetesQuotaListDto:
@@ -57010,7 +56223,6 @@ components:
           type: boolean
       required:
       - isKubevapEnabled
-      - version
       type: object
     KubesprayCreateCommand:
       example:
@@ -57021,9 +56233,6 @@ components:
           type: string
         kubernetesVersion:
           type: string
-      required:
-      - kubernetesVersion
-      - version
       type: object
     KubesprayListDto:
       example:
@@ -57080,9 +56289,6 @@ components:
           type: string
         message:
           type: string
-      required:
-      - message
-      - reason
       type: object
     LeaveTaikunDto:
       example:
@@ -57093,9 +56299,6 @@ components:
           type: string
         paymentClientSecret:
           type: string
-      required:
-      - paymentClientSecret
-      - paymentIntentId
       type: object
     ListAllBackupStorageLocations:
       example:
@@ -57300,10 +56503,6 @@ components:
           type: string
         currentVersion:
           type: string
-      required:
-      - currentVersion
-      - packageName
-      - repoName
       type: object
     ListForLandingPageDto:
       example:
@@ -57397,7 +56596,6 @@ components:
           type: string
       required:
       - id
-      - name
       type: object
     ListForPartnersDto:
       example:
@@ -57517,7 +56715,6 @@ components:
           type: string
       required:
       - id
-      - mode
       type: object
     LoginCommand:
       example:
@@ -57537,12 +56734,6 @@ components:
           type: string
         secretKey:
           type: string
-      required:
-      - accessKey
-      - email
-      - mode
-      - password
-      - secretKey
       type: object
     LokiLogsQuery:
       example:
@@ -57582,9 +56773,6 @@ components:
         direction:
           type: string
       required:
-      - direction
-      - filters
-      - parameters
       - projectId
       type: object
     LokiResult:
@@ -57610,9 +56798,6 @@ components:
           items:
             type: string
           type: array
-      required:
-      - stream
-      - values
       type: object
     MainProjectDto:
       example:
@@ -57629,7 +56814,6 @@ components:
           $ref: "#/components/schemas/ProjectStatus"
       required:
       - id
-      - name
       - status
       type: object
     MakeCsmCommand:
@@ -57641,9 +56825,6 @@ components:
           type: string
         mode:
           type: string
-      required:
-      - mode
-      - userId
       type: object
     MakeOwnerCommand:
       example:
@@ -57651,8 +56832,6 @@ components:
       properties:
         userId:
           type: string
-      required:
-      - userId
       type: object
     Metadata:
       example:
@@ -57685,15 +56864,7 @@ components:
         usageApiEnabled:
           type: boolean
       required:
-      - infracostCommand
       - usageApiEnabled
-      - vcsBranch
-      - vcsCommitAuthorEmail
-      - vcsCommitAuthorName
-      - vcsCommitMessage
-      - vcsCommitSha
-      - vcsCommitTimestamp
-      - vcsRepositoryUrl
       type: object
     MetricData:
       example:
@@ -57722,9 +56893,6 @@ components:
           items:
             $ref: "#/components/schemas/MetricResult"
           type: array
-      required:
-      - result
-      - resultType
       type: object
     MetricResult:
       example:
@@ -57749,10 +56917,6 @@ components:
               type: number
             type: array
           type: array
-      required:
-      - metric
-      - value
-      - values
       type: object
     MonitoringCredentialsListDto:
       example:
@@ -57809,11 +56973,6 @@ components:
         includePublicImportedClusters:
           nullable: true
           type: boolean
-      required:
-      - includePublicImportedClusters
-      - limit
-      - offset
-      - searchTerm
       type: object
     NamespaceSearchList:
       example:
@@ -57840,7 +56999,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     NetworkListCommand:
@@ -57858,11 +57016,6 @@ components:
           type: string
         datacenterId:
           type: string
-      required:
-      - datacenterId
-      - password
-      - url
-      - username
       type: object
     NetworkPoliciesSearchCommand:
       example:
@@ -57884,11 +57037,6 @@ components:
         includePublicImportedClusters:
           nullable: true
           type: boolean
-      required:
-      - includePublicImportedClusters
-      - limit
-      - offset
-      - searchTerm
       type: object
     NetworkPoliciesSearchList:
       example:
@@ -57915,7 +57063,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     NetworkSummary:
@@ -57930,10 +57077,6 @@ components:
           type: string
         type:
           type: string
-      required:
-      - name
-      - network
-      - type
       type: object
     NodeActionCommand:
       example:
@@ -57964,7 +57107,6 @@ components:
         name:
           type: string
       required:
-      - name
       - projectId
       type: object
     NodeDto:
@@ -58013,11 +57155,8 @@ components:
         organizationName:
           type: string
       required:
-      - metadataName
       - organizationId
-      - organizationName
       - projectId
-      - projectName
       type: object
     NodesSearchCommand:
       example:
@@ -58039,11 +57178,6 @@ components:
         includePublicImportedClusters:
           nullable: true
           type: boolean
-      required:
-      - includePublicImportedClusters
-      - limit
-      - offset
-      - searchTerm
       type: object
     NodesSearchList:
       example:
@@ -58068,7 +57202,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     NotificationHistory:
@@ -58183,8 +57316,6 @@ components:
       properties:
         address:
           type: string
-      required:
-      - address
       type: object
     NtpServerCreateDto:
       example:
@@ -58192,8 +57323,6 @@ components:
       properties:
         address:
           type: string
-      required:
-      - address
       type: object
     NtpServerListDto:
       example:
@@ -58446,7 +57575,6 @@ components:
           type: string
       required:
       - id
-      - mode
       type: object
     OpaProfileSyncCommand:
       example:
@@ -58529,12 +57657,7 @@ components:
             type: string
           type: array
       required:
-      - allowedRepo
-      - forbidSpecificTags
       - id
-      - ingressWhitelist
-      - name
-      - whitelistMasterTaintNamespaces
       type: object
     OpenAiCheckerCommand:
       example:
@@ -58542,8 +57665,6 @@ components:
       properties:
         token:
           type: string
-      required:
-      - token
       type: object
     OpenStackNetworkListQuery:
       example:
@@ -58575,12 +57696,6 @@ components:
       required:
       - applicationCredEnabled
       - isAdmin
-      - openStackDomain
-      - openStackPassword
-      - openStackProjectId
-      - openStackRegion
-      - openStackUrl
-      - openStackUser
       type: object
     OpenStackProjectListQuery:
       example:
@@ -58606,10 +57721,6 @@ components:
       required:
       - applicationCredEnabled
       - isAdmin
-      - openStackDomain
-      - openStackPassword
-      - openStackUrl
-      - openStackUser
       type: object
     OpenStackRegionListQuery:
       example:
@@ -58635,10 +57746,6 @@ components:
       required:
       - applicationCredEnabled
       - isAdmin
-      - openStackDomain
-      - openStackPassword
-      - openStackUrl
-      - openStackUser
       type: object
     OpenStackZoneListQuery:
       example:
@@ -58670,12 +57777,6 @@ components:
       required:
       - applicationCredEnabled
       - isAdmin
-      - openStackDomain
-      - openStackPassword
-      - openStackRegion
-      - openStackUrl
-      - openStackUser
-      - openstackProject
       type: object
     OpenTicketCommand:
       example:
@@ -58683,8 +57784,6 @@ components:
       properties:
         ticketId:
           type: string
-      required:
-      - ticketId
       type: object
     OpenshiftCreateCommand:
       example:
@@ -58709,13 +57808,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      required:
-      - baseDomain
-      - kubeConfig
-      - name
-      - organizationId
-      - pullSecret
-      - storageClass
       type: object
     OpenshiftFlavorData:
       example:
@@ -59340,10 +58432,7 @@ components:
         isInfra:
           type: boolean
       required:
-      - compute
       - isInfra
-      - network
-      - volume
       type: object
     OpenstackQuotasCommand:
       example:
@@ -59385,12 +58474,6 @@ components:
       required:
       - applicationCredEnabled
       - isAdmin
-      - openStackDomain
-      - openStackPassword
-      - openStackRegion
-      - openStackUrl
-      - openStackUser
-      - openstackProject
       type: object
     OpenstackSubnetListQuery:
       example:
@@ -59421,13 +58504,6 @@ components:
           type: boolean
       required:
       - applicationCredEnabled
-      - openStackDomain
-      - openStackPassword
-      - openStackProject
-      - openStackProjectId
-      - openStackRegion
-      - openStackUrl
-      - openStackUser
       type: object
     OpenstackVolumeQuotaDto:
       example:
@@ -59489,13 +58565,6 @@ components:
       required:
       - applicationCredEnabled
       - isAdmin
-      - openStackDomain
-      - openStackPassword
-      - openStackRegion
-      - openStackUrl
-      - openStackUser
-      - openstackProject
-      - projectId
       type: object
     OperationCredentialLockManagerCommand:
       example:
@@ -59509,7 +58578,6 @@ components:
           type: string
       required:
       - id
-      - mode
       type: object
     OperationCredentials:
       example:
@@ -59579,12 +58647,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      required:
-      - name
-      - organizationId
-      - prometheusPassword
-      - prometheusUrl
-      - prometheusUsername
       type: object
     OperationCredentialsForOrganizationEntity:
       example:
@@ -59711,7 +58773,6 @@ components:
         operation:
           type: string
       required:
-      - operation
       - projectId
       type: object
     OrganizationCreateCommand:
@@ -59758,16 +58819,7 @@ components:
           nullable: true
           type: integer
       required:
-      - address
-      - billingEmail
-      - city
-      - country
-      - email
-      - fullName
       - isEligibleUpdateSubscription
-      - name
-      - phone
-      - vatNumber
       type: object
     OrganizationDetailsDto:
       example:
@@ -59869,30 +58921,17 @@ components:
             $ref: "#/components/schemas/PrometheusEntity"
           type: array
       required:
-      - address
-      - billingEmail
-      - boundRules
-      - city
       - cloudCredentials
-      - country
-      - createdAt
       - discountRate
-      - email
-      - fullName
       - id
       - isEligibleUpdateSubscription
       - isLocked
       - isNew
       - isReadOnly
-      - name
-      - partner
-      - partnerName
-      - phone
       - projects
       - servers
       - trialEnded
       - users
-      - vatNumber
       type: object
     OrganizationDropdownDto:
       example:
@@ -59915,7 +58954,6 @@ components:
       - discountRate
       - id
       - isInfra
-      - name
       type: object
     OrganizationEntityForDashboard:
       example:
@@ -59942,8 +58980,6 @@ components:
       properties:
         name:
           type: string
-      required:
-      - name
       type: object
     OrganizationSearchCommand:
       example:
@@ -59961,10 +58997,6 @@ components:
           type: integer
         searchTerm:
           type: string
-      required:
-      - limit
-      - offset
-      - searchTerm
       type: object
     OrganizationSearchList:
       example:
@@ -59987,7 +59019,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     OrganizationSubscriptionDto:
@@ -60055,14 +59086,9 @@ components:
           type: array
       required:
       - id
-      - invoices
       - organizationId
-      - organizationName
       - startDate
-      - stripeSubscriptionId
       - subscriptionId
-      - subscriptionName
-      - subscriptionType
       type: object
     OrganizationsList:
       example:
@@ -60181,13 +59207,9 @@ components:
         isTaikunLink:
           type: boolean
       required:
-      - description
       - isQuestion
       - isTaikunLink
-      - key
-      - options
       - type
-      - value
       type: object
     ParameterType:
       enum:
@@ -60382,11 +59404,7 @@ components:
         logo:
           type: string
       required:
-      - domain
       - id
-      - link
-      - logo
-      - name
       type: object
     PartnerDetailsForSubscription:
       example:
@@ -60623,7 +59641,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     PartnersSearchCommand:
@@ -60642,10 +59659,6 @@ components:
           type: integer
         searchTerm:
           type: string
-      required:
-      - limit
-      - offset
-      - searchTerm
       type: object
     PartnersSearchList:
       example:
@@ -60666,7 +59679,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     PartnersSearchResponseData:
@@ -60684,8 +59696,6 @@ components:
           type: string
       required:
       - id
-      - logo
-      - name
       type: object
     PatchKubernetesResourceCommand:
       example:
@@ -60715,8 +59725,6 @@ components:
       properties:
         invoiceId:
           type: string
-      required:
-      - invoiceId
       type: object
     PaymentWebhookCommand:
       type: object
@@ -60740,11 +59748,6 @@ components:
         includePublicImportedClusters:
           nullable: true
           type: boolean
-      required:
-      - includePublicImportedClusters
-      - limit
-      - offset
-      - searchTerm
       type: object
     PdbSearchList:
       example:
@@ -60771,7 +59774,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     PodDto:
@@ -60833,11 +59835,6 @@ components:
         includePublicImportedClusters:
           nullable: true
           type: boolean
-      required:
-      - includePublicImportedClusters
-      - limit
-      - offset
-      - searchTerm
       type: object
     PodsSearchList:
       example:
@@ -60864,7 +59861,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     PrivateSubscriptionList:
@@ -61420,12 +60416,8 @@ components:
       - autoSync
       - id
       - isLocked
-      - name
-      - namespace
       - projectId
-      - projectName
       - status
-      - version
       type: object
     ProjectAppList:
       example:
@@ -61534,9 +60526,6 @@ components:
           type: string
         value:
           type: string
-      required:
-      - key
-      - value
       type: object
     ProjectCanAddVClusterDto:
       example:
@@ -61589,9 +60578,7 @@ components:
       - id
       - isLocked
       - isVirtualCluster
-      - kubernetesVersion
       - maintenanceModeEnabled
-      - name
       - status
       type: object
     ProjectChartDto:
@@ -61649,14 +60636,7 @@ components:
           items: {}
           type: array
       required:
-      - deleting
-      - failed
-      - failedToImport
-      - importing
-      - purging
-      - succeeded
       - totalCount
-      - updating
       type: object
     ProjectCommonRecordDto:
       example:
@@ -61672,9 +60652,7 @@ components:
         expiredAt:
           type: string
       required:
-      - expiredAt
       - id
-      - name
       type: object
     ProjectDeploymentCommitCommand:
       example:
@@ -61711,7 +60689,6 @@ components:
       - deleteAutoscalingServers
       - forceDeleteVClusters
       - projectId
-      - serverIds
       type: object
     ProjectDeploymentDeleteVmsCommand:
       example:
@@ -61730,7 +60707,6 @@ components:
           type: array
       required:
       - projectId
-      - vmIds
       type: object
     ProjectDeploymentRepairCommand:
       example:
@@ -61810,18 +60786,11 @@ components:
         accessIp:
           type: string
       required:
-      - accessIp
       - alertsCount
-      - createdBy
-      - flavors
-      - images
       - isAutoUpgradeEnabled
       - isBackupEnabled
       - isMonitoringEnabled
-      - lastModified
-      - lastModifiedBy
       - projectId
-      - projectName
       - serversCount
       - vmsCount
       type: object
@@ -61843,7 +60812,6 @@ components:
           $ref: "#/components/schemas/ProjectType"
       required:
       - kind
-      - message
       - type
       type: object
     ProjectDetailsErrorType:
@@ -62339,7 +61307,6 @@ components:
           type: boolean
       required:
       - deleteOnExpiration
-      - expireAt
       - projectId
       type: object
     ProjectHealth:
@@ -62572,14 +61539,6 @@ components:
           $ref: "#/components/schemas/Diff"
         summary:
           $ref: "#/components/schemas/Summary"
-      required:
-      - breakdown
-      - diff
-      - displayName
-      - metadata
-      - name
-      - pastBreakdown
-      - summary
       type: object
     ProjectListDetailDto:
       example:
@@ -62975,7 +61934,6 @@ components:
           type: string
       required:
       - id
-      - mode
       type: object
     ProjectMaintenanceModeCommand:
       example:
@@ -62989,7 +61947,6 @@ components:
           type: string
       required:
       - id
-      - mode
       type: object
     ProjectMetadata:
       example:
@@ -63010,11 +61967,6 @@ components:
           items:
             $ref: "#/components/schemas/Provider"
           type: array
-      required:
-      - path
-      - providers
-      - type
-      - vcsSubPath
       type: object
     ProjectMonitoringAlertsDto:
       example:
@@ -63254,9 +62206,6 @@ components:
           type: string
         data:
           $ref: "#/components/schemas/AlertData"
-      required:
-      - data
-      - status
       type: object
     ProjectQuotaList:
       example:
@@ -63376,7 +62325,6 @@ components:
       required:
       - canCommit
       - id
-      - name
       type: object
     ProjectTemplateList:
       example:
@@ -63804,8 +62752,6 @@ components:
       properties:
         query:
           $ref: "#/components/schemas/LokiLogsQuery"
-      required:
-      - query
       type: object
     ProjectsMonitoringAlertsCommand:
       example:
@@ -63833,10 +62779,6 @@ components:
           type: integer
         searchTerm:
           type: string
-      required:
-      - limit
-      - offset
-      - searchTerm
       type: object
     ProjectsSearchList:
       example:
@@ -63859,7 +62801,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     PrometheusBillingCreateCommand:
@@ -63989,10 +62930,6 @@ components:
         categoryName:
           type: string
       required:
-      - categoryName
-      - description
-      - expression
-      - name
       - projectId
       type: object
     PrometheusDashboardDto:
@@ -64072,11 +63009,7 @@ components:
         categoryName:
           type: string
       required:
-      - categoryName
-      - description
-      - expression
       - id
-      - name
       type: object
     PrometheusEntity:
       example:
@@ -64138,9 +63071,6 @@ components:
           type: string
         data:
           $ref: "#/components/schemas/MetricData"
-      required:
-      - data
-      - status
       type: object
     PrometheusMetricsAutocompleteCommand:
       example:
@@ -64185,9 +63115,7 @@ components:
           type: string
       required:
       - isGraphEnabled
-      - parameters
       - projectId
-      - step
       type: object
     PrometheusOrganizationDiscountDto:
       example:
@@ -64419,10 +63347,6 @@ components:
           type: integer
         searchTerm:
           type: string
-      required:
-      - limit
-      - offset
-      - searchTerm
       type: object
     PrometheusRulesSearchList:
       example:
@@ -64443,7 +63367,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     PrometheusRulesSearchResponseData:
@@ -64462,7 +63385,6 @@ components:
           type: integer
       required:
       - id
-      - name
       - partner
       type: object
     PrometheusType:
@@ -64476,8 +63398,6 @@ components:
       properties:
         name:
           type: string
-      required:
-      - name
       type: object
     ProxmoxCheckerCommand:
       example:
@@ -64491,10 +63411,6 @@ components:
           type: string
         tokenSecret:
           type: string
-      required:
-      - tokenId
-      - tokenSecret
-      - url
       type: object
     ProxmoxFlavorData:
       example:
@@ -64551,7 +63467,6 @@ components:
           type: boolean
       required:
       - isBound
-      - name
       - usedByServer
       type: object
     ProxmoxList:
@@ -64862,11 +63777,6 @@ components:
         includePublicImportedClusters:
           nullable: true
           type: boolean
-      required:
-      - includePublicImportedClusters
-      - limit
-      - offset
-      - searchTerm
       type: object
     PvcSearchList:
       example:
@@ -64893,7 +63803,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     RamLimitsDto:
@@ -64933,7 +63842,6 @@ components:
           type: string
       required:
       - serverId
-      - type
       type: object
     RebootStandAloneVmCommand:
       example:
@@ -64947,7 +63855,6 @@ components:
           type: string
       required:
       - id
-      - type
       type: object
     RefreshTokenCommand:
       example:
@@ -64958,9 +63865,6 @@ components:
           type: string
         refreshToken:
           type: string
-      required:
-      - refreshToken
-      - token
       type: object
     RegionListCommand:
       example:
@@ -64976,10 +63880,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      required:
-      - awsAccessKeyId
-      - awsSecretAccessKey
-      - cloudId
       type: object
     RegistrationCommand:
       example:
@@ -64993,10 +63893,6 @@ components:
           type: string
         email:
           type: string
-      required:
-      - email
-      - organizationName
-      - username
       type: object
     RemindUsersByAlertingProfileCommand:
       example:
@@ -65013,8 +63909,6 @@ components:
       properties:
         userId:
           type: string
-      required:
-      - userId
       type: object
     ReplyTicketCommand:
       example:
@@ -65025,9 +63919,6 @@ components:
           type: string
         body:
           type: string
-      required:
-      - body
-      - ticketId
       type: object
     Repository:
       example:
@@ -65066,13 +63957,8 @@ components:
       required:
       - isImported
       - kind
-      - name
       - official
-      - organizationDisplayName
-      - organizationName
-      - repositoryId
       - scannerDisabled
-      - url
       - verifiedPublisher
       type: object
     ResetPasswordCommand:
@@ -65087,10 +63973,6 @@ components:
           type: string
         newPassword:
           type: string
-      required:
-      - email
-      - newPassword
-      - token
       type: object
     ResetProjectStatusCommand:
       example:
@@ -65126,7 +64008,6 @@ components:
           $ref: "#/components/schemas/CloudStatus"
       required:
       - projectId
-      - serverIds
       - status
       type: object
     ResetStandAloneVmStatusCommand:
@@ -65150,7 +64031,6 @@ components:
       required:
       - projectId
       - status
-      - vmIds
       type: object
     Resource:
       example:
@@ -65221,16 +64101,6 @@ components:
           items:
             $ref: "#/components/schemas/Subresource"
           type: array
-      required:
-      - costComponents
-      - hourlyCost
-      - metadata
-      - monthlyCost
-      - monthlyUsageCost
-      - name
-      - resourceType
-      - subresources
-      - tags
       type: object
     ResourcePoolListCommand:
       example:
@@ -65247,11 +64117,6 @@ components:
           type: string
         datacenterId:
           type: string
-      required:
-      - datacenterId
-      - password
-      - url
-      - username
       type: object
     ResourcePoolSummary:
       example:
@@ -65262,9 +64127,6 @@ components:
           type: string
         resourcePool:
           type: string
-      required:
-      - name
-      - resourcePool
       type: object
     ResourcePresetDto:
       example:
@@ -65336,11 +64198,7 @@ components:
             type: string
           type: array
       required:
-      - backupName
-      - excludeNamespaces
-      - includeNamespaces
       - projectId
-      - restoreName
       type: object
     Rule:
       example:
@@ -65427,17 +64285,9 @@ components:
         type:
           type: string
       required:
-      - alerts
-      - annotations
       - duration
       - evaluationTime
-      - health
-      - labels
       - lastEvaluation
-      - name
-      - query
-      - state
-      - type
       type: object
     RuleCreateCommand:
       example:
@@ -65487,11 +64337,7 @@ components:
           nullable: true
           type: integer
       required:
-      - labels
-      - metricName
-      - name
       - operationCredentialId
-      - organizationId
       - price
       - type
       type: object
@@ -65526,10 +64372,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      required:
-      - labels
-      - metricName
-      - name
       type: object
     RuleLabels:
       example:
@@ -65537,8 +64379,6 @@ components:
       properties:
         severity:
           type: string
-      required:
-      - severity
       type: object
     SecretSearchCommand:
       example:
@@ -65560,11 +64400,6 @@ components:
         includePublicImportedClusters:
           nullable: true
           type: boolean
-      required:
-      - includePublicImportedClusters
-      - limit
-      - offset
-      - searchTerm
       type: object
     SecretSearchList:
       example:
@@ -65591,7 +64426,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     SecurityGroupListDto:
@@ -65907,17 +64741,6 @@ components:
             $ref: "#/components/schemas/UserResourceChartDto"
           type: array
       required:
-      - aws
-      - azure
-      - deleting
-      - failed
-      - genericK8S
-      - google
-      - openshift
-      - openstack
-      - proxmox
-      - purging
-      - succeeded
       - totalAwsCount
       - totalAzureCount
       - totalCount
@@ -65935,11 +64758,6 @@ components:
       - totalUpdatingCount
       - totalVsphereCount
       - totalZadaraCount
-      - updating
-      - usedResources
-      - vsphere
-      - waiting
-      - zadara
       type: object
     ServerCommonRecordDto:
       example:
@@ -65959,9 +64777,7 @@ components:
             type: string
           type: array
       required:
-      - names
       - projectId
-      - projectName
       type: object
     ServerForCreateDto:
       example:
@@ -66032,14 +64848,8 @@ components:
         useLocalDisk:
           type: boolean
       required:
-      - autoscalingGroup
-      - availabilityZone
       - count
       - diskSize
-      - flavor
-      - hypervisor
-      - kubernetesNodeLabels
-      - name
       - projectId
       - proxmoxExtraDiskSize
       - proxmoxRole
@@ -66247,7 +65057,6 @@ components:
       required:
       - count
       - diskSize
-      - flavor
       - role
       type: object
     ServersForBillingDto:
@@ -66558,10 +65367,6 @@ components:
           type: integer
         searchTerm:
           type: string
-      required:
-      - limit
-      - offset
-      - searchTerm
       type: object
     ServersSearchList:
       example:
@@ -66588,7 +65393,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     ServersSearchResponseData:
@@ -66618,11 +65422,7 @@ components:
           type: string
       required:
       - id
-      - name
-      - organizationId
-      - organizationName
       - projectId
-      - projectName
       type: object
     ServiceSearchCommand:
       example:
@@ -66644,11 +65444,6 @@ components:
         includePublicImportedClusters:
           nullable: true
           type: boolean
-      required:
-      - includePublicImportedClusters
-      - limit
-      - offset
-      - searchTerm
       type: object
     ServiceSearchList:
       example:
@@ -66675,7 +65470,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     SetTicketPriorityCommand:
@@ -66688,7 +65482,6 @@ components:
         priority:
           $ref: "#/components/schemas/TicketPriority"
       required:
-      - id
       - priority
       type: object
     ShelveStandAloneVmCommand:
@@ -66716,8 +65509,6 @@ components:
           type: string
       required:
       - id
-      - mode
-      - reason
       type: object
     SimplePrometheusEntity:
       example:
@@ -66816,7 +65607,6 @@ components:
           type: string
       required:
       - id
-      - mode
       type: object
     SpotWorkerOperationCommand:
       example:
@@ -66830,7 +65620,6 @@ components:
           type: string
       required:
       - id
-      - mode
       type: object
     SshKeyCommand:
       example:
@@ -66838,8 +65627,6 @@ components:
       properties:
         sshPublicKey:
           type: string
-      required:
-      - sshPublicKey
       type: object
     SshUserCreateDto:
       example:
@@ -66850,9 +65637,6 @@ components:
           type: string
         sshPublicKey:
           type: string
-      required:
-      - name
-      - sshPublicKey
       type: object
     SshUsersListDto:
       example:
@@ -66885,9 +65669,6 @@ components:
           type: string
         value:
           type: string
-      required:
-      - key
-      - value
       type: object
     StandAloneMetaDataDtoForVm:
       example:
@@ -66936,10 +65717,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      required:
-      - name
-      - publicKey
-      - securityGroups
       type: object
     StandAloneProfileForDetailsDto:
       example:
@@ -66991,7 +65768,6 @@ components:
           type: string
       required:
       - id
-      - mode
       type: object
     StandAloneProfileSecurityGroupDto:
       example:
@@ -67014,11 +65790,9 @@ components:
         remoteIpPrefix:
           type: string
       required:
-      - name
       - portMaxRange
       - portMinRange
       - protocol
-      - remoteIpPrefix
       type: object
     StandAloneProfileSecurityGroupForDetailsDto:
       example:
@@ -67068,7 +65842,6 @@ components:
           type: string
       required:
       - id
-      - name
       type: object
     StandAloneProfiles:
       example:
@@ -67202,10 +65975,6 @@ components:
           type: integer
         searchTerm:
           type: string
-      required:
-      - limit
-      - offset
-      - searchTerm
       type: object
     StandAloneProfilesSearchList:
       example:
@@ -67228,7 +65997,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     StandAloneVmDiskDto:
@@ -67253,10 +66021,7 @@ components:
           nullable: true
           type: integer
       required:
-      - deviceName
-      - name
       - size
-      - volumeType
       type: object
     StandAloneVmDiskForDetailsDto:
       example:
@@ -67319,7 +66084,6 @@ components:
           type: string
       required:
       - id
-      - mode
       type: object
     StandAloneVmListForDetails:
       example:
@@ -68090,7 +66854,6 @@ components:
           type: string
       required:
       - lastBackup
-      - phase
       type: object
     StopStandaloneVmCommand:
       example:
@@ -68122,11 +66885,6 @@ components:
         includePublicImportedClusters:
           nullable: true
           type: boolean
-      required:
-      - includePublicImportedClusters
-      - limit
-      - offset
-      - searchTerm
       type: object
     StorageClassesSearchList:
       example:
@@ -68153,7 +66911,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     StorageListCommand:
@@ -68168,10 +66925,6 @@ components:
           type: string
         tokenSecret:
           type: string
-      required:
-      - tokenId
-      - tokenSecret
-      - url
       type: object
     Stream:
       example:
@@ -68206,17 +66959,6 @@ components:
           type: string
         component:
           type: string
-      required:
-      - app
-      - component
-      - container
-      - filename
-      - job
-      - namespace
-      - pod
-      - podTemplateHash
-      - streamStream
-      - tier
       type: object
     StripeInvoiceListDto:
       example:
@@ -68346,11 +67088,6 @@ components:
         includePublicImportedClusters:
           nullable: true
           type: boolean
-      required:
-      - includePublicImportedClusters
-      - limit
-      - offset
-      - searchTerm
       type: object
     StsSearchList:
       example:
@@ -68377,7 +67114,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     Subnet:
@@ -68392,10 +67128,6 @@ components:
           type: string
         cidr:
           type: string
-      required:
-      - cidr
-      - id
-      - name
       type: object
     Subresource:
       example:
@@ -68418,12 +67150,6 @@ components:
         costComponents:
           items: {}
           type: array
-      required:
-      - costComponents
-      - hourlyCost
-      - metadata
-      - monthlyCost
-      - name
       type: object
     Summary:
       example:
@@ -68463,13 +67189,11 @@ components:
             type: integer
           type: object
       required:
-      - noPriceResourceCounts
       - totalDetectedResources
       - totalNoPriceResources
       - totalSupportedResources
       - totalUnsupportedResources
       - totalUsageBasedResources
-      - unsupportedResourceCounts
       type: object
     SyncBackupCredentialsCommand:
       type: object
@@ -68491,7 +67215,6 @@ components:
           type: integer
       required:
       - projectAppId
-      - timeout
       type: object
     SyncProjectAppsCommand:
       example:
@@ -68592,7 +67315,6 @@ components:
           type: string
       required:
       - id
-      - mode
       type: object
     ToggleKeycloakCommand:
       example:
@@ -68600,8 +67322,6 @@ components:
       properties:
         mode:
           type: string
-      required:
-      - mode
       type: object
     ToggleMaintenanceModeCommand:
       example:
@@ -68609,8 +67329,6 @@ components:
       properties:
         mode:
           type: string
-      required:
-      - mode
       type: object
     ToggleNotificationModeCommand:
       example:
@@ -68618,8 +67336,6 @@ components:
       properties:
         mode:
           type: string
-      required:
-      - mode
       type: object
     TransferList:
       example:
@@ -68647,9 +67363,6 @@ components:
           type: string
         userId:
           type: string
-      required:
-      - ticketId
-      - userId
       type: object
     TrustedRegisteredCreateDto:
       example:
@@ -68657,8 +67370,6 @@ components:
       properties:
         registry:
           type: string
-      required:
-      - registry
       type: object
     TrustedRegistriesListDto:
       example:
@@ -68684,8 +67395,6 @@ components:
       properties:
         registry:
           type: string
-      required:
-      - registry
       type: object
     TrustedRegistryListDto:
       example:
@@ -68707,8 +67416,6 @@ components:
       properties:
         verificationCode:
           type: string
-      required:
-      - verificationCode
       type: object
     TwoFactorAuthRecoveryCommand:
       example:
@@ -68716,8 +67423,6 @@ components:
       properties:
         recoveryCode:
           type: string
-      required:
-      - recoveryCode
       type: object
     TwoFactorAuthSetupCommand:
       type: object
@@ -68740,8 +67445,6 @@ components:
       properties:
         verificationCode:
           type: string
-      required:
-      - verificationCode
       type: object
     TwoFactorAuthVerifyResult:
       example:
@@ -68753,8 +67456,6 @@ components:
           items:
             type: string
           type: array
-      required:
-      - recoveryCodes
       type: object
     UnbindAppRepositoryCommand:
       example:
@@ -68771,9 +67472,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      required:
-      - ids
-      - organizationId
       type: object
     UnbindFlavorFromProjectCommand:
       example:
@@ -68786,8 +67484,6 @@ components:
             format: int32
             type: integer
           type: array
-      required:
-      - ids
       type: object
     UninstallProjectAppResult:
       example:
@@ -68817,9 +67513,6 @@ components:
           type: string
         httpProxy:
           type: string
-      required:
-      - httpProxy
-      - name
       type: object
     UpdateAlertingProfileCommand:
       example:
@@ -68846,7 +67539,6 @@ components:
           $ref: "#/components/schemas/AlertingReminder"
       required:
       - id
-      - name
       type: object
     UpdateAwsCommand:
       example:
@@ -68865,10 +67557,7 @@ components:
         awsAccessKeyId:
           type: string
       required:
-      - awsAccessKeyId
-      - awsSecretAccessKey
       - id
-      - name
       type: object
     UpdateAzureCommand:
       example:
@@ -68887,10 +67576,7 @@ components:
         azureClientId:
           type: string
       required:
-      - azureClientId
-      - azureClientSecret
       - id
-      - name
       type: object
     UpdateExecutorHealthStatusCommand:
       example:
@@ -68918,7 +67604,6 @@ components:
           type: string
       required:
       - id
-      - name
       type: object
     UpdateGroupDto:
       example:
@@ -68961,7 +67646,6 @@ components:
             type: string
           type: array
       required:
-      - hypervisors
       - id
       type: object
     UpdateInvoiceDto:
@@ -69006,9 +67690,6 @@ components:
           format: double
           nullable: true
           type: number
-      required:
-      - name
-      - stripeInvoiceId
       type: object
     UpdateKubernetesAlertDto:
       example:
@@ -69038,11 +67719,7 @@ components:
           type: string
       required:
       - endsAt
-      - fingerprint
-      - labels
-      - silenceReason
       - startsAt
-      - status
       type: object
     UpdateOpenStackCommand:
       example:
@@ -69062,9 +67739,6 @@ components:
           type: string
       required:
       - id
-      - name
-      - openStackPassword
-      - openStackUser
       type: object
     UpdateOrganizationCommand:
       example:
@@ -69112,18 +67786,9 @@ components:
         isEligibleUpdateSubscription:
           type: boolean
       required:
-      - address
-      - billingEmail
-      - city
-      - country
-      - email
-      - fullName
       - id
       - isEligibleUpdateSubscription
       - isLocked
-      - name
-      - phone
-      - vatNumber
       type: object
     UpdateOrganizationSubscriptionCommand:
       example:
@@ -69148,9 +67813,6 @@ components:
           type: string
         paymentIntentId:
           type: string
-      required:
-      - paymentIntentId
-      - paymentMethodId
       type: object
     UpdateProjectAppCommand:
       example:
@@ -69164,7 +67826,6 @@ components:
           type: string
       required:
       - projectAppId
-      - status
       type: object
     UpdateProjectAppStatusCommand:
       type: object
@@ -69188,9 +67849,6 @@ components:
           type: string
       required:
       - id
-      - name
-      - tokenId
-      - tokenSecret
       type: object
     UpdateQuotaCommand:
       example:
@@ -69249,11 +67907,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      required:
-      - organizationId
-      - password
-      - repositoryId
-      - username
       type: object
     UpdateServerHealthDto:
       example:
@@ -69264,9 +67917,6 @@ components:
           type: string
         serverHealth:
           type: string
-      required:
-      - ipAddress
-      - serverHealth
       type: object
     UpdateSlackConfigurationDto:
       example:
@@ -69289,10 +67939,7 @@ components:
         slackType:
           $ref: "#/components/schemas/SlackType"
       required:
-      - channel
-      - name
       - slackType
-      - url
       type: object
     UpdateStageCommand:
       example:
@@ -69306,7 +67953,6 @@ components:
           type: string
       required:
       - projectId
-      - stage
       type: object
     UpdateStandAloneVmFlavorCommand:
       example:
@@ -69319,7 +67965,6 @@ components:
         flavor:
           type: string
       required:
-      - flavor
       - id
       type: object
     UpdateStandaloneVmDiskSizeCommand:
@@ -69383,7 +68028,6 @@ components:
       - cloudCredentialLimit
       - id
       - monthlyPrice
-      - name
       - projectLimit
       - serverLimit
       - tcuPrice
@@ -69401,8 +68045,6 @@ components:
           items:
             type: string
           type: array
-      required:
-      - ipAddress
       type: object
     UpdateUserCommand:
       example:
@@ -69433,13 +68075,9 @@ components:
           type: boolean
       required:
       - disable
-      - displayName
-      - email
       - forceToResetPassword
-      - id
       - isApprovedByPartner
       - role
-      - username
       type: object
     UpdateVsphereCommand:
       example:
@@ -69459,9 +68097,6 @@ components:
           type: string
       required:
       - id
-      - name
-      - password
-      - username
       type: object
     UpdateVsphereHypervisorsCommand:
       example:
@@ -69478,7 +68113,6 @@ components:
             type: string
           type: array
       required:
-      - hypervisors
       - id
       type: object
     UpdateZadaraCommand:
@@ -69499,9 +68133,6 @@ components:
           type: string
       required:
       - id
-      - name
-      - zadaraAccessKeyId
-      - zadaraSecretAccessKey
       type: object
     UserDetails:
       example:
@@ -69581,9 +68212,6 @@ components:
           type: string
         userName:
           type: string
-      required:
-      - email
-      - userName
       type: object
     UserForListDto:
       example:
@@ -69748,7 +68376,6 @@ components:
       - maxDiskSize
       - maxRam
       - projectId
-      - projectName
       - ram
       type: object
     UserRole:
@@ -69793,10 +68420,7 @@ components:
           type: boolean
       required:
       - bindALL
-      - endpoints
-      - expireDate
       - isReadonly
-      - name
       type: object
     UserTokenCreateDto:
       example:
@@ -69807,9 +68431,6 @@ components:
           type: string
         secretKey:
           type: string
-      required:
-      - accessKey
-      - secretKey
       type: object
     UserTokensListDto:
       example:
@@ -69942,10 +68563,6 @@ components:
           type: integer
         searchTerm:
           type: string
-      required:
-      - limit
-      - offset
-      - searchTerm
       type: object
     UsersSearchList:
       example:
@@ -69970,7 +68587,6 @@ components:
           format: int32
           type: integer
       required:
-      - data
       - totalCount
       type: object
     UsersSearchResponseData:
@@ -69993,12 +68609,6 @@ components:
           type: string
         email:
           type: string
-      required:
-      - email
-      - id
-      - name
-      - organizationId
-      - organizationName
       type: object
     VClusterActionVisibilityDto:
       example:
@@ -70553,10 +69163,6 @@ components:
           type: string
         password:
           type: string
-      required:
-      - password
-      - url
-      - username
       type: object
     VerifyEmailCommand:
       example:
@@ -70569,7 +69175,6 @@ components:
           $ref: "#/components/schemas/EmailMode"
       required:
       - mode
-      - token
       type: object
     VerifySlackCredentialsCommand:
       example:
@@ -70583,10 +69188,6 @@ components:
           type: string
         channel:
           type: string
-      required:
-      - channel
-      - name
-      - url
       type: object
     VerifyWebhookCommand:
       example:
@@ -70594,8 +69195,6 @@ components:
       properties:
         url:
           type: string
-      required:
-      - url
       type: object
     VirtualClusterDisableAiCommand:
       example:
@@ -70774,11 +69373,6 @@ components:
           type: string
         tokenSecret:
           type: string
-      required:
-      - cloudId
-      - tokenId
-      - tokenSecret
-      - url
       type: object
     VsphereFlavorData:
       example:
@@ -70841,12 +69435,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      required:
-      - cloudId
-      - datacenterId
-      - password
-      - url
-      - username
       type: object
     VsphereList:
       example:
@@ -71151,7 +69739,6 @@ components:
           nullable: true
           type: string
       required:
-      - name
       - size
       - uuid
       type: object
@@ -71170,11 +69757,6 @@ components:
           type: string
         datacenterId:
           type: string
-      required:
-      - datacenterId
-      - password
-      - url
-      - username
       type: object
     WebhookHeaderDto:
       example:
@@ -71191,8 +69773,6 @@ components:
           type: string
       required:
       - id
-      - key
-      - value
       type: object
     WhiteListDomainCreateCommand:
       example:
@@ -71209,8 +69789,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      required:
-      - whiteListDomains
       type: object
     WhiteListDomainCreateDto:
       example:
@@ -71218,8 +69796,6 @@ components:
       properties:
         name:
           type: string
-      required:
-      - name
       type: object
     WhiteListDomainDeleteCommand:
       example:
@@ -71281,8 +69857,6 @@ components:
       properties:
         yaml:
           type: string
-      required:
-      - yaml
       type: object
     ZadaraAvailabilityZonesCommand:
       example:
@@ -71301,11 +69875,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      required:
-      - cloudId
-      - url
-      - zadaraAccessKeyId
-      - zadaraSecretAccessKey
       type: object
     ZadaraCredentialList:
       example:
@@ -71479,10 +70048,6 @@ components:
           type: string
         zadaraSecretAccessKey:
           type: string
-      required:
-      - url
-      - zadaraAccessKeyId
-      - zadaraSecretAccessKey
       type: object
     standaloneactions_windows_instance_password_request:
       properties:
@@ -71494,9 +70059,7 @@ components:
         config:
           $ref: "#/components/schemas/IFormFile"
       required:
-      - config
       - id
-      - key
       type: object
     project_deployment_import_cluster_request:
       properties:
@@ -71595,28 +70158,6 @@ components:
           $ref: "#/components/schemas/IFormFile"
         collapsed:
           $ref: "#/components/schemas/IFormFile"
-      required:
-      - address
-      - backgroundImage
-      - bg
-      - bgCollapsedSubItem
-      - city
-      - collapsed
-      - country
-      - domain
-      - email
-      - expanded
-      - itemBg
-      - itemBgActive
-      - itemBgActiveHover
-      - itemBgHover
-      - itemText
-      - itemTextActive
-      - link
-      - logo
-      - name
-      - phone
-      - vatNumber
       type: object
     partner_update_request:
       properties:
@@ -71675,28 +70216,7 @@ components:
         collapsed:
           $ref: "#/components/schemas/IFormFile"
       required:
-      - address
-      - backgroundImage
-      - bg
-      - bgCollapsedSubItem
-      - city
-      - collapsed
-      - country
-      - domain
-      - email
-      - expanded
       - id
-      - itemBg
-      - itemBgActive
-      - itemBgActiveHover
-      - itemBgHover
-      - itemText
-      - itemTextActive
-      - link
-      - logo
-      - name
-      - phone
-      - vatNumber
       type: object
     kubernetes_ingress_classes_request:
       properties:
@@ -71720,8 +70240,6 @@ components:
       properties:
         config:
           $ref: "#/components/schemas/IFormFile"
-      required:
-      - config
       type: object
     googlecloud_create_request:
       properties:
@@ -71746,12 +70264,7 @@ components:
           type: integer
       required:
       - azCount
-      - billingAccountId
-      - config
-      - folderId
       - importProject
-      - name
-      - region
       type: object
     googlecloud_zone_list_request:
       properties:
@@ -71763,9 +70276,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      required:
-      - config
-      - region
       type: object
     checker_import_cluster_kube_config_request:
       properties:

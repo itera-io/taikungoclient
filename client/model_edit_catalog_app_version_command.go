@@ -23,7 +23,7 @@ var _ MappedNullable = &EditCatalogAppVersionCommand{}
 // EditCatalogAppVersionCommand struct for EditCatalogAppVersionCommand
 type EditCatalogAppVersionCommand struct {
 	CatalogAppId int32 `json:"catalogAppId"`
-	Version string `json:"version"`
+	Version *string `json:"version,omitempty"`
 }
 
 type _EditCatalogAppVersionCommand EditCatalogAppVersionCommand
@@ -32,10 +32,9 @@ type _EditCatalogAppVersionCommand EditCatalogAppVersionCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEditCatalogAppVersionCommand(catalogAppId int32, version string) *EditCatalogAppVersionCommand {
+func NewEditCatalogAppVersionCommand(catalogAppId int32) *EditCatalogAppVersionCommand {
 	this := EditCatalogAppVersionCommand{}
 	this.CatalogAppId = catalogAppId
-	this.Version = version
 	return &this
 }
 
@@ -71,28 +70,36 @@ func (o *EditCatalogAppVersionCommand) SetCatalogAppId(v int32) {
 	o.CatalogAppId = v
 }
 
-// GetVersion returns the Version field value
+// GetVersion returns the Version field value if set, zero value otherwise.
 func (o *EditCatalogAppVersionCommand) GetVersion() string {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
-
-	return o.Version
+	return *o.Version
 }
 
-// GetVersionOk returns a tuple with the Version field value
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EditCatalogAppVersionCommand) GetVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
-	return &o.Version, true
+	return o.Version, true
 }
 
-// SetVersion sets field value
+// HasVersion returns a boolean if a field has been set.
+func (o *EditCatalogAppVersionCommand) HasVersion() bool {
+	if o != nil && !IsNil(o.Version) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *EditCatalogAppVersionCommand) SetVersion(v string) {
-	o.Version = v
+	o.Version = &v
 }
 
 func (o EditCatalogAppVersionCommand) MarshalJSON() ([]byte, error) {
@@ -106,7 +113,9 @@ func (o EditCatalogAppVersionCommand) MarshalJSON() ([]byte, error) {
 func (o EditCatalogAppVersionCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["catalogAppId"] = o.CatalogAppId
-	toSerialize["version"] = o.Version
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
 	return toSerialize, nil
 }
 
@@ -116,7 +125,6 @@ func (o *EditCatalogAppVersionCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"catalogAppId",
-		"version",
 	}
 
 	allProperties := make(map[string]interface{})

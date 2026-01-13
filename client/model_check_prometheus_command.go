@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the CheckPrometheusCommand type satisfies the MappedNullable interface at compile time
@@ -22,22 +20,17 @@ var _ MappedNullable = &CheckPrometheusCommand{}
 
 // CheckPrometheusCommand struct for CheckPrometheusCommand
 type CheckPrometheusCommand struct {
-	Password string `json:"password"`
-	UserName string `json:"userName"`
-	Url string `json:"url"`
+	Password *string `json:"password,omitempty"`
+	UserName *string `json:"userName,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
-
-type _CheckPrometheusCommand CheckPrometheusCommand
 
 // NewCheckPrometheusCommand instantiates a new CheckPrometheusCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCheckPrometheusCommand(password string, userName string, url string) *CheckPrometheusCommand {
+func NewCheckPrometheusCommand() *CheckPrometheusCommand {
 	this := CheckPrometheusCommand{}
-	this.Password = password
-	this.UserName = userName
-	this.Url = url
 	return &this
 }
 
@@ -49,76 +42,100 @@ func NewCheckPrometheusCommandWithDefaults() *CheckPrometheusCommand {
 	return &this
 }
 
-// GetPassword returns the Password field value
+// GetPassword returns the Password field value if set, zero value otherwise.
 func (o *CheckPrometheusCommand) GetPassword() string {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
 	}
-
-	return o.Password
+	return *o.Password
 }
 
-// GetPasswordOk returns a tuple with the Password field value
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CheckPrometheusCommand) GetPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
-	return &o.Password, true
+	return o.Password, true
 }
 
-// SetPassword sets field value
+// HasPassword returns a boolean if a field has been set.
+func (o *CheckPrometheusCommand) HasPassword() bool {
+	if o != nil && !IsNil(o.Password) {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *CheckPrometheusCommand) SetPassword(v string) {
-	o.Password = v
+	o.Password = &v
 }
 
-// GetUserName returns the UserName field value
+// GetUserName returns the UserName field value if set, zero value otherwise.
 func (o *CheckPrometheusCommand) GetUserName() string {
-	if o == nil {
+	if o == nil || IsNil(o.UserName) {
 		var ret string
 		return ret
 	}
-
-	return o.UserName
+	return *o.UserName
 }
 
-// GetUserNameOk returns a tuple with the UserName field value
+// GetUserNameOk returns a tuple with the UserName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CheckPrometheusCommand) GetUserNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UserName) {
 		return nil, false
 	}
-	return &o.UserName, true
+	return o.UserName, true
 }
 
-// SetUserName sets field value
+// HasUserName returns a boolean if a field has been set.
+func (o *CheckPrometheusCommand) HasUserName() bool {
+	if o != nil && !IsNil(o.UserName) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserName gets a reference to the given string and assigns it to the UserName field.
 func (o *CheckPrometheusCommand) SetUserName(v string) {
-	o.UserName = v
+	o.UserName = &v
 }
 
-// GetUrl returns the Url field value
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *CheckPrometheusCommand) GetUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-
-	return o.Url
+	return *o.Url
 }
 
-// GetUrlOk returns a tuple with the Url field value
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CheckPrometheusCommand) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return &o.Url, true
+	return o.Url, true
 }
 
-// SetUrl sets field value
+// HasUrl returns a boolean if a field has been set.
+func (o *CheckPrometheusCommand) HasUrl() bool {
+	if o != nil && !IsNil(o.Url) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *CheckPrometheusCommand) SetUrl(v string) {
-	o.Url = v
+	o.Url = &v
 }
 
 func (o CheckPrometheusCommand) MarshalJSON() ([]byte, error) {
@@ -131,49 +148,16 @@ func (o CheckPrometheusCommand) MarshalJSON() ([]byte, error) {
 
 func (o CheckPrometheusCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["password"] = o.Password
-	toSerialize["userName"] = o.UserName
-	toSerialize["url"] = o.Url
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
+	}
+	if !IsNil(o.UserName) {
+		toSerialize["userName"] = o.UserName
+	}
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
 	return toSerialize, nil
-}
-
-func (o *CheckPrometheusCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"password",
-		"userName",
-		"url",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varCheckPrometheusCommand := _CheckPrometheusCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCheckPrometheusCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CheckPrometheusCommand(varCheckPrometheusCommand)
-
-	return err
 }
 
 type NullableCheckPrometheusCommand struct {

@@ -23,7 +23,7 @@ var _ MappedNullable = &ProjectDetailsErrorListDto{}
 // ProjectDetailsErrorListDto struct for ProjectDetailsErrorListDto
 type ProjectDetailsErrorListDto struct {
 	Type ProjectDetailsErrorType `json:"type"`
-	Message []string `json:"message"`
+	Message []string `json:"message,omitempty"`
 	Kind ProjectType `json:"kind"`
 }
 
@@ -33,10 +33,9 @@ type _ProjectDetailsErrorListDto ProjectDetailsErrorListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectDetailsErrorListDto(type_ ProjectDetailsErrorType, message []string, kind ProjectType) *ProjectDetailsErrorListDto {
+func NewProjectDetailsErrorListDto(type_ ProjectDetailsErrorType, kind ProjectType) *ProjectDetailsErrorListDto {
 	this := ProjectDetailsErrorListDto{}
 	this.Type = type_
-	this.Message = message
 	this.Kind = kind
 	return &this
 }
@@ -73,26 +72,34 @@ func (o *ProjectDetailsErrorListDto) SetType(v ProjectDetailsErrorType) {
 	o.Type = v
 }
 
-// GetMessage returns the Message field value
+// GetMessage returns the Message field value if set, zero value otherwise.
 func (o *ProjectDetailsErrorListDto) GetMessage() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Message) {
 		var ret []string
 		return ret
 	}
-
 	return o.Message
 }
 
-// GetMessageOk returns a tuple with the Message field value
+// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDetailsErrorListDto) GetMessageOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Message) {
 		return nil, false
 	}
 	return o.Message, true
 }
 
-// SetMessage sets field value
+// HasMessage returns a boolean if a field has been set.
+func (o *ProjectDetailsErrorListDto) HasMessage() bool {
+	if o != nil && !IsNil(o.Message) {
+		return true
+	}
+
+	return false
+}
+
+// SetMessage gets a reference to the given []string and assigns it to the Message field.
 func (o *ProjectDetailsErrorListDto) SetMessage(v []string) {
 	o.Message = v
 }
@@ -132,7 +139,9 @@ func (o ProjectDetailsErrorListDto) MarshalJSON() ([]byte, error) {
 func (o ProjectDetailsErrorListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
-	toSerialize["message"] = o.Message
+	if !IsNil(o.Message) {
+		toSerialize["message"] = o.Message
+	}
 	toSerialize["kind"] = o.Kind
 	return toSerialize, nil
 }
@@ -143,7 +152,6 @@ func (o *ProjectDetailsErrorListDto) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"type",
-		"message",
 		"kind",
 	}
 

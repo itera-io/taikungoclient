@@ -23,9 +23,9 @@ var _ MappedNullable = &DocumentationData{}
 // DocumentationData struct for DocumentationData
 type DocumentationData struct {
 	Id int32 `json:"id"`
-	Key string `json:"key"`
-	Link string `json:"link"`
-	Role string `json:"role"`
+	Key *string `json:"key,omitempty"`
+	Link *string `json:"link,omitempty"`
+	Role *string `json:"role,omitempty"`
 }
 
 type _DocumentationData DocumentationData
@@ -34,12 +34,9 @@ type _DocumentationData DocumentationData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDocumentationData(id int32, key string, link string, role string) *DocumentationData {
+func NewDocumentationData(id int32) *DocumentationData {
 	this := DocumentationData{}
 	this.Id = id
-	this.Key = key
-	this.Link = link
-	this.Role = role
 	return &this
 }
 
@@ -75,76 +72,100 @@ func (o *DocumentationData) SetId(v int32) {
 	o.Id = v
 }
 
-// GetKey returns the Key field value
+// GetKey returns the Key field value if set, zero value otherwise.
 func (o *DocumentationData) GetKey() string {
-	if o == nil {
+	if o == nil || IsNil(o.Key) {
 		var ret string
 		return ret
 	}
-
-	return o.Key
+	return *o.Key
 }
 
-// GetKeyOk returns a tuple with the Key field value
+// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DocumentationData) GetKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
-	return &o.Key, true
+	return o.Key, true
 }
 
-// SetKey sets field value
+// HasKey returns a boolean if a field has been set.
+func (o *DocumentationData) HasKey() bool {
+	if o != nil && !IsNil(o.Key) {
+		return true
+	}
+
+	return false
+}
+
+// SetKey gets a reference to the given string and assigns it to the Key field.
 func (o *DocumentationData) SetKey(v string) {
-	o.Key = v
+	o.Key = &v
 }
 
-// GetLink returns the Link field value
+// GetLink returns the Link field value if set, zero value otherwise.
 func (o *DocumentationData) GetLink() string {
-	if o == nil {
+	if o == nil || IsNil(o.Link) {
 		var ret string
 		return ret
 	}
-
-	return o.Link
+	return *o.Link
 }
 
-// GetLinkOk returns a tuple with the Link field value
+// GetLinkOk returns a tuple with the Link field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DocumentationData) GetLinkOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Link) {
 		return nil, false
 	}
-	return &o.Link, true
+	return o.Link, true
 }
 
-// SetLink sets field value
+// HasLink returns a boolean if a field has been set.
+func (o *DocumentationData) HasLink() bool {
+	if o != nil && !IsNil(o.Link) {
+		return true
+	}
+
+	return false
+}
+
+// SetLink gets a reference to the given string and assigns it to the Link field.
 func (o *DocumentationData) SetLink(v string) {
-	o.Link = v
+	o.Link = &v
 }
 
-// GetRole returns the Role field value
+// GetRole returns the Role field value if set, zero value otherwise.
 func (o *DocumentationData) GetRole() string {
-	if o == nil {
+	if o == nil || IsNil(o.Role) {
 		var ret string
 		return ret
 	}
-
-	return o.Role
+	return *o.Role
 }
 
-// GetRoleOk returns a tuple with the Role field value
+// GetRoleOk returns a tuple with the Role field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DocumentationData) GetRoleOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Role) {
 		return nil, false
 	}
-	return &o.Role, true
+	return o.Role, true
 }
 
-// SetRole sets field value
+// HasRole returns a boolean if a field has been set.
+func (o *DocumentationData) HasRole() bool {
+	if o != nil && !IsNil(o.Role) {
+		return true
+	}
+
+	return false
+}
+
+// SetRole gets a reference to the given string and assigns it to the Role field.
 func (o *DocumentationData) SetRole(v string) {
-	o.Role = v
+	o.Role = &v
 }
 
 func (o DocumentationData) MarshalJSON() ([]byte, error) {
@@ -158,9 +179,15 @@ func (o DocumentationData) MarshalJSON() ([]byte, error) {
 func (o DocumentationData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["key"] = o.Key
-	toSerialize["link"] = o.Link
-	toSerialize["role"] = o.Role
+	if !IsNil(o.Key) {
+		toSerialize["key"] = o.Key
+	}
+	if !IsNil(o.Link) {
+		toSerialize["link"] = o.Link
+	}
+	if !IsNil(o.Role) {
+		toSerialize["role"] = o.Role
+	}
 	return toSerialize, nil
 }
 
@@ -170,9 +197,6 @@ func (o *DocumentationData) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"key",
-		"link",
-		"role",
 	}
 
 	allProperties := make(map[string]interface{})

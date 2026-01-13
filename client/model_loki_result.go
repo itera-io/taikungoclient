@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the LokiResult type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &LokiResult{}
 
 // LokiResult struct for LokiResult
 type LokiResult struct {
-	Stream Stream `json:"stream"`
-	Values []string `json:"values"`
+	Stream *Stream `json:"stream,omitempty"`
+	Values []string `json:"values,omitempty"`
 }
-
-type _LokiResult LokiResult
 
 // NewLokiResult instantiates a new LokiResult object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLokiResult(stream Stream, values []string) *LokiResult {
+func NewLokiResult() *LokiResult {
 	this := LokiResult{}
-	this.Stream = stream
-	this.Values = values
 	return &this
 }
 
@@ -47,50 +41,66 @@ func NewLokiResultWithDefaults() *LokiResult {
 	return &this
 }
 
-// GetStream returns the Stream field value
+// GetStream returns the Stream field value if set, zero value otherwise.
 func (o *LokiResult) GetStream() Stream {
-	if o == nil {
+	if o == nil || IsNil(o.Stream) {
 		var ret Stream
 		return ret
 	}
-
-	return o.Stream
+	return *o.Stream
 }
 
-// GetStreamOk returns a tuple with the Stream field value
+// GetStreamOk returns a tuple with the Stream field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LokiResult) GetStreamOk() (*Stream, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Stream) {
 		return nil, false
 	}
-	return &o.Stream, true
+	return o.Stream, true
 }
 
-// SetStream sets field value
+// HasStream returns a boolean if a field has been set.
+func (o *LokiResult) HasStream() bool {
+	if o != nil && !IsNil(o.Stream) {
+		return true
+	}
+
+	return false
+}
+
+// SetStream gets a reference to the given Stream and assigns it to the Stream field.
 func (o *LokiResult) SetStream(v Stream) {
-	o.Stream = v
+	o.Stream = &v
 }
 
-// GetValues returns the Values field value
+// GetValues returns the Values field value if set, zero value otherwise.
 func (o *LokiResult) GetValues() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Values) {
 		var ret []string
 		return ret
 	}
-
 	return o.Values
 }
 
-// GetValuesOk returns a tuple with the Values field value
+// GetValuesOk returns a tuple with the Values field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LokiResult) GetValuesOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Values) {
 		return nil, false
 	}
 	return o.Values, true
 }
 
-// SetValues sets field value
+// HasValues returns a boolean if a field has been set.
+func (o *LokiResult) HasValues() bool {
+	if o != nil && !IsNil(o.Values) {
+		return true
+	}
+
+	return false
+}
+
+// SetValues gets a reference to the given []string and assigns it to the Values field.
 func (o *LokiResult) SetValues(v []string) {
 	o.Values = v
 }
@@ -105,47 +115,13 @@ func (o LokiResult) MarshalJSON() ([]byte, error) {
 
 func (o LokiResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["stream"] = o.Stream
-	toSerialize["values"] = o.Values
+	if !IsNil(o.Stream) {
+		toSerialize["stream"] = o.Stream
+	}
+	if !IsNil(o.Values) {
+		toSerialize["values"] = o.Values
+	}
 	return toSerialize, nil
-}
-
-func (o *LokiResult) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"stream",
-		"values",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varLokiResult := _LokiResult{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varLokiResult)
-
-	if err != nil {
-		return err
-	}
-
-	*o = LokiResult(varLokiResult)
-
-	return err
 }
 
 type NullableLokiResult struct {

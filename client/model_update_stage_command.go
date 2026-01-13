@@ -23,7 +23,7 @@ var _ MappedNullable = &UpdateStageCommand{}
 // UpdateStageCommand struct for UpdateStageCommand
 type UpdateStageCommand struct {
 	ProjectId int32 `json:"projectId"`
-	Stage string `json:"stage"`
+	Stage *string `json:"stage,omitempty"`
 }
 
 type _UpdateStageCommand UpdateStageCommand
@@ -32,10 +32,9 @@ type _UpdateStageCommand UpdateStageCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateStageCommand(projectId int32, stage string) *UpdateStageCommand {
+func NewUpdateStageCommand(projectId int32) *UpdateStageCommand {
 	this := UpdateStageCommand{}
 	this.ProjectId = projectId
-	this.Stage = stage
 	return &this
 }
 
@@ -71,28 +70,36 @@ func (o *UpdateStageCommand) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetStage returns the Stage field value
+// GetStage returns the Stage field value if set, zero value otherwise.
 func (o *UpdateStageCommand) GetStage() string {
-	if o == nil {
+	if o == nil || IsNil(o.Stage) {
 		var ret string
 		return ret
 	}
-
-	return o.Stage
+	return *o.Stage
 }
 
-// GetStageOk returns a tuple with the Stage field value
+// GetStageOk returns a tuple with the Stage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateStageCommand) GetStageOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Stage) {
 		return nil, false
 	}
-	return &o.Stage, true
+	return o.Stage, true
 }
 
-// SetStage sets field value
+// HasStage returns a boolean if a field has been set.
+func (o *UpdateStageCommand) HasStage() bool {
+	if o != nil && !IsNil(o.Stage) {
+		return true
+	}
+
+	return false
+}
+
+// SetStage gets a reference to the given string and assigns it to the Stage field.
 func (o *UpdateStageCommand) SetStage(v string) {
-	o.Stage = v
+	o.Stage = &v
 }
 
 func (o UpdateStageCommand) MarshalJSON() ([]byte, error) {
@@ -106,7 +113,9 @@ func (o UpdateStageCommand) MarshalJSON() ([]byte, error) {
 func (o UpdateStageCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["stage"] = o.Stage
+	if !IsNil(o.Stage) {
+		toSerialize["stage"] = o.Stage
+	}
 	return toSerialize, nil
 }
 
@@ -116,7 +125,6 @@ func (o *UpdateStageCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"stage",
 	}
 
 	allProperties := make(map[string]interface{})

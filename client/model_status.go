@@ -24,7 +24,7 @@ var _ MappedNullable = &Status{}
 // Status struct for Status
 type Status struct {
 	LastBackup time.Time `json:"lastBackup"`
-	Phase string `json:"phase"`
+	Phase *string `json:"phase,omitempty"`
 }
 
 type _Status Status
@@ -33,10 +33,9 @@ type _Status Status
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStatus(lastBackup time.Time, phase string) *Status {
+func NewStatus(lastBackup time.Time) *Status {
 	this := Status{}
 	this.LastBackup = lastBackup
-	this.Phase = phase
 	return &this
 }
 
@@ -72,28 +71,36 @@ func (o *Status) SetLastBackup(v time.Time) {
 	o.LastBackup = v
 }
 
-// GetPhase returns the Phase field value
+// GetPhase returns the Phase field value if set, zero value otherwise.
 func (o *Status) GetPhase() string {
-	if o == nil {
+	if o == nil || IsNil(o.Phase) {
 		var ret string
 		return ret
 	}
-
-	return o.Phase
+	return *o.Phase
 }
 
-// GetPhaseOk returns a tuple with the Phase field value
+// GetPhaseOk returns a tuple with the Phase field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Status) GetPhaseOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Phase) {
 		return nil, false
 	}
-	return &o.Phase, true
+	return o.Phase, true
 }
 
-// SetPhase sets field value
+// HasPhase returns a boolean if a field has been set.
+func (o *Status) HasPhase() bool {
+	if o != nil && !IsNil(o.Phase) {
+		return true
+	}
+
+	return false
+}
+
+// SetPhase gets a reference to the given string and assigns it to the Phase field.
 func (o *Status) SetPhase(v string) {
-	o.Phase = v
+	o.Phase = &v
 }
 
 func (o Status) MarshalJSON() ([]byte, error) {
@@ -107,7 +114,9 @@ func (o Status) MarshalJSON() ([]byte, error) {
 func (o Status) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["lastBackup"] = o.LastBackup
-	toSerialize["phase"] = o.Phase
+	if !IsNil(o.Phase) {
+		toSerialize["phase"] = o.Phase
+	}
 	return toSerialize, nil
 }
 
@@ -117,7 +126,6 @@ func (o *Status) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"lastBackup",
-		"phase",
 	}
 
 	allProperties := make(map[string]interface{})

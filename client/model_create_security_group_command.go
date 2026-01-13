@@ -22,11 +22,11 @@ var _ MappedNullable = &CreateSecurityGroupCommand{}
 
 // CreateSecurityGroupCommand struct for CreateSecurityGroupCommand
 type CreateSecurityGroupCommand struct {
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	Protocol SecurityGroupProtocol `json:"protocol"`
 	PortMinRange int32 `json:"portMinRange"`
 	PortMaxRange int32 `json:"portMaxRange"`
-	RemoteIpPrefix string `json:"remoteIpPrefix"`
+	RemoteIpPrefix *string `json:"remoteIpPrefix,omitempty"`
 	StandAloneProfileId int32 `json:"standAloneProfileId"`
 }
 
@@ -36,13 +36,11 @@ type _CreateSecurityGroupCommand CreateSecurityGroupCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateSecurityGroupCommand(name string, protocol SecurityGroupProtocol, portMinRange int32, portMaxRange int32, remoteIpPrefix string, standAloneProfileId int32) *CreateSecurityGroupCommand {
+func NewCreateSecurityGroupCommand(protocol SecurityGroupProtocol, portMinRange int32, portMaxRange int32, standAloneProfileId int32) *CreateSecurityGroupCommand {
 	this := CreateSecurityGroupCommand{}
-	this.Name = name
 	this.Protocol = protocol
 	this.PortMinRange = portMinRange
 	this.PortMaxRange = portMaxRange
-	this.RemoteIpPrefix = remoteIpPrefix
 	this.StandAloneProfileId = standAloneProfileId
 	return &this
 }
@@ -55,28 +53,36 @@ func NewCreateSecurityGroupCommandWithDefaults() *CreateSecurityGroupCommand {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateSecurityGroupCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateSecurityGroupCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CreateSecurityGroupCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateSecurityGroupCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetProtocol returns the Protocol field value
@@ -151,28 +157,36 @@ func (o *CreateSecurityGroupCommand) SetPortMaxRange(v int32) {
 	o.PortMaxRange = v
 }
 
-// GetRemoteIpPrefix returns the RemoteIpPrefix field value
+// GetRemoteIpPrefix returns the RemoteIpPrefix field value if set, zero value otherwise.
 func (o *CreateSecurityGroupCommand) GetRemoteIpPrefix() string {
-	if o == nil {
+	if o == nil || IsNil(o.RemoteIpPrefix) {
 		var ret string
 		return ret
 	}
-
-	return o.RemoteIpPrefix
+	return *o.RemoteIpPrefix
 }
 
-// GetRemoteIpPrefixOk returns a tuple with the RemoteIpPrefix field value
+// GetRemoteIpPrefixOk returns a tuple with the RemoteIpPrefix field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateSecurityGroupCommand) GetRemoteIpPrefixOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RemoteIpPrefix) {
 		return nil, false
 	}
-	return &o.RemoteIpPrefix, true
+	return o.RemoteIpPrefix, true
 }
 
-// SetRemoteIpPrefix sets field value
+// HasRemoteIpPrefix returns a boolean if a field has been set.
+func (o *CreateSecurityGroupCommand) HasRemoteIpPrefix() bool {
+	if o != nil && !IsNil(o.RemoteIpPrefix) {
+		return true
+	}
+
+	return false
+}
+
+// SetRemoteIpPrefix gets a reference to the given string and assigns it to the RemoteIpPrefix field.
 func (o *CreateSecurityGroupCommand) SetRemoteIpPrefix(v string) {
-	o.RemoteIpPrefix = v
+	o.RemoteIpPrefix = &v
 }
 
 // GetStandAloneProfileId returns the StandAloneProfileId field value
@@ -209,11 +223,15 @@ func (o CreateSecurityGroupCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateSecurityGroupCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	toSerialize["protocol"] = o.Protocol
 	toSerialize["portMinRange"] = o.PortMinRange
 	toSerialize["portMaxRange"] = o.PortMaxRange
-	toSerialize["remoteIpPrefix"] = o.RemoteIpPrefix
+	if !IsNil(o.RemoteIpPrefix) {
+		toSerialize["remoteIpPrefix"] = o.RemoteIpPrefix
+	}
 	toSerialize["standAloneProfileId"] = o.StandAloneProfileId
 	return toSerialize, nil
 }
@@ -223,11 +241,9 @@ func (o *CreateSecurityGroupCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
 		"protocol",
 		"portMinRange",
 		"portMaxRange",
-		"remoteIpPrefix",
 		"standAloneProfileId",
 	}
 

@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the GkeClusterDto type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &GkeClusterDto{}
 
 // GkeClusterDto struct for GkeClusterDto
 type GkeClusterDto struct {
-	Location string `json:"location"`
-	Name string `json:"name"`
+	Location *string `json:"location,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
-
-type _GkeClusterDto GkeClusterDto
 
 // NewGkeClusterDto instantiates a new GkeClusterDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGkeClusterDto(location string, name string) *GkeClusterDto {
+func NewGkeClusterDto() *GkeClusterDto {
 	this := GkeClusterDto{}
-	this.Location = location
-	this.Name = name
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewGkeClusterDtoWithDefaults() *GkeClusterDto {
 	return &this
 }
 
-// GetLocation returns the Location field value
+// GetLocation returns the Location field value if set, zero value otherwise.
 func (o *GkeClusterDto) GetLocation() string {
-	if o == nil {
+	if o == nil || IsNil(o.Location) {
 		var ret string
 		return ret
 	}
-
-	return o.Location
+	return *o.Location
 }
 
-// GetLocationOk returns a tuple with the Location field value
+// GetLocationOk returns a tuple with the Location field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GkeClusterDto) GetLocationOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Location) {
 		return nil, false
 	}
-	return &o.Location, true
+	return o.Location, true
 }
 
-// SetLocation sets field value
+// HasLocation returns a boolean if a field has been set.
+func (o *GkeClusterDto) HasLocation() bool {
+	if o != nil && !IsNil(o.Location) {
+		return true
+	}
+
+	return false
+}
+
+// SetLocation gets a reference to the given string and assigns it to the Location field.
 func (o *GkeClusterDto) SetLocation(v string) {
-	o.Location = v
+	o.Location = &v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *GkeClusterDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GkeClusterDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *GkeClusterDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *GkeClusterDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 func (o GkeClusterDto) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o GkeClusterDto) MarshalJSON() ([]byte, error) {
 
 func (o GkeClusterDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["location"] = o.Location
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Location) {
+		toSerialize["location"] = o.Location
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	return toSerialize, nil
-}
-
-func (o *GkeClusterDto) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"location",
-		"name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varGkeClusterDto := _GkeClusterDto{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGkeClusterDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GkeClusterDto(varGkeClusterDto)
-
-	return err
 }
 
 type NullableGkeClusterDto struct {

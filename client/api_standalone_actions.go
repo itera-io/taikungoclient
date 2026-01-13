@@ -1497,12 +1497,6 @@ func (a *StandaloneActionsAPIService) StandaloneactionsWindowsInstancePasswordEx
 	if r.id == nil {
 		return localVarReturnValue, nil, reportError("id is required and must be specified")
 	}
-	if r.key == nil {
-		return localVarReturnValue, nil, reportError("key is required and must be specified")
-	}
-	if r.config == nil {
-		return localVarReturnValue, nil, reportError("config is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
@@ -1522,7 +1516,9 @@ func (a *StandaloneActionsAPIService) StandaloneactionsWindowsInstancePasswordEx
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	parameterAddToHeaderOrQuery(localVarFormParams, "id", r.id, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "key", r.key, "", "")
+	if r.key != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "key", r.key, "", "")
+	}
 	var configLocalVarFormFileName string
 	var configLocalVarFileName     string
 	var configLocalVarFileBytes    []byte

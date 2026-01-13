@@ -22,15 +22,15 @@ var _ MappedNullable = &CreateProjectAppCommand{}
 
 // CreateProjectAppCommand struct for CreateProjectAppCommand
 type CreateProjectAppCommand struct {
-	Name string `json:"name"`
-	Namespace string `json:"namespace"`
+	Name *string `json:"name,omitempty"`
+	Namespace *string `json:"namespace,omitempty"`
 	ProjectId int32 `json:"projectId"`
 	CatalogAppId int32 `json:"catalogAppId"`
-	ExtraValues string `json:"extraValues"`
+	ExtraValues *string `json:"extraValues,omitempty"`
 	AutoSync bool `json:"autoSync"`
 	TaikunLinkEnabled bool `json:"taikunLinkEnabled"`
 	Timeout NullableInt32 `json:"timeout,omitempty"`
-	Parameters []ProjectAppParamsDto `json:"parameters"`
+	Parameters []ProjectAppParamsDto `json:"parameters,omitempty"`
 }
 
 type _CreateProjectAppCommand CreateProjectAppCommand
@@ -39,16 +39,12 @@ type _CreateProjectAppCommand CreateProjectAppCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateProjectAppCommand(name string, namespace string, projectId int32, catalogAppId int32, extraValues string, autoSync bool, taikunLinkEnabled bool, parameters []ProjectAppParamsDto) *CreateProjectAppCommand {
+func NewCreateProjectAppCommand(projectId int32, catalogAppId int32, autoSync bool, taikunLinkEnabled bool) *CreateProjectAppCommand {
 	this := CreateProjectAppCommand{}
-	this.Name = name
-	this.Namespace = namespace
 	this.ProjectId = projectId
 	this.CatalogAppId = catalogAppId
-	this.ExtraValues = extraValues
 	this.AutoSync = autoSync
 	this.TaikunLinkEnabled = taikunLinkEnabled
-	this.Parameters = parameters
 	return &this
 }
 
@@ -60,52 +56,68 @@ func NewCreateProjectAppCommandWithDefaults() *CreateProjectAppCommand {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateProjectAppCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProjectAppCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CreateProjectAppCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateProjectAppCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetNamespace returns the Namespace field value
+// GetNamespace returns the Namespace field value if set, zero value otherwise.
 func (o *CreateProjectAppCommand) GetNamespace() string {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		var ret string
 		return ret
 	}
-
-	return o.Namespace
+	return *o.Namespace
 }
 
-// GetNamespaceOk returns a tuple with the Namespace field value
+// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProjectAppCommand) GetNamespaceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		return nil, false
 	}
-	return &o.Namespace, true
+	return o.Namespace, true
 }
 
-// SetNamespace sets field value
+// HasNamespace returns a boolean if a field has been set.
+func (o *CreateProjectAppCommand) HasNamespace() bool {
+	if o != nil && !IsNil(o.Namespace) {
+		return true
+	}
+
+	return false
+}
+
+// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *CreateProjectAppCommand) SetNamespace(v string) {
-	o.Namespace = v
+	o.Namespace = &v
 }
 
 // GetProjectId returns the ProjectId field value
@@ -156,28 +168,36 @@ func (o *CreateProjectAppCommand) SetCatalogAppId(v int32) {
 	o.CatalogAppId = v
 }
 
-// GetExtraValues returns the ExtraValues field value
+// GetExtraValues returns the ExtraValues field value if set, zero value otherwise.
 func (o *CreateProjectAppCommand) GetExtraValues() string {
-	if o == nil {
+	if o == nil || IsNil(o.ExtraValues) {
 		var ret string
 		return ret
 	}
-
-	return o.ExtraValues
+	return *o.ExtraValues
 }
 
-// GetExtraValuesOk returns a tuple with the ExtraValues field value
+// GetExtraValuesOk returns a tuple with the ExtraValues field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProjectAppCommand) GetExtraValuesOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ExtraValues) {
 		return nil, false
 	}
-	return &o.ExtraValues, true
+	return o.ExtraValues, true
 }
 
-// SetExtraValues sets field value
+// HasExtraValues returns a boolean if a field has been set.
+func (o *CreateProjectAppCommand) HasExtraValues() bool {
+	if o != nil && !IsNil(o.ExtraValues) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtraValues gets a reference to the given string and assigns it to the ExtraValues field.
 func (o *CreateProjectAppCommand) SetExtraValues(v string) {
-	o.ExtraValues = v
+	o.ExtraValues = &v
 }
 
 // GetAutoSync returns the AutoSync field value
@@ -270,26 +290,34 @@ func (o *CreateProjectAppCommand) UnsetTimeout() {
 	o.Timeout.Unset()
 }
 
-// GetParameters returns the Parameters field value
+// GetParameters returns the Parameters field value if set, zero value otherwise.
 func (o *CreateProjectAppCommand) GetParameters() []ProjectAppParamsDto {
-	if o == nil {
+	if o == nil || IsNil(o.Parameters) {
 		var ret []ProjectAppParamsDto
 		return ret
 	}
-
 	return o.Parameters
 }
 
-// GetParametersOk returns a tuple with the Parameters field value
+// GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProjectAppCommand) GetParametersOk() ([]ProjectAppParamsDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Parameters) {
 		return nil, false
 	}
 	return o.Parameters, true
 }
 
-// SetParameters sets field value
+// HasParameters returns a boolean if a field has been set.
+func (o *CreateProjectAppCommand) HasParameters() bool {
+	if o != nil && !IsNil(o.Parameters) {
+		return true
+	}
+
+	return false
+}
+
+// SetParameters gets a reference to the given []ProjectAppParamsDto and assigns it to the Parameters field.
 func (o *CreateProjectAppCommand) SetParameters(v []ProjectAppParamsDto) {
 	o.Parameters = v
 }
@@ -304,17 +332,25 @@ func (o CreateProjectAppCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateProjectAppCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["namespace"] = o.Namespace
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Namespace) {
+		toSerialize["namespace"] = o.Namespace
+	}
 	toSerialize["projectId"] = o.ProjectId
 	toSerialize["catalogAppId"] = o.CatalogAppId
-	toSerialize["extraValues"] = o.ExtraValues
+	if !IsNil(o.ExtraValues) {
+		toSerialize["extraValues"] = o.ExtraValues
+	}
 	toSerialize["autoSync"] = o.AutoSync
 	toSerialize["taikunLinkEnabled"] = o.TaikunLinkEnabled
 	if o.Timeout.IsSet() {
 		toSerialize["timeout"] = o.Timeout.Get()
 	}
-	toSerialize["parameters"] = o.Parameters
+	if !IsNil(o.Parameters) {
+		toSerialize["parameters"] = o.Parameters
+	}
 	return toSerialize, nil
 }
 
@@ -323,14 +359,10 @@ func (o *CreateProjectAppCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
-		"namespace",
 		"projectId",
 		"catalogAppId",
-		"extraValues",
 		"autoSync",
 		"taikunLinkEnabled",
-		"parameters",
 	}
 
 	allProperties := make(map[string]interface{})

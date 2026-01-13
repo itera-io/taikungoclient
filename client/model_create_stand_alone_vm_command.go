@@ -22,25 +22,25 @@ var _ MappedNullable = &CreateStandAloneVmCommand{}
 
 // CreateStandAloneVmCommand struct for CreateStandAloneVmCommand
 type CreateStandAloneVmCommand struct {
-	Name string `json:"name"`
-	FlavorName string `json:"flavorName"`
+	Name *string `json:"name,omitempty"`
+	FlavorName *string `json:"flavorName,omitempty"`
 	VolumeSize int64 `json:"volumeSize"`
-	VolumeType string `json:"volumeType"`
-	Username string `json:"username"`
-	Password string `json:"password"`
+	VolumeType *string `json:"volumeType,omitempty"`
+	Username *string `json:"username,omitempty"`
+	Password *string `json:"password,omitempty"`
 	PublicIpEnabled bool `json:"publicIpEnabled"`
-	Image string `json:"image"`
-	CloudInit string `json:"cloudInit"`
+	Image *string `json:"image,omitempty"`
+	CloudInit *string `json:"cloudInit,omitempty"`
 	StandAloneProfileId int32 `json:"standAloneProfileId"`
 	ProjectId int32 `json:"projectId"`
 	Count int32 `json:"count"`
 	SpotPrice NullableFloat64 `json:"spotPrice,omitempty"`
 	SpotInstance bool `json:"spotInstance"`
-	AvailabilityZone string `json:"availabilityZone"`
-	Hypervisor string `json:"hypervisor"`
+	AvailabilityZone *string `json:"availabilityZone,omitempty"`
+	Hypervisor *string `json:"hypervisor,omitempty"`
 	UseLocalDisk bool `json:"useLocalDisk"`
-	StandAloneVmDisks []StandAloneVmDiskDto `json:"standAloneVmDisks"`
-	StandAloneMetaDatas []StandAloneMetaDataDto `json:"standAloneMetaDatas"`
+	StandAloneVmDisks []StandAloneVmDiskDto `json:"standAloneVmDisks,omitempty"`
+	StandAloneMetaDatas []StandAloneMetaDataDto `json:"standAloneMetaDatas,omitempty"`
 }
 
 type _CreateStandAloneVmCommand CreateStandAloneVmCommand
@@ -49,26 +49,15 @@ type _CreateStandAloneVmCommand CreateStandAloneVmCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateStandAloneVmCommand(name string, flavorName string, volumeSize int64, volumeType string, username string, password string, publicIpEnabled bool, image string, cloudInit string, standAloneProfileId int32, projectId int32, count int32, spotInstance bool, availabilityZone string, hypervisor string, useLocalDisk bool, standAloneVmDisks []StandAloneVmDiskDto, standAloneMetaDatas []StandAloneMetaDataDto) *CreateStandAloneVmCommand {
+func NewCreateStandAloneVmCommand(volumeSize int64, publicIpEnabled bool, standAloneProfileId int32, projectId int32, count int32, spotInstance bool, useLocalDisk bool) *CreateStandAloneVmCommand {
 	this := CreateStandAloneVmCommand{}
-	this.Name = name
-	this.FlavorName = flavorName
 	this.VolumeSize = volumeSize
-	this.VolumeType = volumeType
-	this.Username = username
-	this.Password = password
 	this.PublicIpEnabled = publicIpEnabled
-	this.Image = image
-	this.CloudInit = cloudInit
 	this.StandAloneProfileId = standAloneProfileId
 	this.ProjectId = projectId
 	this.Count = count
 	this.SpotInstance = spotInstance
-	this.AvailabilityZone = availabilityZone
-	this.Hypervisor = hypervisor
 	this.UseLocalDisk = useLocalDisk
-	this.StandAloneVmDisks = standAloneVmDisks
-	this.StandAloneMetaDatas = standAloneMetaDatas
 	return &this
 }
 
@@ -80,52 +69,68 @@ func NewCreateStandAloneVmCommandWithDefaults() *CreateStandAloneVmCommand {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateStandAloneVmCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateStandAloneVmCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CreateStandAloneVmCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateStandAloneVmCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetFlavorName returns the FlavorName field value
+// GetFlavorName returns the FlavorName field value if set, zero value otherwise.
 func (o *CreateStandAloneVmCommand) GetFlavorName() string {
-	if o == nil {
+	if o == nil || IsNil(o.FlavorName) {
 		var ret string
 		return ret
 	}
-
-	return o.FlavorName
+	return *o.FlavorName
 }
 
-// GetFlavorNameOk returns a tuple with the FlavorName field value
+// GetFlavorNameOk returns a tuple with the FlavorName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateStandAloneVmCommand) GetFlavorNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.FlavorName) {
 		return nil, false
 	}
-	return &o.FlavorName, true
+	return o.FlavorName, true
 }
 
-// SetFlavorName sets field value
+// HasFlavorName returns a boolean if a field has been set.
+func (o *CreateStandAloneVmCommand) HasFlavorName() bool {
+	if o != nil && !IsNil(o.FlavorName) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlavorName gets a reference to the given string and assigns it to the FlavorName field.
 func (o *CreateStandAloneVmCommand) SetFlavorName(v string) {
-	o.FlavorName = v
+	o.FlavorName = &v
 }
 
 // GetVolumeSize returns the VolumeSize field value
@@ -152,76 +157,100 @@ func (o *CreateStandAloneVmCommand) SetVolumeSize(v int64) {
 	o.VolumeSize = v
 }
 
-// GetVolumeType returns the VolumeType field value
+// GetVolumeType returns the VolumeType field value if set, zero value otherwise.
 func (o *CreateStandAloneVmCommand) GetVolumeType() string {
-	if o == nil {
+	if o == nil || IsNil(o.VolumeType) {
 		var ret string
 		return ret
 	}
-
-	return o.VolumeType
+	return *o.VolumeType
 }
 
-// GetVolumeTypeOk returns a tuple with the VolumeType field value
+// GetVolumeTypeOk returns a tuple with the VolumeType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateStandAloneVmCommand) GetVolumeTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VolumeType) {
 		return nil, false
 	}
-	return &o.VolumeType, true
+	return o.VolumeType, true
 }
 
-// SetVolumeType sets field value
+// HasVolumeType returns a boolean if a field has been set.
+func (o *CreateStandAloneVmCommand) HasVolumeType() bool {
+	if o != nil && !IsNil(o.VolumeType) {
+		return true
+	}
+
+	return false
+}
+
+// SetVolumeType gets a reference to the given string and assigns it to the VolumeType field.
 func (o *CreateStandAloneVmCommand) SetVolumeType(v string) {
-	o.VolumeType = v
+	o.VolumeType = &v
 }
 
-// GetUsername returns the Username field value
+// GetUsername returns the Username field value if set, zero value otherwise.
 func (o *CreateStandAloneVmCommand) GetUsername() string {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
-
-	return o.Username
+	return *o.Username
 }
 
-// GetUsernameOk returns a tuple with the Username field value
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateStandAloneVmCommand) GetUsernameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
-	return &o.Username, true
+	return o.Username, true
 }
 
-// SetUsername sets field value
+// HasUsername returns a boolean if a field has been set.
+func (o *CreateStandAloneVmCommand) HasUsername() bool {
+	if o != nil && !IsNil(o.Username) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *CreateStandAloneVmCommand) SetUsername(v string) {
-	o.Username = v
+	o.Username = &v
 }
 
-// GetPassword returns the Password field value
+// GetPassword returns the Password field value if set, zero value otherwise.
 func (o *CreateStandAloneVmCommand) GetPassword() string {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
 	}
-
-	return o.Password
+	return *o.Password
 }
 
-// GetPasswordOk returns a tuple with the Password field value
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateStandAloneVmCommand) GetPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
-	return &o.Password, true
+	return o.Password, true
 }
 
-// SetPassword sets field value
+// HasPassword returns a boolean if a field has been set.
+func (o *CreateStandAloneVmCommand) HasPassword() bool {
+	if o != nil && !IsNil(o.Password) {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *CreateStandAloneVmCommand) SetPassword(v string) {
-	o.Password = v
+	o.Password = &v
 }
 
 // GetPublicIpEnabled returns the PublicIpEnabled field value
@@ -248,52 +277,68 @@ func (o *CreateStandAloneVmCommand) SetPublicIpEnabled(v bool) {
 	o.PublicIpEnabled = v
 }
 
-// GetImage returns the Image field value
+// GetImage returns the Image field value if set, zero value otherwise.
 func (o *CreateStandAloneVmCommand) GetImage() string {
-	if o == nil {
+	if o == nil || IsNil(o.Image) {
 		var ret string
 		return ret
 	}
-
-	return o.Image
+	return *o.Image
 }
 
-// GetImageOk returns a tuple with the Image field value
+// GetImageOk returns a tuple with the Image field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateStandAloneVmCommand) GetImageOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Image) {
 		return nil, false
 	}
-	return &o.Image, true
+	return o.Image, true
 }
 
-// SetImage sets field value
+// HasImage returns a boolean if a field has been set.
+func (o *CreateStandAloneVmCommand) HasImage() bool {
+	if o != nil && !IsNil(o.Image) {
+		return true
+	}
+
+	return false
+}
+
+// SetImage gets a reference to the given string and assigns it to the Image field.
 func (o *CreateStandAloneVmCommand) SetImage(v string) {
-	o.Image = v
+	o.Image = &v
 }
 
-// GetCloudInit returns the CloudInit field value
+// GetCloudInit returns the CloudInit field value if set, zero value otherwise.
 func (o *CreateStandAloneVmCommand) GetCloudInit() string {
-	if o == nil {
+	if o == nil || IsNil(o.CloudInit) {
 		var ret string
 		return ret
 	}
-
-	return o.CloudInit
+	return *o.CloudInit
 }
 
-// GetCloudInitOk returns a tuple with the CloudInit field value
+// GetCloudInitOk returns a tuple with the CloudInit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateStandAloneVmCommand) GetCloudInitOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CloudInit) {
 		return nil, false
 	}
-	return &o.CloudInit, true
+	return o.CloudInit, true
 }
 
-// SetCloudInit sets field value
+// HasCloudInit returns a boolean if a field has been set.
+func (o *CreateStandAloneVmCommand) HasCloudInit() bool {
+	if o != nil && !IsNil(o.CloudInit) {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudInit gets a reference to the given string and assigns it to the CloudInit field.
 func (o *CreateStandAloneVmCommand) SetCloudInit(v string) {
-	o.CloudInit = v
+	o.CloudInit = &v
 }
 
 // GetStandAloneProfileId returns the StandAloneProfileId field value
@@ -434,52 +479,68 @@ func (o *CreateStandAloneVmCommand) SetSpotInstance(v bool) {
 	o.SpotInstance = v
 }
 
-// GetAvailabilityZone returns the AvailabilityZone field value
+// GetAvailabilityZone returns the AvailabilityZone field value if set, zero value otherwise.
 func (o *CreateStandAloneVmCommand) GetAvailabilityZone() string {
-	if o == nil {
+	if o == nil || IsNil(o.AvailabilityZone) {
 		var ret string
 		return ret
 	}
-
-	return o.AvailabilityZone
+	return *o.AvailabilityZone
 }
 
-// GetAvailabilityZoneOk returns a tuple with the AvailabilityZone field value
+// GetAvailabilityZoneOk returns a tuple with the AvailabilityZone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateStandAloneVmCommand) GetAvailabilityZoneOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AvailabilityZone) {
 		return nil, false
 	}
-	return &o.AvailabilityZone, true
+	return o.AvailabilityZone, true
 }
 
-// SetAvailabilityZone sets field value
+// HasAvailabilityZone returns a boolean if a field has been set.
+func (o *CreateStandAloneVmCommand) HasAvailabilityZone() bool {
+	if o != nil && !IsNil(o.AvailabilityZone) {
+		return true
+	}
+
+	return false
+}
+
+// SetAvailabilityZone gets a reference to the given string and assigns it to the AvailabilityZone field.
 func (o *CreateStandAloneVmCommand) SetAvailabilityZone(v string) {
-	o.AvailabilityZone = v
+	o.AvailabilityZone = &v
 }
 
-// GetHypervisor returns the Hypervisor field value
+// GetHypervisor returns the Hypervisor field value if set, zero value otherwise.
 func (o *CreateStandAloneVmCommand) GetHypervisor() string {
-	if o == nil {
+	if o == nil || IsNil(o.Hypervisor) {
 		var ret string
 		return ret
 	}
-
-	return o.Hypervisor
+	return *o.Hypervisor
 }
 
-// GetHypervisorOk returns a tuple with the Hypervisor field value
+// GetHypervisorOk returns a tuple with the Hypervisor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateStandAloneVmCommand) GetHypervisorOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Hypervisor) {
 		return nil, false
 	}
-	return &o.Hypervisor, true
+	return o.Hypervisor, true
 }
 
-// SetHypervisor sets field value
+// HasHypervisor returns a boolean if a field has been set.
+func (o *CreateStandAloneVmCommand) HasHypervisor() bool {
+	if o != nil && !IsNil(o.Hypervisor) {
+		return true
+	}
+
+	return false
+}
+
+// SetHypervisor gets a reference to the given string and assigns it to the Hypervisor field.
 func (o *CreateStandAloneVmCommand) SetHypervisor(v string) {
-	o.Hypervisor = v
+	o.Hypervisor = &v
 }
 
 // GetUseLocalDisk returns the UseLocalDisk field value
@@ -506,50 +567,66 @@ func (o *CreateStandAloneVmCommand) SetUseLocalDisk(v bool) {
 	o.UseLocalDisk = v
 }
 
-// GetStandAloneVmDisks returns the StandAloneVmDisks field value
+// GetStandAloneVmDisks returns the StandAloneVmDisks field value if set, zero value otherwise.
 func (o *CreateStandAloneVmCommand) GetStandAloneVmDisks() []StandAloneVmDiskDto {
-	if o == nil {
+	if o == nil || IsNil(o.StandAloneVmDisks) {
 		var ret []StandAloneVmDiskDto
 		return ret
 	}
-
 	return o.StandAloneVmDisks
 }
 
-// GetStandAloneVmDisksOk returns a tuple with the StandAloneVmDisks field value
+// GetStandAloneVmDisksOk returns a tuple with the StandAloneVmDisks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateStandAloneVmCommand) GetStandAloneVmDisksOk() ([]StandAloneVmDiskDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.StandAloneVmDisks) {
 		return nil, false
 	}
 	return o.StandAloneVmDisks, true
 }
 
-// SetStandAloneVmDisks sets field value
+// HasStandAloneVmDisks returns a boolean if a field has been set.
+func (o *CreateStandAloneVmCommand) HasStandAloneVmDisks() bool {
+	if o != nil && !IsNil(o.StandAloneVmDisks) {
+		return true
+	}
+
+	return false
+}
+
+// SetStandAloneVmDisks gets a reference to the given []StandAloneVmDiskDto and assigns it to the StandAloneVmDisks field.
 func (o *CreateStandAloneVmCommand) SetStandAloneVmDisks(v []StandAloneVmDiskDto) {
 	o.StandAloneVmDisks = v
 }
 
-// GetStandAloneMetaDatas returns the StandAloneMetaDatas field value
+// GetStandAloneMetaDatas returns the StandAloneMetaDatas field value if set, zero value otherwise.
 func (o *CreateStandAloneVmCommand) GetStandAloneMetaDatas() []StandAloneMetaDataDto {
-	if o == nil {
+	if o == nil || IsNil(o.StandAloneMetaDatas) {
 		var ret []StandAloneMetaDataDto
 		return ret
 	}
-
 	return o.StandAloneMetaDatas
 }
 
-// GetStandAloneMetaDatasOk returns a tuple with the StandAloneMetaDatas field value
+// GetStandAloneMetaDatasOk returns a tuple with the StandAloneMetaDatas field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateStandAloneVmCommand) GetStandAloneMetaDatasOk() ([]StandAloneMetaDataDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.StandAloneMetaDatas) {
 		return nil, false
 	}
 	return o.StandAloneMetaDatas, true
 }
 
-// SetStandAloneMetaDatas sets field value
+// HasStandAloneMetaDatas returns a boolean if a field has been set.
+func (o *CreateStandAloneVmCommand) HasStandAloneMetaDatas() bool {
+	if o != nil && !IsNil(o.StandAloneMetaDatas) {
+		return true
+	}
+
+	return false
+}
+
+// SetStandAloneMetaDatas gets a reference to the given []StandAloneMetaDataDto and assigns it to the StandAloneMetaDatas field.
 func (o *CreateStandAloneVmCommand) SetStandAloneMetaDatas(v []StandAloneMetaDataDto) {
 	o.StandAloneMetaDatas = v
 }
@@ -564,15 +641,29 @@ func (o CreateStandAloneVmCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateStandAloneVmCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["flavorName"] = o.FlavorName
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.FlavorName) {
+		toSerialize["flavorName"] = o.FlavorName
+	}
 	toSerialize["volumeSize"] = o.VolumeSize
-	toSerialize["volumeType"] = o.VolumeType
-	toSerialize["username"] = o.Username
-	toSerialize["password"] = o.Password
+	if !IsNil(o.VolumeType) {
+		toSerialize["volumeType"] = o.VolumeType
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
+	}
 	toSerialize["publicIpEnabled"] = o.PublicIpEnabled
-	toSerialize["image"] = o.Image
-	toSerialize["cloudInit"] = o.CloudInit
+	if !IsNil(o.Image) {
+		toSerialize["image"] = o.Image
+	}
+	if !IsNil(o.CloudInit) {
+		toSerialize["cloudInit"] = o.CloudInit
+	}
 	toSerialize["standAloneProfileId"] = o.StandAloneProfileId
 	toSerialize["projectId"] = o.ProjectId
 	toSerialize["count"] = o.Count
@@ -580,11 +671,19 @@ func (o CreateStandAloneVmCommand) ToMap() (map[string]interface{}, error) {
 		toSerialize["spotPrice"] = o.SpotPrice.Get()
 	}
 	toSerialize["spotInstance"] = o.SpotInstance
-	toSerialize["availabilityZone"] = o.AvailabilityZone
-	toSerialize["hypervisor"] = o.Hypervisor
+	if !IsNil(o.AvailabilityZone) {
+		toSerialize["availabilityZone"] = o.AvailabilityZone
+	}
+	if !IsNil(o.Hypervisor) {
+		toSerialize["hypervisor"] = o.Hypervisor
+	}
 	toSerialize["useLocalDisk"] = o.UseLocalDisk
-	toSerialize["standAloneVmDisks"] = o.StandAloneVmDisks
-	toSerialize["standAloneMetaDatas"] = o.StandAloneMetaDatas
+	if !IsNil(o.StandAloneVmDisks) {
+		toSerialize["standAloneVmDisks"] = o.StandAloneVmDisks
+	}
+	if !IsNil(o.StandAloneMetaDatas) {
+		toSerialize["standAloneMetaDatas"] = o.StandAloneMetaDatas
+	}
 	return toSerialize, nil
 }
 
@@ -593,24 +692,13 @@ func (o *CreateStandAloneVmCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
-		"flavorName",
 		"volumeSize",
-		"volumeType",
-		"username",
-		"password",
 		"publicIpEnabled",
-		"image",
-		"cloudInit",
 		"standAloneProfileId",
 		"projectId",
 		"count",
 		"spotInstance",
-		"availabilityZone",
-		"hypervisor",
 		"useLocalDisk",
-		"standAloneVmDisks",
-		"standAloneMetaDatas",
 	}
 
 	allProperties := make(map[string]interface{})

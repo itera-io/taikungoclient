@@ -23,7 +23,7 @@ var _ MappedNullable = &KubernetesCliCommand{}
 // KubernetesCliCommand struct for KubernetesCliCommand
 type KubernetesCliCommand struct {
 	ProjectId int32 `json:"projectId"`
-	KubeConfigId NullableInt32 `json:"kubeConfigId"`
+	KubeConfigId NullableInt32 `json:"kubeConfigId,omitempty"`
 }
 
 type _KubernetesCliCommand KubernetesCliCommand
@@ -32,10 +32,9 @@ type _KubernetesCliCommand KubernetesCliCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubernetesCliCommand(projectId int32, kubeConfigId NullableInt32) *KubernetesCliCommand {
+func NewKubernetesCliCommand(projectId int32) *KubernetesCliCommand {
 	this := KubernetesCliCommand{}
 	this.ProjectId = projectId
-	this.KubeConfigId = kubeConfigId
 	return &this
 }
 
@@ -71,18 +70,16 @@ func (o *KubernetesCliCommand) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetKubeConfigId returns the KubeConfigId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetKubeConfigId returns the KubeConfigId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KubernetesCliCommand) GetKubeConfigId() int32 {
-	if o == nil || o.KubeConfigId.Get() == nil {
+	if o == nil || IsNil(o.KubeConfigId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.KubeConfigId.Get()
 }
 
-// GetKubeConfigIdOk returns a tuple with the KubeConfigId field value
+// GetKubeConfigIdOk returns a tuple with the KubeConfigId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesCliCommand) GetKubeConfigIdOk() (*int32, bool) {
@@ -92,9 +89,27 @@ func (o *KubernetesCliCommand) GetKubeConfigIdOk() (*int32, bool) {
 	return o.KubeConfigId.Get(), o.KubeConfigId.IsSet()
 }
 
-// SetKubeConfigId sets field value
+// HasKubeConfigId returns a boolean if a field has been set.
+func (o *KubernetesCliCommand) HasKubeConfigId() bool {
+	if o != nil && o.KubeConfigId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetKubeConfigId gets a reference to the given NullableInt32 and assigns it to the KubeConfigId field.
 func (o *KubernetesCliCommand) SetKubeConfigId(v int32) {
 	o.KubeConfigId.Set(&v)
+}
+// SetKubeConfigIdNil sets the value for KubeConfigId to be an explicit nil
+func (o *KubernetesCliCommand) SetKubeConfigIdNil() {
+	o.KubeConfigId.Set(nil)
+}
+
+// UnsetKubeConfigId ensures that no value is present for KubeConfigId, not even an explicit nil
+func (o *KubernetesCliCommand) UnsetKubeConfigId() {
+	o.KubeConfigId.Unset()
 }
 
 func (o KubernetesCliCommand) MarshalJSON() ([]byte, error) {
@@ -108,7 +123,9 @@ func (o KubernetesCliCommand) MarshalJSON() ([]byte, error) {
 func (o KubernetesCliCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["kubeConfigId"] = o.KubeConfigId.Get()
+	if o.KubeConfigId.IsSet() {
+		toSerialize["kubeConfigId"] = o.KubeConfigId.Get()
+	}
 	return toSerialize, nil
 }
 
@@ -118,7 +135,6 @@ func (o *KubernetesCliCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"kubeConfigId",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -22,12 +22,12 @@ var _ MappedNullable = &CreateVsphereNetworkDto{}
 
 // CreateVsphereNetworkDto struct for CreateVsphereNetworkDto
 type CreateVsphereNetworkDto struct {
-	Name string `json:"name"`
-	Gateway string `json:"gateway"`
-	IpAddress string `json:"ipAddress"`
+	Name *string `json:"name,omitempty"`
+	Gateway *string `json:"gateway,omitempty"`
+	IpAddress *string `json:"ipAddress,omitempty"`
 	NetMask int32 `json:"netMask"`
-	BeginAllocationRange string `json:"beginAllocationRange"`
-	EndAllocationRange string `json:"endAllocationRange"`
+	BeginAllocationRange *string `json:"beginAllocationRange,omitempty"`
+	EndAllocationRange *string `json:"endAllocationRange,omitempty"`
 }
 
 type _CreateVsphereNetworkDto CreateVsphereNetworkDto
@@ -36,14 +36,9 @@ type _CreateVsphereNetworkDto CreateVsphereNetworkDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateVsphereNetworkDto(name string, gateway string, ipAddress string, netMask int32, beginAllocationRange string, endAllocationRange string) *CreateVsphereNetworkDto {
+func NewCreateVsphereNetworkDto(netMask int32) *CreateVsphereNetworkDto {
 	this := CreateVsphereNetworkDto{}
-	this.Name = name
-	this.Gateway = gateway
-	this.IpAddress = ipAddress
 	this.NetMask = netMask
-	this.BeginAllocationRange = beginAllocationRange
-	this.EndAllocationRange = endAllocationRange
 	return &this
 }
 
@@ -55,76 +50,100 @@ func NewCreateVsphereNetworkDtoWithDefaults() *CreateVsphereNetworkDto {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateVsphereNetworkDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateVsphereNetworkDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CreateVsphereNetworkDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateVsphereNetworkDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetGateway returns the Gateway field value
+// GetGateway returns the Gateway field value if set, zero value otherwise.
 func (o *CreateVsphereNetworkDto) GetGateway() string {
-	if o == nil {
+	if o == nil || IsNil(o.Gateway) {
 		var ret string
 		return ret
 	}
-
-	return o.Gateway
+	return *o.Gateway
 }
 
-// GetGatewayOk returns a tuple with the Gateway field value
+// GetGatewayOk returns a tuple with the Gateway field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateVsphereNetworkDto) GetGatewayOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Gateway) {
 		return nil, false
 	}
-	return &o.Gateway, true
+	return o.Gateway, true
 }
 
-// SetGateway sets field value
+// HasGateway returns a boolean if a field has been set.
+func (o *CreateVsphereNetworkDto) HasGateway() bool {
+	if o != nil && !IsNil(o.Gateway) {
+		return true
+	}
+
+	return false
+}
+
+// SetGateway gets a reference to the given string and assigns it to the Gateway field.
 func (o *CreateVsphereNetworkDto) SetGateway(v string) {
-	o.Gateway = v
+	o.Gateway = &v
 }
 
-// GetIpAddress returns the IpAddress field value
+// GetIpAddress returns the IpAddress field value if set, zero value otherwise.
 func (o *CreateVsphereNetworkDto) GetIpAddress() string {
-	if o == nil {
+	if o == nil || IsNil(o.IpAddress) {
 		var ret string
 		return ret
 	}
-
-	return o.IpAddress
+	return *o.IpAddress
 }
 
-// GetIpAddressOk returns a tuple with the IpAddress field value
+// GetIpAddressOk returns a tuple with the IpAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateVsphereNetworkDto) GetIpAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.IpAddress) {
 		return nil, false
 	}
-	return &o.IpAddress, true
+	return o.IpAddress, true
 }
 
-// SetIpAddress sets field value
+// HasIpAddress returns a boolean if a field has been set.
+func (o *CreateVsphereNetworkDto) HasIpAddress() bool {
+	if o != nil && !IsNil(o.IpAddress) {
+		return true
+	}
+
+	return false
+}
+
+// SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
 func (o *CreateVsphereNetworkDto) SetIpAddress(v string) {
-	o.IpAddress = v
+	o.IpAddress = &v
 }
 
 // GetNetMask returns the NetMask field value
@@ -151,52 +170,68 @@ func (o *CreateVsphereNetworkDto) SetNetMask(v int32) {
 	o.NetMask = v
 }
 
-// GetBeginAllocationRange returns the BeginAllocationRange field value
+// GetBeginAllocationRange returns the BeginAllocationRange field value if set, zero value otherwise.
 func (o *CreateVsphereNetworkDto) GetBeginAllocationRange() string {
-	if o == nil {
+	if o == nil || IsNil(o.BeginAllocationRange) {
 		var ret string
 		return ret
 	}
-
-	return o.BeginAllocationRange
+	return *o.BeginAllocationRange
 }
 
-// GetBeginAllocationRangeOk returns a tuple with the BeginAllocationRange field value
+// GetBeginAllocationRangeOk returns a tuple with the BeginAllocationRange field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateVsphereNetworkDto) GetBeginAllocationRangeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BeginAllocationRange) {
 		return nil, false
 	}
-	return &o.BeginAllocationRange, true
+	return o.BeginAllocationRange, true
 }
 
-// SetBeginAllocationRange sets field value
+// HasBeginAllocationRange returns a boolean if a field has been set.
+func (o *CreateVsphereNetworkDto) HasBeginAllocationRange() bool {
+	if o != nil && !IsNil(o.BeginAllocationRange) {
+		return true
+	}
+
+	return false
+}
+
+// SetBeginAllocationRange gets a reference to the given string and assigns it to the BeginAllocationRange field.
 func (o *CreateVsphereNetworkDto) SetBeginAllocationRange(v string) {
-	o.BeginAllocationRange = v
+	o.BeginAllocationRange = &v
 }
 
-// GetEndAllocationRange returns the EndAllocationRange field value
+// GetEndAllocationRange returns the EndAllocationRange field value if set, zero value otherwise.
 func (o *CreateVsphereNetworkDto) GetEndAllocationRange() string {
-	if o == nil {
+	if o == nil || IsNil(o.EndAllocationRange) {
 		var ret string
 		return ret
 	}
-
-	return o.EndAllocationRange
+	return *o.EndAllocationRange
 }
 
-// GetEndAllocationRangeOk returns a tuple with the EndAllocationRange field value
+// GetEndAllocationRangeOk returns a tuple with the EndAllocationRange field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateVsphereNetworkDto) GetEndAllocationRangeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.EndAllocationRange) {
 		return nil, false
 	}
-	return &o.EndAllocationRange, true
+	return o.EndAllocationRange, true
 }
 
-// SetEndAllocationRange sets field value
+// HasEndAllocationRange returns a boolean if a field has been set.
+func (o *CreateVsphereNetworkDto) HasEndAllocationRange() bool {
+	if o != nil && !IsNil(o.EndAllocationRange) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndAllocationRange gets a reference to the given string and assigns it to the EndAllocationRange field.
 func (o *CreateVsphereNetworkDto) SetEndAllocationRange(v string) {
-	o.EndAllocationRange = v
+	o.EndAllocationRange = &v
 }
 
 func (o CreateVsphereNetworkDto) MarshalJSON() ([]byte, error) {
@@ -209,12 +244,22 @@ func (o CreateVsphereNetworkDto) MarshalJSON() ([]byte, error) {
 
 func (o CreateVsphereNetworkDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["gateway"] = o.Gateway
-	toSerialize["ipAddress"] = o.IpAddress
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Gateway) {
+		toSerialize["gateway"] = o.Gateway
+	}
+	if !IsNil(o.IpAddress) {
+		toSerialize["ipAddress"] = o.IpAddress
+	}
 	toSerialize["netMask"] = o.NetMask
-	toSerialize["beginAllocationRange"] = o.BeginAllocationRange
-	toSerialize["endAllocationRange"] = o.EndAllocationRange
+	if !IsNil(o.BeginAllocationRange) {
+		toSerialize["beginAllocationRange"] = o.BeginAllocationRange
+	}
+	if !IsNil(o.EndAllocationRange) {
+		toSerialize["endAllocationRange"] = o.EndAllocationRange
+	}
 	return toSerialize, nil
 }
 
@@ -223,12 +268,7 @@ func (o *CreateVsphereNetworkDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
-		"gateway",
-		"ipAddress",
 		"netMask",
-		"beginAllocationRange",
-		"endAllocationRange",
 	}
 
 	allProperties := make(map[string]interface{})

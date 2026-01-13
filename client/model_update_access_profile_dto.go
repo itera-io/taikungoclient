@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the UpdateAccessProfileDto type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &UpdateAccessProfileDto{}
 
 // UpdateAccessProfileDto struct for UpdateAccessProfileDto
 type UpdateAccessProfileDto struct {
-	Name string `json:"name"`
-	HttpProxy string `json:"httpProxy"`
+	Name *string `json:"name,omitempty"`
+	HttpProxy *string `json:"httpProxy,omitempty"`
 }
-
-type _UpdateAccessProfileDto UpdateAccessProfileDto
 
 // NewUpdateAccessProfileDto instantiates a new UpdateAccessProfileDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateAccessProfileDto(name string, httpProxy string) *UpdateAccessProfileDto {
+func NewUpdateAccessProfileDto() *UpdateAccessProfileDto {
 	this := UpdateAccessProfileDto{}
-	this.Name = name
-	this.HttpProxy = httpProxy
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewUpdateAccessProfileDtoWithDefaults() *UpdateAccessProfileDto {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *UpdateAccessProfileDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateAccessProfileDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *UpdateAccessProfileDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *UpdateAccessProfileDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetHttpProxy returns the HttpProxy field value
+// GetHttpProxy returns the HttpProxy field value if set, zero value otherwise.
 func (o *UpdateAccessProfileDto) GetHttpProxy() string {
-	if o == nil {
+	if o == nil || IsNil(o.HttpProxy) {
 		var ret string
 		return ret
 	}
-
-	return o.HttpProxy
+	return *o.HttpProxy
 }
 
-// GetHttpProxyOk returns a tuple with the HttpProxy field value
+// GetHttpProxyOk returns a tuple with the HttpProxy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateAccessProfileDto) GetHttpProxyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.HttpProxy) {
 		return nil, false
 	}
-	return &o.HttpProxy, true
+	return o.HttpProxy, true
 }
 
-// SetHttpProxy sets field value
+// HasHttpProxy returns a boolean if a field has been set.
+func (o *UpdateAccessProfileDto) HasHttpProxy() bool {
+	if o != nil && !IsNil(o.HttpProxy) {
+		return true
+	}
+
+	return false
+}
+
+// SetHttpProxy gets a reference to the given string and assigns it to the HttpProxy field.
 func (o *UpdateAccessProfileDto) SetHttpProxy(v string) {
-	o.HttpProxy = v
+	o.HttpProxy = &v
 }
 
 func (o UpdateAccessProfileDto) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o UpdateAccessProfileDto) MarshalJSON() ([]byte, error) {
 
 func (o UpdateAccessProfileDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["httpProxy"] = o.HttpProxy
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.HttpProxy) {
+		toSerialize["httpProxy"] = o.HttpProxy
+	}
 	return toSerialize, nil
-}
-
-func (o *UpdateAccessProfileDto) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"httpProxy",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varUpdateAccessProfileDto := _UpdateAccessProfileDto{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUpdateAccessProfileDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = UpdateAccessProfileDto(varUpdateAccessProfileDto)
-
-	return err
 }
 
 type NullableUpdateAccessProfileDto struct {

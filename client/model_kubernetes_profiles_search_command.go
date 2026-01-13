@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the KubernetesProfilesSearchCommand type satisfies the MappedNullable interface at compile time
@@ -22,22 +20,17 @@ var _ MappedNullable = &KubernetesProfilesSearchCommand{}
 
 // KubernetesProfilesSearchCommand struct for KubernetesProfilesSearchCommand
 type KubernetesProfilesSearchCommand struct {
-	Limit NullableInt32 `json:"limit"`
-	Offset NullableInt32 `json:"offset"`
-	SearchTerm string `json:"searchTerm"`
+	Limit NullableInt32 `json:"limit,omitempty"`
+	Offset NullableInt32 `json:"offset,omitempty"`
+	SearchTerm *string `json:"searchTerm,omitempty"`
 }
-
-type _KubernetesProfilesSearchCommand KubernetesProfilesSearchCommand
 
 // NewKubernetesProfilesSearchCommand instantiates a new KubernetesProfilesSearchCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubernetesProfilesSearchCommand(limit NullableInt32, offset NullableInt32, searchTerm string) *KubernetesProfilesSearchCommand {
+func NewKubernetesProfilesSearchCommand() *KubernetesProfilesSearchCommand {
 	this := KubernetesProfilesSearchCommand{}
-	this.Limit = limit
-	this.Offset = offset
-	this.SearchTerm = searchTerm
 	return &this
 }
 
@@ -49,18 +42,16 @@ func NewKubernetesProfilesSearchCommandWithDefaults() *KubernetesProfilesSearchC
 	return &this
 }
 
-// GetLimit returns the Limit field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetLimit returns the Limit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KubernetesProfilesSearchCommand) GetLimit() int32 {
-	if o == nil || o.Limit.Get() == nil {
+	if o == nil || IsNil(o.Limit.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.Limit.Get()
 }
 
-// GetLimitOk returns a tuple with the Limit field value
+// GetLimitOk returns a tuple with the Limit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesProfilesSearchCommand) GetLimitOk() (*int32, bool) {
@@ -70,23 +61,39 @@ func (o *KubernetesProfilesSearchCommand) GetLimitOk() (*int32, bool) {
 	return o.Limit.Get(), o.Limit.IsSet()
 }
 
-// SetLimit sets field value
+// HasLimit returns a boolean if a field has been set.
+func (o *KubernetesProfilesSearchCommand) HasLimit() bool {
+	if o != nil && o.Limit.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLimit gets a reference to the given NullableInt32 and assigns it to the Limit field.
 func (o *KubernetesProfilesSearchCommand) SetLimit(v int32) {
 	o.Limit.Set(&v)
 }
+// SetLimitNil sets the value for Limit to be an explicit nil
+func (o *KubernetesProfilesSearchCommand) SetLimitNil() {
+	o.Limit.Set(nil)
+}
 
-// GetOffset returns the Offset field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// UnsetLimit ensures that no value is present for Limit, not even an explicit nil
+func (o *KubernetesProfilesSearchCommand) UnsetLimit() {
+	o.Limit.Unset()
+}
+
+// GetOffset returns the Offset field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KubernetesProfilesSearchCommand) GetOffset() int32 {
-	if o == nil || o.Offset.Get() == nil {
+	if o == nil || IsNil(o.Offset.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.Offset.Get()
 }
 
-// GetOffsetOk returns a tuple with the Offset field value
+// GetOffsetOk returns a tuple with the Offset field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesProfilesSearchCommand) GetOffsetOk() (*int32, bool) {
@@ -96,33 +103,59 @@ func (o *KubernetesProfilesSearchCommand) GetOffsetOk() (*int32, bool) {
 	return o.Offset.Get(), o.Offset.IsSet()
 }
 
-// SetOffset sets field value
+// HasOffset returns a boolean if a field has been set.
+func (o *KubernetesProfilesSearchCommand) HasOffset() bool {
+	if o != nil && o.Offset.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOffset gets a reference to the given NullableInt32 and assigns it to the Offset field.
 func (o *KubernetesProfilesSearchCommand) SetOffset(v int32) {
 	o.Offset.Set(&v)
 }
+// SetOffsetNil sets the value for Offset to be an explicit nil
+func (o *KubernetesProfilesSearchCommand) SetOffsetNil() {
+	o.Offset.Set(nil)
+}
 
-// GetSearchTerm returns the SearchTerm field value
+// UnsetOffset ensures that no value is present for Offset, not even an explicit nil
+func (o *KubernetesProfilesSearchCommand) UnsetOffset() {
+	o.Offset.Unset()
+}
+
+// GetSearchTerm returns the SearchTerm field value if set, zero value otherwise.
 func (o *KubernetesProfilesSearchCommand) GetSearchTerm() string {
-	if o == nil {
+	if o == nil || IsNil(o.SearchTerm) {
 		var ret string
 		return ret
 	}
-
-	return o.SearchTerm
+	return *o.SearchTerm
 }
 
-// GetSearchTermOk returns a tuple with the SearchTerm field value
+// GetSearchTermOk returns a tuple with the SearchTerm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KubernetesProfilesSearchCommand) GetSearchTermOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SearchTerm) {
 		return nil, false
 	}
-	return &o.SearchTerm, true
+	return o.SearchTerm, true
 }
 
-// SetSearchTerm sets field value
+// HasSearchTerm returns a boolean if a field has been set.
+func (o *KubernetesProfilesSearchCommand) HasSearchTerm() bool {
+	if o != nil && !IsNil(o.SearchTerm) {
+		return true
+	}
+
+	return false
+}
+
+// SetSearchTerm gets a reference to the given string and assigns it to the SearchTerm field.
 func (o *KubernetesProfilesSearchCommand) SetSearchTerm(v string) {
-	o.SearchTerm = v
+	o.SearchTerm = &v
 }
 
 func (o KubernetesProfilesSearchCommand) MarshalJSON() ([]byte, error) {
@@ -135,49 +168,16 @@ func (o KubernetesProfilesSearchCommand) MarshalJSON() ([]byte, error) {
 
 func (o KubernetesProfilesSearchCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["limit"] = o.Limit.Get()
-	toSerialize["offset"] = o.Offset.Get()
-	toSerialize["searchTerm"] = o.SearchTerm
+	if o.Limit.IsSet() {
+		toSerialize["limit"] = o.Limit.Get()
+	}
+	if o.Offset.IsSet() {
+		toSerialize["offset"] = o.Offset.Get()
+	}
+	if !IsNil(o.SearchTerm) {
+		toSerialize["searchTerm"] = o.SearchTerm
+	}
 	return toSerialize, nil
-}
-
-func (o *KubernetesProfilesSearchCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"limit",
-		"offset",
-		"searchTerm",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varKubernetesProfilesSearchCommand := _KubernetesProfilesSearchCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKubernetesProfilesSearchCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = KubernetesProfilesSearchCommand(varKubernetesProfilesSearchCommand)
-
-	return err
 }
 
 type NullableKubernetesProfilesSearchCommand struct {

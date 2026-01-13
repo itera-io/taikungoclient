@@ -23,8 +23,8 @@ var _ MappedNullable = &ProjectCatalogDto{}
 // ProjectCatalogDto struct for ProjectCatalogDto
 type ProjectCatalogDto struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
-	KubernetesVersion string `json:"kubernetesVersion"`
+	Name *string `json:"name,omitempty"`
+	KubernetesVersion *string `json:"kubernetesVersion,omitempty"`
 	IsLocked bool `json:"isLocked"`
 	MaintenanceModeEnabled bool `json:"maintenanceModeEnabled"`
 	IsVirtualCluster bool `json:"isVirtualCluster"`
@@ -39,11 +39,9 @@ type _ProjectCatalogDto ProjectCatalogDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectCatalogDto(id int32, name string, kubernetesVersion string, isLocked bool, maintenanceModeEnabled bool, isVirtualCluster bool, cloudType ECloudCredentialType, status ProjectStatus, health ProjectHealth) *ProjectCatalogDto {
+func NewProjectCatalogDto(id int32, isLocked bool, maintenanceModeEnabled bool, isVirtualCluster bool, cloudType ECloudCredentialType, status ProjectStatus, health ProjectHealth) *ProjectCatalogDto {
 	this := ProjectCatalogDto{}
 	this.Id = id
-	this.Name = name
-	this.KubernetesVersion = kubernetesVersion
 	this.IsLocked = isLocked
 	this.MaintenanceModeEnabled = maintenanceModeEnabled
 	this.IsVirtualCluster = isVirtualCluster
@@ -85,52 +83,68 @@ func (o *ProjectCatalogDto) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *ProjectCatalogDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectCatalogDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *ProjectCatalogDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ProjectCatalogDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetKubernetesVersion returns the KubernetesVersion field value
+// GetKubernetesVersion returns the KubernetesVersion field value if set, zero value otherwise.
 func (o *ProjectCatalogDto) GetKubernetesVersion() string {
-	if o == nil {
+	if o == nil || IsNil(o.KubernetesVersion) {
 		var ret string
 		return ret
 	}
-
-	return o.KubernetesVersion
+	return *o.KubernetesVersion
 }
 
-// GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value
+// GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectCatalogDto) GetKubernetesVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.KubernetesVersion) {
 		return nil, false
 	}
-	return &o.KubernetesVersion, true
+	return o.KubernetesVersion, true
 }
 
-// SetKubernetesVersion sets field value
+// HasKubernetesVersion returns a boolean if a field has been set.
+func (o *ProjectCatalogDto) HasKubernetesVersion() bool {
+	if o != nil && !IsNil(o.KubernetesVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetKubernetesVersion gets a reference to the given string and assigns it to the KubernetesVersion field.
 func (o *ProjectCatalogDto) SetKubernetesVersion(v string) {
-	o.KubernetesVersion = v
+	o.KubernetesVersion = &v
 }
 
 // GetIsLocked returns the IsLocked field value
@@ -288,8 +302,12 @@ func (o ProjectCatalogDto) MarshalJSON() ([]byte, error) {
 func (o ProjectCatalogDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
-	toSerialize["kubernetesVersion"] = o.KubernetesVersion
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.KubernetesVersion) {
+		toSerialize["kubernetesVersion"] = o.KubernetesVersion
+	}
 	toSerialize["isLocked"] = o.IsLocked
 	toSerialize["maintenanceModeEnabled"] = o.MaintenanceModeEnabled
 	toSerialize["isVirtualCluster"] = o.IsVirtualCluster
@@ -305,8 +323,6 @@ func (o *ProjectCatalogDto) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
-		"kubernetesVersion",
 		"isLocked",
 		"maintenanceModeEnabled",
 		"isVirtualCluster",

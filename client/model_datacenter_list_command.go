@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the DatacenterListCommand type satisfies the MappedNullable interface at compile time
@@ -22,24 +20,18 @@ var _ MappedNullable = &DatacenterListCommand{}
 
 // DatacenterListCommand struct for DatacenterListCommand
 type DatacenterListCommand struct {
-	Url string `json:"url"`
-	Username string `json:"username"`
-	Password string `json:"password"`
-	DatacenterName string `json:"datacenterName"`
+	Url *string `json:"url,omitempty"`
+	Username *string `json:"username,omitempty"`
+	Password *string `json:"password,omitempty"`
+	DatacenterName *string `json:"datacenterName,omitempty"`
 }
-
-type _DatacenterListCommand DatacenterListCommand
 
 // NewDatacenterListCommand instantiates a new DatacenterListCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDatacenterListCommand(url string, username string, password string, datacenterName string) *DatacenterListCommand {
+func NewDatacenterListCommand() *DatacenterListCommand {
 	this := DatacenterListCommand{}
-	this.Url = url
-	this.Username = username
-	this.Password = password
-	this.DatacenterName = datacenterName
 	return &this
 }
 
@@ -51,100 +43,132 @@ func NewDatacenterListCommandWithDefaults() *DatacenterListCommand {
 	return &this
 }
 
-// GetUrl returns the Url field value
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *DatacenterListCommand) GetUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-
-	return o.Url
+	return *o.Url
 }
 
-// GetUrlOk returns a tuple with the Url field value
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatacenterListCommand) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return &o.Url, true
+	return o.Url, true
 }
 
-// SetUrl sets field value
+// HasUrl returns a boolean if a field has been set.
+func (o *DatacenterListCommand) HasUrl() bool {
+	if o != nil && !IsNil(o.Url) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *DatacenterListCommand) SetUrl(v string) {
-	o.Url = v
+	o.Url = &v
 }
 
-// GetUsername returns the Username field value
+// GetUsername returns the Username field value if set, zero value otherwise.
 func (o *DatacenterListCommand) GetUsername() string {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
-
-	return o.Username
+	return *o.Username
 }
 
-// GetUsernameOk returns a tuple with the Username field value
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatacenterListCommand) GetUsernameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
-	return &o.Username, true
+	return o.Username, true
 }
 
-// SetUsername sets field value
+// HasUsername returns a boolean if a field has been set.
+func (o *DatacenterListCommand) HasUsername() bool {
+	if o != nil && !IsNil(o.Username) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *DatacenterListCommand) SetUsername(v string) {
-	o.Username = v
+	o.Username = &v
 }
 
-// GetPassword returns the Password field value
+// GetPassword returns the Password field value if set, zero value otherwise.
 func (o *DatacenterListCommand) GetPassword() string {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
 	}
-
-	return o.Password
+	return *o.Password
 }
 
-// GetPasswordOk returns a tuple with the Password field value
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatacenterListCommand) GetPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
-	return &o.Password, true
+	return o.Password, true
 }
 
-// SetPassword sets field value
+// HasPassword returns a boolean if a field has been set.
+func (o *DatacenterListCommand) HasPassword() bool {
+	if o != nil && !IsNil(o.Password) {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *DatacenterListCommand) SetPassword(v string) {
-	o.Password = v
+	o.Password = &v
 }
 
-// GetDatacenterName returns the DatacenterName field value
+// GetDatacenterName returns the DatacenterName field value if set, zero value otherwise.
 func (o *DatacenterListCommand) GetDatacenterName() string {
-	if o == nil {
+	if o == nil || IsNil(o.DatacenterName) {
 		var ret string
 		return ret
 	}
-
-	return o.DatacenterName
+	return *o.DatacenterName
 }
 
-// GetDatacenterNameOk returns a tuple with the DatacenterName field value
+// GetDatacenterNameOk returns a tuple with the DatacenterName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatacenterListCommand) GetDatacenterNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DatacenterName) {
 		return nil, false
 	}
-	return &o.DatacenterName, true
+	return o.DatacenterName, true
 }
 
-// SetDatacenterName sets field value
+// HasDatacenterName returns a boolean if a field has been set.
+func (o *DatacenterListCommand) HasDatacenterName() bool {
+	if o != nil && !IsNil(o.DatacenterName) {
+		return true
+	}
+
+	return false
+}
+
+// SetDatacenterName gets a reference to the given string and assigns it to the DatacenterName field.
 func (o *DatacenterListCommand) SetDatacenterName(v string) {
-	o.DatacenterName = v
+	o.DatacenterName = &v
 }
 
 func (o DatacenterListCommand) MarshalJSON() ([]byte, error) {
@@ -157,51 +181,19 @@ func (o DatacenterListCommand) MarshalJSON() ([]byte, error) {
 
 func (o DatacenterListCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["url"] = o.Url
-	toSerialize["username"] = o.Username
-	toSerialize["password"] = o.Password
-	toSerialize["datacenterName"] = o.DatacenterName
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
+	}
+	if !IsNil(o.DatacenterName) {
+		toSerialize["datacenterName"] = o.DatacenterName
+	}
 	return toSerialize, nil
-}
-
-func (o *DatacenterListCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"url",
-		"username",
-		"password",
-		"datacenterName",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDatacenterListCommand := _DatacenterListCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDatacenterListCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DatacenterListCommand(varDatacenterListCommand)
-
-	return err
 }
 
 type NullableDatacenterListCommand struct {

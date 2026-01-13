@@ -23,7 +23,7 @@ var _ MappedNullable = &ResetStandAloneVmStatusCommand{}
 // ResetStandAloneVmStatusCommand struct for ResetStandAloneVmStatusCommand
 type ResetStandAloneVmStatusCommand struct {
 	ProjectId int32 `json:"projectId"`
-	VmIds []int32 `json:"vmIds"`
+	VmIds []int32 `json:"vmIds,omitempty"`
 	Status StandAloneVmStatus `json:"status"`
 }
 
@@ -33,10 +33,9 @@ type _ResetStandAloneVmStatusCommand ResetStandAloneVmStatusCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResetStandAloneVmStatusCommand(projectId int32, vmIds []int32, status StandAloneVmStatus) *ResetStandAloneVmStatusCommand {
+func NewResetStandAloneVmStatusCommand(projectId int32, status StandAloneVmStatus) *ResetStandAloneVmStatusCommand {
 	this := ResetStandAloneVmStatusCommand{}
 	this.ProjectId = projectId
-	this.VmIds = vmIds
 	this.Status = status
 	return &this
 }
@@ -73,26 +72,34 @@ func (o *ResetStandAloneVmStatusCommand) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetVmIds returns the VmIds field value
+// GetVmIds returns the VmIds field value if set, zero value otherwise.
 func (o *ResetStandAloneVmStatusCommand) GetVmIds() []int32 {
-	if o == nil {
+	if o == nil || IsNil(o.VmIds) {
 		var ret []int32
 		return ret
 	}
-
 	return o.VmIds
 }
 
-// GetVmIdsOk returns a tuple with the VmIds field value
+// GetVmIdsOk returns a tuple with the VmIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResetStandAloneVmStatusCommand) GetVmIdsOk() ([]int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VmIds) {
 		return nil, false
 	}
 	return o.VmIds, true
 }
 
-// SetVmIds sets field value
+// HasVmIds returns a boolean if a field has been set.
+func (o *ResetStandAloneVmStatusCommand) HasVmIds() bool {
+	if o != nil && !IsNil(o.VmIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetVmIds gets a reference to the given []int32 and assigns it to the VmIds field.
 func (o *ResetStandAloneVmStatusCommand) SetVmIds(v []int32) {
 	o.VmIds = v
 }
@@ -132,7 +139,9 @@ func (o ResetStandAloneVmStatusCommand) MarshalJSON() ([]byte, error) {
 func (o ResetStandAloneVmStatusCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["vmIds"] = o.VmIds
+	if !IsNil(o.VmIds) {
+		toSerialize["vmIds"] = o.VmIds
+	}
 	toSerialize["status"] = o.Status
 	return toSerialize, nil
 }
@@ -143,7 +152,6 @@ func (o *ResetStandAloneVmStatusCommand) UnmarshalJSON(data []byte) (err error) 
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"vmIds",
 		"status",
 	}
 

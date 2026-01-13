@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the RuleLabels type satisfies the MappedNullable interface at compile time
@@ -22,18 +20,15 @@ var _ MappedNullable = &RuleLabels{}
 
 // RuleLabels struct for RuleLabels
 type RuleLabels struct {
-	Severity string `json:"severity"`
+	Severity *string `json:"severity,omitempty"`
 }
-
-type _RuleLabels RuleLabels
 
 // NewRuleLabels instantiates a new RuleLabels object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRuleLabels(severity string) *RuleLabels {
+func NewRuleLabels() *RuleLabels {
 	this := RuleLabels{}
-	this.Severity = severity
 	return &this
 }
 
@@ -45,28 +40,36 @@ func NewRuleLabelsWithDefaults() *RuleLabels {
 	return &this
 }
 
-// GetSeverity returns the Severity field value
+// GetSeverity returns the Severity field value if set, zero value otherwise.
 func (o *RuleLabels) GetSeverity() string {
-	if o == nil {
+	if o == nil || IsNil(o.Severity) {
 		var ret string
 		return ret
 	}
-
-	return o.Severity
+	return *o.Severity
 }
 
-// GetSeverityOk returns a tuple with the Severity field value
+// GetSeverityOk returns a tuple with the Severity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RuleLabels) GetSeverityOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Severity) {
 		return nil, false
 	}
-	return &o.Severity, true
+	return o.Severity, true
 }
 
-// SetSeverity sets field value
+// HasSeverity returns a boolean if a field has been set.
+func (o *RuleLabels) HasSeverity() bool {
+	if o != nil && !IsNil(o.Severity) {
+		return true
+	}
+
+	return false
+}
+
+// SetSeverity gets a reference to the given string and assigns it to the Severity field.
 func (o *RuleLabels) SetSeverity(v string) {
-	o.Severity = v
+	o.Severity = &v
 }
 
 func (o RuleLabels) MarshalJSON() ([]byte, error) {
@@ -79,45 +82,10 @@ func (o RuleLabels) MarshalJSON() ([]byte, error) {
 
 func (o RuleLabels) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["severity"] = o.Severity
+	if !IsNil(o.Severity) {
+		toSerialize["severity"] = o.Severity
+	}
 	return toSerialize, nil
-}
-
-func (o *RuleLabels) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"severity",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varRuleLabels := _RuleLabels{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRuleLabels)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RuleLabels(varRuleLabels)
-
-	return err
 }
 
 type NullableRuleLabels struct {

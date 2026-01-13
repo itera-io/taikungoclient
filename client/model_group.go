@@ -23,9 +23,9 @@ var _ MappedNullable = &Group{}
 
 // Group struct for Group
 type Group struct {
-	Name string `json:"name"`
-	File string `json:"file"`
-	Rules []Rule `json:"rules"`
+	Name *string `json:"name,omitempty"`
+	File *string `json:"file,omitempty"`
+	Rules []Rule `json:"rules,omitempty"`
 	Interval int64 `json:"interval"`
 	EvaluationTime float64 `json:"evaluationTime"`
 	LastEvaluation time.Time `json:"lastEvaluation"`
@@ -37,11 +37,8 @@ type _Group Group
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroup(name string, file string, rules []Rule, interval int64, evaluationTime float64, lastEvaluation time.Time) *Group {
+func NewGroup(interval int64, evaluationTime float64, lastEvaluation time.Time) *Group {
 	this := Group{}
-	this.Name = name
-	this.File = file
-	this.Rules = rules
 	this.Interval = interval
 	this.EvaluationTime = evaluationTime
 	this.LastEvaluation = lastEvaluation
@@ -56,74 +53,98 @@ func NewGroupWithDefaults() *Group {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *Group) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *Group) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *Group) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetFile returns the File field value
+// GetFile returns the File field value if set, zero value otherwise.
 func (o *Group) GetFile() string {
-	if o == nil {
+	if o == nil || IsNil(o.File) {
 		var ret string
 		return ret
 	}
-
-	return o.File
+	return *o.File
 }
 
-// GetFileOk returns a tuple with the File field value
+// GetFileOk returns a tuple with the File field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetFileOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.File) {
 		return nil, false
 	}
-	return &o.File, true
+	return o.File, true
 }
 
-// SetFile sets field value
+// HasFile returns a boolean if a field has been set.
+func (o *Group) HasFile() bool {
+	if o != nil && !IsNil(o.File) {
+		return true
+	}
+
+	return false
+}
+
+// SetFile gets a reference to the given string and assigns it to the File field.
 func (o *Group) SetFile(v string) {
-	o.File = v
+	o.File = &v
 }
 
-// GetRules returns the Rules field value
+// GetRules returns the Rules field value if set, zero value otherwise.
 func (o *Group) GetRules() []Rule {
-	if o == nil {
+	if o == nil || IsNil(o.Rules) {
 		var ret []Rule
 		return ret
 	}
-
 	return o.Rules
 }
 
-// GetRulesOk returns a tuple with the Rules field value
+// GetRulesOk returns a tuple with the Rules field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetRulesOk() ([]Rule, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Rules) {
 		return nil, false
 	}
 	return o.Rules, true
 }
 
-// SetRules sets field value
+// HasRules returns a boolean if a field has been set.
+func (o *Group) HasRules() bool {
+	if o != nil && !IsNil(o.Rules) {
+		return true
+	}
+
+	return false
+}
+
+// SetRules gets a reference to the given []Rule and assigns it to the Rules field.
 func (o *Group) SetRules(v []Rule) {
 	o.Rules = v
 }
@@ -210,9 +231,15 @@ func (o Group) MarshalJSON() ([]byte, error) {
 
 func (o Group) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["file"] = o.File
-	toSerialize["rules"] = o.Rules
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.File) {
+		toSerialize["file"] = o.File
+	}
+	if !IsNil(o.Rules) {
+		toSerialize["rules"] = o.Rules
+	}
 	toSerialize["interval"] = o.Interval
 	toSerialize["evaluationTime"] = o.EvaluationTime
 	toSerialize["lastEvaluation"] = o.LastEvaluation
@@ -224,9 +251,6 @@ func (o *Group) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
-		"file",
-		"rules",
 		"interval",
 		"evaluationTime",
 		"lastEvaluation",

@@ -22,10 +22,10 @@ var _ MappedNullable = &CreateSlackConfigurationCommand{}
 
 // CreateSlackConfigurationCommand struct for CreateSlackConfigurationCommand
 type CreateSlackConfigurationCommand struct {
-	OrganizationId NullableInt32 `json:"organizationId"`
-	Name string `json:"name"`
-	Url string `json:"url"`
-	Channel string `json:"channel"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Url *string `json:"url,omitempty"`
+	Channel *string `json:"channel,omitempty"`
 	SlackType SlackType `json:"slackType"`
 }
 
@@ -35,12 +35,8 @@ type _CreateSlackConfigurationCommand CreateSlackConfigurationCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateSlackConfigurationCommand(organizationId NullableInt32, name string, url string, channel string, slackType SlackType) *CreateSlackConfigurationCommand {
+func NewCreateSlackConfigurationCommand(slackType SlackType) *CreateSlackConfigurationCommand {
 	this := CreateSlackConfigurationCommand{}
-	this.OrganizationId = organizationId
-	this.Name = name
-	this.Url = url
-	this.Channel = channel
 	this.SlackType = slackType
 	return &this
 }
@@ -53,18 +49,16 @@ func NewCreateSlackConfigurationCommandWithDefaults() *CreateSlackConfigurationC
 	return &this
 }
 
-// GetOrganizationId returns the OrganizationId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateSlackConfigurationCommand) GetOrganizationId() int32 {
-	if o == nil || o.OrganizationId.Get() == nil {
+	if o == nil || IsNil(o.OrganizationId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.OrganizationId.Get()
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateSlackConfigurationCommand) GetOrganizationIdOk() (*int32, bool) {
@@ -74,81 +68,123 @@ func (o *CreateSlackConfigurationCommand) GetOrganizationIdOk() (*int32, bool) {
 	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
 }
 
-// SetOrganizationId sets field value
+// HasOrganizationId returns a boolean if a field has been set.
+func (o *CreateSlackConfigurationCommand) HasOrganizationId() bool {
+	if o != nil && o.OrganizationId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
 func (o *CreateSlackConfigurationCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
+// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
+func (o *CreateSlackConfigurationCommand) SetOrganizationIdNil() {
+	o.OrganizationId.Set(nil)
+}
 
-// GetName returns the Name field value
+// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
+func (o *CreateSlackConfigurationCommand) UnsetOrganizationId() {
+	o.OrganizationId.Unset()
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateSlackConfigurationCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateSlackConfigurationCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CreateSlackConfigurationCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateSlackConfigurationCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetUrl returns the Url field value
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *CreateSlackConfigurationCommand) GetUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-
-	return o.Url
+	return *o.Url
 }
 
-// GetUrlOk returns a tuple with the Url field value
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateSlackConfigurationCommand) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return &o.Url, true
+	return o.Url, true
 }
 
-// SetUrl sets field value
+// HasUrl returns a boolean if a field has been set.
+func (o *CreateSlackConfigurationCommand) HasUrl() bool {
+	if o != nil && !IsNil(o.Url) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *CreateSlackConfigurationCommand) SetUrl(v string) {
-	o.Url = v
+	o.Url = &v
 }
 
-// GetChannel returns the Channel field value
+// GetChannel returns the Channel field value if set, zero value otherwise.
 func (o *CreateSlackConfigurationCommand) GetChannel() string {
-	if o == nil {
+	if o == nil || IsNil(o.Channel) {
 		var ret string
 		return ret
 	}
-
-	return o.Channel
+	return *o.Channel
 }
 
-// GetChannelOk returns a tuple with the Channel field value
+// GetChannelOk returns a tuple with the Channel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateSlackConfigurationCommand) GetChannelOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Channel) {
 		return nil, false
 	}
-	return &o.Channel, true
+	return o.Channel, true
 }
 
-// SetChannel sets field value
+// HasChannel returns a boolean if a field has been set.
+func (o *CreateSlackConfigurationCommand) HasChannel() bool {
+	if o != nil && !IsNil(o.Channel) {
+		return true
+	}
+
+	return false
+}
+
+// SetChannel gets a reference to the given string and assigns it to the Channel field.
 func (o *CreateSlackConfigurationCommand) SetChannel(v string) {
-	o.Channel = v
+	o.Channel = &v
 }
 
 // GetSlackType returns the SlackType field value
@@ -185,10 +221,18 @@ func (o CreateSlackConfigurationCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateSlackConfigurationCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["organizationId"] = o.OrganizationId.Get()
-	toSerialize["name"] = o.Name
-	toSerialize["url"] = o.Url
-	toSerialize["channel"] = o.Channel
+	if o.OrganizationId.IsSet() {
+		toSerialize["organizationId"] = o.OrganizationId.Get()
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
+	if !IsNil(o.Channel) {
+		toSerialize["channel"] = o.Channel
+	}
 	toSerialize["slackType"] = o.SlackType
 	return toSerialize, nil
 }
@@ -198,10 +242,6 @@ func (o *CreateSlackConfigurationCommand) UnmarshalJSON(data []byte) (err error)
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"organizationId",
-		"name",
-		"url",
-		"channel",
 		"slackType",
 	}
 

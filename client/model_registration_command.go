@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the RegistrationCommand type satisfies the MappedNullable interface at compile time
@@ -22,22 +20,17 @@ var _ MappedNullable = &RegistrationCommand{}
 
 // RegistrationCommand struct for RegistrationCommand
 type RegistrationCommand struct {
-	OrganizationName string `json:"organizationName"`
-	Username string `json:"username"`
-	Email string `json:"email"`
+	OrganizationName *string `json:"organizationName,omitempty"`
+	Username *string `json:"username,omitempty"`
+	Email *string `json:"email,omitempty"`
 }
-
-type _RegistrationCommand RegistrationCommand
 
 // NewRegistrationCommand instantiates a new RegistrationCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRegistrationCommand(organizationName string, username string, email string) *RegistrationCommand {
+func NewRegistrationCommand() *RegistrationCommand {
 	this := RegistrationCommand{}
-	this.OrganizationName = organizationName
-	this.Username = username
-	this.Email = email
 	return &this
 }
 
@@ -49,76 +42,100 @@ func NewRegistrationCommandWithDefaults() *RegistrationCommand {
 	return &this
 }
 
-// GetOrganizationName returns the OrganizationName field value
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *RegistrationCommand) GetOrganizationName() string {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
-
-	return o.OrganizationName
+	return *o.OrganizationName
 }
 
-// GetOrganizationNameOk returns a tuple with the OrganizationName field value
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RegistrationCommand) GetOrganizationNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
-	return &o.OrganizationName, true
+	return o.OrganizationName, true
 }
 
-// SetOrganizationName sets field value
+// HasOrganizationName returns a boolean if a field has been set.
+func (o *RegistrationCommand) HasOrganizationName() bool {
+	if o != nil && !IsNil(o.OrganizationName) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
 func (o *RegistrationCommand) SetOrganizationName(v string) {
-	o.OrganizationName = v
+	o.OrganizationName = &v
 }
 
-// GetUsername returns the Username field value
+// GetUsername returns the Username field value if set, zero value otherwise.
 func (o *RegistrationCommand) GetUsername() string {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
-
-	return o.Username
+	return *o.Username
 }
 
-// GetUsernameOk returns a tuple with the Username field value
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RegistrationCommand) GetUsernameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
-	return &o.Username, true
+	return o.Username, true
 }
 
-// SetUsername sets field value
+// HasUsername returns a boolean if a field has been set.
+func (o *RegistrationCommand) HasUsername() bool {
+	if o != nil && !IsNil(o.Username) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *RegistrationCommand) SetUsername(v string) {
-	o.Username = v
+	o.Username = &v
 }
 
-// GetEmail returns the Email field value
+// GetEmail returns the Email field value if set, zero value otherwise.
 func (o *RegistrationCommand) GetEmail() string {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
-
-	return o.Email
+	return *o.Email
 }
 
-// GetEmailOk returns a tuple with the Email field value
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RegistrationCommand) GetEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
-	return &o.Email, true
+	return o.Email, true
 }
 
-// SetEmail sets field value
+// HasEmail returns a boolean if a field has been set.
+func (o *RegistrationCommand) HasEmail() bool {
+	if o != nil && !IsNil(o.Email) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmail gets a reference to the given string and assigns it to the Email field.
 func (o *RegistrationCommand) SetEmail(v string) {
-	o.Email = v
+	o.Email = &v
 }
 
 func (o RegistrationCommand) MarshalJSON() ([]byte, error) {
@@ -131,49 +148,16 @@ func (o RegistrationCommand) MarshalJSON() ([]byte, error) {
 
 func (o RegistrationCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["organizationName"] = o.OrganizationName
-	toSerialize["username"] = o.Username
-	toSerialize["email"] = o.Email
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organizationName"] = o.OrganizationName
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
 	return toSerialize, nil
-}
-
-func (o *RegistrationCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"organizationName",
-		"username",
-		"email",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varRegistrationCommand := _RegistrationCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRegistrationCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RegistrationCommand(varRegistrationCommand)
-
-	return err
 }
 
 type NullableRegistrationCommand struct {

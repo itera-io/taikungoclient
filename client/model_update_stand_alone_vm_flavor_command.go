@@ -23,7 +23,7 @@ var _ MappedNullable = &UpdateStandAloneVmFlavorCommand{}
 // UpdateStandAloneVmFlavorCommand struct for UpdateStandAloneVmFlavorCommand
 type UpdateStandAloneVmFlavorCommand struct {
 	Id int32 `json:"id"`
-	Flavor string `json:"flavor"`
+	Flavor *string `json:"flavor,omitempty"`
 }
 
 type _UpdateStandAloneVmFlavorCommand UpdateStandAloneVmFlavorCommand
@@ -32,10 +32,9 @@ type _UpdateStandAloneVmFlavorCommand UpdateStandAloneVmFlavorCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateStandAloneVmFlavorCommand(id int32, flavor string) *UpdateStandAloneVmFlavorCommand {
+func NewUpdateStandAloneVmFlavorCommand(id int32) *UpdateStandAloneVmFlavorCommand {
 	this := UpdateStandAloneVmFlavorCommand{}
 	this.Id = id
-	this.Flavor = flavor
 	return &this
 }
 
@@ -71,28 +70,36 @@ func (o *UpdateStandAloneVmFlavorCommand) SetId(v int32) {
 	o.Id = v
 }
 
-// GetFlavor returns the Flavor field value
+// GetFlavor returns the Flavor field value if set, zero value otherwise.
 func (o *UpdateStandAloneVmFlavorCommand) GetFlavor() string {
-	if o == nil {
+	if o == nil || IsNil(o.Flavor) {
 		var ret string
 		return ret
 	}
-
-	return o.Flavor
+	return *o.Flavor
 }
 
-// GetFlavorOk returns a tuple with the Flavor field value
+// GetFlavorOk returns a tuple with the Flavor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateStandAloneVmFlavorCommand) GetFlavorOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Flavor) {
 		return nil, false
 	}
-	return &o.Flavor, true
+	return o.Flavor, true
 }
 
-// SetFlavor sets field value
+// HasFlavor returns a boolean if a field has been set.
+func (o *UpdateStandAloneVmFlavorCommand) HasFlavor() bool {
+	if o != nil && !IsNil(o.Flavor) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlavor gets a reference to the given string and assigns it to the Flavor field.
 func (o *UpdateStandAloneVmFlavorCommand) SetFlavor(v string) {
-	o.Flavor = v
+	o.Flavor = &v
 }
 
 func (o UpdateStandAloneVmFlavorCommand) MarshalJSON() ([]byte, error) {
@@ -106,7 +113,9 @@ func (o UpdateStandAloneVmFlavorCommand) MarshalJSON() ([]byte, error) {
 func (o UpdateStandAloneVmFlavorCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["flavor"] = o.Flavor
+	if !IsNil(o.Flavor) {
+		toSerialize["flavor"] = o.Flavor
+	}
 	return toSerialize, nil
 }
 
@@ -116,7 +125,6 @@ func (o *UpdateStandAloneVmFlavorCommand) UnmarshalJSON(data []byte) (err error)
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"flavor",
 	}
 
 	allProperties := make(map[string]interface{})

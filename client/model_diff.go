@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the Diff type satisfies the MappedNullable interface at compile time
@@ -22,24 +20,18 @@ var _ MappedNullable = &Diff{}
 
 // Diff struct for Diff
 type Diff struct {
-	Resources []interface{} `json:"resources"`
-	TotalHourlyCost string `json:"totalHourlyCost"`
-	TotalMonthlyCost string `json:"totalMonthlyCost"`
-	TotalMonthlyUsageCost string `json:"totalMonthlyUsageCost"`
+	Resources []interface{} `json:"resources,omitempty"`
+	TotalHourlyCost *string `json:"totalHourlyCost,omitempty"`
+	TotalMonthlyCost *string `json:"totalMonthlyCost,omitempty"`
+	TotalMonthlyUsageCost *string `json:"totalMonthlyUsageCost,omitempty"`
 }
-
-type _Diff Diff
 
 // NewDiff instantiates a new Diff object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDiff(resources []interface{}, totalHourlyCost string, totalMonthlyCost string, totalMonthlyUsageCost string) *Diff {
+func NewDiff() *Diff {
 	this := Diff{}
-	this.Resources = resources
-	this.TotalHourlyCost = totalHourlyCost
-	this.TotalMonthlyCost = totalMonthlyCost
-	this.TotalMonthlyUsageCost = totalMonthlyUsageCost
 	return &this
 }
 
@@ -51,100 +43,132 @@ func NewDiffWithDefaults() *Diff {
 	return &this
 }
 
-// GetResources returns the Resources field value
+// GetResources returns the Resources field value if set, zero value otherwise.
 func (o *Diff) GetResources() []interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.Resources) {
 		var ret []interface{}
 		return ret
 	}
-
 	return o.Resources
 }
 
-// GetResourcesOk returns a tuple with the Resources field value
+// GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Diff) GetResourcesOk() ([]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Resources) {
 		return nil, false
 	}
 	return o.Resources, true
 }
 
-// SetResources sets field value
+// HasResources returns a boolean if a field has been set.
+func (o *Diff) HasResources() bool {
+	if o != nil && !IsNil(o.Resources) {
+		return true
+	}
+
+	return false
+}
+
+// SetResources gets a reference to the given []interface{} and assigns it to the Resources field.
 func (o *Diff) SetResources(v []interface{}) {
 	o.Resources = v
 }
 
-// GetTotalHourlyCost returns the TotalHourlyCost field value
+// GetTotalHourlyCost returns the TotalHourlyCost field value if set, zero value otherwise.
 func (o *Diff) GetTotalHourlyCost() string {
-	if o == nil {
+	if o == nil || IsNil(o.TotalHourlyCost) {
 		var ret string
 		return ret
 	}
-
-	return o.TotalHourlyCost
+	return *o.TotalHourlyCost
 }
 
-// GetTotalHourlyCostOk returns a tuple with the TotalHourlyCost field value
+// GetTotalHourlyCostOk returns a tuple with the TotalHourlyCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Diff) GetTotalHourlyCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TotalHourlyCost) {
 		return nil, false
 	}
-	return &o.TotalHourlyCost, true
+	return o.TotalHourlyCost, true
 }
 
-// SetTotalHourlyCost sets field value
+// HasTotalHourlyCost returns a boolean if a field has been set.
+func (o *Diff) HasTotalHourlyCost() bool {
+	if o != nil && !IsNil(o.TotalHourlyCost) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalHourlyCost gets a reference to the given string and assigns it to the TotalHourlyCost field.
 func (o *Diff) SetTotalHourlyCost(v string) {
-	o.TotalHourlyCost = v
+	o.TotalHourlyCost = &v
 }
 
-// GetTotalMonthlyCost returns the TotalMonthlyCost field value
+// GetTotalMonthlyCost returns the TotalMonthlyCost field value if set, zero value otherwise.
 func (o *Diff) GetTotalMonthlyCost() string {
-	if o == nil {
+	if o == nil || IsNil(o.TotalMonthlyCost) {
 		var ret string
 		return ret
 	}
-
-	return o.TotalMonthlyCost
+	return *o.TotalMonthlyCost
 }
 
-// GetTotalMonthlyCostOk returns a tuple with the TotalMonthlyCost field value
+// GetTotalMonthlyCostOk returns a tuple with the TotalMonthlyCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Diff) GetTotalMonthlyCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TotalMonthlyCost) {
 		return nil, false
 	}
-	return &o.TotalMonthlyCost, true
+	return o.TotalMonthlyCost, true
 }
 
-// SetTotalMonthlyCost sets field value
+// HasTotalMonthlyCost returns a boolean if a field has been set.
+func (o *Diff) HasTotalMonthlyCost() bool {
+	if o != nil && !IsNil(o.TotalMonthlyCost) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalMonthlyCost gets a reference to the given string and assigns it to the TotalMonthlyCost field.
 func (o *Diff) SetTotalMonthlyCost(v string) {
-	o.TotalMonthlyCost = v
+	o.TotalMonthlyCost = &v
 }
 
-// GetTotalMonthlyUsageCost returns the TotalMonthlyUsageCost field value
+// GetTotalMonthlyUsageCost returns the TotalMonthlyUsageCost field value if set, zero value otherwise.
 func (o *Diff) GetTotalMonthlyUsageCost() string {
-	if o == nil {
+	if o == nil || IsNil(o.TotalMonthlyUsageCost) {
 		var ret string
 		return ret
 	}
-
-	return o.TotalMonthlyUsageCost
+	return *o.TotalMonthlyUsageCost
 }
 
-// GetTotalMonthlyUsageCostOk returns a tuple with the TotalMonthlyUsageCost field value
+// GetTotalMonthlyUsageCostOk returns a tuple with the TotalMonthlyUsageCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Diff) GetTotalMonthlyUsageCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TotalMonthlyUsageCost) {
 		return nil, false
 	}
-	return &o.TotalMonthlyUsageCost, true
+	return o.TotalMonthlyUsageCost, true
 }
 
-// SetTotalMonthlyUsageCost sets field value
+// HasTotalMonthlyUsageCost returns a boolean if a field has been set.
+func (o *Diff) HasTotalMonthlyUsageCost() bool {
+	if o != nil && !IsNil(o.TotalMonthlyUsageCost) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalMonthlyUsageCost gets a reference to the given string and assigns it to the TotalMonthlyUsageCost field.
 func (o *Diff) SetTotalMonthlyUsageCost(v string) {
-	o.TotalMonthlyUsageCost = v
+	o.TotalMonthlyUsageCost = &v
 }
 
 func (o Diff) MarshalJSON() ([]byte, error) {
@@ -157,51 +181,19 @@ func (o Diff) MarshalJSON() ([]byte, error) {
 
 func (o Diff) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["resources"] = o.Resources
-	toSerialize["totalHourlyCost"] = o.TotalHourlyCost
-	toSerialize["totalMonthlyCost"] = o.TotalMonthlyCost
-	toSerialize["totalMonthlyUsageCost"] = o.TotalMonthlyUsageCost
+	if !IsNil(o.Resources) {
+		toSerialize["resources"] = o.Resources
+	}
+	if !IsNil(o.TotalHourlyCost) {
+		toSerialize["totalHourlyCost"] = o.TotalHourlyCost
+	}
+	if !IsNil(o.TotalMonthlyCost) {
+		toSerialize["totalMonthlyCost"] = o.TotalMonthlyCost
+	}
+	if !IsNil(o.TotalMonthlyUsageCost) {
+		toSerialize["totalMonthlyUsageCost"] = o.TotalMonthlyUsageCost
+	}
 	return toSerialize, nil
-}
-
-func (o *Diff) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"resources",
-		"totalHourlyCost",
-		"totalMonthlyCost",
-		"totalMonthlyUsageCost",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDiff := _Diff{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDiff)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Diff(varDiff)
-
-	return err
 }
 
 type NullableDiff struct {

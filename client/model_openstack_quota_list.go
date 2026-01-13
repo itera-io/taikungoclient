@@ -22,9 +22,9 @@ var _ MappedNullable = &OpenstackQuotaList{}
 
 // OpenstackQuotaList struct for OpenstackQuotaList
 type OpenstackQuotaList struct {
-	Compute OpenstackComputeQuotaDto `json:"compute"`
-	Volume OpenstackVolumeQuotaDto `json:"volume"`
-	Network OpenstackNetworkDto `json:"network"`
+	Compute *OpenstackComputeQuotaDto `json:"compute,omitempty"`
+	Volume *OpenstackVolumeQuotaDto `json:"volume,omitempty"`
+	Network *OpenstackNetworkDto `json:"network,omitempty"`
 	IsInfra bool `json:"isInfra"`
 }
 
@@ -34,11 +34,8 @@ type _OpenstackQuotaList OpenstackQuotaList
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOpenstackQuotaList(compute OpenstackComputeQuotaDto, volume OpenstackVolumeQuotaDto, network OpenstackNetworkDto, isInfra bool) *OpenstackQuotaList {
+func NewOpenstackQuotaList(isInfra bool) *OpenstackQuotaList {
 	this := OpenstackQuotaList{}
-	this.Compute = compute
-	this.Volume = volume
-	this.Network = network
 	this.IsInfra = isInfra
 	return &this
 }
@@ -51,76 +48,100 @@ func NewOpenstackQuotaListWithDefaults() *OpenstackQuotaList {
 	return &this
 }
 
-// GetCompute returns the Compute field value
+// GetCompute returns the Compute field value if set, zero value otherwise.
 func (o *OpenstackQuotaList) GetCompute() OpenstackComputeQuotaDto {
-	if o == nil {
+	if o == nil || IsNil(o.Compute) {
 		var ret OpenstackComputeQuotaDto
 		return ret
 	}
-
-	return o.Compute
+	return *o.Compute
 }
 
-// GetComputeOk returns a tuple with the Compute field value
+// GetComputeOk returns a tuple with the Compute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpenstackQuotaList) GetComputeOk() (*OpenstackComputeQuotaDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Compute) {
 		return nil, false
 	}
-	return &o.Compute, true
+	return o.Compute, true
 }
 
-// SetCompute sets field value
+// HasCompute returns a boolean if a field has been set.
+func (o *OpenstackQuotaList) HasCompute() bool {
+	if o != nil && !IsNil(o.Compute) {
+		return true
+	}
+
+	return false
+}
+
+// SetCompute gets a reference to the given OpenstackComputeQuotaDto and assigns it to the Compute field.
 func (o *OpenstackQuotaList) SetCompute(v OpenstackComputeQuotaDto) {
-	o.Compute = v
+	o.Compute = &v
 }
 
-// GetVolume returns the Volume field value
+// GetVolume returns the Volume field value if set, zero value otherwise.
 func (o *OpenstackQuotaList) GetVolume() OpenstackVolumeQuotaDto {
-	if o == nil {
+	if o == nil || IsNil(o.Volume) {
 		var ret OpenstackVolumeQuotaDto
 		return ret
 	}
-
-	return o.Volume
+	return *o.Volume
 }
 
-// GetVolumeOk returns a tuple with the Volume field value
+// GetVolumeOk returns a tuple with the Volume field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpenstackQuotaList) GetVolumeOk() (*OpenstackVolumeQuotaDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Volume) {
 		return nil, false
 	}
-	return &o.Volume, true
+	return o.Volume, true
 }
 
-// SetVolume sets field value
+// HasVolume returns a boolean if a field has been set.
+func (o *OpenstackQuotaList) HasVolume() bool {
+	if o != nil && !IsNil(o.Volume) {
+		return true
+	}
+
+	return false
+}
+
+// SetVolume gets a reference to the given OpenstackVolumeQuotaDto and assigns it to the Volume field.
 func (o *OpenstackQuotaList) SetVolume(v OpenstackVolumeQuotaDto) {
-	o.Volume = v
+	o.Volume = &v
 }
 
-// GetNetwork returns the Network field value
+// GetNetwork returns the Network field value if set, zero value otherwise.
 func (o *OpenstackQuotaList) GetNetwork() OpenstackNetworkDto {
-	if o == nil {
+	if o == nil || IsNil(o.Network) {
 		var ret OpenstackNetworkDto
 		return ret
 	}
-
-	return o.Network
+	return *o.Network
 }
 
-// GetNetworkOk returns a tuple with the Network field value
+// GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpenstackQuotaList) GetNetworkOk() (*OpenstackNetworkDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Network) {
 		return nil, false
 	}
-	return &o.Network, true
+	return o.Network, true
 }
 
-// SetNetwork sets field value
+// HasNetwork returns a boolean if a field has been set.
+func (o *OpenstackQuotaList) HasNetwork() bool {
+	if o != nil && !IsNil(o.Network) {
+		return true
+	}
+
+	return false
+}
+
+// SetNetwork gets a reference to the given OpenstackNetworkDto and assigns it to the Network field.
 func (o *OpenstackQuotaList) SetNetwork(v OpenstackNetworkDto) {
-	o.Network = v
+	o.Network = &v
 }
 
 // GetIsInfra returns the IsInfra field value
@@ -157,9 +178,15 @@ func (o OpenstackQuotaList) MarshalJSON() ([]byte, error) {
 
 func (o OpenstackQuotaList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["compute"] = o.Compute
-	toSerialize["volume"] = o.Volume
-	toSerialize["network"] = o.Network
+	if !IsNil(o.Compute) {
+		toSerialize["compute"] = o.Compute
+	}
+	if !IsNil(o.Volume) {
+		toSerialize["volume"] = o.Volume
+	}
+	if !IsNil(o.Network) {
+		toSerialize["network"] = o.Network
+	}
 	toSerialize["isInfra"] = o.IsInfra
 	return toSerialize, nil
 }
@@ -169,9 +196,6 @@ func (o *OpenstackQuotaList) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"compute",
-		"volume",
-		"network",
 		"isInfra",
 	}
 

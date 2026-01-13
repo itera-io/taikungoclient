@@ -23,8 +23,8 @@ var _ MappedNullable = &EditCatalogCommand{}
 // EditCatalogCommand struct for EditCatalogCommand
 type EditCatalogCommand struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
-	Description string `json:"description"`
+	Name *string `json:"name,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 type _EditCatalogCommand EditCatalogCommand
@@ -33,11 +33,9 @@ type _EditCatalogCommand EditCatalogCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEditCatalogCommand(id int32, name string, description string) *EditCatalogCommand {
+func NewEditCatalogCommand(id int32) *EditCatalogCommand {
 	this := EditCatalogCommand{}
 	this.Id = id
-	this.Name = name
-	this.Description = description
 	return &this
 }
 
@@ -73,52 +71,68 @@ func (o *EditCatalogCommand) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *EditCatalogCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EditCatalogCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *EditCatalogCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *EditCatalogCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetDescription returns the Description field value
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *EditCatalogCommand) GetDescription() string {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-
-	return o.Description
+	return *o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EditCatalogCommand) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description, true
 }
 
-// SetDescription sets field value
+// HasDescription returns a boolean if a field has been set.
+func (o *EditCatalogCommand) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *EditCatalogCommand) SetDescription(v string) {
-	o.Description = v
+	o.Description = &v
 }
 
 func (o EditCatalogCommand) MarshalJSON() ([]byte, error) {
@@ -132,8 +146,12 @@ func (o EditCatalogCommand) MarshalJSON() ([]byte, error) {
 func (o EditCatalogCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
-	toSerialize["description"] = o.Description
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
 	return toSerialize, nil
 }
 
@@ -143,8 +161,6 @@ func (o *EditCatalogCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
-		"description",
 	}
 
 	allProperties := make(map[string]interface{})

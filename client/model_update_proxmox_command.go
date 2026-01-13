@@ -23,9 +23,9 @@ var _ MappedNullable = &UpdateProxmoxCommand{}
 // UpdateProxmoxCommand struct for UpdateProxmoxCommand
 type UpdateProxmoxCommand struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
-	TokenId string `json:"tokenId"`
-	TokenSecret string `json:"tokenSecret"`
+	Name *string `json:"name,omitempty"`
+	TokenId *string `json:"tokenId,omitempty"`
+	TokenSecret *string `json:"tokenSecret,omitempty"`
 }
 
 type _UpdateProxmoxCommand UpdateProxmoxCommand
@@ -34,12 +34,9 @@ type _UpdateProxmoxCommand UpdateProxmoxCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateProxmoxCommand(id int32, name string, tokenId string, tokenSecret string) *UpdateProxmoxCommand {
+func NewUpdateProxmoxCommand(id int32) *UpdateProxmoxCommand {
 	this := UpdateProxmoxCommand{}
 	this.Id = id
-	this.Name = name
-	this.TokenId = tokenId
-	this.TokenSecret = tokenSecret
 	return &this
 }
 
@@ -75,76 +72,100 @@ func (o *UpdateProxmoxCommand) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *UpdateProxmoxCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateProxmoxCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *UpdateProxmoxCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *UpdateProxmoxCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetTokenId returns the TokenId field value
+// GetTokenId returns the TokenId field value if set, zero value otherwise.
 func (o *UpdateProxmoxCommand) GetTokenId() string {
-	if o == nil {
+	if o == nil || IsNil(o.TokenId) {
 		var ret string
 		return ret
 	}
-
-	return o.TokenId
+	return *o.TokenId
 }
 
-// GetTokenIdOk returns a tuple with the TokenId field value
+// GetTokenIdOk returns a tuple with the TokenId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateProxmoxCommand) GetTokenIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TokenId) {
 		return nil, false
 	}
-	return &o.TokenId, true
+	return o.TokenId, true
 }
 
-// SetTokenId sets field value
+// HasTokenId returns a boolean if a field has been set.
+func (o *UpdateProxmoxCommand) HasTokenId() bool {
+	if o != nil && !IsNil(o.TokenId) {
+		return true
+	}
+
+	return false
+}
+
+// SetTokenId gets a reference to the given string and assigns it to the TokenId field.
 func (o *UpdateProxmoxCommand) SetTokenId(v string) {
-	o.TokenId = v
+	o.TokenId = &v
 }
 
-// GetTokenSecret returns the TokenSecret field value
+// GetTokenSecret returns the TokenSecret field value if set, zero value otherwise.
 func (o *UpdateProxmoxCommand) GetTokenSecret() string {
-	if o == nil {
+	if o == nil || IsNil(o.TokenSecret) {
 		var ret string
 		return ret
 	}
-
-	return o.TokenSecret
+	return *o.TokenSecret
 }
 
-// GetTokenSecretOk returns a tuple with the TokenSecret field value
+// GetTokenSecretOk returns a tuple with the TokenSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateProxmoxCommand) GetTokenSecretOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TokenSecret) {
 		return nil, false
 	}
-	return &o.TokenSecret, true
+	return o.TokenSecret, true
 }
 
-// SetTokenSecret sets field value
+// HasTokenSecret returns a boolean if a field has been set.
+func (o *UpdateProxmoxCommand) HasTokenSecret() bool {
+	if o != nil && !IsNil(o.TokenSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetTokenSecret gets a reference to the given string and assigns it to the TokenSecret field.
 func (o *UpdateProxmoxCommand) SetTokenSecret(v string) {
-	o.TokenSecret = v
+	o.TokenSecret = &v
 }
 
 func (o UpdateProxmoxCommand) MarshalJSON() ([]byte, error) {
@@ -158,9 +179,15 @@ func (o UpdateProxmoxCommand) MarshalJSON() ([]byte, error) {
 func (o UpdateProxmoxCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
-	toSerialize["tokenId"] = o.TokenId
-	toSerialize["tokenSecret"] = o.TokenSecret
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.TokenId) {
+		toSerialize["tokenId"] = o.TokenId
+	}
+	if !IsNil(o.TokenSecret) {
+		toSerialize["tokenSecret"] = o.TokenSecret
+	}
 	return toSerialize, nil
 }
 
@@ -170,9 +197,6 @@ func (o *UpdateProxmoxCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
-		"tokenId",
-		"tokenSecret",
 	}
 
 	allProperties := make(map[string]interface{})

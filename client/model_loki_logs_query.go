@@ -24,12 +24,12 @@ var _ MappedNullable = &LokiLogsQuery{}
 // LokiLogsQuery struct for LokiLogsQuery
 type LokiLogsQuery struct {
 	ProjectId int32 `json:"projectId"`
-	Parameters string `json:"parameters"`
-	Filters []Filter `json:"filters"`
+	Parameters *string `json:"parameters,omitempty"`
+	Filters []Filter `json:"filters,omitempty"`
 	StartDate NullableTime `json:"startDate,omitempty"`
 	EndDate NullableTime `json:"endDate,omitempty"`
 	Limit NullableInt32 `json:"limit,omitempty"`
-	Direction string `json:"direction"`
+	Direction *string `json:"direction,omitempty"`
 }
 
 type _LokiLogsQuery LokiLogsQuery
@@ -38,12 +38,9 @@ type _LokiLogsQuery LokiLogsQuery
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLokiLogsQuery(projectId int32, parameters string, filters []Filter, direction string) *LokiLogsQuery {
+func NewLokiLogsQuery(projectId int32) *LokiLogsQuery {
 	this := LokiLogsQuery{}
 	this.ProjectId = projectId
-	this.Parameters = parameters
-	this.Filters = filters
-	this.Direction = direction
 	return &this
 }
 
@@ -79,50 +76,66 @@ func (o *LokiLogsQuery) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetParameters returns the Parameters field value
+// GetParameters returns the Parameters field value if set, zero value otherwise.
 func (o *LokiLogsQuery) GetParameters() string {
-	if o == nil {
+	if o == nil || IsNil(o.Parameters) {
 		var ret string
 		return ret
 	}
-
-	return o.Parameters
+	return *o.Parameters
 }
 
-// GetParametersOk returns a tuple with the Parameters field value
+// GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LokiLogsQuery) GetParametersOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Parameters) {
 		return nil, false
 	}
-	return &o.Parameters, true
+	return o.Parameters, true
 }
 
-// SetParameters sets field value
+// HasParameters returns a boolean if a field has been set.
+func (o *LokiLogsQuery) HasParameters() bool {
+	if o != nil && !IsNil(o.Parameters) {
+		return true
+	}
+
+	return false
+}
+
+// SetParameters gets a reference to the given string and assigns it to the Parameters field.
 func (o *LokiLogsQuery) SetParameters(v string) {
-	o.Parameters = v
+	o.Parameters = &v
 }
 
-// GetFilters returns the Filters field value
+// GetFilters returns the Filters field value if set, zero value otherwise.
 func (o *LokiLogsQuery) GetFilters() []Filter {
-	if o == nil {
+	if o == nil || IsNil(o.Filters) {
 		var ret []Filter
 		return ret
 	}
-
 	return o.Filters
 }
 
-// GetFiltersOk returns a tuple with the Filters field value
+// GetFiltersOk returns a tuple with the Filters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LokiLogsQuery) GetFiltersOk() ([]Filter, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Filters) {
 		return nil, false
 	}
 	return o.Filters, true
 }
 
-// SetFilters sets field value
+// HasFilters returns a boolean if a field has been set.
+func (o *LokiLogsQuery) HasFilters() bool {
+	if o != nil && !IsNil(o.Filters) {
+		return true
+	}
+
+	return false
+}
+
+// SetFilters gets a reference to the given []Filter and assigns it to the Filters field.
 func (o *LokiLogsQuery) SetFilters(v []Filter) {
 	o.Filters = v
 }
@@ -253,28 +266,36 @@ func (o *LokiLogsQuery) UnsetLimit() {
 	o.Limit.Unset()
 }
 
-// GetDirection returns the Direction field value
+// GetDirection returns the Direction field value if set, zero value otherwise.
 func (o *LokiLogsQuery) GetDirection() string {
-	if o == nil {
+	if o == nil || IsNil(o.Direction) {
 		var ret string
 		return ret
 	}
-
-	return o.Direction
+	return *o.Direction
 }
 
-// GetDirectionOk returns a tuple with the Direction field value
+// GetDirectionOk returns a tuple with the Direction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LokiLogsQuery) GetDirectionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Direction) {
 		return nil, false
 	}
-	return &o.Direction, true
+	return o.Direction, true
 }
 
-// SetDirection sets field value
+// HasDirection returns a boolean if a field has been set.
+func (o *LokiLogsQuery) HasDirection() bool {
+	if o != nil && !IsNil(o.Direction) {
+		return true
+	}
+
+	return false
+}
+
+// SetDirection gets a reference to the given string and assigns it to the Direction field.
 func (o *LokiLogsQuery) SetDirection(v string) {
-	o.Direction = v
+	o.Direction = &v
 }
 
 func (o LokiLogsQuery) MarshalJSON() ([]byte, error) {
@@ -288,8 +309,12 @@ func (o LokiLogsQuery) MarshalJSON() ([]byte, error) {
 func (o LokiLogsQuery) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["parameters"] = o.Parameters
-	toSerialize["filters"] = o.Filters
+	if !IsNil(o.Parameters) {
+		toSerialize["parameters"] = o.Parameters
+	}
+	if !IsNil(o.Filters) {
+		toSerialize["filters"] = o.Filters
+	}
 	if o.StartDate.IsSet() {
 		toSerialize["startDate"] = o.StartDate.Get()
 	}
@@ -299,7 +324,9 @@ func (o LokiLogsQuery) ToMap() (map[string]interface{}, error) {
 	if o.Limit.IsSet() {
 		toSerialize["limit"] = o.Limit.Get()
 	}
-	toSerialize["direction"] = o.Direction
+	if !IsNil(o.Direction) {
+		toSerialize["direction"] = o.Direction
+	}
 	return toSerialize, nil
 }
 
@@ -309,9 +336,6 @@ func (o *LokiLogsQuery) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"parameters",
-		"filters",
-		"direction",
 	}
 
 	allProperties := make(map[string]interface{})

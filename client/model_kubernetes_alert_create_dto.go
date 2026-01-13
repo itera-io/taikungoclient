@@ -23,12 +23,12 @@ var _ MappedNullable = &KubernetesAlertCreateDto{}
 
 // KubernetesAlertCreateDto struct for KubernetesAlertCreateDto
 type KubernetesAlertCreateDto struct {
-	Status string `json:"status"`
-	Labels interface{} `json:"labels"`
-	Annotations KubernetesAnnotations `json:"annotations"`
+	Status *string `json:"status,omitempty"`
+	Labels interface{} `json:"labels,omitempty"`
+	Annotations *KubernetesAnnotations `json:"annotations,omitempty"`
 	StartsAt time.Time `json:"startsAt"`
 	EndsAt time.Time `json:"endsAt"`
-	Fingerprint string `json:"fingerprint"`
+	Fingerprint *string `json:"fingerprint,omitempty"`
 }
 
 type _KubernetesAlertCreateDto KubernetesAlertCreateDto
@@ -37,14 +37,10 @@ type _KubernetesAlertCreateDto KubernetesAlertCreateDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubernetesAlertCreateDto(status string, labels interface{}, annotations KubernetesAnnotations, startsAt time.Time, endsAt time.Time, fingerprint string) *KubernetesAlertCreateDto {
+func NewKubernetesAlertCreateDto(startsAt time.Time, endsAt time.Time) *KubernetesAlertCreateDto {
 	this := KubernetesAlertCreateDto{}
-	this.Status = status
-	this.Labels = labels
-	this.Annotations = annotations
 	this.StartsAt = startsAt
 	this.EndsAt = endsAt
-	this.Fingerprint = fingerprint
 	return &this
 }
 
@@ -56,42 +52,48 @@ func NewKubernetesAlertCreateDtoWithDefaults() *KubernetesAlertCreateDto {
 	return &this
 }
 
-// GetStatus returns the Status field value
+// GetStatus returns the Status field value if set, zero value otherwise.
 func (o *KubernetesAlertCreateDto) GetStatus() string {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
-
-	return o.Status
+	return *o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KubernetesAlertCreateDto) GetStatusOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
-	return &o.Status, true
+	return o.Status, true
 }
 
-// SetStatus sets field value
+// HasStatus returns a boolean if a field has been set.
+func (o *KubernetesAlertCreateDto) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *KubernetesAlertCreateDto) SetStatus(v string) {
-	o.Status = v
+	o.Status = &v
 }
 
-// GetLabels returns the Labels field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetLabels returns the Labels field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KubernetesAlertCreateDto) GetLabels() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.Labels
 }
 
-// GetLabelsOk returns a tuple with the Labels field value
+// GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesAlertCreateDto) GetLabelsOk() (*interface{}, bool) {
@@ -101,33 +103,50 @@ func (o *KubernetesAlertCreateDto) GetLabelsOk() (*interface{}, bool) {
 	return &o.Labels, true
 }
 
-// SetLabels sets field value
+// HasLabels returns a boolean if a field has been set.
+func (o *KubernetesAlertCreateDto) HasLabels() bool {
+	if o != nil && !IsNil(o.Labels) {
+		return true
+	}
+
+	return false
+}
+
+// SetLabels gets a reference to the given interface{} and assigns it to the Labels field.
 func (o *KubernetesAlertCreateDto) SetLabels(v interface{}) {
 	o.Labels = v
 }
 
-// GetAnnotations returns the Annotations field value
+// GetAnnotations returns the Annotations field value if set, zero value otherwise.
 func (o *KubernetesAlertCreateDto) GetAnnotations() KubernetesAnnotations {
-	if o == nil {
+	if o == nil || IsNil(o.Annotations) {
 		var ret KubernetesAnnotations
 		return ret
 	}
-
-	return o.Annotations
+	return *o.Annotations
 }
 
-// GetAnnotationsOk returns a tuple with the Annotations field value
+// GetAnnotationsOk returns a tuple with the Annotations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KubernetesAlertCreateDto) GetAnnotationsOk() (*KubernetesAnnotations, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Annotations) {
 		return nil, false
 	}
-	return &o.Annotations, true
+	return o.Annotations, true
 }
 
-// SetAnnotations sets field value
+// HasAnnotations returns a boolean if a field has been set.
+func (o *KubernetesAlertCreateDto) HasAnnotations() bool {
+	if o != nil && !IsNil(o.Annotations) {
+		return true
+	}
+
+	return false
+}
+
+// SetAnnotations gets a reference to the given KubernetesAnnotations and assigns it to the Annotations field.
 func (o *KubernetesAlertCreateDto) SetAnnotations(v KubernetesAnnotations) {
-	o.Annotations = v
+	o.Annotations = &v
 }
 
 // GetStartsAt returns the StartsAt field value
@@ -178,28 +197,36 @@ func (o *KubernetesAlertCreateDto) SetEndsAt(v time.Time) {
 	o.EndsAt = v
 }
 
-// GetFingerprint returns the Fingerprint field value
+// GetFingerprint returns the Fingerprint field value if set, zero value otherwise.
 func (o *KubernetesAlertCreateDto) GetFingerprint() string {
-	if o == nil {
+	if o == nil || IsNil(o.Fingerprint) {
 		var ret string
 		return ret
 	}
-
-	return o.Fingerprint
+	return *o.Fingerprint
 }
 
-// GetFingerprintOk returns a tuple with the Fingerprint field value
+// GetFingerprintOk returns a tuple with the Fingerprint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KubernetesAlertCreateDto) GetFingerprintOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Fingerprint) {
 		return nil, false
 	}
-	return &o.Fingerprint, true
+	return o.Fingerprint, true
 }
 
-// SetFingerprint sets field value
+// HasFingerprint returns a boolean if a field has been set.
+func (o *KubernetesAlertCreateDto) HasFingerprint() bool {
+	if o != nil && !IsNil(o.Fingerprint) {
+		return true
+	}
+
+	return false
+}
+
+// SetFingerprint gets a reference to the given string and assigns it to the Fingerprint field.
 func (o *KubernetesAlertCreateDto) SetFingerprint(v string) {
-	o.Fingerprint = v
+	o.Fingerprint = &v
 }
 
 func (o KubernetesAlertCreateDto) MarshalJSON() ([]byte, error) {
@@ -212,14 +239,20 @@ func (o KubernetesAlertCreateDto) MarshalJSON() ([]byte, error) {
 
 func (o KubernetesAlertCreateDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["status"] = o.Status
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
 	if o.Labels != nil {
 		toSerialize["labels"] = o.Labels
 	}
-	toSerialize["annotations"] = o.Annotations
+	if !IsNil(o.Annotations) {
+		toSerialize["annotations"] = o.Annotations
+	}
 	toSerialize["startsAt"] = o.StartsAt
 	toSerialize["endsAt"] = o.EndsAt
-	toSerialize["fingerprint"] = o.Fingerprint
+	if !IsNil(o.Fingerprint) {
+		toSerialize["fingerprint"] = o.Fingerprint
+	}
 	return toSerialize, nil
 }
 
@@ -228,12 +261,8 @@ func (o *KubernetesAlertCreateDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"status",
-		"labels",
-		"annotations",
 		"startsAt",
 		"endsAt",
-		"fingerprint",
 	}
 
 	allProperties := make(map[string]interface{})

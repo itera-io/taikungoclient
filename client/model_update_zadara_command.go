@@ -23,9 +23,9 @@ var _ MappedNullable = &UpdateZadaraCommand{}
 // UpdateZadaraCommand struct for UpdateZadaraCommand
 type UpdateZadaraCommand struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
-	ZadaraSecretAccessKey string `json:"zadaraSecretAccessKey"`
-	ZadaraAccessKeyId string `json:"zadaraAccessKeyId"`
+	Name *string `json:"name,omitempty"`
+	ZadaraSecretAccessKey *string `json:"zadaraSecretAccessKey,omitempty"`
+	ZadaraAccessKeyId *string `json:"zadaraAccessKeyId,omitempty"`
 }
 
 type _UpdateZadaraCommand UpdateZadaraCommand
@@ -34,12 +34,9 @@ type _UpdateZadaraCommand UpdateZadaraCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateZadaraCommand(id int32, name string, zadaraSecretAccessKey string, zadaraAccessKeyId string) *UpdateZadaraCommand {
+func NewUpdateZadaraCommand(id int32) *UpdateZadaraCommand {
 	this := UpdateZadaraCommand{}
 	this.Id = id
-	this.Name = name
-	this.ZadaraSecretAccessKey = zadaraSecretAccessKey
-	this.ZadaraAccessKeyId = zadaraAccessKeyId
 	return &this
 }
 
@@ -75,76 +72,100 @@ func (o *UpdateZadaraCommand) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *UpdateZadaraCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateZadaraCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *UpdateZadaraCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *UpdateZadaraCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetZadaraSecretAccessKey returns the ZadaraSecretAccessKey field value
+// GetZadaraSecretAccessKey returns the ZadaraSecretAccessKey field value if set, zero value otherwise.
 func (o *UpdateZadaraCommand) GetZadaraSecretAccessKey() string {
-	if o == nil {
+	if o == nil || IsNil(o.ZadaraSecretAccessKey) {
 		var ret string
 		return ret
 	}
-
-	return o.ZadaraSecretAccessKey
+	return *o.ZadaraSecretAccessKey
 }
 
-// GetZadaraSecretAccessKeyOk returns a tuple with the ZadaraSecretAccessKey field value
+// GetZadaraSecretAccessKeyOk returns a tuple with the ZadaraSecretAccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateZadaraCommand) GetZadaraSecretAccessKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ZadaraSecretAccessKey) {
 		return nil, false
 	}
-	return &o.ZadaraSecretAccessKey, true
+	return o.ZadaraSecretAccessKey, true
 }
 
-// SetZadaraSecretAccessKey sets field value
+// HasZadaraSecretAccessKey returns a boolean if a field has been set.
+func (o *UpdateZadaraCommand) HasZadaraSecretAccessKey() bool {
+	if o != nil && !IsNil(o.ZadaraSecretAccessKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetZadaraSecretAccessKey gets a reference to the given string and assigns it to the ZadaraSecretAccessKey field.
 func (o *UpdateZadaraCommand) SetZadaraSecretAccessKey(v string) {
-	o.ZadaraSecretAccessKey = v
+	o.ZadaraSecretAccessKey = &v
 }
 
-// GetZadaraAccessKeyId returns the ZadaraAccessKeyId field value
+// GetZadaraAccessKeyId returns the ZadaraAccessKeyId field value if set, zero value otherwise.
 func (o *UpdateZadaraCommand) GetZadaraAccessKeyId() string {
-	if o == nil {
+	if o == nil || IsNil(o.ZadaraAccessKeyId) {
 		var ret string
 		return ret
 	}
-
-	return o.ZadaraAccessKeyId
+	return *o.ZadaraAccessKeyId
 }
 
-// GetZadaraAccessKeyIdOk returns a tuple with the ZadaraAccessKeyId field value
+// GetZadaraAccessKeyIdOk returns a tuple with the ZadaraAccessKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateZadaraCommand) GetZadaraAccessKeyIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ZadaraAccessKeyId) {
 		return nil, false
 	}
-	return &o.ZadaraAccessKeyId, true
+	return o.ZadaraAccessKeyId, true
 }
 
-// SetZadaraAccessKeyId sets field value
+// HasZadaraAccessKeyId returns a boolean if a field has been set.
+func (o *UpdateZadaraCommand) HasZadaraAccessKeyId() bool {
+	if o != nil && !IsNil(o.ZadaraAccessKeyId) {
+		return true
+	}
+
+	return false
+}
+
+// SetZadaraAccessKeyId gets a reference to the given string and assigns it to the ZadaraAccessKeyId field.
 func (o *UpdateZadaraCommand) SetZadaraAccessKeyId(v string) {
-	o.ZadaraAccessKeyId = v
+	o.ZadaraAccessKeyId = &v
 }
 
 func (o UpdateZadaraCommand) MarshalJSON() ([]byte, error) {
@@ -158,9 +179,15 @@ func (o UpdateZadaraCommand) MarshalJSON() ([]byte, error) {
 func (o UpdateZadaraCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
-	toSerialize["zadaraSecretAccessKey"] = o.ZadaraSecretAccessKey
-	toSerialize["zadaraAccessKeyId"] = o.ZadaraAccessKeyId
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.ZadaraSecretAccessKey) {
+		toSerialize["zadaraSecretAccessKey"] = o.ZadaraSecretAccessKey
+	}
+	if !IsNil(o.ZadaraAccessKeyId) {
+		toSerialize["zadaraAccessKeyId"] = o.ZadaraAccessKeyId
+	}
 	return toSerialize, nil
 }
 
@@ -170,9 +197,6 @@ func (o *UpdateZadaraCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
-		"zadaraSecretAccessKey",
-		"zadaraAccessKeyId",
 	}
 
 	allProperties := make(map[string]interface{})

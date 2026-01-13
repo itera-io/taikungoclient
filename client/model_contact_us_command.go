@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the ContactUsCommand type satisfies the MappedNullable interface at compile time
@@ -22,24 +20,18 @@ var _ MappedNullable = &ContactUsCommand{}
 
 // ContactUsCommand struct for ContactUsCommand
 type ContactUsCommand struct {
-	Name string `json:"name"`
-	BusinessEmail string `json:"businessEmail"`
-	CompanyName string `json:"companyName"`
-	Comment string `json:"comment"`
+	Name *string `json:"name,omitempty"`
+	BusinessEmail *string `json:"businessEmail,omitempty"`
+	CompanyName *string `json:"companyName,omitempty"`
+	Comment *string `json:"comment,omitempty"`
 }
-
-type _ContactUsCommand ContactUsCommand
 
 // NewContactUsCommand instantiates a new ContactUsCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContactUsCommand(name string, businessEmail string, companyName string, comment string) *ContactUsCommand {
+func NewContactUsCommand() *ContactUsCommand {
 	this := ContactUsCommand{}
-	this.Name = name
-	this.BusinessEmail = businessEmail
-	this.CompanyName = companyName
-	this.Comment = comment
 	return &this
 }
 
@@ -51,100 +43,132 @@ func NewContactUsCommandWithDefaults() *ContactUsCommand {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *ContactUsCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContactUsCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *ContactUsCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ContactUsCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetBusinessEmail returns the BusinessEmail field value
+// GetBusinessEmail returns the BusinessEmail field value if set, zero value otherwise.
 func (o *ContactUsCommand) GetBusinessEmail() string {
-	if o == nil {
+	if o == nil || IsNil(o.BusinessEmail) {
 		var ret string
 		return ret
 	}
-
-	return o.BusinessEmail
+	return *o.BusinessEmail
 }
 
-// GetBusinessEmailOk returns a tuple with the BusinessEmail field value
+// GetBusinessEmailOk returns a tuple with the BusinessEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContactUsCommand) GetBusinessEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BusinessEmail) {
 		return nil, false
 	}
-	return &o.BusinessEmail, true
+	return o.BusinessEmail, true
 }
 
-// SetBusinessEmail sets field value
+// HasBusinessEmail returns a boolean if a field has been set.
+func (o *ContactUsCommand) HasBusinessEmail() bool {
+	if o != nil && !IsNil(o.BusinessEmail) {
+		return true
+	}
+
+	return false
+}
+
+// SetBusinessEmail gets a reference to the given string and assigns it to the BusinessEmail field.
 func (o *ContactUsCommand) SetBusinessEmail(v string) {
-	o.BusinessEmail = v
+	o.BusinessEmail = &v
 }
 
-// GetCompanyName returns the CompanyName field value
+// GetCompanyName returns the CompanyName field value if set, zero value otherwise.
 func (o *ContactUsCommand) GetCompanyName() string {
-	if o == nil {
+	if o == nil || IsNil(o.CompanyName) {
 		var ret string
 		return ret
 	}
-
-	return o.CompanyName
+	return *o.CompanyName
 }
 
-// GetCompanyNameOk returns a tuple with the CompanyName field value
+// GetCompanyNameOk returns a tuple with the CompanyName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContactUsCommand) GetCompanyNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CompanyName) {
 		return nil, false
 	}
-	return &o.CompanyName, true
+	return o.CompanyName, true
 }
 
-// SetCompanyName sets field value
+// HasCompanyName returns a boolean if a field has been set.
+func (o *ContactUsCommand) HasCompanyName() bool {
+	if o != nil && !IsNil(o.CompanyName) {
+		return true
+	}
+
+	return false
+}
+
+// SetCompanyName gets a reference to the given string and assigns it to the CompanyName field.
 func (o *ContactUsCommand) SetCompanyName(v string) {
-	o.CompanyName = v
+	o.CompanyName = &v
 }
 
-// GetComment returns the Comment field value
+// GetComment returns the Comment field value if set, zero value otherwise.
 func (o *ContactUsCommand) GetComment() string {
-	if o == nil {
+	if o == nil || IsNil(o.Comment) {
 		var ret string
 		return ret
 	}
-
-	return o.Comment
+	return *o.Comment
 }
 
-// GetCommentOk returns a tuple with the Comment field value
+// GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContactUsCommand) GetCommentOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Comment) {
 		return nil, false
 	}
-	return &o.Comment, true
+	return o.Comment, true
 }
 
-// SetComment sets field value
+// HasComment returns a boolean if a field has been set.
+func (o *ContactUsCommand) HasComment() bool {
+	if o != nil && !IsNil(o.Comment) {
+		return true
+	}
+
+	return false
+}
+
+// SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *ContactUsCommand) SetComment(v string) {
-	o.Comment = v
+	o.Comment = &v
 }
 
 func (o ContactUsCommand) MarshalJSON() ([]byte, error) {
@@ -157,51 +181,19 @@ func (o ContactUsCommand) MarshalJSON() ([]byte, error) {
 
 func (o ContactUsCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["businessEmail"] = o.BusinessEmail
-	toSerialize["companyName"] = o.CompanyName
-	toSerialize["comment"] = o.Comment
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.BusinessEmail) {
+		toSerialize["businessEmail"] = o.BusinessEmail
+	}
+	if !IsNil(o.CompanyName) {
+		toSerialize["companyName"] = o.CompanyName
+	}
+	if !IsNil(o.Comment) {
+		toSerialize["comment"] = o.Comment
+	}
 	return toSerialize, nil
-}
-
-func (o *ContactUsCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"businessEmail",
-		"companyName",
-		"comment",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varContactUsCommand := _ContactUsCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varContactUsCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ContactUsCommand(varContactUsCommand)
-
-	return err
 }
 
 type NullableContactUsCommand struct {

@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the AmazonAvailabilityZonesCommand type satisfies the MappedNullable interface at compile time
@@ -22,24 +20,18 @@ var _ MappedNullable = &AmazonAvailabilityZonesCommand{}
 
 // AmazonAvailabilityZonesCommand struct for AmazonAvailabilityZonesCommand
 type AmazonAvailabilityZonesCommand struct {
-	Region string `json:"region"`
-	AwsAccessKeyId string `json:"awsAccessKeyId"`
-	AwsSecretAccessKey string `json:"awsSecretAccessKey"`
-	CloudId NullableInt32 `json:"cloudId"`
+	Region *string `json:"region,omitempty"`
+	AwsAccessKeyId *string `json:"awsAccessKeyId,omitempty"`
+	AwsSecretAccessKey *string `json:"awsSecretAccessKey,omitempty"`
+	CloudId NullableInt32 `json:"cloudId,omitempty"`
 }
-
-type _AmazonAvailabilityZonesCommand AmazonAvailabilityZonesCommand
 
 // NewAmazonAvailabilityZonesCommand instantiates a new AmazonAvailabilityZonesCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAmazonAvailabilityZonesCommand(region string, awsAccessKeyId string, awsSecretAccessKey string, cloudId NullableInt32) *AmazonAvailabilityZonesCommand {
+func NewAmazonAvailabilityZonesCommand() *AmazonAvailabilityZonesCommand {
 	this := AmazonAvailabilityZonesCommand{}
-	this.Region = region
-	this.AwsAccessKeyId = awsAccessKeyId
-	this.AwsSecretAccessKey = awsSecretAccessKey
-	this.CloudId = cloudId
 	return &this
 }
 
@@ -51,90 +43,112 @@ func NewAmazonAvailabilityZonesCommandWithDefaults() *AmazonAvailabilityZonesCom
 	return &this
 }
 
-// GetRegion returns the Region field value
+// GetRegion returns the Region field value if set, zero value otherwise.
 func (o *AmazonAvailabilityZonesCommand) GetRegion() string {
-	if o == nil {
+	if o == nil || IsNil(o.Region) {
 		var ret string
 		return ret
 	}
-
-	return o.Region
+	return *o.Region
 }
 
-// GetRegionOk returns a tuple with the Region field value
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AmazonAvailabilityZonesCommand) GetRegionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
-	return &o.Region, true
+	return o.Region, true
 }
 
-// SetRegion sets field value
+// HasRegion returns a boolean if a field has been set.
+func (o *AmazonAvailabilityZonesCommand) HasRegion() bool {
+	if o != nil && !IsNil(o.Region) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *AmazonAvailabilityZonesCommand) SetRegion(v string) {
-	o.Region = v
+	o.Region = &v
 }
 
-// GetAwsAccessKeyId returns the AwsAccessKeyId field value
+// GetAwsAccessKeyId returns the AwsAccessKeyId field value if set, zero value otherwise.
 func (o *AmazonAvailabilityZonesCommand) GetAwsAccessKeyId() string {
-	if o == nil {
+	if o == nil || IsNil(o.AwsAccessKeyId) {
 		var ret string
 		return ret
 	}
-
-	return o.AwsAccessKeyId
+	return *o.AwsAccessKeyId
 }
 
-// GetAwsAccessKeyIdOk returns a tuple with the AwsAccessKeyId field value
+// GetAwsAccessKeyIdOk returns a tuple with the AwsAccessKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AmazonAvailabilityZonesCommand) GetAwsAccessKeyIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AwsAccessKeyId) {
 		return nil, false
 	}
-	return &o.AwsAccessKeyId, true
+	return o.AwsAccessKeyId, true
 }
 
-// SetAwsAccessKeyId sets field value
+// HasAwsAccessKeyId returns a boolean if a field has been set.
+func (o *AmazonAvailabilityZonesCommand) HasAwsAccessKeyId() bool {
+	if o != nil && !IsNil(o.AwsAccessKeyId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsAccessKeyId gets a reference to the given string and assigns it to the AwsAccessKeyId field.
 func (o *AmazonAvailabilityZonesCommand) SetAwsAccessKeyId(v string) {
-	o.AwsAccessKeyId = v
+	o.AwsAccessKeyId = &v
 }
 
-// GetAwsSecretAccessKey returns the AwsSecretAccessKey field value
+// GetAwsSecretAccessKey returns the AwsSecretAccessKey field value if set, zero value otherwise.
 func (o *AmazonAvailabilityZonesCommand) GetAwsSecretAccessKey() string {
-	if o == nil {
+	if o == nil || IsNil(o.AwsSecretAccessKey) {
 		var ret string
 		return ret
 	}
-
-	return o.AwsSecretAccessKey
+	return *o.AwsSecretAccessKey
 }
 
-// GetAwsSecretAccessKeyOk returns a tuple with the AwsSecretAccessKey field value
+// GetAwsSecretAccessKeyOk returns a tuple with the AwsSecretAccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AmazonAvailabilityZonesCommand) GetAwsSecretAccessKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AwsSecretAccessKey) {
 		return nil, false
 	}
-	return &o.AwsSecretAccessKey, true
+	return o.AwsSecretAccessKey, true
 }
 
-// SetAwsSecretAccessKey sets field value
+// HasAwsSecretAccessKey returns a boolean if a field has been set.
+func (o *AmazonAvailabilityZonesCommand) HasAwsSecretAccessKey() bool {
+	if o != nil && !IsNil(o.AwsSecretAccessKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsSecretAccessKey gets a reference to the given string and assigns it to the AwsSecretAccessKey field.
 func (o *AmazonAvailabilityZonesCommand) SetAwsSecretAccessKey(v string) {
-	o.AwsSecretAccessKey = v
+	o.AwsSecretAccessKey = &v
 }
 
-// GetCloudId returns the CloudId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetCloudId returns the CloudId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AmazonAvailabilityZonesCommand) GetCloudId() int32 {
-	if o == nil || o.CloudId.Get() == nil {
+	if o == nil || IsNil(o.CloudId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.CloudId.Get()
 }
 
-// GetCloudIdOk returns a tuple with the CloudId field value
+// GetCloudIdOk returns a tuple with the CloudId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AmazonAvailabilityZonesCommand) GetCloudIdOk() (*int32, bool) {
@@ -144,9 +158,27 @@ func (o *AmazonAvailabilityZonesCommand) GetCloudIdOk() (*int32, bool) {
 	return o.CloudId.Get(), o.CloudId.IsSet()
 }
 
-// SetCloudId sets field value
+// HasCloudId returns a boolean if a field has been set.
+func (o *AmazonAvailabilityZonesCommand) HasCloudId() bool {
+	if o != nil && o.CloudId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudId gets a reference to the given NullableInt32 and assigns it to the CloudId field.
 func (o *AmazonAvailabilityZonesCommand) SetCloudId(v int32) {
 	o.CloudId.Set(&v)
+}
+// SetCloudIdNil sets the value for CloudId to be an explicit nil
+func (o *AmazonAvailabilityZonesCommand) SetCloudIdNil() {
+	o.CloudId.Set(nil)
+}
+
+// UnsetCloudId ensures that no value is present for CloudId, not even an explicit nil
+func (o *AmazonAvailabilityZonesCommand) UnsetCloudId() {
+	o.CloudId.Unset()
 }
 
 func (o AmazonAvailabilityZonesCommand) MarshalJSON() ([]byte, error) {
@@ -159,51 +191,19 @@ func (o AmazonAvailabilityZonesCommand) MarshalJSON() ([]byte, error) {
 
 func (o AmazonAvailabilityZonesCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["region"] = o.Region
-	toSerialize["awsAccessKeyId"] = o.AwsAccessKeyId
-	toSerialize["awsSecretAccessKey"] = o.AwsSecretAccessKey
-	toSerialize["cloudId"] = o.CloudId.Get()
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
+	}
+	if !IsNil(o.AwsAccessKeyId) {
+		toSerialize["awsAccessKeyId"] = o.AwsAccessKeyId
+	}
+	if !IsNil(o.AwsSecretAccessKey) {
+		toSerialize["awsSecretAccessKey"] = o.AwsSecretAccessKey
+	}
+	if o.CloudId.IsSet() {
+		toSerialize["cloudId"] = o.CloudId.Get()
+	}
 	return toSerialize, nil
-}
-
-func (o *AmazonAvailabilityZonesCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"region",
-		"awsAccessKeyId",
-		"awsSecretAccessKey",
-		"cloudId",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varAmazonAvailabilityZonesCommand := _AmazonAvailabilityZonesCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAmazonAvailabilityZonesCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AmazonAvailabilityZonesCommand(varAmazonAvailabilityZonesCommand)
-
-	return err
 }
 
 type NullableAmazonAvailabilityZonesCommand struct {

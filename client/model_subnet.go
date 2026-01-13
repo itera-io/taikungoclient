@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the Subnet type satisfies the MappedNullable interface at compile time
@@ -22,22 +20,17 @@ var _ MappedNullable = &Subnet{}
 
 // Subnet struct for Subnet
 type Subnet struct {
-	Id string `json:"id"`
-	Name string `json:"name"`
-	Cidr string `json:"cidr"`
+	Id *string `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Cidr *string `json:"cidr,omitempty"`
 }
-
-type _Subnet Subnet
 
 // NewSubnet instantiates a new Subnet object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSubnet(id string, name string, cidr string) *Subnet {
+func NewSubnet() *Subnet {
 	this := Subnet{}
-	this.Id = id
-	this.Name = name
-	this.Cidr = cidr
 	return &this
 }
 
@@ -49,76 +42,100 @@ func NewSubnetWithDefaults() *Subnet {
 	return &this
 }
 
-// GetId returns the Id field value
+// GetId returns the Id field value if set, zero value otherwise.
 func (o *Subnet) GetId() string {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-
-	return o.Id
+	return *o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Subnet) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return &o.Id, true
+	return o.Id, true
 }
 
-// SetId sets field value
+// HasId returns a boolean if a field has been set.
+func (o *Subnet) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
 func (o *Subnet) SetId(v string) {
-	o.Id = v
+	o.Id = &v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *Subnet) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Subnet) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *Subnet) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *Subnet) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetCidr returns the Cidr field value
+// GetCidr returns the Cidr field value if set, zero value otherwise.
 func (o *Subnet) GetCidr() string {
-	if o == nil {
+	if o == nil || IsNil(o.Cidr) {
 		var ret string
 		return ret
 	}
-
-	return o.Cidr
+	return *o.Cidr
 }
 
-// GetCidrOk returns a tuple with the Cidr field value
+// GetCidrOk returns a tuple with the Cidr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Subnet) GetCidrOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Cidr) {
 		return nil, false
 	}
-	return &o.Cidr, true
+	return o.Cidr, true
 }
 
-// SetCidr sets field value
+// HasCidr returns a boolean if a field has been set.
+func (o *Subnet) HasCidr() bool {
+	if o != nil && !IsNil(o.Cidr) {
+		return true
+	}
+
+	return false
+}
+
+// SetCidr gets a reference to the given string and assigns it to the Cidr field.
 func (o *Subnet) SetCidr(v string) {
-	o.Cidr = v
+	o.Cidr = &v
 }
 
 func (o Subnet) MarshalJSON() ([]byte, error) {
@@ -131,49 +148,16 @@ func (o Subnet) MarshalJSON() ([]byte, error) {
 
 func (o Subnet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
-	toSerialize["cidr"] = o.Cidr
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Cidr) {
+		toSerialize["cidr"] = o.Cidr
+	}
 	return toSerialize, nil
-}
-
-func (o *Subnet) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"name",
-		"cidr",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSubnet := _Subnet{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSubnet)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Subnet(varSubnet)
-
-	return err
 }
 
 type NullableSubnet struct {

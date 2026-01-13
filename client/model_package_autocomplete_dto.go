@@ -22,12 +22,12 @@ var _ MappedNullable = &PackageAutocompleteDto{}
 
 // PackageAutocompleteDto struct for PackageAutocompleteDto
 type PackageAutocompleteDto struct {
-	Key string `json:"key"`
-	Value string `json:"value"`
-	Description string `json:"description"`
+	Key *string `json:"key,omitempty"`
+	Value *string `json:"value,omitempty"`
+	Description *string `json:"description,omitempty"`
 	Type ParameterType `json:"type"`
 	IsQuestion bool `json:"isQuestion"`
-	Options []string `json:"options"`
+	Options []string `json:"options,omitempty"`
 	IsTaikunLink bool `json:"isTaikunLink"`
 }
 
@@ -37,14 +37,10 @@ type _PackageAutocompleteDto PackageAutocompleteDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPackageAutocompleteDto(key string, value string, description string, type_ ParameterType, isQuestion bool, options []string, isTaikunLink bool) *PackageAutocompleteDto {
+func NewPackageAutocompleteDto(type_ ParameterType, isQuestion bool, isTaikunLink bool) *PackageAutocompleteDto {
 	this := PackageAutocompleteDto{}
-	this.Key = key
-	this.Value = value
-	this.Description = description
 	this.Type = type_
 	this.IsQuestion = isQuestion
-	this.Options = options
 	this.IsTaikunLink = isTaikunLink
 	return &this
 }
@@ -57,76 +53,100 @@ func NewPackageAutocompleteDtoWithDefaults() *PackageAutocompleteDto {
 	return &this
 }
 
-// GetKey returns the Key field value
+// GetKey returns the Key field value if set, zero value otherwise.
 func (o *PackageAutocompleteDto) GetKey() string {
-	if o == nil {
+	if o == nil || IsNil(o.Key) {
 		var ret string
 		return ret
 	}
-
-	return o.Key
+	return *o.Key
 }
 
-// GetKeyOk returns a tuple with the Key field value
+// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PackageAutocompleteDto) GetKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
-	return &o.Key, true
+	return o.Key, true
 }
 
-// SetKey sets field value
+// HasKey returns a boolean if a field has been set.
+func (o *PackageAutocompleteDto) HasKey() bool {
+	if o != nil && !IsNil(o.Key) {
+		return true
+	}
+
+	return false
+}
+
+// SetKey gets a reference to the given string and assigns it to the Key field.
 func (o *PackageAutocompleteDto) SetKey(v string) {
-	o.Key = v
+	o.Key = &v
 }
 
-// GetValue returns the Value field value
+// GetValue returns the Value field value if set, zero value otherwise.
 func (o *PackageAutocompleteDto) GetValue() string {
-	if o == nil {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
-
-	return o.Value
+	return *o.Value
 }
 
-// GetValueOk returns a tuple with the Value field value
+// GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PackageAutocompleteDto) GetValueOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
-	return &o.Value, true
+	return o.Value, true
 }
 
-// SetValue sets field value
+// HasValue returns a boolean if a field has been set.
+func (o *PackageAutocompleteDto) HasValue() bool {
+	if o != nil && !IsNil(o.Value) {
+		return true
+	}
+
+	return false
+}
+
+// SetValue gets a reference to the given string and assigns it to the Value field.
 func (o *PackageAutocompleteDto) SetValue(v string) {
-	o.Value = v
+	o.Value = &v
 }
 
-// GetDescription returns the Description field value
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *PackageAutocompleteDto) GetDescription() string {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-
-	return o.Description
+	return *o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PackageAutocompleteDto) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description, true
 }
 
-// SetDescription sets field value
+// HasDescription returns a boolean if a field has been set.
+func (o *PackageAutocompleteDto) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *PackageAutocompleteDto) SetDescription(v string) {
-	o.Description = v
+	o.Description = &v
 }
 
 // GetType returns the Type field value
@@ -177,26 +197,34 @@ func (o *PackageAutocompleteDto) SetIsQuestion(v bool) {
 	o.IsQuestion = v
 }
 
-// GetOptions returns the Options field value
+// GetOptions returns the Options field value if set, zero value otherwise.
 func (o *PackageAutocompleteDto) GetOptions() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Options) {
 		var ret []string
 		return ret
 	}
-
 	return o.Options
 }
 
-// GetOptionsOk returns a tuple with the Options field value
+// GetOptionsOk returns a tuple with the Options field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PackageAutocompleteDto) GetOptionsOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Options) {
 		return nil, false
 	}
 	return o.Options, true
 }
 
-// SetOptions sets field value
+// HasOptions returns a boolean if a field has been set.
+func (o *PackageAutocompleteDto) HasOptions() bool {
+	if o != nil && !IsNil(o.Options) {
+		return true
+	}
+
+	return false
+}
+
+// SetOptions gets a reference to the given []string and assigns it to the Options field.
 func (o *PackageAutocompleteDto) SetOptions(v []string) {
 	o.Options = v
 }
@@ -235,12 +263,20 @@ func (o PackageAutocompleteDto) MarshalJSON() ([]byte, error) {
 
 func (o PackageAutocompleteDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["key"] = o.Key
-	toSerialize["value"] = o.Value
-	toSerialize["description"] = o.Description
+	if !IsNil(o.Key) {
+		toSerialize["key"] = o.Key
+	}
+	if !IsNil(o.Value) {
+		toSerialize["value"] = o.Value
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
 	toSerialize["type"] = o.Type
 	toSerialize["isQuestion"] = o.IsQuestion
-	toSerialize["options"] = o.Options
+	if !IsNil(o.Options) {
+		toSerialize["options"] = o.Options
+	}
 	toSerialize["isTaikunLink"] = o.IsTaikunLink
 	return toSerialize, nil
 }
@@ -250,12 +286,8 @@ func (o *PackageAutocompleteDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"key",
-		"value",
-		"description",
 		"type",
 		"isQuestion",
-		"options",
 		"isTaikunLink",
 	}
 

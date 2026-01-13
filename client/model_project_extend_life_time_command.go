@@ -24,7 +24,7 @@ var _ MappedNullable = &ProjectExtendLifeTimeCommand{}
 // ProjectExtendLifeTimeCommand struct for ProjectExtendLifeTimeCommand
 type ProjectExtendLifeTimeCommand struct {
 	ProjectId int32 `json:"projectId"`
-	ExpireAt NullableTime `json:"expireAt"`
+	ExpireAt NullableTime `json:"expireAt,omitempty"`
 	DeleteOnExpiration bool `json:"deleteOnExpiration"`
 }
 
@@ -34,10 +34,9 @@ type _ProjectExtendLifeTimeCommand ProjectExtendLifeTimeCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectExtendLifeTimeCommand(projectId int32, expireAt NullableTime, deleteOnExpiration bool) *ProjectExtendLifeTimeCommand {
+func NewProjectExtendLifeTimeCommand(projectId int32, deleteOnExpiration bool) *ProjectExtendLifeTimeCommand {
 	this := ProjectExtendLifeTimeCommand{}
 	this.ProjectId = projectId
-	this.ExpireAt = expireAt
 	this.DeleteOnExpiration = deleteOnExpiration
 	return &this
 }
@@ -74,18 +73,16 @@ func (o *ProjectExtendLifeTimeCommand) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetExpireAt returns the ExpireAt field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetExpireAt returns the ExpireAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectExtendLifeTimeCommand) GetExpireAt() time.Time {
-	if o == nil || o.ExpireAt.Get() == nil {
+	if o == nil || IsNil(o.ExpireAt.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.ExpireAt.Get()
 }
 
-// GetExpireAtOk returns a tuple with the ExpireAt field value
+// GetExpireAtOk returns a tuple with the ExpireAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectExtendLifeTimeCommand) GetExpireAtOk() (*time.Time, bool) {
@@ -95,9 +92,27 @@ func (o *ProjectExtendLifeTimeCommand) GetExpireAtOk() (*time.Time, bool) {
 	return o.ExpireAt.Get(), o.ExpireAt.IsSet()
 }
 
-// SetExpireAt sets field value
+// HasExpireAt returns a boolean if a field has been set.
+func (o *ProjectExtendLifeTimeCommand) HasExpireAt() bool {
+	if o != nil && o.ExpireAt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetExpireAt gets a reference to the given NullableTime and assigns it to the ExpireAt field.
 func (o *ProjectExtendLifeTimeCommand) SetExpireAt(v time.Time) {
 	o.ExpireAt.Set(&v)
+}
+// SetExpireAtNil sets the value for ExpireAt to be an explicit nil
+func (o *ProjectExtendLifeTimeCommand) SetExpireAtNil() {
+	o.ExpireAt.Set(nil)
+}
+
+// UnsetExpireAt ensures that no value is present for ExpireAt, not even an explicit nil
+func (o *ProjectExtendLifeTimeCommand) UnsetExpireAt() {
+	o.ExpireAt.Unset()
 }
 
 // GetDeleteOnExpiration returns the DeleteOnExpiration field value
@@ -135,7 +150,9 @@ func (o ProjectExtendLifeTimeCommand) MarshalJSON() ([]byte, error) {
 func (o ProjectExtendLifeTimeCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["expireAt"] = o.ExpireAt.Get()
+	if o.ExpireAt.IsSet() {
+		toSerialize["expireAt"] = o.ExpireAt.Get()
+	}
 	toSerialize["deleteOnExpiration"] = o.DeleteOnExpiration
 	return toSerialize, nil
 }
@@ -146,7 +163,6 @@ func (o *ProjectExtendLifeTimeCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"expireAt",
 		"deleteOnExpiration",
 	}
 

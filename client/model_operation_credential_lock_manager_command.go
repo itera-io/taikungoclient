@@ -23,7 +23,7 @@ var _ MappedNullable = &OperationCredentialLockManagerCommand{}
 // OperationCredentialLockManagerCommand struct for OperationCredentialLockManagerCommand
 type OperationCredentialLockManagerCommand struct {
 	Id int32 `json:"id"`
-	Mode string `json:"mode"`
+	Mode *string `json:"mode,omitempty"`
 }
 
 type _OperationCredentialLockManagerCommand OperationCredentialLockManagerCommand
@@ -32,10 +32,9 @@ type _OperationCredentialLockManagerCommand OperationCredentialLockManagerComman
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOperationCredentialLockManagerCommand(id int32, mode string) *OperationCredentialLockManagerCommand {
+func NewOperationCredentialLockManagerCommand(id int32) *OperationCredentialLockManagerCommand {
 	this := OperationCredentialLockManagerCommand{}
 	this.Id = id
-	this.Mode = mode
 	return &this
 }
 
@@ -71,28 +70,36 @@ func (o *OperationCredentialLockManagerCommand) SetId(v int32) {
 	o.Id = v
 }
 
-// GetMode returns the Mode field value
+// GetMode returns the Mode field value if set, zero value otherwise.
 func (o *OperationCredentialLockManagerCommand) GetMode() string {
-	if o == nil {
+	if o == nil || IsNil(o.Mode) {
 		var ret string
 		return ret
 	}
-
-	return o.Mode
+	return *o.Mode
 }
 
-// GetModeOk returns a tuple with the Mode field value
+// GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OperationCredentialLockManagerCommand) GetModeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
-	return &o.Mode, true
+	return o.Mode, true
 }
 
-// SetMode sets field value
+// HasMode returns a boolean if a field has been set.
+func (o *OperationCredentialLockManagerCommand) HasMode() bool {
+	if o != nil && !IsNil(o.Mode) {
+		return true
+	}
+
+	return false
+}
+
+// SetMode gets a reference to the given string and assigns it to the Mode field.
 func (o *OperationCredentialLockManagerCommand) SetMode(v string) {
-	o.Mode = v
+	o.Mode = &v
 }
 
 func (o OperationCredentialLockManagerCommand) MarshalJSON() ([]byte, error) {
@@ -106,7 +113,9 @@ func (o OperationCredentialLockManagerCommand) MarshalJSON() ([]byte, error) {
 func (o OperationCredentialLockManagerCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["mode"] = o.Mode
+	if !IsNil(o.Mode) {
+		toSerialize["mode"] = o.Mode
+	}
 	return toSerialize, nil
 }
 
@@ -116,7 +125,6 @@ func (o *OperationCredentialLockManagerCommand) UnmarshalJSON(data []byte) (err 
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"mode",
 	}
 
 	allProperties := make(map[string]interface{})

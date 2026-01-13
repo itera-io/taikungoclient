@@ -22,7 +22,7 @@ var _ MappedNullable = &KubernetesVersionListDto{}
 
 // KubernetesVersionListDto struct for KubernetesVersionListDto
 type KubernetesVersionListDto struct {
-	Version string `json:"version"`
+	Version *string `json:"version,omitempty"`
 	IsKubevapEnabled bool `json:"isKubevapEnabled"`
 }
 
@@ -32,9 +32,8 @@ type _KubernetesVersionListDto KubernetesVersionListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubernetesVersionListDto(version string, isKubevapEnabled bool) *KubernetesVersionListDto {
+func NewKubernetesVersionListDto(isKubevapEnabled bool) *KubernetesVersionListDto {
 	this := KubernetesVersionListDto{}
-	this.Version = version
 	this.IsKubevapEnabled = isKubevapEnabled
 	return &this
 }
@@ -47,28 +46,36 @@ func NewKubernetesVersionListDtoWithDefaults() *KubernetesVersionListDto {
 	return &this
 }
 
-// GetVersion returns the Version field value
+// GetVersion returns the Version field value if set, zero value otherwise.
 func (o *KubernetesVersionListDto) GetVersion() string {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
-
-	return o.Version
+	return *o.Version
 }
 
-// GetVersionOk returns a tuple with the Version field value
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KubernetesVersionListDto) GetVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
-	return &o.Version, true
+	return o.Version, true
 }
 
-// SetVersion sets field value
+// HasVersion returns a boolean if a field has been set.
+func (o *KubernetesVersionListDto) HasVersion() bool {
+	if o != nil && !IsNil(o.Version) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *KubernetesVersionListDto) SetVersion(v string) {
-	o.Version = v
+	o.Version = &v
 }
 
 // GetIsKubevapEnabled returns the IsKubevapEnabled field value
@@ -105,7 +112,9 @@ func (o KubernetesVersionListDto) MarshalJSON() ([]byte, error) {
 
 func (o KubernetesVersionListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["version"] = o.Version
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
 	toSerialize["isKubevapEnabled"] = o.IsKubevapEnabled
 	return toSerialize, nil
 }
@@ -115,7 +124,6 @@ func (o *KubernetesVersionListDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"version",
 		"isKubevapEnabled",
 	}
 

@@ -23,8 +23,8 @@ var _ MappedNullable = &ProjectCommonRecordDto{}
 // ProjectCommonRecordDto struct for ProjectCommonRecordDto
 type ProjectCommonRecordDto struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
-	ExpiredAt string `json:"expiredAt"`
+	Name *string `json:"name,omitempty"`
+	ExpiredAt *string `json:"expiredAt,omitempty"`
 }
 
 type _ProjectCommonRecordDto ProjectCommonRecordDto
@@ -33,11 +33,9 @@ type _ProjectCommonRecordDto ProjectCommonRecordDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectCommonRecordDto(id int32, name string, expiredAt string) *ProjectCommonRecordDto {
+func NewProjectCommonRecordDto(id int32) *ProjectCommonRecordDto {
 	this := ProjectCommonRecordDto{}
 	this.Id = id
-	this.Name = name
-	this.ExpiredAt = expiredAt
 	return &this
 }
 
@@ -73,52 +71,68 @@ func (o *ProjectCommonRecordDto) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *ProjectCommonRecordDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectCommonRecordDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *ProjectCommonRecordDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ProjectCommonRecordDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetExpiredAt returns the ExpiredAt field value
+// GetExpiredAt returns the ExpiredAt field value if set, zero value otherwise.
 func (o *ProjectCommonRecordDto) GetExpiredAt() string {
-	if o == nil {
+	if o == nil || IsNil(o.ExpiredAt) {
 		var ret string
 		return ret
 	}
-
-	return o.ExpiredAt
+	return *o.ExpiredAt
 }
 
-// GetExpiredAtOk returns a tuple with the ExpiredAt field value
+// GetExpiredAtOk returns a tuple with the ExpiredAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectCommonRecordDto) GetExpiredAtOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ExpiredAt) {
 		return nil, false
 	}
-	return &o.ExpiredAt, true
+	return o.ExpiredAt, true
 }
 
-// SetExpiredAt sets field value
+// HasExpiredAt returns a boolean if a field has been set.
+func (o *ProjectCommonRecordDto) HasExpiredAt() bool {
+	if o != nil && !IsNil(o.ExpiredAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpiredAt gets a reference to the given string and assigns it to the ExpiredAt field.
 func (o *ProjectCommonRecordDto) SetExpiredAt(v string) {
-	o.ExpiredAt = v
+	o.ExpiredAt = &v
 }
 
 func (o ProjectCommonRecordDto) MarshalJSON() ([]byte, error) {
@@ -132,8 +146,12 @@ func (o ProjectCommonRecordDto) MarshalJSON() ([]byte, error) {
 func (o ProjectCommonRecordDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
-	toSerialize["expiredAt"] = o.ExpiredAt
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.ExpiredAt) {
+		toSerialize["expiredAt"] = o.ExpiredAt
+	}
 	return toSerialize, nil
 }
 
@@ -143,8 +161,6 @@ func (o *ProjectCommonRecordDto) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
-		"expiredAt",
 	}
 
 	allProperties := make(map[string]interface{})

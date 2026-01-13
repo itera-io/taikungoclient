@@ -24,7 +24,7 @@ var _ MappedNullable = &CheckOpenstackAvailabilityResponse{}
 type CheckOpenstackAvailabilityResponse struct {
 	IsOpenstackAvailable bool `json:"isOpenstackAvailable"`
 	IsManilaAvailable bool `json:"isManilaAvailable"`
-	ErrorMessage string `json:"errorMessage"`
+	ErrorMessage *string `json:"errorMessage,omitempty"`
 }
 
 type _CheckOpenstackAvailabilityResponse CheckOpenstackAvailabilityResponse
@@ -33,11 +33,10 @@ type _CheckOpenstackAvailabilityResponse CheckOpenstackAvailabilityResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCheckOpenstackAvailabilityResponse(isOpenstackAvailable bool, isManilaAvailable bool, errorMessage string) *CheckOpenstackAvailabilityResponse {
+func NewCheckOpenstackAvailabilityResponse(isOpenstackAvailable bool, isManilaAvailable bool) *CheckOpenstackAvailabilityResponse {
 	this := CheckOpenstackAvailabilityResponse{}
 	this.IsOpenstackAvailable = isOpenstackAvailable
 	this.IsManilaAvailable = isManilaAvailable
-	this.ErrorMessage = errorMessage
 	return &this
 }
 
@@ -97,28 +96,36 @@ func (o *CheckOpenstackAvailabilityResponse) SetIsManilaAvailable(v bool) {
 	o.IsManilaAvailable = v
 }
 
-// GetErrorMessage returns the ErrorMessage field value
+// GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.
 func (o *CheckOpenstackAvailabilityResponse) GetErrorMessage() string {
-	if o == nil {
+	if o == nil || IsNil(o.ErrorMessage) {
 		var ret string
 		return ret
 	}
-
-	return o.ErrorMessage
+	return *o.ErrorMessage
 }
 
-// GetErrorMessageOk returns a tuple with the ErrorMessage field value
+// GetErrorMessageOk returns a tuple with the ErrorMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CheckOpenstackAvailabilityResponse) GetErrorMessageOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ErrorMessage) {
 		return nil, false
 	}
-	return &o.ErrorMessage, true
+	return o.ErrorMessage, true
 }
 
-// SetErrorMessage sets field value
+// HasErrorMessage returns a boolean if a field has been set.
+func (o *CheckOpenstackAvailabilityResponse) HasErrorMessage() bool {
+	if o != nil && !IsNil(o.ErrorMessage) {
+		return true
+	}
+
+	return false
+}
+
+// SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
 func (o *CheckOpenstackAvailabilityResponse) SetErrorMessage(v string) {
-	o.ErrorMessage = v
+	o.ErrorMessage = &v
 }
 
 func (o CheckOpenstackAvailabilityResponse) MarshalJSON() ([]byte, error) {
@@ -133,7 +140,9 @@ func (o CheckOpenstackAvailabilityResponse) ToMap() (map[string]interface{}, err
 	toSerialize := map[string]interface{}{}
 	toSerialize["isOpenstackAvailable"] = o.IsOpenstackAvailable
 	toSerialize["isManilaAvailable"] = o.IsManilaAvailable
-	toSerialize["errorMessage"] = o.ErrorMessage
+	if !IsNil(o.ErrorMessage) {
+		toSerialize["errorMessage"] = o.ErrorMessage
+	}
 	return toSerialize, nil
 }
 
@@ -144,7 +153,6 @@ func (o *CheckOpenstackAvailabilityResponse) UnmarshalJSON(data []byte) (err err
 	requiredProperties := []string{
 		"isOpenstackAvailable",
 		"isManilaAvailable",
-		"errorMessage",
 	}
 
 	allProperties := make(map[string]interface{})

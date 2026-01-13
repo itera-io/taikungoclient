@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the PrometheusMetricListDto type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &PrometheusMetricListDto{}
 
 // PrometheusMetricListDto struct for PrometheusMetricListDto
 type PrometheusMetricListDto struct {
-	Status string `json:"status"`
-	Data MetricData `json:"data"`
+	Status *string `json:"status,omitempty"`
+	Data *MetricData `json:"data,omitempty"`
 }
-
-type _PrometheusMetricListDto PrometheusMetricListDto
 
 // NewPrometheusMetricListDto instantiates a new PrometheusMetricListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrometheusMetricListDto(status string, data MetricData) *PrometheusMetricListDto {
+func NewPrometheusMetricListDto() *PrometheusMetricListDto {
 	this := PrometheusMetricListDto{}
-	this.Status = status
-	this.Data = data
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewPrometheusMetricListDtoWithDefaults() *PrometheusMetricListDto {
 	return &this
 }
 
-// GetStatus returns the Status field value
+// GetStatus returns the Status field value if set, zero value otherwise.
 func (o *PrometheusMetricListDto) GetStatus() string {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
-
-	return o.Status
+	return *o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrometheusMetricListDto) GetStatusOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
-	return &o.Status, true
+	return o.Status, true
 }
 
-// SetStatus sets field value
+// HasStatus returns a boolean if a field has been set.
+func (o *PrometheusMetricListDto) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *PrometheusMetricListDto) SetStatus(v string) {
-	o.Status = v
+	o.Status = &v
 }
 
-// GetData returns the Data field value
+// GetData returns the Data field value if set, zero value otherwise.
 func (o *PrometheusMetricListDto) GetData() MetricData {
-	if o == nil {
+	if o == nil || IsNil(o.Data) {
 		var ret MetricData
 		return ret
 	}
-
-	return o.Data
+	return *o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value
+// GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrometheusMetricListDto) GetDataOk() (*MetricData, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
-	return &o.Data, true
+	return o.Data, true
 }
 
-// SetData sets field value
+// HasData returns a boolean if a field has been set.
+func (o *PrometheusMetricListDto) HasData() bool {
+	if o != nil && !IsNil(o.Data) {
+		return true
+	}
+
+	return false
+}
+
+// SetData gets a reference to the given MetricData and assigns it to the Data field.
 func (o *PrometheusMetricListDto) SetData(v MetricData) {
-	o.Data = v
+	o.Data = &v
 }
 
 func (o PrometheusMetricListDto) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o PrometheusMetricListDto) MarshalJSON() ([]byte, error) {
 
 func (o PrometheusMetricListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["status"] = o.Status
-	toSerialize["data"] = o.Data
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.Data) {
+		toSerialize["data"] = o.Data
+	}
 	return toSerialize, nil
-}
-
-func (o *PrometheusMetricListDto) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"status",
-		"data",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varPrometheusMetricListDto := _PrometheusMetricListDto{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPrometheusMetricListDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PrometheusMetricListDto(varPrometheusMetricListDto)
-
-	return err
 }
 
 type NullablePrometheusMetricListDto struct {

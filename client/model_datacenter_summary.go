@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the DatacenterSummary type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &DatacenterSummary{}
 
 // DatacenterSummary struct for DatacenterSummary
 type DatacenterSummary struct {
-	Datacenter string `json:"datacenter"`
-	Name string `json:"name"`
+	Datacenter *string `json:"datacenter,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
-
-type _DatacenterSummary DatacenterSummary
 
 // NewDatacenterSummary instantiates a new DatacenterSummary object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDatacenterSummary(datacenter string, name string) *DatacenterSummary {
+func NewDatacenterSummary() *DatacenterSummary {
 	this := DatacenterSummary{}
-	this.Datacenter = datacenter
-	this.Name = name
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewDatacenterSummaryWithDefaults() *DatacenterSummary {
 	return &this
 }
 
-// GetDatacenter returns the Datacenter field value
+// GetDatacenter returns the Datacenter field value if set, zero value otherwise.
 func (o *DatacenterSummary) GetDatacenter() string {
-	if o == nil {
+	if o == nil || IsNil(o.Datacenter) {
 		var ret string
 		return ret
 	}
-
-	return o.Datacenter
+	return *o.Datacenter
 }
 
-// GetDatacenterOk returns a tuple with the Datacenter field value
+// GetDatacenterOk returns a tuple with the Datacenter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatacenterSummary) GetDatacenterOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Datacenter) {
 		return nil, false
 	}
-	return &o.Datacenter, true
+	return o.Datacenter, true
 }
 
-// SetDatacenter sets field value
+// HasDatacenter returns a boolean if a field has been set.
+func (o *DatacenterSummary) HasDatacenter() bool {
+	if o != nil && !IsNil(o.Datacenter) {
+		return true
+	}
+
+	return false
+}
+
+// SetDatacenter gets a reference to the given string and assigns it to the Datacenter field.
 func (o *DatacenterSummary) SetDatacenter(v string) {
-	o.Datacenter = v
+	o.Datacenter = &v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *DatacenterSummary) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatacenterSummary) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *DatacenterSummary) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DatacenterSummary) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 func (o DatacenterSummary) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o DatacenterSummary) MarshalJSON() ([]byte, error) {
 
 func (o DatacenterSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["datacenter"] = o.Datacenter
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Datacenter) {
+		toSerialize["datacenter"] = o.Datacenter
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	return toSerialize, nil
-}
-
-func (o *DatacenterSummary) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"datacenter",
-		"name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDatacenterSummary := _DatacenterSummary{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDatacenterSummary)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DatacenterSummary(varDatacenterSummary)
-
-	return err
 }
 
 type NullableDatacenterSummary struct {

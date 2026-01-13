@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the FilteringElementDto type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &FilteringElementDto{}
 
 // FilteringElementDto struct for FilteringElementDto
 type FilteringElementDto struct {
-	OrganizationName string `json:"organizationName"`
-	Name string `json:"name"`
+	OrganizationName *string `json:"organizationName,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
-
-type _FilteringElementDto FilteringElementDto
 
 // NewFilteringElementDto instantiates a new FilteringElementDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFilteringElementDto(organizationName string, name string) *FilteringElementDto {
+func NewFilteringElementDto() *FilteringElementDto {
 	this := FilteringElementDto{}
-	this.OrganizationName = organizationName
-	this.Name = name
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewFilteringElementDtoWithDefaults() *FilteringElementDto {
 	return &this
 }
 
-// GetOrganizationName returns the OrganizationName field value
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *FilteringElementDto) GetOrganizationName() string {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
-
-	return o.OrganizationName
+	return *o.OrganizationName
 }
 
-// GetOrganizationNameOk returns a tuple with the OrganizationName field value
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FilteringElementDto) GetOrganizationNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
-	return &o.OrganizationName, true
+	return o.OrganizationName, true
 }
 
-// SetOrganizationName sets field value
+// HasOrganizationName returns a boolean if a field has been set.
+func (o *FilteringElementDto) HasOrganizationName() bool {
+	if o != nil && !IsNil(o.OrganizationName) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
 func (o *FilteringElementDto) SetOrganizationName(v string) {
-	o.OrganizationName = v
+	o.OrganizationName = &v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *FilteringElementDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FilteringElementDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *FilteringElementDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *FilteringElementDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 func (o FilteringElementDto) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o FilteringElementDto) MarshalJSON() ([]byte, error) {
 
 func (o FilteringElementDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["organizationName"] = o.OrganizationName
-	toSerialize["name"] = o.Name
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organizationName"] = o.OrganizationName
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	return toSerialize, nil
-}
-
-func (o *FilteringElementDto) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"organizationName",
-		"name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varFilteringElementDto := _FilteringElementDto{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varFilteringElementDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = FilteringElementDto(varFilteringElementDto)
-
-	return err
 }
 
 type NullableFilteringElementDto struct {

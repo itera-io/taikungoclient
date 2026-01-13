@@ -22,11 +22,11 @@ var _ MappedNullable = &NodeSearchResponseData{}
 
 // NodeSearchResponseData struct for NodeSearchResponseData
 type NodeSearchResponseData struct {
-	MetadataName string `json:"metadataName"`
+	MetadataName *string `json:"metadataName,omitempty"`
 	ProjectId int32 `json:"projectId"`
-	ProjectName string `json:"projectName"`
+	ProjectName *string `json:"projectName,omitempty"`
 	OrganizationId int32 `json:"organizationId"`
-	OrganizationName string `json:"organizationName"`
+	OrganizationName *string `json:"organizationName,omitempty"`
 }
 
 type _NodeSearchResponseData NodeSearchResponseData
@@ -35,13 +35,10 @@ type _NodeSearchResponseData NodeSearchResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNodeSearchResponseData(metadataName string, projectId int32, projectName string, organizationId int32, organizationName string) *NodeSearchResponseData {
+func NewNodeSearchResponseData(projectId int32, organizationId int32) *NodeSearchResponseData {
 	this := NodeSearchResponseData{}
-	this.MetadataName = metadataName
 	this.ProjectId = projectId
-	this.ProjectName = projectName
 	this.OrganizationId = organizationId
-	this.OrganizationName = organizationName
 	return &this
 }
 
@@ -53,28 +50,36 @@ func NewNodeSearchResponseDataWithDefaults() *NodeSearchResponseData {
 	return &this
 }
 
-// GetMetadataName returns the MetadataName field value
+// GetMetadataName returns the MetadataName field value if set, zero value otherwise.
 func (o *NodeSearchResponseData) GetMetadataName() string {
-	if o == nil {
+	if o == nil || IsNil(o.MetadataName) {
 		var ret string
 		return ret
 	}
-
-	return o.MetadataName
+	return *o.MetadataName
 }
 
-// GetMetadataNameOk returns a tuple with the MetadataName field value
+// GetMetadataNameOk returns a tuple with the MetadataName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NodeSearchResponseData) GetMetadataNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.MetadataName) {
 		return nil, false
 	}
-	return &o.MetadataName, true
+	return o.MetadataName, true
 }
 
-// SetMetadataName sets field value
+// HasMetadataName returns a boolean if a field has been set.
+func (o *NodeSearchResponseData) HasMetadataName() bool {
+	if o != nil && !IsNil(o.MetadataName) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadataName gets a reference to the given string and assigns it to the MetadataName field.
 func (o *NodeSearchResponseData) SetMetadataName(v string) {
-	o.MetadataName = v
+	o.MetadataName = &v
 }
 
 // GetProjectId returns the ProjectId field value
@@ -101,28 +106,36 @@ func (o *NodeSearchResponseData) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetProjectName returns the ProjectName field value
+// GetProjectName returns the ProjectName field value if set, zero value otherwise.
 func (o *NodeSearchResponseData) GetProjectName() string {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		var ret string
 		return ret
 	}
-
-	return o.ProjectName
+	return *o.ProjectName
 }
 
-// GetProjectNameOk returns a tuple with the ProjectName field value
+// GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NodeSearchResponseData) GetProjectNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		return nil, false
 	}
-	return &o.ProjectName, true
+	return o.ProjectName, true
 }
 
-// SetProjectName sets field value
+// HasProjectName returns a boolean if a field has been set.
+func (o *NodeSearchResponseData) HasProjectName() bool {
+	if o != nil && !IsNil(o.ProjectName) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectName gets a reference to the given string and assigns it to the ProjectName field.
 func (o *NodeSearchResponseData) SetProjectName(v string) {
-	o.ProjectName = v
+	o.ProjectName = &v
 }
 
 // GetOrganizationId returns the OrganizationId field value
@@ -149,28 +162,36 @@ func (o *NodeSearchResponseData) SetOrganizationId(v int32) {
 	o.OrganizationId = v
 }
 
-// GetOrganizationName returns the OrganizationName field value
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *NodeSearchResponseData) GetOrganizationName() string {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
-
-	return o.OrganizationName
+	return *o.OrganizationName
 }
 
-// GetOrganizationNameOk returns a tuple with the OrganizationName field value
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NodeSearchResponseData) GetOrganizationNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
-	return &o.OrganizationName, true
+	return o.OrganizationName, true
 }
 
-// SetOrganizationName sets field value
+// HasOrganizationName returns a boolean if a field has been set.
+func (o *NodeSearchResponseData) HasOrganizationName() bool {
+	if o != nil && !IsNil(o.OrganizationName) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
 func (o *NodeSearchResponseData) SetOrganizationName(v string) {
-	o.OrganizationName = v
+	o.OrganizationName = &v
 }
 
 func (o NodeSearchResponseData) MarshalJSON() ([]byte, error) {
@@ -183,11 +204,17 @@ func (o NodeSearchResponseData) MarshalJSON() ([]byte, error) {
 
 func (o NodeSearchResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["metadataName"] = o.MetadataName
+	if !IsNil(o.MetadataName) {
+		toSerialize["metadataName"] = o.MetadataName
+	}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["projectName"] = o.ProjectName
+	if !IsNil(o.ProjectName) {
+		toSerialize["projectName"] = o.ProjectName
+	}
 	toSerialize["organizationId"] = o.OrganizationId
-	toSerialize["organizationName"] = o.OrganizationName
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organizationName"] = o.OrganizationName
+	}
 	return toSerialize, nil
 }
 
@@ -196,11 +223,8 @@ func (o *NodeSearchResponseData) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"metadataName",
 		"projectId",
-		"projectName",
 		"organizationId",
-		"organizationName",
 	}
 
 	allProperties := make(map[string]interface{})

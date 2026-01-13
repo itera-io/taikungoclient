@@ -23,7 +23,7 @@ var _ MappedNullable = &AttachDetachAlertingProfileCommand{}
 // AttachDetachAlertingProfileCommand struct for AttachDetachAlertingProfileCommand
 type AttachDetachAlertingProfileCommand struct {
 	ProjectId int32 `json:"projectId"`
-	AlertingProfileId NullableInt32 `json:"alertingProfileId"`
+	AlertingProfileId NullableInt32 `json:"alertingProfileId,omitempty"`
 }
 
 type _AttachDetachAlertingProfileCommand AttachDetachAlertingProfileCommand
@@ -32,10 +32,9 @@ type _AttachDetachAlertingProfileCommand AttachDetachAlertingProfileCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAttachDetachAlertingProfileCommand(projectId int32, alertingProfileId NullableInt32) *AttachDetachAlertingProfileCommand {
+func NewAttachDetachAlertingProfileCommand(projectId int32) *AttachDetachAlertingProfileCommand {
 	this := AttachDetachAlertingProfileCommand{}
 	this.ProjectId = projectId
-	this.AlertingProfileId = alertingProfileId
 	return &this
 }
 
@@ -71,18 +70,16 @@ func (o *AttachDetachAlertingProfileCommand) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetAlertingProfileId returns the AlertingProfileId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetAlertingProfileId returns the AlertingProfileId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AttachDetachAlertingProfileCommand) GetAlertingProfileId() int32 {
-	if o == nil || o.AlertingProfileId.Get() == nil {
+	if o == nil || IsNil(o.AlertingProfileId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.AlertingProfileId.Get()
 }
 
-// GetAlertingProfileIdOk returns a tuple with the AlertingProfileId field value
+// GetAlertingProfileIdOk returns a tuple with the AlertingProfileId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AttachDetachAlertingProfileCommand) GetAlertingProfileIdOk() (*int32, bool) {
@@ -92,9 +89,27 @@ func (o *AttachDetachAlertingProfileCommand) GetAlertingProfileIdOk() (*int32, b
 	return o.AlertingProfileId.Get(), o.AlertingProfileId.IsSet()
 }
 
-// SetAlertingProfileId sets field value
+// HasAlertingProfileId returns a boolean if a field has been set.
+func (o *AttachDetachAlertingProfileCommand) HasAlertingProfileId() bool {
+	if o != nil && o.AlertingProfileId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAlertingProfileId gets a reference to the given NullableInt32 and assigns it to the AlertingProfileId field.
 func (o *AttachDetachAlertingProfileCommand) SetAlertingProfileId(v int32) {
 	o.AlertingProfileId.Set(&v)
+}
+// SetAlertingProfileIdNil sets the value for AlertingProfileId to be an explicit nil
+func (o *AttachDetachAlertingProfileCommand) SetAlertingProfileIdNil() {
+	o.AlertingProfileId.Set(nil)
+}
+
+// UnsetAlertingProfileId ensures that no value is present for AlertingProfileId, not even an explicit nil
+func (o *AttachDetachAlertingProfileCommand) UnsetAlertingProfileId() {
+	o.AlertingProfileId.Unset()
 }
 
 func (o AttachDetachAlertingProfileCommand) MarshalJSON() ([]byte, error) {
@@ -108,7 +123,9 @@ func (o AttachDetachAlertingProfileCommand) MarshalJSON() ([]byte, error) {
 func (o AttachDetachAlertingProfileCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
+	if o.AlertingProfileId.IsSet() {
+		toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
+	}
 	return toSerialize, nil
 }
 
@@ -118,7 +135,6 @@ func (o *AttachDetachAlertingProfileCommand) UnmarshalJSON(data []byte) (err err
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"alertingProfileId",
 	}
 
 	allProperties := make(map[string]interface{})

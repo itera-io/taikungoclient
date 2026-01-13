@@ -23,9 +23,9 @@ var _ MappedNullable = &UpdateAzureCommand{}
 // UpdateAzureCommand struct for UpdateAzureCommand
 type UpdateAzureCommand struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
-	AzureClientSecret string `json:"azureClientSecret"`
-	AzureClientId string `json:"azureClientId"`
+	Name *string `json:"name,omitempty"`
+	AzureClientSecret *string `json:"azureClientSecret,omitempty"`
+	AzureClientId *string `json:"azureClientId,omitempty"`
 }
 
 type _UpdateAzureCommand UpdateAzureCommand
@@ -34,12 +34,9 @@ type _UpdateAzureCommand UpdateAzureCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateAzureCommand(id int32, name string, azureClientSecret string, azureClientId string) *UpdateAzureCommand {
+func NewUpdateAzureCommand(id int32) *UpdateAzureCommand {
 	this := UpdateAzureCommand{}
 	this.Id = id
-	this.Name = name
-	this.AzureClientSecret = azureClientSecret
-	this.AzureClientId = azureClientId
 	return &this
 }
 
@@ -75,76 +72,100 @@ func (o *UpdateAzureCommand) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *UpdateAzureCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateAzureCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *UpdateAzureCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *UpdateAzureCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetAzureClientSecret returns the AzureClientSecret field value
+// GetAzureClientSecret returns the AzureClientSecret field value if set, zero value otherwise.
 func (o *UpdateAzureCommand) GetAzureClientSecret() string {
-	if o == nil {
+	if o == nil || IsNil(o.AzureClientSecret) {
 		var ret string
 		return ret
 	}
-
-	return o.AzureClientSecret
+	return *o.AzureClientSecret
 }
 
-// GetAzureClientSecretOk returns a tuple with the AzureClientSecret field value
+// GetAzureClientSecretOk returns a tuple with the AzureClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateAzureCommand) GetAzureClientSecretOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AzureClientSecret) {
 		return nil, false
 	}
-	return &o.AzureClientSecret, true
+	return o.AzureClientSecret, true
 }
 
-// SetAzureClientSecret sets field value
+// HasAzureClientSecret returns a boolean if a field has been set.
+func (o *UpdateAzureCommand) HasAzureClientSecret() bool {
+	if o != nil && !IsNil(o.AzureClientSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureClientSecret gets a reference to the given string and assigns it to the AzureClientSecret field.
 func (o *UpdateAzureCommand) SetAzureClientSecret(v string) {
-	o.AzureClientSecret = v
+	o.AzureClientSecret = &v
 }
 
-// GetAzureClientId returns the AzureClientId field value
+// GetAzureClientId returns the AzureClientId field value if set, zero value otherwise.
 func (o *UpdateAzureCommand) GetAzureClientId() string {
-	if o == nil {
+	if o == nil || IsNil(o.AzureClientId) {
 		var ret string
 		return ret
 	}
-
-	return o.AzureClientId
+	return *o.AzureClientId
 }
 
-// GetAzureClientIdOk returns a tuple with the AzureClientId field value
+// GetAzureClientIdOk returns a tuple with the AzureClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateAzureCommand) GetAzureClientIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AzureClientId) {
 		return nil, false
 	}
-	return &o.AzureClientId, true
+	return o.AzureClientId, true
 }
 
-// SetAzureClientId sets field value
+// HasAzureClientId returns a boolean if a field has been set.
+func (o *UpdateAzureCommand) HasAzureClientId() bool {
+	if o != nil && !IsNil(o.AzureClientId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureClientId gets a reference to the given string and assigns it to the AzureClientId field.
 func (o *UpdateAzureCommand) SetAzureClientId(v string) {
-	o.AzureClientId = v
+	o.AzureClientId = &v
 }
 
 func (o UpdateAzureCommand) MarshalJSON() ([]byte, error) {
@@ -158,9 +179,15 @@ func (o UpdateAzureCommand) MarshalJSON() ([]byte, error) {
 func (o UpdateAzureCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
-	toSerialize["azureClientSecret"] = o.AzureClientSecret
-	toSerialize["azureClientId"] = o.AzureClientId
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.AzureClientSecret) {
+		toSerialize["azureClientSecret"] = o.AzureClientSecret
+	}
+	if !IsNil(o.AzureClientId) {
+		toSerialize["azureClientId"] = o.AzureClientId
+	}
 	return toSerialize, nil
 }
 
@@ -170,9 +197,6 @@ func (o *UpdateAzureCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
-		"azureClientSecret",
-		"azureClientId",
 	}
 
 	allProperties := make(map[string]interface{})

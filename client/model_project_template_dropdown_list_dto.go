@@ -23,7 +23,7 @@ var _ MappedNullable = &ProjectTemplateDropdownListDto{}
 // ProjectTemplateDropdownListDto struct for ProjectTemplateDropdownListDto
 type ProjectTemplateDropdownListDto struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	CanCommit bool `json:"canCommit"`
 }
 
@@ -33,10 +33,9 @@ type _ProjectTemplateDropdownListDto ProjectTemplateDropdownListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectTemplateDropdownListDto(id int32, name string, canCommit bool) *ProjectTemplateDropdownListDto {
+func NewProjectTemplateDropdownListDto(id int32, canCommit bool) *ProjectTemplateDropdownListDto {
 	this := ProjectTemplateDropdownListDto{}
 	this.Id = id
-	this.Name = name
 	this.CanCommit = canCommit
 	return &this
 }
@@ -73,28 +72,36 @@ func (o *ProjectTemplateDropdownListDto) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *ProjectTemplateDropdownListDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectTemplateDropdownListDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *ProjectTemplateDropdownListDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ProjectTemplateDropdownListDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetCanCommit returns the CanCommit field value
@@ -132,7 +139,9 @@ func (o ProjectTemplateDropdownListDto) MarshalJSON() ([]byte, error) {
 func (o ProjectTemplateDropdownListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	toSerialize["canCommit"] = o.CanCommit
 	return toSerialize, nil
 }
@@ -143,7 +152,6 @@ func (o *ProjectTemplateDropdownListDto) UnmarshalJSON(data []byte) (err error) 
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
 		"canCommit",
 	}
 

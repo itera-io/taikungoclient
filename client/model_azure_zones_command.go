@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the AzureZonesCommand type satisfies the MappedNullable interface at compile time
@@ -22,28 +20,20 @@ var _ MappedNullable = &AzureZonesCommand{}
 
 // AzureZonesCommand struct for AzureZonesCommand
 type AzureZonesCommand struct {
-	AzureSubscriptionId string `json:"azureSubscriptionId"`
-	AzureClientId string `json:"azureClientId"`
-	AzureClientSecret string `json:"azureClientSecret"`
-	AzureTenantId string `json:"azureTenantId"`
-	AzureLocation string `json:"azureLocation"`
-	CloudId NullableInt32 `json:"cloudId"`
+	AzureSubscriptionId *string `json:"azureSubscriptionId,omitempty"`
+	AzureClientId *string `json:"azureClientId,omitempty"`
+	AzureClientSecret *string `json:"azureClientSecret,omitempty"`
+	AzureTenantId *string `json:"azureTenantId,omitempty"`
+	AzureLocation *string `json:"azureLocation,omitempty"`
+	CloudId NullableInt32 `json:"cloudId,omitempty"`
 }
-
-type _AzureZonesCommand AzureZonesCommand
 
 // NewAzureZonesCommand instantiates a new AzureZonesCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAzureZonesCommand(azureSubscriptionId string, azureClientId string, azureClientSecret string, azureTenantId string, azureLocation string, cloudId NullableInt32) *AzureZonesCommand {
+func NewAzureZonesCommand() *AzureZonesCommand {
 	this := AzureZonesCommand{}
-	this.AzureSubscriptionId = azureSubscriptionId
-	this.AzureClientId = azureClientId
-	this.AzureClientSecret = azureClientSecret
-	this.AzureTenantId = azureTenantId
-	this.AzureLocation = azureLocation
-	this.CloudId = cloudId
 	return &this
 }
 
@@ -55,138 +45,176 @@ func NewAzureZonesCommandWithDefaults() *AzureZonesCommand {
 	return &this
 }
 
-// GetAzureSubscriptionId returns the AzureSubscriptionId field value
+// GetAzureSubscriptionId returns the AzureSubscriptionId field value if set, zero value otherwise.
 func (o *AzureZonesCommand) GetAzureSubscriptionId() string {
-	if o == nil {
+	if o == nil || IsNil(o.AzureSubscriptionId) {
 		var ret string
 		return ret
 	}
-
-	return o.AzureSubscriptionId
+	return *o.AzureSubscriptionId
 }
 
-// GetAzureSubscriptionIdOk returns a tuple with the AzureSubscriptionId field value
+// GetAzureSubscriptionIdOk returns a tuple with the AzureSubscriptionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AzureZonesCommand) GetAzureSubscriptionIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AzureSubscriptionId) {
 		return nil, false
 	}
-	return &o.AzureSubscriptionId, true
+	return o.AzureSubscriptionId, true
 }
 
-// SetAzureSubscriptionId sets field value
+// HasAzureSubscriptionId returns a boolean if a field has been set.
+func (o *AzureZonesCommand) HasAzureSubscriptionId() bool {
+	if o != nil && !IsNil(o.AzureSubscriptionId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureSubscriptionId gets a reference to the given string and assigns it to the AzureSubscriptionId field.
 func (o *AzureZonesCommand) SetAzureSubscriptionId(v string) {
-	o.AzureSubscriptionId = v
+	o.AzureSubscriptionId = &v
 }
 
-// GetAzureClientId returns the AzureClientId field value
+// GetAzureClientId returns the AzureClientId field value if set, zero value otherwise.
 func (o *AzureZonesCommand) GetAzureClientId() string {
-	if o == nil {
+	if o == nil || IsNil(o.AzureClientId) {
 		var ret string
 		return ret
 	}
-
-	return o.AzureClientId
+	return *o.AzureClientId
 }
 
-// GetAzureClientIdOk returns a tuple with the AzureClientId field value
+// GetAzureClientIdOk returns a tuple with the AzureClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AzureZonesCommand) GetAzureClientIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AzureClientId) {
 		return nil, false
 	}
-	return &o.AzureClientId, true
+	return o.AzureClientId, true
 }
 
-// SetAzureClientId sets field value
+// HasAzureClientId returns a boolean if a field has been set.
+func (o *AzureZonesCommand) HasAzureClientId() bool {
+	if o != nil && !IsNil(o.AzureClientId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureClientId gets a reference to the given string and assigns it to the AzureClientId field.
 func (o *AzureZonesCommand) SetAzureClientId(v string) {
-	o.AzureClientId = v
+	o.AzureClientId = &v
 }
 
-// GetAzureClientSecret returns the AzureClientSecret field value
+// GetAzureClientSecret returns the AzureClientSecret field value if set, zero value otherwise.
 func (o *AzureZonesCommand) GetAzureClientSecret() string {
-	if o == nil {
+	if o == nil || IsNil(o.AzureClientSecret) {
 		var ret string
 		return ret
 	}
-
-	return o.AzureClientSecret
+	return *o.AzureClientSecret
 }
 
-// GetAzureClientSecretOk returns a tuple with the AzureClientSecret field value
+// GetAzureClientSecretOk returns a tuple with the AzureClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AzureZonesCommand) GetAzureClientSecretOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AzureClientSecret) {
 		return nil, false
 	}
-	return &o.AzureClientSecret, true
+	return o.AzureClientSecret, true
 }
 
-// SetAzureClientSecret sets field value
+// HasAzureClientSecret returns a boolean if a field has been set.
+func (o *AzureZonesCommand) HasAzureClientSecret() bool {
+	if o != nil && !IsNil(o.AzureClientSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureClientSecret gets a reference to the given string and assigns it to the AzureClientSecret field.
 func (o *AzureZonesCommand) SetAzureClientSecret(v string) {
-	o.AzureClientSecret = v
+	o.AzureClientSecret = &v
 }
 
-// GetAzureTenantId returns the AzureTenantId field value
+// GetAzureTenantId returns the AzureTenantId field value if set, zero value otherwise.
 func (o *AzureZonesCommand) GetAzureTenantId() string {
-	if o == nil {
+	if o == nil || IsNil(o.AzureTenantId) {
 		var ret string
 		return ret
 	}
-
-	return o.AzureTenantId
+	return *o.AzureTenantId
 }
 
-// GetAzureTenantIdOk returns a tuple with the AzureTenantId field value
+// GetAzureTenantIdOk returns a tuple with the AzureTenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AzureZonesCommand) GetAzureTenantIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AzureTenantId) {
 		return nil, false
 	}
-	return &o.AzureTenantId, true
+	return o.AzureTenantId, true
 }
 
-// SetAzureTenantId sets field value
+// HasAzureTenantId returns a boolean if a field has been set.
+func (o *AzureZonesCommand) HasAzureTenantId() bool {
+	if o != nil && !IsNil(o.AzureTenantId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureTenantId gets a reference to the given string and assigns it to the AzureTenantId field.
 func (o *AzureZonesCommand) SetAzureTenantId(v string) {
-	o.AzureTenantId = v
+	o.AzureTenantId = &v
 }
 
-// GetAzureLocation returns the AzureLocation field value
+// GetAzureLocation returns the AzureLocation field value if set, zero value otherwise.
 func (o *AzureZonesCommand) GetAzureLocation() string {
-	if o == nil {
+	if o == nil || IsNil(o.AzureLocation) {
 		var ret string
 		return ret
 	}
-
-	return o.AzureLocation
+	return *o.AzureLocation
 }
 
-// GetAzureLocationOk returns a tuple with the AzureLocation field value
+// GetAzureLocationOk returns a tuple with the AzureLocation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AzureZonesCommand) GetAzureLocationOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AzureLocation) {
 		return nil, false
 	}
-	return &o.AzureLocation, true
+	return o.AzureLocation, true
 }
 
-// SetAzureLocation sets field value
+// HasAzureLocation returns a boolean if a field has been set.
+func (o *AzureZonesCommand) HasAzureLocation() bool {
+	if o != nil && !IsNil(o.AzureLocation) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureLocation gets a reference to the given string and assigns it to the AzureLocation field.
 func (o *AzureZonesCommand) SetAzureLocation(v string) {
-	o.AzureLocation = v
+	o.AzureLocation = &v
 }
 
-// GetCloudId returns the CloudId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetCloudId returns the CloudId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AzureZonesCommand) GetCloudId() int32 {
-	if o == nil || o.CloudId.Get() == nil {
+	if o == nil || IsNil(o.CloudId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.CloudId.Get()
 }
 
-// GetCloudIdOk returns a tuple with the CloudId field value
+// GetCloudIdOk returns a tuple with the CloudId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AzureZonesCommand) GetCloudIdOk() (*int32, bool) {
@@ -196,9 +224,27 @@ func (o *AzureZonesCommand) GetCloudIdOk() (*int32, bool) {
 	return o.CloudId.Get(), o.CloudId.IsSet()
 }
 
-// SetCloudId sets field value
+// HasCloudId returns a boolean if a field has been set.
+func (o *AzureZonesCommand) HasCloudId() bool {
+	if o != nil && o.CloudId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudId gets a reference to the given NullableInt32 and assigns it to the CloudId field.
 func (o *AzureZonesCommand) SetCloudId(v int32) {
 	o.CloudId.Set(&v)
+}
+// SetCloudIdNil sets the value for CloudId to be an explicit nil
+func (o *AzureZonesCommand) SetCloudIdNil() {
+	o.CloudId.Set(nil)
+}
+
+// UnsetCloudId ensures that no value is present for CloudId, not even an explicit nil
+func (o *AzureZonesCommand) UnsetCloudId() {
+	o.CloudId.Unset()
 }
 
 func (o AzureZonesCommand) MarshalJSON() ([]byte, error) {
@@ -211,55 +257,25 @@ func (o AzureZonesCommand) MarshalJSON() ([]byte, error) {
 
 func (o AzureZonesCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["azureSubscriptionId"] = o.AzureSubscriptionId
-	toSerialize["azureClientId"] = o.AzureClientId
-	toSerialize["azureClientSecret"] = o.AzureClientSecret
-	toSerialize["azureTenantId"] = o.AzureTenantId
-	toSerialize["azureLocation"] = o.AzureLocation
-	toSerialize["cloudId"] = o.CloudId.Get()
+	if !IsNil(o.AzureSubscriptionId) {
+		toSerialize["azureSubscriptionId"] = o.AzureSubscriptionId
+	}
+	if !IsNil(o.AzureClientId) {
+		toSerialize["azureClientId"] = o.AzureClientId
+	}
+	if !IsNil(o.AzureClientSecret) {
+		toSerialize["azureClientSecret"] = o.AzureClientSecret
+	}
+	if !IsNil(o.AzureTenantId) {
+		toSerialize["azureTenantId"] = o.AzureTenantId
+	}
+	if !IsNil(o.AzureLocation) {
+		toSerialize["azureLocation"] = o.AzureLocation
+	}
+	if o.CloudId.IsSet() {
+		toSerialize["cloudId"] = o.CloudId.Get()
+	}
 	return toSerialize, nil
-}
-
-func (o *AzureZonesCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"azureSubscriptionId",
-		"azureClientId",
-		"azureClientSecret",
-		"azureTenantId",
-		"azureLocation",
-		"cloudId",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varAzureZonesCommand := _AzureZonesCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAzureZonesCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AzureZonesCommand(varAzureZonesCommand)
-
-	return err
 }
 
 type NullableAzureZonesCommand struct {

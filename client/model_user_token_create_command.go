@@ -23,10 +23,10 @@ var _ MappedNullable = &UserTokenCreateCommand{}
 
 // UserTokenCreateCommand struct for UserTokenCreateCommand
 type UserTokenCreateCommand struct {
-	ExpireDate NullableTime `json:"expireDate"`
+	ExpireDate NullableTime `json:"expireDate,omitempty"`
 	IsReadonly bool `json:"isReadonly"`
-	Name string `json:"name"`
-	Endpoints []AvailableEndpointData `json:"endpoints"`
+	Name *string `json:"name,omitempty"`
+	Endpoints []AvailableEndpointData `json:"endpoints,omitempty"`
 	BindALL bool `json:"bindALL"`
 }
 
@@ -36,12 +36,9 @@ type _UserTokenCreateCommand UserTokenCreateCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserTokenCreateCommand(expireDate NullableTime, isReadonly bool, name string, endpoints []AvailableEndpointData, bindALL bool) *UserTokenCreateCommand {
+func NewUserTokenCreateCommand(isReadonly bool, bindALL bool) *UserTokenCreateCommand {
 	this := UserTokenCreateCommand{}
-	this.ExpireDate = expireDate
 	this.IsReadonly = isReadonly
-	this.Name = name
-	this.Endpoints = endpoints
 	this.BindALL = bindALL
 	return &this
 }
@@ -54,18 +51,16 @@ func NewUserTokenCreateCommandWithDefaults() *UserTokenCreateCommand {
 	return &this
 }
 
-// GetExpireDate returns the ExpireDate field value
-// If the value is explicit nil, the zero value for time.Time will be returned
+// GetExpireDate returns the ExpireDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserTokenCreateCommand) GetExpireDate() time.Time {
-	if o == nil || o.ExpireDate.Get() == nil {
+	if o == nil || IsNil(o.ExpireDate.Get()) {
 		var ret time.Time
 		return ret
 	}
-
 	return *o.ExpireDate.Get()
 }
 
-// GetExpireDateOk returns a tuple with the ExpireDate field value
+// GetExpireDateOk returns a tuple with the ExpireDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserTokenCreateCommand) GetExpireDateOk() (*time.Time, bool) {
@@ -75,9 +70,27 @@ func (o *UserTokenCreateCommand) GetExpireDateOk() (*time.Time, bool) {
 	return o.ExpireDate.Get(), o.ExpireDate.IsSet()
 }
 
-// SetExpireDate sets field value
+// HasExpireDate returns a boolean if a field has been set.
+func (o *UserTokenCreateCommand) HasExpireDate() bool {
+	if o != nil && o.ExpireDate.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetExpireDate gets a reference to the given NullableTime and assigns it to the ExpireDate field.
 func (o *UserTokenCreateCommand) SetExpireDate(v time.Time) {
 	o.ExpireDate.Set(&v)
+}
+// SetExpireDateNil sets the value for ExpireDate to be an explicit nil
+func (o *UserTokenCreateCommand) SetExpireDateNil() {
+	o.ExpireDate.Set(nil)
+}
+
+// UnsetExpireDate ensures that no value is present for ExpireDate, not even an explicit nil
+func (o *UserTokenCreateCommand) UnsetExpireDate() {
+	o.ExpireDate.Unset()
 }
 
 // GetIsReadonly returns the IsReadonly field value
@@ -104,50 +117,66 @@ func (o *UserTokenCreateCommand) SetIsReadonly(v bool) {
 	o.IsReadonly = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *UserTokenCreateCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserTokenCreateCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *UserTokenCreateCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *UserTokenCreateCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetEndpoints returns the Endpoints field value
+// GetEndpoints returns the Endpoints field value if set, zero value otherwise.
 func (o *UserTokenCreateCommand) GetEndpoints() []AvailableEndpointData {
-	if o == nil {
+	if o == nil || IsNil(o.Endpoints) {
 		var ret []AvailableEndpointData
 		return ret
 	}
-
 	return o.Endpoints
 }
 
-// GetEndpointsOk returns a tuple with the Endpoints field value
+// GetEndpointsOk returns a tuple with the Endpoints field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserTokenCreateCommand) GetEndpointsOk() ([]AvailableEndpointData, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Endpoints) {
 		return nil, false
 	}
 	return o.Endpoints, true
 }
 
-// SetEndpoints sets field value
+// HasEndpoints returns a boolean if a field has been set.
+func (o *UserTokenCreateCommand) HasEndpoints() bool {
+	if o != nil && !IsNil(o.Endpoints) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndpoints gets a reference to the given []AvailableEndpointData and assigns it to the Endpoints field.
 func (o *UserTokenCreateCommand) SetEndpoints(v []AvailableEndpointData) {
 	o.Endpoints = v
 }
@@ -186,10 +215,16 @@ func (o UserTokenCreateCommand) MarshalJSON() ([]byte, error) {
 
 func (o UserTokenCreateCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["expireDate"] = o.ExpireDate.Get()
+	if o.ExpireDate.IsSet() {
+		toSerialize["expireDate"] = o.ExpireDate.Get()
+	}
 	toSerialize["isReadonly"] = o.IsReadonly
-	toSerialize["name"] = o.Name
-	toSerialize["endpoints"] = o.Endpoints
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Endpoints) {
+		toSerialize["endpoints"] = o.Endpoints
+	}
 	toSerialize["bindALL"] = o.BindALL
 	return toSerialize, nil
 }
@@ -199,10 +234,7 @@ func (o *UserTokenCreateCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"expireDate",
 		"isReadonly",
-		"name",
-		"endpoints",
 		"bindALL",
 	}
 

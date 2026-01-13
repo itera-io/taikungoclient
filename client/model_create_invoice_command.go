@@ -23,14 +23,14 @@ var _ MappedNullable = &CreateInvoiceCommand{}
 
 // CreateInvoiceCommand struct for CreateInvoiceCommand
 type CreateInvoiceCommand struct {
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	OrganizationSubscriptionId int32 `json:"organizationSubscriptionId"`
 	StartDate time.Time `json:"startDate"`
 	EndDate time.Time `json:"endDate"`
 	DueDate time.Time `json:"dueDate"`
 	IsPaid bool `json:"isPaid"`
 	RequiredPaymentAction bool `json:"requiredPaymentAction"`
-	StripeInvoiceId string `json:"stripeInvoiceId"`
+	StripeInvoiceId *string `json:"stripeInvoiceId,omitempty"`
 	Price float64 `json:"price"`
 }
 
@@ -40,16 +40,14 @@ type _CreateInvoiceCommand CreateInvoiceCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateInvoiceCommand(name string, organizationSubscriptionId int32, startDate time.Time, endDate time.Time, dueDate time.Time, isPaid bool, requiredPaymentAction bool, stripeInvoiceId string, price float64) *CreateInvoiceCommand {
+func NewCreateInvoiceCommand(organizationSubscriptionId int32, startDate time.Time, endDate time.Time, dueDate time.Time, isPaid bool, requiredPaymentAction bool, price float64) *CreateInvoiceCommand {
 	this := CreateInvoiceCommand{}
-	this.Name = name
 	this.OrganizationSubscriptionId = organizationSubscriptionId
 	this.StartDate = startDate
 	this.EndDate = endDate
 	this.DueDate = dueDate
 	this.IsPaid = isPaid
 	this.RequiredPaymentAction = requiredPaymentAction
-	this.StripeInvoiceId = stripeInvoiceId
 	this.Price = price
 	return &this
 }
@@ -62,28 +60,36 @@ func NewCreateInvoiceCommandWithDefaults() *CreateInvoiceCommand {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateInvoiceCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateInvoiceCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CreateInvoiceCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateInvoiceCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetOrganizationSubscriptionId returns the OrganizationSubscriptionId field value
@@ -230,28 +236,36 @@ func (o *CreateInvoiceCommand) SetRequiredPaymentAction(v bool) {
 	o.RequiredPaymentAction = v
 }
 
-// GetStripeInvoiceId returns the StripeInvoiceId field value
+// GetStripeInvoiceId returns the StripeInvoiceId field value if set, zero value otherwise.
 func (o *CreateInvoiceCommand) GetStripeInvoiceId() string {
-	if o == nil {
+	if o == nil || IsNil(o.StripeInvoiceId) {
 		var ret string
 		return ret
 	}
-
-	return o.StripeInvoiceId
+	return *o.StripeInvoiceId
 }
 
-// GetStripeInvoiceIdOk returns a tuple with the StripeInvoiceId field value
+// GetStripeInvoiceIdOk returns a tuple with the StripeInvoiceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateInvoiceCommand) GetStripeInvoiceIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.StripeInvoiceId) {
 		return nil, false
 	}
-	return &o.StripeInvoiceId, true
+	return o.StripeInvoiceId, true
 }
 
-// SetStripeInvoiceId sets field value
+// HasStripeInvoiceId returns a boolean if a field has been set.
+func (o *CreateInvoiceCommand) HasStripeInvoiceId() bool {
+	if o != nil && !IsNil(o.StripeInvoiceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetStripeInvoiceId gets a reference to the given string and assigns it to the StripeInvoiceId field.
 func (o *CreateInvoiceCommand) SetStripeInvoiceId(v string) {
-	o.StripeInvoiceId = v
+	o.StripeInvoiceId = &v
 }
 
 // GetPrice returns the Price field value
@@ -288,14 +302,18 @@ func (o CreateInvoiceCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateInvoiceCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	toSerialize["organizationSubscriptionId"] = o.OrganizationSubscriptionId
 	toSerialize["startDate"] = o.StartDate
 	toSerialize["endDate"] = o.EndDate
 	toSerialize["dueDate"] = o.DueDate
 	toSerialize["isPaid"] = o.IsPaid
 	toSerialize["requiredPaymentAction"] = o.RequiredPaymentAction
-	toSerialize["stripeInvoiceId"] = o.StripeInvoiceId
+	if !IsNil(o.StripeInvoiceId) {
+		toSerialize["stripeInvoiceId"] = o.StripeInvoiceId
+	}
 	toSerialize["price"] = o.Price
 	return toSerialize, nil
 }
@@ -305,14 +323,12 @@ func (o *CreateInvoiceCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
 		"organizationSubscriptionId",
 		"startDate",
 		"endDate",
 		"dueDate",
 		"isPaid",
 		"requiredPaymentAction",
-		"stripeInvoiceId",
 		"price",
 	}
 

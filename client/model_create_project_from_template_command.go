@@ -23,7 +23,7 @@ var _ MappedNullable = &CreateProjectFromTemplateCommand{}
 // CreateProjectFromTemplateCommand struct for CreateProjectFromTemplateCommand
 type CreateProjectFromTemplateCommand struct {
 	Id int32 `json:"id"`
-	ProjectName string `json:"projectName"`
+	ProjectName *string `json:"projectName,omitempty"`
 	CanCommit bool `json:"canCommit"`
 }
 
@@ -33,10 +33,9 @@ type _CreateProjectFromTemplateCommand CreateProjectFromTemplateCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateProjectFromTemplateCommand(id int32, projectName string, canCommit bool) *CreateProjectFromTemplateCommand {
+func NewCreateProjectFromTemplateCommand(id int32, canCommit bool) *CreateProjectFromTemplateCommand {
 	this := CreateProjectFromTemplateCommand{}
 	this.Id = id
-	this.ProjectName = projectName
 	this.CanCommit = canCommit
 	return &this
 }
@@ -73,28 +72,36 @@ func (o *CreateProjectFromTemplateCommand) SetId(v int32) {
 	o.Id = v
 }
 
-// GetProjectName returns the ProjectName field value
+// GetProjectName returns the ProjectName field value if set, zero value otherwise.
 func (o *CreateProjectFromTemplateCommand) GetProjectName() string {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		var ret string
 		return ret
 	}
-
-	return o.ProjectName
+	return *o.ProjectName
 }
 
-// GetProjectNameOk returns a tuple with the ProjectName field value
+// GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProjectFromTemplateCommand) GetProjectNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		return nil, false
 	}
-	return &o.ProjectName, true
+	return o.ProjectName, true
 }
 
-// SetProjectName sets field value
+// HasProjectName returns a boolean if a field has been set.
+func (o *CreateProjectFromTemplateCommand) HasProjectName() bool {
+	if o != nil && !IsNil(o.ProjectName) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectName gets a reference to the given string and assigns it to the ProjectName field.
 func (o *CreateProjectFromTemplateCommand) SetProjectName(v string) {
-	o.ProjectName = v
+	o.ProjectName = &v
 }
 
 // GetCanCommit returns the CanCommit field value
@@ -132,7 +139,9 @@ func (o CreateProjectFromTemplateCommand) MarshalJSON() ([]byte, error) {
 func (o CreateProjectFromTemplateCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["projectName"] = o.ProjectName
+	if !IsNil(o.ProjectName) {
+		toSerialize["projectName"] = o.ProjectName
+	}
 	toSerialize["canCommit"] = o.CanCommit
 	return toSerialize, nil
 }
@@ -143,7 +152,6 @@ func (o *CreateProjectFromTemplateCommand) UnmarshalJSON(data []byte) (err error
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"projectName",
 		"canCommit",
 	}
 

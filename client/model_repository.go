@@ -22,16 +22,16 @@ var _ MappedNullable = &Repository{}
 
 // Repository struct for Repository
 type Repository struct {
-	Url string `json:"url"`
+	Url *string `json:"url,omitempty"`
 	Kind int64 `json:"kind"`
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	Official bool `json:"official"`
-	RepositoryId string `json:"repositoryId"`
+	RepositoryId *string `json:"repositoryId,omitempty"`
 	ScannerDisabled bool `json:"scannerDisabled"`
 	IsImported bool `json:"isImported"`
-	OrganizationName string `json:"organizationName"`
+	OrganizationName *string `json:"organizationName,omitempty"`
 	VerifiedPublisher bool `json:"verifiedPublisher"`
-	OrganizationDisplayName string `json:"organizationDisplayName"`
+	OrganizationDisplayName *string `json:"organizationDisplayName,omitempty"`
 }
 
 type _Repository Repository
@@ -40,18 +40,13 @@ type _Repository Repository
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRepository(url string, kind int64, name string, official bool, repositoryId string, scannerDisabled bool, isImported bool, organizationName string, verifiedPublisher bool, organizationDisplayName string) *Repository {
+func NewRepository(kind int64, official bool, scannerDisabled bool, isImported bool, verifiedPublisher bool) *Repository {
 	this := Repository{}
-	this.Url = url
 	this.Kind = kind
-	this.Name = name
 	this.Official = official
-	this.RepositoryId = repositoryId
 	this.ScannerDisabled = scannerDisabled
 	this.IsImported = isImported
-	this.OrganizationName = organizationName
 	this.VerifiedPublisher = verifiedPublisher
-	this.OrganizationDisplayName = organizationDisplayName
 	return &this
 }
 
@@ -63,28 +58,36 @@ func NewRepositoryWithDefaults() *Repository {
 	return &this
 }
 
-// GetUrl returns the Url field value
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *Repository) GetUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-
-	return o.Url
+	return *o.Url
 }
 
-// GetUrlOk returns a tuple with the Url field value
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Repository) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return &o.Url, true
+	return o.Url, true
 }
 
-// SetUrl sets field value
+// HasUrl returns a boolean if a field has been set.
+func (o *Repository) HasUrl() bool {
+	if o != nil && !IsNil(o.Url) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *Repository) SetUrl(v string) {
-	o.Url = v
+	o.Url = &v
 }
 
 // GetKind returns the Kind field value
@@ -111,28 +114,36 @@ func (o *Repository) SetKind(v int64) {
 	o.Kind = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *Repository) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Repository) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *Repository) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *Repository) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetOfficial returns the Official field value
@@ -159,28 +170,36 @@ func (o *Repository) SetOfficial(v bool) {
 	o.Official = v
 }
 
-// GetRepositoryId returns the RepositoryId field value
+// GetRepositoryId returns the RepositoryId field value if set, zero value otherwise.
 func (o *Repository) GetRepositoryId() string {
-	if o == nil {
+	if o == nil || IsNil(o.RepositoryId) {
 		var ret string
 		return ret
 	}
-
-	return o.RepositoryId
+	return *o.RepositoryId
 }
 
-// GetRepositoryIdOk returns a tuple with the RepositoryId field value
+// GetRepositoryIdOk returns a tuple with the RepositoryId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Repository) GetRepositoryIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RepositoryId) {
 		return nil, false
 	}
-	return &o.RepositoryId, true
+	return o.RepositoryId, true
 }
 
-// SetRepositoryId sets field value
+// HasRepositoryId returns a boolean if a field has been set.
+func (o *Repository) HasRepositoryId() bool {
+	if o != nil && !IsNil(o.RepositoryId) {
+		return true
+	}
+
+	return false
+}
+
+// SetRepositoryId gets a reference to the given string and assigns it to the RepositoryId field.
 func (o *Repository) SetRepositoryId(v string) {
-	o.RepositoryId = v
+	o.RepositoryId = &v
 }
 
 // GetScannerDisabled returns the ScannerDisabled field value
@@ -231,28 +250,36 @@ func (o *Repository) SetIsImported(v bool) {
 	o.IsImported = v
 }
 
-// GetOrganizationName returns the OrganizationName field value
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *Repository) GetOrganizationName() string {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
-
-	return o.OrganizationName
+	return *o.OrganizationName
 }
 
-// GetOrganizationNameOk returns a tuple with the OrganizationName field value
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Repository) GetOrganizationNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
-	return &o.OrganizationName, true
+	return o.OrganizationName, true
 }
 
-// SetOrganizationName sets field value
+// HasOrganizationName returns a boolean if a field has been set.
+func (o *Repository) HasOrganizationName() bool {
+	if o != nil && !IsNil(o.OrganizationName) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
 func (o *Repository) SetOrganizationName(v string) {
-	o.OrganizationName = v
+	o.OrganizationName = &v
 }
 
 // GetVerifiedPublisher returns the VerifiedPublisher field value
@@ -279,28 +306,36 @@ func (o *Repository) SetVerifiedPublisher(v bool) {
 	o.VerifiedPublisher = v
 }
 
-// GetOrganizationDisplayName returns the OrganizationDisplayName field value
+// GetOrganizationDisplayName returns the OrganizationDisplayName field value if set, zero value otherwise.
 func (o *Repository) GetOrganizationDisplayName() string {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationDisplayName) {
 		var ret string
 		return ret
 	}
-
-	return o.OrganizationDisplayName
+	return *o.OrganizationDisplayName
 }
 
-// GetOrganizationDisplayNameOk returns a tuple with the OrganizationDisplayName field value
+// GetOrganizationDisplayNameOk returns a tuple with the OrganizationDisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Repository) GetOrganizationDisplayNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationDisplayName) {
 		return nil, false
 	}
-	return &o.OrganizationDisplayName, true
+	return o.OrganizationDisplayName, true
 }
 
-// SetOrganizationDisplayName sets field value
+// HasOrganizationDisplayName returns a boolean if a field has been set.
+func (o *Repository) HasOrganizationDisplayName() bool {
+	if o != nil && !IsNil(o.OrganizationDisplayName) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationDisplayName gets a reference to the given string and assigns it to the OrganizationDisplayName field.
 func (o *Repository) SetOrganizationDisplayName(v string) {
-	o.OrganizationDisplayName = v
+	o.OrganizationDisplayName = &v
 }
 
 func (o Repository) MarshalJSON() ([]byte, error) {
@@ -313,16 +348,26 @@ func (o Repository) MarshalJSON() ([]byte, error) {
 
 func (o Repository) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["url"] = o.Url
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
 	toSerialize["kind"] = o.Kind
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	toSerialize["official"] = o.Official
-	toSerialize["repositoryId"] = o.RepositoryId
+	if !IsNil(o.RepositoryId) {
+		toSerialize["repositoryId"] = o.RepositoryId
+	}
 	toSerialize["scannerDisabled"] = o.ScannerDisabled
 	toSerialize["isImported"] = o.IsImported
-	toSerialize["organizationName"] = o.OrganizationName
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organizationName"] = o.OrganizationName
+	}
 	toSerialize["verifiedPublisher"] = o.VerifiedPublisher
-	toSerialize["organizationDisplayName"] = o.OrganizationDisplayName
+	if !IsNil(o.OrganizationDisplayName) {
+		toSerialize["organizationDisplayName"] = o.OrganizationDisplayName
+	}
 	return toSerialize, nil
 }
 
@@ -331,16 +376,11 @@ func (o *Repository) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"url",
 		"kind",
-		"name",
 		"official",
-		"repositoryId",
 		"scannerDisabled",
 		"isImported",
-		"organizationName",
 		"verifiedPublisher",
-		"organizationDisplayName",
 	}
 
 	allProperties := make(map[string]interface{})

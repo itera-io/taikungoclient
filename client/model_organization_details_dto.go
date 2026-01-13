@@ -23,15 +23,15 @@ var _ MappedNullable = &OrganizationDetailsDto{}
 // OrganizationDetailsDto struct for OrganizationDetailsDto
 type OrganizationDetailsDto struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
-	FullName string `json:"fullName"`
-	Email string `json:"email"`
-	BillingEmail string `json:"billingEmail"`
-	Phone string `json:"phone"`
-	Country string `json:"country"`
-	City string `json:"city"`
-	VatNumber string `json:"vatNumber"`
-	Address string `json:"address"`
+	Name *string `json:"name,omitempty"`
+	FullName *string `json:"fullName,omitempty"`
+	Email *string `json:"email,omitempty"`
+	BillingEmail *string `json:"billingEmail,omitempty"`
+	Phone *string `json:"phone,omitempty"`
+	Country *string `json:"country,omitempty"`
+	City *string `json:"city,omitempty"`
+	VatNumber *string `json:"vatNumber,omitempty"`
+	Address *string `json:"address,omitempty"`
 	IsEligibleUpdateSubscription bool `json:"isEligibleUpdateSubscription"`
 	IsLocked bool `json:"isLocked"`
 	IsReadOnly bool `json:"isReadOnly"`
@@ -41,12 +41,12 @@ type OrganizationDetailsDto struct {
 	Projects int32 `json:"projects"`
 	Servers int32 `json:"servers"`
 	CloudCredentials int32 `json:"cloudCredentials"`
-	CreatedAt string `json:"createdAt"`
+	CreatedAt *string `json:"createdAt,omitempty"`
 	PartnerId NullableInt32 `json:"partnerId,omitempty"`
-	PartnerName string `json:"partnerName"`
-	Partner PartnerDetailsForOrganizationsDto `json:"partner"`
+	PartnerName *string `json:"partnerName,omitempty"`
+	Partner *PartnerDetailsForOrganizationsDto `json:"partner,omitempty"`
 	DiscountRate float64 `json:"discountRate"`
-	BoundRules []PrometheusEntity `json:"boundRules"`
+	BoundRules []PrometheusEntity `json:"boundRules,omitempty"`
 }
 
 type _OrganizationDetailsDto OrganizationDetailsDto
@@ -55,18 +55,9 @@ type _OrganizationDetailsDto OrganizationDetailsDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationDetailsDto(id int32, name string, fullName string, email string, billingEmail string, phone string, country string, city string, vatNumber string, address string, isEligibleUpdateSubscription bool, isLocked bool, isReadOnly bool, isNew bool, trialEnded bool, users int32, projects int32, servers int32, cloudCredentials int32, createdAt string, partnerName string, partner PartnerDetailsForOrganizationsDto, discountRate float64, boundRules []PrometheusEntity) *OrganizationDetailsDto {
+func NewOrganizationDetailsDto(id int32, isEligibleUpdateSubscription bool, isLocked bool, isReadOnly bool, isNew bool, trialEnded bool, users int32, projects int32, servers int32, cloudCredentials int32, discountRate float64) *OrganizationDetailsDto {
 	this := OrganizationDetailsDto{}
 	this.Id = id
-	this.Name = name
-	this.FullName = fullName
-	this.Email = email
-	this.BillingEmail = billingEmail
-	this.Phone = phone
-	this.Country = country
-	this.City = city
-	this.VatNumber = vatNumber
-	this.Address = address
 	this.IsEligibleUpdateSubscription = isEligibleUpdateSubscription
 	this.IsLocked = isLocked
 	this.IsReadOnly = isReadOnly
@@ -76,11 +67,7 @@ func NewOrganizationDetailsDto(id int32, name string, fullName string, email str
 	this.Projects = projects
 	this.Servers = servers
 	this.CloudCredentials = cloudCredentials
-	this.CreatedAt = createdAt
-	this.PartnerName = partnerName
-	this.Partner = partner
 	this.DiscountRate = discountRate
-	this.BoundRules = boundRules
 	return &this
 }
 
@@ -116,220 +103,292 @@ func (o *OrganizationDetailsDto) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *OrganizationDetailsDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationDetailsDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *OrganizationDetailsDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *OrganizationDetailsDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetFullName returns the FullName field value
+// GetFullName returns the FullName field value if set, zero value otherwise.
 func (o *OrganizationDetailsDto) GetFullName() string {
-	if o == nil {
+	if o == nil || IsNil(o.FullName) {
 		var ret string
 		return ret
 	}
-
-	return o.FullName
+	return *o.FullName
 }
 
-// GetFullNameOk returns a tuple with the FullName field value
+// GetFullNameOk returns a tuple with the FullName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationDetailsDto) GetFullNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.FullName) {
 		return nil, false
 	}
-	return &o.FullName, true
+	return o.FullName, true
 }
 
-// SetFullName sets field value
+// HasFullName returns a boolean if a field has been set.
+func (o *OrganizationDetailsDto) HasFullName() bool {
+	if o != nil && !IsNil(o.FullName) {
+		return true
+	}
+
+	return false
+}
+
+// SetFullName gets a reference to the given string and assigns it to the FullName field.
 func (o *OrganizationDetailsDto) SetFullName(v string) {
-	o.FullName = v
+	o.FullName = &v
 }
 
-// GetEmail returns the Email field value
+// GetEmail returns the Email field value if set, zero value otherwise.
 func (o *OrganizationDetailsDto) GetEmail() string {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
-
-	return o.Email
+	return *o.Email
 }
 
-// GetEmailOk returns a tuple with the Email field value
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationDetailsDto) GetEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
-	return &o.Email, true
+	return o.Email, true
 }
 
-// SetEmail sets field value
+// HasEmail returns a boolean if a field has been set.
+func (o *OrganizationDetailsDto) HasEmail() bool {
+	if o != nil && !IsNil(o.Email) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmail gets a reference to the given string and assigns it to the Email field.
 func (o *OrganizationDetailsDto) SetEmail(v string) {
-	o.Email = v
+	o.Email = &v
 }
 
-// GetBillingEmail returns the BillingEmail field value
+// GetBillingEmail returns the BillingEmail field value if set, zero value otherwise.
 func (o *OrganizationDetailsDto) GetBillingEmail() string {
-	if o == nil {
+	if o == nil || IsNil(o.BillingEmail) {
 		var ret string
 		return ret
 	}
-
-	return o.BillingEmail
+	return *o.BillingEmail
 }
 
-// GetBillingEmailOk returns a tuple with the BillingEmail field value
+// GetBillingEmailOk returns a tuple with the BillingEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationDetailsDto) GetBillingEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BillingEmail) {
 		return nil, false
 	}
-	return &o.BillingEmail, true
+	return o.BillingEmail, true
 }
 
-// SetBillingEmail sets field value
+// HasBillingEmail returns a boolean if a field has been set.
+func (o *OrganizationDetailsDto) HasBillingEmail() bool {
+	if o != nil && !IsNil(o.BillingEmail) {
+		return true
+	}
+
+	return false
+}
+
+// SetBillingEmail gets a reference to the given string and assigns it to the BillingEmail field.
 func (o *OrganizationDetailsDto) SetBillingEmail(v string) {
-	o.BillingEmail = v
+	o.BillingEmail = &v
 }
 
-// GetPhone returns the Phone field value
+// GetPhone returns the Phone field value if set, zero value otherwise.
 func (o *OrganizationDetailsDto) GetPhone() string {
-	if o == nil {
+	if o == nil || IsNil(o.Phone) {
 		var ret string
 		return ret
 	}
-
-	return o.Phone
+	return *o.Phone
 }
 
-// GetPhoneOk returns a tuple with the Phone field value
+// GetPhoneOk returns a tuple with the Phone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationDetailsDto) GetPhoneOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Phone) {
 		return nil, false
 	}
-	return &o.Phone, true
+	return o.Phone, true
 }
 
-// SetPhone sets field value
+// HasPhone returns a boolean if a field has been set.
+func (o *OrganizationDetailsDto) HasPhone() bool {
+	if o != nil && !IsNil(o.Phone) {
+		return true
+	}
+
+	return false
+}
+
+// SetPhone gets a reference to the given string and assigns it to the Phone field.
 func (o *OrganizationDetailsDto) SetPhone(v string) {
-	o.Phone = v
+	o.Phone = &v
 }
 
-// GetCountry returns the Country field value
+// GetCountry returns the Country field value if set, zero value otherwise.
 func (o *OrganizationDetailsDto) GetCountry() string {
-	if o == nil {
+	if o == nil || IsNil(o.Country) {
 		var ret string
 		return ret
 	}
-
-	return o.Country
+	return *o.Country
 }
 
-// GetCountryOk returns a tuple with the Country field value
+// GetCountryOk returns a tuple with the Country field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationDetailsDto) GetCountryOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Country) {
 		return nil, false
 	}
-	return &o.Country, true
+	return o.Country, true
 }
 
-// SetCountry sets field value
+// HasCountry returns a boolean if a field has been set.
+func (o *OrganizationDetailsDto) HasCountry() bool {
+	if o != nil && !IsNil(o.Country) {
+		return true
+	}
+
+	return false
+}
+
+// SetCountry gets a reference to the given string and assigns it to the Country field.
 func (o *OrganizationDetailsDto) SetCountry(v string) {
-	o.Country = v
+	o.Country = &v
 }
 
-// GetCity returns the City field value
+// GetCity returns the City field value if set, zero value otherwise.
 func (o *OrganizationDetailsDto) GetCity() string {
-	if o == nil {
+	if o == nil || IsNil(o.City) {
 		var ret string
 		return ret
 	}
-
-	return o.City
+	return *o.City
 }
 
-// GetCityOk returns a tuple with the City field value
+// GetCityOk returns a tuple with the City field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationDetailsDto) GetCityOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.City) {
 		return nil, false
 	}
-	return &o.City, true
+	return o.City, true
 }
 
-// SetCity sets field value
+// HasCity returns a boolean if a field has been set.
+func (o *OrganizationDetailsDto) HasCity() bool {
+	if o != nil && !IsNil(o.City) {
+		return true
+	}
+
+	return false
+}
+
+// SetCity gets a reference to the given string and assigns it to the City field.
 func (o *OrganizationDetailsDto) SetCity(v string) {
-	o.City = v
+	o.City = &v
 }
 
-// GetVatNumber returns the VatNumber field value
+// GetVatNumber returns the VatNumber field value if set, zero value otherwise.
 func (o *OrganizationDetailsDto) GetVatNumber() string {
-	if o == nil {
+	if o == nil || IsNil(o.VatNumber) {
 		var ret string
 		return ret
 	}
-
-	return o.VatNumber
+	return *o.VatNumber
 }
 
-// GetVatNumberOk returns a tuple with the VatNumber field value
+// GetVatNumberOk returns a tuple with the VatNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationDetailsDto) GetVatNumberOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VatNumber) {
 		return nil, false
 	}
-	return &o.VatNumber, true
+	return o.VatNumber, true
 }
 
-// SetVatNumber sets field value
+// HasVatNumber returns a boolean if a field has been set.
+func (o *OrganizationDetailsDto) HasVatNumber() bool {
+	if o != nil && !IsNil(o.VatNumber) {
+		return true
+	}
+
+	return false
+}
+
+// SetVatNumber gets a reference to the given string and assigns it to the VatNumber field.
 func (o *OrganizationDetailsDto) SetVatNumber(v string) {
-	o.VatNumber = v
+	o.VatNumber = &v
 }
 
-// GetAddress returns the Address field value
+// GetAddress returns the Address field value if set, zero value otherwise.
 func (o *OrganizationDetailsDto) GetAddress() string {
-	if o == nil {
+	if o == nil || IsNil(o.Address) {
 		var ret string
 		return ret
 	}
-
-	return o.Address
+	return *o.Address
 }
 
-// GetAddressOk returns a tuple with the Address field value
+// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationDetailsDto) GetAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Address) {
 		return nil, false
 	}
-	return &o.Address, true
+	return o.Address, true
 }
 
-// SetAddress sets field value
+// HasAddress returns a boolean if a field has been set.
+func (o *OrganizationDetailsDto) HasAddress() bool {
+	if o != nil && !IsNil(o.Address) {
+		return true
+	}
+
+	return false
+}
+
+// SetAddress gets a reference to the given string and assigns it to the Address field.
 func (o *OrganizationDetailsDto) SetAddress(v string) {
-	o.Address = v
+	o.Address = &v
 }
 
 // GetIsEligibleUpdateSubscription returns the IsEligibleUpdateSubscription field value
@@ -548,28 +607,36 @@ func (o *OrganizationDetailsDto) SetCloudCredentials(v int32) {
 	o.CloudCredentials = v
 }
 
-// GetCreatedAt returns the CreatedAt field value
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *OrganizationDetailsDto) GetCreatedAt() string {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
-
-	return o.CreatedAt
+	return *o.CreatedAt
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
+// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationDetailsDto) GetCreatedAtOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
-	return &o.CreatedAt, true
+	return o.CreatedAt, true
 }
 
-// SetCreatedAt sets field value
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *OrganizationDetailsDto) HasCreatedAt() bool {
+	if o != nil && !IsNil(o.CreatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
 func (o *OrganizationDetailsDto) SetCreatedAt(v string) {
-	o.CreatedAt = v
+	o.CreatedAt = &v
 }
 
 // GetPartnerId returns the PartnerId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -614,52 +681,68 @@ func (o *OrganizationDetailsDto) UnsetPartnerId() {
 	o.PartnerId.Unset()
 }
 
-// GetPartnerName returns the PartnerName field value
+// GetPartnerName returns the PartnerName field value if set, zero value otherwise.
 func (o *OrganizationDetailsDto) GetPartnerName() string {
-	if o == nil {
+	if o == nil || IsNil(o.PartnerName) {
 		var ret string
 		return ret
 	}
-
-	return o.PartnerName
+	return *o.PartnerName
 }
 
-// GetPartnerNameOk returns a tuple with the PartnerName field value
+// GetPartnerNameOk returns a tuple with the PartnerName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationDetailsDto) GetPartnerNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PartnerName) {
 		return nil, false
 	}
-	return &o.PartnerName, true
+	return o.PartnerName, true
 }
 
-// SetPartnerName sets field value
+// HasPartnerName returns a boolean if a field has been set.
+func (o *OrganizationDetailsDto) HasPartnerName() bool {
+	if o != nil && !IsNil(o.PartnerName) {
+		return true
+	}
+
+	return false
+}
+
+// SetPartnerName gets a reference to the given string and assigns it to the PartnerName field.
 func (o *OrganizationDetailsDto) SetPartnerName(v string) {
-	o.PartnerName = v
+	o.PartnerName = &v
 }
 
-// GetPartner returns the Partner field value
+// GetPartner returns the Partner field value if set, zero value otherwise.
 func (o *OrganizationDetailsDto) GetPartner() PartnerDetailsForOrganizationsDto {
-	if o == nil {
+	if o == nil || IsNil(o.Partner) {
 		var ret PartnerDetailsForOrganizationsDto
 		return ret
 	}
-
-	return o.Partner
+	return *o.Partner
 }
 
-// GetPartnerOk returns a tuple with the Partner field value
+// GetPartnerOk returns a tuple with the Partner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationDetailsDto) GetPartnerOk() (*PartnerDetailsForOrganizationsDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Partner) {
 		return nil, false
 	}
-	return &o.Partner, true
+	return o.Partner, true
 }
 
-// SetPartner sets field value
+// HasPartner returns a boolean if a field has been set.
+func (o *OrganizationDetailsDto) HasPartner() bool {
+	if o != nil && !IsNil(o.Partner) {
+		return true
+	}
+
+	return false
+}
+
+// SetPartner gets a reference to the given PartnerDetailsForOrganizationsDto and assigns it to the Partner field.
 func (o *OrganizationDetailsDto) SetPartner(v PartnerDetailsForOrganizationsDto) {
-	o.Partner = v
+	o.Partner = &v
 }
 
 // GetDiscountRate returns the DiscountRate field value
@@ -686,26 +769,34 @@ func (o *OrganizationDetailsDto) SetDiscountRate(v float64) {
 	o.DiscountRate = v
 }
 
-// GetBoundRules returns the BoundRules field value
+// GetBoundRules returns the BoundRules field value if set, zero value otherwise.
 func (o *OrganizationDetailsDto) GetBoundRules() []PrometheusEntity {
-	if o == nil {
+	if o == nil || IsNil(o.BoundRules) {
 		var ret []PrometheusEntity
 		return ret
 	}
-
 	return o.BoundRules
 }
 
-// GetBoundRulesOk returns a tuple with the BoundRules field value
+// GetBoundRulesOk returns a tuple with the BoundRules field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationDetailsDto) GetBoundRulesOk() ([]PrometheusEntity, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BoundRules) {
 		return nil, false
 	}
 	return o.BoundRules, true
 }
 
-// SetBoundRules sets field value
+// HasBoundRules returns a boolean if a field has been set.
+func (o *OrganizationDetailsDto) HasBoundRules() bool {
+	if o != nil && !IsNil(o.BoundRules) {
+		return true
+	}
+
+	return false
+}
+
+// SetBoundRules gets a reference to the given []PrometheusEntity and assigns it to the BoundRules field.
 func (o *OrganizationDetailsDto) SetBoundRules(v []PrometheusEntity) {
 	o.BoundRules = v
 }
@@ -721,15 +812,33 @@ func (o OrganizationDetailsDto) MarshalJSON() ([]byte, error) {
 func (o OrganizationDetailsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
-	toSerialize["fullName"] = o.FullName
-	toSerialize["email"] = o.Email
-	toSerialize["billingEmail"] = o.BillingEmail
-	toSerialize["phone"] = o.Phone
-	toSerialize["country"] = o.Country
-	toSerialize["city"] = o.City
-	toSerialize["vatNumber"] = o.VatNumber
-	toSerialize["address"] = o.Address
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.FullName) {
+		toSerialize["fullName"] = o.FullName
+	}
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
+	if !IsNil(o.BillingEmail) {
+		toSerialize["billingEmail"] = o.BillingEmail
+	}
+	if !IsNil(o.Phone) {
+		toSerialize["phone"] = o.Phone
+	}
+	if !IsNil(o.Country) {
+		toSerialize["country"] = o.Country
+	}
+	if !IsNil(o.City) {
+		toSerialize["city"] = o.City
+	}
+	if !IsNil(o.VatNumber) {
+		toSerialize["vatNumber"] = o.VatNumber
+	}
+	if !IsNil(o.Address) {
+		toSerialize["address"] = o.Address
+	}
 	toSerialize["isEligibleUpdateSubscription"] = o.IsEligibleUpdateSubscription
 	toSerialize["isLocked"] = o.IsLocked
 	toSerialize["isReadOnly"] = o.IsReadOnly
@@ -739,14 +848,22 @@ func (o OrganizationDetailsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["projects"] = o.Projects
 	toSerialize["servers"] = o.Servers
 	toSerialize["cloudCredentials"] = o.CloudCredentials
-	toSerialize["createdAt"] = o.CreatedAt
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if o.PartnerId.IsSet() {
 		toSerialize["partnerId"] = o.PartnerId.Get()
 	}
-	toSerialize["partnerName"] = o.PartnerName
-	toSerialize["partner"] = o.Partner
+	if !IsNil(o.PartnerName) {
+		toSerialize["partnerName"] = o.PartnerName
+	}
+	if !IsNil(o.Partner) {
+		toSerialize["partner"] = o.Partner
+	}
 	toSerialize["discountRate"] = o.DiscountRate
-	toSerialize["boundRules"] = o.BoundRules
+	if !IsNil(o.BoundRules) {
+		toSerialize["boundRules"] = o.BoundRules
+	}
 	return toSerialize, nil
 }
 
@@ -756,15 +873,6 @@ func (o *OrganizationDetailsDto) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
-		"fullName",
-		"email",
-		"billingEmail",
-		"phone",
-		"country",
-		"city",
-		"vatNumber",
-		"address",
 		"isEligibleUpdateSubscription",
 		"isLocked",
 		"isReadOnly",
@@ -774,11 +882,7 @@ func (o *OrganizationDetailsDto) UnmarshalJSON(data []byte) (err error) {
 		"projects",
 		"servers",
 		"cloudCredentials",
-		"createdAt",
-		"partnerName",
-		"partner",
 		"discountRate",
-		"boundRules",
 	}
 
 	allProperties := make(map[string]interface{})

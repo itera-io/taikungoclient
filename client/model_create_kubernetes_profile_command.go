@@ -22,14 +22,14 @@ var _ MappedNullable = &CreateKubernetesProfileCommand{}
 
 // CreateKubernetesProfileCommand struct for CreateKubernetesProfileCommand
 type CreateKubernetesProfileCommand struct {
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	OctaviaEnabled bool `json:"octaviaEnabled"`
 	ExposeNodePortOnBastion bool `json:"exposeNodePortOnBastion"`
-	OrganizationId NullableInt32 `json:"organizationId"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	TaikunLBEnabled bool `json:"taikunLBEnabled"`
 	AllowSchedulingOnMaster bool `json:"allowSchedulingOnMaster"`
 	UniqueClusterName bool `json:"uniqueClusterName"`
-	ProxmoxStorage ProxmoxStorage `json:"proxmoxStorage"`
+	ProxmoxStorage *ProxmoxStorage `json:"proxmoxStorage,omitempty"`
 	NvidiaGpuOperatorEnabled bool `json:"nvidiaGpuOperatorEnabled"`
 	WasmEnabled bool `json:"wasmEnabled"`
 }
@@ -40,16 +40,13 @@ type _CreateKubernetesProfileCommand CreateKubernetesProfileCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateKubernetesProfileCommand(name string, octaviaEnabled bool, exposeNodePortOnBastion bool, organizationId NullableInt32, taikunLBEnabled bool, allowSchedulingOnMaster bool, uniqueClusterName bool, proxmoxStorage ProxmoxStorage, nvidiaGpuOperatorEnabled bool, wasmEnabled bool) *CreateKubernetesProfileCommand {
+func NewCreateKubernetesProfileCommand(octaviaEnabled bool, exposeNodePortOnBastion bool, taikunLBEnabled bool, allowSchedulingOnMaster bool, uniqueClusterName bool, nvidiaGpuOperatorEnabled bool, wasmEnabled bool) *CreateKubernetesProfileCommand {
 	this := CreateKubernetesProfileCommand{}
-	this.Name = name
 	this.OctaviaEnabled = octaviaEnabled
 	this.ExposeNodePortOnBastion = exposeNodePortOnBastion
-	this.OrganizationId = organizationId
 	this.TaikunLBEnabled = taikunLBEnabled
 	this.AllowSchedulingOnMaster = allowSchedulingOnMaster
 	this.UniqueClusterName = uniqueClusterName
-	this.ProxmoxStorage = proxmoxStorage
 	this.NvidiaGpuOperatorEnabled = nvidiaGpuOperatorEnabled
 	this.WasmEnabled = wasmEnabled
 	return &this
@@ -63,28 +60,36 @@ func NewCreateKubernetesProfileCommandWithDefaults() *CreateKubernetesProfileCom
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateKubernetesProfileCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateKubernetesProfileCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CreateKubernetesProfileCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateKubernetesProfileCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetOctaviaEnabled returns the OctaviaEnabled field value
@@ -135,18 +140,16 @@ func (o *CreateKubernetesProfileCommand) SetExposeNodePortOnBastion(v bool) {
 	o.ExposeNodePortOnBastion = v
 }
 
-// GetOrganizationId returns the OrganizationId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateKubernetesProfileCommand) GetOrganizationId() int32 {
-	if o == nil || o.OrganizationId.Get() == nil {
+	if o == nil || IsNil(o.OrganizationId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.OrganizationId.Get()
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateKubernetesProfileCommand) GetOrganizationIdOk() (*int32, bool) {
@@ -156,9 +159,27 @@ func (o *CreateKubernetesProfileCommand) GetOrganizationIdOk() (*int32, bool) {
 	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
 }
 
-// SetOrganizationId sets field value
+// HasOrganizationId returns a boolean if a field has been set.
+func (o *CreateKubernetesProfileCommand) HasOrganizationId() bool {
+	if o != nil && o.OrganizationId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
 func (o *CreateKubernetesProfileCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
+}
+// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
+func (o *CreateKubernetesProfileCommand) SetOrganizationIdNil() {
+	o.OrganizationId.Set(nil)
+}
+
+// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
+func (o *CreateKubernetesProfileCommand) UnsetOrganizationId() {
+	o.OrganizationId.Unset()
 }
 
 // GetTaikunLBEnabled returns the TaikunLBEnabled field value
@@ -233,28 +254,36 @@ func (o *CreateKubernetesProfileCommand) SetUniqueClusterName(v bool) {
 	o.UniqueClusterName = v
 }
 
-// GetProxmoxStorage returns the ProxmoxStorage field value
+// GetProxmoxStorage returns the ProxmoxStorage field value if set, zero value otherwise.
 func (o *CreateKubernetesProfileCommand) GetProxmoxStorage() ProxmoxStorage {
-	if o == nil {
+	if o == nil || IsNil(o.ProxmoxStorage) {
 		var ret ProxmoxStorage
 		return ret
 	}
-
-	return o.ProxmoxStorage
+	return *o.ProxmoxStorage
 }
 
-// GetProxmoxStorageOk returns a tuple with the ProxmoxStorage field value
+// GetProxmoxStorageOk returns a tuple with the ProxmoxStorage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateKubernetesProfileCommand) GetProxmoxStorageOk() (*ProxmoxStorage, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProxmoxStorage) {
 		return nil, false
 	}
-	return &o.ProxmoxStorage, true
+	return o.ProxmoxStorage, true
 }
 
-// SetProxmoxStorage sets field value
+// HasProxmoxStorage returns a boolean if a field has been set.
+func (o *CreateKubernetesProfileCommand) HasProxmoxStorage() bool {
+	if o != nil && !IsNil(o.ProxmoxStorage) {
+		return true
+	}
+
+	return false
+}
+
+// SetProxmoxStorage gets a reference to the given ProxmoxStorage and assigns it to the ProxmoxStorage field.
 func (o *CreateKubernetesProfileCommand) SetProxmoxStorage(v ProxmoxStorage) {
-	o.ProxmoxStorage = v
+	o.ProxmoxStorage = &v
 }
 
 // GetNvidiaGpuOperatorEnabled returns the NvidiaGpuOperatorEnabled field value
@@ -315,14 +344,20 @@ func (o CreateKubernetesProfileCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateKubernetesProfileCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	toSerialize["octaviaEnabled"] = o.OctaviaEnabled
 	toSerialize["exposeNodePortOnBastion"] = o.ExposeNodePortOnBastion
-	toSerialize["organizationId"] = o.OrganizationId.Get()
+	if o.OrganizationId.IsSet() {
+		toSerialize["organizationId"] = o.OrganizationId.Get()
+	}
 	toSerialize["taikunLBEnabled"] = o.TaikunLBEnabled
 	toSerialize["allowSchedulingOnMaster"] = o.AllowSchedulingOnMaster
 	toSerialize["uniqueClusterName"] = o.UniqueClusterName
-	toSerialize["proxmoxStorage"] = o.ProxmoxStorage
+	if !IsNil(o.ProxmoxStorage) {
+		toSerialize["proxmoxStorage"] = o.ProxmoxStorage
+	}
 	toSerialize["nvidiaGpuOperatorEnabled"] = o.NvidiaGpuOperatorEnabled
 	toSerialize["wasmEnabled"] = o.WasmEnabled
 	return toSerialize, nil
@@ -333,14 +368,11 @@ func (o *CreateKubernetesProfileCommand) UnmarshalJSON(data []byte) (err error) 
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
 		"octaviaEnabled",
 		"exposeNodePortOnBastion",
-		"organizationId",
 		"taikunLBEnabled",
 		"allowSchedulingOnMaster",
 		"uniqueClusterName",
-		"proxmoxStorage",
 		"nvidiaGpuOperatorEnabled",
 		"wasmEnabled",
 	}

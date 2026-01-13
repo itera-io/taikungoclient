@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the PayInvoiceCommand type satisfies the MappedNullable interface at compile time
@@ -22,18 +20,15 @@ var _ MappedNullable = &PayInvoiceCommand{}
 
 // PayInvoiceCommand struct for PayInvoiceCommand
 type PayInvoiceCommand struct {
-	InvoiceId string `json:"invoiceId"`
+	InvoiceId *string `json:"invoiceId,omitempty"`
 }
-
-type _PayInvoiceCommand PayInvoiceCommand
 
 // NewPayInvoiceCommand instantiates a new PayInvoiceCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPayInvoiceCommand(invoiceId string) *PayInvoiceCommand {
+func NewPayInvoiceCommand() *PayInvoiceCommand {
 	this := PayInvoiceCommand{}
-	this.InvoiceId = invoiceId
 	return &this
 }
 
@@ -45,28 +40,36 @@ func NewPayInvoiceCommandWithDefaults() *PayInvoiceCommand {
 	return &this
 }
 
-// GetInvoiceId returns the InvoiceId field value
+// GetInvoiceId returns the InvoiceId field value if set, zero value otherwise.
 func (o *PayInvoiceCommand) GetInvoiceId() string {
-	if o == nil {
+	if o == nil || IsNil(o.InvoiceId) {
 		var ret string
 		return ret
 	}
-
-	return o.InvoiceId
+	return *o.InvoiceId
 }
 
-// GetInvoiceIdOk returns a tuple with the InvoiceId field value
+// GetInvoiceIdOk returns a tuple with the InvoiceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PayInvoiceCommand) GetInvoiceIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.InvoiceId) {
 		return nil, false
 	}
-	return &o.InvoiceId, true
+	return o.InvoiceId, true
 }
 
-// SetInvoiceId sets field value
+// HasInvoiceId returns a boolean if a field has been set.
+func (o *PayInvoiceCommand) HasInvoiceId() bool {
+	if o != nil && !IsNil(o.InvoiceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetInvoiceId gets a reference to the given string and assigns it to the InvoiceId field.
 func (o *PayInvoiceCommand) SetInvoiceId(v string) {
-	o.InvoiceId = v
+	o.InvoiceId = &v
 }
 
 func (o PayInvoiceCommand) MarshalJSON() ([]byte, error) {
@@ -79,45 +82,10 @@ func (o PayInvoiceCommand) MarshalJSON() ([]byte, error) {
 
 func (o PayInvoiceCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["invoiceId"] = o.InvoiceId
+	if !IsNil(o.InvoiceId) {
+		toSerialize["invoiceId"] = o.InvoiceId
+	}
 	return toSerialize, nil
-}
-
-func (o *PayInvoiceCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"invoiceId",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varPayInvoiceCommand := _PayInvoiceCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPayInvoiceCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PayInvoiceCommand(varPayInvoiceCommand)
-
-	return err
 }
 
 type NullablePayInvoiceCommand struct {

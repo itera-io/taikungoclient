@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the CreateGenericTaikunLbDto type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &CreateGenericTaikunLbDto{}
 
 // CreateGenericTaikunLbDto struct for CreateGenericTaikunLbDto
 type CreateGenericTaikunLbDto struct {
-	SvcName string `json:"svcName"`
-	SvcNamespace string `json:"svcNamespace"`
+	SvcName *string `json:"svcName,omitempty"`
+	SvcNamespace *string `json:"svcNamespace,omitempty"`
 }
-
-type _CreateGenericTaikunLbDto CreateGenericTaikunLbDto
 
 // NewCreateGenericTaikunLbDto instantiates a new CreateGenericTaikunLbDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateGenericTaikunLbDto(svcName string, svcNamespace string) *CreateGenericTaikunLbDto {
+func NewCreateGenericTaikunLbDto() *CreateGenericTaikunLbDto {
 	this := CreateGenericTaikunLbDto{}
-	this.SvcName = svcName
-	this.SvcNamespace = svcNamespace
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewCreateGenericTaikunLbDtoWithDefaults() *CreateGenericTaikunLbDto {
 	return &this
 }
 
-// GetSvcName returns the SvcName field value
+// GetSvcName returns the SvcName field value if set, zero value otherwise.
 func (o *CreateGenericTaikunLbDto) GetSvcName() string {
-	if o == nil {
+	if o == nil || IsNil(o.SvcName) {
 		var ret string
 		return ret
 	}
-
-	return o.SvcName
+	return *o.SvcName
 }
 
-// GetSvcNameOk returns a tuple with the SvcName field value
+// GetSvcNameOk returns a tuple with the SvcName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateGenericTaikunLbDto) GetSvcNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SvcName) {
 		return nil, false
 	}
-	return &o.SvcName, true
+	return o.SvcName, true
 }
 
-// SetSvcName sets field value
+// HasSvcName returns a boolean if a field has been set.
+func (o *CreateGenericTaikunLbDto) HasSvcName() bool {
+	if o != nil && !IsNil(o.SvcName) {
+		return true
+	}
+
+	return false
+}
+
+// SetSvcName gets a reference to the given string and assigns it to the SvcName field.
 func (o *CreateGenericTaikunLbDto) SetSvcName(v string) {
-	o.SvcName = v
+	o.SvcName = &v
 }
 
-// GetSvcNamespace returns the SvcNamespace field value
+// GetSvcNamespace returns the SvcNamespace field value if set, zero value otherwise.
 func (o *CreateGenericTaikunLbDto) GetSvcNamespace() string {
-	if o == nil {
+	if o == nil || IsNil(o.SvcNamespace) {
 		var ret string
 		return ret
 	}
-
-	return o.SvcNamespace
+	return *o.SvcNamespace
 }
 
-// GetSvcNamespaceOk returns a tuple with the SvcNamespace field value
+// GetSvcNamespaceOk returns a tuple with the SvcNamespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateGenericTaikunLbDto) GetSvcNamespaceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SvcNamespace) {
 		return nil, false
 	}
-	return &o.SvcNamespace, true
+	return o.SvcNamespace, true
 }
 
-// SetSvcNamespace sets field value
+// HasSvcNamespace returns a boolean if a field has been set.
+func (o *CreateGenericTaikunLbDto) HasSvcNamespace() bool {
+	if o != nil && !IsNil(o.SvcNamespace) {
+		return true
+	}
+
+	return false
+}
+
+// SetSvcNamespace gets a reference to the given string and assigns it to the SvcNamespace field.
 func (o *CreateGenericTaikunLbDto) SetSvcNamespace(v string) {
-	o.SvcNamespace = v
+	o.SvcNamespace = &v
 }
 
 func (o CreateGenericTaikunLbDto) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o CreateGenericTaikunLbDto) MarshalJSON() ([]byte, error) {
 
 func (o CreateGenericTaikunLbDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["svcName"] = o.SvcName
-	toSerialize["svcNamespace"] = o.SvcNamespace
+	if !IsNil(o.SvcName) {
+		toSerialize["svcName"] = o.SvcName
+	}
+	if !IsNil(o.SvcNamespace) {
+		toSerialize["svcNamespace"] = o.SvcNamespace
+	}
 	return toSerialize, nil
-}
-
-func (o *CreateGenericTaikunLbDto) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"svcName",
-		"svcNamespace",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varCreateGenericTaikunLbDto := _CreateGenericTaikunLbDto{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCreateGenericTaikunLbDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CreateGenericTaikunLbDto(varCreateGenericTaikunLbDto)
-
-	return err
 }
 
 type NullableCreateGenericTaikunLbDto struct {

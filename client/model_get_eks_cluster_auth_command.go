@@ -23,8 +23,8 @@ var _ MappedNullable = &GetEksClusterAuthCommand{}
 // GetEksClusterAuthCommand struct for GetEksClusterAuthCommand
 type GetEksClusterAuthCommand struct {
 	ProjectId int32 `json:"projectId"`
-	KubeConfigName string `json:"kubeConfigName"`
-	ConfigToken string `json:"configToken"`
+	KubeConfigName *string `json:"kubeConfigName,omitempty"`
+	ConfigToken *string `json:"configToken,omitempty"`
 }
 
 type _GetEksClusterAuthCommand GetEksClusterAuthCommand
@@ -33,11 +33,9 @@ type _GetEksClusterAuthCommand GetEksClusterAuthCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetEksClusterAuthCommand(projectId int32, kubeConfigName string, configToken string) *GetEksClusterAuthCommand {
+func NewGetEksClusterAuthCommand(projectId int32) *GetEksClusterAuthCommand {
 	this := GetEksClusterAuthCommand{}
 	this.ProjectId = projectId
-	this.KubeConfigName = kubeConfigName
-	this.ConfigToken = configToken
 	return &this
 }
 
@@ -73,52 +71,68 @@ func (o *GetEksClusterAuthCommand) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetKubeConfigName returns the KubeConfigName field value
+// GetKubeConfigName returns the KubeConfigName field value if set, zero value otherwise.
 func (o *GetEksClusterAuthCommand) GetKubeConfigName() string {
-	if o == nil {
+	if o == nil || IsNil(o.KubeConfigName) {
 		var ret string
 		return ret
 	}
-
-	return o.KubeConfigName
+	return *o.KubeConfigName
 }
 
-// GetKubeConfigNameOk returns a tuple with the KubeConfigName field value
+// GetKubeConfigNameOk returns a tuple with the KubeConfigName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetEksClusterAuthCommand) GetKubeConfigNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.KubeConfigName) {
 		return nil, false
 	}
-	return &o.KubeConfigName, true
+	return o.KubeConfigName, true
 }
 
-// SetKubeConfigName sets field value
+// HasKubeConfigName returns a boolean if a field has been set.
+func (o *GetEksClusterAuthCommand) HasKubeConfigName() bool {
+	if o != nil && !IsNil(o.KubeConfigName) {
+		return true
+	}
+
+	return false
+}
+
+// SetKubeConfigName gets a reference to the given string and assigns it to the KubeConfigName field.
 func (o *GetEksClusterAuthCommand) SetKubeConfigName(v string) {
-	o.KubeConfigName = v
+	o.KubeConfigName = &v
 }
 
-// GetConfigToken returns the ConfigToken field value
+// GetConfigToken returns the ConfigToken field value if set, zero value otherwise.
 func (o *GetEksClusterAuthCommand) GetConfigToken() string {
-	if o == nil {
+	if o == nil || IsNil(o.ConfigToken) {
 		var ret string
 		return ret
 	}
-
-	return o.ConfigToken
+	return *o.ConfigToken
 }
 
-// GetConfigTokenOk returns a tuple with the ConfigToken field value
+// GetConfigTokenOk returns a tuple with the ConfigToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetEksClusterAuthCommand) GetConfigTokenOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ConfigToken) {
 		return nil, false
 	}
-	return &o.ConfigToken, true
+	return o.ConfigToken, true
 }
 
-// SetConfigToken sets field value
+// HasConfigToken returns a boolean if a field has been set.
+func (o *GetEksClusterAuthCommand) HasConfigToken() bool {
+	if o != nil && !IsNil(o.ConfigToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetConfigToken gets a reference to the given string and assigns it to the ConfigToken field.
 func (o *GetEksClusterAuthCommand) SetConfigToken(v string) {
-	o.ConfigToken = v
+	o.ConfigToken = &v
 }
 
 func (o GetEksClusterAuthCommand) MarshalJSON() ([]byte, error) {
@@ -132,8 +146,12 @@ func (o GetEksClusterAuthCommand) MarshalJSON() ([]byte, error) {
 func (o GetEksClusterAuthCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["kubeConfigName"] = o.KubeConfigName
-	toSerialize["configToken"] = o.ConfigToken
+	if !IsNil(o.KubeConfigName) {
+		toSerialize["kubeConfigName"] = o.KubeConfigName
+	}
+	if !IsNil(o.ConfigToken) {
+		toSerialize["configToken"] = o.ConfigToken
+	}
 	return toSerialize, nil
 }
 
@@ -143,8 +161,6 @@ func (o *GetEksClusterAuthCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"kubeConfigName",
-		"configToken",
 	}
 
 	allProperties := make(map[string]interface{})

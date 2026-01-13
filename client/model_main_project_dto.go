@@ -23,7 +23,7 @@ var _ MappedNullable = &MainProjectDto{}
 // MainProjectDto struct for MainProjectDto
 type MainProjectDto struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	Status ProjectStatus `json:"status"`
 }
 
@@ -33,10 +33,9 @@ type _MainProjectDto MainProjectDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMainProjectDto(id int32, name string, status ProjectStatus) *MainProjectDto {
+func NewMainProjectDto(id int32, status ProjectStatus) *MainProjectDto {
 	this := MainProjectDto{}
 	this.Id = id
-	this.Name = name
 	this.Status = status
 	return &this
 }
@@ -73,28 +72,36 @@ func (o *MainProjectDto) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *MainProjectDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MainProjectDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *MainProjectDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *MainProjectDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetStatus returns the Status field value
@@ -132,7 +139,9 @@ func (o MainProjectDto) MarshalJSON() ([]byte, error) {
 func (o MainProjectDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	toSerialize["status"] = o.Status
 	return toSerialize, nil
 }
@@ -143,7 +152,6 @@ func (o *MainProjectDto) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
 		"status",
 	}
 

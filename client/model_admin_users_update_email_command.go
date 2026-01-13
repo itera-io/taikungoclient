@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the AdminUsersUpdateEmailCommand type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &AdminUsersUpdateEmailCommand{}
 
 // AdminUsersUpdateEmailCommand struct for AdminUsersUpdateEmailCommand
 type AdminUsersUpdateEmailCommand struct {
-	Id string `json:"id"`
-	Email string `json:"email"`
+	Id *string `json:"id,omitempty"`
+	Email *string `json:"email,omitempty"`
 }
-
-type _AdminUsersUpdateEmailCommand AdminUsersUpdateEmailCommand
 
 // NewAdminUsersUpdateEmailCommand instantiates a new AdminUsersUpdateEmailCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAdminUsersUpdateEmailCommand(id string, email string) *AdminUsersUpdateEmailCommand {
+func NewAdminUsersUpdateEmailCommand() *AdminUsersUpdateEmailCommand {
 	this := AdminUsersUpdateEmailCommand{}
-	this.Id = id
-	this.Email = email
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewAdminUsersUpdateEmailCommandWithDefaults() *AdminUsersUpdateEmailCommand
 	return &this
 }
 
-// GetId returns the Id field value
+// GetId returns the Id field value if set, zero value otherwise.
 func (o *AdminUsersUpdateEmailCommand) GetId() string {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-
-	return o.Id
+	return *o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AdminUsersUpdateEmailCommand) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return &o.Id, true
+	return o.Id, true
 }
 
-// SetId sets field value
+// HasId returns a boolean if a field has been set.
+func (o *AdminUsersUpdateEmailCommand) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
 func (o *AdminUsersUpdateEmailCommand) SetId(v string) {
-	o.Id = v
+	o.Id = &v
 }
 
-// GetEmail returns the Email field value
+// GetEmail returns the Email field value if set, zero value otherwise.
 func (o *AdminUsersUpdateEmailCommand) GetEmail() string {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
-
-	return o.Email
+	return *o.Email
 }
 
-// GetEmailOk returns a tuple with the Email field value
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AdminUsersUpdateEmailCommand) GetEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
-	return &o.Email, true
+	return o.Email, true
 }
 
-// SetEmail sets field value
+// HasEmail returns a boolean if a field has been set.
+func (o *AdminUsersUpdateEmailCommand) HasEmail() bool {
+	if o != nil && !IsNil(o.Email) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmail gets a reference to the given string and assigns it to the Email field.
 func (o *AdminUsersUpdateEmailCommand) SetEmail(v string) {
-	o.Email = v
+	o.Email = &v
 }
 
 func (o AdminUsersUpdateEmailCommand) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o AdminUsersUpdateEmailCommand) MarshalJSON() ([]byte, error) {
 
 func (o AdminUsersUpdateEmailCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["email"] = o.Email
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
 	return toSerialize, nil
-}
-
-func (o *AdminUsersUpdateEmailCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"email",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varAdminUsersUpdateEmailCommand := _AdminUsersUpdateEmailCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAdminUsersUpdateEmailCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AdminUsersUpdateEmailCommand(varAdminUsersUpdateEmailCommand)
-
-	return err
 }
 
 type NullableAdminUsersUpdateEmailCommand struct {

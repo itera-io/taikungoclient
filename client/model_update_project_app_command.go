@@ -23,7 +23,7 @@ var _ MappedNullable = &UpdateProjectAppCommand{}
 // UpdateProjectAppCommand struct for UpdateProjectAppCommand
 type UpdateProjectAppCommand struct {
 	ProjectAppId int32 `json:"projectAppId"`
-	Status string `json:"status"`
+	Status *string `json:"status,omitempty"`
 }
 
 type _UpdateProjectAppCommand UpdateProjectAppCommand
@@ -32,10 +32,9 @@ type _UpdateProjectAppCommand UpdateProjectAppCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateProjectAppCommand(projectAppId int32, status string) *UpdateProjectAppCommand {
+func NewUpdateProjectAppCommand(projectAppId int32) *UpdateProjectAppCommand {
 	this := UpdateProjectAppCommand{}
 	this.ProjectAppId = projectAppId
-	this.Status = status
 	return &this
 }
 
@@ -71,28 +70,36 @@ func (o *UpdateProjectAppCommand) SetProjectAppId(v int32) {
 	o.ProjectAppId = v
 }
 
-// GetStatus returns the Status field value
+// GetStatus returns the Status field value if set, zero value otherwise.
 func (o *UpdateProjectAppCommand) GetStatus() string {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
-
-	return o.Status
+	return *o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateProjectAppCommand) GetStatusOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
-	return &o.Status, true
+	return o.Status, true
 }
 
-// SetStatus sets field value
+// HasStatus returns a boolean if a field has been set.
+func (o *UpdateProjectAppCommand) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *UpdateProjectAppCommand) SetStatus(v string) {
-	o.Status = v
+	o.Status = &v
 }
 
 func (o UpdateProjectAppCommand) MarshalJSON() ([]byte, error) {
@@ -106,7 +113,9 @@ func (o UpdateProjectAppCommand) MarshalJSON() ([]byte, error) {
 func (o UpdateProjectAppCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectAppId"] = o.ProjectAppId
-	toSerialize["status"] = o.Status
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
 	return toSerialize, nil
 }
 
@@ -116,7 +125,6 @@ func (o *UpdateProjectAppCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectAppId",
-		"status",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -22,7 +22,7 @@ var _ MappedNullable = &VsphereVmTemplateData{}
 
 // VsphereVmTemplateData struct for VsphereVmTemplateData
 type VsphereVmTemplateData struct {
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	Size int32 `json:"size"`
 	Uuid NullableString `json:"uuid"`
 }
@@ -33,9 +33,8 @@ type _VsphereVmTemplateData VsphereVmTemplateData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVsphereVmTemplateData(name string, size int32, uuid NullableString) *VsphereVmTemplateData {
+func NewVsphereVmTemplateData(size int32, uuid NullableString) *VsphereVmTemplateData {
 	this := VsphereVmTemplateData{}
-	this.Name = name
 	this.Size = size
 	this.Uuid = uuid
 	return &this
@@ -49,28 +48,36 @@ func NewVsphereVmTemplateDataWithDefaults() *VsphereVmTemplateData {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *VsphereVmTemplateData) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VsphereVmTemplateData) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *VsphereVmTemplateData) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *VsphereVmTemplateData) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetSize returns the Size field value
@@ -133,7 +140,9 @@ func (o VsphereVmTemplateData) MarshalJSON() ([]byte, error) {
 
 func (o VsphereVmTemplateData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	toSerialize["size"] = o.Size
 	toSerialize["uuid"] = o.Uuid.Get()
 	return toSerialize, nil
@@ -144,7 +153,6 @@ func (o *VsphereVmTemplateData) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
 		"size",
 		"uuid",
 	}

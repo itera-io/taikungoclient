@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the CheckS3Command type satisfies the MappedNullable interface at compile time
@@ -22,24 +20,18 @@ var _ MappedNullable = &CheckS3Command{}
 
 // CheckS3Command struct for CheckS3Command
 type CheckS3Command struct {
-	S3AccessKeyId string `json:"s3AccessKeyId"`
-	S3SecretKey string `json:"s3SecretKey"`
-	S3Endpoint string `json:"s3Endpoint"`
-	S3Region string `json:"s3Region"`
+	S3AccessKeyId *string `json:"s3AccessKeyId,omitempty"`
+	S3SecretKey *string `json:"s3SecretKey,omitempty"`
+	S3Endpoint *string `json:"s3Endpoint,omitempty"`
+	S3Region *string `json:"s3Region,omitempty"`
 }
-
-type _CheckS3Command CheckS3Command
 
 // NewCheckS3Command instantiates a new CheckS3Command object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCheckS3Command(s3AccessKeyId string, s3SecretKey string, s3Endpoint string, s3Region string) *CheckS3Command {
+func NewCheckS3Command() *CheckS3Command {
 	this := CheckS3Command{}
-	this.S3AccessKeyId = s3AccessKeyId
-	this.S3SecretKey = s3SecretKey
-	this.S3Endpoint = s3Endpoint
-	this.S3Region = s3Region
 	return &this
 }
 
@@ -51,100 +43,132 @@ func NewCheckS3CommandWithDefaults() *CheckS3Command {
 	return &this
 }
 
-// GetS3AccessKeyId returns the S3AccessKeyId field value
+// GetS3AccessKeyId returns the S3AccessKeyId field value if set, zero value otherwise.
 func (o *CheckS3Command) GetS3AccessKeyId() string {
-	if o == nil {
+	if o == nil || IsNil(o.S3AccessKeyId) {
 		var ret string
 		return ret
 	}
-
-	return o.S3AccessKeyId
+	return *o.S3AccessKeyId
 }
 
-// GetS3AccessKeyIdOk returns a tuple with the S3AccessKeyId field value
+// GetS3AccessKeyIdOk returns a tuple with the S3AccessKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CheckS3Command) GetS3AccessKeyIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.S3AccessKeyId) {
 		return nil, false
 	}
-	return &o.S3AccessKeyId, true
+	return o.S3AccessKeyId, true
 }
 
-// SetS3AccessKeyId sets field value
+// HasS3AccessKeyId returns a boolean if a field has been set.
+func (o *CheckS3Command) HasS3AccessKeyId() bool {
+	if o != nil && !IsNil(o.S3AccessKeyId) {
+		return true
+	}
+
+	return false
+}
+
+// SetS3AccessKeyId gets a reference to the given string and assigns it to the S3AccessKeyId field.
 func (o *CheckS3Command) SetS3AccessKeyId(v string) {
-	o.S3AccessKeyId = v
+	o.S3AccessKeyId = &v
 }
 
-// GetS3SecretKey returns the S3SecretKey field value
+// GetS3SecretKey returns the S3SecretKey field value if set, zero value otherwise.
 func (o *CheckS3Command) GetS3SecretKey() string {
-	if o == nil {
+	if o == nil || IsNil(o.S3SecretKey) {
 		var ret string
 		return ret
 	}
-
-	return o.S3SecretKey
+	return *o.S3SecretKey
 }
 
-// GetS3SecretKeyOk returns a tuple with the S3SecretKey field value
+// GetS3SecretKeyOk returns a tuple with the S3SecretKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CheckS3Command) GetS3SecretKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.S3SecretKey) {
 		return nil, false
 	}
-	return &o.S3SecretKey, true
+	return o.S3SecretKey, true
 }
 
-// SetS3SecretKey sets field value
+// HasS3SecretKey returns a boolean if a field has been set.
+func (o *CheckS3Command) HasS3SecretKey() bool {
+	if o != nil && !IsNil(o.S3SecretKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetS3SecretKey gets a reference to the given string and assigns it to the S3SecretKey field.
 func (o *CheckS3Command) SetS3SecretKey(v string) {
-	o.S3SecretKey = v
+	o.S3SecretKey = &v
 }
 
-// GetS3Endpoint returns the S3Endpoint field value
+// GetS3Endpoint returns the S3Endpoint field value if set, zero value otherwise.
 func (o *CheckS3Command) GetS3Endpoint() string {
-	if o == nil {
+	if o == nil || IsNil(o.S3Endpoint) {
 		var ret string
 		return ret
 	}
-
-	return o.S3Endpoint
+	return *o.S3Endpoint
 }
 
-// GetS3EndpointOk returns a tuple with the S3Endpoint field value
+// GetS3EndpointOk returns a tuple with the S3Endpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CheckS3Command) GetS3EndpointOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.S3Endpoint) {
 		return nil, false
 	}
-	return &o.S3Endpoint, true
+	return o.S3Endpoint, true
 }
 
-// SetS3Endpoint sets field value
+// HasS3Endpoint returns a boolean if a field has been set.
+func (o *CheckS3Command) HasS3Endpoint() bool {
+	if o != nil && !IsNil(o.S3Endpoint) {
+		return true
+	}
+
+	return false
+}
+
+// SetS3Endpoint gets a reference to the given string and assigns it to the S3Endpoint field.
 func (o *CheckS3Command) SetS3Endpoint(v string) {
-	o.S3Endpoint = v
+	o.S3Endpoint = &v
 }
 
-// GetS3Region returns the S3Region field value
+// GetS3Region returns the S3Region field value if set, zero value otherwise.
 func (o *CheckS3Command) GetS3Region() string {
-	if o == nil {
+	if o == nil || IsNil(o.S3Region) {
 		var ret string
 		return ret
 	}
-
-	return o.S3Region
+	return *o.S3Region
 }
 
-// GetS3RegionOk returns a tuple with the S3Region field value
+// GetS3RegionOk returns a tuple with the S3Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CheckS3Command) GetS3RegionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.S3Region) {
 		return nil, false
 	}
-	return &o.S3Region, true
+	return o.S3Region, true
 }
 
-// SetS3Region sets field value
+// HasS3Region returns a boolean if a field has been set.
+func (o *CheckS3Command) HasS3Region() bool {
+	if o != nil && !IsNil(o.S3Region) {
+		return true
+	}
+
+	return false
+}
+
+// SetS3Region gets a reference to the given string and assigns it to the S3Region field.
 func (o *CheckS3Command) SetS3Region(v string) {
-	o.S3Region = v
+	o.S3Region = &v
 }
 
 func (o CheckS3Command) MarshalJSON() ([]byte, error) {
@@ -157,51 +181,19 @@ func (o CheckS3Command) MarshalJSON() ([]byte, error) {
 
 func (o CheckS3Command) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["s3AccessKeyId"] = o.S3AccessKeyId
-	toSerialize["s3SecretKey"] = o.S3SecretKey
-	toSerialize["s3Endpoint"] = o.S3Endpoint
-	toSerialize["s3Region"] = o.S3Region
+	if !IsNil(o.S3AccessKeyId) {
+		toSerialize["s3AccessKeyId"] = o.S3AccessKeyId
+	}
+	if !IsNil(o.S3SecretKey) {
+		toSerialize["s3SecretKey"] = o.S3SecretKey
+	}
+	if !IsNil(o.S3Endpoint) {
+		toSerialize["s3Endpoint"] = o.S3Endpoint
+	}
+	if !IsNil(o.S3Region) {
+		toSerialize["s3Region"] = o.S3Region
+	}
 	return toSerialize, nil
-}
-
-func (o *CheckS3Command) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"s3AccessKeyId",
-		"s3SecretKey",
-		"s3Endpoint",
-		"s3Region",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varCheckS3Command := _CheckS3Command{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCheckS3Command)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CheckS3Command(varCheckS3Command)
-
-	return err
 }
 
 type NullableCheckS3Command struct {

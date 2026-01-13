@@ -23,7 +23,7 @@ var _ MappedNullable = &ServerTemplateDto{}
 // ServerTemplateDto struct for ServerTemplateDto
 type ServerTemplateDto struct {
 	Role CloudRole `json:"role"`
-	Flavor string `json:"flavor"`
+	Flavor *string `json:"flavor,omitempty"`
 	DiskSize float64 `json:"diskSize"`
 	Count int32 `json:"count"`
 }
@@ -34,10 +34,9 @@ type _ServerTemplateDto ServerTemplateDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServerTemplateDto(role CloudRole, flavor string, diskSize float64, count int32) *ServerTemplateDto {
+func NewServerTemplateDto(role CloudRole, diskSize float64, count int32) *ServerTemplateDto {
 	this := ServerTemplateDto{}
 	this.Role = role
-	this.Flavor = flavor
 	this.DiskSize = diskSize
 	this.Count = count
 	return &this
@@ -75,28 +74,36 @@ func (o *ServerTemplateDto) SetRole(v CloudRole) {
 	o.Role = v
 }
 
-// GetFlavor returns the Flavor field value
+// GetFlavor returns the Flavor field value if set, zero value otherwise.
 func (o *ServerTemplateDto) GetFlavor() string {
-	if o == nil {
+	if o == nil || IsNil(o.Flavor) {
 		var ret string
 		return ret
 	}
-
-	return o.Flavor
+	return *o.Flavor
 }
 
-// GetFlavorOk returns a tuple with the Flavor field value
+// GetFlavorOk returns a tuple with the Flavor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerTemplateDto) GetFlavorOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Flavor) {
 		return nil, false
 	}
-	return &o.Flavor, true
+	return o.Flavor, true
 }
 
-// SetFlavor sets field value
+// HasFlavor returns a boolean if a field has been set.
+func (o *ServerTemplateDto) HasFlavor() bool {
+	if o != nil && !IsNil(o.Flavor) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlavor gets a reference to the given string and assigns it to the Flavor field.
 func (o *ServerTemplateDto) SetFlavor(v string) {
-	o.Flavor = v
+	o.Flavor = &v
 }
 
 // GetDiskSize returns the DiskSize field value
@@ -158,7 +165,9 @@ func (o ServerTemplateDto) MarshalJSON() ([]byte, error) {
 func (o ServerTemplateDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["role"] = o.Role
-	toSerialize["flavor"] = o.Flavor
+	if !IsNil(o.Flavor) {
+		toSerialize["flavor"] = o.Flavor
+	}
 	toSerialize["diskSize"] = o.DiskSize
 	toSerialize["count"] = o.Count
 	return toSerialize, nil
@@ -170,7 +179,6 @@ func (o *ServerTemplateDto) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"role",
-		"flavor",
 		"diskSize",
 		"count",
 	}

@@ -24,12 +24,12 @@ var _ MappedNullable = &PrometheusMetricsCommand{}
 // PrometheusMetricsCommand struct for PrometheusMetricsCommand
 type PrometheusMetricsCommand struct {
 	ProjectId int32 `json:"projectId"`
-	Parameters string `json:"parameters"`
+	Parameters *string `json:"parameters,omitempty"`
 	Time NullableTime `json:"time,omitempty"`
 	Start NullableTime `json:"start,omitempty"`
 	End NullableTime `json:"end,omitempty"`
 	IsGraphEnabled bool `json:"isGraphEnabled"`
-	Step string `json:"step"`
+	Step *string `json:"step,omitempty"`
 }
 
 type _PrometheusMetricsCommand PrometheusMetricsCommand
@@ -38,12 +38,10 @@ type _PrometheusMetricsCommand PrometheusMetricsCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrometheusMetricsCommand(projectId int32, parameters string, isGraphEnabled bool, step string) *PrometheusMetricsCommand {
+func NewPrometheusMetricsCommand(projectId int32, isGraphEnabled bool) *PrometheusMetricsCommand {
 	this := PrometheusMetricsCommand{}
 	this.ProjectId = projectId
-	this.Parameters = parameters
 	this.IsGraphEnabled = isGraphEnabled
-	this.Step = step
 	return &this
 }
 
@@ -79,28 +77,36 @@ func (o *PrometheusMetricsCommand) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetParameters returns the Parameters field value
+// GetParameters returns the Parameters field value if set, zero value otherwise.
 func (o *PrometheusMetricsCommand) GetParameters() string {
-	if o == nil {
+	if o == nil || IsNil(o.Parameters) {
 		var ret string
 		return ret
 	}
-
-	return o.Parameters
+	return *o.Parameters
 }
 
-// GetParametersOk returns a tuple with the Parameters field value
+// GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrometheusMetricsCommand) GetParametersOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Parameters) {
 		return nil, false
 	}
-	return &o.Parameters, true
+	return o.Parameters, true
 }
 
-// SetParameters sets field value
+// HasParameters returns a boolean if a field has been set.
+func (o *PrometheusMetricsCommand) HasParameters() bool {
+	if o != nil && !IsNil(o.Parameters) {
+		return true
+	}
+
+	return false
+}
+
+// SetParameters gets a reference to the given string and assigns it to the Parameters field.
 func (o *PrometheusMetricsCommand) SetParameters(v string) {
-	o.Parameters = v
+	o.Parameters = &v
 }
 
 // GetTime returns the Time field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -253,28 +259,36 @@ func (o *PrometheusMetricsCommand) SetIsGraphEnabled(v bool) {
 	o.IsGraphEnabled = v
 }
 
-// GetStep returns the Step field value
+// GetStep returns the Step field value if set, zero value otherwise.
 func (o *PrometheusMetricsCommand) GetStep() string {
-	if o == nil {
+	if o == nil || IsNil(o.Step) {
 		var ret string
 		return ret
 	}
-
-	return o.Step
+	return *o.Step
 }
 
-// GetStepOk returns a tuple with the Step field value
+// GetStepOk returns a tuple with the Step field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrometheusMetricsCommand) GetStepOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Step) {
 		return nil, false
 	}
-	return &o.Step, true
+	return o.Step, true
 }
 
-// SetStep sets field value
+// HasStep returns a boolean if a field has been set.
+func (o *PrometheusMetricsCommand) HasStep() bool {
+	if o != nil && !IsNil(o.Step) {
+		return true
+	}
+
+	return false
+}
+
+// SetStep gets a reference to the given string and assigns it to the Step field.
 func (o *PrometheusMetricsCommand) SetStep(v string) {
-	o.Step = v
+	o.Step = &v
 }
 
 func (o PrometheusMetricsCommand) MarshalJSON() ([]byte, error) {
@@ -288,7 +302,9 @@ func (o PrometheusMetricsCommand) MarshalJSON() ([]byte, error) {
 func (o PrometheusMetricsCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["parameters"] = o.Parameters
+	if !IsNil(o.Parameters) {
+		toSerialize["parameters"] = o.Parameters
+	}
 	if o.Time.IsSet() {
 		toSerialize["time"] = o.Time.Get()
 	}
@@ -299,7 +315,9 @@ func (o PrometheusMetricsCommand) ToMap() (map[string]interface{}, error) {
 		toSerialize["end"] = o.End.Get()
 	}
 	toSerialize["isGraphEnabled"] = o.IsGraphEnabled
-	toSerialize["step"] = o.Step
+	if !IsNil(o.Step) {
+		toSerialize["step"] = o.Step
+	}
 	return toSerialize, nil
 }
 
@@ -309,9 +327,7 @@ func (o *PrometheusMetricsCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"parameters",
 		"isGraphEnabled",
-		"step",
 	}
 
 	allProperties := make(map[string]interface{})

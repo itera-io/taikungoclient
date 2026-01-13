@@ -22,11 +22,11 @@ var _ MappedNullable = &CreateBackupPolicyCommand{}
 
 // CreateBackupPolicyCommand struct for CreateBackupPolicyCommand
 type CreateBackupPolicyCommand struct {
-	Name string `json:"name"`
-	IncludeNamespaces []string `json:"includeNamespaces"`
-	CronPeriod string `json:"cronPeriod"`
+	Name *string `json:"name,omitempty"`
+	IncludeNamespaces []string `json:"includeNamespaces,omitempty"`
+	CronPeriod *string `json:"cronPeriod,omitempty"`
 	ProjectId int32 `json:"projectId"`
-	RetentionPeriod string `json:"retentionPeriod"`
+	RetentionPeriod *string `json:"retentionPeriod,omitempty"`
 }
 
 type _CreateBackupPolicyCommand CreateBackupPolicyCommand
@@ -35,13 +35,11 @@ type _CreateBackupPolicyCommand CreateBackupPolicyCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateBackupPolicyCommand(name string, includeNamespaces []string, cronPeriod string, projectId int32, retentionPeriod string) *CreateBackupPolicyCommand {
+func NewCreateBackupPolicyCommand(projectId int32) *CreateBackupPolicyCommand {
 	this := CreateBackupPolicyCommand{}
-	this.Name = name
-	this.IncludeNamespaces = includeNamespaces
-	this.CronPeriod = cronPeriod
 	this.ProjectId = projectId
-	this.RetentionPeriod = retentionPeriod
+	var retentionPeriod string = "720h"
+	this.RetentionPeriod = &retentionPeriod
 	return &this
 }
 
@@ -51,80 +49,104 @@ func NewCreateBackupPolicyCommand(name string, includeNamespaces []string, cronP
 func NewCreateBackupPolicyCommandWithDefaults() *CreateBackupPolicyCommand {
 	this := CreateBackupPolicyCommand{}
 	var retentionPeriod string = "720h"
-	this.RetentionPeriod = retentionPeriod
+	this.RetentionPeriod = &retentionPeriod
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateBackupPolicyCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateBackupPolicyCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CreateBackupPolicyCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateBackupPolicyCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetIncludeNamespaces returns the IncludeNamespaces field value
+// GetIncludeNamespaces returns the IncludeNamespaces field value if set, zero value otherwise.
 func (o *CreateBackupPolicyCommand) GetIncludeNamespaces() []string {
-	if o == nil {
+	if o == nil || IsNil(o.IncludeNamespaces) {
 		var ret []string
 		return ret
 	}
-
 	return o.IncludeNamespaces
 }
 
-// GetIncludeNamespacesOk returns a tuple with the IncludeNamespaces field value
+// GetIncludeNamespacesOk returns a tuple with the IncludeNamespaces field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateBackupPolicyCommand) GetIncludeNamespacesOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.IncludeNamespaces) {
 		return nil, false
 	}
 	return o.IncludeNamespaces, true
 }
 
-// SetIncludeNamespaces sets field value
+// HasIncludeNamespaces returns a boolean if a field has been set.
+func (o *CreateBackupPolicyCommand) HasIncludeNamespaces() bool {
+	if o != nil && !IsNil(o.IncludeNamespaces) {
+		return true
+	}
+
+	return false
+}
+
+// SetIncludeNamespaces gets a reference to the given []string and assigns it to the IncludeNamespaces field.
 func (o *CreateBackupPolicyCommand) SetIncludeNamespaces(v []string) {
 	o.IncludeNamespaces = v
 }
 
-// GetCronPeriod returns the CronPeriod field value
+// GetCronPeriod returns the CronPeriod field value if set, zero value otherwise.
 func (o *CreateBackupPolicyCommand) GetCronPeriod() string {
-	if o == nil {
+	if o == nil || IsNil(o.CronPeriod) {
 		var ret string
 		return ret
 	}
-
-	return o.CronPeriod
+	return *o.CronPeriod
 }
 
-// GetCronPeriodOk returns a tuple with the CronPeriod field value
+// GetCronPeriodOk returns a tuple with the CronPeriod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateBackupPolicyCommand) GetCronPeriodOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CronPeriod) {
 		return nil, false
 	}
-	return &o.CronPeriod, true
+	return o.CronPeriod, true
 }
 
-// SetCronPeriod sets field value
+// HasCronPeriod returns a boolean if a field has been set.
+func (o *CreateBackupPolicyCommand) HasCronPeriod() bool {
+	if o != nil && !IsNil(o.CronPeriod) {
+		return true
+	}
+
+	return false
+}
+
+// SetCronPeriod gets a reference to the given string and assigns it to the CronPeriod field.
 func (o *CreateBackupPolicyCommand) SetCronPeriod(v string) {
-	o.CronPeriod = v
+	o.CronPeriod = &v
 }
 
 // GetProjectId returns the ProjectId field value
@@ -151,28 +173,36 @@ func (o *CreateBackupPolicyCommand) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetRetentionPeriod returns the RetentionPeriod field value
+// GetRetentionPeriod returns the RetentionPeriod field value if set, zero value otherwise.
 func (o *CreateBackupPolicyCommand) GetRetentionPeriod() string {
-	if o == nil {
+	if o == nil || IsNil(o.RetentionPeriod) {
 		var ret string
 		return ret
 	}
-
-	return o.RetentionPeriod
+	return *o.RetentionPeriod
 }
 
-// GetRetentionPeriodOk returns a tuple with the RetentionPeriod field value
+// GetRetentionPeriodOk returns a tuple with the RetentionPeriod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateBackupPolicyCommand) GetRetentionPeriodOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RetentionPeriod) {
 		return nil, false
 	}
-	return &o.RetentionPeriod, true
+	return o.RetentionPeriod, true
 }
 
-// SetRetentionPeriod sets field value
+// HasRetentionPeriod returns a boolean if a field has been set.
+func (o *CreateBackupPolicyCommand) HasRetentionPeriod() bool {
+	if o != nil && !IsNil(o.RetentionPeriod) {
+		return true
+	}
+
+	return false
+}
+
+// SetRetentionPeriod gets a reference to the given string and assigns it to the RetentionPeriod field.
 func (o *CreateBackupPolicyCommand) SetRetentionPeriod(v string) {
-	o.RetentionPeriod = v
+	o.RetentionPeriod = &v
 }
 
 func (o CreateBackupPolicyCommand) MarshalJSON() ([]byte, error) {
@@ -185,11 +215,19 @@ func (o CreateBackupPolicyCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateBackupPolicyCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["includeNamespaces"] = o.IncludeNamespaces
-	toSerialize["cronPeriod"] = o.CronPeriod
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.IncludeNamespaces) {
+		toSerialize["includeNamespaces"] = o.IncludeNamespaces
+	}
+	if !IsNil(o.CronPeriod) {
+		toSerialize["cronPeriod"] = o.CronPeriod
+	}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["retentionPeriod"] = o.RetentionPeriod
+	if !IsNil(o.RetentionPeriod) {
+		toSerialize["retentionPeriod"] = o.RetentionPeriod
+	}
 	return toSerialize, nil
 }
 
@@ -198,11 +236,7 @@ func (o *CreateBackupPolicyCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
-		"includeNamespaces",
-		"cronPeriod",
 		"projectId",
-		"retentionPeriod",
 	}
 
 	allProperties := make(map[string]interface{})

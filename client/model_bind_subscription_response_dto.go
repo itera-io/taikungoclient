@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the BindSubscriptionResponseDto type satisfies the MappedNullable interface at compile time
@@ -22,28 +20,20 @@ var _ MappedNullable = &BindSubscriptionResponseDto{}
 
 // BindSubscriptionResponseDto struct for BindSubscriptionResponseDto
 type BindSubscriptionResponseDto struct {
-	Status string `json:"status"`
-	PaymentIntentClientSecret string `json:"paymentIntentClientSecret"`
-	PaymentIntentId string `json:"paymentIntentId"`
-	InvoiceFailureCode string `json:"invoiceFailureCode"`
-	InvoiceFailureMessage string `json:"invoiceFailureMessage"`
-	InvoiceFailureReason string `json:"invoiceFailureReason"`
+	Status *string `json:"status,omitempty"`
+	PaymentIntentClientSecret *string `json:"paymentIntentClientSecret,omitempty"`
+	PaymentIntentId *string `json:"paymentIntentId,omitempty"`
+	InvoiceFailureCode *string `json:"invoiceFailureCode,omitempty"`
+	InvoiceFailureMessage *string `json:"invoiceFailureMessage,omitempty"`
+	InvoiceFailureReason *string `json:"invoiceFailureReason,omitempty"`
 }
-
-type _BindSubscriptionResponseDto BindSubscriptionResponseDto
 
 // NewBindSubscriptionResponseDto instantiates a new BindSubscriptionResponseDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBindSubscriptionResponseDto(status string, paymentIntentClientSecret string, paymentIntentId string, invoiceFailureCode string, invoiceFailureMessage string, invoiceFailureReason string) *BindSubscriptionResponseDto {
+func NewBindSubscriptionResponseDto() *BindSubscriptionResponseDto {
 	this := BindSubscriptionResponseDto{}
-	this.Status = status
-	this.PaymentIntentClientSecret = paymentIntentClientSecret
-	this.PaymentIntentId = paymentIntentId
-	this.InvoiceFailureCode = invoiceFailureCode
-	this.InvoiceFailureMessage = invoiceFailureMessage
-	this.InvoiceFailureReason = invoiceFailureReason
 	return &this
 }
 
@@ -55,148 +45,196 @@ func NewBindSubscriptionResponseDtoWithDefaults() *BindSubscriptionResponseDto {
 	return &this
 }
 
-// GetStatus returns the Status field value
+// GetStatus returns the Status field value if set, zero value otherwise.
 func (o *BindSubscriptionResponseDto) GetStatus() string {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
-
-	return o.Status
+	return *o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BindSubscriptionResponseDto) GetStatusOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
-	return &o.Status, true
+	return o.Status, true
 }
 
-// SetStatus sets field value
+// HasStatus returns a boolean if a field has been set.
+func (o *BindSubscriptionResponseDto) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *BindSubscriptionResponseDto) SetStatus(v string) {
-	o.Status = v
+	o.Status = &v
 }
 
-// GetPaymentIntentClientSecret returns the PaymentIntentClientSecret field value
+// GetPaymentIntentClientSecret returns the PaymentIntentClientSecret field value if set, zero value otherwise.
 func (o *BindSubscriptionResponseDto) GetPaymentIntentClientSecret() string {
-	if o == nil {
+	if o == nil || IsNil(o.PaymentIntentClientSecret) {
 		var ret string
 		return ret
 	}
-
-	return o.PaymentIntentClientSecret
+	return *o.PaymentIntentClientSecret
 }
 
-// GetPaymentIntentClientSecretOk returns a tuple with the PaymentIntentClientSecret field value
+// GetPaymentIntentClientSecretOk returns a tuple with the PaymentIntentClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BindSubscriptionResponseDto) GetPaymentIntentClientSecretOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PaymentIntentClientSecret) {
 		return nil, false
 	}
-	return &o.PaymentIntentClientSecret, true
+	return o.PaymentIntentClientSecret, true
 }
 
-// SetPaymentIntentClientSecret sets field value
+// HasPaymentIntentClientSecret returns a boolean if a field has been set.
+func (o *BindSubscriptionResponseDto) HasPaymentIntentClientSecret() bool {
+	if o != nil && !IsNil(o.PaymentIntentClientSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetPaymentIntentClientSecret gets a reference to the given string and assigns it to the PaymentIntentClientSecret field.
 func (o *BindSubscriptionResponseDto) SetPaymentIntentClientSecret(v string) {
-	o.PaymentIntentClientSecret = v
+	o.PaymentIntentClientSecret = &v
 }
 
-// GetPaymentIntentId returns the PaymentIntentId field value
+// GetPaymentIntentId returns the PaymentIntentId field value if set, zero value otherwise.
 func (o *BindSubscriptionResponseDto) GetPaymentIntentId() string {
-	if o == nil {
+	if o == nil || IsNil(o.PaymentIntentId) {
 		var ret string
 		return ret
 	}
-
-	return o.PaymentIntentId
+	return *o.PaymentIntentId
 }
 
-// GetPaymentIntentIdOk returns a tuple with the PaymentIntentId field value
+// GetPaymentIntentIdOk returns a tuple with the PaymentIntentId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BindSubscriptionResponseDto) GetPaymentIntentIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PaymentIntentId) {
 		return nil, false
 	}
-	return &o.PaymentIntentId, true
+	return o.PaymentIntentId, true
 }
 
-// SetPaymentIntentId sets field value
+// HasPaymentIntentId returns a boolean if a field has been set.
+func (o *BindSubscriptionResponseDto) HasPaymentIntentId() bool {
+	if o != nil && !IsNil(o.PaymentIntentId) {
+		return true
+	}
+
+	return false
+}
+
+// SetPaymentIntentId gets a reference to the given string and assigns it to the PaymentIntentId field.
 func (o *BindSubscriptionResponseDto) SetPaymentIntentId(v string) {
-	o.PaymentIntentId = v
+	o.PaymentIntentId = &v
 }
 
-// GetInvoiceFailureCode returns the InvoiceFailureCode field value
+// GetInvoiceFailureCode returns the InvoiceFailureCode field value if set, zero value otherwise.
 func (o *BindSubscriptionResponseDto) GetInvoiceFailureCode() string {
-	if o == nil {
+	if o == nil || IsNil(o.InvoiceFailureCode) {
 		var ret string
 		return ret
 	}
-
-	return o.InvoiceFailureCode
+	return *o.InvoiceFailureCode
 }
 
-// GetInvoiceFailureCodeOk returns a tuple with the InvoiceFailureCode field value
+// GetInvoiceFailureCodeOk returns a tuple with the InvoiceFailureCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BindSubscriptionResponseDto) GetInvoiceFailureCodeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.InvoiceFailureCode) {
 		return nil, false
 	}
-	return &o.InvoiceFailureCode, true
+	return o.InvoiceFailureCode, true
 }
 
-// SetInvoiceFailureCode sets field value
+// HasInvoiceFailureCode returns a boolean if a field has been set.
+func (o *BindSubscriptionResponseDto) HasInvoiceFailureCode() bool {
+	if o != nil && !IsNil(o.InvoiceFailureCode) {
+		return true
+	}
+
+	return false
+}
+
+// SetInvoiceFailureCode gets a reference to the given string and assigns it to the InvoiceFailureCode field.
 func (o *BindSubscriptionResponseDto) SetInvoiceFailureCode(v string) {
-	o.InvoiceFailureCode = v
+	o.InvoiceFailureCode = &v
 }
 
-// GetInvoiceFailureMessage returns the InvoiceFailureMessage field value
+// GetInvoiceFailureMessage returns the InvoiceFailureMessage field value if set, zero value otherwise.
 func (o *BindSubscriptionResponseDto) GetInvoiceFailureMessage() string {
-	if o == nil {
+	if o == nil || IsNil(o.InvoiceFailureMessage) {
 		var ret string
 		return ret
 	}
-
-	return o.InvoiceFailureMessage
+	return *o.InvoiceFailureMessage
 }
 
-// GetInvoiceFailureMessageOk returns a tuple with the InvoiceFailureMessage field value
+// GetInvoiceFailureMessageOk returns a tuple with the InvoiceFailureMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BindSubscriptionResponseDto) GetInvoiceFailureMessageOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.InvoiceFailureMessage) {
 		return nil, false
 	}
-	return &o.InvoiceFailureMessage, true
+	return o.InvoiceFailureMessage, true
 }
 
-// SetInvoiceFailureMessage sets field value
+// HasInvoiceFailureMessage returns a boolean if a field has been set.
+func (o *BindSubscriptionResponseDto) HasInvoiceFailureMessage() bool {
+	if o != nil && !IsNil(o.InvoiceFailureMessage) {
+		return true
+	}
+
+	return false
+}
+
+// SetInvoiceFailureMessage gets a reference to the given string and assigns it to the InvoiceFailureMessage field.
 func (o *BindSubscriptionResponseDto) SetInvoiceFailureMessage(v string) {
-	o.InvoiceFailureMessage = v
+	o.InvoiceFailureMessage = &v
 }
 
-// GetInvoiceFailureReason returns the InvoiceFailureReason field value
+// GetInvoiceFailureReason returns the InvoiceFailureReason field value if set, zero value otherwise.
 func (o *BindSubscriptionResponseDto) GetInvoiceFailureReason() string {
-	if o == nil {
+	if o == nil || IsNil(o.InvoiceFailureReason) {
 		var ret string
 		return ret
 	}
-
-	return o.InvoiceFailureReason
+	return *o.InvoiceFailureReason
 }
 
-// GetInvoiceFailureReasonOk returns a tuple with the InvoiceFailureReason field value
+// GetInvoiceFailureReasonOk returns a tuple with the InvoiceFailureReason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BindSubscriptionResponseDto) GetInvoiceFailureReasonOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.InvoiceFailureReason) {
 		return nil, false
 	}
-	return &o.InvoiceFailureReason, true
+	return o.InvoiceFailureReason, true
 }
 
-// SetInvoiceFailureReason sets field value
+// HasInvoiceFailureReason returns a boolean if a field has been set.
+func (o *BindSubscriptionResponseDto) HasInvoiceFailureReason() bool {
+	if o != nil && !IsNil(o.InvoiceFailureReason) {
+		return true
+	}
+
+	return false
+}
+
+// SetInvoiceFailureReason gets a reference to the given string and assigns it to the InvoiceFailureReason field.
 func (o *BindSubscriptionResponseDto) SetInvoiceFailureReason(v string) {
-	o.InvoiceFailureReason = v
+	o.InvoiceFailureReason = &v
 }
 
 func (o BindSubscriptionResponseDto) MarshalJSON() ([]byte, error) {
@@ -209,55 +247,25 @@ func (o BindSubscriptionResponseDto) MarshalJSON() ([]byte, error) {
 
 func (o BindSubscriptionResponseDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["status"] = o.Status
-	toSerialize["paymentIntentClientSecret"] = o.PaymentIntentClientSecret
-	toSerialize["paymentIntentId"] = o.PaymentIntentId
-	toSerialize["invoiceFailureCode"] = o.InvoiceFailureCode
-	toSerialize["invoiceFailureMessage"] = o.InvoiceFailureMessage
-	toSerialize["invoiceFailureReason"] = o.InvoiceFailureReason
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.PaymentIntentClientSecret) {
+		toSerialize["paymentIntentClientSecret"] = o.PaymentIntentClientSecret
+	}
+	if !IsNil(o.PaymentIntentId) {
+		toSerialize["paymentIntentId"] = o.PaymentIntentId
+	}
+	if !IsNil(o.InvoiceFailureCode) {
+		toSerialize["invoiceFailureCode"] = o.InvoiceFailureCode
+	}
+	if !IsNil(o.InvoiceFailureMessage) {
+		toSerialize["invoiceFailureMessage"] = o.InvoiceFailureMessage
+	}
+	if !IsNil(o.InvoiceFailureReason) {
+		toSerialize["invoiceFailureReason"] = o.InvoiceFailureReason
+	}
 	return toSerialize, nil
-}
-
-func (o *BindSubscriptionResponseDto) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"status",
-		"paymentIntentClientSecret",
-		"paymentIntentId",
-		"invoiceFailureCode",
-		"invoiceFailureMessage",
-		"invoiceFailureReason",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varBindSubscriptionResponseDto := _BindSubscriptionResponseDto{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBindSubscriptionResponseDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = BindSubscriptionResponseDto(varBindSubscriptionResponseDto)
-
-	return err
 }
 
 type NullableBindSubscriptionResponseDto struct {

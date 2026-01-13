@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the OpenshiftCreateCommand type satisfies the MappedNullable interface at compile time
@@ -22,28 +20,20 @@ var _ MappedNullable = &OpenshiftCreateCommand{}
 
 // OpenshiftCreateCommand struct for OpenshiftCreateCommand
 type OpenshiftCreateCommand struct {
-	Name string `json:"name"`
-	KubeConfig string `json:"kubeConfig"`
-	PullSecret string `json:"pullSecret"`
-	StorageClass string `json:"storageClass"`
-	BaseDomain string `json:"baseDomain"`
-	OrganizationId NullableInt32 `json:"organizationId"`
+	Name *string `json:"name,omitempty"`
+	KubeConfig *string `json:"kubeConfig,omitempty"`
+	PullSecret *string `json:"pullSecret,omitempty"`
+	StorageClass *string `json:"storageClass,omitempty"`
+	BaseDomain *string `json:"baseDomain,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 }
-
-type _OpenshiftCreateCommand OpenshiftCreateCommand
 
 // NewOpenshiftCreateCommand instantiates a new OpenshiftCreateCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOpenshiftCreateCommand(name string, kubeConfig string, pullSecret string, storageClass string, baseDomain string, organizationId NullableInt32) *OpenshiftCreateCommand {
+func NewOpenshiftCreateCommand() *OpenshiftCreateCommand {
 	this := OpenshiftCreateCommand{}
-	this.Name = name
-	this.KubeConfig = kubeConfig
-	this.PullSecret = pullSecret
-	this.StorageClass = storageClass
-	this.BaseDomain = baseDomain
-	this.OrganizationId = organizationId
 	return &this
 }
 
@@ -55,138 +45,176 @@ func NewOpenshiftCreateCommandWithDefaults() *OpenshiftCreateCommand {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *OpenshiftCreateCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpenshiftCreateCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *OpenshiftCreateCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *OpenshiftCreateCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetKubeConfig returns the KubeConfig field value
+// GetKubeConfig returns the KubeConfig field value if set, zero value otherwise.
 func (o *OpenshiftCreateCommand) GetKubeConfig() string {
-	if o == nil {
+	if o == nil || IsNil(o.KubeConfig) {
 		var ret string
 		return ret
 	}
-
-	return o.KubeConfig
+	return *o.KubeConfig
 }
 
-// GetKubeConfigOk returns a tuple with the KubeConfig field value
+// GetKubeConfigOk returns a tuple with the KubeConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpenshiftCreateCommand) GetKubeConfigOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.KubeConfig) {
 		return nil, false
 	}
-	return &o.KubeConfig, true
+	return o.KubeConfig, true
 }
 
-// SetKubeConfig sets field value
+// HasKubeConfig returns a boolean if a field has been set.
+func (o *OpenshiftCreateCommand) HasKubeConfig() bool {
+	if o != nil && !IsNil(o.KubeConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetKubeConfig gets a reference to the given string and assigns it to the KubeConfig field.
 func (o *OpenshiftCreateCommand) SetKubeConfig(v string) {
-	o.KubeConfig = v
+	o.KubeConfig = &v
 }
 
-// GetPullSecret returns the PullSecret field value
+// GetPullSecret returns the PullSecret field value if set, zero value otherwise.
 func (o *OpenshiftCreateCommand) GetPullSecret() string {
-	if o == nil {
+	if o == nil || IsNil(o.PullSecret) {
 		var ret string
 		return ret
 	}
-
-	return o.PullSecret
+	return *o.PullSecret
 }
 
-// GetPullSecretOk returns a tuple with the PullSecret field value
+// GetPullSecretOk returns a tuple with the PullSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpenshiftCreateCommand) GetPullSecretOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PullSecret) {
 		return nil, false
 	}
-	return &o.PullSecret, true
+	return o.PullSecret, true
 }
 
-// SetPullSecret sets field value
+// HasPullSecret returns a boolean if a field has been set.
+func (o *OpenshiftCreateCommand) HasPullSecret() bool {
+	if o != nil && !IsNil(o.PullSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetPullSecret gets a reference to the given string and assigns it to the PullSecret field.
 func (o *OpenshiftCreateCommand) SetPullSecret(v string) {
-	o.PullSecret = v
+	o.PullSecret = &v
 }
 
-// GetStorageClass returns the StorageClass field value
+// GetStorageClass returns the StorageClass field value if set, zero value otherwise.
 func (o *OpenshiftCreateCommand) GetStorageClass() string {
-	if o == nil {
+	if o == nil || IsNil(o.StorageClass) {
 		var ret string
 		return ret
 	}
-
-	return o.StorageClass
+	return *o.StorageClass
 }
 
-// GetStorageClassOk returns a tuple with the StorageClass field value
+// GetStorageClassOk returns a tuple with the StorageClass field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpenshiftCreateCommand) GetStorageClassOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.StorageClass) {
 		return nil, false
 	}
-	return &o.StorageClass, true
+	return o.StorageClass, true
 }
 
-// SetStorageClass sets field value
+// HasStorageClass returns a boolean if a field has been set.
+func (o *OpenshiftCreateCommand) HasStorageClass() bool {
+	if o != nil && !IsNil(o.StorageClass) {
+		return true
+	}
+
+	return false
+}
+
+// SetStorageClass gets a reference to the given string and assigns it to the StorageClass field.
 func (o *OpenshiftCreateCommand) SetStorageClass(v string) {
-	o.StorageClass = v
+	o.StorageClass = &v
 }
 
-// GetBaseDomain returns the BaseDomain field value
+// GetBaseDomain returns the BaseDomain field value if set, zero value otherwise.
 func (o *OpenshiftCreateCommand) GetBaseDomain() string {
-	if o == nil {
+	if o == nil || IsNil(o.BaseDomain) {
 		var ret string
 		return ret
 	}
-
-	return o.BaseDomain
+	return *o.BaseDomain
 }
 
-// GetBaseDomainOk returns a tuple with the BaseDomain field value
+// GetBaseDomainOk returns a tuple with the BaseDomain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpenshiftCreateCommand) GetBaseDomainOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BaseDomain) {
 		return nil, false
 	}
-	return &o.BaseDomain, true
+	return o.BaseDomain, true
 }
 
-// SetBaseDomain sets field value
+// HasBaseDomain returns a boolean if a field has been set.
+func (o *OpenshiftCreateCommand) HasBaseDomain() bool {
+	if o != nil && !IsNil(o.BaseDomain) {
+		return true
+	}
+
+	return false
+}
+
+// SetBaseDomain gets a reference to the given string and assigns it to the BaseDomain field.
 func (o *OpenshiftCreateCommand) SetBaseDomain(v string) {
-	o.BaseDomain = v
+	o.BaseDomain = &v
 }
 
-// GetOrganizationId returns the OrganizationId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OpenshiftCreateCommand) GetOrganizationId() int32 {
-	if o == nil || o.OrganizationId.Get() == nil {
+	if o == nil || IsNil(o.OrganizationId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.OrganizationId.Get()
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenshiftCreateCommand) GetOrganizationIdOk() (*int32, bool) {
@@ -196,9 +224,27 @@ func (o *OpenshiftCreateCommand) GetOrganizationIdOk() (*int32, bool) {
 	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
 }
 
-// SetOrganizationId sets field value
+// HasOrganizationId returns a boolean if a field has been set.
+func (o *OpenshiftCreateCommand) HasOrganizationId() bool {
+	if o != nil && o.OrganizationId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
 func (o *OpenshiftCreateCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
+}
+// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
+func (o *OpenshiftCreateCommand) SetOrganizationIdNil() {
+	o.OrganizationId.Set(nil)
+}
+
+// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
+func (o *OpenshiftCreateCommand) UnsetOrganizationId() {
+	o.OrganizationId.Unset()
 }
 
 func (o OpenshiftCreateCommand) MarshalJSON() ([]byte, error) {
@@ -211,55 +257,25 @@ func (o OpenshiftCreateCommand) MarshalJSON() ([]byte, error) {
 
 func (o OpenshiftCreateCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["kubeConfig"] = o.KubeConfig
-	toSerialize["pullSecret"] = o.PullSecret
-	toSerialize["storageClass"] = o.StorageClass
-	toSerialize["baseDomain"] = o.BaseDomain
-	toSerialize["organizationId"] = o.OrganizationId.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.KubeConfig) {
+		toSerialize["kubeConfig"] = o.KubeConfig
+	}
+	if !IsNil(o.PullSecret) {
+		toSerialize["pullSecret"] = o.PullSecret
+	}
+	if !IsNil(o.StorageClass) {
+		toSerialize["storageClass"] = o.StorageClass
+	}
+	if !IsNil(o.BaseDomain) {
+		toSerialize["baseDomain"] = o.BaseDomain
+	}
+	if o.OrganizationId.IsSet() {
+		toSerialize["organizationId"] = o.OrganizationId.Get()
+	}
 	return toSerialize, nil
-}
-
-func (o *OpenshiftCreateCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"kubeConfig",
-		"pullSecret",
-		"storageClass",
-		"baseDomain",
-		"organizationId",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varOpenshiftCreateCommand := _OpenshiftCreateCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOpenshiftCreateCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OpenshiftCreateCommand(varOpenshiftCreateCommand)
-
-	return err
 }
 
 type NullableOpenshiftCreateCommand struct {

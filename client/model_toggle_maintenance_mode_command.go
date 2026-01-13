@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the ToggleMaintenanceModeCommand type satisfies the MappedNullable interface at compile time
@@ -22,18 +20,15 @@ var _ MappedNullable = &ToggleMaintenanceModeCommand{}
 
 // ToggleMaintenanceModeCommand struct for ToggleMaintenanceModeCommand
 type ToggleMaintenanceModeCommand struct {
-	Mode string `json:"mode"`
+	Mode *string `json:"mode,omitempty"`
 }
-
-type _ToggleMaintenanceModeCommand ToggleMaintenanceModeCommand
 
 // NewToggleMaintenanceModeCommand instantiates a new ToggleMaintenanceModeCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewToggleMaintenanceModeCommand(mode string) *ToggleMaintenanceModeCommand {
+func NewToggleMaintenanceModeCommand() *ToggleMaintenanceModeCommand {
 	this := ToggleMaintenanceModeCommand{}
-	this.Mode = mode
 	return &this
 }
 
@@ -45,28 +40,36 @@ func NewToggleMaintenanceModeCommandWithDefaults() *ToggleMaintenanceModeCommand
 	return &this
 }
 
-// GetMode returns the Mode field value
+// GetMode returns the Mode field value if set, zero value otherwise.
 func (o *ToggleMaintenanceModeCommand) GetMode() string {
-	if o == nil {
+	if o == nil || IsNil(o.Mode) {
 		var ret string
 		return ret
 	}
-
-	return o.Mode
+	return *o.Mode
 }
 
-// GetModeOk returns a tuple with the Mode field value
+// GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ToggleMaintenanceModeCommand) GetModeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
-	return &o.Mode, true
+	return o.Mode, true
 }
 
-// SetMode sets field value
+// HasMode returns a boolean if a field has been set.
+func (o *ToggleMaintenanceModeCommand) HasMode() bool {
+	if o != nil && !IsNil(o.Mode) {
+		return true
+	}
+
+	return false
+}
+
+// SetMode gets a reference to the given string and assigns it to the Mode field.
 func (o *ToggleMaintenanceModeCommand) SetMode(v string) {
-	o.Mode = v
+	o.Mode = &v
 }
 
 func (o ToggleMaintenanceModeCommand) MarshalJSON() ([]byte, error) {
@@ -79,45 +82,10 @@ func (o ToggleMaintenanceModeCommand) MarshalJSON() ([]byte, error) {
 
 func (o ToggleMaintenanceModeCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["mode"] = o.Mode
+	if !IsNil(o.Mode) {
+		toSerialize["mode"] = o.Mode
+	}
 	return toSerialize, nil
-}
-
-func (o *ToggleMaintenanceModeCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"mode",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varToggleMaintenanceModeCommand := _ToggleMaintenanceModeCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varToggleMaintenanceModeCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ToggleMaintenanceModeCommand(varToggleMaintenanceModeCommand)
-
-	return err
 }
 
 type NullableToggleMaintenanceModeCommand struct {

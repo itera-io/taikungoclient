@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the ReplyTicketCommand type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &ReplyTicketCommand{}
 
 // ReplyTicketCommand struct for ReplyTicketCommand
 type ReplyTicketCommand struct {
-	TicketId string `json:"ticketId"`
-	Body string `json:"body"`
+	TicketId *string `json:"ticketId,omitempty"`
+	Body *string `json:"body,omitempty"`
 }
-
-type _ReplyTicketCommand ReplyTicketCommand
 
 // NewReplyTicketCommand instantiates a new ReplyTicketCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewReplyTicketCommand(ticketId string, body string) *ReplyTicketCommand {
+func NewReplyTicketCommand() *ReplyTicketCommand {
 	this := ReplyTicketCommand{}
-	this.TicketId = ticketId
-	this.Body = body
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewReplyTicketCommandWithDefaults() *ReplyTicketCommand {
 	return &this
 }
 
-// GetTicketId returns the TicketId field value
+// GetTicketId returns the TicketId field value if set, zero value otherwise.
 func (o *ReplyTicketCommand) GetTicketId() string {
-	if o == nil {
+	if o == nil || IsNil(o.TicketId) {
 		var ret string
 		return ret
 	}
-
-	return o.TicketId
+	return *o.TicketId
 }
 
-// GetTicketIdOk returns a tuple with the TicketId field value
+// GetTicketIdOk returns a tuple with the TicketId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReplyTicketCommand) GetTicketIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TicketId) {
 		return nil, false
 	}
-	return &o.TicketId, true
+	return o.TicketId, true
 }
 
-// SetTicketId sets field value
+// HasTicketId returns a boolean if a field has been set.
+func (o *ReplyTicketCommand) HasTicketId() bool {
+	if o != nil && !IsNil(o.TicketId) {
+		return true
+	}
+
+	return false
+}
+
+// SetTicketId gets a reference to the given string and assigns it to the TicketId field.
 func (o *ReplyTicketCommand) SetTicketId(v string) {
-	o.TicketId = v
+	o.TicketId = &v
 }
 
-// GetBody returns the Body field value
+// GetBody returns the Body field value if set, zero value otherwise.
 func (o *ReplyTicketCommand) GetBody() string {
-	if o == nil {
+	if o == nil || IsNil(o.Body) {
 		var ret string
 		return ret
 	}
-
-	return o.Body
+	return *o.Body
 }
 
-// GetBodyOk returns a tuple with the Body field value
+// GetBodyOk returns a tuple with the Body field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReplyTicketCommand) GetBodyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Body) {
 		return nil, false
 	}
-	return &o.Body, true
+	return o.Body, true
 }
 
-// SetBody sets field value
+// HasBody returns a boolean if a field has been set.
+func (o *ReplyTicketCommand) HasBody() bool {
+	if o != nil && !IsNil(o.Body) {
+		return true
+	}
+
+	return false
+}
+
+// SetBody gets a reference to the given string and assigns it to the Body field.
 func (o *ReplyTicketCommand) SetBody(v string) {
-	o.Body = v
+	o.Body = &v
 }
 
 func (o ReplyTicketCommand) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o ReplyTicketCommand) MarshalJSON() ([]byte, error) {
 
 func (o ReplyTicketCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["ticketId"] = o.TicketId
-	toSerialize["body"] = o.Body
+	if !IsNil(o.TicketId) {
+		toSerialize["ticketId"] = o.TicketId
+	}
+	if !IsNil(o.Body) {
+		toSerialize["body"] = o.Body
+	}
 	return toSerialize, nil
-}
-
-func (o *ReplyTicketCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"ticketId",
-		"body",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varReplyTicketCommand := _ReplyTicketCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varReplyTicketCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ReplyTicketCommand(varReplyTicketCommand)
-
-	return err
 }
 
 type NullableReplyTicketCommand struct {

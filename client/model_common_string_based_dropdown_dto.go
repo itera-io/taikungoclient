@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the CommonStringBasedDropdownDto type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &CommonStringBasedDropdownDto{}
 
 // CommonStringBasedDropdownDto struct for CommonStringBasedDropdownDto
 type CommonStringBasedDropdownDto struct {
-	Id string `json:"id"`
-	Name string `json:"name"`
+	Id *string `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
-
-type _CommonStringBasedDropdownDto CommonStringBasedDropdownDto
 
 // NewCommonStringBasedDropdownDto instantiates a new CommonStringBasedDropdownDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCommonStringBasedDropdownDto(id string, name string) *CommonStringBasedDropdownDto {
+func NewCommonStringBasedDropdownDto() *CommonStringBasedDropdownDto {
 	this := CommonStringBasedDropdownDto{}
-	this.Id = id
-	this.Name = name
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewCommonStringBasedDropdownDtoWithDefaults() *CommonStringBasedDropdownDto
 	return &this
 }
 
-// GetId returns the Id field value
+// GetId returns the Id field value if set, zero value otherwise.
 func (o *CommonStringBasedDropdownDto) GetId() string {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-
-	return o.Id
+	return *o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommonStringBasedDropdownDto) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return &o.Id, true
+	return o.Id, true
 }
 
-// SetId sets field value
+// HasId returns a boolean if a field has been set.
+func (o *CommonStringBasedDropdownDto) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
 func (o *CommonStringBasedDropdownDto) SetId(v string) {
-	o.Id = v
+	o.Id = &v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CommonStringBasedDropdownDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommonStringBasedDropdownDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CommonStringBasedDropdownDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CommonStringBasedDropdownDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 func (o CommonStringBasedDropdownDto) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o CommonStringBasedDropdownDto) MarshalJSON() ([]byte, error) {
 
 func (o CommonStringBasedDropdownDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	return toSerialize, nil
-}
-
-func (o *CommonStringBasedDropdownDto) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varCommonStringBasedDropdownDto := _CommonStringBasedDropdownDto{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCommonStringBasedDropdownDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CommonStringBasedDropdownDto(varCommonStringBasedDropdownDto)
-
-	return err
 }
 
 type NullableCommonStringBasedDropdownDto struct {

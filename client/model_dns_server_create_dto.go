@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the DnsServerCreateDto type satisfies the MappedNullable interface at compile time
@@ -22,18 +20,15 @@ var _ MappedNullable = &DnsServerCreateDto{}
 
 // DnsServerCreateDto struct for DnsServerCreateDto
 type DnsServerCreateDto struct {
-	Address string `json:"address"`
+	Address *string `json:"address,omitempty"`
 }
-
-type _DnsServerCreateDto DnsServerCreateDto
 
 // NewDnsServerCreateDto instantiates a new DnsServerCreateDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDnsServerCreateDto(address string) *DnsServerCreateDto {
+func NewDnsServerCreateDto() *DnsServerCreateDto {
 	this := DnsServerCreateDto{}
-	this.Address = address
 	return &this
 }
 
@@ -45,28 +40,36 @@ func NewDnsServerCreateDtoWithDefaults() *DnsServerCreateDto {
 	return &this
 }
 
-// GetAddress returns the Address field value
+// GetAddress returns the Address field value if set, zero value otherwise.
 func (o *DnsServerCreateDto) GetAddress() string {
-	if o == nil {
+	if o == nil || IsNil(o.Address) {
 		var ret string
 		return ret
 	}
-
-	return o.Address
+	return *o.Address
 }
 
-// GetAddressOk returns a tuple with the Address field value
+// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DnsServerCreateDto) GetAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Address) {
 		return nil, false
 	}
-	return &o.Address, true
+	return o.Address, true
 }
 
-// SetAddress sets field value
+// HasAddress returns a boolean if a field has been set.
+func (o *DnsServerCreateDto) HasAddress() bool {
+	if o != nil && !IsNil(o.Address) {
+		return true
+	}
+
+	return false
+}
+
+// SetAddress gets a reference to the given string and assigns it to the Address field.
 func (o *DnsServerCreateDto) SetAddress(v string) {
-	o.Address = v
+	o.Address = &v
 }
 
 func (o DnsServerCreateDto) MarshalJSON() ([]byte, error) {
@@ -79,45 +82,10 @@ func (o DnsServerCreateDto) MarshalJSON() ([]byte, error) {
 
 func (o DnsServerCreateDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["address"] = o.Address
+	if !IsNil(o.Address) {
+		toSerialize["address"] = o.Address
+	}
 	return toSerialize, nil
-}
-
-func (o *DnsServerCreateDto) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"address",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDnsServerCreateDto := _DnsServerCreateDto{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDnsServerCreateDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DnsServerCreateDto(varDnsServerCreateDto)
-
-	return err
 }
 
 type NullableDnsServerCreateDto struct {

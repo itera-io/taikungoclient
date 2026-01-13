@@ -23,10 +23,10 @@ var _ MappedNullable = &RestoreBackupCommand{}
 // RestoreBackupCommand struct for RestoreBackupCommand
 type RestoreBackupCommand struct {
 	ProjectId int32 `json:"projectId"`
-	BackupName string `json:"backupName"`
-	RestoreName string `json:"restoreName"`
-	IncludeNamespaces []string `json:"includeNamespaces"`
-	ExcludeNamespaces []string `json:"excludeNamespaces"`
+	BackupName *string `json:"backupName,omitempty"`
+	RestoreName *string `json:"restoreName,omitempty"`
+	IncludeNamespaces []string `json:"includeNamespaces,omitempty"`
+	ExcludeNamespaces []string `json:"excludeNamespaces,omitempty"`
 }
 
 type _RestoreBackupCommand RestoreBackupCommand
@@ -35,13 +35,9 @@ type _RestoreBackupCommand RestoreBackupCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRestoreBackupCommand(projectId int32, backupName string, restoreName string, includeNamespaces []string, excludeNamespaces []string) *RestoreBackupCommand {
+func NewRestoreBackupCommand(projectId int32) *RestoreBackupCommand {
 	this := RestoreBackupCommand{}
 	this.ProjectId = projectId
-	this.BackupName = backupName
-	this.RestoreName = restoreName
-	this.IncludeNamespaces = includeNamespaces
-	this.ExcludeNamespaces = excludeNamespaces
 	return &this
 }
 
@@ -77,98 +73,130 @@ func (o *RestoreBackupCommand) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetBackupName returns the BackupName field value
+// GetBackupName returns the BackupName field value if set, zero value otherwise.
 func (o *RestoreBackupCommand) GetBackupName() string {
-	if o == nil {
+	if o == nil || IsNil(o.BackupName) {
 		var ret string
 		return ret
 	}
-
-	return o.BackupName
+	return *o.BackupName
 }
 
-// GetBackupNameOk returns a tuple with the BackupName field value
+// GetBackupNameOk returns a tuple with the BackupName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RestoreBackupCommand) GetBackupNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BackupName) {
 		return nil, false
 	}
-	return &o.BackupName, true
+	return o.BackupName, true
 }
 
-// SetBackupName sets field value
+// HasBackupName returns a boolean if a field has been set.
+func (o *RestoreBackupCommand) HasBackupName() bool {
+	if o != nil && !IsNil(o.BackupName) {
+		return true
+	}
+
+	return false
+}
+
+// SetBackupName gets a reference to the given string and assigns it to the BackupName field.
 func (o *RestoreBackupCommand) SetBackupName(v string) {
-	o.BackupName = v
+	o.BackupName = &v
 }
 
-// GetRestoreName returns the RestoreName field value
+// GetRestoreName returns the RestoreName field value if set, zero value otherwise.
 func (o *RestoreBackupCommand) GetRestoreName() string {
-	if o == nil {
+	if o == nil || IsNil(o.RestoreName) {
 		var ret string
 		return ret
 	}
-
-	return o.RestoreName
+	return *o.RestoreName
 }
 
-// GetRestoreNameOk returns a tuple with the RestoreName field value
+// GetRestoreNameOk returns a tuple with the RestoreName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RestoreBackupCommand) GetRestoreNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RestoreName) {
 		return nil, false
 	}
-	return &o.RestoreName, true
+	return o.RestoreName, true
 }
 
-// SetRestoreName sets field value
+// HasRestoreName returns a boolean if a field has been set.
+func (o *RestoreBackupCommand) HasRestoreName() bool {
+	if o != nil && !IsNil(o.RestoreName) {
+		return true
+	}
+
+	return false
+}
+
+// SetRestoreName gets a reference to the given string and assigns it to the RestoreName field.
 func (o *RestoreBackupCommand) SetRestoreName(v string) {
-	o.RestoreName = v
+	o.RestoreName = &v
 }
 
-// GetIncludeNamespaces returns the IncludeNamespaces field value
+// GetIncludeNamespaces returns the IncludeNamespaces field value if set, zero value otherwise.
 func (o *RestoreBackupCommand) GetIncludeNamespaces() []string {
-	if o == nil {
+	if o == nil || IsNil(o.IncludeNamespaces) {
 		var ret []string
 		return ret
 	}
-
 	return o.IncludeNamespaces
 }
 
-// GetIncludeNamespacesOk returns a tuple with the IncludeNamespaces field value
+// GetIncludeNamespacesOk returns a tuple with the IncludeNamespaces field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RestoreBackupCommand) GetIncludeNamespacesOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.IncludeNamespaces) {
 		return nil, false
 	}
 	return o.IncludeNamespaces, true
 }
 
-// SetIncludeNamespaces sets field value
+// HasIncludeNamespaces returns a boolean if a field has been set.
+func (o *RestoreBackupCommand) HasIncludeNamespaces() bool {
+	if o != nil && !IsNil(o.IncludeNamespaces) {
+		return true
+	}
+
+	return false
+}
+
+// SetIncludeNamespaces gets a reference to the given []string and assigns it to the IncludeNamespaces field.
 func (o *RestoreBackupCommand) SetIncludeNamespaces(v []string) {
 	o.IncludeNamespaces = v
 }
 
-// GetExcludeNamespaces returns the ExcludeNamespaces field value
+// GetExcludeNamespaces returns the ExcludeNamespaces field value if set, zero value otherwise.
 func (o *RestoreBackupCommand) GetExcludeNamespaces() []string {
-	if o == nil {
+	if o == nil || IsNil(o.ExcludeNamespaces) {
 		var ret []string
 		return ret
 	}
-
 	return o.ExcludeNamespaces
 }
 
-// GetExcludeNamespacesOk returns a tuple with the ExcludeNamespaces field value
+// GetExcludeNamespacesOk returns a tuple with the ExcludeNamespaces field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RestoreBackupCommand) GetExcludeNamespacesOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ExcludeNamespaces) {
 		return nil, false
 	}
 	return o.ExcludeNamespaces, true
 }
 
-// SetExcludeNamespaces sets field value
+// HasExcludeNamespaces returns a boolean if a field has been set.
+func (o *RestoreBackupCommand) HasExcludeNamespaces() bool {
+	if o != nil && !IsNil(o.ExcludeNamespaces) {
+		return true
+	}
+
+	return false
+}
+
+// SetExcludeNamespaces gets a reference to the given []string and assigns it to the ExcludeNamespaces field.
 func (o *RestoreBackupCommand) SetExcludeNamespaces(v []string) {
 	o.ExcludeNamespaces = v
 }
@@ -184,10 +212,18 @@ func (o RestoreBackupCommand) MarshalJSON() ([]byte, error) {
 func (o RestoreBackupCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["backupName"] = o.BackupName
-	toSerialize["restoreName"] = o.RestoreName
-	toSerialize["includeNamespaces"] = o.IncludeNamespaces
-	toSerialize["excludeNamespaces"] = o.ExcludeNamespaces
+	if !IsNil(o.BackupName) {
+		toSerialize["backupName"] = o.BackupName
+	}
+	if !IsNil(o.RestoreName) {
+		toSerialize["restoreName"] = o.RestoreName
+	}
+	if !IsNil(o.IncludeNamespaces) {
+		toSerialize["includeNamespaces"] = o.IncludeNamespaces
+	}
+	if !IsNil(o.ExcludeNamespaces) {
+		toSerialize["excludeNamespaces"] = o.ExcludeNamespaces
+	}
 	return toSerialize, nil
 }
 
@@ -197,10 +233,6 @@ func (o *RestoreBackupCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"backupName",
-		"restoreName",
-		"includeNamespaces",
-		"excludeNamespaces",
 	}
 
 	allProperties := make(map[string]interface{})

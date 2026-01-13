@@ -22,12 +22,12 @@ var _ MappedNullable = &CommonSearchKubernetesResponseData{}
 
 // CommonSearchKubernetesResponseData struct for CommonSearchKubernetesResponseData
 type CommonSearchKubernetesResponseData struct {
-	MetadataName string `json:"metadataName"`
-	Namespace string `json:"namespace"`
+	MetadataName *string `json:"metadataName,omitempty"`
+	Namespace *string `json:"namespace,omitempty"`
 	ProjectId int32 `json:"projectId"`
-	ProjectName string `json:"projectName"`
+	ProjectName *string `json:"projectName,omitempty"`
 	OrganizationId int32 `json:"organizationId"`
-	OrganizationName string `json:"organizationName"`
+	OrganizationName *string `json:"organizationName,omitempty"`
 }
 
 type _CommonSearchKubernetesResponseData CommonSearchKubernetesResponseData
@@ -36,14 +36,10 @@ type _CommonSearchKubernetesResponseData CommonSearchKubernetesResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCommonSearchKubernetesResponseData(metadataName string, namespace string, projectId int32, projectName string, organizationId int32, organizationName string) *CommonSearchKubernetesResponseData {
+func NewCommonSearchKubernetesResponseData(projectId int32, organizationId int32) *CommonSearchKubernetesResponseData {
 	this := CommonSearchKubernetesResponseData{}
-	this.MetadataName = metadataName
-	this.Namespace = namespace
 	this.ProjectId = projectId
-	this.ProjectName = projectName
 	this.OrganizationId = organizationId
-	this.OrganizationName = organizationName
 	return &this
 }
 
@@ -55,52 +51,68 @@ func NewCommonSearchKubernetesResponseDataWithDefaults() *CommonSearchKubernetes
 	return &this
 }
 
-// GetMetadataName returns the MetadataName field value
+// GetMetadataName returns the MetadataName field value if set, zero value otherwise.
 func (o *CommonSearchKubernetesResponseData) GetMetadataName() string {
-	if o == nil {
+	if o == nil || IsNil(o.MetadataName) {
 		var ret string
 		return ret
 	}
-
-	return o.MetadataName
+	return *o.MetadataName
 }
 
-// GetMetadataNameOk returns a tuple with the MetadataName field value
+// GetMetadataNameOk returns a tuple with the MetadataName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommonSearchKubernetesResponseData) GetMetadataNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.MetadataName) {
 		return nil, false
 	}
-	return &o.MetadataName, true
+	return o.MetadataName, true
 }
 
-// SetMetadataName sets field value
+// HasMetadataName returns a boolean if a field has been set.
+func (o *CommonSearchKubernetesResponseData) HasMetadataName() bool {
+	if o != nil && !IsNil(o.MetadataName) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadataName gets a reference to the given string and assigns it to the MetadataName field.
 func (o *CommonSearchKubernetesResponseData) SetMetadataName(v string) {
-	o.MetadataName = v
+	o.MetadataName = &v
 }
 
-// GetNamespace returns the Namespace field value
+// GetNamespace returns the Namespace field value if set, zero value otherwise.
 func (o *CommonSearchKubernetesResponseData) GetNamespace() string {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		var ret string
 		return ret
 	}
-
-	return o.Namespace
+	return *o.Namespace
 }
 
-// GetNamespaceOk returns a tuple with the Namespace field value
+// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommonSearchKubernetesResponseData) GetNamespaceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		return nil, false
 	}
-	return &o.Namespace, true
+	return o.Namespace, true
 }
 
-// SetNamespace sets field value
+// HasNamespace returns a boolean if a field has been set.
+func (o *CommonSearchKubernetesResponseData) HasNamespace() bool {
+	if o != nil && !IsNil(o.Namespace) {
+		return true
+	}
+
+	return false
+}
+
+// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *CommonSearchKubernetesResponseData) SetNamespace(v string) {
-	o.Namespace = v
+	o.Namespace = &v
 }
 
 // GetProjectId returns the ProjectId field value
@@ -127,28 +139,36 @@ func (o *CommonSearchKubernetesResponseData) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetProjectName returns the ProjectName field value
+// GetProjectName returns the ProjectName field value if set, zero value otherwise.
 func (o *CommonSearchKubernetesResponseData) GetProjectName() string {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		var ret string
 		return ret
 	}
-
-	return o.ProjectName
+	return *o.ProjectName
 }
 
-// GetProjectNameOk returns a tuple with the ProjectName field value
+// GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommonSearchKubernetesResponseData) GetProjectNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		return nil, false
 	}
-	return &o.ProjectName, true
+	return o.ProjectName, true
 }
 
-// SetProjectName sets field value
+// HasProjectName returns a boolean if a field has been set.
+func (o *CommonSearchKubernetesResponseData) HasProjectName() bool {
+	if o != nil && !IsNil(o.ProjectName) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectName gets a reference to the given string and assigns it to the ProjectName field.
 func (o *CommonSearchKubernetesResponseData) SetProjectName(v string) {
-	o.ProjectName = v
+	o.ProjectName = &v
 }
 
 // GetOrganizationId returns the OrganizationId field value
@@ -175,28 +195,36 @@ func (o *CommonSearchKubernetesResponseData) SetOrganizationId(v int32) {
 	o.OrganizationId = v
 }
 
-// GetOrganizationName returns the OrganizationName field value
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *CommonSearchKubernetesResponseData) GetOrganizationName() string {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
-
-	return o.OrganizationName
+	return *o.OrganizationName
 }
 
-// GetOrganizationNameOk returns a tuple with the OrganizationName field value
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommonSearchKubernetesResponseData) GetOrganizationNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
-	return &o.OrganizationName, true
+	return o.OrganizationName, true
 }
 
-// SetOrganizationName sets field value
+// HasOrganizationName returns a boolean if a field has been set.
+func (o *CommonSearchKubernetesResponseData) HasOrganizationName() bool {
+	if o != nil && !IsNil(o.OrganizationName) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
 func (o *CommonSearchKubernetesResponseData) SetOrganizationName(v string) {
-	o.OrganizationName = v
+	o.OrganizationName = &v
 }
 
 func (o CommonSearchKubernetesResponseData) MarshalJSON() ([]byte, error) {
@@ -209,12 +237,20 @@ func (o CommonSearchKubernetesResponseData) MarshalJSON() ([]byte, error) {
 
 func (o CommonSearchKubernetesResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["metadataName"] = o.MetadataName
-	toSerialize["namespace"] = o.Namespace
+	if !IsNil(o.MetadataName) {
+		toSerialize["metadataName"] = o.MetadataName
+	}
+	if !IsNil(o.Namespace) {
+		toSerialize["namespace"] = o.Namespace
+	}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["projectName"] = o.ProjectName
+	if !IsNil(o.ProjectName) {
+		toSerialize["projectName"] = o.ProjectName
+	}
 	toSerialize["organizationId"] = o.OrganizationId
-	toSerialize["organizationName"] = o.OrganizationName
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organizationName"] = o.OrganizationName
+	}
 	return toSerialize, nil
 }
 
@@ -223,12 +259,8 @@ func (o *CommonSearchKubernetesResponseData) UnmarshalJSON(data []byte) (err err
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"metadataName",
-		"namespace",
 		"projectId",
-		"projectName",
 		"organizationId",
-		"organizationName",
 	}
 
 	allProperties := make(map[string]interface{})

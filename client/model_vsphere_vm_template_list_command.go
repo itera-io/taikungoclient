@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the VsphereVmTemplateListCommand type satisfies the MappedNullable interface at compile time
@@ -22,24 +20,18 @@ var _ MappedNullable = &VsphereVmTemplateListCommand{}
 
 // VsphereVmTemplateListCommand struct for VsphereVmTemplateListCommand
 type VsphereVmTemplateListCommand struct {
-	Url string `json:"url"`
-	Username string `json:"username"`
-	Password string `json:"password"`
-	DatacenterId string `json:"datacenterId"`
+	Url *string `json:"url,omitempty"`
+	Username *string `json:"username,omitempty"`
+	Password *string `json:"password,omitempty"`
+	DatacenterId *string `json:"datacenterId,omitempty"`
 }
-
-type _VsphereVmTemplateListCommand VsphereVmTemplateListCommand
 
 // NewVsphereVmTemplateListCommand instantiates a new VsphereVmTemplateListCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVsphereVmTemplateListCommand(url string, username string, password string, datacenterId string) *VsphereVmTemplateListCommand {
+func NewVsphereVmTemplateListCommand() *VsphereVmTemplateListCommand {
 	this := VsphereVmTemplateListCommand{}
-	this.Url = url
-	this.Username = username
-	this.Password = password
-	this.DatacenterId = datacenterId
 	return &this
 }
 
@@ -51,100 +43,132 @@ func NewVsphereVmTemplateListCommandWithDefaults() *VsphereVmTemplateListCommand
 	return &this
 }
 
-// GetUrl returns the Url field value
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *VsphereVmTemplateListCommand) GetUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-
-	return o.Url
+	return *o.Url
 }
 
-// GetUrlOk returns a tuple with the Url field value
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VsphereVmTemplateListCommand) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return &o.Url, true
+	return o.Url, true
 }
 
-// SetUrl sets field value
+// HasUrl returns a boolean if a field has been set.
+func (o *VsphereVmTemplateListCommand) HasUrl() bool {
+	if o != nil && !IsNil(o.Url) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *VsphereVmTemplateListCommand) SetUrl(v string) {
-	o.Url = v
+	o.Url = &v
 }
 
-// GetUsername returns the Username field value
+// GetUsername returns the Username field value if set, zero value otherwise.
 func (o *VsphereVmTemplateListCommand) GetUsername() string {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
-
-	return o.Username
+	return *o.Username
 }
 
-// GetUsernameOk returns a tuple with the Username field value
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VsphereVmTemplateListCommand) GetUsernameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
-	return &o.Username, true
+	return o.Username, true
 }
 
-// SetUsername sets field value
+// HasUsername returns a boolean if a field has been set.
+func (o *VsphereVmTemplateListCommand) HasUsername() bool {
+	if o != nil && !IsNil(o.Username) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *VsphereVmTemplateListCommand) SetUsername(v string) {
-	o.Username = v
+	o.Username = &v
 }
 
-// GetPassword returns the Password field value
+// GetPassword returns the Password field value if set, zero value otherwise.
 func (o *VsphereVmTemplateListCommand) GetPassword() string {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
 	}
-
-	return o.Password
+	return *o.Password
 }
 
-// GetPasswordOk returns a tuple with the Password field value
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VsphereVmTemplateListCommand) GetPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
-	return &o.Password, true
+	return o.Password, true
 }
 
-// SetPassword sets field value
+// HasPassword returns a boolean if a field has been set.
+func (o *VsphereVmTemplateListCommand) HasPassword() bool {
+	if o != nil && !IsNil(o.Password) {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *VsphereVmTemplateListCommand) SetPassword(v string) {
-	o.Password = v
+	o.Password = &v
 }
 
-// GetDatacenterId returns the DatacenterId field value
+// GetDatacenterId returns the DatacenterId field value if set, zero value otherwise.
 func (o *VsphereVmTemplateListCommand) GetDatacenterId() string {
-	if o == nil {
+	if o == nil || IsNil(o.DatacenterId) {
 		var ret string
 		return ret
 	}
-
-	return o.DatacenterId
+	return *o.DatacenterId
 }
 
-// GetDatacenterIdOk returns a tuple with the DatacenterId field value
+// GetDatacenterIdOk returns a tuple with the DatacenterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VsphereVmTemplateListCommand) GetDatacenterIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DatacenterId) {
 		return nil, false
 	}
-	return &o.DatacenterId, true
+	return o.DatacenterId, true
 }
 
-// SetDatacenterId sets field value
+// HasDatacenterId returns a boolean if a field has been set.
+func (o *VsphereVmTemplateListCommand) HasDatacenterId() bool {
+	if o != nil && !IsNil(o.DatacenterId) {
+		return true
+	}
+
+	return false
+}
+
+// SetDatacenterId gets a reference to the given string and assigns it to the DatacenterId field.
 func (o *VsphereVmTemplateListCommand) SetDatacenterId(v string) {
-	o.DatacenterId = v
+	o.DatacenterId = &v
 }
 
 func (o VsphereVmTemplateListCommand) MarshalJSON() ([]byte, error) {
@@ -157,51 +181,19 @@ func (o VsphereVmTemplateListCommand) MarshalJSON() ([]byte, error) {
 
 func (o VsphereVmTemplateListCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["url"] = o.Url
-	toSerialize["username"] = o.Username
-	toSerialize["password"] = o.Password
-	toSerialize["datacenterId"] = o.DatacenterId
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
+	}
+	if !IsNil(o.DatacenterId) {
+		toSerialize["datacenterId"] = o.DatacenterId
+	}
 	return toSerialize, nil
-}
-
-func (o *VsphereVmTemplateListCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"url",
-		"username",
-		"password",
-		"datacenterId",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varVsphereVmTemplateListCommand := _VsphereVmTemplateListCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVsphereVmTemplateListCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = VsphereVmTemplateListCommand(varVsphereVmTemplateListCommand)
-
-	return err
 }
 
 type NullableVsphereVmTemplateListCommand struct {

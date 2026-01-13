@@ -23,7 +23,7 @@ var _ MappedNullable = &CommonDropdownDto{}
 // CommonDropdownDto struct for CommonDropdownDto
 type CommonDropdownDto struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 }
 
 type _CommonDropdownDto CommonDropdownDto
@@ -32,10 +32,9 @@ type _CommonDropdownDto CommonDropdownDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCommonDropdownDto(id int32, name string) *CommonDropdownDto {
+func NewCommonDropdownDto(id int32) *CommonDropdownDto {
 	this := CommonDropdownDto{}
 	this.Id = id
-	this.Name = name
 	return &this
 }
 
@@ -71,28 +70,36 @@ func (o *CommonDropdownDto) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CommonDropdownDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommonDropdownDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CommonDropdownDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CommonDropdownDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 func (o CommonDropdownDto) MarshalJSON() ([]byte, error) {
@@ -106,7 +113,9 @@ func (o CommonDropdownDto) MarshalJSON() ([]byte, error) {
 func (o CommonDropdownDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	return toSerialize, nil
 }
 
@@ -116,7 +125,6 @@ func (o *CommonDropdownDto) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
 	}
 
 	allProperties := make(map[string]interface{})

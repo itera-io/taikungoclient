@@ -207,6 +207,7 @@ docs/BillingCredentialsSearchCommand.md
 docs/BillingCredentialsSearchList.md
 docs/BillingInfo.md
 docs/BillingInfoDto.md
+docs/BillingPeriod.md
 docs/BillingSummaryDto.md
 docs/BindAppRepositoryCommand.md
 docs/BindFlavorToProjectCommand.md
@@ -352,6 +353,7 @@ docs/DatacenterListCommand.md
 docs/DatacenterSummary.md
 docs/DatastoreListCommand.md
 docs/DatastoreSummary.md
+docs/DateFilter.md
 docs/DateInterval.md
 docs/DeleteAlertCommand.md
 docs/DeleteBackupCommand.md
@@ -1122,6 +1124,7 @@ model_billing_credentials_search_command.go
 model_billing_credentials_search_list.go
 model_billing_info.go
 model_billing_info_dto.go
+model_billing_period.go
 model_billing_summary_dto.go
 model_bind_app_repository_command.go
 model_bind_flavor_to_project_command.go
@@ -1261,6 +1264,7 @@ model_datacenter_list_command.go
 model_datacenter_summary.go
 model_datastore_list_command.go
 model_datastore_summary.go
+model_date_filter.go
 model_date_interval.go
 model_delete_alert_command.go
 model_delete_backup_command.go

@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the InvoiceSecret type satisfies the MappedNullable interface at compile time
@@ -22,18 +20,15 @@ var _ MappedNullable = &InvoiceSecret{}
 
 // InvoiceSecret struct for InvoiceSecret
 type InvoiceSecret struct {
-	Secret string `json:"secret"`
+	Secret *string `json:"secret,omitempty"`
 }
-
-type _InvoiceSecret InvoiceSecret
 
 // NewInvoiceSecret instantiates a new InvoiceSecret object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInvoiceSecret(secret string) *InvoiceSecret {
+func NewInvoiceSecret() *InvoiceSecret {
 	this := InvoiceSecret{}
-	this.Secret = secret
 	return &this
 }
 
@@ -45,28 +40,36 @@ func NewInvoiceSecretWithDefaults() *InvoiceSecret {
 	return &this
 }
 
-// GetSecret returns the Secret field value
+// GetSecret returns the Secret field value if set, zero value otherwise.
 func (o *InvoiceSecret) GetSecret() string {
-	if o == nil {
+	if o == nil || IsNil(o.Secret) {
 		var ret string
 		return ret
 	}
-
-	return o.Secret
+	return *o.Secret
 }
 
-// GetSecretOk returns a tuple with the Secret field value
+// GetSecretOk returns a tuple with the Secret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InvoiceSecret) GetSecretOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Secret) {
 		return nil, false
 	}
-	return &o.Secret, true
+	return o.Secret, true
 }
 
-// SetSecret sets field value
+// HasSecret returns a boolean if a field has been set.
+func (o *InvoiceSecret) HasSecret() bool {
+	if o != nil && !IsNil(o.Secret) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecret gets a reference to the given string and assigns it to the Secret field.
 func (o *InvoiceSecret) SetSecret(v string) {
-	o.Secret = v
+	o.Secret = &v
 }
 
 func (o InvoiceSecret) MarshalJSON() ([]byte, error) {
@@ -79,45 +82,10 @@ func (o InvoiceSecret) MarshalJSON() ([]byte, error) {
 
 func (o InvoiceSecret) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["secret"] = o.Secret
+	if !IsNil(o.Secret) {
+		toSerialize["secret"] = o.Secret
+	}
 	return toSerialize, nil
-}
-
-func (o *InvoiceSecret) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"secret",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varInvoiceSecret := _InvoiceSecret{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varInvoiceSecret)
-
-	if err != nil {
-		return err
-	}
-
-	*o = InvoiceSecret(varInvoiceSecret)
-
-	return err
 }
 
 type NullableInvoiceSecret struct {

@@ -23,8 +23,8 @@ var _ MappedNullable = &InteractiveShellSendCommand{}
 // InteractiveShellSendCommand struct for InteractiveShellSendCommand
 type InteractiveShellSendCommand struct {
 	ProjectId int32 `json:"projectId"`
-	Token string `json:"token"`
-	InstanceId NullableInt32 `json:"instanceId"`
+	Token *string `json:"token,omitempty"`
+	InstanceId NullableInt32 `json:"instanceId,omitempty"`
 }
 
 type _InteractiveShellSendCommand InteractiveShellSendCommand
@@ -33,11 +33,9 @@ type _InteractiveShellSendCommand InteractiveShellSendCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInteractiveShellSendCommand(projectId int32, token string, instanceId NullableInt32) *InteractiveShellSendCommand {
+func NewInteractiveShellSendCommand(projectId int32) *InteractiveShellSendCommand {
 	this := InteractiveShellSendCommand{}
 	this.ProjectId = projectId
-	this.Token = token
-	this.InstanceId = instanceId
 	return &this
 }
 
@@ -73,42 +71,48 @@ func (o *InteractiveShellSendCommand) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetToken returns the Token field value
+// GetToken returns the Token field value if set, zero value otherwise.
 func (o *InteractiveShellSendCommand) GetToken() string {
-	if o == nil {
+	if o == nil || IsNil(o.Token) {
 		var ret string
 		return ret
 	}
-
-	return o.Token
+	return *o.Token
 }
 
-// GetTokenOk returns a tuple with the Token field value
+// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InteractiveShellSendCommand) GetTokenOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Token) {
 		return nil, false
 	}
-	return &o.Token, true
+	return o.Token, true
 }
 
-// SetToken sets field value
+// HasToken returns a boolean if a field has been set.
+func (o *InteractiveShellSendCommand) HasToken() bool {
+	if o != nil && !IsNil(o.Token) {
+		return true
+	}
+
+	return false
+}
+
+// SetToken gets a reference to the given string and assigns it to the Token field.
 func (o *InteractiveShellSendCommand) SetToken(v string) {
-	o.Token = v
+	o.Token = &v
 }
 
-// GetInstanceId returns the InstanceId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetInstanceId returns the InstanceId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InteractiveShellSendCommand) GetInstanceId() int32 {
-	if o == nil || o.InstanceId.Get() == nil {
+	if o == nil || IsNil(o.InstanceId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.InstanceId.Get()
 }
 
-// GetInstanceIdOk returns a tuple with the InstanceId field value
+// GetInstanceIdOk returns a tuple with the InstanceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InteractiveShellSendCommand) GetInstanceIdOk() (*int32, bool) {
@@ -118,9 +122,27 @@ func (o *InteractiveShellSendCommand) GetInstanceIdOk() (*int32, bool) {
 	return o.InstanceId.Get(), o.InstanceId.IsSet()
 }
 
-// SetInstanceId sets field value
+// HasInstanceId returns a boolean if a field has been set.
+func (o *InteractiveShellSendCommand) HasInstanceId() bool {
+	if o != nil && o.InstanceId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceId gets a reference to the given NullableInt32 and assigns it to the InstanceId field.
 func (o *InteractiveShellSendCommand) SetInstanceId(v int32) {
 	o.InstanceId.Set(&v)
+}
+// SetInstanceIdNil sets the value for InstanceId to be an explicit nil
+func (o *InteractiveShellSendCommand) SetInstanceIdNil() {
+	o.InstanceId.Set(nil)
+}
+
+// UnsetInstanceId ensures that no value is present for InstanceId, not even an explicit nil
+func (o *InteractiveShellSendCommand) UnsetInstanceId() {
+	o.InstanceId.Unset()
 }
 
 func (o InteractiveShellSendCommand) MarshalJSON() ([]byte, error) {
@@ -134,8 +156,12 @@ func (o InteractiveShellSendCommand) MarshalJSON() ([]byte, error) {
 func (o InteractiveShellSendCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["token"] = o.Token
-	toSerialize["instanceId"] = o.InstanceId.Get()
+	if !IsNil(o.Token) {
+		toSerialize["token"] = o.Token
+	}
+	if o.InstanceId.IsSet() {
+		toSerialize["instanceId"] = o.InstanceId.Get()
+	}
 	return toSerialize, nil
 }
 
@@ -145,8 +171,6 @@ func (o *InteractiveShellSendCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"token",
-		"instanceId",
 	}
 
 	allProperties := make(map[string]interface{})

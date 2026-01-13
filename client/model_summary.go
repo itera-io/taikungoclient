@@ -27,8 +27,8 @@ type Summary struct {
 	TotalUnsupportedResources int32 `json:"totalUnsupportedResources"`
 	TotalUsageBasedResources int32 `json:"totalUsageBasedResources"`
 	TotalNoPriceResources int32 `json:"totalNoPriceResources"`
-	UnsupportedResourceCounts map[string]int32 `json:"unsupportedResourceCounts"`
-	NoPriceResourceCounts map[string]int32 `json:"noPriceResourceCounts"`
+	UnsupportedResourceCounts *map[string]int32 `json:"unsupportedResourceCounts,omitempty"`
+	NoPriceResourceCounts *map[string]int32 `json:"noPriceResourceCounts,omitempty"`
 }
 
 type _Summary Summary
@@ -37,15 +37,13 @@ type _Summary Summary
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSummary(totalDetectedResources int32, totalSupportedResources int32, totalUnsupportedResources int32, totalUsageBasedResources int32, totalNoPriceResources int32, unsupportedResourceCounts map[string]int32, noPriceResourceCounts map[string]int32) *Summary {
+func NewSummary(totalDetectedResources int32, totalSupportedResources int32, totalUnsupportedResources int32, totalUsageBasedResources int32, totalNoPriceResources int32) *Summary {
 	this := Summary{}
 	this.TotalDetectedResources = totalDetectedResources
 	this.TotalSupportedResources = totalSupportedResources
 	this.TotalUnsupportedResources = totalUnsupportedResources
 	this.TotalUsageBasedResources = totalUsageBasedResources
 	this.TotalNoPriceResources = totalNoPriceResources
-	this.UnsupportedResourceCounts = unsupportedResourceCounts
-	this.NoPriceResourceCounts = noPriceResourceCounts
 	return &this
 }
 
@@ -177,52 +175,68 @@ func (o *Summary) SetTotalNoPriceResources(v int32) {
 	o.TotalNoPriceResources = v
 }
 
-// GetUnsupportedResourceCounts returns the UnsupportedResourceCounts field value
+// GetUnsupportedResourceCounts returns the UnsupportedResourceCounts field value if set, zero value otherwise.
 func (o *Summary) GetUnsupportedResourceCounts() map[string]int32 {
-	if o == nil {
+	if o == nil || IsNil(o.UnsupportedResourceCounts) {
 		var ret map[string]int32
 		return ret
 	}
-
-	return o.UnsupportedResourceCounts
+	return *o.UnsupportedResourceCounts
 }
 
-// GetUnsupportedResourceCountsOk returns a tuple with the UnsupportedResourceCounts field value
+// GetUnsupportedResourceCountsOk returns a tuple with the UnsupportedResourceCounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Summary) GetUnsupportedResourceCountsOk() (*map[string]int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UnsupportedResourceCounts) {
 		return nil, false
 	}
-	return &o.UnsupportedResourceCounts, true
+	return o.UnsupportedResourceCounts, true
 }
 
-// SetUnsupportedResourceCounts sets field value
+// HasUnsupportedResourceCounts returns a boolean if a field has been set.
+func (o *Summary) HasUnsupportedResourceCounts() bool {
+	if o != nil && !IsNil(o.UnsupportedResourceCounts) {
+		return true
+	}
+
+	return false
+}
+
+// SetUnsupportedResourceCounts gets a reference to the given map[string]int32 and assigns it to the UnsupportedResourceCounts field.
 func (o *Summary) SetUnsupportedResourceCounts(v map[string]int32) {
-	o.UnsupportedResourceCounts = v
+	o.UnsupportedResourceCounts = &v
 }
 
-// GetNoPriceResourceCounts returns the NoPriceResourceCounts field value
+// GetNoPriceResourceCounts returns the NoPriceResourceCounts field value if set, zero value otherwise.
 func (o *Summary) GetNoPriceResourceCounts() map[string]int32 {
-	if o == nil {
+	if o == nil || IsNil(o.NoPriceResourceCounts) {
 		var ret map[string]int32
 		return ret
 	}
-
-	return o.NoPriceResourceCounts
+	return *o.NoPriceResourceCounts
 }
 
-// GetNoPriceResourceCountsOk returns a tuple with the NoPriceResourceCounts field value
+// GetNoPriceResourceCountsOk returns a tuple with the NoPriceResourceCounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Summary) GetNoPriceResourceCountsOk() (*map[string]int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.NoPriceResourceCounts) {
 		return nil, false
 	}
-	return &o.NoPriceResourceCounts, true
+	return o.NoPriceResourceCounts, true
 }
 
-// SetNoPriceResourceCounts sets field value
+// HasNoPriceResourceCounts returns a boolean if a field has been set.
+func (o *Summary) HasNoPriceResourceCounts() bool {
+	if o != nil && !IsNil(o.NoPriceResourceCounts) {
+		return true
+	}
+
+	return false
+}
+
+// SetNoPriceResourceCounts gets a reference to the given map[string]int32 and assigns it to the NoPriceResourceCounts field.
 func (o *Summary) SetNoPriceResourceCounts(v map[string]int32) {
-	o.NoPriceResourceCounts = v
+	o.NoPriceResourceCounts = &v
 }
 
 func (o Summary) MarshalJSON() ([]byte, error) {
@@ -240,8 +254,12 @@ func (o Summary) ToMap() (map[string]interface{}, error) {
 	toSerialize["totalUnsupportedResources"] = o.TotalUnsupportedResources
 	toSerialize["totalUsageBasedResources"] = o.TotalUsageBasedResources
 	toSerialize["totalNoPriceResources"] = o.TotalNoPriceResources
-	toSerialize["unsupportedResourceCounts"] = o.UnsupportedResourceCounts
-	toSerialize["noPriceResourceCounts"] = o.NoPriceResourceCounts
+	if !IsNil(o.UnsupportedResourceCounts) {
+		toSerialize["unsupportedResourceCounts"] = o.UnsupportedResourceCounts
+	}
+	if !IsNil(o.NoPriceResourceCounts) {
+		toSerialize["noPriceResourceCounts"] = o.NoPriceResourceCounts
+	}
 	return toSerialize, nil
 }
 
@@ -255,8 +273,6 @@ func (o *Summary) UnmarshalJSON(data []byte) (err error) {
 		"totalUnsupportedResources",
 		"totalUsageBasedResources",
 		"totalNoPriceResources",
-		"unsupportedResourceCounts",
-		"noPriceResourceCounts",
 	}
 
 	allProperties := make(map[string]interface{})

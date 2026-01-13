@@ -23,8 +23,8 @@ var _ MappedNullable = &PartnersSearchResponseData{}
 // PartnersSearchResponseData struct for PartnersSearchResponseData
 type PartnersSearchResponseData struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
-	Logo string `json:"logo"`
+	Name *string `json:"name,omitempty"`
+	Logo *string `json:"logo,omitempty"`
 }
 
 type _PartnersSearchResponseData PartnersSearchResponseData
@@ -33,11 +33,9 @@ type _PartnersSearchResponseData PartnersSearchResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPartnersSearchResponseData(id int32, name string, logo string) *PartnersSearchResponseData {
+func NewPartnersSearchResponseData(id int32) *PartnersSearchResponseData {
 	this := PartnersSearchResponseData{}
 	this.Id = id
-	this.Name = name
-	this.Logo = logo
 	return &this
 }
 
@@ -73,52 +71,68 @@ func (o *PartnersSearchResponseData) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *PartnersSearchResponseData) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PartnersSearchResponseData) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *PartnersSearchResponseData) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *PartnersSearchResponseData) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetLogo returns the Logo field value
+// GetLogo returns the Logo field value if set, zero value otherwise.
 func (o *PartnersSearchResponseData) GetLogo() string {
-	if o == nil {
+	if o == nil || IsNil(o.Logo) {
 		var ret string
 		return ret
 	}
-
-	return o.Logo
+	return *o.Logo
 }
 
-// GetLogoOk returns a tuple with the Logo field value
+// GetLogoOk returns a tuple with the Logo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PartnersSearchResponseData) GetLogoOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Logo) {
 		return nil, false
 	}
-	return &o.Logo, true
+	return o.Logo, true
 }
 
-// SetLogo sets field value
+// HasLogo returns a boolean if a field has been set.
+func (o *PartnersSearchResponseData) HasLogo() bool {
+	if o != nil && !IsNil(o.Logo) {
+		return true
+	}
+
+	return false
+}
+
+// SetLogo gets a reference to the given string and assigns it to the Logo field.
 func (o *PartnersSearchResponseData) SetLogo(v string) {
-	o.Logo = v
+	o.Logo = &v
 }
 
 func (o PartnersSearchResponseData) MarshalJSON() ([]byte, error) {
@@ -132,8 +146,12 @@ func (o PartnersSearchResponseData) MarshalJSON() ([]byte, error) {
 func (o PartnersSearchResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
-	toSerialize["logo"] = o.Logo
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Logo) {
+		toSerialize["logo"] = o.Logo
+	}
 	return toSerialize, nil
 }
 
@@ -143,8 +161,6 @@ func (o *PartnersSearchResponseData) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
-		"logo",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -25,14 +25,14 @@ var _ MappedNullable = &OrganizationSubscriptionDto{}
 type OrganizationSubscriptionDto struct {
 	Id int32 `json:"id"`
 	OrganizationId int32 `json:"organizationId"`
-	OrganizationName string `json:"organizationName"`
+	OrganizationName *string `json:"organizationName,omitempty"`
 	SubscriptionId int32 `json:"subscriptionId"`
-	StripeSubscriptionId string `json:"stripeSubscriptionId"`
-	SubscriptionType string `json:"subscriptionType"`
-	SubscriptionName string `json:"subscriptionName"`
+	StripeSubscriptionId *string `json:"stripeSubscriptionId,omitempty"`
+	SubscriptionType *string `json:"subscriptionType,omitempty"`
+	SubscriptionName *string `json:"subscriptionName,omitempty"`
 	StartDate time.Time `json:"startDate"`
 	EndDate NullableTime `json:"endDate,omitempty"`
-	Invoices []InvoiceDto `json:"invoices"`
+	Invoices []InvoiceDto `json:"invoices,omitempty"`
 }
 
 type _OrganizationSubscriptionDto OrganizationSubscriptionDto
@@ -41,17 +41,12 @@ type _OrganizationSubscriptionDto OrganizationSubscriptionDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationSubscriptionDto(id int32, organizationId int32, organizationName string, subscriptionId int32, stripeSubscriptionId string, subscriptionType string, subscriptionName string, startDate time.Time, invoices []InvoiceDto) *OrganizationSubscriptionDto {
+func NewOrganizationSubscriptionDto(id int32, organizationId int32, subscriptionId int32, startDate time.Time) *OrganizationSubscriptionDto {
 	this := OrganizationSubscriptionDto{}
 	this.Id = id
 	this.OrganizationId = organizationId
-	this.OrganizationName = organizationName
 	this.SubscriptionId = subscriptionId
-	this.StripeSubscriptionId = stripeSubscriptionId
-	this.SubscriptionType = subscriptionType
-	this.SubscriptionName = subscriptionName
 	this.StartDate = startDate
-	this.Invoices = invoices
 	return &this
 }
 
@@ -111,28 +106,36 @@ func (o *OrganizationSubscriptionDto) SetOrganizationId(v int32) {
 	o.OrganizationId = v
 }
 
-// GetOrganizationName returns the OrganizationName field value
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *OrganizationSubscriptionDto) GetOrganizationName() string {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
-
-	return o.OrganizationName
+	return *o.OrganizationName
 }
 
-// GetOrganizationNameOk returns a tuple with the OrganizationName field value
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationSubscriptionDto) GetOrganizationNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
-	return &o.OrganizationName, true
+	return o.OrganizationName, true
 }
 
-// SetOrganizationName sets field value
+// HasOrganizationName returns a boolean if a field has been set.
+func (o *OrganizationSubscriptionDto) HasOrganizationName() bool {
+	if o != nil && !IsNil(o.OrganizationName) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
 func (o *OrganizationSubscriptionDto) SetOrganizationName(v string) {
-	o.OrganizationName = v
+	o.OrganizationName = &v
 }
 
 // GetSubscriptionId returns the SubscriptionId field value
@@ -159,76 +162,100 @@ func (o *OrganizationSubscriptionDto) SetSubscriptionId(v int32) {
 	o.SubscriptionId = v
 }
 
-// GetStripeSubscriptionId returns the StripeSubscriptionId field value
+// GetStripeSubscriptionId returns the StripeSubscriptionId field value if set, zero value otherwise.
 func (o *OrganizationSubscriptionDto) GetStripeSubscriptionId() string {
-	if o == nil {
+	if o == nil || IsNil(o.StripeSubscriptionId) {
 		var ret string
 		return ret
 	}
-
-	return o.StripeSubscriptionId
+	return *o.StripeSubscriptionId
 }
 
-// GetStripeSubscriptionIdOk returns a tuple with the StripeSubscriptionId field value
+// GetStripeSubscriptionIdOk returns a tuple with the StripeSubscriptionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationSubscriptionDto) GetStripeSubscriptionIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.StripeSubscriptionId) {
 		return nil, false
 	}
-	return &o.StripeSubscriptionId, true
+	return o.StripeSubscriptionId, true
 }
 
-// SetStripeSubscriptionId sets field value
+// HasStripeSubscriptionId returns a boolean if a field has been set.
+func (o *OrganizationSubscriptionDto) HasStripeSubscriptionId() bool {
+	if o != nil && !IsNil(o.StripeSubscriptionId) {
+		return true
+	}
+
+	return false
+}
+
+// SetStripeSubscriptionId gets a reference to the given string and assigns it to the StripeSubscriptionId field.
 func (o *OrganizationSubscriptionDto) SetStripeSubscriptionId(v string) {
-	o.StripeSubscriptionId = v
+	o.StripeSubscriptionId = &v
 }
 
-// GetSubscriptionType returns the SubscriptionType field value
+// GetSubscriptionType returns the SubscriptionType field value if set, zero value otherwise.
 func (o *OrganizationSubscriptionDto) GetSubscriptionType() string {
-	if o == nil {
+	if o == nil || IsNil(o.SubscriptionType) {
 		var ret string
 		return ret
 	}
-
-	return o.SubscriptionType
+	return *o.SubscriptionType
 }
 
-// GetSubscriptionTypeOk returns a tuple with the SubscriptionType field value
+// GetSubscriptionTypeOk returns a tuple with the SubscriptionType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationSubscriptionDto) GetSubscriptionTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SubscriptionType) {
 		return nil, false
 	}
-	return &o.SubscriptionType, true
+	return o.SubscriptionType, true
 }
 
-// SetSubscriptionType sets field value
+// HasSubscriptionType returns a boolean if a field has been set.
+func (o *OrganizationSubscriptionDto) HasSubscriptionType() bool {
+	if o != nil && !IsNil(o.SubscriptionType) {
+		return true
+	}
+
+	return false
+}
+
+// SetSubscriptionType gets a reference to the given string and assigns it to the SubscriptionType field.
 func (o *OrganizationSubscriptionDto) SetSubscriptionType(v string) {
-	o.SubscriptionType = v
+	o.SubscriptionType = &v
 }
 
-// GetSubscriptionName returns the SubscriptionName field value
+// GetSubscriptionName returns the SubscriptionName field value if set, zero value otherwise.
 func (o *OrganizationSubscriptionDto) GetSubscriptionName() string {
-	if o == nil {
+	if o == nil || IsNil(o.SubscriptionName) {
 		var ret string
 		return ret
 	}
-
-	return o.SubscriptionName
+	return *o.SubscriptionName
 }
 
-// GetSubscriptionNameOk returns a tuple with the SubscriptionName field value
+// GetSubscriptionNameOk returns a tuple with the SubscriptionName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationSubscriptionDto) GetSubscriptionNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SubscriptionName) {
 		return nil, false
 	}
-	return &o.SubscriptionName, true
+	return o.SubscriptionName, true
 }
 
-// SetSubscriptionName sets field value
+// HasSubscriptionName returns a boolean if a field has been set.
+func (o *OrganizationSubscriptionDto) HasSubscriptionName() bool {
+	if o != nil && !IsNil(o.SubscriptionName) {
+		return true
+	}
+
+	return false
+}
+
+// SetSubscriptionName gets a reference to the given string and assigns it to the SubscriptionName field.
 func (o *OrganizationSubscriptionDto) SetSubscriptionName(v string) {
-	o.SubscriptionName = v
+	o.SubscriptionName = &v
 }
 
 // GetStartDate returns the StartDate field value
@@ -297,26 +324,34 @@ func (o *OrganizationSubscriptionDto) UnsetEndDate() {
 	o.EndDate.Unset()
 }
 
-// GetInvoices returns the Invoices field value
+// GetInvoices returns the Invoices field value if set, zero value otherwise.
 func (o *OrganizationSubscriptionDto) GetInvoices() []InvoiceDto {
-	if o == nil {
+	if o == nil || IsNil(o.Invoices) {
 		var ret []InvoiceDto
 		return ret
 	}
-
 	return o.Invoices
 }
 
-// GetInvoicesOk returns a tuple with the Invoices field value
+// GetInvoicesOk returns a tuple with the Invoices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationSubscriptionDto) GetInvoicesOk() ([]InvoiceDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Invoices) {
 		return nil, false
 	}
 	return o.Invoices, true
 }
 
-// SetInvoices sets field value
+// HasInvoices returns a boolean if a field has been set.
+func (o *OrganizationSubscriptionDto) HasInvoices() bool {
+	if o != nil && !IsNil(o.Invoices) {
+		return true
+	}
+
+	return false
+}
+
+// SetInvoices gets a reference to the given []InvoiceDto and assigns it to the Invoices field.
 func (o *OrganizationSubscriptionDto) SetInvoices(v []InvoiceDto) {
 	o.Invoices = v
 }
@@ -333,16 +368,26 @@ func (o OrganizationSubscriptionDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["organizationId"] = o.OrganizationId
-	toSerialize["organizationName"] = o.OrganizationName
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organizationName"] = o.OrganizationName
+	}
 	toSerialize["subscriptionId"] = o.SubscriptionId
-	toSerialize["stripeSubscriptionId"] = o.StripeSubscriptionId
-	toSerialize["subscriptionType"] = o.SubscriptionType
-	toSerialize["subscriptionName"] = o.SubscriptionName
+	if !IsNil(o.StripeSubscriptionId) {
+		toSerialize["stripeSubscriptionId"] = o.StripeSubscriptionId
+	}
+	if !IsNil(o.SubscriptionType) {
+		toSerialize["subscriptionType"] = o.SubscriptionType
+	}
+	if !IsNil(o.SubscriptionName) {
+		toSerialize["subscriptionName"] = o.SubscriptionName
+	}
 	toSerialize["startDate"] = o.StartDate
 	if o.EndDate.IsSet() {
 		toSerialize["endDate"] = o.EndDate.Get()
 	}
-	toSerialize["invoices"] = o.Invoices
+	if !IsNil(o.Invoices) {
+		toSerialize["invoices"] = o.Invoices
+	}
 	return toSerialize, nil
 }
 
@@ -353,13 +398,8 @@ func (o *OrganizationSubscriptionDto) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"id",
 		"organizationId",
-		"organizationName",
 		"subscriptionId",
-		"stripeSubscriptionId",
-		"subscriptionType",
-		"subscriptionName",
 		"startDate",
-		"invoices",
 	}
 
 	allProperties := make(map[string]interface{})

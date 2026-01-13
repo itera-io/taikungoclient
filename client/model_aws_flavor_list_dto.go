@@ -24,13 +24,13 @@ var _ MappedNullable = &AwsFlavorListDto{}
 type AwsFlavorListDto struct {
 	Ram float64 `json:"ram"`
 	Cpu int32 `json:"cpu"`
-	Name string `json:"name"`
-	Description interface{} `json:"description"`
-	LinuxPrice string `json:"linuxPrice"`
-	WindowsPrice string `json:"windowsPrice"`
-	WindowsSpotPrice string `json:"windowsSpotPrice"`
-	LinuxSpotPrice string `json:"linuxSpotPrice"`
-	Zones []string `json:"zones"`
+	Name *string `json:"name,omitempty"`
+	Description interface{} `json:"description,omitempty"`
+	LinuxPrice *string `json:"linuxPrice,omitempty"`
+	WindowsPrice *string `json:"windowsPrice,omitempty"`
+	WindowsSpotPrice *string `json:"windowsSpotPrice,omitempty"`
+	LinuxSpotPrice *string `json:"linuxSpotPrice,omitempty"`
+	Zones []string `json:"zones,omitempty"`
 }
 
 type _AwsFlavorListDto AwsFlavorListDto
@@ -39,17 +39,10 @@ type _AwsFlavorListDto AwsFlavorListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAwsFlavorListDto(ram float64, cpu int32, name string, description interface{}, linuxPrice string, windowsPrice string, windowsSpotPrice string, linuxSpotPrice string, zones []string) *AwsFlavorListDto {
+func NewAwsFlavorListDto(ram float64, cpu int32) *AwsFlavorListDto {
 	this := AwsFlavorListDto{}
 	this.Ram = ram
 	this.Cpu = cpu
-	this.Name = name
-	this.Description = description
-	this.LinuxPrice = linuxPrice
-	this.WindowsPrice = windowsPrice
-	this.WindowsSpotPrice = windowsSpotPrice
-	this.LinuxSpotPrice = linuxSpotPrice
-	this.Zones = zones
 	return &this
 }
 
@@ -109,42 +102,48 @@ func (o *AwsFlavorListDto) SetCpu(v int32) {
 	o.Cpu = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *AwsFlavorListDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AwsFlavorListDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *AwsFlavorListDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *AwsFlavorListDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetDescription returns the Description field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AwsFlavorListDto) GetDescription() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AwsFlavorListDto) GetDescriptionOk() (*interface{}, bool) {
@@ -154,127 +153,176 @@ func (o *AwsFlavorListDto) GetDescriptionOk() (*interface{}, bool) {
 	return &o.Description, true
 }
 
-// SetDescription sets field value
+// HasDescription returns a boolean if a field has been set.
+func (o *AwsFlavorListDto) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given interface{} and assigns it to the Description field.
 func (o *AwsFlavorListDto) SetDescription(v interface{}) {
 	o.Description = v
 }
 
-// GetLinuxPrice returns the LinuxPrice field value
+// GetLinuxPrice returns the LinuxPrice field value if set, zero value otherwise.
 func (o *AwsFlavorListDto) GetLinuxPrice() string {
-	if o == nil {
+	if o == nil || IsNil(o.LinuxPrice) {
 		var ret string
 		return ret
 	}
-
-	return o.LinuxPrice
+	return *o.LinuxPrice
 }
 
-// GetLinuxPriceOk returns a tuple with the LinuxPrice field value
+// GetLinuxPriceOk returns a tuple with the LinuxPrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AwsFlavorListDto) GetLinuxPriceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LinuxPrice) {
 		return nil, false
 	}
-	return &o.LinuxPrice, true
+	return o.LinuxPrice, true
 }
 
-// SetLinuxPrice sets field value
+// HasLinuxPrice returns a boolean if a field has been set.
+func (o *AwsFlavorListDto) HasLinuxPrice() bool {
+	if o != nil && !IsNil(o.LinuxPrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinuxPrice gets a reference to the given string and assigns it to the LinuxPrice field.
 func (o *AwsFlavorListDto) SetLinuxPrice(v string) {
-	o.LinuxPrice = v
+	o.LinuxPrice = &v
 }
 
-// GetWindowsPrice returns the WindowsPrice field value
+// GetWindowsPrice returns the WindowsPrice field value if set, zero value otherwise.
 func (o *AwsFlavorListDto) GetWindowsPrice() string {
-	if o == nil {
+	if o == nil || IsNil(o.WindowsPrice) {
 		var ret string
 		return ret
 	}
-
-	return o.WindowsPrice
+	return *o.WindowsPrice
 }
 
-// GetWindowsPriceOk returns a tuple with the WindowsPrice field value
+// GetWindowsPriceOk returns a tuple with the WindowsPrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AwsFlavorListDto) GetWindowsPriceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.WindowsPrice) {
 		return nil, false
 	}
-	return &o.WindowsPrice, true
+	return o.WindowsPrice, true
 }
 
-// SetWindowsPrice sets field value
+// HasWindowsPrice returns a boolean if a field has been set.
+func (o *AwsFlavorListDto) HasWindowsPrice() bool {
+	if o != nil && !IsNil(o.WindowsPrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetWindowsPrice gets a reference to the given string and assigns it to the WindowsPrice field.
 func (o *AwsFlavorListDto) SetWindowsPrice(v string) {
-	o.WindowsPrice = v
+	o.WindowsPrice = &v
 }
 
-// GetWindowsSpotPrice returns the WindowsSpotPrice field value
+// GetWindowsSpotPrice returns the WindowsSpotPrice field value if set, zero value otherwise.
 func (o *AwsFlavorListDto) GetWindowsSpotPrice() string {
-	if o == nil {
+	if o == nil || IsNil(o.WindowsSpotPrice) {
 		var ret string
 		return ret
 	}
-
-	return o.WindowsSpotPrice
+	return *o.WindowsSpotPrice
 }
 
-// GetWindowsSpotPriceOk returns a tuple with the WindowsSpotPrice field value
+// GetWindowsSpotPriceOk returns a tuple with the WindowsSpotPrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AwsFlavorListDto) GetWindowsSpotPriceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.WindowsSpotPrice) {
 		return nil, false
 	}
-	return &o.WindowsSpotPrice, true
+	return o.WindowsSpotPrice, true
 }
 
-// SetWindowsSpotPrice sets field value
+// HasWindowsSpotPrice returns a boolean if a field has been set.
+func (o *AwsFlavorListDto) HasWindowsSpotPrice() bool {
+	if o != nil && !IsNil(o.WindowsSpotPrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetWindowsSpotPrice gets a reference to the given string and assigns it to the WindowsSpotPrice field.
 func (o *AwsFlavorListDto) SetWindowsSpotPrice(v string) {
-	o.WindowsSpotPrice = v
+	o.WindowsSpotPrice = &v
 }
 
-// GetLinuxSpotPrice returns the LinuxSpotPrice field value
+// GetLinuxSpotPrice returns the LinuxSpotPrice field value if set, zero value otherwise.
 func (o *AwsFlavorListDto) GetLinuxSpotPrice() string {
-	if o == nil {
+	if o == nil || IsNil(o.LinuxSpotPrice) {
 		var ret string
 		return ret
 	}
-
-	return o.LinuxSpotPrice
+	return *o.LinuxSpotPrice
 }
 
-// GetLinuxSpotPriceOk returns a tuple with the LinuxSpotPrice field value
+// GetLinuxSpotPriceOk returns a tuple with the LinuxSpotPrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AwsFlavorListDto) GetLinuxSpotPriceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LinuxSpotPrice) {
 		return nil, false
 	}
-	return &o.LinuxSpotPrice, true
+	return o.LinuxSpotPrice, true
 }
 
-// SetLinuxSpotPrice sets field value
+// HasLinuxSpotPrice returns a boolean if a field has been set.
+func (o *AwsFlavorListDto) HasLinuxSpotPrice() bool {
+	if o != nil && !IsNil(o.LinuxSpotPrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinuxSpotPrice gets a reference to the given string and assigns it to the LinuxSpotPrice field.
 func (o *AwsFlavorListDto) SetLinuxSpotPrice(v string) {
-	o.LinuxSpotPrice = v
+	o.LinuxSpotPrice = &v
 }
 
-// GetZones returns the Zones field value
+// GetZones returns the Zones field value if set, zero value otherwise.
 func (o *AwsFlavorListDto) GetZones() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Zones) {
 		var ret []string
 		return ret
 	}
-
 	return o.Zones
 }
 
-// GetZonesOk returns a tuple with the Zones field value
+// GetZonesOk returns a tuple with the Zones field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AwsFlavorListDto) GetZonesOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Zones) {
 		return nil, false
 	}
 	return o.Zones, true
 }
 
-// SetZones sets field value
+// HasZones returns a boolean if a field has been set.
+func (o *AwsFlavorListDto) HasZones() bool {
+	if o != nil && !IsNil(o.Zones) {
+		return true
+	}
+
+	return false
+}
+
+// SetZones gets a reference to the given []string and assigns it to the Zones field.
 func (o *AwsFlavorListDto) SetZones(v []string) {
 	o.Zones = v
 }
@@ -291,15 +339,27 @@ func (o AwsFlavorListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["ram"] = o.Ram
 	toSerialize["cpu"] = o.Cpu
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
-	toSerialize["linuxPrice"] = o.LinuxPrice
-	toSerialize["windowsPrice"] = o.WindowsPrice
-	toSerialize["windowsSpotPrice"] = o.WindowsSpotPrice
-	toSerialize["linuxSpotPrice"] = o.LinuxSpotPrice
-	toSerialize["zones"] = o.Zones
+	if !IsNil(o.LinuxPrice) {
+		toSerialize["linuxPrice"] = o.LinuxPrice
+	}
+	if !IsNil(o.WindowsPrice) {
+		toSerialize["windowsPrice"] = o.WindowsPrice
+	}
+	if !IsNil(o.WindowsSpotPrice) {
+		toSerialize["windowsSpotPrice"] = o.WindowsSpotPrice
+	}
+	if !IsNil(o.LinuxSpotPrice) {
+		toSerialize["linuxSpotPrice"] = o.LinuxSpotPrice
+	}
+	if !IsNil(o.Zones) {
+		toSerialize["zones"] = o.Zones
+	}
 	return toSerialize, nil
 }
 
@@ -310,13 +370,6 @@ func (o *AwsFlavorListDto) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"ram",
 		"cpu",
-		"name",
-		"description",
-		"linuxPrice",
-		"windowsPrice",
-		"windowsSpotPrice",
-		"linuxSpotPrice",
-		"zones",
 	}
 
 	allProperties := make(map[string]interface{})

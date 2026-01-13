@@ -22,7 +22,7 @@ var _ MappedNullable = &DisableUserCommand{}
 
 // DisableUserCommand struct for DisableUserCommand
 type DisableUserCommand struct {
-	Id string `json:"id"`
+	Id *string `json:"id,omitempty"`
 	Disable bool `json:"disable"`
 }
 
@@ -32,9 +32,8 @@ type _DisableUserCommand DisableUserCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDisableUserCommand(id string, disable bool) *DisableUserCommand {
+func NewDisableUserCommand(disable bool) *DisableUserCommand {
 	this := DisableUserCommand{}
-	this.Id = id
 	this.Disable = disable
 	return &this
 }
@@ -47,28 +46,36 @@ func NewDisableUserCommandWithDefaults() *DisableUserCommand {
 	return &this
 }
 
-// GetId returns the Id field value
+// GetId returns the Id field value if set, zero value otherwise.
 func (o *DisableUserCommand) GetId() string {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-
-	return o.Id
+	return *o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DisableUserCommand) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return &o.Id, true
+	return o.Id, true
 }
 
-// SetId sets field value
+// HasId returns a boolean if a field has been set.
+func (o *DisableUserCommand) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
 func (o *DisableUserCommand) SetId(v string) {
-	o.Id = v
+	o.Id = &v
 }
 
 // GetDisable returns the Disable field value
@@ -105,7 +112,9 @@ func (o DisableUserCommand) MarshalJSON() ([]byte, error) {
 
 func (o DisableUserCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["disable"] = o.Disable
 	return toSerialize, nil
 }
@@ -115,7 +124,6 @@ func (o *DisableUserCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"id",
 		"disable",
 	}
 

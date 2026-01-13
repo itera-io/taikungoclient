@@ -23,10 +23,10 @@ var _ MappedNullable = &DatastoreSummary{}
 // DatastoreSummary struct for DatastoreSummary
 type DatastoreSummary struct {
 	Capacity int64 `json:"capacity"`
-	Datastore string `json:"datastore"`
+	Datastore *string `json:"datastore,omitempty"`
 	FreeSpace int64 `json:"freeSpace"`
-	Name string `json:"name"`
-	Type string `json:"type"`
+	Name *string `json:"name,omitempty"`
+	Type *string `json:"type,omitempty"`
 }
 
 type _DatastoreSummary DatastoreSummary
@@ -35,13 +35,10 @@ type _DatastoreSummary DatastoreSummary
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDatastoreSummary(capacity int64, datastore string, freeSpace int64, name string, type_ string) *DatastoreSummary {
+func NewDatastoreSummary(capacity int64, freeSpace int64) *DatastoreSummary {
 	this := DatastoreSummary{}
 	this.Capacity = capacity
-	this.Datastore = datastore
 	this.FreeSpace = freeSpace
-	this.Name = name
-	this.Type = type_
 	return &this
 }
 
@@ -77,28 +74,36 @@ func (o *DatastoreSummary) SetCapacity(v int64) {
 	o.Capacity = v
 }
 
-// GetDatastore returns the Datastore field value
+// GetDatastore returns the Datastore field value if set, zero value otherwise.
 func (o *DatastoreSummary) GetDatastore() string {
-	if o == nil {
+	if o == nil || IsNil(o.Datastore) {
 		var ret string
 		return ret
 	}
-
-	return o.Datastore
+	return *o.Datastore
 }
 
-// GetDatastoreOk returns a tuple with the Datastore field value
+// GetDatastoreOk returns a tuple with the Datastore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatastoreSummary) GetDatastoreOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Datastore) {
 		return nil, false
 	}
-	return &o.Datastore, true
+	return o.Datastore, true
 }
 
-// SetDatastore sets field value
+// HasDatastore returns a boolean if a field has been set.
+func (o *DatastoreSummary) HasDatastore() bool {
+	if o != nil && !IsNil(o.Datastore) {
+		return true
+	}
+
+	return false
+}
+
+// SetDatastore gets a reference to the given string and assigns it to the Datastore field.
 func (o *DatastoreSummary) SetDatastore(v string) {
-	o.Datastore = v
+	o.Datastore = &v
 }
 
 // GetFreeSpace returns the FreeSpace field value
@@ -125,52 +130,68 @@ func (o *DatastoreSummary) SetFreeSpace(v int64) {
 	o.FreeSpace = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *DatastoreSummary) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatastoreSummary) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *DatastoreSummary) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DatastoreSummary) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetType returns the Type field value
+// GetType returns the Type field value if set, zero value otherwise.
 func (o *DatastoreSummary) GetType() string {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
-
-	return o.Type
+	return *o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatastoreSummary) GetTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return &o.Type, true
+	return o.Type, true
 }
 
-// SetType sets field value
+// HasType returns a boolean if a field has been set.
+func (o *DatastoreSummary) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
 func (o *DatastoreSummary) SetType(v string) {
-	o.Type = v
+	o.Type = &v
 }
 
 func (o DatastoreSummary) MarshalJSON() ([]byte, error) {
@@ -184,10 +205,16 @@ func (o DatastoreSummary) MarshalJSON() ([]byte, error) {
 func (o DatastoreSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["capacity"] = o.Capacity
-	toSerialize["datastore"] = o.Datastore
+	if !IsNil(o.Datastore) {
+		toSerialize["datastore"] = o.Datastore
+	}
 	toSerialize["freeSpace"] = o.FreeSpace
-	toSerialize["name"] = o.Name
-	toSerialize["type"] = o.Type
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
 	return toSerialize, nil
 }
 
@@ -197,10 +224,7 @@ func (o *DatastoreSummary) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"capacity",
-		"datastore",
 		"freeSpace",
-		"name",
-		"type",
 	}
 
 	allProperties := make(map[string]interface{})

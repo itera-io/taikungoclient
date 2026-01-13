@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the TransferTicketCommand type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &TransferTicketCommand{}
 
 // TransferTicketCommand struct for TransferTicketCommand
 type TransferTicketCommand struct {
-	TicketId string `json:"ticketId"`
-	UserId string `json:"userId"`
+	TicketId *string `json:"ticketId,omitempty"`
+	UserId *string `json:"userId,omitempty"`
 }
-
-type _TransferTicketCommand TransferTicketCommand
 
 // NewTransferTicketCommand instantiates a new TransferTicketCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferTicketCommand(ticketId string, userId string) *TransferTicketCommand {
+func NewTransferTicketCommand() *TransferTicketCommand {
 	this := TransferTicketCommand{}
-	this.TicketId = ticketId
-	this.UserId = userId
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewTransferTicketCommandWithDefaults() *TransferTicketCommand {
 	return &this
 }
 
-// GetTicketId returns the TicketId field value
+// GetTicketId returns the TicketId field value if set, zero value otherwise.
 func (o *TransferTicketCommand) GetTicketId() string {
-	if o == nil {
+	if o == nil || IsNil(o.TicketId) {
 		var ret string
 		return ret
 	}
-
-	return o.TicketId
+	return *o.TicketId
 }
 
-// GetTicketIdOk returns a tuple with the TicketId field value
+// GetTicketIdOk returns a tuple with the TicketId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransferTicketCommand) GetTicketIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TicketId) {
 		return nil, false
 	}
-	return &o.TicketId, true
+	return o.TicketId, true
 }
 
-// SetTicketId sets field value
+// HasTicketId returns a boolean if a field has been set.
+func (o *TransferTicketCommand) HasTicketId() bool {
+	if o != nil && !IsNil(o.TicketId) {
+		return true
+	}
+
+	return false
+}
+
+// SetTicketId gets a reference to the given string and assigns it to the TicketId field.
 func (o *TransferTicketCommand) SetTicketId(v string) {
-	o.TicketId = v
+	o.TicketId = &v
 }
 
-// GetUserId returns the UserId field value
+// GetUserId returns the UserId field value if set, zero value otherwise.
 func (o *TransferTicketCommand) GetUserId() string {
-	if o == nil {
+	if o == nil || IsNil(o.UserId) {
 		var ret string
 		return ret
 	}
-
-	return o.UserId
+	return *o.UserId
 }
 
-// GetUserIdOk returns a tuple with the UserId field value
+// GetUserIdOk returns a tuple with the UserId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TransferTicketCommand) GetUserIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UserId) {
 		return nil, false
 	}
-	return &o.UserId, true
+	return o.UserId, true
 }
 
-// SetUserId sets field value
+// HasUserId returns a boolean if a field has been set.
+func (o *TransferTicketCommand) HasUserId() bool {
+	if o != nil && !IsNil(o.UserId) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserId gets a reference to the given string and assigns it to the UserId field.
 func (o *TransferTicketCommand) SetUserId(v string) {
-	o.UserId = v
+	o.UserId = &v
 }
 
 func (o TransferTicketCommand) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o TransferTicketCommand) MarshalJSON() ([]byte, error) {
 
 func (o TransferTicketCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["ticketId"] = o.TicketId
-	toSerialize["userId"] = o.UserId
+	if !IsNil(o.TicketId) {
+		toSerialize["ticketId"] = o.TicketId
+	}
+	if !IsNil(o.UserId) {
+		toSerialize["userId"] = o.UserId
+	}
 	return toSerialize, nil
-}
-
-func (o *TransferTicketCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"ticketId",
-		"userId",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varTransferTicketCommand := _TransferTicketCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTransferTicketCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = TransferTicketCommand(varTransferTicketCommand)
-
-	return err
 }
 
 type NullableTransferTicketCommand struct {

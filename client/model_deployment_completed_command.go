@@ -23,7 +23,7 @@ var _ MappedNullable = &DeploymentCompletedCommand{}
 // DeploymentCompletedCommand struct for DeploymentCompletedCommand
 type DeploymentCompletedCommand struct {
 	ProjectId int32 `json:"projectId"`
-	Result string `json:"result"`
+	Result *string `json:"result,omitempty"`
 	FromCronJob bool `json:"fromCronJob"`
 }
 
@@ -33,10 +33,9 @@ type _DeploymentCompletedCommand DeploymentCompletedCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeploymentCompletedCommand(projectId int32, result string, fromCronJob bool) *DeploymentCompletedCommand {
+func NewDeploymentCompletedCommand(projectId int32, fromCronJob bool) *DeploymentCompletedCommand {
 	this := DeploymentCompletedCommand{}
 	this.ProjectId = projectId
-	this.Result = result
 	this.FromCronJob = fromCronJob
 	return &this
 }
@@ -75,28 +74,36 @@ func (o *DeploymentCompletedCommand) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetResult returns the Result field value
+// GetResult returns the Result field value if set, zero value otherwise.
 func (o *DeploymentCompletedCommand) GetResult() string {
-	if o == nil {
+	if o == nil || IsNil(o.Result) {
 		var ret string
 		return ret
 	}
-
-	return o.Result
+	return *o.Result
 }
 
-// GetResultOk returns a tuple with the Result field value
+// GetResultOk returns a tuple with the Result field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentCompletedCommand) GetResultOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Result) {
 		return nil, false
 	}
-	return &o.Result, true
+	return o.Result, true
 }
 
-// SetResult sets field value
+// HasResult returns a boolean if a field has been set.
+func (o *DeploymentCompletedCommand) HasResult() bool {
+	if o != nil && !IsNil(o.Result) {
+		return true
+	}
+
+	return false
+}
+
+// SetResult gets a reference to the given string and assigns it to the Result field.
 func (o *DeploymentCompletedCommand) SetResult(v string) {
-	o.Result = v
+	o.Result = &v
 }
 
 // GetFromCronJob returns the FromCronJob field value
@@ -134,7 +141,9 @@ func (o DeploymentCompletedCommand) MarshalJSON() ([]byte, error) {
 func (o DeploymentCompletedCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["result"] = o.Result
+	if !IsNil(o.Result) {
+		toSerialize["result"] = o.Result
+	}
 	toSerialize["fromCronJob"] = o.FromCronJob
 	return toSerialize, nil
 }
@@ -145,7 +154,6 @@ func (o *DeploymentCompletedCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"result",
 		"fromCronJob",
 	}
 

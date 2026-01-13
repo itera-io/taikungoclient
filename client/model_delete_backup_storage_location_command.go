@@ -23,7 +23,7 @@ var _ MappedNullable = &DeleteBackupStorageLocationCommand{}
 // DeleteBackupStorageLocationCommand struct for DeleteBackupStorageLocationCommand
 type DeleteBackupStorageLocationCommand struct {
 	ProjectId int32 `json:"projectId"`
-	StorageLocation string `json:"storageLocation"`
+	StorageLocation *string `json:"storageLocation,omitempty"`
 }
 
 type _DeleteBackupStorageLocationCommand DeleteBackupStorageLocationCommand
@@ -32,10 +32,9 @@ type _DeleteBackupStorageLocationCommand DeleteBackupStorageLocationCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeleteBackupStorageLocationCommand(projectId int32, storageLocation string) *DeleteBackupStorageLocationCommand {
+func NewDeleteBackupStorageLocationCommand(projectId int32) *DeleteBackupStorageLocationCommand {
 	this := DeleteBackupStorageLocationCommand{}
 	this.ProjectId = projectId
-	this.StorageLocation = storageLocation
 	return &this
 }
 
@@ -71,28 +70,36 @@ func (o *DeleteBackupStorageLocationCommand) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetStorageLocation returns the StorageLocation field value
+// GetStorageLocation returns the StorageLocation field value if set, zero value otherwise.
 func (o *DeleteBackupStorageLocationCommand) GetStorageLocation() string {
-	if o == nil {
+	if o == nil || IsNil(o.StorageLocation) {
 		var ret string
 		return ret
 	}
-
-	return o.StorageLocation
+	return *o.StorageLocation
 }
 
-// GetStorageLocationOk returns a tuple with the StorageLocation field value
+// GetStorageLocationOk returns a tuple with the StorageLocation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeleteBackupStorageLocationCommand) GetStorageLocationOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.StorageLocation) {
 		return nil, false
 	}
-	return &o.StorageLocation, true
+	return o.StorageLocation, true
 }
 
-// SetStorageLocation sets field value
+// HasStorageLocation returns a boolean if a field has been set.
+func (o *DeleteBackupStorageLocationCommand) HasStorageLocation() bool {
+	if o != nil && !IsNil(o.StorageLocation) {
+		return true
+	}
+
+	return false
+}
+
+// SetStorageLocation gets a reference to the given string and assigns it to the StorageLocation field.
 func (o *DeleteBackupStorageLocationCommand) SetStorageLocation(v string) {
-	o.StorageLocation = v
+	o.StorageLocation = &v
 }
 
 func (o DeleteBackupStorageLocationCommand) MarshalJSON() ([]byte, error) {
@@ -106,7 +113,9 @@ func (o DeleteBackupStorageLocationCommand) MarshalJSON() ([]byte, error) {
 func (o DeleteBackupStorageLocationCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["storageLocation"] = o.StorageLocation
+	if !IsNil(o.StorageLocation) {
+		toSerialize["storageLocation"] = o.StorageLocation
+	}
 	return toSerialize, nil
 }
 
@@ -116,7 +125,6 @@ func (o *DeleteBackupStorageLocationCommand) UnmarshalJSON(data []byte) (err err
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"storageLocation",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -23,7 +23,7 @@ var _ MappedNullable = &FullSpotOperationCommand{}
 // FullSpotOperationCommand struct for FullSpotOperationCommand
 type FullSpotOperationCommand struct {
 	Id int32 `json:"id"`
-	Mode string `json:"mode"`
+	Mode *string `json:"mode,omitempty"`
 }
 
 type _FullSpotOperationCommand FullSpotOperationCommand
@@ -32,10 +32,9 @@ type _FullSpotOperationCommand FullSpotOperationCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFullSpotOperationCommand(id int32, mode string) *FullSpotOperationCommand {
+func NewFullSpotOperationCommand(id int32) *FullSpotOperationCommand {
 	this := FullSpotOperationCommand{}
 	this.Id = id
-	this.Mode = mode
 	return &this
 }
 
@@ -71,28 +70,36 @@ func (o *FullSpotOperationCommand) SetId(v int32) {
 	o.Id = v
 }
 
-// GetMode returns the Mode field value
+// GetMode returns the Mode field value if set, zero value otherwise.
 func (o *FullSpotOperationCommand) GetMode() string {
-	if o == nil {
+	if o == nil || IsNil(o.Mode) {
 		var ret string
 		return ret
 	}
-
-	return o.Mode
+	return *o.Mode
 }
 
-// GetModeOk returns a tuple with the Mode field value
+// GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FullSpotOperationCommand) GetModeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
-	return &o.Mode, true
+	return o.Mode, true
 }
 
-// SetMode sets field value
+// HasMode returns a boolean if a field has been set.
+func (o *FullSpotOperationCommand) HasMode() bool {
+	if o != nil && !IsNil(o.Mode) {
+		return true
+	}
+
+	return false
+}
+
+// SetMode gets a reference to the given string and assigns it to the Mode field.
 func (o *FullSpotOperationCommand) SetMode(v string) {
-	o.Mode = v
+	o.Mode = &v
 }
 
 func (o FullSpotOperationCommand) MarshalJSON() ([]byte, error) {
@@ -106,7 +113,9 @@ func (o FullSpotOperationCommand) MarshalJSON() ([]byte, error) {
 func (o FullSpotOperationCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["mode"] = o.Mode
+	if !IsNil(o.Mode) {
+		toSerialize["mode"] = o.Mode
+	}
 	return toSerialize, nil
 }
 
@@ -116,7 +125,6 @@ func (o *FullSpotOperationCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"mode",
 	}
 
 	allProperties := make(map[string]interface{})

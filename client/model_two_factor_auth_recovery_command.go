@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the TwoFactorAuthRecoveryCommand type satisfies the MappedNullable interface at compile time
@@ -22,18 +20,15 @@ var _ MappedNullable = &TwoFactorAuthRecoveryCommand{}
 
 // TwoFactorAuthRecoveryCommand struct for TwoFactorAuthRecoveryCommand
 type TwoFactorAuthRecoveryCommand struct {
-	RecoveryCode string `json:"recoveryCode"`
+	RecoveryCode *string `json:"recoveryCode,omitempty"`
 }
-
-type _TwoFactorAuthRecoveryCommand TwoFactorAuthRecoveryCommand
 
 // NewTwoFactorAuthRecoveryCommand instantiates a new TwoFactorAuthRecoveryCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTwoFactorAuthRecoveryCommand(recoveryCode string) *TwoFactorAuthRecoveryCommand {
+func NewTwoFactorAuthRecoveryCommand() *TwoFactorAuthRecoveryCommand {
 	this := TwoFactorAuthRecoveryCommand{}
-	this.RecoveryCode = recoveryCode
 	return &this
 }
 
@@ -45,28 +40,36 @@ func NewTwoFactorAuthRecoveryCommandWithDefaults() *TwoFactorAuthRecoveryCommand
 	return &this
 }
 
-// GetRecoveryCode returns the RecoveryCode field value
+// GetRecoveryCode returns the RecoveryCode field value if set, zero value otherwise.
 func (o *TwoFactorAuthRecoveryCommand) GetRecoveryCode() string {
-	if o == nil {
+	if o == nil || IsNil(o.RecoveryCode) {
 		var ret string
 		return ret
 	}
-
-	return o.RecoveryCode
+	return *o.RecoveryCode
 }
 
-// GetRecoveryCodeOk returns a tuple with the RecoveryCode field value
+// GetRecoveryCodeOk returns a tuple with the RecoveryCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TwoFactorAuthRecoveryCommand) GetRecoveryCodeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RecoveryCode) {
 		return nil, false
 	}
-	return &o.RecoveryCode, true
+	return o.RecoveryCode, true
 }
 
-// SetRecoveryCode sets field value
+// HasRecoveryCode returns a boolean if a field has been set.
+func (o *TwoFactorAuthRecoveryCommand) HasRecoveryCode() bool {
+	if o != nil && !IsNil(o.RecoveryCode) {
+		return true
+	}
+
+	return false
+}
+
+// SetRecoveryCode gets a reference to the given string and assigns it to the RecoveryCode field.
 func (o *TwoFactorAuthRecoveryCommand) SetRecoveryCode(v string) {
-	o.RecoveryCode = v
+	o.RecoveryCode = &v
 }
 
 func (o TwoFactorAuthRecoveryCommand) MarshalJSON() ([]byte, error) {
@@ -79,45 +82,10 @@ func (o TwoFactorAuthRecoveryCommand) MarshalJSON() ([]byte, error) {
 
 func (o TwoFactorAuthRecoveryCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["recoveryCode"] = o.RecoveryCode
+	if !IsNil(o.RecoveryCode) {
+		toSerialize["recoveryCode"] = o.RecoveryCode
+	}
 	return toSerialize, nil
-}
-
-func (o *TwoFactorAuthRecoveryCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"recoveryCode",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varTwoFactorAuthRecoveryCommand := _TwoFactorAuthRecoveryCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTwoFactorAuthRecoveryCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = TwoFactorAuthRecoveryCommand(varTwoFactorAuthRecoveryCommand)
-
-	return err
 }
 
 type NullableTwoFactorAuthRecoveryCommand struct {

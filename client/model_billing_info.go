@@ -22,7 +22,7 @@ var _ MappedNullable = &BillingInfo{}
 
 // BillingInfo struct for BillingInfo
 type BillingInfo struct {
-	Data []BillingSummaryDto `json:"data"`
+	Data []BillingSummaryDto `json:"data,omitempty"`
 	TotalTcu float64 `json:"totalTcu"`
 	TotalCount int32 `json:"totalCount"`
 }
@@ -33,9 +33,8 @@ type _BillingInfo BillingInfo
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBillingInfo(data []BillingSummaryDto, totalTcu float64, totalCount int32) *BillingInfo {
+func NewBillingInfo(totalTcu float64, totalCount int32) *BillingInfo {
 	this := BillingInfo{}
-	this.Data = data
 	this.TotalTcu = totalTcu
 	this.TotalCount = totalCount
 	return &this
@@ -49,26 +48,34 @@ func NewBillingInfoWithDefaults() *BillingInfo {
 	return &this
 }
 
-// GetData returns the Data field value
+// GetData returns the Data field value if set, zero value otherwise.
 func (o *BillingInfo) GetData() []BillingSummaryDto {
-	if o == nil {
+	if o == nil || IsNil(o.Data) {
 		var ret []BillingSummaryDto
 		return ret
 	}
-
 	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value
+// GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillingInfo) GetDataOk() ([]BillingSummaryDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
 	return o.Data, true
 }
 
-// SetData sets field value
+// HasData returns a boolean if a field has been set.
+func (o *BillingInfo) HasData() bool {
+	if o != nil && !IsNil(o.Data) {
+		return true
+	}
+
+	return false
+}
+
+// SetData gets a reference to the given []BillingSummaryDto and assigns it to the Data field.
 func (o *BillingInfo) SetData(v []BillingSummaryDto) {
 	o.Data = v
 }
@@ -131,7 +138,9 @@ func (o BillingInfo) MarshalJSON() ([]byte, error) {
 
 func (o BillingInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["data"] = o.Data
+	if !IsNil(o.Data) {
+		toSerialize["data"] = o.Data
+	}
 	toSerialize["totalTcu"] = o.TotalTcu
 	toSerialize["totalCount"] = o.TotalCount
 	return toSerialize, nil
@@ -142,7 +151,6 @@ func (o *BillingInfo) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"data",
 		"totalTcu",
 		"totalCount",
 	}

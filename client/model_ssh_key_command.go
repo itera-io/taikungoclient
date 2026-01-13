@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the SshKeyCommand type satisfies the MappedNullable interface at compile time
@@ -22,18 +20,15 @@ var _ MappedNullable = &SshKeyCommand{}
 
 // SshKeyCommand struct for SshKeyCommand
 type SshKeyCommand struct {
-	SshPublicKey string `json:"sshPublicKey"`
+	SshPublicKey *string `json:"sshPublicKey,omitempty"`
 }
-
-type _SshKeyCommand SshKeyCommand
 
 // NewSshKeyCommand instantiates a new SshKeyCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSshKeyCommand(sshPublicKey string) *SshKeyCommand {
+func NewSshKeyCommand() *SshKeyCommand {
 	this := SshKeyCommand{}
-	this.SshPublicKey = sshPublicKey
 	return &this
 }
 
@@ -45,28 +40,36 @@ func NewSshKeyCommandWithDefaults() *SshKeyCommand {
 	return &this
 }
 
-// GetSshPublicKey returns the SshPublicKey field value
+// GetSshPublicKey returns the SshPublicKey field value if set, zero value otherwise.
 func (o *SshKeyCommand) GetSshPublicKey() string {
-	if o == nil {
+	if o == nil || IsNil(o.SshPublicKey) {
 		var ret string
 		return ret
 	}
-
-	return o.SshPublicKey
+	return *o.SshPublicKey
 }
 
-// GetSshPublicKeyOk returns a tuple with the SshPublicKey field value
+// GetSshPublicKeyOk returns a tuple with the SshPublicKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SshKeyCommand) GetSshPublicKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SshPublicKey) {
 		return nil, false
 	}
-	return &o.SshPublicKey, true
+	return o.SshPublicKey, true
 }
 
-// SetSshPublicKey sets field value
+// HasSshPublicKey returns a boolean if a field has been set.
+func (o *SshKeyCommand) HasSshPublicKey() bool {
+	if o != nil && !IsNil(o.SshPublicKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetSshPublicKey gets a reference to the given string and assigns it to the SshPublicKey field.
 func (o *SshKeyCommand) SetSshPublicKey(v string) {
-	o.SshPublicKey = v
+	o.SshPublicKey = &v
 }
 
 func (o SshKeyCommand) MarshalJSON() ([]byte, error) {
@@ -79,45 +82,10 @@ func (o SshKeyCommand) MarshalJSON() ([]byte, error) {
 
 func (o SshKeyCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["sshPublicKey"] = o.SshPublicKey
+	if !IsNil(o.SshPublicKey) {
+		toSerialize["sshPublicKey"] = o.SshPublicKey
+	}
 	return toSerialize, nil
-}
-
-func (o *SshKeyCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"sshPublicKey",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSshKeyCommand := _SshKeyCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSshKeyCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SshKeyCommand(varSshKeyCommand)
-
-	return err
 }
 
 type NullableSshKeyCommand struct {

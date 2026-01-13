@@ -24,7 +24,7 @@ var _ MappedNullable = &AzureQuotaListRecordDto{}
 type AzureQuotaListRecordDto struct {
 	TotalCores int64 `json:"totalCores"`
 	CurrentUsage int32 `json:"currentUsage"`
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 }
 
 type _AzureQuotaListRecordDto AzureQuotaListRecordDto
@@ -33,11 +33,10 @@ type _AzureQuotaListRecordDto AzureQuotaListRecordDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAzureQuotaListRecordDto(totalCores int64, currentUsage int32, name string) *AzureQuotaListRecordDto {
+func NewAzureQuotaListRecordDto(totalCores int64, currentUsage int32) *AzureQuotaListRecordDto {
 	this := AzureQuotaListRecordDto{}
 	this.TotalCores = totalCores
 	this.CurrentUsage = currentUsage
-	this.Name = name
 	return &this
 }
 
@@ -97,28 +96,36 @@ func (o *AzureQuotaListRecordDto) SetCurrentUsage(v int32) {
 	o.CurrentUsage = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *AzureQuotaListRecordDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AzureQuotaListRecordDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *AzureQuotaListRecordDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *AzureQuotaListRecordDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 func (o AzureQuotaListRecordDto) MarshalJSON() ([]byte, error) {
@@ -133,7 +140,9 @@ func (o AzureQuotaListRecordDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["totalCores"] = o.TotalCores
 	toSerialize["currentUsage"] = o.CurrentUsage
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	return toSerialize, nil
 }
 
@@ -144,7 +153,6 @@ func (o *AzureQuotaListRecordDto) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"totalCores",
 		"currentUsage",
-		"name",
 	}
 
 	allProperties := make(map[string]interface{})

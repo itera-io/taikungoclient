@@ -23,17 +23,17 @@ var _ MappedNullable = &Rule{}
 
 // Rule struct for Rule
 type Rule struct {
-	State string `json:"state"`
-	Name string `json:"name"`
-	Query string `json:"query"`
+	State *string `json:"state,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Query *string `json:"query,omitempty"`
 	Duration int64 `json:"duration"`
-	Labels RuleLabels `json:"labels"`
-	Annotations Annotations `json:"annotations"`
-	Alerts []Alert `json:"alerts"`
-	Health string `json:"health"`
+	Labels *RuleLabels `json:"labels,omitempty"`
+	Annotations *Annotations `json:"annotations,omitempty"`
+	Alerts []Alert `json:"alerts,omitempty"`
+	Health *string `json:"health,omitempty"`
 	EvaluationTime float64 `json:"evaluationTime"`
 	LastEvaluation time.Time `json:"lastEvaluation"`
-	Type string `json:"type"`
+	Type *string `json:"type,omitempty"`
 }
 
 type _Rule Rule
@@ -42,19 +42,11 @@ type _Rule Rule
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRule(state string, name string, query string, duration int64, labels RuleLabels, annotations Annotations, alerts []Alert, health string, evaluationTime float64, lastEvaluation time.Time, type_ string) *Rule {
+func NewRule(duration int64, evaluationTime float64, lastEvaluation time.Time) *Rule {
 	this := Rule{}
-	this.State = state
-	this.Name = name
-	this.Query = query
 	this.Duration = duration
-	this.Labels = labels
-	this.Annotations = annotations
-	this.Alerts = alerts
-	this.Health = health
 	this.EvaluationTime = evaluationTime
 	this.LastEvaluation = lastEvaluation
-	this.Type = type_
 	return &this
 }
 
@@ -66,76 +58,100 @@ func NewRuleWithDefaults() *Rule {
 	return &this
 }
 
-// GetState returns the State field value
+// GetState returns the State field value if set, zero value otherwise.
 func (o *Rule) GetState() string {
-	if o == nil {
+	if o == nil || IsNil(o.State) {
 		var ret string
 		return ret
 	}
-
-	return o.State
+	return *o.State
 }
 
-// GetStateOk returns a tuple with the State field value
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Rule) GetStateOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
-	return &o.State, true
+	return o.State, true
 }
 
-// SetState sets field value
+// HasState returns a boolean if a field has been set.
+func (o *Rule) HasState() bool {
+	if o != nil && !IsNil(o.State) {
+		return true
+	}
+
+	return false
+}
+
+// SetState gets a reference to the given string and assigns it to the State field.
 func (o *Rule) SetState(v string) {
-	o.State = v
+	o.State = &v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *Rule) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Rule) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *Rule) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *Rule) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetQuery returns the Query field value
+// GetQuery returns the Query field value if set, zero value otherwise.
 func (o *Rule) GetQuery() string {
-	if o == nil {
+	if o == nil || IsNil(o.Query) {
 		var ret string
 		return ret
 	}
-
-	return o.Query
+	return *o.Query
 }
 
-// GetQueryOk returns a tuple with the Query field value
+// GetQueryOk returns a tuple with the Query field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Rule) GetQueryOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Query) {
 		return nil, false
 	}
-	return &o.Query, true
+	return o.Query, true
 }
 
-// SetQuery sets field value
+// HasQuery returns a boolean if a field has been set.
+func (o *Rule) HasQuery() bool {
+	if o != nil && !IsNil(o.Query) {
+		return true
+	}
+
+	return false
+}
+
+// SetQuery gets a reference to the given string and assigns it to the Query field.
 func (o *Rule) SetQuery(v string) {
-	o.Query = v
+	o.Query = &v
 }
 
 // GetDuration returns the Duration field value
@@ -162,100 +178,132 @@ func (o *Rule) SetDuration(v int64) {
 	o.Duration = v
 }
 
-// GetLabels returns the Labels field value
+// GetLabels returns the Labels field value if set, zero value otherwise.
 func (o *Rule) GetLabels() RuleLabels {
-	if o == nil {
+	if o == nil || IsNil(o.Labels) {
 		var ret RuleLabels
 		return ret
 	}
-
-	return o.Labels
+	return *o.Labels
 }
 
-// GetLabelsOk returns a tuple with the Labels field value
+// GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Rule) GetLabelsOk() (*RuleLabels, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Labels) {
 		return nil, false
 	}
-	return &o.Labels, true
+	return o.Labels, true
 }
 
-// SetLabels sets field value
+// HasLabels returns a boolean if a field has been set.
+func (o *Rule) HasLabels() bool {
+	if o != nil && !IsNil(o.Labels) {
+		return true
+	}
+
+	return false
+}
+
+// SetLabels gets a reference to the given RuleLabels and assigns it to the Labels field.
 func (o *Rule) SetLabels(v RuleLabels) {
-	o.Labels = v
+	o.Labels = &v
 }
 
-// GetAnnotations returns the Annotations field value
+// GetAnnotations returns the Annotations field value if set, zero value otherwise.
 func (o *Rule) GetAnnotations() Annotations {
-	if o == nil {
+	if o == nil || IsNil(o.Annotations) {
 		var ret Annotations
 		return ret
 	}
-
-	return o.Annotations
+	return *o.Annotations
 }
 
-// GetAnnotationsOk returns a tuple with the Annotations field value
+// GetAnnotationsOk returns a tuple with the Annotations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Rule) GetAnnotationsOk() (*Annotations, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Annotations) {
 		return nil, false
 	}
-	return &o.Annotations, true
+	return o.Annotations, true
 }
 
-// SetAnnotations sets field value
+// HasAnnotations returns a boolean if a field has been set.
+func (o *Rule) HasAnnotations() bool {
+	if o != nil && !IsNil(o.Annotations) {
+		return true
+	}
+
+	return false
+}
+
+// SetAnnotations gets a reference to the given Annotations and assigns it to the Annotations field.
 func (o *Rule) SetAnnotations(v Annotations) {
-	o.Annotations = v
+	o.Annotations = &v
 }
 
-// GetAlerts returns the Alerts field value
+// GetAlerts returns the Alerts field value if set, zero value otherwise.
 func (o *Rule) GetAlerts() []Alert {
-	if o == nil {
+	if o == nil || IsNil(o.Alerts) {
 		var ret []Alert
 		return ret
 	}
-
 	return o.Alerts
 }
 
-// GetAlertsOk returns a tuple with the Alerts field value
+// GetAlertsOk returns a tuple with the Alerts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Rule) GetAlertsOk() ([]Alert, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Alerts) {
 		return nil, false
 	}
 	return o.Alerts, true
 }
 
-// SetAlerts sets field value
+// HasAlerts returns a boolean if a field has been set.
+func (o *Rule) HasAlerts() bool {
+	if o != nil && !IsNil(o.Alerts) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlerts gets a reference to the given []Alert and assigns it to the Alerts field.
 func (o *Rule) SetAlerts(v []Alert) {
 	o.Alerts = v
 }
 
-// GetHealth returns the Health field value
+// GetHealth returns the Health field value if set, zero value otherwise.
 func (o *Rule) GetHealth() string {
-	if o == nil {
+	if o == nil || IsNil(o.Health) {
 		var ret string
 		return ret
 	}
-
-	return o.Health
+	return *o.Health
 }
 
-// GetHealthOk returns a tuple with the Health field value
+// GetHealthOk returns a tuple with the Health field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Rule) GetHealthOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Health) {
 		return nil, false
 	}
-	return &o.Health, true
+	return o.Health, true
 }
 
-// SetHealth sets field value
+// HasHealth returns a boolean if a field has been set.
+func (o *Rule) HasHealth() bool {
+	if o != nil && !IsNil(o.Health) {
+		return true
+	}
+
+	return false
+}
+
+// SetHealth gets a reference to the given string and assigns it to the Health field.
 func (o *Rule) SetHealth(v string) {
-	o.Health = v
+	o.Health = &v
 }
 
 // GetEvaluationTime returns the EvaluationTime field value
@@ -306,28 +354,36 @@ func (o *Rule) SetLastEvaluation(v time.Time) {
 	o.LastEvaluation = v
 }
 
-// GetType returns the Type field value
+// GetType returns the Type field value if set, zero value otherwise.
 func (o *Rule) GetType() string {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
-
-	return o.Type
+	return *o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Rule) GetTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return &o.Type, true
+	return o.Type, true
 }
 
-// SetType sets field value
+// HasType returns a boolean if a field has been set.
+func (o *Rule) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
 func (o *Rule) SetType(v string) {
-	o.Type = v
+	o.Type = &v
 }
 
 func (o Rule) MarshalJSON() ([]byte, error) {
@@ -340,17 +396,33 @@ func (o Rule) MarshalJSON() ([]byte, error) {
 
 func (o Rule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["state"] = o.State
-	toSerialize["name"] = o.Name
-	toSerialize["query"] = o.Query
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Query) {
+		toSerialize["query"] = o.Query
+	}
 	toSerialize["duration"] = o.Duration
-	toSerialize["labels"] = o.Labels
-	toSerialize["annotations"] = o.Annotations
-	toSerialize["alerts"] = o.Alerts
-	toSerialize["health"] = o.Health
+	if !IsNil(o.Labels) {
+		toSerialize["labels"] = o.Labels
+	}
+	if !IsNil(o.Annotations) {
+		toSerialize["annotations"] = o.Annotations
+	}
+	if !IsNil(o.Alerts) {
+		toSerialize["alerts"] = o.Alerts
+	}
+	if !IsNil(o.Health) {
+		toSerialize["health"] = o.Health
+	}
 	toSerialize["evaluationTime"] = o.EvaluationTime
 	toSerialize["lastEvaluation"] = o.LastEvaluation
-	toSerialize["type"] = o.Type
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
 	return toSerialize, nil
 }
 
@@ -359,17 +431,9 @@ func (o *Rule) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"state",
-		"name",
-		"query",
 		"duration",
-		"labels",
-		"annotations",
-		"alerts",
-		"health",
 		"evaluationTime",
 		"lastEvaluation",
-		"type",
 	}
 
 	allProperties := make(map[string]interface{})

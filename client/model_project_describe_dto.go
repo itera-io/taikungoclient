@@ -23,19 +23,19 @@ var _ MappedNullable = &ProjectDescribeDto{}
 // ProjectDescribeDto struct for ProjectDescribeDto
 type ProjectDescribeDto struct {
 	ProjectId int32 `json:"projectId"`
-	ProjectName string `json:"projectName"`
+	ProjectName *string `json:"projectName,omitempty"`
 	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
 	IsBackupEnabled bool `json:"isBackupEnabled"`
 	IsAutoUpgradeEnabled bool `json:"isAutoUpgradeEnabled"`
 	ServersCount int32 `json:"serversCount"`
 	VmsCount int32 `json:"vmsCount"`
 	AlertsCount int32 `json:"alertsCount"`
-	LastModifiedBy string `json:"lastModifiedBy"`
-	CreatedBy string `json:"createdBy"`
-	LastModified string `json:"lastModified"`
-	Flavors []string `json:"flavors"`
-	Images []string `json:"images"`
-	AccessIp string `json:"accessIp"`
+	LastModifiedBy *string `json:"lastModifiedBy,omitempty"`
+	CreatedBy *string `json:"createdBy,omitempty"`
+	LastModified *string `json:"lastModified,omitempty"`
+	Flavors []string `json:"flavors,omitempty"`
+	Images []string `json:"images,omitempty"`
+	AccessIp *string `json:"accessIp,omitempty"`
 }
 
 type _ProjectDescribeDto ProjectDescribeDto
@@ -44,22 +44,15 @@ type _ProjectDescribeDto ProjectDescribeDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectDescribeDto(projectId int32, projectName string, isMonitoringEnabled bool, isBackupEnabled bool, isAutoUpgradeEnabled bool, serversCount int32, vmsCount int32, alertsCount int32, lastModifiedBy string, createdBy string, lastModified string, flavors []string, images []string, accessIp string) *ProjectDescribeDto {
+func NewProjectDescribeDto(projectId int32, isMonitoringEnabled bool, isBackupEnabled bool, isAutoUpgradeEnabled bool, serversCount int32, vmsCount int32, alertsCount int32) *ProjectDescribeDto {
 	this := ProjectDescribeDto{}
 	this.ProjectId = projectId
-	this.ProjectName = projectName
 	this.IsMonitoringEnabled = isMonitoringEnabled
 	this.IsBackupEnabled = isBackupEnabled
 	this.IsAutoUpgradeEnabled = isAutoUpgradeEnabled
 	this.ServersCount = serversCount
 	this.VmsCount = vmsCount
 	this.AlertsCount = alertsCount
-	this.LastModifiedBy = lastModifiedBy
-	this.CreatedBy = createdBy
-	this.LastModified = lastModified
-	this.Flavors = flavors
-	this.Images = images
-	this.AccessIp = accessIp
 	return &this
 }
 
@@ -95,28 +88,36 @@ func (o *ProjectDescribeDto) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetProjectName returns the ProjectName field value
+// GetProjectName returns the ProjectName field value if set, zero value otherwise.
 func (o *ProjectDescribeDto) GetProjectName() string {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		var ret string
 		return ret
 	}
-
-	return o.ProjectName
+	return *o.ProjectName
 }
 
-// GetProjectNameOk returns a tuple with the ProjectName field value
+// GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDescribeDto) GetProjectNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		return nil, false
 	}
-	return &o.ProjectName, true
+	return o.ProjectName, true
 }
 
-// SetProjectName sets field value
+// HasProjectName returns a boolean if a field has been set.
+func (o *ProjectDescribeDto) HasProjectName() bool {
+	if o != nil && !IsNil(o.ProjectName) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectName gets a reference to the given string and assigns it to the ProjectName field.
 func (o *ProjectDescribeDto) SetProjectName(v string) {
-	o.ProjectName = v
+	o.ProjectName = &v
 }
 
 // GetIsMonitoringEnabled returns the IsMonitoringEnabled field value
@@ -263,148 +264,196 @@ func (o *ProjectDescribeDto) SetAlertsCount(v int32) {
 	o.AlertsCount = v
 }
 
-// GetLastModifiedBy returns the LastModifiedBy field value
+// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise.
 func (o *ProjectDescribeDto) GetLastModifiedBy() string {
-	if o == nil {
+	if o == nil || IsNil(o.LastModifiedBy) {
 		var ret string
 		return ret
 	}
-
-	return o.LastModifiedBy
+	return *o.LastModifiedBy
 }
 
-// GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
+// GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDescribeDto) GetLastModifiedByOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LastModifiedBy) {
 		return nil, false
 	}
-	return &o.LastModifiedBy, true
+	return o.LastModifiedBy, true
 }
 
-// SetLastModifiedBy sets field value
+// HasLastModifiedBy returns a boolean if a field has been set.
+func (o *ProjectDescribeDto) HasLastModifiedBy() bool {
+	if o != nil && !IsNil(o.LastModifiedBy) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastModifiedBy gets a reference to the given string and assigns it to the LastModifiedBy field.
 func (o *ProjectDescribeDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy = v
+	o.LastModifiedBy = &v
 }
 
-// GetCreatedBy returns the CreatedBy field value
+// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
 func (o *ProjectDescribeDto) GetCreatedBy() string {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedBy) {
 		var ret string
 		return ret
 	}
-
-	return o.CreatedBy
+	return *o.CreatedBy
 }
 
-// GetCreatedByOk returns a tuple with the CreatedBy field value
+// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDescribeDto) GetCreatedByOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedBy) {
 		return nil, false
 	}
-	return &o.CreatedBy, true
+	return o.CreatedBy, true
 }
 
-// SetCreatedBy sets field value
+// HasCreatedBy returns a boolean if a field has been set.
+func (o *ProjectDescribeDto) HasCreatedBy() bool {
+	if o != nil && !IsNil(o.CreatedBy) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
 func (o *ProjectDescribeDto) SetCreatedBy(v string) {
-	o.CreatedBy = v
+	o.CreatedBy = &v
 }
 
-// GetLastModified returns the LastModified field value
+// GetLastModified returns the LastModified field value if set, zero value otherwise.
 func (o *ProjectDescribeDto) GetLastModified() string {
-	if o == nil {
+	if o == nil || IsNil(o.LastModified) {
 		var ret string
 		return ret
 	}
-
-	return o.LastModified
+	return *o.LastModified
 }
 
-// GetLastModifiedOk returns a tuple with the LastModified field value
+// GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDescribeDto) GetLastModifiedOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LastModified) {
 		return nil, false
 	}
-	return &o.LastModified, true
+	return o.LastModified, true
 }
 
-// SetLastModified sets field value
+// HasLastModified returns a boolean if a field has been set.
+func (o *ProjectDescribeDto) HasLastModified() bool {
+	if o != nil && !IsNil(o.LastModified) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastModified gets a reference to the given string and assigns it to the LastModified field.
 func (o *ProjectDescribeDto) SetLastModified(v string) {
-	o.LastModified = v
+	o.LastModified = &v
 }
 
-// GetFlavors returns the Flavors field value
+// GetFlavors returns the Flavors field value if set, zero value otherwise.
 func (o *ProjectDescribeDto) GetFlavors() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Flavors) {
 		var ret []string
 		return ret
 	}
-
 	return o.Flavors
 }
 
-// GetFlavorsOk returns a tuple with the Flavors field value
+// GetFlavorsOk returns a tuple with the Flavors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDescribeDto) GetFlavorsOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Flavors) {
 		return nil, false
 	}
 	return o.Flavors, true
 }
 
-// SetFlavors sets field value
+// HasFlavors returns a boolean if a field has been set.
+func (o *ProjectDescribeDto) HasFlavors() bool {
+	if o != nil && !IsNil(o.Flavors) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlavors gets a reference to the given []string and assigns it to the Flavors field.
 func (o *ProjectDescribeDto) SetFlavors(v []string) {
 	o.Flavors = v
 }
 
-// GetImages returns the Images field value
+// GetImages returns the Images field value if set, zero value otherwise.
 func (o *ProjectDescribeDto) GetImages() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Images) {
 		var ret []string
 		return ret
 	}
-
 	return o.Images
 }
 
-// GetImagesOk returns a tuple with the Images field value
+// GetImagesOk returns a tuple with the Images field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDescribeDto) GetImagesOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Images) {
 		return nil, false
 	}
 	return o.Images, true
 }
 
-// SetImages sets field value
+// HasImages returns a boolean if a field has been set.
+func (o *ProjectDescribeDto) HasImages() bool {
+	if o != nil && !IsNil(o.Images) {
+		return true
+	}
+
+	return false
+}
+
+// SetImages gets a reference to the given []string and assigns it to the Images field.
 func (o *ProjectDescribeDto) SetImages(v []string) {
 	o.Images = v
 }
 
-// GetAccessIp returns the AccessIp field value
+// GetAccessIp returns the AccessIp field value if set, zero value otherwise.
 func (o *ProjectDescribeDto) GetAccessIp() string {
-	if o == nil {
+	if o == nil || IsNil(o.AccessIp) {
 		var ret string
 		return ret
 	}
-
-	return o.AccessIp
+	return *o.AccessIp
 }
 
-// GetAccessIpOk returns a tuple with the AccessIp field value
+// GetAccessIpOk returns a tuple with the AccessIp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDescribeDto) GetAccessIpOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AccessIp) {
 		return nil, false
 	}
-	return &o.AccessIp, true
+	return o.AccessIp, true
 }
 
-// SetAccessIp sets field value
+// HasAccessIp returns a boolean if a field has been set.
+func (o *ProjectDescribeDto) HasAccessIp() bool {
+	if o != nil && !IsNil(o.AccessIp) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessIp gets a reference to the given string and assigns it to the AccessIp field.
 func (o *ProjectDescribeDto) SetAccessIp(v string) {
-	o.AccessIp = v
+	o.AccessIp = &v
 }
 
 func (o ProjectDescribeDto) MarshalJSON() ([]byte, error) {
@@ -418,19 +467,33 @@ func (o ProjectDescribeDto) MarshalJSON() ([]byte, error) {
 func (o ProjectDescribeDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["projectName"] = o.ProjectName
+	if !IsNil(o.ProjectName) {
+		toSerialize["projectName"] = o.ProjectName
+	}
 	toSerialize["isMonitoringEnabled"] = o.IsMonitoringEnabled
 	toSerialize["isBackupEnabled"] = o.IsBackupEnabled
 	toSerialize["isAutoUpgradeEnabled"] = o.IsAutoUpgradeEnabled
 	toSerialize["serversCount"] = o.ServersCount
 	toSerialize["vmsCount"] = o.VmsCount
 	toSerialize["alertsCount"] = o.AlertsCount
-	toSerialize["lastModifiedBy"] = o.LastModifiedBy
-	toSerialize["createdBy"] = o.CreatedBy
-	toSerialize["lastModified"] = o.LastModified
-	toSerialize["flavors"] = o.Flavors
-	toSerialize["images"] = o.Images
-	toSerialize["accessIp"] = o.AccessIp
+	if !IsNil(o.LastModifiedBy) {
+		toSerialize["lastModifiedBy"] = o.LastModifiedBy
+	}
+	if !IsNil(o.CreatedBy) {
+		toSerialize["createdBy"] = o.CreatedBy
+	}
+	if !IsNil(o.LastModified) {
+		toSerialize["lastModified"] = o.LastModified
+	}
+	if !IsNil(o.Flavors) {
+		toSerialize["flavors"] = o.Flavors
+	}
+	if !IsNil(o.Images) {
+		toSerialize["images"] = o.Images
+	}
+	if !IsNil(o.AccessIp) {
+		toSerialize["accessIp"] = o.AccessIp
+	}
 	return toSerialize, nil
 }
 
@@ -440,19 +503,12 @@ func (o *ProjectDescribeDto) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"projectName",
 		"isMonitoringEnabled",
 		"isBackupEnabled",
 		"isAutoUpgradeEnabled",
 		"serversCount",
 		"vmsCount",
 		"alertsCount",
-		"lastModifiedBy",
-		"createdBy",
-		"lastModified",
-		"flavors",
-		"images",
-		"accessIp",
 	}
 
 	allProperties := make(map[string]interface{})

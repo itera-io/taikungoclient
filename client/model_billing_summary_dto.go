@@ -23,9 +23,9 @@ var _ MappedNullable = &BillingSummaryDto{}
 // BillingSummaryDto struct for BillingSummaryDto
 type BillingSummaryDto struct {
 	ProjectId int32 `json:"projectId"`
-	ProjectName string `json:"projectName"`
-	StartDate string `json:"startDate"`
-	EndDate string `json:"endDate"`
+	ProjectName *string `json:"projectName,omitempty"`
+	StartDate *string `json:"startDate,omitempty"`
+	EndDate *string `json:"endDate,omitempty"`
 	Tcu float64 `json:"tcu"`
 	IsDeleted bool `json:"isDeleted"`
 }
@@ -36,12 +36,9 @@ type _BillingSummaryDto BillingSummaryDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBillingSummaryDto(projectId int32, projectName string, startDate string, endDate string, tcu float64, isDeleted bool) *BillingSummaryDto {
+func NewBillingSummaryDto(projectId int32, tcu float64, isDeleted bool) *BillingSummaryDto {
 	this := BillingSummaryDto{}
 	this.ProjectId = projectId
-	this.ProjectName = projectName
-	this.StartDate = startDate
-	this.EndDate = endDate
 	this.Tcu = tcu
 	this.IsDeleted = isDeleted
 	return &this
@@ -79,76 +76,100 @@ func (o *BillingSummaryDto) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetProjectName returns the ProjectName field value
+// GetProjectName returns the ProjectName field value if set, zero value otherwise.
 func (o *BillingSummaryDto) GetProjectName() string {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		var ret string
 		return ret
 	}
-
-	return o.ProjectName
+	return *o.ProjectName
 }
 
-// GetProjectNameOk returns a tuple with the ProjectName field value
+// GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillingSummaryDto) GetProjectNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		return nil, false
 	}
-	return &o.ProjectName, true
+	return o.ProjectName, true
 }
 
-// SetProjectName sets field value
+// HasProjectName returns a boolean if a field has been set.
+func (o *BillingSummaryDto) HasProjectName() bool {
+	if o != nil && !IsNil(o.ProjectName) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectName gets a reference to the given string and assigns it to the ProjectName field.
 func (o *BillingSummaryDto) SetProjectName(v string) {
-	o.ProjectName = v
+	o.ProjectName = &v
 }
 
-// GetStartDate returns the StartDate field value
+// GetStartDate returns the StartDate field value if set, zero value otherwise.
 func (o *BillingSummaryDto) GetStartDate() string {
-	if o == nil {
+	if o == nil || IsNil(o.StartDate) {
 		var ret string
 		return ret
 	}
-
-	return o.StartDate
+	return *o.StartDate
 }
 
-// GetStartDateOk returns a tuple with the StartDate field value
+// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillingSummaryDto) GetStartDateOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.StartDate) {
 		return nil, false
 	}
-	return &o.StartDate, true
+	return o.StartDate, true
 }
 
-// SetStartDate sets field value
+// HasStartDate returns a boolean if a field has been set.
+func (o *BillingSummaryDto) HasStartDate() bool {
+	if o != nil && !IsNil(o.StartDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetStartDate gets a reference to the given string and assigns it to the StartDate field.
 func (o *BillingSummaryDto) SetStartDate(v string) {
-	o.StartDate = v
+	o.StartDate = &v
 }
 
-// GetEndDate returns the EndDate field value
+// GetEndDate returns the EndDate field value if set, zero value otherwise.
 func (o *BillingSummaryDto) GetEndDate() string {
-	if o == nil {
+	if o == nil || IsNil(o.EndDate) {
 		var ret string
 		return ret
 	}
-
-	return o.EndDate
+	return *o.EndDate
 }
 
-// GetEndDateOk returns a tuple with the EndDate field value
+// GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillingSummaryDto) GetEndDateOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.EndDate) {
 		return nil, false
 	}
-	return &o.EndDate, true
+	return o.EndDate, true
 }
 
-// SetEndDate sets field value
+// HasEndDate returns a boolean if a field has been set.
+func (o *BillingSummaryDto) HasEndDate() bool {
+	if o != nil && !IsNil(o.EndDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndDate gets a reference to the given string and assigns it to the EndDate field.
 func (o *BillingSummaryDto) SetEndDate(v string) {
-	o.EndDate = v
+	o.EndDate = &v
 }
 
 // GetTcu returns the Tcu field value
@@ -210,9 +231,15 @@ func (o BillingSummaryDto) MarshalJSON() ([]byte, error) {
 func (o BillingSummaryDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["projectName"] = o.ProjectName
-	toSerialize["startDate"] = o.StartDate
-	toSerialize["endDate"] = o.EndDate
+	if !IsNil(o.ProjectName) {
+		toSerialize["projectName"] = o.ProjectName
+	}
+	if !IsNil(o.StartDate) {
+		toSerialize["startDate"] = o.StartDate
+	}
+	if !IsNil(o.EndDate) {
+		toSerialize["endDate"] = o.EndDate
+	}
 	toSerialize["tcu"] = o.Tcu
 	toSerialize["isDeleted"] = o.IsDeleted
 	return toSerialize, nil
@@ -224,9 +251,6 @@ func (o *BillingSummaryDto) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"projectName",
-		"startDate",
-		"endDate",
 		"tcu",
 		"isDeleted",
 	}

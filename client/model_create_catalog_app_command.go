@@ -22,11 +22,11 @@ var _ MappedNullable = &CreateCatalogAppCommand{}
 
 // CreateCatalogAppCommand struct for CreateCatalogAppCommand
 type CreateCatalogAppCommand struct {
-	RepoName string `json:"repoName"`
-	PackageName string `json:"packageName"`
+	RepoName *string `json:"repoName,omitempty"`
+	PackageName *string `json:"packageName,omitempty"`
 	CatalogId int32 `json:"catalogId"`
-	Version string `json:"version"`
-	Parameters []CatalogAppParamsDto `json:"parameters"`
+	Version *string `json:"version,omitempty"`
+	Parameters []CatalogAppParamsDto `json:"parameters,omitempty"`
 }
 
 type _CreateCatalogAppCommand CreateCatalogAppCommand
@@ -35,13 +35,9 @@ type _CreateCatalogAppCommand CreateCatalogAppCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateCatalogAppCommand(repoName string, packageName string, catalogId int32, version string, parameters []CatalogAppParamsDto) *CreateCatalogAppCommand {
+func NewCreateCatalogAppCommand(catalogId int32) *CreateCatalogAppCommand {
 	this := CreateCatalogAppCommand{}
-	this.RepoName = repoName
-	this.PackageName = packageName
 	this.CatalogId = catalogId
-	this.Version = version
-	this.Parameters = parameters
 	return &this
 }
 
@@ -53,52 +49,68 @@ func NewCreateCatalogAppCommandWithDefaults() *CreateCatalogAppCommand {
 	return &this
 }
 
-// GetRepoName returns the RepoName field value
+// GetRepoName returns the RepoName field value if set, zero value otherwise.
 func (o *CreateCatalogAppCommand) GetRepoName() string {
-	if o == nil {
+	if o == nil || IsNil(o.RepoName) {
 		var ret string
 		return ret
 	}
-
-	return o.RepoName
+	return *o.RepoName
 }
 
-// GetRepoNameOk returns a tuple with the RepoName field value
+// GetRepoNameOk returns a tuple with the RepoName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateCatalogAppCommand) GetRepoNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RepoName) {
 		return nil, false
 	}
-	return &o.RepoName, true
+	return o.RepoName, true
 }
 
-// SetRepoName sets field value
+// HasRepoName returns a boolean if a field has been set.
+func (o *CreateCatalogAppCommand) HasRepoName() bool {
+	if o != nil && !IsNil(o.RepoName) {
+		return true
+	}
+
+	return false
+}
+
+// SetRepoName gets a reference to the given string and assigns it to the RepoName field.
 func (o *CreateCatalogAppCommand) SetRepoName(v string) {
-	o.RepoName = v
+	o.RepoName = &v
 }
 
-// GetPackageName returns the PackageName field value
+// GetPackageName returns the PackageName field value if set, zero value otherwise.
 func (o *CreateCatalogAppCommand) GetPackageName() string {
-	if o == nil {
+	if o == nil || IsNil(o.PackageName) {
 		var ret string
 		return ret
 	}
-
-	return o.PackageName
+	return *o.PackageName
 }
 
-// GetPackageNameOk returns a tuple with the PackageName field value
+// GetPackageNameOk returns a tuple with the PackageName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateCatalogAppCommand) GetPackageNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PackageName) {
 		return nil, false
 	}
-	return &o.PackageName, true
+	return o.PackageName, true
 }
 
-// SetPackageName sets field value
+// HasPackageName returns a boolean if a field has been set.
+func (o *CreateCatalogAppCommand) HasPackageName() bool {
+	if o != nil && !IsNil(o.PackageName) {
+		return true
+	}
+
+	return false
+}
+
+// SetPackageName gets a reference to the given string and assigns it to the PackageName field.
 func (o *CreateCatalogAppCommand) SetPackageName(v string) {
-	o.PackageName = v
+	o.PackageName = &v
 }
 
 // GetCatalogId returns the CatalogId field value
@@ -125,50 +137,66 @@ func (o *CreateCatalogAppCommand) SetCatalogId(v int32) {
 	o.CatalogId = v
 }
 
-// GetVersion returns the Version field value
+// GetVersion returns the Version field value if set, zero value otherwise.
 func (o *CreateCatalogAppCommand) GetVersion() string {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
-
-	return o.Version
+	return *o.Version
 }
 
-// GetVersionOk returns a tuple with the Version field value
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateCatalogAppCommand) GetVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
-	return &o.Version, true
+	return o.Version, true
 }
 
-// SetVersion sets field value
+// HasVersion returns a boolean if a field has been set.
+func (o *CreateCatalogAppCommand) HasVersion() bool {
+	if o != nil && !IsNil(o.Version) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *CreateCatalogAppCommand) SetVersion(v string) {
-	o.Version = v
+	o.Version = &v
 }
 
-// GetParameters returns the Parameters field value
+// GetParameters returns the Parameters field value if set, zero value otherwise.
 func (o *CreateCatalogAppCommand) GetParameters() []CatalogAppParamsDto {
-	if o == nil {
+	if o == nil || IsNil(o.Parameters) {
 		var ret []CatalogAppParamsDto
 		return ret
 	}
-
 	return o.Parameters
 }
 
-// GetParametersOk returns a tuple with the Parameters field value
+// GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateCatalogAppCommand) GetParametersOk() ([]CatalogAppParamsDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Parameters) {
 		return nil, false
 	}
 	return o.Parameters, true
 }
 
-// SetParameters sets field value
+// HasParameters returns a boolean if a field has been set.
+func (o *CreateCatalogAppCommand) HasParameters() bool {
+	if o != nil && !IsNil(o.Parameters) {
+		return true
+	}
+
+	return false
+}
+
+// SetParameters gets a reference to the given []CatalogAppParamsDto and assigns it to the Parameters field.
 func (o *CreateCatalogAppCommand) SetParameters(v []CatalogAppParamsDto) {
 	o.Parameters = v
 }
@@ -183,11 +211,19 @@ func (o CreateCatalogAppCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateCatalogAppCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["repoName"] = o.RepoName
-	toSerialize["packageName"] = o.PackageName
+	if !IsNil(o.RepoName) {
+		toSerialize["repoName"] = o.RepoName
+	}
+	if !IsNil(o.PackageName) {
+		toSerialize["packageName"] = o.PackageName
+	}
 	toSerialize["catalogId"] = o.CatalogId
-	toSerialize["version"] = o.Version
-	toSerialize["parameters"] = o.Parameters
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.Parameters) {
+		toSerialize["parameters"] = o.Parameters
+	}
 	return toSerialize, nil
 }
 
@@ -196,11 +232,7 @@ func (o *CreateCatalogAppCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"repoName",
-		"packageName",
 		"catalogId",
-		"version",
-		"parameters",
 	}
 
 	allProperties := make(map[string]interface{})

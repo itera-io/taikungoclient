@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the LoginCommand type satisfies the MappedNullable interface at compile time
@@ -22,26 +20,19 @@ var _ MappedNullable = &LoginCommand{}
 
 // LoginCommand struct for LoginCommand
 type LoginCommand struct {
-	Email string `json:"email"`
-	Password string `json:"password"`
-	Mode string `json:"mode"`
-	AccessKey string `json:"accessKey"`
-	SecretKey string `json:"secretKey"`
+	Email *string `json:"email,omitempty"`
+	Password *string `json:"password,omitempty"`
+	Mode *string `json:"mode,omitempty"`
+	AccessKey *string `json:"accessKey,omitempty"`
+	SecretKey *string `json:"secretKey,omitempty"`
 }
-
-type _LoginCommand LoginCommand
 
 // NewLoginCommand instantiates a new LoginCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLoginCommand(email string, password string, mode string, accessKey string, secretKey string) *LoginCommand {
+func NewLoginCommand() *LoginCommand {
 	this := LoginCommand{}
-	this.Email = email
-	this.Password = password
-	this.Mode = mode
-	this.AccessKey = accessKey
-	this.SecretKey = secretKey
 	return &this
 }
 
@@ -53,124 +44,164 @@ func NewLoginCommandWithDefaults() *LoginCommand {
 	return &this
 }
 
-// GetEmail returns the Email field value
+// GetEmail returns the Email field value if set, zero value otherwise.
 func (o *LoginCommand) GetEmail() string {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
-
-	return o.Email
+	return *o.Email
 }
 
-// GetEmailOk returns a tuple with the Email field value
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoginCommand) GetEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
-	return &o.Email, true
+	return o.Email, true
 }
 
-// SetEmail sets field value
+// HasEmail returns a boolean if a field has been set.
+func (o *LoginCommand) HasEmail() bool {
+	if o != nil && !IsNil(o.Email) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmail gets a reference to the given string and assigns it to the Email field.
 func (o *LoginCommand) SetEmail(v string) {
-	o.Email = v
+	o.Email = &v
 }
 
-// GetPassword returns the Password field value
+// GetPassword returns the Password field value if set, zero value otherwise.
 func (o *LoginCommand) GetPassword() string {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
 	}
-
-	return o.Password
+	return *o.Password
 }
 
-// GetPasswordOk returns a tuple with the Password field value
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoginCommand) GetPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
-	return &o.Password, true
+	return o.Password, true
 }
 
-// SetPassword sets field value
+// HasPassword returns a boolean if a field has been set.
+func (o *LoginCommand) HasPassword() bool {
+	if o != nil && !IsNil(o.Password) {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *LoginCommand) SetPassword(v string) {
-	o.Password = v
+	o.Password = &v
 }
 
-// GetMode returns the Mode field value
+// GetMode returns the Mode field value if set, zero value otherwise.
 func (o *LoginCommand) GetMode() string {
-	if o == nil {
+	if o == nil || IsNil(o.Mode) {
 		var ret string
 		return ret
 	}
-
-	return o.Mode
+	return *o.Mode
 }
 
-// GetModeOk returns a tuple with the Mode field value
+// GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoginCommand) GetModeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
-	return &o.Mode, true
+	return o.Mode, true
 }
 
-// SetMode sets field value
+// HasMode returns a boolean if a field has been set.
+func (o *LoginCommand) HasMode() bool {
+	if o != nil && !IsNil(o.Mode) {
+		return true
+	}
+
+	return false
+}
+
+// SetMode gets a reference to the given string and assigns it to the Mode field.
 func (o *LoginCommand) SetMode(v string) {
-	o.Mode = v
+	o.Mode = &v
 }
 
-// GetAccessKey returns the AccessKey field value
+// GetAccessKey returns the AccessKey field value if set, zero value otherwise.
 func (o *LoginCommand) GetAccessKey() string {
-	if o == nil {
+	if o == nil || IsNil(o.AccessKey) {
 		var ret string
 		return ret
 	}
-
-	return o.AccessKey
+	return *o.AccessKey
 }
 
-// GetAccessKeyOk returns a tuple with the AccessKey field value
+// GetAccessKeyOk returns a tuple with the AccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoginCommand) GetAccessKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AccessKey) {
 		return nil, false
 	}
-	return &o.AccessKey, true
+	return o.AccessKey, true
 }
 
-// SetAccessKey sets field value
+// HasAccessKey returns a boolean if a field has been set.
+func (o *LoginCommand) HasAccessKey() bool {
+	if o != nil && !IsNil(o.AccessKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessKey gets a reference to the given string and assigns it to the AccessKey field.
 func (o *LoginCommand) SetAccessKey(v string) {
-	o.AccessKey = v
+	o.AccessKey = &v
 }
 
-// GetSecretKey returns the SecretKey field value
+// GetSecretKey returns the SecretKey field value if set, zero value otherwise.
 func (o *LoginCommand) GetSecretKey() string {
-	if o == nil {
+	if o == nil || IsNil(o.SecretKey) {
 		var ret string
 		return ret
 	}
-
-	return o.SecretKey
+	return *o.SecretKey
 }
 
-// GetSecretKeyOk returns a tuple with the SecretKey field value
+// GetSecretKeyOk returns a tuple with the SecretKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LoginCommand) GetSecretKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SecretKey) {
 		return nil, false
 	}
-	return &o.SecretKey, true
+	return o.SecretKey, true
 }
 
-// SetSecretKey sets field value
+// HasSecretKey returns a boolean if a field has been set.
+func (o *LoginCommand) HasSecretKey() bool {
+	if o != nil && !IsNil(o.SecretKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecretKey gets a reference to the given string and assigns it to the SecretKey field.
 func (o *LoginCommand) SetSecretKey(v string) {
-	o.SecretKey = v
+	o.SecretKey = &v
 }
 
 func (o LoginCommand) MarshalJSON() ([]byte, error) {
@@ -183,53 +214,22 @@ func (o LoginCommand) MarshalJSON() ([]byte, error) {
 
 func (o LoginCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["email"] = o.Email
-	toSerialize["password"] = o.Password
-	toSerialize["mode"] = o.Mode
-	toSerialize["accessKey"] = o.AccessKey
-	toSerialize["secretKey"] = o.SecretKey
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
+	}
+	if !IsNil(o.Mode) {
+		toSerialize["mode"] = o.Mode
+	}
+	if !IsNil(o.AccessKey) {
+		toSerialize["accessKey"] = o.AccessKey
+	}
+	if !IsNil(o.SecretKey) {
+		toSerialize["secretKey"] = o.SecretKey
+	}
 	return toSerialize, nil
-}
-
-func (o *LoginCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"email",
-		"password",
-		"mode",
-		"accessKey",
-		"secretKey",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varLoginCommand := _LoginCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varLoginCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = LoginCommand(varLoginCommand)
-
-	return err
 }
 
 type NullableLoginCommand struct {

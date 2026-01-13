@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the UpdateServerHealthDto type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &UpdateServerHealthDto{}
 
 // UpdateServerHealthDto struct for UpdateServerHealthDto
 type UpdateServerHealthDto struct {
-	IpAddress string `json:"ipAddress"`
-	ServerHealth string `json:"serverHealth"`
+	IpAddress *string `json:"ipAddress,omitempty"`
+	ServerHealth *string `json:"serverHealth,omitempty"`
 }
-
-type _UpdateServerHealthDto UpdateServerHealthDto
 
 // NewUpdateServerHealthDto instantiates a new UpdateServerHealthDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateServerHealthDto(ipAddress string, serverHealth string) *UpdateServerHealthDto {
+func NewUpdateServerHealthDto() *UpdateServerHealthDto {
 	this := UpdateServerHealthDto{}
-	this.IpAddress = ipAddress
-	this.ServerHealth = serverHealth
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewUpdateServerHealthDtoWithDefaults() *UpdateServerHealthDto {
 	return &this
 }
 
-// GetIpAddress returns the IpAddress field value
+// GetIpAddress returns the IpAddress field value if set, zero value otherwise.
 func (o *UpdateServerHealthDto) GetIpAddress() string {
-	if o == nil {
+	if o == nil || IsNil(o.IpAddress) {
 		var ret string
 		return ret
 	}
-
-	return o.IpAddress
+	return *o.IpAddress
 }
 
-// GetIpAddressOk returns a tuple with the IpAddress field value
+// GetIpAddressOk returns a tuple with the IpAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateServerHealthDto) GetIpAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.IpAddress) {
 		return nil, false
 	}
-	return &o.IpAddress, true
+	return o.IpAddress, true
 }
 
-// SetIpAddress sets field value
+// HasIpAddress returns a boolean if a field has been set.
+func (o *UpdateServerHealthDto) HasIpAddress() bool {
+	if o != nil && !IsNil(o.IpAddress) {
+		return true
+	}
+
+	return false
+}
+
+// SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
 func (o *UpdateServerHealthDto) SetIpAddress(v string) {
-	o.IpAddress = v
+	o.IpAddress = &v
 }
 
-// GetServerHealth returns the ServerHealth field value
+// GetServerHealth returns the ServerHealth field value if set, zero value otherwise.
 func (o *UpdateServerHealthDto) GetServerHealth() string {
-	if o == nil {
+	if o == nil || IsNil(o.ServerHealth) {
 		var ret string
 		return ret
 	}
-
-	return o.ServerHealth
+	return *o.ServerHealth
 }
 
-// GetServerHealthOk returns a tuple with the ServerHealth field value
+// GetServerHealthOk returns a tuple with the ServerHealth field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateServerHealthDto) GetServerHealthOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ServerHealth) {
 		return nil, false
 	}
-	return &o.ServerHealth, true
+	return o.ServerHealth, true
 }
 
-// SetServerHealth sets field value
+// HasServerHealth returns a boolean if a field has been set.
+func (o *UpdateServerHealthDto) HasServerHealth() bool {
+	if o != nil && !IsNil(o.ServerHealth) {
+		return true
+	}
+
+	return false
+}
+
+// SetServerHealth gets a reference to the given string and assigns it to the ServerHealth field.
 func (o *UpdateServerHealthDto) SetServerHealth(v string) {
-	o.ServerHealth = v
+	o.ServerHealth = &v
 }
 
 func (o UpdateServerHealthDto) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o UpdateServerHealthDto) MarshalJSON() ([]byte, error) {
 
 func (o UpdateServerHealthDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["ipAddress"] = o.IpAddress
-	toSerialize["serverHealth"] = o.ServerHealth
+	if !IsNil(o.IpAddress) {
+		toSerialize["ipAddress"] = o.IpAddress
+	}
+	if !IsNil(o.ServerHealth) {
+		toSerialize["serverHealth"] = o.ServerHealth
+	}
 	return toSerialize, nil
-}
-
-func (o *UpdateServerHealthDto) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"ipAddress",
-		"serverHealth",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varUpdateServerHealthDto := _UpdateServerHealthDto{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUpdateServerHealthDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = UpdateServerHealthDto(varUpdateServerHealthDto)
-
-	return err
 }
 
 type NullableUpdateServerHealthDto struct {

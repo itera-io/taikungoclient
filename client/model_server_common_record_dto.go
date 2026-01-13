@@ -23,8 +23,8 @@ var _ MappedNullable = &ServerCommonRecordDto{}
 // ServerCommonRecordDto struct for ServerCommonRecordDto
 type ServerCommonRecordDto struct {
 	ProjectId int32 `json:"projectId"`
-	ProjectName string `json:"projectName"`
-	Names []string `json:"names"`
+	ProjectName *string `json:"projectName,omitempty"`
+	Names []string `json:"names,omitempty"`
 }
 
 type _ServerCommonRecordDto ServerCommonRecordDto
@@ -33,11 +33,9 @@ type _ServerCommonRecordDto ServerCommonRecordDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServerCommonRecordDto(projectId int32, projectName string, names []string) *ServerCommonRecordDto {
+func NewServerCommonRecordDto(projectId int32) *ServerCommonRecordDto {
 	this := ServerCommonRecordDto{}
 	this.ProjectId = projectId
-	this.ProjectName = projectName
-	this.Names = names
 	return &this
 }
 
@@ -73,50 +71,66 @@ func (o *ServerCommonRecordDto) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetProjectName returns the ProjectName field value
+// GetProjectName returns the ProjectName field value if set, zero value otherwise.
 func (o *ServerCommonRecordDto) GetProjectName() string {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		var ret string
 		return ret
 	}
-
-	return o.ProjectName
+	return *o.ProjectName
 }
 
-// GetProjectNameOk returns a tuple with the ProjectName field value
+// GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerCommonRecordDto) GetProjectNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		return nil, false
 	}
-	return &o.ProjectName, true
+	return o.ProjectName, true
 }
 
-// SetProjectName sets field value
+// HasProjectName returns a boolean if a field has been set.
+func (o *ServerCommonRecordDto) HasProjectName() bool {
+	if o != nil && !IsNil(o.ProjectName) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectName gets a reference to the given string and assigns it to the ProjectName field.
 func (o *ServerCommonRecordDto) SetProjectName(v string) {
-	o.ProjectName = v
+	o.ProjectName = &v
 }
 
-// GetNames returns the Names field value
+// GetNames returns the Names field value if set, zero value otherwise.
 func (o *ServerCommonRecordDto) GetNames() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Names) {
 		var ret []string
 		return ret
 	}
-
 	return o.Names
 }
 
-// GetNamesOk returns a tuple with the Names field value
+// GetNamesOk returns a tuple with the Names field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerCommonRecordDto) GetNamesOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Names) {
 		return nil, false
 	}
 	return o.Names, true
 }
 
-// SetNames sets field value
+// HasNames returns a boolean if a field has been set.
+func (o *ServerCommonRecordDto) HasNames() bool {
+	if o != nil && !IsNil(o.Names) {
+		return true
+	}
+
+	return false
+}
+
+// SetNames gets a reference to the given []string and assigns it to the Names field.
 func (o *ServerCommonRecordDto) SetNames(v []string) {
 	o.Names = v
 }
@@ -132,8 +146,12 @@ func (o ServerCommonRecordDto) MarshalJSON() ([]byte, error) {
 func (o ServerCommonRecordDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["projectName"] = o.ProjectName
-	toSerialize["names"] = o.Names
+	if !IsNil(o.ProjectName) {
+		toSerialize["projectName"] = o.ProjectName
+	}
+	if !IsNil(o.Names) {
+		toSerialize["names"] = o.Names
+	}
 	return toSerialize, nil
 }
 
@@ -143,8 +161,6 @@ func (o *ServerCommonRecordDto) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"projectName",
-		"names",
 	}
 
 	allProperties := make(map[string]interface{})

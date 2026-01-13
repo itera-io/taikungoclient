@@ -22,7 +22,7 @@ var _ MappedNullable = &PrometheusRulesSearchList{}
 
 // PrometheusRulesSearchList struct for PrometheusRulesSearchList
 type PrometheusRulesSearchList struct {
-	Data []PrometheusRulesSearchResponseData `json:"data"`
+	Data []PrometheusRulesSearchResponseData `json:"data,omitempty"`
 	TotalCount int32 `json:"totalCount"`
 }
 
@@ -32,9 +32,8 @@ type _PrometheusRulesSearchList PrometheusRulesSearchList
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrometheusRulesSearchList(data []PrometheusRulesSearchResponseData, totalCount int32) *PrometheusRulesSearchList {
+func NewPrometheusRulesSearchList(totalCount int32) *PrometheusRulesSearchList {
 	this := PrometheusRulesSearchList{}
-	this.Data = data
 	this.TotalCount = totalCount
 	return &this
 }
@@ -47,26 +46,34 @@ func NewPrometheusRulesSearchListWithDefaults() *PrometheusRulesSearchList {
 	return &this
 }
 
-// GetData returns the Data field value
+// GetData returns the Data field value if set, zero value otherwise.
 func (o *PrometheusRulesSearchList) GetData() []PrometheusRulesSearchResponseData {
-	if o == nil {
+	if o == nil || IsNil(o.Data) {
 		var ret []PrometheusRulesSearchResponseData
 		return ret
 	}
-
 	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value
+// GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrometheusRulesSearchList) GetDataOk() ([]PrometheusRulesSearchResponseData, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
 	return o.Data, true
 }
 
-// SetData sets field value
+// HasData returns a boolean if a field has been set.
+func (o *PrometheusRulesSearchList) HasData() bool {
+	if o != nil && !IsNil(o.Data) {
+		return true
+	}
+
+	return false
+}
+
+// SetData gets a reference to the given []PrometheusRulesSearchResponseData and assigns it to the Data field.
 func (o *PrometheusRulesSearchList) SetData(v []PrometheusRulesSearchResponseData) {
 	o.Data = v
 }
@@ -105,7 +112,9 @@ func (o PrometheusRulesSearchList) MarshalJSON() ([]byte, error) {
 
 func (o PrometheusRulesSearchList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["data"] = o.Data
+	if !IsNil(o.Data) {
+		toSerialize["data"] = o.Data
+	}
 	toSerialize["totalCount"] = o.TotalCount
 	return toSerialize, nil
 }
@@ -115,7 +124,6 @@ func (o *PrometheusRulesSearchList) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"data",
 		"totalCount",
 	}
 

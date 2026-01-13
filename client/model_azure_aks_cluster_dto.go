@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the AzureAksClusterDto type satisfies the MappedNullable interface at compile time
@@ -22,22 +20,17 @@ var _ MappedNullable = &AzureAksClusterDto{}
 
 // AzureAksClusterDto struct for AzureAksClusterDto
 type AzureAksClusterDto struct {
-	ResourceGroupName string `json:"resourceGroupName"`
-	ClusterName string `json:"clusterName"`
-	Location string `json:"location"`
+	ResourceGroupName *string `json:"resourceGroupName,omitempty"`
+	ClusterName *string `json:"clusterName,omitempty"`
+	Location *string `json:"location,omitempty"`
 }
-
-type _AzureAksClusterDto AzureAksClusterDto
 
 // NewAzureAksClusterDto instantiates a new AzureAksClusterDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAzureAksClusterDto(resourceGroupName string, clusterName string, location string) *AzureAksClusterDto {
+func NewAzureAksClusterDto() *AzureAksClusterDto {
 	this := AzureAksClusterDto{}
-	this.ResourceGroupName = resourceGroupName
-	this.ClusterName = clusterName
-	this.Location = location
 	return &this
 }
 
@@ -49,76 +42,100 @@ func NewAzureAksClusterDtoWithDefaults() *AzureAksClusterDto {
 	return &this
 }
 
-// GetResourceGroupName returns the ResourceGroupName field value
+// GetResourceGroupName returns the ResourceGroupName field value if set, zero value otherwise.
 func (o *AzureAksClusterDto) GetResourceGroupName() string {
-	if o == nil {
+	if o == nil || IsNil(o.ResourceGroupName) {
 		var ret string
 		return ret
 	}
-
-	return o.ResourceGroupName
+	return *o.ResourceGroupName
 }
 
-// GetResourceGroupNameOk returns a tuple with the ResourceGroupName field value
+// GetResourceGroupNameOk returns a tuple with the ResourceGroupName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AzureAksClusterDto) GetResourceGroupNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ResourceGroupName) {
 		return nil, false
 	}
-	return &o.ResourceGroupName, true
+	return o.ResourceGroupName, true
 }
 
-// SetResourceGroupName sets field value
+// HasResourceGroupName returns a boolean if a field has been set.
+func (o *AzureAksClusterDto) HasResourceGroupName() bool {
+	if o != nil && !IsNil(o.ResourceGroupName) {
+		return true
+	}
+
+	return false
+}
+
+// SetResourceGroupName gets a reference to the given string and assigns it to the ResourceGroupName field.
 func (o *AzureAksClusterDto) SetResourceGroupName(v string) {
-	o.ResourceGroupName = v
+	o.ResourceGroupName = &v
 }
 
-// GetClusterName returns the ClusterName field value
+// GetClusterName returns the ClusterName field value if set, zero value otherwise.
 func (o *AzureAksClusterDto) GetClusterName() string {
-	if o == nil {
+	if o == nil || IsNil(o.ClusterName) {
 		var ret string
 		return ret
 	}
-
-	return o.ClusterName
+	return *o.ClusterName
 }
 
-// GetClusterNameOk returns a tuple with the ClusterName field value
+// GetClusterNameOk returns a tuple with the ClusterName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AzureAksClusterDto) GetClusterNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ClusterName) {
 		return nil, false
 	}
-	return &o.ClusterName, true
+	return o.ClusterName, true
 }
 
-// SetClusterName sets field value
+// HasClusterName returns a boolean if a field has been set.
+func (o *AzureAksClusterDto) HasClusterName() bool {
+	if o != nil && !IsNil(o.ClusterName) {
+		return true
+	}
+
+	return false
+}
+
+// SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *AzureAksClusterDto) SetClusterName(v string) {
-	o.ClusterName = v
+	o.ClusterName = &v
 }
 
-// GetLocation returns the Location field value
+// GetLocation returns the Location field value if set, zero value otherwise.
 func (o *AzureAksClusterDto) GetLocation() string {
-	if o == nil {
+	if o == nil || IsNil(o.Location) {
 		var ret string
 		return ret
 	}
-
-	return o.Location
+	return *o.Location
 }
 
-// GetLocationOk returns a tuple with the Location field value
+// GetLocationOk returns a tuple with the Location field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AzureAksClusterDto) GetLocationOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Location) {
 		return nil, false
 	}
-	return &o.Location, true
+	return o.Location, true
 }
 
-// SetLocation sets field value
+// HasLocation returns a boolean if a field has been set.
+func (o *AzureAksClusterDto) HasLocation() bool {
+	if o != nil && !IsNil(o.Location) {
+		return true
+	}
+
+	return false
+}
+
+// SetLocation gets a reference to the given string and assigns it to the Location field.
 func (o *AzureAksClusterDto) SetLocation(v string) {
-	o.Location = v
+	o.Location = &v
 }
 
 func (o AzureAksClusterDto) MarshalJSON() ([]byte, error) {
@@ -131,49 +148,16 @@ func (o AzureAksClusterDto) MarshalJSON() ([]byte, error) {
 
 func (o AzureAksClusterDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["resourceGroupName"] = o.ResourceGroupName
-	toSerialize["clusterName"] = o.ClusterName
-	toSerialize["location"] = o.Location
+	if !IsNil(o.ResourceGroupName) {
+		toSerialize["resourceGroupName"] = o.ResourceGroupName
+	}
+	if !IsNil(o.ClusterName) {
+		toSerialize["clusterName"] = o.ClusterName
+	}
+	if !IsNil(o.Location) {
+		toSerialize["location"] = o.Location
+	}
 	return toSerialize, nil
-}
-
-func (o *AzureAksClusterDto) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"resourceGroupName",
-		"clusterName",
-		"location",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varAzureAksClusterDto := _AzureAksClusterDto{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAzureAksClusterDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AzureAksClusterDto(varAzureAksClusterDto)
-
-	return err
 }
 
 type NullableAzureAksClusterDto struct {

@@ -23,7 +23,7 @@ var _ MappedNullable = &RebootStandAloneVmCommand{}
 // RebootStandAloneVmCommand struct for RebootStandAloneVmCommand
 type RebootStandAloneVmCommand struct {
 	Id int32 `json:"id"`
-	Type string `json:"type"`
+	Type *string `json:"type,omitempty"`
 }
 
 type _RebootStandAloneVmCommand RebootStandAloneVmCommand
@@ -32,10 +32,9 @@ type _RebootStandAloneVmCommand RebootStandAloneVmCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRebootStandAloneVmCommand(id int32, type_ string) *RebootStandAloneVmCommand {
+func NewRebootStandAloneVmCommand(id int32) *RebootStandAloneVmCommand {
 	this := RebootStandAloneVmCommand{}
 	this.Id = id
-	this.Type = type_
 	return &this
 }
 
@@ -71,28 +70,36 @@ func (o *RebootStandAloneVmCommand) SetId(v int32) {
 	o.Id = v
 }
 
-// GetType returns the Type field value
+// GetType returns the Type field value if set, zero value otherwise.
 func (o *RebootStandAloneVmCommand) GetType() string {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
-
-	return o.Type
+	return *o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RebootStandAloneVmCommand) GetTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return &o.Type, true
+	return o.Type, true
 }
 
-// SetType sets field value
+// HasType returns a boolean if a field has been set.
+func (o *RebootStandAloneVmCommand) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
 func (o *RebootStandAloneVmCommand) SetType(v string) {
-	o.Type = v
+	o.Type = &v
 }
 
 func (o RebootStandAloneVmCommand) MarshalJSON() ([]byte, error) {
@@ -106,7 +113,9 @@ func (o RebootStandAloneVmCommand) MarshalJSON() ([]byte, error) {
 func (o RebootStandAloneVmCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["type"] = o.Type
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
 	return toSerialize, nil
 }
 
@@ -116,7 +125,6 @@ func (o *RebootStandAloneVmCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"type",
 	}
 
 	allProperties := make(map[string]interface{})

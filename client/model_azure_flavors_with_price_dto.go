@@ -22,14 +22,14 @@ var _ MappedNullable = &AzureFlavorsWithPriceDto{}
 
 // AzureFlavorsWithPriceDto struct for AzureFlavorsWithPriceDto
 type AzureFlavorsWithPriceDto struct {
-	Name string `json:"name"`
-	WindowsPrice string `json:"windowsPrice"`
-	LinuxPrice string `json:"linuxPrice"`
-	WindowsSpotPrice string `json:"windowsSpotPrice"`
-	LinuxSpotPrice string `json:"linuxSpotPrice"`
+	Name *string `json:"name,omitempty"`
+	WindowsPrice *string `json:"windowsPrice,omitempty"`
+	LinuxPrice *string `json:"linuxPrice,omitempty"`
+	WindowsSpotPrice *string `json:"windowsSpotPrice,omitempty"`
+	LinuxSpotPrice *string `json:"linuxSpotPrice,omitempty"`
 	Cpu int32 `json:"cpu"`
 	Ram float64 `json:"ram"`
-	Description interface{} `json:"description"`
+	Description interface{} `json:"description,omitempty"`
 	MaxDataDiskCount NullableFloat64 `json:"maxDataDiskCount,omitempty"`
 }
 
@@ -39,16 +39,10 @@ type _AzureFlavorsWithPriceDto AzureFlavorsWithPriceDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAzureFlavorsWithPriceDto(name string, windowsPrice string, linuxPrice string, windowsSpotPrice string, linuxSpotPrice string, cpu int32, ram float64, description interface{}) *AzureFlavorsWithPriceDto {
+func NewAzureFlavorsWithPriceDto(cpu int32, ram float64) *AzureFlavorsWithPriceDto {
 	this := AzureFlavorsWithPriceDto{}
-	this.Name = name
-	this.WindowsPrice = windowsPrice
-	this.LinuxPrice = linuxPrice
-	this.WindowsSpotPrice = windowsSpotPrice
-	this.LinuxSpotPrice = linuxSpotPrice
 	this.Cpu = cpu
 	this.Ram = ram
-	this.Description = description
 	return &this
 }
 
@@ -60,124 +54,164 @@ func NewAzureFlavorsWithPriceDtoWithDefaults() *AzureFlavorsWithPriceDto {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *AzureFlavorsWithPriceDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AzureFlavorsWithPriceDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *AzureFlavorsWithPriceDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *AzureFlavorsWithPriceDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetWindowsPrice returns the WindowsPrice field value
+// GetWindowsPrice returns the WindowsPrice field value if set, zero value otherwise.
 func (o *AzureFlavorsWithPriceDto) GetWindowsPrice() string {
-	if o == nil {
+	if o == nil || IsNil(o.WindowsPrice) {
 		var ret string
 		return ret
 	}
-
-	return o.WindowsPrice
+	return *o.WindowsPrice
 }
 
-// GetWindowsPriceOk returns a tuple with the WindowsPrice field value
+// GetWindowsPriceOk returns a tuple with the WindowsPrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AzureFlavorsWithPriceDto) GetWindowsPriceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.WindowsPrice) {
 		return nil, false
 	}
-	return &o.WindowsPrice, true
+	return o.WindowsPrice, true
 }
 
-// SetWindowsPrice sets field value
+// HasWindowsPrice returns a boolean if a field has been set.
+func (o *AzureFlavorsWithPriceDto) HasWindowsPrice() bool {
+	if o != nil && !IsNil(o.WindowsPrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetWindowsPrice gets a reference to the given string and assigns it to the WindowsPrice field.
 func (o *AzureFlavorsWithPriceDto) SetWindowsPrice(v string) {
-	o.WindowsPrice = v
+	o.WindowsPrice = &v
 }
 
-// GetLinuxPrice returns the LinuxPrice field value
+// GetLinuxPrice returns the LinuxPrice field value if set, zero value otherwise.
 func (o *AzureFlavorsWithPriceDto) GetLinuxPrice() string {
-	if o == nil {
+	if o == nil || IsNil(o.LinuxPrice) {
 		var ret string
 		return ret
 	}
-
-	return o.LinuxPrice
+	return *o.LinuxPrice
 }
 
-// GetLinuxPriceOk returns a tuple with the LinuxPrice field value
+// GetLinuxPriceOk returns a tuple with the LinuxPrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AzureFlavorsWithPriceDto) GetLinuxPriceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LinuxPrice) {
 		return nil, false
 	}
-	return &o.LinuxPrice, true
+	return o.LinuxPrice, true
 }
 
-// SetLinuxPrice sets field value
+// HasLinuxPrice returns a boolean if a field has been set.
+func (o *AzureFlavorsWithPriceDto) HasLinuxPrice() bool {
+	if o != nil && !IsNil(o.LinuxPrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinuxPrice gets a reference to the given string and assigns it to the LinuxPrice field.
 func (o *AzureFlavorsWithPriceDto) SetLinuxPrice(v string) {
-	o.LinuxPrice = v
+	o.LinuxPrice = &v
 }
 
-// GetWindowsSpotPrice returns the WindowsSpotPrice field value
+// GetWindowsSpotPrice returns the WindowsSpotPrice field value if set, zero value otherwise.
 func (o *AzureFlavorsWithPriceDto) GetWindowsSpotPrice() string {
-	if o == nil {
+	if o == nil || IsNil(o.WindowsSpotPrice) {
 		var ret string
 		return ret
 	}
-
-	return o.WindowsSpotPrice
+	return *o.WindowsSpotPrice
 }
 
-// GetWindowsSpotPriceOk returns a tuple with the WindowsSpotPrice field value
+// GetWindowsSpotPriceOk returns a tuple with the WindowsSpotPrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AzureFlavorsWithPriceDto) GetWindowsSpotPriceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.WindowsSpotPrice) {
 		return nil, false
 	}
-	return &o.WindowsSpotPrice, true
+	return o.WindowsSpotPrice, true
 }
 
-// SetWindowsSpotPrice sets field value
+// HasWindowsSpotPrice returns a boolean if a field has been set.
+func (o *AzureFlavorsWithPriceDto) HasWindowsSpotPrice() bool {
+	if o != nil && !IsNil(o.WindowsSpotPrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetWindowsSpotPrice gets a reference to the given string and assigns it to the WindowsSpotPrice field.
 func (o *AzureFlavorsWithPriceDto) SetWindowsSpotPrice(v string) {
-	o.WindowsSpotPrice = v
+	o.WindowsSpotPrice = &v
 }
 
-// GetLinuxSpotPrice returns the LinuxSpotPrice field value
+// GetLinuxSpotPrice returns the LinuxSpotPrice field value if set, zero value otherwise.
 func (o *AzureFlavorsWithPriceDto) GetLinuxSpotPrice() string {
-	if o == nil {
+	if o == nil || IsNil(o.LinuxSpotPrice) {
 		var ret string
 		return ret
 	}
-
-	return o.LinuxSpotPrice
+	return *o.LinuxSpotPrice
 }
 
-// GetLinuxSpotPriceOk returns a tuple with the LinuxSpotPrice field value
+// GetLinuxSpotPriceOk returns a tuple with the LinuxSpotPrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AzureFlavorsWithPriceDto) GetLinuxSpotPriceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LinuxSpotPrice) {
 		return nil, false
 	}
-	return &o.LinuxSpotPrice, true
+	return o.LinuxSpotPrice, true
 }
 
-// SetLinuxSpotPrice sets field value
+// HasLinuxSpotPrice returns a boolean if a field has been set.
+func (o *AzureFlavorsWithPriceDto) HasLinuxSpotPrice() bool {
+	if o != nil && !IsNil(o.LinuxSpotPrice) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinuxSpotPrice gets a reference to the given string and assigns it to the LinuxSpotPrice field.
 func (o *AzureFlavorsWithPriceDto) SetLinuxSpotPrice(v string) {
-	o.LinuxSpotPrice = v
+	o.LinuxSpotPrice = &v
 }
 
 // GetCpu returns the Cpu field value
@@ -228,18 +262,16 @@ func (o *AzureFlavorsWithPriceDto) SetRam(v float64) {
 	o.Ram = v
 }
 
-// GetDescription returns the Description field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AzureFlavorsWithPriceDto) GetDescription() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AzureFlavorsWithPriceDto) GetDescriptionOk() (*interface{}, bool) {
@@ -249,7 +281,16 @@ func (o *AzureFlavorsWithPriceDto) GetDescriptionOk() (*interface{}, bool) {
 	return &o.Description, true
 }
 
-// SetDescription sets field value
+// HasDescription returns a boolean if a field has been set.
+func (o *AzureFlavorsWithPriceDto) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given interface{} and assigns it to the Description field.
 func (o *AzureFlavorsWithPriceDto) SetDescription(v interface{}) {
 	o.Description = v
 }
@@ -306,11 +347,21 @@ func (o AzureFlavorsWithPriceDto) MarshalJSON() ([]byte, error) {
 
 func (o AzureFlavorsWithPriceDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["windowsPrice"] = o.WindowsPrice
-	toSerialize["linuxPrice"] = o.LinuxPrice
-	toSerialize["windowsSpotPrice"] = o.WindowsSpotPrice
-	toSerialize["linuxSpotPrice"] = o.LinuxSpotPrice
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.WindowsPrice) {
+		toSerialize["windowsPrice"] = o.WindowsPrice
+	}
+	if !IsNil(o.LinuxPrice) {
+		toSerialize["linuxPrice"] = o.LinuxPrice
+	}
+	if !IsNil(o.WindowsSpotPrice) {
+		toSerialize["windowsSpotPrice"] = o.WindowsSpotPrice
+	}
+	if !IsNil(o.LinuxSpotPrice) {
+		toSerialize["linuxSpotPrice"] = o.LinuxSpotPrice
+	}
 	toSerialize["cpu"] = o.Cpu
 	toSerialize["ram"] = o.Ram
 	if o.Description != nil {
@@ -327,14 +378,8 @@ func (o *AzureFlavorsWithPriceDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
-		"windowsPrice",
-		"linuxPrice",
-		"windowsSpotPrice",
-		"linuxSpotPrice",
 		"cpu",
 		"ram",
-		"description",
 	}
 
 	allProperties := make(map[string]interface{})

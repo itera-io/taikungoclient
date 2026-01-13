@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the NetworkSummary type satisfies the MappedNullable interface at compile time
@@ -22,22 +20,17 @@ var _ MappedNullable = &NetworkSummary{}
 
 // NetworkSummary struct for NetworkSummary
 type NetworkSummary struct {
-	Network string `json:"network"`
-	Name string `json:"name"`
-	Type string `json:"type"`
+	Network *string `json:"network,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Type *string `json:"type,omitempty"`
 }
-
-type _NetworkSummary NetworkSummary
 
 // NewNetworkSummary instantiates a new NetworkSummary object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNetworkSummary(network string, name string, type_ string) *NetworkSummary {
+func NewNetworkSummary() *NetworkSummary {
 	this := NetworkSummary{}
-	this.Network = network
-	this.Name = name
-	this.Type = type_
 	return &this
 }
 
@@ -49,76 +42,100 @@ func NewNetworkSummaryWithDefaults() *NetworkSummary {
 	return &this
 }
 
-// GetNetwork returns the Network field value
+// GetNetwork returns the Network field value if set, zero value otherwise.
 func (o *NetworkSummary) GetNetwork() string {
-	if o == nil {
+	if o == nil || IsNil(o.Network) {
 		var ret string
 		return ret
 	}
-
-	return o.Network
+	return *o.Network
 }
 
-// GetNetworkOk returns a tuple with the Network field value
+// GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkSummary) GetNetworkOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Network) {
 		return nil, false
 	}
-	return &o.Network, true
+	return o.Network, true
 }
 
-// SetNetwork sets field value
+// HasNetwork returns a boolean if a field has been set.
+func (o *NetworkSummary) HasNetwork() bool {
+	if o != nil && !IsNil(o.Network) {
+		return true
+	}
+
+	return false
+}
+
+// SetNetwork gets a reference to the given string and assigns it to the Network field.
 func (o *NetworkSummary) SetNetwork(v string) {
-	o.Network = v
+	o.Network = &v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *NetworkSummary) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkSummary) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *NetworkSummary) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *NetworkSummary) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetType returns the Type field value
+// GetType returns the Type field value if set, zero value otherwise.
 func (o *NetworkSummary) GetType() string {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
-
-	return o.Type
+	return *o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkSummary) GetTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return &o.Type, true
+	return o.Type, true
 }
 
-// SetType sets field value
+// HasType returns a boolean if a field has been set.
+func (o *NetworkSummary) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
 func (o *NetworkSummary) SetType(v string) {
-	o.Type = v
+	o.Type = &v
 }
 
 func (o NetworkSummary) MarshalJSON() ([]byte, error) {
@@ -131,49 +148,16 @@ func (o NetworkSummary) MarshalJSON() ([]byte, error) {
 
 func (o NetworkSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["network"] = o.Network
-	toSerialize["name"] = o.Name
-	toSerialize["type"] = o.Type
+	if !IsNil(o.Network) {
+		toSerialize["network"] = o.Network
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
 	return toSerialize, nil
-}
-
-func (o *NetworkSummary) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"network",
-		"name",
-		"type",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varNetworkSummary := _NetworkSummary{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varNetworkSummary)
-
-	if err != nil {
-		return err
-	}
-
-	*o = NetworkSummary(varNetworkSummary)
-
-	return err
 }
 
 type NullableNetworkSummary struct {

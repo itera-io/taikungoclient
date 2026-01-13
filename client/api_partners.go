@@ -730,6 +730,9 @@ type ApiPartnerCreateRequest struct {
 	ApiService *PartnersAPIService
 	logo *os.File
 	backgroundImage *os.File
+	allowRegistration *bool
+	requiredUserApproval *bool
+	paymentEnabled *bool
 	name *string
 	domain *string
 	link *string
@@ -749,9 +752,6 @@ type ApiPartnerCreateRequest struct {
 	itemBgActiveHover *string
 	expanded *os.File
 	collapsed *os.File
-	allowRegistration *bool
-	requiredUserApproval *bool
-	paymentEnabled *bool
 }
 
 func (r ApiPartnerCreateRequest) Logo(logo *os.File) ApiPartnerCreateRequest {
@@ -761,6 +761,21 @@ func (r ApiPartnerCreateRequest) Logo(logo *os.File) ApiPartnerCreateRequest {
 
 func (r ApiPartnerCreateRequest) BackgroundImage(backgroundImage *os.File) ApiPartnerCreateRequest {
 	r.backgroundImage = backgroundImage
+	return r
+}
+
+func (r ApiPartnerCreateRequest) AllowRegistration(allowRegistration bool) ApiPartnerCreateRequest {
+	r.allowRegistration = &allowRegistration
+	return r
+}
+
+func (r ApiPartnerCreateRequest) RequiredUserApproval(requiredUserApproval bool) ApiPartnerCreateRequest {
+	r.requiredUserApproval = &requiredUserApproval
+	return r
+}
+
+func (r ApiPartnerCreateRequest) PaymentEnabled(paymentEnabled bool) ApiPartnerCreateRequest {
+	r.paymentEnabled = &paymentEnabled
 	return r
 }
 
@@ -859,21 +874,6 @@ func (r ApiPartnerCreateRequest) Collapsed(collapsed *os.File) ApiPartnerCreateR
 	return r
 }
 
-func (r ApiPartnerCreateRequest) AllowRegistration(allowRegistration bool) ApiPartnerCreateRequest {
-	r.allowRegistration = &allowRegistration
-	return r
-}
-
-func (r ApiPartnerCreateRequest) RequiredUserApproval(requiredUserApproval bool) ApiPartnerCreateRequest {
-	r.requiredUserApproval = &requiredUserApproval
-	return r
-}
-
-func (r ApiPartnerCreateRequest) PaymentEnabled(paymentEnabled bool) ApiPartnerCreateRequest {
-	r.paymentEnabled = &paymentEnabled
-	return r
-}
-
 func (r ApiPartnerCreateRequest) Execute() (int32, *http.Response, error) {
 	return r.ApiService.PartnerCreateExecute(r)
 }
@@ -911,69 +911,6 @@ func (a *PartnersAPIService) PartnerCreateExecute(r ApiPartnerCreateRequest) (in
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.logo == nil {
-		return localVarReturnValue, nil, reportError("logo is required and must be specified")
-	}
-	if r.backgroundImage == nil {
-		return localVarReturnValue, nil, reportError("backgroundImage is required and must be specified")
-	}
-	if r.name == nil {
-		return localVarReturnValue, nil, reportError("name is required and must be specified")
-	}
-	if r.domain == nil {
-		return localVarReturnValue, nil, reportError("domain is required and must be specified")
-	}
-	if r.link == nil {
-		return localVarReturnValue, nil, reportError("link is required and must be specified")
-	}
-	if r.phone == nil {
-		return localVarReturnValue, nil, reportError("phone is required and must be specified")
-	}
-	if r.email == nil {
-		return localVarReturnValue, nil, reportError("email is required and must be specified")
-	}
-	if r.country == nil {
-		return localVarReturnValue, nil, reportError("country is required and must be specified")
-	}
-	if r.city == nil {
-		return localVarReturnValue, nil, reportError("city is required and must be specified")
-	}
-	if r.vatNumber == nil {
-		return localVarReturnValue, nil, reportError("vatNumber is required and must be specified")
-	}
-	if r.address == nil {
-		return localVarReturnValue, nil, reportError("address is required and must be specified")
-	}
-	if r.bg == nil {
-		return localVarReturnValue, nil, reportError("bg is required and must be specified")
-	}
-	if r.bgCollapsedSubItem == nil {
-		return localVarReturnValue, nil, reportError("bgCollapsedSubItem is required and must be specified")
-	}
-	if r.itemText == nil {
-		return localVarReturnValue, nil, reportError("itemText is required and must be specified")
-	}
-	if r.itemBg == nil {
-		return localVarReturnValue, nil, reportError("itemBg is required and must be specified")
-	}
-	if r.itemBgHover == nil {
-		return localVarReturnValue, nil, reportError("itemBgHover is required and must be specified")
-	}
-	if r.itemTextActive == nil {
-		return localVarReturnValue, nil, reportError("itemTextActive is required and must be specified")
-	}
-	if r.itemBgActive == nil {
-		return localVarReturnValue, nil, reportError("itemBgActive is required and must be specified")
-	}
-	if r.itemBgActiveHover == nil {
-		return localVarReturnValue, nil, reportError("itemBgActiveHover is required and must be specified")
-	}
-	if r.expanded == nil {
-		return localVarReturnValue, nil, reportError("expanded is required and must be specified")
-	}
-	if r.collapsed == nil {
-		return localVarReturnValue, nil, reportError("collapsed is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
@@ -1031,23 +968,57 @@ func (a *PartnersAPIService) PartnerCreateExecute(r ApiPartnerCreateRequest) (in
 	if r.paymentEnabled != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "paymentEnabled", r.paymentEnabled, "", "")
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "domain", r.domain, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "link", r.link, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "phone", r.phone, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "email", r.email, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "country", r.country, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "city", r.city, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "vatNumber", r.vatNumber, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "address", r.address, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "bg", r.bg, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "bgCollapsedSubItem", r.bgCollapsedSubItem, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "itemText", r.itemText, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "itemBg", r.itemBg, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "itemBgHover", r.itemBgHover, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "itemTextActive", r.itemTextActive, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActive", r.itemBgActive, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActiveHover", r.itemBgActiveHover, "", "")
+	if r.name != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
+	}
+	if r.domain != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "domain", r.domain, "", "")
+	}
+	if r.link != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "link", r.link, "", "")
+	}
+	if r.phone != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "phone", r.phone, "", "")
+	}
+	if r.email != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "email", r.email, "", "")
+	}
+	if r.country != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "country", r.country, "", "")
+	}
+	if r.city != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "city", r.city, "", "")
+	}
+	if r.vatNumber != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "vatNumber", r.vatNumber, "", "")
+	}
+	if r.address != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "address", r.address, "", "")
+	}
+	if r.bg != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "bg", r.bg, "", "")
+	}
+	if r.bgCollapsedSubItem != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "bgCollapsedSubItem", r.bgCollapsedSubItem, "", "")
+	}
+	if r.itemText != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemText", r.itemText, "", "")
+	}
+	if r.itemBg != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBg", r.itemBg, "", "")
+	}
+	if r.itemBgHover != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgHover", r.itemBgHover, "", "")
+	}
+	if r.itemTextActive != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemTextActive", r.itemTextActive, "", "")
+	}
+	if r.itemBgActive != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActive", r.itemBgActive, "", "")
+	}
+	if r.itemBgActiveHover != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActiveHover", r.itemBgActiveHover, "", "")
+	}
 	var expandedLocalVarFormFileName string
 	var expandedLocalVarFileName     string
 	var expandedLocalVarFileBytes    []byte
@@ -2520,6 +2491,9 @@ type ApiPartnerUpdateRequest struct {
 	city *string
 	vatNumber *string
 	address *string
+	allowRegistration *bool
+	requiredUserApproval *bool
+	paymentEnabled *bool
 	bg *string
 	bgCollapsedSubItem *string
 	itemText *string
@@ -2530,9 +2504,6 @@ type ApiPartnerUpdateRequest struct {
 	itemBgActiveHover *string
 	expanded *os.File
 	collapsed *os.File
-	allowRegistration *bool
-	requiredUserApproval *bool
-	paymentEnabled *bool
 }
 
 func (r ApiPartnerUpdateRequest) Id(id int32) ApiPartnerUpdateRequest {
@@ -2595,6 +2566,21 @@ func (r ApiPartnerUpdateRequest) Address(address string) ApiPartnerUpdateRequest
 	return r
 }
 
+func (r ApiPartnerUpdateRequest) AllowRegistration(allowRegistration bool) ApiPartnerUpdateRequest {
+	r.allowRegistration = &allowRegistration
+	return r
+}
+
+func (r ApiPartnerUpdateRequest) RequiredUserApproval(requiredUserApproval bool) ApiPartnerUpdateRequest {
+	r.requiredUserApproval = &requiredUserApproval
+	return r
+}
+
+func (r ApiPartnerUpdateRequest) PaymentEnabled(paymentEnabled bool) ApiPartnerUpdateRequest {
+	r.paymentEnabled = &paymentEnabled
+	return r
+}
+
 func (r ApiPartnerUpdateRequest) Bg(bg string) ApiPartnerUpdateRequest {
 	r.bg = &bg
 	return r
@@ -2645,21 +2631,6 @@ func (r ApiPartnerUpdateRequest) Collapsed(collapsed *os.File) ApiPartnerUpdateR
 	return r
 }
 
-func (r ApiPartnerUpdateRequest) AllowRegistration(allowRegistration bool) ApiPartnerUpdateRequest {
-	r.allowRegistration = &allowRegistration
-	return r
-}
-
-func (r ApiPartnerUpdateRequest) RequiredUserApproval(requiredUserApproval bool) ApiPartnerUpdateRequest {
-	r.requiredUserApproval = &requiredUserApproval
-	return r
-}
-
-func (r ApiPartnerUpdateRequest) PaymentEnabled(paymentEnabled bool) ApiPartnerUpdateRequest {
-	r.paymentEnabled = &paymentEnabled
-	return r
-}
-
 func (r ApiPartnerUpdateRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PartnerUpdateExecute(r)
 }
@@ -2697,69 +2668,6 @@ func (a *PartnersAPIService) PartnerUpdateExecute(r ApiPartnerUpdateRequest) (*h
 	localVarFormParams := url.Values{}
 	if r.id == nil {
 		return nil, reportError("id is required and must be specified")
-	}
-	if r.logo == nil {
-		return nil, reportError("logo is required and must be specified")
-	}
-	if r.backgroundImage == nil {
-		return nil, reportError("backgroundImage is required and must be specified")
-	}
-	if r.name == nil {
-		return nil, reportError("name is required and must be specified")
-	}
-	if r.domain == nil {
-		return nil, reportError("domain is required and must be specified")
-	}
-	if r.link == nil {
-		return nil, reportError("link is required and must be specified")
-	}
-	if r.phone == nil {
-		return nil, reportError("phone is required and must be specified")
-	}
-	if r.email == nil {
-		return nil, reportError("email is required and must be specified")
-	}
-	if r.country == nil {
-		return nil, reportError("country is required and must be specified")
-	}
-	if r.city == nil {
-		return nil, reportError("city is required and must be specified")
-	}
-	if r.vatNumber == nil {
-		return nil, reportError("vatNumber is required and must be specified")
-	}
-	if r.address == nil {
-		return nil, reportError("address is required and must be specified")
-	}
-	if r.bg == nil {
-		return nil, reportError("bg is required and must be specified")
-	}
-	if r.bgCollapsedSubItem == nil {
-		return nil, reportError("bgCollapsedSubItem is required and must be specified")
-	}
-	if r.itemText == nil {
-		return nil, reportError("itemText is required and must be specified")
-	}
-	if r.itemBg == nil {
-		return nil, reportError("itemBg is required and must be specified")
-	}
-	if r.itemBgHover == nil {
-		return nil, reportError("itemBgHover is required and must be specified")
-	}
-	if r.itemTextActive == nil {
-		return nil, reportError("itemTextActive is required and must be specified")
-	}
-	if r.itemBgActive == nil {
-		return nil, reportError("itemBgActive is required and must be specified")
-	}
-	if r.itemBgActiveHover == nil {
-		return nil, reportError("itemBgActiveHover is required and must be specified")
-	}
-	if r.expanded == nil {
-		return nil, reportError("expanded is required and must be specified")
-	}
-	if r.collapsed == nil {
-		return nil, reportError("collapsed is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2810,15 +2718,33 @@ func (a *PartnersAPIService) PartnerUpdateExecute(r ApiPartnerUpdateRequest) (*h
 		backgroundImageLocalVarFile.Close()
 		formFiles = append(formFiles, formFile{fileBytes: backgroundImageLocalVarFileBytes, fileName: backgroundImageLocalVarFileName, formFileName: backgroundImageLocalVarFormFileName})
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "domain", r.domain, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "link", r.link, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "phone", r.phone, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "email", r.email, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "country", r.country, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "city", r.city, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "vatNumber", r.vatNumber, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "address", r.address, "", "")
+	if r.name != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
+	}
+	if r.domain != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "domain", r.domain, "", "")
+	}
+	if r.link != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "link", r.link, "", "")
+	}
+	if r.phone != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "phone", r.phone, "", "")
+	}
+	if r.email != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "email", r.email, "", "")
+	}
+	if r.country != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "country", r.country, "", "")
+	}
+	if r.city != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "city", r.city, "", "")
+	}
+	if r.vatNumber != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "vatNumber", r.vatNumber, "", "")
+	}
+	if r.address != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "address", r.address, "", "")
+	}
 	if r.allowRegistration != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "allowRegistration", r.allowRegistration, "", "")
 	}
@@ -2828,14 +2754,30 @@ func (a *PartnersAPIService) PartnerUpdateExecute(r ApiPartnerUpdateRequest) (*h
 	if r.paymentEnabled != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "paymentEnabled", r.paymentEnabled, "", "")
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "bg", r.bg, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "bgCollapsedSubItem", r.bgCollapsedSubItem, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "itemText", r.itemText, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "itemBg", r.itemBg, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "itemBgHover", r.itemBgHover, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "itemTextActive", r.itemTextActive, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActive", r.itemBgActive, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActiveHover", r.itemBgActiveHover, "", "")
+	if r.bg != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "bg", r.bg, "", "")
+	}
+	if r.bgCollapsedSubItem != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "bgCollapsedSubItem", r.bgCollapsedSubItem, "", "")
+	}
+	if r.itemText != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemText", r.itemText, "", "")
+	}
+	if r.itemBg != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBg", r.itemBg, "", "")
+	}
+	if r.itemBgHover != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgHover", r.itemBgHover, "", "")
+	}
+	if r.itemTextActive != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemTextActive", r.itemTextActive, "", "")
+	}
+	if r.itemBgActive != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActive", r.itemBgActive, "", "")
+	}
+	if r.itemBgActiveHover != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActiveHover", r.itemBgActiveHover, "", "")
+	}
 	var expandedLocalVarFormFileName string
 	var expandedLocalVarFileName     string
 	var expandedLocalVarFileBytes    []byte

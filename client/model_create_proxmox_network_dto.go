@@ -22,12 +22,12 @@ var _ MappedNullable = &CreateProxmoxNetworkDto{}
 
 // CreateProxmoxNetworkDto struct for CreateProxmoxNetworkDto
 type CreateProxmoxNetworkDto struct {
-	Bridge string `json:"bridge"`
-	Gateway string `json:"gateway"`
-	IpAddress string `json:"ipAddress"`
+	Bridge *string `json:"bridge,omitempty"`
+	Gateway *string `json:"gateway,omitempty"`
+	IpAddress *string `json:"ipAddress,omitempty"`
 	NetMask int32 `json:"netMask"`
-	BeginAllocationRange string `json:"beginAllocationRange"`
-	EndAllocationRange string `json:"endAllocationRange"`
+	BeginAllocationRange *string `json:"beginAllocationRange,omitempty"`
+	EndAllocationRange *string `json:"endAllocationRange,omitempty"`
 }
 
 type _CreateProxmoxNetworkDto CreateProxmoxNetworkDto
@@ -36,14 +36,9 @@ type _CreateProxmoxNetworkDto CreateProxmoxNetworkDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateProxmoxNetworkDto(bridge string, gateway string, ipAddress string, netMask int32, beginAllocationRange string, endAllocationRange string) *CreateProxmoxNetworkDto {
+func NewCreateProxmoxNetworkDto(netMask int32) *CreateProxmoxNetworkDto {
 	this := CreateProxmoxNetworkDto{}
-	this.Bridge = bridge
-	this.Gateway = gateway
-	this.IpAddress = ipAddress
 	this.NetMask = netMask
-	this.BeginAllocationRange = beginAllocationRange
-	this.EndAllocationRange = endAllocationRange
 	return &this
 }
 
@@ -55,76 +50,100 @@ func NewCreateProxmoxNetworkDtoWithDefaults() *CreateProxmoxNetworkDto {
 	return &this
 }
 
-// GetBridge returns the Bridge field value
+// GetBridge returns the Bridge field value if set, zero value otherwise.
 func (o *CreateProxmoxNetworkDto) GetBridge() string {
-	if o == nil {
+	if o == nil || IsNil(o.Bridge) {
 		var ret string
 		return ret
 	}
-
-	return o.Bridge
+	return *o.Bridge
 }
 
-// GetBridgeOk returns a tuple with the Bridge field value
+// GetBridgeOk returns a tuple with the Bridge field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProxmoxNetworkDto) GetBridgeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Bridge) {
 		return nil, false
 	}
-	return &o.Bridge, true
+	return o.Bridge, true
 }
 
-// SetBridge sets field value
+// HasBridge returns a boolean if a field has been set.
+func (o *CreateProxmoxNetworkDto) HasBridge() bool {
+	if o != nil && !IsNil(o.Bridge) {
+		return true
+	}
+
+	return false
+}
+
+// SetBridge gets a reference to the given string and assigns it to the Bridge field.
 func (o *CreateProxmoxNetworkDto) SetBridge(v string) {
-	o.Bridge = v
+	o.Bridge = &v
 }
 
-// GetGateway returns the Gateway field value
+// GetGateway returns the Gateway field value if set, zero value otherwise.
 func (o *CreateProxmoxNetworkDto) GetGateway() string {
-	if o == nil {
+	if o == nil || IsNil(o.Gateway) {
 		var ret string
 		return ret
 	}
-
-	return o.Gateway
+	return *o.Gateway
 }
 
-// GetGatewayOk returns a tuple with the Gateway field value
+// GetGatewayOk returns a tuple with the Gateway field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProxmoxNetworkDto) GetGatewayOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Gateway) {
 		return nil, false
 	}
-	return &o.Gateway, true
+	return o.Gateway, true
 }
 
-// SetGateway sets field value
+// HasGateway returns a boolean if a field has been set.
+func (o *CreateProxmoxNetworkDto) HasGateway() bool {
+	if o != nil && !IsNil(o.Gateway) {
+		return true
+	}
+
+	return false
+}
+
+// SetGateway gets a reference to the given string and assigns it to the Gateway field.
 func (o *CreateProxmoxNetworkDto) SetGateway(v string) {
-	o.Gateway = v
+	o.Gateway = &v
 }
 
-// GetIpAddress returns the IpAddress field value
+// GetIpAddress returns the IpAddress field value if set, zero value otherwise.
 func (o *CreateProxmoxNetworkDto) GetIpAddress() string {
-	if o == nil {
+	if o == nil || IsNil(o.IpAddress) {
 		var ret string
 		return ret
 	}
-
-	return o.IpAddress
+	return *o.IpAddress
 }
 
-// GetIpAddressOk returns a tuple with the IpAddress field value
+// GetIpAddressOk returns a tuple with the IpAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProxmoxNetworkDto) GetIpAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.IpAddress) {
 		return nil, false
 	}
-	return &o.IpAddress, true
+	return o.IpAddress, true
 }
 
-// SetIpAddress sets field value
+// HasIpAddress returns a boolean if a field has been set.
+func (o *CreateProxmoxNetworkDto) HasIpAddress() bool {
+	if o != nil && !IsNil(o.IpAddress) {
+		return true
+	}
+
+	return false
+}
+
+// SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
 func (o *CreateProxmoxNetworkDto) SetIpAddress(v string) {
-	o.IpAddress = v
+	o.IpAddress = &v
 }
 
 // GetNetMask returns the NetMask field value
@@ -151,52 +170,68 @@ func (o *CreateProxmoxNetworkDto) SetNetMask(v int32) {
 	o.NetMask = v
 }
 
-// GetBeginAllocationRange returns the BeginAllocationRange field value
+// GetBeginAllocationRange returns the BeginAllocationRange field value if set, zero value otherwise.
 func (o *CreateProxmoxNetworkDto) GetBeginAllocationRange() string {
-	if o == nil {
+	if o == nil || IsNil(o.BeginAllocationRange) {
 		var ret string
 		return ret
 	}
-
-	return o.BeginAllocationRange
+	return *o.BeginAllocationRange
 }
 
-// GetBeginAllocationRangeOk returns a tuple with the BeginAllocationRange field value
+// GetBeginAllocationRangeOk returns a tuple with the BeginAllocationRange field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProxmoxNetworkDto) GetBeginAllocationRangeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BeginAllocationRange) {
 		return nil, false
 	}
-	return &o.BeginAllocationRange, true
+	return o.BeginAllocationRange, true
 }
 
-// SetBeginAllocationRange sets field value
+// HasBeginAllocationRange returns a boolean if a field has been set.
+func (o *CreateProxmoxNetworkDto) HasBeginAllocationRange() bool {
+	if o != nil && !IsNil(o.BeginAllocationRange) {
+		return true
+	}
+
+	return false
+}
+
+// SetBeginAllocationRange gets a reference to the given string and assigns it to the BeginAllocationRange field.
 func (o *CreateProxmoxNetworkDto) SetBeginAllocationRange(v string) {
-	o.BeginAllocationRange = v
+	o.BeginAllocationRange = &v
 }
 
-// GetEndAllocationRange returns the EndAllocationRange field value
+// GetEndAllocationRange returns the EndAllocationRange field value if set, zero value otherwise.
 func (o *CreateProxmoxNetworkDto) GetEndAllocationRange() string {
-	if o == nil {
+	if o == nil || IsNil(o.EndAllocationRange) {
 		var ret string
 		return ret
 	}
-
-	return o.EndAllocationRange
+	return *o.EndAllocationRange
 }
 
-// GetEndAllocationRangeOk returns a tuple with the EndAllocationRange field value
+// GetEndAllocationRangeOk returns a tuple with the EndAllocationRange field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateProxmoxNetworkDto) GetEndAllocationRangeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.EndAllocationRange) {
 		return nil, false
 	}
-	return &o.EndAllocationRange, true
+	return o.EndAllocationRange, true
 }
 
-// SetEndAllocationRange sets field value
+// HasEndAllocationRange returns a boolean if a field has been set.
+func (o *CreateProxmoxNetworkDto) HasEndAllocationRange() bool {
+	if o != nil && !IsNil(o.EndAllocationRange) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndAllocationRange gets a reference to the given string and assigns it to the EndAllocationRange field.
 func (o *CreateProxmoxNetworkDto) SetEndAllocationRange(v string) {
-	o.EndAllocationRange = v
+	o.EndAllocationRange = &v
 }
 
 func (o CreateProxmoxNetworkDto) MarshalJSON() ([]byte, error) {
@@ -209,12 +244,22 @@ func (o CreateProxmoxNetworkDto) MarshalJSON() ([]byte, error) {
 
 func (o CreateProxmoxNetworkDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["bridge"] = o.Bridge
-	toSerialize["gateway"] = o.Gateway
-	toSerialize["ipAddress"] = o.IpAddress
+	if !IsNil(o.Bridge) {
+		toSerialize["bridge"] = o.Bridge
+	}
+	if !IsNil(o.Gateway) {
+		toSerialize["gateway"] = o.Gateway
+	}
+	if !IsNil(o.IpAddress) {
+		toSerialize["ipAddress"] = o.IpAddress
+	}
 	toSerialize["netMask"] = o.NetMask
-	toSerialize["beginAllocationRange"] = o.BeginAllocationRange
-	toSerialize["endAllocationRange"] = o.EndAllocationRange
+	if !IsNil(o.BeginAllocationRange) {
+		toSerialize["beginAllocationRange"] = o.BeginAllocationRange
+	}
+	if !IsNil(o.EndAllocationRange) {
+		toSerialize["endAllocationRange"] = o.EndAllocationRange
+	}
 	return toSerialize, nil
 }
 
@@ -223,12 +268,7 @@ func (o *CreateProxmoxNetworkDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"bridge",
-		"gateway",
-		"ipAddress",
 		"netMask",
-		"beginAllocationRange",
-		"endAllocationRange",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the ChatCompletionsCommand type satisfies the MappedNullable interface at compile time
@@ -22,18 +20,15 @@ var _ MappedNullable = &ChatCompletionsCommand{}
 
 // ChatCompletionsCommand struct for ChatCompletionsCommand
 type ChatCompletionsCommand struct {
-	Messages interface{} `json:"messages"`
+	Messages interface{} `json:"messages,omitempty"`
 }
-
-type _ChatCompletionsCommand ChatCompletionsCommand
 
 // NewChatCompletionsCommand instantiates a new ChatCompletionsCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChatCompletionsCommand(messages interface{}) *ChatCompletionsCommand {
+func NewChatCompletionsCommand() *ChatCompletionsCommand {
 	this := ChatCompletionsCommand{}
-	this.Messages = messages
 	return &this
 }
 
@@ -45,18 +40,16 @@ func NewChatCompletionsCommandWithDefaults() *ChatCompletionsCommand {
 	return &this
 }
 
-// GetMessages returns the Messages field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetMessages returns the Messages field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ChatCompletionsCommand) GetMessages() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.Messages
 }
 
-// GetMessagesOk returns a tuple with the Messages field value
+// GetMessagesOk returns a tuple with the Messages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ChatCompletionsCommand) GetMessagesOk() (*interface{}, bool) {
@@ -66,7 +59,16 @@ func (o *ChatCompletionsCommand) GetMessagesOk() (*interface{}, bool) {
 	return &o.Messages, true
 }
 
-// SetMessages sets field value
+// HasMessages returns a boolean if a field has been set.
+func (o *ChatCompletionsCommand) HasMessages() bool {
+	if o != nil && !IsNil(o.Messages) {
+		return true
+	}
+
+	return false
+}
+
+// SetMessages gets a reference to the given interface{} and assigns it to the Messages field.
 func (o *ChatCompletionsCommand) SetMessages(v interface{}) {
 	o.Messages = v
 }
@@ -85,43 +87,6 @@ func (o ChatCompletionsCommand) ToMap() (map[string]interface{}, error) {
 		toSerialize["messages"] = o.Messages
 	}
 	return toSerialize, nil
-}
-
-func (o *ChatCompletionsCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"messages",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varChatCompletionsCommand := _ChatCompletionsCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varChatCompletionsCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ChatCompletionsCommand(varChatCompletionsCommand)
-
-	return err
 }
 
 type NullableChatCompletionsCommand struct {

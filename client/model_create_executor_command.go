@@ -22,11 +22,11 @@ var _ MappedNullable = &CreateExecutorCommand{}
 
 // CreateExecutorCommand struct for CreateExecutorCommand
 type CreateExecutorCommand struct {
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	Enabled bool `json:"enabled"`
 	LocalCluster bool `json:"localCluster"`
-	Continent string `json:"continent"`
-	KubeConfig string `json:"kubeConfig"`
+	Continent *string `json:"continent,omitempty"`
+	KubeConfig *string `json:"kubeConfig,omitempty"`
 }
 
 type _CreateExecutorCommand CreateExecutorCommand
@@ -35,13 +35,10 @@ type _CreateExecutorCommand CreateExecutorCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateExecutorCommand(name string, enabled bool, localCluster bool, continent string, kubeConfig string) *CreateExecutorCommand {
+func NewCreateExecutorCommand(enabled bool, localCluster bool) *CreateExecutorCommand {
 	this := CreateExecutorCommand{}
-	this.Name = name
 	this.Enabled = enabled
 	this.LocalCluster = localCluster
-	this.Continent = continent
-	this.KubeConfig = kubeConfig
 	return &this
 }
 
@@ -53,28 +50,36 @@ func NewCreateExecutorCommandWithDefaults() *CreateExecutorCommand {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateExecutorCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateExecutorCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CreateExecutorCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateExecutorCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetEnabled returns the Enabled field value
@@ -125,52 +130,68 @@ func (o *CreateExecutorCommand) SetLocalCluster(v bool) {
 	o.LocalCluster = v
 }
 
-// GetContinent returns the Continent field value
+// GetContinent returns the Continent field value if set, zero value otherwise.
 func (o *CreateExecutorCommand) GetContinent() string {
-	if o == nil {
+	if o == nil || IsNil(o.Continent) {
 		var ret string
 		return ret
 	}
-
-	return o.Continent
+	return *o.Continent
 }
 
-// GetContinentOk returns a tuple with the Continent field value
+// GetContinentOk returns a tuple with the Continent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateExecutorCommand) GetContinentOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Continent) {
 		return nil, false
 	}
-	return &o.Continent, true
+	return o.Continent, true
 }
 
-// SetContinent sets field value
+// HasContinent returns a boolean if a field has been set.
+func (o *CreateExecutorCommand) HasContinent() bool {
+	if o != nil && !IsNil(o.Continent) {
+		return true
+	}
+
+	return false
+}
+
+// SetContinent gets a reference to the given string and assigns it to the Continent field.
 func (o *CreateExecutorCommand) SetContinent(v string) {
-	o.Continent = v
+	o.Continent = &v
 }
 
-// GetKubeConfig returns the KubeConfig field value
+// GetKubeConfig returns the KubeConfig field value if set, zero value otherwise.
 func (o *CreateExecutorCommand) GetKubeConfig() string {
-	if o == nil {
+	if o == nil || IsNil(o.KubeConfig) {
 		var ret string
 		return ret
 	}
-
-	return o.KubeConfig
+	return *o.KubeConfig
 }
 
-// GetKubeConfigOk returns a tuple with the KubeConfig field value
+// GetKubeConfigOk returns a tuple with the KubeConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateExecutorCommand) GetKubeConfigOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.KubeConfig) {
 		return nil, false
 	}
-	return &o.KubeConfig, true
+	return o.KubeConfig, true
 }
 
-// SetKubeConfig sets field value
+// HasKubeConfig returns a boolean if a field has been set.
+func (o *CreateExecutorCommand) HasKubeConfig() bool {
+	if o != nil && !IsNil(o.KubeConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetKubeConfig gets a reference to the given string and assigns it to the KubeConfig field.
 func (o *CreateExecutorCommand) SetKubeConfig(v string) {
-	o.KubeConfig = v
+	o.KubeConfig = &v
 }
 
 func (o CreateExecutorCommand) MarshalJSON() ([]byte, error) {
@@ -183,11 +204,17 @@ func (o CreateExecutorCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateExecutorCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	toSerialize["enabled"] = o.Enabled
 	toSerialize["localCluster"] = o.LocalCluster
-	toSerialize["continent"] = o.Continent
-	toSerialize["kubeConfig"] = o.KubeConfig
+	if !IsNil(o.Continent) {
+		toSerialize["continent"] = o.Continent
+	}
+	if !IsNil(o.KubeConfig) {
+		toSerialize["kubeConfig"] = o.KubeConfig
+	}
 	return toSerialize, nil
 }
 
@@ -196,11 +223,8 @@ func (o *CreateExecutorCommand) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
 		"enabled",
 		"localCluster",
-		"continent",
-		"kubeConfig",
 	}
 
 	allProperties := make(map[string]interface{})

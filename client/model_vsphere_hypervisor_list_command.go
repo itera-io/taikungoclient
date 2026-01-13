@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the VsphereHypervisorListCommand type satisfies the MappedNullable interface at compile time
@@ -22,26 +20,19 @@ var _ MappedNullable = &VsphereHypervisorListCommand{}
 
 // VsphereHypervisorListCommand struct for VsphereHypervisorListCommand
 type VsphereHypervisorListCommand struct {
-	Url string `json:"url"`
-	Username string `json:"username"`
-	Password string `json:"password"`
-	DatacenterId string `json:"datacenterId"`
-	CloudId NullableInt32 `json:"cloudId"`
+	Url *string `json:"url,omitempty"`
+	Username *string `json:"username,omitempty"`
+	Password *string `json:"password,omitempty"`
+	DatacenterId *string `json:"datacenterId,omitempty"`
+	CloudId NullableInt32 `json:"cloudId,omitempty"`
 }
-
-type _VsphereHypervisorListCommand VsphereHypervisorListCommand
 
 // NewVsphereHypervisorListCommand instantiates a new VsphereHypervisorListCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVsphereHypervisorListCommand(url string, username string, password string, datacenterId string, cloudId NullableInt32) *VsphereHypervisorListCommand {
+func NewVsphereHypervisorListCommand() *VsphereHypervisorListCommand {
 	this := VsphereHypervisorListCommand{}
-	this.Url = url
-	this.Username = username
-	this.Password = password
-	this.DatacenterId = datacenterId
-	this.CloudId = cloudId
 	return &this
 }
 
@@ -53,114 +44,144 @@ func NewVsphereHypervisorListCommandWithDefaults() *VsphereHypervisorListCommand
 	return &this
 }
 
-// GetUrl returns the Url field value
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *VsphereHypervisorListCommand) GetUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-
-	return o.Url
+	return *o.Url
 }
 
-// GetUrlOk returns a tuple with the Url field value
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VsphereHypervisorListCommand) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return &o.Url, true
+	return o.Url, true
 }
 
-// SetUrl sets field value
+// HasUrl returns a boolean if a field has been set.
+func (o *VsphereHypervisorListCommand) HasUrl() bool {
+	if o != nil && !IsNil(o.Url) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *VsphereHypervisorListCommand) SetUrl(v string) {
-	o.Url = v
+	o.Url = &v
 }
 
-// GetUsername returns the Username field value
+// GetUsername returns the Username field value if set, zero value otherwise.
 func (o *VsphereHypervisorListCommand) GetUsername() string {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
-
-	return o.Username
+	return *o.Username
 }
 
-// GetUsernameOk returns a tuple with the Username field value
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VsphereHypervisorListCommand) GetUsernameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
-	return &o.Username, true
+	return o.Username, true
 }
 
-// SetUsername sets field value
+// HasUsername returns a boolean if a field has been set.
+func (o *VsphereHypervisorListCommand) HasUsername() bool {
+	if o != nil && !IsNil(o.Username) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *VsphereHypervisorListCommand) SetUsername(v string) {
-	o.Username = v
+	o.Username = &v
 }
 
-// GetPassword returns the Password field value
+// GetPassword returns the Password field value if set, zero value otherwise.
 func (o *VsphereHypervisorListCommand) GetPassword() string {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
 	}
-
-	return o.Password
+	return *o.Password
 }
 
-// GetPasswordOk returns a tuple with the Password field value
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VsphereHypervisorListCommand) GetPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
-	return &o.Password, true
+	return o.Password, true
 }
 
-// SetPassword sets field value
+// HasPassword returns a boolean if a field has been set.
+func (o *VsphereHypervisorListCommand) HasPassword() bool {
+	if o != nil && !IsNil(o.Password) {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *VsphereHypervisorListCommand) SetPassword(v string) {
-	o.Password = v
+	o.Password = &v
 }
 
-// GetDatacenterId returns the DatacenterId field value
+// GetDatacenterId returns the DatacenterId field value if set, zero value otherwise.
 func (o *VsphereHypervisorListCommand) GetDatacenterId() string {
-	if o == nil {
+	if o == nil || IsNil(o.DatacenterId) {
 		var ret string
 		return ret
 	}
-
-	return o.DatacenterId
+	return *o.DatacenterId
 }
 
-// GetDatacenterIdOk returns a tuple with the DatacenterId field value
+// GetDatacenterIdOk returns a tuple with the DatacenterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VsphereHypervisorListCommand) GetDatacenterIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DatacenterId) {
 		return nil, false
 	}
-	return &o.DatacenterId, true
+	return o.DatacenterId, true
 }
 
-// SetDatacenterId sets field value
+// HasDatacenterId returns a boolean if a field has been set.
+func (o *VsphereHypervisorListCommand) HasDatacenterId() bool {
+	if o != nil && !IsNil(o.DatacenterId) {
+		return true
+	}
+
+	return false
+}
+
+// SetDatacenterId gets a reference to the given string and assigns it to the DatacenterId field.
 func (o *VsphereHypervisorListCommand) SetDatacenterId(v string) {
-	o.DatacenterId = v
+	o.DatacenterId = &v
 }
 
-// GetCloudId returns the CloudId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetCloudId returns the CloudId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VsphereHypervisorListCommand) GetCloudId() int32 {
-	if o == nil || o.CloudId.Get() == nil {
+	if o == nil || IsNil(o.CloudId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.CloudId.Get()
 }
 
-// GetCloudIdOk returns a tuple with the CloudId field value
+// GetCloudIdOk returns a tuple with the CloudId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereHypervisorListCommand) GetCloudIdOk() (*int32, bool) {
@@ -170,9 +191,27 @@ func (o *VsphereHypervisorListCommand) GetCloudIdOk() (*int32, bool) {
 	return o.CloudId.Get(), o.CloudId.IsSet()
 }
 
-// SetCloudId sets field value
+// HasCloudId returns a boolean if a field has been set.
+func (o *VsphereHypervisorListCommand) HasCloudId() bool {
+	if o != nil && o.CloudId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudId gets a reference to the given NullableInt32 and assigns it to the CloudId field.
 func (o *VsphereHypervisorListCommand) SetCloudId(v int32) {
 	o.CloudId.Set(&v)
+}
+// SetCloudIdNil sets the value for CloudId to be an explicit nil
+func (o *VsphereHypervisorListCommand) SetCloudIdNil() {
+	o.CloudId.Set(nil)
+}
+
+// UnsetCloudId ensures that no value is present for CloudId, not even an explicit nil
+func (o *VsphereHypervisorListCommand) UnsetCloudId() {
+	o.CloudId.Unset()
 }
 
 func (o VsphereHypervisorListCommand) MarshalJSON() ([]byte, error) {
@@ -185,53 +224,22 @@ func (o VsphereHypervisorListCommand) MarshalJSON() ([]byte, error) {
 
 func (o VsphereHypervisorListCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["url"] = o.Url
-	toSerialize["username"] = o.Username
-	toSerialize["password"] = o.Password
-	toSerialize["datacenterId"] = o.DatacenterId
-	toSerialize["cloudId"] = o.CloudId.Get()
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
+	}
+	if !IsNil(o.DatacenterId) {
+		toSerialize["datacenterId"] = o.DatacenterId
+	}
+	if o.CloudId.IsSet() {
+		toSerialize["cloudId"] = o.CloudId.Get()
+	}
 	return toSerialize, nil
-}
-
-func (o *VsphereHypervisorListCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"url",
-		"username",
-		"password",
-		"datacenterId",
-		"cloudId",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varVsphereHypervisorListCommand := _VsphereHypervisorListCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVsphereHypervisorListCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = VsphereHypervisorListCommand(varVsphereHypervisorListCommand)
-
-	return err
 }
 
 type NullableVsphereHypervisorListCommand struct {

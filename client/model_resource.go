@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the Resource type satisfies the MappedNullable interface at compile time
@@ -22,34 +20,23 @@ var _ MappedNullable = &Resource{}
 
 // Resource struct for Resource
 type Resource struct {
-	Name string `json:"name"`
-	ResourceType string `json:"resourceType"`
-	Tags map[string]string `json:"tags"`
-	Metadata map[string]interface{} `json:"metadata"`
-	HourlyCost string `json:"hourlyCost"`
-	MonthlyCost string `json:"monthlyCost"`
-	MonthlyUsageCost string `json:"monthlyUsageCost"`
-	CostComponents []CostComponent `json:"costComponents"`
-	Subresources []Subresource `json:"subresources"`
+	Name *string `json:"name,omitempty"`
+	ResourceType *string `json:"resourceType,omitempty"`
+	Tags *map[string]string `json:"tags,omitempty"`
+	Metadata map[string]interface{} `json:"metadata,omitempty"`
+	HourlyCost *string `json:"hourlyCost,omitempty"`
+	MonthlyCost *string `json:"monthlyCost,omitempty"`
+	MonthlyUsageCost *string `json:"monthlyUsageCost,omitempty"`
+	CostComponents []CostComponent `json:"costComponents,omitempty"`
+	Subresources []Subresource `json:"subresources,omitempty"`
 }
-
-type _Resource Resource
 
 // NewResource instantiates a new Resource object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResource(name string, resourceType string, tags map[string]string, metadata map[string]interface{}, hourlyCost string, monthlyCost string, monthlyUsageCost string, costComponents []CostComponent, subresources []Subresource) *Resource {
+func NewResource() *Resource {
 	this := Resource{}
-	this.Name = name
-	this.ResourceType = resourceType
-	this.Tags = tags
-	this.Metadata = metadata
-	this.HourlyCost = hourlyCost
-	this.MonthlyCost = monthlyCost
-	this.MonthlyUsageCost = monthlyUsageCost
-	this.CostComponents = costComponents
-	this.Subresources = subresources
 	return &this
 }
 
@@ -61,218 +48,290 @@ func NewResourceWithDefaults() *Resource {
 	return &this
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *Resource) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Resource) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *Resource) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *Resource) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetResourceType returns the ResourceType field value
+// GetResourceType returns the ResourceType field value if set, zero value otherwise.
 func (o *Resource) GetResourceType() string {
-	if o == nil {
+	if o == nil || IsNil(o.ResourceType) {
 		var ret string
 		return ret
 	}
-
-	return o.ResourceType
+	return *o.ResourceType
 }
 
-// GetResourceTypeOk returns a tuple with the ResourceType field value
+// GetResourceTypeOk returns a tuple with the ResourceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Resource) GetResourceTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ResourceType) {
 		return nil, false
 	}
-	return &o.ResourceType, true
+	return o.ResourceType, true
 }
 
-// SetResourceType sets field value
+// HasResourceType returns a boolean if a field has been set.
+func (o *Resource) HasResourceType() bool {
+	if o != nil && !IsNil(o.ResourceType) {
+		return true
+	}
+
+	return false
+}
+
+// SetResourceType gets a reference to the given string and assigns it to the ResourceType field.
 func (o *Resource) SetResourceType(v string) {
-	o.ResourceType = v
+	o.ResourceType = &v
 }
 
-// GetTags returns the Tags field value
+// GetTags returns the Tags field value if set, zero value otherwise.
 func (o *Resource) GetTags() map[string]string {
-	if o == nil {
+	if o == nil || IsNil(o.Tags) {
 		var ret map[string]string
 		return ret
 	}
-
-	return o.Tags
+	return *o.Tags
 }
 
-// GetTagsOk returns a tuple with the Tags field value
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Resource) GetTagsOk() (*map[string]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
-	return &o.Tags, true
+	return o.Tags, true
 }
 
-// SetTags sets field value
+// HasTags returns a boolean if a field has been set.
+func (o *Resource) HasTags() bool {
+	if o != nil && !IsNil(o.Tags) {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given map[string]string and assigns it to the Tags field.
 func (o *Resource) SetTags(v map[string]string) {
-	o.Tags = v
+	o.Tags = &v
 }
 
-// GetMetadata returns the Metadata field value
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *Resource) GetMetadata() map[string]interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.Metadata) {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.Metadata
 }
 
-// GetMetadataOk returns a tuple with the Metadata field value
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Resource) GetMetadataOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Metadata) {
 		return map[string]interface{}{}, false
 	}
 	return o.Metadata, true
 }
 
-// SetMetadata sets field value
+// HasMetadata returns a boolean if a field has been set.
+func (o *Resource) HasMetadata() bool {
+	if o != nil && !IsNil(o.Metadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
 func (o *Resource) SetMetadata(v map[string]interface{}) {
 	o.Metadata = v
 }
 
-// GetHourlyCost returns the HourlyCost field value
+// GetHourlyCost returns the HourlyCost field value if set, zero value otherwise.
 func (o *Resource) GetHourlyCost() string {
-	if o == nil {
+	if o == nil || IsNil(o.HourlyCost) {
 		var ret string
 		return ret
 	}
-
-	return o.HourlyCost
+	return *o.HourlyCost
 }
 
-// GetHourlyCostOk returns a tuple with the HourlyCost field value
+// GetHourlyCostOk returns a tuple with the HourlyCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Resource) GetHourlyCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.HourlyCost) {
 		return nil, false
 	}
-	return &o.HourlyCost, true
+	return o.HourlyCost, true
 }
 
-// SetHourlyCost sets field value
+// HasHourlyCost returns a boolean if a field has been set.
+func (o *Resource) HasHourlyCost() bool {
+	if o != nil && !IsNil(o.HourlyCost) {
+		return true
+	}
+
+	return false
+}
+
+// SetHourlyCost gets a reference to the given string and assigns it to the HourlyCost field.
 func (o *Resource) SetHourlyCost(v string) {
-	o.HourlyCost = v
+	o.HourlyCost = &v
 }
 
-// GetMonthlyCost returns the MonthlyCost field value
+// GetMonthlyCost returns the MonthlyCost field value if set, zero value otherwise.
 func (o *Resource) GetMonthlyCost() string {
-	if o == nil {
+	if o == nil || IsNil(o.MonthlyCost) {
 		var ret string
 		return ret
 	}
-
-	return o.MonthlyCost
+	return *o.MonthlyCost
 }
 
-// GetMonthlyCostOk returns a tuple with the MonthlyCost field value
+// GetMonthlyCostOk returns a tuple with the MonthlyCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Resource) GetMonthlyCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.MonthlyCost) {
 		return nil, false
 	}
-	return &o.MonthlyCost, true
+	return o.MonthlyCost, true
 }
 
-// SetMonthlyCost sets field value
+// HasMonthlyCost returns a boolean if a field has been set.
+func (o *Resource) HasMonthlyCost() bool {
+	if o != nil && !IsNil(o.MonthlyCost) {
+		return true
+	}
+
+	return false
+}
+
+// SetMonthlyCost gets a reference to the given string and assigns it to the MonthlyCost field.
 func (o *Resource) SetMonthlyCost(v string) {
-	o.MonthlyCost = v
+	o.MonthlyCost = &v
 }
 
-// GetMonthlyUsageCost returns the MonthlyUsageCost field value
+// GetMonthlyUsageCost returns the MonthlyUsageCost field value if set, zero value otherwise.
 func (o *Resource) GetMonthlyUsageCost() string {
-	if o == nil {
+	if o == nil || IsNil(o.MonthlyUsageCost) {
 		var ret string
 		return ret
 	}
-
-	return o.MonthlyUsageCost
+	return *o.MonthlyUsageCost
 }
 
-// GetMonthlyUsageCostOk returns a tuple with the MonthlyUsageCost field value
+// GetMonthlyUsageCostOk returns a tuple with the MonthlyUsageCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Resource) GetMonthlyUsageCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.MonthlyUsageCost) {
 		return nil, false
 	}
-	return &o.MonthlyUsageCost, true
+	return o.MonthlyUsageCost, true
 }
 
-// SetMonthlyUsageCost sets field value
+// HasMonthlyUsageCost returns a boolean if a field has been set.
+func (o *Resource) HasMonthlyUsageCost() bool {
+	if o != nil && !IsNil(o.MonthlyUsageCost) {
+		return true
+	}
+
+	return false
+}
+
+// SetMonthlyUsageCost gets a reference to the given string and assigns it to the MonthlyUsageCost field.
 func (o *Resource) SetMonthlyUsageCost(v string) {
-	o.MonthlyUsageCost = v
+	o.MonthlyUsageCost = &v
 }
 
-// GetCostComponents returns the CostComponents field value
+// GetCostComponents returns the CostComponents field value if set, zero value otherwise.
 func (o *Resource) GetCostComponents() []CostComponent {
-	if o == nil {
+	if o == nil || IsNil(o.CostComponents) {
 		var ret []CostComponent
 		return ret
 	}
-
 	return o.CostComponents
 }
 
-// GetCostComponentsOk returns a tuple with the CostComponents field value
+// GetCostComponentsOk returns a tuple with the CostComponents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Resource) GetCostComponentsOk() ([]CostComponent, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CostComponents) {
 		return nil, false
 	}
 	return o.CostComponents, true
 }
 
-// SetCostComponents sets field value
+// HasCostComponents returns a boolean if a field has been set.
+func (o *Resource) HasCostComponents() bool {
+	if o != nil && !IsNil(o.CostComponents) {
+		return true
+	}
+
+	return false
+}
+
+// SetCostComponents gets a reference to the given []CostComponent and assigns it to the CostComponents field.
 func (o *Resource) SetCostComponents(v []CostComponent) {
 	o.CostComponents = v
 }
 
-// GetSubresources returns the Subresources field value
+// GetSubresources returns the Subresources field value if set, zero value otherwise.
 func (o *Resource) GetSubresources() []Subresource {
-	if o == nil {
+	if o == nil || IsNil(o.Subresources) {
 		var ret []Subresource
 		return ret
 	}
-
 	return o.Subresources
 }
 
-// GetSubresourcesOk returns a tuple with the Subresources field value
+// GetSubresourcesOk returns a tuple with the Subresources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Resource) GetSubresourcesOk() ([]Subresource, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Subresources) {
 		return nil, false
 	}
 	return o.Subresources, true
 }
 
-// SetSubresources sets field value
+// HasSubresources returns a boolean if a field has been set.
+func (o *Resource) HasSubresources() bool {
+	if o != nil && !IsNil(o.Subresources) {
+		return true
+	}
+
+	return false
+}
+
+// SetSubresources gets a reference to the given []Subresource and assigns it to the Subresources field.
 func (o *Resource) SetSubresources(v []Subresource) {
 	o.Subresources = v
 }
@@ -287,61 +346,34 @@ func (o Resource) MarshalJSON() ([]byte, error) {
 
 func (o Resource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["resourceType"] = o.ResourceType
-	toSerialize["tags"] = o.Tags
-	toSerialize["metadata"] = o.Metadata
-	toSerialize["hourlyCost"] = o.HourlyCost
-	toSerialize["monthlyCost"] = o.MonthlyCost
-	toSerialize["monthlyUsageCost"] = o.MonthlyUsageCost
-	toSerialize["costComponents"] = o.CostComponents
-	toSerialize["subresources"] = o.Subresources
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.ResourceType) {
+		toSerialize["resourceType"] = o.ResourceType
+	}
+	if !IsNil(o.Tags) {
+		toSerialize["tags"] = o.Tags
+	}
+	if !IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
+	}
+	if !IsNil(o.HourlyCost) {
+		toSerialize["hourlyCost"] = o.HourlyCost
+	}
+	if !IsNil(o.MonthlyCost) {
+		toSerialize["monthlyCost"] = o.MonthlyCost
+	}
+	if !IsNil(o.MonthlyUsageCost) {
+		toSerialize["monthlyUsageCost"] = o.MonthlyUsageCost
+	}
+	if !IsNil(o.CostComponents) {
+		toSerialize["costComponents"] = o.CostComponents
+	}
+	if !IsNil(o.Subresources) {
+		toSerialize["subresources"] = o.Subresources
+	}
 	return toSerialize, nil
-}
-
-func (o *Resource) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"resourceType",
-		"tags",
-		"metadata",
-		"hourlyCost",
-		"monthlyCost",
-		"monthlyUsageCost",
-		"costComponents",
-		"subresources",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varResource := _Resource{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varResource)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Resource(varResource)
-
-	return err
 }
 
 type NullableResource struct {

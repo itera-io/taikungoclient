@@ -23,8 +23,8 @@ var _ MappedNullable = &CreateAllowedHostCommand{}
 // CreateAllowedHostCommand struct for CreateAllowedHostCommand
 type CreateAllowedHostCommand struct {
 	AccessProfileId int32 `json:"accessProfileId"`
-	Description string `json:"description"`
-	IpAddress string `json:"ipAddress"`
+	Description *string `json:"description,omitempty"`
+	IpAddress *string `json:"ipAddress,omitempty"`
 	MaskBits int32 `json:"maskBits"`
 }
 
@@ -34,11 +34,9 @@ type _CreateAllowedHostCommand CreateAllowedHostCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateAllowedHostCommand(accessProfileId int32, description string, ipAddress string, maskBits int32) *CreateAllowedHostCommand {
+func NewCreateAllowedHostCommand(accessProfileId int32, maskBits int32) *CreateAllowedHostCommand {
 	this := CreateAllowedHostCommand{}
 	this.AccessProfileId = accessProfileId
-	this.Description = description
-	this.IpAddress = ipAddress
 	this.MaskBits = maskBits
 	return &this
 }
@@ -75,52 +73,68 @@ func (o *CreateAllowedHostCommand) SetAccessProfileId(v int32) {
 	o.AccessProfileId = v
 }
 
-// GetDescription returns the Description field value
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *CreateAllowedHostCommand) GetDescription() string {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-
-	return o.Description
+	return *o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateAllowedHostCommand) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description, true
 }
 
-// SetDescription sets field value
+// HasDescription returns a boolean if a field has been set.
+func (o *CreateAllowedHostCommand) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *CreateAllowedHostCommand) SetDescription(v string) {
-	o.Description = v
+	o.Description = &v
 }
 
-// GetIpAddress returns the IpAddress field value
+// GetIpAddress returns the IpAddress field value if set, zero value otherwise.
 func (o *CreateAllowedHostCommand) GetIpAddress() string {
-	if o == nil {
+	if o == nil || IsNil(o.IpAddress) {
 		var ret string
 		return ret
 	}
-
-	return o.IpAddress
+	return *o.IpAddress
 }
 
-// GetIpAddressOk returns a tuple with the IpAddress field value
+// GetIpAddressOk returns a tuple with the IpAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateAllowedHostCommand) GetIpAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.IpAddress) {
 		return nil, false
 	}
-	return &o.IpAddress, true
+	return o.IpAddress, true
 }
 
-// SetIpAddress sets field value
+// HasIpAddress returns a boolean if a field has been set.
+func (o *CreateAllowedHostCommand) HasIpAddress() bool {
+	if o != nil && !IsNil(o.IpAddress) {
+		return true
+	}
+
+	return false
+}
+
+// SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
 func (o *CreateAllowedHostCommand) SetIpAddress(v string) {
-	o.IpAddress = v
+	o.IpAddress = &v
 }
 
 // GetMaskBits returns the MaskBits field value
@@ -158,8 +172,12 @@ func (o CreateAllowedHostCommand) MarshalJSON() ([]byte, error) {
 func (o CreateAllowedHostCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["accessProfileId"] = o.AccessProfileId
-	toSerialize["description"] = o.Description
-	toSerialize["ipAddress"] = o.IpAddress
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.IpAddress) {
+		toSerialize["ipAddress"] = o.IpAddress
+	}
 	toSerialize["maskBits"] = o.MaskBits
 	return toSerialize, nil
 }
@@ -170,8 +188,6 @@ func (o *CreateAllowedHostCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"accessProfileId",
-		"description",
-		"ipAddress",
 		"maskBits",
 	}
 

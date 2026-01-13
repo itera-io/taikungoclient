@@ -23,7 +23,7 @@ var _ MappedNullable = &PrometheusRulesSearchResponseData{}
 // PrometheusRulesSearchResponseData struct for PrometheusRulesSearchResponseData
 type PrometheusRulesSearchResponseData struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	Partner int32 `json:"partner"`
 }
 
@@ -33,10 +33,9 @@ type _PrometheusRulesSearchResponseData PrometheusRulesSearchResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrometheusRulesSearchResponseData(id int32, name string, partner int32) *PrometheusRulesSearchResponseData {
+func NewPrometheusRulesSearchResponseData(id int32, partner int32) *PrometheusRulesSearchResponseData {
 	this := PrometheusRulesSearchResponseData{}
 	this.Id = id
-	this.Name = name
 	this.Partner = partner
 	return &this
 }
@@ -73,28 +72,36 @@ func (o *PrometheusRulesSearchResponseData) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *PrometheusRulesSearchResponseData) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrometheusRulesSearchResponseData) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *PrometheusRulesSearchResponseData) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *PrometheusRulesSearchResponseData) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetPartner returns the Partner field value
@@ -132,7 +139,9 @@ func (o PrometheusRulesSearchResponseData) MarshalJSON() ([]byte, error) {
 func (o PrometheusRulesSearchResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	toSerialize["partner"] = o.Partner
 	return toSerialize, nil
 }
@@ -143,7 +152,6 @@ func (o *PrometheusRulesSearchResponseData) UnmarshalJSON(data []byte) (err erro
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
 		"partner",
 	}
 

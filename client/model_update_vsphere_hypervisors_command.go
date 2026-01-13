@@ -23,7 +23,7 @@ var _ MappedNullable = &UpdateVsphereHypervisorsCommand{}
 // UpdateVsphereHypervisorsCommand struct for UpdateVsphereHypervisorsCommand
 type UpdateVsphereHypervisorsCommand struct {
 	Id int32 `json:"id"`
-	Hypervisors []string `json:"hypervisors"`
+	Hypervisors []string `json:"hypervisors,omitempty"`
 }
 
 type _UpdateVsphereHypervisorsCommand UpdateVsphereHypervisorsCommand
@@ -32,10 +32,9 @@ type _UpdateVsphereHypervisorsCommand UpdateVsphereHypervisorsCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateVsphereHypervisorsCommand(id int32, hypervisors []string) *UpdateVsphereHypervisorsCommand {
+func NewUpdateVsphereHypervisorsCommand(id int32) *UpdateVsphereHypervisorsCommand {
 	this := UpdateVsphereHypervisorsCommand{}
 	this.Id = id
-	this.Hypervisors = hypervisors
 	return &this
 }
 
@@ -71,26 +70,34 @@ func (o *UpdateVsphereHypervisorsCommand) SetId(v int32) {
 	o.Id = v
 }
 
-// GetHypervisors returns the Hypervisors field value
+// GetHypervisors returns the Hypervisors field value if set, zero value otherwise.
 func (o *UpdateVsphereHypervisorsCommand) GetHypervisors() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Hypervisors) {
 		var ret []string
 		return ret
 	}
-
 	return o.Hypervisors
 }
 
-// GetHypervisorsOk returns a tuple with the Hypervisors field value
+// GetHypervisorsOk returns a tuple with the Hypervisors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateVsphereHypervisorsCommand) GetHypervisorsOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Hypervisors) {
 		return nil, false
 	}
 	return o.Hypervisors, true
 }
 
-// SetHypervisors sets field value
+// HasHypervisors returns a boolean if a field has been set.
+func (o *UpdateVsphereHypervisorsCommand) HasHypervisors() bool {
+	if o != nil && !IsNil(o.Hypervisors) {
+		return true
+	}
+
+	return false
+}
+
+// SetHypervisors gets a reference to the given []string and assigns it to the Hypervisors field.
 func (o *UpdateVsphereHypervisorsCommand) SetHypervisors(v []string) {
 	o.Hypervisors = v
 }
@@ -106,7 +113,9 @@ func (o UpdateVsphereHypervisorsCommand) MarshalJSON() ([]byte, error) {
 func (o UpdateVsphereHypervisorsCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["hypervisors"] = o.Hypervisors
+	if !IsNil(o.Hypervisors) {
+		toSerialize["hypervisors"] = o.Hypervisors
+	}
 	return toSerialize, nil
 }
 
@@ -116,7 +125,6 @@ func (o *UpdateVsphereHypervisorsCommand) UnmarshalJSON(data []byte) (err error)
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"hypervisors",
 	}
 
 	allProperties := make(map[string]interface{})

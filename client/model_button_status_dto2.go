@@ -23,7 +23,7 @@ var _ MappedNullable = &ButtonStatusDto2{}
 // ButtonStatusDto2 struct for ButtonStatusDto2
 type ButtonStatusDto2 struct {
 	Enable bool `json:"enable"`
-	Reasons []string `json:"reasons"`
+	Reasons []string `json:"reasons,omitempty"`
 	Hidden bool `json:"hidden"`
 }
 
@@ -33,10 +33,9 @@ type _ButtonStatusDto2 ButtonStatusDto2
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewButtonStatusDto2(enable bool, reasons []string, hidden bool) *ButtonStatusDto2 {
+func NewButtonStatusDto2(enable bool, hidden bool) *ButtonStatusDto2 {
 	this := ButtonStatusDto2{}
 	this.Enable = enable
-	this.Reasons = reasons
 	this.Hidden = hidden
 	return &this
 }
@@ -73,26 +72,34 @@ func (o *ButtonStatusDto2) SetEnable(v bool) {
 	o.Enable = v
 }
 
-// GetReasons returns the Reasons field value
+// GetReasons returns the Reasons field value if set, zero value otherwise.
 func (o *ButtonStatusDto2) GetReasons() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Reasons) {
 		var ret []string
 		return ret
 	}
-
 	return o.Reasons
 }
 
-// GetReasonsOk returns a tuple with the Reasons field value
+// GetReasonsOk returns a tuple with the Reasons field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ButtonStatusDto2) GetReasonsOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Reasons) {
 		return nil, false
 	}
 	return o.Reasons, true
 }
 
-// SetReasons sets field value
+// HasReasons returns a boolean if a field has been set.
+func (o *ButtonStatusDto2) HasReasons() bool {
+	if o != nil && !IsNil(o.Reasons) {
+		return true
+	}
+
+	return false
+}
+
+// SetReasons gets a reference to the given []string and assigns it to the Reasons field.
 func (o *ButtonStatusDto2) SetReasons(v []string) {
 	o.Reasons = v
 }
@@ -132,7 +139,9 @@ func (o ButtonStatusDto2) MarshalJSON() ([]byte, error) {
 func (o ButtonStatusDto2) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["enable"] = o.Enable
-	toSerialize["reasons"] = o.Reasons
+	if !IsNil(o.Reasons) {
+		toSerialize["reasons"] = o.Reasons
+	}
 	toSerialize["hidden"] = o.Hidden
 	return toSerialize, nil
 }
@@ -143,7 +152,6 @@ func (o *ButtonStatusDto2) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"enable",
-		"reasons",
 		"hidden",
 	}
 

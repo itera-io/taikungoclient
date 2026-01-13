@@ -22,8 +22,8 @@ var _ MappedNullable = &BindUnbindEndpointToTokenCommand{}
 
 // BindUnbindEndpointToTokenCommand struct for BindUnbindEndpointToTokenCommand
 type BindUnbindEndpointToTokenCommand struct {
-	TokenId string `json:"tokenId"`
-	Endpoints []AvailableEndpointData `json:"endpoints"`
+	TokenId *string `json:"tokenId,omitempty"`
+	Endpoints []AvailableEndpointData `json:"endpoints,omitempty"`
 	BindAll bool `json:"bindAll"`
 }
 
@@ -33,10 +33,8 @@ type _BindUnbindEndpointToTokenCommand BindUnbindEndpointToTokenCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBindUnbindEndpointToTokenCommand(tokenId string, endpoints []AvailableEndpointData, bindAll bool) *BindUnbindEndpointToTokenCommand {
+func NewBindUnbindEndpointToTokenCommand(bindAll bool) *BindUnbindEndpointToTokenCommand {
 	this := BindUnbindEndpointToTokenCommand{}
-	this.TokenId = tokenId
-	this.Endpoints = endpoints
 	this.BindAll = bindAll
 	return &this
 }
@@ -49,50 +47,66 @@ func NewBindUnbindEndpointToTokenCommandWithDefaults() *BindUnbindEndpointToToke
 	return &this
 }
 
-// GetTokenId returns the TokenId field value
+// GetTokenId returns the TokenId field value if set, zero value otherwise.
 func (o *BindUnbindEndpointToTokenCommand) GetTokenId() string {
-	if o == nil {
+	if o == nil || IsNil(o.TokenId) {
 		var ret string
 		return ret
 	}
-
-	return o.TokenId
+	return *o.TokenId
 }
 
-// GetTokenIdOk returns a tuple with the TokenId field value
+// GetTokenIdOk returns a tuple with the TokenId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BindUnbindEndpointToTokenCommand) GetTokenIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TokenId) {
 		return nil, false
 	}
-	return &o.TokenId, true
+	return o.TokenId, true
 }
 
-// SetTokenId sets field value
+// HasTokenId returns a boolean if a field has been set.
+func (o *BindUnbindEndpointToTokenCommand) HasTokenId() bool {
+	if o != nil && !IsNil(o.TokenId) {
+		return true
+	}
+
+	return false
+}
+
+// SetTokenId gets a reference to the given string and assigns it to the TokenId field.
 func (o *BindUnbindEndpointToTokenCommand) SetTokenId(v string) {
-	o.TokenId = v
+	o.TokenId = &v
 }
 
-// GetEndpoints returns the Endpoints field value
+// GetEndpoints returns the Endpoints field value if set, zero value otherwise.
 func (o *BindUnbindEndpointToTokenCommand) GetEndpoints() []AvailableEndpointData {
-	if o == nil {
+	if o == nil || IsNil(o.Endpoints) {
 		var ret []AvailableEndpointData
 		return ret
 	}
-
 	return o.Endpoints
 }
 
-// GetEndpointsOk returns a tuple with the Endpoints field value
+// GetEndpointsOk returns a tuple with the Endpoints field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BindUnbindEndpointToTokenCommand) GetEndpointsOk() ([]AvailableEndpointData, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Endpoints) {
 		return nil, false
 	}
 	return o.Endpoints, true
 }
 
-// SetEndpoints sets field value
+// HasEndpoints returns a boolean if a field has been set.
+func (o *BindUnbindEndpointToTokenCommand) HasEndpoints() bool {
+	if o != nil && !IsNil(o.Endpoints) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndpoints gets a reference to the given []AvailableEndpointData and assigns it to the Endpoints field.
 func (o *BindUnbindEndpointToTokenCommand) SetEndpoints(v []AvailableEndpointData) {
 	o.Endpoints = v
 }
@@ -131,8 +145,12 @@ func (o BindUnbindEndpointToTokenCommand) MarshalJSON() ([]byte, error) {
 
 func (o BindUnbindEndpointToTokenCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["tokenId"] = o.TokenId
-	toSerialize["endpoints"] = o.Endpoints
+	if !IsNil(o.TokenId) {
+		toSerialize["tokenId"] = o.TokenId
+	}
+	if !IsNil(o.Endpoints) {
+		toSerialize["endpoints"] = o.Endpoints
+	}
 	toSerialize["bindAll"] = o.BindAll
 	return toSerialize, nil
 }
@@ -142,8 +160,6 @@ func (o *BindUnbindEndpointToTokenCommand) UnmarshalJSON(data []byte) (err error
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"tokenId",
-		"endpoints",
 		"bindAll",
 	}
 

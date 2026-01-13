@@ -23,12 +23,12 @@ var _ MappedNullable = &KubernetesEventCreateDto{}
 
 // KubernetesEventCreateDto struct for KubernetesEventCreateDto
 type KubernetesEventCreateDto struct {
-	Type string `json:"type"`
-	Reason string `json:"reason"`
-	Message string `json:"message"`
-	Metadata interface{} `json:"metadata"`
-	Source interface{} `json:"source"`
-	InvolvedObject interface{} `json:"involvedObject"`
+	Type *string `json:"type,omitempty"`
+	Reason *string `json:"reason,omitempty"`
+	Message *string `json:"message,omitempty"`
+	Metadata interface{} `json:"metadata,omitempty"`
+	Source interface{} `json:"source,omitempty"`
+	InvolvedObject interface{} `json:"involvedObject,omitempty"`
 	FirstTimeStamp NullableTime `json:"firstTimeStamp,omitempty"`
 	LastTimeStamp NullableTime `json:"lastTimeStamp,omitempty"`
 	Count int32 `json:"count"`
@@ -40,14 +40,8 @@ type _KubernetesEventCreateDto KubernetesEventCreateDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubernetesEventCreateDto(type_ string, reason string, message string, metadata interface{}, source interface{}, involvedObject interface{}, count int32) *KubernetesEventCreateDto {
+func NewKubernetesEventCreateDto(count int32) *KubernetesEventCreateDto {
 	this := KubernetesEventCreateDto{}
-	this.Type = type_
-	this.Reason = reason
-	this.Message = message
-	this.Metadata = metadata
-	this.Source = source
-	this.InvolvedObject = involvedObject
 	this.Count = count
 	return &this
 }
@@ -60,90 +54,112 @@ func NewKubernetesEventCreateDtoWithDefaults() *KubernetesEventCreateDto {
 	return &this
 }
 
-// GetType returns the Type field value
+// GetType returns the Type field value if set, zero value otherwise.
 func (o *KubernetesEventCreateDto) GetType() string {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
-
-	return o.Type
+	return *o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KubernetesEventCreateDto) GetTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return &o.Type, true
+	return o.Type, true
 }
 
-// SetType sets field value
+// HasType returns a boolean if a field has been set.
+func (o *KubernetesEventCreateDto) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
 func (o *KubernetesEventCreateDto) SetType(v string) {
-	o.Type = v
+	o.Type = &v
 }
 
-// GetReason returns the Reason field value
+// GetReason returns the Reason field value if set, zero value otherwise.
 func (o *KubernetesEventCreateDto) GetReason() string {
-	if o == nil {
+	if o == nil || IsNil(o.Reason) {
 		var ret string
 		return ret
 	}
-
-	return o.Reason
+	return *o.Reason
 }
 
-// GetReasonOk returns a tuple with the Reason field value
+// GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KubernetesEventCreateDto) GetReasonOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Reason) {
 		return nil, false
 	}
-	return &o.Reason, true
+	return o.Reason, true
 }
 
-// SetReason sets field value
+// HasReason returns a boolean if a field has been set.
+func (o *KubernetesEventCreateDto) HasReason() bool {
+	if o != nil && !IsNil(o.Reason) {
+		return true
+	}
+
+	return false
+}
+
+// SetReason gets a reference to the given string and assigns it to the Reason field.
 func (o *KubernetesEventCreateDto) SetReason(v string) {
-	o.Reason = v
+	o.Reason = &v
 }
 
-// GetMessage returns the Message field value
+// GetMessage returns the Message field value if set, zero value otherwise.
 func (o *KubernetesEventCreateDto) GetMessage() string {
-	if o == nil {
+	if o == nil || IsNil(o.Message) {
 		var ret string
 		return ret
 	}
-
-	return o.Message
+	return *o.Message
 }
 
-// GetMessageOk returns a tuple with the Message field value
+// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KubernetesEventCreateDto) GetMessageOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Message) {
 		return nil, false
 	}
-	return &o.Message, true
+	return o.Message, true
 }
 
-// SetMessage sets field value
+// HasMessage returns a boolean if a field has been set.
+func (o *KubernetesEventCreateDto) HasMessage() bool {
+	if o != nil && !IsNil(o.Message) {
+		return true
+	}
+
+	return false
+}
+
+// SetMessage gets a reference to the given string and assigns it to the Message field.
 func (o *KubernetesEventCreateDto) SetMessage(v string) {
-	o.Message = v
+	o.Message = &v
 }
 
-// GetMetadata returns the Metadata field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetMetadata returns the Metadata field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KubernetesEventCreateDto) GetMetadata() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.Metadata
 }
 
-// GetMetadataOk returns a tuple with the Metadata field value
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesEventCreateDto) GetMetadataOk() (*interface{}, bool) {
@@ -153,23 +169,30 @@ func (o *KubernetesEventCreateDto) GetMetadataOk() (*interface{}, bool) {
 	return &o.Metadata, true
 }
 
-// SetMetadata sets field value
+// HasMetadata returns a boolean if a field has been set.
+func (o *KubernetesEventCreateDto) HasMetadata() bool {
+	if o != nil && !IsNil(o.Metadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given interface{} and assigns it to the Metadata field.
 func (o *KubernetesEventCreateDto) SetMetadata(v interface{}) {
 	o.Metadata = v
 }
 
-// GetSource returns the Source field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetSource returns the Source field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KubernetesEventCreateDto) GetSource() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.Source
 }
 
-// GetSourceOk returns a tuple with the Source field value
+// GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesEventCreateDto) GetSourceOk() (*interface{}, bool) {
@@ -179,23 +202,30 @@ func (o *KubernetesEventCreateDto) GetSourceOk() (*interface{}, bool) {
 	return &o.Source, true
 }
 
-// SetSource sets field value
+// HasSource returns a boolean if a field has been set.
+func (o *KubernetesEventCreateDto) HasSource() bool {
+	if o != nil && !IsNil(o.Source) {
+		return true
+	}
+
+	return false
+}
+
+// SetSource gets a reference to the given interface{} and assigns it to the Source field.
 func (o *KubernetesEventCreateDto) SetSource(v interface{}) {
 	o.Source = v
 }
 
-// GetInvolvedObject returns the InvolvedObject field value
-// If the value is explicit nil, the zero value for interface{} will be returned
+// GetInvolvedObject returns the InvolvedObject field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KubernetesEventCreateDto) GetInvolvedObject() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
-
 	return o.InvolvedObject
 }
 
-// GetInvolvedObjectOk returns a tuple with the InvolvedObject field value
+// GetInvolvedObjectOk returns a tuple with the InvolvedObject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesEventCreateDto) GetInvolvedObjectOk() (*interface{}, bool) {
@@ -205,7 +235,16 @@ func (o *KubernetesEventCreateDto) GetInvolvedObjectOk() (*interface{}, bool) {
 	return &o.InvolvedObject, true
 }
 
-// SetInvolvedObject sets field value
+// HasInvolvedObject returns a boolean if a field has been set.
+func (o *KubernetesEventCreateDto) HasInvolvedObject() bool {
+	if o != nil && !IsNil(o.InvolvedObject) {
+		return true
+	}
+
+	return false
+}
+
+// SetInvolvedObject gets a reference to the given interface{} and assigns it to the InvolvedObject field.
 func (o *KubernetesEventCreateDto) SetInvolvedObject(v interface{}) {
 	o.InvolvedObject = v
 }
@@ -328,9 +367,15 @@ func (o KubernetesEventCreateDto) MarshalJSON() ([]byte, error) {
 
 func (o KubernetesEventCreateDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["type"] = o.Type
-	toSerialize["reason"] = o.Reason
-	toSerialize["message"] = o.Message
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Reason) {
+		toSerialize["reason"] = o.Reason
+	}
+	if !IsNil(o.Message) {
+		toSerialize["message"] = o.Message
+	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
 	}
@@ -355,12 +400,6 @@ func (o *KubernetesEventCreateDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"type",
-		"reason",
-		"message",
-		"metadata",
-		"source",
-		"involvedObject",
 		"count",
 	}
 

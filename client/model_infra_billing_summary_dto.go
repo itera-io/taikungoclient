@@ -23,8 +23,8 @@ var _ MappedNullable = &InfraBillingSummaryDto{}
 // InfraBillingSummaryDto struct for InfraBillingSummaryDto
 type InfraBillingSummaryDto struct {
 	InfraProductId int32 `json:"infraProductId"`
-	InfraProductName string `json:"infraProductName"`
-	Intervals []DateInterval `json:"intervals"`
+	InfraProductName *string `json:"infraProductName,omitempty"`
+	Intervals []DateInterval `json:"intervals,omitempty"`
 	TotalPrice float64 `json:"totalPrice"`
 }
 
@@ -34,11 +34,9 @@ type _InfraBillingSummaryDto InfraBillingSummaryDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInfraBillingSummaryDto(infraProductId int32, infraProductName string, intervals []DateInterval, totalPrice float64) *InfraBillingSummaryDto {
+func NewInfraBillingSummaryDto(infraProductId int32, totalPrice float64) *InfraBillingSummaryDto {
 	this := InfraBillingSummaryDto{}
 	this.InfraProductId = infraProductId
-	this.InfraProductName = infraProductName
-	this.Intervals = intervals
 	this.TotalPrice = totalPrice
 	return &this
 }
@@ -75,50 +73,66 @@ func (o *InfraBillingSummaryDto) SetInfraProductId(v int32) {
 	o.InfraProductId = v
 }
 
-// GetInfraProductName returns the InfraProductName field value
+// GetInfraProductName returns the InfraProductName field value if set, zero value otherwise.
 func (o *InfraBillingSummaryDto) GetInfraProductName() string {
-	if o == nil {
+	if o == nil || IsNil(o.InfraProductName) {
 		var ret string
 		return ret
 	}
-
-	return o.InfraProductName
+	return *o.InfraProductName
 }
 
-// GetInfraProductNameOk returns a tuple with the InfraProductName field value
+// GetInfraProductNameOk returns a tuple with the InfraProductName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InfraBillingSummaryDto) GetInfraProductNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.InfraProductName) {
 		return nil, false
 	}
-	return &o.InfraProductName, true
+	return o.InfraProductName, true
 }
 
-// SetInfraProductName sets field value
+// HasInfraProductName returns a boolean if a field has been set.
+func (o *InfraBillingSummaryDto) HasInfraProductName() bool {
+	if o != nil && !IsNil(o.InfraProductName) {
+		return true
+	}
+
+	return false
+}
+
+// SetInfraProductName gets a reference to the given string and assigns it to the InfraProductName field.
 func (o *InfraBillingSummaryDto) SetInfraProductName(v string) {
-	o.InfraProductName = v
+	o.InfraProductName = &v
 }
 
-// GetIntervals returns the Intervals field value
+// GetIntervals returns the Intervals field value if set, zero value otherwise.
 func (o *InfraBillingSummaryDto) GetIntervals() []DateInterval {
-	if o == nil {
+	if o == nil || IsNil(o.Intervals) {
 		var ret []DateInterval
 		return ret
 	}
-
 	return o.Intervals
 }
 
-// GetIntervalsOk returns a tuple with the Intervals field value
+// GetIntervalsOk returns a tuple with the Intervals field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InfraBillingSummaryDto) GetIntervalsOk() ([]DateInterval, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Intervals) {
 		return nil, false
 	}
 	return o.Intervals, true
 }
 
-// SetIntervals sets field value
+// HasIntervals returns a boolean if a field has been set.
+func (o *InfraBillingSummaryDto) HasIntervals() bool {
+	if o != nil && !IsNil(o.Intervals) {
+		return true
+	}
+
+	return false
+}
+
+// SetIntervals gets a reference to the given []DateInterval and assigns it to the Intervals field.
 func (o *InfraBillingSummaryDto) SetIntervals(v []DateInterval) {
 	o.Intervals = v
 }
@@ -158,8 +172,12 @@ func (o InfraBillingSummaryDto) MarshalJSON() ([]byte, error) {
 func (o InfraBillingSummaryDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["infraProductId"] = o.InfraProductId
-	toSerialize["infraProductName"] = o.InfraProductName
-	toSerialize["intervals"] = o.Intervals
+	if !IsNil(o.InfraProductName) {
+		toSerialize["infraProductName"] = o.InfraProductName
+	}
+	if !IsNil(o.Intervals) {
+		toSerialize["intervals"] = o.Intervals
+	}
 	toSerialize["totalPrice"] = o.TotalPrice
 	return toSerialize, nil
 }
@@ -170,8 +188,6 @@ func (o *InfraBillingSummaryDto) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"infraProductId",
-		"infraProductName",
-		"intervals",
 		"totalPrice",
 	}
 

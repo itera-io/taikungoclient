@@ -22,7 +22,7 @@ var _ MappedNullable = &CreateTrustedRegistriesCommand{}
 
 // CreateTrustedRegistriesCommand struct for CreateTrustedRegistriesCommand
 type CreateTrustedRegistriesCommand struct {
-	Registry string `json:"registry"`
+	Registry *string `json:"registry,omitempty"`
 	AccessProfileId int32 `json:"accessProfileId"`
 }
 
@@ -32,9 +32,8 @@ type _CreateTrustedRegistriesCommand CreateTrustedRegistriesCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateTrustedRegistriesCommand(registry string, accessProfileId int32) *CreateTrustedRegistriesCommand {
+func NewCreateTrustedRegistriesCommand(accessProfileId int32) *CreateTrustedRegistriesCommand {
 	this := CreateTrustedRegistriesCommand{}
-	this.Registry = registry
 	this.AccessProfileId = accessProfileId
 	return &this
 }
@@ -47,28 +46,36 @@ func NewCreateTrustedRegistriesCommandWithDefaults() *CreateTrustedRegistriesCom
 	return &this
 }
 
-// GetRegistry returns the Registry field value
+// GetRegistry returns the Registry field value if set, zero value otherwise.
 func (o *CreateTrustedRegistriesCommand) GetRegistry() string {
-	if o == nil {
+	if o == nil || IsNil(o.Registry) {
 		var ret string
 		return ret
 	}
-
-	return o.Registry
+	return *o.Registry
 }
 
-// GetRegistryOk returns a tuple with the Registry field value
+// GetRegistryOk returns a tuple with the Registry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateTrustedRegistriesCommand) GetRegistryOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Registry) {
 		return nil, false
 	}
-	return &o.Registry, true
+	return o.Registry, true
 }
 
-// SetRegistry sets field value
+// HasRegistry returns a boolean if a field has been set.
+func (o *CreateTrustedRegistriesCommand) HasRegistry() bool {
+	if o != nil && !IsNil(o.Registry) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegistry gets a reference to the given string and assigns it to the Registry field.
 func (o *CreateTrustedRegistriesCommand) SetRegistry(v string) {
-	o.Registry = v
+	o.Registry = &v
 }
 
 // GetAccessProfileId returns the AccessProfileId field value
@@ -105,7 +112,9 @@ func (o CreateTrustedRegistriesCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateTrustedRegistriesCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["registry"] = o.Registry
+	if !IsNil(o.Registry) {
+		toSerialize["registry"] = o.Registry
+	}
 	toSerialize["accessProfileId"] = o.AccessProfileId
 	return toSerialize, nil
 }
@@ -115,7 +124,6 @@ func (o *CreateTrustedRegistriesCommand) UnmarshalJSON(data []byte) (err error) 
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"registry",
 		"accessProfileId",
 	}
 

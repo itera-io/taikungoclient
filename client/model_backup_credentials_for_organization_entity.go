@@ -23,7 +23,7 @@ var _ MappedNullable = &BackupCredentialsForOrganizationEntity{}
 // BackupCredentialsForOrganizationEntity struct for BackupCredentialsForOrganizationEntity
 type BackupCredentialsForOrganizationEntity struct {
 	BackupCredentialId int32 `json:"backupCredentialId"`
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	IsDefault bool `json:"isDefault"`
 	IsInfra bool `json:"isInfra"`
 }
@@ -34,10 +34,9 @@ type _BackupCredentialsForOrganizationEntity BackupCredentialsForOrganizationEnt
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBackupCredentialsForOrganizationEntity(backupCredentialId int32, name string, isDefault bool, isInfra bool) *BackupCredentialsForOrganizationEntity {
+func NewBackupCredentialsForOrganizationEntity(backupCredentialId int32, isDefault bool, isInfra bool) *BackupCredentialsForOrganizationEntity {
 	this := BackupCredentialsForOrganizationEntity{}
 	this.BackupCredentialId = backupCredentialId
-	this.Name = name
 	this.IsDefault = isDefault
 	this.IsInfra = isInfra
 	return &this
@@ -75,28 +74,36 @@ func (o *BackupCredentialsForOrganizationEntity) SetBackupCredentialId(v int32) 
 	o.BackupCredentialId = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *BackupCredentialsForOrganizationEntity) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BackupCredentialsForOrganizationEntity) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *BackupCredentialsForOrganizationEntity) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *BackupCredentialsForOrganizationEntity) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetIsDefault returns the IsDefault field value
@@ -158,7 +165,9 @@ func (o BackupCredentialsForOrganizationEntity) MarshalJSON() ([]byte, error) {
 func (o BackupCredentialsForOrganizationEntity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["backupCredentialId"] = o.BackupCredentialId
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	toSerialize["isDefault"] = o.IsDefault
 	toSerialize["isInfra"] = o.IsInfra
 	return toSerialize, nil
@@ -170,7 +179,6 @@ func (o *BackupCredentialsForOrganizationEntity) UnmarshalJSON(data []byte) (err
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"backupCredentialId",
-		"name",
 		"isDefault",
 		"isInfra",
 	}

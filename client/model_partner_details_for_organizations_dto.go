@@ -23,10 +23,10 @@ var _ MappedNullable = &PartnerDetailsForOrganizationsDto{}
 // PartnerDetailsForOrganizationsDto struct for PartnerDetailsForOrganizationsDto
 type PartnerDetailsForOrganizationsDto struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
-	Link string `json:"link"`
-	Domain string `json:"domain"`
-	Logo string `json:"logo"`
+	Name *string `json:"name,omitempty"`
+	Link *string `json:"link,omitempty"`
+	Domain *string `json:"domain,omitempty"`
+	Logo *string `json:"logo,omitempty"`
 }
 
 type _PartnerDetailsForOrganizationsDto PartnerDetailsForOrganizationsDto
@@ -35,13 +35,9 @@ type _PartnerDetailsForOrganizationsDto PartnerDetailsForOrganizationsDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPartnerDetailsForOrganizationsDto(id int32, name string, link string, domain string, logo string) *PartnerDetailsForOrganizationsDto {
+func NewPartnerDetailsForOrganizationsDto(id int32) *PartnerDetailsForOrganizationsDto {
 	this := PartnerDetailsForOrganizationsDto{}
 	this.Id = id
-	this.Name = name
-	this.Link = link
-	this.Domain = domain
-	this.Logo = logo
 	return &this
 }
 
@@ -77,100 +73,132 @@ func (o *PartnerDetailsForOrganizationsDto) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *PartnerDetailsForOrganizationsDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PartnerDetailsForOrganizationsDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *PartnerDetailsForOrganizationsDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *PartnerDetailsForOrganizationsDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetLink returns the Link field value
+// GetLink returns the Link field value if set, zero value otherwise.
 func (o *PartnerDetailsForOrganizationsDto) GetLink() string {
-	if o == nil {
+	if o == nil || IsNil(o.Link) {
 		var ret string
 		return ret
 	}
-
-	return o.Link
+	return *o.Link
 }
 
-// GetLinkOk returns a tuple with the Link field value
+// GetLinkOk returns a tuple with the Link field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PartnerDetailsForOrganizationsDto) GetLinkOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Link) {
 		return nil, false
 	}
-	return &o.Link, true
+	return o.Link, true
 }
 
-// SetLink sets field value
+// HasLink returns a boolean if a field has been set.
+func (o *PartnerDetailsForOrganizationsDto) HasLink() bool {
+	if o != nil && !IsNil(o.Link) {
+		return true
+	}
+
+	return false
+}
+
+// SetLink gets a reference to the given string and assigns it to the Link field.
 func (o *PartnerDetailsForOrganizationsDto) SetLink(v string) {
-	o.Link = v
+	o.Link = &v
 }
 
-// GetDomain returns the Domain field value
+// GetDomain returns the Domain field value if set, zero value otherwise.
 func (o *PartnerDetailsForOrganizationsDto) GetDomain() string {
-	if o == nil {
+	if o == nil || IsNil(o.Domain) {
 		var ret string
 		return ret
 	}
-
-	return o.Domain
+	return *o.Domain
 }
 
-// GetDomainOk returns a tuple with the Domain field value
+// GetDomainOk returns a tuple with the Domain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PartnerDetailsForOrganizationsDto) GetDomainOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Domain) {
 		return nil, false
 	}
-	return &o.Domain, true
+	return o.Domain, true
 }
 
-// SetDomain sets field value
+// HasDomain returns a boolean if a field has been set.
+func (o *PartnerDetailsForOrganizationsDto) HasDomain() bool {
+	if o != nil && !IsNil(o.Domain) {
+		return true
+	}
+
+	return false
+}
+
+// SetDomain gets a reference to the given string and assigns it to the Domain field.
 func (o *PartnerDetailsForOrganizationsDto) SetDomain(v string) {
-	o.Domain = v
+	o.Domain = &v
 }
 
-// GetLogo returns the Logo field value
+// GetLogo returns the Logo field value if set, zero value otherwise.
 func (o *PartnerDetailsForOrganizationsDto) GetLogo() string {
-	if o == nil {
+	if o == nil || IsNil(o.Logo) {
 		var ret string
 		return ret
 	}
-
-	return o.Logo
+	return *o.Logo
 }
 
-// GetLogoOk returns a tuple with the Logo field value
+// GetLogoOk returns a tuple with the Logo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PartnerDetailsForOrganizationsDto) GetLogoOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Logo) {
 		return nil, false
 	}
-	return &o.Logo, true
+	return o.Logo, true
 }
 
-// SetLogo sets field value
+// HasLogo returns a boolean if a field has been set.
+func (o *PartnerDetailsForOrganizationsDto) HasLogo() bool {
+	if o != nil && !IsNil(o.Logo) {
+		return true
+	}
+
+	return false
+}
+
+// SetLogo gets a reference to the given string and assigns it to the Logo field.
 func (o *PartnerDetailsForOrganizationsDto) SetLogo(v string) {
-	o.Logo = v
+	o.Logo = &v
 }
 
 func (o PartnerDetailsForOrganizationsDto) MarshalJSON() ([]byte, error) {
@@ -184,10 +212,18 @@ func (o PartnerDetailsForOrganizationsDto) MarshalJSON() ([]byte, error) {
 func (o PartnerDetailsForOrganizationsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
-	toSerialize["link"] = o.Link
-	toSerialize["domain"] = o.Domain
-	toSerialize["logo"] = o.Logo
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Link) {
+		toSerialize["link"] = o.Link
+	}
+	if !IsNil(o.Domain) {
+		toSerialize["domain"] = o.Domain
+	}
+	if !IsNil(o.Logo) {
+		toSerialize["logo"] = o.Logo
+	}
 	return toSerialize, nil
 }
 
@@ -197,10 +233,6 @@ func (o *PartnerDetailsForOrganizationsDto) UnmarshalJSON(data []byte) (err erro
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
-		"link",
-		"domain",
-		"logo",
 	}
 
 	allProperties := make(map[string]interface{})

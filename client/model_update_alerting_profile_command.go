@@ -23,7 +23,7 @@ var _ MappedNullable = &UpdateAlertingProfileCommand{}
 // UpdateAlertingProfileCommand struct for UpdateAlertingProfileCommand
 type UpdateAlertingProfileCommand struct {
 	Id int32 `json:"id"`
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	SlackConfigurationId NullableInt32 `json:"slackConfigurationId,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	Reminder *AlertingReminder `json:"reminder,omitempty"`
@@ -35,10 +35,9 @@ type _UpdateAlertingProfileCommand UpdateAlertingProfileCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateAlertingProfileCommand(id int32, name string) *UpdateAlertingProfileCommand {
+func NewUpdateAlertingProfileCommand(id int32) *UpdateAlertingProfileCommand {
 	this := UpdateAlertingProfileCommand{}
 	this.Id = id
-	this.Name = name
 	return &this
 }
 
@@ -74,28 +73,36 @@ func (o *UpdateAlertingProfileCommand) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *UpdateAlertingProfileCommand) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateAlertingProfileCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *UpdateAlertingProfileCommand) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *UpdateAlertingProfileCommand) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetSlackConfigurationId returns the SlackConfigurationId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -225,7 +232,9 @@ func (o UpdateAlertingProfileCommand) MarshalJSON() ([]byte, error) {
 func (o UpdateAlertingProfileCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	if o.SlackConfigurationId.IsSet() {
 		toSerialize["slackConfigurationId"] = o.SlackConfigurationId.Get()
 	}
@@ -244,7 +253,6 @@ func (o *UpdateAlertingProfileCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"name",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -22,14 +22,14 @@ var _ MappedNullable = &OpenstackStorageTypeListQuery{}
 
 // OpenstackStorageTypeListQuery struct for OpenstackStorageTypeListQuery
 type OpenstackStorageTypeListQuery struct {
-	OpenStackUser string `json:"openStackUser"`
-	OpenStackPassword string `json:"openStackPassword"`
-	OpenStackUrl string `json:"openStackUrl"`
-	OpenStackDomain string `json:"openStackDomain"`
-	OpenStackRegion string `json:"openStackRegion"`
+	OpenStackUser *string `json:"openStackUser,omitempty"`
+	OpenStackPassword *string `json:"openStackPassword,omitempty"`
+	OpenStackUrl *string `json:"openStackUrl,omitempty"`
+	OpenStackDomain *string `json:"openStackDomain,omitempty"`
+	OpenStackRegion *string `json:"openStackRegion,omitempty"`
 	ApplicationCredEnabled bool `json:"applicationCredEnabled"`
 	IsAdmin bool `json:"isAdmin"`
-	OpenstackProject string `json:"openstackProject"`
+	OpenstackProject *string `json:"openstackProject,omitempty"`
 }
 
 type _OpenstackStorageTypeListQuery OpenstackStorageTypeListQuery
@@ -38,16 +38,10 @@ type _OpenstackStorageTypeListQuery OpenstackStorageTypeListQuery
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOpenstackStorageTypeListQuery(openStackUser string, openStackPassword string, openStackUrl string, openStackDomain string, openStackRegion string, applicationCredEnabled bool, isAdmin bool, openstackProject string) *OpenstackStorageTypeListQuery {
+func NewOpenstackStorageTypeListQuery(applicationCredEnabled bool, isAdmin bool) *OpenstackStorageTypeListQuery {
 	this := OpenstackStorageTypeListQuery{}
-	this.OpenStackUser = openStackUser
-	this.OpenStackPassword = openStackPassword
-	this.OpenStackUrl = openStackUrl
-	this.OpenStackDomain = openStackDomain
-	this.OpenStackRegion = openStackRegion
 	this.ApplicationCredEnabled = applicationCredEnabled
 	this.IsAdmin = isAdmin
-	this.OpenstackProject = openstackProject
 	return &this
 }
 
@@ -59,124 +53,164 @@ func NewOpenstackStorageTypeListQueryWithDefaults() *OpenstackStorageTypeListQue
 	return &this
 }
 
-// GetOpenStackUser returns the OpenStackUser field value
+// GetOpenStackUser returns the OpenStackUser field value if set, zero value otherwise.
 func (o *OpenstackStorageTypeListQuery) GetOpenStackUser() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackUser) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackUser
+	return *o.OpenStackUser
 }
 
-// GetOpenStackUserOk returns a tuple with the OpenStackUser field value
+// GetOpenStackUserOk returns a tuple with the OpenStackUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpenstackStorageTypeListQuery) GetOpenStackUserOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackUser) {
 		return nil, false
 	}
-	return &o.OpenStackUser, true
+	return o.OpenStackUser, true
 }
 
-// SetOpenStackUser sets field value
+// HasOpenStackUser returns a boolean if a field has been set.
+func (o *OpenstackStorageTypeListQuery) HasOpenStackUser() bool {
+	if o != nil && !IsNil(o.OpenStackUser) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackUser gets a reference to the given string and assigns it to the OpenStackUser field.
 func (o *OpenstackStorageTypeListQuery) SetOpenStackUser(v string) {
-	o.OpenStackUser = v
+	o.OpenStackUser = &v
 }
 
-// GetOpenStackPassword returns the OpenStackPassword field value
+// GetOpenStackPassword returns the OpenStackPassword field value if set, zero value otherwise.
 func (o *OpenstackStorageTypeListQuery) GetOpenStackPassword() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackPassword) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackPassword
+	return *o.OpenStackPassword
 }
 
-// GetOpenStackPasswordOk returns a tuple with the OpenStackPassword field value
+// GetOpenStackPasswordOk returns a tuple with the OpenStackPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpenstackStorageTypeListQuery) GetOpenStackPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackPassword) {
 		return nil, false
 	}
-	return &o.OpenStackPassword, true
+	return o.OpenStackPassword, true
 }
 
-// SetOpenStackPassword sets field value
+// HasOpenStackPassword returns a boolean if a field has been set.
+func (o *OpenstackStorageTypeListQuery) HasOpenStackPassword() bool {
+	if o != nil && !IsNil(o.OpenStackPassword) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackPassword gets a reference to the given string and assigns it to the OpenStackPassword field.
 func (o *OpenstackStorageTypeListQuery) SetOpenStackPassword(v string) {
-	o.OpenStackPassword = v
+	o.OpenStackPassword = &v
 }
 
-// GetOpenStackUrl returns the OpenStackUrl field value
+// GetOpenStackUrl returns the OpenStackUrl field value if set, zero value otherwise.
 func (o *OpenstackStorageTypeListQuery) GetOpenStackUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackUrl) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackUrl
+	return *o.OpenStackUrl
 }
 
-// GetOpenStackUrlOk returns a tuple with the OpenStackUrl field value
+// GetOpenStackUrlOk returns a tuple with the OpenStackUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpenstackStorageTypeListQuery) GetOpenStackUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackUrl) {
 		return nil, false
 	}
-	return &o.OpenStackUrl, true
+	return o.OpenStackUrl, true
 }
 
-// SetOpenStackUrl sets field value
+// HasOpenStackUrl returns a boolean if a field has been set.
+func (o *OpenstackStorageTypeListQuery) HasOpenStackUrl() bool {
+	if o != nil && !IsNil(o.OpenStackUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackUrl gets a reference to the given string and assigns it to the OpenStackUrl field.
 func (o *OpenstackStorageTypeListQuery) SetOpenStackUrl(v string) {
-	o.OpenStackUrl = v
+	o.OpenStackUrl = &v
 }
 
-// GetOpenStackDomain returns the OpenStackDomain field value
+// GetOpenStackDomain returns the OpenStackDomain field value if set, zero value otherwise.
 func (o *OpenstackStorageTypeListQuery) GetOpenStackDomain() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackDomain) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackDomain
+	return *o.OpenStackDomain
 }
 
-// GetOpenStackDomainOk returns a tuple with the OpenStackDomain field value
+// GetOpenStackDomainOk returns a tuple with the OpenStackDomain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpenstackStorageTypeListQuery) GetOpenStackDomainOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackDomain) {
 		return nil, false
 	}
-	return &o.OpenStackDomain, true
+	return o.OpenStackDomain, true
 }
 
-// SetOpenStackDomain sets field value
+// HasOpenStackDomain returns a boolean if a field has been set.
+func (o *OpenstackStorageTypeListQuery) HasOpenStackDomain() bool {
+	if o != nil && !IsNil(o.OpenStackDomain) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackDomain gets a reference to the given string and assigns it to the OpenStackDomain field.
 func (o *OpenstackStorageTypeListQuery) SetOpenStackDomain(v string) {
-	o.OpenStackDomain = v
+	o.OpenStackDomain = &v
 }
 
-// GetOpenStackRegion returns the OpenStackRegion field value
+// GetOpenStackRegion returns the OpenStackRegion field value if set, zero value otherwise.
 func (o *OpenstackStorageTypeListQuery) GetOpenStackRegion() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackRegion) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenStackRegion
+	return *o.OpenStackRegion
 }
 
-// GetOpenStackRegionOk returns a tuple with the OpenStackRegion field value
+// GetOpenStackRegionOk returns a tuple with the OpenStackRegion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpenstackStorageTypeListQuery) GetOpenStackRegionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackRegion) {
 		return nil, false
 	}
-	return &o.OpenStackRegion, true
+	return o.OpenStackRegion, true
 }
 
-// SetOpenStackRegion sets field value
+// HasOpenStackRegion returns a boolean if a field has been set.
+func (o *OpenstackStorageTypeListQuery) HasOpenStackRegion() bool {
+	if o != nil && !IsNil(o.OpenStackRegion) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenStackRegion gets a reference to the given string and assigns it to the OpenStackRegion field.
 func (o *OpenstackStorageTypeListQuery) SetOpenStackRegion(v string) {
-	o.OpenStackRegion = v
+	o.OpenStackRegion = &v
 }
 
 // GetApplicationCredEnabled returns the ApplicationCredEnabled field value
@@ -227,28 +261,36 @@ func (o *OpenstackStorageTypeListQuery) SetIsAdmin(v bool) {
 	o.IsAdmin = v
 }
 
-// GetOpenstackProject returns the OpenstackProject field value
+// GetOpenstackProject returns the OpenstackProject field value if set, zero value otherwise.
 func (o *OpenstackStorageTypeListQuery) GetOpenstackProject() string {
-	if o == nil {
+	if o == nil || IsNil(o.OpenstackProject) {
 		var ret string
 		return ret
 	}
-
-	return o.OpenstackProject
+	return *o.OpenstackProject
 }
 
-// GetOpenstackProjectOk returns a tuple with the OpenstackProject field value
+// GetOpenstackProjectOk returns a tuple with the OpenstackProject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OpenstackStorageTypeListQuery) GetOpenstackProjectOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenstackProject) {
 		return nil, false
 	}
-	return &o.OpenstackProject, true
+	return o.OpenstackProject, true
 }
 
-// SetOpenstackProject sets field value
+// HasOpenstackProject returns a boolean if a field has been set.
+func (o *OpenstackStorageTypeListQuery) HasOpenstackProject() bool {
+	if o != nil && !IsNil(o.OpenstackProject) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenstackProject gets a reference to the given string and assigns it to the OpenstackProject field.
 func (o *OpenstackStorageTypeListQuery) SetOpenstackProject(v string) {
-	o.OpenstackProject = v
+	o.OpenstackProject = &v
 }
 
 func (o OpenstackStorageTypeListQuery) MarshalJSON() ([]byte, error) {
@@ -261,14 +303,26 @@ func (o OpenstackStorageTypeListQuery) MarshalJSON() ([]byte, error) {
 
 func (o OpenstackStorageTypeListQuery) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["openStackUser"] = o.OpenStackUser
-	toSerialize["openStackPassword"] = o.OpenStackPassword
-	toSerialize["openStackUrl"] = o.OpenStackUrl
-	toSerialize["openStackDomain"] = o.OpenStackDomain
-	toSerialize["openStackRegion"] = o.OpenStackRegion
+	if !IsNil(o.OpenStackUser) {
+		toSerialize["openStackUser"] = o.OpenStackUser
+	}
+	if !IsNil(o.OpenStackPassword) {
+		toSerialize["openStackPassword"] = o.OpenStackPassword
+	}
+	if !IsNil(o.OpenStackUrl) {
+		toSerialize["openStackUrl"] = o.OpenStackUrl
+	}
+	if !IsNil(o.OpenStackDomain) {
+		toSerialize["openStackDomain"] = o.OpenStackDomain
+	}
+	if !IsNil(o.OpenStackRegion) {
+		toSerialize["openStackRegion"] = o.OpenStackRegion
+	}
 	toSerialize["applicationCredEnabled"] = o.ApplicationCredEnabled
 	toSerialize["isAdmin"] = o.IsAdmin
-	toSerialize["openstackProject"] = o.OpenstackProject
+	if !IsNil(o.OpenstackProject) {
+		toSerialize["openstackProject"] = o.OpenstackProject
+	}
 	return toSerialize, nil
 }
 
@@ -277,14 +331,8 @@ func (o *OpenstackStorageTypeListQuery) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"openStackUser",
-		"openStackPassword",
-		"openStackUrl",
-		"openStackDomain",
-		"openStackRegion",
 		"applicationCredEnabled",
 		"isAdmin",
-		"openstackProject",
 	}
 
 	allProperties := make(map[string]interface{})

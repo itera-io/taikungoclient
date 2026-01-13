@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the ForgotPasswordCommand type satisfies the MappedNullable interface at compile time
@@ -22,18 +20,15 @@ var _ MappedNullable = &ForgotPasswordCommand{}
 
 // ForgotPasswordCommand struct for ForgotPasswordCommand
 type ForgotPasswordCommand struct {
-	Email string `json:"email"`
+	Email *string `json:"email,omitempty"`
 }
-
-type _ForgotPasswordCommand ForgotPasswordCommand
 
 // NewForgotPasswordCommand instantiates a new ForgotPasswordCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewForgotPasswordCommand(email string) *ForgotPasswordCommand {
+func NewForgotPasswordCommand() *ForgotPasswordCommand {
 	this := ForgotPasswordCommand{}
-	this.Email = email
 	return &this
 }
 
@@ -45,28 +40,36 @@ func NewForgotPasswordCommandWithDefaults() *ForgotPasswordCommand {
 	return &this
 }
 
-// GetEmail returns the Email field value
+// GetEmail returns the Email field value if set, zero value otherwise.
 func (o *ForgotPasswordCommand) GetEmail() string {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
-
-	return o.Email
+	return *o.Email
 }
 
-// GetEmailOk returns a tuple with the Email field value
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ForgotPasswordCommand) GetEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
-	return &o.Email, true
+	return o.Email, true
 }
 
-// SetEmail sets field value
+// HasEmail returns a boolean if a field has been set.
+func (o *ForgotPasswordCommand) HasEmail() bool {
+	if o != nil && !IsNil(o.Email) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmail gets a reference to the given string and assigns it to the Email field.
 func (o *ForgotPasswordCommand) SetEmail(v string) {
-	o.Email = v
+	o.Email = &v
 }
 
 func (o ForgotPasswordCommand) MarshalJSON() ([]byte, error) {
@@ -79,45 +82,10 @@ func (o ForgotPasswordCommand) MarshalJSON() ([]byte, error) {
 
 func (o ForgotPasswordCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["email"] = o.Email
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
 	return toSerialize, nil
-}
-
-func (o *ForgotPasswordCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"email",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varForgotPasswordCommand := _ForgotPasswordCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varForgotPasswordCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ForgotPasswordCommand(varForgotPasswordCommand)
-
-	return err
 }
 
 type NullableForgotPasswordCommand struct {

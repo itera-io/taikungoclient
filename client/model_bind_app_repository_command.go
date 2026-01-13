@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the BindAppRepositoryCommand type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &BindAppRepositoryCommand{}
 
 // BindAppRepositoryCommand struct for BindAppRepositoryCommand
 type BindAppRepositoryCommand struct {
-	FilteringElements []FilteringElementDto `json:"filteringElements"`
-	OrganizationId NullableInt32 `json:"organizationId"`
+	FilteringElements []FilteringElementDto `json:"filteringElements,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 }
-
-type _BindAppRepositoryCommand BindAppRepositoryCommand
 
 // NewBindAppRepositoryCommand instantiates a new BindAppRepositoryCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBindAppRepositoryCommand(filteringElements []FilteringElementDto, organizationId NullableInt32) *BindAppRepositoryCommand {
+func NewBindAppRepositoryCommand() *BindAppRepositoryCommand {
 	this := BindAppRepositoryCommand{}
-	this.FilteringElements = filteringElements
-	this.OrganizationId = organizationId
 	return &this
 }
 
@@ -47,42 +41,48 @@ func NewBindAppRepositoryCommandWithDefaults() *BindAppRepositoryCommand {
 	return &this
 }
 
-// GetFilteringElements returns the FilteringElements field value
+// GetFilteringElements returns the FilteringElements field value if set, zero value otherwise.
 func (o *BindAppRepositoryCommand) GetFilteringElements() []FilteringElementDto {
-	if o == nil {
+	if o == nil || IsNil(o.FilteringElements) {
 		var ret []FilteringElementDto
 		return ret
 	}
-
 	return o.FilteringElements
 }
 
-// GetFilteringElementsOk returns a tuple with the FilteringElements field value
+// GetFilteringElementsOk returns a tuple with the FilteringElements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BindAppRepositoryCommand) GetFilteringElementsOk() ([]FilteringElementDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.FilteringElements) {
 		return nil, false
 	}
 	return o.FilteringElements, true
 }
 
-// SetFilteringElements sets field value
+// HasFilteringElements returns a boolean if a field has been set.
+func (o *BindAppRepositoryCommand) HasFilteringElements() bool {
+	if o != nil && !IsNil(o.FilteringElements) {
+		return true
+	}
+
+	return false
+}
+
+// SetFilteringElements gets a reference to the given []FilteringElementDto and assigns it to the FilteringElements field.
 func (o *BindAppRepositoryCommand) SetFilteringElements(v []FilteringElementDto) {
 	o.FilteringElements = v
 }
 
-// GetOrganizationId returns the OrganizationId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BindAppRepositoryCommand) GetOrganizationId() int32 {
-	if o == nil || o.OrganizationId.Get() == nil {
+	if o == nil || IsNil(o.OrganizationId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.OrganizationId.Get()
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BindAppRepositoryCommand) GetOrganizationIdOk() (*int32, bool) {
@@ -92,9 +92,27 @@ func (o *BindAppRepositoryCommand) GetOrganizationIdOk() (*int32, bool) {
 	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
 }
 
-// SetOrganizationId sets field value
+// HasOrganizationId returns a boolean if a field has been set.
+func (o *BindAppRepositoryCommand) HasOrganizationId() bool {
+	if o != nil && o.OrganizationId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
 func (o *BindAppRepositoryCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
+}
+// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
+func (o *BindAppRepositoryCommand) SetOrganizationIdNil() {
+	o.OrganizationId.Set(nil)
+}
+
+// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
+func (o *BindAppRepositoryCommand) UnsetOrganizationId() {
+	o.OrganizationId.Unset()
 }
 
 func (o BindAppRepositoryCommand) MarshalJSON() ([]byte, error) {
@@ -107,47 +125,13 @@ func (o BindAppRepositoryCommand) MarshalJSON() ([]byte, error) {
 
 func (o BindAppRepositoryCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["filteringElements"] = o.FilteringElements
-	toSerialize["organizationId"] = o.OrganizationId.Get()
+	if !IsNil(o.FilteringElements) {
+		toSerialize["filteringElements"] = o.FilteringElements
+	}
+	if o.OrganizationId.IsSet() {
+		toSerialize["organizationId"] = o.OrganizationId.Get()
+	}
 	return toSerialize, nil
-}
-
-func (o *BindAppRepositoryCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"filteringElements",
-		"organizationId",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varBindAppRepositoryCommand := _BindAppRepositoryCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBindAppRepositoryCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = BindAppRepositoryCommand(varBindAppRepositoryCommand)
-
-	return err
 }
 
 type NullableBindAppRepositoryCommand struct {

@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the LeaveTaikunDto type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &LeaveTaikunDto{}
 
 // LeaveTaikunDto struct for LeaveTaikunDto
 type LeaveTaikunDto struct {
-	PaymentIntentId string `json:"paymentIntentId"`
-	PaymentClientSecret string `json:"paymentClientSecret"`
+	PaymentIntentId *string `json:"paymentIntentId,omitempty"`
+	PaymentClientSecret *string `json:"paymentClientSecret,omitempty"`
 }
-
-type _LeaveTaikunDto LeaveTaikunDto
 
 // NewLeaveTaikunDto instantiates a new LeaveTaikunDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLeaveTaikunDto(paymentIntentId string, paymentClientSecret string) *LeaveTaikunDto {
+func NewLeaveTaikunDto() *LeaveTaikunDto {
 	this := LeaveTaikunDto{}
-	this.PaymentIntentId = paymentIntentId
-	this.PaymentClientSecret = paymentClientSecret
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewLeaveTaikunDtoWithDefaults() *LeaveTaikunDto {
 	return &this
 }
 
-// GetPaymentIntentId returns the PaymentIntentId field value
+// GetPaymentIntentId returns the PaymentIntentId field value if set, zero value otherwise.
 func (o *LeaveTaikunDto) GetPaymentIntentId() string {
-	if o == nil {
+	if o == nil || IsNil(o.PaymentIntentId) {
 		var ret string
 		return ret
 	}
-
-	return o.PaymentIntentId
+	return *o.PaymentIntentId
 }
 
-// GetPaymentIntentIdOk returns a tuple with the PaymentIntentId field value
+// GetPaymentIntentIdOk returns a tuple with the PaymentIntentId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LeaveTaikunDto) GetPaymentIntentIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PaymentIntentId) {
 		return nil, false
 	}
-	return &o.PaymentIntentId, true
+	return o.PaymentIntentId, true
 }
 
-// SetPaymentIntentId sets field value
+// HasPaymentIntentId returns a boolean if a field has been set.
+func (o *LeaveTaikunDto) HasPaymentIntentId() bool {
+	if o != nil && !IsNil(o.PaymentIntentId) {
+		return true
+	}
+
+	return false
+}
+
+// SetPaymentIntentId gets a reference to the given string and assigns it to the PaymentIntentId field.
 func (o *LeaveTaikunDto) SetPaymentIntentId(v string) {
-	o.PaymentIntentId = v
+	o.PaymentIntentId = &v
 }
 
-// GetPaymentClientSecret returns the PaymentClientSecret field value
+// GetPaymentClientSecret returns the PaymentClientSecret field value if set, zero value otherwise.
 func (o *LeaveTaikunDto) GetPaymentClientSecret() string {
-	if o == nil {
+	if o == nil || IsNil(o.PaymentClientSecret) {
 		var ret string
 		return ret
 	}
-
-	return o.PaymentClientSecret
+	return *o.PaymentClientSecret
 }
 
-// GetPaymentClientSecretOk returns a tuple with the PaymentClientSecret field value
+// GetPaymentClientSecretOk returns a tuple with the PaymentClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LeaveTaikunDto) GetPaymentClientSecretOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PaymentClientSecret) {
 		return nil, false
 	}
-	return &o.PaymentClientSecret, true
+	return o.PaymentClientSecret, true
 }
 
-// SetPaymentClientSecret sets field value
+// HasPaymentClientSecret returns a boolean if a field has been set.
+func (o *LeaveTaikunDto) HasPaymentClientSecret() bool {
+	if o != nil && !IsNil(o.PaymentClientSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetPaymentClientSecret gets a reference to the given string and assigns it to the PaymentClientSecret field.
 func (o *LeaveTaikunDto) SetPaymentClientSecret(v string) {
-	o.PaymentClientSecret = v
+	o.PaymentClientSecret = &v
 }
 
 func (o LeaveTaikunDto) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o LeaveTaikunDto) MarshalJSON() ([]byte, error) {
 
 func (o LeaveTaikunDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["paymentIntentId"] = o.PaymentIntentId
-	toSerialize["paymentClientSecret"] = o.PaymentClientSecret
+	if !IsNil(o.PaymentIntentId) {
+		toSerialize["paymentIntentId"] = o.PaymentIntentId
+	}
+	if !IsNil(o.PaymentClientSecret) {
+		toSerialize["paymentClientSecret"] = o.PaymentClientSecret
+	}
 	return toSerialize, nil
-}
-
-func (o *LeaveTaikunDto) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"paymentIntentId",
-		"paymentClientSecret",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varLeaveTaikunDto := _LeaveTaikunDto{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varLeaveTaikunDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = LeaveTaikunDto(varLeaveTaikunDto)
-
-	return err
 }
 
 type NullableLeaveTaikunDto struct {

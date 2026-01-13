@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the Breakdown type satisfies the MappedNullable interface at compile time
@@ -22,24 +20,18 @@ var _ MappedNullable = &Breakdown{}
 
 // Breakdown struct for Breakdown
 type Breakdown struct {
-	Resources []Resource `json:"resources"`
-	TotalHourlyCost string `json:"totalHourlyCost"`
-	TotalMonthlyCost string `json:"totalMonthlyCost"`
-	TotalMonthlyUsageCost string `json:"totalMonthlyUsageCost"`
+	Resources []Resource `json:"resources,omitempty"`
+	TotalHourlyCost *string `json:"totalHourlyCost,omitempty"`
+	TotalMonthlyCost *string `json:"totalMonthlyCost,omitempty"`
+	TotalMonthlyUsageCost *string `json:"totalMonthlyUsageCost,omitempty"`
 }
-
-type _Breakdown Breakdown
 
 // NewBreakdown instantiates a new Breakdown object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBreakdown(resources []Resource, totalHourlyCost string, totalMonthlyCost string, totalMonthlyUsageCost string) *Breakdown {
+func NewBreakdown() *Breakdown {
 	this := Breakdown{}
-	this.Resources = resources
-	this.TotalHourlyCost = totalHourlyCost
-	this.TotalMonthlyCost = totalMonthlyCost
-	this.TotalMonthlyUsageCost = totalMonthlyUsageCost
 	return &this
 }
 
@@ -51,100 +43,132 @@ func NewBreakdownWithDefaults() *Breakdown {
 	return &this
 }
 
-// GetResources returns the Resources field value
+// GetResources returns the Resources field value if set, zero value otherwise.
 func (o *Breakdown) GetResources() []Resource {
-	if o == nil {
+	if o == nil || IsNil(o.Resources) {
 		var ret []Resource
 		return ret
 	}
-
 	return o.Resources
 }
 
-// GetResourcesOk returns a tuple with the Resources field value
+// GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Breakdown) GetResourcesOk() ([]Resource, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Resources) {
 		return nil, false
 	}
 	return o.Resources, true
 }
 
-// SetResources sets field value
+// HasResources returns a boolean if a field has been set.
+func (o *Breakdown) HasResources() bool {
+	if o != nil && !IsNil(o.Resources) {
+		return true
+	}
+
+	return false
+}
+
+// SetResources gets a reference to the given []Resource and assigns it to the Resources field.
 func (o *Breakdown) SetResources(v []Resource) {
 	o.Resources = v
 }
 
-// GetTotalHourlyCost returns the TotalHourlyCost field value
+// GetTotalHourlyCost returns the TotalHourlyCost field value if set, zero value otherwise.
 func (o *Breakdown) GetTotalHourlyCost() string {
-	if o == nil {
+	if o == nil || IsNil(o.TotalHourlyCost) {
 		var ret string
 		return ret
 	}
-
-	return o.TotalHourlyCost
+	return *o.TotalHourlyCost
 }
 
-// GetTotalHourlyCostOk returns a tuple with the TotalHourlyCost field value
+// GetTotalHourlyCostOk returns a tuple with the TotalHourlyCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Breakdown) GetTotalHourlyCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TotalHourlyCost) {
 		return nil, false
 	}
-	return &o.TotalHourlyCost, true
+	return o.TotalHourlyCost, true
 }
 
-// SetTotalHourlyCost sets field value
+// HasTotalHourlyCost returns a boolean if a field has been set.
+func (o *Breakdown) HasTotalHourlyCost() bool {
+	if o != nil && !IsNil(o.TotalHourlyCost) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalHourlyCost gets a reference to the given string and assigns it to the TotalHourlyCost field.
 func (o *Breakdown) SetTotalHourlyCost(v string) {
-	o.TotalHourlyCost = v
+	o.TotalHourlyCost = &v
 }
 
-// GetTotalMonthlyCost returns the TotalMonthlyCost field value
+// GetTotalMonthlyCost returns the TotalMonthlyCost field value if set, zero value otherwise.
 func (o *Breakdown) GetTotalMonthlyCost() string {
-	if o == nil {
+	if o == nil || IsNil(o.TotalMonthlyCost) {
 		var ret string
 		return ret
 	}
-
-	return o.TotalMonthlyCost
+	return *o.TotalMonthlyCost
 }
 
-// GetTotalMonthlyCostOk returns a tuple with the TotalMonthlyCost field value
+// GetTotalMonthlyCostOk returns a tuple with the TotalMonthlyCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Breakdown) GetTotalMonthlyCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TotalMonthlyCost) {
 		return nil, false
 	}
-	return &o.TotalMonthlyCost, true
+	return o.TotalMonthlyCost, true
 }
 
-// SetTotalMonthlyCost sets field value
+// HasTotalMonthlyCost returns a boolean if a field has been set.
+func (o *Breakdown) HasTotalMonthlyCost() bool {
+	if o != nil && !IsNil(o.TotalMonthlyCost) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalMonthlyCost gets a reference to the given string and assigns it to the TotalMonthlyCost field.
 func (o *Breakdown) SetTotalMonthlyCost(v string) {
-	o.TotalMonthlyCost = v
+	o.TotalMonthlyCost = &v
 }
 
-// GetTotalMonthlyUsageCost returns the TotalMonthlyUsageCost field value
+// GetTotalMonthlyUsageCost returns the TotalMonthlyUsageCost field value if set, zero value otherwise.
 func (o *Breakdown) GetTotalMonthlyUsageCost() string {
-	if o == nil {
+	if o == nil || IsNil(o.TotalMonthlyUsageCost) {
 		var ret string
 		return ret
 	}
-
-	return o.TotalMonthlyUsageCost
+	return *o.TotalMonthlyUsageCost
 }
 
-// GetTotalMonthlyUsageCostOk returns a tuple with the TotalMonthlyUsageCost field value
+// GetTotalMonthlyUsageCostOk returns a tuple with the TotalMonthlyUsageCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Breakdown) GetTotalMonthlyUsageCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TotalMonthlyUsageCost) {
 		return nil, false
 	}
-	return &o.TotalMonthlyUsageCost, true
+	return o.TotalMonthlyUsageCost, true
 }
 
-// SetTotalMonthlyUsageCost sets field value
+// HasTotalMonthlyUsageCost returns a boolean if a field has been set.
+func (o *Breakdown) HasTotalMonthlyUsageCost() bool {
+	if o != nil && !IsNil(o.TotalMonthlyUsageCost) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalMonthlyUsageCost gets a reference to the given string and assigns it to the TotalMonthlyUsageCost field.
 func (o *Breakdown) SetTotalMonthlyUsageCost(v string) {
-	o.TotalMonthlyUsageCost = v
+	o.TotalMonthlyUsageCost = &v
 }
 
 func (o Breakdown) MarshalJSON() ([]byte, error) {
@@ -157,51 +181,19 @@ func (o Breakdown) MarshalJSON() ([]byte, error) {
 
 func (o Breakdown) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["resources"] = o.Resources
-	toSerialize["totalHourlyCost"] = o.TotalHourlyCost
-	toSerialize["totalMonthlyCost"] = o.TotalMonthlyCost
-	toSerialize["totalMonthlyUsageCost"] = o.TotalMonthlyUsageCost
+	if !IsNil(o.Resources) {
+		toSerialize["resources"] = o.Resources
+	}
+	if !IsNil(o.TotalHourlyCost) {
+		toSerialize["totalHourlyCost"] = o.TotalHourlyCost
+	}
+	if !IsNil(o.TotalMonthlyCost) {
+		toSerialize["totalMonthlyCost"] = o.TotalMonthlyCost
+	}
+	if !IsNil(o.TotalMonthlyUsageCost) {
+		toSerialize["totalMonthlyUsageCost"] = o.TotalMonthlyUsageCost
+	}
 	return toSerialize, nil
-}
-
-func (o *Breakdown) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"resources",
-		"totalHourlyCost",
-		"totalMonthlyCost",
-		"totalMonthlyUsageCost",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varBreakdown := _Breakdown{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBreakdown)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Breakdown(varBreakdown)
-
-	return err
 }
 
 type NullableBreakdown struct {

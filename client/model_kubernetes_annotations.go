@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the KubernetesAnnotations type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &KubernetesAnnotations{}
 
 // KubernetesAnnotations struct for KubernetesAnnotations
 type KubernetesAnnotations struct {
-	Description string `json:"description"`
-	Title string `json:"title"`
+	Description *string `json:"description,omitempty"`
+	Title *string `json:"title,omitempty"`
 }
-
-type _KubernetesAnnotations KubernetesAnnotations
 
 // NewKubernetesAnnotations instantiates a new KubernetesAnnotations object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubernetesAnnotations(description string, title string) *KubernetesAnnotations {
+func NewKubernetesAnnotations() *KubernetesAnnotations {
 	this := KubernetesAnnotations{}
-	this.Description = description
-	this.Title = title
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewKubernetesAnnotationsWithDefaults() *KubernetesAnnotations {
 	return &this
 }
 
-// GetDescription returns the Description field value
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *KubernetesAnnotations) GetDescription() string {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-
-	return o.Description
+	return *o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KubernetesAnnotations) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description, true
 }
 
-// SetDescription sets field value
+// HasDescription returns a boolean if a field has been set.
+func (o *KubernetesAnnotations) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *KubernetesAnnotations) SetDescription(v string) {
-	o.Description = v
+	o.Description = &v
 }
 
-// GetTitle returns the Title field value
+// GetTitle returns the Title field value if set, zero value otherwise.
 func (o *KubernetesAnnotations) GetTitle() string {
-	if o == nil {
+	if o == nil || IsNil(o.Title) {
 		var ret string
 		return ret
 	}
-
-	return o.Title
+	return *o.Title
 }
 
-// GetTitleOk returns a tuple with the Title field value
+// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KubernetesAnnotations) GetTitleOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Title) {
 		return nil, false
 	}
-	return &o.Title, true
+	return o.Title, true
 }
 
-// SetTitle sets field value
+// HasTitle returns a boolean if a field has been set.
+func (o *KubernetesAnnotations) HasTitle() bool {
+	if o != nil && !IsNil(o.Title) {
+		return true
+	}
+
+	return false
+}
+
+// SetTitle gets a reference to the given string and assigns it to the Title field.
 func (o *KubernetesAnnotations) SetTitle(v string) {
-	o.Title = v
+	o.Title = &v
 }
 
 func (o KubernetesAnnotations) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o KubernetesAnnotations) MarshalJSON() ([]byte, error) {
 
 func (o KubernetesAnnotations) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["description"] = o.Description
-	toSerialize["title"] = o.Title
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Title) {
+		toSerialize["title"] = o.Title
+	}
 	return toSerialize, nil
-}
-
-func (o *KubernetesAnnotations) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"description",
-		"title",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varKubernetesAnnotations := _KubernetesAnnotations{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKubernetesAnnotations)
-
-	if err != nil {
-		return err
-	}
-
-	*o = KubernetesAnnotations(varKubernetesAnnotations)
-
-	return err
 }
 
 type NullableKubernetesAnnotations struct {

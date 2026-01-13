@@ -23,9 +23,9 @@ var _ MappedNullable = &UpdateSlackConfigurationDto{}
 // UpdateSlackConfigurationDto struct for UpdateSlackConfigurationDto
 type UpdateSlackConfigurationDto struct {
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	Name string `json:"name"`
-	Url string `json:"url"`
-	Channel string `json:"channel"`
+	Name *string `json:"name,omitempty"`
+	Url *string `json:"url,omitempty"`
+	Channel *string `json:"channel,omitempty"`
 	SlackType SlackType `json:"slackType"`
 }
 
@@ -35,11 +35,8 @@ type _UpdateSlackConfigurationDto UpdateSlackConfigurationDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateSlackConfigurationDto(name string, url string, channel string, slackType SlackType) *UpdateSlackConfigurationDto {
+func NewUpdateSlackConfigurationDto(slackType SlackType) *UpdateSlackConfigurationDto {
 	this := UpdateSlackConfigurationDto{}
-	this.Name = name
-	this.Url = url
-	this.Channel = channel
 	this.SlackType = slackType
 	return &this
 }
@@ -94,76 +91,100 @@ func (o *UpdateSlackConfigurationDto) UnsetOrganizationId() {
 	o.OrganizationId.Unset()
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *UpdateSlackConfigurationDto) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateSlackConfigurationDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *UpdateSlackConfigurationDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *UpdateSlackConfigurationDto) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetUrl returns the Url field value
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *UpdateSlackConfigurationDto) GetUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-
-	return o.Url
+	return *o.Url
 }
 
-// GetUrlOk returns a tuple with the Url field value
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateSlackConfigurationDto) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return &o.Url, true
+	return o.Url, true
 }
 
-// SetUrl sets field value
+// HasUrl returns a boolean if a field has been set.
+func (o *UpdateSlackConfigurationDto) HasUrl() bool {
+	if o != nil && !IsNil(o.Url) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *UpdateSlackConfigurationDto) SetUrl(v string) {
-	o.Url = v
+	o.Url = &v
 }
 
-// GetChannel returns the Channel field value
+// GetChannel returns the Channel field value if set, zero value otherwise.
 func (o *UpdateSlackConfigurationDto) GetChannel() string {
-	if o == nil {
+	if o == nil || IsNil(o.Channel) {
 		var ret string
 		return ret
 	}
-
-	return o.Channel
+	return *o.Channel
 }
 
-// GetChannelOk returns a tuple with the Channel field value
+// GetChannelOk returns a tuple with the Channel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateSlackConfigurationDto) GetChannelOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Channel) {
 		return nil, false
 	}
-	return &o.Channel, true
+	return o.Channel, true
 }
 
-// SetChannel sets field value
+// HasChannel returns a boolean if a field has been set.
+func (o *UpdateSlackConfigurationDto) HasChannel() bool {
+	if o != nil && !IsNil(o.Channel) {
+		return true
+	}
+
+	return false
+}
+
+// SetChannel gets a reference to the given string and assigns it to the Channel field.
 func (o *UpdateSlackConfigurationDto) SetChannel(v string) {
-	o.Channel = v
+	o.Channel = &v
 }
 
 // GetSlackType returns the SlackType field value
@@ -203,9 +224,15 @@ func (o UpdateSlackConfigurationDto) ToMap() (map[string]interface{}, error) {
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
-	toSerialize["name"] = o.Name
-	toSerialize["url"] = o.Url
-	toSerialize["channel"] = o.Channel
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
+	if !IsNil(o.Channel) {
+		toSerialize["channel"] = o.Channel
+	}
 	toSerialize["slackType"] = o.SlackType
 	return toSerialize, nil
 }
@@ -215,9 +242,6 @@ func (o *UpdateSlackConfigurationDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"name",
-		"url",
-		"channel",
 		"slackType",
 	}
 

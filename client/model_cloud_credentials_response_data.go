@@ -22,11 +22,11 @@ var _ MappedNullable = &CloudCredentialsResponseData{}
 
 // CloudCredentialsResponseData struct for CloudCredentialsResponseData
 type CloudCredentialsResponseData struct {
-	CloudType string `json:"cloudType"`
+	CloudType *string `json:"cloudType,omitempty"`
 	Id int32 `json:"id"`
-	Name string `json:"name"`
-	OrganizationId NullableInt32 `json:"organizationId"`
-	OrganizationName string `json:"organizationName"`
+	Name *string `json:"name,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	OrganizationName *string `json:"organizationName,omitempty"`
 }
 
 type _CloudCredentialsResponseData CloudCredentialsResponseData
@@ -35,13 +35,9 @@ type _CloudCredentialsResponseData CloudCredentialsResponseData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCloudCredentialsResponseData(cloudType string, id int32, name string, organizationId NullableInt32, organizationName string) *CloudCredentialsResponseData {
+func NewCloudCredentialsResponseData(id int32) *CloudCredentialsResponseData {
 	this := CloudCredentialsResponseData{}
-	this.CloudType = cloudType
 	this.Id = id
-	this.Name = name
-	this.OrganizationId = organizationId
-	this.OrganizationName = organizationName
 	return &this
 }
 
@@ -53,28 +49,36 @@ func NewCloudCredentialsResponseDataWithDefaults() *CloudCredentialsResponseData
 	return &this
 }
 
-// GetCloudType returns the CloudType field value
+// GetCloudType returns the CloudType field value if set, zero value otherwise.
 func (o *CloudCredentialsResponseData) GetCloudType() string {
-	if o == nil {
+	if o == nil || IsNil(o.CloudType) {
 		var ret string
 		return ret
 	}
-
-	return o.CloudType
+	return *o.CloudType
 }
 
-// GetCloudTypeOk returns a tuple with the CloudType field value
+// GetCloudTypeOk returns a tuple with the CloudType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudCredentialsResponseData) GetCloudTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CloudType) {
 		return nil, false
 	}
-	return &o.CloudType, true
+	return o.CloudType, true
 }
 
-// SetCloudType sets field value
+// HasCloudType returns a boolean if a field has been set.
+func (o *CloudCredentialsResponseData) HasCloudType() bool {
+	if o != nil && !IsNil(o.CloudType) {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudType gets a reference to the given string and assigns it to the CloudType field.
 func (o *CloudCredentialsResponseData) SetCloudType(v string) {
-	o.CloudType = v
+	o.CloudType = &v
 }
 
 // GetId returns the Id field value
@@ -101,42 +105,48 @@ func (o *CloudCredentialsResponseData) SetId(v int32) {
 	o.Id = v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CloudCredentialsResponseData) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudCredentialsResponseData) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *CloudCredentialsResponseData) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CloudCredentialsResponseData) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetOrganizationId returns the OrganizationId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CloudCredentialsResponseData) GetOrganizationId() int32 {
-	if o == nil || o.OrganizationId.Get() == nil {
+	if o == nil || IsNil(o.OrganizationId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.OrganizationId.Get()
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CloudCredentialsResponseData) GetOrganizationIdOk() (*int32, bool) {
@@ -146,33 +156,59 @@ func (o *CloudCredentialsResponseData) GetOrganizationIdOk() (*int32, bool) {
 	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
 }
 
-// SetOrganizationId sets field value
+// HasOrganizationId returns a boolean if a field has been set.
+func (o *CloudCredentialsResponseData) HasOrganizationId() bool {
+	if o != nil && o.OrganizationId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
 func (o *CloudCredentialsResponseData) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
+// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
+func (o *CloudCredentialsResponseData) SetOrganizationIdNil() {
+	o.OrganizationId.Set(nil)
+}
 
-// GetOrganizationName returns the OrganizationName field value
+// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
+func (o *CloudCredentialsResponseData) UnsetOrganizationId() {
+	o.OrganizationId.Unset()
+}
+
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *CloudCredentialsResponseData) GetOrganizationName() string {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
-
-	return o.OrganizationName
+	return *o.OrganizationName
 }
 
-// GetOrganizationNameOk returns a tuple with the OrganizationName field value
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudCredentialsResponseData) GetOrganizationNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
-	return &o.OrganizationName, true
+	return o.OrganizationName, true
 }
 
-// SetOrganizationName sets field value
+// HasOrganizationName returns a boolean if a field has been set.
+func (o *CloudCredentialsResponseData) HasOrganizationName() bool {
+	if o != nil && !IsNil(o.OrganizationName) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
 func (o *CloudCredentialsResponseData) SetOrganizationName(v string) {
-	o.OrganizationName = v
+	o.OrganizationName = &v
 }
 
 func (o CloudCredentialsResponseData) MarshalJSON() ([]byte, error) {
@@ -185,11 +221,19 @@ func (o CloudCredentialsResponseData) MarshalJSON() ([]byte, error) {
 
 func (o CloudCredentialsResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["cloudType"] = o.CloudType
+	if !IsNil(o.CloudType) {
+		toSerialize["cloudType"] = o.CloudType
+	}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
-	toSerialize["organizationId"] = o.OrganizationId.Get()
-	toSerialize["organizationName"] = o.OrganizationName
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if o.OrganizationId.IsSet() {
+		toSerialize["organizationId"] = o.OrganizationId.Get()
+	}
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organizationName"] = o.OrganizationName
+	}
 	return toSerialize, nil
 }
 
@@ -198,11 +242,7 @@ func (o *CloudCredentialsResponseData) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"cloudType",
 		"id",
-		"name",
-		"organizationId",
-		"organizationName",
 	}
 
 	allProperties := make(map[string]interface{})

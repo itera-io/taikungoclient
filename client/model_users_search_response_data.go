@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the UsersSearchResponseData type satisfies the MappedNullable interface at compile time
@@ -22,26 +20,19 @@ var _ MappedNullable = &UsersSearchResponseData{}
 
 // UsersSearchResponseData struct for UsersSearchResponseData
 type UsersSearchResponseData struct {
-	Id string `json:"id"`
-	Name string `json:"name"`
-	OrganizationId NullableInt32 `json:"organizationId"`
-	OrganizationName string `json:"organizationName"`
-	Email string `json:"email"`
+	Id *string `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	OrganizationName *string `json:"organizationName,omitempty"`
+	Email *string `json:"email,omitempty"`
 }
-
-type _UsersSearchResponseData UsersSearchResponseData
 
 // NewUsersSearchResponseData instantiates a new UsersSearchResponseData object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUsersSearchResponseData(id string, name string, organizationId NullableInt32, organizationName string, email string) *UsersSearchResponseData {
+func NewUsersSearchResponseData() *UsersSearchResponseData {
 	this := UsersSearchResponseData{}
-	this.Id = id
-	this.Name = name
-	this.OrganizationId = organizationId
-	this.OrganizationName = organizationName
-	this.Email = email
 	return &this
 }
 
@@ -53,66 +44,80 @@ func NewUsersSearchResponseDataWithDefaults() *UsersSearchResponseData {
 	return &this
 }
 
-// GetId returns the Id field value
+// GetId returns the Id field value if set, zero value otherwise.
 func (o *UsersSearchResponseData) GetId() string {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-
-	return o.Id
+	return *o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UsersSearchResponseData) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return &o.Id, true
+	return o.Id, true
 }
 
-// SetId sets field value
+// HasId returns a boolean if a field has been set.
+func (o *UsersSearchResponseData) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
 func (o *UsersSearchResponseData) SetId(v string) {
-	o.Id = v
+	o.Id = &v
 }
 
-// GetName returns the Name field value
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *UsersSearchResponseData) GetName() string {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-
-	return o.Name
+	return *o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UsersSearchResponseData) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *UsersSearchResponseData) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *UsersSearchResponseData) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
-// GetOrganizationId returns the OrganizationId field value
-// If the value is explicit nil, the zero value for int32 will be returned
+// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsersSearchResponseData) GetOrganizationId() int32 {
-	if o == nil || o.OrganizationId.Get() == nil {
+	if o == nil || IsNil(o.OrganizationId.Get()) {
 		var ret int32
 		return ret
 	}
-
 	return *o.OrganizationId.Get()
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsersSearchResponseData) GetOrganizationIdOk() (*int32, bool) {
@@ -122,57 +127,91 @@ func (o *UsersSearchResponseData) GetOrganizationIdOk() (*int32, bool) {
 	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
 }
 
-// SetOrganizationId sets field value
+// HasOrganizationId returns a boolean if a field has been set.
+func (o *UsersSearchResponseData) HasOrganizationId() bool {
+	if o != nil && o.OrganizationId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
 func (o *UsersSearchResponseData) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
+// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
+func (o *UsersSearchResponseData) SetOrganizationIdNil() {
+	o.OrganizationId.Set(nil)
+}
 
-// GetOrganizationName returns the OrganizationName field value
+// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
+func (o *UsersSearchResponseData) UnsetOrganizationId() {
+	o.OrganizationId.Unset()
+}
+
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *UsersSearchResponseData) GetOrganizationName() string {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
-
-	return o.OrganizationName
+	return *o.OrganizationName
 }
 
-// GetOrganizationNameOk returns a tuple with the OrganizationName field value
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UsersSearchResponseData) GetOrganizationNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
-	return &o.OrganizationName, true
+	return o.OrganizationName, true
 }
 
-// SetOrganizationName sets field value
+// HasOrganizationName returns a boolean if a field has been set.
+func (o *UsersSearchResponseData) HasOrganizationName() bool {
+	if o != nil && !IsNil(o.OrganizationName) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
 func (o *UsersSearchResponseData) SetOrganizationName(v string) {
-	o.OrganizationName = v
+	o.OrganizationName = &v
 }
 
-// GetEmail returns the Email field value
+// GetEmail returns the Email field value if set, zero value otherwise.
 func (o *UsersSearchResponseData) GetEmail() string {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
-
-	return o.Email
+	return *o.Email
 }
 
-// GetEmailOk returns a tuple with the Email field value
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UsersSearchResponseData) GetEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
-	return &o.Email, true
+	return o.Email, true
 }
 
-// SetEmail sets field value
+// HasEmail returns a boolean if a field has been set.
+func (o *UsersSearchResponseData) HasEmail() bool {
+	if o != nil && !IsNil(o.Email) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmail gets a reference to the given string and assigns it to the Email field.
 func (o *UsersSearchResponseData) SetEmail(v string) {
-	o.Email = v
+	o.Email = &v
 }
 
 func (o UsersSearchResponseData) MarshalJSON() ([]byte, error) {
@@ -185,53 +224,22 @@ func (o UsersSearchResponseData) MarshalJSON() ([]byte, error) {
 
 func (o UsersSearchResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
-	toSerialize["organizationId"] = o.OrganizationId.Get()
-	toSerialize["organizationName"] = o.OrganizationName
-	toSerialize["email"] = o.Email
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if o.OrganizationId.IsSet() {
+		toSerialize["organizationId"] = o.OrganizationId.Get()
+	}
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organizationName"] = o.OrganizationName
+	}
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
 	return toSerialize, nil
-}
-
-func (o *UsersSearchResponseData) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"name",
-		"organizationId",
-		"organizationName",
-		"email",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varUsersSearchResponseData := _UsersSearchResponseData{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUsersSearchResponseData)
-
-	if err != nil {
-		return err
-	}
-
-	*o = UsersSearchResponseData(varUsersSearchResponseData)
-
-	return err
 }
 
 type NullableUsersSearchResponseData struct {

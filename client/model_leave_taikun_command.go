@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the LeaveTaikunCommand type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &LeaveTaikunCommand{}
 
 // LeaveTaikunCommand struct for LeaveTaikunCommand
 type LeaveTaikunCommand struct {
-	Reason string `json:"reason"`
-	Message string `json:"message"`
+	Reason *string `json:"reason,omitempty"`
+	Message *string `json:"message,omitempty"`
 }
-
-type _LeaveTaikunCommand LeaveTaikunCommand
 
 // NewLeaveTaikunCommand instantiates a new LeaveTaikunCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLeaveTaikunCommand(reason string, message string) *LeaveTaikunCommand {
+func NewLeaveTaikunCommand() *LeaveTaikunCommand {
 	this := LeaveTaikunCommand{}
-	this.Reason = reason
-	this.Message = message
 	return &this
 }
 
@@ -47,52 +41,68 @@ func NewLeaveTaikunCommandWithDefaults() *LeaveTaikunCommand {
 	return &this
 }
 
-// GetReason returns the Reason field value
+// GetReason returns the Reason field value if set, zero value otherwise.
 func (o *LeaveTaikunCommand) GetReason() string {
-	if o == nil {
+	if o == nil || IsNil(o.Reason) {
 		var ret string
 		return ret
 	}
-
-	return o.Reason
+	return *o.Reason
 }
 
-// GetReasonOk returns a tuple with the Reason field value
+// GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LeaveTaikunCommand) GetReasonOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Reason) {
 		return nil, false
 	}
-	return &o.Reason, true
+	return o.Reason, true
 }
 
-// SetReason sets field value
+// HasReason returns a boolean if a field has been set.
+func (o *LeaveTaikunCommand) HasReason() bool {
+	if o != nil && !IsNil(o.Reason) {
+		return true
+	}
+
+	return false
+}
+
+// SetReason gets a reference to the given string and assigns it to the Reason field.
 func (o *LeaveTaikunCommand) SetReason(v string) {
-	o.Reason = v
+	o.Reason = &v
 }
 
-// GetMessage returns the Message field value
+// GetMessage returns the Message field value if set, zero value otherwise.
 func (o *LeaveTaikunCommand) GetMessage() string {
-	if o == nil {
+	if o == nil || IsNil(o.Message) {
 		var ret string
 		return ret
 	}
-
-	return o.Message
+	return *o.Message
 }
 
-// GetMessageOk returns a tuple with the Message field value
+// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LeaveTaikunCommand) GetMessageOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Message) {
 		return nil, false
 	}
-	return &o.Message, true
+	return o.Message, true
 }
 
-// SetMessage sets field value
+// HasMessage returns a boolean if a field has been set.
+func (o *LeaveTaikunCommand) HasMessage() bool {
+	if o != nil && !IsNil(o.Message) {
+		return true
+	}
+
+	return false
+}
+
+// SetMessage gets a reference to the given string and assigns it to the Message field.
 func (o *LeaveTaikunCommand) SetMessage(v string) {
-	o.Message = v
+	o.Message = &v
 }
 
 func (o LeaveTaikunCommand) MarshalJSON() ([]byte, error) {
@@ -105,47 +115,13 @@ func (o LeaveTaikunCommand) MarshalJSON() ([]byte, error) {
 
 func (o LeaveTaikunCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["reason"] = o.Reason
-	toSerialize["message"] = o.Message
+	if !IsNil(o.Reason) {
+		toSerialize["reason"] = o.Reason
+	}
+	if !IsNil(o.Message) {
+		toSerialize["message"] = o.Message
+	}
 	return toSerialize, nil
-}
-
-func (o *LeaveTaikunCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"reason",
-		"message",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varLeaveTaikunCommand := _LeaveTaikunCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varLeaveTaikunCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = LeaveTaikunCommand(varLeaveTaikunCommand)
-
-	return err
 }
 
 type NullableLeaveTaikunCommand struct {

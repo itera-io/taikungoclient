@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the KubernetesActionResponse type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &KubernetesActionResponse{}
 
 // KubernetesActionResponse struct for KubernetesActionResponse
 type KubernetesActionResponse struct {
-	Succeeded []string `json:"succeeded"`
-	Failed []string `json:"failed"`
+	Succeeded []string `json:"succeeded,omitempty"`
+	Failed []string `json:"failed,omitempty"`
 }
-
-type _KubernetesActionResponse KubernetesActionResponse
 
 // NewKubernetesActionResponse instantiates a new KubernetesActionResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubernetesActionResponse(succeeded []string, failed []string) *KubernetesActionResponse {
+func NewKubernetesActionResponse() *KubernetesActionResponse {
 	this := KubernetesActionResponse{}
-	this.Succeeded = succeeded
-	this.Failed = failed
 	return &this
 }
 
@@ -47,50 +41,66 @@ func NewKubernetesActionResponseWithDefaults() *KubernetesActionResponse {
 	return &this
 }
 
-// GetSucceeded returns the Succeeded field value
+// GetSucceeded returns the Succeeded field value if set, zero value otherwise.
 func (o *KubernetesActionResponse) GetSucceeded() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Succeeded) {
 		var ret []string
 		return ret
 	}
-
 	return o.Succeeded
 }
 
-// GetSucceededOk returns a tuple with the Succeeded field value
+// GetSucceededOk returns a tuple with the Succeeded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KubernetesActionResponse) GetSucceededOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Succeeded) {
 		return nil, false
 	}
 	return o.Succeeded, true
 }
 
-// SetSucceeded sets field value
+// HasSucceeded returns a boolean if a field has been set.
+func (o *KubernetesActionResponse) HasSucceeded() bool {
+	if o != nil && !IsNil(o.Succeeded) {
+		return true
+	}
+
+	return false
+}
+
+// SetSucceeded gets a reference to the given []string and assigns it to the Succeeded field.
 func (o *KubernetesActionResponse) SetSucceeded(v []string) {
 	o.Succeeded = v
 }
 
-// GetFailed returns the Failed field value
+// GetFailed returns the Failed field value if set, zero value otherwise.
 func (o *KubernetesActionResponse) GetFailed() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Failed) {
 		var ret []string
 		return ret
 	}
-
 	return o.Failed
 }
 
-// GetFailedOk returns a tuple with the Failed field value
+// GetFailedOk returns a tuple with the Failed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *KubernetesActionResponse) GetFailedOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Failed) {
 		return nil, false
 	}
 	return o.Failed, true
 }
 
-// SetFailed sets field value
+// HasFailed returns a boolean if a field has been set.
+func (o *KubernetesActionResponse) HasFailed() bool {
+	if o != nil && !IsNil(o.Failed) {
+		return true
+	}
+
+	return false
+}
+
+// SetFailed gets a reference to the given []string and assigns it to the Failed field.
 func (o *KubernetesActionResponse) SetFailed(v []string) {
 	o.Failed = v
 }
@@ -105,47 +115,13 @@ func (o KubernetesActionResponse) MarshalJSON() ([]byte, error) {
 
 func (o KubernetesActionResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["succeeded"] = o.Succeeded
-	toSerialize["failed"] = o.Failed
+	if !IsNil(o.Succeeded) {
+		toSerialize["succeeded"] = o.Succeeded
+	}
+	if !IsNil(o.Failed) {
+		toSerialize["failed"] = o.Failed
+	}
 	return toSerialize, nil
-}
-
-func (o *KubernetesActionResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"succeeded",
-		"failed",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varKubernetesActionResponse := _KubernetesActionResponse{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKubernetesActionResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = KubernetesActionResponse(varKubernetesActionResponse)
-
-	return err
 }
 
 type NullableKubernetesActionResponse struct {

@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the ProxmoxCheckerCommand type satisfies the MappedNullable interface at compile time
@@ -22,22 +20,17 @@ var _ MappedNullable = &ProxmoxCheckerCommand{}
 
 // ProxmoxCheckerCommand struct for ProxmoxCheckerCommand
 type ProxmoxCheckerCommand struct {
-	Url string `json:"url"`
-	TokenId string `json:"tokenId"`
-	TokenSecret string `json:"tokenSecret"`
+	Url *string `json:"url,omitempty"`
+	TokenId *string `json:"tokenId,omitempty"`
+	TokenSecret *string `json:"tokenSecret,omitempty"`
 }
-
-type _ProxmoxCheckerCommand ProxmoxCheckerCommand
 
 // NewProxmoxCheckerCommand instantiates a new ProxmoxCheckerCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProxmoxCheckerCommand(url string, tokenId string, tokenSecret string) *ProxmoxCheckerCommand {
+func NewProxmoxCheckerCommand() *ProxmoxCheckerCommand {
 	this := ProxmoxCheckerCommand{}
-	this.Url = url
-	this.TokenId = tokenId
-	this.TokenSecret = tokenSecret
 	return &this
 }
 
@@ -49,76 +42,100 @@ func NewProxmoxCheckerCommandWithDefaults() *ProxmoxCheckerCommand {
 	return &this
 }
 
-// GetUrl returns the Url field value
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *ProxmoxCheckerCommand) GetUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-
-	return o.Url
+	return *o.Url
 }
 
-// GetUrlOk returns a tuple with the Url field value
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProxmoxCheckerCommand) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return &o.Url, true
+	return o.Url, true
 }
 
-// SetUrl sets field value
+// HasUrl returns a boolean if a field has been set.
+func (o *ProxmoxCheckerCommand) HasUrl() bool {
+	if o != nil && !IsNil(o.Url) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *ProxmoxCheckerCommand) SetUrl(v string) {
-	o.Url = v
+	o.Url = &v
 }
 
-// GetTokenId returns the TokenId field value
+// GetTokenId returns the TokenId field value if set, zero value otherwise.
 func (o *ProxmoxCheckerCommand) GetTokenId() string {
-	if o == nil {
+	if o == nil || IsNil(o.TokenId) {
 		var ret string
 		return ret
 	}
-
-	return o.TokenId
+	return *o.TokenId
 }
 
-// GetTokenIdOk returns a tuple with the TokenId field value
+// GetTokenIdOk returns a tuple with the TokenId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProxmoxCheckerCommand) GetTokenIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TokenId) {
 		return nil, false
 	}
-	return &o.TokenId, true
+	return o.TokenId, true
 }
 
-// SetTokenId sets field value
+// HasTokenId returns a boolean if a field has been set.
+func (o *ProxmoxCheckerCommand) HasTokenId() bool {
+	if o != nil && !IsNil(o.TokenId) {
+		return true
+	}
+
+	return false
+}
+
+// SetTokenId gets a reference to the given string and assigns it to the TokenId field.
 func (o *ProxmoxCheckerCommand) SetTokenId(v string) {
-	o.TokenId = v
+	o.TokenId = &v
 }
 
-// GetTokenSecret returns the TokenSecret field value
+// GetTokenSecret returns the TokenSecret field value if set, zero value otherwise.
 func (o *ProxmoxCheckerCommand) GetTokenSecret() string {
-	if o == nil {
+	if o == nil || IsNil(o.TokenSecret) {
 		var ret string
 		return ret
 	}
-
-	return o.TokenSecret
+	return *o.TokenSecret
 }
 
-// GetTokenSecretOk returns a tuple with the TokenSecret field value
+// GetTokenSecretOk returns a tuple with the TokenSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProxmoxCheckerCommand) GetTokenSecretOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TokenSecret) {
 		return nil, false
 	}
-	return &o.TokenSecret, true
+	return o.TokenSecret, true
 }
 
-// SetTokenSecret sets field value
+// HasTokenSecret returns a boolean if a field has been set.
+func (o *ProxmoxCheckerCommand) HasTokenSecret() bool {
+	if o != nil && !IsNil(o.TokenSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetTokenSecret gets a reference to the given string and assigns it to the TokenSecret field.
 func (o *ProxmoxCheckerCommand) SetTokenSecret(v string) {
-	o.TokenSecret = v
+	o.TokenSecret = &v
 }
 
 func (o ProxmoxCheckerCommand) MarshalJSON() ([]byte, error) {
@@ -131,49 +148,16 @@ func (o ProxmoxCheckerCommand) MarshalJSON() ([]byte, error) {
 
 func (o ProxmoxCheckerCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["url"] = o.Url
-	toSerialize["tokenId"] = o.TokenId
-	toSerialize["tokenSecret"] = o.TokenSecret
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
+	if !IsNil(o.TokenId) {
+		toSerialize["tokenId"] = o.TokenId
+	}
+	if !IsNil(o.TokenSecret) {
+		toSerialize["tokenSecret"] = o.TokenSecret
+	}
 	return toSerialize, nil
-}
-
-func (o *ProxmoxCheckerCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"url",
-		"tokenId",
-		"tokenSecret",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varProxmoxCheckerCommand := _ProxmoxCheckerCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProxmoxCheckerCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ProxmoxCheckerCommand(varProxmoxCheckerCommand)
-
-	return err
 }
 
 type NullableProxmoxCheckerCommand struct {
