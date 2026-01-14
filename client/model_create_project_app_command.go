@@ -24,6 +24,7 @@ type CreateProjectAppCommand struct {
 	Namespace NullableString `json:"namespace,omitempty"`
 	ProjectId *int32 `json:"projectId,omitempty"`
 	CatalogAppId *int32 `json:"catalogAppId,omitempty"`
+	// Extra values should be in base64 format.
 	ExtraValues NullableString `json:"extraValues,omitempty"`
 	AutoSync *bool `json:"autoSync,omitempty"`
 	TaikunLinkEnabled *bool `json:"taikunLinkEnabled,omitempty"`

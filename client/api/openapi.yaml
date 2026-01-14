@@ -48156,6 +48156,7 @@ components:
           format: int32
           type: integer
         extraValues:
+          description: Extra values should be in base64 format.
           nullable: true
           type: string
         autoSync:
