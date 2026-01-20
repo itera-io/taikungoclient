@@ -906,9 +906,9 @@ func (a *ImagesAPIService) ImagesAzureImagesExecute(r ApiImagesAzureImagesReques
 	if r.latest != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Latest", r.latest, "form", "")
 	} else {
-        var defaultValue bool = false
-        parameterAddToHeaderOrQuery(localVarQueryParams, "Latest", defaultValue, "form", "")
-        r.latest = &defaultValue
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Latest", defaultValue, "form", "")
+		r.latest = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2370,9 +2370,9 @@ func (a *ImagesAPIService) ImagesOpenstackImagesExecute(r ApiImagesOpenstackImag
 	if r.personal != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Personal", r.personal, "form", "")
 	} else {
-        var defaultValue bool = false
-        parameterAddToHeaderOrQuery(localVarQueryParams, "Personal", defaultValue, "form", "")
-        r.personal = &defaultValue
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Personal", defaultValue, "form", "")
+		r.personal = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
