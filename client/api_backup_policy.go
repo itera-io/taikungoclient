@@ -1887,16 +1887,16 @@ func (a *BackupPolicyAPIService) BackupListAllBackupStoragesExecute(r ApiBackupL
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	} else {
-        var defaultValue int32 = 50
-        parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", defaultValue, "form", "")
-        r.limit = &defaultValue
+		var defaultValue int32 = 50
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", defaultValue, "form", "")
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	} else {
-        var defaultValue int32 = 0
-        parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", defaultValue, "form", "")
-        r.offset = &defaultValue
+		var defaultValue int32 = 0
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", defaultValue, "form", "")
+		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2120,16 +2120,16 @@ func (a *BackupPolicyAPIService) BackupListAllBackupsExecute(r ApiBackupListAllB
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	} else {
-        var defaultValue int32 = 50
-        parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", defaultValue, "form", "")
-        r.limit = &defaultValue
+		var defaultValue int32 = 50
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", defaultValue, "form", "")
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	} else {
-        var defaultValue int32 = 0
-        parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", defaultValue, "form", "")
-        r.offset = &defaultValue
+		var defaultValue int32 = 0
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", defaultValue, "form", "")
+		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2353,16 +2353,16 @@ func (a *BackupPolicyAPIService) BackupListAllDeleteBackupRequestsExecute(r ApiB
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	} else {
-        var defaultValue int32 = 50
-        parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", defaultValue, "form", "")
-        r.limit = &defaultValue
+		var defaultValue int32 = 50
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", defaultValue, "form", "")
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	} else {
-        var defaultValue int32 = 0
-        parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", defaultValue, "form", "")
-        r.offset = &defaultValue
+		var defaultValue int32 = 0
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", defaultValue, "form", "")
+		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2586,16 +2586,16 @@ func (a *BackupPolicyAPIService) BackupListAllRestoresExecute(r ApiBackupListAll
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	} else {
-        var defaultValue int32 = 50
-        parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", defaultValue, "form", "")
-        r.limit = &defaultValue
+		var defaultValue int32 = 50
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", defaultValue, "form", "")
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	} else {
-        var defaultValue int32 = 0
-        parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", defaultValue, "form", "")
-        r.offset = &defaultValue
+		var defaultValue int32 = 0
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", defaultValue, "form", "")
+		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2819,16 +2819,16 @@ func (a *BackupPolicyAPIService) BackupListAllSchedulesExecute(r ApiBackupListAl
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	} else {
-        var defaultValue int32 = 50
-        parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", defaultValue, "form", "")
-        r.limit = &defaultValue
+		var defaultValue int32 = 50
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", defaultValue, "form", "")
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	} else {
-        var defaultValue int32 = 0
-        parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", defaultValue, "form", "")
-        r.offset = &defaultValue
+		var defaultValue int32 = 0
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", defaultValue, "form", "")
+		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

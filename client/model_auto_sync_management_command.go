@@ -22,6 +22,7 @@ var _ MappedNullable = &AutoSyncManagementCommand{}
 type AutoSyncManagementCommand struct {
 	Id *int32 `json:"id,omitempty"`
 	Mode NullableString `json:"mode,omitempty"`
+	Ttl NullableInt32 `json:"ttl,omitempty"`
 }
 
 // NewAutoSyncManagementCommand instantiates a new AutoSyncManagementCommand object
@@ -115,6 +116,48 @@ func (o *AutoSyncManagementCommand) UnsetMode() {
 	o.Mode.Unset()
 }
 
+// GetTtl returns the Ttl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AutoSyncManagementCommand) GetTtl() int32 {
+	if o == nil || IsNil(o.Ttl.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.Ttl.Get()
+}
+
+// GetTtlOk returns a tuple with the Ttl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AutoSyncManagementCommand) GetTtlOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Ttl.Get(), o.Ttl.IsSet()
+}
+
+// HasTtl returns a boolean if a field has been set.
+func (o *AutoSyncManagementCommand) HasTtl() bool {
+	if o != nil && o.Ttl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTtl gets a reference to the given NullableInt32 and assigns it to the Ttl field.
+func (o *AutoSyncManagementCommand) SetTtl(v int32) {
+	o.Ttl.Set(&v)
+}
+// SetTtlNil sets the value for Ttl to be an explicit nil
+func (o *AutoSyncManagementCommand) SetTtlNil() {
+	o.Ttl.Set(nil)
+}
+
+// UnsetTtl ensures that no value is present for Ttl, not even an explicit nil
+func (o *AutoSyncManagementCommand) UnsetTtl() {
+	o.Ttl.Unset()
+}
+
 func (o AutoSyncManagementCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -130,6 +173,9 @@ func (o AutoSyncManagementCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Mode.IsSet() {
 		toSerialize["mode"] = o.Mode.Get()
+	}
+	if o.Ttl.IsSet() {
+		toSerialize["ttl"] = o.Ttl.Get()
 	}
 	return toSerialize, nil
 }

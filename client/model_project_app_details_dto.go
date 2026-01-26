@@ -38,6 +38,7 @@ type ProjectAppDetailsDto struct {
 	ProjectName string `json:"projectName"`
 	HelmResult string `json:"helmResult"`
 	ProjectId int32 `json:"projectId"`
+	Ttl int32 `json:"ttl"`
 	HasJsonSchema bool `json:"hasJsonSchema"`
 	CatalogAppId int32 `json:"catalogAppId"`
 	PackageId string `json:"packageId"`
@@ -53,7 +54,7 @@ type _ProjectAppDetailsDto ProjectAppDetailsDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectAppDetailsDto(id int32, name string, namespace string, status EInstanceStatus, version string, catalogId int32, catalogName string, catalogAppName string, appRepoName string, logo NullableString, values string, autoSync bool, releaseNotes NullableString, projectName string, helmResult string, projectId int32, hasJsonSchema bool, catalogAppId int32, packageId string, logs NullableString, projectAppParams []ProjectAppParamDto) *ProjectAppDetailsDto {
+func NewProjectAppDetailsDto(id int32, name string, namespace string, status EInstanceStatus, version string, catalogId int32, catalogName string, catalogAppName string, appRepoName string, logo NullableString, values string, autoSync bool, releaseNotes NullableString, projectName string, helmResult string, projectId int32, ttl int32, hasJsonSchema bool, catalogAppId int32, packageId string, logs NullableString, projectAppParams []ProjectAppParamDto) *ProjectAppDetailsDto {
 	this := ProjectAppDetailsDto{}
 	this.Id = id
 	this.Name = name
@@ -71,6 +72,7 @@ func NewProjectAppDetailsDto(id int32, name string, namespace string, status EIn
 	this.ProjectName = projectName
 	this.HelmResult = helmResult
 	this.ProjectId = projectId
+	this.Ttl = ttl
 	this.HasJsonSchema = hasJsonSchema
 	this.CatalogAppId = catalogAppId
 	this.PackageId = packageId
@@ -475,6 +477,30 @@ func (o *ProjectAppDetailsDto) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
+// GetTtl returns the Ttl field value
+func (o *ProjectAppDetailsDto) GetTtl() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Ttl
+}
+
+// GetTtlOk returns a tuple with the Ttl field value
+// and a boolean to check if the value has been set.
+func (o *ProjectAppDetailsDto) GetTtlOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Ttl, true
+}
+
+// SetTtl sets field value
+func (o *ProjectAppDetailsDto) SetTtl(v int32) {
+	o.Ttl = v
+}
+
 // GetHasJsonSchema returns the HasJsonSchema field value
 func (o *ProjectAppDetailsDto) GetHasJsonSchema() bool {
 	if o == nil {
@@ -699,6 +725,7 @@ func (o ProjectAppDetailsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["projectName"] = o.ProjectName
 	toSerialize["helmResult"] = o.HelmResult
 	toSerialize["projectId"] = o.ProjectId
+	toSerialize["ttl"] = o.Ttl
 	toSerialize["hasJsonSchema"] = o.HasJsonSchema
 	toSerialize["catalogAppId"] = o.CatalogAppId
 	toSerialize["packageId"] = o.PackageId
@@ -736,6 +763,7 @@ func (o *ProjectAppDetailsDto) UnmarshalJSON(data []byte) (err error) {
 		"projectName",
 		"helmResult",
 		"projectId",
+		"ttl",
 		"hasJsonSchema",
 		"catalogAppId",
 		"packageId",

@@ -43122,6 +43122,7 @@ components:
       example:
         mode: mode
         id: 0
+        ttl: 6
       properties:
         id:
           format: int32
@@ -43129,6 +43130,10 @@ components:
         mode:
           nullable: true
           type: string
+        ttl:
+          format: int32
+          nullable: true
+          type: integer
       type: object
     AutoUpgradeProjectsCommand:
       additionalProperties: false
@@ -61019,6 +61024,7 @@ components:
         packageId: packageId
         autoSync: true
         version: version
+        ttl: 5
         catalogAppId: 5
         catalogName: catalogName
         appRepoName: appRepoName
@@ -61073,6 +61079,9 @@ components:
         projectId:
           format: int32
           type: integer
+        ttl:
+          format: int32
+          type: integer
         hasJsonSchema:
           type: boolean
         catalogAppId:
@@ -61113,6 +61122,7 @@ components:
       - projectName
       - releaseNotes
       - status
+      - ttl
       - values
       - version
       type: object
