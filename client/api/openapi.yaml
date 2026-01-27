@@ -43198,11 +43198,11 @@ components:
         packageId: packageId
         description: description
         securityReport:
-          high: 7
-          critical: 2
-          low: 2
-          medium: 9
-          unknown: 3
+          high: 9
+          critical: 4
+          low: 7
+          medium: 3
+          unknown: 2
         official: true
         readme: readme
         stars: 0
@@ -45530,14 +45530,14 @@ components:
         packageId: packageId
         description: description
         securityReport:
-          high: 7
-          critical: 2
-          low: 2
-          medium: 9
-          unknown: 3
+          high: 9
+          critical: 4
+          low: 7
+          medium: 3
+          unknown: 2
         official: true
         readme: readme
-        stars: 4
+        stars: 7
         version: version
         verifiedPublisher: true
         appRepoOrganizationName: appRepoOrganizationName
@@ -45555,6 +45555,7 @@ components:
           id: 5
           projectName: projectName
           projectId: 5
+          ttl: 2
           version: version
           status: None
         - isLocked: true
@@ -45564,6 +45565,7 @@ components:
           id: 5
           projectName: projectName
           projectId: 5
+          ttl: 2
           version: version
           status: None
         id: 0
@@ -61136,6 +61138,7 @@ components:
         id: 5
         projectName: projectName
         projectId: 5
+        ttl: 2
         version: version
         status: None
       properties:
@@ -61152,6 +61155,9 @@ components:
           nullable: true
           type: string
         projectId:
+          format: int32
+          type: integer
+        ttl:
           format: int32
           type: integer
         version:
@@ -65778,11 +65784,11 @@ components:
     SecurityReportSummaryDto:
       additionalProperties: false
       example:
-        high: 7
-        critical: 2
-        low: 2
-        medium: 9
-        unknown: 3
+        high: 9
+        critical: 4
+        low: 7
+        medium: 3
+        unknown: 2
       properties:
         low:
           format: int64

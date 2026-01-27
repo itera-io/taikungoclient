@@ -25,6 +25,7 @@ type ProjectAppDto struct {
 	Namespace NullableString `json:"namespace,omitempty"`
 	ProjectName NullableString `json:"projectName,omitempty"`
 	ProjectId *int32 `json:"projectId,omitempty"`
+	Ttl *int32 `json:"ttl,omitempty"`
 	Version NullableString `json:"version,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
 	Status *EInstanceStatus `json:"status,omitempty"`
@@ -238,6 +239,38 @@ func (o *ProjectAppDto) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
+// GetTtl returns the Ttl field value if set, zero value otherwise.
+func (o *ProjectAppDto) GetTtl() int32 {
+	if o == nil || IsNil(o.Ttl) {
+		var ret int32
+		return ret
+	}
+	return *o.Ttl
+}
+
+// GetTtlOk returns a tuple with the Ttl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectAppDto) GetTtlOk() (*int32, bool) {
+	if o == nil || IsNil(o.Ttl) {
+		return nil, false
+	}
+	return o.Ttl, true
+}
+
+// HasTtl returns a boolean if a field has been set.
+func (o *ProjectAppDto) HasTtl() bool {
+	if o != nil && !IsNil(o.Ttl) {
+		return true
+	}
+
+	return false
+}
+
+// SetTtl gets a reference to the given int32 and assigns it to the Ttl field.
+func (o *ProjectAppDto) SetTtl(v int32) {
+	o.Ttl = &v
+}
+
 // GetVersion returns the Version field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectAppDto) GetVersion() string {
 	if o == nil || IsNil(o.Version.Get()) {
@@ -400,6 +433,9 @@ func (o ProjectAppDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
+	}
+	if !IsNil(o.Ttl) {
+		toSerialize["ttl"] = o.Ttl
 	}
 	if o.Version.IsSet() {
 		toSerialize["version"] = o.Version.Get()
