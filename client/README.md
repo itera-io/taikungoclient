@@ -376,12 +376,15 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesAddK8sEvents**](docs/KubernetesAPI.md#kubernetesaddk8sevents) | **Post** /api/v1/kubernetes/event/{projectId} | Add k8s event
 *KubernetesAPI* | [**KubernetesAlertList**](docs/KubernetesAPI.md#kubernetesalertlist) | **Get** /api/v1/kubernetes/{projectId}/alerts | Retrieve a list of alerts for project
 *KubernetesAPI* | [**KubernetesCli**](docs/KubernetesAPI.md#kubernetescli) | **Post** /api/v1/kubernetes/cli | Execute k8s web socket namespaced pod
+*KubernetesAPI* | [**KubernetesConfigmapList**](docs/KubernetesAPI.md#kubernetesconfigmaplist) | **Get** /api/v1/kubernetes/list/{projectId}/configmap | K8s configmap list
 *KubernetesAPI* | [**KubernetesCreateResource**](docs/KubernetesAPI.md#kubernetescreateresource) | **Post** /api/v1/kubernetes/create-resource | Create kubernetes resource
 *KubernetesAPI* | [**KubernetesCronjobActions**](docs/KubernetesAPI.md#kubernetescronjobactions) | **Post** /api/v1/kubernetes/cronjob/actions | Cronjob actions
 *KubernetesAPI* | [**KubernetesDaemonsetActions**](docs/KubernetesAPI.md#kubernetesdaemonsetactions) | **Post** /api/v1/kubernetes/daemonset/actions | Daemonset actions
+*KubernetesAPI* | [**KubernetesDaemonsetList**](docs/KubernetesAPI.md#kubernetesdaemonsetlist) | **Get** /api/v1/kubernetes/list/{projectId}/daemonset | K8s daemonset list
 *KubernetesAPI* | [**KubernetesDashboardList**](docs/KubernetesAPI.md#kubernetesdashboardlist) | **Get** /api/v1/kubernetes/{projectId}/dashboard | Retrieve a list of crd
 *KubernetesAPI* | [**KubernetesDeleteResource**](docs/KubernetesAPI.md#kubernetesdeleteresource) | **Post** /api/v1/kubernetes/delete-resource | Delete kubernetes resource
 *KubernetesAPI* | [**KubernetesDeploymentActions**](docs/KubernetesAPI.md#kubernetesdeploymentactions) | **Post** /api/v1/kubernetes/deployment/actions | Deployment actions
+*KubernetesAPI* | [**KubernetesDeploymentsList**](docs/KubernetesAPI.md#kubernetesdeploymentslist) | **Get** /api/v1/kubernetes/list/{projectId}/deployments | K8s deployment list
 *KubernetesAPI* | [**KubernetesDescribeResource**](docs/KubernetesAPI.md#kubernetesdescriberesource) | **Post** /api/v1/kubernetes/describe-resource | Describe kubernetes resource
 *KubernetesAPI* | [**KubernetesDownload**](docs/KubernetesAPI.md#kubernetesdownload) | **Get** /api/v1/kubernetes/{projectId}/download | Download kube config file
 *KubernetesAPI* | [**KubernetesDownloadManifest**](docs/KubernetesAPI.md#kubernetesdownloadmanifest) | **Post** /api/v1/kubernetes/download-manifest | Download manifest
@@ -389,18 +392,26 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesForbiddenNamespaces**](docs/KubernetesAPI.md#kubernetesforbiddennamespaces) | **Get** /api/v1/kubernetes/forbidden-namespaces/{projectId} | Forbidden namespaces for k8s actions
 *KubernetesAPI* | [**KubernetesGetSupportedList**](docs/KubernetesAPI.md#kubernetesgetsupportedlist) | **Get** /api/v1/kubernetes/supported/list | Retrieve Taikun supported kubernetes versions
 *KubernetesAPI* | [**KubernetesIngressClasses**](docs/KubernetesAPI.md#kubernetesingressclasses) | **Post** /api/v1/kubernetes/ingress-classes | List of ingress classes
+*KubernetesAPI* | [**KubernetesIngressList**](docs/KubernetesAPI.md#kubernetesingresslist) | **Get** /api/v1/kubernetes/list/{projectId}/ingress | K8s ingress list
 *KubernetesAPI* | [**KubernetesInteractiveShell**](docs/KubernetesAPI.md#kubernetesinteractiveshell) | **Post** /api/v1/kubernetes/interactive-shell | Produce interactive shell command
 *KubernetesAPI* | [**KubernetesKubeConfig**](docs/KubernetesAPI.md#kuberneteskubeconfig) | **Get** /api/v1/kubernetes/{projectId}/kubeconfig | Retrieve kube config file
 *KubernetesAPI* | [**KubernetesNamespaceList**](docs/KubernetesAPI.md#kubernetesnamespacelist) | **Get** /api/v1/kubernetes/{projectId}/namespaces | Retrieve kube config file
+*KubernetesAPI* | [**KubernetesNetworkPolicyList**](docs/KubernetesAPI.md#kubernetesnetworkpolicylist) | **Get** /api/v1/kubernetes/list/{projectId}/network-policy | K8s network policy list
 *KubernetesAPI* | [**KubernetesNodeActions**](docs/KubernetesAPI.md#kubernetesnodeactions) | **Post** /api/v1/kubernetes/nodes/actions | Node actions
+*KubernetesAPI* | [**KubernetesNodeList**](docs/KubernetesAPI.md#kubernetesnodelist) | **Get** /api/v1/kubernetes/list/{projectId}/nodes | K8s node list
 *KubernetesAPI* | [**KubernetesOverview**](docs/KubernetesAPI.md#kubernetesoverview) | **Get** /api/v1/kubernetes/overview | Overview kubernetes nodes and pods by organization id
 *KubernetesAPI* | [**KubernetesPatchResource**](docs/KubernetesAPI.md#kubernetespatchresource) | **Post** /api/v1/kubernetes/patch-resource | Patch kubernetes resource
 *KubernetesAPI* | [**KubernetesPodLogs**](docs/KubernetesAPI.md#kubernetespodlogs) | **Post** /api/v1/kubernetes/podLogs | Retrieve k8s pod logs
+*KubernetesAPI* | [**KubernetesPodsList**](docs/KubernetesAPI.md#kubernetespodslist) | **Get** /api/v1/kubernetes/list/{projectId}/pods | K8s pods list
+*KubernetesAPI* | [**KubernetesPvcList**](docs/KubernetesAPI.md#kubernetespvclist) | **Get** /api/v1/kubernetes/list/{projectId}/pvc | K8s pvc list
 *KubernetesAPI* | [**KubernetesQuota**](docs/KubernetesAPI.md#kubernetesquota) | **Get** /api/v1/kubernetes/{projectId}/quota | K8s quota usage
 *KubernetesAPI* | [**KubernetesRemovealerts**](docs/KubernetesAPI.md#kubernetesremovealerts) | **Post** /api/v1/kubernetes/removealerts | Remove k8s alerts
 *KubernetesAPI* | [**KubernetesResources**](docs/KubernetesAPI.md#kubernetesresources) | **Get** /api/v1/kubernetes/{projectId}/resources | Retrieve all total count
+*KubernetesAPI* | [**KubernetesSecretList**](docs/KubernetesAPI.md#kubernetessecretlist) | **Get** /api/v1/kubernetes/list/{projectId}/secret | K8s secret list
+*KubernetesAPI* | [**KubernetesServicesList**](docs/KubernetesAPI.md#kubernetesserviceslist) | **Get** /api/v1/kubernetes/list/{projectId}/service | K8s service list
 *KubernetesAPI* | [**KubernetesSilenceManager**](docs/KubernetesAPI.md#kubernetessilencemanager) | **Post** /api/v1/kubernetes/silencemanager | Silence management for k8s alerts
 *KubernetesAPI* | [**KubernetesStsActions**](docs/KubernetesAPI.md#kubernetesstsactions) | **Post** /api/v1/kubernetes/sts/actions | Stateful set actions
+*KubernetesAPI* | [**KubernetesStsList**](docs/KubernetesAPI.md#kubernetesstslist) | **Get** /api/v1/kubernetes/list/{projectId}/sts | K8s sts list
 *KubernetesAPI* | [**KubernetesUpdateAlert**](docs/KubernetesAPI.md#kubernetesupdatealert) | **Put** /api/v1/kubernetes/updatealert/{alertId} | Update k8s alert
 *KubernetesProfilesAPI* | [**KubernetesprofilesCreate**](docs/KubernetesProfilesAPI.md#kubernetesprofilescreate) | **Post** /api/v1/kubernetesprofiles | Add kubernetes profile
 *KubernetesProfilesAPI* | [**KubernetesprofilesDelete**](docs/KubernetesProfilesAPI.md#kubernetesprofilesdelete) | **Delete** /api/v1/kubernetesprofiles/{id} | Delete kubernetes profile
@@ -933,6 +944,8 @@ Class | Method | HTTP request | Description
  - [CommonStringDropdownIsBoundDto](docs/CommonStringDropdownIsBoundDto.md)
  - [ConfigMapSearchCommand](docs/ConfigMapSearchCommand.md)
  - [ConfigMapSearchList](docs/ConfigMapSearchList.md)
+ - [ConfigmapListDto](docs/ConfigmapListDto.md)
+ - [ConfigmapListDtoCursorPaginatedResponse](docs/ConfigmapListDtoCursorPaginatedResponse.md)
  - [ConfirmEmailCommand](docs/ConfirmEmailCommand.md)
  - [ConsoleScreenshotCommand](docs/ConsoleScreenshotCommand.md)
  - [ContactUsCommand](docs/ContactUsCommand.md)
@@ -998,6 +1011,8 @@ Class | Method | HTTP request | Description
  - [DaemonSetSearchCommand](docs/DaemonSetSearchCommand.md)
  - [DaemonSetSearchList](docs/DaemonSetSearchList.md)
  - [DaemonsetActionCommand](docs/DaemonsetActionCommand.md)
+ - [DaemonsetListDto](docs/DaemonsetListDto.md)
+ - [DaemonsetListDtoCursorPaginatedResponse](docs/DaemonsetListDtoCursorPaginatedResponse.md)
  - [DashboardChart](docs/DashboardChart.md)
  - [DatacenterListCommand](docs/DatacenterListCommand.md)
  - [DatacenterSummary](docs/DatacenterSummary.md)
@@ -1037,6 +1052,8 @@ Class | Method | HTTP request | Description
  - [DeploymentEnableAiCommand](docs/DeploymentEnableAiCommand.md)
  - [DeploymentEnableBackupCommand](docs/DeploymentEnableBackupCommand.md)
  - [DeploymentEnableMonitoringCommand](docs/DeploymentEnableMonitoringCommand.md)
+ - [DeploymentListDto](docs/DeploymentListDto.md)
+ - [DeploymentListDtoCursorPaginatedResponse](docs/DeploymentListDtoCursorPaginatedResponse.md)
  - [DeploymentOpaEnableCommand](docs/DeploymentOpaEnableCommand.md)
  - [DeploymentSearchCommand](docs/DeploymentSearchCommand.md)
  - [DeploymentSearchList](docs/DeploymentSearchList.md)
@@ -1158,6 +1175,8 @@ Class | Method | HTTP request | Description
  - [InfraBillingSummaryDto](docs/InfraBillingSummaryDto.md)
  - [InfraOrganizationsListDto](docs/InfraOrganizationsListDto.md)
  - [InfraProductDto](docs/InfraProductDto.md)
+ - [IngressListDto](docs/IngressListDto.md)
+ - [IngressListDtoCursorPaginatedResponse](docs/IngressListDtoCursorPaginatedResponse.md)
  - [IngressSearchCommand](docs/IngressSearchCommand.md)
  - [IngressSearchList](docs/IngressSearchList.md)
  - [InstanceAppListDto](docs/InstanceAppListDto.md)
@@ -1238,10 +1257,14 @@ Class | Method | HTTP request | Description
  - [NetworkListCommand](docs/NetworkListCommand.md)
  - [NetworkPoliciesSearchCommand](docs/NetworkPoliciesSearchCommand.md)
  - [NetworkPoliciesSearchList](docs/NetworkPoliciesSearchList.md)
+ - [NetworkPolicyListDto](docs/NetworkPolicyListDto.md)
+ - [NetworkPolicyListDtoCursorPaginatedResponse](docs/NetworkPolicyListDtoCursorPaginatedResponse.md)
  - [NetworkSummary](docs/NetworkSummary.md)
  - [NodeActionCommand](docs/NodeActionCommand.md)
  - [NodeCommand](docs/NodeCommand.md)
  - [NodeDto](docs/NodeDto.md)
+ - [NodeListDto](docs/NodeListDto.md)
+ - [NodeListDtoCursorPaginatedResponse](docs/NodeListDtoCursorPaginatedResponse.md)
  - [NodeSearchResponseData](docs/NodeSearchResponseData.md)
  - [NodesSearchCommand](docs/NodesSearchCommand.md)
  - [NodesSearchList](docs/NodesSearchList.md)
@@ -1317,6 +1340,8 @@ Class | Method | HTTP request | Description
  - [PdbSearchCommand](docs/PdbSearchCommand.md)
  - [PdbSearchList](docs/PdbSearchList.md)
  - [PodDto](docs/PodDto.md)
+ - [PodsListDto](docs/PodsListDto.md)
+ - [PodsListDtoCursorPaginatedResponse](docs/PodsListDtoCursorPaginatedResponse.md)
  - [PodsSearchCommand](docs/PodsSearchCommand.md)
  - [PodsSearchList](docs/PodsSearchList.md)
  - [PrivateSubscriptionList](docs/PrivateSubscriptionList.md)
@@ -1396,6 +1421,8 @@ Class | Method | HTTP request | Description
  - [ProxmoxRole](docs/ProxmoxRole.md)
  - [ProxmoxStorage](docs/ProxmoxStorage.md)
  - [PublicImageList](docs/PublicImageList.md)
+ - [PvcListDto](docs/PvcListDto.md)
+ - [PvcListDtoCursorPaginatedResponse](docs/PvcListDtoCursorPaginatedResponse.md)
  - [PvcSearchCommand](docs/PvcSearchCommand.md)
  - [PvcSearchList](docs/PvcSearchList.md)
  - [RamLimitsDto](docs/RamLimitsDto.md)
@@ -1421,6 +1448,8 @@ Class | Method | HTTP request | Description
  - [RuleCreateCommand](docs/RuleCreateCommand.md)
  - [RuleForUpdateDto](docs/RuleForUpdateDto.md)
  - [RuleLabels](docs/RuleLabels.md)
+ - [SecretListDto](docs/SecretListDto.md)
+ - [SecretListDtoCursorPaginatedResponse](docs/SecretListDtoCursorPaginatedResponse.md)
  - [SecretSearchCommand](docs/SecretSearchCommand.md)
  - [SecretSearchList](docs/SecretSearchList.md)
  - [SecurityGroupListDto](docs/SecurityGroupListDto.md)
@@ -1439,6 +1468,8 @@ Class | Method | HTTP request | Description
  - [ServersSearchCommand](docs/ServersSearchCommand.md)
  - [ServersSearchList](docs/ServersSearchList.md)
  - [ServersSearchResponseData](docs/ServersSearchResponseData.md)
+ - [ServiceListDto](docs/ServiceListDto.md)
+ - [ServiceListDtoCursorPaginatedResponse](docs/ServiceListDtoCursorPaginatedResponse.md)
  - [ServiceSearchCommand](docs/ServiceSearchCommand.md)
  - [ServiceSearchList](docs/ServiceSearchList.md)
  - [SetTicketPriorityCommand](docs/SetTicketPriorityCommand.md)
@@ -1480,6 +1511,8 @@ Class | Method | HTTP request | Description
  - [StandaloneVmsList](docs/StandaloneVmsList.md)
  - [StandaloneVmsListForDetailsDto](docs/StandaloneVmsListForDetailsDto.md)
  - [StartStandaloneVmCommand](docs/StartStandaloneVmCommand.md)
+ - [StatefulSetListDto](docs/StatefulSetListDto.md)
+ - [StatefulSetListDtoCursorPaginatedResponse](docs/StatefulSetListDtoCursorPaginatedResponse.md)
  - [Status](docs/Status.md)
  - [StopStandaloneVmCommand](docs/StopStandaloneVmCommand.md)
  - [StorageClassesSearchCommand](docs/StorageClassesSearchCommand.md)

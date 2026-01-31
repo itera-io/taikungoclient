@@ -19183,6 +19183,897 @@ paths:
       summary: Stateful set actions
       tags:
       - Kubernetes
+  /api/v1/kubernetes/list/{projectId}/configmap:
+    get:
+      operationId: kubernetes-configmap-list
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchTerm
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ConfigmapListDtoCursorPaginatedResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: K8s configmap list
+      tags:
+      - Kubernetes
+  /api/v1/kubernetes/list/{projectId}/daemonset:
+    get:
+      operationId: kubernetes-daemonset-list
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchTerm
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DaemonsetListDtoCursorPaginatedResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: K8s daemonset list
+      tags:
+      - Kubernetes
+  /api/v1/kubernetes/list/{projectId}/deployments:
+    get:
+      operationId: kubernetes-deployments-list
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchTerm
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeploymentListDtoCursorPaginatedResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: K8s deployment list
+      tags:
+      - Kubernetes
+  /api/v1/kubernetes/list/{projectId}/ingress:
+    get:
+      operationId: kubernetes-ingress-list
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchTerm
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IngressListDtoCursorPaginatedResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: K8s ingress list
+      tags:
+      - Kubernetes
+  /api/v1/kubernetes/list/{projectId}/network-policy:
+    get:
+      operationId: kubernetes-network-policy-list
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchTerm
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NetworkPolicyListDtoCursorPaginatedResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: K8s network policy list
+      tags:
+      - Kubernetes
+  /api/v1/kubernetes/list/{projectId}/nodes:
+    get:
+      operationId: kubernetes-node-list
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchTerm
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NodeListDtoCursorPaginatedResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: K8s node list
+      tags:
+      - Kubernetes
+  /api/v1/kubernetes/list/{projectId}/pods:
+    get:
+      operationId: kubernetes-pods-list
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchTerm
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PodsListDtoCursorPaginatedResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: K8s pods list
+      tags:
+      - Kubernetes
+  /api/v1/kubernetes/list/{projectId}/pvc:
+    get:
+      operationId: kubernetes-pvc-list
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchTerm
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PvcListDtoCursorPaginatedResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: K8s pvc list
+      tags:
+      - Kubernetes
+  /api/v1/kubernetes/list/{projectId}/secret:
+    get:
+      operationId: kubernetes-secret-list
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchTerm
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SecretListDtoCursorPaginatedResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: K8s secret list
+      tags:
+      - Kubernetes
+  /api/v1/kubernetes/list/{projectId}/service:
+    get:
+      operationId: kubernetes-services-list
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchTerm
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceListDtoCursorPaginatedResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: K8s service list
+      tags:
+      - Kubernetes
+  /api/v1/kubernetes/list/{projectId}/sts:
+    get:
+      operationId: kubernetes-sts-list
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchTerm
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StatefulSetListDtoCursorPaginatedResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: K8s sts list
+      tags:
+      - Kubernetes
   /api/v1/kubernetes/{projectId}/download:
     get:
       operationId: kubernetes-download
@@ -47043,6 +47934,60 @@ components:
           format: int32
           type: integer
       type: object
+    ConfigmapListDto:
+      additionalProperties: false
+      example:
+        createdAt: createdAt
+        name: name
+        namespace: namespace
+      properties:
+        name:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        createdAt:
+          nullable: true
+          type: string
+      type: object
+    ConfigmapListDtoCursorPaginatedResponse:
+      additionalProperties: false
+      example:
+        nextCursor: nextCursor
+        data:
+        - createdAt: createdAt
+          name: name
+          namespace: namespace
+        - createdAt: createdAt
+          name: name
+          namespace: namespace
+        limit: 0
+        hasMore: true
+        totalCount: 6
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/ConfigmapListDto"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        nextCursor:
+          nullable: true
+          type: string
+      required:
+      - data
+      - hasMore
+      - limit
+      - totalCount
+      type: object
     ConfirmEmailCommand:
       additionalProperties: false
       example:
@@ -49290,6 +50235,96 @@ components:
       - namespace
       - projectId
       type: object
+    DaemonsetListDto:
+      additionalProperties: false
+      example:
+        createdAt: createdAt
+        image: image
+        current: 6
+        desired: 0
+        ready: 1
+        name: name
+        available: available
+        namespace: namespace
+        status: status
+      properties:
+        status:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        desired:
+          format: int32
+          type: integer
+        current:
+          format: int32
+          type: integer
+        ready:
+          format: int32
+          type: integer
+        available:
+          nullable: true
+          type: string
+        createdAt:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        image:
+          nullable: true
+          type: string
+      type: object
+    DaemonsetListDtoCursorPaginatedResponse:
+      additionalProperties: false
+      example:
+        nextCursor: nextCursor
+        data:
+        - createdAt: createdAt
+          image: image
+          current: 6
+          desired: 0
+          ready: 1
+          name: name
+          available: available
+          namespace: namespace
+          status: status
+        - createdAt: createdAt
+          image: image
+          current: 6
+          desired: 0
+          ready: 1
+          name: name
+          available: available
+          namespace: namespace
+          status: status
+        limit: 5
+        hasMore: true
+        totalCount: 5
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/DaemonsetListDto"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        nextCursor:
+          nullable: true
+          type: string
+      required:
+      - data
+      - hasMore
+      - limit
+      - totalCount
+      type: object
     DashboardChart:
       additionalProperties: false
       example:
@@ -50308,6 +51343,86 @@ components:
         projectId:
           format: int32
           type: integer
+      type: object
+    DeploymentListDto:
+      additionalProperties: false
+      example:
+        createdAt: createdAt
+        images:
+        - images
+        - images
+        ready: ready
+        name: name
+        namespace: namespace
+        state: state
+      properties:
+        state:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        ready:
+          nullable: true
+          type: string
+        createdAt:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        images:
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
+    DeploymentListDtoCursorPaginatedResponse:
+      additionalProperties: false
+      example:
+        nextCursor: nextCursor
+        data:
+        - createdAt: createdAt
+          images:
+          - images
+          - images
+          ready: ready
+          name: name
+          namespace: namespace
+          state: state
+        - createdAt: createdAt
+          images:
+          - images
+          - images
+          ready: ready
+          name: name
+          namespace: namespace
+          state: state
+        limit: 0
+        hasMore: true
+        totalCount: 6
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/DeploymentListDto"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        nextCursor:
+          nullable: true
+          type: string
+      required:
+      - data
+      - hasMore
+      - limit
+      - totalCount
       type: object
     DeploymentOpaEnableCommand:
       additionalProperties: false
@@ -55033,6 +56148,78 @@ components:
           nullable: true
           type: string
       type: object
+    IngressListDto:
+      additionalProperties: false
+      example:
+        createdAt: createdAt
+        default: default
+        name: name
+        namespace: namespace
+        ingressClass: ingressClass
+        target: target
+      properties:
+        name:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        target:
+          nullable: true
+          type: string
+        default:
+          nullable: true
+          type: string
+        ingressClass:
+          nullable: true
+          type: string
+        createdAt:
+          nullable: true
+          type: string
+      type: object
+    IngressListDtoCursorPaginatedResponse:
+      additionalProperties: false
+      example:
+        nextCursor: nextCursor
+        data:
+        - createdAt: createdAt
+          default: default
+          name: name
+          namespace: namespace
+          ingressClass: ingressClass
+          target: target
+        - createdAt: createdAt
+          default: default
+          name: name
+          namespace: namespace
+          ingressClass: ingressClass
+          target: target
+        limit: 0
+        hasMore: true
+        totalCount: 6
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/IngressListDto"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        nextCursor:
+          nullable: true
+          type: string
+      required:
+      - data
+      - hasMore
+      - limit
+      - totalCount
+      type: object
     IngressSearchCommand:
       additionalProperties: false
       example:
@@ -57730,6 +58917,66 @@ components:
           format: int32
           type: integer
       type: object
+    NetworkPolicyListDto:
+      additionalProperties: false
+      example:
+        createdAt: createdAt
+        podSelector: podSelector
+        name: name
+        namespace: namespace
+      properties:
+        name:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        podSelector:
+          nullable: true
+          type: string
+        createdAt:
+          nullable: true
+          type: string
+      type: object
+    NetworkPolicyListDtoCursorPaginatedResponse:
+      additionalProperties: false
+      example:
+        nextCursor: nextCursor
+        data:
+        - createdAt: createdAt
+          podSelector: podSelector
+          name: name
+          namespace: namespace
+        - createdAt: createdAt
+          podSelector: podSelector
+          name: name
+          namespace: namespace
+        limit: 0
+        hasMore: true
+        totalCount: 6
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/NetworkPolicyListDto"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        nextCursor:
+          nullable: true
+          type: string
+      required:
+      - data
+      - hasMore
+      - limit
+      - totalCount
+      type: object
     NetworkSummary:
       additionalProperties: false
       example:
@@ -57805,6 +59052,72 @@ components:
       - kubeletReady
       - kubeletSufficient
       - metadataName
+      type: object
+    NodeListDto:
+      additionalProperties: false
+      example:
+        role: role
+        ip: ip
+        name: name
+        state: state
+        version: version
+      properties:
+        state:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        role:
+          nullable: true
+          type: string
+        version:
+          nullable: true
+          type: string
+        ip:
+          nullable: true
+          type: string
+      type: object
+    NodeListDtoCursorPaginatedResponse:
+      additionalProperties: false
+      example:
+        nextCursor: nextCursor
+        data:
+        - role: role
+          ip: ip
+          name: name
+          state: state
+          version: version
+        - role: role
+          ip: ip
+          name: name
+          state: state
+          version: version
+        limit: 0
+        hasMore: true
+        totalCount: 6
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/NodeListDto"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        nextCursor:
+          nullable: true
+          type: string
+      required:
+      - data
+      - hasMore
+      - limit
+      - totalCount
       type: object
     NodeSearchResponseData:
       additionalProperties: false
@@ -60552,6 +61865,90 @@ components:
       - phase
       - restartCount
       - status
+      type: object
+    PodsListDto:
+      additionalProperties: false
+      example:
+        createdAt: createdAt
+        node: node
+        restartCount: 0
+        ready: ready
+        ip: ip
+        name: name
+        namespace: namespace
+        state: state
+      properties:
+        state:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        ready:
+          nullable: true
+          type: string
+        restartCount:
+          format: int32
+          type: integer
+        createdAt:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        node:
+          nullable: true
+          type: string
+        ip:
+          nullable: true
+          type: string
+      type: object
+    PodsListDtoCursorPaginatedResponse:
+      additionalProperties: false
+      example:
+        nextCursor: nextCursor
+        data:
+        - createdAt: createdAt
+          node: node
+          restartCount: 0
+          ready: ready
+          ip: ip
+          name: name
+          namespace: namespace
+          state: state
+        - createdAt: createdAt
+          node: node
+          restartCount: 0
+          ready: ready
+          ip: ip
+          name: name
+          namespace: namespace
+          state: state
+        limit: 6
+        hasMore: true
+        totalCount: 1
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/PodsListDto"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        nextCursor:
+          nullable: true
+          type: string
+      required:
+      - data
+      - hasMore
+      - limit
+      - totalCount
       type: object
     PodsSearchCommand:
       additionalProperties: false
@@ -64943,6 +66340,90 @@ components:
     PurgeExpiredProjectsCommand:
       additionalProperties: false
       type: object
+    PvcListDto:
+      additionalProperties: false
+      example:
+        volume: volume
+        createdAt: createdAt
+        storageClass: storageClass
+        name: name
+        namespace: namespace
+        accessModes: accessModes
+        status: status
+        capacity: capacity
+      properties:
+        name:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        status:
+          nullable: true
+          type: string
+        volume:
+          nullable: true
+          type: string
+        capacity:
+          nullable: true
+          type: string
+        accessModes:
+          nullable: true
+          type: string
+        storageClass:
+          nullable: true
+          type: string
+        createdAt:
+          nullable: true
+          type: string
+      type: object
+    PvcListDtoCursorPaginatedResponse:
+      additionalProperties: false
+      example:
+        nextCursor: nextCursor
+        data:
+        - volume: volume
+          createdAt: createdAt
+          storageClass: storageClass
+          name: name
+          namespace: namespace
+          accessModes: accessModes
+          status: status
+          capacity: capacity
+        - volume: volume
+          createdAt: createdAt
+          storageClass: storageClass
+          name: name
+          namespace: namespace
+          accessModes: accessModes
+          status: status
+          capacity: capacity
+        limit: 0
+        hasMore: true
+        totalCount: 6
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/PvcListDto"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        nextCursor:
+          nullable: true
+          type: string
+      required:
+      - data
+      - hasMore
+      - limit
+      - totalCount
+      type: object
     PvcSearchCommand:
       additionalProperties: false
       example:
@@ -65653,6 +67134,66 @@ components:
         severity:
           nullable: true
           type: string
+      type: object
+    SecretListDto:
+      additionalProperties: false
+      example:
+        createdAt: createdAt
+        name: name
+        namespace: namespace
+        type: type
+      properties:
+        name:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        type:
+          nullable: true
+          type: string
+        createdAt:
+          nullable: true
+          type: string
+      type: object
+    SecretListDtoCursorPaginatedResponse:
+      additionalProperties: false
+      example:
+        nextCursor: nextCursor
+        data:
+        - createdAt: createdAt
+          name: name
+          namespace: namespace
+          type: type
+        - createdAt: createdAt
+          name: name
+          namespace: namespace
+          type: type
+        limit: 0
+        hasMore: true
+        totalCount: 6
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/SecretListDto"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        nextCursor:
+          nullable: true
+          type: string
+      required:
+      - data
+      - hasMore
+      - limit
+      - totalCount
       type: object
     SecretSearchCommand:
       additionalProperties: false
@@ -66826,6 +68367,78 @@ components:
         projectName:
           nullable: true
           type: string
+      type: object
+    ServiceListDto:
+      additionalProperties: false
+      example:
+        createdAt: createdAt
+        name: name
+        namespace: namespace
+        type: type
+        externalIp: externalIp
+        clusterIp: clusterIp
+      properties:
+        name:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        type:
+          nullable: true
+          type: string
+        clusterIp:
+          nullable: true
+          type: string
+        externalIp:
+          nullable: true
+          type: string
+        createdAt:
+          nullable: true
+          type: string
+      type: object
+    ServiceListDtoCursorPaginatedResponse:
+      additionalProperties: false
+      example:
+        nextCursor: nextCursor
+        data:
+        - createdAt: createdAt
+          name: name
+          namespace: namespace
+          type: type
+          externalIp: externalIp
+          clusterIp: clusterIp
+        - createdAt: createdAt
+          name: name
+          namespace: namespace
+          type: type
+          externalIp: externalIp
+          clusterIp: clusterIp
+        limit: 0
+        hasMore: true
+        totalCount: 6
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/ServiceListDto"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        nextCursor:
+          nullable: true
+          type: string
+      required:
+      - data
+      - hasMore
+      - limit
+      - totalCount
       type: object
     ServiceSearchCommand:
       additionalProperties: false
@@ -68313,6 +69926,86 @@ components:
         id:
           format: int32
           type: integer
+      type: object
+    StatefulSetListDto:
+      additionalProperties: false
+      example:
+        createdAt: createdAt
+        images:
+        - images
+        - images
+        ready: ready
+        name: name
+        namespace: namespace
+        state: state
+      properties:
+        state:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        ready:
+          nullable: true
+          type: string
+        createdAt:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        images:
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
+    StatefulSetListDtoCursorPaginatedResponse:
+      additionalProperties: false
+      example:
+        nextCursor: nextCursor
+        data:
+        - createdAt: createdAt
+          images:
+          - images
+          - images
+          ready: ready
+          name: name
+          namespace: namespace
+          state: state
+        - createdAt: createdAt
+          images:
+          - images
+          - images
+          ready: ready
+          name: name
+          namespace: namespace
+          state: state
+        limit: 0
+        hasMore: true
+        totalCount: 6
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/StatefulSetListDto"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        nextCursor:
+          nullable: true
+          type: string
+      required:
+      - data
+      - hasMore
+      - limit
+      - totalCount
       type: object
     Status:
       additionalProperties: false
