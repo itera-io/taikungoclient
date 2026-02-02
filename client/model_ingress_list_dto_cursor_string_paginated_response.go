@@ -17,26 +17,26 @@ import (
 	"fmt"
 )
 
-// checks if the NetworkPolicyListDtoCursorPaginatedResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &NetworkPolicyListDtoCursorPaginatedResponse{}
+// checks if the IngressListDtoCursorStringPaginatedResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IngressListDtoCursorStringPaginatedResponse{}
 
-// NetworkPolicyListDtoCursorPaginatedResponse struct for NetworkPolicyListDtoCursorPaginatedResponse
-type NetworkPolicyListDtoCursorPaginatedResponse struct {
-	Data []NetworkPolicyListDto `json:"data"`
+// IngressListDtoCursorStringPaginatedResponse struct for IngressListDtoCursorStringPaginatedResponse
+type IngressListDtoCursorStringPaginatedResponse struct {
+	Data []IngressListDto `json:"data"`
 	Limit int32 `json:"limit"`
 	HasMore bool `json:"hasMore"`
 	TotalCount int64 `json:"totalCount"`
 	NextCursor NullableString `json:"nextCursor,omitempty"`
 }
 
-type _NetworkPolicyListDtoCursorPaginatedResponse NetworkPolicyListDtoCursorPaginatedResponse
+type _IngressListDtoCursorStringPaginatedResponse IngressListDtoCursorStringPaginatedResponse
 
-// NewNetworkPolicyListDtoCursorPaginatedResponse instantiates a new NetworkPolicyListDtoCursorPaginatedResponse object
+// NewIngressListDtoCursorStringPaginatedResponse instantiates a new IngressListDtoCursorStringPaginatedResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNetworkPolicyListDtoCursorPaginatedResponse(data []NetworkPolicyListDto, limit int32, hasMore bool, totalCount int64) *NetworkPolicyListDtoCursorPaginatedResponse {
-	this := NetworkPolicyListDtoCursorPaginatedResponse{}
+func NewIngressListDtoCursorStringPaginatedResponse(data []IngressListDto, limit int32, hasMore bool, totalCount int64) *IngressListDtoCursorStringPaginatedResponse {
+	this := IngressListDtoCursorStringPaginatedResponse{}
 	this.Data = data
 	this.Limit = limit
 	this.HasMore = hasMore
@@ -44,19 +44,19 @@ func NewNetworkPolicyListDtoCursorPaginatedResponse(data []NetworkPolicyListDto,
 	return &this
 }
 
-// NewNetworkPolicyListDtoCursorPaginatedResponseWithDefaults instantiates a new NetworkPolicyListDtoCursorPaginatedResponse object
+// NewIngressListDtoCursorStringPaginatedResponseWithDefaults instantiates a new IngressListDtoCursorStringPaginatedResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewNetworkPolicyListDtoCursorPaginatedResponseWithDefaults() *NetworkPolicyListDtoCursorPaginatedResponse {
-	this := NetworkPolicyListDtoCursorPaginatedResponse{}
+func NewIngressListDtoCursorStringPaginatedResponseWithDefaults() *IngressListDtoCursorStringPaginatedResponse {
+	this := IngressListDtoCursorStringPaginatedResponse{}
 	return &this
 }
 
 // GetData returns the Data field value
-// If the value is explicit nil, the zero value for []NetworkPolicyListDto will be returned
-func (o *NetworkPolicyListDtoCursorPaginatedResponse) GetData() []NetworkPolicyListDto {
+// If the value is explicit nil, the zero value for []IngressListDto will be returned
+func (o *IngressListDtoCursorStringPaginatedResponse) GetData() []IngressListDto {
 	if o == nil {
-		var ret []NetworkPolicyListDto
+		var ret []IngressListDto
 		return ret
 	}
 
@@ -66,7 +66,7 @@ func (o *NetworkPolicyListDtoCursorPaginatedResponse) GetData() []NetworkPolicyL
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *NetworkPolicyListDtoCursorPaginatedResponse) GetDataOk() ([]NetworkPolicyListDto, bool) {
+func (o *IngressListDtoCursorStringPaginatedResponse) GetDataOk() ([]IngressListDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -74,12 +74,12 @@ func (o *NetworkPolicyListDtoCursorPaginatedResponse) GetDataOk() ([]NetworkPoli
 }
 
 // SetData sets field value
-func (o *NetworkPolicyListDtoCursorPaginatedResponse) SetData(v []NetworkPolicyListDto) {
+func (o *IngressListDtoCursorStringPaginatedResponse) SetData(v []IngressListDto) {
 	o.Data = v
 }
 
 // GetLimit returns the Limit field value
-func (o *NetworkPolicyListDtoCursorPaginatedResponse) GetLimit() int32 {
+func (o *IngressListDtoCursorStringPaginatedResponse) GetLimit() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -90,7 +90,7 @@ func (o *NetworkPolicyListDtoCursorPaginatedResponse) GetLimit() int32 {
 
 // GetLimitOk returns a tuple with the Limit field value
 // and a boolean to check if the value has been set.
-func (o *NetworkPolicyListDtoCursorPaginatedResponse) GetLimitOk() (*int32, bool) {
+func (o *IngressListDtoCursorStringPaginatedResponse) GetLimitOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -98,12 +98,12 @@ func (o *NetworkPolicyListDtoCursorPaginatedResponse) GetLimitOk() (*int32, bool
 }
 
 // SetLimit sets field value
-func (o *NetworkPolicyListDtoCursorPaginatedResponse) SetLimit(v int32) {
+func (o *IngressListDtoCursorStringPaginatedResponse) SetLimit(v int32) {
 	o.Limit = v
 }
 
 // GetHasMore returns the HasMore field value
-func (o *NetworkPolicyListDtoCursorPaginatedResponse) GetHasMore() bool {
+func (o *IngressListDtoCursorStringPaginatedResponse) GetHasMore() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -114,7 +114,7 @@ func (o *NetworkPolicyListDtoCursorPaginatedResponse) GetHasMore() bool {
 
 // GetHasMoreOk returns a tuple with the HasMore field value
 // and a boolean to check if the value has been set.
-func (o *NetworkPolicyListDtoCursorPaginatedResponse) GetHasMoreOk() (*bool, bool) {
+func (o *IngressListDtoCursorStringPaginatedResponse) GetHasMoreOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -122,12 +122,12 @@ func (o *NetworkPolicyListDtoCursorPaginatedResponse) GetHasMoreOk() (*bool, boo
 }
 
 // SetHasMore sets field value
-func (o *NetworkPolicyListDtoCursorPaginatedResponse) SetHasMore(v bool) {
+func (o *IngressListDtoCursorStringPaginatedResponse) SetHasMore(v bool) {
 	o.HasMore = v
 }
 
 // GetTotalCount returns the TotalCount field value
-func (o *NetworkPolicyListDtoCursorPaginatedResponse) GetTotalCount() int64 {
+func (o *IngressListDtoCursorStringPaginatedResponse) GetTotalCount() int64 {
 	if o == nil {
 		var ret int64
 		return ret
@@ -138,7 +138,7 @@ func (o *NetworkPolicyListDtoCursorPaginatedResponse) GetTotalCount() int64 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value
 // and a boolean to check if the value has been set.
-func (o *NetworkPolicyListDtoCursorPaginatedResponse) GetTotalCountOk() (*int64, bool) {
+func (o *IngressListDtoCursorStringPaginatedResponse) GetTotalCountOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -146,12 +146,12 @@ func (o *NetworkPolicyListDtoCursorPaginatedResponse) GetTotalCountOk() (*int64,
 }
 
 // SetTotalCount sets field value
-func (o *NetworkPolicyListDtoCursorPaginatedResponse) SetTotalCount(v int64) {
+func (o *IngressListDtoCursorStringPaginatedResponse) SetTotalCount(v int64) {
 	o.TotalCount = v
 }
 
 // GetNextCursor returns the NextCursor field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *NetworkPolicyListDtoCursorPaginatedResponse) GetNextCursor() string {
+func (o *IngressListDtoCursorStringPaginatedResponse) GetNextCursor() string {
 	if o == nil || IsNil(o.NextCursor.Get()) {
 		var ret string
 		return ret
@@ -162,7 +162,7 @@ func (o *NetworkPolicyListDtoCursorPaginatedResponse) GetNextCursor() string {
 // GetNextCursorOk returns a tuple with the NextCursor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *NetworkPolicyListDtoCursorPaginatedResponse) GetNextCursorOk() (*string, bool) {
+func (o *IngressListDtoCursorStringPaginatedResponse) GetNextCursorOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -170,7 +170,7 @@ func (o *NetworkPolicyListDtoCursorPaginatedResponse) GetNextCursorOk() (*string
 }
 
 // HasNextCursor returns a boolean if a field has been set.
-func (o *NetworkPolicyListDtoCursorPaginatedResponse) HasNextCursor() bool {
+func (o *IngressListDtoCursorStringPaginatedResponse) HasNextCursor() bool {
 	if o != nil && o.NextCursor.IsSet() {
 		return true
 	}
@@ -179,20 +179,20 @@ func (o *NetworkPolicyListDtoCursorPaginatedResponse) HasNextCursor() bool {
 }
 
 // SetNextCursor gets a reference to the given NullableString and assigns it to the NextCursor field.
-func (o *NetworkPolicyListDtoCursorPaginatedResponse) SetNextCursor(v string) {
+func (o *IngressListDtoCursorStringPaginatedResponse) SetNextCursor(v string) {
 	o.NextCursor.Set(&v)
 }
 // SetNextCursorNil sets the value for NextCursor to be an explicit nil
-func (o *NetworkPolicyListDtoCursorPaginatedResponse) SetNextCursorNil() {
+func (o *IngressListDtoCursorStringPaginatedResponse) SetNextCursorNil() {
 	o.NextCursor.Set(nil)
 }
 
 // UnsetNextCursor ensures that no value is present for NextCursor, not even an explicit nil
-func (o *NetworkPolicyListDtoCursorPaginatedResponse) UnsetNextCursor() {
+func (o *IngressListDtoCursorStringPaginatedResponse) UnsetNextCursor() {
 	o.NextCursor.Unset()
 }
 
-func (o NetworkPolicyListDtoCursorPaginatedResponse) MarshalJSON() ([]byte, error) {
+func (o IngressListDtoCursorStringPaginatedResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -200,7 +200,7 @@ func (o NetworkPolicyListDtoCursorPaginatedResponse) MarshalJSON() ([]byte, erro
 	return json.Marshal(toSerialize)
 }
 
-func (o NetworkPolicyListDtoCursorPaginatedResponse) ToMap() (map[string]interface{}, error) {
+func (o IngressListDtoCursorStringPaginatedResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
@@ -214,7 +214,7 @@ func (o NetworkPolicyListDtoCursorPaginatedResponse) ToMap() (map[string]interfa
 	return toSerialize, nil
 }
 
-func (o *NetworkPolicyListDtoCursorPaginatedResponse) UnmarshalJSON(data []byte) (err error) {
+func (o *IngressListDtoCursorStringPaginatedResponse) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -239,53 +239,53 @@ func (o *NetworkPolicyListDtoCursorPaginatedResponse) UnmarshalJSON(data []byte)
 		}
 	}
 
-	varNetworkPolicyListDtoCursorPaginatedResponse := _NetworkPolicyListDtoCursorPaginatedResponse{}
+	varIngressListDtoCursorStringPaginatedResponse := _IngressListDtoCursorStringPaginatedResponse{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varNetworkPolicyListDtoCursorPaginatedResponse)
+	err = decoder.Decode(&varIngressListDtoCursorStringPaginatedResponse)
 
 	if err != nil {
 		return err
 	}
 
-	*o = NetworkPolicyListDtoCursorPaginatedResponse(varNetworkPolicyListDtoCursorPaginatedResponse)
+	*o = IngressListDtoCursorStringPaginatedResponse(varIngressListDtoCursorStringPaginatedResponse)
 
 	return err
 }
 
-type NullableNetworkPolicyListDtoCursorPaginatedResponse struct {
-	value *NetworkPolicyListDtoCursorPaginatedResponse
+type NullableIngressListDtoCursorStringPaginatedResponse struct {
+	value *IngressListDtoCursorStringPaginatedResponse
 	isSet bool
 }
 
-func (v NullableNetworkPolicyListDtoCursorPaginatedResponse) Get() *NetworkPolicyListDtoCursorPaginatedResponse {
+func (v NullableIngressListDtoCursorStringPaginatedResponse) Get() *IngressListDtoCursorStringPaginatedResponse {
 	return v.value
 }
 
-func (v *NullableNetworkPolicyListDtoCursorPaginatedResponse) Set(val *NetworkPolicyListDtoCursorPaginatedResponse) {
+func (v *NullableIngressListDtoCursorStringPaginatedResponse) Set(val *IngressListDtoCursorStringPaginatedResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableNetworkPolicyListDtoCursorPaginatedResponse) IsSet() bool {
+func (v NullableIngressListDtoCursorStringPaginatedResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableNetworkPolicyListDtoCursorPaginatedResponse) Unset() {
+func (v *NullableIngressListDtoCursorStringPaginatedResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableNetworkPolicyListDtoCursorPaginatedResponse(val *NetworkPolicyListDtoCursorPaginatedResponse) *NullableNetworkPolicyListDtoCursorPaginatedResponse {
-	return &NullableNetworkPolicyListDtoCursorPaginatedResponse{value: val, isSet: true}
+func NewNullableIngressListDtoCursorStringPaginatedResponse(val *IngressListDtoCursorStringPaginatedResponse) *NullableIngressListDtoCursorStringPaginatedResponse {
+	return &NullableIngressListDtoCursorStringPaginatedResponse{value: val, isSet: true}
 }
 
-func (v NullableNetworkPolicyListDtoCursorPaginatedResponse) MarshalJSON() ([]byte, error) {
+func (v NullableIngressListDtoCursorStringPaginatedResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableNetworkPolicyListDtoCursorPaginatedResponse) UnmarshalJSON(src []byte) error {
+func (v *NullableIngressListDtoCursorStringPaginatedResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

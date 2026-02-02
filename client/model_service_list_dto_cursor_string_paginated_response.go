@@ -17,26 +17,26 @@ import (
 	"fmt"
 )
 
-// checks if the DeploymentListDtoCursorPaginatedResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DeploymentListDtoCursorPaginatedResponse{}
+// checks if the ServiceListDtoCursorStringPaginatedResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServiceListDtoCursorStringPaginatedResponse{}
 
-// DeploymentListDtoCursorPaginatedResponse struct for DeploymentListDtoCursorPaginatedResponse
-type DeploymentListDtoCursorPaginatedResponse struct {
-	Data []DeploymentListDto `json:"data"`
+// ServiceListDtoCursorStringPaginatedResponse struct for ServiceListDtoCursorStringPaginatedResponse
+type ServiceListDtoCursorStringPaginatedResponse struct {
+	Data []ServiceListDto `json:"data"`
 	Limit int32 `json:"limit"`
 	HasMore bool `json:"hasMore"`
 	TotalCount int64 `json:"totalCount"`
 	NextCursor NullableString `json:"nextCursor,omitempty"`
 }
 
-type _DeploymentListDtoCursorPaginatedResponse DeploymentListDtoCursorPaginatedResponse
+type _ServiceListDtoCursorStringPaginatedResponse ServiceListDtoCursorStringPaginatedResponse
 
-// NewDeploymentListDtoCursorPaginatedResponse instantiates a new DeploymentListDtoCursorPaginatedResponse object
+// NewServiceListDtoCursorStringPaginatedResponse instantiates a new ServiceListDtoCursorStringPaginatedResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeploymentListDtoCursorPaginatedResponse(data []DeploymentListDto, limit int32, hasMore bool, totalCount int64) *DeploymentListDtoCursorPaginatedResponse {
-	this := DeploymentListDtoCursorPaginatedResponse{}
+func NewServiceListDtoCursorStringPaginatedResponse(data []ServiceListDto, limit int32, hasMore bool, totalCount int64) *ServiceListDtoCursorStringPaginatedResponse {
+	this := ServiceListDtoCursorStringPaginatedResponse{}
 	this.Data = data
 	this.Limit = limit
 	this.HasMore = hasMore
@@ -44,19 +44,19 @@ func NewDeploymentListDtoCursorPaginatedResponse(data []DeploymentListDto, limit
 	return &this
 }
 
-// NewDeploymentListDtoCursorPaginatedResponseWithDefaults instantiates a new DeploymentListDtoCursorPaginatedResponse object
+// NewServiceListDtoCursorStringPaginatedResponseWithDefaults instantiates a new ServiceListDtoCursorStringPaginatedResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewDeploymentListDtoCursorPaginatedResponseWithDefaults() *DeploymentListDtoCursorPaginatedResponse {
-	this := DeploymentListDtoCursorPaginatedResponse{}
+func NewServiceListDtoCursorStringPaginatedResponseWithDefaults() *ServiceListDtoCursorStringPaginatedResponse {
+	this := ServiceListDtoCursorStringPaginatedResponse{}
 	return &this
 }
 
 // GetData returns the Data field value
-// If the value is explicit nil, the zero value for []DeploymentListDto will be returned
-func (o *DeploymentListDtoCursorPaginatedResponse) GetData() []DeploymentListDto {
+// If the value is explicit nil, the zero value for []ServiceListDto will be returned
+func (o *ServiceListDtoCursorStringPaginatedResponse) GetData() []ServiceListDto {
 	if o == nil {
-		var ret []DeploymentListDto
+		var ret []ServiceListDto
 		return ret
 	}
 
@@ -66,7 +66,7 @@ func (o *DeploymentListDtoCursorPaginatedResponse) GetData() []DeploymentListDto
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DeploymentListDtoCursorPaginatedResponse) GetDataOk() ([]DeploymentListDto, bool) {
+func (o *ServiceListDtoCursorStringPaginatedResponse) GetDataOk() ([]ServiceListDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -74,12 +74,12 @@ func (o *DeploymentListDtoCursorPaginatedResponse) GetDataOk() ([]DeploymentList
 }
 
 // SetData sets field value
-func (o *DeploymentListDtoCursorPaginatedResponse) SetData(v []DeploymentListDto) {
+func (o *ServiceListDtoCursorStringPaginatedResponse) SetData(v []ServiceListDto) {
 	o.Data = v
 }
 
 // GetLimit returns the Limit field value
-func (o *DeploymentListDtoCursorPaginatedResponse) GetLimit() int32 {
+func (o *ServiceListDtoCursorStringPaginatedResponse) GetLimit() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -90,7 +90,7 @@ func (o *DeploymentListDtoCursorPaginatedResponse) GetLimit() int32 {
 
 // GetLimitOk returns a tuple with the Limit field value
 // and a boolean to check if the value has been set.
-func (o *DeploymentListDtoCursorPaginatedResponse) GetLimitOk() (*int32, bool) {
+func (o *ServiceListDtoCursorStringPaginatedResponse) GetLimitOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -98,12 +98,12 @@ func (o *DeploymentListDtoCursorPaginatedResponse) GetLimitOk() (*int32, bool) {
 }
 
 // SetLimit sets field value
-func (o *DeploymentListDtoCursorPaginatedResponse) SetLimit(v int32) {
+func (o *ServiceListDtoCursorStringPaginatedResponse) SetLimit(v int32) {
 	o.Limit = v
 }
 
 // GetHasMore returns the HasMore field value
-func (o *DeploymentListDtoCursorPaginatedResponse) GetHasMore() bool {
+func (o *ServiceListDtoCursorStringPaginatedResponse) GetHasMore() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -114,7 +114,7 @@ func (o *DeploymentListDtoCursorPaginatedResponse) GetHasMore() bool {
 
 // GetHasMoreOk returns a tuple with the HasMore field value
 // and a boolean to check if the value has been set.
-func (o *DeploymentListDtoCursorPaginatedResponse) GetHasMoreOk() (*bool, bool) {
+func (o *ServiceListDtoCursorStringPaginatedResponse) GetHasMoreOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -122,12 +122,12 @@ func (o *DeploymentListDtoCursorPaginatedResponse) GetHasMoreOk() (*bool, bool) 
 }
 
 // SetHasMore sets field value
-func (o *DeploymentListDtoCursorPaginatedResponse) SetHasMore(v bool) {
+func (o *ServiceListDtoCursorStringPaginatedResponse) SetHasMore(v bool) {
 	o.HasMore = v
 }
 
 // GetTotalCount returns the TotalCount field value
-func (o *DeploymentListDtoCursorPaginatedResponse) GetTotalCount() int64 {
+func (o *ServiceListDtoCursorStringPaginatedResponse) GetTotalCount() int64 {
 	if o == nil {
 		var ret int64
 		return ret
@@ -138,7 +138,7 @@ func (o *DeploymentListDtoCursorPaginatedResponse) GetTotalCount() int64 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value
 // and a boolean to check if the value has been set.
-func (o *DeploymentListDtoCursorPaginatedResponse) GetTotalCountOk() (*int64, bool) {
+func (o *ServiceListDtoCursorStringPaginatedResponse) GetTotalCountOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -146,12 +146,12 @@ func (o *DeploymentListDtoCursorPaginatedResponse) GetTotalCountOk() (*int64, bo
 }
 
 // SetTotalCount sets field value
-func (o *DeploymentListDtoCursorPaginatedResponse) SetTotalCount(v int64) {
+func (o *ServiceListDtoCursorStringPaginatedResponse) SetTotalCount(v int64) {
 	o.TotalCount = v
 }
 
 // GetNextCursor returns the NextCursor field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *DeploymentListDtoCursorPaginatedResponse) GetNextCursor() string {
+func (o *ServiceListDtoCursorStringPaginatedResponse) GetNextCursor() string {
 	if o == nil || IsNil(o.NextCursor.Get()) {
 		var ret string
 		return ret
@@ -162,7 +162,7 @@ func (o *DeploymentListDtoCursorPaginatedResponse) GetNextCursor() string {
 // GetNextCursorOk returns a tuple with the NextCursor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DeploymentListDtoCursorPaginatedResponse) GetNextCursorOk() (*string, bool) {
+func (o *ServiceListDtoCursorStringPaginatedResponse) GetNextCursorOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -170,7 +170,7 @@ func (o *DeploymentListDtoCursorPaginatedResponse) GetNextCursorOk() (*string, b
 }
 
 // HasNextCursor returns a boolean if a field has been set.
-func (o *DeploymentListDtoCursorPaginatedResponse) HasNextCursor() bool {
+func (o *ServiceListDtoCursorStringPaginatedResponse) HasNextCursor() bool {
 	if o != nil && o.NextCursor.IsSet() {
 		return true
 	}
@@ -179,20 +179,20 @@ func (o *DeploymentListDtoCursorPaginatedResponse) HasNextCursor() bool {
 }
 
 // SetNextCursor gets a reference to the given NullableString and assigns it to the NextCursor field.
-func (o *DeploymentListDtoCursorPaginatedResponse) SetNextCursor(v string) {
+func (o *ServiceListDtoCursorStringPaginatedResponse) SetNextCursor(v string) {
 	o.NextCursor.Set(&v)
 }
 // SetNextCursorNil sets the value for NextCursor to be an explicit nil
-func (o *DeploymentListDtoCursorPaginatedResponse) SetNextCursorNil() {
+func (o *ServiceListDtoCursorStringPaginatedResponse) SetNextCursorNil() {
 	o.NextCursor.Set(nil)
 }
 
 // UnsetNextCursor ensures that no value is present for NextCursor, not even an explicit nil
-func (o *DeploymentListDtoCursorPaginatedResponse) UnsetNextCursor() {
+func (o *ServiceListDtoCursorStringPaginatedResponse) UnsetNextCursor() {
 	o.NextCursor.Unset()
 }
 
-func (o DeploymentListDtoCursorPaginatedResponse) MarshalJSON() ([]byte, error) {
+func (o ServiceListDtoCursorStringPaginatedResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -200,7 +200,7 @@ func (o DeploymentListDtoCursorPaginatedResponse) MarshalJSON() ([]byte, error) 
 	return json.Marshal(toSerialize)
 }
 
-func (o DeploymentListDtoCursorPaginatedResponse) ToMap() (map[string]interface{}, error) {
+func (o ServiceListDtoCursorStringPaginatedResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
@@ -214,7 +214,7 @@ func (o DeploymentListDtoCursorPaginatedResponse) ToMap() (map[string]interface{
 	return toSerialize, nil
 }
 
-func (o *DeploymentListDtoCursorPaginatedResponse) UnmarshalJSON(data []byte) (err error) {
+func (o *ServiceListDtoCursorStringPaginatedResponse) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -239,53 +239,53 @@ func (o *DeploymentListDtoCursorPaginatedResponse) UnmarshalJSON(data []byte) (e
 		}
 	}
 
-	varDeploymentListDtoCursorPaginatedResponse := _DeploymentListDtoCursorPaginatedResponse{}
+	varServiceListDtoCursorStringPaginatedResponse := _ServiceListDtoCursorStringPaginatedResponse{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeploymentListDtoCursorPaginatedResponse)
+	err = decoder.Decode(&varServiceListDtoCursorStringPaginatedResponse)
 
 	if err != nil {
 		return err
 	}
 
-	*o = DeploymentListDtoCursorPaginatedResponse(varDeploymentListDtoCursorPaginatedResponse)
+	*o = ServiceListDtoCursorStringPaginatedResponse(varServiceListDtoCursorStringPaginatedResponse)
 
 	return err
 }
 
-type NullableDeploymentListDtoCursorPaginatedResponse struct {
-	value *DeploymentListDtoCursorPaginatedResponse
+type NullableServiceListDtoCursorStringPaginatedResponse struct {
+	value *ServiceListDtoCursorStringPaginatedResponse
 	isSet bool
 }
 
-func (v NullableDeploymentListDtoCursorPaginatedResponse) Get() *DeploymentListDtoCursorPaginatedResponse {
+func (v NullableServiceListDtoCursorStringPaginatedResponse) Get() *ServiceListDtoCursorStringPaginatedResponse {
 	return v.value
 }
 
-func (v *NullableDeploymentListDtoCursorPaginatedResponse) Set(val *DeploymentListDtoCursorPaginatedResponse) {
+func (v *NullableServiceListDtoCursorStringPaginatedResponse) Set(val *ServiceListDtoCursorStringPaginatedResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableDeploymentListDtoCursorPaginatedResponse) IsSet() bool {
+func (v NullableServiceListDtoCursorStringPaginatedResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableDeploymentListDtoCursorPaginatedResponse) Unset() {
+func (v *NullableServiceListDtoCursorStringPaginatedResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableDeploymentListDtoCursorPaginatedResponse(val *DeploymentListDtoCursorPaginatedResponse) *NullableDeploymentListDtoCursorPaginatedResponse {
-	return &NullableDeploymentListDtoCursorPaginatedResponse{value: val, isSet: true}
+func NewNullableServiceListDtoCursorStringPaginatedResponse(val *ServiceListDtoCursorStringPaginatedResponse) *NullableServiceListDtoCursorStringPaginatedResponse {
+	return &NullableServiceListDtoCursorStringPaginatedResponse{value: val, isSet: true}
 }
 
-func (v NullableDeploymentListDtoCursorPaginatedResponse) MarshalJSON() ([]byte, error) {
+func (v NullableServiceListDtoCursorStringPaginatedResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableDeploymentListDtoCursorPaginatedResponse) UnmarshalJSON(src []byte) error {
+func (v *NullableServiceListDtoCursorStringPaginatedResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -840,7 +840,7 @@ func (r ApiKubernetesConfigmapListRequest) SearchTerm(searchTerm string) ApiKube
 	return r
 }
 
-func (r ApiKubernetesConfigmapListRequest) Execute() (*ConfigmapListDtoCursorPaginatedResponse, *http.Response, error) {
+func (r ApiKubernetesConfigmapListRequest) Execute() (*ConfigmapListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	return r.ApiService.KubernetesConfigmapListExecute(r)
 }
 
@@ -860,13 +860,13 @@ func (a *KubernetesAPIService) KubernetesConfigmapList(ctx context.Context, proj
 }
 
 // Execute executes the request
-//  @return ConfigmapListDtoCursorPaginatedResponse
-func (a *KubernetesAPIService) KubernetesConfigmapListExecute(r ApiKubernetesConfigmapListRequest) (*ConfigmapListDtoCursorPaginatedResponse, *http.Response, error) {
+//  @return ConfigmapListDtoCursorStringPaginatedResponse
+func (a *KubernetesAPIService) KubernetesConfigmapListExecute(r ApiKubernetesConfigmapListRequest) (*ConfigmapListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ConfigmapListDtoCursorPaginatedResponse
+		localVarReturnValue  *ConfigmapListDtoCursorStringPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesConfigmapList")
@@ -1581,7 +1581,7 @@ func (r ApiKubernetesDaemonsetListRequest) SearchTerm(searchTerm string) ApiKube
 	return r
 }
 
-func (r ApiKubernetesDaemonsetListRequest) Execute() (*DaemonsetListDtoCursorPaginatedResponse, *http.Response, error) {
+func (r ApiKubernetesDaemonsetListRequest) Execute() (*DaemonsetListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	return r.ApiService.KubernetesDaemonsetListExecute(r)
 }
 
@@ -1601,13 +1601,13 @@ func (a *KubernetesAPIService) KubernetesDaemonsetList(ctx context.Context, proj
 }
 
 // Execute executes the request
-//  @return DaemonsetListDtoCursorPaginatedResponse
-func (a *KubernetesAPIService) KubernetesDaemonsetListExecute(r ApiKubernetesDaemonsetListRequest) (*DaemonsetListDtoCursorPaginatedResponse, *http.Response, error) {
+//  @return DaemonsetListDtoCursorStringPaginatedResponse
+func (a *KubernetesAPIService) KubernetesDaemonsetListExecute(r ApiKubernetesDaemonsetListRequest) (*DaemonsetListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *DaemonsetListDtoCursorPaginatedResponse
+		localVarReturnValue  *DaemonsetListDtoCursorStringPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesDaemonsetList")
@@ -2329,7 +2329,7 @@ func (r ApiKubernetesDeploymentsListRequest) SearchTerm(searchTerm string) ApiKu
 	return r
 }
 
-func (r ApiKubernetesDeploymentsListRequest) Execute() (*DeploymentListDtoCursorPaginatedResponse, *http.Response, error) {
+func (r ApiKubernetesDeploymentsListRequest) Execute() (*DeploymentListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	return r.ApiService.KubernetesDeploymentsListExecute(r)
 }
 
@@ -2349,13 +2349,13 @@ func (a *KubernetesAPIService) KubernetesDeploymentsList(ctx context.Context, pr
 }
 
 // Execute executes the request
-//  @return DeploymentListDtoCursorPaginatedResponse
-func (a *KubernetesAPIService) KubernetesDeploymentsListExecute(r ApiKubernetesDeploymentsListRequest) (*DeploymentListDtoCursorPaginatedResponse, *http.Response, error) {
+//  @return DeploymentListDtoCursorStringPaginatedResponse
+func (a *KubernetesAPIService) KubernetesDeploymentsListExecute(r ApiKubernetesDeploymentsListRequest) (*DeploymentListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *DeploymentListDtoCursorPaginatedResponse
+		localVarReturnValue  *DeploymentListDtoCursorStringPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesDeploymentsList")
@@ -3863,7 +3863,7 @@ func (r ApiKubernetesIngressListRequest) SearchTerm(searchTerm string) ApiKubern
 	return r
 }
 
-func (r ApiKubernetesIngressListRequest) Execute() (*IngressListDtoCursorPaginatedResponse, *http.Response, error) {
+func (r ApiKubernetesIngressListRequest) Execute() (*IngressListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	return r.ApiService.KubernetesIngressListExecute(r)
 }
 
@@ -3883,13 +3883,13 @@ func (a *KubernetesAPIService) KubernetesIngressList(ctx context.Context, projec
 }
 
 // Execute executes the request
-//  @return IngressListDtoCursorPaginatedResponse
-func (a *KubernetesAPIService) KubernetesIngressListExecute(r ApiKubernetesIngressListRequest) (*IngressListDtoCursorPaginatedResponse, *http.Response, error) {
+//  @return IngressListDtoCursorStringPaginatedResponse
+func (a *KubernetesAPIService) KubernetesIngressListExecute(r ApiKubernetesIngressListRequest) (*IngressListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *IngressListDtoCursorPaginatedResponse
+		localVarReturnValue  *IngressListDtoCursorStringPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesIngressList")
@@ -4627,7 +4627,7 @@ func (r ApiKubernetesNetworkPolicyListRequest) SearchTerm(searchTerm string) Api
 	return r
 }
 
-func (r ApiKubernetesNetworkPolicyListRequest) Execute() (*NetworkPolicyListDtoCursorPaginatedResponse, *http.Response, error) {
+func (r ApiKubernetesNetworkPolicyListRequest) Execute() (*NetworkPolicyListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	return r.ApiService.KubernetesNetworkPolicyListExecute(r)
 }
 
@@ -4647,13 +4647,13 @@ func (a *KubernetesAPIService) KubernetesNetworkPolicyList(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return NetworkPolicyListDtoCursorPaginatedResponse
-func (a *KubernetesAPIService) KubernetesNetworkPolicyListExecute(r ApiKubernetesNetworkPolicyListRequest) (*NetworkPolicyListDtoCursorPaginatedResponse, *http.Response, error) {
+//  @return NetworkPolicyListDtoCursorStringPaginatedResponse
+func (a *KubernetesAPIService) KubernetesNetworkPolicyListExecute(r ApiKubernetesNetworkPolicyListRequest) (*NetworkPolicyListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *NetworkPolicyListDtoCursorPaginatedResponse
+		localVarReturnValue  *NetworkPolicyListDtoCursorStringPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesNetworkPolicyList")
@@ -5011,7 +5011,7 @@ func (r ApiKubernetesNodeListRequest) SearchTerm(searchTerm string) ApiKubernete
 	return r
 }
 
-func (r ApiKubernetesNodeListRequest) Execute() (*NodeListDtoCursorPaginatedResponse, *http.Response, error) {
+func (r ApiKubernetesNodeListRequest) Execute() (*NodeListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	return r.ApiService.KubernetesNodeListExecute(r)
 }
 
@@ -5031,13 +5031,13 @@ func (a *KubernetesAPIService) KubernetesNodeList(ctx context.Context, projectId
 }
 
 // Execute executes the request
-//  @return NodeListDtoCursorPaginatedResponse
-func (a *KubernetesAPIService) KubernetesNodeListExecute(r ApiKubernetesNodeListRequest) (*NodeListDtoCursorPaginatedResponse, *http.Response, error) {
+//  @return NodeListDtoCursorStringPaginatedResponse
+func (a *KubernetesAPIService) KubernetesNodeListExecute(r ApiKubernetesNodeListRequest) (*NodeListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *NodeListDtoCursorPaginatedResponse
+		localVarReturnValue  *NodeListDtoCursorStringPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesNodeList")
@@ -5764,7 +5764,7 @@ func (r ApiKubernetesPodsListRequest) SearchTerm(searchTerm string) ApiKubernete
 	return r
 }
 
-func (r ApiKubernetesPodsListRequest) Execute() (*PodsListDtoCursorPaginatedResponse, *http.Response, error) {
+func (r ApiKubernetesPodsListRequest) Execute() (*PodsListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	return r.ApiService.KubernetesPodsListExecute(r)
 }
 
@@ -5784,13 +5784,13 @@ func (a *KubernetesAPIService) KubernetesPodsList(ctx context.Context, projectId
 }
 
 // Execute executes the request
-//  @return PodsListDtoCursorPaginatedResponse
-func (a *KubernetesAPIService) KubernetesPodsListExecute(r ApiKubernetesPodsListRequest) (*PodsListDtoCursorPaginatedResponse, *http.Response, error) {
+//  @return PodsListDtoCursorStringPaginatedResponse
+func (a *KubernetesAPIService) KubernetesPodsListExecute(r ApiKubernetesPodsListRequest) (*PodsListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *PodsListDtoCursorPaginatedResponse
+		localVarReturnValue  *PodsListDtoCursorStringPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesPodsList")
@@ -5975,7 +5975,7 @@ func (r ApiKubernetesPvcListRequest) SearchTerm(searchTerm string) ApiKubernetes
 	return r
 }
 
-func (r ApiKubernetesPvcListRequest) Execute() (*PvcListDtoCursorPaginatedResponse, *http.Response, error) {
+func (r ApiKubernetesPvcListRequest) Execute() (*PvcListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	return r.ApiService.KubernetesPvcListExecute(r)
 }
 
@@ -5995,13 +5995,13 @@ func (a *KubernetesAPIService) KubernetesPvcList(ctx context.Context, projectId 
 }
 
 // Execute executes the request
-//  @return PvcListDtoCursorPaginatedResponse
-func (a *KubernetesAPIService) KubernetesPvcListExecute(r ApiKubernetesPvcListRequest) (*PvcListDtoCursorPaginatedResponse, *http.Response, error) {
+//  @return PvcListDtoCursorStringPaginatedResponse
+func (a *KubernetesAPIService) KubernetesPvcListExecute(r ApiKubernetesPvcListRequest) (*PvcListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *PvcListDtoCursorPaginatedResponse
+		localVarReturnValue  *PvcListDtoCursorStringPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesPvcList")
@@ -6719,7 +6719,7 @@ func (r ApiKubernetesSecretListRequest) SearchTerm(searchTerm string) ApiKuberne
 	return r
 }
 
-func (r ApiKubernetesSecretListRequest) Execute() (*SecretListDtoCursorPaginatedResponse, *http.Response, error) {
+func (r ApiKubernetesSecretListRequest) Execute() (*SecretListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	return r.ApiService.KubernetesSecretListExecute(r)
 }
 
@@ -6739,13 +6739,13 @@ func (a *KubernetesAPIService) KubernetesSecretList(ctx context.Context, project
 }
 
 // Execute executes the request
-//  @return SecretListDtoCursorPaginatedResponse
-func (a *KubernetesAPIService) KubernetesSecretListExecute(r ApiKubernetesSecretListRequest) (*SecretListDtoCursorPaginatedResponse, *http.Response, error) {
+//  @return SecretListDtoCursorStringPaginatedResponse
+func (a *KubernetesAPIService) KubernetesSecretListExecute(r ApiKubernetesSecretListRequest) (*SecretListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SecretListDtoCursorPaginatedResponse
+		localVarReturnValue  *SecretListDtoCursorStringPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesSecretList")
@@ -6930,7 +6930,7 @@ func (r ApiKubernetesServicesListRequest) SearchTerm(searchTerm string) ApiKuber
 	return r
 }
 
-func (r ApiKubernetesServicesListRequest) Execute() (*ServiceListDtoCursorPaginatedResponse, *http.Response, error) {
+func (r ApiKubernetesServicesListRequest) Execute() (*ServiceListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	return r.ApiService.KubernetesServicesListExecute(r)
 }
 
@@ -6950,13 +6950,13 @@ func (a *KubernetesAPIService) KubernetesServicesList(ctx context.Context, proje
 }
 
 // Execute executes the request
-//  @return ServiceListDtoCursorPaginatedResponse
-func (a *KubernetesAPIService) KubernetesServicesListExecute(r ApiKubernetesServicesListRequest) (*ServiceListDtoCursorPaginatedResponse, *http.Response, error) {
+//  @return ServiceListDtoCursorStringPaginatedResponse
+func (a *KubernetesAPIService) KubernetesServicesListExecute(r ApiKubernetesServicesListRequest) (*ServiceListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ServiceListDtoCursorPaginatedResponse
+		localVarReturnValue  *ServiceListDtoCursorStringPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesServicesList")
@@ -7487,7 +7487,7 @@ func (r ApiKubernetesStsListRequest) SearchTerm(searchTerm string) ApiKubernetes
 	return r
 }
 
-func (r ApiKubernetesStsListRequest) Execute() (*StatefulSetListDtoCursorPaginatedResponse, *http.Response, error) {
+func (r ApiKubernetesStsListRequest) Execute() (*StatefulSetListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	return r.ApiService.KubernetesStsListExecute(r)
 }
 
@@ -7507,13 +7507,13 @@ func (a *KubernetesAPIService) KubernetesStsList(ctx context.Context, projectId 
 }
 
 // Execute executes the request
-//  @return StatefulSetListDtoCursorPaginatedResponse
-func (a *KubernetesAPIService) KubernetesStsListExecute(r ApiKubernetesStsListRequest) (*StatefulSetListDtoCursorPaginatedResponse, *http.Response, error) {
+//  @return StatefulSetListDtoCursorStringPaginatedResponse
+func (a *KubernetesAPIService) KubernetesStsListExecute(r ApiKubernetesStsListRequest) (*StatefulSetListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *StatefulSetListDtoCursorPaginatedResponse
+		localVarReturnValue  *StatefulSetListDtoCursorStringPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesStsList")

@@ -17,26 +17,26 @@ import (
 	"fmt"
 )
 
-// checks if the StatefulSetListDtoCursorPaginatedResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &StatefulSetListDtoCursorPaginatedResponse{}
+// checks if the PodsListDtoCursorStringPaginatedResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PodsListDtoCursorStringPaginatedResponse{}
 
-// StatefulSetListDtoCursorPaginatedResponse struct for StatefulSetListDtoCursorPaginatedResponse
-type StatefulSetListDtoCursorPaginatedResponse struct {
-	Data []StatefulSetListDto `json:"data"`
+// PodsListDtoCursorStringPaginatedResponse struct for PodsListDtoCursorStringPaginatedResponse
+type PodsListDtoCursorStringPaginatedResponse struct {
+	Data []PodsListDto `json:"data"`
 	Limit int32 `json:"limit"`
 	HasMore bool `json:"hasMore"`
 	TotalCount int64 `json:"totalCount"`
 	NextCursor NullableString `json:"nextCursor,omitempty"`
 }
 
-type _StatefulSetListDtoCursorPaginatedResponse StatefulSetListDtoCursorPaginatedResponse
+type _PodsListDtoCursorStringPaginatedResponse PodsListDtoCursorStringPaginatedResponse
 
-// NewStatefulSetListDtoCursorPaginatedResponse instantiates a new StatefulSetListDtoCursorPaginatedResponse object
+// NewPodsListDtoCursorStringPaginatedResponse instantiates a new PodsListDtoCursorStringPaginatedResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStatefulSetListDtoCursorPaginatedResponse(data []StatefulSetListDto, limit int32, hasMore bool, totalCount int64) *StatefulSetListDtoCursorPaginatedResponse {
-	this := StatefulSetListDtoCursorPaginatedResponse{}
+func NewPodsListDtoCursorStringPaginatedResponse(data []PodsListDto, limit int32, hasMore bool, totalCount int64) *PodsListDtoCursorStringPaginatedResponse {
+	this := PodsListDtoCursorStringPaginatedResponse{}
 	this.Data = data
 	this.Limit = limit
 	this.HasMore = hasMore
@@ -44,19 +44,19 @@ func NewStatefulSetListDtoCursorPaginatedResponse(data []StatefulSetListDto, lim
 	return &this
 }
 
-// NewStatefulSetListDtoCursorPaginatedResponseWithDefaults instantiates a new StatefulSetListDtoCursorPaginatedResponse object
+// NewPodsListDtoCursorStringPaginatedResponseWithDefaults instantiates a new PodsListDtoCursorStringPaginatedResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewStatefulSetListDtoCursorPaginatedResponseWithDefaults() *StatefulSetListDtoCursorPaginatedResponse {
-	this := StatefulSetListDtoCursorPaginatedResponse{}
+func NewPodsListDtoCursorStringPaginatedResponseWithDefaults() *PodsListDtoCursorStringPaginatedResponse {
+	this := PodsListDtoCursorStringPaginatedResponse{}
 	return &this
 }
 
 // GetData returns the Data field value
-// If the value is explicit nil, the zero value for []StatefulSetListDto will be returned
-func (o *StatefulSetListDtoCursorPaginatedResponse) GetData() []StatefulSetListDto {
+// If the value is explicit nil, the zero value for []PodsListDto will be returned
+func (o *PodsListDtoCursorStringPaginatedResponse) GetData() []PodsListDto {
 	if o == nil {
-		var ret []StatefulSetListDto
+		var ret []PodsListDto
 		return ret
 	}
 
@@ -66,7 +66,7 @@ func (o *StatefulSetListDtoCursorPaginatedResponse) GetData() []StatefulSetListD
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StatefulSetListDtoCursorPaginatedResponse) GetDataOk() ([]StatefulSetListDto, bool) {
+func (o *PodsListDtoCursorStringPaginatedResponse) GetDataOk() ([]PodsListDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -74,12 +74,12 @@ func (o *StatefulSetListDtoCursorPaginatedResponse) GetDataOk() ([]StatefulSetLi
 }
 
 // SetData sets field value
-func (o *StatefulSetListDtoCursorPaginatedResponse) SetData(v []StatefulSetListDto) {
+func (o *PodsListDtoCursorStringPaginatedResponse) SetData(v []PodsListDto) {
 	o.Data = v
 }
 
 // GetLimit returns the Limit field value
-func (o *StatefulSetListDtoCursorPaginatedResponse) GetLimit() int32 {
+func (o *PodsListDtoCursorStringPaginatedResponse) GetLimit() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -90,7 +90,7 @@ func (o *StatefulSetListDtoCursorPaginatedResponse) GetLimit() int32 {
 
 // GetLimitOk returns a tuple with the Limit field value
 // and a boolean to check if the value has been set.
-func (o *StatefulSetListDtoCursorPaginatedResponse) GetLimitOk() (*int32, bool) {
+func (o *PodsListDtoCursorStringPaginatedResponse) GetLimitOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -98,12 +98,12 @@ func (o *StatefulSetListDtoCursorPaginatedResponse) GetLimitOk() (*int32, bool) 
 }
 
 // SetLimit sets field value
-func (o *StatefulSetListDtoCursorPaginatedResponse) SetLimit(v int32) {
+func (o *PodsListDtoCursorStringPaginatedResponse) SetLimit(v int32) {
 	o.Limit = v
 }
 
 // GetHasMore returns the HasMore field value
-func (o *StatefulSetListDtoCursorPaginatedResponse) GetHasMore() bool {
+func (o *PodsListDtoCursorStringPaginatedResponse) GetHasMore() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -114,7 +114,7 @@ func (o *StatefulSetListDtoCursorPaginatedResponse) GetHasMore() bool {
 
 // GetHasMoreOk returns a tuple with the HasMore field value
 // and a boolean to check if the value has been set.
-func (o *StatefulSetListDtoCursorPaginatedResponse) GetHasMoreOk() (*bool, bool) {
+func (o *PodsListDtoCursorStringPaginatedResponse) GetHasMoreOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -122,12 +122,12 @@ func (o *StatefulSetListDtoCursorPaginatedResponse) GetHasMoreOk() (*bool, bool)
 }
 
 // SetHasMore sets field value
-func (o *StatefulSetListDtoCursorPaginatedResponse) SetHasMore(v bool) {
+func (o *PodsListDtoCursorStringPaginatedResponse) SetHasMore(v bool) {
 	o.HasMore = v
 }
 
 // GetTotalCount returns the TotalCount field value
-func (o *StatefulSetListDtoCursorPaginatedResponse) GetTotalCount() int64 {
+func (o *PodsListDtoCursorStringPaginatedResponse) GetTotalCount() int64 {
 	if o == nil {
 		var ret int64
 		return ret
@@ -138,7 +138,7 @@ func (o *StatefulSetListDtoCursorPaginatedResponse) GetTotalCount() int64 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value
 // and a boolean to check if the value has been set.
-func (o *StatefulSetListDtoCursorPaginatedResponse) GetTotalCountOk() (*int64, bool) {
+func (o *PodsListDtoCursorStringPaginatedResponse) GetTotalCountOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -146,12 +146,12 @@ func (o *StatefulSetListDtoCursorPaginatedResponse) GetTotalCountOk() (*int64, b
 }
 
 // SetTotalCount sets field value
-func (o *StatefulSetListDtoCursorPaginatedResponse) SetTotalCount(v int64) {
+func (o *PodsListDtoCursorStringPaginatedResponse) SetTotalCount(v int64) {
 	o.TotalCount = v
 }
 
 // GetNextCursor returns the NextCursor field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *StatefulSetListDtoCursorPaginatedResponse) GetNextCursor() string {
+func (o *PodsListDtoCursorStringPaginatedResponse) GetNextCursor() string {
 	if o == nil || IsNil(o.NextCursor.Get()) {
 		var ret string
 		return ret
@@ -162,7 +162,7 @@ func (o *StatefulSetListDtoCursorPaginatedResponse) GetNextCursor() string {
 // GetNextCursorOk returns a tuple with the NextCursor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StatefulSetListDtoCursorPaginatedResponse) GetNextCursorOk() (*string, bool) {
+func (o *PodsListDtoCursorStringPaginatedResponse) GetNextCursorOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -170,7 +170,7 @@ func (o *StatefulSetListDtoCursorPaginatedResponse) GetNextCursorOk() (*string, 
 }
 
 // HasNextCursor returns a boolean if a field has been set.
-func (o *StatefulSetListDtoCursorPaginatedResponse) HasNextCursor() bool {
+func (o *PodsListDtoCursorStringPaginatedResponse) HasNextCursor() bool {
 	if o != nil && o.NextCursor.IsSet() {
 		return true
 	}
@@ -179,20 +179,20 @@ func (o *StatefulSetListDtoCursorPaginatedResponse) HasNextCursor() bool {
 }
 
 // SetNextCursor gets a reference to the given NullableString and assigns it to the NextCursor field.
-func (o *StatefulSetListDtoCursorPaginatedResponse) SetNextCursor(v string) {
+func (o *PodsListDtoCursorStringPaginatedResponse) SetNextCursor(v string) {
 	o.NextCursor.Set(&v)
 }
 // SetNextCursorNil sets the value for NextCursor to be an explicit nil
-func (o *StatefulSetListDtoCursorPaginatedResponse) SetNextCursorNil() {
+func (o *PodsListDtoCursorStringPaginatedResponse) SetNextCursorNil() {
 	o.NextCursor.Set(nil)
 }
 
 // UnsetNextCursor ensures that no value is present for NextCursor, not even an explicit nil
-func (o *StatefulSetListDtoCursorPaginatedResponse) UnsetNextCursor() {
+func (o *PodsListDtoCursorStringPaginatedResponse) UnsetNextCursor() {
 	o.NextCursor.Unset()
 }
 
-func (o StatefulSetListDtoCursorPaginatedResponse) MarshalJSON() ([]byte, error) {
+func (o PodsListDtoCursorStringPaginatedResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -200,7 +200,7 @@ func (o StatefulSetListDtoCursorPaginatedResponse) MarshalJSON() ([]byte, error)
 	return json.Marshal(toSerialize)
 }
 
-func (o StatefulSetListDtoCursorPaginatedResponse) ToMap() (map[string]interface{}, error) {
+func (o PodsListDtoCursorStringPaginatedResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
@@ -214,7 +214,7 @@ func (o StatefulSetListDtoCursorPaginatedResponse) ToMap() (map[string]interface
 	return toSerialize, nil
 }
 
-func (o *StatefulSetListDtoCursorPaginatedResponse) UnmarshalJSON(data []byte) (err error) {
+func (o *PodsListDtoCursorStringPaginatedResponse) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -239,53 +239,53 @@ func (o *StatefulSetListDtoCursorPaginatedResponse) UnmarshalJSON(data []byte) (
 		}
 	}
 
-	varStatefulSetListDtoCursorPaginatedResponse := _StatefulSetListDtoCursorPaginatedResponse{}
+	varPodsListDtoCursorStringPaginatedResponse := _PodsListDtoCursorStringPaginatedResponse{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStatefulSetListDtoCursorPaginatedResponse)
+	err = decoder.Decode(&varPodsListDtoCursorStringPaginatedResponse)
 
 	if err != nil {
 		return err
 	}
 
-	*o = StatefulSetListDtoCursorPaginatedResponse(varStatefulSetListDtoCursorPaginatedResponse)
+	*o = PodsListDtoCursorStringPaginatedResponse(varPodsListDtoCursorStringPaginatedResponse)
 
 	return err
 }
 
-type NullableStatefulSetListDtoCursorPaginatedResponse struct {
-	value *StatefulSetListDtoCursorPaginatedResponse
+type NullablePodsListDtoCursorStringPaginatedResponse struct {
+	value *PodsListDtoCursorStringPaginatedResponse
 	isSet bool
 }
 
-func (v NullableStatefulSetListDtoCursorPaginatedResponse) Get() *StatefulSetListDtoCursorPaginatedResponse {
+func (v NullablePodsListDtoCursorStringPaginatedResponse) Get() *PodsListDtoCursorStringPaginatedResponse {
 	return v.value
 }
 
-func (v *NullableStatefulSetListDtoCursorPaginatedResponse) Set(val *StatefulSetListDtoCursorPaginatedResponse) {
+func (v *NullablePodsListDtoCursorStringPaginatedResponse) Set(val *PodsListDtoCursorStringPaginatedResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableStatefulSetListDtoCursorPaginatedResponse) IsSet() bool {
+func (v NullablePodsListDtoCursorStringPaginatedResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableStatefulSetListDtoCursorPaginatedResponse) Unset() {
+func (v *NullablePodsListDtoCursorStringPaginatedResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableStatefulSetListDtoCursorPaginatedResponse(val *StatefulSetListDtoCursorPaginatedResponse) *NullableStatefulSetListDtoCursorPaginatedResponse {
-	return &NullableStatefulSetListDtoCursorPaginatedResponse{value: val, isSet: true}
+func NewNullablePodsListDtoCursorStringPaginatedResponse(val *PodsListDtoCursorStringPaginatedResponse) *NullablePodsListDtoCursorStringPaginatedResponse {
+	return &NullablePodsListDtoCursorStringPaginatedResponse{value: val, isSet: true}
 }
 
-func (v NullableStatefulSetListDtoCursorPaginatedResponse) MarshalJSON() ([]byte, error) {
+func (v NullablePodsListDtoCursorStringPaginatedResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableStatefulSetListDtoCursorPaginatedResponse) UnmarshalJSON(src []byte) error {
+func (v *NullablePodsListDtoCursorStringPaginatedResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

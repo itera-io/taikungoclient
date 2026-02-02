@@ -17,26 +17,26 @@ import (
 	"fmt"
 )
 
-// checks if the PodsListDtoCursorPaginatedResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PodsListDtoCursorPaginatedResponse{}
+// checks if the SecretListDtoCursorStringPaginatedResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SecretListDtoCursorStringPaginatedResponse{}
 
-// PodsListDtoCursorPaginatedResponse struct for PodsListDtoCursorPaginatedResponse
-type PodsListDtoCursorPaginatedResponse struct {
-	Data []PodsListDto `json:"data"`
+// SecretListDtoCursorStringPaginatedResponse struct for SecretListDtoCursorStringPaginatedResponse
+type SecretListDtoCursorStringPaginatedResponse struct {
+	Data []SecretListDto `json:"data"`
 	Limit int32 `json:"limit"`
 	HasMore bool `json:"hasMore"`
 	TotalCount int64 `json:"totalCount"`
 	NextCursor NullableString `json:"nextCursor,omitempty"`
 }
 
-type _PodsListDtoCursorPaginatedResponse PodsListDtoCursorPaginatedResponse
+type _SecretListDtoCursorStringPaginatedResponse SecretListDtoCursorStringPaginatedResponse
 
-// NewPodsListDtoCursorPaginatedResponse instantiates a new PodsListDtoCursorPaginatedResponse object
+// NewSecretListDtoCursorStringPaginatedResponse instantiates a new SecretListDtoCursorStringPaginatedResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPodsListDtoCursorPaginatedResponse(data []PodsListDto, limit int32, hasMore bool, totalCount int64) *PodsListDtoCursorPaginatedResponse {
-	this := PodsListDtoCursorPaginatedResponse{}
+func NewSecretListDtoCursorStringPaginatedResponse(data []SecretListDto, limit int32, hasMore bool, totalCount int64) *SecretListDtoCursorStringPaginatedResponse {
+	this := SecretListDtoCursorStringPaginatedResponse{}
 	this.Data = data
 	this.Limit = limit
 	this.HasMore = hasMore
@@ -44,19 +44,19 @@ func NewPodsListDtoCursorPaginatedResponse(data []PodsListDto, limit int32, hasM
 	return &this
 }
 
-// NewPodsListDtoCursorPaginatedResponseWithDefaults instantiates a new PodsListDtoCursorPaginatedResponse object
+// NewSecretListDtoCursorStringPaginatedResponseWithDefaults instantiates a new SecretListDtoCursorStringPaginatedResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPodsListDtoCursorPaginatedResponseWithDefaults() *PodsListDtoCursorPaginatedResponse {
-	this := PodsListDtoCursorPaginatedResponse{}
+func NewSecretListDtoCursorStringPaginatedResponseWithDefaults() *SecretListDtoCursorStringPaginatedResponse {
+	this := SecretListDtoCursorStringPaginatedResponse{}
 	return &this
 }
 
 // GetData returns the Data field value
-// If the value is explicit nil, the zero value for []PodsListDto will be returned
-func (o *PodsListDtoCursorPaginatedResponse) GetData() []PodsListDto {
+// If the value is explicit nil, the zero value for []SecretListDto will be returned
+func (o *SecretListDtoCursorStringPaginatedResponse) GetData() []SecretListDto {
 	if o == nil {
-		var ret []PodsListDto
+		var ret []SecretListDto
 		return ret
 	}
 
@@ -66,7 +66,7 @@ func (o *PodsListDtoCursorPaginatedResponse) GetData() []PodsListDto {
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PodsListDtoCursorPaginatedResponse) GetDataOk() ([]PodsListDto, bool) {
+func (o *SecretListDtoCursorStringPaginatedResponse) GetDataOk() ([]SecretListDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -74,12 +74,12 @@ func (o *PodsListDtoCursorPaginatedResponse) GetDataOk() ([]PodsListDto, bool) {
 }
 
 // SetData sets field value
-func (o *PodsListDtoCursorPaginatedResponse) SetData(v []PodsListDto) {
+func (o *SecretListDtoCursorStringPaginatedResponse) SetData(v []SecretListDto) {
 	o.Data = v
 }
 
 // GetLimit returns the Limit field value
-func (o *PodsListDtoCursorPaginatedResponse) GetLimit() int32 {
+func (o *SecretListDtoCursorStringPaginatedResponse) GetLimit() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -90,7 +90,7 @@ func (o *PodsListDtoCursorPaginatedResponse) GetLimit() int32 {
 
 // GetLimitOk returns a tuple with the Limit field value
 // and a boolean to check if the value has been set.
-func (o *PodsListDtoCursorPaginatedResponse) GetLimitOk() (*int32, bool) {
+func (o *SecretListDtoCursorStringPaginatedResponse) GetLimitOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -98,12 +98,12 @@ func (o *PodsListDtoCursorPaginatedResponse) GetLimitOk() (*int32, bool) {
 }
 
 // SetLimit sets field value
-func (o *PodsListDtoCursorPaginatedResponse) SetLimit(v int32) {
+func (o *SecretListDtoCursorStringPaginatedResponse) SetLimit(v int32) {
 	o.Limit = v
 }
 
 // GetHasMore returns the HasMore field value
-func (o *PodsListDtoCursorPaginatedResponse) GetHasMore() bool {
+func (o *SecretListDtoCursorStringPaginatedResponse) GetHasMore() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -114,7 +114,7 @@ func (o *PodsListDtoCursorPaginatedResponse) GetHasMore() bool {
 
 // GetHasMoreOk returns a tuple with the HasMore field value
 // and a boolean to check if the value has been set.
-func (o *PodsListDtoCursorPaginatedResponse) GetHasMoreOk() (*bool, bool) {
+func (o *SecretListDtoCursorStringPaginatedResponse) GetHasMoreOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -122,12 +122,12 @@ func (o *PodsListDtoCursorPaginatedResponse) GetHasMoreOk() (*bool, bool) {
 }
 
 // SetHasMore sets field value
-func (o *PodsListDtoCursorPaginatedResponse) SetHasMore(v bool) {
+func (o *SecretListDtoCursorStringPaginatedResponse) SetHasMore(v bool) {
 	o.HasMore = v
 }
 
 // GetTotalCount returns the TotalCount field value
-func (o *PodsListDtoCursorPaginatedResponse) GetTotalCount() int64 {
+func (o *SecretListDtoCursorStringPaginatedResponse) GetTotalCount() int64 {
 	if o == nil {
 		var ret int64
 		return ret
@@ -138,7 +138,7 @@ func (o *PodsListDtoCursorPaginatedResponse) GetTotalCount() int64 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value
 // and a boolean to check if the value has been set.
-func (o *PodsListDtoCursorPaginatedResponse) GetTotalCountOk() (*int64, bool) {
+func (o *SecretListDtoCursorStringPaginatedResponse) GetTotalCountOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -146,12 +146,12 @@ func (o *PodsListDtoCursorPaginatedResponse) GetTotalCountOk() (*int64, bool) {
 }
 
 // SetTotalCount sets field value
-func (o *PodsListDtoCursorPaginatedResponse) SetTotalCount(v int64) {
+func (o *SecretListDtoCursorStringPaginatedResponse) SetTotalCount(v int64) {
 	o.TotalCount = v
 }
 
 // GetNextCursor returns the NextCursor field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PodsListDtoCursorPaginatedResponse) GetNextCursor() string {
+func (o *SecretListDtoCursorStringPaginatedResponse) GetNextCursor() string {
 	if o == nil || IsNil(o.NextCursor.Get()) {
 		var ret string
 		return ret
@@ -162,7 +162,7 @@ func (o *PodsListDtoCursorPaginatedResponse) GetNextCursor() string {
 // GetNextCursorOk returns a tuple with the NextCursor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PodsListDtoCursorPaginatedResponse) GetNextCursorOk() (*string, bool) {
+func (o *SecretListDtoCursorStringPaginatedResponse) GetNextCursorOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -170,7 +170,7 @@ func (o *PodsListDtoCursorPaginatedResponse) GetNextCursorOk() (*string, bool) {
 }
 
 // HasNextCursor returns a boolean if a field has been set.
-func (o *PodsListDtoCursorPaginatedResponse) HasNextCursor() bool {
+func (o *SecretListDtoCursorStringPaginatedResponse) HasNextCursor() bool {
 	if o != nil && o.NextCursor.IsSet() {
 		return true
 	}
@@ -179,20 +179,20 @@ func (o *PodsListDtoCursorPaginatedResponse) HasNextCursor() bool {
 }
 
 // SetNextCursor gets a reference to the given NullableString and assigns it to the NextCursor field.
-func (o *PodsListDtoCursorPaginatedResponse) SetNextCursor(v string) {
+func (o *SecretListDtoCursorStringPaginatedResponse) SetNextCursor(v string) {
 	o.NextCursor.Set(&v)
 }
 // SetNextCursorNil sets the value for NextCursor to be an explicit nil
-func (o *PodsListDtoCursorPaginatedResponse) SetNextCursorNil() {
+func (o *SecretListDtoCursorStringPaginatedResponse) SetNextCursorNil() {
 	o.NextCursor.Set(nil)
 }
 
 // UnsetNextCursor ensures that no value is present for NextCursor, not even an explicit nil
-func (o *PodsListDtoCursorPaginatedResponse) UnsetNextCursor() {
+func (o *SecretListDtoCursorStringPaginatedResponse) UnsetNextCursor() {
 	o.NextCursor.Unset()
 }
 
-func (o PodsListDtoCursorPaginatedResponse) MarshalJSON() ([]byte, error) {
+func (o SecretListDtoCursorStringPaginatedResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -200,7 +200,7 @@ func (o PodsListDtoCursorPaginatedResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o PodsListDtoCursorPaginatedResponse) ToMap() (map[string]interface{}, error) {
+func (o SecretListDtoCursorStringPaginatedResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
@@ -214,7 +214,7 @@ func (o PodsListDtoCursorPaginatedResponse) ToMap() (map[string]interface{}, err
 	return toSerialize, nil
 }
 
-func (o *PodsListDtoCursorPaginatedResponse) UnmarshalJSON(data []byte) (err error) {
+func (o *SecretListDtoCursorStringPaginatedResponse) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -239,53 +239,53 @@ func (o *PodsListDtoCursorPaginatedResponse) UnmarshalJSON(data []byte) (err err
 		}
 	}
 
-	varPodsListDtoCursorPaginatedResponse := _PodsListDtoCursorPaginatedResponse{}
+	varSecretListDtoCursorStringPaginatedResponse := _SecretListDtoCursorStringPaginatedResponse{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPodsListDtoCursorPaginatedResponse)
+	err = decoder.Decode(&varSecretListDtoCursorStringPaginatedResponse)
 
 	if err != nil {
 		return err
 	}
 
-	*o = PodsListDtoCursorPaginatedResponse(varPodsListDtoCursorPaginatedResponse)
+	*o = SecretListDtoCursorStringPaginatedResponse(varSecretListDtoCursorStringPaginatedResponse)
 
 	return err
 }
 
-type NullablePodsListDtoCursorPaginatedResponse struct {
-	value *PodsListDtoCursorPaginatedResponse
+type NullableSecretListDtoCursorStringPaginatedResponse struct {
+	value *SecretListDtoCursorStringPaginatedResponse
 	isSet bool
 }
 
-func (v NullablePodsListDtoCursorPaginatedResponse) Get() *PodsListDtoCursorPaginatedResponse {
+func (v NullableSecretListDtoCursorStringPaginatedResponse) Get() *SecretListDtoCursorStringPaginatedResponse {
 	return v.value
 }
 
-func (v *NullablePodsListDtoCursorPaginatedResponse) Set(val *PodsListDtoCursorPaginatedResponse) {
+func (v *NullableSecretListDtoCursorStringPaginatedResponse) Set(val *SecretListDtoCursorStringPaginatedResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePodsListDtoCursorPaginatedResponse) IsSet() bool {
+func (v NullableSecretListDtoCursorStringPaginatedResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePodsListDtoCursorPaginatedResponse) Unset() {
+func (v *NullableSecretListDtoCursorStringPaginatedResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePodsListDtoCursorPaginatedResponse(val *PodsListDtoCursorPaginatedResponse) *NullablePodsListDtoCursorPaginatedResponse {
-	return &NullablePodsListDtoCursorPaginatedResponse{value: val, isSet: true}
+func NewNullableSecretListDtoCursorStringPaginatedResponse(val *SecretListDtoCursorStringPaginatedResponse) *NullableSecretListDtoCursorStringPaginatedResponse {
+	return &NullableSecretListDtoCursorStringPaginatedResponse{value: val, isSet: true}
 }
 
-func (v NullablePodsListDtoCursorPaginatedResponse) MarshalJSON() ([]byte, error) {
+func (v NullableSecretListDtoCursorStringPaginatedResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePodsListDtoCursorPaginatedResponse) UnmarshalJSON(src []byte) error {
+func (v *NullableSecretListDtoCursorStringPaginatedResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

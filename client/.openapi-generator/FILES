@@ -282,7 +282,7 @@ docs/CommonStringDropdownIsBoundDto.md
 docs/ConfigMapSearchCommand.md
 docs/ConfigMapSearchList.md
 docs/ConfigmapListDto.md
-docs/ConfigmapListDtoCursorPaginatedResponse.md
+docs/ConfigmapListDtoCursorStringPaginatedResponse.md
 docs/ConfirmEmailCommand.md
 docs/ConsoleScreenshotCommand.md
 docs/ContactUsCommand.md
@@ -350,7 +350,7 @@ docs/DaemonSetSearchCommand.md
 docs/DaemonSetSearchList.md
 docs/DaemonsetActionCommand.md
 docs/DaemonsetListDto.md
-docs/DaemonsetListDtoCursorPaginatedResponse.md
+docs/DaemonsetListDtoCursorStringPaginatedResponse.md
 docs/DashboardChart.md
 docs/DatacenterListCommand.md
 docs/DatacenterSummary.md
@@ -391,7 +391,7 @@ docs/DeploymentEnableAiCommand.md
 docs/DeploymentEnableBackupCommand.md
 docs/DeploymentEnableMonitoringCommand.md
 docs/DeploymentListDto.md
-docs/DeploymentListDtoCursorPaginatedResponse.md
+docs/DeploymentListDtoCursorStringPaginatedResponse.md
 docs/DeploymentOpaEnableCommand.md
 docs/DeploymentSearchCommand.md
 docs/DeploymentSearchList.md
@@ -524,7 +524,7 @@ docs/InfraBillingSummaryDto.md
 docs/InfraOrganizationsListDto.md
 docs/InfraProductDto.md
 docs/IngressListDto.md
-docs/IngressListDtoCursorPaginatedResponse.md
+docs/IngressListDtoCursorStringPaginatedResponse.md
 docs/IngressSearchCommand.md
 docs/IngressSearchList.md
 docs/InstanceAppListDto.md
@@ -614,13 +614,13 @@ docs/NetworkListCommand.md
 docs/NetworkPoliciesSearchCommand.md
 docs/NetworkPoliciesSearchList.md
 docs/NetworkPolicyListDto.md
-docs/NetworkPolicyListDtoCursorPaginatedResponse.md
+docs/NetworkPolicyListDtoCursorStringPaginatedResponse.md
 docs/NetworkSummary.md
 docs/NodeActionCommand.md
 docs/NodeCommand.md
 docs/NodeDto.md
 docs/NodeListDto.md
-docs/NodeListDtoCursorPaginatedResponse.md
+docs/NodeListDtoCursorStringPaginatedResponse.md
 docs/NodeSearchResponseData.md
 docs/NodesSearchCommand.md
 docs/NodesSearchList.md
@@ -708,7 +708,7 @@ docs/PdbSearchCommand.md
 docs/PdbSearchList.md
 docs/PodDto.md
 docs/PodsListDto.md
-docs/PodsListDtoCursorPaginatedResponse.md
+docs/PodsListDtoCursorStringPaginatedResponse.md
 docs/PodsSearchCommand.md
 docs/PodsSearchList.md
 docs/PreDefinedQueriesAPI.md
@@ -800,7 +800,7 @@ docs/ProxmoxRole.md
 docs/ProxmoxStorage.md
 docs/PublicImageList.md
 docs/PvcListDto.md
-docs/PvcListDtoCursorPaginatedResponse.md
+docs/PvcListDtoCursorStringPaginatedResponse.md
 docs/PvcSearchCommand.md
 docs/PvcSearchList.md
 docs/RamLimitsDto.md
@@ -829,7 +829,7 @@ docs/RuleLabels.md
 docs/S3CredentialsAPI.md
 docs/SearchAPI.md
 docs/SecretListDto.md
-docs/SecretListDtoCursorPaginatedResponse.md
+docs/SecretListDtoCursorStringPaginatedResponse.md
 docs/SecretSearchCommand.md
 docs/SecretSearchList.md
 docs/SecurityGroupAPI.md
@@ -851,7 +851,7 @@ docs/ServersSearchCommand.md
 docs/ServersSearchList.md
 docs/ServersSearchResponseData.md
 docs/ServiceListDto.md
-docs/ServiceListDtoCursorPaginatedResponse.md
+docs/ServiceListDtoCursorStringPaginatedResponse.md
 docs/ServiceSearchCommand.md
 docs/ServiceSearchList.md
 docs/SetTicketPriorityCommand.md
@@ -900,7 +900,7 @@ docs/StandaloneVmsList.md
 docs/StandaloneVmsListForDetailsDto.md
 docs/StartStandaloneVmCommand.md
 docs/StatefulSetListDto.md
-docs/StatefulSetListDtoCursorPaginatedResponse.md
+docs/StatefulSetListDtoCursorStringPaginatedResponse.md
 docs/Status.md
 docs/StopStandaloneVmCommand.md
 docs/StorageClassesSearchCommand.md
@@ -1213,7 +1213,7 @@ model_common_string_dropdown_is_bound_dto.go
 model_config_map_search_command.go
 model_config_map_search_list.go
 model_configmap_list_dto.go
-model_configmap_list_dto_cursor_paginated_response.go
+model_configmap_list_dto_cursor_string_paginated_response.go
 model_confirm_email_command.go
 model_console_screenshot_command.go
 model_contact_us_command.go
@@ -1280,7 +1280,7 @@ model_daemon_set_search_command.go
 model_daemon_set_search_list.go
 model_daemonset_action_command.go
 model_daemonset_list_dto.go
-model_daemonset_list_dto_cursor_paginated_response.go
+model_daemonset_list_dto_cursor_string_paginated_response.go
 model_dashboard_chart.go
 model_datacenter_list_command.go
 model_datacenter_summary.go
@@ -1321,7 +1321,7 @@ model_deployment_enable_ai_command.go
 model_deployment_enable_backup_command.go
 model_deployment_enable_monitoring_command.go
 model_deployment_list_dto.go
-model_deployment_list_dto_cursor_paginated_response.go
+model_deployment_list_dto_cursor_string_paginated_response.go
 model_deployment_opa_enable_command.go
 model_deployment_search_command.go
 model_deployment_search_list.go
@@ -1444,7 +1444,7 @@ model_infra_billing_summary_dto.go
 model_infra_organizations_list_dto.go
 model_infra_product_dto.go
 model_ingress_list_dto.go
-model_ingress_list_dto_cursor_paginated_response.go
+model_ingress_list_dto_cursor_string_paginated_response.go
 model_ingress_search_command.go
 model_ingress_search_list.go
 model_instance_app_list_dto.go
@@ -1526,13 +1526,13 @@ model_network_list_command.go
 model_network_policies_search_command.go
 model_network_policies_search_list.go
 model_network_policy_list_dto.go
-model_network_policy_list_dto_cursor_paginated_response.go
+model_network_policy_list_dto_cursor_string_paginated_response.go
 model_network_summary.go
 model_node_action_command.go
 model_node_command.go
 model_node_dto.go
 model_node_list_dto.go
-model_node_list_dto_cursor_paginated_response.go
+model_node_list_dto_cursor_string_paginated_response.go
 model_node_search_response_data.go
 model_nodes_search_command.go
 model_nodes_search_list.go
@@ -1609,7 +1609,7 @@ model_pdb_search_command.go
 model_pdb_search_list.go
 model_pod_dto.go
 model_pods_list_dto.go
-model_pods_list_dto_cursor_paginated_response.go
+model_pods_list_dto_cursor_string_paginated_response.go
 model_pods_search_command.go
 model_pods_search_list.go
 model_private_subscription_list.go
@@ -1690,7 +1690,7 @@ model_proxmox_role.go
 model_proxmox_storage.go
 model_public_image_list.go
 model_pvc_list_dto.go
-model_pvc_list_dto_cursor_paginated_response.go
+model_pvc_list_dto_cursor_string_paginated_response.go
 model_pvc_search_command.go
 model_pvc_search_list.go
 model_ram_limits_dto.go
@@ -1717,7 +1717,7 @@ model_rule_create_command.go
 model_rule_for_update_dto.go
 model_rule_labels.go
 model_secret_list_dto.go
-model_secret_list_dto_cursor_paginated_response.go
+model_secret_list_dto_cursor_string_paginated_response.go
 model_secret_search_command.go
 model_secret_search_list.go
 model_security_group_list_dto.go
@@ -1737,7 +1737,7 @@ model_servers_search_command.go
 model_servers_search_list.go
 model_servers_search_response_data.go
 model_service_list_dto.go
-model_service_list_dto_cursor_paginated_response.go
+model_service_list_dto_cursor_string_paginated_response.go
 model_service_search_command.go
 model_service_search_list.go
 model_set_ticket_priority_command.go
@@ -1780,7 +1780,7 @@ model_standalone_vms_list.go
 model_standalone_vms_list_for_details_dto.go
 model_start_standalone_vm_command.go
 model_stateful_set_list_dto.go
-model_stateful_set_list_dto_cursor_paginated_response.go
+model_stateful_set_list_dto_cursor_string_paginated_response.go
 model_status.go
 model_stop_standalone_vm_command.go
 model_storage_classes_search_command.go

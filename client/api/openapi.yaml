@@ -19223,7 +19223,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ConfigmapListDtoCursorPaginatedResponse"
+                $ref: "#/components/schemas/ConfigmapListDtoCursorStringPaginatedResponse"
           description: OK
         "400":
           content:
@@ -19304,7 +19304,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DaemonsetListDtoCursorPaginatedResponse"
+                $ref: "#/components/schemas/DaemonsetListDtoCursorStringPaginatedResponse"
           description: OK
         "400":
           content:
@@ -19385,7 +19385,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DeploymentListDtoCursorPaginatedResponse"
+                $ref: "#/components/schemas/DeploymentListDtoCursorStringPaginatedResponse"
           description: OK
         "400":
           content:
@@ -19466,7 +19466,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/IngressListDtoCursorPaginatedResponse"
+                $ref: "#/components/schemas/IngressListDtoCursorStringPaginatedResponse"
           description: OK
         "400":
           content:
@@ -19547,7 +19547,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NetworkPolicyListDtoCursorPaginatedResponse"
+                $ref: "#/components/schemas/NetworkPolicyListDtoCursorStringPaginatedResponse"
           description: OK
         "400":
           content:
@@ -19628,7 +19628,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NodeListDtoCursorPaginatedResponse"
+                $ref: "#/components/schemas/NodeListDtoCursorStringPaginatedResponse"
           description: OK
         "400":
           content:
@@ -19709,7 +19709,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PodsListDtoCursorPaginatedResponse"
+                $ref: "#/components/schemas/PodsListDtoCursorStringPaginatedResponse"
           description: OK
         "400":
           content:
@@ -19790,7 +19790,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PvcListDtoCursorPaginatedResponse"
+                $ref: "#/components/schemas/PvcListDtoCursorStringPaginatedResponse"
           description: OK
         "400":
           content:
@@ -19871,7 +19871,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SecretListDtoCursorPaginatedResponse"
+                $ref: "#/components/schemas/SecretListDtoCursorStringPaginatedResponse"
           description: OK
         "400":
           content:
@@ -19952,7 +19952,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ServiceListDtoCursorPaginatedResponse"
+                $ref: "#/components/schemas/ServiceListDtoCursorStringPaginatedResponse"
           description: OK
         "400":
           content:
@@ -20033,7 +20033,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/StatefulSetListDtoCursorPaginatedResponse"
+                $ref: "#/components/schemas/StatefulSetListDtoCursorStringPaginatedResponse"
           description: OK
         "400":
           content:
@@ -47951,7 +47951,7 @@ components:
           nullable: true
           type: string
       type: object
-    ConfigmapListDtoCursorPaginatedResponse:
+    ConfigmapListDtoCursorStringPaginatedResponse:
       additionalProperties: false
       example:
         nextCursor: nextCursor
@@ -50276,7 +50276,7 @@ components:
           nullable: true
           type: string
       type: object
-    DaemonsetListDtoCursorPaginatedResponse:
+    DaemonsetListDtoCursorStringPaginatedResponse:
       additionalProperties: false
       example:
         nextCursor: nextCursor
@@ -51377,7 +51377,7 @@ components:
           nullable: true
           type: array
       type: object
-    DeploymentListDtoCursorPaginatedResponse:
+    DeploymentListDtoCursorStringPaginatedResponse:
       additionalProperties: false
       example:
         nextCursor: nextCursor
@@ -56177,7 +56177,7 @@ components:
           nullable: true
           type: string
       type: object
-    IngressListDtoCursorPaginatedResponse:
+    IngressListDtoCursorStringPaginatedResponse:
       additionalProperties: false
       example:
         nextCursor: nextCursor
@@ -58938,7 +58938,7 @@ components:
           nullable: true
           type: string
       type: object
-    NetworkPolicyListDtoCursorPaginatedResponse:
+    NetworkPolicyListDtoCursorStringPaginatedResponse:
       additionalProperties: false
       example:
         nextCursor: nextCursor
@@ -59078,7 +59078,7 @@ components:
           nullable: true
           type: string
       type: object
-    NodeListDtoCursorPaginatedResponse:
+    NodeListDtoCursorStringPaginatedResponse:
       additionalProperties: false
       example:
         nextCursor: nextCursor
@@ -61903,7 +61903,7 @@ components:
           nullable: true
           type: string
       type: object
-    PodsListDtoCursorPaginatedResponse:
+    PodsListDtoCursorStringPaginatedResponse:
       additionalProperties: false
       example:
         nextCursor: nextCursor
@@ -66377,7 +66377,7 @@ components:
           nullable: true
           type: string
       type: object
-    PvcListDtoCursorPaginatedResponse:
+    PvcListDtoCursorStringPaginatedResponse:
       additionalProperties: false
       example:
         nextCursor: nextCursor
@@ -67156,7 +67156,7 @@ components:
           nullable: true
           type: string
       type: object
-    SecretListDtoCursorPaginatedResponse:
+    SecretListDtoCursorStringPaginatedResponse:
       additionalProperties: false
       example:
         nextCursor: nextCursor
@@ -68397,7 +68397,7 @@ components:
           nullable: true
           type: string
       type: object
-    ServiceListDtoCursorPaginatedResponse:
+    ServiceListDtoCursorStringPaginatedResponse:
       additionalProperties: false
       example:
         nextCursor: nextCursor
@@ -69960,7 +69960,7 @@ components:
           nullable: true
           type: array
       type: object
-    StatefulSetListDtoCursorPaginatedResponse:
+    StatefulSetListDtoCursorStringPaginatedResponse:
       additionalProperties: false
       example:
         nextCursor: nextCursor
