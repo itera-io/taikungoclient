@@ -28,7 +28,10 @@ type ProjectChartDto struct {
 	Deleting []ProjectCommonRecordDto `json:"deleting,omitempty"`
 	Importing []ProjectCommonRecordDto `json:"importing,omitempty"`
 	FailedToImport []ProjectCommonRecordDto `json:"failedToImport,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectChartDto ProjectChartDto
 
 // NewProjectChartDto instantiates a new ProjectChartDto object
 // This constructor will assign default values to properties that have it defined,
@@ -344,7 +347,40 @@ func (o ProjectChartDto) ToMap() (map[string]interface{}, error) {
 	if o.FailedToImport != nil {
 		toSerialize["failedToImport"] = o.FailedToImport
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectChartDto) UnmarshalJSON(data []byte) (err error) {
+	varProjectChartDto := _ProjectChartDto{}
+
+	err = json.Unmarshal(data, &varProjectChartDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectChartDto(varProjectChartDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "succeeded")
+		delete(additionalProperties, "updating")
+		delete(additionalProperties, "totalCount")
+		delete(additionalProperties, "failed")
+		delete(additionalProperties, "purging")
+		delete(additionalProperties, "deleting")
+		delete(additionalProperties, "importing")
+		delete(additionalProperties, "failedToImport")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectChartDto struct {

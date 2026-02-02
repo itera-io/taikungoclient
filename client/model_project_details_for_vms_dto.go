@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -45,6 +44,7 @@ type ProjectDetailsForVmsDto struct {
 	AvailabilityZones []string `json:"availabilityZones"`
 	Hypervisors []string `json:"hypervisors"`
 	ExpiredAt NullableString `json:"expiredAt"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProjectDetailsForVmsDto ProjectDetailsForVmsDto
@@ -694,6 +694,11 @@ func (o ProjectDetailsForVmsDto) ToMap() (map[string]interface{}, error) {
 		toSerialize["hypervisors"] = o.Hypervisors
 	}
 	toSerialize["expiredAt"] = o.ExpiredAt.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -743,15 +748,42 @@ func (o *ProjectDetailsForVmsDto) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectDetailsForVmsDto := _ProjectDetailsForVmsDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectDetailsForVmsDto)
+	err = json.Unmarshal(data, &varProjectDetailsForVmsDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectDetailsForVmsDto(varProjectDetailsForVmsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "cloudType")
+		delete(additionalProperties, "cloudName")
+		delete(additionalProperties, "cloudId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "isProjectMaintenanceModeEnabled")
+		delete(additionalProperties, "hasSelectedFlavors")
+		delete(additionalProperties, "isMaintenanceModeEnabled")
+		delete(additionalProperties, "isDrsEnabled")
+		delete(additionalProperties, "projectCloudRevision")
+		delete(additionalProperties, "cloudCredentialRevision")
+		delete(additionalProperties, "allowFullSpotKubernetes")
+		delete(additionalProperties, "allowSpotWorkers")
+		delete(additionalProperties, "allowSpotVMs")
+		delete(additionalProperties, "maxSpotPrice")
+		delete(additionalProperties, "totalHourlyCost")
+		delete(additionalProperties, "availabilityZones")
+		delete(additionalProperties, "hypervisors")
+		delete(additionalProperties, "expiredAt")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

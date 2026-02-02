@@ -21,7 +21,10 @@ var _ MappedNullable = &DeleteRepositoryCommand{}
 // DeleteRepositoryCommand struct for DeleteRepositoryCommand
 type DeleteRepositoryCommand struct {
 	AppRepoId *int32 `json:"appRepoId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeleteRepositoryCommand DeleteRepositoryCommand
 
 // NewDeleteRepositoryCommand instantiates a new DeleteRepositoryCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o DeleteRepositoryCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AppRepoId) {
 		toSerialize["appRepoId"] = o.AppRepoId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeleteRepositoryCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeleteRepositoryCommand := _DeleteRepositoryCommand{}
+
+	err = json.Unmarshal(data, &varDeleteRepositoryCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeleteRepositoryCommand(varDeleteRepositoryCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "appRepoId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeleteRepositoryCommand struct {

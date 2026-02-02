@@ -29,7 +29,10 @@ type ProjectCatalogDto struct {
 	CloudType *ECloudCredentialType `json:"cloudType,omitempty"`
 	Status *ProjectStatus `json:"status,omitempty"`
 	Health *ProjectHealth `json:"health,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectCatalogDto ProjectCatalogDto
 
 // NewProjectCatalogDto instantiates a new ProjectCatalogDto object
 // This constructor will assign default values to properties that have it defined,
@@ -393,7 +396,41 @@ func (o ProjectCatalogDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Health) {
 		toSerialize["health"] = o.Health
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectCatalogDto) UnmarshalJSON(data []byte) (err error) {
+	varProjectCatalogDto := _ProjectCatalogDto{}
+
+	err = json.Unmarshal(data, &varProjectCatalogDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectCatalogDto(varProjectCatalogDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "kubernetesVersion")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "maintenanceModeEnabled")
+		delete(additionalProperties, "isVirtualCluster")
+		delete(additionalProperties, "cloudType")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "health")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectCatalogDto struct {

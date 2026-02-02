@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -23,6 +22,7 @@ var _ MappedNullable = &StripeInvoices{}
 // StripeInvoices struct for StripeInvoices
 type StripeInvoices struct {
 	Data []StripeInvoiceListDto `json:"data"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StripeInvoices StripeInvoices
@@ -84,6 +84,11 @@ func (o StripeInvoices) ToMap() (map[string]interface{}, error) {
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -111,15 +116,20 @@ func (o *StripeInvoices) UnmarshalJSON(data []byte) (err error) {
 
 	varStripeInvoices := _StripeInvoices{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStripeInvoices)
+	err = json.Unmarshal(data, &varStripeInvoices)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StripeInvoices(varStripeInvoices)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

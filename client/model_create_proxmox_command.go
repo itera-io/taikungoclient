@@ -32,7 +32,10 @@ type CreateProxmoxCommand struct {
 	PublicNetwork *CreateProxmoxNetworkDto `json:"publicNetwork,omitempty"`
 	PrivateNetwork *CreateProxmoxNetworkDto `json:"privateNetwork,omitempty"`
 	SkipTlsFlag *bool `json:"skipTlsFlag,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateProxmoxCommand CreateProxmoxCommand
 
 // NewCreateProxmoxCommand instantiates a new CreateProxmoxCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -562,7 +565,44 @@ func (o CreateProxmoxCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SkipTlsFlag) {
 		toSerialize["skipTlsFlag"] = o.SkipTlsFlag
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateProxmoxCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateProxmoxCommand := _CreateProxmoxCommand{}
+
+	err = json.Unmarshal(data, &varCreateProxmoxCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateProxmoxCommand(varCreateProxmoxCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "tokenId")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "tokenSecret")
+		delete(additionalProperties, "storage")
+		delete(additionalProperties, "vmTemplateName")
+		delete(additionalProperties, "continent")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "hypervisors")
+		delete(additionalProperties, "publicNetwork")
+		delete(additionalProperties, "privateNetwork")
+		delete(additionalProperties, "skipTlsFlag")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateProxmoxCommand struct {

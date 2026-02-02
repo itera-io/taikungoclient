@@ -22,7 +22,10 @@ var _ MappedNullable = &AdminUsersUpdatePasswordCommand{}
 type AdminUsersUpdatePasswordCommand struct {
 	Id NullableString `json:"id,omitempty"`
 	Password NullableString `json:"password,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AdminUsersUpdatePasswordCommand AdminUsersUpdatePasswordCommand
 
 // NewAdminUsersUpdatePasswordCommand instantiates a new AdminUsersUpdatePasswordCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o AdminUsersUpdatePasswordCommand) ToMap() (map[string]interface{}, error)
 	if o.Password.IsSet() {
 		toSerialize["password"] = o.Password.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AdminUsersUpdatePasswordCommand) UnmarshalJSON(data []byte) (err error) {
+	varAdminUsersUpdatePasswordCommand := _AdminUsersUpdatePasswordCommand{}
+
+	err = json.Unmarshal(data, &varAdminUsersUpdatePasswordCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AdminUsersUpdatePasswordCommand(varAdminUsersUpdatePasswordCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "password")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAdminUsersUpdatePasswordCommand struct {

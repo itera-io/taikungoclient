@@ -26,7 +26,10 @@ type BindSubscriptionResponseDto struct {
 	InvoiceFailureCode NullableString `json:"invoiceFailureCode,omitempty"`
 	InvoiceFailureMessage NullableString `json:"invoiceFailureMessage,omitempty"`
 	InvoiceFailureReason NullableString `json:"invoiceFailureReason,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _BindSubscriptionResponseDto BindSubscriptionResponseDto
 
 // NewBindSubscriptionResponseDto instantiates a new BindSubscriptionResponseDto object
 // This constructor will assign default values to properties that have it defined,
@@ -325,7 +328,38 @@ func (o BindSubscriptionResponseDto) ToMap() (map[string]interface{}, error) {
 	if o.InvoiceFailureReason.IsSet() {
 		toSerialize["invoiceFailureReason"] = o.InvoiceFailureReason.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *BindSubscriptionResponseDto) UnmarshalJSON(data []byte) (err error) {
+	varBindSubscriptionResponseDto := _BindSubscriptionResponseDto{}
+
+	err = json.Unmarshal(data, &varBindSubscriptionResponseDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BindSubscriptionResponseDto(varBindSubscriptionResponseDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "paymentIntentClientSecret")
+		delete(additionalProperties, "paymentIntentId")
+		delete(additionalProperties, "invoiceFailureCode")
+		delete(additionalProperties, "invoiceFailureMessage")
+		delete(additionalProperties, "invoiceFailureReason")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableBindSubscriptionResponseDto struct {

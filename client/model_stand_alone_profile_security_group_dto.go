@@ -25,7 +25,10 @@ type StandAloneProfileSecurityGroupDto struct {
 	PortMinRange *int32 `json:"portMinRange,omitempty"`
 	PortMaxRange *int32 `json:"portMaxRange,omitempty"`
 	RemoteIpPrefix NullableString `json:"remoteIpPrefix,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _StandAloneProfileSecurityGroupDto StandAloneProfileSecurityGroupDto
 
 // NewStandAloneProfileSecurityGroupDto instantiates a new StandAloneProfileSecurityGroupDto object
 // This constructor will assign default values to properties that have it defined,
@@ -249,7 +252,37 @@ func (o StandAloneProfileSecurityGroupDto) ToMap() (map[string]interface{}, erro
 	if o.RemoteIpPrefix.IsSet() {
 		toSerialize["remoteIpPrefix"] = o.RemoteIpPrefix.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *StandAloneProfileSecurityGroupDto) UnmarshalJSON(data []byte) (err error) {
+	varStandAloneProfileSecurityGroupDto := _StandAloneProfileSecurityGroupDto{}
+
+	err = json.Unmarshal(data, &varStandAloneProfileSecurityGroupDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StandAloneProfileSecurityGroupDto(varStandAloneProfileSecurityGroupDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "protocol")
+		delete(additionalProperties, "portMinRange")
+		delete(additionalProperties, "portMaxRange")
+		delete(additionalProperties, "remoteIpPrefix")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableStandAloneProfileSecurityGroupDto struct {

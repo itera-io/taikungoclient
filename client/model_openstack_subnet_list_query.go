@@ -28,7 +28,10 @@ type OpenstackSubnetListQuery struct {
 	OpenStackDomain NullableString `json:"openStackDomain,omitempty"`
 	OpenStackRegion NullableString `json:"openStackRegion,omitempty"`
 	ApplicationCredEnabled *bool `json:"applicationCredEnabled,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OpenstackSubnetListQuery OpenstackSubnetListQuery
 
 // NewOpenstackSubnetListQuery instantiates a new OpenstackSubnetListQuery object
 // This constructor will assign default values to properties that have it defined,
@@ -407,7 +410,40 @@ func (o OpenstackSubnetListQuery) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ApplicationCredEnabled) {
 		toSerialize["applicationCredEnabled"] = o.ApplicationCredEnabled
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OpenstackSubnetListQuery) UnmarshalJSON(data []byte) (err error) {
+	varOpenstackSubnetListQuery := _OpenstackSubnetListQuery{}
+
+	err = json.Unmarshal(data, &varOpenstackSubnetListQuery)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OpenstackSubnetListQuery(varOpenstackSubnetListQuery)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "openStackUser")
+		delete(additionalProperties, "openStackPassword")
+		delete(additionalProperties, "openStackUrl")
+		delete(additionalProperties, "openStackProject")
+		delete(additionalProperties, "openStackProjectId")
+		delete(additionalProperties, "openStackDomain")
+		delete(additionalProperties, "openStackRegion")
+		delete(additionalProperties, "applicationCredEnabled")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOpenstackSubnetListQuery struct {

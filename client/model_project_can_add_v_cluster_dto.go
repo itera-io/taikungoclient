@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -23,6 +22,7 @@ var _ MappedNullable = &ProjectCanAddVClusterDto{}
 // ProjectCanAddVClusterDto struct for ProjectCanAddVClusterDto
 type ProjectCanAddVClusterDto struct {
 	AddVCluster ButtonStatusDto `json:"addVCluster"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProjectCanAddVClusterDto ProjectCanAddVClusterDto
@@ -80,6 +80,11 @@ func (o ProjectCanAddVClusterDto) MarshalJSON() ([]byte, error) {
 func (o ProjectCanAddVClusterDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["addVCluster"] = o.AddVCluster
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *ProjectCanAddVClusterDto) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectCanAddVClusterDto := _ProjectCanAddVClusterDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectCanAddVClusterDto)
+	err = json.Unmarshal(data, &varProjectCanAddVClusterDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectCanAddVClusterDto(varProjectCanAddVClusterDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "addVCluster")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

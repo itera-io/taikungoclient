@@ -21,7 +21,10 @@ var _ MappedNullable = &DeleteAlertCommand{}
 // DeleteAlertCommand struct for DeleteAlertCommand
 type DeleteAlertCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeleteAlertCommand DeleteAlertCommand
 
 // NewDeleteAlertCommand instantiates a new DeleteAlertCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o DeleteAlertCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeleteAlertCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeleteAlertCommand := _DeleteAlertCommand{}
+
+	err = json.Unmarshal(data, &varDeleteAlertCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeleteAlertCommand(varDeleteAlertCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeleteAlertCommand struct {

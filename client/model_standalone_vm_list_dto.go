@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -45,6 +44,7 @@ type StandaloneVmListDto struct {
 	CreatedAt NullableString `json:"createdAt"`
 	CreatedBy NullableString `json:"createdBy"`
 	LastModified NullableString `json:"lastModified"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StandaloneVmListDto StandaloneVmListDto
@@ -688,6 +688,11 @@ func (o StandaloneVmListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["createdAt"] = o.CreatedAt.Get()
 	toSerialize["createdBy"] = o.CreatedBy.Get()
 	toSerialize["lastModified"] = o.LastModified.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -737,15 +742,42 @@ func (o *StandaloneVmListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varStandaloneVmListDto := _StandaloneVmListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStandaloneVmListDto)
+	err = json.Unmarshal(data, &varStandaloneVmListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StandaloneVmListDto(varStandaloneVmListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "flavorId")
+		delete(additionalProperties, "volumeSize")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "ram")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "volumeType")
+		delete(additionalProperties, "publicIpEnabled")
+		delete(additionalProperties, "publicIp")
+		delete(additionalProperties, "ipAddress")
+		delete(additionalProperties, "cloudType")
+		delete(additionalProperties, "imageName")
+		delete(additionalProperties, "revision")
+		delete(additionalProperties, "isWindows")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "standAloneProfile")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

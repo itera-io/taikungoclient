@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -36,6 +35,7 @@ type ArtifactRepositoryDto struct {
 	IsTaikun bool `json:"isTaikun"`
 	HasCatalogApp bool `json:"hasCatalogApp"`
 	PasswordProtected *bool `json:"passwordProtected,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ArtifactRepositoryDto ArtifactRepositoryDto
@@ -453,6 +453,11 @@ func (o ArtifactRepositoryDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PasswordProtected) {
 		toSerialize["passwordProtected"] = o.PasswordProtected
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -491,15 +496,33 @@ func (o *ArtifactRepositoryDto) UnmarshalJSON(data []byte) (err error) {
 
 	varArtifactRepositoryDto := _ArtifactRepositoryDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varArtifactRepositoryDto)
+	err = json.Unmarshal(data, &varArtifactRepositoryDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ArtifactRepositoryDto(varArtifactRepositoryDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "repositoryId")
+		delete(additionalProperties, "appRepoId")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "displayName")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "disabled")
+		delete(additionalProperties, "verifiedPublisher")
+		delete(additionalProperties, "official")
+		delete(additionalProperties, "isBound")
+		delete(additionalProperties, "isPrivate")
+		delete(additionalProperties, "isTaikun")
+		delete(additionalProperties, "hasCatalogApp")
+		delete(additionalProperties, "passwordProtected")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

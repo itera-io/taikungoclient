@@ -22,7 +22,10 @@ var _ MappedNullable = &DisableUserCommand{}
 type DisableUserCommand struct {
 	Id NullableString `json:"id,omitempty"`
 	Disable *bool `json:"disable,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DisableUserCommand DisableUserCommand
 
 // NewDisableUserCommand instantiates a new DisableUserCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o DisableUserCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DisableUserCommand) UnmarshalJSON(data []byte) (err error) {
+	varDisableUserCommand := _DisableUserCommand{}
+
+	err = json.Unmarshal(data, &varDisableUserCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DisableUserCommand(varDisableUserCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "disable")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDisableUserCommand struct {

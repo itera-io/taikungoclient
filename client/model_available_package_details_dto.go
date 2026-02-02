@@ -36,7 +36,10 @@ type AvailablePackageDetailsDto struct {
 	Official *bool `json:"official,omitempty"`
 	BoundCatalogs []CommonDropdownDto `json:"boundCatalogs,omitempty"`
 	HasJsonSchema *bool `json:"hasJsonSchema,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AvailablePackageDetailsDto AvailablePackageDetailsDto
 
 // NewAvailablePackageDetailsDto instantiates a new AvailablePackageDetailsDto object
 // This constructor will assign default values to properties that have it defined,
@@ -726,7 +729,48 @@ func (o AvailablePackageDetailsDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HasJsonSchema) {
 		toSerialize["hasJsonSchema"] = o.HasJsonSchema
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AvailablePackageDetailsDto) UnmarshalJSON(data []byte) (err error) {
+	varAvailablePackageDetailsDto := _AvailablePackageDetailsDto{}
+
+	err = json.Unmarshal(data, &varAvailablePackageDetailsDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AvailablePackageDetailsDto(varAvailablePackageDetailsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "appRepoName")
+		delete(additionalProperties, "appRepoOrganizationName")
+		delete(additionalProperties, "appRepoId")
+		delete(additionalProperties, "packageId")
+		delete(additionalProperties, "logoId")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "readme")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "securityReport")
+		delete(additionalProperties, "appVersion")
+		delete(additionalProperties, "stars")
+		delete(additionalProperties, "verifiedPublisher")
+		delete(additionalProperties, "official")
+		delete(additionalProperties, "boundCatalogs")
+		delete(additionalProperties, "hasJsonSchema")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAvailablePackageDetailsDto struct {

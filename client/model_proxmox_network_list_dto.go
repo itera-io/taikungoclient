@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -30,6 +29,7 @@ type ProxmoxNetworkListDto struct {
 	EndAllocationRange NullableString `json:"endAllocationRange"`
 	IsPrivate bool `json:"isPrivate"`
 	IsVirtualLbNetwork bool `json:"isVirtualLbNetwork"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProxmoxNetworkListDto ProxmoxNetworkListDto
@@ -279,6 +279,11 @@ func (o ProxmoxNetworkListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["endAllocationRange"] = o.EndAllocationRange.Get()
 	toSerialize["isPrivate"] = o.IsPrivate
 	toSerialize["isVirtualLbNetwork"] = o.IsVirtualLbNetwork
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -313,15 +318,27 @@ func (o *ProxmoxNetworkListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varProxmoxNetworkListDto := _ProxmoxNetworkListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProxmoxNetworkListDto)
+	err = json.Unmarshal(data, &varProxmoxNetworkListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProxmoxNetworkListDto(varProxmoxNetworkListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "bridge")
+		delete(additionalProperties, "gateway")
+		delete(additionalProperties, "ipAddress")
+		delete(additionalProperties, "netMask")
+		delete(additionalProperties, "beginAllocationRange")
+		delete(additionalProperties, "endAllocationRange")
+		delete(additionalProperties, "isPrivate")
+		delete(additionalProperties, "isVirtualLbNetwork")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

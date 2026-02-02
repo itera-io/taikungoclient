@@ -21,7 +21,10 @@ var _ MappedNullable = &ChatCompletionsCommand{}
 // ChatCompletionsCommand struct for ChatCompletionsCommand
 type ChatCompletionsCommand struct {
 	Messages interface{} `json:"messages,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ChatCompletionsCommand ChatCompletionsCommand
 
 // NewChatCompletionsCommand instantiates a new ChatCompletionsCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -86,7 +89,33 @@ func (o ChatCompletionsCommand) ToMap() (map[string]interface{}, error) {
 	if o.Messages != nil {
 		toSerialize["messages"] = o.Messages
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ChatCompletionsCommand) UnmarshalJSON(data []byte) (err error) {
+	varChatCompletionsCommand := _ChatCompletionsCommand{}
+
+	err = json.Unmarshal(data, &varChatCompletionsCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ChatCompletionsCommand(varChatCompletionsCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "messages")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableChatCompletionsCommand struct {

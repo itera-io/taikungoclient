@@ -24,7 +24,10 @@ type UpdateOpenStackCommand struct {
 	Name NullableString `json:"name,omitempty"`
 	OpenStackUser NullableString `json:"openStackUser,omitempty"`
 	OpenStackPassword NullableString `json:"openStackPassword,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateOpenStackCommand UpdateOpenStackCommand
 
 // NewUpdateOpenStackCommand instantiates a new UpdateOpenStackCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -223,7 +226,36 @@ func (o UpdateOpenStackCommand) ToMap() (map[string]interface{}, error) {
 	if o.OpenStackPassword.IsSet() {
 		toSerialize["openStackPassword"] = o.OpenStackPassword.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateOpenStackCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateOpenStackCommand := _UpdateOpenStackCommand{}
+
+	err = json.Unmarshal(data, &varUpdateOpenStackCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateOpenStackCommand(varUpdateOpenStackCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "openStackUser")
+		delete(additionalProperties, "openStackPassword")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateOpenStackCommand struct {

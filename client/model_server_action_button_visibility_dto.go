@@ -23,7 +23,10 @@ type ServerActionButtonVisibilityDto struct {
 	Status *bool `json:"status,omitempty"`
 	Reboot *bool `json:"reboot,omitempty"`
 	Console *bool `json:"console,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ServerActionButtonVisibilityDto ServerActionButtonVisibilityDto
 
 // NewServerActionButtonVisibilityDto instantiates a new ServerActionButtonVisibilityDto object
 // This constructor will assign default values to properties that have it defined,
@@ -157,7 +160,35 @@ func (o ServerActionButtonVisibilityDto) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Console) {
 		toSerialize["console"] = o.Console
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ServerActionButtonVisibilityDto) UnmarshalJSON(data []byte) (err error) {
+	varServerActionButtonVisibilityDto := _ServerActionButtonVisibilityDto{}
+
+	err = json.Unmarshal(data, &varServerActionButtonVisibilityDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ServerActionButtonVisibilityDto(varServerActionButtonVisibilityDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "reboot")
+		delete(additionalProperties, "console")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableServerActionButtonVisibilityDto struct {

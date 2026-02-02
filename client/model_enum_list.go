@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -50,6 +49,7 @@ type EnumList struct {
 	ProxmoxRoles []CommonDropdownDto `json:"proxmoxRoles"`
 	ProjectResourceTypes []CommonDropdownDto `json:"projectResourceTypes"`
 	ProjectResourceUnits []CommonDropdownDto `json:"projectResourceUnits"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EnumList EnumList
@@ -921,6 +921,11 @@ func (o EnumList) ToMap() (map[string]interface{}, error) {
 	if o.ProjectResourceUnits != nil {
 		toSerialize["projectResourceUnits"] = o.ProjectResourceUnits
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -975,15 +980,47 @@ func (o *EnumList) UnmarshalJSON(data []byte) (err error) {
 
 	varEnumList := _EnumList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEnumList)
+	err = json.Unmarshal(data, &varEnumList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EnumList(varEnumList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cloudTypes")
+		delete(additionalProperties, "projectStatuses")
+		delete(additionalProperties, "serverRoles")
+		delete(additionalProperties, "serverStatuses")
+		delete(additionalProperties, "userRoles")
+		delete(additionalProperties, "securityGroupRules")
+		delete(additionalProperties, "prometheusTypes")
+		delete(additionalProperties, "auditLogs")
+		delete(additionalProperties, "rebootOptions")
+		delete(additionalProperties, "availability")
+		delete(additionalProperties, "slackTypes")
+		delete(additionalProperties, "requestLogs")
+		delete(additionalProperties, "azureQuotas")
+		delete(additionalProperties, "showbackKinds")
+		delete(additionalProperties, "alertTypes")
+		delete(additionalProperties, "reminderTypes")
+		delete(additionalProperties, "awsPlatforms")
+		delete(additionalProperties, "cronPeriods")
+		delete(additionalProperties, "validityPeriods")
+		delete(additionalProperties, "alertingIntegrationTypes")
+		delete(additionalProperties, "googleImageTypes")
+		delete(additionalProperties, "standaloneVmStatuses")
+		delete(additionalProperties, "openstackContinents")
+		delete(additionalProperties, "retentionPeriods")
+		delete(additionalProperties, "ticketPriorities")
+		delete(additionalProperties, "proxmoxRoles")
+		delete(additionalProperties, "projectResourceTypes")
+		delete(additionalProperties, "projectResourceUnits")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

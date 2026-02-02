@@ -29,7 +29,10 @@ type DaemonsetListDto struct {
 	CreatedAt NullableString `json:"createdAt,omitempty"`
 	Namespace NullableString `json:"namespace,omitempty"`
 	Image NullableString `json:"image,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DaemonsetListDto DaemonsetListDto
 
 // NewDaemonsetListDto instantiates a new DaemonsetListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -433,7 +436,41 @@ func (o DaemonsetListDto) ToMap() (map[string]interface{}, error) {
 	if o.Image.IsSet() {
 		toSerialize["image"] = o.Image.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DaemonsetListDto) UnmarshalJSON(data []byte) (err error) {
+	varDaemonsetListDto := _DaemonsetListDto{}
+
+	err = json.Unmarshal(data, &varDaemonsetListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DaemonsetListDto(varDaemonsetListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "desired")
+		delete(additionalProperties, "current")
+		delete(additionalProperties, "ready")
+		delete(additionalProperties, "available")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "image")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDaemonsetListDto struct {

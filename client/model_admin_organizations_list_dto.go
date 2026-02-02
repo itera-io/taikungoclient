@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -29,6 +28,7 @@ type AdminOrganizationsListDto struct {
 	PartnerLogo NullableString `json:"partnerLogo"`
 	TrialEnds NullableString `json:"trialEnds"`
 	IsLocked bool `json:"isLocked"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AdminOrganizationsListDto AdminOrganizationsListDto
@@ -248,6 +248,11 @@ func (o AdminOrganizationsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["partnerLogo"] = o.PartnerLogo.Get()
 	toSerialize["trialEnds"] = o.TrialEnds.Get()
 	toSerialize["isLocked"] = o.IsLocked
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -281,15 +286,26 @@ func (o *AdminOrganizationsListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varAdminOrganizationsListDto := _AdminOrganizationsListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAdminOrganizationsListDto)
+	err = json.Unmarshal(data, &varAdminOrganizationsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AdminOrganizationsListDto(varAdminOrganizationsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "customerId")
+		delete(additionalProperties, "partnerName")
+		delete(additionalProperties, "partnerLogo")
+		delete(additionalProperties, "trialEnds")
+		delete(additionalProperties, "isLocked")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

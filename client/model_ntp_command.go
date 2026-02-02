@@ -21,7 +21,10 @@ var _ MappedNullable = &NtpCommand{}
 // NtpCommand struct for NtpCommand
 type NtpCommand struct {
 	Address NullableString `json:"address,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _NtpCommand NtpCommand
 
 // NewNtpCommand instantiates a new NtpCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +98,33 @@ func (o NtpCommand) ToMap() (map[string]interface{}, error) {
 	if o.Address.IsSet() {
 		toSerialize["address"] = o.Address.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *NtpCommand) UnmarshalJSON(data []byte) (err error) {
+	varNtpCommand := _NtpCommand{}
+
+	err = json.Unmarshal(data, &varNtpCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NtpCommand(varNtpCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "address")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableNtpCommand struct {

@@ -22,7 +22,10 @@ var _ MappedNullable = &KubernetesInteractiveShellDto{}
 type KubernetesInteractiveShellDto struct {
 	KubeConfig NullableString `json:"kubeConfig,omitempty"`
 	PodName NullableString `json:"podName,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _KubernetesInteractiveShellDto KubernetesInteractiveShellDto
 
 // NewKubernetesInteractiveShellDto instantiates a new KubernetesInteractiveShellDto object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o KubernetesInteractiveShellDto) ToMap() (map[string]interface{}, error) {
 	if o.PodName.IsSet() {
 		toSerialize["podName"] = o.PodName.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *KubernetesInteractiveShellDto) UnmarshalJSON(data []byte) (err error) {
+	varKubernetesInteractiveShellDto := _KubernetesInteractiveShellDto{}
+
+	err = json.Unmarshal(data, &varKubernetesInteractiveShellDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubernetesInteractiveShellDto(varKubernetesInteractiveShellDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "kubeConfig")
+		delete(additionalProperties, "podName")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableKubernetesInteractiveShellDto struct {

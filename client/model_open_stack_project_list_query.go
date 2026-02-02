@@ -26,7 +26,10 @@ type OpenStackProjectListQuery struct {
 	OpenStackDomain NullableString `json:"openStackDomain,omitempty"`
 	ApplicationCredEnabled *bool `json:"applicationCredEnabled,omitempty"`
 	IsAdmin *bool `json:"isAdmin,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OpenStackProjectListQuery OpenStackProjectListQuery
 
 // NewOpenStackProjectListQuery instantiates a new OpenStackProjectListQuery object
 // This constructor will assign default values to properties that have it defined,
@@ -305,7 +308,38 @@ func (o OpenStackProjectListQuery) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsAdmin) {
 		toSerialize["isAdmin"] = o.IsAdmin
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OpenStackProjectListQuery) UnmarshalJSON(data []byte) (err error) {
+	varOpenStackProjectListQuery := _OpenStackProjectListQuery{}
+
+	err = json.Unmarshal(data, &varOpenStackProjectListQuery)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OpenStackProjectListQuery(varOpenStackProjectListQuery)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "openStackUser")
+		delete(additionalProperties, "openStackPassword")
+		delete(additionalProperties, "openStackUrl")
+		delete(additionalProperties, "openStackDomain")
+		delete(additionalProperties, "applicationCredEnabled")
+		delete(additionalProperties, "isAdmin")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOpenStackProjectListQuery struct {

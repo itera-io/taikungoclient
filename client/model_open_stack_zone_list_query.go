@@ -28,7 +28,10 @@ type OpenStackZoneListQuery struct {
 	ApplicationCredEnabled *bool `json:"applicationCredEnabled,omitempty"`
 	IsAdmin *bool `json:"isAdmin,omitempty"`
 	OpenstackProject NullableString `json:"openstackProject,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OpenStackZoneListQuery OpenStackZoneListQuery
 
 // NewOpenStackZoneListQuery instantiates a new OpenStackZoneListQuery object
 // This constructor will assign default values to properties that have it defined,
@@ -397,7 +400,40 @@ func (o OpenStackZoneListQuery) ToMap() (map[string]interface{}, error) {
 	if o.OpenstackProject.IsSet() {
 		toSerialize["openstackProject"] = o.OpenstackProject.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OpenStackZoneListQuery) UnmarshalJSON(data []byte) (err error) {
+	varOpenStackZoneListQuery := _OpenStackZoneListQuery{}
+
+	err = json.Unmarshal(data, &varOpenStackZoneListQuery)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OpenStackZoneListQuery(varOpenStackZoneListQuery)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "openStackUser")
+		delete(additionalProperties, "openStackPassword")
+		delete(additionalProperties, "openStackUrl")
+		delete(additionalProperties, "openStackDomain")
+		delete(additionalProperties, "openStackRegion")
+		delete(additionalProperties, "applicationCredEnabled")
+		delete(additionalProperties, "isAdmin")
+		delete(additionalProperties, "openstackProject")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOpenStackZoneListQuery struct {

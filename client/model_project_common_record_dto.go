@@ -23,7 +23,10 @@ type ProjectCommonRecordDto struct {
 	Id *int32 `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	ExpiredAt NullableString `json:"expiredAt,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectCommonRecordDto ProjectCommonRecordDto
 
 // NewProjectCommonRecordDto instantiates a new ProjectCommonRecordDto object
 // This constructor will assign default values to properties that have it defined,
@@ -177,7 +180,35 @@ func (o ProjectCommonRecordDto) ToMap() (map[string]interface{}, error) {
 	if o.ExpiredAt.IsSet() {
 		toSerialize["expiredAt"] = o.ExpiredAt.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectCommonRecordDto) UnmarshalJSON(data []byte) (err error) {
+	varProjectCommonRecordDto := _ProjectCommonRecordDto{}
+
+	err = json.Unmarshal(data, &varProjectCommonRecordDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectCommonRecordDto(varProjectCommonRecordDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "expiredAt")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectCommonRecordDto struct {

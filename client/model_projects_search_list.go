@@ -22,7 +22,10 @@ var _ MappedNullable = &ProjectsSearchList{}
 type ProjectsSearchList struct {
 	Data []CommonSearchResponseData `json:"data,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectsSearchList ProjectsSearchList
 
 // NewProjectsSearchList instantiates a new ProjectsSearchList object
 // This constructor will assign default values to properties that have it defined,
@@ -122,7 +125,34 @@ func (o ProjectsSearchList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectsSearchList) UnmarshalJSON(data []byte) (err error) {
+	varProjectsSearchList := _ProjectsSearchList{}
+
+	err = json.Unmarshal(data, &varProjectsSearchList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectsSearchList(varProjectsSearchList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectsSearchList struct {

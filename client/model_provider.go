@@ -21,7 +21,10 @@ var _ MappedNullable = &Provider{}
 // Provider struct for Provider
 type Provider struct {
 	Name NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Provider Provider
 
 // NewProvider instantiates a new Provider object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +98,33 @@ func (o Provider) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Provider) UnmarshalJSON(data []byte) (err error) {
+	varProvider := _Provider{}
+
+	err = json.Unmarshal(data, &varProvider)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Provider(varProvider)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProvider struct {

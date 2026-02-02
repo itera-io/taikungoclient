@@ -24,7 +24,10 @@ type ResourcePoolListCommand struct {
 	Username NullableString `json:"username,omitempty"`
 	Password NullableString `json:"password,omitempty"`
 	DatacenterId NullableString `json:"datacenterId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ResourcePoolListCommand ResourcePoolListCommand
 
 // NewResourcePoolListCommand instantiates a new ResourcePoolListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -233,7 +236,36 @@ func (o ResourcePoolListCommand) ToMap() (map[string]interface{}, error) {
 	if o.DatacenterId.IsSet() {
 		toSerialize["datacenterId"] = o.DatacenterId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ResourcePoolListCommand) UnmarshalJSON(data []byte) (err error) {
+	varResourcePoolListCommand := _ResourcePoolListCommand{}
+
+	err = json.Unmarshal(data, &varResourcePoolListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ResourcePoolListCommand(varResourcePoolListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "datacenterId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableResourcePoolListCommand struct {

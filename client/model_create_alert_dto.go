@@ -22,7 +22,10 @@ var _ MappedNullable = &CreateAlertDto{}
 type CreateAlertDto struct {
 	Alerts []KubernetesAlertCreateDto `json:"alerts,omitempty"`
 	Status NullableString `json:"status,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateAlertDto CreateAlertDto
 
 // NewCreateAlertDto instantiates a new CreateAlertDto object
 // This constructor will assign default values to properties that have it defined,
@@ -132,7 +135,34 @@ func (o CreateAlertDto) ToMap() (map[string]interface{}, error) {
 	if o.Status.IsSet() {
 		toSerialize["status"] = o.Status.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateAlertDto) UnmarshalJSON(data []byte) (err error) {
+	varCreateAlertDto := _CreateAlertDto{}
+
+	err = json.Unmarshal(data, &varCreateAlertDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateAlertDto(varCreateAlertDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "alerts")
+		delete(additionalProperties, "status")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateAlertDto struct {

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -26,6 +25,7 @@ type CpuLimitsDto struct {
 	MaxClusterLimits float64 `json:"maxClusterLimits"`
 	DefaultContainerRequest float64 `json:"defaultContainerRequest"`
 	DefaultContainerLimit float64 `json:"defaultContainerLimit"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CpuLimitsDto CpuLimitsDto
@@ -161,6 +161,11 @@ func (o CpuLimitsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["maxClusterLimits"] = o.MaxClusterLimits
 	toSerialize["defaultContainerRequest"] = o.DefaultContainerRequest
 	toSerialize["defaultContainerLimit"] = o.DefaultContainerLimit
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -191,15 +196,23 @@ func (o *CpuLimitsDto) UnmarshalJSON(data []byte) (err error) {
 
 	varCpuLimitsDto := _CpuLimitsDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCpuLimitsDto)
+	err = json.Unmarshal(data, &varCpuLimitsDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CpuLimitsDto(varCpuLimitsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "maxClusterRequests")
+		delete(additionalProperties, "maxClusterLimits")
+		delete(additionalProperties, "defaultContainerRequest")
+		delete(additionalProperties, "defaultContainerLimit")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

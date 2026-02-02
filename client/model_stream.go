@@ -30,7 +30,10 @@ type Stream struct {
 	Filename NullableString `json:"filename,omitempty"`
 	Tier NullableString `json:"tier,omitempty"`
 	Component NullableString `json:"component,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Stream Stream
 
 // NewStream instantiates a new Stream object
 // This constructor will assign default values to properties that have it defined,
@@ -509,7 +512,42 @@ func (o Stream) ToMap() (map[string]interface{}, error) {
 	if o.Component.IsSet() {
 		toSerialize["component"] = o.Component.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Stream) UnmarshalJSON(data []byte) (err error) {
+	varStream := _Stream{}
+
+	err = json.Unmarshal(data, &varStream)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Stream(varStream)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "job")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "pod")
+		delete(additionalProperties, "podTemplateHash")
+		delete(additionalProperties, "streamStream")
+		delete(additionalProperties, "app")
+		delete(additionalProperties, "container")
+		delete(additionalProperties, "filename")
+		delete(additionalProperties, "tier")
+		delete(additionalProperties, "component")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableStream struct {

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -24,6 +23,7 @@ var _ MappedNullable = &ZadaraCredentialList{}
 type ZadaraCredentialList struct {
 	Data []ZadaraCredentialsListDto `json:"data"`
 	TotalCount int32 `json:"totalCount"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ZadaraCredentialList ZadaraCredentialList
@@ -111,6 +111,11 @@ func (o ZadaraCredentialList) ToMap() (map[string]interface{}, error) {
 		toSerialize["data"] = o.Data
 	}
 	toSerialize["totalCount"] = o.TotalCount
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -139,15 +144,21 @@ func (o *ZadaraCredentialList) UnmarshalJSON(data []byte) (err error) {
 
 	varZadaraCredentialList := _ZadaraCredentialList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varZadaraCredentialList)
+	err = json.Unmarshal(data, &varZadaraCredentialList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ZadaraCredentialList(varZadaraCredentialList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

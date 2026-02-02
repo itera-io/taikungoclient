@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -24,6 +23,7 @@ var _ MappedNullable = &UpdateExecutorHealthStatusCommand{}
 type UpdateExecutorHealthStatusCommand struct {
 	ExecutorId int32 `json:"executorId"`
 	Health ExecutorHealth `json:"health"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UpdateExecutorHealthStatusCommand UpdateExecutorHealthStatusCommand
@@ -107,6 +107,11 @@ func (o UpdateExecutorHealthStatusCommand) ToMap() (map[string]interface{}, erro
 	toSerialize := map[string]interface{}{}
 	toSerialize["executorId"] = o.ExecutorId
 	toSerialize["health"] = o.Health
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *UpdateExecutorHealthStatusCommand) UnmarshalJSON(data []byte) (err erro
 
 	varUpdateExecutorHealthStatusCommand := _UpdateExecutorHealthStatusCommand{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUpdateExecutorHealthStatusCommand)
+	err = json.Unmarshal(data, &varUpdateExecutorHealthStatusCommand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UpdateExecutorHealthStatusCommand(varUpdateExecutorHealthStatusCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "executorId")
+		delete(additionalProperties, "health")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

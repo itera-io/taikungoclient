@@ -22,7 +22,10 @@ var _ MappedNullable = &BindAppRepositoryCommand{}
 type BindAppRepositoryCommand struct {
 	FilteringElements []FilteringElementDto `json:"filteringElements,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _BindAppRepositoryCommand BindAppRepositoryCommand
 
 // NewBindAppRepositoryCommand instantiates a new BindAppRepositoryCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -132,7 +135,34 @@ func (o BindAppRepositoryCommand) ToMap() (map[string]interface{}, error) {
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *BindAppRepositoryCommand) UnmarshalJSON(data []byte) (err error) {
+	varBindAppRepositoryCommand := _BindAppRepositoryCommand{}
+
+	err = json.Unmarshal(data, &varBindAppRepositoryCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BindAppRepositoryCommand(varBindAppRepositoryCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "filteringElements")
+		delete(additionalProperties, "organizationId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableBindAppRepositoryCommand struct {

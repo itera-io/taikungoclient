@@ -22,7 +22,10 @@ var _ MappedNullable = &ResourcePoolSummary{}
 type ResourcePoolSummary struct {
 	Name NullableString `json:"name,omitempty"`
 	ResourcePool NullableString `json:"resourcePool,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ResourcePoolSummary ResourcePoolSummary
 
 // NewResourcePoolSummary instantiates a new ResourcePoolSummary object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o ResourcePoolSummary) ToMap() (map[string]interface{}, error) {
 	if o.ResourcePool.IsSet() {
 		toSerialize["resourcePool"] = o.ResourcePool.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ResourcePoolSummary) UnmarshalJSON(data []byte) (err error) {
+	varResourcePoolSummary := _ResourcePoolSummary{}
+
+	err = json.Unmarshal(data, &varResourcePoolSummary)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ResourcePoolSummary(varResourcePoolSummary)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "resourcePool")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableResourcePoolSummary struct {

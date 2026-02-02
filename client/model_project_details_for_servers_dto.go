@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -92,6 +91,7 @@ type ProjectDetailsForServersDto struct {
 	ProxmoxStorage ProxmoxStorage `json:"proxmoxStorage"`
 	IsDrsEnabled bool `json:"isDrsEnabled"`
 	MaxSpotPrice NullableFloat64 `json:"maxSpotPrice"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProjectDetailsForServersDto ProjectDetailsForServersDto
@@ -1967,6 +1967,11 @@ func (o ProjectDetailsForServersDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["proxmoxStorage"] = o.ProxmoxStorage
 	toSerialize["isDrsEnabled"] = o.IsDrsEnabled
 	toSerialize["maxSpotPrice"] = o.MaxSpotPrice.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -2063,15 +2068,89 @@ func (o *ProjectDetailsForServersDto) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectDetailsForServersDto := _ProjectDetailsForServersDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectDetailsForServersDto)
+	err = json.Unmarshal(data, &varProjectDetailsForServersDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectDetailsForServersDto(varProjectDetailsForServersDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "alertsCount")
+		delete(additionalProperties, "worker")
+		delete(additionalProperties, "bastion")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "accessIp")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "masterReady")
+		delete(additionalProperties, "cloudType")
+		delete(additionalProperties, "cloudName")
+		delete(additionalProperties, "cloudId")
+		delete(additionalProperties, "quotaId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "kubernetesVersion")
+		delete(additionalProperties, "isBackupEnabled")
+		delete(additionalProperties, "aiEnabled")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "isAutoUpgrade")
+		delete(additionalProperties, "isMonitoringEnabled")
+		delete(additionalProperties, "isOpaEnabled")
+		delete(additionalProperties, "hasKubeConfigFile")
+		delete(additionalProperties, "hasSelectedFlavors")
+		delete(additionalProperties, "isMaintenanceModeEnabled")
+		delete(additionalProperties, "isProjectMaintenanceModeEnabled")
+		delete(additionalProperties, "isDeprecated")
+		delete(additionalProperties, "cpuLimit")
+		delete(additionalProperties, "ramLimit")
+		delete(additionalProperties, "diskSizeLimit")
+		delete(additionalProperties, "usedCpu")
+		delete(additionalProperties, "usedRam")
+		delete(additionalProperties, "usedDiskSize")
+		delete(additionalProperties, "vmCpuLimit")
+		delete(additionalProperties, "vmRamLimit")
+		delete(additionalProperties, "vmVolumeSizeLimit")
+		delete(additionalProperties, "vmUsedCpu")
+		delete(additionalProperties, "vmUsedRam")
+		delete(additionalProperties, "vmUsedVolumeSize")
+		delete(additionalProperties, "accessProfileName")
+		delete(additionalProperties, "accessProfileId")
+		delete(additionalProperties, "kubernetesProfileName")
+		delete(additionalProperties, "kubernetesProfileId")
+		delete(additionalProperties, "alertingProfileName")
+		delete(additionalProperties, "health")
+		delete(additionalProperties, "alertingProfileId")
+		delete(additionalProperties, "s3CredentialId")
+		delete(additionalProperties, "aiCredentialId")
+		delete(additionalProperties, "expiredAt")
+		delete(additionalProperties, "certificationExpiredAt")
+		delete(additionalProperties, "opaProfileId")
+		delete(additionalProperties, "opaProfileName")
+		delete(additionalProperties, "allowFullSpotKubernetes")
+		delete(additionalProperties, "allowSpotWorkers")
+		delete(additionalProperties, "allowSpotVMs")
+		delete(additionalProperties, "totalHourlyCost")
+		delete(additionalProperties, "autoscalingGroupName")
+		delete(additionalProperties, "minSize")
+		delete(additionalProperties, "maxSize")
+		delete(additionalProperties, "diskSize")
+		delete(additionalProperties, "flavor")
+		delete(additionalProperties, "spotEnabled")
+		delete(additionalProperties, "isAutoscalingEnabled")
+		delete(additionalProperties, "isAutoscalingSpotEnabled")
+		delete(additionalProperties, "hasNfsServer")
+		delete(additionalProperties, "wasmEnabled")
+		delete(additionalProperties, "availabilityZones")
+		delete(additionalProperties, "hypervisors")
+		delete(additionalProperties, "proxmoxStorage")
+		delete(additionalProperties, "isDrsEnabled")
+		delete(additionalProperties, "maxSpotPrice")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

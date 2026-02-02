@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -24,6 +23,7 @@ var _ MappedNullable = &GroupList{}
 type GroupList struct {
 	Data []GroupListDto `json:"data"`
 	TotalCount int32 `json:"totalCount"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GroupList GroupList
@@ -111,6 +111,11 @@ func (o GroupList) ToMap() (map[string]interface{}, error) {
 		toSerialize["data"] = o.Data
 	}
 	toSerialize["totalCount"] = o.TotalCount
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -139,15 +144,21 @@ func (o *GroupList) UnmarshalJSON(data []byte) (err error) {
 
 	varGroupList := _GroupList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGroupList)
+	err = json.Unmarshal(data, &varGroupList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GroupList(varGroupList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

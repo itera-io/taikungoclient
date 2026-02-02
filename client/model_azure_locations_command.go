@@ -24,7 +24,10 @@ type AzureLocationsCommand struct {
 	AzureClientId NullableString `json:"azureClientId,omitempty"`
 	AzureClientSecret NullableString `json:"azureClientSecret,omitempty"`
 	AzureTenantId NullableString `json:"azureTenantId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AzureLocationsCommand AzureLocationsCommand
 
 // NewAzureLocationsCommand instantiates a new AzureLocationsCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -233,7 +236,36 @@ func (o AzureLocationsCommand) ToMap() (map[string]interface{}, error) {
 	if o.AzureTenantId.IsSet() {
 		toSerialize["azureTenantId"] = o.AzureTenantId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AzureLocationsCommand) UnmarshalJSON(data []byte) (err error) {
+	varAzureLocationsCommand := _AzureLocationsCommand{}
+
+	err = json.Unmarshal(data, &varAzureLocationsCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AzureLocationsCommand(varAzureLocationsCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "azureSubscriptionId")
+		delete(additionalProperties, "azureClientId")
+		delete(additionalProperties, "azureClientSecret")
+		delete(additionalProperties, "azureTenantId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAzureLocationsCommand struct {

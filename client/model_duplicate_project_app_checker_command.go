@@ -23,7 +23,10 @@ type DuplicateProjectAppCheckerCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	Namespace NullableString `json:"namespace,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DuplicateProjectAppCheckerCommand DuplicateProjectAppCheckerCommand
 
 // NewDuplicateProjectAppCheckerCommand instantiates a new DuplicateProjectAppCheckerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -177,7 +180,35 @@ func (o DuplicateProjectAppCheckerCommand) ToMap() (map[string]interface{}, erro
 	if o.Namespace.IsSet() {
 		toSerialize["namespace"] = o.Namespace.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DuplicateProjectAppCheckerCommand) UnmarshalJSON(data []byte) (err error) {
+	varDuplicateProjectAppCheckerCommand := _DuplicateProjectAppCheckerCommand{}
+
+	err = json.Unmarshal(data, &varDuplicateProjectAppCheckerCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DuplicateProjectAppCheckerCommand(varDuplicateProjectAppCheckerCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "namespace")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDuplicateProjectAppCheckerCommand struct {

@@ -22,7 +22,10 @@ var _ MappedNullable = &CloudLockManagerCommand{}
 type CloudLockManagerCommand struct {
 	Id *int32 `json:"id,omitempty"`
 	Mode NullableString `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CloudLockManagerCommand CloudLockManagerCommand
 
 // NewCloudLockManagerCommand instantiates a new CloudLockManagerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o CloudLockManagerCommand) ToMap() (map[string]interface{}, error) {
 	if o.Mode.IsSet() {
 		toSerialize["mode"] = o.Mode.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CloudLockManagerCommand) UnmarshalJSON(data []byte) (err error) {
+	varCloudLockManagerCommand := _CloudLockManagerCommand{}
+
+	err = json.Unmarshal(data, &varCloudLockManagerCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CloudLockManagerCommand(varCloudLockManagerCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCloudLockManagerCommand struct {

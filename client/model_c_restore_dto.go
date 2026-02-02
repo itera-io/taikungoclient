@@ -14,7 +14,6 @@ package taikuncore
 import (
 	"encoding/json"
 	"time"
-	"bytes"
 	"fmt"
 )
 
@@ -34,6 +33,7 @@ type CRestoreDto struct {
 	CreatedAt NullableTime `json:"createdAt"`
 	Warnings int64 `json:"warnings"`
 	Phase NullableString `json:"phase"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CRestoreDto CRestoreDto
@@ -355,6 +355,11 @@ func (o CRestoreDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["createdAt"] = o.CreatedAt.Get()
 	toSerialize["warnings"] = o.Warnings
 	toSerialize["phase"] = o.Phase.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -392,15 +397,30 @@ func (o *CRestoreDto) UnmarshalJSON(data []byte) (err error) {
 
 	varCRestoreDto := _CRestoreDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCRestoreDto)
+	err = json.Unmarshal(data, &varCRestoreDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CRestoreDto(varCRestoreDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "metadataName")
+		delete(additionalProperties, "backupName")
+		delete(additionalProperties, "scheduleName")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "excludeNamespaces")
+		delete(additionalProperties, "includeNamespaces")
+		delete(additionalProperties, "completionDateTime")
+		delete(additionalProperties, "startTimeStamp")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "warnings")
+		delete(additionalProperties, "phase")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

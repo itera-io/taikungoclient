@@ -22,7 +22,10 @@ var _ MappedNullable = &PdbSearchList{}
 type PdbSearchList struct {
 	Data []CommonSearchKubernetesResponseData `json:"data,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PdbSearchList PdbSearchList
 
 // NewPdbSearchList instantiates a new PdbSearchList object
 // This constructor will assign default values to properties that have it defined,
@@ -122,7 +125,34 @@ func (o PdbSearchList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PdbSearchList) UnmarshalJSON(data []byte) (err error) {
+	varPdbSearchList := _PdbSearchList{}
+
+	err = json.Unmarshal(data, &varPdbSearchList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PdbSearchList(varPdbSearchList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePdbSearchList struct {

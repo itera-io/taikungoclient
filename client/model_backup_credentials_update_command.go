@@ -24,7 +24,10 @@ type BackupCredentialsUpdateCommand struct {
 	S3Name NullableString `json:"s3Name,omitempty"`
 	S3AccessKeyId NullableString `json:"s3AccessKeyId,omitempty"`
 	S3SecretKey NullableString `json:"s3SecretKey,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _BackupCredentialsUpdateCommand BackupCredentialsUpdateCommand
 
 // NewBackupCredentialsUpdateCommand instantiates a new BackupCredentialsUpdateCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -223,7 +226,36 @@ func (o BackupCredentialsUpdateCommand) ToMap() (map[string]interface{}, error) 
 	if o.S3SecretKey.IsSet() {
 		toSerialize["s3SecretKey"] = o.S3SecretKey.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *BackupCredentialsUpdateCommand) UnmarshalJSON(data []byte) (err error) {
+	varBackupCredentialsUpdateCommand := _BackupCredentialsUpdateCommand{}
+
+	err = json.Unmarshal(data, &varBackupCredentialsUpdateCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BackupCredentialsUpdateCommand(varBackupCredentialsUpdateCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "s3Name")
+		delete(additionalProperties, "s3AccessKeyId")
+		delete(additionalProperties, "s3SecretKey")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableBackupCredentialsUpdateCommand struct {

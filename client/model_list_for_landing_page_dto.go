@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -38,6 +37,7 @@ type ListForLandingPageDto struct {
 	Description NullableString `json:"description"`
 	IsFree bool `json:"isFree"`
 	IsEnterprise bool `json:"isEnterprise"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ListForLandingPageDto ListForLandingPageDto
@@ -493,6 +493,11 @@ func (o ListForLandingPageDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["description"] = o.Description.Get()
 	toSerialize["isFree"] = o.IsFree
 	toSerialize["isEnterprise"] = o.IsEnterprise
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -535,15 +540,35 @@ func (o *ListForLandingPageDto) UnmarshalJSON(data []byte) (err error) {
 
 	varListForLandingPageDto := _ListForLandingPageDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varListForLandingPageDto)
+	err = json.Unmarshal(data, &varListForLandingPageDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ListForLandingPageDto(varListForLandingPageDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "projectLimit")
+		delete(additionalProperties, "serverLimit")
+		delete(additionalProperties, "userLimit")
+		delete(additionalProperties, "cloudCredentialLimit")
+		delete(additionalProperties, "monthlyPrice")
+		delete(additionalProperties, "yearlyPrice")
+		delete(additionalProperties, "tcuPrice")
+		delete(additionalProperties, "isDeprecated")
+		delete(additionalProperties, "currency")
+		delete(additionalProperties, "partnerId")
+		delete(additionalProperties, "trialDays")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "isFree")
+		delete(additionalProperties, "isEnterprise")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

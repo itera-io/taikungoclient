@@ -27,7 +27,10 @@ type ProjectInfracost struct {
 	Breakdown *Breakdown `json:"breakdown,omitempty"`
 	Diff *Diff `json:"diff,omitempty"`
 	Summary *Summary `json:"summary,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectInfracost ProjectInfracost
 
 // NewProjectInfracost instantiates a new ProjectInfracost object
 // This constructor will assign default values to properties that have it defined,
@@ -321,7 +324,39 @@ func (o ProjectInfracost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Summary) {
 		toSerialize["summary"] = o.Summary
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectInfracost) UnmarshalJSON(data []byte) (err error) {
+	varProjectInfracost := _ProjectInfracost{}
+
+	err = json.Unmarshal(data, &varProjectInfracost)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectInfracost(varProjectInfracost)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "displayName")
+		delete(additionalProperties, "metadata")
+		delete(additionalProperties, "pastBreakdown")
+		delete(additionalProperties, "breakdown")
+		delete(additionalProperties, "diff")
+		delete(additionalProperties, "summary")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectInfracost struct {

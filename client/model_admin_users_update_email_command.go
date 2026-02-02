@@ -22,7 +22,10 @@ var _ MappedNullable = &AdminUsersUpdateEmailCommand{}
 type AdminUsersUpdateEmailCommand struct {
 	Id NullableString `json:"id,omitempty"`
 	Email NullableString `json:"email,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AdminUsersUpdateEmailCommand AdminUsersUpdateEmailCommand
 
 // NewAdminUsersUpdateEmailCommand instantiates a new AdminUsersUpdateEmailCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o AdminUsersUpdateEmailCommand) ToMap() (map[string]interface{}, error) {
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AdminUsersUpdateEmailCommand) UnmarshalJSON(data []byte) (err error) {
+	varAdminUsersUpdateEmailCommand := _AdminUsersUpdateEmailCommand{}
+
+	err = json.Unmarshal(data, &varAdminUsersUpdateEmailCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AdminUsersUpdateEmailCommand(varAdminUsersUpdateEmailCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "email")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAdminUsersUpdateEmailCommand struct {

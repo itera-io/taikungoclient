@@ -24,7 +24,10 @@ type OpenstackQuotaList struct {
 	Volume *OpenstackVolumeQuotaDto `json:"volume,omitempty"`
 	Network *OpenstackNetworkDto `json:"network,omitempty"`
 	IsInfra *bool `json:"isInfra,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OpenstackQuotaList OpenstackQuotaList
 
 // NewOpenstackQuotaList instantiates a new OpenstackQuotaList object
 // This constructor will assign default values to properties that have it defined,
@@ -193,7 +196,36 @@ func (o OpenstackQuotaList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsInfra) {
 		toSerialize["isInfra"] = o.IsInfra
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OpenstackQuotaList) UnmarshalJSON(data []byte) (err error) {
+	varOpenstackQuotaList := _OpenstackQuotaList{}
+
+	err = json.Unmarshal(data, &varOpenstackQuotaList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OpenstackQuotaList(varOpenstackQuotaList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "compute")
+		delete(additionalProperties, "volume")
+		delete(additionalProperties, "network")
+		delete(additionalProperties, "isInfra")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOpenstackQuotaList struct {

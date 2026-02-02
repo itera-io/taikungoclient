@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -52,6 +51,7 @@ type OpenstackCredentialsListDto struct {
 	SkipTlsFlag bool `json:"skipTlsFlag"`
 	ManilaEnabled *bool `json:"manilaEnabled,omitempty"`
 	ManilaStorageType NullableString `json:"manilaStorageType,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OpenstackCredentialsListDto OpenstackCredentialsListDto
@@ -897,6 +897,11 @@ func (o OpenstackCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	if o.ManilaStorageType.IsSet() {
 		toSerialize["manilaStorageType"] = o.ManilaStorageType.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -951,15 +956,49 @@ func (o *OpenstackCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varOpenstackCredentialsListDto := _OpenstackCredentialsListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOpenstackCredentialsListDto)
+	err = json.Unmarshal(data, &varOpenstackCredentialsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OpenstackCredentialsListDto(varOpenstackCredentialsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "projectCount")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "user")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "project")
+		delete(additionalProperties, "domain")
+		delete(additionalProperties, "region")
+		delete(additionalProperties, "publicNetwork")
+		delete(additionalProperties, "importNetwork")
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "availabilityZone")
+		delete(additionalProperties, "volumeType")
+		delete(additionalProperties, "internalSubnetId")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "continentName")
+		delete(additionalProperties, "isAdmin")
+		delete(additionalProperties, "isInfra")
+		delete(additionalProperties, "applicationCredEnabled")
+		delete(additionalProperties, "skipTlsFlag")
+		delete(additionalProperties, "manilaEnabled")
+		delete(additionalProperties, "manilaStorageType")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -27,6 +26,7 @@ type NodeDto struct {
 	KubeletSufficient interface{} `json:"kubeletSufficient"`
 	KubeletDiskPressure interface{} `json:"kubeletDiskPressure"`
 	KubeletMemory interface{} `json:"kubeletMemory"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _NodeDto NodeDto
@@ -208,6 +208,11 @@ func (o NodeDto) ToMap() (map[string]interface{}, error) {
 	if o.KubeletMemory != nil {
 		toSerialize["kubeletMemory"] = o.KubeletMemory
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -239,15 +244,24 @@ func (o *NodeDto) UnmarshalJSON(data []byte) (err error) {
 
 	varNodeDto := _NodeDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varNodeDto)
+	err = json.Unmarshal(data, &varNodeDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = NodeDto(varNodeDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "metadataName")
+		delete(additionalProperties, "kubeletReady")
+		delete(additionalProperties, "kubeletSufficient")
+		delete(additionalProperties, "kubeletDiskPressure")
+		delete(additionalProperties, "kubeletMemory")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -23,7 +23,10 @@ type ArtifactUrlCheckerCommand struct {
 	Url NullableString `json:"url,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ArtifactUrlCheckerCommand ArtifactUrlCheckerCommand
 
 // NewArtifactUrlCheckerCommand instantiates a new ArtifactUrlCheckerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -187,7 +190,35 @@ func (o ArtifactUrlCheckerCommand) ToMap() (map[string]interface{}, error) {
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ArtifactUrlCheckerCommand) UnmarshalJSON(data []byte) (err error) {
+	varArtifactUrlCheckerCommand := _ArtifactUrlCheckerCommand{}
+
+	err = json.Unmarshal(data, &varArtifactUrlCheckerCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ArtifactUrlCheckerCommand(varArtifactUrlCheckerCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "organizationId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableArtifactUrlCheckerCommand struct {

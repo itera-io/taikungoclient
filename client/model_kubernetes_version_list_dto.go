@@ -22,7 +22,10 @@ var _ MappedNullable = &KubernetesVersionListDto{}
 type KubernetesVersionListDto struct {
 	Version NullableString `json:"version,omitempty"`
 	IsKubevapEnabled *bool `json:"isKubevapEnabled,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _KubernetesVersionListDto KubernetesVersionListDto
 
 // NewKubernetesVersionListDto instantiates a new KubernetesVersionListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o KubernetesVersionListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsKubevapEnabled) {
 		toSerialize["isKubevapEnabled"] = o.IsKubevapEnabled
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *KubernetesVersionListDto) UnmarshalJSON(data []byte) (err error) {
+	varKubernetesVersionListDto := _KubernetesVersionListDto{}
+
+	err = json.Unmarshal(data, &varKubernetesVersionListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubernetesVersionListDto(varKubernetesVersionListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "isKubevapEnabled")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableKubernetesVersionListDto struct {

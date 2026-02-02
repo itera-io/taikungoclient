@@ -29,7 +29,10 @@ type Metadata struct {
 	VcsCommitMessage NullableString `json:"vcsCommitMessage,omitempty"`
 	VcsRepositoryUrl NullableString `json:"vcsRepositoryUrl,omitempty"`
 	UsageApiEnabled *bool `json:"usageApiEnabled,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Metadata Metadata
 
 // NewMetadata instantiates a new Metadata object
 // This constructor will assign default values to properties that have it defined,
@@ -453,7 +456,41 @@ func (o Metadata) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UsageApiEnabled) {
 		toSerialize["usageApiEnabled"] = o.UsageApiEnabled
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Metadata) UnmarshalJSON(data []byte) (err error) {
+	varMetadata := _Metadata{}
+
+	err = json.Unmarshal(data, &varMetadata)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Metadata(varMetadata)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "infracostCommand")
+		delete(additionalProperties, "vcsBranch")
+		delete(additionalProperties, "vcsCommitSha")
+		delete(additionalProperties, "vcsCommitAuthorName")
+		delete(additionalProperties, "vcsCommitAuthorEmail")
+		delete(additionalProperties, "vcsCommitTimestamp")
+		delete(additionalProperties, "vcsCommitMessage")
+		delete(additionalProperties, "vcsRepositoryUrl")
+		delete(additionalProperties, "usageApiEnabled")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableMetadata struct {

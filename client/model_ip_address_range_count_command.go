@@ -22,7 +22,10 @@ var _ MappedNullable = &IpAddressRangeCountCommand{}
 type IpAddressRangeCountCommand struct {
 	Begin NullableString `json:"begin,omitempty"`
 	End NullableString `json:"end,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _IpAddressRangeCountCommand IpAddressRangeCountCommand
 
 // NewIpAddressRangeCountCommand instantiates a new IpAddressRangeCountCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o IpAddressRangeCountCommand) ToMap() (map[string]interface{}, error) {
 	if o.End.IsSet() {
 		toSerialize["end"] = o.End.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *IpAddressRangeCountCommand) UnmarshalJSON(data []byte) (err error) {
+	varIpAddressRangeCountCommand := _IpAddressRangeCountCommand{}
+
+	err = json.Unmarshal(data, &varIpAddressRangeCountCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IpAddressRangeCountCommand(varIpAddressRangeCountCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "begin")
+		delete(additionalProperties, "end")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableIpAddressRangeCountCommand struct {

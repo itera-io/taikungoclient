@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -30,6 +29,7 @@ type VsphereNetworkListDto struct {
 	EndAllocationRange string `json:"endAllocationRange"`
 	IsPrivate bool `json:"isPrivate"`
 	IsVirtualLbNetwork bool `json:"isVirtualLbNetwork"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _VsphereNetworkListDto VsphereNetworkListDto
@@ -271,6 +271,11 @@ func (o VsphereNetworkListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["endAllocationRange"] = o.EndAllocationRange
 	toSerialize["isPrivate"] = o.IsPrivate
 	toSerialize["isVirtualLbNetwork"] = o.IsVirtualLbNetwork
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -305,15 +310,27 @@ func (o *VsphereNetworkListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varVsphereNetworkListDto := _VsphereNetworkListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVsphereNetworkListDto)
+	err = json.Unmarshal(data, &varVsphereNetworkListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = VsphereNetworkListDto(varVsphereNetworkListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "gateway")
+		delete(additionalProperties, "ipAddress")
+		delete(additionalProperties, "netMask")
+		delete(additionalProperties, "beginAllocationRange")
+		delete(additionalProperties, "endAllocationRange")
+		delete(additionalProperties, "isPrivate")
+		delete(additionalProperties, "isVirtualLbNetwork")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

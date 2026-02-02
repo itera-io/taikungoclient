@@ -26,7 +26,10 @@ type UserTokenCreateCommand struct {
 	Name NullableString `json:"name,omitempty"`
 	Endpoints []AvailableEndpointData `json:"endpoints,omitempty"`
 	BindALL *bool `json:"bindALL,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UserTokenCreateCommand UserTokenCreateCommand
 
 // NewUserTokenCreateCommand instantiates a new UserTokenCreateCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -251,7 +254,37 @@ func (o UserTokenCreateCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BindALL) {
 		toSerialize["bindALL"] = o.BindALL
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UserTokenCreateCommand) UnmarshalJSON(data []byte) (err error) {
+	varUserTokenCreateCommand := _UserTokenCreateCommand{}
+
+	err = json.Unmarshal(data, &varUserTokenCreateCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserTokenCreateCommand(varUserTokenCreateCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "expireDate")
+		delete(additionalProperties, "isReadonly")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "endpoints")
+		delete(additionalProperties, "bindALL")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUserTokenCreateCommand struct {

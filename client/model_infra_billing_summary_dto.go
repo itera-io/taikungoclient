@@ -24,7 +24,10 @@ type InfraBillingSummaryDto struct {
 	InfraProductName NullableString `json:"infraProductName,omitempty"`
 	Intervals []DateInterval `json:"intervals,omitempty"`
 	TotalPrice *float64 `json:"totalPrice,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _InfraBillingSummaryDto InfraBillingSummaryDto
 
 // NewInfraBillingSummaryDto instantiates a new InfraBillingSummaryDto object
 // This constructor will assign default values to properties that have it defined,
@@ -204,7 +207,36 @@ func (o InfraBillingSummaryDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TotalPrice) {
 		toSerialize["totalPrice"] = o.TotalPrice
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *InfraBillingSummaryDto) UnmarshalJSON(data []byte) (err error) {
+	varInfraBillingSummaryDto := _InfraBillingSummaryDto{}
+
+	err = json.Unmarshal(data, &varInfraBillingSummaryDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InfraBillingSummaryDto(varInfraBillingSummaryDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "infraProductId")
+		delete(additionalProperties, "infraProductName")
+		delete(additionalProperties, "intervals")
+		delete(additionalProperties, "totalPrice")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableInfraBillingSummaryDto struct {

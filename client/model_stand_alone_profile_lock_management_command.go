@@ -22,7 +22,10 @@ var _ MappedNullable = &StandAloneProfileLockManagementCommand{}
 type StandAloneProfileLockManagementCommand struct {
 	Id *int32 `json:"id,omitempty"`
 	Mode NullableString `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _StandAloneProfileLockManagementCommand StandAloneProfileLockManagementCommand
 
 // NewStandAloneProfileLockManagementCommand instantiates a new StandAloneProfileLockManagementCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o StandAloneProfileLockManagementCommand) ToMap() (map[string]interface{},
 	if o.Mode.IsSet() {
 		toSerialize["mode"] = o.Mode.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *StandAloneProfileLockManagementCommand) UnmarshalJSON(data []byte) (err error) {
+	varStandAloneProfileLockManagementCommand := _StandAloneProfileLockManagementCommand{}
+
+	err = json.Unmarshal(data, &varStandAloneProfileLockManagementCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StandAloneProfileLockManagementCommand(varStandAloneProfileLockManagementCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableStandAloneProfileLockManagementCommand struct {

@@ -21,7 +21,10 @@ var _ MappedNullable = &EnsureCodesDownloadedCommand{}
 // EnsureCodesDownloadedCommand struct for EnsureCodesDownloadedCommand
 type EnsureCodesDownloadedCommand struct {
 	Data *TwoFactorAuthVerifyResult `json:"data,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EnsureCodesDownloadedCommand EnsureCodesDownloadedCommand
 
 // NewEnsureCodesDownloadedCommand instantiates a new EnsureCodesDownloadedCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o EnsureCodesDownloadedCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Data) {
 		toSerialize["data"] = o.Data
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EnsureCodesDownloadedCommand) UnmarshalJSON(data []byte) (err error) {
+	varEnsureCodesDownloadedCommand := _EnsureCodesDownloadedCommand{}
+
+	err = json.Unmarshal(data, &varEnsureCodesDownloadedCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnsureCodesDownloadedCommand(varEnsureCodesDownloadedCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEnsureCodesDownloadedCommand struct {

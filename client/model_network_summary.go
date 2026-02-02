@@ -23,7 +23,10 @@ type NetworkSummary struct {
 	Network NullableString `json:"network,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	Type NullableString `json:"type,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _NetworkSummary NetworkSummary
 
 // NewNetworkSummary instantiates a new NetworkSummary object
 // This constructor will assign default values to properties that have it defined,
@@ -187,7 +190,35 @@ func (o NetworkSummary) ToMap() (map[string]interface{}, error) {
 	if o.Type.IsSet() {
 		toSerialize["type"] = o.Type.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *NetworkSummary) UnmarshalJSON(data []byte) (err error) {
+	varNetworkSummary := _NetworkSummary{}
+
+	err = json.Unmarshal(data, &varNetworkSummary)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NetworkSummary(varNetworkSummary)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "network")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "type")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableNetworkSummary struct {

@@ -28,7 +28,10 @@ type LokiLogsQuery struct {
 	EndDate NullableTime `json:"endDate,omitempty"`
 	Limit NullableInt32 `json:"limit,omitempty"`
 	Direction NullableString `json:"direction,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _LokiLogsQuery LokiLogsQuery
 
 // NewLokiLogsQuery instantiates a new LokiLogsQuery object
 // This constructor will assign default values to properties that have it defined,
@@ -353,7 +356,39 @@ func (o LokiLogsQuery) ToMap() (map[string]interface{}, error) {
 	if o.Direction.IsSet() {
 		toSerialize["direction"] = o.Direction.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *LokiLogsQuery) UnmarshalJSON(data []byte) (err error) {
+	varLokiLogsQuery := _LokiLogsQuery{}
+
+	err = json.Unmarshal(data, &varLokiLogsQuery)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LokiLogsQuery(varLokiLogsQuery)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "parameters")
+		delete(additionalProperties, "filters")
+		delete(additionalProperties, "startDate")
+		delete(additionalProperties, "endDate")
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "direction")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableLokiLogsQuery struct {

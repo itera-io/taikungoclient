@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -28,6 +27,7 @@ type BillingInfoDto struct {
 	City NullableString `json:"city"`
 	BillingEmail NullableString `json:"billingEmail"`
 	Address NullableString `json:"address"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _BillingInfoDto BillingInfoDto
@@ -227,6 +227,11 @@ func (o BillingInfoDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["city"] = o.City.Get()
 	toSerialize["billingEmail"] = o.BillingEmail.Get()
 	toSerialize["address"] = o.Address.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -259,15 +264,25 @@ func (o *BillingInfoDto) UnmarshalJSON(data []byte) (err error) {
 
 	varBillingInfoDto := _BillingInfoDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBillingInfoDto)
+	err = json.Unmarshal(data, &varBillingInfoDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = BillingInfoDto(varBillingInfoDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "country")
+		delete(additionalProperties, "vatNumber")
+		delete(additionalProperties, "legalName")
+		delete(additionalProperties, "city")
+		delete(additionalProperties, "billingEmail")
+		delete(additionalProperties, "address")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

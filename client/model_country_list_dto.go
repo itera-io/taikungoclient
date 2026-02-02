@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -24,6 +23,7 @@ var _ MappedNullable = &CountryListDto{}
 type CountryListDto struct {
 	Name NullableString `json:"name"`
 	IsEu bool `json:"isEu"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CountryListDto CountryListDto
@@ -109,6 +109,11 @@ func (o CountryListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name.Get()
 	toSerialize["isEu"] = o.IsEu
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -137,15 +142,21 @@ func (o *CountryListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varCountryListDto := _CountryListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCountryListDto)
+	err = json.Unmarshal(data, &varCountryListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CountryListDto(varCountryListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "isEu")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -30,7 +30,10 @@ type UpdateInvoiceDto struct {
 	RequiredPaymentAction NullableBool `json:"requiredPaymentAction,omitempty"`
 	StripeInvoiceId NullableString `json:"stripeInvoiceId,omitempty"`
 	Price NullableFloat64 `json:"price,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateInvoiceDto UpdateInvoiceDto
 
 // NewUpdateInvoiceDto instantiates a new UpdateInvoiceDto object
 // This constructor will assign default values to properties that have it defined,
@@ -464,7 +467,41 @@ func (o UpdateInvoiceDto) ToMap() (map[string]interface{}, error) {
 	if o.Price.IsSet() {
 		toSerialize["price"] = o.Price.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateInvoiceDto) UnmarshalJSON(data []byte) (err error) {
+	varUpdateInvoiceDto := _UpdateInvoiceDto{}
+
+	err = json.Unmarshal(data, &varUpdateInvoiceDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateInvoiceDto(varUpdateInvoiceDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "organizationSubscriptionId")
+		delete(additionalProperties, "startDate")
+		delete(additionalProperties, "endDate")
+		delete(additionalProperties, "dueDate")
+		delete(additionalProperties, "isPaid")
+		delete(additionalProperties, "requiredPaymentAction")
+		delete(additionalProperties, "stripeInvoiceId")
+		delete(additionalProperties, "price")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateInvoiceDto struct {

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -40,6 +39,7 @@ type KubernetesResourcesDto struct {
 	NetworkPolicies int64 `json:"networkPolicies"`
 	Pdbs int64 `json:"pdbs"`
 	StorageClasses int64 `json:"storageClasses"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _KubernetesResourcesDto KubernetesResourcesDto
@@ -539,6 +539,11 @@ func (o KubernetesResourcesDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["networkPolicies"] = o.NetworkPolicies
 	toSerialize["pdbs"] = o.Pdbs
 	toSerialize["storageClasses"] = o.StorageClasses
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -583,15 +588,37 @@ func (o *KubernetesResourcesDto) UnmarshalJSON(data []byte) (err error) {
 
 	varKubernetesResourcesDto := _KubernetesResourcesDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKubernetesResourcesDto)
+	err = json.Unmarshal(data, &varKubernetesResourcesDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubernetesResourcesDto(varKubernetesResourcesDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pods")
+		delete(additionalProperties, "crds")
+		delete(additionalProperties, "helmreleases")
+		delete(additionalProperties, "daemonSets")
+		delete(additionalProperties, "deployments")
+		delete(additionalProperties, "statefulSets")
+		delete(additionalProperties, "jobs")
+		delete(additionalProperties, "cronJobs")
+		delete(additionalProperties, "configMaps")
+		delete(additionalProperties, "namespaces")
+		delete(additionalProperties, "nodes")
+		delete(additionalProperties, "pvcs")
+		delete(additionalProperties, "secrets")
+		delete(additionalProperties, "services")
+		delete(additionalProperties, "ingresses")
+		delete(additionalProperties, "networkPolicies")
+		delete(additionalProperties, "pdbs")
+		delete(additionalProperties, "storageClasses")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

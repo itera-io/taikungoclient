@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -29,6 +28,7 @@ type StandaloneVisibilityDto struct {
 	Start bool `json:"start"`
 	Stop bool `json:"stop"`
 	Reboot bool `json:"reboot"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StandaloneVisibilityDto StandaloneVisibilityDto
@@ -242,6 +242,11 @@ func (o StandaloneVisibilityDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["start"] = o.Start
 	toSerialize["stop"] = o.Stop
 	toSerialize["reboot"] = o.Reboot
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -275,15 +280,26 @@ func (o *StandaloneVisibilityDto) UnmarshalJSON(data []byte) (err error) {
 
 	varStandaloneVisibilityDto := _StandaloneVisibilityDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStandaloneVisibilityDto)
+	err = json.Unmarshal(data, &varStandaloneVisibilityDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StandaloneVisibilityDto(varStandaloneVisibilityDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "showStatus")
+		delete(additionalProperties, "showConsole")
+		delete(additionalProperties, "shelve")
+		delete(additionalProperties, "unshelve")
+		delete(additionalProperties, "start")
+		delete(additionalProperties, "stop")
+		delete(additionalProperties, "reboot")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

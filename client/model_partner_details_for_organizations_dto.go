@@ -25,7 +25,10 @@ type PartnerDetailsForOrganizationsDto struct {
 	Link NullableString `json:"link,omitempty"`
 	Domain NullableString `json:"domain,omitempty"`
 	Logo NullableString `json:"logo,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PartnerDetailsForOrganizationsDto PartnerDetailsForOrganizationsDto
 
 // NewPartnerDetailsForOrganizationsDto instantiates a new PartnerDetailsForOrganizationsDto object
 // This constructor will assign default values to properties that have it defined,
@@ -269,7 +272,37 @@ func (o PartnerDetailsForOrganizationsDto) ToMap() (map[string]interface{}, erro
 	if o.Logo.IsSet() {
 		toSerialize["logo"] = o.Logo.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PartnerDetailsForOrganizationsDto) UnmarshalJSON(data []byte) (err error) {
+	varPartnerDetailsForOrganizationsDto := _PartnerDetailsForOrganizationsDto{}
+
+	err = json.Unmarshal(data, &varPartnerDetailsForOrganizationsDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PartnerDetailsForOrganizationsDto(varPartnerDetailsForOrganizationsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "link")
+		delete(additionalProperties, "domain")
+		delete(additionalProperties, "logo")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePartnerDetailsForOrganizationsDto struct {

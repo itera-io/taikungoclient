@@ -25,7 +25,10 @@ type LoginCommand struct {
 	Mode NullableString `json:"mode,omitempty"`
 	AccessKey NullableString `json:"accessKey,omitempty"`
 	SecretKey NullableString `json:"secretKey,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _LoginCommand LoginCommand
 
 // NewLoginCommand instantiates a new LoginCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -279,7 +282,37 @@ func (o LoginCommand) ToMap() (map[string]interface{}, error) {
 	if o.SecretKey.IsSet() {
 		toSerialize["secretKey"] = o.SecretKey.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *LoginCommand) UnmarshalJSON(data []byte) (err error) {
+	varLoginCommand := _LoginCommand{}
+
+	err = json.Unmarshal(data, &varLoginCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LoginCommand(varLoginCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "accessKey")
+		delete(additionalProperties, "secretKey")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableLoginCommand struct {

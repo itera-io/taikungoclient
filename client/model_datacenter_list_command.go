@@ -24,7 +24,10 @@ type DatacenterListCommand struct {
 	Username NullableString `json:"username,omitempty"`
 	Password NullableString `json:"password,omitempty"`
 	DatacenterName NullableString `json:"datacenterName,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DatacenterListCommand DatacenterListCommand
 
 // NewDatacenterListCommand instantiates a new DatacenterListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -233,7 +236,36 @@ func (o DatacenterListCommand) ToMap() (map[string]interface{}, error) {
 	if o.DatacenterName.IsSet() {
 		toSerialize["datacenterName"] = o.DatacenterName.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DatacenterListCommand) UnmarshalJSON(data []byte) (err error) {
+	varDatacenterListCommand := _DatacenterListCommand{}
+
+	err = json.Unmarshal(data, &varDatacenterListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DatacenterListCommand(varDatacenterListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "datacenterName")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDatacenterListCommand struct {

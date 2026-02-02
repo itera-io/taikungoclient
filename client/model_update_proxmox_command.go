@@ -24,7 +24,10 @@ type UpdateProxmoxCommand struct {
 	Name NullableString `json:"name,omitempty"`
 	TokenId NullableString `json:"tokenId,omitempty"`
 	TokenSecret NullableString `json:"tokenSecret,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateProxmoxCommand UpdateProxmoxCommand
 
 // NewUpdateProxmoxCommand instantiates a new UpdateProxmoxCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -223,7 +226,36 @@ func (o UpdateProxmoxCommand) ToMap() (map[string]interface{}, error) {
 	if o.TokenSecret.IsSet() {
 		toSerialize["tokenSecret"] = o.TokenSecret.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateProxmoxCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateProxmoxCommand := _UpdateProxmoxCommand{}
+
+	err = json.Unmarshal(data, &varUpdateProxmoxCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateProxmoxCommand(varUpdateProxmoxCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "tokenId")
+		delete(additionalProperties, "tokenSecret")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateProxmoxCommand struct {

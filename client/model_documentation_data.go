@@ -24,7 +24,10 @@ type DocumentationData struct {
 	Key NullableString `json:"key,omitempty"`
 	Link NullableString `json:"link,omitempty"`
 	Role NullableString `json:"role,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DocumentationData DocumentationData
 
 // NewDocumentationData instantiates a new DocumentationData object
 // This constructor will assign default values to properties that have it defined,
@@ -223,7 +226,36 @@ func (o DocumentationData) ToMap() (map[string]interface{}, error) {
 	if o.Role.IsSet() {
 		toSerialize["role"] = o.Role.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DocumentationData) UnmarshalJSON(data []byte) (err error) {
+	varDocumentationData := _DocumentationData{}
+
+	err = json.Unmarshal(data, &varDocumentationData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DocumentationData(varDocumentationData)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "link")
+		delete(additionalProperties, "role")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDocumentationData struct {

@@ -34,7 +34,10 @@ type ProjectDescribeDto struct {
 	Flavors []string `json:"flavors,omitempty"`
 	Images []string `json:"images,omitempty"`
 	AccessIp NullableString `json:"accessIp,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectDescribeDto ProjectDescribeDto
 
 // NewProjectDescribeDto instantiates a new ProjectDescribeDto object
 // This constructor will assign default values to properties that have it defined,
@@ -605,7 +608,46 @@ func (o ProjectDescribeDto) ToMap() (map[string]interface{}, error) {
 	if o.AccessIp.IsSet() {
 		toSerialize["accessIp"] = o.AccessIp.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectDescribeDto) UnmarshalJSON(data []byte) (err error) {
+	varProjectDescribeDto := _ProjectDescribeDto{}
+
+	err = json.Unmarshal(data, &varProjectDescribeDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectDescribeDto(varProjectDescribeDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "isMonitoringEnabled")
+		delete(additionalProperties, "isBackupEnabled")
+		delete(additionalProperties, "isAutoUpgradeEnabled")
+		delete(additionalProperties, "serversCount")
+		delete(additionalProperties, "vmsCount")
+		delete(additionalProperties, "alertsCount")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "flavors")
+		delete(additionalProperties, "images")
+		delete(additionalProperties, "accessIp")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectDescribeDto struct {

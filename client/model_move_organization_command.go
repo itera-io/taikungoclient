@@ -21,7 +21,10 @@ var _ MappedNullable = &MoveOrganizationCommand{}
 // MoveOrganizationCommand struct for MoveOrganizationCommand
 type MoveOrganizationCommand struct {
 	OrganizationId *int32 `json:"organizationId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _MoveOrganizationCommand MoveOrganizationCommand
 
 // NewMoveOrganizationCommand instantiates a new MoveOrganizationCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o MoveOrganizationCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *MoveOrganizationCommand) UnmarshalJSON(data []byte) (err error) {
+	varMoveOrganizationCommand := _MoveOrganizationCommand{}
+
+	err = json.Unmarshal(data, &varMoveOrganizationCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = MoveOrganizationCommand(varMoveOrganizationCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "organizationId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableMoveOrganizationCommand struct {

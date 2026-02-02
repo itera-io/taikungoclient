@@ -25,7 +25,10 @@ type CreateUserCommand struct {
 	Email NullableString `json:"email,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	Role *UserRole `json:"role,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateUserCommand CreateUserCommand
 
 // NewCreateUserCommand instantiates a new CreateUserCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -269,7 +272,37 @@ func (o CreateUserCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Role) {
 		toSerialize["role"] = o.Role
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateUserCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateUserCommand := _CreateUserCommand{}
+
+	err = json.Unmarshal(data, &varCreateUserCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateUserCommand(varCreateUserCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "displayName")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "role")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateUserCommand struct {

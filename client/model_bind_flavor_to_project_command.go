@@ -22,7 +22,10 @@ var _ MappedNullable = &BindFlavorToProjectCommand{}
 type BindFlavorToProjectCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	Flavors []string `json:"flavors,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _BindFlavorToProjectCommand BindFlavorToProjectCommand
 
 // NewBindFlavorToProjectCommand instantiates a new BindFlavorToProjectCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -122,7 +125,34 @@ func (o BindFlavorToProjectCommand) ToMap() (map[string]interface{}, error) {
 	if o.Flavors != nil {
 		toSerialize["flavors"] = o.Flavors
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *BindFlavorToProjectCommand) UnmarshalJSON(data []byte) (err error) {
+	varBindFlavorToProjectCommand := _BindFlavorToProjectCommand{}
+
+	err = json.Unmarshal(data, &varBindFlavorToProjectCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BindFlavorToProjectCommand(varBindFlavorToProjectCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "flavors")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableBindFlavorToProjectCommand struct {

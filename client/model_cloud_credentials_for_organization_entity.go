@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -28,6 +27,7 @@ type CloudCredentialsForOrganizationEntity struct {
 	CloudType CloudType `json:"cloudType"`
 	IsDefault bool `json:"isDefault"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CloudCredentialsForOrganizationEntity CloudCredentialsForOrganizationEntity
@@ -230,6 +230,11 @@ func (o CloudCredentialsForOrganizationEntity) ToMap() (map[string]interface{}, 
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -261,15 +266,25 @@ func (o *CloudCredentialsForOrganizationEntity) UnmarshalJSON(data []byte) (err 
 
 	varCloudCredentialsForOrganizationEntity := _CloudCredentialsForOrganizationEntity{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCloudCredentialsForOrganizationEntity)
+	err = json.Unmarshal(data, &varCloudCredentialsForOrganizationEntity)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CloudCredentialsForOrganizationEntity(varCloudCredentialsForOrganizationEntity)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "fullName")
+		delete(additionalProperties, "cloudType")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "organizationId")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

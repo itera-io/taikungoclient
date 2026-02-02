@@ -21,7 +21,10 @@ var _ MappedNullable = &AlertData{}
 // AlertData struct for AlertData
 type AlertData struct {
 	Groups []Group `json:"groups,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AlertData AlertData
 
 // NewAlertData instantiates a new AlertData object
 // This constructor will assign default values to properties that have it defined,
@@ -86,7 +89,33 @@ func (o AlertData) ToMap() (map[string]interface{}, error) {
 	if o.Groups != nil {
 		toSerialize["groups"] = o.Groups
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AlertData) UnmarshalJSON(data []byte) (err error) {
+	varAlertData := _AlertData{}
+
+	err = json.Unmarshal(data, &varAlertData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AlertData(varAlertData)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "groups")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAlertData struct {

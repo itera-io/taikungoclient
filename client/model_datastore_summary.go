@@ -25,7 +25,10 @@ type DatastoreSummary struct {
 	FreeSpace *int64 `json:"freeSpace,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	Type NullableString `json:"type,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DatastoreSummary DatastoreSummary
 
 // NewDatastoreSummary instantiates a new DatastoreSummary object
 // This constructor will assign default values to properties that have it defined,
@@ -259,7 +262,37 @@ func (o DatastoreSummary) ToMap() (map[string]interface{}, error) {
 	if o.Type.IsSet() {
 		toSerialize["type"] = o.Type.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DatastoreSummary) UnmarshalJSON(data []byte) (err error) {
+	varDatastoreSummary := _DatastoreSummary{}
+
+	err = json.Unmarshal(data, &varDatastoreSummary)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DatastoreSummary(varDatastoreSummary)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "capacity")
+		delete(additionalProperties, "datastore")
+		delete(additionalProperties, "freeSpace")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "type")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDatastoreSummary struct {

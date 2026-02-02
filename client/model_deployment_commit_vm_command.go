@@ -21,7 +21,10 @@ var _ MappedNullable = &DeploymentCommitVmCommand{}
 // DeploymentCommitVmCommand struct for DeploymentCommitVmCommand
 type DeploymentCommitVmCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeploymentCommitVmCommand DeploymentCommitVmCommand
 
 // NewDeploymentCommitVmCommand instantiates a new DeploymentCommitVmCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o DeploymentCommitVmCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeploymentCommitVmCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeploymentCommitVmCommand := _DeploymentCommitVmCommand{}
+
+	err = json.Unmarshal(data, &varDeploymentCommitVmCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeploymentCommitVmCommand(varDeploymentCommitVmCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeploymentCommitVmCommand struct {

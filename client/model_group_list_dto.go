@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -27,6 +26,7 @@ type GroupListDto struct {
 	ClaimValue NullableString `json:"claimValue,omitempty"`
 	Organizations []GroupOrganizationsDto `json:"organizations,omitempty"`
 	Users []GroupUsersDto `json:"users,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GroupListDto GroupListDto
@@ -227,6 +227,11 @@ func (o GroupListDto) ToMap() (map[string]interface{}, error) {
 	if o.Users != nil {
 		toSerialize["users"] = o.Users
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -255,15 +260,24 @@ func (o *GroupListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varGroupListDto := _GroupListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGroupListDto)
+	err = json.Unmarshal(data, &varGroupListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GroupListDto(varGroupListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "claimValue")
+		delete(additionalProperties, "organizations")
+		delete(additionalProperties, "users")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -22,7 +22,10 @@ var _ MappedNullable = &UserExistCommand{}
 type UserExistCommand struct {
 	Email NullableString `json:"email,omitempty"`
 	UserName NullableString `json:"userName,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UserExistCommand UserExistCommand
 
 // NewUserExistCommand instantiates a new UserExistCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o UserExistCommand) ToMap() (map[string]interface{}, error) {
 	if o.UserName.IsSet() {
 		toSerialize["userName"] = o.UserName.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UserExistCommand) UnmarshalJSON(data []byte) (err error) {
+	varUserExistCommand := _UserExistCommand{}
+
+	err = json.Unmarshal(data, &varUserExistCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserExistCommand(varUserExistCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "userName")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUserExistCommand struct {

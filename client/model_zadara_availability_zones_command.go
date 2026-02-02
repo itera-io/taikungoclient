@@ -24,7 +24,10 @@ type ZadaraAvailabilityZonesCommand struct {
 	ZadaraAccessKeyId NullableString `json:"zadaraAccessKeyId,omitempty"`
 	ZadaraSecretAccessKey NullableString `json:"zadaraSecretAccessKey,omitempty"`
 	CloudId NullableInt32 `json:"cloudId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ZadaraAvailabilityZonesCommand ZadaraAvailabilityZonesCommand
 
 // NewZadaraAvailabilityZonesCommand instantiates a new ZadaraAvailabilityZonesCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -233,7 +236,36 @@ func (o ZadaraAvailabilityZonesCommand) ToMap() (map[string]interface{}, error) 
 	if o.CloudId.IsSet() {
 		toSerialize["cloudId"] = o.CloudId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ZadaraAvailabilityZonesCommand) UnmarshalJSON(data []byte) (err error) {
+	varZadaraAvailabilityZonesCommand := _ZadaraAvailabilityZonesCommand{}
+
+	err = json.Unmarshal(data, &varZadaraAvailabilityZonesCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ZadaraAvailabilityZonesCommand(varZadaraAvailabilityZonesCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "zadaraAccessKeyId")
+		delete(additionalProperties, "zadaraSecretAccessKey")
+		delete(additionalProperties, "cloudId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableZadaraAvailabilityZonesCommand struct {

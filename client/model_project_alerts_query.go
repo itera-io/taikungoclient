@@ -22,7 +22,10 @@ var _ MappedNullable = &ProjectAlertsQuery{}
 type ProjectAlertsQuery struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	Mode *ProjectType `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectAlertsQuery ProjectAlertsQuery
 
 // NewProjectAlertsQuery instantiates a new ProjectAlertsQuery object
 // This constructor will assign default values to properties that have it defined,
@@ -121,7 +124,34 @@ func (o ProjectAlertsQuery) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Mode) {
 		toSerialize["mode"] = o.Mode
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectAlertsQuery) UnmarshalJSON(data []byte) (err error) {
+	varProjectAlertsQuery := _ProjectAlertsQuery{}
+
+	err = json.Unmarshal(data, &varProjectAlertsQuery)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectAlertsQuery(varProjectAlertsQuery)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectAlertsQuery struct {

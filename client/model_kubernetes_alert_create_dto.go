@@ -27,7 +27,10 @@ type KubernetesAlertCreateDto struct {
 	StartsAt *time.Time `json:"startsAt,omitempty"`
 	EndsAt *time.Time `json:"endsAt,omitempty"`
 	Fingerprint NullableString `json:"fingerprint,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _KubernetesAlertCreateDto KubernetesAlertCreateDto
 
 // NewKubernetesAlertCreateDto instantiates a new KubernetesAlertCreateDto object
 // This constructor will assign default values to properties that have it defined,
@@ -287,7 +290,38 @@ func (o KubernetesAlertCreateDto) ToMap() (map[string]interface{}, error) {
 	if o.Fingerprint.IsSet() {
 		toSerialize["fingerprint"] = o.Fingerprint.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *KubernetesAlertCreateDto) UnmarshalJSON(data []byte) (err error) {
+	varKubernetesAlertCreateDto := _KubernetesAlertCreateDto{}
+
+	err = json.Unmarshal(data, &varKubernetesAlertCreateDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubernetesAlertCreateDto(varKubernetesAlertCreateDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "labels")
+		delete(additionalProperties, "annotations")
+		delete(additionalProperties, "startsAt")
+		delete(additionalProperties, "endsAt")
+		delete(additionalProperties, "fingerprint")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableKubernetesAlertCreateDto struct {

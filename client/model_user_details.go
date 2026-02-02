@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -25,6 +24,7 @@ type UserDetails struct {
 	Data UserForListDto `json:"data"`
 	IsMaintenanceModeEnabled bool `json:"isMaintenanceModeEnabled"`
 	TrialDays NullableInt32 `json:"trialDays"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UserDetails UserDetails
@@ -136,6 +136,11 @@ func (o UserDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize["data"] = o.Data
 	toSerialize["isMaintenanceModeEnabled"] = o.IsMaintenanceModeEnabled
 	toSerialize["trialDays"] = o.TrialDays.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -165,15 +170,22 @@ func (o *UserDetails) UnmarshalJSON(data []byte) (err error) {
 
 	varUserDetails := _UserDetails{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserDetails)
+	err = json.Unmarshal(data, &varUserDetails)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserDetails(varUserDetails)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "isMaintenanceModeEnabled")
+		delete(additionalProperties, "trialDays")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

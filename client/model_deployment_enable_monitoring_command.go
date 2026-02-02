@@ -21,7 +21,10 @@ var _ MappedNullable = &DeploymentEnableMonitoringCommand{}
 // DeploymentEnableMonitoringCommand struct for DeploymentEnableMonitoringCommand
 type DeploymentEnableMonitoringCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeploymentEnableMonitoringCommand DeploymentEnableMonitoringCommand
 
 // NewDeploymentEnableMonitoringCommand instantiates a new DeploymentEnableMonitoringCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o DeploymentEnableMonitoringCommand) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeploymentEnableMonitoringCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeploymentEnableMonitoringCommand := _DeploymentEnableMonitoringCommand{}
+
+	err = json.Unmarshal(data, &varDeploymentEnableMonitoringCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeploymentEnableMonitoringCommand(varDeploymentEnableMonitoringCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeploymentEnableMonitoringCommand struct {

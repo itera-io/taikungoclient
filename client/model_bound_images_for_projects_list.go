@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -28,6 +27,7 @@ type BoundImagesForProjectsList struct {
 	HasMore bool `json:"hasMore"`
 	NextOffset NullableInt32 `json:"nextOffset,omitempty"`
 	TotalCount int32 `json:"totalCount"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _BoundImagesForProjectsList BoundImagesForProjectsList
@@ -238,6 +238,11 @@ func (o BoundImagesForProjectsList) ToMap() (map[string]interface{}, error) {
 		toSerialize["nextOffset"] = o.NextOffset.Get()
 	}
 	toSerialize["totalCount"] = o.TotalCount
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -269,15 +274,25 @@ func (o *BoundImagesForProjectsList) UnmarshalJSON(data []byte) (err error) {
 
 	varBoundImagesForProjectsList := _BoundImagesForProjectsList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBoundImagesForProjectsList)
+	err = json.Unmarshal(data, &varBoundImagesForProjectsList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = BoundImagesForProjectsList(varBoundImagesForProjectsList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "offset")
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "hasMore")
+		delete(additionalProperties, "nextOffset")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -22,7 +22,10 @@ var _ MappedNullable = &RefreshTokenCommand{}
 type RefreshTokenCommand struct {
 	Token NullableString `json:"token,omitempty"`
 	RefreshToken NullableString `json:"refreshToken,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _RefreshTokenCommand RefreshTokenCommand
 
 // NewRefreshTokenCommand instantiates a new RefreshTokenCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o RefreshTokenCommand) ToMap() (map[string]interface{}, error) {
 	if o.RefreshToken.IsSet() {
 		toSerialize["refreshToken"] = o.RefreshToken.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *RefreshTokenCommand) UnmarshalJSON(data []byte) (err error) {
+	varRefreshTokenCommand := _RefreshTokenCommand{}
+
+	err = json.Unmarshal(data, &varRefreshTokenCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RefreshTokenCommand(varRefreshTokenCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "refreshToken")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableRefreshTokenCommand struct {

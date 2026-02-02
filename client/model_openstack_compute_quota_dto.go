@@ -28,7 +28,10 @@ type OpenstackComputeQuotaDto struct {
 	UsedCpuSize *int64 `json:"usedCpuSize,omitempty"`
 	UsedInstanceSize *int64 `json:"usedInstanceSize,omitempty"`
 	UsedServerGroups *int64 `json:"usedServerGroups,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OpenstackComputeQuotaDto OpenstackComputeQuotaDto
 
 // NewOpenstackComputeQuotaDto instantiates a new OpenstackComputeQuotaDto object
 // This constructor will assign default values to properties that have it defined,
@@ -337,7 +340,40 @@ func (o OpenstackComputeQuotaDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UsedServerGroups) {
 		toSerialize["usedServerGroups"] = o.UsedServerGroups
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OpenstackComputeQuotaDto) UnmarshalJSON(data []byte) (err error) {
+	varOpenstackComputeQuotaDto := _OpenstackComputeQuotaDto{}
+
+	err = json.Unmarshal(data, &varOpenstackComputeQuotaDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OpenstackComputeQuotaDto(varOpenstackComputeQuotaDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "maxTotalRamSize")
+		delete(additionalProperties, "maxServerGroups")
+		delete(additionalProperties, "maxTotalInstances")
+		delete(additionalProperties, "maxTotalCores")
+		delete(additionalProperties, "usedRamSize")
+		delete(additionalProperties, "usedCpuSize")
+		delete(additionalProperties, "usedInstanceSize")
+		delete(additionalProperties, "usedServerGroups")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOpenstackComputeQuotaDto struct {

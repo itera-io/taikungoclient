@@ -30,7 +30,10 @@ type Repository struct {
 	OrganizationName NullableString `json:"organizationName,omitempty"`
 	VerifiedPublisher *bool `json:"verifiedPublisher,omitempty"`
 	OrganizationDisplayName NullableString `json:"organizationDisplayName,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Repository Repository
 
 // NewRepository instantiates a new Repository object
 // This constructor will assign default values to properties that have it defined,
@@ -459,7 +462,42 @@ func (o Repository) ToMap() (map[string]interface{}, error) {
 	if o.OrganizationDisplayName.IsSet() {
 		toSerialize["organizationDisplayName"] = o.OrganizationDisplayName.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Repository) UnmarshalJSON(data []byte) (err error) {
+	varRepository := _Repository{}
+
+	err = json.Unmarshal(data, &varRepository)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Repository(varRepository)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "kind")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "official")
+		delete(additionalProperties, "repositoryId")
+		delete(additionalProperties, "scannerDisabled")
+		delete(additionalProperties, "isImported")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "verifiedPublisher")
+		delete(additionalProperties, "organizationDisplayName")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableRepository struct {

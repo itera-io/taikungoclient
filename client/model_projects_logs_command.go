@@ -21,7 +21,10 @@ var _ MappedNullable = &ProjectsLogsCommand{}
 // ProjectsLogsCommand struct for ProjectsLogsCommand
 type ProjectsLogsCommand struct {
 	Query *LokiLogsQuery `json:"query,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectsLogsCommand ProjectsLogsCommand
 
 // NewProjectsLogsCommand instantiates a new ProjectsLogsCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o ProjectsLogsCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Query) {
 		toSerialize["query"] = o.Query
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectsLogsCommand) UnmarshalJSON(data []byte) (err error) {
+	varProjectsLogsCommand := _ProjectsLogsCommand{}
+
+	err = json.Unmarshal(data, &varProjectsLogsCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectsLogsCommand(varProjectsLogsCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "query")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectsLogsCommand struct {

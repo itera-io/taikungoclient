@@ -26,7 +26,10 @@ type CreateVsphereNetworkDto struct {
 	NetMask *int32 `json:"netMask,omitempty"`
 	BeginAllocationRange NullableString `json:"beginAllocationRange,omitempty"`
 	EndAllocationRange NullableString `json:"endAllocationRange,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateVsphereNetworkDto CreateVsphereNetworkDto
 
 // NewCreateVsphereNetworkDto instantiates a new CreateVsphereNetworkDto object
 // This constructor will assign default values to properties that have it defined,
@@ -315,7 +318,38 @@ func (o CreateVsphereNetworkDto) ToMap() (map[string]interface{}, error) {
 	if o.EndAllocationRange.IsSet() {
 		toSerialize["endAllocationRange"] = o.EndAllocationRange.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateVsphereNetworkDto) UnmarshalJSON(data []byte) (err error) {
+	varCreateVsphereNetworkDto := _CreateVsphereNetworkDto{}
+
+	err = json.Unmarshal(data, &varCreateVsphereNetworkDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateVsphereNetworkDto(varCreateVsphereNetworkDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "gateway")
+		delete(additionalProperties, "ipAddress")
+		delete(additionalProperties, "netMask")
+		delete(additionalProperties, "beginAllocationRange")
+		delete(additionalProperties, "endAllocationRange")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateVsphereNetworkDto struct {

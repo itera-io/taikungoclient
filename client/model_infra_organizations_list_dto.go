@@ -27,7 +27,10 @@ type InfraOrganizationsListDto struct {
 	SubscriptionId NullableString `json:"subscriptionId,omitempty"`
 	BillingStartDate NullableTime `json:"billingStartDate,omitempty"`
 	Yearly *bool `json:"yearly,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _InfraOrganizationsListDto InfraOrganizationsListDto
 
 // NewInfraOrganizationsListDto instantiates a new InfraOrganizationsListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -296,7 +299,38 @@ func (o InfraOrganizationsListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Yearly) {
 		toSerialize["yearly"] = o.Yearly
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *InfraOrganizationsListDto) UnmarshalJSON(data []byte) (err error) {
+	varInfraOrganizationsListDto := _InfraOrganizationsListDto{}
+
+	err = json.Unmarshal(data, &varInfraOrganizationsListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InfraOrganizationsListDto(varInfraOrganizationsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "subscriptionId")
+		delete(additionalProperties, "billingStartDate")
+		delete(additionalProperties, "yearly")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableInfraOrganizationsListDto struct {

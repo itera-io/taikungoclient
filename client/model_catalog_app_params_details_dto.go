@@ -29,7 +29,10 @@ type CatalogAppParamsDetailsDto struct {
 	IsMandatory *bool `json:"isMandatory,omitempty"`
 	HasJsonSchema *bool `json:"hasJsonSchema,omitempty"`
 	IsTaikunLink *bool `json:"isTaikunLink,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CatalogAppParamsDetailsDto CatalogAppParamsDetailsDto
 
 // NewCatalogAppParamsDetailsDto instantiates a new CatalogAppParamsDetailsDto object
 // This constructor will assign default values to properties that have it defined,
@@ -403,7 +406,41 @@ func (o CatalogAppParamsDetailsDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsTaikunLink) {
 		toSerialize["isTaikunLink"] = o.IsTaikunLink
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CatalogAppParamsDetailsDto) UnmarshalJSON(data []byte) (err error) {
+	varCatalogAppParamsDetailsDto := _CatalogAppParamsDetailsDto{}
+
+	err = json.Unmarshal(data, &varCatalogAppParamsDetailsDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CatalogAppParamsDetailsDto(varCatalogAppParamsDetailsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "catalogAppName")
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "value")
+		delete(additionalProperties, "isEditableWhenInstalling")
+		delete(additionalProperties, "isEditableAfterInstallation")
+		delete(additionalProperties, "isMandatory")
+		delete(additionalProperties, "hasJsonSchema")
+		delete(additionalProperties, "isTaikunLink")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCatalogAppParamsDetailsDto struct {

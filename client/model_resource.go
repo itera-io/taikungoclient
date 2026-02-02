@@ -29,7 +29,10 @@ type Resource struct {
 	MonthlyUsageCost NullableString `json:"monthlyUsageCost,omitempty"`
 	CostComponents []CostComponent `json:"costComponents,omitempty"`
 	Subresources []Subresource `json:"subresources,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Resource Resource
 
 // NewResource instantiates a new Resource object
 // This constructor will assign default values to properties that have it defined,
@@ -427,7 +430,41 @@ func (o Resource) ToMap() (map[string]interface{}, error) {
 	if o.Subresources != nil {
 		toSerialize["subresources"] = o.Subresources
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Resource) UnmarshalJSON(data []byte) (err error) {
+	varResource := _Resource{}
+
+	err = json.Unmarshal(data, &varResource)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Resource(varResource)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "resourceType")
+		delete(additionalProperties, "tags")
+		delete(additionalProperties, "metadata")
+		delete(additionalProperties, "hourlyCost")
+		delete(additionalProperties, "monthlyCost")
+		delete(additionalProperties, "monthlyUsageCost")
+		delete(additionalProperties, "costComponents")
+		delete(additionalProperties, "subresources")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableResource struct {

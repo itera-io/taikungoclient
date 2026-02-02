@@ -22,7 +22,10 @@ var _ MappedNullable = &AwsRegionDto{}
 type AwsRegionDto struct {
 	Name NullableString `json:"name,omitempty"`
 	Region NullableString `json:"region,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AwsRegionDto AwsRegionDto
 
 // NewAwsRegionDto instantiates a new AwsRegionDto object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o AwsRegionDto) ToMap() (map[string]interface{}, error) {
 	if o.Region.IsSet() {
 		toSerialize["region"] = o.Region.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AwsRegionDto) UnmarshalJSON(data []byte) (err error) {
+	varAwsRegionDto := _AwsRegionDto{}
+
+	err = json.Unmarshal(data, &varAwsRegionDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AwsRegionDto(varAwsRegionDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "region")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAwsRegionDto struct {

@@ -24,7 +24,10 @@ type BackupCredentialsForOrganizationEntity struct {
 	Name NullableString `json:"name,omitempty"`
 	IsDefault *bool `json:"isDefault,omitempty"`
 	IsInfra *bool `json:"isInfra,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _BackupCredentialsForOrganizationEntity BackupCredentialsForOrganizationEntity
 
 // NewBackupCredentialsForOrganizationEntity instantiates a new BackupCredentialsForOrganizationEntity object
 // This constructor will assign default values to properties that have it defined,
@@ -203,7 +206,36 @@ func (o BackupCredentialsForOrganizationEntity) ToMap() (map[string]interface{},
 	if !IsNil(o.IsInfra) {
 		toSerialize["isInfra"] = o.IsInfra
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *BackupCredentialsForOrganizationEntity) UnmarshalJSON(data []byte) (err error) {
+	varBackupCredentialsForOrganizationEntity := _BackupCredentialsForOrganizationEntity{}
+
+	err = json.Unmarshal(data, &varBackupCredentialsForOrganizationEntity)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BackupCredentialsForOrganizationEntity(varBackupCredentialsForOrganizationEntity)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "backupCredentialId")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "isInfra")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableBackupCredentialsForOrganizationEntity struct {

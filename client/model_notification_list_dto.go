@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -30,6 +29,7 @@ type NotificationListDto struct {
 	ProjectName NullableString `json:"projectName"`
 	ProjectId NullableInt32 `json:"projectId"`
 	IsDeleted bool `json:"isDeleted"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _NotificationListDto NotificationListDto
@@ -277,6 +277,11 @@ func (o NotificationListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["projectName"] = o.ProjectName.Get()
 	toSerialize["projectId"] = o.ProjectId.Get()
 	toSerialize["isDeleted"] = o.IsDeleted
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -311,15 +316,27 @@ func (o *NotificationListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varNotificationListDto := _NotificationListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varNotificationListDto)
+	err = json.Unmarshal(data, &varNotificationListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = NotificationListDto(varNotificationListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "actionMessage")
+		delete(additionalProperties, "actionStatus")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "category")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "isDeleted")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

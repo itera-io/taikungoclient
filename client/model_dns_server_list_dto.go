@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -24,6 +23,7 @@ var _ MappedNullable = &DnsServerListDto{}
 type DnsServerListDto struct {
 	Id int32 `json:"id"`
 	Address NullableString `json:"address"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DnsServerListDto DnsServerListDto
@@ -109,6 +109,11 @@ func (o DnsServerListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["address"] = o.Address.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -137,15 +142,21 @@ func (o *DnsServerListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varDnsServerListDto := _DnsServerListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDnsServerListDto)
+	err = json.Unmarshal(data, &varDnsServerListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DnsServerListDto(varDnsServerListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "address")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

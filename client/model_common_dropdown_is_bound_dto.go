@@ -23,7 +23,10 @@ type CommonDropdownIsBoundDto struct {
 	Id *int32 `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	IsBound *bool `json:"isBound,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CommonDropdownIsBoundDto CommonDropdownIsBoundDto
 
 // NewCommonDropdownIsBoundDto instantiates a new CommonDropdownIsBoundDto object
 // This constructor will assign default values to properties that have it defined,
@@ -167,7 +170,35 @@ func (o CommonDropdownIsBoundDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsBound) {
 		toSerialize["isBound"] = o.IsBound
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CommonDropdownIsBoundDto) UnmarshalJSON(data []byte) (err error) {
+	varCommonDropdownIsBoundDto := _CommonDropdownIsBoundDto{}
+
+	err = json.Unmarshal(data, &varCommonDropdownIsBoundDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CommonDropdownIsBoundDto(varCommonDropdownIsBoundDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "isBound")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCommonDropdownIsBoundDto struct {

@@ -22,7 +22,10 @@ var _ MappedNullable = &ProjectLockManagerCommand{}
 type ProjectLockManagerCommand struct {
 	Id *int32 `json:"id,omitempty"`
 	Mode NullableString `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectLockManagerCommand ProjectLockManagerCommand
 
 // NewProjectLockManagerCommand instantiates a new ProjectLockManagerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o ProjectLockManagerCommand) ToMap() (map[string]interface{}, error) {
 	if o.Mode.IsSet() {
 		toSerialize["mode"] = o.Mode.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectLockManagerCommand) UnmarshalJSON(data []byte) (err error) {
+	varProjectLockManagerCommand := _ProjectLockManagerCommand{}
+
+	err = json.Unmarshal(data, &varProjectLockManagerCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectLockManagerCommand(varProjectLockManagerCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectLockManagerCommand struct {

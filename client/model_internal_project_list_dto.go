@@ -35,7 +35,10 @@ type InternalProjectListDto struct {
 	PrometheusUrl NullableString `json:"prometheusUrl,omitempty"`
 	AlertManagerUrl NullableString `json:"alertManagerUrl,omitempty"`
 	LokiUrl NullableString `json:"lokiUrl,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _InternalProjectListDto InternalProjectListDto
 
 // NewInternalProjectListDto instantiates a new InternalProjectListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -669,7 +672,47 @@ func (o InternalProjectListDto) ToMap() (map[string]interface{}, error) {
 	if o.LokiUrl.IsSet() {
 		toSerialize["lokiUrl"] = o.LokiUrl.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *InternalProjectListDto) UnmarshalJSON(data []byte) (err error) {
+	varInternalProjectListDto := _InternalProjectListDto{}
+
+	err = json.Unmarshal(data, &varInternalProjectListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InternalProjectListDto(varInternalProjectListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "health")
+		delete(additionalProperties, "importClusterType")
+		delete(additionalProperties, "kubernetesVersion")
+		delete(additionalProperties, "accessIp")
+		delete(additionalProperties, "isMonitoringEnabled")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "prometheusUrl")
+		delete(additionalProperties, "alertManagerUrl")
+		delete(additionalProperties, "lokiUrl")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableInternalProjectListDto struct {

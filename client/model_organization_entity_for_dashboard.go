@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -25,6 +24,7 @@ type OrganizationEntityForDashboard struct {
 	Id int32 `json:"id"`
 	Name NullableString `json:"name"`
 	Users int32 `json:"users"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OrganizationEntityForDashboard OrganizationEntityForDashboard
@@ -136,6 +136,11 @@ func (o OrganizationEntityForDashboard) ToMap() (map[string]interface{}, error) 
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name.Get()
 	toSerialize["users"] = o.Users
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -165,15 +170,22 @@ func (o *OrganizationEntityForDashboard) UnmarshalJSON(data []byte) (err error) 
 
 	varOrganizationEntityForDashboard := _OrganizationEntityForDashboard{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrganizationEntityForDashboard)
+	err = json.Unmarshal(data, &varOrganizationEntityForDashboard)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OrganizationEntityForDashboard(varOrganizationEntityForDashboard)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "users")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

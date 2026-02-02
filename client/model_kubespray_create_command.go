@@ -22,7 +22,10 @@ var _ MappedNullable = &KubesprayCreateCommand{}
 type KubesprayCreateCommand struct {
 	Version NullableString `json:"version,omitempty"`
 	KubernetesVersion NullableString `json:"kubernetesVersion,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _KubesprayCreateCommand KubesprayCreateCommand
 
 // NewKubesprayCreateCommand instantiates a new KubesprayCreateCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o KubesprayCreateCommand) ToMap() (map[string]interface{}, error) {
 	if o.KubernetesVersion.IsSet() {
 		toSerialize["kubernetesVersion"] = o.KubernetesVersion.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *KubesprayCreateCommand) UnmarshalJSON(data []byte) (err error) {
+	varKubesprayCreateCommand := _KubesprayCreateCommand{}
+
+	err = json.Unmarshal(data, &varKubesprayCreateCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubesprayCreateCommand(varKubesprayCreateCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "kubernetesVersion")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableKubesprayCreateCommand struct {

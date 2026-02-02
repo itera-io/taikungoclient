@@ -22,7 +22,10 @@ var _ MappedNullable = &UpdateHealthStatusCommand{}
 type UpdateHealthStatusCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	Health *ProjectHealth `json:"health,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateHealthStatusCommand UpdateHealthStatusCommand
 
 // NewUpdateHealthStatusCommand instantiates a new UpdateHealthStatusCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -121,7 +124,34 @@ func (o UpdateHealthStatusCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Health) {
 		toSerialize["health"] = o.Health
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateHealthStatusCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateHealthStatusCommand := _UpdateHealthStatusCommand{}
+
+	err = json.Unmarshal(data, &varUpdateHealthStatusCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateHealthStatusCommand(varUpdateHealthStatusCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "health")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateHealthStatusCommand struct {

@@ -25,7 +25,10 @@ type ExecutorEntityDto struct {
 	Health *ExecutorHealth `json:"health,omitempty"`
 	KubeConfig NullableString `json:"kubeConfig,omitempty"`
 	IsLocal *bool `json:"isLocal,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ExecutorEntityDto ExecutorEntityDto
 
 // NewExecutorEntityDto instantiates a new ExecutorEntityDto object
 // This constructor will assign default values to properties that have it defined,
@@ -249,7 +252,37 @@ func (o ExecutorEntityDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsLocal) {
 		toSerialize["isLocal"] = o.IsLocal
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ExecutorEntityDto) UnmarshalJSON(data []byte) (err error) {
+	varExecutorEntityDto := _ExecutorEntityDto{}
+
+	err = json.Unmarshal(data, &varExecutorEntityDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ExecutorEntityDto(varExecutorEntityDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "health")
+		delete(additionalProperties, "kubeConfig")
+		delete(additionalProperties, "isLocal")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableExecutorEntityDto struct {

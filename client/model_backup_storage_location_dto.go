@@ -14,7 +14,6 @@ package taikuncore
 import (
 	"encoding/json"
 	"time"
-	"bytes"
 	"fmt"
 )
 
@@ -31,6 +30,7 @@ type BackupStorageLocationDto struct {
 	AccessMode string `json:"accessMode"`
 	Phase NullableString `json:"phase"`
 	BackupCredentialId NullableInt32 `json:"backupCredentialId"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _BackupStorageLocationDto BackupStorageLocationDto
@@ -278,6 +278,11 @@ func (o BackupStorageLocationDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["accessMode"] = o.AccessMode
 	toSerialize["phase"] = o.Phase.Get()
 	toSerialize["backupCredentialId"] = o.BackupCredentialId.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -312,15 +317,27 @@ func (o *BackupStorageLocationDto) UnmarshalJSON(data []byte) (err error) {
 
 	varBackupStorageLocationDto := _BackupStorageLocationDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBackupStorageLocationDto)
+	err = json.Unmarshal(data, &varBackupStorageLocationDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = BackupStorageLocationDto(varBackupStorageLocationDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "metadataName")
+		delete(additionalProperties, "provider")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "lastValidated")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "accessMode")
+		delete(additionalProperties, "phase")
+		delete(additionalProperties, "backupCredentialId")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

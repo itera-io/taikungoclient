@@ -23,7 +23,10 @@ type CheckAzureCommand struct {
 	AzureClientId NullableString `json:"azureClientId,omitempty"`
 	AzureClientSecret NullableString `json:"azureClientSecret,omitempty"`
 	AzureTenantId NullableString `json:"azureTenantId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CheckAzureCommand CheckAzureCommand
 
 // NewCheckAzureCommand instantiates a new CheckAzureCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -187,7 +190,35 @@ func (o CheckAzureCommand) ToMap() (map[string]interface{}, error) {
 	if o.AzureTenantId.IsSet() {
 		toSerialize["azureTenantId"] = o.AzureTenantId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CheckAzureCommand) UnmarshalJSON(data []byte) (err error) {
+	varCheckAzureCommand := _CheckAzureCommand{}
+
+	err = json.Unmarshal(data, &varCheckAzureCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CheckAzureCommand(varCheckAzureCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "azureClientId")
+		delete(additionalProperties, "azureClientSecret")
+		delete(additionalProperties, "azureTenantId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCheckAzureCommand struct {

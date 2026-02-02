@@ -22,7 +22,10 @@ var _ MappedNullable = &GkeClusterDto{}
 type GkeClusterDto struct {
 	Location NullableString `json:"location,omitempty"`
 	Name NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _GkeClusterDto GkeClusterDto
 
 // NewGkeClusterDto instantiates a new GkeClusterDto object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o GkeClusterDto) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *GkeClusterDto) UnmarshalJSON(data []byte) (err error) {
+	varGkeClusterDto := _GkeClusterDto{}
+
+	err = json.Unmarshal(data, &varGkeClusterDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GkeClusterDto(varGkeClusterDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "location")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableGkeClusterDto struct {

@@ -23,7 +23,10 @@ type ConfigmapListDto struct {
 	Name NullableString `json:"name,omitempty"`
 	Namespace NullableString `json:"namespace,omitempty"`
 	CreatedAt NullableString `json:"createdAt,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ConfigmapListDto ConfigmapListDto
 
 // NewConfigmapListDto instantiates a new ConfigmapListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -187,7 +190,35 @@ func (o ConfigmapListDto) ToMap() (map[string]interface{}, error) {
 	if o.CreatedAt.IsSet() {
 		toSerialize["createdAt"] = o.CreatedAt.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ConfigmapListDto) UnmarshalJSON(data []byte) (err error) {
+	varConfigmapListDto := _ConfigmapListDto{}
+
+	err = json.Unmarshal(data, &varConfigmapListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConfigmapListDto(varConfigmapListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "createdAt")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableConfigmapListDto struct {

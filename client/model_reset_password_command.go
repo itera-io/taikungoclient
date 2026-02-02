@@ -23,7 +23,10 @@ type ResetPasswordCommand struct {
 	Token NullableString `json:"token,omitempty"`
 	Email NullableString `json:"email,omitempty"`
 	NewPassword NullableString `json:"newPassword,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ResetPasswordCommand ResetPasswordCommand
 
 // NewResetPasswordCommand instantiates a new ResetPasswordCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -187,7 +190,35 @@ func (o ResetPasswordCommand) ToMap() (map[string]interface{}, error) {
 	if o.NewPassword.IsSet() {
 		toSerialize["newPassword"] = o.NewPassword.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ResetPasswordCommand) UnmarshalJSON(data []byte) (err error) {
+	varResetPasswordCommand := _ResetPasswordCommand{}
+
+	err = json.Unmarshal(data, &varResetPasswordCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ResetPasswordCommand(varResetPasswordCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "newPassword")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableResetPasswordCommand struct {

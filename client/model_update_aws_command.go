@@ -24,7 +24,10 @@ type UpdateAwsCommand struct {
 	Name NullableString `json:"name,omitempty"`
 	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey,omitempty"`
 	AwsAccessKeyId NullableString `json:"awsAccessKeyId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateAwsCommand UpdateAwsCommand
 
 // NewUpdateAwsCommand instantiates a new UpdateAwsCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -223,7 +226,36 @@ func (o UpdateAwsCommand) ToMap() (map[string]interface{}, error) {
 	if o.AwsAccessKeyId.IsSet() {
 		toSerialize["awsAccessKeyId"] = o.AwsAccessKeyId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateAwsCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateAwsCommand := _UpdateAwsCommand{}
+
+	err = json.Unmarshal(data, &varUpdateAwsCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateAwsCommand(varUpdateAwsCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "awsSecretAccessKey")
+		delete(additionalProperties, "awsAccessKeyId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateAwsCommand struct {

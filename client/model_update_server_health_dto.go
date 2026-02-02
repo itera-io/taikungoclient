@@ -22,7 +22,10 @@ var _ MappedNullable = &UpdateServerHealthDto{}
 type UpdateServerHealthDto struct {
 	IpAddress NullableString `json:"ipAddress,omitempty"`
 	ServerHealth NullableString `json:"serverHealth,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateServerHealthDto UpdateServerHealthDto
 
 // NewUpdateServerHealthDto instantiates a new UpdateServerHealthDto object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o UpdateServerHealthDto) ToMap() (map[string]interface{}, error) {
 	if o.ServerHealth.IsSet() {
 		toSerialize["serverHealth"] = o.ServerHealth.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateServerHealthDto) UnmarshalJSON(data []byte) (err error) {
+	varUpdateServerHealthDto := _UpdateServerHealthDto{}
+
+	err = json.Unmarshal(data, &varUpdateServerHealthDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateServerHealthDto(varUpdateServerHealthDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "ipAddress")
+		delete(additionalProperties, "serverHealth")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateServerHealthDto struct {

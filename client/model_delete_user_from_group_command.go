@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -24,6 +23,7 @@ var _ MappedNullable = &DeleteUserFromGroupCommand{}
 type DeleteUserFromGroupCommand struct {
 	GroupId int32 `json:"groupId"`
 	Users []string `json:"users"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeleteUserFromGroupCommand DeleteUserFromGroupCommand
@@ -111,6 +111,11 @@ func (o DeleteUserFromGroupCommand) ToMap() (map[string]interface{}, error) {
 	if o.Users != nil {
 		toSerialize["users"] = o.Users
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -139,15 +144,21 @@ func (o *DeleteUserFromGroupCommand) UnmarshalJSON(data []byte) (err error) {
 
 	varDeleteUserFromGroupCommand := _DeleteUserFromGroupCommand{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeleteUserFromGroupCommand)
+	err = json.Unmarshal(data, &varDeleteUserFromGroupCommand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeleteUserFromGroupCommand(varDeleteUserFromGroupCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "groupId")
+		delete(additionalProperties, "users")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

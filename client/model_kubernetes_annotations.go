@@ -22,7 +22,10 @@ var _ MappedNullable = &KubernetesAnnotations{}
 type KubernetesAnnotations struct {
 	Description NullableString `json:"description,omitempty"`
 	Title NullableString `json:"title,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _KubernetesAnnotations KubernetesAnnotations
 
 // NewKubernetesAnnotations instantiates a new KubernetesAnnotations object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o KubernetesAnnotations) ToMap() (map[string]interface{}, error) {
 	if o.Title.IsSet() {
 		toSerialize["title"] = o.Title.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *KubernetesAnnotations) UnmarshalJSON(data []byte) (err error) {
+	varKubernetesAnnotations := _KubernetesAnnotations{}
+
+	err = json.Unmarshal(data, &varKubernetesAnnotations)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubernetesAnnotations(varKubernetesAnnotations)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "title")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableKubernetesAnnotations struct {

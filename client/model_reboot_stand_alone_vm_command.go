@@ -22,7 +22,10 @@ var _ MappedNullable = &RebootStandAloneVmCommand{}
 type RebootStandAloneVmCommand struct {
 	Id *int32 `json:"id,omitempty"`
 	Type NullableString `json:"type,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _RebootStandAloneVmCommand RebootStandAloneVmCommand
 
 // NewRebootStandAloneVmCommand instantiates a new RebootStandAloneVmCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o RebootStandAloneVmCommand) ToMap() (map[string]interface{}, error) {
 	if o.Type.IsSet() {
 		toSerialize["type"] = o.Type.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *RebootStandAloneVmCommand) UnmarshalJSON(data []byte) (err error) {
+	varRebootStandAloneVmCommand := _RebootStandAloneVmCommand{}
+
+	err = json.Unmarshal(data, &varRebootStandAloneVmCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RebootStandAloneVmCommand(varRebootStandAloneVmCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "type")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableRebootStandAloneVmCommand struct {

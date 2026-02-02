@@ -23,7 +23,10 @@ type GroupedBillingInfo struct {
 	Data []GroupedBillings `json:"data,omitempty"`
 	ProjectId *int32 `json:"projectId,omitempty"`
 	ProjectName NullableString `json:"projectName,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _GroupedBillingInfo GroupedBillingInfo
 
 // NewGroupedBillingInfo instantiates a new GroupedBillingInfo object
 // This constructor will assign default values to properties that have it defined,
@@ -168,7 +171,35 @@ func (o GroupedBillingInfo) ToMap() (map[string]interface{}, error) {
 	if o.ProjectName.IsSet() {
 		toSerialize["projectName"] = o.ProjectName.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *GroupedBillingInfo) UnmarshalJSON(data []byte) (err error) {
+	varGroupedBillingInfo := _GroupedBillingInfo{}
+
+	err = json.Unmarshal(data, &varGroupedBillingInfo)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GroupedBillingInfo(varGroupedBillingInfo)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "projectName")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableGroupedBillingInfo struct {

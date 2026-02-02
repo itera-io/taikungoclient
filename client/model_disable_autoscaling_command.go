@@ -21,7 +21,10 @@ var _ MappedNullable = &DisableAutoscalingCommand{}
 // DisableAutoscalingCommand struct for DisableAutoscalingCommand
 type DisableAutoscalingCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DisableAutoscalingCommand DisableAutoscalingCommand
 
 // NewDisableAutoscalingCommand instantiates a new DisableAutoscalingCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o DisableAutoscalingCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DisableAutoscalingCommand) UnmarshalJSON(data []byte) (err error) {
+	varDisableAutoscalingCommand := _DisableAutoscalingCommand{}
+
+	err = json.Unmarshal(data, &varDisableAutoscalingCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DisableAutoscalingCommand(varDisableAutoscalingCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDisableAutoscalingCommand struct {

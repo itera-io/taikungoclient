@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -23,6 +22,7 @@ var _ MappedNullable = &VirtualClusterQuotasDto{}
 // VirtualClusterQuotasDto struct for VirtualClusterQuotasDto
 type VirtualClusterQuotasDto struct {
 	Presets []ResourcePresetDto `json:"presets"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _VirtualClusterQuotasDto VirtualClusterQuotasDto
@@ -84,6 +84,11 @@ func (o VirtualClusterQuotasDto) ToMap() (map[string]interface{}, error) {
 	if o.Presets != nil {
 		toSerialize["presets"] = o.Presets
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -111,15 +116,20 @@ func (o *VirtualClusterQuotasDto) UnmarshalJSON(data []byte) (err error) {
 
 	varVirtualClusterQuotasDto := _VirtualClusterQuotasDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVirtualClusterQuotasDto)
+	err = json.Unmarshal(data, &varVirtualClusterQuotasDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = VirtualClusterQuotasDto(varVirtualClusterQuotasDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "presets")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

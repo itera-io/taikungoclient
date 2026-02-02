@@ -28,7 +28,10 @@ type PodsListDto struct {
 	Namespace NullableString `json:"namespace,omitempty"`
 	Node NullableString `json:"node,omitempty"`
 	Ip NullableString `json:"ip,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PodsListDto PodsListDto
 
 // NewPodsListDto instantiates a new PodsListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -407,7 +410,40 @@ func (o PodsListDto) ToMap() (map[string]interface{}, error) {
 	if o.Ip.IsSet() {
 		toSerialize["ip"] = o.Ip.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PodsListDto) UnmarshalJSON(data []byte) (err error) {
+	varPodsListDto := _PodsListDto{}
+
+	err = json.Unmarshal(data, &varPodsListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PodsListDto(varPodsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "state")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "ready")
+		delete(additionalProperties, "restartCount")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "node")
+		delete(additionalProperties, "ip")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePodsListDto struct {

@@ -29,7 +29,10 @@ type AwsImagesPostListCommand struct {
 	Latest *bool `json:"latest,omitempty"`
 	Owners []string `json:"owners,omitempty"`
 	ProjectId NullableInt32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AwsImagesPostListCommand AwsImagesPostListCommand
 
 // NewAwsImagesPostListCommand instantiates a new AwsImagesPostListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -434,7 +437,41 @@ func (o AwsImagesPostListCommand) ToMap() (map[string]interface{}, error) {
 	if o.ProjectId.IsSet() {
 		toSerialize["projectId"] = o.ProjectId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AwsImagesPostListCommand) UnmarshalJSON(data []byte) (err error) {
+	varAwsImagesPostListCommand := _AwsImagesPostListCommand{}
+
+	err = json.Unmarshal(data, &varAwsImagesPostListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AwsImagesPostListCommand(varAwsImagesPostListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cloudId")
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "offset")
+		delete(additionalProperties, "sortBy")
+		delete(additionalProperties, "sortDirection")
+		delete(additionalProperties, "search")
+		delete(additionalProperties, "latest")
+		delete(additionalProperties, "owners")
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAwsImagesPostListCommand struct {

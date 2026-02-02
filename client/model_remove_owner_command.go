@@ -21,7 +21,10 @@ var _ MappedNullable = &RemoveOwnerCommand{}
 // RemoveOwnerCommand struct for RemoveOwnerCommand
 type RemoveOwnerCommand struct {
 	UserId NullableString `json:"userId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _RemoveOwnerCommand RemoveOwnerCommand
 
 // NewRemoveOwnerCommand instantiates a new RemoveOwnerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +98,33 @@ func (o RemoveOwnerCommand) ToMap() (map[string]interface{}, error) {
 	if o.UserId.IsSet() {
 		toSerialize["userId"] = o.UserId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *RemoveOwnerCommand) UnmarshalJSON(data []byte) (err error) {
+	varRemoveOwnerCommand := _RemoveOwnerCommand{}
+
+	err = json.Unmarshal(data, &varRemoveOwnerCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RemoveOwnerCommand(varRemoveOwnerCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "userId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableRemoveOwnerCommand struct {

@@ -28,7 +28,10 @@ type CreateKubeConfigCommand struct {
 	UserId NullableString `json:"userId,omitempty"`
 	Namespace NullableString `json:"namespace,omitempty"`
 	Ttl NullableInt32 `json:"ttl,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateKubeConfigCommand CreateKubeConfigCommand
 
 // NewCreateKubeConfigCommand instantiates a new CreateKubeConfigCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -377,7 +380,40 @@ func (o CreateKubeConfigCommand) ToMap() (map[string]interface{}, error) {
 	if o.Ttl.IsSet() {
 		toSerialize["ttl"] = o.Ttl.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateKubeConfigCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateKubeConfigCommand := _CreateKubeConfigCommand{}
+
+	err = json.Unmarshal(data, &varCreateKubeConfigCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateKubeConfigCommand(varCreateKubeConfigCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "isAccessibleForAll")
+		delete(additionalProperties, "isAccessibleForManager")
+		delete(additionalProperties, "kubeConfigRoleId")
+		delete(additionalProperties, "userId")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "ttl")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateKubeConfigCommand struct {

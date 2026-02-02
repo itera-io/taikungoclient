@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -29,6 +28,7 @@ type VClusterList struct {
 	NextOffset NullableInt32 `json:"nextOffset,omitempty"`
 	TotalCount int32 `json:"totalCount"`
 	Project ProjectDetailsForVmsDto `json:"project"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _VClusterList VClusterList
@@ -265,6 +265,11 @@ func (o VClusterList) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["totalCount"] = o.TotalCount
 	toSerialize["project"] = o.Project
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -297,15 +302,26 @@ func (o *VClusterList) UnmarshalJSON(data []byte) (err error) {
 
 	varVClusterList := _VClusterList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVClusterList)
+	err = json.Unmarshal(data, &varVClusterList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = VClusterList(varVClusterList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "offset")
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "hasMore")
+		delete(additionalProperties, "nextOffset")
+		delete(additionalProperties, "totalCount")
+		delete(additionalProperties, "project")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -25,7 +25,10 @@ type Subresource struct {
 	HourlyCost NullableString `json:"hourlyCost,omitempty"`
 	MonthlyCost NullableString `json:"monthlyCost,omitempty"`
 	CostComponents []CostComponent `json:"costComponents,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Subresource Subresource
 
 // NewSubresource instantiates a new Subresource object
 // This constructor will assign default values to properties that have it defined,
@@ -261,7 +264,37 @@ func (o Subresource) ToMap() (map[string]interface{}, error) {
 	if o.CostComponents != nil {
 		toSerialize["costComponents"] = o.CostComponents
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Subresource) UnmarshalJSON(data []byte) (err error) {
+	varSubresource := _Subresource{}
+
+	err = json.Unmarshal(data, &varSubresource)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Subresource(varSubresource)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "metadata")
+		delete(additionalProperties, "hourlyCost")
+		delete(additionalProperties, "monthlyCost")
+		delete(additionalProperties, "costComponents")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableSubresource struct {

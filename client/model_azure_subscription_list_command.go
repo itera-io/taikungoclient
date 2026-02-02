@@ -23,7 +23,10 @@ type AzureSubscriptionListCommand struct {
 	ClientId NullableString `json:"clientId,omitempty"`
 	ClientSecret NullableString `json:"clientSecret,omitempty"`
 	TenantId NullableString `json:"tenantId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AzureSubscriptionListCommand AzureSubscriptionListCommand
 
 // NewAzureSubscriptionListCommand instantiates a new AzureSubscriptionListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -187,7 +190,35 @@ func (o AzureSubscriptionListCommand) ToMap() (map[string]interface{}, error) {
 	if o.TenantId.IsSet() {
 		toSerialize["tenantId"] = o.TenantId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AzureSubscriptionListCommand) UnmarshalJSON(data []byte) (err error) {
+	varAzureSubscriptionListCommand := _AzureSubscriptionListCommand{}
+
+	err = json.Unmarshal(data, &varAzureSubscriptionListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AzureSubscriptionListCommand(varAzureSubscriptionListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "clientId")
+		delete(additionalProperties, "clientSecret")
+		delete(additionalProperties, "tenantId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAzureSubscriptionListCommand struct {

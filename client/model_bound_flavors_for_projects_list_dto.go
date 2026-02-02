@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -37,6 +36,7 @@ type BoundFlavorsForProjectsListDto struct {
 	WindowsPrice NullableString `json:"windowsPrice"`
 	CloudType CloudType `json:"cloudType"`
 	LocalDiskSize *int32 `json:"localDiskSize,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _BoundFlavorsForProjectsListDto BoundFlavorsForProjectsListDto
@@ -479,6 +479,11 @@ func (o BoundFlavorsForProjectsListDto) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.LocalDiskSize) {
 		toSerialize["localDiskSize"] = o.LocalDiskSize
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -519,15 +524,34 @@ func (o *BoundFlavorsForProjectsListDto) UnmarshalJSON(data []byte) (err error) 
 
 	varBoundFlavorsForProjectsListDto := _BoundFlavorsForProjectsListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBoundFlavorsForProjectsListDto)
+	err = json.Unmarshal(data, &varBoundFlavorsForProjectsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = BoundFlavorsForProjectsListDto(varBoundFlavorsForProjectsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "ram")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "maxDataDiskCount")
+		delete(additionalProperties, "existsLinuxSpotPrice")
+		delete(additionalProperties, "existsWindowsSpotPrice")
+		delete(additionalProperties, "linuxSpotPrice")
+		delete(additionalProperties, "linuxPrice")
+		delete(additionalProperties, "windowsSpotPrice")
+		delete(additionalProperties, "windowsPrice")
+		delete(additionalProperties, "cloudType")
+		delete(additionalProperties, "localDiskSize")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

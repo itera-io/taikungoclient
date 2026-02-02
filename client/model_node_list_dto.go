@@ -25,7 +25,10 @@ type NodeListDto struct {
 	Role NullableString `json:"role,omitempty"`
 	Version NullableString `json:"version,omitempty"`
 	Ip NullableString `json:"ip,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _NodeListDto NodeListDto
 
 // NewNodeListDto instantiates a new NodeListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -279,7 +282,37 @@ func (o NodeListDto) ToMap() (map[string]interface{}, error) {
 	if o.Ip.IsSet() {
 		toSerialize["ip"] = o.Ip.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *NodeListDto) UnmarshalJSON(data []byte) (err error) {
+	varNodeListDto := _NodeListDto{}
+
+	err = json.Unmarshal(data, &varNodeListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NodeListDto(varNodeListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "state")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "role")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "ip")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableNodeListDto struct {

@@ -21,7 +21,10 @@ var _ MappedNullable = &DnsServerCreateDto{}
 // DnsServerCreateDto struct for DnsServerCreateDto
 type DnsServerCreateDto struct {
 	Address NullableString `json:"address,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DnsServerCreateDto DnsServerCreateDto
 
 // NewDnsServerCreateDto instantiates a new DnsServerCreateDto object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +98,33 @@ func (o DnsServerCreateDto) ToMap() (map[string]interface{}, error) {
 	if o.Address.IsSet() {
 		toSerialize["address"] = o.Address.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DnsServerCreateDto) UnmarshalJSON(data []byte) (err error) {
+	varDnsServerCreateDto := _DnsServerCreateDto{}
+
+	err = json.Unmarshal(data, &varDnsServerCreateDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DnsServerCreateDto(varDnsServerCreateDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "address")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDnsServerCreateDto struct {

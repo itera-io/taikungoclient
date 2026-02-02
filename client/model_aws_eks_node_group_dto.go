@@ -35,7 +35,10 @@ type AwsEksNodeGroupDto struct {
 	MaxSize *int32 `json:"maxSize,omitempty"`
 	MinSize *int32 `json:"minSize,omitempty"`
 	InstanceTypes []string `json:"instanceTypes,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AwsEksNodeGroupDto AwsEksNodeGroupDto
 
 // NewAwsEksNodeGroupDto instantiates a new AwsEksNodeGroupDto object
 // This constructor will assign default values to properties that have it defined,
@@ -681,7 +684,47 @@ func (o AwsEksNodeGroupDto) ToMap() (map[string]interface{}, error) {
 	if o.InstanceTypes != nil {
 		toSerialize["instanceTypes"] = o.InstanceTypes
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AwsEksNodeGroupDto) UnmarshalJSON(data []byte) (err error) {
+	varAwsEksNodeGroupDto := _AwsEksNodeGroupDto{}
+
+	err = json.Unmarshal(data, &varAwsEksNodeGroupDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AwsEksNodeGroupDto(varAwsEksNodeGroupDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "role")
+		delete(additionalProperties, "amiType")
+		delete(additionalProperties, "amiReleaseVersion")
+		delete(additionalProperties, "arn")
+		delete(additionalProperties, "capacityType")
+		delete(additionalProperties, "healthIssues")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "created")
+		delete(additionalProperties, "diskSize")
+		delete(additionalProperties, "desiredSize")
+		delete(additionalProperties, "maxSize")
+		delete(additionalProperties, "minSize")
+		delete(additionalProperties, "instanceTypes")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAwsEksNodeGroupDto struct {

@@ -14,7 +14,6 @@ package taikuncore
 import (
 	"encoding/json"
 	"time"
-	"bytes"
 	"fmt"
 )
 
@@ -32,6 +31,7 @@ type ProjectsForBillingDto struct {
 	Servers []ServersForBillingDto `json:"servers"`
 	StandaloneVms []StandaloneVmsForBillingDto `json:"standaloneVms"`
 	BillingEnabled bool `json:"billingEnabled"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProjectsForBillingDto ProjectsForBillingDto
@@ -313,6 +313,11 @@ func (o ProjectsForBillingDto) ToMap() (map[string]interface{}, error) {
 		toSerialize["standaloneVms"] = o.StandaloneVms
 	}
 	toSerialize["billingEnabled"] = o.BillingEnabled
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -348,15 +353,28 @@ func (o *ProjectsForBillingDto) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectsForBillingDto := _ProjectsForBillingDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectsForBillingDto)
+	err = json.Unmarshal(data, &varProjectsForBillingDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectsForBillingDto(varProjectsForBillingDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "billingStartDate")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "price")
+		delete(additionalProperties, "servers")
+		delete(additionalProperties, "standaloneVms")
+		delete(additionalProperties, "billingEnabled")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

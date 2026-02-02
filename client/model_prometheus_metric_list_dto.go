@@ -22,7 +22,10 @@ var _ MappedNullable = &PrometheusMetricListDto{}
 type PrometheusMetricListDto struct {
 	Status NullableString `json:"status,omitempty"`
 	Data *MetricData `json:"data,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PrometheusMetricListDto PrometheusMetricListDto
 
 // NewPrometheusMetricListDto instantiates a new PrometheusMetricListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o PrometheusMetricListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Data) {
 		toSerialize["data"] = o.Data
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PrometheusMetricListDto) UnmarshalJSON(data []byte) (err error) {
+	varPrometheusMetricListDto := _PrometheusMetricListDto{}
+
+	err = json.Unmarshal(data, &varPrometheusMetricListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PrometheusMetricListDto(varPrometheusMetricListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "data")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePrometheusMetricListDto struct {

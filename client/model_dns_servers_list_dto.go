@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -25,6 +24,7 @@ type DnsServersListDto struct {
 	Id int32 `json:"id"`
 	Address NullableString `json:"address"`
 	AccessProfileName NullableString `json:"accessProfileName"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DnsServersListDto DnsServersListDto
@@ -138,6 +138,11 @@ func (o DnsServersListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["address"] = o.Address.Get()
 	toSerialize["accessProfileName"] = o.AccessProfileName.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -167,15 +172,22 @@ func (o *DnsServersListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varDnsServersListDto := _DnsServersListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDnsServersListDto)
+	err = json.Unmarshal(data, &varDnsServersListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DnsServersListDto(varDnsServersListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "address")
+		delete(additionalProperties, "accessProfileName")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -33,7 +33,10 @@ type CommonDropdownIsBoundDtoForProject struct {
 	Status *ProjectStatus `json:"status,omitempty"`
 	Health *ProjectHealth `json:"health,omitempty"`
 	ImportClusterType *ImportClusterType `json:"importClusterType,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CommonDropdownIsBoundDtoForProject CommonDropdownIsBoundDtoForProject
 
 // NewCommonDropdownIsBoundDtoForProject instantiates a new CommonDropdownIsBoundDtoForProject object
 // This constructor will assign default values to properties that have it defined,
@@ -547,7 +550,45 @@ func (o CommonDropdownIsBoundDtoForProject) ToMap() (map[string]interface{}, err
 	if !IsNil(o.ImportClusterType) {
 		toSerialize["importClusterType"] = o.ImportClusterType
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CommonDropdownIsBoundDtoForProject) UnmarshalJSON(data []byte) (err error) {
+	varCommonDropdownIsBoundDtoForProject := _CommonDropdownIsBoundDtoForProject{}
+
+	err = json.Unmarshal(data, &varCommonDropdownIsBoundDtoForProject)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CommonDropdownIsBoundDtoForProject(varCommonDropdownIsBoundDtoForProject)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "isBound")
+		delete(additionalProperties, "hasKubeConfigFile")
+		delete(additionalProperties, "kubernetesVersion")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "maintenanceModeEnabled")
+		delete(additionalProperties, "isVirtualCluster")
+		delete(additionalProperties, "alertingProfileId")
+		delete(additionalProperties, "cloudType")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "health")
+		delete(additionalProperties, "importClusterType")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCommonDropdownIsBoundDtoForProject struct {

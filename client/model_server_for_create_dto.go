@@ -37,7 +37,10 @@ type ServerForCreateDto struct {
 	KubernetesNodeLabels []KubernetesNodeLabelsDto `json:"kubernetesNodeLabels,omitempty"`
 	ReplicaCount NullableInt32 `json:"replicaCount,omitempty"`
 	UseLocalDisk *bool `json:"useLocalDisk,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ServerForCreateDto ServerForCreateDto
 
 // NewServerForCreateDto instantiates a new ServerForCreateDto object
 // This constructor will assign default values to properties that have it defined,
@@ -732,7 +735,49 @@ func (o ServerForCreateDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseLocalDisk) {
 		toSerialize["useLocalDisk"] = o.UseLocalDisk
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ServerForCreateDto) UnmarshalJSON(data []byte) (err error) {
+	varServerForCreateDto := _ServerForCreateDto{}
+
+	err = json.Unmarshal(data, &varServerForCreateDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ServerForCreateDto(varServerForCreateDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "role")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "diskSize")
+		delete(additionalProperties, "flavor")
+		delete(additionalProperties, "count")
+		delete(additionalProperties, "spotPrice")
+		delete(additionalProperties, "spotInstance")
+		delete(additionalProperties, "wasmEnabled")
+		delete(additionalProperties, "autoscalingGroup")
+		delete(additionalProperties, "availabilityZone")
+		delete(additionalProperties, "proxmoxExtraDiskSize")
+		delete(additionalProperties, "proxmoxRole")
+		delete(additionalProperties, "hypervisor")
+		delete(additionalProperties, "kubernetesNodeLabels")
+		delete(additionalProperties, "replicaCount")
+		delete(additionalProperties, "useLocalDisk")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableServerForCreateDto struct {

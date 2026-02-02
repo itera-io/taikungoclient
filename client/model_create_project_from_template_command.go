@@ -23,7 +23,10 @@ type CreateProjectFromTemplateCommand struct {
 	Id *int32 `json:"id,omitempty"`
 	ProjectName NullableString `json:"projectName,omitempty"`
 	CanCommit *bool `json:"canCommit,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateProjectFromTemplateCommand CreateProjectFromTemplateCommand
 
 // NewCreateProjectFromTemplateCommand instantiates a new CreateProjectFromTemplateCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -167,7 +170,35 @@ func (o CreateProjectFromTemplateCommand) ToMap() (map[string]interface{}, error
 	if !IsNil(o.CanCommit) {
 		toSerialize["canCommit"] = o.CanCommit
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateProjectFromTemplateCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateProjectFromTemplateCommand := _CreateProjectFromTemplateCommand{}
+
+	err = json.Unmarshal(data, &varCreateProjectFromTemplateCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateProjectFromTemplateCommand(varCreateProjectFromTemplateCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "canCommit")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateProjectFromTemplateCommand struct {

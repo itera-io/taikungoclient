@@ -22,7 +22,10 @@ var _ MappedNullable = &AdminAddBalanceCommand{}
 type AdminAddBalanceCommand struct {
 	CustomerId NullableString `json:"customerId,omitempty"`
 	Balance *int64 `json:"balance,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AdminAddBalanceCommand AdminAddBalanceCommand
 
 // NewAdminAddBalanceCommand instantiates a new AdminAddBalanceCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o AdminAddBalanceCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Balance) {
 		toSerialize["balance"] = o.Balance
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AdminAddBalanceCommand) UnmarshalJSON(data []byte) (err error) {
+	varAdminAddBalanceCommand := _AdminAddBalanceCommand{}
+
+	err = json.Unmarshal(data, &varAdminAddBalanceCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AdminAddBalanceCommand(varAdminAddBalanceCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "customerId")
+		delete(additionalProperties, "balance")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAdminAddBalanceCommand struct {

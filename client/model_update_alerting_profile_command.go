@@ -25,7 +25,10 @@ type UpdateAlertingProfileCommand struct {
 	SlackConfigurationId NullableInt32 `json:"slackConfigurationId,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	Reminder *AlertingReminder `json:"reminder,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateAlertingProfileCommand UpdateAlertingProfileCommand
 
 // NewUpdateAlertingProfileCommand instantiates a new UpdateAlertingProfileCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -259,7 +262,37 @@ func (o UpdateAlertingProfileCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Reminder) {
 		toSerialize["reminder"] = o.Reminder
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateAlertingProfileCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateAlertingProfileCommand := _UpdateAlertingProfileCommand{}
+
+	err = json.Unmarshal(data, &varUpdateAlertingProfileCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateAlertingProfileCommand(varUpdateAlertingProfileCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "slackConfigurationId")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "reminder")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateAlertingProfileCommand struct {

@@ -23,7 +23,10 @@ type CreateSshUserCommand struct {
 	Name NullableString `json:"name,omitempty"`
 	SshPublicKey NullableString `json:"sshPublicKey,omitempty"`
 	AccessProfileId *int32 `json:"accessProfileId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateSshUserCommand CreateSshUserCommand
 
 // NewCreateSshUserCommand instantiates a new CreateSshUserCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -177,7 +180,35 @@ func (o CreateSshUserCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AccessProfileId) {
 		toSerialize["accessProfileId"] = o.AccessProfileId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateSshUserCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateSshUserCommand := _CreateSshUserCommand{}
+
+	err = json.Unmarshal(data, &varCreateSshUserCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateSshUserCommand(varCreateSshUserCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "sshPublicKey")
+		delete(additionalProperties, "accessProfileId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateSshUserCommand struct {

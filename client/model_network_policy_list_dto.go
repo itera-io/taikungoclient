@@ -24,7 +24,10 @@ type NetworkPolicyListDto struct {
 	Namespace NullableString `json:"namespace,omitempty"`
 	PodSelector NullableString `json:"podSelector,omitempty"`
 	CreatedAt NullableString `json:"createdAt,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _NetworkPolicyListDto NetworkPolicyListDto
 
 // NewNetworkPolicyListDto instantiates a new NetworkPolicyListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -233,7 +236,36 @@ func (o NetworkPolicyListDto) ToMap() (map[string]interface{}, error) {
 	if o.CreatedAt.IsSet() {
 		toSerialize["createdAt"] = o.CreatedAt.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *NetworkPolicyListDto) UnmarshalJSON(data []byte) (err error) {
+	varNetworkPolicyListDto := _NetworkPolicyListDto{}
+
+	err = json.Unmarshal(data, &varNetworkPolicyListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NetworkPolicyListDto(varNetworkPolicyListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "podSelector")
+		delete(additionalProperties, "createdAt")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableNetworkPolicyListDto struct {

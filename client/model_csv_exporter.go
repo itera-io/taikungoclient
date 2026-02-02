@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -25,6 +24,7 @@ type CsvExporter struct {
 	FileName string `json:"fileName"`
 	ContentType string `json:"contentType"`
 	Content string `json:"content"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CsvExporter CsvExporter
@@ -134,6 +134,11 @@ func (o CsvExporter) ToMap() (map[string]interface{}, error) {
 	toSerialize["fileName"] = o.FileName
 	toSerialize["contentType"] = o.ContentType
 	toSerialize["content"] = o.Content
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *CsvExporter) UnmarshalJSON(data []byte) (err error) {
 
 	varCsvExporter := _CsvExporter{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCsvExporter)
+	err = json.Unmarshal(data, &varCsvExporter)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CsvExporter(varCsvExporter)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "fileName")
+		delete(additionalProperties, "contentType")
+		delete(additionalProperties, "content")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -21,7 +21,10 @@ var _ MappedNullable = &AdminUpdateProjectKubeConfigCommand{}
 // AdminUpdateProjectKubeConfigCommand struct for AdminUpdateProjectKubeConfigCommand
 type AdminUpdateProjectKubeConfigCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AdminUpdateProjectKubeConfigCommand AdminUpdateProjectKubeConfigCommand
 
 // NewAdminUpdateProjectKubeConfigCommand instantiates a new AdminUpdateProjectKubeConfigCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o AdminUpdateProjectKubeConfigCommand) ToMap() (map[string]interface{}, er
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AdminUpdateProjectKubeConfigCommand) UnmarshalJSON(data []byte) (err error) {
+	varAdminUpdateProjectKubeConfigCommand := _AdminUpdateProjectKubeConfigCommand{}
+
+	err = json.Unmarshal(data, &varAdminUpdateProjectKubeConfigCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AdminUpdateProjectKubeConfigCommand(varAdminUpdateProjectKubeConfigCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAdminUpdateProjectKubeConfigCommand struct {

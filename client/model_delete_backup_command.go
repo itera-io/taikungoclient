@@ -22,7 +22,10 @@ var _ MappedNullable = &DeleteBackupCommand{}
 type DeleteBackupCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	Name NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeleteBackupCommand DeleteBackupCommand
 
 // NewDeleteBackupCommand instantiates a new DeleteBackupCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o DeleteBackupCommand) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeleteBackupCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeleteBackupCommand := _DeleteBackupCommand{}
+
+	err = json.Unmarshal(data, &varDeleteBackupCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeleteBackupCommand(varDeleteBackupCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeleteBackupCommand struct {

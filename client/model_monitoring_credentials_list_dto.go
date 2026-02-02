@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -27,6 +26,7 @@ type MonitoringCredentialsListDto struct {
 	PrometheusUrl NullableString `json:"prometheusUrl"`
 	LokiUrl NullableString `json:"lokiUrl"`
 	AlertManagerUrl NullableString `json:"alertManagerUrl"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _MonitoringCredentialsListDto MonitoringCredentialsListDto
@@ -198,6 +198,11 @@ func (o MonitoringCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["prometheusUrl"] = o.PrometheusUrl.Get()
 	toSerialize["lokiUrl"] = o.LokiUrl.Get()
 	toSerialize["alertManagerUrl"] = o.AlertManagerUrl.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -229,15 +234,24 @@ func (o *MonitoringCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varMonitoringCredentialsListDto := _MonitoringCredentialsListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varMonitoringCredentialsListDto)
+	err = json.Unmarshal(data, &varMonitoringCredentialsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = MonitoringCredentialsListDto(varMonitoringCredentialsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "prometheusUrl")
+		delete(additionalProperties, "lokiUrl")
+		delete(additionalProperties, "alertManagerUrl")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

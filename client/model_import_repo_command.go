@@ -25,7 +25,10 @@ type ImportRepoCommand struct {
 	Name NullableString `json:"name,omitempty"`
 	Url NullableString `json:"url,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ImportRepoCommand ImportRepoCommand
 
 // NewImportRepoCommand instantiates a new ImportRepoCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -279,7 +282,37 @@ func (o ImportRepoCommand) ToMap() (map[string]interface{}, error) {
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ImportRepoCommand) UnmarshalJSON(data []byte) (err error) {
+	varImportRepoCommand := _ImportRepoCommand{}
+
+	err = json.Unmarshal(data, &varImportRepoCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ImportRepoCommand(varImportRepoCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "organizationId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableImportRepoCommand struct {

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -27,6 +26,7 @@ type FlavorsListDto struct {
 	Name string `json:"name"`
 	Description interface{} `json:"description"`
 	MaxDataDiskCount NullableFloat64 `json:"maxDataDiskCount"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FlavorsListDto FlavorsListDto
@@ -194,6 +194,11 @@ func (o FlavorsListDto) ToMap() (map[string]interface{}, error) {
 		toSerialize["description"] = o.Description
 	}
 	toSerialize["maxDataDiskCount"] = o.MaxDataDiskCount.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -225,15 +230,24 @@ func (o *FlavorsListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varFlavorsListDto := _FlavorsListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varFlavorsListDto)
+	err = json.Unmarshal(data, &varFlavorsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FlavorsListDto(varFlavorsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "ram")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "maxDataDiskCount")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

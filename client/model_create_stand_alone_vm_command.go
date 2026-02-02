@@ -39,7 +39,10 @@ type CreateStandAloneVmCommand struct {
 	UseLocalDisk *bool `json:"useLocalDisk,omitempty"`
 	StandAloneVmDisks []StandAloneVmDiskDto `json:"standAloneVmDisks,omitempty"`
 	StandAloneMetaDatas []StandAloneMetaDataDto `json:"standAloneMetaDatas,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateStandAloneVmCommand CreateStandAloneVmCommand
 
 // NewCreateStandAloneVmCommand instantiates a new CreateStandAloneVmCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -835,7 +838,51 @@ func (o CreateStandAloneVmCommand) ToMap() (map[string]interface{}, error) {
 	if o.StandAloneMetaDatas != nil {
 		toSerialize["standAloneMetaDatas"] = o.StandAloneMetaDatas
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateStandAloneVmCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateStandAloneVmCommand := _CreateStandAloneVmCommand{}
+
+	err = json.Unmarshal(data, &varCreateStandAloneVmCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateStandAloneVmCommand(varCreateStandAloneVmCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "flavorName")
+		delete(additionalProperties, "volumeSize")
+		delete(additionalProperties, "volumeType")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "publicIpEnabled")
+		delete(additionalProperties, "image")
+		delete(additionalProperties, "cloudInit")
+		delete(additionalProperties, "standAloneProfileId")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "count")
+		delete(additionalProperties, "spotPrice")
+		delete(additionalProperties, "spotInstance")
+		delete(additionalProperties, "availabilityZone")
+		delete(additionalProperties, "hypervisor")
+		delete(additionalProperties, "useLocalDisk")
+		delete(additionalProperties, "standAloneVmDisks")
+		delete(additionalProperties, "standAloneMetaDatas")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateStandAloneVmCommand struct {

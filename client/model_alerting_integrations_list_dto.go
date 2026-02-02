@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -27,6 +26,7 @@ type AlertingIntegrationsListDto struct {
 	Token NullableString `json:"token"`
 	AlertingIntegrationType AlertingIntegrationType `json:"alertingIntegrationType"`
 	AlertingProfileName string `json:"alertingProfileName"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AlertingIntegrationsListDto AlertingIntegrationsListDto
@@ -190,6 +190,11 @@ func (o AlertingIntegrationsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["token"] = o.Token.Get()
 	toSerialize["alertingIntegrationType"] = o.AlertingIntegrationType
 	toSerialize["alertingProfileName"] = o.AlertingProfileName
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -221,15 +226,24 @@ func (o *AlertingIntegrationsListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varAlertingIntegrationsListDto := _AlertingIntegrationsListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAlertingIntegrationsListDto)
+	err = json.Unmarshal(data, &varAlertingIntegrationsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AlertingIntegrationsListDto(varAlertingIntegrationsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "alertingIntegrationType")
+		delete(additionalProperties, "alertingProfileName")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

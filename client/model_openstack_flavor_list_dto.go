@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -26,6 +25,7 @@ type OpenstackFlavorListDto struct {
 	Cpu int64 `json:"cpu"`
 	Name string `json:"name"`
 	Description NullableString `json:"description"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OpenstackFlavorListDto OpenstackFlavorListDto
@@ -163,6 +163,11 @@ func (o OpenstackFlavorListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["cpu"] = o.Cpu
 	toSerialize["name"] = o.Name
 	toSerialize["description"] = o.Description.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -193,15 +198,23 @@ func (o *OpenstackFlavorListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varOpenstackFlavorListDto := _OpenstackFlavorListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOpenstackFlavorListDto)
+	err = json.Unmarshal(data, &varOpenstackFlavorListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OpenstackFlavorListDto(varOpenstackFlavorListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "ram")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

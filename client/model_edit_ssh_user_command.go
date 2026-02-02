@@ -24,7 +24,10 @@ type EditSshUserCommand struct {
 	Name NullableString `json:"name,omitempty"`
 	SshPublicKey NullableString `json:"sshPublicKey,omitempty"`
 	AccessProfileId *int32 `json:"accessProfileId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EditSshUserCommand EditSshUserCommand
 
 // NewEditSshUserCommand instantiates a new EditSshUserCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -213,7 +216,36 @@ func (o EditSshUserCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AccessProfileId) {
 		toSerialize["accessProfileId"] = o.AccessProfileId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EditSshUserCommand) UnmarshalJSON(data []byte) (err error) {
+	varEditSshUserCommand := _EditSshUserCommand{}
+
+	err = json.Unmarshal(data, &varEditSshUserCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EditSshUserCommand(varEditSshUserCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "sshPublicKey")
+		delete(additionalProperties, "accessProfileId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEditSshUserCommand struct {

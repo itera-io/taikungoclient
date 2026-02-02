@@ -21,7 +21,10 @@ var _ MappedNullable = &ArchiveTicketCommand{}
 // ArchiveTicketCommand struct for ArchiveTicketCommand
 type ArchiveTicketCommand struct {
 	TicketId NullableString `json:"ticketId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ArchiveTicketCommand ArchiveTicketCommand
 
 // NewArchiveTicketCommand instantiates a new ArchiveTicketCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +98,33 @@ func (o ArchiveTicketCommand) ToMap() (map[string]interface{}, error) {
 	if o.TicketId.IsSet() {
 		toSerialize["ticketId"] = o.TicketId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ArchiveTicketCommand) UnmarshalJSON(data []byte) (err error) {
+	varArchiveTicketCommand := _ArchiveTicketCommand{}
+
+	err = json.Unmarshal(data, &varArchiveTicketCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ArchiveTicketCommand(varArchiveTicketCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "ticketId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableArchiveTicketCommand struct {

@@ -29,7 +29,10 @@ type CreateSubscriptionCommand struct {
 	MonthlyPrice NullableFloat64 `json:"monthlyPrice,omitempty"`
 	TcuPrice NullableFloat64 `json:"tcuPrice,omitempty"`
 	YearlyPrice NullableFloat64 `json:"yearlyPrice,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateSubscriptionCommand CreateSubscriptionCommand
 
 // NewCreateSubscriptionCommand instantiates a new CreateSubscriptionCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -413,7 +416,41 @@ func (o CreateSubscriptionCommand) ToMap() (map[string]interface{}, error) {
 	if o.YearlyPrice.IsSet() {
 		toSerialize["yearlyPrice"] = o.YearlyPrice.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateSubscriptionCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateSubscriptionCommand := _CreateSubscriptionCommand{}
+
+	err = json.Unmarshal(data, &varCreateSubscriptionCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateSubscriptionCommand(varCreateSubscriptionCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "projectLimit")
+		delete(additionalProperties, "serverLimit")
+		delete(additionalProperties, "userLimit")
+		delete(additionalProperties, "cloudCredentialLimit")
+		delete(additionalProperties, "trialDays")
+		delete(additionalProperties, "monthlyPrice")
+		delete(additionalProperties, "tcuPrice")
+		delete(additionalProperties, "yearlyPrice")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateSubscriptionCommand struct {

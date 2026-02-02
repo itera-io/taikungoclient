@@ -24,7 +24,10 @@ type CronjobsSearchCommand struct {
 	Offset NullableInt32 `json:"offset,omitempty"`
 	SearchTerm NullableString `json:"searchTerm,omitempty"`
 	IncludePublicImportedClusters NullableBool `json:"includePublicImportedClusters,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CronjobsSearchCommand CronjobsSearchCommand
 
 // NewCronjobsSearchCommand instantiates a new CronjobsSearchCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -233,7 +236,36 @@ func (o CronjobsSearchCommand) ToMap() (map[string]interface{}, error) {
 	if o.IncludePublicImportedClusters.IsSet() {
 		toSerialize["includePublicImportedClusters"] = o.IncludePublicImportedClusters.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CronjobsSearchCommand) UnmarshalJSON(data []byte) (err error) {
+	varCronjobsSearchCommand := _CronjobsSearchCommand{}
+
+	err = json.Unmarshal(data, &varCronjobsSearchCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CronjobsSearchCommand(varCronjobsSearchCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "offset")
+		delete(additionalProperties, "searchTerm")
+		delete(additionalProperties, "includePublicImportedClusters")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCronjobsSearchCommand struct {

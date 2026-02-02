@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -27,6 +26,7 @@ type PodsListDtoCursorStringPaginatedResponse struct {
 	HasMore bool `json:"hasMore"`
 	TotalCount int64 `json:"totalCount"`
 	NextCursor NullableString `json:"nextCursor,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PodsListDtoCursorStringPaginatedResponse PodsListDtoCursorStringPaginatedResponse
@@ -211,6 +211,11 @@ func (o PodsListDtoCursorStringPaginatedResponse) ToMap() (map[string]interface{
 	if o.NextCursor.IsSet() {
 		toSerialize["nextCursor"] = o.NextCursor.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -241,15 +246,24 @@ func (o *PodsListDtoCursorStringPaginatedResponse) UnmarshalJSON(data []byte) (e
 
 	varPodsListDtoCursorStringPaginatedResponse := _PodsListDtoCursorStringPaginatedResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPodsListDtoCursorStringPaginatedResponse)
+	err = json.Unmarshal(data, &varPodsListDtoCursorStringPaginatedResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PodsListDtoCursorStringPaginatedResponse(varPodsListDtoCursorStringPaginatedResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "hasMore")
+		delete(additionalProperties, "totalCount")
+		delete(additionalProperties, "nextCursor")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

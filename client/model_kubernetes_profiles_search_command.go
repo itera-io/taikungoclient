@@ -23,7 +23,10 @@ type KubernetesProfilesSearchCommand struct {
 	Limit NullableInt32 `json:"limit,omitempty"`
 	Offset NullableInt32 `json:"offset,omitempty"`
 	SearchTerm NullableString `json:"searchTerm,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _KubernetesProfilesSearchCommand KubernetesProfilesSearchCommand
 
 // NewKubernetesProfilesSearchCommand instantiates a new KubernetesProfilesSearchCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -187,7 +190,35 @@ func (o KubernetesProfilesSearchCommand) ToMap() (map[string]interface{}, error)
 	if o.SearchTerm.IsSet() {
 		toSerialize["searchTerm"] = o.SearchTerm.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *KubernetesProfilesSearchCommand) UnmarshalJSON(data []byte) (err error) {
+	varKubernetesProfilesSearchCommand := _KubernetesProfilesSearchCommand{}
+
+	err = json.Unmarshal(data, &varKubernetesProfilesSearchCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubernetesProfilesSearchCommand(varKubernetesProfilesSearchCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "offset")
+		delete(additionalProperties, "searchTerm")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableKubernetesProfilesSearchCommand struct {

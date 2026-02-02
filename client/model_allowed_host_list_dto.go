@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -28,6 +27,7 @@ type AllowedHostListDto struct {
 	MaskBits int32 `json:"maskBits"`
 	AccessProfileId int32 `json:"accessProfileId"`
 	AccessProfileName string `json:"accessProfileName"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AllowedHostListDto AllowedHostListDto
@@ -217,6 +217,11 @@ func (o AllowedHostListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["maskBits"] = o.MaskBits
 	toSerialize["accessProfileId"] = o.AccessProfileId
 	toSerialize["accessProfileName"] = o.AccessProfileName
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -249,15 +254,25 @@ func (o *AllowedHostListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varAllowedHostListDto := _AllowedHostListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAllowedHostListDto)
+	err = json.Unmarshal(data, &varAllowedHostListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AllowedHostListDto(varAllowedHostListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "ipAddress")
+		delete(additionalProperties, "maskBits")
+		delete(additionalProperties, "accessProfileId")
+		delete(additionalProperties, "accessProfileName")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

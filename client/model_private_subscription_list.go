@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -30,6 +29,7 @@ type PrivateSubscriptionList struct {
 	TotalCount int32 `json:"totalCount"`
 	IsEligibleToSwitch bool `json:"isEligibleToSwitch"`
 	ActiveSubscriptionStatus NullableString `json:"activeSubscriptionStatus"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PrivateSubscriptionList PrivateSubscriptionList
@@ -294,6 +294,11 @@ func (o PrivateSubscriptionList) ToMap() (map[string]interface{}, error) {
 	toSerialize["totalCount"] = o.TotalCount
 	toSerialize["isEligibleToSwitch"] = o.IsEligibleToSwitch
 	toSerialize["activeSubscriptionStatus"] = o.ActiveSubscriptionStatus.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -327,15 +332,27 @@ func (o *PrivateSubscriptionList) UnmarshalJSON(data []byte) (err error) {
 
 	varPrivateSubscriptionList := _PrivateSubscriptionList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPrivateSubscriptionList)
+	err = json.Unmarshal(data, &varPrivateSubscriptionList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PrivateSubscriptionList(varPrivateSubscriptionList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "offset")
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "hasMore")
+		delete(additionalProperties, "nextOffset")
+		delete(additionalProperties, "totalCount")
+		delete(additionalProperties, "isEligibleToSwitch")
+		delete(additionalProperties, "activeSubscriptionStatus")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

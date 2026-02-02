@@ -22,7 +22,10 @@ var _ MappedNullable = &UpdateStageCommand{}
 type UpdateStageCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	Stage NullableString `json:"stage,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateStageCommand UpdateStageCommand
 
 // NewUpdateStageCommand instantiates a new UpdateStageCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o UpdateStageCommand) ToMap() (map[string]interface{}, error) {
 	if o.Stage.IsSet() {
 		toSerialize["stage"] = o.Stage.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateStageCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateStageCommand := _UpdateStageCommand{}
+
+	err = json.Unmarshal(data, &varUpdateStageCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateStageCommand(varUpdateStageCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "stage")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateStageCommand struct {

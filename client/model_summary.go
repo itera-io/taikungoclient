@@ -27,7 +27,10 @@ type Summary struct {
 	TotalNoPriceResources *int32 `json:"totalNoPriceResources,omitempty"`
 	UnsupportedResourceCounts map[string]int32 `json:"unsupportedResourceCounts,omitempty"`
 	NoPriceResourceCounts map[string]int32 `json:"noPriceResourceCounts,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Summary Summary
 
 // NewSummary instantiates a new Summary object
 // This constructor will assign default values to properties that have it defined,
@@ -303,7 +306,39 @@ func (o Summary) ToMap() (map[string]interface{}, error) {
 	if o.NoPriceResourceCounts != nil {
 		toSerialize["noPriceResourceCounts"] = o.NoPriceResourceCounts
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Summary) UnmarshalJSON(data []byte) (err error) {
+	varSummary := _Summary{}
+
+	err = json.Unmarshal(data, &varSummary)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Summary(varSummary)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "totalDetectedResources")
+		delete(additionalProperties, "totalSupportedResources")
+		delete(additionalProperties, "totalUnsupportedResources")
+		delete(additionalProperties, "totalUsageBasedResources")
+		delete(additionalProperties, "totalNoPriceResources")
+		delete(additionalProperties, "unsupportedResourceCounts")
+		delete(additionalProperties, "noPriceResourceCounts")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableSummary struct {

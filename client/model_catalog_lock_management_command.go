@@ -22,7 +22,10 @@ var _ MappedNullable = &CatalogLockManagementCommand{}
 type CatalogLockManagementCommand struct {
 	Id *int32 `json:"id,omitempty"`
 	Mode NullableString `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CatalogLockManagementCommand CatalogLockManagementCommand
 
 // NewCatalogLockManagementCommand instantiates a new CatalogLockManagementCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o CatalogLockManagementCommand) ToMap() (map[string]interface{}, error) {
 	if o.Mode.IsSet() {
 		toSerialize["mode"] = o.Mode.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CatalogLockManagementCommand) UnmarshalJSON(data []byte) (err error) {
+	varCatalogLockManagementCommand := _CatalogLockManagementCommand{}
+
+	err = json.Unmarshal(data, &varCatalogLockManagementCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CatalogLockManagementCommand(varCatalogLockManagementCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCatalogLockManagementCommand struct {

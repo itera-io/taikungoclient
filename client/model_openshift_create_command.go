@@ -26,7 +26,10 @@ type OpenshiftCreateCommand struct {
 	StorageClass NullableString `json:"storageClass,omitempty"`
 	BaseDomain NullableString `json:"baseDomain,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OpenshiftCreateCommand OpenshiftCreateCommand
 
 // NewOpenshiftCreateCommand instantiates a new OpenshiftCreateCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -325,7 +328,38 @@ func (o OpenshiftCreateCommand) ToMap() (map[string]interface{}, error) {
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OpenshiftCreateCommand) UnmarshalJSON(data []byte) (err error) {
+	varOpenshiftCreateCommand := _OpenshiftCreateCommand{}
+
+	err = json.Unmarshal(data, &varOpenshiftCreateCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OpenshiftCreateCommand(varOpenshiftCreateCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "kubeConfig")
+		delete(additionalProperties, "pullSecret")
+		delete(additionalProperties, "storageClass")
+		delete(additionalProperties, "baseDomain")
+		delete(additionalProperties, "organizationId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOpenshiftCreateCommand struct {

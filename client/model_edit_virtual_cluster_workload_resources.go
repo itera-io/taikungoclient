@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -27,6 +26,7 @@ type EditVirtualClusterWorkloadResources struct {
 	MaxTotalPvcSize int64 `json:"maxTotalPvcSize"`
 	MaxIngresses int32 `json:"maxIngresses"`
 	MaxLoadBalancers int32 `json:"maxLoadBalancers"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EditVirtualClusterWorkloadResources EditVirtualClusterWorkloadResources
@@ -188,6 +188,11 @@ func (o EditVirtualClusterWorkloadResources) ToMap() (map[string]interface{}, er
 	toSerialize["maxTotalPvcSize"] = o.MaxTotalPvcSize
 	toSerialize["maxIngresses"] = o.MaxIngresses
 	toSerialize["maxLoadBalancers"] = o.MaxLoadBalancers
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -219,15 +224,24 @@ func (o *EditVirtualClusterWorkloadResources) UnmarshalJSON(data []byte) (err er
 
 	varEditVirtualClusterWorkloadResources := _EditVirtualClusterWorkloadResources{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEditVirtualClusterWorkloadResources)
+	err = json.Unmarshal(data, &varEditVirtualClusterWorkloadResources)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EditVirtualClusterWorkloadResources(varEditVirtualClusterWorkloadResources)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "maxPods")
+		delete(additionalProperties, "maxPvcs")
+		delete(additionalProperties, "maxTotalPvcSize")
+		delete(additionalProperties, "maxIngresses")
+		delete(additionalProperties, "maxLoadBalancers")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

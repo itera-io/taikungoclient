@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -24,6 +23,7 @@ var _ MappedNullable = &PrometheusLabelListDto{}
 type PrometheusLabelListDto struct {
 	Label NullableString `json:"label"`
 	Value NullableString `json:"value"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PrometheusLabelListDto PrometheusLabelListDto
@@ -111,6 +111,11 @@ func (o PrometheusLabelListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["label"] = o.Label.Get()
 	toSerialize["value"] = o.Value.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -139,15 +144,21 @@ func (o *PrometheusLabelListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varPrometheusLabelListDto := _PrometheusLabelListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPrometheusLabelListDto)
+	err = json.Unmarshal(data, &varPrometheusLabelListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PrometheusLabelListDto(varPrometheusLabelListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "label")
+		delete(additionalProperties, "value")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

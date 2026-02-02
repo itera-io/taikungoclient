@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -25,6 +24,7 @@ type NodeActionCommand struct {
 	ProjectId int32 `json:"projectId"`
 	Name NullableString `json:"name"`
 	Action ENodeAction `json:"action"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _NodeActionCommand NodeActionCommand
@@ -136,6 +136,11 @@ func (o NodeActionCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize["projectId"] = o.ProjectId
 	toSerialize["name"] = o.Name.Get()
 	toSerialize["action"] = o.Action
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -165,15 +170,22 @@ func (o *NodeActionCommand) UnmarshalJSON(data []byte) (err error) {
 
 	varNodeActionCommand := _NodeActionCommand{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varNodeActionCommand)
+	err = json.Unmarshal(data, &varNodeActionCommand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = NodeActionCommand(varNodeActionCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "action")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

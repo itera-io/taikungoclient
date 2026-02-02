@@ -21,7 +21,10 @@ var _ MappedNullable = &ProjectDeploymentRepairVmCommand{}
 // ProjectDeploymentRepairVmCommand struct for ProjectDeploymentRepairVmCommand
 type ProjectDeploymentRepairVmCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectDeploymentRepairVmCommand ProjectDeploymentRepairVmCommand
 
 // NewProjectDeploymentRepairVmCommand instantiates a new ProjectDeploymentRepairVmCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o ProjectDeploymentRepairVmCommand) ToMap() (map[string]interface{}, error
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectDeploymentRepairVmCommand) UnmarshalJSON(data []byte) (err error) {
+	varProjectDeploymentRepairVmCommand := _ProjectDeploymentRepairVmCommand{}
+
+	err = json.Unmarshal(data, &varProjectDeploymentRepairVmCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectDeploymentRepairVmCommand(varProjectDeploymentRepairVmCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectDeploymentRepairVmCommand struct {

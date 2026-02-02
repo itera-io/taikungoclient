@@ -24,7 +24,10 @@ type CreateStandAloneDiskCommand struct {
 	Name NullableString `json:"name,omitempty"`
 	Size *int64 `json:"size,omitempty"`
 	VolumeType NullableString `json:"volumeType,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateStandAloneDiskCommand CreateStandAloneDiskCommand
 
 // NewCreateStandAloneDiskCommand instantiates a new CreateStandAloneDiskCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -213,7 +216,36 @@ func (o CreateStandAloneDiskCommand) ToMap() (map[string]interface{}, error) {
 	if o.VolumeType.IsSet() {
 		toSerialize["volumeType"] = o.VolumeType.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateStandAloneDiskCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateStandAloneDiskCommand := _CreateStandAloneDiskCommand{}
+
+	err = json.Unmarshal(data, &varCreateStandAloneDiskCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateStandAloneDiskCommand(varCreateStandAloneDiskCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "standaloneVmId")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "size")
+		delete(additionalProperties, "volumeType")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateStandAloneDiskCommand struct {

@@ -22,7 +22,10 @@ var _ MappedNullable = &PrometheusRulesSearchList{}
 type PrometheusRulesSearchList struct {
 	Data []PrometheusRulesSearchResponseData `json:"data,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PrometheusRulesSearchList PrometheusRulesSearchList
 
 // NewPrometheusRulesSearchList instantiates a new PrometheusRulesSearchList object
 // This constructor will assign default values to properties that have it defined,
@@ -122,7 +125,34 @@ func (o PrometheusRulesSearchList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PrometheusRulesSearchList) UnmarshalJSON(data []byte) (err error) {
+	varPrometheusRulesSearchList := _PrometheusRulesSearchList{}
+
+	err = json.Unmarshal(data, &varPrometheusRulesSearchList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PrometheusRulesSearchList(varPrometheusRulesSearchList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePrometheusRulesSearchList struct {

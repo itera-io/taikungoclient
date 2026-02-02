@@ -22,7 +22,10 @@ var _ MappedNullable = &ConfirmEmailCommand{}
 type ConfirmEmailCommand struct {
 	NewEmail NullableString `json:"newEmail,omitempty"`
 	Mode *EmailMode `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ConfirmEmailCommand ConfirmEmailCommand
 
 // NewConfirmEmailCommand instantiates a new ConfirmEmailCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o ConfirmEmailCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Mode) {
 		toSerialize["mode"] = o.Mode
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ConfirmEmailCommand) UnmarshalJSON(data []byte) (err error) {
+	varConfirmEmailCommand := _ConfirmEmailCommand{}
+
+	err = json.Unmarshal(data, &varConfirmEmailCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConfirmEmailCommand(varConfirmEmailCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "newEmail")
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableConfirmEmailCommand struct {

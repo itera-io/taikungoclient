@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -29,6 +28,7 @@ type SecurityGroupListDto struct {
 	PortMaxRange int32 `json:"portMaxRange"`
 	RemoteIpPrefix NullableString `json:"remoteIpPrefix"`
 	ProfileName NullableString `json:"profileName"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SecurityGroupListDto SecurityGroupListDto
@@ -250,6 +250,11 @@ func (o SecurityGroupListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["portMaxRange"] = o.PortMaxRange
 	toSerialize["remoteIpPrefix"] = o.RemoteIpPrefix.Get()
 	toSerialize["profileName"] = o.ProfileName.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -283,15 +288,26 @@ func (o *SecurityGroupListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varSecurityGroupListDto := _SecurityGroupListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSecurityGroupListDto)
+	err = json.Unmarshal(data, &varSecurityGroupListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SecurityGroupListDto(varSecurityGroupListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "protocol")
+		delete(additionalProperties, "portMinRange")
+		delete(additionalProperties, "portMaxRange")
+		delete(additionalProperties, "remoteIpPrefix")
+		delete(additionalProperties, "profileName")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

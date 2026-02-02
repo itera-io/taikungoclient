@@ -22,7 +22,10 @@ var _ MappedNullable = &EditCatalogAppParamCommand{}
 type EditCatalogAppParamCommand struct {
 	CatalogAppId *int32 `json:"catalogAppId,omitempty"`
 	Parameters []CatalogAppParamsDto `json:"parameters,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EditCatalogAppParamCommand EditCatalogAppParamCommand
 
 // NewEditCatalogAppParamCommand instantiates a new EditCatalogAppParamCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -122,7 +125,34 @@ func (o EditCatalogAppParamCommand) ToMap() (map[string]interface{}, error) {
 	if o.Parameters != nil {
 		toSerialize["parameters"] = o.Parameters
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EditCatalogAppParamCommand) UnmarshalJSON(data []byte) (err error) {
+	varEditCatalogAppParamCommand := _EditCatalogAppParamCommand{}
+
+	err = json.Unmarshal(data, &varEditCatalogAppParamCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EditCatalogAppParamCommand(varEditCatalogAppParamCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "catalogAppId")
+		delete(additionalProperties, "parameters")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEditCatalogAppParamCommand struct {

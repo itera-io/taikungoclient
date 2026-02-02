@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -46,6 +45,7 @@ type ImportedClusterDetailsDto struct {
 	AiCredentialId NullableInt32 `json:"aiCredentialId"`
 	ExpiredAt string `json:"expiredAt"`
 	AlertsCount int32 `json:"alertsCount"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ImportedClusterDetailsDto ImportedClusterDetailsDto
@@ -753,6 +753,11 @@ func (o ImportedClusterDetailsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["aiCredentialId"] = o.AiCredentialId.Get()
 	toSerialize["expiredAt"] = o.ExpiredAt
 	toSerialize["alertsCount"] = o.AlertsCount
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -801,15 +806,43 @@ func (o *ImportedClusterDetailsDto) UnmarshalJSON(data []byte) (err error) {
 
 	varImportedClusterDetailsDto := _ImportedClusterDetailsDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varImportedClusterDetailsDto)
+	err = json.Unmarshal(data, &varImportedClusterDetailsDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ImportedClusterDetailsDto(varImportedClusterDetailsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "accessIp")
+		delete(additionalProperties, "kubernetesVersion")
+		delete(additionalProperties, "importClusterType")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "cloudCredentialName")
+		delete(additionalProperties, "cloudCredentialId")
+		delete(additionalProperties, "health")
+		delete(additionalProperties, "cloudType")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "isMonitoringEnabled")
+		delete(additionalProperties, "alertingProfileId")
+		delete(additionalProperties, "alertingProfileName")
+		delete(additionalProperties, "isOpaEnabled")
+		delete(additionalProperties, "opaProfileId")
+		delete(additionalProperties, "isBackupEnabled")
+		delete(additionalProperties, "s3CredentialId")
+		delete(additionalProperties, "aiEnabled")
+		delete(additionalProperties, "aiCredentialId")
+		delete(additionalProperties, "expiredAt")
+		delete(additionalProperties, "alertsCount")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

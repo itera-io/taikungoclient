@@ -22,7 +22,10 @@ var _ MappedNullable = &RebootServerCommand{}
 type RebootServerCommand struct {
 	ServerId *int32 `json:"serverId,omitempty"`
 	Type NullableString `json:"type,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _RebootServerCommand RebootServerCommand
 
 // NewRebootServerCommand instantiates a new RebootServerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o RebootServerCommand) ToMap() (map[string]interface{}, error) {
 	if o.Type.IsSet() {
 		toSerialize["type"] = o.Type.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *RebootServerCommand) UnmarshalJSON(data []byte) (err error) {
+	varRebootServerCommand := _RebootServerCommand{}
+
+	err = json.Unmarshal(data, &varRebootServerCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RebootServerCommand(varRebootServerCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "serverId")
+		delete(additionalProperties, "type")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableRebootServerCommand struct {

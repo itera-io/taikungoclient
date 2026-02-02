@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -26,6 +25,7 @@ type DownloadKubernetesResourceCommand struct {
 	Name string `json:"name"`
 	Namespace NullableString `json:"namespace,omitempty"`
 	Kind EKubernetesResource `json:"kind"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DownloadKubernetesResourceCommand DownloadKubernetesResourceCommand
@@ -180,6 +180,11 @@ func (o DownloadKubernetesResourceCommand) ToMap() (map[string]interface{}, erro
 		toSerialize["namespace"] = o.Namespace.Get()
 	}
 	toSerialize["kind"] = o.Kind
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -209,15 +214,23 @@ func (o *DownloadKubernetesResourceCommand) UnmarshalJSON(data []byte) (err erro
 
 	varDownloadKubernetesResourceCommand := _DownloadKubernetesResourceCommand{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDownloadKubernetesResourceCommand)
+	err = json.Unmarshal(data, &varDownloadKubernetesResourceCommand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DownloadKubernetesResourceCommand(varDownloadKubernetesResourceCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "kind")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -21,7 +21,10 @@ var _ MappedNullable = &ImportedClusterEnableMonitoringCommand{}
 // ImportedClusterEnableMonitoringCommand struct for ImportedClusterEnableMonitoringCommand
 type ImportedClusterEnableMonitoringCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ImportedClusterEnableMonitoringCommand ImportedClusterEnableMonitoringCommand
 
 // NewImportedClusterEnableMonitoringCommand instantiates a new ImportedClusterEnableMonitoringCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o ImportedClusterEnableMonitoringCommand) ToMap() (map[string]interface{},
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ImportedClusterEnableMonitoringCommand) UnmarshalJSON(data []byte) (err error) {
+	varImportedClusterEnableMonitoringCommand := _ImportedClusterEnableMonitoringCommand{}
+
+	err = json.Unmarshal(data, &varImportedClusterEnableMonitoringCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ImportedClusterEnableMonitoringCommand(varImportedClusterEnableMonitoringCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableImportedClusterEnableMonitoringCommand struct {

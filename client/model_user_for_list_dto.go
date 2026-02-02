@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -48,6 +47,7 @@ type UserForListDto struct {
 	BoundProjects []ProjectDto `json:"boundProjects"`
 	Partner PartnerDetailsForUserDto `json:"partner"`
 	Role UserRole `json:"role"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UserForListDto UserForListDto
@@ -776,6 +776,11 @@ func (o UserForListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["boundProjects"] = o.BoundProjects
 	toSerialize["partner"] = o.Partner
 	toSerialize["role"] = o.Role
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -827,15 +832,45 @@ func (o *UserForListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varUserForListDto := _UserForListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserForListDto)
+	err = json.Unmarshal(data, &varUserForListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserForListDto(varUserForListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "hasCustomerId")
+		delete(additionalProperties, "hasPaymentMethod")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "displayName")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "isEmailConfirmed")
+		delete(additionalProperties, "isEmailNotificationEnabled")
+		delete(additionalProperties, "isForcedToResetPassword")
+		delete(additionalProperties, "isCsm")
+		delete(additionalProperties, "isEligibleUpdateSubscription")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "isApprovedByPartner")
+		delete(additionalProperties, "owner")
+		delete(additionalProperties, "isReadOnly")
+		delete(additionalProperties, "hasRepo")
+		delete(additionalProperties, "isNewOrganization")
+		delete(additionalProperties, "is2FAEnabled")
+		delete(additionalProperties, "lastLoginAt")
+		delete(additionalProperties, "isForcedToEnableTwoFactorAuthentication")
+		delete(additionalProperties, "boundProjects")
+		delete(additionalProperties, "partner")
+		delete(additionalProperties, "role")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

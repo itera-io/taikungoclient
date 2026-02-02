@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -25,6 +24,7 @@ type ListAllBackupStorageLocations struct {
 	Data []BackupStorageLocationDto `json:"data"`
 	TotalCount int32 `json:"totalCount"`
 	Projects []int32 `json:"projects"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ListAllBackupStorageLocations ListAllBackupStorageLocations
@@ -142,6 +142,11 @@ func (o ListAllBackupStorageLocations) ToMap() (map[string]interface{}, error) {
 	if o.Projects != nil {
 		toSerialize["projects"] = o.Projects
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -171,15 +176,22 @@ func (o *ListAllBackupStorageLocations) UnmarshalJSON(data []byte) (err error) {
 
 	varListAllBackupStorageLocations := _ListAllBackupStorageLocations{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varListAllBackupStorageLocations)
+	err = json.Unmarshal(data, &varListAllBackupStorageLocations)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ListAllBackupStorageLocations(varListAllBackupStorageLocations)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		delete(additionalProperties, "projects")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

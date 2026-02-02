@@ -21,7 +21,10 @@ var _ MappedNullable = &AdminOrganizationsDeleteCommand{}
 // AdminOrganizationsDeleteCommand struct for AdminOrganizationsDeleteCommand
 type AdminOrganizationsDeleteCommand struct {
 	Id *int32 `json:"id,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AdminOrganizationsDeleteCommand AdminOrganizationsDeleteCommand
 
 // NewAdminOrganizationsDeleteCommand instantiates a new AdminOrganizationsDeleteCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o AdminOrganizationsDeleteCommand) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AdminOrganizationsDeleteCommand) UnmarshalJSON(data []byte) (err error) {
+	varAdminOrganizationsDeleteCommand := _AdminOrganizationsDeleteCommand{}
+
+	err = json.Unmarshal(data, &varAdminOrganizationsDeleteCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AdminOrganizationsDeleteCommand(varAdminOrganizationsDeleteCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAdminOrganizationsDeleteCommand struct {

@@ -21,7 +21,10 @@ var _ MappedNullable = &DnsNtpAddressEditDto{}
 // DnsNtpAddressEditDto struct for DnsNtpAddressEditDto
 type DnsNtpAddressEditDto struct {
 	Address NullableString `json:"address,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DnsNtpAddressEditDto DnsNtpAddressEditDto
 
 // NewDnsNtpAddressEditDto instantiates a new DnsNtpAddressEditDto object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +98,33 @@ func (o DnsNtpAddressEditDto) ToMap() (map[string]interface{}, error) {
 	if o.Address.IsSet() {
 		toSerialize["address"] = o.Address.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DnsNtpAddressEditDto) UnmarshalJSON(data []byte) (err error) {
+	varDnsNtpAddressEditDto := _DnsNtpAddressEditDto{}
+
+	err = json.Unmarshal(data, &varDnsNtpAddressEditDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DnsNtpAddressEditDto(varDnsNtpAddressEditDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "address")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDnsNtpAddressEditDto struct {

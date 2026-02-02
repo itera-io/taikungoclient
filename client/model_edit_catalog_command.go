@@ -23,7 +23,10 @@ type EditCatalogCommand struct {
 	Id *int32 `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	Description NullableString `json:"description,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EditCatalogCommand EditCatalogCommand
 
 // NewEditCatalogCommand instantiates a new EditCatalogCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -177,7 +180,35 @@ func (o EditCatalogCommand) ToMap() (map[string]interface{}, error) {
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EditCatalogCommand) UnmarshalJSON(data []byte) (err error) {
+	varEditCatalogCommand := _EditCatalogCommand{}
+
+	err = json.Unmarshal(data, &varEditCatalogCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EditCatalogCommand(varEditCatalogCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEditCatalogCommand struct {

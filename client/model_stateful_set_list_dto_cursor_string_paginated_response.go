@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -27,6 +26,7 @@ type StatefulSetListDtoCursorStringPaginatedResponse struct {
 	HasMore bool `json:"hasMore"`
 	TotalCount int64 `json:"totalCount"`
 	NextCursor NullableString `json:"nextCursor,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StatefulSetListDtoCursorStringPaginatedResponse StatefulSetListDtoCursorStringPaginatedResponse
@@ -211,6 +211,11 @@ func (o StatefulSetListDtoCursorStringPaginatedResponse) ToMap() (map[string]int
 	if o.NextCursor.IsSet() {
 		toSerialize["nextCursor"] = o.NextCursor.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -241,15 +246,24 @@ func (o *StatefulSetListDtoCursorStringPaginatedResponse) UnmarshalJSON(data []b
 
 	varStatefulSetListDtoCursorStringPaginatedResponse := _StatefulSetListDtoCursorStringPaginatedResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStatefulSetListDtoCursorStringPaginatedResponse)
+	err = json.Unmarshal(data, &varStatefulSetListDtoCursorStringPaginatedResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StatefulSetListDtoCursorStringPaginatedResponse(varStatefulSetListDtoCursorStringPaginatedResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "hasMore")
+		delete(additionalProperties, "totalCount")
+		delete(additionalProperties, "nextCursor")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

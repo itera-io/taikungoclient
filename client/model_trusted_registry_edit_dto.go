@@ -21,7 +21,10 @@ var _ MappedNullable = &TrustedRegistryEditDto{}
 // TrustedRegistryEditDto struct for TrustedRegistryEditDto
 type TrustedRegistryEditDto struct {
 	Registry NullableString `json:"registry,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _TrustedRegistryEditDto TrustedRegistryEditDto
 
 // NewTrustedRegistryEditDto instantiates a new TrustedRegistryEditDto object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +98,33 @@ func (o TrustedRegistryEditDto) ToMap() (map[string]interface{}, error) {
 	if o.Registry.IsSet() {
 		toSerialize["registry"] = o.Registry.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *TrustedRegistryEditDto) UnmarshalJSON(data []byte) (err error) {
+	varTrustedRegistryEditDto := _TrustedRegistryEditDto{}
+
+	err = json.Unmarshal(data, &varTrustedRegistryEditDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TrustedRegistryEditDto(varTrustedRegistryEditDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "registry")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableTrustedRegistryEditDto struct {

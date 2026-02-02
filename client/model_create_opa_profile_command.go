@@ -34,7 +34,10 @@ type CreateOpaProfileCommand struct {
 	IngressWhitelist []string `json:"ingressWhitelist,omitempty"`
 	WhitelistMasterTaintNamespaces []string `json:"whitelistMasterTaintNamespaces,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateOpaProfileCommand CreateOpaProfileCommand
 
 // NewCreateOpaProfileCommand instantiates a new CreateOpaProfileCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -577,7 +580,46 @@ func (o CreateOpaProfileCommand) ToMap() (map[string]interface{}, error) {
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateOpaProfileCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateOpaProfileCommand := _CreateOpaProfileCommand{}
+
+	err = json.Unmarshal(data, &varCreateOpaProfileCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateOpaProfileCommand(varCreateOpaProfileCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "forbidNodePort")
+		delete(additionalProperties, "forbidHttpIngress")
+		delete(additionalProperties, "requireProbe")
+		delete(additionalProperties, "uniqueIngresses")
+		delete(additionalProperties, "uniqueServiceSelector")
+		delete(additionalProperties, "forcePodResource")
+		delete(additionalProperties, "isNodeNameForbiddenInVC")
+		delete(additionalProperties, "isMasterTaintEnforced")
+		delete(additionalProperties, "allowedRepo")
+		delete(additionalProperties, "forbidSpecificTags")
+		delete(additionalProperties, "ingressWhitelist")
+		delete(additionalProperties, "whitelistMasterTaintNamespaces")
+		delete(additionalProperties, "organizationId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateOpaProfileCommand struct {

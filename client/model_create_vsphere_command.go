@@ -36,7 +36,10 @@ type CreateVsphereCommand struct {
 	PublicNetwork *CreateVsphereNetworkDto `json:"publicNetwork,omitempty"`
 	PrivateNetwork *CreateVsphereNetworkDto `json:"privateNetwork,omitempty"`
 	SkipTlsFlag *bool `json:"skipTlsFlag,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateVsphereCommand CreateVsphereCommand
 
 // NewCreateVsphereCommand instantiates a new CreateVsphereCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -736,7 +739,48 @@ func (o CreateVsphereCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SkipTlsFlag) {
 		toSerialize["skipTlsFlag"] = o.SkipTlsFlag
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateVsphereCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateVsphereCommand := _CreateVsphereCommand{}
+
+	err = json.Unmarshal(data, &varCreateVsphereCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateVsphereCommand(varCreateVsphereCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "datacenterId")
+		delete(additionalProperties, "datacenterName")
+		delete(additionalProperties, "datastoreName")
+		delete(additionalProperties, "resourcePoolName")
+		delete(additionalProperties, "drsEnabled")
+		delete(additionalProperties, "vmTemplateName")
+		delete(additionalProperties, "continent")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "hypervisors")
+		delete(additionalProperties, "publicNetwork")
+		delete(additionalProperties, "privateNetwork")
+		delete(additionalProperties, "skipTlsFlag")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateVsphereCommand struct {

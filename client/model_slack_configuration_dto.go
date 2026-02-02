@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -29,6 +28,7 @@ type SlackConfigurationDto struct {
 	OrganizationName NullableString `json:"organizationName"`
 	OrganizationId NullableInt32 `json:"organizationId"`
 	SlackType SlackType `json:"slackType"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SlackConfigurationDto SlackConfigurationDto
@@ -252,6 +252,11 @@ func (o SlackConfigurationDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["organizationName"] = o.OrganizationName.Get()
 	toSerialize["organizationId"] = o.OrganizationId.Get()
 	toSerialize["slackType"] = o.SlackType
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -285,15 +290,26 @@ func (o *SlackConfigurationDto) UnmarshalJSON(data []byte) (err error) {
 
 	varSlackConfigurationDto := _SlackConfigurationDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSlackConfigurationDto)
+	err = json.Unmarshal(data, &varSlackConfigurationDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SlackConfigurationDto(varSlackConfigurationDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "channel")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "slackType")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

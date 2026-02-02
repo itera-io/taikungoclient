@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -58,6 +57,7 @@ type ServerListDto struct {
 	ReplicaCount NullableInt32 `json:"replicaCount"`
 	WasmEnabled bool `json:"wasmEnabled"`
 	Flavor NullableString `json:"flavor"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ServerListDto ServerListDto
@@ -1069,6 +1069,11 @@ func (o ServerListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["replicaCount"] = o.ReplicaCount.Get()
 	toSerialize["wasmEnabled"] = o.WasmEnabled
 	toSerialize["flavor"] = o.Flavor.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -1129,15 +1134,55 @@ func (o *ServerListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varServerListDto := _ServerListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varServerListDto)
+	err = json.Unmarshal(data, &varServerListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ServerListDto(varServerListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "ipAddress")
+		delete(additionalProperties, "diskSize")
+		delete(additionalProperties, "kubernetesHealth")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "ram")
+		delete(additionalProperties, "role")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "cloudType")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "spotPrice")
+		delete(additionalProperties, "spotInstance")
+		delete(additionalProperties, "shutOff")
+		delete(additionalProperties, "useLocalDisk")
+		delete(additionalProperties, "autoscalingGroup")
+		delete(additionalProperties, "providerID")
+		delete(additionalProperties, "instanceId")
+		delete(additionalProperties, "awsHostName")
+		delete(additionalProperties, "availabilityZone")
+		delete(additionalProperties, "hypervisor")
+		delete(additionalProperties, "hypervisorId")
+		delete(additionalProperties, "proxmoxRole")
+		delete(additionalProperties, "proxmoxExtraDiskSize")
+		delete(additionalProperties, "actionButtons")
+		delete(additionalProperties, "kubernetesNodeLabels")
+		delete(additionalProperties, "replicaCount")
+		delete(additionalProperties, "wasmEnabled")
+		delete(additionalProperties, "flavor")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

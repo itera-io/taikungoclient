@@ -21,7 +21,10 @@ var _ MappedNullable = &GetProjectOperationCommand{}
 // GetProjectOperationCommand struct for GetProjectOperationCommand
 type GetProjectOperationCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _GetProjectOperationCommand GetProjectOperationCommand
 
 // NewGetProjectOperationCommand instantiates a new GetProjectOperationCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o GetProjectOperationCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *GetProjectOperationCommand) UnmarshalJSON(data []byte) (err error) {
+	varGetProjectOperationCommand := _GetProjectOperationCommand{}
+
+	err = json.Unmarshal(data, &varGetProjectOperationCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GetProjectOperationCommand(varGetProjectOperationCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableGetProjectOperationCommand struct {

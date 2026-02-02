@@ -23,7 +23,10 @@ type ListCatalogAppAvailableVersionsCommand struct {
 	RepoName NullableString `json:"repoName,omitempty"`
 	PackageName NullableString `json:"packageName,omitempty"`
 	CurrentVersion NullableString `json:"currentVersion,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ListCatalogAppAvailableVersionsCommand ListCatalogAppAvailableVersionsCommand
 
 // NewListCatalogAppAvailableVersionsCommand instantiates a new ListCatalogAppAvailableVersionsCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -187,7 +190,35 @@ func (o ListCatalogAppAvailableVersionsCommand) ToMap() (map[string]interface{},
 	if o.CurrentVersion.IsSet() {
 		toSerialize["currentVersion"] = o.CurrentVersion.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ListCatalogAppAvailableVersionsCommand) UnmarshalJSON(data []byte) (err error) {
+	varListCatalogAppAvailableVersionsCommand := _ListCatalogAppAvailableVersionsCommand{}
+
+	err = json.Unmarshal(data, &varListCatalogAppAvailableVersionsCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ListCatalogAppAvailableVersionsCommand(varListCatalogAppAvailableVersionsCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "repoName")
+		delete(additionalProperties, "packageName")
+		delete(additionalProperties, "currentVersion")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableListCatalogAppAvailableVersionsCommand struct {

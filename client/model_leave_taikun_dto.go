@@ -22,7 +22,10 @@ var _ MappedNullable = &LeaveTaikunDto{}
 type LeaveTaikunDto struct {
 	PaymentIntentId NullableString `json:"paymentIntentId,omitempty"`
 	PaymentClientSecret NullableString `json:"paymentClientSecret,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _LeaveTaikunDto LeaveTaikunDto
 
 // NewLeaveTaikunDto instantiates a new LeaveTaikunDto object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o LeaveTaikunDto) ToMap() (map[string]interface{}, error) {
 	if o.PaymentClientSecret.IsSet() {
 		toSerialize["paymentClientSecret"] = o.PaymentClientSecret.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *LeaveTaikunDto) UnmarshalJSON(data []byte) (err error) {
+	varLeaveTaikunDto := _LeaveTaikunDto{}
+
+	err = json.Unmarshal(data, &varLeaveTaikunDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LeaveTaikunDto(varLeaveTaikunDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "paymentIntentId")
+		delete(additionalProperties, "paymentClientSecret")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableLeaveTaikunDto struct {

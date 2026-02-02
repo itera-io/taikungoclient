@@ -26,7 +26,10 @@ type InternalAlertDto struct {
 	Description NullableString `json:"description,omitempty"`
 	StartsAt *time.Time `json:"startsAt,omitempty"`
 	ProjectId *int32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _InternalAlertDto InternalAlertDto
 
 // NewInternalAlertDto instantiates a new InternalAlertDto object
 // This constructor will assign default values to properties that have it defined,
@@ -250,7 +253,37 @@ func (o InternalAlertDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *InternalAlertDto) UnmarshalJSON(data []byte) (err error) {
+	varInternalAlertDto := _InternalAlertDto{}
+
+	err = json.Unmarshal(data, &varInternalAlertDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InternalAlertDto(varInternalAlertDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "fingerprint")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "startsAt")
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableInternalAlertDto struct {

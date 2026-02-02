@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -26,6 +25,7 @@ type GroupOrganizationsDto struct {
 	Name string `json:"name"`
 	Role string `json:"role"`
 	Privilege NullableString `json:"privilege,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GroupOrganizationsDto GroupOrganizationsDto
@@ -180,6 +180,11 @@ func (o GroupOrganizationsDto) ToMap() (map[string]interface{}, error) {
 	if o.Privilege.IsSet() {
 		toSerialize["privilege"] = o.Privilege.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -209,15 +214,23 @@ func (o *GroupOrganizationsDto) UnmarshalJSON(data []byte) (err error) {
 
 	varGroupOrganizationsDto := _GroupOrganizationsDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGroupOrganizationsDto)
+	err = json.Unmarshal(data, &varGroupOrganizationsDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GroupOrganizationsDto(varGroupOrganizationsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "role")
+		delete(additionalProperties, "privilege")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

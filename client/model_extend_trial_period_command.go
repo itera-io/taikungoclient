@@ -23,7 +23,10 @@ var _ MappedNullable = &ExtendTrialPeriodCommand{}
 type ExtendTrialPeriodCommand struct {
 	OrganizationId *int32 `json:"organizationId,omitempty"`
 	DateTime *time.Time `json:"dateTime,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ExtendTrialPeriodCommand ExtendTrialPeriodCommand
 
 // NewExtendTrialPeriodCommand instantiates a new ExtendTrialPeriodCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -122,7 +125,34 @@ func (o ExtendTrialPeriodCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DateTime) {
 		toSerialize["dateTime"] = o.DateTime
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ExtendTrialPeriodCommand) UnmarshalJSON(data []byte) (err error) {
+	varExtendTrialPeriodCommand := _ExtendTrialPeriodCommand{}
+
+	err = json.Unmarshal(data, &varExtendTrialPeriodCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ExtendTrialPeriodCommand(varExtendTrialPeriodCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "dateTime")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableExtendTrialPeriodCommand struct {

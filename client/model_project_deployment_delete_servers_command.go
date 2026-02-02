@@ -24,7 +24,10 @@ type ProjectDeploymentDeleteServersCommand struct {
 	ServerIds []int32 `json:"serverIds,omitempty"`
 	ForceDeleteVClusters *bool `json:"forceDeleteVClusters,omitempty"`
 	DeleteAutoscalingServers *bool `json:"deleteAutoscalingServers,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectDeploymentDeleteServersCommand ProjectDeploymentDeleteServersCommand
 
 // NewProjectDeploymentDeleteServersCommand instantiates a new ProjectDeploymentDeleteServersCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -194,7 +197,36 @@ func (o ProjectDeploymentDeleteServersCommand) ToMap() (map[string]interface{}, 
 	if !IsNil(o.DeleteAutoscalingServers) {
 		toSerialize["deleteAutoscalingServers"] = o.DeleteAutoscalingServers
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectDeploymentDeleteServersCommand) UnmarshalJSON(data []byte) (err error) {
+	varProjectDeploymentDeleteServersCommand := _ProjectDeploymentDeleteServersCommand{}
+
+	err = json.Unmarshal(data, &varProjectDeploymentDeleteServersCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectDeploymentDeleteServersCommand(varProjectDeploymentDeleteServersCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "serverIds")
+		delete(additionalProperties, "forceDeleteVClusters")
+		delete(additionalProperties, "deleteAutoscalingServers")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectDeploymentDeleteServersCommand struct {

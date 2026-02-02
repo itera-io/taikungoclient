@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -78,6 +77,7 @@ type ProjectListDetailDto struct {
 	ResetStatusButton *ButtonStatusDto `json:"resetStatusButton,omitempty"`
 	ImportClusterType ImportClusterType `json:"importClusterType"`
 	EImportClusterType *EImportClusterType `json:"eImportClusterType,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProjectListDetailDto ProjectListDetailDto
@@ -1663,6 +1663,11 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EImportClusterType) {
 		toSerialize["eImportClusterType"] = o.EImportClusterType
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -1737,15 +1742,75 @@ func (o *ProjectListDetailDto) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectListDetailDto := _ProjectListDetailDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectListDetailDto)
+	err = json.Unmarshal(data, &varProjectListDetailDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectListDetailDto(varProjectListDetailDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "isKubernetes")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "isVirtualCluster")
+		delete(additionalProperties, "isMonitoringEnabled")
+		delete(additionalProperties, "hasKubeConfigFile")
+		delete(additionalProperties, "isMaintenanceModeEnabled")
+		delete(additionalProperties, "cloudCredentialName")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "health")
+		delete(additionalProperties, "cloudType")
+		delete(additionalProperties, "kubesprayCurrentVersion")
+		delete(additionalProperties, "kubesprayTargetVersion")
+		delete(additionalProperties, "kubernetesCurrentVersion")
+		delete(additionalProperties, "kubernetesTargetVersion")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "alertsCount")
+		delete(additionalProperties, "totalServersCount")
+		delete(additionalProperties, "totalStandaloneVmsCount")
+		delete(additionalProperties, "boundUsers")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "expiredAt")
+		delete(additionalProperties, "deleteOnExpiration")
+		delete(additionalProperties, "certificateExpiredAt")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "quotaId")
+		delete(additionalProperties, "allowFullSpotKubernetes")
+		delete(additionalProperties, "allowSpotWorkers")
+		delete(additionalProperties, "allowSpotVMs")
+		delete(additionalProperties, "maxSpotPrice")
+		delete(additionalProperties, "projectAction")
+		delete(additionalProperties, "hasExpirationWarning")
+		delete(additionalProperties, "totalHourlyCost")
+		delete(additionalProperties, "isAutoscalingEnabled")
+		delete(additionalProperties, "isAutoscalingSpotEnabled")
+		delete(additionalProperties, "aiEnabled")
+		delete(additionalProperties, "anyServer")
+		delete(additionalProperties, "anyVm")
+		delete(additionalProperties, "isBackupEnabled")
+		delete(additionalProperties, "isProjectMaintenanceModeEnabled")
+		delete(additionalProperties, "allUsers")
+		delete(additionalProperties, "parentProjectId")
+		delete(additionalProperties, "alertingProfileId")
+		delete(additionalProperties, "opaProfileId")
+		delete(additionalProperties, "lockButton")
+		delete(additionalProperties, "unlockButton")
+		delete(additionalProperties, "deleteButton")
+		delete(additionalProperties, "kubeInfoButton")
+		delete(additionalProperties, "setExpirationDateButton")
+		delete(additionalProperties, "resetStatusButton")
+		delete(additionalProperties, "importClusterType")
+		delete(additionalProperties, "eImportClusterType")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

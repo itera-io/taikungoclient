@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -26,6 +25,7 @@ type StandAloneProfileForDetailsDto struct {
 	Name NullableString `json:"name"`
 	PublicKey NullableString `json:"publicKey"`
 	SecurityGroups []StandAloneProfileSecurityGroupForDetailsDto `json:"securityGroups"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StandAloneProfileForDetailsDto StandAloneProfileForDetailsDto
@@ -169,6 +169,11 @@ func (o StandAloneProfileForDetailsDto) ToMap() (map[string]interface{}, error) 
 	if o.SecurityGroups != nil {
 		toSerialize["securityGroups"] = o.SecurityGroups
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -199,15 +204,23 @@ func (o *StandAloneProfileForDetailsDto) UnmarshalJSON(data []byte) (err error) 
 
 	varStandAloneProfileForDetailsDto := _StandAloneProfileForDetailsDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStandAloneProfileForDetailsDto)
+	err = json.Unmarshal(data, &varStandAloneProfileForDetailsDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StandAloneProfileForDetailsDto(varStandAloneProfileForDetailsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "publicKey")
+		delete(additionalProperties, "securityGroups")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

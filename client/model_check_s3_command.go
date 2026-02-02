@@ -24,7 +24,10 @@ type CheckS3Command struct {
 	S3SecretKey NullableString `json:"s3SecretKey,omitempty"`
 	S3Endpoint NullableString `json:"s3Endpoint,omitempty"`
 	S3Region NullableString `json:"s3Region,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CheckS3Command CheckS3Command
 
 // NewCheckS3Command instantiates a new CheckS3Command object
 // This constructor will assign default values to properties that have it defined,
@@ -233,7 +236,36 @@ func (o CheckS3Command) ToMap() (map[string]interface{}, error) {
 	if o.S3Region.IsSet() {
 		toSerialize["s3Region"] = o.S3Region.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CheckS3Command) UnmarshalJSON(data []byte) (err error) {
+	varCheckS3Command := _CheckS3Command{}
+
+	err = json.Unmarshal(data, &varCheckS3Command)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CheckS3Command(varCheckS3Command)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "s3AccessKeyId")
+		delete(additionalProperties, "s3SecretKey")
+		delete(additionalProperties, "s3Endpoint")
+		delete(additionalProperties, "s3Region")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCheckS3Command struct {

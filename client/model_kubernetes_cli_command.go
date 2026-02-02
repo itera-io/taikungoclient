@@ -22,7 +22,10 @@ var _ MappedNullable = &KubernetesCliCommand{}
 type KubernetesCliCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	KubeConfigId NullableInt32 `json:"kubeConfigId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _KubernetesCliCommand KubernetesCliCommand
 
 // NewKubernetesCliCommand instantiates a new KubernetesCliCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o KubernetesCliCommand) ToMap() (map[string]interface{}, error) {
 	if o.KubeConfigId.IsSet() {
 		toSerialize["kubeConfigId"] = o.KubeConfigId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *KubernetesCliCommand) UnmarshalJSON(data []byte) (err error) {
+	varKubernetesCliCommand := _KubernetesCliCommand{}
+
+	err = json.Unmarshal(data, &varKubernetesCliCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubernetesCliCommand(varKubernetesCliCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "kubeConfigId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableKubernetesCliCommand struct {

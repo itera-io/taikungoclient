@@ -29,7 +29,10 @@ type OpenstackVolumeTypeListQuery struct {
 	ApplicationCredEnabled *bool `json:"applicationCredEnabled,omitempty"`
 	IsAdmin *bool `json:"isAdmin,omitempty"`
 	OpenstackProject NullableString `json:"openstackProject,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OpenstackVolumeTypeListQuery OpenstackVolumeTypeListQuery
 
 // NewOpenstackVolumeTypeListQuery instantiates a new OpenstackVolumeTypeListQuery object
 // This constructor will assign default values to properties that have it defined,
@@ -443,7 +446,41 @@ func (o OpenstackVolumeTypeListQuery) ToMap() (map[string]interface{}, error) {
 	if o.OpenstackProject.IsSet() {
 		toSerialize["openstackProject"] = o.OpenstackProject.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OpenstackVolumeTypeListQuery) UnmarshalJSON(data []byte) (err error) {
+	varOpenstackVolumeTypeListQuery := _OpenstackVolumeTypeListQuery{}
+
+	err = json.Unmarshal(data, &varOpenstackVolumeTypeListQuery)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OpenstackVolumeTypeListQuery(varOpenstackVolumeTypeListQuery)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "openStackUser")
+		delete(additionalProperties, "openStackPassword")
+		delete(additionalProperties, "openStackUrl")
+		delete(additionalProperties, "openStackDomain")
+		delete(additionalProperties, "openStackRegion")
+		delete(additionalProperties, "applicationCredEnabled")
+		delete(additionalProperties, "isAdmin")
+		delete(additionalProperties, "openstackProject")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOpenstackVolumeTypeListQuery struct {

@@ -22,7 +22,10 @@ var _ MappedNullable = &ExportKubeConfigCommand{}
 type ExportKubeConfigCommand struct {
 	Id *int32 `json:"id,omitempty"`
 	ProjectId *int32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ExportKubeConfigCommand ExportKubeConfigCommand
 
 // NewExportKubeConfigCommand instantiates a new ExportKubeConfigCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -121,7 +124,34 @@ func (o ExportKubeConfigCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ExportKubeConfigCommand) UnmarshalJSON(data []byte) (err error) {
+	varExportKubeConfigCommand := _ExportKubeConfigCommand{}
+
+	err = json.Unmarshal(data, &varExportKubeConfigCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ExportKubeConfigCommand(varExportKubeConfigCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableExportKubeConfigCommand struct {

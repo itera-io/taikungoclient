@@ -22,7 +22,10 @@ var _ MappedNullable = &SshUserCreateDto{}
 type SshUserCreateDto struct {
 	Name NullableString `json:"name,omitempty"`
 	SshPublicKey NullableString `json:"sshPublicKey,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _SshUserCreateDto SshUserCreateDto
 
 // NewSshUserCreateDto instantiates a new SshUserCreateDto object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o SshUserCreateDto) ToMap() (map[string]interface{}, error) {
 	if o.SshPublicKey.IsSet() {
 		toSerialize["sshPublicKey"] = o.SshPublicKey.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *SshUserCreateDto) UnmarshalJSON(data []byte) (err error) {
+	varSshUserCreateDto := _SshUserCreateDto{}
+
+	err = json.Unmarshal(data, &varSshUserCreateDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SshUserCreateDto(varSshUserCreateDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "sshPublicKey")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableSshUserCreateDto struct {

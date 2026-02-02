@@ -22,7 +22,10 @@ var _ MappedNullable = &UnbindAppRepositoryCommand{}
 type UnbindAppRepositoryCommand struct {
 	Ids []string `json:"ids,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UnbindAppRepositoryCommand UnbindAppRepositoryCommand
 
 // NewUnbindAppRepositoryCommand instantiates a new UnbindAppRepositoryCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -132,7 +135,34 @@ func (o UnbindAppRepositoryCommand) ToMap() (map[string]interface{}, error) {
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UnbindAppRepositoryCommand) UnmarshalJSON(data []byte) (err error) {
+	varUnbindAppRepositoryCommand := _UnbindAppRepositoryCommand{}
+
+	err = json.Unmarshal(data, &varUnbindAppRepositoryCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UnbindAppRepositoryCommand(varUnbindAppRepositoryCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "ids")
+		delete(additionalProperties, "organizationId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUnbindAppRepositoryCommand struct {

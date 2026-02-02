@@ -21,7 +21,10 @@ var _ MappedNullable = &DeleteSshUserCommand{}
 // DeleteSshUserCommand struct for DeleteSshUserCommand
 type DeleteSshUserCommand struct {
 	Id *int32 `json:"id,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeleteSshUserCommand DeleteSshUserCommand
 
 // NewDeleteSshUserCommand instantiates a new DeleteSshUserCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o DeleteSshUserCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeleteSshUserCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeleteSshUserCommand := _DeleteSshUserCommand{}
+
+	err = json.Unmarshal(data, &varDeleteSshUserCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeleteSshUserCommand(varDeleteSshUserCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeleteSshUserCommand struct {

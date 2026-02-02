@@ -28,7 +28,10 @@ type UpdateKubernetesAlertDto struct {
 	Fingerprint NullableString `json:"fingerprint,omitempty"`
 	IsSilenced NullableBool `json:"isSilenced,omitempty"`
 	SilenceReason NullableString `json:"silenceReason,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateKubernetesAlertDto UpdateKubernetesAlertDto
 
 // NewUpdateKubernetesAlertDto instantiates a new UpdateKubernetesAlertDto object
 // This constructor will assign default values to properties that have it defined,
@@ -343,7 +346,39 @@ func (o UpdateKubernetesAlertDto) ToMap() (map[string]interface{}, error) {
 	if o.SilenceReason.IsSet() {
 		toSerialize["silenceReason"] = o.SilenceReason.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateKubernetesAlertDto) UnmarshalJSON(data []byte) (err error) {
+	varUpdateKubernetesAlertDto := _UpdateKubernetesAlertDto{}
+
+	err = json.Unmarshal(data, &varUpdateKubernetesAlertDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateKubernetesAlertDto(varUpdateKubernetesAlertDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "labels")
+		delete(additionalProperties, "startsAt")
+		delete(additionalProperties, "endsAt")
+		delete(additionalProperties, "fingerprint")
+		delete(additionalProperties, "isSilenced")
+		delete(additionalProperties, "silenceReason")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateKubernetesAlertDto struct {

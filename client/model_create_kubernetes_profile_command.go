@@ -30,7 +30,10 @@ type CreateKubernetesProfileCommand struct {
 	ProxmoxStorage *ProxmoxStorage `json:"proxmoxStorage,omitempty"`
 	NvidiaGpuOperatorEnabled *bool `json:"nvidiaGpuOperatorEnabled,omitempty"`
 	WasmEnabled *bool `json:"wasmEnabled,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateKubernetesProfileCommand CreateKubernetesProfileCommand
 
 // NewCreateKubernetesProfileCommand instantiates a new CreateKubernetesProfileCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -429,7 +432,42 @@ func (o CreateKubernetesProfileCommand) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.WasmEnabled) {
 		toSerialize["wasmEnabled"] = o.WasmEnabled
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateKubernetesProfileCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateKubernetesProfileCommand := _CreateKubernetesProfileCommand{}
+
+	err = json.Unmarshal(data, &varCreateKubernetesProfileCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateKubernetesProfileCommand(varCreateKubernetesProfileCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "octaviaEnabled")
+		delete(additionalProperties, "exposeNodePortOnBastion")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "taikunLBEnabled")
+		delete(additionalProperties, "allowSchedulingOnMaster")
+		delete(additionalProperties, "uniqueClusterName")
+		delete(additionalProperties, "proxmoxStorage")
+		delete(additionalProperties, "nvidiaGpuOperatorEnabled")
+		delete(additionalProperties, "wasmEnabled")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateKubernetesProfileCommand struct {

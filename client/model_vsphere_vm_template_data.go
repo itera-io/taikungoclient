@@ -23,7 +23,10 @@ type VsphereVmTemplateData struct {
 	Name NullableString `json:"name,omitempty"`
 	Size *int32 `json:"size,omitempty"`
 	Uuid NullableString `json:"uuid,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _VsphereVmTemplateData VsphereVmTemplateData
 
 // NewVsphereVmTemplateData instantiates a new VsphereVmTemplateData object
 // This constructor will assign default values to properties that have it defined,
@@ -177,7 +180,35 @@ func (o VsphereVmTemplateData) ToMap() (map[string]interface{}, error) {
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *VsphereVmTemplateData) UnmarshalJSON(data []byte) (err error) {
+	varVsphereVmTemplateData := _VsphereVmTemplateData{}
+
+	err = json.Unmarshal(data, &varVsphereVmTemplateData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VsphereVmTemplateData(varVsphereVmTemplateData)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "size")
+		delete(additionalProperties, "uuid")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableVsphereVmTemplateData struct {

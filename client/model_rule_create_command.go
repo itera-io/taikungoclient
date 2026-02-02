@@ -29,7 +29,10 @@ type RuleCreateCommand struct {
 	OperationCredentialId *int32 `json:"operationCredentialId,omitempty"`
 	OrganizationId []int32 `json:"organizationId,omitempty"`
 	RuleDiscountRate NullableInt32 `json:"ruleDiscountRate,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _RuleCreateCommand RuleCreateCommand
 
 // NewRuleCreateCommand instantiates a new RuleCreateCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -415,7 +418,41 @@ func (o RuleCreateCommand) ToMap() (map[string]interface{}, error) {
 	if o.RuleDiscountRate.IsSet() {
 		toSerialize["ruleDiscountRate"] = o.RuleDiscountRate.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *RuleCreateCommand) UnmarshalJSON(data []byte) (err error) {
+	varRuleCreateCommand := _RuleCreateCommand{}
+
+	err = json.Unmarshal(data, &varRuleCreateCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RuleCreateCommand(varRuleCreateCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "metricName")
+		delete(additionalProperties, "labels")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "price")
+		delete(additionalProperties, "partnerId")
+		delete(additionalProperties, "operationCredentialId")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "ruleDiscountRate")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableRuleCreateCommand struct {

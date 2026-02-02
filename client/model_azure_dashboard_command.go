@@ -22,7 +22,10 @@ var _ MappedNullable = &AzureDashboardCommand{}
 type AzureDashboardCommand struct {
 	CloudId *int32 `json:"cloudId,omitempty"`
 	FilterBy NullableString `json:"filterBy,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AzureDashboardCommand AzureDashboardCommand
 
 // NewAzureDashboardCommand instantiates a new AzureDashboardCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o AzureDashboardCommand) ToMap() (map[string]interface{}, error) {
 	if o.FilterBy.IsSet() {
 		toSerialize["filterBy"] = o.FilterBy.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AzureDashboardCommand) UnmarshalJSON(data []byte) (err error) {
+	varAzureDashboardCommand := _AzureDashboardCommand{}
+
+	err = json.Unmarshal(data, &varAzureDashboardCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AzureDashboardCommand(varAzureDashboardCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cloudId")
+		delete(additionalProperties, "filterBy")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAzureDashboardCommand struct {

@@ -24,7 +24,10 @@ type CreateAllowedHostCommand struct {
 	Description NullableString `json:"description,omitempty"`
 	IpAddress NullableString `json:"ipAddress,omitempty"`
 	MaskBits *int32 `json:"maskBits,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateAllowedHostCommand CreateAllowedHostCommand
 
 // NewCreateAllowedHostCommand instantiates a new CreateAllowedHostCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -213,7 +216,36 @@ func (o CreateAllowedHostCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MaskBits) {
 		toSerialize["maskBits"] = o.MaskBits
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateAllowedHostCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateAllowedHostCommand := _CreateAllowedHostCommand{}
+
+	err = json.Unmarshal(data, &varCreateAllowedHostCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateAllowedHostCommand(varCreateAllowedHostCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accessProfileId")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "ipAddress")
+		delete(additionalProperties, "maskBits")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateAllowedHostCommand struct {

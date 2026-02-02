@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -42,6 +41,7 @@ type ProxmoxListDto struct {
 	VmTemplateName NullableString `json:"vmTemplateName"`
 	ProxmoxNetworks []ProxmoxNetworkListDto `json:"proxmoxNetworks"`
 	SkipTlsFlag bool `json:"skipTlsFlag"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProxmoxListDto ProxmoxListDto
@@ -627,6 +627,11 @@ func (o ProxmoxListDto) ToMap() (map[string]interface{}, error) {
 		toSerialize["proxmoxNetworks"] = o.ProxmoxNetworks
 	}
 	toSerialize["skipTlsFlag"] = o.SkipTlsFlag
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -673,15 +678,39 @@ func (o *ProxmoxListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varProxmoxListDto := _ProxmoxListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProxmoxListDto)
+	err = json.Unmarshal(data, &varProxmoxListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProxmoxListDto(varProxmoxListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "projectCount")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "continentName")
+		delete(additionalProperties, "hypervisors")
+		delete(additionalProperties, "tokenId")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "storage")
+		delete(additionalProperties, "vmTemplateName")
+		delete(additionalProperties, "proxmoxNetworks")
+		delete(additionalProperties, "skipTlsFlag")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

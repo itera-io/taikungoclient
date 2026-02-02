@@ -21,7 +21,10 @@ var _ MappedNullable = &VirtualClusterDisableMonitoringCommand{}
 // VirtualClusterDisableMonitoringCommand struct for VirtualClusterDisableMonitoringCommand
 type VirtualClusterDisableMonitoringCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _VirtualClusterDisableMonitoringCommand VirtualClusterDisableMonitoringCommand
 
 // NewVirtualClusterDisableMonitoringCommand instantiates a new VirtualClusterDisableMonitoringCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o VirtualClusterDisableMonitoringCommand) ToMap() (map[string]interface{},
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *VirtualClusterDisableMonitoringCommand) UnmarshalJSON(data []byte) (err error) {
+	varVirtualClusterDisableMonitoringCommand := _VirtualClusterDisableMonitoringCommand{}
+
+	err = json.Unmarshal(data, &varVirtualClusterDisableMonitoringCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VirtualClusterDisableMonitoringCommand(varVirtualClusterDisableMonitoringCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableVirtualClusterDisableMonitoringCommand struct {

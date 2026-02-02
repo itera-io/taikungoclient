@@ -26,7 +26,10 @@ type IngressListDto struct {
 	Default NullableString `json:"default,omitempty"`
 	IngressClass NullableString `json:"ingressClass,omitempty"`
 	CreatedAt NullableString `json:"createdAt,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _IngressListDto IngressListDto
 
 // NewIngressListDto instantiates a new IngressListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -325,7 +328,38 @@ func (o IngressListDto) ToMap() (map[string]interface{}, error) {
 	if o.CreatedAt.IsSet() {
 		toSerialize["createdAt"] = o.CreatedAt.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *IngressListDto) UnmarshalJSON(data []byte) (err error) {
+	varIngressListDto := _IngressListDto{}
+
+	err = json.Unmarshal(data, &varIngressListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IngressListDto(varIngressListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "target")
+		delete(additionalProperties, "default")
+		delete(additionalProperties, "ingressClass")
+		delete(additionalProperties, "createdAt")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableIngressListDto struct {

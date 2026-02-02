@@ -31,7 +31,10 @@ type OrganizationSubscriptionDto struct {
 	StartDate *time.Time `json:"startDate,omitempty"`
 	EndDate NullableTime `json:"endDate,omitempty"`
 	Invoices []InvoiceDto `json:"invoices,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OrganizationSubscriptionDto OrganizationSubscriptionDto
 
 // NewOrganizationSubscriptionDto instantiates a new OrganizationSubscriptionDto object
 // This constructor will assign default values to properties that have it defined,
@@ -461,7 +464,42 @@ func (o OrganizationSubscriptionDto) ToMap() (map[string]interface{}, error) {
 	if o.Invoices != nil {
 		toSerialize["invoices"] = o.Invoices
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OrganizationSubscriptionDto) UnmarshalJSON(data []byte) (err error) {
+	varOrganizationSubscriptionDto := _OrganizationSubscriptionDto{}
+
+	err = json.Unmarshal(data, &varOrganizationSubscriptionDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationSubscriptionDto(varOrganizationSubscriptionDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "subscriptionId")
+		delete(additionalProperties, "stripeSubscriptionId")
+		delete(additionalProperties, "subscriptionType")
+		delete(additionalProperties, "subscriptionName")
+		delete(additionalProperties, "startDate")
+		delete(additionalProperties, "endDate")
+		delete(additionalProperties, "invoices")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOrganizationSubscriptionDto struct {

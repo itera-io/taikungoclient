@@ -21,7 +21,10 @@ var _ MappedNullable = &GkeClustersListCommand{}
 // GkeClustersListCommand struct for GkeClustersListCommand
 type GkeClustersListCommand struct {
 	CloudId *int32 `json:"cloudId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _GkeClustersListCommand GkeClustersListCommand
 
 // NewGkeClustersListCommand instantiates a new GkeClustersListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o GkeClustersListCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CloudId) {
 		toSerialize["cloudId"] = o.CloudId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *GkeClustersListCommand) UnmarshalJSON(data []byte) (err error) {
+	varGkeClustersListCommand := _GkeClustersListCommand{}
+
+	err = json.Unmarshal(data, &varGkeClustersListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GkeClustersListCommand(varGkeClustersListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cloudId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableGkeClustersListCommand struct {

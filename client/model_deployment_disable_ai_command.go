@@ -21,7 +21,10 @@ var _ MappedNullable = &DeploymentDisableAiCommand{}
 // DeploymentDisableAiCommand struct for DeploymentDisableAiCommand
 type DeploymentDisableAiCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeploymentDisableAiCommand DeploymentDisableAiCommand
 
 // NewDeploymentDisableAiCommand instantiates a new DeploymentDisableAiCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o DeploymentDisableAiCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeploymentDisableAiCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeploymentDisableAiCommand := _DeploymentDisableAiCommand{}
+
+	err = json.Unmarshal(data, &varDeploymentDisableAiCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeploymentDisableAiCommand(varDeploymentDisableAiCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeploymentDisableAiCommand struct {

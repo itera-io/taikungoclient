@@ -28,7 +28,10 @@ type OpenstackStorageTypeListQuery struct {
 	ApplicationCredEnabled *bool `json:"applicationCredEnabled,omitempty"`
 	IsAdmin *bool `json:"isAdmin,omitempty"`
 	OpenstackProject NullableString `json:"openstackProject,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OpenstackStorageTypeListQuery OpenstackStorageTypeListQuery
 
 // NewOpenstackStorageTypeListQuery instantiates a new OpenstackStorageTypeListQuery object
 // This constructor will assign default values to properties that have it defined,
@@ -397,7 +400,40 @@ func (o OpenstackStorageTypeListQuery) ToMap() (map[string]interface{}, error) {
 	if o.OpenstackProject.IsSet() {
 		toSerialize["openstackProject"] = o.OpenstackProject.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OpenstackStorageTypeListQuery) UnmarshalJSON(data []byte) (err error) {
+	varOpenstackStorageTypeListQuery := _OpenstackStorageTypeListQuery{}
+
+	err = json.Unmarshal(data, &varOpenstackStorageTypeListQuery)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OpenstackStorageTypeListQuery(varOpenstackStorageTypeListQuery)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "openStackUser")
+		delete(additionalProperties, "openStackPassword")
+		delete(additionalProperties, "openStackUrl")
+		delete(additionalProperties, "openStackDomain")
+		delete(additionalProperties, "openStackRegion")
+		delete(additionalProperties, "applicationCredEnabled")
+		delete(additionalProperties, "isAdmin")
+		delete(additionalProperties, "openstackProject")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOpenstackStorageTypeListQuery struct {

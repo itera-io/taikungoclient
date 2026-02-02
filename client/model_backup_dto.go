@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -24,6 +23,7 @@ var _ MappedNullable = &BackupDto{}
 type BackupDto struct {
 	IncludedNamespace []string `json:"includedNamespace"`
 	ExcludedNamespace []string `json:"excludedNamespace"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _BackupDto BackupDto
@@ -115,6 +115,11 @@ func (o BackupDto) ToMap() (map[string]interface{}, error) {
 	if o.ExcludedNamespace != nil {
 		toSerialize["excludedNamespace"] = o.ExcludedNamespace
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -143,15 +148,21 @@ func (o *BackupDto) UnmarshalJSON(data []byte) (err error) {
 
 	varBackupDto := _BackupDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBackupDto)
+	err = json.Unmarshal(data, &varBackupDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = BackupDto(varBackupDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "includedNamespace")
+		delete(additionalProperties, "excludedNamespace")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -22,7 +22,10 @@ var _ MappedNullable = &ImageByIdCommand{}
 type ImageByIdCommand struct {
 	CloudId *int32 `json:"cloudId,omitempty"`
 	ImageId NullableString `json:"imageId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ImageByIdCommand ImageByIdCommand
 
 // NewImageByIdCommand instantiates a new ImageByIdCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o ImageByIdCommand) ToMap() (map[string]interface{}, error) {
 	if o.ImageId.IsSet() {
 		toSerialize["imageId"] = o.ImageId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ImageByIdCommand) UnmarshalJSON(data []byte) (err error) {
+	varImageByIdCommand := _ImageByIdCommand{}
+
+	err = json.Unmarshal(data, &varImageByIdCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ImageByIdCommand(varImageByIdCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cloudId")
+		delete(additionalProperties, "imageId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableImageByIdCommand struct {

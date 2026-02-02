@@ -22,7 +22,10 @@ var _ MappedNullable = &CreateTrustedRegistriesCommand{}
 type CreateTrustedRegistriesCommand struct {
 	Registry NullableString `json:"registry,omitempty"`
 	AccessProfileId *int32 `json:"accessProfileId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateTrustedRegistriesCommand CreateTrustedRegistriesCommand
 
 // NewCreateTrustedRegistriesCommand instantiates a new CreateTrustedRegistriesCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o CreateTrustedRegistriesCommand) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.AccessProfileId) {
 		toSerialize["accessProfileId"] = o.AccessProfileId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateTrustedRegistriesCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateTrustedRegistriesCommand := _CreateTrustedRegistriesCommand{}
+
+	err = json.Unmarshal(data, &varCreateTrustedRegistriesCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateTrustedRegistriesCommand(varCreateTrustedRegistriesCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "registry")
+		delete(additionalProperties, "accessProfileId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateTrustedRegistriesCommand struct {

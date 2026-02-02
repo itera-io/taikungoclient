@@ -24,7 +24,10 @@ type VmTemplateListCommand struct {
 	Url NullableString `json:"url,omitempty"`
 	TokenId NullableString `json:"tokenId,omitempty"`
 	TokenSecret NullableString `json:"tokenSecret,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _VmTemplateListCommand VmTemplateListCommand
 
 // NewVmTemplateListCommand instantiates a new VmTemplateListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -233,7 +236,36 @@ func (o VmTemplateListCommand) ToMap() (map[string]interface{}, error) {
 	if o.TokenSecret.IsSet() {
 		toSerialize["tokenSecret"] = o.TokenSecret.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *VmTemplateListCommand) UnmarshalJSON(data []byte) (err error) {
+	varVmTemplateListCommand := _VmTemplateListCommand{}
+
+	err = json.Unmarshal(data, &varVmTemplateListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VmTemplateListCommand(varVmTemplateListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cloudId")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "tokenId")
+		delete(additionalProperties, "tokenSecret")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableVmTemplateListCommand struct {

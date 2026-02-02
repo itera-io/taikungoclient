@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -26,6 +25,7 @@ type CloudCredentialsDropdownRecordDto struct {
 	Name NullableString `json:"name"`
 	CloudType CloudType `json:"cloudType"`
 	Projects []ProjectWithFlavorsAndImagesDto `json:"projects"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CloudCredentialsDropdownRecordDto CloudCredentialsDropdownRecordDto
@@ -167,6 +167,11 @@ func (o CloudCredentialsDropdownRecordDto) ToMap() (map[string]interface{}, erro
 	if o.Projects != nil {
 		toSerialize["projects"] = o.Projects
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -197,15 +202,23 @@ func (o *CloudCredentialsDropdownRecordDto) UnmarshalJSON(data []byte) (err erro
 
 	varCloudCredentialsDropdownRecordDto := _CloudCredentialsDropdownRecordDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCloudCredentialsDropdownRecordDto)
+	err = json.Unmarshal(data, &varCloudCredentialsDropdownRecordDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CloudCredentialsDropdownRecordDto(varCloudCredentialsDropdownRecordDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "cloudType")
+		delete(additionalProperties, "projects")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -23,6 +22,7 @@ var _ MappedNullable = &KubeConfigResponse{}
 // KubeConfigResponse struct for KubeConfigResponse
 type KubeConfigResponse struct {
 	Data NullableString `json:"data"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _KubeConfigResponse KubeConfigResponse
@@ -82,6 +82,11 @@ func (o KubeConfigResponse) MarshalJSON() ([]byte, error) {
 func (o KubeConfigResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["data"] = o.Data.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -109,15 +114,20 @@ func (o *KubeConfigResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varKubeConfigResponse := _KubeConfigResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKubeConfigResponse)
+	err = json.Unmarshal(data, &varKubeConfigResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubeConfigResponse(varKubeConfigResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

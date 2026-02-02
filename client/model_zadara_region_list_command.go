@@ -23,7 +23,10 @@ type ZadaraRegionListCommand struct {
 	Url NullableString `json:"url,omitempty"`
 	ZadaraAccessKeyId NullableString `json:"zadaraAccessKeyId,omitempty"`
 	ZadaraSecretAccessKey NullableString `json:"zadaraSecretAccessKey,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ZadaraRegionListCommand ZadaraRegionListCommand
 
 // NewZadaraRegionListCommand instantiates a new ZadaraRegionListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -187,7 +190,35 @@ func (o ZadaraRegionListCommand) ToMap() (map[string]interface{}, error) {
 	if o.ZadaraSecretAccessKey.IsSet() {
 		toSerialize["zadaraSecretAccessKey"] = o.ZadaraSecretAccessKey.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ZadaraRegionListCommand) UnmarshalJSON(data []byte) (err error) {
+	varZadaraRegionListCommand := _ZadaraRegionListCommand{}
+
+	err = json.Unmarshal(data, &varZadaraRegionListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ZadaraRegionListCommand(varZadaraRegionListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "zadaraAccessKeyId")
+		delete(additionalProperties, "zadaraSecretAccessKey")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableZadaraRegionListCommand struct {

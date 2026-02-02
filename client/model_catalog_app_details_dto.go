@@ -39,7 +39,10 @@ type CatalogAppDetailsDto struct {
 	VerifiedPublisher *bool `json:"verifiedPublisher,omitempty"`
 	Official *bool `json:"official,omitempty"`
 	HasJsonSchema *bool `json:"hasJsonSchema,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CatalogAppDetailsDto CatalogAppDetailsDto
 
 // NewCatalogAppDetailsDto instantiates a new CatalogAppDetailsDto object
 // This constructor will assign default values to properties that have it defined,
@@ -834,7 +837,51 @@ func (o CatalogAppDetailsDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HasJsonSchema) {
 		toSerialize["hasJsonSchema"] = o.HasJsonSchema
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CatalogAppDetailsDto) UnmarshalJSON(data []byte) (err error) {
+	varCatalogAppDetailsDto := _CatalogAppDetailsDto{}
+
+	err = json.Unmarshal(data, &varCatalogAppDetailsDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CatalogAppDetailsDto(varCatalogAppDetailsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "appRepoName")
+		delete(additionalProperties, "appRepoOrganizationName")
+		delete(additionalProperties, "appRepoId")
+		delete(additionalProperties, "catalogName")
+		delete(additionalProperties, "catalogId")
+		delete(additionalProperties, "packageId")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "logoId")
+		delete(additionalProperties, "projectApps")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "readme")
+		delete(additionalProperties, "securityReport")
+		delete(additionalProperties, "appVersion")
+		delete(additionalProperties, "stars")
+		delete(additionalProperties, "verifiedPublisher")
+		delete(additionalProperties, "official")
+		delete(additionalProperties, "hasJsonSchema")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCatalogAppDetailsDto struct {

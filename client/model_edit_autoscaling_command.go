@@ -23,7 +23,10 @@ type EditAutoscalingCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	MinSize *int32 `json:"minSize,omitempty"`
 	MaxSize *int32 `json:"maxSize,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EditAutoscalingCommand EditAutoscalingCommand
 
 // NewEditAutoscalingCommand instantiates a new EditAutoscalingCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -157,7 +160,35 @@ func (o EditAutoscalingCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MaxSize) {
 		toSerialize["maxSize"] = o.MaxSize
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EditAutoscalingCommand) UnmarshalJSON(data []byte) (err error) {
+	varEditAutoscalingCommand := _EditAutoscalingCommand{}
+
+	err = json.Unmarshal(data, &varEditAutoscalingCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EditAutoscalingCommand(varEditAutoscalingCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "minSize")
+		delete(additionalProperties, "maxSize")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEditAutoscalingCommand struct {

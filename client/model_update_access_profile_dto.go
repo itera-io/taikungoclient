@@ -22,7 +22,10 @@ var _ MappedNullable = &UpdateAccessProfileDto{}
 type UpdateAccessProfileDto struct {
 	Name NullableString `json:"name,omitempty"`
 	HttpProxy NullableString `json:"httpProxy,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateAccessProfileDto UpdateAccessProfileDto
 
 // NewUpdateAccessProfileDto instantiates a new UpdateAccessProfileDto object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o UpdateAccessProfileDto) ToMap() (map[string]interface{}, error) {
 	if o.HttpProxy.IsSet() {
 		toSerialize["httpProxy"] = o.HttpProxy.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateAccessProfileDto) UnmarshalJSON(data []byte) (err error) {
+	varUpdateAccessProfileDto := _UpdateAccessProfileDto{}
+
+	err = json.Unmarshal(data, &varUpdateAccessProfileDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateAccessProfileDto(varUpdateAccessProfileDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "httpProxy")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateAccessProfileDto struct {

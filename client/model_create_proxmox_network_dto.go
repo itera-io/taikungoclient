@@ -26,7 +26,10 @@ type CreateProxmoxNetworkDto struct {
 	NetMask *int32 `json:"netMask,omitempty"`
 	BeginAllocationRange NullableString `json:"beginAllocationRange,omitempty"`
 	EndAllocationRange NullableString `json:"endAllocationRange,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateProxmoxNetworkDto CreateProxmoxNetworkDto
 
 // NewCreateProxmoxNetworkDto instantiates a new CreateProxmoxNetworkDto object
 // This constructor will assign default values to properties that have it defined,
@@ -315,7 +318,38 @@ func (o CreateProxmoxNetworkDto) ToMap() (map[string]interface{}, error) {
 	if o.EndAllocationRange.IsSet() {
 		toSerialize["endAllocationRange"] = o.EndAllocationRange.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateProxmoxNetworkDto) UnmarshalJSON(data []byte) (err error) {
+	varCreateProxmoxNetworkDto := _CreateProxmoxNetworkDto{}
+
+	err = json.Unmarshal(data, &varCreateProxmoxNetworkDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateProxmoxNetworkDto(varCreateProxmoxNetworkDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "bridge")
+		delete(additionalProperties, "gateway")
+		delete(additionalProperties, "ipAddress")
+		delete(additionalProperties, "netMask")
+		delete(additionalProperties, "beginAllocationRange")
+		delete(additionalProperties, "endAllocationRange")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateProxmoxNetworkDto struct {

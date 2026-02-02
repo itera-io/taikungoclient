@@ -21,7 +21,10 @@ var _ MappedNullable = &DisableTwoFaManagementCommand{}
 // DisableTwoFaManagementCommand struct for DisableTwoFaManagementCommand
 type DisableTwoFaManagementCommand struct {
 	VerificationCode NullableString `json:"verificationCode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DisableTwoFaManagementCommand DisableTwoFaManagementCommand
 
 // NewDisableTwoFaManagementCommand instantiates a new DisableTwoFaManagementCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +98,33 @@ func (o DisableTwoFaManagementCommand) ToMap() (map[string]interface{}, error) {
 	if o.VerificationCode.IsSet() {
 		toSerialize["verificationCode"] = o.VerificationCode.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DisableTwoFaManagementCommand) UnmarshalJSON(data []byte) (err error) {
+	varDisableTwoFaManagementCommand := _DisableTwoFaManagementCommand{}
+
+	err = json.Unmarshal(data, &varDisableTwoFaManagementCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DisableTwoFaManagementCommand(varDisableTwoFaManagementCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "verificationCode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDisableTwoFaManagementCommand struct {

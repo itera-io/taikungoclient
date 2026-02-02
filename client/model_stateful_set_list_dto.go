@@ -26,7 +26,10 @@ type StatefulSetListDto struct {
 	CreatedAt NullableString `json:"createdAt,omitempty"`
 	Namespace NullableString `json:"namespace,omitempty"`
 	Images []string `json:"images,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _StatefulSetListDto StatefulSetListDto
 
 // NewStatefulSetListDto instantiates a new StatefulSetListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -316,7 +319,38 @@ func (o StatefulSetListDto) ToMap() (map[string]interface{}, error) {
 	if o.Images != nil {
 		toSerialize["images"] = o.Images
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *StatefulSetListDto) UnmarshalJSON(data []byte) (err error) {
+	varStatefulSetListDto := _StatefulSetListDto{}
+
+	err = json.Unmarshal(data, &varStatefulSetListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StatefulSetListDto(varStatefulSetListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "state")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "ready")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "images")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableStatefulSetListDto struct {

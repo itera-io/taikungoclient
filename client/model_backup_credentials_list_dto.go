@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -37,6 +36,7 @@ type BackupCredentialsListDto struct {
 	CreatedAt NullableString `json:"createdAt"`
 	IsDefault bool `json:"isDefault"`
 	IsInfra bool `json:"isInfra"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _BackupCredentialsListDto BackupCredentialsListDto
@@ -470,6 +470,11 @@ func (o BackupCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["createdAt"] = o.CreatedAt.Get()
 	toSerialize["isDefault"] = o.IsDefault
 	toSerialize["isInfra"] = o.IsInfra
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -511,15 +516,34 @@ func (o *BackupCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varBackupCredentialsListDto := _BackupCredentialsListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBackupCredentialsListDto)
+	err = json.Unmarshal(data, &varBackupCredentialsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = BackupCredentialsListDto(varBackupCredentialsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "s3Name")
+		delete(additionalProperties, "s3AccessKeyId")
+		delete(additionalProperties, "s3Endpoint")
+		delete(additionalProperties, "s3Region")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "isInfra")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

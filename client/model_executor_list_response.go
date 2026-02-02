@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -24,6 +23,7 @@ var _ MappedNullable = &ExecutorListResponse{}
 type ExecutorListResponse struct {
 	Data []ExecutorEntityDto `json:"data"`
 	TotalCount int32 `json:"totalCount"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ExecutorListResponse ExecutorListResponse
@@ -111,6 +111,11 @@ func (o ExecutorListResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["data"] = o.Data
 	}
 	toSerialize["totalCount"] = o.TotalCount
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -139,15 +144,21 @@ func (o *ExecutorListResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varExecutorListResponse := _ExecutorListResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varExecutorListResponse)
+	err = json.Unmarshal(data, &varExecutorListResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ExecutorListResponse(varExecutorListResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -21,7 +21,10 @@ var _ MappedNullable = &YamlValidatorCommand{}
 // YamlValidatorCommand struct for YamlValidatorCommand
 type YamlValidatorCommand struct {
 	Yaml NullableString `json:"yaml,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _YamlValidatorCommand YamlValidatorCommand
 
 // NewYamlValidatorCommand instantiates a new YamlValidatorCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +98,33 @@ func (o YamlValidatorCommand) ToMap() (map[string]interface{}, error) {
 	if o.Yaml.IsSet() {
 		toSerialize["yaml"] = o.Yaml.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *YamlValidatorCommand) UnmarshalJSON(data []byte) (err error) {
+	varYamlValidatorCommand := _YamlValidatorCommand{}
+
+	err = json.Unmarshal(data, &varYamlValidatorCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = YamlValidatorCommand(varYamlValidatorCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "yaml")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableYamlValidatorCommand struct {

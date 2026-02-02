@@ -25,7 +25,10 @@ type StandAloneVmDiskDto struct {
 	VolumeType NullableString `json:"volumeType,omitempty"`
 	DeviceName NullableString `json:"deviceName,omitempty"`
 	LunId NullableInt32 `json:"lunId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _StandAloneVmDiskDto StandAloneVmDiskDto
 
 // NewStandAloneVmDiskDto instantiates a new StandAloneVmDiskDto object
 // This constructor will assign default values to properties that have it defined,
@@ -269,7 +272,37 @@ func (o StandAloneVmDiskDto) ToMap() (map[string]interface{}, error) {
 	if o.LunId.IsSet() {
 		toSerialize["lunId"] = o.LunId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *StandAloneVmDiskDto) UnmarshalJSON(data []byte) (err error) {
+	varStandAloneVmDiskDto := _StandAloneVmDiskDto{}
+
+	err = json.Unmarshal(data, &varStandAloneVmDiskDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StandAloneVmDiskDto(varStandAloneVmDiskDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "size")
+		delete(additionalProperties, "volumeType")
+		delete(additionalProperties, "deviceName")
+		delete(additionalProperties, "lunId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableStandAloneVmDiskDto struct {

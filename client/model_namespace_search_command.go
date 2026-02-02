@@ -24,7 +24,10 @@ type NamespaceSearchCommand struct {
 	Offset NullableInt32 `json:"offset,omitempty"`
 	SearchTerm NullableString `json:"searchTerm,omitempty"`
 	IncludePublicImportedClusters NullableBool `json:"includePublicImportedClusters,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _NamespaceSearchCommand NamespaceSearchCommand
 
 // NewNamespaceSearchCommand instantiates a new NamespaceSearchCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -233,7 +236,36 @@ func (o NamespaceSearchCommand) ToMap() (map[string]interface{}, error) {
 	if o.IncludePublicImportedClusters.IsSet() {
 		toSerialize["includePublicImportedClusters"] = o.IncludePublicImportedClusters.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *NamespaceSearchCommand) UnmarshalJSON(data []byte) (err error) {
+	varNamespaceSearchCommand := _NamespaceSearchCommand{}
+
+	err = json.Unmarshal(data, &varNamespaceSearchCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NamespaceSearchCommand(varNamespaceSearchCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "offset")
+		delete(additionalProperties, "searchTerm")
+		delete(additionalProperties, "includePublicImportedClusters")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableNamespaceSearchCommand struct {

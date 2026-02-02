@@ -24,7 +24,10 @@ type StorageClassesSearchCommand struct {
 	Offset NullableInt32 `json:"offset,omitempty"`
 	SearchTerm NullableString `json:"searchTerm,omitempty"`
 	IncludePublicImportedClusters NullableBool `json:"includePublicImportedClusters,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _StorageClassesSearchCommand StorageClassesSearchCommand
 
 // NewStorageClassesSearchCommand instantiates a new StorageClassesSearchCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -233,7 +236,36 @@ func (o StorageClassesSearchCommand) ToMap() (map[string]interface{}, error) {
 	if o.IncludePublicImportedClusters.IsSet() {
 		toSerialize["includePublicImportedClusters"] = o.IncludePublicImportedClusters.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *StorageClassesSearchCommand) UnmarshalJSON(data []byte) (err error) {
+	varStorageClassesSearchCommand := _StorageClassesSearchCommand{}
+
+	err = json.Unmarshal(data, &varStorageClassesSearchCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StorageClassesSearchCommand(varStorageClassesSearchCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "offset")
+		delete(additionalProperties, "searchTerm")
+		delete(additionalProperties, "includePublicImportedClusters")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableStorageClassesSearchCommand struct {

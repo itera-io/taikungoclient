@@ -24,7 +24,10 @@ type NetworkPoliciesSearchCommand struct {
 	Offset NullableInt32 `json:"offset,omitempty"`
 	SearchTerm NullableString `json:"searchTerm,omitempty"`
 	IncludePublicImportedClusters NullableBool `json:"includePublicImportedClusters,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _NetworkPoliciesSearchCommand NetworkPoliciesSearchCommand
 
 // NewNetworkPoliciesSearchCommand instantiates a new NetworkPoliciesSearchCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -233,7 +236,36 @@ func (o NetworkPoliciesSearchCommand) ToMap() (map[string]interface{}, error) {
 	if o.IncludePublicImportedClusters.IsSet() {
 		toSerialize["includePublicImportedClusters"] = o.IncludePublicImportedClusters.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *NetworkPoliciesSearchCommand) UnmarshalJSON(data []byte) (err error) {
+	varNetworkPoliciesSearchCommand := _NetworkPoliciesSearchCommand{}
+
+	err = json.Unmarshal(data, &varNetworkPoliciesSearchCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NetworkPoliciesSearchCommand(varNetworkPoliciesSearchCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "offset")
+		delete(additionalProperties, "searchTerm")
+		delete(additionalProperties, "includePublicImportedClusters")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableNetworkPoliciesSearchCommand struct {

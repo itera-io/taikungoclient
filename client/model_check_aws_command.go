@@ -22,7 +22,10 @@ var _ MappedNullable = &CheckAwsCommand{}
 type CheckAwsCommand struct {
 	AwsAccessKeyId NullableString `json:"awsAccessKeyId,omitempty"`
 	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CheckAwsCommand CheckAwsCommand
 
 // NewCheckAwsCommand instantiates a new CheckAwsCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o CheckAwsCommand) ToMap() (map[string]interface{}, error) {
 	if o.AwsSecretAccessKey.IsSet() {
 		toSerialize["awsSecretAccessKey"] = o.AwsSecretAccessKey.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CheckAwsCommand) UnmarshalJSON(data []byte) (err error) {
+	varCheckAwsCommand := _CheckAwsCommand{}
+
+	err = json.Unmarshal(data, &varCheckAwsCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CheckAwsCommand(varCheckAwsCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "awsAccessKeyId")
+		delete(additionalProperties, "awsSecretAccessKey")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCheckAwsCommand struct {

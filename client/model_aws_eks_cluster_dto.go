@@ -23,7 +23,10 @@ type AwsEksClusterDto struct {
 	Token NullableString `json:"token,omitempty"`
 	TargetUrl NullableString `json:"targetUrl,omitempty"`
 	Certificate NullableString `json:"certificate,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AwsEksClusterDto AwsEksClusterDto
 
 // NewAwsEksClusterDto instantiates a new AwsEksClusterDto object
 // This constructor will assign default values to properties that have it defined,
@@ -187,7 +190,35 @@ func (o AwsEksClusterDto) ToMap() (map[string]interface{}, error) {
 	if o.Certificate.IsSet() {
 		toSerialize["certificate"] = o.Certificate.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AwsEksClusterDto) UnmarshalJSON(data []byte) (err error) {
+	varAwsEksClusterDto := _AwsEksClusterDto{}
+
+	err = json.Unmarshal(data, &varAwsEksClusterDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AwsEksClusterDto(varAwsEksClusterDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "targetUrl")
+		delete(additionalProperties, "certificate")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAwsEksClusterDto struct {

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -30,6 +29,7 @@ type GoogleFlavorDto struct {
 	WindowsPrice NullableFloat64 `json:"windowsPrice"`
 	LinuxSpotPrice NullableFloat64 `json:"linuxSpotPrice"`
 	WindowsSpotPrice NullableFloat64 `json:"windowsSpotPrice"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GoogleFlavorDto GoogleFlavorDto
@@ -285,6 +285,11 @@ func (o GoogleFlavorDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["windowsPrice"] = o.WindowsPrice.Get()
 	toSerialize["linuxSpotPrice"] = o.LinuxSpotPrice.Get()
 	toSerialize["windowsSpotPrice"] = o.WindowsSpotPrice.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -319,15 +324,27 @@ func (o *GoogleFlavorDto) UnmarshalJSON(data []byte) (err error) {
 
 	varGoogleFlavorDto := _GoogleFlavorDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGoogleFlavorDto)
+	err = json.Unmarshal(data, &varGoogleFlavorDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GoogleFlavorDto(varGoogleFlavorDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "ram")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "linuxPrice")
+		delete(additionalProperties, "windowsPrice")
+		delete(additionalProperties, "linuxSpotPrice")
+		delete(additionalProperties, "windowsSpotPrice")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

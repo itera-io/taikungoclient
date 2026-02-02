@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -29,6 +28,7 @@ type ImportedClusterList struct {
 	NextOffset NullableInt32 `json:"nextOffset,omitempty"`
 	TotalCount int32 `json:"totalCount"`
 	Project ImportedClusterDetailsDto `json:"project"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ImportedClusterList ImportedClusterList
@@ -265,6 +265,11 @@ func (o ImportedClusterList) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["totalCount"] = o.TotalCount
 	toSerialize["project"] = o.Project
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -297,15 +302,26 @@ func (o *ImportedClusterList) UnmarshalJSON(data []byte) (err error) {
 
 	varImportedClusterList := _ImportedClusterList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varImportedClusterList)
+	err = json.Unmarshal(data, &varImportedClusterList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ImportedClusterList(varImportedClusterList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "offset")
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "hasMore")
+		delete(additionalProperties, "nextOffset")
+		delete(additionalProperties, "totalCount")
+		delete(additionalProperties, "project")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

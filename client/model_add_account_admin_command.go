@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -24,6 +23,7 @@ var _ MappedNullable = &AddAccountAdminCommand{}
 type AddAccountAdminCommand struct {
 	AccountId NullableInt32 `json:"accountId,omitempty"`
 	UserId NullableString `json:"userId"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AddAccountAdminCommand AddAccountAdminCommand
@@ -128,6 +128,11 @@ func (o AddAccountAdminCommand) ToMap() (map[string]interface{}, error) {
 		toSerialize["accountId"] = o.AccountId.Get()
 	}
 	toSerialize["userId"] = o.UserId.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -155,15 +160,21 @@ func (o *AddAccountAdminCommand) UnmarshalJSON(data []byte) (err error) {
 
 	varAddAccountAdminCommand := _AddAccountAdminCommand{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAddAccountAdminCommand)
+	err = json.Unmarshal(data, &varAddAccountAdminCommand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AddAccountAdminCommand(varAddAccountAdminCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accountId")
+		delete(additionalProperties, "userId")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

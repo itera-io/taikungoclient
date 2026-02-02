@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -28,6 +27,7 @@ type CardInformationDto struct {
 	Brand NullableString `json:"brand"`
 	HolderName NullableString `json:"holderName"`
 	Balance int64 `json:"balance"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CardInformationDto CardInformationDto
@@ -225,6 +225,11 @@ func (o CardInformationDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["brand"] = o.Brand.Get()
 	toSerialize["holderName"] = o.HolderName.Get()
 	toSerialize["balance"] = o.Balance
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -257,15 +262,25 @@ func (o *CardInformationDto) UnmarshalJSON(data []byte) (err error) {
 
 	varCardInformationDto := _CardInformationDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCardInformationDto)
+	err = json.Unmarshal(data, &varCardInformationDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CardInformationDto(varCardInformationDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "expirationMonth")
+		delete(additionalProperties, "expirationYear")
+		delete(additionalProperties, "last4")
+		delete(additionalProperties, "brand")
+		delete(additionalProperties, "holderName")
+		delete(additionalProperties, "balance")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

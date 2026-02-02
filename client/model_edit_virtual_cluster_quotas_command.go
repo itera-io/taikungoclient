@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -27,6 +26,7 @@ type EditVirtualClusterQuotasCommand struct {
 	CpuLimits EditVirtualClusterResourceLimits `json:"cpuLimits"`
 	RamLimits EditVirtualClusterResourceLimits `json:"ramLimits"`
 	EphemeralStorageLimits EditVirtualClusterResourceLimits `json:"ephemeralStorageLimits"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EditVirtualClusterQuotasCommand EditVirtualClusterQuotasCommand
@@ -188,6 +188,11 @@ func (o EditVirtualClusterQuotasCommand) ToMap() (map[string]interface{}, error)
 	toSerialize["cpuLimits"] = o.CpuLimits
 	toSerialize["ramLimits"] = o.RamLimits
 	toSerialize["ephemeralStorageLimits"] = o.EphemeralStorageLimits
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -219,15 +224,24 @@ func (o *EditVirtualClusterQuotasCommand) UnmarshalJSON(data []byte) (err error)
 
 	varEditVirtualClusterQuotasCommand := _EditVirtualClusterQuotasCommand{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEditVirtualClusterQuotasCommand)
+	err = json.Unmarshal(data, &varEditVirtualClusterQuotasCommand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EditVirtualClusterQuotasCommand(varEditVirtualClusterQuotasCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "vClusterId")
+		delete(additionalProperties, "workloadResources")
+		delete(additionalProperties, "cpuLimits")
+		delete(additionalProperties, "ramLimits")
+		delete(additionalProperties, "ephemeralStorageLimits")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

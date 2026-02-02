@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -32,6 +31,7 @@ type KeycloakListDto struct {
 	OrganizationName string `json:"organizationName"`
 	PartnerLogo NullableString `json:"partnerLogo"`
 	Enabled bool `json:"enabled"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _KeycloakListDto KeycloakListDto
@@ -325,6 +325,11 @@ func (o KeycloakListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["organizationName"] = o.OrganizationName
 	toSerialize["partnerLogo"] = o.PartnerLogo.Get()
 	toSerialize["enabled"] = o.Enabled
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -361,15 +366,29 @@ func (o *KeycloakListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varKeycloakListDto := _KeycloakListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKeycloakListDto)
+	err = json.Unmarshal(data, &varKeycloakListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KeycloakListDto(varKeycloakListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "clientId")
+		delete(additionalProperties, "clientSecret")
+		delete(additionalProperties, "realmsName")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "partnerLogo")
+		delete(additionalProperties, "enabled")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

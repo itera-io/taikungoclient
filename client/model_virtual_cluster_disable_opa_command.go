@@ -21,7 +21,10 @@ var _ MappedNullable = &VirtualClusterDisableOpaCommand{}
 // VirtualClusterDisableOpaCommand struct for VirtualClusterDisableOpaCommand
 type VirtualClusterDisableOpaCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _VirtualClusterDisableOpaCommand VirtualClusterDisableOpaCommand
 
 // NewVirtualClusterDisableOpaCommand instantiates a new VirtualClusterDisableOpaCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o VirtualClusterDisableOpaCommand) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *VirtualClusterDisableOpaCommand) UnmarshalJSON(data []byte) (err error) {
+	varVirtualClusterDisableOpaCommand := _VirtualClusterDisableOpaCommand{}
+
+	err = json.Unmarshal(data, &varVirtualClusterDisableOpaCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VirtualClusterDisableOpaCommand(varVirtualClusterDisableOpaCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableVirtualClusterDisableOpaCommand struct {

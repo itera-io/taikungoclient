@@ -24,7 +24,10 @@ type UpdateZadaraCommand struct {
 	Name NullableString `json:"name,omitempty"`
 	ZadaraSecretAccessKey NullableString `json:"zadaraSecretAccessKey,omitempty"`
 	ZadaraAccessKeyId NullableString `json:"zadaraAccessKeyId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateZadaraCommand UpdateZadaraCommand
 
 // NewUpdateZadaraCommand instantiates a new UpdateZadaraCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -223,7 +226,36 @@ func (o UpdateZadaraCommand) ToMap() (map[string]interface{}, error) {
 	if o.ZadaraAccessKeyId.IsSet() {
 		toSerialize["zadaraAccessKeyId"] = o.ZadaraAccessKeyId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateZadaraCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateZadaraCommand := _UpdateZadaraCommand{}
+
+	err = json.Unmarshal(data, &varUpdateZadaraCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateZadaraCommand(varUpdateZadaraCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "zadaraSecretAccessKey")
+		delete(additionalProperties, "zadaraAccessKeyId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateZadaraCommand struct {

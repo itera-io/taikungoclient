@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -51,6 +50,7 @@ type ProjectActionVisibilityDto struct {
 	ProjectMaintenanceMode ButtonStatusDto `json:"projectMaintenanceMode"`
 	AddServer ButtonStatusDto `json:"addServer"`
 	AddVm ButtonStatusDto `json:"addVm"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProjectActionVisibilityDto ProjectActionVisibilityDto
@@ -836,6 +836,11 @@ func (o ProjectActionVisibilityDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["projectMaintenanceMode"] = o.ProjectMaintenanceMode
 	toSerialize["addServer"] = o.AddServer
 	toSerialize["addVm"] = o.AddVm
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -891,15 +896,48 @@ func (o *ProjectActionVisibilityDto) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectActionVisibilityDto := _ProjectActionVisibilityDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectActionVisibilityDto)
+	err = json.Unmarshal(data, &varProjectActionVisibilityDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectActionVisibilityDto(varProjectActionVisibilityDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "commit")
+		delete(additionalProperties, "repair")
+		delete(additionalProperties, "upgrade")
+		delete(additionalProperties, "enableMonitoring")
+		delete(additionalProperties, "disableMonitoring")
+		delete(additionalProperties, "enableBackup")
+		delete(additionalProperties, "disableBackup")
+		delete(additionalProperties, "enableOpa")
+		delete(additionalProperties, "disableOpa")
+		delete(additionalProperties, "enableAutoscaler")
+		delete(additionalProperties, "disableAutoscaler")
+		delete(additionalProperties, "vmRepair")
+		delete(additionalProperties, "vmCommit")
+		delete(additionalProperties, "lock")
+		delete(additionalProperties, "unlock")
+		delete(additionalProperties, "enableSpotWorker")
+		delete(additionalProperties, "disableSpotWorker")
+		delete(additionalProperties, "enableFullSpot")
+		delete(additionalProperties, "disableFullSpot")
+		delete(additionalProperties, "enableSpotVm")
+		delete(additionalProperties, "disableSpotVm")
+		delete(additionalProperties, "attachAlertingProfile")
+		delete(additionalProperties, "detachAlertingProfile")
+		delete(additionalProperties, "enableAi")
+		delete(additionalProperties, "disableAi")
+		delete(additionalProperties, "aiAssistant")
+		delete(additionalProperties, "projectMaintenanceMode")
+		delete(additionalProperties, "addServer")
+		delete(additionalProperties, "addVm")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

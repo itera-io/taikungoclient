@@ -22,7 +22,10 @@ var _ MappedNullable = &StandAloneMetaDataDto{}
 type StandAloneMetaDataDto struct {
 	Key NullableString `json:"key,omitempty"`
 	Value NullableString `json:"value,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _StandAloneMetaDataDto StandAloneMetaDataDto
 
 // NewStandAloneMetaDataDto instantiates a new StandAloneMetaDataDto object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o StandAloneMetaDataDto) ToMap() (map[string]interface{}, error) {
 	if o.Value.IsSet() {
 		toSerialize["value"] = o.Value.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *StandAloneMetaDataDto) UnmarshalJSON(data []byte) (err error) {
+	varStandAloneMetaDataDto := _StandAloneMetaDataDto{}
+
+	err = json.Unmarshal(data, &varStandAloneMetaDataDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StandAloneMetaDataDto(varStandAloneMetaDataDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "value")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableStandAloneMetaDataDto struct {

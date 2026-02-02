@@ -23,7 +23,10 @@ type GetEksClusterAuthCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	KubeConfigName NullableString `json:"kubeConfigName,omitempty"`
 	ConfigToken NullableString `json:"configToken,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _GetEksClusterAuthCommand GetEksClusterAuthCommand
 
 // NewGetEksClusterAuthCommand instantiates a new GetEksClusterAuthCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -177,7 +180,35 @@ func (o GetEksClusterAuthCommand) ToMap() (map[string]interface{}, error) {
 	if o.ConfigToken.IsSet() {
 		toSerialize["configToken"] = o.ConfigToken.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *GetEksClusterAuthCommand) UnmarshalJSON(data []byte) (err error) {
+	varGetEksClusterAuthCommand := _GetEksClusterAuthCommand{}
+
+	err = json.Unmarshal(data, &varGetEksClusterAuthCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GetEksClusterAuthCommand(varGetEksClusterAuthCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "kubeConfigName")
+		delete(additionalProperties, "configToken")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableGetEksClusterAuthCommand struct {

@@ -22,7 +22,10 @@ var _ MappedNullable = &UpdateGroupDto{}
 type UpdateGroupDto struct {
 	Name NullableString `json:"name,omitempty"`
 	ClaimValue NullableString `json:"claimValue,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateGroupDto UpdateGroupDto
 
 // NewUpdateGroupDto instantiates a new UpdateGroupDto object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o UpdateGroupDto) ToMap() (map[string]interface{}, error) {
 	if o.ClaimValue.IsSet() {
 		toSerialize["claimValue"] = o.ClaimValue.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateGroupDto) UnmarshalJSON(data []byte) (err error) {
+	varUpdateGroupDto := _UpdateGroupDto{}
+
+	err = json.Unmarshal(data, &varUpdateGroupDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateGroupDto(varUpdateGroupDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "claimValue")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateGroupDto struct {

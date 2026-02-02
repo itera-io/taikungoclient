@@ -28,7 +28,10 @@ type PrometheusMetricsCommand struct {
 	End NullableTime `json:"end,omitempty"`
 	IsGraphEnabled *bool `json:"isGraphEnabled,omitempty"`
 	Step NullableString `json:"step,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PrometheusMetricsCommand PrometheusMetricsCommand
 
 // NewPrometheusMetricsCommand instantiates a new PrometheusMetricsCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -352,7 +355,39 @@ func (o PrometheusMetricsCommand) ToMap() (map[string]interface{}, error) {
 	if o.Step.IsSet() {
 		toSerialize["step"] = o.Step.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PrometheusMetricsCommand) UnmarshalJSON(data []byte) (err error) {
+	varPrometheusMetricsCommand := _PrometheusMetricsCommand{}
+
+	err = json.Unmarshal(data, &varPrometheusMetricsCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PrometheusMetricsCommand(varPrometheusMetricsCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "parameters")
+		delete(additionalProperties, "time")
+		delete(additionalProperties, "start")
+		delete(additionalProperties, "end")
+		delete(additionalProperties, "isGraphEnabled")
+		delete(additionalProperties, "step")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePrometheusMetricsCommand struct {

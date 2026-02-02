@@ -25,7 +25,10 @@ type SecurityReportSummary struct {
 	Medium NullableInt64 `json:"medium,omitempty"`
 	Unknown NullableInt64 `json:"unknown,omitempty"`
 	Critical NullableInt64 `json:"critical,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _SecurityReportSummary SecurityReportSummary
 
 // NewSecurityReportSummary instantiates a new SecurityReportSummary object
 // This constructor will assign default values to properties that have it defined,
@@ -279,7 +282,37 @@ func (o SecurityReportSummary) ToMap() (map[string]interface{}, error) {
 	if o.Critical.IsSet() {
 		toSerialize["critical"] = o.Critical.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *SecurityReportSummary) UnmarshalJSON(data []byte) (err error) {
+	varSecurityReportSummary := _SecurityReportSummary{}
+
+	err = json.Unmarshal(data, &varSecurityReportSummary)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SecurityReportSummary(varSecurityReportSummary)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "low")
+		delete(additionalProperties, "high")
+		delete(additionalProperties, "medium")
+		delete(additionalProperties, "unknown")
+		delete(additionalProperties, "critical")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableSecurityReportSummary struct {

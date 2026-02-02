@@ -22,7 +22,10 @@ var _ MappedNullable = &CatalogList{}
 type CatalogList struct {
 	Data []CatalogListDto `json:"data,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CatalogList CatalogList
 
 // NewCatalogList instantiates a new CatalogList object
 // This constructor will assign default values to properties that have it defined,
@@ -122,7 +125,34 @@ func (o CatalogList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CatalogList) UnmarshalJSON(data []byte) (err error) {
+	varCatalogList := _CatalogList{}
+
+	err = json.Unmarshal(data, &varCatalogList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CatalogList(varCatalogList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCatalogList struct {

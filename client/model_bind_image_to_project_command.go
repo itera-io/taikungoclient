@@ -22,7 +22,10 @@ var _ MappedNullable = &BindImageToProjectCommand{}
 type BindImageToProjectCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	Images []string `json:"images,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _BindImageToProjectCommand BindImageToProjectCommand
 
 // NewBindImageToProjectCommand instantiates a new BindImageToProjectCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -122,7 +125,34 @@ func (o BindImageToProjectCommand) ToMap() (map[string]interface{}, error) {
 	if o.Images != nil {
 		toSerialize["images"] = o.Images
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *BindImageToProjectCommand) UnmarshalJSON(data []byte) (err error) {
+	varBindImageToProjectCommand := _BindImageToProjectCommand{}
+
+	err = json.Unmarshal(data, &varBindImageToProjectCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BindImageToProjectCommand(varBindImageToProjectCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "images")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableBindImageToProjectCommand struct {

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -24,6 +23,7 @@ var _ MappedNullable = &StandaloneVmsForBillingDto{}
 type StandaloneVmsForBillingDto struct {
 	Cpu int32 `json:"cpu"`
 	Ram int64 `json:"ram"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StandaloneVmsForBillingDto StandaloneVmsForBillingDto
@@ -107,6 +107,11 @@ func (o StandaloneVmsForBillingDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["cpu"] = o.Cpu
 	toSerialize["ram"] = o.Ram
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *StandaloneVmsForBillingDto) UnmarshalJSON(data []byte) (err error) {
 
 	varStandaloneVmsForBillingDto := _StandaloneVmsForBillingDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStandaloneVmsForBillingDto)
+	err = json.Unmarshal(data, &varStandaloneVmsForBillingDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StandaloneVmsForBillingDto(varStandaloneVmsForBillingDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "ram")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

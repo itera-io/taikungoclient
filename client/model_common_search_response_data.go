@@ -24,7 +24,10 @@ type CommonSearchResponseData struct {
 	Name NullableString `json:"name,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CommonSearchResponseData CommonSearchResponseData
 
 // NewCommonSearchResponseData instantiates a new CommonSearchResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -223,7 +226,36 @@ func (o CommonSearchResponseData) ToMap() (map[string]interface{}, error) {
 	if o.OrganizationName.IsSet() {
 		toSerialize["organizationName"] = o.OrganizationName.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CommonSearchResponseData) UnmarshalJSON(data []byte) (err error) {
+	varCommonSearchResponseData := _CommonSearchResponseData{}
+
+	err = json.Unmarshal(data, &varCommonSearchResponseData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CommonSearchResponseData(varCommonSearchResponseData)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCommonSearchResponseData struct {

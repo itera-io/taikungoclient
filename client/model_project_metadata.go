@@ -24,7 +24,10 @@ type ProjectMetadata struct {
 	Type NullableString `json:"type,omitempty"`
 	VcsSubPath NullableString `json:"vcsSubPath,omitempty"`
 	Providers []Provider `json:"providers,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectMetadata ProjectMetadata
 
 // NewProjectMetadata instantiates a new ProjectMetadata object
 // This constructor will assign default values to properties that have it defined,
@@ -224,7 +227,36 @@ func (o ProjectMetadata) ToMap() (map[string]interface{}, error) {
 	if o.Providers != nil {
 		toSerialize["providers"] = o.Providers
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectMetadata) UnmarshalJSON(data []byte) (err error) {
+	varProjectMetadata := _ProjectMetadata{}
+
+	err = json.Unmarshal(data, &varProjectMetadata)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectMetadata(varProjectMetadata)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "path")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "vcsSubPath")
+		delete(additionalProperties, "providers")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectMetadata struct {

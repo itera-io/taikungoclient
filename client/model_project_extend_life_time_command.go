@@ -24,7 +24,10 @@ type ProjectExtendLifeTimeCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	ExpireAt NullableTime `json:"expireAt,omitempty"`
 	DeleteOnExpiration *bool `json:"deleteOnExpiration,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectExtendLifeTimeCommand ProjectExtendLifeTimeCommand
 
 // NewProjectExtendLifeTimeCommand instantiates a new ProjectExtendLifeTimeCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -168,7 +171,35 @@ func (o ProjectExtendLifeTimeCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DeleteOnExpiration) {
 		toSerialize["deleteOnExpiration"] = o.DeleteOnExpiration
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectExtendLifeTimeCommand) UnmarshalJSON(data []byte) (err error) {
+	varProjectExtendLifeTimeCommand := _ProjectExtendLifeTimeCommand{}
+
+	err = json.Unmarshal(data, &varProjectExtendLifeTimeCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectExtendLifeTimeCommand(varProjectExtendLifeTimeCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "expireAt")
+		delete(additionalProperties, "deleteOnExpiration")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectExtendLifeTimeCommand struct {

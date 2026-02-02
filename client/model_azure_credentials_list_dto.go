@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -39,6 +38,7 @@ type AzureCredentialsListDto struct {
 	OrganizationId int32 `json:"organizationId"`
 	OrganizationName string `json:"organizationName"`
 	ContinentName NullableString `json:"continentName"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AzureCredentialsListDto AzureCredentialsListDto
@@ -522,6 +522,11 @@ func (o AzureCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["organizationId"] = o.OrganizationId
 	toSerialize["organizationName"] = o.OrganizationName
 	toSerialize["continentName"] = o.ContinentName.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -565,15 +570,36 @@ func (o *AzureCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varAzureCredentialsListDto := _AzureCredentialsListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAzureCredentialsListDto)
+	err = json.Unmarshal(data, &varAzureCredentialsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AzureCredentialsListDto(varAzureCredentialsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "projectCount")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "location")
+		delete(additionalProperties, "availabilityZones")
+		delete(additionalProperties, "availabilityZonesCount")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "continentName")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

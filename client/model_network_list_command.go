@@ -24,7 +24,10 @@ type NetworkListCommand struct {
 	Username NullableString `json:"username,omitempty"`
 	Password NullableString `json:"password,omitempty"`
 	DatacenterId NullableString `json:"datacenterId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _NetworkListCommand NetworkListCommand
 
 // NewNetworkListCommand instantiates a new NetworkListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -233,7 +236,36 @@ func (o NetworkListCommand) ToMap() (map[string]interface{}, error) {
 	if o.DatacenterId.IsSet() {
 		toSerialize["datacenterId"] = o.DatacenterId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *NetworkListCommand) UnmarshalJSON(data []byte) (err error) {
+	varNetworkListCommand := _NetworkListCommand{}
+
+	err = json.Unmarshal(data, &varNetworkListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NetworkListCommand(varNetworkListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "datacenterId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableNetworkListCommand struct {

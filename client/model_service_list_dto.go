@@ -26,7 +26,10 @@ type ServiceListDto struct {
 	ClusterIp NullableString `json:"clusterIp,omitempty"`
 	ExternalIp NullableString `json:"externalIp,omitempty"`
 	CreatedAt NullableString `json:"createdAt,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ServiceListDto ServiceListDto
 
 // NewServiceListDto instantiates a new ServiceListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -325,7 +328,38 @@ func (o ServiceListDto) ToMap() (map[string]interface{}, error) {
 	if o.CreatedAt.IsSet() {
 		toSerialize["createdAt"] = o.CreatedAt.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ServiceListDto) UnmarshalJSON(data []byte) (err error) {
+	varServiceListDto := _ServiceListDto{}
+
+	err = json.Unmarshal(data, &varServiceListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ServiceListDto(varServiceListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "clusterIp")
+		delete(additionalProperties, "externalIp")
+		delete(additionalProperties, "createdAt")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableServiceListDto struct {

@@ -26,7 +26,10 @@ type CreateStripeCustomerCommand struct {
 	Address NullableString `json:"address,omitempty"`
 	City NullableString `json:"city,omitempty"`
 	VatNumber NullableString `json:"vatNumber,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateStripeCustomerCommand CreateStripeCustomerCommand
 
 // NewCreateStripeCustomerCommand instantiates a new CreateStripeCustomerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -325,7 +328,38 @@ func (o CreateStripeCustomerCommand) ToMap() (map[string]interface{}, error) {
 	if o.VatNumber.IsSet() {
 		toSerialize["vatNumber"] = o.VatNumber.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateStripeCustomerCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateStripeCustomerCommand := _CreateStripeCustomerCommand{}
+
+	err = json.Unmarshal(data, &varCreateStripeCustomerCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateStripeCustomerCommand(varCreateStripeCustomerCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "legalName")
+		delete(additionalProperties, "billingEmail")
+		delete(additionalProperties, "country")
+		delete(additionalProperties, "address")
+		delete(additionalProperties, "city")
+		delete(additionalProperties, "vatNumber")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateStripeCustomerCommand struct {

@@ -21,7 +21,10 @@ var _ MappedNullable = &AksClusterListCommand{}
 // AksClusterListCommand struct for AksClusterListCommand
 type AksClusterListCommand struct {
 	CloudId *int32 `json:"cloudId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AksClusterListCommand AksClusterListCommand
 
 // NewAksClusterListCommand instantiates a new AksClusterListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o AksClusterListCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CloudId) {
 		toSerialize["cloudId"] = o.CloudId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AksClusterListCommand) UnmarshalJSON(data []byte) (err error) {
+	varAksClusterListCommand := _AksClusterListCommand{}
+
+	err = json.Unmarshal(data, &varAksClusterListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AksClusterListCommand(varAksClusterListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cloudId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAksClusterListCommand struct {

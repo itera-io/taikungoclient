@@ -22,7 +22,10 @@ var _ MappedNullable = &LokiResult{}
 type LokiResult struct {
 	Stream *Stream `json:"stream,omitempty"`
 	Values []string `json:"values,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _LokiResult LokiResult
 
 // NewLokiResult instantiates a new LokiResult object
 // This constructor will assign default values to properties that have it defined,
@@ -122,7 +125,34 @@ func (o LokiResult) ToMap() (map[string]interface{}, error) {
 	if o.Values != nil {
 		toSerialize["values"] = o.Values
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *LokiResult) UnmarshalJSON(data []byte) (err error) {
+	varLokiResult := _LokiResult{}
+
+	err = json.Unmarshal(data, &varLokiResult)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LokiResult(varLokiResult)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "stream")
+		delete(additionalProperties, "values")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableLokiResult struct {

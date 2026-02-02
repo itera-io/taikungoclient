@@ -24,7 +24,10 @@ type StandAloneProfileCreateCommand struct {
 	PublicKey NullableString `json:"publicKey,omitempty"`
 	SecurityGroups []StandAloneProfileSecurityGroupDto `json:"securityGroups,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _StandAloneProfileCreateCommand StandAloneProfileCreateCommand
 
 // NewStandAloneProfileCreateCommand instantiates a new StandAloneProfileCreateCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -224,7 +227,36 @@ func (o StandAloneProfileCreateCommand) ToMap() (map[string]interface{}, error) 
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *StandAloneProfileCreateCommand) UnmarshalJSON(data []byte) (err error) {
+	varStandAloneProfileCreateCommand := _StandAloneProfileCreateCommand{}
+
+	err = json.Unmarshal(data, &varStandAloneProfileCreateCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StandAloneProfileCreateCommand(varStandAloneProfileCreateCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "publicKey")
+		delete(additionalProperties, "securityGroups")
+		delete(additionalProperties, "organizationId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableStandAloneProfileCreateCommand struct {

@@ -21,7 +21,10 @@ var _ MappedNullable = &ApplicationSyncResponse{}
 // ApplicationSyncResponse struct for ApplicationSyncResponse
 type ApplicationSyncResponse struct {
 	IsSyncStarted *bool `json:"isSyncStarted,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ApplicationSyncResponse ApplicationSyncResponse
 
 // NewApplicationSyncResponse instantiates a new ApplicationSyncResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o ApplicationSyncResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsSyncStarted) {
 		toSerialize["isSyncStarted"] = o.IsSyncStarted
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ApplicationSyncResponse) UnmarshalJSON(data []byte) (err error) {
+	varApplicationSyncResponse := _ApplicationSyncResponse{}
+
+	err = json.Unmarshal(data, &varApplicationSyncResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ApplicationSyncResponse(varApplicationSyncResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "isSyncStarted")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableApplicationSyncResponse struct {

@@ -27,7 +27,10 @@ type PackageAutocompleteDto struct {
 	IsQuestion *bool `json:"isQuestion,omitempty"`
 	Options []string `json:"options,omitempty"`
 	IsTaikunLink *bool `json:"isTaikunLink,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PackageAutocompleteDto PackageAutocompleteDto
 
 // NewPackageAutocompleteDto instantiates a new PackageAutocompleteDto object
 // This constructor will assign default values to properties that have it defined,
@@ -332,7 +335,39 @@ func (o PackageAutocompleteDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsTaikunLink) {
 		toSerialize["isTaikunLink"] = o.IsTaikunLink
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PackageAutocompleteDto) UnmarshalJSON(data []byte) (err error) {
+	varPackageAutocompleteDto := _PackageAutocompleteDto{}
+
+	err = json.Unmarshal(data, &varPackageAutocompleteDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PackageAutocompleteDto(varPackageAutocompleteDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "value")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "isQuestion")
+		delete(additionalProperties, "options")
+		delete(additionalProperties, "isTaikunLink")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePackageAutocompleteDto struct {

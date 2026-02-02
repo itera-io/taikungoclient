@@ -26,7 +26,10 @@ type CheckOpenstackCommand struct {
 	OpenStackDomain NullableString `json:"openStackDomain,omitempty"`
 	IsAdmin *bool `json:"isAdmin,omitempty"`
 	ApplicationCredEnabled NullableBool `json:"applicationCredEnabled,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CheckOpenstackCommand CheckOpenstackCommand
 
 // NewCheckOpenstackCommand instantiates a new CheckOpenstackCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -315,7 +318,38 @@ func (o CheckOpenstackCommand) ToMap() (map[string]interface{}, error) {
 	if o.ApplicationCredEnabled.IsSet() {
 		toSerialize["applicationCredEnabled"] = o.ApplicationCredEnabled.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CheckOpenstackCommand) UnmarshalJSON(data []byte) (err error) {
+	varCheckOpenstackCommand := _CheckOpenstackCommand{}
+
+	err = json.Unmarshal(data, &varCheckOpenstackCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CheckOpenstackCommand(varCheckOpenstackCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "openStackUser")
+		delete(additionalProperties, "openStackPassword")
+		delete(additionalProperties, "openStackUrl")
+		delete(additionalProperties, "openStackDomain")
+		delete(additionalProperties, "isAdmin")
+		delete(additionalProperties, "applicationCredEnabled")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCheckOpenstackCommand struct {

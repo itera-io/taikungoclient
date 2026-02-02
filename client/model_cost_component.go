@@ -29,7 +29,10 @@ type CostComponent struct {
 	MonthlyCost NullableString `json:"monthlyCost,omitempty"`
 	PriceNotFound *bool `json:"priceNotFound,omitempty"`
 	UsageBased NullableBool `json:"usageBased,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CostComponent CostComponent
 
 // NewCostComponent instantiates a new CostComponent object
 // This constructor will assign default values to properties that have it defined,
@@ -453,7 +456,41 @@ func (o CostComponent) ToMap() (map[string]interface{}, error) {
 	if o.UsageBased.IsSet() {
 		toSerialize["usageBased"] = o.UsageBased.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CostComponent) UnmarshalJSON(data []byte) (err error) {
+	varCostComponent := _CostComponent{}
+
+	err = json.Unmarshal(data, &varCostComponent)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CostComponent(varCostComponent)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "unit")
+		delete(additionalProperties, "hourlyQuantity")
+		delete(additionalProperties, "monthlyQuantity")
+		delete(additionalProperties, "price")
+		delete(additionalProperties, "hourlyCost")
+		delete(additionalProperties, "monthlyCost")
+		delete(additionalProperties, "priceNotFound")
+		delete(additionalProperties, "usageBased")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCostComponent struct {

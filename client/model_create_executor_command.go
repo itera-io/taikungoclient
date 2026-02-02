@@ -25,7 +25,10 @@ type CreateExecutorCommand struct {
 	LocalCluster *bool `json:"localCluster,omitempty"`
 	Continent NullableString `json:"continent,omitempty"`
 	KubeConfig NullableString `json:"kubeConfig,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateExecutorCommand CreateExecutorCommand
 
 // NewCreateExecutorCommand instantiates a new CreateExecutorCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -259,7 +262,37 @@ func (o CreateExecutorCommand) ToMap() (map[string]interface{}, error) {
 	if o.KubeConfig.IsSet() {
 		toSerialize["kubeConfig"] = o.KubeConfig.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateExecutorCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateExecutorCommand := _CreateExecutorCommand{}
+
+	err = json.Unmarshal(data, &varCreateExecutorCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateExecutorCommand(varCreateExecutorCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "localCluster")
+		delete(additionalProperties, "continent")
+		delete(additionalProperties, "kubeConfig")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateExecutorCommand struct {

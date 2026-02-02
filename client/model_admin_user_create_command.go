@@ -25,7 +25,10 @@ type AdminUserCreateCommand struct {
 	Password NullableString `json:"password,omitempty"`
 	Role *UserRole `json:"role,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AdminUserCreateCommand AdminUserCreateCommand
 
 // NewAdminUserCreateCommand instantiates a new AdminUserCreateCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -269,7 +272,37 @@ func (o AdminUserCreateCommand) ToMap() (map[string]interface{}, error) {
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AdminUserCreateCommand) UnmarshalJSON(data []byte) (err error) {
+	varAdminUserCreateCommand := _AdminUserCreateCommand{}
+
+	err = json.Unmarshal(data, &varAdminUserCreateCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AdminUserCreateCommand(varAdminUserCreateCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "role")
+		delete(additionalProperties, "organizationId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAdminUserCreateCommand struct {

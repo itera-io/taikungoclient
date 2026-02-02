@@ -26,7 +26,10 @@ type BillingSummaryDto struct {
 	EndDate NullableString `json:"endDate,omitempty"`
 	Tcu *float64 `json:"tcu,omitempty"`
 	IsDeleted *bool `json:"isDeleted,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _BillingSummaryDto BillingSummaryDto
 
 // NewBillingSummaryDto instantiates a new BillingSummaryDto object
 // This constructor will assign default values to properties that have it defined,
@@ -295,7 +298,38 @@ func (o BillingSummaryDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsDeleted) {
 		toSerialize["isDeleted"] = o.IsDeleted
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *BillingSummaryDto) UnmarshalJSON(data []byte) (err error) {
+	varBillingSummaryDto := _BillingSummaryDto{}
+
+	err = json.Unmarshal(data, &varBillingSummaryDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BillingSummaryDto(varBillingSummaryDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "startDate")
+		delete(additionalProperties, "endDate")
+		delete(additionalProperties, "tcu")
+		delete(additionalProperties, "isDeleted")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableBillingSummaryDto struct {

@@ -26,7 +26,10 @@ type CreateSecurityGroupCommand struct {
 	PortMaxRange *int32 `json:"portMaxRange,omitempty"`
 	RemoteIpPrefix NullableString `json:"remoteIpPrefix,omitempty"`
 	StandAloneProfileId *int32 `json:"standAloneProfileId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateSecurityGroupCommand CreateSecurityGroupCommand
 
 // NewCreateSecurityGroupCommand instantiates a new CreateSecurityGroupCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -285,7 +288,38 @@ func (o CreateSecurityGroupCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StandAloneProfileId) {
 		toSerialize["standAloneProfileId"] = o.StandAloneProfileId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateSecurityGroupCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateSecurityGroupCommand := _CreateSecurityGroupCommand{}
+
+	err = json.Unmarshal(data, &varCreateSecurityGroupCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateSecurityGroupCommand(varCreateSecurityGroupCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "protocol")
+		delete(additionalProperties, "portMinRange")
+		delete(additionalProperties, "portMaxRange")
+		delete(additionalProperties, "remoteIpPrefix")
+		delete(additionalProperties, "standAloneProfileId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateSecurityGroupCommand struct {

@@ -21,7 +21,10 @@ var _ MappedNullable = &InvoiceSecret{}
 // InvoiceSecret struct for InvoiceSecret
 type InvoiceSecret struct {
 	Secret NullableString `json:"secret,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _InvoiceSecret InvoiceSecret
 
 // NewInvoiceSecret instantiates a new InvoiceSecret object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +98,33 @@ func (o InvoiceSecret) ToMap() (map[string]interface{}, error) {
 	if o.Secret.IsSet() {
 		toSerialize["secret"] = o.Secret.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *InvoiceSecret) UnmarshalJSON(data []byte) (err error) {
+	varInvoiceSecret := _InvoiceSecret{}
+
+	err = json.Unmarshal(data, &varInvoiceSecret)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InvoiceSecret(varInvoiceSecret)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "secret")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableInvoiceSecret struct {

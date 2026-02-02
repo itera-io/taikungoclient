@@ -22,7 +22,10 @@ var _ MappedNullable = &OpaProfileLockManagerCommand{}
 type OpaProfileLockManagerCommand struct {
 	Id *int32 `json:"id,omitempty"`
 	Mode NullableString `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OpaProfileLockManagerCommand OpaProfileLockManagerCommand
 
 // NewOpaProfileLockManagerCommand instantiates a new OpaProfileLockManagerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o OpaProfileLockManagerCommand) ToMap() (map[string]interface{}, error) {
 	if o.Mode.IsSet() {
 		toSerialize["mode"] = o.Mode.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OpaProfileLockManagerCommand) UnmarshalJSON(data []byte) (err error) {
+	varOpaProfileLockManagerCommand := _OpaProfileLockManagerCommand{}
+
+	err = json.Unmarshal(data, &varOpaProfileLockManagerCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OpaProfileLockManagerCommand(varOpaProfileLockManagerCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOpaProfileLockManagerCommand struct {

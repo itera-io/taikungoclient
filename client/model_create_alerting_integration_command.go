@@ -24,7 +24,10 @@ type CreateAlertingIntegrationCommand struct {
 	Token NullableString `json:"token,omitempty"`
 	AlertingIntegrationType *AlertingIntegrationType `json:"alertingIntegrationType,omitempty"`
 	AlertingProfileId *int32 `json:"alertingProfileId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateAlertingIntegrationCommand CreateAlertingIntegrationCommand
 
 // NewCreateAlertingIntegrationCommand instantiates a new CreateAlertingIntegrationCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -213,7 +216,36 @@ func (o CreateAlertingIntegrationCommand) ToMap() (map[string]interface{}, error
 	if !IsNil(o.AlertingProfileId) {
 		toSerialize["alertingProfileId"] = o.AlertingProfileId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateAlertingIntegrationCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateAlertingIntegrationCommand := _CreateAlertingIntegrationCommand{}
+
+	err = json.Unmarshal(data, &varCreateAlertingIntegrationCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateAlertingIntegrationCommand(varCreateAlertingIntegrationCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "alertingIntegrationType")
+		delete(additionalProperties, "alertingProfileId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateAlertingIntegrationCommand struct {

@@ -22,7 +22,10 @@ var _ MappedNullable = &ImportBackupStorageLocationCommand{}
 type ImportBackupStorageLocationCommand struct {
 	TargetProjectId *int32 `json:"targetProjectId,omitempty"`
 	SourceProjectId *int32 `json:"sourceProjectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ImportBackupStorageLocationCommand ImportBackupStorageLocationCommand
 
 // NewImportBackupStorageLocationCommand instantiates a new ImportBackupStorageLocationCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -121,7 +124,34 @@ func (o ImportBackupStorageLocationCommand) ToMap() (map[string]interface{}, err
 	if !IsNil(o.SourceProjectId) {
 		toSerialize["sourceProjectId"] = o.SourceProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ImportBackupStorageLocationCommand) UnmarshalJSON(data []byte) (err error) {
+	varImportBackupStorageLocationCommand := _ImportBackupStorageLocationCommand{}
+
+	err = json.Unmarshal(data, &varImportBackupStorageLocationCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ImportBackupStorageLocationCommand(varImportBackupStorageLocationCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "targetProjectId")
+		delete(additionalProperties, "sourceProjectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableImportBackupStorageLocationCommand struct {

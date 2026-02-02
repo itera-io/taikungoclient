@@ -22,7 +22,10 @@ var _ MappedNullable = &LeaveTaikunCommand{}
 type LeaveTaikunCommand struct {
 	Reason NullableString `json:"reason,omitempty"`
 	Message NullableString `json:"message,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _LeaveTaikunCommand LeaveTaikunCommand
 
 // NewLeaveTaikunCommand instantiates a new LeaveTaikunCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o LeaveTaikunCommand) ToMap() (map[string]interface{}, error) {
 	if o.Message.IsSet() {
 		toSerialize["message"] = o.Message.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *LeaveTaikunCommand) UnmarshalJSON(data []byte) (err error) {
+	varLeaveTaikunCommand := _LeaveTaikunCommand{}
+
+	err = json.Unmarshal(data, &varLeaveTaikunCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LeaveTaikunCommand(varLeaveTaikunCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "reason")
+		delete(additionalProperties, "message")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableLeaveTaikunCommand struct {

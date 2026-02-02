@@ -23,7 +23,10 @@ type MainProjectDto struct {
 	Id *int32 `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	Status *ProjectStatus `json:"status,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _MainProjectDto MainProjectDto
 
 // NewMainProjectDto instantiates a new MainProjectDto object
 // This constructor will assign default values to properties that have it defined,
@@ -167,7 +170,35 @@ func (o MainProjectDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *MainProjectDto) UnmarshalJSON(data []byte) (err error) {
+	varMainProjectDto := _MainProjectDto{}
+
+	err = json.Unmarshal(data, &varMainProjectDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = MainProjectDto(varMainProjectDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "status")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableMainProjectDto struct {

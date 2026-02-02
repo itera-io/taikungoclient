@@ -22,7 +22,10 @@ var _ MappedNullable = &UpdateStandAloneVmFlavorCommand{}
 type UpdateStandAloneVmFlavorCommand struct {
 	Id *int32 `json:"id,omitempty"`
 	Flavor NullableString `json:"flavor,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateStandAloneVmFlavorCommand UpdateStandAloneVmFlavorCommand
 
 // NewUpdateStandAloneVmFlavorCommand instantiates a new UpdateStandAloneVmFlavorCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o UpdateStandAloneVmFlavorCommand) ToMap() (map[string]interface{}, error)
 	if o.Flavor.IsSet() {
 		toSerialize["flavor"] = o.Flavor.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateStandAloneVmFlavorCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateStandAloneVmFlavorCommand := _UpdateStandAloneVmFlavorCommand{}
+
+	err = json.Unmarshal(data, &varUpdateStandAloneVmFlavorCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateStandAloneVmFlavorCommand(varUpdateStandAloneVmFlavorCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "flavor")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateStandAloneVmFlavorCommand struct {

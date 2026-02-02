@@ -30,7 +30,10 @@ type UpdateSubscriptionCommand struct {
 	YearlyPrice *float64 `json:"yearlyPrice,omitempty"`
 	TcuPrice *float64 `json:"tcuPrice,omitempty"`
 	TrialDays *int32 `json:"trialDays,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateSubscriptionCommand UpdateSubscriptionCommand
 
 // NewUpdateSubscriptionCommand instantiates a new UpdateSubscriptionCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -419,7 +422,42 @@ func (o UpdateSubscriptionCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TrialDays) {
 		toSerialize["trialDays"] = o.TrialDays
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateSubscriptionCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateSubscriptionCommand := _UpdateSubscriptionCommand{}
+
+	err = json.Unmarshal(data, &varUpdateSubscriptionCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateSubscriptionCommand(varUpdateSubscriptionCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "projectLimit")
+		delete(additionalProperties, "serverLimit")
+		delete(additionalProperties, "userLimit")
+		delete(additionalProperties, "cloudCredentialLimit")
+		delete(additionalProperties, "monthlyPrice")
+		delete(additionalProperties, "yearlyPrice")
+		delete(additionalProperties, "tcuPrice")
+		delete(additionalProperties, "trialDays")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateSubscriptionCommand struct {

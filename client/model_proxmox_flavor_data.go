@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -25,6 +24,7 @@ type ProxmoxFlavorData struct {
 	Name NullableString `json:"name"`
 	Cpu int32 `json:"cpu"`
 	Ram float64 `json:"ram"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProxmoxFlavorData ProxmoxFlavorData
@@ -136,6 +136,11 @@ func (o ProxmoxFlavorData) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name.Get()
 	toSerialize["cpu"] = o.Cpu
 	toSerialize["ram"] = o.Ram
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -165,15 +170,22 @@ func (o *ProxmoxFlavorData) UnmarshalJSON(data []byte) (err error) {
 
 	varProxmoxFlavorData := _ProxmoxFlavorData{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProxmoxFlavorData)
+	err = json.Unmarshal(data, &varProxmoxFlavorData)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProxmoxFlavorData(varProxmoxFlavorData)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "ram")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

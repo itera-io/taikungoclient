@@ -23,7 +23,10 @@ type DuplicateNameCheckerCommand struct {
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	Type NullableString `json:"type,omitempty"`
 	Name NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DuplicateNameCheckerCommand DuplicateNameCheckerCommand
 
 // NewDuplicateNameCheckerCommand instantiates a new DuplicateNameCheckerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -187,7 +190,35 @@ func (o DuplicateNameCheckerCommand) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DuplicateNameCheckerCommand) UnmarshalJSON(data []byte) (err error) {
+	varDuplicateNameCheckerCommand := _DuplicateNameCheckerCommand{}
+
+	err = json.Unmarshal(data, &varDuplicateNameCheckerCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DuplicateNameCheckerCommand(varDuplicateNameCheckerCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDuplicateNameCheckerCommand struct {

@@ -21,7 +21,10 @@ var _ MappedNullable = &TwoFactorAuthLoginCommand{}
 // TwoFactorAuthLoginCommand struct for TwoFactorAuthLoginCommand
 type TwoFactorAuthLoginCommand struct {
 	VerificationCode NullableString `json:"verificationCode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _TwoFactorAuthLoginCommand TwoFactorAuthLoginCommand
 
 // NewTwoFactorAuthLoginCommand instantiates a new TwoFactorAuthLoginCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +98,33 @@ func (o TwoFactorAuthLoginCommand) ToMap() (map[string]interface{}, error) {
 	if o.VerificationCode.IsSet() {
 		toSerialize["verificationCode"] = o.VerificationCode.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *TwoFactorAuthLoginCommand) UnmarshalJSON(data []byte) (err error) {
+	varTwoFactorAuthLoginCommand := _TwoFactorAuthLoginCommand{}
+
+	err = json.Unmarshal(data, &varTwoFactorAuthLoginCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TwoFactorAuthLoginCommand(varTwoFactorAuthLoginCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "verificationCode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableTwoFactorAuthLoginCommand struct {

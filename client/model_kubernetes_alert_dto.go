@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -38,6 +37,7 @@ type KubernetesAlertDto struct {
 	SilenceReason NullableString `json:"silenceReason"`
 	LastModifiedBy NullableString `json:"lastModifiedBy"`
 	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _KubernetesAlertDto KubernetesAlertDto
@@ -507,6 +507,11 @@ func (o KubernetesAlertDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["silenceReason"] = o.SilenceReason.Get()
 	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
 	toSerialize["isMonitoringEnabled"] = o.IsMonitoringEnabled
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -549,15 +554,35 @@ func (o *KubernetesAlertDto) UnmarshalJSON(data []byte) (err error) {
 
 	varKubernetesAlertDto := _KubernetesAlertDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKubernetesAlertDto)
+	err = json.Unmarshal(data, &varKubernetesAlertDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubernetesAlertDto(varKubernetesAlertDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "labels")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "title")
+		delete(additionalProperties, "severity")
+		delete(additionalProperties, "fingerprint")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "startsAt")
+		delete(additionalProperties, "endAt")
+		delete(additionalProperties, "isSolved")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "isSilenced")
+		delete(additionalProperties, "silenceReason")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "isMonitoringEnabled")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

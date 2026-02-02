@@ -21,7 +21,10 @@ var _ MappedNullable = &ImportedClusterDisableAiCommand{}
 // ImportedClusterDisableAiCommand struct for ImportedClusterDisableAiCommand
 type ImportedClusterDisableAiCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ImportedClusterDisableAiCommand ImportedClusterDisableAiCommand
 
 // NewImportedClusterDisableAiCommand instantiates a new ImportedClusterDisableAiCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o ImportedClusterDisableAiCommand) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ImportedClusterDisableAiCommand) UnmarshalJSON(data []byte) (err error) {
+	varImportedClusterDisableAiCommand := _ImportedClusterDisableAiCommand{}
+
+	err = json.Unmarshal(data, &varImportedClusterDisableAiCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ImportedClusterDisableAiCommand(varImportedClusterDisableAiCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableImportedClusterDisableAiCommand struct {

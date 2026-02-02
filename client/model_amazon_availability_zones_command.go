@@ -24,7 +24,10 @@ type AmazonAvailabilityZonesCommand struct {
 	AwsAccessKeyId NullableString `json:"awsAccessKeyId,omitempty"`
 	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey,omitempty"`
 	CloudId NullableInt32 `json:"cloudId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AmazonAvailabilityZonesCommand AmazonAvailabilityZonesCommand
 
 // NewAmazonAvailabilityZonesCommand instantiates a new AmazonAvailabilityZonesCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -233,7 +236,36 @@ func (o AmazonAvailabilityZonesCommand) ToMap() (map[string]interface{}, error) 
 	if o.CloudId.IsSet() {
 		toSerialize["cloudId"] = o.CloudId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AmazonAvailabilityZonesCommand) UnmarshalJSON(data []byte) (err error) {
+	varAmazonAvailabilityZonesCommand := _AmazonAvailabilityZonesCommand{}
+
+	err = json.Unmarshal(data, &varAmazonAvailabilityZonesCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AmazonAvailabilityZonesCommand(varAmazonAvailabilityZonesCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "region")
+		delete(additionalProperties, "awsAccessKeyId")
+		delete(additionalProperties, "awsSecretAccessKey")
+		delete(additionalProperties, "cloudId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAmazonAvailabilityZonesCommand struct {

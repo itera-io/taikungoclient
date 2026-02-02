@@ -22,7 +22,10 @@ var _ MappedNullable = &BindSubscriptionCommand{}
 type BindSubscriptionCommand struct {
 	Id *int32 `json:"id,omitempty"`
 	Yearly *bool `json:"yearly,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _BindSubscriptionCommand BindSubscriptionCommand
 
 // NewBindSubscriptionCommand instantiates a new BindSubscriptionCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -121,7 +124,34 @@ func (o BindSubscriptionCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Yearly) {
 		toSerialize["yearly"] = o.Yearly
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *BindSubscriptionCommand) UnmarshalJSON(data []byte) (err error) {
+	varBindSubscriptionCommand := _BindSubscriptionCommand{}
+
+	err = json.Unmarshal(data, &varBindSubscriptionCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BindSubscriptionCommand(varBindSubscriptionCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "yearly")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableBindSubscriptionCommand struct {

@@ -25,7 +25,10 @@ type NodeSearchResponseData struct {
 	ProjectName NullableString `json:"projectName,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _NodeSearchResponseData NodeSearchResponseData
 
 // NewNodeSearchResponseData instantiates a new NodeSearchResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -259,7 +262,37 @@ func (o NodeSearchResponseData) ToMap() (map[string]interface{}, error) {
 	if o.OrganizationName.IsSet() {
 		toSerialize["organizationName"] = o.OrganizationName.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *NodeSearchResponseData) UnmarshalJSON(data []byte) (err error) {
+	varNodeSearchResponseData := _NodeSearchResponseData{}
+
+	err = json.Unmarshal(data, &varNodeSearchResponseData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NodeSearchResponseData(varNodeSearchResponseData)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "metadataName")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableNodeSearchResponseData struct {

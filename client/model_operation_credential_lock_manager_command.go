@@ -22,7 +22,10 @@ var _ MappedNullable = &OperationCredentialLockManagerCommand{}
 type OperationCredentialLockManagerCommand struct {
 	Id *int32 `json:"id,omitempty"`
 	Mode NullableString `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OperationCredentialLockManagerCommand OperationCredentialLockManagerCommand
 
 // NewOperationCredentialLockManagerCommand instantiates a new OperationCredentialLockManagerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o OperationCredentialLockManagerCommand) ToMap() (map[string]interface{}, 
 	if o.Mode.IsSet() {
 		toSerialize["mode"] = o.Mode.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OperationCredentialLockManagerCommand) UnmarshalJSON(data []byte) (err error) {
+	varOperationCredentialLockManagerCommand := _OperationCredentialLockManagerCommand{}
+
+	err = json.Unmarshal(data, &varOperationCredentialLockManagerCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OperationCredentialLockManagerCommand(varOperationCredentialLockManagerCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOperationCredentialLockManagerCommand struct {

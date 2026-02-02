@@ -22,7 +22,10 @@ var _ MappedNullable = &NamespaceSearchList{}
 type NamespaceSearchList struct {
 	Data []CommonSearchKubernetesResponseData `json:"data,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _NamespaceSearchList NamespaceSearchList
 
 // NewNamespaceSearchList instantiates a new NamespaceSearchList object
 // This constructor will assign default values to properties that have it defined,
@@ -122,7 +125,34 @@ func (o NamespaceSearchList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *NamespaceSearchList) UnmarshalJSON(data []byte) (err error) {
+	varNamespaceSearchList := _NamespaceSearchList{}
+
+	err = json.Unmarshal(data, &varNamespaceSearchList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NamespaceSearchList(varNamespaceSearchList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableNamespaceSearchList struct {

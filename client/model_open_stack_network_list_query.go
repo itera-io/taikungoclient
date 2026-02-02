@@ -28,7 +28,10 @@ type OpenStackNetworkListQuery struct {
 	OpenStackRegion NullableString `json:"openStackRegion,omitempty"`
 	ApplicationCredEnabled *bool `json:"applicationCredEnabled,omitempty"`
 	IsAdmin *bool `json:"isAdmin,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OpenStackNetworkListQuery OpenStackNetworkListQuery
 
 // NewOpenStackNetworkListQuery instantiates a new OpenStackNetworkListQuery object
 // This constructor will assign default values to properties that have it defined,
@@ -397,7 +400,40 @@ func (o OpenStackNetworkListQuery) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsAdmin) {
 		toSerialize["isAdmin"] = o.IsAdmin
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OpenStackNetworkListQuery) UnmarshalJSON(data []byte) (err error) {
+	varOpenStackNetworkListQuery := _OpenStackNetworkListQuery{}
+
+	err = json.Unmarshal(data, &varOpenStackNetworkListQuery)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OpenStackNetworkListQuery(varOpenStackNetworkListQuery)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "openStackUser")
+		delete(additionalProperties, "openStackPassword")
+		delete(additionalProperties, "openStackUrl")
+		delete(additionalProperties, "openStackProjectId")
+		delete(additionalProperties, "openStackDomain")
+		delete(additionalProperties, "openStackRegion")
+		delete(additionalProperties, "applicationCredEnabled")
+		delete(additionalProperties, "isAdmin")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOpenStackNetworkListQuery struct {

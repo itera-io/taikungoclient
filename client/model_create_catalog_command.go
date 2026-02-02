@@ -23,7 +23,10 @@ type CreateCatalogCommand struct {
 	Name NullableString `json:"name,omitempty"`
 	Description NullableString `json:"description,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateCatalogCommand CreateCatalogCommand
 
 // NewCreateCatalogCommand instantiates a new CreateCatalogCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -187,7 +190,35 @@ func (o CreateCatalogCommand) ToMap() (map[string]interface{}, error) {
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateCatalogCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateCatalogCommand := _CreateCatalogCommand{}
+
+	err = json.Unmarshal(data, &varCreateCatalogCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateCatalogCommand(varCreateCatalogCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "organizationId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateCatalogCommand struct {

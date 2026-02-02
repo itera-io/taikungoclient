@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -24,6 +23,7 @@ var _ MappedNullable = &ServersListForDetails{}
 type ServersListForDetails struct {
 	Data []ServerListDto `json:"data"`
 	Project ProjectDetailsForServersDto `json:"project"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ServersListForDetails ServersListForDetails
@@ -111,6 +111,11 @@ func (o ServersListForDetails) ToMap() (map[string]interface{}, error) {
 		toSerialize["data"] = o.Data
 	}
 	toSerialize["project"] = o.Project
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -139,15 +144,21 @@ func (o *ServersListForDetails) UnmarshalJSON(data []byte) (err error) {
 
 	varServersListForDetails := _ServersListForDetails{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varServersListForDetails)
+	err = json.Unmarshal(data, &varServersListForDetails)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ServersListForDetails(varServersListForDetails)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "project")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

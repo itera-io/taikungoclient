@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -25,6 +24,7 @@ type StripeSubscriptionItemDto struct {
 	SubscriptionItemId NullableString `json:"subscriptionItemId"`
 	PriceId NullableString `json:"priceId"`
 	ProductId NullableString `json:"productId"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StripeSubscriptionItemDto StripeSubscriptionItemDto
@@ -140,6 +140,11 @@ func (o StripeSubscriptionItemDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["subscriptionItemId"] = o.SubscriptionItemId.Get()
 	toSerialize["priceId"] = o.PriceId.Get()
 	toSerialize["productId"] = o.ProductId.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -169,15 +174,22 @@ func (o *StripeSubscriptionItemDto) UnmarshalJSON(data []byte) (err error) {
 
 	varStripeSubscriptionItemDto := _StripeSubscriptionItemDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStripeSubscriptionItemDto)
+	err = json.Unmarshal(data, &varStripeSubscriptionItemDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StripeSubscriptionItemDto(varStripeSubscriptionItemDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "subscriptionItemId")
+		delete(additionalProperties, "priceId")
+		delete(additionalProperties, "productId")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -24,7 +24,10 @@ type Diff struct {
 	TotalHourlyCost NullableString `json:"totalHourlyCost,omitempty"`
 	TotalMonthlyCost NullableString `json:"totalMonthlyCost,omitempty"`
 	TotalMonthlyUsageCost NullableString `json:"totalMonthlyUsageCost,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Diff Diff
 
 // NewDiff instantiates a new Diff object
 // This constructor will assign default values to properties that have it defined,
@@ -224,7 +227,36 @@ func (o Diff) ToMap() (map[string]interface{}, error) {
 	if o.TotalMonthlyUsageCost.IsSet() {
 		toSerialize["totalMonthlyUsageCost"] = o.TotalMonthlyUsageCost.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Diff) UnmarshalJSON(data []byte) (err error) {
+	varDiff := _Diff{}
+
+	err = json.Unmarshal(data, &varDiff)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Diff(varDiff)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "resources")
+		delete(additionalProperties, "totalHourlyCost")
+		delete(additionalProperties, "totalMonthlyCost")
+		delete(additionalProperties, "totalMonthlyUsageCost")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDiff struct {

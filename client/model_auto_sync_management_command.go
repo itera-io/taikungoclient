@@ -23,7 +23,10 @@ type AutoSyncManagementCommand struct {
 	Id *int32 `json:"id,omitempty"`
 	Mode NullableString `json:"mode,omitempty"`
 	Ttl NullableInt32 `json:"ttl,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AutoSyncManagementCommand AutoSyncManagementCommand
 
 // NewAutoSyncManagementCommand instantiates a new AutoSyncManagementCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -177,7 +180,35 @@ func (o AutoSyncManagementCommand) ToMap() (map[string]interface{}, error) {
 	if o.Ttl.IsSet() {
 		toSerialize["ttl"] = o.Ttl.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AutoSyncManagementCommand) UnmarshalJSON(data []byte) (err error) {
+	varAutoSyncManagementCommand := _AutoSyncManagementCommand{}
+
+	err = json.Unmarshal(data, &varAutoSyncManagementCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AutoSyncManagementCommand(varAutoSyncManagementCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "ttl")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAutoSyncManagementCommand struct {

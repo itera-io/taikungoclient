@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -37,6 +36,7 @@ type OpenshiftListDto struct {
 	IsDefault bool `json:"isDefault"`
 	CreatedAt NullableString `json:"createdAt"`
 	ContinentName string `json:"continentName"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OpenshiftListDto OpenshiftListDto
@@ -466,6 +466,11 @@ func (o OpenshiftListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["isDefault"] = o.IsDefault
 	toSerialize["createdAt"] = o.CreatedAt.Get()
 	toSerialize["continentName"] = o.ContinentName
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -507,15 +512,34 @@ func (o *OpenshiftListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varOpenshiftListDto := _OpenshiftListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOpenshiftListDto)
+	err = json.Unmarshal(data, &varOpenshiftListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OpenshiftListDto(varOpenshiftListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "baseDomain")
+		delete(additionalProperties, "storageClass")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "projectCount")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "continentName")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

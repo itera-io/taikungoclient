@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -25,6 +24,7 @@ type CatalogsForProjectDto struct {
 	CatalogId int32 `json:"catalogId"`
 	CatalogName NullableString `json:"catalogName"`
 	IsBound bool `json:"isBound"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CatalogsForProjectDto CatalogsForProjectDto
@@ -136,6 +136,11 @@ func (o CatalogsForProjectDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["catalogId"] = o.CatalogId
 	toSerialize["catalogName"] = o.CatalogName.Get()
 	toSerialize["isBound"] = o.IsBound
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -165,15 +170,22 @@ func (o *CatalogsForProjectDto) UnmarshalJSON(data []byte) (err error) {
 
 	varCatalogsForProjectDto := _CatalogsForProjectDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCatalogsForProjectDto)
+	err = json.Unmarshal(data, &varCatalogsForProjectDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CatalogsForProjectDto(varCatalogsForProjectDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "catalogId")
+		delete(additionalProperties, "catalogName")
+		delete(additionalProperties, "isBound")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

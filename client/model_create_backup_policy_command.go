@@ -25,7 +25,10 @@ type CreateBackupPolicyCommand struct {
 	CronPeriod NullableString `json:"cronPeriod,omitempty"`
 	ProjectId *int32 `json:"projectId,omitempty"`
 	RetentionPeriod NullableString `json:"retentionPeriod,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateBackupPolicyCommand CreateBackupPolicyCommand
 
 // NewCreateBackupPolicyCommand instantiates a new CreateBackupPolicyCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -260,7 +263,37 @@ func (o CreateBackupPolicyCommand) ToMap() (map[string]interface{}, error) {
 	if o.RetentionPeriod.IsSet() {
 		toSerialize["retentionPeriod"] = o.RetentionPeriod.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateBackupPolicyCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateBackupPolicyCommand := _CreateBackupPolicyCommand{}
+
+	err = json.Unmarshal(data, &varCreateBackupPolicyCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateBackupPolicyCommand(varCreateBackupPolicyCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "includeNamespaces")
+		delete(additionalProperties, "cronPeriod")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "retentionPeriod")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateBackupPolicyCommand struct {

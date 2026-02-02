@@ -36,7 +36,10 @@ type CatalogAppListDto struct {
 	Repository *Repository `json:"repository,omitempty"`
 	Stars *int64 `json:"stars,omitempty"`
 	InstalledInstanceCount NullableInt32 `json:"installedInstanceCount,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CatalogAppListDto CatalogAppListDto
 
 // NewCatalogAppListDto instantiates a new CatalogAppListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -715,7 +718,48 @@ func (o CatalogAppListDto) ToMap() (map[string]interface{}, error) {
 	if o.InstalledInstanceCount.IsSet() {
 		toSerialize["installedInstanceCount"] = o.InstalledInstanceCount.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CatalogAppListDto) UnmarshalJSON(data []byte) (err error) {
+	varCatalogAppListDto := _CatalogAppListDto{}
+
+	err = json.Unmarshal(data, &varCatalogAppListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CatalogAppListDto(varCatalogAppListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "catalogAppId")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "repoId")
+		delete(additionalProperties, "repoName")
+		delete(additionalProperties, "catalogId")
+		delete(additionalProperties, "catalogName")
+		delete(additionalProperties, "packageId")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "logoImageId")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "appVersion")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "securityReportSummary")
+		delete(additionalProperties, "repository")
+		delete(additionalProperties, "stars")
+		delete(additionalProperties, "installedInstanceCount")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCatalogAppListDto struct {

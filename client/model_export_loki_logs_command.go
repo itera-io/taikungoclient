@@ -21,7 +21,10 @@ var _ MappedNullable = &ExportLokiLogsCommand{}
 // ExportLokiLogsCommand struct for ExportLokiLogsCommand
 type ExportLokiLogsCommand struct {
 	Query *LokiLogsQuery `json:"query,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ExportLokiLogsCommand ExportLokiLogsCommand
 
 // NewExportLokiLogsCommand instantiates a new ExportLokiLogsCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o ExportLokiLogsCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Query) {
 		toSerialize["query"] = o.Query
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ExportLokiLogsCommand) UnmarshalJSON(data []byte) (err error) {
+	varExportLokiLogsCommand := _ExportLokiLogsCommand{}
+
+	err = json.Unmarshal(data, &varExportLokiLogsCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ExportLokiLogsCommand(varExportLokiLogsCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "query")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableExportLokiLogsCommand struct {

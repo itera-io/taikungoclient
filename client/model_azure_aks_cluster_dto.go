@@ -23,7 +23,10 @@ type AzureAksClusterDto struct {
 	ResourceGroupName NullableString `json:"resourceGroupName,omitempty"`
 	ClusterName NullableString `json:"clusterName,omitempty"`
 	Location NullableString `json:"location,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AzureAksClusterDto AzureAksClusterDto
 
 // NewAzureAksClusterDto instantiates a new AzureAksClusterDto object
 // This constructor will assign default values to properties that have it defined,
@@ -187,7 +190,35 @@ func (o AzureAksClusterDto) ToMap() (map[string]interface{}, error) {
 	if o.Location.IsSet() {
 		toSerialize["location"] = o.Location.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AzureAksClusterDto) UnmarshalJSON(data []byte) (err error) {
+	varAzureAksClusterDto := _AzureAksClusterDto{}
+
+	err = json.Unmarshal(data, &varAzureAksClusterDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AzureAksClusterDto(varAzureAksClusterDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "resourceGroupName")
+		delete(additionalProperties, "clusterName")
+		delete(additionalProperties, "location")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAzureAksClusterDto struct {

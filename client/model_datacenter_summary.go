@@ -22,7 +22,10 @@ var _ MappedNullable = &DatacenterSummary{}
 type DatacenterSummary struct {
 	Datacenter NullableString `json:"datacenter,omitempty"`
 	Name NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DatacenterSummary DatacenterSummary
 
 // NewDatacenterSummary instantiates a new DatacenterSummary object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o DatacenterSummary) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DatacenterSummary) UnmarshalJSON(data []byte) (err error) {
+	varDatacenterSummary := _DatacenterSummary{}
+
+	err = json.Unmarshal(data, &varDatacenterSummary)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DatacenterSummary(varDatacenterSummary)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "datacenter")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDatacenterSummary struct {

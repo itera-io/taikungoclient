@@ -23,7 +23,10 @@ type PrometheusRulesSearchResponseData struct {
 	Id *int32 `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	Partner *int32 `json:"partner,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PrometheusRulesSearchResponseData PrometheusRulesSearchResponseData
 
 // NewPrometheusRulesSearchResponseData instantiates a new PrometheusRulesSearchResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -167,7 +170,35 @@ func (o PrometheusRulesSearchResponseData) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.Partner) {
 		toSerialize["partner"] = o.Partner
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PrometheusRulesSearchResponseData) UnmarshalJSON(data []byte) (err error) {
+	varPrometheusRulesSearchResponseData := _PrometheusRulesSearchResponseData{}
+
+	err = json.Unmarshal(data, &varPrometheusRulesSearchResponseData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PrometheusRulesSearchResponseData(varPrometheusRulesSearchResponseData)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "partner")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePrometheusRulesSearchResponseData struct {

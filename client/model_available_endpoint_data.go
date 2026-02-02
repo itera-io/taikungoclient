@@ -25,7 +25,10 @@ type AvailableEndpointData struct {
 	Method NullableString `json:"method,omitempty"`
 	Description NullableString `json:"description,omitempty"`
 	Controller NullableString `json:"controller,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AvailableEndpointData AvailableEndpointData
 
 // NewAvailableEndpointData instantiates a new AvailableEndpointData object
 // This constructor will assign default values to properties that have it defined,
@@ -269,7 +272,37 @@ func (o AvailableEndpointData) ToMap() (map[string]interface{}, error) {
 	if o.Controller.IsSet() {
 		toSerialize["controller"] = o.Controller.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AvailableEndpointData) UnmarshalJSON(data []byte) (err error) {
+	varAvailableEndpointData := _AvailableEndpointData{}
+
+	err = json.Unmarshal(data, &varAvailableEndpointData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AvailableEndpointData(varAvailableEndpointData)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "path")
+		delete(additionalProperties, "method")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "controller")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAvailableEndpointData struct {

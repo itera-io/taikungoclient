@@ -22,7 +22,10 @@ var _ MappedNullable = &AwsValidateOwnerCommand{}
 type AwsValidateOwnerCommand struct {
 	CloudId *int32 `json:"cloudId,omitempty"`
 	Owners []string `json:"owners,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AwsValidateOwnerCommand AwsValidateOwnerCommand
 
 // NewAwsValidateOwnerCommand instantiates a new AwsValidateOwnerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -122,7 +125,34 @@ func (o AwsValidateOwnerCommand) ToMap() (map[string]interface{}, error) {
 	if o.Owners != nil {
 		toSerialize["owners"] = o.Owners
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AwsValidateOwnerCommand) UnmarshalJSON(data []byte) (err error) {
+	varAwsValidateOwnerCommand := _AwsValidateOwnerCommand{}
+
+	err = json.Unmarshal(data, &varAwsValidateOwnerCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AwsValidateOwnerCommand(varAwsValidateOwnerCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cloudId")
+		delete(additionalProperties, "owners")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAwsValidateOwnerCommand struct {

@@ -30,7 +30,10 @@ type ProjectAppDto struct {
 	IsLocked *bool `json:"isLocked,omitempty"`
 	Status *EInstanceStatus `json:"status,omitempty"`
 	AutoSync *bool `json:"autoSync,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectAppDto ProjectAppDto
 
 // NewProjectAppDto instantiates a new ProjectAppDto object
 // This constructor will assign default values to properties that have it defined,
@@ -449,7 +452,42 @@ func (o ProjectAppDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoSync) {
 		toSerialize["autoSync"] = o.AutoSync
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectAppDto) UnmarshalJSON(data []byte) (err error) {
+	varProjectAppDto := _ProjectAppDto{}
+
+	err = json.Unmarshal(data, &varProjectAppDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectAppDto(varProjectAppDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "ttl")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "autoSync")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectAppDto struct {

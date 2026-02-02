@@ -26,7 +26,10 @@ type CreateAwsCloudCommand struct {
 	AzCount *int32 `json:"azCount,omitempty"`
 	AwsRegion NullableString `json:"awsRegion,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateAwsCloudCommand CreateAwsCloudCommand
 
 // NewCreateAwsCloudCommand instantiates a new CreateAwsCloudCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -315,7 +318,38 @@ func (o CreateAwsCloudCommand) ToMap() (map[string]interface{}, error) {
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateAwsCloudCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateAwsCloudCommand := _CreateAwsCloudCommand{}
+
+	err = json.Unmarshal(data, &varCreateAwsCloudCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateAwsCloudCommand(varCreateAwsCloudCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "awsSecretAccessKey")
+		delete(additionalProperties, "awsAccessKeyId")
+		delete(additionalProperties, "azCount")
+		delete(additionalProperties, "awsRegion")
+		delete(additionalProperties, "organizationId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateAwsCloudCommand struct {

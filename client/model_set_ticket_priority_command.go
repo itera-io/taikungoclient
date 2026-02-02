@@ -22,7 +22,10 @@ var _ MappedNullable = &SetTicketPriorityCommand{}
 type SetTicketPriorityCommand struct {
 	Id NullableString `json:"id,omitempty"`
 	Priority *TicketPriority `json:"priority,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _SetTicketPriorityCommand SetTicketPriorityCommand
 
 // NewSetTicketPriorityCommand instantiates a new SetTicketPriorityCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o SetTicketPriorityCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Priority) {
 		toSerialize["priority"] = o.Priority
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *SetTicketPriorityCommand) UnmarshalJSON(data []byte) (err error) {
+	varSetTicketPriorityCommand := _SetTicketPriorityCommand{}
+
+	err = json.Unmarshal(data, &varSetTicketPriorityCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SetTicketPriorityCommand(varSetTicketPriorityCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "priority")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableSetTicketPriorityCommand struct {

@@ -21,7 +21,10 @@ var _ MappedNullable = &ChangeCardCommand{}
 // ChangeCardCommand struct for ChangeCardCommand
 type ChangeCardCommand struct {
 	PaymentMethodId NullableString `json:"paymentMethodId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ChangeCardCommand ChangeCardCommand
 
 // NewChangeCardCommand instantiates a new ChangeCardCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +98,33 @@ func (o ChangeCardCommand) ToMap() (map[string]interface{}, error) {
 	if o.PaymentMethodId.IsSet() {
 		toSerialize["paymentMethodId"] = o.PaymentMethodId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ChangeCardCommand) UnmarshalJSON(data []byte) (err error) {
+	varChangeCardCommand := _ChangeCardCommand{}
+
+	err = json.Unmarshal(data, &varChangeCardCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ChangeCardCommand(varChangeCardCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "paymentMethodId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableChangeCardCommand struct {

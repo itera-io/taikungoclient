@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -27,6 +26,7 @@ type AiCredentialsForOrganizationEntity struct {
 	Name NullableString `json:"name"`
 	Type AiType `json:"type"`
 	IsDefault bool `json:"isDefault"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AiCredentialsForOrganizationEntity AiCredentialsForOrganizationEntity
@@ -192,6 +192,11 @@ func (o AiCredentialsForOrganizationEntity) ToMap() (map[string]interface{}, err
 	toSerialize["name"] = o.Name.Get()
 	toSerialize["type"] = o.Type
 	toSerialize["isDefault"] = o.IsDefault
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -223,15 +228,24 @@ func (o *AiCredentialsForOrganizationEntity) UnmarshalJSON(data []byte) (err err
 
 	varAiCredentialsForOrganizationEntity := _AiCredentialsForOrganizationEntity{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAiCredentialsForOrganizationEntity)
+	err = json.Unmarshal(data, &varAiCredentialsForOrganizationEntity)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AiCredentialsForOrganizationEntity(varAiCredentialsForOrganizationEntity)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "isDefault")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

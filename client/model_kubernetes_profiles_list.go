@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -24,6 +23,7 @@ var _ MappedNullable = &KubernetesProfilesList{}
 type KubernetesProfilesList struct {
 	Data []KubernetesProfilesListDto `json:"data"`
 	TotalCount int32 `json:"totalCount"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _KubernetesProfilesList KubernetesProfilesList
@@ -111,6 +111,11 @@ func (o KubernetesProfilesList) ToMap() (map[string]interface{}, error) {
 		toSerialize["data"] = o.Data
 	}
 	toSerialize["totalCount"] = o.TotalCount
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -139,15 +144,21 @@ func (o *KubernetesProfilesList) UnmarshalJSON(data []byte) (err error) {
 
 	varKubernetesProfilesList := _KubernetesProfilesList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKubernetesProfilesList)
+	err = json.Unmarshal(data, &varKubernetesProfilesList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubernetesProfilesList(varKubernetesProfilesList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -21,7 +21,10 @@ var _ MappedNullable = &CheckTrustedRegistryCommand{}
 // CheckTrustedRegistryCommand struct for CheckTrustedRegistryCommand
 type CheckTrustedRegistryCommand struct {
 	Registry NullableString `json:"registry,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CheckTrustedRegistryCommand CheckTrustedRegistryCommand
 
 // NewCheckTrustedRegistryCommand instantiates a new CheckTrustedRegistryCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +98,33 @@ func (o CheckTrustedRegistryCommand) ToMap() (map[string]interface{}, error) {
 	if o.Registry.IsSet() {
 		toSerialize["registry"] = o.Registry.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CheckTrustedRegistryCommand) UnmarshalJSON(data []byte) (err error) {
+	varCheckTrustedRegistryCommand := _CheckTrustedRegistryCommand{}
+
+	err = json.Unmarshal(data, &varCheckTrustedRegistryCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CheckTrustedRegistryCommand(varCheckTrustedRegistryCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "registry")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCheckTrustedRegistryCommand struct {

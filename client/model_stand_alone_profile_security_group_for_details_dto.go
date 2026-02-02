@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -29,6 +28,7 @@ type StandAloneProfileSecurityGroupForDetailsDto struct {
 	PortMaxRange int32 `json:"portMaxRange"`
 	RemoteIpPrefix NullableString `json:"remoteIpPrefix"`
 	IsRdpPortEnabled bool `json:"isRdpPortEnabled"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StandAloneProfileSecurityGroupForDetailsDto StandAloneProfileSecurityGroupForDetailsDto
@@ -248,6 +248,11 @@ func (o StandAloneProfileSecurityGroupForDetailsDto) ToMap() (map[string]interfa
 	toSerialize["portMaxRange"] = o.PortMaxRange
 	toSerialize["remoteIpPrefix"] = o.RemoteIpPrefix.Get()
 	toSerialize["isRdpPortEnabled"] = o.IsRdpPortEnabled
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -281,15 +286,26 @@ func (o *StandAloneProfileSecurityGroupForDetailsDto) UnmarshalJSON(data []byte)
 
 	varStandAloneProfileSecurityGroupForDetailsDto := _StandAloneProfileSecurityGroupForDetailsDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStandAloneProfileSecurityGroupForDetailsDto)
+	err = json.Unmarshal(data, &varStandAloneProfileSecurityGroupForDetailsDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StandAloneProfileSecurityGroupForDetailsDto(varStandAloneProfileSecurityGroupForDetailsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "protocol")
+		delete(additionalProperties, "portMinRange")
+		delete(additionalProperties, "portMaxRange")
+		delete(additionalProperties, "remoteIpPrefix")
+		delete(additionalProperties, "isRdpPortEnabled")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

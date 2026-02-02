@@ -23,7 +23,10 @@ type VerifySlackCredentialsCommand struct {
 	Name NullableString `json:"name,omitempty"`
 	Url NullableString `json:"url,omitempty"`
 	Channel NullableString `json:"channel,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _VerifySlackCredentialsCommand VerifySlackCredentialsCommand
 
 // NewVerifySlackCredentialsCommand instantiates a new VerifySlackCredentialsCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -187,7 +190,35 @@ func (o VerifySlackCredentialsCommand) ToMap() (map[string]interface{}, error) {
 	if o.Channel.IsSet() {
 		toSerialize["channel"] = o.Channel.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *VerifySlackCredentialsCommand) UnmarshalJSON(data []byte) (err error) {
+	varVerifySlackCredentialsCommand := _VerifySlackCredentialsCommand{}
+
+	err = json.Unmarshal(data, &varVerifySlackCredentialsCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VerifySlackCredentialsCommand(varVerifySlackCredentialsCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "channel")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableVerifySlackCredentialsCommand struct {

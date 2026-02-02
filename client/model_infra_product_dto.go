@@ -26,7 +26,10 @@ type InfraProductDto struct {
 	PriceId NullableString `json:"priceId,omitempty"`
 	YearlyPriceId NullableString `json:"yearlyPriceId,omitempty"`
 	ProductId NullableString `json:"productId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _InfraProductDto InfraProductDto
 
 // NewInfraProductDto instantiates a new InfraProductDto object
 // This constructor will assign default values to properties that have it defined,
@@ -305,7 +308,38 @@ func (o InfraProductDto) ToMap() (map[string]interface{}, error) {
 	if o.ProductId.IsSet() {
 		toSerialize["productId"] = o.ProductId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *InfraProductDto) UnmarshalJSON(data []byte) (err error) {
+	varInfraProductDto := _InfraProductDto{}
+
+	err = json.Unmarshal(data, &varInfraProductDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InfraProductDto(varInfraProductDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "price")
+		delete(additionalProperties, "priceId")
+		delete(additionalProperties, "yearlyPriceId")
+		delete(additionalProperties, "productId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableInfraProductDto struct {

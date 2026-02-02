@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -27,6 +26,7 @@ type CreateGroupCommand struct {
 	AccountId NullableInt32 `json:"accountId,omitempty"`
 	Organizations []CreateGroupOrganizationDto `json:"organizations,omitempty"`
 	Users []CreateGroupUserDto `json:"users,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CreateGroupCommand CreateGroupCommand
@@ -246,6 +246,11 @@ func (o CreateGroupCommand) ToMap() (map[string]interface{}, error) {
 	if o.Users != nil {
 		toSerialize["users"] = o.Users
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -273,15 +278,24 @@ func (o *CreateGroupCommand) UnmarshalJSON(data []byte) (err error) {
 
 	varCreateGroupCommand := _CreateGroupCommand{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCreateGroupCommand)
+	err = json.Unmarshal(data, &varCreateGroupCommand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CreateGroupCommand(varCreateGroupCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "claimValue")
+		delete(additionalProperties, "accountId")
+		delete(additionalProperties, "organizations")
+		delete(additionalProperties, "users")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

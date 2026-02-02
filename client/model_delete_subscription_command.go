@@ -21,7 +21,10 @@ var _ MappedNullable = &DeleteSubscriptionCommand{}
 // DeleteSubscriptionCommand struct for DeleteSubscriptionCommand
 type DeleteSubscriptionCommand struct {
 	Id *int32 `json:"id,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeleteSubscriptionCommand DeleteSubscriptionCommand
 
 // NewDeleteSubscriptionCommand instantiates a new DeleteSubscriptionCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o DeleteSubscriptionCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeleteSubscriptionCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeleteSubscriptionCommand := _DeleteSubscriptionCommand{}
+
+	err = json.Unmarshal(data, &varDeleteSubscriptionCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeleteSubscriptionCommand(varDeleteSubscriptionCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeleteSubscriptionCommand struct {

@@ -21,7 +21,10 @@ var _ MappedNullable = &OrganizationNameCheckerCommand{}
 // OrganizationNameCheckerCommand struct for OrganizationNameCheckerCommand
 type OrganizationNameCheckerCommand struct {
 	Name NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OrganizationNameCheckerCommand OrganizationNameCheckerCommand
 
 // NewOrganizationNameCheckerCommand instantiates a new OrganizationNameCheckerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +98,33 @@ func (o OrganizationNameCheckerCommand) ToMap() (map[string]interface{}, error) 
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OrganizationNameCheckerCommand) UnmarshalJSON(data []byte) (err error) {
+	varOrganizationNameCheckerCommand := _OrganizationNameCheckerCommand{}
+
+	err = json.Unmarshal(data, &varOrganizationNameCheckerCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationNameCheckerCommand(varOrganizationNameCheckerCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOrganizationNameCheckerCommand struct {

@@ -24,7 +24,10 @@ type BridgeListCommand struct {
 	TokenId NullableString `json:"tokenId,omitempty"`
 	TokenSecret NullableString `json:"tokenSecret,omitempty"`
 	Hypervisor NullableString `json:"hypervisor,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _BridgeListCommand BridgeListCommand
 
 // NewBridgeListCommand instantiates a new BridgeListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -233,7 +236,36 @@ func (o BridgeListCommand) ToMap() (map[string]interface{}, error) {
 	if o.Hypervisor.IsSet() {
 		toSerialize["hypervisor"] = o.Hypervisor.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *BridgeListCommand) UnmarshalJSON(data []byte) (err error) {
+	varBridgeListCommand := _BridgeListCommand{}
+
+	err = json.Unmarshal(data, &varBridgeListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BridgeListCommand(varBridgeListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "tokenId")
+		delete(additionalProperties, "tokenSecret")
+		delete(additionalProperties, "hypervisor")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableBridgeListCommand struct {

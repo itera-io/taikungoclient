@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -27,6 +26,7 @@ type StsActionCommand struct {
 	Namespace NullableString `json:"namespace"`
 	ScaleReplicaCount NullableInt32 `json:"scaleReplicaCount,omitempty"`
 	Action EStsAction `json:"action"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StsActionCommand StsActionCommand
@@ -211,6 +211,11 @@ func (o StsActionCommand) ToMap() (map[string]interface{}, error) {
 		toSerialize["scaleReplicaCount"] = o.ScaleReplicaCount.Get()
 	}
 	toSerialize["action"] = o.Action
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -241,15 +246,24 @@ func (o *StsActionCommand) UnmarshalJSON(data []byte) (err error) {
 
 	varStsActionCommand := _StsActionCommand{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStsActionCommand)
+	err = json.Unmarshal(data, &varStsActionCommand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StsActionCommand(varStsActionCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "scaleReplicaCount")
+		delete(additionalProperties, "action")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

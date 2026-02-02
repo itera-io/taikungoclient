@@ -28,7 +28,10 @@ type UpdateUserCommand struct {
 	ForceToResetPassword *bool `json:"forceToResetPassword,omitempty"`
 	Disable *bool `json:"disable,omitempty"`
 	IsApprovedByPartner *bool `json:"isApprovedByPartner,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateUserCommand UpdateUserCommand
 
 // NewUpdateUserCommand instantiates a new UpdateUserCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -377,7 +380,40 @@ func (o UpdateUserCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsApprovedByPartner) {
 		toSerialize["isApprovedByPartner"] = o.IsApprovedByPartner
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateUserCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateUserCommand := _UpdateUserCommand{}
+
+	err = json.Unmarshal(data, &varUpdateUserCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateUserCommand(varUpdateUserCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "displayName")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "role")
+		delete(additionalProperties, "forceToResetPassword")
+		delete(additionalProperties, "disable")
+		delete(additionalProperties, "isApprovedByPartner")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateUserCommand struct {

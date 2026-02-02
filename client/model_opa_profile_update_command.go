@@ -34,7 +34,10 @@ type OpaProfileUpdateCommand struct {
 	ForbidSpecificTags []string `json:"forbidSpecificTags,omitempty"`
 	IngressWhitelist []string `json:"ingressWhitelist,omitempty"`
 	WhitelistMasterTaintNamespaces []string `json:"whitelistMasterTaintNamespaces,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OpaProfileUpdateCommand OpaProfileUpdateCommand
 
 // NewOpaProfileUpdateCommand instantiates a new OpaProfileUpdateCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -647,7 +650,46 @@ func (o OpaProfileUpdateCommand) ToMap() (map[string]interface{}, error) {
 	if o.WhitelistMasterTaintNamespaces != nil {
 		toSerialize["whitelistMasterTaintNamespaces"] = o.WhitelistMasterTaintNamespaces
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OpaProfileUpdateCommand) UnmarshalJSON(data []byte) (err error) {
+	varOpaProfileUpdateCommand := _OpaProfileUpdateCommand{}
+
+	err = json.Unmarshal(data, &varOpaProfileUpdateCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OpaProfileUpdateCommand(varOpaProfileUpdateCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "forbidNodePort")
+		delete(additionalProperties, "forbidHttpIngress")
+		delete(additionalProperties, "requireProbe")
+		delete(additionalProperties, "uniqueIngresses")
+		delete(additionalProperties, "uniqueServiceSelector")
+		delete(additionalProperties, "isNodeNameForbiddenInVC")
+		delete(additionalProperties, "isMasterTaintEnforced")
+		delete(additionalProperties, "forcePodResource")
+		delete(additionalProperties, "allowedRepo")
+		delete(additionalProperties, "forbidSpecificTags")
+		delete(additionalProperties, "ingressWhitelist")
+		delete(additionalProperties, "whitelistMasterTaintNamespaces")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOpaProfileUpdateCommand struct {

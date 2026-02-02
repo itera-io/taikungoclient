@@ -23,7 +23,10 @@ type Subnet struct {
 	Id NullableString `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	Cidr NullableString `json:"cidr,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Subnet Subnet
 
 // NewSubnet instantiates a new Subnet object
 // This constructor will assign default values to properties that have it defined,
@@ -187,7 +190,35 @@ func (o Subnet) ToMap() (map[string]interface{}, error) {
 	if o.Cidr.IsSet() {
 		toSerialize["cidr"] = o.Cidr.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Subnet) UnmarshalJSON(data []byte) (err error) {
+	varSubnet := _Subnet{}
+
+	err = json.Unmarshal(data, &varSubnet)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Subnet(varSubnet)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "cidr")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableSubnet struct {

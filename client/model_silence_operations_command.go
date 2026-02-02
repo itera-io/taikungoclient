@@ -23,7 +23,10 @@ type SilenceOperationsCommand struct {
 	Id *int32 `json:"id,omitempty"`
 	Mode NullableString `json:"mode,omitempty"`
 	Reason NullableString `json:"reason,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _SilenceOperationsCommand SilenceOperationsCommand
 
 // NewSilenceOperationsCommand instantiates a new SilenceOperationsCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -177,7 +180,35 @@ func (o SilenceOperationsCommand) ToMap() (map[string]interface{}, error) {
 	if o.Reason.IsSet() {
 		toSerialize["reason"] = o.Reason.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *SilenceOperationsCommand) UnmarshalJSON(data []byte) (err error) {
+	varSilenceOperationsCommand := _SilenceOperationsCommand{}
+
+	err = json.Unmarshal(data, &varSilenceOperationsCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SilenceOperationsCommand(varSilenceOperationsCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "reason")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableSilenceOperationsCommand struct {

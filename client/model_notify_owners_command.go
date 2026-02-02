@@ -21,7 +21,10 @@ var _ MappedNullable = &NotifyOwnersCommand{}
 // NotifyOwnersCommand struct for NotifyOwnersCommand
 type NotifyOwnersCommand struct {
 	OrganizationId *int32 `json:"organizationId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _NotifyOwnersCommand NotifyOwnersCommand
 
 // NewNotifyOwnersCommand instantiates a new NotifyOwnersCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o NotifyOwnersCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *NotifyOwnersCommand) UnmarshalJSON(data []byte) (err error) {
+	varNotifyOwnersCommand := _NotifyOwnersCommand{}
+
+	err = json.Unmarshal(data, &varNotifyOwnersCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NotifyOwnersCommand(varNotifyOwnersCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "organizationId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableNotifyOwnersCommand struct {

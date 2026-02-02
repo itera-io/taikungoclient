@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -36,6 +35,7 @@ type GenericKubernetesListDto struct {
 	OrganizationId int32 `json:"organizationId"`
 	OrganizationName NullableString `json:"organizationName"`
 	ContinentName NullableString `json:"continentName"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GenericKubernetesListDto GenericKubernetesListDto
@@ -449,6 +449,11 @@ func (o GenericKubernetesListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["organizationId"] = o.OrganizationId
 	toSerialize["organizationName"] = o.OrganizationName.Get()
 	toSerialize["continentName"] = o.ContinentName.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -489,15 +494,33 @@ func (o *GenericKubernetesListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varGenericKubernetesListDto := _GenericKubernetesListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGenericKubernetesListDto)
+	err = json.Unmarshal(data, &varGenericKubernetesListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GenericKubernetesListDto(varGenericKubernetesListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "projectCount")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "mainProject")
+		delete(additionalProperties, "associatedVClusters")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "continentName")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

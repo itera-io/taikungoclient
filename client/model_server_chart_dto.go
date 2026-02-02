@@ -53,7 +53,10 @@ type ServerChartDto struct {
 	TotalZadaraCount *int32 `json:"totalZadaraCount,omitempty"`
 	TotalGenericK8SCount *int32 `json:"totalGenericK8SCount,omitempty"`
 	UsedResources []UserResourceChartDto `json:"usedResources,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ServerChartDto ServerChartDto
 
 // NewServerChartDto instantiates a new ServerChartDto object
 // This constructor will assign default values to properties that have it defined,
@@ -1253,7 +1256,65 @@ func (o ServerChartDto) ToMap() (map[string]interface{}, error) {
 	if o.UsedResources != nil {
 		toSerialize["usedResources"] = o.UsedResources
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ServerChartDto) UnmarshalJSON(data []byte) (err error) {
+	varServerChartDto := _ServerChartDto{}
+
+	err = json.Unmarshal(data, &varServerChartDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ServerChartDto(varServerChartDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "aws")
+		delete(additionalProperties, "azure")
+		delete(additionalProperties, "openstack")
+		delete(additionalProperties, "google")
+		delete(additionalProperties, "proxmox")
+		delete(additionalProperties, "vsphere")
+		delete(additionalProperties, "zadara")
+		delete(additionalProperties, "openshift")
+		delete(additionalProperties, "genericK8S")
+		delete(additionalProperties, "failed")
+		delete(additionalProperties, "succeeded")
+		delete(additionalProperties, "waiting")
+		delete(additionalProperties, "updating")
+		delete(additionalProperties, "deleting")
+		delete(additionalProperties, "purging")
+		delete(additionalProperties, "totalCount")
+		delete(additionalProperties, "totalCpu")
+		delete(additionalProperties, "totalRam")
+		delete(additionalProperties, "totalDiskSize")
+		delete(additionalProperties, "totalFailedCount")
+		delete(additionalProperties, "totalSucceededCount")
+		delete(additionalProperties, "totalUpdatingCount")
+		delete(additionalProperties, "totalPendingCount")
+		delete(additionalProperties, "totalAwsCount")
+		delete(additionalProperties, "totalAzureCount")
+		delete(additionalProperties, "totalOpenstackCount")
+		delete(additionalProperties, "totalGoogleCount")
+		delete(additionalProperties, "totalOpenshiftCount")
+		delete(additionalProperties, "totalProxmoxCount")
+		delete(additionalProperties, "totalVsphereCount")
+		delete(additionalProperties, "totalZadaraCount")
+		delete(additionalProperties, "totalGenericK8SCount")
+		delete(additionalProperties, "usedResources")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableServerChartDto struct {

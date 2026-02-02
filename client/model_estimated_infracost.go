@@ -35,7 +35,10 @@ type EstimatedInfracost struct {
 	DiffTotalMonthlyUsageCost NullableString `json:"diffTotalMonthlyUsageCost,omitempty"`
 	TimeGenerated NullableString `json:"timeGenerated,omitempty"`
 	Summary *Summary `json:"summary,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EstimatedInfracost EstimatedInfracost
 
 // NewEstimatedInfracost instantiates a new EstimatedInfracost object
 // This constructor will assign default values to properties that have it defined,
@@ -710,7 +713,47 @@ func (o EstimatedInfracost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Summary) {
 		toSerialize["summary"] = o.Summary
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EstimatedInfracost) UnmarshalJSON(data []byte) (err error) {
+	varEstimatedInfracost := _EstimatedInfracost{}
+
+	err = json.Unmarshal(data, &varEstimatedInfracost)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EstimatedInfracost(varEstimatedInfracost)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "metadata")
+		delete(additionalProperties, "currency")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "totalHourlyCost")
+		delete(additionalProperties, "totalMonthlyCost")
+		delete(additionalProperties, "totalMonthlyUsageCost")
+		delete(additionalProperties, "pastTotalHourlyCost")
+		delete(additionalProperties, "pastTotalMonthlyCost")
+		delete(additionalProperties, "pastTotalMonthlyUsageCost")
+		delete(additionalProperties, "diffTotalHourlyCost")
+		delete(additionalProperties, "diffTotalMonthlyCost")
+		delete(additionalProperties, "diffTotalMonthlyUsageCost")
+		delete(additionalProperties, "timeGenerated")
+		delete(additionalProperties, "summary")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEstimatedInfracost struct {

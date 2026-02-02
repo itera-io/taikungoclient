@@ -22,7 +22,10 @@ var _ MappedNullable = &ProjectMaintenanceModeCommand{}
 type ProjectMaintenanceModeCommand struct {
 	Id *int32 `json:"id,omitempty"`
 	Mode NullableString `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectMaintenanceModeCommand ProjectMaintenanceModeCommand
 
 // NewProjectMaintenanceModeCommand instantiates a new ProjectMaintenanceModeCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o ProjectMaintenanceModeCommand) ToMap() (map[string]interface{}, error) {
 	if o.Mode.IsSet() {
 		toSerialize["mode"] = o.Mode.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectMaintenanceModeCommand) UnmarshalJSON(data []byte) (err error) {
+	varProjectMaintenanceModeCommand := _ProjectMaintenanceModeCommand{}
+
+	err = json.Unmarshal(data, &varProjectMaintenanceModeCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectMaintenanceModeCommand(varProjectMaintenanceModeCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectMaintenanceModeCommand struct {

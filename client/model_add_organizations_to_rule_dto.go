@@ -22,7 +22,10 @@ var _ MappedNullable = &AddOrganizationsToRuleDto{}
 type AddOrganizationsToRuleDto struct {
 	OrganizationId *int32 `json:"organizationId,omitempty"`
 	RuleDiscountRate NullableFloat64 `json:"ruleDiscountRate,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AddOrganizationsToRuleDto AddOrganizationsToRuleDto
 
 // NewAddOrganizationsToRuleDto instantiates a new AddOrganizationsToRuleDto object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o AddOrganizationsToRuleDto) ToMap() (map[string]interface{}, error) {
 	if o.RuleDiscountRate.IsSet() {
 		toSerialize["ruleDiscountRate"] = o.RuleDiscountRate.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AddOrganizationsToRuleDto) UnmarshalJSON(data []byte) (err error) {
+	varAddOrganizationsToRuleDto := _AddOrganizationsToRuleDto{}
+
+	err = json.Unmarshal(data, &varAddOrganizationsToRuleDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AddOrganizationsToRuleDto(varAddOrganizationsToRuleDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "ruleDiscountRate")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAddOrganizationsToRuleDto struct {

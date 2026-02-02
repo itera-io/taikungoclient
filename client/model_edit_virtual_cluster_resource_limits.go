@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -27,6 +26,7 @@ type EditVirtualClusterResourceLimits struct {
 	MaxClusterLimits float64 `json:"maxClusterLimits"`
 	DefaultContainerLimit float64 `json:"defaultContainerLimit"`
 	DefaultContainerRequest float64 `json:"defaultContainerRequest"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EditVirtualClusterResourceLimits EditVirtualClusterResourceLimits
@@ -188,6 +188,11 @@ func (o EditVirtualClusterResourceLimits) ToMap() (map[string]interface{}, error
 	toSerialize["maxClusterLimits"] = o.MaxClusterLimits
 	toSerialize["defaultContainerLimit"] = o.DefaultContainerLimit
 	toSerialize["defaultContainerRequest"] = o.DefaultContainerRequest
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -219,15 +224,24 @@ func (o *EditVirtualClusterResourceLimits) UnmarshalJSON(data []byte) (err error
 
 	varEditVirtualClusterResourceLimits := _EditVirtualClusterResourceLimits{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEditVirtualClusterResourceLimits)
+	err = json.Unmarshal(data, &varEditVirtualClusterResourceLimits)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EditVirtualClusterResourceLimits(varEditVirtualClusterResourceLimits)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "resourceUnit")
+		delete(additionalProperties, "maxClusterRequests")
+		delete(additionalProperties, "maxClusterLimits")
+		delete(additionalProperties, "defaultContainerLimit")
+		delete(additionalProperties, "defaultContainerRequest")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

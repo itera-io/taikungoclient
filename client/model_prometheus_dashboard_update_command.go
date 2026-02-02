@@ -25,7 +25,10 @@ type PrometheusDashboardUpdateCommand struct {
 	Expression NullableString `json:"expression,omitempty"`
 	Description NullableString `json:"description,omitempty"`
 	CategoryName NullableString `json:"categoryName,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PrometheusDashboardUpdateCommand PrometheusDashboardUpdateCommand
 
 // NewPrometheusDashboardUpdateCommand instantiates a new PrometheusDashboardUpdateCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -269,7 +272,37 @@ func (o PrometheusDashboardUpdateCommand) ToMap() (map[string]interface{}, error
 	if o.CategoryName.IsSet() {
 		toSerialize["categoryName"] = o.CategoryName.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PrometheusDashboardUpdateCommand) UnmarshalJSON(data []byte) (err error) {
+	varPrometheusDashboardUpdateCommand := _PrometheusDashboardUpdateCommand{}
+
+	err = json.Unmarshal(data, &varPrometheusDashboardUpdateCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PrometheusDashboardUpdateCommand(varPrometheusDashboardUpdateCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "expression")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "categoryName")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePrometheusDashboardUpdateCommand struct {

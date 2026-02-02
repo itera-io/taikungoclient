@@ -39,7 +39,10 @@ type CreateOpenstackCloudCommand struct {
 	ManilaStorageType NullableString `json:"manilaStorageType,omitempty"`
 	IsAdmin *bool `json:"isAdmin,omitempty"`
 	SkipTlsFlag *bool `json:"skipTlsFlag,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateOpenstackCloudCommand CreateOpenstackCloudCommand
 
 // NewCreateOpenstackCloudCommand instantiates a new CreateOpenstackCloudCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -873,7 +876,51 @@ func (o CreateOpenstackCloudCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SkipTlsFlag) {
 		toSerialize["skipTlsFlag"] = o.SkipTlsFlag
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateOpenstackCloudCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateOpenstackCloudCommand := _CreateOpenstackCloudCommand{}
+
+	err = json.Unmarshal(data, &varCreateOpenstackCloudCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateOpenstackCloudCommand(varCreateOpenstackCloudCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "openStackUser")
+		delete(additionalProperties, "openStackPassword")
+		delete(additionalProperties, "openStackUrl")
+		delete(additionalProperties, "openStackProject")
+		delete(additionalProperties, "openStackPublicNetwork")
+		delete(additionalProperties, "openStackAvailabilityZone")
+		delete(additionalProperties, "openStackDomain")
+		delete(additionalProperties, "openStackRegion")
+		delete(additionalProperties, "openStackContinent")
+		delete(additionalProperties, "openStackVolumeType")
+		delete(additionalProperties, "openStackImportNetwork")
+		delete(additionalProperties, "openStackInternalSubnetId")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "applicationCredEnabled")
+		delete(additionalProperties, "manilaEnabled")
+		delete(additionalProperties, "manilaStorageType")
+		delete(additionalProperties, "isAdmin")
+		delete(additionalProperties, "skipTlsFlag")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateOpenstackCloudCommand struct {

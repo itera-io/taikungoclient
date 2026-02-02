@@ -22,7 +22,10 @@ var _ MappedNullable = &InfraBillingListCommand{}
 type InfraBillingListCommand struct {
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	Filter *DateFilter `json:"filter,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _InfraBillingListCommand InfraBillingListCommand
 
 // NewInfraBillingListCommand instantiates a new InfraBillingListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o InfraBillingListCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Filter) {
 		toSerialize["filter"] = o.Filter
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *InfraBillingListCommand) UnmarshalJSON(data []byte) (err error) {
+	varInfraBillingListCommand := _InfraBillingListCommand{}
+
+	err = json.Unmarshal(data, &varInfraBillingListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InfraBillingListCommand(varInfraBillingListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "filter")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableInfraBillingListCommand struct {

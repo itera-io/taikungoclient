@@ -25,7 +25,10 @@ type CatalogAppParamsDto struct {
 	IsEditableWhenInstalling *bool `json:"isEditableWhenInstalling,omitempty"`
 	IsEditableAfterInstallation *bool `json:"isEditableAfterInstallation,omitempty"`
 	IsMandatory *bool `json:"isMandatory,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CatalogAppParamsDto CatalogAppParamsDto
 
 // NewCatalogAppParamsDto instantiates a new CatalogAppParamsDto object
 // This constructor will assign default values to properties that have it defined,
@@ -249,7 +252,37 @@ func (o CatalogAppParamsDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsMandatory) {
 		toSerialize["isMandatory"] = o.IsMandatory
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CatalogAppParamsDto) UnmarshalJSON(data []byte) (err error) {
+	varCatalogAppParamsDto := _CatalogAppParamsDto{}
+
+	err = json.Unmarshal(data, &varCatalogAppParamsDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CatalogAppParamsDto(varCatalogAppParamsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "value")
+		delete(additionalProperties, "isEditableWhenInstalling")
+		delete(additionalProperties, "isEditableAfterInstallation")
+		delete(additionalProperties, "isMandatory")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCatalogAppParamsDto struct {

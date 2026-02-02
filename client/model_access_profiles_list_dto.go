@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -37,6 +36,7 @@ type AccessProfilesListDto struct {
 	LastModified NullableString `json:"lastModified"`
 	LastModifiedBy NullableString `json:"lastModifiedBy"`
 	CreatedAt string `json:"createdAt"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AccessProfilesListDto AccessProfilesListDto
@@ -468,6 +468,11 @@ func (o AccessProfilesListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["lastModified"] = o.LastModified.Get()
 	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
 	toSerialize["createdAt"] = o.CreatedAt
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -509,15 +514,34 @@ func (o *AccessProfilesListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varAccessProfilesListDto := _AccessProfilesListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAccessProfilesListDto)
+	err = json.Unmarshal(data, &varAccessProfilesListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AccessProfilesListDto(varAccessProfilesListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "httpProxy")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "dnsServers")
+		delete(additionalProperties, "trustedRegistries")
+		delete(additionalProperties, "ntpServers")
+		delete(additionalProperties, "allowedHosts")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "createdAt")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

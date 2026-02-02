@@ -22,7 +22,10 @@ var _ MappedNullable = &AddPrometheusRulesToOrganizationDto{}
 type AddPrometheusRulesToOrganizationDto struct {
 	Id *int32 `json:"id,omitempty"`
 	DiscountRate NullableFloat64 `json:"discountRate,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AddPrometheusRulesToOrganizationDto AddPrometheusRulesToOrganizationDto
 
 // NewAddPrometheusRulesToOrganizationDto instantiates a new AddPrometheusRulesToOrganizationDto object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o AddPrometheusRulesToOrganizationDto) ToMap() (map[string]interface{}, er
 	if o.DiscountRate.IsSet() {
 		toSerialize["discountRate"] = o.DiscountRate.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AddPrometheusRulesToOrganizationDto) UnmarshalJSON(data []byte) (err error) {
+	varAddPrometheusRulesToOrganizationDto := _AddPrometheusRulesToOrganizationDto{}
+
+	err = json.Unmarshal(data, &varAddPrometheusRulesToOrganizationDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AddPrometheusRulesToOrganizationDto(varAddPrometheusRulesToOrganizationDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "discountRate")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAddPrometheusRulesToOrganizationDto struct {

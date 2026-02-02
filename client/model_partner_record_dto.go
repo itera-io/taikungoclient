@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -29,6 +28,7 @@ type PartnerRecordDto struct {
 	AllowRegistration bool `json:"allowRegistration"`
 	PartnerColorSettings *PartnerColorSettingsDto `json:"partnerColorSettings,omitempty"`
 	PartnerImageSettings *PartnerImageSettingsDto `json:"partnerImageSettings,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PartnerRecordDto PartnerRecordDto
@@ -264,6 +264,11 @@ func (o PartnerRecordDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PartnerImageSettings) {
 		toSerialize["partnerImageSettings"] = o.PartnerImageSettings
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -295,15 +300,26 @@ func (o *PartnerRecordDto) UnmarshalJSON(data []byte) (err error) {
 
 	varPartnerRecordDto := _PartnerRecordDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPartnerRecordDto)
+	err = json.Unmarshal(data, &varPartnerRecordDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PartnerRecordDto(varPartnerRecordDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "logoUrl")
+		delete(additionalProperties, "backgroundImageUrl")
+		delete(additionalProperties, "paymentEnabled")
+		delete(additionalProperties, "allowRegistration")
+		delete(additionalProperties, "partnerColorSettings")
+		delete(additionalProperties, "partnerImageSettings")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

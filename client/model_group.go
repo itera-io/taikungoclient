@@ -27,7 +27,10 @@ type Group struct {
 	Interval *int64 `json:"interval,omitempty"`
 	EvaluationTime *float64 `json:"evaluationTime,omitempty"`
 	LastEvaluation *time.Time `json:"lastEvaluation,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Group Group
 
 // NewGroup instantiates a new Group object
 // This constructor will assign default values to properties that have it defined,
@@ -287,7 +290,38 @@ func (o Group) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastEvaluation) {
 		toSerialize["lastEvaluation"] = o.LastEvaluation
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Group) UnmarshalJSON(data []byte) (err error) {
+	varGroup := _Group{}
+
+	err = json.Unmarshal(data, &varGroup)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Group(varGroup)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "file")
+		delete(additionalProperties, "rules")
+		delete(additionalProperties, "interval")
+		delete(additionalProperties, "evaluationTime")
+		delete(additionalProperties, "lastEvaluation")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableGroup struct {

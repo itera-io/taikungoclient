@@ -21,7 +21,10 @@ var _ MappedNullable = &ToggleNotificationModeCommand{}
 // ToggleNotificationModeCommand struct for ToggleNotificationModeCommand
 type ToggleNotificationModeCommand struct {
 	Mode NullableString `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ToggleNotificationModeCommand ToggleNotificationModeCommand
 
 // NewToggleNotificationModeCommand instantiates a new ToggleNotificationModeCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +98,33 @@ func (o ToggleNotificationModeCommand) ToMap() (map[string]interface{}, error) {
 	if o.Mode.IsSet() {
 		toSerialize["mode"] = o.Mode.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ToggleNotificationModeCommand) UnmarshalJSON(data []byte) (err error) {
+	varToggleNotificationModeCommand := _ToggleNotificationModeCommand{}
+
+	err = json.Unmarshal(data, &varToggleNotificationModeCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ToggleNotificationModeCommand(varToggleNotificationModeCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableToggleNotificationModeCommand struct {

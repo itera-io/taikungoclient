@@ -24,7 +24,10 @@ type UpdateVsphereCommand struct {
 	Name NullableString `json:"name,omitempty"`
 	Username NullableString `json:"username,omitempty"`
 	Password NullableString `json:"password,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateVsphereCommand UpdateVsphereCommand
 
 // NewUpdateVsphereCommand instantiates a new UpdateVsphereCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -223,7 +226,36 @@ func (o UpdateVsphereCommand) ToMap() (map[string]interface{}, error) {
 	if o.Password.IsSet() {
 		toSerialize["password"] = o.Password.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateVsphereCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateVsphereCommand := _UpdateVsphereCommand{}
+
+	err = json.Unmarshal(data, &varUpdateVsphereCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateVsphereCommand(varUpdateVsphereCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateVsphereCommand struct {

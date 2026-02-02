@@ -22,7 +22,10 @@ var _ MappedNullable = &CommonAvailabilityDto{}
 type CommonAvailabilityDto struct {
 	Id *bool `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CommonAvailabilityDto CommonAvailabilityDto
 
 // NewCommonAvailabilityDto instantiates a new CommonAvailabilityDto object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o CommonAvailabilityDto) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CommonAvailabilityDto) UnmarshalJSON(data []byte) (err error) {
+	varCommonAvailabilityDto := _CommonAvailabilityDto{}
+
+	err = json.Unmarshal(data, &varCommonAvailabilityDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CommonAvailabilityDto(varCommonAvailabilityDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCommonAvailabilityDto struct {

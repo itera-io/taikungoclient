@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -24,6 +23,7 @@ var _ MappedNullable = &CreateKubernetesResourceCommand{}
 type CreateKubernetesResourceCommand struct {
 	ProjectId int32 `json:"projectId"`
 	Yaml NullableString `json:"yaml"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CreateKubernetesResourceCommand CreateKubernetesResourceCommand
@@ -109,6 +109,11 @@ func (o CreateKubernetesResourceCommand) ToMap() (map[string]interface{}, error)
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
 	toSerialize["yaml"] = o.Yaml.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -137,15 +142,21 @@ func (o *CreateKubernetesResourceCommand) UnmarshalJSON(data []byte) (err error)
 
 	varCreateKubernetesResourceCommand := _CreateKubernetesResourceCommand{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCreateKubernetesResourceCommand)
+	err = json.Unmarshal(data, &varCreateKubernetesResourceCommand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CreateKubernetesResourceCommand(varCreateKubernetesResourceCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "yaml")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

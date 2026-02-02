@@ -28,7 +28,10 @@ type PvcListDto struct {
 	AccessModes NullableString `json:"accessModes,omitempty"`
 	StorageClass NullableString `json:"storageClass,omitempty"`
 	CreatedAt NullableString `json:"createdAt,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PvcListDto PvcListDto
 
 // NewPvcListDto instantiates a new PvcListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -417,7 +420,40 @@ func (o PvcListDto) ToMap() (map[string]interface{}, error) {
 	if o.CreatedAt.IsSet() {
 		toSerialize["createdAt"] = o.CreatedAt.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PvcListDto) UnmarshalJSON(data []byte) (err error) {
+	varPvcListDto := _PvcListDto{}
+
+	err = json.Unmarshal(data, &varPvcListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PvcListDto(varPvcListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "volume")
+		delete(additionalProperties, "capacity")
+		delete(additionalProperties, "accessModes")
+		delete(additionalProperties, "storageClass")
+		delete(additionalProperties, "createdAt")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePvcListDto struct {

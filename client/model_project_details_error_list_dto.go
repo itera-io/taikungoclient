@@ -23,7 +23,10 @@ type ProjectDetailsErrorListDto struct {
 	Type *ProjectDetailsErrorType `json:"type,omitempty"`
 	Message []string `json:"message,omitempty"`
 	Kind *ProjectType `json:"kind,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectDetailsErrorListDto ProjectDetailsErrorListDto
 
 // NewProjectDetailsErrorListDto instantiates a new ProjectDetailsErrorListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -158,7 +161,35 @@ func (o ProjectDetailsErrorListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Kind) {
 		toSerialize["kind"] = o.Kind
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectDetailsErrorListDto) UnmarshalJSON(data []byte) (err error) {
+	varProjectDetailsErrorListDto := _ProjectDetailsErrorListDto{}
+
+	err = json.Unmarshal(data, &varProjectDetailsErrorListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectDetailsErrorListDto(varProjectDetailsErrorListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "message")
+		delete(additionalProperties, "kind")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectDetailsErrorListDto struct {

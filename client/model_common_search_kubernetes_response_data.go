@@ -26,7 +26,10 @@ type CommonSearchKubernetesResponseData struct {
 	ProjectName NullableString `json:"projectName,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CommonSearchKubernetesResponseData CommonSearchKubernetesResponseData
 
 // NewCommonSearchKubernetesResponseData instantiates a new CommonSearchKubernetesResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -305,7 +308,38 @@ func (o CommonSearchKubernetesResponseData) ToMap() (map[string]interface{}, err
 	if o.OrganizationName.IsSet() {
 		toSerialize["organizationName"] = o.OrganizationName.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CommonSearchKubernetesResponseData) UnmarshalJSON(data []byte) (err error) {
+	varCommonSearchKubernetesResponseData := _CommonSearchKubernetesResponseData{}
+
+	err = json.Unmarshal(data, &varCommonSearchKubernetesResponseData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CommonSearchKubernetesResponseData(varCommonSearchKubernetesResponseData)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "metadataName")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCommonSearchKubernetesResponseData struct {

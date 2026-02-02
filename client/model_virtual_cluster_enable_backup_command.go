@@ -22,7 +22,10 @@ var _ MappedNullable = &VirtualClusterEnableBackupCommand{}
 type VirtualClusterEnableBackupCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	BackupCredentialId *int32 `json:"backupCredentialId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _VirtualClusterEnableBackupCommand VirtualClusterEnableBackupCommand
 
 // NewVirtualClusterEnableBackupCommand instantiates a new VirtualClusterEnableBackupCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -121,7 +124,34 @@ func (o VirtualClusterEnableBackupCommand) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.BackupCredentialId) {
 		toSerialize["backupCredentialId"] = o.BackupCredentialId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *VirtualClusterEnableBackupCommand) UnmarshalJSON(data []byte) (err error) {
+	varVirtualClusterEnableBackupCommand := _VirtualClusterEnableBackupCommand{}
+
+	err = json.Unmarshal(data, &varVirtualClusterEnableBackupCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VirtualClusterEnableBackupCommand(varVirtualClusterEnableBackupCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "backupCredentialId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableVirtualClusterEnableBackupCommand struct {

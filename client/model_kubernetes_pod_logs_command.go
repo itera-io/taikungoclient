@@ -24,7 +24,10 @@ type KubernetesPodLogsCommand struct {
 	Name NullableString `json:"name,omitempty"`
 	Namespace NullableString `json:"namespace,omitempty"`
 	Container NullableString `json:"container,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _KubernetesPodLogsCommand KubernetesPodLogsCommand
 
 // NewKubernetesPodLogsCommand instantiates a new KubernetesPodLogsCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -223,7 +226,36 @@ func (o KubernetesPodLogsCommand) ToMap() (map[string]interface{}, error) {
 	if o.Container.IsSet() {
 		toSerialize["container"] = o.Container.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *KubernetesPodLogsCommand) UnmarshalJSON(data []byte) (err error) {
+	varKubernetesPodLogsCommand := _KubernetesPodLogsCommand{}
+
+	err = json.Unmarshal(data, &varKubernetesPodLogsCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubernetesPodLogsCommand(varKubernetesPodLogsCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "container")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableKubernetesPodLogsCommand struct {

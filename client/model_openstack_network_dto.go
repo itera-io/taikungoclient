@@ -34,7 +34,10 @@ type OpenstackNetworkDto struct {
 	SecurityGroupUsed *int64 `json:"securityGroupUsed,omitempty"`
 	PortUsed *int64 `json:"portUsed,omitempty"`
 	SecurityGroupRuleUsed *int64 `json:"securityGroupRuleUsed,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OpenstackNetworkDto OpenstackNetworkDto
 
 // NewOpenstackNetworkDto instantiates a new OpenstackNetworkDto object
 // This constructor will assign default values to properties that have it defined,
@@ -553,7 +556,46 @@ func (o OpenstackNetworkDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecurityGroupRuleUsed) {
 		toSerialize["securityGroupRuleUsed"] = o.SecurityGroupRuleUsed
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OpenstackNetworkDto) UnmarshalJSON(data []byte) (err error) {
+	varOpenstackNetworkDto := _OpenstackNetworkDto{}
+
+	err = json.Unmarshal(data, &varOpenstackNetworkDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OpenstackNetworkDto(varOpenstackNetworkDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "networkLimit")
+		delete(additionalProperties, "subnetLimit")
+		delete(additionalProperties, "floatingIpLimit")
+		delete(additionalProperties, "routerLimit")
+		delete(additionalProperties, "securityGroupLimit")
+		delete(additionalProperties, "securityGroupRuleLimit")
+		delete(additionalProperties, "portLimit")
+		delete(additionalProperties, "networkUsed")
+		delete(additionalProperties, "subnetUsed")
+		delete(additionalProperties, "floatingIpUsed")
+		delete(additionalProperties, "routerUsed")
+		delete(additionalProperties, "securityGroupUsed")
+		delete(additionalProperties, "portUsed")
+		delete(additionalProperties, "securityGroupRuleUsed")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOpenstackNetworkDto struct {

@@ -26,7 +26,10 @@ type DeploymentListDto struct {
 	CreatedAt NullableString `json:"createdAt,omitempty"`
 	Namespace NullableString `json:"namespace,omitempty"`
 	Images []string `json:"images,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeploymentListDto DeploymentListDto
 
 // NewDeploymentListDto instantiates a new DeploymentListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -316,7 +319,38 @@ func (o DeploymentListDto) ToMap() (map[string]interface{}, error) {
 	if o.Images != nil {
 		toSerialize["images"] = o.Images
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeploymentListDto) UnmarshalJSON(data []byte) (err error) {
+	varDeploymentListDto := _DeploymentListDto{}
+
+	err = json.Unmarshal(data, &varDeploymentListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeploymentListDto(varDeploymentListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "state")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "ready")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "images")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeploymentListDto struct {

@@ -22,7 +22,10 @@ var _ MappedNullable = &DeleteVmDiskCommand{}
 type DeleteVmDiskCommand struct {
 	StandaloneVmId *int32 `json:"standaloneVmId,omitempty"`
 	VmDiskIds []int32 `json:"vmDiskIds,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeleteVmDiskCommand DeleteVmDiskCommand
 
 // NewDeleteVmDiskCommand instantiates a new DeleteVmDiskCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -122,7 +125,34 @@ func (o DeleteVmDiskCommand) ToMap() (map[string]interface{}, error) {
 	if o.VmDiskIds != nil {
 		toSerialize["vmDiskIds"] = o.VmDiskIds
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeleteVmDiskCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeleteVmDiskCommand := _DeleteVmDiskCommand{}
+
+	err = json.Unmarshal(data, &varDeleteVmDiskCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeleteVmDiskCommand(varDeleteVmDiskCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "standaloneVmId")
+		delete(additionalProperties, "vmDiskIds")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeleteVmDiskCommand struct {

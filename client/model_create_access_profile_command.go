@@ -28,7 +28,10 @@ type CreateAccessProfileCommand struct {
 	TrustedRegistries []TrustedRegisteredCreateDto `json:"trustedRegistries,omitempty"`
 	NtpServers []NtpServerCreateDto `json:"ntpServers,omitempty"`
 	AllowedHosts []AllowedHostCreateDto `json:"allowedHosts,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateAccessProfileCommand CreateAccessProfileCommand
 
 // NewCreateAccessProfileCommand instantiates a new CreateAccessProfileCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -372,7 +375,40 @@ func (o CreateAccessProfileCommand) ToMap() (map[string]interface{}, error) {
 	if o.AllowedHosts != nil {
 		toSerialize["allowedHosts"] = o.AllowedHosts
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateAccessProfileCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateAccessProfileCommand := _CreateAccessProfileCommand{}
+
+	err = json.Unmarshal(data, &varCreateAccessProfileCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateAccessProfileCommand(varCreateAccessProfileCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "httpProxy")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "sshUsers")
+		delete(additionalProperties, "dnsServers")
+		delete(additionalProperties, "trustedRegistries")
+		delete(additionalProperties, "ntpServers")
+		delete(additionalProperties, "allowedHosts")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateAccessProfileCommand struct {

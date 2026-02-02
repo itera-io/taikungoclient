@@ -22,7 +22,10 @@ var _ MappedNullable = &ConfigMapSearchList{}
 type ConfigMapSearchList struct {
 	Data []CommonSearchKubernetesResponseData `json:"data,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ConfigMapSearchList ConfigMapSearchList
 
 // NewConfigMapSearchList instantiates a new ConfigMapSearchList object
 // This constructor will assign default values to properties that have it defined,
@@ -122,7 +125,34 @@ func (o ConfigMapSearchList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ConfigMapSearchList) UnmarshalJSON(data []byte) (err error) {
+	varConfigMapSearchList := _ConfigMapSearchList{}
+
+	err = json.Unmarshal(data, &varConfigMapSearchList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConfigMapSearchList(varConfigMapSearchList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableConfigMapSearchList struct {

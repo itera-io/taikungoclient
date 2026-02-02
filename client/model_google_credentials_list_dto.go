@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -40,6 +39,7 @@ type GoogleCredentialsListDto struct {
 	BillingAccountName NullableString `json:"billingAccountName"`
 	CreatedAt NullableString `json:"createdAt"`
 	ContinentName NullableString `json:"continentName"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GoogleCredentialsListDto GoogleCredentialsListDto
@@ -555,6 +555,11 @@ func (o GoogleCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["billingAccountName"] = o.BillingAccountName.Get()
 	toSerialize["createdAt"] = o.CreatedAt.Get()
 	toSerialize["continentName"] = o.ContinentName.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -599,15 +604,37 @@ func (o *GoogleCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varGoogleCredentialsListDto := _GoogleCredentialsListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGoogleCredentialsListDto)
+	err = json.Unmarshal(data, &varGoogleCredentialsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GoogleCredentialsListDto(varGoogleCredentialsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "partnerLogo")
+		delete(additionalProperties, "partnerName")
+		delete(additionalProperties, "folderId")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "billingAccountId")
+		delete(additionalProperties, "zones")
+		delete(additionalProperties, "availabilityZonesCount")
+		delete(additionalProperties, "region")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "billingAccountName")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "continentName")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

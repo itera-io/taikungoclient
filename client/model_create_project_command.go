@@ -57,7 +57,10 @@ type CreateProjectCommand struct {
 	SaveAsTemplate *bool `json:"saveAsTemplate,omitempty"`
 	TemplateName NullableString `json:"templateName,omitempty"`
 	ServerTemplates []ServerTemplateDto `json:"serverTemplates,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateProjectCommand CreateProjectCommand
 
 // NewCreateProjectCommand instantiates a new CreateProjectCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -1519,7 +1522,68 @@ func (o CreateProjectCommand) ToMap() (map[string]interface{}, error) {
 	if o.ServerTemplates != nil {
 		toSerialize["serverTemplates"] = o.ServerTemplates
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateProjectCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateProjectCommand := _CreateProjectCommand{}
+
+	err = json.Unmarshal(data, &varCreateProjectCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateProjectCommand(varCreateProjectCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "kubernetesVersion")
+		delete(additionalProperties, "cloudCredentialId")
+		delete(additionalProperties, "s3CredentialId")
+		delete(additionalProperties, "accessProfileId")
+		delete(additionalProperties, "opaProfileId")
+		delete(additionalProperties, "kubernetesProfileId")
+		delete(additionalProperties, "isKubernetes")
+		delete(additionalProperties, "isAutoUpgrade")
+		delete(additionalProperties, "isBackupEnabled")
+		delete(additionalProperties, "isMonitoringEnabled")
+		delete(additionalProperties, "aiEnabled")
+		delete(additionalProperties, "aiCredentialId")
+		delete(additionalProperties, "flavors")
+		delete(additionalProperties, "users")
+		delete(additionalProperties, "alertingProfileId")
+		delete(additionalProperties, "taikunLBFlavor")
+		delete(additionalProperties, "routerIdStartRange")
+		delete(additionalProperties, "routerIdEndRange")
+		delete(additionalProperties, "expiredAt")
+		delete(additionalProperties, "deleteOnExpiration")
+		delete(additionalProperties, "allowFullSpotKubernetes")
+		delete(additionalProperties, "allowSpotWorkers")
+		delete(additionalProperties, "allowSpotVMs")
+		delete(additionalProperties, "maxSpotPrice")
+		delete(additionalProperties, "autoscalingEnabled")
+		delete(additionalProperties, "minSize")
+		delete(additionalProperties, "maxSize")
+		delete(additionalProperties, "diskSize")
+		delete(additionalProperties, "autoscalingFlavor")
+		delete(additionalProperties, "autoscalingSpotEnabled")
+		delete(additionalProperties, "cidr")
+		delete(additionalProperties, "netMask")
+		delete(additionalProperties, "saveAsTemplate")
+		delete(additionalProperties, "templateName")
+		delete(additionalProperties, "serverTemplates")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateProjectCommand struct {

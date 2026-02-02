@@ -22,7 +22,10 @@ var _ MappedNullable = &DeploymentOpaEnableCommand{}
 type DeploymentOpaEnableCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	OpaCredentialId *int32 `json:"opaCredentialId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeploymentOpaEnableCommand DeploymentOpaEnableCommand
 
 // NewDeploymentOpaEnableCommand instantiates a new DeploymentOpaEnableCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -121,7 +124,34 @@ func (o DeploymentOpaEnableCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OpaCredentialId) {
 		toSerialize["opaCredentialId"] = o.OpaCredentialId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeploymentOpaEnableCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeploymentOpaEnableCommand := _DeploymentOpaEnableCommand{}
+
+	err = json.Unmarshal(data, &varDeploymentOpaEnableCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeploymentOpaEnableCommand(varDeploymentOpaEnableCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "opaCredentialId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeploymentOpaEnableCommand struct {

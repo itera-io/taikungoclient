@@ -30,7 +30,10 @@ type KubernetesEventCreateDto struct {
 	FirstTimeStamp NullableTime `json:"firstTimeStamp,omitempty"`
 	LastTimeStamp NullableTime `json:"lastTimeStamp,omitempty"`
 	Count *int32 `json:"count,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _KubernetesEventCreateDto KubernetesEventCreateDto
 
 // NewKubernetesEventCreateDto instantiates a new KubernetesEventCreateDto object
 // This constructor will assign default values to properties that have it defined,
@@ -427,7 +430,41 @@ func (o KubernetesEventCreateDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Count) {
 		toSerialize["count"] = o.Count
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *KubernetesEventCreateDto) UnmarshalJSON(data []byte) (err error) {
+	varKubernetesEventCreateDto := _KubernetesEventCreateDto{}
+
+	err = json.Unmarshal(data, &varKubernetesEventCreateDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubernetesEventCreateDto(varKubernetesEventCreateDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "reason")
+		delete(additionalProperties, "message")
+		delete(additionalProperties, "metadata")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "involvedObject")
+		delete(additionalProperties, "firstTimeStamp")
+		delete(additionalProperties, "lastTimeStamp")
+		delete(additionalProperties, "count")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableKubernetesEventCreateDto struct {

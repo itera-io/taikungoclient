@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -24,6 +23,7 @@ var _ MappedNullable = &KubernetesDashboardDto{}
 type KubernetesDashboardDto struct {
 	Pods []PodDto `json:"pods"`
 	Nodes []NodeDto `json:"nodes"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _KubernetesDashboardDto KubernetesDashboardDto
@@ -115,6 +115,11 @@ func (o KubernetesDashboardDto) ToMap() (map[string]interface{}, error) {
 	if o.Nodes != nil {
 		toSerialize["nodes"] = o.Nodes
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -143,15 +148,21 @@ func (o *KubernetesDashboardDto) UnmarshalJSON(data []byte) (err error) {
 
 	varKubernetesDashboardDto := _KubernetesDashboardDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKubernetesDashboardDto)
+	err = json.Unmarshal(data, &varKubernetesDashboardDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubernetesDashboardDto(varKubernetesDashboardDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pods")
+		delete(additionalProperties, "nodes")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

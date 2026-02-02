@@ -21,7 +21,10 @@ var _ MappedNullable = &ForgotPasswordCommand{}
 // ForgotPasswordCommand struct for ForgotPasswordCommand
 type ForgotPasswordCommand struct {
 	Email NullableString `json:"email,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ForgotPasswordCommand ForgotPasswordCommand
 
 // NewForgotPasswordCommand instantiates a new ForgotPasswordCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +98,33 @@ func (o ForgotPasswordCommand) ToMap() (map[string]interface{}, error) {
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ForgotPasswordCommand) UnmarshalJSON(data []byte) (err error) {
+	varForgotPasswordCommand := _ForgotPasswordCommand{}
+
+	err = json.Unmarshal(data, &varForgotPasswordCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ForgotPasswordCommand(varForgotPasswordCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "email")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableForgotPasswordCommand struct {

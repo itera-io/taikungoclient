@@ -24,7 +24,10 @@ type OrganizationDropdownDto struct {
 	Name NullableString `json:"name,omitempty"`
 	IsInfra *bool `json:"isInfra,omitempty"`
 	DiscountRate *float64 `json:"discountRate,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OrganizationDropdownDto OrganizationDropdownDto
 
 // NewOrganizationDropdownDto instantiates a new OrganizationDropdownDto object
 // This constructor will assign default values to properties that have it defined,
@@ -203,7 +206,36 @@ func (o OrganizationDropdownDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DiscountRate) {
 		toSerialize["discountRate"] = o.DiscountRate
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OrganizationDropdownDto) UnmarshalJSON(data []byte) (err error) {
+	varOrganizationDropdownDto := _OrganizationDropdownDto{}
+
+	err = json.Unmarshal(data, &varOrganizationDropdownDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationDropdownDto(varOrganizationDropdownDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "isInfra")
+		delete(additionalProperties, "discountRate")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOrganizationDropdownDto struct {

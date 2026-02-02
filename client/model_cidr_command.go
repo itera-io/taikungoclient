@@ -21,7 +21,10 @@ var _ MappedNullable = &CidrCommand{}
 // CidrCommand struct for CidrCommand
 type CidrCommand struct {
 	Cidr NullableString `json:"cidr,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CidrCommand CidrCommand
 
 // NewCidrCommand instantiates a new CidrCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +98,33 @@ func (o CidrCommand) ToMap() (map[string]interface{}, error) {
 	if o.Cidr.IsSet() {
 		toSerialize["cidr"] = o.Cidr.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CidrCommand) UnmarshalJSON(data []byte) (err error) {
+	varCidrCommand := _CidrCommand{}
+
+	err = json.Unmarshal(data, &varCidrCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CidrCommand(varCidrCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cidr")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCidrCommand struct {

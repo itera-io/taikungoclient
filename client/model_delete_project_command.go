@@ -22,7 +22,10 @@ var _ MappedNullable = &DeleteProjectCommand{}
 type DeleteProjectCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	IsForceDelete *bool `json:"isForceDelete,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeleteProjectCommand DeleteProjectCommand
 
 // NewDeleteProjectCommand instantiates a new DeleteProjectCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -121,7 +124,34 @@ func (o DeleteProjectCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsForceDelete) {
 		toSerialize["isForceDelete"] = o.IsForceDelete
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeleteProjectCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeleteProjectCommand := _DeleteProjectCommand{}
+
+	err = json.Unmarshal(data, &varDeleteProjectCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeleteProjectCommand(varDeleteProjectCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "isForceDelete")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeleteProjectCommand struct {

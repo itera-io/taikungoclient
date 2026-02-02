@@ -22,7 +22,10 @@ var _ MappedNullable = &StandAloneProfileUpdateCommand{}
 type StandAloneProfileUpdateCommand struct {
 	Id *int32 `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _StandAloneProfileUpdateCommand StandAloneProfileUpdateCommand
 
 // NewStandAloneProfileUpdateCommand instantiates a new StandAloneProfileUpdateCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o StandAloneProfileUpdateCommand) ToMap() (map[string]interface{}, error) 
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *StandAloneProfileUpdateCommand) UnmarshalJSON(data []byte) (err error) {
+	varStandAloneProfileUpdateCommand := _StandAloneProfileUpdateCommand{}
+
+	err = json.Unmarshal(data, &varStandAloneProfileUpdateCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StandAloneProfileUpdateCommand(varStandAloneProfileUpdateCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableStandAloneProfileUpdateCommand struct {

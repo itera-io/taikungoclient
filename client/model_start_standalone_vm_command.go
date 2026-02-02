@@ -21,7 +21,10 @@ var _ MappedNullable = &StartStandaloneVmCommand{}
 // StartStandaloneVmCommand struct for StartStandaloneVmCommand
 type StartStandaloneVmCommand struct {
 	Id *int32 `json:"id,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _StartStandaloneVmCommand StartStandaloneVmCommand
 
 // NewStartStandaloneVmCommand instantiates a new StartStandaloneVmCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o StartStandaloneVmCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *StartStandaloneVmCommand) UnmarshalJSON(data []byte) (err error) {
+	varStartStandaloneVmCommand := _StartStandaloneVmCommand{}
+
+	err = json.Unmarshal(data, &varStartStandaloneVmCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StartStandaloneVmCommand(varStartStandaloneVmCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableStartStandaloneVmCommand struct {

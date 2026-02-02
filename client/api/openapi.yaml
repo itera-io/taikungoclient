@@ -41704,10 +41704,8 @@ paths:
 components:
   schemas:
     AcceptOfferCommand:
-      additionalProperties: false
       type: object
     AccessProfilesList:
-      additionalProperties: false
       example:
         data:
         - allowedHosts:
@@ -41830,7 +41828,6 @@ components:
       - totalCount
       type: object
     AccessProfilesListDto:
-      additionalProperties: false
       example:
         allowedHosts:
         - accessProfileName: accessProfileName
@@ -41941,7 +41938,6 @@ components:
       - trustedRegistries
       type: object
     AccessProfilesLockManagementCommand:
-      additionalProperties: false
       example:
         mode: mode
         id: 0
@@ -41954,7 +41950,6 @@ components:
           type: string
       type: object
     AccessProfilesSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         offset: 6
@@ -41973,7 +41968,6 @@ components:
           type: string
       type: object
     AccessProfilesSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -42089,7 +42083,6 @@ components:
       - DeletedProject
       type: string
     AddAccountAdminCommand:
-      additionalProperties: false
       example:
         accountId: 0
         userId: userId
@@ -42105,7 +42098,6 @@ components:
       - userId
       type: object
     AddOrganizationToGroupCommand:
-      additionalProperties: false
       example:
         groupId: 0
         organizations:
@@ -42129,7 +42121,6 @@ components:
       - organizations
       type: object
     AddOrganizationsToRuleDto:
-      additionalProperties: false
       example:
         organizationId: 0
         ruleDiscountRate: 6.027456183070403
@@ -42143,7 +42134,6 @@ components:
           type: number
       type: object
     AddPrometheusRulesToOrganizationDto:
-      additionalProperties: false
       example:
         discountRate: 6.027456183070403
         id: 0
@@ -42157,7 +42147,6 @@ components:
           type: number
       type: object
     AddUserToGroupCommand:
-      additionalProperties: false
       example:
         groupId: 0
         users:
@@ -42177,7 +42166,6 @@ components:
       - users
       type: object
     AdminAddBalanceCommand:
-      additionalProperties: false
       example:
         balance: 0
         customerId: customerId
@@ -42190,7 +42178,6 @@ components:
           type: integer
       type: object
     AdminBillingOperationCommand:
-      additionalProperties: false
       example:
         cloudCredentialId: 0
       properties:
@@ -42199,7 +42186,6 @@ components:
           type: integer
       type: object
     AdminOrganizationsDeleteCommand:
-      additionalProperties: false
       example:
         id: 0
       properties:
@@ -42208,7 +42194,6 @@ components:
           type: integer
       type: object
     AdminOrganizationsList:
-      additionalProperties: false
       example:
         data:
         - trialEnds: trialEnds
@@ -42259,7 +42244,6 @@ components:
       - totalCount
       type: object
     AdminOrganizationsListDto:
-      additionalProperties: false
       example:
         trialEnds: trialEnds
         partnerName: partnerName
@@ -42297,7 +42281,6 @@ components:
       - trialEnds
       type: object
     AdminProjectUpdateCommand:
-      additionalProperties: false
       example:
         kubernetesCurrentVersion: kubernetesCurrentVersion
         kubesprayCurrentVersion: kubesprayCurrentVersion
@@ -42314,7 +42297,6 @@ components:
           type: string
       type: object
     AdminProjectsList:
-      additionalProperties: false
       example:
         data:
         - createdAt: createdAt
@@ -42373,7 +42355,6 @@ components:
       - totalCount
       type: object
     AdminProjectsResponseData:
-      additionalProperties: false
       example:
         createdAt: createdAt
         organizationName: organizationName
@@ -42431,7 +42412,6 @@ components:
       - tcu
       type: object
     AdminUpdateProjectKubeConfigCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -42440,7 +42420,6 @@ components:
           type: integer
       type: object
     AdminUpdateUserKubeConfigCommand:
-      additionalProperties: false
       example:
         id: 0
       properties:
@@ -42449,7 +42428,6 @@ components:
           type: integer
       type: object
     AdminUserCreateCommand:
-      additionalProperties: false
       example:
         organizationId: 0
         password: password
@@ -42474,7 +42452,6 @@ components:
           type: integer
       type: object
     AdminUsersList:
-      additionalProperties: false
       example:
         data:
         - owner: true
@@ -42508,7 +42485,6 @@ components:
       - totalCount
       type: object
     AdminUsersResponseData:
-      additionalProperties: false
       example:
         owner: true
         role: Admin
@@ -42550,7 +42526,6 @@ components:
       - role
       type: object
     AdminUsersUpdateEmailCommand:
-      additionalProperties: false
       example:
         id: id
         email: email
@@ -42563,7 +42538,6 @@ components:
           type: string
       type: object
     AdminUsersUpdatePasswordCommand:
-      additionalProperties: false
       example:
         password: password
         id: id
@@ -42576,7 +42550,6 @@ components:
           type: string
       type: object
     AiCredentials:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -42618,7 +42591,6 @@ components:
       - totalCount
       type: object
     AiCredentialsForOrganizationEntity:
-      additionalProperties: false
       example:
         isDefault: true
         name: name
@@ -42647,7 +42619,6 @@ components:
       - url
       type: object
     AiCredentialsListDto:
-      additionalProperties: false
       example:
         organizationId: 6
         isDefault: true
@@ -42698,7 +42669,6 @@ components:
       - url
       type: object
     AiListDto:
-      additionalProperties: false
       example:
         data: ""
         totalCount: 0
@@ -42718,7 +42688,6 @@ components:
       - OpenAi
       type: string
     AksClusterListCommand:
-      additionalProperties: false
       example:
         cloudId: 0
       properties:
@@ -42727,7 +42696,6 @@ components:
           type: integer
       type: object
     Alert:
-      additionalProperties: false
       example:
         activeAt: 2000-01-23T04:56:07.000+00:00
         annotations:
@@ -42765,7 +42733,6 @@ components:
           type: string
       type: object
     AlertData:
-      additionalProperties: false
       example:
         groups:
         - lastEvaluation: 2000-01-23T04:56:07.000+00:00
@@ -43004,7 +42971,6 @@ components:
           type: array
       type: object
     AlertLabels:
-      additionalProperties: false
       example:
         container: container
         severity: severity
@@ -43061,7 +43027,6 @@ components:
           type: string
       type: object
     AlertingEmailDto:
-      additionalProperties: false
       example:
         email: email
       properties:
@@ -43072,7 +43037,6 @@ components:
       - email
       type: object
     AlertingIntegrationDto:
-      additionalProperties: false
       example:
         url: url
         token: token
@@ -43098,7 +43062,6 @@ components:
       - MicrosoftTeams
       type: string
     AlertingIntegrationsListDto:
-      additionalProperties: false
       example:
         alertingProfileName: alertingProfileName
         id: 0
@@ -43126,7 +43089,6 @@ components:
       - url
       type: object
     AlertingProfilesList:
-      additionalProperties: false
       example:
         data:
         - slackConfigurationId: 1
@@ -43222,7 +43184,6 @@ components:
       - totalCount
       type: object
     AlertingProfilesListDto:
-      additionalProperties: false
       example:
         slackConfigurationId: 1
         projects:
@@ -43328,7 +43289,6 @@ components:
       - webhooks
       type: object
     AlertingProfilesLockManagerCommand:
-      additionalProperties: false
       example:
         mode: mode
         id: 0
@@ -43348,7 +43308,6 @@ components:
       - None
       type: string
     AlertingWebhookDto:
-      additionalProperties: false
       example:
         headers:
         - id: 6
@@ -43373,7 +43332,6 @@ components:
           type: array
       type: object
     AllFlavorsList:
-      additionalProperties: false
       example:
         data:
         - maxDataDiskCount: 1.4658129805029452
@@ -43406,7 +43364,6 @@ components:
       - totalCount
       type: object
     AllTicketsDto:
-      additionalProperties: false
       example:
         organizationName: organizationName
         partnerName: partnerName
@@ -43474,7 +43431,6 @@ components:
       - userId
       type: object
     AllTicketsList:
-      additionalProperties: false
       example:
         data:
         - organizationName: organizationName
@@ -43539,7 +43495,6 @@ components:
       - totalCount
       type: object
     AllowedHostCreateDto:
-      additionalProperties: false
       example:
         ipAddress: ipAddress
         description: description
@@ -43556,7 +43511,6 @@ components:
           type: integer
       type: object
     AllowedHostList:
-      additionalProperties: false
       example:
         data:
         - accessProfileName: accessProfileName
@@ -43586,7 +43540,6 @@ components:
       - totalCount
       type: object
     AllowedHostListDto:
-      additionalProperties: false
       example:
         accessProfileName: accessProfileName
         ipAddress: ipAddress
@@ -43620,7 +43573,6 @@ components:
       - maskBits
       type: object
     AmazonAvailabilityZonesCommand:
-      additionalProperties: false
       example:
         awsAccessKeyId: awsAccessKeyId
         cloudId: 0
@@ -43642,7 +43594,6 @@ components:
           type: integer
       type: object
     AmazonCredentialsListDto:
-      additionalProperties: false
       example:
         projectCount: 6
         projects:
@@ -43731,7 +43682,6 @@ components:
       - region
       type: object
     Annotations:
-      additionalProperties: false
       example:
         description: description
         title: title
@@ -43744,7 +43694,6 @@ components:
           type: string
       type: object
     ApiResponse:
-      additionalProperties: false
       example:
         result: ""
         isError: true
@@ -43767,7 +43716,6 @@ components:
           nullable: true
       type: object
     AppRepositoryList:
-      additionalProperties: false
       example:
         data:
         - organizationName: organizationName
@@ -43813,7 +43761,6 @@ components:
       - totalCount
       type: object
     ApplicationSyncResponse:
-      additionalProperties: false
       example:
         isSyncStarted: true
       properties:
@@ -43821,7 +43768,6 @@ components:
           type: boolean
       type: object
     ArchiveTicketCommand:
-      additionalProperties: false
       example:
         ticketId: ticketId
       properties:
@@ -43830,7 +43776,6 @@ components:
           type: string
       type: object
     ArticleList:
-      additionalProperties: false
       example:
         data:
         - senderName: senderName
@@ -43879,7 +43824,6 @@ components:
       - totalCount
       type: object
     ArticlesListDto:
-      additionalProperties: false
       example:
         senderName: senderName
         messageId: messageId
@@ -43914,7 +43858,6 @@ components:
       - userId
       type: object
     ArtifactRepositoryDto:
-      additionalProperties: false
       example:
         organizationName: organizationName
         displayName: displayName
@@ -43977,7 +43920,6 @@ components:
       - verifiedPublisher
       type: object
     ArtifactUrlCheckerCommand:
-      additionalProperties: false
       example:
         organizationId: 0
         name: name
@@ -43995,7 +43937,6 @@ components:
           type: integer
       type: object
     AttachDetachAlertingProfileCommand:
-      additionalProperties: false
       example:
         alertingProfileId: 6
         projectId: 0
@@ -44009,7 +43950,6 @@ components:
           type: integer
       type: object
     AutoSyncManagementCommand:
-      additionalProperties: false
       example:
         mode: mode
         id: 0
@@ -44027,10 +43967,8 @@ components:
           type: integer
       type: object
     AutoUpgradeProjectsCommand:
-      additionalProperties: false
       type: object
     AvailableEndpointData:
-      additionalProperties: false
       example:
         path: path
         controller: controller
@@ -44055,7 +43993,6 @@ components:
           type: string
       type: object
     AvailableEndpointsList:
-      additionalProperties: false
       example:
         data:
         - path: path
@@ -44083,7 +44020,6 @@ components:
       - totalCount
       type: object
     AvailablePackageDetailsDto:
-      additionalProperties: false
       example:
         appVersion: appVersion
         packageId: packageId
@@ -44159,7 +44095,6 @@ components:
           type: boolean
       type: object
     AvailablePackagesDto:
-      additionalProperties: false
       example:
         appVersion: appVersion
         logoImageId: logoImageId
@@ -44248,7 +44183,6 @@ components:
           type: boolean
       type: object
     AvailablePackagesList:
-      additionalProperties: false
       example:
         data:
         - appVersion: appVersion
@@ -44329,7 +44263,6 @@ components:
           type: integer
       type: object
     AwsCredentialList:
-      additionalProperties: false
       example:
         data:
         - projectCount: 6
@@ -44391,7 +44324,6 @@ components:
       - totalCount
       type: object
     AwsEksClusterDto:
-      additionalProperties: false
       example:
         certificate: certificate
         targetUrl: targetUrl
@@ -44408,7 +44340,6 @@ components:
           type: string
       type: object
     AwsEksNodeGroupDto:
-      additionalProperties: false
       example:
         role: role
         capacityType: capacityType
@@ -44481,7 +44412,6 @@ components:
           type: array
       type: object
     AwsFlavorList:
-      additionalProperties: false
       example:
         data:
         - windowsSpotPrice: windowsSpotPrice
@@ -44521,7 +44451,6 @@ components:
       - totalCount
       type: object
     AwsFlavorListDto:
-      additionalProperties: false
       example:
         windowsSpotPrice: windowsSpotPrice
         name: name
@@ -44565,7 +44494,6 @@ components:
           type: array
       type: object
     AwsImagesPostListCommand:
-      additionalProperties: false
       example:
         sortDirection: sortDirection
         search: search
@@ -44612,7 +44540,6 @@ components:
           type: integer
       type: object
     AwsRegionDto:
-      additionalProperties: false
       example:
         name: name
         region: region
@@ -44625,7 +44552,6 @@ components:
           type: string
       type: object
     AwsValidateOwnerCommand:
-      additionalProperties: false
       example:
         cloudId: 0
         owners:
@@ -44642,7 +44568,6 @@ components:
           type: array
       type: object
     AzResult:
-      additionalProperties: false
       example:
         data:
         - data
@@ -44662,7 +44587,6 @@ components:
       - totalCount
       type: object
     AzureAksClusterDto:
-      additionalProperties: false
       example:
         resourceGroupName: resourceGroupName
         clusterName: clusterName
@@ -44679,7 +44603,6 @@ components:
           type: string
       type: object
     AzureCredentialList:
-      additionalProperties: false
       example:
         data:
         - projectCount: 6
@@ -44743,7 +44666,6 @@ components:
       - totalCount
       type: object
     AzureCredentialsListDto:
-      additionalProperties: false
       example:
         projectCount: 6
         projects:
@@ -44836,7 +44758,6 @@ components:
       - tenantId
       type: object
     AzureDashboardCommand:
-      additionalProperties: false
       example:
         cloudId: 0
         filterBy: filterBy
@@ -44849,7 +44770,6 @@ components:
           type: string
       type: object
     AzureFlavorList:
-      additionalProperties: false
       example:
         data:
         - maxDataDiskCount: 1.4658129805029452
@@ -44885,7 +44805,6 @@ components:
       - totalCount
       type: object
     AzureFlavorsWithPriceDto:
-      additionalProperties: false
       example:
         maxDataDiskCount: 1.4658129805029452
         windowsSpotPrice: windowsSpotPrice
@@ -44926,7 +44845,6 @@ components:
           type: number
       type: object
     AzureLocationsCommand:
-      additionalProperties: false
       example:
         azureClientSecret: azureClientSecret
         azureClientId: azureClientId
@@ -44947,7 +44865,6 @@ components:
           type: string
       type: object
     AzureOffersList:
-      additionalProperties: false
       example:
         data:
         - data
@@ -44967,7 +44884,6 @@ components:
       - totalCount
       type: object
     AzurePublishersList:
-      additionalProperties: false
       example:
         data:
         - data
@@ -44987,7 +44903,6 @@ components:
       - totalCount
       type: object
     AzureQuotaListRecordDto:
-      additionalProperties: false
       example:
         totalCores: 0
         currentUsage: 6
@@ -45004,7 +44919,6 @@ components:
           type: string
       type: object
     AzureSkusList:
-      additionalProperties: false
       example:
         data:
         - data
@@ -45024,7 +44938,6 @@ components:
       - totalCount
       type: object
     AzureSubscriptionListCommand:
-      additionalProperties: false
       example:
         clientId: clientId
         tenantId: tenantId
@@ -45041,7 +44954,6 @@ components:
           type: string
       type: object
     AzureZonesCommand:
-      additionalProperties: false
       example:
         azureClientSecret: azureClientSecret
         azureClientId: azureClientId
@@ -45071,7 +44983,6 @@ components:
           type: integer
       type: object
     BackupCredentials:
-      additionalProperties: false
       example:
         data:
         - projects:
@@ -45127,7 +45038,6 @@ components:
       - totalCount
       type: object
     BackupCredentialsCreateCommand:
-      additionalProperties: false
       example:
         organizationId: 0
         s3SecretKey: s3SecretKey
@@ -45157,7 +45067,6 @@ components:
           type: integer
       type: object
     BackupCredentialsForOrganizationEntity:
-      additionalProperties: false
       example:
         isDefault: true
         isInfra: true
@@ -45176,7 +45085,6 @@ components:
           type: boolean
       type: object
     BackupCredentialsListDto:
-      additionalProperties: false
       example:
         projects:
         - name: name
@@ -45256,7 +45164,6 @@ components:
       - s3Region
       type: object
     BackupCredentialsSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         offset: 6
@@ -45275,7 +45182,6 @@ components:
           type: string
       type: object
     BackupCredentialsSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -45298,7 +45204,6 @@ components:
           type: integer
       type: object
     BackupCredentialsUpdateCommand:
-      additionalProperties: false
       example:
         s3SecretKey: s3SecretKey
         s3AccessKeyId: s3AccessKeyId
@@ -45319,7 +45224,6 @@ components:
           type: string
       type: object
     BackupDto:
-      additionalProperties: false
       example:
         includedNamespace:
         - includedNamespace
@@ -45343,7 +45247,6 @@ components:
       - includedNamespace
       type: object
     BackupLockManagerCommand:
-      additionalProperties: false
       example:
         mode: mode
         id: 0
@@ -45356,7 +45259,6 @@ components:
           type: string
       type: object
     BackupMakeDefaultCommand:
-      additionalProperties: false
       example:
         id: 0
       properties:
@@ -45365,7 +45267,6 @@ components:
           type: integer
       type: object
     BackupStorageLocationDto:
-      additionalProperties: false
       example:
         phase: phase
         createdAt: 2000-01-23T04:56:07.000+00:00
@@ -45410,7 +45311,6 @@ components:
       - provider
       type: object
     BecomePartnerCommand:
-      additionalProperties: false
       example:
         fullName: fullName
         email: email
@@ -45423,7 +45323,6 @@ components:
           type: string
       type: object
     BillingCredentialsSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         offset: 6
@@ -45442,7 +45341,6 @@ components:
           type: string
       type: object
     BillingCredentialsSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -45465,7 +45363,6 @@ components:
           type: integer
       type: object
     BillingInfo:
-      additionalProperties: false
       example:
         data:
         - isDeleted: true
@@ -45496,7 +45393,6 @@ components:
           type: integer
       type: object
     BillingInfoDto:
-      additionalProperties: false
       example:
         legalName: legalName
         country: country
@@ -45539,7 +45435,6 @@ components:
       - yearly
       type: string
     BillingSummaryDto:
-      additionalProperties: false
       example:
         isDeleted: true
         endDate: endDate
@@ -45567,7 +45462,6 @@ components:
           type: boolean
       type: object
     BindAppRepositoryCommand:
-      additionalProperties: false
       example:
         organizationId: 0
         filteringElements:
@@ -45587,7 +45481,6 @@ components:
           type: integer
       type: object
     BindFlavorToProjectCommand:
-      additionalProperties: false
       example:
         flavors:
         - flavors
@@ -45604,7 +45497,6 @@ components:
           type: array
       type: object
     BindImageToProjectCommand:
-      additionalProperties: false
       example:
         images:
         - images
@@ -45621,7 +45513,6 @@ components:
           type: array
       type: object
     BindSubscriptionCommand:
-      additionalProperties: false
       example:
         id: 0
         yearly: true
@@ -45633,7 +45524,6 @@ components:
           type: boolean
       type: object
     BindSubscriptionResponseDto:
-      additionalProperties: false
       example:
         paymentIntentId: paymentIntentId
         invoiceFailureCode: invoiceFailureCode
@@ -45662,7 +45552,6 @@ components:
           type: string
       type: object
     BindUnbindEndpointToTokenCommand:
-      additionalProperties: false
       example:
         endpoints:
         - path: path
@@ -45690,10 +45579,8 @@ components:
           type: boolean
       type: object
     BlockOrganizationCommand:
-      additionalProperties: false
       type: object
     BoundFlavorsForProjectsList:
-      additionalProperties: false
       example:
         data:
         - cpu: 6
@@ -45760,7 +45647,6 @@ components:
       - totalCount
       type: object
     BoundFlavorsForProjectsListDto:
-      additionalProperties: false
       example:
         cpu: 6
         windowsPrice: windowsPrice
@@ -45837,7 +45723,6 @@ components:
       - windowsSpotPrice
       type: object
     BoundImagesForProjectsList:
-      additionalProperties: false
       example:
         data:
         - imageId: imageId
@@ -45892,7 +45777,6 @@ components:
       - totalCount
       type: object
     BoundImagesForProjectsListDto:
-      additionalProperties: false
       example:
         imageId: imageId
         size: 1.4658129805029452
@@ -45944,7 +45828,6 @@ components:
       - size
       type: object
     Breakdown:
-      additionalProperties: false
       example:
         totalMonthlyCost: totalMonthlyCost
         resources:
@@ -46121,7 +46004,6 @@ components:
           type: string
       type: object
     BridgeListCommand:
-      additionalProperties: false
       example:
         tokenId: tokenId
         hypervisor: hypervisor
@@ -46142,7 +46024,6 @@ components:
           type: string
       type: object
     ButtonStatusDto:
-      additionalProperties: false
       example:
         reasons:
         - reasons
@@ -46161,7 +46042,6 @@ components:
           type: boolean
       type: object
     CBackupDto:
-      additionalProperties: false
       example:
         scheduleName: scheduleName
         phase: phase
@@ -46202,7 +46082,6 @@ components:
       - scheduleName
       type: object
     CDeleteBackupRequestDto:
-      additionalProperties: false
       example:
         phase: phase
         createdAt: 2000-01-23T04:56:07.000+00:00
@@ -46237,7 +46116,6 @@ components:
       - Flannel
       type: string
     CRestoreDto:
-      additionalProperties: false
       example:
         scheduleName: scheduleName
         phase: phase
@@ -46301,7 +46179,6 @@ components:
       - warnings
       type: object
     CScheduleDto:
-      additionalProperties: false
       example:
         phase: phase
         createdAt: 2000-01-23T04:56:07.000+00:00
@@ -46367,10 +46244,8 @@ components:
       - ttl
       type: object
     CancelExpiredSubscriptionsCommand:
-      additionalProperties: false
       type: object
     CancelProjectAppCommand:
-      additionalProperties: false
       example:
         projectAppId: 0
       properties:
@@ -46379,7 +46254,6 @@ components:
           type: integer
       type: object
     CardInformationDto:
-      additionalProperties: false
       example:
         expirationYear: expirationYear
         last4: last4
@@ -46415,7 +46289,6 @@ components:
       - last4
       type: object
     CatalogAppDetailsDto:
-      additionalProperties: false
       example:
         appVersion: appVersion
         packageId: packageId
@@ -46519,7 +46392,6 @@ components:
           type: boolean
       type: object
     CatalogAppList:
-      additionalProperties: false
       example:
         data:
         - repoId: 6
@@ -46596,7 +46468,6 @@ components:
           type: integer
       type: object
     CatalogAppListDto:
-      additionalProperties: false
       example:
         repoId: 6
         appVersion: appVersion
@@ -46678,7 +46549,6 @@ components:
           type: integer
       type: object
     CatalogAppLockManagement:
-      additionalProperties: false
       example:
         mode: mode
         id: 0
@@ -46691,7 +46561,6 @@ components:
           type: string
       type: object
     CatalogAppParamsDetailsDto:
-      additionalProperties: false
       example:
         isTaikunLink: true
         catalogAppName: catalogAppName
@@ -46727,7 +46596,6 @@ components:
           type: boolean
       type: object
     CatalogAppParamsDto:
-      additionalProperties: false
       example:
         isEditableWhenInstalling: true
         value: value
@@ -46749,7 +46617,6 @@ components:
           type: boolean
       type: object
     CatalogDetails:
-      additionalProperties: false
       example:
         organizationId: 6
         boundApplications:
@@ -46880,7 +46747,6 @@ components:
           type: array
       type: object
     CatalogDropdownDto:
-      additionalProperties: false
       example:
         isDefault: true
         name: name
@@ -46904,7 +46770,6 @@ components:
           type: boolean
       type: object
     CatalogList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -47109,7 +46974,6 @@ components:
           type: integer
       type: object
     CatalogListDto:
-      additionalProperties: false
       example:
         organizationId: 6
         boundApplications:
@@ -47240,7 +47104,6 @@ components:
           type: array
       type: object
     CatalogLockManagementCommand:
-      additionalProperties: false
       example:
         mode: mode
         id: 0
@@ -47253,7 +47116,6 @@ components:
           type: string
       type: object
     CatalogMakeDefaultCommand:
-      additionalProperties: false
       example:
         id: 0
       properties:
@@ -47262,7 +47124,6 @@ components:
           type: integer
       type: object
     CatalogsForProjectDto:
-      additionalProperties: false
       example:
         catalogName: catalogName
         catalogId: 0
@@ -47282,7 +47143,6 @@ components:
       - isBound
       type: object
     ChangeCardCommand:
-      additionalProperties: false
       example:
         paymentMethodId: paymentMethodId
       properties:
@@ -47291,7 +47151,6 @@ components:
           type: string
       type: object
     ChangePasswordCommand:
-      additionalProperties: false
       example:
         password: password
         newPassword: newPassword
@@ -47304,7 +47163,6 @@ components:
           type: string
       type: object
     ChatCompletionsCommand:
-      additionalProperties: false
       example:
         messages: ""
       properties:
@@ -47312,7 +47170,6 @@ components:
           nullable: true
       type: object
     CheckAwsCommand:
-      additionalProperties: false
       example:
         awsAccessKeyId: awsAccessKeyId
         awsSecretAccessKey: awsSecretAccessKey
@@ -47325,7 +47182,6 @@ components:
           type: string
       type: object
     CheckAzureCommand:
-      additionalProperties: false
       example:
         azureClientSecret: azureClientSecret
         azureClientId: azureClientId
@@ -47342,7 +47198,6 @@ components:
           type: string
       type: object
     CheckAzureCpuQuotaCommand:
-      additionalProperties: false
       example:
         cloudId: 0
       properties:
@@ -47351,7 +47206,6 @@ components:
           type: integer
       type: object
     CheckGoogleCloudCommand:
-      additionalProperties: false
       properties:
         config:
           format: binary
@@ -47359,7 +47213,6 @@ components:
           type: string
       type: object
     CheckKubeConfigCommand:
-      additionalProperties: false
       properties:
         config:
           format: binary
@@ -47367,7 +47220,6 @@ components:
           type: string
       type: object
     CheckOpenstackAvailabilityResponse:
-      additionalProperties: false
       example:
         errorMessage: errorMessage
         isOpenstackAvailable: true
@@ -47382,7 +47234,6 @@ components:
           type: string
       type: object
     CheckOpenstackCommand:
-      additionalProperties: false
       example:
         openStackUrl: openStackUrl
         applicationCredEnabled: true
@@ -47410,7 +47261,6 @@ components:
           type: boolean
       type: object
     CheckPrometheusCommand:
-      additionalProperties: false
       example:
         password: password
         userName: userName
@@ -47427,7 +47277,6 @@ components:
           type: string
       type: object
     CheckS3Command:
-      additionalProperties: false
       example:
         s3SecretKey: s3SecretKey
         s3Endpoint: s3Endpoint
@@ -47448,7 +47297,6 @@ components:
           type: string
       type: object
     CheckTrustedRegistryCommand:
-      additionalProperties: false
       example:
         registry: registry
       properties:
@@ -47457,7 +47305,6 @@ components:
           type: string
       type: object
     CheckZadaraCommand:
-      additionalProperties: false
       example:
         zadaraAccessKeyId: zadaraAccessKeyId
         zadaraSecretAccessKey: zadaraSecretAccessKey
@@ -47474,7 +47321,6 @@ components:
           type: string
       type: object
     CidrCommand:
-      additionalProperties: false
       example:
         cidr: cidr
       properties:
@@ -47483,10 +47329,8 @@ components:
           type: string
       type: object
     ClearCanceledPaymentMethodCommand:
-      additionalProperties: false
       type: object
     CloseTicketCommand:
-      additionalProperties: false
       example:
         ticketId: ticketId
       properties:
@@ -47495,7 +47339,6 @@ components:
           type: string
       type: object
     CloudCredentialsDropdownRecordDto:
-      additionalProperties: false
       example:
         projects:
         - flavors:
@@ -47546,7 +47389,6 @@ components:
       - projects
       type: object
     CloudCredentialsForOrganizationEntity:
-      additionalProperties: false
       example:
         organizationId: 6
         isDefault: true
@@ -47585,7 +47427,6 @@ components:
       - projects
       type: object
     CloudCredentialsResponseData:
-      additionalProperties: false
       example:
         organizationId: 6
         organizationName: organizationName
@@ -47611,7 +47452,6 @@ components:
           type: string
       type: object
     CloudCredentialsSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         offset: 6
@@ -47630,7 +47470,6 @@ components:
           type: string
       type: object
     CloudCredentialsSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -47655,7 +47494,6 @@ components:
           type: integer
       type: object
     CloudLockManagerCommand:
-      additionalProperties: false
       example:
         mode: mode
         id: 0
@@ -47699,7 +47537,6 @@ components:
       - GENERICKUBERNETES
       type: string
     CommonAvailabilityDto:
-      additionalProperties: false
       example:
         name: name
         id: true
@@ -47711,7 +47548,6 @@ components:
           type: string
       type: object
     CommonDropdownDto:
-      additionalProperties: false
       example:
         name: name
         id: 5
@@ -47724,7 +47560,6 @@ components:
           type: string
       type: object
     CommonDropdownIsBoundDto:
-      additionalProperties: false
       example:
         isBound: true
         name: name
@@ -47740,7 +47575,6 @@ components:
           type: boolean
       type: object
     CommonDropdownIsBoundDtoForProject:
-      additionalProperties: false
       example:
         importClusterType: None
         health: "Null"
@@ -47789,7 +47623,6 @@ components:
           $ref: "#/components/schemas/ImportClusterType"
       type: object
     CommonExtendedDropdownDto:
-      additionalProperties: false
       example:
         isDefault: true
         name: name
@@ -47805,7 +47638,6 @@ components:
           type: boolean
       type: object
     CommonSearchKubernetesResponseData:
-      additionalProperties: false
       example:
         organizationId: 6
         organizationName: organizationName
@@ -47834,7 +47666,6 @@ components:
           type: string
       type: object
     CommonSearchResponseData:
-      additionalProperties: false
       example:
         organizationId: 6
         organizationName: organizationName
@@ -47856,7 +47687,6 @@ components:
           type: string
       type: object
     CommonStringBasedDropdownDto:
-      additionalProperties: false
       example:
         name: name
         id: id
@@ -47869,7 +47699,6 @@ components:
           type: string
       type: object
     CommonStringDropdownIsBoundDto:
-      additionalProperties: false
       example:
         isBound: true
         name: name
@@ -47885,7 +47714,6 @@ components:
           type: boolean
       type: object
     ConfigMapSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         includePublicImportedClusters: true
@@ -47908,7 +47736,6 @@ components:
           type: boolean
       type: object
     ConfigMapSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -47935,7 +47762,6 @@ components:
           type: integer
       type: object
     ConfigmapListDto:
-      additionalProperties: false
       example:
         createdAt: createdAt
         name: name
@@ -47952,7 +47778,6 @@ components:
           type: string
       type: object
     ConfigmapListDtoCursorStringPaginatedResponse:
-      additionalProperties: false
       example:
         nextCursor: nextCursor
         data:
@@ -47989,7 +47814,6 @@ components:
       - totalCount
       type: object
     ConfirmEmailCommand:
-      additionalProperties: false
       example:
         mode: Confirm
         newEmail: newEmail
@@ -48001,7 +47825,6 @@ components:
           $ref: "#/components/schemas/EmailMode"
       type: object
     ConsoleScreenshotCommand:
-      additionalProperties: false
       example:
         serverId: 0
       properties:
@@ -48010,7 +47833,6 @@ components:
           type: integer
       type: object
     ContactUsCommand:
-      additionalProperties: false
       example:
         businessEmail: businessEmail
         companyName: companyName
@@ -48031,7 +47853,6 @@ components:
           type: string
       type: object
     CostComponent:
-      additionalProperties: false
       example:
         unit: unit
         hourlyQuantity: hourlyQuantity
@@ -48071,7 +47892,6 @@ components:
           type: boolean
       type: object
     CountryListDto:
-      additionalProperties: false
       example:
         name: name
         isEu: true
@@ -48086,7 +47906,6 @@ components:
       - name
       type: object
     CpuLimitsDto:
-      additionalProperties: false
       example:
         maxClusterLimits: 6.027456183070403
         defaultContainerRequest: 1.4658129805029452
@@ -48112,7 +47931,6 @@ components:
       - maxClusterRequests
       type: object
     CrdSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         includePublicImportedClusters: true
@@ -48135,7 +47953,6 @@ components:
           type: boolean
       type: object
     CrdSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -48162,7 +47979,6 @@ components:
           type: integer
       type: object
     CreateAccessProfileCommand:
-      additionalProperties: false
       example:
         organizationId: 0
         allowedHosts:
@@ -48226,7 +48042,6 @@ components:
           type: array
       type: object
     CreateAiCredentialCommand:
-      additionalProperties: false
       example:
         organizationId: 0
         apiKey: apiKey
@@ -48244,7 +48059,6 @@ components:
           type: integer
       type: object
     CreateAlertDto:
-      additionalProperties: false
       example:
         alerts:
         - fingerprint: fingerprint
@@ -48275,7 +48089,6 @@ components:
           type: string
       type: object
     CreateAlertingIntegrationCommand:
-      additionalProperties: false
       example:
         alertingProfileId: 0
         url: url
@@ -48295,7 +48108,6 @@ components:
           type: integer
       type: object
     CreateAlertingProfileCommand:
-      additionalProperties: false
       example:
         organizationId: 6
         emails:
@@ -48361,7 +48173,6 @@ components:
           $ref: "#/components/schemas/AlertingReminder"
       type: object
     CreateAllowedHostCommand:
-      additionalProperties: false
       example:
         ipAddress: ipAddress
         accessProfileId: 0
@@ -48382,7 +48193,6 @@ components:
           type: integer
       type: object
     CreateAwsCloudCommand:
-      additionalProperties: false
       example:
         organizationId: 6
         awsRegion: awsRegion
@@ -48412,7 +48222,6 @@ components:
           type: integer
       type: object
     CreateAzureCloudCommand:
-      additionalProperties: false
       example:
         organizationId: 6
         azureClientSecret: azureClientSecret
@@ -48450,7 +48259,6 @@ components:
           type: integer
       type: object
     CreateBackupPolicyCommand:
-      additionalProperties: false
       example:
         cronPeriod: cronPeriod
         name: name
@@ -48479,7 +48287,6 @@ components:
           type: string
       type: object
     CreateBillingSummaryCommand:
-      additionalProperties: false
       example:
         beginApply: 2000-01-23T04:56:07.000+00:00
         icu: 0
@@ -48496,7 +48303,6 @@ components:
           type: integer
       type: object
     CreateCatalogAppCommand:
-      additionalProperties: false
       example:
         catalogId: 0
         repoName: repoName
@@ -48533,7 +48339,6 @@ components:
           type: array
       type: object
     CreateCatalogCommand:
-      additionalProperties: false
       example:
         organizationId: 0
         name: name
@@ -48551,7 +48356,6 @@ components:
           type: integer
       type: object
     CreateDnsServerCommand:
-      additionalProperties: false
       example:
         address: address
         accessProfileId: 0
@@ -48564,7 +48368,6 @@ components:
           type: integer
       type: object
     CreateExecutorCommand:
-      additionalProperties: false
       example:
         continent: continent
         name: name
@@ -48587,7 +48390,6 @@ components:
           type: string
       type: object
     CreateGenericTaikunLbDto:
-      additionalProperties: false
       example:
         svcNamespace: svcNamespace
         svcName: svcName
@@ -48600,7 +48402,6 @@ components:
           type: string
       type: object
     CreateGoogleCredentialCommand:
-      additionalProperties: false
       properties:
         config:
           format: binary
@@ -48629,7 +48430,6 @@ components:
           type: integer
       type: object
     CreateGroupCommand:
-      additionalProperties: false
       example:
         accountId: 0
         name: name
@@ -48668,7 +48468,6 @@ components:
       - name
       type: object
     CreateGroupOrganizationDto:
-      additionalProperties: false
       example:
         role: role
         id: 6
@@ -48687,7 +48486,6 @@ components:
       - role
       type: object
     CreateGroupUserDto:
-      additionalProperties: false
       example:
         id: id
       properties:
@@ -48698,7 +48496,6 @@ components:
       - id
       type: object
     CreateInfraProductCommand:
-      additionalProperties: false
       example:
         name: name
       properties:
@@ -48707,7 +48504,6 @@ components:
           type: string
       type: object
     CreateInvoiceCommand:
-      additionalProperties: false
       example:
         isPaid: true
         endDate: 2000-01-23T04:56:07.000+00:00
@@ -48746,10 +48542,8 @@ components:
           type: number
       type: object
     CreateKeyPoolCommand:
-      additionalProperties: false
       type: object
     CreateKubeConfigCommand:
-      additionalProperties: false
       example:
         isAccessibleForManager: true
         name: name
@@ -48785,7 +48579,6 @@ components:
           type: integer
       type: object
     CreateKubernetesProfileCommand:
-      additionalProperties: false
       example:
         organizationId: 0
         proxmoxStorage: NFS
@@ -48823,7 +48616,6 @@ components:
           type: boolean
       type: object
     CreateKubernetesResourceCommand:
-      additionalProperties: false
       example:
         projectId: 0
         yaml: yaml
@@ -48839,7 +48631,6 @@ components:
       - yaml
       type: object
     CreateNtpServerCommand:
-      additionalProperties: false
       example:
         address: address
         accessProfileId: 0
@@ -48852,7 +48643,6 @@ components:
           type: integer
       type: object
     CreateOpaProfileCommand:
-      additionalProperties: false
       example:
         isMasterTaintEnforced: true
         isNodeNameForbiddenInVC: true
@@ -48922,7 +48712,6 @@ components:
           type: integer
       type: object
     CreateOpenstackCloudCommand:
-      additionalProperties: false
       example:
         openStackUrl: openStackUrl
         applicationCredEnabled: true
@@ -48999,7 +48788,6 @@ components:
           type: boolean
       type: object
     CreatePartnerCommand:
-      additionalProperties: false
       properties:
         logo:
           format: binary
@@ -49079,7 +48867,6 @@ components:
           type: string
       type: object
     CreateProjectAppCommand:
-      additionalProperties: false
       example:
         extraValues: extraValues
         taikunLinkEnabled: true
@@ -49126,7 +48913,6 @@ components:
           type: array
       type: object
     CreateProjectCommand:
-      additionalProperties: false
       example:
         flavors:
         - flavors
@@ -49292,7 +49078,6 @@ components:
           type: array
       type: object
     CreateProjectFromTemplateCommand:
-      additionalProperties: false
       example:
         id: 0
         projectName: projectName
@@ -49308,7 +49093,6 @@ components:
           type: boolean
       type: object
     CreateProxmoxCommand:
-      additionalProperties: false
       example:
         continent: continent
         organizationId: 0
@@ -49375,7 +49159,6 @@ components:
           type: boolean
       type: object
     CreateProxmoxNetworkDto:
-      additionalProperties: false
       example:
         endAllocationRange: endAllocationRange
         netMask: 6
@@ -49404,7 +49187,6 @@ components:
           type: string
       type: object
     CreateSecurityGroupCommand:
-      additionalProperties: false
       example:
         protocol: ICMP
         name: name
@@ -49432,7 +49214,6 @@ components:
           type: integer
       type: object
     CreateSlackConfigurationCommand:
-      additionalProperties: false
       example:
         organizationId: 0
         name: name
@@ -49457,7 +49238,6 @@ components:
           $ref: "#/components/schemas/SlackType"
       type: object
     CreateSshUserCommand:
-      additionalProperties: false
       example:
         sshPublicKey: sshPublicKey
         name: name
@@ -49474,7 +49254,6 @@ components:
           type: integer
       type: object
     CreateStandAloneDiskCommand:
-      additionalProperties: false
       example:
         volumeType: volumeType
         size: 6
@@ -49495,7 +49274,6 @@ components:
           type: string
       type: object
     CreateStandAloneVmCommand:
-      additionalProperties: false
       example:
         standAloneVmDisks:
         - volumeType: volumeType
@@ -49592,7 +49370,6 @@ components:
           type: array
       type: object
     CreateStripeCustomerCommand:
-      additionalProperties: false
       example:
         legalName: legalName
         country: country
@@ -49621,7 +49398,6 @@ components:
           type: string
       type: object
     CreateSubscriptionCommand:
-      additionalProperties: false
       example:
         serverLimit: 6
         yearlyPrice: 9.301444243932576
@@ -49665,7 +49441,6 @@ components:
           type: number
       type: object
     CreateTicketCommand:
-      additionalProperties: false
       example:
         organizationId: 0
         name: name
@@ -49686,7 +49461,6 @@ components:
           $ref: "#/components/schemas/TicketPriority"
       type: object
     CreateTrustedRegistriesCommand:
-      additionalProperties: false
       example:
         registry: registry
         accessProfileId: 0
@@ -49699,7 +49473,6 @@ components:
           type: integer
       type: object
     CreateUserCommand:
-      additionalProperties: false
       example:
         organizationId: 0
         role: Admin
@@ -49724,7 +49497,6 @@ components:
           $ref: "#/components/schemas/UserRole"
       type: object
     CreateVirtualClusterCommand:
-      additionalProperties: false
       example:
         expiredAt: 2000-01-23T04:56:07.000+00:00
         exposeHostname: exposeHostname
@@ -49789,7 +49561,6 @@ components:
           $ref: "#/components/schemas/CreateVirtualClusterResourceLimits"
       type: object
     CreateVirtualClusterResourceLimits:
-      additionalProperties: false
       example:
         maxClusterLimits: 2.027123023002322
         defaultContainerRequest: 7.386281948385884
@@ -49819,7 +49590,6 @@ components:
       - resourceUnit
       type: object
     CreateVirtualClusterWorkloadResources:
-      additionalProperties: false
       example:
         maxIngresses: 7
         maxPvcs: 5
@@ -49850,7 +49620,6 @@ components:
       - maxTotalPvcSize
       type: object
     CreateVsphereCommand:
-      additionalProperties: false
       example:
         continent: continent
         datacenterName: datacenterName
@@ -49932,7 +49701,6 @@ components:
           type: boolean
       type: object
     CreateVsphereNetworkDto:
-      additionalProperties: false
       example:
         endAllocationRange: endAllocationRange
         netMask: 6
@@ -49961,7 +49729,6 @@ components:
           type: string
       type: object
     CreateZadaraCloudCommand:
-      additionalProperties: false
       example:
         organizationId: 0
         zadaraAccessKeyId: zadaraAccessKeyId
@@ -50003,7 +49770,6 @@ components:
           type: string
       type: object
     CredentialChartDto:
-      additionalProperties: false
       example:
         vsphere: 4
         zadara: 7
@@ -50048,7 +49814,6 @@ components:
           type: integer
       type: object
     CredentialMakeDefaultCommand:
-      additionalProperties: false
       example:
         id: 0
       properties:
@@ -50057,7 +49822,6 @@ components:
           type: integer
       type: object
     CronJobCommand:
-      additionalProperties: false
       example:
         cronPeriod: cronPeriod
       properties:
@@ -50066,7 +49830,6 @@ components:
           type: string
       type: object
     CronjobActionCommand:
-      additionalProperties: false
       example:
         data:
         - name: name
@@ -50092,7 +49855,6 @@ components:
       - projectId
       type: object
     CronjobsSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         includePublicImportedClusters: true
@@ -50115,7 +49877,6 @@ components:
           type: boolean
       type: object
     CronjobsSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -50142,7 +49903,6 @@ components:
           type: integer
       type: object
     CsvExporter:
-      additionalProperties: false
       example:
         fileName: fileName
         contentType: contentType
@@ -50161,7 +49921,6 @@ components:
       - fileName
       type: object
     DaemonSetSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         includePublicImportedClusters: true
@@ -50184,7 +49943,6 @@ components:
           type: boolean
       type: object
     DaemonSetSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -50211,7 +49969,6 @@ components:
           type: integer
       type: object
     DaemonsetActionCommand:
-      additionalProperties: false
       example:
         name: name
         namespace: namespace
@@ -50236,7 +49993,6 @@ components:
       - projectId
       type: object
     DaemonsetListDto:
-      additionalProperties: false
       example:
         createdAt: createdAt
         image: image
@@ -50277,7 +50033,6 @@ components:
           type: string
       type: object
     DaemonsetListDtoCursorStringPaginatedResponse:
-      additionalProperties: false
       example:
         nextCursor: nextCursor
         data:
@@ -50326,7 +50081,6 @@ components:
       - totalCount
       type: object
     DashboardChart:
-      additionalProperties: false
       example:
         projects:
           failedToImport:
@@ -50807,7 +50561,6 @@ components:
           $ref: "#/components/schemas/ServerChartDto"
       type: object
     DatacenterListCommand:
-      additionalProperties: false
       example:
         password: password
         datacenterName: datacenterName
@@ -50828,7 +50581,6 @@ components:
           type: string
       type: object
     DatacenterSummary:
-      additionalProperties: false
       example:
         name: name
         datacenter: datacenter
@@ -50841,7 +50593,6 @@ components:
           type: string
       type: object
     DatastoreListCommand:
-      additionalProperties: false
       example:
         password: password
         datacenterId: datacenterId
@@ -50862,7 +50613,6 @@ components:
           type: string
       type: object
     DatastoreSummary:
-      additionalProperties: false
       example:
         freeSpace: 6
         datastore: datastore
@@ -50894,7 +50644,6 @@ components:
       - Yearly
       type: string
     DateInterval:
-      additionalProperties: false
       example:
         price: 6.027456183070403
         start: 2000-01-23T04:56:07.000+00:00
@@ -50911,7 +50660,6 @@ components:
           type: number
       type: object
     DeleteAlertCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -50920,7 +50668,6 @@ components:
           type: integer
       type: object
     DeleteBackupCommand:
-      additionalProperties: false
       example:
         name: name
         projectId: 0
@@ -50933,7 +50680,6 @@ components:
           type: string
       type: object
     DeleteBackupStorageLocationCommand:
-      additionalProperties: false
       example:
         storageLocation: storageLocation
         projectId: 0
@@ -50946,7 +50692,6 @@ components:
           type: string
       type: object
     DeleteExecutorCommand:
-      additionalProperties: false
       example:
         id: 0
       properties:
@@ -50955,19 +50700,14 @@ components:
           type: integer
       type: object
     DeleteExpiredAlertsCommand:
-      additionalProperties: false
       type: object
     DeleteExpiredHistoryLogsCommand:
-      additionalProperties: false
       type: object
     DeleteExpiredRefreshTokensCommand:
-      additionalProperties: false
       type: object
     DeleteExpiredServersCommand:
-      additionalProperties: false
       type: object
     DeleteImageFromProjectCommand:
-      additionalProperties: false
       example:
         ids:
         - 0
@@ -50981,10 +50721,8 @@ components:
           type: array
       type: object
     DeleteImportedBackupLocationsCommand:
-      additionalProperties: false
       type: object
     DeleteImportedProjectCommand:
-      additionalProperties: false
       example:
         isForceDelete: true
         projectId: 0
@@ -50996,7 +50734,6 @@ components:
           type: boolean
       type: object
     DeleteKubeConfigByProjectIdCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -51005,7 +50742,6 @@ components:
           type: integer
       type: object
     DeleteKubeConfigCommand:
-      additionalProperties: false
       example:
         id: 0
       properties:
@@ -51014,7 +50750,6 @@ components:
           type: integer
       type: object
     DeleteKubernetesResourceCommand:
-      additionalProperties: false
       example:
         data:
         - name: name
@@ -51039,10 +50774,8 @@ components:
       - projectId
       type: object
     DeleteMyAccountCommand:
-      additionalProperties: false
       type: object
     DeleteOrganizationFromGroupCommand:
-      additionalProperties: false
       example:
         groupId: 0
         organizations:
@@ -51063,7 +50796,6 @@ components:
       - organizations
       type: object
     DeletePartnerCommand:
-      additionalProperties: false
       example:
         partnerId: 0
       properties:
@@ -51072,7 +50804,6 @@ components:
           type: integer
       type: object
     DeleteProjectCommand:
-      additionalProperties: false
       example:
         isForceDelete: true
         projectId: 0
@@ -51084,19 +50815,14 @@ components:
           type: boolean
       type: object
     DeleteRedundantProjectActionsCommand:
-      additionalProperties: false
       type: object
     DeleteRegisterExpiredOrganizationCommand:
-      additionalProperties: false
       type: object
     DeleteRemovedSpotInstancesCommand:
-      additionalProperties: false
       type: object
     DeleteRemovedUsersKubeConfigCommand:
-      additionalProperties: false
       type: object
     DeleteRepositoryCommand:
-      additionalProperties: false
       example:
         appRepoId: 0
       properties:
@@ -51105,7 +50831,6 @@ components:
           type: integer
       type: object
     DeleteRestoreCommand:
-      additionalProperties: false
       example:
         name: name
         projectId: 0
@@ -51118,7 +50843,6 @@ components:
           type: string
       type: object
     DeleteScheduleCommand:
-      additionalProperties: false
       example:
         name: name
         projectId: 0
@@ -51131,7 +50855,6 @@ components:
           type: string
       type: object
     DeleteSlackConfigCommand:
-      additionalProperties: false
       example:
         ids:
         - 0
@@ -51145,7 +50868,6 @@ components:
           type: array
       type: object
     DeleteSshUserCommand:
-      additionalProperties: false
       example:
         id: 0
       properties:
@@ -51154,7 +50876,6 @@ components:
           type: integer
       type: object
     DeleteStandAloneProfileCommand:
-      additionalProperties: false
       example:
         id: 0
       properties:
@@ -51163,7 +50884,6 @@ components:
           type: integer
       type: object
     DeleteSubscriptionCommand:
-      additionalProperties: false
       example:
         id: 0
       properties:
@@ -51172,7 +50892,6 @@ components:
           type: integer
       type: object
     DeleteUserFromGroupCommand:
-      additionalProperties: false
       example:
         groupId: 0
         users:
@@ -51192,7 +50911,6 @@ components:
       - users
       type: object
     DeleteVirtualClusterCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -51201,7 +50919,6 @@ components:
           type: integer
       type: object
     DeleteVmDiskCommand:
-      additionalProperties: false
       example:
         vmDiskIds:
         - 6
@@ -51219,7 +50936,6 @@ components:
           type: array
       type: object
     DeploymentActionCommand:
-      additionalProperties: false
       example:
         name: name
         namespace: namespace
@@ -51249,7 +50965,6 @@ components:
       - projectId
       type: object
     DeploymentCommitVmCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -51258,7 +50973,6 @@ components:
           type: integer
       type: object
     DeploymentCompletedCommand:
-      additionalProperties: false
       example:
         result: result
         fromCronJob: true
@@ -51274,7 +50988,6 @@ components:
           type: boolean
       type: object
     DeploymentDisableAiCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -51283,7 +50996,6 @@ components:
           type: integer
       type: object
     DeploymentDisableBackupCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -51292,7 +51004,6 @@ components:
           type: integer
       type: object
     DeploymentDisableMonitoringCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -51301,7 +51012,6 @@ components:
           type: integer
       type: object
     DeploymentDisableOpaCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -51310,7 +51020,6 @@ components:
           type: integer
       type: object
     DeploymentEnableAiCommand:
-      additionalProperties: false
       example:
         aiCredentialId: 6
         projectId: 0
@@ -51323,7 +51032,6 @@ components:
           type: integer
       type: object
     DeploymentEnableBackupCommand:
-      additionalProperties: false
       example:
         s3CredentialId: 6
         projectId: 0
@@ -51336,7 +51044,6 @@ components:
           type: integer
       type: object
     DeploymentEnableMonitoringCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -51345,7 +51052,6 @@ components:
           type: integer
       type: object
     DeploymentListDto:
-      additionalProperties: false
       example:
         createdAt: createdAt
         images:
@@ -51378,7 +51084,6 @@ components:
           type: array
       type: object
     DeploymentListDtoCursorStringPaginatedResponse:
-      additionalProperties: false
       example:
         nextCursor: nextCursor
         data:
@@ -51425,7 +51130,6 @@ components:
       - totalCount
       type: object
     DeploymentOpaEnableCommand:
-      additionalProperties: false
       example:
         opaCredentialId: 6
         projectId: 0
@@ -51438,7 +51142,6 @@ components:
           type: integer
       type: object
     DeploymentSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         includePublicImportedClusters: true
@@ -51461,7 +51164,6 @@ components:
           type: boolean
       type: object
     DeploymentSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -51488,7 +51190,6 @@ components:
           type: integer
       type: object
     DescribeKubernetesResourceCommand:
-      additionalProperties: false
       example:
         kind: None
         name: name
@@ -51511,7 +51212,6 @@ components:
       - projectId
       type: object
     Diff:
-      additionalProperties: false
       example:
         totalMonthlyCost: totalMonthlyCost
         resources:
@@ -51688,7 +51388,6 @@ components:
           type: string
       type: object
     DisableAutoscalingCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -51697,7 +51396,6 @@ components:
           type: integer
       type: object
     DisableTwoFaManagementCommand:
-      additionalProperties: false
       example:
         verificationCode: verificationCode
       properties:
@@ -51706,7 +51404,6 @@ components:
           type: string
       type: object
     DisableTwoFactorAuthCommand:
-      additionalProperties: false
       example:
         code: code
         isRecoveryCode: true
@@ -51718,7 +51415,6 @@ components:
           type: boolean
       type: object
     DisableUserCommand:
-      additionalProperties: false
       example:
         disable: true
         id: id
@@ -51730,7 +51426,6 @@ components:
           type: boolean
       type: object
     DnsCommand:
-      additionalProperties: false
       example:
         address: address
       properties:
@@ -51739,7 +51434,6 @@ components:
           type: string
       type: object
     DnsNtpAddressEditDto:
-      additionalProperties: false
       example:
         address: address
       properties:
@@ -51748,7 +51442,6 @@ components:
           type: string
       type: object
     DnsServerCreateDto:
-      additionalProperties: false
       example:
         address: address
       properties:
@@ -51757,7 +51450,6 @@ components:
           type: string
       type: object
     DnsServerListDto:
-      additionalProperties: false
       example:
         address: address
         id: 1
@@ -51773,7 +51465,6 @@ components:
       - id
       type: object
     DnsServersListDto:
-      additionalProperties: false
       example:
         address: address
         accessProfileName: accessProfileName
@@ -51794,7 +51485,6 @@ components:
       - id
       type: object
     DocumentationData:
-      additionalProperties: false
       example:
         role: role
         link: link
@@ -51815,7 +51505,6 @@ components:
           type: string
       type: object
     DocumentationsList:
-      additionalProperties: false
       example:
         data:
         - role: role
@@ -51841,7 +51530,6 @@ components:
       - totalCount
       type: object
     DownloadInvoiceCommand:
-      additionalProperties: false
       example:
         name: name
         id: 0
@@ -51854,7 +51542,6 @@ components:
           type: string
       type: object
     DownloadKubeConfigCommand:
-      additionalProperties: false
       example:
         id: 0
         projectId: 6
@@ -51867,7 +51554,6 @@ components:
           type: integer
       type: object
     DownloadKubernetesResourceCommand:
-      additionalProperties: false
       example:
         kind: None
         name: name
@@ -51890,7 +51576,6 @@ components:
       - projectId
       type: object
     DuplicateNameCheckerCommand:
-      additionalProperties: false
       example:
         organizationId: 0
         name: name
@@ -51908,7 +51593,6 @@ components:
           type: string
       type: object
     DuplicateProjectAppCheckerCommand:
-      additionalProperties: false
       example:
         name: name
         namespace: namespace
@@ -52016,7 +51700,6 @@ components:
       - Rollback
       type: string
     EditAlertingIntegrationCommand:
-      additionalProperties: false
       example:
         alertingProfileId: 6
         id: 0
@@ -52040,7 +51723,6 @@ components:
           type: integer
       type: object
     EditAllowedHostDto:
-      additionalProperties: false
       example:
         ipAddress: ipAddress
         description: description
@@ -52057,7 +51739,6 @@ components:
           type: integer
       type: object
     EditArticleCommand:
-      additionalProperties: false
       example:
         messageId: messageId
         body: body
@@ -52070,7 +51751,6 @@ components:
           type: string
       type: object
     EditAutoscalingCommand:
-      additionalProperties: false
       example:
         minSize: 6
         maxSize: 1
@@ -52087,7 +51767,6 @@ components:
           type: integer
       type: object
     EditCatalogAppParamCommand:
-      additionalProperties: false
       example:
         catalogAppId: 0
         parameters:
@@ -52112,7 +51791,6 @@ components:
           type: array
       type: object
     EditCatalogAppVersionCommand:
-      additionalProperties: false
       example:
         catalogAppId: 0
         version: version
@@ -52125,7 +51803,6 @@ components:
           type: string
       type: object
     EditCatalogCommand:
-      additionalProperties: false
       example:
         name: name
         description: description
@@ -52142,7 +51819,6 @@ components:
           type: string
       type: object
     EditProjectAppExtraValuesCommand:
-      additionalProperties: false
       example:
         extraValues: extraValues
         projectAppId: 0
@@ -52160,7 +51836,6 @@ components:
           type: integer
       type: object
     EditProjectAppParamsDto:
-      additionalProperties: false
       example:
         value: value
         key: key
@@ -52173,7 +51848,6 @@ components:
           type: string
       type: object
     EditSecurityGroupCommand:
-      additionalProperties: false
       example:
         protocol: protocol
         name: name
@@ -52202,7 +51876,6 @@ components:
           type: string
       type: object
     EditSshUserCommand:
-      additionalProperties: false
       example:
         sshPublicKey: sshPublicKey
         name: name
@@ -52223,7 +51896,6 @@ components:
           type: integer
       type: object
     EditTicketCommand:
-      additionalProperties: false
       example:
         name: name
         description: description
@@ -52240,7 +51912,6 @@ components:
           type: string
       type: object
     EditVirtualClusterQuotasCommand:
-      additionalProperties: false
       example:
         vClusterId: 0
         ephemeralStorageLimits:
@@ -52287,7 +51958,6 @@ components:
       - workloadResources
       type: object
     EditVirtualClusterResourceLimits:
-      additionalProperties: false
       example:
         maxClusterLimits: 9.301444243932576
         defaultContainerRequest: 2.027123023002322
@@ -52317,7 +51987,6 @@ components:
       - resourceUnit
       type: object
     EditVirtualClusterWorkloadResources:
-      additionalProperties: false
       example:
         maxIngresses: 5
         maxPvcs: 1
@@ -52353,7 +52022,6 @@ components:
       - Change
       type: string
     EnableAutoscalingCommand:
-      additionalProperties: false
       example:
         flavor: flavor
         diskSize: 5.962133916683182
@@ -52381,10 +52049,8 @@ components:
           type: boolean
       type: object
     EnableTwoFaManagementCommand:
-      additionalProperties: false
       type: object
     EndpointElements:
-      additionalProperties: false
       example:
         path: path
         controller: controller
@@ -52415,7 +52081,6 @@ components:
       - path
       type: object
     EnsureCodesDownloadedCommand:
-      additionalProperties: false
       example:
         data:
           recoveryCodes:
@@ -52426,7 +52091,6 @@ components:
           $ref: "#/components/schemas/TwoFactorAuthVerifyResult"
       type: object
     EnumList:
-      additionalProperties: false
       example:
         serverStatuses:
         - name: name
@@ -52740,7 +52404,6 @@ components:
       - validityPeriods
       type: object
     EphemeralStorageLimitsDto:
-      additionalProperties: false
       example:
         maxClusterLimits: 2
         defaultContainerRequest: 4
@@ -52766,7 +52429,6 @@ components:
       - maxClusterRequests
       type: object
     EstimatedInfracost:
-      additionalProperties: false
       example:
         timeGenerated: timeGenerated
         summary:
@@ -53841,7 +53503,6 @@ components:
           $ref: "#/components/schemas/Summary"
       type: object
     ExceededQuotaDto:
-      additionalProperties: false
       example:
         cloudId: 0
         name: name
@@ -53857,7 +53518,6 @@ components:
       - name
       type: object
     ExceededQuotaList:
-      additionalProperties: false
       example:
         data:
         - cloudId: 0
@@ -53879,7 +53539,6 @@ components:
       - totalCount
       type: object
     ExecutorEntityDto:
-      additionalProperties: false
       example:
         name: name
         health: None
@@ -53910,7 +53569,6 @@ components:
       - Warning
       type: string
     ExecutorListResponse:
-      additionalProperties: false
       example:
         data:
         - name: name
@@ -53938,7 +53596,6 @@ components:
       - totalCount
       type: object
     ExportKubeConfigCommand:
-      additionalProperties: false
       example:
         id: 0
         projectId: 6
@@ -53951,7 +53608,6 @@ components:
           type: integer
       type: object
     ExportLokiLogsCommand:
-      additionalProperties: false
       example:
         query:
           endDate: 2000-01-23T04:56:07.000+00:00
@@ -53970,7 +53626,6 @@ components:
           $ref: "#/components/schemas/LokiLogsQuery"
       type: object
     ExtendTrialPeriodCommand:
-      additionalProperties: false
       example:
         organizationId: 0
         dateTime: 2000-01-23T04:56:07.000+00:00
@@ -53983,19 +53638,14 @@ components:
           type: string
       type: object
     FetchAzureFlavorPricesCommand:
-      additionalProperties: false
       type: object
     FetchKubernetesAlertDataCommand:
-      additionalProperties: false
       type: object
     FetchKubernetesOverviewDataCommand:
-      additionalProperties: false
       type: object
     FillArtifacthubOrganizationCommand:
-      additionalProperties: false
       type: object
     Filter:
-      additionalProperties: false
       example:
         value: value
         operator: operator
@@ -54008,7 +53658,6 @@ components:
           type: string
       type: object
     FilteringElementDto:
-      additionalProperties: false
       example:
         organizationName: organizationName
         name: name
@@ -54021,7 +53670,6 @@ components:
           type: string
       type: object
     FinalPriceCommand:
-      additionalProperties: false
       example:
         subscriptionId: 0
       properties:
@@ -54030,7 +53678,6 @@ components:
           type: integer
       type: object
     FinalPriceDto:
-      additionalProperties: false
       example:
         yearlyFinalPrice: 0.8008281904610115
         monthlyFinalPrice: 6.027456183070403
@@ -54043,7 +53690,6 @@ components:
           type: number
       type: object
     FlavorsListDto:
-      additionalProperties: false
       example:
         maxDataDiskCount: 1.4658129805029452
         name: name
@@ -54073,7 +53719,6 @@ components:
       - ram
       type: object
     ForceToResetPasswordCommand:
-      additionalProperties: false
       example:
         id: id
       properties:
@@ -54082,7 +53727,6 @@ components:
           type: string
       type: object
     ForgotPasswordCommand:
-      additionalProperties: false
       example:
         email: email
       properties:
@@ -54091,7 +53735,6 @@ components:
           type: string
       type: object
     FullSpotOperationCommand:
-      additionalProperties: false
       example:
         mode: mode
         id: 0
@@ -54104,7 +53747,6 @@ components:
           type: string
       type: object
     GenericKubernetesList:
-      additionalProperties: false
       example:
         data:
         - projectCount: 6
@@ -54164,7 +53806,6 @@ components:
       - totalCount
       type: object
     GenericKubernetesListDto:
-      additionalProperties: false
       example:
         projectCount: 6
         organizationName: organizationName
@@ -54246,7 +53887,6 @@ components:
       - projectCount
       type: object
     GetCatalogAppValueAutocompleteCommand:
-      additionalProperties: false
       example:
         packageId: packageId
         isQuestion: true
@@ -54268,7 +53908,6 @@ components:
           type: boolean
       type: object
     GetCatalogAppValueCommand:
-      additionalProperties: false
       example:
         packageId: packageId
         version: version
@@ -54281,7 +53920,6 @@ components:
           type: string
       type: object
     GetEksClusterAuthCommand:
-      additionalProperties: false
       example:
         kubeConfigName: kubeConfigName
         configToken: configToken
@@ -54298,7 +53936,6 @@ components:
           type: string
       type: object
     GetProjectOperationCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -54307,7 +53944,6 @@ components:
           type: integer
       type: object
     GetToken:
-      additionalProperties: false
       example:
         isForcedToEnabled2Fa: true
         refreshTokenExpireTime: 2000-01-23T04:56:07.000+00:00
@@ -54333,7 +53969,6 @@ components:
       - token
       type: object
     GkeClusterDto:
-      additionalProperties: false
       example:
         name: name
         location: location
@@ -54346,7 +53981,6 @@ components:
           type: string
       type: object
     GkeClustersListCommand:
-      additionalProperties: false
       example:
         cloudId: 0
       properties:
@@ -54355,7 +53989,6 @@ components:
           type: integer
       type: object
     GoogleBillingAccountListCommand:
-      additionalProperties: false
       properties:
         config:
           format: binary
@@ -54363,7 +53996,6 @@ components:
           type: string
       type: object
     GoogleCredentialList:
-      additionalProperties: false
       example:
         data:
         - projects:
@@ -54429,7 +54061,6 @@ components:
       - totalCount
       type: object
     GoogleCredentialsListDto:
-      additionalProperties: false
       example:
         projects:
         - name: name
@@ -54528,7 +54159,6 @@ components:
       - zones
       type: object
     GoogleFlavorDto:
-      additionalProperties: false
       example:
         windowsSpotPrice: 2.3021358869347655
         name: name
@@ -54578,7 +54208,6 @@ components:
       - windowsSpotPrice
       type: object
     GoogleFlavorList:
-      additionalProperties: false
       example:
         data:
         - windowsSpotPrice: 2.3021358869347655
@@ -54612,7 +54241,6 @@ components:
       - totalCount
       type: object
     GoogleRegionListCommand:
-      additionalProperties: false
       properties:
         config:
           format: binary
@@ -54620,7 +54248,6 @@ components:
           type: string
       type: object
     GoogleZoneListCommand:
-      additionalProperties: false
       properties:
         config:
           format: binary
@@ -54635,7 +54262,6 @@ components:
           type: integer
       type: object
     Group:
-      additionalProperties: false
       example:
         lastEvaluation: 2000-01-23T04:56:07.000+00:00
         file: file
@@ -54774,7 +54400,6 @@ components:
           type: string
       type: object
     GroupList:
-      additionalProperties: false
       example:
         data:
         - name: name
@@ -54826,7 +54451,6 @@ components:
       - totalCount
       type: object
     GroupListDto:
-      additionalProperties: false
       example:
         name: name
         organizations:
@@ -54869,7 +54493,6 @@ components:
       - name
       type: object
     GroupOrganizationsDto:
-      additionalProperties: false
       example:
         role: role
         name: name
@@ -54892,7 +54515,6 @@ components:
       - role
       type: object
     GroupUsersDto:
-      additionalProperties: false
       example:
         userName: userName
         userId: userId
@@ -54908,7 +54530,6 @@ components:
       - userName
       type: object
     GroupedBillingInfo:
-      additionalProperties: false
       example:
         data:
         - tcu: 0
@@ -54931,7 +54552,6 @@ components:
           type: string
       type: object
     GroupedBillingListQuery:
-      additionalProperties: false
       example:
         organizationId: 0
         periodDuration: none
@@ -54948,7 +54568,6 @@ components:
           type: boolean
       type: object
     GroupedBillings:
-      additionalProperties: false
       example:
         tcu: 0
         startDate: startDate
@@ -54961,7 +54580,6 @@ components:
           type: integer
       type: object
     GroupedPrometheusBillingListQuery:
-      additionalProperties: false
       example:
         organizationId: 0
         periodDuration: none
@@ -54974,7 +54592,6 @@ components:
           $ref: "#/components/schemas/BillingPeriod"
       type: object
     HelmCredentialCommand:
-      additionalProperties: false
       example:
         password: password
         url: url
@@ -54991,7 +54608,6 @@ components:
           type: string
       type: object
     HelmReleasesSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         includePublicImportedClusters: true
@@ -55014,7 +54630,6 @@ components:
           type: boolean
       type: object
     HelmReleasesSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -55041,7 +54656,6 @@ components:
           type: integer
       type: object
     HypervisorListCommand:
-      additionalProperties: false
       example:
         tokenId: tokenId
         cloudId: 0
@@ -55063,7 +54677,6 @@ components:
           type: integer
       type: object
     ImageByIdCommand:
-      additionalProperties: false
       example:
         imageId: imageId
         cloudId: 0
@@ -55076,7 +54689,6 @@ components:
           type: string
       type: object
     ImportBackupStorageLocationCommand:
-      additionalProperties: false
       example:
         targetProjectId: 0
         sourceProjectId: 6
@@ -55089,7 +54701,6 @@ components:
           type: integer
       type: object
     ImportClusterCommand:
-      additionalProperties: false
       properties:
         name:
           type: string
@@ -55140,7 +54751,6 @@ components:
       - FullyManaged
       type: string
     ImportClusterValidateKubeConfigCommand:
-      additionalProperties: false
       properties:
         config:
           format: binary
@@ -55163,7 +54773,6 @@ components:
           $ref: "#/components/schemas/EImportClusterType"
       type: object
     ImportRepoCommand:
-      additionalProperties: false
       example:
         organizationId: 0
         password: password
@@ -55189,7 +54798,6 @@ components:
           type: integer
       type: object
     ImportedAsCloudCredentialList:
-      additionalProperties: false
       example:
         visibility:
           unlock:
@@ -55245,7 +54853,6 @@ components:
       - visibility
       type: object
     ImportedAsCloudCredentialVisibility:
-      additionalProperties: false
       example:
         unlock:
           reasons:
@@ -55278,7 +54885,6 @@ components:
       - unlock
       type: object
     ImportedAsFullyManagedList:
-      additionalProperties: false
       example:
         visibility:
           unlock:
@@ -55400,7 +55006,6 @@ components:
       - visibility
       type: object
     ImportedAsFullyManagedVisibility:
-      additionalProperties: false
       example:
         unlock:
           reasons:
@@ -55532,7 +55137,6 @@ components:
       - unlock
       type: object
     ImportedAsReadOnlyList:
-      additionalProperties: false
       example:
         visibility:
           unlock:
@@ -55582,7 +55186,6 @@ components:
       - visibility
       type: object
     ImportedAsReadOnlyVisibility:
-      additionalProperties: false
       example:
         unlock:
           reasons:
@@ -55606,7 +55209,6 @@ components:
       - unlock
       type: object
     ImportedClusterDetailsDto:
-      additionalProperties: false
       example:
         s3CredentialId: 1
         accessIp: accessIp
@@ -55723,7 +55325,6 @@ components:
       - status
       type: object
     ImportedClusterDisableAiCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -55732,7 +55333,6 @@ components:
           type: integer
       type: object
     ImportedClusterDisableBackupCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -55741,7 +55341,6 @@ components:
           type: integer
       type: object
     ImportedClusterDisableMonitoringCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -55750,7 +55349,6 @@ components:
           type: integer
       type: object
     ImportedClusterDisableOpaCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -55759,7 +55357,6 @@ components:
           type: integer
       type: object
     ImportedClusterEnableAiCommand:
-      additionalProperties: false
       example:
         aiCredentialId: 6
         projectId: 0
@@ -55772,7 +55369,6 @@ components:
           type: integer
       type: object
     ImportedClusterEnableBackupCommand:
-      additionalProperties: false
       example:
         projectId: 0
         backupCredentialId: 6
@@ -55785,7 +55381,6 @@ components:
           type: integer
       type: object
     ImportedClusterEnableMonitoringCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -55794,7 +55389,6 @@ components:
           type: integer
       type: object
     ImportedClusterEnableOpaCommand:
-      additionalProperties: false
       example:
         opaProfileId: 6
         projectId: 0
@@ -55807,7 +55401,6 @@ components:
           type: integer
       type: object
     ImportedClusterList:
-      additionalProperties: false
       example:
         data:
         - organizationName: organizationName
@@ -55918,7 +55511,6 @@ components:
       - totalCount
       type: object
     ImportedClusterListDto:
-      additionalProperties: false
       example:
         organizationName: organizationName
         accessIp: accessIp
@@ -56022,7 +55614,6 @@ components:
       - wasmEnabled
       type: object
     InfraBillingListCommand:
-      additionalProperties: false
       example:
         organizationId: 0
         filter: Monthly
@@ -56035,7 +55626,6 @@ components:
           $ref: "#/components/schemas/DateFilter"
       type: object
     InfraBillingSummariesCreateCommand:
-      additionalProperties: false
       example:
         organizationId: 6
         endApply: 2000-01-23T04:56:07.000+00:00
@@ -56062,7 +55652,6 @@ components:
           type: integer
       type: object
     InfraBillingSummaryDto:
-      additionalProperties: false
       example:
         infraProductId: 0
         intervals:
@@ -56091,7 +55680,6 @@ components:
           type: number
       type: object
     InfraOrganizationsListDto:
-      additionalProperties: false
       example:
         organizationId: 0
         createdAt: 2000-01-23T04:56:07.000+00:00
@@ -56120,7 +55708,6 @@ components:
           type: boolean
       type: object
     InfraProductDto:
-      additionalProperties: false
       example:
         yearlyPriceId: yearlyPriceId
         productId: productId
@@ -56149,7 +55736,6 @@ components:
           type: string
       type: object
     IngressListDto:
-      additionalProperties: false
       example:
         createdAt: createdAt
         default: default
@@ -56178,7 +55764,6 @@ components:
           type: string
       type: object
     IngressListDtoCursorStringPaginatedResponse:
-      additionalProperties: false
       example:
         nextCursor: nextCursor
         data:
@@ -56221,7 +55806,6 @@ components:
       - totalCount
       type: object
     IngressSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         includePublicImportedClusters: true
@@ -56244,7 +55828,6 @@ components:
           type: boolean
       type: object
     IngressSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -56271,7 +55854,6 @@ components:
           type: integer
       type: object
     InstanceAppListDto:
-      additionalProperties: false
       example:
         catalogAppName: catalogAppName
         created: created
@@ -56370,7 +55952,6 @@ components:
       - version
       type: object
     InteractiveShellDto:
-      additionalProperties: false
       example:
         adminKubeConfig: adminKubeConfig
         kubeConfig: kubeConfig
@@ -56383,7 +55964,6 @@ components:
           type: string
       type: object
     InteractiveShellSendCommand:
-      additionalProperties: false
       example:
         instanceId: 6
         projectId: 0
@@ -56401,7 +55981,6 @@ components:
           type: integer
       type: object
     InternalAlertDto:
-      additionalProperties: false
       example:
         fingerprint: fingerprint
         description: description
@@ -56426,7 +56005,6 @@ components:
           type: integer
       type: object
     InternalProjectListDto:
-      additionalProperties: false
       example:
         accessIp: accessIp
         importClusterType: 5
@@ -56489,7 +56067,6 @@ components:
           type: string
       type: object
     InvoiceDto:
-      additionalProperties: false
       example:
         isPaid: true
         endDate: 2000-01-23T04:56:07.000+00:00
@@ -56548,7 +56125,6 @@ components:
       - stripeInvoiceId
       type: object
     InvoiceListDto:
-      additionalProperties: false
       example:
         organizationName: organizationName
         endDate: endDate
@@ -56616,7 +56192,6 @@ components:
       - subscriptionType
       type: object
     InvoiceSecret:
-      additionalProperties: false
       example:
         secret: secret
       properties:
@@ -56625,7 +56200,6 @@ components:
           type: string
       type: object
     Invoices:
-      additionalProperties: false
       example:
         data:
         - organizationName: organizationName
@@ -56671,7 +56245,6 @@ components:
       - totalCount
       type: object
     IpAddressRangeCountCommand:
-      additionalProperties: false
       example:
         end: end
         begin: begin
@@ -56684,7 +56257,6 @@ components:
           type: string
       type: object
     IpAddressRangeListCommand:
-      additionalProperties: false
       example:
         netMask: 0
         ipAddress: ipAddress
@@ -56701,7 +56273,6 @@ components:
           type: string
       type: object
     JobsSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         includePublicImportedClusters: true
@@ -56724,7 +56295,6 @@ components:
           type: boolean
       type: object
     JobsSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -56751,7 +56321,6 @@ components:
           type: integer
       type: object
     KeycloakCheckerCommand:
-      additionalProperties: false
       example:
         clientId: clientId
         name: name
@@ -56776,7 +56345,6 @@ components:
           type: string
       type: object
     KeycloakCreateCommand:
-      additionalProperties: false
       example:
         clientId: clientId
         name: name
@@ -56801,7 +56369,6 @@ components:
           type: string
       type: object
     KeycloakDeleteCommand:
-      additionalProperties: false
       example:
         id: 0
       properties:
@@ -56810,7 +56377,6 @@ components:
           type: integer
       type: object
     KeycloakEditCommand:
-      additionalProperties: false
       example:
         clientId: clientId
         name: name
@@ -56839,7 +56405,6 @@ components:
           type: string
       type: object
     KeycloakListDto:
-      additionalProperties: false
       example:
         organizationId: 6
         clientId: clientId
@@ -56888,7 +56453,6 @@ components:
       - url
       type: object
     KubeConfigForUserDto:
-      additionalProperties: false
       example:
         isAccessibleForManager: true
         canAccessTerminal: true
@@ -56971,7 +56535,6 @@ components:
       - userId
       type: object
     KubeConfigForUserList:
-      additionalProperties: false
       example:
         data:
         - isAccessibleForManager: true
@@ -57032,7 +56595,6 @@ components:
       - totalCount
       type: object
     KubeConfigInteractiveShellCommand:
-      additionalProperties: false
       example:
         kubeConfigId: 0
         projectId: 6
@@ -57049,7 +56611,6 @@ components:
           type: integer
       type: object
     KubeConfigResponse:
-      additionalProperties: false
       example:
         data: data
       properties:
@@ -57060,7 +56621,6 @@ components:
       - data
       type: object
     KubeConfigRoleResponse:
-      additionalProperties: false
       example:
         data:
         - name: name
@@ -57082,7 +56642,6 @@ components:
       - totalCount
       type: object
     KubernetesActionRequest:
-      additionalProperties: false
       example:
         name: name
         namespace: namespace
@@ -57096,7 +56655,6 @@ components:
       - name
       type: object
     KubernetesActionResponse:
-      additionalProperties: false
       example:
         failed:
         - failed
@@ -57117,7 +56675,6 @@ components:
           type: array
       type: object
     KubernetesAlertCreateDto:
-      additionalProperties: false
       example:
         fingerprint: fingerprint
         annotations:
@@ -57146,7 +56703,6 @@ components:
           type: string
       type: object
     KubernetesAlertDto:
-      additionalProperties: false
       example:
         severity: severity
         lastModifiedBy: lastModifiedBy
@@ -57227,7 +56783,6 @@ components:
       - title
       type: object
     KubernetesAlertDtoForPoller:
-      additionalProperties: false
       example:
         severity: severity
         lastModifiedBy: lastModifiedBy
@@ -57305,7 +56860,6 @@ components:
       - title
       type: object
     KubernetesAlertList:
-      additionalProperties: false
       example:
         data:
         - severity: severity
@@ -57355,7 +56909,6 @@ components:
       - totalCount
       type: object
     KubernetesAnnotations:
-      additionalProperties: false
       example:
         description: description
         title: title
@@ -57368,7 +56921,6 @@ components:
           type: string
       type: object
     KubernetesCliCommand:
-      additionalProperties: false
       example:
         kubeConfigId: 6
         projectId: 0
@@ -57382,7 +56934,6 @@ components:
           type: integer
       type: object
     KubernetesCronjobActionRequest:
-      additionalProperties: false
       example:
         name: name
         namespace: namespace
@@ -57398,7 +56949,6 @@ components:
       - namespace
       type: object
     KubernetesDashboardDto:
-      additionalProperties: false
       example:
         nodes:
         - kubeletDiskPressure: ""
@@ -57442,7 +56992,6 @@ components:
       - pods
       type: object
     KubernetesEventCreateDto:
-      additionalProperties: false
       example:
         reason: reason
         metadata: ""
@@ -57482,7 +57031,6 @@ components:
           type: integer
       type: object
     KubernetesIngressClassCommand:
-      additionalProperties: false
       properties:
         config:
           format: binary
@@ -57503,7 +57051,6 @@ components:
           type: string
       type: object
     KubernetesInteractiveShellDto:
-      additionalProperties: false
       example:
         kubeConfig: kubeConfig
         podName: podName
@@ -57516,7 +57063,6 @@ components:
           type: string
       type: object
     KubernetesNodeLabelsDto:
-      additionalProperties: false
       example:
         value: value
         key: key
@@ -57532,7 +57078,6 @@ components:
       - value
       type: object
     KubernetesOverviewDto:
-      additionalProperties: false
       example:
         unhealthyNodes: 5
         healthyPods: 6
@@ -57577,7 +57122,6 @@ components:
       - unhealthyPods
       type: object
     KubernetesPodLogsCommand:
-      additionalProperties: false
       example:
         container: container
         name: name
@@ -57598,7 +57142,6 @@ components:
           type: string
       type: object
     KubernetesProfilesEntity:
-      additionalProperties: false
       example:
         name: name
         id: 0
@@ -57614,7 +57157,6 @@ components:
           type: boolean
       type: object
     KubernetesProfilesList:
-      additionalProperties: false
       example:
         data:
         - projects:
@@ -57678,7 +57220,6 @@ components:
       - totalCount
       type: object
     KubernetesProfilesListDto:
-      additionalProperties: false
       example:
         projects:
         - name: name
@@ -57773,7 +57314,6 @@ components:
       - wasmEnabled
       type: object
     KubernetesProfilesLockManagerCommand:
-      additionalProperties: false
       example:
         mode: mode
         id: 0
@@ -57786,7 +57326,6 @@ components:
           type: string
       type: object
     KubernetesProfilesSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         offset: 6
@@ -57805,7 +57344,6 @@ components:
           type: string
       type: object
     KubernetesProfilesSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -57828,7 +57366,6 @@ components:
           type: integer
       type: object
     KubernetesQuotaListDto:
-      additionalProperties: false
       example:
         sumOfRamRequestsUsage: 9.301444243932576
         sumOfRamRequestsInGb: 7.061401241503109
@@ -57889,7 +57426,6 @@ components:
       - sumOfRamUsage
       type: object
     KubernetesResourcesDto:
-      additionalProperties: false
       example:
         storageClasses: 1
         ingresses: 1
@@ -57985,7 +57521,6 @@ components:
       - storageClasses
       type: object
     KubernetesVersionListDto:
-      additionalProperties: false
       example:
         isKubevapEnabled: true
         version: version
@@ -57997,7 +57532,6 @@ components:
           type: boolean
       type: object
     KubesprayCreateCommand:
-      additionalProperties: false
       example:
         version: version
         kubernetesVersion: kubernetesVersion
@@ -58010,7 +57544,6 @@ components:
           type: string
       type: object
     KubesprayListDto:
-      additionalProperties: false
       example:
         isDeprecated: true
         id: 0
@@ -58035,7 +57568,6 @@ components:
       - version
       type: object
     Kubesprays:
-      additionalProperties: false
       example:
         data:
         - isDeprecated: true
@@ -58061,7 +57593,6 @@ components:
       - totalCount
       type: object
     LeaveTaikunCommand:
-      additionalProperties: false
       example:
         reason: reason
         message: message
@@ -58074,7 +57605,6 @@ components:
           type: string
       type: object
     LeaveTaikunDto:
-      additionalProperties: false
       example:
         paymentIntentId: paymentIntentId
         paymentClientSecret: paymentClientSecret
@@ -58087,7 +57617,6 @@ components:
           type: string
       type: object
     ListAllBackupStorageLocations:
-      additionalProperties: false
       example:
         projects:
         - 1
@@ -58131,7 +57660,6 @@ components:
       - totalCount
       type: object
     ListAllBackups:
-      additionalProperties: false
       example:
         data:
         - scheduleName: scheduleName
@@ -58163,7 +57691,6 @@ components:
       - totalCount
       type: object
     ListAllDeleteBackupRequests:
-      additionalProperties: false
       example:
         data:
         - phase: phase
@@ -58191,7 +57718,6 @@ components:
       - totalCount
       type: object
     ListAllRestores:
-      additionalProperties: false
       example:
         data:
         - scheduleName: scheduleName
@@ -58239,7 +57765,6 @@ components:
       - totalCount
       type: object
     ListAllSchedules:
-      additionalProperties: false
       example:
         data:
         - phase: phase
@@ -58289,7 +57814,6 @@ components:
       - totalCount
       type: object
     ListCatalogAppAvailableVersionsCommand:
-      additionalProperties: false
       example:
         repoName: repoName
         packageName: packageName
@@ -58306,7 +57830,6 @@ components:
           type: string
       type: object
     ListForLandingPageDto:
-      additionalProperties: false
       example:
         serverLimit: 1
         yearlyPrice: 7.061401241503109
@@ -58390,7 +57913,6 @@ components:
       - yearlyPrice
       type: object
     ListForOrganizationEditDto:
-      additionalProperties: false
       example:
         name: name
         id: 0
@@ -58403,7 +57925,6 @@ components:
           type: string
       type: object
     ListForPartnersDto:
-      additionalProperties: false
       example:
         serverLimit: 1
         yearlyPrice: 7.061401241503109
@@ -58513,7 +58034,6 @@ components:
       - yearlyPrice
       type: object
     LockProjectAppCommand:
-      additionalProperties: false
       example:
         mode: mode
         id: 0
@@ -58526,7 +58046,6 @@ components:
           type: string
       type: object
     LoginCommand:
-      additionalProperties: false
       example:
         mode: mode
         password: password
@@ -58551,7 +58070,6 @@ components:
           type: string
       type: object
     LokiLogsQuery:
-      additionalProperties: false
       example:
         endDate: 2000-01-23T04:56:07.000+00:00
         limit: 6
@@ -58593,7 +58111,6 @@ components:
           type: string
       type: object
     LokiResult:
-      additionalProperties: false
       example:
         stream:
           app: app
@@ -58619,7 +58136,6 @@ components:
           type: array
       type: object
     MainProjectDto:
-      additionalProperties: false
       example:
         name: name
         id: 1
@@ -58635,7 +58151,6 @@ components:
           $ref: "#/components/schemas/ProjectStatus"
       type: object
     MakeCsmCommand:
-      additionalProperties: false
       example:
         mode: mode
         userId: userId
@@ -58648,7 +58163,6 @@ components:
           type: string
       type: object
     MakeOwnerCommand:
-      additionalProperties: false
       example:
         userId: userId
       properties:
@@ -58657,7 +58171,6 @@ components:
           type: string
       type: object
     Metadata:
-      additionalProperties: false
       example:
         vcsCommitTimestamp: vcsCommitTimestamp
         usageApiEnabled: true
@@ -58697,7 +58210,6 @@ components:
           type: boolean
       type: object
     MetricData:
-      additionalProperties: false
       example:
         result:
         - metric:
@@ -58728,7 +58240,6 @@ components:
           type: array
       type: object
     MetricResult:
-      additionalProperties: false
       example:
         metric:
           key: metric
@@ -58757,7 +58268,6 @@ components:
           type: array
       type: object
     MonitoringCredentialsListDto:
-      additionalProperties: false
       example:
         lokiUrl: lokiUrl
         password: password
@@ -58788,7 +58298,6 @@ components:
       - username
       type: object
     MoveOrganizationCommand:
-      additionalProperties: false
       example:
         organizationId: 0
       properties:
@@ -58797,7 +58306,6 @@ components:
           type: integer
       type: object
     NamespaceSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         includePublicImportedClusters: true
@@ -58820,7 +58328,6 @@ components:
           type: boolean
       type: object
     NamespaceSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -58847,7 +58354,6 @@ components:
           type: integer
       type: object
     NetworkListCommand:
-      additionalProperties: false
       example:
         password: password
         datacenterId: datacenterId
@@ -58868,7 +58374,6 @@ components:
           type: string
       type: object
     NetworkPoliciesSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         includePublicImportedClusters: true
@@ -58891,7 +58396,6 @@ components:
           type: boolean
       type: object
     NetworkPoliciesSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -58918,7 +58422,6 @@ components:
           type: integer
       type: object
     NetworkPolicyListDto:
-      additionalProperties: false
       example:
         createdAt: createdAt
         podSelector: podSelector
@@ -58939,7 +58442,6 @@ components:
           type: string
       type: object
     NetworkPolicyListDtoCursorStringPaginatedResponse:
-      additionalProperties: false
       example:
         nextCursor: nextCursor
         data:
@@ -58978,7 +58480,6 @@ components:
       - totalCount
       type: object
     NetworkSummary:
-      additionalProperties: false
       example:
         name: name
         type: type
@@ -58995,7 +58496,6 @@ components:
           type: string
       type: object
     NodeActionCommand:
-      additionalProperties: false
       example:
         name: name
         action: Cordon
@@ -59015,7 +58515,6 @@ components:
       - projectId
       type: object
     NodeCommand:
-      additionalProperties: false
       example:
         name: name
         projectId: 0
@@ -59028,7 +58527,6 @@ components:
           type: string
       type: object
     NodeDto:
-      additionalProperties: false
       example:
         kubeletDiskPressure: ""
         kubeletMemory: ""
@@ -59054,7 +58552,6 @@ components:
       - metadataName
       type: object
     NodeListDto:
-      additionalProperties: false
       example:
         role: role
         ip: ip
@@ -59079,7 +58576,6 @@ components:
           type: string
       type: object
     NodeListDtoCursorStringPaginatedResponse:
-      additionalProperties: false
       example:
         nextCursor: nextCursor
         data:
@@ -59120,7 +58616,6 @@ components:
       - totalCount
       type: object
     NodeSearchResponseData:
-      additionalProperties: false
       example:
         organizationId: 6
         organizationName: organizationName
@@ -59145,7 +58640,6 @@ components:
           type: string
       type: object
     NodesSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         includePublicImportedClusters: true
@@ -59168,7 +58662,6 @@ components:
           type: boolean
       type: object
     NodesSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -59193,7 +58686,6 @@ components:
           type: integer
       type: object
     NotificationHistory:
-      additionalProperties: false
       example:
         data:
         - createdAt: createdAt
@@ -59227,7 +58719,6 @@ components:
       - totalCount
       type: object
     NotificationListDto:
-      additionalProperties: false
       example:
         createdAt: createdAt
         actionStatus: succeeded
@@ -59270,7 +58761,6 @@ components:
       - username
       type: object
     NotificationSendCommand:
-      additionalProperties: false
       example:
         actionType: StartAddServer
         actionStatus: succeeded
@@ -59288,7 +58778,6 @@ components:
           $ref: "#/components/schemas/ProjectType"
       type: object
     NotifyOwnersCommand:
-      additionalProperties: false
       example:
         organizationId: 0
       properties:
@@ -59297,7 +58786,6 @@ components:
           type: integer
       type: object
     NtpCommand:
-      additionalProperties: false
       example:
         address: address
       properties:
@@ -59306,7 +58794,6 @@ components:
           type: string
       type: object
     NtpServerCreateDto:
-      additionalProperties: false
       example:
         address: address
       properties:
@@ -59315,7 +58802,6 @@ components:
           type: string
       type: object
     NtpServerListDto:
-      additionalProperties: false
       example:
         address: address
         id: 5
@@ -59331,7 +58817,6 @@ components:
       - id
       type: object
     NtpServersListDto:
-      additionalProperties: false
       example:
         address: address
         accessProfileName: accessProfileName
@@ -59352,7 +58837,6 @@ components:
       - id
       type: object
     OpaMakeDefaultCommand:
-      additionalProperties: false
       example:
         id: 0
       properties:
@@ -59361,7 +58845,6 @@ components:
           type: integer
       type: object
     OpaProfileList:
-      additionalProperties: false
       example:
         data:
         - projects:
@@ -59445,7 +58928,6 @@ components:
       - totalCount
       type: object
     OpaProfileListDto:
-      additionalProperties: false
       example:
         projects:
         - name: name
@@ -59561,7 +59043,6 @@ components:
       - whitelistMasterTaintNamespaces
       type: object
     OpaProfileLockManagerCommand:
-      additionalProperties: false
       example:
         mode: mode
         id: 0
@@ -59574,7 +59055,6 @@ components:
           type: string
       type: object
     OpaProfileSyncCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -59583,7 +59063,6 @@ components:
           type: integer
       type: object
     OpaProfileUpdateCommand:
-      additionalProperties: false
       example:
         isMasterTaintEnforced: true
         isNodeNameForbiddenInVC: true
@@ -59660,7 +59139,6 @@ components:
           type: array
       type: object
     OpenAiCheckerCommand:
-      additionalProperties: false
       example:
         token: token
       properties:
@@ -59669,7 +59147,6 @@ components:
           type: string
       type: object
     OpenStackNetworkListQuery:
-      additionalProperties: false
       example:
         openStackUrl: openStackUrl
         applicationCredEnabled: true
@@ -59704,7 +59181,6 @@ components:
           type: boolean
       type: object
     OpenStackProjectListQuery:
-      additionalProperties: false
       example:
         openStackUrl: openStackUrl
         applicationCredEnabled: true
@@ -59731,7 +59207,6 @@ components:
           type: boolean
       type: object
     OpenStackRegionListQuery:
-      additionalProperties: false
       example:
         openStackUrl: openStackUrl
         applicationCredEnabled: true
@@ -59758,7 +59233,6 @@ components:
           type: boolean
       type: object
     OpenStackZoneListQuery:
-      additionalProperties: false
       example:
         openstackProject: openstackProject
         openStackUrl: openStackUrl
@@ -59793,7 +59267,6 @@ components:
           type: string
       type: object
     OpenTicketCommand:
-      additionalProperties: false
       example:
         ticketId: ticketId
       properties:
@@ -59802,7 +59275,6 @@ components:
           type: string
       type: object
     OpenshiftCreateCommand:
-      additionalProperties: false
       example:
         organizationId: 0
         storageClass: storageClass
@@ -59832,7 +59304,6 @@ components:
           type: integer
       type: object
     OpenshiftFlavorData:
-      additionalProperties: false
       example:
         name: name
         cpu: 0
@@ -59853,7 +59324,6 @@ components:
       - ram
       type: object
     OpenshiftFlavorList:
-      additionalProperties: false
       example:
         data:
         - name: name
@@ -59877,7 +59347,6 @@ components:
       - totalCount
       type: object
     OpenshiftList:
-      additionalProperties: false
       example:
         data:
         - projectCount: 1
@@ -59952,7 +59421,6 @@ components:
       - totalCount
       type: object
     OpenshiftListDto:
-      additionalProperties: false
       example:
         projectCount: 1
         projects:
@@ -60031,7 +59499,6 @@ components:
       - storageClass
       type: object
     OpenshiftPullSecretCommand:
-      additionalProperties: false
       properties:
         config:
           format: binary
@@ -60039,7 +59506,6 @@ components:
           type: string
       type: object
     OpenshiftStorageListCommand:
-      additionalProperties: false
       properties:
         config:
           format: binary
@@ -60047,7 +59513,6 @@ components:
           type: string
       type: object
     OpenshiftValidateCommand:
-      additionalProperties: false
       properties:
         config:
           format: binary
@@ -60055,7 +59520,6 @@ components:
           type: string
       type: object
     OpenstackComputeQuotaDto:
-      additionalProperties: false
       example:
         maxTotalCores: 5
         maxTotalInstances: 1
@@ -60092,7 +59556,6 @@ components:
           type: integer
       type: object
     OpenstackCredentialList:
-      additionalProperties: false
       example:
         data:
         - volumeType: volumeType
@@ -60178,7 +59641,6 @@ components:
       - totalCount
       type: object
     OpenstackCredentialsListDto:
-      additionalProperties: false
       example:
         volumeType: volumeType
         projectCount: 6
@@ -60315,7 +59777,6 @@ components:
       - volumeType
       type: object
     OpenstackFlavorList:
-      additionalProperties: false
       example:
         data:
         - name: name
@@ -60341,7 +59802,6 @@ components:
       - totalCount
       type: object
     OpenstackFlavorListDto:
-      additionalProperties: false
       example:
         name: name
         cpu: 6
@@ -60366,7 +59826,6 @@ components:
       - ram
       type: object
     OpenstackNetworkDto:
-      additionalProperties: false
       example:
         routerUsed: 6
         floatingIpLimit: 1
@@ -60427,7 +59886,6 @@ components:
           type: integer
       type: object
     OpenstackQuotaList:
-      additionalProperties: false
       example:
         compute:
           maxTotalCores: 5
@@ -60470,7 +59928,6 @@ components:
           type: boolean
       type: object
     OpenstackQuotasCommand:
-      additionalProperties: false
       example:
         id: 0
       properties:
@@ -60479,7 +59936,6 @@ components:
           type: integer
       type: object
     OpenstackStorageTypeListQuery:
-      additionalProperties: false
       example:
         openstackProject: openstackProject
         openStackUrl: openStackUrl
@@ -60514,7 +59970,6 @@ components:
           type: string
       type: object
     OpenstackSubnetListQuery:
-      additionalProperties: false
       example:
         openStackUrl: openStackUrl
         applicationCredEnabled: true
@@ -60550,7 +60005,6 @@ components:
           type: boolean
       type: object
     OpenstackVolumeQuotaDto:
-      additionalProperties: false
       example:
         usedVolumeSize: 2
         maxCountVolumeSize: 4
@@ -60571,7 +60025,6 @@ components:
           type: integer
       type: object
     OpenstackVolumeTypeListQuery:
-      additionalProperties: false
       example:
         openstackProject: openstackProject
         openStackUrl: openStackUrl
@@ -60611,7 +60064,6 @@ components:
           type: string
       type: object
     OperationCredentialLockManagerCommand:
-      additionalProperties: false
       example:
         mode: mode
         id: 0
@@ -60624,7 +60076,6 @@ components:
           type: string
       type: object
     OperationCredentials:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -60674,7 +60125,6 @@ components:
       - totalCount
       type: object
     OperationCredentialsCreateCommand:
-      additionalProperties: false
       example:
         organizationId: 0
         name: name
@@ -60700,7 +60150,6 @@ components:
           type: integer
       type: object
     OperationCredentialsForOrganizationEntity:
-      additionalProperties: false
       example:
         isDefault: true
         operationCredentialId: 0
@@ -60721,7 +60170,6 @@ components:
       - operationCredentialId
       type: object
     OperationCredentialsListDto:
-      additionalProperties: false
       example:
         organizationId: 6
         isDefault: true
@@ -60787,7 +60235,6 @@ components:
       - rules
       type: object
     OperationCredentialsMakeDefaultCommand:
-      additionalProperties: false
       example:
         id: 0
       properties:
@@ -60796,7 +60243,6 @@ components:
           type: integer
       type: object
     OperationDto:
-      additionalProperties: false
       example:
         projectId: 0
         operation: operation
@@ -60809,7 +60255,6 @@ components:
           type: string
       type: object
     OrganizationCreateCommand:
-      additionalProperties: false
       example:
         country: country
         discountRate: 0.8008281904610115
@@ -60863,7 +60308,6 @@ components:
           type: integer
       type: object
     OrganizationDetailsDto:
-      additionalProperties: false
       example:
         country: country
         discountRate: 9.301444243932576
@@ -60976,7 +60420,6 @@ components:
           type: array
       type: object
     OrganizationDropdownDto:
-      additionalProperties: false
       example:
         discountRate: 6.027456183070403
         isInfra: true
@@ -60996,7 +60439,6 @@ components:
           type: number
       type: object
     OrganizationEntityForDashboard:
-      additionalProperties: false
       example:
         name: name
         id: 0
@@ -61017,7 +60459,6 @@ components:
       - users
       type: object
     OrganizationNameCheckerCommand:
-      additionalProperties: false
       example:
         name: name
       properties:
@@ -61026,7 +60467,6 @@ components:
           type: string
       type: object
     OrganizationSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         offset: 6
@@ -61045,7 +60485,6 @@ components:
           type: string
       type: object
     OrganizationSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -61068,7 +60507,6 @@ components:
           type: integer
       type: object
     OrganizationSubscriptionDto:
-      additionalProperties: false
       example:
         organizationId: 6
         stripeSubscriptionId: stripeSubscriptionId
@@ -61138,7 +60576,6 @@ components:
           type: array
       type: object
     OrganizationsList:
-      additionalProperties: false
       example:
         data:
         - country: country
@@ -61228,7 +60665,6 @@ components:
       - totalCount
       type: object
     PackageAutocompleteDto:
-      additionalProperties: false
       example:
         isTaikunLink: true
         options:
@@ -61272,7 +60708,6 @@ components:
       - Multiline
       type: string
     PartnerColorSettingsDto:
-      additionalProperties: false
       example:
         itemBgActive: itemBgActive
         itemBgActiveHover: itemBgActiveHover
@@ -61318,7 +60753,6 @@ components:
       - itemTextActive
       type: object
     PartnerDetailsDto:
-      additionalProperties: false
       example:
         whiteListDomains:
         - name: name
@@ -61436,7 +60870,6 @@ components:
       - whiteListDomains
       type: object
     PartnerDetailsForOrganizationsDto:
-      additionalProperties: false
       example:
         domain: domain
         name: name
@@ -61461,7 +60894,6 @@ components:
           type: string
       type: object
     PartnerDetailsForSubscription:
-      additionalProperties: false
       example:
         name: name
         link: link
@@ -61486,7 +60918,6 @@ components:
       - name
       type: object
     PartnerDetailsForUserDto:
-      additionalProperties: false
       example:
         domain: domain
         name: name
@@ -61516,7 +60947,6 @@ components:
       - name
       type: object
     PartnerEntity:
-      additionalProperties: false
       example:
         partnerName: partnerName
         logo: logo
@@ -61535,7 +60965,6 @@ components:
       - partnerName
       type: object
     PartnerImageSettingsDto:
-      additionalProperties: false
       example:
         expanded: expanded
         collapsed: collapsed
@@ -61551,7 +60980,6 @@ components:
       - expanded
       type: object
     PartnerRecordDto:
-      additionalProperties: false
       example:
         partnerColorSettings:
           itemBgActive: itemBgActive
@@ -61596,7 +61024,6 @@ components:
       - paymentEnabled
       type: object
     PartnersList:
-      additionalProperties: false
       example:
         data:
         - whiteListDomains:
@@ -61685,7 +61112,6 @@ components:
           type: integer
       type: object
     PartnersSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         offset: 6
@@ -61704,7 +61130,6 @@ components:
           type: string
       type: object
     PartnersSearchList:
-      additionalProperties: false
       example:
         data:
         - name: name
@@ -61725,7 +61150,6 @@ components:
           type: integer
       type: object
     PartnersSearchResponseData:
-      additionalProperties: false
       example:
         name: name
         logo: logo
@@ -61742,7 +61166,6 @@ components:
           type: string
       type: object
     PatchKubernetesResourceCommand:
-      additionalProperties: false
       example:
         name: name
         namespace: namespace
@@ -61765,7 +61188,6 @@ components:
       - yaml
       type: object
     PayInvoiceCommand:
-      additionalProperties: false
       example:
         invoiceId: invoiceId
       properties:
@@ -61774,10 +61196,8 @@ components:
           type: string
       type: object
     PaymentWebhookCommand:
-      additionalProperties: false
       type: object
     PdbSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         includePublicImportedClusters: true
@@ -61800,7 +61220,6 @@ components:
           type: boolean
       type: object
     PdbSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -61827,7 +61246,6 @@ components:
           type: integer
       type: object
     PodDto:
-      additionalProperties: false
       example:
         phase: phase
         node: node
@@ -61867,7 +61285,6 @@ components:
       - status
       type: object
     PodsListDto:
-      additionalProperties: false
       example:
         createdAt: createdAt
         node: node
@@ -61904,7 +61321,6 @@ components:
           type: string
       type: object
     PodsListDtoCursorStringPaginatedResponse:
-      additionalProperties: false
       example:
         nextCursor: nextCursor
         data:
@@ -61951,7 +61367,6 @@ components:
       - totalCount
       type: object
     PodsSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         includePublicImportedClusters: true
@@ -61974,7 +61389,6 @@ components:
           type: boolean
       type: object
     PodsSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -62001,7 +61415,6 @@ components:
           type: integer
       type: object
     PrivateSubscriptionList:
-      additionalProperties: false
       example:
         isEligibleToSwitch: true
         activeSubscriptionStatus: activeSubscriptionStatus
@@ -62125,7 +61538,6 @@ components:
           type: string
       type: object
     ProjectActionVisibilityDto:
-      additionalProperties: false
       example:
         repair:
           reasons:
@@ -62392,7 +61804,6 @@ components:
       - vmRepair
       type: object
     ProjectAlertsQuery:
-      additionalProperties: false
       example:
         mode: K8S
         projectId: 0
@@ -62404,7 +61815,6 @@ components:
           $ref: "#/components/schemas/ProjectType"
       type: object
     ProjectAppDetailsDto:
-      additionalProperties: false
       example:
         projectAppParams:
         - isEditableWhenInstalling: true
@@ -62526,7 +61936,6 @@ components:
       - version
       type: object
     ProjectAppDto:
-      additionalProperties: false
       example:
         isLocked: true
         name: name
@@ -62568,7 +61977,6 @@ components:
           type: boolean
       type: object
     ProjectAppList:
-      additionalProperties: false
       example:
         data:
         - catalogAppName: catalogAppName
@@ -62643,7 +62051,6 @@ components:
       - totalCount
       type: object
     ProjectAppParamDto:
-      additionalProperties: false
       example:
         isEditableWhenInstalling: true
         value: value
@@ -62671,7 +62078,6 @@ components:
       - value
       type: object
     ProjectAppParamsDto:
-      additionalProperties: false
       example:
         value: value
         key: key
@@ -62684,7 +62090,6 @@ components:
           type: string
       type: object
     ProjectCanAddVClusterDto:
-      additionalProperties: false
       example:
         addVCluster:
           reasons:
@@ -62699,7 +62104,6 @@ components:
       - addVCluster
       type: object
     ProjectCatalogDto:
-      additionalProperties: false
       example:
         cloudType: AWS
         isLocked: true
@@ -62734,7 +62138,6 @@ components:
           $ref: "#/components/schemas/ProjectHealth"
       type: object
     ProjectChartDto:
-      additionalProperties: false
       example:
         failedToImport:
         - expiredAt: expiredAt
@@ -62827,7 +62230,6 @@ components:
           type: array
       type: object
     ProjectCommonRecordDto:
-      additionalProperties: false
       example:
         expiredAt: expiredAt
         name: name
@@ -62844,7 +62246,6 @@ components:
           type: string
       type: object
     ProjectDeploymentCommitCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -62853,7 +62254,6 @@ components:
           type: integer
       type: object
     ProjectDeploymentDeleteServersCommand:
-      additionalProperties: false
       example:
         forceDeleteVClusters: true
         deleteAutoscalingServers: true
@@ -62877,7 +62277,6 @@ components:
           type: boolean
       type: object
     ProjectDeploymentDeleteVmsCommand:
-      additionalProperties: false
       example:
         vmIds:
         - 6
@@ -62895,7 +62294,6 @@ components:
           type: array
       type: object
     ProjectDeploymentRepairCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -62904,7 +62302,6 @@ components:
           type: integer
       type: object
     ProjectDeploymentRepairVmCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -62913,7 +62310,6 @@ components:
           type: integer
       type: object
     ProjectDescribeDto:
-      additionalProperties: false
       example:
         vmsCount: 1
         flavors:
@@ -62979,7 +62375,6 @@ components:
           type: string
       type: object
     ProjectDetailsErrorListDto:
-      additionalProperties: false
       example:
         kind: K8S
         type: danger
@@ -63004,7 +62399,6 @@ components:
       - warning
       type: string
     ProjectDetailsForServersDto:
-      additionalProperties: false
       example:
         spotEnabled: true
         isOpaEnabled: true
@@ -63341,7 +62735,6 @@ components:
       - worker
       type: object
     ProjectDetailsForVmsDto:
-      additionalProperties: false
       example:
         isProjectMaintenanceModeEnabled: true
         organizationName: organizationName
@@ -63462,7 +62855,6 @@ components:
       - totalHourlyCost
       type: object
     ProjectDto:
-      additionalProperties: false
       example:
         projectName: projectName
         projectId: 6
@@ -63477,7 +62869,6 @@ components:
       - projectName
       type: object
     ProjectExtendLifeTimeCommand:
-      additionalProperties: false
       example:
         deleteOnExpiration: true
         expireAt: 2000-01-23T04:56:07.000+00:00
@@ -63503,7 +62894,6 @@ components:
       - Warning
       type: string
     ProjectInfracost:
-      additionalProperties: false
       example:
         pastBreakdown:
           totalMonthlyCost: totalMonthlyCost
@@ -64020,7 +63410,6 @@ components:
           $ref: "#/components/schemas/Summary"
       type: object
     ProjectListDetailDto:
-      additionalProperties: false
       example:
         boundUsers:
         - userName: userName
@@ -64302,7 +63691,6 @@ components:
       - totalStandaloneVmsCount
       type: object
     ProjectListForAlert:
-      additionalProperties: false
       example:
         isKubernetes: true
         totalServersCount: 5
@@ -64410,7 +63798,6 @@ components:
       - totalServersCount
       type: object
     ProjectLockManagerCommand:
-      additionalProperties: false
       example:
         mode: mode
         id: 0
@@ -64423,7 +63810,6 @@ components:
           type: string
       type: object
     ProjectMaintenanceModeCommand:
-      additionalProperties: false
       example:
         mode: mode
         id: 0
@@ -64436,7 +63822,6 @@ components:
           type: string
       type: object
     ProjectMetadata:
-      additionalProperties: false
       example:
         vcsSubPath: vcsSubPath
         path: path
@@ -64461,7 +63846,6 @@ components:
           type: array
       type: object
     ProjectMonitoringAlertsDto:
-      additionalProperties: false
       example:
         data:
           groups:
@@ -64702,7 +64086,6 @@ components:
           $ref: "#/components/schemas/AlertData"
       type: object
     ProjectQuotaList:
-      additionalProperties: false
       example:
         data:
         - serverRam: 6.027456183070403
@@ -64736,7 +64119,6 @@ components:
       - totalCount
       type: object
     ProjectQuotaListDto:
-      additionalProperties: false
       example:
         serverRam: 6.027456183070403
         vmCpu: 5
@@ -64808,7 +64190,6 @@ components:
       - Migrating
       type: string
     ProjectTemplateDropdownListDto:
-      additionalProperties: false
       example:
         name: name
         id: 0
@@ -64824,7 +64205,6 @@ components:
           type: boolean
       type: object
     ProjectTemplateList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -64881,7 +64261,6 @@ components:
       - totalCount
       type: object
     ProjectTemplateListDto:
-      additionalProperties: false
       example:
         organizationId: 6
         backupEnabled: true
@@ -64938,7 +64317,6 @@ components:
       - VM
       type: string
     ProjectWithFlavorsAndImagesDto:
-      additionalProperties: false
       example:
         flavors:
         - flavors
@@ -64985,7 +64363,6 @@ components:
       - name
       type: object
     ProjectsForBillingDto:
-      additionalProperties: false
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
         standaloneVms:
@@ -65049,7 +64426,6 @@ components:
       - standaloneVms
       type: object
     ProjectsList:
-      additionalProperties: false
       example:
         data:
         - boundUsers:
@@ -65251,7 +64627,6 @@ components:
       - totalCount
       type: object
     ProjectsLogsCommand:
-      additionalProperties: false
       example:
         query:
           endDate: 2000-01-23T04:56:07.000+00:00
@@ -65270,7 +64645,6 @@ components:
           $ref: "#/components/schemas/LokiLogsQuery"
       type: object
     ProjectsMonitoringAlertsCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -65279,7 +64653,6 @@ components:
           type: integer
       type: object
     ProjectsSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         offset: 6
@@ -65298,7 +64671,6 @@ components:
           type: string
       type: object
     ProjectsSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -65321,7 +64693,6 @@ components:
           type: integer
       type: object
     PrometheusBillingCreateCommand:
-      additionalProperties: false
       example:
         organizationId: 0
         price: 1.4658129805029452
@@ -65342,7 +64713,6 @@ components:
           type: number
       type: object
     PrometheusBillingInfo:
-      additionalProperties: false
       example:
         data:
         - endDate: 2000-01-23T04:56:07.000+00:00
@@ -65381,7 +64751,6 @@ components:
       - totalPrice
       type: object
     PrometheusBillingSummaryDto:
-      additionalProperties: false
       example:
         endDate: 2000-01-23T04:56:07.000+00:00
         createdBy: createdBy
@@ -65427,7 +64796,6 @@ components:
       - startDate
       type: object
     PrometheusDashboardCreateCommand:
-      additionalProperties: false
       example:
         expression: expression
         name: name
@@ -65452,7 +64820,6 @@ components:
           type: string
       type: object
     PrometheusDashboardDto:
-      additionalProperties: false
       example:
         isReadonly: true
         name: name
@@ -65487,7 +64854,6 @@ components:
       - name
       type: object
     PrometheusDashboardListDto:
-      additionalProperties: false
       example:
         data:
         - isReadonly: true
@@ -65517,7 +64883,6 @@ components:
       - data
       type: object
     PrometheusDashboardUpdateCommand:
-      additionalProperties: false
       example:
         expression: expression
         name: name
@@ -65542,7 +64907,6 @@ components:
           type: string
       type: object
     PrometheusEntity:
-      additionalProperties: false
       example:
         prometheusRuleName: prometheusRuleName
         ruleDiscountRate: 2.027123023002322
@@ -65564,7 +64928,6 @@ components:
       - ruleDiscountRate
       type: object
     PrometheusLabelListDto:
-      additionalProperties: false
       example:
         label: label
         value: value
@@ -65580,7 +64943,6 @@ components:
       - value
       type: object
     PrometheusMetricListDto:
-      additionalProperties: false
       example:
         data:
           result:
@@ -65610,7 +64972,6 @@ components:
           $ref: "#/components/schemas/MetricData"
       type: object
     PrometheusMetricsAutocompleteCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -65619,7 +64980,6 @@ components:
           type: integer
       type: object
     PrometheusMetricsCommand:
-      additionalProperties: false
       example:
         start: 2000-01-23T04:56:07.000+00:00
         end: 2000-01-23T04:56:07.000+00:00
@@ -65654,7 +65014,6 @@ components:
           type: string
       type: object
     PrometheusOrganizationDiscountDto:
-      additionalProperties: false
       example:
         globalDiscountRate: 5.962133916683182
         ruleDiscountRate: 1.4658129805029452
@@ -65679,7 +65038,6 @@ components:
       - ruleDiscountRate
       type: object
     PrometheusRuleListDto:
-      additionalProperties: false
       example:
         metricName: metricName
         lastModifiedBy: lastModifiedBy
@@ -65784,7 +65142,6 @@ components:
       - userName
       type: object
     PrometheusRulesList:
-      additionalProperties: false
       example:
         data:
         - metricName: metricName
@@ -65872,7 +65229,6 @@ components:
       - totalCount
       type: object
     PrometheusRulesSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         offset: 6
@@ -65891,7 +65247,6 @@ components:
           type: string
       type: object
     PrometheusRulesSearchList:
-      additionalProperties: false
       example:
         data:
         - partner: 6
@@ -65912,7 +65267,6 @@ components:
           type: integer
       type: object
     PrometheusRulesSearchResponseData:
-      additionalProperties: false
       example:
         partner: 6
         name: name
@@ -65934,7 +65288,6 @@ components:
       - Sum
       type: string
     Provider:
-      additionalProperties: false
       example:
         name: name
       properties:
@@ -65943,7 +65296,6 @@ components:
           type: string
       type: object
     ProxmoxCheckerCommand:
-      additionalProperties: false
       example:
         tokenId: tokenId
         url: url
@@ -65960,7 +65312,6 @@ components:
           type: string
       type: object
     ProxmoxFlavorData:
-      additionalProperties: false
       example:
         name: name
         cpu: 0
@@ -65981,7 +65332,6 @@ components:
       - ram
       type: object
     ProxmoxFlavorList:
-      additionalProperties: false
       example:
         data:
         - name: name
@@ -66005,7 +65355,6 @@ components:
       - totalCount
       type: object
     ProxmoxHypervisorDto:
-      additionalProperties: false
       example:
         isBound: true
         name: name
@@ -66020,7 +65369,6 @@ components:
           type: boolean
       type: object
     ProxmoxList:
-      additionalProperties: false
       example:
         data:
         - projectCount: 6
@@ -66126,7 +65474,6 @@ components:
       - totalCount
       type: object
     ProxmoxListDto:
-      additionalProperties: false
       example:
         projectCount: 6
         projects:
@@ -66259,7 +65606,6 @@ components:
       - vmTemplateName
       type: object
     ProxmoxNetworkListDto:
-      additionalProperties: false
       example:
         endAllocationRange: endAllocationRange
         netMask: 5
@@ -66316,7 +65662,6 @@ components:
       - LocalPath
       type: string
     PublicImageList:
-      additionalProperties: false
       example:
         data:
         - name: name
@@ -66338,10 +65683,8 @@ components:
       - totalCount
       type: object
     PurgeExpiredProjectsCommand:
-      additionalProperties: false
       type: object
     PvcListDto:
-      additionalProperties: false
       example:
         volume: volume
         createdAt: createdAt
@@ -66378,7 +65721,6 @@ components:
           type: string
       type: object
     PvcListDtoCursorStringPaginatedResponse:
-      additionalProperties: false
       example:
         nextCursor: nextCursor
         data:
@@ -66425,7 +65767,6 @@ components:
       - totalCount
       type: object
     PvcSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         includePublicImportedClusters: true
@@ -66448,7 +65789,6 @@ components:
           type: boolean
       type: object
     PvcSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -66475,7 +65815,6 @@ components:
           type: integer
       type: object
     RamLimitsDto:
-      additionalProperties: false
       example:
         maxClusterLimits: 2
         defaultContainerRequest: 7
@@ -66501,7 +65840,6 @@ components:
       - maxClusterRequests
       type: object
     RebootServerCommand:
-      additionalProperties: false
       example:
         type: type
         serverId: 0
@@ -66514,7 +65852,6 @@ components:
           type: string
       type: object
     RebootStandAloneVmCommand:
-      additionalProperties: false
       example:
         id: 0
         type: type
@@ -66527,7 +65864,6 @@ components:
           type: string
       type: object
     RefreshTokenCommand:
-      additionalProperties: false
       example:
         token: token
         refreshToken: refreshToken
@@ -66540,7 +65876,6 @@ components:
           type: string
       type: object
     RegionListCommand:
-      additionalProperties: false
       example:
         awsAccessKeyId: awsAccessKeyId
         cloudId: 0
@@ -66558,7 +65893,6 @@ components:
           type: integer
       type: object
     RegistrationCommand:
-      additionalProperties: false
       example:
         organizationName: organizationName
         email: email
@@ -66575,7 +65909,6 @@ components:
           type: string
       type: object
     RemindUsersByAlertingProfileCommand:
-      additionalProperties: false
       example:
         reminder: HalfHour
       properties:
@@ -66583,7 +65916,6 @@ components:
           $ref: "#/components/schemas/AlertingReminder"
       type: object
     RemoveOwnerCommand:
-      additionalProperties: false
       example:
         userId: userId
       properties:
@@ -66592,7 +65924,6 @@ components:
           type: string
       type: object
     ReplyTicketCommand:
-      additionalProperties: false
       example:
         body: body
         ticketId: ticketId
@@ -66605,7 +65936,6 @@ components:
           type: string
       type: object
     Repository:
-      additionalProperties: false
       example:
         scannerDisabled: true
         isImported: true
@@ -66646,7 +65976,6 @@ components:
           type: string
       type: object
     ResetPasswordCommand:
-      additionalProperties: false
       example:
         newPassword: newPassword
         email: email
@@ -66663,7 +65992,6 @@ components:
           type: string
       type: object
     ResetProjectStatusCommand:
-      additionalProperties: false
       example:
         projectId: 0
         status: "Null"
@@ -66675,7 +66003,6 @@ components:
           $ref: "#/components/schemas/ProjectStatus"
       type: object
     ResetServerStatusCommand:
-      additionalProperties: false
       example:
         projectId: 0
         serverIds:
@@ -66696,7 +66023,6 @@ components:
           $ref: "#/components/schemas/CloudStatus"
       type: object
     ResetStandAloneVmStatusCommand:
-      additionalProperties: false
       example:
         vmIds:
         - 6
@@ -66717,7 +66043,6 @@ components:
           $ref: "#/components/schemas/StandAloneVmStatus"
       type: object
     Resource:
-      additionalProperties: false
       example:
         metadata:
           key: ""
@@ -66835,7 +66160,6 @@ components:
           type: array
       type: object
     ResourcePoolListCommand:
-      additionalProperties: false
       example:
         password: password
         datacenterId: datacenterId
@@ -66856,7 +66180,6 @@ components:
           type: string
       type: object
     ResourcePoolSummary:
-      additionalProperties: false
       example:
         name: name
         resourcePool: resourcePool
@@ -66869,7 +66192,6 @@ components:
           type: string
       type: object
     ResourcePresetDto:
-      additionalProperties: false
       example:
         ephemeralStorage:
           maxClusterLimits: 2
@@ -66913,7 +66235,6 @@ components:
       - workloadResources
       type: object
     RestoreBackupCommand:
-      additionalProperties: false
       example:
         excludeNamespaces:
         - excludeNamespaces
@@ -66946,7 +66267,6 @@ components:
           type: array
       type: object
     Rule:
-      additionalProperties: false
       example:
         duration: 0
         alerts:
@@ -67038,7 +66358,6 @@ components:
           type: string
       type: object
     RuleCreateCommand:
-      additionalProperties: false
       example:
         organizationId:
         - 5
@@ -67091,7 +66410,6 @@ components:
           type: integer
       type: object
     RuleForUpdateDto:
-      additionalProperties: false
       example:
         metricName: metricName
         price: 0.8008281904610115
@@ -67127,7 +66445,6 @@ components:
           type: integer
       type: object
     RuleLabels:
-      additionalProperties: false
       example:
         severity: severity
       properties:
@@ -67136,7 +66453,6 @@ components:
           type: string
       type: object
     SecretListDto:
-      additionalProperties: false
       example:
         createdAt: createdAt
         name: name
@@ -67157,7 +66473,6 @@ components:
           type: string
       type: object
     SecretListDtoCursorStringPaginatedResponse:
-      additionalProperties: false
       example:
         nextCursor: nextCursor
         data:
@@ -67196,7 +66511,6 @@ components:
       - totalCount
       type: object
     SecretSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         includePublicImportedClusters: true
@@ -67219,7 +66533,6 @@ components:
           type: boolean
       type: object
     SecretSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -67246,7 +66559,6 @@ components:
           type: integer
       type: object
     SecurityGroupListDto:
-      additionalProperties: false
       example:
         profileName: profileName
         protocol: protocol
@@ -67293,7 +66605,6 @@ components:
       - UDP
       type: string
     SecurityReportSummary:
-      additionalProperties: false
       example:
         high: 3
         critical: 7
@@ -67323,7 +66634,6 @@ components:
           type: integer
       type: object
     SecurityReportSummaryDto:
-      additionalProperties: false
       example:
         high: 9
         critical: 4
@@ -67348,10 +66658,8 @@ components:
           type: integer
       type: object
     SendEmailAboutProjectExpirationCommand:
-      additionalProperties: false
       type: object
     ServerActionButtonVisibilityDto:
-      additionalProperties: false
       example:
         reboot: true
         console: true
@@ -67365,7 +66673,6 @@ components:
           type: boolean
       type: object
     ServerChartDto:
-      additionalProperties: false
       example:
         totalOpenshiftCount: 6
         totalGenericK8SCount: 6
@@ -67700,7 +67007,6 @@ components:
           type: array
       type: object
     ServerCommonRecordDto:
-      additionalProperties: false
       example:
         names:
         - names
@@ -67721,7 +67027,6 @@ components:
           type: array
       type: object
     ServerForCreateDto:
-      additionalProperties: false
       example:
         proxmoxExtraDiskSize: 5
         role: Bastion
@@ -67797,7 +67102,6 @@ components:
           type: boolean
       type: object
     ServerListDto:
-      additionalProperties: false
       example:
         proxmoxExtraDiskSize: 9
         role: Bastion
@@ -67976,7 +67280,6 @@ components:
       - wasmEnabled
       type: object
     ServerTemplateDto:
-      additionalProperties: false
       example:
         flavor: flavor
         diskSize: 1.4894159098541704
@@ -67996,7 +67299,6 @@ components:
           type: integer
       type: object
     ServersForBillingDto:
-      additionalProperties: false
       example:
         cpu: 1
         ram: 5
@@ -68012,7 +67314,6 @@ components:
       - ram
       type: object
     ServersList:
-      additionalProperties: false
       example:
         data:
         - proxmoxExtraDiskSize: 9
@@ -68116,7 +67417,6 @@ components:
       - totalCount
       type: object
     ServersListForDetails:
-      additionalProperties: false
       example:
         data:
         - proxmoxExtraDiskSize: 9
@@ -68293,7 +67593,6 @@ components:
       - project
       type: object
     ServersSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         offset: 6
@@ -68312,7 +67611,6 @@ components:
           type: string
       type: object
     ServersSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -68339,7 +67637,6 @@ components:
           type: integer
       type: object
     ServersSearchResponseData:
-      additionalProperties: false
       example:
         organizationId: 6
         organizationName: organizationName
@@ -68369,7 +67666,6 @@ components:
           type: string
       type: object
     ServiceListDto:
-      additionalProperties: false
       example:
         createdAt: createdAt
         name: name
@@ -68398,7 +67694,6 @@ components:
           type: string
       type: object
     ServiceListDtoCursorStringPaginatedResponse:
-      additionalProperties: false
       example:
         nextCursor: nextCursor
         data:
@@ -68441,7 +67736,6 @@ components:
       - totalCount
       type: object
     ServiceSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         includePublicImportedClusters: true
@@ -68464,7 +67758,6 @@ components:
           type: boolean
       type: object
     ServiceSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -68491,7 +67784,6 @@ components:
           type: integer
       type: object
     SetTicketPriorityCommand:
-      additionalProperties: false
       example:
         id: id
         priority: Low
@@ -68503,7 +67795,6 @@ components:
           $ref: "#/components/schemas/TicketPriority"
       type: object
     ShelveStandAloneVmCommand:
-      additionalProperties: false
       example:
         id: 0
       properties:
@@ -68512,7 +67803,6 @@ components:
           type: integer
       type: object
     SilenceOperationsCommand:
-      additionalProperties: false
       example:
         mode: mode
         reason: reason
@@ -68529,7 +67819,6 @@ components:
           type: string
       type: object
     SimplePrometheusEntity:
-      additionalProperties: false
       example:
         prometheusRuleName: prometheusRuleName
         prometheusRuleId: 1
@@ -68545,7 +67834,6 @@ components:
       - prometheusRuleName
       type: object
     SlackConfigurationDto:
-      additionalProperties: false
       example:
         organizationId: 6
         organizationName: organizationName
@@ -68586,7 +67874,6 @@ components:
       - url
       type: object
     SlackConfigurationList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -68623,7 +67910,6 @@ components:
       - General
       type: string
     SpotVmOperationCommand:
-      additionalProperties: false
       example:
         mode: mode
         id: 0
@@ -68636,7 +67922,6 @@ components:
           type: string
       type: object
     SpotWorkerOperationCommand:
-      additionalProperties: false
       example:
         mode: mode
         id: 0
@@ -68649,7 +67934,6 @@ components:
           type: string
       type: object
     SshKeyCommand:
-      additionalProperties: false
       example:
         sshPublicKey: sshPublicKey
       properties:
@@ -68658,7 +67942,6 @@ components:
           type: string
       type: object
     SshUserCreateDto:
-      additionalProperties: false
       example:
         sshPublicKey: sshPublicKey
         name: name
@@ -68671,7 +67954,6 @@ components:
           type: string
       type: object
     SshUsersListDto:
-      additionalProperties: false
       example:
         sshPublicKey: sshPublicKey
         accessProfileName: accessProfileName
@@ -68697,7 +67979,6 @@ components:
       - sshPublicKey
       type: object
     StandAloneMetaDataDto:
-      additionalProperties: false
       example:
         value: value
         key: key
@@ -68710,7 +67991,6 @@ components:
           type: string
       type: object
     StandAloneMetaDataDtoForVm:
-      additionalProperties: false
       example:
         id: 7
         value: value
@@ -68731,7 +68011,6 @@ components:
       - value
       type: object
     StandAloneProfileCreateCommand:
-      additionalProperties: false
       example:
         organizationId: 1
         name: name
@@ -68765,7 +68044,6 @@ components:
           type: integer
       type: object
     StandAloneProfileForDetailsDto:
-      additionalProperties: false
       example:
         name: name
         securityGroups:
@@ -68807,7 +68085,6 @@ components:
       - securityGroups
       type: object
     StandAloneProfileLockManagementCommand:
-      additionalProperties: false
       example:
         mode: mode
         id: 0
@@ -68820,7 +68097,6 @@ components:
           type: string
       type: object
     StandAloneProfileSecurityGroupDto:
-      additionalProperties: false
       example:
         protocol: ICMP
         name: name
@@ -68844,7 +68120,6 @@ components:
           type: string
       type: object
     StandAloneProfileSecurityGroupForDetailsDto:
-      additionalProperties: false
       example:
         protocol: protocol
         name: name
@@ -68884,7 +68159,6 @@ components:
       - remoteIpPrefix
       type: object
     StandAloneProfileUpdateCommand:
-      additionalProperties: false
       example:
         name: name
         id: 0
@@ -68897,7 +68171,6 @@ components:
           type: string
       type: object
     StandAloneProfiles:
-      additionalProperties: false
       example:
         data:
         - organizationId: 5
@@ -68964,7 +68237,6 @@ components:
       - totalCount
       type: object
     StandAloneProfilesListDto:
-      additionalProperties: false
       example:
         organizationId: 5
         standaloneVms:
@@ -69022,7 +68294,6 @@ components:
       - standaloneVms
       type: object
     StandAloneProfilesSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         offset: 6
@@ -69041,7 +68312,6 @@ components:
           type: string
       type: object
     StandAloneProfilesSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -69064,7 +68334,6 @@ components:
           type: integer
       type: object
     StandAloneVmDiskDto:
-      additionalProperties: false
       example:
         volumeType: volumeType
         size: 2
@@ -69090,7 +68359,6 @@ components:
           type: integer
       type: object
     StandAloneVmDiskForDetailsDto:
-      additionalProperties: false
       example:
         volumeType: volumeType
         targetSize: 2
@@ -69144,7 +68412,6 @@ components:
       - Repairing
       type: string
     StandAloneVmIpManagementCommand:
-      additionalProperties: false
       example:
         mode: mode
         id: 0
@@ -69157,7 +68424,6 @@ components:
           type: string
       type: object
     StandAloneVmListForDetails:
-      additionalProperties: false
       example:
         data:
         - volumeType: volumeType
@@ -69351,7 +68617,6 @@ components:
       - project
       type: object
     StandAloneVmSmallDetailDto:
-      additionalProperties: false
       example:
         name: name
         id: 6
@@ -69381,7 +68646,6 @@ components:
       - Repairing
       type: string
     StandaloneProfileListDto:
-      additionalProperties: false
       example:
         standAloneProfileSecurityGroups:
         - protocol: protocol
@@ -69425,7 +68689,6 @@ components:
       - standAloneProfileSecurityGroups
       type: object
     StandaloneProfileSecurityGroupListDto:
-      additionalProperties: false
       example:
         protocol: protocol
         name: name
@@ -69461,7 +68724,6 @@ components:
       - remoteIpPrefix
       type: object
     StandaloneVisibilityDto:
-      additionalProperties: false
       example:
         reboot: true
         showConsole: true
@@ -69495,7 +68757,6 @@ components:
       - unshelve
       type: object
     StandaloneVmListDto:
-      additionalProperties: false
       example:
         volumeType: volumeType
         imageName: imageName
@@ -69624,7 +68885,6 @@ components:
       - volumeType
       type: object
     StandaloneVmsForBillingDto:
-      additionalProperties: false
       example:
         cpu: 5
         ram: 2
@@ -69640,7 +68900,6 @@ components:
       - ram
       type: object
     StandaloneVmsList:
-      additionalProperties: false
       example:
         data:
         - volumeType: volumeType
@@ -69738,7 +68997,6 @@ components:
       - totalCount
       type: object
     StandaloneVmsListForDetailsDto:
-      additionalProperties: false
       example:
         volumeType: volumeType
         sshPublicKey: sshPublicKey
@@ -69919,7 +69177,6 @@ components:
       - volumeType
       type: object
     StartStandaloneVmCommand:
-      additionalProperties: false
       example:
         id: 0
       properties:
@@ -69928,7 +69185,6 @@ components:
           type: integer
       type: object
     StatefulSetListDto:
-      additionalProperties: false
       example:
         createdAt: createdAt
         images:
@@ -69961,7 +69217,6 @@ components:
           type: array
       type: object
     StatefulSetListDtoCursorStringPaginatedResponse:
-      additionalProperties: false
       example:
         nextCursor: nextCursor
         data:
@@ -70008,7 +69263,6 @@ components:
       - totalCount
       type: object
     Status:
-      additionalProperties: false
       example:
         phase: phase
         lastBackup: 2000-01-23T04:56:07.000+00:00
@@ -70021,7 +69275,6 @@ components:
           type: string
       type: object
     StopStandaloneVmCommand:
-      additionalProperties: false
       example:
         id: 0
       properties:
@@ -70030,7 +69283,6 @@ components:
           type: integer
       type: object
     StorageClassesSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         includePublicImportedClusters: true
@@ -70053,7 +69305,6 @@ components:
           type: boolean
       type: object
     StorageClassesSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -70080,7 +69331,6 @@ components:
           type: integer
       type: object
     StorageListCommand:
-      additionalProperties: false
       example:
         tokenId: tokenId
         url: url
@@ -70097,7 +69347,6 @@ components:
           type: string
       type: object
     Stream:
-      additionalProperties: false
       example:
         app: app
         container: container
@@ -70142,7 +69391,6 @@ components:
           type: string
       type: object
     StripeInvoiceListDto:
-      additionalProperties: false
       example:
         endDate: 2000-01-23T04:56:07.000+00:00
         price: 0.8008281904610115
@@ -70183,7 +69431,6 @@ components:
       - startDate
       type: object
     StripeInvoices:
-      additionalProperties: false
       example:
         data:
         - endDate: 2000-01-23T04:56:07.000+00:00
@@ -70210,7 +69457,6 @@ components:
       - data
       type: object
     StripeSubscriptionItemDto:
-      additionalProperties: false
       example:
         subscriptionItemId: subscriptionItemId
         productId: productId
@@ -70231,7 +69477,6 @@ components:
       - subscriptionItemId
       type: object
     StsActionCommand:
-      additionalProperties: false
       example:
         name: name
         namespace: namespace
@@ -70261,7 +69506,6 @@ components:
       - projectId
       type: object
     StsSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         includePublicImportedClusters: true
@@ -70284,7 +69528,6 @@ components:
           type: boolean
       type: object
     StsSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 6
@@ -70311,7 +69554,6 @@ components:
           type: integer
       type: object
     Subnet:
-      additionalProperties: false
       example:
         name: name
         cidr: cidr
@@ -70328,7 +69570,6 @@ components:
           type: string
       type: object
     Subresource:
-      additionalProperties: false
       example:
         metadata:
           key: ""
@@ -70376,7 +69617,6 @@ components:
           type: array
       type: object
     Summary:
-      additionalProperties: false
       example:
         totalUnsupportedResources: 1
         totalUsageBasedResources: 5
@@ -70417,16 +69657,12 @@ components:
           type: object
       type: object
     SyncBackupCredentialsCommand:
-      additionalProperties: false
       type: object
     SyncOpaProfilesCommand:
-      additionalProperties: false
       type: object
     SyncOrganizationsCommand:
-      additionalProperties: false
       type: object
     SyncProjectAppCommand:
-      additionalProperties: false
       example:
         projectAppId: 0
         timeout: 6
@@ -70440,7 +69676,6 @@ components:
           type: integer
       type: object
     SyncProjectAppsCommand:
-      additionalProperties: false
       example:
         projectAppId: 0
       properties:
@@ -70450,10 +69685,8 @@ components:
           type: integer
       type: object
     SyncProjectsCommand:
-      additionalProperties: false
       type: object
     TaikunLbResponseDto:
-      additionalProperties: false
       example:
         privateIpFirst: privateIpFirst
         hypervisorSecond: hypervisorSecond
@@ -70519,7 +69752,6 @@ components:
       - virtualRouterId
       type: object
     TektonPipelinesCommand:
-      additionalProperties: false
       type: object
     TicketPriority:
       enum:
@@ -70528,7 +69760,6 @@ components:
       - High
       type: string
     TofuMigrateCommand:
-      additionalProperties: false
       example:
         force: true
         projectId: 0
@@ -70540,7 +69771,6 @@ components:
           type: boolean
       type: object
     ToggleExecutorCommand:
-      additionalProperties: false
       example:
         mode: mode
         id: 0
@@ -70553,7 +69783,6 @@ components:
           type: string
       type: object
     ToggleKeycloakCommand:
-      additionalProperties: false
       example:
         mode: mode
       properties:
@@ -70562,7 +69791,6 @@ components:
           type: string
       type: object
     ToggleMaintenanceModeCommand:
-      additionalProperties: false
       example:
         mode: mode
       properties:
@@ -70571,7 +69799,6 @@ components:
           type: string
       type: object
     ToggleNotificationModeCommand:
-      additionalProperties: false
       example:
         mode: mode
       properties:
@@ -70580,7 +69807,6 @@ components:
           type: string
       type: object
     TransferList:
-      additionalProperties: false
       example:
         role: Admin
         userName: userName
@@ -70600,7 +69826,6 @@ components:
       - userName
       type: object
     TransferTicketCommand:
-      additionalProperties: false
       example:
         userId: userId
         ticketId: ticketId
@@ -70613,7 +69838,6 @@ components:
           type: string
       type: object
     TrustedRegisteredCreateDto:
-      additionalProperties: false
       example:
         registry: registry
       properties:
@@ -70622,7 +69846,6 @@ components:
           type: string
       type: object
     TrustedRegistriesListDto:
-      additionalProperties: false
       example:
         registry: registry
         accessProfileName: accessProfileName
@@ -70643,7 +69866,6 @@ components:
       - registry
       type: object
     TrustedRegistryEditDto:
-      additionalProperties: false
       example:
         registry: registry
       properties:
@@ -70652,7 +69874,6 @@ components:
           type: string
       type: object
     TrustedRegistryListDto:
-      additionalProperties: false
       example:
         registry: registry
         id: 5
@@ -70668,7 +69889,6 @@ components:
       - registry
       type: object
     TwoFactorAuthLoginCommand:
-      additionalProperties: false
       example:
         verificationCode: verificationCode
       properties:
@@ -70677,7 +69897,6 @@ components:
           type: string
       type: object
     TwoFactorAuthRecoveryCommand:
-      additionalProperties: false
       example:
         recoveryCode: recoveryCode
       properties:
@@ -70686,10 +69905,8 @@ components:
           type: string
       type: object
     TwoFactorAuthSetupCommand:
-      additionalProperties: false
       type: object
     TwoFactorAuthSetupResult:
-      additionalProperties: false
       example:
         sharedKey: sharedKey
         qrCodeUri: qrCodeUri
@@ -70705,7 +69922,6 @@ components:
       - sharedKey
       type: object
     TwoFactorAuthVerifyCommand:
-      additionalProperties: false
       example:
         verificationCode: verificationCode
       properties:
@@ -70714,7 +69930,6 @@ components:
           type: string
       type: object
     TwoFactorAuthVerifyResult:
-      additionalProperties: false
       example:
         recoveryCodes:
         - recoveryCodes
@@ -70727,7 +69942,6 @@ components:
           type: array
       type: object
     UnbindAppRepositoryCommand:
-      additionalProperties: false
       example:
         organizationId: 0
         ids:
@@ -70745,7 +69959,6 @@ components:
           type: integer
       type: object
     UnbindFlavorFromProjectCommand:
-      additionalProperties: false
       example:
         ids:
         - 0
@@ -70759,7 +69972,6 @@ components:
           type: array
       type: object
     UninstallProjectAppResult:
-      additionalProperties: false
       example:
         isJobSkipped: true
       properties:
@@ -70767,7 +69979,6 @@ components:
           type: boolean
       type: object
     UnshelveStandaloneVmCommand:
-      additionalProperties: false
       example:
         id: 0
       properties:
@@ -70776,7 +69987,6 @@ components:
           type: integer
       type: object
     UpdateAccessProfileDto:
-      additionalProperties: false
       example:
         httpProxy: httpProxy
         name: name
@@ -70789,7 +69999,6 @@ components:
           type: string
       type: object
     UpdateAlertingProfileCommand:
-      additionalProperties: false
       example:
         organizationId: 1
         slackConfigurationId: 6
@@ -70815,7 +70024,6 @@ components:
           $ref: "#/components/schemas/AlertingReminder"
       type: object
     UpdateAwsCommand:
-      additionalProperties: false
       example:
         awsAccessKeyId: awsAccessKeyId
         name: name
@@ -70836,7 +70044,6 @@ components:
           type: string
       type: object
     UpdateAzureCommand:
-      additionalProperties: false
       example:
         azureClientSecret: azureClientSecret
         azureClientId: azureClientId
@@ -70857,7 +70064,6 @@ components:
           type: string
       type: object
     UpdateExecutorHealthStatusCommand:
-      additionalProperties: false
       example:
         executorId: 0
         health: None
@@ -70872,7 +70078,6 @@ components:
       - health
       type: object
     UpdateGenericKubernetesCommand:
-      additionalProperties: false
       example:
         name: name
         id: 0
@@ -70885,7 +70090,6 @@ components:
           type: string
       type: object
     UpdateGroupDto:
-      additionalProperties: false
       example:
         name: name
         claimValue: claimValue
@@ -70898,7 +70102,6 @@ components:
           type: string
       type: object
     UpdateHealthStatusCommand:
-      additionalProperties: false
       example:
         health: "Null"
         projectId: 0
@@ -70910,7 +70113,6 @@ components:
           $ref: "#/components/schemas/ProjectHealth"
       type: object
     UpdateHypervisorsCommand:
-      additionalProperties: false
       example:
         hypervisors:
         - hypervisors
@@ -70927,7 +70129,6 @@ components:
           type: array
       type: object
     UpdateInvoiceDto:
-      additionalProperties: false
       example:
         isPaid: true
         endDate: 2000-01-23T04:56:07.000+00:00
@@ -70973,7 +70174,6 @@ components:
           type: number
       type: object
     UpdateKubernetesAlertDto:
-      additionalProperties: false
       example:
         isSilenced: true
         fingerprint: fingerprint
@@ -71005,7 +70205,6 @@ components:
           type: string
       type: object
     UpdateOpenStackCommand:
-      additionalProperties: false
       example:
         openStackPassword: openStackPassword
         name: name
@@ -71026,7 +70225,6 @@ components:
           type: string
       type: object
     UpdateOrganizationCommand:
-      additionalProperties: false
       example:
         country: country
         discountRate: 6.027456183070403
@@ -71082,7 +70280,6 @@ components:
           type: boolean
       type: object
     UpdateOrganizationSubscriptionCommand:
-      additionalProperties: false
       example:
         isYearly: true
         subscriptionId: 0
@@ -71094,7 +70291,6 @@ components:
           type: boolean
       type: object
     UpdatePartnerCommand:
-      additionalProperties: false
       properties:
         id:
           format: int32
@@ -71177,7 +70373,6 @@ components:
           type: string
       type: object
     UpdatePaymentIdCommand:
-      additionalProperties: false
       example:
         paymentIntentId: paymentIntentId
         paymentMethodId: paymentMethodId
@@ -71190,7 +70385,6 @@ components:
           type: string
       type: object
     UpdateProjectAppCommand:
-      additionalProperties: false
       example:
         projectAppId: 0
         status: status
@@ -71203,13 +70397,10 @@ components:
           type: string
       type: object
     UpdateProjectAppStatusCommand:
-      additionalProperties: false
       type: object
     UpdateProjectQuotaMessageCommand:
-      additionalProperties: false
       type: object
     UpdateProxmoxCommand:
-      additionalProperties: false
       example:
         tokenId: tokenId
         name: name
@@ -71230,7 +70421,6 @@ components:
           type: string
       type: object
     UpdateQuotaCommand:
-      additionalProperties: false
       example:
         serverRam: 1.4658129805029452
         vmCpu: 5
@@ -71263,7 +70453,6 @@ components:
           type: number
       type: object
     UpdateRepoPasswordCommand:
-      additionalProperties: false
       example:
         organizationId: 0
         password: password
@@ -71285,7 +70474,6 @@ components:
           type: integer
       type: object
     UpdateServerHealthDto:
-      additionalProperties: false
       example:
         serverHealth: serverHealth
         ipAddress: ipAddress
@@ -71298,7 +70486,6 @@ components:
           type: string
       type: object
     UpdateSlackConfigurationDto:
-      additionalProperties: false
       example:
         organizationId: 0
         name: name
@@ -71323,7 +70510,6 @@ components:
           $ref: "#/components/schemas/SlackType"
       type: object
     UpdateStageCommand:
-      additionalProperties: false
       example:
         stage: stage
         projectId: 0
@@ -71336,7 +70522,6 @@ components:
           type: string
       type: object
     UpdateStandAloneVmFlavorCommand:
-      additionalProperties: false
       example:
         flavor: flavor
         id: 0
@@ -71349,7 +70534,6 @@ components:
           type: string
       type: object
     UpdateStandaloneVmDiskSizeCommand:
-      additionalProperties: false
       example:
         size: 6
         id: 0
@@ -71362,7 +70546,6 @@ components:
           type: integer
       type: object
     UpdateSubscriptionCommand:
-      additionalProperties: false
       example:
         serverLimit: 1
         yearlyPrice: 7.061401241503109
@@ -71407,7 +70590,6 @@ components:
           type: integer
       type: object
     UpdateUsedIpAddressesCommand:
-      additionalProperties: false
       example:
         ipAddress:
         - ipAddress
@@ -71420,7 +70602,6 @@ components:
           type: array
       type: object
     UpdateUserCommand:
-      additionalProperties: false
       example:
         role: Admin
         isApprovedByPartner: true
@@ -71453,7 +70634,6 @@ components:
           type: boolean
       type: object
     UpdateVsphereCommand:
-      additionalProperties: false
       example:
         password: password
         name: name
@@ -71474,7 +70654,6 @@ components:
           type: string
       type: object
     UpdateVsphereHypervisorsCommand:
-      additionalProperties: false
       example:
         hypervisors:
         - hypervisors
@@ -71491,7 +70670,6 @@ components:
           type: array
       type: object
     UpdateZadaraCommand:
-      additionalProperties: false
       example:
         zadaraAccessKeyId: zadaraAccessKeyId
         name: name
@@ -71512,7 +70690,6 @@ components:
           type: string
       type: object
     UserDetails:
-      additionalProperties: false
       example:
         trialDays: 5
         data:
@@ -71567,7 +70744,6 @@ components:
       - trialDays
       type: object
     UserDto:
-      additionalProperties: false
       example:
         userName: userName
         userId: userId
@@ -71583,7 +70759,6 @@ components:
       - userName
       type: object
     UserExistCommand:
-      additionalProperties: false
       example:
         userName: userName
         email: email
@@ -71596,7 +70771,6 @@ components:
           type: string
       type: object
     UserForListDto:
-      additionalProperties: false
       example:
         role: Admin
         displayName: displayName
@@ -71719,7 +70893,6 @@ components:
       - username
       type: object
     UserResourceChartDto:
-      additionalProperties: false
       example:
         diskSize: 6
         maxRam: 7
@@ -71764,7 +70937,6 @@ components:
       - Autoscaler
       type: string
     UserTokenCreateCommand:
-      additionalProperties: false
       example:
         isReadonly: true
         endpoints:
@@ -71800,7 +70972,6 @@ components:
           type: boolean
       type: object
     UserTokenCreateDto:
-      additionalProperties: false
       example:
         secretKey: secretKey
         accessKey: accessKey
@@ -71813,7 +70984,6 @@ components:
           type: string
       type: object
     UserTokensListDto:
-      additionalProperties: false
       example:
         createdAt: createdAt
         isReadonly: true
@@ -71848,7 +71018,6 @@ components:
       - name
       type: object
     UsersList:
-      additionalProperties: false
       example:
         data:
         - role: Admin
@@ -71936,7 +71105,6 @@ components:
       - totalCount
       type: object
     UsersSearchCommand:
-      additionalProperties: false
       example:
         searchTerm: searchTerm
         offset: 6
@@ -71955,7 +71123,6 @@ components:
           type: string
       type: object
     UsersSearchList:
-      additionalProperties: false
       example:
         data:
         - organizationId: 0
@@ -71980,7 +71147,6 @@ components:
           type: integer
       type: object
     UsersSearchResponseData:
-      additionalProperties: false
       example:
         organizationId: 0
         organizationName: organizationName
@@ -72006,7 +71172,6 @@ components:
           type: string
       type: object
     VClusterActionVisibilityDto:
-      additionalProperties: false
       example:
         quotaPresets:
           reasons:
@@ -72066,7 +71231,6 @@ components:
       - unlock
       type: object
     VClusterList:
-      additionalProperties: false
       example:
         data:
         - deleteButton:
@@ -72300,7 +71464,6 @@ components:
       - totalCount
       type: object
     VClusterListDto:
-      additionalProperties: false
       example:
         deleteButton:
           reasons:
@@ -72490,7 +71653,6 @@ components:
       - wasmEnabled
       type: object
     VClusterResourceLimitsListDto:
-      additionalProperties: false
       example:
         maxClusterLimits: 4.145608029883936
         defaultContainerRequest: 1.2315135367772556
@@ -72521,7 +71683,6 @@ components:
       - resourceUnit
       type: object
     VClusterWorkloadResourcesListDto:
-      additionalProperties: false
       example:
         maxIngresses: 9
         maxPvcs: 2
@@ -72552,7 +71713,6 @@ components:
       - maxTotalPvcSize
       type: object
     ValidateVsphereCommand:
-      additionalProperties: false
       example:
         password: password
         url: url
@@ -72569,7 +71729,6 @@ components:
           type: string
       type: object
     VerifyEmailCommand:
-      additionalProperties: false
       example:
         mode: Confirm
         token: token
@@ -72581,7 +71740,6 @@ components:
           $ref: "#/components/schemas/EmailMode"
       type: object
     VerifySlackCredentialsCommand:
-      additionalProperties: false
       example:
         name: name
         channel: channel
@@ -72598,7 +71756,6 @@ components:
           type: string
       type: object
     VerifyWebhookCommand:
-      additionalProperties: false
       example:
         url: url
       properties:
@@ -72607,7 +71764,6 @@ components:
           type: string
       type: object
     VirtualClusterDisableAiCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -72616,7 +71772,6 @@ components:
           type: integer
       type: object
     VirtualClusterDisableBackupCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -72625,7 +71780,6 @@ components:
           type: integer
       type: object
     VirtualClusterDisableMonitoringCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -72634,7 +71788,6 @@ components:
           type: integer
       type: object
     VirtualClusterDisableOpaCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -72643,7 +71796,6 @@ components:
           type: integer
       type: object
     VirtualClusterEnableAiCommand:
-      additionalProperties: false
       example:
         aiCredentialId: 6
         projectId: 0
@@ -72656,7 +71808,6 @@ components:
           type: integer
       type: object
     VirtualClusterEnableBackupCommand:
-      additionalProperties: false
       example:
         projectId: 0
         backupCredentialId: 6
@@ -72669,7 +71820,6 @@ components:
           type: integer
       type: object
     VirtualClusterEnableMonitoringCommand:
-      additionalProperties: false
       example:
         projectId: 0
       properties:
@@ -72678,7 +71828,6 @@ components:
           type: integer
       type: object
     VirtualClusterEnableOpaCommand:
-      additionalProperties: false
       example:
         opaProfileId: 6
         projectId: 0
@@ -72691,7 +71840,6 @@ components:
           type: integer
       type: object
     VirtualClusterQuotasDto:
-      additionalProperties: false
       example:
         presets:
         - ephemeralStorage:
@@ -72748,7 +71896,6 @@ components:
       - presets
       type: object
     VmConsoleScreenshotCommand:
-      additionalProperties: false
       example:
         serverId: 0
       properties:
@@ -72757,7 +71904,6 @@ components:
           type: integer
       type: object
     VmTemplateListCommand:
-      additionalProperties: false
       example:
         tokenId: tokenId
         cloudId: 0
@@ -72779,10 +71925,8 @@ components:
           type: string
       type: object
     Void:
-      additionalProperties: false
       type: object
     VsphereFlavorData:
-      additionalProperties: false
       example:
         name: name
         cpu: 0
@@ -72803,7 +71947,6 @@ components:
       - ram
       type: object
     VsphereFlavorList:
-      additionalProperties: false
       example:
         data:
         - name: name
@@ -72827,7 +71970,6 @@ components:
       - totalCount
       type: object
     VsphereHypervisorListCommand:
-      additionalProperties: false
       example:
         password: password
         cloudId: 0
@@ -72853,7 +71995,6 @@ components:
           type: integer
       type: object
     VsphereList:
-      additionalProperties: false
       example:
         data:
         - projectCount: 6
@@ -72967,7 +72108,6 @@ components:
       - totalCount
       type: object
     VsphereListDto:
-      additionalProperties: false
       example:
         projectCount: 6
         projects:
@@ -73105,7 +72245,6 @@ components:
       - vsphereNetworks
       type: object
     VsphereNetworkListDto:
-      additionalProperties: false
       example:
         endAllocationRange: endAllocationRange
         netMask: 5
@@ -73145,7 +72284,6 @@ components:
       - netMask
       type: object
     VsphereVmTemplateData:
-      additionalProperties: false
       example:
         size: 0
         name: name
@@ -73162,7 +72300,6 @@ components:
           type: string
       type: object
     VsphereVmTemplateListCommand:
-      additionalProperties: false
       example:
         password: password
         datacenterId: datacenterId
@@ -73183,7 +72320,6 @@ components:
           type: string
       type: object
     WebhookHeaderDto:
-      additionalProperties: false
       example:
         id: 6
         value: value
@@ -73200,7 +72336,6 @@ components:
           type: string
       type: object
     WhiteListDomainCreateCommand:
-      additionalProperties: false
       example:
         whiteListDomains:
         - name: name
@@ -73218,7 +72353,6 @@ components:
           type: integer
       type: object
     WhiteListDomainCreateDto:
-      additionalProperties: false
       example:
         name: name
       properties:
@@ -73227,7 +72361,6 @@ components:
           type: string
       type: object
     WhiteListDomainDeleteCommand:
-      additionalProperties: false
       example:
         id: 0
       properties:
@@ -73236,7 +72369,6 @@ components:
           type: integer
       type: object
     WhiteListDomainDto:
-      additionalProperties: false
       example:
         name: name
         id: 6
@@ -73252,7 +72384,6 @@ components:
       - name
       type: object
     WindowsInstancePasswordCommand:
-      additionalProperties: false
       properties:
         id:
           format: int32
@@ -73266,7 +72397,6 @@ components:
           type: string
       type: object
     WorkloadResourceLimitsDto:
-      additionalProperties: false
       example:
         maxIngresses: 6
         maxPvcs: 1
@@ -73297,7 +72427,6 @@ components:
       - maxTotalPvcSize
       type: object
     YamlValidatorCommand:
-      additionalProperties: false
       example:
         yaml: yaml
       properties:
@@ -73306,7 +72435,6 @@ components:
           type: string
       type: object
     ZadaraAvailabilityZonesCommand:
-      additionalProperties: false
       example:
         zadaraAccessKeyId: zadaraAccessKeyId
         cloudId: 0
@@ -73328,7 +72456,6 @@ components:
           type: integer
       type: object
     ZadaraCredentialList:
-      additionalProperties: false
       example:
         data:
         - projectCount: 6
@@ -73394,7 +72521,6 @@ components:
       - totalCount
       type: object
     ZadaraCredentialsListDto:
-      additionalProperties: false
       example:
         projectCount: 6
         projects:
@@ -73491,7 +72617,6 @@ components:
       - zadaraVolumeType
       type: object
     ZadaraRegionListCommand:
-      additionalProperties: false
       example:
         zadaraAccessKeyId: zadaraAccessKeyId
         zadaraSecretAccessKey: zadaraSecretAccessKey

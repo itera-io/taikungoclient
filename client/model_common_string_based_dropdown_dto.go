@@ -22,7 +22,10 @@ var _ MappedNullable = &CommonStringBasedDropdownDto{}
 type CommonStringBasedDropdownDto struct {
 	Id NullableString `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CommonStringBasedDropdownDto CommonStringBasedDropdownDto
 
 // NewCommonStringBasedDropdownDto instantiates a new CommonStringBasedDropdownDto object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o CommonStringBasedDropdownDto) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CommonStringBasedDropdownDto) UnmarshalJSON(data []byte) (err error) {
+	varCommonStringBasedDropdownDto := _CommonStringBasedDropdownDto{}
+
+	err = json.Unmarshal(data, &varCommonStringBasedDropdownDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CommonStringBasedDropdownDto(varCommonStringBasedDropdownDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCommonStringBasedDropdownDto struct {

@@ -23,7 +23,10 @@ type BillingInfo struct {
 	Data []BillingSummaryDto `json:"data,omitempty"`
 	TotalTcu *float64 `json:"totalTcu,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _BillingInfo BillingInfo
 
 // NewBillingInfo instantiates a new BillingInfo object
 // This constructor will assign default values to properties that have it defined,
@@ -158,7 +161,35 @@ func (o BillingInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *BillingInfo) UnmarshalJSON(data []byte) (err error) {
+	varBillingInfo := _BillingInfo{}
+
+	err = json.Unmarshal(data, &varBillingInfo)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BillingInfo(varBillingInfo)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalTcu")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableBillingInfo struct {

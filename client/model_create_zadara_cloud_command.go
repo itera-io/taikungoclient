@@ -29,7 +29,10 @@ type CreateZadaraCloudCommand struct {
 	AzCount *int32 `json:"azCount,omitempty"`
 	ZadaraContinent NullableString `json:"zadaraContinent,omitempty"`
 	ZadaraVolumeType NullableString `json:"zadaraVolumeType,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateZadaraCloudCommand CreateZadaraCloudCommand
 
 // NewCreateZadaraCloudCommand instantiates a new CreateZadaraCloudCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -453,7 +456,41 @@ func (o CreateZadaraCloudCommand) ToMap() (map[string]interface{}, error) {
 	if o.ZadaraVolumeType.IsSet() {
 		toSerialize["zadaraVolumeType"] = o.ZadaraVolumeType.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateZadaraCloudCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateZadaraCloudCommand := _CreateZadaraCloudCommand{}
+
+	err = json.Unmarshal(data, &varCreateZadaraCloudCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateZadaraCloudCommand(varCreateZadaraCloudCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "zadaraUrl")
+		delete(additionalProperties, "zadaraSecretAccessKey")
+		delete(additionalProperties, "zadaraAccessKeyId")
+		delete(additionalProperties, "zadaraRegion")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "azCount")
+		delete(additionalProperties, "zadaraContinent")
+		delete(additionalProperties, "zadaraVolumeType")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateZadaraCloudCommand struct {

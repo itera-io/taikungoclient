@@ -24,7 +24,10 @@ type GetCatalogAppValueAutocompleteCommand struct {
 	Version NullableString `json:"version,omitempty"`
 	CatalogAppId NullableInt32 `json:"catalogAppId,omitempty"`
 	IsQuestion NullableBool `json:"isQuestion,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _GetCatalogAppValueAutocompleteCommand GetCatalogAppValueAutocompleteCommand
 
 // NewGetCatalogAppValueAutocompleteCommand instantiates a new GetCatalogAppValueAutocompleteCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -233,7 +236,36 @@ func (o GetCatalogAppValueAutocompleteCommand) ToMap() (map[string]interface{}, 
 	if o.IsQuestion.IsSet() {
 		toSerialize["isQuestion"] = o.IsQuestion.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *GetCatalogAppValueAutocompleteCommand) UnmarshalJSON(data []byte) (err error) {
+	varGetCatalogAppValueAutocompleteCommand := _GetCatalogAppValueAutocompleteCommand{}
+
+	err = json.Unmarshal(data, &varGetCatalogAppValueAutocompleteCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GetCatalogAppValueAutocompleteCommand(varGetCatalogAppValueAutocompleteCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "packageId")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "catalogAppId")
+		delete(additionalProperties, "isQuestion")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableGetCatalogAppValueAutocompleteCommand struct {

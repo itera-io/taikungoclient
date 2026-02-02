@@ -22,7 +22,10 @@ var _ MappedNullable = &OperationDto{}
 type OperationDto struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	Operation NullableString `json:"operation,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OperationDto OperationDto
 
 // NewOperationDto instantiates a new OperationDto object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o OperationDto) ToMap() (map[string]interface{}, error) {
 	if o.Operation.IsSet() {
 		toSerialize["operation"] = o.Operation.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OperationDto) UnmarshalJSON(data []byte) (err error) {
+	varOperationDto := _OperationDto{}
+
+	err = json.Unmarshal(data, &varOperationDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OperationDto(varOperationDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "operation")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOperationDto struct {

@@ -25,7 +25,10 @@ type SecurityReportSummaryDto struct {
 	Medium *int64 `json:"medium,omitempty"`
 	Unknown *int64 `json:"unknown,omitempty"`
 	Critical *int64 `json:"critical,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _SecurityReportSummaryDto SecurityReportSummaryDto
 
 // NewSecurityReportSummaryDto instantiates a new SecurityReportSummaryDto object
 // This constructor will assign default values to properties that have it defined,
@@ -229,7 +232,37 @@ func (o SecurityReportSummaryDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Critical) {
 		toSerialize["critical"] = o.Critical
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *SecurityReportSummaryDto) UnmarshalJSON(data []byte) (err error) {
+	varSecurityReportSummaryDto := _SecurityReportSummaryDto{}
+
+	err = json.Unmarshal(data, &varSecurityReportSummaryDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SecurityReportSummaryDto(varSecurityReportSummaryDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "low")
+		delete(additionalProperties, "high")
+		delete(additionalProperties, "medium")
+		delete(additionalProperties, "unknown")
+		delete(additionalProperties, "critical")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableSecurityReportSummaryDto struct {

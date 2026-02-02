@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -36,6 +35,7 @@ type ProjectListForAlert struct {
 	KubernetesAlerts []KubernetesAlertDtoForPoller `json:"kubernetesAlerts"`
 	KubernetesCurrentVersion NullableString `json:"kubernetesCurrentVersion"`
 	TotalServersCount int32 `json:"totalServersCount"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProjectListForAlert ProjectListForAlert
@@ -445,6 +445,11 @@ func (o ProjectListForAlert) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["kubernetesCurrentVersion"] = o.KubernetesCurrentVersion.Get()
 	toSerialize["totalServersCount"] = o.TotalServersCount
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -485,15 +490,33 @@ func (o *ProjectListForAlert) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectListForAlert := _ProjectListForAlert{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectListForAlert)
+	err = json.Unmarshal(data, &varProjectListForAlert)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectListForAlert(varProjectListForAlert)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "health")
+		delete(additionalProperties, "isKubernetes")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "isMonitoringEnabled")
+		delete(additionalProperties, "hasKubeConfigFile")
+		delete(additionalProperties, "monitoringCredential")
+		delete(additionalProperties, "kubernetesAlerts")
+		delete(additionalProperties, "kubernetesCurrentVersion")
+		delete(additionalProperties, "totalServersCount")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

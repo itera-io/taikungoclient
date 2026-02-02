@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -24,6 +23,7 @@ var _ MappedNullable = &ImportedAsCloudCredentialList{}
 type ImportedAsCloudCredentialList struct {
 	Visibility ImportedAsCloudCredentialVisibility `json:"visibility"`
 	Data ImportedClusterDetailsDto `json:"data"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ImportedAsCloudCredentialList ImportedAsCloudCredentialList
@@ -107,6 +107,11 @@ func (o ImportedAsCloudCredentialList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["visibility"] = o.Visibility
 	toSerialize["data"] = o.Data
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *ImportedAsCloudCredentialList) UnmarshalJSON(data []byte) (err error) {
 
 	varImportedAsCloudCredentialList := _ImportedAsCloudCredentialList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varImportedAsCloudCredentialList)
+	err = json.Unmarshal(data, &varImportedAsCloudCredentialList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ImportedAsCloudCredentialList(varImportedAsCloudCredentialList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "visibility")
+		delete(additionalProperties, "data")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

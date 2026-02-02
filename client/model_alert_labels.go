@@ -33,7 +33,10 @@ type AlertLabels struct {
 	Severity NullableString `json:"severity,omitempty"`
 	Status NullableString `json:"status,omitempty"`
 	Daemonset NullableString `json:"daemonset,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AlertLabels AlertLabels
 
 // NewAlertLabels instantiates a new AlertLabels object
 // This constructor will assign default values to properties that have it defined,
@@ -647,7 +650,45 @@ func (o AlertLabels) ToMap() (map[string]interface{}, error) {
 	if o.Daemonset.IsSet() {
 		toSerialize["daemonset"] = o.Daemonset.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AlertLabels) UnmarshalJSON(data []byte) (err error) {
+	varAlertLabels := _AlertLabels{}
+
+	err = json.Unmarshal(data, &varAlertLabels)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AlertLabels(varAlertLabels)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "alertname")
+		delete(additionalProperties, "condition")
+		delete(additionalProperties, "container")
+		delete(additionalProperties, "endpoint")
+		delete(additionalProperties, "instance")
+		delete(additionalProperties, "job")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "node")
+		delete(additionalProperties, "pod")
+		delete(additionalProperties, "service")
+		delete(additionalProperties, "severity")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "daemonset")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAlertLabels struct {

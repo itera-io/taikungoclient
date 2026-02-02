@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -28,6 +27,7 @@ type ProjectWithFlavorsAndImagesDto struct {
 	Images []string `json:"images"`
 	ImageNames []string `json:"imageNames"`
 	IsReady bool `json:"isReady"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProjectWithFlavorsAndImagesDto ProjectWithFlavorsAndImagesDto
@@ -229,6 +229,11 @@ func (o ProjectWithFlavorsAndImagesDto) ToMap() (map[string]interface{}, error) 
 		toSerialize["imageNames"] = o.ImageNames
 	}
 	toSerialize["isReady"] = o.IsReady
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -261,15 +266,25 @@ func (o *ProjectWithFlavorsAndImagesDto) UnmarshalJSON(data []byte) (err error) 
 
 	varProjectWithFlavorsAndImagesDto := _ProjectWithFlavorsAndImagesDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectWithFlavorsAndImagesDto)
+	err = json.Unmarshal(data, &varProjectWithFlavorsAndImagesDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectWithFlavorsAndImagesDto(varProjectWithFlavorsAndImagesDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "flavors")
+		delete(additionalProperties, "images")
+		delete(additionalProperties, "imageNames")
+		delete(additionalProperties, "isReady")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -23,7 +23,10 @@ type ProxmoxHypervisorDto struct {
 	Name NullableString `json:"name,omitempty"`
 	IsBound *bool `json:"isBound,omitempty"`
 	UsedByServer *bool `json:"usedByServer,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProxmoxHypervisorDto ProxmoxHypervisorDto
 
 // NewProxmoxHypervisorDto instantiates a new ProxmoxHypervisorDto object
 // This constructor will assign default values to properties that have it defined,
@@ -167,7 +170,35 @@ func (o ProxmoxHypervisorDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UsedByServer) {
 		toSerialize["usedByServer"] = o.UsedByServer
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProxmoxHypervisorDto) UnmarshalJSON(data []byte) (err error) {
+	varProxmoxHypervisorDto := _ProxmoxHypervisorDto{}
+
+	err = json.Unmarshal(data, &varProxmoxHypervisorDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProxmoxHypervisorDto(varProxmoxHypervisorDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "isBound")
+		delete(additionalProperties, "usedByServer")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProxmoxHypervisorDto struct {

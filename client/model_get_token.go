@@ -14,7 +14,6 @@ package taikuncore
 import (
 	"encoding/json"
 	"time"
-	"bytes"
 	"fmt"
 )
 
@@ -28,6 +27,7 @@ type GetToken struct {
 	RefreshTokenExpireTime *time.Time `json:"refreshTokenExpireTime,omitempty"`
 	TwoFaEnabled NullableBool `json:"twoFaEnabled,omitempty"`
 	IsForcedToEnabled2Fa NullableBool `json:"isForcedToEnabled2Fa,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GetToken GetToken
@@ -255,6 +255,11 @@ func (o GetToken) ToMap() (map[string]interface{}, error) {
 	if o.IsForcedToEnabled2Fa.IsSet() {
 		toSerialize["isForcedToEnabled2Fa"] = o.IsForcedToEnabled2Fa.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -282,15 +287,24 @@ func (o *GetToken) UnmarshalJSON(data []byte) (err error) {
 
 	varGetToken := _GetToken{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGetToken)
+	err = json.Unmarshal(data, &varGetToken)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GetToken(varGetToken)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "refreshToken")
+		delete(additionalProperties, "refreshTokenExpireTime")
+		delete(additionalProperties, "twoFaEnabled")
+		delete(additionalProperties, "isForcedToEnabled2Fa")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

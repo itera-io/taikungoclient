@@ -21,7 +21,10 @@ var _ MappedNullable = &WhiteListDomainCreateDto{}
 // WhiteListDomainCreateDto struct for WhiteListDomainCreateDto
 type WhiteListDomainCreateDto struct {
 	Name NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _WhiteListDomainCreateDto WhiteListDomainCreateDto
 
 // NewWhiteListDomainCreateDto instantiates a new WhiteListDomainCreateDto object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +98,33 @@ func (o WhiteListDomainCreateDto) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *WhiteListDomainCreateDto) UnmarshalJSON(data []byte) (err error) {
+	varWhiteListDomainCreateDto := _WhiteListDomainCreateDto{}
+
+	err = json.Unmarshal(data, &varWhiteListDomainCreateDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = WhiteListDomainCreateDto(varWhiteListDomainCreateDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableWhiteListDomainCreateDto struct {

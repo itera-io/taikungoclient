@@ -26,7 +26,10 @@ type RuleForUpdateDto struct {
 	Price NullableFloat64 `json:"price,omitempty"`
 	Labels []PrometheusLabelListDto `json:"labels,omitempty"`
 	OperationCredentialId NullableInt32 `json:"operationCredentialId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _RuleForUpdateDto RuleForUpdateDto
 
 // NewRuleForUpdateDto instantiates a new RuleForUpdateDto object
 // This constructor will assign default values to properties that have it defined,
@@ -306,7 +309,38 @@ func (o RuleForUpdateDto) ToMap() (map[string]interface{}, error) {
 	if o.OperationCredentialId.IsSet() {
 		toSerialize["operationCredentialId"] = o.OperationCredentialId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *RuleForUpdateDto) UnmarshalJSON(data []byte) (err error) {
+	varRuleForUpdateDto := _RuleForUpdateDto{}
+
+	err = json.Unmarshal(data, &varRuleForUpdateDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RuleForUpdateDto(varRuleForUpdateDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "metricName")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "price")
+		delete(additionalProperties, "labels")
+		delete(additionalProperties, "operationCredentialId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableRuleForUpdateDto struct {

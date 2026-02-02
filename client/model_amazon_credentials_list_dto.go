@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -38,6 +37,7 @@ type AmazonCredentialsListDto struct {
 	OrganizationName string `json:"organizationName"`
 	CreatedAt NullableString `json:"createdAt"`
 	ContinentName NullableString `json:"continentName"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AmazonCredentialsListDto AmazonCredentialsListDto
@@ -495,6 +495,11 @@ func (o AmazonCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["organizationName"] = o.OrganizationName
 	toSerialize["createdAt"] = o.CreatedAt.Get()
 	toSerialize["continentName"] = o.ContinentName.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -537,15 +542,35 @@ func (o *AmazonCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varAmazonCredentialsListDto := _AmazonCredentialsListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAmazonCredentialsListDto)
+	err = json.Unmarshal(data, &varAmazonCredentialsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AmazonCredentialsListDto(varAmazonCredentialsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "projectCount")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "region")
+		delete(additionalProperties, "availabilityZones")
+		delete(additionalProperties, "availabilityZonesCount")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "continentName")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

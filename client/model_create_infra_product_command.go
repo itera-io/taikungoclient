@@ -21,7 +21,10 @@ var _ MappedNullable = &CreateInfraProductCommand{}
 // CreateInfraProductCommand struct for CreateInfraProductCommand
 type CreateInfraProductCommand struct {
 	Name NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateInfraProductCommand CreateInfraProductCommand
 
 // NewCreateInfraProductCommand instantiates a new CreateInfraProductCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +98,33 @@ func (o CreateInfraProductCommand) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateInfraProductCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateInfraProductCommand := _CreateInfraProductCommand{}
+
+	err = json.Unmarshal(data, &varCreateInfraProductCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateInfraProductCommand(varCreateInfraProductCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateInfraProductCommand struct {

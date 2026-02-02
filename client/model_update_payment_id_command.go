@@ -22,7 +22,10 @@ var _ MappedNullable = &UpdatePaymentIdCommand{}
 type UpdatePaymentIdCommand struct {
 	PaymentMethodId NullableString `json:"paymentMethodId,omitempty"`
 	PaymentIntentId NullableString `json:"paymentIntentId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdatePaymentIdCommand UpdatePaymentIdCommand
 
 // NewUpdatePaymentIdCommand instantiates a new UpdatePaymentIdCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o UpdatePaymentIdCommand) ToMap() (map[string]interface{}, error) {
 	if o.PaymentIntentId.IsSet() {
 		toSerialize["paymentIntentId"] = o.PaymentIntentId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdatePaymentIdCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdatePaymentIdCommand := _UpdatePaymentIdCommand{}
+
+	err = json.Unmarshal(data, &varUpdatePaymentIdCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdatePaymentIdCommand(varUpdatePaymentIdCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "paymentMethodId")
+		delete(additionalProperties, "paymentIntentId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdatePaymentIdCommand struct {

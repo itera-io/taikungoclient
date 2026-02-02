@@ -23,7 +23,10 @@ type AzureQuotaListRecordDto struct {
 	TotalCores *int64 `json:"totalCores,omitempty"`
 	CurrentUsage *int32 `json:"currentUsage,omitempty"`
 	Name NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AzureQuotaListRecordDto AzureQuotaListRecordDto
 
 // NewAzureQuotaListRecordDto instantiates a new AzureQuotaListRecordDto object
 // This constructor will assign default values to properties that have it defined,
@@ -167,7 +170,35 @@ func (o AzureQuotaListRecordDto) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AzureQuotaListRecordDto) UnmarshalJSON(data []byte) (err error) {
+	varAzureQuotaListRecordDto := _AzureQuotaListRecordDto{}
+
+	err = json.Unmarshal(data, &varAzureQuotaListRecordDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AzureQuotaListRecordDto(varAzureQuotaListRecordDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "totalCores")
+		delete(additionalProperties, "currentUsage")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAzureQuotaListRecordDto struct {

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -50,6 +49,7 @@ type StandaloneVmsListForDetailsDto struct {
 	Disks []StandAloneVmDiskForDetailsDto `json:"disks"`
 	StandAloneMetaDatas []StandAloneMetaDataDtoForVm `json:"standAloneMetaDatas"`
 	Profile StandAloneProfileForDetailsDto `json:"profile"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StandaloneVmsListForDetailsDto StandaloneVmsListForDetailsDto
@@ -827,6 +827,11 @@ func (o StandaloneVmsListForDetailsDto) ToMap() (map[string]interface{}, error) 
 	toSerialize["disks"] = o.Disks
 	toSerialize["standAloneMetaDatas"] = o.StandAloneMetaDatas
 	toSerialize["profile"] = o.Profile
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -881,15 +886,47 @@ func (o *StandaloneVmsListForDetailsDto) UnmarshalJSON(data []byte) (err error) 
 
 	varStandaloneVmsListForDetailsDto := _StandaloneVmsListForDetailsDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStandaloneVmsListForDetailsDto)
+	err = json.Unmarshal(data, &varStandaloneVmsListForDetailsDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StandaloneVmsListForDetailsDto(varStandaloneVmsListForDetailsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "imageName")
+		delete(additionalProperties, "imageId")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "cloudInit")
+		delete(additionalProperties, "volumeType")
+		delete(additionalProperties, "volumeSize")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "sshPublicKey")
+		delete(additionalProperties, "currentFlavor")
+		delete(additionalProperties, "targetFlavor")
+		delete(additionalProperties, "publicIpEnabled")
+		delete(additionalProperties, "publicIp")
+		delete(additionalProperties, "hypervisor")
+		delete(additionalProperties, "hypervisorId")
+		delete(additionalProperties, "ipAddress")
+		delete(additionalProperties, "spotPrice")
+		delete(additionalProperties, "spotInstance")
+		delete(additionalProperties, "availabilityZone")
+		delete(additionalProperties, "actionButtons")
+		delete(additionalProperties, "isWindows")
+		delete(additionalProperties, "disks")
+		delete(additionalProperties, "standAloneMetaDatas")
+		delete(additionalProperties, "profile")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

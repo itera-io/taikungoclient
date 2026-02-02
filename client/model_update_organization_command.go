@@ -33,7 +33,10 @@ type UpdateOrganizationCommand struct {
 	BillingEmail NullableString `json:"billingEmail,omitempty"`
 	DiscountRate NullableFloat64 `json:"discountRate,omitempty"`
 	IsEligibleUpdateSubscription *bool `json:"isEligibleUpdateSubscription,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateOrganizationCommand UpdateOrganizationCommand
 
 // NewUpdateOrganizationCommand instantiates a new UpdateOrganizationCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -617,7 +620,45 @@ func (o UpdateOrganizationCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsEligibleUpdateSubscription) {
 		toSerialize["isEligibleUpdateSubscription"] = o.IsEligibleUpdateSubscription
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateOrganizationCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateOrganizationCommand := _UpdateOrganizationCommand{}
+
+	err = json.Unmarshal(data, &varUpdateOrganizationCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateOrganizationCommand(varUpdateOrganizationCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "fullName")
+		delete(additionalProperties, "phone")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "address")
+		delete(additionalProperties, "country")
+		delete(additionalProperties, "city")
+		delete(additionalProperties, "vatNumber")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "billingEmail")
+		delete(additionalProperties, "discountRate")
+		delete(additionalProperties, "isEligibleUpdateSubscription")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateOrganizationCommand struct {

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -24,6 +23,7 @@ var _ MappedNullable = &OpenstackCredentialList{}
 type OpenstackCredentialList struct {
 	Data []OpenstackCredentialsListDto `json:"data"`
 	TotalCount int32 `json:"totalCount"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OpenstackCredentialList OpenstackCredentialList
@@ -111,6 +111,11 @@ func (o OpenstackCredentialList) ToMap() (map[string]interface{}, error) {
 		toSerialize["data"] = o.Data
 	}
 	toSerialize["totalCount"] = o.TotalCount
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -139,15 +144,21 @@ func (o *OpenstackCredentialList) UnmarshalJSON(data []byte) (err error) {
 
 	varOpenstackCredentialList := _OpenstackCredentialList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOpenstackCredentialList)
+	err = json.Unmarshal(data, &varOpenstackCredentialList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OpenstackCredentialList(varOpenstackCredentialList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

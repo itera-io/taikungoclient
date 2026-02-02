@@ -27,7 +27,10 @@ type UpdateQuotaCommand struct {
 	VmCpu *int64 `json:"vmCpu,omitempty"`
 	VmRam *float64 `json:"vmRam,omitempty"`
 	VmVolumeSize *float64 `json:"vmVolumeSize,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateQuotaCommand UpdateQuotaCommand
 
 // NewUpdateQuotaCommand instantiates a new UpdateQuotaCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -301,7 +304,39 @@ func (o UpdateQuotaCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.VmVolumeSize) {
 		toSerialize["vmVolumeSize"] = o.VmVolumeSize
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateQuotaCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateQuotaCommand := _UpdateQuotaCommand{}
+
+	err = json.Unmarshal(data, &varUpdateQuotaCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateQuotaCommand(varUpdateQuotaCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "quotaId")
+		delete(additionalProperties, "serverCpu")
+		delete(additionalProperties, "serverRam")
+		delete(additionalProperties, "serverDiskSize")
+		delete(additionalProperties, "vmCpu")
+		delete(additionalProperties, "vmRam")
+		delete(additionalProperties, "vmVolumeSize")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateQuotaCommand struct {

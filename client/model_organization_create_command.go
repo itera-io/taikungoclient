@@ -32,7 +32,10 @@ type OrganizationCreateCommand struct {
 	DiscountRate NullableFloat64 `json:"discountRate,omitempty"`
 	IsEligibleUpdateSubscription *bool `json:"isEligibleUpdateSubscription,omitempty"`
 	AdminCloudCredentialId NullableInt32 `json:"adminCloudCredentialId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OrganizationCreateCommand OrganizationCreateCommand
 
 // NewOrganizationCreateCommand instantiates a new OrganizationCreateCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -591,7 +594,44 @@ func (o OrganizationCreateCommand) ToMap() (map[string]interface{}, error) {
 	if o.AdminCloudCredentialId.IsSet() {
 		toSerialize["adminCloudCredentialId"] = o.AdminCloudCredentialId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OrganizationCreateCommand) UnmarshalJSON(data []byte) (err error) {
+	varOrganizationCreateCommand := _OrganizationCreateCommand{}
+
+	err = json.Unmarshal(data, &varOrganizationCreateCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationCreateCommand(varOrganizationCreateCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "fullName")
+		delete(additionalProperties, "phone")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "billingEmail")
+		delete(additionalProperties, "address")
+		delete(additionalProperties, "country")
+		delete(additionalProperties, "city")
+		delete(additionalProperties, "vatNumber")
+		delete(additionalProperties, "discountRate")
+		delete(additionalProperties, "isEligibleUpdateSubscription")
+		delete(additionalProperties, "adminCloudCredentialId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOrganizationCreateCommand struct {

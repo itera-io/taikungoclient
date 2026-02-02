@@ -24,7 +24,10 @@ type HypervisorListCommand struct {
 	TokenId NullableString `json:"tokenId,omitempty"`
 	TokenSecret NullableString `json:"tokenSecret,omitempty"`
 	CloudId NullableInt32 `json:"cloudId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _HypervisorListCommand HypervisorListCommand
 
 // NewHypervisorListCommand instantiates a new HypervisorListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -233,7 +236,36 @@ func (o HypervisorListCommand) ToMap() (map[string]interface{}, error) {
 	if o.CloudId.IsSet() {
 		toSerialize["cloudId"] = o.CloudId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *HypervisorListCommand) UnmarshalJSON(data []byte) (err error) {
+	varHypervisorListCommand := _HypervisorListCommand{}
+
+	err = json.Unmarshal(data, &varHypervisorListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HypervisorListCommand(varHypervisorListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "tokenId")
+		delete(additionalProperties, "tokenSecret")
+		delete(additionalProperties, "cloudId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableHypervisorListCommand struct {

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -26,6 +25,7 @@ type SshUsersListDto struct {
 	Name NullableString `json:"name"`
 	SshPublicKey NullableString `json:"sshPublicKey"`
 	AccessProfileName NullableString `json:"accessProfileName"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SshUsersListDto SshUsersListDto
@@ -167,6 +167,11 @@ func (o SshUsersListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name.Get()
 	toSerialize["sshPublicKey"] = o.SshPublicKey.Get()
 	toSerialize["accessProfileName"] = o.AccessProfileName.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -197,15 +202,23 @@ func (o *SshUsersListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varSshUsersListDto := _SshUsersListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSshUsersListDto)
+	err = json.Unmarshal(data, &varSshUsersListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SshUsersListDto(varSshUsersListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "sshPublicKey")
+		delete(additionalProperties, "accessProfileName")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

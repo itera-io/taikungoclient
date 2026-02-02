@@ -23,7 +23,10 @@ type IpAddressRangeListCommand struct {
 	IpAddress NullableString `json:"ipAddress,omitempty"`
 	NetMask *int32 `json:"netMask,omitempty"`
 	Gateway NullableString `json:"gateway,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _IpAddressRangeListCommand IpAddressRangeListCommand
 
 // NewIpAddressRangeListCommand instantiates a new IpAddressRangeListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -177,7 +180,35 @@ func (o IpAddressRangeListCommand) ToMap() (map[string]interface{}, error) {
 	if o.Gateway.IsSet() {
 		toSerialize["gateway"] = o.Gateway.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *IpAddressRangeListCommand) UnmarshalJSON(data []byte) (err error) {
+	varIpAddressRangeListCommand := _IpAddressRangeListCommand{}
+
+	err = json.Unmarshal(data, &varIpAddressRangeListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IpAddressRangeListCommand(varIpAddressRangeListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "ipAddress")
+		delete(additionalProperties, "netMask")
+		delete(additionalProperties, "gateway")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableIpAddressRangeListCommand struct {

@@ -22,7 +22,10 @@ var _ MappedNullable = &SpotVmOperationCommand{}
 type SpotVmOperationCommand struct {
 	Id *int32 `json:"id,omitempty"`
 	Mode NullableString `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _SpotVmOperationCommand SpotVmOperationCommand
 
 // NewSpotVmOperationCommand instantiates a new SpotVmOperationCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o SpotVmOperationCommand) ToMap() (map[string]interface{}, error) {
 	if o.Mode.IsSet() {
 		toSerialize["mode"] = o.Mode.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *SpotVmOperationCommand) UnmarshalJSON(data []byte) (err error) {
+	varSpotVmOperationCommand := _SpotVmOperationCommand{}
+
+	err = json.Unmarshal(data, &varSpotVmOperationCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SpotVmOperationCommand(varSpotVmOperationCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableSpotVmOperationCommand struct {

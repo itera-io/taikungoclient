@@ -22,7 +22,10 @@ var _ MappedNullable = &EditCatalogAppVersionCommand{}
 type EditCatalogAppVersionCommand struct {
 	CatalogAppId *int32 `json:"catalogAppId,omitempty"`
 	Version NullableString `json:"version,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EditCatalogAppVersionCommand EditCatalogAppVersionCommand
 
 // NewEditCatalogAppVersionCommand instantiates a new EditCatalogAppVersionCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o EditCatalogAppVersionCommand) ToMap() (map[string]interface{}, error) {
 	if o.Version.IsSet() {
 		toSerialize["version"] = o.Version.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EditCatalogAppVersionCommand) UnmarshalJSON(data []byte) (err error) {
+	varEditCatalogAppVersionCommand := _EditCatalogAppVersionCommand{}
+
+	err = json.Unmarshal(data, &varEditCatalogAppVersionCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EditCatalogAppVersionCommand(varEditCatalogAppVersionCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "catalogAppId")
+		delete(additionalProperties, "version")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEditCatalogAppVersionCommand struct {

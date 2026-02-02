@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -25,6 +24,7 @@ type StandAloneMetaDataDtoForVm struct {
 	Id int32 `json:"id"`
 	Key NullableString `json:"key"`
 	Value NullableString `json:"value"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StandAloneMetaDataDtoForVm StandAloneMetaDataDtoForVm
@@ -138,6 +138,11 @@ func (o StandAloneMetaDataDtoForVm) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["key"] = o.Key.Get()
 	toSerialize["value"] = o.Value.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -167,15 +172,22 @@ func (o *StandAloneMetaDataDtoForVm) UnmarshalJSON(data []byte) (err error) {
 
 	varStandAloneMetaDataDtoForVm := _StandAloneMetaDataDtoForVm{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStandAloneMetaDataDtoForVm)
+	err = json.Unmarshal(data, &varStandAloneMetaDataDtoForVm)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StandAloneMetaDataDtoForVm(varStandAloneMetaDataDtoForVm)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "value")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

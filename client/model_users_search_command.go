@@ -23,7 +23,10 @@ type UsersSearchCommand struct {
 	Limit NullableInt32 `json:"limit,omitempty"`
 	Offset NullableInt32 `json:"offset,omitempty"`
 	SearchTerm NullableString `json:"searchTerm,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UsersSearchCommand UsersSearchCommand
 
 // NewUsersSearchCommand instantiates a new UsersSearchCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -187,7 +190,35 @@ func (o UsersSearchCommand) ToMap() (map[string]interface{}, error) {
 	if o.SearchTerm.IsSet() {
 		toSerialize["searchTerm"] = o.SearchTerm.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UsersSearchCommand) UnmarshalJSON(data []byte) (err error) {
+	varUsersSearchCommand := _UsersSearchCommand{}
+
+	err = json.Unmarshal(data, &varUsersSearchCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UsersSearchCommand(varUsersSearchCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "offset")
+		delete(additionalProperties, "searchTerm")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUsersSearchCommand struct {

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -24,6 +23,7 @@ var _ MappedNullable = &AddOrganizationToGroupCommand{}
 type AddOrganizationToGroupCommand struct {
 	GroupId int32 `json:"groupId"`
 	Organizations []CreateGroupOrganizationDto `json:"organizations"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AddOrganizationToGroupCommand AddOrganizationToGroupCommand
@@ -111,6 +111,11 @@ func (o AddOrganizationToGroupCommand) ToMap() (map[string]interface{}, error) {
 	if o.Organizations != nil {
 		toSerialize["organizations"] = o.Organizations
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -139,15 +144,21 @@ func (o *AddOrganizationToGroupCommand) UnmarshalJSON(data []byte) (err error) {
 
 	varAddOrganizationToGroupCommand := _AddOrganizationToGroupCommand{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAddOrganizationToGroupCommand)
+	err = json.Unmarshal(data, &varAddOrganizationToGroupCommand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AddOrganizationToGroupCommand(varAddOrganizationToGroupCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "groupId")
+		delete(additionalProperties, "organizations")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

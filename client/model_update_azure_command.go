@@ -24,7 +24,10 @@ type UpdateAzureCommand struct {
 	Name NullableString `json:"name,omitempty"`
 	AzureClientSecret NullableString `json:"azureClientSecret,omitempty"`
 	AzureClientId NullableString `json:"azureClientId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateAzureCommand UpdateAzureCommand
 
 // NewUpdateAzureCommand instantiates a new UpdateAzureCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -223,7 +226,36 @@ func (o UpdateAzureCommand) ToMap() (map[string]interface{}, error) {
 	if o.AzureClientId.IsSet() {
 		toSerialize["azureClientId"] = o.AzureClientId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateAzureCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateAzureCommand := _UpdateAzureCommand{}
+
+	err = json.Unmarshal(data, &varUpdateAzureCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateAzureCommand(varUpdateAzureCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "azureClientSecret")
+		delete(additionalProperties, "azureClientId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateAzureCommand struct {

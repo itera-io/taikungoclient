@@ -22,7 +22,10 @@ var _ MappedNullable = &ProjectMonitoringAlertsDto{}
 type ProjectMonitoringAlertsDto struct {
 	Status NullableString `json:"status,omitempty"`
 	Data *AlertData `json:"data,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectMonitoringAlertsDto ProjectMonitoringAlertsDto
 
 // NewProjectMonitoringAlertsDto instantiates a new ProjectMonitoringAlertsDto object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o ProjectMonitoringAlertsDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Data) {
 		toSerialize["data"] = o.Data
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectMonitoringAlertsDto) UnmarshalJSON(data []byte) (err error) {
+	varProjectMonitoringAlertsDto := _ProjectMonitoringAlertsDto{}
+
+	err = json.Unmarshal(data, &varProjectMonitoringAlertsDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectMonitoringAlertsDto(varProjectMonitoringAlertsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "data")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectMonitoringAlertsDto struct {

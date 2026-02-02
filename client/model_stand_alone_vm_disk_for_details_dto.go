@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -30,6 +29,7 @@ type StandAloneVmDiskForDetailsDto struct {
 	DeviceName NullableString `json:"deviceName"`
 	LunId NullableString `json:"lunId"`
 	Status StandAloneVmDiskStatus `json:"status"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StandAloneVmDiskForDetailsDto StandAloneVmDiskForDetailsDto
@@ -277,6 +277,11 @@ func (o StandAloneVmDiskForDetailsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["deviceName"] = o.DeviceName.Get()
 	toSerialize["lunId"] = o.LunId.Get()
 	toSerialize["status"] = o.Status
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -311,15 +316,27 @@ func (o *StandAloneVmDiskForDetailsDto) UnmarshalJSON(data []byte) (err error) {
 
 	varStandAloneVmDiskForDetailsDto := _StandAloneVmDiskForDetailsDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStandAloneVmDiskForDetailsDto)
+	err = json.Unmarshal(data, &varStandAloneVmDiskForDetailsDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StandAloneVmDiskForDetailsDto(varStandAloneVmDiskForDetailsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "currentSize")
+		delete(additionalProperties, "targetSize")
+		delete(additionalProperties, "volumeType")
+		delete(additionalProperties, "deviceName")
+		delete(additionalProperties, "lunId")
+		delete(additionalProperties, "status")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -38,7 +38,10 @@ type AvailablePackagesDto struct {
 	Ts NullableString `json:"ts,omitempty"`
 	Repository *Repository `json:"repository,omitempty"`
 	IsAdded NullableBool `json:"isAdded,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AvailablePackagesDto AvailablePackagesDto
 
 // NewAvailablePackagesDto instantiates a new AvailablePackagesDto object
 // This constructor will assign default values to properties that have it defined,
@@ -807,7 +810,50 @@ func (o AvailablePackagesDto) ToMap() (map[string]interface{}, error) {
 	if o.IsAdded.IsSet() {
 		toSerialize["isAdded"] = o.IsAdded.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AvailablePackagesDto) UnmarshalJSON(data []byte) (err error) {
+	varAvailablePackagesDto := _AvailablePackagesDto{}
+
+	err = json.Unmarshal(data, &varAvailablePackagesDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AvailablePackagesDto(varAvailablePackagesDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "packageId")
+		delete(additionalProperties, "catalogId")
+		delete(additionalProperties, "catalogAppId")
+		delete(additionalProperties, "installedInstanceCount")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "normalizedName")
+		delete(additionalProperties, "logoImageId")
+		delete(additionalProperties, "stars")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "appVersion")
+		delete(additionalProperties, "deprecated")
+		delete(additionalProperties, "signed")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "securityReportSummary")
+		delete(additionalProperties, "ts")
+		delete(additionalProperties, "repository")
+		delete(additionalProperties, "isAdded")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAvailablePackagesDto struct {

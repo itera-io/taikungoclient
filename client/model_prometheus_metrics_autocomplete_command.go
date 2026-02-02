@@ -21,7 +21,10 @@ var _ MappedNullable = &PrometheusMetricsAutocompleteCommand{}
 // PrometheusMetricsAutocompleteCommand struct for PrometheusMetricsAutocompleteCommand
 type PrometheusMetricsAutocompleteCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PrometheusMetricsAutocompleteCommand PrometheusMetricsAutocompleteCommand
 
 // NewPrometheusMetricsAutocompleteCommand instantiates a new PrometheusMetricsAutocompleteCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o PrometheusMetricsAutocompleteCommand) ToMap() (map[string]interface{}, e
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PrometheusMetricsAutocompleteCommand) UnmarshalJSON(data []byte) (err error) {
+	varPrometheusMetricsAutocompleteCommand := _PrometheusMetricsAutocompleteCommand{}
+
+	err = json.Unmarshal(data, &varPrometheusMetricsAutocompleteCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PrometheusMetricsAutocompleteCommand(varPrometheusMetricsAutocompleteCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePrometheusMetricsAutocompleteCommand struct {

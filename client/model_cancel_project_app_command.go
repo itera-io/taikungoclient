@@ -21,7 +21,10 @@ var _ MappedNullable = &CancelProjectAppCommand{}
 // CancelProjectAppCommand struct for CancelProjectAppCommand
 type CancelProjectAppCommand struct {
 	ProjectAppId *int32 `json:"projectAppId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CancelProjectAppCommand CancelProjectAppCommand
 
 // NewCancelProjectAppCommand instantiates a new CancelProjectAppCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o CancelProjectAppCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectAppId) {
 		toSerialize["projectAppId"] = o.ProjectAppId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CancelProjectAppCommand) UnmarshalJSON(data []byte) (err error) {
+	varCancelProjectAppCommand := _CancelProjectAppCommand{}
+
+	err = json.Unmarshal(data, &varCancelProjectAppCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CancelProjectAppCommand(varCancelProjectAppCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectAppId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCancelProjectAppCommand struct {

@@ -21,7 +21,10 @@ var _ MappedNullable = &DeleteVirtualClusterCommand{}
 // DeleteVirtualClusterCommand struct for DeleteVirtualClusterCommand
 type DeleteVirtualClusterCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeleteVirtualClusterCommand DeleteVirtualClusterCommand
 
 // NewDeleteVirtualClusterCommand instantiates a new DeleteVirtualClusterCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o DeleteVirtualClusterCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeleteVirtualClusterCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeleteVirtualClusterCommand := _DeleteVirtualClusterCommand{}
+
+	err = json.Unmarshal(data, &varDeleteVirtualClusterCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeleteVirtualClusterCommand(varDeleteVirtualClusterCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeleteVirtualClusterCommand struct {

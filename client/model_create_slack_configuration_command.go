@@ -25,7 +25,10 @@ type CreateSlackConfigurationCommand struct {
 	Url NullableString `json:"url,omitempty"`
 	Channel NullableString `json:"channel,omitempty"`
 	SlackType *SlackType `json:"slackType,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateSlackConfigurationCommand CreateSlackConfigurationCommand
 
 // NewCreateSlackConfigurationCommand instantiates a new CreateSlackConfigurationCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -269,7 +272,37 @@ func (o CreateSlackConfigurationCommand) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.SlackType) {
 		toSerialize["slackType"] = o.SlackType
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateSlackConfigurationCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateSlackConfigurationCommand := _CreateSlackConfigurationCommand{}
+
+	err = json.Unmarshal(data, &varCreateSlackConfigurationCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateSlackConfigurationCommand(varCreateSlackConfigurationCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "channel")
+		delete(additionalProperties, "slackType")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateSlackConfigurationCommand struct {

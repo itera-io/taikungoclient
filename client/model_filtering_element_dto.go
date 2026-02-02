@@ -22,7 +22,10 @@ var _ MappedNullable = &FilteringElementDto{}
 type FilteringElementDto struct {
 	OrganizationName NullableString `json:"organizationName,omitempty"`
 	Name NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FilteringElementDto FilteringElementDto
 
 // NewFilteringElementDto instantiates a new FilteringElementDto object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o FilteringElementDto) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FilteringElementDto) UnmarshalJSON(data []byte) (err error) {
+	varFilteringElementDto := _FilteringElementDto{}
+
+	err = json.Unmarshal(data, &varFilteringElementDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FilteringElementDto(varFilteringElementDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFilteringElementDto struct {

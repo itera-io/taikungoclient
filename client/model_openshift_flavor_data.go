@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -25,6 +24,7 @@ type OpenshiftFlavorData struct {
 	Name NullableString `json:"name"`
 	Cpu int32 `json:"cpu"`
 	Ram float64 `json:"ram"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OpenshiftFlavorData OpenshiftFlavorData
@@ -136,6 +136,11 @@ func (o OpenshiftFlavorData) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name.Get()
 	toSerialize["cpu"] = o.Cpu
 	toSerialize["ram"] = o.Ram
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -165,15 +170,22 @@ func (o *OpenshiftFlavorData) UnmarshalJSON(data []byte) (err error) {
 
 	varOpenshiftFlavorData := _OpenshiftFlavorData{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOpenshiftFlavorData)
+	err = json.Unmarshal(data, &varOpenshiftFlavorData)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OpenshiftFlavorData(varOpenshiftFlavorData)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "ram")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

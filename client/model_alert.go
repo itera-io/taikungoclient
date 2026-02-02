@@ -26,7 +26,10 @@ type Alert struct {
 	State NullableString `json:"state,omitempty"`
 	ActiveAt *time.Time `json:"activeAt,omitempty"`
 	Value NullableString `json:"value,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Alert Alert
 
 // NewAlert instantiates a new Alert object
 // This constructor will assign default values to properties that have it defined,
@@ -250,7 +253,37 @@ func (o Alert) ToMap() (map[string]interface{}, error) {
 	if o.Value.IsSet() {
 		toSerialize["value"] = o.Value.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Alert) UnmarshalJSON(data []byte) (err error) {
+	varAlert := _Alert{}
+
+	err = json.Unmarshal(data, &varAlert)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Alert(varAlert)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "labels")
+		delete(additionalProperties, "annotations")
+		delete(additionalProperties, "state")
+		delete(additionalProperties, "activeAt")
+		delete(additionalProperties, "value")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAlert struct {

@@ -21,7 +21,10 @@ var _ MappedNullable = &VmConsoleScreenshotCommand{}
 // VmConsoleScreenshotCommand struct for VmConsoleScreenshotCommand
 type VmConsoleScreenshotCommand struct {
 	ServerId *int32 `json:"serverId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _VmConsoleScreenshotCommand VmConsoleScreenshotCommand
 
 // NewVmConsoleScreenshotCommand instantiates a new VmConsoleScreenshotCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o VmConsoleScreenshotCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ServerId) {
 		toSerialize["serverId"] = o.ServerId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *VmConsoleScreenshotCommand) UnmarshalJSON(data []byte) (err error) {
+	varVmConsoleScreenshotCommand := _VmConsoleScreenshotCommand{}
+
+	err = json.Unmarshal(data, &varVmConsoleScreenshotCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VmConsoleScreenshotCommand(varVmConsoleScreenshotCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "serverId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableVmConsoleScreenshotCommand struct {

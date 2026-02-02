@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -41,6 +40,7 @@ type InstanceAppListDto struct {
 	ProjectId int32 `json:"projectId"`
 	ProjectName NullableString `json:"projectName"`
 	Logs NullableString `json:"logs"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _InstanceAppListDto InstanceAppListDto
@@ -592,6 +592,11 @@ func (o InstanceAppListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["projectId"] = o.ProjectId
 	toSerialize["projectName"] = o.ProjectName.Get()
 	toSerialize["logs"] = o.Logs.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -637,15 +642,38 @@ func (o *InstanceAppListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varInstanceAppListDto := _InstanceAppListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varInstanceAppListDto)
+	err = json.Unmarshal(data, &varInstanceAppListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = InstanceAppListDto(varInstanceAppListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "catalogId")
+		delete(additionalProperties, "catalogName")
+		delete(additionalProperties, "catalogAppName")
+		delete(additionalProperties, "catalogAppId")
+		delete(additionalProperties, "appRepoName")
+		delete(additionalProperties, "logo")
+		delete(additionalProperties, "autoSync")
+		delete(additionalProperties, "created")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "logs")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

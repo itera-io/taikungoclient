@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -39,6 +38,7 @@ type KubeConfigForUserDto struct {
 	CanDownload bool `json:"canDownload"`
 	CanAccessTerminal bool `json:"canAccessTerminal"`
 	CanDelete bool `json:"canDelete"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _KubeConfigForUserDto KubeConfigForUserDto
@@ -522,6 +522,11 @@ func (o KubeConfigForUserDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["canDownload"] = o.CanDownload
 	toSerialize["canAccessTerminal"] = o.CanAccessTerminal
 	toSerialize["canDelete"] = o.CanDelete
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -565,15 +570,36 @@ func (o *KubeConfigForUserDto) UnmarshalJSON(data []byte) (err error) {
 
 	varKubeConfigForUserDto := _KubeConfigForUserDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKubeConfigForUserDto)
+	err = json.Unmarshal(data, &varKubeConfigForUserDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubeConfigForUserDto(varKubeConfigForUserDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "userId")
+		delete(additionalProperties, "displayName")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "partnerId")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "isAccessibleForAll")
+		delete(additionalProperties, "isAccessibleForManager")
+		delete(additionalProperties, "kubeConfigRoleName")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "expirationDate")
+		delete(additionalProperties, "canDownload")
+		delete(additionalProperties, "canAccessTerminal")
+		delete(additionalProperties, "canDelete")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

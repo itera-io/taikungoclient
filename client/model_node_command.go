@@ -22,7 +22,10 @@ var _ MappedNullable = &NodeCommand{}
 type NodeCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	Name NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _NodeCommand NodeCommand
 
 // NewNodeCommand instantiates a new NodeCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -131,7 +134,34 @@ func (o NodeCommand) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *NodeCommand) UnmarshalJSON(data []byte) (err error) {
+	varNodeCommand := _NodeCommand{}
+
+	err = json.Unmarshal(data, &varNodeCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NodeCommand(varNodeCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableNodeCommand struct {

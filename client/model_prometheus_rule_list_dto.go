@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -39,6 +38,7 @@ type PrometheusRuleListDto struct {
 	CreatedBy string `json:"createdBy"`
 	LastModified NullableString `json:"lastModified"`
 	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PrometheusRuleListDto PrometheusRuleListDto
@@ -530,6 +530,11 @@ func (o PrometheusRuleListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["createdBy"] = o.CreatedBy
 	toSerialize["lastModified"] = o.LastModified.Get()
 	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -573,15 +578,36 @@ func (o *PrometheusRuleListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varPrometheusRuleListDto := _PrometheusRuleListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPrometheusRuleListDto)
+	err = json.Unmarshal(data, &varPrometheusRuleListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PrometheusRuleListDto(varPrometheusRuleListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "userName")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "metricName")
+		delete(additionalProperties, "labels")
+		delete(additionalProperties, "boundOrganizations")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "price")
+		delete(additionalProperties, "billingStartDate")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "partner")
+		delete(additionalProperties, "operationCredential")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

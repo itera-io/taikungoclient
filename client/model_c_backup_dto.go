@@ -14,7 +14,6 @@ package taikuncore
 import (
 	"encoding/json"
 	"time"
-	"bytes"
 	"fmt"
 )
 
@@ -30,6 +29,7 @@ type CBackupDto struct {
 	Namespace string `json:"namespace"`
 	Location NullableString `json:"location"`
 	Phase NullableString `json:"phase"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CBackupDto CBackupDto
@@ -253,6 +253,11 @@ func (o CBackupDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["namespace"] = o.Namespace
 	toSerialize["location"] = o.Location.Get()
 	toSerialize["phase"] = o.Phase.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -286,15 +291,26 @@ func (o *CBackupDto) UnmarshalJSON(data []byte) (err error) {
 
 	varCBackupDto := _CBackupDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCBackupDto)
+	err = json.Unmarshal(data, &varCBackupDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CBackupDto(varCBackupDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "metadataName")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "expiration")
+		delete(additionalProperties, "scheduleName")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "location")
+		delete(additionalProperties, "phase")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

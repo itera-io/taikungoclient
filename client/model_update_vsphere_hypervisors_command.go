@@ -22,7 +22,10 @@ var _ MappedNullable = &UpdateVsphereHypervisorsCommand{}
 type UpdateVsphereHypervisorsCommand struct {
 	Id *int32 `json:"id,omitempty"`
 	Hypervisors []string `json:"hypervisors,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateVsphereHypervisorsCommand UpdateVsphereHypervisorsCommand
 
 // NewUpdateVsphereHypervisorsCommand instantiates a new UpdateVsphereHypervisorsCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -122,7 +125,34 @@ func (o UpdateVsphereHypervisorsCommand) ToMap() (map[string]interface{}, error)
 	if o.Hypervisors != nil {
 		toSerialize["hypervisors"] = o.Hypervisors
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateVsphereHypervisorsCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateVsphereHypervisorsCommand := _UpdateVsphereHypervisorsCommand{}
+
+	err = json.Unmarshal(data, &varUpdateVsphereHypervisorsCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateVsphereHypervisorsCommand(varUpdateVsphereHypervisorsCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "hypervisors")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateVsphereHypervisorsCommand struct {

@@ -21,7 +21,10 @@ var _ MappedNullable = &SyncProjectAppsCommand{}
 // SyncProjectAppsCommand struct for SyncProjectAppsCommand
 type SyncProjectAppsCommand struct {
 	ProjectAppId NullableInt32 `json:"projectAppId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _SyncProjectAppsCommand SyncProjectAppsCommand
 
 // NewSyncProjectAppsCommand instantiates a new SyncProjectAppsCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +98,33 @@ func (o SyncProjectAppsCommand) ToMap() (map[string]interface{}, error) {
 	if o.ProjectAppId.IsSet() {
 		toSerialize["projectAppId"] = o.ProjectAppId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *SyncProjectAppsCommand) UnmarshalJSON(data []byte) (err error) {
+	varSyncProjectAppsCommand := _SyncProjectAppsCommand{}
+
+	err = json.Unmarshal(data, &varSyncProjectAppsCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SyncProjectAppsCommand(varSyncProjectAppsCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectAppId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableSyncProjectAppsCommand struct {

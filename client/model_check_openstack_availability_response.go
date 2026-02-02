@@ -23,7 +23,10 @@ type CheckOpenstackAvailabilityResponse struct {
 	IsOpenstackAvailable *bool `json:"isOpenstackAvailable,omitempty"`
 	IsManilaAvailable *bool `json:"isManilaAvailable,omitempty"`
 	ErrorMessage NullableString `json:"errorMessage,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CheckOpenstackAvailabilityResponse CheckOpenstackAvailabilityResponse
 
 // NewCheckOpenstackAvailabilityResponse instantiates a new CheckOpenstackAvailabilityResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -167,7 +170,35 @@ func (o CheckOpenstackAvailabilityResponse) ToMap() (map[string]interface{}, err
 	if o.ErrorMessage.IsSet() {
 		toSerialize["errorMessage"] = o.ErrorMessage.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CheckOpenstackAvailabilityResponse) UnmarshalJSON(data []byte) (err error) {
+	varCheckOpenstackAvailabilityResponse := _CheckOpenstackAvailabilityResponse{}
+
+	err = json.Unmarshal(data, &varCheckOpenstackAvailabilityResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CheckOpenstackAvailabilityResponse(varCheckOpenstackAvailabilityResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "isOpenstackAvailable")
+		delete(additionalProperties, "isManilaAvailable")
+		delete(additionalProperties, "errorMessage")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCheckOpenstackAvailabilityResponse struct {

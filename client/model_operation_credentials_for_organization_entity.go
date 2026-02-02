@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -25,6 +24,7 @@ type OperationCredentialsForOrganizationEntity struct {
 	OperationCredentialId NullableInt32 `json:"operationCredentialId"`
 	Name NullableString `json:"name"`
 	IsDefault bool `json:"isDefault"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OperationCredentialsForOrganizationEntity OperationCredentialsForOrganizationEntity
@@ -138,6 +138,11 @@ func (o OperationCredentialsForOrganizationEntity) ToMap() (map[string]interface
 	toSerialize["operationCredentialId"] = o.OperationCredentialId.Get()
 	toSerialize["name"] = o.Name.Get()
 	toSerialize["isDefault"] = o.IsDefault
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -167,15 +172,22 @@ func (o *OperationCredentialsForOrganizationEntity) UnmarshalJSON(data []byte) (
 
 	varOperationCredentialsForOrganizationEntity := _OperationCredentialsForOrganizationEntity{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOperationCredentialsForOrganizationEntity)
+	err = json.Unmarshal(data, &varOperationCredentialsForOrganizationEntity)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OperationCredentialsForOrganizationEntity(varOperationCredentialsForOrganizationEntity)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "operationCredentialId")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "isDefault")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

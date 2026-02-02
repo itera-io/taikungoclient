@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -24,6 +23,7 @@ var _ MappedNullable = &GroupUsersDto{}
 type GroupUsersDto struct {
 	UserId NullableString `json:"userId"`
 	UserName NullableString `json:"userName"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GroupUsersDto GroupUsersDto
@@ -111,6 +111,11 @@ func (o GroupUsersDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["userId"] = o.UserId.Get()
 	toSerialize["userName"] = o.UserName.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -139,15 +144,21 @@ func (o *GroupUsersDto) UnmarshalJSON(data []byte) (err error) {
 
 	varGroupUsersDto := _GroupUsersDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGroupUsersDto)
+	err = json.Unmarshal(data, &varGroupUsersDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GroupUsersDto(varGroupUsersDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "userId")
+		delete(additionalProperties, "userName")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

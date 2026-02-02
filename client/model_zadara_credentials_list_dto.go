@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -40,6 +39,7 @@ type ZadaraCredentialsListDto struct {
 	ContinentName NullableString `json:"continentName"`
 	ZadaraApiUrl string `json:"zadaraApiUrl"`
 	ZadaraVolumeType string `json:"zadaraVolumeType"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ZadaraCredentialsListDto ZadaraCredentialsListDto
@@ -549,6 +549,11 @@ func (o ZadaraCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["continentName"] = o.ContinentName.Get()
 	toSerialize["zadaraApiUrl"] = o.ZadaraApiUrl
 	toSerialize["zadaraVolumeType"] = o.ZadaraVolumeType
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -593,15 +598,37 @@ func (o *ZadaraCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varZadaraCredentialsListDto := _ZadaraCredentialsListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varZadaraCredentialsListDto)
+	err = json.Unmarshal(data, &varZadaraCredentialsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ZadaraCredentialsListDto(varZadaraCredentialsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "projectCount")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "region")
+		delete(additionalProperties, "availabilityZones")
+		delete(additionalProperties, "availabilityZonesCount")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "continentName")
+		delete(additionalProperties, "zadaraApiUrl")
+		delete(additionalProperties, "zadaraVolumeType")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -25,7 +25,10 @@ type DashboardChart struct {
 	CloudCredentials *CredentialChartDto `json:"cloudCredentials,omitempty"`
 	Servers *ServerChartDto `json:"servers,omitempty"`
 	StandAloneVms *ServerChartDto `json:"standAloneVms,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DashboardChart DashboardChart
 
 // NewDashboardChart instantiates a new DashboardChart object
 // This constructor will assign default values to properties that have it defined,
@@ -229,7 +232,37 @@ func (o DashboardChart) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StandAloneVms) {
 		toSerialize["standAloneVms"] = o.StandAloneVms
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DashboardChart) UnmarshalJSON(data []byte) (err error) {
+	varDashboardChart := _DashboardChart{}
+
+	err = json.Unmarshal(data, &varDashboardChart)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DashboardChart(varDashboardChart)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "organization")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "cloudCredentials")
+		delete(additionalProperties, "servers")
+		delete(additionalProperties, "standAloneVms")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDashboardChart struct {

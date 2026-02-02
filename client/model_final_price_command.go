@@ -21,7 +21,10 @@ var _ MappedNullable = &FinalPriceCommand{}
 // FinalPriceCommand struct for FinalPriceCommand
 type FinalPriceCommand struct {
 	SubscriptionId *int32 `json:"subscriptionId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FinalPriceCommand FinalPriceCommand
 
 // NewFinalPriceCommand instantiates a new FinalPriceCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o FinalPriceCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SubscriptionId) {
 		toSerialize["subscriptionId"] = o.SubscriptionId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FinalPriceCommand) UnmarshalJSON(data []byte) (err error) {
+	varFinalPriceCommand := _FinalPriceCommand{}
+
+	err = json.Unmarshal(data, &varFinalPriceCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FinalPriceCommand(varFinalPriceCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "subscriptionId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFinalPriceCommand struct {

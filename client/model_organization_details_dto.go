@@ -45,7 +45,10 @@ type OrganizationDetailsDto struct {
 	Partner *PartnerDetailsForOrganizationsDto `json:"partner,omitempty"`
 	DiscountRate *float64 `json:"discountRate,omitempty"`
 	BoundRules []PrometheusEntity `json:"boundRules,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OrganizationDetailsDto OrganizationDetailsDto
 
 // NewOrganizationDetailsDto instantiates a new OrganizationDetailsDto object
 // This constructor will assign default values to properties that have it defined,
@@ -1070,7 +1073,57 @@ func (o OrganizationDetailsDto) ToMap() (map[string]interface{}, error) {
 	if o.BoundRules != nil {
 		toSerialize["boundRules"] = o.BoundRules
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OrganizationDetailsDto) UnmarshalJSON(data []byte) (err error) {
+	varOrganizationDetailsDto := _OrganizationDetailsDto{}
+
+	err = json.Unmarshal(data, &varOrganizationDetailsDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationDetailsDto(varOrganizationDetailsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "fullName")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "billingEmail")
+		delete(additionalProperties, "phone")
+		delete(additionalProperties, "country")
+		delete(additionalProperties, "city")
+		delete(additionalProperties, "vatNumber")
+		delete(additionalProperties, "address")
+		delete(additionalProperties, "isEligibleUpdateSubscription")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "isReadOnly")
+		delete(additionalProperties, "isNew")
+		delete(additionalProperties, "trialEnded")
+		delete(additionalProperties, "users")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "servers")
+		delete(additionalProperties, "cloudCredentials")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "partnerId")
+		delete(additionalProperties, "partnerName")
+		delete(additionalProperties, "partner")
+		delete(additionalProperties, "discountRate")
+		delete(additionalProperties, "boundRules")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOrganizationDetailsDto struct {

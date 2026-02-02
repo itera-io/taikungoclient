@@ -22,7 +22,10 @@ var _ MappedNullable = &Annotations{}
 type Annotations struct {
 	Description NullableString `json:"description,omitempty"`
 	Title NullableString `json:"title,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Annotations Annotations
 
 // NewAnnotations instantiates a new Annotations object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o Annotations) ToMap() (map[string]interface{}, error) {
 	if o.Title.IsSet() {
 		toSerialize["title"] = o.Title.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Annotations) UnmarshalJSON(data []byte) (err error) {
+	varAnnotations := _Annotations{}
+
+	err = json.Unmarshal(data, &varAnnotations)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Annotations(varAnnotations)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "title")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAnnotations struct {

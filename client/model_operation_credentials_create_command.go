@@ -25,7 +25,10 @@ type OperationCredentialsCreateCommand struct {
 	PrometheusPassword NullableString `json:"prometheusPassword,omitempty"`
 	PrometheusUrl NullableString `json:"prometheusUrl,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OperationCredentialsCreateCommand OperationCredentialsCreateCommand
 
 // NewOperationCredentialsCreateCommand instantiates a new OperationCredentialsCreateCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -279,7 +282,37 @@ func (o OperationCredentialsCreateCommand) ToMap() (map[string]interface{}, erro
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OperationCredentialsCreateCommand) UnmarshalJSON(data []byte) (err error) {
+	varOperationCredentialsCreateCommand := _OperationCredentialsCreateCommand{}
+
+	err = json.Unmarshal(data, &varOperationCredentialsCreateCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OperationCredentialsCreateCommand(varOperationCredentialsCreateCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "prometheusUsername")
+		delete(additionalProperties, "prometheusPassword")
+		delete(additionalProperties, "prometheusUrl")
+		delete(additionalProperties, "organizationId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOperationCredentialsCreateCommand struct {

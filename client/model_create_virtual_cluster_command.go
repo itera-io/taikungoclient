@@ -32,7 +32,10 @@ type CreateVirtualClusterCommand struct {
 	CpuLimits *CreateVirtualClusterResourceLimits `json:"cpuLimits,omitempty"`
 	RamLimits *CreateVirtualClusterResourceLimits `json:"ramLimits,omitempty"`
 	EphemeralStorageLimits *CreateVirtualClusterResourceLimits `json:"ephemeralStorageLimits,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateVirtualClusterCommand CreateVirtualClusterCommand
 
 // NewCreateVirtualClusterCommand instantiates a new CreateVirtualClusterCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -476,7 +479,43 @@ func (o CreateVirtualClusterCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EphemeralStorageLimits) {
 		toSerialize["ephemeralStorageLimits"] = o.EphemeralStorageLimits
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateVirtualClusterCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateVirtualClusterCommand := _CreateVirtualClusterCommand{}
+
+	err = json.Unmarshal(data, &varCreateVirtualClusterCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateVirtualClusterCommand(varCreateVirtualClusterCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cloudId")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "expiredAt")
+		delete(additionalProperties, "deleteOnExpiration")
+		delete(additionalProperties, "alertingProfileId")
+		delete(additionalProperties, "exposeHostname")
+		delete(additionalProperties, "workloadResources")
+		delete(additionalProperties, "cpuLimits")
+		delete(additionalProperties, "ramLimits")
+		delete(additionalProperties, "ephemeralStorageLimits")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateVirtualClusterCommand struct {
