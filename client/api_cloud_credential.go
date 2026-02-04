@@ -37,6 +37,7 @@ type ApiCloudcredentialsAllFlavorsRequest struct {
 	search *string
 	sortBy *string
 	sortDirection *string
+	hasGpuSupport *bool
 }
 
 func (r ApiCloudcredentialsAllFlavorsRequest) Limit(limit int32) ApiCloudcredentialsAllFlavorsRequest {
@@ -81,6 +82,11 @@ func (r ApiCloudcredentialsAllFlavorsRequest) SortBy(sortBy string) ApiCloudcred
 
 func (r ApiCloudcredentialsAllFlavorsRequest) SortDirection(sortDirection string) ApiCloudcredentialsAllFlavorsRequest {
 	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiCloudcredentialsAllFlavorsRequest) HasGpuSupport(hasGpuSupport bool) ApiCloudcredentialsAllFlavorsRequest {
+	r.hasGpuSupport = &hasGpuSupport
 	return r
 }
 
@@ -151,6 +157,9 @@ func (a *CloudCredentialAPIService) CloudcredentialsAllFlavorsExecute(r ApiCloud
 	}
 	if r.sortDirection != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.hasGpuSupport != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "HasGpuSupport", r.hasGpuSupport, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

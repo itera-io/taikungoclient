@@ -9879,6 +9879,13 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: HasGpuSupport
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -12421,6 +12428,13 @@ paths:
           format: int32
           type: integer
         style: form
+      - explode: true
+        in: query
+        name: HasGpuSupport
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -12555,6 +12569,13 @@ paths:
         schema:
           format: int32
           type: integer
+        style: form
+      - explode: true
+        in: query
+        name: HasGpuSupport
+        required: false
+        schema:
+          type: boolean
         style: form
       responses:
         "200":
@@ -12747,6 +12768,13 @@ paths:
         style: form
       - explode: true
         in: query
+        name: HasGpuSupport
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
         name: Offset
         required: false
         schema:
@@ -12895,6 +12923,13 @@ paths:
         schema:
           format: int32
           type: integer
+        style: form
+      - explode: true
+        in: query
+        name: HasGpuSupport
+        required: false
+        schema:
+          type: boolean
         style: form
       - explode: true
         in: query
@@ -13183,6 +13218,13 @@ paths:
         schema:
           format: int32
           type: integer
+        style: form
+      - explode: true
+        in: query
+        name: HasGpuSupport
+        required: false
+        schema:
+          type: boolean
         style: form
       responses:
         "200":
@@ -43335,11 +43377,13 @@ components:
       example:
         data:
         - maxDataDiskCount: 1.4658129805029452
+          hasGpuSupport: true
           name: name
           cpu: 6
           description: ""
           ram: 0.8008281904610115
         - maxDataDiskCount: 1.4658129805029452
+          hasGpuSupport: true
           name: name
           cpu: 6
           description: ""
@@ -44415,6 +44459,7 @@ components:
       example:
         data:
         - windowsSpotPrice: windowsSpotPrice
+          hasGpuSupport: true
           name: name
           cpu: 6
           description: ""
@@ -44426,6 +44471,7 @@ components:
           ram: 0.8008281904610115
           linuxSpotPrice: linuxSpotPrice
         - windowsSpotPrice: windowsSpotPrice
+          hasGpuSupport: true
           name: name
           cpu: 6
           description: ""
@@ -44453,6 +44499,7 @@ components:
     AwsFlavorListDto:
       example:
         windowsSpotPrice: windowsSpotPrice
+        hasGpuSupport: true
         name: name
         cpu: 6
         description: ""
@@ -44492,6 +44539,8 @@ components:
             type: string
           nullable: true
           type: array
+        hasGpuSupport:
+          type: boolean
       type: object
     AwsImagesPostListCommand:
       example:
@@ -44774,6 +44823,7 @@ components:
         data:
         - maxDataDiskCount: 1.4658129805029452
           windowsSpotPrice: windowsSpotPrice
+          hasGpuSupport: true
           name: name
           cpu: 0
           description: ""
@@ -44783,6 +44833,7 @@ components:
           ram: 6.027456183070403
         - maxDataDiskCount: 1.4658129805029452
           windowsSpotPrice: windowsSpotPrice
+          hasGpuSupport: true
           name: name
           cpu: 0
           description: ""
@@ -44808,6 +44859,7 @@ components:
       example:
         maxDataDiskCount: 1.4658129805029452
         windowsSpotPrice: windowsSpotPrice
+        hasGpuSupport: true
         name: name
         cpu: 0
         description: ""
@@ -44843,6 +44895,8 @@ components:
           format: double
           nullable: true
           type: number
+        hasGpuSupport:
+          type: boolean
       type: object
     AzureLocationsCommand:
       example:
@@ -45589,6 +45643,7 @@ components:
           windowsSpotPrice: windowsSpotPrice
           cloudType: NONE
           existsLinuxSpotPrice: true
+          hasGpuSupport: true
           name: name
           id: 0
           projectName: projectName
@@ -45604,6 +45659,7 @@ components:
           windowsSpotPrice: windowsSpotPrice
           cloudType: NONE
           existsLinuxSpotPrice: true
+          hasGpuSupport: true
           name: name
           id: 0
           projectName: projectName
@@ -45654,6 +45710,7 @@ components:
         windowsSpotPrice: windowsSpotPrice
         cloudType: NONE
         existsLinuxSpotPrice: true
+        hasGpuSupport: true
         name: name
         id: 0
         projectName: projectName
@@ -45701,6 +45758,8 @@ components:
         windowsPrice:
           nullable: true
           type: string
+        hasGpuSupport:
+          type: boolean
         cloudType:
           $ref: "#/components/schemas/CloudType"
         localDiskSize:
@@ -53692,6 +53751,7 @@ components:
     FlavorsListDto:
       example:
         maxDataDiskCount: 1.4658129805029452
+        hasGpuSupport: true
         name: name
         cpu: 6
         description: ""
@@ -53711,6 +53771,8 @@ components:
           format: double
           nullable: true
           type: number
+        hasGpuSupport:
+          type: boolean
       required:
       - cpu
       - description
@@ -54161,6 +54223,7 @@ components:
     GoogleFlavorDto:
       example:
         windowsSpotPrice: 2.3021358869347655
+        hasGpuSupport: true
         name: name
         cpu: 0
         description: ""
@@ -54197,6 +54260,8 @@ components:
           format: double
           nullable: true
           type: number
+        hasGpuSupport:
+          type: boolean
       required:
       - cpu
       - description
@@ -54211,6 +54276,7 @@ components:
       example:
         data:
         - windowsSpotPrice: 2.3021358869347655
+          hasGpuSupport: true
           name: name
           cpu: 0
           description: ""
@@ -54219,6 +54285,7 @@ components:
           ram: 6.027456183070403
           linuxSpotPrice: 5.637376656633329
         - windowsSpotPrice: 2.3021358869347655
+          hasGpuSupport: true
           name: name
           cpu: 0
           description: ""
@@ -59779,11 +59846,13 @@ components:
     OpenstackFlavorList:
       example:
         data:
-        - name: name
+        - hasGpuSupport: true
+          name: name
           cpu: 6
           description: description
           ram: 0.8008281904610115
-        - name: name
+        - hasGpuSupport: true
+          name: name
           cpu: 6
           description: description
           ram: 0.8008281904610115
@@ -59803,6 +59872,7 @@ components:
       type: object
     OpenstackFlavorListDto:
       example:
+        hasGpuSupport: true
         name: name
         cpu: 6
         description: description
@@ -59819,6 +59889,8 @@ components:
         description:
           nullable: true
           type: string
+        hasGpuSupport:
+          type: boolean
       required:
       - cpu
       - description

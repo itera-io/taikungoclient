@@ -29,6 +29,7 @@ type GoogleFlavorDto struct {
 	WindowsPrice NullableFloat64 `json:"windowsPrice"`
 	LinuxSpotPrice NullableFloat64 `json:"linuxSpotPrice"`
 	WindowsSpotPrice NullableFloat64 `json:"windowsSpotPrice"`
+	HasGpuSupport *bool `json:"hasGpuSupport,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -265,6 +266,38 @@ func (o *GoogleFlavorDto) SetWindowsSpotPrice(v float64) {
 	o.WindowsSpotPrice.Set(&v)
 }
 
+// GetHasGpuSupport returns the HasGpuSupport field value if set, zero value otherwise.
+func (o *GoogleFlavorDto) GetHasGpuSupport() bool {
+	if o == nil || IsNil(o.HasGpuSupport) {
+		var ret bool
+		return ret
+	}
+	return *o.HasGpuSupport
+}
+
+// GetHasGpuSupportOk returns a tuple with the HasGpuSupport field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GoogleFlavorDto) GetHasGpuSupportOk() (*bool, bool) {
+	if o == nil || IsNil(o.HasGpuSupport) {
+		return nil, false
+	}
+	return o.HasGpuSupport, true
+}
+
+// HasHasGpuSupport returns a boolean if a field has been set.
+func (o *GoogleFlavorDto) HasHasGpuSupport() bool {
+	if o != nil && !IsNil(o.HasGpuSupport) {
+		return true
+	}
+
+	return false
+}
+
+// SetHasGpuSupport gets a reference to the given bool and assigns it to the HasGpuSupport field.
+func (o *GoogleFlavorDto) SetHasGpuSupport(v bool) {
+	o.HasGpuSupport = &v
+}
+
 func (o GoogleFlavorDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -285,6 +318,9 @@ func (o GoogleFlavorDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["windowsPrice"] = o.WindowsPrice.Get()
 	toSerialize["linuxSpotPrice"] = o.LinuxSpotPrice.Get()
 	toSerialize["windowsSpotPrice"] = o.WindowsSpotPrice.Get()
+	if !IsNil(o.HasGpuSupport) {
+		toSerialize["hasGpuSupport"] = o.HasGpuSupport
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -343,6 +379,7 @@ func (o *GoogleFlavorDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "windowsPrice")
 		delete(additionalProperties, "linuxSpotPrice")
 		delete(additionalProperties, "windowsSpotPrice")
+		delete(additionalProperties, "hasGpuSupport")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -29,6 +29,7 @@ type AzureFlavorsWithPriceDto struct {
 	Ram *float64 `json:"ram,omitempty"`
 	Description interface{} `json:"description,omitempty"`
 	MaxDataDiskCount NullableFloat64 `json:"maxDataDiskCount,omitempty"`
+	HasGpuSupport *bool `json:"hasGpuSupport,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -400,6 +401,38 @@ func (o *AzureFlavorsWithPriceDto) UnsetMaxDataDiskCount() {
 	o.MaxDataDiskCount.Unset()
 }
 
+// GetHasGpuSupport returns the HasGpuSupport field value if set, zero value otherwise.
+func (o *AzureFlavorsWithPriceDto) GetHasGpuSupport() bool {
+	if o == nil || IsNil(o.HasGpuSupport) {
+		var ret bool
+		return ret
+	}
+	return *o.HasGpuSupport
+}
+
+// GetHasGpuSupportOk returns a tuple with the HasGpuSupport field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureFlavorsWithPriceDto) GetHasGpuSupportOk() (*bool, bool) {
+	if o == nil || IsNil(o.HasGpuSupport) {
+		return nil, false
+	}
+	return o.HasGpuSupport, true
+}
+
+// HasHasGpuSupport returns a boolean if a field has been set.
+func (o *AzureFlavorsWithPriceDto) HasHasGpuSupport() bool {
+	if o != nil && !IsNil(o.HasGpuSupport) {
+		return true
+	}
+
+	return false
+}
+
+// SetHasGpuSupport gets a reference to the given bool and assigns it to the HasGpuSupport field.
+func (o *AzureFlavorsWithPriceDto) SetHasGpuSupport(v bool) {
+	o.HasGpuSupport = &v
+}
+
 func (o AzureFlavorsWithPriceDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -437,6 +470,9 @@ func (o AzureFlavorsWithPriceDto) ToMap() (map[string]interface{}, error) {
 	if o.MaxDataDiskCount.IsSet() {
 		toSerialize["maxDataDiskCount"] = o.MaxDataDiskCount.Get()
 	}
+	if !IsNil(o.HasGpuSupport) {
+		toSerialize["hasGpuSupport"] = o.HasGpuSupport
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -468,6 +504,7 @@ func (o *AzureFlavorsWithPriceDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "ram")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "maxDataDiskCount")
+		delete(additionalProperties, "hasGpuSupport")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -38,6 +38,7 @@ type ApiFlavorsAwsInstanceTypesRequest struct {
 	sortBy *string
 	sortDirection *string
 	projectId *int32
+	hasGpuSupport *bool
 }
 
 func (r ApiFlavorsAwsInstanceTypesRequest) Limit(limit int32) ApiFlavorsAwsInstanceTypesRequest {
@@ -87,6 +88,11 @@ func (r ApiFlavorsAwsInstanceTypesRequest) SortDirection(sortDirection string) A
 
 func (r ApiFlavorsAwsInstanceTypesRequest) ProjectId(projectId int32) ApiFlavorsAwsInstanceTypesRequest {
 	r.projectId = &projectId
+	return r
+}
+
+func (r ApiFlavorsAwsInstanceTypesRequest) HasGpuSupport(hasGpuSupport bool) ApiFlavorsAwsInstanceTypesRequest {
+	r.hasGpuSupport = &hasGpuSupport
 	return r
 }
 
@@ -160,6 +166,9 @@ func (a *FlavorsAPIService) FlavorsAwsInstanceTypesExecute(r ApiFlavorsAwsInstan
 	}
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
+	}
+	if r.hasGpuSupport != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "HasGpuSupport", r.hasGpuSupport, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -308,6 +317,7 @@ type ApiFlavorsAzureVmSizesRequest struct {
 	sortBy *string
 	sortDirection *string
 	projectId *int32
+	hasGpuSupport *bool
 }
 
 func (r ApiFlavorsAzureVmSizesRequest) Limit(limit int32) ApiFlavorsAzureVmSizesRequest {
@@ -357,6 +367,11 @@ func (r ApiFlavorsAzureVmSizesRequest) SortDirection(sortDirection string) ApiFl
 
 func (r ApiFlavorsAzureVmSizesRequest) ProjectId(projectId int32) ApiFlavorsAzureVmSizesRequest {
 	r.projectId = &projectId
+	return r
+}
+
+func (r ApiFlavorsAzureVmSizesRequest) HasGpuSupport(hasGpuSupport bool) ApiFlavorsAzureVmSizesRequest {
+	r.hasGpuSupport = &hasGpuSupport
 	return r
 }
 
@@ -430,6 +445,9 @@ func (a *FlavorsAPIService) FlavorsAzureVmSizesExecute(r ApiFlavorsAzureVmSizesR
 	}
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
+	}
+	if r.hasGpuSupport != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "HasGpuSupport", r.hasGpuSupport, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -963,6 +981,7 @@ type ApiFlavorsGoogleMachineTypesRequest struct {
 	sortBy *string
 	sortDirection *string
 	projectId *int32
+	hasGpuSupport *bool
 	startRam2 *float64
 	endRam2 *float64
 }
@@ -1014,6 +1033,11 @@ func (r ApiFlavorsGoogleMachineTypesRequest) SortDirection(sortDirection string)
 
 func (r ApiFlavorsGoogleMachineTypesRequest) ProjectId(projectId int32) ApiFlavorsGoogleMachineTypesRequest {
 	r.projectId = &projectId
+	return r
+}
+
+func (r ApiFlavorsGoogleMachineTypesRequest) HasGpuSupport(hasGpuSupport bool) ApiFlavorsGoogleMachineTypesRequest {
+	r.hasGpuSupport = &hasGpuSupport
 	return r
 }
 
@@ -1097,6 +1121,9 @@ func (a *FlavorsAPIService) FlavorsGoogleMachineTypesExecute(r ApiFlavorsGoogleM
 	}
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
+	}
+	if r.hasGpuSupport != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "HasGpuSupport", r.hasGpuSupport, "form", "")
 	}
 	if r.startRam2 != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "startRam", r.startRam2, "form", "")
@@ -1521,6 +1548,7 @@ type ApiFlavorsOpenstackFlavorsRequest struct {
 	sortBy *string
 	sortDirection *string
 	projectId *int32
+	hasGpuSupport *bool
 }
 
 func (r ApiFlavorsOpenstackFlavorsRequest) Limit(limit int32) ApiFlavorsOpenstackFlavorsRequest {
@@ -1570,6 +1598,11 @@ func (r ApiFlavorsOpenstackFlavorsRequest) SortDirection(sortDirection string) A
 
 func (r ApiFlavorsOpenstackFlavorsRequest) ProjectId(projectId int32) ApiFlavorsOpenstackFlavorsRequest {
 	r.projectId = &projectId
+	return r
+}
+
+func (r ApiFlavorsOpenstackFlavorsRequest) HasGpuSupport(hasGpuSupport bool) ApiFlavorsOpenstackFlavorsRequest {
+	r.hasGpuSupport = &hasGpuSupport
 	return r
 }
 
@@ -1643,6 +1676,9 @@ func (a *FlavorsAPIService) FlavorsOpenstackFlavorsExecute(r ApiFlavorsOpenstack
 	}
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
+	}
+	if r.hasGpuSupport != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "HasGpuSupport", r.hasGpuSupport, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2058,6 +2094,7 @@ type ApiFlavorsSelectedFlavorsForProjectRequest struct {
 	organizationId *int32
 	flavorName *string
 	withPrice *bool
+	hasGpuSupport *bool
 	offset *int32
 	limit *int32
 }
@@ -2099,6 +2136,11 @@ func (r ApiFlavorsSelectedFlavorsForProjectRequest) FlavorName(flavorName string
 
 func (r ApiFlavorsSelectedFlavorsForProjectRequest) WithPrice(withPrice bool) ApiFlavorsSelectedFlavorsForProjectRequest {
 	r.withPrice = &withPrice
+	return r
+}
+
+func (r ApiFlavorsSelectedFlavorsForProjectRequest) HasGpuSupport(hasGpuSupport bool) ApiFlavorsSelectedFlavorsForProjectRequest {
+	r.hasGpuSupport = &hasGpuSupport
 	return r
 }
 
@@ -2173,6 +2215,9 @@ func (a *FlavorsAPIService) FlavorsSelectedFlavorsForProjectExecute(r ApiFlavors
 	}
 	if r.withPrice != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "WithPrice", r.withPrice, "form", "")
+	}
+	if r.hasGpuSupport != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "HasGpuSupport", r.hasGpuSupport, "form", "")
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")

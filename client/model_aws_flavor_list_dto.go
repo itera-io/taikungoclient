@@ -29,6 +29,7 @@ type AwsFlavorListDto struct {
 	WindowsSpotPrice NullableString `json:"windowsSpotPrice,omitempty"`
 	LinuxSpotPrice NullableString `json:"linuxSpotPrice,omitempty"`
 	Zones []string `json:"zones,omitempty"`
+	HasGpuSupport *bool `json:"hasGpuSupport,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -391,6 +392,38 @@ func (o *AwsFlavorListDto) SetZones(v []string) {
 	o.Zones = v
 }
 
+// GetHasGpuSupport returns the HasGpuSupport field value if set, zero value otherwise.
+func (o *AwsFlavorListDto) GetHasGpuSupport() bool {
+	if o == nil || IsNil(o.HasGpuSupport) {
+		var ret bool
+		return ret
+	}
+	return *o.HasGpuSupport
+}
+
+// GetHasGpuSupportOk returns a tuple with the HasGpuSupport field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsFlavorListDto) GetHasGpuSupportOk() (*bool, bool) {
+	if o == nil || IsNil(o.HasGpuSupport) {
+		return nil, false
+	}
+	return o.HasGpuSupport, true
+}
+
+// HasHasGpuSupport returns a boolean if a field has been set.
+func (o *AwsFlavorListDto) HasHasGpuSupport() bool {
+	if o != nil && !IsNil(o.HasGpuSupport) {
+		return true
+	}
+
+	return false
+}
+
+// SetHasGpuSupport gets a reference to the given bool and assigns it to the HasGpuSupport field.
+func (o *AwsFlavorListDto) SetHasGpuSupport(v bool) {
+	o.HasGpuSupport = &v
+}
+
 func (o AwsFlavorListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -428,6 +461,9 @@ func (o AwsFlavorListDto) ToMap() (map[string]interface{}, error) {
 	if o.Zones != nil {
 		toSerialize["zones"] = o.Zones
 	}
+	if !IsNil(o.HasGpuSupport) {
+		toSerialize["hasGpuSupport"] = o.HasGpuSupport
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -459,6 +495,7 @@ func (o *AwsFlavorListDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "windowsSpotPrice")
 		delete(additionalProperties, "linuxSpotPrice")
 		delete(additionalProperties, "zones")
+		delete(additionalProperties, "hasGpuSupport")
 		o.AdditionalProperties = additionalProperties
 	}
 
