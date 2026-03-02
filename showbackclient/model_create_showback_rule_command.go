@@ -28,7 +28,7 @@ type CreateShowbackRuleCommand struct {
 	Price NullableFloat64 `json:"price,omitempty"`
 	ProjectAlertLimit NullableInt32 `json:"projectAlertLimit,omitempty"`
 	GlobalAlertLimit NullableInt32 `json:"globalAlertLimit,omitempty"`
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
 	Labels []ShowbackLabelCreateDto `json:"labels,omitempty"`
 	ShowbackCredentialId NullableInt32 `json:"showbackCredentialId,omitempty"`
 }
@@ -366,46 +366,36 @@ func (o *CreateShowbackRuleCommand) UnsetGlobalAlertLimit() {
 	o.GlobalAlertLimit.Unset()
 }
 
-// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
 func (o *CreateShowbackRuleCommand) GetOrganizationId() int32 {
-	if o == nil || IsNil(o.OrganizationId.Get()) {
+	if o == nil || IsNil(o.OrganizationId) {
 		var ret int32
 		return ret
 	}
-	return *o.OrganizationId.Get()
+	return *o.OrganizationId
 }
 
 // GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateShowbackRuleCommand) GetOrganizationIdOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationId) {
 		return nil, false
 	}
-	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
+	return o.OrganizationId, true
 }
 
 // HasOrganizationId returns a boolean if a field has been set.
 func (o *CreateShowbackRuleCommand) HasOrganizationId() bool {
-	if o != nil && o.OrganizationId.IsSet() {
+	if o != nil && !IsNil(o.OrganizationId) {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
+// SetOrganizationId gets a reference to the given int32 and assigns it to the OrganizationId field.
 func (o *CreateShowbackRuleCommand) SetOrganizationId(v int32) {
-	o.OrganizationId.Set(&v)
-}
-// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
-func (o *CreateShowbackRuleCommand) SetOrganizationIdNil() {
-	o.OrganizationId.Set(nil)
-}
-
-// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
-func (o *CreateShowbackRuleCommand) UnsetOrganizationId() {
-	o.OrganizationId.Unset()
+	o.OrganizationId = &v
 }
 
 // GetLabels returns the Labels field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -517,8 +507,8 @@ func (o CreateShowbackRuleCommand) ToMap() (map[string]interface{}, error) {
 	if o.GlobalAlertLimit.IsSet() {
 		toSerialize["globalAlertLimit"] = o.GlobalAlertLimit.Get()
 	}
-	if o.OrganizationId.IsSet() {
-		toSerialize["organizationId"] = o.OrganizationId.Get()
+	if !IsNil(o.OrganizationId) {
+		toSerialize["organizationId"] = o.OrganizationId
 	}
 	if o.Labels != nil {
 		toSerialize["labels"] = o.Labels
