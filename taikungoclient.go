@@ -7,7 +7,9 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	urlpkg "net/url"
 	"os"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -16,7 +18,7 @@ import (
 	taikunshowback "github.com/itera-io/taikungoclient/showbackclient" // API for Taikun showback service
 )
 
-// Enviroment variables which can be read from the command line evn.
+// Environment variables for configuring authentication.
 const TaikunEmailEnvVar = "TAIKUN_EMAIL"
 const TaikunPasswordEnvVar = "TAIKUN_PASSWORD"
 const TaikunAuthMode = "TAIKUN_AUTH_MODE"
@@ -37,6 +39,11 @@ type jwtData struct {
 type taikunError struct {
 	HTTPStatusCode int
 	Message        string
+	GoError        error // Optional underlying Go error (e.g., network, decoding)
+
+	Method    string // HTTP method of the failed request
+	URL       string // URL of the failed request (with sensitive params redacted)
+	RequestID string // Request ID header from the server, if available
 }
 
 type customTransport struct {
@@ -69,53 +76,47 @@ func (c *Client) GetToken() string {
 
 // Transport wrapper
 func (c *customTransport) RoundTrip(req *http.Request) (*http.Response, error) {
-	// This is not a /auth/login or /auth/refresh request
-	if strings.Contains(req.URL.Path, "/api/v1/taikun-lb") {
+	if c.Client.accessKey != "" && c.Client.secretKey != "" {
+		// Robot users: HTTP Basic Auth on every request, no JWT
+		req.SetBasicAuth(c.Client.accessKey, c.Client.secretKey)
+	} else if strings.Contains(req.URL.Path, "/api/v1/taikun-lb") {
 		req.Header.Set("Authorization", "Bearer "+c.Client.token)
 	} else if req.URL.Path != "/api/v1/auth/login" && req.URL.Path != "/api/v1/auth/refresh" {
-		if c.Client.token == "" { // We do not have a token, get a lock
-			c.mu.Lock()
-			defer c.mu.Unlock()
-			if c.Client.token == "" {
-
-				var loginCmd *taikuncore.LoginCommand
-				if c.Client.authMode != "" {
-					// I have an authMode specified (eg. "default" or "keycloak")
-					// Use for modes: keycloak, default, token, autoscaling
-					loginCmd = &taikuncore.LoginCommand{
-						SecretKey: *taikuncore.NewNullableString(&c.Client.secretKey),
-						AccessKey: *taikuncore.NewNullableString(&c.Client.accessKey),
-						Mode:      *taikuncore.NewNullableString(&c.Client.authMode),
-					}
-				} else {
-					// I do not have and authMode specified
-					// Use authentication with email + password
-					loginCmd = &taikuncore.LoginCommand{
-						Email:    *taikuncore.NewNullableString(&c.Client.email),
-						Password: *taikuncore.NewNullableString(&c.Client.password),
-					}
-				}
-				result, body, err := c.Client.Client.AuthManagementAPI.AuthLogin(req.Context()).LoginCommand(*loginCmd).Execute()
-				if err != nil {
-					return nil, CreateError(body, err)
-				}
-				c.Client.token = result.Token
-				c.Client.refreshToken = *result.RefreshToken.Get()
-
+		c.mu.Lock()
+		if c.Client.token == "" {
+			// No token yet: login with email + password
+			loginCmd := taikuncore.LoginCommand{
+				Email:    *taikuncore.NewNullableString(&c.Client.email),
+				Password: *taikuncore.NewNullableString(&c.Client.password),
 			}
-		} else { // We do have a token
-			if c.Client.token != "" && c.hasTokenExpired() {
-				result, body, err := c.Client.Client.AuthManagementAPI.AuthRefresh(req.Context()).RefreshTokenCommand(taikuncore.RefreshTokenCommand{
-					RefreshToken: *taikuncore.NewNullableString(&c.Client.refreshToken),
-					Token:        *taikuncore.NewNullableString(&c.Client.token),
-				}).Execute()
-				if err != nil {
-					return nil, CreateError(body, err)
-				}
-				c.Client.token = result.Token
+			if c.Client.authMode != "" {
+				loginCmd.Mode = *taikuncore.NewNullableString(&c.Client.authMode)
+			}
+			result, body, err := c.Client.Client.AuthManagementAPI.AuthLogin(req.Context()).LoginCommand(loginCmd).Execute()
+			if err != nil {
+				c.mu.Unlock()
+				return nil, CreateError(body, err)
+			}
+			c.Client.token = result.Token
+			if result.RefreshToken.Get() != nil {
+				c.Client.refreshToken = *result.RefreshToken.Get()
+			}
+		} else if c.hasTokenExpired() {
+			// Token expired: refresh
+			result, body, err := c.Client.Client.AuthManagementAPI.AuthRefresh(req.Context()).RefreshTokenCommand(taikuncore.RefreshTokenCommand{
+				RefreshToken: *taikuncore.NewNullableString(&c.Client.refreshToken),
+				Token:        *taikuncore.NewNullableString(&c.Client.token),
+			}).Execute()
+			if err != nil {
+				c.mu.Unlock()
+				return nil, CreateError(body, err)
+			}
+			c.Client.token = result.Token
+			if result.RefreshToken.Get() != nil {
 				c.Client.refreshToken = *result.RefreshToken.Get()
 			}
 		}
+		c.mu.Unlock()
 		req.Header.Set("Authorization", "Bearer "+c.Client.token)
 	}
 
@@ -145,51 +146,212 @@ func (transport *customTransport) hasTokenExpired() bool {
 	return tm.Before(time.Now())
 }
 
-// Error is a method of struct taikunError used to pretty print the recieved HTTP error.
+// Error returns a readable string representation of a taikunError.
 func (e *taikunError) Error() string {
-	return fmt.Sprintf("Taikun Error: %s (HTTP %d)", e.Message, e.HTTPStatusCode)
+	var base string
+	if e.GoError != nil {
+		base = fmt.Sprintf("Taikun Error: %s (HTTP %d) (GO_ERROR %v)", e.Message, e.HTTPStatusCode, e.GoError)
+	} else {
+		base = fmt.Sprintf("Taikun Error: %s (HTTP %d)", e.Message, e.HTTPStatusCode)
+	}
+	// Append HTTP method, URL if available
+	if e.Method != "" || e.URL != "" {
+		base += fmt.Sprintf(" (%s %s)", e.Method, e.URL)
+	}
+	return base
 }
 
-// CreateError is a helper function to convert an unsuccessful HTTP response to a taikunError struct.
+// CreateError returns a taikunError describing the HTTP/Go-level error.
+// Returns nil for successful (2xx) responses with no Go error.
 // Function is exported because it is used by the Terraform taikun provider and Taikun CLI to show errors.
 func CreateError(resp *http.Response, err error) error {
-	if err == nil || resp == nil {
-		return err
+	// Capture request metadata for debugging
+	var method, urlStr string
+	if resp != nil && resp.Request != nil {
+		if resp.Request.Method != "" {
+			method = resp.Request.Method
+		}
+		if resp.Request.URL != nil {
+			urlStr = redactURL(resp.Request.URL)
+		}
 	}
 
-	// Decode into map for simple pretty printing (readMap["detail"]) - disabled because of background compatibility
-	//var readMap map[string]interface{}
-	//err2 := json.NewDecoder(resp.Body).Decode(&readMap)
-	// Read into byte array
-	body, err2 := io.ReadAll(resp.Body)
-	if err2 != nil {
-		// Reading/decoding failed. Give the user at least the deformed response.
-		return fmt.Errorf("Reply in unexpected format. Pasting the raw error: %v %v", resp.Body, err2)
+	// Case 1: No response at all — wrap the Go-level error into taikunError
+	if resp == nil {
+		if err != nil {
+			return &taikunError{
+				HTTPStatusCode: 0, // no HTTP status available
+				Message:        "no HTTP response",
+				GoError:        err,
+				Method:         method,
+				URL:            urlStr,
+			}
+		}
+		return &taikunError{
+			HTTPStatusCode: 0,
+			Message:        "unknown error: both response and error are nil",
+			GoError:        nil,
+			Method:         method,
+			URL:            urlStr,
+		}
 	}
+
+	// Case 2: Successful HTTP response (2xx) and no Go-level error → return nil
+	if err == nil && resp.StatusCode >= 200 && resp.StatusCode < 300 {
+		return nil
+	}
+
+	var bodyBytes []byte
+	var readErr error
+
+	// Read the response body (if present)
+	if resp.Body != nil {
+		defer func() { _ = resp.Body.Close() }()
+		bodyBytes, readErr = io.ReadAll(resp.Body)
+	}
+
+	bodyStr := strings.TrimSpace(string(bodyBytes))
+
+	// Remove duplicate Go-level errors that simply restate HTTP status
+	goError := err
+	if err != nil {
+		statusText := http.StatusText(resp.StatusCode)
+		if strings.Contains(err.Error(), strconv.Itoa(resp.StatusCode)) &&
+			strings.Contains(err.Error(), statusText) {
+			goError = nil
+		}
+	}
+
+	// Case 3: Response body unreadable
+	if readErr != nil {
+		return &taikunError{
+			HTTPStatusCode: resp.StatusCode,
+			Message:        fmt.Sprintf("failed to read error response body: %v", readErr),
+			GoError:        goError,
+			Method:         method,
+			URL:            urlStr,
+		}
+	}
+
+	// Case 4: Empty response body
+	if bodyStr == "" {
+		return &taikunError{
+			HTTPStatusCode: resp.StatusCode,
+			Message:        "empty response body",
+			GoError:        goError,
+			Method:         method,
+			URL:            urlStr,
+		}
+	}
+
+	// Case 5: JSON error body with known fields ("title", "detail", "message", "error")
+	var parsed map[string]interface{}
+	if json.Unmarshal(bodyBytes, &parsed) == nil {
+		var title, message string
+
+		if val, ok := parsed["title"]; ok {
+			title = fmt.Sprintf("%v", val)
+		}
+		for _, key := range []string{"detail", "message", "error"} {
+			if val, ok := parsed[key]; ok {
+				message = fmt.Sprintf("%v", val)
+				break
+			}
+		}
+
+		// Sanitize newlines
+		title = strings.ReplaceAll(title, "\n", " ")
+		message = strings.ReplaceAll(message, "\n", " ")
+
+		// Construct combined message
+		var combinedMsg string
+		switch {
+		case title != "" && message != "":
+			combinedMsg = fmt.Sprintf("(TITLE %s) (DETAIL %s)", title, message)
+		case message != "":
+			combinedMsg = message
+		case title != "":
+			combinedMsg = title
+		default:
+			combinedMsg = fmt.Sprintf("(RESPONSE %s)", strings.ReplaceAll(string(bodyBytes), "\n", " "))
+		}
+
+		return &taikunError{
+			HTTPStatusCode: resp.StatusCode,
+			Message:        combinedMsg,
+			GoError:        goError,
+			Method:         method,
+			URL:            urlStr,
+		}
+	}
+
+	// Case 6: Fallback — plain text body, sanitized
+	bodyStr = strings.ReplaceAll(bodyStr, "\n", " ")
+
 	return &taikunError{
 		HTTPStatusCode: resp.StatusCode,
-		Message:        fmt.Sprintf("%s", string(body)),
+		Message:        bodyStr,
+		GoError:        goError,
+		Method:         method,
+		URL:            urlStr,
 	}
 }
 
-// NewClientFromToken is a helper function not intended to be used by the user.
-// It returns a client based on the token provided.
+// redactURL removes sensitive query values but keeps path visible
+func redactURL(u *urlpkg.URL) string {
+	if u == nil {
+		return ""
+	}
+	cp := *u
+	q := cp.Query()
+	for _, k := range []string{"token", "access_token", "auth", "authorization", "api_key", "apikey"} {
+		if _, ok := q[k]; ok {
+			q.Set(k, "REDACTED")
+		}
+	}
+	cp.RawQuery = q.Encode()
+	return cp.String()
+}
+
+// NewClientFromToken creates a client using an existing JWT token.
 func NewClientFromToken(token string, apiHost string) *Client {
+	return newClient(apiHost, func(c *Client) {
+		c.token = token
+	})
+}
 
-	// Create a configuration object for the Taikun Web API
+// NewClientFromCredentials creates a client using email + password authentication.
+// authMode is optional — pass an empty string for the default mode, or a custom
+// mode such as "autoscaler".
+func NewClientFromCredentials(email string, password string, authMode string, apiHost string) *Client {
+	return newClient(apiHost, func(c *Client) {
+		c.email = email
+		c.password = password
+		c.authMode = strings.TrimSpace(authMode)
+	})
+}
+
+// NewClientFromAccessKey creates a client using robot user credentials (access key + secret key).
+// Robot users authenticate via HTTP Basic Auth on every request — no JWT or refresh tokens.
+func NewClientFromAccessKey(accessKey string, secretKey string, apiHost string) *Client {
+	return newClient(apiHost, func(c *Client) {
+		c.accessKey = accessKey
+		c.secretKey = secretKey
+	})
+}
+
+// newClient is the internal constructor shared by all public constructors.
+func newClient(apiHost string, configure func(*Client)) *Client {
 	cfg := taikuncore.NewConfiguration()
 	cfg.Host = apiHost
 	cfg.Scheme = "https"
 
-	// Create a configuration object for the Taikun Showback service
 	cfg2 := taikunshowback.NewConfiguration()
 	cfg2.Host = apiHost
 	cfg2.Scheme = "https"
 
-	// Actually create the new client
-	client := &Client{
-		token: token,
-	}
+	client := &Client{}
+	configure(client)
 
 	tr := &http.Transport{
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
@@ -206,76 +368,34 @@ func NewClientFromToken(token string, apiHost string) *Client {
 	return client
 }
 
-// NewClientFromCredentials is a helper function not intended to be used by the user.
-// It returns a client based on the authMode and provided credentials
-func NewClientFromCredentials(email string, password string, accessKey string, secretKey string, authMode string, apiHost string) *Client {
-
-	// Create a configuration object for the Taikun Web API
-	cfg := taikuncore.NewConfiguration()
-	cfg.Host = apiHost
-	cfg.Scheme = "https"
-
-	// Create a configuration object for the Taikun Showback service
-	cfg2 := taikunshowback.NewConfiguration()
-	cfg2.Host = apiHost
-	cfg2.Scheme = "https"
-
-	// Actually create the new client
-	client := &Client{
-		email:     email,
-		password:  password,
-		accessKey: accessKey,
-		secretKey: secretKey,
-		authMode:  authMode,
-	}
-
-	tr := &http.Transport{
-		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
-	}
-	clientTransport := &customTransport{
-		Transport: tr,
-		Client:    client,
-	}
-	cfg.HTTPClient = &http.Client{Transport: clientTransport}
-	cfg2.HTTPClient = &http.Client{Transport: clientTransport}
-	client.Client = taikuncore.NewAPIClient(cfg)
-	client.ShowbackClient = taikunshowback.NewAPIClient(cfg2)
-
-	return client
-}
-
-// NewClient returns a client authenticated based on your environment variables defined above.
-// It is intended to be called by other modules or packages.
+// NewClient returns a client authenticated based on environment variables.
+//
+// Authentication is auto-detected:
+//   - If TAIKUN_ACCESS_KEY and TAIKUN_SECRET_KEY are set, robot user auth (HTTP Basic) is used.
+//   - Otherwise, TAIKUN_EMAIL and TAIKUN_PASSWORD are used for user auth (JWT).
+//   - TAIKUN_API_HOST defaults to "api.taikun.cloud" if not set.
 func NewClient() *Client {
-
-	// What endpoint are we connecting to?
-	// If not defined, default is production - api.taikun.cloud
 	apiHost := os.Getenv(TaikunApiHostEnvVar)
 	if apiHost == "" {
 		apiHost = "api.taikun.cloud"
 	}
 
-	// What Authorization mode was chosen?
-	// Default, empty or not set = Try to use Username and Password
-	taikunAuthMode, customMode := os.LookupEnv(TaikunAuthMode)
-	if !customMode || taikunAuthMode == "" || taikunAuthMode == "default" {
-		email := os.Getenv(TaikunEmailEnvVar)
-		password := os.Getenv(TaikunPasswordEnvVar)
-		if email == "" || password == "" {
-			fmt.Println("Please set your Taikun credentials. Password or Email was empty.")
-			os.Exit(1)
-			//panic(fmt.Errorf("Please set your Taikun credentials. Password or Email was empty."))
-		}
-		return NewClientFromCredentials(email, password, "", "", "", apiHost) // Create and return the client
-	}
-
-	// Any other mode was chosen. Try to use AccessKey + Secret key.
+	// Check for robot user credentials (access key + secret key) first
 	accessKey := os.Getenv(TaikunAccessKey)
 	secretKey := os.Getenv(TaikunSecretKey)
-	if accessKey == "" || secretKey == "" {
-		// panic(fmt.Errorf("Please set your Taikun credentials. AccessKey or SecretKey was empty."))
-		fmt.Println("Please set your Taikun credentials. AccessKey or SecretKey was empty.")
-		os.Exit(1)
+	if accessKey != "" && secretKey != "" {
+		return NewClientFromAccessKey(accessKey, secretKey, apiHost)
 	}
-	return NewClientFromCredentials("", "", accessKey, secretKey, taikunAuthMode, apiHost) // Create and return the client
+
+	// Fall back to email + password authentication
+	email := os.Getenv(TaikunEmailEnvVar)
+	password := os.Getenv(TaikunPasswordEnvVar)
+	if email != "" && password != "" {
+		authMode := os.Getenv(TaikunAuthMode)
+		return NewClientFromCredentials(email, password, authMode, apiHost)
+	}
+
+	fmt.Println("Please set your Taikun credentials. Either TAIKUN_ACCESS_KEY + TAIKUN_SECRET_KEY or TAIKUN_EMAIL + TAIKUN_PASSWORD must be set.")
+	os.Exit(1)
+	return nil
 }

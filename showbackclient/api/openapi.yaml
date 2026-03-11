@@ -74,37 +74,37 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ShowbackProjectsList"
+                $ref: '#/components/schemas/ShowbackProjectsList'
           description: OK
         "400":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found
         "500":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Retrieve all projects
       tags:
@@ -116,43 +116,43 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateShowbackCredentialCommand"
+              $ref: '#/components/schemas/CreateShowbackCredentialCommand'
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ApiResponse"
+                $ref: '#/components/schemas/ApiResponse'
           description: OK
         "400":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found
         "500":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Create showback credential
       tags:
@@ -164,7 +164,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ShowbackCredentialLockCommand"
+              $ref: '#/components/schemas/ShowbackCredentialLockCommand'
       responses:
         "200":
           content:
@@ -174,31 +174,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found
         "500":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Lock management for showback credential
       tags:
@@ -221,38 +221,38 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: "#/components/schemas/ShowbackCredentialsDetailsDto"
+                  $ref: '#/components/schemas/ShowbackCredentialsDetailsDto'
                 type: array
           description: OK
         "400":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found
         "500":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Retrieve showback credentials by organization id
       tags:
@@ -319,37 +319,37 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ShowbackCredentialsList"
+                $ref: '#/components/schemas/ShowbackCredentialsList'
           description: OK
         "400":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found
         "500":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Retrieve all showback credentials
       tags:
@@ -375,31 +375,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found
         "500":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Delete showback credential
       tags:
@@ -411,43 +411,43 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateShowbackRuleCommand"
+              $ref: '#/components/schemas/CreateShowbackRuleCommand'
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ApiResponse"
+                $ref: '#/components/schemas/ApiResponse'
           description: OK
         "400":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found
         "500":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Create showback rule
       tags:
@@ -459,7 +459,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/DeleteRulesCommand"
+              $ref: '#/components/schemas/DeleteRulesCommand'
       responses:
         "200":
           content:
@@ -469,31 +469,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found
         "500":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Delete multiple showback rule
       tags:
@@ -505,7 +505,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UpdateShowbackRuleCommand"
+              $ref: '#/components/schemas/UpdateShowbackRuleCommand'
       responses:
         "200":
           content:
@@ -515,31 +515,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found
         "500":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Create showback rule
       tags:
@@ -606,37 +606,37 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ShowbackRuleList"
+                $ref: '#/components/schemas/ShowbackRuleList'
           description: OK
         "400":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found
         "500":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Retrieve all showback rules
       tags:
@@ -662,31 +662,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found
         "500":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Delete showback rule
       tags:
@@ -698,7 +698,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateShowbackSummaryCommand"
+              $ref: '#/components/schemas/CreateShowbackSummaryCommand'
       responses:
         "200":
           content:
@@ -708,31 +708,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found
         "500":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Create showback summary
       tags:
@@ -761,37 +761,37 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CsvExporter"
+                $ref: '#/components/schemas/CsvExporter'
           description: OK
         "400":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found
         "500":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Export Csv
       tags:
@@ -829,37 +829,37 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GroupedShowbackByLabelList"
+                $ref: '#/components/schemas/GroupedShowbackByLabelList'
           description: OK
         "400":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found
         "500":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Grouped showback summary by label
       tags:
@@ -904,37 +904,37 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GroupedShowbackByProjectList"
+                $ref: '#/components/schemas/GroupedShowbackByProjectList'
           description: OK
         "400":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found
         "500":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Grouped showback summary by project
       tags:
@@ -986,37 +986,37 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GroupedShowbackList"
+                $ref: '#/components/schemas/GroupedShowbackList'
           description: OK
         "400":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found
         "500":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Grouped list of showback summary
       tags:
@@ -1062,38 +1062,38 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: "#/components/schemas/GroupedShowbackSummaryListDto"
+                  $ref: '#/components/schemas/GroupedShowbackSummaryListDto'
                 type: array
           description: OK
         "400":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Bad Request
         "401":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Unauthorized
         "403":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Forbidden
         "404":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Not Found
         "500":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProblemDetails"
+                $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Grouped showback summary
       tags:
@@ -1177,9 +1177,9 @@ components:
           nullable: true
           type: string
         kind:
-          $ref: "#/components/schemas/EShowbackType"
+          $ref: '#/components/schemas/EShowbackType'
         type:
-          $ref: "#/components/schemas/EPrometheusType"
+          $ref: '#/components/schemas/EPrometheusType'
         price:
           format: double
           nullable: true
@@ -1197,7 +1197,7 @@ components:
           type: integer
         labels:
           items:
-            $ref: "#/components/schemas/ShowbackLabelCreateDto"
+            $ref: '#/components/schemas/ShowbackLabelCreateDto'
           nullable: true
           type: array
         showbackCredentialId:
@@ -1343,7 +1343,7 @@ components:
       properties:
         byLabelValues:
           items:
-            $ref: "#/components/schemas/GroupedShowbackSummaryByLabelInfo"
+            $ref: '#/components/schemas/GroupedShowbackSummaryByLabelInfo'
           nullable: true
           type: array
       type: object
@@ -1370,7 +1370,7 @@ components:
       properties:
         byProjects:
           items:
-            $ref: "#/components/schemas/GroupedShowbackSummaryByProjectInfos"
+            $ref: '#/components/schemas/GroupedShowbackSummaryByProjectInfos'
           nullable: true
           type: array
       type: object
@@ -1431,17 +1431,17 @@ components:
       properties:
         projects:
           items:
-            $ref: "#/components/schemas/GroupedShowbackSummaryInfos"
+            $ref: '#/components/schemas/GroupedShowbackSummaryInfos'
           nullable: true
           type: array
         credentials:
           items:
-            $ref: "#/components/schemas/GroupedShowbackSummaryInfos"
+            $ref: '#/components/schemas/GroupedShowbackSummaryInfos'
           nullable: true
           type: array
         byLabelValues:
           items:
-            $ref: "#/components/schemas/GroupedShowbackSummaryInfos"
+            $ref: '#/components/schemas/GroupedShowbackSummaryInfos'
           nullable: true
           type: array
       type: object
@@ -1522,7 +1522,7 @@ components:
           type: string
         data:
           items:
-            $ref: "#/components/schemas/GroupedShowbackSummariesByLabelDto"
+            $ref: '#/components/schemas/GroupedShowbackSummariesByLabelDto'
           nullable: true
           type: array
       type: object
@@ -1540,7 +1540,7 @@ components:
       properties:
         data:
           items:
-            $ref: "#/components/schemas/GroupedShowbackSummariesByProjectDto"
+            $ref: '#/components/schemas/GroupedShowbackSummariesByProjectDto'
           nullable: true
           type: array
         ruleName:
@@ -1568,7 +1568,7 @@ components:
       properties:
         data:
           items:
-            $ref: "#/components/schemas/GroupedShowbackSummaries"
+            $ref: '#/components/schemas/GroupedShowbackSummaries'
           nullable: true
           type: array
         id:
@@ -1614,11 +1614,11 @@ components:
           type: number
         projects:
           items:
-            $ref: "#/components/schemas/GroupedProjectForShowbackSummary"
+            $ref: '#/components/schemas/GroupedProjectForShowbackSummary'
           nullable: true
           type: array
         credential:
-          $ref: "#/components/schemas/GroupedCredentialForShowbackSummary"
+          $ref: '#/components/schemas/GroupedCredentialForShowbackSummary'
       type: object
     ProblemDetails:
       additionalProperties: {}
@@ -1714,7 +1714,7 @@ components:
       properties:
         data:
           items:
-            $ref: "#/components/schemas/ShowbackCredentialsListDto"
+            $ref: '#/components/schemas/ShowbackCredentialsListDto'
           nullable: true
           type: array
         totalCount:
@@ -1779,7 +1779,7 @@ components:
           type: string
         rules:
           items:
-            $ref: "#/components/schemas/ShowbackRuleEntityDto"
+            $ref: '#/components/schemas/ShowbackRuleEntityDto'
           nullable: true
           type: array
       type: object
@@ -1818,7 +1818,7 @@ components:
       properties:
         data:
           items:
-            $ref: "#/components/schemas/ShowbackProjectsListDto"
+            $ref: '#/components/schemas/ShowbackProjectsListDto'
           nullable: true
           type: array
         totalCount:
@@ -1925,7 +1925,7 @@ components:
       properties:
         data:
           items:
-            $ref: "#/components/schemas/ShowbackRulesListDto"
+            $ref: '#/components/schemas/ShowbackRulesListDto'
           nullable: true
           type: array
         totalCount:
@@ -2000,7 +2000,7 @@ components:
           type: string
         labels:
           items:
-            $ref: "#/components/schemas/ShowbackLabelCreateDto"
+            $ref: '#/components/schemas/ShowbackLabelCreateDto'
           nullable: true
           type: array
         showbackCredentialName:
@@ -2051,9 +2051,9 @@ components:
           nullable: true
           type: string
         kind:
-          $ref: "#/components/schemas/EShowbackType"
+          $ref: '#/components/schemas/EShowbackType'
         type:
-          $ref: "#/components/schemas/EPrometheusType"
+          $ref: '#/components/schemas/EPrometheusType'
         price:
           format: double
           nullable: true
@@ -2068,7 +2068,7 @@ components:
           type: integer
         labels:
           items:
-            $ref: "#/components/schemas/ShowbackLabelCreateDto"
+            $ref: '#/components/schemas/ShowbackLabelCreateDto'
           nullable: true
           type: array
       type: object

@@ -77,7 +77,6 @@ api_stripe.go
 api_subscription.go
 api_taikun_lb.go
 api_trusted_registries.go
-api_user_token.go
 api_users.go
 api_virtual_cluster.go
 api_vsphere_cloud_credential.go
@@ -86,6 +85,7 @@ client.go
 configuration.go
 docs/AWSCloudCredentialAPI.md
 docs/AccessLevel.md
+docs/AccessLevelRoles.md
 docs/AccessProfilesAPI.md
 docs/AccessProfilesList.md
 docs/AccessProfilesListDto.md
@@ -141,8 +141,6 @@ docs/AttachDetachAlertingProfileCommand.md
 docs/AuthManagementAPI.md
 docs/AutoSyncManagementCommand.md
 docs/AutoscalingAPI.md
-docs/AvailableEndpointData.md
-docs/AvailableEndpointsList.md
 docs/AvailablePackageDetailsDto.md
 docs/AvailablePackagesDto.md
 docs/AvailablePackagesList.md
@@ -185,7 +183,6 @@ docs/BackupLockManagerCommand.md
 docs/BackupMakeDefaultCommand.md
 docs/BackupPolicyAPI.md
 docs/BackupStorageLocationDto.md
-docs/BecomePartnerCommand.md
 docs/BillingAPI.md
 docs/BillingCredentialsSearchCommand.md
 docs/BillingCredentialsSearchList.md
@@ -198,7 +195,6 @@ docs/BindFlavorToProjectCommand.md
 docs/BindImageToProjectCommand.md
 docs/BindSubscriptionCommand.md
 docs/BindSubscriptionResponseDto.md
-docs/BindUnbindEndpointToTokenCommand.md
 docs/BoundFlavorsForProjectsList.md
 docs/BoundFlavorsForProjectsListDto.md
 docs/BoundImagesForProjectsList.md
@@ -234,6 +230,8 @@ docs/ChatCompletionsCommand.md
 docs/CheckAwsCommand.md
 docs/CheckAzureCommand.md
 docs/CheckAzureCpuQuotaCommand.md
+docs/CheckDuplicateAccountCommand.md
+docs/CheckDuplicateGroupCommand.md
 docs/CheckOpenstackAvailabilityResponse.md
 docs/CheckOpenstackCommand.md
 docs/CheckPrometheusCommand.md
@@ -241,6 +239,7 @@ docs/CheckS3Command.md
 docs/CheckTrustedRegistryCommand.md
 docs/CheckZadaraCommand.md
 docs/CheckerAPI.md
+docs/CheckerRobotCommand.md
 docs/CidrCommand.md
 docs/CloudCredentialAPI.md
 docs/CloudCredentialsDropdownRecordDto.md
@@ -275,6 +274,7 @@ docs/CpuLimitsDto.md
 docs/CrdSearchCommand.md
 docs/CrdSearchList.md
 docs/CreateAccessProfileCommand.md
+docs/CreateAccountCommand.md
 docs/CreateAiCredentialCommand.md
 docs/CreateAlertDto.md
 docs/CreateAlertingIntegrationCommand.md
@@ -353,7 +353,6 @@ docs/DeleteKubeConfigByProjectIdCommand.md
 docs/DeleteKubeConfigCommand.md
 docs/DeleteKubernetesResourceCommand.md
 docs/DeleteOrganizationFromGroupCommand.md
-docs/DeletePartnerCommand.md
 docs/DeleteProjectCommand.md
 docs/DeleteRepositoryCommand.md
 docs/DeleteRestoreCommand.md
@@ -395,6 +394,7 @@ docs/DnsServersListDto.md
 docs/DocumentationAPI.md
 docs/DocumentationData.md
 docs/DocumentationsList.md
+docs/DowngradeUserCommand.md
 docs/DownloadInvoiceCommand.md
 docs/DownloadKubeConfigCommand.md
 docs/DownloadKubernetesResourceCommand.md
@@ -420,6 +420,7 @@ docs/EditCatalogAppVersionCommand.md
 docs/EditCatalogCommand.md
 docs/EditProjectAppExtraValuesCommand.md
 docs/EditProjectAppParamsDto.md
+docs/EditRobotUserCommand.md
 docs/EditSecurityGroupCommand.md
 docs/EditSshUserCommand.md
 docs/EditVirtualClusterQuotasCommand.md
@@ -427,7 +428,6 @@ docs/EditVirtualClusterResourceLimits.md
 docs/EditVirtualClusterWorkloadResources.md
 docs/EmailMode.md
 docs/EnableAutoscalingCommand.md
-docs/EndpointElements.md
 docs/EnsureCodesDownloadedCommand.md
 docs/EnumList.md
 docs/EphemeralStorageLimitsDto.md
@@ -570,6 +570,7 @@ docs/KubesprayAPI.md
 docs/KubesprayCreateCommand.md
 docs/KubesprayListDto.md
 docs/Kubesprays.md
+docs/LbProvider.md
 docs/LeaveTaikunCommand.md
 docs/LeaveTaikunDto.md
 docs/ListAllBackupStorageLocations.md
@@ -669,17 +670,12 @@ docs/OrganizationsWithGroupInfoResultDtoCursorPaginatedResponse.md
 docs/PackageAPI.md
 docs/PackageAutocompleteDto.md
 docs/ParameterType.md
-docs/PartnerColorSettingsDto.md
 docs/PartnerDetailsDto.md
 docs/PartnerDetailsForOrganizationsDto.md
 docs/PartnerEntity.md
-docs/PartnerImageSettingsDto.md
 docs/PartnerRecordDto.md
 docs/PartnersAPI.md
 docs/PartnersList.md
-docs/PartnersSearchCommand.md
-docs/PartnersSearchList.md
-docs/PartnersSearchResponseData.md
 docs/PatchKubernetesResourceCommand.md
 docs/PayInvoiceCommand.md
 docs/PaymentsAPI.md
@@ -765,6 +761,7 @@ docs/PrometheusRulesSearchCommand.md
 docs/PrometheusRulesSearchList.md
 docs/PrometheusRulesSearchResponseData.md
 docs/PrometheusType.md
+docs/PromoteUserCommand.md
 docs/Provider.md
 docs/ProxmoxCheckerCommand.md
 docs/ProxmoxCloudCredentialAPI.md
@@ -785,6 +782,7 @@ docs/RamLimitsDto.md
 docs/RebootServerCommand.md
 docs/RebootStandAloneVmCommand.md
 docs/RefreshTokenCommand.md
+docs/RegenerateRobotTokenCommand.md
 docs/RegionListCommand.md
 docs/RegistrationCommand.md
 docs/RemindUsersByAlertingProfileCommand.md
@@ -824,7 +822,6 @@ docs/ServerChartDto.md
 docs/ServerCommonRecordDto.md
 docs/ServerForCreateDto.md
 docs/ServerListDto.md
-docs/ServerTemplateDto.md
 docs/ServersAPI.md
 docs/ServersForBillingDto.md
 docs/ServersList.md
@@ -907,6 +904,7 @@ docs/TaikunResult.md
 docs/ToggleExecutorCommand.md
 docs/ToggleMaintenanceModeCommand.md
 docs/ToggleNotificationModeCommand.md
+docs/TransferOwnershipCommand.md
 docs/TrustedRegisteredCreateDto.md
 docs/TrustedRegistriesAPI.md
 docs/TrustedRegistriesListDto.md
@@ -920,14 +918,17 @@ docs/TwoFactorAuthVerifyResult.md
 docs/UnbindAppRepositoryCommand.md
 docs/UnbindFlavorFromProjectCommand.md
 docs/UninstallProjectAppResult.md
+docs/Unlock2FaCommand.md
 docs/UnshelveStandaloneVmCommand.md
 docs/UpdateAccessProfileDto.md
+docs/UpdateAccountCommand.md
 docs/UpdateAlertingProfileCommand.md
 docs/UpdateAwsCommand.md
 docs/UpdateAzureCommand.md
 docs/UpdateExecutorHealthStatusCommand.md
 docs/UpdateGenericKubernetesCommand.md
 docs/UpdateGroupDto.md
+docs/UpdateGroupOrganizationDto.md
 docs/UpdateHealthStatusCommand.md
 docs/UpdateHypervisorsCommand.md
 docs/UpdateInvoiceDto.md
@@ -962,10 +963,6 @@ docs/UserExistCommand.md
 docs/UserForListDto.md
 docs/UserOrganizationDto.md
 docs/UserResourceChartDto.md
-docs/UserTokenAPI.md
-docs/UserTokenCreateCommand.md
-docs/UserTokenCreateDto.md
-docs/UserTokensListDto.md
 docs/UserWithGlobalRoleDto.md
 docs/UsersAPI.md
 docs/UsersList.md
@@ -1004,10 +1001,6 @@ docs/VsphereNetworkListDto.md
 docs/VsphereVmTemplateData.md
 docs/VsphereVmTemplateListCommand.md
 docs/WebhookHeaderDto.md
-docs/WhiteListDomainCreateCommand.md
-docs/WhiteListDomainCreateDto.md
-docs/WhiteListDomainDeleteCommand.md
-docs/WhiteListDomainDto.md
 docs/WorkloadResourceLimitsDto.md
 docs/YamlValidatorCommand.md
 docs/ZadaraAvailabilityZonesCommand.md
@@ -1019,6 +1012,7 @@ git_push.sh
 go.mod
 go.sum
 model_access_level.go
+model_access_level_roles.go
 model_access_profiles_list.go
 model_access_profiles_list_dto.go
 model_access_profiles_lock_management_command.go
@@ -1065,8 +1059,6 @@ model_artifact_repository_dto.go
 model_artifact_url_checker_command.go
 model_attach_detach_alerting_profile_command.go
 model_auto_sync_management_command.go
-model_available_endpoint_data.go
-model_available_endpoints_list.go
 model_available_package_details_dto.go
 model_available_packages_dto.go
 model_available_packages_list.go
@@ -1107,7 +1099,6 @@ model_backup_dto.go
 model_backup_lock_manager_command.go
 model_backup_make_default_command.go
 model_backup_storage_location_dto.go
-model_become_partner_command.go
 model_billing_credentials_search_command.go
 model_billing_credentials_search_list.go
 model_billing_info.go
@@ -1119,7 +1110,6 @@ model_bind_flavor_to_project_command.go
 model_bind_image_to_project_command.go
 model_bind_subscription_command.go
 model_bind_subscription_response_dto.go
-model_bind_unbind_endpoint_to_token_command.go
 model_bound_flavors_for_projects_list.go
 model_bound_flavors_for_projects_list_dto.go
 model_bound_images_for_projects_list.go
@@ -1152,12 +1142,15 @@ model_chat_completions_command.go
 model_check_aws_command.go
 model_check_azure_command.go
 model_check_azure_cpu_quota_command.go
+model_check_duplicate_account_command.go
+model_check_duplicate_group_command.go
 model_check_openstack_availability_response.go
 model_check_openstack_command.go
 model_check_prometheus_command.go
 model_check_s3_command.go
 model_check_trusted_registry_command.go
 model_check_zadara_command.go
+model_checker_robot_command.go
 model_cidr_command.go
 model_cloud_credentials_dropdown_record_dto.go
 model_cloud_credentials_for_organization_entity.go
@@ -1191,6 +1184,7 @@ model_cpu_limits_dto.go
 model_crd_search_command.go
 model_crd_search_list.go
 model_create_access_profile_command.go
+model_create_account_command.go
 model_create_ai_credential_command.go
 model_create_alert_dto.go
 model_create_alerting_integration_command.go
@@ -1268,7 +1262,6 @@ model_delete_kube_config_by_project_id_command.go
 model_delete_kube_config_command.go
 model_delete_kubernetes_resource_command.go
 model_delete_organization_from_group_command.go
-model_delete_partner_command.go
 model_delete_project_command.go
 model_delete_repository_command.go
 model_delete_restore_command.go
@@ -1308,6 +1301,7 @@ model_dns_server_list_dto.go
 model_dns_servers_list_dto.go
 model_documentation_data.go
 model_documentations_list.go
+model_downgrade_user_command.go
 model_download_invoice_command.go
 model_download_kube_config_command.go
 model_download_kubernetes_resource_command.go
@@ -1333,6 +1327,7 @@ model_edit_catalog_app_version_command.go
 model_edit_catalog_command.go
 model_edit_project_app_extra_values_command.go
 model_edit_project_app_params_dto.go
+model_edit_robot_user_command.go
 model_edit_security_group_command.go
 model_edit_ssh_user_command.go
 model_edit_virtual_cluster_quotas_command.go
@@ -1340,7 +1335,6 @@ model_edit_virtual_cluster_resource_limits.go
 model_edit_virtual_cluster_workload_resources.go
 model_email_mode.go
 model_enable_autoscaling_command.go
-model_endpoint_elements.go
 model_ensure_codes_downloaded_command.go
 model_enum_list.go
 model_ephemeral_storage_limits_dto.go
@@ -1467,6 +1461,7 @@ model_kubernetes_version_list_dto.go
 model_kubespray_create_command.go
 model_kubespray_list_dto.go
 model_kubesprays.go
+model_lb_provider.go
 model_leave_taikun_command.go
 model_leave_taikun_dto.go
 model_list_all_backup_storage_locations.go
@@ -1557,16 +1552,11 @@ model_organizations_with_group_info_result_dto.go
 model_organizations_with_group_info_result_dto_cursor_paginated_response.go
 model_package_autocomplete_dto.go
 model_parameter_type.go
-model_partner_color_settings_dto.go
 model_partner_details_dto.go
 model_partner_details_for_organizations_dto.go
 model_partner_entity.go
-model_partner_image_settings_dto.go
 model_partner_record_dto.go
 model_partners_list.go
-model_partners_search_command.go
-model_partners_search_list.go
-model_partners_search_response_data.go
 model_patch_kubernetes_resource_command.go
 model_pay_invoice_command.go
 model_pdb_search_command.go
@@ -1641,6 +1631,7 @@ model_prometheus_rules_search_command.go
 model_prometheus_rules_search_list.go
 model_prometheus_rules_search_response_data.go
 model_prometheus_type.go
+model_promote_user_command.go
 model_provider.go
 model_proxmox_checker_command.go
 model_proxmox_flavor_data.go
@@ -1660,6 +1651,7 @@ model_ram_limits_dto.go
 model_reboot_server_command.go
 model_reboot_stand_alone_vm_command.go
 model_refresh_token_command.go
+model_regenerate_robot_token_command.go
 model_region_list_command.go
 model_registration_command.go
 model_remind_users_by_alerting_profile_command.go
@@ -1695,7 +1687,6 @@ model_server_chart_dto.go
 model_server_common_record_dto.go
 model_server_for_create_dto.go
 model_server_list_dto.go
-model_server_template_dto.go
 model_servers_for_billing_dto.go
 model_servers_list.go
 model_servers_list_for_details.go
@@ -1768,6 +1759,7 @@ model_taikun_result.go
 model_toggle_executor_command.go
 model_toggle_maintenance_mode_command.go
 model_toggle_notification_mode_command.go
+model_transfer_ownership_command.go
 model_trusted_registered_create_dto.go
 model_trusted_registries_list_dto.go
 model_trusted_registry_edit_dto.go
@@ -1780,14 +1772,17 @@ model_two_factor_auth_verify_result.go
 model_unbind_app_repository_command.go
 model_unbind_flavor_from_project_command.go
 model_uninstall_project_app_result.go
+model_unlock2_fa_command.go
 model_unshelve_standalone_vm_command.go
 model_update_access_profile_dto.go
+model_update_account_command.go
 model_update_alerting_profile_command.go
 model_update_aws_command.go
 model_update_azure_command.go
 model_update_executor_health_status_command.go
 model_update_generic_kubernetes_command.go
 model_update_group_dto.go
+model_update_group_organization_dto.go
 model_update_health_status_command.go
 model_update_hypervisors_command.go
 model_update_invoice_dto.go
@@ -1822,9 +1817,6 @@ model_user_exist_command.go
 model_user_for_list_dto.go
 model_user_organization_dto.go
 model_user_resource_chart_dto.go
-model_user_token_create_command.go
-model_user_token_create_dto.go
-model_user_tokens_list_dto.go
 model_user_with_global_role_dto.go
 model_users_list.go
 model_users_search_command.go
@@ -1860,10 +1852,6 @@ model_vsphere_network_list_dto.go
 model_vsphere_vm_template_data.go
 model_vsphere_vm_template_list_command.go
 model_webhook_header_dto.go
-model_white_list_domain_create_command.go
-model_white_list_domain_create_dto.go
-model_white_list_domain_delete_command.go
-model_white_list_domain_dto.go
 model_workload_resource_limits_dto.go
 model_yaml_validator_command.go
 model_zadara_availability_zones_command.go
@@ -1945,7 +1933,6 @@ test/api_stripe_test.go
 test/api_subscription_test.go
 test/api_taikun_lb_test.go
 test/api_trusted_registries_test.go
-test/api_user_token_test.go
 test/api_users_test.go
 test/api_virtual_cluster_test.go
 test/api_vsphere_cloud_credential_test.go
