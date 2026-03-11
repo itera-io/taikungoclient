@@ -32275,6 +32275,55 @@ paths:
       summary: Retrieve robot users
       tags:
       - Robot
+  /api/v1/robot/details:
+    get:
+      operationId: robot-details
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RobotUsersListDto'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve robot user info
+      tags:
+      - Robot
   /api/v1/robot/scope-list:
     get:
       operationId: robot-scope-list
@@ -43355,6 +43404,7 @@ components:
         subnetId: subnetId
         hasIpv6: true
         zone: zone
+        cidr: cidr
         state: state
       properties:
         subnetId:
@@ -43368,6 +43418,9 @@ components:
           type: string
         hasIpv6:
           type: boolean
+        cidr:
+          nullable: true
+          type: string
       type: object
     AwsSubnetListCommand:
       example:
@@ -43406,8 +43459,12 @@ components:
         ipMode: Ipv4
         vpcId: vpcId
         cidrBlock: cidrBlock
+        name: name
       properties:
         vpcId:
+          nullable: true
+          type: string
+        name:
           nullable: true
           type: string
         cidrBlock:

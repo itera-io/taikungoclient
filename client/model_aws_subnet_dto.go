@@ -24,6 +24,7 @@ type AwsSubnetDto struct {
 	Zone NullableString `json:"zone,omitempty"`
 	State NullableString `json:"state,omitempty"`
 	HasIpv6 *bool `json:"hasIpv6,omitempty"`
+	Cidr NullableString `json:"cidr,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -204,6 +205,48 @@ func (o *AwsSubnetDto) SetHasIpv6(v bool) {
 	o.HasIpv6 = &v
 }
 
+// GetCidr returns the Cidr field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AwsSubnetDto) GetCidr() string {
+	if o == nil || IsNil(o.Cidr.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Cidr.Get()
+}
+
+// GetCidrOk returns a tuple with the Cidr field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AwsSubnetDto) GetCidrOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Cidr.Get(), o.Cidr.IsSet()
+}
+
+// HasCidr returns a boolean if a field has been set.
+func (o *AwsSubnetDto) HasCidr() bool {
+	if o != nil && o.Cidr.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCidr gets a reference to the given NullableString and assigns it to the Cidr field.
+func (o *AwsSubnetDto) SetCidr(v string) {
+	o.Cidr.Set(&v)
+}
+// SetCidrNil sets the value for Cidr to be an explicit nil
+func (o *AwsSubnetDto) SetCidrNil() {
+	o.Cidr.Set(nil)
+}
+
+// UnsetCidr ensures that no value is present for Cidr, not even an explicit nil
+func (o *AwsSubnetDto) UnsetCidr() {
+	o.Cidr.Unset()
+}
+
 func (o AwsSubnetDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -225,6 +268,9 @@ func (o AwsSubnetDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.HasIpv6) {
 		toSerialize["hasIpv6"] = o.HasIpv6
+	}
+	if o.Cidr.IsSet() {
+		toSerialize["cidr"] = o.Cidr.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -252,6 +298,7 @@ func (o *AwsSubnetDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "zone")
 		delete(additionalProperties, "state")
 		delete(additionalProperties, "hasIpv6")
+		delete(additionalProperties, "cidr")
 		o.AdditionalProperties = additionalProperties
 	}
 

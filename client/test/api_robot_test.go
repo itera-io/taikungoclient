@@ -58,6 +58,18 @@ func Test_taikuncore_RobotAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test RobotAPIService RobotDetails", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.RobotAPI.RobotDetails(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test RobotAPIService RobotList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

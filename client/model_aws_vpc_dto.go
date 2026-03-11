@@ -21,6 +21,7 @@ var _ MappedNullable = &AwsVpcDto{}
 // AwsVpcDto struct for AwsVpcDto
 type AwsVpcDto struct {
 	VpcId NullableString `json:"vpcId,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	CidrBlock NullableString `json:"cidrBlock,omitempty"`
 	IpMode *IpMode `json:"ipMode,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -85,6 +86,48 @@ func (o *AwsVpcDto) SetVpcIdNil() {
 // UnsetVpcId ensures that no value is present for VpcId, not even an explicit nil
 func (o *AwsVpcDto) UnsetVpcId() {
 	o.VpcId.Unset()
+}
+
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AwsVpcDto) GetName() string {
+	if o == nil || IsNil(o.Name.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Name.Get()
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AwsVpcDto) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Name.Get(), o.Name.IsSet()
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *AwsVpcDto) HasName() bool {
+	if o != nil && o.Name.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
+func (o *AwsVpcDto) SetName(v string) {
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *AwsVpcDto) SetNameNil() {
+	o.Name.Set(nil)
+}
+
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *AwsVpcDto) UnsetName() {
+	o.Name.Unset()
 }
 
 // GetCidrBlock returns the CidrBlock field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -174,6 +217,9 @@ func (o AwsVpcDto) ToMap() (map[string]interface{}, error) {
 	if o.VpcId.IsSet() {
 		toSerialize["vpcId"] = o.VpcId.Get()
 	}
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
+	}
 	if o.CidrBlock.IsSet() {
 		toSerialize["cidrBlock"] = o.CidrBlock.Get()
 	}
@@ -203,6 +249,7 @@ func (o *AwsVpcDto) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "vpcId")
+		delete(additionalProperties, "name")
 		delete(additionalProperties, "cidrBlock")
 		delete(additionalProperties, "ipMode")
 		o.AdditionalProperties = additionalProperties

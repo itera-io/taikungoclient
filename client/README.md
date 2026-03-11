@@ -583,6 +583,7 @@ Class | Method | HTTP request | Description
 *RobotAPI* | [**RobotChecker**](docs/RobotAPI.md#robotchecker) | **Post** /api/v1/robot/checker | Dry run robot user create
 *RobotAPI* | [**RobotCreate**](docs/RobotAPI.md#robotcreate) | **Post** /api/v1/robot/create | Add new robot user
 *RobotAPI* | [**RobotDelete**](docs/RobotAPI.md#robotdelete) | **Delete** /api/v1/robot/{id} | Delete robot user
+*RobotAPI* | [**RobotDetails**](docs/RobotAPI.md#robotdetails) | **Get** /api/v1/robot/details | Retrieve robot user info
 *RobotAPI* | [**RobotList**](docs/RobotAPI.md#robotlist) | **Get** /api/v1/robot/list | Retrieve robot users
 *RobotAPI* | [**RobotRegenerate**](docs/RobotAPI.md#robotregenerate) | **Post** /api/v1/robot/regenerate | Regenerate new token credentials for robot user
 *RobotAPI* | [**RobotScopeList**](docs/RobotAPI.md#robotscopelist) | **Get** /api/v1/robot/scope-list | Retrieve available scope list flavors
