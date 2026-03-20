@@ -13,7 +13,7 @@ This process is done twice (for the Taikun WebAPI and Taikun Showback API).
 Manually it would be done like this:
 ```bash
 # Generate client
-openapi-generator-cli generate -i ./swagger-taikun.json \
+openapi-generator generate -i ./swagger-taikun.json \
 -g go \
 --additional-properties=packageName=taikuncore \
 --additional-properties=enumClassPrefix=true \
@@ -21,7 +21,7 @@ openapi-generator-cli generate -i ./swagger-taikun.json \
 --git-repo-id=taikungoclient/client \
 -o ./client
 
-openapi-generator-cli generate -i ./swagger-showback.json \
+openapi-generator generate -i ./swagger-showback.json \
 -g go \
 --additional-properties=packageName=taikunshowback  \
 --additional-properties=enumClassPrefix=true \
