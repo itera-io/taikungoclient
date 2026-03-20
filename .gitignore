@@ -3,3 +3,4 @@
 *.jsom
 client/docs/*
 showbackclient/docs/*
+vendor/*
