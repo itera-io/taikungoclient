@@ -30,6 +30,10 @@ openapi-generator generate -i ./swagger-showback.json \
 -o ./showbackclient
 ```
 
+In order to obtain swagger definitions, visit following URLs (as an example, new `dev` environment is used):
+- [https://api-latest.osc1.sjc.cloudera.com/swagger/index.html](https://api-latest.osc1.sjc.cloudera.com/swagger/index.html)
+- [https://api-latest.osc1.sjc.cloudera.com/showback/swagger/index.html](https://api-latest.osc1.sjc.cloudera.com/showback/swagger/index.html)
+
 ### Workflow
 The repository is configured to do the generation automatically with GitHub Actions.
 Every midnight, the branches dev, staging and main get regenerated to correspond with the latest API.
