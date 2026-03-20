@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -45,7 +46,6 @@ type ProjectAppDetailsDto struct {
 	TaikunLinkUrl NullableString `json:"taikunLinkUrl,omitempty"`
 	TaikunLinkEnabled *bool `json:"taikunLinkEnabled,omitempty"`
 	ProjectAppParams []ProjectAppParamDto `json:"projectAppParams"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _ProjectAppDetailsDto ProjectAppDetailsDto
@@ -739,11 +739,6 @@ func (o ProjectAppDetailsDto) ToMap() (map[string]interface{}, error) {
 	if o.ProjectAppParams != nil {
 		toSerialize["projectAppParams"] = o.ProjectAppParams
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -792,43 +787,15 @@ func (o *ProjectAppDetailsDto) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectAppDetailsDto := _ProjectAppDetailsDto{}
 
-	err = json.Unmarshal(data, &varProjectAppDetailsDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varProjectAppDetailsDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectAppDetailsDto(varProjectAppDetailsDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "namespace")
-		delete(additionalProperties, "status")
-		delete(additionalProperties, "version")
-		delete(additionalProperties, "catalogId")
-		delete(additionalProperties, "catalogName")
-		delete(additionalProperties, "catalogAppName")
-		delete(additionalProperties, "appRepoName")
-		delete(additionalProperties, "logo")
-		delete(additionalProperties, "values")
-		delete(additionalProperties, "autoSync")
-		delete(additionalProperties, "releaseNotes")
-		delete(additionalProperties, "projectName")
-		delete(additionalProperties, "helmResult")
-		delete(additionalProperties, "projectId")
-		delete(additionalProperties, "ttl")
-		delete(additionalProperties, "hasJsonSchema")
-		delete(additionalProperties, "catalogAppId")
-		delete(additionalProperties, "packageId")
-		delete(additionalProperties, "logs")
-		delete(additionalProperties, "taikunLinkUrl")
-		delete(additionalProperties, "taikunLinkEnabled")
-		delete(additionalProperties, "projectAppParams")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

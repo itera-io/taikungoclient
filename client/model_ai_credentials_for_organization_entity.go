@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the AiCredentialsForOrganizationEntity type satisfies the MappedNullable interface at compile time
@@ -21,27 +20,19 @@ var _ MappedNullable = &AiCredentialsForOrganizationEntity{}
 
 // AiCredentialsForOrganizationEntity struct for AiCredentialsForOrganizationEntity
 type AiCredentialsForOrganizationEntity struct {
-	Id int32 `json:"id"`
-	Url NullableString `json:"url"`
-	Name NullableString `json:"name"`
-	Type AiType `json:"type"`
-	IsDefault bool `json:"isDefault"`
-	AdditionalProperties map[string]interface{}
+	Id *int32 `json:"id,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Type *AiType `json:"type,omitempty"`
+	IsDefault *bool `json:"isDefault,omitempty"`
 }
-
-type _AiCredentialsForOrganizationEntity AiCredentialsForOrganizationEntity
 
 // NewAiCredentialsForOrganizationEntity instantiates a new AiCredentialsForOrganizationEntity object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAiCredentialsForOrganizationEntity(id int32, url NullableString, name NullableString, type_ AiType, isDefault bool) *AiCredentialsForOrganizationEntity {
+func NewAiCredentialsForOrganizationEntity() *AiCredentialsForOrganizationEntity {
 	this := AiCredentialsForOrganizationEntity{}
-	this.Id = id
-	this.Url = url
-	this.Name = name
-	this.Type = type_
-	this.IsDefault = isDefault
 	return &this
 }
 
@@ -53,42 +44,48 @@ func NewAiCredentialsForOrganizationEntityWithDefaults() *AiCredentialsForOrgani
 	return &this
 }
 
-// GetId returns the Id field value
+// GetId returns the Id field value if set, zero value otherwise.
 func (o *AiCredentialsForOrganizationEntity) GetId() int32 {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
-
-	return o.Id
+	return *o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AiCredentialsForOrganizationEntity) GetIdOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return &o.Id, true
+	return o.Id, true
 }
 
-// SetId sets field value
+// HasId returns a boolean if a field has been set.
+func (o *AiCredentialsForOrganizationEntity) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given int32 and assigns it to the Id field.
 func (o *AiCredentialsForOrganizationEntity) SetId(v int32) {
-	o.Id = v
+	o.Id = &v
 }
 
-// GetUrl returns the Url field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AiCredentialsForOrganizationEntity) GetUrl() string {
-	if o == nil || o.Url.Get() == nil {
+	if o == nil || IsNil(o.Url.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.Url.Get()
 }
 
-// GetUrlOk returns a tuple with the Url field value
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AiCredentialsForOrganizationEntity) GetUrlOk() (*string, bool) {
@@ -98,23 +95,39 @@ func (o *AiCredentialsForOrganizationEntity) GetUrlOk() (*string, bool) {
 	return o.Url.Get(), o.Url.IsSet()
 }
 
-// SetUrl sets field value
+// HasUrl returns a boolean if a field has been set.
+func (o *AiCredentialsForOrganizationEntity) HasUrl() bool {
+	if o != nil && o.Url.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
 func (o *AiCredentialsForOrganizationEntity) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+// SetUrlNil sets the value for Url to be an explicit nil
+func (o *AiCredentialsForOrganizationEntity) SetUrlNil() {
+	o.Url.Set(nil)
+}
 
-// GetName returns the Name field value
-// If the value is explicit nil, the zero value for string will be returned
+// UnsetUrl ensures that no value is present for Url, not even an explicit nil
+func (o *AiCredentialsForOrganizationEntity) UnsetUrl() {
+	o.Url.Unset()
+}
+
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AiCredentialsForOrganizationEntity) GetName() string {
-	if o == nil || o.Name.Get() == nil {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.Name.Get()
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AiCredentialsForOrganizationEntity) GetNameOk() (*string, bool) {
@@ -124,57 +137,91 @@ func (o *AiCredentialsForOrganizationEntity) GetNameOk() (*string, bool) {
 	return o.Name.Get(), o.Name.IsSet()
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *AiCredentialsForOrganizationEntity) HasName() bool {
+	if o != nil && o.Name.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *AiCredentialsForOrganizationEntity) SetName(v string) {
 	o.Name.Set(&v)
 }
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *AiCredentialsForOrganizationEntity) SetNameNil() {
+	o.Name.Set(nil)
+}
 
-// GetType returns the Type field value
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *AiCredentialsForOrganizationEntity) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
 func (o *AiCredentialsForOrganizationEntity) GetType() AiType {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret AiType
 		return ret
 	}
-
-	return o.Type
+	return *o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AiCredentialsForOrganizationEntity) GetTypeOk() (*AiType, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return &o.Type, true
+	return o.Type, true
 }
 
-// SetType sets field value
+// HasType returns a boolean if a field has been set.
+func (o *AiCredentialsForOrganizationEntity) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given AiType and assigns it to the Type field.
 func (o *AiCredentialsForOrganizationEntity) SetType(v AiType) {
-	o.Type = v
+	o.Type = &v
 }
 
-// GetIsDefault returns the IsDefault field value
+// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
 func (o *AiCredentialsForOrganizationEntity) GetIsDefault() bool {
-	if o == nil {
+	if o == nil || IsNil(o.IsDefault) {
 		var ret bool
 		return ret
 	}
-
-	return o.IsDefault
+	return *o.IsDefault
 }
 
-// GetIsDefaultOk returns a tuple with the IsDefault field value
+// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AiCredentialsForOrganizationEntity) GetIsDefaultOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.IsDefault) {
 		return nil, false
 	}
-	return &o.IsDefault, true
+	return o.IsDefault, true
 }
 
-// SetIsDefault sets field value
+// HasIsDefault returns a boolean if a field has been set.
+func (o *AiCredentialsForOrganizationEntity) HasIsDefault() bool {
+	if o != nil && !IsNil(o.IsDefault) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
 func (o *AiCredentialsForOrganizationEntity) SetIsDefault(v bool) {
-	o.IsDefault = v
+	o.IsDefault = &v
 }
 
 func (o AiCredentialsForOrganizationEntity) MarshalJSON() ([]byte, error) {
@@ -187,67 +234,22 @@ func (o AiCredentialsForOrganizationEntity) MarshalJSON() ([]byte, error) {
 
 func (o AiCredentialsForOrganizationEntity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["url"] = o.Url.Get()
-	toSerialize["name"] = o.Name.Get()
-	toSerialize["type"] = o.Type
-	toSerialize["isDefault"] = o.IsDefault
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
 	}
-
+	if o.Url.IsSet() {
+		toSerialize["url"] = o.Url.Get()
+	}
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.IsDefault) {
+		toSerialize["isDefault"] = o.IsDefault
+	}
 	return toSerialize, nil
-}
-
-func (o *AiCredentialsForOrganizationEntity) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"url",
-		"name",
-		"type",
-		"isDefault",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varAiCredentialsForOrganizationEntity := _AiCredentialsForOrganizationEntity{}
-
-	err = json.Unmarshal(data, &varAiCredentialsForOrganizationEntity)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AiCredentialsForOrganizationEntity(varAiCredentialsForOrganizationEntity)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "url")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "isDefault")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAiCredentialsForOrganizationEntity struct {

@@ -25,10 +25,7 @@ type CreateCatalogAppCommand struct {
 	CatalogId *int32 `json:"catalogId,omitempty"`
 	Version NullableString `json:"version,omitempty"`
 	Parameters []CatalogAppParamsDto `json:"parameters,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _CreateCatalogAppCommand CreateCatalogAppCommand
 
 // NewCreateCatalogAppCommand instantiates a new CreateCatalogAppCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -263,37 +260,7 @@ func (o CreateCatalogAppCommand) ToMap() (map[string]interface{}, error) {
 	if o.Parameters != nil {
 		toSerialize["parameters"] = o.Parameters
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *CreateCatalogAppCommand) UnmarshalJSON(data []byte) (err error) {
-	varCreateCatalogAppCommand := _CreateCatalogAppCommand{}
-
-	err = json.Unmarshal(data, &varCreateCatalogAppCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CreateCatalogAppCommand(varCreateCatalogAppCommand)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "repoName")
-		delete(additionalProperties, "packageName")
-		delete(additionalProperties, "catalogId")
-		delete(additionalProperties, "version")
-		delete(additionalProperties, "parameters")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCreateCatalogAppCommand struct {

@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -24,7 +25,6 @@ type KubeConfigForUserList struct {
 	Data []KubeConfigForUserDto `json:"data"`
 	TotalCount int32 `json:"totalCount"`
 	CanAdd ButtonStatusDto `json:"canAdd"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _KubeConfigForUserList KubeConfigForUserList
@@ -138,11 +138,6 @@ func (o KubeConfigForUserList) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["totalCount"] = o.TotalCount
 	toSerialize["canAdd"] = o.CanAdd
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -172,22 +167,15 @@ func (o *KubeConfigForUserList) UnmarshalJSON(data []byte) (err error) {
 
 	varKubeConfigForUserList := _KubeConfigForUserList{}
 
-	err = json.Unmarshal(data, &varKubeConfigForUserList)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varKubeConfigForUserList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubeConfigForUserList(varKubeConfigForUserList)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "data")
-		delete(additionalProperties, "totalCount")
-		delete(additionalProperties, "canAdd")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

@@ -384,14 +384,24 @@ type ApiKubernetesAlertListRequest struct {
 	ctx context.Context
 	ApiService *KubernetesAPIService
 	projectId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	type_ *string
 	startDate *time.Time
 	endDate *time.Time
-	offset *int32
-	limit *int32
+}
+
+func (r ApiKubernetesAlertListRequest) Limit(limit int32) ApiKubernetesAlertListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiKubernetesAlertListRequest) Offset(offset int32) ApiKubernetesAlertListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiKubernetesAlertListRequest) SortBy(sortBy string) ApiKubernetesAlertListRequest {
@@ -421,16 +431,6 @@ func (r ApiKubernetesAlertListRequest) StartDate(startDate time.Time) ApiKuberne
 
 func (r ApiKubernetesAlertListRequest) EndDate(endDate time.Time) ApiKubernetesAlertListRequest {
 	r.endDate = &endDate
-	return r
-}
-
-func (r ApiKubernetesAlertListRequest) Offset(offset int32) ApiKubernetesAlertListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiKubernetesAlertListRequest) Limit(limit int32) ApiKubernetesAlertListRequest {
-	r.limit = &limit
 	return r
 }
 
@@ -475,6 +475,12 @@ func (a *KubernetesAPIService) KubernetesAlertListExecute(r ApiKubernetesAlertLi
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
@@ -492,12 +498,6 @@ func (a *KubernetesAPIService) KubernetesAlertListExecute(r ApiKubernetesAlertLi
 	}
 	if r.endDate != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "EndDate", r.endDate, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5246,10 +5246,11 @@ func (a *KubernetesAPIService) KubernetesOverviewExecute(r ApiKubernetesOverview
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-
-	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
+	if r.organizationId == nil {
+		return localVarReturnValue, nil, reportError("organizationId is required and must be specified")
 	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -5798,7 +5799,7 @@ func (a *KubernetesAPIService) KubernetesPodsListExecute(r ApiKubernetesPodsList
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/kubernetes/list/{projectId}/pods"
+	localVarPath := localBasePath + "/api/v1/kubernetes/{projectId}/pods-list"
 	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

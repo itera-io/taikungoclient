@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -23,7 +24,6 @@ var _ MappedNullable = &ExceededQuotaDto{}
 type ExceededQuotaDto struct {
 	CloudId int32 `json:"cloudId"`
 	Name NullableString `json:"name"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _ExceededQuotaDto ExceededQuotaDto
@@ -109,11 +109,6 @@ func (o ExceededQuotaDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["cloudId"] = o.CloudId
 	toSerialize["name"] = o.Name.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -142,21 +137,15 @@ func (o *ExceededQuotaDto) UnmarshalJSON(data []byte) (err error) {
 
 	varExceededQuotaDto := _ExceededQuotaDto{}
 
-	err = json.Unmarshal(data, &varExceededQuotaDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varExceededQuotaDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ExceededQuotaDto(varExceededQuotaDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "cloudId")
-		delete(additionalProperties, "name")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

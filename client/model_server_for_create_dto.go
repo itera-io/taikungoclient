@@ -37,10 +37,8 @@ type ServerForCreateDto struct {
 	KubernetesNodeLabels []KubernetesNodeLabelsDto `json:"kubernetesNodeLabels,omitempty"`
 	ReplicaCount NullableInt32 `json:"replicaCount,omitempty"`
 	UseLocalDisk *bool `json:"useLocalDisk,omitempty"`
-	AdditionalProperties map[string]interface{}
+	CskJoinToken *bool `json:"cskJoinToken,omitempty"`
 }
-
-type _ServerForCreateDto ServerForCreateDto
 
 // NewServerForCreateDto instantiates a new ServerForCreateDto object
 // This constructor will assign default values to properties that have it defined,
@@ -674,6 +672,38 @@ func (o *ServerForCreateDto) SetUseLocalDisk(v bool) {
 	o.UseLocalDisk = &v
 }
 
+// GetCskJoinToken returns the CskJoinToken field value if set, zero value otherwise.
+func (o *ServerForCreateDto) GetCskJoinToken() bool {
+	if o == nil || IsNil(o.CskJoinToken) {
+		var ret bool
+		return ret
+	}
+	return *o.CskJoinToken
+}
+
+// GetCskJoinTokenOk returns a tuple with the CskJoinToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServerForCreateDto) GetCskJoinTokenOk() (*bool, bool) {
+	if o == nil || IsNil(o.CskJoinToken) {
+		return nil, false
+	}
+	return o.CskJoinToken, true
+}
+
+// HasCskJoinToken returns a boolean if a field has been set.
+func (o *ServerForCreateDto) HasCskJoinToken() bool {
+	if o != nil && !IsNil(o.CskJoinToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetCskJoinToken gets a reference to the given bool and assigns it to the CskJoinToken field.
+func (o *ServerForCreateDto) SetCskJoinToken(v bool) {
+	o.CskJoinToken = &v
+}
+
 func (o ServerForCreateDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -735,49 +765,10 @@ func (o ServerForCreateDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseLocalDisk) {
 		toSerialize["useLocalDisk"] = o.UseLocalDisk
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
+	if !IsNil(o.CskJoinToken) {
+		toSerialize["cskJoinToken"] = o.CskJoinToken
 	}
-
 	return toSerialize, nil
-}
-
-func (o *ServerForCreateDto) UnmarshalJSON(data []byte) (err error) {
-	varServerForCreateDto := _ServerForCreateDto{}
-
-	err = json.Unmarshal(data, &varServerForCreateDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ServerForCreateDto(varServerForCreateDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "role")
-		delete(additionalProperties, "projectId")
-		delete(additionalProperties, "diskSize")
-		delete(additionalProperties, "flavor")
-		delete(additionalProperties, "count")
-		delete(additionalProperties, "spotPrice")
-		delete(additionalProperties, "spotInstance")
-		delete(additionalProperties, "wasmEnabled")
-		delete(additionalProperties, "autoscalingGroup")
-		delete(additionalProperties, "availabilityZone")
-		delete(additionalProperties, "proxmoxExtraDiskSize")
-		delete(additionalProperties, "proxmoxRole")
-		delete(additionalProperties, "hypervisor")
-		delete(additionalProperties, "kubernetesNodeLabels")
-		delete(additionalProperties, "replicaCount")
-		delete(additionalProperties, "useLocalDisk")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableServerForCreateDto struct {

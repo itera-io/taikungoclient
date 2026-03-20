@@ -200,7 +200,10 @@ func (a *OpenshiftAPIService) OpenshiftCreateExecute(r ApiOpenshiftCreateRequest
 type ApiOpenshiftListRequest struct {
 	ctx context.Context
 	ApiService *OpenshiftAPIService
+	limit *int32
+	offset *int32
 	organizationId *int32
+	accountId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
@@ -208,8 +211,23 @@ type ApiOpenshiftListRequest struct {
 	id *int32
 }
 
+func (r ApiOpenshiftListRequest) Limit(limit int32) ApiOpenshiftListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiOpenshiftListRequest) Offset(offset int32) ApiOpenshiftListRequest {
+	r.offset = &offset
+	return r
+}
+
 func (r ApiOpenshiftListRequest) OrganizationId(organizationId int32) ApiOpenshiftListRequest {
 	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiOpenshiftListRequest) AccountId(accountId int32) ApiOpenshiftListRequest {
+	r.accountId = &accountId
 	return r
 }
 
@@ -276,8 +294,17 @@ func (a *OpenshiftAPIService) OpenshiftListExecute(r ApiOpenshiftListRequest) (*
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	}
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
+	}
+	if r.accountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
 	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")

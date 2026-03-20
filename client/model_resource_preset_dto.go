@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -26,7 +27,6 @@ type ResourcePresetDto struct {
 	Ram RamLimitsDto `json:"ram"`
 	EphemeralStorage EphemeralStorageLimitsDto `json:"ephemeralStorage"`
 	WorkloadResources WorkloadResourceLimitsDto `json:"workloadResources"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _ResourcePresetDto ResourcePresetDto
@@ -190,11 +190,6 @@ func (o ResourcePresetDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["ram"] = o.Ram
 	toSerialize["ephemeralStorage"] = o.EphemeralStorage
 	toSerialize["workloadResources"] = o.WorkloadResources
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -226,24 +221,15 @@ func (o *ResourcePresetDto) UnmarshalJSON(data []byte) (err error) {
 
 	varResourcePresetDto := _ResourcePresetDto{}
 
-	err = json.Unmarshal(data, &varResourcePresetDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varResourcePresetDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ResourcePresetDto(varResourcePresetDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "cpu")
-		delete(additionalProperties, "ram")
-		delete(additionalProperties, "ephemeralStorage")
-		delete(additionalProperties, "workloadResources")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

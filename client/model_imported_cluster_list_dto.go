@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -44,7 +45,6 @@ type ImportedClusterListDto struct {
 	CloudType CloudType `json:"cloudType"`
 	Status ProjectStatus `json:"status"`
 	Health ProjectHealth `json:"health"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _ImportedClusterListDto ImportedClusterListDto
@@ -678,11 +678,6 @@ func (o ImportedClusterListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["cloudType"] = o.CloudType
 	toSerialize["status"] = o.Status
 	toSerialize["health"] = o.Health
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -732,42 +727,15 @@ func (o *ImportedClusterListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varImportedClusterListDto := _ImportedClusterListDto{}
 
-	err = json.Unmarshal(data, &varImportedClusterListDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varImportedClusterListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ImportedClusterListDto(varImportedClusterListDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "isVirtualCluster")
-		delete(additionalProperties, "isLocked")
-		delete(additionalProperties, "hasKubeConfigFile")
-		delete(additionalProperties, "isMaintenanceModeEnabled")
-		delete(additionalProperties, "organizationName")
-		delete(additionalProperties, "organizationId")
-		delete(additionalProperties, "kubernetesVersion")
-		delete(additionalProperties, "createdAt")
-		delete(additionalProperties, "createdBy")
-		delete(additionalProperties, "lastModified")
-		delete(additionalProperties, "lastModifiedBy")
-		delete(additionalProperties, "alertsCount")
-		delete(additionalProperties, "expiredAt")
-		delete(additionalProperties, "deleteOnExpiration")
-		delete(additionalProperties, "wasmEnabled")
-		delete(additionalProperties, "alertingProfileId")
-		delete(additionalProperties, "alertingProfileName")
-		delete(additionalProperties, "accessIp")
-		delete(additionalProperties, "cloudType")
-		delete(additionalProperties, "status")
-		delete(additionalProperties, "health")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

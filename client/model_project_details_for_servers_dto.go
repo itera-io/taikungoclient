@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -91,7 +92,9 @@ type ProjectDetailsForServersDto struct {
 	ProxmoxStorage ProxmoxStorage `json:"proxmoxStorage"`
 	IsDrsEnabled bool `json:"isDrsEnabled"`
 	MaxSpotPrice NullableFloat64 `json:"maxSpotPrice"`
-	AdditionalProperties map[string]interface{}
+	VpcMode *VpcMode `json:"vpcMode,omitempty"`
+	CloudSubnets []CloudSubnetDetailsDto `json:"cloudSubnets,omitempty"`
+	PrivateOnly NullableBool `json:"privateOnly,omitempty"`
 }
 
 type _ProjectDetailsForServersDto ProjectDetailsForServersDto
@@ -1887,6 +1890,113 @@ func (o *ProjectDetailsForServersDto) SetMaxSpotPrice(v float64) {
 	o.MaxSpotPrice.Set(&v)
 }
 
+// GetVpcMode returns the VpcMode field value if set, zero value otherwise.
+func (o *ProjectDetailsForServersDto) GetVpcMode() VpcMode {
+	if o == nil || IsNil(o.VpcMode) {
+		var ret VpcMode
+		return ret
+	}
+	return *o.VpcMode
+}
+
+// GetVpcModeOk returns a tuple with the VpcMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectDetailsForServersDto) GetVpcModeOk() (*VpcMode, bool) {
+	if o == nil || IsNil(o.VpcMode) {
+		return nil, false
+	}
+	return o.VpcMode, true
+}
+
+// HasVpcMode returns a boolean if a field has been set.
+func (o *ProjectDetailsForServersDto) HasVpcMode() bool {
+	if o != nil && !IsNil(o.VpcMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetVpcMode gets a reference to the given VpcMode and assigns it to the VpcMode field.
+func (o *ProjectDetailsForServersDto) SetVpcMode(v VpcMode) {
+	o.VpcMode = &v
+}
+
+// GetCloudSubnets returns the CloudSubnets field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProjectDetailsForServersDto) GetCloudSubnets() []CloudSubnetDetailsDto {
+	if o == nil {
+		var ret []CloudSubnetDetailsDto
+		return ret
+	}
+	return o.CloudSubnets
+}
+
+// GetCloudSubnetsOk returns a tuple with the CloudSubnets field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectDetailsForServersDto) GetCloudSubnetsOk() ([]CloudSubnetDetailsDto, bool) {
+	if o == nil || IsNil(o.CloudSubnets) {
+		return nil, false
+	}
+	return o.CloudSubnets, true
+}
+
+// HasCloudSubnets returns a boolean if a field has been set.
+func (o *ProjectDetailsForServersDto) HasCloudSubnets() bool {
+	if o != nil && !IsNil(o.CloudSubnets) {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudSubnets gets a reference to the given []CloudSubnetDetailsDto and assigns it to the CloudSubnets field.
+func (o *ProjectDetailsForServersDto) SetCloudSubnets(v []CloudSubnetDetailsDto) {
+	o.CloudSubnets = v
+}
+
+// GetPrivateOnly returns the PrivateOnly field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProjectDetailsForServersDto) GetPrivateOnly() bool {
+	if o == nil || IsNil(o.PrivateOnly.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.PrivateOnly.Get()
+}
+
+// GetPrivateOnlyOk returns a tuple with the PrivateOnly field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectDetailsForServersDto) GetPrivateOnlyOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PrivateOnly.Get(), o.PrivateOnly.IsSet()
+}
+
+// HasPrivateOnly returns a boolean if a field has been set.
+func (o *ProjectDetailsForServersDto) HasPrivateOnly() bool {
+	if o != nil && o.PrivateOnly.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateOnly gets a reference to the given NullableBool and assigns it to the PrivateOnly field.
+func (o *ProjectDetailsForServersDto) SetPrivateOnly(v bool) {
+	o.PrivateOnly.Set(&v)
+}
+// SetPrivateOnlyNil sets the value for PrivateOnly to be an explicit nil
+func (o *ProjectDetailsForServersDto) SetPrivateOnlyNil() {
+	o.PrivateOnly.Set(nil)
+}
+
+// UnsetPrivateOnly ensures that no value is present for PrivateOnly, not even an explicit nil
+func (o *ProjectDetailsForServersDto) UnsetPrivateOnly() {
+	o.PrivateOnly.Unset()
+}
+
 func (o ProjectDetailsForServersDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1967,11 +2077,15 @@ func (o ProjectDetailsForServersDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["proxmoxStorage"] = o.ProxmoxStorage
 	toSerialize["isDrsEnabled"] = o.IsDrsEnabled
 	toSerialize["maxSpotPrice"] = o.MaxSpotPrice.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
+	if !IsNil(o.VpcMode) {
+		toSerialize["vpcMode"] = o.VpcMode
 	}
-
+	if o.CloudSubnets != nil {
+		toSerialize["cloudSubnets"] = o.CloudSubnets
+	}
+	if o.PrivateOnly.IsSet() {
+		toSerialize["privateOnly"] = o.PrivateOnly.Get()
+	}
 	return toSerialize, nil
 }
 
@@ -2068,89 +2182,15 @@ func (o *ProjectDetailsForServersDto) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectDetailsForServersDto := _ProjectDetailsForServersDto{}
 
-	err = json.Unmarshal(data, &varProjectDetailsForServersDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varProjectDetailsForServersDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectDetailsForServersDto(varProjectDetailsForServersDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "alertsCount")
-		delete(additionalProperties, "worker")
-		delete(additionalProperties, "bastion")
-		delete(additionalProperties, "status")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "accessIp")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "masterReady")
-		delete(additionalProperties, "cloudType")
-		delete(additionalProperties, "cloudName")
-		delete(additionalProperties, "cloudId")
-		delete(additionalProperties, "quotaId")
-		delete(additionalProperties, "organizationName")
-		delete(additionalProperties, "organizationId")
-		delete(additionalProperties, "kubernetesVersion")
-		delete(additionalProperties, "isBackupEnabled")
-		delete(additionalProperties, "aiEnabled")
-		delete(additionalProperties, "isLocked")
-		delete(additionalProperties, "isAutoUpgrade")
-		delete(additionalProperties, "isMonitoringEnabled")
-		delete(additionalProperties, "isOpaEnabled")
-		delete(additionalProperties, "hasKubeConfigFile")
-		delete(additionalProperties, "hasSelectedFlavors")
-		delete(additionalProperties, "isMaintenanceModeEnabled")
-		delete(additionalProperties, "isProjectMaintenanceModeEnabled")
-		delete(additionalProperties, "isDeprecated")
-		delete(additionalProperties, "cpuLimit")
-		delete(additionalProperties, "ramLimit")
-		delete(additionalProperties, "diskSizeLimit")
-		delete(additionalProperties, "usedCpu")
-		delete(additionalProperties, "usedRam")
-		delete(additionalProperties, "usedDiskSize")
-		delete(additionalProperties, "vmCpuLimit")
-		delete(additionalProperties, "vmRamLimit")
-		delete(additionalProperties, "vmVolumeSizeLimit")
-		delete(additionalProperties, "vmUsedCpu")
-		delete(additionalProperties, "vmUsedRam")
-		delete(additionalProperties, "vmUsedVolumeSize")
-		delete(additionalProperties, "accessProfileName")
-		delete(additionalProperties, "accessProfileId")
-		delete(additionalProperties, "kubernetesProfileName")
-		delete(additionalProperties, "kubernetesProfileId")
-		delete(additionalProperties, "alertingProfileName")
-		delete(additionalProperties, "health")
-		delete(additionalProperties, "alertingProfileId")
-		delete(additionalProperties, "s3CredentialId")
-		delete(additionalProperties, "aiCredentialId")
-		delete(additionalProperties, "expiredAt")
-		delete(additionalProperties, "certificationExpiredAt")
-		delete(additionalProperties, "opaProfileId")
-		delete(additionalProperties, "opaProfileName")
-		delete(additionalProperties, "allowFullSpotKubernetes")
-		delete(additionalProperties, "allowSpotWorkers")
-		delete(additionalProperties, "allowSpotVMs")
-		delete(additionalProperties, "totalHourlyCost")
-		delete(additionalProperties, "autoscalingGroupName")
-		delete(additionalProperties, "minSize")
-		delete(additionalProperties, "maxSize")
-		delete(additionalProperties, "diskSize")
-		delete(additionalProperties, "flavor")
-		delete(additionalProperties, "spotEnabled")
-		delete(additionalProperties, "isAutoscalingEnabled")
-		delete(additionalProperties, "isAutoscalingSpotEnabled")
-		delete(additionalProperties, "hasNfsServer")
-		delete(additionalProperties, "wasmEnabled")
-		delete(additionalProperties, "availabilityZones")
-		delete(additionalProperties, "hypervisors")
-		delete(additionalProperties, "proxmoxStorage")
-		delete(additionalProperties, "isDrsEnabled")
-		delete(additionalProperties, "maxSpotPrice")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -31,7 +32,6 @@ type KubernetesQuotaListDto struct {
 	SumOfRamRequestsUsage float64 `json:"sumOfRamRequestsUsage"`
 	PodsCapacity NullableInt32 `json:"podsCapacity"`
 	PodsTotalCount int32 `json:"podsTotalCount"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _KubernetesQuotaListDto KubernetesQuotaListDto
@@ -333,11 +333,6 @@ func (o KubernetesQuotaListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["sumOfRamRequestsUsage"] = o.SumOfRamRequestsUsage
 	toSerialize["podsCapacity"] = o.PodsCapacity.Get()
 	toSerialize["podsTotalCount"] = o.PodsTotalCount
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -374,29 +369,15 @@ func (o *KubernetesQuotaListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varKubernetesQuotaListDto := _KubernetesQuotaListDto{}
 
-	err = json.Unmarshal(data, &varKubernetesQuotaListDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varKubernetesQuotaListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubernetesQuotaListDto(varKubernetesQuotaListDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "sumOfCpu")
-		delete(additionalProperties, "sumOfCpuUsage")
-		delete(additionalProperties, "sumOfCpuRequests")
-		delete(additionalProperties, "sumOfCpuRequestsUsage")
-		delete(additionalProperties, "sumOfRamInGb")
-		delete(additionalProperties, "sumOfRamUsage")
-		delete(additionalProperties, "sumOfRamRequestsInGb")
-		delete(additionalProperties, "sumOfRamRequestsUsage")
-		delete(additionalProperties, "podsCapacity")
-		delete(additionalProperties, "podsTotalCount")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

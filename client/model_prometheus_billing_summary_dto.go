@@ -14,6 +14,7 @@ package taikuncore
 import (
 	"encoding/json"
 	"time"
+	"bytes"
 	"fmt"
 )
 
@@ -30,7 +31,6 @@ type PrometheusBillingSummaryDto struct {
 	CreatedBy NullableString `json:"createdBy"`
 	LastModified NullableString `json:"lastModified"`
 	LastModifiedBy NullableString `json:"lastModifiedBy"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _PrometheusBillingSummaryDto PrometheusBillingSummaryDto
@@ -278,11 +278,6 @@ func (o PrometheusBillingSummaryDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["createdBy"] = o.CreatedBy.Get()
 	toSerialize["lastModified"] = o.LastModified.Get()
 	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -317,27 +312,15 @@ func (o *PrometheusBillingSummaryDto) UnmarshalJSON(data []byte) (err error) {
 
 	varPrometheusBillingSummaryDto := _PrometheusBillingSummaryDto{}
 
-	err = json.Unmarshal(data, &varPrometheusBillingSummaryDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPrometheusBillingSummaryDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PrometheusBillingSummaryDto(varPrometheusBillingSummaryDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "price")
-		delete(additionalProperties, "startDate")
-		delete(additionalProperties, "endDate")
-		delete(additionalProperties, "prometheusRuleId")
-		delete(additionalProperties, "ruleName")
-		delete(additionalProperties, "createdBy")
-		delete(additionalProperties, "lastModified")
-		delete(additionalProperties, "lastModifiedBy")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

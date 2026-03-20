@@ -22,10 +22,7 @@ var _ MappedNullable = &UpdateProjectAppCommand{}
 type UpdateProjectAppCommand struct {
 	ProjectAppId *int32 `json:"projectAppId,omitempty"`
 	Status NullableString `json:"status,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _UpdateProjectAppCommand UpdateProjectAppCommand
 
 // NewUpdateProjectAppCommand instantiates a new UpdateProjectAppCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -134,34 +131,7 @@ func (o UpdateProjectAppCommand) ToMap() (map[string]interface{}, error) {
 	if o.Status.IsSet() {
 		toSerialize["status"] = o.Status.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *UpdateProjectAppCommand) UnmarshalJSON(data []byte) (err error) {
-	varUpdateProjectAppCommand := _UpdateProjectAppCommand{}
-
-	err = json.Unmarshal(data, &varUpdateProjectAppCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = UpdateProjectAppCommand(varUpdateProjectAppCommand)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "projectAppId")
-		delete(additionalProperties, "status")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableUpdateProjectAppCommand struct {

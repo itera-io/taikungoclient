@@ -39,10 +39,8 @@ type CreateOpenstackCloudCommand struct {
 	ManilaStorageType NullableString `json:"manilaStorageType,omitempty"`
 	IsAdmin *bool `json:"isAdmin,omitempty"`
 	SkipTlsFlag *bool `json:"skipTlsFlag,omitempty"`
-	AdditionalProperties map[string]interface{}
+	LbProvider *LbProvider `json:"lbProvider,omitempty"`
 }
-
-type _CreateOpenstackCloudCommand CreateOpenstackCloudCommand
 
 // NewCreateOpenstackCloudCommand instantiates a new CreateOpenstackCloudCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -809,6 +807,38 @@ func (o *CreateOpenstackCloudCommand) SetSkipTlsFlag(v bool) {
 	o.SkipTlsFlag = &v
 }
 
+// GetLbProvider returns the LbProvider field value if set, zero value otherwise.
+func (o *CreateOpenstackCloudCommand) GetLbProvider() LbProvider {
+	if o == nil || IsNil(o.LbProvider) {
+		var ret LbProvider
+		return ret
+	}
+	return *o.LbProvider
+}
+
+// GetLbProviderOk returns a tuple with the LbProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateOpenstackCloudCommand) GetLbProviderOk() (*LbProvider, bool) {
+	if o == nil || IsNil(o.LbProvider) {
+		return nil, false
+	}
+	return o.LbProvider, true
+}
+
+// HasLbProvider returns a boolean if a field has been set.
+func (o *CreateOpenstackCloudCommand) HasLbProvider() bool {
+	if o != nil && !IsNil(o.LbProvider) {
+		return true
+	}
+
+	return false
+}
+
+// SetLbProvider gets a reference to the given LbProvider and assigns it to the LbProvider field.
+func (o *CreateOpenstackCloudCommand) SetLbProvider(v LbProvider) {
+	o.LbProvider = &v
+}
+
 func (o CreateOpenstackCloudCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -876,51 +906,10 @@ func (o CreateOpenstackCloudCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SkipTlsFlag) {
 		toSerialize["skipTlsFlag"] = o.SkipTlsFlag
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
+	if !IsNil(o.LbProvider) {
+		toSerialize["lbProvider"] = o.LbProvider
 	}
-
 	return toSerialize, nil
-}
-
-func (o *CreateOpenstackCloudCommand) UnmarshalJSON(data []byte) (err error) {
-	varCreateOpenstackCloudCommand := _CreateOpenstackCloudCommand{}
-
-	err = json.Unmarshal(data, &varCreateOpenstackCloudCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CreateOpenstackCloudCommand(varCreateOpenstackCloudCommand)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "openStackUser")
-		delete(additionalProperties, "openStackPassword")
-		delete(additionalProperties, "openStackUrl")
-		delete(additionalProperties, "openStackProject")
-		delete(additionalProperties, "openStackPublicNetwork")
-		delete(additionalProperties, "openStackAvailabilityZone")
-		delete(additionalProperties, "openStackDomain")
-		delete(additionalProperties, "openStackRegion")
-		delete(additionalProperties, "openStackContinent")
-		delete(additionalProperties, "openStackVolumeType")
-		delete(additionalProperties, "openStackImportNetwork")
-		delete(additionalProperties, "openStackInternalSubnetId")
-		delete(additionalProperties, "organizationId")
-		delete(additionalProperties, "applicationCredEnabled")
-		delete(additionalProperties, "manilaEnabled")
-		delete(additionalProperties, "manilaStorageType")
-		delete(additionalProperties, "isAdmin")
-		delete(additionalProperties, "skipTlsFlag")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCreateOpenstackCloudCommand struct {

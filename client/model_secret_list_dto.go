@@ -24,10 +24,7 @@ type SecretListDto struct {
 	Namespace NullableString `json:"namespace,omitempty"`
 	Type NullableString `json:"type,omitempty"`
 	CreatedAt NullableString `json:"createdAt,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _SecretListDto SecretListDto
 
 // NewSecretListDto instantiates a new SecretListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -236,36 +233,7 @@ func (o SecretListDto) ToMap() (map[string]interface{}, error) {
 	if o.CreatedAt.IsSet() {
 		toSerialize["createdAt"] = o.CreatedAt.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *SecretListDto) UnmarshalJSON(data []byte) (err error) {
-	varSecretListDto := _SecretListDto{}
-
-	err = json.Unmarshal(data, &varSecretListDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SecretListDto(varSecretListDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "namespace")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "createdAt")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableSecretListDto struct {

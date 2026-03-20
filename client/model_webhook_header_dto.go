@@ -23,10 +23,7 @@ type WebhookHeaderDto struct {
 	Id *int32 `json:"id,omitempty"`
 	Key NullableString `json:"key,omitempty"`
 	Value NullableString `json:"value,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _WebhookHeaderDto WebhookHeaderDto
 
 // NewWebhookHeaderDto instantiates a new WebhookHeaderDto object
 // This constructor will assign default values to properties that have it defined,
@@ -180,35 +177,7 @@ func (o WebhookHeaderDto) ToMap() (map[string]interface{}, error) {
 	if o.Value.IsSet() {
 		toSerialize["value"] = o.Value.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *WebhookHeaderDto) UnmarshalJSON(data []byte) (err error) {
-	varWebhookHeaderDto := _WebhookHeaderDto{}
-
-	err = json.Unmarshal(data, &varWebhookHeaderDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = WebhookHeaderDto(varWebhookHeaderDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "key")
-		delete(additionalProperties, "value")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableWebhookHeaderDto struct {

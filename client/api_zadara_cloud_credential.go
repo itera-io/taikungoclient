@@ -216,6 +216,7 @@ type ApiZadaraListRequest struct {
 	search *string
 	searchId *string
 	id *int32
+	accountId *int32
 	limit *int32
 	offset *int32
 }
@@ -247,6 +248,11 @@ func (r ApiZadaraListRequest) SearchId(searchId string) ApiZadaraListRequest {
 
 func (r ApiZadaraListRequest) Id(id int32) ApiZadaraListRequest {
 	r.id = &id
+	return r
+}
+
+func (r ApiZadaraListRequest) AccountId(accountId int32) ApiZadaraListRequest {
+	r.accountId = &accountId
 	return r
 }
 
@@ -315,6 +321,9 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraListExecute(r ApiZadaraListReque
 	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
+	}
+	if r.accountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
 	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")

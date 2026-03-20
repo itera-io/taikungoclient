@@ -22,10 +22,7 @@ var _ MappedNullable = &ListForOrganizationEditDto{}
 type ListForOrganizationEditDto struct {
 	Id *int32 `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _ListForOrganizationEditDto ListForOrganizationEditDto
 
 // NewListForOrganizationEditDto instantiates a new ListForOrganizationEditDto object
 // This constructor will assign default values to properties that have it defined,
@@ -134,34 +131,7 @@ func (o ListForOrganizationEditDto) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ListForOrganizationEditDto) UnmarshalJSON(data []byte) (err error) {
-	varListForOrganizationEditDto := _ListForOrganizationEditDto{}
-
-	err = json.Unmarshal(data, &varListForOrganizationEditDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ListForOrganizationEditDto(varListForOrganizationEditDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableListForOrganizationEditDto struct {

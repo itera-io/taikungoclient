@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -26,7 +27,6 @@ type ProjectAppParamDto struct {
 	IsEditableWhenInstalling bool `json:"isEditableWhenInstalling"`
 	IsEditableAfterInstallation bool `json:"isEditableAfterInstallation"`
 	IsMandatory bool `json:"isMandatory"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _ProjectAppParamDto ProjectAppParamDto
@@ -192,11 +192,6 @@ func (o ProjectAppParamDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["isEditableWhenInstalling"] = o.IsEditableWhenInstalling
 	toSerialize["isEditableAfterInstallation"] = o.IsEditableAfterInstallation
 	toSerialize["isMandatory"] = o.IsMandatory
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -228,24 +223,15 @@ func (o *ProjectAppParamDto) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectAppParamDto := _ProjectAppParamDto{}
 
-	err = json.Unmarshal(data, &varProjectAppParamDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varProjectAppParamDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectAppParamDto(varProjectAppParamDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "key")
-		delete(additionalProperties, "value")
-		delete(additionalProperties, "isEditableWhenInstalling")
-		delete(additionalProperties, "isEditableAfterInstallation")
-		delete(additionalProperties, "isMandatory")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

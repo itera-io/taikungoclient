@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -29,7 +30,6 @@ type AiCredentialsListDto struct {
 	OrganizationName NullableString `json:"organizationName"`
 	Projects []CommonDropdownDto `json:"projects"`
 	IsDefault bool `json:"isDefault"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _AiCredentialsListDto AiCredentialsListDto
@@ -281,11 +281,6 @@ func (o AiCredentialsListDto) ToMap() (map[string]interface{}, error) {
 		toSerialize["projects"] = o.Projects
 	}
 	toSerialize["isDefault"] = o.IsDefault
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -320,27 +315,15 @@ func (o *AiCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varAiCredentialsListDto := _AiCredentialsListDto{}
 
-	err = json.Unmarshal(data, &varAiCredentialsListDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAiCredentialsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AiCredentialsListDto(varAiCredentialsListDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "url")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "organizationId")
-		delete(additionalProperties, "organizationName")
-		delete(additionalProperties, "projects")
-		delete(additionalProperties, "isDefault")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -36,7 +37,6 @@ type AlertingProfilesListDto struct {
 	LastModifiedBy NullableString `json:"lastModifiedBy"`
 	Reminder AlertingReminder `json:"reminder"`
 	CreatedAt string `json:"createdAt"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _AlertingProfilesListDto AlertingProfilesListDto
@@ -472,11 +472,6 @@ func (o AlertingProfilesListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
 	toSerialize["reminder"] = o.Reminder
 	toSerialize["createdAt"] = o.CreatedAt
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -518,34 +513,15 @@ func (o *AlertingProfilesListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varAlertingProfilesListDto := _AlertingProfilesListDto{}
 
-	err = json.Unmarshal(data, &varAlertingProfilesListDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAlertingProfilesListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AlertingProfilesListDto(varAlertingProfilesListDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "organizationId")
-		delete(additionalProperties, "organizationName")
-		delete(additionalProperties, "slackConfigurationId")
-		delete(additionalProperties, "slackConfigurationName")
-		delete(additionalProperties, "isLocked")
-		delete(additionalProperties, "emails")
-		delete(additionalProperties, "webhooks")
-		delete(additionalProperties, "projects")
-		delete(additionalProperties, "createdBy")
-		delete(additionalProperties, "lastModified")
-		delete(additionalProperties, "lastModifiedBy")
-		delete(additionalProperties, "reminder")
-		delete(additionalProperties, "createdAt")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

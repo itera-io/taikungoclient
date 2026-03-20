@@ -30,10 +30,7 @@ type AwsFlavorListDto struct {
 	LinuxSpotPrice NullableString `json:"linuxSpotPrice,omitempty"`
 	Zones []string `json:"zones,omitempty"`
 	HasGpuSupport *bool `json:"hasGpuSupport,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _AwsFlavorListDto AwsFlavorListDto
 
 // NewAwsFlavorListDto instantiates a new AwsFlavorListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -464,42 +461,7 @@ func (o AwsFlavorListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HasGpuSupport) {
 		toSerialize["hasGpuSupport"] = o.HasGpuSupport
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *AwsFlavorListDto) UnmarshalJSON(data []byte) (err error) {
-	varAwsFlavorListDto := _AwsFlavorListDto{}
-
-	err = json.Unmarshal(data, &varAwsFlavorListDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AwsFlavorListDto(varAwsFlavorListDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "ram")
-		delete(additionalProperties, "cpu")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "linuxPrice")
-		delete(additionalProperties, "windowsPrice")
-		delete(additionalProperties, "windowsSpotPrice")
-		delete(additionalProperties, "linuxSpotPrice")
-		delete(additionalProperties, "zones")
-		delete(additionalProperties, "hasGpuSupport")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAwsFlavorListDto struct {

@@ -14,6 +14,7 @@ package taikuncore
 import (
 	"encoding/json"
 	"time"
+	"bytes"
 	"fmt"
 )
 
@@ -27,7 +28,6 @@ type CDeleteBackupRequestDto struct {
 	BackupName string `json:"backupName"`
 	Namespace string `json:"namespace"`
 	Phase NullableString `json:"phase"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _CDeleteBackupRequestDto CDeleteBackupRequestDto
@@ -193,11 +193,6 @@ func (o CDeleteBackupRequestDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["backupName"] = o.BackupName
 	toSerialize["namespace"] = o.Namespace
 	toSerialize["phase"] = o.Phase.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -229,24 +224,15 @@ func (o *CDeleteBackupRequestDto) UnmarshalJSON(data []byte) (err error) {
 
 	varCDeleteBackupRequestDto := _CDeleteBackupRequestDto{}
 
-	err = json.Unmarshal(data, &varCDeleteBackupRequestDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCDeleteBackupRequestDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CDeleteBackupRequestDto(varCDeleteBackupRequestDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "metadataName")
-		delete(additionalProperties, "createdAt")
-		delete(additionalProperties, "backupName")
-		delete(additionalProperties, "namespace")
-		delete(additionalProperties, "phase")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

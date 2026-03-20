@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -22,9 +23,8 @@ var _ MappedNullable = &CreateGroupOrganizationDto{}
 // CreateGroupOrganizationDto struct for CreateGroupOrganizationDto
 type CreateGroupOrganizationDto struct {
 	Id int32 `json:"id"`
-	Role string `json:"role"`
-	Privilege NullableString `json:"privilege,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Role AccessLevelRoles `json:"role"`
+	Projects []int32 `json:"projects,omitempty"`
 }
 
 type _CreateGroupOrganizationDto CreateGroupOrganizationDto
@@ -33,7 +33,7 @@ type _CreateGroupOrganizationDto CreateGroupOrganizationDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateGroupOrganizationDto(id int32, role string) *CreateGroupOrganizationDto {
+func NewCreateGroupOrganizationDto(id int32, role AccessLevelRoles) *CreateGroupOrganizationDto {
 	this := CreateGroupOrganizationDto{}
 	this.Id = id
 	this.Role = role
@@ -73,9 +73,9 @@ func (o *CreateGroupOrganizationDto) SetId(v int32) {
 }
 
 // GetRole returns the Role field value
-func (o *CreateGroupOrganizationDto) GetRole() string {
+func (o *CreateGroupOrganizationDto) GetRole() AccessLevelRoles {
 	if o == nil {
-		var ret string
+		var ret AccessLevelRoles
 		return ret
 	}
 
@@ -84,7 +84,7 @@ func (o *CreateGroupOrganizationDto) GetRole() string {
 
 // GetRoleOk returns a tuple with the Role field value
 // and a boolean to check if the value has been set.
-func (o *CreateGroupOrganizationDto) GetRoleOk() (*string, bool) {
+func (o *CreateGroupOrganizationDto) GetRoleOk() (*AccessLevelRoles, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -92,50 +92,41 @@ func (o *CreateGroupOrganizationDto) GetRoleOk() (*string, bool) {
 }
 
 // SetRole sets field value
-func (o *CreateGroupOrganizationDto) SetRole(v string) {
+func (o *CreateGroupOrganizationDto) SetRole(v AccessLevelRoles) {
 	o.Role = v
 }
 
-// GetPrivilege returns the Privilege field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateGroupOrganizationDto) GetPrivilege() string {
-	if o == nil || IsNil(o.Privilege.Get()) {
-		var ret string
+// GetProjects returns the Projects field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateGroupOrganizationDto) GetProjects() []int32 {
+	if o == nil {
+		var ret []int32
 		return ret
 	}
-	return *o.Privilege.Get()
+	return o.Projects
 }
 
-// GetPrivilegeOk returns a tuple with the Privilege field value if set, nil otherwise
+// GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateGroupOrganizationDto) GetPrivilegeOk() (*string, bool) {
-	if o == nil {
+func (o *CreateGroupOrganizationDto) GetProjectsOk() ([]int32, bool) {
+	if o == nil || IsNil(o.Projects) {
 		return nil, false
 	}
-	return o.Privilege.Get(), o.Privilege.IsSet()
+	return o.Projects, true
 }
 
-// HasPrivilege returns a boolean if a field has been set.
-func (o *CreateGroupOrganizationDto) HasPrivilege() bool {
-	if o != nil && o.Privilege.IsSet() {
+// HasProjects returns a boolean if a field has been set.
+func (o *CreateGroupOrganizationDto) HasProjects() bool {
+	if o != nil && !IsNil(o.Projects) {
 		return true
 	}
 
 	return false
 }
 
-// SetPrivilege gets a reference to the given NullableString and assigns it to the Privilege field.
-func (o *CreateGroupOrganizationDto) SetPrivilege(v string) {
-	o.Privilege.Set(&v)
-}
-// SetPrivilegeNil sets the value for Privilege to be an explicit nil
-func (o *CreateGroupOrganizationDto) SetPrivilegeNil() {
-	o.Privilege.Set(nil)
-}
-
-// UnsetPrivilege ensures that no value is present for Privilege, not even an explicit nil
-func (o *CreateGroupOrganizationDto) UnsetPrivilege() {
-	o.Privilege.Unset()
+// SetProjects gets a reference to the given []int32 and assigns it to the Projects field.
+func (o *CreateGroupOrganizationDto) SetProjects(v []int32) {
+	o.Projects = v
 }
 
 func (o CreateGroupOrganizationDto) MarshalJSON() ([]byte, error) {
@@ -150,14 +141,9 @@ func (o CreateGroupOrganizationDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["role"] = o.Role
-	if o.Privilege.IsSet() {
-		toSerialize["privilege"] = o.Privilege.Get()
+	if o.Projects != nil {
+		toSerialize["projects"] = o.Projects
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -186,22 +172,15 @@ func (o *CreateGroupOrganizationDto) UnmarshalJSON(data []byte) (err error) {
 
 	varCreateGroupOrganizationDto := _CreateGroupOrganizationDto{}
 
-	err = json.Unmarshal(data, &varCreateGroupOrganizationDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCreateGroupOrganizationDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CreateGroupOrganizationDto(varCreateGroupOrganizationDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "role")
-		delete(additionalProperties, "privilege")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

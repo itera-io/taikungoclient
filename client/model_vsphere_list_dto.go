@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -45,7 +46,6 @@ type VsphereListDto struct {
 	VmTemplateName string `json:"vmTemplateName"`
 	VsphereNetworks []VsphereNetworkListDto `json:"vsphereNetworks"`
 	SkipTlsFlag bool `json:"skipTlsFlag"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _VsphereListDto VsphereListDto
@@ -707,11 +707,6 @@ func (o VsphereListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["vmTemplateName"] = o.VmTemplateName
 	toSerialize["vsphereNetworks"] = o.VsphereNetworks
 	toSerialize["skipTlsFlag"] = o.SkipTlsFlag
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -762,43 +757,15 @@ func (o *VsphereListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varVsphereListDto := _VsphereListDto{}
 
-	err = json.Unmarshal(data, &varVsphereListDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varVsphereListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = VsphereListDto(varVsphereListDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "projectCount")
-		delete(additionalProperties, "isLocked")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "projects")
-		delete(additionalProperties, "createdBy")
-		delete(additionalProperties, "createdAt")
-		delete(additionalProperties, "lastModified")
-		delete(additionalProperties, "lastModifiedBy")
-		delete(additionalProperties, "isDefault")
-		delete(additionalProperties, "drsEnabled")
-		delete(additionalProperties, "resourcePool")
-		delete(additionalProperties, "organizationId")
-		delete(additionalProperties, "organizationName")
-		delete(additionalProperties, "continentName")
-		delete(additionalProperties, "hypervisors")
-		delete(additionalProperties, "username")
-		delete(additionalProperties, "url")
-		delete(additionalProperties, "datacenterId")
-		delete(additionalProperties, "datacenterName")
-		delete(additionalProperties, "datastore")
-		delete(additionalProperties, "vmTemplateName")
-		delete(additionalProperties, "vsphereNetworks")
-		delete(additionalProperties, "skipTlsFlag")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

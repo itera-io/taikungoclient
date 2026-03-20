@@ -41,7 +41,7 @@ func (r ApiImagesAwsCommonImagesRequest) Execute() ([]CommonStringBasedDropdownD
 }
 
 /*
-ImagesAwsCommonImages Commonly used aws images
+ImagesAwsCommonImages Commonly used aws images (v1)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param cloudId
@@ -2744,14 +2744,24 @@ func (a *ImagesAPIService) ImagesProxmoxImagesExecute(r ApiImagesProxmoxImagesRe
 type ApiImagesSelectedImagesForProjectRequest struct {
 	ctx context.Context
 	ApiService *ImagesAPIService
+	limit *int32
+	offset *int32
 	projectId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	filterBy *string
 	organizationId *int32
-	offset *int32
-	limit *int32
+}
+
+func (r ApiImagesSelectedImagesForProjectRequest) Limit(limit int32) ApiImagesSelectedImagesForProjectRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiImagesSelectedImagesForProjectRequest) Offset(offset int32) ApiImagesSelectedImagesForProjectRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiImagesSelectedImagesForProjectRequest) ProjectId(projectId int32) ApiImagesSelectedImagesForProjectRequest {
@@ -2781,16 +2791,6 @@ func (r ApiImagesSelectedImagesForProjectRequest) FilterBy(filterBy string) ApiI
 
 func (r ApiImagesSelectedImagesForProjectRequest) OrganizationId(organizationId int32) ApiImagesSelectedImagesForProjectRequest {
 	r.organizationId = &organizationId
-	return r
-}
-
-func (r ApiImagesSelectedImagesForProjectRequest) Offset(offset int32) ApiImagesSelectedImagesForProjectRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiImagesSelectedImagesForProjectRequest) Limit(limit int32) ApiImagesSelectedImagesForProjectRequest {
-	r.limit = &limit
 	return r
 }
 
@@ -2832,6 +2832,12 @@ func (a *ImagesAPIService) ImagesSelectedImagesForProjectExecute(r ApiImagesSele
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	}
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
@@ -2849,12 +2855,6 @@ func (a *ImagesAPIService) ImagesSelectedImagesForProjectExecute(r ApiImagesSele
 	}
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

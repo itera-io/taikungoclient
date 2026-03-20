@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -23,7 +24,6 @@ var _ MappedNullable = &KubernetesNodeLabelsDto{}
 type KubernetesNodeLabelsDto struct {
 	Key NullableString `json:"key"`
 	Value NullableString `json:"value"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _KubernetesNodeLabelsDto KubernetesNodeLabelsDto
@@ -111,11 +111,6 @@ func (o KubernetesNodeLabelsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["key"] = o.Key.Get()
 	toSerialize["value"] = o.Value.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -144,21 +139,15 @@ func (o *KubernetesNodeLabelsDto) UnmarshalJSON(data []byte) (err error) {
 
 	varKubernetesNodeLabelsDto := _KubernetesNodeLabelsDto{}
 
-	err = json.Unmarshal(data, &varKubernetesNodeLabelsDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varKubernetesNodeLabelsDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubernetesNodeLabelsDto(varKubernetesNodeLabelsDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "key")
-		delete(additionalProperties, "value")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -24,7 +25,6 @@ type DeleteKubernetesResourceCommand struct {
 	ProjectId int32 `json:"projectId"`
 	Kind EKubernetesResource `json:"kind"`
 	Data []KubernetesActionRequest `json:"data"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _DeleteKubernetesResourceCommand DeleteKubernetesResourceCommand
@@ -134,11 +134,6 @@ func (o DeleteKubernetesResourceCommand) ToMap() (map[string]interface{}, error)
 	toSerialize["projectId"] = o.ProjectId
 	toSerialize["kind"] = o.Kind
 	toSerialize["data"] = o.Data
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -168,22 +163,15 @@ func (o *DeleteKubernetesResourceCommand) UnmarshalJSON(data []byte) (err error)
 
 	varDeleteKubernetesResourceCommand := _DeleteKubernetesResourceCommand{}
 
-	err = json.Unmarshal(data, &varDeleteKubernetesResourceCommand)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDeleteKubernetesResourceCommand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeleteKubernetesResourceCommand(varDeleteKubernetesResourceCommand)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "projectId")
-		delete(additionalProperties, "kind")
-		delete(additionalProperties, "data")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

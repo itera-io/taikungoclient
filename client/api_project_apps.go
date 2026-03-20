@@ -917,14 +917,24 @@ func (a *ProjectAppsAPIService) ProjectappInstallExecute(r ApiProjectappInstallR
 type ApiProjectappListRequest struct {
 	ctx context.Context
 	ApiService *ProjectAppsAPIService
+	offset *int32
+	limit *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	id *int32
 	projectId *int32
 	organizationId *int32
-	offset *int32
-	limit *int32
+}
+
+func (r ApiProjectappListRequest) Offset(offset int32) ApiProjectappListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiProjectappListRequest) Limit(limit int32) ApiProjectappListRequest {
+	r.limit = &limit
+	return r
 }
 
 func (r ApiProjectappListRequest) SortBy(sortBy string) ApiProjectappListRequest {
@@ -954,16 +964,6 @@ func (r ApiProjectappListRequest) ProjectId(projectId int32) ApiProjectappListRe
 
 func (r ApiProjectappListRequest) OrganizationId(organizationId int32) ApiProjectappListRequest {
 	r.organizationId = &organizationId
-	return r
-}
-
-func (r ApiProjectappListRequest) Offset(offset int32) ApiProjectappListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiProjectappListRequest) Limit(limit int32) ApiProjectappListRequest {
-	r.limit = &limit
 	return r
 }
 
@@ -1005,6 +1005,12 @@ func (a *ProjectAppsAPIService) ProjectappListExecute(r ApiProjectappListRequest
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
+	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
@@ -1022,12 +1028,6 @@ func (a *ProjectAppsAPIService) ProjectappListExecute(r ApiProjectappListRequest
 	}
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1519,7 +1519,7 @@ func (r ApiProjectappUpdateRequest) UpdateProjectAppCommand(updateProjectAppComm
 	return r
 }
 
-func (r ApiProjectappUpdateRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiProjectappUpdateRequest) Execute() (*TaikunResult, *http.Response, error) {
 	return r.ApiService.ProjectappUpdateExecute(r)
 }
 
@@ -1537,13 +1537,13 @@ func (a *ProjectAppsAPIService) ProjectappUpdate(ctx context.Context) ApiProject
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *ProjectAppsAPIService) ProjectappUpdateExecute(r ApiProjectappUpdateRequest) (map[string]interface{}, *http.Response, error) {
+//  @return TaikunResult
+func (a *ProjectAppsAPIService) ProjectappUpdateExecute(r ApiProjectappUpdateRequest) (*TaikunResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *TaikunResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAppsAPIService.ProjectappUpdate")

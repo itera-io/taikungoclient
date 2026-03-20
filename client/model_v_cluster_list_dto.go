@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -54,7 +55,6 @@ type VClusterListDto struct {
 	KubeInfoButton ButtonStatusDto `json:"kubeInfoButton"`
 	SetExpirationDateButton ButtonStatusDto `json:"setExpirationDateButton"`
 	ResetStatusButton ButtonStatusDto `json:"resetStatusButton"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _VClusterListDto VClusterListDto
@@ -984,11 +984,6 @@ func (o VClusterListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["kubeInfoButton"] = o.KubeInfoButton
 	toSerialize["setExpirationDateButton"] = o.SetExpirationDateButton
 	toSerialize["resetStatusButton"] = o.ResetStatusButton
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -1044,52 +1039,15 @@ func (o *VClusterListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varVClusterListDto := _VClusterListDto{}
 
-	err = json.Unmarshal(data, &varVClusterListDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varVClusterListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = VClusterListDto(varVClusterListDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "isVirtualCluster")
-		delete(additionalProperties, "isLocked")
-		delete(additionalProperties, "hasKubeConfigFile")
-		delete(additionalProperties, "isMaintenanceModeEnabled")
-		delete(additionalProperties, "organizationName")
-		delete(additionalProperties, "organizationId")
-		delete(additionalProperties, "kubernetesVersion")
-		delete(additionalProperties, "createdAt")
-		delete(additionalProperties, "createdBy")
-		delete(additionalProperties, "lastModified")
-		delete(additionalProperties, "lastModifiedBy")
-		delete(additionalProperties, "alertsCount")
-		delete(additionalProperties, "expiredAt")
-		delete(additionalProperties, "deleteOnExpiration")
-		delete(additionalProperties, "wasmEnabled")
-		delete(additionalProperties, "alertingProfileId")
-		delete(additionalProperties, "alertingProfileName")
-		delete(additionalProperties, "accessIp")
-		delete(additionalProperties, "cloudType")
-		delete(additionalProperties, "status")
-		delete(additionalProperties, "health")
-		delete(additionalProperties, "workloadResources")
-		delete(additionalProperties, "cpuLimits")
-		delete(additionalProperties, "ramLimits")
-		delete(additionalProperties, "ephemeralStorageLimits")
-		delete(additionalProperties, "lockButton")
-		delete(additionalProperties, "unlockButton")
-		delete(additionalProperties, "deleteButton")
-		delete(additionalProperties, "kubeInfoButton")
-		delete(additionalProperties, "setExpirationDateButton")
-		delete(additionalProperties, "resetStatusButton")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

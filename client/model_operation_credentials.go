@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -23,7 +24,6 @@ var _ MappedNullable = &OperationCredentials{}
 type OperationCredentials struct {
 	Data []OperationCredentialsListDto `json:"data"`
 	TotalCount int32 `json:"totalCount"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _OperationCredentials OperationCredentials
@@ -111,11 +111,6 @@ func (o OperationCredentials) ToMap() (map[string]interface{}, error) {
 		toSerialize["data"] = o.Data
 	}
 	toSerialize["totalCount"] = o.TotalCount
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -144,21 +139,15 @@ func (o *OperationCredentials) UnmarshalJSON(data []byte) (err error) {
 
 	varOperationCredentials := _OperationCredentials{}
 
-	err = json.Unmarshal(data, &varOperationCredentials)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOperationCredentials)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OperationCredentials(varOperationCredentials)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "data")
-		delete(additionalProperties, "totalCount")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

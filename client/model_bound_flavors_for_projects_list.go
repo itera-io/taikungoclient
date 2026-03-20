@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -22,12 +23,11 @@ var _ MappedNullable = &BoundFlavorsForProjectsList{}
 // BoundFlavorsForProjectsList struct for BoundFlavorsForProjectsList
 type BoundFlavorsForProjectsList struct {
 	Data []BoundFlavorsForProjectsListDto `json:"data"`
-	Offset int32 `json:"offset"`
 	Limit int32 `json:"limit"`
 	HasMore bool `json:"hasMore"`
+	TotalCount int64 `json:"totalCount"`
+	Offset int32 `json:"offset"`
 	NextOffset NullableInt32 `json:"nextOffset,omitempty"`
-	TotalCount int32 `json:"totalCount"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _BoundFlavorsForProjectsList BoundFlavorsForProjectsList
@@ -36,13 +36,13 @@ type _BoundFlavorsForProjectsList BoundFlavorsForProjectsList
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBoundFlavorsForProjectsList(data []BoundFlavorsForProjectsListDto, offset int32, limit int32, hasMore bool, totalCount int32) *BoundFlavorsForProjectsList {
+func NewBoundFlavorsForProjectsList(data []BoundFlavorsForProjectsListDto, limit int32, hasMore bool, totalCount int64, offset int32) *BoundFlavorsForProjectsList {
 	this := BoundFlavorsForProjectsList{}
 	this.Data = data
-	this.Offset = offset
 	this.Limit = limit
 	this.HasMore = hasMore
 	this.TotalCount = totalCount
+	this.Offset = offset
 	return &this
 }
 
@@ -78,30 +78,6 @@ func (o *BoundFlavorsForProjectsList) GetDataOk() ([]BoundFlavorsForProjectsList
 // SetData sets field value
 func (o *BoundFlavorsForProjectsList) SetData(v []BoundFlavorsForProjectsListDto) {
 	o.Data = v
-}
-
-// GetOffset returns the Offset field value
-func (o *BoundFlavorsForProjectsList) GetOffset() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Offset
-}
-
-// GetOffsetOk returns a tuple with the Offset field value
-// and a boolean to check if the value has been set.
-func (o *BoundFlavorsForProjectsList) GetOffsetOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Offset, true
-}
-
-// SetOffset sets field value
-func (o *BoundFlavorsForProjectsList) SetOffset(v int32) {
-	o.Offset = v
 }
 
 // GetLimit returns the Limit field value
@@ -152,6 +128,54 @@ func (o *BoundFlavorsForProjectsList) SetHasMore(v bool) {
 	o.HasMore = v
 }
 
+// GetTotalCount returns the TotalCount field value
+func (o *BoundFlavorsForProjectsList) GetTotalCount() int64 {
+	if o == nil {
+		var ret int64
+		return ret
+	}
+
+	return o.TotalCount
+}
+
+// GetTotalCountOk returns a tuple with the TotalCount field value
+// and a boolean to check if the value has been set.
+func (o *BoundFlavorsForProjectsList) GetTotalCountOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.TotalCount, true
+}
+
+// SetTotalCount sets field value
+func (o *BoundFlavorsForProjectsList) SetTotalCount(v int64) {
+	o.TotalCount = v
+}
+
+// GetOffset returns the Offset field value
+func (o *BoundFlavorsForProjectsList) GetOffset() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Offset
+}
+
+// GetOffsetOk returns a tuple with the Offset field value
+// and a boolean to check if the value has been set.
+func (o *BoundFlavorsForProjectsList) GetOffsetOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Offset, true
+}
+
+// SetOffset sets field value
+func (o *BoundFlavorsForProjectsList) SetOffset(v int32) {
+	o.Offset = v
+}
+
 // GetNextOffset returns the NextOffset field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BoundFlavorsForProjectsList) GetNextOffset() int32 {
 	if o == nil || IsNil(o.NextOffset.Get()) {
@@ -194,30 +218,6 @@ func (o *BoundFlavorsForProjectsList) UnsetNextOffset() {
 	o.NextOffset.Unset()
 }
 
-// GetTotalCount returns the TotalCount field value
-func (o *BoundFlavorsForProjectsList) GetTotalCount() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.TotalCount
-}
-
-// GetTotalCountOk returns a tuple with the TotalCount field value
-// and a boolean to check if the value has been set.
-func (o *BoundFlavorsForProjectsList) GetTotalCountOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.TotalCount, true
-}
-
-// SetTotalCount sets field value
-func (o *BoundFlavorsForProjectsList) SetTotalCount(v int32) {
-	o.TotalCount = v
-}
-
 func (o BoundFlavorsForProjectsList) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -231,18 +231,13 @@ func (o BoundFlavorsForProjectsList) ToMap() (map[string]interface{}, error) {
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
 	}
-	toSerialize["offset"] = o.Offset
 	toSerialize["limit"] = o.Limit
 	toSerialize["hasMore"] = o.HasMore
+	toSerialize["totalCount"] = o.TotalCount
+	toSerialize["offset"] = o.Offset
 	if o.NextOffset.IsSet() {
 		toSerialize["nextOffset"] = o.NextOffset.Get()
 	}
-	toSerialize["totalCount"] = o.TotalCount
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -252,10 +247,10 @@ func (o *BoundFlavorsForProjectsList) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"data",
-		"offset",
 		"limit",
 		"hasMore",
 		"totalCount",
+		"offset",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -274,25 +269,15 @@ func (o *BoundFlavorsForProjectsList) UnmarshalJSON(data []byte) (err error) {
 
 	varBoundFlavorsForProjectsList := _BoundFlavorsForProjectsList{}
 
-	err = json.Unmarshal(data, &varBoundFlavorsForProjectsList)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varBoundFlavorsForProjectsList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = BoundFlavorsForProjectsList(varBoundFlavorsForProjectsList)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "data")
-		delete(additionalProperties, "offset")
-		delete(additionalProperties, "limit")
-		delete(additionalProperties, "hasMore")
-		delete(additionalProperties, "nextOffset")
-		delete(additionalProperties, "totalCount")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

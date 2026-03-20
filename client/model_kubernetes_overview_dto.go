@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -29,7 +30,6 @@ type KubernetesOverviewDto struct {
 	UnhealthyNodes int32 `json:"unhealthyNodes"`
 	AlertsCount int32 `json:"alertsCount"`
 	KubernetesHealth NullableString `json:"kubernetesHealth"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _KubernetesOverviewDto KubernetesOverviewDto
@@ -271,11 +271,6 @@ func (o KubernetesOverviewDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["unhealthyNodes"] = o.UnhealthyNodes
 	toSerialize["alertsCount"] = o.AlertsCount
 	toSerialize["kubernetesHealth"] = o.KubernetesHealth.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -310,27 +305,15 @@ func (o *KubernetesOverviewDto) UnmarshalJSON(data []byte) (err error) {
 
 	varKubernetesOverviewDto := _KubernetesOverviewDto{}
 
-	err = json.Unmarshal(data, &varKubernetesOverviewDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varKubernetesOverviewDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubernetesOverviewDto(varKubernetesOverviewDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "projectId")
-		delete(additionalProperties, "projectName")
-		delete(additionalProperties, "healthyPods")
-		delete(additionalProperties, "unhealthyPods")
-		delete(additionalProperties, "healthyNodes")
-		delete(additionalProperties, "unhealthyNodes")
-		delete(additionalProperties, "alertsCount")
-		delete(additionalProperties, "kubernetesHealth")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

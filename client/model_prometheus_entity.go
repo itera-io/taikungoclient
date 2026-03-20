@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -24,7 +25,6 @@ type PrometheusEntity struct {
 	PrometheusRuleId int32 `json:"prometheusRuleId"`
 	PrometheusRuleName NullableString `json:"prometheusRuleName"`
 	RuleDiscountRate NullableFloat64 `json:"ruleDiscountRate"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _PrometheusEntity PrometheusEntity
@@ -138,11 +138,6 @@ func (o PrometheusEntity) ToMap() (map[string]interface{}, error) {
 	toSerialize["prometheusRuleId"] = o.PrometheusRuleId
 	toSerialize["prometheusRuleName"] = o.PrometheusRuleName.Get()
 	toSerialize["ruleDiscountRate"] = o.RuleDiscountRate.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -172,22 +167,15 @@ func (o *PrometheusEntity) UnmarshalJSON(data []byte) (err error) {
 
 	varPrometheusEntity := _PrometheusEntity{}
 
-	err = json.Unmarshal(data, &varPrometheusEntity)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPrometheusEntity)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PrometheusEntity(varPrometheusEntity)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "prometheusRuleId")
-		delete(additionalProperties, "prometheusRuleName")
-		delete(additionalProperties, "ruleDiscountRate")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

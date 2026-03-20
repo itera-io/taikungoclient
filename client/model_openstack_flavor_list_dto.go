@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -26,7 +27,6 @@ type OpenstackFlavorListDto struct {
 	Name string `json:"name"`
 	Description NullableString `json:"description"`
 	HasGpuSupport *bool `json:"hasGpuSupport,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _OpenstackFlavorListDto OpenstackFlavorListDto
@@ -199,11 +199,6 @@ func (o OpenstackFlavorListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HasGpuSupport) {
 		toSerialize["hasGpuSupport"] = o.HasGpuSupport
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -234,24 +229,15 @@ func (o *OpenstackFlavorListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varOpenstackFlavorListDto := _OpenstackFlavorListDto{}
 
-	err = json.Unmarshal(data, &varOpenstackFlavorListDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOpenstackFlavorListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OpenstackFlavorListDto(varOpenstackFlavorListDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "ram")
-		delete(additionalProperties, "cpu")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "hasGpuSupport")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

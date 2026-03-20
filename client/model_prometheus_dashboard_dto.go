@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -27,7 +28,6 @@ type PrometheusDashboardDto struct {
 	ExpressionEncoded NullableString `json:"expressionEncoded"`
 	Description NullableString `json:"description"`
 	IsReadonly bool `json:"isReadonly"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _PrometheusDashboardDto PrometheusDashboardDto
@@ -223,11 +223,6 @@ func (o PrometheusDashboardDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["expressionEncoded"] = o.ExpressionEncoded.Get()
 	toSerialize["description"] = o.Description.Get()
 	toSerialize["isReadonly"] = o.IsReadonly
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -260,25 +255,15 @@ func (o *PrometheusDashboardDto) UnmarshalJSON(data []byte) (err error) {
 
 	varPrometheusDashboardDto := _PrometheusDashboardDto{}
 
-	err = json.Unmarshal(data, &varPrometheusDashboardDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPrometheusDashboardDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PrometheusDashboardDto(varPrometheusDashboardDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "expressionDecoded")
-		delete(additionalProperties, "expressionEncoded")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "isReadonly")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

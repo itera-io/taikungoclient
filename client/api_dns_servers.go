@@ -561,6 +561,7 @@ type ApiDnsserversListRequest struct {
 	search *string
 }
 
+// Search related data
 func (r ApiDnsserversListRequest) Search(search string) ApiDnsserversListRequest {
 	r.search = &search
 	return r
@@ -574,7 +575,7 @@ func (r ApiDnsserversListRequest) Execute() ([]DnsServersListDto, *http.Response
 DnsserversList List dns servers by profile id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accessProfileId
+ @param accessProfileId Id should be positive integer
  @return ApiDnsserversListRequest
 */
 func (a *DnsServersAPIService) DnsserversList(ctx context.Context, accessProfileId int32) ApiDnsserversListRequest {

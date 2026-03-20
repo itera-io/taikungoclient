@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -23,7 +24,6 @@ var _ MappedNullable = &GenericKubernetesList{}
 type GenericKubernetesList struct {
 	Data []GenericKubernetesListDto `json:"data"`
 	TotalCount int32 `json:"totalCount"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _GenericKubernetesList GenericKubernetesList
@@ -111,11 +111,6 @@ func (o GenericKubernetesList) ToMap() (map[string]interface{}, error) {
 		toSerialize["data"] = o.Data
 	}
 	toSerialize["totalCount"] = o.TotalCount
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -144,21 +139,15 @@ func (o *GenericKubernetesList) UnmarshalJSON(data []byte) (err error) {
 
 	varGenericKubernetesList := _GenericKubernetesList{}
 
-	err = json.Unmarshal(data, &varGenericKubernetesList)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varGenericKubernetesList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GenericKubernetesList(varGenericKubernetesList)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "data")
-		delete(additionalProperties, "totalCount")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

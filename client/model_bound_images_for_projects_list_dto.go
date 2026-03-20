@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -30,7 +31,6 @@ type BoundImagesForProjectsListDto struct {
 	CloudId NullableInt32 `json:"cloudId"`
 	IsWindows bool `json:"isWindows"`
 	CloudType CloudType `json:"cloudType"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _BoundImagesForProjectsListDto BoundImagesForProjectsListDto
@@ -308,11 +308,6 @@ func (o BoundImagesForProjectsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["cloudId"] = o.CloudId.Get()
 	toSerialize["isWindows"] = o.IsWindows
 	toSerialize["cloudType"] = o.CloudType
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -348,28 +343,15 @@ func (o *BoundImagesForProjectsListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varBoundImagesForProjectsListDto := _BoundImagesForProjectsListDto{}
 
-	err = json.Unmarshal(data, &varBoundImagesForProjectsListDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varBoundImagesForProjectsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = BoundImagesForProjectsListDto(varBoundImagesForProjectsListDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "projectId")
-		delete(additionalProperties, "projectName")
-		delete(additionalProperties, "size")
-		delete(additionalProperties, "imageId")
-		delete(additionalProperties, "cloudId")
-		delete(additionalProperties, "isWindows")
-		delete(additionalProperties, "cloudType")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

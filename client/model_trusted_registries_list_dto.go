@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -24,7 +25,6 @@ type TrustedRegistriesListDto struct {
 	Id int32 `json:"id"`
 	Registry NullableString `json:"registry"`
 	AccessProfileName NullableString `json:"accessProfileName"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _TrustedRegistriesListDto TrustedRegistriesListDto
@@ -138,11 +138,6 @@ func (o TrustedRegistriesListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["registry"] = o.Registry.Get()
 	toSerialize["accessProfileName"] = o.AccessProfileName.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -172,22 +167,15 @@ func (o *TrustedRegistriesListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varTrustedRegistriesListDto := _TrustedRegistriesListDto{}
 
-	err = json.Unmarshal(data, &varTrustedRegistriesListDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTrustedRegistriesListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TrustedRegistriesListDto(varTrustedRegistriesListDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "registry")
-		delete(additionalProperties, "accessProfileName")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

@@ -22,10 +22,7 @@ var _ MappedNullable = &UpdateOrganizationSubscriptionCommand{}
 type UpdateOrganizationSubscriptionCommand struct {
 	SubscriptionId *int32 `json:"subscriptionId,omitempty"`
 	IsYearly *bool `json:"isYearly,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _UpdateOrganizationSubscriptionCommand UpdateOrganizationSubscriptionCommand
 
 // NewUpdateOrganizationSubscriptionCommand instantiates a new UpdateOrganizationSubscriptionCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -124,34 +121,7 @@ func (o UpdateOrganizationSubscriptionCommand) ToMap() (map[string]interface{}, 
 	if !IsNil(o.IsYearly) {
 		toSerialize["isYearly"] = o.IsYearly
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *UpdateOrganizationSubscriptionCommand) UnmarshalJSON(data []byte) (err error) {
-	varUpdateOrganizationSubscriptionCommand := _UpdateOrganizationSubscriptionCommand{}
-
-	err = json.Unmarshal(data, &varUpdateOrganizationSubscriptionCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = UpdateOrganizationSubscriptionCommand(varUpdateOrganizationSubscriptionCommand)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "subscriptionId")
-		delete(additionalProperties, "isYearly")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableUpdateOrganizationSubscriptionCommand struct {

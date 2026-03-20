@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -29,7 +30,6 @@ type ProjectQuotaListDto struct {
 	VmVolumeSize float64 `json:"vmVolumeSize"`
 	ProjectId int32 `json:"projectId"`
 	ProjectName NullableString `json:"projectName"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _ProjectQuotaListDto ProjectQuotaListDto
@@ -271,11 +271,6 @@ func (o ProjectQuotaListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["vmVolumeSize"] = o.VmVolumeSize
 	toSerialize["projectId"] = o.ProjectId
 	toSerialize["projectName"] = o.ProjectName.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -310,27 +305,15 @@ func (o *ProjectQuotaListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectQuotaListDto := _ProjectQuotaListDto{}
 
-	err = json.Unmarshal(data, &varProjectQuotaListDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varProjectQuotaListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectQuotaListDto(varProjectQuotaListDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "serverCpu")
-		delete(additionalProperties, "serverRam")
-		delete(additionalProperties, "serverDiskSize")
-		delete(additionalProperties, "vmCpu")
-		delete(additionalProperties, "vmRam")
-		delete(additionalProperties, "vmVolumeSize")
-		delete(additionalProperties, "projectId")
-		delete(additionalProperties, "projectName")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

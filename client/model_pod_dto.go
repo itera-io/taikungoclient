@@ -14,6 +14,7 @@ package taikuncore
 import (
 	"encoding/json"
 	"time"
+	"bytes"
 	"fmt"
 )
 
@@ -29,7 +30,6 @@ type PodDto struct {
 	Age NullableTime `json:"age"`
 	Node NullableString `json:"node"`
 	Phase NullableString `json:"phase"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _PodDto PodDto
@@ -251,11 +251,6 @@ func (o PodDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["age"] = o.Age.Get()
 	toSerialize["node"] = o.Node.Get()
 	toSerialize["phase"] = o.Phase.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -289,26 +284,15 @@ func (o *PodDto) UnmarshalJSON(data []byte) (err error) {
 
 	varPodDto := _PodDto{}
 
-	err = json.Unmarshal(data, &varPodDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPodDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PodDto(varPodDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "metadataName")
-		delete(additionalProperties, "status")
-		delete(additionalProperties, "restartCount")
-		delete(additionalProperties, "namespace")
-		delete(additionalProperties, "age")
-		delete(additionalProperties, "node")
-		delete(additionalProperties, "phase")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -23,7 +24,6 @@ var _ MappedNullable = &KubernetesActionRequest{}
 type KubernetesActionRequest struct {
 	Name string `json:"name"`
 	Namespace NullableString `json:"namespace,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _KubernetesActionRequest KubernetesActionRequest
@@ -126,11 +126,6 @@ func (o KubernetesActionRequest) ToMap() (map[string]interface{}, error) {
 	if o.Namespace.IsSet() {
 		toSerialize["namespace"] = o.Namespace.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -158,21 +153,15 @@ func (o *KubernetesActionRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varKubernetesActionRequest := _KubernetesActionRequest{}
 
-	err = json.Unmarshal(data, &varKubernetesActionRequest)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varKubernetesActionRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubernetesActionRequest(varKubernetesActionRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "namespace")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

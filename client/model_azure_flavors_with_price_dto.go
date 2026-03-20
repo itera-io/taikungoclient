@@ -30,10 +30,7 @@ type AzureFlavorsWithPriceDto struct {
 	Description interface{} `json:"description,omitempty"`
 	MaxDataDiskCount NullableFloat64 `json:"maxDataDiskCount,omitempty"`
 	HasGpuSupport *bool `json:"hasGpuSupport,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _AzureFlavorsWithPriceDto AzureFlavorsWithPriceDto
 
 // NewAzureFlavorsWithPriceDto instantiates a new AzureFlavorsWithPriceDto object
 // This constructor will assign default values to properties that have it defined,
@@ -473,42 +470,7 @@ func (o AzureFlavorsWithPriceDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HasGpuSupport) {
 		toSerialize["hasGpuSupport"] = o.HasGpuSupport
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *AzureFlavorsWithPriceDto) UnmarshalJSON(data []byte) (err error) {
-	varAzureFlavorsWithPriceDto := _AzureFlavorsWithPriceDto{}
-
-	err = json.Unmarshal(data, &varAzureFlavorsWithPriceDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AzureFlavorsWithPriceDto(varAzureFlavorsWithPriceDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "windowsPrice")
-		delete(additionalProperties, "linuxPrice")
-		delete(additionalProperties, "windowsSpotPrice")
-		delete(additionalProperties, "linuxSpotPrice")
-		delete(additionalProperties, "cpu")
-		delete(additionalProperties, "ram")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "maxDataDiskCount")
-		delete(additionalProperties, "hasGpuSupport")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAzureFlavorsWithPriceDto struct {

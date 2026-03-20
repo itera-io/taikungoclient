@@ -22,10 +22,7 @@ var _ MappedNullable = &AlertingProfilesLockManagerCommand{}
 type AlertingProfilesLockManagerCommand struct {
 	Id *int32 `json:"id,omitempty"`
 	Mode NullableString `json:"mode,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _AlertingProfilesLockManagerCommand AlertingProfilesLockManagerCommand
 
 // NewAlertingProfilesLockManagerCommand instantiates a new AlertingProfilesLockManagerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -134,34 +131,7 @@ func (o AlertingProfilesLockManagerCommand) ToMap() (map[string]interface{}, err
 	if o.Mode.IsSet() {
 		toSerialize["mode"] = o.Mode.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *AlertingProfilesLockManagerCommand) UnmarshalJSON(data []byte) (err error) {
-	varAlertingProfilesLockManagerCommand := _AlertingProfilesLockManagerCommand{}
-
-	err = json.Unmarshal(data, &varAlertingProfilesLockManagerCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AlertingProfilesLockManagerCommand(varAlertingProfilesLockManagerCommand)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "mode")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAlertingProfilesLockManagerCommand struct {

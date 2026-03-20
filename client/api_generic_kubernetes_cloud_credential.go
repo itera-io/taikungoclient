@@ -34,6 +34,7 @@ type ApiGenericKubernetesListRequest struct {
 	search *string
 	searchId *string
 	id *int32
+	accountId *int32
 }
 
 func (r ApiGenericKubernetesListRequest) Limit(limit int32) ApiGenericKubernetesListRequest {
@@ -73,6 +74,11 @@ func (r ApiGenericKubernetesListRequest) SearchId(searchId string) ApiGenericKub
 
 func (r ApiGenericKubernetesListRequest) Id(id int32) ApiGenericKubernetesListRequest {
 	r.id = &id
+	return r
+}
+
+func (r ApiGenericKubernetesListRequest) AccountId(accountId int32) ApiGenericKubernetesListRequest {
+	r.accountId = &accountId
 	return r
 }
 
@@ -137,6 +143,9 @@ func (a *GenericKubernetesCloudCredentialAPIService) GenericKubernetesListExecut
 	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
+	}
+	if r.accountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -282,7 +291,7 @@ func (r ApiGenericKubernetesUpdateRequest) UpdateGenericKubernetesCommand(update
 	return r
 }
 
-func (r ApiGenericKubernetesUpdateRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiGenericKubernetesUpdateRequest) Execute() (*TaikunResult, *http.Response, error) {
 	return r.ApiService.GenericKubernetesUpdateExecute(r)
 }
 
@@ -300,13 +309,13 @@ func (a *GenericKubernetesCloudCredentialAPIService) GenericKubernetesUpdate(ctx
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *GenericKubernetesCloudCredentialAPIService) GenericKubernetesUpdateExecute(r ApiGenericKubernetesUpdateRequest) (map[string]interface{}, *http.Response, error) {
+//  @return TaikunResult
+func (a *GenericKubernetesCloudCredentialAPIService) GenericKubernetesUpdateExecute(r ApiGenericKubernetesUpdateRequest) (*TaikunResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *TaikunResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GenericKubernetesCloudCredentialAPIService.GenericKubernetesUpdate")

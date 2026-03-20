@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -26,7 +27,6 @@ type WorkloadResourceLimitsDto struct {
 	MaxTotalPvcSize int64 `json:"maxTotalPvcSize"`
 	MaxIngresses int32 `json:"maxIngresses"`
 	MaxLoadBalancers int32 `json:"maxLoadBalancers"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _WorkloadResourceLimitsDto WorkloadResourceLimitsDto
@@ -188,11 +188,6 @@ func (o WorkloadResourceLimitsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["maxTotalPvcSize"] = o.MaxTotalPvcSize
 	toSerialize["maxIngresses"] = o.MaxIngresses
 	toSerialize["maxLoadBalancers"] = o.MaxLoadBalancers
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -224,24 +219,15 @@ func (o *WorkloadResourceLimitsDto) UnmarshalJSON(data []byte) (err error) {
 
 	varWorkloadResourceLimitsDto := _WorkloadResourceLimitsDto{}
 
-	err = json.Unmarshal(data, &varWorkloadResourceLimitsDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varWorkloadResourceLimitsDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = WorkloadResourceLimitsDto(varWorkloadResourceLimitsDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "maxPods")
-		delete(additionalProperties, "maxPvcs")
-		delete(additionalProperties, "maxTotalPvcSize")
-		delete(additionalProperties, "maxIngresses")
-		delete(additionalProperties, "maxLoadBalancers")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

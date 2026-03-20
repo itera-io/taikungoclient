@@ -35,7 +35,6 @@ type CreateProjectCommand struct {
 	AiEnabled *bool `json:"aiEnabled,omitempty"`
 	AiCredentialId NullableInt32 `json:"aiCredentialId,omitempty"`
 	Flavors []string `json:"flavors,omitempty"`
-	Users []string `json:"users,omitempty"`
 	AlertingProfileId NullableInt32 `json:"alertingProfileId,omitempty"`
 	TaikunLBFlavor NullableString `json:"taikunLBFlavor,omitempty"`
 	RouterIdStartRange NullableInt32 `json:"routerIdStartRange,omitempty"`
@@ -52,15 +51,10 @@ type CreateProjectCommand struct {
 	DiskSize *float64 `json:"diskSize,omitempty"`
 	AutoscalingFlavor NullableString `json:"autoscalingFlavor,omitempty"`
 	AutoscalingSpotEnabled *bool `json:"autoscalingSpotEnabled,omitempty"`
+	IsCskEnabled *bool `json:"isCskEnabled,omitempty"`
 	Cidr NullableString `json:"cidr,omitempty"`
 	NetMask NullableInt32 `json:"netMask,omitempty"`
-	SaveAsTemplate *bool `json:"saveAsTemplate,omitempty"`
-	TemplateName NullableString `json:"templateName,omitempty"`
-	ServerTemplates []ServerTemplateDto `json:"serverTemplates,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _CreateProjectCommand CreateProjectCommand
 
 // NewCreateProjectCommand instantiates a new CreateProjectCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -596,39 +590,6 @@ func (o *CreateProjectCommand) HasFlavors() bool {
 // SetFlavors gets a reference to the given []string and assigns it to the Flavors field.
 func (o *CreateProjectCommand) SetFlavors(v []string) {
 	o.Flavors = v
-}
-
-// GetUsers returns the Users field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateProjectCommand) GetUsers() []string {
-	if o == nil {
-		var ret []string
-		return ret
-	}
-	return o.Users
-}
-
-// GetUsersOk returns a tuple with the Users field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateProjectCommand) GetUsersOk() ([]string, bool) {
-	if o == nil || IsNil(o.Users) {
-		return nil, false
-	}
-	return o.Users, true
-}
-
-// HasUsers returns a boolean if a field has been set.
-func (o *CreateProjectCommand) HasUsers() bool {
-	if o != nil && !IsNil(o.Users) {
-		return true
-	}
-
-	return false
-}
-
-// SetUsers gets a reference to the given []string and assigns it to the Users field.
-func (o *CreateProjectCommand) SetUsers(v []string) {
-	o.Users = v
 }
 
 // GetAlertingProfileId returns the AlertingProfileId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1213,6 +1174,38 @@ func (o *CreateProjectCommand) SetAutoscalingSpotEnabled(v bool) {
 	o.AutoscalingSpotEnabled = &v
 }
 
+// GetIsCskEnabled returns the IsCskEnabled field value if set, zero value otherwise.
+func (o *CreateProjectCommand) GetIsCskEnabled() bool {
+	if o == nil || IsNil(o.IsCskEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsCskEnabled
+}
+
+// GetIsCskEnabledOk returns a tuple with the IsCskEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateProjectCommand) GetIsCskEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsCskEnabled) {
+		return nil, false
+	}
+	return o.IsCskEnabled, true
+}
+
+// HasIsCskEnabled returns a boolean if a field has been set.
+func (o *CreateProjectCommand) HasIsCskEnabled() bool {
+	if o != nil && !IsNil(o.IsCskEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsCskEnabled gets a reference to the given bool and assigns it to the IsCskEnabled field.
+func (o *CreateProjectCommand) SetIsCskEnabled(v bool) {
+	o.IsCskEnabled = &v
+}
+
 // GetCidr returns the Cidr field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateProjectCommand) GetCidr() string {
 	if o == nil || IsNil(o.Cidr.Get()) {
@@ -1297,113 +1290,6 @@ func (o *CreateProjectCommand) UnsetNetMask() {
 	o.NetMask.Unset()
 }
 
-// GetSaveAsTemplate returns the SaveAsTemplate field value if set, zero value otherwise.
-func (o *CreateProjectCommand) GetSaveAsTemplate() bool {
-	if o == nil || IsNil(o.SaveAsTemplate) {
-		var ret bool
-		return ret
-	}
-	return *o.SaveAsTemplate
-}
-
-// GetSaveAsTemplateOk returns a tuple with the SaveAsTemplate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateProjectCommand) GetSaveAsTemplateOk() (*bool, bool) {
-	if o == nil || IsNil(o.SaveAsTemplate) {
-		return nil, false
-	}
-	return o.SaveAsTemplate, true
-}
-
-// HasSaveAsTemplate returns a boolean if a field has been set.
-func (o *CreateProjectCommand) HasSaveAsTemplate() bool {
-	if o != nil && !IsNil(o.SaveAsTemplate) {
-		return true
-	}
-
-	return false
-}
-
-// SetSaveAsTemplate gets a reference to the given bool and assigns it to the SaveAsTemplate field.
-func (o *CreateProjectCommand) SetSaveAsTemplate(v bool) {
-	o.SaveAsTemplate = &v
-}
-
-// GetTemplateName returns the TemplateName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateProjectCommand) GetTemplateName() string {
-	if o == nil || IsNil(o.TemplateName.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.TemplateName.Get()
-}
-
-// GetTemplateNameOk returns a tuple with the TemplateName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateProjectCommand) GetTemplateNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.TemplateName.Get(), o.TemplateName.IsSet()
-}
-
-// HasTemplateName returns a boolean if a field has been set.
-func (o *CreateProjectCommand) HasTemplateName() bool {
-	if o != nil && o.TemplateName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetTemplateName gets a reference to the given NullableString and assigns it to the TemplateName field.
-func (o *CreateProjectCommand) SetTemplateName(v string) {
-	o.TemplateName.Set(&v)
-}
-// SetTemplateNameNil sets the value for TemplateName to be an explicit nil
-func (o *CreateProjectCommand) SetTemplateNameNil() {
-	o.TemplateName.Set(nil)
-}
-
-// UnsetTemplateName ensures that no value is present for TemplateName, not even an explicit nil
-func (o *CreateProjectCommand) UnsetTemplateName() {
-	o.TemplateName.Unset()
-}
-
-// GetServerTemplates returns the ServerTemplates field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateProjectCommand) GetServerTemplates() []ServerTemplateDto {
-	if o == nil {
-		var ret []ServerTemplateDto
-		return ret
-	}
-	return o.ServerTemplates
-}
-
-// GetServerTemplatesOk returns a tuple with the ServerTemplates field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateProjectCommand) GetServerTemplatesOk() ([]ServerTemplateDto, bool) {
-	if o == nil || IsNil(o.ServerTemplates) {
-		return nil, false
-	}
-	return o.ServerTemplates, true
-}
-
-// HasServerTemplates returns a boolean if a field has been set.
-func (o *CreateProjectCommand) HasServerTemplates() bool {
-	if o != nil && !IsNil(o.ServerTemplates) {
-		return true
-	}
-
-	return false
-}
-
-// SetServerTemplates gets a reference to the given []ServerTemplateDto and assigns it to the ServerTemplates field.
-func (o *CreateProjectCommand) SetServerTemplates(v []ServerTemplateDto) {
-	o.ServerTemplates = v
-}
-
 func (o CreateProjectCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1456,9 +1342,6 @@ func (o CreateProjectCommand) ToMap() (map[string]interface{}, error) {
 	if o.Flavors != nil {
 		toSerialize["flavors"] = o.Flavors
 	}
-	if o.Users != nil {
-		toSerialize["users"] = o.Users
-	}
 	if o.AlertingProfileId.IsSet() {
 		toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
 	}
@@ -1507,83 +1390,16 @@ func (o CreateProjectCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoscalingSpotEnabled) {
 		toSerialize["autoscalingSpotEnabled"] = o.AutoscalingSpotEnabled
 	}
+	if !IsNil(o.IsCskEnabled) {
+		toSerialize["isCskEnabled"] = o.IsCskEnabled
+	}
 	if o.Cidr.IsSet() {
 		toSerialize["cidr"] = o.Cidr.Get()
 	}
 	if o.NetMask.IsSet() {
 		toSerialize["netMask"] = o.NetMask.Get()
 	}
-	if !IsNil(o.SaveAsTemplate) {
-		toSerialize["saveAsTemplate"] = o.SaveAsTemplate
-	}
-	if o.TemplateName.IsSet() {
-		toSerialize["templateName"] = o.TemplateName.Get()
-	}
-	if o.ServerTemplates != nil {
-		toSerialize["serverTemplates"] = o.ServerTemplates
-	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *CreateProjectCommand) UnmarshalJSON(data []byte) (err error) {
-	varCreateProjectCommand := _CreateProjectCommand{}
-
-	err = json.Unmarshal(data, &varCreateProjectCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CreateProjectCommand(varCreateProjectCommand)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "kubernetesVersion")
-		delete(additionalProperties, "cloudCredentialId")
-		delete(additionalProperties, "s3CredentialId")
-		delete(additionalProperties, "accessProfileId")
-		delete(additionalProperties, "opaProfileId")
-		delete(additionalProperties, "kubernetesProfileId")
-		delete(additionalProperties, "isKubernetes")
-		delete(additionalProperties, "isAutoUpgrade")
-		delete(additionalProperties, "isBackupEnabled")
-		delete(additionalProperties, "isMonitoringEnabled")
-		delete(additionalProperties, "aiEnabled")
-		delete(additionalProperties, "aiCredentialId")
-		delete(additionalProperties, "flavors")
-		delete(additionalProperties, "users")
-		delete(additionalProperties, "alertingProfileId")
-		delete(additionalProperties, "taikunLBFlavor")
-		delete(additionalProperties, "routerIdStartRange")
-		delete(additionalProperties, "routerIdEndRange")
-		delete(additionalProperties, "expiredAt")
-		delete(additionalProperties, "deleteOnExpiration")
-		delete(additionalProperties, "allowFullSpotKubernetes")
-		delete(additionalProperties, "allowSpotWorkers")
-		delete(additionalProperties, "allowSpotVMs")
-		delete(additionalProperties, "maxSpotPrice")
-		delete(additionalProperties, "autoscalingEnabled")
-		delete(additionalProperties, "minSize")
-		delete(additionalProperties, "maxSize")
-		delete(additionalProperties, "diskSize")
-		delete(additionalProperties, "autoscalingFlavor")
-		delete(additionalProperties, "autoscalingSpotEnabled")
-		delete(additionalProperties, "cidr")
-		delete(additionalProperties, "netMask")
-		delete(additionalProperties, "saveAsTemplate")
-		delete(additionalProperties, "templateName")
-		delete(additionalProperties, "serverTemplates")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCreateProjectCommand struct {

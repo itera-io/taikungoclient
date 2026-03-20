@@ -25,10 +25,7 @@ type CloudCredentialsResponseData struct {
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
 	CloudType NullableString `json:"cloudType,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _CloudCredentialsResponseData CloudCredentialsResponseData
 
 // NewCloudCredentialsResponseData instantiates a new CloudCredentialsResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -272,37 +269,7 @@ func (o CloudCredentialsResponseData) ToMap() (map[string]interface{}, error) {
 	if o.CloudType.IsSet() {
 		toSerialize["cloudType"] = o.CloudType.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *CloudCredentialsResponseData) UnmarshalJSON(data []byte) (err error) {
-	varCloudCredentialsResponseData := _CloudCredentialsResponseData{}
-
-	err = json.Unmarshal(data, &varCloudCredentialsResponseData)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CloudCredentialsResponseData(varCloudCredentialsResponseData)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "organizationId")
-		delete(additionalProperties, "organizationName")
-		delete(additionalProperties, "cloudType")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCloudCredentialsResponseData struct {

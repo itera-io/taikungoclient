@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -31,7 +32,6 @@ type ProjectTemplateListDto struct {
 	KubernetesVersion NullableString `json:"kubernetesVersion"`
 	OrganizationName NullableString `json:"organizationName"`
 	OrganizationId NullableInt32 `json:"organizationId"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _ProjectTemplateListDto ProjectTemplateListDto
@@ -331,11 +331,6 @@ func (o ProjectTemplateListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["kubernetesVersion"] = o.KubernetesVersion.Get()
 	toSerialize["organizationName"] = o.OrganizationName.Get()
 	toSerialize["organizationId"] = o.OrganizationId.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -372,29 +367,15 @@ func (o *ProjectTemplateListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectTemplateListDto := _ProjectTemplateListDto{}
 
-	err = json.Unmarshal(data, &varProjectTemplateListDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varProjectTemplateListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectTemplateListDto(varProjectTemplateListDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "monitoringEnabled")
-		delete(additionalProperties, "backupEnabled")
-		delete(additionalProperties, "allowFullSpotKubernetes")
-		delete(additionalProperties, "allowSpotVms")
-		delete(additionalProperties, "allowSpotWorkers")
-		delete(additionalProperties, "kubernetesVersion")
-		delete(additionalProperties, "organizationName")
-		delete(additionalProperties, "organizationId")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

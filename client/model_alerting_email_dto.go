@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -22,7 +23,6 @@ var _ MappedNullable = &AlertingEmailDto{}
 // AlertingEmailDto struct for AlertingEmailDto
 type AlertingEmailDto struct {
 	Email NullableString `json:"email"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _AlertingEmailDto AlertingEmailDto
@@ -82,11 +82,6 @@ func (o AlertingEmailDto) MarshalJSON() ([]byte, error) {
 func (o AlertingEmailDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["email"] = o.Email.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -114,20 +109,15 @@ func (o *AlertingEmailDto) UnmarshalJSON(data []byte) (err error) {
 
 	varAlertingEmailDto := _AlertingEmailDto{}
 
-	err = json.Unmarshal(data, &varAlertingEmailDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAlertingEmailDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AlertingEmailDto(varAlertingEmailDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "email")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

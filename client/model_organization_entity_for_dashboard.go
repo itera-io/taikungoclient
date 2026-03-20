@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -23,8 +24,8 @@ var _ MappedNullable = &OrganizationEntityForDashboard{}
 type OrganizationEntityForDashboard struct {
 	Id int32 `json:"id"`
 	Name NullableString `json:"name"`
+	PartnerId int32 `json:"partnerId"`
 	Users int32 `json:"users"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _OrganizationEntityForDashboard OrganizationEntityForDashboard
@@ -33,10 +34,11 @@ type _OrganizationEntityForDashboard OrganizationEntityForDashboard
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationEntityForDashboard(id int32, name NullableString, users int32) *OrganizationEntityForDashboard {
+func NewOrganizationEntityForDashboard(id int32, name NullableString, partnerId int32, users int32) *OrganizationEntityForDashboard {
 	this := OrganizationEntityForDashboard{}
 	this.Id = id
 	this.Name = name
+	this.PartnerId = partnerId
 	this.Users = users
 	return &this
 }
@@ -99,6 +101,30 @@ func (o *OrganizationEntityForDashboard) SetName(v string) {
 	o.Name.Set(&v)
 }
 
+// GetPartnerId returns the PartnerId field value
+func (o *OrganizationEntityForDashboard) GetPartnerId() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.PartnerId
+}
+
+// GetPartnerIdOk returns a tuple with the PartnerId field value
+// and a boolean to check if the value has been set.
+func (o *OrganizationEntityForDashboard) GetPartnerIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PartnerId, true
+}
+
+// SetPartnerId sets field value
+func (o *OrganizationEntityForDashboard) SetPartnerId(v int32) {
+	o.PartnerId = v
+}
+
 // GetUsers returns the Users field value
 func (o *OrganizationEntityForDashboard) GetUsers() int32 {
 	if o == nil {
@@ -135,12 +161,8 @@ func (o OrganizationEntityForDashboard) ToMap() (map[string]interface{}, error) 
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name.Get()
+	toSerialize["partnerId"] = o.PartnerId
 	toSerialize["users"] = o.Users
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -151,6 +173,7 @@ func (o *OrganizationEntityForDashboard) UnmarshalJSON(data []byte) (err error) 
 	requiredProperties := []string{
 		"id",
 		"name",
+		"partnerId",
 		"users",
 	}
 
@@ -170,22 +193,15 @@ func (o *OrganizationEntityForDashboard) UnmarshalJSON(data []byte) (err error) 
 
 	varOrganizationEntityForDashboard := _OrganizationEntityForDashboard{}
 
-	err = json.Unmarshal(data, &varOrganizationEntityForDashboard)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOrganizationEntityForDashboard)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OrganizationEntityForDashboard(varOrganizationEntityForDashboard)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "users")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

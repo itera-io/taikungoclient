@@ -26,6 +26,8 @@ type ProjectQuotasAPIService service
 type ApiProjectquotasListRequest struct {
 	ctx context.Context
 	ApiService *ProjectQuotasAPIService
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
@@ -37,8 +39,17 @@ type ApiProjectquotasListRequest struct {
 	endCpu *int32
 	organizationId *int32
 	id *int32
-	offset *int32
-	limit *int32
+	accountId *int32
+}
+
+func (r ApiProjectquotasListRequest) Limit(limit int32) ApiProjectquotasListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiProjectquotasListRequest) Offset(offset int32) ApiProjectquotasListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiProjectquotasListRequest) SortBy(sortBy string) ApiProjectquotasListRequest {
@@ -96,13 +107,8 @@ func (r ApiProjectquotasListRequest) Id(id int32) ApiProjectquotasListRequest {
 	return r
 }
 
-func (r ApiProjectquotasListRequest) Offset(offset int32) ApiProjectquotasListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiProjectquotasListRequest) Limit(limit int32) ApiProjectquotasListRequest {
-	r.limit = &limit
+func (r ApiProjectquotasListRequest) AccountId(accountId int32) ApiProjectquotasListRequest {
+	r.accountId = &accountId
 	return r
 }
 
@@ -144,6 +150,12 @@ func (a *ProjectQuotasAPIService) ProjectquotasListExecute(r ApiProjectquotasLis
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
@@ -177,11 +189,8 @@ func (a *ProjectQuotasAPIService) ProjectquotasListExecute(r ApiProjectquotasLis
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
+	if r.accountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

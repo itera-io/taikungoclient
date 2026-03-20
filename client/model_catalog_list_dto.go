@@ -29,10 +29,7 @@ type CatalogListDto struct {
 	PackageIds []string `json:"packageIds,omitempty"`
 	BoundProjects []ProjectCatalogDto `json:"boundProjects,omitempty"`
 	BoundApplications []AvailablePackagesDto `json:"boundApplications,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _CatalogListDto CatalogListDto
 
 // NewCatalogListDto instantiates a new CatalogListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -399,41 +396,7 @@ func (o CatalogListDto) ToMap() (map[string]interface{}, error) {
 	if o.BoundApplications != nil {
 		toSerialize["boundApplications"] = o.BoundApplications
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *CatalogListDto) UnmarshalJSON(data []byte) (err error) {
-	varCatalogListDto := _CatalogListDto{}
-
-	err = json.Unmarshal(data, &varCatalogListDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CatalogListDto(varCatalogListDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "isLocked")
-		delete(additionalProperties, "isDefault")
-		delete(additionalProperties, "organizationId")
-		delete(additionalProperties, "packageIds")
-		delete(additionalProperties, "boundProjects")
-		delete(additionalProperties, "boundApplications")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCatalogListDto struct {

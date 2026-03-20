@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -24,7 +25,6 @@ type PrometheusBillingInfo struct {
 	Data []PrometheusBillingSummaryDto `json:"data"`
 	TotalPrice float64 `json:"totalPrice"`
 	TotalCount int32 `json:"totalCount"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _PrometheusBillingInfo PrometheusBillingInfo
@@ -138,11 +138,6 @@ func (o PrometheusBillingInfo) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["totalPrice"] = o.TotalPrice
 	toSerialize["totalCount"] = o.TotalCount
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -172,22 +167,15 @@ func (o *PrometheusBillingInfo) UnmarshalJSON(data []byte) (err error) {
 
 	varPrometheusBillingInfo := _PrometheusBillingInfo{}
 
-	err = json.Unmarshal(data, &varPrometheusBillingInfo)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPrometheusBillingInfo)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PrometheusBillingInfo(varPrometheusBillingInfo)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "data")
-		delete(additionalProperties, "totalPrice")
-		delete(additionalProperties, "totalCount")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

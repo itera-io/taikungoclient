@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -25,7 +26,6 @@ type KubesprayListDto struct {
 	Version NullableString `json:"version"`
 	KubernetesVersion NullableString `json:"kubernetesVersion"`
 	IsDeprecated bool `json:"isDeprecated"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _KubesprayListDto KubesprayListDto
@@ -165,11 +165,6 @@ func (o KubesprayListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["version"] = o.Version.Get()
 	toSerialize["kubernetesVersion"] = o.KubernetesVersion.Get()
 	toSerialize["isDeprecated"] = o.IsDeprecated
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -200,23 +195,15 @@ func (o *KubesprayListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varKubesprayListDto := _KubesprayListDto{}
 
-	err = json.Unmarshal(data, &varKubesprayListDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varKubesprayListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubesprayListDto(varKubesprayListDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "version")
-		delete(additionalProperties, "kubernetesVersion")
-		delete(additionalProperties, "isDeprecated")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

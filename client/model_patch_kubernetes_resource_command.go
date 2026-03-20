@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -25,7 +26,6 @@ type PatchKubernetesResourceCommand struct {
 	Yaml string `json:"yaml"`
 	Name string `json:"name"`
 	Namespace NullableString `json:"namespace,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _PatchKubernetesResourceCommand PatchKubernetesResourceCommand
@@ -180,11 +180,6 @@ func (o PatchKubernetesResourceCommand) ToMap() (map[string]interface{}, error) 
 	if o.Namespace.IsSet() {
 		toSerialize["namespace"] = o.Namespace.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -214,23 +209,15 @@ func (o *PatchKubernetesResourceCommand) UnmarshalJSON(data []byte) (err error) 
 
 	varPatchKubernetesResourceCommand := _PatchKubernetesResourceCommand{}
 
-	err = json.Unmarshal(data, &varPatchKubernetesResourceCommand)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPatchKubernetesResourceCommand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PatchKubernetesResourceCommand(varPatchKubernetesResourceCommand)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "projectId")
-		delete(additionalProperties, "yaml")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "namespace")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

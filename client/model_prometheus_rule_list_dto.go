@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -33,12 +34,11 @@ type PrometheusRuleListDto struct {
 	Price float64 `json:"price"`
 	BillingStartDate NullableString `json:"billingStartDate"`
 	CreatedAt NullableString `json:"createdAt"`
-	Partner PartnerEntity `json:"partner"`
+	Account AccountEntity `json:"account"`
 	OperationCredential OperationCredentialsForOrganizationEntity `json:"operationCredential"`
 	CreatedBy string `json:"createdBy"`
 	LastModified NullableString `json:"lastModified"`
 	LastModifiedBy NullableString `json:"lastModifiedBy"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _PrometheusRuleListDto PrometheusRuleListDto
@@ -47,7 +47,7 @@ type _PrometheusRuleListDto PrometheusRuleListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrometheusRuleListDto(id int32, name string, password string, userName string, url string, metricName NullableString, labels []PrometheusLabelListDto, boundOrganizations []PrometheusOrganizationDiscountDto, type_ PrometheusType, price float64, billingStartDate NullableString, createdAt NullableString, partner PartnerEntity, operationCredential OperationCredentialsForOrganizationEntity, createdBy string, lastModified NullableString, lastModifiedBy NullableString) *PrometheusRuleListDto {
+func NewPrometheusRuleListDto(id int32, name string, password string, userName string, url string, metricName NullableString, labels []PrometheusLabelListDto, boundOrganizations []PrometheusOrganizationDiscountDto, type_ PrometheusType, price float64, billingStartDate NullableString, createdAt NullableString, account AccountEntity, operationCredential OperationCredentialsForOrganizationEntity, createdBy string, lastModified NullableString, lastModifiedBy NullableString) *PrometheusRuleListDto {
 	this := PrometheusRuleListDto{}
 	this.Id = id
 	this.Name = name
@@ -61,7 +61,7 @@ func NewPrometheusRuleListDto(id int32, name string, password string, userName s
 	this.Price = price
 	this.BillingStartDate = billingStartDate
 	this.CreatedAt = createdAt
-	this.Partner = partner
+	this.Account = account
 	this.OperationCredential = operationCredential
 	this.CreatedBy = createdBy
 	this.LastModified = lastModified
@@ -375,28 +375,28 @@ func (o *PrometheusRuleListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
 
-// GetPartner returns the Partner field value
-func (o *PrometheusRuleListDto) GetPartner() PartnerEntity {
+// GetAccount returns the Account field value
+func (o *PrometheusRuleListDto) GetAccount() AccountEntity {
 	if o == nil {
-		var ret PartnerEntity
+		var ret AccountEntity
 		return ret
 	}
 
-	return o.Partner
+	return o.Account
 }
 
-// GetPartnerOk returns a tuple with the Partner field value
+// GetAccountOk returns a tuple with the Account field value
 // and a boolean to check if the value has been set.
-func (o *PrometheusRuleListDto) GetPartnerOk() (*PartnerEntity, bool) {
+func (o *PrometheusRuleListDto) GetAccountOk() (*AccountEntity, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Partner, true
+	return &o.Account, true
 }
 
-// SetPartner sets field value
-func (o *PrometheusRuleListDto) SetPartner(v PartnerEntity) {
-	o.Partner = v
+// SetAccount sets field value
+func (o *PrometheusRuleListDto) SetAccount(v AccountEntity) {
+	o.Account = v
 }
 
 // GetOperationCredential returns the OperationCredential field value
@@ -525,16 +525,11 @@ func (o PrometheusRuleListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["price"] = o.Price
 	toSerialize["billingStartDate"] = o.BillingStartDate.Get()
 	toSerialize["createdAt"] = o.CreatedAt.Get()
-	toSerialize["partner"] = o.Partner
+	toSerialize["account"] = o.Account
 	toSerialize["operationCredential"] = o.OperationCredential
 	toSerialize["createdBy"] = o.CreatedBy
 	toSerialize["lastModified"] = o.LastModified.Get()
 	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -555,7 +550,7 @@ func (o *PrometheusRuleListDto) UnmarshalJSON(data []byte) (err error) {
 		"price",
 		"billingStartDate",
 		"createdAt",
-		"partner",
+		"account",
 		"operationCredential",
 		"createdBy",
 		"lastModified",
@@ -578,36 +573,15 @@ func (o *PrometheusRuleListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varPrometheusRuleListDto := _PrometheusRuleListDto{}
 
-	err = json.Unmarshal(data, &varPrometheusRuleListDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPrometheusRuleListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PrometheusRuleListDto(varPrometheusRuleListDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "password")
-		delete(additionalProperties, "userName")
-		delete(additionalProperties, "url")
-		delete(additionalProperties, "metricName")
-		delete(additionalProperties, "labels")
-		delete(additionalProperties, "boundOrganizations")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "price")
-		delete(additionalProperties, "billingStartDate")
-		delete(additionalProperties, "createdAt")
-		delete(additionalProperties, "partner")
-		delete(additionalProperties, "operationCredential")
-		delete(additionalProperties, "createdBy")
-		delete(additionalProperties, "lastModified")
-		delete(additionalProperties, "lastModifiedBy")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

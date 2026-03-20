@@ -20,12 +20,11 @@ var _ MappedNullable = &CreateDnsServerCommand{}
 
 // CreateDnsServerCommand struct for CreateDnsServerCommand
 type CreateDnsServerCommand struct {
+	// Dns address example: 8.8.8.8
 	Address NullableString `json:"address,omitempty"`
+	// Id should be positive integer
 	AccessProfileId *int32 `json:"accessProfileId,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _CreateDnsServerCommand CreateDnsServerCommand
 
 // NewCreateDnsServerCommand instantiates a new CreateDnsServerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -134,34 +133,7 @@ func (o CreateDnsServerCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AccessProfileId) {
 		toSerialize["accessProfileId"] = o.AccessProfileId
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *CreateDnsServerCommand) UnmarshalJSON(data []byte) (err error) {
-	varCreateDnsServerCommand := _CreateDnsServerCommand{}
-
-	err = json.Unmarshal(data, &varCreateDnsServerCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CreateDnsServerCommand(varCreateDnsServerCommand)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "address")
-		delete(additionalProperties, "accessProfileId")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCreateDnsServerCommand struct {

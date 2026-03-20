@@ -219,6 +219,7 @@ type ApiOpenstackListRequest struct {
 	searchId *string
 	id *int32
 	isInfra *bool
+	accountId *int32
 }
 
 func (r ApiOpenstackListRequest) Limit(limit int32) ApiOpenstackListRequest {
@@ -263,6 +264,11 @@ func (r ApiOpenstackListRequest) Id(id int32) ApiOpenstackListRequest {
 
 func (r ApiOpenstackListRequest) IsInfra(isInfra bool) ApiOpenstackListRequest {
 	r.isInfra = &isInfra
+	return r
+}
+
+func (r ApiOpenstackListRequest) AccountId(accountId int32) ApiOpenstackListRequest {
+	r.accountId = &accountId
 	return r
 }
 
@@ -330,6 +336,9 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackListExecute(r ApiOpenstack
 	}
 	if r.isInfra != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "IsInfra", r.isInfra, "form", "")
+	}
+	if r.accountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

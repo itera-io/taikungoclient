@@ -24,10 +24,7 @@ type OpenstackVolumeQuotaDto struct {
 	UsedVolumeSize *int64 `json:"usedVolumeSize,omitempty"`
 	MaxCountVolumeSize *int64 `json:"maxCountVolumeSize,omitempty"`
 	CountVolumeSize *int64 `json:"countVolumeSize,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _OpenstackVolumeQuotaDto OpenstackVolumeQuotaDto
 
 // NewOpenstackVolumeQuotaDto instantiates a new OpenstackVolumeQuotaDto object
 // This constructor will assign default values to properties that have it defined,
@@ -196,36 +193,7 @@ func (o OpenstackVolumeQuotaDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CountVolumeSize) {
 		toSerialize["countVolumeSize"] = o.CountVolumeSize
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *OpenstackVolumeQuotaDto) UnmarshalJSON(data []byte) (err error) {
-	varOpenstackVolumeQuotaDto := _OpenstackVolumeQuotaDto{}
-
-	err = json.Unmarshal(data, &varOpenstackVolumeQuotaDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OpenstackVolumeQuotaDto(varOpenstackVolumeQuotaDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "maxTotalVolumeSize")
-		delete(additionalProperties, "usedVolumeSize")
-		delete(additionalProperties, "maxCountVolumeSize")
-		delete(additionalProperties, "countVolumeSize")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableOpenstackVolumeQuotaDto struct {

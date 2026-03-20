@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -23,7 +24,6 @@ var _ MappedNullable = &OpenstackFlavorList{}
 type OpenstackFlavorList struct {
 	Data []OpenstackFlavorListDto `json:"data"`
 	TotalCount int32 `json:"totalCount"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _OpenstackFlavorList OpenstackFlavorList
@@ -111,11 +111,6 @@ func (o OpenstackFlavorList) ToMap() (map[string]interface{}, error) {
 		toSerialize["data"] = o.Data
 	}
 	toSerialize["totalCount"] = o.TotalCount
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -144,21 +139,15 @@ func (o *OpenstackFlavorList) UnmarshalJSON(data []byte) (err error) {
 
 	varOpenstackFlavorList := _OpenstackFlavorList{}
 
-	err = json.Unmarshal(data, &varOpenstackFlavorList)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOpenstackFlavorList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OpenstackFlavorList(varOpenstackFlavorList)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "data")
-		delete(additionalProperties, "totalCount")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

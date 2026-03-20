@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -51,7 +52,7 @@ type OpenstackCredentialsListDto struct {
 	SkipTlsFlag bool `json:"skipTlsFlag"`
 	ManilaEnabled *bool `json:"manilaEnabled,omitempty"`
 	ManilaStorageType NullableString `json:"manilaStorageType,omitempty"`
-	AdditionalProperties map[string]interface{}
+	LbProvider NullableString `json:"lbProvider,omitempty"`
 }
 
 type _OpenstackCredentialsListDto OpenstackCredentialsListDto
@@ -853,6 +854,48 @@ func (o *OpenstackCredentialsListDto) UnsetManilaStorageType() {
 	o.ManilaStorageType.Unset()
 }
 
+// GetLbProvider returns the LbProvider field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OpenstackCredentialsListDto) GetLbProvider() string {
+	if o == nil || IsNil(o.LbProvider.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.LbProvider.Get()
+}
+
+// GetLbProviderOk returns a tuple with the LbProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OpenstackCredentialsListDto) GetLbProviderOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LbProvider.Get(), o.LbProvider.IsSet()
+}
+
+// HasLbProvider returns a boolean if a field has been set.
+func (o *OpenstackCredentialsListDto) HasLbProvider() bool {
+	if o != nil && o.LbProvider.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLbProvider gets a reference to the given NullableString and assigns it to the LbProvider field.
+func (o *OpenstackCredentialsListDto) SetLbProvider(v string) {
+	o.LbProvider.Set(&v)
+}
+// SetLbProviderNil sets the value for LbProvider to be an explicit nil
+func (o *OpenstackCredentialsListDto) SetLbProviderNil() {
+	o.LbProvider.Set(nil)
+}
+
+// UnsetLbProvider ensures that no value is present for LbProvider, not even an explicit nil
+func (o *OpenstackCredentialsListDto) UnsetLbProvider() {
+	o.LbProvider.Unset()
+}
+
 func (o OpenstackCredentialsListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -897,11 +940,9 @@ func (o OpenstackCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	if o.ManilaStorageType.IsSet() {
 		toSerialize["manilaStorageType"] = o.ManilaStorageType.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
+	if o.LbProvider.IsSet() {
+		toSerialize["lbProvider"] = o.LbProvider.Get()
 	}
-
 	return toSerialize, nil
 }
 
@@ -956,49 +997,15 @@ func (o *OpenstackCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varOpenstackCredentialsListDto := _OpenstackCredentialsListDto{}
 
-	err = json.Unmarshal(data, &varOpenstackCredentialsListDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOpenstackCredentialsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OpenstackCredentialsListDto(varOpenstackCredentialsListDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "projectCount")
-		delete(additionalProperties, "isLocked")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "user")
-		delete(additionalProperties, "url")
-		delete(additionalProperties, "project")
-		delete(additionalProperties, "domain")
-		delete(additionalProperties, "region")
-		delete(additionalProperties, "publicNetwork")
-		delete(additionalProperties, "importNetwork")
-		delete(additionalProperties, "tenantId")
-		delete(additionalProperties, "availabilityZone")
-		delete(additionalProperties, "volumeType")
-		delete(additionalProperties, "internalSubnetId")
-		delete(additionalProperties, "projects")
-		delete(additionalProperties, "createdBy")
-		delete(additionalProperties, "lastModified")
-		delete(additionalProperties, "lastModifiedBy")
-		delete(additionalProperties, "isDefault")
-		delete(additionalProperties, "organizationId")
-		delete(additionalProperties, "organizationName")
-		delete(additionalProperties, "createdAt")
-		delete(additionalProperties, "continentName")
-		delete(additionalProperties, "isAdmin")
-		delete(additionalProperties, "isInfra")
-		delete(additionalProperties, "applicationCredEnabled")
-		delete(additionalProperties, "skipTlsFlag")
-		delete(additionalProperties, "manilaEnabled")
-		delete(additionalProperties, "manilaStorageType")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

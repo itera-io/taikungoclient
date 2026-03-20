@@ -24,16 +24,12 @@ type CreateProjectAppCommand struct {
 	Namespace NullableString `json:"namespace,omitempty"`
 	ProjectId *int32 `json:"projectId,omitempty"`
 	CatalogAppId *int32 `json:"catalogAppId,omitempty"`
-	// Extra values should be in base64 format.
 	ExtraValues NullableString `json:"extraValues,omitempty"`
 	AutoSync *bool `json:"autoSync,omitempty"`
 	TaikunLinkEnabled *bool `json:"taikunLinkEnabled,omitempty"`
 	Timeout NullableInt32 `json:"timeout,omitempty"`
 	Parameters []ProjectAppParamsDto `json:"parameters,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _CreateProjectAppCommand CreateProjectAppCommand
 
 // NewCreateProjectAppCommand instantiates a new CreateProjectAppCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -418,41 +414,7 @@ func (o CreateProjectAppCommand) ToMap() (map[string]interface{}, error) {
 	if o.Parameters != nil {
 		toSerialize["parameters"] = o.Parameters
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *CreateProjectAppCommand) UnmarshalJSON(data []byte) (err error) {
-	varCreateProjectAppCommand := _CreateProjectAppCommand{}
-
-	err = json.Unmarshal(data, &varCreateProjectAppCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CreateProjectAppCommand(varCreateProjectAppCommand)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "namespace")
-		delete(additionalProperties, "projectId")
-		delete(additionalProperties, "catalogAppId")
-		delete(additionalProperties, "extraValues")
-		delete(additionalProperties, "autoSync")
-		delete(additionalProperties, "taikunLinkEnabled")
-		delete(additionalProperties, "timeout")
-		delete(additionalProperties, "parameters")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCreateProjectAppCommand struct {

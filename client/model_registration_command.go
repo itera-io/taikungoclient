@@ -20,13 +20,10 @@ var _ MappedNullable = &RegistrationCommand{}
 
 // RegistrationCommand struct for RegistrationCommand
 type RegistrationCommand struct {
-	OrganizationName NullableString `json:"organizationName,omitempty"`
+	AccountName NullableString `json:"accountName,omitempty"`
 	Username NullableString `json:"username,omitempty"`
 	Email NullableString `json:"email,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _RegistrationCommand RegistrationCommand
 
 // NewRegistrationCommand instantiates a new RegistrationCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -45,46 +42,46 @@ func NewRegistrationCommandWithDefaults() *RegistrationCommand {
 	return &this
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *RegistrationCommand) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+// GetAccountName returns the AccountName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RegistrationCommand) GetAccountName() string {
+	if o == nil || IsNil(o.AccountName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName.Get()
+	return *o.AccountName.Get()
 }
 
-// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
+// GetAccountNameOk returns a tuple with the AccountName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RegistrationCommand) GetOrganizationNameOk() (*string, bool) {
+func (o *RegistrationCommand) GetAccountNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return o.AccountName.Get(), o.AccountName.IsSet()
 }
 
-// HasOrganizationName returns a boolean if a field has been set.
-func (o *RegistrationCommand) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
+// HasAccountName returns a boolean if a field has been set.
+func (o *RegistrationCommand) HasAccountName() bool {
+	if o != nil && o.AccountName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
-func (o *RegistrationCommand) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
+// SetAccountName gets a reference to the given NullableString and assigns it to the AccountName field.
+func (o *RegistrationCommand) SetAccountName(v string) {
+	o.AccountName.Set(&v)
 }
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *RegistrationCommand) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
+// SetAccountNameNil sets the value for AccountName to be an explicit nil
+func (o *RegistrationCommand) SetAccountNameNil() {
+	o.AccountName.Set(nil)
 }
 
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *RegistrationCommand) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
+// UnsetAccountName ensures that no value is present for AccountName, not even an explicit nil
+func (o *RegistrationCommand) UnsetAccountName() {
+	o.AccountName.Unset()
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -181,8 +178,8 @@ func (o RegistrationCommand) MarshalJSON() ([]byte, error) {
 
 func (o RegistrationCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
+	if o.AccountName.IsSet() {
+		toSerialize["accountName"] = o.AccountName.Get()
 	}
 	if o.Username.IsSet() {
 		toSerialize["username"] = o.Username.Get()
@@ -190,35 +187,7 @@ func (o RegistrationCommand) ToMap() (map[string]interface{}, error) {
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *RegistrationCommand) UnmarshalJSON(data []byte) (err error) {
-	varRegistrationCommand := _RegistrationCommand{}
-
-	err = json.Unmarshal(data, &varRegistrationCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RegistrationCommand(varRegistrationCommand)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "organizationName")
-		delete(additionalProperties, "username")
-		delete(additionalProperties, "email")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableRegistrationCommand struct {

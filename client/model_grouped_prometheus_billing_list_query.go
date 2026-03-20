@@ -22,10 +22,7 @@ var _ MappedNullable = &GroupedPrometheusBillingListQuery{}
 type GroupedPrometheusBillingListQuery struct {
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	PeriodDuration *BillingPeriod `json:"periodDuration,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _GroupedPrometheusBillingListQuery GroupedPrometheusBillingListQuery
 
 // NewGroupedPrometheusBillingListQuery instantiates a new GroupedPrometheusBillingListQuery object
 // This constructor will assign default values to properties that have it defined,
@@ -134,34 +131,7 @@ func (o GroupedPrometheusBillingListQuery) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.PeriodDuration) {
 		toSerialize["periodDuration"] = o.PeriodDuration
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GroupedPrometheusBillingListQuery) UnmarshalJSON(data []byte) (err error) {
-	varGroupedPrometheusBillingListQuery := _GroupedPrometheusBillingListQuery{}
-
-	err = json.Unmarshal(data, &varGroupedPrometheusBillingListQuery)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GroupedPrometheusBillingListQuery(varGroupedPrometheusBillingListQuery)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "organizationId")
-		delete(additionalProperties, "periodDuration")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGroupedPrometheusBillingListQuery struct {

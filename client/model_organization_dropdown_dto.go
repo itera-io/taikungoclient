@@ -24,10 +24,9 @@ type OrganizationDropdownDto struct {
 	Name NullableString `json:"name,omitempty"`
 	IsInfra *bool `json:"isInfra,omitempty"`
 	DiscountRate *float64 `json:"discountRate,omitempty"`
-	AdditionalProperties map[string]interface{}
+	AccountId *int32 `json:"accountId,omitempty"`
+	AccountName NullableString `json:"accountName,omitempty"`
 }
-
-type _OrganizationDropdownDto OrganizationDropdownDto
 
 // NewOrganizationDropdownDto instantiates a new OrganizationDropdownDto object
 // This constructor will assign default values to properties that have it defined,
@@ -184,6 +183,80 @@ func (o *OrganizationDropdownDto) SetDiscountRate(v float64) {
 	o.DiscountRate = &v
 }
 
+// GetAccountId returns the AccountId field value if set, zero value otherwise.
+func (o *OrganizationDropdownDto) GetAccountId() int32 {
+	if o == nil || IsNil(o.AccountId) {
+		var ret int32
+		return ret
+	}
+	return *o.AccountId
+}
+
+// GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationDropdownDto) GetAccountIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.AccountId) {
+		return nil, false
+	}
+	return o.AccountId, true
+}
+
+// HasAccountId returns a boolean if a field has been set.
+func (o *OrganizationDropdownDto) HasAccountId() bool {
+	if o != nil && !IsNil(o.AccountId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountId gets a reference to the given int32 and assigns it to the AccountId field.
+func (o *OrganizationDropdownDto) SetAccountId(v int32) {
+	o.AccountId = &v
+}
+
+// GetAccountName returns the AccountName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OrganizationDropdownDto) GetAccountName() string {
+	if o == nil || IsNil(o.AccountName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AccountName.Get()
+}
+
+// GetAccountNameOk returns a tuple with the AccountName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrganizationDropdownDto) GetAccountNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AccountName.Get(), o.AccountName.IsSet()
+}
+
+// HasAccountName returns a boolean if a field has been set.
+func (o *OrganizationDropdownDto) HasAccountName() bool {
+	if o != nil && o.AccountName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountName gets a reference to the given NullableString and assigns it to the AccountName field.
+func (o *OrganizationDropdownDto) SetAccountName(v string) {
+	o.AccountName.Set(&v)
+}
+// SetAccountNameNil sets the value for AccountName to be an explicit nil
+func (o *OrganizationDropdownDto) SetAccountNameNil() {
+	o.AccountName.Set(nil)
+}
+
+// UnsetAccountName ensures that no value is present for AccountName, not even an explicit nil
+func (o *OrganizationDropdownDto) UnsetAccountName() {
+	o.AccountName.Unset()
+}
+
 func (o OrganizationDropdownDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -206,36 +279,13 @@ func (o OrganizationDropdownDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DiscountRate) {
 		toSerialize["discountRate"] = o.DiscountRate
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
+	if !IsNil(o.AccountId) {
+		toSerialize["accountId"] = o.AccountId
 	}
-
+	if o.AccountName.IsSet() {
+		toSerialize["accountName"] = o.AccountName.Get()
+	}
 	return toSerialize, nil
-}
-
-func (o *OrganizationDropdownDto) UnmarshalJSON(data []byte) (err error) {
-	varOrganizationDropdownDto := _OrganizationDropdownDto{}
-
-	err = json.Unmarshal(data, &varOrganizationDropdownDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OrganizationDropdownDto(varOrganizationDropdownDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "isInfra")
-		delete(additionalProperties, "discountRate")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableOrganizationDropdownDto struct {

@@ -21,10 +21,7 @@ var _ MappedNullable = &UninstallProjectAppResult{}
 // UninstallProjectAppResult struct for UninstallProjectAppResult
 type UninstallProjectAppResult struct {
 	IsJobSkipped *bool `json:"isJobSkipped,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _UninstallProjectAppResult UninstallProjectAppResult
 
 // NewUninstallProjectAppResult instantiates a new UninstallProjectAppResult object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o UninstallProjectAppResult) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsJobSkipped) {
 		toSerialize["isJobSkipped"] = o.IsJobSkipped
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *UninstallProjectAppResult) UnmarshalJSON(data []byte) (err error) {
-	varUninstallProjectAppResult := _UninstallProjectAppResult{}
-
-	err = json.Unmarshal(data, &varUninstallProjectAppResult)
-
-	if err != nil {
-		return err
-	}
-
-	*o = UninstallProjectAppResult(varUninstallProjectAppResult)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "isJobSkipped")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableUninstallProjectAppResult struct {

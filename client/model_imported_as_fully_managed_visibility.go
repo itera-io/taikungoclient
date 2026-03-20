@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -35,7 +36,6 @@ type ImportedAsFullyManagedVisibility struct {
 	EnableBackup ButtonStatusDto `json:"enableBackup"`
 	DisableBackup ButtonStatusDto `json:"disableBackup"`
 	AiAssistant ButtonStatusDto `json:"aiAssistant"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _ImportedAsFullyManagedVisibility ImportedAsFullyManagedVisibility
@@ -431,11 +431,6 @@ func (o ImportedAsFullyManagedVisibility) ToMap() (map[string]interface{}, error
 	toSerialize["enableBackup"] = o.EnableBackup
 	toSerialize["disableBackup"] = o.DisableBackup
 	toSerialize["aiAssistant"] = o.AiAssistant
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -476,33 +471,15 @@ func (o *ImportedAsFullyManagedVisibility) UnmarshalJSON(data []byte) (err error
 
 	varImportedAsFullyManagedVisibility := _ImportedAsFullyManagedVisibility{}
 
-	err = json.Unmarshal(data, &varImportedAsFullyManagedVisibility)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varImportedAsFullyManagedVisibility)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ImportedAsFullyManagedVisibility(varImportedAsFullyManagedVisibility)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "lock")
-		delete(additionalProperties, "unlock")
-		delete(additionalProperties, "addVCluster")
-		delete(additionalProperties, "attachAlertingProfile")
-		delete(additionalProperties, "detachAlertingProfile")
-		delete(additionalProperties, "enableMonitoring")
-		delete(additionalProperties, "disableMonitoring")
-		delete(additionalProperties, "enableAi")
-		delete(additionalProperties, "disableAi")
-		delete(additionalProperties, "enableOpa")
-		delete(additionalProperties, "disableOpa")
-		delete(additionalProperties, "enableBackup")
-		delete(additionalProperties, "disableBackup")
-		delete(additionalProperties, "aiAssistant")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

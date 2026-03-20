@@ -21,10 +21,7 @@ var _ MappedNullable = &OpenstackQuotasCommand{}
 // OpenstackQuotasCommand struct for OpenstackQuotasCommand
 type OpenstackQuotasCommand struct {
 	Id *int32 `json:"id,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _OpenstackQuotasCommand OpenstackQuotasCommand
 
 // NewOpenstackQuotasCommand instantiates a new OpenstackQuotasCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o OpenstackQuotasCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *OpenstackQuotasCommand) UnmarshalJSON(data []byte) (err error) {
-	varOpenstackQuotasCommand := _OpenstackQuotasCommand{}
-
-	err = json.Unmarshal(data, &varOpenstackQuotasCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OpenstackQuotasCommand(varOpenstackQuotasCommand)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableOpenstackQuotasCommand struct {

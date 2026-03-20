@@ -22,10 +22,7 @@ var _ MappedNullable = &FinalPriceDto{}
 type FinalPriceDto struct {
 	YearlyFinalPrice *float64 `json:"yearlyFinalPrice,omitempty"`
 	MonthlyFinalPrice *float64 `json:"monthlyFinalPrice,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _FinalPriceDto FinalPriceDto
 
 // NewFinalPriceDto instantiates a new FinalPriceDto object
 // This constructor will assign default values to properties that have it defined,
@@ -124,34 +121,7 @@ func (o FinalPriceDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MonthlyFinalPrice) {
 		toSerialize["monthlyFinalPrice"] = o.MonthlyFinalPrice
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *FinalPriceDto) UnmarshalJSON(data []byte) (err error) {
-	varFinalPriceDto := _FinalPriceDto{}
-
-	err = json.Unmarshal(data, &varFinalPriceDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = FinalPriceDto(varFinalPriceDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "yearlyFinalPrice")
-		delete(additionalProperties, "monthlyFinalPrice")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableFinalPriceDto struct {

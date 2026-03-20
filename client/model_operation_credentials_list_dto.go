@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -33,7 +34,6 @@ type OperationCredentialsListDto struct {
 	LastModified NullableString `json:"lastModified"`
 	LastModifiedBy NullableString `json:"lastModifiedBy"`
 	IsDefault bool `json:"isDefault"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _OperationCredentialsListDto OperationCredentialsListDto
@@ -385,11 +385,6 @@ func (o OperationCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["lastModified"] = o.LastModified.Get()
 	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
 	toSerialize["isDefault"] = o.IsDefault
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -428,31 +423,15 @@ func (o *OperationCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varOperationCredentialsListDto := _OperationCredentialsListDto{}
 
-	err = json.Unmarshal(data, &varOperationCredentialsListDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOperationCredentialsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OperationCredentialsListDto(varOperationCredentialsListDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "prometheusUsername")
-		delete(additionalProperties, "prometheusUrl")
-		delete(additionalProperties, "organizationId")
-		delete(additionalProperties, "organizationName")
-		delete(additionalProperties, "isLocked")
-		delete(additionalProperties, "rules")
-		delete(additionalProperties, "createdBy")
-		delete(additionalProperties, "lastModified")
-		delete(additionalProperties, "lastModifiedBy")
-		delete(additionalProperties, "isDefault")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

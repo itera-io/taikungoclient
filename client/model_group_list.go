@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the GroupList type satisfies the MappedNullable interface at compile time
@@ -21,21 +20,15 @@ var _ MappedNullable = &GroupList{}
 
 // GroupList struct for GroupList
 type GroupList struct {
-	Data []GroupListDto `json:"data"`
-	TotalCount int32 `json:"totalCount"`
-	AdditionalProperties map[string]interface{}
+	Data []GroupListItem `json:"data,omitempty"`
 }
-
-type _GroupList GroupList
 
 // NewGroupList instantiates a new GroupList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroupList(data []GroupListDto, totalCount int32) *GroupList {
+func NewGroupList() *GroupList {
 	this := GroupList{}
-	this.Data = data
-	this.TotalCount = totalCount
 	return &this
 }
 
@@ -47,54 +40,37 @@ func NewGroupListWithDefaults() *GroupList {
 	return &this
 }
 
-// GetData returns the Data field value
-// If the value is explicit nil, the zero value for []GroupListDto will be returned
-func (o *GroupList) GetData() []GroupListDto {
+// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GroupList) GetData() []GroupListItem {
 	if o == nil {
-		var ret []GroupListDto
+		var ret []GroupListItem
 		return ret
 	}
-
 	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value
+// GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GroupList) GetDataOk() ([]GroupListDto, bool) {
+func (o *GroupList) GetDataOk() ([]GroupListItem, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
 	return o.Data, true
 }
 
-// SetData sets field value
-func (o *GroupList) SetData(v []GroupListDto) {
+// HasData returns a boolean if a field has been set.
+func (o *GroupList) HasData() bool {
+	if o != nil && !IsNil(o.Data) {
+		return true
+	}
+
+	return false
+}
+
+// SetData gets a reference to the given []GroupListItem and assigns it to the Data field.
+func (o *GroupList) SetData(v []GroupListItem) {
 	o.Data = v
-}
-
-// GetTotalCount returns the TotalCount field value
-func (o *GroupList) GetTotalCount() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.TotalCount
-}
-
-// GetTotalCountOk returns a tuple with the TotalCount field value
-// and a boolean to check if the value has been set.
-func (o *GroupList) GetTotalCountOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.TotalCount, true
-}
-
-// SetTotalCount sets field value
-func (o *GroupList) SetTotalCount(v int32) {
-	o.TotalCount = v
 }
 
 func (o GroupList) MarshalJSON() ([]byte, error) {
@@ -110,57 +86,7 @@ func (o GroupList) ToMap() (map[string]interface{}, error) {
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
 	}
-	toSerialize["totalCount"] = o.TotalCount
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GroupList) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"data",
-		"totalCount",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varGroupList := _GroupList{}
-
-	err = json.Unmarshal(data, &varGroupList)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GroupList(varGroupList)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "data")
-		delete(additionalProperties, "totalCount")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGroupList struct {

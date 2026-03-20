@@ -585,6 +585,7 @@ type ApiAzureListRequest struct {
 	search *string
 	searchId *string
 	id *int32
+	accountId *int32
 	limit *int32
 	offset *int32
 }
@@ -616,6 +617,11 @@ func (r ApiAzureListRequest) SearchId(searchId string) ApiAzureListRequest {
 
 func (r ApiAzureListRequest) Id(id int32) ApiAzureListRequest {
 	r.id = &id
+	return r
+}
+
+func (r ApiAzureListRequest) AccountId(accountId int32) ApiAzureListRequest {
+	r.accountId = &accountId
 	return r
 }
 
@@ -684,6 +690,9 @@ func (a *AzureCloudCredentialAPIService) AzureListExecute(r ApiAzureListRequest)
 	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
+	}
+	if r.accountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
 	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")

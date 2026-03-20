@@ -982,8 +982,6 @@ type ApiFlavorsGoogleMachineTypesRequest struct {
 	sortDirection *string
 	projectId *int32
 	hasGpuSupport *bool
-	startRam2 *float64
-	endRam2 *float64
 }
 
 func (r ApiFlavorsGoogleMachineTypesRequest) Limit(limit int32) ApiFlavorsGoogleMachineTypesRequest {
@@ -1038,16 +1036,6 @@ func (r ApiFlavorsGoogleMachineTypesRequest) ProjectId(projectId int32) ApiFlavo
 
 func (r ApiFlavorsGoogleMachineTypesRequest) HasGpuSupport(hasGpuSupport bool) ApiFlavorsGoogleMachineTypesRequest {
 	r.hasGpuSupport = &hasGpuSupport
-	return r
-}
-
-func (r ApiFlavorsGoogleMachineTypesRequest) StartRam2(startRam2 float64) ApiFlavorsGoogleMachineTypesRequest {
-	r.startRam2 = &startRam2
-	return r
-}
-
-func (r ApiFlavorsGoogleMachineTypesRequest) EndRam2(endRam2 float64) ApiFlavorsGoogleMachineTypesRequest {
-	r.endRam2 = &endRam2
 	return r
 }
 
@@ -1124,12 +1112,6 @@ func (a *FlavorsAPIService) FlavorsGoogleMachineTypesExecute(r ApiFlavorsGoogleM
 	}
 	if r.hasGpuSupport != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "HasGpuSupport", r.hasGpuSupport, "form", "")
-	}
-	if r.startRam2 != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "startRam", r.startRam2, "form", "")
-	}
-	if r.endRam2 != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "endRam", r.endRam2, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2086,6 +2068,8 @@ func (a *FlavorsAPIService) FlavorsProxmoxFlavorsExecute(r ApiFlavorsProxmoxFlav
 type ApiFlavorsSelectedFlavorsForProjectRequest struct {
 	ctx context.Context
 	ApiService *FlavorsAPIService
+	limit *int32
+	offset *int32
 	projectId *int32
 	sortBy *string
 	sortDirection *string
@@ -2095,8 +2079,16 @@ type ApiFlavorsSelectedFlavorsForProjectRequest struct {
 	flavorName *string
 	withPrice *bool
 	hasGpuSupport *bool
-	offset *int32
-	limit *int32
+}
+
+func (r ApiFlavorsSelectedFlavorsForProjectRequest) Limit(limit int32) ApiFlavorsSelectedFlavorsForProjectRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiFlavorsSelectedFlavorsForProjectRequest) Offset(offset int32) ApiFlavorsSelectedFlavorsForProjectRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiFlavorsSelectedFlavorsForProjectRequest) ProjectId(projectId int32) ApiFlavorsSelectedFlavorsForProjectRequest {
@@ -2144,16 +2136,6 @@ func (r ApiFlavorsSelectedFlavorsForProjectRequest) HasGpuSupport(hasGpuSupport 
 	return r
 }
 
-func (r ApiFlavorsSelectedFlavorsForProjectRequest) Offset(offset int32) ApiFlavorsSelectedFlavorsForProjectRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiFlavorsSelectedFlavorsForProjectRequest) Limit(limit int32) ApiFlavorsSelectedFlavorsForProjectRequest {
-	r.limit = &limit
-	return r
-}
-
 func (r ApiFlavorsSelectedFlavorsForProjectRequest) Execute() (*BoundFlavorsForProjectsList, *http.Response, error) {
 	return r.ApiService.FlavorsSelectedFlavorsForProjectExecute(r)
 }
@@ -2192,6 +2174,12 @@ func (a *FlavorsAPIService) FlavorsSelectedFlavorsForProjectExecute(r ApiFlavors
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	}
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
@@ -2218,12 +2206,6 @@ func (a *FlavorsAPIService) FlavorsSelectedFlavorsForProjectExecute(r ApiFlavors
 	}
 	if r.hasGpuSupport != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "HasGpuSupport", r.hasGpuSupport, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

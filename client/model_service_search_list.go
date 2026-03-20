@@ -22,10 +22,7 @@ var _ MappedNullable = &ServiceSearchList{}
 type ServiceSearchList struct {
 	Data []CommonSearchKubernetesResponseData `json:"data,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _ServiceSearchList ServiceSearchList
 
 // NewServiceSearchList instantiates a new ServiceSearchList object
 // This constructor will assign default values to properties that have it defined,
@@ -125,34 +122,7 @@ func (o ServiceSearchList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ServiceSearchList) UnmarshalJSON(data []byte) (err error) {
-	varServiceSearchList := _ServiceSearchList{}
-
-	err = json.Unmarshal(data, &varServiceSearchList)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ServiceSearchList(varServiceSearchList)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "data")
-		delete(additionalProperties, "totalCount")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableServiceSearchList struct {

@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -25,7 +26,6 @@ type DaemonsetActionCommand struct {
 	Name NullableString `json:"name"`
 	Namespace NullableString `json:"namespace"`
 	Action EDaemonSetAction `json:"action"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _DaemonsetActionCommand DaemonsetActionCommand
@@ -165,11 +165,6 @@ func (o DaemonsetActionCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name.Get()
 	toSerialize["namespace"] = o.Namespace.Get()
 	toSerialize["action"] = o.Action
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -200,23 +195,15 @@ func (o *DaemonsetActionCommand) UnmarshalJSON(data []byte) (err error) {
 
 	varDaemonsetActionCommand := _DaemonsetActionCommand{}
 
-	err = json.Unmarshal(data, &varDaemonsetActionCommand)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDaemonsetActionCommand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DaemonsetActionCommand(varDaemonsetActionCommand)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "projectId")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "namespace")
-		delete(additionalProperties, "action")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

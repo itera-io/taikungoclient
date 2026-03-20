@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -24,7 +25,6 @@ type AllFlavorsList struct {
 	Data []FlavorsListDto `json:"data"`
 	TotalCount int32 `json:"totalCount"`
 	CloudType NullableString `json:"cloudType"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _AllFlavorsList AllFlavorsList
@@ -140,11 +140,6 @@ func (o AllFlavorsList) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["totalCount"] = o.TotalCount
 	toSerialize["cloudType"] = o.CloudType.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -174,22 +169,15 @@ func (o *AllFlavorsList) UnmarshalJSON(data []byte) (err error) {
 
 	varAllFlavorsList := _AllFlavorsList{}
 
-	err = json.Unmarshal(data, &varAllFlavorsList)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAllFlavorsList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AllFlavorsList(varAllFlavorsList)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "data")
-		delete(additionalProperties, "totalCount")
-		delete(additionalProperties, "cloudType")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

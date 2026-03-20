@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -24,13 +25,12 @@ type GoogleFlavorDto struct {
 	Name string `json:"name"`
 	Cpu NullableInt32 `json:"cpu"`
 	Ram NullableFloat64 `json:"ram"`
-	Description interface{} `json:"description"`
 	LinuxPrice NullableFloat64 `json:"linuxPrice"`
 	WindowsPrice NullableFloat64 `json:"windowsPrice"`
 	LinuxSpotPrice NullableFloat64 `json:"linuxSpotPrice"`
 	WindowsSpotPrice NullableFloat64 `json:"windowsSpotPrice"`
 	HasGpuSupport *bool `json:"hasGpuSupport,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Description interface{} `json:"description"`
 }
 
 type _GoogleFlavorDto GoogleFlavorDto
@@ -39,16 +39,16 @@ type _GoogleFlavorDto GoogleFlavorDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGoogleFlavorDto(name string, cpu NullableInt32, ram NullableFloat64, description interface{}, linuxPrice NullableFloat64, windowsPrice NullableFloat64, linuxSpotPrice NullableFloat64, windowsSpotPrice NullableFloat64) *GoogleFlavorDto {
+func NewGoogleFlavorDto(name string, cpu NullableInt32, ram NullableFloat64, linuxPrice NullableFloat64, windowsPrice NullableFloat64, linuxSpotPrice NullableFloat64, windowsSpotPrice NullableFloat64, description interface{}) *GoogleFlavorDto {
 	this := GoogleFlavorDto{}
 	this.Name = name
 	this.Cpu = cpu
 	this.Ram = ram
-	this.Description = description
 	this.LinuxPrice = linuxPrice
 	this.WindowsPrice = windowsPrice
 	this.LinuxSpotPrice = linuxSpotPrice
 	this.WindowsSpotPrice = windowsSpotPrice
+	this.Description = description
 	return &this
 }
 
@@ -134,32 +134,6 @@ func (o *GoogleFlavorDto) GetRamOk() (*float64, bool) {
 // SetRam sets field value
 func (o *GoogleFlavorDto) SetRam(v float64) {
 	o.Ram.Set(&v)
-}
-
-// GetDescription returns the Description field value
-// If the value is explicit nil, the zero value for interface{} will be returned
-func (o *GoogleFlavorDto) GetDescription() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-
-	return o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GoogleFlavorDto) GetDescriptionOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Description) {
-		return nil, false
-	}
-	return &o.Description, true
-}
-
-// SetDescription sets field value
-func (o *GoogleFlavorDto) SetDescription(v interface{}) {
-	o.Description = v
 }
 
 // GetLinuxPrice returns the LinuxPrice field value
@@ -298,6 +272,32 @@ func (o *GoogleFlavorDto) SetHasGpuSupport(v bool) {
 	o.HasGpuSupport = &v
 }
 
+// GetDescription returns the Description field value
+// If the value is explicit nil, the zero value for interface{} will be returned
+func (o *GoogleFlavorDto) GetDescription() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+
+	return o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GoogleFlavorDto) GetDescriptionOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return &o.Description, true
+}
+
+// SetDescription sets field value
+func (o *GoogleFlavorDto) SetDescription(v interface{}) {
+	o.Description = v
+}
+
 func (o GoogleFlavorDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -311,9 +311,6 @@ func (o GoogleFlavorDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["cpu"] = o.Cpu.Get()
 	toSerialize["ram"] = o.Ram.Get()
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
 	toSerialize["linuxPrice"] = o.LinuxPrice.Get()
 	toSerialize["windowsPrice"] = o.WindowsPrice.Get()
 	toSerialize["linuxSpotPrice"] = o.LinuxSpotPrice.Get()
@@ -321,11 +318,9 @@ func (o GoogleFlavorDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HasGpuSupport) {
 		toSerialize["hasGpuSupport"] = o.HasGpuSupport
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
-
 	return toSerialize, nil
 }
 
@@ -337,11 +332,11 @@ func (o *GoogleFlavorDto) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"cpu",
 		"ram",
-		"description",
 		"linuxPrice",
 		"windowsPrice",
 		"linuxSpotPrice",
 		"windowsSpotPrice",
+		"description",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -360,28 +355,15 @@ func (o *GoogleFlavorDto) UnmarshalJSON(data []byte) (err error) {
 
 	varGoogleFlavorDto := _GoogleFlavorDto{}
 
-	err = json.Unmarshal(data, &varGoogleFlavorDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varGoogleFlavorDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GoogleFlavorDto(varGoogleFlavorDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "cpu")
-		delete(additionalProperties, "ram")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "linuxPrice")
-		delete(additionalProperties, "windowsPrice")
-		delete(additionalProperties, "linuxSpotPrice")
-		delete(additionalProperties, "windowsSpotPrice")
-		delete(additionalProperties, "hasGpuSupport")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

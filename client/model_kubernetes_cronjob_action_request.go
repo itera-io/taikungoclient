@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -23,7 +24,6 @@ var _ MappedNullable = &KubernetesCronjobActionRequest{}
 type KubernetesCronjobActionRequest struct {
 	Name NullableString `json:"name"`
 	Namespace NullableString `json:"namespace"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _KubernetesCronjobActionRequest KubernetesCronjobActionRequest
@@ -111,11 +111,6 @@ func (o KubernetesCronjobActionRequest) ToMap() (map[string]interface{}, error) 
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name.Get()
 	toSerialize["namespace"] = o.Namespace.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -144,21 +139,15 @@ func (o *KubernetesCronjobActionRequest) UnmarshalJSON(data []byte) (err error) 
 
 	varKubernetesCronjobActionRequest := _KubernetesCronjobActionRequest{}
 
-	err = json.Unmarshal(data, &varKubernetesCronjobActionRequest)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varKubernetesCronjobActionRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubernetesCronjobActionRequest(varKubernetesCronjobActionRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "namespace")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

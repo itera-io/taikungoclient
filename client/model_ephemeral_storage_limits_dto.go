@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -25,7 +26,6 @@ type EphemeralStorageLimitsDto struct {
 	MaxClusterLimits int64 `json:"maxClusterLimits"`
 	DefaultContainerRequest int64 `json:"defaultContainerRequest"`
 	DefaultContainerLimit int64 `json:"defaultContainerLimit"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _EphemeralStorageLimitsDto EphemeralStorageLimitsDto
@@ -161,11 +161,6 @@ func (o EphemeralStorageLimitsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["maxClusterLimits"] = o.MaxClusterLimits
 	toSerialize["defaultContainerRequest"] = o.DefaultContainerRequest
 	toSerialize["defaultContainerLimit"] = o.DefaultContainerLimit
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -196,23 +191,15 @@ func (o *EphemeralStorageLimitsDto) UnmarshalJSON(data []byte) (err error) {
 
 	varEphemeralStorageLimitsDto := _EphemeralStorageLimitsDto{}
 
-	err = json.Unmarshal(data, &varEphemeralStorageLimitsDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEphemeralStorageLimitsDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EphemeralStorageLimitsDto(varEphemeralStorageLimitsDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "maxClusterRequests")
-		delete(additionalProperties, "maxClusterLimits")
-		delete(additionalProperties, "defaultContainerRequest")
-		delete(additionalProperties, "defaultContainerLimit")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

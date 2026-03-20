@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -24,7 +25,6 @@ type CronjobActionCommand struct {
 	ProjectId int32 `json:"projectId"`
 	Data []KubernetesCronjobActionRequest `json:"data"`
 	Action ECronJobAction `json:"action"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _CronjobActionCommand CronjobActionCommand
@@ -138,11 +138,6 @@ func (o CronjobActionCommand) ToMap() (map[string]interface{}, error) {
 		toSerialize["data"] = o.Data
 	}
 	toSerialize["action"] = o.Action
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -172,22 +167,15 @@ func (o *CronjobActionCommand) UnmarshalJSON(data []byte) (err error) {
 
 	varCronjobActionCommand := _CronjobActionCommand{}
 
-	err = json.Unmarshal(data, &varCronjobActionCommand)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCronjobActionCommand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CronjobActionCommand(varCronjobActionCommand)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "projectId")
-		delete(additionalProperties, "data")
-		delete(additionalProperties, "action")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

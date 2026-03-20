@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -23,7 +24,6 @@ var _ MappedNullable = &TwoFactorAuthSetupResult{}
 type TwoFactorAuthSetupResult struct {
 	SharedKey NullableString `json:"sharedKey"`
 	QrCodeUri NullableString `json:"qrCodeUri"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _TwoFactorAuthSetupResult TwoFactorAuthSetupResult
@@ -111,11 +111,6 @@ func (o TwoFactorAuthSetupResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["sharedKey"] = o.SharedKey.Get()
 	toSerialize["qrCodeUri"] = o.QrCodeUri.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -144,21 +139,15 @@ func (o *TwoFactorAuthSetupResult) UnmarshalJSON(data []byte) (err error) {
 
 	varTwoFactorAuthSetupResult := _TwoFactorAuthSetupResult{}
 
-	err = json.Unmarshal(data, &varTwoFactorAuthSetupResult)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTwoFactorAuthSetupResult)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TwoFactorAuthSetupResult(varTwoFactorAuthSetupResult)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "sharedKey")
-		delete(additionalProperties, "qrCodeUri")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

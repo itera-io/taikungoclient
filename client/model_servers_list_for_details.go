@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -23,7 +24,6 @@ var _ MappedNullable = &ServersListForDetails{}
 type ServersListForDetails struct {
 	Data []ServerListDto `json:"data"`
 	Project ProjectDetailsForServersDto `json:"project"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _ServersListForDetails ServersListForDetails
@@ -48,7 +48,6 @@ func NewServersListForDetailsWithDefaults() *ServersListForDetails {
 }
 
 // GetData returns the Data field value
-// If the value is explicit nil, the zero value for []ServerListDto will be returned
 func (o *ServersListForDetails) GetData() []ServerListDto {
 	if o == nil {
 		var ret []ServerListDto
@@ -60,9 +59,8 @@ func (o *ServersListForDetails) GetData() []ServerListDto {
 
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServersListForDetails) GetDataOk() ([]ServerListDto, bool) {
-	if o == nil || IsNil(o.Data) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Data, true
@@ -107,15 +105,8 @@ func (o ServersListForDetails) MarshalJSON() ([]byte, error) {
 
 func (o ServersListForDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Data != nil {
-		toSerialize["data"] = o.Data
-	}
+	toSerialize["data"] = o.Data
 	toSerialize["project"] = o.Project
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -144,21 +135,15 @@ func (o *ServersListForDetails) UnmarshalJSON(data []byte) (err error) {
 
 	varServersListForDetails := _ServersListForDetails{}
 
-	err = json.Unmarshal(data, &varServersListForDetails)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varServersListForDetails)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ServersListForDetails(varServersListForDetails)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "data")
-		delete(additionalProperties, "project")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

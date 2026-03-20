@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -22,13 +23,8 @@ var _ MappedNullable = &VClusterList{}
 // VClusterList struct for VClusterList
 type VClusterList struct {
 	Data []VClusterListDto `json:"data"`
-	Offset int32 `json:"offset"`
-	Limit int32 `json:"limit"`
-	HasMore bool `json:"hasMore"`
-	NextOffset NullableInt32 `json:"nextOffset,omitempty"`
-	TotalCount int32 `json:"totalCount"`
+	TotalCount int64 `json:"totalCount"`
 	Project ProjectDetailsForVmsDto `json:"project"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _VClusterList VClusterList
@@ -37,12 +33,9 @@ type _VClusterList VClusterList
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVClusterList(data []VClusterListDto, offset int32, limit int32, hasMore bool, totalCount int32, project ProjectDetailsForVmsDto) *VClusterList {
+func NewVClusterList(data []VClusterListDto, totalCount int64, project ProjectDetailsForVmsDto) *VClusterList {
 	this := VClusterList{}
 	this.Data = data
-	this.Offset = offset
-	this.Limit = limit
-	this.HasMore = hasMore
 	this.TotalCount = totalCount
 	this.Project = project
 	return &this
@@ -82,124 +75,10 @@ func (o *VClusterList) SetData(v []VClusterListDto) {
 	o.Data = v
 }
 
-// GetOffset returns the Offset field value
-func (o *VClusterList) GetOffset() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Offset
-}
-
-// GetOffsetOk returns a tuple with the Offset field value
-// and a boolean to check if the value has been set.
-func (o *VClusterList) GetOffsetOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Offset, true
-}
-
-// SetOffset sets field value
-func (o *VClusterList) SetOffset(v int32) {
-	o.Offset = v
-}
-
-// GetLimit returns the Limit field value
-func (o *VClusterList) GetLimit() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Limit
-}
-
-// GetLimitOk returns a tuple with the Limit field value
-// and a boolean to check if the value has been set.
-func (o *VClusterList) GetLimitOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Limit, true
-}
-
-// SetLimit sets field value
-func (o *VClusterList) SetLimit(v int32) {
-	o.Limit = v
-}
-
-// GetHasMore returns the HasMore field value
-func (o *VClusterList) GetHasMore() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.HasMore
-}
-
-// GetHasMoreOk returns a tuple with the HasMore field value
-// and a boolean to check if the value has been set.
-func (o *VClusterList) GetHasMoreOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.HasMore, true
-}
-
-// SetHasMore sets field value
-func (o *VClusterList) SetHasMore(v bool) {
-	o.HasMore = v
-}
-
-// GetNextOffset returns the NextOffset field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *VClusterList) GetNextOffset() int32 {
-	if o == nil || IsNil(o.NextOffset.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.NextOffset.Get()
-}
-
-// GetNextOffsetOk returns a tuple with the NextOffset field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VClusterList) GetNextOffsetOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.NextOffset.Get(), o.NextOffset.IsSet()
-}
-
-// HasNextOffset returns a boolean if a field has been set.
-func (o *VClusterList) HasNextOffset() bool {
-	if o != nil && o.NextOffset.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetNextOffset gets a reference to the given NullableInt32 and assigns it to the NextOffset field.
-func (o *VClusterList) SetNextOffset(v int32) {
-	o.NextOffset.Set(&v)
-}
-// SetNextOffsetNil sets the value for NextOffset to be an explicit nil
-func (o *VClusterList) SetNextOffsetNil() {
-	o.NextOffset.Set(nil)
-}
-
-// UnsetNextOffset ensures that no value is present for NextOffset, not even an explicit nil
-func (o *VClusterList) UnsetNextOffset() {
-	o.NextOffset.Unset()
-}
-
 // GetTotalCount returns the TotalCount field value
-func (o *VClusterList) GetTotalCount() int32 {
+func (o *VClusterList) GetTotalCount() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -208,7 +87,7 @@ func (o *VClusterList) GetTotalCount() int32 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value
 // and a boolean to check if the value has been set.
-func (o *VClusterList) GetTotalCountOk() (*int32, bool) {
+func (o *VClusterList) GetTotalCountOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -216,7 +95,7 @@ func (o *VClusterList) GetTotalCountOk() (*int32, bool) {
 }
 
 // SetTotalCount sets field value
-func (o *VClusterList) SetTotalCount(v int32) {
+func (o *VClusterList) SetTotalCount(v int64) {
 	o.TotalCount = v
 }
 
@@ -257,19 +136,8 @@ func (o VClusterList) ToMap() (map[string]interface{}, error) {
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
 	}
-	toSerialize["offset"] = o.Offset
-	toSerialize["limit"] = o.Limit
-	toSerialize["hasMore"] = o.HasMore
-	if o.NextOffset.IsSet() {
-		toSerialize["nextOffset"] = o.NextOffset.Get()
-	}
 	toSerialize["totalCount"] = o.TotalCount
 	toSerialize["project"] = o.Project
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -279,9 +147,6 @@ func (o *VClusterList) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"data",
-		"offset",
-		"limit",
-		"hasMore",
 		"totalCount",
 		"project",
 	}
@@ -302,26 +167,15 @@ func (o *VClusterList) UnmarshalJSON(data []byte) (err error) {
 
 	varVClusterList := _VClusterList{}
 
-	err = json.Unmarshal(data, &varVClusterList)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varVClusterList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = VClusterList(varVClusterList)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "data")
-		delete(additionalProperties, "offset")
-		delete(additionalProperties, "limit")
-		delete(additionalProperties, "hasMore")
-		delete(additionalProperties, "nextOffset")
-		delete(additionalProperties, "totalCount")
-		delete(additionalProperties, "project")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

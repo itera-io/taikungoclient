@@ -22,10 +22,7 @@ var _ MappedNullable = &EditProjectAppParamsDto{}
 type EditProjectAppParamsDto struct {
 	Key NullableString `json:"key,omitempty"`
 	Value NullableString `json:"value,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _EditProjectAppParamsDto EditProjectAppParamsDto
 
 // NewEditProjectAppParamsDto instantiates a new EditProjectAppParamsDto object
 // This constructor will assign default values to properties that have it defined,
@@ -144,34 +141,7 @@ func (o EditProjectAppParamsDto) ToMap() (map[string]interface{}, error) {
 	if o.Value.IsSet() {
 		toSerialize["value"] = o.Value.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *EditProjectAppParamsDto) UnmarshalJSON(data []byte) (err error) {
-	varEditProjectAppParamsDto := _EditProjectAppParamsDto{}
-
-	err = json.Unmarshal(data, &varEditProjectAppParamsDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = EditProjectAppParamsDto(varEditProjectAppParamsDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "key")
-		delete(additionalProperties, "value")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableEditProjectAppParamsDto struct {

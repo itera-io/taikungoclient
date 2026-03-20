@@ -23,12 +23,9 @@ type CreateUserCommand struct {
 	Username NullableString `json:"username,omitempty"`
 	DisplayName NullableString `json:"displayName,omitempty"`
 	Email NullableString `json:"email,omitempty"`
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	Role *UserRole `json:"role,omitempty"`
-	AdditionalProperties map[string]interface{}
+	AccountId NullableInt32 `json:"accountId,omitempty"`
+	IsAccountAdmin *bool `json:"isAccountAdmin,omitempty"`
 }
-
-type _CreateUserCommand CreateUserCommand
 
 // NewCreateUserCommand instantiates a new CreateUserCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -173,78 +170,78 @@ func (o *CreateUserCommand) UnsetEmail() {
 	o.Email.Unset()
 }
 
-// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateUserCommand) GetOrganizationId() int32 {
-	if o == nil || IsNil(o.OrganizationId.Get()) {
+// GetAccountId returns the AccountId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateUserCommand) GetAccountId() int32 {
+	if o == nil || IsNil(o.AccountId.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.OrganizationId.Get()
+	return *o.AccountId.Get()
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
+// GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateUserCommand) GetOrganizationIdOk() (*int32, bool) {
+func (o *CreateUserCommand) GetAccountIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
+	return o.AccountId.Get(), o.AccountId.IsSet()
 }
 
-// HasOrganizationId returns a boolean if a field has been set.
-func (o *CreateUserCommand) HasOrganizationId() bool {
-	if o != nil && o.OrganizationId.IsSet() {
+// HasAccountId returns a boolean if a field has been set.
+func (o *CreateUserCommand) HasAccountId() bool {
+	if o != nil && o.AccountId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
-func (o *CreateUserCommand) SetOrganizationId(v int32) {
-	o.OrganizationId.Set(&v)
+// SetAccountId gets a reference to the given NullableInt32 and assigns it to the AccountId field.
+func (o *CreateUserCommand) SetAccountId(v int32) {
+	o.AccountId.Set(&v)
 }
-// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
-func (o *CreateUserCommand) SetOrganizationIdNil() {
-	o.OrganizationId.Set(nil)
-}
-
-// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
-func (o *CreateUserCommand) UnsetOrganizationId() {
-	o.OrganizationId.Unset()
+// SetAccountIdNil sets the value for AccountId to be an explicit nil
+func (o *CreateUserCommand) SetAccountIdNil() {
+	o.AccountId.Set(nil)
 }
 
-// GetRole returns the Role field value if set, zero value otherwise.
-func (o *CreateUserCommand) GetRole() UserRole {
-	if o == nil || IsNil(o.Role) {
-		var ret UserRole
+// UnsetAccountId ensures that no value is present for AccountId, not even an explicit nil
+func (o *CreateUserCommand) UnsetAccountId() {
+	o.AccountId.Unset()
+}
+
+// GetIsAccountAdmin returns the IsAccountAdmin field value if set, zero value otherwise.
+func (o *CreateUserCommand) GetIsAccountAdmin() bool {
+	if o == nil || IsNil(o.IsAccountAdmin) {
+		var ret bool
 		return ret
 	}
-	return *o.Role
+	return *o.IsAccountAdmin
 }
 
-// GetRoleOk returns a tuple with the Role field value if set, nil otherwise
+// GetIsAccountAdminOk returns a tuple with the IsAccountAdmin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateUserCommand) GetRoleOk() (*UserRole, bool) {
-	if o == nil || IsNil(o.Role) {
+func (o *CreateUserCommand) GetIsAccountAdminOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsAccountAdmin) {
 		return nil, false
 	}
-	return o.Role, true
+	return o.IsAccountAdmin, true
 }
 
-// HasRole returns a boolean if a field has been set.
-func (o *CreateUserCommand) HasRole() bool {
-	if o != nil && !IsNil(o.Role) {
+// HasIsAccountAdmin returns a boolean if a field has been set.
+func (o *CreateUserCommand) HasIsAccountAdmin() bool {
+	if o != nil && !IsNil(o.IsAccountAdmin) {
 		return true
 	}
 
 	return false
 }
 
-// SetRole gets a reference to the given UserRole and assigns it to the Role field.
-func (o *CreateUserCommand) SetRole(v UserRole) {
-	o.Role = &v
+// SetIsAccountAdmin gets a reference to the given bool and assigns it to the IsAccountAdmin field.
+func (o *CreateUserCommand) SetIsAccountAdmin(v bool) {
+	o.IsAccountAdmin = &v
 }
 
 func (o CreateUserCommand) MarshalJSON() ([]byte, error) {
@@ -266,43 +263,13 @@ func (o CreateUserCommand) ToMap() (map[string]interface{}, error) {
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
 	}
-	if o.OrganizationId.IsSet() {
-		toSerialize["organizationId"] = o.OrganizationId.Get()
+	if o.AccountId.IsSet() {
+		toSerialize["accountId"] = o.AccountId.Get()
 	}
-	if !IsNil(o.Role) {
-		toSerialize["role"] = o.Role
+	if !IsNil(o.IsAccountAdmin) {
+		toSerialize["isAccountAdmin"] = o.IsAccountAdmin
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *CreateUserCommand) UnmarshalJSON(data []byte) (err error) {
-	varCreateUserCommand := _CreateUserCommand{}
-
-	err = json.Unmarshal(data, &varCreateUserCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CreateUserCommand(varCreateUserCommand)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "username")
-		delete(additionalProperties, "displayName")
-		delete(additionalProperties, "email")
-		delete(additionalProperties, "organizationId")
-		delete(additionalProperties, "role")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCreateUserCommand struct {

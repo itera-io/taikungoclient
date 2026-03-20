@@ -25,10 +25,7 @@ type UpdateSlackConfigurationDto struct {
 	Url NullableString `json:"url,omitempty"`
 	Channel NullableString `json:"channel,omitempty"`
 	SlackType *SlackType `json:"slackType,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _UpdateSlackConfigurationDto UpdateSlackConfigurationDto
 
 // NewUpdateSlackConfigurationDto instantiates a new UpdateSlackConfigurationDto object
 // This constructor will assign default values to properties that have it defined,
@@ -272,37 +269,7 @@ func (o UpdateSlackConfigurationDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SlackType) {
 		toSerialize["slackType"] = o.SlackType
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *UpdateSlackConfigurationDto) UnmarshalJSON(data []byte) (err error) {
-	varUpdateSlackConfigurationDto := _UpdateSlackConfigurationDto{}
-
-	err = json.Unmarshal(data, &varUpdateSlackConfigurationDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = UpdateSlackConfigurationDto(varUpdateSlackConfigurationDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "organizationId")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "url")
-		delete(additionalProperties, "channel")
-		delete(additionalProperties, "slackType")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableUpdateSlackConfigurationDto struct {

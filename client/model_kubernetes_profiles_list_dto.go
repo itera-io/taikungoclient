@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -40,7 +41,6 @@ type KubernetesProfilesListDto struct {
 	ProxmoxStorage ProxmoxStorage `json:"proxmoxStorage"`
 	NvidiaGpuOperatorEnabled bool `json:"nvidiaGpuOperatorEnabled"`
 	WasmEnabled bool `json:"wasmEnabled"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _KubernetesProfilesListDto KubernetesProfilesListDto
@@ -576,11 +576,6 @@ func (o KubernetesProfilesListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["proxmoxStorage"] = o.ProxmoxStorage
 	toSerialize["nvidiaGpuOperatorEnabled"] = o.NvidiaGpuOperatorEnabled
 	toSerialize["wasmEnabled"] = o.WasmEnabled
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -626,38 +621,15 @@ func (o *KubernetesProfilesListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varKubernetesProfilesListDto := _KubernetesProfilesListDto{}
 
-	err = json.Unmarshal(data, &varKubernetesProfilesListDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varKubernetesProfilesListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubernetesProfilesListDto(varKubernetesProfilesListDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "organizationId")
-		delete(additionalProperties, "organizationName")
-		delete(additionalProperties, "cni")
-		delete(additionalProperties, "octaviaEnabled")
-		delete(additionalProperties, "exposeNodePortOnBastion")
-		delete(additionalProperties, "isLocked")
-		delete(additionalProperties, "taikunLBEnabled")
-		delete(additionalProperties, "allowSchedulingOnMaster")
-		delete(additionalProperties, "uniqueClusterName")
-		delete(additionalProperties, "projects")
-		delete(additionalProperties, "createdBy")
-		delete(additionalProperties, "createdAt")
-		delete(additionalProperties, "lastModified")
-		delete(additionalProperties, "lastModifiedBy")
-		delete(additionalProperties, "proxmoxStorage")
-		delete(additionalProperties, "nvidiaGpuOperatorEnabled")
-		delete(additionalProperties, "wasmEnabled")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

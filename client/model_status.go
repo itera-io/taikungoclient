@@ -23,10 +23,7 @@ var _ MappedNullable = &Status{}
 type Status struct {
 	LastBackup *time.Time `json:"lastBackup,omitempty"`
 	Phase NullableString `json:"phase,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _Status Status
 
 // NewStatus instantiates a new Status object
 // This constructor will assign default values to properties that have it defined,
@@ -135,34 +132,7 @@ func (o Status) ToMap() (map[string]interface{}, error) {
 	if o.Phase.IsSet() {
 		toSerialize["phase"] = o.Phase.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Status) UnmarshalJSON(data []byte) (err error) {
-	varStatus := _Status{}
-
-	err = json.Unmarshal(data, &varStatus)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Status(varStatus)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "lastBackup")
-		delete(additionalProperties, "phase")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableStatus struct {
