@@ -97,7 +97,7 @@ func (c *customTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 				c.mu.Unlock()
 				return nil, CreateError(body, err)
 			}
-			c.Client.token = result.Token
+			c.Client.token = result.GetToken()
 			if result.RefreshToken.Get() != nil {
 				c.Client.refreshToken = *result.RefreshToken.Get()
 			}
@@ -111,7 +111,7 @@ func (c *customTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 				c.mu.Unlock()
 				return nil, CreateError(body, err)
 			}
-			c.Client.token = result.Token
+			c.Client.token = result.GetToken()
 			if result.RefreshToken.Get() != nil {
 				c.Client.refreshToken = *result.RefreshToken.Get()
 			}
