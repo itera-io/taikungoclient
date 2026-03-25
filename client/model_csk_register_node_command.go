@@ -20,7 +20,7 @@ var _ MappedNullable = &CskRegisterNodeCommand{}
 
 // CskRegisterNodeCommand struct for CskRegisterNodeCommand
 type CskRegisterNodeCommand struct {
-	Token NullableString `json:"token,omitempty"`
+	ServerId *int32 `json:"serverId,omitempty"`
 }
 
 // NewCskRegisterNodeCommand instantiates a new CskRegisterNodeCommand object
@@ -40,46 +40,36 @@ func NewCskRegisterNodeCommandWithDefaults() *CskRegisterNodeCommand {
 	return &this
 }
 
-// GetToken returns the Token field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CskRegisterNodeCommand) GetToken() string {
-	if o == nil || IsNil(o.Token.Get()) {
-		var ret string
+// GetServerId returns the ServerId field value if set, zero value otherwise.
+func (o *CskRegisterNodeCommand) GetServerId() int32 {
+	if o == nil || IsNil(o.ServerId) {
+		var ret int32
 		return ret
 	}
-	return *o.Token.Get()
+	return *o.ServerId
 }
 
-// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
+// GetServerIdOk returns a tuple with the ServerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CskRegisterNodeCommand) GetTokenOk() (*string, bool) {
-	if o == nil {
+func (o *CskRegisterNodeCommand) GetServerIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.ServerId) {
 		return nil, false
 	}
-	return o.Token.Get(), o.Token.IsSet()
+	return o.ServerId, true
 }
 
-// HasToken returns a boolean if a field has been set.
-func (o *CskRegisterNodeCommand) HasToken() bool {
-	if o != nil && o.Token.IsSet() {
+// HasServerId returns a boolean if a field has been set.
+func (o *CskRegisterNodeCommand) HasServerId() bool {
+	if o != nil && !IsNil(o.ServerId) {
 		return true
 	}
 
 	return false
 }
 
-// SetToken gets a reference to the given NullableString and assigns it to the Token field.
-func (o *CskRegisterNodeCommand) SetToken(v string) {
-	o.Token.Set(&v)
-}
-// SetTokenNil sets the value for Token to be an explicit nil
-func (o *CskRegisterNodeCommand) SetTokenNil() {
-	o.Token.Set(nil)
-}
-
-// UnsetToken ensures that no value is present for Token, not even an explicit nil
-func (o *CskRegisterNodeCommand) UnsetToken() {
-	o.Token.Unset()
+// SetServerId gets a reference to the given int32 and assigns it to the ServerId field.
+func (o *CskRegisterNodeCommand) SetServerId(v int32) {
+	o.ServerId = &v
 }
 
 func (o CskRegisterNodeCommand) MarshalJSON() ([]byte, error) {
@@ -92,8 +82,8 @@ func (o CskRegisterNodeCommand) MarshalJSON() ([]byte, error) {
 
 func (o CskRegisterNodeCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Token.IsSet() {
-		toSerialize["token"] = o.Token.Get()
+	if !IsNil(o.ServerId) {
+		toSerialize["serverId"] = o.ServerId
 	}
 	return toSerialize, nil
 }

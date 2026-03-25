@@ -26,6 +26,7 @@ api_documentation.go
 api_executors.go
 api_flavors.go
 api_generic_kubernetes_cloud_credential.go
+api_global_configuration.go
 api_google.go
 api_groups.go
 api_images.go
@@ -280,6 +281,7 @@ docs/CrdSearchList.md
 docs/CreateAccessProfileCommand.md
 docs/CreateAccountCommand.md
 docs/CreateAccountSsoConfigCommand.md
+docs/CreateAiBackendsConfigurationCommand.md
 docs/CreateAiCredentialCommand.md
 docs/CreateAlertDto.md
 docs/CreateAlertingIntegrationCommand.md
@@ -464,6 +466,7 @@ docs/GetEksClusterAuthCommand.md
 docs/GetToken.md
 docs/GkeClusterDto.md
 docs/GkeClustersListCommand.md
+docs/GlobalConfigurationAPI.md
 docs/GlobalRole.md
 docs/GoogleAPI.md
 docs/GoogleCredentialList.md
@@ -1196,6 +1199,7 @@ model_crd_search_list.go
 model_create_access_profile_command.go
 model_create_account_command.go
 model_create_account_sso_config_command.go
+model_create_ai_backends_configuration_command.go
 model_create_ai_credential_command.go
 model_create_alert_dto.go
 model_create_alerting_integration_command.go
@@ -1870,4 +1874,5 @@ model_zadara_credential_list.go
 model_zadara_credentials_list_dto.go
 model_zadara_region_list_command.go
 response.go
+test/api_global_configuration_test.go
 utils.go

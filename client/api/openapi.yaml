@@ -14434,6 +14434,58 @@ paths:
       summary: Retrieve list of generic kubernetes cloud credentials
       tags:
       - Generic kubernetes cloud credential
+  /api/v1/global-configurations/create-ai-backend:
+    post:
+      operationId: global-configurations-create-ai-backend
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateAiBackendsConfigurationCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Create AI backend
+      tags:
+      - Global Configuration
   /api/v1/googlecloud/billing-accounts:
     post:
       operationId: googlecloud-billing-account-list
@@ -34622,9 +34674,7 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
-              schema:
-                type: string
+            application/json: {}
           description: OK
         "400":
           content:
@@ -34802,10 +34852,11 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: Token
-        required: false
+        name: ServerId
+        required: true
         schema:
-          type: string
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -47358,6 +47409,26 @@ components:
       - issuerUrl
       - name
       type: object
+    CreateAiBackendsConfigurationCommand:
+      example:
+        apiKey: apiKey
+        name: name
+        model: model
+        url: url
+      properties:
+        name:
+          nullable: true
+          type: string
+        url:
+          nullable: true
+          type: string
+        model:
+          nullable: true
+          type: string
+        apiKey:
+          nullable: true
+          type: string
+      type: object
     CreateAiCredentialCommand:
       example:
         organizationId: 0
@@ -49206,11 +49277,11 @@ components:
       type: object
     CskRegisterNodeCommand:
       example:
-        token: token
+        serverId: 0
       properties:
-        token:
-          nullable: true
-          type: string
+        serverId:
+          format: int32
+          type: integer
       type: object
     CsvExporter:
       example:
@@ -53008,9 +53079,13 @@ components:
       type: object
     ForgotPasswordCommand:
       example:
+        accountName: accountName
         email: email
       properties:
         email:
+          nullable: true
+          type: string
+        accountName:
           nullable: true
           type: string
       type: object
@@ -57056,6 +57131,7 @@ components:
         mode: mode
         password: password
         secretKey: secretKey
+        accountName: accountName
         accessKey: accessKey
         email: email
       properties:
@@ -57063,6 +57139,9 @@ components:
           nullable: true
           type: string
         password:
+          nullable: true
+          type: string
+        accountName:
           nullable: true
           type: string
         mode:
@@ -65803,6 +65882,7 @@ components:
         spotPrice: 5.962133916683182
         count: 1
         availabilityZone: availabilityZone
+        cskVersion: cskVersion
         proxmoxRole: NONE
         flavor: flavor
         spotInstance: true
@@ -65811,7 +65891,6 @@ components:
         replicaCount: 2
         wasmEnabled: true
         hypervisor: hypervisor
-        cskJoinToken: true
         name: name
         useLocalDisk: true
         kubernetesNodeLabels:
@@ -65871,8 +65950,9 @@ components:
           type: integer
         useLocalDisk:
           type: boolean
-        cskJoinToken:
-          type: boolean
+        cskVersion:
+          nullable: true
+          type: string
       type: object
     ServerListDto:
       example:

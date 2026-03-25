@@ -304,6 +304,7 @@ Class | Method | HTTP request | Description
 *FlavorsAPI* | [**FlavorsZadaraInstanceTypes**](docs/FlavorsAPI.md#flavorszadarainstancetypes) | **Get** /api/v1/flavors/zadara/{cloudId} | Retrieve zadara instance types
 *GenericKubernetesCloudCredentialAPI* | [**GenericKubernetesList**](docs/GenericKubernetesCloudCredentialAPI.md#generickuberneteslist) | **Get** /api/v1/generic-kubernetes/list | Retrieve list of generic kubernetes cloud credentials
 *GenericKubernetesCloudCredentialAPI* | [**GenericKubernetesUpdate**](docs/GenericKubernetesCloudCredentialAPI.md#generickubernetesupdate) | **Put** /api/v1/generic-kubernetes/update | Update Generic kubernetes credentials
+*GlobalConfigurationAPI* | [**GlobalConfigurationsCreateAiBackend**](docs/GlobalConfigurationAPI.md#globalconfigurationscreateaibackend) | **Post** /api/v1/global-configurations/create-ai-backend | Create AI backend
 *GoogleAPI* | [**GooglecloudBillingAccountList**](docs/GoogleAPI.md#googlecloudbillingaccountlist) | **Post** /api/v1/googlecloud/billing-accounts | Retrieve google billing accounts list
 *GoogleAPI* | [**GooglecloudCreate**](docs/GoogleAPI.md#googlecloudcreate) | **Post** /api/v1/googlecloud/create | Create google cloud credential
 *GoogleAPI* | [**GooglecloudGkeClusters**](docs/GoogleAPI.md#googlecloudgkeclusters) | **Post** /api/v1/googlecloud/gke-clusters | List of gke clusters
@@ -924,6 +925,7 @@ Class | Method | HTTP request | Description
  - [CreateAccessProfileCommand](docs/CreateAccessProfileCommand.md)
  - [CreateAccountCommand](docs/CreateAccountCommand.md)
  - [CreateAccountSsoConfigCommand](docs/CreateAccountSsoConfigCommand.md)
+ - [CreateAiBackendsConfigurationCommand](docs/CreateAiBackendsConfigurationCommand.md)
  - [CreateAiCredentialCommand](docs/CreateAiCredentialCommand.md)
  - [CreateAlertDto](docs/CreateAlertDto.md)
  - [CreateAlertingIntegrationCommand](docs/CreateAlertingIntegrationCommand.md)
