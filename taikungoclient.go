@@ -25,6 +25,7 @@ const TaikunAuthMode = "TAIKUN_AUTH_MODE"
 const TaikunAccessKey = "TAIKUN_ACCESS_KEY"
 const TaikunSecretKey = "TAIKUN_SECRET_KEY"
 const TaikunApiHostEnvVar = "TAIKUN_API_HOST"
+const TaikunAccountName = "TAIKUN_ACCOUNT_NAME"
 
 type jwtData struct {
 	Nameid     string `json:"nameid"`
@@ -375,9 +376,18 @@ func newClient(apiHost string, configure func(*Client)) *Client {
 //   - Otherwise, TAIKUN_EMAIL and TAIKUN_PASSWORD are used for user auth (JWT).
 //   - TAIKUN_API_HOST defaults to "api.taikun.cloud" if not set.
 func NewClient() *Client {
+	// check if API endpoint is specified, otherwise use standard one
 	apiHost := os.Getenv(TaikunApiHostEnvVar)
 	if apiHost == "" {
 		apiHost = "api.taikun.cloud"
+	}
+
+	// check for account name
+	an := os.Getenv(TaikunAccountName)
+	if an == "" {
+		fmt.Printf("Taikun account name must be set in '%s'\n", TaikunAccountName)
+		os.Exit(1)
+		return nil
 	}
 
 	// Check for robot user credentials (access key + secret key) first
@@ -395,7 +405,8 @@ func NewClient() *Client {
 		return NewClientFromCredentials(email, password, authMode, apiHost)
 	}
 
-	fmt.Println("Please set your Taikun credentials. Either TAIKUN_ACCESS_KEY + TAIKUN_SECRET_KEY or TAIKUN_EMAIL + TAIKUN_PASSWORD must be set.")
+	fmt.Printf("Please set your Taikun credentials. Either '%s' + '%s' or '%s' + '%s' must be set.\n",
+		TaikunAccessKey, TaikunSecretKey, TaikunEmailEnvVar, TaikunPasswordEnvVar)
 	os.Exit(1)
 	return nil
 }
