@@ -4,19 +4,21 @@ generate: generate-swagger generate-showback ## Generates Go bindings out of Swa
 
 generate-swagger: ## Generates Go binding out of core Swagger API definition
 	openapi-generator generate -i ./swagger-taikun.json -g go \
-    --additional-properties=packageName=taikuncore \
-    --additional-properties=enumClassPrefix=true \
-    --git-user-id=itera-io \
-    --git-repo-id=taikungoclient/client \
-    -o ./client
+	--additional-properties=packageName=taikuncore \
+	--additional-properties=enumClassPrefix=true \
+	--git-user-id=itera-io \
+	--git-repo-id=taikungoclient/client \
+	-o ./client
+	rm -f ./client/go.*
 
 generate-showback: ## Generates Go binding out of showback Swagger API definition
 	openapi-generator generate -i ./swagger-showback.json -g go \
-    --additional-properties=packageName=taikunshowback  \
-    --additional-properties=enumClassPrefix=true \
-    --git-user-id=itera-io \
-    --git-repo-id=taikungoclient/showbackclient \
-    -o ./showbackclient
+	--additional-properties=packageName=taikunshowback  \
+	--additional-properties=enumClassPrefix=true \
+	--git-user-id=itera-io \
+	--git-repo-id=taikungoclient/showbackclient \
+	-o ./showbackclient
+	rm ./showbackclient/go.*
 
 build: ## Builds Taikun Go Client wrapper
 	go build -o ${BINARY} .
