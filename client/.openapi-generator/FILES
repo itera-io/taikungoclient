@@ -1874,5 +1874,4 @@ model_zadara_credential_list.go
 model_zadara_credentials_list_dto.go
 model_zadara_region_list_command.go
 response.go
-test/api_global_configuration_test.go
 utils.go
