@@ -1,0 +1,6 @@
+.gitignore
+.idea
+*.jsom
+client/docs/*
+showbackclient/docs/*
+vendor/*
