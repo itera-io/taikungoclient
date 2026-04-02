@@ -54,8 +54,6 @@ type APIClient struct {
 
 	AccessProfilesAPI *AccessProfilesAPIService
 
-	AccountsAPI *AccountsAPIService
-
 	AiCredentialsAPI *AiCredentialsAPIService
 
 	AlertingIntegrationsAPI *AlertingIntegrationsAPIService
@@ -91,6 +89,8 @@ type APIClient struct {
 	DnsServersAPI *DnsServersAPIService
 
 	DocumentationAPI *DocumentationAPIService
+
+	DomainsAPI *DomainsAPIService
 
 	ExecutorsAPI *ExecutorsAPIService
 
@@ -229,7 +229,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.AWSCloudCredentialAPI = (*AWSCloudCredentialAPIService)(&c.common)
 	c.AccessProfilesAPI = (*AccessProfilesAPIService)(&c.common)
-	c.AccountsAPI = (*AccountsAPIService)(&c.common)
 	c.AiCredentialsAPI = (*AiCredentialsAPIService)(&c.common)
 	c.AlertingIntegrationsAPI = (*AlertingIntegrationsAPIService)(&c.common)
 	c.AlertingProfilesAPI = (*AlertingProfilesAPIService)(&c.common)
@@ -248,6 +247,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CronJobServiceAPI = (*CronJobServiceAPIService)(&c.common)
 	c.DnsServersAPI = (*DnsServersAPIService)(&c.common)
 	c.DocumentationAPI = (*DocumentationAPIService)(&c.common)
+	c.DomainsAPI = (*DomainsAPIService)(&c.common)
 	c.ExecutorsAPI = (*ExecutorsAPIService)(&c.common)
 	c.FlavorsAPI = (*FlavorsAPIService)(&c.common)
 	c.GenericKubernetesCloudCredentialAPI = (*GenericKubernetesCloudCredentialAPIService)(&c.common)

@@ -15,38 +15,38 @@ import (
 	"encoding/json"
 )
 
-// checks if the CheckAccountSsoConfigCommand type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CheckAccountSsoConfigCommand{}
+// checks if the CheckDomainSsoConfigCommand type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CheckDomainSsoConfigCommand{}
 
-// CheckAccountSsoConfigCommand struct for CheckAccountSsoConfigCommand
-type CheckAccountSsoConfigCommand struct {
+// CheckDomainSsoConfigCommand struct for CheckDomainSsoConfigCommand
+type CheckDomainSsoConfigCommand struct {
 	IssuerUrl            NullableString `json:"issuerUrl,omitempty"`
 	ClientId             NullableString `json:"clientId,omitempty"`
 	ClientSecret         NullableString `json:"clientSecret,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _CheckAccountSsoConfigCommand CheckAccountSsoConfigCommand
+type _CheckDomainSsoConfigCommand CheckDomainSsoConfigCommand
 
-// NewCheckAccountSsoConfigCommand instantiates a new CheckAccountSsoConfigCommand object
+// NewCheckDomainSsoConfigCommand instantiates a new CheckDomainSsoConfigCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCheckAccountSsoConfigCommand() *CheckAccountSsoConfigCommand {
-	this := CheckAccountSsoConfigCommand{}
+func NewCheckDomainSsoConfigCommand() *CheckDomainSsoConfigCommand {
+	this := CheckDomainSsoConfigCommand{}
 	return &this
 }
 
-// NewCheckAccountSsoConfigCommandWithDefaults instantiates a new CheckAccountSsoConfigCommand object
+// NewCheckDomainSsoConfigCommandWithDefaults instantiates a new CheckDomainSsoConfigCommand object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCheckAccountSsoConfigCommandWithDefaults() *CheckAccountSsoConfigCommand {
-	this := CheckAccountSsoConfigCommand{}
+func NewCheckDomainSsoConfigCommandWithDefaults() *CheckDomainSsoConfigCommand {
+	this := CheckDomainSsoConfigCommand{}
 	return &this
 }
 
 // GetIssuerUrl returns the IssuerUrl field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CheckAccountSsoConfigCommand) GetIssuerUrl() string {
+func (o *CheckDomainSsoConfigCommand) GetIssuerUrl() string {
 	if o == nil || IsNil(o.IssuerUrl.Get()) {
 		var ret string
 		return ret
@@ -57,7 +57,7 @@ func (o *CheckAccountSsoConfigCommand) GetIssuerUrl() string {
 // GetIssuerUrlOk returns a tuple with the IssuerUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CheckAccountSsoConfigCommand) GetIssuerUrlOk() (*string, bool) {
+func (o *CheckDomainSsoConfigCommand) GetIssuerUrlOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *CheckAccountSsoConfigCommand) GetIssuerUrlOk() (*string, bool) {
 }
 
 // HasIssuerUrl returns a boolean if a field has been set.
-func (o *CheckAccountSsoConfigCommand) HasIssuerUrl() bool {
+func (o *CheckDomainSsoConfigCommand) HasIssuerUrl() bool {
 	if o != nil && o.IssuerUrl.IsSet() {
 		return true
 	}
@@ -74,22 +74,22 @@ func (o *CheckAccountSsoConfigCommand) HasIssuerUrl() bool {
 }
 
 // SetIssuerUrl gets a reference to the given NullableString and assigns it to the IssuerUrl field.
-func (o *CheckAccountSsoConfigCommand) SetIssuerUrl(v string) {
+func (o *CheckDomainSsoConfigCommand) SetIssuerUrl(v string) {
 	o.IssuerUrl.Set(&v)
 }
 
 // SetIssuerUrlNil sets the value for IssuerUrl to be an explicit nil
-func (o *CheckAccountSsoConfigCommand) SetIssuerUrlNil() {
+func (o *CheckDomainSsoConfigCommand) SetIssuerUrlNil() {
 	o.IssuerUrl.Set(nil)
 }
 
 // UnsetIssuerUrl ensures that no value is present for IssuerUrl, not even an explicit nil
-func (o *CheckAccountSsoConfigCommand) UnsetIssuerUrl() {
+func (o *CheckDomainSsoConfigCommand) UnsetIssuerUrl() {
 	o.IssuerUrl.Unset()
 }
 
 // GetClientId returns the ClientId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CheckAccountSsoConfigCommand) GetClientId() string {
+func (o *CheckDomainSsoConfigCommand) GetClientId() string {
 	if o == nil || IsNil(o.ClientId.Get()) {
 		var ret string
 		return ret
@@ -100,7 +100,7 @@ func (o *CheckAccountSsoConfigCommand) GetClientId() string {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CheckAccountSsoConfigCommand) GetClientIdOk() (*string, bool) {
+func (o *CheckDomainSsoConfigCommand) GetClientIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -108,7 +108,7 @@ func (o *CheckAccountSsoConfigCommand) GetClientIdOk() (*string, bool) {
 }
 
 // HasClientId returns a boolean if a field has been set.
-func (o *CheckAccountSsoConfigCommand) HasClientId() bool {
+func (o *CheckDomainSsoConfigCommand) HasClientId() bool {
 	if o != nil && o.ClientId.IsSet() {
 		return true
 	}
@@ -117,22 +117,22 @@ func (o *CheckAccountSsoConfigCommand) HasClientId() bool {
 }
 
 // SetClientId gets a reference to the given NullableString and assigns it to the ClientId field.
-func (o *CheckAccountSsoConfigCommand) SetClientId(v string) {
+func (o *CheckDomainSsoConfigCommand) SetClientId(v string) {
 	o.ClientId.Set(&v)
 }
 
 // SetClientIdNil sets the value for ClientId to be an explicit nil
-func (o *CheckAccountSsoConfigCommand) SetClientIdNil() {
+func (o *CheckDomainSsoConfigCommand) SetClientIdNil() {
 	o.ClientId.Set(nil)
 }
 
 // UnsetClientId ensures that no value is present for ClientId, not even an explicit nil
-func (o *CheckAccountSsoConfigCommand) UnsetClientId() {
+func (o *CheckDomainSsoConfigCommand) UnsetClientId() {
 	o.ClientId.Unset()
 }
 
 // GetClientSecret returns the ClientSecret field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CheckAccountSsoConfigCommand) GetClientSecret() string {
+func (o *CheckDomainSsoConfigCommand) GetClientSecret() string {
 	if o == nil || IsNil(o.ClientSecret.Get()) {
 		var ret string
 		return ret
@@ -143,7 +143,7 @@ func (o *CheckAccountSsoConfigCommand) GetClientSecret() string {
 // GetClientSecretOk returns a tuple with the ClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CheckAccountSsoConfigCommand) GetClientSecretOk() (*string, bool) {
+func (o *CheckDomainSsoConfigCommand) GetClientSecretOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -151,7 +151,7 @@ func (o *CheckAccountSsoConfigCommand) GetClientSecretOk() (*string, bool) {
 }
 
 // HasClientSecret returns a boolean if a field has been set.
-func (o *CheckAccountSsoConfigCommand) HasClientSecret() bool {
+func (o *CheckDomainSsoConfigCommand) HasClientSecret() bool {
 	if o != nil && o.ClientSecret.IsSet() {
 		return true
 	}
@@ -160,21 +160,21 @@ func (o *CheckAccountSsoConfigCommand) HasClientSecret() bool {
 }
 
 // SetClientSecret gets a reference to the given NullableString and assigns it to the ClientSecret field.
-func (o *CheckAccountSsoConfigCommand) SetClientSecret(v string) {
+func (o *CheckDomainSsoConfigCommand) SetClientSecret(v string) {
 	o.ClientSecret.Set(&v)
 }
 
 // SetClientSecretNil sets the value for ClientSecret to be an explicit nil
-func (o *CheckAccountSsoConfigCommand) SetClientSecretNil() {
+func (o *CheckDomainSsoConfigCommand) SetClientSecretNil() {
 	o.ClientSecret.Set(nil)
 }
 
 // UnsetClientSecret ensures that no value is present for ClientSecret, not even an explicit nil
-func (o *CheckAccountSsoConfigCommand) UnsetClientSecret() {
+func (o *CheckDomainSsoConfigCommand) UnsetClientSecret() {
 	o.ClientSecret.Unset()
 }
 
-func (o CheckAccountSsoConfigCommand) MarshalJSON() ([]byte, error) {
+func (o CheckDomainSsoConfigCommand) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -182,7 +182,7 @@ func (o CheckAccountSsoConfigCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o CheckAccountSsoConfigCommand) ToMap() (map[string]interface{}, error) {
+func (o CheckDomainSsoConfigCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.IssuerUrl.IsSet() {
 		toSerialize["issuerUrl"] = o.IssuerUrl.Get()
@@ -201,16 +201,16 @@ func (o CheckAccountSsoConfigCommand) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CheckAccountSsoConfigCommand) UnmarshalJSON(data []byte) (err error) {
-	varCheckAccountSsoConfigCommand := _CheckAccountSsoConfigCommand{}
+func (o *CheckDomainSsoConfigCommand) UnmarshalJSON(data []byte) (err error) {
+	varCheckDomainSsoConfigCommand := _CheckDomainSsoConfigCommand{}
 
-	err = json.Unmarshal(data, &varCheckAccountSsoConfigCommand)
+	err = json.Unmarshal(data, &varCheckDomainSsoConfigCommand)
 
 	if err != nil {
 		return err
 	}
 
-	*o = CheckAccountSsoConfigCommand(varCheckAccountSsoConfigCommand)
+	*o = CheckDomainSsoConfigCommand(varCheckDomainSsoConfigCommand)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -224,38 +224,38 @@ func (o *CheckAccountSsoConfigCommand) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableCheckAccountSsoConfigCommand struct {
-	value *CheckAccountSsoConfigCommand
+type NullableCheckDomainSsoConfigCommand struct {
+	value *CheckDomainSsoConfigCommand
 	isSet bool
 }
 
-func (v NullableCheckAccountSsoConfigCommand) Get() *CheckAccountSsoConfigCommand {
+func (v NullableCheckDomainSsoConfigCommand) Get() *CheckDomainSsoConfigCommand {
 	return v.value
 }
 
-func (v *NullableCheckAccountSsoConfigCommand) Set(val *CheckAccountSsoConfigCommand) {
+func (v *NullableCheckDomainSsoConfigCommand) Set(val *CheckDomainSsoConfigCommand) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCheckAccountSsoConfigCommand) IsSet() bool {
+func (v NullableCheckDomainSsoConfigCommand) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCheckAccountSsoConfigCommand) Unset() {
+func (v *NullableCheckDomainSsoConfigCommand) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCheckAccountSsoConfigCommand(val *CheckAccountSsoConfigCommand) *NullableCheckAccountSsoConfigCommand {
-	return &NullableCheckAccountSsoConfigCommand{value: val, isSet: true}
+func NewNullableCheckDomainSsoConfigCommand(val *CheckDomainSsoConfigCommand) *NullableCheckDomainSsoConfigCommand {
+	return &NullableCheckDomainSsoConfigCommand{value: val, isSet: true}
 }
 
-func (v NullableCheckAccountSsoConfigCommand) MarshalJSON() ([]byte, error) {
+func (v NullableCheckDomainSsoConfigCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCheckAccountSsoConfigCommand) UnmarshalJSON(src []byte) error {
+func (v *NullableCheckDomainSsoConfigCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

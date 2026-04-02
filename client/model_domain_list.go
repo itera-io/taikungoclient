@@ -16,11 +16,11 @@ import (
 	"fmt"
 )
 
-// checks if the AccountList type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AccountList{}
+// checks if the DomainList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DomainList{}
 
-// AccountList struct for AccountList
-type AccountList struct {
+// DomainList struct for DomainList
+type DomainList struct {
 	Id                   int32          `json:"id"`
 	Name                 NullableString `json:"name"`
 	OrganizationsCount   *int64         `json:"organizationsCount,omitempty"`
@@ -30,29 +30,29 @@ type AccountList struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _AccountList AccountList
+type _DomainList DomainList
 
-// NewAccountList instantiates a new AccountList object
+// NewDomainList instantiates a new DomainList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountList(id int32, name NullableString) *AccountList {
-	this := AccountList{}
+func NewDomainList(id int32, name NullableString) *DomainList {
+	this := DomainList{}
 	this.Id = id
 	this.Name = name
 	return &this
 }
 
-// NewAccountListWithDefaults instantiates a new AccountList object
+// NewDomainListWithDefaults instantiates a new DomainList object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAccountListWithDefaults() *AccountList {
-	this := AccountList{}
+func NewDomainListWithDefaults() *DomainList {
+	this := DomainList{}
 	return &this
 }
 
 // GetId returns the Id field value
-func (o *AccountList) GetId() int32 {
+func (o *DomainList) GetId() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -63,7 +63,7 @@ func (o *AccountList) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *AccountList) GetIdOk() (*int32, bool) {
+func (o *DomainList) GetIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -71,13 +71,13 @@ func (o *AccountList) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *AccountList) SetId(v int32) {
+func (o *DomainList) SetId(v int32) {
 	o.Id = v
 }
 
 // GetName returns the Name field value
 // If the value is explicit nil, the zero value for string will be returned
-func (o *AccountList) GetName() string {
+func (o *DomainList) GetName() string {
 	if o == nil || o.Name.Get() == nil {
 		var ret string
 		return ret
@@ -89,7 +89,7 @@ func (o *AccountList) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountList) GetNameOk() (*string, bool) {
+func (o *DomainList) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -97,12 +97,12 @@ func (o *AccountList) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *AccountList) SetName(v string) {
+func (o *DomainList) SetName(v string) {
 	o.Name.Set(&v)
 }
 
 // GetOrganizationsCount returns the OrganizationsCount field value if set, zero value otherwise.
-func (o *AccountList) GetOrganizationsCount() int64 {
+func (o *DomainList) GetOrganizationsCount() int64 {
 	if o == nil || IsNil(o.OrganizationsCount) {
 		var ret int64
 		return ret
@@ -112,7 +112,7 @@ func (o *AccountList) GetOrganizationsCount() int64 {
 
 // GetOrganizationsCountOk returns a tuple with the OrganizationsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountList) GetOrganizationsCountOk() (*int64, bool) {
+func (o *DomainList) GetOrganizationsCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.OrganizationsCount) {
 		return nil, false
 	}
@@ -120,7 +120,7 @@ func (o *AccountList) GetOrganizationsCountOk() (*int64, bool) {
 }
 
 // HasOrganizationsCount returns a boolean if a field has been set.
-func (o *AccountList) HasOrganizationsCount() bool {
+func (o *DomainList) HasOrganizationsCount() bool {
 	if o != nil && !IsNil(o.OrganizationsCount) {
 		return true
 	}
@@ -129,12 +129,12 @@ func (o *AccountList) HasOrganizationsCount() bool {
 }
 
 // SetOrganizationsCount gets a reference to the given int64 and assigns it to the OrganizationsCount field.
-func (o *AccountList) SetOrganizationsCount(v int64) {
+func (o *DomainList) SetOrganizationsCount(v int64) {
 	o.OrganizationsCount = &v
 }
 
 // GetUsersCount returns the UsersCount field value if set, zero value otherwise.
-func (o *AccountList) GetUsersCount() int64 {
+func (o *DomainList) GetUsersCount() int64 {
 	if o == nil || IsNil(o.UsersCount) {
 		var ret int64
 		return ret
@@ -144,7 +144,7 @@ func (o *AccountList) GetUsersCount() int64 {
 
 // GetUsersCountOk returns a tuple with the UsersCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountList) GetUsersCountOk() (*int64, bool) {
+func (o *DomainList) GetUsersCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.UsersCount) {
 		return nil, false
 	}
@@ -152,7 +152,7 @@ func (o *AccountList) GetUsersCountOk() (*int64, bool) {
 }
 
 // HasUsersCount returns a boolean if a field has been set.
-func (o *AccountList) HasUsersCount() bool {
+func (o *DomainList) HasUsersCount() bool {
 	if o != nil && !IsNil(o.UsersCount) {
 		return true
 	}
@@ -161,12 +161,12 @@ func (o *AccountList) HasUsersCount() bool {
 }
 
 // SetUsersCount gets a reference to the given int64 and assigns it to the UsersCount field.
-func (o *AccountList) SetUsersCount(v int64) {
+func (o *DomainList) SetUsersCount(v int64) {
 	o.UsersCount = &v
 }
 
 // GetGroupsCount returns the GroupsCount field value if set, zero value otherwise.
-func (o *AccountList) GetGroupsCount() int64 {
+func (o *DomainList) GetGroupsCount() int64 {
 	if o == nil || IsNil(o.GroupsCount) {
 		var ret int64
 		return ret
@@ -176,7 +176,7 @@ func (o *AccountList) GetGroupsCount() int64 {
 
 // GetGroupsCountOk returns a tuple with the GroupsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountList) GetGroupsCountOk() (*int64, bool) {
+func (o *DomainList) GetGroupsCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.GroupsCount) {
 		return nil, false
 	}
@@ -184,7 +184,7 @@ func (o *AccountList) GetGroupsCountOk() (*int64, bool) {
 }
 
 // HasGroupsCount returns a boolean if a field has been set.
-func (o *AccountList) HasGroupsCount() bool {
+func (o *DomainList) HasGroupsCount() bool {
 	if o != nil && !IsNil(o.GroupsCount) {
 		return true
 	}
@@ -193,12 +193,12 @@ func (o *AccountList) HasGroupsCount() bool {
 }
 
 // SetGroupsCount gets a reference to the given int64 and assigns it to the GroupsCount field.
-func (o *AccountList) SetGroupsCount(v int64) {
+func (o *DomainList) SetGroupsCount(v int64) {
 	o.GroupsCount = &v
 }
 
 // GetProjectsCount returns the ProjectsCount field value if set, zero value otherwise.
-func (o *AccountList) GetProjectsCount() int64 {
+func (o *DomainList) GetProjectsCount() int64 {
 	if o == nil || IsNil(o.ProjectsCount) {
 		var ret int64
 		return ret
@@ -208,7 +208,7 @@ func (o *AccountList) GetProjectsCount() int64 {
 
 // GetProjectsCountOk returns a tuple with the ProjectsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountList) GetProjectsCountOk() (*int64, bool) {
+func (o *DomainList) GetProjectsCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.ProjectsCount) {
 		return nil, false
 	}
@@ -216,7 +216,7 @@ func (o *AccountList) GetProjectsCountOk() (*int64, bool) {
 }
 
 // HasProjectsCount returns a boolean if a field has been set.
-func (o *AccountList) HasProjectsCount() bool {
+func (o *DomainList) HasProjectsCount() bool {
 	if o != nil && !IsNil(o.ProjectsCount) {
 		return true
 	}
@@ -225,11 +225,11 @@ func (o *AccountList) HasProjectsCount() bool {
 }
 
 // SetProjectsCount gets a reference to the given int64 and assigns it to the ProjectsCount field.
-func (o *AccountList) SetProjectsCount(v int64) {
+func (o *DomainList) SetProjectsCount(v int64) {
 	o.ProjectsCount = &v
 }
 
-func (o AccountList) MarshalJSON() ([]byte, error) {
+func (o DomainList) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -237,7 +237,7 @@ func (o AccountList) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o AccountList) ToMap() (map[string]interface{}, error) {
+func (o DomainList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name.Get()
@@ -261,7 +261,7 @@ func (o AccountList) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccountList) UnmarshalJSON(data []byte) (err error) {
+func (o *DomainList) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -284,15 +284,15 @@ func (o *AccountList) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varAccountList := _AccountList{}
+	varDomainList := _DomainList{}
 
-	err = json.Unmarshal(data, &varAccountList)
+	err = json.Unmarshal(data, &varDomainList)
 
 	if err != nil {
 		return err
 	}
 
-	*o = AccountList(varAccountList)
+	*o = DomainList(varDomainList)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -309,38 +309,38 @@ func (o *AccountList) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableAccountList struct {
-	value *AccountList
+type NullableDomainList struct {
+	value *DomainList
 	isSet bool
 }
 
-func (v NullableAccountList) Get() *AccountList {
+func (v NullableDomainList) Get() *DomainList {
 	return v.value
 }
 
-func (v *NullableAccountList) Set(val *AccountList) {
+func (v *NullableDomainList) Set(val *DomainList) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableAccountList) IsSet() bool {
+func (v NullableDomainList) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableAccountList) Unset() {
+func (v *NullableDomainList) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableAccountList(val *AccountList) *NullableAccountList {
-	return &NullableAccountList{value: val, isSet: true}
+func NewNullableDomainList(val *DomainList) *NullableDomainList {
+	return &NullableDomainList{value: val, isSet: true}
 }
 
-func (v NullableAccountList) MarshalJSON() ([]byte, error) {
+func (v NullableDomainList) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableAccountList) UnmarshalJSON(src []byte) error {
+func (v *NullableDomainList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

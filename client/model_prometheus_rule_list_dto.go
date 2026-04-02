@@ -33,7 +33,7 @@ type PrometheusRuleListDto struct {
 	Price                float64                                   `json:"price"`
 	BillingStartDate     NullableString                            `json:"billingStartDate"`
 	CreatedAt            NullableString                            `json:"createdAt"`
-	Account              AccountEntity                             `json:"account"`
+	Account              DomainEntity                              `json:"account"`
 	OperationCredential  OperationCredentialsForOrganizationEntity `json:"operationCredential"`
 	CreatedBy            string                                    `json:"createdBy"`
 	LastModified         NullableString                            `json:"lastModified"`
@@ -47,7 +47,7 @@ type _PrometheusRuleListDto PrometheusRuleListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrometheusRuleListDto(id int32, name string, password string, userName string, url string, metricName NullableString, labels []PrometheusLabelListDto, boundOrganizations []PrometheusOrganizationDiscountDto, type_ PrometheusType, price float64, billingStartDate NullableString, createdAt NullableString, account AccountEntity, operationCredential OperationCredentialsForOrganizationEntity, createdBy string, lastModified NullableString, lastModifiedBy NullableString) *PrometheusRuleListDto {
+func NewPrometheusRuleListDto(id int32, name string, password string, userName string, url string, metricName NullableString, labels []PrometheusLabelListDto, boundOrganizations []PrometheusOrganizationDiscountDto, type_ PrometheusType, price float64, billingStartDate NullableString, createdAt NullableString, account DomainEntity, operationCredential OperationCredentialsForOrganizationEntity, createdBy string, lastModified NullableString, lastModifiedBy NullableString) *PrometheusRuleListDto {
 	this := PrometheusRuleListDto{}
 	this.Id = id
 	this.Name = name
@@ -376,9 +376,9 @@ func (o *PrometheusRuleListDto) SetCreatedAt(v string) {
 }
 
 // GetAccount returns the Account field value
-func (o *PrometheusRuleListDto) GetAccount() AccountEntity {
+func (o *PrometheusRuleListDto) GetAccount() DomainEntity {
 	if o == nil {
-		var ret AccountEntity
+		var ret DomainEntity
 		return ret
 	}
 
@@ -387,7 +387,7 @@ func (o *PrometheusRuleListDto) GetAccount() AccountEntity {
 
 // GetAccountOk returns a tuple with the Account field value
 // and a boolean to check if the value has been set.
-func (o *PrometheusRuleListDto) GetAccountOk() (*AccountEntity, bool) {
+func (o *PrometheusRuleListDto) GetAccountOk() (*DomainEntity, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -395,7 +395,7 @@ func (o *PrometheusRuleListDto) GetAccountOk() (*AccountEntity, bool) {
 }
 
 // SetAccount sets field value
-func (o *PrometheusRuleListDto) SetAccount(v AccountEntity) {
+func (o *PrometheusRuleListDto) SetAccount(v DomainEntity) {
 	o.Account = v
 }
 

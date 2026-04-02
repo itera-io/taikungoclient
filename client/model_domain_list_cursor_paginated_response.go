@@ -16,12 +16,12 @@ import (
 	"fmt"
 )
 
-// checks if the AccountListCursorPaginatedResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AccountListCursorPaginatedResponse{}
+// checks if the DomainListCursorPaginatedResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DomainListCursorPaginatedResponse{}
 
-// AccountListCursorPaginatedResponse struct for AccountListCursorPaginatedResponse
-type AccountListCursorPaginatedResponse struct {
-	Data                 []AccountList `json:"data"`
+// DomainListCursorPaginatedResponse struct for DomainListCursorPaginatedResponse
+type DomainListCursorPaginatedResponse struct {
+	Data                 []DomainList  `json:"data"`
 	Limit                int32         `json:"limit"`
 	HasMore              bool          `json:"hasMore"`
 	TotalCount           int64         `json:"totalCount"`
@@ -29,14 +29,14 @@ type AccountListCursorPaginatedResponse struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _AccountListCursorPaginatedResponse AccountListCursorPaginatedResponse
+type _DomainListCursorPaginatedResponse DomainListCursorPaginatedResponse
 
-// NewAccountListCursorPaginatedResponse instantiates a new AccountListCursorPaginatedResponse object
+// NewDomainListCursorPaginatedResponse instantiates a new DomainListCursorPaginatedResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountListCursorPaginatedResponse(data []AccountList, limit int32, hasMore bool, totalCount int64) *AccountListCursorPaginatedResponse {
-	this := AccountListCursorPaginatedResponse{}
+func NewDomainListCursorPaginatedResponse(data []DomainList, limit int32, hasMore bool, totalCount int64) *DomainListCursorPaginatedResponse {
+	this := DomainListCursorPaginatedResponse{}
 	this.Data = data
 	this.Limit = limit
 	this.HasMore = hasMore
@@ -44,19 +44,19 @@ func NewAccountListCursorPaginatedResponse(data []AccountList, limit int32, hasM
 	return &this
 }
 
-// NewAccountListCursorPaginatedResponseWithDefaults instantiates a new AccountListCursorPaginatedResponse object
+// NewDomainListCursorPaginatedResponseWithDefaults instantiates a new DomainListCursorPaginatedResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAccountListCursorPaginatedResponseWithDefaults() *AccountListCursorPaginatedResponse {
-	this := AccountListCursorPaginatedResponse{}
+func NewDomainListCursorPaginatedResponseWithDefaults() *DomainListCursorPaginatedResponse {
+	this := DomainListCursorPaginatedResponse{}
 	return &this
 }
 
 // GetData returns the Data field value
-// If the value is explicit nil, the zero value for []AccountList will be returned
-func (o *AccountListCursorPaginatedResponse) GetData() []AccountList {
+// If the value is explicit nil, the zero value for []DomainList will be returned
+func (o *DomainListCursorPaginatedResponse) GetData() []DomainList {
 	if o == nil {
-		var ret []AccountList
+		var ret []DomainList
 		return ret
 	}
 
@@ -66,7 +66,7 @@ func (o *AccountListCursorPaginatedResponse) GetData() []AccountList {
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountListCursorPaginatedResponse) GetDataOk() ([]AccountList, bool) {
+func (o *DomainListCursorPaginatedResponse) GetDataOk() ([]DomainList, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -74,12 +74,12 @@ func (o *AccountListCursorPaginatedResponse) GetDataOk() ([]AccountList, bool) {
 }
 
 // SetData sets field value
-func (o *AccountListCursorPaginatedResponse) SetData(v []AccountList) {
+func (o *DomainListCursorPaginatedResponse) SetData(v []DomainList) {
 	o.Data = v
 }
 
 // GetLimit returns the Limit field value
-func (o *AccountListCursorPaginatedResponse) GetLimit() int32 {
+func (o *DomainListCursorPaginatedResponse) GetLimit() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -90,7 +90,7 @@ func (o *AccountListCursorPaginatedResponse) GetLimit() int32 {
 
 // GetLimitOk returns a tuple with the Limit field value
 // and a boolean to check if the value has been set.
-func (o *AccountListCursorPaginatedResponse) GetLimitOk() (*int32, bool) {
+func (o *DomainListCursorPaginatedResponse) GetLimitOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -98,12 +98,12 @@ func (o *AccountListCursorPaginatedResponse) GetLimitOk() (*int32, bool) {
 }
 
 // SetLimit sets field value
-func (o *AccountListCursorPaginatedResponse) SetLimit(v int32) {
+func (o *DomainListCursorPaginatedResponse) SetLimit(v int32) {
 	o.Limit = v
 }
 
 // GetHasMore returns the HasMore field value
-func (o *AccountListCursorPaginatedResponse) GetHasMore() bool {
+func (o *DomainListCursorPaginatedResponse) GetHasMore() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -114,7 +114,7 @@ func (o *AccountListCursorPaginatedResponse) GetHasMore() bool {
 
 // GetHasMoreOk returns a tuple with the HasMore field value
 // and a boolean to check if the value has been set.
-func (o *AccountListCursorPaginatedResponse) GetHasMoreOk() (*bool, bool) {
+func (o *DomainListCursorPaginatedResponse) GetHasMoreOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -122,12 +122,12 @@ func (o *AccountListCursorPaginatedResponse) GetHasMoreOk() (*bool, bool) {
 }
 
 // SetHasMore sets field value
-func (o *AccountListCursorPaginatedResponse) SetHasMore(v bool) {
+func (o *DomainListCursorPaginatedResponse) SetHasMore(v bool) {
 	o.HasMore = v
 }
 
 // GetTotalCount returns the TotalCount field value
-func (o *AccountListCursorPaginatedResponse) GetTotalCount() int64 {
+func (o *DomainListCursorPaginatedResponse) GetTotalCount() int64 {
 	if o == nil {
 		var ret int64
 		return ret
@@ -138,7 +138,7 @@ func (o *AccountListCursorPaginatedResponse) GetTotalCount() int64 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value
 // and a boolean to check if the value has been set.
-func (o *AccountListCursorPaginatedResponse) GetTotalCountOk() (*int64, bool) {
+func (o *DomainListCursorPaginatedResponse) GetTotalCountOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -146,12 +146,12 @@ func (o *AccountListCursorPaginatedResponse) GetTotalCountOk() (*int64, bool) {
 }
 
 // SetTotalCount sets field value
-func (o *AccountListCursorPaginatedResponse) SetTotalCount(v int64) {
+func (o *DomainListCursorPaginatedResponse) SetTotalCount(v int64) {
 	o.TotalCount = v
 }
 
 // GetNextCursor returns the NextCursor field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountListCursorPaginatedResponse) GetNextCursor() int32 {
+func (o *DomainListCursorPaginatedResponse) GetNextCursor() int32 {
 	if o == nil || IsNil(o.NextCursor.Get()) {
 		var ret int32
 		return ret
@@ -162,7 +162,7 @@ func (o *AccountListCursorPaginatedResponse) GetNextCursor() int32 {
 // GetNextCursorOk returns a tuple with the NextCursor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountListCursorPaginatedResponse) GetNextCursorOk() (*int32, bool) {
+func (o *DomainListCursorPaginatedResponse) GetNextCursorOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -170,7 +170,7 @@ func (o *AccountListCursorPaginatedResponse) GetNextCursorOk() (*int32, bool) {
 }
 
 // HasNextCursor returns a boolean if a field has been set.
-func (o *AccountListCursorPaginatedResponse) HasNextCursor() bool {
+func (o *DomainListCursorPaginatedResponse) HasNextCursor() bool {
 	if o != nil && o.NextCursor.IsSet() {
 		return true
 	}
@@ -179,21 +179,21 @@ func (o *AccountListCursorPaginatedResponse) HasNextCursor() bool {
 }
 
 // SetNextCursor gets a reference to the given NullableInt32 and assigns it to the NextCursor field.
-func (o *AccountListCursorPaginatedResponse) SetNextCursor(v int32) {
+func (o *DomainListCursorPaginatedResponse) SetNextCursor(v int32) {
 	o.NextCursor.Set(&v)
 }
 
 // SetNextCursorNil sets the value for NextCursor to be an explicit nil
-func (o *AccountListCursorPaginatedResponse) SetNextCursorNil() {
+func (o *DomainListCursorPaginatedResponse) SetNextCursorNil() {
 	o.NextCursor.Set(nil)
 }
 
 // UnsetNextCursor ensures that no value is present for NextCursor, not even an explicit nil
-func (o *AccountListCursorPaginatedResponse) UnsetNextCursor() {
+func (o *DomainListCursorPaginatedResponse) UnsetNextCursor() {
 	o.NextCursor.Unset()
 }
 
-func (o AccountListCursorPaginatedResponse) MarshalJSON() ([]byte, error) {
+func (o DomainListCursorPaginatedResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -201,7 +201,7 @@ func (o AccountListCursorPaginatedResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o AccountListCursorPaginatedResponse) ToMap() (map[string]interface{}, error) {
+func (o DomainListCursorPaginatedResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
@@ -220,7 +220,7 @@ func (o AccountListCursorPaginatedResponse) ToMap() (map[string]interface{}, err
 	return toSerialize, nil
 }
 
-func (o *AccountListCursorPaginatedResponse) UnmarshalJSON(data []byte) (err error) {
+func (o *DomainListCursorPaginatedResponse) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -245,15 +245,15 @@ func (o *AccountListCursorPaginatedResponse) UnmarshalJSON(data []byte) (err err
 		}
 	}
 
-	varAccountListCursorPaginatedResponse := _AccountListCursorPaginatedResponse{}
+	varDomainListCursorPaginatedResponse := _DomainListCursorPaginatedResponse{}
 
-	err = json.Unmarshal(data, &varAccountListCursorPaginatedResponse)
+	err = json.Unmarshal(data, &varDomainListCursorPaginatedResponse)
 
 	if err != nil {
 		return err
 	}
 
-	*o = AccountListCursorPaginatedResponse(varAccountListCursorPaginatedResponse)
+	*o = DomainListCursorPaginatedResponse(varDomainListCursorPaginatedResponse)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -269,38 +269,38 @@ func (o *AccountListCursorPaginatedResponse) UnmarshalJSON(data []byte) (err err
 	return err
 }
 
-type NullableAccountListCursorPaginatedResponse struct {
-	value *AccountListCursorPaginatedResponse
+type NullableDomainListCursorPaginatedResponse struct {
+	value *DomainListCursorPaginatedResponse
 	isSet bool
 }
 
-func (v NullableAccountListCursorPaginatedResponse) Get() *AccountListCursorPaginatedResponse {
+func (v NullableDomainListCursorPaginatedResponse) Get() *DomainListCursorPaginatedResponse {
 	return v.value
 }
 
-func (v *NullableAccountListCursorPaginatedResponse) Set(val *AccountListCursorPaginatedResponse) {
+func (v *NullableDomainListCursorPaginatedResponse) Set(val *DomainListCursorPaginatedResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableAccountListCursorPaginatedResponse) IsSet() bool {
+func (v NullableDomainListCursorPaginatedResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableAccountListCursorPaginatedResponse) Unset() {
+func (v *NullableDomainListCursorPaginatedResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableAccountListCursorPaginatedResponse(val *AccountListCursorPaginatedResponse) *NullableAccountListCursorPaginatedResponse {
-	return &NullableAccountListCursorPaginatedResponse{value: val, isSet: true}
+func NewNullableDomainListCursorPaginatedResponse(val *DomainListCursorPaginatedResponse) *NullableDomainListCursorPaginatedResponse {
+	return &NullableDomainListCursorPaginatedResponse{value: val, isSet: true}
 }
 
-func (v NullableAccountListCursorPaginatedResponse) MarshalJSON() ([]byte, error) {
+func (v NullableDomainListCursorPaginatedResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableAccountListCursorPaginatedResponse) UnmarshalJSON(src []byte) error {
+func (v *NullableDomainListCursorPaginatedResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

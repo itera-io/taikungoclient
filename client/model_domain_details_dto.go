@@ -15,11 +15,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the AccountDetailsDto type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AccountDetailsDto{}
+// checks if the DomainDetailsDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DomainDetailsDto{}
 
-// AccountDetailsDto struct for AccountDetailsDto
-type AccountDetailsDto struct {
+// DomainDetailsDto struct for DomainDetailsDto
+type DomainDetailsDto struct {
 	Id                   *int32                  `json:"id,omitempty"`
 	Name                 NullableString          `json:"name,omitempty"`
 	Email                NullableString          `json:"email,omitempty"`
@@ -33,27 +33,27 @@ type AccountDetailsDto struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _AccountDetailsDto AccountDetailsDto
+type _DomainDetailsDto DomainDetailsDto
 
-// NewAccountDetailsDto instantiates a new AccountDetailsDto object
+// NewDomainDetailsDto instantiates a new DomainDetailsDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountDetailsDto() *AccountDetailsDto {
-	this := AccountDetailsDto{}
+func NewDomainDetailsDto() *DomainDetailsDto {
+	this := DomainDetailsDto{}
 	return &this
 }
 
-// NewAccountDetailsDtoWithDefaults instantiates a new AccountDetailsDto object
+// NewDomainDetailsDtoWithDefaults instantiates a new DomainDetailsDto object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAccountDetailsDtoWithDefaults() *AccountDetailsDto {
-	this := AccountDetailsDto{}
+func NewDomainDetailsDtoWithDefaults() *DomainDetailsDto {
+	this := DomainDetailsDto{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *AccountDetailsDto) GetId() int32 {
+func (o *DomainDetailsDto) GetId() int32 {
 	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
@@ -63,7 +63,7 @@ func (o *AccountDetailsDto) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountDetailsDto) GetIdOk() (*int32, bool) {
+func (o *DomainDetailsDto) GetIdOk() (*int32, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -71,7 +71,7 @@ func (o *AccountDetailsDto) GetIdOk() (*int32, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *AccountDetailsDto) HasId() bool {
+func (o *DomainDetailsDto) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -80,12 +80,12 @@ func (o *AccountDetailsDto) HasId() bool {
 }
 
 // SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *AccountDetailsDto) SetId(v int32) {
+func (o *DomainDetailsDto) SetId(v int32) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountDetailsDto) GetName() string {
+func (o *DomainDetailsDto) GetName() string {
 	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
@@ -96,7 +96,7 @@ func (o *AccountDetailsDto) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountDetailsDto) GetNameOk() (*string, bool) {
+func (o *DomainDetailsDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -104,7 +104,7 @@ func (o *AccountDetailsDto) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *AccountDetailsDto) HasName() bool {
+func (o *DomainDetailsDto) HasName() bool {
 	if o != nil && o.Name.IsSet() {
 		return true
 	}
@@ -113,22 +113,22 @@ func (o *AccountDetailsDto) HasName() bool {
 }
 
 // SetName gets a reference to the given NullableString and assigns it to the Name field.
-func (o *AccountDetailsDto) SetName(v string) {
+func (o *DomainDetailsDto) SetName(v string) {
 	o.Name.Set(&v)
 }
 
 // SetNameNil sets the value for Name to be an explicit nil
-func (o *AccountDetailsDto) SetNameNil() {
+func (o *DomainDetailsDto) SetNameNil() {
 	o.Name.Set(nil)
 }
 
 // UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *AccountDetailsDto) UnsetName() {
+func (o *DomainDetailsDto) UnsetName() {
 	o.Name.Unset()
 }
 
 // GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountDetailsDto) GetEmail() string {
+func (o *DomainDetailsDto) GetEmail() string {
 	if o == nil || IsNil(o.Email.Get()) {
 		var ret string
 		return ret
@@ -139,7 +139,7 @@ func (o *AccountDetailsDto) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountDetailsDto) GetEmailOk() (*string, bool) {
+func (o *DomainDetailsDto) GetEmailOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -147,7 +147,7 @@ func (o *AccountDetailsDto) GetEmailOk() (*string, bool) {
 }
 
 // HasEmail returns a boolean if a field has been set.
-func (o *AccountDetailsDto) HasEmail() bool {
+func (o *DomainDetailsDto) HasEmail() bool {
 	if o != nil && o.Email.IsSet() {
 		return true
 	}
@@ -156,22 +156,22 @@ func (o *AccountDetailsDto) HasEmail() bool {
 }
 
 // SetEmail gets a reference to the given NullableString and assigns it to the Email field.
-func (o *AccountDetailsDto) SetEmail(v string) {
+func (o *DomainDetailsDto) SetEmail(v string) {
 	o.Email.Set(&v)
 }
 
 // SetEmailNil sets the value for Email to be an explicit nil
-func (o *AccountDetailsDto) SetEmailNil() {
+func (o *DomainDetailsDto) SetEmailNil() {
 	o.Email.Set(nil)
 }
 
 // UnsetEmail ensures that no value is present for Email, not even an explicit nil
-func (o *AccountDetailsDto) UnsetEmail() {
+func (o *DomainDetailsDto) UnsetEmail() {
 	o.Email.Unset()
 }
 
 // GetOrganizationsCount returns the OrganizationsCount field value if set, zero value otherwise.
-func (o *AccountDetailsDto) GetOrganizationsCount() int64 {
+func (o *DomainDetailsDto) GetOrganizationsCount() int64 {
 	if o == nil || IsNil(o.OrganizationsCount) {
 		var ret int64
 		return ret
@@ -181,7 +181,7 @@ func (o *AccountDetailsDto) GetOrganizationsCount() int64 {
 
 // GetOrganizationsCountOk returns a tuple with the OrganizationsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountDetailsDto) GetOrganizationsCountOk() (*int64, bool) {
+func (o *DomainDetailsDto) GetOrganizationsCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.OrganizationsCount) {
 		return nil, false
 	}
@@ -189,7 +189,7 @@ func (o *AccountDetailsDto) GetOrganizationsCountOk() (*int64, bool) {
 }
 
 // HasOrganizationsCount returns a boolean if a field has been set.
-func (o *AccountDetailsDto) HasOrganizationsCount() bool {
+func (o *DomainDetailsDto) HasOrganizationsCount() bool {
 	if o != nil && !IsNil(o.OrganizationsCount) {
 		return true
 	}
@@ -198,12 +198,12 @@ func (o *AccountDetailsDto) HasOrganizationsCount() bool {
 }
 
 // SetOrganizationsCount gets a reference to the given int64 and assigns it to the OrganizationsCount field.
-func (o *AccountDetailsDto) SetOrganizationsCount(v int64) {
+func (o *DomainDetailsDto) SetOrganizationsCount(v int64) {
 	o.OrganizationsCount = &v
 }
 
 // GetUsersCount returns the UsersCount field value if set, zero value otherwise.
-func (o *AccountDetailsDto) GetUsersCount() int64 {
+func (o *DomainDetailsDto) GetUsersCount() int64 {
 	if o == nil || IsNil(o.UsersCount) {
 		var ret int64
 		return ret
@@ -213,7 +213,7 @@ func (o *AccountDetailsDto) GetUsersCount() int64 {
 
 // GetUsersCountOk returns a tuple with the UsersCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountDetailsDto) GetUsersCountOk() (*int64, bool) {
+func (o *DomainDetailsDto) GetUsersCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.UsersCount) {
 		return nil, false
 	}
@@ -221,7 +221,7 @@ func (o *AccountDetailsDto) GetUsersCountOk() (*int64, bool) {
 }
 
 // HasUsersCount returns a boolean if a field has been set.
-func (o *AccountDetailsDto) HasUsersCount() bool {
+func (o *DomainDetailsDto) HasUsersCount() bool {
 	if o != nil && !IsNil(o.UsersCount) {
 		return true
 	}
@@ -230,12 +230,12 @@ func (o *AccountDetailsDto) HasUsersCount() bool {
 }
 
 // SetUsersCount gets a reference to the given int64 and assigns it to the UsersCount field.
-func (o *AccountDetailsDto) SetUsersCount(v int64) {
+func (o *DomainDetailsDto) SetUsersCount(v int64) {
 	o.UsersCount = &v
 }
 
 // GetGroupsCount returns the GroupsCount field value if set, zero value otherwise.
-func (o *AccountDetailsDto) GetGroupsCount() int64 {
+func (o *DomainDetailsDto) GetGroupsCount() int64 {
 	if o == nil || IsNil(o.GroupsCount) {
 		var ret int64
 		return ret
@@ -245,7 +245,7 @@ func (o *AccountDetailsDto) GetGroupsCount() int64 {
 
 // GetGroupsCountOk returns a tuple with the GroupsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountDetailsDto) GetGroupsCountOk() (*int64, bool) {
+func (o *DomainDetailsDto) GetGroupsCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.GroupsCount) {
 		return nil, false
 	}
@@ -253,7 +253,7 @@ func (o *AccountDetailsDto) GetGroupsCountOk() (*int64, bool) {
 }
 
 // HasGroupsCount returns a boolean if a field has been set.
-func (o *AccountDetailsDto) HasGroupsCount() bool {
+func (o *DomainDetailsDto) HasGroupsCount() bool {
 	if o != nil && !IsNil(o.GroupsCount) {
 		return true
 	}
@@ -262,12 +262,12 @@ func (o *AccountDetailsDto) HasGroupsCount() bool {
 }
 
 // SetGroupsCount gets a reference to the given int64 and assigns it to the GroupsCount field.
-func (o *AccountDetailsDto) SetGroupsCount(v int64) {
+func (o *DomainDetailsDto) SetGroupsCount(v int64) {
 	o.GroupsCount = &v
 }
 
 // GetProjectsCount returns the ProjectsCount field value if set, zero value otherwise.
-func (o *AccountDetailsDto) GetProjectsCount() int64 {
+func (o *DomainDetailsDto) GetProjectsCount() int64 {
 	if o == nil || IsNil(o.ProjectsCount) {
 		var ret int64
 		return ret
@@ -277,7 +277,7 @@ func (o *AccountDetailsDto) GetProjectsCount() int64 {
 
 // GetProjectsCountOk returns a tuple with the ProjectsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountDetailsDto) GetProjectsCountOk() (*int64, bool) {
+func (o *DomainDetailsDto) GetProjectsCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.ProjectsCount) {
 		return nil, false
 	}
@@ -285,7 +285,7 @@ func (o *AccountDetailsDto) GetProjectsCountOk() (*int64, bool) {
 }
 
 // HasProjectsCount returns a boolean if a field has been set.
-func (o *AccountDetailsDto) HasProjectsCount() bool {
+func (o *DomainDetailsDto) HasProjectsCount() bool {
 	if o != nil && !IsNil(o.ProjectsCount) {
 		return true
 	}
@@ -294,12 +294,12 @@ func (o *AccountDetailsDto) HasProjectsCount() bool {
 }
 
 // SetProjectsCount gets a reference to the given int64 and assigns it to the ProjectsCount field.
-func (o *AccountDetailsDto) SetProjectsCount(v int64) {
+func (o *DomainDetailsDto) SetProjectsCount(v int64) {
 	o.ProjectsCount = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountDetailsDto) GetCreatedAt() string {
+func (o *DomainDetailsDto) GetCreatedAt() string {
 	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret string
 		return ret
@@ -310,7 +310,7 @@ func (o *AccountDetailsDto) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountDetailsDto) GetCreatedAtOk() (*string, bool) {
+func (o *DomainDetailsDto) GetCreatedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -318,7 +318,7 @@ func (o *AccountDetailsDto) GetCreatedAtOk() (*string, bool) {
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
-func (o *AccountDetailsDto) HasCreatedAt() bool {
+func (o *DomainDetailsDto) HasCreatedAt() bool {
 	if o != nil && o.CreatedAt.IsSet() {
 		return true
 	}
@@ -327,22 +327,22 @@ func (o *AccountDetailsDto) HasCreatedAt() bool {
 }
 
 // SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
-func (o *AccountDetailsDto) SetCreatedAt(v string) {
+func (o *DomainDetailsDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
 
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *AccountDetailsDto) SetCreatedAtNil() {
+func (o *DomainDetailsDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
 }
 
 // UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *AccountDetailsDto) UnsetCreatedAt() {
+func (o *DomainDetailsDto) UnsetCreatedAt() {
 	o.CreatedAt.Unset()
 }
 
 // GetIs2FAEnabled returns the Is2FAEnabled field value if set, zero value otherwise.
-func (o *AccountDetailsDto) GetIs2FAEnabled() bool {
+func (o *DomainDetailsDto) GetIs2FAEnabled() bool {
 	if o == nil || IsNil(o.Is2FAEnabled) {
 		var ret bool
 		return ret
@@ -352,7 +352,7 @@ func (o *AccountDetailsDto) GetIs2FAEnabled() bool {
 
 // GetIs2FAEnabledOk returns a tuple with the Is2FAEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountDetailsDto) GetIs2FAEnabledOk() (*bool, bool) {
+func (o *DomainDetailsDto) GetIs2FAEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.Is2FAEnabled) {
 		return nil, false
 	}
@@ -360,7 +360,7 @@ func (o *AccountDetailsDto) GetIs2FAEnabledOk() (*bool, bool) {
 }
 
 // HasIs2FAEnabled returns a boolean if a field has been set.
-func (o *AccountDetailsDto) HasIs2FAEnabled() bool {
+func (o *DomainDetailsDto) HasIs2FAEnabled() bool {
 	if o != nil && !IsNil(o.Is2FAEnabled) {
 		return true
 	}
@@ -369,12 +369,12 @@ func (o *AccountDetailsDto) HasIs2FAEnabled() bool {
 }
 
 // SetIs2FAEnabled gets a reference to the given bool and assigns it to the Is2FAEnabled field.
-func (o *AccountDetailsDto) SetIs2FAEnabled(v bool) {
+func (o *DomainDetailsDto) SetIs2FAEnabled(v bool) {
 	o.Is2FAEnabled = &v
 }
 
 // GetUserWithGlobalRoles returns the UserWithGlobalRoles field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountDetailsDto) GetUserWithGlobalRoles() []UserWithGlobalRoleDto {
+func (o *DomainDetailsDto) GetUserWithGlobalRoles() []UserWithGlobalRoleDto {
 	if o == nil {
 		var ret []UserWithGlobalRoleDto
 		return ret
@@ -385,7 +385,7 @@ func (o *AccountDetailsDto) GetUserWithGlobalRoles() []UserWithGlobalRoleDto {
 // GetUserWithGlobalRolesOk returns a tuple with the UserWithGlobalRoles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountDetailsDto) GetUserWithGlobalRolesOk() ([]UserWithGlobalRoleDto, bool) {
+func (o *DomainDetailsDto) GetUserWithGlobalRolesOk() ([]UserWithGlobalRoleDto, bool) {
 	if o == nil || IsNil(o.UserWithGlobalRoles) {
 		return nil, false
 	}
@@ -393,7 +393,7 @@ func (o *AccountDetailsDto) GetUserWithGlobalRolesOk() ([]UserWithGlobalRoleDto,
 }
 
 // HasUserWithGlobalRoles returns a boolean if a field has been set.
-func (o *AccountDetailsDto) HasUserWithGlobalRoles() bool {
+func (o *DomainDetailsDto) HasUserWithGlobalRoles() bool {
 	if o != nil && !IsNil(o.UserWithGlobalRoles) {
 		return true
 	}
@@ -402,11 +402,11 @@ func (o *AccountDetailsDto) HasUserWithGlobalRoles() bool {
 }
 
 // SetUserWithGlobalRoles gets a reference to the given []UserWithGlobalRoleDto and assigns it to the UserWithGlobalRoles field.
-func (o *AccountDetailsDto) SetUserWithGlobalRoles(v []UserWithGlobalRoleDto) {
+func (o *DomainDetailsDto) SetUserWithGlobalRoles(v []UserWithGlobalRoleDto) {
 	o.UserWithGlobalRoles = v
 }
 
-func (o AccountDetailsDto) MarshalJSON() ([]byte, error) {
+func (o DomainDetailsDto) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -414,7 +414,7 @@ func (o AccountDetailsDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o AccountDetailsDto) ToMap() (map[string]interface{}, error) {
+func (o DomainDetailsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -454,16 +454,16 @@ func (o AccountDetailsDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccountDetailsDto) UnmarshalJSON(data []byte) (err error) {
-	varAccountDetailsDto := _AccountDetailsDto{}
+func (o *DomainDetailsDto) UnmarshalJSON(data []byte) (err error) {
+	varDomainDetailsDto := _DomainDetailsDto{}
 
-	err = json.Unmarshal(data, &varAccountDetailsDto)
+	err = json.Unmarshal(data, &varDomainDetailsDto)
 
 	if err != nil {
 		return err
 	}
 
-	*o = AccountDetailsDto(varAccountDetailsDto)
+	*o = DomainDetailsDto(varDomainDetailsDto)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -484,38 +484,38 @@ func (o *AccountDetailsDto) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableAccountDetailsDto struct {
-	value *AccountDetailsDto
+type NullableDomainDetailsDto struct {
+	value *DomainDetailsDto
 	isSet bool
 }
 
-func (v NullableAccountDetailsDto) Get() *AccountDetailsDto {
+func (v NullableDomainDetailsDto) Get() *DomainDetailsDto {
 	return v.value
 }
 
-func (v *NullableAccountDetailsDto) Set(val *AccountDetailsDto) {
+func (v *NullableDomainDetailsDto) Set(val *DomainDetailsDto) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableAccountDetailsDto) IsSet() bool {
+func (v NullableDomainDetailsDto) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableAccountDetailsDto) Unset() {
+func (v *NullableDomainDetailsDto) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableAccountDetailsDto(val *AccountDetailsDto) *NullableAccountDetailsDto {
-	return &NullableAccountDetailsDto{value: val, isSet: true}
+func NewNullableDomainDetailsDto(val *DomainDetailsDto) *NullableDomainDetailsDto {
+	return &NullableDomainDetailsDto{value: val, isSet: true}
 }
 
-func (v NullableAccountDetailsDto) MarshalJSON() ([]byte, error) {
+func (v NullableDomainDetailsDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableAccountDetailsDto) UnmarshalJSON(src []byte) error {
+func (v *NullableDomainDetailsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

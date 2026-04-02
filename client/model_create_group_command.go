@@ -23,7 +23,7 @@ var _ MappedNullable = &CreateGroupCommand{}
 type CreateGroupCommand struct {
 	Name                 string                       `json:"name"`
 	ClaimValue           NullableString               `json:"claimValue,omitempty"`
-	AccountId            int32                        `json:"accountId"`
+	DomainId             int32                        `json:"domainId"`
 	Organizations        []CreateGroupOrganizationDto `json:"organizations,omitempty"`
 	Users                []CreateGroupUserDto         `json:"users,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -35,10 +35,10 @@ type _CreateGroupCommand CreateGroupCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateGroupCommand(name string, accountId int32) *CreateGroupCommand {
+func NewCreateGroupCommand(name string, domainId int32) *CreateGroupCommand {
 	this := CreateGroupCommand{}
 	this.Name = name
-	this.AccountId = accountId
+	this.DomainId = domainId
 	return &this
 }
 
@@ -117,28 +117,28 @@ func (o *CreateGroupCommand) UnsetClaimValue() {
 	o.ClaimValue.Unset()
 }
 
-// GetAccountId returns the AccountId field value
-func (o *CreateGroupCommand) GetAccountId() int32 {
+// GetDomainId returns the DomainId field value
+func (o *CreateGroupCommand) GetDomainId() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.AccountId
+	return o.DomainId
 }
 
-// GetAccountIdOk returns a tuple with the AccountId field value
+// GetDomainIdOk returns a tuple with the DomainId field value
 // and a boolean to check if the value has been set.
-func (o *CreateGroupCommand) GetAccountIdOk() (*int32, bool) {
+func (o *CreateGroupCommand) GetDomainIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AccountId, true
+	return &o.DomainId, true
 }
 
-// SetAccountId sets field value
-func (o *CreateGroupCommand) SetAccountId(v int32) {
-	o.AccountId = v
+// SetDomainId sets field value
+func (o *CreateGroupCommand) SetDomainId(v int32) {
+	o.DomainId = v
 }
 
 // GetOrganizations returns the Organizations field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -221,7 +221,7 @@ func (o CreateGroupCommand) ToMap() (map[string]interface{}, error) {
 	if o.ClaimValue.IsSet() {
 		toSerialize["claimValue"] = o.ClaimValue.Get()
 	}
-	toSerialize["accountId"] = o.AccountId
+	toSerialize["domainId"] = o.DomainId
 	if o.Organizations != nil {
 		toSerialize["organizations"] = o.Organizations
 	}
@@ -242,7 +242,7 @@ func (o *CreateGroupCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"name",
-		"accountId",
+		"domainId",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -274,7 +274,7 @@ func (o *CreateGroupCommand) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "claimValue")
-		delete(additionalProperties, "accountId")
+		delete(additionalProperties, "domainId")
 		delete(additionalProperties, "organizations")
 		delete(additionalProperties, "users")
 		o.AdditionalProperties = additionalProperties

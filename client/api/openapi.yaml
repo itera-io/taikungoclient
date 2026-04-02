@@ -13,794 +13,6 @@ security:
 - Bearer: []
   BasicAuth: []
 paths:
-  /api/v1/aws/validate-owners:
-    post:
-      operationId: aws-validate-owners
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/AwsValidateOwnerCommand"
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Aws validate owners
-      tags:
-      - AWS cloud credential
-  /api/v1/aws/zones:
-    post:
-      operationId: aws-zones
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/AmazonAvailabilityZonesCommand"
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AzResult"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Fetch Aws zones
-      tags:
-      - AWS cloud credential
-  /api/v1/aws/create:
-    post:
-      operationId: aws-create
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CreateAwsCloudCommand"
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ApiResponse"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Add Aws credentials
-      tags:
-      - AWS cloud credential
-  /api/v1/aws/efs-file-system-by-vpc-list:
-    post:
-      operationId: aws-efs-file-system-by-vpc-list
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/AwsFileSystemsCommand"
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: "#/components/schemas/EfsFileSystemDto"
-                type: array
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve aws efs file system by vpc list
-      tags:
-      - AWS cloud credential
-  /api/v1/aws/eks-auth-info:
-    post:
-      operationId: aws-get-eks-auth-info
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/GetEksClusterAuthCommand"
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AwsEksClusterDto"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Get EKS auth info
-      tags:
-      - AWS cloud credential
-  /api/v1/aws/regions:
-    post:
-      operationId: aws-regionlist
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/RegionListCommand"
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: "#/components/schemas/AwsRegionDto"
-                type: array
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve aws regions list
-      tags:
-      - AWS cloud credential
-  /api/v1/aws/subnet-list:
-    post:
-      operationId: aws-subnet-list
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/AwsSubnetListCommand"
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: "#/components/schemas/AwsSubnetDto"
-                type: array
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve aws subnet list
-      tags:
-      - AWS cloud credential
-  /api/v1/aws/update:
-    post:
-      operationId: aws-update
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/UpdateAwsCommand"
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Update AWS credentials
-      tags:
-      - AWS cloud credential
-  /api/v1/aws/vpc-list:
-    post:
-      operationId: aws-vpc-list
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/AwsVpcListCommand"
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: "#/components/schemas/AwsVpcDto"
-                type: array
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve aws vpc list
-      tags:
-      - AWS cloud credential
-  /api/v1/aws/owners:
-    get:
-      operationId: aws-owners
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: "#/components/schemas/CommonStringBasedDropdownDto"
-                type: array
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve aws verified owner list
-      tags:
-      - AWS cloud credential
-  /api/v1/aws/eks-clusters/{cloudId}:
-    get:
-      operationId: aws-eks-clusters
-      parameters:
-      - explode: false
-        in: path
-        name: cloudId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Region
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  type: string
-                type: array
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve eks clusters list
-      tags:
-      - AWS cloud credential
-  /api/v1/aws/eks-node-groups/{projectId}:
-    get:
-      operationId: aws-eks-node-groups
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: "#/components/schemas/AwsEksNodeGroupDto"
-                type: array
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve eks node group list
-      tags:
-      - AWS cloud credential
-  /api/v1/aws/list:
-    get:
-      operationId: aws-list
-      parameters:
-      - explode: true
-        in: query
-        name: OrganizationId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SearchId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Id
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: AccountId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          default: 50
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          default: 0
-          format: int32
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AwsCredentialList"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve list of aws cloud credentials
-      tags:
-      - AWS cloud credential
   /api/v1/accessprofiles/update/{id}:
     put:
       operationId: accessprofiles-update
@@ -1247,1634 +459,6 @@ paths:
       summary: Delete access profile by Id
       tags:
       - Access Profiles
-  /api/v1/accounts/add-account-admin:
-    post:
-      operationId: accounts-add-account-admin
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/AddAccountAdminCommand"
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Add account admin to account
-      tags:
-      - Accounts
-  /api/v1/accounts/check-duplicate-entity:
-    post:
-      operationId: accounts-check-duplicate-entity
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CheckDuplicateAccountCommand"
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Check duplicate entity
-      tags:
-      - Accounts
-  /api/v1/accounts/create:
-    post:
-      operationId: accounts-create
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CreateAccountCommand"
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                format: int32
-                type: integer
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Create account
-      tags:
-      - Accounts
-  /api/v1/accounts/disable-2fa-management:
-    post:
-      operationId: accounts-disable-2fa-management
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/DisableTwoFaManagementCommand"
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Disable 2fa management
-      tags:
-      - Accounts
-  /api/v1/accounts/enable-2fa-management:
-    post:
-      operationId: accounts-enable-2fa-management
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/EnableTwoFaManagementCommand"
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Enable 2fa management
-      tags:
-      - Accounts
-  /api/v1/accounts/transfer-ownership:
-    post:
-      operationId: accounts-transfer-ownership
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/TransferOwnershipCommand"
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Transfer ownership
-      tags:
-      - Accounts
-  /api/v1/accounts/update:
-    post:
-      operationId: accounts-update
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/UpdateAccountCommand"
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                format: int32
-                type: integer
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Update account
-      tags:
-      - Accounts
-  /api/v1/accounts/{accountId}/users/{id}:
-    get:
-      operationId: accounts-account-user-details
-      parameters:
-      - explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UserDetailsDto"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Get user details by accountId
-      tags:
-      - Accounts
-  /api/v1/accounts/{accountId}/user/dropdown:
-    get:
-      operationId: accounts-account-user-dropdown
-      parameters:
-      - explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: CursorId
-        required: false
-        schema:
-          format: int64
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UserBriefDtoCursorTimestampPaginatedResponse"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve account users dropdown list by cursor-based pagination
-      tags:
-      - Accounts
-  /api/v1/accounts/{accountId}/user/offset-based/dropdown:
-    get:
-      operationId: accounts-account-user-offset-based-dropdown
-      parameters:
-      - explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          default: 100
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          default: 0
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UserOffsetPaginationDropdownList"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve account users dropdown list by offset-based pagination
-      tags:
-      - Accounts
-  /api/v1/accounts/{accountId}/users/available:
-    get:
-      operationId: accounts-account-users-available
-      parameters:
-      - explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: GroupId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: "#/components/schemas/CommonStringBasedDropdownDto"
-                type: array
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve available users for adding to a group
-      tags:
-      - Accounts
-  /api/v1/accounts/{accountId}/projects/{id}:
-    get:
-      operationId: accounts-account-project-details
-      parameters:
-      - explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProjectDetailsDto"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Get project details by accountId
-      tags:
-      - Accounts
-  /api/v1/accounts/{accountId}/projects/dropdown:
-    get:
-      operationId: accounts-account-projects-dropdown
-      parameters:
-      - explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: CursorId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CommonDropdownDtoCursorPaginatedResponse"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve account projects dropdown list by cursor-based pagination
-      tags:
-      - Accounts
-  /api/v1/accounts/{accountId}/projects/offset-based/dropdown:
-    get:
-      operationId: accounts-account-projects-offset-based-dropdown
-      parameters:
-      - explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          default: 100
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          default: 0
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProjectOffsetPaginationList"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve account projects dropdown list by offset-based pagination
-      tags:
-      - Accounts
-  /api/v1/accounts/{accountId}/organizations/{id}:
-    get:
-      operationId: accounts-account-organization-details
-      parameters:
-      - explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/OrganizationDetailsDtoForAccount"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Get organization details by accountId
-      tags:
-      - Accounts
-  /api/v1/accounts/{accountId}/organizations/with/group:
-    get:
-      operationId: accounts-account-organizations-with-group
-      parameters:
-      - explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: GroupId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: CursorId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/OrganizationsWithGroupInfoResultDtoCursorPaginatedResponse"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve account organizations with group list by cursor-based pagination
-      tags:
-      - Accounts
-  /api/v1/accounts/{accountId}/organizations/offset-based/with/group:
-    get:
-      operationId: accounts-account-offset-based-organizations-with-group
-      parameters:
-      - explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: GroupId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          default: 100
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          default: 0
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/OrganizationOffsetPaginationWithGroupList"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve account organizations with group list by offset-based pagination
-      tags:
-      - Accounts
-  /api/v1/accounts/{accountId}/organizations/available:
-    get:
-      operationId: accounts-account-organizations-available
-      parameters:
-      - explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: GroupId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: "#/components/schemas/CommonDropdownDto"
-                type: array
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve available organizations for adding to a group
-      tags:
-      - Accounts
-  /api/v1/accounts/{accountId}:
-    get:
-      operationId: accounts-details
-      parameters:
-      - explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AccountDetailsDto"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Get account details by accountId
-      tags:
-      - Accounts
-  /api/v1/accounts:
-    get:
-      operationId: accounts-list-accounts
-      parameters:
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: CursorId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AccountListCursorPaginatedResponse"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve accounts list
-      tags:
-      - Accounts
-  /api/v1/accounts/{accountId}/groups/{id}:
-    get:
-      operationId: accounts-account-group-details
-      parameters:
-      - explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/GroupDetailsDto"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Get group details by accountId
-      tags:
-      - Accounts
-  /api/v1/accounts/{accountId}/groups/dropdown:
-    get:
-      operationId: accounts-account-groups-dropdown
-      parameters:
-      - explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: CursorId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CommonDropdownDtoCursorPaginatedResponse"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve account groups dropdown list by cursor-based pagination
-      tags:
-      - Accounts
-  /api/v1/accounts/{accountId}/groups/offset-based/dropdown:
-    get:
-      operationId: accounts-account-groups-offset-based-dropdown
-      parameters:
-      - explode: false
-        in: path
-        name: accountId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          default: 100
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          default: 0
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/GroupOffsetPaginationDropdownList"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve account groups dropdown list by offset-based pagination
-      tags:
-      - Accounts
-  /api/v1/accounts/{id}:
-    delete:
-      operationId: accounts-delete
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Delete account
-      tags:
-      - Accounts
   /api/v1/ai-credential/create:
     post:
       operationId: ai-credential-create
@@ -5688,6 +3272,794 @@ paths:
       summary: Enable autoscaling
       tags:
       - Autoscaling
+  /api/v1/aws/validate-owners:
+    post:
+      operationId: aws-validate-owners
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AwsValidateOwnerCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Aws validate owners
+      tags:
+      - AWS cloud credential
+  /api/v1/aws/zones:
+    post:
+      operationId: aws-zones
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AmazonAvailabilityZonesCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AzResult"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Fetch Aws zones
+      tags:
+      - AWS cloud credential
+  /api/v1/aws/create:
+    post:
+      operationId: aws-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateAwsCloudCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Add Aws credentials
+      tags:
+      - AWS cloud credential
+  /api/v1/aws/efs-file-system-by-vpc-list:
+    post:
+      operationId: aws-efs-file-system-by-vpc-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AwsFileSystemsCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/EfsFileSystemDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve aws efs file system by vpc list
+      tags:
+      - AWS cloud credential
+  /api/v1/aws/eks-auth-info:
+    post:
+      operationId: aws-get-eks-auth-info
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GetEksClusterAuthCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AwsEksClusterDto"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Get EKS auth info
+      tags:
+      - AWS cloud credential
+  /api/v1/aws/regions:
+    post:
+      operationId: aws-regionlist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegionListCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/AwsRegionDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve aws regions list
+      tags:
+      - AWS cloud credential
+  /api/v1/aws/subnet-list:
+    post:
+      operationId: aws-subnet-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AwsSubnetListCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/AwsSubnetDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve aws subnet list
+      tags:
+      - AWS cloud credential
+  /api/v1/aws/update:
+    post:
+      operationId: aws-update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateAwsCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Update AWS credentials
+      tags:
+      - AWS cloud credential
+  /api/v1/aws/vpc-list:
+    post:
+      operationId: aws-vpc-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AwsVpcListCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/AwsVpcDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve aws vpc list
+      tags:
+      - AWS cloud credential
+  /api/v1/aws/owners:
+    get:
+      operationId: aws-owners
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/CommonStringBasedDropdownDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve aws verified owner list
+      tags:
+      - AWS cloud credential
+  /api/v1/aws/eks-clusters/{cloudId}:
+    get:
+      operationId: aws-eks-clusters
+      parameters:
+      - explode: false
+        in: path
+        name: cloudId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Region
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve eks clusters list
+      tags:
+      - AWS cloud credential
+  /api/v1/aws/eks-node-groups/{projectId}:
+    get:
+      operationId: aws-eks-node-groups
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/AwsEksNodeGroupDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve eks node group list
+      tags:
+      - AWS cloud credential
+  /api/v1/aws/list:
+    get:
+      operationId: aws-list
+      parameters:
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchId
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: AccountId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AwsCredentialList"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve list of aws cloud credentials
+      tags:
+      - AWS cloud credential
   /api/v1/azure/aks-clusters:
     post:
       operationId: azure-aks-clusters
@@ -12931,6 +11303,1634 @@ paths:
       summary: Retrieve all documentation links
       tags:
       - Documentation
+  /api/v1/domains/add-domain-admin:
+    post:
+      operationId: domains-add-domain-admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddDomainAdminCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Add domain-admin user to domain
+      tags:
+      - Domains
+  /api/v1/domains/check-duplicate-entity:
+    post:
+      operationId: domains-check-duplicate-entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CheckDuplicateDomainCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Check duplicate entity
+      tags:
+      - Domains
+  /api/v1/domains/create:
+    post:
+      operationId: domains-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateDomainCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                format: int32
+                type: integer
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Create domain
+      tags:
+      - Domains
+  /api/v1/domains/disable-2fa-management:
+    post:
+      operationId: domains-disable-2fa-management
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DisableTwoFaManagementCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Disable 2fa management
+      tags:
+      - Domains
+  /api/v1/domains/enable-2fa-management:
+    post:
+      operationId: domains-enable-2fa-management
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EnableTwoFaManagementCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Enable 2fa management
+      tags:
+      - Domains
+  /api/v1/domains/transfer-ownership:
+    post:
+      operationId: domains-transfer-ownership
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransferOwnershipCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Transfer ownership
+      tags:
+      - Domains
+  /api/v1/domains/update:
+    post:
+      operationId: domains-update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateDomainCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                format: int32
+                type: integer
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Update domain
+      tags:
+      - Domains
+  /api/v1/domains/{domainId}/users/{id}:
+    get:
+      operationId: domains-domain-user-details
+      parameters:
+      - explode: false
+        in: path
+        name: domainId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserDetailsDto"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Get user details by domainId
+      tags:
+      - Domains
+  /api/v1/domains/{domainId}/user/dropdown:
+    get:
+      operationId: domains-domain-user-dropdown
+      parameters:
+      - explode: false
+        in: path
+        name: domainId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: CursorId
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserBriefDtoCursorTimestampPaginatedResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve domain users dropdown list by cursor-based pagination
+      tags:
+      - Domains
+  /api/v1/domains/{domainId}/user/offset-based/dropdown:
+    get:
+      operationId: domains-domain-user-offset-based-dropdown
+      parameters:
+      - explode: false
+        in: path
+        name: domainId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 100
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserOffsetPaginationDropdownList"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve domain users dropdown list by offset-based pagination
+      tags:
+      - Domains
+  /api/v1/domains/{domainId}/users/available:
+    get:
+      operationId: domains-domain-users-available
+      parameters:
+      - explode: false
+        in: path
+        name: domainId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: GroupId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/CommonStringBasedDropdownDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve available users for adding to a group
+      tags:
+      - Domains
+  /api/v1/domains/{domainId}/projects/{id}:
+    get:
+      operationId: domains-domain-project-details
+      parameters:
+      - explode: false
+        in: path
+        name: domainId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectDetailsDto"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Get project details by domainId
+      tags:
+      - Domains
+  /api/v1/domains/{domainId}/projects/dropdown:
+    get:
+      operationId: domains-domain-projects-dropdown
+      parameters:
+      - explode: false
+        in: path
+        name: domainId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: CursorId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommonDropdownDtoCursorPaginatedResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve domain projects dropdown list by cursor-based pagination
+      tags:
+      - Domains
+  /api/v1/domains/{domainId}/projects/offset-based/dropdown:
+    get:
+      operationId: domains-domain-projects-offset-based-dropdown
+      parameters:
+      - explode: false
+        in: path
+        name: domainId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 100
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectOffsetPaginationList"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve domain projects dropdown list by offset-based pagination
+      tags:
+      - Domains
+  /api/v1/domains/{domainId}/organizations/{id}:
+    get:
+      operationId: domains-domain-organization-details
+      parameters:
+      - explode: false
+        in: path
+        name: domainId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrganizationDetailsDtoForDomain"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Get organization details by domainId
+      tags:
+      - Domains
+  /api/v1/domains/{domainId}/organizations/with/group:
+    get:
+      operationId: domains-domain-organizations-with-group
+      parameters:
+      - explode: false
+        in: path
+        name: domainId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: GroupId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: CursorId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrganizationsWithGroupInfoResultDtoCursorPaginatedResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve domain organizations with group list by cursor-based pagination
+      tags:
+      - Domains
+  /api/v1/domains/{domainId}/organizations/offset-based/with/group:
+    get:
+      operationId: domains-domain-offset-based-organizations-with-group
+      parameters:
+      - explode: false
+        in: path
+        name: domainId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: GroupId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 100
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrganizationOffsetPaginationWithGroupList"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve domain organizations with group list by offset-based pagination
+      tags:
+      - Domains
+  /api/v1/domains/{domainId}/organizations/available:
+    get:
+      operationId: domains-domain-organizations-available
+      parameters:
+      - explode: false
+        in: path
+        name: domainId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: GroupId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/CommonDropdownDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve available organizations for adding to a group
+      tags:
+      - Domains
+  /api/v1/domains/{domainId}:
+    get:
+      operationId: domains-details
+      parameters:
+      - explode: false
+        in: path
+        name: domainId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DomainDetailsDto"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Get domain details by domainId
+      tags:
+      - Domains
+  /api/v1/domains:
+    get:
+      operationId: domains-list-domains
+      parameters:
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: CursorId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DomainListCursorPaginatedResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve domains list
+      tags:
+      - Domains
+  /api/v1/domains/{domainId}/groups/{id}:
+    get:
+      operationId: domains-domain-group-details
+      parameters:
+      - explode: false
+        in: path
+        name: domainId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GroupDetailsDto"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Get group details by domainId
+      tags:
+      - Domains
+  /api/v1/domains/{domainId}/groups/dropdown:
+    get:
+      operationId: domains-domain-groups-dropdown
+      parameters:
+      - explode: false
+        in: path
+        name: domainId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: CursorId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommonDropdownDtoCursorPaginatedResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve domain groups dropdown list by cursor-based pagination
+      tags:
+      - Domains
+  /api/v1/domains/{domainId}/groups/offset-based/dropdown:
+    get:
+      operationId: domains-domain-groups-offset-based-dropdown
+      parameters:
+      - explode: false
+        in: path
+        name: domainId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 100
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GroupOffsetPaginationDropdownList"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve domain groups dropdown list by offset-based pagination
+      tags:
+      - Domains
+  /api/v1/domains/{id}:
+    delete:
+      operationId: domains-delete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Delete domain
+      tags:
+      - Domains
   /api/v1/executors/edit/health:
     put:
       operationId: executors-edit-health
@@ -16275,7 +16275,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
-      summary: Group list for account
+      summary: Group list for domain
       tags:
       - Groups
   /api/v1/groups/{id}:
@@ -36586,7 +36586,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UpdateAccountSsoConfigDto"
+              $ref: "#/components/schemas/UpdateDomainSsoConfigDto"
       responses:
         "200":
           content:
@@ -36638,7 +36638,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CheckAccountSsoConfigCommand"
+              $ref: "#/components/schemas/CheckDomainSsoConfigCommand"
       responses:
         "200":
           content:
@@ -36691,7 +36691,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateAccountSsoConfigCommand"
+              $ref: "#/components/schemas/CreateDomainSsoConfigCommand"
       responses:
         "200":
           content:
@@ -36756,7 +36756,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/AccountSsoConfigDto"
+                $ref: "#/components/schemas/DomainSsoConfigDto"
           description: OK
         "400":
           content:
@@ -36803,7 +36803,7 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -36859,7 +36859,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/AccountSsoConfigList"
+                $ref: "#/components/schemas/DomainSsoConfigList"
           description: OK
         "400":
           content:
@@ -36897,7 +36897,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
-      summary: Retrieve all SSO configurations for an account
+      summary: Retrieve all SSO configurations for domain
       tags:
       - SsoConfig
   /api/v1/sso-config/{id}:
@@ -37427,112 +37427,6 @@ paths:
       summary: Retrieve all vms
       tags:
       - Standalone
-  /api/v1/standalonevmdisks/create:
-    post:
-      operationId: standalonevmdisks-create
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CreateStandAloneDiskCommand"
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ApiResponse"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Add disk for standalone vm
-      tags:
-      - Standalone VM disks
-  /api/v1/standalonevmdisks/update-size:
-    post:
-      operationId: standalonevmdisks-update-size
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/UpdateStandaloneVmDiskSizeCommand"
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Update disk size
-      tags:
-      - Standalone VM disks
   /api/v1/standaloneactions/console:
     post:
       operationId: standaloneactions-console
@@ -38412,6 +38306,112 @@ paths:
       summary: Retrieve all standalone profiles
       tags:
       - Standalone profile
+  /api/v1/standalonevmdisks/create:
+    post:
+      operationId: standalonevmdisks-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateStandAloneDiskCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Add disk for standalone vm
+      tags:
+      - Standalone VM disks
+  /api/v1/standalonevmdisks/update-size:
+    post:
+      operationId: standalonevmdisks-update-size
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateStandaloneVmDiskSizeCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Update disk size
+      tags:
+      - Standalone VM disks
   /api/v1/stripe/{subscriptionId}:
     get:
       operationId: stripe-subscription-item-list
@@ -42024,9 +42024,9 @@ components:
             maskBits: 7
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationName: organizationName
           httpProxy: httpProxy
           lastModifiedBy: lastModifiedBy
@@ -42067,9 +42067,9 @@ components:
             maskBits: 7
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationName: organizationName
           httpProxy: httpProxy
           lastModifiedBy: lastModifiedBy
@@ -42145,9 +42145,9 @@ components:
           maskBits: 7
         projects:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         organizationName: organizationName
         httpProxy: httpProxy
         lastModifiedBy: lastModifiedBy
@@ -42290,251 +42290,6 @@ components:
           format: int32
           type: integer
       type: object
-    AccountDetailsDto:
-      example:
-        organizationsCount: 6
-        createdAt: createdAt
-        groupsCount: 5
-        is2FAEnabled: true
-        userWithGlobalRoles:
-        - role: None
-          id: id
-          username: username
-        - role: None
-          id: id
-          username: username
-        name: name
-        usersCount: 1
-        id: 0
-        projectsCount: 5
-        email: email
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          nullable: true
-          type: string
-        email:
-          nullable: true
-          type: string
-        organizationsCount:
-          format: int64
-          type: integer
-        usersCount:
-          format: int64
-          type: integer
-        groupsCount:
-          format: int64
-          type: integer
-        projectsCount:
-          format: int64
-          type: integer
-        createdAt:
-          nullable: true
-          type: string
-        is2FAEnabled:
-          type: boolean
-        userWithGlobalRoles:
-          items:
-            $ref: "#/components/schemas/UserWithGlobalRoleDto"
-          nullable: true
-          type: array
-      type: object
-    AccountDetailsForUserDto:
-      example:
-        accountId: 0
-        domain: domain
-        name: name
-        logo: logo
-      properties:
-        accountId:
-          format: int32
-          type: integer
-        name:
-          type: string
-        logo:
-          nullable: true
-          type: string
-        domain:
-          nullable: true
-          type: string
-      required:
-      - accountId
-      - domain
-      - logo
-      - name
-      type: object
-    AccountEntity:
-      example:
-        accountId: 2
-        accountName: accountName
-        logo: logo
-      properties:
-        accountId:
-          format: int32
-          type: integer
-        accountName:
-          type: string
-        logo:
-          nullable: true
-          type: string
-      required:
-      - accountId
-      - accountName
-      type: object
-    AccountList:
-      example:
-        organizationsCount: 6
-        groupsCount: 5
-        name: name
-        usersCount: 1
-        id: 0
-        projectsCount: 5
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          nullable: true
-          type: string
-        organizationsCount:
-          format: int64
-          type: integer
-        usersCount:
-          format: int64
-          type: integer
-        groupsCount:
-          format: int64
-          type: integer
-        projectsCount:
-          format: int64
-          type: integer
-      required:
-      - id
-      - name
-      type: object
-    AccountListCursorPaginatedResponse:
-      example:
-        nextCursor: 9
-        data:
-        - organizationsCount: 6
-          groupsCount: 5
-          name: name
-          usersCount: 1
-          id: 0
-          projectsCount: 5
-        - organizationsCount: 6
-          groupsCount: 5
-          name: name
-          usersCount: 1
-          id: 0
-          projectsCount: 5
-        limit: 2
-        hasMore: true
-        totalCount: 7
-      properties:
-        data:
-          items:
-            $ref: "#/components/schemas/AccountList"
-          nullable: true
-          type: array
-        limit:
-          format: int32
-          type: integer
-        hasMore:
-          type: boolean
-        totalCount:
-          format: int64
-          type: integer
-        nextCursor:
-          format: int32
-          nullable: true
-          type: integer
-      required:
-      - data
-      - hasMore
-      - limit
-      - totalCount
-      type: object
-    AccountSsoConfigDto:
-      example:
-        groupClaimName: groupClaimName
-        clientId: clientId
-        groupFromIdp: true
-        issuerUrl: issuerUrl
-        isEnabled: true
-        name: name
-        id: 0
-        partnerId: 6
-        groupScopeName: groupScopeName
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          type: string
-        partnerId:
-          format: int32
-          type: integer
-        issuerUrl:
-          type: string
-        clientId:
-          type: string
-        groupFromIdp:
-          type: boolean
-        groupClaimName:
-          nullable: true
-          type: string
-        groupScopeName:
-          nullable: true
-          type: string
-        isEnabled:
-          type: boolean
-      required:
-      - clientId
-      - groupFromIdp
-      - id
-      - isEnabled
-      - issuerUrl
-      - name
-      - partnerId
-      type: object
-    AccountSsoConfigList:
-      example:
-        data:
-        - groupClaimName: groupClaimName
-          clientId: clientId
-          groupFromIdp: true
-          issuerUrl: issuerUrl
-          isEnabled: true
-          name: name
-          id: 0
-          partnerId: 6
-          groupScopeName: groupScopeName
-        - groupClaimName: groupClaimName
-          clientId: clientId
-          groupFromIdp: true
-          issuerUrl: issuerUrl
-          isEnabled: true
-          name: name
-          id: 0
-          partnerId: 6
-          groupScopeName: groupScopeName
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: "#/components/schemas/AccountSsoConfigDto"
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      required:
-      - data
-      - totalCount
-      type: object
     ActionStatus:
       enum:
       - succeeded
@@ -42628,12 +42383,12 @@ components:
       - KubernetesAction
       - DeletedProject
       type: string
-    AddAccountAdminCommand:
+    AddDomainAdminCommand:
       example:
-        accountId: 0
         userId: userId
+        domainId: 0
       properties:
-        accountId:
+        domainId:
           format: int32
           nullable: true
           type: integer
@@ -42676,9 +42431,9 @@ components:
           isDefault: true
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationName: organizationName
           name: name
           id: 0
@@ -42688,9 +42443,9 @@ components:
           isDefault: true
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationName: organizationName
           name: name
           id: 0
@@ -42738,9 +42493,9 @@ components:
         isDefault: true
         projects:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         organizationName: organizationName
         name: name
         id: 0
@@ -43208,9 +42963,9 @@ components:
         - slackConfigurationId: 1
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationName: organizationName
           reminder: HalfHour
           slackConfigurationName: slackConfigurationName
@@ -43247,9 +43002,9 @@ components:
         - slackConfigurationId: 1
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationName: organizationName
           reminder: HalfHour
           slackConfigurationName: slackConfigurationName
@@ -43302,9 +43057,9 @@ components:
         slackConfigurationId: 1
         projects:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         organizationName: organizationName
         reminder: HalfHour
         slackConfigurationName: slackConfigurationName
@@ -43583,9 +43338,9 @@ components:
         projectCount: 6
         projects:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         organizationName: organizationName
         lastModifiedBy: lastModifiedBy
         availabilityZones:
@@ -43897,9 +43652,9 @@ components:
         name: name
         boundCatalogs:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         logoId: logoId
       properties:
         name:
@@ -44123,9 +43878,9 @@ components:
         - projectCount: 6
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationName: organizationName
           lastModifiedBy: lastModifiedBy
           availabilityZones:
@@ -44148,9 +43903,9 @@ components:
         - projectCount: 6
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationName: organizationName
           lastModifiedBy: lastModifiedBy
           availabilityZones:
@@ -44170,7 +43925,7 @@ components:
           region: region
           continentName: continentName
           sharedFileSystemEnabled: true
-        totalCount: 2
+        totalCount: 5
       properties:
         data:
           items:
@@ -44572,9 +44327,9 @@ components:
         - projectCount: 6
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationName: organizationName
           lastModifiedBy: lastModifiedBy
           availabilityZones:
@@ -44595,9 +44350,9 @@ components:
         - projectCount: 6
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationName: organizationName
           lastModifiedBy: lastModifiedBy
           availabilityZones:
@@ -44634,9 +44389,9 @@ components:
         projectCount: 6
         projects:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         organizationName: organizationName
         lastModifiedBy: lastModifiedBy
         availabilityZones:
@@ -44956,9 +44711,9 @@ components:
         data:
         - projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationName: organizationName
           isInfra: true
           s3Region: s3Region
@@ -44975,9 +44730,9 @@ components:
           lastModified: lastModified
         - projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationName: organizationName
           isInfra: true
           s3Region: s3Region
@@ -45057,9 +44812,9 @@ components:
       example:
         projects:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         organizationName: organizationName
         isInfra: true
         s3Region: s3Region
@@ -47102,22 +46857,6 @@ components:
         messages:
           nullable: true
       type: object
-    CheckAccountSsoConfigCommand:
-      example:
-        clientId: clientId
-        issuerUrl: issuerUrl
-        clientSecret: clientSecret
-      properties:
-        issuerUrl:
-          nullable: true
-          type: string
-        clientId:
-          nullable: true
-          type: string
-        clientSecret:
-          nullable: true
-          type: string
-      type: object
     CheckAwsCommand:
       example:
         awsAccessKeyId: awsAccessKeyId
@@ -47154,7 +46893,23 @@ components:
           format: int32
           type: integer
       type: object
-    CheckDuplicateAccountCommand:
+    CheckDomainSsoConfigCommand:
+      example:
+        clientId: clientId
+        issuerUrl: issuerUrl
+        clientSecret: clientSecret
+      properties:
+        issuerUrl:
+          nullable: true
+          type: string
+        clientId:
+          nullable: true
+          type: string
+        clientSecret:
+          nullable: true
+          type: string
+      type: object
+    CheckDuplicateDomainCommand:
       example:
         name: name
       properties:
@@ -47383,9 +47138,9 @@ components:
         isDefault: true
         projects:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         cloudType: NONE
         fullName: fullName
         id: 0
@@ -47549,7 +47304,7 @@ components:
     CommonDropdownDto:
       example:
         name: name
-        id: 5
+        id: 0
       properties:
         id:
           format: int32
@@ -47563,9 +47318,9 @@ components:
         nextCursor: 1
         data:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         limit: 0
         hasMore: true
         totalCount: 6
@@ -48040,63 +47795,6 @@ components:
           nullable: true
           type: array
       type: object
-    CreateAccountCommand:
-      example:
-        name: name
-        email: email
-        createOrganization: true
-      properties:
-        name:
-          nullable: true
-          type: string
-        email:
-          nullable: true
-          type: string
-        createOrganization:
-          type: boolean
-      type: object
-    CreateAccountSsoConfigCommand:
-      example:
-        accountId: 0
-        groupClaimName: groupClaimName
-        clientId: clientId
-        groupFromIdp: true
-        issuerUrl: issuerUrl
-        isEnabled: true
-        name: name
-        clientSecret: clientSecret
-        groupScopeName: groupScopeName
-      properties:
-        name:
-          type: string
-        accountId:
-          format: int32
-          type: integer
-        issuerUrl:
-          type: string
-        clientId:
-          type: string
-        clientSecret:
-          type: string
-        groupFromIdp:
-          type: boolean
-        groupClaimName:
-          nullable: true
-          type: string
-        groupScopeName:
-          nullable: true
-          type: string
-        isEnabled:
-          type: boolean
-      required:
-      - accountId
-      - clientId
-      - clientSecret
-      - groupFromIdp
-      - isEnabled
-      - issuerUrl
-      - name
-      type: object
     CreateAiBackendsConfigurationCommand:
       example:
         apiKey: apiKey
@@ -48492,6 +48190,63 @@ components:
           format: int32
           type: integer
       type: object
+    CreateDomainCommand:
+      example:
+        name: name
+        email: email
+        createOrganization: true
+      properties:
+        name:
+          nullable: true
+          type: string
+        email:
+          nullable: true
+          type: string
+        createOrganization:
+          type: boolean
+      type: object
+    CreateDomainSsoConfigCommand:
+      example:
+        groupClaimName: groupClaimName
+        clientId: clientId
+        groupFromIdp: true
+        issuerUrl: issuerUrl
+        isEnabled: true
+        name: name
+        clientSecret: clientSecret
+        groupScopeName: groupScopeName
+        domainId: 0
+      properties:
+        name:
+          type: string
+        domainId:
+          format: int32
+          type: integer
+        issuerUrl:
+          type: string
+        clientId:
+          type: string
+        clientSecret:
+          type: string
+        groupFromIdp:
+          type: boolean
+        groupClaimName:
+          nullable: true
+          type: string
+        groupScopeName:
+          nullable: true
+          type: string
+        isEnabled:
+          type: boolean
+      required:
+      - clientId
+      - clientSecret
+      - domainId
+      - groupFromIdp
+      - isEnabled
+      - issuerUrl
+      - name
+      type: object
     CreateEmailConfigurationCommand:
       example:
         apiKey: apiKey
@@ -48592,7 +48347,6 @@ components:
       type: object
     CreateGroupCommand:
       example:
-        accountId: 0
         name: name
         organizations:
         - role: Member
@@ -48606,6 +48360,7 @@ components:
           - 6
           id: 0
         claimValue: claimValue
+        domainId: 0
         users:
         - id: id
         - id: id
@@ -48615,7 +48370,7 @@ components:
         claimValue:
           nullable: true
           type: string
-        accountId:
+        domainId:
           format: int32
           type: integer
         organizations:
@@ -48629,7 +48384,7 @@ components:
           nullable: true
           type: array
       required:
-      - accountId
+      - domainId
       - name
       type: object
     CreateGroupOrganizationDto:
@@ -49595,11 +49350,11 @@ components:
       type: object
     CreateUserCommand:
       example:
-        accountId: 0
-        isAccountAdmin: true
         displayName: displayName
         email: email
+        domainId: 0
         username: username
+        isDomainAdmin: true
       properties:
         username:
           nullable: true
@@ -49610,11 +49365,11 @@ components:
         email:
           nullable: true
           type: string
-        accountId:
+        domainId:
           format: int32
           nullable: true
           type: integer
-        isAccountAdmin:
+        isDomainAdmin:
           type: boolean
       type: object
     CreateVirtualClusterCommand:
@@ -51652,6 +51407,251 @@ components:
       - data
       - totalCount
       type: object
+    DomainDetailsDto:
+      example:
+        organizationsCount: 6
+        createdAt: createdAt
+        groupsCount: 5
+        is2FAEnabled: true
+        userWithGlobalRoles:
+        - role: None
+          id: id
+          username: username
+        - role: None
+          id: id
+          username: username
+        name: name
+        usersCount: 1
+        id: 0
+        projectsCount: 5
+        email: email
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        email:
+          nullable: true
+          type: string
+        organizationsCount:
+          format: int64
+          type: integer
+        usersCount:
+          format: int64
+          type: integer
+        groupsCount:
+          format: int64
+          type: integer
+        projectsCount:
+          format: int64
+          type: integer
+        createdAt:
+          nullable: true
+          type: string
+        is2FAEnabled:
+          type: boolean
+        userWithGlobalRoles:
+          items:
+            $ref: "#/components/schemas/UserWithGlobalRoleDto"
+          nullable: true
+          type: array
+      type: object
+    DomainDetailsForUserDto:
+      example:
+        domain: domain
+        name: name
+        logo: logo
+        domainId: 0
+      properties:
+        domainId:
+          format: int32
+          type: integer
+        name:
+          type: string
+        logo:
+          nullable: true
+          type: string
+        domain:
+          nullable: true
+          type: string
+      required:
+      - domain
+      - domainId
+      - logo
+      - name
+      type: object
+    DomainEntity:
+      example:
+        domainName: domainName
+        logo: logo
+        domainId: 2
+      properties:
+        domainId:
+          format: int32
+          type: integer
+        domainName:
+          type: string
+        logo:
+          nullable: true
+          type: string
+      required:
+      - domainId
+      - domainName
+      type: object
+    DomainList:
+      example:
+        organizationsCount: 6
+        groupsCount: 5
+        name: name
+        usersCount: 1
+        id: 0
+        projectsCount: 5
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        organizationsCount:
+          format: int64
+          type: integer
+        usersCount:
+          format: int64
+          type: integer
+        groupsCount:
+          format: int64
+          type: integer
+        projectsCount:
+          format: int64
+          type: integer
+      required:
+      - id
+      - name
+      type: object
+    DomainListCursorPaginatedResponse:
+      example:
+        nextCursor: 9
+        data:
+        - organizationsCount: 6
+          groupsCount: 5
+          name: name
+          usersCount: 1
+          id: 0
+          projectsCount: 5
+        - organizationsCount: 6
+          groupsCount: 5
+          name: name
+          usersCount: 1
+          id: 0
+          projectsCount: 5
+        limit: 2
+        hasMore: true
+        totalCount: 7
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/DomainList"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        nextCursor:
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - data
+      - hasMore
+      - limit
+      - totalCount
+      type: object
+    DomainSsoConfigDto:
+      example:
+        groupClaimName: groupClaimName
+        clientId: clientId
+        groupFromIdp: true
+        issuerUrl: issuerUrl
+        isEnabled: true
+        name: name
+        id: 0
+        groupScopeName: groupScopeName
+        domainId: 6
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          type: string
+        domainId:
+          format: int32
+          type: integer
+        issuerUrl:
+          type: string
+        clientId:
+          type: string
+        groupFromIdp:
+          type: boolean
+        groupClaimName:
+          nullable: true
+          type: string
+        groupScopeName:
+          nullable: true
+          type: string
+        isEnabled:
+          type: boolean
+      required:
+      - clientId
+      - domainId
+      - groupFromIdp
+      - id
+      - isEnabled
+      - issuerUrl
+      - name
+      type: object
+    DomainSsoConfigList:
+      example:
+        data:
+        - groupClaimName: groupClaimName
+          clientId: clientId
+          groupFromIdp: true
+          issuerUrl: issuerUrl
+          isEnabled: true
+          name: name
+          id: 0
+          groupScopeName: groupScopeName
+          domainId: 6
+        - groupClaimName: groupClaimName
+          clientId: clientId
+          groupFromIdp: true
+          issuerUrl: issuerUrl
+          isEnabled: true
+          name: name
+          id: 0
+          groupScopeName: groupScopeName
+          domainId: 6
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/DomainSsoConfigDto"
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      required:
+      - data
+      - totalCount
+      type: object
     DowngradeUserCommand:
       example:
         userId: userId
@@ -51760,8 +51760,8 @@ components:
       enum:
       - None
       - Admin
-      - AccountAdmin
-      - AccountOwner
+      - DomainAdmin
+      - DomainOwner
       type: string
     EImportClusterType:
       enum:
@@ -52222,14 +52222,14 @@ components:
       example:
         serverStatuses:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         prometheusTypes:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         availability:
         - name: name
           id: true
@@ -52237,29 +52237,29 @@ components:
           id: true
         azureQuotas:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         auditLogs:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         showbackKinds:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         requestLogs:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         cloudTypes:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         openstackContinents:
         - name: name
           id: id
@@ -52272,34 +52272,34 @@ components:
           id: id
         proxmoxRoles:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         projectStatuses:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         standaloneVmStatuses:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         reminderTypes:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         projectResourceTypes:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         alertTypes:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         retentionPeriods:
         - name: name
           id: id
@@ -52307,19 +52307,19 @@ components:
           id: id
         lbProviders:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         googleImageTypes:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         slackTypes:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         cronPeriods:
         - name: name
           id: id
@@ -52327,39 +52327,39 @@ components:
           id: id
         nonGlobalRoles:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         serverRoles:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         projectResourceUnits:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         validityPeriods:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         securityGroupRules:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         alertingIntegrationTypes:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         rebootOptions:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
       properties:
         cloudTypes:
           items:
@@ -53877,9 +53877,9 @@ components:
           lastModifiedBy: lastModifiedBy
           associatedVClusters:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           mainProject:
             name: name
             id: 1
@@ -53898,9 +53898,9 @@ components:
           lastModifiedBy: lastModifiedBy
           associatedVClusters:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           mainProject:
             name: name
             id: 1
@@ -53935,9 +53935,9 @@ components:
         lastModifiedBy: lastModifiedBy
         associatedVClusters:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         mainProject:
           name: name
           id: 1
@@ -54188,8 +54188,8 @@ components:
       enum:
       - None
       - Admin
-      - AccountAdmin
-      - AccountOwner
+      - DomainAdmin
+      - DomainOwner
       - Autoscaler
       - OnlyMember
       - Robot
@@ -54293,9 +54293,9 @@ components:
         data:
         - projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationName: organizationName
           partnerName: partnerName
           partnerLogo: partnerLogo
@@ -54317,9 +54317,9 @@ components:
           projectId: projectId
         - projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationName: organizationName
           partnerName: partnerName
           partnerLogo: partnerLogo
@@ -54357,9 +54357,9 @@ components:
       example:
         projects:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         organizationName: organizationName
         partnerName: partnerName
         partnerLogo: partnerLogo
@@ -54706,17 +54706,17 @@ components:
         - role: None
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           name: name
           id: 1
         - role: None
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           name: name
           id: 1
         id: 0
@@ -54788,9 +54788,9 @@ components:
       example:
         data:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         offset: 1
         limit: 0
         hasMore: true
@@ -54879,9 +54879,9 @@ components:
         role: None
         projects:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         name: name
         id: 1
       properties:
@@ -56860,9 +56860,9 @@ components:
       example:
         data:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         totalCount: 0
       properties:
         data:
@@ -57320,9 +57320,9 @@ components:
         data:
         - projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationName: organizationName
           lastModifiedBy: lastModifiedBy
           exposeNodePortOnBastion: true
@@ -57343,9 +57343,9 @@ components:
           cni: Default
         - projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationName: organizationName
           lastModifiedBy: lastModifiedBy
           exposeNodePortOnBastion: true
@@ -57382,9 +57382,9 @@ components:
       example:
         projects:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         organizationName: organizationName
         lastModifiedBy: lastModifiedBy
         exposeNodePortOnBastion: true
@@ -58813,9 +58813,9 @@ components:
         data:
         - projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           isMasterTaintEnforced: true
           organizationName: organizationName
           isNodeNameForbiddenInVC: true
@@ -58846,9 +58846,9 @@ components:
           uniqueIngresses: true
         - projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           isMasterTaintEnforced: true
           organizationName: organizationName
           isNodeNameForbiddenInVC: true
@@ -58895,9 +58895,9 @@ components:
       example:
         projects:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         isMasterTaintEnforced: true
         organizationName: organizationName
         isNodeNameForbiddenInVC: true
@@ -59308,9 +59308,9 @@ components:
         - projectCount: 1
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationName: organizationName
           lastModifiedBy: lastModifiedBy
           organizationId: 6
@@ -59327,9 +59327,9 @@ components:
         - projectCount: 1
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationName: organizationName
           lastModifiedBy: lastModifiedBy
           organizationId: 6
@@ -59381,9 +59381,9 @@ components:
         projectCount: 1
         projects:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         organizationName: organizationName
         lastModifiedBy: lastModifiedBy
         organizationId: 6
@@ -59518,9 +59518,9 @@ components:
           projectCount: 6
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           applicationCredEnabled: true
           project: project
           availabilityZone: availabilityZone
@@ -59553,9 +59553,9 @@ components:
           projectCount: 6
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           applicationCredEnabled: true
           project: project
           availabilityZone: availabilityZone
@@ -59604,9 +59604,9 @@ components:
         projectCount: 6
         projects:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         applicationCredEnabled: true
         project: project
         availabilityZone: availabilityZone
@@ -60226,11 +60226,11 @@ components:
       type: object
     OrganizationCreateCommand:
       example:
-        accountId: 0
         adminCloudCredentialId: 6
         name: name
         fullName: fullName
         email: email
+        domainId: 0
       properties:
         name:
           nullable: true
@@ -60241,7 +60241,7 @@ components:
         email:
           nullable: true
           type: string
-        accountId:
+        domainId:
           format: int32
           nullable: true
           type: integer
@@ -60298,7 +60298,7 @@ components:
           nullable: true
           type: array
       type: object
-    OrganizationDetailsDtoForAccount:
+    OrganizationDetailsDtoForDomain:
       example:
         createdAt: createdAt
         projects:
@@ -60316,17 +60316,17 @@ components:
         - role: None
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           name: name
           id: 1
         - role: None
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           name: name
           id: 1
         id: 0
@@ -63606,9 +63606,9 @@ components:
       example:
         data:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         offset: 1
         limit: 0
         hasMore: true
@@ -64622,9 +64622,9 @@ components:
         id: 0
         lastModified: lastModified
         account:
-          accountId: 2
-          accountName: accountName
+          domainName: domainName
           logo: logo
+          domainId: 2
       properties:
         id:
           format: int32
@@ -64662,7 +64662,7 @@ components:
           nullable: true
           type: string
         account:
-          $ref: "#/components/schemas/AccountEntity"
+          $ref: "#/components/schemas/DomainEntity"
         operationCredential:
           $ref: "#/components/schemas/OperationCredentialsForOrganizationEntity"
         createdBy:
@@ -64727,9 +64727,9 @@ components:
           id: 0
           lastModified: lastModified
           account:
-            accountId: 2
-            accountName: accountName
+            domainName: domainName
             logo: logo
+            domainId: 2
         - metricName: metricName
           lastModifiedBy: lastModifiedBy
           userName: userName
@@ -64762,9 +64762,9 @@ components:
           id: 0
           lastModified: lastModified
           account:
-            accountId: 2
-            accountName: accountName
+            domainName: domainName
             logo: logo
+            domainId: 2
         offset: 3
         limit: 7
         hasMore: true
@@ -64955,9 +64955,9 @@ components:
         - projectCount: 6
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationName: organizationName
           tokenId: tokenId
           lastModifiedBy: lastModifiedBy
@@ -64989,9 +64989,9 @@ components:
           skipTlsFlag: true
           hypervisors:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           id: 0
           lastModified: lastModified
           continentName: continentName
@@ -64999,9 +64999,9 @@ components:
         - projectCount: 6
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationName: organizationName
           tokenId: tokenId
           lastModifiedBy: lastModifiedBy
@@ -65033,9 +65033,9 @@ components:
           skipTlsFlag: true
           hypervisors:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           id: 0
           lastModified: lastModified
           continentName: continentName
@@ -65059,9 +65059,9 @@ components:
         projectCount: 6
         projects:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         organizationName: organizationName
         tokenId: tokenId
         lastModifiedBy: lastModifiedBy
@@ -65093,9 +65093,9 @@ components:
         skipTlsFlag: true
         hypervisors:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         id: 0
         lastModified: lastModified
         continentName: continentName
@@ -69798,58 +69798,6 @@ components:
           nullable: true
           type: string
       type: object
-    UpdateAccountCommand:
-      example:
-        name: name
-        id: 0
-        email: email
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          nullable: true
-          type: string
-        email:
-          nullable: true
-          type: string
-      type: object
-    UpdateAccountSsoConfigDto:
-      example:
-        groupClaimName: groupClaimName
-        clientId: clientId
-        groupFromIdp: true
-        issuerUrl: issuerUrl
-        isEnabled: true
-        name: name
-        clientSecret: clientSecret
-        groupScopeName: groupScopeName
-      properties:
-        name:
-          nullable: true
-          type: string
-        issuerUrl:
-          nullable: true
-          type: string
-        clientId:
-          nullable: true
-          type: string
-        clientSecret:
-          nullable: true
-          type: string
-        groupFromIdp:
-          nullable: true
-          type: boolean
-        groupClaimName:
-          nullable: true
-          type: string
-        groupScopeName:
-          nullable: true
-          type: string
-        isEnabled:
-          nullable: true
-          type: boolean
-      type: object
     UpdateAlertingProfileCommand:
       example:
         slackConfigurationId: 6
@@ -69909,6 +69857,58 @@ components:
         azureClientId:
           nullable: true
           type: string
+      type: object
+    UpdateDomainCommand:
+      example:
+        name: name
+        id: 0
+        email: email
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        email:
+          nullable: true
+          type: string
+      type: object
+    UpdateDomainSsoConfigDto:
+      example:
+        groupClaimName: groupClaimName
+        clientId: clientId
+        groupFromIdp: true
+        issuerUrl: issuerUrl
+        isEnabled: true
+        name: name
+        clientSecret: clientSecret
+        groupScopeName: groupScopeName
+      properties:
+        name:
+          nullable: true
+          type: string
+        issuerUrl:
+          nullable: true
+          type: string
+        clientId:
+          nullable: true
+          type: string
+        clientSecret:
+          nullable: true
+          type: string
+        groupFromIdp:
+          nullable: true
+          type: boolean
+        groupClaimName:
+          nullable: true
+          type: string
+        groupScopeName:
+          nullable: true
+          type: string
+        isEnabled:
+          nullable: true
+          type: boolean
       type: object
     UpdateExecutorHealthStatusCommand:
       example:
@@ -70610,6 +70610,11 @@ components:
           displayName: displayName
           isForcedToResetPassword: true
           createdAt: createdAt
+          domain:
+            domain: domain
+            name: name
+            logo: logo
+            domainId: 0
           isLocked: true
           organizations:
             key:
@@ -70617,11 +70622,6 @@ components:
               organizationName: organizationName
           id: id
           email: email
-          account:
-            accountId: 0
-            domain: domain
-            name: name
-            logo: logo
           isEmailNotificationEnabled: true
           isForcedToEnableTwoFactorAuthentication: true
           username: username
@@ -70652,9 +70652,9 @@ components:
         - groupName: groupName
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationRole: None
           groupId: 0
           name: name
@@ -70662,9 +70662,9 @@ components:
         - groupName: groupName
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationRole: None
           groupId: 0
           name: name
@@ -70732,6 +70732,11 @@ components:
         displayName: displayName
         isForcedToResetPassword: true
         createdAt: createdAt
+        domain:
+          domain: domain
+          name: name
+          logo: logo
+          domainId: 0
         isLocked: true
         organizations:
           key:
@@ -70739,11 +70744,6 @@ components:
             organizationName: organizationName
         id: id
         email: email
-        account:
-          accountId: 0
-          domain: domain
-          name: name
-          logo: logo
         isEmailNotificationEnabled: true
         isForcedToEnableTwoFactorAuthentication: true
         username: username
@@ -70762,8 +70762,8 @@ components:
           type: string
         is2FAEnabled:
           type: boolean
-        account:
-          $ref: "#/components/schemas/AccountDetailsForUserDto"
+        domain:
+          $ref: "#/components/schemas/DomainDetailsForUserDto"
         role:
           $ref: "#/components/schemas/EGlobalRole"
         organizations:
@@ -70783,9 +70783,9 @@ components:
         isForcedToEnableTwoFactorAuthentication:
           type: boolean
       required:
-      - account
       - createdAt
       - displayName
+      - domain
       - email
       - id
       - is2FAEnabled
@@ -70848,9 +70848,9 @@ components:
         groupName: groupName
         projects:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         organizationRole: None
         groupId: 0
         name: name
@@ -71811,9 +71811,9 @@ components:
         - projectCount: 6
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           drsEnabled: true
           organizationName: organizationName
           datacenterName: datacenterName
@@ -71859,9 +71859,9 @@ components:
         - projectCount: 6
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           drsEnabled: true
           organizationName: organizationName
           datacenterName: datacenterName
@@ -71923,9 +71923,9 @@ components:
         projectCount: 6
         projects:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         drsEnabled: true
         organizationName: organizationName
         datacenterName: datacenterName
@@ -72224,9 +72224,9 @@ components:
         - projectCount: 6
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationName: organizationName
           lastModifiedBy: lastModifiedBy
           availabilityZones:
@@ -72248,9 +72248,9 @@ components:
         - projectCount: 6
           projects:
           - name: name
-            id: 5
+            id: 0
           - name: name
-            id: 5
+            id: 0
           organizationName: organizationName
           lastModifiedBy: lastModifiedBy
           availabilityZones:
@@ -72288,9 +72288,9 @@ components:
         projectCount: 6
         projects:
         - name: name
-          id: 5
+          id: 0
         - name: name
-          id: 5
+          id: 0
         organizationName: organizationName
         lastModifiedBy: lastModifiedBy
         availabilityZones:

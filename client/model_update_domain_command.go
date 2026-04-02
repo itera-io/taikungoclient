@@ -15,38 +15,38 @@ import (
 	"encoding/json"
 )
 
-// checks if the UpdateAccountCommand type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UpdateAccountCommand{}
+// checks if the UpdateDomainCommand type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UpdateDomainCommand{}
 
-// UpdateAccountCommand struct for UpdateAccountCommand
-type UpdateAccountCommand struct {
+// UpdateDomainCommand struct for UpdateDomainCommand
+type UpdateDomainCommand struct {
 	Id                   *int32         `json:"id,omitempty"`
 	Name                 NullableString `json:"name,omitempty"`
 	Email                NullableString `json:"email,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _UpdateAccountCommand UpdateAccountCommand
+type _UpdateDomainCommand UpdateDomainCommand
 
-// NewUpdateAccountCommand instantiates a new UpdateAccountCommand object
+// NewUpdateDomainCommand instantiates a new UpdateDomainCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateAccountCommand() *UpdateAccountCommand {
-	this := UpdateAccountCommand{}
+func NewUpdateDomainCommand() *UpdateDomainCommand {
+	this := UpdateDomainCommand{}
 	return &this
 }
 
-// NewUpdateAccountCommandWithDefaults instantiates a new UpdateAccountCommand object
+// NewUpdateDomainCommandWithDefaults instantiates a new UpdateDomainCommand object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewUpdateAccountCommandWithDefaults() *UpdateAccountCommand {
-	this := UpdateAccountCommand{}
+func NewUpdateDomainCommandWithDefaults() *UpdateDomainCommand {
+	this := UpdateDomainCommand{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *UpdateAccountCommand) GetId() int32 {
+func (o *UpdateDomainCommand) GetId() int32 {
 	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
@@ -56,7 +56,7 @@ func (o *UpdateAccountCommand) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateAccountCommand) GetIdOk() (*int32, bool) {
+func (o *UpdateDomainCommand) GetIdOk() (*int32, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -64,7 +64,7 @@ func (o *UpdateAccountCommand) GetIdOk() (*int32, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *UpdateAccountCommand) HasId() bool {
+func (o *UpdateDomainCommand) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -73,12 +73,12 @@ func (o *UpdateAccountCommand) HasId() bool {
 }
 
 // SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *UpdateAccountCommand) SetId(v int32) {
+func (o *UpdateDomainCommand) SetId(v int32) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *UpdateAccountCommand) GetName() string {
+func (o *UpdateDomainCommand) GetName() string {
 	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
@@ -89,7 +89,7 @@ func (o *UpdateAccountCommand) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *UpdateAccountCommand) GetNameOk() (*string, bool) {
+func (o *UpdateDomainCommand) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -97,7 +97,7 @@ func (o *UpdateAccountCommand) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *UpdateAccountCommand) HasName() bool {
+func (o *UpdateDomainCommand) HasName() bool {
 	if o != nil && o.Name.IsSet() {
 		return true
 	}
@@ -106,22 +106,22 @@ func (o *UpdateAccountCommand) HasName() bool {
 }
 
 // SetName gets a reference to the given NullableString and assigns it to the Name field.
-func (o *UpdateAccountCommand) SetName(v string) {
+func (o *UpdateDomainCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
 
 // SetNameNil sets the value for Name to be an explicit nil
-func (o *UpdateAccountCommand) SetNameNil() {
+func (o *UpdateDomainCommand) SetNameNil() {
 	o.Name.Set(nil)
 }
 
 // UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *UpdateAccountCommand) UnsetName() {
+func (o *UpdateDomainCommand) UnsetName() {
 	o.Name.Unset()
 }
 
 // GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *UpdateAccountCommand) GetEmail() string {
+func (o *UpdateDomainCommand) GetEmail() string {
 	if o == nil || IsNil(o.Email.Get()) {
 		var ret string
 		return ret
@@ -132,7 +132,7 @@ func (o *UpdateAccountCommand) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *UpdateAccountCommand) GetEmailOk() (*string, bool) {
+func (o *UpdateDomainCommand) GetEmailOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -140,7 +140,7 @@ func (o *UpdateAccountCommand) GetEmailOk() (*string, bool) {
 }
 
 // HasEmail returns a boolean if a field has been set.
-func (o *UpdateAccountCommand) HasEmail() bool {
+func (o *UpdateDomainCommand) HasEmail() bool {
 	if o != nil && o.Email.IsSet() {
 		return true
 	}
@@ -149,21 +149,21 @@ func (o *UpdateAccountCommand) HasEmail() bool {
 }
 
 // SetEmail gets a reference to the given NullableString and assigns it to the Email field.
-func (o *UpdateAccountCommand) SetEmail(v string) {
+func (o *UpdateDomainCommand) SetEmail(v string) {
 	o.Email.Set(&v)
 }
 
 // SetEmailNil sets the value for Email to be an explicit nil
-func (o *UpdateAccountCommand) SetEmailNil() {
+func (o *UpdateDomainCommand) SetEmailNil() {
 	o.Email.Set(nil)
 }
 
 // UnsetEmail ensures that no value is present for Email, not even an explicit nil
-func (o *UpdateAccountCommand) UnsetEmail() {
+func (o *UpdateDomainCommand) UnsetEmail() {
 	o.Email.Unset()
 }
 
-func (o UpdateAccountCommand) MarshalJSON() ([]byte, error) {
+func (o UpdateDomainCommand) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -171,7 +171,7 @@ func (o UpdateAccountCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o UpdateAccountCommand) ToMap() (map[string]interface{}, error) {
+func (o UpdateDomainCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -190,16 +190,16 @@ func (o UpdateAccountCommand) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *UpdateAccountCommand) UnmarshalJSON(data []byte) (err error) {
-	varUpdateAccountCommand := _UpdateAccountCommand{}
+func (o *UpdateDomainCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateDomainCommand := _UpdateDomainCommand{}
 
-	err = json.Unmarshal(data, &varUpdateAccountCommand)
+	err = json.Unmarshal(data, &varUpdateDomainCommand)
 
 	if err != nil {
 		return err
 	}
 
-	*o = UpdateAccountCommand(varUpdateAccountCommand)
+	*o = UpdateDomainCommand(varUpdateDomainCommand)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -213,38 +213,38 @@ func (o *UpdateAccountCommand) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableUpdateAccountCommand struct {
-	value *UpdateAccountCommand
+type NullableUpdateDomainCommand struct {
+	value *UpdateDomainCommand
 	isSet bool
 }
 
-func (v NullableUpdateAccountCommand) Get() *UpdateAccountCommand {
+func (v NullableUpdateDomainCommand) Get() *UpdateDomainCommand {
 	return v.value
 }
 
-func (v *NullableUpdateAccountCommand) Set(val *UpdateAccountCommand) {
+func (v *NullableUpdateDomainCommand) Set(val *UpdateDomainCommand) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableUpdateAccountCommand) IsSet() bool {
+func (v NullableUpdateDomainCommand) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableUpdateAccountCommand) Unset() {
+func (v *NullableUpdateDomainCommand) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableUpdateAccountCommand(val *UpdateAccountCommand) *NullableUpdateAccountCommand {
-	return &NullableUpdateAccountCommand{value: val, isSet: true}
+func NewNullableUpdateDomainCommand(val *UpdateDomainCommand) *NullableUpdateDomainCommand {
+	return &NullableUpdateDomainCommand{value: val, isSet: true}
 }
 
-func (v NullableUpdateAccountCommand) MarshalJSON() ([]byte, error) {
+func (v NullableUpdateDomainCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableUpdateAccountCommand) UnmarshalJSON(src []byte) error {
+func (v *NullableUpdateDomainCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

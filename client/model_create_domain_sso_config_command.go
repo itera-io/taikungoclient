@@ -16,13 +16,13 @@ import (
 	"fmt"
 )
 
-// checks if the CreateAccountSsoConfigCommand type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CreateAccountSsoConfigCommand{}
+// checks if the CreateDomainSsoConfigCommand type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateDomainSsoConfigCommand{}
 
-// CreateAccountSsoConfigCommand struct for CreateAccountSsoConfigCommand
-type CreateAccountSsoConfigCommand struct {
+// CreateDomainSsoConfigCommand struct for CreateDomainSsoConfigCommand
+type CreateDomainSsoConfigCommand struct {
 	Name                 string         `json:"name"`
-	AccountId            int32          `json:"accountId"`
+	DomainId             int32          `json:"domainId"`
 	IssuerUrl            string         `json:"issuerUrl"`
 	ClientId             string         `json:"clientId"`
 	ClientSecret         string         `json:"clientSecret"`
@@ -33,16 +33,16 @@ type CreateAccountSsoConfigCommand struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _CreateAccountSsoConfigCommand CreateAccountSsoConfigCommand
+type _CreateDomainSsoConfigCommand CreateDomainSsoConfigCommand
 
-// NewCreateAccountSsoConfigCommand instantiates a new CreateAccountSsoConfigCommand object
+// NewCreateDomainSsoConfigCommand instantiates a new CreateDomainSsoConfigCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateAccountSsoConfigCommand(name string, accountId int32, issuerUrl string, clientId string, clientSecret string, groupFromIdp bool, isEnabled bool) *CreateAccountSsoConfigCommand {
-	this := CreateAccountSsoConfigCommand{}
+func NewCreateDomainSsoConfigCommand(name string, domainId int32, issuerUrl string, clientId string, clientSecret string, groupFromIdp bool, isEnabled bool) *CreateDomainSsoConfigCommand {
+	this := CreateDomainSsoConfigCommand{}
 	this.Name = name
-	this.AccountId = accountId
+	this.DomainId = domainId
 	this.IssuerUrl = issuerUrl
 	this.ClientId = clientId
 	this.ClientSecret = clientSecret
@@ -51,16 +51,16 @@ func NewCreateAccountSsoConfigCommand(name string, accountId int32, issuerUrl st
 	return &this
 }
 
-// NewCreateAccountSsoConfigCommandWithDefaults instantiates a new CreateAccountSsoConfigCommand object
+// NewCreateDomainSsoConfigCommandWithDefaults instantiates a new CreateDomainSsoConfigCommand object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCreateAccountSsoConfigCommandWithDefaults() *CreateAccountSsoConfigCommand {
-	this := CreateAccountSsoConfigCommand{}
+func NewCreateDomainSsoConfigCommandWithDefaults() *CreateDomainSsoConfigCommand {
+	this := CreateDomainSsoConfigCommand{}
 	return &this
 }
 
 // GetName returns the Name field value
-func (o *CreateAccountSsoConfigCommand) GetName() string {
+func (o *CreateDomainSsoConfigCommand) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -71,7 +71,7 @@ func (o *CreateAccountSsoConfigCommand) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *CreateAccountSsoConfigCommand) GetNameOk() (*string, bool) {
+func (o *CreateDomainSsoConfigCommand) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -79,36 +79,36 @@ func (o *CreateAccountSsoConfigCommand) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *CreateAccountSsoConfigCommand) SetName(v string) {
+func (o *CreateDomainSsoConfigCommand) SetName(v string) {
 	o.Name = v
 }
 
-// GetAccountId returns the AccountId field value
-func (o *CreateAccountSsoConfigCommand) GetAccountId() int32 {
+// GetDomainId returns the DomainId field value
+func (o *CreateDomainSsoConfigCommand) GetDomainId() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.AccountId
+	return o.DomainId
 }
 
-// GetAccountIdOk returns a tuple with the AccountId field value
+// GetDomainIdOk returns a tuple with the DomainId field value
 // and a boolean to check if the value has been set.
-func (o *CreateAccountSsoConfigCommand) GetAccountIdOk() (*int32, bool) {
+func (o *CreateDomainSsoConfigCommand) GetDomainIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AccountId, true
+	return &o.DomainId, true
 }
 
-// SetAccountId sets field value
-func (o *CreateAccountSsoConfigCommand) SetAccountId(v int32) {
-	o.AccountId = v
+// SetDomainId sets field value
+func (o *CreateDomainSsoConfigCommand) SetDomainId(v int32) {
+	o.DomainId = v
 }
 
 // GetIssuerUrl returns the IssuerUrl field value
-func (o *CreateAccountSsoConfigCommand) GetIssuerUrl() string {
+func (o *CreateDomainSsoConfigCommand) GetIssuerUrl() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -119,7 +119,7 @@ func (o *CreateAccountSsoConfigCommand) GetIssuerUrl() string {
 
 // GetIssuerUrlOk returns a tuple with the IssuerUrl field value
 // and a boolean to check if the value has been set.
-func (o *CreateAccountSsoConfigCommand) GetIssuerUrlOk() (*string, bool) {
+func (o *CreateDomainSsoConfigCommand) GetIssuerUrlOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -127,12 +127,12 @@ func (o *CreateAccountSsoConfigCommand) GetIssuerUrlOk() (*string, bool) {
 }
 
 // SetIssuerUrl sets field value
-func (o *CreateAccountSsoConfigCommand) SetIssuerUrl(v string) {
+func (o *CreateDomainSsoConfigCommand) SetIssuerUrl(v string) {
 	o.IssuerUrl = v
 }
 
 // GetClientId returns the ClientId field value
-func (o *CreateAccountSsoConfigCommand) GetClientId() string {
+func (o *CreateDomainSsoConfigCommand) GetClientId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -143,7 +143,7 @@ func (o *CreateAccountSsoConfigCommand) GetClientId() string {
 
 // GetClientIdOk returns a tuple with the ClientId field value
 // and a boolean to check if the value has been set.
-func (o *CreateAccountSsoConfigCommand) GetClientIdOk() (*string, bool) {
+func (o *CreateDomainSsoConfigCommand) GetClientIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -151,12 +151,12 @@ func (o *CreateAccountSsoConfigCommand) GetClientIdOk() (*string, bool) {
 }
 
 // SetClientId sets field value
-func (o *CreateAccountSsoConfigCommand) SetClientId(v string) {
+func (o *CreateDomainSsoConfigCommand) SetClientId(v string) {
 	o.ClientId = v
 }
 
 // GetClientSecret returns the ClientSecret field value
-func (o *CreateAccountSsoConfigCommand) GetClientSecret() string {
+func (o *CreateDomainSsoConfigCommand) GetClientSecret() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -167,7 +167,7 @@ func (o *CreateAccountSsoConfigCommand) GetClientSecret() string {
 
 // GetClientSecretOk returns a tuple with the ClientSecret field value
 // and a boolean to check if the value has been set.
-func (o *CreateAccountSsoConfigCommand) GetClientSecretOk() (*string, bool) {
+func (o *CreateDomainSsoConfigCommand) GetClientSecretOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -175,12 +175,12 @@ func (o *CreateAccountSsoConfigCommand) GetClientSecretOk() (*string, bool) {
 }
 
 // SetClientSecret sets field value
-func (o *CreateAccountSsoConfigCommand) SetClientSecret(v string) {
+func (o *CreateDomainSsoConfigCommand) SetClientSecret(v string) {
 	o.ClientSecret = v
 }
 
 // GetGroupFromIdp returns the GroupFromIdp field value
-func (o *CreateAccountSsoConfigCommand) GetGroupFromIdp() bool {
+func (o *CreateDomainSsoConfigCommand) GetGroupFromIdp() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -191,7 +191,7 @@ func (o *CreateAccountSsoConfigCommand) GetGroupFromIdp() bool {
 
 // GetGroupFromIdpOk returns a tuple with the GroupFromIdp field value
 // and a boolean to check if the value has been set.
-func (o *CreateAccountSsoConfigCommand) GetGroupFromIdpOk() (*bool, bool) {
+func (o *CreateDomainSsoConfigCommand) GetGroupFromIdpOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -199,12 +199,12 @@ func (o *CreateAccountSsoConfigCommand) GetGroupFromIdpOk() (*bool, bool) {
 }
 
 // SetGroupFromIdp sets field value
-func (o *CreateAccountSsoConfigCommand) SetGroupFromIdp(v bool) {
+func (o *CreateDomainSsoConfigCommand) SetGroupFromIdp(v bool) {
 	o.GroupFromIdp = v
 }
 
 // GetGroupClaimName returns the GroupClaimName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateAccountSsoConfigCommand) GetGroupClaimName() string {
+func (o *CreateDomainSsoConfigCommand) GetGroupClaimName() string {
 	if o == nil || IsNil(o.GroupClaimName.Get()) {
 		var ret string
 		return ret
@@ -215,7 +215,7 @@ func (o *CreateAccountSsoConfigCommand) GetGroupClaimName() string {
 // GetGroupClaimNameOk returns a tuple with the GroupClaimName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateAccountSsoConfigCommand) GetGroupClaimNameOk() (*string, bool) {
+func (o *CreateDomainSsoConfigCommand) GetGroupClaimNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -223,7 +223,7 @@ func (o *CreateAccountSsoConfigCommand) GetGroupClaimNameOk() (*string, bool) {
 }
 
 // HasGroupClaimName returns a boolean if a field has been set.
-func (o *CreateAccountSsoConfigCommand) HasGroupClaimName() bool {
+func (o *CreateDomainSsoConfigCommand) HasGroupClaimName() bool {
 	if o != nil && o.GroupClaimName.IsSet() {
 		return true
 	}
@@ -232,22 +232,22 @@ func (o *CreateAccountSsoConfigCommand) HasGroupClaimName() bool {
 }
 
 // SetGroupClaimName gets a reference to the given NullableString and assigns it to the GroupClaimName field.
-func (o *CreateAccountSsoConfigCommand) SetGroupClaimName(v string) {
+func (o *CreateDomainSsoConfigCommand) SetGroupClaimName(v string) {
 	o.GroupClaimName.Set(&v)
 }
 
 // SetGroupClaimNameNil sets the value for GroupClaimName to be an explicit nil
-func (o *CreateAccountSsoConfigCommand) SetGroupClaimNameNil() {
+func (o *CreateDomainSsoConfigCommand) SetGroupClaimNameNil() {
 	o.GroupClaimName.Set(nil)
 }
 
 // UnsetGroupClaimName ensures that no value is present for GroupClaimName, not even an explicit nil
-func (o *CreateAccountSsoConfigCommand) UnsetGroupClaimName() {
+func (o *CreateDomainSsoConfigCommand) UnsetGroupClaimName() {
 	o.GroupClaimName.Unset()
 }
 
 // GetGroupScopeName returns the GroupScopeName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateAccountSsoConfigCommand) GetGroupScopeName() string {
+func (o *CreateDomainSsoConfigCommand) GetGroupScopeName() string {
 	if o == nil || IsNil(o.GroupScopeName.Get()) {
 		var ret string
 		return ret
@@ -258,7 +258,7 @@ func (o *CreateAccountSsoConfigCommand) GetGroupScopeName() string {
 // GetGroupScopeNameOk returns a tuple with the GroupScopeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateAccountSsoConfigCommand) GetGroupScopeNameOk() (*string, bool) {
+func (o *CreateDomainSsoConfigCommand) GetGroupScopeNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -266,7 +266,7 @@ func (o *CreateAccountSsoConfigCommand) GetGroupScopeNameOk() (*string, bool) {
 }
 
 // HasGroupScopeName returns a boolean if a field has been set.
-func (o *CreateAccountSsoConfigCommand) HasGroupScopeName() bool {
+func (o *CreateDomainSsoConfigCommand) HasGroupScopeName() bool {
 	if o != nil && o.GroupScopeName.IsSet() {
 		return true
 	}
@@ -275,22 +275,22 @@ func (o *CreateAccountSsoConfigCommand) HasGroupScopeName() bool {
 }
 
 // SetGroupScopeName gets a reference to the given NullableString and assigns it to the GroupScopeName field.
-func (o *CreateAccountSsoConfigCommand) SetGroupScopeName(v string) {
+func (o *CreateDomainSsoConfigCommand) SetGroupScopeName(v string) {
 	o.GroupScopeName.Set(&v)
 }
 
 // SetGroupScopeNameNil sets the value for GroupScopeName to be an explicit nil
-func (o *CreateAccountSsoConfigCommand) SetGroupScopeNameNil() {
+func (o *CreateDomainSsoConfigCommand) SetGroupScopeNameNil() {
 	o.GroupScopeName.Set(nil)
 }
 
 // UnsetGroupScopeName ensures that no value is present for GroupScopeName, not even an explicit nil
-func (o *CreateAccountSsoConfigCommand) UnsetGroupScopeName() {
+func (o *CreateDomainSsoConfigCommand) UnsetGroupScopeName() {
 	o.GroupScopeName.Unset()
 }
 
 // GetIsEnabled returns the IsEnabled field value
-func (o *CreateAccountSsoConfigCommand) GetIsEnabled() bool {
+func (o *CreateDomainSsoConfigCommand) GetIsEnabled() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -301,7 +301,7 @@ func (o *CreateAccountSsoConfigCommand) GetIsEnabled() bool {
 
 // GetIsEnabledOk returns a tuple with the IsEnabled field value
 // and a boolean to check if the value has been set.
-func (o *CreateAccountSsoConfigCommand) GetIsEnabledOk() (*bool, bool) {
+func (o *CreateDomainSsoConfigCommand) GetIsEnabledOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -309,11 +309,11 @@ func (o *CreateAccountSsoConfigCommand) GetIsEnabledOk() (*bool, bool) {
 }
 
 // SetIsEnabled sets field value
-func (o *CreateAccountSsoConfigCommand) SetIsEnabled(v bool) {
+func (o *CreateDomainSsoConfigCommand) SetIsEnabled(v bool) {
 	o.IsEnabled = v
 }
 
-func (o CreateAccountSsoConfigCommand) MarshalJSON() ([]byte, error) {
+func (o CreateDomainSsoConfigCommand) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -321,10 +321,10 @@ func (o CreateAccountSsoConfigCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o CreateAccountSsoConfigCommand) ToMap() (map[string]interface{}, error) {
+func (o CreateDomainSsoConfigCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-	toSerialize["accountId"] = o.AccountId
+	toSerialize["domainId"] = o.DomainId
 	toSerialize["issuerUrl"] = o.IssuerUrl
 	toSerialize["clientId"] = o.ClientId
 	toSerialize["clientSecret"] = o.ClientSecret
@@ -344,13 +344,13 @@ func (o CreateAccountSsoConfigCommand) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CreateAccountSsoConfigCommand) UnmarshalJSON(data []byte) (err error) {
+func (o *CreateDomainSsoConfigCommand) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"name",
-		"accountId",
+		"domainId",
 		"issuerUrl",
 		"clientId",
 		"clientSecret",
@@ -372,21 +372,21 @@ func (o *CreateAccountSsoConfigCommand) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varCreateAccountSsoConfigCommand := _CreateAccountSsoConfigCommand{}
+	varCreateDomainSsoConfigCommand := _CreateDomainSsoConfigCommand{}
 
-	err = json.Unmarshal(data, &varCreateAccountSsoConfigCommand)
+	err = json.Unmarshal(data, &varCreateDomainSsoConfigCommand)
 
 	if err != nil {
 		return err
 	}
 
-	*o = CreateAccountSsoConfigCommand(varCreateAccountSsoConfigCommand)
+	*o = CreateDomainSsoConfigCommand(varCreateDomainSsoConfigCommand)
 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
-		delete(additionalProperties, "accountId")
+		delete(additionalProperties, "domainId")
 		delete(additionalProperties, "issuerUrl")
 		delete(additionalProperties, "clientId")
 		delete(additionalProperties, "clientSecret")
@@ -400,38 +400,38 @@ func (o *CreateAccountSsoConfigCommand) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableCreateAccountSsoConfigCommand struct {
-	value *CreateAccountSsoConfigCommand
+type NullableCreateDomainSsoConfigCommand struct {
+	value *CreateDomainSsoConfigCommand
 	isSet bool
 }
 
-func (v NullableCreateAccountSsoConfigCommand) Get() *CreateAccountSsoConfigCommand {
+func (v NullableCreateDomainSsoConfigCommand) Get() *CreateDomainSsoConfigCommand {
 	return v.value
 }
 
-func (v *NullableCreateAccountSsoConfigCommand) Set(val *CreateAccountSsoConfigCommand) {
+func (v *NullableCreateDomainSsoConfigCommand) Set(val *CreateDomainSsoConfigCommand) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCreateAccountSsoConfigCommand) IsSet() bool {
+func (v NullableCreateDomainSsoConfigCommand) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCreateAccountSsoConfigCommand) Unset() {
+func (v *NullableCreateDomainSsoConfigCommand) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCreateAccountSsoConfigCommand(val *CreateAccountSsoConfigCommand) *NullableCreateAccountSsoConfigCommand {
-	return &NullableCreateAccountSsoConfigCommand{value: val, isSet: true}
+func NewNullableCreateDomainSsoConfigCommand(val *CreateDomainSsoConfigCommand) *NullableCreateDomainSsoConfigCommand {
+	return &NullableCreateDomainSsoConfigCommand{value: val, isSet: true}
 }
 
-func (v NullableCreateAccountSsoConfigCommand) MarshalJSON() ([]byte, error) {
+func (v NullableCreateDomainSsoConfigCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCreateAccountSsoConfigCommand) UnmarshalJSON(src []byte) error {
+func (v *NullableCreateDomainSsoConfigCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

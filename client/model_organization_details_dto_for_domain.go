@@ -15,11 +15,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the OrganizationDetailsDtoForAccount type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &OrganizationDetailsDtoForAccount{}
+// checks if the OrganizationDetailsDtoForDomain type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganizationDetailsDtoForDomain{}
 
-// OrganizationDetailsDtoForAccount struct for OrganizationDetailsDtoForAccount
-type OrganizationDetailsDtoForAccount struct {
+// OrganizationDetailsDtoForDomain struct for OrganizationDetailsDtoForDomain
+type OrganizationDetailsDtoForDomain struct {
 	Id                   *int32                       `json:"id,omitempty"`
 	Name                 NullableString               `json:"name,omitempty"`
 	FullName             NullableString               `json:"fullName,omitempty"`
@@ -30,27 +30,27 @@ type OrganizationDetailsDtoForAccount struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _OrganizationDetailsDtoForAccount OrganizationDetailsDtoForAccount
+type _OrganizationDetailsDtoForDomain OrganizationDetailsDtoForDomain
 
-// NewOrganizationDetailsDtoForAccount instantiates a new OrganizationDetailsDtoForAccount object
+// NewOrganizationDetailsDtoForDomain instantiates a new OrganizationDetailsDtoForDomain object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationDetailsDtoForAccount() *OrganizationDetailsDtoForAccount {
-	this := OrganizationDetailsDtoForAccount{}
+func NewOrganizationDetailsDtoForDomain() *OrganizationDetailsDtoForDomain {
+	this := OrganizationDetailsDtoForDomain{}
 	return &this
 }
 
-// NewOrganizationDetailsDtoForAccountWithDefaults instantiates a new OrganizationDetailsDtoForAccount object
+// NewOrganizationDetailsDtoForDomainWithDefaults instantiates a new OrganizationDetailsDtoForDomain object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewOrganizationDetailsDtoForAccountWithDefaults() *OrganizationDetailsDtoForAccount {
-	this := OrganizationDetailsDtoForAccount{}
+func NewOrganizationDetailsDtoForDomainWithDefaults() *OrganizationDetailsDtoForDomain {
+	this := OrganizationDetailsDtoForDomain{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *OrganizationDetailsDtoForAccount) GetId() int32 {
+func (o *OrganizationDetailsDtoForDomain) GetId() int32 {
 	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
@@ -60,7 +60,7 @@ func (o *OrganizationDetailsDtoForAccount) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationDetailsDtoForAccount) GetIdOk() (*int32, bool) {
+func (o *OrganizationDetailsDtoForDomain) GetIdOk() (*int32, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -68,7 +68,7 @@ func (o *OrganizationDetailsDtoForAccount) GetIdOk() (*int32, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *OrganizationDetailsDtoForAccount) HasId() bool {
+func (o *OrganizationDetailsDtoForDomain) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -77,12 +77,12 @@ func (o *OrganizationDetailsDtoForAccount) HasId() bool {
 }
 
 // SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *OrganizationDetailsDtoForAccount) SetId(v int32) {
+func (o *OrganizationDetailsDtoForDomain) SetId(v int32) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationDetailsDtoForAccount) GetName() string {
+func (o *OrganizationDetailsDtoForDomain) GetName() string {
 	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
@@ -93,7 +93,7 @@ func (o *OrganizationDetailsDtoForAccount) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationDetailsDtoForAccount) GetNameOk() (*string, bool) {
+func (o *OrganizationDetailsDtoForDomain) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -101,7 +101,7 @@ func (o *OrganizationDetailsDtoForAccount) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *OrganizationDetailsDtoForAccount) HasName() bool {
+func (o *OrganizationDetailsDtoForDomain) HasName() bool {
 	if o != nil && o.Name.IsSet() {
 		return true
 	}
@@ -110,22 +110,22 @@ func (o *OrganizationDetailsDtoForAccount) HasName() bool {
 }
 
 // SetName gets a reference to the given NullableString and assigns it to the Name field.
-func (o *OrganizationDetailsDtoForAccount) SetName(v string) {
+func (o *OrganizationDetailsDtoForDomain) SetName(v string) {
 	o.Name.Set(&v)
 }
 
 // SetNameNil sets the value for Name to be an explicit nil
-func (o *OrganizationDetailsDtoForAccount) SetNameNil() {
+func (o *OrganizationDetailsDtoForDomain) SetNameNil() {
 	o.Name.Set(nil)
 }
 
 // UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *OrganizationDetailsDtoForAccount) UnsetName() {
+func (o *OrganizationDetailsDtoForDomain) UnsetName() {
 	o.Name.Unset()
 }
 
 // GetFullName returns the FullName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationDetailsDtoForAccount) GetFullName() string {
+func (o *OrganizationDetailsDtoForDomain) GetFullName() string {
 	if o == nil || IsNil(o.FullName.Get()) {
 		var ret string
 		return ret
@@ -136,7 +136,7 @@ func (o *OrganizationDetailsDtoForAccount) GetFullName() string {
 // GetFullNameOk returns a tuple with the FullName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationDetailsDtoForAccount) GetFullNameOk() (*string, bool) {
+func (o *OrganizationDetailsDtoForDomain) GetFullNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -144,7 +144,7 @@ func (o *OrganizationDetailsDtoForAccount) GetFullNameOk() (*string, bool) {
 }
 
 // HasFullName returns a boolean if a field has been set.
-func (o *OrganizationDetailsDtoForAccount) HasFullName() bool {
+func (o *OrganizationDetailsDtoForDomain) HasFullName() bool {
 	if o != nil && o.FullName.IsSet() {
 		return true
 	}
@@ -153,22 +153,22 @@ func (o *OrganizationDetailsDtoForAccount) HasFullName() bool {
 }
 
 // SetFullName gets a reference to the given NullableString and assigns it to the FullName field.
-func (o *OrganizationDetailsDtoForAccount) SetFullName(v string) {
+func (o *OrganizationDetailsDtoForDomain) SetFullName(v string) {
 	o.FullName.Set(&v)
 }
 
 // SetFullNameNil sets the value for FullName to be an explicit nil
-func (o *OrganizationDetailsDtoForAccount) SetFullNameNil() {
+func (o *OrganizationDetailsDtoForDomain) SetFullNameNil() {
 	o.FullName.Set(nil)
 }
 
 // UnsetFullName ensures that no value is present for FullName, not even an explicit nil
-func (o *OrganizationDetailsDtoForAccount) UnsetFullName() {
+func (o *OrganizationDetailsDtoForDomain) UnsetFullName() {
 	o.FullName.Unset()
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationDetailsDtoForAccount) GetCreatedAt() string {
+func (o *OrganizationDetailsDtoForDomain) GetCreatedAt() string {
 	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret string
 		return ret
@@ -179,7 +179,7 @@ func (o *OrganizationDetailsDtoForAccount) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationDetailsDtoForAccount) GetCreatedAtOk() (*string, bool) {
+func (o *OrganizationDetailsDtoForDomain) GetCreatedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -187,7 +187,7 @@ func (o *OrganizationDetailsDtoForAccount) GetCreatedAtOk() (*string, bool) {
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
-func (o *OrganizationDetailsDtoForAccount) HasCreatedAt() bool {
+func (o *OrganizationDetailsDtoForDomain) HasCreatedAt() bool {
 	if o != nil && o.CreatedAt.IsSet() {
 		return true
 	}
@@ -196,22 +196,22 @@ func (o *OrganizationDetailsDtoForAccount) HasCreatedAt() bool {
 }
 
 // SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
-func (o *OrganizationDetailsDtoForAccount) SetCreatedAt(v string) {
+func (o *OrganizationDetailsDtoForDomain) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
 
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *OrganizationDetailsDtoForAccount) SetCreatedAtNil() {
+func (o *OrganizationDetailsDtoForDomain) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
 }
 
 // UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *OrganizationDetailsDtoForAccount) UnsetCreatedAt() {
+func (o *OrganizationDetailsDtoForDomain) UnsetCreatedAt() {
 	o.CreatedAt.Unset()
 }
 
 // GetProjects returns the Projects field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationDetailsDtoForAccount) GetProjects() []GroupedProjectDto {
+func (o *OrganizationDetailsDtoForDomain) GetProjects() []GroupedProjectDto {
 	if o == nil {
 		var ret []GroupedProjectDto
 		return ret
@@ -222,7 +222,7 @@ func (o *OrganizationDetailsDtoForAccount) GetProjects() []GroupedProjectDto {
 // GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationDetailsDtoForAccount) GetProjectsOk() ([]GroupedProjectDto, bool) {
+func (o *OrganizationDetailsDtoForDomain) GetProjectsOk() ([]GroupedProjectDto, bool) {
 	if o == nil || IsNil(o.Projects) {
 		return nil, false
 	}
@@ -230,7 +230,7 @@ func (o *OrganizationDetailsDtoForAccount) GetProjectsOk() ([]GroupedProjectDto,
 }
 
 // HasProjects returns a boolean if a field has been set.
-func (o *OrganizationDetailsDtoForAccount) HasProjects() bool {
+func (o *OrganizationDetailsDtoForDomain) HasProjects() bool {
 	if o != nil && !IsNil(o.Projects) {
 		return true
 	}
@@ -239,12 +239,12 @@ func (o *OrganizationDetailsDtoForAccount) HasProjects() bool {
 }
 
 // SetProjects gets a reference to the given []GroupedProjectDto and assigns it to the Projects field.
-func (o *OrganizationDetailsDtoForAccount) SetProjects(v []GroupedProjectDto) {
+func (o *OrganizationDetailsDtoForDomain) SetProjects(v []GroupedProjectDto) {
 	o.Projects = v
 }
 
 // GetGroups returns the Groups field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationDetailsDtoForAccount) GetGroups() []GroupedOrganizationDto {
+func (o *OrganizationDetailsDtoForDomain) GetGroups() []GroupedOrganizationDto {
 	if o == nil {
 		var ret []GroupedOrganizationDto
 		return ret
@@ -255,7 +255,7 @@ func (o *OrganizationDetailsDtoForAccount) GetGroups() []GroupedOrganizationDto 
 // GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationDetailsDtoForAccount) GetGroupsOk() ([]GroupedOrganizationDto, bool) {
+func (o *OrganizationDetailsDtoForDomain) GetGroupsOk() ([]GroupedOrganizationDto, bool) {
 	if o == nil || IsNil(o.Groups) {
 		return nil, false
 	}
@@ -263,7 +263,7 @@ func (o *OrganizationDetailsDtoForAccount) GetGroupsOk() ([]GroupedOrganizationD
 }
 
 // HasGroups returns a boolean if a field has been set.
-func (o *OrganizationDetailsDtoForAccount) HasGroups() bool {
+func (o *OrganizationDetailsDtoForDomain) HasGroups() bool {
 	if o != nil && !IsNil(o.Groups) {
 		return true
 	}
@@ -272,12 +272,12 @@ func (o *OrganizationDetailsDtoForAccount) HasGroups() bool {
 }
 
 // SetGroups gets a reference to the given []GroupedOrganizationDto and assigns it to the Groups field.
-func (o *OrganizationDetailsDtoForAccount) SetGroups(v []GroupedOrganizationDto) {
+func (o *OrganizationDetailsDtoForDomain) SetGroups(v []GroupedOrganizationDto) {
 	o.Groups = v
 }
 
 // GetUsers returns the Users field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationDetailsDtoForAccount) GetUsers() []GroupedOrganizationUserDto {
+func (o *OrganizationDetailsDtoForDomain) GetUsers() []GroupedOrganizationUserDto {
 	if o == nil {
 		var ret []GroupedOrganizationUserDto
 		return ret
@@ -288,7 +288,7 @@ func (o *OrganizationDetailsDtoForAccount) GetUsers() []GroupedOrganizationUserD
 // GetUsersOk returns a tuple with the Users field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationDetailsDtoForAccount) GetUsersOk() ([]GroupedOrganizationUserDto, bool) {
+func (o *OrganizationDetailsDtoForDomain) GetUsersOk() ([]GroupedOrganizationUserDto, bool) {
 	if o == nil || IsNil(o.Users) {
 		return nil, false
 	}
@@ -296,7 +296,7 @@ func (o *OrganizationDetailsDtoForAccount) GetUsersOk() ([]GroupedOrganizationUs
 }
 
 // HasUsers returns a boolean if a field has been set.
-func (o *OrganizationDetailsDtoForAccount) HasUsers() bool {
+func (o *OrganizationDetailsDtoForDomain) HasUsers() bool {
 	if o != nil && !IsNil(o.Users) {
 		return true
 	}
@@ -305,11 +305,11 @@ func (o *OrganizationDetailsDtoForAccount) HasUsers() bool {
 }
 
 // SetUsers gets a reference to the given []GroupedOrganizationUserDto and assigns it to the Users field.
-func (o *OrganizationDetailsDtoForAccount) SetUsers(v []GroupedOrganizationUserDto) {
+func (o *OrganizationDetailsDtoForDomain) SetUsers(v []GroupedOrganizationUserDto) {
 	o.Users = v
 }
 
-func (o OrganizationDetailsDtoForAccount) MarshalJSON() ([]byte, error) {
+func (o OrganizationDetailsDtoForDomain) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -317,7 +317,7 @@ func (o OrganizationDetailsDtoForAccount) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o OrganizationDetailsDtoForAccount) ToMap() (map[string]interface{}, error) {
+func (o OrganizationDetailsDtoForDomain) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -348,16 +348,16 @@ func (o OrganizationDetailsDtoForAccount) ToMap() (map[string]interface{}, error
 	return toSerialize, nil
 }
 
-func (o *OrganizationDetailsDtoForAccount) UnmarshalJSON(data []byte) (err error) {
-	varOrganizationDetailsDtoForAccount := _OrganizationDetailsDtoForAccount{}
+func (o *OrganizationDetailsDtoForDomain) UnmarshalJSON(data []byte) (err error) {
+	varOrganizationDetailsDtoForDomain := _OrganizationDetailsDtoForDomain{}
 
-	err = json.Unmarshal(data, &varOrganizationDetailsDtoForAccount)
+	err = json.Unmarshal(data, &varOrganizationDetailsDtoForDomain)
 
 	if err != nil {
 		return err
 	}
 
-	*o = OrganizationDetailsDtoForAccount(varOrganizationDetailsDtoForAccount)
+	*o = OrganizationDetailsDtoForDomain(varOrganizationDetailsDtoForDomain)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -375,38 +375,38 @@ func (o *OrganizationDetailsDtoForAccount) UnmarshalJSON(data []byte) (err error
 	return err
 }
 
-type NullableOrganizationDetailsDtoForAccount struct {
-	value *OrganizationDetailsDtoForAccount
+type NullableOrganizationDetailsDtoForDomain struct {
+	value *OrganizationDetailsDtoForDomain
 	isSet bool
 }
 
-func (v NullableOrganizationDetailsDtoForAccount) Get() *OrganizationDetailsDtoForAccount {
+func (v NullableOrganizationDetailsDtoForDomain) Get() *OrganizationDetailsDtoForDomain {
 	return v.value
 }
 
-func (v *NullableOrganizationDetailsDtoForAccount) Set(val *OrganizationDetailsDtoForAccount) {
+func (v *NullableOrganizationDetailsDtoForDomain) Set(val *OrganizationDetailsDtoForDomain) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableOrganizationDetailsDtoForAccount) IsSet() bool {
+func (v NullableOrganizationDetailsDtoForDomain) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableOrganizationDetailsDtoForAccount) Unset() {
+func (v *NullableOrganizationDetailsDtoForDomain) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableOrganizationDetailsDtoForAccount(val *OrganizationDetailsDtoForAccount) *NullableOrganizationDetailsDtoForAccount {
-	return &NullableOrganizationDetailsDtoForAccount{value: val, isSet: true}
+func NewNullableOrganizationDetailsDtoForDomain(val *OrganizationDetailsDtoForDomain) *NullableOrganizationDetailsDtoForDomain {
+	return &NullableOrganizationDetailsDtoForDomain{value: val, isSet: true}
 }
 
-func (v NullableOrganizationDetailsDtoForAccount) MarshalJSON() ([]byte, error) {
+func (v NullableOrganizationDetailsDtoForDomain) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableOrganizationDetailsDtoForAccount) UnmarshalJSON(src []byte) error {
+func (v *NullableOrganizationDetailsDtoForDomain) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

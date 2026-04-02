@@ -16,67 +16,67 @@ import (
 	"fmt"
 )
 
-// checks if the AccountDetailsForUserDto type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AccountDetailsForUserDto{}
+// checks if the DomainDetailsForUserDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DomainDetailsForUserDto{}
 
-// AccountDetailsForUserDto struct for AccountDetailsForUserDto
-type AccountDetailsForUserDto struct {
-	AccountId            int32          `json:"accountId"`
+// DomainDetailsForUserDto struct for DomainDetailsForUserDto
+type DomainDetailsForUserDto struct {
+	DomainId             int32          `json:"domainId"`
 	Name                 string         `json:"name"`
 	Logo                 NullableString `json:"logo"`
 	Domain               NullableString `json:"domain"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _AccountDetailsForUserDto AccountDetailsForUserDto
+type _DomainDetailsForUserDto DomainDetailsForUserDto
 
-// NewAccountDetailsForUserDto instantiates a new AccountDetailsForUserDto object
+// NewDomainDetailsForUserDto instantiates a new DomainDetailsForUserDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountDetailsForUserDto(accountId int32, name string, logo NullableString, domain NullableString) *AccountDetailsForUserDto {
-	this := AccountDetailsForUserDto{}
-	this.AccountId = accountId
+func NewDomainDetailsForUserDto(domainId int32, name string, logo NullableString, domain NullableString) *DomainDetailsForUserDto {
+	this := DomainDetailsForUserDto{}
+	this.DomainId = domainId
 	this.Name = name
 	this.Logo = logo
 	this.Domain = domain
 	return &this
 }
 
-// NewAccountDetailsForUserDtoWithDefaults instantiates a new AccountDetailsForUserDto object
+// NewDomainDetailsForUserDtoWithDefaults instantiates a new DomainDetailsForUserDto object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAccountDetailsForUserDtoWithDefaults() *AccountDetailsForUserDto {
-	this := AccountDetailsForUserDto{}
+func NewDomainDetailsForUserDtoWithDefaults() *DomainDetailsForUserDto {
+	this := DomainDetailsForUserDto{}
 	return &this
 }
 
-// GetAccountId returns the AccountId field value
-func (o *AccountDetailsForUserDto) GetAccountId() int32 {
+// GetDomainId returns the DomainId field value
+func (o *DomainDetailsForUserDto) GetDomainId() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.AccountId
+	return o.DomainId
 }
 
-// GetAccountIdOk returns a tuple with the AccountId field value
+// GetDomainIdOk returns a tuple with the DomainId field value
 // and a boolean to check if the value has been set.
-func (o *AccountDetailsForUserDto) GetAccountIdOk() (*int32, bool) {
+func (o *DomainDetailsForUserDto) GetDomainIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AccountId, true
+	return &o.DomainId, true
 }
 
-// SetAccountId sets field value
-func (o *AccountDetailsForUserDto) SetAccountId(v int32) {
-	o.AccountId = v
+// SetDomainId sets field value
+func (o *DomainDetailsForUserDto) SetDomainId(v int32) {
+	o.DomainId = v
 }
 
 // GetName returns the Name field value
-func (o *AccountDetailsForUserDto) GetName() string {
+func (o *DomainDetailsForUserDto) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -87,7 +87,7 @@ func (o *AccountDetailsForUserDto) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *AccountDetailsForUserDto) GetNameOk() (*string, bool) {
+func (o *DomainDetailsForUserDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -95,13 +95,13 @@ func (o *AccountDetailsForUserDto) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *AccountDetailsForUserDto) SetName(v string) {
+func (o *DomainDetailsForUserDto) SetName(v string) {
 	o.Name = v
 }
 
 // GetLogo returns the Logo field value
 // If the value is explicit nil, the zero value for string will be returned
-func (o *AccountDetailsForUserDto) GetLogo() string {
+func (o *DomainDetailsForUserDto) GetLogo() string {
 	if o == nil || o.Logo.Get() == nil {
 		var ret string
 		return ret
@@ -113,7 +113,7 @@ func (o *AccountDetailsForUserDto) GetLogo() string {
 // GetLogoOk returns a tuple with the Logo field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountDetailsForUserDto) GetLogoOk() (*string, bool) {
+func (o *DomainDetailsForUserDto) GetLogoOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -121,13 +121,13 @@ func (o *AccountDetailsForUserDto) GetLogoOk() (*string, bool) {
 }
 
 // SetLogo sets field value
-func (o *AccountDetailsForUserDto) SetLogo(v string) {
+func (o *DomainDetailsForUserDto) SetLogo(v string) {
 	o.Logo.Set(&v)
 }
 
 // GetDomain returns the Domain field value
 // If the value is explicit nil, the zero value for string will be returned
-func (o *AccountDetailsForUserDto) GetDomain() string {
+func (o *DomainDetailsForUserDto) GetDomain() string {
 	if o == nil || o.Domain.Get() == nil {
 		var ret string
 		return ret
@@ -139,7 +139,7 @@ func (o *AccountDetailsForUserDto) GetDomain() string {
 // GetDomainOk returns a tuple with the Domain field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountDetailsForUserDto) GetDomainOk() (*string, bool) {
+func (o *DomainDetailsForUserDto) GetDomainOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -147,11 +147,11 @@ func (o *AccountDetailsForUserDto) GetDomainOk() (*string, bool) {
 }
 
 // SetDomain sets field value
-func (o *AccountDetailsForUserDto) SetDomain(v string) {
+func (o *DomainDetailsForUserDto) SetDomain(v string) {
 	o.Domain.Set(&v)
 }
 
-func (o AccountDetailsForUserDto) MarshalJSON() ([]byte, error) {
+func (o DomainDetailsForUserDto) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -159,9 +159,9 @@ func (o AccountDetailsForUserDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o AccountDetailsForUserDto) ToMap() (map[string]interface{}, error) {
+func (o DomainDetailsForUserDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["accountId"] = o.AccountId
+	toSerialize["domainId"] = o.DomainId
 	toSerialize["name"] = o.Name
 	toSerialize["logo"] = o.Logo.Get()
 	toSerialize["domain"] = o.Domain.Get()
@@ -173,12 +173,12 @@ func (o AccountDetailsForUserDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccountDetailsForUserDto) UnmarshalJSON(data []byte) (err error) {
+func (o *DomainDetailsForUserDto) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"accountId",
+		"domainId",
 		"name",
 		"logo",
 		"domain",
@@ -198,20 +198,20 @@ func (o *AccountDetailsForUserDto) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varAccountDetailsForUserDto := _AccountDetailsForUserDto{}
+	varDomainDetailsForUserDto := _DomainDetailsForUserDto{}
 
-	err = json.Unmarshal(data, &varAccountDetailsForUserDto)
+	err = json.Unmarshal(data, &varDomainDetailsForUserDto)
 
 	if err != nil {
 		return err
 	}
 
-	*o = AccountDetailsForUserDto(varAccountDetailsForUserDto)
+	*o = DomainDetailsForUserDto(varDomainDetailsForUserDto)
 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "accountId")
+		delete(additionalProperties, "domainId")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "logo")
 		delete(additionalProperties, "domain")
@@ -221,38 +221,38 @@ func (o *AccountDetailsForUserDto) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableAccountDetailsForUserDto struct {
-	value *AccountDetailsForUserDto
+type NullableDomainDetailsForUserDto struct {
+	value *DomainDetailsForUserDto
 	isSet bool
 }
 
-func (v NullableAccountDetailsForUserDto) Get() *AccountDetailsForUserDto {
+func (v NullableDomainDetailsForUserDto) Get() *DomainDetailsForUserDto {
 	return v.value
 }
 
-func (v *NullableAccountDetailsForUserDto) Set(val *AccountDetailsForUserDto) {
+func (v *NullableDomainDetailsForUserDto) Set(val *DomainDetailsForUserDto) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableAccountDetailsForUserDto) IsSet() bool {
+func (v NullableDomainDetailsForUserDto) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableAccountDetailsForUserDto) Unset() {
+func (v *NullableDomainDetailsForUserDto) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableAccountDetailsForUserDto(val *AccountDetailsForUserDto) *NullableAccountDetailsForUserDto {
-	return &NullableAccountDetailsForUserDto{value: val, isSet: true}
+func NewNullableDomainDetailsForUserDto(val *DomainDetailsForUserDto) *NullableDomainDetailsForUserDto {
+	return &NullableDomainDetailsForUserDto{value: val, isSet: true}
 }
 
-func (v NullableAccountDetailsForUserDto) MarshalJSON() ([]byte, error) {
+func (v NullableDomainDetailsForUserDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableAccountDetailsForUserDto) UnmarshalJSON(src []byte) error {
+func (v *NullableDomainDetailsForUserDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

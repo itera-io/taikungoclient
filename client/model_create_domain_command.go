@@ -15,38 +15,38 @@ import (
 	"encoding/json"
 )
 
-// checks if the CreateAccountCommand type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CreateAccountCommand{}
+// checks if the CreateDomainCommand type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateDomainCommand{}
 
-// CreateAccountCommand struct for CreateAccountCommand
-type CreateAccountCommand struct {
+// CreateDomainCommand struct for CreateDomainCommand
+type CreateDomainCommand struct {
 	Name                 NullableString `json:"name,omitempty"`
 	Email                NullableString `json:"email,omitempty"`
 	CreateOrganization   *bool          `json:"createOrganization,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _CreateAccountCommand CreateAccountCommand
+type _CreateDomainCommand CreateDomainCommand
 
-// NewCreateAccountCommand instantiates a new CreateAccountCommand object
+// NewCreateDomainCommand instantiates a new CreateDomainCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateAccountCommand() *CreateAccountCommand {
-	this := CreateAccountCommand{}
+func NewCreateDomainCommand() *CreateDomainCommand {
+	this := CreateDomainCommand{}
 	return &this
 }
 
-// NewCreateAccountCommandWithDefaults instantiates a new CreateAccountCommand object
+// NewCreateDomainCommandWithDefaults instantiates a new CreateDomainCommand object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCreateAccountCommandWithDefaults() *CreateAccountCommand {
-	this := CreateAccountCommand{}
+func NewCreateDomainCommandWithDefaults() *CreateDomainCommand {
+	this := CreateDomainCommand{}
 	return &this
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateAccountCommand) GetName() string {
+func (o *CreateDomainCommand) GetName() string {
 	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
@@ -57,7 +57,7 @@ func (o *CreateAccountCommand) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateAccountCommand) GetNameOk() (*string, bool) {
+func (o *CreateDomainCommand) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *CreateAccountCommand) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *CreateAccountCommand) HasName() bool {
+func (o *CreateDomainCommand) HasName() bool {
 	if o != nil && o.Name.IsSet() {
 		return true
 	}
@@ -74,22 +74,22 @@ func (o *CreateAccountCommand) HasName() bool {
 }
 
 // SetName gets a reference to the given NullableString and assigns it to the Name field.
-func (o *CreateAccountCommand) SetName(v string) {
+func (o *CreateDomainCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
 
 // SetNameNil sets the value for Name to be an explicit nil
-func (o *CreateAccountCommand) SetNameNil() {
+func (o *CreateDomainCommand) SetNameNil() {
 	o.Name.Set(nil)
 }
 
 // UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *CreateAccountCommand) UnsetName() {
+func (o *CreateDomainCommand) UnsetName() {
 	o.Name.Unset()
 }
 
 // GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateAccountCommand) GetEmail() string {
+func (o *CreateDomainCommand) GetEmail() string {
 	if o == nil || IsNil(o.Email.Get()) {
 		var ret string
 		return ret
@@ -100,7 +100,7 @@ func (o *CreateAccountCommand) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateAccountCommand) GetEmailOk() (*string, bool) {
+func (o *CreateDomainCommand) GetEmailOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -108,7 +108,7 @@ func (o *CreateAccountCommand) GetEmailOk() (*string, bool) {
 }
 
 // HasEmail returns a boolean if a field has been set.
-func (o *CreateAccountCommand) HasEmail() bool {
+func (o *CreateDomainCommand) HasEmail() bool {
 	if o != nil && o.Email.IsSet() {
 		return true
 	}
@@ -117,22 +117,22 @@ func (o *CreateAccountCommand) HasEmail() bool {
 }
 
 // SetEmail gets a reference to the given NullableString and assigns it to the Email field.
-func (o *CreateAccountCommand) SetEmail(v string) {
+func (o *CreateDomainCommand) SetEmail(v string) {
 	o.Email.Set(&v)
 }
 
 // SetEmailNil sets the value for Email to be an explicit nil
-func (o *CreateAccountCommand) SetEmailNil() {
+func (o *CreateDomainCommand) SetEmailNil() {
 	o.Email.Set(nil)
 }
 
 // UnsetEmail ensures that no value is present for Email, not even an explicit nil
-func (o *CreateAccountCommand) UnsetEmail() {
+func (o *CreateDomainCommand) UnsetEmail() {
 	o.Email.Unset()
 }
 
 // GetCreateOrganization returns the CreateOrganization field value if set, zero value otherwise.
-func (o *CreateAccountCommand) GetCreateOrganization() bool {
+func (o *CreateDomainCommand) GetCreateOrganization() bool {
 	if o == nil || IsNil(o.CreateOrganization) {
 		var ret bool
 		return ret
@@ -142,7 +142,7 @@ func (o *CreateAccountCommand) GetCreateOrganization() bool {
 
 // GetCreateOrganizationOk returns a tuple with the CreateOrganization field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateAccountCommand) GetCreateOrganizationOk() (*bool, bool) {
+func (o *CreateDomainCommand) GetCreateOrganizationOk() (*bool, bool) {
 	if o == nil || IsNil(o.CreateOrganization) {
 		return nil, false
 	}
@@ -150,7 +150,7 @@ func (o *CreateAccountCommand) GetCreateOrganizationOk() (*bool, bool) {
 }
 
 // HasCreateOrganization returns a boolean if a field has been set.
-func (o *CreateAccountCommand) HasCreateOrganization() bool {
+func (o *CreateDomainCommand) HasCreateOrganization() bool {
 	if o != nil && !IsNil(o.CreateOrganization) {
 		return true
 	}
@@ -159,11 +159,11 @@ func (o *CreateAccountCommand) HasCreateOrganization() bool {
 }
 
 // SetCreateOrganization gets a reference to the given bool and assigns it to the CreateOrganization field.
-func (o *CreateAccountCommand) SetCreateOrganization(v bool) {
+func (o *CreateDomainCommand) SetCreateOrganization(v bool) {
 	o.CreateOrganization = &v
 }
 
-func (o CreateAccountCommand) MarshalJSON() ([]byte, error) {
+func (o CreateDomainCommand) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -171,7 +171,7 @@ func (o CreateAccountCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o CreateAccountCommand) ToMap() (map[string]interface{}, error) {
+func (o CreateDomainCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
@@ -190,16 +190,16 @@ func (o CreateAccountCommand) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CreateAccountCommand) UnmarshalJSON(data []byte) (err error) {
-	varCreateAccountCommand := _CreateAccountCommand{}
+func (o *CreateDomainCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateDomainCommand := _CreateDomainCommand{}
 
-	err = json.Unmarshal(data, &varCreateAccountCommand)
+	err = json.Unmarshal(data, &varCreateDomainCommand)
 
 	if err != nil {
 		return err
 	}
 
-	*o = CreateAccountCommand(varCreateAccountCommand)
+	*o = CreateDomainCommand(varCreateDomainCommand)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -213,38 +213,38 @@ func (o *CreateAccountCommand) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableCreateAccountCommand struct {
-	value *CreateAccountCommand
+type NullableCreateDomainCommand struct {
+	value *CreateDomainCommand
 	isSet bool
 }
 
-func (v NullableCreateAccountCommand) Get() *CreateAccountCommand {
+func (v NullableCreateDomainCommand) Get() *CreateDomainCommand {
 	return v.value
 }
 
-func (v *NullableCreateAccountCommand) Set(val *CreateAccountCommand) {
+func (v *NullableCreateDomainCommand) Set(val *CreateDomainCommand) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCreateAccountCommand) IsSet() bool {
+func (v NullableCreateDomainCommand) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCreateAccountCommand) Unset() {
+func (v *NullableCreateDomainCommand) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCreateAccountCommand(val *CreateAccountCommand) *NullableCreateAccountCommand {
-	return &NullableCreateAccountCommand{value: val, isSet: true}
+func NewNullableCreateDomainCommand(val *CreateDomainCommand) *NullableCreateDomainCommand {
+	return &NullableCreateDomainCommand{value: val, isSet: true}
 }
 
-func (v NullableCreateAccountCommand) MarshalJSON() ([]byte, error) {
+func (v NullableCreateDomainCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCreateAccountCommand) UnmarshalJSON(src []byte) error {
+func (v *NullableCreateDomainCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

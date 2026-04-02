@@ -16,42 +16,42 @@ import (
 	"fmt"
 )
 
-// checks if the AccountSsoConfigList type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AccountSsoConfigList{}
+// checks if the DomainSsoConfigList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DomainSsoConfigList{}
 
-// AccountSsoConfigList struct for AccountSsoConfigList
-type AccountSsoConfigList struct {
-	Data                 []AccountSsoConfigDto `json:"data"`
-	TotalCount           int32                 `json:"totalCount"`
+// DomainSsoConfigList struct for DomainSsoConfigList
+type DomainSsoConfigList struct {
+	Data                 []DomainSsoConfigDto `json:"data"`
+	TotalCount           int32                `json:"totalCount"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _AccountSsoConfigList AccountSsoConfigList
+type _DomainSsoConfigList DomainSsoConfigList
 
-// NewAccountSsoConfigList instantiates a new AccountSsoConfigList object
+// NewDomainSsoConfigList instantiates a new DomainSsoConfigList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountSsoConfigList(data []AccountSsoConfigDto, totalCount int32) *AccountSsoConfigList {
-	this := AccountSsoConfigList{}
+func NewDomainSsoConfigList(data []DomainSsoConfigDto, totalCount int32) *DomainSsoConfigList {
+	this := DomainSsoConfigList{}
 	this.Data = data
 	this.TotalCount = totalCount
 	return &this
 }
 
-// NewAccountSsoConfigListWithDefaults instantiates a new AccountSsoConfigList object
+// NewDomainSsoConfigListWithDefaults instantiates a new DomainSsoConfigList object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAccountSsoConfigListWithDefaults() *AccountSsoConfigList {
-	this := AccountSsoConfigList{}
+func NewDomainSsoConfigListWithDefaults() *DomainSsoConfigList {
+	this := DomainSsoConfigList{}
 	return &this
 }
 
 // GetData returns the Data field value
-// If the value is explicit nil, the zero value for []AccountSsoConfigDto will be returned
-func (o *AccountSsoConfigList) GetData() []AccountSsoConfigDto {
+// If the value is explicit nil, the zero value for []DomainSsoConfigDto will be returned
+func (o *DomainSsoConfigList) GetData() []DomainSsoConfigDto {
 	if o == nil {
-		var ret []AccountSsoConfigDto
+		var ret []DomainSsoConfigDto
 		return ret
 	}
 
@@ -61,7 +61,7 @@ func (o *AccountSsoConfigList) GetData() []AccountSsoConfigDto {
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountSsoConfigList) GetDataOk() ([]AccountSsoConfigDto, bool) {
+func (o *DomainSsoConfigList) GetDataOk() ([]DomainSsoConfigDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -69,12 +69,12 @@ func (o *AccountSsoConfigList) GetDataOk() ([]AccountSsoConfigDto, bool) {
 }
 
 // SetData sets field value
-func (o *AccountSsoConfigList) SetData(v []AccountSsoConfigDto) {
+func (o *DomainSsoConfigList) SetData(v []DomainSsoConfigDto) {
 	o.Data = v
 }
 
 // GetTotalCount returns the TotalCount field value
-func (o *AccountSsoConfigList) GetTotalCount() int32 {
+func (o *DomainSsoConfigList) GetTotalCount() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -85,7 +85,7 @@ func (o *AccountSsoConfigList) GetTotalCount() int32 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value
 // and a boolean to check if the value has been set.
-func (o *AccountSsoConfigList) GetTotalCountOk() (*int32, bool) {
+func (o *DomainSsoConfigList) GetTotalCountOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,11 +93,11 @@ func (o *AccountSsoConfigList) GetTotalCountOk() (*int32, bool) {
 }
 
 // SetTotalCount sets field value
-func (o *AccountSsoConfigList) SetTotalCount(v int32) {
+func (o *DomainSsoConfigList) SetTotalCount(v int32) {
 	o.TotalCount = v
 }
 
-func (o AccountSsoConfigList) MarshalJSON() ([]byte, error) {
+func (o DomainSsoConfigList) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -105,7 +105,7 @@ func (o AccountSsoConfigList) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o AccountSsoConfigList) ToMap() (map[string]interface{}, error) {
+func (o DomainSsoConfigList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
@@ -119,7 +119,7 @@ func (o AccountSsoConfigList) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccountSsoConfigList) UnmarshalJSON(data []byte) (err error) {
+func (o *DomainSsoConfigList) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -142,15 +142,15 @@ func (o *AccountSsoConfigList) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varAccountSsoConfigList := _AccountSsoConfigList{}
+	varDomainSsoConfigList := _DomainSsoConfigList{}
 
-	err = json.Unmarshal(data, &varAccountSsoConfigList)
+	err = json.Unmarshal(data, &varDomainSsoConfigList)
 
 	if err != nil {
 		return err
 	}
 
-	*o = AccountSsoConfigList(varAccountSsoConfigList)
+	*o = DomainSsoConfigList(varDomainSsoConfigList)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -163,38 +163,38 @@ func (o *AccountSsoConfigList) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableAccountSsoConfigList struct {
-	value *AccountSsoConfigList
+type NullableDomainSsoConfigList struct {
+	value *DomainSsoConfigList
 	isSet bool
 }
 
-func (v NullableAccountSsoConfigList) Get() *AccountSsoConfigList {
+func (v NullableDomainSsoConfigList) Get() *DomainSsoConfigList {
 	return v.value
 }
 
-func (v *NullableAccountSsoConfigList) Set(val *AccountSsoConfigList) {
+func (v *NullableDomainSsoConfigList) Set(val *DomainSsoConfigList) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableAccountSsoConfigList) IsSet() bool {
+func (v NullableDomainSsoConfigList) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableAccountSsoConfigList) Unset() {
+func (v *NullableDomainSsoConfigList) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableAccountSsoConfigList(val *AccountSsoConfigList) *NullableAccountSsoConfigList {
-	return &NullableAccountSsoConfigList{value: val, isSet: true}
+func NewNullableDomainSsoConfigList(val *DomainSsoConfigList) *NullableDomainSsoConfigList {
+	return &NullableDomainSsoConfigList{value: val, isSet: true}
 }
 
-func (v NullableAccountSsoConfigList) MarshalJSON() ([]byte, error) {
+func (v NullableDomainSsoConfigList) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableAccountSsoConfigList) UnmarshalJSON(src []byte) error {
+func (v *NullableDomainSsoConfigList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

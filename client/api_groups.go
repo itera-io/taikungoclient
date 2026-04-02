@@ -20,14 +20,13 @@ import (
 	"strings"
 )
 
-
 // GroupsAPIService GroupsAPI service
 type GroupsAPIService service
 
 type ApiGroupsAddOrganizationsRequest struct {
-	ctx context.Context
-	ApiService *GroupsAPIService
-	id int32
+	ctx                        context.Context
+	ApiService                 *GroupsAPIService
+	id                         int32
 	createGroupOrganizationDto *[]CreateGroupOrganizationDto
 }
 
@@ -43,24 +42,24 @@ func (r ApiGroupsAddOrganizationsRequest) Execute() (*http.Response, error) {
 /*
 GroupsAddOrganizations Add organizations to group
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGroupsAddOrganizationsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGroupsAddOrganizationsRequest
 */
 func (a *GroupsAPIService) GroupsAddOrganizations(ctx context.Context, id int32) ApiGroupsAddOrganizationsRequest {
 	return ApiGroupsAddOrganizationsRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *GroupsAPIService) GroupsAddOrganizationsExecute(r ApiGroupsAddOrganizationsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GroupsAPIService.GroupsAddOrganizations")
@@ -137,8 +136,8 @@ func (a *GroupsAPIService) GroupsAddOrganizationsExecute(r ApiGroupsAddOrganizat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -148,8 +147,8 @@ func (a *GroupsAPIService) GroupsAddOrganizationsExecute(r ApiGroupsAddOrganizat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -159,8 +158,8 @@ func (a *GroupsAPIService) GroupsAddOrganizationsExecute(r ApiGroupsAddOrganizat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -170,8 +169,8 @@ func (a *GroupsAPIService) GroupsAddOrganizationsExecute(r ApiGroupsAddOrganizat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -181,8 +180,8 @@ func (a *GroupsAPIService) GroupsAddOrganizationsExecute(r ApiGroupsAddOrganizat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -192,8 +191,8 @@ func (a *GroupsAPIService) GroupsAddOrganizationsExecute(r ApiGroupsAddOrganizat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -202,9 +201,9 @@ func (a *GroupsAPIService) GroupsAddOrganizationsExecute(r ApiGroupsAddOrganizat
 }
 
 type ApiGroupsAddUsersRequest struct {
-	ctx context.Context
-	ApiService *GroupsAPIService
-	id int32
+	ctx                context.Context
+	ApiService         *GroupsAPIService
+	id                 int32
 	createGroupUserDto *[]CreateGroupUserDto
 }
 
@@ -220,24 +219,24 @@ func (r ApiGroupsAddUsersRequest) Execute() (*http.Response, error) {
 /*
 GroupsAddUsers Add users to group
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGroupsAddUsersRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGroupsAddUsersRequest
 */
 func (a *GroupsAPIService) GroupsAddUsers(ctx context.Context, id int32) ApiGroupsAddUsersRequest {
 	return ApiGroupsAddUsersRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *GroupsAPIService) GroupsAddUsersExecute(r ApiGroupsAddUsersRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GroupsAPIService.GroupsAddUsers")
@@ -314,8 +313,8 @@ func (a *GroupsAPIService) GroupsAddUsersExecute(r ApiGroupsAddUsersRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -325,8 +324,8 @@ func (a *GroupsAPIService) GroupsAddUsersExecute(r ApiGroupsAddUsersRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -336,8 +335,8 @@ func (a *GroupsAPIService) GroupsAddUsersExecute(r ApiGroupsAddUsersRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -347,8 +346,8 @@ func (a *GroupsAPIService) GroupsAddUsersExecute(r ApiGroupsAddUsersRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -358,8 +357,8 @@ func (a *GroupsAPIService) GroupsAddUsersExecute(r ApiGroupsAddUsersRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -369,8 +368,8 @@ func (a *GroupsAPIService) GroupsAddUsersExecute(r ApiGroupsAddUsersRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -379,8 +378,8 @@ func (a *GroupsAPIService) GroupsAddUsersExecute(r ApiGroupsAddUsersRequest) (*h
 }
 
 type ApiGroupsCheckDuplicateEntityRequest struct {
-	ctx context.Context
-	ApiService *GroupsAPIService
+	ctx                        context.Context
+	ApiService                 *GroupsAPIService
 	checkDuplicateGroupCommand *CheckDuplicateGroupCommand
 }
 
@@ -396,22 +395,22 @@ func (r ApiGroupsCheckDuplicateEntityRequest) Execute() (*http.Response, error) 
 /*
 GroupsCheckDuplicateEntity Check duplicate entity
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGroupsCheckDuplicateEntityRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGroupsCheckDuplicateEntityRequest
 */
 func (a *GroupsAPIService) GroupsCheckDuplicateEntity(ctx context.Context) ApiGroupsCheckDuplicateEntityRequest {
 	return ApiGroupsCheckDuplicateEntityRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *GroupsAPIService) GroupsCheckDuplicateEntityExecute(r ApiGroupsCheckDuplicateEntityRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GroupsAPIService.GroupsCheckDuplicateEntity")
@@ -487,8 +486,8 @@ func (a *GroupsAPIService) GroupsCheckDuplicateEntityExecute(r ApiGroupsCheckDup
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -498,8 +497,8 @@ func (a *GroupsAPIService) GroupsCheckDuplicateEntityExecute(r ApiGroupsCheckDup
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -509,8 +508,8 @@ func (a *GroupsAPIService) GroupsCheckDuplicateEntityExecute(r ApiGroupsCheckDup
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -520,8 +519,8 @@ func (a *GroupsAPIService) GroupsCheckDuplicateEntityExecute(r ApiGroupsCheckDup
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -531,8 +530,8 @@ func (a *GroupsAPIService) GroupsCheckDuplicateEntityExecute(r ApiGroupsCheckDup
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -542,8 +541,8 @@ func (a *GroupsAPIService) GroupsCheckDuplicateEntityExecute(r ApiGroupsCheckDup
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -552,8 +551,8 @@ func (a *GroupsAPIService) GroupsCheckDuplicateEntityExecute(r ApiGroupsCheckDup
 }
 
 type ApiGroupsCreateRequest struct {
-	ctx context.Context
-	ApiService *GroupsAPIService
+	ctx                context.Context
+	ApiService         *GroupsAPIService
 	createGroupCommand *CreateGroupCommand
 }
 
@@ -569,24 +568,25 @@ func (r ApiGroupsCreateRequest) Execute() (int32, *http.Response, error) {
 /*
 GroupsCreate Create group
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGroupsCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGroupsCreateRequest
 */
 func (a *GroupsAPIService) GroupsCreate(ctx context.Context) ApiGroupsCreateRequest {
 	return ApiGroupsCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return int32
+//
+//	@return int32
 func (a *GroupsAPIService) GroupsCreateExecute(r ApiGroupsCreateRequest) (int32, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  int32
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue int32
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GroupsAPIService.GroupsCreate")
@@ -662,8 +662,8 @@ func (a *GroupsAPIService) GroupsCreateExecute(r ApiGroupsCreateRequest) (int32,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -673,8 +673,8 @@ func (a *GroupsAPIService) GroupsCreateExecute(r ApiGroupsCreateRequest) (int32,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -684,8 +684,8 @@ func (a *GroupsAPIService) GroupsCreateExecute(r ApiGroupsCreateRequest) (int32,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -695,8 +695,8 @@ func (a *GroupsAPIService) GroupsCreateExecute(r ApiGroupsCreateRequest) (int32,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -706,8 +706,8 @@ func (a *GroupsAPIService) GroupsCreateExecute(r ApiGroupsCreateRequest) (int32,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -717,8 +717,8 @@ func (a *GroupsAPIService) GroupsCreateExecute(r ApiGroupsCreateRequest) (int32,
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -736,9 +736,9 @@ func (a *GroupsAPIService) GroupsCreateExecute(r ApiGroupsCreateRequest) (int32,
 }
 
 type ApiGroupsDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *GroupsAPIService
-	id int32
+	id         int32
 }
 
 func (r ApiGroupsDeleteRequest) Execute() (*http.Response, error) {
@@ -748,24 +748,24 @@ func (r ApiGroupsDeleteRequest) Execute() (*http.Response, error) {
 /*
 GroupsDelete Delete group
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGroupsDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGroupsDeleteRequest
 */
 func (a *GroupsAPIService) GroupsDelete(ctx context.Context, id int32) ApiGroupsDeleteRequest {
 	return ApiGroupsDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *GroupsAPIService) GroupsDeleteExecute(r ApiGroupsDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GroupsAPIService.GroupsDelete")
@@ -840,8 +840,8 @@ func (a *GroupsAPIService) GroupsDeleteExecute(r ApiGroupsDeleteRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -851,8 +851,8 @@ func (a *GroupsAPIService) GroupsDeleteExecute(r ApiGroupsDeleteRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -862,8 +862,8 @@ func (a *GroupsAPIService) GroupsDeleteExecute(r ApiGroupsDeleteRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -873,8 +873,8 @@ func (a *GroupsAPIService) GroupsDeleteExecute(r ApiGroupsDeleteRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -884,8 +884,8 @@ func (a *GroupsAPIService) GroupsDeleteExecute(r ApiGroupsDeleteRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -895,8 +895,8 @@ func (a *GroupsAPIService) GroupsDeleteExecute(r ApiGroupsDeleteRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -905,8 +905,8 @@ func (a *GroupsAPIService) GroupsDeleteExecute(r ApiGroupsDeleteRequest) (*http.
 }
 
 type ApiGroupsDeleteOrganizationsRequest struct {
-	ctx context.Context
-	ApiService *GroupsAPIService
+	ctx                                context.Context
+	ApiService                         *GroupsAPIService
 	deleteOrganizationFromGroupCommand *DeleteOrganizationFromGroupCommand
 }
 
@@ -922,22 +922,22 @@ func (r ApiGroupsDeleteOrganizationsRequest) Execute() (*http.Response, error) {
 /*
 GroupsDeleteOrganizations Remove organizations from group
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGroupsDeleteOrganizationsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGroupsDeleteOrganizationsRequest
 */
 func (a *GroupsAPIService) GroupsDeleteOrganizations(ctx context.Context) ApiGroupsDeleteOrganizationsRequest {
 	return ApiGroupsDeleteOrganizationsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *GroupsAPIService) GroupsDeleteOrganizationsExecute(r ApiGroupsDeleteOrganizationsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GroupsAPIService.GroupsDeleteOrganizations")
@@ -1013,8 +1013,8 @@ func (a *GroupsAPIService) GroupsDeleteOrganizationsExecute(r ApiGroupsDeleteOrg
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1024,8 +1024,8 @@ func (a *GroupsAPIService) GroupsDeleteOrganizationsExecute(r ApiGroupsDeleteOrg
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1035,8 +1035,8 @@ func (a *GroupsAPIService) GroupsDeleteOrganizationsExecute(r ApiGroupsDeleteOrg
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1046,8 +1046,8 @@ func (a *GroupsAPIService) GroupsDeleteOrganizationsExecute(r ApiGroupsDeleteOrg
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1057,8 +1057,8 @@ func (a *GroupsAPIService) GroupsDeleteOrganizationsExecute(r ApiGroupsDeleteOrg
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1068,8 +1068,8 @@ func (a *GroupsAPIService) GroupsDeleteOrganizationsExecute(r ApiGroupsDeleteOrg
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1078,8 +1078,8 @@ func (a *GroupsAPIService) GroupsDeleteOrganizationsExecute(r ApiGroupsDeleteOrg
 }
 
 type ApiGroupsDeleteUsersRequest struct {
-	ctx context.Context
-	ApiService *GroupsAPIService
+	ctx                        context.Context
+	ApiService                 *GroupsAPIService
 	deleteUserFromGroupCommand *DeleteUserFromGroupCommand
 }
 
@@ -1095,22 +1095,22 @@ func (r ApiGroupsDeleteUsersRequest) Execute() (*http.Response, error) {
 /*
 GroupsDeleteUsers Remove users from group
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGroupsDeleteUsersRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGroupsDeleteUsersRequest
 */
 func (a *GroupsAPIService) GroupsDeleteUsers(ctx context.Context) ApiGroupsDeleteUsersRequest {
 	return ApiGroupsDeleteUsersRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *GroupsAPIService) GroupsDeleteUsersExecute(r ApiGroupsDeleteUsersRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GroupsAPIService.GroupsDeleteUsers")
@@ -1186,8 +1186,8 @@ func (a *GroupsAPIService) GroupsDeleteUsersExecute(r ApiGroupsDeleteUsersReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1197,8 +1197,8 @@ func (a *GroupsAPIService) GroupsDeleteUsersExecute(r ApiGroupsDeleteUsersReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1208,8 +1208,8 @@ func (a *GroupsAPIService) GroupsDeleteUsersExecute(r ApiGroupsDeleteUsersReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1219,8 +1219,8 @@ func (a *GroupsAPIService) GroupsDeleteUsersExecute(r ApiGroupsDeleteUsersReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1230,8 +1230,8 @@ func (a *GroupsAPIService) GroupsDeleteUsersExecute(r ApiGroupsDeleteUsersReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1241,8 +1241,8 @@ func (a *GroupsAPIService) GroupsDeleteUsersExecute(r ApiGroupsDeleteUsersReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1251,10 +1251,10 @@ func (a *GroupsAPIService) GroupsDeleteUsersExecute(r ApiGroupsDeleteUsersReques
 }
 
 type ApiGroupsListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *GroupsAPIService
-	accountId *int32
-	search *string
+	accountId  *int32
+	search     *string
 }
 
 func (r ApiGroupsListRequest) AccountId(accountId int32) ApiGroupsListRequest {
@@ -1272,26 +1272,27 @@ func (r ApiGroupsListRequest) Execute() (*GroupList, *http.Response, error) {
 }
 
 /*
-GroupsList Group list for account
+GroupsList Group list for domain
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGroupsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGroupsListRequest
 */
 func (a *GroupsAPIService) GroupsList(ctx context.Context) ApiGroupsListRequest {
 	return ApiGroupsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return GroupList
+//
+//	@return GroupList
 func (a *GroupsAPIService) GroupsListExecute(r ApiGroupsListRequest) (*GroupList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GroupList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GroupList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GroupsAPIService.GroupsList")
@@ -1371,8 +1372,8 @@ func (a *GroupsAPIService) GroupsListExecute(r ApiGroupsListRequest) (*GroupList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1382,8 +1383,8 @@ func (a *GroupsAPIService) GroupsListExecute(r ApiGroupsListRequest) (*GroupList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1393,8 +1394,8 @@ func (a *GroupsAPIService) GroupsListExecute(r ApiGroupsListRequest) (*GroupList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1404,8 +1405,8 @@ func (a *GroupsAPIService) GroupsListExecute(r ApiGroupsListRequest) (*GroupList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1415,8 +1416,8 @@ func (a *GroupsAPIService) GroupsListExecute(r ApiGroupsListRequest) (*GroupList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1426,8 +1427,8 @@ func (a *GroupsAPIService) GroupsListExecute(r ApiGroupsListRequest) (*GroupList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1445,9 +1446,9 @@ func (a *GroupsAPIService) GroupsListExecute(r ApiGroupsListRequest) (*GroupList
 }
 
 type ApiGroupsUpdateRequest struct {
-	ctx context.Context
-	ApiService *GroupsAPIService
-	id int32
+	ctx            context.Context
+	ApiService     *GroupsAPIService
+	id             int32
 	updateGroupDto *UpdateGroupDto
 }
 
@@ -1463,24 +1464,24 @@ func (r ApiGroupsUpdateRequest) Execute() (*http.Response, error) {
 /*
 GroupsUpdate Update group
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGroupsUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiGroupsUpdateRequest
 */
 func (a *GroupsAPIService) GroupsUpdate(ctx context.Context, id int32) ApiGroupsUpdateRequest {
 	return ApiGroupsUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *GroupsAPIService) GroupsUpdateExecute(r ApiGroupsUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GroupsAPIService.GroupsUpdate")
@@ -1557,8 +1558,8 @@ func (a *GroupsAPIService) GroupsUpdateExecute(r ApiGroupsUpdateRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1568,8 +1569,8 @@ func (a *GroupsAPIService) GroupsUpdateExecute(r ApiGroupsUpdateRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1579,8 +1580,8 @@ func (a *GroupsAPIService) GroupsUpdateExecute(r ApiGroupsUpdateRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1590,8 +1591,8 @@ func (a *GroupsAPIService) GroupsUpdateExecute(r ApiGroupsUpdateRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1601,8 +1602,8 @@ func (a *GroupsAPIService) GroupsUpdateExecute(r ApiGroupsUpdateRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1612,8 +1613,8 @@ func (a *GroupsAPIService) GroupsUpdateExecute(r ApiGroupsUpdateRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1622,10 +1623,10 @@ func (a *GroupsAPIService) GroupsUpdateExecute(r ApiGroupsUpdateRequest) (*http.
 }
 
 type ApiGroupsUpdateGroupOrganizationRequest struct {
-	ctx context.Context
-	ApiService *GroupsAPIService
-	groupId int32
-	organizationId int32
+	ctx                        context.Context
+	ApiService                 *GroupsAPIService
+	groupId                    int32
+	organizationId             int32
 	updateGroupOrganizationDto *UpdateGroupOrganizationDto
 }
 
@@ -1641,16 +1642,16 @@ func (r ApiGroupsUpdateGroupOrganizationRequest) Execute() (*http.Response, erro
 /*
 GroupsUpdateGroupOrganization Update organization in group
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId
- @param organizationId
- @return ApiGroupsUpdateGroupOrganizationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId
+	@param organizationId
+	@return ApiGroupsUpdateGroupOrganizationRequest
 */
 func (a *GroupsAPIService) GroupsUpdateGroupOrganization(ctx context.Context, groupId int32, organizationId int32) ApiGroupsUpdateGroupOrganizationRequest {
 	return ApiGroupsUpdateGroupOrganizationRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
+		ApiService:     a,
+		ctx:            ctx,
+		groupId:        groupId,
 		organizationId: organizationId,
 	}
 }
@@ -1658,9 +1659,9 @@ func (a *GroupsAPIService) GroupsUpdateGroupOrganization(ctx context.Context, gr
 // Execute executes the request
 func (a *GroupsAPIService) GroupsUpdateGroupOrganizationExecute(r ApiGroupsUpdateGroupOrganizationRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GroupsAPIService.GroupsUpdateGroupOrganization")
@@ -1738,8 +1739,8 @@ func (a *GroupsAPIService) GroupsUpdateGroupOrganizationExecute(r ApiGroupsUpdat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1749,8 +1750,8 @@ func (a *GroupsAPIService) GroupsUpdateGroupOrganizationExecute(r ApiGroupsUpdat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1760,8 +1761,8 @@ func (a *GroupsAPIService) GroupsUpdateGroupOrganizationExecute(r ApiGroupsUpdat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1771,8 +1772,8 @@ func (a *GroupsAPIService) GroupsUpdateGroupOrganizationExecute(r ApiGroupsUpdat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1782,8 +1783,8 @@ func (a *GroupsAPIService) GroupsUpdateGroupOrganizationExecute(r ApiGroupsUpdat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1793,8 +1794,8 @@ func (a *GroupsAPIService) GroupsUpdateGroupOrganizationExecute(r ApiGroupsUpdat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

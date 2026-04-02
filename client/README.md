@@ -91,30 +91,6 @@ Class | Method | HTTP request | Description
 *AccessProfilesAPI* | [**AccessprofilesList**](docs/AccessProfilesAPI.md#accessprofileslist) | **Get** /api/v1/accessprofiles | Retrieve all access profiles
 *AccessProfilesAPI* | [**AccessprofilesLockManager**](docs/AccessProfilesAPI.md#accessprofileslockmanager) | **Post** /api/v1/accessprofiles/lockmanager | Lock/unlock access profiles
 *AccessProfilesAPI* | [**AccessprofilesUpdate**](docs/AccessProfilesAPI.md#accessprofilesupdate) | **Put** /api/v1/accessprofiles/update/{id} | Update access profile
-*AccountsAPI* | [**AccountsAccountGroupDetails**](docs/AccountsAPI.md#accountsaccountgroupdetails) | **Get** /api/v1/accounts/{accountId}/groups/{id} | Get group details by accountId
-*AccountsAPI* | [**AccountsAccountGroupsDropdown**](docs/AccountsAPI.md#accountsaccountgroupsdropdown) | **Get** /api/v1/accounts/{accountId}/groups/dropdown | Retrieve account groups dropdown list by cursor-based pagination
-*AccountsAPI* | [**AccountsAccountGroupsOffsetBasedDropdown**](docs/AccountsAPI.md#accountsaccountgroupsoffsetbaseddropdown) | **Get** /api/v1/accounts/{accountId}/groups/offset-based/dropdown | Retrieve account groups dropdown list by offset-based pagination
-*AccountsAPI* | [**AccountsAccountOffsetBasedOrganizationsWithGroup**](docs/AccountsAPI.md#accountsaccountoffsetbasedorganizationswithgroup) | **Get** /api/v1/accounts/{accountId}/organizations/offset-based/with/group | Retrieve account organizations with group list by offset-based pagination
-*AccountsAPI* | [**AccountsAccountOrganizationDetails**](docs/AccountsAPI.md#accountsaccountorganizationdetails) | **Get** /api/v1/accounts/{accountId}/organizations/{id} | Get organization details by accountId
-*AccountsAPI* | [**AccountsAccountOrganizationsAvailable**](docs/AccountsAPI.md#accountsaccountorganizationsavailable) | **Get** /api/v1/accounts/{accountId}/organizations/available | Retrieve available organizations for adding to a group
-*AccountsAPI* | [**AccountsAccountOrganizationsWithGroup**](docs/AccountsAPI.md#accountsaccountorganizationswithgroup) | **Get** /api/v1/accounts/{accountId}/organizations/with/group | Retrieve account organizations with group list by cursor-based pagination
-*AccountsAPI* | [**AccountsAccountProjectDetails**](docs/AccountsAPI.md#accountsaccountprojectdetails) | **Get** /api/v1/accounts/{accountId}/projects/{id} | Get project details by accountId
-*AccountsAPI* | [**AccountsAccountProjectsDropdown**](docs/AccountsAPI.md#accountsaccountprojectsdropdown) | **Get** /api/v1/accounts/{accountId}/projects/dropdown | Retrieve account projects dropdown list by cursor-based pagination
-*AccountsAPI* | [**AccountsAccountProjectsOffsetBasedDropdown**](docs/AccountsAPI.md#accountsaccountprojectsoffsetbaseddropdown) | **Get** /api/v1/accounts/{accountId}/projects/offset-based/dropdown | Retrieve account projects dropdown list by offset-based pagination
-*AccountsAPI* | [**AccountsAccountUserDetails**](docs/AccountsAPI.md#accountsaccountuserdetails) | **Get** /api/v1/accounts/{accountId}/users/{id} | Get user details by accountId
-*AccountsAPI* | [**AccountsAccountUserDropdown**](docs/AccountsAPI.md#accountsaccountuserdropdown) | **Get** /api/v1/accounts/{accountId}/user/dropdown | Retrieve account users dropdown list by cursor-based pagination
-*AccountsAPI* | [**AccountsAccountUserOffsetBasedDropdown**](docs/AccountsAPI.md#accountsaccountuseroffsetbaseddropdown) | **Get** /api/v1/accounts/{accountId}/user/offset-based/dropdown | Retrieve account users dropdown list by offset-based pagination
-*AccountsAPI* | [**AccountsAccountUsersAvailable**](docs/AccountsAPI.md#accountsaccountusersavailable) | **Get** /api/v1/accounts/{accountId}/users/available | Retrieve available users for adding to a group
-*AccountsAPI* | [**AccountsAddAccountAdmin**](docs/AccountsAPI.md#accountsaddaccountadmin) | **Post** /api/v1/accounts/add-account-admin | Add account admin to account
-*AccountsAPI* | [**AccountsCheckDuplicateEntity**](docs/AccountsAPI.md#accountscheckduplicateentity) | **Post** /api/v1/accounts/check-duplicate-entity | Check duplicate entity
-*AccountsAPI* | [**AccountsCreate**](docs/AccountsAPI.md#accountscreate) | **Post** /api/v1/accounts/create | Create account
-*AccountsAPI* | [**AccountsDelete**](docs/AccountsAPI.md#accountsdelete) | **Delete** /api/v1/accounts/{id} | Delete account
-*AccountsAPI* | [**AccountsDetails**](docs/AccountsAPI.md#accountsdetails) | **Get** /api/v1/accounts/{accountId} | Get account details by accountId
-*AccountsAPI* | [**AccountsDisable2faManagement**](docs/AccountsAPI.md#accountsdisable2famanagement) | **Post** /api/v1/accounts/disable-2fa-management | Disable 2fa management
-*AccountsAPI* | [**AccountsEnable2faManagement**](docs/AccountsAPI.md#accountsenable2famanagement) | **Post** /api/v1/accounts/enable-2fa-management | Enable 2fa management
-*AccountsAPI* | [**AccountsListAccounts**](docs/AccountsAPI.md#accountslistaccounts) | **Get** /api/v1/accounts | Retrieve accounts list
-*AccountsAPI* | [**AccountsTransferOwnership**](docs/AccountsAPI.md#accountstransferownership) | **Post** /api/v1/accounts/transfer-ownership | Transfer ownership
-*AccountsAPI* | [**AccountsUpdate**](docs/AccountsAPI.md#accountsupdate) | **Post** /api/v1/accounts/update | Update account
 *AiCredentialsAPI* | [**AiCredentialCreate**](docs/AiCredentialsAPI.md#aicredentialcreate) | **Post** /api/v1/ai-credential/create | Create ai credential
 *AiCredentialsAPI* | [**AiCredentialDelete**](docs/AiCredentialsAPI.md#aicredentialdelete) | **Delete** /api/v1/ai-credential/{id} | Remove ai credential
 *AiCredentialsAPI* | [**AiCredentialDropdown**](docs/AiCredentialsAPI.md#aicredentialdropdown) | **Get** /api/v1/ai-credential | Retrieve all AI credentials for organization
@@ -283,6 +259,30 @@ Class | Method | HTTP request | Description
 *DnsServersAPI* | [**DnsserversEdit**](docs/DnsServersAPI.md#dnsserversedit) | **Put** /api/v1/dnsservers/edit/{id} | Edit dns server
 *DnsServersAPI* | [**DnsserversList**](docs/DnsServersAPI.md#dnsserverslist) | **Get** /api/v1/dnsservers/{accessProfileId} | List dns servers by profile id
 *DocumentationAPI* | [**DocumentationList**](docs/DocumentationAPI.md#documentationlist) | **Get** /api/v1/documentation | Retrieve all documentation links
+*DomainsAPI* | [**DomainsAddDomainAdmin**](docs/DomainsAPI.md#domainsadddomainadmin) | **Post** /api/v1/domains/add-domain-admin | Add domain-admin user to domain
+*DomainsAPI* | [**DomainsCheckDuplicateEntity**](docs/DomainsAPI.md#domainscheckduplicateentity) | **Post** /api/v1/domains/check-duplicate-entity | Check duplicate entity
+*DomainsAPI* | [**DomainsCreate**](docs/DomainsAPI.md#domainscreate) | **Post** /api/v1/domains/create | Create domain
+*DomainsAPI* | [**DomainsDelete**](docs/DomainsAPI.md#domainsdelete) | **Delete** /api/v1/domains/{id} | Delete domain
+*DomainsAPI* | [**DomainsDetails**](docs/DomainsAPI.md#domainsdetails) | **Get** /api/v1/domains/{domainId} | Get domain details by domainId
+*DomainsAPI* | [**DomainsDisable2faManagement**](docs/DomainsAPI.md#domainsdisable2famanagement) | **Post** /api/v1/domains/disable-2fa-management | Disable 2fa management
+*DomainsAPI* | [**DomainsDomainGroupDetails**](docs/DomainsAPI.md#domainsdomaingroupdetails) | **Get** /api/v1/domains/{domainId}/groups/{id} | Get group details by domainId
+*DomainsAPI* | [**DomainsDomainGroupsDropdown**](docs/DomainsAPI.md#domainsdomaingroupsdropdown) | **Get** /api/v1/domains/{domainId}/groups/dropdown | Retrieve domain groups dropdown list by cursor-based pagination
+*DomainsAPI* | [**DomainsDomainGroupsOffsetBasedDropdown**](docs/DomainsAPI.md#domainsdomaingroupsoffsetbaseddropdown) | **Get** /api/v1/domains/{domainId}/groups/offset-based/dropdown | Retrieve domain groups dropdown list by offset-based pagination
+*DomainsAPI* | [**DomainsDomainOffsetBasedOrganizationsWithGroup**](docs/DomainsAPI.md#domainsdomainoffsetbasedorganizationswithgroup) | **Get** /api/v1/domains/{domainId}/organizations/offset-based/with/group | Retrieve domain organizations with group list by offset-based pagination
+*DomainsAPI* | [**DomainsDomainOrganizationDetails**](docs/DomainsAPI.md#domainsdomainorganizationdetails) | **Get** /api/v1/domains/{domainId}/organizations/{id} | Get organization details by domainId
+*DomainsAPI* | [**DomainsDomainOrganizationsAvailable**](docs/DomainsAPI.md#domainsdomainorganizationsavailable) | **Get** /api/v1/domains/{domainId}/organizations/available | Retrieve available organizations for adding to a group
+*DomainsAPI* | [**DomainsDomainOrganizationsWithGroup**](docs/DomainsAPI.md#domainsdomainorganizationswithgroup) | **Get** /api/v1/domains/{domainId}/organizations/with/group | Retrieve domain organizations with group list by cursor-based pagination
+*DomainsAPI* | [**DomainsDomainProjectDetails**](docs/DomainsAPI.md#domainsdomainprojectdetails) | **Get** /api/v1/domains/{domainId}/projects/{id} | Get project details by domainId
+*DomainsAPI* | [**DomainsDomainProjectsDropdown**](docs/DomainsAPI.md#domainsdomainprojectsdropdown) | **Get** /api/v1/domains/{domainId}/projects/dropdown | Retrieve domain projects dropdown list by cursor-based pagination
+*DomainsAPI* | [**DomainsDomainProjectsOffsetBasedDropdown**](docs/DomainsAPI.md#domainsdomainprojectsoffsetbaseddropdown) | **Get** /api/v1/domains/{domainId}/projects/offset-based/dropdown | Retrieve domain projects dropdown list by offset-based pagination
+*DomainsAPI* | [**DomainsDomainUserDetails**](docs/DomainsAPI.md#domainsdomainuserdetails) | **Get** /api/v1/domains/{domainId}/users/{id} | Get user details by domainId
+*DomainsAPI* | [**DomainsDomainUserDropdown**](docs/DomainsAPI.md#domainsdomainuserdropdown) | **Get** /api/v1/domains/{domainId}/user/dropdown | Retrieve domain users dropdown list by cursor-based pagination
+*DomainsAPI* | [**DomainsDomainUserOffsetBasedDropdown**](docs/DomainsAPI.md#domainsdomainuseroffsetbaseddropdown) | **Get** /api/v1/domains/{domainId}/user/offset-based/dropdown | Retrieve domain users dropdown list by offset-based pagination
+*DomainsAPI* | [**DomainsDomainUsersAvailable**](docs/DomainsAPI.md#domainsdomainusersavailable) | **Get** /api/v1/domains/{domainId}/users/available | Retrieve available users for adding to a group
+*DomainsAPI* | [**DomainsEnable2faManagement**](docs/DomainsAPI.md#domainsenable2famanagement) | **Post** /api/v1/domains/enable-2fa-management | Enable 2fa management
+*DomainsAPI* | [**DomainsListDomains**](docs/DomainsAPI.md#domainslistdomains) | **Get** /api/v1/domains | Retrieve domains list
+*DomainsAPI* | [**DomainsTransferOwnership**](docs/DomainsAPI.md#domainstransferownership) | **Post** /api/v1/domains/transfer-ownership | Transfer ownership
+*DomainsAPI* | [**DomainsUpdate**](docs/DomainsAPI.md#domainsupdate) | **Post** /api/v1/domains/update | Update domain
 *ExecutorsAPI* | [**ExecutorsCreate**](docs/ExecutorsAPI.md#executorscreate) | **Post** /api/v1/executors/create | Create an executor
 *ExecutorsAPI* | [**ExecutorsDelete**](docs/ExecutorsAPI.md#executorsdelete) | **Post** /api/v1/executors/delete | Delete an executor
 *ExecutorsAPI* | [**ExecutorsEditHealth**](docs/ExecutorsAPI.md#executorsedithealth) | **Put** /api/v1/executors/edit/health | Update health status of the executor by Id
@@ -324,7 +324,7 @@ Class | Method | HTTP request | Description
 *GroupsAPI* | [**GroupsDelete**](docs/GroupsAPI.md#groupsdelete) | **Delete** /api/v1/groups/{id} | Delete group
 *GroupsAPI* | [**GroupsDeleteOrganizations**](docs/GroupsAPI.md#groupsdeleteorganizations) | **Post** /api/v1/groups/delete-organizations | Remove organizations from group
 *GroupsAPI* | [**GroupsDeleteUsers**](docs/GroupsAPI.md#groupsdeleteusers) | **Post** /api/v1/groups/delete-users | Remove users from group
-*GroupsAPI* | [**GroupsList**](docs/GroupsAPI.md#groupslist) | **Get** /api/v1/groups | Group list for account
+*GroupsAPI* | [**GroupsList**](docs/GroupsAPI.md#groupslist) | **Get** /api/v1/groups | Group list for domain
 *GroupsAPI* | [**GroupsUpdate**](docs/GroupsAPI.md#groupsupdate) | **Put** /api/v1/groups/update/{id} | Update group
 *GroupsAPI* | [**GroupsUpdateGroupOrganization**](docs/GroupsAPI.md#groupsupdategrouporganization) | **Put** /api/v1/groups/{groupId}/organizations/{organizationId} | Update organization in group
 *ImagesAPI* | [**ImagesAwsCommonImages**](docs/ImagesAPI.md#imagesawscommonimages) | **Get** /api/v1/images/aws/common/{cloudId} | Commonly used aws images (v1)
@@ -658,7 +658,7 @@ Class | Method | HTTP request | Description
 *SsoConfigAPI* | [**SsoConfigCreate**](docs/SsoConfigAPI.md#ssoconfigcreate) | **Post** /api/v1/sso-config/create | Create SSO configuration
 *SsoConfigAPI* | [**SsoConfigDelete**](docs/SsoConfigAPI.md#ssoconfigdelete) | **Delete** /api/v1/sso-config/{id} | Delete SSO configuration
 *SsoConfigAPI* | [**SsoConfigDetails**](docs/SsoConfigAPI.md#ssoconfigdetails) | **Get** /api/v1/sso-config/details | Retrieve a single SSO configuration by id
-*SsoConfigAPI* | [**SsoConfigList**](docs/SsoConfigAPI.md#ssoconfiglist) | **Get** /api/v1/sso-config | Retrieve all SSO configurations for an account
+*SsoConfigAPI* | [**SsoConfigList**](docs/SsoConfigAPI.md#ssoconfiglist) | **Get** /api/v1/sso-config | Retrieve all SSO configurations for domain
 *SsoConfigAPI* | [**SsoConfigUpdate**](docs/SsoConfigAPI.md#ssoconfigupdate) | **Put** /api/v1/sso-config/update/{id} | Update SSO configuration
 *StandaloneAPI* | [**StandaloneCreate**](docs/StandaloneAPI.md#standalonecreate) | **Post** /api/v1/standalone/create | Create a new vm in the given project.
 *StandaloneAPI* | [**StandaloneDetails**](docs/StandaloneAPI.md#standalonedetails) | **Get** /api/v1/standalone/{projectId} | Retrieve a list of standalone vm with detailed info
@@ -756,16 +756,9 @@ Class | Method | HTTP request | Description
  - [AccessProfilesLockManagementCommand](docs/AccessProfilesLockManagementCommand.md)
  - [AccessProfilesSearchCommand](docs/AccessProfilesSearchCommand.md)
  - [AccessProfilesSearchList](docs/AccessProfilesSearchList.md)
- - [AccountDetailsDto](docs/AccountDetailsDto.md)
- - [AccountDetailsForUserDto](docs/AccountDetailsForUserDto.md)
- - [AccountEntity](docs/AccountEntity.md)
- - [AccountList](docs/AccountList.md)
- - [AccountListCursorPaginatedResponse](docs/AccountListCursorPaginatedResponse.md)
- - [AccountSsoConfigDto](docs/AccountSsoConfigDto.md)
- - [AccountSsoConfigList](docs/AccountSsoConfigList.md)
  - [ActionStatus](docs/ActionStatus.md)
  - [ActionType](docs/ActionType.md)
- - [AddAccountAdminCommand](docs/AddAccountAdminCommand.md)
+ - [AddDomainAdminCommand](docs/AddDomainAdminCommand.md)
  - [AddOrganizationsToRuleDto](docs/AddOrganizationsToRuleDto.md)
  - [AddPrometheusRulesToOrganizationDto](docs/AddPrometheusRulesToOrganizationDto.md)
  - [AiCredentials](docs/AiCredentials.md)
@@ -882,11 +875,11 @@ Class | Method | HTTP request | Description
  - [ChangeCardCommand](docs/ChangeCardCommand.md)
  - [ChangePasswordCommand](docs/ChangePasswordCommand.md)
  - [ChatCompletionsCommand](docs/ChatCompletionsCommand.md)
- - [CheckAccountSsoConfigCommand](docs/CheckAccountSsoConfigCommand.md)
  - [CheckAwsCommand](docs/CheckAwsCommand.md)
  - [CheckAzureCommand](docs/CheckAzureCommand.md)
  - [CheckAzureCpuQuotaCommand](docs/CheckAzureCpuQuotaCommand.md)
- - [CheckDuplicateAccountCommand](docs/CheckDuplicateAccountCommand.md)
+ - [CheckDomainSsoConfigCommand](docs/CheckDomainSsoConfigCommand.md)
+ - [CheckDuplicateDomainCommand](docs/CheckDuplicateDomainCommand.md)
  - [CheckDuplicateGroupCommand](docs/CheckDuplicateGroupCommand.md)
  - [CheckOpenstackAvailabilityResponse](docs/CheckOpenstackAvailabilityResponse.md)
  - [CheckOpenstackCommand](docs/CheckOpenstackCommand.md)
@@ -927,8 +920,6 @@ Class | Method | HTTP request | Description
  - [CrdSearchCommand](docs/CrdSearchCommand.md)
  - [CrdSearchList](docs/CrdSearchList.md)
  - [CreateAccessProfileCommand](docs/CreateAccessProfileCommand.md)
- - [CreateAccountCommand](docs/CreateAccountCommand.md)
- - [CreateAccountSsoConfigCommand](docs/CreateAccountSsoConfigCommand.md)
  - [CreateAiBackendsConfigurationCommand](docs/CreateAiBackendsConfigurationCommand.md)
  - [CreateAiCredentialCommand](docs/CreateAiCredentialCommand.md)
  - [CreateAlertDto](docs/CreateAlertDto.md)
@@ -943,6 +934,8 @@ Class | Method | HTTP request | Description
  - [CreateCatalogAppCommand](docs/CreateCatalogAppCommand.md)
  - [CreateCatalogCommand](docs/CreateCatalogCommand.md)
  - [CreateDnsServerCommand](docs/CreateDnsServerCommand.md)
+ - [CreateDomainCommand](docs/CreateDomainCommand.md)
+ - [CreateDomainSsoConfigCommand](docs/CreateDomainSsoConfigCommand.md)
  - [CreateEmailConfigurationCommand](docs/CreateEmailConfigurationCommand.md)
  - [CreateExecutorCommand](docs/CreateExecutorCommand.md)
  - [CreateGenericTaikunLbDto](docs/CreateGenericTaikunLbDto.md)
@@ -1049,6 +1042,13 @@ Class | Method | HTTP request | Description
  - [DnsServersListDto](docs/DnsServersListDto.md)
  - [DocumentationData](docs/DocumentationData.md)
  - [DocumentationsList](docs/DocumentationsList.md)
+ - [DomainDetailsDto](docs/DomainDetailsDto.md)
+ - [DomainDetailsForUserDto](docs/DomainDetailsForUserDto.md)
+ - [DomainEntity](docs/DomainEntity.md)
+ - [DomainList](docs/DomainList.md)
+ - [DomainListCursorPaginatedResponse](docs/DomainListCursorPaginatedResponse.md)
+ - [DomainSsoConfigDto](docs/DomainSsoConfigDto.md)
+ - [DomainSsoConfigList](docs/DomainSsoConfigList.md)
  - [DowngradeUserCommand](docs/DowngradeUserCommand.md)
  - [DownloadInvoiceCommand](docs/DownloadInvoiceCommand.md)
  - [DownloadKubeConfigCommand](docs/DownloadKubeConfigCommand.md)
@@ -1292,7 +1292,7 @@ Class | Method | HTTP request | Description
  - [OrganizationContextDto](docs/OrganizationContextDto.md)
  - [OrganizationCreateCommand](docs/OrganizationCreateCommand.md)
  - [OrganizationDetailsDto](docs/OrganizationDetailsDto.md)
- - [OrganizationDetailsDtoForAccount](docs/OrganizationDetailsDtoForAccount.md)
+ - [OrganizationDetailsDtoForDomain](docs/OrganizationDetailsDtoForDomain.md)
  - [OrganizationDropdownDto](docs/OrganizationDropdownDto.md)
  - [OrganizationDropdownProjectDto](docs/OrganizationDropdownProjectDto.md)
  - [OrganizationEntityForDashboard](docs/OrganizationEntityForDashboard.md)
@@ -1529,11 +1529,11 @@ Class | Method | HTTP request | Description
  - [Unlock2FaCommand](docs/Unlock2FaCommand.md)
  - [UnshelveStandaloneVmCommand](docs/UnshelveStandaloneVmCommand.md)
  - [UpdateAccessProfileDto](docs/UpdateAccessProfileDto.md)
- - [UpdateAccountCommand](docs/UpdateAccountCommand.md)
- - [UpdateAccountSsoConfigDto](docs/UpdateAccountSsoConfigDto.md)
  - [UpdateAlertingProfileCommand](docs/UpdateAlertingProfileCommand.md)
  - [UpdateAwsCommand](docs/UpdateAwsCommand.md)
  - [UpdateAzureCommand](docs/UpdateAzureCommand.md)
+ - [UpdateDomainCommand](docs/UpdateDomainCommand.md)
+ - [UpdateDomainSsoConfigDto](docs/UpdateDomainSsoConfigDto.md)
  - [UpdateExecutorHealthStatusCommand](docs/UpdateExecutorHealthStatusCommand.md)
  - [UpdateGenericKubernetesCommand](docs/UpdateGenericKubernetesCommand.md)
  - [UpdateGroupDto](docs/UpdateGroupDto.md)

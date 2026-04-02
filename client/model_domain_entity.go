@@ -16,88 +16,88 @@ import (
 	"fmt"
 )
 
-// checks if the AccountEntity type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AccountEntity{}
+// checks if the DomainEntity type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DomainEntity{}
 
-// AccountEntity struct for AccountEntity
-type AccountEntity struct {
-	AccountId            int32          `json:"accountId"`
-	AccountName          string         `json:"accountName"`
+// DomainEntity struct for DomainEntity
+type DomainEntity struct {
+	DomainId             int32          `json:"domainId"`
+	DomainName           string         `json:"domainName"`
 	Logo                 NullableString `json:"logo,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _AccountEntity AccountEntity
+type _DomainEntity DomainEntity
 
-// NewAccountEntity instantiates a new AccountEntity object
+// NewDomainEntity instantiates a new DomainEntity object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountEntity(accountId int32, accountName string) *AccountEntity {
-	this := AccountEntity{}
-	this.AccountId = accountId
-	this.AccountName = accountName
+func NewDomainEntity(domainId int32, domainName string) *DomainEntity {
+	this := DomainEntity{}
+	this.DomainId = domainId
+	this.DomainName = domainName
 	return &this
 }
 
-// NewAccountEntityWithDefaults instantiates a new AccountEntity object
+// NewDomainEntityWithDefaults instantiates a new DomainEntity object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAccountEntityWithDefaults() *AccountEntity {
-	this := AccountEntity{}
+func NewDomainEntityWithDefaults() *DomainEntity {
+	this := DomainEntity{}
 	return &this
 }
 
-// GetAccountId returns the AccountId field value
-func (o *AccountEntity) GetAccountId() int32 {
+// GetDomainId returns the DomainId field value
+func (o *DomainEntity) GetDomainId() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.AccountId
+	return o.DomainId
 }
 
-// GetAccountIdOk returns a tuple with the AccountId field value
+// GetDomainIdOk returns a tuple with the DomainId field value
 // and a boolean to check if the value has been set.
-func (o *AccountEntity) GetAccountIdOk() (*int32, bool) {
+func (o *DomainEntity) GetDomainIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AccountId, true
+	return &o.DomainId, true
 }
 
-// SetAccountId sets field value
-func (o *AccountEntity) SetAccountId(v int32) {
-	o.AccountId = v
+// SetDomainId sets field value
+func (o *DomainEntity) SetDomainId(v int32) {
+	o.DomainId = v
 }
 
-// GetAccountName returns the AccountName field value
-func (o *AccountEntity) GetAccountName() string {
+// GetDomainName returns the DomainName field value
+func (o *DomainEntity) GetDomainName() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.AccountName
+	return o.DomainName
 }
 
-// GetAccountNameOk returns a tuple with the AccountName field value
+// GetDomainNameOk returns a tuple with the DomainName field value
 // and a boolean to check if the value has been set.
-func (o *AccountEntity) GetAccountNameOk() (*string, bool) {
+func (o *DomainEntity) GetDomainNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AccountName, true
+	return &o.DomainName, true
 }
 
-// SetAccountName sets field value
-func (o *AccountEntity) SetAccountName(v string) {
-	o.AccountName = v
+// SetDomainName sets field value
+func (o *DomainEntity) SetDomainName(v string) {
+	o.DomainName = v
 }
 
 // GetLogo returns the Logo field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AccountEntity) GetLogo() string {
+func (o *DomainEntity) GetLogo() string {
 	if o == nil || IsNil(o.Logo.Get()) {
 		var ret string
 		return ret
@@ -108,7 +108,7 @@ func (o *AccountEntity) GetLogo() string {
 // GetLogoOk returns a tuple with the Logo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccountEntity) GetLogoOk() (*string, bool) {
+func (o *DomainEntity) GetLogoOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -116,7 +116,7 @@ func (o *AccountEntity) GetLogoOk() (*string, bool) {
 }
 
 // HasLogo returns a boolean if a field has been set.
-func (o *AccountEntity) HasLogo() bool {
+func (o *DomainEntity) HasLogo() bool {
 	if o != nil && o.Logo.IsSet() {
 		return true
 	}
@@ -125,21 +125,21 @@ func (o *AccountEntity) HasLogo() bool {
 }
 
 // SetLogo gets a reference to the given NullableString and assigns it to the Logo field.
-func (o *AccountEntity) SetLogo(v string) {
+func (o *DomainEntity) SetLogo(v string) {
 	o.Logo.Set(&v)
 }
 
 // SetLogoNil sets the value for Logo to be an explicit nil
-func (o *AccountEntity) SetLogoNil() {
+func (o *DomainEntity) SetLogoNil() {
 	o.Logo.Set(nil)
 }
 
 // UnsetLogo ensures that no value is present for Logo, not even an explicit nil
-func (o *AccountEntity) UnsetLogo() {
+func (o *DomainEntity) UnsetLogo() {
 	o.Logo.Unset()
 }
 
-func (o AccountEntity) MarshalJSON() ([]byte, error) {
+func (o DomainEntity) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -147,10 +147,10 @@ func (o AccountEntity) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o AccountEntity) ToMap() (map[string]interface{}, error) {
+func (o DomainEntity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["accountId"] = o.AccountId
-	toSerialize["accountName"] = o.AccountName
+	toSerialize["domainId"] = o.DomainId
+	toSerialize["domainName"] = o.DomainName
 	if o.Logo.IsSet() {
 		toSerialize["logo"] = o.Logo.Get()
 	}
@@ -162,13 +162,13 @@ func (o AccountEntity) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccountEntity) UnmarshalJSON(data []byte) (err error) {
+func (o *DomainEntity) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"accountId",
-		"accountName",
+		"domainId",
+		"domainName",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -185,21 +185,21 @@ func (o *AccountEntity) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varAccountEntity := _AccountEntity{}
+	varDomainEntity := _DomainEntity{}
 
-	err = json.Unmarshal(data, &varAccountEntity)
+	err = json.Unmarshal(data, &varDomainEntity)
 
 	if err != nil {
 		return err
 	}
 
-	*o = AccountEntity(varAccountEntity)
+	*o = DomainEntity(varDomainEntity)
 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "accountId")
-		delete(additionalProperties, "accountName")
+		delete(additionalProperties, "domainId")
+		delete(additionalProperties, "domainName")
 		delete(additionalProperties, "logo")
 		o.AdditionalProperties = additionalProperties
 	}
@@ -207,38 +207,38 @@ func (o *AccountEntity) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableAccountEntity struct {
-	value *AccountEntity
+type NullableDomainEntity struct {
+	value *DomainEntity
 	isSet bool
 }
 
-func (v NullableAccountEntity) Get() *AccountEntity {
+func (v NullableDomainEntity) Get() *DomainEntity {
 	return v.value
 }
 
-func (v *NullableAccountEntity) Set(val *AccountEntity) {
+func (v *NullableDomainEntity) Set(val *DomainEntity) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableAccountEntity) IsSet() bool {
+func (v NullableDomainEntity) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableAccountEntity) Unset() {
+func (v *NullableDomainEntity) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableAccountEntity(val *AccountEntity) *NullableAccountEntity {
-	return &NullableAccountEntity{value: val, isSet: true}
+func NewNullableDomainEntity(val *DomainEntity) *NullableDomainEntity {
+	return &NullableDomainEntity{value: val, isSet: true}
 }
 
-func (v NullableAccountEntity) MarshalJSON() ([]byte, error) {
+func (v NullableDomainEntity) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableAccountEntity) UnmarshalJSON(src []byte) error {
+func (v *NullableDomainEntity) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

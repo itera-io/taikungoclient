@@ -15,36 +15,36 @@ import (
 	"encoding/json"
 )
 
-// checks if the CheckDuplicateAccountCommand type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CheckDuplicateAccountCommand{}
+// checks if the CheckDuplicateDomainCommand type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CheckDuplicateDomainCommand{}
 
-// CheckDuplicateAccountCommand struct for CheckDuplicateAccountCommand
-type CheckDuplicateAccountCommand struct {
+// CheckDuplicateDomainCommand struct for CheckDuplicateDomainCommand
+type CheckDuplicateDomainCommand struct {
 	Name                 NullableString `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _CheckDuplicateAccountCommand CheckDuplicateAccountCommand
+type _CheckDuplicateDomainCommand CheckDuplicateDomainCommand
 
-// NewCheckDuplicateAccountCommand instantiates a new CheckDuplicateAccountCommand object
+// NewCheckDuplicateDomainCommand instantiates a new CheckDuplicateDomainCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCheckDuplicateAccountCommand() *CheckDuplicateAccountCommand {
-	this := CheckDuplicateAccountCommand{}
+func NewCheckDuplicateDomainCommand() *CheckDuplicateDomainCommand {
+	this := CheckDuplicateDomainCommand{}
 	return &this
 }
 
-// NewCheckDuplicateAccountCommandWithDefaults instantiates a new CheckDuplicateAccountCommand object
+// NewCheckDuplicateDomainCommandWithDefaults instantiates a new CheckDuplicateDomainCommand object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCheckDuplicateAccountCommandWithDefaults() *CheckDuplicateAccountCommand {
-	this := CheckDuplicateAccountCommand{}
+func NewCheckDuplicateDomainCommandWithDefaults() *CheckDuplicateDomainCommand {
+	this := CheckDuplicateDomainCommand{}
 	return &this
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CheckDuplicateAccountCommand) GetName() string {
+func (o *CheckDuplicateDomainCommand) GetName() string {
 	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
@@ -55,7 +55,7 @@ func (o *CheckDuplicateAccountCommand) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CheckDuplicateAccountCommand) GetNameOk() (*string, bool) {
+func (o *CheckDuplicateDomainCommand) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -63,7 +63,7 @@ func (o *CheckDuplicateAccountCommand) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *CheckDuplicateAccountCommand) HasName() bool {
+func (o *CheckDuplicateDomainCommand) HasName() bool {
 	if o != nil && o.Name.IsSet() {
 		return true
 	}
@@ -72,21 +72,21 @@ func (o *CheckDuplicateAccountCommand) HasName() bool {
 }
 
 // SetName gets a reference to the given NullableString and assigns it to the Name field.
-func (o *CheckDuplicateAccountCommand) SetName(v string) {
+func (o *CheckDuplicateDomainCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
 
 // SetNameNil sets the value for Name to be an explicit nil
-func (o *CheckDuplicateAccountCommand) SetNameNil() {
+func (o *CheckDuplicateDomainCommand) SetNameNil() {
 	o.Name.Set(nil)
 }
 
 // UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *CheckDuplicateAccountCommand) UnsetName() {
+func (o *CheckDuplicateDomainCommand) UnsetName() {
 	o.Name.Unset()
 }
 
-func (o CheckDuplicateAccountCommand) MarshalJSON() ([]byte, error) {
+func (o CheckDuplicateDomainCommand) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -94,7 +94,7 @@ func (o CheckDuplicateAccountCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o CheckDuplicateAccountCommand) ToMap() (map[string]interface{}, error) {
+func (o CheckDuplicateDomainCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
@@ -107,16 +107,16 @@ func (o CheckDuplicateAccountCommand) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CheckDuplicateAccountCommand) UnmarshalJSON(data []byte) (err error) {
-	varCheckDuplicateAccountCommand := _CheckDuplicateAccountCommand{}
+func (o *CheckDuplicateDomainCommand) UnmarshalJSON(data []byte) (err error) {
+	varCheckDuplicateDomainCommand := _CheckDuplicateDomainCommand{}
 
-	err = json.Unmarshal(data, &varCheckDuplicateAccountCommand)
+	err = json.Unmarshal(data, &varCheckDuplicateDomainCommand)
 
 	if err != nil {
 		return err
 	}
 
-	*o = CheckDuplicateAccountCommand(varCheckDuplicateAccountCommand)
+	*o = CheckDuplicateDomainCommand(varCheckDuplicateDomainCommand)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -128,38 +128,38 @@ func (o *CheckDuplicateAccountCommand) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableCheckDuplicateAccountCommand struct {
-	value *CheckDuplicateAccountCommand
+type NullableCheckDuplicateDomainCommand struct {
+	value *CheckDuplicateDomainCommand
 	isSet bool
 }
 
-func (v NullableCheckDuplicateAccountCommand) Get() *CheckDuplicateAccountCommand {
+func (v NullableCheckDuplicateDomainCommand) Get() *CheckDuplicateDomainCommand {
 	return v.value
 }
 
-func (v *NullableCheckDuplicateAccountCommand) Set(val *CheckDuplicateAccountCommand) {
+func (v *NullableCheckDuplicateDomainCommand) Set(val *CheckDuplicateDomainCommand) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCheckDuplicateAccountCommand) IsSet() bool {
+func (v NullableCheckDuplicateDomainCommand) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCheckDuplicateAccountCommand) Unset() {
+func (v *NullableCheckDuplicateDomainCommand) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCheckDuplicateAccountCommand(val *CheckDuplicateAccountCommand) *NullableCheckDuplicateAccountCommand {
-	return &NullableCheckDuplicateAccountCommand{value: val, isSet: true}
+func NewNullableCheckDuplicateDomainCommand(val *CheckDuplicateDomainCommand) *NullableCheckDuplicateDomainCommand {
+	return &NullableCheckDuplicateDomainCommand{value: val, isSet: true}
 }
 
-func (v NullableCheckDuplicateAccountCommand) MarshalJSON() ([]byte, error) {
+func (v NullableCheckDuplicateDomainCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCheckDuplicateAccountCommand) UnmarshalJSON(src []byte) error {
+func (v *NullableCheckDuplicateDomainCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

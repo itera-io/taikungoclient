@@ -27,7 +27,7 @@ type UserForListDto struct {
 	DisplayName                             NullableString                    `json:"displayName"`
 	CreatedAt                               string                            `json:"createdAt"`
 	Is2FAEnabled                            bool                              `json:"is2FAEnabled"`
-	Account                                 AccountDetailsForUserDto          `json:"account"`
+	Domain                                  DomainDetailsForUserDto           `json:"domain"`
 	Role                                    EGlobalRole                       `json:"role"`
 	Organizations                           map[string]OrganizationContextDto `json:"organizations"`
 	IsEmailConfirmed                        bool                              `json:"isEmailConfirmed"`
@@ -45,7 +45,7 @@ type _UserForListDto UserForListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserForListDto(id string, username string, email string, displayName NullableString, createdAt string, is2FAEnabled bool, account AccountDetailsForUserDto, role EGlobalRole, organizations map[string]OrganizationContextDto, isEmailConfirmed bool, isEmailNotificationEnabled bool, isForcedToResetPassword bool, isLocked bool, owner bool, isForcedToEnableTwoFactorAuthentication bool) *UserForListDto {
+func NewUserForListDto(id string, username string, email string, displayName NullableString, createdAt string, is2FAEnabled bool, domain DomainDetailsForUserDto, role EGlobalRole, organizations map[string]OrganizationContextDto, isEmailConfirmed bool, isEmailNotificationEnabled bool, isForcedToResetPassword bool, isLocked bool, owner bool, isForcedToEnableTwoFactorAuthentication bool) *UserForListDto {
 	this := UserForListDto{}
 	this.Id = id
 	this.Username = username
@@ -53,7 +53,7 @@ func NewUserForListDto(id string, username string, email string, displayName Nul
 	this.DisplayName = displayName
 	this.CreatedAt = createdAt
 	this.Is2FAEnabled = is2FAEnabled
-	this.Account = account
+	this.Domain = domain
 	this.Role = role
 	this.Organizations = organizations
 	this.IsEmailConfirmed = isEmailConfirmed
@@ -219,28 +219,28 @@ func (o *UserForListDto) SetIs2FAEnabled(v bool) {
 	o.Is2FAEnabled = v
 }
 
-// GetAccount returns the Account field value
-func (o *UserForListDto) GetAccount() AccountDetailsForUserDto {
+// GetDomain returns the Domain field value
+func (o *UserForListDto) GetDomain() DomainDetailsForUserDto {
 	if o == nil {
-		var ret AccountDetailsForUserDto
+		var ret DomainDetailsForUserDto
 		return ret
 	}
 
-	return o.Account
+	return o.Domain
 }
 
-// GetAccountOk returns a tuple with the Account field value
+// GetDomainOk returns a tuple with the Domain field value
 // and a boolean to check if the value has been set.
-func (o *UserForListDto) GetAccountOk() (*AccountDetailsForUserDto, bool) {
+func (o *UserForListDto) GetDomainOk() (*DomainDetailsForUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Account, true
+	return &o.Domain, true
 }
 
-// SetAccount sets field value
-func (o *UserForListDto) SetAccount(v AccountDetailsForUserDto) {
-	o.Account = v
+// SetDomain sets field value
+func (o *UserForListDto) SetDomain(v DomainDetailsForUserDto) {
+	o.Domain = v
 }
 
 // GetRole returns the Role field value
@@ -451,7 +451,7 @@ func (o UserForListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["displayName"] = o.DisplayName.Get()
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["is2FAEnabled"] = o.Is2FAEnabled
-	toSerialize["account"] = o.Account
+	toSerialize["domain"] = o.Domain
 	toSerialize["role"] = o.Role
 	toSerialize["organizations"] = o.Organizations
 	toSerialize["isEmailConfirmed"] = o.IsEmailConfirmed
@@ -479,7 +479,7 @@ func (o *UserForListDto) UnmarshalJSON(data []byte) (err error) {
 		"displayName",
 		"createdAt",
 		"is2FAEnabled",
-		"account",
+		"domain",
 		"role",
 		"organizations",
 		"isEmailConfirmed",
@@ -523,7 +523,7 @@ func (o *UserForListDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "createdAt")
 		delete(additionalProperties, "is2FAEnabled")
-		delete(additionalProperties, "account")
+		delete(additionalProperties, "domain")
 		delete(additionalProperties, "role")
 		delete(additionalProperties, "organizations")
 		delete(additionalProperties, "isEmailConfirmed")

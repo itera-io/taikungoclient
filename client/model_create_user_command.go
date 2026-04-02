@@ -23,8 +23,8 @@ type CreateUserCommand struct {
 	Username             NullableString `json:"username,omitempty"`
 	DisplayName          NullableString `json:"displayName,omitempty"`
 	Email                NullableString `json:"email,omitempty"`
-	AccountId            NullableInt32  `json:"accountId,omitempty"`
-	IsAccountAdmin       *bool          `json:"isAccountAdmin,omitempty"`
+	DomainId             NullableInt32  `json:"domainId,omitempty"`
+	IsDomainAdmin        *bool          `json:"isDomainAdmin,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -176,79 +176,79 @@ func (o *CreateUserCommand) UnsetEmail() {
 	o.Email.Unset()
 }
 
-// GetAccountId returns the AccountId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateUserCommand) GetAccountId() int32 {
-	if o == nil || IsNil(o.AccountId.Get()) {
+// GetDomainId returns the DomainId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateUserCommand) GetDomainId() int32 {
+	if o == nil || IsNil(o.DomainId.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.AccountId.Get()
+	return *o.DomainId.Get()
 }
 
-// GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
+// GetDomainIdOk returns a tuple with the DomainId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateUserCommand) GetAccountIdOk() (*int32, bool) {
+func (o *CreateUserCommand) GetDomainIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AccountId.Get(), o.AccountId.IsSet()
+	return o.DomainId.Get(), o.DomainId.IsSet()
 }
 
-// HasAccountId returns a boolean if a field has been set.
-func (o *CreateUserCommand) HasAccountId() bool {
-	if o != nil && o.AccountId.IsSet() {
+// HasDomainId returns a boolean if a field has been set.
+func (o *CreateUserCommand) HasDomainId() bool {
+	if o != nil && o.DomainId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAccountId gets a reference to the given NullableInt32 and assigns it to the AccountId field.
-func (o *CreateUserCommand) SetAccountId(v int32) {
-	o.AccountId.Set(&v)
+// SetDomainId gets a reference to the given NullableInt32 and assigns it to the DomainId field.
+func (o *CreateUserCommand) SetDomainId(v int32) {
+	o.DomainId.Set(&v)
 }
 
-// SetAccountIdNil sets the value for AccountId to be an explicit nil
-func (o *CreateUserCommand) SetAccountIdNil() {
-	o.AccountId.Set(nil)
+// SetDomainIdNil sets the value for DomainId to be an explicit nil
+func (o *CreateUserCommand) SetDomainIdNil() {
+	o.DomainId.Set(nil)
 }
 
-// UnsetAccountId ensures that no value is present for AccountId, not even an explicit nil
-func (o *CreateUserCommand) UnsetAccountId() {
-	o.AccountId.Unset()
+// UnsetDomainId ensures that no value is present for DomainId, not even an explicit nil
+func (o *CreateUserCommand) UnsetDomainId() {
+	o.DomainId.Unset()
 }
 
-// GetIsAccountAdmin returns the IsAccountAdmin field value if set, zero value otherwise.
-func (o *CreateUserCommand) GetIsAccountAdmin() bool {
-	if o == nil || IsNil(o.IsAccountAdmin) {
+// GetIsDomainAdmin returns the IsDomainAdmin field value if set, zero value otherwise.
+func (o *CreateUserCommand) GetIsDomainAdmin() bool {
+	if o == nil || IsNil(o.IsDomainAdmin) {
 		var ret bool
 		return ret
 	}
-	return *o.IsAccountAdmin
+	return *o.IsDomainAdmin
 }
 
-// GetIsAccountAdminOk returns a tuple with the IsAccountAdmin field value if set, nil otherwise
+// GetIsDomainAdminOk returns a tuple with the IsDomainAdmin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateUserCommand) GetIsAccountAdminOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsAccountAdmin) {
+func (o *CreateUserCommand) GetIsDomainAdminOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsDomainAdmin) {
 		return nil, false
 	}
-	return o.IsAccountAdmin, true
+	return o.IsDomainAdmin, true
 }
 
-// HasIsAccountAdmin returns a boolean if a field has been set.
-func (o *CreateUserCommand) HasIsAccountAdmin() bool {
-	if o != nil && !IsNil(o.IsAccountAdmin) {
+// HasIsDomainAdmin returns a boolean if a field has been set.
+func (o *CreateUserCommand) HasIsDomainAdmin() bool {
+	if o != nil && !IsNil(o.IsDomainAdmin) {
 		return true
 	}
 
 	return false
 }
 
-// SetIsAccountAdmin gets a reference to the given bool and assigns it to the IsAccountAdmin field.
-func (o *CreateUserCommand) SetIsAccountAdmin(v bool) {
-	o.IsAccountAdmin = &v
+// SetIsDomainAdmin gets a reference to the given bool and assigns it to the IsDomainAdmin field.
+func (o *CreateUserCommand) SetIsDomainAdmin(v bool) {
+	o.IsDomainAdmin = &v
 }
 
 func (o CreateUserCommand) MarshalJSON() ([]byte, error) {
@@ -270,11 +270,11 @@ func (o CreateUserCommand) ToMap() (map[string]interface{}, error) {
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
 	}
-	if o.AccountId.IsSet() {
-		toSerialize["accountId"] = o.AccountId.Get()
+	if o.DomainId.IsSet() {
+		toSerialize["domainId"] = o.DomainId.Get()
 	}
-	if !IsNil(o.IsAccountAdmin) {
-		toSerialize["isAccountAdmin"] = o.IsAccountAdmin
+	if !IsNil(o.IsDomainAdmin) {
+		toSerialize["isDomainAdmin"] = o.IsDomainAdmin
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -301,8 +301,8 @@ func (o *CreateUserCommand) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "username")
 		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "email")
-		delete(additionalProperties, "accountId")
-		delete(additionalProperties, "isAccountAdmin")
+		delete(additionalProperties, "domainId")
+		delete(additionalProperties, "isDomainAdmin")
 		o.AdditionalProperties = additionalProperties
 	}
 
