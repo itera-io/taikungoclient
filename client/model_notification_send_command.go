@@ -24,7 +24,10 @@ type NotificationSendCommand struct {
 	ActionType *ActionType `json:"actionType,omitempty"`
 	ActionStatus *ActionStatus `json:"actionStatus,omitempty"`
 	ProjectType *ProjectType `json:"projectType,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _NotificationSendCommand NotificationSendCommand
 
 // NewNotificationSendCommand instantiates a new NotificationSendCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -193,7 +196,36 @@ func (o NotificationSendCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectType) {
 		toSerialize["projectType"] = o.ProjectType
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *NotificationSendCommand) UnmarshalJSON(data []byte) (err error) {
+	varNotificationSendCommand := _NotificationSendCommand{}
+
+	err = json.Unmarshal(data, &varNotificationSendCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NotificationSendCommand(varNotificationSendCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "actionType")
+		delete(additionalProperties, "actionStatus")
+		delete(additionalProperties, "projectType")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableNotificationSendCommand struct {

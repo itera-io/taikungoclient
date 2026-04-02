@@ -29,6 +29,9 @@ func (c contextKey) String() string {
 }
 
 var (
+	// ContextBasicAuth takes BasicAuth as authentication for the request.
+	ContextBasicAuth = contextKey("basic")
+
 	// ContextAPIKeys takes a string apikey as authentication for the request
 	ContextAPIKeys = contextKey("apiKeys")
 

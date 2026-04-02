@@ -22,7 +22,10 @@ var _ MappedNullable = &BecomePartnerCommand{}
 type BecomePartnerCommand struct {
 	FullName NullableString `json:"fullName,omitempty"`
 	Email NullableString `json:"email,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _BecomePartnerCommand BecomePartnerCommand
 
 // NewBecomePartnerCommand instantiates a new BecomePartnerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o BecomePartnerCommand) ToMap() (map[string]interface{}, error) {
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *BecomePartnerCommand) UnmarshalJSON(data []byte) (err error) {
+	varBecomePartnerCommand := _BecomePartnerCommand{}
+
+	err = json.Unmarshal(data, &varBecomePartnerCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BecomePartnerCommand(varBecomePartnerCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "fullName")
+		delete(additionalProperties, "email")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableBecomePartnerCommand struct {

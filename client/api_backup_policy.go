@@ -1841,10 +1841,6 @@ func (r ApiBackupListAllBackupStoragesRequest) Execute() (*ListAllBackupStorageL
 /*
 BackupListAllBackupStorages List all backup locations
 
-<div style='font-family: Arial, sans-serif;'>
-                        <h2 style='color: #4A90E2;'>Description</h2>
-                        <ul><li><b>Search</b> - Options: <i>metadataName</i>, <i>namespace</i></ul></div>
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId
  @return ApiBackupListAllBackupStoragesRequest
@@ -2077,10 +2073,6 @@ func (r ApiBackupListAllBackupsRequest) Execute() (*ListAllBackups, *http.Respon
 
 /*
 BackupListAllBackups List all backups
-
-<div style='font-family: Arial, sans-serif;'>
-                        <h2 style='color: #4A90E2;'>Description</h2>
-                        <ul><li><b>Search</b> - Options: <i>metadataName</i>, <i>namespace</i></ul></div>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId
@@ -2315,10 +2307,6 @@ func (r ApiBackupListAllDeleteBackupRequestsRequest) Execute() (*ListAllDeleteBa
 /*
 BackupListAllDeleteBackupRequests List all delete backup requests
 
-<div style='font-family: Arial, sans-serif;'>
-                        <h2 style='color: #4A90E2;'>Description</h2>
-                        <ul><li><b>Search</b> - Options: <i>metadataName</i>, <i>namespace</i></ul></div>
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId
  @return ApiBackupListAllDeleteBackupRequestsRequest
@@ -2552,10 +2540,6 @@ func (r ApiBackupListAllRestoresRequest) Execute() (*ListAllRestores, *http.Resp
 /*
 BackupListAllRestores List all restores
 
-<div style='font-family: Arial, sans-serif;'>
-                        <h2 style='color: #4A90E2;'>Description</h2>
-                        <ul><li><b>Search</b> - Options: <i>metadataName</i>, <i>namespace</i></ul></div>
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId
  @return ApiBackupListAllRestoresRequest
@@ -2788,10 +2772,6 @@ func (r ApiBackupListAllSchedulesRequest) Execute() (*ListAllSchedules, *http.Re
 
 /*
 BackupListAllSchedules List all schedules
-
-<div style='font-family: Arial, sans-serif;'>
-                        <h2 style='color: #4A90E2;'>Description</h2>
-                        <ul><li><b>Search</b> - Options: <i>metadataName</i>, <i>namespace</i></ul></div>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId

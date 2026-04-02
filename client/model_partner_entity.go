@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -25,6 +24,7 @@ type PartnerEntity struct {
 	PartnerId int32 `json:"partnerId"`
 	PartnerName string `json:"partnerName"`
 	Logo NullableString `json:"logo,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PartnerEntity PartnerEntity
@@ -153,6 +153,11 @@ func (o PartnerEntity) ToMap() (map[string]interface{}, error) {
 	if o.Logo.IsSet() {
 		toSerialize["logo"] = o.Logo.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -181,15 +186,22 @@ func (o *PartnerEntity) UnmarshalJSON(data []byte) (err error) {
 
 	varPartnerEntity := _PartnerEntity{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPartnerEntity)
+	err = json.Unmarshal(data, &varPartnerEntity)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PartnerEntity(varPartnerEntity)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "partnerId")
+		delete(additionalProperties, "partnerName")
+		delete(additionalProperties, "logo")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

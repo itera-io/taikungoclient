@@ -23,7 +23,11 @@ var _ MappedNullable = &BoundFlavorsForProjectsList{}
 // BoundFlavorsForProjectsList struct for BoundFlavorsForProjectsList
 type BoundFlavorsForProjectsList struct {
 	Data []BoundFlavorsForProjectsListDto `json:"data"`
-	TotalCount int32 `json:"totalCount"`
+	Limit int32 `json:"limit"`
+	HasMore bool `json:"hasMore"`
+	TotalCount int64 `json:"totalCount"`
+	Offset int32 `json:"offset"`
+	NextOffset NullableInt32 `json:"nextOffset,omitempty"`
 }
 
 type _BoundFlavorsForProjectsList BoundFlavorsForProjectsList
@@ -32,10 +36,13 @@ type _BoundFlavorsForProjectsList BoundFlavorsForProjectsList
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBoundFlavorsForProjectsList(data []BoundFlavorsForProjectsListDto, totalCount int32) *BoundFlavorsForProjectsList {
+func NewBoundFlavorsForProjectsList(data []BoundFlavorsForProjectsListDto, limit int32, hasMore bool, totalCount int64, offset int32) *BoundFlavorsForProjectsList {
 	this := BoundFlavorsForProjectsList{}
 	this.Data = data
+	this.Limit = limit
+	this.HasMore = hasMore
 	this.TotalCount = totalCount
+	this.Offset = offset
 	return &this
 }
 
@@ -73,10 +80,58 @@ func (o *BoundFlavorsForProjectsList) SetData(v []BoundFlavorsForProjectsListDto
 	o.Data = v
 }
 
-// GetTotalCount returns the TotalCount field value
-func (o *BoundFlavorsForProjectsList) GetTotalCount() int32 {
+// GetLimit returns the Limit field value
+func (o *BoundFlavorsForProjectsList) GetLimit() int32 {
 	if o == nil {
 		var ret int32
+		return ret
+	}
+
+	return o.Limit
+}
+
+// GetLimitOk returns a tuple with the Limit field value
+// and a boolean to check if the value has been set.
+func (o *BoundFlavorsForProjectsList) GetLimitOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Limit, true
+}
+
+// SetLimit sets field value
+func (o *BoundFlavorsForProjectsList) SetLimit(v int32) {
+	o.Limit = v
+}
+
+// GetHasMore returns the HasMore field value
+func (o *BoundFlavorsForProjectsList) GetHasMore() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.HasMore
+}
+
+// GetHasMoreOk returns a tuple with the HasMore field value
+// and a boolean to check if the value has been set.
+func (o *BoundFlavorsForProjectsList) GetHasMoreOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.HasMore, true
+}
+
+// SetHasMore sets field value
+func (o *BoundFlavorsForProjectsList) SetHasMore(v bool) {
+	o.HasMore = v
+}
+
+// GetTotalCount returns the TotalCount field value
+func (o *BoundFlavorsForProjectsList) GetTotalCount() int64 {
+	if o == nil {
+		var ret int64
 		return ret
 	}
 
@@ -85,7 +140,7 @@ func (o *BoundFlavorsForProjectsList) GetTotalCount() int32 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value
 // and a boolean to check if the value has been set.
-func (o *BoundFlavorsForProjectsList) GetTotalCountOk() (*int32, bool) {
+func (o *BoundFlavorsForProjectsList) GetTotalCountOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,8 +148,74 @@ func (o *BoundFlavorsForProjectsList) GetTotalCountOk() (*int32, bool) {
 }
 
 // SetTotalCount sets field value
-func (o *BoundFlavorsForProjectsList) SetTotalCount(v int32) {
+func (o *BoundFlavorsForProjectsList) SetTotalCount(v int64) {
 	o.TotalCount = v
+}
+
+// GetOffset returns the Offset field value
+func (o *BoundFlavorsForProjectsList) GetOffset() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Offset
+}
+
+// GetOffsetOk returns a tuple with the Offset field value
+// and a boolean to check if the value has been set.
+func (o *BoundFlavorsForProjectsList) GetOffsetOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Offset, true
+}
+
+// SetOffset sets field value
+func (o *BoundFlavorsForProjectsList) SetOffset(v int32) {
+	o.Offset = v
+}
+
+// GetNextOffset returns the NextOffset field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *BoundFlavorsForProjectsList) GetNextOffset() int32 {
+	if o == nil || IsNil(o.NextOffset.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.NextOffset.Get()
+}
+
+// GetNextOffsetOk returns a tuple with the NextOffset field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *BoundFlavorsForProjectsList) GetNextOffsetOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.NextOffset.Get(), o.NextOffset.IsSet()
+}
+
+// HasNextOffset returns a boolean if a field has been set.
+func (o *BoundFlavorsForProjectsList) HasNextOffset() bool {
+	if o != nil && o.NextOffset.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNextOffset gets a reference to the given NullableInt32 and assigns it to the NextOffset field.
+func (o *BoundFlavorsForProjectsList) SetNextOffset(v int32) {
+	o.NextOffset.Set(&v)
+}
+// SetNextOffsetNil sets the value for NextOffset to be an explicit nil
+func (o *BoundFlavorsForProjectsList) SetNextOffsetNil() {
+	o.NextOffset.Set(nil)
+}
+
+// UnsetNextOffset ensures that no value is present for NextOffset, not even an explicit nil
+func (o *BoundFlavorsForProjectsList) UnsetNextOffset() {
+	o.NextOffset.Unset()
 }
 
 func (o BoundFlavorsForProjectsList) MarshalJSON() ([]byte, error) {
@@ -110,7 +231,13 @@ func (o BoundFlavorsForProjectsList) ToMap() (map[string]interface{}, error) {
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
 	}
+	toSerialize["limit"] = o.Limit
+	toSerialize["hasMore"] = o.HasMore
 	toSerialize["totalCount"] = o.TotalCount
+	toSerialize["offset"] = o.Offset
+	if o.NextOffset.IsSet() {
+		toSerialize["nextOffset"] = o.NextOffset.Get()
+	}
 	return toSerialize, nil
 }
 
@@ -120,7 +247,10 @@ func (o *BoundFlavorsForProjectsList) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"data",
+		"limit",
+		"hasMore",
 		"totalCount",
+		"offset",
 	}
 
 	allProperties := make(map[string]interface{})

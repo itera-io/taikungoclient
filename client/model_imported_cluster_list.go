@@ -24,6 +24,7 @@ var _ MappedNullable = &ImportedClusterList{}
 type ImportedClusterList struct {
 	Data []ImportedClusterListDto `json:"data"`
 	Project ImportedClusterDetailsDto `json:"project"`
+	TotalCount NullableInt64 `json:"totalCount,omitempty"`
 }
 
 type _ImportedClusterList ImportedClusterList
@@ -97,6 +98,48 @@ func (o *ImportedClusterList) SetProject(v ImportedClusterDetailsDto) {
 	o.Project = v
 }
 
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ImportedClusterList) GetTotalCount() int64 {
+	if o == nil || IsNil(o.TotalCount.Get()) {
+		var ret int64
+		return ret
+	}
+	return *o.TotalCount.Get()
+}
+
+// GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ImportedClusterList) GetTotalCountOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.TotalCount.Get(), o.TotalCount.IsSet()
+}
+
+// HasTotalCount returns a boolean if a field has been set.
+func (o *ImportedClusterList) HasTotalCount() bool {
+	if o != nil && o.TotalCount.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalCount gets a reference to the given NullableInt64 and assigns it to the TotalCount field.
+func (o *ImportedClusterList) SetTotalCount(v int64) {
+	o.TotalCount.Set(&v)
+}
+// SetTotalCountNil sets the value for TotalCount to be an explicit nil
+func (o *ImportedClusterList) SetTotalCountNil() {
+	o.TotalCount.Set(nil)
+}
+
+// UnsetTotalCount ensures that no value is present for TotalCount, not even an explicit nil
+func (o *ImportedClusterList) UnsetTotalCount() {
+	o.TotalCount.Unset()
+}
+
 func (o ImportedClusterList) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -111,6 +154,9 @@ func (o ImportedClusterList) ToMap() (map[string]interface{}, error) {
 		toSerialize["data"] = o.Data
 	}
 	toSerialize["project"] = o.Project
+	if o.TotalCount.IsSet() {
+		toSerialize["totalCount"] = o.TotalCount.Get()
+	}
 	return toSerialize, nil
 }
 

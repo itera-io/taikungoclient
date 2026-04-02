@@ -24,6 +24,7 @@ type ExecutorEntityDto struct {
 	Name NullableString `json:"name,omitempty"`
 	Health *ExecutorHealth `json:"health,omitempty"`
 	KubeConfig NullableString `json:"kubeConfig,omitempty"`
+	IsLocal *bool `json:"isLocal,omitempty"`
 }
 
 // NewExecutorEntityDto instantiates a new ExecutorEntityDto object
@@ -191,6 +192,38 @@ func (o *ExecutorEntityDto) UnsetKubeConfig() {
 	o.KubeConfig.Unset()
 }
 
+// GetIsLocal returns the IsLocal field value if set, zero value otherwise.
+func (o *ExecutorEntityDto) GetIsLocal() bool {
+	if o == nil || IsNil(o.IsLocal) {
+		var ret bool
+		return ret
+	}
+	return *o.IsLocal
+}
+
+// GetIsLocalOk returns a tuple with the IsLocal field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ExecutorEntityDto) GetIsLocalOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsLocal) {
+		return nil, false
+	}
+	return o.IsLocal, true
+}
+
+// HasIsLocal returns a boolean if a field has been set.
+func (o *ExecutorEntityDto) HasIsLocal() bool {
+	if o != nil && !IsNil(o.IsLocal) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsLocal gets a reference to the given bool and assigns it to the IsLocal field.
+func (o *ExecutorEntityDto) SetIsLocal(v bool) {
+	o.IsLocal = &v
+}
+
 func (o ExecutorEntityDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -212,6 +245,9 @@ func (o ExecutorEntityDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.KubeConfig.IsSet() {
 		toSerialize["kubeConfig"] = o.KubeConfig.Get()
+	}
+	if !IsNil(o.IsLocal) {
+		toSerialize["isLocal"] = o.IsLocal
 	}
 	return toSerialize, nil
 }

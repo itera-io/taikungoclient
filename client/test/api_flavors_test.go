@@ -141,20 +141,6 @@ func Test_taikuncore_FlavorsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FlavorsAPIService FlavorsTanzuFlavors", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var cloudId int32
-
-		resp, httpRes, err := apiClient.FlavorsAPI.FlavorsTanzuFlavors(context.Background(), cloudId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test FlavorsAPIService FlavorsUnbindFromProject", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -187,20 +173,6 @@ func Test_taikuncore_FlavorsAPIService(t *testing.T) {
 		var cloudId int32
 
 		resp, httpRes, err := apiClient.FlavorsAPI.FlavorsZadaraInstanceTypes(context.Background(), cloudId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test FlavorsAPIService FlavorsZededaFlavors", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var cloudId int32
-
-		resp, httpRes, err := apiClient.FlavorsAPI.FlavorsZededaFlavors(context.Background(), cloudId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

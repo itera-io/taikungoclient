@@ -24,7 +24,10 @@ type ServerTemplateDto struct {
 	Flavor NullableString `json:"flavor,omitempty"`
 	DiskSize *float64 `json:"diskSize,omitempty"`
 	Count *int32 `json:"count,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ServerTemplateDto ServerTemplateDto
 
 // NewServerTemplateDto instantiates a new ServerTemplateDto object
 // This constructor will assign default values to properties that have it defined,
@@ -203,7 +206,36 @@ func (o ServerTemplateDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Count) {
 		toSerialize["count"] = o.Count
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ServerTemplateDto) UnmarshalJSON(data []byte) (err error) {
+	varServerTemplateDto := _ServerTemplateDto{}
+
+	err = json.Unmarshal(data, &varServerTemplateDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ServerTemplateDto(varServerTemplateDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "role")
+		delete(additionalProperties, "flavor")
+		delete(additionalProperties, "diskSize")
+		delete(additionalProperties, "count")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableServerTemplateDto struct {

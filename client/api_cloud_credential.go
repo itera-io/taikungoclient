@@ -37,6 +37,7 @@ type ApiCloudcredentialsAllFlavorsRequest struct {
 	search *string
 	sortBy *string
 	sortDirection *string
+	hasGpuSupport *bool
 }
 
 func (r ApiCloudcredentialsAllFlavorsRequest) Limit(limit int32) ApiCloudcredentialsAllFlavorsRequest {
@@ -81,6 +82,11 @@ func (r ApiCloudcredentialsAllFlavorsRequest) SortBy(sortBy string) ApiCloudcred
 
 func (r ApiCloudcredentialsAllFlavorsRequest) SortDirection(sortDirection string) ApiCloudcredentialsAllFlavorsRequest {
 	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiCloudcredentialsAllFlavorsRequest) HasGpuSupport(hasGpuSupport bool) ApiCloudcredentialsAllFlavorsRequest {
+	r.hasGpuSupport = &hasGpuSupport
 	return r
 }
 
@@ -151,6 +157,9 @@ func (a *CloudCredentialAPIService) CloudcredentialsAllFlavorsExecute(r ApiCloud
 	}
 	if r.sortDirection != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.hasGpuSupport != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "HasGpuSupport", r.hasGpuSupport, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -989,6 +998,7 @@ type ApiCloudcredentialsOrgListRequest struct {
 	ctx context.Context
 	ApiService *CloudCredentialAPIService
 	isAdmin *bool
+	accountId *int32
 	organizationId *int32
 	search *string
 	isInfra *bool
@@ -998,6 +1008,11 @@ type ApiCloudcredentialsOrgListRequest struct {
 
 func (r ApiCloudcredentialsOrgListRequest) IsAdmin(isAdmin bool) ApiCloudcredentialsOrgListRequest {
 	r.isAdmin = &isAdmin
+	return r
+}
+
+func (r ApiCloudcredentialsOrgListRequest) AccountId(accountId int32) ApiCloudcredentialsOrgListRequest {
+	r.accountId = &accountId
 	return r
 }
 
@@ -1067,6 +1082,9 @@ func (a *CloudCredentialAPIService) CloudcredentialsOrgListExecute(r ApiCloudcre
 		return localVarReturnValue, nil, reportError("isAdmin is required and must be specified")
 	}
 
+	if r.accountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
+	}
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}

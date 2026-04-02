@@ -21,7 +21,10 @@ var _ MappedNullable = &OpenTicketCommand{}
 // OpenTicketCommand struct for OpenTicketCommand
 type OpenTicketCommand struct {
 	TicketId NullableString `json:"ticketId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OpenTicketCommand OpenTicketCommand
 
 // NewOpenTicketCommand instantiates a new OpenTicketCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +98,33 @@ func (o OpenTicketCommand) ToMap() (map[string]interface{}, error) {
 	if o.TicketId.IsSet() {
 		toSerialize["ticketId"] = o.TicketId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OpenTicketCommand) UnmarshalJSON(data []byte) (err error) {
+	varOpenTicketCommand := _OpenTicketCommand{}
+
+	err = json.Unmarshal(data, &varOpenTicketCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OpenTicketCommand(varOpenTicketCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "ticketId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOpenTicketCommand struct {

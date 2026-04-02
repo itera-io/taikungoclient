@@ -24,7 +24,10 @@ type ContactUsCommand struct {
 	BusinessEmail NullableString `json:"businessEmail,omitempty"`
 	CompanyName NullableString `json:"companyName,omitempty"`
 	Comment NullableString `json:"comment,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ContactUsCommand ContactUsCommand
 
 // NewContactUsCommand instantiates a new ContactUsCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -233,7 +236,36 @@ func (o ContactUsCommand) ToMap() (map[string]interface{}, error) {
 	if o.Comment.IsSet() {
 		toSerialize["comment"] = o.Comment.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ContactUsCommand) UnmarshalJSON(data []byte) (err error) {
+	varContactUsCommand := _ContactUsCommand{}
+
+	err = json.Unmarshal(data, &varContactUsCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ContactUsCommand(varContactUsCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "businessEmail")
+		delete(additionalProperties, "companyName")
+		delete(additionalProperties, "comment")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableContactUsCommand struct {

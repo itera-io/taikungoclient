@@ -21,7 +21,10 @@ var _ MappedNullable = &WhiteListDomainDeleteCommand{}
 // WhiteListDomainDeleteCommand struct for WhiteListDomainDeleteCommand
 type WhiteListDomainDeleteCommand struct {
 	Id *int32 `json:"id,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _WhiteListDomainDeleteCommand WhiteListDomainDeleteCommand
 
 // NewWhiteListDomainDeleteCommand instantiates a new WhiteListDomainDeleteCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o WhiteListDomainDeleteCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *WhiteListDomainDeleteCommand) UnmarshalJSON(data []byte) (err error) {
+	varWhiteListDomainDeleteCommand := _WhiteListDomainDeleteCommand{}
+
+	err = json.Unmarshal(data, &varWhiteListDomainDeleteCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = WhiteListDomainDeleteCommand(varWhiteListDomainDeleteCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableWhiteListDomainDeleteCommand struct {

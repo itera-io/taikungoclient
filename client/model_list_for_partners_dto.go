@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -44,6 +43,7 @@ type ListForPartnersDto struct {
 	TrialDays int32 `json:"trialDays"`
 	Description NullableString `json:"description"`
 	IsDemo bool `json:"isDemo"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ListForPartnersDto ListForPartnersDto
@@ -653,6 +653,11 @@ func (o ListForPartnersDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["trialDays"] = o.TrialDays
 	toSerialize["description"] = o.Description.Get()
 	toSerialize["isDemo"] = o.IsDemo
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -701,15 +706,41 @@ func (o *ListForPartnersDto) UnmarshalJSON(data []byte) (err error) {
 
 	varListForPartnersDto := _ListForPartnersDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varListForPartnersDto)
+	err = json.Unmarshal(data, &varListForPartnersDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ListForPartnersDto(varListForPartnersDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "projectLimit")
+		delete(additionalProperties, "serverLimit")
+		delete(additionalProperties, "userLimit")
+		delete(additionalProperties, "cloudCredentialLimit")
+		delete(additionalProperties, "monthlyPrice")
+		delete(additionalProperties, "yearlyPrice")
+		delete(additionalProperties, "tcuPrice")
+		delete(additionalProperties, "isDeprecated")
+		delete(additionalProperties, "currency")
+		delete(additionalProperties, "isEnterprise")
+		delete(additionalProperties, "partner")
+		delete(additionalProperties, "exceededUser")
+		delete(additionalProperties, "exceededProject")
+		delete(additionalProperties, "exceededCloudCredential")
+		delete(additionalProperties, "exceededServers")
+		delete(additionalProperties, "isActive")
+		delete(additionalProperties, "isYearly")
+		delete(additionalProperties, "trialDays")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "isDemo")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

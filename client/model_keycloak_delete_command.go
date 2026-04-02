@@ -21,7 +21,10 @@ var _ MappedNullable = &KeycloakDeleteCommand{}
 // KeycloakDeleteCommand struct for KeycloakDeleteCommand
 type KeycloakDeleteCommand struct {
 	Id *int32 `json:"id,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _KeycloakDeleteCommand KeycloakDeleteCommand
 
 // NewKeycloakDeleteCommand instantiates a new KeycloakDeleteCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o KeycloakDeleteCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *KeycloakDeleteCommand) UnmarshalJSON(data []byte) (err error) {
+	varKeycloakDeleteCommand := _KeycloakDeleteCommand{}
+
+	err = json.Unmarshal(data, &varKeycloakDeleteCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KeycloakDeleteCommand(varKeycloakDeleteCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableKeycloakDeleteCommand struct {

@@ -23,7 +23,10 @@ type EditTicketCommand struct {
 	TicketId NullableString `json:"ticketId,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	Description NullableString `json:"description,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EditTicketCommand EditTicketCommand
 
 // NewEditTicketCommand instantiates a new EditTicketCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -187,7 +190,35 @@ func (o EditTicketCommand) ToMap() (map[string]interface{}, error) {
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EditTicketCommand) UnmarshalJSON(data []byte) (err error) {
+	varEditTicketCommand := _EditTicketCommand{}
+
+	err = json.Unmarshal(data, &varEditTicketCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EditTicketCommand(varEditTicketCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "ticketId")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEditTicketCommand struct {

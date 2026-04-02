@@ -22,7 +22,10 @@ var _ MappedNullable = &UserTokenCreateDto{}
 type UserTokenCreateDto struct {
 	AccessKey NullableString `json:"accessKey,omitempty"`
 	SecretKey NullableString `json:"secretKey,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UserTokenCreateDto UserTokenCreateDto
 
 // NewUserTokenCreateDto instantiates a new UserTokenCreateDto object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o UserTokenCreateDto) ToMap() (map[string]interface{}, error) {
 	if o.SecretKey.IsSet() {
 		toSerialize["secretKey"] = o.SecretKey.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UserTokenCreateDto) UnmarshalJSON(data []byte) (err error) {
+	varUserTokenCreateDto := _UserTokenCreateDto{}
+
+	err = json.Unmarshal(data, &varUserTokenCreateDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserTokenCreateDto(varUserTokenCreateDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accessKey")
+		delete(additionalProperties, "secretKey")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUserTokenCreateDto struct {

@@ -23,7 +23,10 @@ type AdminProjectUpdateCommand struct {
 	Id *int32 `json:"id,omitempty"`
 	KubernetesCurrentVersion NullableString `json:"kubernetesCurrentVersion,omitempty"`
 	KubesprayCurrentVersion NullableString `json:"kubesprayCurrentVersion,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AdminProjectUpdateCommand AdminProjectUpdateCommand
 
 // NewAdminProjectUpdateCommand instantiates a new AdminProjectUpdateCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -177,7 +180,35 @@ func (o AdminProjectUpdateCommand) ToMap() (map[string]interface{}, error) {
 	if o.KubesprayCurrentVersion.IsSet() {
 		toSerialize["kubesprayCurrentVersion"] = o.KubesprayCurrentVersion.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AdminProjectUpdateCommand) UnmarshalJSON(data []byte) (err error) {
+	varAdminProjectUpdateCommand := _AdminProjectUpdateCommand{}
+
+	err = json.Unmarshal(data, &varAdminProjectUpdateCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AdminProjectUpdateCommand(varAdminProjectUpdateCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "kubernetesCurrentVersion")
+		delete(additionalProperties, "kubesprayCurrentVersion")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAdminProjectUpdateCommand struct {

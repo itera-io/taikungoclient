@@ -21,7 +21,10 @@ var _ MappedNullable = &CloseTicketCommand{}
 // CloseTicketCommand struct for CloseTicketCommand
 type CloseTicketCommand struct {
 	TicketId NullableString `json:"ticketId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CloseTicketCommand CloseTicketCommand
 
 // NewCloseTicketCommand instantiates a new CloseTicketCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +98,33 @@ func (o CloseTicketCommand) ToMap() (map[string]interface{}, error) {
 	if o.TicketId.IsSet() {
 		toSerialize["ticketId"] = o.TicketId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CloseTicketCommand) UnmarshalJSON(data []byte) (err error) {
+	varCloseTicketCommand := _CloseTicketCommand{}
+
+	err = json.Unmarshal(data, &varCloseTicketCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CloseTicketCommand(varCloseTicketCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "ticketId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCloseTicketCommand struct {

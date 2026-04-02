@@ -50,6 +50,9 @@ type OpenstackCredentialsListDto struct {
 	IsInfra bool `json:"isInfra"`
 	ApplicationCredEnabled bool `json:"applicationCredEnabled"`
 	SkipTlsFlag bool `json:"skipTlsFlag"`
+	ManilaEnabled *bool `json:"manilaEnabled,omitempty"`
+	ManilaStorageType NullableString `json:"manilaStorageType,omitempty"`
+	LbProvider NullableString `json:"lbProvider,omitempty"`
 }
 
 type _OpenstackCredentialsListDto OpenstackCredentialsListDto
@@ -777,6 +780,122 @@ func (o *OpenstackCredentialsListDto) SetSkipTlsFlag(v bool) {
 	o.SkipTlsFlag = v
 }
 
+// GetManilaEnabled returns the ManilaEnabled field value if set, zero value otherwise.
+func (o *OpenstackCredentialsListDto) GetManilaEnabled() bool {
+	if o == nil || IsNil(o.ManilaEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.ManilaEnabled
+}
+
+// GetManilaEnabledOk returns a tuple with the ManilaEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenstackCredentialsListDto) GetManilaEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.ManilaEnabled) {
+		return nil, false
+	}
+	return o.ManilaEnabled, true
+}
+
+// HasManilaEnabled returns a boolean if a field has been set.
+func (o *OpenstackCredentialsListDto) HasManilaEnabled() bool {
+	if o != nil && !IsNil(o.ManilaEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetManilaEnabled gets a reference to the given bool and assigns it to the ManilaEnabled field.
+func (o *OpenstackCredentialsListDto) SetManilaEnabled(v bool) {
+	o.ManilaEnabled = &v
+}
+
+// GetManilaStorageType returns the ManilaStorageType field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OpenstackCredentialsListDto) GetManilaStorageType() string {
+	if o == nil || IsNil(o.ManilaStorageType.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ManilaStorageType.Get()
+}
+
+// GetManilaStorageTypeOk returns a tuple with the ManilaStorageType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OpenstackCredentialsListDto) GetManilaStorageTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ManilaStorageType.Get(), o.ManilaStorageType.IsSet()
+}
+
+// HasManilaStorageType returns a boolean if a field has been set.
+func (o *OpenstackCredentialsListDto) HasManilaStorageType() bool {
+	if o != nil && o.ManilaStorageType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetManilaStorageType gets a reference to the given NullableString and assigns it to the ManilaStorageType field.
+func (o *OpenstackCredentialsListDto) SetManilaStorageType(v string) {
+	o.ManilaStorageType.Set(&v)
+}
+// SetManilaStorageTypeNil sets the value for ManilaStorageType to be an explicit nil
+func (o *OpenstackCredentialsListDto) SetManilaStorageTypeNil() {
+	o.ManilaStorageType.Set(nil)
+}
+
+// UnsetManilaStorageType ensures that no value is present for ManilaStorageType, not even an explicit nil
+func (o *OpenstackCredentialsListDto) UnsetManilaStorageType() {
+	o.ManilaStorageType.Unset()
+}
+
+// GetLbProvider returns the LbProvider field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OpenstackCredentialsListDto) GetLbProvider() string {
+	if o == nil || IsNil(o.LbProvider.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.LbProvider.Get()
+}
+
+// GetLbProviderOk returns a tuple with the LbProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OpenstackCredentialsListDto) GetLbProviderOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LbProvider.Get(), o.LbProvider.IsSet()
+}
+
+// HasLbProvider returns a boolean if a field has been set.
+func (o *OpenstackCredentialsListDto) HasLbProvider() bool {
+	if o != nil && o.LbProvider.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLbProvider gets a reference to the given NullableString and assigns it to the LbProvider field.
+func (o *OpenstackCredentialsListDto) SetLbProvider(v string) {
+	o.LbProvider.Set(&v)
+}
+// SetLbProviderNil sets the value for LbProvider to be an explicit nil
+func (o *OpenstackCredentialsListDto) SetLbProviderNil() {
+	o.LbProvider.Set(nil)
+}
+
+// UnsetLbProvider ensures that no value is present for LbProvider, not even an explicit nil
+func (o *OpenstackCredentialsListDto) UnsetLbProvider() {
+	o.LbProvider.Unset()
+}
+
 func (o OpenstackCredentialsListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -815,6 +934,15 @@ func (o OpenstackCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["isInfra"] = o.IsInfra
 	toSerialize["applicationCredEnabled"] = o.ApplicationCredEnabled
 	toSerialize["skipTlsFlag"] = o.SkipTlsFlag
+	if !IsNil(o.ManilaEnabled) {
+		toSerialize["manilaEnabled"] = o.ManilaEnabled
+	}
+	if o.ManilaStorageType.IsSet() {
+		toSerialize["manilaStorageType"] = o.ManilaStorageType.Get()
+	}
+	if o.LbProvider.IsSet() {
+		toSerialize["lbProvider"] = o.LbProvider.Get()
+	}
 	return toSerialize, nil
 }
 

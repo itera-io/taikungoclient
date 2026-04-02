@@ -469,7 +469,7 @@ func (a *KubernetesProfilesAPIService) KubernetesprofilesDropdownExecute(r ApiKu
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 1000
+		var defaultValue int32 = 50
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
@@ -610,6 +610,7 @@ type ApiKubernetesprofilesListRequest struct {
 	ctx context.Context
 	ApiService *KubernetesProfilesAPIService
 	organizationId *int32
+	accountId *int32
 	limit *int32
 	offset *int32
 	sortBy *string
@@ -621,6 +622,11 @@ type ApiKubernetesprofilesListRequest struct {
 
 func (r ApiKubernetesprofilesListRequest) OrganizationId(organizationId int32) ApiKubernetesprofilesListRequest {
 	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiKubernetesprofilesListRequest) AccountId(accountId int32) ApiKubernetesprofilesListRequest {
+	r.accountId = &accountId
 	return r
 }
 
@@ -699,6 +705,9 @@ func (a *KubernetesProfilesAPIService) KubernetesprofilesListExecute(r ApiKubern
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
+	}
+	if r.accountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
 	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")

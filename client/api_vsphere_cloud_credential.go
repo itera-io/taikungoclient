@@ -769,6 +769,7 @@ type ApiVsphereListRequest struct {
 	sortDirection *string
 	search *string
 	searchId *string
+	accountId *int32
 	id *int32
 }
 
@@ -804,6 +805,11 @@ func (r ApiVsphereListRequest) Search(search string) ApiVsphereListRequest {
 
 func (r ApiVsphereListRequest) SearchId(searchId string) ApiVsphereListRequest {
 	r.searchId = &searchId
+	return r
+}
+
+func (r ApiVsphereListRequest) AccountId(accountId int32) ApiVsphereListRequest {
+	r.accountId = &accountId
 	return r
 }
 
@@ -870,6 +876,9 @@ func (a *VsphereCloudCredentialAPIService) VsphereListExecute(r ApiVsphereListRe
 	}
 	if r.searchId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
+	if r.accountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
 	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")

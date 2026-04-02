@@ -1519,7 +1519,7 @@ func (r ApiProjectappUpdateRequest) UpdateProjectAppCommand(updateProjectAppComm
 	return r
 }
 
-func (r ApiProjectappUpdateRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiProjectappUpdateRequest) Execute() (*TaikunResult, *http.Response, error) {
 	return r.ApiService.ProjectappUpdateExecute(r)
 }
 
@@ -1537,13 +1537,13 @@ func (a *ProjectAppsAPIService) ProjectappUpdate(ctx context.Context) ApiProject
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *ProjectAppsAPIService) ProjectappUpdateExecute(r ApiProjectappUpdateRequest) (map[string]interface{}, *http.Response, error) {
+//  @return TaikunResult
+func (a *ProjectAppsAPIService) ProjectappUpdateExecute(r ApiProjectappUpdateRequest) (*TaikunResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *TaikunResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAppsAPIService.ProjectappUpdate")

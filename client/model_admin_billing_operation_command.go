@@ -21,7 +21,10 @@ var _ MappedNullable = &AdminBillingOperationCommand{}
 // AdminBillingOperationCommand struct for AdminBillingOperationCommand
 type AdminBillingOperationCommand struct {
 	CloudCredentialId *int32 `json:"cloudCredentialId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AdminBillingOperationCommand AdminBillingOperationCommand
 
 // NewAdminBillingOperationCommand instantiates a new AdminBillingOperationCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o AdminBillingOperationCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CloudCredentialId) {
 		toSerialize["cloudCredentialId"] = o.CloudCredentialId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AdminBillingOperationCommand) UnmarshalJSON(data []byte) (err error) {
+	varAdminBillingOperationCommand := _AdminBillingOperationCommand{}
+
+	err = json.Unmarshal(data, &varAdminBillingOperationCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AdminBillingOperationCommand(varAdminBillingOperationCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cloudCredentialId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAdminBillingOperationCommand struct {

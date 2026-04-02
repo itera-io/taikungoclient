@@ -22,7 +22,10 @@ var _ MappedNullable = &TransferTicketCommand{}
 type TransferTicketCommand struct {
 	TicketId NullableString `json:"ticketId,omitempty"`
 	UserId NullableString `json:"userId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _TransferTicketCommand TransferTicketCommand
 
 // NewTransferTicketCommand instantiates a new TransferTicketCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o TransferTicketCommand) ToMap() (map[string]interface{}, error) {
 	if o.UserId.IsSet() {
 		toSerialize["userId"] = o.UserId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *TransferTicketCommand) UnmarshalJSON(data []byte) (err error) {
+	varTransferTicketCommand := _TransferTicketCommand{}
+
+	err = json.Unmarshal(data, &varTransferTicketCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TransferTicketCommand(varTransferTicketCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "ticketId")
+		delete(additionalProperties, "userId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableTransferTicketCommand struct {

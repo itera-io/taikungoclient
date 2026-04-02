@@ -23,7 +23,10 @@ type BindUnbindEndpointToTokenCommand struct {
 	TokenId NullableString `json:"tokenId,omitempty"`
 	Endpoints []AvailableEndpointData `json:"endpoints,omitempty"`
 	BindAll *bool `json:"bindAll,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _BindUnbindEndpointToTokenCommand BindUnbindEndpointToTokenCommand
 
 // NewBindUnbindEndpointToTokenCommand instantiates a new BindUnbindEndpointToTokenCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -168,7 +171,35 @@ func (o BindUnbindEndpointToTokenCommand) ToMap() (map[string]interface{}, error
 	if !IsNil(o.BindAll) {
 		toSerialize["bindAll"] = o.BindAll
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *BindUnbindEndpointToTokenCommand) UnmarshalJSON(data []byte) (err error) {
+	varBindUnbindEndpointToTokenCommand := _BindUnbindEndpointToTokenCommand{}
+
+	err = json.Unmarshal(data, &varBindUnbindEndpointToTokenCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BindUnbindEndpointToTokenCommand(varBindUnbindEndpointToTokenCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tokenId")
+		delete(additionalProperties, "endpoints")
+		delete(additionalProperties, "bindAll")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableBindUnbindEndpointToTokenCommand struct {

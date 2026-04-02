@@ -22,7 +22,10 @@ var _ MappedNullable = &TofuMigrateCommand{}
 type TofuMigrateCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	Force *bool `json:"force,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _TofuMigrateCommand TofuMigrateCommand
 
 // NewTofuMigrateCommand instantiates a new TofuMigrateCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -121,7 +124,34 @@ func (o TofuMigrateCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Force) {
 		toSerialize["force"] = o.Force
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *TofuMigrateCommand) UnmarshalJSON(data []byte) (err error) {
+	varTofuMigrateCommand := _TofuMigrateCommand{}
+
+	err = json.Unmarshal(data, &varTofuMigrateCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TofuMigrateCommand(varTofuMigrateCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "force")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableTofuMigrateCommand struct {

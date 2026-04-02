@@ -20,7 +20,9 @@ var _ MappedNullable = &CreateNtpServerCommand{}
 
 // CreateNtpServerCommand struct for CreateNtpServerCommand
 type CreateNtpServerCommand struct {
+	// Ntp address example: 8.8.8.8
 	Address NullableString `json:"address,omitempty"`
+	// Id should be positive integer
 	AccessProfileId *int32 `json:"accessProfileId,omitempty"`
 }
 

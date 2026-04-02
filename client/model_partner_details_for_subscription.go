@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -26,6 +25,7 @@ type PartnerDetailsForSubscription struct {
 	Logo NullableString `json:"logo"`
 	Link NullableString `json:"link"`
 	Id int32 `json:"id"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PartnerDetailsForSubscription PartnerDetailsForSubscription
@@ -165,6 +165,11 @@ func (o PartnerDetailsForSubscription) ToMap() (map[string]interface{}, error) {
 	toSerialize["logo"] = o.Logo.Get()
 	toSerialize["link"] = o.Link.Get()
 	toSerialize["id"] = o.Id
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -195,15 +200,23 @@ func (o *PartnerDetailsForSubscription) UnmarshalJSON(data []byte) (err error) {
 
 	varPartnerDetailsForSubscription := _PartnerDetailsForSubscription{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPartnerDetailsForSubscription)
+	err = json.Unmarshal(data, &varPartnerDetailsForSubscription)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PartnerDetailsForSubscription(varPartnerDetailsForSubscription)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "logo")
+		delete(additionalProperties, "link")
+		delete(additionalProperties, "id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

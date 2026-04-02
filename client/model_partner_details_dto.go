@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -41,6 +40,7 @@ type PartnerDetailsDto struct {
 	WhiteListDomains []WhiteListDomainDto `json:"whiteListDomains"`
 	PartnerColorSettings *PartnerColorSettingsDto `json:"partnerColorSettings,omitempty"`
 	PartnerImageSettings *PartnerImageSettingsDto `json:"partnerImageSettings,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PartnerDetailsDto PartnerDetailsDto
@@ -618,6 +618,11 @@ func (o PartnerDetailsDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PartnerImageSettings) {
 		toSerialize["partnerImageSettings"] = o.PartnerImageSettings
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -661,15 +666,38 @@ func (o *PartnerDetailsDto) UnmarshalJSON(data []byte) (err error) {
 
 	varPartnerDetailsDto := _PartnerDetailsDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPartnerDetailsDto)
+	err = json.Unmarshal(data, &varPartnerDetailsDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PartnerDetailsDto(varPartnerDetailsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "link")
+		delete(additionalProperties, "domain")
+		delete(additionalProperties, "country")
+		delete(additionalProperties, "city")
+		delete(additionalProperties, "vatNumber")
+		delete(additionalProperties, "backgroundImageUrl")
+		delete(additionalProperties, "address")
+		delete(additionalProperties, "logo")
+		delete(additionalProperties, "phone")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "paymentEnabled")
+		delete(additionalProperties, "allowRegistration")
+		delete(additionalProperties, "requiredUserApproval")
+		delete(additionalProperties, "organizations")
+		delete(additionalProperties, "whiteListDomains")
+		delete(additionalProperties, "partnerColorSettings")
+		delete(additionalProperties, "partnerImageSettings")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

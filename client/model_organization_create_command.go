@@ -22,15 +22,8 @@ var _ MappedNullable = &OrganizationCreateCommand{}
 type OrganizationCreateCommand struct {
 	Name NullableString `json:"name,omitempty"`
 	FullName NullableString `json:"fullName,omitempty"`
-	Phone NullableString `json:"phone,omitempty"`
 	Email NullableString `json:"email,omitempty"`
-	BillingEmail NullableString `json:"billingEmail,omitempty"`
-	Address NullableString `json:"address,omitempty"`
-	Country NullableString `json:"country,omitempty"`
-	City NullableString `json:"city,omitempty"`
-	VatNumber NullableString `json:"vatNumber,omitempty"`
-	DiscountRate NullableFloat64 `json:"discountRate,omitempty"`
-	IsEligibleUpdateSubscription *bool `json:"isEligibleUpdateSubscription,omitempty"`
+	AccountId NullableInt32 `json:"accountId,omitempty"`
 	AdminCloudCredentialId NullableInt32 `json:"adminCloudCredentialId,omitempty"`
 }
 
@@ -135,48 +128,6 @@ func (o *OrganizationCreateCommand) UnsetFullName() {
 	o.FullName.Unset()
 }
 
-// GetPhone returns the Phone field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationCreateCommand) GetPhone() string {
-	if o == nil || IsNil(o.Phone.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Phone.Get()
-}
-
-// GetPhoneOk returns a tuple with the Phone field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationCreateCommand) GetPhoneOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Phone.Get(), o.Phone.IsSet()
-}
-
-// HasPhone returns a boolean if a field has been set.
-func (o *OrganizationCreateCommand) HasPhone() bool {
-	if o != nil && o.Phone.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPhone gets a reference to the given NullableString and assigns it to the Phone field.
-func (o *OrganizationCreateCommand) SetPhone(v string) {
-	o.Phone.Set(&v)
-}
-// SetPhoneNil sets the value for Phone to be an explicit nil
-func (o *OrganizationCreateCommand) SetPhoneNil() {
-	o.Phone.Set(nil)
-}
-
-// UnsetPhone ensures that no value is present for Phone, not even an explicit nil
-func (o *OrganizationCreateCommand) UnsetPhone() {
-	o.Phone.Unset()
-}
-
 // GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationCreateCommand) GetEmail() string {
 	if o == nil || IsNil(o.Email.Get()) {
@@ -219,288 +170,46 @@ func (o *OrganizationCreateCommand) UnsetEmail() {
 	o.Email.Unset()
 }
 
-// GetBillingEmail returns the BillingEmail field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationCreateCommand) GetBillingEmail() string {
-	if o == nil || IsNil(o.BillingEmail.Get()) {
-		var ret string
+// GetAccountId returns the AccountId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OrganizationCreateCommand) GetAccountId() int32 {
+	if o == nil || IsNil(o.AccountId.Get()) {
+		var ret int32
 		return ret
 	}
-	return *o.BillingEmail.Get()
+	return *o.AccountId.Get()
 }
 
-// GetBillingEmailOk returns a tuple with the BillingEmail field value if set, nil otherwise
+// GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationCreateCommand) GetBillingEmailOk() (*string, bool) {
+func (o *OrganizationCreateCommand) GetAccountIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.BillingEmail.Get(), o.BillingEmail.IsSet()
+	return o.AccountId.Get(), o.AccountId.IsSet()
 }
 
-// HasBillingEmail returns a boolean if a field has been set.
-func (o *OrganizationCreateCommand) HasBillingEmail() bool {
-	if o != nil && o.BillingEmail.IsSet() {
+// HasAccountId returns a boolean if a field has been set.
+func (o *OrganizationCreateCommand) HasAccountId() bool {
+	if o != nil && o.AccountId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBillingEmail gets a reference to the given NullableString and assigns it to the BillingEmail field.
-func (o *OrganizationCreateCommand) SetBillingEmail(v string) {
-	o.BillingEmail.Set(&v)
+// SetAccountId gets a reference to the given NullableInt32 and assigns it to the AccountId field.
+func (o *OrganizationCreateCommand) SetAccountId(v int32) {
+	o.AccountId.Set(&v)
 }
-// SetBillingEmailNil sets the value for BillingEmail to be an explicit nil
-func (o *OrganizationCreateCommand) SetBillingEmailNil() {
-	o.BillingEmail.Set(nil)
-}
-
-// UnsetBillingEmail ensures that no value is present for BillingEmail, not even an explicit nil
-func (o *OrganizationCreateCommand) UnsetBillingEmail() {
-	o.BillingEmail.Unset()
+// SetAccountIdNil sets the value for AccountId to be an explicit nil
+func (o *OrganizationCreateCommand) SetAccountIdNil() {
+	o.AccountId.Set(nil)
 }
 
-// GetAddress returns the Address field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationCreateCommand) GetAddress() string {
-	if o == nil || IsNil(o.Address.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Address.Get()
-}
-
-// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationCreateCommand) GetAddressOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Address.Get(), o.Address.IsSet()
-}
-
-// HasAddress returns a boolean if a field has been set.
-func (o *OrganizationCreateCommand) HasAddress() bool {
-	if o != nil && o.Address.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAddress gets a reference to the given NullableString and assigns it to the Address field.
-func (o *OrganizationCreateCommand) SetAddress(v string) {
-	o.Address.Set(&v)
-}
-// SetAddressNil sets the value for Address to be an explicit nil
-func (o *OrganizationCreateCommand) SetAddressNil() {
-	o.Address.Set(nil)
-}
-
-// UnsetAddress ensures that no value is present for Address, not even an explicit nil
-func (o *OrganizationCreateCommand) UnsetAddress() {
-	o.Address.Unset()
-}
-
-// GetCountry returns the Country field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationCreateCommand) GetCountry() string {
-	if o == nil || IsNil(o.Country.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Country.Get()
-}
-
-// GetCountryOk returns a tuple with the Country field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationCreateCommand) GetCountryOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Country.Get(), o.Country.IsSet()
-}
-
-// HasCountry returns a boolean if a field has been set.
-func (o *OrganizationCreateCommand) HasCountry() bool {
-	if o != nil && o.Country.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCountry gets a reference to the given NullableString and assigns it to the Country field.
-func (o *OrganizationCreateCommand) SetCountry(v string) {
-	o.Country.Set(&v)
-}
-// SetCountryNil sets the value for Country to be an explicit nil
-func (o *OrganizationCreateCommand) SetCountryNil() {
-	o.Country.Set(nil)
-}
-
-// UnsetCountry ensures that no value is present for Country, not even an explicit nil
-func (o *OrganizationCreateCommand) UnsetCountry() {
-	o.Country.Unset()
-}
-
-// GetCity returns the City field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationCreateCommand) GetCity() string {
-	if o == nil || IsNil(o.City.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.City.Get()
-}
-
-// GetCityOk returns a tuple with the City field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationCreateCommand) GetCityOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.City.Get(), o.City.IsSet()
-}
-
-// HasCity returns a boolean if a field has been set.
-func (o *OrganizationCreateCommand) HasCity() bool {
-	if o != nil && o.City.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCity gets a reference to the given NullableString and assigns it to the City field.
-func (o *OrganizationCreateCommand) SetCity(v string) {
-	o.City.Set(&v)
-}
-// SetCityNil sets the value for City to be an explicit nil
-func (o *OrganizationCreateCommand) SetCityNil() {
-	o.City.Set(nil)
-}
-
-// UnsetCity ensures that no value is present for City, not even an explicit nil
-func (o *OrganizationCreateCommand) UnsetCity() {
-	o.City.Unset()
-}
-
-// GetVatNumber returns the VatNumber field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationCreateCommand) GetVatNumber() string {
-	if o == nil || IsNil(o.VatNumber.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.VatNumber.Get()
-}
-
-// GetVatNumberOk returns a tuple with the VatNumber field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationCreateCommand) GetVatNumberOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.VatNumber.Get(), o.VatNumber.IsSet()
-}
-
-// HasVatNumber returns a boolean if a field has been set.
-func (o *OrganizationCreateCommand) HasVatNumber() bool {
-	if o != nil && o.VatNumber.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetVatNumber gets a reference to the given NullableString and assigns it to the VatNumber field.
-func (o *OrganizationCreateCommand) SetVatNumber(v string) {
-	o.VatNumber.Set(&v)
-}
-// SetVatNumberNil sets the value for VatNumber to be an explicit nil
-func (o *OrganizationCreateCommand) SetVatNumberNil() {
-	o.VatNumber.Set(nil)
-}
-
-// UnsetVatNumber ensures that no value is present for VatNumber, not even an explicit nil
-func (o *OrganizationCreateCommand) UnsetVatNumber() {
-	o.VatNumber.Unset()
-}
-
-// GetDiscountRate returns the DiscountRate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationCreateCommand) GetDiscountRate() float64 {
-	if o == nil || IsNil(o.DiscountRate.Get()) {
-		var ret float64
-		return ret
-	}
-	return *o.DiscountRate.Get()
-}
-
-// GetDiscountRateOk returns a tuple with the DiscountRate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationCreateCommand) GetDiscountRateOk() (*float64, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.DiscountRate.Get(), o.DiscountRate.IsSet()
-}
-
-// HasDiscountRate returns a boolean if a field has been set.
-func (o *OrganizationCreateCommand) HasDiscountRate() bool {
-	if o != nil && o.DiscountRate.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDiscountRate gets a reference to the given NullableFloat64 and assigns it to the DiscountRate field.
-func (o *OrganizationCreateCommand) SetDiscountRate(v float64) {
-	o.DiscountRate.Set(&v)
-}
-// SetDiscountRateNil sets the value for DiscountRate to be an explicit nil
-func (o *OrganizationCreateCommand) SetDiscountRateNil() {
-	o.DiscountRate.Set(nil)
-}
-
-// UnsetDiscountRate ensures that no value is present for DiscountRate, not even an explicit nil
-func (o *OrganizationCreateCommand) UnsetDiscountRate() {
-	o.DiscountRate.Unset()
-}
-
-// GetIsEligibleUpdateSubscription returns the IsEligibleUpdateSubscription field value if set, zero value otherwise.
-func (o *OrganizationCreateCommand) GetIsEligibleUpdateSubscription() bool {
-	if o == nil || IsNil(o.IsEligibleUpdateSubscription) {
-		var ret bool
-		return ret
-	}
-	return *o.IsEligibleUpdateSubscription
-}
-
-// GetIsEligibleUpdateSubscriptionOk returns a tuple with the IsEligibleUpdateSubscription field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrganizationCreateCommand) GetIsEligibleUpdateSubscriptionOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsEligibleUpdateSubscription) {
-		return nil, false
-	}
-	return o.IsEligibleUpdateSubscription, true
-}
-
-// HasIsEligibleUpdateSubscription returns a boolean if a field has been set.
-func (o *OrganizationCreateCommand) HasIsEligibleUpdateSubscription() bool {
-	if o != nil && !IsNil(o.IsEligibleUpdateSubscription) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsEligibleUpdateSubscription gets a reference to the given bool and assigns it to the IsEligibleUpdateSubscription field.
-func (o *OrganizationCreateCommand) SetIsEligibleUpdateSubscription(v bool) {
-	o.IsEligibleUpdateSubscription = &v
+// UnsetAccountId ensures that no value is present for AccountId, not even an explicit nil
+func (o *OrganizationCreateCommand) UnsetAccountId() {
+	o.AccountId.Unset()
 }
 
 // GetAdminCloudCredentialId returns the AdminCloudCredentialId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -561,32 +270,11 @@ func (o OrganizationCreateCommand) ToMap() (map[string]interface{}, error) {
 	if o.FullName.IsSet() {
 		toSerialize["fullName"] = o.FullName.Get()
 	}
-	if o.Phone.IsSet() {
-		toSerialize["phone"] = o.Phone.Get()
-	}
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
 	}
-	if o.BillingEmail.IsSet() {
-		toSerialize["billingEmail"] = o.BillingEmail.Get()
-	}
-	if o.Address.IsSet() {
-		toSerialize["address"] = o.Address.Get()
-	}
-	if o.Country.IsSet() {
-		toSerialize["country"] = o.Country.Get()
-	}
-	if o.City.IsSet() {
-		toSerialize["city"] = o.City.Get()
-	}
-	if o.VatNumber.IsSet() {
-		toSerialize["vatNumber"] = o.VatNumber.Get()
-	}
-	if o.DiscountRate.IsSet() {
-		toSerialize["discountRate"] = o.DiscountRate.Get()
-	}
-	if !IsNil(o.IsEligibleUpdateSubscription) {
-		toSerialize["isEligibleUpdateSubscription"] = o.IsEligibleUpdateSubscription
+	if o.AccountId.IsSet() {
+		toSerialize["accountId"] = o.AccountId.Get()
 	}
 	if o.AdminCloudCredentialId.IsSet() {
 		toSerialize["adminCloudCredentialId"] = o.AdminCloudCredentialId.Get()

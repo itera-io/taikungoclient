@@ -22,7 +22,10 @@ var _ MappedNullable = &MakeCsmCommand{}
 type MakeCsmCommand struct {
 	UserId NullableString `json:"userId,omitempty"`
 	Mode NullableString `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _MakeCsmCommand MakeCsmCommand
 
 // NewMakeCsmCommand instantiates a new MakeCsmCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o MakeCsmCommand) ToMap() (map[string]interface{}, error) {
 	if o.Mode.IsSet() {
 		toSerialize["mode"] = o.Mode.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *MakeCsmCommand) UnmarshalJSON(data []byte) (err error) {
+	varMakeCsmCommand := _MakeCsmCommand{}
+
+	err = json.Unmarshal(data, &varMakeCsmCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = MakeCsmCommand(varMakeCsmCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "userId")
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableMakeCsmCommand struct {

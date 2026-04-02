@@ -23,7 +23,10 @@ type PartnersSearchResponseData struct {
 	Id *int32 `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	Logo NullableString `json:"logo,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PartnersSearchResponseData PartnersSearchResponseData
 
 // NewPartnersSearchResponseData instantiates a new PartnersSearchResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -177,7 +180,35 @@ func (o PartnersSearchResponseData) ToMap() (map[string]interface{}, error) {
 	if o.Logo.IsSet() {
 		toSerialize["logo"] = o.Logo.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PartnersSearchResponseData) UnmarshalJSON(data []byte) (err error) {
+	varPartnersSearchResponseData := _PartnersSearchResponseData{}
+
+	err = json.Unmarshal(data, &varPartnersSearchResponseData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PartnersSearchResponseData(varPartnersSearchResponseData)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "logo")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePartnersSearchResponseData struct {

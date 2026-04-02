@@ -25,7 +25,10 @@ type KeycloakCreateCommand struct {
 	RealmsName NullableString `json:"realmsName,omitempty"`
 	ClientId NullableString `json:"clientId,omitempty"`
 	ClientSecret NullableString `json:"clientSecret,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _KeycloakCreateCommand KeycloakCreateCommand
 
 // NewKeycloakCreateCommand instantiates a new KeycloakCreateCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -279,7 +282,37 @@ func (o KeycloakCreateCommand) ToMap() (map[string]interface{}, error) {
 	if o.ClientSecret.IsSet() {
 		toSerialize["clientSecret"] = o.ClientSecret.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *KeycloakCreateCommand) UnmarshalJSON(data []byte) (err error) {
+	varKeycloakCreateCommand := _KeycloakCreateCommand{}
+
+	err = json.Unmarshal(data, &varKeycloakCreateCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KeycloakCreateCommand(varKeycloakCreateCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "realmsName")
+		delete(additionalProperties, "clientId")
+		delete(additionalProperties, "clientSecret")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableKeycloakCreateCommand struct {

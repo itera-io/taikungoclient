@@ -22,7 +22,10 @@ var _ MappedNullable = &ReplyTicketCommand{}
 type ReplyTicketCommand struct {
 	TicketId NullableString `json:"ticketId,omitempty"`
 	Body NullableString `json:"body,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ReplyTicketCommand ReplyTicketCommand
 
 // NewReplyTicketCommand instantiates a new ReplyTicketCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o ReplyTicketCommand) ToMap() (map[string]interface{}, error) {
 	if o.Body.IsSet() {
 		toSerialize["body"] = o.Body.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ReplyTicketCommand) UnmarshalJSON(data []byte) (err error) {
+	varReplyTicketCommand := _ReplyTicketCommand{}
+
+	err = json.Unmarshal(data, &varReplyTicketCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ReplyTicketCommand(varReplyTicketCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "ticketId")
+		delete(additionalProperties, "body")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableReplyTicketCommand struct {

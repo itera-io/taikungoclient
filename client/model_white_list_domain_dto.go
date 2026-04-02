@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -24,6 +23,7 @@ var _ MappedNullable = &WhiteListDomainDto{}
 type WhiteListDomainDto struct {
 	Id int32 `json:"id"`
 	Name NullableString `json:"name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _WhiteListDomainDto WhiteListDomainDto
@@ -109,6 +109,11 @@ func (o WhiteListDomainDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -137,15 +142,21 @@ func (o *WhiteListDomainDto) UnmarshalJSON(data []byte) (err error) {
 
 	varWhiteListDomainDto := _WhiteListDomainDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varWhiteListDomainDto)
+	err = json.Unmarshal(data, &varWhiteListDomainDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = WhiteListDomainDto(varWhiteListDomainDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

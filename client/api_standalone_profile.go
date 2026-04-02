@@ -758,6 +758,7 @@ type ApiStandaloneprofileListRequest struct {
 	search *string
 	searchId *string
 	id *int32
+	accountId *int32
 }
 
 func (r ApiStandaloneprofileListRequest) Limit(limit int32) ApiStandaloneprofileListRequest {
@@ -797,6 +798,11 @@ func (r ApiStandaloneprofileListRequest) SearchId(searchId string) ApiStandalone
 
 func (r ApiStandaloneprofileListRequest) Id(id int32) ApiStandaloneprofileListRequest {
 	r.id = &id
+	return r
+}
+
+func (r ApiStandaloneprofileListRequest) AccountId(accountId int32) ApiStandaloneprofileListRequest {
+	r.accountId = &accountId
 	return r
 }
 
@@ -861,6 +867,9 @@ func (a *StandaloneProfileAPIService) StandaloneprofileListExecute(r ApiStandalo
 	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
+	}
+	if r.accountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

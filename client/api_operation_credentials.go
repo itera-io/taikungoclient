@@ -386,6 +386,7 @@ type ApiOpscredentialsListRequest struct {
 	search *string
 	searchId *string
 	id *int32
+	accountId *int32
 	sortBy *string
 	sortDirection *string
 }
@@ -417,6 +418,11 @@ func (r ApiOpscredentialsListRequest) SearchId(searchId string) ApiOpscredential
 
 func (r ApiOpscredentialsListRequest) Id(id int32) ApiOpscredentialsListRequest {
 	r.id = &id
+	return r
+}
+
+func (r ApiOpscredentialsListRequest) AccountId(accountId int32) ApiOpscredentialsListRequest {
+	r.accountId = &accountId
 	return r
 }
 
@@ -485,6 +491,9 @@ func (a *OperationCredentialsAPIService) OpscredentialsListExecute(r ApiOpscrede
 	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
+	}
+	if r.accountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
 	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")

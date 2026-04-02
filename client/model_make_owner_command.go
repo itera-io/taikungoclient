@@ -21,7 +21,10 @@ var _ MappedNullable = &MakeOwnerCommand{}
 // MakeOwnerCommand struct for MakeOwnerCommand
 type MakeOwnerCommand struct {
 	UserId NullableString `json:"userId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _MakeOwnerCommand MakeOwnerCommand
 
 // NewMakeOwnerCommand instantiates a new MakeOwnerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -95,7 +98,33 @@ func (o MakeOwnerCommand) ToMap() (map[string]interface{}, error) {
 	if o.UserId.IsSet() {
 		toSerialize["userId"] = o.UserId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *MakeOwnerCommand) UnmarshalJSON(data []byte) (err error) {
+	varMakeOwnerCommand := _MakeOwnerCommand{}
+
+	err = json.Unmarshal(data, &varMakeOwnerCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = MakeOwnerCommand(varMakeOwnerCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "userId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableMakeOwnerCommand struct {

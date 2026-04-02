@@ -22,7 +22,10 @@ var _ MappedNullable = &EditArticleCommand{}
 type EditArticleCommand struct {
 	MessageId NullableString `json:"messageId,omitempty"`
 	Body NullableString `json:"body,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EditArticleCommand EditArticleCommand
 
 // NewEditArticleCommand instantiates a new EditArticleCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -141,7 +144,34 @@ func (o EditArticleCommand) ToMap() (map[string]interface{}, error) {
 	if o.Body.IsSet() {
 		toSerialize["body"] = o.Body.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EditArticleCommand) UnmarshalJSON(data []byte) (err error) {
+	varEditArticleCommand := _EditArticleCommand{}
+
+	err = json.Unmarshal(data, &varEditArticleCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EditArticleCommand(varEditArticleCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "messageId")
+		delete(additionalProperties, "body")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEditArticleCommand struct {

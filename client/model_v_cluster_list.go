@@ -23,7 +23,7 @@ var _ MappedNullable = &VClusterList{}
 // VClusterList struct for VClusterList
 type VClusterList struct {
 	Data []VClusterListDto `json:"data"`
-	TotalCount int32 `json:"totalCount"`
+	TotalCount int64 `json:"totalCount"`
 	Project ProjectDetailsForVmsDto `json:"project"`
 }
 
@@ -33,7 +33,7 @@ type _VClusterList VClusterList
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVClusterList(data []VClusterListDto, totalCount int32, project ProjectDetailsForVmsDto) *VClusterList {
+func NewVClusterList(data []VClusterListDto, totalCount int64, project ProjectDetailsForVmsDto) *VClusterList {
 	this := VClusterList{}
 	this.Data = data
 	this.TotalCount = totalCount
@@ -76,9 +76,9 @@ func (o *VClusterList) SetData(v []VClusterListDto) {
 }
 
 // GetTotalCount returns the TotalCount field value
-func (o *VClusterList) GetTotalCount() int32 {
+func (o *VClusterList) GetTotalCount() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -87,7 +87,7 @@ func (o *VClusterList) GetTotalCount() int32 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value
 // and a boolean to check if the value has been set.
-func (o *VClusterList) GetTotalCountOk() (*int32, bool) {
+func (o *VClusterList) GetTotalCountOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -95,7 +95,7 @@ func (o *VClusterList) GetTotalCountOk() (*int32, bool) {
 }
 
 // SetTotalCount sets field value
-func (o *VClusterList) SetTotalCount(v int32) {
+func (o *VClusterList) SetTotalCount(v int64) {
 	o.TotalCount = v
 }
 

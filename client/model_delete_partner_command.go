@@ -21,7 +21,10 @@ var _ MappedNullable = &DeletePartnerCommand{}
 // DeletePartnerCommand struct for DeletePartnerCommand
 type DeletePartnerCommand struct {
 	PartnerId *int32 `json:"partnerId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeletePartnerCommand DeletePartnerCommand
 
 // NewDeletePartnerCommand instantiates a new DeletePartnerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o DeletePartnerCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PartnerId) {
 		toSerialize["partnerId"] = o.PartnerId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeletePartnerCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeletePartnerCommand := _DeletePartnerCommand{}
+
+	err = json.Unmarshal(data, &varDeletePartnerCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeletePartnerCommand(varDeletePartnerCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "partnerId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeletePartnerCommand struct {
