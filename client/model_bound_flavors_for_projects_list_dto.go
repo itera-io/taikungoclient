@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,22 +21,23 @@ var _ MappedNullable = &BoundFlavorsForProjectsListDto{}
 
 // BoundFlavorsForProjectsListDto struct for BoundFlavorsForProjectsListDto
 type BoundFlavorsForProjectsListDto struct {
-	Id int32 `json:"id"`
-	Name string `json:"name"`
-	Cpu int32 `json:"cpu"`
-	Ram float64 `json:"ram"`
-	ProjectId NullableInt32 `json:"projectId"`
-	ProjectName string `json:"projectName"`
-	MaxDataDiskCount NullableInt32 `json:"maxDataDiskCount"`
-	ExistsLinuxSpotPrice bool `json:"existsLinuxSpotPrice"`
-	ExistsWindowsSpotPrice bool `json:"existsWindowsSpotPrice"`
-	LinuxSpotPrice NullableString `json:"linuxSpotPrice"`
-	LinuxPrice NullableString `json:"linuxPrice"`
-	WindowsSpotPrice NullableString `json:"windowsSpotPrice"`
-	WindowsPrice NullableString `json:"windowsPrice"`
-	HasGpuSupport *bool `json:"hasGpuSupport,omitempty"`
-	CloudType CloudType `json:"cloudType"`
-	LocalDiskSize *int32 `json:"localDiskSize,omitempty"`
+	Id                     int32          `json:"id"`
+	Name                   string         `json:"name"`
+	Cpu                    int32          `json:"cpu"`
+	Ram                    float64        `json:"ram"`
+	ProjectId              NullableInt32  `json:"projectId"`
+	ProjectName            string         `json:"projectName"`
+	MaxDataDiskCount       NullableInt32  `json:"maxDataDiskCount"`
+	ExistsLinuxSpotPrice   bool           `json:"existsLinuxSpotPrice"`
+	ExistsWindowsSpotPrice bool           `json:"existsWindowsSpotPrice"`
+	LinuxSpotPrice         NullableString `json:"linuxSpotPrice"`
+	LinuxPrice             NullableString `json:"linuxPrice"`
+	WindowsSpotPrice       NullableString `json:"windowsSpotPrice"`
+	WindowsPrice           NullableString `json:"windowsPrice"`
+	HasGpuSupport          *bool          `json:"hasGpuSupport,omitempty"`
+	CloudType              CloudType      `json:"cloudType"`
+	LocalDiskSize          *int32         `json:"localDiskSize,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _BoundFlavorsForProjectsListDto BoundFlavorsForProjectsListDto
@@ -486,7 +486,7 @@ func (o *BoundFlavorsForProjectsListDto) SetLocalDiskSize(v int32) {
 }
 
 func (o BoundFlavorsForProjectsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -515,6 +515,11 @@ func (o BoundFlavorsForProjectsListDto) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.LocalDiskSize) {
 		toSerialize["localDiskSize"] = o.LocalDiskSize
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -544,10 +549,10 @@ func (o *BoundFlavorsForProjectsListDto) UnmarshalJSON(data []byte) (err error) 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -555,15 +560,35 @@ func (o *BoundFlavorsForProjectsListDto) UnmarshalJSON(data []byte) (err error) 
 
 	varBoundFlavorsForProjectsListDto := _BoundFlavorsForProjectsListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBoundFlavorsForProjectsListDto)
+	err = json.Unmarshal(data, &varBoundFlavorsForProjectsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = BoundFlavorsForProjectsListDto(varBoundFlavorsForProjectsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "ram")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "maxDataDiskCount")
+		delete(additionalProperties, "existsLinuxSpotPrice")
+		delete(additionalProperties, "existsWindowsSpotPrice")
+		delete(additionalProperties, "linuxSpotPrice")
+		delete(additionalProperties, "linuxPrice")
+		delete(additionalProperties, "windowsSpotPrice")
+		delete(additionalProperties, "windowsPrice")
+		delete(additionalProperties, "hasGpuSupport")
+		delete(additionalProperties, "cloudType")
+		delete(additionalProperties, "localDiskSize")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -603,5 +628,3 @@ func (v *NullableBoundFlavorsForProjectsListDto) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

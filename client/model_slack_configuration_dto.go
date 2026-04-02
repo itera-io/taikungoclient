@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,13 +21,14 @@ var _ MappedNullable = &SlackConfigurationDto{}
 
 // SlackConfigurationDto struct for SlackConfigurationDto
 type SlackConfigurationDto struct {
-	Id int32 `json:"id"`
-	Name NullableString `json:"name"`
-	Url NullableString `json:"url"`
-	Channel NullableString `json:"channel"`
-	OrganizationName NullableString `json:"organizationName"`
-	OrganizationId NullableInt32 `json:"organizationId"`
-	SlackType SlackType `json:"slackType"`
+	Id                   int32          `json:"id"`
+	Name                 NullableString `json:"name"`
+	Url                  NullableString `json:"url"`
+	Channel              NullableString `json:"channel"`
+	OrganizationName     NullableString `json:"organizationName"`
+	OrganizationId       NullableInt32  `json:"organizationId"`
+	SlackType            SlackType      `json:"slackType"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SlackConfigurationDto SlackConfigurationDto
@@ -236,7 +236,7 @@ func (o *SlackConfigurationDto) SetSlackType(v SlackType) {
 }
 
 func (o SlackConfigurationDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -252,6 +252,11 @@ func (o SlackConfigurationDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["organizationName"] = o.OrganizationName.Get()
 	toSerialize["organizationId"] = o.OrganizationId.Get()
 	toSerialize["slackType"] = o.SlackType
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -274,10 +279,10 @@ func (o *SlackConfigurationDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -285,15 +290,26 @@ func (o *SlackConfigurationDto) UnmarshalJSON(data []byte) (err error) {
 
 	varSlackConfigurationDto := _SlackConfigurationDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSlackConfigurationDto)
+	err = json.Unmarshal(data, &varSlackConfigurationDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SlackConfigurationDto(varSlackConfigurationDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "channel")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "slackType")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -333,5 +349,3 @@ func (v *NullableSlackConfigurationDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

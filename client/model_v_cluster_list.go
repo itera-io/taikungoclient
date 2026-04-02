@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,9 +21,10 @@ var _ MappedNullable = &VClusterList{}
 
 // VClusterList struct for VClusterList
 type VClusterList struct {
-	Data []VClusterListDto `json:"data"`
-	TotalCount int64 `json:"totalCount"`
-	Project ProjectDetailsForVmsDto `json:"project"`
+	Data                 []VClusterListDto       `json:"data"`
+	TotalCount           int64                   `json:"totalCount"`
+	Project              ProjectDetailsForVmsDto `json:"project"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _VClusterList VClusterList
@@ -124,7 +124,7 @@ func (o *VClusterList) SetProject(v ProjectDetailsForVmsDto) {
 }
 
 func (o VClusterList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -138,6 +138,11 @@ func (o VClusterList) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["totalCount"] = o.TotalCount
 	toSerialize["project"] = o.Project
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -156,10 +161,10 @@ func (o *VClusterList) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -167,15 +172,22 @@ func (o *VClusterList) UnmarshalJSON(data []byte) (err error) {
 
 	varVClusterList := _VClusterList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVClusterList)
+	err = json.Unmarshal(data, &varVClusterList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = VClusterList(varVClusterList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		delete(additionalProperties, "project")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -215,5 +227,3 @@ func (v *NullableVClusterList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

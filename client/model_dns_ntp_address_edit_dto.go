@@ -21,8 +21,11 @@ var _ MappedNullable = &DnsNtpAddressEditDto{}
 // DnsNtpAddressEditDto struct for DnsNtpAddressEditDto
 type DnsNtpAddressEditDto struct {
 	// Dns address example: 8.8.8.8
-	Address NullableString `json:"address,omitempty"`
+	Address              NullableString `json:"address,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DnsNtpAddressEditDto DnsNtpAddressEditDto
 
 // NewDnsNtpAddressEditDto instantiates a new DnsNtpAddressEditDto object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *DnsNtpAddressEditDto) HasAddress() bool {
 func (o *DnsNtpAddressEditDto) SetAddress(v string) {
 	o.Address.Set(&v)
 }
+
 // SetAddressNil sets the value for Address to be an explicit nil
 func (o *DnsNtpAddressEditDto) SetAddressNil() {
 	o.Address.Set(nil)
@@ -84,7 +88,7 @@ func (o *DnsNtpAddressEditDto) UnsetAddress() {
 }
 
 func (o DnsNtpAddressEditDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -96,7 +100,33 @@ func (o DnsNtpAddressEditDto) ToMap() (map[string]interface{}, error) {
 	if o.Address.IsSet() {
 		toSerialize["address"] = o.Address.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DnsNtpAddressEditDto) UnmarshalJSON(data []byte) (err error) {
+	varDnsNtpAddressEditDto := _DnsNtpAddressEditDto{}
+
+	err = json.Unmarshal(data, &varDnsNtpAddressEditDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DnsNtpAddressEditDto(varDnsNtpAddressEditDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "address")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDnsNtpAddressEditDto struct {
@@ -134,5 +164,3 @@ func (v *NullableDnsNtpAddressEditDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

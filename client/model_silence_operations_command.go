@@ -20,10 +20,13 @@ var _ MappedNullable = &SilenceOperationsCommand{}
 
 // SilenceOperationsCommand struct for SilenceOperationsCommand
 type SilenceOperationsCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Mode NullableString `json:"mode,omitempty"`
-	Reason NullableString `json:"reason,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Mode                 NullableString `json:"mode,omitempty"`
+	Reason               NullableString `json:"reason,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _SilenceOperationsCommand SilenceOperationsCommand
 
 // NewSilenceOperationsCommand instantiates a new SilenceOperationsCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -106,6 +109,7 @@ func (o *SilenceOperationsCommand) HasMode() bool {
 func (o *SilenceOperationsCommand) SetMode(v string) {
 	o.Mode.Set(&v)
 }
+
 // SetModeNil sets the value for Mode to be an explicit nil
 func (o *SilenceOperationsCommand) SetModeNil() {
 	o.Mode.Set(nil)
@@ -148,6 +152,7 @@ func (o *SilenceOperationsCommand) HasReason() bool {
 func (o *SilenceOperationsCommand) SetReason(v string) {
 	o.Reason.Set(&v)
 }
+
 // SetReasonNil sets the value for Reason to be an explicit nil
 func (o *SilenceOperationsCommand) SetReasonNil() {
 	o.Reason.Set(nil)
@@ -159,7 +164,7 @@ func (o *SilenceOperationsCommand) UnsetReason() {
 }
 
 func (o SilenceOperationsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -177,7 +182,35 @@ func (o SilenceOperationsCommand) ToMap() (map[string]interface{}, error) {
 	if o.Reason.IsSet() {
 		toSerialize["reason"] = o.Reason.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *SilenceOperationsCommand) UnmarshalJSON(data []byte) (err error) {
+	varSilenceOperationsCommand := _SilenceOperationsCommand{}
+
+	err = json.Unmarshal(data, &varSilenceOperationsCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SilenceOperationsCommand(varSilenceOperationsCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "reason")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableSilenceOperationsCommand struct {
@@ -215,5 +248,3 @@ func (v *NullableSilenceOperationsCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

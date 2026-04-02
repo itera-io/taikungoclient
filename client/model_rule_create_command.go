@@ -20,16 +20,19 @@ var _ MappedNullable = &RuleCreateCommand{}
 
 // RuleCreateCommand struct for RuleCreateCommand
 type RuleCreateCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	MetricName NullableString `json:"metricName,omitempty"`
-	Labels []PrometheusLabelListDto `json:"labels,omitempty"`
-	Type *PrometheusType `json:"type,omitempty"`
-	Price *float64 `json:"price,omitempty"`
-	AccountId NullableInt32 `json:"accountId,omitempty"`
-	OperationCredentialId *int32 `json:"operationCredentialId,omitempty"`
-	OrganizationId []int32 `json:"organizationId,omitempty"`
-	RuleDiscountRate NullableInt32 `json:"ruleDiscountRate,omitempty"`
+	Name                  NullableString           `json:"name,omitempty"`
+	MetricName            NullableString           `json:"metricName,omitempty"`
+	Labels                []PrometheusLabelListDto `json:"labels,omitempty"`
+	Type                  *PrometheusType          `json:"type,omitempty"`
+	Price                 *float64                 `json:"price,omitempty"`
+	AccountId             NullableInt32            `json:"accountId,omitempty"`
+	OperationCredentialId *int32                   `json:"operationCredentialId,omitempty"`
+	OrganizationId        []int32                  `json:"organizationId,omitempty"`
+	RuleDiscountRate      NullableInt32            `json:"ruleDiscountRate,omitempty"`
+	AdditionalProperties  map[string]interface{}
 }
+
+type _RuleCreateCommand RuleCreateCommand
 
 // NewRuleCreateCommand instantiates a new RuleCreateCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -80,6 +83,7 @@ func (o *RuleCreateCommand) HasName() bool {
 func (o *RuleCreateCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *RuleCreateCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -122,6 +126,7 @@ func (o *RuleCreateCommand) HasMetricName() bool {
 func (o *RuleCreateCommand) SetMetricName(v string) {
 	o.MetricName.Set(&v)
 }
+
 // SetMetricNameNil sets the value for MetricName to be an explicit nil
 func (o *RuleCreateCommand) SetMetricNameNil() {
 	o.MetricName.Set(nil)
@@ -261,6 +266,7 @@ func (o *RuleCreateCommand) HasAccountId() bool {
 func (o *RuleCreateCommand) SetAccountId(v int32) {
 	o.AccountId.Set(&v)
 }
+
 // SetAccountIdNil sets the value for AccountId to be an explicit nil
 func (o *RuleCreateCommand) SetAccountIdNil() {
 	o.AccountId.Set(nil)
@@ -368,6 +374,7 @@ func (o *RuleCreateCommand) HasRuleDiscountRate() bool {
 func (o *RuleCreateCommand) SetRuleDiscountRate(v int32) {
 	o.RuleDiscountRate.Set(&v)
 }
+
 // SetRuleDiscountRateNil sets the value for RuleDiscountRate to be an explicit nil
 func (o *RuleCreateCommand) SetRuleDiscountRateNil() {
 	o.RuleDiscountRate.Set(nil)
@@ -379,7 +386,7 @@ func (o *RuleCreateCommand) UnsetRuleDiscountRate() {
 }
 
 func (o RuleCreateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -415,7 +422,41 @@ func (o RuleCreateCommand) ToMap() (map[string]interface{}, error) {
 	if o.RuleDiscountRate.IsSet() {
 		toSerialize["ruleDiscountRate"] = o.RuleDiscountRate.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *RuleCreateCommand) UnmarshalJSON(data []byte) (err error) {
+	varRuleCreateCommand := _RuleCreateCommand{}
+
+	err = json.Unmarshal(data, &varRuleCreateCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RuleCreateCommand(varRuleCreateCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "metricName")
+		delete(additionalProperties, "labels")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "price")
+		delete(additionalProperties, "accountId")
+		delete(additionalProperties, "operationCredentialId")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "ruleDiscountRate")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableRuleCreateCommand struct {
@@ -453,5 +494,3 @@ func (v *NullableRuleCreateCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

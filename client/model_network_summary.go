@@ -20,10 +20,13 @@ var _ MappedNullable = &NetworkSummary{}
 
 // NetworkSummary struct for NetworkSummary
 type NetworkSummary struct {
-	Network NullableString `json:"network,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Type NullableString `json:"type,omitempty"`
+	Network              NullableString `json:"network,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Type                 NullableString `json:"type,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _NetworkSummary NetworkSummary
 
 // NewNetworkSummary instantiates a new NetworkSummary object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *NetworkSummary) HasNetwork() bool {
 func (o *NetworkSummary) SetNetwork(v string) {
 	o.Network.Set(&v)
 }
+
 // SetNetworkNil sets the value for Network to be an explicit nil
 func (o *NetworkSummary) SetNetworkNil() {
 	o.Network.Set(nil)
@@ -116,6 +120,7 @@ func (o *NetworkSummary) HasName() bool {
 func (o *NetworkSummary) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *NetworkSummary) SetNameNil() {
 	o.Name.Set(nil)
@@ -158,6 +163,7 @@ func (o *NetworkSummary) HasType() bool {
 func (o *NetworkSummary) SetType(v string) {
 	o.Type.Set(&v)
 }
+
 // SetTypeNil sets the value for Type to be an explicit nil
 func (o *NetworkSummary) SetTypeNil() {
 	o.Type.Set(nil)
@@ -169,7 +175,7 @@ func (o *NetworkSummary) UnsetType() {
 }
 
 func (o NetworkSummary) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -187,7 +193,35 @@ func (o NetworkSummary) ToMap() (map[string]interface{}, error) {
 	if o.Type.IsSet() {
 		toSerialize["type"] = o.Type.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *NetworkSummary) UnmarshalJSON(data []byte) (err error) {
+	varNetworkSummary := _NetworkSummary{}
+
+	err = json.Unmarshal(data, &varNetworkSummary)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NetworkSummary(varNetworkSummary)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "network")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "type")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableNetworkSummary struct {
@@ -225,5 +259,3 @@ func (v *NullableNetworkSummary) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

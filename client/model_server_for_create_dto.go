@@ -20,25 +20,28 @@ var _ MappedNullable = &ServerForCreateDto{}
 
 // ServerForCreateDto struct for ServerForCreateDto
 type ServerForCreateDto struct {
-	Name NullableString `json:"name,omitempty"`
-	Role *CloudRole `json:"role,omitempty"`
-	ProjectId *int32 `json:"projectId,omitempty"`
-	DiskSize *int64 `json:"diskSize,omitempty"`
-	Flavor NullableString `json:"flavor,omitempty"`
-	Count *int32 `json:"count,omitempty"`
-	SpotPrice NullableFloat64 `json:"spotPrice,omitempty"`
-	SpotInstance *bool `json:"spotInstance,omitempty"`
-	WasmEnabled *bool `json:"wasmEnabled,omitempty"`
-	AutoscalingGroup NullableString `json:"autoscalingGroup,omitempty"`
-	AvailabilityZone NullableString `json:"availabilityZone,omitempty"`
-	ProxmoxExtraDiskSize *int32 `json:"proxmoxExtraDiskSize,omitempty"`
-	ProxmoxRole *ProxmoxRole `json:"proxmoxRole,omitempty"`
-	Hypervisor NullableString `json:"hypervisor,omitempty"`
+	Name                 NullableString            `json:"name,omitempty"`
+	Role                 *CloudRole                `json:"role,omitempty"`
+	ProjectId            *int32                    `json:"projectId,omitempty"`
+	DiskSize             *int64                    `json:"diskSize,omitempty"`
+	Flavor               NullableString            `json:"flavor,omitempty"`
+	Count                *int32                    `json:"count,omitempty"`
+	SpotPrice            NullableFloat64           `json:"spotPrice,omitempty"`
+	SpotInstance         *bool                     `json:"spotInstance,omitempty"`
+	WasmEnabled          *bool                     `json:"wasmEnabled,omitempty"`
+	AutoscalingGroup     NullableString            `json:"autoscalingGroup,omitempty"`
+	AvailabilityZone     NullableString            `json:"availabilityZone,omitempty"`
+	ProxmoxExtraDiskSize *int32                    `json:"proxmoxExtraDiskSize,omitempty"`
+	ProxmoxRole          *ProxmoxRole              `json:"proxmoxRole,omitempty"`
+	Hypervisor           NullableString            `json:"hypervisor,omitempty"`
 	KubernetesNodeLabels []KubernetesNodeLabelsDto `json:"kubernetesNodeLabels,omitempty"`
-	ReplicaCount NullableInt32 `json:"replicaCount,omitempty"`
-	UseLocalDisk *bool `json:"useLocalDisk,omitempty"`
-	CskVersion NullableString `json:"cskVersion,omitempty"`
+	ReplicaCount         NullableInt32             `json:"replicaCount,omitempty"`
+	UseLocalDisk         *bool                     `json:"useLocalDisk,omitempty"`
+	CskVersion           NullableString            `json:"cskVersion,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ServerForCreateDto ServerForCreateDto
 
 // NewServerForCreateDto instantiates a new ServerForCreateDto object
 // This constructor will assign default values to properties that have it defined,
@@ -89,6 +92,7 @@ func (o *ServerForCreateDto) HasName() bool {
 func (o *ServerForCreateDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ServerForCreateDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -227,6 +231,7 @@ func (o *ServerForCreateDto) HasFlavor() bool {
 func (o *ServerForCreateDto) SetFlavor(v string) {
 	o.Flavor.Set(&v)
 }
+
 // SetFlavorNil sets the value for Flavor to be an explicit nil
 func (o *ServerForCreateDto) SetFlavorNil() {
 	o.Flavor.Set(nil)
@@ -301,6 +306,7 @@ func (o *ServerForCreateDto) HasSpotPrice() bool {
 func (o *ServerForCreateDto) SetSpotPrice(v float64) {
 	o.SpotPrice.Set(&v)
 }
+
 // SetSpotPriceNil sets the value for SpotPrice to be an explicit nil
 func (o *ServerForCreateDto) SetSpotPriceNil() {
 	o.SpotPrice.Set(nil)
@@ -407,6 +413,7 @@ func (o *ServerForCreateDto) HasAutoscalingGroup() bool {
 func (o *ServerForCreateDto) SetAutoscalingGroup(v string) {
 	o.AutoscalingGroup.Set(&v)
 }
+
 // SetAutoscalingGroupNil sets the value for AutoscalingGroup to be an explicit nil
 func (o *ServerForCreateDto) SetAutoscalingGroupNil() {
 	o.AutoscalingGroup.Set(nil)
@@ -449,6 +456,7 @@ func (o *ServerForCreateDto) HasAvailabilityZone() bool {
 func (o *ServerForCreateDto) SetAvailabilityZone(v string) {
 	o.AvailabilityZone.Set(&v)
 }
+
 // SetAvailabilityZoneNil sets the value for AvailabilityZone to be an explicit nil
 func (o *ServerForCreateDto) SetAvailabilityZoneNil() {
 	o.AvailabilityZone.Set(nil)
@@ -555,6 +563,7 @@ func (o *ServerForCreateDto) HasHypervisor() bool {
 func (o *ServerForCreateDto) SetHypervisor(v string) {
 	o.Hypervisor.Set(&v)
 }
+
 // SetHypervisorNil sets the value for Hypervisor to be an explicit nil
 func (o *ServerForCreateDto) SetHypervisorNil() {
 	o.Hypervisor.Set(nil)
@@ -630,6 +639,7 @@ func (o *ServerForCreateDto) HasReplicaCount() bool {
 func (o *ServerForCreateDto) SetReplicaCount(v int32) {
 	o.ReplicaCount.Set(&v)
 }
+
 // SetReplicaCountNil sets the value for ReplicaCount to be an explicit nil
 func (o *ServerForCreateDto) SetReplicaCountNil() {
 	o.ReplicaCount.Set(nil)
@@ -704,6 +714,7 @@ func (o *ServerForCreateDto) HasCskVersion() bool {
 func (o *ServerForCreateDto) SetCskVersion(v string) {
 	o.CskVersion.Set(&v)
 }
+
 // SetCskVersionNil sets the value for CskVersion to be an explicit nil
 func (o *ServerForCreateDto) SetCskVersionNil() {
 	o.CskVersion.Set(nil)
@@ -715,7 +726,7 @@ func (o *ServerForCreateDto) UnsetCskVersion() {
 }
 
 func (o ServerForCreateDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -778,7 +789,50 @@ func (o ServerForCreateDto) ToMap() (map[string]interface{}, error) {
 	if o.CskVersion.IsSet() {
 		toSerialize["cskVersion"] = o.CskVersion.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ServerForCreateDto) UnmarshalJSON(data []byte) (err error) {
+	varServerForCreateDto := _ServerForCreateDto{}
+
+	err = json.Unmarshal(data, &varServerForCreateDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ServerForCreateDto(varServerForCreateDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "role")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "diskSize")
+		delete(additionalProperties, "flavor")
+		delete(additionalProperties, "count")
+		delete(additionalProperties, "spotPrice")
+		delete(additionalProperties, "spotInstance")
+		delete(additionalProperties, "wasmEnabled")
+		delete(additionalProperties, "autoscalingGroup")
+		delete(additionalProperties, "availabilityZone")
+		delete(additionalProperties, "proxmoxExtraDiskSize")
+		delete(additionalProperties, "proxmoxRole")
+		delete(additionalProperties, "hypervisor")
+		delete(additionalProperties, "kubernetesNodeLabels")
+		delete(additionalProperties, "replicaCount")
+		delete(additionalProperties, "useLocalDisk")
+		delete(additionalProperties, "cskVersion")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableServerForCreateDto struct {
@@ -816,5 +870,3 @@ func (v *NullableServerForCreateDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

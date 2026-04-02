@@ -20,8 +20,11 @@ var _ MappedNullable = &NtpCommand{}
 
 // NtpCommand struct for NtpCommand
 type NtpCommand struct {
-	Address NullableString `json:"address,omitempty"`
+	Address              NullableString `json:"address,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _NtpCommand NtpCommand
 
 // NewNtpCommand instantiates a new NtpCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -72,6 +75,7 @@ func (o *NtpCommand) HasAddress() bool {
 func (o *NtpCommand) SetAddress(v string) {
 	o.Address.Set(&v)
 }
+
 // SetAddressNil sets the value for Address to be an explicit nil
 func (o *NtpCommand) SetAddressNil() {
 	o.Address.Set(nil)
@@ -83,7 +87,7 @@ func (o *NtpCommand) UnsetAddress() {
 }
 
 func (o NtpCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -95,7 +99,33 @@ func (o NtpCommand) ToMap() (map[string]interface{}, error) {
 	if o.Address.IsSet() {
 		toSerialize["address"] = o.Address.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *NtpCommand) UnmarshalJSON(data []byte) (err error) {
+	varNtpCommand := _NtpCommand{}
+
+	err = json.Unmarshal(data, &varNtpCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NtpCommand(varNtpCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "address")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableNtpCommand struct {
@@ -133,5 +163,3 @@ func (v *NullableNtpCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

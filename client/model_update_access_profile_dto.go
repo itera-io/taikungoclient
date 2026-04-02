@@ -20,9 +20,12 @@ var _ MappedNullable = &UpdateAccessProfileDto{}
 
 // UpdateAccessProfileDto struct for UpdateAccessProfileDto
 type UpdateAccessProfileDto struct {
-	Name NullableString `json:"name,omitempty"`
-	HttpProxy NullableString `json:"httpProxy,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	HttpProxy            NullableString `json:"httpProxy,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateAccessProfileDto UpdateAccessProfileDto
 
 // NewUpdateAccessProfileDto instantiates a new UpdateAccessProfileDto object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *UpdateAccessProfileDto) HasName() bool {
 func (o *UpdateAccessProfileDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UpdateAccessProfileDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -115,6 +119,7 @@ func (o *UpdateAccessProfileDto) HasHttpProxy() bool {
 func (o *UpdateAccessProfileDto) SetHttpProxy(v string) {
 	o.HttpProxy.Set(&v)
 }
+
 // SetHttpProxyNil sets the value for HttpProxy to be an explicit nil
 func (o *UpdateAccessProfileDto) SetHttpProxyNil() {
 	o.HttpProxy.Set(nil)
@@ -126,7 +131,7 @@ func (o *UpdateAccessProfileDto) UnsetHttpProxy() {
 }
 
 func (o UpdateAccessProfileDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,7 +146,34 @@ func (o UpdateAccessProfileDto) ToMap() (map[string]interface{}, error) {
 	if o.HttpProxy.IsSet() {
 		toSerialize["httpProxy"] = o.HttpProxy.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateAccessProfileDto) UnmarshalJSON(data []byte) (err error) {
+	varUpdateAccessProfileDto := _UpdateAccessProfileDto{}
+
+	err = json.Unmarshal(data, &varUpdateAccessProfileDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateAccessProfileDto(varUpdateAccessProfileDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "httpProxy")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateAccessProfileDto struct {
@@ -179,5 +211,3 @@ func (v *NullableUpdateAccessProfileDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

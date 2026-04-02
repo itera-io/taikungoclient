@@ -20,10 +20,13 @@ var _ MappedNullable = &CreateProjectFromTemplateCommand{}
 
 // CreateProjectFromTemplateCommand struct for CreateProjectFromTemplateCommand
 type CreateProjectFromTemplateCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	ProjectName NullableString `json:"projectName,omitempty"`
-	CanCommit *bool `json:"canCommit,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	ProjectName          NullableString `json:"projectName,omitempty"`
+	CanCommit            *bool          `json:"canCommit,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateProjectFromTemplateCommand CreateProjectFromTemplateCommand
 
 // NewCreateProjectFromTemplateCommand instantiates a new CreateProjectFromTemplateCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -106,6 +109,7 @@ func (o *CreateProjectFromTemplateCommand) HasProjectName() bool {
 func (o *CreateProjectFromTemplateCommand) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
+
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *CreateProjectFromTemplateCommand) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -149,7 +153,7 @@ func (o *CreateProjectFromTemplateCommand) SetCanCommit(v bool) {
 }
 
 func (o CreateProjectFromTemplateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -167,7 +171,35 @@ func (o CreateProjectFromTemplateCommand) ToMap() (map[string]interface{}, error
 	if !IsNil(o.CanCommit) {
 		toSerialize["canCommit"] = o.CanCommit
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateProjectFromTemplateCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateProjectFromTemplateCommand := _CreateProjectFromTemplateCommand{}
+
+	err = json.Unmarshal(data, &varCreateProjectFromTemplateCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateProjectFromTemplateCommand(varCreateProjectFromTemplateCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "canCommit")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateProjectFromTemplateCommand struct {
@@ -205,5 +237,3 @@ func (v *NullableCreateProjectFromTemplateCommand) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,8 +20,11 @@ var _ MappedNullable = &DnsServerCreateDto{}
 
 // DnsServerCreateDto struct for DnsServerCreateDto
 type DnsServerCreateDto struct {
-	Address NullableString `json:"address,omitempty"`
+	Address              NullableString `json:"address,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DnsServerCreateDto DnsServerCreateDto
 
 // NewDnsServerCreateDto instantiates a new DnsServerCreateDto object
 // This constructor will assign default values to properties that have it defined,
@@ -72,6 +75,7 @@ func (o *DnsServerCreateDto) HasAddress() bool {
 func (o *DnsServerCreateDto) SetAddress(v string) {
 	o.Address.Set(&v)
 }
+
 // SetAddressNil sets the value for Address to be an explicit nil
 func (o *DnsServerCreateDto) SetAddressNil() {
 	o.Address.Set(nil)
@@ -83,7 +87,7 @@ func (o *DnsServerCreateDto) UnsetAddress() {
 }
 
 func (o DnsServerCreateDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -95,7 +99,33 @@ func (o DnsServerCreateDto) ToMap() (map[string]interface{}, error) {
 	if o.Address.IsSet() {
 		toSerialize["address"] = o.Address.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DnsServerCreateDto) UnmarshalJSON(data []byte) (err error) {
+	varDnsServerCreateDto := _DnsServerCreateDto{}
+
+	err = json.Unmarshal(data, &varDnsServerCreateDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DnsServerCreateDto(varDnsServerCreateDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "address")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDnsServerCreateDto struct {
@@ -133,5 +163,3 @@ func (v *NullableDnsServerCreateDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

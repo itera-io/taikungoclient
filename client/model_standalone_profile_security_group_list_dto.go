@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,12 +21,13 @@ var _ MappedNullable = &StandaloneProfileSecurityGroupListDto{}
 
 // StandaloneProfileSecurityGroupListDto struct for StandaloneProfileSecurityGroupListDto
 type StandaloneProfileSecurityGroupListDto struct {
-	Id int32 `json:"id"`
-	Name NullableString `json:"name"`
-	Protocol NullableString `json:"protocol"`
-	PortMinRange int32 `json:"portMinRange"`
-	PortMaxRange int32 `json:"portMaxRange"`
-	RemoteIpPrefix NullableString `json:"remoteIpPrefix"`
+	Id                   int32          `json:"id"`
+	Name                 NullableString `json:"name"`
+	Protocol             NullableString `json:"protocol"`
+	PortMinRange         int32          `json:"portMinRange"`
+	PortMaxRange         int32          `json:"portMaxRange"`
+	RemoteIpPrefix       NullableString `json:"remoteIpPrefix"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StandaloneProfileSecurityGroupListDto StandaloneProfileSecurityGroupListDto
@@ -206,7 +206,7 @@ func (o *StandaloneProfileSecurityGroupListDto) SetRemoteIpPrefix(v string) {
 }
 
 func (o StandaloneProfileSecurityGroupListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -221,6 +221,11 @@ func (o StandaloneProfileSecurityGroupListDto) ToMap() (map[string]interface{}, 
 	toSerialize["portMinRange"] = o.PortMinRange
 	toSerialize["portMaxRange"] = o.PortMaxRange
 	toSerialize["remoteIpPrefix"] = o.RemoteIpPrefix.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -242,10 +247,10 @@ func (o *StandaloneProfileSecurityGroupListDto) UnmarshalJSON(data []byte) (err 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -253,15 +258,25 @@ func (o *StandaloneProfileSecurityGroupListDto) UnmarshalJSON(data []byte) (err 
 
 	varStandaloneProfileSecurityGroupListDto := _StandaloneProfileSecurityGroupListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStandaloneProfileSecurityGroupListDto)
+	err = json.Unmarshal(data, &varStandaloneProfileSecurityGroupListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StandaloneProfileSecurityGroupListDto(varStandaloneProfileSecurityGroupListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "protocol")
+		delete(additionalProperties, "portMinRange")
+		delete(additionalProperties, "portMaxRange")
+		delete(additionalProperties, "remoteIpPrefix")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -301,5 +316,3 @@ func (v *NullableStandaloneProfileSecurityGroupListDto) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

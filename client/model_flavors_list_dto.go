@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,12 +21,13 @@ var _ MappedNullable = &FlavorsListDto{}
 
 // FlavorsListDto struct for FlavorsListDto
 type FlavorsListDto struct {
-	Ram float64 `json:"ram"`
-	Cpu int32 `json:"cpu"`
-	Name string `json:"name"`
-	Description interface{} `json:"description"`
-	MaxDataDiskCount NullableFloat64 `json:"maxDataDiskCount"`
-	HasGpuSupport *bool `json:"hasGpuSupport,omitempty"`
+	Ram                  float64         `json:"ram"`
+	Cpu                  int32           `json:"cpu"`
+	Name                 string          `json:"name"`
+	Description          interface{}     `json:"description"`
+	MaxDataDiskCount     NullableFloat64 `json:"maxDataDiskCount"`
+	HasGpuSupport        *bool           `json:"hasGpuSupport,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _FlavorsListDto FlavorsListDto
@@ -211,7 +211,7 @@ func (o *FlavorsListDto) SetHasGpuSupport(v bool) {
 }
 
 func (o FlavorsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,6 +230,11 @@ func (o FlavorsListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HasGpuSupport) {
 		toSerialize["hasGpuSupport"] = o.HasGpuSupport
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -250,10 +255,10 @@ func (o *FlavorsListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -261,15 +266,25 @@ func (o *FlavorsListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varFlavorsListDto := _FlavorsListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varFlavorsListDto)
+	err = json.Unmarshal(data, &varFlavorsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = FlavorsListDto(varFlavorsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "ram")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "maxDataDiskCount")
+		delete(additionalProperties, "hasGpuSupport")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -309,5 +324,3 @@ func (v *NullableFlavorsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

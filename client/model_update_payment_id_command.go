@@ -20,9 +20,12 @@ var _ MappedNullable = &UpdatePaymentIdCommand{}
 
 // UpdatePaymentIdCommand struct for UpdatePaymentIdCommand
 type UpdatePaymentIdCommand struct {
-	PaymentMethodId NullableString `json:"paymentMethodId,omitempty"`
-	PaymentIntentId NullableString `json:"paymentIntentId,omitempty"`
+	PaymentMethodId      NullableString `json:"paymentMethodId,omitempty"`
+	PaymentIntentId      NullableString `json:"paymentIntentId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdatePaymentIdCommand UpdatePaymentIdCommand
 
 // NewUpdatePaymentIdCommand instantiates a new UpdatePaymentIdCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *UpdatePaymentIdCommand) HasPaymentMethodId() bool {
 func (o *UpdatePaymentIdCommand) SetPaymentMethodId(v string) {
 	o.PaymentMethodId.Set(&v)
 }
+
 // SetPaymentMethodIdNil sets the value for PaymentMethodId to be an explicit nil
 func (o *UpdatePaymentIdCommand) SetPaymentMethodIdNil() {
 	o.PaymentMethodId.Set(nil)
@@ -115,6 +119,7 @@ func (o *UpdatePaymentIdCommand) HasPaymentIntentId() bool {
 func (o *UpdatePaymentIdCommand) SetPaymentIntentId(v string) {
 	o.PaymentIntentId.Set(&v)
 }
+
 // SetPaymentIntentIdNil sets the value for PaymentIntentId to be an explicit nil
 func (o *UpdatePaymentIdCommand) SetPaymentIntentIdNil() {
 	o.PaymentIntentId.Set(nil)
@@ -126,7 +131,7 @@ func (o *UpdatePaymentIdCommand) UnsetPaymentIntentId() {
 }
 
 func (o UpdatePaymentIdCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,7 +146,34 @@ func (o UpdatePaymentIdCommand) ToMap() (map[string]interface{}, error) {
 	if o.PaymentIntentId.IsSet() {
 		toSerialize["paymentIntentId"] = o.PaymentIntentId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdatePaymentIdCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdatePaymentIdCommand := _UpdatePaymentIdCommand{}
+
+	err = json.Unmarshal(data, &varUpdatePaymentIdCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdatePaymentIdCommand(varUpdatePaymentIdCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "paymentMethodId")
+		delete(additionalProperties, "paymentIntentId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdatePaymentIdCommand struct {
@@ -179,5 +211,3 @@ func (v *NullableUpdatePaymentIdCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

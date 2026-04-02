@@ -20,8 +20,11 @@ var _ MappedNullable = &CheckDuplicateAccountCommand{}
 
 // CheckDuplicateAccountCommand struct for CheckDuplicateAccountCommand
 type CheckDuplicateAccountCommand struct {
-	Name NullableString `json:"name,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CheckDuplicateAccountCommand CheckDuplicateAccountCommand
 
 // NewCheckDuplicateAccountCommand instantiates a new CheckDuplicateAccountCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -72,6 +75,7 @@ func (o *CheckDuplicateAccountCommand) HasName() bool {
 func (o *CheckDuplicateAccountCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CheckDuplicateAccountCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -83,7 +87,7 @@ func (o *CheckDuplicateAccountCommand) UnsetName() {
 }
 
 func (o CheckDuplicateAccountCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -95,7 +99,33 @@ func (o CheckDuplicateAccountCommand) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CheckDuplicateAccountCommand) UnmarshalJSON(data []byte) (err error) {
+	varCheckDuplicateAccountCommand := _CheckDuplicateAccountCommand{}
+
+	err = json.Unmarshal(data, &varCheckDuplicateAccountCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CheckDuplicateAccountCommand(varCheckDuplicateAccountCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCheckDuplicateAccountCommand struct {
@@ -133,5 +163,3 @@ func (v *NullableCheckDuplicateAccountCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,24 +21,25 @@ var _ MappedNullable = &GoogleCredentialsListDto{}
 
 // GoogleCredentialsListDto struct for GoogleCredentialsListDto
 type GoogleCredentialsListDto struct {
-	Id int32 `json:"id"`
-	Name string `json:"name"`
-	Projects []CommonDropdownDto `json:"projects"`
-	OrganizationId int32 `json:"organizationId"`
-	OrganizationName string `json:"organizationName"`
-	PartnerLogo NullableString `json:"partnerLogo"`
-	PartnerName NullableString `json:"partnerName"`
-	FolderId NullableString `json:"folderId"`
-	ProjectId NullableString `json:"projectId"`
-	BillingAccountId NullableString `json:"billingAccountId"`
-	Zones []string `json:"zones"`
-	AvailabilityZonesCount int32 `json:"availabilityZonesCount"`
-	Region string `json:"region"`
-	IsLocked bool `json:"isLocked"`
-	IsDefault bool `json:"isDefault"`
-	BillingAccountName NullableString `json:"billingAccountName"`
-	CreatedAt NullableString `json:"createdAt"`
-	ContinentName NullableString `json:"continentName"`
+	Id                     int32               `json:"id"`
+	Name                   string              `json:"name"`
+	Projects               []CommonDropdownDto `json:"projects"`
+	OrganizationId         int32               `json:"organizationId"`
+	OrganizationName       string              `json:"organizationName"`
+	PartnerLogo            NullableString      `json:"partnerLogo"`
+	PartnerName            NullableString      `json:"partnerName"`
+	FolderId               NullableString      `json:"folderId"`
+	ProjectId              NullableString      `json:"projectId"`
+	BillingAccountId       NullableString      `json:"billingAccountId"`
+	Zones                  []string            `json:"zones"`
+	AvailabilityZonesCount int32               `json:"availabilityZonesCount"`
+	Region                 string              `json:"region"`
+	IsLocked               bool                `json:"isLocked"`
+	IsDefault              bool                `json:"isDefault"`
+	BillingAccountName     NullableString      `json:"billingAccountName"`
+	CreatedAt              NullableString      `json:"createdAt"`
+	ContinentName          NullableString      `json:"continentName"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _GoogleCredentialsListDto GoogleCredentialsListDto
@@ -528,7 +528,7 @@ func (o *GoogleCredentialsListDto) SetContinentName(v string) {
 }
 
 func (o GoogleCredentialsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -555,6 +555,11 @@ func (o GoogleCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["billingAccountName"] = o.BillingAccountName.Get()
 	toSerialize["createdAt"] = o.CreatedAt.Get()
 	toSerialize["continentName"] = o.ContinentName.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -588,10 +593,10 @@ func (o *GoogleCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -599,15 +604,37 @@ func (o *GoogleCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varGoogleCredentialsListDto := _GoogleCredentialsListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGoogleCredentialsListDto)
+	err = json.Unmarshal(data, &varGoogleCredentialsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GoogleCredentialsListDto(varGoogleCredentialsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "partnerLogo")
+		delete(additionalProperties, "partnerName")
+		delete(additionalProperties, "folderId")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "billingAccountId")
+		delete(additionalProperties, "zones")
+		delete(additionalProperties, "availabilityZonesCount")
+		delete(additionalProperties, "region")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "billingAccountName")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "continentName")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -647,5 +674,3 @@ func (v *NullableGoogleCredentialsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,13 +20,16 @@ var _ MappedNullable = &CreateStripeCustomerCommand{}
 
 // CreateStripeCustomerCommand struct for CreateStripeCustomerCommand
 type CreateStripeCustomerCommand struct {
-	LegalName NullableString `json:"legalName,omitempty"`
-	BillingEmail NullableString `json:"billingEmail,omitempty"`
-	Country NullableString `json:"country,omitempty"`
-	Address NullableString `json:"address,omitempty"`
-	City NullableString `json:"city,omitempty"`
-	VatNumber NullableString `json:"vatNumber,omitempty"`
+	LegalName            NullableString `json:"legalName,omitempty"`
+	BillingEmail         NullableString `json:"billingEmail,omitempty"`
+	Country              NullableString `json:"country,omitempty"`
+	Address              NullableString `json:"address,omitempty"`
+	City                 NullableString `json:"city,omitempty"`
+	VatNumber            NullableString `json:"vatNumber,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateStripeCustomerCommand CreateStripeCustomerCommand
 
 // NewCreateStripeCustomerCommand instantiates a new CreateStripeCustomerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +80,7 @@ func (o *CreateStripeCustomerCommand) HasLegalName() bool {
 func (o *CreateStripeCustomerCommand) SetLegalName(v string) {
 	o.LegalName.Set(&v)
 }
+
 // SetLegalNameNil sets the value for LegalName to be an explicit nil
 func (o *CreateStripeCustomerCommand) SetLegalNameNil() {
 	o.LegalName.Set(nil)
@@ -119,6 +123,7 @@ func (o *CreateStripeCustomerCommand) HasBillingEmail() bool {
 func (o *CreateStripeCustomerCommand) SetBillingEmail(v string) {
 	o.BillingEmail.Set(&v)
 }
+
 // SetBillingEmailNil sets the value for BillingEmail to be an explicit nil
 func (o *CreateStripeCustomerCommand) SetBillingEmailNil() {
 	o.BillingEmail.Set(nil)
@@ -161,6 +166,7 @@ func (o *CreateStripeCustomerCommand) HasCountry() bool {
 func (o *CreateStripeCustomerCommand) SetCountry(v string) {
 	o.Country.Set(&v)
 }
+
 // SetCountryNil sets the value for Country to be an explicit nil
 func (o *CreateStripeCustomerCommand) SetCountryNil() {
 	o.Country.Set(nil)
@@ -203,6 +209,7 @@ func (o *CreateStripeCustomerCommand) HasAddress() bool {
 func (o *CreateStripeCustomerCommand) SetAddress(v string) {
 	o.Address.Set(&v)
 }
+
 // SetAddressNil sets the value for Address to be an explicit nil
 func (o *CreateStripeCustomerCommand) SetAddressNil() {
 	o.Address.Set(nil)
@@ -245,6 +252,7 @@ func (o *CreateStripeCustomerCommand) HasCity() bool {
 func (o *CreateStripeCustomerCommand) SetCity(v string) {
 	o.City.Set(&v)
 }
+
 // SetCityNil sets the value for City to be an explicit nil
 func (o *CreateStripeCustomerCommand) SetCityNil() {
 	o.City.Set(nil)
@@ -287,6 +295,7 @@ func (o *CreateStripeCustomerCommand) HasVatNumber() bool {
 func (o *CreateStripeCustomerCommand) SetVatNumber(v string) {
 	o.VatNumber.Set(&v)
 }
+
 // SetVatNumberNil sets the value for VatNumber to be an explicit nil
 func (o *CreateStripeCustomerCommand) SetVatNumberNil() {
 	o.VatNumber.Set(nil)
@@ -298,7 +307,7 @@ func (o *CreateStripeCustomerCommand) UnsetVatNumber() {
 }
 
 func (o CreateStripeCustomerCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -325,7 +334,38 @@ func (o CreateStripeCustomerCommand) ToMap() (map[string]interface{}, error) {
 	if o.VatNumber.IsSet() {
 		toSerialize["vatNumber"] = o.VatNumber.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateStripeCustomerCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateStripeCustomerCommand := _CreateStripeCustomerCommand{}
+
+	err = json.Unmarshal(data, &varCreateStripeCustomerCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateStripeCustomerCommand(varCreateStripeCustomerCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "legalName")
+		delete(additionalProperties, "billingEmail")
+		delete(additionalProperties, "country")
+		delete(additionalProperties, "address")
+		delete(additionalProperties, "city")
+		delete(additionalProperties, "vatNumber")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateStripeCustomerCommand struct {
@@ -363,5 +403,3 @@ func (v *NullableCreateStripeCustomerCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

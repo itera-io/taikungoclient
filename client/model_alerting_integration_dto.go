@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,9 +21,10 @@ var _ MappedNullable = &AlertingIntegrationDto{}
 
 // AlertingIntegrationDto struct for AlertingIntegrationDto
 type AlertingIntegrationDto struct {
-	Url string `json:"url"`
-	Token NullableString `json:"token"`
+	Url                     string                  `json:"url"`
+	Token                   NullableString          `json:"token"`
 	AlertingIntegrationType AlertingIntegrationType `json:"alertingIntegrationType"`
+	AdditionalProperties    map[string]interface{}
 }
 
 type _AlertingIntegrationDto AlertingIntegrationDto
@@ -124,7 +124,7 @@ func (o *AlertingIntegrationDto) SetAlertingIntegrationType(v AlertingIntegratio
 }
 
 func (o AlertingIntegrationDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -136,6 +136,11 @@ func (o AlertingIntegrationDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["url"] = o.Url
 	toSerialize["token"] = o.Token.Get()
 	toSerialize["alertingIntegrationType"] = o.AlertingIntegrationType
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -154,10 +159,10 @@ func (o *AlertingIntegrationDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -165,15 +170,22 @@ func (o *AlertingIntegrationDto) UnmarshalJSON(data []byte) (err error) {
 
 	varAlertingIntegrationDto := _AlertingIntegrationDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAlertingIntegrationDto)
+	err = json.Unmarshal(data, &varAlertingIntegrationDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AlertingIntegrationDto(varAlertingIntegrationDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "alertingIntegrationType")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -213,5 +225,3 @@ func (v *NullableAlertingIntegrationDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

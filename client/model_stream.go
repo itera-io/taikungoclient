@@ -20,17 +20,20 @@ var _ MappedNullable = &Stream{}
 
 // Stream struct for Stream
 type Stream struct {
-	Job NullableString `json:"job,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	Pod NullableString `json:"pod,omitempty"`
-	PodTemplateHash NullableString `json:"podTemplateHash,omitempty"`
-	StreamStream NullableString `json:"streamStream,omitempty"`
-	App NullableString `json:"app,omitempty"`
-	Container NullableString `json:"container,omitempty"`
-	Filename NullableString `json:"filename,omitempty"`
-	Tier NullableString `json:"tier,omitempty"`
-	Component NullableString `json:"component,omitempty"`
+	Job                  NullableString `json:"job,omitempty"`
+	Namespace            NullableString `json:"namespace,omitempty"`
+	Pod                  NullableString `json:"pod,omitempty"`
+	PodTemplateHash      NullableString `json:"podTemplateHash,omitempty"`
+	StreamStream         NullableString `json:"streamStream,omitempty"`
+	App                  NullableString `json:"app,omitempty"`
+	Container            NullableString `json:"container,omitempty"`
+	Filename             NullableString `json:"filename,omitempty"`
+	Tier                 NullableString `json:"tier,omitempty"`
+	Component            NullableString `json:"component,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Stream Stream
 
 // NewStream instantiates a new Stream object
 // This constructor will assign default values to properties that have it defined,
@@ -81,6 +84,7 @@ func (o *Stream) HasJob() bool {
 func (o *Stream) SetJob(v string) {
 	o.Job.Set(&v)
 }
+
 // SetJobNil sets the value for Job to be an explicit nil
 func (o *Stream) SetJobNil() {
 	o.Job.Set(nil)
@@ -123,6 +127,7 @@ func (o *Stream) HasNamespace() bool {
 func (o *Stream) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
+
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *Stream) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -165,6 +170,7 @@ func (o *Stream) HasPod() bool {
 func (o *Stream) SetPod(v string) {
 	o.Pod.Set(&v)
 }
+
 // SetPodNil sets the value for Pod to be an explicit nil
 func (o *Stream) SetPodNil() {
 	o.Pod.Set(nil)
@@ -207,6 +213,7 @@ func (o *Stream) HasPodTemplateHash() bool {
 func (o *Stream) SetPodTemplateHash(v string) {
 	o.PodTemplateHash.Set(&v)
 }
+
 // SetPodTemplateHashNil sets the value for PodTemplateHash to be an explicit nil
 func (o *Stream) SetPodTemplateHashNil() {
 	o.PodTemplateHash.Set(nil)
@@ -249,6 +256,7 @@ func (o *Stream) HasStreamStream() bool {
 func (o *Stream) SetStreamStream(v string) {
 	o.StreamStream.Set(&v)
 }
+
 // SetStreamStreamNil sets the value for StreamStream to be an explicit nil
 func (o *Stream) SetStreamStreamNil() {
 	o.StreamStream.Set(nil)
@@ -291,6 +299,7 @@ func (o *Stream) HasApp() bool {
 func (o *Stream) SetApp(v string) {
 	o.App.Set(&v)
 }
+
 // SetAppNil sets the value for App to be an explicit nil
 func (o *Stream) SetAppNil() {
 	o.App.Set(nil)
@@ -333,6 +342,7 @@ func (o *Stream) HasContainer() bool {
 func (o *Stream) SetContainer(v string) {
 	o.Container.Set(&v)
 }
+
 // SetContainerNil sets the value for Container to be an explicit nil
 func (o *Stream) SetContainerNil() {
 	o.Container.Set(nil)
@@ -375,6 +385,7 @@ func (o *Stream) HasFilename() bool {
 func (o *Stream) SetFilename(v string) {
 	o.Filename.Set(&v)
 }
+
 // SetFilenameNil sets the value for Filename to be an explicit nil
 func (o *Stream) SetFilenameNil() {
 	o.Filename.Set(nil)
@@ -417,6 +428,7 @@ func (o *Stream) HasTier() bool {
 func (o *Stream) SetTier(v string) {
 	o.Tier.Set(&v)
 }
+
 // SetTierNil sets the value for Tier to be an explicit nil
 func (o *Stream) SetTierNil() {
 	o.Tier.Set(nil)
@@ -459,6 +471,7 @@ func (o *Stream) HasComponent() bool {
 func (o *Stream) SetComponent(v string) {
 	o.Component.Set(&v)
 }
+
 // SetComponentNil sets the value for Component to be an explicit nil
 func (o *Stream) SetComponentNil() {
 	o.Component.Set(nil)
@@ -470,7 +483,7 @@ func (o *Stream) UnsetComponent() {
 }
 
 func (o Stream) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -509,7 +522,42 @@ func (o Stream) ToMap() (map[string]interface{}, error) {
 	if o.Component.IsSet() {
 		toSerialize["component"] = o.Component.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Stream) UnmarshalJSON(data []byte) (err error) {
+	varStream := _Stream{}
+
+	err = json.Unmarshal(data, &varStream)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Stream(varStream)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "job")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "pod")
+		delete(additionalProperties, "podTemplateHash")
+		delete(additionalProperties, "streamStream")
+		delete(additionalProperties, "app")
+		delete(additionalProperties, "container")
+		delete(additionalProperties, "filename")
+		delete(additionalProperties, "tier")
+		delete(additionalProperties, "component")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableStream struct {
@@ -547,5 +595,3 @@ func (v *NullableStream) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

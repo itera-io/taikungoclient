@@ -20,12 +20,15 @@ var _ MappedNullable = &ImportRepoCommand{}
 
 // ImportRepoCommand struct for ImportRepoCommand
 type ImportRepoCommand struct {
-	Username NullableString `json:"username,omitempty"`
-	Password NullableString `json:"password,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Url NullableString `json:"url,omitempty"`
-	OrganizationId *int32 `json:"organizationId,omitempty"`
+	Username             NullableString `json:"username,omitempty"`
+	Password             NullableString `json:"password,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Url                  NullableString `json:"url,omitempty"`
+	OrganizationId       *int32         `json:"organizationId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ImportRepoCommand ImportRepoCommand
 
 // NewImportRepoCommand instantiates a new ImportRepoCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -76,6 +79,7 @@ func (o *ImportRepoCommand) HasUsername() bool {
 func (o *ImportRepoCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *ImportRepoCommand) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -118,6 +122,7 @@ func (o *ImportRepoCommand) HasPassword() bool {
 func (o *ImportRepoCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *ImportRepoCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -160,6 +165,7 @@ func (o *ImportRepoCommand) HasName() bool {
 func (o *ImportRepoCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ImportRepoCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -202,6 +208,7 @@ func (o *ImportRepoCommand) HasUrl() bool {
 func (o *ImportRepoCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *ImportRepoCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -245,7 +252,7 @@ func (o *ImportRepoCommand) SetOrganizationId(v int32) {
 }
 
 func (o ImportRepoCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -269,7 +276,37 @@ func (o ImportRepoCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ImportRepoCommand) UnmarshalJSON(data []byte) (err error) {
+	varImportRepoCommand := _ImportRepoCommand{}
+
+	err = json.Unmarshal(data, &varImportRepoCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ImportRepoCommand(varImportRepoCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "organizationId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableImportRepoCommand struct {
@@ -307,5 +344,3 @@ func (v *NullableImportRepoCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

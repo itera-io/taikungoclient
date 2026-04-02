@@ -20,9 +20,12 @@ var _ MappedNullable = &CronjobsSearchList{}
 
 // CronjobsSearchList struct for CronjobsSearchList
 type CronjobsSearchList struct {
-	Data []CommonSearchKubernetesResponseData `json:"data,omitempty"`
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	Data                 []CommonSearchKubernetesResponseData `json:"data,omitempty"`
+	TotalCount           *int32                               `json:"totalCount,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CronjobsSearchList CronjobsSearchList
 
 // NewCronjobsSearchList instantiates a new CronjobsSearchList object
 // This constructor will assign default values to properties that have it defined,
@@ -107,7 +110,7 @@ func (o *CronjobsSearchList) SetTotalCount(v int32) {
 }
 
 func (o CronjobsSearchList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -122,7 +125,34 @@ func (o CronjobsSearchList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CronjobsSearchList) UnmarshalJSON(data []byte) (err error) {
+	varCronjobsSearchList := _CronjobsSearchList{}
+
+	err = json.Unmarshal(data, &varCronjobsSearchList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CronjobsSearchList(varCronjobsSearchList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCronjobsSearchList struct {
@@ -160,5 +190,3 @@ func (v *NullableCronjobsSearchList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

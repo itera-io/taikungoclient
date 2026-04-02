@@ -20,9 +20,12 @@ var _ MappedNullable = &GroupedBillings{}
 
 // GroupedBillings struct for GroupedBillings
 type GroupedBillings struct {
-	StartDate NullableString `json:"startDate,omitempty"`
-	Tcu *int64 `json:"tcu,omitempty"`
+	StartDate            NullableString `json:"startDate,omitempty"`
+	Tcu                  *int64         `json:"tcu,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _GroupedBillings GroupedBillings
 
 // NewGroupedBillings instantiates a new GroupedBillings object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *GroupedBillings) HasStartDate() bool {
 func (o *GroupedBillings) SetStartDate(v string) {
 	o.StartDate.Set(&v)
 }
+
 // SetStartDateNil sets the value for StartDate to be an explicit nil
 func (o *GroupedBillings) SetStartDateNil() {
 	o.StartDate.Set(nil)
@@ -116,7 +120,7 @@ func (o *GroupedBillings) SetTcu(v int64) {
 }
 
 func (o GroupedBillings) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o GroupedBillings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Tcu) {
 		toSerialize["tcu"] = o.Tcu
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *GroupedBillings) UnmarshalJSON(data []byte) (err error) {
+	varGroupedBillings := _GroupedBillings{}
+
+	err = json.Unmarshal(data, &varGroupedBillings)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GroupedBillings(varGroupedBillings)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "startDate")
+		delete(additionalProperties, "tcu")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableGroupedBillings struct {
@@ -169,5 +200,3 @@ func (v *NullableGroupedBillings) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

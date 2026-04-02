@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,26 +21,27 @@ var _ MappedNullable = &ProxmoxListDto{}
 
 // ProxmoxListDto struct for ProxmoxListDto
 type ProxmoxListDto struct {
-	Id int32 `json:"id"`
-	ProjectCount int32 `json:"projectCount"`
-	IsLocked bool `json:"isLocked"`
-	Name NullableString `json:"name"`
-	Projects []CommonDropdownDto `json:"projects"`
-	CreatedBy NullableString `json:"createdBy"`
-	CreatedAt NullableString `json:"createdAt"`
-	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
-	IsDefault bool `json:"isDefault"`
-	OrganizationId int32 `json:"organizationId"`
-	OrganizationName NullableString `json:"organizationName"`
-	ContinentName NullableString `json:"continentName"`
-	Hypervisors []CommonDropdownDto `json:"hypervisors"`
-	TokenId NullableString `json:"tokenId"`
-	Url NullableString `json:"url"`
-	Storage NullableString `json:"storage"`
-	VmTemplateName NullableString `json:"vmTemplateName"`
-	ProxmoxNetworks []ProxmoxNetworkListDto `json:"proxmoxNetworks"`
-	SkipTlsFlag bool `json:"skipTlsFlag"`
+	Id                   int32                   `json:"id"`
+	ProjectCount         int32                   `json:"projectCount"`
+	IsLocked             bool                    `json:"isLocked"`
+	Name                 NullableString          `json:"name"`
+	Projects             []CommonDropdownDto     `json:"projects"`
+	CreatedBy            NullableString          `json:"createdBy"`
+	CreatedAt            NullableString          `json:"createdAt"`
+	LastModified         NullableString          `json:"lastModified"`
+	LastModifiedBy       NullableString          `json:"lastModifiedBy"`
+	IsDefault            bool                    `json:"isDefault"`
+	OrganizationId       int32                   `json:"organizationId"`
+	OrganizationName     NullableString          `json:"organizationName"`
+	ContinentName        NullableString          `json:"continentName"`
+	Hypervisors          []CommonDropdownDto     `json:"hypervisors"`
+	TokenId              NullableString          `json:"tokenId"`
+	Url                  NullableString          `json:"url"`
+	Storage              NullableString          `json:"storage"`
+	VmTemplateName       NullableString          `json:"vmTemplateName"`
+	ProxmoxNetworks      []ProxmoxNetworkListDto `json:"proxmoxNetworks"`
+	SkipTlsFlag          bool                    `json:"skipTlsFlag"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProxmoxListDto ProxmoxListDto
@@ -592,7 +592,7 @@ func (o *ProxmoxListDto) SetSkipTlsFlag(v bool) {
 }
 
 func (o ProxmoxListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -627,6 +627,11 @@ func (o ProxmoxListDto) ToMap() (map[string]interface{}, error) {
 		toSerialize["proxmoxNetworks"] = o.ProxmoxNetworks
 	}
 	toSerialize["skipTlsFlag"] = o.SkipTlsFlag
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -662,10 +667,10 @@ func (o *ProxmoxListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -673,15 +678,39 @@ func (o *ProxmoxListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varProxmoxListDto := _ProxmoxListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProxmoxListDto)
+	err = json.Unmarshal(data, &varProxmoxListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProxmoxListDto(varProxmoxListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "projectCount")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "continentName")
+		delete(additionalProperties, "hypervisors")
+		delete(additionalProperties, "tokenId")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "storage")
+		delete(additionalProperties, "vmTemplateName")
+		delete(additionalProperties, "proxmoxNetworks")
+		delete(additionalProperties, "skipTlsFlag")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -721,5 +750,3 @@ func (v *NullableProxmoxListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

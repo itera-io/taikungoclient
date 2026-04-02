@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,10 +21,11 @@ var _ MappedNullable = &DownloadKubernetesResourceCommand{}
 
 // DownloadKubernetesResourceCommand struct for DownloadKubernetesResourceCommand
 type DownloadKubernetesResourceCommand struct {
-	ProjectId int32 `json:"projectId"`
-	Name string `json:"name"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	Kind EKubernetesResource `json:"kind"`
+	ProjectId            int32               `json:"projectId"`
+	Name                 string              `json:"name"`
+	Namespace            NullableString      `json:"namespace,omitempty"`
+	Kind                 EKubernetesResource `json:"kind"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DownloadKubernetesResourceCommand DownloadKubernetesResourceCommand
@@ -130,6 +130,7 @@ func (o *DownloadKubernetesResourceCommand) HasNamespace() bool {
 func (o *DownloadKubernetesResourceCommand) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
+
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *DownloadKubernetesResourceCommand) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -165,7 +166,7 @@ func (o *DownloadKubernetesResourceCommand) SetKind(v EKubernetesResource) {
 }
 
 func (o DownloadKubernetesResourceCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -180,6 +181,11 @@ func (o DownloadKubernetesResourceCommand) ToMap() (map[string]interface{}, erro
 		toSerialize["namespace"] = o.Namespace.Get()
 	}
 	toSerialize["kind"] = o.Kind
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -198,10 +204,10 @@ func (o *DownloadKubernetesResourceCommand) UnmarshalJSON(data []byte) (err erro
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -209,15 +215,23 @@ func (o *DownloadKubernetesResourceCommand) UnmarshalJSON(data []byte) (err erro
 
 	varDownloadKubernetesResourceCommand := _DownloadKubernetesResourceCommand{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDownloadKubernetesResourceCommand)
+	err = json.Unmarshal(data, &varDownloadKubernetesResourceCommand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DownloadKubernetesResourceCommand(varDownloadKubernetesResourceCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "kind")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -257,5 +271,3 @@ func (v *NullableDownloadKubernetesResourceCommand) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

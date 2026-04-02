@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,8 +21,9 @@ var _ MappedNullable = &ListAllBackups{}
 
 // ListAllBackups struct for ListAllBackups
 type ListAllBackups struct {
-	Data []CBackupDto `json:"data"`
-	TotalCount int32 `json:"totalCount"`
+	Data                 []CBackupDto `json:"data"`
+	TotalCount           int32        `json:"totalCount"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ListAllBackups ListAllBackups
@@ -98,7 +98,7 @@ func (o *ListAllBackups) SetTotalCount(v int32) {
 }
 
 func (o ListAllBackups) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -111,6 +111,11 @@ func (o ListAllBackups) ToMap() (map[string]interface{}, error) {
 		toSerialize["data"] = o.Data
 	}
 	toSerialize["totalCount"] = o.TotalCount
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -128,10 +133,10 @@ func (o *ListAllBackups) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -139,15 +144,21 @@ func (o *ListAllBackups) UnmarshalJSON(data []byte) (err error) {
 
 	varListAllBackups := _ListAllBackups{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varListAllBackups)
+	err = json.Unmarshal(data, &varListAllBackups)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ListAllBackups(varListAllBackups)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -187,5 +198,3 @@ func (v *NullableListAllBackups) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

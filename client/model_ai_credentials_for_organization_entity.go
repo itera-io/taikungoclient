@@ -20,12 +20,15 @@ var _ MappedNullable = &AiCredentialsForOrganizationEntity{}
 
 // AiCredentialsForOrganizationEntity struct for AiCredentialsForOrganizationEntity
 type AiCredentialsForOrganizationEntity struct {
-	Id *int32 `json:"id,omitempty"`
-	Url NullableString `json:"url,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Type *AiType `json:"type,omitempty"`
-	IsDefault *bool `json:"isDefault,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Url                  NullableString `json:"url,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Type                 *AiType        `json:"type,omitempty"`
+	IsDefault            *bool          `json:"isDefault,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AiCredentialsForOrganizationEntity AiCredentialsForOrganizationEntity
 
 // NewAiCredentialsForOrganizationEntity instantiates a new AiCredentialsForOrganizationEntity object
 // This constructor will assign default values to properties that have it defined,
@@ -108,6 +111,7 @@ func (o *AiCredentialsForOrganizationEntity) HasUrl() bool {
 func (o *AiCredentialsForOrganizationEntity) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *AiCredentialsForOrganizationEntity) SetUrlNil() {
 	o.Url.Set(nil)
@@ -150,6 +154,7 @@ func (o *AiCredentialsForOrganizationEntity) HasName() bool {
 func (o *AiCredentialsForOrganizationEntity) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *AiCredentialsForOrganizationEntity) SetNameNil() {
 	o.Name.Set(nil)
@@ -225,7 +230,7 @@ func (o *AiCredentialsForOrganizationEntity) SetIsDefault(v bool) {
 }
 
 func (o AiCredentialsForOrganizationEntity) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -249,7 +254,37 @@ func (o AiCredentialsForOrganizationEntity) ToMap() (map[string]interface{}, err
 	if !IsNil(o.IsDefault) {
 		toSerialize["isDefault"] = o.IsDefault
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AiCredentialsForOrganizationEntity) UnmarshalJSON(data []byte) (err error) {
+	varAiCredentialsForOrganizationEntity := _AiCredentialsForOrganizationEntity{}
+
+	err = json.Unmarshal(data, &varAiCredentialsForOrganizationEntity)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AiCredentialsForOrganizationEntity(varAiCredentialsForOrganizationEntity)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "isDefault")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAiCredentialsForOrganizationEntity struct {
@@ -287,5 +322,3 @@ func (v *NullableAiCredentialsForOrganizationEntity) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

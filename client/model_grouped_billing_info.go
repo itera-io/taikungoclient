@@ -20,10 +20,13 @@ var _ MappedNullable = &GroupedBillingInfo{}
 
 // GroupedBillingInfo struct for GroupedBillingInfo
 type GroupedBillingInfo struct {
-	Data []GroupedBillings `json:"data,omitempty"`
-	ProjectId *int32 `json:"projectId,omitempty"`
-	ProjectName NullableString `json:"projectName,omitempty"`
+	Data                 []GroupedBillings `json:"data,omitempty"`
+	ProjectId            *int32            `json:"projectId,omitempty"`
+	ProjectName          NullableString    `json:"projectName,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _GroupedBillingInfo GroupedBillingInfo
 
 // NewGroupedBillingInfo instantiates a new GroupedBillingInfo object
 // This constructor will assign default values to properties that have it defined,
@@ -139,6 +142,7 @@ func (o *GroupedBillingInfo) HasProjectName() bool {
 func (o *GroupedBillingInfo) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
+
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *GroupedBillingInfo) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -150,7 +154,7 @@ func (o *GroupedBillingInfo) UnsetProjectName() {
 }
 
 func (o GroupedBillingInfo) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -168,7 +172,35 @@ func (o GroupedBillingInfo) ToMap() (map[string]interface{}, error) {
 	if o.ProjectName.IsSet() {
 		toSerialize["projectName"] = o.ProjectName.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *GroupedBillingInfo) UnmarshalJSON(data []byte) (err error) {
+	varGroupedBillingInfo := _GroupedBillingInfo{}
+
+	err = json.Unmarshal(data, &varGroupedBillingInfo)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GroupedBillingInfo(varGroupedBillingInfo)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "projectName")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableGroupedBillingInfo struct {
@@ -206,5 +238,3 @@ func (v *NullableGroupedBillingInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

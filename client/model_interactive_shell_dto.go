@@ -20,9 +20,12 @@ var _ MappedNullable = &InteractiveShellDto{}
 
 // InteractiveShellDto struct for InteractiveShellDto
 type InteractiveShellDto struct {
-	KubeConfig NullableString `json:"kubeConfig,omitempty"`
-	AdminKubeConfig NullableString `json:"adminKubeConfig,omitempty"`
+	KubeConfig           NullableString `json:"kubeConfig,omitempty"`
+	AdminKubeConfig      NullableString `json:"adminKubeConfig,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _InteractiveShellDto InteractiveShellDto
 
 // NewInteractiveShellDto instantiates a new InteractiveShellDto object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *InteractiveShellDto) HasKubeConfig() bool {
 func (o *InteractiveShellDto) SetKubeConfig(v string) {
 	o.KubeConfig.Set(&v)
 }
+
 // SetKubeConfigNil sets the value for KubeConfig to be an explicit nil
 func (o *InteractiveShellDto) SetKubeConfigNil() {
 	o.KubeConfig.Set(nil)
@@ -115,6 +119,7 @@ func (o *InteractiveShellDto) HasAdminKubeConfig() bool {
 func (o *InteractiveShellDto) SetAdminKubeConfig(v string) {
 	o.AdminKubeConfig.Set(&v)
 }
+
 // SetAdminKubeConfigNil sets the value for AdminKubeConfig to be an explicit nil
 func (o *InteractiveShellDto) SetAdminKubeConfigNil() {
 	o.AdminKubeConfig.Set(nil)
@@ -126,7 +131,7 @@ func (o *InteractiveShellDto) UnsetAdminKubeConfig() {
 }
 
 func (o InteractiveShellDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,7 +146,34 @@ func (o InteractiveShellDto) ToMap() (map[string]interface{}, error) {
 	if o.AdminKubeConfig.IsSet() {
 		toSerialize["adminKubeConfig"] = o.AdminKubeConfig.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *InteractiveShellDto) UnmarshalJSON(data []byte) (err error) {
+	varInteractiveShellDto := _InteractiveShellDto{}
+
+	err = json.Unmarshal(data, &varInteractiveShellDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InteractiveShellDto(varInteractiveShellDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "kubeConfig")
+		delete(additionalProperties, "adminKubeConfig")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableInteractiveShellDto struct {
@@ -179,5 +211,3 @@ func (v *NullableInteractiveShellDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,15 +20,18 @@ var _ MappedNullable = &UserResourceChartDto{}
 
 // UserResourceChartDto struct for UserResourceChartDto
 type UserResourceChartDto struct {
-	ProjectName NullableString `json:"projectName,omitempty"`
-	ProjectId *int32 `json:"projectId,omitempty"`
-	DiskSize *int64 `json:"diskSize,omitempty"`
-	Ram *int64 `json:"ram,omitempty"`
-	Cpu *int64 `json:"cpu,omitempty"`
-	MaxRam *int64 `json:"maxRam,omitempty"`
-	MaxCpu *int64 `json:"maxCpu,omitempty"`
-	MaxDiskSize *int64 `json:"maxDiskSize,omitempty"`
+	ProjectName          NullableString `json:"projectName,omitempty"`
+	ProjectId            *int32         `json:"projectId,omitempty"`
+	DiskSize             *int64         `json:"diskSize,omitempty"`
+	Ram                  *int64         `json:"ram,omitempty"`
+	Cpu                  *int64         `json:"cpu,omitempty"`
+	MaxRam               *int64         `json:"maxRam,omitempty"`
+	MaxCpu               *int64         `json:"maxCpu,omitempty"`
+	MaxDiskSize          *int64         `json:"maxDiskSize,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UserResourceChartDto UserResourceChartDto
 
 // NewUserResourceChartDto instantiates a new UserResourceChartDto object
 // This constructor will assign default values to properties that have it defined,
@@ -79,6 +82,7 @@ func (o *UserResourceChartDto) HasProjectName() bool {
 func (o *UserResourceChartDto) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
+
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *UserResourceChartDto) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -314,7 +318,7 @@ func (o *UserResourceChartDto) SetMaxDiskSize(v int64) {
 }
 
 func (o UserResourceChartDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -347,7 +351,40 @@ func (o UserResourceChartDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MaxDiskSize) {
 		toSerialize["maxDiskSize"] = o.MaxDiskSize
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UserResourceChartDto) UnmarshalJSON(data []byte) (err error) {
+	varUserResourceChartDto := _UserResourceChartDto{}
+
+	err = json.Unmarshal(data, &varUserResourceChartDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserResourceChartDto(varUserResourceChartDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "diskSize")
+		delete(additionalProperties, "ram")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "maxRam")
+		delete(additionalProperties, "maxCpu")
+		delete(additionalProperties, "maxDiskSize")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUserResourceChartDto struct {
@@ -385,5 +422,3 @@ func (v *NullableUserResourceChartDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

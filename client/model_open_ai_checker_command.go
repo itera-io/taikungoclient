@@ -20,8 +20,11 @@ var _ MappedNullable = &OpenAiCheckerCommand{}
 
 // OpenAiCheckerCommand struct for OpenAiCheckerCommand
 type OpenAiCheckerCommand struct {
-	Token NullableString `json:"token,omitempty"`
+	Token                NullableString `json:"token,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OpenAiCheckerCommand OpenAiCheckerCommand
 
 // NewOpenAiCheckerCommand instantiates a new OpenAiCheckerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -72,6 +75,7 @@ func (o *OpenAiCheckerCommand) HasToken() bool {
 func (o *OpenAiCheckerCommand) SetToken(v string) {
 	o.Token.Set(&v)
 }
+
 // SetTokenNil sets the value for Token to be an explicit nil
 func (o *OpenAiCheckerCommand) SetTokenNil() {
 	o.Token.Set(nil)
@@ -83,7 +87,7 @@ func (o *OpenAiCheckerCommand) UnsetToken() {
 }
 
 func (o OpenAiCheckerCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -95,7 +99,33 @@ func (o OpenAiCheckerCommand) ToMap() (map[string]interface{}, error) {
 	if o.Token.IsSet() {
 		toSerialize["token"] = o.Token.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OpenAiCheckerCommand) UnmarshalJSON(data []byte) (err error) {
+	varOpenAiCheckerCommand := _OpenAiCheckerCommand{}
+
+	err = json.Unmarshal(data, &varOpenAiCheckerCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OpenAiCheckerCommand(varOpenAiCheckerCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "token")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOpenAiCheckerCommand struct {
@@ -133,5 +163,3 @@ func (v *NullableOpenAiCheckerCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

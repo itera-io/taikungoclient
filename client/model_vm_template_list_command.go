@@ -20,11 +20,14 @@ var _ MappedNullable = &VmTemplateListCommand{}
 
 // VmTemplateListCommand struct for VmTemplateListCommand
 type VmTemplateListCommand struct {
-	CloudId NullableInt32 `json:"cloudId,omitempty"`
-	Url NullableString `json:"url,omitempty"`
-	TokenId NullableString `json:"tokenId,omitempty"`
-	TokenSecret NullableString `json:"tokenSecret,omitempty"`
+	CloudId              NullableInt32  `json:"cloudId,omitempty"`
+	Url                  NullableString `json:"url,omitempty"`
+	TokenId              NullableString `json:"tokenId,omitempty"`
+	TokenSecret          NullableString `json:"tokenSecret,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _VmTemplateListCommand VmTemplateListCommand
 
 // NewVmTemplateListCommand instantiates a new VmTemplateListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -75,6 +78,7 @@ func (o *VmTemplateListCommand) HasCloudId() bool {
 func (o *VmTemplateListCommand) SetCloudId(v int32) {
 	o.CloudId.Set(&v)
 }
+
 // SetCloudIdNil sets the value for CloudId to be an explicit nil
 func (o *VmTemplateListCommand) SetCloudIdNil() {
 	o.CloudId.Set(nil)
@@ -117,6 +121,7 @@ func (o *VmTemplateListCommand) HasUrl() bool {
 func (o *VmTemplateListCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *VmTemplateListCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -159,6 +164,7 @@ func (o *VmTemplateListCommand) HasTokenId() bool {
 func (o *VmTemplateListCommand) SetTokenId(v string) {
 	o.TokenId.Set(&v)
 }
+
 // SetTokenIdNil sets the value for TokenId to be an explicit nil
 func (o *VmTemplateListCommand) SetTokenIdNil() {
 	o.TokenId.Set(nil)
@@ -201,6 +207,7 @@ func (o *VmTemplateListCommand) HasTokenSecret() bool {
 func (o *VmTemplateListCommand) SetTokenSecret(v string) {
 	o.TokenSecret.Set(&v)
 }
+
 // SetTokenSecretNil sets the value for TokenSecret to be an explicit nil
 func (o *VmTemplateListCommand) SetTokenSecretNil() {
 	o.TokenSecret.Set(nil)
@@ -212,7 +219,7 @@ func (o *VmTemplateListCommand) UnsetTokenSecret() {
 }
 
 func (o VmTemplateListCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,7 +240,36 @@ func (o VmTemplateListCommand) ToMap() (map[string]interface{}, error) {
 	if o.TokenSecret.IsSet() {
 		toSerialize["tokenSecret"] = o.TokenSecret.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *VmTemplateListCommand) UnmarshalJSON(data []byte) (err error) {
+	varVmTemplateListCommand := _VmTemplateListCommand{}
+
+	err = json.Unmarshal(data, &varVmTemplateListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VmTemplateListCommand(varVmTemplateListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cloudId")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "tokenId")
+		delete(additionalProperties, "tokenSecret")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableVmTemplateListCommand struct {
@@ -271,5 +307,3 @@ func (v *NullableVmTemplateListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

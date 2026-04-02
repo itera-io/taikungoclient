@@ -20,11 +20,14 @@ var _ MappedNullable = &UpdateVsphereCommand{}
 
 // UpdateVsphereCommand struct for UpdateVsphereCommand
 type UpdateVsphereCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Password NullableString `json:"password,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Username             NullableString `json:"username,omitempty"`
+	Password             NullableString `json:"password,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateVsphereCommand UpdateVsphereCommand
 
 // NewUpdateVsphereCommand instantiates a new UpdateVsphereCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -107,6 +110,7 @@ func (o *UpdateVsphereCommand) HasName() bool {
 func (o *UpdateVsphereCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UpdateVsphereCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -149,6 +153,7 @@ func (o *UpdateVsphereCommand) HasUsername() bool {
 func (o *UpdateVsphereCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *UpdateVsphereCommand) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -191,6 +196,7 @@ func (o *UpdateVsphereCommand) HasPassword() bool {
 func (o *UpdateVsphereCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *UpdateVsphereCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -202,7 +208,7 @@ func (o *UpdateVsphereCommand) UnsetPassword() {
 }
 
 func (o UpdateVsphereCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -223,7 +229,36 @@ func (o UpdateVsphereCommand) ToMap() (map[string]interface{}, error) {
 	if o.Password.IsSet() {
 		toSerialize["password"] = o.Password.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateVsphereCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateVsphereCommand := _UpdateVsphereCommand{}
+
+	err = json.Unmarshal(data, &varUpdateVsphereCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateVsphereCommand(varUpdateVsphereCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateVsphereCommand struct {
@@ -261,5 +296,3 @@ func (v *NullableUpdateVsphereCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

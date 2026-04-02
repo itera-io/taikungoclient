@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,10 +21,11 @@ var _ MappedNullable = &RobotUserScopeData{}
 
 // RobotUserScopeData struct for RobotUserScopeData
 type RobotUserScopeData struct {
-	Key NullableString `json:"key"`
-	Title NullableString `json:"title"`
-	Description NullableString `json:"description"`
-	Tag NullableString `json:"tag"`
+	Key                  NullableString `json:"key"`
+	Title                NullableString `json:"title"`
+	Description          NullableString `json:"description"`
+	Tag                  NullableString `json:"tag"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _RobotUserScopeData RobotUserScopeData
@@ -156,7 +156,7 @@ func (o *RobotUserScopeData) SetTag(v string) {
 }
 
 func (o RobotUserScopeData) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -169,6 +169,11 @@ func (o RobotUserScopeData) ToMap() (map[string]interface{}, error) {
 	toSerialize["title"] = o.Title.Get()
 	toSerialize["description"] = o.Description.Get()
 	toSerialize["tag"] = o.Tag.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -188,10 +193,10 @@ func (o *RobotUserScopeData) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -199,15 +204,23 @@ func (o *RobotUserScopeData) UnmarshalJSON(data []byte) (err error) {
 
 	varRobotUserScopeData := _RobotUserScopeData{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRobotUserScopeData)
+	err = json.Unmarshal(data, &varRobotUserScopeData)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RobotUserScopeData(varRobotUserScopeData)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "title")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "tag")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -247,5 +260,3 @@ func (v *NullableRobotUserScopeData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

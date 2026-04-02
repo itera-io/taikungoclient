@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,14 +21,15 @@ var _ MappedNullable = &VsphereNetworkListDto{}
 
 // VsphereNetworkListDto struct for VsphereNetworkListDto
 type VsphereNetworkListDto struct {
-	Name NullableString `json:"name"`
-	Gateway string `json:"gateway"`
-	IpAddress string `json:"ipAddress"`
-	NetMask int32 `json:"netMask"`
-	BeginAllocationRange string `json:"beginAllocationRange"`
-	EndAllocationRange string `json:"endAllocationRange"`
-	IsPrivate bool `json:"isPrivate"`
-	IsVirtualLbNetwork bool `json:"isVirtualLbNetwork"`
+	Name                 NullableString `json:"name"`
+	Gateway              string         `json:"gateway"`
+	IpAddress            string         `json:"ipAddress"`
+	NetMask              int32          `json:"netMask"`
+	BeginAllocationRange string         `json:"beginAllocationRange"`
+	EndAllocationRange   string         `json:"endAllocationRange"`
+	IsPrivate            bool           `json:"isPrivate"`
+	IsVirtualLbNetwork   bool           `json:"isVirtualLbNetwork"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _VsphereNetworkListDto VsphereNetworkListDto
@@ -254,7 +254,7 @@ func (o *VsphereNetworkListDto) SetIsVirtualLbNetwork(v bool) {
 }
 
 func (o VsphereNetworkListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -271,6 +271,11 @@ func (o VsphereNetworkListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["endAllocationRange"] = o.EndAllocationRange
 	toSerialize["isPrivate"] = o.IsPrivate
 	toSerialize["isVirtualLbNetwork"] = o.IsVirtualLbNetwork
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -294,10 +299,10 @@ func (o *VsphereNetworkListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -305,15 +310,27 @@ func (o *VsphereNetworkListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varVsphereNetworkListDto := _VsphereNetworkListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVsphereNetworkListDto)
+	err = json.Unmarshal(data, &varVsphereNetworkListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = VsphereNetworkListDto(varVsphereNetworkListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "gateway")
+		delete(additionalProperties, "ipAddress")
+		delete(additionalProperties, "netMask")
+		delete(additionalProperties, "beginAllocationRange")
+		delete(additionalProperties, "endAllocationRange")
+		delete(additionalProperties, "isPrivate")
+		delete(additionalProperties, "isVirtualLbNetwork")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -353,5 +370,3 @@ func (v *NullableVsphereNetworkListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

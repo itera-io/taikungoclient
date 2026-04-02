@@ -20,9 +20,12 @@ var _ MappedNullable = &DeleteBackupCommand{}
 
 // DeleteBackupCommand struct for DeleteBackupCommand
 type DeleteBackupCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	ProjectId            *int32         `json:"projectId,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeleteBackupCommand DeleteBackupCommand
 
 // NewDeleteBackupCommand instantiates a new DeleteBackupCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,7 @@ func (o *DeleteBackupCommand) HasName() bool {
 func (o *DeleteBackupCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *DeleteBackupCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -116,7 +120,7 @@ func (o *DeleteBackupCommand) UnsetName() {
 }
 
 func (o DeleteBackupCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o DeleteBackupCommand) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeleteBackupCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeleteBackupCommand := _DeleteBackupCommand{}
+
+	err = json.Unmarshal(data, &varDeleteBackupCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeleteBackupCommand(varDeleteBackupCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeleteBackupCommand struct {
@@ -169,5 +200,3 @@ func (v *NullableDeleteBackupCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,9 +20,12 @@ var _ MappedNullable = &DeploymentEnableAiCommand{}
 
 // DeploymentEnableAiCommand struct for DeploymentEnableAiCommand
 type DeploymentEnableAiCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	AiCredentialId *int32 `json:"aiCredentialId,omitempty"`
+	ProjectId            *int32 `json:"projectId,omitempty"`
+	AiCredentialId       *int32 `json:"aiCredentialId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeploymentEnableAiCommand DeploymentEnableAiCommand
 
 // NewDeploymentEnableAiCommand instantiates a new DeploymentEnableAiCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -106,7 +109,7 @@ func (o *DeploymentEnableAiCommand) SetAiCredentialId(v int32) {
 }
 
 func (o DeploymentEnableAiCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -121,7 +124,34 @@ func (o DeploymentEnableAiCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AiCredentialId) {
 		toSerialize["aiCredentialId"] = o.AiCredentialId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeploymentEnableAiCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeploymentEnableAiCommand := _DeploymentEnableAiCommand{}
+
+	err = json.Unmarshal(data, &varDeploymentEnableAiCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeploymentEnableAiCommand(varDeploymentEnableAiCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "aiCredentialId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeploymentEnableAiCommand struct {
@@ -159,5 +189,3 @@ func (v *NullableDeploymentEnableAiCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

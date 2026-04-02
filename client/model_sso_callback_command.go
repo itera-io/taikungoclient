@@ -20,9 +20,12 @@ var _ MappedNullable = &SsoCallbackCommand{}
 
 // SsoCallbackCommand struct for SsoCallbackCommand
 type SsoCallbackCommand struct {
-	Code NullableString `json:"code,omitempty"`
-	State NullableString `json:"state,omitempty"`
+	Code                 NullableString `json:"code,omitempty"`
+	State                NullableString `json:"state,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _SsoCallbackCommand SsoCallbackCommand
 
 // NewSsoCallbackCommand instantiates a new SsoCallbackCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *SsoCallbackCommand) HasCode() bool {
 func (o *SsoCallbackCommand) SetCode(v string) {
 	o.Code.Set(&v)
 }
+
 // SetCodeNil sets the value for Code to be an explicit nil
 func (o *SsoCallbackCommand) SetCodeNil() {
 	o.Code.Set(nil)
@@ -115,6 +119,7 @@ func (o *SsoCallbackCommand) HasState() bool {
 func (o *SsoCallbackCommand) SetState(v string) {
 	o.State.Set(&v)
 }
+
 // SetStateNil sets the value for State to be an explicit nil
 func (o *SsoCallbackCommand) SetStateNil() {
 	o.State.Set(nil)
@@ -126,7 +131,7 @@ func (o *SsoCallbackCommand) UnsetState() {
 }
 
 func (o SsoCallbackCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,7 +146,34 @@ func (o SsoCallbackCommand) ToMap() (map[string]interface{}, error) {
 	if o.State.IsSet() {
 		toSerialize["state"] = o.State.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *SsoCallbackCommand) UnmarshalJSON(data []byte) (err error) {
+	varSsoCallbackCommand := _SsoCallbackCommand{}
+
+	err = json.Unmarshal(data, &varSsoCallbackCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SsoCallbackCommand(varSsoCallbackCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "code")
+		delete(additionalProperties, "state")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableSsoCallbackCommand struct {
@@ -179,5 +211,3 @@ func (v *NullableSsoCallbackCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

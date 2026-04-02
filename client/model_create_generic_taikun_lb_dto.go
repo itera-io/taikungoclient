@@ -20,9 +20,12 @@ var _ MappedNullable = &CreateGenericTaikunLbDto{}
 
 // CreateGenericTaikunLbDto struct for CreateGenericTaikunLbDto
 type CreateGenericTaikunLbDto struct {
-	SvcName NullableString `json:"svcName,omitempty"`
-	SvcNamespace NullableString `json:"svcNamespace,omitempty"`
+	SvcName              NullableString `json:"svcName,omitempty"`
+	SvcNamespace         NullableString `json:"svcNamespace,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateGenericTaikunLbDto CreateGenericTaikunLbDto
 
 // NewCreateGenericTaikunLbDto instantiates a new CreateGenericTaikunLbDto object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *CreateGenericTaikunLbDto) HasSvcName() bool {
 func (o *CreateGenericTaikunLbDto) SetSvcName(v string) {
 	o.SvcName.Set(&v)
 }
+
 // SetSvcNameNil sets the value for SvcName to be an explicit nil
 func (o *CreateGenericTaikunLbDto) SetSvcNameNil() {
 	o.SvcName.Set(nil)
@@ -115,6 +119,7 @@ func (o *CreateGenericTaikunLbDto) HasSvcNamespace() bool {
 func (o *CreateGenericTaikunLbDto) SetSvcNamespace(v string) {
 	o.SvcNamespace.Set(&v)
 }
+
 // SetSvcNamespaceNil sets the value for SvcNamespace to be an explicit nil
 func (o *CreateGenericTaikunLbDto) SetSvcNamespaceNil() {
 	o.SvcNamespace.Set(nil)
@@ -126,7 +131,7 @@ func (o *CreateGenericTaikunLbDto) UnsetSvcNamespace() {
 }
 
 func (o CreateGenericTaikunLbDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,7 +146,34 @@ func (o CreateGenericTaikunLbDto) ToMap() (map[string]interface{}, error) {
 	if o.SvcNamespace.IsSet() {
 		toSerialize["svcNamespace"] = o.SvcNamespace.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateGenericTaikunLbDto) UnmarshalJSON(data []byte) (err error) {
+	varCreateGenericTaikunLbDto := _CreateGenericTaikunLbDto{}
+
+	err = json.Unmarshal(data, &varCreateGenericTaikunLbDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateGenericTaikunLbDto(varCreateGenericTaikunLbDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "svcName")
+		delete(additionalProperties, "svcNamespace")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateGenericTaikunLbDto struct {
@@ -179,5 +211,3 @@ func (v *NullableCreateGenericTaikunLbDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

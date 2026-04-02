@@ -20,9 +20,12 @@ var _ MappedNullable = &CloudCredentialsSearchList{}
 
 // CloudCredentialsSearchList struct for CloudCredentialsSearchList
 type CloudCredentialsSearchList struct {
-	Data []CloudCredentialsResponseData `json:"data,omitempty"`
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	Data                 []CloudCredentialsResponseData `json:"data,omitempty"`
+	TotalCount           *int32                         `json:"totalCount,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CloudCredentialsSearchList CloudCredentialsSearchList
 
 // NewCloudCredentialsSearchList instantiates a new CloudCredentialsSearchList object
 // This constructor will assign default values to properties that have it defined,
@@ -107,7 +110,7 @@ func (o *CloudCredentialsSearchList) SetTotalCount(v int32) {
 }
 
 func (o CloudCredentialsSearchList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -122,7 +125,34 @@ func (o CloudCredentialsSearchList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CloudCredentialsSearchList) UnmarshalJSON(data []byte) (err error) {
+	varCloudCredentialsSearchList := _CloudCredentialsSearchList{}
+
+	err = json.Unmarshal(data, &varCloudCredentialsSearchList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CloudCredentialsSearchList(varCloudCredentialsSearchList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCloudCredentialsSearchList struct {
@@ -160,5 +190,3 @@ func (v *NullableCloudCredentialsSearchList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,8 +20,11 @@ var _ MappedNullable = &TrustedRegistryEditDto{}
 
 // TrustedRegistryEditDto struct for TrustedRegistryEditDto
 type TrustedRegistryEditDto struct {
-	Registry NullableString `json:"registry,omitempty"`
+	Registry             NullableString `json:"registry,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _TrustedRegistryEditDto TrustedRegistryEditDto
 
 // NewTrustedRegistryEditDto instantiates a new TrustedRegistryEditDto object
 // This constructor will assign default values to properties that have it defined,
@@ -72,6 +75,7 @@ func (o *TrustedRegistryEditDto) HasRegistry() bool {
 func (o *TrustedRegistryEditDto) SetRegistry(v string) {
 	o.Registry.Set(&v)
 }
+
 // SetRegistryNil sets the value for Registry to be an explicit nil
 func (o *TrustedRegistryEditDto) SetRegistryNil() {
 	o.Registry.Set(nil)
@@ -83,7 +87,7 @@ func (o *TrustedRegistryEditDto) UnsetRegistry() {
 }
 
 func (o TrustedRegistryEditDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -95,7 +99,33 @@ func (o TrustedRegistryEditDto) ToMap() (map[string]interface{}, error) {
 	if o.Registry.IsSet() {
 		toSerialize["registry"] = o.Registry.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *TrustedRegistryEditDto) UnmarshalJSON(data []byte) (err error) {
+	varTrustedRegistryEditDto := _TrustedRegistryEditDto{}
+
+	err = json.Unmarshal(data, &varTrustedRegistryEditDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TrustedRegistryEditDto(varTrustedRegistryEditDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "registry")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableTrustedRegistryEditDto struct {
@@ -133,5 +163,3 @@ func (v *NullableTrustedRegistryEditDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

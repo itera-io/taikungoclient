@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,11 +21,12 @@ var _ MappedNullable = &WorkloadResourceLimitsDto{}
 
 // WorkloadResourceLimitsDto struct for WorkloadResourceLimitsDto
 type WorkloadResourceLimitsDto struct {
-	MaxPods int32 `json:"maxPods"`
-	MaxPvcs int32 `json:"maxPvcs"`
-	MaxTotalPvcSize int64 `json:"maxTotalPvcSize"`
-	MaxIngresses int32 `json:"maxIngresses"`
-	MaxLoadBalancers int32 `json:"maxLoadBalancers"`
+	MaxPods              int32 `json:"maxPods"`
+	MaxPvcs              int32 `json:"maxPvcs"`
+	MaxTotalPvcSize      int64 `json:"maxTotalPvcSize"`
+	MaxIngresses         int32 `json:"maxIngresses"`
+	MaxLoadBalancers     int32 `json:"maxLoadBalancers"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _WorkloadResourceLimitsDto WorkloadResourceLimitsDto
@@ -174,7 +174,7 @@ func (o *WorkloadResourceLimitsDto) SetMaxLoadBalancers(v int32) {
 }
 
 func (o WorkloadResourceLimitsDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -188,6 +188,11 @@ func (o WorkloadResourceLimitsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["maxTotalPvcSize"] = o.MaxTotalPvcSize
 	toSerialize["maxIngresses"] = o.MaxIngresses
 	toSerialize["maxLoadBalancers"] = o.MaxLoadBalancers
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -208,10 +213,10 @@ func (o *WorkloadResourceLimitsDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -219,15 +224,24 @@ func (o *WorkloadResourceLimitsDto) UnmarshalJSON(data []byte) (err error) {
 
 	varWorkloadResourceLimitsDto := _WorkloadResourceLimitsDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varWorkloadResourceLimitsDto)
+	err = json.Unmarshal(data, &varWorkloadResourceLimitsDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = WorkloadResourceLimitsDto(varWorkloadResourceLimitsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "maxPods")
+		delete(additionalProperties, "maxPvcs")
+		delete(additionalProperties, "maxTotalPvcSize")
+		delete(additionalProperties, "maxIngresses")
+		delete(additionalProperties, "maxLoadBalancers")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -267,5 +281,3 @@ func (v *NullableWorkloadResourceLimitsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

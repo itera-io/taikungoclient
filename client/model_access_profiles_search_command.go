@@ -20,10 +20,13 @@ var _ MappedNullable = &AccessProfilesSearchCommand{}
 
 // AccessProfilesSearchCommand struct for AccessProfilesSearchCommand
 type AccessProfilesSearchCommand struct {
-	Limit NullableInt32 `json:"limit,omitempty"`
-	Offset NullableInt32 `json:"offset,omitempty"`
-	SearchTerm NullableString `json:"searchTerm,omitempty"`
+	Limit                NullableInt32  `json:"limit,omitempty"`
+	Offset               NullableInt32  `json:"offset,omitempty"`
+	SearchTerm           NullableString `json:"searchTerm,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AccessProfilesSearchCommand AccessProfilesSearchCommand
 
 // NewAccessProfilesSearchCommand instantiates a new AccessProfilesSearchCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *AccessProfilesSearchCommand) HasLimit() bool {
 func (o *AccessProfilesSearchCommand) SetLimit(v int32) {
 	o.Limit.Set(&v)
 }
+
 // SetLimitNil sets the value for Limit to be an explicit nil
 func (o *AccessProfilesSearchCommand) SetLimitNil() {
 	o.Limit.Set(nil)
@@ -116,6 +120,7 @@ func (o *AccessProfilesSearchCommand) HasOffset() bool {
 func (o *AccessProfilesSearchCommand) SetOffset(v int32) {
 	o.Offset.Set(&v)
 }
+
 // SetOffsetNil sets the value for Offset to be an explicit nil
 func (o *AccessProfilesSearchCommand) SetOffsetNil() {
 	o.Offset.Set(nil)
@@ -158,6 +163,7 @@ func (o *AccessProfilesSearchCommand) HasSearchTerm() bool {
 func (o *AccessProfilesSearchCommand) SetSearchTerm(v string) {
 	o.SearchTerm.Set(&v)
 }
+
 // SetSearchTermNil sets the value for SearchTerm to be an explicit nil
 func (o *AccessProfilesSearchCommand) SetSearchTermNil() {
 	o.SearchTerm.Set(nil)
@@ -169,7 +175,7 @@ func (o *AccessProfilesSearchCommand) UnsetSearchTerm() {
 }
 
 func (o AccessProfilesSearchCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -187,7 +193,35 @@ func (o AccessProfilesSearchCommand) ToMap() (map[string]interface{}, error) {
 	if o.SearchTerm.IsSet() {
 		toSerialize["searchTerm"] = o.SearchTerm.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AccessProfilesSearchCommand) UnmarshalJSON(data []byte) (err error) {
+	varAccessProfilesSearchCommand := _AccessProfilesSearchCommand{}
+
+	err = json.Unmarshal(data, &varAccessProfilesSearchCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AccessProfilesSearchCommand(varAccessProfilesSearchCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "offset")
+		delete(additionalProperties, "searchTerm")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAccessProfilesSearchCommand struct {
@@ -225,5 +259,3 @@ func (v *NullableAccessProfilesSearchCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

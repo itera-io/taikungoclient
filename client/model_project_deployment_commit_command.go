@@ -20,8 +20,11 @@ var _ MappedNullable = &ProjectDeploymentCommitCommand{}
 
 // ProjectDeploymentCommitCommand struct for ProjectDeploymentCommitCommand
 type ProjectDeploymentCommitCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
+	ProjectId            *int32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectDeploymentCommitCommand ProjectDeploymentCommitCommand
 
 // NewProjectDeploymentCommitCommand instantiates a new ProjectDeploymentCommitCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,7 +76,7 @@ func (o *ProjectDeploymentCommitCommand) SetProjectId(v int32) {
 }
 
 func (o ProjectDeploymentCommitCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -85,7 +88,33 @@ func (o ProjectDeploymentCommitCommand) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectDeploymentCommitCommand) UnmarshalJSON(data []byte) (err error) {
+	varProjectDeploymentCommitCommand := _ProjectDeploymentCommitCommand{}
+
+	err = json.Unmarshal(data, &varProjectDeploymentCommitCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectDeploymentCommitCommand(varProjectDeploymentCommitCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectDeploymentCommitCommand struct {
@@ -123,5 +152,3 @@ func (v *NullableProjectDeploymentCommitCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

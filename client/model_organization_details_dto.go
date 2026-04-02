@@ -20,32 +20,19 @@ var _ MappedNullable = &OrganizationDetailsDto{}
 
 // OrganizationDetailsDto struct for OrganizationDetailsDto
 type OrganizationDetailsDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	FullName NullableString `json:"fullName,omitempty"`
-	Email NullableString `json:"email,omitempty"`
-	BillingEmail NullableString `json:"billingEmail,omitempty"`
-	Phone NullableString `json:"phone,omitempty"`
-	Country NullableString `json:"country,omitempty"`
-	City NullableString `json:"city,omitempty"`
-	VatNumber NullableString `json:"vatNumber,omitempty"`
-	Address NullableString `json:"address,omitempty"`
-	IsEligibleUpdateSubscription *bool `json:"isEligibleUpdateSubscription,omitempty"`
-	IsLocked *bool `json:"isLocked,omitempty"`
-	IsReadOnly *bool `json:"isReadOnly,omitempty"`
-	IsNew *bool `json:"isNew,omitempty"`
-	TrialEnded *bool `json:"trialEnded,omitempty"`
-	Users *int32 `json:"users,omitempty"`
-	Projects *int32 `json:"projects,omitempty"`
-	Servers *int32 `json:"servers,omitempty"`
-	CloudCredentials *int32 `json:"cloudCredentials,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
-	PartnerId NullableInt32 `json:"partnerId,omitempty"`
-	PartnerName NullableString `json:"partnerName,omitempty"`
-	Partner *PartnerDetailsForOrganizationsDto `json:"partner,omitempty"`
-	DiscountRate *float64 `json:"discountRate,omitempty"`
-	BoundRules []PrometheusEntity `json:"boundRules,omitempty"`
+	Id                   *int32             `json:"id,omitempty"`
+	Name                 NullableString     `json:"name,omitempty"`
+	FullName             NullableString     `json:"fullName,omitempty"`
+	Email                NullableString     `json:"email,omitempty"`
+	Projects             *int32             `json:"projects,omitempty"`
+	Servers              *int32             `json:"servers,omitempty"`
+	CloudCredentials     *int32             `json:"cloudCredentials,omitempty"`
+	CreatedAt            NullableString     `json:"createdAt,omitempty"`
+	BoundRules           []PrometheusEntity `json:"boundRules,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OrganizationDetailsDto OrganizationDetailsDto
 
 // NewOrganizationDetailsDto instantiates a new OrganizationDetailsDto object
 // This constructor will assign default values to properties that have it defined,
@@ -128,6 +115,7 @@ func (o *OrganizationDetailsDto) HasName() bool {
 func (o *OrganizationDetailsDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *OrganizationDetailsDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -170,6 +158,7 @@ func (o *OrganizationDetailsDto) HasFullName() bool {
 func (o *OrganizationDetailsDto) SetFullName(v string) {
 	o.FullName.Set(&v)
 }
+
 // SetFullNameNil sets the value for FullName to be an explicit nil
 func (o *OrganizationDetailsDto) SetFullNameNil() {
 	o.FullName.Set(nil)
@@ -212,6 +201,7 @@ func (o *OrganizationDetailsDto) HasEmail() bool {
 func (o *OrganizationDetailsDto) SetEmail(v string) {
 	o.Email.Set(&v)
 }
+
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *OrganizationDetailsDto) SetEmailNil() {
 	o.Email.Set(nil)
@@ -220,450 +210,6 @@ func (o *OrganizationDetailsDto) SetEmailNil() {
 // UnsetEmail ensures that no value is present for Email, not even an explicit nil
 func (o *OrganizationDetailsDto) UnsetEmail() {
 	o.Email.Unset()
-}
-
-// GetBillingEmail returns the BillingEmail field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationDetailsDto) GetBillingEmail() string {
-	if o == nil || IsNil(o.BillingEmail.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.BillingEmail.Get()
-}
-
-// GetBillingEmailOk returns a tuple with the BillingEmail field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationDetailsDto) GetBillingEmailOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.BillingEmail.Get(), o.BillingEmail.IsSet()
-}
-
-// HasBillingEmail returns a boolean if a field has been set.
-func (o *OrganizationDetailsDto) HasBillingEmail() bool {
-	if o != nil && o.BillingEmail.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetBillingEmail gets a reference to the given NullableString and assigns it to the BillingEmail field.
-func (o *OrganizationDetailsDto) SetBillingEmail(v string) {
-	o.BillingEmail.Set(&v)
-}
-// SetBillingEmailNil sets the value for BillingEmail to be an explicit nil
-func (o *OrganizationDetailsDto) SetBillingEmailNil() {
-	o.BillingEmail.Set(nil)
-}
-
-// UnsetBillingEmail ensures that no value is present for BillingEmail, not even an explicit nil
-func (o *OrganizationDetailsDto) UnsetBillingEmail() {
-	o.BillingEmail.Unset()
-}
-
-// GetPhone returns the Phone field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationDetailsDto) GetPhone() string {
-	if o == nil || IsNil(o.Phone.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Phone.Get()
-}
-
-// GetPhoneOk returns a tuple with the Phone field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationDetailsDto) GetPhoneOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Phone.Get(), o.Phone.IsSet()
-}
-
-// HasPhone returns a boolean if a field has been set.
-func (o *OrganizationDetailsDto) HasPhone() bool {
-	if o != nil && o.Phone.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPhone gets a reference to the given NullableString and assigns it to the Phone field.
-func (o *OrganizationDetailsDto) SetPhone(v string) {
-	o.Phone.Set(&v)
-}
-// SetPhoneNil sets the value for Phone to be an explicit nil
-func (o *OrganizationDetailsDto) SetPhoneNil() {
-	o.Phone.Set(nil)
-}
-
-// UnsetPhone ensures that no value is present for Phone, not even an explicit nil
-func (o *OrganizationDetailsDto) UnsetPhone() {
-	o.Phone.Unset()
-}
-
-// GetCountry returns the Country field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationDetailsDto) GetCountry() string {
-	if o == nil || IsNil(o.Country.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Country.Get()
-}
-
-// GetCountryOk returns a tuple with the Country field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationDetailsDto) GetCountryOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Country.Get(), o.Country.IsSet()
-}
-
-// HasCountry returns a boolean if a field has been set.
-func (o *OrganizationDetailsDto) HasCountry() bool {
-	if o != nil && o.Country.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCountry gets a reference to the given NullableString and assigns it to the Country field.
-func (o *OrganizationDetailsDto) SetCountry(v string) {
-	o.Country.Set(&v)
-}
-// SetCountryNil sets the value for Country to be an explicit nil
-func (o *OrganizationDetailsDto) SetCountryNil() {
-	o.Country.Set(nil)
-}
-
-// UnsetCountry ensures that no value is present for Country, not even an explicit nil
-func (o *OrganizationDetailsDto) UnsetCountry() {
-	o.Country.Unset()
-}
-
-// GetCity returns the City field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationDetailsDto) GetCity() string {
-	if o == nil || IsNil(o.City.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.City.Get()
-}
-
-// GetCityOk returns a tuple with the City field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationDetailsDto) GetCityOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.City.Get(), o.City.IsSet()
-}
-
-// HasCity returns a boolean if a field has been set.
-func (o *OrganizationDetailsDto) HasCity() bool {
-	if o != nil && o.City.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCity gets a reference to the given NullableString and assigns it to the City field.
-func (o *OrganizationDetailsDto) SetCity(v string) {
-	o.City.Set(&v)
-}
-// SetCityNil sets the value for City to be an explicit nil
-func (o *OrganizationDetailsDto) SetCityNil() {
-	o.City.Set(nil)
-}
-
-// UnsetCity ensures that no value is present for City, not even an explicit nil
-func (o *OrganizationDetailsDto) UnsetCity() {
-	o.City.Unset()
-}
-
-// GetVatNumber returns the VatNumber field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationDetailsDto) GetVatNumber() string {
-	if o == nil || IsNil(o.VatNumber.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.VatNumber.Get()
-}
-
-// GetVatNumberOk returns a tuple with the VatNumber field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationDetailsDto) GetVatNumberOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.VatNumber.Get(), o.VatNumber.IsSet()
-}
-
-// HasVatNumber returns a boolean if a field has been set.
-func (o *OrganizationDetailsDto) HasVatNumber() bool {
-	if o != nil && o.VatNumber.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetVatNumber gets a reference to the given NullableString and assigns it to the VatNumber field.
-func (o *OrganizationDetailsDto) SetVatNumber(v string) {
-	o.VatNumber.Set(&v)
-}
-// SetVatNumberNil sets the value for VatNumber to be an explicit nil
-func (o *OrganizationDetailsDto) SetVatNumberNil() {
-	o.VatNumber.Set(nil)
-}
-
-// UnsetVatNumber ensures that no value is present for VatNumber, not even an explicit nil
-func (o *OrganizationDetailsDto) UnsetVatNumber() {
-	o.VatNumber.Unset()
-}
-
-// GetAddress returns the Address field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationDetailsDto) GetAddress() string {
-	if o == nil || IsNil(o.Address.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Address.Get()
-}
-
-// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationDetailsDto) GetAddressOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Address.Get(), o.Address.IsSet()
-}
-
-// HasAddress returns a boolean if a field has been set.
-func (o *OrganizationDetailsDto) HasAddress() bool {
-	if o != nil && o.Address.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAddress gets a reference to the given NullableString and assigns it to the Address field.
-func (o *OrganizationDetailsDto) SetAddress(v string) {
-	o.Address.Set(&v)
-}
-// SetAddressNil sets the value for Address to be an explicit nil
-func (o *OrganizationDetailsDto) SetAddressNil() {
-	o.Address.Set(nil)
-}
-
-// UnsetAddress ensures that no value is present for Address, not even an explicit nil
-func (o *OrganizationDetailsDto) UnsetAddress() {
-	o.Address.Unset()
-}
-
-// GetIsEligibleUpdateSubscription returns the IsEligibleUpdateSubscription field value if set, zero value otherwise.
-func (o *OrganizationDetailsDto) GetIsEligibleUpdateSubscription() bool {
-	if o == nil || IsNil(o.IsEligibleUpdateSubscription) {
-		var ret bool
-		return ret
-	}
-	return *o.IsEligibleUpdateSubscription
-}
-
-// GetIsEligibleUpdateSubscriptionOk returns a tuple with the IsEligibleUpdateSubscription field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrganizationDetailsDto) GetIsEligibleUpdateSubscriptionOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsEligibleUpdateSubscription) {
-		return nil, false
-	}
-	return o.IsEligibleUpdateSubscription, true
-}
-
-// HasIsEligibleUpdateSubscription returns a boolean if a field has been set.
-func (o *OrganizationDetailsDto) HasIsEligibleUpdateSubscription() bool {
-	if o != nil && !IsNil(o.IsEligibleUpdateSubscription) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsEligibleUpdateSubscription gets a reference to the given bool and assigns it to the IsEligibleUpdateSubscription field.
-func (o *OrganizationDetailsDto) SetIsEligibleUpdateSubscription(v bool) {
-	o.IsEligibleUpdateSubscription = &v
-}
-
-// GetIsLocked returns the IsLocked field value if set, zero value otherwise.
-func (o *OrganizationDetailsDto) GetIsLocked() bool {
-	if o == nil || IsNil(o.IsLocked) {
-		var ret bool
-		return ret
-	}
-	return *o.IsLocked
-}
-
-// GetIsLockedOk returns a tuple with the IsLocked field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrganizationDetailsDto) GetIsLockedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsLocked) {
-		return nil, false
-	}
-	return o.IsLocked, true
-}
-
-// HasIsLocked returns a boolean if a field has been set.
-func (o *OrganizationDetailsDto) HasIsLocked() bool {
-	if o != nil && !IsNil(o.IsLocked) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsLocked gets a reference to the given bool and assigns it to the IsLocked field.
-func (o *OrganizationDetailsDto) SetIsLocked(v bool) {
-	o.IsLocked = &v
-}
-
-// GetIsReadOnly returns the IsReadOnly field value if set, zero value otherwise.
-func (o *OrganizationDetailsDto) GetIsReadOnly() bool {
-	if o == nil || IsNil(o.IsReadOnly) {
-		var ret bool
-		return ret
-	}
-	return *o.IsReadOnly
-}
-
-// GetIsReadOnlyOk returns a tuple with the IsReadOnly field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrganizationDetailsDto) GetIsReadOnlyOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsReadOnly) {
-		return nil, false
-	}
-	return o.IsReadOnly, true
-}
-
-// HasIsReadOnly returns a boolean if a field has been set.
-func (o *OrganizationDetailsDto) HasIsReadOnly() bool {
-	if o != nil && !IsNil(o.IsReadOnly) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsReadOnly gets a reference to the given bool and assigns it to the IsReadOnly field.
-func (o *OrganizationDetailsDto) SetIsReadOnly(v bool) {
-	o.IsReadOnly = &v
-}
-
-// GetIsNew returns the IsNew field value if set, zero value otherwise.
-func (o *OrganizationDetailsDto) GetIsNew() bool {
-	if o == nil || IsNil(o.IsNew) {
-		var ret bool
-		return ret
-	}
-	return *o.IsNew
-}
-
-// GetIsNewOk returns a tuple with the IsNew field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrganizationDetailsDto) GetIsNewOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsNew) {
-		return nil, false
-	}
-	return o.IsNew, true
-}
-
-// HasIsNew returns a boolean if a field has been set.
-func (o *OrganizationDetailsDto) HasIsNew() bool {
-	if o != nil && !IsNil(o.IsNew) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsNew gets a reference to the given bool and assigns it to the IsNew field.
-func (o *OrganizationDetailsDto) SetIsNew(v bool) {
-	o.IsNew = &v
-}
-
-// GetTrialEnded returns the TrialEnded field value if set, zero value otherwise.
-func (o *OrganizationDetailsDto) GetTrialEnded() bool {
-	if o == nil || IsNil(o.TrialEnded) {
-		var ret bool
-		return ret
-	}
-	return *o.TrialEnded
-}
-
-// GetTrialEndedOk returns a tuple with the TrialEnded field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrganizationDetailsDto) GetTrialEndedOk() (*bool, bool) {
-	if o == nil || IsNil(o.TrialEnded) {
-		return nil, false
-	}
-	return o.TrialEnded, true
-}
-
-// HasTrialEnded returns a boolean if a field has been set.
-func (o *OrganizationDetailsDto) HasTrialEnded() bool {
-	if o != nil && !IsNil(o.TrialEnded) {
-		return true
-	}
-
-	return false
-}
-
-// SetTrialEnded gets a reference to the given bool and assigns it to the TrialEnded field.
-func (o *OrganizationDetailsDto) SetTrialEnded(v bool) {
-	o.TrialEnded = &v
-}
-
-// GetUsers returns the Users field value if set, zero value otherwise.
-func (o *OrganizationDetailsDto) GetUsers() int32 {
-	if o == nil || IsNil(o.Users) {
-		var ret int32
-		return ret
-	}
-	return *o.Users
-}
-
-// GetUsersOk returns a tuple with the Users field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrganizationDetailsDto) GetUsersOk() (*int32, bool) {
-	if o == nil || IsNil(o.Users) {
-		return nil, false
-	}
-	return o.Users, true
-}
-
-// HasUsers returns a boolean if a field has been set.
-func (o *OrganizationDetailsDto) HasUsers() bool {
-	if o != nil && !IsNil(o.Users) {
-		return true
-	}
-
-	return false
-}
-
-// SetUsers gets a reference to the given int32 and assigns it to the Users field.
-func (o *OrganizationDetailsDto) SetUsers(v int32) {
-	o.Users = &v
 }
 
 // GetProjects returns the Projects field value if set, zero value otherwise.
@@ -794,6 +340,7 @@ func (o *OrganizationDetailsDto) HasCreatedAt() bool {
 func (o *OrganizationDetailsDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
+
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *OrganizationDetailsDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -802,154 +349,6 @@ func (o *OrganizationDetailsDto) SetCreatedAtNil() {
 // UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 func (o *OrganizationDetailsDto) UnsetCreatedAt() {
 	o.CreatedAt.Unset()
-}
-
-// GetPartnerId returns the PartnerId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationDetailsDto) GetPartnerId() int32 {
-	if o == nil || IsNil(o.PartnerId.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.PartnerId.Get()
-}
-
-// GetPartnerIdOk returns a tuple with the PartnerId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationDetailsDto) GetPartnerIdOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.PartnerId.Get(), o.PartnerId.IsSet()
-}
-
-// HasPartnerId returns a boolean if a field has been set.
-func (o *OrganizationDetailsDto) HasPartnerId() bool {
-	if o != nil && o.PartnerId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPartnerId gets a reference to the given NullableInt32 and assigns it to the PartnerId field.
-func (o *OrganizationDetailsDto) SetPartnerId(v int32) {
-	o.PartnerId.Set(&v)
-}
-// SetPartnerIdNil sets the value for PartnerId to be an explicit nil
-func (o *OrganizationDetailsDto) SetPartnerIdNil() {
-	o.PartnerId.Set(nil)
-}
-
-// UnsetPartnerId ensures that no value is present for PartnerId, not even an explicit nil
-func (o *OrganizationDetailsDto) UnsetPartnerId() {
-	o.PartnerId.Unset()
-}
-
-// GetPartnerName returns the PartnerName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationDetailsDto) GetPartnerName() string {
-	if o == nil || IsNil(o.PartnerName.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.PartnerName.Get()
-}
-
-// GetPartnerNameOk returns a tuple with the PartnerName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationDetailsDto) GetPartnerNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.PartnerName.Get(), o.PartnerName.IsSet()
-}
-
-// HasPartnerName returns a boolean if a field has been set.
-func (o *OrganizationDetailsDto) HasPartnerName() bool {
-	if o != nil && o.PartnerName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPartnerName gets a reference to the given NullableString and assigns it to the PartnerName field.
-func (o *OrganizationDetailsDto) SetPartnerName(v string) {
-	o.PartnerName.Set(&v)
-}
-// SetPartnerNameNil sets the value for PartnerName to be an explicit nil
-func (o *OrganizationDetailsDto) SetPartnerNameNil() {
-	o.PartnerName.Set(nil)
-}
-
-// UnsetPartnerName ensures that no value is present for PartnerName, not even an explicit nil
-func (o *OrganizationDetailsDto) UnsetPartnerName() {
-	o.PartnerName.Unset()
-}
-
-// GetPartner returns the Partner field value if set, zero value otherwise.
-func (o *OrganizationDetailsDto) GetPartner() PartnerDetailsForOrganizationsDto {
-	if o == nil || IsNil(o.Partner) {
-		var ret PartnerDetailsForOrganizationsDto
-		return ret
-	}
-	return *o.Partner
-}
-
-// GetPartnerOk returns a tuple with the Partner field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrganizationDetailsDto) GetPartnerOk() (*PartnerDetailsForOrganizationsDto, bool) {
-	if o == nil || IsNil(o.Partner) {
-		return nil, false
-	}
-	return o.Partner, true
-}
-
-// HasPartner returns a boolean if a field has been set.
-func (o *OrganizationDetailsDto) HasPartner() bool {
-	if o != nil && !IsNil(o.Partner) {
-		return true
-	}
-
-	return false
-}
-
-// SetPartner gets a reference to the given PartnerDetailsForOrganizationsDto and assigns it to the Partner field.
-func (o *OrganizationDetailsDto) SetPartner(v PartnerDetailsForOrganizationsDto) {
-	o.Partner = &v
-}
-
-// GetDiscountRate returns the DiscountRate field value if set, zero value otherwise.
-func (o *OrganizationDetailsDto) GetDiscountRate() float64 {
-	if o == nil || IsNil(o.DiscountRate) {
-		var ret float64
-		return ret
-	}
-	return *o.DiscountRate
-}
-
-// GetDiscountRateOk returns a tuple with the DiscountRate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrganizationDetailsDto) GetDiscountRateOk() (*float64, bool) {
-	if o == nil || IsNil(o.DiscountRate) {
-		return nil, false
-	}
-	return o.DiscountRate, true
-}
-
-// HasDiscountRate returns a boolean if a field has been set.
-func (o *OrganizationDetailsDto) HasDiscountRate() bool {
-	if o != nil && !IsNil(o.DiscountRate) {
-		return true
-	}
-
-	return false
-}
-
-// SetDiscountRate gets a reference to the given float64 and assigns it to the DiscountRate field.
-func (o *OrganizationDetailsDto) SetDiscountRate(v float64) {
-	o.DiscountRate = &v
 }
 
 // GetBoundRules returns the BoundRules field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -986,7 +385,7 @@ func (o *OrganizationDetailsDto) SetBoundRules(v []PrometheusEntity) {
 }
 
 func (o OrganizationDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1007,42 +406,6 @@ func (o OrganizationDetailsDto) ToMap() (map[string]interface{}, error) {
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
 	}
-	if o.BillingEmail.IsSet() {
-		toSerialize["billingEmail"] = o.BillingEmail.Get()
-	}
-	if o.Phone.IsSet() {
-		toSerialize["phone"] = o.Phone.Get()
-	}
-	if o.Country.IsSet() {
-		toSerialize["country"] = o.Country.Get()
-	}
-	if o.City.IsSet() {
-		toSerialize["city"] = o.City.Get()
-	}
-	if o.VatNumber.IsSet() {
-		toSerialize["vatNumber"] = o.VatNumber.Get()
-	}
-	if o.Address.IsSet() {
-		toSerialize["address"] = o.Address.Get()
-	}
-	if !IsNil(o.IsEligibleUpdateSubscription) {
-		toSerialize["isEligibleUpdateSubscription"] = o.IsEligibleUpdateSubscription
-	}
-	if !IsNil(o.IsLocked) {
-		toSerialize["isLocked"] = o.IsLocked
-	}
-	if !IsNil(o.IsReadOnly) {
-		toSerialize["isReadOnly"] = o.IsReadOnly
-	}
-	if !IsNil(o.IsNew) {
-		toSerialize["isNew"] = o.IsNew
-	}
-	if !IsNil(o.TrialEnded) {
-		toSerialize["trialEnded"] = o.TrialEnded
-	}
-	if !IsNil(o.Users) {
-		toSerialize["users"] = o.Users
-	}
 	if !IsNil(o.Projects) {
 		toSerialize["projects"] = o.Projects
 	}
@@ -1055,22 +418,44 @@ func (o OrganizationDetailsDto) ToMap() (map[string]interface{}, error) {
 	if o.CreatedAt.IsSet() {
 		toSerialize["createdAt"] = o.CreatedAt.Get()
 	}
-	if o.PartnerId.IsSet() {
-		toSerialize["partnerId"] = o.PartnerId.Get()
-	}
-	if o.PartnerName.IsSet() {
-		toSerialize["partnerName"] = o.PartnerName.Get()
-	}
-	if !IsNil(o.Partner) {
-		toSerialize["partner"] = o.Partner
-	}
-	if !IsNil(o.DiscountRate) {
-		toSerialize["discountRate"] = o.DiscountRate
-	}
 	if o.BoundRules != nil {
 		toSerialize["boundRules"] = o.BoundRules
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OrganizationDetailsDto) UnmarshalJSON(data []byte) (err error) {
+	varOrganizationDetailsDto := _OrganizationDetailsDto{}
+
+	err = json.Unmarshal(data, &varOrganizationDetailsDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationDetailsDto(varOrganizationDetailsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "fullName")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "servers")
+		delete(additionalProperties, "cloudCredentials")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "boundRules")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOrganizationDetailsDto struct {
@@ -1108,5 +493,3 @@ func (v *NullableOrganizationDetailsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

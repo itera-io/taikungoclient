@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,42 +21,43 @@ var _ MappedNullable = &ServerListDto{}
 
 // ServerListDto struct for ServerListDto
 type ServerListDto struct {
-	Id int32 `json:"id"`
-	Name string `json:"name"`
-	ProjectName string `json:"projectName"`
-	OrganizationName string `json:"organizationName"`
-	OrganizationId int32 `json:"organizationId"`
-	ProjectId int32 `json:"projectId"`
-	IpAddress NullableString `json:"ipAddress"`
-	DiskSize float64 `json:"diskSize"`
-	KubernetesHealth NullableString `json:"kubernetesHealth"`
-	Cpu int32 `json:"cpu"`
-	Ram float64 `json:"ram"`
-	Role CloudRole `json:"role"`
-	Status string `json:"status"`
-	CreatedAt string `json:"createdAt"`
-	CloudType CloudType `json:"cloudType"`
-	CreatedBy string `json:"createdBy"`
-	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
-	SpotPrice float64 `json:"spotPrice"`
-	SpotInstance bool `json:"spotInstance"`
-	ShutOff bool `json:"shutOff"`
-	UseLocalDisk *bool `json:"useLocalDisk,omitempty"`
-	AutoscalingGroup NullableString `json:"autoscalingGroup"`
-	ProviderID NullableString `json:"providerID"`
-	InstanceId NullableString `json:"instanceId"`
-	AwsHostName NullableString `json:"awsHostName"`
-	AvailabilityZone NullableString `json:"availabilityZone"`
-	Hypervisor NullableString `json:"hypervisor"`
-	HypervisorId NullableString `json:"hypervisorId"`
-	ProxmoxRole ProxmoxRole `json:"proxmoxRole"`
-	ProxmoxExtraDiskSize int32 `json:"proxmoxExtraDiskSize"`
-	ActionButtons *ServerActionButtonVisibilityDto `json:"actionButtons,omitempty"`
-	KubernetesNodeLabels []KubernetesNodeLabelsDto `json:"kubernetesNodeLabels"`
-	ReplicaCount NullableInt32 `json:"replicaCount"`
-	WasmEnabled bool `json:"wasmEnabled"`
-	Flavor NullableString `json:"flavor"`
+	Id                   int32                            `json:"id"`
+	Name                 string                           `json:"name"`
+	ProjectName          string                           `json:"projectName"`
+	OrganizationName     string                           `json:"organizationName"`
+	OrganizationId       int32                            `json:"organizationId"`
+	ProjectId            int32                            `json:"projectId"`
+	IpAddress            NullableString                   `json:"ipAddress,omitempty"`
+	DiskSize             float64                          `json:"diskSize"`
+	KubernetesHealth     NullableString                   `json:"kubernetesHealth"`
+	Cpu                  int32                            `json:"cpu"`
+	Ram                  float64                          `json:"ram"`
+	Role                 CloudRole                        `json:"role"`
+	Status               string                           `json:"status"`
+	CreatedAt            NullableString                   `json:"createdAt"`
+	CloudType            CloudType                        `json:"cloudType"`
+	CreatedBy            string                           `json:"createdBy"`
+	LastModified         NullableString                   `json:"lastModified"`
+	LastModifiedBy       NullableString                   `json:"lastModifiedBy"`
+	SpotPrice            float64                          `json:"spotPrice"`
+	SpotInstance         bool                             `json:"spotInstance"`
+	ShutOff              bool                             `json:"shutOff"`
+	UseLocalDisk         *bool                            `json:"useLocalDisk,omitempty"`
+	AutoscalingGroup     NullableString                   `json:"autoscalingGroup"`
+	ProviderID           NullableString                   `json:"providerID"`
+	InstanceId           NullableString                   `json:"instanceId"`
+	AwsHostName          NullableString                   `json:"awsHostName"`
+	AvailabilityZone     NullableString                   `json:"availabilityZone"`
+	Hypervisor           NullableString                   `json:"hypervisor"`
+	HypervisorId         NullableString                   `json:"hypervisorId"`
+	ProxmoxRole          ProxmoxRole                      `json:"proxmoxRole"`
+	ProxmoxExtraDiskSize int32                            `json:"proxmoxExtraDiskSize"`
+	ActionButtons        *ServerActionButtonVisibilityDto `json:"actionButtons,omitempty"`
+	KubernetesNodeLabels []KubernetesNodeLabelsDto        `json:"kubernetesNodeLabels"`
+	ReplicaCount         NullableInt32                    `json:"replicaCount"`
+	WasmEnabled          bool                             `json:"wasmEnabled"`
+	Flavor               NullableString                   `json:"flavor"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ServerListDto ServerListDto
@@ -66,7 +66,7 @@ type _ServerListDto ServerListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServerListDto(id int32, name string, projectName string, organizationName string, organizationId int32, projectId int32, ipAddress NullableString, diskSize float64, kubernetesHealth NullableString, cpu int32, ram float64, role CloudRole, status string, createdAt string, cloudType CloudType, createdBy string, lastModified NullableString, lastModifiedBy NullableString, spotPrice float64, spotInstance bool, shutOff bool, autoscalingGroup NullableString, providerID NullableString, instanceId NullableString, awsHostName NullableString, availabilityZone NullableString, hypervisor NullableString, hypervisorId NullableString, proxmoxRole ProxmoxRole, proxmoxExtraDiskSize int32, kubernetesNodeLabels []KubernetesNodeLabelsDto, replicaCount NullableInt32, wasmEnabled bool, flavor NullableString) *ServerListDto {
+func NewServerListDto(id int32, name string, projectName string, organizationName string, organizationId int32, projectId int32, diskSize float64, kubernetesHealth NullableString, cpu int32, ram float64, role CloudRole, status string, createdAt NullableString, cloudType CloudType, createdBy string, lastModified NullableString, lastModifiedBy NullableString, spotPrice float64, spotInstance bool, shutOff bool, autoscalingGroup NullableString, providerID NullableString, instanceId NullableString, awsHostName NullableString, availabilityZone NullableString, hypervisor NullableString, hypervisorId NullableString, proxmoxRole ProxmoxRole, proxmoxExtraDiskSize int32, kubernetesNodeLabels []KubernetesNodeLabelsDto, replicaCount NullableInt32, wasmEnabled bool, flavor NullableString) *ServerListDto {
 	this := ServerListDto{}
 	this.Id = id
 	this.Name = name
@@ -74,7 +74,6 @@ func NewServerListDto(id int32, name string, projectName string, organizationNam
 	this.OrganizationName = organizationName
 	this.OrganizationId = organizationId
 	this.ProjectId = projectId
-	this.IpAddress = ipAddress
 	this.DiskSize = diskSize
 	this.KubernetesHealth = kubernetesHealth
 	this.Cpu = cpu
@@ -257,18 +256,16 @@ func (o *ServerListDto) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetIpAddress returns the IpAddress field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetIpAddress returns the IpAddress field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServerListDto) GetIpAddress() string {
-	if o == nil || o.IpAddress.Get() == nil {
+	if o == nil || IsNil(o.IpAddress.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.IpAddress.Get()
 }
 
-// GetIpAddressOk returns a tuple with the IpAddress field value
+// GetIpAddressOk returns a tuple with the IpAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerListDto) GetIpAddressOk() (*string, bool) {
@@ -278,9 +275,28 @@ func (o *ServerListDto) GetIpAddressOk() (*string, bool) {
 	return o.IpAddress.Get(), o.IpAddress.IsSet()
 }
 
-// SetIpAddress sets field value
+// HasIpAddress returns a boolean if a field has been set.
+func (o *ServerListDto) HasIpAddress() bool {
+	if o != nil && o.IpAddress.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIpAddress gets a reference to the given NullableString and assigns it to the IpAddress field.
 func (o *ServerListDto) SetIpAddress(v string) {
 	o.IpAddress.Set(&v)
+}
+
+// SetIpAddressNil sets the value for IpAddress to be an explicit nil
+func (o *ServerListDto) SetIpAddressNil() {
+	o.IpAddress.Set(nil)
+}
+
+// UnsetIpAddress ensures that no value is present for IpAddress, not even an explicit nil
+func (o *ServerListDto) UnsetIpAddress() {
+	o.IpAddress.Unset()
 }
 
 // GetDiskSize returns the DiskSize field value
@@ -430,27 +446,29 @@ func (o *ServerListDto) SetStatus(v string) {
 }
 
 // GetCreatedAt returns the CreatedAt field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ServerListDto) GetCreatedAt() string {
-	if o == nil {
+	if o == nil || o.CreatedAt.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.CreatedAt
+	return *o.CreatedAt.Get()
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerListDto) GetCreatedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CreatedAt, true
+	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
 // SetCreatedAt sets field value
 func (o *ServerListDto) SetCreatedAt(v string) {
-	o.CreatedAt = v
+	o.CreatedAt.Set(&v)
 }
 
 // GetCloudType returns the CloudType field value
@@ -1020,7 +1038,7 @@ func (o *ServerListDto) SetFlavor(v string) {
 }
 
 func (o ServerListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1035,14 +1053,16 @@ func (o ServerListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["organizationName"] = o.OrganizationName
 	toSerialize["organizationId"] = o.OrganizationId
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["ipAddress"] = o.IpAddress.Get()
+	if o.IpAddress.IsSet() {
+		toSerialize["ipAddress"] = o.IpAddress.Get()
+	}
 	toSerialize["diskSize"] = o.DiskSize
 	toSerialize["kubernetesHealth"] = o.KubernetesHealth.Get()
 	toSerialize["cpu"] = o.Cpu
 	toSerialize["ram"] = o.Ram
 	toSerialize["role"] = o.Role
 	toSerialize["status"] = o.Status
-	toSerialize["createdAt"] = o.CreatedAt
+	toSerialize["createdAt"] = o.CreatedAt.Get()
 	toSerialize["cloudType"] = o.CloudType
 	toSerialize["createdBy"] = o.CreatedBy
 	toSerialize["lastModified"] = o.LastModified.Get()
@@ -1069,6 +1089,11 @@ func (o ServerListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["replicaCount"] = o.ReplicaCount.Get()
 	toSerialize["wasmEnabled"] = o.WasmEnabled
 	toSerialize["flavor"] = o.Flavor.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -1083,7 +1108,6 @@ func (o *ServerListDto) UnmarshalJSON(data []byte) (err error) {
 		"organizationName",
 		"organizationId",
 		"projectId",
-		"ipAddress",
 		"diskSize",
 		"kubernetesHealth",
 		"cpu",
@@ -1118,10 +1142,10 @@ func (o *ServerListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -1129,15 +1153,55 @@ func (o *ServerListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varServerListDto := _ServerListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varServerListDto)
+	err = json.Unmarshal(data, &varServerListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ServerListDto(varServerListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "ipAddress")
+		delete(additionalProperties, "diskSize")
+		delete(additionalProperties, "kubernetesHealth")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "ram")
+		delete(additionalProperties, "role")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "cloudType")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "spotPrice")
+		delete(additionalProperties, "spotInstance")
+		delete(additionalProperties, "shutOff")
+		delete(additionalProperties, "useLocalDisk")
+		delete(additionalProperties, "autoscalingGroup")
+		delete(additionalProperties, "providerID")
+		delete(additionalProperties, "instanceId")
+		delete(additionalProperties, "awsHostName")
+		delete(additionalProperties, "availabilityZone")
+		delete(additionalProperties, "hypervisor")
+		delete(additionalProperties, "hypervisorId")
+		delete(additionalProperties, "proxmoxRole")
+		delete(additionalProperties, "proxmoxExtraDiskSize")
+		delete(additionalProperties, "actionButtons")
+		delete(additionalProperties, "kubernetesNodeLabels")
+		delete(additionalProperties, "replicaCount")
+		delete(additionalProperties, "wasmEnabled")
+		delete(additionalProperties, "flavor")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -1177,5 +1241,3 @@ func (v *NullableServerListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

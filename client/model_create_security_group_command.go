@@ -20,13 +20,16 @@ var _ MappedNullable = &CreateSecurityGroupCommand{}
 
 // CreateSecurityGroupCommand struct for CreateSecurityGroupCommand
 type CreateSecurityGroupCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	Protocol *SecurityGroupProtocol `json:"protocol,omitempty"`
-	PortMinRange *int32 `json:"portMinRange,omitempty"`
-	PortMaxRange *int32 `json:"portMaxRange,omitempty"`
-	RemoteIpPrefix NullableString `json:"remoteIpPrefix,omitempty"`
-	StandAloneProfileId *int32 `json:"standAloneProfileId,omitempty"`
+	Name                 NullableString         `json:"name,omitempty"`
+	Protocol             *SecurityGroupProtocol `json:"protocol,omitempty"`
+	PortMinRange         *int32                 `json:"portMinRange,omitempty"`
+	PortMaxRange         *int32                 `json:"portMaxRange,omitempty"`
+	RemoteIpPrefix       NullableString         `json:"remoteIpPrefix,omitempty"`
+	StandAloneProfileId  *int32                 `json:"standAloneProfileId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateSecurityGroupCommand CreateSecurityGroupCommand
 
 // NewCreateSecurityGroupCommand instantiates a new CreateSecurityGroupCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +80,7 @@ func (o *CreateSecurityGroupCommand) HasName() bool {
 func (o *CreateSecurityGroupCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateSecurityGroupCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -215,6 +219,7 @@ func (o *CreateSecurityGroupCommand) HasRemoteIpPrefix() bool {
 func (o *CreateSecurityGroupCommand) SetRemoteIpPrefix(v string) {
 	o.RemoteIpPrefix.Set(&v)
 }
+
 // SetRemoteIpPrefixNil sets the value for RemoteIpPrefix to be an explicit nil
 func (o *CreateSecurityGroupCommand) SetRemoteIpPrefixNil() {
 	o.RemoteIpPrefix.Set(nil)
@@ -258,7 +263,7 @@ func (o *CreateSecurityGroupCommand) SetStandAloneProfileId(v int32) {
 }
 
 func (o CreateSecurityGroupCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -285,7 +290,38 @@ func (o CreateSecurityGroupCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StandAloneProfileId) {
 		toSerialize["standAloneProfileId"] = o.StandAloneProfileId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateSecurityGroupCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateSecurityGroupCommand := _CreateSecurityGroupCommand{}
+
+	err = json.Unmarshal(data, &varCreateSecurityGroupCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateSecurityGroupCommand(varCreateSecurityGroupCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "protocol")
+		delete(additionalProperties, "portMinRange")
+		delete(additionalProperties, "portMaxRange")
+		delete(additionalProperties, "remoteIpPrefix")
+		delete(additionalProperties, "standAloneProfileId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateSecurityGroupCommand struct {
@@ -323,5 +359,3 @@ func (v *NullableCreateSecurityGroupCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

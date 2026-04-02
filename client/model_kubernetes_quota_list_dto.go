@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,16 +21,17 @@ var _ MappedNullable = &KubernetesQuotaListDto{}
 
 // KubernetesQuotaListDto struct for KubernetesQuotaListDto
 type KubernetesQuotaListDto struct {
-	SumOfCpu NullableFloat64 `json:"sumOfCpu"`
-	SumOfCpuUsage float64 `json:"sumOfCpuUsage"`
-	SumOfCpuRequests NullableFloat64 `json:"sumOfCpuRequests"`
-	SumOfCpuRequestsUsage float64 `json:"sumOfCpuRequestsUsage"`
-	SumOfRamInGb NullableFloat64 `json:"sumOfRamInGb"`
-	SumOfRamUsage float64 `json:"sumOfRamUsage"`
-	SumOfRamRequestsInGb NullableFloat64 `json:"sumOfRamRequestsInGb"`
-	SumOfRamRequestsUsage float64 `json:"sumOfRamRequestsUsage"`
-	PodsCapacity NullableInt32 `json:"podsCapacity"`
-	PodsTotalCount int32 `json:"podsTotalCount"`
+	SumOfCpu              NullableFloat64 `json:"sumOfCpu"`
+	SumOfCpuUsage         float64         `json:"sumOfCpuUsage"`
+	SumOfCpuRequests      NullableFloat64 `json:"sumOfCpuRequests"`
+	SumOfCpuRequestsUsage float64         `json:"sumOfCpuRequestsUsage"`
+	SumOfRamInGb          NullableFloat64 `json:"sumOfRamInGb"`
+	SumOfRamUsage         float64         `json:"sumOfRamUsage"`
+	SumOfRamRequestsInGb  NullableFloat64 `json:"sumOfRamRequestsInGb"`
+	SumOfRamRequestsUsage float64         `json:"sumOfRamRequestsUsage"`
+	PodsCapacity          NullableInt32   `json:"podsCapacity"`
+	PodsTotalCount        int32           `json:"podsTotalCount"`
+	AdditionalProperties  map[string]interface{}
 }
 
 type _KubernetesQuotaListDto KubernetesQuotaListDto
@@ -314,7 +314,7 @@ func (o *KubernetesQuotaListDto) SetPodsTotalCount(v int32) {
 }
 
 func (o KubernetesQuotaListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -333,6 +333,11 @@ func (o KubernetesQuotaListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["sumOfRamRequestsUsage"] = o.SumOfRamRequestsUsage
 	toSerialize["podsCapacity"] = o.PodsCapacity.Get()
 	toSerialize["podsTotalCount"] = o.PodsTotalCount
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -358,10 +363,10 @@ func (o *KubernetesQuotaListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -369,15 +374,29 @@ func (o *KubernetesQuotaListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varKubernetesQuotaListDto := _KubernetesQuotaListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKubernetesQuotaListDto)
+	err = json.Unmarshal(data, &varKubernetesQuotaListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubernetesQuotaListDto(varKubernetesQuotaListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "sumOfCpu")
+		delete(additionalProperties, "sumOfCpuUsage")
+		delete(additionalProperties, "sumOfCpuRequests")
+		delete(additionalProperties, "sumOfCpuRequestsUsage")
+		delete(additionalProperties, "sumOfRamInGb")
+		delete(additionalProperties, "sumOfRamUsage")
+		delete(additionalProperties, "sumOfRamRequestsInGb")
+		delete(additionalProperties, "sumOfRamRequestsUsage")
+		delete(additionalProperties, "podsCapacity")
+		delete(additionalProperties, "podsTotalCount")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -417,5 +436,3 @@ func (v *NullableKubernetesQuotaListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

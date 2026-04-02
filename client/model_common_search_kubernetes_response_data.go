@@ -20,13 +20,16 @@ var _ MappedNullable = &CommonSearchKubernetesResponseData{}
 
 // CommonSearchKubernetesResponseData struct for CommonSearchKubernetesResponseData
 type CommonSearchKubernetesResponseData struct {
-	MetadataName NullableString `json:"metadataName,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	ProjectId *int32 `json:"projectId,omitempty"`
-	ProjectName NullableString `json:"projectName,omitempty"`
-	OrganizationId *int32 `json:"organizationId,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
+	MetadataName         NullableString `json:"metadataName,omitempty"`
+	Namespace            NullableString `json:"namespace,omitempty"`
+	ProjectId            *int32         `json:"projectId,omitempty"`
+	ProjectName          NullableString `json:"projectName,omitempty"`
+	OrganizationId       *int32         `json:"organizationId,omitempty"`
+	OrganizationName     NullableString `json:"organizationName,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CommonSearchKubernetesResponseData CommonSearchKubernetesResponseData
 
 // NewCommonSearchKubernetesResponseData instantiates a new CommonSearchKubernetesResponseData object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +80,7 @@ func (o *CommonSearchKubernetesResponseData) HasMetadataName() bool {
 func (o *CommonSearchKubernetesResponseData) SetMetadataName(v string) {
 	o.MetadataName.Set(&v)
 }
+
 // SetMetadataNameNil sets the value for MetadataName to be an explicit nil
 func (o *CommonSearchKubernetesResponseData) SetMetadataNameNil() {
 	o.MetadataName.Set(nil)
@@ -119,6 +123,7 @@ func (o *CommonSearchKubernetesResponseData) HasNamespace() bool {
 func (o *CommonSearchKubernetesResponseData) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
+
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *CommonSearchKubernetesResponseData) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -193,6 +198,7 @@ func (o *CommonSearchKubernetesResponseData) HasProjectName() bool {
 func (o *CommonSearchKubernetesResponseData) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
+
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *CommonSearchKubernetesResponseData) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -267,6 +273,7 @@ func (o *CommonSearchKubernetesResponseData) HasOrganizationName() bool {
 func (o *CommonSearchKubernetesResponseData) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
+
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *CommonSearchKubernetesResponseData) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -278,7 +285,7 @@ func (o *CommonSearchKubernetesResponseData) UnsetOrganizationName() {
 }
 
 func (o CommonSearchKubernetesResponseData) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -305,7 +312,38 @@ func (o CommonSearchKubernetesResponseData) ToMap() (map[string]interface{}, err
 	if o.OrganizationName.IsSet() {
 		toSerialize["organizationName"] = o.OrganizationName.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CommonSearchKubernetesResponseData) UnmarshalJSON(data []byte) (err error) {
+	varCommonSearchKubernetesResponseData := _CommonSearchKubernetesResponseData{}
+
+	err = json.Unmarshal(data, &varCommonSearchKubernetesResponseData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CommonSearchKubernetesResponseData(varCommonSearchKubernetesResponseData)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "metadataName")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCommonSearchKubernetesResponseData struct {
@@ -343,5 +381,3 @@ func (v *NullableCommonSearchKubernetesResponseData) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

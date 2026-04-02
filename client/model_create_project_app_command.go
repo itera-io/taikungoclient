@@ -20,16 +20,22 @@ var _ MappedNullable = &CreateProjectAppCommand{}
 
 // CreateProjectAppCommand struct for CreateProjectAppCommand
 type CreateProjectAppCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	ProjectId *int32 `json:"projectId,omitempty"`
-	CatalogAppId *int32 `json:"catalogAppId,omitempty"`
-	ExtraValues NullableString `json:"extraValues,omitempty"`
-	AutoSync *bool `json:"autoSync,omitempty"`
-	TaikunLinkEnabled *bool `json:"taikunLinkEnabled,omitempty"`
-	Timeout NullableInt32 `json:"timeout,omitempty"`
-	Parameters []ProjectAppParamsDto `json:"parameters,omitempty"`
+	Name                 NullableString        `json:"name,omitempty"`
+	Namespace            NullableString        `json:"namespace,omitempty"`
+	ProjectId            *int32                `json:"projectId,omitempty"`
+	CatalogAppId         *int32                `json:"catalogAppId,omitempty"`
+	ExtraValues          NullableString        `json:"extraValues,omitempty"`
+	AutoSync             *bool                 `json:"autoSync,omitempty"`
+	TaikunLinkEnabled    *bool                 `json:"taikunLinkEnabled,omitempty"`
+	Timeout              NullableInt32         `json:"timeout,omitempty"`
+	CreatePullSecret     *bool                 `json:"createPullSecret,omitempty"`
+	PullSecretName       NullableString        `json:"pullSecretName,omitempty"`
+	Parameters           []ProjectAppParamsDto `json:"parameters,omitempty"`
+	Labels               []PullSecretLabels    `json:"labels,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateProjectAppCommand CreateProjectAppCommand
 
 // NewCreateProjectAppCommand instantiates a new CreateProjectAppCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -80,6 +86,7 @@ func (o *CreateProjectAppCommand) HasName() bool {
 func (o *CreateProjectAppCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateProjectAppCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -122,6 +129,7 @@ func (o *CreateProjectAppCommand) HasNamespace() bool {
 func (o *CreateProjectAppCommand) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
+
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *CreateProjectAppCommand) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -228,6 +236,7 @@ func (o *CreateProjectAppCommand) HasExtraValues() bool {
 func (o *CreateProjectAppCommand) SetExtraValues(v string) {
 	o.ExtraValues.Set(&v)
 }
+
 // SetExtraValuesNil sets the value for ExtraValues to be an explicit nil
 func (o *CreateProjectAppCommand) SetExtraValuesNil() {
 	o.ExtraValues.Set(nil)
@@ -334,6 +343,7 @@ func (o *CreateProjectAppCommand) HasTimeout() bool {
 func (o *CreateProjectAppCommand) SetTimeout(v int32) {
 	o.Timeout.Set(&v)
 }
+
 // SetTimeoutNil sets the value for Timeout to be an explicit nil
 func (o *CreateProjectAppCommand) SetTimeoutNil() {
 	o.Timeout.Set(nil)
@@ -342,6 +352,81 @@ func (o *CreateProjectAppCommand) SetTimeoutNil() {
 // UnsetTimeout ensures that no value is present for Timeout, not even an explicit nil
 func (o *CreateProjectAppCommand) UnsetTimeout() {
 	o.Timeout.Unset()
+}
+
+// GetCreatePullSecret returns the CreatePullSecret field value if set, zero value otherwise.
+func (o *CreateProjectAppCommand) GetCreatePullSecret() bool {
+	if o == nil || IsNil(o.CreatePullSecret) {
+		var ret bool
+		return ret
+	}
+	return *o.CreatePullSecret
+}
+
+// GetCreatePullSecretOk returns a tuple with the CreatePullSecret field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateProjectAppCommand) GetCreatePullSecretOk() (*bool, bool) {
+	if o == nil || IsNil(o.CreatePullSecret) {
+		return nil, false
+	}
+	return o.CreatePullSecret, true
+}
+
+// HasCreatePullSecret returns a boolean if a field has been set.
+func (o *CreateProjectAppCommand) HasCreatePullSecret() bool {
+	if o != nil && !IsNil(o.CreatePullSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatePullSecret gets a reference to the given bool and assigns it to the CreatePullSecret field.
+func (o *CreateProjectAppCommand) SetCreatePullSecret(v bool) {
+	o.CreatePullSecret = &v
+}
+
+// GetPullSecretName returns the PullSecretName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateProjectAppCommand) GetPullSecretName() string {
+	if o == nil || IsNil(o.PullSecretName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PullSecretName.Get()
+}
+
+// GetPullSecretNameOk returns a tuple with the PullSecretName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateProjectAppCommand) GetPullSecretNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PullSecretName.Get(), o.PullSecretName.IsSet()
+}
+
+// HasPullSecretName returns a boolean if a field has been set.
+func (o *CreateProjectAppCommand) HasPullSecretName() bool {
+	if o != nil && o.PullSecretName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPullSecretName gets a reference to the given NullableString and assigns it to the PullSecretName field.
+func (o *CreateProjectAppCommand) SetPullSecretName(v string) {
+	o.PullSecretName.Set(&v)
+}
+
+// SetPullSecretNameNil sets the value for PullSecretName to be an explicit nil
+func (o *CreateProjectAppCommand) SetPullSecretNameNil() {
+	o.PullSecretName.Set(nil)
+}
+
+// UnsetPullSecretName ensures that no value is present for PullSecretName, not even an explicit nil
+func (o *CreateProjectAppCommand) UnsetPullSecretName() {
+	o.PullSecretName.Unset()
 }
 
 // GetParameters returns the Parameters field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -377,8 +462,41 @@ func (o *CreateProjectAppCommand) SetParameters(v []ProjectAppParamsDto) {
 	o.Parameters = v
 }
 
+// GetLabels returns the Labels field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateProjectAppCommand) GetLabels() []PullSecretLabels {
+	if o == nil {
+		var ret []PullSecretLabels
+		return ret
+	}
+	return o.Labels
+}
+
+// GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateProjectAppCommand) GetLabelsOk() ([]PullSecretLabels, bool) {
+	if o == nil || IsNil(o.Labels) {
+		return nil, false
+	}
+	return o.Labels, true
+}
+
+// HasLabels returns a boolean if a field has been set.
+func (o *CreateProjectAppCommand) HasLabels() bool {
+	if o != nil && !IsNil(o.Labels) {
+		return true
+	}
+
+	return false
+}
+
+// SetLabels gets a reference to the given []PullSecretLabels and assigns it to the Labels field.
+func (o *CreateProjectAppCommand) SetLabels(v []PullSecretLabels) {
+	o.Labels = v
+}
+
 func (o CreateProjectAppCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -411,10 +529,56 @@ func (o CreateProjectAppCommand) ToMap() (map[string]interface{}, error) {
 	if o.Timeout.IsSet() {
 		toSerialize["timeout"] = o.Timeout.Get()
 	}
+	if !IsNil(o.CreatePullSecret) {
+		toSerialize["createPullSecret"] = o.CreatePullSecret
+	}
+	if o.PullSecretName.IsSet() {
+		toSerialize["pullSecretName"] = o.PullSecretName.Get()
+	}
 	if o.Parameters != nil {
 		toSerialize["parameters"] = o.Parameters
 	}
+	if o.Labels != nil {
+		toSerialize["labels"] = o.Labels
+	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateProjectAppCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateProjectAppCommand := _CreateProjectAppCommand{}
+
+	err = json.Unmarshal(data, &varCreateProjectAppCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateProjectAppCommand(varCreateProjectAppCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "catalogAppId")
+		delete(additionalProperties, "extraValues")
+		delete(additionalProperties, "autoSync")
+		delete(additionalProperties, "taikunLinkEnabled")
+		delete(additionalProperties, "timeout")
+		delete(additionalProperties, "createPullSecret")
+		delete(additionalProperties, "pullSecretName")
+		delete(additionalProperties, "parameters")
+		delete(additionalProperties, "labels")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateProjectAppCommand struct {
@@ -452,5 +616,3 @@ func (v *NullableCreateProjectAppCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

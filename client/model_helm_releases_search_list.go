@@ -20,9 +20,12 @@ var _ MappedNullable = &HelmReleasesSearchList{}
 
 // HelmReleasesSearchList struct for HelmReleasesSearchList
 type HelmReleasesSearchList struct {
-	Data []CommonSearchKubernetesResponseData `json:"data,omitempty"`
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	Data                 []CommonSearchKubernetesResponseData `json:"data,omitempty"`
+	TotalCount           *int32                               `json:"totalCount,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _HelmReleasesSearchList HelmReleasesSearchList
 
 // NewHelmReleasesSearchList instantiates a new HelmReleasesSearchList object
 // This constructor will assign default values to properties that have it defined,
@@ -107,7 +110,7 @@ func (o *HelmReleasesSearchList) SetTotalCount(v int32) {
 }
 
 func (o HelmReleasesSearchList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -122,7 +125,34 @@ func (o HelmReleasesSearchList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *HelmReleasesSearchList) UnmarshalJSON(data []byte) (err error) {
+	varHelmReleasesSearchList := _HelmReleasesSearchList{}
+
+	err = json.Unmarshal(data, &varHelmReleasesSearchList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HelmReleasesSearchList(varHelmReleasesSearchList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableHelmReleasesSearchList struct {
@@ -160,5 +190,3 @@ func (v *NullableHelmReleasesSearchList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

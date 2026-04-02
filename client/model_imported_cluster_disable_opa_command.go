@@ -20,8 +20,11 @@ var _ MappedNullable = &ImportedClusterDisableOpaCommand{}
 
 // ImportedClusterDisableOpaCommand struct for ImportedClusterDisableOpaCommand
 type ImportedClusterDisableOpaCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
+	ProjectId            *int32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ImportedClusterDisableOpaCommand ImportedClusterDisableOpaCommand
 
 // NewImportedClusterDisableOpaCommand instantiates a new ImportedClusterDisableOpaCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,7 +76,7 @@ func (o *ImportedClusterDisableOpaCommand) SetProjectId(v int32) {
 }
 
 func (o ImportedClusterDisableOpaCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -85,7 +88,33 @@ func (o ImportedClusterDisableOpaCommand) ToMap() (map[string]interface{}, error
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ImportedClusterDisableOpaCommand) UnmarshalJSON(data []byte) (err error) {
+	varImportedClusterDisableOpaCommand := _ImportedClusterDisableOpaCommand{}
+
+	err = json.Unmarshal(data, &varImportedClusterDisableOpaCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ImportedClusterDisableOpaCommand(varImportedClusterDisableOpaCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableImportedClusterDisableOpaCommand struct {
@@ -123,5 +152,3 @@ func (v *NullableImportedClusterDisableOpaCommand) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

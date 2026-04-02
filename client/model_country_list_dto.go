@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,8 +21,9 @@ var _ MappedNullable = &CountryListDto{}
 
 // CountryListDto struct for CountryListDto
 type CountryListDto struct {
-	Name NullableString `json:"name"`
-	IsEu bool `json:"isEu"`
+	Name                 NullableString `json:"name"`
+	IsEu                 bool           `json:"isEu"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CountryListDto CountryListDto
@@ -98,7 +98,7 @@ func (o *CountryListDto) SetIsEu(v bool) {
 }
 
 func (o CountryListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -109,6 +109,11 @@ func (o CountryListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name.Get()
 	toSerialize["isEu"] = o.IsEu
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -126,10 +131,10 @@ func (o *CountryListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -137,15 +142,21 @@ func (o *CountryListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varCountryListDto := _CountryListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCountryListDto)
+	err = json.Unmarshal(data, &varCountryListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CountryListDto(varCountryListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "isEu")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -185,5 +196,3 @@ func (v *NullableCountryListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

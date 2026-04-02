@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,61 +21,62 @@ var _ MappedNullable = &ProjectListDetailDto{}
 
 // ProjectListDetailDto struct for ProjectListDetailDto
 type ProjectListDetailDto struct {
-	Id int32 `json:"id"`
-	Name string `json:"name"`
-	IsKubernetes bool `json:"isKubernetes"`
-	IsLocked bool `json:"isLocked"`
-	IsVirtualCluster bool `json:"isVirtualCluster"`
-	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
-	HasKubeConfigFile bool `json:"hasKubeConfigFile"`
-	IsMaintenanceModeEnabled bool `json:"isMaintenanceModeEnabled"`
-	CloudCredentialName NullableString `json:"cloudCredentialName,omitempty"`
-	OrganizationName string `json:"organizationName"`
-	OrganizationId int32 `json:"organizationId"`
-	Status ProjectStatus `json:"status"`
-	Health ProjectHealth `json:"health"`
-	CloudType ECloudCredentialType `json:"cloudType"`
-	KubesprayCurrentVersion string `json:"kubesprayCurrentVersion"`
-	KubesprayTargetVersion string `json:"kubesprayTargetVersion"`
-	KubernetesCurrentVersion string `json:"kubernetesCurrentVersion"`
-	KubernetesTargetVersion string `json:"kubernetesTargetVersion"`
-	CreatedAt string `json:"createdAt"`
-	AlertsCount int32 `json:"alertsCount"`
-	TotalServersCount int32 `json:"totalServersCount"`
-	TotalStandaloneVmsCount int32 `json:"totalStandaloneVmsCount"`
-	BoundUsers []UserDto `json:"boundUsers"`
-	CreatedBy string `json:"createdBy"`
-	LastModified NullableString `json:"lastModified"`
-	ExpiredAt NullableString `json:"expiredAt"`
-	DeleteOnExpiration bool `json:"deleteOnExpiration"`
-	CertificateExpiredAt NullableString `json:"certificateExpiredAt"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
-	QuotaId int32 `json:"quotaId"`
-	AllowFullSpotKubernetes bool `json:"allowFullSpotKubernetes"`
-	AllowSpotWorkers bool `json:"allowSpotWorkers"`
-	AllowSpotVMs bool `json:"allowSpotVMs"`
-	MaxSpotPrice NullableFloat64 `json:"maxSpotPrice"`
-	ProjectAction bool `json:"projectAction"`
-	HasExpirationWarning bool `json:"hasExpirationWarning"`
-	TotalHourlyCost float64 `json:"totalHourlyCost"`
-	IsAutoscalingEnabled bool `json:"isAutoscalingEnabled"`
-	IsAutoscalingSpotEnabled bool `json:"isAutoscalingSpotEnabled"`
-	AiEnabled bool `json:"aiEnabled"`
-	AnyServer bool `json:"anyServer"`
-	AnyVm bool `json:"anyVm"`
-	IsBackupEnabled bool `json:"isBackupEnabled"`
-	IsProjectMaintenanceModeEnabled bool `json:"isProjectMaintenanceModeEnabled"`
-	ParentProjectId NullableInt32 `json:"parentProjectId"`
-	AlertingProfileId NullableInt32 `json:"alertingProfileId"`
-	OpaProfileId NullableInt32 `json:"opaProfileId"`
-	LockButton *ButtonStatusDto `json:"lockButton,omitempty"`
-	UnlockButton *ButtonStatusDto `json:"unlockButton,omitempty"`
-	DeleteButton *ButtonStatusDto `json:"deleteButton,omitempty"`
-	KubeInfoButton *ButtonStatusDto `json:"kubeInfoButton,omitempty"`
-	SetExpirationDateButton *ButtonStatusDto `json:"setExpirationDateButton,omitempty"`
-	ResetStatusButton *ButtonStatusDto `json:"resetStatusButton,omitempty"`
-	ImportClusterType ImportClusterType `json:"importClusterType"`
-	EImportClusterType *EImportClusterType `json:"eImportClusterType,omitempty"`
+	Id                              int32                `json:"id"`
+	Name                            string               `json:"name"`
+	IsKubernetes                    bool                 `json:"isKubernetes"`
+	IsLocked                        bool                 `json:"isLocked"`
+	IsVirtualCluster                bool                 `json:"isVirtualCluster"`
+	IsMonitoringEnabled             bool                 `json:"isMonitoringEnabled"`
+	HasKubeConfigFile               bool                 `json:"hasKubeConfigFile"`
+	IsMaintenanceModeEnabled        bool                 `json:"isMaintenanceModeEnabled"`
+	CloudCredentialName             NullableString       `json:"cloudCredentialName,omitempty"`
+	OrganizationName                string               `json:"organizationName"`
+	OrganizationId                  int32                `json:"organizationId"`
+	Status                          ProjectStatus        `json:"status"`
+	Health                          ProjectHealth        `json:"health"`
+	CloudType                       ECloudCredentialType `json:"cloudType"`
+	KubesprayCurrentVersion         string               `json:"kubesprayCurrentVersion"`
+	KubesprayTargetVersion          string               `json:"kubesprayTargetVersion"`
+	KubernetesCurrentVersion        string               `json:"kubernetesCurrentVersion"`
+	KubernetesTargetVersion         string               `json:"kubernetesTargetVersion"`
+	CreatedAt                       string               `json:"createdAt"`
+	AlertsCount                     int32                `json:"alertsCount"`
+	TotalServersCount               int32                `json:"totalServersCount"`
+	TotalStandaloneVmsCount         int32                `json:"totalStandaloneVmsCount"`
+	BoundUsers                      []UserDto            `json:"boundUsers"`
+	CreatedBy                       string               `json:"createdBy"`
+	LastModified                    NullableString       `json:"lastModified"`
+	ExpiredAt                       NullableString       `json:"expiredAt"`
+	DeleteOnExpiration              bool                 `json:"deleteOnExpiration"`
+	CertificateExpiredAt            NullableString       `json:"certificateExpiredAt"`
+	LastModifiedBy                  NullableString       `json:"lastModifiedBy"`
+	QuotaId                         int32                `json:"quotaId"`
+	AllowFullSpotKubernetes         bool                 `json:"allowFullSpotKubernetes"`
+	AllowSpotWorkers                bool                 `json:"allowSpotWorkers"`
+	AllowSpotVMs                    bool                 `json:"allowSpotVMs"`
+	MaxSpotPrice                    NullableFloat64      `json:"maxSpotPrice"`
+	ProjectAction                   bool                 `json:"projectAction"`
+	HasExpirationWarning            bool                 `json:"hasExpirationWarning"`
+	TotalHourlyCost                 float64              `json:"totalHourlyCost"`
+	IsAutoscalingEnabled            bool                 `json:"isAutoscalingEnabled"`
+	IsAutoscalingSpotEnabled        bool                 `json:"isAutoscalingSpotEnabled"`
+	AiEnabled                       bool                 `json:"aiEnabled"`
+	AnyServer                       bool                 `json:"anyServer"`
+	AnyVm                           bool                 `json:"anyVm"`
+	IsBackupEnabled                 bool                 `json:"isBackupEnabled"`
+	IsProjectMaintenanceModeEnabled bool                 `json:"isProjectMaintenanceModeEnabled"`
+	ParentProjectId                 NullableInt32        `json:"parentProjectId"`
+	AlertingProfileId               NullableInt32        `json:"alertingProfileId"`
+	OpaProfileId                    NullableInt32        `json:"opaProfileId"`
+	LockButton                      *ButtonStatusDto     `json:"lockButton,omitempty"`
+	UnlockButton                    *ButtonStatusDto     `json:"unlockButton,omitempty"`
+	DeleteButton                    *ButtonStatusDto     `json:"deleteButton,omitempty"`
+	KubeInfoButton                  *ButtonStatusDto     `json:"kubeInfoButton,omitempty"`
+	SetExpirationDateButton         *ButtonStatusDto     `json:"setExpirationDateButton,omitempty"`
+	ResetStatusButton               *ButtonStatusDto     `json:"resetStatusButton,omitempty"`
+	ImportClusterType               ImportClusterType    `json:"importClusterType"`
+	EImportClusterType              *EImportClusterType  `json:"eImportClusterType,omitempty"`
+	AdditionalProperties            map[string]interface{}
 }
 
 type _ProjectListDetailDto ProjectListDetailDto
@@ -369,6 +369,7 @@ func (o *ProjectListDetailDto) HasCloudCredentialName() bool {
 func (o *ProjectListDetailDto) SetCloudCredentialName(v string) {
 	o.CloudCredentialName.Set(&v)
 }
+
 // SetCloudCredentialNameNil sets the value for CloudCredentialName to be an explicit nil
 func (o *ProjectListDetailDto) SetCloudCredentialNameNil() {
 	o.CloudCredentialName.Set(nil)
@@ -1556,7 +1557,7 @@ func (o *ProjectListDetailDto) SetEImportClusterType(v EImportClusterType) {
 }
 
 func (o ProjectListDetailDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1636,6 +1637,11 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EImportClusterType) {
 		toSerialize["eImportClusterType"] = o.EImportClusterType
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -1698,10 +1704,10 @@ func (o *ProjectListDetailDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -1709,15 +1715,74 @@ func (o *ProjectListDetailDto) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectListDetailDto := _ProjectListDetailDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectListDetailDto)
+	err = json.Unmarshal(data, &varProjectListDetailDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectListDetailDto(varProjectListDetailDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "isKubernetes")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "isVirtualCluster")
+		delete(additionalProperties, "isMonitoringEnabled")
+		delete(additionalProperties, "hasKubeConfigFile")
+		delete(additionalProperties, "isMaintenanceModeEnabled")
+		delete(additionalProperties, "cloudCredentialName")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "health")
+		delete(additionalProperties, "cloudType")
+		delete(additionalProperties, "kubesprayCurrentVersion")
+		delete(additionalProperties, "kubesprayTargetVersion")
+		delete(additionalProperties, "kubernetesCurrentVersion")
+		delete(additionalProperties, "kubernetesTargetVersion")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "alertsCount")
+		delete(additionalProperties, "totalServersCount")
+		delete(additionalProperties, "totalStandaloneVmsCount")
+		delete(additionalProperties, "boundUsers")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "expiredAt")
+		delete(additionalProperties, "deleteOnExpiration")
+		delete(additionalProperties, "certificateExpiredAt")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "quotaId")
+		delete(additionalProperties, "allowFullSpotKubernetes")
+		delete(additionalProperties, "allowSpotWorkers")
+		delete(additionalProperties, "allowSpotVMs")
+		delete(additionalProperties, "maxSpotPrice")
+		delete(additionalProperties, "projectAction")
+		delete(additionalProperties, "hasExpirationWarning")
+		delete(additionalProperties, "totalHourlyCost")
+		delete(additionalProperties, "isAutoscalingEnabled")
+		delete(additionalProperties, "isAutoscalingSpotEnabled")
+		delete(additionalProperties, "aiEnabled")
+		delete(additionalProperties, "anyServer")
+		delete(additionalProperties, "anyVm")
+		delete(additionalProperties, "isBackupEnabled")
+		delete(additionalProperties, "isProjectMaintenanceModeEnabled")
+		delete(additionalProperties, "parentProjectId")
+		delete(additionalProperties, "alertingProfileId")
+		delete(additionalProperties, "opaProfileId")
+		delete(additionalProperties, "lockButton")
+		delete(additionalProperties, "unlockButton")
+		delete(additionalProperties, "deleteButton")
+		delete(additionalProperties, "kubeInfoButton")
+		delete(additionalProperties, "setExpirationDateButton")
+		delete(additionalProperties, "resetStatusButton")
+		delete(additionalProperties, "importClusterType")
+		delete(additionalProperties, "eImportClusterType")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -1757,5 +1822,3 @@ func (v *NullableProjectListDetailDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

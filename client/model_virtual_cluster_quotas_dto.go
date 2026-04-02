@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,7 +21,8 @@ var _ MappedNullable = &VirtualClusterQuotasDto{}
 
 // VirtualClusterQuotasDto struct for VirtualClusterQuotasDto
 type VirtualClusterQuotasDto struct {
-	Presets []ResourcePresetDto `json:"presets"`
+	Presets              []ResourcePresetDto `json:"presets"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _VirtualClusterQuotasDto VirtualClusterQuotasDto
@@ -72,7 +72,7 @@ func (o *VirtualClusterQuotasDto) SetPresets(v []ResourcePresetDto) {
 }
 
 func (o VirtualClusterQuotasDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -84,6 +84,11 @@ func (o VirtualClusterQuotasDto) ToMap() (map[string]interface{}, error) {
 	if o.Presets != nil {
 		toSerialize["presets"] = o.Presets
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -100,10 +105,10 @@ func (o *VirtualClusterQuotasDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -111,15 +116,20 @@ func (o *VirtualClusterQuotasDto) UnmarshalJSON(data []byte) (err error) {
 
 	varVirtualClusterQuotasDto := _VirtualClusterQuotasDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVirtualClusterQuotasDto)
+	err = json.Unmarshal(data, &varVirtualClusterQuotasDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = VirtualClusterQuotasDto(varVirtualClusterQuotasDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "presets")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -159,5 +169,3 @@ func (v *NullableVirtualClusterQuotasDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,10 +20,13 @@ var _ MappedNullable = &DeploymentCompletedCommand{}
 
 // DeploymentCompletedCommand struct for DeploymentCompletedCommand
 type DeploymentCompletedCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	Result NullableString `json:"result,omitempty"`
-	FromCronJob *bool `json:"fromCronJob,omitempty"`
+	ProjectId            *int32         `json:"projectId,omitempty"`
+	Result               NullableString `json:"result,omitempty"`
+	FromCronJob          *bool          `json:"fromCronJob,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeploymentCompletedCommand DeploymentCompletedCommand
 
 // NewDeploymentCompletedCommand instantiates a new DeploymentCompletedCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -106,6 +109,7 @@ func (o *DeploymentCompletedCommand) HasResult() bool {
 func (o *DeploymentCompletedCommand) SetResult(v string) {
 	o.Result.Set(&v)
 }
+
 // SetResultNil sets the value for Result to be an explicit nil
 func (o *DeploymentCompletedCommand) SetResultNil() {
 	o.Result.Set(nil)
@@ -149,7 +153,7 @@ func (o *DeploymentCompletedCommand) SetFromCronJob(v bool) {
 }
 
 func (o DeploymentCompletedCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -167,7 +171,35 @@ func (o DeploymentCompletedCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FromCronJob) {
 		toSerialize["fromCronJob"] = o.FromCronJob
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeploymentCompletedCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeploymentCompletedCommand := _DeploymentCompletedCommand{}
+
+	err = json.Unmarshal(data, &varDeploymentCompletedCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeploymentCompletedCommand(varDeploymentCompletedCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "result")
+		delete(additionalProperties, "fromCronJob")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeploymentCompletedCommand struct {
@@ -205,5 +237,3 @@ func (v *NullableDeploymentCompletedCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,8 +20,11 @@ var _ MappedNullable = &OpaMakeDefaultCommand{}
 
 // OpaMakeDefaultCommand struct for OpaMakeDefaultCommand
 type OpaMakeDefaultCommand struct {
-	Id *int32 `json:"id,omitempty"`
+	Id                   *int32 `json:"id,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OpaMakeDefaultCommand OpaMakeDefaultCommand
 
 // NewOpaMakeDefaultCommand instantiates a new OpaMakeDefaultCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,7 +76,7 @@ func (o *OpaMakeDefaultCommand) SetId(v int32) {
 }
 
 func (o OpaMakeDefaultCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -85,7 +88,33 @@ func (o OpaMakeDefaultCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OpaMakeDefaultCommand) UnmarshalJSON(data []byte) (err error) {
+	varOpaMakeDefaultCommand := _OpaMakeDefaultCommand{}
+
+	err = json.Unmarshal(data, &varOpaMakeDefaultCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OpaMakeDefaultCommand(varOpaMakeDefaultCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOpaMakeDefaultCommand struct {
@@ -123,5 +152,3 @@ func (v *NullableOpaMakeDefaultCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

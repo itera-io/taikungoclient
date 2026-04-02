@@ -20,9 +20,12 @@ var _ MappedNullable = &CreateTrustedRegistriesCommand{}
 
 // CreateTrustedRegistriesCommand struct for CreateTrustedRegistriesCommand
 type CreateTrustedRegistriesCommand struct {
-	Registry NullableString `json:"registry,omitempty"`
-	AccessProfileId *int32 `json:"accessProfileId,omitempty"`
+	Registry             NullableString `json:"registry,omitempty"`
+	AccessProfileId      *int32         `json:"accessProfileId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateTrustedRegistriesCommand CreateTrustedRegistriesCommand
 
 // NewCreateTrustedRegistriesCommand instantiates a new CreateTrustedRegistriesCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *CreateTrustedRegistriesCommand) HasRegistry() bool {
 func (o *CreateTrustedRegistriesCommand) SetRegistry(v string) {
 	o.Registry.Set(&v)
 }
+
 // SetRegistryNil sets the value for Registry to be an explicit nil
 func (o *CreateTrustedRegistriesCommand) SetRegistryNil() {
 	o.Registry.Set(nil)
@@ -116,7 +120,7 @@ func (o *CreateTrustedRegistriesCommand) SetAccessProfileId(v int32) {
 }
 
 func (o CreateTrustedRegistriesCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o CreateTrustedRegistriesCommand) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.AccessProfileId) {
 		toSerialize["accessProfileId"] = o.AccessProfileId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateTrustedRegistriesCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateTrustedRegistriesCommand := _CreateTrustedRegistriesCommand{}
+
+	err = json.Unmarshal(data, &varCreateTrustedRegistriesCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateTrustedRegistriesCommand(varCreateTrustedRegistriesCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "registry")
+		delete(additionalProperties, "accessProfileId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateTrustedRegistriesCommand struct {
@@ -169,5 +200,3 @@ func (v *NullableCreateTrustedRegistriesCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,10 +20,13 @@ var _ MappedNullable = &StorageListCommand{}
 
 // StorageListCommand struct for StorageListCommand
 type StorageListCommand struct {
-	Url NullableString `json:"url,omitempty"`
-	TokenId NullableString `json:"tokenId,omitempty"`
-	TokenSecret NullableString `json:"tokenSecret,omitempty"`
+	Url                  NullableString `json:"url,omitempty"`
+	TokenId              NullableString `json:"tokenId,omitempty"`
+	TokenSecret          NullableString `json:"tokenSecret,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _StorageListCommand StorageListCommand
 
 // NewStorageListCommand instantiates a new StorageListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *StorageListCommand) HasUrl() bool {
 func (o *StorageListCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *StorageListCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -116,6 +120,7 @@ func (o *StorageListCommand) HasTokenId() bool {
 func (o *StorageListCommand) SetTokenId(v string) {
 	o.TokenId.Set(&v)
 }
+
 // SetTokenIdNil sets the value for TokenId to be an explicit nil
 func (o *StorageListCommand) SetTokenIdNil() {
 	o.TokenId.Set(nil)
@@ -158,6 +163,7 @@ func (o *StorageListCommand) HasTokenSecret() bool {
 func (o *StorageListCommand) SetTokenSecret(v string) {
 	o.TokenSecret.Set(&v)
 }
+
 // SetTokenSecretNil sets the value for TokenSecret to be an explicit nil
 func (o *StorageListCommand) SetTokenSecretNil() {
 	o.TokenSecret.Set(nil)
@@ -169,7 +175,7 @@ func (o *StorageListCommand) UnsetTokenSecret() {
 }
 
 func (o StorageListCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -187,7 +193,35 @@ func (o StorageListCommand) ToMap() (map[string]interface{}, error) {
 	if o.TokenSecret.IsSet() {
 		toSerialize["tokenSecret"] = o.TokenSecret.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *StorageListCommand) UnmarshalJSON(data []byte) (err error) {
+	varStorageListCommand := _StorageListCommand{}
+
+	err = json.Unmarshal(data, &varStorageListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StorageListCommand(varStorageListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "tokenId")
+		delete(additionalProperties, "tokenSecret")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableStorageListCommand struct {
@@ -225,5 +259,3 @@ func (v *NullableStorageListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

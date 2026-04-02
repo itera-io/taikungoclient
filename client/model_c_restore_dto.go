@@ -13,9 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"time"
-	"bytes"
 	"fmt"
+	"time"
 )
 
 // checks if the CRestoreDto type satisfies the MappedNullable interface at compile time
@@ -23,17 +22,18 @@ var _ MappedNullable = &CRestoreDto{}
 
 // CRestoreDto struct for CRestoreDto
 type CRestoreDto struct {
-	MetadataName string `json:"metadataName"`
-	BackupName string `json:"backupName"`
-	ScheduleName string `json:"scheduleName"`
-	Namespace string `json:"namespace"`
-	ExcludeNamespaces []string `json:"excludeNamespaces"`
-	IncludeNamespaces []string `json:"includeNamespaces"`
-	CompletionDateTime time.Time `json:"completionDateTime"`
-	StartTimeStamp time.Time `json:"startTimeStamp"`
-	CreatedAt NullableTime `json:"createdAt"`
-	Warnings int64 `json:"warnings"`
-	Phase NullableString `json:"phase"`
+	MetadataName         string         `json:"metadataName"`
+	BackupName           string         `json:"backupName"`
+	ScheduleName         string         `json:"scheduleName"`
+	Namespace            string         `json:"namespace"`
+	ExcludeNamespaces    []string       `json:"excludeNamespaces"`
+	IncludeNamespaces    []string       `json:"includeNamespaces"`
+	CompletionDateTime   time.Time      `json:"completionDateTime"`
+	StartTimeStamp       time.Time      `json:"startTimeStamp"`
+	CreatedAt            NullableTime   `json:"createdAt"`
+	Warnings             int64          `json:"warnings"`
+	Phase                NullableString `json:"phase"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CRestoreDto CRestoreDto
@@ -335,7 +335,7 @@ func (o *CRestoreDto) SetPhase(v string) {
 }
 
 func (o CRestoreDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -355,6 +355,11 @@ func (o CRestoreDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["createdAt"] = o.CreatedAt.Get()
 	toSerialize["warnings"] = o.Warnings
 	toSerialize["phase"] = o.Phase.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -381,10 +386,10 @@ func (o *CRestoreDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -392,15 +397,30 @@ func (o *CRestoreDto) UnmarshalJSON(data []byte) (err error) {
 
 	varCRestoreDto := _CRestoreDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCRestoreDto)
+	err = json.Unmarshal(data, &varCRestoreDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CRestoreDto(varCRestoreDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "metadataName")
+		delete(additionalProperties, "backupName")
+		delete(additionalProperties, "scheduleName")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "excludeNamespaces")
+		delete(additionalProperties, "includeNamespaces")
+		delete(additionalProperties, "completionDateTime")
+		delete(additionalProperties, "startTimeStamp")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "warnings")
+		delete(additionalProperties, "phase")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -440,5 +460,3 @@ func (v *NullableCRestoreDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

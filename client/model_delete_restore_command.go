@@ -20,9 +20,12 @@ var _ MappedNullable = &DeleteRestoreCommand{}
 
 // DeleteRestoreCommand struct for DeleteRestoreCommand
 type DeleteRestoreCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	ProjectId            *int32         `json:"projectId,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeleteRestoreCommand DeleteRestoreCommand
 
 // NewDeleteRestoreCommand instantiates a new DeleteRestoreCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,7 @@ func (o *DeleteRestoreCommand) HasName() bool {
 func (o *DeleteRestoreCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *DeleteRestoreCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -116,7 +120,7 @@ func (o *DeleteRestoreCommand) UnsetName() {
 }
 
 func (o DeleteRestoreCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o DeleteRestoreCommand) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeleteRestoreCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeleteRestoreCommand := _DeleteRestoreCommand{}
+
+	err = json.Unmarshal(data, &varDeleteRestoreCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeleteRestoreCommand(varDeleteRestoreCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeleteRestoreCommand struct {
@@ -169,5 +200,3 @@ func (v *NullableDeleteRestoreCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

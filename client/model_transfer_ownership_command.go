@@ -20,8 +20,11 @@ var _ MappedNullable = &TransferOwnershipCommand{}
 
 // TransferOwnershipCommand struct for TransferOwnershipCommand
 type TransferOwnershipCommand struct {
-	UserId NullableString `json:"userId,omitempty"`
+	UserId               NullableString `json:"userId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _TransferOwnershipCommand TransferOwnershipCommand
 
 // NewTransferOwnershipCommand instantiates a new TransferOwnershipCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -72,6 +75,7 @@ func (o *TransferOwnershipCommand) HasUserId() bool {
 func (o *TransferOwnershipCommand) SetUserId(v string) {
 	o.UserId.Set(&v)
 }
+
 // SetUserIdNil sets the value for UserId to be an explicit nil
 func (o *TransferOwnershipCommand) SetUserIdNil() {
 	o.UserId.Set(nil)
@@ -83,7 +87,7 @@ func (o *TransferOwnershipCommand) UnsetUserId() {
 }
 
 func (o TransferOwnershipCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -95,7 +99,33 @@ func (o TransferOwnershipCommand) ToMap() (map[string]interface{}, error) {
 	if o.UserId.IsSet() {
 		toSerialize["userId"] = o.UserId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *TransferOwnershipCommand) UnmarshalJSON(data []byte) (err error) {
+	varTransferOwnershipCommand := _TransferOwnershipCommand{}
+
+	err = json.Unmarshal(data, &varTransferOwnershipCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TransferOwnershipCommand(varTransferOwnershipCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "userId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableTransferOwnershipCommand struct {
@@ -133,5 +163,3 @@ func (v *NullableTransferOwnershipCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

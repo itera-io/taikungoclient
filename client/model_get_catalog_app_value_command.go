@@ -20,9 +20,12 @@ var _ MappedNullable = &GetCatalogAppValueCommand{}
 
 // GetCatalogAppValueCommand struct for GetCatalogAppValueCommand
 type GetCatalogAppValueCommand struct {
-	PackageId NullableString `json:"packageId,omitempty"`
-	Version NullableString `json:"version,omitempty"`
+	PackageId            NullableString `json:"packageId,omitempty"`
+	Version              NullableString `json:"version,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _GetCatalogAppValueCommand GetCatalogAppValueCommand
 
 // NewGetCatalogAppValueCommand instantiates a new GetCatalogAppValueCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *GetCatalogAppValueCommand) HasPackageId() bool {
 func (o *GetCatalogAppValueCommand) SetPackageId(v string) {
 	o.PackageId.Set(&v)
 }
+
 // SetPackageIdNil sets the value for PackageId to be an explicit nil
 func (o *GetCatalogAppValueCommand) SetPackageIdNil() {
 	o.PackageId.Set(nil)
@@ -115,6 +119,7 @@ func (o *GetCatalogAppValueCommand) HasVersion() bool {
 func (o *GetCatalogAppValueCommand) SetVersion(v string) {
 	o.Version.Set(&v)
 }
+
 // SetVersionNil sets the value for Version to be an explicit nil
 func (o *GetCatalogAppValueCommand) SetVersionNil() {
 	o.Version.Set(nil)
@@ -126,7 +131,7 @@ func (o *GetCatalogAppValueCommand) UnsetVersion() {
 }
 
 func (o GetCatalogAppValueCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,7 +146,34 @@ func (o GetCatalogAppValueCommand) ToMap() (map[string]interface{}, error) {
 	if o.Version.IsSet() {
 		toSerialize["version"] = o.Version.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *GetCatalogAppValueCommand) UnmarshalJSON(data []byte) (err error) {
+	varGetCatalogAppValueCommand := _GetCatalogAppValueCommand{}
+
+	err = json.Unmarshal(data, &varGetCatalogAppValueCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GetCatalogAppValueCommand(varGetCatalogAppValueCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "packageId")
+		delete(additionalProperties, "version")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableGetCatalogAppValueCommand struct {
@@ -179,5 +211,3 @@ func (v *NullableGetCatalogAppValueCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

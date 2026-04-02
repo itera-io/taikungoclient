@@ -20,16 +20,19 @@ var _ MappedNullable = &ProjectAppDto{}
 
 // ProjectAppDto struct for ProjectAppDto
 type ProjectAppDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	ProjectName NullableString `json:"projectName,omitempty"`
-	ProjectId *int32 `json:"projectId,omitempty"`
-	Version NullableString `json:"version,omitempty"`
-	IsLocked *bool `json:"isLocked,omitempty"`
-	Status *EInstanceStatus `json:"status,omitempty"`
-	AutoSync *bool `json:"autoSync,omitempty"`
+	Id                   *int32           `json:"id,omitempty"`
+	Name                 NullableString   `json:"name,omitempty"`
+	Namespace            NullableString   `json:"namespace,omitempty"`
+	ProjectName          NullableString   `json:"projectName,omitempty"`
+	ProjectId            *int32           `json:"projectId,omitempty"`
+	Version              NullableString   `json:"version,omitempty"`
+	IsLocked             *bool            `json:"isLocked,omitempty"`
+	Status               *EInstanceStatus `json:"status,omitempty"`
+	AutoSync             *bool            `json:"autoSync,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectAppDto ProjectAppDto
 
 // NewProjectAppDto instantiates a new ProjectAppDto object
 // This constructor will assign default values to properties that have it defined,
@@ -112,6 +115,7 @@ func (o *ProjectAppDto) HasName() bool {
 func (o *ProjectAppDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ProjectAppDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -154,6 +158,7 @@ func (o *ProjectAppDto) HasNamespace() bool {
 func (o *ProjectAppDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
+
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *ProjectAppDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -196,6 +201,7 @@ func (o *ProjectAppDto) HasProjectName() bool {
 func (o *ProjectAppDto) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
+
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *ProjectAppDto) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -270,6 +276,7 @@ func (o *ProjectAppDto) HasVersion() bool {
 func (o *ProjectAppDto) SetVersion(v string) {
 	o.Version.Set(&v)
 }
+
 // SetVersionNil sets the value for Version to be an explicit nil
 func (o *ProjectAppDto) SetVersionNil() {
 	o.Version.Set(nil)
@@ -377,7 +384,7 @@ func (o *ProjectAppDto) SetAutoSync(v bool) {
 }
 
 func (o ProjectAppDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -413,7 +420,41 @@ func (o ProjectAppDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoSync) {
 		toSerialize["autoSync"] = o.AutoSync
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectAppDto) UnmarshalJSON(data []byte) (err error) {
+	varProjectAppDto := _ProjectAppDto{}
+
+	err = json.Unmarshal(data, &varProjectAppDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectAppDto(varProjectAppDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "autoSync")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectAppDto struct {
@@ -451,5 +492,3 @@ func (v *NullableProjectAppDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

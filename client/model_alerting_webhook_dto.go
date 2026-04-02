@@ -20,10 +20,13 @@ var _ MappedNullable = &AlertingWebhookDto{}
 
 // AlertingWebhookDto struct for AlertingWebhookDto
 type AlertingWebhookDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Url NullableString `json:"url,omitempty"`
-	Headers []WebhookHeaderDto `json:"headers,omitempty"`
+	Id                   *int32             `json:"id,omitempty"`
+	Url                  NullableString     `json:"url,omitempty"`
+	Headers              []WebhookHeaderDto `json:"headers,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AlertingWebhookDto AlertingWebhookDto
 
 // NewAlertingWebhookDto instantiates a new AlertingWebhookDto object
 // This constructor will assign default values to properties that have it defined,
@@ -106,6 +109,7 @@ func (o *AlertingWebhookDto) HasUrl() bool {
 func (o *AlertingWebhookDto) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *AlertingWebhookDto) SetUrlNil() {
 	o.Url.Set(nil)
@@ -150,7 +154,7 @@ func (o *AlertingWebhookDto) SetHeaders(v []WebhookHeaderDto) {
 }
 
 func (o AlertingWebhookDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -168,7 +172,35 @@ func (o AlertingWebhookDto) ToMap() (map[string]interface{}, error) {
 	if o.Headers != nil {
 		toSerialize["headers"] = o.Headers
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AlertingWebhookDto) UnmarshalJSON(data []byte) (err error) {
+	varAlertingWebhookDto := _AlertingWebhookDto{}
+
+	err = json.Unmarshal(data, &varAlertingWebhookDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AlertingWebhookDto(varAlertingWebhookDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "headers")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAlertingWebhookDto struct {
@@ -206,5 +238,3 @@ func (v *NullableAlertingWebhookDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

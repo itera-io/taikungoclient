@@ -20,8 +20,11 @@ var _ MappedNullable = &TwoFactorAuthVerifyResult{}
 
 // TwoFactorAuthVerifyResult struct for TwoFactorAuthVerifyResult
 type TwoFactorAuthVerifyResult struct {
-	RecoveryCodes []string `json:"recoveryCodes,omitempty"`
+	RecoveryCodes        []string `json:"recoveryCodes,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _TwoFactorAuthVerifyResult TwoFactorAuthVerifyResult
 
 // NewTwoFactorAuthVerifyResult instantiates a new TwoFactorAuthVerifyResult object
 // This constructor will assign default values to properties that have it defined,
@@ -74,7 +77,7 @@ func (o *TwoFactorAuthVerifyResult) SetRecoveryCodes(v []string) {
 }
 
 func (o TwoFactorAuthVerifyResult) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -86,7 +89,33 @@ func (o TwoFactorAuthVerifyResult) ToMap() (map[string]interface{}, error) {
 	if o.RecoveryCodes != nil {
 		toSerialize["recoveryCodes"] = o.RecoveryCodes
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *TwoFactorAuthVerifyResult) UnmarshalJSON(data []byte) (err error) {
+	varTwoFactorAuthVerifyResult := _TwoFactorAuthVerifyResult{}
+
+	err = json.Unmarshal(data, &varTwoFactorAuthVerifyResult)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TwoFactorAuthVerifyResult(varTwoFactorAuthVerifyResult)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "recoveryCodes")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableTwoFactorAuthVerifyResult struct {
@@ -124,5 +153,3 @@ func (v *NullableTwoFactorAuthVerifyResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -21,13 +21,16 @@ var _ MappedNullable = &Group{}
 
 // Group struct for Group
 type Group struct {
-	Name NullableString `json:"name,omitempty"`
-	File NullableString `json:"file,omitempty"`
-	Rules []Rule `json:"rules,omitempty"`
-	Interval *int64 `json:"interval,omitempty"`
-	EvaluationTime *float64 `json:"evaluationTime,omitempty"`
-	LastEvaluation *time.Time `json:"lastEvaluation,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	File                 NullableString `json:"file,omitempty"`
+	Rules                []Rule         `json:"rules,omitempty"`
+	Interval             *int64         `json:"interval,omitempty"`
+	EvaluationTime       *float64       `json:"evaluationTime,omitempty"`
+	LastEvaluation       *time.Time     `json:"lastEvaluation,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Group Group
 
 // NewGroup instantiates a new Group object
 // This constructor will assign default values to properties that have it defined,
@@ -78,6 +81,7 @@ func (o *Group) HasName() bool {
 func (o *Group) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *Group) SetNameNil() {
 	o.Name.Set(nil)
@@ -120,6 +124,7 @@ func (o *Group) HasFile() bool {
 func (o *Group) SetFile(v string) {
 	o.File.Set(&v)
 }
+
 // SetFileNil sets the value for File to be an explicit nil
 func (o *Group) SetFileNil() {
 	o.File.Set(nil)
@@ -260,7 +265,7 @@ func (o *Group) SetLastEvaluation(v time.Time) {
 }
 
 func (o Group) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -287,7 +292,38 @@ func (o Group) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastEvaluation) {
 		toSerialize["lastEvaluation"] = o.LastEvaluation
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Group) UnmarshalJSON(data []byte) (err error) {
+	varGroup := _Group{}
+
+	err = json.Unmarshal(data, &varGroup)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Group(varGroup)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "file")
+		delete(additionalProperties, "rules")
+		delete(additionalProperties, "interval")
+		delete(additionalProperties, "evaluationTime")
+		delete(additionalProperties, "lastEvaluation")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableGroup struct {
@@ -325,5 +361,3 @@ func (v *NullableGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

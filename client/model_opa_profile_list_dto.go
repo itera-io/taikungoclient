@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,27 +21,28 @@ var _ MappedNullable = &OpaProfileListDto{}
 
 // OpaProfileListDto struct for OpaProfileListDto
 type OpaProfileListDto struct {
-	Id int32 `json:"id"`
-	Name string `json:"name"`
-	ForbidNodePort bool `json:"forbidNodePort"`
-	ForbidHttpIngress bool `json:"forbidHttpIngress"`
-	RequireProbe bool `json:"requireProbe"`
-	UniqueIngresses bool `json:"uniqueIngresses"`
-	UniqueServiceSelector bool `json:"uniqueServiceSelector"`
-	ForcePodResource bool `json:"forcePodResource"`
-	IsNodeNameForbiddenInVC bool `json:"isNodeNameForbiddenInVC"`
-	IsMasterTaintEnforced bool `json:"isMasterTaintEnforced"`
-	WhitelistMasterTaintNamespaces []string `json:"whitelistMasterTaintNamespaces"`
-	AllowedRepo []string `json:"allowedRepo"`
-	ForbidSpecificTags []string `json:"forbidSpecificTags"`
-	IngressWhitelist []string `json:"ingressWhitelist"`
-	IsLocked bool `json:"isLocked"`
-	Revision int32 `json:"revision"`
-	OrganizationId int32 `json:"organizationId"`
-	OrganizationName string `json:"organizationName"`
-	CreatedAt NullableString `json:"createdAt"`
-	IsDefault bool `json:"isDefault"`
-	Projects []CommonDropdownDto `json:"projects"`
+	Id                             int32               `json:"id"`
+	Name                           string              `json:"name"`
+	ForbidNodePort                 bool                `json:"forbidNodePort"`
+	ForbidHttpIngress              bool                `json:"forbidHttpIngress"`
+	RequireProbe                   bool                `json:"requireProbe"`
+	UniqueIngresses                bool                `json:"uniqueIngresses"`
+	UniqueServiceSelector          bool                `json:"uniqueServiceSelector"`
+	ForcePodResource               bool                `json:"forcePodResource"`
+	IsNodeNameForbiddenInVC        bool                `json:"isNodeNameForbiddenInVC"`
+	IsMasterTaintEnforced          bool                `json:"isMasterTaintEnforced"`
+	WhitelistMasterTaintNamespaces []string            `json:"whitelistMasterTaintNamespaces"`
+	AllowedRepo                    []string            `json:"allowedRepo"`
+	ForbidSpecificTags             []string            `json:"forbidSpecificTags"`
+	IngressWhitelist               []string            `json:"ingressWhitelist"`
+	IsLocked                       bool                `json:"isLocked"`
+	Revision                       int32               `json:"revision"`
+	OrganizationId                 int32               `json:"organizationId"`
+	OrganizationName               string              `json:"organizationName"`
+	CreatedAt                      NullableString      `json:"createdAt"`
+	IsDefault                      bool                `json:"isDefault"`
+	Projects                       []CommonDropdownDto `json:"projects"`
+	AdditionalProperties           map[string]interface{}
 }
 
 type _OpaProfileListDto OpaProfileListDto
@@ -592,7 +592,7 @@ func (o *OpaProfileListDto) SetProjects(v []CommonDropdownDto) {
 }
 
 func (o OpaProfileListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -622,6 +622,11 @@ func (o OpaProfileListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["createdAt"] = o.CreatedAt.Get()
 	toSerialize["isDefault"] = o.IsDefault
 	toSerialize["projects"] = o.Projects
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -658,10 +663,10 @@ func (o *OpaProfileListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -669,15 +674,40 @@ func (o *OpaProfileListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varOpaProfileListDto := _OpaProfileListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOpaProfileListDto)
+	err = json.Unmarshal(data, &varOpaProfileListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OpaProfileListDto(varOpaProfileListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "forbidNodePort")
+		delete(additionalProperties, "forbidHttpIngress")
+		delete(additionalProperties, "requireProbe")
+		delete(additionalProperties, "uniqueIngresses")
+		delete(additionalProperties, "uniqueServiceSelector")
+		delete(additionalProperties, "forcePodResource")
+		delete(additionalProperties, "isNodeNameForbiddenInVC")
+		delete(additionalProperties, "isMasterTaintEnforced")
+		delete(additionalProperties, "whitelistMasterTaintNamespaces")
+		delete(additionalProperties, "allowedRepo")
+		delete(additionalProperties, "forbidSpecificTags")
+		delete(additionalProperties, "ingressWhitelist")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "revision")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "projects")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -717,5 +747,3 @@ func (v *NullableOpaProfileListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

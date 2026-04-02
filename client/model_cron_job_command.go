@@ -20,8 +20,11 @@ var _ MappedNullable = &CronJobCommand{}
 
 // CronJobCommand struct for CronJobCommand
 type CronJobCommand struct {
-	CronPeriod NullableString `json:"cronPeriod,omitempty"`
+	CronPeriod           NullableString `json:"cronPeriod,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CronJobCommand CronJobCommand
 
 // NewCronJobCommand instantiates a new CronJobCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -72,6 +75,7 @@ func (o *CronJobCommand) HasCronPeriod() bool {
 func (o *CronJobCommand) SetCronPeriod(v string) {
 	o.CronPeriod.Set(&v)
 }
+
 // SetCronPeriodNil sets the value for CronPeriod to be an explicit nil
 func (o *CronJobCommand) SetCronPeriodNil() {
 	o.CronPeriod.Set(nil)
@@ -83,7 +87,7 @@ func (o *CronJobCommand) UnsetCronPeriod() {
 }
 
 func (o CronJobCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -95,7 +99,33 @@ func (o CronJobCommand) ToMap() (map[string]interface{}, error) {
 	if o.CronPeriod.IsSet() {
 		toSerialize["cronPeriod"] = o.CronPeriod.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CronJobCommand) UnmarshalJSON(data []byte) (err error) {
+	varCronJobCommand := _CronJobCommand{}
+
+	err = json.Unmarshal(data, &varCronJobCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CronJobCommand(varCronJobCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cronPeriod")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCronJobCommand struct {
@@ -133,5 +163,3 @@ func (v *NullableCronJobCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

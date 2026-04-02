@@ -20,9 +20,12 @@ var _ MappedNullable = &UpdateRobotScopeCommand{}
 
 // UpdateRobotScopeCommand struct for UpdateRobotScopeCommand
 type UpdateRobotScopeCommand struct {
-	Id NullableString `json:"id,omitempty"`
-	Scopes []string `json:"scopes,omitempty"`
+	Id                   NullableString `json:"id,omitempty"`
+	Scopes               []string       `json:"scopes,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateRobotScopeCommand UpdateRobotScopeCommand
 
 // NewUpdateRobotScopeCommand instantiates a new UpdateRobotScopeCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *UpdateRobotScopeCommand) HasId() bool {
 func (o *UpdateRobotScopeCommand) SetId(v string) {
 	o.Id.Set(&v)
 }
+
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *UpdateRobotScopeCommand) SetIdNil() {
 	o.Id.Set(nil)
@@ -117,7 +121,7 @@ func (o *UpdateRobotScopeCommand) SetScopes(v []string) {
 }
 
 func (o UpdateRobotScopeCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -132,7 +136,34 @@ func (o UpdateRobotScopeCommand) ToMap() (map[string]interface{}, error) {
 	if o.Scopes != nil {
 		toSerialize["scopes"] = o.Scopes
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateRobotScopeCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateRobotScopeCommand := _UpdateRobotScopeCommand{}
+
+	err = json.Unmarshal(data, &varUpdateRobotScopeCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateRobotScopeCommand(varUpdateRobotScopeCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "scopes")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateRobotScopeCommand struct {
@@ -170,5 +201,3 @@ func (v *NullableUpdateRobotScopeCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

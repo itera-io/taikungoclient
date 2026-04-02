@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,8 +21,9 @@ var _ MappedNullable = &NtpServerListDto{}
 
 // NtpServerListDto struct for NtpServerListDto
 type NtpServerListDto struct {
-	Id int32 `json:"id"`
-	Address NullableString `json:"address"`
+	Id                   int32          `json:"id"`
+	Address              NullableString `json:"address"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _NtpServerListDto NtpServerListDto
@@ -98,7 +98,7 @@ func (o *NtpServerListDto) SetAddress(v string) {
 }
 
 func (o NtpServerListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -109,6 +109,11 @@ func (o NtpServerListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["address"] = o.Address.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -126,10 +131,10 @@ func (o *NtpServerListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -137,15 +142,21 @@ func (o *NtpServerListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varNtpServerListDto := _NtpServerListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varNtpServerListDto)
+	err = json.Unmarshal(data, &varNtpServerListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = NtpServerListDto(varNtpServerListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "address")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -185,5 +196,3 @@ func (v *NullableNtpServerListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

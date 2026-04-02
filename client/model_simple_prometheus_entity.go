@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,8 +21,9 @@ var _ MappedNullable = &SimplePrometheusEntity{}
 
 // SimplePrometheusEntity struct for SimplePrometheusEntity
 type SimplePrometheusEntity struct {
-	PrometheusRuleId int32 `json:"prometheusRuleId"`
-	PrometheusRuleName NullableString `json:"prometheusRuleName"`
+	PrometheusRuleId     int32          `json:"prometheusRuleId"`
+	PrometheusRuleName   NullableString `json:"prometheusRuleName"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SimplePrometheusEntity SimplePrometheusEntity
@@ -98,7 +98,7 @@ func (o *SimplePrometheusEntity) SetPrometheusRuleName(v string) {
 }
 
 func (o SimplePrometheusEntity) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -109,6 +109,11 @@ func (o SimplePrometheusEntity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["prometheusRuleId"] = o.PrometheusRuleId
 	toSerialize["prometheusRuleName"] = o.PrometheusRuleName.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -126,10 +131,10 @@ func (o *SimplePrometheusEntity) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -137,15 +142,21 @@ func (o *SimplePrometheusEntity) UnmarshalJSON(data []byte) (err error) {
 
 	varSimplePrometheusEntity := _SimplePrometheusEntity{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSimplePrometheusEntity)
+	err = json.Unmarshal(data, &varSimplePrometheusEntity)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SimplePrometheusEntity(varSimplePrometheusEntity)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "prometheusRuleId")
+		delete(additionalProperties, "prometheusRuleName")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -185,5 +196,3 @@ func (v *NullableSimplePrometheusEntity) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,7 +21,8 @@ var _ MappedNullable = &AlertingEmailDto{}
 
 // AlertingEmailDto struct for AlertingEmailDto
 type AlertingEmailDto struct {
-	Email NullableString `json:"email"`
+	Email                NullableString `json:"email"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AlertingEmailDto AlertingEmailDto
@@ -72,7 +72,7 @@ func (o *AlertingEmailDto) SetEmail(v string) {
 }
 
 func (o AlertingEmailDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -82,6 +82,11 @@ func (o AlertingEmailDto) MarshalJSON() ([]byte, error) {
 func (o AlertingEmailDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["email"] = o.Email.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -98,10 +103,10 @@ func (o *AlertingEmailDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -109,15 +114,20 @@ func (o *AlertingEmailDto) UnmarshalJSON(data []byte) (err error) {
 
 	varAlertingEmailDto := _AlertingEmailDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAlertingEmailDto)
+	err = json.Unmarshal(data, &varAlertingEmailDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AlertingEmailDto(varAlertingEmailDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "email")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -157,5 +167,3 @@ func (v *NullableAlertingEmailDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

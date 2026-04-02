@@ -20,26 +20,29 @@ var _ MappedNullable = &CreateStandAloneVmCommand{}
 
 // CreateStandAloneVmCommand struct for CreateStandAloneVmCommand
 type CreateStandAloneVmCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	FlavorName NullableString `json:"flavorName,omitempty"`
-	VolumeSize *int64 `json:"volumeSize,omitempty"`
-	VolumeType NullableString `json:"volumeType,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Password NullableString `json:"password,omitempty"`
-	PublicIpEnabled *bool `json:"publicIpEnabled,omitempty"`
-	Image NullableString `json:"image,omitempty"`
-	CloudInit NullableString `json:"cloudInit,omitempty"`
-	StandAloneProfileId *int32 `json:"standAloneProfileId,omitempty"`
-	ProjectId *int32 `json:"projectId,omitempty"`
-	Count *int32 `json:"count,omitempty"`
-	SpotPrice NullableFloat64 `json:"spotPrice,omitempty"`
-	SpotInstance *bool `json:"spotInstance,omitempty"`
-	AvailabilityZone NullableString `json:"availabilityZone,omitempty"`
-	Hypervisor NullableString `json:"hypervisor,omitempty"`
-	UseLocalDisk *bool `json:"useLocalDisk,omitempty"`
-	StandAloneVmDisks []StandAloneVmDiskDto `json:"standAloneVmDisks,omitempty"`
-	StandAloneMetaDatas []StandAloneMetaDataDto `json:"standAloneMetaDatas,omitempty"`
+	Name                 NullableString          `json:"name,omitempty"`
+	FlavorName           NullableString          `json:"flavorName,omitempty"`
+	VolumeSize           *int64                  `json:"volumeSize,omitempty"`
+	VolumeType           NullableString          `json:"volumeType,omitempty"`
+	Username             NullableString          `json:"username,omitempty"`
+	Password             NullableString          `json:"password,omitempty"`
+	PublicIpEnabled      *bool                   `json:"publicIpEnabled,omitempty"`
+	Image                NullableString          `json:"image,omitempty"`
+	CloudInit            NullableString          `json:"cloudInit,omitempty"`
+	StandAloneProfileId  *int32                  `json:"standAloneProfileId,omitempty"`
+	ProjectId            *int32                  `json:"projectId,omitempty"`
+	Count                *int32                  `json:"count,omitempty"`
+	SpotPrice            NullableFloat64         `json:"spotPrice,omitempty"`
+	SpotInstance         *bool                   `json:"spotInstance,omitempty"`
+	AvailabilityZone     NullableString          `json:"availabilityZone,omitempty"`
+	Hypervisor           NullableString          `json:"hypervisor,omitempty"`
+	UseLocalDisk         *bool                   `json:"useLocalDisk,omitempty"`
+	StandAloneVmDisks    []StandAloneVmDiskDto   `json:"standAloneVmDisks,omitempty"`
+	StandAloneMetaDatas  []StandAloneMetaDataDto `json:"standAloneMetaDatas,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateStandAloneVmCommand CreateStandAloneVmCommand
 
 // NewCreateStandAloneVmCommand instantiates a new CreateStandAloneVmCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -90,6 +93,7 @@ func (o *CreateStandAloneVmCommand) HasName() bool {
 func (o *CreateStandAloneVmCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateStandAloneVmCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -132,6 +136,7 @@ func (o *CreateStandAloneVmCommand) HasFlavorName() bool {
 func (o *CreateStandAloneVmCommand) SetFlavorName(v string) {
 	o.FlavorName.Set(&v)
 }
+
 // SetFlavorNameNil sets the value for FlavorName to be an explicit nil
 func (o *CreateStandAloneVmCommand) SetFlavorNameNil() {
 	o.FlavorName.Set(nil)
@@ -206,6 +211,7 @@ func (o *CreateStandAloneVmCommand) HasVolumeType() bool {
 func (o *CreateStandAloneVmCommand) SetVolumeType(v string) {
 	o.VolumeType.Set(&v)
 }
+
 // SetVolumeTypeNil sets the value for VolumeType to be an explicit nil
 func (o *CreateStandAloneVmCommand) SetVolumeTypeNil() {
 	o.VolumeType.Set(nil)
@@ -248,6 +254,7 @@ func (o *CreateStandAloneVmCommand) HasUsername() bool {
 func (o *CreateStandAloneVmCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *CreateStandAloneVmCommand) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -290,6 +297,7 @@ func (o *CreateStandAloneVmCommand) HasPassword() bool {
 func (o *CreateStandAloneVmCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *CreateStandAloneVmCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -364,6 +372,7 @@ func (o *CreateStandAloneVmCommand) HasImage() bool {
 func (o *CreateStandAloneVmCommand) SetImage(v string) {
 	o.Image.Set(&v)
 }
+
 // SetImageNil sets the value for Image to be an explicit nil
 func (o *CreateStandAloneVmCommand) SetImageNil() {
 	o.Image.Set(nil)
@@ -406,6 +415,7 @@ func (o *CreateStandAloneVmCommand) HasCloudInit() bool {
 func (o *CreateStandAloneVmCommand) SetCloudInit(v string) {
 	o.CloudInit.Set(&v)
 }
+
 // SetCloudInitNil sets the value for CloudInit to be an explicit nil
 func (o *CreateStandAloneVmCommand) SetCloudInitNil() {
 	o.CloudInit.Set(nil)
@@ -544,6 +554,7 @@ func (o *CreateStandAloneVmCommand) HasSpotPrice() bool {
 func (o *CreateStandAloneVmCommand) SetSpotPrice(v float64) {
 	o.SpotPrice.Set(&v)
 }
+
 // SetSpotPriceNil sets the value for SpotPrice to be an explicit nil
 func (o *CreateStandAloneVmCommand) SetSpotPriceNil() {
 	o.SpotPrice.Set(nil)
@@ -618,6 +629,7 @@ func (o *CreateStandAloneVmCommand) HasAvailabilityZone() bool {
 func (o *CreateStandAloneVmCommand) SetAvailabilityZone(v string) {
 	o.AvailabilityZone.Set(&v)
 }
+
 // SetAvailabilityZoneNil sets the value for AvailabilityZone to be an explicit nil
 func (o *CreateStandAloneVmCommand) SetAvailabilityZoneNil() {
 	o.AvailabilityZone.Set(nil)
@@ -660,6 +672,7 @@ func (o *CreateStandAloneVmCommand) HasHypervisor() bool {
 func (o *CreateStandAloneVmCommand) SetHypervisor(v string) {
 	o.Hypervisor.Set(&v)
 }
+
 // SetHypervisorNil sets the value for Hypervisor to be an explicit nil
 func (o *CreateStandAloneVmCommand) SetHypervisorNil() {
 	o.Hypervisor.Set(nil)
@@ -769,7 +782,7 @@ func (o *CreateStandAloneVmCommand) SetStandAloneMetaDatas(v []StandAloneMetaDat
 }
 
 func (o CreateStandAloneVmCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -835,7 +848,51 @@ func (o CreateStandAloneVmCommand) ToMap() (map[string]interface{}, error) {
 	if o.StandAloneMetaDatas != nil {
 		toSerialize["standAloneMetaDatas"] = o.StandAloneMetaDatas
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateStandAloneVmCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateStandAloneVmCommand := _CreateStandAloneVmCommand{}
+
+	err = json.Unmarshal(data, &varCreateStandAloneVmCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateStandAloneVmCommand(varCreateStandAloneVmCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "flavorName")
+		delete(additionalProperties, "volumeSize")
+		delete(additionalProperties, "volumeType")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "publicIpEnabled")
+		delete(additionalProperties, "image")
+		delete(additionalProperties, "cloudInit")
+		delete(additionalProperties, "standAloneProfileId")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "count")
+		delete(additionalProperties, "spotPrice")
+		delete(additionalProperties, "spotInstance")
+		delete(additionalProperties, "availabilityZone")
+		delete(additionalProperties, "hypervisor")
+		delete(additionalProperties, "useLocalDisk")
+		delete(additionalProperties, "standAloneVmDisks")
+		delete(additionalProperties, "standAloneMetaDatas")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateStandAloneVmCommand struct {
@@ -873,5 +930,3 @@ func (v *NullableCreateStandAloneVmCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

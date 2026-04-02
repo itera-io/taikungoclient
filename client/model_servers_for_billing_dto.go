@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,8 +21,9 @@ var _ MappedNullable = &ServersForBillingDto{}
 
 // ServersForBillingDto struct for ServersForBillingDto
 type ServersForBillingDto struct {
-	Cpu int32 `json:"cpu"`
-	Ram int64 `json:"ram"`
+	Cpu                  int32 `json:"cpu"`
+	Ram                  int64 `json:"ram"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ServersForBillingDto ServersForBillingDto
@@ -96,7 +96,7 @@ func (o *ServersForBillingDto) SetRam(v int64) {
 }
 
 func (o ServersForBillingDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -107,6 +107,11 @@ func (o ServersForBillingDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["cpu"] = o.Cpu
 	toSerialize["ram"] = o.Ram
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -124,10 +129,10 @@ func (o *ServersForBillingDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -135,15 +140,21 @@ func (o *ServersForBillingDto) UnmarshalJSON(data []byte) (err error) {
 
 	varServersForBillingDto := _ServersForBillingDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varServersForBillingDto)
+	err = json.Unmarshal(data, &varServersForBillingDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ServersForBillingDto(varServersForBillingDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "ram")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -183,5 +194,3 @@ func (v *NullableServersForBillingDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

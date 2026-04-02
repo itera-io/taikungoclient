@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,23 +21,24 @@ var _ MappedNullable = &AzureCredentialsListDto{}
 
 // AzureCredentialsListDto struct for AzureCredentialsListDto
 type AzureCredentialsListDto struct {
-	Id int32 `json:"id"`
-	ProjectCount int32 `json:"projectCount"`
-	IsLocked bool `json:"isLocked"`
-	Name string `json:"name"`
-	TenantId string `json:"tenantId"`
-	Location string `json:"location"`
-	AvailabilityZones []string `json:"availabilityZones"`
-	AvailabilityZonesCount int32 `json:"availabilityZonesCount"`
-	Projects []CommonDropdownDto `json:"projects"`
-	CreatedBy NullableString `json:"createdBy"`
-	CreatedAt NullableString `json:"createdAt"`
-	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
-	IsDefault bool `json:"isDefault"`
-	OrganizationId int32 `json:"organizationId"`
-	OrganizationName string `json:"organizationName"`
-	ContinentName NullableString `json:"continentName"`
+	Id                     int32               `json:"id"`
+	ProjectCount           int32               `json:"projectCount"`
+	IsLocked               bool                `json:"isLocked"`
+	Name                   string              `json:"name"`
+	TenantId               string              `json:"tenantId"`
+	Location               string              `json:"location"`
+	AvailabilityZones      []string            `json:"availabilityZones"`
+	AvailabilityZonesCount int32               `json:"availabilityZonesCount"`
+	Projects               []CommonDropdownDto `json:"projects"`
+	CreatedBy              NullableString      `json:"createdBy"`
+	CreatedAt              NullableString      `json:"createdAt"`
+	LastModified           NullableString      `json:"lastModified"`
+	LastModifiedBy         NullableString      `json:"lastModifiedBy"`
+	IsDefault              bool                `json:"isDefault"`
+	OrganizationId         int32               `json:"organizationId"`
+	OrganizationName       string              `json:"organizationName"`
+	ContinentName          NullableString      `json:"continentName"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _AzureCredentialsListDto AzureCredentialsListDto
@@ -496,7 +496,7 @@ func (o *AzureCredentialsListDto) SetContinentName(v string) {
 }
 
 func (o AzureCredentialsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -522,6 +522,11 @@ func (o AzureCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["organizationId"] = o.OrganizationId
 	toSerialize["organizationName"] = o.OrganizationName
 	toSerialize["continentName"] = o.ContinentName.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -554,10 +559,10 @@ func (o *AzureCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -565,15 +570,36 @@ func (o *AzureCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varAzureCredentialsListDto := _AzureCredentialsListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAzureCredentialsListDto)
+	err = json.Unmarshal(data, &varAzureCredentialsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AzureCredentialsListDto(varAzureCredentialsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "projectCount")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "location")
+		delete(additionalProperties, "availabilityZones")
+		delete(additionalProperties, "availabilityZonesCount")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "continentName")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -613,5 +639,3 @@ func (v *NullableAzureCredentialsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

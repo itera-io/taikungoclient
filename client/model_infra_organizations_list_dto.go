@@ -21,13 +21,16 @@ var _ MappedNullable = &InfraOrganizationsListDto{}
 
 // InfraOrganizationsListDto struct for InfraOrganizationsListDto
 type InfraOrganizationsListDto struct {
-	OrganizationId *int32 `json:"organizationId,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	SubscriptionId NullableString `json:"subscriptionId,omitempty"`
-	BillingStartDate NullableTime `json:"billingStartDate,omitempty"`
-	Yearly *bool `json:"yearly,omitempty"`
+	OrganizationId       *int32         `json:"organizationId,omitempty"`
+	OrganizationName     NullableString `json:"organizationName,omitempty"`
+	CreatedAt            *time.Time     `json:"createdAt,omitempty"`
+	SubscriptionId       NullableString `json:"subscriptionId,omitempty"`
+	BillingStartDate     NullableTime   `json:"billingStartDate,omitempty"`
+	Yearly               *bool          `json:"yearly,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _InfraOrganizationsListDto InfraOrganizationsListDto
 
 // NewInfraOrganizationsListDto instantiates a new InfraOrganizationsListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -110,6 +113,7 @@ func (o *InfraOrganizationsListDto) HasOrganizationName() bool {
 func (o *InfraOrganizationsListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
+
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *InfraOrganizationsListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -184,6 +188,7 @@ func (o *InfraOrganizationsListDto) HasSubscriptionId() bool {
 func (o *InfraOrganizationsListDto) SetSubscriptionId(v string) {
 	o.SubscriptionId.Set(&v)
 }
+
 // SetSubscriptionIdNil sets the value for SubscriptionId to be an explicit nil
 func (o *InfraOrganizationsListDto) SetSubscriptionIdNil() {
 	o.SubscriptionId.Set(nil)
@@ -226,6 +231,7 @@ func (o *InfraOrganizationsListDto) HasBillingStartDate() bool {
 func (o *InfraOrganizationsListDto) SetBillingStartDate(v time.Time) {
 	o.BillingStartDate.Set(&v)
 }
+
 // SetBillingStartDateNil sets the value for BillingStartDate to be an explicit nil
 func (o *InfraOrganizationsListDto) SetBillingStartDateNil() {
 	o.BillingStartDate.Set(nil)
@@ -269,7 +275,7 @@ func (o *InfraOrganizationsListDto) SetYearly(v bool) {
 }
 
 func (o InfraOrganizationsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -296,7 +302,38 @@ func (o InfraOrganizationsListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Yearly) {
 		toSerialize["yearly"] = o.Yearly
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *InfraOrganizationsListDto) UnmarshalJSON(data []byte) (err error) {
+	varInfraOrganizationsListDto := _InfraOrganizationsListDto{}
+
+	err = json.Unmarshal(data, &varInfraOrganizationsListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InfraOrganizationsListDto(varInfraOrganizationsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "subscriptionId")
+		delete(additionalProperties, "billingStartDate")
+		delete(additionalProperties, "yearly")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableInfraOrganizationsListDto struct {
@@ -334,5 +371,3 @@ func (v *NullableInfraOrganizationsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

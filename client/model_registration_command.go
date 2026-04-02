@@ -20,10 +20,13 @@ var _ MappedNullable = &RegistrationCommand{}
 
 // RegistrationCommand struct for RegistrationCommand
 type RegistrationCommand struct {
-	AccountName NullableString `json:"accountName,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Email NullableString `json:"email,omitempty"`
+	AccountName          NullableString `json:"accountName,omitempty"`
+	Username             NullableString `json:"username,omitempty"`
+	Email                NullableString `json:"email,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _RegistrationCommand RegistrationCommand
 
 // NewRegistrationCommand instantiates a new RegistrationCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *RegistrationCommand) HasAccountName() bool {
 func (o *RegistrationCommand) SetAccountName(v string) {
 	o.AccountName.Set(&v)
 }
+
 // SetAccountNameNil sets the value for AccountName to be an explicit nil
 func (o *RegistrationCommand) SetAccountNameNil() {
 	o.AccountName.Set(nil)
@@ -116,6 +120,7 @@ func (o *RegistrationCommand) HasUsername() bool {
 func (o *RegistrationCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *RegistrationCommand) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -158,6 +163,7 @@ func (o *RegistrationCommand) HasEmail() bool {
 func (o *RegistrationCommand) SetEmail(v string) {
 	o.Email.Set(&v)
 }
+
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *RegistrationCommand) SetEmailNil() {
 	o.Email.Set(nil)
@@ -169,7 +175,7 @@ func (o *RegistrationCommand) UnsetEmail() {
 }
 
 func (o RegistrationCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -187,7 +193,35 @@ func (o RegistrationCommand) ToMap() (map[string]interface{}, error) {
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *RegistrationCommand) UnmarshalJSON(data []byte) (err error) {
+	varRegistrationCommand := _RegistrationCommand{}
+
+	err = json.Unmarshal(data, &varRegistrationCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RegistrationCommand(varRegistrationCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accountName")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "email")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableRegistrationCommand struct {
@@ -225,5 +259,3 @@ func (v *NullableRegistrationCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,12 +20,15 @@ var _ MappedNullable = &PrometheusDashboardUpdateCommand{}
 
 // PrometheusDashboardUpdateCommand struct for PrometheusDashboardUpdateCommand
 type PrometheusDashboardUpdateCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Expression NullableString `json:"expression,omitempty"`
-	Description NullableString `json:"description,omitempty"`
-	CategoryName NullableString `json:"categoryName,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Expression           NullableString `json:"expression,omitempty"`
+	Description          NullableString `json:"description,omitempty"`
+	CategoryName         NullableString `json:"categoryName,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PrometheusDashboardUpdateCommand PrometheusDashboardUpdateCommand
 
 // NewPrometheusDashboardUpdateCommand instantiates a new PrometheusDashboardUpdateCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -108,6 +111,7 @@ func (o *PrometheusDashboardUpdateCommand) HasName() bool {
 func (o *PrometheusDashboardUpdateCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PrometheusDashboardUpdateCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -150,6 +154,7 @@ func (o *PrometheusDashboardUpdateCommand) HasExpression() bool {
 func (o *PrometheusDashboardUpdateCommand) SetExpression(v string) {
 	o.Expression.Set(&v)
 }
+
 // SetExpressionNil sets the value for Expression to be an explicit nil
 func (o *PrometheusDashboardUpdateCommand) SetExpressionNil() {
 	o.Expression.Set(nil)
@@ -192,6 +197,7 @@ func (o *PrometheusDashboardUpdateCommand) HasDescription() bool {
 func (o *PrometheusDashboardUpdateCommand) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *PrometheusDashboardUpdateCommand) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -234,6 +240,7 @@ func (o *PrometheusDashboardUpdateCommand) HasCategoryName() bool {
 func (o *PrometheusDashboardUpdateCommand) SetCategoryName(v string) {
 	o.CategoryName.Set(&v)
 }
+
 // SetCategoryNameNil sets the value for CategoryName to be an explicit nil
 func (o *PrometheusDashboardUpdateCommand) SetCategoryNameNil() {
 	o.CategoryName.Set(nil)
@@ -245,7 +252,7 @@ func (o *PrometheusDashboardUpdateCommand) UnsetCategoryName() {
 }
 
 func (o PrometheusDashboardUpdateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -269,7 +276,37 @@ func (o PrometheusDashboardUpdateCommand) ToMap() (map[string]interface{}, error
 	if o.CategoryName.IsSet() {
 		toSerialize["categoryName"] = o.CategoryName.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PrometheusDashboardUpdateCommand) UnmarshalJSON(data []byte) (err error) {
+	varPrometheusDashboardUpdateCommand := _PrometheusDashboardUpdateCommand{}
+
+	err = json.Unmarshal(data, &varPrometheusDashboardUpdateCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PrometheusDashboardUpdateCommand(varPrometheusDashboardUpdateCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "expression")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "categoryName")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePrometheusDashboardUpdateCommand struct {
@@ -307,5 +344,3 @@ func (v *NullablePrometheusDashboardUpdateCommand) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,11 +20,14 @@ var _ MappedNullable = &CreateAlertingIntegrationCommand{}
 
 // CreateAlertingIntegrationCommand struct for CreateAlertingIntegrationCommand
 type CreateAlertingIntegrationCommand struct {
-	Url NullableString `json:"url,omitempty"`
-	Token NullableString `json:"token,omitempty"`
+	Url                     NullableString           `json:"url,omitempty"`
+	Token                   NullableString           `json:"token,omitempty"`
 	AlertingIntegrationType *AlertingIntegrationType `json:"alertingIntegrationType,omitempty"`
-	AlertingProfileId *int32 `json:"alertingProfileId,omitempty"`
+	AlertingProfileId       *int32                   `json:"alertingProfileId,omitempty"`
+	AdditionalProperties    map[string]interface{}
 }
+
+type _CreateAlertingIntegrationCommand CreateAlertingIntegrationCommand
 
 // NewCreateAlertingIntegrationCommand instantiates a new CreateAlertingIntegrationCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -75,6 +78,7 @@ func (o *CreateAlertingIntegrationCommand) HasUrl() bool {
 func (o *CreateAlertingIntegrationCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *CreateAlertingIntegrationCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -117,6 +121,7 @@ func (o *CreateAlertingIntegrationCommand) HasToken() bool {
 func (o *CreateAlertingIntegrationCommand) SetToken(v string) {
 	o.Token.Set(&v)
 }
+
 // SetTokenNil sets the value for Token to be an explicit nil
 func (o *CreateAlertingIntegrationCommand) SetTokenNil() {
 	o.Token.Set(nil)
@@ -192,7 +197,7 @@ func (o *CreateAlertingIntegrationCommand) SetAlertingProfileId(v int32) {
 }
 
 func (o CreateAlertingIntegrationCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -213,7 +218,36 @@ func (o CreateAlertingIntegrationCommand) ToMap() (map[string]interface{}, error
 	if !IsNil(o.AlertingProfileId) {
 		toSerialize["alertingProfileId"] = o.AlertingProfileId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateAlertingIntegrationCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateAlertingIntegrationCommand := _CreateAlertingIntegrationCommand{}
+
+	err = json.Unmarshal(data, &varCreateAlertingIntegrationCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateAlertingIntegrationCommand(varCreateAlertingIntegrationCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "alertingIntegrationType")
+		delete(additionalProperties, "alertingProfileId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateAlertingIntegrationCommand struct {
@@ -251,5 +285,3 @@ func (v *NullableCreateAlertingIntegrationCommand) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

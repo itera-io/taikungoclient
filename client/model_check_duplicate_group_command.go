@@ -20,9 +20,12 @@ var _ MappedNullable = &CheckDuplicateGroupCommand{}
 
 // CheckDuplicateGroupCommand struct for CheckDuplicateGroupCommand
 type CheckDuplicateGroupCommand struct {
-	AccountId NullableInt32 `json:"accountId,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	AccountId            NullableInt32  `json:"accountId,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CheckDuplicateGroupCommand CheckDuplicateGroupCommand
 
 // NewCheckDuplicateGroupCommand instantiates a new CheckDuplicateGroupCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *CheckDuplicateGroupCommand) HasAccountId() bool {
 func (o *CheckDuplicateGroupCommand) SetAccountId(v int32) {
 	o.AccountId.Set(&v)
 }
+
 // SetAccountIdNil sets the value for AccountId to be an explicit nil
 func (o *CheckDuplicateGroupCommand) SetAccountIdNil() {
 	o.AccountId.Set(nil)
@@ -115,6 +119,7 @@ func (o *CheckDuplicateGroupCommand) HasName() bool {
 func (o *CheckDuplicateGroupCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CheckDuplicateGroupCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -126,7 +131,7 @@ func (o *CheckDuplicateGroupCommand) UnsetName() {
 }
 
 func (o CheckDuplicateGroupCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,7 +146,34 @@ func (o CheckDuplicateGroupCommand) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CheckDuplicateGroupCommand) UnmarshalJSON(data []byte) (err error) {
+	varCheckDuplicateGroupCommand := _CheckDuplicateGroupCommand{}
+
+	err = json.Unmarshal(data, &varCheckDuplicateGroupCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CheckDuplicateGroupCommand(varCheckDuplicateGroupCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accountId")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCheckDuplicateGroupCommand struct {
@@ -179,5 +211,3 @@ func (v *NullableCheckDuplicateGroupCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

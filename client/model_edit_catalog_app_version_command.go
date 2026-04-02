@@ -20,9 +20,12 @@ var _ MappedNullable = &EditCatalogAppVersionCommand{}
 
 // EditCatalogAppVersionCommand struct for EditCatalogAppVersionCommand
 type EditCatalogAppVersionCommand struct {
-	CatalogAppId *int32 `json:"catalogAppId,omitempty"`
-	Version NullableString `json:"version,omitempty"`
+	CatalogAppId         *int32         `json:"catalogAppId,omitempty"`
+	Version              NullableString `json:"version,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EditCatalogAppVersionCommand EditCatalogAppVersionCommand
 
 // NewEditCatalogAppVersionCommand instantiates a new EditCatalogAppVersionCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,7 @@ func (o *EditCatalogAppVersionCommand) HasVersion() bool {
 func (o *EditCatalogAppVersionCommand) SetVersion(v string) {
 	o.Version.Set(&v)
 }
+
 // SetVersionNil sets the value for Version to be an explicit nil
 func (o *EditCatalogAppVersionCommand) SetVersionNil() {
 	o.Version.Set(nil)
@@ -116,7 +120,7 @@ func (o *EditCatalogAppVersionCommand) UnsetVersion() {
 }
 
 func (o EditCatalogAppVersionCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o EditCatalogAppVersionCommand) ToMap() (map[string]interface{}, error) {
 	if o.Version.IsSet() {
 		toSerialize["version"] = o.Version.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EditCatalogAppVersionCommand) UnmarshalJSON(data []byte) (err error) {
+	varEditCatalogAppVersionCommand := _EditCatalogAppVersionCommand{}
+
+	err = json.Unmarshal(data, &varEditCatalogAppVersionCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EditCatalogAppVersionCommand(varEditCatalogAppVersionCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "catalogAppId")
+		delete(additionalProperties, "version")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEditCatalogAppVersionCommand struct {
@@ -169,5 +200,3 @@ func (v *NullableEditCatalogAppVersionCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

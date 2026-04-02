@@ -20,9 +20,12 @@ var _ MappedNullable = &ProjectAppParamsDto{}
 
 // ProjectAppParamsDto struct for ProjectAppParamsDto
 type ProjectAppParamsDto struct {
-	Key NullableString `json:"key,omitempty"`
-	Value NullableString `json:"value,omitempty"`
+	Key                  NullableString `json:"key,omitempty"`
+	Value                NullableString `json:"value,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectAppParamsDto ProjectAppParamsDto
 
 // NewProjectAppParamsDto instantiates a new ProjectAppParamsDto object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *ProjectAppParamsDto) HasKey() bool {
 func (o *ProjectAppParamsDto) SetKey(v string) {
 	o.Key.Set(&v)
 }
+
 // SetKeyNil sets the value for Key to be an explicit nil
 func (o *ProjectAppParamsDto) SetKeyNil() {
 	o.Key.Set(nil)
@@ -115,6 +119,7 @@ func (o *ProjectAppParamsDto) HasValue() bool {
 func (o *ProjectAppParamsDto) SetValue(v string) {
 	o.Value.Set(&v)
 }
+
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *ProjectAppParamsDto) SetValueNil() {
 	o.Value.Set(nil)
@@ -126,7 +131,7 @@ func (o *ProjectAppParamsDto) UnsetValue() {
 }
 
 func (o ProjectAppParamsDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,7 +146,34 @@ func (o ProjectAppParamsDto) ToMap() (map[string]interface{}, error) {
 	if o.Value.IsSet() {
 		toSerialize["value"] = o.Value.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectAppParamsDto) UnmarshalJSON(data []byte) (err error) {
+	varProjectAppParamsDto := _ProjectAppParamsDto{}
+
+	err = json.Unmarshal(data, &varProjectAppParamsDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectAppParamsDto(varProjectAppParamsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "value")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectAppParamsDto struct {
@@ -179,5 +211,3 @@ func (v *NullableProjectAppParamsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

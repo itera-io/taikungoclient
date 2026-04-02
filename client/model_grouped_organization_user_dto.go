@@ -20,12 +20,15 @@ var _ MappedNullable = &GroupedOrganizationUserDto{}
 
 // GroupedOrganizationUserDto struct for GroupedOrganizationUserDto
 type GroupedOrganizationUserDto struct {
-	Id NullableString `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	OrganizationRole *ENonGlobalRoles `json:"organizationRole,omitempty"`
-	GroupId *int32 `json:"groupId,omitempty"`
-	GroupName NullableString `json:"groupName,omitempty"`
+	Id                   NullableString   `json:"id,omitempty"`
+	Name                 NullableString   `json:"name,omitempty"`
+	OrganizationRole     *ENonGlobalRoles `json:"organizationRole,omitempty"`
+	GroupId              *int32           `json:"groupId,omitempty"`
+	GroupName            NullableString   `json:"groupName,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _GroupedOrganizationUserDto GroupedOrganizationUserDto
 
 // NewGroupedOrganizationUserDto instantiates a new GroupedOrganizationUserDto object
 // This constructor will assign default values to properties that have it defined,
@@ -76,6 +79,7 @@ func (o *GroupedOrganizationUserDto) HasId() bool {
 func (o *GroupedOrganizationUserDto) SetId(v string) {
 	o.Id.Set(&v)
 }
+
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *GroupedOrganizationUserDto) SetIdNil() {
 	o.Id.Set(nil)
@@ -118,6 +122,7 @@ func (o *GroupedOrganizationUserDto) HasName() bool {
 func (o *GroupedOrganizationUserDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *GroupedOrganizationUserDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -224,6 +229,7 @@ func (o *GroupedOrganizationUserDto) HasGroupName() bool {
 func (o *GroupedOrganizationUserDto) SetGroupName(v string) {
 	o.GroupName.Set(&v)
 }
+
 // SetGroupNameNil sets the value for GroupName to be an explicit nil
 func (o *GroupedOrganizationUserDto) SetGroupNameNil() {
 	o.GroupName.Set(nil)
@@ -235,7 +241,7 @@ func (o *GroupedOrganizationUserDto) UnsetGroupName() {
 }
 
 func (o GroupedOrganizationUserDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -259,7 +265,37 @@ func (o GroupedOrganizationUserDto) ToMap() (map[string]interface{}, error) {
 	if o.GroupName.IsSet() {
 		toSerialize["groupName"] = o.GroupName.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *GroupedOrganizationUserDto) UnmarshalJSON(data []byte) (err error) {
+	varGroupedOrganizationUserDto := _GroupedOrganizationUserDto{}
+
+	err = json.Unmarshal(data, &varGroupedOrganizationUserDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GroupedOrganizationUserDto(varGroupedOrganizationUserDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "organizationRole")
+		delete(additionalProperties, "groupId")
+		delete(additionalProperties, "groupName")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableGroupedOrganizationUserDto struct {
@@ -297,5 +333,3 @@ func (v *NullableGroupedOrganizationUserDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

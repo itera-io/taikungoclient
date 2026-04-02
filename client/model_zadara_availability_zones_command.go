@@ -20,11 +20,14 @@ var _ MappedNullable = &ZadaraAvailabilityZonesCommand{}
 
 // ZadaraAvailabilityZonesCommand struct for ZadaraAvailabilityZonesCommand
 type ZadaraAvailabilityZonesCommand struct {
-	Url NullableString `json:"url,omitempty"`
-	ZadaraAccessKeyId NullableString `json:"zadaraAccessKeyId,omitempty"`
+	Url                   NullableString `json:"url,omitempty"`
+	ZadaraAccessKeyId     NullableString `json:"zadaraAccessKeyId,omitempty"`
 	ZadaraSecretAccessKey NullableString `json:"zadaraSecretAccessKey,omitempty"`
-	CloudId NullableInt32 `json:"cloudId,omitempty"`
+	CloudId               NullableInt32  `json:"cloudId,omitempty"`
+	AdditionalProperties  map[string]interface{}
 }
+
+type _ZadaraAvailabilityZonesCommand ZadaraAvailabilityZonesCommand
 
 // NewZadaraAvailabilityZonesCommand instantiates a new ZadaraAvailabilityZonesCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -75,6 +78,7 @@ func (o *ZadaraAvailabilityZonesCommand) HasUrl() bool {
 func (o *ZadaraAvailabilityZonesCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *ZadaraAvailabilityZonesCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -117,6 +121,7 @@ func (o *ZadaraAvailabilityZonesCommand) HasZadaraAccessKeyId() bool {
 func (o *ZadaraAvailabilityZonesCommand) SetZadaraAccessKeyId(v string) {
 	o.ZadaraAccessKeyId.Set(&v)
 }
+
 // SetZadaraAccessKeyIdNil sets the value for ZadaraAccessKeyId to be an explicit nil
 func (o *ZadaraAvailabilityZonesCommand) SetZadaraAccessKeyIdNil() {
 	o.ZadaraAccessKeyId.Set(nil)
@@ -159,6 +164,7 @@ func (o *ZadaraAvailabilityZonesCommand) HasZadaraSecretAccessKey() bool {
 func (o *ZadaraAvailabilityZonesCommand) SetZadaraSecretAccessKey(v string) {
 	o.ZadaraSecretAccessKey.Set(&v)
 }
+
 // SetZadaraSecretAccessKeyNil sets the value for ZadaraSecretAccessKey to be an explicit nil
 func (o *ZadaraAvailabilityZonesCommand) SetZadaraSecretAccessKeyNil() {
 	o.ZadaraSecretAccessKey.Set(nil)
@@ -201,6 +207,7 @@ func (o *ZadaraAvailabilityZonesCommand) HasCloudId() bool {
 func (o *ZadaraAvailabilityZonesCommand) SetCloudId(v int32) {
 	o.CloudId.Set(&v)
 }
+
 // SetCloudIdNil sets the value for CloudId to be an explicit nil
 func (o *ZadaraAvailabilityZonesCommand) SetCloudIdNil() {
 	o.CloudId.Set(nil)
@@ -212,7 +219,7 @@ func (o *ZadaraAvailabilityZonesCommand) UnsetCloudId() {
 }
 
 func (o ZadaraAvailabilityZonesCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,7 +240,36 @@ func (o ZadaraAvailabilityZonesCommand) ToMap() (map[string]interface{}, error) 
 	if o.CloudId.IsSet() {
 		toSerialize["cloudId"] = o.CloudId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ZadaraAvailabilityZonesCommand) UnmarshalJSON(data []byte) (err error) {
+	varZadaraAvailabilityZonesCommand := _ZadaraAvailabilityZonesCommand{}
+
+	err = json.Unmarshal(data, &varZadaraAvailabilityZonesCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ZadaraAvailabilityZonesCommand(varZadaraAvailabilityZonesCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "zadaraAccessKeyId")
+		delete(additionalProperties, "zadaraSecretAccessKey")
+		delete(additionalProperties, "cloudId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableZadaraAvailabilityZonesCommand struct {
@@ -271,5 +307,3 @@ func (v *NullableZadaraAvailabilityZonesCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

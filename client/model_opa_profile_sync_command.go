@@ -20,8 +20,11 @@ var _ MappedNullable = &OpaProfileSyncCommand{}
 
 // OpaProfileSyncCommand struct for OpaProfileSyncCommand
 type OpaProfileSyncCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
+	ProjectId            *int32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OpaProfileSyncCommand OpaProfileSyncCommand
 
 // NewOpaProfileSyncCommand instantiates a new OpaProfileSyncCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,7 +76,7 @@ func (o *OpaProfileSyncCommand) SetProjectId(v int32) {
 }
 
 func (o OpaProfileSyncCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -85,7 +88,33 @@ func (o OpaProfileSyncCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OpaProfileSyncCommand) UnmarshalJSON(data []byte) (err error) {
+	varOpaProfileSyncCommand := _OpaProfileSyncCommand{}
+
+	err = json.Unmarshal(data, &varOpaProfileSyncCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OpaProfileSyncCommand(varOpaProfileSyncCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOpaProfileSyncCommand struct {
@@ -123,5 +152,3 @@ func (v *NullableOpaProfileSyncCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

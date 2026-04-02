@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,25 +21,26 @@ var _ MappedNullable = &KubernetesProfilesListDto{}
 
 // KubernetesProfilesListDto struct for KubernetesProfilesListDto
 type KubernetesProfilesListDto struct {
-	Id int32 `json:"id"`
-	Name string `json:"name"`
-	OrganizationId NullableInt32 `json:"organizationId"`
-	OrganizationName string `json:"organizationName"`
-	Cni CNI `json:"cni"`
-	OctaviaEnabled bool `json:"octaviaEnabled"`
-	ExposeNodePortOnBastion bool `json:"exposeNodePortOnBastion"`
-	IsLocked bool `json:"isLocked"`
-	TaikunLBEnabled bool `json:"taikunLBEnabled"`
-	AllowSchedulingOnMaster bool `json:"allowSchedulingOnMaster"`
-	UniqueClusterName bool `json:"uniqueClusterName"`
-	Projects []CommonDropdownDto `json:"projects"`
-	CreatedBy NullableString `json:"createdBy"`
-	CreatedAt NullableString `json:"createdAt"`
-	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
-	ProxmoxStorage ProxmoxStorage `json:"proxmoxStorage"`
-	NvidiaGpuOperatorEnabled bool `json:"nvidiaGpuOperatorEnabled"`
-	WasmEnabled bool `json:"wasmEnabled"`
+	Id                       int32               `json:"id"`
+	Name                     string              `json:"name"`
+	OrganizationId           NullableInt32       `json:"organizationId"`
+	OrganizationName         string              `json:"organizationName"`
+	Cni                      CNI                 `json:"cni"`
+	OctaviaEnabled           bool                `json:"octaviaEnabled"`
+	ExposeNodePortOnBastion  bool                `json:"exposeNodePortOnBastion"`
+	IsLocked                 bool                `json:"isLocked"`
+	TaikunLBEnabled          bool                `json:"taikunLBEnabled"`
+	AllowSchedulingOnMaster  bool                `json:"allowSchedulingOnMaster"`
+	UniqueClusterName        bool                `json:"uniqueClusterName"`
+	Projects                 []CommonDropdownDto `json:"projects"`
+	CreatedBy                NullableString      `json:"createdBy"`
+	CreatedAt                NullableString      `json:"createdAt"`
+	LastModified             NullableString      `json:"lastModified"`
+	LastModifiedBy           NullableString      `json:"lastModifiedBy"`
+	ProxmoxStorage           ProxmoxStorage      `json:"proxmoxStorage"`
+	NvidiaGpuOperatorEnabled bool                `json:"nvidiaGpuOperatorEnabled"`
+	WasmEnabled              bool                `json:"wasmEnabled"`
+	AdditionalProperties     map[string]interface{}
 }
 
 type _KubernetesProfilesListDto KubernetesProfilesListDto
@@ -548,7 +548,7 @@ func (o *KubernetesProfilesListDto) SetWasmEnabled(v bool) {
 }
 
 func (o KubernetesProfilesListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -576,6 +576,11 @@ func (o KubernetesProfilesListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["proxmoxStorage"] = o.ProxmoxStorage
 	toSerialize["nvidiaGpuOperatorEnabled"] = o.NvidiaGpuOperatorEnabled
 	toSerialize["wasmEnabled"] = o.WasmEnabled
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -610,10 +615,10 @@ func (o *KubernetesProfilesListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -621,15 +626,38 @@ func (o *KubernetesProfilesListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varKubernetesProfilesListDto := _KubernetesProfilesListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKubernetesProfilesListDto)
+	err = json.Unmarshal(data, &varKubernetesProfilesListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubernetesProfilesListDto(varKubernetesProfilesListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "cni")
+		delete(additionalProperties, "octaviaEnabled")
+		delete(additionalProperties, "exposeNodePortOnBastion")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "taikunLBEnabled")
+		delete(additionalProperties, "allowSchedulingOnMaster")
+		delete(additionalProperties, "uniqueClusterName")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "proxmoxStorage")
+		delete(additionalProperties, "nvidiaGpuOperatorEnabled")
+		delete(additionalProperties, "wasmEnabled")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -669,5 +697,3 @@ func (v *NullableKubernetesProfilesListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

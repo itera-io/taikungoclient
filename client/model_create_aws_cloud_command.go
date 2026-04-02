@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,17 +21,20 @@ var _ MappedNullable = &CreateAwsCloudCommand{}
 
 // CreateAwsCloudCommand struct for CreateAwsCloudCommand
 type CreateAwsCloudCommand struct {
-	Name NullableString `json:"name"`
-	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey"`
-	AwsAccessKeyId NullableString `json:"awsAccessKeyId"`
-	AzCount NullableInt32 `json:"azCount,omitempty"`
-	AwsRegion NullableString `json:"awsRegion"`
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	ImportedVpcId NullableString `json:"importedVpcId,omitempty"`
-	PrivateOnly *bool `json:"privateOnly,omitempty"`
-	IpMode *IpMode `json:"ipMode,omitempty"`
-	VpcMode *VpcMode `json:"vpcMode,omitempty"`
-	Subnets []CreateAwsSubnetDto `json:"subnets,omitempty"`
+	Name                    NullableString       `json:"name"`
+	AwsSecretAccessKey      NullableString       `json:"awsSecretAccessKey"`
+	AwsAccessKeyId          NullableString       `json:"awsAccessKeyId"`
+	AzCount                 NullableInt32        `json:"azCount,omitempty"`
+	AwsRegion               NullableString       `json:"awsRegion"`
+	OrganizationId          NullableInt32        `json:"organizationId,omitempty"`
+	ImportedVpcId           NullableString       `json:"importedVpcId,omitempty"`
+	PrivateOnly             *bool                `json:"privateOnly,omitempty"`
+	IpMode                  *IpMode              `json:"ipMode,omitempty"`
+	VpcMode                 *VpcMode             `json:"vpcMode,omitempty"`
+	Subnets                 []CreateAwsSubnetDto `json:"subnets,omitempty"`
+	SharedFileSystemEnabled *bool                `json:"sharedFileSystemEnabled,omitempty"`
+	EfsFileSystemId         NullableString       `json:"efsFileSystemId,omitempty"`
+	AdditionalProperties    map[string]interface{}
 }
 
 type _CreateAwsCloudCommand CreateAwsCloudCommand
@@ -168,6 +170,7 @@ func (o *CreateAwsCloudCommand) HasAzCount() bool {
 func (o *CreateAwsCloudCommand) SetAzCount(v int32) {
 	o.AzCount.Set(&v)
 }
+
 // SetAzCountNil sets the value for AzCount to be an explicit nil
 func (o *CreateAwsCloudCommand) SetAzCountNil() {
 	o.AzCount.Set(nil)
@@ -236,6 +239,7 @@ func (o *CreateAwsCloudCommand) HasOrganizationId() bool {
 func (o *CreateAwsCloudCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
+
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateAwsCloudCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -278,6 +282,7 @@ func (o *CreateAwsCloudCommand) HasImportedVpcId() bool {
 func (o *CreateAwsCloudCommand) SetImportedVpcId(v string) {
 	o.ImportedVpcId.Set(&v)
 }
+
 // SetImportedVpcIdNil sets the value for ImportedVpcId to be an explicit nil
 func (o *CreateAwsCloudCommand) SetImportedVpcIdNil() {
 	o.ImportedVpcId.Set(nil)
@@ -417,8 +422,83 @@ func (o *CreateAwsCloudCommand) SetSubnets(v []CreateAwsSubnetDto) {
 	o.Subnets = v
 }
 
+// GetSharedFileSystemEnabled returns the SharedFileSystemEnabled field value if set, zero value otherwise.
+func (o *CreateAwsCloudCommand) GetSharedFileSystemEnabled() bool {
+	if o == nil || IsNil(o.SharedFileSystemEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.SharedFileSystemEnabled
+}
+
+// GetSharedFileSystemEnabledOk returns a tuple with the SharedFileSystemEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAwsCloudCommand) GetSharedFileSystemEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.SharedFileSystemEnabled) {
+		return nil, false
+	}
+	return o.SharedFileSystemEnabled, true
+}
+
+// HasSharedFileSystemEnabled returns a boolean if a field has been set.
+func (o *CreateAwsCloudCommand) HasSharedFileSystemEnabled() bool {
+	if o != nil && !IsNil(o.SharedFileSystemEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetSharedFileSystemEnabled gets a reference to the given bool and assigns it to the SharedFileSystemEnabled field.
+func (o *CreateAwsCloudCommand) SetSharedFileSystemEnabled(v bool) {
+	o.SharedFileSystemEnabled = &v
+}
+
+// GetEfsFileSystemId returns the EfsFileSystemId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateAwsCloudCommand) GetEfsFileSystemId() string {
+	if o == nil || IsNil(o.EfsFileSystemId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.EfsFileSystemId.Get()
+}
+
+// GetEfsFileSystemIdOk returns a tuple with the EfsFileSystemId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateAwsCloudCommand) GetEfsFileSystemIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.EfsFileSystemId.Get(), o.EfsFileSystemId.IsSet()
+}
+
+// HasEfsFileSystemId returns a boolean if a field has been set.
+func (o *CreateAwsCloudCommand) HasEfsFileSystemId() bool {
+	if o != nil && o.EfsFileSystemId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEfsFileSystemId gets a reference to the given NullableString and assigns it to the EfsFileSystemId field.
+func (o *CreateAwsCloudCommand) SetEfsFileSystemId(v string) {
+	o.EfsFileSystemId.Set(&v)
+}
+
+// SetEfsFileSystemIdNil sets the value for EfsFileSystemId to be an explicit nil
+func (o *CreateAwsCloudCommand) SetEfsFileSystemIdNil() {
+	o.EfsFileSystemId.Set(nil)
+}
+
+// UnsetEfsFileSystemId ensures that no value is present for EfsFileSystemId, not even an explicit nil
+func (o *CreateAwsCloudCommand) UnsetEfsFileSystemId() {
+	o.EfsFileSystemId.Unset()
+}
+
 func (o CreateAwsCloudCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -452,6 +532,17 @@ func (o CreateAwsCloudCommand) ToMap() (map[string]interface{}, error) {
 	if o.Subnets != nil {
 		toSerialize["subnets"] = o.Subnets
 	}
+	if !IsNil(o.SharedFileSystemEnabled) {
+		toSerialize["sharedFileSystemEnabled"] = o.SharedFileSystemEnabled
+	}
+	if o.EfsFileSystemId.IsSet() {
+		toSerialize["efsFileSystemId"] = o.EfsFileSystemId.Get()
+	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -471,10 +562,10 @@ func (o *CreateAwsCloudCommand) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -482,15 +573,32 @@ func (o *CreateAwsCloudCommand) UnmarshalJSON(data []byte) (err error) {
 
 	varCreateAwsCloudCommand := _CreateAwsCloudCommand{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCreateAwsCloudCommand)
+	err = json.Unmarshal(data, &varCreateAwsCloudCommand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CreateAwsCloudCommand(varCreateAwsCloudCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "awsSecretAccessKey")
+		delete(additionalProperties, "awsAccessKeyId")
+		delete(additionalProperties, "azCount")
+		delete(additionalProperties, "awsRegion")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "importedVpcId")
+		delete(additionalProperties, "privateOnly")
+		delete(additionalProperties, "ipMode")
+		delete(additionalProperties, "vpcMode")
+		delete(additionalProperties, "subnets")
+		delete(additionalProperties, "sharedFileSystemEnabled")
+		delete(additionalProperties, "efsFileSystemId")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -530,5 +638,3 @@ func (v *NullableCreateAwsCloudCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

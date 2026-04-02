@@ -20,8 +20,11 @@ var _ MappedNullable = &DeploymentDisableBackupCommand{}
 
 // DeploymentDisableBackupCommand struct for DeploymentDisableBackupCommand
 type DeploymentDisableBackupCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
+	ProjectId            *int32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeploymentDisableBackupCommand DeploymentDisableBackupCommand
 
 // NewDeploymentDisableBackupCommand instantiates a new DeploymentDisableBackupCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,7 +76,7 @@ func (o *DeploymentDisableBackupCommand) SetProjectId(v int32) {
 }
 
 func (o DeploymentDisableBackupCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -85,7 +88,33 @@ func (o DeploymentDisableBackupCommand) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeploymentDisableBackupCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeploymentDisableBackupCommand := _DeploymentDisableBackupCommand{}
+
+	err = json.Unmarshal(data, &varDeploymentDisableBackupCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeploymentDisableBackupCommand(varDeploymentDisableBackupCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeploymentDisableBackupCommand struct {
@@ -123,5 +152,3 @@ func (v *NullableDeploymentDisableBackupCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

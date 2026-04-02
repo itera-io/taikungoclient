@@ -20,9 +20,12 @@ var _ MappedNullable = &AvailablePackagesList{}
 
 // AvailablePackagesList struct for AvailablePackagesList
 type AvailablePackagesList struct {
-	Data []AvailablePackagesDto `json:"data,omitempty"`
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	Data                 []AvailablePackagesDto `json:"data,omitempty"`
+	TotalCount           *int32                 `json:"totalCount,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AvailablePackagesList AvailablePackagesList
 
 // NewAvailablePackagesList instantiates a new AvailablePackagesList object
 // This constructor will assign default values to properties that have it defined,
@@ -107,7 +110,7 @@ func (o *AvailablePackagesList) SetTotalCount(v int32) {
 }
 
 func (o AvailablePackagesList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -122,7 +125,34 @@ func (o AvailablePackagesList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AvailablePackagesList) UnmarshalJSON(data []byte) (err error) {
+	varAvailablePackagesList := _AvailablePackagesList{}
+
+	err = json.Unmarshal(data, &varAvailablePackagesList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AvailablePackagesList(varAvailablePackagesList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAvailablePackagesList struct {
@@ -160,5 +190,3 @@ func (v *NullableAvailablePackagesList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

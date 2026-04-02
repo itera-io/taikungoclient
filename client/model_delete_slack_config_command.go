@@ -20,8 +20,11 @@ var _ MappedNullable = &DeleteSlackConfigCommand{}
 
 // DeleteSlackConfigCommand struct for DeleteSlackConfigCommand
 type DeleteSlackConfigCommand struct {
-	Ids []int32 `json:"ids,omitempty"`
+	Ids                  []int32 `json:"ids,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeleteSlackConfigCommand DeleteSlackConfigCommand
 
 // NewDeleteSlackConfigCommand instantiates a new DeleteSlackConfigCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -74,7 +77,7 @@ func (o *DeleteSlackConfigCommand) SetIds(v []int32) {
 }
 
 func (o DeleteSlackConfigCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -86,7 +89,33 @@ func (o DeleteSlackConfigCommand) ToMap() (map[string]interface{}, error) {
 	if o.Ids != nil {
 		toSerialize["ids"] = o.Ids
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeleteSlackConfigCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeleteSlackConfigCommand := _DeleteSlackConfigCommand{}
+
+	err = json.Unmarshal(data, &varDeleteSlackConfigCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeleteSlackConfigCommand(varDeleteSlackConfigCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "ids")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeleteSlackConfigCommand struct {
@@ -124,5 +153,3 @@ func (v *NullableDeleteSlackConfigCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

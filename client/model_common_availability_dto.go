@@ -20,9 +20,12 @@ var _ MappedNullable = &CommonAvailabilityDto{}
 
 // CommonAvailabilityDto struct for CommonAvailabilityDto
 type CommonAvailabilityDto struct {
-	Id *bool `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Id                   *bool          `json:"id,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CommonAvailabilityDto CommonAvailabilityDto
 
 // NewCommonAvailabilityDto instantiates a new CommonAvailabilityDto object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,7 @@ func (o *CommonAvailabilityDto) HasName() bool {
 func (o *CommonAvailabilityDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CommonAvailabilityDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -116,7 +120,7 @@ func (o *CommonAvailabilityDto) UnsetName() {
 }
 
 func (o CommonAvailabilityDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o CommonAvailabilityDto) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CommonAvailabilityDto) UnmarshalJSON(data []byte) (err error) {
+	varCommonAvailabilityDto := _CommonAvailabilityDto{}
+
+	err = json.Unmarshal(data, &varCommonAvailabilityDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CommonAvailabilityDto(varCommonAvailabilityDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCommonAvailabilityDto struct {
@@ -169,5 +200,3 @@ func (v *NullableCommonAvailabilityDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

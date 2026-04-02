@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,12 +21,13 @@ var _ MappedNullable = &ProjectWithFlavorsAndImagesDto{}
 
 // ProjectWithFlavorsAndImagesDto struct for ProjectWithFlavorsAndImagesDto
 type ProjectWithFlavorsAndImagesDto struct {
-	Id int32 `json:"id"`
-	Name NullableString `json:"name"`
-	Flavors []string `json:"flavors"`
-	Images []string `json:"images"`
-	ImageNames []string `json:"imageNames"`
-	IsReady bool `json:"isReady"`
+	Id                   int32          `json:"id"`
+	Name                 NullableString `json:"name"`
+	Flavors              []string       `json:"flavors"`
+	Images               []string       `json:"images"`
+	ImageNames           []string       `json:"imageNames"`
+	IsReady              bool           `json:"isReady"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProjectWithFlavorsAndImagesDto ProjectWithFlavorsAndImagesDto
@@ -208,7 +208,7 @@ func (o *ProjectWithFlavorsAndImagesDto) SetIsReady(v bool) {
 }
 
 func (o ProjectWithFlavorsAndImagesDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -229,6 +229,11 @@ func (o ProjectWithFlavorsAndImagesDto) ToMap() (map[string]interface{}, error) 
 		toSerialize["imageNames"] = o.ImageNames
 	}
 	toSerialize["isReady"] = o.IsReady
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -250,10 +255,10 @@ func (o *ProjectWithFlavorsAndImagesDto) UnmarshalJSON(data []byte) (err error) 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -261,15 +266,25 @@ func (o *ProjectWithFlavorsAndImagesDto) UnmarshalJSON(data []byte) (err error) 
 
 	varProjectWithFlavorsAndImagesDto := _ProjectWithFlavorsAndImagesDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectWithFlavorsAndImagesDto)
+	err = json.Unmarshal(data, &varProjectWithFlavorsAndImagesDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectWithFlavorsAndImagesDto(varProjectWithFlavorsAndImagesDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "flavors")
+		delete(additionalProperties, "images")
+		delete(additionalProperties, "imageNames")
+		delete(additionalProperties, "isReady")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -309,5 +324,3 @@ func (v *NullableProjectWithFlavorsAndImagesDto) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

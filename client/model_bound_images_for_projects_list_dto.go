@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,15 +21,16 @@ var _ MappedNullable = &BoundImagesForProjectsListDto{}
 
 // BoundImagesForProjectsListDto struct for BoundImagesForProjectsListDto
 type BoundImagesForProjectsListDto struct {
-	Id int32 `json:"id"`
-	Name NullableString `json:"name"`
-	ProjectId NullableInt32 `json:"projectId"`
-	ProjectName NullableString `json:"projectName"`
-	Size NullableFloat64 `json:"size"`
-	ImageId NullableString `json:"imageId"`
-	CloudId NullableInt32 `json:"cloudId"`
-	IsWindows bool `json:"isWindows"`
-	CloudType CloudType `json:"cloudType"`
+	Id                   int32           `json:"id"`
+	Name                 NullableString  `json:"name"`
+	ProjectId            NullableInt32   `json:"projectId"`
+	ProjectName          NullableString  `json:"projectName"`
+	Size                 NullableFloat64 `json:"size"`
+	ImageId              NullableString  `json:"imageId"`
+	CloudId              NullableInt32   `json:"cloudId"`
+	IsWindows            bool            `json:"isWindows"`
+	CloudType            CloudType       `json:"cloudType"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _BoundImagesForProjectsListDto BoundImagesForProjectsListDto
@@ -290,7 +290,7 @@ func (o *BoundImagesForProjectsListDto) SetCloudType(v CloudType) {
 }
 
 func (o BoundImagesForProjectsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -308,6 +308,11 @@ func (o BoundImagesForProjectsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["cloudId"] = o.CloudId.Get()
 	toSerialize["isWindows"] = o.IsWindows
 	toSerialize["cloudType"] = o.CloudType
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -332,10 +337,10 @@ func (o *BoundImagesForProjectsListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -343,15 +348,28 @@ func (o *BoundImagesForProjectsListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varBoundImagesForProjectsListDto := _BoundImagesForProjectsListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBoundImagesForProjectsListDto)
+	err = json.Unmarshal(data, &varBoundImagesForProjectsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = BoundImagesForProjectsListDto(varBoundImagesForProjectsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "size")
+		delete(additionalProperties, "imageId")
+		delete(additionalProperties, "cloudId")
+		delete(additionalProperties, "isWindows")
+		delete(additionalProperties, "cloudType")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -391,5 +409,3 @@ func (v *NullableBoundImagesForProjectsListDto) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

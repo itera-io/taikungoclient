@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,8 +21,9 @@ var _ MappedNullable = &KubernetesActionRequest{}
 
 // KubernetesActionRequest struct for KubernetesActionRequest
 type KubernetesActionRequest struct {
-	Name string `json:"name"`
-	Namespace NullableString `json:"namespace,omitempty"`
+	Name                 string         `json:"name"`
+	Namespace            NullableString `json:"namespace,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _KubernetesActionRequest KubernetesActionRequest
@@ -102,6 +102,7 @@ func (o *KubernetesActionRequest) HasNamespace() bool {
 func (o *KubernetesActionRequest) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
+
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *KubernetesActionRequest) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -113,7 +114,7 @@ func (o *KubernetesActionRequest) UnsetNamespace() {
 }
 
 func (o KubernetesActionRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -126,6 +127,11 @@ func (o KubernetesActionRequest) ToMap() (map[string]interface{}, error) {
 	if o.Namespace.IsSet() {
 		toSerialize["namespace"] = o.Namespace.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -142,10 +148,10 @@ func (o *KubernetesActionRequest) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -153,15 +159,21 @@ func (o *KubernetesActionRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varKubernetesActionRequest := _KubernetesActionRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKubernetesActionRequest)
+	err = json.Unmarshal(data, &varKubernetesActionRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubernetesActionRequest(varKubernetesActionRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "namespace")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -201,5 +213,3 @@ func (v *NullableKubernetesActionRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,8 +21,9 @@ var _ MappedNullable = &KubeConfigRoleResponse{}
 
 // KubeConfigRoleResponse struct for KubeConfigRoleResponse
 type KubeConfigRoleResponse struct {
-	Data []CommonDropdownDto `json:"data"`
-	TotalCount int32 `json:"totalCount"`
+	Data                 []CommonDropdownDto `json:"data"`
+	TotalCount           int32               `json:"totalCount"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _KubeConfigRoleResponse KubeConfigRoleResponse
@@ -98,7 +98,7 @@ func (o *KubeConfigRoleResponse) SetTotalCount(v int32) {
 }
 
 func (o KubeConfigRoleResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -111,6 +111,11 @@ func (o KubeConfigRoleResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["data"] = o.Data
 	}
 	toSerialize["totalCount"] = o.TotalCount
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -128,10 +133,10 @@ func (o *KubeConfigRoleResponse) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -139,15 +144,21 @@ func (o *KubeConfigRoleResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varKubeConfigRoleResponse := _KubeConfigRoleResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKubeConfigRoleResponse)
+	err = json.Unmarshal(data, &varKubeConfigRoleResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubeConfigRoleResponse(varKubeConfigRoleResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -187,5 +198,3 @@ func (v *NullableKubeConfigRoleResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

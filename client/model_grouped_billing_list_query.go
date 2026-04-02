@@ -20,10 +20,13 @@ var _ MappedNullable = &GroupedBillingListQuery{}
 
 // GroupedBillingListQuery struct for GroupedBillingListQuery
 type GroupedBillingListQuery struct {
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	PeriodDuration *BillingPeriod `json:"periodDuration,omitempty"`
-	IsDeleted NullableBool `json:"isDeleted,omitempty"`
+	OrganizationId       NullableInt32  `json:"organizationId,omitempty"`
+	PeriodDuration       *BillingPeriod `json:"periodDuration,omitempty"`
+	IsDeleted            NullableBool   `json:"isDeleted,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _GroupedBillingListQuery GroupedBillingListQuery
 
 // NewGroupedBillingListQuery instantiates a new GroupedBillingListQuery object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *GroupedBillingListQuery) HasOrganizationId() bool {
 func (o *GroupedBillingListQuery) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
+
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *GroupedBillingListQuery) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -148,6 +152,7 @@ func (o *GroupedBillingListQuery) HasIsDeleted() bool {
 func (o *GroupedBillingListQuery) SetIsDeleted(v bool) {
 	o.IsDeleted.Set(&v)
 }
+
 // SetIsDeletedNil sets the value for IsDeleted to be an explicit nil
 func (o *GroupedBillingListQuery) SetIsDeletedNil() {
 	o.IsDeleted.Set(nil)
@@ -159,7 +164,7 @@ func (o *GroupedBillingListQuery) UnsetIsDeleted() {
 }
 
 func (o GroupedBillingListQuery) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -177,7 +182,35 @@ func (o GroupedBillingListQuery) ToMap() (map[string]interface{}, error) {
 	if o.IsDeleted.IsSet() {
 		toSerialize["isDeleted"] = o.IsDeleted.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *GroupedBillingListQuery) UnmarshalJSON(data []byte) (err error) {
+	varGroupedBillingListQuery := _GroupedBillingListQuery{}
+
+	err = json.Unmarshal(data, &varGroupedBillingListQuery)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GroupedBillingListQuery(varGroupedBillingListQuery)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "periodDuration")
+		delete(additionalProperties, "isDeleted")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableGroupedBillingListQuery struct {
@@ -215,5 +248,3 @@ func (v *NullableGroupedBillingListQuery) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

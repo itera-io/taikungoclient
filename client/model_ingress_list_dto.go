@@ -20,13 +20,16 @@ var _ MappedNullable = &IngressListDto{}
 
 // IngressListDto struct for IngressListDto
 type IngressListDto struct {
-	Name NullableString `json:"name,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	Target NullableString `json:"target,omitempty"`
-	Default NullableString `json:"default,omitempty"`
-	IngressClass NullableString `json:"ingressClass,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Namespace            NullableString `json:"namespace,omitempty"`
+	Target               NullableString `json:"target,omitempty"`
+	Default              NullableString `json:"default,omitempty"`
+	IngressClass         NullableString `json:"ingressClass,omitempty"`
+	CreatedAt            NullableString `json:"createdAt,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _IngressListDto IngressListDto
 
 // NewIngressListDto instantiates a new IngressListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +80,7 @@ func (o *IngressListDto) HasName() bool {
 func (o *IngressListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *IngressListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -119,6 +123,7 @@ func (o *IngressListDto) HasNamespace() bool {
 func (o *IngressListDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
+
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *IngressListDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -161,6 +166,7 @@ func (o *IngressListDto) HasTarget() bool {
 func (o *IngressListDto) SetTarget(v string) {
 	o.Target.Set(&v)
 }
+
 // SetTargetNil sets the value for Target to be an explicit nil
 func (o *IngressListDto) SetTargetNil() {
 	o.Target.Set(nil)
@@ -203,6 +209,7 @@ func (o *IngressListDto) HasDefault() bool {
 func (o *IngressListDto) SetDefault(v string) {
 	o.Default.Set(&v)
 }
+
 // SetDefaultNil sets the value for Default to be an explicit nil
 func (o *IngressListDto) SetDefaultNil() {
 	o.Default.Set(nil)
@@ -245,6 +252,7 @@ func (o *IngressListDto) HasIngressClass() bool {
 func (o *IngressListDto) SetIngressClass(v string) {
 	o.IngressClass.Set(&v)
 }
+
 // SetIngressClassNil sets the value for IngressClass to be an explicit nil
 func (o *IngressListDto) SetIngressClassNil() {
 	o.IngressClass.Set(nil)
@@ -287,6 +295,7 @@ func (o *IngressListDto) HasCreatedAt() bool {
 func (o *IngressListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
+
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *IngressListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -298,7 +307,7 @@ func (o *IngressListDto) UnsetCreatedAt() {
 }
 
 func (o IngressListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -325,7 +334,38 @@ func (o IngressListDto) ToMap() (map[string]interface{}, error) {
 	if o.CreatedAt.IsSet() {
 		toSerialize["createdAt"] = o.CreatedAt.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *IngressListDto) UnmarshalJSON(data []byte) (err error) {
+	varIngressListDto := _IngressListDto{}
+
+	err = json.Unmarshal(data, &varIngressListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IngressListDto(varIngressListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "target")
+		delete(additionalProperties, "default")
+		delete(additionalProperties, "ingressClass")
+		delete(additionalProperties, "createdAt")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableIngressListDto struct {
@@ -363,5 +403,3 @@ func (v *NullableIngressListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

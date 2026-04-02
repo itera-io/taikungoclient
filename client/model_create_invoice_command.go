@@ -21,16 +21,19 @@ var _ MappedNullable = &CreateInvoiceCommand{}
 
 // CreateInvoiceCommand struct for CreateInvoiceCommand
 type CreateInvoiceCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	OrganizationSubscriptionId *int32 `json:"organizationSubscriptionId,omitempty"`
-	StartDate *time.Time `json:"startDate,omitempty"`
-	EndDate *time.Time `json:"endDate,omitempty"`
-	DueDate *time.Time `json:"dueDate,omitempty"`
-	IsPaid *bool `json:"isPaid,omitempty"`
-	RequiredPaymentAction *bool `json:"requiredPaymentAction,omitempty"`
-	StripeInvoiceId NullableString `json:"stripeInvoiceId,omitempty"`
-	Price *float64 `json:"price,omitempty"`
+	Name                       NullableString `json:"name,omitempty"`
+	OrganizationSubscriptionId *int32         `json:"organizationSubscriptionId,omitempty"`
+	StartDate                  *time.Time     `json:"startDate,omitempty"`
+	EndDate                    *time.Time     `json:"endDate,omitempty"`
+	DueDate                    *time.Time     `json:"dueDate,omitempty"`
+	IsPaid                     *bool          `json:"isPaid,omitempty"`
+	RequiredPaymentAction      *bool          `json:"requiredPaymentAction,omitempty"`
+	StripeInvoiceId            NullableString `json:"stripeInvoiceId,omitempty"`
+	Price                      *float64       `json:"price,omitempty"`
+	AdditionalProperties       map[string]interface{}
 }
+
+type _CreateInvoiceCommand CreateInvoiceCommand
 
 // NewCreateInvoiceCommand instantiates a new CreateInvoiceCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -81,6 +84,7 @@ func (o *CreateInvoiceCommand) HasName() bool {
 func (o *CreateInvoiceCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateInvoiceCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -315,6 +319,7 @@ func (o *CreateInvoiceCommand) HasStripeInvoiceId() bool {
 func (o *CreateInvoiceCommand) SetStripeInvoiceId(v string) {
 	o.StripeInvoiceId.Set(&v)
 }
+
 // SetStripeInvoiceIdNil sets the value for StripeInvoiceId to be an explicit nil
 func (o *CreateInvoiceCommand) SetStripeInvoiceIdNil() {
 	o.StripeInvoiceId.Set(nil)
@@ -358,7 +363,7 @@ func (o *CreateInvoiceCommand) SetPrice(v float64) {
 }
 
 func (o CreateInvoiceCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -394,7 +399,41 @@ func (o CreateInvoiceCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Price) {
 		toSerialize["price"] = o.Price
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateInvoiceCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateInvoiceCommand := _CreateInvoiceCommand{}
+
+	err = json.Unmarshal(data, &varCreateInvoiceCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateInvoiceCommand(varCreateInvoiceCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "organizationSubscriptionId")
+		delete(additionalProperties, "startDate")
+		delete(additionalProperties, "endDate")
+		delete(additionalProperties, "dueDate")
+		delete(additionalProperties, "isPaid")
+		delete(additionalProperties, "requiredPaymentAction")
+		delete(additionalProperties, "stripeInvoiceId")
+		delete(additionalProperties, "price")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateInvoiceCommand struct {
@@ -432,5 +471,3 @@ func (v *NullableCreateInvoiceCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

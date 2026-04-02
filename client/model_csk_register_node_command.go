@@ -20,8 +20,11 @@ var _ MappedNullable = &CskRegisterNodeCommand{}
 
 // CskRegisterNodeCommand struct for CskRegisterNodeCommand
 type CskRegisterNodeCommand struct {
-	ServerId *int32 `json:"serverId,omitempty"`
+	ServerId             *int32 `json:"serverId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CskRegisterNodeCommand CskRegisterNodeCommand
 
 // NewCskRegisterNodeCommand instantiates a new CskRegisterNodeCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,7 +76,7 @@ func (o *CskRegisterNodeCommand) SetServerId(v int32) {
 }
 
 func (o CskRegisterNodeCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -85,7 +88,33 @@ func (o CskRegisterNodeCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ServerId) {
 		toSerialize["serverId"] = o.ServerId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CskRegisterNodeCommand) UnmarshalJSON(data []byte) (err error) {
+	varCskRegisterNodeCommand := _CskRegisterNodeCommand{}
+
+	err = json.Unmarshal(data, &varCskRegisterNodeCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CskRegisterNodeCommand(varCskRegisterNodeCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "serverId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCskRegisterNodeCommand struct {
@@ -123,5 +152,3 @@ func (v *NullableCskRegisterNodeCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

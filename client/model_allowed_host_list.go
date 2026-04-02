@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,8 +21,9 @@ var _ MappedNullable = &AllowedHostList{}
 
 // AllowedHostList struct for AllowedHostList
 type AllowedHostList struct {
-	Data []AllowedHostListDto `json:"data"`
-	TotalCount int32 `json:"totalCount"`
+	Data                 []AllowedHostListDto `json:"data"`
+	TotalCount           int32                `json:"totalCount"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AllowedHostList AllowedHostList
@@ -98,7 +98,7 @@ func (o *AllowedHostList) SetTotalCount(v int32) {
 }
 
 func (o AllowedHostList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -111,6 +111,11 @@ func (o AllowedHostList) ToMap() (map[string]interface{}, error) {
 		toSerialize["data"] = o.Data
 	}
 	toSerialize["totalCount"] = o.TotalCount
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -128,10 +133,10 @@ func (o *AllowedHostList) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -139,15 +144,21 @@ func (o *AllowedHostList) UnmarshalJSON(data []byte) (err error) {
 
 	varAllowedHostList := _AllowedHostList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAllowedHostList)
+	err = json.Unmarshal(data, &varAllowedHostList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AllowedHostList(varAllowedHostList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -187,5 +198,3 @@ func (v *NullableAllowedHostList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,10 +20,13 @@ var _ MappedNullable = &HelmCredentialCommand{}
 
 // HelmCredentialCommand struct for HelmCredentialCommand
 type HelmCredentialCommand struct {
-	Url NullableString `json:"url,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Password NullableString `json:"password,omitempty"`
+	Url                  NullableString `json:"url,omitempty"`
+	Username             NullableString `json:"username,omitempty"`
+	Password             NullableString `json:"password,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _HelmCredentialCommand HelmCredentialCommand
 
 // NewHelmCredentialCommand instantiates a new HelmCredentialCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *HelmCredentialCommand) HasUrl() bool {
 func (o *HelmCredentialCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *HelmCredentialCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -116,6 +120,7 @@ func (o *HelmCredentialCommand) HasUsername() bool {
 func (o *HelmCredentialCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *HelmCredentialCommand) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -158,6 +163,7 @@ func (o *HelmCredentialCommand) HasPassword() bool {
 func (o *HelmCredentialCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *HelmCredentialCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -169,7 +175,7 @@ func (o *HelmCredentialCommand) UnsetPassword() {
 }
 
 func (o HelmCredentialCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -187,7 +193,35 @@ func (o HelmCredentialCommand) ToMap() (map[string]interface{}, error) {
 	if o.Password.IsSet() {
 		toSerialize["password"] = o.Password.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *HelmCredentialCommand) UnmarshalJSON(data []byte) (err error) {
+	varHelmCredentialCommand := _HelmCredentialCommand{}
+
+	err = json.Unmarshal(data, &varHelmCredentialCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HelmCredentialCommand(varHelmCredentialCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableHelmCredentialCommand struct {
@@ -225,5 +259,3 @@ func (v *NullableHelmCredentialCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

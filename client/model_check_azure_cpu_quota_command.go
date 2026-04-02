@@ -20,8 +20,11 @@ var _ MappedNullable = &CheckAzureCpuQuotaCommand{}
 
 // CheckAzureCpuQuotaCommand struct for CheckAzureCpuQuotaCommand
 type CheckAzureCpuQuotaCommand struct {
-	CloudId *int32 `json:"cloudId,omitempty"`
+	CloudId              *int32 `json:"cloudId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CheckAzureCpuQuotaCommand CheckAzureCpuQuotaCommand
 
 // NewCheckAzureCpuQuotaCommand instantiates a new CheckAzureCpuQuotaCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,7 +76,7 @@ func (o *CheckAzureCpuQuotaCommand) SetCloudId(v int32) {
 }
 
 func (o CheckAzureCpuQuotaCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -85,7 +88,33 @@ func (o CheckAzureCpuQuotaCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CloudId) {
 		toSerialize["cloudId"] = o.CloudId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CheckAzureCpuQuotaCommand) UnmarshalJSON(data []byte) (err error) {
+	varCheckAzureCpuQuotaCommand := _CheckAzureCpuQuotaCommand{}
+
+	err = json.Unmarshal(data, &varCheckAzureCpuQuotaCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CheckAzureCpuQuotaCommand(varCheckAzureCpuQuotaCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cloudId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCheckAzureCpuQuotaCommand struct {
@@ -123,5 +152,3 @@ func (v *NullableCheckAzureCpuQuotaCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

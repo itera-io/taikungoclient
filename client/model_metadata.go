@@ -20,16 +20,19 @@ var _ MappedNullable = &Metadata{}
 
 // Metadata struct for Metadata
 type Metadata struct {
-	InfracostCommand NullableString `json:"infracostCommand,omitempty"`
-	VcsBranch NullableString `json:"vcsBranch,omitempty"`
-	VcsCommitSha NullableString `json:"vcsCommitSha,omitempty"`
-	VcsCommitAuthorName NullableString `json:"vcsCommitAuthorName,omitempty"`
+	InfracostCommand     NullableString `json:"infracostCommand,omitempty"`
+	VcsBranch            NullableString `json:"vcsBranch,omitempty"`
+	VcsCommitSha         NullableString `json:"vcsCommitSha,omitempty"`
+	VcsCommitAuthorName  NullableString `json:"vcsCommitAuthorName,omitempty"`
 	VcsCommitAuthorEmail NullableString `json:"vcsCommitAuthorEmail,omitempty"`
-	VcsCommitTimestamp NullableString `json:"vcsCommitTimestamp,omitempty"`
-	VcsCommitMessage NullableString `json:"vcsCommitMessage,omitempty"`
-	VcsRepositoryUrl NullableString `json:"vcsRepositoryUrl,omitempty"`
-	UsageApiEnabled *bool `json:"usageApiEnabled,omitempty"`
+	VcsCommitTimestamp   NullableString `json:"vcsCommitTimestamp,omitempty"`
+	VcsCommitMessage     NullableString `json:"vcsCommitMessage,omitempty"`
+	VcsRepositoryUrl     NullableString `json:"vcsRepositoryUrl,omitempty"`
+	UsageApiEnabled      *bool          `json:"usageApiEnabled,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Metadata Metadata
 
 // NewMetadata instantiates a new Metadata object
 // This constructor will assign default values to properties that have it defined,
@@ -80,6 +83,7 @@ func (o *Metadata) HasInfracostCommand() bool {
 func (o *Metadata) SetInfracostCommand(v string) {
 	o.InfracostCommand.Set(&v)
 }
+
 // SetInfracostCommandNil sets the value for InfracostCommand to be an explicit nil
 func (o *Metadata) SetInfracostCommandNil() {
 	o.InfracostCommand.Set(nil)
@@ -122,6 +126,7 @@ func (o *Metadata) HasVcsBranch() bool {
 func (o *Metadata) SetVcsBranch(v string) {
 	o.VcsBranch.Set(&v)
 }
+
 // SetVcsBranchNil sets the value for VcsBranch to be an explicit nil
 func (o *Metadata) SetVcsBranchNil() {
 	o.VcsBranch.Set(nil)
@@ -164,6 +169,7 @@ func (o *Metadata) HasVcsCommitSha() bool {
 func (o *Metadata) SetVcsCommitSha(v string) {
 	o.VcsCommitSha.Set(&v)
 }
+
 // SetVcsCommitShaNil sets the value for VcsCommitSha to be an explicit nil
 func (o *Metadata) SetVcsCommitShaNil() {
 	o.VcsCommitSha.Set(nil)
@@ -206,6 +212,7 @@ func (o *Metadata) HasVcsCommitAuthorName() bool {
 func (o *Metadata) SetVcsCommitAuthorName(v string) {
 	o.VcsCommitAuthorName.Set(&v)
 }
+
 // SetVcsCommitAuthorNameNil sets the value for VcsCommitAuthorName to be an explicit nil
 func (o *Metadata) SetVcsCommitAuthorNameNil() {
 	o.VcsCommitAuthorName.Set(nil)
@@ -248,6 +255,7 @@ func (o *Metadata) HasVcsCommitAuthorEmail() bool {
 func (o *Metadata) SetVcsCommitAuthorEmail(v string) {
 	o.VcsCommitAuthorEmail.Set(&v)
 }
+
 // SetVcsCommitAuthorEmailNil sets the value for VcsCommitAuthorEmail to be an explicit nil
 func (o *Metadata) SetVcsCommitAuthorEmailNil() {
 	o.VcsCommitAuthorEmail.Set(nil)
@@ -290,6 +298,7 @@ func (o *Metadata) HasVcsCommitTimestamp() bool {
 func (o *Metadata) SetVcsCommitTimestamp(v string) {
 	o.VcsCommitTimestamp.Set(&v)
 }
+
 // SetVcsCommitTimestampNil sets the value for VcsCommitTimestamp to be an explicit nil
 func (o *Metadata) SetVcsCommitTimestampNil() {
 	o.VcsCommitTimestamp.Set(nil)
@@ -332,6 +341,7 @@ func (o *Metadata) HasVcsCommitMessage() bool {
 func (o *Metadata) SetVcsCommitMessage(v string) {
 	o.VcsCommitMessage.Set(&v)
 }
+
 // SetVcsCommitMessageNil sets the value for VcsCommitMessage to be an explicit nil
 func (o *Metadata) SetVcsCommitMessageNil() {
 	o.VcsCommitMessage.Set(nil)
@@ -374,6 +384,7 @@ func (o *Metadata) HasVcsRepositoryUrl() bool {
 func (o *Metadata) SetVcsRepositoryUrl(v string) {
 	o.VcsRepositoryUrl.Set(&v)
 }
+
 // SetVcsRepositoryUrlNil sets the value for VcsRepositoryUrl to be an explicit nil
 func (o *Metadata) SetVcsRepositoryUrlNil() {
 	o.VcsRepositoryUrl.Set(nil)
@@ -417,7 +428,7 @@ func (o *Metadata) SetUsageApiEnabled(v bool) {
 }
 
 func (o Metadata) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -453,7 +464,41 @@ func (o Metadata) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UsageApiEnabled) {
 		toSerialize["usageApiEnabled"] = o.UsageApiEnabled
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Metadata) UnmarshalJSON(data []byte) (err error) {
+	varMetadata := _Metadata{}
+
+	err = json.Unmarshal(data, &varMetadata)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Metadata(varMetadata)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "infracostCommand")
+		delete(additionalProperties, "vcsBranch")
+		delete(additionalProperties, "vcsCommitSha")
+		delete(additionalProperties, "vcsCommitAuthorName")
+		delete(additionalProperties, "vcsCommitAuthorEmail")
+		delete(additionalProperties, "vcsCommitTimestamp")
+		delete(additionalProperties, "vcsCommitMessage")
+		delete(additionalProperties, "vcsRepositoryUrl")
+		delete(additionalProperties, "usageApiEnabled")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableMetadata struct {
@@ -491,5 +536,3 @@ func (v *NullableMetadata) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

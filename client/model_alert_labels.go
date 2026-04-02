@@ -20,20 +20,23 @@ var _ MappedNullable = &AlertLabels{}
 
 // AlertLabels struct for AlertLabels
 type AlertLabels struct {
-	Alertname NullableString `json:"alertname,omitempty"`
-	Condition NullableString `json:"condition,omitempty"`
-	Container NullableString `json:"container,omitempty"`
-	Endpoint NullableString `json:"endpoint,omitempty"`
-	Instance NullableString `json:"instance,omitempty"`
-	Job NullableString `json:"job,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	Node NullableString `json:"node,omitempty"`
-	Pod NullableString `json:"pod,omitempty"`
-	Service NullableString `json:"service,omitempty"`
-	Severity NullableString `json:"severity,omitempty"`
-	Status NullableString `json:"status,omitempty"`
-	Daemonset NullableString `json:"daemonset,omitempty"`
+	Alertname            NullableString `json:"alertname,omitempty"`
+	Condition            NullableString `json:"condition,omitempty"`
+	Container            NullableString `json:"container,omitempty"`
+	Endpoint             NullableString `json:"endpoint,omitempty"`
+	Instance             NullableString `json:"instance,omitempty"`
+	Job                  NullableString `json:"job,omitempty"`
+	Namespace            NullableString `json:"namespace,omitempty"`
+	Node                 NullableString `json:"node,omitempty"`
+	Pod                  NullableString `json:"pod,omitempty"`
+	Service              NullableString `json:"service,omitempty"`
+	Severity             NullableString `json:"severity,omitempty"`
+	Status               NullableString `json:"status,omitempty"`
+	Daemonset            NullableString `json:"daemonset,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AlertLabels AlertLabels
 
 // NewAlertLabels instantiates a new AlertLabels object
 // This constructor will assign default values to properties that have it defined,
@@ -84,6 +87,7 @@ func (o *AlertLabels) HasAlertname() bool {
 func (o *AlertLabels) SetAlertname(v string) {
 	o.Alertname.Set(&v)
 }
+
 // SetAlertnameNil sets the value for Alertname to be an explicit nil
 func (o *AlertLabels) SetAlertnameNil() {
 	o.Alertname.Set(nil)
@@ -126,6 +130,7 @@ func (o *AlertLabels) HasCondition() bool {
 func (o *AlertLabels) SetCondition(v string) {
 	o.Condition.Set(&v)
 }
+
 // SetConditionNil sets the value for Condition to be an explicit nil
 func (o *AlertLabels) SetConditionNil() {
 	o.Condition.Set(nil)
@@ -168,6 +173,7 @@ func (o *AlertLabels) HasContainer() bool {
 func (o *AlertLabels) SetContainer(v string) {
 	o.Container.Set(&v)
 }
+
 // SetContainerNil sets the value for Container to be an explicit nil
 func (o *AlertLabels) SetContainerNil() {
 	o.Container.Set(nil)
@@ -210,6 +216,7 @@ func (o *AlertLabels) HasEndpoint() bool {
 func (o *AlertLabels) SetEndpoint(v string) {
 	o.Endpoint.Set(&v)
 }
+
 // SetEndpointNil sets the value for Endpoint to be an explicit nil
 func (o *AlertLabels) SetEndpointNil() {
 	o.Endpoint.Set(nil)
@@ -252,6 +259,7 @@ func (o *AlertLabels) HasInstance() bool {
 func (o *AlertLabels) SetInstance(v string) {
 	o.Instance.Set(&v)
 }
+
 // SetInstanceNil sets the value for Instance to be an explicit nil
 func (o *AlertLabels) SetInstanceNil() {
 	o.Instance.Set(nil)
@@ -294,6 +302,7 @@ func (o *AlertLabels) HasJob() bool {
 func (o *AlertLabels) SetJob(v string) {
 	o.Job.Set(&v)
 }
+
 // SetJobNil sets the value for Job to be an explicit nil
 func (o *AlertLabels) SetJobNil() {
 	o.Job.Set(nil)
@@ -336,6 +345,7 @@ func (o *AlertLabels) HasNamespace() bool {
 func (o *AlertLabels) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
+
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *AlertLabels) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -378,6 +388,7 @@ func (o *AlertLabels) HasNode() bool {
 func (o *AlertLabels) SetNode(v string) {
 	o.Node.Set(&v)
 }
+
 // SetNodeNil sets the value for Node to be an explicit nil
 func (o *AlertLabels) SetNodeNil() {
 	o.Node.Set(nil)
@@ -420,6 +431,7 @@ func (o *AlertLabels) HasPod() bool {
 func (o *AlertLabels) SetPod(v string) {
 	o.Pod.Set(&v)
 }
+
 // SetPodNil sets the value for Pod to be an explicit nil
 func (o *AlertLabels) SetPodNil() {
 	o.Pod.Set(nil)
@@ -462,6 +474,7 @@ func (o *AlertLabels) HasService() bool {
 func (o *AlertLabels) SetService(v string) {
 	o.Service.Set(&v)
 }
+
 // SetServiceNil sets the value for Service to be an explicit nil
 func (o *AlertLabels) SetServiceNil() {
 	o.Service.Set(nil)
@@ -504,6 +517,7 @@ func (o *AlertLabels) HasSeverity() bool {
 func (o *AlertLabels) SetSeverity(v string) {
 	o.Severity.Set(&v)
 }
+
 // SetSeverityNil sets the value for Severity to be an explicit nil
 func (o *AlertLabels) SetSeverityNil() {
 	o.Severity.Set(nil)
@@ -546,6 +560,7 @@ func (o *AlertLabels) HasStatus() bool {
 func (o *AlertLabels) SetStatus(v string) {
 	o.Status.Set(&v)
 }
+
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *AlertLabels) SetStatusNil() {
 	o.Status.Set(nil)
@@ -588,6 +603,7 @@ func (o *AlertLabels) HasDaemonset() bool {
 func (o *AlertLabels) SetDaemonset(v string) {
 	o.Daemonset.Set(&v)
 }
+
 // SetDaemonsetNil sets the value for Daemonset to be an explicit nil
 func (o *AlertLabels) SetDaemonsetNil() {
 	o.Daemonset.Set(nil)
@@ -599,7 +615,7 @@ func (o *AlertLabels) UnsetDaemonset() {
 }
 
 func (o AlertLabels) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -647,7 +663,45 @@ func (o AlertLabels) ToMap() (map[string]interface{}, error) {
 	if o.Daemonset.IsSet() {
 		toSerialize["daemonset"] = o.Daemonset.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AlertLabels) UnmarshalJSON(data []byte) (err error) {
+	varAlertLabels := _AlertLabels{}
+
+	err = json.Unmarshal(data, &varAlertLabels)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AlertLabels(varAlertLabels)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "alertname")
+		delete(additionalProperties, "condition")
+		delete(additionalProperties, "container")
+		delete(additionalProperties, "endpoint")
+		delete(additionalProperties, "instance")
+		delete(additionalProperties, "job")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "node")
+		delete(additionalProperties, "pod")
+		delete(additionalProperties, "service")
+		delete(additionalProperties, "severity")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "daemonset")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAlertLabels struct {
@@ -685,5 +739,3 @@ func (v *NullableAlertLabels) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

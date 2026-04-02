@@ -21,12 +21,15 @@ var _ MappedNullable = &CheckerRobotCommand{}
 
 // CheckerRobotCommand struct for CheckerRobotCommand
 type CheckerRobotCommand struct {
-	AccountId NullableInt32 `json:"accountId,omitempty"`
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	ExpiresAt NullableTime `json:"expiresAt,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Description NullableString `json:"description,omitempty"`
+	AccountId            NullableInt32  `json:"accountId,omitempty"`
+	OrganizationId       NullableInt32  `json:"organizationId,omitempty"`
+	ExpiresAt            NullableTime   `json:"expiresAt,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Description          NullableString `json:"description,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CheckerRobotCommand CheckerRobotCommand
 
 // NewCheckerRobotCommand instantiates a new CheckerRobotCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +80,7 @@ func (o *CheckerRobotCommand) HasAccountId() bool {
 func (o *CheckerRobotCommand) SetAccountId(v int32) {
 	o.AccountId.Set(&v)
 }
+
 // SetAccountIdNil sets the value for AccountId to be an explicit nil
 func (o *CheckerRobotCommand) SetAccountIdNil() {
 	o.AccountId.Set(nil)
@@ -119,6 +123,7 @@ func (o *CheckerRobotCommand) HasOrganizationId() bool {
 func (o *CheckerRobotCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
+
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CheckerRobotCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -161,6 +166,7 @@ func (o *CheckerRobotCommand) HasExpiresAt() bool {
 func (o *CheckerRobotCommand) SetExpiresAt(v time.Time) {
 	o.ExpiresAt.Set(&v)
 }
+
 // SetExpiresAtNil sets the value for ExpiresAt to be an explicit nil
 func (o *CheckerRobotCommand) SetExpiresAtNil() {
 	o.ExpiresAt.Set(nil)
@@ -203,6 +209,7 @@ func (o *CheckerRobotCommand) HasName() bool {
 func (o *CheckerRobotCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CheckerRobotCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -245,6 +252,7 @@ func (o *CheckerRobotCommand) HasDescription() bool {
 func (o *CheckerRobotCommand) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *CheckerRobotCommand) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -256,7 +264,7 @@ func (o *CheckerRobotCommand) UnsetDescription() {
 }
 
 func (o CheckerRobotCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -280,7 +288,37 @@ func (o CheckerRobotCommand) ToMap() (map[string]interface{}, error) {
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CheckerRobotCommand) UnmarshalJSON(data []byte) (err error) {
+	varCheckerRobotCommand := _CheckerRobotCommand{}
+
+	err = json.Unmarshal(data, &varCheckerRobotCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CheckerRobotCommand(varCheckerRobotCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accountId")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "expiresAt")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCheckerRobotCommand struct {
@@ -318,5 +356,3 @@ func (v *NullableCheckerRobotCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

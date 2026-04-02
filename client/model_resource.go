@@ -20,16 +20,19 @@ var _ MappedNullable = &Resource{}
 
 // Resource struct for Resource
 type Resource struct {
-	Name NullableString `json:"name,omitempty"`
-	ResourceType NullableString `json:"resourceType,omitempty"`
-	Tags map[string]string `json:"tags,omitempty"`
-	Metadata map[string]interface{} `json:"metadata,omitempty"`
-	HourlyCost NullableString `json:"hourlyCost,omitempty"`
-	MonthlyCost NullableString `json:"monthlyCost,omitempty"`
-	MonthlyUsageCost NullableString `json:"monthlyUsageCost,omitempty"`
-	CostComponents []CostComponent `json:"costComponents,omitempty"`
-	Subresources []Subresource `json:"subresources,omitempty"`
+	Name                 NullableString         `json:"name,omitempty"`
+	ResourceType         NullableString         `json:"resourceType,omitempty"`
+	Tags                 map[string]string      `json:"tags,omitempty"`
+	Metadata             map[string]interface{} `json:"metadata,omitempty"`
+	HourlyCost           NullableString         `json:"hourlyCost,omitempty"`
+	MonthlyCost          NullableString         `json:"monthlyCost,omitempty"`
+	MonthlyUsageCost     NullableString         `json:"monthlyUsageCost,omitempty"`
+	CostComponents       []CostComponent        `json:"costComponents,omitempty"`
+	Subresources         []Subresource          `json:"subresources,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Resource Resource
 
 // NewResource instantiates a new Resource object
 // This constructor will assign default values to properties that have it defined,
@@ -80,6 +83,7 @@ func (o *Resource) HasName() bool {
 func (o *Resource) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *Resource) SetNameNil() {
 	o.Name.Set(nil)
@@ -122,6 +126,7 @@ func (o *Resource) HasResourceType() bool {
 func (o *Resource) SetResourceType(v string) {
 	o.ResourceType.Set(&v)
 }
+
 // SetResourceTypeNil sets the value for ResourceType to be an explicit nil
 func (o *Resource) SetResourceTypeNil() {
 	o.ResourceType.Set(nil)
@@ -230,6 +235,7 @@ func (o *Resource) HasHourlyCost() bool {
 func (o *Resource) SetHourlyCost(v string) {
 	o.HourlyCost.Set(&v)
 }
+
 // SetHourlyCostNil sets the value for HourlyCost to be an explicit nil
 func (o *Resource) SetHourlyCostNil() {
 	o.HourlyCost.Set(nil)
@@ -272,6 +278,7 @@ func (o *Resource) HasMonthlyCost() bool {
 func (o *Resource) SetMonthlyCost(v string) {
 	o.MonthlyCost.Set(&v)
 }
+
 // SetMonthlyCostNil sets the value for MonthlyCost to be an explicit nil
 func (o *Resource) SetMonthlyCostNil() {
 	o.MonthlyCost.Set(nil)
@@ -314,6 +321,7 @@ func (o *Resource) HasMonthlyUsageCost() bool {
 func (o *Resource) SetMonthlyUsageCost(v string) {
 	o.MonthlyUsageCost.Set(&v)
 }
+
 // SetMonthlyUsageCostNil sets the value for MonthlyUsageCost to be an explicit nil
 func (o *Resource) SetMonthlyUsageCostNil() {
 	o.MonthlyUsageCost.Set(nil)
@@ -391,7 +399,7 @@ func (o *Resource) SetSubresources(v []Subresource) {
 }
 
 func (o Resource) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -427,7 +435,41 @@ func (o Resource) ToMap() (map[string]interface{}, error) {
 	if o.Subresources != nil {
 		toSerialize["subresources"] = o.Subresources
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Resource) UnmarshalJSON(data []byte) (err error) {
+	varResource := _Resource{}
+
+	err = json.Unmarshal(data, &varResource)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Resource(varResource)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "resourceType")
+		delete(additionalProperties, "tags")
+		delete(additionalProperties, "metadata")
+		delete(additionalProperties, "hourlyCost")
+		delete(additionalProperties, "monthlyCost")
+		delete(additionalProperties, "monthlyUsageCost")
+		delete(additionalProperties, "costComponents")
+		delete(additionalProperties, "subresources")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableResource struct {
@@ -465,5 +507,3 @@ func (v *NullableResource) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

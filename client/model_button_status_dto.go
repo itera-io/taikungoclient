@@ -20,10 +20,13 @@ var _ MappedNullable = &ButtonStatusDto{}
 
 // ButtonStatusDto struct for ButtonStatusDto
 type ButtonStatusDto struct {
-	Enable *bool `json:"enable,omitempty"`
-	Reasons []string `json:"reasons,omitempty"`
-	Hidden *bool `json:"hidden,omitempty"`
+	Enable               *bool    `json:"enable,omitempty"`
+	Reasons              []string `json:"reasons,omitempty"`
+	Hidden               *bool    `json:"hidden,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ButtonStatusDto ButtonStatusDto
 
 // NewButtonStatusDto instantiates a new ButtonStatusDto object
 // This constructor will assign default values to properties that have it defined,
@@ -140,7 +143,7 @@ func (o *ButtonStatusDto) SetHidden(v bool) {
 }
 
 func (o ButtonStatusDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,7 +161,35 @@ func (o ButtonStatusDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Hidden) {
 		toSerialize["hidden"] = o.Hidden
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ButtonStatusDto) UnmarshalJSON(data []byte) (err error) {
+	varButtonStatusDto := _ButtonStatusDto{}
+
+	err = json.Unmarshal(data, &varButtonStatusDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ButtonStatusDto(varButtonStatusDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "enable")
+		delete(additionalProperties, "reasons")
+		delete(additionalProperties, "hidden")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableButtonStatusDto struct {
@@ -196,5 +227,3 @@ func (v *NullableButtonStatusDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

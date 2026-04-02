@@ -21,14 +21,17 @@ var _ MappedNullable = &UpdateKubernetesAlertDto{}
 
 // UpdateKubernetesAlertDto struct for UpdateKubernetesAlertDto
 type UpdateKubernetesAlertDto struct {
-	Status NullableString `json:"status,omitempty"`
-	Labels interface{} `json:"labels,omitempty"`
-	StartsAt *time.Time `json:"startsAt,omitempty"`
-	EndsAt *time.Time `json:"endsAt,omitempty"`
-	Fingerprint NullableString `json:"fingerprint,omitempty"`
-	IsSilenced NullableBool `json:"isSilenced,omitempty"`
-	SilenceReason NullableString `json:"silenceReason,omitempty"`
+	Status               NullableString `json:"status,omitempty"`
+	Labels               interface{}    `json:"labels,omitempty"`
+	StartsAt             *time.Time     `json:"startsAt,omitempty"`
+	EndsAt               *time.Time     `json:"endsAt,omitempty"`
+	Fingerprint          NullableString `json:"fingerprint,omitempty"`
+	IsSilenced           NullableBool   `json:"isSilenced,omitempty"`
+	SilenceReason        NullableString `json:"silenceReason,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateKubernetesAlertDto UpdateKubernetesAlertDto
 
 // NewUpdateKubernetesAlertDto instantiates a new UpdateKubernetesAlertDto object
 // This constructor will assign default values to properties that have it defined,
@@ -79,6 +82,7 @@ func (o *UpdateKubernetesAlertDto) HasStatus() bool {
 func (o *UpdateKubernetesAlertDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
+
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *UpdateKubernetesAlertDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -218,6 +222,7 @@ func (o *UpdateKubernetesAlertDto) HasFingerprint() bool {
 func (o *UpdateKubernetesAlertDto) SetFingerprint(v string) {
 	o.Fingerprint.Set(&v)
 }
+
 // SetFingerprintNil sets the value for Fingerprint to be an explicit nil
 func (o *UpdateKubernetesAlertDto) SetFingerprintNil() {
 	o.Fingerprint.Set(nil)
@@ -260,6 +265,7 @@ func (o *UpdateKubernetesAlertDto) HasIsSilenced() bool {
 func (o *UpdateKubernetesAlertDto) SetIsSilenced(v bool) {
 	o.IsSilenced.Set(&v)
 }
+
 // SetIsSilencedNil sets the value for IsSilenced to be an explicit nil
 func (o *UpdateKubernetesAlertDto) SetIsSilencedNil() {
 	o.IsSilenced.Set(nil)
@@ -302,6 +308,7 @@ func (o *UpdateKubernetesAlertDto) HasSilenceReason() bool {
 func (o *UpdateKubernetesAlertDto) SetSilenceReason(v string) {
 	o.SilenceReason.Set(&v)
 }
+
 // SetSilenceReasonNil sets the value for SilenceReason to be an explicit nil
 func (o *UpdateKubernetesAlertDto) SetSilenceReasonNil() {
 	o.SilenceReason.Set(nil)
@@ -313,7 +320,7 @@ func (o *UpdateKubernetesAlertDto) UnsetSilenceReason() {
 }
 
 func (o UpdateKubernetesAlertDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -343,7 +350,39 @@ func (o UpdateKubernetesAlertDto) ToMap() (map[string]interface{}, error) {
 	if o.SilenceReason.IsSet() {
 		toSerialize["silenceReason"] = o.SilenceReason.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateKubernetesAlertDto) UnmarshalJSON(data []byte) (err error) {
+	varUpdateKubernetesAlertDto := _UpdateKubernetesAlertDto{}
+
+	err = json.Unmarshal(data, &varUpdateKubernetesAlertDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateKubernetesAlertDto(varUpdateKubernetesAlertDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "labels")
+		delete(additionalProperties, "startsAt")
+		delete(additionalProperties, "endsAt")
+		delete(additionalProperties, "fingerprint")
+		delete(additionalProperties, "isSilenced")
+		delete(additionalProperties, "silenceReason")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateKubernetesAlertDto struct {
@@ -381,5 +420,3 @@ func (v *NullableUpdateKubernetesAlertDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

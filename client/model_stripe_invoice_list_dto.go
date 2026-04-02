@@ -13,9 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"time"
-	"bytes"
 	"fmt"
+	"time"
 )
 
 // checks if the StripeInvoiceListDto type satisfies the MappedNullable interface at compile time
@@ -23,13 +22,14 @@ var _ MappedNullable = &StripeInvoiceListDto{}
 
 // StripeInvoiceListDto struct for StripeInvoiceListDto
 type StripeInvoiceListDto struct {
-	Id NullableString `json:"id"`
-	InvoiceStatus NullableString `json:"invoiceStatus"`
-	ChargeStatus NullableString `json:"chargeStatus"`
-	ChargeReason NullableString `json:"chargeReason"`
-	Price float64 `json:"price"`
-	StartDate time.Time `json:"startDate"`
-	EndDate time.Time `json:"endDate"`
+	Id                   NullableString `json:"id"`
+	InvoiceStatus        NullableString `json:"invoiceStatus"`
+	ChargeStatus         NullableString `json:"chargeStatus"`
+	ChargeReason         NullableString `json:"chargeReason"`
+	Price                float64        `json:"price"`
+	StartDate            time.Time      `json:"startDate"`
+	EndDate              time.Time      `json:"endDate"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StripeInvoiceListDto StripeInvoiceListDto
@@ -235,7 +235,7 @@ func (o *StripeInvoiceListDto) SetEndDate(v time.Time) {
 }
 
 func (o StripeInvoiceListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -251,6 +251,11 @@ func (o StripeInvoiceListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["price"] = o.Price
 	toSerialize["startDate"] = o.StartDate
 	toSerialize["endDate"] = o.EndDate
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -273,10 +278,10 @@ func (o *StripeInvoiceListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -284,15 +289,26 @@ func (o *StripeInvoiceListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varStripeInvoiceListDto := _StripeInvoiceListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStripeInvoiceListDto)
+	err = json.Unmarshal(data, &varStripeInvoiceListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StripeInvoiceListDto(varStripeInvoiceListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "invoiceStatus")
+		delete(additionalProperties, "chargeStatus")
+		delete(additionalProperties, "chargeReason")
+		delete(additionalProperties, "price")
+		delete(additionalProperties, "startDate")
+		delete(additionalProperties, "endDate")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -332,5 +348,3 @@ func (v *NullableStripeInvoiceListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

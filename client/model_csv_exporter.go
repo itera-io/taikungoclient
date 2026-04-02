@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,9 +21,10 @@ var _ MappedNullable = &CsvExporter{}
 
 // CsvExporter struct for CsvExporter
 type CsvExporter struct {
-	FileName string `json:"fileName"`
-	ContentType string `json:"contentType"`
-	Content string `json:"content"`
+	FileName             string `json:"fileName"`
+	ContentType          string `json:"contentType"`
+	Content              string `json:"content"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CsvExporter CsvExporter
@@ -122,7 +122,7 @@ func (o *CsvExporter) SetContent(v string) {
 }
 
 func (o CsvExporter) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -134,6 +134,11 @@ func (o CsvExporter) ToMap() (map[string]interface{}, error) {
 	toSerialize["fileName"] = o.FileName
 	toSerialize["contentType"] = o.ContentType
 	toSerialize["content"] = o.Content
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -152,10 +157,10 @@ func (o *CsvExporter) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -163,15 +168,22 @@ func (o *CsvExporter) UnmarshalJSON(data []byte) (err error) {
 
 	varCsvExporter := _CsvExporter{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCsvExporter)
+	err = json.Unmarshal(data, &varCsvExporter)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CsvExporter(varCsvExporter)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "fileName")
+		delete(additionalProperties, "contentType")
+		delete(additionalProperties, "content")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -211,5 +223,3 @@ func (v *NullableCsvExporter) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

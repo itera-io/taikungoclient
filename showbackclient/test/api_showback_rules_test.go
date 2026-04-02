@@ -11,10 +11,10 @@ package taikunshowback
 
 import (
 	"context"
+	openapiclient "github.com/itera-io/taikungoclient/showbackclient"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/itera-io/taikungoclient/showbackclient"
 )
 
 func Test_taikunshowback_ShowbackRulesAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikunshowback_ShowbackRulesAPIService(t *testing.T) {
 
 	t.Run("Test ShowbackRulesAPIService ShowbackrulesCreate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.ShowbackRulesAPI.ShowbackrulesCreate(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_taikunshowback_ShowbackRulesAPIService(t *testing.T) {
 
 	t.Run("Test ShowbackRulesAPIService ShowbackrulesDelete", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id int32
 
@@ -49,19 +49,18 @@ func Test_taikunshowback_ShowbackRulesAPIService(t *testing.T) {
 
 	t.Run("Test ShowbackRulesAPIService ShowbackrulesDeleteAll", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ShowbackRulesAPI.ShowbackrulesDeleteAll(context.Background()).Execute()
+		httpRes, err := apiClient.ShowbackRulesAPI.ShowbackrulesDeleteAll(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
 	t.Run("Test ShowbackRulesAPIService ShowbackrulesList", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.ShowbackRulesAPI.ShowbackrulesList(context.Background()).Execute()
 
@@ -73,12 +72,11 @@ func Test_taikunshowback_ShowbackRulesAPIService(t *testing.T) {
 
 	t.Run("Test ShowbackRulesAPIService ShowbackrulesUpdate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ShowbackRulesAPI.ShowbackrulesUpdate(context.Background()).Execute()
+		httpRes, err := apiClient.ShowbackRulesAPI.ShowbackrulesUpdate(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

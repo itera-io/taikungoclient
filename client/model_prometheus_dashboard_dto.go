@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,12 +21,13 @@ var _ MappedNullable = &PrometheusDashboardDto{}
 
 // PrometheusDashboardDto struct for PrometheusDashboardDto
 type PrometheusDashboardDto struct {
-	Id int32 `json:"id"`
-	Name NullableString `json:"name"`
-	ExpressionDecoded NullableString `json:"expressionDecoded"`
-	ExpressionEncoded NullableString `json:"expressionEncoded"`
-	Description NullableString `json:"description"`
-	IsReadonly bool `json:"isReadonly"`
+	Id                   int32          `json:"id"`
+	Name                 NullableString `json:"name"`
+	ExpressionDecoded    NullableString `json:"expressionDecoded"`
+	ExpressionEncoded    NullableString `json:"expressionEncoded"`
+	Description          NullableString `json:"description"`
+	IsReadonly           bool           `json:"isReadonly"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PrometheusDashboardDto PrometheusDashboardDto
@@ -208,7 +208,7 @@ func (o *PrometheusDashboardDto) SetIsReadonly(v bool) {
 }
 
 func (o PrometheusDashboardDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -223,6 +223,11 @@ func (o PrometheusDashboardDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["expressionEncoded"] = o.ExpressionEncoded.Get()
 	toSerialize["description"] = o.Description.Get()
 	toSerialize["isReadonly"] = o.IsReadonly
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -244,10 +249,10 @@ func (o *PrometheusDashboardDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -255,15 +260,25 @@ func (o *PrometheusDashboardDto) UnmarshalJSON(data []byte) (err error) {
 
 	varPrometheusDashboardDto := _PrometheusDashboardDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPrometheusDashboardDto)
+	err = json.Unmarshal(data, &varPrometheusDashboardDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PrometheusDashboardDto(varPrometheusDashboardDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "expressionDecoded")
+		delete(additionalProperties, "expressionEncoded")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "isReadonly")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -303,5 +318,3 @@ func (v *NullablePrometheusDashboardDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

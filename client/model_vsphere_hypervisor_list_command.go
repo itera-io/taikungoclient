@@ -20,12 +20,15 @@ var _ MappedNullable = &VsphereHypervisorListCommand{}
 
 // VsphereHypervisorListCommand struct for VsphereHypervisorListCommand
 type VsphereHypervisorListCommand struct {
-	Url NullableString `json:"url,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Password NullableString `json:"password,omitempty"`
-	DatacenterId NullableString `json:"datacenterId,omitempty"`
-	CloudId NullableInt32 `json:"cloudId,omitempty"`
+	Url                  NullableString `json:"url,omitempty"`
+	Username             NullableString `json:"username,omitempty"`
+	Password             NullableString `json:"password,omitempty"`
+	DatacenterId         NullableString `json:"datacenterId,omitempty"`
+	CloudId              NullableInt32  `json:"cloudId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _VsphereHypervisorListCommand VsphereHypervisorListCommand
 
 // NewVsphereHypervisorListCommand instantiates a new VsphereHypervisorListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -76,6 +79,7 @@ func (o *VsphereHypervisorListCommand) HasUrl() bool {
 func (o *VsphereHypervisorListCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *VsphereHypervisorListCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -118,6 +122,7 @@ func (o *VsphereHypervisorListCommand) HasUsername() bool {
 func (o *VsphereHypervisorListCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *VsphereHypervisorListCommand) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -160,6 +165,7 @@ func (o *VsphereHypervisorListCommand) HasPassword() bool {
 func (o *VsphereHypervisorListCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *VsphereHypervisorListCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -202,6 +208,7 @@ func (o *VsphereHypervisorListCommand) HasDatacenterId() bool {
 func (o *VsphereHypervisorListCommand) SetDatacenterId(v string) {
 	o.DatacenterId.Set(&v)
 }
+
 // SetDatacenterIdNil sets the value for DatacenterId to be an explicit nil
 func (o *VsphereHypervisorListCommand) SetDatacenterIdNil() {
 	o.DatacenterId.Set(nil)
@@ -244,6 +251,7 @@ func (o *VsphereHypervisorListCommand) HasCloudId() bool {
 func (o *VsphereHypervisorListCommand) SetCloudId(v int32) {
 	o.CloudId.Set(&v)
 }
+
 // SetCloudIdNil sets the value for CloudId to be an explicit nil
 func (o *VsphereHypervisorListCommand) SetCloudIdNil() {
 	o.CloudId.Set(nil)
@@ -255,7 +263,7 @@ func (o *VsphereHypervisorListCommand) UnsetCloudId() {
 }
 
 func (o VsphereHypervisorListCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -279,7 +287,37 @@ func (o VsphereHypervisorListCommand) ToMap() (map[string]interface{}, error) {
 	if o.CloudId.IsSet() {
 		toSerialize["cloudId"] = o.CloudId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *VsphereHypervisorListCommand) UnmarshalJSON(data []byte) (err error) {
+	varVsphereHypervisorListCommand := _VsphereHypervisorListCommand{}
+
+	err = json.Unmarshal(data, &varVsphereHypervisorListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VsphereHypervisorListCommand(varVsphereHypervisorListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "datacenterId")
+		delete(additionalProperties, "cloudId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableVsphereHypervisorListCommand struct {
@@ -317,5 +355,3 @@ func (v *NullableVsphereHypervisorListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

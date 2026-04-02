@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,12 +21,13 @@ var _ MappedNullable = &VClusterActionVisibilityDto{}
 
 // VClusterActionVisibilityDto struct for VClusterActionVisibilityDto
 type VClusterActionVisibilityDto struct {
-	AttachAlertingProfile ButtonStatusDto `json:"attachAlertingProfile"`
-	DetachAlertingProfile ButtonStatusDto `json:"detachAlertingProfile"`
+	AttachAlertingProfile  ButtonStatusDto `json:"attachAlertingProfile"`
+	DetachAlertingProfile  ButtonStatusDto `json:"detachAlertingProfile"`
 	ProjectMaintenanceMode ButtonStatusDto `json:"projectMaintenanceMode"`
-	Lock ButtonStatusDto `json:"lock"`
-	Unlock ButtonStatusDto `json:"unlock"`
-	QuotaPresets ButtonStatusDto `json:"quotaPresets"`
+	Lock                   ButtonStatusDto `json:"lock"`
+	Unlock                 ButtonStatusDto `json:"unlock"`
+	QuotaPresets           ButtonStatusDto `json:"quotaPresets"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _VClusterActionVisibilityDto VClusterActionVisibilityDto
@@ -200,7 +200,7 @@ func (o *VClusterActionVisibilityDto) SetQuotaPresets(v ButtonStatusDto) {
 }
 
 func (o VClusterActionVisibilityDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -215,6 +215,11 @@ func (o VClusterActionVisibilityDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["lock"] = o.Lock
 	toSerialize["unlock"] = o.Unlock
 	toSerialize["quotaPresets"] = o.QuotaPresets
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -236,10 +241,10 @@ func (o *VClusterActionVisibilityDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -247,15 +252,25 @@ func (o *VClusterActionVisibilityDto) UnmarshalJSON(data []byte) (err error) {
 
 	varVClusterActionVisibilityDto := _VClusterActionVisibilityDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVClusterActionVisibilityDto)
+	err = json.Unmarshal(data, &varVClusterActionVisibilityDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = VClusterActionVisibilityDto(varVClusterActionVisibilityDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "attachAlertingProfile")
+		delete(additionalProperties, "detachAlertingProfile")
+		delete(additionalProperties, "projectMaintenanceMode")
+		delete(additionalProperties, "lock")
+		delete(additionalProperties, "unlock")
+		delete(additionalProperties, "quotaPresets")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -295,5 +310,3 @@ func (v *NullableVClusterActionVisibilityDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

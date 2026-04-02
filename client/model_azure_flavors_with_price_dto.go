@@ -20,17 +20,20 @@ var _ MappedNullable = &AzureFlavorsWithPriceDto{}
 
 // AzureFlavorsWithPriceDto struct for AzureFlavorsWithPriceDto
 type AzureFlavorsWithPriceDto struct {
-	Name NullableString `json:"name,omitempty"`
-	WindowsPrice NullableString `json:"windowsPrice,omitempty"`
-	LinuxPrice NullableString `json:"linuxPrice,omitempty"`
-	WindowsSpotPrice NullableString `json:"windowsSpotPrice,omitempty"`
-	LinuxSpotPrice NullableString `json:"linuxSpotPrice,omitempty"`
-	Cpu *int32 `json:"cpu,omitempty"`
-	Ram *float64 `json:"ram,omitempty"`
-	Description interface{} `json:"description,omitempty"`
-	MaxDataDiskCount NullableFloat64 `json:"maxDataDiskCount,omitempty"`
-	HasGpuSupport *bool `json:"hasGpuSupport,omitempty"`
+	Name                 NullableString  `json:"name,omitempty"`
+	WindowsPrice         NullableString  `json:"windowsPrice,omitempty"`
+	LinuxPrice           NullableString  `json:"linuxPrice,omitempty"`
+	WindowsSpotPrice     NullableString  `json:"windowsSpotPrice,omitempty"`
+	LinuxSpotPrice       NullableString  `json:"linuxSpotPrice,omitempty"`
+	Cpu                  *int32          `json:"cpu,omitempty"`
+	Ram                  *float64        `json:"ram,omitempty"`
+	Description          interface{}     `json:"description,omitempty"`
+	MaxDataDiskCount     NullableFloat64 `json:"maxDataDiskCount,omitempty"`
+	HasGpuSupport        *bool           `json:"hasGpuSupport,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AzureFlavorsWithPriceDto AzureFlavorsWithPriceDto
 
 // NewAzureFlavorsWithPriceDto instantiates a new AzureFlavorsWithPriceDto object
 // This constructor will assign default values to properties that have it defined,
@@ -81,6 +84,7 @@ func (o *AzureFlavorsWithPriceDto) HasName() bool {
 func (o *AzureFlavorsWithPriceDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *AzureFlavorsWithPriceDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -123,6 +127,7 @@ func (o *AzureFlavorsWithPriceDto) HasWindowsPrice() bool {
 func (o *AzureFlavorsWithPriceDto) SetWindowsPrice(v string) {
 	o.WindowsPrice.Set(&v)
 }
+
 // SetWindowsPriceNil sets the value for WindowsPrice to be an explicit nil
 func (o *AzureFlavorsWithPriceDto) SetWindowsPriceNil() {
 	o.WindowsPrice.Set(nil)
@@ -165,6 +170,7 @@ func (o *AzureFlavorsWithPriceDto) HasLinuxPrice() bool {
 func (o *AzureFlavorsWithPriceDto) SetLinuxPrice(v string) {
 	o.LinuxPrice.Set(&v)
 }
+
 // SetLinuxPriceNil sets the value for LinuxPrice to be an explicit nil
 func (o *AzureFlavorsWithPriceDto) SetLinuxPriceNil() {
 	o.LinuxPrice.Set(nil)
@@ -207,6 +213,7 @@ func (o *AzureFlavorsWithPriceDto) HasWindowsSpotPrice() bool {
 func (o *AzureFlavorsWithPriceDto) SetWindowsSpotPrice(v string) {
 	o.WindowsSpotPrice.Set(&v)
 }
+
 // SetWindowsSpotPriceNil sets the value for WindowsSpotPrice to be an explicit nil
 func (o *AzureFlavorsWithPriceDto) SetWindowsSpotPriceNil() {
 	o.WindowsSpotPrice.Set(nil)
@@ -249,6 +256,7 @@ func (o *AzureFlavorsWithPriceDto) HasLinuxSpotPrice() bool {
 func (o *AzureFlavorsWithPriceDto) SetLinuxSpotPrice(v string) {
 	o.LinuxSpotPrice.Set(&v)
 }
+
 // SetLinuxSpotPriceNil sets the value for LinuxSpotPrice to be an explicit nil
 func (o *AzureFlavorsWithPriceDto) SetLinuxSpotPriceNil() {
 	o.LinuxSpotPrice.Set(nil)
@@ -388,6 +396,7 @@ func (o *AzureFlavorsWithPriceDto) HasMaxDataDiskCount() bool {
 func (o *AzureFlavorsWithPriceDto) SetMaxDataDiskCount(v float64) {
 	o.MaxDataDiskCount.Set(&v)
 }
+
 // SetMaxDataDiskCountNil sets the value for MaxDataDiskCount to be an explicit nil
 func (o *AzureFlavorsWithPriceDto) SetMaxDataDiskCountNil() {
 	o.MaxDataDiskCount.Set(nil)
@@ -431,7 +440,7 @@ func (o *AzureFlavorsWithPriceDto) SetHasGpuSupport(v bool) {
 }
 
 func (o AzureFlavorsWithPriceDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -470,7 +479,42 @@ func (o AzureFlavorsWithPriceDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HasGpuSupport) {
 		toSerialize["hasGpuSupport"] = o.HasGpuSupport
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AzureFlavorsWithPriceDto) UnmarshalJSON(data []byte) (err error) {
+	varAzureFlavorsWithPriceDto := _AzureFlavorsWithPriceDto{}
+
+	err = json.Unmarshal(data, &varAzureFlavorsWithPriceDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AzureFlavorsWithPriceDto(varAzureFlavorsWithPriceDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "windowsPrice")
+		delete(additionalProperties, "linuxPrice")
+		delete(additionalProperties, "windowsSpotPrice")
+		delete(additionalProperties, "linuxSpotPrice")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "ram")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "maxDataDiskCount")
+		delete(additionalProperties, "hasGpuSupport")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAzureFlavorsWithPriceDto struct {
@@ -508,5 +552,3 @@ func (v *NullableAzureFlavorsWithPriceDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

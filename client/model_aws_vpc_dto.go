@@ -20,11 +20,14 @@ var _ MappedNullable = &AwsVpcDto{}
 
 // AwsVpcDto struct for AwsVpcDto
 type AwsVpcDto struct {
-	VpcId NullableString `json:"vpcId,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	CidrBlock NullableString `json:"cidrBlock,omitempty"`
-	IpMode *IpMode `json:"ipMode,omitempty"`
+	VpcId                NullableString `json:"vpcId,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	CidrBlock            NullableString `json:"cidrBlock,omitempty"`
+	IpMode               *IpMode        `json:"ipMode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AwsVpcDto AwsVpcDto
 
 // NewAwsVpcDto instantiates a new AwsVpcDto object
 // This constructor will assign default values to properties that have it defined,
@@ -75,6 +78,7 @@ func (o *AwsVpcDto) HasVpcId() bool {
 func (o *AwsVpcDto) SetVpcId(v string) {
 	o.VpcId.Set(&v)
 }
+
 // SetVpcIdNil sets the value for VpcId to be an explicit nil
 func (o *AwsVpcDto) SetVpcIdNil() {
 	o.VpcId.Set(nil)
@@ -117,6 +121,7 @@ func (o *AwsVpcDto) HasName() bool {
 func (o *AwsVpcDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *AwsVpcDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -159,6 +164,7 @@ func (o *AwsVpcDto) HasCidrBlock() bool {
 func (o *AwsVpcDto) SetCidrBlock(v string) {
 	o.CidrBlock.Set(&v)
 }
+
 // SetCidrBlockNil sets the value for CidrBlock to be an explicit nil
 func (o *AwsVpcDto) SetCidrBlockNil() {
 	o.CidrBlock.Set(nil)
@@ -202,7 +208,7 @@ func (o *AwsVpcDto) SetIpMode(v IpMode) {
 }
 
 func (o AwsVpcDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -223,7 +229,36 @@ func (o AwsVpcDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IpMode) {
 		toSerialize["ipMode"] = o.IpMode
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AwsVpcDto) UnmarshalJSON(data []byte) (err error) {
+	varAwsVpcDto := _AwsVpcDto{}
+
+	err = json.Unmarshal(data, &varAwsVpcDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AwsVpcDto(varAwsVpcDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "vpcId")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "cidrBlock")
+		delete(additionalProperties, "ipMode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAwsVpcDto struct {
@@ -261,5 +296,3 @@ func (v *NullableAwsVpcDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,8 +21,9 @@ var _ MappedNullable = &ExceededQuotaDto{}
 
 // ExceededQuotaDto struct for ExceededQuotaDto
 type ExceededQuotaDto struct {
-	CloudId int32 `json:"cloudId"`
-	Name NullableString `json:"name"`
+	CloudId              int32          `json:"cloudId"`
+	Name                 NullableString `json:"name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ExceededQuotaDto ExceededQuotaDto
@@ -98,7 +98,7 @@ func (o *ExceededQuotaDto) SetName(v string) {
 }
 
 func (o ExceededQuotaDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -109,6 +109,11 @@ func (o ExceededQuotaDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["cloudId"] = o.CloudId
 	toSerialize["name"] = o.Name.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -126,10 +131,10 @@ func (o *ExceededQuotaDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -137,15 +142,21 @@ func (o *ExceededQuotaDto) UnmarshalJSON(data []byte) (err error) {
 
 	varExceededQuotaDto := _ExceededQuotaDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varExceededQuotaDto)
+	err = json.Unmarshal(data, &varExceededQuotaDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ExceededQuotaDto(varExceededQuotaDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cloudId")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -185,5 +196,3 @@ func (v *NullableExceededQuotaDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

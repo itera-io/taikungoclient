@@ -20,9 +20,12 @@ var _ MappedNullable = &CommonDropdownDto{}
 
 // CommonDropdownDto struct for CommonDropdownDto
 type CommonDropdownDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CommonDropdownDto CommonDropdownDto
 
 // NewCommonDropdownDto instantiates a new CommonDropdownDto object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,7 @@ func (o *CommonDropdownDto) HasName() bool {
 func (o *CommonDropdownDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CommonDropdownDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -116,7 +120,7 @@ func (o *CommonDropdownDto) UnsetName() {
 }
 
 func (o CommonDropdownDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o CommonDropdownDto) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CommonDropdownDto) UnmarshalJSON(data []byte) (err error) {
+	varCommonDropdownDto := _CommonDropdownDto{}
+
+	err = json.Unmarshal(data, &varCommonDropdownDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CommonDropdownDto(varCommonDropdownDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCommonDropdownDto struct {
@@ -169,5 +200,3 @@ func (v *NullableCommonDropdownDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

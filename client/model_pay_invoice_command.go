@@ -20,8 +20,11 @@ var _ MappedNullable = &PayInvoiceCommand{}
 
 // PayInvoiceCommand struct for PayInvoiceCommand
 type PayInvoiceCommand struct {
-	InvoiceId NullableString `json:"invoiceId,omitempty"`
+	InvoiceId            NullableString `json:"invoiceId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PayInvoiceCommand PayInvoiceCommand
 
 // NewPayInvoiceCommand instantiates a new PayInvoiceCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -72,6 +75,7 @@ func (o *PayInvoiceCommand) HasInvoiceId() bool {
 func (o *PayInvoiceCommand) SetInvoiceId(v string) {
 	o.InvoiceId.Set(&v)
 }
+
 // SetInvoiceIdNil sets the value for InvoiceId to be an explicit nil
 func (o *PayInvoiceCommand) SetInvoiceIdNil() {
 	o.InvoiceId.Set(nil)
@@ -83,7 +87,7 @@ func (o *PayInvoiceCommand) UnsetInvoiceId() {
 }
 
 func (o PayInvoiceCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -95,7 +99,33 @@ func (o PayInvoiceCommand) ToMap() (map[string]interface{}, error) {
 	if o.InvoiceId.IsSet() {
 		toSerialize["invoiceId"] = o.InvoiceId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PayInvoiceCommand) UnmarshalJSON(data []byte) (err error) {
+	varPayInvoiceCommand := _PayInvoiceCommand{}
+
+	err = json.Unmarshal(data, &varPayInvoiceCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PayInvoiceCommand(varPayInvoiceCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "invoiceId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePayInvoiceCommand struct {
@@ -133,5 +163,3 @@ func (v *NullablePayInvoiceCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

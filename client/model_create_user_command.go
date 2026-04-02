@@ -20,12 +20,15 @@ var _ MappedNullable = &CreateUserCommand{}
 
 // CreateUserCommand struct for CreateUserCommand
 type CreateUserCommand struct {
-	Username NullableString `json:"username,omitempty"`
-	DisplayName NullableString `json:"displayName,omitempty"`
-	Email NullableString `json:"email,omitempty"`
-	AccountId NullableInt32 `json:"accountId,omitempty"`
-	IsAccountAdmin *bool `json:"isAccountAdmin,omitempty"`
+	Username             NullableString `json:"username,omitempty"`
+	DisplayName          NullableString `json:"displayName,omitempty"`
+	Email                NullableString `json:"email,omitempty"`
+	AccountId            NullableInt32  `json:"accountId,omitempty"`
+	IsAccountAdmin       *bool          `json:"isAccountAdmin,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateUserCommand CreateUserCommand
 
 // NewCreateUserCommand instantiates a new CreateUserCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -76,6 +79,7 @@ func (o *CreateUserCommand) HasUsername() bool {
 func (o *CreateUserCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *CreateUserCommand) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -118,6 +122,7 @@ func (o *CreateUserCommand) HasDisplayName() bool {
 func (o *CreateUserCommand) SetDisplayName(v string) {
 	o.DisplayName.Set(&v)
 }
+
 // SetDisplayNameNil sets the value for DisplayName to be an explicit nil
 func (o *CreateUserCommand) SetDisplayNameNil() {
 	o.DisplayName.Set(nil)
@@ -160,6 +165,7 @@ func (o *CreateUserCommand) HasEmail() bool {
 func (o *CreateUserCommand) SetEmail(v string) {
 	o.Email.Set(&v)
 }
+
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *CreateUserCommand) SetEmailNil() {
 	o.Email.Set(nil)
@@ -202,6 +208,7 @@ func (o *CreateUserCommand) HasAccountId() bool {
 func (o *CreateUserCommand) SetAccountId(v int32) {
 	o.AccountId.Set(&v)
 }
+
 // SetAccountIdNil sets the value for AccountId to be an explicit nil
 func (o *CreateUserCommand) SetAccountIdNil() {
 	o.AccountId.Set(nil)
@@ -245,7 +252,7 @@ func (o *CreateUserCommand) SetIsAccountAdmin(v bool) {
 }
 
 func (o CreateUserCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -269,7 +276,37 @@ func (o CreateUserCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsAccountAdmin) {
 		toSerialize["isAccountAdmin"] = o.IsAccountAdmin
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateUserCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateUserCommand := _CreateUserCommand{}
+
+	err = json.Unmarshal(data, &varCreateUserCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateUserCommand(varCreateUserCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "displayName")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "accountId")
+		delete(additionalProperties, "isAccountAdmin")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateUserCommand struct {
@@ -307,5 +344,3 @@ func (v *NullableCreateUserCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

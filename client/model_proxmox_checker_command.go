@@ -20,10 +20,13 @@ var _ MappedNullable = &ProxmoxCheckerCommand{}
 
 // ProxmoxCheckerCommand struct for ProxmoxCheckerCommand
 type ProxmoxCheckerCommand struct {
-	Url NullableString `json:"url,omitempty"`
-	TokenId NullableString `json:"tokenId,omitempty"`
-	TokenSecret NullableString `json:"tokenSecret,omitempty"`
+	Url                  NullableString `json:"url,omitempty"`
+	TokenId              NullableString `json:"tokenId,omitempty"`
+	TokenSecret          NullableString `json:"tokenSecret,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProxmoxCheckerCommand ProxmoxCheckerCommand
 
 // NewProxmoxCheckerCommand instantiates a new ProxmoxCheckerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *ProxmoxCheckerCommand) HasUrl() bool {
 func (o *ProxmoxCheckerCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *ProxmoxCheckerCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -116,6 +120,7 @@ func (o *ProxmoxCheckerCommand) HasTokenId() bool {
 func (o *ProxmoxCheckerCommand) SetTokenId(v string) {
 	o.TokenId.Set(&v)
 }
+
 // SetTokenIdNil sets the value for TokenId to be an explicit nil
 func (o *ProxmoxCheckerCommand) SetTokenIdNil() {
 	o.TokenId.Set(nil)
@@ -158,6 +163,7 @@ func (o *ProxmoxCheckerCommand) HasTokenSecret() bool {
 func (o *ProxmoxCheckerCommand) SetTokenSecret(v string) {
 	o.TokenSecret.Set(&v)
 }
+
 // SetTokenSecretNil sets the value for TokenSecret to be an explicit nil
 func (o *ProxmoxCheckerCommand) SetTokenSecretNil() {
 	o.TokenSecret.Set(nil)
@@ -169,7 +175,7 @@ func (o *ProxmoxCheckerCommand) UnsetTokenSecret() {
 }
 
 func (o ProxmoxCheckerCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -187,7 +193,35 @@ func (o ProxmoxCheckerCommand) ToMap() (map[string]interface{}, error) {
 	if o.TokenSecret.IsSet() {
 		toSerialize["tokenSecret"] = o.TokenSecret.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProxmoxCheckerCommand) UnmarshalJSON(data []byte) (err error) {
+	varProxmoxCheckerCommand := _ProxmoxCheckerCommand{}
+
+	err = json.Unmarshal(data, &varProxmoxCheckerCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProxmoxCheckerCommand(varProxmoxCheckerCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "tokenId")
+		delete(additionalProperties, "tokenSecret")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProxmoxCheckerCommand struct {
@@ -225,5 +259,3 @@ func (v *NullableProxmoxCheckerCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

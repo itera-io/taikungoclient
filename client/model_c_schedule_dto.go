@@ -13,9 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"time"
-	"bytes"
 	"fmt"
+	"time"
 )
 
 // checks if the CScheduleDto type satisfies the MappedNullable interface at compile time
@@ -23,16 +22,17 @@ var _ MappedNullable = &CScheduleDto{}
 
 // CScheduleDto struct for CScheduleDto
 type CScheduleDto struct {
-	Status *Status `json:"status,omitempty"`
-	MetadataName NullableString `json:"metadataName"`
-	Namespace NullableString `json:"namespace"`
-	CreatedAt NullableTime `json:"createdAt"`
-	Schedule NullableString `json:"schedule"`
-	Ttl NullableString `json:"ttl"`
-	LastBackup NullableTime `json:"lastBackup"`
-	Phase NullableString `json:"phase"`
-	ExcludedNamespaces []string `json:"excludedNamespaces"`
-	IncludedNamespaces []string `json:"includedNamespaces"`
+	Status               *Status        `json:"status,omitempty"`
+	MetadataName         NullableString `json:"metadataName"`
+	Namespace            NullableString `json:"namespace"`
+	CreatedAt            NullableTime   `json:"createdAt"`
+	Schedule             NullableString `json:"schedule"`
+	Ttl                  NullableString `json:"ttl"`
+	LastBackup           NullableTime   `json:"lastBackup"`
+	Phase                NullableString `json:"phase"`
+	ExcludedNamespaces   []string       `json:"excludedNamespaces"`
+	IncludedNamespaces   []string       `json:"includedNamespaces"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CScheduleDto CScheduleDto
@@ -330,7 +330,7 @@ func (o *CScheduleDto) SetIncludedNamespaces(v []string) {
 }
 
 func (o CScheduleDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -355,6 +355,11 @@ func (o CScheduleDto) ToMap() (map[string]interface{}, error) {
 	if o.IncludedNamespaces != nil {
 		toSerialize["includedNamespaces"] = o.IncludedNamespaces
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -379,10 +384,10 @@ func (o *CScheduleDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -390,15 +395,29 @@ func (o *CScheduleDto) UnmarshalJSON(data []byte) (err error) {
 
 	varCScheduleDto := _CScheduleDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCScheduleDto)
+	err = json.Unmarshal(data, &varCScheduleDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CScheduleDto(varCScheduleDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "metadataName")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "schedule")
+		delete(additionalProperties, "ttl")
+		delete(additionalProperties, "lastBackup")
+		delete(additionalProperties, "phase")
+		delete(additionalProperties, "excludedNamespaces")
+		delete(additionalProperties, "includedNamespaces")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -438,5 +457,3 @@ func (v *NullableCScheduleDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

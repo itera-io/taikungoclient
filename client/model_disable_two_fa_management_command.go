@@ -20,8 +20,11 @@ var _ MappedNullable = &DisableTwoFaManagementCommand{}
 
 // DisableTwoFaManagementCommand struct for DisableTwoFaManagementCommand
 type DisableTwoFaManagementCommand struct {
-	VerificationCode NullableString `json:"verificationCode,omitempty"`
+	VerificationCode     NullableString `json:"verificationCode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DisableTwoFaManagementCommand DisableTwoFaManagementCommand
 
 // NewDisableTwoFaManagementCommand instantiates a new DisableTwoFaManagementCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -72,6 +75,7 @@ func (o *DisableTwoFaManagementCommand) HasVerificationCode() bool {
 func (o *DisableTwoFaManagementCommand) SetVerificationCode(v string) {
 	o.VerificationCode.Set(&v)
 }
+
 // SetVerificationCodeNil sets the value for VerificationCode to be an explicit nil
 func (o *DisableTwoFaManagementCommand) SetVerificationCodeNil() {
 	o.VerificationCode.Set(nil)
@@ -83,7 +87,7 @@ func (o *DisableTwoFaManagementCommand) UnsetVerificationCode() {
 }
 
 func (o DisableTwoFaManagementCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -95,7 +99,33 @@ func (o DisableTwoFaManagementCommand) ToMap() (map[string]interface{}, error) {
 	if o.VerificationCode.IsSet() {
 		toSerialize["verificationCode"] = o.VerificationCode.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DisableTwoFaManagementCommand) UnmarshalJSON(data []byte) (err error) {
+	varDisableTwoFaManagementCommand := _DisableTwoFaManagementCommand{}
+
+	err = json.Unmarshal(data, &varDisableTwoFaManagementCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DisableTwoFaManagementCommand(varDisableTwoFaManagementCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "verificationCode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDisableTwoFaManagementCommand struct {
@@ -133,5 +163,3 @@ func (v *NullableDisableTwoFaManagementCommand) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

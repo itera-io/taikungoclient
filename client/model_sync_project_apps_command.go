@@ -20,8 +20,11 @@ var _ MappedNullable = &SyncProjectAppsCommand{}
 
 // SyncProjectAppsCommand struct for SyncProjectAppsCommand
 type SyncProjectAppsCommand struct {
-	ProjectAppId NullableInt32 `json:"projectAppId,omitempty"`
+	ProjectAppId         NullableInt32 `json:"projectAppId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _SyncProjectAppsCommand SyncProjectAppsCommand
 
 // NewSyncProjectAppsCommand instantiates a new SyncProjectAppsCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -72,6 +75,7 @@ func (o *SyncProjectAppsCommand) HasProjectAppId() bool {
 func (o *SyncProjectAppsCommand) SetProjectAppId(v int32) {
 	o.ProjectAppId.Set(&v)
 }
+
 // SetProjectAppIdNil sets the value for ProjectAppId to be an explicit nil
 func (o *SyncProjectAppsCommand) SetProjectAppIdNil() {
 	o.ProjectAppId.Set(nil)
@@ -83,7 +87,7 @@ func (o *SyncProjectAppsCommand) UnsetProjectAppId() {
 }
 
 func (o SyncProjectAppsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -95,7 +99,33 @@ func (o SyncProjectAppsCommand) ToMap() (map[string]interface{}, error) {
 	if o.ProjectAppId.IsSet() {
 		toSerialize["projectAppId"] = o.ProjectAppId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *SyncProjectAppsCommand) UnmarshalJSON(data []byte) (err error) {
+	varSyncProjectAppsCommand := _SyncProjectAppsCommand{}
+
+	err = json.Unmarshal(data, &varSyncProjectAppsCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SyncProjectAppsCommand(varSyncProjectAppsCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectAppId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableSyncProjectAppsCommand struct {
@@ -133,5 +163,3 @@ func (v *NullableSyncProjectAppsCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

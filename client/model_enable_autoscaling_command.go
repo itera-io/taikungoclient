@@ -20,13 +20,16 @@ var _ MappedNullable = &EnableAutoscalingCommand{}
 
 // EnableAutoscalingCommand struct for EnableAutoscalingCommand
 type EnableAutoscalingCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	MinSize *int32 `json:"minSize,omitempty"`
-	MaxSize *int32 `json:"maxSize,omitempty"`
-	DiskSize *float64 `json:"diskSize,omitempty"`
-	Flavor NullableString `json:"flavor,omitempty"`
-	SpotEnabled *bool `json:"spotEnabled,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	MinSize              *int32         `json:"minSize,omitempty"`
+	MaxSize              *int32         `json:"maxSize,omitempty"`
+	DiskSize             *float64       `json:"diskSize,omitempty"`
+	Flavor               NullableString `json:"flavor,omitempty"`
+	SpotEnabled          *bool          `json:"spotEnabled,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EnableAutoscalingCommand EnableAutoscalingCommand
 
 // NewEnableAutoscalingCommand instantiates a new EnableAutoscalingCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -205,6 +208,7 @@ func (o *EnableAutoscalingCommand) HasFlavor() bool {
 func (o *EnableAutoscalingCommand) SetFlavor(v string) {
 	o.Flavor.Set(&v)
 }
+
 // SetFlavorNil sets the value for Flavor to be an explicit nil
 func (o *EnableAutoscalingCommand) SetFlavorNil() {
 	o.Flavor.Set(nil)
@@ -248,7 +252,7 @@ func (o *EnableAutoscalingCommand) SetSpotEnabled(v bool) {
 }
 
 func (o EnableAutoscalingCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -275,7 +279,38 @@ func (o EnableAutoscalingCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SpotEnabled) {
 		toSerialize["spotEnabled"] = o.SpotEnabled
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EnableAutoscalingCommand) UnmarshalJSON(data []byte) (err error) {
+	varEnableAutoscalingCommand := _EnableAutoscalingCommand{}
+
+	err = json.Unmarshal(data, &varEnableAutoscalingCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnableAutoscalingCommand(varEnableAutoscalingCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "minSize")
+		delete(additionalProperties, "maxSize")
+		delete(additionalProperties, "diskSize")
+		delete(additionalProperties, "flavor")
+		delete(additionalProperties, "spotEnabled")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEnableAutoscalingCommand struct {
@@ -313,5 +348,3 @@ func (v *NullableEnableAutoscalingCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

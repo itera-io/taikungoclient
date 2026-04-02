@@ -20,14 +20,17 @@ var _ MappedNullable = &Summary{}
 
 // Summary struct for Summary
 type Summary struct {
-	TotalDetectedResources *int32 `json:"totalDetectedResources,omitempty"`
-	TotalSupportedResources *int32 `json:"totalSupportedResources,omitempty"`
-	TotalUnsupportedResources *int32 `json:"totalUnsupportedResources,omitempty"`
-	TotalUsageBasedResources *int32 `json:"totalUsageBasedResources,omitempty"`
-	TotalNoPriceResources *int32 `json:"totalNoPriceResources,omitempty"`
+	TotalDetectedResources    *int32           `json:"totalDetectedResources,omitempty"`
+	TotalSupportedResources   *int32           `json:"totalSupportedResources,omitempty"`
+	TotalUnsupportedResources *int32           `json:"totalUnsupportedResources,omitempty"`
+	TotalUsageBasedResources  *int32           `json:"totalUsageBasedResources,omitempty"`
+	TotalNoPriceResources     *int32           `json:"totalNoPriceResources,omitempty"`
 	UnsupportedResourceCounts map[string]int32 `json:"unsupportedResourceCounts,omitempty"`
-	NoPriceResourceCounts map[string]int32 `json:"noPriceResourceCounts,omitempty"`
+	NoPriceResourceCounts     map[string]int32 `json:"noPriceResourceCounts,omitempty"`
+	AdditionalProperties      map[string]interface{}
 }
+
+type _Summary Summary
 
 // NewSummary instantiates a new Summary object
 // This constructor will assign default values to properties that have it defined,
@@ -273,7 +276,7 @@ func (o *Summary) SetNoPriceResourceCounts(v map[string]int32) {
 }
 
 func (o Summary) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -303,7 +306,39 @@ func (o Summary) ToMap() (map[string]interface{}, error) {
 	if o.NoPriceResourceCounts != nil {
 		toSerialize["noPriceResourceCounts"] = o.NoPriceResourceCounts
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Summary) UnmarshalJSON(data []byte) (err error) {
+	varSummary := _Summary{}
+
+	err = json.Unmarshal(data, &varSummary)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Summary(varSummary)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "totalDetectedResources")
+		delete(additionalProperties, "totalSupportedResources")
+		delete(additionalProperties, "totalUnsupportedResources")
+		delete(additionalProperties, "totalUsageBasedResources")
+		delete(additionalProperties, "totalNoPriceResources")
+		delete(additionalProperties, "unsupportedResourceCounts")
+		delete(additionalProperties, "noPriceResourceCounts")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableSummary struct {
@@ -341,5 +376,3 @@ func (v *NullableSummary) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

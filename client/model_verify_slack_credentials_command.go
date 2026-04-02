@@ -20,10 +20,13 @@ var _ MappedNullable = &VerifySlackCredentialsCommand{}
 
 // VerifySlackCredentialsCommand struct for VerifySlackCredentialsCommand
 type VerifySlackCredentialsCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	Url NullableString `json:"url,omitempty"`
-	Channel NullableString `json:"channel,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Url                  NullableString `json:"url,omitempty"`
+	Channel              NullableString `json:"channel,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _VerifySlackCredentialsCommand VerifySlackCredentialsCommand
 
 // NewVerifySlackCredentialsCommand instantiates a new VerifySlackCredentialsCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *VerifySlackCredentialsCommand) HasName() bool {
 func (o *VerifySlackCredentialsCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *VerifySlackCredentialsCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -116,6 +120,7 @@ func (o *VerifySlackCredentialsCommand) HasUrl() bool {
 func (o *VerifySlackCredentialsCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *VerifySlackCredentialsCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -158,6 +163,7 @@ func (o *VerifySlackCredentialsCommand) HasChannel() bool {
 func (o *VerifySlackCredentialsCommand) SetChannel(v string) {
 	o.Channel.Set(&v)
 }
+
 // SetChannelNil sets the value for Channel to be an explicit nil
 func (o *VerifySlackCredentialsCommand) SetChannelNil() {
 	o.Channel.Set(nil)
@@ -169,7 +175,7 @@ func (o *VerifySlackCredentialsCommand) UnsetChannel() {
 }
 
 func (o VerifySlackCredentialsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -187,7 +193,35 @@ func (o VerifySlackCredentialsCommand) ToMap() (map[string]interface{}, error) {
 	if o.Channel.IsSet() {
 		toSerialize["channel"] = o.Channel.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *VerifySlackCredentialsCommand) UnmarshalJSON(data []byte) (err error) {
+	varVerifySlackCredentialsCommand := _VerifySlackCredentialsCommand{}
+
+	err = json.Unmarshal(data, &varVerifySlackCredentialsCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VerifySlackCredentialsCommand(varVerifySlackCredentialsCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "channel")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableVerifySlackCredentialsCommand struct {
@@ -225,5 +259,3 @@ func (v *NullableVerifySlackCredentialsCommand) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

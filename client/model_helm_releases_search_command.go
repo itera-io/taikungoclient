@@ -20,11 +20,14 @@ var _ MappedNullable = &HelmReleasesSearchCommand{}
 
 // HelmReleasesSearchCommand struct for HelmReleasesSearchCommand
 type HelmReleasesSearchCommand struct {
-	Limit NullableInt32 `json:"limit,omitempty"`
-	Offset NullableInt32 `json:"offset,omitempty"`
-	SearchTerm NullableString `json:"searchTerm,omitempty"`
-	IncludePublicImportedClusters NullableBool `json:"includePublicImportedClusters,omitempty"`
+	Limit                         NullableInt32  `json:"limit,omitempty"`
+	Offset                        NullableInt32  `json:"offset,omitempty"`
+	SearchTerm                    NullableString `json:"searchTerm,omitempty"`
+	IncludePublicImportedClusters NullableBool   `json:"includePublicImportedClusters,omitempty"`
+	AdditionalProperties          map[string]interface{}
 }
+
+type _HelmReleasesSearchCommand HelmReleasesSearchCommand
 
 // NewHelmReleasesSearchCommand instantiates a new HelmReleasesSearchCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -75,6 +78,7 @@ func (o *HelmReleasesSearchCommand) HasLimit() bool {
 func (o *HelmReleasesSearchCommand) SetLimit(v int32) {
 	o.Limit.Set(&v)
 }
+
 // SetLimitNil sets the value for Limit to be an explicit nil
 func (o *HelmReleasesSearchCommand) SetLimitNil() {
 	o.Limit.Set(nil)
@@ -117,6 +121,7 @@ func (o *HelmReleasesSearchCommand) HasOffset() bool {
 func (o *HelmReleasesSearchCommand) SetOffset(v int32) {
 	o.Offset.Set(&v)
 }
+
 // SetOffsetNil sets the value for Offset to be an explicit nil
 func (o *HelmReleasesSearchCommand) SetOffsetNil() {
 	o.Offset.Set(nil)
@@ -159,6 +164,7 @@ func (o *HelmReleasesSearchCommand) HasSearchTerm() bool {
 func (o *HelmReleasesSearchCommand) SetSearchTerm(v string) {
 	o.SearchTerm.Set(&v)
 }
+
 // SetSearchTermNil sets the value for SearchTerm to be an explicit nil
 func (o *HelmReleasesSearchCommand) SetSearchTermNil() {
 	o.SearchTerm.Set(nil)
@@ -201,6 +207,7 @@ func (o *HelmReleasesSearchCommand) HasIncludePublicImportedClusters() bool {
 func (o *HelmReleasesSearchCommand) SetIncludePublicImportedClusters(v bool) {
 	o.IncludePublicImportedClusters.Set(&v)
 }
+
 // SetIncludePublicImportedClustersNil sets the value for IncludePublicImportedClusters to be an explicit nil
 func (o *HelmReleasesSearchCommand) SetIncludePublicImportedClustersNil() {
 	o.IncludePublicImportedClusters.Set(nil)
@@ -212,7 +219,7 @@ func (o *HelmReleasesSearchCommand) UnsetIncludePublicImportedClusters() {
 }
 
 func (o HelmReleasesSearchCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,7 +240,36 @@ func (o HelmReleasesSearchCommand) ToMap() (map[string]interface{}, error) {
 	if o.IncludePublicImportedClusters.IsSet() {
 		toSerialize["includePublicImportedClusters"] = o.IncludePublicImportedClusters.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *HelmReleasesSearchCommand) UnmarshalJSON(data []byte) (err error) {
+	varHelmReleasesSearchCommand := _HelmReleasesSearchCommand{}
+
+	err = json.Unmarshal(data, &varHelmReleasesSearchCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HelmReleasesSearchCommand(varHelmReleasesSearchCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "offset")
+		delete(additionalProperties, "searchTerm")
+		delete(additionalProperties, "includePublicImportedClusters")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableHelmReleasesSearchCommand struct {
@@ -271,5 +307,3 @@ func (v *NullableHelmReleasesSearchCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

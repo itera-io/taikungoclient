@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,9 +21,10 @@ var _ MappedNullable = &TrustedRegistriesListDto{}
 
 // TrustedRegistriesListDto struct for TrustedRegistriesListDto
 type TrustedRegistriesListDto struct {
-	Id int32 `json:"id"`
-	Registry NullableString `json:"registry"`
-	AccessProfileName NullableString `json:"accessProfileName"`
+	Id                   int32          `json:"id"`
+	Registry             NullableString `json:"registry"`
+	AccessProfileName    NullableString `json:"accessProfileName"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _TrustedRegistriesListDto TrustedRegistriesListDto
@@ -126,7 +126,7 @@ func (o *TrustedRegistriesListDto) SetAccessProfileName(v string) {
 }
 
 func (o TrustedRegistriesListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -138,6 +138,11 @@ func (o TrustedRegistriesListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["registry"] = o.Registry.Get()
 	toSerialize["accessProfileName"] = o.AccessProfileName.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -156,10 +161,10 @@ func (o *TrustedRegistriesListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -167,15 +172,22 @@ func (o *TrustedRegistriesListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varTrustedRegistriesListDto := _TrustedRegistriesListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTrustedRegistriesListDto)
+	err = json.Unmarshal(data, &varTrustedRegistriesListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TrustedRegistriesListDto(varTrustedRegistriesListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "registry")
+		delete(additionalProperties, "accessProfileName")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -215,5 +227,3 @@ func (v *NullableTrustedRegistriesListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

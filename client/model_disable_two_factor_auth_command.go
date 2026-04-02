@@ -20,9 +20,12 @@ var _ MappedNullable = &DisableTwoFactorAuthCommand{}
 
 // DisableTwoFactorAuthCommand struct for DisableTwoFactorAuthCommand
 type DisableTwoFactorAuthCommand struct {
-	Code NullableString `json:"code,omitempty"`
-	IsRecoveryCode *bool `json:"isRecoveryCode,omitempty"`
+	Code                 NullableString `json:"code,omitempty"`
+	IsRecoveryCode       *bool          `json:"isRecoveryCode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DisableTwoFactorAuthCommand DisableTwoFactorAuthCommand
 
 // NewDisableTwoFactorAuthCommand instantiates a new DisableTwoFactorAuthCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *DisableTwoFactorAuthCommand) HasCode() bool {
 func (o *DisableTwoFactorAuthCommand) SetCode(v string) {
 	o.Code.Set(&v)
 }
+
 // SetCodeNil sets the value for Code to be an explicit nil
 func (o *DisableTwoFactorAuthCommand) SetCodeNil() {
 	o.Code.Set(nil)
@@ -116,7 +120,7 @@ func (o *DisableTwoFactorAuthCommand) SetIsRecoveryCode(v bool) {
 }
 
 func (o DisableTwoFactorAuthCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o DisableTwoFactorAuthCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsRecoveryCode) {
 		toSerialize["isRecoveryCode"] = o.IsRecoveryCode
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DisableTwoFactorAuthCommand) UnmarshalJSON(data []byte) (err error) {
+	varDisableTwoFactorAuthCommand := _DisableTwoFactorAuthCommand{}
+
+	err = json.Unmarshal(data, &varDisableTwoFactorAuthCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DisableTwoFactorAuthCommand(varDisableTwoFactorAuthCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "code")
+		delete(additionalProperties, "isRecoveryCode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDisableTwoFactorAuthCommand struct {
@@ -169,5 +200,3 @@ func (v *NullableDisableTwoFactorAuthCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

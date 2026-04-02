@@ -20,9 +20,12 @@ var _ MappedNullable = &ImageByIdCommand{}
 
 // ImageByIdCommand struct for ImageByIdCommand
 type ImageByIdCommand struct {
-	CloudId *int32 `json:"cloudId,omitempty"`
-	ImageId NullableString `json:"imageId,omitempty"`
+	CloudId              *int32         `json:"cloudId,omitempty"`
+	ImageId              NullableString `json:"imageId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ImageByIdCommand ImageByIdCommand
 
 // NewImageByIdCommand instantiates a new ImageByIdCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,7 @@ func (o *ImageByIdCommand) HasImageId() bool {
 func (o *ImageByIdCommand) SetImageId(v string) {
 	o.ImageId.Set(&v)
 }
+
 // SetImageIdNil sets the value for ImageId to be an explicit nil
 func (o *ImageByIdCommand) SetImageIdNil() {
 	o.ImageId.Set(nil)
@@ -116,7 +120,7 @@ func (o *ImageByIdCommand) UnsetImageId() {
 }
 
 func (o ImageByIdCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o ImageByIdCommand) ToMap() (map[string]interface{}, error) {
 	if o.ImageId.IsSet() {
 		toSerialize["imageId"] = o.ImageId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ImageByIdCommand) UnmarshalJSON(data []byte) (err error) {
+	varImageByIdCommand := _ImageByIdCommand{}
+
+	err = json.Unmarshal(data, &varImageByIdCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ImageByIdCommand(varImageByIdCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cloudId")
+		delete(additionalProperties, "imageId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableImageByIdCommand struct {
@@ -169,5 +200,3 @@ func (v *NullableImageByIdCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

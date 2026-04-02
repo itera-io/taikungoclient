@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,10 +21,11 @@ var _ MappedNullable = &AccountDetailsForUserDto{}
 
 // AccountDetailsForUserDto struct for AccountDetailsForUserDto
 type AccountDetailsForUserDto struct {
-	AccountId int32 `json:"accountId"`
-	Name string `json:"name"`
-	Logo NullableString `json:"logo"`
-	Domain NullableString `json:"domain"`
+	AccountId            int32          `json:"accountId"`
+	Name                 string         `json:"name"`
+	Logo                 NullableString `json:"logo"`
+	Domain               NullableString `json:"domain"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AccountDetailsForUserDto AccountDetailsForUserDto
@@ -152,7 +152,7 @@ func (o *AccountDetailsForUserDto) SetDomain(v string) {
 }
 
 func (o AccountDetailsForUserDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -165,6 +165,11 @@ func (o AccountDetailsForUserDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["logo"] = o.Logo.Get()
 	toSerialize["domain"] = o.Domain.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -184,10 +189,10 @@ func (o *AccountDetailsForUserDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -195,15 +200,23 @@ func (o *AccountDetailsForUserDto) UnmarshalJSON(data []byte) (err error) {
 
 	varAccountDetailsForUserDto := _AccountDetailsForUserDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAccountDetailsForUserDto)
+	err = json.Unmarshal(data, &varAccountDetailsForUserDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AccountDetailsForUserDto(varAccountDetailsForUserDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accountId")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "logo")
+		delete(additionalProperties, "domain")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -243,5 +256,3 @@ func (v *NullableAccountDetailsForUserDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

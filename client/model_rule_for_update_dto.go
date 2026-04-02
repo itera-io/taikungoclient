@@ -20,13 +20,16 @@ var _ MappedNullable = &RuleForUpdateDto{}
 
 // RuleForUpdateDto struct for RuleForUpdateDto
 type RuleForUpdateDto struct {
-	Name NullableString `json:"name,omitempty"`
-	MetricName NullableString `json:"metricName,omitempty"`
-	Type *PrometheusType `json:"type,omitempty"`
-	Price NullableFloat64 `json:"price,omitempty"`
-	Labels []PrometheusLabelListDto `json:"labels,omitempty"`
-	OperationCredentialId NullableInt32 `json:"operationCredentialId,omitempty"`
+	Name                  NullableString           `json:"name,omitempty"`
+	MetricName            NullableString           `json:"metricName,omitempty"`
+	Type                  *PrometheusType          `json:"type,omitempty"`
+	Price                 NullableFloat64          `json:"price,omitempty"`
+	Labels                []PrometheusLabelListDto `json:"labels,omitempty"`
+	OperationCredentialId NullableInt32            `json:"operationCredentialId,omitempty"`
+	AdditionalProperties  map[string]interface{}
 }
+
+type _RuleForUpdateDto RuleForUpdateDto
 
 // NewRuleForUpdateDto instantiates a new RuleForUpdateDto object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +80,7 @@ func (o *RuleForUpdateDto) HasName() bool {
 func (o *RuleForUpdateDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *RuleForUpdateDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -119,6 +123,7 @@ func (o *RuleForUpdateDto) HasMetricName() bool {
 func (o *RuleForUpdateDto) SetMetricName(v string) {
 	o.MetricName.Set(&v)
 }
+
 // SetMetricNameNil sets the value for MetricName to be an explicit nil
 func (o *RuleForUpdateDto) SetMetricNameNil() {
 	o.MetricName.Set(nil)
@@ -193,6 +198,7 @@ func (o *RuleForUpdateDto) HasPrice() bool {
 func (o *RuleForUpdateDto) SetPrice(v float64) {
 	o.Price.Set(&v)
 }
+
 // SetPriceNil sets the value for Price to be an explicit nil
 func (o *RuleForUpdateDto) SetPriceNil() {
 	o.Price.Set(nil)
@@ -268,6 +274,7 @@ func (o *RuleForUpdateDto) HasOperationCredentialId() bool {
 func (o *RuleForUpdateDto) SetOperationCredentialId(v int32) {
 	o.OperationCredentialId.Set(&v)
 }
+
 // SetOperationCredentialIdNil sets the value for OperationCredentialId to be an explicit nil
 func (o *RuleForUpdateDto) SetOperationCredentialIdNil() {
 	o.OperationCredentialId.Set(nil)
@@ -279,7 +286,7 @@ func (o *RuleForUpdateDto) UnsetOperationCredentialId() {
 }
 
 func (o RuleForUpdateDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -306,7 +313,38 @@ func (o RuleForUpdateDto) ToMap() (map[string]interface{}, error) {
 	if o.OperationCredentialId.IsSet() {
 		toSerialize["operationCredentialId"] = o.OperationCredentialId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *RuleForUpdateDto) UnmarshalJSON(data []byte) (err error) {
+	varRuleForUpdateDto := _RuleForUpdateDto{}
+
+	err = json.Unmarshal(data, &varRuleForUpdateDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RuleForUpdateDto(varRuleForUpdateDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "metricName")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "price")
+		delete(additionalProperties, "labels")
+		delete(additionalProperties, "operationCredentialId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableRuleForUpdateDto struct {
@@ -344,5 +382,3 @@ func (v *NullableRuleForUpdateDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

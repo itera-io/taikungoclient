@@ -20,9 +20,12 @@ var _ MappedNullable = &LeaveTaikunDto{}
 
 // LeaveTaikunDto struct for LeaveTaikunDto
 type LeaveTaikunDto struct {
-	PaymentIntentId NullableString `json:"paymentIntentId,omitempty"`
-	PaymentClientSecret NullableString `json:"paymentClientSecret,omitempty"`
+	PaymentIntentId      NullableString `json:"paymentIntentId,omitempty"`
+	PaymentClientSecret  NullableString `json:"paymentClientSecret,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _LeaveTaikunDto LeaveTaikunDto
 
 // NewLeaveTaikunDto instantiates a new LeaveTaikunDto object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *LeaveTaikunDto) HasPaymentIntentId() bool {
 func (o *LeaveTaikunDto) SetPaymentIntentId(v string) {
 	o.PaymentIntentId.Set(&v)
 }
+
 // SetPaymentIntentIdNil sets the value for PaymentIntentId to be an explicit nil
 func (o *LeaveTaikunDto) SetPaymentIntentIdNil() {
 	o.PaymentIntentId.Set(nil)
@@ -115,6 +119,7 @@ func (o *LeaveTaikunDto) HasPaymentClientSecret() bool {
 func (o *LeaveTaikunDto) SetPaymentClientSecret(v string) {
 	o.PaymentClientSecret.Set(&v)
 }
+
 // SetPaymentClientSecretNil sets the value for PaymentClientSecret to be an explicit nil
 func (o *LeaveTaikunDto) SetPaymentClientSecretNil() {
 	o.PaymentClientSecret.Set(nil)
@@ -126,7 +131,7 @@ func (o *LeaveTaikunDto) UnsetPaymentClientSecret() {
 }
 
 func (o LeaveTaikunDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,7 +146,34 @@ func (o LeaveTaikunDto) ToMap() (map[string]interface{}, error) {
 	if o.PaymentClientSecret.IsSet() {
 		toSerialize["paymentClientSecret"] = o.PaymentClientSecret.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *LeaveTaikunDto) UnmarshalJSON(data []byte) (err error) {
+	varLeaveTaikunDto := _LeaveTaikunDto{}
+
+	err = json.Unmarshal(data, &varLeaveTaikunDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LeaveTaikunDto(varLeaveTaikunDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "paymentIntentId")
+		delete(additionalProperties, "paymentClientSecret")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableLeaveTaikunDto struct {
@@ -179,5 +211,3 @@ func (v *NullableLeaveTaikunDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

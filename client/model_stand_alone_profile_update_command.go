@@ -20,9 +20,12 @@ var _ MappedNullable = &StandAloneProfileUpdateCommand{}
 
 // StandAloneProfileUpdateCommand struct for StandAloneProfileUpdateCommand
 type StandAloneProfileUpdateCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _StandAloneProfileUpdateCommand StandAloneProfileUpdateCommand
 
 // NewStandAloneProfileUpdateCommand instantiates a new StandAloneProfileUpdateCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,7 @@ func (o *StandAloneProfileUpdateCommand) HasName() bool {
 func (o *StandAloneProfileUpdateCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *StandAloneProfileUpdateCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -116,7 +120,7 @@ func (o *StandAloneProfileUpdateCommand) UnsetName() {
 }
 
 func (o StandAloneProfileUpdateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o StandAloneProfileUpdateCommand) ToMap() (map[string]interface{}, error) 
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *StandAloneProfileUpdateCommand) UnmarshalJSON(data []byte) (err error) {
+	varStandAloneProfileUpdateCommand := _StandAloneProfileUpdateCommand{}
+
+	err = json.Unmarshal(data, &varStandAloneProfileUpdateCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StandAloneProfileUpdateCommand(varStandAloneProfileUpdateCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableStandAloneProfileUpdateCommand struct {
@@ -169,5 +200,3 @@ func (v *NullableStandAloneProfileUpdateCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

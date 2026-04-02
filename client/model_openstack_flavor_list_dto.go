@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,11 +21,12 @@ var _ MappedNullable = &OpenstackFlavorListDto{}
 
 // OpenstackFlavorListDto struct for OpenstackFlavorListDto
 type OpenstackFlavorListDto struct {
-	Ram float64 `json:"ram"`
-	Cpu int64 `json:"cpu"`
-	Name string `json:"name"`
-	Description NullableString `json:"description"`
-	HasGpuSupport *bool `json:"hasGpuSupport,omitempty"`
+	Ram                  float64        `json:"ram"`
+	Cpu                  int64          `json:"cpu"`
+	Name                 string         `json:"name"`
+	Description          NullableString `json:"description"`
+	HasGpuSupport        *bool          `json:"hasGpuSupport,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OpenstackFlavorListDto OpenstackFlavorListDto
@@ -183,7 +183,7 @@ func (o *OpenstackFlavorListDto) SetHasGpuSupport(v bool) {
 }
 
 func (o OpenstackFlavorListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -199,6 +199,11 @@ func (o OpenstackFlavorListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HasGpuSupport) {
 		toSerialize["hasGpuSupport"] = o.HasGpuSupport
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -218,10 +223,10 @@ func (o *OpenstackFlavorListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -229,15 +234,24 @@ func (o *OpenstackFlavorListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varOpenstackFlavorListDto := _OpenstackFlavorListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOpenstackFlavorListDto)
+	err = json.Unmarshal(data, &varOpenstackFlavorListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OpenstackFlavorListDto(varOpenstackFlavorListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "ram")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "hasGpuSupport")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -277,5 +291,3 @@ func (v *NullableOpenstackFlavorListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

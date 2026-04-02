@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,12 +21,13 @@ var _ MappedNullable = &AccountList{}
 
 // AccountList struct for AccountList
 type AccountList struct {
-	Id int32 `json:"id"`
-	Name NullableString `json:"name"`
-	OrganizationsCount *int64 `json:"organizationsCount,omitempty"`
-	UsersCount *int64 `json:"usersCount,omitempty"`
-	GroupsCount *int64 `json:"groupsCount,omitempty"`
-	ProjectsCount *int64 `json:"projectsCount,omitempty"`
+	Id                   int32          `json:"id"`
+	Name                 NullableString `json:"name"`
+	OrganizationsCount   *int64         `json:"organizationsCount,omitempty"`
+	UsersCount           *int64         `json:"usersCount,omitempty"`
+	GroupsCount          *int64         `json:"groupsCount,omitempty"`
+	ProjectsCount        *int64         `json:"projectsCount,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AccountList AccountList
@@ -230,7 +230,7 @@ func (o *AccountList) SetProjectsCount(v int64) {
 }
 
 func (o AccountList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -253,6 +253,11 @@ func (o AccountList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectsCount) {
 		toSerialize["projectsCount"] = o.ProjectsCount
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -270,10 +275,10 @@ func (o *AccountList) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -281,15 +286,25 @@ func (o *AccountList) UnmarshalJSON(data []byte) (err error) {
 
 	varAccountList := _AccountList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAccountList)
+	err = json.Unmarshal(data, &varAccountList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AccountList(varAccountList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "organizationsCount")
+		delete(additionalProperties, "usersCount")
+		delete(additionalProperties, "groupsCount")
+		delete(additionalProperties, "projectsCount")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -329,5 +344,3 @@ func (v *NullableAccountList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

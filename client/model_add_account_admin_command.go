@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,8 +21,9 @@ var _ MappedNullable = &AddAccountAdminCommand{}
 
 // AddAccountAdminCommand struct for AddAccountAdminCommand
 type AddAccountAdminCommand struct {
-	AccountId NullableInt32 `json:"accountId,omitempty"`
-	UserId NullableString `json:"userId"`
+	AccountId            NullableInt32  `json:"accountId,omitempty"`
+	UserId               NullableString `json:"userId"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AddAccountAdminCommand AddAccountAdminCommand
@@ -78,6 +78,7 @@ func (o *AddAccountAdminCommand) HasAccountId() bool {
 func (o *AddAccountAdminCommand) SetAccountId(v int32) {
 	o.AccountId.Set(&v)
 }
+
 // SetAccountIdNil sets the value for AccountId to be an explicit nil
 func (o *AddAccountAdminCommand) SetAccountIdNil() {
 	o.AccountId.Set(nil)
@@ -115,7 +116,7 @@ func (o *AddAccountAdminCommand) SetUserId(v string) {
 }
 
 func (o AddAccountAdminCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -128,6 +129,11 @@ func (o AddAccountAdminCommand) ToMap() (map[string]interface{}, error) {
 		toSerialize["accountId"] = o.AccountId.Get()
 	}
 	toSerialize["userId"] = o.UserId.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -144,10 +150,10 @@ func (o *AddAccountAdminCommand) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -155,15 +161,21 @@ func (o *AddAccountAdminCommand) UnmarshalJSON(data []byte) (err error) {
 
 	varAddAccountAdminCommand := _AddAccountAdminCommand{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAddAccountAdminCommand)
+	err = json.Unmarshal(data, &varAddAccountAdminCommand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AddAccountAdminCommand(varAddAccountAdminCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accountId")
+		delete(additionalProperties, "userId")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -203,5 +215,3 @@ func (v *NullableAddAccountAdminCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

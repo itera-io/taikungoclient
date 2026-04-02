@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_ServersAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_ServersAPIService(t *testing.T) {
 
 	t.Run("Test ServersAPIService ServersConsole", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.ServersAPI.ServersConsole(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_taikuncore_ServersAPIService(t *testing.T) {
 
 	t.Run("Test ServersAPIService ServersCreate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.ServersAPI.ServersCreate(context.Background()).Execute()
 
@@ -48,7 +48,7 @@ func Test_taikuncore_ServersAPIService(t *testing.T) {
 
 	t.Run("Test ServersAPIService ServersDetails", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId int32
 
@@ -60,9 +60,21 @@ func Test_taikuncore_ServersAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ServersAPIService ServersGetCskClusterConfig", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.ServersAPI.ServersGetCskClusterConfig(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ServersAPIService ServersList", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.ServersAPI.ServersList(context.Background()).Execute()
 
@@ -74,7 +86,7 @@ func Test_taikuncore_ServersAPIService(t *testing.T) {
 
 	t.Run("Test ServersAPIService ServersReboot", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.ServersAPI.ServersReboot(context.Background()).Execute()
 
@@ -83,9 +95,20 @@ func Test_taikuncore_ServersAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ServersAPIService ServersRegisterNode", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		httpRes, err := apiClient.ServersAPI.ServersRegisterNode(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ServersAPIService ServersReset", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.ServersAPI.ServersReset(context.Background()).Execute()
 
@@ -96,7 +119,7 @@ func Test_taikuncore_ServersAPIService(t *testing.T) {
 
 	t.Run("Test ServersAPIService ServersStatus", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var serverId int32
 
@@ -110,7 +133,7 @@ func Test_taikuncore_ServersAPIService(t *testing.T) {
 
 	t.Run("Test ServersAPIService ServersUpdateByProjectId", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId int32
 

@@ -20,11 +20,14 @@ var _ MappedNullable = &Breakdown{}
 
 // Breakdown struct for Breakdown
 type Breakdown struct {
-	Resources []Resource `json:"resources,omitempty"`
-	TotalHourlyCost NullableString `json:"totalHourlyCost,omitempty"`
-	TotalMonthlyCost NullableString `json:"totalMonthlyCost,omitempty"`
+	Resources             []Resource     `json:"resources,omitempty"`
+	TotalHourlyCost       NullableString `json:"totalHourlyCost,omitempty"`
+	TotalMonthlyCost      NullableString `json:"totalMonthlyCost,omitempty"`
 	TotalMonthlyUsageCost NullableString `json:"totalMonthlyUsageCost,omitempty"`
+	AdditionalProperties  map[string]interface{}
 }
+
+type _Breakdown Breakdown
 
 // NewBreakdown instantiates a new Breakdown object
 // This constructor will assign default values to properties that have it defined,
@@ -108,6 +111,7 @@ func (o *Breakdown) HasTotalHourlyCost() bool {
 func (o *Breakdown) SetTotalHourlyCost(v string) {
 	o.TotalHourlyCost.Set(&v)
 }
+
 // SetTotalHourlyCostNil sets the value for TotalHourlyCost to be an explicit nil
 func (o *Breakdown) SetTotalHourlyCostNil() {
 	o.TotalHourlyCost.Set(nil)
@@ -150,6 +154,7 @@ func (o *Breakdown) HasTotalMonthlyCost() bool {
 func (o *Breakdown) SetTotalMonthlyCost(v string) {
 	o.TotalMonthlyCost.Set(&v)
 }
+
 // SetTotalMonthlyCostNil sets the value for TotalMonthlyCost to be an explicit nil
 func (o *Breakdown) SetTotalMonthlyCostNil() {
 	o.TotalMonthlyCost.Set(nil)
@@ -192,6 +197,7 @@ func (o *Breakdown) HasTotalMonthlyUsageCost() bool {
 func (o *Breakdown) SetTotalMonthlyUsageCost(v string) {
 	o.TotalMonthlyUsageCost.Set(&v)
 }
+
 // SetTotalMonthlyUsageCostNil sets the value for TotalMonthlyUsageCost to be an explicit nil
 func (o *Breakdown) SetTotalMonthlyUsageCostNil() {
 	o.TotalMonthlyUsageCost.Set(nil)
@@ -203,7 +209,7 @@ func (o *Breakdown) UnsetTotalMonthlyUsageCost() {
 }
 
 func (o Breakdown) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -224,7 +230,36 @@ func (o Breakdown) ToMap() (map[string]interface{}, error) {
 	if o.TotalMonthlyUsageCost.IsSet() {
 		toSerialize["totalMonthlyUsageCost"] = o.TotalMonthlyUsageCost.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Breakdown) UnmarshalJSON(data []byte) (err error) {
+	varBreakdown := _Breakdown{}
+
+	err = json.Unmarshal(data, &varBreakdown)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Breakdown(varBreakdown)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "resources")
+		delete(additionalProperties, "totalHourlyCost")
+		delete(additionalProperties, "totalMonthlyCost")
+		delete(additionalProperties, "totalMonthlyUsageCost")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableBreakdown struct {
@@ -262,5 +297,3 @@ func (v *NullableBreakdown) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,11 +21,12 @@ var _ MappedNullable = &ResourcePresetDto{}
 
 // ResourcePresetDto struct for ResourcePresetDto
 type ResourcePresetDto struct {
-	Name NullableString `json:"name"`
-	Cpu CpuLimitsDto `json:"cpu"`
-	Ram RamLimitsDto `json:"ram"`
-	EphemeralStorage EphemeralStorageLimitsDto `json:"ephemeralStorage"`
-	WorkloadResources WorkloadResourceLimitsDto `json:"workloadResources"`
+	Name                 NullableString            `json:"name"`
+	Cpu                  CpuLimitsDto              `json:"cpu"`
+	Ram                  RamLimitsDto              `json:"ram"`
+	EphemeralStorage     EphemeralStorageLimitsDto `json:"ephemeralStorage"`
+	WorkloadResources    WorkloadResourceLimitsDto `json:"workloadResources"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ResourcePresetDto ResourcePresetDto
@@ -176,7 +176,7 @@ func (o *ResourcePresetDto) SetWorkloadResources(v WorkloadResourceLimitsDto) {
 }
 
 func (o ResourcePresetDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -190,6 +190,11 @@ func (o ResourcePresetDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["ram"] = o.Ram
 	toSerialize["ephemeralStorage"] = o.EphemeralStorage
 	toSerialize["workloadResources"] = o.WorkloadResources
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -210,10 +215,10 @@ func (o *ResourcePresetDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -221,15 +226,24 @@ func (o *ResourcePresetDto) UnmarshalJSON(data []byte) (err error) {
 
 	varResourcePresetDto := _ResourcePresetDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varResourcePresetDto)
+	err = json.Unmarshal(data, &varResourcePresetDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ResourcePresetDto(varResourcePresetDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "ram")
+		delete(additionalProperties, "ephemeralStorage")
+		delete(additionalProperties, "workloadResources")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -269,5 +283,3 @@ func (v *NullableResourcePresetDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

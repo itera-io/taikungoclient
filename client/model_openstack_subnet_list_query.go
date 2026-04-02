@@ -20,15 +20,18 @@ var _ MappedNullable = &OpenstackSubnetListQuery{}
 
 // OpenstackSubnetListQuery struct for OpenstackSubnetListQuery
 type OpenstackSubnetListQuery struct {
-	OpenStackUser NullableString `json:"openStackUser,omitempty"`
-	OpenStackPassword NullableString `json:"openStackPassword,omitempty"`
-	OpenStackUrl NullableString `json:"openStackUrl,omitempty"`
-	OpenStackProject NullableString `json:"openStackProject,omitempty"`
-	OpenStackProjectId NullableString `json:"openStackProjectId,omitempty"`
-	OpenStackDomain NullableString `json:"openStackDomain,omitempty"`
-	OpenStackRegion NullableString `json:"openStackRegion,omitempty"`
-	ApplicationCredEnabled *bool `json:"applicationCredEnabled,omitempty"`
+	OpenStackUser          NullableString `json:"openStackUser,omitempty"`
+	OpenStackPassword      NullableString `json:"openStackPassword,omitempty"`
+	OpenStackUrl           NullableString `json:"openStackUrl,omitempty"`
+	OpenStackProject       NullableString `json:"openStackProject,omitempty"`
+	OpenStackProjectId     NullableString `json:"openStackProjectId,omitempty"`
+	OpenStackDomain        NullableString `json:"openStackDomain,omitempty"`
+	OpenStackRegion        NullableString `json:"openStackRegion,omitempty"`
+	ApplicationCredEnabled *bool          `json:"applicationCredEnabled,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
+
+type _OpenstackSubnetListQuery OpenstackSubnetListQuery
 
 // NewOpenstackSubnetListQuery instantiates a new OpenstackSubnetListQuery object
 // This constructor will assign default values to properties that have it defined,
@@ -79,6 +82,7 @@ func (o *OpenstackSubnetListQuery) HasOpenStackUser() bool {
 func (o *OpenstackSubnetListQuery) SetOpenStackUser(v string) {
 	o.OpenStackUser.Set(&v)
 }
+
 // SetOpenStackUserNil sets the value for OpenStackUser to be an explicit nil
 func (o *OpenstackSubnetListQuery) SetOpenStackUserNil() {
 	o.OpenStackUser.Set(nil)
@@ -121,6 +125,7 @@ func (o *OpenstackSubnetListQuery) HasOpenStackPassword() bool {
 func (o *OpenstackSubnetListQuery) SetOpenStackPassword(v string) {
 	o.OpenStackPassword.Set(&v)
 }
+
 // SetOpenStackPasswordNil sets the value for OpenStackPassword to be an explicit nil
 func (o *OpenstackSubnetListQuery) SetOpenStackPasswordNil() {
 	o.OpenStackPassword.Set(nil)
@@ -163,6 +168,7 @@ func (o *OpenstackSubnetListQuery) HasOpenStackUrl() bool {
 func (o *OpenstackSubnetListQuery) SetOpenStackUrl(v string) {
 	o.OpenStackUrl.Set(&v)
 }
+
 // SetOpenStackUrlNil sets the value for OpenStackUrl to be an explicit nil
 func (o *OpenstackSubnetListQuery) SetOpenStackUrlNil() {
 	o.OpenStackUrl.Set(nil)
@@ -205,6 +211,7 @@ func (o *OpenstackSubnetListQuery) HasOpenStackProject() bool {
 func (o *OpenstackSubnetListQuery) SetOpenStackProject(v string) {
 	o.OpenStackProject.Set(&v)
 }
+
 // SetOpenStackProjectNil sets the value for OpenStackProject to be an explicit nil
 func (o *OpenstackSubnetListQuery) SetOpenStackProjectNil() {
 	o.OpenStackProject.Set(nil)
@@ -247,6 +254,7 @@ func (o *OpenstackSubnetListQuery) HasOpenStackProjectId() bool {
 func (o *OpenstackSubnetListQuery) SetOpenStackProjectId(v string) {
 	o.OpenStackProjectId.Set(&v)
 }
+
 // SetOpenStackProjectIdNil sets the value for OpenStackProjectId to be an explicit nil
 func (o *OpenstackSubnetListQuery) SetOpenStackProjectIdNil() {
 	o.OpenStackProjectId.Set(nil)
@@ -289,6 +297,7 @@ func (o *OpenstackSubnetListQuery) HasOpenStackDomain() bool {
 func (o *OpenstackSubnetListQuery) SetOpenStackDomain(v string) {
 	o.OpenStackDomain.Set(&v)
 }
+
 // SetOpenStackDomainNil sets the value for OpenStackDomain to be an explicit nil
 func (o *OpenstackSubnetListQuery) SetOpenStackDomainNil() {
 	o.OpenStackDomain.Set(nil)
@@ -331,6 +340,7 @@ func (o *OpenstackSubnetListQuery) HasOpenStackRegion() bool {
 func (o *OpenstackSubnetListQuery) SetOpenStackRegion(v string) {
 	o.OpenStackRegion.Set(&v)
 }
+
 // SetOpenStackRegionNil sets the value for OpenStackRegion to be an explicit nil
 func (o *OpenstackSubnetListQuery) SetOpenStackRegionNil() {
 	o.OpenStackRegion.Set(nil)
@@ -374,7 +384,7 @@ func (o *OpenstackSubnetListQuery) SetApplicationCredEnabled(v bool) {
 }
 
 func (o OpenstackSubnetListQuery) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -407,7 +417,40 @@ func (o OpenstackSubnetListQuery) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ApplicationCredEnabled) {
 		toSerialize["applicationCredEnabled"] = o.ApplicationCredEnabled
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OpenstackSubnetListQuery) UnmarshalJSON(data []byte) (err error) {
+	varOpenstackSubnetListQuery := _OpenstackSubnetListQuery{}
+
+	err = json.Unmarshal(data, &varOpenstackSubnetListQuery)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OpenstackSubnetListQuery(varOpenstackSubnetListQuery)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "openStackUser")
+		delete(additionalProperties, "openStackPassword")
+		delete(additionalProperties, "openStackUrl")
+		delete(additionalProperties, "openStackProject")
+		delete(additionalProperties, "openStackProjectId")
+		delete(additionalProperties, "openStackDomain")
+		delete(additionalProperties, "openStackRegion")
+		delete(additionalProperties, "applicationCredEnabled")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOpenstackSubnetListQuery struct {
@@ -445,5 +488,3 @@ func (v *NullableOpenstackSubnetListQuery) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

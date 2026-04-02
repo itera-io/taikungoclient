@@ -20,13 +20,16 @@ var _ MappedNullable = &StatefulSetListDto{}
 
 // StatefulSetListDto struct for StatefulSetListDto
 type StatefulSetListDto struct {
-	State NullableString `json:"state,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Ready NullableString `json:"ready,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	Images []string `json:"images,omitempty"`
+	State                NullableString `json:"state,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Ready                NullableString `json:"ready,omitempty"`
+	CreatedAt            NullableString `json:"createdAt,omitempty"`
+	Namespace            NullableString `json:"namespace,omitempty"`
+	Images               []string       `json:"images,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _StatefulSetListDto StatefulSetListDto
 
 // NewStatefulSetListDto instantiates a new StatefulSetListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +80,7 @@ func (o *StatefulSetListDto) HasState() bool {
 func (o *StatefulSetListDto) SetState(v string) {
 	o.State.Set(&v)
 }
+
 // SetStateNil sets the value for State to be an explicit nil
 func (o *StatefulSetListDto) SetStateNil() {
 	o.State.Set(nil)
@@ -119,6 +123,7 @@ func (o *StatefulSetListDto) HasName() bool {
 func (o *StatefulSetListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *StatefulSetListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -161,6 +166,7 @@ func (o *StatefulSetListDto) HasReady() bool {
 func (o *StatefulSetListDto) SetReady(v string) {
 	o.Ready.Set(&v)
 }
+
 // SetReadyNil sets the value for Ready to be an explicit nil
 func (o *StatefulSetListDto) SetReadyNil() {
 	o.Ready.Set(nil)
@@ -203,6 +209,7 @@ func (o *StatefulSetListDto) HasCreatedAt() bool {
 func (o *StatefulSetListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
+
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *StatefulSetListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -245,6 +252,7 @@ func (o *StatefulSetListDto) HasNamespace() bool {
 func (o *StatefulSetListDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
+
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *StatefulSetListDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -289,7 +297,7 @@ func (o *StatefulSetListDto) SetImages(v []string) {
 }
 
 func (o StatefulSetListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -316,7 +324,38 @@ func (o StatefulSetListDto) ToMap() (map[string]interface{}, error) {
 	if o.Images != nil {
 		toSerialize["images"] = o.Images
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *StatefulSetListDto) UnmarshalJSON(data []byte) (err error) {
+	varStatefulSetListDto := _StatefulSetListDto{}
+
+	err = json.Unmarshal(data, &varStatefulSetListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StatefulSetListDto(varStatefulSetListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "state")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "ready")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "images")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableStatefulSetListDto struct {
@@ -354,5 +393,3 @@ func (v *NullableStatefulSetListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

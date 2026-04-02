@@ -20,8 +20,11 @@ var _ MappedNullable = &OperationCredentialsMakeDefaultCommand{}
 
 // OperationCredentialsMakeDefaultCommand struct for OperationCredentialsMakeDefaultCommand
 type OperationCredentialsMakeDefaultCommand struct {
-	Id *int32 `json:"id,omitempty"`
+	Id                   *int32 `json:"id,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OperationCredentialsMakeDefaultCommand OperationCredentialsMakeDefaultCommand
 
 // NewOperationCredentialsMakeDefaultCommand instantiates a new OperationCredentialsMakeDefaultCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,7 +76,7 @@ func (o *OperationCredentialsMakeDefaultCommand) SetId(v int32) {
 }
 
 func (o OperationCredentialsMakeDefaultCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -85,7 +88,33 @@ func (o OperationCredentialsMakeDefaultCommand) ToMap() (map[string]interface{},
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OperationCredentialsMakeDefaultCommand) UnmarshalJSON(data []byte) (err error) {
+	varOperationCredentialsMakeDefaultCommand := _OperationCredentialsMakeDefaultCommand{}
+
+	err = json.Unmarshal(data, &varOperationCredentialsMakeDefaultCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OperationCredentialsMakeDefaultCommand(varOperationCredentialsMakeDefaultCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOperationCredentialsMakeDefaultCommand struct {
@@ -123,5 +152,3 @@ func (v *NullableOperationCredentialsMakeDefaultCommand) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

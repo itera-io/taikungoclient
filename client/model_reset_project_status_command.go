@@ -20,9 +20,12 @@ var _ MappedNullable = &ResetProjectStatusCommand{}
 
 // ResetProjectStatusCommand struct for ResetProjectStatusCommand
 type ResetProjectStatusCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	Status *ProjectStatus `json:"status,omitempty"`
+	ProjectId            *int32         `json:"projectId,omitempty"`
+	Status               *ProjectStatus `json:"status,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ResetProjectStatusCommand ResetProjectStatusCommand
 
 // NewResetProjectStatusCommand instantiates a new ResetProjectStatusCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -106,7 +109,7 @@ func (o *ResetProjectStatusCommand) SetStatus(v ProjectStatus) {
 }
 
 func (o ResetProjectStatusCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -121,7 +124,34 @@ func (o ResetProjectStatusCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ResetProjectStatusCommand) UnmarshalJSON(data []byte) (err error) {
+	varResetProjectStatusCommand := _ResetProjectStatusCommand{}
+
+	err = json.Unmarshal(data, &varResetProjectStatusCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ResetProjectStatusCommand(varResetProjectStatusCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "status")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableResetProjectStatusCommand struct {
@@ -159,5 +189,3 @@ func (v *NullableResetProjectStatusCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

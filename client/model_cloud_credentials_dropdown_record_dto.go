@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,10 +21,11 @@ var _ MappedNullable = &CloudCredentialsDropdownRecordDto{}
 
 // CloudCredentialsDropdownRecordDto struct for CloudCredentialsDropdownRecordDto
 type CloudCredentialsDropdownRecordDto struct {
-	Id int32 `json:"id"`
-	Name NullableString `json:"name"`
-	CloudType CloudType `json:"cloudType"`
-	Projects []ProjectWithFlavorsAndImagesDto `json:"projects"`
+	Id                   int32                            `json:"id"`
+	Name                 NullableString                   `json:"name"`
+	CloudType            CloudType                        `json:"cloudType"`
+	Projects             []ProjectWithFlavorsAndImagesDto `json:"projects"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CloudCredentialsDropdownRecordDto CloudCredentialsDropdownRecordDto
@@ -152,7 +152,7 @@ func (o *CloudCredentialsDropdownRecordDto) SetProjects(v []ProjectWithFlavorsAn
 }
 
 func (o CloudCredentialsDropdownRecordDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -167,6 +167,11 @@ func (o CloudCredentialsDropdownRecordDto) ToMap() (map[string]interface{}, erro
 	if o.Projects != nil {
 		toSerialize["projects"] = o.Projects
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -186,10 +191,10 @@ func (o *CloudCredentialsDropdownRecordDto) UnmarshalJSON(data []byte) (err erro
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -197,15 +202,23 @@ func (o *CloudCredentialsDropdownRecordDto) UnmarshalJSON(data []byte) (err erro
 
 	varCloudCredentialsDropdownRecordDto := _CloudCredentialsDropdownRecordDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCloudCredentialsDropdownRecordDto)
+	err = json.Unmarshal(data, &varCloudCredentialsDropdownRecordDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CloudCredentialsDropdownRecordDto(varCloudCredentialsDropdownRecordDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "cloudType")
+		delete(additionalProperties, "projects")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -245,5 +258,3 @@ func (v *NullableCloudCredentialsDropdownRecordDto) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

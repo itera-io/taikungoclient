@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,14 +21,15 @@ var _ MappedNullable = &NotificationListDto{}
 
 // NotificationListDto struct for NotificationListDto
 type NotificationListDto struct {
-	CreatedAt NullableString `json:"createdAt"`
-	ActionMessage string `json:"actionMessage"`
-	ActionStatus ActionStatus `json:"actionStatus"`
-	Username NullableString `json:"username"`
-	Category ActionType `json:"category"`
-	ProjectName NullableString `json:"projectName"`
-	ProjectId NullableInt32 `json:"projectId"`
-	IsDeleted bool `json:"isDeleted"`
+	CreatedAt            NullableString `json:"createdAt"`
+	ActionMessage        string         `json:"actionMessage"`
+	ActionStatus         ActionStatus   `json:"actionStatus"`
+	Username             NullableString `json:"username"`
+	Category             ActionType     `json:"category"`
+	ProjectName          NullableString `json:"projectName"`
+	ProjectId            NullableInt32  `json:"projectId"`
+	IsDeleted            bool           `json:"isDeleted"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _NotificationListDto NotificationListDto
@@ -260,7 +260,7 @@ func (o *NotificationListDto) SetIsDeleted(v bool) {
 }
 
 func (o NotificationListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -277,6 +277,11 @@ func (o NotificationListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["projectName"] = o.ProjectName.Get()
 	toSerialize["projectId"] = o.ProjectId.Get()
 	toSerialize["isDeleted"] = o.IsDeleted
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -300,10 +305,10 @@ func (o *NotificationListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -311,15 +316,27 @@ func (o *NotificationListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varNotificationListDto := _NotificationListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varNotificationListDto)
+	err = json.Unmarshal(data, &varNotificationListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = NotificationListDto(varNotificationListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "actionMessage")
+		delete(additionalProperties, "actionStatus")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "category")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "isDeleted")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -359,5 +376,3 @@ func (v *NullableNotificationListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,15 +20,18 @@ var _ MappedNullable = &UserDetailsDto{}
 
 // UserDetailsDto struct for UserDetailsDto
 type UserDetailsDto struct {
-	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	DisplayName *string `json:"displayName,omitempty"`
-	Email *string `json:"email,omitempty"`
-	Organizations []UserOrganizationDto `json:"organizations,omitempty"`
-	GlobalRole *EGlobalRole `json:"globalRole,omitempty"`
-	CreatedAt *string `json:"createdAt,omitempty"`
-	Is2FAEnabled *bool `json:"is2FAEnabled,omitempty"`
+	Id                   *string               `json:"id,omitempty"`
+	Name                 *string               `json:"name,omitempty"`
+	DisplayName          *string               `json:"displayName,omitempty"`
+	Email                *string               `json:"email,omitempty"`
+	Organizations        []UserOrganizationDto `json:"organizations,omitempty"`
+	GlobalRole           *EGlobalRole          `json:"globalRole,omitempty"`
+	CreatedAt            NullableString        `json:"createdAt,omitempty"`
+	Is2FAEnabled         *bool                 `json:"is2FAEnabled,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UserDetailsDto UserDetailsDto
 
 // NewUserDetailsDto instantiates a new UserDetailsDto object
 // This constructor will assign default values to properties that have it defined,
@@ -239,36 +242,47 @@ func (o *UserDetailsDto) SetGlobalRole(v EGlobalRole) {
 	o.GlobalRole = &v
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserDetailsDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt
+	return *o.CreatedAt.Get()
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserDetailsDto) GetCreatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *UserDetailsDto) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && o.CreatedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
 func (o *UserDetailsDto) SetCreatedAt(v string) {
-	o.CreatedAt = &v
+	o.CreatedAt.Set(&v)
+}
+
+// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
+func (o *UserDetailsDto) SetCreatedAtNil() {
+	o.CreatedAt.Set(nil)
+}
+
+// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
+func (o *UserDetailsDto) UnsetCreatedAt() {
+	o.CreatedAt.Unset()
 }
 
 // GetIs2FAEnabled returns the Is2FAEnabled field value if set, zero value otherwise.
@@ -304,7 +318,7 @@ func (o *UserDetailsDto) SetIs2FAEnabled(v bool) {
 }
 
 func (o UserDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -331,13 +345,46 @@ func (o UserDetailsDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GlobalRole) {
 		toSerialize["globalRole"] = o.GlobalRole
 	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
+	if o.CreatedAt.IsSet() {
+		toSerialize["createdAt"] = o.CreatedAt.Get()
 	}
 	if !IsNil(o.Is2FAEnabled) {
 		toSerialize["is2FAEnabled"] = o.Is2FAEnabled
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UserDetailsDto) UnmarshalJSON(data []byte) (err error) {
+	varUserDetailsDto := _UserDetailsDto{}
+
+	err = json.Unmarshal(data, &varUserDetailsDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserDetailsDto(varUserDetailsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "displayName")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "organizations")
+		delete(additionalProperties, "globalRole")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "is2FAEnabled")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUserDetailsDto struct {
@@ -375,5 +422,3 @@ func (v *NullableUserDetailsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

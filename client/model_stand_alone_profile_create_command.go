@@ -20,11 +20,14 @@ var _ MappedNullable = &StandAloneProfileCreateCommand{}
 
 // StandAloneProfileCreateCommand struct for StandAloneProfileCreateCommand
 type StandAloneProfileCreateCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	PublicKey NullableString `json:"publicKey,omitempty"`
-	SecurityGroups []StandAloneProfileSecurityGroupDto `json:"securityGroups,omitempty"`
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	Name                 NullableString                      `json:"name,omitempty"`
+	PublicKey            NullableString                      `json:"publicKey,omitempty"`
+	SecurityGroups       []StandAloneProfileSecurityGroupDto `json:"securityGroups,omitempty"`
+	OrganizationId       NullableInt32                       `json:"organizationId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _StandAloneProfileCreateCommand StandAloneProfileCreateCommand
 
 // NewStandAloneProfileCreateCommand instantiates a new StandAloneProfileCreateCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -75,6 +78,7 @@ func (o *StandAloneProfileCreateCommand) HasName() bool {
 func (o *StandAloneProfileCreateCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *StandAloneProfileCreateCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -117,6 +121,7 @@ func (o *StandAloneProfileCreateCommand) HasPublicKey() bool {
 func (o *StandAloneProfileCreateCommand) SetPublicKey(v string) {
 	o.PublicKey.Set(&v)
 }
+
 // SetPublicKeyNil sets the value for PublicKey to be an explicit nil
 func (o *StandAloneProfileCreateCommand) SetPublicKeyNil() {
 	o.PublicKey.Set(nil)
@@ -192,6 +197,7 @@ func (o *StandAloneProfileCreateCommand) HasOrganizationId() bool {
 func (o *StandAloneProfileCreateCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
+
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *StandAloneProfileCreateCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -203,7 +209,7 @@ func (o *StandAloneProfileCreateCommand) UnsetOrganizationId() {
 }
 
 func (o StandAloneProfileCreateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -224,7 +230,36 @@ func (o StandAloneProfileCreateCommand) ToMap() (map[string]interface{}, error) 
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *StandAloneProfileCreateCommand) UnmarshalJSON(data []byte) (err error) {
+	varStandAloneProfileCreateCommand := _StandAloneProfileCreateCommand{}
+
+	err = json.Unmarshal(data, &varStandAloneProfileCreateCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StandAloneProfileCreateCommand(varStandAloneProfileCreateCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "publicKey")
+		delete(additionalProperties, "securityGroups")
+		delete(additionalProperties, "organizationId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableStandAloneProfileCreateCommand struct {
@@ -262,5 +297,3 @@ func (v *NullableStandAloneProfileCreateCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

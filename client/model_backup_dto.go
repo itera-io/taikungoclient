@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,8 +21,9 @@ var _ MappedNullable = &BackupDto{}
 
 // BackupDto struct for BackupDto
 type BackupDto struct {
-	IncludedNamespace []string `json:"includedNamespace"`
-	ExcludedNamespace []string `json:"excludedNamespace"`
+	IncludedNamespace    []string `json:"includedNamespace"`
+	ExcludedNamespace    []string `json:"excludedNamespace"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _BackupDto BackupDto
@@ -100,7 +100,7 @@ func (o *BackupDto) SetExcludedNamespace(v []string) {
 }
 
 func (o BackupDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -115,6 +115,11 @@ func (o BackupDto) ToMap() (map[string]interface{}, error) {
 	if o.ExcludedNamespace != nil {
 		toSerialize["excludedNamespace"] = o.ExcludedNamespace
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -132,10 +137,10 @@ func (o *BackupDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -143,15 +148,21 @@ func (o *BackupDto) UnmarshalJSON(data []byte) (err error) {
 
 	varBackupDto := _BackupDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBackupDto)
+	err = json.Unmarshal(data, &varBackupDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = BackupDto(varBackupDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "includedNamespace")
+		delete(additionalProperties, "excludedNamespace")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -191,5 +202,3 @@ func (v *NullableBackupDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

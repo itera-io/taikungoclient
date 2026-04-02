@@ -20,9 +20,12 @@ var _ MappedNullable = &IngressSearchList{}
 
 // IngressSearchList struct for IngressSearchList
 type IngressSearchList struct {
-	Data []CommonSearchKubernetesResponseData `json:"data,omitempty"`
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	Data                 []CommonSearchKubernetesResponseData `json:"data,omitempty"`
+	TotalCount           *int32                               `json:"totalCount,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _IngressSearchList IngressSearchList
 
 // NewIngressSearchList instantiates a new IngressSearchList object
 // This constructor will assign default values to properties that have it defined,
@@ -107,7 +110,7 @@ func (o *IngressSearchList) SetTotalCount(v int32) {
 }
 
 func (o IngressSearchList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -122,7 +125,34 @@ func (o IngressSearchList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *IngressSearchList) UnmarshalJSON(data []byte) (err error) {
+	varIngressSearchList := _IngressSearchList{}
+
+	err = json.Unmarshal(data, &varIngressSearchList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IngressSearchList(varIngressSearchList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableIngressSearchList struct {
@@ -160,5 +190,3 @@ func (v *NullableIngressSearchList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

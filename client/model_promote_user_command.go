@@ -20,8 +20,12 @@ var _ MappedNullable = &PromoteUserCommand{}
 
 // PromoteUserCommand struct for PromoteUserCommand
 type PromoteUserCommand struct {
-	UserId NullableString `json:"userId,omitempty"`
+	UserId               NullableString `json:"userId,omitempty"`
+	IsAdmin              *bool          `json:"isAdmin,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PromoteUserCommand PromoteUserCommand
 
 // NewPromoteUserCommand instantiates a new PromoteUserCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -72,6 +76,7 @@ func (o *PromoteUserCommand) HasUserId() bool {
 func (o *PromoteUserCommand) SetUserId(v string) {
 	o.UserId.Set(&v)
 }
+
 // SetUserIdNil sets the value for UserId to be an explicit nil
 func (o *PromoteUserCommand) SetUserIdNil() {
 	o.UserId.Set(nil)
@@ -82,8 +87,40 @@ func (o *PromoteUserCommand) UnsetUserId() {
 	o.UserId.Unset()
 }
 
+// GetIsAdmin returns the IsAdmin field value if set, zero value otherwise.
+func (o *PromoteUserCommand) GetIsAdmin() bool {
+	if o == nil || IsNil(o.IsAdmin) {
+		var ret bool
+		return ret
+	}
+	return *o.IsAdmin
+}
+
+// GetIsAdminOk returns a tuple with the IsAdmin field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PromoteUserCommand) GetIsAdminOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsAdmin) {
+		return nil, false
+	}
+	return o.IsAdmin, true
+}
+
+// HasIsAdmin returns a boolean if a field has been set.
+func (o *PromoteUserCommand) HasIsAdmin() bool {
+	if o != nil && !IsNil(o.IsAdmin) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsAdmin gets a reference to the given bool and assigns it to the IsAdmin field.
+func (o *PromoteUserCommand) SetIsAdmin(v bool) {
+	o.IsAdmin = &v
+}
+
 func (o PromoteUserCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -95,7 +132,37 @@ func (o PromoteUserCommand) ToMap() (map[string]interface{}, error) {
 	if o.UserId.IsSet() {
 		toSerialize["userId"] = o.UserId.Get()
 	}
+	if !IsNil(o.IsAdmin) {
+		toSerialize["isAdmin"] = o.IsAdmin
+	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PromoteUserCommand) UnmarshalJSON(data []byte) (err error) {
+	varPromoteUserCommand := _PromoteUserCommand{}
+
+	err = json.Unmarshal(data, &varPromoteUserCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PromoteUserCommand(varPromoteUserCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "userId")
+		delete(additionalProperties, "isAdmin")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePromoteUserCommand struct {
@@ -133,5 +200,3 @@ func (v *NullablePromoteUserCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

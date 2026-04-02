@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,14 +21,15 @@ var _ MappedNullable = &ProjectQuotaListDto{}
 
 // ProjectQuotaListDto struct for ProjectQuotaListDto
 type ProjectQuotaListDto struct {
-	ServerCpu int64 `json:"serverCpu"`
-	ServerRam float64 `json:"serverRam"`
-	ServerDiskSize float64 `json:"serverDiskSize"`
-	VmCpu int64 `json:"vmCpu"`
-	VmRam float64 `json:"vmRam"`
-	VmVolumeSize float64 `json:"vmVolumeSize"`
-	ProjectId int32 `json:"projectId"`
-	ProjectName NullableString `json:"projectName"`
+	ServerCpu            int64          `json:"serverCpu"`
+	ServerRam            float64        `json:"serverRam"`
+	ServerDiskSize       float64        `json:"serverDiskSize"`
+	VmCpu                int64          `json:"vmCpu"`
+	VmRam                float64        `json:"vmRam"`
+	VmVolumeSize         float64        `json:"vmVolumeSize"`
+	ProjectId            int32          `json:"projectId"`
+	ProjectName          NullableString `json:"projectName"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProjectQuotaListDto ProjectQuotaListDto
@@ -254,7 +254,7 @@ func (o *ProjectQuotaListDto) SetProjectName(v string) {
 }
 
 func (o ProjectQuotaListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -271,6 +271,11 @@ func (o ProjectQuotaListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["vmVolumeSize"] = o.VmVolumeSize
 	toSerialize["projectId"] = o.ProjectId
 	toSerialize["projectName"] = o.ProjectName.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -294,10 +299,10 @@ func (o *ProjectQuotaListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -305,15 +310,27 @@ func (o *ProjectQuotaListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectQuotaListDto := _ProjectQuotaListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectQuotaListDto)
+	err = json.Unmarshal(data, &varProjectQuotaListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectQuotaListDto(varProjectQuotaListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "serverCpu")
+		delete(additionalProperties, "serverRam")
+		delete(additionalProperties, "serverDiskSize")
+		delete(additionalProperties, "vmCpu")
+		delete(additionalProperties, "vmRam")
+		delete(additionalProperties, "vmVolumeSize")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "projectName")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -353,5 +370,3 @@ func (v *NullableProjectQuotaListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

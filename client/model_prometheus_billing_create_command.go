@@ -21,11 +21,14 @@ var _ MappedNullable = &PrometheusBillingCreateCommand{}
 
 // PrometheusBillingCreateCommand struct for PrometheusBillingCreateCommand
 type PrometheusBillingCreateCommand struct {
-	OrganizationId *int32 `json:"organizationId,omitempty"`
-	PrometheusRuleId *int32 `json:"prometheusRuleId,omitempty"`
-	StartDate *time.Time `json:"startDate,omitempty"`
-	Price *float64 `json:"price,omitempty"`
+	OrganizationId       *int32     `json:"organizationId,omitempty"`
+	PrometheusRuleId     *int32     `json:"prometheusRuleId,omitempty"`
+	StartDate            *time.Time `json:"startDate,omitempty"`
+	Price                *float64   `json:"price,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PrometheusBillingCreateCommand PrometheusBillingCreateCommand
 
 // NewPrometheusBillingCreateCommand instantiates a new PrometheusBillingCreateCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -173,7 +176,7 @@ func (o *PrometheusBillingCreateCommand) SetPrice(v float64) {
 }
 
 func (o PrometheusBillingCreateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,7 +197,36 @@ func (o PrometheusBillingCreateCommand) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Price) {
 		toSerialize["price"] = o.Price
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PrometheusBillingCreateCommand) UnmarshalJSON(data []byte) (err error) {
+	varPrometheusBillingCreateCommand := _PrometheusBillingCreateCommand{}
+
+	err = json.Unmarshal(data, &varPrometheusBillingCreateCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PrometheusBillingCreateCommand(varPrometheusBillingCreateCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "prometheusRuleId")
+		delete(additionalProperties, "startDate")
+		delete(additionalProperties, "price")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePrometheusBillingCreateCommand struct {
@@ -232,5 +264,3 @@ func (v *NullablePrometheusBillingCreateCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,21 +21,22 @@ var _ MappedNullable = &OpenshiftListDto{}
 
 // OpenshiftListDto struct for OpenshiftListDto
 type OpenshiftListDto struct {
-	Id int32 `json:"id"`
-	Name string `json:"name"`
-	BaseDomain string `json:"baseDomain"`
-	StorageClass string `json:"storageClass"`
-	OrganizationId int32 `json:"organizationId"`
-	OrganizationName string `json:"organizationName"`
-	Projects []CommonDropdownDto `json:"projects"`
-	ProjectCount int32 `json:"projectCount"`
-	IsLocked bool `json:"isLocked"`
-	CreatedBy NullableString `json:"createdBy"`
-	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
-	IsDefault bool `json:"isDefault"`
-	CreatedAt NullableString `json:"createdAt"`
-	ContinentName string `json:"continentName"`
+	Id                   int32               `json:"id"`
+	Name                 string              `json:"name"`
+	BaseDomain           string              `json:"baseDomain"`
+	StorageClass         string              `json:"storageClass"`
+	OrganizationId       int32               `json:"organizationId"`
+	OrganizationName     string              `json:"organizationName"`
+	Projects             []CommonDropdownDto `json:"projects"`
+	ProjectCount         int32               `json:"projectCount"`
+	IsLocked             bool                `json:"isLocked"`
+	CreatedBy            NullableString      `json:"createdBy"`
+	LastModified         NullableString      `json:"lastModified"`
+	LastModifiedBy       NullableString      `json:"lastModifiedBy"`
+	IsDefault            bool                `json:"isDefault"`
+	CreatedAt            NullableString      `json:"createdAt"`
+	ContinentName        string              `json:"continentName"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OpenshiftListDto OpenshiftListDto
@@ -442,7 +442,7 @@ func (o *OpenshiftListDto) SetContinentName(v string) {
 }
 
 func (o OpenshiftListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -466,6 +466,11 @@ func (o OpenshiftListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["isDefault"] = o.IsDefault
 	toSerialize["createdAt"] = o.CreatedAt.Get()
 	toSerialize["continentName"] = o.ContinentName
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -496,10 +501,10 @@ func (o *OpenshiftListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -507,15 +512,34 @@ func (o *OpenshiftListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varOpenshiftListDto := _OpenshiftListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOpenshiftListDto)
+	err = json.Unmarshal(data, &varOpenshiftListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OpenshiftListDto(varOpenshiftListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "baseDomain")
+		delete(additionalProperties, "storageClass")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "projectCount")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "continentName")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -555,5 +579,3 @@ func (v *NullableOpenshiftListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

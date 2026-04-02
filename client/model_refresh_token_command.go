@@ -20,9 +20,12 @@ var _ MappedNullable = &RefreshTokenCommand{}
 
 // RefreshTokenCommand struct for RefreshTokenCommand
 type RefreshTokenCommand struct {
-	Token NullableString `json:"token,omitempty"`
-	RefreshToken NullableString `json:"refreshToken,omitempty"`
+	Token                NullableString `json:"token,omitempty"`
+	RefreshToken         NullableString `json:"refreshToken,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _RefreshTokenCommand RefreshTokenCommand
 
 // NewRefreshTokenCommand instantiates a new RefreshTokenCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *RefreshTokenCommand) HasToken() bool {
 func (o *RefreshTokenCommand) SetToken(v string) {
 	o.Token.Set(&v)
 }
+
 // SetTokenNil sets the value for Token to be an explicit nil
 func (o *RefreshTokenCommand) SetTokenNil() {
 	o.Token.Set(nil)
@@ -115,6 +119,7 @@ func (o *RefreshTokenCommand) HasRefreshToken() bool {
 func (o *RefreshTokenCommand) SetRefreshToken(v string) {
 	o.RefreshToken.Set(&v)
 }
+
 // SetRefreshTokenNil sets the value for RefreshToken to be an explicit nil
 func (o *RefreshTokenCommand) SetRefreshTokenNil() {
 	o.RefreshToken.Set(nil)
@@ -126,7 +131,7 @@ func (o *RefreshTokenCommand) UnsetRefreshToken() {
 }
 
 func (o RefreshTokenCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,7 +146,34 @@ func (o RefreshTokenCommand) ToMap() (map[string]interface{}, error) {
 	if o.RefreshToken.IsSet() {
 		toSerialize["refreshToken"] = o.RefreshToken.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *RefreshTokenCommand) UnmarshalJSON(data []byte) (err error) {
+	varRefreshTokenCommand := _RefreshTokenCommand{}
+
+	err = json.Unmarshal(data, &varRefreshTokenCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RefreshTokenCommand(varRefreshTokenCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "refreshToken")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableRefreshTokenCommand struct {
@@ -179,5 +211,3 @@ func (v *NullableRefreshTokenCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

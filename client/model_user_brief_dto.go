@@ -20,11 +20,14 @@ var _ MappedNullable = &UserBriefDto{}
 
 // UserBriefDto struct for UserBriefDto
 type UserBriefDto struct {
-	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	DisplayName *string `json:"displayName,omitempty"`
-	Timestamp *int64 `json:"timestamp,omitempty"`
+	Id                   *string `json:"id,omitempty"`
+	Name                 *string `json:"name,omitempty"`
+	DisplayName          *string `json:"displayName,omitempty"`
+	Timestamp            *int64  `json:"timestamp,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UserBriefDto UserBriefDto
 
 // NewUserBriefDto instantiates a new UserBriefDto object
 // This constructor will assign default values to properties that have it defined,
@@ -172,7 +175,7 @@ func (o *UserBriefDto) SetTimestamp(v int64) {
 }
 
 func (o UserBriefDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -193,7 +196,36 @@ func (o UserBriefDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Timestamp) {
 		toSerialize["timestamp"] = o.Timestamp
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UserBriefDto) UnmarshalJSON(data []byte) (err error) {
+	varUserBriefDto := _UserBriefDto{}
+
+	err = json.Unmarshal(data, &varUserBriefDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserBriefDto(varUserBriefDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "displayName")
+		delete(additionalProperties, "timestamp")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUserBriefDto struct {
@@ -231,5 +263,3 @@ func (v *NullableUserBriefDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

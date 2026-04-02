@@ -20,8 +20,13 @@ var _ MappedNullable = &OrganizationNameCheckerCommand{}
 
 // OrganizationNameCheckerCommand struct for OrganizationNameCheckerCommand
 type OrganizationNameCheckerCommand struct {
-	Name NullableString `json:"name,omitempty"`
+	AccountId            NullableInt32  `json:"accountId,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	FullName             NullableString `json:"fullName,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OrganizationNameCheckerCommand OrganizationNameCheckerCommand
 
 // NewOrganizationNameCheckerCommand instantiates a new OrganizationNameCheckerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -38,6 +43,49 @@ func NewOrganizationNameCheckerCommand() *OrganizationNameCheckerCommand {
 func NewOrganizationNameCheckerCommandWithDefaults() *OrganizationNameCheckerCommand {
 	this := OrganizationNameCheckerCommand{}
 	return &this
+}
+
+// GetAccountId returns the AccountId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OrganizationNameCheckerCommand) GetAccountId() int32 {
+	if o == nil || IsNil(o.AccountId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.AccountId.Get()
+}
+
+// GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrganizationNameCheckerCommand) GetAccountIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AccountId.Get(), o.AccountId.IsSet()
+}
+
+// HasAccountId returns a boolean if a field has been set.
+func (o *OrganizationNameCheckerCommand) HasAccountId() bool {
+	if o != nil && o.AccountId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountId gets a reference to the given NullableInt32 and assigns it to the AccountId field.
+func (o *OrganizationNameCheckerCommand) SetAccountId(v int32) {
+	o.AccountId.Set(&v)
+}
+
+// SetAccountIdNil sets the value for AccountId to be an explicit nil
+func (o *OrganizationNameCheckerCommand) SetAccountIdNil() {
+	o.AccountId.Set(nil)
+}
+
+// UnsetAccountId ensures that no value is present for AccountId, not even an explicit nil
+func (o *OrganizationNameCheckerCommand) UnsetAccountId() {
+	o.AccountId.Unset()
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -72,6 +120,7 @@ func (o *OrganizationNameCheckerCommand) HasName() bool {
 func (o *OrganizationNameCheckerCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *OrganizationNameCheckerCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -82,8 +131,51 @@ func (o *OrganizationNameCheckerCommand) UnsetName() {
 	o.Name.Unset()
 }
 
+// GetFullName returns the FullName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OrganizationNameCheckerCommand) GetFullName() string {
+	if o == nil || IsNil(o.FullName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.FullName.Get()
+}
+
+// GetFullNameOk returns a tuple with the FullName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrganizationNameCheckerCommand) GetFullNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FullName.Get(), o.FullName.IsSet()
+}
+
+// HasFullName returns a boolean if a field has been set.
+func (o *OrganizationNameCheckerCommand) HasFullName() bool {
+	if o != nil && o.FullName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFullName gets a reference to the given NullableString and assigns it to the FullName field.
+func (o *OrganizationNameCheckerCommand) SetFullName(v string) {
+	o.FullName.Set(&v)
+}
+
+// SetFullNameNil sets the value for FullName to be an explicit nil
+func (o *OrganizationNameCheckerCommand) SetFullNameNil() {
+	o.FullName.Set(nil)
+}
+
+// UnsetFullName ensures that no value is present for FullName, not even an explicit nil
+func (o *OrganizationNameCheckerCommand) UnsetFullName() {
+	o.FullName.Unset()
+}
+
 func (o OrganizationNameCheckerCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -92,10 +184,44 @@ func (o OrganizationNameCheckerCommand) MarshalJSON() ([]byte, error) {
 
 func (o OrganizationNameCheckerCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AccountId.IsSet() {
+		toSerialize["accountId"] = o.AccountId.Get()
+	}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+	if o.FullName.IsSet() {
+		toSerialize["fullName"] = o.FullName.Get()
+	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OrganizationNameCheckerCommand) UnmarshalJSON(data []byte) (err error) {
+	varOrganizationNameCheckerCommand := _OrganizationNameCheckerCommand{}
+
+	err = json.Unmarshal(data, &varOrganizationNameCheckerCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationNameCheckerCommand(varOrganizationNameCheckerCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accountId")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "fullName")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOrganizationNameCheckerCommand struct {
@@ -133,5 +259,3 @@ func (v *NullableOrganizationNameCheckerCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

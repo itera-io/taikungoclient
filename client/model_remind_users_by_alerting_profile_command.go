@@ -20,8 +20,11 @@ var _ MappedNullable = &RemindUsersByAlertingProfileCommand{}
 
 // RemindUsersByAlertingProfileCommand struct for RemindUsersByAlertingProfileCommand
 type RemindUsersByAlertingProfileCommand struct {
-	Reminder *AlertingReminder `json:"reminder,omitempty"`
+	Reminder             *AlertingReminder `json:"reminder,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _RemindUsersByAlertingProfileCommand RemindUsersByAlertingProfileCommand
 
 // NewRemindUsersByAlertingProfileCommand instantiates a new RemindUsersByAlertingProfileCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,7 +76,7 @@ func (o *RemindUsersByAlertingProfileCommand) SetReminder(v AlertingReminder) {
 }
 
 func (o RemindUsersByAlertingProfileCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -85,7 +88,33 @@ func (o RemindUsersByAlertingProfileCommand) ToMap() (map[string]interface{}, er
 	if !IsNil(o.Reminder) {
 		toSerialize["reminder"] = o.Reminder
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *RemindUsersByAlertingProfileCommand) UnmarshalJSON(data []byte) (err error) {
+	varRemindUsersByAlertingProfileCommand := _RemindUsersByAlertingProfileCommand{}
+
+	err = json.Unmarshal(data, &varRemindUsersByAlertingProfileCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RemindUsersByAlertingProfileCommand(varRemindUsersByAlertingProfileCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "reminder")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableRemindUsersByAlertingProfileCommand struct {
@@ -123,5 +152,3 @@ func (v *NullableRemindUsersByAlertingProfileCommand) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

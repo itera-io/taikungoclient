@@ -20,8 +20,11 @@ var _ MappedNullable = &CheckTrustedRegistryCommand{}
 
 // CheckTrustedRegistryCommand struct for CheckTrustedRegistryCommand
 type CheckTrustedRegistryCommand struct {
-	Registry NullableString `json:"registry,omitempty"`
+	Registry             NullableString `json:"registry,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CheckTrustedRegistryCommand CheckTrustedRegistryCommand
 
 // NewCheckTrustedRegistryCommand instantiates a new CheckTrustedRegistryCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -72,6 +75,7 @@ func (o *CheckTrustedRegistryCommand) HasRegistry() bool {
 func (o *CheckTrustedRegistryCommand) SetRegistry(v string) {
 	o.Registry.Set(&v)
 }
+
 // SetRegistryNil sets the value for Registry to be an explicit nil
 func (o *CheckTrustedRegistryCommand) SetRegistryNil() {
 	o.Registry.Set(nil)
@@ -83,7 +87,7 @@ func (o *CheckTrustedRegistryCommand) UnsetRegistry() {
 }
 
 func (o CheckTrustedRegistryCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -95,7 +99,33 @@ func (o CheckTrustedRegistryCommand) ToMap() (map[string]interface{}, error) {
 	if o.Registry.IsSet() {
 		toSerialize["registry"] = o.Registry.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CheckTrustedRegistryCommand) UnmarshalJSON(data []byte) (err error) {
+	varCheckTrustedRegistryCommand := _CheckTrustedRegistryCommand{}
+
+	err = json.Unmarshal(data, &varCheckTrustedRegistryCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CheckTrustedRegistryCommand(varCheckTrustedRegistryCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "registry")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCheckTrustedRegistryCommand struct {
@@ -133,5 +163,3 @@ func (v *NullableCheckTrustedRegistryCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

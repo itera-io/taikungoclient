@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,29 +21,30 @@ var _ MappedNullable = &StandaloneVmListDto{}
 
 // StandaloneVmListDto struct for StandaloneVmListDto
 type StandaloneVmListDto struct {
-	Id int32 `json:"id"`
-	Name string `json:"name"`
-	FlavorId string `json:"flavorId"`
-	VolumeSize int64 `json:"volumeSize"`
-	OrganizationName string `json:"organizationName"`
-	OrganizationId int32 `json:"organizationId"`
-	Ram int64 `json:"ram"`
-	Cpu int32 `json:"cpu"`
-	VolumeType NullableString `json:"volumeType"`
-	PublicIpEnabled bool `json:"publicIpEnabled"`
-	PublicIp NullableString `json:"publicIp"`
-	IpAddress NullableString `json:"ipAddress"`
-	CloudType CloudType `json:"cloudType"`
-	ImageName NullableString `json:"imageName"`
-	Revision int32 `json:"revision"`
-	IsWindows bool `json:"isWindows"`
-	Status StandAloneVmStatus `json:"status"`
-	ProjectName string `json:"projectName"`
-	ProjectId int32 `json:"projectId"`
-	StandAloneProfile StandaloneProfileListDto `json:"standAloneProfile"`
-	CreatedAt NullableString `json:"createdAt"`
-	CreatedBy NullableString `json:"createdBy"`
-	LastModified NullableString `json:"lastModified"`
+	Id                   int32                    `json:"id"`
+	Name                 string                   `json:"name"`
+	FlavorId             string                   `json:"flavorId"`
+	VolumeSize           int64                    `json:"volumeSize"`
+	OrganizationName     string                   `json:"organizationName"`
+	OrganizationId       int32                    `json:"organizationId"`
+	Ram                  int64                    `json:"ram"`
+	Cpu                  int32                    `json:"cpu"`
+	VolumeType           NullableString           `json:"volumeType"`
+	PublicIpEnabled      bool                     `json:"publicIpEnabled"`
+	PublicIp             NullableString           `json:"publicIp"`
+	IpAddress            NullableString           `json:"ipAddress"`
+	CloudType            CloudType                `json:"cloudType"`
+	ImageName            NullableString           `json:"imageName"`
+	Revision             int32                    `json:"revision"`
+	IsWindows            bool                     `json:"isWindows"`
+	Status               StandAloneVmStatus       `json:"status"`
+	ProjectName          string                   `json:"projectName"`
+	ProjectId            int32                    `json:"projectId"`
+	StandAloneProfile    StandaloneProfileListDto `json:"standAloneProfile"`
+	CreatedAt            NullableString           `json:"createdAt"`
+	CreatedBy            NullableString           `json:"createdBy"`
+	LastModified         NullableString           `json:"lastModified"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StandaloneVmListDto StandaloneVmListDto
@@ -656,7 +656,7 @@ func (o *StandaloneVmListDto) SetLastModified(v string) {
 }
 
 func (o StandaloneVmListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -688,6 +688,11 @@ func (o StandaloneVmListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["createdAt"] = o.CreatedAt.Get()
 	toSerialize["createdBy"] = o.CreatedBy.Get()
 	toSerialize["lastModified"] = o.LastModified.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -726,10 +731,10 @@ func (o *StandaloneVmListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -737,15 +742,42 @@ func (o *StandaloneVmListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varStandaloneVmListDto := _StandaloneVmListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStandaloneVmListDto)
+	err = json.Unmarshal(data, &varStandaloneVmListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StandaloneVmListDto(varStandaloneVmListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "flavorId")
+		delete(additionalProperties, "volumeSize")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "ram")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "volumeType")
+		delete(additionalProperties, "publicIpEnabled")
+		delete(additionalProperties, "publicIp")
+		delete(additionalProperties, "ipAddress")
+		delete(additionalProperties, "cloudType")
+		delete(additionalProperties, "imageName")
+		delete(additionalProperties, "revision")
+		delete(additionalProperties, "isWindows")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "standAloneProfile")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -785,5 +817,3 @@ func (v *NullableStandaloneVmListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

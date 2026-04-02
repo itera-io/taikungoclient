@@ -20,15 +20,18 @@ var _ MappedNullable = &ProjectChartDto{}
 
 // ProjectChartDto struct for ProjectChartDto
 type ProjectChartDto struct {
-	Succeeded []ProjectCommonRecordDto `json:"succeeded,omitempty"`
-	Updating []ProjectCommonRecordDto `json:"updating,omitempty"`
-	TotalCount *int32 `json:"totalCount,omitempty"`
-	Failed []ProjectCommonRecordDto `json:"failed,omitempty"`
-	Purging []ProjectCommonRecordDto `json:"purging,omitempty"`
-	Deleting []ProjectCommonRecordDto `json:"deleting,omitempty"`
-	Importing []ProjectCommonRecordDto `json:"importing,omitempty"`
-	FailedToImport []ProjectCommonRecordDto `json:"failedToImport,omitempty"`
+	Succeeded            []ProjectCommonRecordDto `json:"succeeded,omitempty"`
+	Updating             []ProjectCommonRecordDto `json:"updating,omitempty"`
+	TotalCount           *int32                   `json:"totalCount,omitempty"`
+	Failed               []ProjectCommonRecordDto `json:"failed,omitempty"`
+	Purging              []ProjectCommonRecordDto `json:"purging,omitempty"`
+	Deleting             []ProjectCommonRecordDto `json:"deleting,omitempty"`
+	Importing            []ProjectCommonRecordDto `json:"importing,omitempty"`
+	FailedToImport       []ProjectCommonRecordDto `json:"failedToImport,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectChartDto ProjectChartDto
 
 // NewProjectChartDto instantiates a new ProjectChartDto object
 // This constructor will assign default values to properties that have it defined,
@@ -311,7 +314,7 @@ func (o *ProjectChartDto) SetFailedToImport(v []ProjectCommonRecordDto) {
 }
 
 func (o ProjectChartDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -344,7 +347,40 @@ func (o ProjectChartDto) ToMap() (map[string]interface{}, error) {
 	if o.FailedToImport != nil {
 		toSerialize["failedToImport"] = o.FailedToImport
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectChartDto) UnmarshalJSON(data []byte) (err error) {
+	varProjectChartDto := _ProjectChartDto{}
+
+	err = json.Unmarshal(data, &varProjectChartDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectChartDto(varProjectChartDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "succeeded")
+		delete(additionalProperties, "updating")
+		delete(additionalProperties, "totalCount")
+		delete(additionalProperties, "failed")
+		delete(additionalProperties, "purging")
+		delete(additionalProperties, "deleting")
+		delete(additionalProperties, "importing")
+		delete(additionalProperties, "failedToImport")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectChartDto struct {
@@ -382,5 +418,3 @@ func (v *NullableProjectChartDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

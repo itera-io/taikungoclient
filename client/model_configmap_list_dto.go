@@ -20,10 +20,13 @@ var _ MappedNullable = &ConfigmapListDto{}
 
 // ConfigmapListDto struct for ConfigmapListDto
 type ConfigmapListDto struct {
-	Name NullableString `json:"name,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Namespace            NullableString `json:"namespace,omitempty"`
+	CreatedAt            NullableString `json:"createdAt,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ConfigmapListDto ConfigmapListDto
 
 // NewConfigmapListDto instantiates a new ConfigmapListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *ConfigmapListDto) HasName() bool {
 func (o *ConfigmapListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ConfigmapListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -116,6 +120,7 @@ func (o *ConfigmapListDto) HasNamespace() bool {
 func (o *ConfigmapListDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
+
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *ConfigmapListDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -158,6 +163,7 @@ func (o *ConfigmapListDto) HasCreatedAt() bool {
 func (o *ConfigmapListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
+
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *ConfigmapListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -169,7 +175,7 @@ func (o *ConfigmapListDto) UnsetCreatedAt() {
 }
 
 func (o ConfigmapListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -187,7 +193,35 @@ func (o ConfigmapListDto) ToMap() (map[string]interface{}, error) {
 	if o.CreatedAt.IsSet() {
 		toSerialize["createdAt"] = o.CreatedAt.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ConfigmapListDto) UnmarshalJSON(data []byte) (err error) {
+	varConfigmapListDto := _ConfigmapListDto{}
+
+	err = json.Unmarshal(data, &varConfigmapListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConfigmapListDto(varConfigmapListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "createdAt")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableConfigmapListDto struct {
@@ -225,5 +259,3 @@ func (v *NullableConfigmapListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,11 +20,14 @@ var _ MappedNullable = &CatalogDropdownDto{}
 
 // CatalogDropdownDto struct for CatalogDropdownDto
 type CatalogDropdownDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	PackageIds []string `json:"packageIds,omitempty"`
-	IsDefault *bool `json:"isDefault,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	PackageIds           []string       `json:"packageIds,omitempty"`
+	IsDefault            *bool          `json:"isDefault,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CatalogDropdownDto CatalogDropdownDto
 
 // NewCatalogDropdownDto instantiates a new CatalogDropdownDto object
 // This constructor will assign default values to properties that have it defined,
@@ -107,6 +110,7 @@ func (o *CatalogDropdownDto) HasName() bool {
 func (o *CatalogDropdownDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CatalogDropdownDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -183,7 +187,7 @@ func (o *CatalogDropdownDto) SetIsDefault(v bool) {
 }
 
 func (o CatalogDropdownDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -204,7 +208,36 @@ func (o CatalogDropdownDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsDefault) {
 		toSerialize["isDefault"] = o.IsDefault
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CatalogDropdownDto) UnmarshalJSON(data []byte) (err error) {
+	varCatalogDropdownDto := _CatalogDropdownDto{}
+
+	err = json.Unmarshal(data, &varCatalogDropdownDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CatalogDropdownDto(varCatalogDropdownDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "packageIds")
+		delete(additionalProperties, "isDefault")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCatalogDropdownDto struct {
@@ -242,5 +275,3 @@ func (v *NullableCatalogDropdownDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

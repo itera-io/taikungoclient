@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,9 +21,10 @@ var _ MappedNullable = &CreateGroupOrganizationDto{}
 
 // CreateGroupOrganizationDto struct for CreateGroupOrganizationDto
 type CreateGroupOrganizationDto struct {
-	Id int32 `json:"id"`
-	Role AccessLevelRoles `json:"role"`
-	Projects []int32 `json:"projects,omitempty"`
+	Id                   int32            `json:"id"`
+	Role                 AccessLevelRoles `json:"role"`
+	Projects             []int32          `json:"projects,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CreateGroupOrganizationDto CreateGroupOrganizationDto
@@ -130,7 +130,7 @@ func (o *CreateGroupOrganizationDto) SetProjects(v []int32) {
 }
 
 func (o CreateGroupOrganizationDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -144,6 +144,11 @@ func (o CreateGroupOrganizationDto) ToMap() (map[string]interface{}, error) {
 	if o.Projects != nil {
 		toSerialize["projects"] = o.Projects
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -161,10 +166,10 @@ func (o *CreateGroupOrganizationDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -172,15 +177,22 @@ func (o *CreateGroupOrganizationDto) UnmarshalJSON(data []byte) (err error) {
 
 	varCreateGroupOrganizationDto := _CreateGroupOrganizationDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCreateGroupOrganizationDto)
+	err = json.Unmarshal(data, &varCreateGroupOrganizationDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CreateGroupOrganizationDto(varCreateGroupOrganizationDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "role")
+		delete(additionalProperties, "projects")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -220,5 +232,3 @@ func (v *NullableCreateGroupOrganizationDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

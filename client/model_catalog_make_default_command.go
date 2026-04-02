@@ -20,8 +20,11 @@ var _ MappedNullable = &CatalogMakeDefaultCommand{}
 
 // CatalogMakeDefaultCommand struct for CatalogMakeDefaultCommand
 type CatalogMakeDefaultCommand struct {
-	Id *int32 `json:"id,omitempty"`
+	Id                   *int32 `json:"id,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CatalogMakeDefaultCommand CatalogMakeDefaultCommand
 
 // NewCatalogMakeDefaultCommand instantiates a new CatalogMakeDefaultCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,7 +76,7 @@ func (o *CatalogMakeDefaultCommand) SetId(v int32) {
 }
 
 func (o CatalogMakeDefaultCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -85,7 +88,33 @@ func (o CatalogMakeDefaultCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CatalogMakeDefaultCommand) UnmarshalJSON(data []byte) (err error) {
+	varCatalogMakeDefaultCommand := _CatalogMakeDefaultCommand{}
+
+	err = json.Unmarshal(data, &varCatalogMakeDefaultCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CatalogMakeDefaultCommand(varCatalogMakeDefaultCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCatalogMakeDefaultCommand struct {
@@ -123,5 +152,3 @@ func (v *NullableCatalogMakeDefaultCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

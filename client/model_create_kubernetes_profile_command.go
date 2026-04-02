@@ -20,17 +20,20 @@ var _ MappedNullable = &CreateKubernetesProfileCommand{}
 
 // CreateKubernetesProfileCommand struct for CreateKubernetesProfileCommand
 type CreateKubernetesProfileCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	OctaviaEnabled *bool `json:"octaviaEnabled,omitempty"`
-	ExposeNodePortOnBastion *bool `json:"exposeNodePortOnBastion,omitempty"`
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	TaikunLBEnabled *bool `json:"taikunLBEnabled,omitempty"`
-	AllowSchedulingOnMaster *bool `json:"allowSchedulingOnMaster,omitempty"`
-	UniqueClusterName *bool `json:"uniqueClusterName,omitempty"`
-	ProxmoxStorage *ProxmoxStorage `json:"proxmoxStorage,omitempty"`
-	NvidiaGpuOperatorEnabled *bool `json:"nvidiaGpuOperatorEnabled,omitempty"`
-	WasmEnabled *bool `json:"wasmEnabled,omitempty"`
+	Name                     NullableString  `json:"name,omitempty"`
+	OctaviaEnabled           *bool           `json:"octaviaEnabled,omitempty"`
+	ExposeNodePortOnBastion  *bool           `json:"exposeNodePortOnBastion,omitempty"`
+	OrganizationId           NullableInt32   `json:"organizationId,omitempty"`
+	TaikunLBEnabled          *bool           `json:"taikunLBEnabled,omitempty"`
+	AllowSchedulingOnMaster  *bool           `json:"allowSchedulingOnMaster,omitempty"`
+	UniqueClusterName        *bool           `json:"uniqueClusterName,omitempty"`
+	ProxmoxStorage           *ProxmoxStorage `json:"proxmoxStorage,omitempty"`
+	NvidiaGpuOperatorEnabled *bool           `json:"nvidiaGpuOperatorEnabled,omitempty"`
+	WasmEnabled              *bool           `json:"wasmEnabled,omitempty"`
+	AdditionalProperties     map[string]interface{}
 }
+
+type _CreateKubernetesProfileCommand CreateKubernetesProfileCommand
 
 // NewCreateKubernetesProfileCommand instantiates a new CreateKubernetesProfileCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -81,6 +84,7 @@ func (o *CreateKubernetesProfileCommand) HasName() bool {
 func (o *CreateKubernetesProfileCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateKubernetesProfileCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -187,6 +191,7 @@ func (o *CreateKubernetesProfileCommand) HasOrganizationId() bool {
 func (o *CreateKubernetesProfileCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
+
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateKubernetesProfileCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -390,7 +395,7 @@ func (o *CreateKubernetesProfileCommand) SetWasmEnabled(v bool) {
 }
 
 func (o CreateKubernetesProfileCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -429,7 +434,42 @@ func (o CreateKubernetesProfileCommand) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.WasmEnabled) {
 		toSerialize["wasmEnabled"] = o.WasmEnabled
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateKubernetesProfileCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateKubernetesProfileCommand := _CreateKubernetesProfileCommand{}
+
+	err = json.Unmarshal(data, &varCreateKubernetesProfileCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateKubernetesProfileCommand(varCreateKubernetesProfileCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "octaviaEnabled")
+		delete(additionalProperties, "exposeNodePortOnBastion")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "taikunLBEnabled")
+		delete(additionalProperties, "allowSchedulingOnMaster")
+		delete(additionalProperties, "uniqueClusterName")
+		delete(additionalProperties, "proxmoxStorage")
+		delete(additionalProperties, "nvidiaGpuOperatorEnabled")
+		delete(additionalProperties, "wasmEnabled")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateKubernetesProfileCommand struct {
@@ -467,5 +507,3 @@ func (v *NullableCreateKubernetesProfileCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,10 +20,13 @@ var _ MappedNullable = &ProjectsSearchCommand{}
 
 // ProjectsSearchCommand struct for ProjectsSearchCommand
 type ProjectsSearchCommand struct {
-	Limit NullableInt32 `json:"limit,omitempty"`
-	Offset NullableInt32 `json:"offset,omitempty"`
-	SearchTerm NullableString `json:"searchTerm,omitempty"`
+	Limit                NullableInt32  `json:"limit,omitempty"`
+	Offset               NullableInt32  `json:"offset,omitempty"`
+	SearchTerm           NullableString `json:"searchTerm,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectsSearchCommand ProjectsSearchCommand
 
 // NewProjectsSearchCommand instantiates a new ProjectsSearchCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *ProjectsSearchCommand) HasLimit() bool {
 func (o *ProjectsSearchCommand) SetLimit(v int32) {
 	o.Limit.Set(&v)
 }
+
 // SetLimitNil sets the value for Limit to be an explicit nil
 func (o *ProjectsSearchCommand) SetLimitNil() {
 	o.Limit.Set(nil)
@@ -116,6 +120,7 @@ func (o *ProjectsSearchCommand) HasOffset() bool {
 func (o *ProjectsSearchCommand) SetOffset(v int32) {
 	o.Offset.Set(&v)
 }
+
 // SetOffsetNil sets the value for Offset to be an explicit nil
 func (o *ProjectsSearchCommand) SetOffsetNil() {
 	o.Offset.Set(nil)
@@ -158,6 +163,7 @@ func (o *ProjectsSearchCommand) HasSearchTerm() bool {
 func (o *ProjectsSearchCommand) SetSearchTerm(v string) {
 	o.SearchTerm.Set(&v)
 }
+
 // SetSearchTermNil sets the value for SearchTerm to be an explicit nil
 func (o *ProjectsSearchCommand) SetSearchTermNil() {
 	o.SearchTerm.Set(nil)
@@ -169,7 +175,7 @@ func (o *ProjectsSearchCommand) UnsetSearchTerm() {
 }
 
 func (o ProjectsSearchCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -187,7 +193,35 @@ func (o ProjectsSearchCommand) ToMap() (map[string]interface{}, error) {
 	if o.SearchTerm.IsSet() {
 		toSerialize["searchTerm"] = o.SearchTerm.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectsSearchCommand) UnmarshalJSON(data []byte) (err error) {
+	varProjectsSearchCommand := _ProjectsSearchCommand{}
+
+	err = json.Unmarshal(data, &varProjectsSearchCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectsSearchCommand(varProjectsSearchCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "offset")
+		delete(additionalProperties, "searchTerm")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectsSearchCommand struct {
@@ -225,5 +259,3 @@ func (v *NullableProjectsSearchCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

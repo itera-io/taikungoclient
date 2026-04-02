@@ -20,9 +20,12 @@ var _ MappedNullable = &KubernetesActionResponse{}
 
 // KubernetesActionResponse struct for KubernetesActionResponse
 type KubernetesActionResponse struct {
-	Succeeded []string `json:"succeeded,omitempty"`
-	Failed []string `json:"failed,omitempty"`
+	Succeeded            []string `json:"succeeded,omitempty"`
+	Failed               []string `json:"failed,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _KubernetesActionResponse KubernetesActionResponse
 
 // NewKubernetesActionResponse instantiates a new KubernetesActionResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -108,7 +111,7 @@ func (o *KubernetesActionResponse) SetFailed(v []string) {
 }
 
 func (o KubernetesActionResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -123,7 +126,34 @@ func (o KubernetesActionResponse) ToMap() (map[string]interface{}, error) {
 	if o.Failed != nil {
 		toSerialize["failed"] = o.Failed
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *KubernetesActionResponse) UnmarshalJSON(data []byte) (err error) {
+	varKubernetesActionResponse := _KubernetesActionResponse{}
+
+	err = json.Unmarshal(data, &varKubernetesActionResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubernetesActionResponse(varKubernetesActionResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "succeeded")
+		delete(additionalProperties, "failed")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableKubernetesActionResponse struct {
@@ -161,5 +191,3 @@ func (v *NullableKubernetesActionResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

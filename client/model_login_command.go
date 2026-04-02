@@ -20,13 +20,16 @@ var _ MappedNullable = &LoginCommand{}
 
 // LoginCommand struct for LoginCommand
 type LoginCommand struct {
-	Email NullableString `json:"email,omitempty"`
-	Password NullableString `json:"password,omitempty"`
-	AccountName NullableString `json:"accountName,omitempty"`
-	Mode NullableString `json:"mode,omitempty"`
-	AccessKey NullableString `json:"accessKey,omitempty"`
-	SecretKey NullableString `json:"secretKey,omitempty"`
+	Email                NullableString `json:"email,omitempty"`
+	Password             NullableString `json:"password,omitempty"`
+	AccountName          NullableString `json:"accountName,omitempty"`
+	Mode                 NullableString `json:"mode,omitempty"`
+	AccessKey            NullableString `json:"accessKey,omitempty"`
+	SecretKey            NullableString `json:"secretKey,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _LoginCommand LoginCommand
 
 // NewLoginCommand instantiates a new LoginCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +80,7 @@ func (o *LoginCommand) HasEmail() bool {
 func (o *LoginCommand) SetEmail(v string) {
 	o.Email.Set(&v)
 }
+
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *LoginCommand) SetEmailNil() {
 	o.Email.Set(nil)
@@ -119,6 +123,7 @@ func (o *LoginCommand) HasPassword() bool {
 func (o *LoginCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *LoginCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -161,6 +166,7 @@ func (o *LoginCommand) HasAccountName() bool {
 func (o *LoginCommand) SetAccountName(v string) {
 	o.AccountName.Set(&v)
 }
+
 // SetAccountNameNil sets the value for AccountName to be an explicit nil
 func (o *LoginCommand) SetAccountNameNil() {
 	o.AccountName.Set(nil)
@@ -203,6 +209,7 @@ func (o *LoginCommand) HasMode() bool {
 func (o *LoginCommand) SetMode(v string) {
 	o.Mode.Set(&v)
 }
+
 // SetModeNil sets the value for Mode to be an explicit nil
 func (o *LoginCommand) SetModeNil() {
 	o.Mode.Set(nil)
@@ -245,6 +252,7 @@ func (o *LoginCommand) HasAccessKey() bool {
 func (o *LoginCommand) SetAccessKey(v string) {
 	o.AccessKey.Set(&v)
 }
+
 // SetAccessKeyNil sets the value for AccessKey to be an explicit nil
 func (o *LoginCommand) SetAccessKeyNil() {
 	o.AccessKey.Set(nil)
@@ -287,6 +295,7 @@ func (o *LoginCommand) HasSecretKey() bool {
 func (o *LoginCommand) SetSecretKey(v string) {
 	o.SecretKey.Set(&v)
 }
+
 // SetSecretKeyNil sets the value for SecretKey to be an explicit nil
 func (o *LoginCommand) SetSecretKeyNil() {
 	o.SecretKey.Set(nil)
@@ -298,7 +307,7 @@ func (o *LoginCommand) UnsetSecretKey() {
 }
 
 func (o LoginCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -325,7 +334,38 @@ func (o LoginCommand) ToMap() (map[string]interface{}, error) {
 	if o.SecretKey.IsSet() {
 		toSerialize["secretKey"] = o.SecretKey.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *LoginCommand) UnmarshalJSON(data []byte) (err error) {
+	varLoginCommand := _LoginCommand{}
+
+	err = json.Unmarshal(data, &varLoginCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LoginCommand(varLoginCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "accountName")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "accessKey")
+		delete(additionalProperties, "secretKey")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableLoginCommand struct {
@@ -363,5 +403,3 @@ func (v *NullableLoginCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -21,10 +21,13 @@ var _ MappedNullable = &DateInterval{}
 
 // DateInterval struct for DateInterval
 type DateInterval struct {
-	Start *time.Time `json:"start,omitempty"`
-	End *time.Time `json:"end,omitempty"`
-	Price *float64 `json:"price,omitempty"`
+	Start                *time.Time `json:"start,omitempty"`
+	End                  *time.Time `json:"end,omitempty"`
+	Price                *float64   `json:"price,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DateInterval DateInterval
 
 // NewDateInterval instantiates a new DateInterval object
 // This constructor will assign default values to properties that have it defined,
@@ -140,7 +143,7 @@ func (o *DateInterval) SetPrice(v float64) {
 }
 
 func (o DateInterval) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,7 +161,35 @@ func (o DateInterval) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Price) {
 		toSerialize["price"] = o.Price
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DateInterval) UnmarshalJSON(data []byte) (err error) {
+	varDateInterval := _DateInterval{}
+
+	err = json.Unmarshal(data, &varDateInterval)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DateInterval(varDateInterval)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "start")
+		delete(additionalProperties, "end")
+		delete(additionalProperties, "price")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDateInterval struct {
@@ -196,5 +227,3 @@ func (v *NullableDateInterval) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

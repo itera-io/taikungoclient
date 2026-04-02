@@ -20,10 +20,13 @@ var _ MappedNullable = &UserExistCommand{}
 
 // UserExistCommand struct for UserExistCommand
 type UserExistCommand struct {
-	Email NullableString `json:"email,omitempty"`
-	UserName NullableString `json:"userName,omitempty"`
-	AccountId NullableInt32 `json:"accountId,omitempty"`
+	Email                NullableString `json:"email,omitempty"`
+	UserName             NullableString `json:"userName,omitempty"`
+	AccountId            NullableInt32  `json:"accountId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UserExistCommand UserExistCommand
 
 // NewUserExistCommand instantiates a new UserExistCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *UserExistCommand) HasEmail() bool {
 func (o *UserExistCommand) SetEmail(v string) {
 	o.Email.Set(&v)
 }
+
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *UserExistCommand) SetEmailNil() {
 	o.Email.Set(nil)
@@ -116,6 +120,7 @@ func (o *UserExistCommand) HasUserName() bool {
 func (o *UserExistCommand) SetUserName(v string) {
 	o.UserName.Set(&v)
 }
+
 // SetUserNameNil sets the value for UserName to be an explicit nil
 func (o *UserExistCommand) SetUserNameNil() {
 	o.UserName.Set(nil)
@@ -158,6 +163,7 @@ func (o *UserExistCommand) HasAccountId() bool {
 func (o *UserExistCommand) SetAccountId(v int32) {
 	o.AccountId.Set(&v)
 }
+
 // SetAccountIdNil sets the value for AccountId to be an explicit nil
 func (o *UserExistCommand) SetAccountIdNil() {
 	o.AccountId.Set(nil)
@@ -169,7 +175,7 @@ func (o *UserExistCommand) UnsetAccountId() {
 }
 
 func (o UserExistCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -187,7 +193,35 @@ func (o UserExistCommand) ToMap() (map[string]interface{}, error) {
 	if o.AccountId.IsSet() {
 		toSerialize["accountId"] = o.AccountId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UserExistCommand) UnmarshalJSON(data []byte) (err error) {
+	varUserExistCommand := _UserExistCommand{}
+
+	err = json.Unmarshal(data, &varUserExistCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserExistCommand(varUserExistCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "userName")
+		delete(additionalProperties, "accountId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUserExistCommand struct {
@@ -225,5 +259,3 @@ func (v *NullableUserExistCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

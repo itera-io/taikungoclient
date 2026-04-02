@@ -20,8 +20,11 @@ var _ MappedNullable = &DeleteExecutorCommand{}
 
 // DeleteExecutorCommand struct for DeleteExecutorCommand
 type DeleteExecutorCommand struct {
-	Id *int32 `json:"id,omitempty"`
+	Id                   *int32 `json:"id,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeleteExecutorCommand DeleteExecutorCommand
 
 // NewDeleteExecutorCommand instantiates a new DeleteExecutorCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,7 +76,7 @@ func (o *DeleteExecutorCommand) SetId(v int32) {
 }
 
 func (o DeleteExecutorCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -85,7 +88,33 @@ func (o DeleteExecutorCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeleteExecutorCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeleteExecutorCommand := _DeleteExecutorCommand{}
+
+	err = json.Unmarshal(data, &varDeleteExecutorCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeleteExecutorCommand(varDeleteExecutorCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeleteExecutorCommand struct {
@@ -123,5 +152,3 @@ func (v *NullableDeleteExecutorCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

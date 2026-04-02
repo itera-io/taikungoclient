@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,79 +21,80 @@ var _ MappedNullable = &ProjectDetailsForServersDto{}
 
 // ProjectDetailsForServersDto struct for ProjectDetailsForServersDto
 type ProjectDetailsForServersDto struct {
-	AlertsCount int32 `json:"alertsCount"`
-	Worker int32 `json:"worker"`
-	Bastion int32 `json:"bastion"`
-	Status ProjectStatus `json:"status"`
-	Name string `json:"name"`
-	AccessIp string `json:"accessIp"`
-	Id int32 `json:"id"`
-	MasterReady int32 `json:"masterReady"`
-	CloudType ECloudCredentialType `json:"cloudType"`
-	CloudName string `json:"cloudName"`
-	CloudId int32 `json:"cloudId"`
-	QuotaId int32 `json:"quotaId"`
-	OrganizationName string `json:"organizationName"`
-	OrganizationId int32 `json:"organizationId"`
-	KubernetesVersion string `json:"kubernetesVersion"`
-	IsBackupEnabled bool `json:"isBackupEnabled"`
-	AiEnabled bool `json:"aiEnabled"`
-	IsLocked bool `json:"isLocked"`
-	IsAutoUpgrade bool `json:"isAutoUpgrade"`
-	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
-	IsOpaEnabled bool `json:"isOpaEnabled"`
-	HasKubeConfigFile bool `json:"hasKubeConfigFile"`
-	HasSelectedFlavors bool `json:"hasSelectedFlavors"`
-	IsMaintenanceModeEnabled bool `json:"isMaintenanceModeEnabled"`
-	IsProjectMaintenanceModeEnabled bool `json:"isProjectMaintenanceModeEnabled"`
-	IsDeprecated bool `json:"isDeprecated"`
-	CpuLimit int64 `json:"cpuLimit"`
-	RamLimit int64 `json:"ramLimit"`
-	DiskSizeLimit int64 `json:"diskSizeLimit"`
-	UsedCpu int64 `json:"usedCpu"`
-	UsedRam int64 `json:"usedRam"`
-	UsedDiskSize int64 `json:"usedDiskSize"`
-	VmCpuLimit int64 `json:"vmCpuLimit"`
-	VmRamLimit int64 `json:"vmRamLimit"`
-	VmVolumeSizeLimit int64 `json:"vmVolumeSizeLimit"`
-	VmUsedCpu int64 `json:"vmUsedCpu"`
-	VmUsedRam int64 `json:"vmUsedRam"`
-	VmUsedVolumeSize int64 `json:"vmUsedVolumeSize"`
-	AccessProfileName string `json:"accessProfileName"`
-	AccessProfileId NullableInt32 `json:"accessProfileId"`
-	KubernetesProfileName string `json:"kubernetesProfileName"`
-	KubernetesProfileId NullableInt32 `json:"kubernetesProfileId"`
-	AlertingProfileName string `json:"alertingProfileName"`
-	Health ProjectHealth `json:"health"`
-	AlertingProfileId NullableInt32 `json:"alertingProfileId"`
-	S3CredentialId NullableInt32 `json:"s3CredentialId"`
-	AiCredentialId NullableInt32 `json:"aiCredentialId"`
-	ExpiredAt string `json:"expiredAt"`
-	CertificationExpiredAt string `json:"certificationExpiredAt"`
-	OpaProfileId NullableInt32 `json:"opaProfileId"`
-	OpaProfileName string `json:"opaProfileName"`
-	AllowFullSpotKubernetes bool `json:"allowFullSpotKubernetes"`
-	AllowSpotWorkers bool `json:"allowSpotWorkers"`
-	AllowSpotVMs bool `json:"allowSpotVMs"`
-	TotalHourlyCost float64 `json:"totalHourlyCost"`
-	AutoscalingGroupName string `json:"autoscalingGroupName"`
-	MinSize NullableInt32 `json:"minSize"`
-	MaxSize NullableInt32 `json:"maxSize"`
-	DiskSize NullableFloat64 `json:"diskSize"`
-	Flavor NullableString `json:"flavor"`
-	SpotEnabled NullableBool `json:"spotEnabled"`
-	IsAutoscalingEnabled bool `json:"isAutoscalingEnabled"`
-	IsAutoscalingSpotEnabled bool `json:"isAutoscalingSpotEnabled"`
-	HasNfsServer bool `json:"hasNfsServer"`
-	WasmEnabled bool `json:"wasmEnabled"`
-	AvailabilityZones []string `json:"availabilityZones"`
-	Hypervisors []string `json:"hypervisors"`
-	ProxmoxStorage ProxmoxStorage `json:"proxmoxStorage"`
-	IsDrsEnabled bool `json:"isDrsEnabled"`
-	MaxSpotPrice NullableFloat64 `json:"maxSpotPrice"`
-	VpcMode *VpcMode `json:"vpcMode,omitempty"`
-	CloudSubnets []CloudSubnetDetailsDto `json:"cloudSubnets,omitempty"`
-	PrivateOnly NullableBool `json:"privateOnly,omitempty"`
+	AlertsCount                     int32                   `json:"alertsCount"`
+	Worker                          int32                   `json:"worker"`
+	Bastion                         int32                   `json:"bastion"`
+	Status                          ProjectStatus           `json:"status"`
+	Name                            string                  `json:"name"`
+	AccessIp                        string                  `json:"accessIp"`
+	Id                              int32                   `json:"id"`
+	MasterReady                     int32                   `json:"masterReady"`
+	CloudType                       ECloudCredentialType    `json:"cloudType"`
+	CloudName                       string                  `json:"cloudName"`
+	CloudId                         int32                   `json:"cloudId"`
+	QuotaId                         int32                   `json:"quotaId"`
+	OrganizationName                string                  `json:"organizationName"`
+	OrganizationId                  int32                   `json:"organizationId"`
+	KubernetesVersion               string                  `json:"kubernetesVersion"`
+	IsBackupEnabled                 bool                    `json:"isBackupEnabled"`
+	AiEnabled                       bool                    `json:"aiEnabled"`
+	IsLocked                        bool                    `json:"isLocked"`
+	IsAutoUpgrade                   bool                    `json:"isAutoUpgrade"`
+	IsMonitoringEnabled             bool                    `json:"isMonitoringEnabled"`
+	IsOpaEnabled                    bool                    `json:"isOpaEnabled"`
+	HasKubeConfigFile               bool                    `json:"hasKubeConfigFile"`
+	HasSelectedFlavors              bool                    `json:"hasSelectedFlavors"`
+	IsMaintenanceModeEnabled        bool                    `json:"isMaintenanceModeEnabled"`
+	IsProjectMaintenanceModeEnabled bool                    `json:"isProjectMaintenanceModeEnabled"`
+	IsDeprecated                    bool                    `json:"isDeprecated"`
+	CpuLimit                        int64                   `json:"cpuLimit"`
+	RamLimit                        int64                   `json:"ramLimit"`
+	DiskSizeLimit                   int64                   `json:"diskSizeLimit"`
+	UsedCpu                         int64                   `json:"usedCpu"`
+	UsedRam                         int64                   `json:"usedRam"`
+	UsedDiskSize                    int64                   `json:"usedDiskSize"`
+	VmCpuLimit                      int64                   `json:"vmCpuLimit"`
+	VmRamLimit                      int64                   `json:"vmRamLimit"`
+	VmVolumeSizeLimit               int64                   `json:"vmVolumeSizeLimit"`
+	VmUsedCpu                       int64                   `json:"vmUsedCpu"`
+	VmUsedRam                       int64                   `json:"vmUsedRam"`
+	VmUsedVolumeSize                int64                   `json:"vmUsedVolumeSize"`
+	AccessProfileName               string                  `json:"accessProfileName"`
+	AccessProfileId                 NullableInt32           `json:"accessProfileId"`
+	KubernetesProfileName           string                  `json:"kubernetesProfileName"`
+	KubernetesProfileId             NullableInt32           `json:"kubernetesProfileId"`
+	AlertingProfileName             string                  `json:"alertingProfileName"`
+	Health                          ProjectHealth           `json:"health"`
+	AlertingProfileId               NullableInt32           `json:"alertingProfileId"`
+	S3CredentialId                  NullableInt32           `json:"s3CredentialId"`
+	AiCredentialId                  NullableInt32           `json:"aiCredentialId"`
+	ExpiredAt                       string                  `json:"expiredAt"`
+	CertificationExpiredAt          string                  `json:"certificationExpiredAt"`
+	OpaProfileId                    NullableInt32           `json:"opaProfileId"`
+	OpaProfileName                  string                  `json:"opaProfileName"`
+	AllowFullSpotKubernetes         bool                    `json:"allowFullSpotKubernetes"`
+	AllowSpotWorkers                bool                    `json:"allowSpotWorkers"`
+	AllowSpotVMs                    bool                    `json:"allowSpotVMs"`
+	TotalHourlyCost                 float64                 `json:"totalHourlyCost"`
+	AutoscalingGroupName            string                  `json:"autoscalingGroupName"`
+	MinSize                         NullableInt32           `json:"minSize"`
+	MaxSize                         NullableInt32           `json:"maxSize"`
+	DiskSize                        NullableFloat64         `json:"diskSize"`
+	Flavor                          NullableString          `json:"flavor"`
+	SpotEnabled                     NullableBool            `json:"spotEnabled"`
+	IsAutoscalingEnabled            bool                    `json:"isAutoscalingEnabled"`
+	IsAutoscalingSpotEnabled        bool                    `json:"isAutoscalingSpotEnabled"`
+	HasNfsServer                    bool                    `json:"hasNfsServer"`
+	WasmEnabled                     bool                    `json:"wasmEnabled"`
+	AvailabilityZones               []string                `json:"availabilityZones"`
+	Hypervisors                     []string                `json:"hypervisors"`
+	ProxmoxStorage                  ProxmoxStorage          `json:"proxmoxStorage"`
+	IsDrsEnabled                    bool                    `json:"isDrsEnabled"`
+	MaxSpotPrice                    NullableFloat64         `json:"maxSpotPrice"`
+	VpcMode                         *VpcMode                `json:"vpcMode,omitempty"`
+	CloudSubnets                    []CloudSubnetDetailsDto `json:"cloudSubnets,omitempty"`
+	PrivateOnly                     NullableBool            `json:"privateOnly,omitempty"`
+	AdditionalProperties            map[string]interface{}
 }
 
 type _ProjectDetailsForServersDto ProjectDetailsForServersDto
@@ -1987,6 +1987,7 @@ func (o *ProjectDetailsForServersDto) HasPrivateOnly() bool {
 func (o *ProjectDetailsForServersDto) SetPrivateOnly(v bool) {
 	o.PrivateOnly.Set(&v)
 }
+
 // SetPrivateOnlyNil sets the value for PrivateOnly to be an explicit nil
 func (o *ProjectDetailsForServersDto) SetPrivateOnlyNil() {
 	o.PrivateOnly.Set(nil)
@@ -1998,7 +1999,7 @@ func (o *ProjectDetailsForServersDto) UnsetPrivateOnly() {
 }
 
 func (o ProjectDetailsForServersDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -2086,6 +2087,11 @@ func (o ProjectDetailsForServersDto) ToMap() (map[string]interface{}, error) {
 	if o.PrivateOnly.IsSet() {
 		toSerialize["privateOnly"] = o.PrivateOnly.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -2171,10 +2177,10 @@ func (o *ProjectDetailsForServersDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -2182,15 +2188,92 @@ func (o *ProjectDetailsForServersDto) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectDetailsForServersDto := _ProjectDetailsForServersDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectDetailsForServersDto)
+	err = json.Unmarshal(data, &varProjectDetailsForServersDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectDetailsForServersDto(varProjectDetailsForServersDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "alertsCount")
+		delete(additionalProperties, "worker")
+		delete(additionalProperties, "bastion")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "accessIp")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "masterReady")
+		delete(additionalProperties, "cloudType")
+		delete(additionalProperties, "cloudName")
+		delete(additionalProperties, "cloudId")
+		delete(additionalProperties, "quotaId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "kubernetesVersion")
+		delete(additionalProperties, "isBackupEnabled")
+		delete(additionalProperties, "aiEnabled")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "isAutoUpgrade")
+		delete(additionalProperties, "isMonitoringEnabled")
+		delete(additionalProperties, "isOpaEnabled")
+		delete(additionalProperties, "hasKubeConfigFile")
+		delete(additionalProperties, "hasSelectedFlavors")
+		delete(additionalProperties, "isMaintenanceModeEnabled")
+		delete(additionalProperties, "isProjectMaintenanceModeEnabled")
+		delete(additionalProperties, "isDeprecated")
+		delete(additionalProperties, "cpuLimit")
+		delete(additionalProperties, "ramLimit")
+		delete(additionalProperties, "diskSizeLimit")
+		delete(additionalProperties, "usedCpu")
+		delete(additionalProperties, "usedRam")
+		delete(additionalProperties, "usedDiskSize")
+		delete(additionalProperties, "vmCpuLimit")
+		delete(additionalProperties, "vmRamLimit")
+		delete(additionalProperties, "vmVolumeSizeLimit")
+		delete(additionalProperties, "vmUsedCpu")
+		delete(additionalProperties, "vmUsedRam")
+		delete(additionalProperties, "vmUsedVolumeSize")
+		delete(additionalProperties, "accessProfileName")
+		delete(additionalProperties, "accessProfileId")
+		delete(additionalProperties, "kubernetesProfileName")
+		delete(additionalProperties, "kubernetesProfileId")
+		delete(additionalProperties, "alertingProfileName")
+		delete(additionalProperties, "health")
+		delete(additionalProperties, "alertingProfileId")
+		delete(additionalProperties, "s3CredentialId")
+		delete(additionalProperties, "aiCredentialId")
+		delete(additionalProperties, "expiredAt")
+		delete(additionalProperties, "certificationExpiredAt")
+		delete(additionalProperties, "opaProfileId")
+		delete(additionalProperties, "opaProfileName")
+		delete(additionalProperties, "allowFullSpotKubernetes")
+		delete(additionalProperties, "allowSpotWorkers")
+		delete(additionalProperties, "allowSpotVMs")
+		delete(additionalProperties, "totalHourlyCost")
+		delete(additionalProperties, "autoscalingGroupName")
+		delete(additionalProperties, "minSize")
+		delete(additionalProperties, "maxSize")
+		delete(additionalProperties, "diskSize")
+		delete(additionalProperties, "flavor")
+		delete(additionalProperties, "spotEnabled")
+		delete(additionalProperties, "isAutoscalingEnabled")
+		delete(additionalProperties, "isAutoscalingSpotEnabled")
+		delete(additionalProperties, "hasNfsServer")
+		delete(additionalProperties, "wasmEnabled")
+		delete(additionalProperties, "availabilityZones")
+		delete(additionalProperties, "hypervisors")
+		delete(additionalProperties, "proxmoxStorage")
+		delete(additionalProperties, "isDrsEnabled")
+		delete(additionalProperties, "maxSpotPrice")
+		delete(additionalProperties, "vpcMode")
+		delete(additionalProperties, "cloudSubnets")
+		delete(additionalProperties, "privateOnly")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -2230,5 +2313,3 @@ func (v *NullableProjectDetailsForServersDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

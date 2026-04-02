@@ -20,9 +20,12 @@ var _ MappedNullable = &DeleteScheduleCommand{}
 
 // DeleteScheduleCommand struct for DeleteScheduleCommand
 type DeleteScheduleCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	ProjectId            *int32         `json:"projectId,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeleteScheduleCommand DeleteScheduleCommand
 
 // NewDeleteScheduleCommand instantiates a new DeleteScheduleCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,7 @@ func (o *DeleteScheduleCommand) HasName() bool {
 func (o *DeleteScheduleCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *DeleteScheduleCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -116,7 +120,7 @@ func (o *DeleteScheduleCommand) UnsetName() {
 }
 
 func (o DeleteScheduleCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o DeleteScheduleCommand) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeleteScheduleCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeleteScheduleCommand := _DeleteScheduleCommand{}
+
+	err = json.Unmarshal(data, &varDeleteScheduleCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeleteScheduleCommand(varDeleteScheduleCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeleteScheduleCommand struct {
@@ -169,5 +200,3 @@ func (v *NullableDeleteScheduleCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,9 +21,10 @@ var _ MappedNullable = &VsphereFlavorData{}
 
 // VsphereFlavorData struct for VsphereFlavorData
 type VsphereFlavorData struct {
-	Name NullableString `json:"name"`
-	Cpu int32 `json:"cpu"`
-	Ram float64 `json:"ram"`
+	Name                 NullableString `json:"name"`
+	Cpu                  int32          `json:"cpu"`
+	Ram                  float64        `json:"ram"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _VsphereFlavorData VsphereFlavorData
@@ -124,7 +124,7 @@ func (o *VsphereFlavorData) SetRam(v float64) {
 }
 
 func (o VsphereFlavorData) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -136,6 +136,11 @@ func (o VsphereFlavorData) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name.Get()
 	toSerialize["cpu"] = o.Cpu
 	toSerialize["ram"] = o.Ram
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -154,10 +159,10 @@ func (o *VsphereFlavorData) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -165,15 +170,22 @@ func (o *VsphereFlavorData) UnmarshalJSON(data []byte) (err error) {
 
 	varVsphereFlavorData := _VsphereFlavorData{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVsphereFlavorData)
+	err = json.Unmarshal(data, &varVsphereFlavorData)
 
 	if err != nil {
 		return err
 	}
 
 	*o = VsphereFlavorData(varVsphereFlavorData)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "ram")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -213,5 +225,3 @@ func (v *NullableVsphereFlavorData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

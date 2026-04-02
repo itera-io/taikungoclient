@@ -20,13 +20,16 @@ var _ MappedNullable = &ServiceListDto{}
 
 // ServiceListDto struct for ServiceListDto
 type ServiceListDto struct {
-	Name NullableString `json:"name,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	Type NullableString `json:"type,omitempty"`
-	ClusterIp NullableString `json:"clusterIp,omitempty"`
-	ExternalIp NullableString `json:"externalIp,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Namespace            NullableString `json:"namespace,omitempty"`
+	Type                 NullableString `json:"type,omitempty"`
+	ClusterIp            NullableString `json:"clusterIp,omitempty"`
+	ExternalIp           NullableString `json:"externalIp,omitempty"`
+	CreatedAt            NullableString `json:"createdAt,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ServiceListDto ServiceListDto
 
 // NewServiceListDto instantiates a new ServiceListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +80,7 @@ func (o *ServiceListDto) HasName() bool {
 func (o *ServiceListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ServiceListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -119,6 +123,7 @@ func (o *ServiceListDto) HasNamespace() bool {
 func (o *ServiceListDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
+
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *ServiceListDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -161,6 +166,7 @@ func (o *ServiceListDto) HasType() bool {
 func (o *ServiceListDto) SetType(v string) {
 	o.Type.Set(&v)
 }
+
 // SetTypeNil sets the value for Type to be an explicit nil
 func (o *ServiceListDto) SetTypeNil() {
 	o.Type.Set(nil)
@@ -203,6 +209,7 @@ func (o *ServiceListDto) HasClusterIp() bool {
 func (o *ServiceListDto) SetClusterIp(v string) {
 	o.ClusterIp.Set(&v)
 }
+
 // SetClusterIpNil sets the value for ClusterIp to be an explicit nil
 func (o *ServiceListDto) SetClusterIpNil() {
 	o.ClusterIp.Set(nil)
@@ -245,6 +252,7 @@ func (o *ServiceListDto) HasExternalIp() bool {
 func (o *ServiceListDto) SetExternalIp(v string) {
 	o.ExternalIp.Set(&v)
 }
+
 // SetExternalIpNil sets the value for ExternalIp to be an explicit nil
 func (o *ServiceListDto) SetExternalIpNil() {
 	o.ExternalIp.Set(nil)
@@ -287,6 +295,7 @@ func (o *ServiceListDto) HasCreatedAt() bool {
 func (o *ServiceListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
+
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *ServiceListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -298,7 +307,7 @@ func (o *ServiceListDto) UnsetCreatedAt() {
 }
 
 func (o ServiceListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -325,7 +334,38 @@ func (o ServiceListDto) ToMap() (map[string]interface{}, error) {
 	if o.CreatedAt.IsSet() {
 		toSerialize["createdAt"] = o.CreatedAt.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ServiceListDto) UnmarshalJSON(data []byte) (err error) {
+	varServiceListDto := _ServiceListDto{}
+
+	err = json.Unmarshal(data, &varServiceListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ServiceListDto(varServiceListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "clusterIp")
+		delete(additionalProperties, "externalIp")
+		delete(additionalProperties, "createdAt")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableServiceListDto struct {
@@ -363,5 +403,3 @@ func (v *NullableServiceListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

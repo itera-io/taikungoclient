@@ -20,9 +20,12 @@ var _ MappedNullable = &GkeClusterDto{}
 
 // GkeClusterDto struct for GkeClusterDto
 type GkeClusterDto struct {
-	Location NullableString `json:"location,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Location             NullableString `json:"location,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _GkeClusterDto GkeClusterDto
 
 // NewGkeClusterDto instantiates a new GkeClusterDto object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *GkeClusterDto) HasLocation() bool {
 func (o *GkeClusterDto) SetLocation(v string) {
 	o.Location.Set(&v)
 }
+
 // SetLocationNil sets the value for Location to be an explicit nil
 func (o *GkeClusterDto) SetLocationNil() {
 	o.Location.Set(nil)
@@ -115,6 +119,7 @@ func (o *GkeClusterDto) HasName() bool {
 func (o *GkeClusterDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *GkeClusterDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -126,7 +131,7 @@ func (o *GkeClusterDto) UnsetName() {
 }
 
 func (o GkeClusterDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,7 +146,34 @@ func (o GkeClusterDto) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *GkeClusterDto) UnmarshalJSON(data []byte) (err error) {
+	varGkeClusterDto := _GkeClusterDto{}
+
+	err = json.Unmarshal(data, &varGkeClusterDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GkeClusterDto(varGkeClusterDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "location")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableGkeClusterDto struct {
@@ -179,5 +211,3 @@ func (v *NullableGkeClusterDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

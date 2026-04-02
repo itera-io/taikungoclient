@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,20 +21,21 @@ var _ MappedNullable = &ArtifactRepositoryDto{}
 
 // ArtifactRepositoryDto struct for ArtifactRepositoryDto
 type ArtifactRepositoryDto struct {
-	RepositoryId NullableString `json:"repositoryId"`
-	AppRepoId int32 `json:"appRepoId"`
-	Name string `json:"name"`
-	DisplayName NullableString `json:"displayName"`
-	Url string `json:"url"`
-	OrganizationName string `json:"organizationName"`
-	Disabled bool `json:"disabled"`
-	VerifiedPublisher bool `json:"verifiedPublisher"`
-	Official bool `json:"official"`
-	IsBound bool `json:"isBound"`
-	IsPrivate *bool `json:"isPrivate,omitempty"`
-	IsTaikun bool `json:"isTaikun"`
-	HasCatalogApp bool `json:"hasCatalogApp"`
-	PasswordProtected *bool `json:"passwordProtected,omitempty"`
+	RepositoryId         NullableString `json:"repositoryId"`
+	AppRepoId            int32          `json:"appRepoId"`
+	Name                 string         `json:"name"`
+	DisplayName          NullableString `json:"displayName"`
+	Url                  string         `json:"url"`
+	OrganizationName     string         `json:"organizationName"`
+	Disabled             bool           `json:"disabled"`
+	VerifiedPublisher    bool           `json:"verifiedPublisher"`
+	Official             bool           `json:"official"`
+	IsBound              bool           `json:"isBound"`
+	IsPrivate            *bool          `json:"isPrivate,omitempty"`
+	IsTaikun             bool           `json:"isTaikun"`
+	HasCatalogApp        bool           `json:"hasCatalogApp"`
+	PasswordProtected    *bool          `json:"passwordProtected,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ArtifactRepositoryDto ArtifactRepositoryDto
@@ -426,7 +426,7 @@ func (o *ArtifactRepositoryDto) SetPasswordProtected(v bool) {
 }
 
 func (o ArtifactRepositoryDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -453,6 +453,11 @@ func (o ArtifactRepositoryDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PasswordProtected) {
 		toSerialize["passwordProtected"] = o.PasswordProtected
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -480,10 +485,10 @@ func (o *ArtifactRepositoryDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -491,15 +496,33 @@ func (o *ArtifactRepositoryDto) UnmarshalJSON(data []byte) (err error) {
 
 	varArtifactRepositoryDto := _ArtifactRepositoryDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varArtifactRepositoryDto)
+	err = json.Unmarshal(data, &varArtifactRepositoryDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ArtifactRepositoryDto(varArtifactRepositoryDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "repositoryId")
+		delete(additionalProperties, "appRepoId")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "displayName")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "disabled")
+		delete(additionalProperties, "verifiedPublisher")
+		delete(additionalProperties, "official")
+		delete(additionalProperties, "isBound")
+		delete(additionalProperties, "isPrivate")
+		delete(additionalProperties, "isTaikun")
+		delete(additionalProperties, "hasCatalogApp")
+		delete(additionalProperties, "passwordProtected")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -539,5 +562,3 @@ func (v *NullableArtifactRepositoryDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

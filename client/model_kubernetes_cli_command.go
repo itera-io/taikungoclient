@@ -20,9 +20,12 @@ var _ MappedNullable = &KubernetesCliCommand{}
 
 // KubernetesCliCommand struct for KubernetesCliCommand
 type KubernetesCliCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	KubeConfigId NullableInt32 `json:"kubeConfigId,omitempty"`
+	ProjectId            *int32        `json:"projectId,omitempty"`
+	KubeConfigId         NullableInt32 `json:"kubeConfigId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _KubernetesCliCommand KubernetesCliCommand
 
 // NewKubernetesCliCommand instantiates a new KubernetesCliCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,7 @@ func (o *KubernetesCliCommand) HasKubeConfigId() bool {
 func (o *KubernetesCliCommand) SetKubeConfigId(v int32) {
 	o.KubeConfigId.Set(&v)
 }
+
 // SetKubeConfigIdNil sets the value for KubeConfigId to be an explicit nil
 func (o *KubernetesCliCommand) SetKubeConfigIdNil() {
 	o.KubeConfigId.Set(nil)
@@ -116,7 +120,7 @@ func (o *KubernetesCliCommand) UnsetKubeConfigId() {
 }
 
 func (o KubernetesCliCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o KubernetesCliCommand) ToMap() (map[string]interface{}, error) {
 	if o.KubeConfigId.IsSet() {
 		toSerialize["kubeConfigId"] = o.KubeConfigId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *KubernetesCliCommand) UnmarshalJSON(data []byte) (err error) {
+	varKubernetesCliCommand := _KubernetesCliCommand{}
+
+	err = json.Unmarshal(data, &varKubernetesCliCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubernetesCliCommand(varKubernetesCliCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "kubeConfigId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableKubernetesCliCommand struct {
@@ -169,5 +200,3 @@ func (v *NullableKubernetesCliCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

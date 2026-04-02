@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,16 +21,17 @@ var _ MappedNullable = &ProjectTemplateListDto{}
 
 // ProjectTemplateListDto struct for ProjectTemplateListDto
 type ProjectTemplateListDto struct {
-	Id int32 `json:"id"`
-	Name NullableString `json:"name"`
-	MonitoringEnabled bool `json:"monitoringEnabled"`
-	BackupEnabled bool `json:"backupEnabled"`
-	AllowFullSpotKubernetes bool `json:"allowFullSpotKubernetes"`
-	AllowSpotVms bool `json:"allowSpotVms"`
-	AllowSpotWorkers bool `json:"allowSpotWorkers"`
-	KubernetesVersion NullableString `json:"kubernetesVersion"`
-	OrganizationName NullableString `json:"organizationName"`
-	OrganizationId NullableInt32 `json:"organizationId"`
+	Id                      int32          `json:"id"`
+	Name                    NullableString `json:"name"`
+	MonitoringEnabled       bool           `json:"monitoringEnabled"`
+	BackupEnabled           bool           `json:"backupEnabled"`
+	AllowFullSpotKubernetes bool           `json:"allowFullSpotKubernetes"`
+	AllowSpotVms            bool           `json:"allowSpotVms"`
+	AllowSpotWorkers        bool           `json:"allowSpotWorkers"`
+	KubernetesVersion       NullableString `json:"kubernetesVersion"`
+	OrganizationName        NullableString `json:"organizationName"`
+	OrganizationId          NullableInt32  `json:"organizationId"`
+	AdditionalProperties    map[string]interface{}
 }
 
 type _ProjectTemplateListDto ProjectTemplateListDto
@@ -312,7 +312,7 @@ func (o *ProjectTemplateListDto) SetOrganizationId(v int32) {
 }
 
 func (o ProjectTemplateListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -331,6 +331,11 @@ func (o ProjectTemplateListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["kubernetesVersion"] = o.KubernetesVersion.Get()
 	toSerialize["organizationName"] = o.OrganizationName.Get()
 	toSerialize["organizationId"] = o.OrganizationId.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -356,10 +361,10 @@ func (o *ProjectTemplateListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -367,15 +372,29 @@ func (o *ProjectTemplateListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectTemplateListDto := _ProjectTemplateListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectTemplateListDto)
+	err = json.Unmarshal(data, &varProjectTemplateListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectTemplateListDto(varProjectTemplateListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "monitoringEnabled")
+		delete(additionalProperties, "backupEnabled")
+		delete(additionalProperties, "allowFullSpotKubernetes")
+		delete(additionalProperties, "allowSpotVms")
+		delete(additionalProperties, "allowSpotWorkers")
+		delete(additionalProperties, "kubernetesVersion")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "organizationId")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -415,5 +434,3 @@ func (v *NullableProjectTemplateListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

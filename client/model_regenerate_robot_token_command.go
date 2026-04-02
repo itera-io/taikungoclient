@@ -21,9 +21,12 @@ var _ MappedNullable = &RegenerateRobotTokenCommand{}
 
 // RegenerateRobotTokenCommand struct for RegenerateRobotTokenCommand
 type RegenerateRobotTokenCommand struct {
-	Id NullableString `json:"id,omitempty"`
-	ExpiresAt NullableTime `json:"expiresAt,omitempty"`
+	Id                   NullableString `json:"id,omitempty"`
+	ExpiresAt            NullableTime   `json:"expiresAt,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _RegenerateRobotTokenCommand RegenerateRobotTokenCommand
 
 // NewRegenerateRobotTokenCommand instantiates a new RegenerateRobotTokenCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *RegenerateRobotTokenCommand) HasId() bool {
 func (o *RegenerateRobotTokenCommand) SetId(v string) {
 	o.Id.Set(&v)
 }
+
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *RegenerateRobotTokenCommand) SetIdNil() {
 	o.Id.Set(nil)
@@ -116,6 +120,7 @@ func (o *RegenerateRobotTokenCommand) HasExpiresAt() bool {
 func (o *RegenerateRobotTokenCommand) SetExpiresAt(v time.Time) {
 	o.ExpiresAt.Set(&v)
 }
+
 // SetExpiresAtNil sets the value for ExpiresAt to be an explicit nil
 func (o *RegenerateRobotTokenCommand) SetExpiresAtNil() {
 	o.ExpiresAt.Set(nil)
@@ -127,7 +132,7 @@ func (o *RegenerateRobotTokenCommand) UnsetExpiresAt() {
 }
 
 func (o RegenerateRobotTokenCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -142,7 +147,34 @@ func (o RegenerateRobotTokenCommand) ToMap() (map[string]interface{}, error) {
 	if o.ExpiresAt.IsSet() {
 		toSerialize["expiresAt"] = o.ExpiresAt.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *RegenerateRobotTokenCommand) UnmarshalJSON(data []byte) (err error) {
+	varRegenerateRobotTokenCommand := _RegenerateRobotTokenCommand{}
+
+	err = json.Unmarshal(data, &varRegenerateRobotTokenCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RegenerateRobotTokenCommand(varRegenerateRobotTokenCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "expiresAt")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableRegenerateRobotTokenCommand struct {
@@ -180,5 +212,3 @@ func (v *NullableRegenerateRobotTokenCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

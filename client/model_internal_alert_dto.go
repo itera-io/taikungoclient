@@ -21,12 +21,15 @@ var _ MappedNullable = &InternalAlertDto{}
 
 // InternalAlertDto struct for InternalAlertDto
 type InternalAlertDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Fingerprint NullableString `json:"fingerprint,omitempty"`
-	Description NullableString `json:"description,omitempty"`
-	StartsAt *time.Time `json:"startsAt,omitempty"`
-	ProjectId *int32 `json:"projectId,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Fingerprint          NullableString `json:"fingerprint,omitempty"`
+	Description          NullableString `json:"description,omitempty"`
+	StartsAt             *time.Time     `json:"startsAt,omitempty"`
+	ProjectId            *int32         `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _InternalAlertDto InternalAlertDto
 
 // NewInternalAlertDto instantiates a new InternalAlertDto object
 // This constructor will assign default values to properties that have it defined,
@@ -109,6 +112,7 @@ func (o *InternalAlertDto) HasFingerprint() bool {
 func (o *InternalAlertDto) SetFingerprint(v string) {
 	o.Fingerprint.Set(&v)
 }
+
 // SetFingerprintNil sets the value for Fingerprint to be an explicit nil
 func (o *InternalAlertDto) SetFingerprintNil() {
 	o.Fingerprint.Set(nil)
@@ -151,6 +155,7 @@ func (o *InternalAlertDto) HasDescription() bool {
 func (o *InternalAlertDto) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *InternalAlertDto) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -226,7 +231,7 @@ func (o *InternalAlertDto) SetProjectId(v int32) {
 }
 
 func (o InternalAlertDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -250,7 +255,37 @@ func (o InternalAlertDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *InternalAlertDto) UnmarshalJSON(data []byte) (err error) {
+	varInternalAlertDto := _InternalAlertDto{}
+
+	err = json.Unmarshal(data, &varInternalAlertDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InternalAlertDto(varInternalAlertDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "fingerprint")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "startsAt")
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableInternalAlertDto struct {
@@ -288,5 +323,3 @@ func (v *NullableInternalAlertDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

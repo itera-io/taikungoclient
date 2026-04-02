@@ -20,20 +20,23 @@ var _ MappedNullable = &CommonDropdownIsBoundDtoForProject{}
 
 // CommonDropdownIsBoundDtoForProject struct for CommonDropdownIsBoundDtoForProject
 type CommonDropdownIsBoundDtoForProject struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	IsBound *bool `json:"isBound,omitempty"`
-	HasKubeConfigFile *bool `json:"hasKubeConfigFile,omitempty"`
-	KubernetesVersion NullableString `json:"kubernetesVersion,omitempty"`
-	IsLocked *bool `json:"isLocked,omitempty"`
-	MaintenanceModeEnabled *bool `json:"maintenanceModeEnabled,omitempty"`
-	IsVirtualCluster *bool `json:"isVirtualCluster,omitempty"`
-	AlertingProfileId NullableInt32 `json:"alertingProfileId,omitempty"`
-	CloudType *ECloudCredentialType `json:"cloudType,omitempty"`
-	Status *ProjectStatus `json:"status,omitempty"`
-	Health *ProjectHealth `json:"health,omitempty"`
-	ImportClusterType *ImportClusterType `json:"importClusterType,omitempty"`
+	Id                     *int32                `json:"id,omitempty"`
+	Name                   NullableString        `json:"name,omitempty"`
+	IsBound                *bool                 `json:"isBound,omitempty"`
+	HasKubeConfigFile      *bool                 `json:"hasKubeConfigFile,omitempty"`
+	KubernetesVersion      NullableString        `json:"kubernetesVersion,omitempty"`
+	IsLocked               *bool                 `json:"isLocked,omitempty"`
+	MaintenanceModeEnabled *bool                 `json:"maintenanceModeEnabled,omitempty"`
+	IsVirtualCluster       *bool                 `json:"isVirtualCluster,omitempty"`
+	AlertingProfileId      NullableInt32         `json:"alertingProfileId,omitempty"`
+	CloudType              *ECloudCredentialType `json:"cloudType,omitempty"`
+	Status                 *ProjectStatus        `json:"status,omitempty"`
+	Health                 *ProjectHealth        `json:"health,omitempty"`
+	ImportClusterType      *ImportClusterType    `json:"importClusterType,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
+
+type _CommonDropdownIsBoundDtoForProject CommonDropdownIsBoundDtoForProject
 
 // NewCommonDropdownIsBoundDtoForProject instantiates a new CommonDropdownIsBoundDtoForProject object
 // This constructor will assign default values to properties that have it defined,
@@ -116,6 +119,7 @@ func (o *CommonDropdownIsBoundDtoForProject) HasName() bool {
 func (o *CommonDropdownIsBoundDtoForProject) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CommonDropdownIsBoundDtoForProject) SetNameNil() {
 	o.Name.Set(nil)
@@ -222,6 +226,7 @@ func (o *CommonDropdownIsBoundDtoForProject) HasKubernetesVersion() bool {
 func (o *CommonDropdownIsBoundDtoForProject) SetKubernetesVersion(v string) {
 	o.KubernetesVersion.Set(&v)
 }
+
 // SetKubernetesVersionNil sets the value for KubernetesVersion to be an explicit nil
 func (o *CommonDropdownIsBoundDtoForProject) SetKubernetesVersionNil() {
 	o.KubernetesVersion.Set(nil)
@@ -360,6 +365,7 @@ func (o *CommonDropdownIsBoundDtoForProject) HasAlertingProfileId() bool {
 func (o *CommonDropdownIsBoundDtoForProject) SetAlertingProfileId(v int32) {
 	o.AlertingProfileId.Set(&v)
 }
+
 // SetAlertingProfileIdNil sets the value for AlertingProfileId to be an explicit nil
 func (o *CommonDropdownIsBoundDtoForProject) SetAlertingProfileIdNil() {
 	o.AlertingProfileId.Set(nil)
@@ -499,7 +505,7 @@ func (o *CommonDropdownIsBoundDtoForProject) SetImportClusterType(v ImportCluste
 }
 
 func (o CommonDropdownIsBoundDtoForProject) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -547,7 +553,45 @@ func (o CommonDropdownIsBoundDtoForProject) ToMap() (map[string]interface{}, err
 	if !IsNil(o.ImportClusterType) {
 		toSerialize["importClusterType"] = o.ImportClusterType
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CommonDropdownIsBoundDtoForProject) UnmarshalJSON(data []byte) (err error) {
+	varCommonDropdownIsBoundDtoForProject := _CommonDropdownIsBoundDtoForProject{}
+
+	err = json.Unmarshal(data, &varCommonDropdownIsBoundDtoForProject)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CommonDropdownIsBoundDtoForProject(varCommonDropdownIsBoundDtoForProject)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "isBound")
+		delete(additionalProperties, "hasKubeConfigFile")
+		delete(additionalProperties, "kubernetesVersion")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "maintenanceModeEnabled")
+		delete(additionalProperties, "isVirtualCluster")
+		delete(additionalProperties, "alertingProfileId")
+		delete(additionalProperties, "cloudType")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "health")
+		delete(additionalProperties, "importClusterType")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCommonDropdownIsBoundDtoForProject struct {
@@ -585,5 +629,3 @@ func (v *NullableCommonDropdownIsBoundDtoForProject) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

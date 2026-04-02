@@ -20,8 +20,11 @@ var _ MappedNullable = &InternalUserInfoListCommand{}
 
 // InternalUserInfoListCommand struct for InternalUserInfoListCommand
 type InternalUserInfoListCommand struct {
-	Token NullableString `json:"token,omitempty"`
+	Token                NullableString `json:"token,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _InternalUserInfoListCommand InternalUserInfoListCommand
 
 // NewInternalUserInfoListCommand instantiates a new InternalUserInfoListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -72,6 +75,7 @@ func (o *InternalUserInfoListCommand) HasToken() bool {
 func (o *InternalUserInfoListCommand) SetToken(v string) {
 	o.Token.Set(&v)
 }
+
 // SetTokenNil sets the value for Token to be an explicit nil
 func (o *InternalUserInfoListCommand) SetTokenNil() {
 	o.Token.Set(nil)
@@ -83,7 +87,7 @@ func (o *InternalUserInfoListCommand) UnsetToken() {
 }
 
 func (o InternalUserInfoListCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -95,7 +99,33 @@ func (o InternalUserInfoListCommand) ToMap() (map[string]interface{}, error) {
 	if o.Token.IsSet() {
 		toSerialize["token"] = o.Token.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *InternalUserInfoListCommand) UnmarshalJSON(data []byte) (err error) {
+	varInternalUserInfoListCommand := _InternalUserInfoListCommand{}
+
+	err = json.Unmarshal(data, &varInternalUserInfoListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InternalUserInfoListCommand(varInternalUserInfoListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "token")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableInternalUserInfoListCommand struct {
@@ -133,5 +163,3 @@ func (v *NullableInternalUserInfoListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

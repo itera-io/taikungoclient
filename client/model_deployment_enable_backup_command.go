@@ -20,9 +20,12 @@ var _ MappedNullable = &DeploymentEnableBackupCommand{}
 
 // DeploymentEnableBackupCommand struct for DeploymentEnableBackupCommand
 type DeploymentEnableBackupCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	S3CredentialId *int32 `json:"s3CredentialId,omitempty"`
+	ProjectId            *int32 `json:"projectId,omitempty"`
+	S3CredentialId       *int32 `json:"s3CredentialId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeploymentEnableBackupCommand DeploymentEnableBackupCommand
 
 // NewDeploymentEnableBackupCommand instantiates a new DeploymentEnableBackupCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -106,7 +109,7 @@ func (o *DeploymentEnableBackupCommand) SetS3CredentialId(v int32) {
 }
 
 func (o DeploymentEnableBackupCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -121,7 +124,34 @@ func (o DeploymentEnableBackupCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.S3CredentialId) {
 		toSerialize["s3CredentialId"] = o.S3CredentialId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeploymentEnableBackupCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeploymentEnableBackupCommand := _DeploymentEnableBackupCommand{}
+
+	err = json.Unmarshal(data, &varDeploymentEnableBackupCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeploymentEnableBackupCommand(varDeploymentEnableBackupCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "s3CredentialId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeploymentEnableBackupCommand struct {
@@ -159,5 +189,3 @@ func (v *NullableDeploymentEnableBackupCommand) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

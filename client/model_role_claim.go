@@ -20,10 +20,13 @@ var _ MappedNullable = &RoleClaim{}
 
 // RoleClaim struct for RoleClaim
 type RoleClaim struct {
-	Role NullableString `json:"role,omitempty"`
-	Claim []string `json:"claim,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
+	Role                 NullableString `json:"role,omitempty"`
+	Claim                []string       `json:"claim,omitempty"`
+	OrganizationName     NullableString `json:"organizationName,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _RoleClaim RoleClaim
 
 // NewRoleClaim instantiates a new RoleClaim object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *RoleClaim) HasRole() bool {
 func (o *RoleClaim) SetRole(v string) {
 	o.Role.Set(&v)
 }
+
 // SetRoleNil sets the value for Role to be an explicit nil
 func (o *RoleClaim) SetRoleNil() {
 	o.Role.Set(nil)
@@ -149,6 +153,7 @@ func (o *RoleClaim) HasOrganizationName() bool {
 func (o *RoleClaim) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
+
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *RoleClaim) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -160,7 +165,7 @@ func (o *RoleClaim) UnsetOrganizationName() {
 }
 
 func (o RoleClaim) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -178,7 +183,35 @@ func (o RoleClaim) ToMap() (map[string]interface{}, error) {
 	if o.OrganizationName.IsSet() {
 		toSerialize["organizationName"] = o.OrganizationName.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *RoleClaim) UnmarshalJSON(data []byte) (err error) {
+	varRoleClaim := _RoleClaim{}
+
+	err = json.Unmarshal(data, &varRoleClaim)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RoleClaim(varRoleClaim)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "role")
+		delete(additionalProperties, "claim")
+		delete(additionalProperties, "organizationName")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableRoleClaim struct {
@@ -216,5 +249,3 @@ func (v *NullableRoleClaim) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

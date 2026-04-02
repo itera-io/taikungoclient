@@ -20,9 +20,12 @@ var _ MappedNullable = &StandAloneVmIpManagementCommand{}
 
 // StandAloneVmIpManagementCommand struct for StandAloneVmIpManagementCommand
 type StandAloneVmIpManagementCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Mode NullableString `json:"mode,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Mode                 NullableString `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _StandAloneVmIpManagementCommand StandAloneVmIpManagementCommand
 
 // NewStandAloneVmIpManagementCommand instantiates a new StandAloneVmIpManagementCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,7 @@ func (o *StandAloneVmIpManagementCommand) HasMode() bool {
 func (o *StandAloneVmIpManagementCommand) SetMode(v string) {
 	o.Mode.Set(&v)
 }
+
 // SetModeNil sets the value for Mode to be an explicit nil
 func (o *StandAloneVmIpManagementCommand) SetModeNil() {
 	o.Mode.Set(nil)
@@ -116,7 +120,7 @@ func (o *StandAloneVmIpManagementCommand) UnsetMode() {
 }
 
 func (o StandAloneVmIpManagementCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o StandAloneVmIpManagementCommand) ToMap() (map[string]interface{}, error)
 	if o.Mode.IsSet() {
 		toSerialize["mode"] = o.Mode.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *StandAloneVmIpManagementCommand) UnmarshalJSON(data []byte) (err error) {
+	varStandAloneVmIpManagementCommand := _StandAloneVmIpManagementCommand{}
+
+	err = json.Unmarshal(data, &varStandAloneVmIpManagementCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StandAloneVmIpManagementCommand(varStandAloneVmIpManagementCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableStandAloneVmIpManagementCommand struct {
@@ -169,5 +200,3 @@ func (v *NullableStandAloneVmIpManagementCommand) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

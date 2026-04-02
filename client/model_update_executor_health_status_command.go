@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,8 +21,9 @@ var _ MappedNullable = &UpdateExecutorHealthStatusCommand{}
 
 // UpdateExecutorHealthStatusCommand struct for UpdateExecutorHealthStatusCommand
 type UpdateExecutorHealthStatusCommand struct {
-	ExecutorId int32 `json:"executorId"`
-	Health ExecutorHealth `json:"health"`
+	ExecutorId           int32          `json:"executorId"`
+	Health               ExecutorHealth `json:"health"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UpdateExecutorHealthStatusCommand UpdateExecutorHealthStatusCommand
@@ -96,7 +96,7 @@ func (o *UpdateExecutorHealthStatusCommand) SetHealth(v ExecutorHealth) {
 }
 
 func (o UpdateExecutorHealthStatusCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -107,6 +107,11 @@ func (o UpdateExecutorHealthStatusCommand) ToMap() (map[string]interface{}, erro
 	toSerialize := map[string]interface{}{}
 	toSerialize["executorId"] = o.ExecutorId
 	toSerialize["health"] = o.Health
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -124,10 +129,10 @@ func (o *UpdateExecutorHealthStatusCommand) UnmarshalJSON(data []byte) (err erro
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -135,15 +140,21 @@ func (o *UpdateExecutorHealthStatusCommand) UnmarshalJSON(data []byte) (err erro
 
 	varUpdateExecutorHealthStatusCommand := _UpdateExecutorHealthStatusCommand{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUpdateExecutorHealthStatusCommand)
+	err = json.Unmarshal(data, &varUpdateExecutorHealthStatusCommand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UpdateExecutorHealthStatusCommand(varUpdateExecutorHealthStatusCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "executorId")
+		delete(additionalProperties, "health")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -183,5 +194,3 @@ func (v *NullableUpdateExecutorHealthStatusCommand) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

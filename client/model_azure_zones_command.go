@@ -20,13 +20,16 @@ var _ MappedNullable = &AzureZonesCommand{}
 
 // AzureZonesCommand struct for AzureZonesCommand
 type AzureZonesCommand struct {
-	AzureSubscriptionId NullableString `json:"azureSubscriptionId,omitempty"`
-	AzureClientId NullableString `json:"azureClientId,omitempty"`
-	AzureClientSecret NullableString `json:"azureClientSecret,omitempty"`
-	AzureTenantId NullableString `json:"azureTenantId,omitempty"`
-	AzureLocation NullableString `json:"azureLocation,omitempty"`
-	CloudId NullableInt32 `json:"cloudId,omitempty"`
+	AzureSubscriptionId  NullableString `json:"azureSubscriptionId,omitempty"`
+	AzureClientId        NullableString `json:"azureClientId,omitempty"`
+	AzureClientSecret    NullableString `json:"azureClientSecret,omitempty"`
+	AzureTenantId        NullableString `json:"azureTenantId,omitempty"`
+	AzureLocation        NullableString `json:"azureLocation,omitempty"`
+	CloudId              NullableInt32  `json:"cloudId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AzureZonesCommand AzureZonesCommand
 
 // NewAzureZonesCommand instantiates a new AzureZonesCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +80,7 @@ func (o *AzureZonesCommand) HasAzureSubscriptionId() bool {
 func (o *AzureZonesCommand) SetAzureSubscriptionId(v string) {
 	o.AzureSubscriptionId.Set(&v)
 }
+
 // SetAzureSubscriptionIdNil sets the value for AzureSubscriptionId to be an explicit nil
 func (o *AzureZonesCommand) SetAzureSubscriptionIdNil() {
 	o.AzureSubscriptionId.Set(nil)
@@ -119,6 +123,7 @@ func (o *AzureZonesCommand) HasAzureClientId() bool {
 func (o *AzureZonesCommand) SetAzureClientId(v string) {
 	o.AzureClientId.Set(&v)
 }
+
 // SetAzureClientIdNil sets the value for AzureClientId to be an explicit nil
 func (o *AzureZonesCommand) SetAzureClientIdNil() {
 	o.AzureClientId.Set(nil)
@@ -161,6 +166,7 @@ func (o *AzureZonesCommand) HasAzureClientSecret() bool {
 func (o *AzureZonesCommand) SetAzureClientSecret(v string) {
 	o.AzureClientSecret.Set(&v)
 }
+
 // SetAzureClientSecretNil sets the value for AzureClientSecret to be an explicit nil
 func (o *AzureZonesCommand) SetAzureClientSecretNil() {
 	o.AzureClientSecret.Set(nil)
@@ -203,6 +209,7 @@ func (o *AzureZonesCommand) HasAzureTenantId() bool {
 func (o *AzureZonesCommand) SetAzureTenantId(v string) {
 	o.AzureTenantId.Set(&v)
 }
+
 // SetAzureTenantIdNil sets the value for AzureTenantId to be an explicit nil
 func (o *AzureZonesCommand) SetAzureTenantIdNil() {
 	o.AzureTenantId.Set(nil)
@@ -245,6 +252,7 @@ func (o *AzureZonesCommand) HasAzureLocation() bool {
 func (o *AzureZonesCommand) SetAzureLocation(v string) {
 	o.AzureLocation.Set(&v)
 }
+
 // SetAzureLocationNil sets the value for AzureLocation to be an explicit nil
 func (o *AzureZonesCommand) SetAzureLocationNil() {
 	o.AzureLocation.Set(nil)
@@ -287,6 +295,7 @@ func (o *AzureZonesCommand) HasCloudId() bool {
 func (o *AzureZonesCommand) SetCloudId(v int32) {
 	o.CloudId.Set(&v)
 }
+
 // SetCloudIdNil sets the value for CloudId to be an explicit nil
 func (o *AzureZonesCommand) SetCloudIdNil() {
 	o.CloudId.Set(nil)
@@ -298,7 +307,7 @@ func (o *AzureZonesCommand) UnsetCloudId() {
 }
 
 func (o AzureZonesCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -325,7 +334,38 @@ func (o AzureZonesCommand) ToMap() (map[string]interface{}, error) {
 	if o.CloudId.IsSet() {
 		toSerialize["cloudId"] = o.CloudId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AzureZonesCommand) UnmarshalJSON(data []byte) (err error) {
+	varAzureZonesCommand := _AzureZonesCommand{}
+
+	err = json.Unmarshal(data, &varAzureZonesCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AzureZonesCommand(varAzureZonesCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "azureSubscriptionId")
+		delete(additionalProperties, "azureClientId")
+		delete(additionalProperties, "azureClientSecret")
+		delete(additionalProperties, "azureTenantId")
+		delete(additionalProperties, "azureLocation")
+		delete(additionalProperties, "cloudId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAzureZonesCommand struct {
@@ -363,5 +403,3 @@ func (v *NullableAzureZonesCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

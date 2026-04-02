@@ -73,6 +73,7 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AWSCloudCredentialAPI* | [**AwsCreate**](docs/AWSCloudCredentialAPI.md#awscreate) | **Post** /api/v1/aws/create | Add Aws credentials
+*AWSCloudCredentialAPI* | [**AwsEfsFileSystemByVpcList**](docs/AWSCloudCredentialAPI.md#awsefsfilesystembyvpclist) | **Post** /api/v1/aws/efs-file-system-by-vpc-list | Retrieve aws efs file system by vpc list
 *AWSCloudCredentialAPI* | [**AwsEksClusters**](docs/AWSCloudCredentialAPI.md#awseksclusters) | **Get** /api/v1/aws/eks-clusters/{cloudId} | Retrieve eks clusters list
 *AWSCloudCredentialAPI* | [**AwsEksNodeGroups**](docs/AWSCloudCredentialAPI.md#awseksnodegroups) | **Get** /api/v1/aws/eks-node-groups/{projectId} | Retrieve eks node group list
 *AWSCloudCredentialAPI* | [**AwsGetEksAuthInfo**](docs/AWSCloudCredentialAPI.md#awsgeteksauthinfo) | **Post** /api/v1/aws/eks-auth-info | Get EKS auth info
@@ -91,14 +92,18 @@ Class | Method | HTTP request | Description
 *AccessProfilesAPI* | [**AccessprofilesLockManager**](docs/AccessProfilesAPI.md#accessprofileslockmanager) | **Post** /api/v1/accessprofiles/lockmanager | Lock/unlock access profiles
 *AccessProfilesAPI* | [**AccessprofilesUpdate**](docs/AccessProfilesAPI.md#accessprofilesupdate) | **Put** /api/v1/accessprofiles/update/{id} | Update access profile
 *AccountsAPI* | [**AccountsAccountGroupDetails**](docs/AccountsAPI.md#accountsaccountgroupdetails) | **Get** /api/v1/accounts/{accountId}/groups/{id} | Get group details by accountId
-*AccountsAPI* | [**AccountsAccountGroupsDropdown**](docs/AccountsAPI.md#accountsaccountgroupsdropdown) | **Get** /api/v1/accounts/{accountId}/groups/dropdown | Retrieve account groups dropdown list
+*AccountsAPI* | [**AccountsAccountGroupsDropdown**](docs/AccountsAPI.md#accountsaccountgroupsdropdown) | **Get** /api/v1/accounts/{accountId}/groups/dropdown | Retrieve account groups dropdown list by cursor-based pagination
+*AccountsAPI* | [**AccountsAccountGroupsOffsetBasedDropdown**](docs/AccountsAPI.md#accountsaccountgroupsoffsetbaseddropdown) | **Get** /api/v1/accounts/{accountId}/groups/offset-based/dropdown | Retrieve account groups dropdown list by offset-based pagination
+*AccountsAPI* | [**AccountsAccountOffsetBasedOrganizationsWithGroup**](docs/AccountsAPI.md#accountsaccountoffsetbasedorganizationswithgroup) | **Get** /api/v1/accounts/{accountId}/organizations/offset-based/with/group | Retrieve account organizations with group list by offset-based pagination
 *AccountsAPI* | [**AccountsAccountOrganizationDetails**](docs/AccountsAPI.md#accountsaccountorganizationdetails) | **Get** /api/v1/accounts/{accountId}/organizations/{id} | Get organization details by accountId
 *AccountsAPI* | [**AccountsAccountOrganizationsAvailable**](docs/AccountsAPI.md#accountsaccountorganizationsavailable) | **Get** /api/v1/accounts/{accountId}/organizations/available | Retrieve available organizations for adding to a group
-*AccountsAPI* | [**AccountsAccountOrganizationsWithGroup**](docs/AccountsAPI.md#accountsaccountorganizationswithgroup) | **Get** /api/v1/accounts/{accountId}/organizations/with/group | Retrieve account organizations with group list
+*AccountsAPI* | [**AccountsAccountOrganizationsWithGroup**](docs/AccountsAPI.md#accountsaccountorganizationswithgroup) | **Get** /api/v1/accounts/{accountId}/organizations/with/group | Retrieve account organizations with group list by cursor-based pagination
 *AccountsAPI* | [**AccountsAccountProjectDetails**](docs/AccountsAPI.md#accountsaccountprojectdetails) | **Get** /api/v1/accounts/{accountId}/projects/{id} | Get project details by accountId
-*AccountsAPI* | [**AccountsAccountProjectsDropdown**](docs/AccountsAPI.md#accountsaccountprojectsdropdown) | **Get** /api/v1/accounts/{accountId}/projects/dropdown | Retrieve account projects dropdown list
+*AccountsAPI* | [**AccountsAccountProjectsDropdown**](docs/AccountsAPI.md#accountsaccountprojectsdropdown) | **Get** /api/v1/accounts/{accountId}/projects/dropdown | Retrieve account projects dropdown list by cursor-based pagination
+*AccountsAPI* | [**AccountsAccountProjectsOffsetBasedDropdown**](docs/AccountsAPI.md#accountsaccountprojectsoffsetbaseddropdown) | **Get** /api/v1/accounts/{accountId}/projects/offset-based/dropdown | Retrieve account projects dropdown list by offset-based pagination
 *AccountsAPI* | [**AccountsAccountUserDetails**](docs/AccountsAPI.md#accountsaccountuserdetails) | **Get** /api/v1/accounts/{accountId}/users/{id} | Get user details by accountId
-*AccountsAPI* | [**AccountsAccountUserDropdown**](docs/AccountsAPI.md#accountsaccountuserdropdown) | **Get** /api/v1/accounts/{accountId}/user/dropdown | Retrieve account users dropdown list
+*AccountsAPI* | [**AccountsAccountUserDropdown**](docs/AccountsAPI.md#accountsaccountuserdropdown) | **Get** /api/v1/accounts/{accountId}/user/dropdown | Retrieve account users dropdown list by cursor-based pagination
+*AccountsAPI* | [**AccountsAccountUserOffsetBasedDropdown**](docs/AccountsAPI.md#accountsaccountuseroffsetbaseddropdown) | **Get** /api/v1/accounts/{accountId}/user/offset-based/dropdown | Retrieve account users dropdown list by offset-based pagination
 *AccountsAPI* | [**AccountsAccountUsersAvailable**](docs/AccountsAPI.md#accountsaccountusersavailable) | **Get** /api/v1/accounts/{accountId}/users/available | Retrieve available users for adding to a group
 *AccountsAPI* | [**AccountsAddAccountAdmin**](docs/AccountsAPI.md#accountsaddaccountadmin) | **Post** /api/v1/accounts/add-account-admin | Add account admin to account
 *AccountsAPI* | [**AccountsCheckDuplicateEntity**](docs/AccountsAPI.md#accountscheckduplicateentity) | **Post** /api/v1/accounts/check-duplicate-entity | Check duplicate entity
@@ -297,7 +302,15 @@ Class | Method | HTTP request | Description
 *FlavorsAPI* | [**FlavorsZadaraInstanceTypes**](docs/FlavorsAPI.md#flavorszadarainstancetypes) | **Get** /api/v1/flavors/zadara/{cloudId} | Retrieve zadara instance types
 *GenericKubernetesCloudCredentialAPI* | [**GenericKubernetesList**](docs/GenericKubernetesCloudCredentialAPI.md#generickuberneteslist) | **Get** /api/v1/generic-kubernetes/list | Retrieve list of generic kubernetes cloud credentials
 *GenericKubernetesCloudCredentialAPI* | [**GenericKubernetesUpdate**](docs/GenericKubernetesCloudCredentialAPI.md#generickubernetesupdate) | **Put** /api/v1/generic-kubernetes/update | Update Generic kubernetes credentials
-*GlobalConfigurationAPI* | [**GlobalConfigurationsCreateAiBackend**](docs/GlobalConfigurationAPI.md#globalconfigurationscreateaibackend) | **Post** /api/v1/global-configurations/create-ai-backend | Create AI backend
+*GlobalConfigurationAPI* | [**GlobalConfigurationsCreateAiBackend**](docs/GlobalConfigurationAPI.md#globalconfigurationscreateaibackend) | **Post** /api/v1/global-configurations/ai-backend/create | Create AI backend
+*GlobalConfigurationAPI* | [**GlobalConfigurationsCreateEmailConfig**](docs/GlobalConfigurationAPI.md#globalconfigurationscreateemailconfig) | **Post** /api/v1/global-configurations/email-validator-config/create | Create email config
+*GlobalConfigurationAPI* | [**GlobalConfigurationsCreateSlackConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationscreateslackconfiguration) | **Post** /api/v1/global-configurations/slack/create | Create slack configuration
+*GlobalConfigurationAPI* | [**GlobalConfigurationsDeleteAiBackend**](docs/GlobalConfigurationAPI.md#globalconfigurationsdeleteaibackend) | **Delete** /api/v1/global-configurations/ai-backend/{id} | Remove global ai backend configuration
+*GlobalConfigurationAPI* | [**GlobalConfigurationsDeleteSlackConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationsdeleteslackconfiguration) | **Delete** /api/v1/global-configurations/slack/{id} | Remove global slack configuration
+*GlobalConfigurationAPI* | [**GlobalConfigurationsListAiBackendConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationslistaibackendconfiguration) | **Get** /api/v1/global-configurations/ai-backend/list | Retrieve ai backend configuration list
+*GlobalConfigurationAPI* | [**GlobalConfigurationsListSlackConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationslistslackconfiguration) | **Get** /api/v1/global-configurations/slack/list | Retrieve slack configuration list
+*GlobalConfigurationAPI* | [**GlobalConfigurationsUpdateStatusAiBackend**](docs/GlobalConfigurationAPI.md#globalconfigurationsupdatestatusaibackend) | **Post** /api/v1/global-configurations/ai-backend/status | Activate/Deactivate global ai-backend configuration
+*GlobalConfigurationAPI* | [**GlobalConfigurationsUpdateStatusSlackConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationsupdatestatusslackconfiguration) | **Post** /api/v1/global-configurations/slack/status | Activate/Deactivate global slack configuration
 *GoogleAPI* | [**GooglecloudBillingAccountList**](docs/GoogleAPI.md#googlecloudbillingaccountlist) | **Post** /api/v1/googlecloud/billing-accounts | Retrieve google billing accounts list
 *GoogleAPI* | [**GooglecloudCreate**](docs/GoogleAPI.md#googlecloudcreate) | **Post** /api/v1/googlecloud/create | Create google cloud credential
 *GoogleAPI* | [**GooglecloudGkeClusters**](docs/GoogleAPI.md#googlecloudgkeclusters) | **Post** /api/v1/googlecloud/gke-clusters | List of gke clusters
@@ -455,14 +468,12 @@ Class | Method | HTTP request | Description
 *OperationCredentialsAPI* | [**OpscredentialsMetricNames**](docs/OperationCredentialsAPI.md#opscredentialsmetricnames) | **Get** /api/v1/opscredentials/{id}/metric/names | Fetch prometheus metric names
 *OrganizationSubscriptionsAPI* | [**OrganizationsubcriptionsList**](docs/OrganizationSubscriptionsAPI.md#organizationsubcriptionslist) | **Get** /api/v1/organizationsubcriptions | Retrieve all organization subscriptions
 *OrganizationSubscriptionsAPI* | [**OrganizationsubcriptionsUpdate**](docs/OrganizationSubscriptionsAPI.md#organizationsubcriptionsupdate) | **Post** /api/v1/organizationsubcriptions/update | Update subscription
-*OrganizationsAPI* | [**OrganizationsAcceptOffer**](docs/OrganizationsAPI.md#organizationsacceptoffer) | **Post** /api/v1/organizations/accept-offer | Accept discount offer
 *OrganizationsAPI* | [**OrganizationsAddPrometheusrules**](docs/OrganizationsAPI.md#organizationsaddprometheusrules) | **Post** /api/v1/organizations/{id}/prometheusrules | Add prometheus rule(s) to organization
 *OrganizationsAPI* | [**OrganizationsCreate**](docs/OrganizationsAPI.md#organizationscreate) | **Post** /api/v1/organizations | Add a new organization. Only available for admins.
 *OrganizationsAPI* | [**OrganizationsDelete**](docs/OrganizationsAPI.md#organizationsdelete) | **Delete** /api/v1/organizations/{id} | Delete the specified organization. Only available for admins.
 *OrganizationsAPI* | [**OrganizationsDeletePrometheusrules**](docs/OrganizationsAPI.md#organizationsdeleteprometheusrules) | **Put** /api/v1/organizations/{id}/prometheusrules | Unbind prometheus rule(s) from organization
 *OrganizationsAPI* | [**OrganizationsDetails**](docs/OrganizationsAPI.md#organizationsdetails) | **Get** /api/v1/organizations/details | Retrieve all data about current organization by Id
 *OrganizationsAPI* | [**OrganizationsExportCsv**](docs/OrganizationsAPI.md#organizationsexportcsv) | **Get** /api/v1/organizations/export | Export Csv file
-*OrganizationsAPI* | [**OrganizationsLeave**](docs/OrganizationsAPI.md#organizationsleave) | **Post** /api/v1/organizations/leave | Leave taikun
 *OrganizationsAPI* | [**OrganizationsList**](docs/OrganizationsAPI.md#organizationslist) | **Get** /api/v1/organizations | Retrieve all organizations
 *OrganizationsAPI* | [**OrganizationsOrganizationList**](docs/OrganizationsAPI.md#organizationsorganizationlist) | **Get** /api/v1/organizations/list | Retrieve organizations
 *OrganizationsAPI* | [**OrganizationsUpdate**](docs/OrganizationsAPI.md#organizationsupdate) | **Post** /api/v1/organizations/update | Update organization by Id
@@ -636,6 +647,9 @@ Class | Method | HTTP request | Description
 *SlackAPI* | [**SlackList**](docs/SlackAPI.md#slacklist) | **Get** /api/v1/slack | Retrieve all slack configs
 *SlackAPI* | [**SlackUpdate**](docs/SlackAPI.md#slackupdate) | **Put** /api/v1/slack/update/{id} | Update slack configuration
 *SlackAPI* | [**SlackVerify**](docs/SlackAPI.md#slackverify) | **Post** /api/v1/slack/verify | Verify slack configuration
+*SseAPI* | [**SseHealth**](docs/SseAPI.md#ssehealth) | **Get** /api/v1/sse/health | Subscribe to real-time infrastructure health state changes
+*SseAPI* | [**SseNotifications**](docs/SseAPI.md#ssenotifications) | **Get** /api/v1/sse/notifications | Subscribe to real-time notification messages for the current user
+*SseAPI* | [**SseUpdateUserPermission**](docs/SseAPI.md#sseupdateuserpermission) | **Get** /api/v1/sse/update-user-permission | Subscribe to real-time cache invalidation events for the current user
 *SshUsersAPI* | [**SshusersCreate**](docs/SshUsersAPI.md#sshuserscreate) | **Post** /api/v1/sshusers/create | Create access profile ssh user
 *SshUsersAPI* | [**SshusersDelete**](docs/SshUsersAPI.md#sshusersdelete) | **Post** /api/v1/sshusers/delete | Delete access profile ssh user
 *SshUsersAPI* | [**SshusersEdit**](docs/SshUsersAPI.md#sshusersedit) | **Post** /api/v1/sshusers/edit | Edit access profile ssh user
@@ -690,11 +704,8 @@ Class | Method | HTTP request | Description
 *UsersAPI* | [**UsersDeleteMyAccount**](docs/UsersAPI.md#usersdeletemyaccount) | **Post** /api/v1/users/delete | Delete my account
 *UsersAPI* | [**UsersDisable**](docs/UsersAPI.md#usersdisable) | **Post** /api/v1/users/disable | Disable user
 *UsersAPI* | [**UsersDowngradeRole**](docs/UsersAPI.md#usersdowngraderole) | **Post** /api/v1/users/downgrade | Downgrade user role
-*UsersAPI* | [**UsersDropdown**](docs/UsersAPI.md#usersdropdown) | **Get** /api/v1/users/list | Retrieve users as dropdown
+*UsersAPI* | [**UsersDropdown**](docs/UsersAPI.md#usersdropdown) | **Get** /api/v1/users/dropdown | Retrieve user info
 *UsersAPI* | [**UsersForceToResetPassword**](docs/UsersAPI.md#usersforcetoresetpassword) | **Post** /api/v1/users/force-to-reset | Force to reset password
-*UsersAPI* | [**UsersList**](docs/UsersAPI.md#userslist) | **Get** /api/v1/users | Retrieve all users
-*UsersAPI* | [**UsersMeEvents**](docs/UsersAPI.md#usersmeevents) | **Get** /api/v1/users/me/sse | Subscribe to real-time cache invalidation events for the current user
-*UsersAPI* | [**UsersNotifications**](docs/UsersAPI.md#usersnotifications) | **Get** /api/v1/users/me/notifications | Subscribe to real-time notification messages for the current user
 *UsersAPI* | [**UsersPromoteRole**](docs/UsersAPI.md#userspromoterole) | **Post** /api/v1/users/promote-role | Promote user role
 *UsersAPI* | [**UsersToggleMaintenanceMode**](docs/UsersAPI.md#userstogglemaintenancemode) | **Post** /api/v1/users/togglemaintenancemode | Toggle maintenance mode
 *UsersAPI* | [**UsersToggleNotificationMode**](docs/UsersAPI.md#userstogglenotificationmode) | **Post** /api/v1/users/togglenotificationmode | Toggle notification mode
@@ -795,6 +806,7 @@ Class | Method | HTTP request | Description
  - [AwsCredentialList](docs/AwsCredentialList.md)
  - [AwsEksClusterDto](docs/AwsEksClusterDto.md)
  - [AwsEksNodeGroupDto](docs/AwsEksNodeGroupDto.md)
+ - [AwsFileSystemsCommand](docs/AwsFileSystemsCommand.md)
  - [AwsFlavorList](docs/AwsFlavorList.md)
  - [AwsFlavorListDto](docs/AwsFlavorListDto.md)
  - [AwsImagesPostListCommand](docs/AwsImagesPostListCommand.md)
@@ -903,7 +915,6 @@ Class | Method | HTTP request | Description
  - [CommonSearchKubernetesResponseData](docs/CommonSearchKubernetesResponseData.md)
  - [CommonSearchResponseData](docs/CommonSearchResponseData.md)
  - [CommonStringBasedDropdownDto](docs/CommonStringBasedDropdownDto.md)
- - [CommonStringDropdownIsBoundDto](docs/CommonStringDropdownIsBoundDto.md)
  - [ConfigMapSearchCommand](docs/ConfigMapSearchCommand.md)
  - [ConfigMapSearchList](docs/ConfigMapSearchList.md)
  - [ConfigmapListDto](docs/ConfigmapListDto.md)
@@ -932,8 +943,10 @@ Class | Method | HTTP request | Description
  - [CreateCatalogAppCommand](docs/CreateCatalogAppCommand.md)
  - [CreateCatalogCommand](docs/CreateCatalogCommand.md)
  - [CreateDnsServerCommand](docs/CreateDnsServerCommand.md)
+ - [CreateEmailConfigurationCommand](docs/CreateEmailConfigurationCommand.md)
  - [CreateExecutorCommand](docs/CreateExecutorCommand.md)
  - [CreateGenericTaikunLbDto](docs/CreateGenericTaikunLbDto.md)
+ - [CreateGlobalSlackConfigurationCommand](docs/CreateGlobalSlackConfigurationCommand.md)
  - [CreateGroupCommand](docs/CreateGroupCommand.md)
  - [CreateGroupOrganizationDto](docs/CreateGroupOrganizationDto.md)
  - [CreateGroupUserDto](docs/CreateGroupUserDto.md)
@@ -1068,6 +1081,7 @@ Class | Method | HTTP request | Description
  - [EditVirtualClusterQuotasCommand](docs/EditVirtualClusterQuotasCommand.md)
  - [EditVirtualClusterResourceLimits](docs/EditVirtualClusterResourceLimits.md)
  - [EditVirtualClusterWorkloadResources](docs/EditVirtualClusterWorkloadResources.md)
+ - [EfsFileSystemDto](docs/EfsFileSystemDto.md)
  - [EmailMode](docs/EmailMode.md)
  - [EnableAutoscalingCommand](docs/EnableAutoscalingCommand.md)
  - [EnsureCodesDownloadedCommand](docs/EnsureCodesDownloadedCommand.md)
@@ -1097,7 +1111,13 @@ Class | Method | HTTP request | Description
  - [GetToken](docs/GetToken.md)
  - [GkeClusterDto](docs/GkeClusterDto.md)
  - [GkeClustersListCommand](docs/GkeClustersListCommand.md)
+ - [GlobalAiBackendConfigurationDto](docs/GlobalAiBackendConfigurationDto.md)
+ - [GlobalAiBackendConfigurationList](docs/GlobalAiBackendConfigurationList.md)
+ - [GlobalAiBackendConfigurationStatusManagementCommand](docs/GlobalAiBackendConfigurationStatusManagementCommand.md)
  - [GlobalRole](docs/GlobalRole.md)
+ - [GlobalSlackConfigurationDto](docs/GlobalSlackConfigurationDto.md)
+ - [GlobalSlackConfigurationList](docs/GlobalSlackConfigurationList.md)
+ - [GlobalSlackConfigurationStatusManagementCommand](docs/GlobalSlackConfigurationStatusManagementCommand.md)
  - [GoogleCredentialList](docs/GoogleCredentialList.md)
  - [GoogleCredentialsListDto](docs/GoogleCredentialsListDto.md)
  - [GoogleFlavorDto](docs/GoogleFlavorDto.md)
@@ -1106,6 +1126,7 @@ Class | Method | HTTP request | Description
  - [GroupDetailsDto](docs/GroupDetailsDto.md)
  - [GroupList](docs/GroupList.md)
  - [GroupListItem](docs/GroupListItem.md)
+ - [GroupOffsetPaginationDropdownList](docs/GroupOffsetPaginationDropdownList.md)
  - [GroupedBillingInfo](docs/GroupedBillingInfo.md)
  - [GroupedBillingListQuery](docs/GroupedBillingListQuery.md)
  - [GroupedBillings](docs/GroupedBillings.md)
@@ -1195,7 +1216,6 @@ Class | Method | HTTP request | Description
  - [KubesprayListDto](docs/KubesprayListDto.md)
  - [Kubesprays](docs/Kubesprays.md)
  - [LbProvider](docs/LbProvider.md)
- - [LeaveTaikunCommand](docs/LeaveTaikunCommand.md)
  - [LeaveTaikunDto](docs/LeaveTaikunDto.md)
  - [ListAllBackupStorageLocations](docs/ListAllBackupStorageLocations.md)
  - [ListAllBackups](docs/ListAllBackups.md)
@@ -1277,6 +1297,7 @@ Class | Method | HTTP request | Description
  - [OrganizationDropdownProjectDto](docs/OrganizationDropdownProjectDto.md)
  - [OrganizationEntityForDashboard](docs/OrganizationEntityForDashboard.md)
  - [OrganizationNameCheckerCommand](docs/OrganizationNameCheckerCommand.md)
+ - [OrganizationOffsetPaginationWithGroupList](docs/OrganizationOffsetPaginationWithGroupList.md)
  - [OrganizationSearchCommand](docs/OrganizationSearchCommand.md)
  - [OrganizationSearchList](docs/OrganizationSearchList.md)
  - [OrganizationSubscriptionDto](docs/OrganizationSubscriptionDto.md)
@@ -1286,7 +1307,6 @@ Class | Method | HTTP request | Description
  - [OrganizationsWithGroupInfoResultDtoCursorPaginatedResponse](docs/OrganizationsWithGroupInfoResultDtoCursorPaginatedResponse.md)
  - [PackageAutocompleteDto](docs/PackageAutocompleteDto.md)
  - [ParameterType](docs/ParameterType.md)
- - [PartnerDetailsForOrganizationsDto](docs/PartnerDetailsForOrganizationsDto.md)
  - [PatchKubernetesResourceCommand](docs/PatchKubernetesResourceCommand.md)
  - [PayInvoiceCommand](docs/PayInvoiceCommand.md)
  - [PdbSearchCommand](docs/PdbSearchCommand.md)
@@ -1319,7 +1339,6 @@ Class | Method | HTTP request | Description
  - [ProjectDetailsErrorType](docs/ProjectDetailsErrorType.md)
  - [ProjectDetailsForServersDto](docs/ProjectDetailsForServersDto.md)
  - [ProjectDetailsForVmsDto](docs/ProjectDetailsForVmsDto.md)
- - [ProjectDto](docs/ProjectDto.md)
  - [ProjectExtendLifeTimeCommand](docs/ProjectExtendLifeTimeCommand.md)
  - [ProjectHealth](docs/ProjectHealth.md)
  - [ProjectInfracost](docs/ProjectInfracost.md)
@@ -1328,6 +1347,7 @@ Class | Method | HTTP request | Description
  - [ProjectMaintenanceModeCommand](docs/ProjectMaintenanceModeCommand.md)
  - [ProjectMetadata](docs/ProjectMetadata.md)
  - [ProjectMonitoringAlertsDto](docs/ProjectMonitoringAlertsDto.md)
+ - [ProjectOffsetPaginationList](docs/ProjectOffsetPaginationList.md)
  - [ProjectQuotaList](docs/ProjectQuotaList.md)
  - [ProjectQuotaListDto](docs/ProjectQuotaListDto.md)
  - [ProjectStatus](docs/ProjectStatus.md)
@@ -1373,6 +1393,7 @@ Class | Method | HTTP request | Description
  - [ProxmoxRole](docs/ProxmoxRole.md)
  - [ProxmoxStorage](docs/ProxmoxStorage.md)
  - [PublicImageList](docs/PublicImageList.md)
+ - [PullSecretLabels](docs/PullSecretLabels.md)
  - [PvcListDto](docs/PvcListDto.md)
  - [PvcListDtoCursorStringPaginatedResponse](docs/PvcListDtoCursorStringPaginatedResponse.md)
  - [PvcSearchCommand](docs/PvcSearchCommand.md)
@@ -1544,15 +1565,16 @@ Class | Method | HTTP request | Description
  - [UserAuthContext](docs/UserAuthContext.md)
  - [UserBriefDto](docs/UserBriefDto.md)
  - [UserBriefDtoCursorTimestampPaginatedResponse](docs/UserBriefDtoCursorTimestampPaginatedResponse.md)
+ - [UserByOrgProjectDropdownList](docs/UserByOrgProjectDropdownList.md)
  - [UserDetails](docs/UserDetails.md)
  - [UserDetailsDto](docs/UserDetailsDto.md)
  - [UserDto](docs/UserDto.md)
  - [UserExistCommand](docs/UserExistCommand.md)
  - [UserForListDto](docs/UserForListDto.md)
+ - [UserOffsetPaginationDropdownList](docs/UserOffsetPaginationDropdownList.md)
  - [UserOrganizationDto](docs/UserOrganizationDto.md)
  - [UserResourceChartDto](docs/UserResourceChartDto.md)
  - [UserWithGlobalRoleDto](docs/UserWithGlobalRoleDto.md)
- - [UsersList](docs/UsersList.md)
  - [UsersSearchCommand](docs/UsersSearchCommand.md)
  - [UsersSearchList](docs/UsersSearchList.md)
  - [UsersSearchResponseData](docs/UsersSearchResponseData.md)

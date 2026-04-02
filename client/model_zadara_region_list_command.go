@@ -20,10 +20,13 @@ var _ MappedNullable = &ZadaraRegionListCommand{}
 
 // ZadaraRegionListCommand struct for ZadaraRegionListCommand
 type ZadaraRegionListCommand struct {
-	Url NullableString `json:"url,omitempty"`
-	ZadaraAccessKeyId NullableString `json:"zadaraAccessKeyId,omitempty"`
+	Url                   NullableString `json:"url,omitempty"`
+	ZadaraAccessKeyId     NullableString `json:"zadaraAccessKeyId,omitempty"`
 	ZadaraSecretAccessKey NullableString `json:"zadaraSecretAccessKey,omitempty"`
+	AdditionalProperties  map[string]interface{}
 }
+
+type _ZadaraRegionListCommand ZadaraRegionListCommand
 
 // NewZadaraRegionListCommand instantiates a new ZadaraRegionListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *ZadaraRegionListCommand) HasUrl() bool {
 func (o *ZadaraRegionListCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *ZadaraRegionListCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -116,6 +120,7 @@ func (o *ZadaraRegionListCommand) HasZadaraAccessKeyId() bool {
 func (o *ZadaraRegionListCommand) SetZadaraAccessKeyId(v string) {
 	o.ZadaraAccessKeyId.Set(&v)
 }
+
 // SetZadaraAccessKeyIdNil sets the value for ZadaraAccessKeyId to be an explicit nil
 func (o *ZadaraRegionListCommand) SetZadaraAccessKeyIdNil() {
 	o.ZadaraAccessKeyId.Set(nil)
@@ -158,6 +163,7 @@ func (o *ZadaraRegionListCommand) HasZadaraSecretAccessKey() bool {
 func (o *ZadaraRegionListCommand) SetZadaraSecretAccessKey(v string) {
 	o.ZadaraSecretAccessKey.Set(&v)
 }
+
 // SetZadaraSecretAccessKeyNil sets the value for ZadaraSecretAccessKey to be an explicit nil
 func (o *ZadaraRegionListCommand) SetZadaraSecretAccessKeyNil() {
 	o.ZadaraSecretAccessKey.Set(nil)
@@ -169,7 +175,7 @@ func (o *ZadaraRegionListCommand) UnsetZadaraSecretAccessKey() {
 }
 
 func (o ZadaraRegionListCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -187,7 +193,35 @@ func (o ZadaraRegionListCommand) ToMap() (map[string]interface{}, error) {
 	if o.ZadaraSecretAccessKey.IsSet() {
 		toSerialize["zadaraSecretAccessKey"] = o.ZadaraSecretAccessKey.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ZadaraRegionListCommand) UnmarshalJSON(data []byte) (err error) {
+	varZadaraRegionListCommand := _ZadaraRegionListCommand{}
+
+	err = json.Unmarshal(data, &varZadaraRegionListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ZadaraRegionListCommand(varZadaraRegionListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "zadaraAccessKeyId")
+		delete(additionalProperties, "zadaraSecretAccessKey")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableZadaraRegionListCommand struct {
@@ -225,5 +259,3 @@ func (v *NullableZadaraRegionListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

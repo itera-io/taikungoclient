@@ -20,9 +20,12 @@ var _ MappedNullable = &CheckAwsCommand{}
 
 // CheckAwsCommand struct for CheckAwsCommand
 type CheckAwsCommand struct {
-	AwsAccessKeyId NullableString `json:"awsAccessKeyId,omitempty"`
-	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey,omitempty"`
+	AwsAccessKeyId       NullableString `json:"awsAccessKeyId,omitempty"`
+	AwsSecretAccessKey   NullableString `json:"awsSecretAccessKey,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CheckAwsCommand CheckAwsCommand
 
 // NewCheckAwsCommand instantiates a new CheckAwsCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *CheckAwsCommand) HasAwsAccessKeyId() bool {
 func (o *CheckAwsCommand) SetAwsAccessKeyId(v string) {
 	o.AwsAccessKeyId.Set(&v)
 }
+
 // SetAwsAccessKeyIdNil sets the value for AwsAccessKeyId to be an explicit nil
 func (o *CheckAwsCommand) SetAwsAccessKeyIdNil() {
 	o.AwsAccessKeyId.Set(nil)
@@ -115,6 +119,7 @@ func (o *CheckAwsCommand) HasAwsSecretAccessKey() bool {
 func (o *CheckAwsCommand) SetAwsSecretAccessKey(v string) {
 	o.AwsSecretAccessKey.Set(&v)
 }
+
 // SetAwsSecretAccessKeyNil sets the value for AwsSecretAccessKey to be an explicit nil
 func (o *CheckAwsCommand) SetAwsSecretAccessKeyNil() {
 	o.AwsSecretAccessKey.Set(nil)
@@ -126,7 +131,7 @@ func (o *CheckAwsCommand) UnsetAwsSecretAccessKey() {
 }
 
 func (o CheckAwsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,7 +146,34 @@ func (o CheckAwsCommand) ToMap() (map[string]interface{}, error) {
 	if o.AwsSecretAccessKey.IsSet() {
 		toSerialize["awsSecretAccessKey"] = o.AwsSecretAccessKey.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CheckAwsCommand) UnmarshalJSON(data []byte) (err error) {
+	varCheckAwsCommand := _CheckAwsCommand{}
+
+	err = json.Unmarshal(data, &varCheckAwsCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CheckAwsCommand(varCheckAwsCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "awsAccessKeyId")
+		delete(additionalProperties, "awsSecretAccessKey")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCheckAwsCommand struct {
@@ -179,5 +211,3 @@ func (v *NullableCheckAwsCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

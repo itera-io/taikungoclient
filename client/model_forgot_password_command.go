@@ -20,9 +20,12 @@ var _ MappedNullable = &ForgotPasswordCommand{}
 
 // ForgotPasswordCommand struct for ForgotPasswordCommand
 type ForgotPasswordCommand struct {
-	Email NullableString `json:"email,omitempty"`
-	AccountName NullableString `json:"accountName,omitempty"`
+	Email                NullableString `json:"email,omitempty"`
+	AccountName          NullableString `json:"accountName,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ForgotPasswordCommand ForgotPasswordCommand
 
 // NewForgotPasswordCommand instantiates a new ForgotPasswordCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *ForgotPasswordCommand) HasEmail() bool {
 func (o *ForgotPasswordCommand) SetEmail(v string) {
 	o.Email.Set(&v)
 }
+
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *ForgotPasswordCommand) SetEmailNil() {
 	o.Email.Set(nil)
@@ -115,6 +119,7 @@ func (o *ForgotPasswordCommand) HasAccountName() bool {
 func (o *ForgotPasswordCommand) SetAccountName(v string) {
 	o.AccountName.Set(&v)
 }
+
 // SetAccountNameNil sets the value for AccountName to be an explicit nil
 func (o *ForgotPasswordCommand) SetAccountNameNil() {
 	o.AccountName.Set(nil)
@@ -126,7 +131,7 @@ func (o *ForgotPasswordCommand) UnsetAccountName() {
 }
 
 func (o ForgotPasswordCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,7 +146,34 @@ func (o ForgotPasswordCommand) ToMap() (map[string]interface{}, error) {
 	if o.AccountName.IsSet() {
 		toSerialize["accountName"] = o.AccountName.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ForgotPasswordCommand) UnmarshalJSON(data []byte) (err error) {
+	varForgotPasswordCommand := _ForgotPasswordCommand{}
+
+	err = json.Unmarshal(data, &varForgotPasswordCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ForgotPasswordCommand(varForgotPasswordCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "accountName")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableForgotPasswordCommand struct {
@@ -179,5 +211,3 @@ func (v *NullableForgotPasswordCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

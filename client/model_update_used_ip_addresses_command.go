@@ -20,8 +20,11 @@ var _ MappedNullable = &UpdateUsedIpAddressesCommand{}
 
 // UpdateUsedIpAddressesCommand struct for UpdateUsedIpAddressesCommand
 type UpdateUsedIpAddressesCommand struct {
-	IpAddress []string `json:"ipAddress,omitempty"`
+	IpAddress            []string `json:"ipAddress,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateUsedIpAddressesCommand UpdateUsedIpAddressesCommand
 
 // NewUpdateUsedIpAddressesCommand instantiates a new UpdateUsedIpAddressesCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -74,7 +77,7 @@ func (o *UpdateUsedIpAddressesCommand) SetIpAddress(v []string) {
 }
 
 func (o UpdateUsedIpAddressesCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -86,7 +89,33 @@ func (o UpdateUsedIpAddressesCommand) ToMap() (map[string]interface{}, error) {
 	if o.IpAddress != nil {
 		toSerialize["ipAddress"] = o.IpAddress
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateUsedIpAddressesCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateUsedIpAddressesCommand := _UpdateUsedIpAddressesCommand{}
+
+	err = json.Unmarshal(data, &varUpdateUsedIpAddressesCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateUsedIpAddressesCommand(varUpdateUsedIpAddressesCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "ipAddress")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateUsedIpAddressesCommand struct {
@@ -124,5 +153,3 @@ func (v *NullableUpdateUsedIpAddressesCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

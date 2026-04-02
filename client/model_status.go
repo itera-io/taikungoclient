@@ -21,9 +21,12 @@ var _ MappedNullable = &Status{}
 
 // Status struct for Status
 type Status struct {
-	LastBackup *time.Time `json:"lastBackup,omitempty"`
-	Phase NullableString `json:"phase,omitempty"`
+	LastBackup           *time.Time     `json:"lastBackup,omitempty"`
+	Phase                NullableString `json:"phase,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Status Status
 
 // NewStatus instantiates a new Status object
 // This constructor will assign default values to properties that have it defined,
@@ -106,6 +109,7 @@ func (o *Status) HasPhase() bool {
 func (o *Status) SetPhase(v string) {
 	o.Phase.Set(&v)
 }
+
 // SetPhaseNil sets the value for Phase to be an explicit nil
 func (o *Status) SetPhaseNil() {
 	o.Phase.Set(nil)
@@ -117,7 +121,7 @@ func (o *Status) UnsetPhase() {
 }
 
 func (o Status) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -132,7 +136,34 @@ func (o Status) ToMap() (map[string]interface{}, error) {
 	if o.Phase.IsSet() {
 		toSerialize["phase"] = o.Phase.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Status) UnmarshalJSON(data []byte) (err error) {
+	varStatus := _Status{}
+
+	err = json.Unmarshal(data, &varStatus)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Status(varStatus)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "lastBackup")
+		delete(additionalProperties, "phase")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableStatus struct {
@@ -170,5 +201,3 @@ func (v *NullableStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

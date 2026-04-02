@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,12 +21,13 @@ var _ MappedNullable = &CloudCredentialsForOrganizationEntity{}
 
 // CloudCredentialsForOrganizationEntity struct for CloudCredentialsForOrganizationEntity
 type CloudCredentialsForOrganizationEntity struct {
-	Id int32 `json:"id"`
-	Projects []CommonDropdownDto `json:"projects"`
-	FullName NullableString `json:"fullName"`
-	CloudType CloudType `json:"cloudType"`
-	IsDefault bool `json:"isDefault"`
-	OrganizationId *int32 `json:"organizationId,omitempty"`
+	Id                   int32               `json:"id"`
+	Projects             []CommonDropdownDto `json:"projects"`
+	FullName             NullableString      `json:"fullName"`
+	CloudType            CloudType           `json:"cloudType"`
+	IsDefault            bool                `json:"isDefault"`
+	OrganizationId       *int32              `json:"organizationId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CloudCredentialsForOrganizationEntity CloudCredentialsForOrganizationEntity
@@ -211,7 +211,7 @@ func (o *CloudCredentialsForOrganizationEntity) SetOrganizationId(v int32) {
 }
 
 func (o CloudCredentialsForOrganizationEntity) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,6 +230,11 @@ func (o CloudCredentialsForOrganizationEntity) ToMap() (map[string]interface{}, 
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -250,10 +255,10 @@ func (o *CloudCredentialsForOrganizationEntity) UnmarshalJSON(data []byte) (err 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -261,15 +266,25 @@ func (o *CloudCredentialsForOrganizationEntity) UnmarshalJSON(data []byte) (err 
 
 	varCloudCredentialsForOrganizationEntity := _CloudCredentialsForOrganizationEntity{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCloudCredentialsForOrganizationEntity)
+	err = json.Unmarshal(data, &varCloudCredentialsForOrganizationEntity)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CloudCredentialsForOrganizationEntity(varCloudCredentialsForOrganizationEntity)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "fullName")
+		delete(additionalProperties, "cloudType")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "organizationId")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -309,5 +324,3 @@ func (v *NullableCloudCredentialsForOrganizationEntity) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,10 +20,13 @@ var _ MappedNullable = &ResetStandAloneVmStatusCommand{}
 
 // ResetStandAloneVmStatusCommand struct for ResetStandAloneVmStatusCommand
 type ResetStandAloneVmStatusCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	VmIds []int32 `json:"vmIds,omitempty"`
-	Status *StandAloneVmStatus `json:"status,omitempty"`
+	ProjectId            *int32              `json:"projectId,omitempty"`
+	VmIds                []int32             `json:"vmIds,omitempty"`
+	Status               *StandAloneVmStatus `json:"status,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ResetStandAloneVmStatusCommand ResetStandAloneVmStatusCommand
 
 // NewResetStandAloneVmStatusCommand instantiates a new ResetStandAloneVmStatusCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -140,7 +143,7 @@ func (o *ResetStandAloneVmStatusCommand) SetStatus(v StandAloneVmStatus) {
 }
 
 func (o ResetStandAloneVmStatusCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,7 +161,35 @@ func (o ResetStandAloneVmStatusCommand) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ResetStandAloneVmStatusCommand) UnmarshalJSON(data []byte) (err error) {
+	varResetStandAloneVmStatusCommand := _ResetStandAloneVmStatusCommand{}
+
+	err = json.Unmarshal(data, &varResetStandAloneVmStatusCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ResetStandAloneVmStatusCommand(varResetStandAloneVmStatusCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "vmIds")
+		delete(additionalProperties, "status")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableResetStandAloneVmStatusCommand struct {
@@ -196,5 +227,3 @@ func (v *NullableResetStandAloneVmStatusCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

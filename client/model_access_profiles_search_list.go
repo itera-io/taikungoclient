@@ -20,9 +20,12 @@ var _ MappedNullable = &AccessProfilesSearchList{}
 
 // AccessProfilesSearchList struct for AccessProfilesSearchList
 type AccessProfilesSearchList struct {
-	Data []CommonSearchResponseData `json:"data,omitempty"`
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	Data                 []CommonSearchResponseData `json:"data,omitempty"`
+	TotalCount           *int32                     `json:"totalCount,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AccessProfilesSearchList AccessProfilesSearchList
 
 // NewAccessProfilesSearchList instantiates a new AccessProfilesSearchList object
 // This constructor will assign default values to properties that have it defined,
@@ -107,7 +110,7 @@ func (o *AccessProfilesSearchList) SetTotalCount(v int32) {
 }
 
 func (o AccessProfilesSearchList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -122,7 +125,34 @@ func (o AccessProfilesSearchList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AccessProfilesSearchList) UnmarshalJSON(data []byte) (err error) {
+	varAccessProfilesSearchList := _AccessProfilesSearchList{}
+
+	err = json.Unmarshal(data, &varAccessProfilesSearchList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AccessProfilesSearchList(varAccessProfilesSearchList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAccessProfilesSearchList struct {
@@ -160,5 +190,3 @@ func (v *NullableAccessProfilesSearchList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,9 +20,12 @@ var _ MappedNullable = &UpdateHypervisorsCommand{}
 
 // UpdateHypervisorsCommand struct for UpdateHypervisorsCommand
 type UpdateHypervisorsCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Hypervisors []string `json:"hypervisors,omitempty"`
+	Id                   *int32   `json:"id,omitempty"`
+	Hypervisors          []string `json:"hypervisors,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateHypervisorsCommand UpdateHypervisorsCommand
 
 // NewUpdateHypervisorsCommand instantiates a new UpdateHypervisorsCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -107,7 +110,7 @@ func (o *UpdateHypervisorsCommand) SetHypervisors(v []string) {
 }
 
 func (o UpdateHypervisorsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -122,7 +125,34 @@ func (o UpdateHypervisorsCommand) ToMap() (map[string]interface{}, error) {
 	if o.Hypervisors != nil {
 		toSerialize["hypervisors"] = o.Hypervisors
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateHypervisorsCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateHypervisorsCommand := _UpdateHypervisorsCommand{}
+
+	err = json.Unmarshal(data, &varUpdateHypervisorsCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateHypervisorsCommand(varUpdateHypervisorsCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "hypervisors")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateHypervisorsCommand struct {
@@ -160,5 +190,3 @@ func (v *NullableUpdateHypervisorsCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

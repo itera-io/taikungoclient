@@ -20,8 +20,11 @@ var _ MappedNullable = &VerifyWebhookCommand{}
 
 // VerifyWebhookCommand struct for VerifyWebhookCommand
 type VerifyWebhookCommand struct {
-	Url NullableString `json:"url,omitempty"`
+	Url                  NullableString `json:"url,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _VerifyWebhookCommand VerifyWebhookCommand
 
 // NewVerifyWebhookCommand instantiates a new VerifyWebhookCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -72,6 +75,7 @@ func (o *VerifyWebhookCommand) HasUrl() bool {
 func (o *VerifyWebhookCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *VerifyWebhookCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -83,7 +87,7 @@ func (o *VerifyWebhookCommand) UnsetUrl() {
 }
 
 func (o VerifyWebhookCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -95,7 +99,33 @@ func (o VerifyWebhookCommand) ToMap() (map[string]interface{}, error) {
 	if o.Url.IsSet() {
 		toSerialize["url"] = o.Url.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *VerifyWebhookCommand) UnmarshalJSON(data []byte) (err error) {
+	varVerifyWebhookCommand := _VerifyWebhookCommand{}
+
+	err = json.Unmarshal(data, &varVerifyWebhookCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VerifyWebhookCommand(varVerifyWebhookCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableVerifyWebhookCommand struct {
@@ -133,5 +163,3 @@ func (v *NullableVerifyWebhookCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

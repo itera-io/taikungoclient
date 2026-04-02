@@ -20,22 +20,25 @@ var _ MappedNullable = &ProjectDetailsDto{}
 
 // ProjectDetailsDto struct for ProjectDetailsDto
 type ProjectDetailsDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	OrganizationId *int32 `json:"organizationId,omitempty"`
-	OrganizationName *string `json:"organizationName,omitempty"`
-	CloudType *ECloudCredentialType `json:"cloudType,omitempty"`
-	Status *ProjectStatus `json:"status,omitempty"`
-	Health *ProjectHealth `json:"health,omitempty"`
-	AlertCount *int32 `json:"alertCount,omitempty"`
-	CurrentKubernetesVersion *string `json:"currentKubernetesVersion,omitempty"`
-	ModifiedAt *string `json:"modifiedAt,omitempty"`
-	ModifiedBy *string `json:"modifiedBy,omitempty"`
-	CreatedAt *string `json:"createdAt,omitempty"`
-	ExpiredAt *string `json:"expiredAt,omitempty"`
-	HasKubeConfigFile *bool `json:"hasKubeConfigFile,omitempty"`
-	Users []GroupedOrganizationUserDto `json:"users,omitempty"`
+	Id                       *int32                       `json:"id,omitempty"`
+	Name                     *string                      `json:"name,omitempty"`
+	OrganizationId           *int32                       `json:"organizationId,omitempty"`
+	OrganizationName         *string                      `json:"organizationName,omitempty"`
+	CloudType                *ECloudCredentialType        `json:"cloudType,omitempty"`
+	Status                   *ProjectStatus               `json:"status,omitempty"`
+	Health                   *ProjectHealth               `json:"health,omitempty"`
+	AlertCount               *int32                       `json:"alertCount,omitempty"`
+	CurrentKubernetesVersion *string                      `json:"currentKubernetesVersion,omitempty"`
+	ModifiedAt               *string                      `json:"modifiedAt,omitempty"`
+	ModifiedBy               *string                      `json:"modifiedBy,omitempty"`
+	CreatedAt                *string                      `json:"createdAt,omitempty"`
+	ExpiredAt                *string                      `json:"expiredAt,omitempty"`
+	HasKubeConfigFile        *bool                        `json:"hasKubeConfigFile,omitempty"`
+	Users                    []GroupedOrganizationUserDto `json:"users,omitempty"`
+	AdditionalProperties     map[string]interface{}
 }
+
+type _ProjectDetailsDto ProjectDetailsDto
 
 // NewProjectDetailsDto instantiates a new ProjectDetailsDto object
 // This constructor will assign default values to properties that have it defined,
@@ -535,7 +538,7 @@ func (o *ProjectDetailsDto) SetUsers(v []GroupedOrganizationUserDto) {
 }
 
 func (o ProjectDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -589,7 +592,47 @@ func (o ProjectDetailsDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Users) {
 		toSerialize["users"] = o.Users
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectDetailsDto) UnmarshalJSON(data []byte) (err error) {
+	varProjectDetailsDto := _ProjectDetailsDto{}
+
+	err = json.Unmarshal(data, &varProjectDetailsDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectDetailsDto(varProjectDetailsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "cloudType")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "health")
+		delete(additionalProperties, "alertCount")
+		delete(additionalProperties, "currentKubernetesVersion")
+		delete(additionalProperties, "modifiedAt")
+		delete(additionalProperties, "modifiedBy")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "expiredAt")
+		delete(additionalProperties, "hasKubeConfigFile")
+		delete(additionalProperties, "users")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectDetailsDto struct {
@@ -627,5 +670,3 @@ func (v *NullableProjectDetailsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,10 +20,13 @@ var _ MappedNullable = &CreateAccountCommand{}
 
 // CreateAccountCommand struct for CreateAccountCommand
 type CreateAccountCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	Email NullableString `json:"email,omitempty"`
-	CreateOrganization *bool `json:"createOrganization,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Email                NullableString `json:"email,omitempty"`
+	CreateOrganization   *bool          `json:"createOrganization,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateAccountCommand CreateAccountCommand
 
 // NewCreateAccountCommand instantiates a new CreateAccountCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *CreateAccountCommand) HasName() bool {
 func (o *CreateAccountCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateAccountCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -116,6 +120,7 @@ func (o *CreateAccountCommand) HasEmail() bool {
 func (o *CreateAccountCommand) SetEmail(v string) {
 	o.Email.Set(&v)
 }
+
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *CreateAccountCommand) SetEmailNil() {
 	o.Email.Set(nil)
@@ -159,7 +164,7 @@ func (o *CreateAccountCommand) SetCreateOrganization(v bool) {
 }
 
 func (o CreateAccountCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -177,7 +182,35 @@ func (o CreateAccountCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CreateOrganization) {
 		toSerialize["createOrganization"] = o.CreateOrganization
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateAccountCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateAccountCommand := _CreateAccountCommand{}
+
+	err = json.Unmarshal(data, &varCreateAccountCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateAccountCommand(varCreateAccountCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "createOrganization")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateAccountCommand struct {
@@ -215,5 +248,3 @@ func (v *NullableCreateAccountCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

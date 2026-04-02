@@ -20,8 +20,11 @@ var _ MappedNullable = &Unlock2FaCommand{}
 
 // Unlock2FaCommand struct for Unlock2FaCommand
 type Unlock2FaCommand struct {
-	UserId NullableString `json:"userId,omitempty"`
+	UserId               NullableString `json:"userId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Unlock2FaCommand Unlock2FaCommand
 
 // NewUnlock2FaCommand instantiates a new Unlock2FaCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -72,6 +75,7 @@ func (o *Unlock2FaCommand) HasUserId() bool {
 func (o *Unlock2FaCommand) SetUserId(v string) {
 	o.UserId.Set(&v)
 }
+
 // SetUserIdNil sets the value for UserId to be an explicit nil
 func (o *Unlock2FaCommand) SetUserIdNil() {
 	o.UserId.Set(nil)
@@ -83,7 +87,7 @@ func (o *Unlock2FaCommand) UnsetUserId() {
 }
 
 func (o Unlock2FaCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -95,7 +99,33 @@ func (o Unlock2FaCommand) ToMap() (map[string]interface{}, error) {
 	if o.UserId.IsSet() {
 		toSerialize["userId"] = o.UserId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Unlock2FaCommand) UnmarshalJSON(data []byte) (err error) {
+	varUnlock2FaCommand := _Unlock2FaCommand{}
+
+	err = json.Unmarshal(data, &varUnlock2FaCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Unlock2FaCommand(varUnlock2FaCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "userId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUnlock2FaCommand struct {
@@ -133,5 +163,3 @@ func (v *NullableUnlock2FaCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,16 +20,19 @@ var _ MappedNullable = &ProjectCatalogDto{}
 
 // ProjectCatalogDto struct for ProjectCatalogDto
 type ProjectCatalogDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	KubernetesVersion NullableString `json:"kubernetesVersion,omitempty"`
-	IsLocked *bool `json:"isLocked,omitempty"`
-	MaintenanceModeEnabled *bool `json:"maintenanceModeEnabled,omitempty"`
-	IsVirtualCluster *bool `json:"isVirtualCluster,omitempty"`
-	CloudType *ECloudCredentialType `json:"cloudType,omitempty"`
-	Status *ProjectStatus `json:"status,omitempty"`
-	Health *ProjectHealth `json:"health,omitempty"`
+	Id                     *int32                `json:"id,omitempty"`
+	Name                   NullableString        `json:"name,omitempty"`
+	KubernetesVersion      NullableString        `json:"kubernetesVersion,omitempty"`
+	IsLocked               *bool                 `json:"isLocked,omitempty"`
+	MaintenanceModeEnabled *bool                 `json:"maintenanceModeEnabled,omitempty"`
+	IsVirtualCluster       *bool                 `json:"isVirtualCluster,omitempty"`
+	CloudType              *ECloudCredentialType `json:"cloudType,omitempty"`
+	Status                 *ProjectStatus        `json:"status,omitempty"`
+	Health                 *ProjectHealth        `json:"health,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
+
+type _ProjectCatalogDto ProjectCatalogDto
 
 // NewProjectCatalogDto instantiates a new ProjectCatalogDto object
 // This constructor will assign default values to properties that have it defined,
@@ -112,6 +115,7 @@ func (o *ProjectCatalogDto) HasName() bool {
 func (o *ProjectCatalogDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ProjectCatalogDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -154,6 +158,7 @@ func (o *ProjectCatalogDto) HasKubernetesVersion() bool {
 func (o *ProjectCatalogDto) SetKubernetesVersion(v string) {
 	o.KubernetesVersion.Set(&v)
 }
+
 // SetKubernetesVersionNil sets the value for KubernetesVersion to be an explicit nil
 func (o *ProjectCatalogDto) SetKubernetesVersionNil() {
 	o.KubernetesVersion.Set(nil)
@@ -357,7 +362,7 @@ func (o *ProjectCatalogDto) SetHealth(v ProjectHealth) {
 }
 
 func (o ProjectCatalogDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -393,7 +398,41 @@ func (o ProjectCatalogDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Health) {
 		toSerialize["health"] = o.Health
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectCatalogDto) UnmarshalJSON(data []byte) (err error) {
+	varProjectCatalogDto := _ProjectCatalogDto{}
+
+	err = json.Unmarshal(data, &varProjectCatalogDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectCatalogDto(varProjectCatalogDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "kubernetesVersion")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "maintenanceModeEnabled")
+		delete(additionalProperties, "isVirtualCluster")
+		delete(additionalProperties, "cloudType")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "health")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectCatalogDto struct {
@@ -431,5 +470,3 @@ func (v *NullableProjectCatalogDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

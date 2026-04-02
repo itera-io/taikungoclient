@@ -20,9 +20,12 @@ var _ MappedNullable = &DeleteBackupStorageLocationCommand{}
 
 // DeleteBackupStorageLocationCommand struct for DeleteBackupStorageLocationCommand
 type DeleteBackupStorageLocationCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	StorageLocation NullableString `json:"storageLocation,omitempty"`
+	ProjectId            *int32         `json:"projectId,omitempty"`
+	StorageLocation      NullableString `json:"storageLocation,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeleteBackupStorageLocationCommand DeleteBackupStorageLocationCommand
 
 // NewDeleteBackupStorageLocationCommand instantiates a new DeleteBackupStorageLocationCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,7 @@ func (o *DeleteBackupStorageLocationCommand) HasStorageLocation() bool {
 func (o *DeleteBackupStorageLocationCommand) SetStorageLocation(v string) {
 	o.StorageLocation.Set(&v)
 }
+
 // SetStorageLocationNil sets the value for StorageLocation to be an explicit nil
 func (o *DeleteBackupStorageLocationCommand) SetStorageLocationNil() {
 	o.StorageLocation.Set(nil)
@@ -116,7 +120,7 @@ func (o *DeleteBackupStorageLocationCommand) UnsetStorageLocation() {
 }
 
 func (o DeleteBackupStorageLocationCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o DeleteBackupStorageLocationCommand) ToMap() (map[string]interface{}, err
 	if o.StorageLocation.IsSet() {
 		toSerialize["storageLocation"] = o.StorageLocation.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeleteBackupStorageLocationCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeleteBackupStorageLocationCommand := _DeleteBackupStorageLocationCommand{}
+
+	err = json.Unmarshal(data, &varDeleteBackupStorageLocationCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeleteBackupStorageLocationCommand(varDeleteBackupStorageLocationCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "storageLocation")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeleteBackupStorageLocationCommand struct {
@@ -169,5 +200,3 @@ func (v *NullableDeleteBackupStorageLocationCommand) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,23 +20,26 @@ var _ MappedNullable = &AvailablePackageDetailsDto{}
 
 // AvailablePackageDetailsDto struct for AvailablePackageDetailsDto
 type AvailablePackageDetailsDto struct {
-	Name NullableString `json:"name,omitempty"`
-	AppRepoName NullableString `json:"appRepoName,omitempty"`
-	AppRepoOrganizationName NullableString `json:"appRepoOrganizationName,omitempty"`
-	AppRepoId NullableString `json:"appRepoId,omitempty"`
-	PackageId NullableString `json:"packageId,omitempty"`
-	LogoId NullableString `json:"logoId,omitempty"`
-	Description NullableString `json:"description,omitempty"`
-	Readme NullableString `json:"readme,omitempty"`
-	Version NullableString `json:"version,omitempty"`
-	SecurityReport *SecurityReportSummaryDto `json:"securityReport,omitempty"`
-	AppVersion NullableString `json:"appVersion,omitempty"`
-	Stars *int32 `json:"stars,omitempty"`
-	VerifiedPublisher *bool `json:"verifiedPublisher,omitempty"`
-	Official *bool `json:"official,omitempty"`
-	BoundCatalogs []CommonDropdownDto `json:"boundCatalogs,omitempty"`
-	HasJsonSchema *bool `json:"hasJsonSchema,omitempty"`
+	Name                    NullableString            `json:"name,omitempty"`
+	AppRepoName             NullableString            `json:"appRepoName,omitempty"`
+	AppRepoOrganizationName NullableString            `json:"appRepoOrganizationName,omitempty"`
+	AppRepoId               NullableString            `json:"appRepoId,omitempty"`
+	PackageId               NullableString            `json:"packageId,omitempty"`
+	LogoId                  NullableString            `json:"logoId,omitempty"`
+	Description             NullableString            `json:"description,omitempty"`
+	Readme                  NullableString            `json:"readme,omitempty"`
+	Version                 NullableString            `json:"version,omitempty"`
+	SecurityReport          *SecurityReportSummaryDto `json:"securityReport,omitempty"`
+	AppVersion              NullableString            `json:"appVersion,omitempty"`
+	Stars                   *int32                    `json:"stars,omitempty"`
+	VerifiedPublisher       *bool                     `json:"verifiedPublisher,omitempty"`
+	Official                *bool                     `json:"official,omitempty"`
+	BoundCatalogs           []CommonDropdownDto       `json:"boundCatalogs,omitempty"`
+	HasJsonSchema           *bool                     `json:"hasJsonSchema,omitempty"`
+	AdditionalProperties    map[string]interface{}
 }
+
+type _AvailablePackageDetailsDto AvailablePackageDetailsDto
 
 // NewAvailablePackageDetailsDto instantiates a new AvailablePackageDetailsDto object
 // This constructor will assign default values to properties that have it defined,
@@ -87,6 +90,7 @@ func (o *AvailablePackageDetailsDto) HasName() bool {
 func (o *AvailablePackageDetailsDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *AvailablePackageDetailsDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -129,6 +133,7 @@ func (o *AvailablePackageDetailsDto) HasAppRepoName() bool {
 func (o *AvailablePackageDetailsDto) SetAppRepoName(v string) {
 	o.AppRepoName.Set(&v)
 }
+
 // SetAppRepoNameNil sets the value for AppRepoName to be an explicit nil
 func (o *AvailablePackageDetailsDto) SetAppRepoNameNil() {
 	o.AppRepoName.Set(nil)
@@ -171,6 +176,7 @@ func (o *AvailablePackageDetailsDto) HasAppRepoOrganizationName() bool {
 func (o *AvailablePackageDetailsDto) SetAppRepoOrganizationName(v string) {
 	o.AppRepoOrganizationName.Set(&v)
 }
+
 // SetAppRepoOrganizationNameNil sets the value for AppRepoOrganizationName to be an explicit nil
 func (o *AvailablePackageDetailsDto) SetAppRepoOrganizationNameNil() {
 	o.AppRepoOrganizationName.Set(nil)
@@ -213,6 +219,7 @@ func (o *AvailablePackageDetailsDto) HasAppRepoId() bool {
 func (o *AvailablePackageDetailsDto) SetAppRepoId(v string) {
 	o.AppRepoId.Set(&v)
 }
+
 // SetAppRepoIdNil sets the value for AppRepoId to be an explicit nil
 func (o *AvailablePackageDetailsDto) SetAppRepoIdNil() {
 	o.AppRepoId.Set(nil)
@@ -255,6 +262,7 @@ func (o *AvailablePackageDetailsDto) HasPackageId() bool {
 func (o *AvailablePackageDetailsDto) SetPackageId(v string) {
 	o.PackageId.Set(&v)
 }
+
 // SetPackageIdNil sets the value for PackageId to be an explicit nil
 func (o *AvailablePackageDetailsDto) SetPackageIdNil() {
 	o.PackageId.Set(nil)
@@ -297,6 +305,7 @@ func (o *AvailablePackageDetailsDto) HasLogoId() bool {
 func (o *AvailablePackageDetailsDto) SetLogoId(v string) {
 	o.LogoId.Set(&v)
 }
+
 // SetLogoIdNil sets the value for LogoId to be an explicit nil
 func (o *AvailablePackageDetailsDto) SetLogoIdNil() {
 	o.LogoId.Set(nil)
@@ -339,6 +348,7 @@ func (o *AvailablePackageDetailsDto) HasDescription() bool {
 func (o *AvailablePackageDetailsDto) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *AvailablePackageDetailsDto) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -381,6 +391,7 @@ func (o *AvailablePackageDetailsDto) HasReadme() bool {
 func (o *AvailablePackageDetailsDto) SetReadme(v string) {
 	o.Readme.Set(&v)
 }
+
 // SetReadmeNil sets the value for Readme to be an explicit nil
 func (o *AvailablePackageDetailsDto) SetReadmeNil() {
 	o.Readme.Set(nil)
@@ -423,6 +434,7 @@ func (o *AvailablePackageDetailsDto) HasVersion() bool {
 func (o *AvailablePackageDetailsDto) SetVersion(v string) {
 	o.Version.Set(&v)
 }
+
 // SetVersionNil sets the value for Version to be an explicit nil
 func (o *AvailablePackageDetailsDto) SetVersionNil() {
 	o.Version.Set(nil)
@@ -497,6 +509,7 @@ func (o *AvailablePackageDetailsDto) HasAppVersion() bool {
 func (o *AvailablePackageDetailsDto) SetAppVersion(v string) {
 	o.AppVersion.Set(&v)
 }
+
 // SetAppVersionNil sets the value for AppVersion to be an explicit nil
 func (o *AvailablePackageDetailsDto) SetAppVersionNil() {
 	o.AppVersion.Set(nil)
@@ -669,7 +682,7 @@ func (o *AvailablePackageDetailsDto) SetHasJsonSchema(v bool) {
 }
 
 func (o AvailablePackageDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -726,7 +739,48 @@ func (o AvailablePackageDetailsDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HasJsonSchema) {
 		toSerialize["hasJsonSchema"] = o.HasJsonSchema
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AvailablePackageDetailsDto) UnmarshalJSON(data []byte) (err error) {
+	varAvailablePackageDetailsDto := _AvailablePackageDetailsDto{}
+
+	err = json.Unmarshal(data, &varAvailablePackageDetailsDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AvailablePackageDetailsDto(varAvailablePackageDetailsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "appRepoName")
+		delete(additionalProperties, "appRepoOrganizationName")
+		delete(additionalProperties, "appRepoId")
+		delete(additionalProperties, "packageId")
+		delete(additionalProperties, "logoId")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "readme")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "securityReport")
+		delete(additionalProperties, "appVersion")
+		delete(additionalProperties, "stars")
+		delete(additionalProperties, "verifiedPublisher")
+		delete(additionalProperties, "official")
+		delete(additionalProperties, "boundCatalogs")
+		delete(additionalProperties, "hasJsonSchema")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAvailablePackageDetailsDto struct {
@@ -764,5 +818,3 @@ func (v *NullableAvailablePackageDetailsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

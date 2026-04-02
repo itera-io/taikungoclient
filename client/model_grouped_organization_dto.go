@@ -20,11 +20,14 @@ var _ MappedNullable = &GroupedOrganizationDto{}
 
 // GroupedOrganizationDto struct for GroupedOrganizationDto
 type GroupedOrganizationDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Role *ENonGlobalRoles `json:"role,omitempty"`
-	Projects []CommonDropdownDto `json:"projects,omitempty"`
+	Id                   *int32              `json:"id,omitempty"`
+	Name                 NullableString      `json:"name,omitempty"`
+	Role                 *ENonGlobalRoles    `json:"role,omitempty"`
+	Projects             []CommonDropdownDto `json:"projects,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _GroupedOrganizationDto GroupedOrganizationDto
 
 // NewGroupedOrganizationDto instantiates a new GroupedOrganizationDto object
 // This constructor will assign default values to properties that have it defined,
@@ -107,6 +110,7 @@ func (o *GroupedOrganizationDto) HasName() bool {
 func (o *GroupedOrganizationDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *GroupedOrganizationDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -183,7 +187,7 @@ func (o *GroupedOrganizationDto) SetProjects(v []CommonDropdownDto) {
 }
 
 func (o GroupedOrganizationDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -204,7 +208,36 @@ func (o GroupedOrganizationDto) ToMap() (map[string]interface{}, error) {
 	if o.Projects != nil {
 		toSerialize["projects"] = o.Projects
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *GroupedOrganizationDto) UnmarshalJSON(data []byte) (err error) {
+	varGroupedOrganizationDto := _GroupedOrganizationDto{}
+
+	err = json.Unmarshal(data, &varGroupedOrganizationDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GroupedOrganizationDto(varGroupedOrganizationDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "role")
+		delete(additionalProperties, "projects")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableGroupedOrganizationDto struct {
@@ -242,5 +275,3 @@ func (v *NullableGroupedOrganizationDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

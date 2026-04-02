@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,34 +21,35 @@ var _ MappedNullable = &EnumList{}
 
 // EnumList struct for EnumList
 type EnumList struct {
-	CloudTypes []CommonDropdownDto `json:"cloudTypes"`
-	ProjectStatuses []CommonDropdownDto `json:"projectStatuses"`
-	ServerRoles []CommonDropdownDto `json:"serverRoles"`
-	ServerStatuses []CommonDropdownDto `json:"serverStatuses"`
-	SecurityGroupRules []CommonDropdownDto `json:"securityGroupRules"`
-	PrometheusTypes []CommonDropdownDto `json:"prometheusTypes"`
-	AuditLogs []CommonDropdownDto `json:"auditLogs"`
-	RebootOptions []CommonDropdownDto `json:"rebootOptions"`
-	Availability []CommonAvailabilityDto `json:"availability"`
-	SlackTypes []CommonDropdownDto `json:"slackTypes"`
-	RequestLogs []CommonDropdownDto `json:"requestLogs"`
-	AzureQuotas []CommonDropdownDto `json:"azureQuotas"`
-	ShowbackKinds []CommonDropdownDto `json:"showbackKinds"`
-	AlertTypes []CommonDropdownDto `json:"alertTypes"`
-	ReminderTypes []CommonDropdownDto `json:"reminderTypes"`
-	AwsPlatforms []CommonStringBasedDropdownDto `json:"awsPlatforms"`
-	CronPeriods []CommonStringBasedDropdownDto `json:"cronPeriods"`
-	ValidityPeriods []CommonDropdownDto `json:"validityPeriods"`
-	AlertingIntegrationTypes []CommonDropdownDto `json:"alertingIntegrationTypes"`
-	GoogleImageTypes []CommonDropdownDto `json:"googleImageTypes"`
-	StandaloneVmStatuses []CommonDropdownDto `json:"standaloneVmStatuses"`
-	OpenstackContinents []CommonStringBasedDropdownDto `json:"openstackContinents"`
-	RetentionPeriods []CommonStringBasedDropdownDto `json:"retentionPeriods"`
-	ProxmoxRoles []CommonDropdownDto `json:"proxmoxRoles"`
-	ProjectResourceTypes []CommonDropdownDto `json:"projectResourceTypes"`
-	ProjectResourceUnits []CommonDropdownDto `json:"projectResourceUnits"`
-	NonGlobalRoles []CommonDropdownDto `json:"nonGlobalRoles"`
-	LbProviders []CommonDropdownDto `json:"lbProviders"`
+	CloudTypes               []CommonDropdownDto            `json:"cloudTypes"`
+	ProjectStatuses          []CommonDropdownDto            `json:"projectStatuses"`
+	ServerRoles              []CommonDropdownDto            `json:"serverRoles"`
+	ServerStatuses           []CommonDropdownDto            `json:"serverStatuses"`
+	SecurityGroupRules       []CommonDropdownDto            `json:"securityGroupRules"`
+	PrometheusTypes          []CommonDropdownDto            `json:"prometheusTypes"`
+	AuditLogs                []CommonDropdownDto            `json:"auditLogs"`
+	RebootOptions            []CommonDropdownDto            `json:"rebootOptions"`
+	Availability             []CommonAvailabilityDto        `json:"availability"`
+	SlackTypes               []CommonDropdownDto            `json:"slackTypes"`
+	RequestLogs              []CommonDropdownDto            `json:"requestLogs"`
+	AzureQuotas              []CommonDropdownDto            `json:"azureQuotas"`
+	ShowbackKinds            []CommonDropdownDto            `json:"showbackKinds"`
+	AlertTypes               []CommonDropdownDto            `json:"alertTypes"`
+	ReminderTypes            []CommonDropdownDto            `json:"reminderTypes"`
+	AwsPlatforms             []CommonStringBasedDropdownDto `json:"awsPlatforms"`
+	CronPeriods              []CommonStringBasedDropdownDto `json:"cronPeriods"`
+	ValidityPeriods          []CommonDropdownDto            `json:"validityPeriods"`
+	AlertingIntegrationTypes []CommonDropdownDto            `json:"alertingIntegrationTypes"`
+	GoogleImageTypes         []CommonDropdownDto            `json:"googleImageTypes"`
+	StandaloneVmStatuses     []CommonDropdownDto            `json:"standaloneVmStatuses"`
+	OpenstackContinents      []CommonStringBasedDropdownDto `json:"openstackContinents"`
+	RetentionPeriods         []CommonStringBasedDropdownDto `json:"retentionPeriods"`
+	ProxmoxRoles             []CommonDropdownDto            `json:"proxmoxRoles"`
+	ProjectResourceTypes     []CommonDropdownDto            `json:"projectResourceTypes"`
+	ProjectResourceUnits     []CommonDropdownDto            `json:"projectResourceUnits"`
+	NonGlobalRoles           []CommonDropdownDto            `json:"nonGlobalRoles"`
+	LbProviders              []CommonDropdownDto            `json:"lbProviders"`
+	AdditionalProperties     map[string]interface{}
 }
 
 type _EnumList EnumList
@@ -828,7 +828,7 @@ func (o *EnumList) SetLbProviders(v []CommonDropdownDto) {
 }
 
 func (o EnumList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -921,6 +921,11 @@ func (o EnumList) ToMap() (map[string]interface{}, error) {
 	if o.LbProviders != nil {
 		toSerialize["lbProviders"] = o.LbProviders
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -964,10 +969,10 @@ func (o *EnumList) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -975,15 +980,47 @@ func (o *EnumList) UnmarshalJSON(data []byte) (err error) {
 
 	varEnumList := _EnumList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEnumList)
+	err = json.Unmarshal(data, &varEnumList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EnumList(varEnumList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cloudTypes")
+		delete(additionalProperties, "projectStatuses")
+		delete(additionalProperties, "serverRoles")
+		delete(additionalProperties, "serverStatuses")
+		delete(additionalProperties, "securityGroupRules")
+		delete(additionalProperties, "prometheusTypes")
+		delete(additionalProperties, "auditLogs")
+		delete(additionalProperties, "rebootOptions")
+		delete(additionalProperties, "availability")
+		delete(additionalProperties, "slackTypes")
+		delete(additionalProperties, "requestLogs")
+		delete(additionalProperties, "azureQuotas")
+		delete(additionalProperties, "showbackKinds")
+		delete(additionalProperties, "alertTypes")
+		delete(additionalProperties, "reminderTypes")
+		delete(additionalProperties, "awsPlatforms")
+		delete(additionalProperties, "cronPeriods")
+		delete(additionalProperties, "validityPeriods")
+		delete(additionalProperties, "alertingIntegrationTypes")
+		delete(additionalProperties, "googleImageTypes")
+		delete(additionalProperties, "standaloneVmStatuses")
+		delete(additionalProperties, "openstackContinents")
+		delete(additionalProperties, "retentionPeriods")
+		delete(additionalProperties, "proxmoxRoles")
+		delete(additionalProperties, "projectResourceTypes")
+		delete(additionalProperties, "projectResourceUnits")
+		delete(additionalProperties, "nonGlobalRoles")
+		delete(additionalProperties, "lbProviders")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -1023,5 +1060,3 @@ func (v *NullableEnumList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

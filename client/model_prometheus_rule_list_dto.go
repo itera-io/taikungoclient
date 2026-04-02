@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,23 +21,24 @@ var _ MappedNullable = &PrometheusRuleListDto{}
 
 // PrometheusRuleListDto struct for PrometheusRuleListDto
 type PrometheusRuleListDto struct {
-	Id int32 `json:"id"`
-	Name string `json:"name"`
-	Password string `json:"password"`
-	UserName string `json:"userName"`
-	Url string `json:"url"`
-	MetricName NullableString `json:"metricName"`
-	Labels []PrometheusLabelListDto `json:"labels"`
-	BoundOrganizations []PrometheusOrganizationDiscountDto `json:"boundOrganizations"`
-	Type PrometheusType `json:"type"`
-	Price float64 `json:"price"`
-	BillingStartDate NullableString `json:"billingStartDate"`
-	CreatedAt NullableString `json:"createdAt"`
-	Account AccountEntity `json:"account"`
-	OperationCredential OperationCredentialsForOrganizationEntity `json:"operationCredential"`
-	CreatedBy string `json:"createdBy"`
-	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	Id                   int32                                     `json:"id"`
+	Name                 string                                    `json:"name"`
+	Password             string                                    `json:"password"`
+	UserName             string                                    `json:"userName"`
+	Url                  string                                    `json:"url"`
+	MetricName           NullableString                            `json:"metricName"`
+	Labels               []PrometheusLabelListDto                  `json:"labels"`
+	BoundOrganizations   []PrometheusOrganizationDiscountDto       `json:"boundOrganizations"`
+	Type                 PrometheusType                            `json:"type"`
+	Price                float64                                   `json:"price"`
+	BillingStartDate     NullableString                            `json:"billingStartDate"`
+	CreatedAt            NullableString                            `json:"createdAt"`
+	Account              AccountEntity                             `json:"account"`
+	OperationCredential  OperationCredentialsForOrganizationEntity `json:"operationCredential"`
+	CreatedBy            string                                    `json:"createdBy"`
+	LastModified         NullableString                            `json:"lastModified"`
+	LastModifiedBy       NullableString                            `json:"lastModifiedBy"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PrometheusRuleListDto PrometheusRuleListDto
@@ -500,7 +500,7 @@ func (o *PrometheusRuleListDto) SetLastModifiedBy(v string) {
 }
 
 func (o PrometheusRuleListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -530,6 +530,11 @@ func (o PrometheusRuleListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["createdBy"] = o.CreatedBy
 	toSerialize["lastModified"] = o.LastModified.Get()
 	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -562,10 +567,10 @@ func (o *PrometheusRuleListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -573,15 +578,36 @@ func (o *PrometheusRuleListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varPrometheusRuleListDto := _PrometheusRuleListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPrometheusRuleListDto)
+	err = json.Unmarshal(data, &varPrometheusRuleListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PrometheusRuleListDto(varPrometheusRuleListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "userName")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "metricName")
+		delete(additionalProperties, "labels")
+		delete(additionalProperties, "boundOrganizations")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "price")
+		delete(additionalProperties, "billingStartDate")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "account")
+		delete(additionalProperties, "operationCredential")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -621,5 +647,3 @@ func (v *NullablePrometheusRuleListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

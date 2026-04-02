@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,22 +21,23 @@ var _ MappedNullable = &KubernetesAlertDto{}
 
 // KubernetesAlertDto struct for KubernetesAlertDto
 type KubernetesAlertDto struct {
-	Id int32 `json:"id"`
-	Labels interface{} `json:"labels"`
-	Description NullableString `json:"description"`
-	Title NullableString `json:"title"`
-	Severity NullableString `json:"severity"`
-	Fingerprint NullableString `json:"fingerprint"`
-	Status NullableString `json:"status"`
-	StartsAt NullableString `json:"startsAt"`
-	EndAt NullableString `json:"endAt"`
-	IsSolved bool `json:"isSolved"`
-	ProjectId int32 `json:"projectId"`
-	ProjectName string `json:"projectName"`
-	IsSilenced bool `json:"isSilenced"`
-	SilenceReason NullableString `json:"silenceReason"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
-	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
+	Id                   int32          `json:"id"`
+	Labels               interface{}    `json:"labels"`
+	Description          NullableString `json:"description"`
+	Title                NullableString `json:"title"`
+	Severity             NullableString `json:"severity"`
+	Fingerprint          NullableString `json:"fingerprint"`
+	Status               NullableString `json:"status"`
+	StartsAt             NullableString `json:"startsAt"`
+	EndAt                NullableString `json:"endAt"`
+	IsSolved             bool           `json:"isSolved"`
+	ProjectId            int32          `json:"projectId"`
+	ProjectName          string         `json:"projectName"`
+	IsSilenced           bool           `json:"isSilenced"`
+	SilenceReason        NullableString `json:"silenceReason"`
+	LastModifiedBy       NullableString `json:"lastModifiedBy"`
+	IsMonitoringEnabled  bool           `json:"isMonitoringEnabled"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _KubernetesAlertDto KubernetesAlertDto
@@ -480,7 +480,7 @@ func (o *KubernetesAlertDto) SetIsMonitoringEnabled(v bool) {
 }
 
 func (o KubernetesAlertDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -507,6 +507,11 @@ func (o KubernetesAlertDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["silenceReason"] = o.SilenceReason.Get()
 	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
 	toSerialize["isMonitoringEnabled"] = o.IsMonitoringEnabled
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -538,10 +543,10 @@ func (o *KubernetesAlertDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -549,15 +554,35 @@ func (o *KubernetesAlertDto) UnmarshalJSON(data []byte) (err error) {
 
 	varKubernetesAlertDto := _KubernetesAlertDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKubernetesAlertDto)
+	err = json.Unmarshal(data, &varKubernetesAlertDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubernetesAlertDto(varKubernetesAlertDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "labels")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "title")
+		delete(additionalProperties, "severity")
+		delete(additionalProperties, "fingerprint")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "startsAt")
+		delete(additionalProperties, "endAt")
+		delete(additionalProperties, "isSolved")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "isSilenced")
+		delete(additionalProperties, "silenceReason")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "isMonitoringEnabled")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -597,5 +622,3 @@ func (v *NullableKubernetesAlertDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

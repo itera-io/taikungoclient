@@ -20,9 +20,12 @@ var _ MappedNullable = &ChangePasswordCommand{}
 
 // ChangePasswordCommand struct for ChangePasswordCommand
 type ChangePasswordCommand struct {
-	Password NullableString `json:"password,omitempty"`
-	NewPassword NullableString `json:"newPassword,omitempty"`
+	Password             NullableString `json:"password,omitempty"`
+	NewPassword          NullableString `json:"newPassword,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ChangePasswordCommand ChangePasswordCommand
 
 // NewChangePasswordCommand instantiates a new ChangePasswordCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *ChangePasswordCommand) HasPassword() bool {
 func (o *ChangePasswordCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *ChangePasswordCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -115,6 +119,7 @@ func (o *ChangePasswordCommand) HasNewPassword() bool {
 func (o *ChangePasswordCommand) SetNewPassword(v string) {
 	o.NewPassword.Set(&v)
 }
+
 // SetNewPasswordNil sets the value for NewPassword to be an explicit nil
 func (o *ChangePasswordCommand) SetNewPasswordNil() {
 	o.NewPassword.Set(nil)
@@ -126,7 +131,7 @@ func (o *ChangePasswordCommand) UnsetNewPassword() {
 }
 
 func (o ChangePasswordCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,7 +146,34 @@ func (o ChangePasswordCommand) ToMap() (map[string]interface{}, error) {
 	if o.NewPassword.IsSet() {
 		toSerialize["newPassword"] = o.NewPassword.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ChangePasswordCommand) UnmarshalJSON(data []byte) (err error) {
+	varChangePasswordCommand := _ChangePasswordCommand{}
+
+	err = json.Unmarshal(data, &varChangePasswordCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ChangePasswordCommand(varChangePasswordCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "newPassword")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableChangePasswordCommand struct {
@@ -179,5 +211,3 @@ func (v *NullableChangePasswordCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

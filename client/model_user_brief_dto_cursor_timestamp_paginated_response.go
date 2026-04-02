@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,11 +21,12 @@ var _ MappedNullable = &UserBriefDtoCursorTimestampPaginatedResponse{}
 
 // UserBriefDtoCursorTimestampPaginatedResponse struct for UserBriefDtoCursorTimestampPaginatedResponse
 type UserBriefDtoCursorTimestampPaginatedResponse struct {
-	Data []UserBriefDto `json:"data"`
-	Limit int32 `json:"limit"`
-	HasMore bool `json:"hasMore"`
-	TotalCount int64 `json:"totalCount"`
-	NextCursor NullableInt64 `json:"nextCursor,omitempty"`
+	Data                 []UserBriefDto `json:"data"`
+	Limit                int32          `json:"limit"`
+	HasMore              bool           `json:"hasMore"`
+	TotalCount           int64          `json:"totalCount"`
+	NextCursor           NullableInt64  `json:"nextCursor,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UserBriefDtoCursorTimestampPaginatedResponse UserBriefDtoCursorTimestampPaginatedResponse
@@ -182,6 +182,7 @@ func (o *UserBriefDtoCursorTimestampPaginatedResponse) HasNextCursor() bool {
 func (o *UserBriefDtoCursorTimestampPaginatedResponse) SetNextCursor(v int64) {
 	o.NextCursor.Set(&v)
 }
+
 // SetNextCursorNil sets the value for NextCursor to be an explicit nil
 func (o *UserBriefDtoCursorTimestampPaginatedResponse) SetNextCursorNil() {
 	o.NextCursor.Set(nil)
@@ -193,7 +194,7 @@ func (o *UserBriefDtoCursorTimestampPaginatedResponse) UnsetNextCursor() {
 }
 
 func (o UserBriefDtoCursorTimestampPaginatedResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -211,6 +212,11 @@ func (o UserBriefDtoCursorTimestampPaginatedResponse) ToMap() (map[string]interf
 	if o.NextCursor.IsSet() {
 		toSerialize["nextCursor"] = o.NextCursor.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -230,10 +236,10 @@ func (o *UserBriefDtoCursorTimestampPaginatedResponse) UnmarshalJSON(data []byte
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -241,15 +247,24 @@ func (o *UserBriefDtoCursorTimestampPaginatedResponse) UnmarshalJSON(data []byte
 
 	varUserBriefDtoCursorTimestampPaginatedResponse := _UserBriefDtoCursorTimestampPaginatedResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserBriefDtoCursorTimestampPaginatedResponse)
+	err = json.Unmarshal(data, &varUserBriefDtoCursorTimestampPaginatedResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserBriefDtoCursorTimestampPaginatedResponse(varUserBriefDtoCursorTimestampPaginatedResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "hasMore")
+		delete(additionalProperties, "totalCount")
+		delete(additionalProperties, "nextCursor")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -289,5 +304,3 @@ func (v *NullableUserBriefDtoCursorTimestampPaginatedResponse) UnmarshalJSON(src
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

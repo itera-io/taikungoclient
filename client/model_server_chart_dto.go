@@ -20,40 +20,43 @@ var _ MappedNullable = &ServerChartDto{}
 
 // ServerChartDto struct for ServerChartDto
 type ServerChartDto struct {
-	Aws []ServerCommonRecordDto `json:"aws,omitempty"`
-	Azure []ServerCommonRecordDto `json:"azure,omitempty"`
-	Openstack []ServerCommonRecordDto `json:"openstack,omitempty"`
-	Google []ServerCommonRecordDto `json:"google,omitempty"`
-	Proxmox []ServerCommonRecordDto `json:"proxmox,omitempty"`
-	Vsphere []ServerCommonRecordDto `json:"vsphere,omitempty"`
-	Zadara []ServerCommonRecordDto `json:"zadara,omitempty"`
-	Openshift []ServerCommonRecordDto `json:"openshift,omitempty"`
-	GenericK8S []ServerCommonRecordDto `json:"genericK8S,omitempty"`
-	Failed []ServerCommonRecordDto `json:"failed,omitempty"`
-	Succeeded []ServerCommonRecordDto `json:"succeeded,omitempty"`
-	Waiting []ServerCommonRecordDto `json:"waiting,omitempty"`
-	Updating []ServerCommonRecordDto `json:"updating,omitempty"`
-	Deleting []ServerCommonRecordDto `json:"deleting,omitempty"`
-	Purging []ServerCommonRecordDto `json:"purging,omitempty"`
-	TotalCount *int32 `json:"totalCount,omitempty"`
-	TotalCpu *int32 `json:"totalCpu,omitempty"`
-	TotalRam *int64 `json:"totalRam,omitempty"`
-	TotalDiskSize *int64 `json:"totalDiskSize,omitempty"`
-	TotalFailedCount *int32 `json:"totalFailedCount,omitempty"`
-	TotalSucceededCount *int32 `json:"totalSucceededCount,omitempty"`
-	TotalUpdatingCount *int32 `json:"totalUpdatingCount,omitempty"`
-	TotalPendingCount *int32 `json:"totalPendingCount,omitempty"`
-	TotalAwsCount *int32 `json:"totalAwsCount,omitempty"`
-	TotalAzureCount *int32 `json:"totalAzureCount,omitempty"`
-	TotalOpenstackCount *int32 `json:"totalOpenstackCount,omitempty"`
-	TotalGoogleCount *int32 `json:"totalGoogleCount,omitempty"`
-	TotalOpenshiftCount *int32 `json:"totalOpenshiftCount,omitempty"`
-	TotalProxmoxCount *int32 `json:"totalProxmoxCount,omitempty"`
-	TotalVsphereCount *int32 `json:"totalVsphereCount,omitempty"`
-	TotalZadaraCount *int32 `json:"totalZadaraCount,omitempty"`
-	TotalGenericK8SCount *int32 `json:"totalGenericK8SCount,omitempty"`
-	UsedResources []UserResourceChartDto `json:"usedResources,omitempty"`
+	Aws                  []ServerCommonRecordDto `json:"aws,omitempty"`
+	Azure                []ServerCommonRecordDto `json:"azure,omitempty"`
+	Openstack            []ServerCommonRecordDto `json:"openstack,omitempty"`
+	Google               []ServerCommonRecordDto `json:"google,omitempty"`
+	Proxmox              []ServerCommonRecordDto `json:"proxmox,omitempty"`
+	Vsphere              []ServerCommonRecordDto `json:"vsphere,omitempty"`
+	Zadara               []ServerCommonRecordDto `json:"zadara,omitempty"`
+	Openshift            []ServerCommonRecordDto `json:"openshift,omitempty"`
+	GenericK8S           []ServerCommonRecordDto `json:"genericK8S,omitempty"`
+	Failed               []ServerCommonRecordDto `json:"failed,omitempty"`
+	Succeeded            []ServerCommonRecordDto `json:"succeeded,omitempty"`
+	Waiting              []ServerCommonRecordDto `json:"waiting,omitempty"`
+	Updating             []ServerCommonRecordDto `json:"updating,omitempty"`
+	Deleting             []ServerCommonRecordDto `json:"deleting,omitempty"`
+	Purging              []ServerCommonRecordDto `json:"purging,omitempty"`
+	TotalCount           *int32                  `json:"totalCount,omitempty"`
+	TotalCpu             *int32                  `json:"totalCpu,omitempty"`
+	TotalRam             *int64                  `json:"totalRam,omitempty"`
+	TotalDiskSize        *int64                  `json:"totalDiskSize,omitempty"`
+	TotalFailedCount     *int32                  `json:"totalFailedCount,omitempty"`
+	TotalSucceededCount  *int32                  `json:"totalSucceededCount,omitempty"`
+	TotalUpdatingCount   *int32                  `json:"totalUpdatingCount,omitempty"`
+	TotalPendingCount    *int32                  `json:"totalPendingCount,omitempty"`
+	TotalAwsCount        *int32                  `json:"totalAwsCount,omitempty"`
+	TotalAzureCount      *int32                  `json:"totalAzureCount,omitempty"`
+	TotalOpenstackCount  *int32                  `json:"totalOpenstackCount,omitempty"`
+	TotalGoogleCount     *int32                  `json:"totalGoogleCount,omitempty"`
+	TotalOpenshiftCount  *int32                  `json:"totalOpenshiftCount,omitempty"`
+	TotalProxmoxCount    *int32                  `json:"totalProxmoxCount,omitempty"`
+	TotalVsphereCount    *int32                  `json:"totalVsphereCount,omitempty"`
+	TotalZadaraCount     *int32                  `json:"totalZadaraCount,omitempty"`
+	TotalGenericK8SCount *int32                  `json:"totalGenericK8SCount,omitempty"`
+	UsedResources        []UserResourceChartDto  `json:"usedResources,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ServerChartDto ServerChartDto
 
 // NewServerChartDto instantiates a new ServerChartDto object
 // This constructor will assign default values to properties that have it defined,
@@ -1145,7 +1148,7 @@ func (o *ServerChartDto) SetUsedResources(v []UserResourceChartDto) {
 }
 
 func (o ServerChartDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1253,7 +1256,65 @@ func (o ServerChartDto) ToMap() (map[string]interface{}, error) {
 	if o.UsedResources != nil {
 		toSerialize["usedResources"] = o.UsedResources
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ServerChartDto) UnmarshalJSON(data []byte) (err error) {
+	varServerChartDto := _ServerChartDto{}
+
+	err = json.Unmarshal(data, &varServerChartDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ServerChartDto(varServerChartDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "aws")
+		delete(additionalProperties, "azure")
+		delete(additionalProperties, "openstack")
+		delete(additionalProperties, "google")
+		delete(additionalProperties, "proxmox")
+		delete(additionalProperties, "vsphere")
+		delete(additionalProperties, "zadara")
+		delete(additionalProperties, "openshift")
+		delete(additionalProperties, "genericK8S")
+		delete(additionalProperties, "failed")
+		delete(additionalProperties, "succeeded")
+		delete(additionalProperties, "waiting")
+		delete(additionalProperties, "updating")
+		delete(additionalProperties, "deleting")
+		delete(additionalProperties, "purging")
+		delete(additionalProperties, "totalCount")
+		delete(additionalProperties, "totalCpu")
+		delete(additionalProperties, "totalRam")
+		delete(additionalProperties, "totalDiskSize")
+		delete(additionalProperties, "totalFailedCount")
+		delete(additionalProperties, "totalSucceededCount")
+		delete(additionalProperties, "totalUpdatingCount")
+		delete(additionalProperties, "totalPendingCount")
+		delete(additionalProperties, "totalAwsCount")
+		delete(additionalProperties, "totalAzureCount")
+		delete(additionalProperties, "totalOpenstackCount")
+		delete(additionalProperties, "totalGoogleCount")
+		delete(additionalProperties, "totalOpenshiftCount")
+		delete(additionalProperties, "totalProxmoxCount")
+		delete(additionalProperties, "totalVsphereCount")
+		delete(additionalProperties, "totalZadaraCount")
+		delete(additionalProperties, "totalGenericK8SCount")
+		delete(additionalProperties, "usedResources")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableServerChartDto struct {
@@ -1291,5 +1352,3 @@ func (v *NullableServerChartDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

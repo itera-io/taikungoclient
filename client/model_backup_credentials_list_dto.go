@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,21 +21,22 @@ var _ MappedNullable = &BackupCredentialsListDto{}
 
 // BackupCredentialsListDto struct for BackupCredentialsListDto
 type BackupCredentialsListDto struct {
-	Id int32 `json:"id"`
-	S3Name string `json:"s3Name"`
-	S3AccessKeyId string `json:"s3AccessKeyId"`
-	S3Endpoint string `json:"s3Endpoint"`
-	S3Region string `json:"s3Region"`
-	OrganizationId NullableInt32 `json:"organizationId"`
-	OrganizationName NullableString `json:"organizationName"`
-	Projects []CommonDropdownDto `json:"projects"`
-	IsLocked bool `json:"isLocked"`
-	CreatedBy NullableString `json:"createdBy"`
-	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
-	CreatedAt NullableString `json:"createdAt"`
-	IsDefault bool `json:"isDefault"`
-	IsInfra bool `json:"isInfra"`
+	Id                   int32               `json:"id"`
+	S3Name               string              `json:"s3Name"`
+	S3AccessKeyId        string              `json:"s3AccessKeyId"`
+	S3Endpoint           string              `json:"s3Endpoint"`
+	S3Region             string              `json:"s3Region"`
+	OrganizationId       NullableInt32       `json:"organizationId"`
+	OrganizationName     NullableString      `json:"organizationName"`
+	Projects             []CommonDropdownDto `json:"projects"`
+	IsLocked             bool                `json:"isLocked"`
+	CreatedBy            NullableString      `json:"createdBy"`
+	LastModified         NullableString      `json:"lastModified"`
+	LastModifiedBy       NullableString      `json:"lastModifiedBy"`
+	CreatedAt            NullableString      `json:"createdAt"`
+	IsDefault            bool                `json:"isDefault"`
+	IsInfra              bool                `json:"isInfra"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _BackupCredentialsListDto BackupCredentialsListDto
@@ -446,7 +446,7 @@ func (o *BackupCredentialsListDto) SetIsInfra(v bool) {
 }
 
 func (o BackupCredentialsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -470,6 +470,11 @@ func (o BackupCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["createdAt"] = o.CreatedAt.Get()
 	toSerialize["isDefault"] = o.IsDefault
 	toSerialize["isInfra"] = o.IsInfra
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -500,10 +505,10 @@ func (o *BackupCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -511,15 +516,34 @@ func (o *BackupCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varBackupCredentialsListDto := _BackupCredentialsListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBackupCredentialsListDto)
+	err = json.Unmarshal(data, &varBackupCredentialsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = BackupCredentialsListDto(varBackupCredentialsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "s3Name")
+		delete(additionalProperties, "s3AccessKeyId")
+		delete(additionalProperties, "s3Endpoint")
+		delete(additionalProperties, "s3Region")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "isInfra")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -559,5 +583,3 @@ func (v *NullableBackupCredentialsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

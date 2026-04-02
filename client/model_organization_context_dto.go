@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,8 +21,9 @@ var _ MappedNullable = &OrganizationContextDto{}
 
 // OrganizationContextDto struct for OrganizationContextDto
 type OrganizationContextDto struct {
-	Role string `json:"role"`
-	OrganizationName string `json:"organizationName"`
+	Role                 NullableString `json:"role"`
+	OrganizationName     NullableString `json:"organizationName"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OrganizationContextDto OrganizationContextDto
@@ -32,7 +32,7 @@ type _OrganizationContextDto OrganizationContextDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationContextDto(role string, organizationName string) *OrganizationContextDto {
+func NewOrganizationContextDto(role NullableString, organizationName NullableString) *OrganizationContextDto {
 	this := OrganizationContextDto{}
 	this.Role = role
 	this.OrganizationName = organizationName
@@ -48,55 +48,59 @@ func NewOrganizationContextDtoWithDefaults() *OrganizationContextDto {
 }
 
 // GetRole returns the Role field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *OrganizationContextDto) GetRole() string {
-	if o == nil {
+	if o == nil || o.Role.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Role
+	return *o.Role.Get()
 }
 
 // GetRoleOk returns a tuple with the Role field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationContextDto) GetRoleOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Role, true
+	return o.Role.Get(), o.Role.IsSet()
 }
 
 // SetRole sets field value
 func (o *OrganizationContextDto) SetRole(v string) {
-	o.Role = v
+	o.Role.Set(&v)
 }
 
 // GetOrganizationName returns the OrganizationName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *OrganizationContextDto) GetOrganizationName() string {
-	if o == nil {
+	if o == nil || o.OrganizationName.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.OrganizationName
+	return *o.OrganizationName.Get()
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationContextDto) GetOrganizationNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.OrganizationName, true
+	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
 }
 
 // SetOrganizationName sets field value
 func (o *OrganizationContextDto) SetOrganizationName(v string) {
-	o.OrganizationName = v
+	o.OrganizationName.Set(&v)
 }
 
 func (o OrganizationContextDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -105,8 +109,13 @@ func (o OrganizationContextDto) MarshalJSON() ([]byte, error) {
 
 func (o OrganizationContextDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["role"] = o.Role
-	toSerialize["organizationName"] = o.OrganizationName
+	toSerialize["role"] = o.Role.Get()
+	toSerialize["organizationName"] = o.OrganizationName.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -124,10 +133,10 @@ func (o *OrganizationContextDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -135,15 +144,21 @@ func (o *OrganizationContextDto) UnmarshalJSON(data []byte) (err error) {
 
 	varOrganizationContextDto := _OrganizationContextDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrganizationContextDto)
+	err = json.Unmarshal(data, &varOrganizationContextDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OrganizationContextDto(varOrganizationContextDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "role")
+		delete(additionalProperties, "organizationName")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -183,5 +198,3 @@ func (v *NullableOrganizationContextDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,10 +20,13 @@ var _ MappedNullable = &OrganizationDropdownProjectDto{}
 
 // OrganizationDropdownProjectDto struct for OrganizationDropdownProjectDto
 type OrganizationDropdownProjectDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	IsBound *bool `json:"isBound,omitempty"`
+	Id                   *int32  `json:"id,omitempty"`
+	Name                 *string `json:"name,omitempty"`
+	IsBound              *bool   `json:"isBound,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OrganizationDropdownProjectDto OrganizationDropdownProjectDto
 
 // NewOrganizationDropdownProjectDto instantiates a new OrganizationDropdownProjectDto object
 // This constructor will assign default values to properties that have it defined,
@@ -139,7 +142,7 @@ func (o *OrganizationDropdownProjectDto) SetIsBound(v bool) {
 }
 
 func (o OrganizationDropdownProjectDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -157,7 +160,35 @@ func (o OrganizationDropdownProjectDto) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.IsBound) {
 		toSerialize["isBound"] = o.IsBound
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OrganizationDropdownProjectDto) UnmarshalJSON(data []byte) (err error) {
+	varOrganizationDropdownProjectDto := _OrganizationDropdownProjectDto{}
+
+	err = json.Unmarshal(data, &varOrganizationDropdownProjectDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationDropdownProjectDto(varOrganizationDropdownProjectDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "isBound")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOrganizationDropdownProjectDto struct {
@@ -195,5 +226,3 @@ func (v *NullableOrganizationDropdownProjectDto) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

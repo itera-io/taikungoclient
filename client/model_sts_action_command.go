@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,11 +21,12 @@ var _ MappedNullable = &StsActionCommand{}
 
 // StsActionCommand struct for StsActionCommand
 type StsActionCommand struct {
-	ProjectId int32 `json:"projectId"`
-	Name NullableString `json:"name"`
-	Namespace NullableString `json:"namespace"`
-	ScaleReplicaCount NullableInt32 `json:"scaleReplicaCount,omitempty"`
-	Action EStsAction `json:"action"`
+	ProjectId            int32          `json:"projectId"`
+	Name                 NullableString `json:"name"`
+	Namespace            NullableString `json:"namespace"`
+	ScaleReplicaCount    NullableInt32  `json:"scaleReplicaCount,omitempty"`
+	Action               EStsAction     `json:"action"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StsActionCommand StsActionCommand
@@ -160,6 +160,7 @@ func (o *StsActionCommand) HasScaleReplicaCount() bool {
 func (o *StsActionCommand) SetScaleReplicaCount(v int32) {
 	o.ScaleReplicaCount.Set(&v)
 }
+
 // SetScaleReplicaCountNil sets the value for ScaleReplicaCount to be an explicit nil
 func (o *StsActionCommand) SetScaleReplicaCountNil() {
 	o.ScaleReplicaCount.Set(nil)
@@ -195,7 +196,7 @@ func (o *StsActionCommand) SetAction(v EStsAction) {
 }
 
 func (o StsActionCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -211,6 +212,11 @@ func (o StsActionCommand) ToMap() (map[string]interface{}, error) {
 		toSerialize["scaleReplicaCount"] = o.ScaleReplicaCount.Get()
 	}
 	toSerialize["action"] = o.Action
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -230,10 +236,10 @@ func (o *StsActionCommand) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -241,15 +247,24 @@ func (o *StsActionCommand) UnmarshalJSON(data []byte) (err error) {
 
 	varStsActionCommand := _StsActionCommand{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStsActionCommand)
+	err = json.Unmarshal(data, &varStsActionCommand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StsActionCommand(varStsActionCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "scaleReplicaCount")
+		delete(additionalProperties, "action")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -289,5 +304,3 @@ func (v *NullableStsActionCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

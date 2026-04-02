@@ -13,9 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"time"
-	"bytes"
 	"fmt"
+	"time"
 )
 
 // checks if the ProjectsForBillingDto type satisfies the MappedNullable interface at compile time
@@ -23,15 +22,16 @@ var _ MappedNullable = &ProjectsForBillingDto{}
 
 // ProjectsForBillingDto struct for ProjectsForBillingDto
 type ProjectsForBillingDto struct {
-	Id int32 `json:"id"`
-	Name NullableString `json:"name"`
-	CreatedAt NullableTime `json:"createdAt"`
-	BillingStartDate NullableTime `json:"billingStartDate"`
-	OrganizationName NullableString `json:"organizationName"`
-	Price float64 `json:"price"`
-	Servers []ServersForBillingDto `json:"servers"`
-	StandaloneVms []StandaloneVmsForBillingDto `json:"standaloneVms"`
-	BillingEnabled bool `json:"billingEnabled"`
+	Id                   int32                        `json:"id"`
+	Name                 NullableString               `json:"name"`
+	CreatedAt            NullableTime                 `json:"createdAt"`
+	BillingStartDate     NullableTime                 `json:"billingStartDate"`
+	OrganizationName     NullableString               `json:"organizationName"`
+	Price                float64                      `json:"price"`
+	Servers              []ServersForBillingDto       `json:"servers"`
+	StandaloneVms        []StandaloneVmsForBillingDto `json:"standaloneVms"`
+	BillingEnabled       bool                         `json:"billingEnabled"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProjectsForBillingDto ProjectsForBillingDto
@@ -291,7 +291,7 @@ func (o *ProjectsForBillingDto) SetBillingEnabled(v bool) {
 }
 
 func (o ProjectsForBillingDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -313,6 +313,11 @@ func (o ProjectsForBillingDto) ToMap() (map[string]interface{}, error) {
 		toSerialize["standaloneVms"] = o.StandaloneVms
 	}
 	toSerialize["billingEnabled"] = o.BillingEnabled
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -337,10 +342,10 @@ func (o *ProjectsForBillingDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -348,15 +353,28 @@ func (o *ProjectsForBillingDto) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectsForBillingDto := _ProjectsForBillingDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectsForBillingDto)
+	err = json.Unmarshal(data, &varProjectsForBillingDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectsForBillingDto(varProjectsForBillingDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "billingStartDate")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "price")
+		delete(additionalProperties, "servers")
+		delete(additionalProperties, "standaloneVms")
+		delete(additionalProperties, "billingEnabled")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -396,5 +414,3 @@ func (v *NullableProjectsForBillingDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

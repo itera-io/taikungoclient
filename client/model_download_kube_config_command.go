@@ -20,9 +20,12 @@ var _ MappedNullable = &DownloadKubeConfigCommand{}
 
 // DownloadKubeConfigCommand struct for DownloadKubeConfigCommand
 type DownloadKubeConfigCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	ProjectId *int32 `json:"projectId,omitempty"`
+	Id                   *int32 `json:"id,omitempty"`
+	ProjectId            *int32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DownloadKubeConfigCommand DownloadKubeConfigCommand
 
 // NewDownloadKubeConfigCommand instantiates a new DownloadKubeConfigCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -106,7 +109,7 @@ func (o *DownloadKubeConfigCommand) SetProjectId(v int32) {
 }
 
 func (o DownloadKubeConfigCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -121,7 +124,34 @@ func (o DownloadKubeConfigCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DownloadKubeConfigCommand) UnmarshalJSON(data []byte) (err error) {
+	varDownloadKubeConfigCommand := _DownloadKubeConfigCommand{}
+
+	err = json.Unmarshal(data, &varDownloadKubeConfigCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DownloadKubeConfigCommand(varDownloadKubeConfigCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDownloadKubeConfigCommand struct {
@@ -159,5 +189,3 @@ func (v *NullableDownloadKubeConfigCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

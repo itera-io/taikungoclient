@@ -20,9 +20,12 @@ var _ MappedNullable = &AddPrometheusRulesToOrganizationDto{}
 
 // AddPrometheusRulesToOrganizationDto struct for AddPrometheusRulesToOrganizationDto
 type AddPrometheusRulesToOrganizationDto struct {
-	Id *int32 `json:"id,omitempty"`
-	DiscountRate NullableFloat64 `json:"discountRate,omitempty"`
+	Id                   *int32          `json:"id,omitempty"`
+	DiscountRate         NullableFloat64 `json:"discountRate,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AddPrometheusRulesToOrganizationDto AddPrometheusRulesToOrganizationDto
 
 // NewAddPrometheusRulesToOrganizationDto instantiates a new AddPrometheusRulesToOrganizationDto object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,7 @@ func (o *AddPrometheusRulesToOrganizationDto) HasDiscountRate() bool {
 func (o *AddPrometheusRulesToOrganizationDto) SetDiscountRate(v float64) {
 	o.DiscountRate.Set(&v)
 }
+
 // SetDiscountRateNil sets the value for DiscountRate to be an explicit nil
 func (o *AddPrometheusRulesToOrganizationDto) SetDiscountRateNil() {
 	o.DiscountRate.Set(nil)
@@ -116,7 +120,7 @@ func (o *AddPrometheusRulesToOrganizationDto) UnsetDiscountRate() {
 }
 
 func (o AddPrometheusRulesToOrganizationDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o AddPrometheusRulesToOrganizationDto) ToMap() (map[string]interface{}, er
 	if o.DiscountRate.IsSet() {
 		toSerialize["discountRate"] = o.DiscountRate.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AddPrometheusRulesToOrganizationDto) UnmarshalJSON(data []byte) (err error) {
+	varAddPrometheusRulesToOrganizationDto := _AddPrometheusRulesToOrganizationDto{}
+
+	err = json.Unmarshal(data, &varAddPrometheusRulesToOrganizationDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AddPrometheusRulesToOrganizationDto(varAddPrometheusRulesToOrganizationDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "discountRate")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAddPrometheusRulesToOrganizationDto struct {
@@ -169,5 +200,3 @@ func (v *NullableAddPrometheusRulesToOrganizationDto) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

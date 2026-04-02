@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,14 +21,15 @@ var _ MappedNullable = &ProxmoxNetworkListDto{}
 
 // ProxmoxNetworkListDto struct for ProxmoxNetworkListDto
 type ProxmoxNetworkListDto struct {
-	Bridge NullableString `json:"bridge"`
-	Gateway NullableString `json:"gateway"`
-	IpAddress NullableString `json:"ipAddress"`
-	NetMask int32 `json:"netMask"`
+	Bridge               NullableString `json:"bridge"`
+	Gateway              NullableString `json:"gateway"`
+	IpAddress            NullableString `json:"ipAddress"`
+	NetMask              int32          `json:"netMask"`
 	BeginAllocationRange NullableString `json:"beginAllocationRange"`
-	EndAllocationRange NullableString `json:"endAllocationRange"`
-	IsPrivate bool `json:"isPrivate"`
-	IsVirtualLbNetwork bool `json:"isVirtualLbNetwork"`
+	EndAllocationRange   NullableString `json:"endAllocationRange"`
+	IsPrivate            bool           `json:"isPrivate"`
+	IsVirtualLbNetwork   bool           `json:"isVirtualLbNetwork"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProxmoxNetworkListDto ProxmoxNetworkListDto
@@ -262,7 +262,7 @@ func (o *ProxmoxNetworkListDto) SetIsVirtualLbNetwork(v bool) {
 }
 
 func (o ProxmoxNetworkListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -279,6 +279,11 @@ func (o ProxmoxNetworkListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["endAllocationRange"] = o.EndAllocationRange.Get()
 	toSerialize["isPrivate"] = o.IsPrivate
 	toSerialize["isVirtualLbNetwork"] = o.IsVirtualLbNetwork
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -302,10 +307,10 @@ func (o *ProxmoxNetworkListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -313,15 +318,27 @@ func (o *ProxmoxNetworkListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varProxmoxNetworkListDto := _ProxmoxNetworkListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProxmoxNetworkListDto)
+	err = json.Unmarshal(data, &varProxmoxNetworkListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProxmoxNetworkListDto(varProxmoxNetworkListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "bridge")
+		delete(additionalProperties, "gateway")
+		delete(additionalProperties, "ipAddress")
+		delete(additionalProperties, "netMask")
+		delete(additionalProperties, "beginAllocationRange")
+		delete(additionalProperties, "endAllocationRange")
+		delete(additionalProperties, "isPrivate")
+		delete(additionalProperties, "isVirtualLbNetwork")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -361,5 +378,3 @@ func (v *NullableProxmoxNetworkListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

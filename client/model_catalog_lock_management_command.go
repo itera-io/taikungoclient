@@ -20,9 +20,12 @@ var _ MappedNullable = &CatalogLockManagementCommand{}
 
 // CatalogLockManagementCommand struct for CatalogLockManagementCommand
 type CatalogLockManagementCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Mode NullableString `json:"mode,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Mode                 NullableString `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CatalogLockManagementCommand CatalogLockManagementCommand
 
 // NewCatalogLockManagementCommand instantiates a new CatalogLockManagementCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,7 @@ func (o *CatalogLockManagementCommand) HasMode() bool {
 func (o *CatalogLockManagementCommand) SetMode(v string) {
 	o.Mode.Set(&v)
 }
+
 // SetModeNil sets the value for Mode to be an explicit nil
 func (o *CatalogLockManagementCommand) SetModeNil() {
 	o.Mode.Set(nil)
@@ -116,7 +120,7 @@ func (o *CatalogLockManagementCommand) UnsetMode() {
 }
 
 func (o CatalogLockManagementCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o CatalogLockManagementCommand) ToMap() (map[string]interface{}, error) {
 	if o.Mode.IsSet() {
 		toSerialize["mode"] = o.Mode.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CatalogLockManagementCommand) UnmarshalJSON(data []byte) (err error) {
+	varCatalogLockManagementCommand := _CatalogLockManagementCommand{}
+
+	err = json.Unmarshal(data, &varCatalogLockManagementCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CatalogLockManagementCommand(varCatalogLockManagementCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCatalogLockManagementCommand struct {
@@ -169,5 +200,3 @@ func (v *NullableCatalogLockManagementCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

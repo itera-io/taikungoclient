@@ -20,10 +20,13 @@ var _ MappedNullable = &UpdateOrganizationCommand{}
 
 // UpdateOrganizationCommand struct for UpdateOrganizationCommand
 type UpdateOrganizationCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	FullName NullableString `json:"fullName,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	FullName             NullableString `json:"fullName,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateOrganizationCommand UpdateOrganizationCommand
 
 // NewUpdateOrganizationCommand instantiates a new UpdateOrganizationCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -106,6 +109,7 @@ func (o *UpdateOrganizationCommand) HasName() bool {
 func (o *UpdateOrganizationCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UpdateOrganizationCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -148,6 +152,7 @@ func (o *UpdateOrganizationCommand) HasFullName() bool {
 func (o *UpdateOrganizationCommand) SetFullName(v string) {
 	o.FullName.Set(&v)
 }
+
 // SetFullNameNil sets the value for FullName to be an explicit nil
 func (o *UpdateOrganizationCommand) SetFullNameNil() {
 	o.FullName.Set(nil)
@@ -159,7 +164,7 @@ func (o *UpdateOrganizationCommand) UnsetFullName() {
 }
 
 func (o UpdateOrganizationCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -177,7 +182,35 @@ func (o UpdateOrganizationCommand) ToMap() (map[string]interface{}, error) {
 	if o.FullName.IsSet() {
 		toSerialize["fullName"] = o.FullName.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateOrganizationCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateOrganizationCommand := _UpdateOrganizationCommand{}
+
+	err = json.Unmarshal(data, &varUpdateOrganizationCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateOrganizationCommand(varUpdateOrganizationCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "fullName")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateOrganizationCommand struct {
@@ -215,5 +248,3 @@ func (v *NullableUpdateOrganizationCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

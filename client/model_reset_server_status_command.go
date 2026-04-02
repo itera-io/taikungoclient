@@ -20,10 +20,13 @@ var _ MappedNullable = &ResetServerStatusCommand{}
 
 // ResetServerStatusCommand struct for ResetServerStatusCommand
 type ResetServerStatusCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	ServerIds []int32 `json:"serverIds,omitempty"`
-	Status *CloudStatus `json:"status,omitempty"`
+	ProjectId            *int32       `json:"projectId,omitempty"`
+	ServerIds            []int32      `json:"serverIds,omitempty"`
+	Status               *CloudStatus `json:"status,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ResetServerStatusCommand ResetServerStatusCommand
 
 // NewResetServerStatusCommand instantiates a new ResetServerStatusCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -140,7 +143,7 @@ func (o *ResetServerStatusCommand) SetStatus(v CloudStatus) {
 }
 
 func (o ResetServerStatusCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,7 +161,35 @@ func (o ResetServerStatusCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ResetServerStatusCommand) UnmarshalJSON(data []byte) (err error) {
+	varResetServerStatusCommand := _ResetServerStatusCommand{}
+
+	err = json.Unmarshal(data, &varResetServerStatusCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ResetServerStatusCommand(varResetServerStatusCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "serverIds")
+		delete(additionalProperties, "status")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableResetServerStatusCommand struct {
@@ -196,5 +227,3 @@ func (v *NullableResetServerStatusCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

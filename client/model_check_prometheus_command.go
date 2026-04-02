@@ -20,10 +20,13 @@ var _ MappedNullable = &CheckPrometheusCommand{}
 
 // CheckPrometheusCommand struct for CheckPrometheusCommand
 type CheckPrometheusCommand struct {
-	Password NullableString `json:"password,omitempty"`
-	UserName NullableString `json:"userName,omitempty"`
-	Url NullableString `json:"url,omitempty"`
+	Password             NullableString `json:"password,omitempty"`
+	UserName             NullableString `json:"userName,omitempty"`
+	Url                  NullableString `json:"url,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CheckPrometheusCommand CheckPrometheusCommand
 
 // NewCheckPrometheusCommand instantiates a new CheckPrometheusCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *CheckPrometheusCommand) HasPassword() bool {
 func (o *CheckPrometheusCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *CheckPrometheusCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -116,6 +120,7 @@ func (o *CheckPrometheusCommand) HasUserName() bool {
 func (o *CheckPrometheusCommand) SetUserName(v string) {
 	o.UserName.Set(&v)
 }
+
 // SetUserNameNil sets the value for UserName to be an explicit nil
 func (o *CheckPrometheusCommand) SetUserNameNil() {
 	o.UserName.Set(nil)
@@ -158,6 +163,7 @@ func (o *CheckPrometheusCommand) HasUrl() bool {
 func (o *CheckPrometheusCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *CheckPrometheusCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -169,7 +175,7 @@ func (o *CheckPrometheusCommand) UnsetUrl() {
 }
 
 func (o CheckPrometheusCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -187,7 +193,35 @@ func (o CheckPrometheusCommand) ToMap() (map[string]interface{}, error) {
 	if o.Url.IsSet() {
 		toSerialize["url"] = o.Url.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CheckPrometheusCommand) UnmarshalJSON(data []byte) (err error) {
+	varCheckPrometheusCommand := _CheckPrometheusCommand{}
+
+	err = json.Unmarshal(data, &varCheckPrometheusCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CheckPrometheusCommand(varCheckPrometheusCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "userName")
+		delete(additionalProperties, "url")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCheckPrometheusCommand struct {
@@ -225,5 +259,3 @@ func (v *NullableCheckPrometheusCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

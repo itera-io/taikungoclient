@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,10 +21,11 @@ var _ MappedNullable = &SshUsersListDto{}
 
 // SshUsersListDto struct for SshUsersListDto
 type SshUsersListDto struct {
-	Id int32 `json:"id"`
-	Name NullableString `json:"name"`
-	SshPublicKey NullableString `json:"sshPublicKey"`
-	AccessProfileName NullableString `json:"accessProfileName"`
+	Id                   int32          `json:"id"`
+	Name                 NullableString `json:"name"`
+	SshPublicKey         NullableString `json:"sshPublicKey"`
+	AccessProfileName    NullableString `json:"accessProfileName"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SshUsersListDto SshUsersListDto
@@ -154,7 +154,7 @@ func (o *SshUsersListDto) SetAccessProfileName(v string) {
 }
 
 func (o SshUsersListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -167,6 +167,11 @@ func (o SshUsersListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name.Get()
 	toSerialize["sshPublicKey"] = o.SshPublicKey.Get()
 	toSerialize["accessProfileName"] = o.AccessProfileName.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -186,10 +191,10 @@ func (o *SshUsersListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -197,15 +202,23 @@ func (o *SshUsersListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varSshUsersListDto := _SshUsersListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSshUsersListDto)
+	err = json.Unmarshal(data, &varSshUsersListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SshUsersListDto(varSshUsersListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "sshPublicKey")
+		delete(additionalProperties, "accessProfileName")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -245,5 +258,3 @@ func (v *NullableSshUsersListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

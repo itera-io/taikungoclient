@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,9 +21,10 @@ var _ MappedNullable = &DeleteKubernetesResourceCommand{}
 
 // DeleteKubernetesResourceCommand struct for DeleteKubernetesResourceCommand
 type DeleteKubernetesResourceCommand struct {
-	ProjectId int32 `json:"projectId"`
-	Kind EKubernetesResource `json:"kind"`
-	Data []KubernetesActionRequest `json:"data"`
+	ProjectId            int32                     `json:"projectId"`
+	Kind                 EKubernetesResource       `json:"kind"`
+	Data                 []KubernetesActionRequest `json:"data"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeleteKubernetesResourceCommand DeleteKubernetesResourceCommand
@@ -122,7 +122,7 @@ func (o *DeleteKubernetesResourceCommand) SetData(v []KubernetesActionRequest) {
 }
 
 func (o DeleteKubernetesResourceCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -134,6 +134,11 @@ func (o DeleteKubernetesResourceCommand) ToMap() (map[string]interface{}, error)
 	toSerialize["projectId"] = o.ProjectId
 	toSerialize["kind"] = o.Kind
 	toSerialize["data"] = o.Data
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -152,10 +157,10 @@ func (o *DeleteKubernetesResourceCommand) UnmarshalJSON(data []byte) (err error)
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -163,15 +168,22 @@ func (o *DeleteKubernetesResourceCommand) UnmarshalJSON(data []byte) (err error)
 
 	varDeleteKubernetesResourceCommand := _DeleteKubernetesResourceCommand{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeleteKubernetesResourceCommand)
+	err = json.Unmarshal(data, &varDeleteKubernetesResourceCommand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeleteKubernetesResourceCommand(varDeleteKubernetesResourceCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "kind")
+		delete(additionalProperties, "data")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -211,5 +223,3 @@ func (v *NullableDeleteKubernetesResourceCommand) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

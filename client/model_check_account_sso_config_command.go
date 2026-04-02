@@ -20,10 +20,13 @@ var _ MappedNullable = &CheckAccountSsoConfigCommand{}
 
 // CheckAccountSsoConfigCommand struct for CheckAccountSsoConfigCommand
 type CheckAccountSsoConfigCommand struct {
-	IssuerUrl NullableString `json:"issuerUrl,omitempty"`
-	ClientId NullableString `json:"clientId,omitempty"`
-	ClientSecret NullableString `json:"clientSecret,omitempty"`
+	IssuerUrl            NullableString `json:"issuerUrl,omitempty"`
+	ClientId             NullableString `json:"clientId,omitempty"`
+	ClientSecret         NullableString `json:"clientSecret,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CheckAccountSsoConfigCommand CheckAccountSsoConfigCommand
 
 // NewCheckAccountSsoConfigCommand instantiates a new CheckAccountSsoConfigCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *CheckAccountSsoConfigCommand) HasIssuerUrl() bool {
 func (o *CheckAccountSsoConfigCommand) SetIssuerUrl(v string) {
 	o.IssuerUrl.Set(&v)
 }
+
 // SetIssuerUrlNil sets the value for IssuerUrl to be an explicit nil
 func (o *CheckAccountSsoConfigCommand) SetIssuerUrlNil() {
 	o.IssuerUrl.Set(nil)
@@ -116,6 +120,7 @@ func (o *CheckAccountSsoConfigCommand) HasClientId() bool {
 func (o *CheckAccountSsoConfigCommand) SetClientId(v string) {
 	o.ClientId.Set(&v)
 }
+
 // SetClientIdNil sets the value for ClientId to be an explicit nil
 func (o *CheckAccountSsoConfigCommand) SetClientIdNil() {
 	o.ClientId.Set(nil)
@@ -158,6 +163,7 @@ func (o *CheckAccountSsoConfigCommand) HasClientSecret() bool {
 func (o *CheckAccountSsoConfigCommand) SetClientSecret(v string) {
 	o.ClientSecret.Set(&v)
 }
+
 // SetClientSecretNil sets the value for ClientSecret to be an explicit nil
 func (o *CheckAccountSsoConfigCommand) SetClientSecretNil() {
 	o.ClientSecret.Set(nil)
@@ -169,7 +175,7 @@ func (o *CheckAccountSsoConfigCommand) UnsetClientSecret() {
 }
 
 func (o CheckAccountSsoConfigCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -187,7 +193,35 @@ func (o CheckAccountSsoConfigCommand) ToMap() (map[string]interface{}, error) {
 	if o.ClientSecret.IsSet() {
 		toSerialize["clientSecret"] = o.ClientSecret.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CheckAccountSsoConfigCommand) UnmarshalJSON(data []byte) (err error) {
+	varCheckAccountSsoConfigCommand := _CheckAccountSsoConfigCommand{}
+
+	err = json.Unmarshal(data, &varCheckAccountSsoConfigCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CheckAccountSsoConfigCommand(varCheckAccountSsoConfigCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "issuerUrl")
+		delete(additionalProperties, "clientId")
+		delete(additionalProperties, "clientSecret")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCheckAccountSsoConfigCommand struct {
@@ -225,5 +259,3 @@ func (v *NullableCheckAccountSsoConfigCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

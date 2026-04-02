@@ -20,10 +20,13 @@ var _ MappedNullable = &UserWithGlobalRoleDto{}
 
 // UserWithGlobalRoleDto struct for UserWithGlobalRoleDto
 type UserWithGlobalRoleDto struct {
-	Id NullableString `json:"id,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Role *EGlobalRole `json:"role,omitempty"`
+	Id                   NullableString `json:"id,omitempty"`
+	Username             NullableString `json:"username,omitempty"`
+	Role                 *EGlobalRole   `json:"role,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UserWithGlobalRoleDto UserWithGlobalRoleDto
 
 // NewUserWithGlobalRoleDto instantiates a new UserWithGlobalRoleDto object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *UserWithGlobalRoleDto) HasId() bool {
 func (o *UserWithGlobalRoleDto) SetId(v string) {
 	o.Id.Set(&v)
 }
+
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *UserWithGlobalRoleDto) SetIdNil() {
 	o.Id.Set(nil)
@@ -116,6 +120,7 @@ func (o *UserWithGlobalRoleDto) HasUsername() bool {
 func (o *UserWithGlobalRoleDto) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *UserWithGlobalRoleDto) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -159,7 +164,7 @@ func (o *UserWithGlobalRoleDto) SetRole(v EGlobalRole) {
 }
 
 func (o UserWithGlobalRoleDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -177,7 +182,35 @@ func (o UserWithGlobalRoleDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Role) {
 		toSerialize["role"] = o.Role
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UserWithGlobalRoleDto) UnmarshalJSON(data []byte) (err error) {
+	varUserWithGlobalRoleDto := _UserWithGlobalRoleDto{}
+
+	err = json.Unmarshal(data, &varUserWithGlobalRoleDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserWithGlobalRoleDto(varUserWithGlobalRoleDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "role")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUserWithGlobalRoleDto struct {
@@ -215,5 +248,3 @@ func (v *NullableUserWithGlobalRoleDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

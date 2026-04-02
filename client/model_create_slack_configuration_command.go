@@ -20,12 +20,15 @@ var _ MappedNullable = &CreateSlackConfigurationCommand{}
 
 // CreateSlackConfigurationCommand struct for CreateSlackConfigurationCommand
 type CreateSlackConfigurationCommand struct {
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Url NullableString `json:"url,omitempty"`
-	Channel NullableString `json:"channel,omitempty"`
-	SlackType *SlackType `json:"slackType,omitempty"`
+	OrganizationId       NullableInt32  `json:"organizationId,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Url                  NullableString `json:"url,omitempty"`
+	Channel              NullableString `json:"channel,omitempty"`
+	SlackType            *SlackType     `json:"slackType,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateSlackConfigurationCommand CreateSlackConfigurationCommand
 
 // NewCreateSlackConfigurationCommand instantiates a new CreateSlackConfigurationCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -76,6 +79,7 @@ func (o *CreateSlackConfigurationCommand) HasOrganizationId() bool {
 func (o *CreateSlackConfigurationCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
+
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateSlackConfigurationCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -118,6 +122,7 @@ func (o *CreateSlackConfigurationCommand) HasName() bool {
 func (o *CreateSlackConfigurationCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateSlackConfigurationCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -160,6 +165,7 @@ func (o *CreateSlackConfigurationCommand) HasUrl() bool {
 func (o *CreateSlackConfigurationCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *CreateSlackConfigurationCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -202,6 +208,7 @@ func (o *CreateSlackConfigurationCommand) HasChannel() bool {
 func (o *CreateSlackConfigurationCommand) SetChannel(v string) {
 	o.Channel.Set(&v)
 }
+
 // SetChannelNil sets the value for Channel to be an explicit nil
 func (o *CreateSlackConfigurationCommand) SetChannelNil() {
 	o.Channel.Set(nil)
@@ -245,7 +252,7 @@ func (o *CreateSlackConfigurationCommand) SetSlackType(v SlackType) {
 }
 
 func (o CreateSlackConfigurationCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -269,7 +276,37 @@ func (o CreateSlackConfigurationCommand) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.SlackType) {
 		toSerialize["slackType"] = o.SlackType
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateSlackConfigurationCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateSlackConfigurationCommand := _CreateSlackConfigurationCommand{}
+
+	err = json.Unmarshal(data, &varCreateSlackConfigurationCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateSlackConfigurationCommand(varCreateSlackConfigurationCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "channel")
+		delete(additionalProperties, "slackType")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateSlackConfigurationCommand struct {
@@ -307,5 +344,3 @@ func (v *NullableCreateSlackConfigurationCommand) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

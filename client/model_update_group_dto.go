@@ -20,9 +20,12 @@ var _ MappedNullable = &UpdateGroupDto{}
 
 // UpdateGroupDto struct for UpdateGroupDto
 type UpdateGroupDto struct {
-	Name NullableString `json:"name,omitempty"`
-	ClaimValue NullableString `json:"claimValue,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	ClaimValue           NullableString `json:"claimValue,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateGroupDto UpdateGroupDto
 
 // NewUpdateGroupDto instantiates a new UpdateGroupDto object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *UpdateGroupDto) HasName() bool {
 func (o *UpdateGroupDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UpdateGroupDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -115,6 +119,7 @@ func (o *UpdateGroupDto) HasClaimValue() bool {
 func (o *UpdateGroupDto) SetClaimValue(v string) {
 	o.ClaimValue.Set(&v)
 }
+
 // SetClaimValueNil sets the value for ClaimValue to be an explicit nil
 func (o *UpdateGroupDto) SetClaimValueNil() {
 	o.ClaimValue.Set(nil)
@@ -126,7 +131,7 @@ func (o *UpdateGroupDto) UnsetClaimValue() {
 }
 
 func (o UpdateGroupDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,7 +146,34 @@ func (o UpdateGroupDto) ToMap() (map[string]interface{}, error) {
 	if o.ClaimValue.IsSet() {
 		toSerialize["claimValue"] = o.ClaimValue.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateGroupDto) UnmarshalJSON(data []byte) (err error) {
+	varUpdateGroupDto := _UpdateGroupDto{}
+
+	err = json.Unmarshal(data, &varUpdateGroupDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateGroupDto(varUpdateGroupDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "claimValue")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateGroupDto struct {
@@ -179,5 +211,3 @@ func (v *NullableUpdateGroupDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

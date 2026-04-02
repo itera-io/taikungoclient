@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,20 +21,21 @@ var _ MappedNullable = &InvoiceListDto{}
 
 // InvoiceListDto struct for InvoiceListDto
 type InvoiceListDto struct {
-	Id int32 `json:"id"`
-	Name string `json:"name"`
-	StartDate NullableString `json:"startDate"`
-	EndDate NullableString `json:"endDate"`
-	RequiredPaymentAction bool `json:"requiredPaymentAction"`
-	IsPaid bool `json:"isPaid"`
-	InvoiceId string `json:"invoiceId"`
-	SubscriptionType string `json:"subscriptionType"`
-	SubscriptionName string `json:"subscriptionName"`
-	Price float64 `json:"price"`
-	OrganizationId int32 `json:"organizationId"`
-	OrganizationName string `json:"organizationName"`
-	InvoiceNumber string `json:"invoiceNumber"`
-	OrganizationSubscriptionId int32 `json:"organizationSubscriptionId"`
+	Id                         int32          `json:"id"`
+	Name                       string         `json:"name"`
+	StartDate                  NullableString `json:"startDate"`
+	EndDate                    NullableString `json:"endDate"`
+	RequiredPaymentAction      bool           `json:"requiredPaymentAction"`
+	IsPaid                     bool           `json:"isPaid"`
+	InvoiceId                  string         `json:"invoiceId"`
+	SubscriptionType           string         `json:"subscriptionType"`
+	SubscriptionName           string         `json:"subscriptionName"`
+	Price                      float64        `json:"price"`
+	OrganizationId             int32          `json:"organizationId"`
+	OrganizationName           string         `json:"organizationName"`
+	InvoiceNumber              string         `json:"invoiceNumber"`
+	OrganizationSubscriptionId int32          `json:"organizationSubscriptionId"`
+	AdditionalProperties       map[string]interface{}
 }
 
 type _InvoiceListDto InvoiceListDto
@@ -412,7 +412,7 @@ func (o *InvoiceListDto) SetOrganizationSubscriptionId(v int32) {
 }
 
 func (o InvoiceListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -435,6 +435,11 @@ func (o InvoiceListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["organizationName"] = o.OrganizationName
 	toSerialize["invoiceNumber"] = o.InvoiceNumber
 	toSerialize["organizationSubscriptionId"] = o.OrganizationSubscriptionId
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -464,10 +469,10 @@ func (o *InvoiceListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -475,15 +480,33 @@ func (o *InvoiceListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varInvoiceListDto := _InvoiceListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varInvoiceListDto)
+	err = json.Unmarshal(data, &varInvoiceListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = InvoiceListDto(varInvoiceListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "startDate")
+		delete(additionalProperties, "endDate")
+		delete(additionalProperties, "requiredPaymentAction")
+		delete(additionalProperties, "isPaid")
+		delete(additionalProperties, "invoiceId")
+		delete(additionalProperties, "subscriptionType")
+		delete(additionalProperties, "subscriptionName")
+		delete(additionalProperties, "price")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "invoiceNumber")
+		delete(additionalProperties, "organizationSubscriptionId")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -523,5 +546,3 @@ func (v *NullableInvoiceListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

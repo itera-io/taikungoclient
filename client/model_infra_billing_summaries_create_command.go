@@ -21,12 +21,15 @@ var _ MappedNullable = &InfraBillingSummariesCreateCommand{}
 
 // InfraBillingSummariesCreateCommand struct for InfraBillingSummariesCreateCommand
 type InfraBillingSummariesCreateCommand struct {
-	Price *float64 `json:"price,omitempty"`
-	OrganizationId *int32 `json:"organizationId,omitempty"`
-	BeginApply NullableTime `json:"beginApply,omitempty"`
-	EndApply NullableTime `json:"endApply,omitempty"`
-	ProductId *int32 `json:"productId,omitempty"`
+	Price                *float64     `json:"price,omitempty"`
+	OrganizationId       *int32       `json:"organizationId,omitempty"`
+	BeginApply           NullableTime `json:"beginApply,omitempty"`
+	EndApply             NullableTime `json:"endApply,omitempty"`
+	ProductId            *int32       `json:"productId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _InfraBillingSummariesCreateCommand InfraBillingSummariesCreateCommand
 
 // NewInfraBillingSummariesCreateCommand instantiates a new InfraBillingSummariesCreateCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -141,6 +144,7 @@ func (o *InfraBillingSummariesCreateCommand) HasBeginApply() bool {
 func (o *InfraBillingSummariesCreateCommand) SetBeginApply(v time.Time) {
 	o.BeginApply.Set(&v)
 }
+
 // SetBeginApplyNil sets the value for BeginApply to be an explicit nil
 func (o *InfraBillingSummariesCreateCommand) SetBeginApplyNil() {
 	o.BeginApply.Set(nil)
@@ -183,6 +187,7 @@ func (o *InfraBillingSummariesCreateCommand) HasEndApply() bool {
 func (o *InfraBillingSummariesCreateCommand) SetEndApply(v time.Time) {
 	o.EndApply.Set(&v)
 }
+
 // SetEndApplyNil sets the value for EndApply to be an explicit nil
 func (o *InfraBillingSummariesCreateCommand) SetEndApplyNil() {
 	o.EndApply.Set(nil)
@@ -226,7 +231,7 @@ func (o *InfraBillingSummariesCreateCommand) SetProductId(v int32) {
 }
 
 func (o InfraBillingSummariesCreateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -250,7 +255,37 @@ func (o InfraBillingSummariesCreateCommand) ToMap() (map[string]interface{}, err
 	if !IsNil(o.ProductId) {
 		toSerialize["productId"] = o.ProductId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *InfraBillingSummariesCreateCommand) UnmarshalJSON(data []byte) (err error) {
+	varInfraBillingSummariesCreateCommand := _InfraBillingSummariesCreateCommand{}
+
+	err = json.Unmarshal(data, &varInfraBillingSummariesCreateCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InfraBillingSummariesCreateCommand(varInfraBillingSummariesCreateCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "price")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "beginApply")
+		delete(additionalProperties, "endApply")
+		delete(additionalProperties, "productId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableInfraBillingSummariesCreateCommand struct {
@@ -288,5 +323,3 @@ func (v *NullableInfraBillingSummariesCreateCommand) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

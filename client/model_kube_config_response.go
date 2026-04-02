@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,7 +21,8 @@ var _ MappedNullable = &KubeConfigResponse{}
 
 // KubeConfigResponse struct for KubeConfigResponse
 type KubeConfigResponse struct {
-	Data NullableString `json:"data"`
+	Data                 NullableString `json:"data"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _KubeConfigResponse KubeConfigResponse
@@ -72,7 +72,7 @@ func (o *KubeConfigResponse) SetData(v string) {
 }
 
 func (o KubeConfigResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -82,6 +82,11 @@ func (o KubeConfigResponse) MarshalJSON() ([]byte, error) {
 func (o KubeConfigResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["data"] = o.Data.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -98,10 +103,10 @@ func (o *KubeConfigResponse) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -109,15 +114,20 @@ func (o *KubeConfigResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varKubeConfigResponse := _KubeConfigResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKubeConfigResponse)
+	err = json.Unmarshal(data, &varKubeConfigResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubeConfigResponse(varKubeConfigResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -157,5 +167,3 @@ func (v *NullableKubeConfigResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

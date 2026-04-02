@@ -20,21 +20,24 @@ var _ MappedNullable = &OpenstackNetworkDto{}
 
 // OpenstackNetworkDto struct for OpenstackNetworkDto
 type OpenstackNetworkDto struct {
-	NetworkLimit *int64 `json:"networkLimit,omitempty"`
-	SubnetLimit *int64 `json:"subnetLimit,omitempty"`
-	FloatingIpLimit *int64 `json:"floatingIpLimit,omitempty"`
-	RouterLimit *int64 `json:"routerLimit,omitempty"`
-	SecurityGroupLimit *int64 `json:"securityGroupLimit,omitempty"`
+	NetworkLimit           *int64 `json:"networkLimit,omitempty"`
+	SubnetLimit            *int64 `json:"subnetLimit,omitempty"`
+	FloatingIpLimit        *int64 `json:"floatingIpLimit,omitempty"`
+	RouterLimit            *int64 `json:"routerLimit,omitempty"`
+	SecurityGroupLimit     *int64 `json:"securityGroupLimit,omitempty"`
 	SecurityGroupRuleLimit *int64 `json:"securityGroupRuleLimit,omitempty"`
-	PortLimit *int64 `json:"portLimit,omitempty"`
-	NetworkUsed *int64 `json:"networkUsed,omitempty"`
-	SubnetUsed *int64 `json:"subnetUsed,omitempty"`
-	FloatingIpUsed *int64 `json:"floatingIpUsed,omitempty"`
-	RouterUsed *int64 `json:"routerUsed,omitempty"`
-	SecurityGroupUsed *int64 `json:"securityGroupUsed,omitempty"`
-	PortUsed *int64 `json:"portUsed,omitempty"`
-	SecurityGroupRuleUsed *int64 `json:"securityGroupRuleUsed,omitempty"`
+	PortLimit              *int64 `json:"portLimit,omitempty"`
+	NetworkUsed            *int64 `json:"networkUsed,omitempty"`
+	SubnetUsed             *int64 `json:"subnetUsed,omitempty"`
+	FloatingIpUsed         *int64 `json:"floatingIpUsed,omitempty"`
+	RouterUsed             *int64 `json:"routerUsed,omitempty"`
+	SecurityGroupUsed      *int64 `json:"securityGroupUsed,omitempty"`
+	PortUsed               *int64 `json:"portUsed,omitempty"`
+	SecurityGroupRuleUsed  *int64 `json:"securityGroupRuleUsed,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
+
+type _OpenstackNetworkDto OpenstackNetworkDto
 
 // NewOpenstackNetworkDto instantiates a new OpenstackNetworkDto object
 // This constructor will assign default values to properties that have it defined,
@@ -502,7 +505,7 @@ func (o *OpenstackNetworkDto) SetSecurityGroupRuleUsed(v int64) {
 }
 
 func (o OpenstackNetworkDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -553,7 +556,46 @@ func (o OpenstackNetworkDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecurityGroupRuleUsed) {
 		toSerialize["securityGroupRuleUsed"] = o.SecurityGroupRuleUsed
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OpenstackNetworkDto) UnmarshalJSON(data []byte) (err error) {
+	varOpenstackNetworkDto := _OpenstackNetworkDto{}
+
+	err = json.Unmarshal(data, &varOpenstackNetworkDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OpenstackNetworkDto(varOpenstackNetworkDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "networkLimit")
+		delete(additionalProperties, "subnetLimit")
+		delete(additionalProperties, "floatingIpLimit")
+		delete(additionalProperties, "routerLimit")
+		delete(additionalProperties, "securityGroupLimit")
+		delete(additionalProperties, "securityGroupRuleLimit")
+		delete(additionalProperties, "portLimit")
+		delete(additionalProperties, "networkUsed")
+		delete(additionalProperties, "subnetUsed")
+		delete(additionalProperties, "floatingIpUsed")
+		delete(additionalProperties, "routerUsed")
+		delete(additionalProperties, "securityGroupUsed")
+		delete(additionalProperties, "portUsed")
+		delete(additionalProperties, "securityGroupRuleUsed")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOpenstackNetworkDto struct {
@@ -591,5 +633,3 @@ func (v *NullableOpenstackNetworkDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

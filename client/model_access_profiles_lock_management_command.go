@@ -20,9 +20,12 @@ var _ MappedNullable = &AccessProfilesLockManagementCommand{}
 
 // AccessProfilesLockManagementCommand struct for AccessProfilesLockManagementCommand
 type AccessProfilesLockManagementCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Mode NullableString `json:"mode,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Mode                 NullableString `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AccessProfilesLockManagementCommand AccessProfilesLockManagementCommand
 
 // NewAccessProfilesLockManagementCommand instantiates a new AccessProfilesLockManagementCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,7 @@ func (o *AccessProfilesLockManagementCommand) HasMode() bool {
 func (o *AccessProfilesLockManagementCommand) SetMode(v string) {
 	o.Mode.Set(&v)
 }
+
 // SetModeNil sets the value for Mode to be an explicit nil
 func (o *AccessProfilesLockManagementCommand) SetModeNil() {
 	o.Mode.Set(nil)
@@ -116,7 +120,7 @@ func (o *AccessProfilesLockManagementCommand) UnsetMode() {
 }
 
 func (o AccessProfilesLockManagementCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o AccessProfilesLockManagementCommand) ToMap() (map[string]interface{}, er
 	if o.Mode.IsSet() {
 		toSerialize["mode"] = o.Mode.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AccessProfilesLockManagementCommand) UnmarshalJSON(data []byte) (err error) {
+	varAccessProfilesLockManagementCommand := _AccessProfilesLockManagementCommand{}
+
+	err = json.Unmarshal(data, &varAccessProfilesLockManagementCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AccessProfilesLockManagementCommand(varAccessProfilesLockManagementCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAccessProfilesLockManagementCommand struct {
@@ -169,5 +200,3 @@ func (v *NullableAccessProfilesLockManagementCommand) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

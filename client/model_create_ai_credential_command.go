@@ -20,10 +20,13 @@ var _ MappedNullable = &CreateAiCredentialCommand{}
 
 // CreateAiCredentialCommand struct for CreateAiCredentialCommand
 type CreateAiCredentialCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	ApiKey NullableString `json:"apiKey,omitempty"`
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	ApiKey               NullableString `json:"apiKey,omitempty"`
+	OrganizationId       NullableInt32  `json:"organizationId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateAiCredentialCommand CreateAiCredentialCommand
 
 // NewCreateAiCredentialCommand instantiates a new CreateAiCredentialCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *CreateAiCredentialCommand) HasName() bool {
 func (o *CreateAiCredentialCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateAiCredentialCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -116,6 +120,7 @@ func (o *CreateAiCredentialCommand) HasApiKey() bool {
 func (o *CreateAiCredentialCommand) SetApiKey(v string) {
 	o.ApiKey.Set(&v)
 }
+
 // SetApiKeyNil sets the value for ApiKey to be an explicit nil
 func (o *CreateAiCredentialCommand) SetApiKeyNil() {
 	o.ApiKey.Set(nil)
@@ -158,6 +163,7 @@ func (o *CreateAiCredentialCommand) HasOrganizationId() bool {
 func (o *CreateAiCredentialCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
+
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateAiCredentialCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -169,7 +175,7 @@ func (o *CreateAiCredentialCommand) UnsetOrganizationId() {
 }
 
 func (o CreateAiCredentialCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -187,7 +193,35 @@ func (o CreateAiCredentialCommand) ToMap() (map[string]interface{}, error) {
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateAiCredentialCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateAiCredentialCommand := _CreateAiCredentialCommand{}
+
+	err = json.Unmarshal(data, &varCreateAiCredentialCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateAiCredentialCommand(varCreateAiCredentialCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "apiKey")
+		delete(additionalProperties, "organizationId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateAiCredentialCommand struct {
@@ -225,5 +259,3 @@ func (v *NullableCreateAiCredentialCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

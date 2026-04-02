@@ -20,9 +20,12 @@ var _ MappedNullable = &OrganizationSearchList{}
 
 // OrganizationSearchList struct for OrganizationSearchList
 type OrganizationSearchList struct {
-	Data []OrganizationsSearchResponseData `json:"data,omitempty"`
-	TotalCount *int64 `json:"totalCount,omitempty"`
+	Data                 []OrganizationsSearchResponseData `json:"data,omitempty"`
+	TotalCount           *int64                            `json:"totalCount,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OrganizationSearchList OrganizationSearchList
 
 // NewOrganizationSearchList instantiates a new OrganizationSearchList object
 // This constructor will assign default values to properties that have it defined,
@@ -107,7 +110,7 @@ func (o *OrganizationSearchList) SetTotalCount(v int64) {
 }
 
 func (o OrganizationSearchList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -122,7 +125,34 @@ func (o OrganizationSearchList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OrganizationSearchList) UnmarshalJSON(data []byte) (err error) {
+	varOrganizationSearchList := _OrganizationSearchList{}
+
+	err = json.Unmarshal(data, &varOrganizationSearchList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationSearchList(varOrganizationSearchList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOrganizationSearchList struct {
@@ -160,5 +190,3 @@ func (v *NullableOrganizationSearchList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,12 +21,13 @@ var _ MappedNullable = &BoundImagesForProjectsList{}
 
 // BoundImagesForProjectsList struct for BoundImagesForProjectsList
 type BoundImagesForProjectsList struct {
-	Data []BoundImagesForProjectsListDto `json:"data"`
-	Limit int32 `json:"limit"`
-	HasMore bool `json:"hasMore"`
-	TotalCount int64 `json:"totalCount"`
-	Offset int32 `json:"offset"`
-	NextOffset NullableInt32 `json:"nextOffset,omitempty"`
+	Data                 []BoundImagesForProjectsListDto `json:"data"`
+	Limit                int32                           `json:"limit"`
+	HasMore              bool                            `json:"hasMore"`
+	TotalCount           int64                           `json:"totalCount"`
+	Offset               int32                           `json:"offset"`
+	NextOffset           NullableInt32                   `json:"nextOffset,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _BoundImagesForProjectsList BoundImagesForProjectsList
@@ -208,6 +208,7 @@ func (o *BoundImagesForProjectsList) HasNextOffset() bool {
 func (o *BoundImagesForProjectsList) SetNextOffset(v int32) {
 	o.NextOffset.Set(&v)
 }
+
 // SetNextOffsetNil sets the value for NextOffset to be an explicit nil
 func (o *BoundImagesForProjectsList) SetNextOffsetNil() {
 	o.NextOffset.Set(nil)
@@ -219,7 +220,7 @@ func (o *BoundImagesForProjectsList) UnsetNextOffset() {
 }
 
 func (o BoundImagesForProjectsList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -238,6 +239,11 @@ func (o BoundImagesForProjectsList) ToMap() (map[string]interface{}, error) {
 	if o.NextOffset.IsSet() {
 		toSerialize["nextOffset"] = o.NextOffset.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -258,10 +264,10 @@ func (o *BoundImagesForProjectsList) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -269,15 +275,25 @@ func (o *BoundImagesForProjectsList) UnmarshalJSON(data []byte) (err error) {
 
 	varBoundImagesForProjectsList := _BoundImagesForProjectsList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBoundImagesForProjectsList)
+	err = json.Unmarshal(data, &varBoundImagesForProjectsList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = BoundImagesForProjectsList(varBoundImagesForProjectsList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "hasMore")
+		delete(additionalProperties, "totalCount")
+		delete(additionalProperties, "offset")
+		delete(additionalProperties, "nextOffset")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -317,5 +333,3 @@ func (v *NullableBoundImagesForProjectsList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,22 +21,23 @@ var _ MappedNullable = &ListForLandingPageDto{}
 
 // ListForLandingPageDto struct for ListForLandingPageDto
 type ListForLandingPageDto struct {
-	Id int32 `json:"id"`
-	Name NullableString `json:"name"`
-	ProjectLimit int32 `json:"projectLimit"`
-	ServerLimit int32 `json:"serverLimit"`
-	UserLimit int32 `json:"userLimit"`
-	CloudCredentialLimit int32 `json:"cloudCredentialLimit"`
-	MonthlyPrice float64 `json:"monthlyPrice"`
-	YearlyPrice float64 `json:"yearlyPrice"`
-	TcuPrice float64 `json:"tcuPrice"`
-	IsDeprecated bool `json:"isDeprecated"`
-	Currency NullableString `json:"currency"`
-	PartnerId NullableInt32 `json:"partnerId"`
-	TrialDays int32 `json:"trialDays"`
-	Description NullableString `json:"description"`
-	IsFree bool `json:"isFree"`
-	IsEnterprise bool `json:"isEnterprise"`
+	Id                   int32          `json:"id"`
+	Name                 NullableString `json:"name"`
+	ProjectLimit         int32          `json:"projectLimit"`
+	ServerLimit          int32          `json:"serverLimit"`
+	UserLimit            int32          `json:"userLimit"`
+	CloudCredentialLimit int32          `json:"cloudCredentialLimit"`
+	MonthlyPrice         float64        `json:"monthlyPrice"`
+	YearlyPrice          float64        `json:"yearlyPrice"`
+	TcuPrice             float64        `json:"tcuPrice"`
+	IsDeprecated         bool           `json:"isDeprecated"`
+	Currency             NullableString `json:"currency"`
+	PartnerId            NullableInt32  `json:"partnerId"`
+	TrialDays            int32          `json:"trialDays"`
+	Description          NullableString `json:"description"`
+	IsFree               bool           `json:"isFree"`
+	IsEnterprise         bool           `json:"isEnterprise"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ListForLandingPageDto ListForLandingPageDto
@@ -468,7 +468,7 @@ func (o *ListForLandingPageDto) SetIsEnterprise(v bool) {
 }
 
 func (o ListForLandingPageDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -493,6 +493,11 @@ func (o ListForLandingPageDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["description"] = o.Description.Get()
 	toSerialize["isFree"] = o.IsFree
 	toSerialize["isEnterprise"] = o.IsEnterprise
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -524,10 +529,10 @@ func (o *ListForLandingPageDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -535,15 +540,35 @@ func (o *ListForLandingPageDto) UnmarshalJSON(data []byte) (err error) {
 
 	varListForLandingPageDto := _ListForLandingPageDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varListForLandingPageDto)
+	err = json.Unmarshal(data, &varListForLandingPageDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ListForLandingPageDto(varListForLandingPageDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "projectLimit")
+		delete(additionalProperties, "serverLimit")
+		delete(additionalProperties, "userLimit")
+		delete(additionalProperties, "cloudCredentialLimit")
+		delete(additionalProperties, "monthlyPrice")
+		delete(additionalProperties, "yearlyPrice")
+		delete(additionalProperties, "tcuPrice")
+		delete(additionalProperties, "isDeprecated")
+		delete(additionalProperties, "currency")
+		delete(additionalProperties, "partnerId")
+		delete(additionalProperties, "trialDays")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "isFree")
+		delete(additionalProperties, "isEnterprise")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -583,5 +608,3 @@ func (v *NullableListForLandingPageDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

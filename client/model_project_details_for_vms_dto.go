@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,32 +21,33 @@ var _ MappedNullable = &ProjectDetailsForVmsDto{}
 
 // ProjectDetailsForVmsDto struct for ProjectDetailsForVmsDto
 type ProjectDetailsForVmsDto struct {
-	Status ProjectStatus `json:"status"`
-	Name string `json:"name"`
-	Id int32 `json:"id"`
-	CloudType ECloudCredentialType `json:"cloudType"`
-	CloudName string `json:"cloudName"`
-	CloudId NullableInt32 `json:"cloudId"`
-	OrganizationName string `json:"organizationName"`
-	OrganizationId int32 `json:"organizationId"`
-	IsLocked bool `json:"isLocked"`
-	IsProjectMaintenanceModeEnabled bool `json:"isProjectMaintenanceModeEnabled"`
-	HasSelectedFlavors NullableBool `json:"hasSelectedFlavors"`
-	IsMaintenanceModeEnabled bool `json:"isMaintenanceModeEnabled"`
-	IsDrsEnabled bool `json:"isDrsEnabled"`
-	ProjectCloudRevision NullableInt32 `json:"projectCloudRevision"`
-	CloudCredentialRevision NullableInt32 `json:"cloudCredentialRevision"`
-	AllowFullSpotKubernetes bool `json:"allowFullSpotKubernetes"`
-	AllowSpotWorkers bool `json:"allowSpotWorkers"`
-	AllowSpotVMs bool `json:"allowSpotVMs"`
-	MaxSpotPrice NullableFloat64 `json:"maxSpotPrice"`
-	TotalHourlyCost float64 `json:"totalHourlyCost"`
-	AvailabilityZones []string `json:"availabilityZones"`
-	Hypervisors []string `json:"hypervisors"`
-	ExpiredAt NullableString `json:"expiredAt"`
-	VpcMode *VpcMode `json:"vpcMode,omitempty"`
-	CloudSubnets []CloudSubnetDetailsDto `json:"cloudSubnets,omitempty"`
-	PrivateOnly NullableBool `json:"privateOnly,omitempty"`
+	Status                          ProjectStatus           `json:"status"`
+	Name                            string                  `json:"name"`
+	Id                              int32                   `json:"id"`
+	CloudType                       ECloudCredentialType    `json:"cloudType"`
+	CloudName                       NullableString          `json:"cloudName"`
+	CloudId                         NullableInt32           `json:"cloudId"`
+	OrganizationName                string                  `json:"organizationName"`
+	OrganizationId                  int32                   `json:"organizationId"`
+	IsLocked                        bool                    `json:"isLocked"`
+	IsProjectMaintenanceModeEnabled bool                    `json:"isProjectMaintenanceModeEnabled"`
+	HasSelectedFlavors              NullableBool            `json:"hasSelectedFlavors"`
+	IsMaintenanceModeEnabled        bool                    `json:"isMaintenanceModeEnabled"`
+	IsDrsEnabled                    bool                    `json:"isDrsEnabled"`
+	ProjectCloudRevision            NullableInt32           `json:"projectCloudRevision"`
+	CloudCredentialRevision         NullableInt32           `json:"cloudCredentialRevision"`
+	AllowFullSpotKubernetes         bool                    `json:"allowFullSpotKubernetes"`
+	AllowSpotWorkers                bool                    `json:"allowSpotWorkers"`
+	AllowSpotVMs                    bool                    `json:"allowSpotVMs"`
+	MaxSpotPrice                    NullableFloat64         `json:"maxSpotPrice"`
+	TotalHourlyCost                 float64                 `json:"totalHourlyCost"`
+	AvailabilityZones               []string                `json:"availabilityZones"`
+	Hypervisors                     []string                `json:"hypervisors"`
+	ExpiredAt                       NullableString          `json:"expiredAt"`
+	VpcMode                         *VpcMode                `json:"vpcMode,omitempty"`
+	CloudSubnets                    []CloudSubnetDetailsDto `json:"cloudSubnets,omitempty"`
+	PrivateOnly                     NullableBool            `json:"privateOnly,omitempty"`
+	AdditionalProperties            map[string]interface{}
 }
 
 type _ProjectDetailsForVmsDto ProjectDetailsForVmsDto
@@ -56,7 +56,7 @@ type _ProjectDetailsForVmsDto ProjectDetailsForVmsDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectDetailsForVmsDto(status ProjectStatus, name string, id int32, cloudType ECloudCredentialType, cloudName string, cloudId NullableInt32, organizationName string, organizationId int32, isLocked bool, isProjectMaintenanceModeEnabled bool, hasSelectedFlavors NullableBool, isMaintenanceModeEnabled bool, isDrsEnabled bool, projectCloudRevision NullableInt32, cloudCredentialRevision NullableInt32, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, maxSpotPrice NullableFloat64, totalHourlyCost float64, availabilityZones []string, hypervisors []string, expiredAt NullableString) *ProjectDetailsForVmsDto {
+func NewProjectDetailsForVmsDto(status ProjectStatus, name string, id int32, cloudType ECloudCredentialType, cloudName NullableString, cloudId NullableInt32, organizationName string, organizationId int32, isLocked bool, isProjectMaintenanceModeEnabled bool, hasSelectedFlavors NullableBool, isMaintenanceModeEnabled bool, isDrsEnabled bool, projectCloudRevision NullableInt32, cloudCredentialRevision NullableInt32, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, maxSpotPrice NullableFloat64, totalHourlyCost float64, availabilityZones []string, hypervisors []string, expiredAt NullableString) *ProjectDetailsForVmsDto {
 	this := ProjectDetailsForVmsDto{}
 	this.Status = status
 	this.Name = name
@@ -189,27 +189,29 @@ func (o *ProjectDetailsForVmsDto) SetCloudType(v ECloudCredentialType) {
 }
 
 // GetCloudName returns the CloudName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectDetailsForVmsDto) GetCloudName() string {
-	if o == nil {
+	if o == nil || o.CloudName.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.CloudName
+	return *o.CloudName.Get()
 }
 
 // GetCloudNameOk returns a tuple with the CloudName field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForVmsDto) GetCloudNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CloudName, true
+	return o.CloudName.Get(), o.CloudName.IsSet()
 }
 
 // SetCloudName sets field value
 func (o *ProjectDetailsForVmsDto) SetCloudName(v string) {
-	o.CloudName = v
+	o.CloudName.Set(&v)
 }
 
 // GetCloudId returns the CloudId field value
@@ -757,6 +759,7 @@ func (o *ProjectDetailsForVmsDto) HasPrivateOnly() bool {
 func (o *ProjectDetailsForVmsDto) SetPrivateOnly(v bool) {
 	o.PrivateOnly.Set(&v)
 }
+
 // SetPrivateOnlyNil sets the value for PrivateOnly to be an explicit nil
 func (o *ProjectDetailsForVmsDto) SetPrivateOnlyNil() {
 	o.PrivateOnly.Set(nil)
@@ -768,7 +771,7 @@ func (o *ProjectDetailsForVmsDto) UnsetPrivateOnly() {
 }
 
 func (o ProjectDetailsForVmsDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -781,7 +784,7 @@ func (o ProjectDetailsForVmsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["id"] = o.Id
 	toSerialize["cloudType"] = o.CloudType
-	toSerialize["cloudName"] = o.CloudName
+	toSerialize["cloudName"] = o.CloudName.Get()
 	toSerialize["cloudId"] = o.CloudId.Get()
 	toSerialize["organizationName"] = o.OrganizationName
 	toSerialize["organizationId"] = o.OrganizationId
@@ -813,6 +816,11 @@ func (o ProjectDetailsForVmsDto) ToMap() (map[string]interface{}, error) {
 	if o.PrivateOnly.IsSet() {
 		toSerialize["privateOnly"] = o.PrivateOnly.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -851,10 +859,10 @@ func (o *ProjectDetailsForVmsDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -862,15 +870,45 @@ func (o *ProjectDetailsForVmsDto) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectDetailsForVmsDto := _ProjectDetailsForVmsDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectDetailsForVmsDto)
+	err = json.Unmarshal(data, &varProjectDetailsForVmsDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectDetailsForVmsDto(varProjectDetailsForVmsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "cloudType")
+		delete(additionalProperties, "cloudName")
+		delete(additionalProperties, "cloudId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "isProjectMaintenanceModeEnabled")
+		delete(additionalProperties, "hasSelectedFlavors")
+		delete(additionalProperties, "isMaintenanceModeEnabled")
+		delete(additionalProperties, "isDrsEnabled")
+		delete(additionalProperties, "projectCloudRevision")
+		delete(additionalProperties, "cloudCredentialRevision")
+		delete(additionalProperties, "allowFullSpotKubernetes")
+		delete(additionalProperties, "allowSpotWorkers")
+		delete(additionalProperties, "allowSpotVMs")
+		delete(additionalProperties, "maxSpotPrice")
+		delete(additionalProperties, "totalHourlyCost")
+		delete(additionalProperties, "availabilityZones")
+		delete(additionalProperties, "hypervisors")
+		delete(additionalProperties, "expiredAt")
+		delete(additionalProperties, "vpcMode")
+		delete(additionalProperties, "cloudSubnets")
+		delete(additionalProperties, "privateOnly")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -910,5 +948,3 @@ func (v *NullableProjectDetailsForVmsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

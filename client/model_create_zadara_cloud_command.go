@@ -20,16 +20,19 @@ var _ MappedNullable = &CreateZadaraCloudCommand{}
 
 // CreateZadaraCloudCommand struct for CreateZadaraCloudCommand
 type CreateZadaraCloudCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	ZadaraUrl NullableString `json:"zadaraUrl,omitempty"`
+	Name                  NullableString `json:"name,omitempty"`
+	ZadaraUrl             NullableString `json:"zadaraUrl,omitempty"`
 	ZadaraSecretAccessKey NullableString `json:"zadaraSecretAccessKey,omitempty"`
-	ZadaraAccessKeyId NullableString `json:"zadaraAccessKeyId,omitempty"`
-	ZadaraRegion NullableString `json:"zadaraRegion,omitempty"`
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	AzCount *int32 `json:"azCount,omitempty"`
-	ZadaraContinent NullableString `json:"zadaraContinent,omitempty"`
-	ZadaraVolumeType NullableString `json:"zadaraVolumeType,omitempty"`
+	ZadaraAccessKeyId     NullableString `json:"zadaraAccessKeyId,omitempty"`
+	ZadaraRegion          NullableString `json:"zadaraRegion,omitempty"`
+	OrganizationId        NullableInt32  `json:"organizationId,omitempty"`
+	AzCount               *int32         `json:"azCount,omitempty"`
+	ZadaraContinent       NullableString `json:"zadaraContinent,omitempty"`
+	ZadaraVolumeType      NullableString `json:"zadaraVolumeType,omitempty"`
+	AdditionalProperties  map[string]interface{}
 }
+
+type _CreateZadaraCloudCommand CreateZadaraCloudCommand
 
 // NewCreateZadaraCloudCommand instantiates a new CreateZadaraCloudCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -80,6 +83,7 @@ func (o *CreateZadaraCloudCommand) HasName() bool {
 func (o *CreateZadaraCloudCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateZadaraCloudCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -122,6 +126,7 @@ func (o *CreateZadaraCloudCommand) HasZadaraUrl() bool {
 func (o *CreateZadaraCloudCommand) SetZadaraUrl(v string) {
 	o.ZadaraUrl.Set(&v)
 }
+
 // SetZadaraUrlNil sets the value for ZadaraUrl to be an explicit nil
 func (o *CreateZadaraCloudCommand) SetZadaraUrlNil() {
 	o.ZadaraUrl.Set(nil)
@@ -164,6 +169,7 @@ func (o *CreateZadaraCloudCommand) HasZadaraSecretAccessKey() bool {
 func (o *CreateZadaraCloudCommand) SetZadaraSecretAccessKey(v string) {
 	o.ZadaraSecretAccessKey.Set(&v)
 }
+
 // SetZadaraSecretAccessKeyNil sets the value for ZadaraSecretAccessKey to be an explicit nil
 func (o *CreateZadaraCloudCommand) SetZadaraSecretAccessKeyNil() {
 	o.ZadaraSecretAccessKey.Set(nil)
@@ -206,6 +212,7 @@ func (o *CreateZadaraCloudCommand) HasZadaraAccessKeyId() bool {
 func (o *CreateZadaraCloudCommand) SetZadaraAccessKeyId(v string) {
 	o.ZadaraAccessKeyId.Set(&v)
 }
+
 // SetZadaraAccessKeyIdNil sets the value for ZadaraAccessKeyId to be an explicit nil
 func (o *CreateZadaraCloudCommand) SetZadaraAccessKeyIdNil() {
 	o.ZadaraAccessKeyId.Set(nil)
@@ -248,6 +255,7 @@ func (o *CreateZadaraCloudCommand) HasZadaraRegion() bool {
 func (o *CreateZadaraCloudCommand) SetZadaraRegion(v string) {
 	o.ZadaraRegion.Set(&v)
 }
+
 // SetZadaraRegionNil sets the value for ZadaraRegion to be an explicit nil
 func (o *CreateZadaraCloudCommand) SetZadaraRegionNil() {
 	o.ZadaraRegion.Set(nil)
@@ -290,6 +298,7 @@ func (o *CreateZadaraCloudCommand) HasOrganizationId() bool {
 func (o *CreateZadaraCloudCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
+
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateZadaraCloudCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -364,6 +373,7 @@ func (o *CreateZadaraCloudCommand) HasZadaraContinent() bool {
 func (o *CreateZadaraCloudCommand) SetZadaraContinent(v string) {
 	o.ZadaraContinent.Set(&v)
 }
+
 // SetZadaraContinentNil sets the value for ZadaraContinent to be an explicit nil
 func (o *CreateZadaraCloudCommand) SetZadaraContinentNil() {
 	o.ZadaraContinent.Set(nil)
@@ -406,6 +416,7 @@ func (o *CreateZadaraCloudCommand) HasZadaraVolumeType() bool {
 func (o *CreateZadaraCloudCommand) SetZadaraVolumeType(v string) {
 	o.ZadaraVolumeType.Set(&v)
 }
+
 // SetZadaraVolumeTypeNil sets the value for ZadaraVolumeType to be an explicit nil
 func (o *CreateZadaraCloudCommand) SetZadaraVolumeTypeNil() {
 	o.ZadaraVolumeType.Set(nil)
@@ -417,7 +428,7 @@ func (o *CreateZadaraCloudCommand) UnsetZadaraVolumeType() {
 }
 
 func (o CreateZadaraCloudCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -453,7 +464,41 @@ func (o CreateZadaraCloudCommand) ToMap() (map[string]interface{}, error) {
 	if o.ZadaraVolumeType.IsSet() {
 		toSerialize["zadaraVolumeType"] = o.ZadaraVolumeType.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateZadaraCloudCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateZadaraCloudCommand := _CreateZadaraCloudCommand{}
+
+	err = json.Unmarshal(data, &varCreateZadaraCloudCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateZadaraCloudCommand(varCreateZadaraCloudCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "zadaraUrl")
+		delete(additionalProperties, "zadaraSecretAccessKey")
+		delete(additionalProperties, "zadaraAccessKeyId")
+		delete(additionalProperties, "zadaraRegion")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "azCount")
+		delete(additionalProperties, "zadaraContinent")
+		delete(additionalProperties, "zadaraVolumeType")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateZadaraCloudCommand struct {
@@ -491,5 +536,3 @@ func (v *NullableCreateZadaraCloudCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

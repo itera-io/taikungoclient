@@ -20,17 +20,20 @@ var _ MappedNullable = &CredentialChartDto{}
 
 // CredentialChartDto struct for CredentialChartDto
 type CredentialChartDto struct {
-	Aws *int32 `json:"aws,omitempty"`
-	Azure *int32 `json:"azure,omitempty"`
-	Openstack *int32 `json:"openstack,omitempty"`
-	Google *int32 `json:"google,omitempty"`
-	Proxmox *int32 `json:"proxmox,omitempty"`
-	Openshift *int32 `json:"openshift,omitempty"`
-	Vsphere *int32 `json:"vsphere,omitempty"`
-	Zadara *int32 `json:"zadara,omitempty"`
-	GenericK8S *int32 `json:"genericK8S,omitempty"`
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	Aws                  *int32 `json:"aws,omitempty"`
+	Azure                *int32 `json:"azure,omitempty"`
+	Openstack            *int32 `json:"openstack,omitempty"`
+	Google               *int32 `json:"google,omitempty"`
+	Proxmox              *int32 `json:"proxmox,omitempty"`
+	Openshift            *int32 `json:"openshift,omitempty"`
+	Vsphere              *int32 `json:"vsphere,omitempty"`
+	Zadara               *int32 `json:"zadara,omitempty"`
+	GenericK8S           *int32 `json:"genericK8S,omitempty"`
+	TotalCount           *int32 `json:"totalCount,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CredentialChartDto CredentialChartDto
 
 // NewCredentialChartDto instantiates a new CredentialChartDto object
 // This constructor will assign default values to properties that have it defined,
@@ -370,7 +373,7 @@ func (o *CredentialChartDto) SetTotalCount(v int32) {
 }
 
 func (o CredentialChartDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -409,7 +412,42 @@ func (o CredentialChartDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CredentialChartDto) UnmarshalJSON(data []byte) (err error) {
+	varCredentialChartDto := _CredentialChartDto{}
+
+	err = json.Unmarshal(data, &varCredentialChartDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CredentialChartDto(varCredentialChartDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "aws")
+		delete(additionalProperties, "azure")
+		delete(additionalProperties, "openstack")
+		delete(additionalProperties, "google")
+		delete(additionalProperties, "proxmox")
+		delete(additionalProperties, "openshift")
+		delete(additionalProperties, "vsphere")
+		delete(additionalProperties, "zadara")
+		delete(additionalProperties, "genericK8S")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCredentialChartDto struct {
@@ -447,5 +485,3 @@ func (v *NullableCredentialChartDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

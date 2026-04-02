@@ -20,10 +20,13 @@ var _ MappedNullable = &KubeConfigInteractiveShellCommand{}
 
 // KubeConfigInteractiveShellCommand struct for KubeConfigInteractiveShellCommand
 type KubeConfigInteractiveShellCommand struct {
-	KubeConfigId *int32 `json:"kubeConfigId,omitempty"`
-	Token NullableString `json:"token,omitempty"`
-	ProjectId *int32 `json:"projectId,omitempty"`
+	KubeConfigId         *int32         `json:"kubeConfigId,omitempty"`
+	Token                NullableString `json:"token,omitempty"`
+	ProjectId            *int32         `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _KubeConfigInteractiveShellCommand KubeConfigInteractiveShellCommand
 
 // NewKubeConfigInteractiveShellCommand instantiates a new KubeConfigInteractiveShellCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -106,6 +109,7 @@ func (o *KubeConfigInteractiveShellCommand) HasToken() bool {
 func (o *KubeConfigInteractiveShellCommand) SetToken(v string) {
 	o.Token.Set(&v)
 }
+
 // SetTokenNil sets the value for Token to be an explicit nil
 func (o *KubeConfigInteractiveShellCommand) SetTokenNil() {
 	o.Token.Set(nil)
@@ -149,7 +153,7 @@ func (o *KubeConfigInteractiveShellCommand) SetProjectId(v int32) {
 }
 
 func (o KubeConfigInteractiveShellCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -167,7 +171,35 @@ func (o KubeConfigInteractiveShellCommand) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *KubeConfigInteractiveShellCommand) UnmarshalJSON(data []byte) (err error) {
+	varKubeConfigInteractiveShellCommand := _KubeConfigInteractiveShellCommand{}
+
+	err = json.Unmarshal(data, &varKubeConfigInteractiveShellCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubeConfigInteractiveShellCommand(varKubeConfigInteractiveShellCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "kubeConfigId")
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableKubeConfigInteractiveShellCommand struct {
@@ -205,5 +237,3 @@ func (v *NullableKubeConfigInteractiveShellCommand) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

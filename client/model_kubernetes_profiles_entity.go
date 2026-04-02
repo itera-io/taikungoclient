@@ -20,10 +20,13 @@ var _ MappedNullable = &KubernetesProfilesEntity{}
 
 // KubernetesProfilesEntity struct for KubernetesProfilesEntity
 type KubernetesProfilesEntity struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	TaikunLBEnabled *bool `json:"taikunLBEnabled,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	TaikunLBEnabled      *bool          `json:"taikunLBEnabled,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _KubernetesProfilesEntity KubernetesProfilesEntity
 
 // NewKubernetesProfilesEntity instantiates a new KubernetesProfilesEntity object
 // This constructor will assign default values to properties that have it defined,
@@ -106,6 +109,7 @@ func (o *KubernetesProfilesEntity) HasName() bool {
 func (o *KubernetesProfilesEntity) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *KubernetesProfilesEntity) SetNameNil() {
 	o.Name.Set(nil)
@@ -149,7 +153,7 @@ func (o *KubernetesProfilesEntity) SetTaikunLBEnabled(v bool) {
 }
 
 func (o KubernetesProfilesEntity) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -167,7 +171,35 @@ func (o KubernetesProfilesEntity) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TaikunLBEnabled) {
 		toSerialize["taikunLBEnabled"] = o.TaikunLBEnabled
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *KubernetesProfilesEntity) UnmarshalJSON(data []byte) (err error) {
+	varKubernetesProfilesEntity := _KubernetesProfilesEntity{}
+
+	err = json.Unmarshal(data, &varKubernetesProfilesEntity)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubernetesProfilesEntity(varKubernetesProfilesEntity)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "taikunLBEnabled")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableKubernetesProfilesEntity struct {
@@ -205,5 +237,3 @@ func (v *NullableKubernetesProfilesEntity) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

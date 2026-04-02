@@ -21,10 +21,13 @@ var _ MappedNullable = &CreateBillingSummaryCommand{}
 
 // CreateBillingSummaryCommand struct for CreateBillingSummaryCommand
 type CreateBillingSummaryCommand struct {
-	Icu *int32 `json:"icu,omitempty"`
-	BeginApply *time.Time `json:"beginApply,omitempty"`
-	ProjectId *int32 `json:"projectId,omitempty"`
+	Icu                  *int32     `json:"icu,omitempty"`
+	BeginApply           *time.Time `json:"beginApply,omitempty"`
+	ProjectId            *int32     `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateBillingSummaryCommand CreateBillingSummaryCommand
 
 // NewCreateBillingSummaryCommand instantiates a new CreateBillingSummaryCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -140,7 +143,7 @@ func (o *CreateBillingSummaryCommand) SetProjectId(v int32) {
 }
 
 func (o CreateBillingSummaryCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,7 +161,35 @@ func (o CreateBillingSummaryCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateBillingSummaryCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateBillingSummaryCommand := _CreateBillingSummaryCommand{}
+
+	err = json.Unmarshal(data, &varCreateBillingSummaryCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateBillingSummaryCommand(varCreateBillingSummaryCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "icu")
+		delete(additionalProperties, "beginApply")
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateBillingSummaryCommand struct {
@@ -196,5 +227,3 @@ func (v *NullableCreateBillingSummaryCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

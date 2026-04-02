@@ -20,9 +20,12 @@ var _ MappedNullable = &CloudSubnetDetailsDto{}
 
 // CloudSubnetDetailsDto struct for CloudSubnetDetailsDto
 type CloudSubnetDetailsDto struct {
-	SubnetId *string `json:"subnetId,omitempty"`
-	SubnetType *AccessLevel `json:"subnetType,omitempty"`
+	SubnetId             *string      `json:"subnetId,omitempty"`
+	SubnetType           *AccessLevel `json:"subnetType,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CloudSubnetDetailsDto CloudSubnetDetailsDto
 
 // NewCloudSubnetDetailsDto instantiates a new CloudSubnetDetailsDto object
 // This constructor will assign default values to properties that have it defined,
@@ -106,7 +109,7 @@ func (o *CloudSubnetDetailsDto) SetSubnetType(v AccessLevel) {
 }
 
 func (o CloudSubnetDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -121,7 +124,34 @@ func (o CloudSubnetDetailsDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SubnetType) {
 		toSerialize["subnetType"] = o.SubnetType
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CloudSubnetDetailsDto) UnmarshalJSON(data []byte) (err error) {
+	varCloudSubnetDetailsDto := _CloudSubnetDetailsDto{}
+
+	err = json.Unmarshal(data, &varCloudSubnetDetailsDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CloudSubnetDetailsDto(varCloudSubnetDetailsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "subnetId")
+		delete(additionalProperties, "subnetType")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCloudSubnetDetailsDto struct {
@@ -159,5 +189,3 @@ func (v *NullableCloudSubnetDetailsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

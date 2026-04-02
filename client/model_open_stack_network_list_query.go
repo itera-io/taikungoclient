@@ -20,15 +20,18 @@ var _ MappedNullable = &OpenStackNetworkListQuery{}
 
 // OpenStackNetworkListQuery struct for OpenStackNetworkListQuery
 type OpenStackNetworkListQuery struct {
-	OpenStackUser NullableString `json:"openStackUser,omitempty"`
-	OpenStackPassword NullableString `json:"openStackPassword,omitempty"`
-	OpenStackUrl NullableString `json:"openStackUrl,omitempty"`
-	OpenStackProjectId NullableString `json:"openStackProjectId,omitempty"`
-	OpenStackDomain NullableString `json:"openStackDomain,omitempty"`
-	OpenStackRegion NullableString `json:"openStackRegion,omitempty"`
-	ApplicationCredEnabled *bool `json:"applicationCredEnabled,omitempty"`
-	IsAdmin *bool `json:"isAdmin,omitempty"`
+	OpenStackUser          NullableString `json:"openStackUser,omitempty"`
+	OpenStackPassword      NullableString `json:"openStackPassword,omitempty"`
+	OpenStackUrl           NullableString `json:"openStackUrl,omitempty"`
+	OpenStackProjectId     NullableString `json:"openStackProjectId,omitempty"`
+	OpenStackDomain        NullableString `json:"openStackDomain,omitempty"`
+	OpenStackRegion        NullableString `json:"openStackRegion,omitempty"`
+	ApplicationCredEnabled *bool          `json:"applicationCredEnabled,omitempty"`
+	IsAdmin                *bool          `json:"isAdmin,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
+
+type _OpenStackNetworkListQuery OpenStackNetworkListQuery
 
 // NewOpenStackNetworkListQuery instantiates a new OpenStackNetworkListQuery object
 // This constructor will assign default values to properties that have it defined,
@@ -79,6 +82,7 @@ func (o *OpenStackNetworkListQuery) HasOpenStackUser() bool {
 func (o *OpenStackNetworkListQuery) SetOpenStackUser(v string) {
 	o.OpenStackUser.Set(&v)
 }
+
 // SetOpenStackUserNil sets the value for OpenStackUser to be an explicit nil
 func (o *OpenStackNetworkListQuery) SetOpenStackUserNil() {
 	o.OpenStackUser.Set(nil)
@@ -121,6 +125,7 @@ func (o *OpenStackNetworkListQuery) HasOpenStackPassword() bool {
 func (o *OpenStackNetworkListQuery) SetOpenStackPassword(v string) {
 	o.OpenStackPassword.Set(&v)
 }
+
 // SetOpenStackPasswordNil sets the value for OpenStackPassword to be an explicit nil
 func (o *OpenStackNetworkListQuery) SetOpenStackPasswordNil() {
 	o.OpenStackPassword.Set(nil)
@@ -163,6 +168,7 @@ func (o *OpenStackNetworkListQuery) HasOpenStackUrl() bool {
 func (o *OpenStackNetworkListQuery) SetOpenStackUrl(v string) {
 	o.OpenStackUrl.Set(&v)
 }
+
 // SetOpenStackUrlNil sets the value for OpenStackUrl to be an explicit nil
 func (o *OpenStackNetworkListQuery) SetOpenStackUrlNil() {
 	o.OpenStackUrl.Set(nil)
@@ -205,6 +211,7 @@ func (o *OpenStackNetworkListQuery) HasOpenStackProjectId() bool {
 func (o *OpenStackNetworkListQuery) SetOpenStackProjectId(v string) {
 	o.OpenStackProjectId.Set(&v)
 }
+
 // SetOpenStackProjectIdNil sets the value for OpenStackProjectId to be an explicit nil
 func (o *OpenStackNetworkListQuery) SetOpenStackProjectIdNil() {
 	o.OpenStackProjectId.Set(nil)
@@ -247,6 +254,7 @@ func (o *OpenStackNetworkListQuery) HasOpenStackDomain() bool {
 func (o *OpenStackNetworkListQuery) SetOpenStackDomain(v string) {
 	o.OpenStackDomain.Set(&v)
 }
+
 // SetOpenStackDomainNil sets the value for OpenStackDomain to be an explicit nil
 func (o *OpenStackNetworkListQuery) SetOpenStackDomainNil() {
 	o.OpenStackDomain.Set(nil)
@@ -289,6 +297,7 @@ func (o *OpenStackNetworkListQuery) HasOpenStackRegion() bool {
 func (o *OpenStackNetworkListQuery) SetOpenStackRegion(v string) {
 	o.OpenStackRegion.Set(&v)
 }
+
 // SetOpenStackRegionNil sets the value for OpenStackRegion to be an explicit nil
 func (o *OpenStackNetworkListQuery) SetOpenStackRegionNil() {
 	o.OpenStackRegion.Set(nil)
@@ -364,7 +373,7 @@ func (o *OpenStackNetworkListQuery) SetIsAdmin(v bool) {
 }
 
 func (o OpenStackNetworkListQuery) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -397,7 +406,40 @@ func (o OpenStackNetworkListQuery) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsAdmin) {
 		toSerialize["isAdmin"] = o.IsAdmin
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OpenStackNetworkListQuery) UnmarshalJSON(data []byte) (err error) {
+	varOpenStackNetworkListQuery := _OpenStackNetworkListQuery{}
+
+	err = json.Unmarshal(data, &varOpenStackNetworkListQuery)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OpenStackNetworkListQuery(varOpenStackNetworkListQuery)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "openStackUser")
+		delete(additionalProperties, "openStackPassword")
+		delete(additionalProperties, "openStackUrl")
+		delete(additionalProperties, "openStackProjectId")
+		delete(additionalProperties, "openStackDomain")
+		delete(additionalProperties, "openStackRegion")
+		delete(additionalProperties, "applicationCredEnabled")
+		delete(additionalProperties, "isAdmin")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOpenStackNetworkListQuery struct {
@@ -435,5 +477,3 @@ func (v *NullableOpenStackNetworkListQuery) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

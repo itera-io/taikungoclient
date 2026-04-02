@@ -21,12 +21,15 @@ var _ MappedNullable = &Alert{}
 
 // Alert struct for Alert
 type Alert struct {
-	Labels *AlertLabels `json:"labels,omitempty"`
-	Annotations *Annotations `json:"annotations,omitempty"`
-	State NullableString `json:"state,omitempty"`
-	ActiveAt *time.Time `json:"activeAt,omitempty"`
-	Value NullableString `json:"value,omitempty"`
+	Labels               *AlertLabels   `json:"labels,omitempty"`
+	Annotations          *Annotations   `json:"annotations,omitempty"`
+	State                NullableString `json:"state,omitempty"`
+	ActiveAt             *time.Time     `json:"activeAt,omitempty"`
+	Value                NullableString `json:"value,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Alert Alert
 
 // NewAlert instantiates a new Alert object
 // This constructor will assign default values to properties that have it defined,
@@ -141,6 +144,7 @@ func (o *Alert) HasState() bool {
 func (o *Alert) SetState(v string) {
 	o.State.Set(&v)
 }
+
 // SetStateNil sets the value for State to be an explicit nil
 func (o *Alert) SetStateNil() {
 	o.State.Set(nil)
@@ -215,6 +219,7 @@ func (o *Alert) HasValue() bool {
 func (o *Alert) SetValue(v string) {
 	o.Value.Set(&v)
 }
+
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *Alert) SetValueNil() {
 	o.Value.Set(nil)
@@ -226,7 +231,7 @@ func (o *Alert) UnsetValue() {
 }
 
 func (o Alert) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -250,7 +255,37 @@ func (o Alert) ToMap() (map[string]interface{}, error) {
 	if o.Value.IsSet() {
 		toSerialize["value"] = o.Value.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Alert) UnmarshalJSON(data []byte) (err error) {
+	varAlert := _Alert{}
+
+	err = json.Unmarshal(data, &varAlert)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Alert(varAlert)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "labels")
+		delete(additionalProperties, "annotations")
+		delete(additionalProperties, "state")
+		delete(additionalProperties, "activeAt")
+		delete(additionalProperties, "value")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAlert struct {
@@ -288,5 +323,3 @@ func (v *NullableAlert) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,9 +20,12 @@ var _ MappedNullable = &MetricData{}
 
 // MetricData struct for MetricData
 type MetricData struct {
-	ResultType NullableString `json:"resultType,omitempty"`
-	Result []MetricResult `json:"result,omitempty"`
+	ResultType           NullableString `json:"resultType,omitempty"`
+	Result               []MetricResult `json:"result,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _MetricData MetricData
 
 // NewMetricData instantiates a new MetricData object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *MetricData) HasResultType() bool {
 func (o *MetricData) SetResultType(v string) {
 	o.ResultType.Set(&v)
 }
+
 // SetResultTypeNil sets the value for ResultType to be an explicit nil
 func (o *MetricData) SetResultTypeNil() {
 	o.ResultType.Set(nil)
@@ -117,7 +121,7 @@ func (o *MetricData) SetResult(v []MetricResult) {
 }
 
 func (o MetricData) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -132,7 +136,34 @@ func (o MetricData) ToMap() (map[string]interface{}, error) {
 	if o.Result != nil {
 		toSerialize["result"] = o.Result
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *MetricData) UnmarshalJSON(data []byte) (err error) {
+	varMetricData := _MetricData{}
+
+	err = json.Unmarshal(data, &varMetricData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = MetricData(varMetricData)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "resultType")
+		delete(additionalProperties, "result")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableMetricData struct {
@@ -170,5 +201,3 @@ func (v *NullableMetricData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

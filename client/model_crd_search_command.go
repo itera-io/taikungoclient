@@ -20,11 +20,14 @@ var _ MappedNullable = &CrdSearchCommand{}
 
 // CrdSearchCommand struct for CrdSearchCommand
 type CrdSearchCommand struct {
-	Limit NullableInt32 `json:"limit,omitempty"`
-	Offset NullableInt32 `json:"offset,omitempty"`
-	SearchTerm NullableString `json:"searchTerm,omitempty"`
-	IncludePublicImportedClusters NullableBool `json:"includePublicImportedClusters,omitempty"`
+	Limit                         NullableInt32  `json:"limit,omitempty"`
+	Offset                        NullableInt32  `json:"offset,omitempty"`
+	SearchTerm                    NullableString `json:"searchTerm,omitempty"`
+	IncludePublicImportedClusters NullableBool   `json:"includePublicImportedClusters,omitempty"`
+	AdditionalProperties          map[string]interface{}
 }
+
+type _CrdSearchCommand CrdSearchCommand
 
 // NewCrdSearchCommand instantiates a new CrdSearchCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -75,6 +78,7 @@ func (o *CrdSearchCommand) HasLimit() bool {
 func (o *CrdSearchCommand) SetLimit(v int32) {
 	o.Limit.Set(&v)
 }
+
 // SetLimitNil sets the value for Limit to be an explicit nil
 func (o *CrdSearchCommand) SetLimitNil() {
 	o.Limit.Set(nil)
@@ -117,6 +121,7 @@ func (o *CrdSearchCommand) HasOffset() bool {
 func (o *CrdSearchCommand) SetOffset(v int32) {
 	o.Offset.Set(&v)
 }
+
 // SetOffsetNil sets the value for Offset to be an explicit nil
 func (o *CrdSearchCommand) SetOffsetNil() {
 	o.Offset.Set(nil)
@@ -159,6 +164,7 @@ func (o *CrdSearchCommand) HasSearchTerm() bool {
 func (o *CrdSearchCommand) SetSearchTerm(v string) {
 	o.SearchTerm.Set(&v)
 }
+
 // SetSearchTermNil sets the value for SearchTerm to be an explicit nil
 func (o *CrdSearchCommand) SetSearchTermNil() {
 	o.SearchTerm.Set(nil)
@@ -201,6 +207,7 @@ func (o *CrdSearchCommand) HasIncludePublicImportedClusters() bool {
 func (o *CrdSearchCommand) SetIncludePublicImportedClusters(v bool) {
 	o.IncludePublicImportedClusters.Set(&v)
 }
+
 // SetIncludePublicImportedClustersNil sets the value for IncludePublicImportedClusters to be an explicit nil
 func (o *CrdSearchCommand) SetIncludePublicImportedClustersNil() {
 	o.IncludePublicImportedClusters.Set(nil)
@@ -212,7 +219,7 @@ func (o *CrdSearchCommand) UnsetIncludePublicImportedClusters() {
 }
 
 func (o CrdSearchCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,7 +240,36 @@ func (o CrdSearchCommand) ToMap() (map[string]interface{}, error) {
 	if o.IncludePublicImportedClusters.IsSet() {
 		toSerialize["includePublicImportedClusters"] = o.IncludePublicImportedClusters.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CrdSearchCommand) UnmarshalJSON(data []byte) (err error) {
+	varCrdSearchCommand := _CrdSearchCommand{}
+
+	err = json.Unmarshal(data, &varCrdSearchCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CrdSearchCommand(varCrdSearchCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "offset")
+		delete(additionalProperties, "searchTerm")
+		delete(additionalProperties, "includePublicImportedClusters")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCrdSearchCommand struct {
@@ -271,5 +307,3 @@ func (v *NullableCrdSearchCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

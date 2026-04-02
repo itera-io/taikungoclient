@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,12 +21,13 @@ var _ MappedNullable = &OpenshiftList{}
 
 // OpenshiftList struct for OpenshiftList
 type OpenshiftList struct {
-	Data []OpenshiftListDto `json:"data"`
-	Limit int32 `json:"limit"`
-	HasMore bool `json:"hasMore"`
-	TotalCount int64 `json:"totalCount"`
-	Offset int32 `json:"offset"`
-	NextOffset NullableInt32 `json:"nextOffset,omitempty"`
+	Data                 []OpenshiftListDto `json:"data"`
+	Limit                int32              `json:"limit"`
+	HasMore              bool               `json:"hasMore"`
+	TotalCount           int64              `json:"totalCount"`
+	Offset               int32              `json:"offset"`
+	NextOffset           NullableInt32      `json:"nextOffset,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OpenshiftList OpenshiftList
@@ -208,6 +208,7 @@ func (o *OpenshiftList) HasNextOffset() bool {
 func (o *OpenshiftList) SetNextOffset(v int32) {
 	o.NextOffset.Set(&v)
 }
+
 // SetNextOffsetNil sets the value for NextOffset to be an explicit nil
 func (o *OpenshiftList) SetNextOffsetNil() {
 	o.NextOffset.Set(nil)
@@ -219,7 +220,7 @@ func (o *OpenshiftList) UnsetNextOffset() {
 }
 
 func (o OpenshiftList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -238,6 +239,11 @@ func (o OpenshiftList) ToMap() (map[string]interface{}, error) {
 	if o.NextOffset.IsSet() {
 		toSerialize["nextOffset"] = o.NextOffset.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -258,10 +264,10 @@ func (o *OpenshiftList) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -269,15 +275,25 @@ func (o *OpenshiftList) UnmarshalJSON(data []byte) (err error) {
 
 	varOpenshiftList := _OpenshiftList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOpenshiftList)
+	err = json.Unmarshal(data, &varOpenshiftList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OpenshiftList(varOpenshiftList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "hasMore")
+		delete(additionalProperties, "totalCount")
+		delete(additionalProperties, "offset")
+		delete(additionalProperties, "nextOffset")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -317,5 +333,3 @@ func (v *NullableOpenshiftList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

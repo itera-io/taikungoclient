@@ -20,22 +20,25 @@ var _ MappedNullable = &EstimatedInfracost{}
 
 // EstimatedInfracost struct for EstimatedInfracost
 type EstimatedInfracost struct {
-	Version NullableString `json:"version,omitempty"`
-	Metadata *Metadata `json:"metadata,omitempty"`
-	Currency NullableString `json:"currency,omitempty"`
-	Projects []ProjectInfracost `json:"projects,omitempty"`
-	TotalHourlyCost NullableString `json:"totalHourlyCost,omitempty"`
-	TotalMonthlyCost NullableString `json:"totalMonthlyCost,omitempty"`
-	TotalMonthlyUsageCost NullableString `json:"totalMonthlyUsageCost,omitempty"`
-	PastTotalHourlyCost NullableString `json:"pastTotalHourlyCost,omitempty"`
-	PastTotalMonthlyCost NullableString `json:"pastTotalMonthlyCost,omitempty"`
-	PastTotalMonthlyUsageCost NullableString `json:"pastTotalMonthlyUsageCost,omitempty"`
-	DiffTotalHourlyCost NullableString `json:"diffTotalHourlyCost,omitempty"`
-	DiffTotalMonthlyCost NullableString `json:"diffTotalMonthlyCost,omitempty"`
-	DiffTotalMonthlyUsageCost NullableString `json:"diffTotalMonthlyUsageCost,omitempty"`
-	TimeGenerated NullableString `json:"timeGenerated,omitempty"`
-	Summary *Summary `json:"summary,omitempty"`
+	Version                   NullableString     `json:"version,omitempty"`
+	Metadata                  *Metadata          `json:"metadata,omitempty"`
+	Currency                  NullableString     `json:"currency,omitempty"`
+	Projects                  []ProjectInfracost `json:"projects,omitempty"`
+	TotalHourlyCost           NullableString     `json:"totalHourlyCost,omitempty"`
+	TotalMonthlyCost          NullableString     `json:"totalMonthlyCost,omitempty"`
+	TotalMonthlyUsageCost     NullableString     `json:"totalMonthlyUsageCost,omitempty"`
+	PastTotalHourlyCost       NullableString     `json:"pastTotalHourlyCost,omitempty"`
+	PastTotalMonthlyCost      NullableString     `json:"pastTotalMonthlyCost,omitempty"`
+	PastTotalMonthlyUsageCost NullableString     `json:"pastTotalMonthlyUsageCost,omitempty"`
+	DiffTotalHourlyCost       NullableString     `json:"diffTotalHourlyCost,omitempty"`
+	DiffTotalMonthlyCost      NullableString     `json:"diffTotalMonthlyCost,omitempty"`
+	DiffTotalMonthlyUsageCost NullableString     `json:"diffTotalMonthlyUsageCost,omitempty"`
+	TimeGenerated             NullableString     `json:"timeGenerated,omitempty"`
+	Summary                   *Summary           `json:"summary,omitempty"`
+	AdditionalProperties      map[string]interface{}
 }
+
+type _EstimatedInfracost EstimatedInfracost
 
 // NewEstimatedInfracost instantiates a new EstimatedInfracost object
 // This constructor will assign default values to properties that have it defined,
@@ -86,6 +89,7 @@ func (o *EstimatedInfracost) HasVersion() bool {
 func (o *EstimatedInfracost) SetVersion(v string) {
 	o.Version.Set(&v)
 }
+
 // SetVersionNil sets the value for Version to be an explicit nil
 func (o *EstimatedInfracost) SetVersionNil() {
 	o.Version.Set(nil)
@@ -160,6 +164,7 @@ func (o *EstimatedInfracost) HasCurrency() bool {
 func (o *EstimatedInfracost) SetCurrency(v string) {
 	o.Currency.Set(&v)
 }
+
 // SetCurrencyNil sets the value for Currency to be an explicit nil
 func (o *EstimatedInfracost) SetCurrencyNil() {
 	o.Currency.Set(nil)
@@ -235,6 +240,7 @@ func (o *EstimatedInfracost) HasTotalHourlyCost() bool {
 func (o *EstimatedInfracost) SetTotalHourlyCost(v string) {
 	o.TotalHourlyCost.Set(&v)
 }
+
 // SetTotalHourlyCostNil sets the value for TotalHourlyCost to be an explicit nil
 func (o *EstimatedInfracost) SetTotalHourlyCostNil() {
 	o.TotalHourlyCost.Set(nil)
@@ -277,6 +283,7 @@ func (o *EstimatedInfracost) HasTotalMonthlyCost() bool {
 func (o *EstimatedInfracost) SetTotalMonthlyCost(v string) {
 	o.TotalMonthlyCost.Set(&v)
 }
+
 // SetTotalMonthlyCostNil sets the value for TotalMonthlyCost to be an explicit nil
 func (o *EstimatedInfracost) SetTotalMonthlyCostNil() {
 	o.TotalMonthlyCost.Set(nil)
@@ -319,6 +326,7 @@ func (o *EstimatedInfracost) HasTotalMonthlyUsageCost() bool {
 func (o *EstimatedInfracost) SetTotalMonthlyUsageCost(v string) {
 	o.TotalMonthlyUsageCost.Set(&v)
 }
+
 // SetTotalMonthlyUsageCostNil sets the value for TotalMonthlyUsageCost to be an explicit nil
 func (o *EstimatedInfracost) SetTotalMonthlyUsageCostNil() {
 	o.TotalMonthlyUsageCost.Set(nil)
@@ -361,6 +369,7 @@ func (o *EstimatedInfracost) HasPastTotalHourlyCost() bool {
 func (o *EstimatedInfracost) SetPastTotalHourlyCost(v string) {
 	o.PastTotalHourlyCost.Set(&v)
 }
+
 // SetPastTotalHourlyCostNil sets the value for PastTotalHourlyCost to be an explicit nil
 func (o *EstimatedInfracost) SetPastTotalHourlyCostNil() {
 	o.PastTotalHourlyCost.Set(nil)
@@ -403,6 +412,7 @@ func (o *EstimatedInfracost) HasPastTotalMonthlyCost() bool {
 func (o *EstimatedInfracost) SetPastTotalMonthlyCost(v string) {
 	o.PastTotalMonthlyCost.Set(&v)
 }
+
 // SetPastTotalMonthlyCostNil sets the value for PastTotalMonthlyCost to be an explicit nil
 func (o *EstimatedInfracost) SetPastTotalMonthlyCostNil() {
 	o.PastTotalMonthlyCost.Set(nil)
@@ -445,6 +455,7 @@ func (o *EstimatedInfracost) HasPastTotalMonthlyUsageCost() bool {
 func (o *EstimatedInfracost) SetPastTotalMonthlyUsageCost(v string) {
 	o.PastTotalMonthlyUsageCost.Set(&v)
 }
+
 // SetPastTotalMonthlyUsageCostNil sets the value for PastTotalMonthlyUsageCost to be an explicit nil
 func (o *EstimatedInfracost) SetPastTotalMonthlyUsageCostNil() {
 	o.PastTotalMonthlyUsageCost.Set(nil)
@@ -487,6 +498,7 @@ func (o *EstimatedInfracost) HasDiffTotalHourlyCost() bool {
 func (o *EstimatedInfracost) SetDiffTotalHourlyCost(v string) {
 	o.DiffTotalHourlyCost.Set(&v)
 }
+
 // SetDiffTotalHourlyCostNil sets the value for DiffTotalHourlyCost to be an explicit nil
 func (o *EstimatedInfracost) SetDiffTotalHourlyCostNil() {
 	o.DiffTotalHourlyCost.Set(nil)
@@ -529,6 +541,7 @@ func (o *EstimatedInfracost) HasDiffTotalMonthlyCost() bool {
 func (o *EstimatedInfracost) SetDiffTotalMonthlyCost(v string) {
 	o.DiffTotalMonthlyCost.Set(&v)
 }
+
 // SetDiffTotalMonthlyCostNil sets the value for DiffTotalMonthlyCost to be an explicit nil
 func (o *EstimatedInfracost) SetDiffTotalMonthlyCostNil() {
 	o.DiffTotalMonthlyCost.Set(nil)
@@ -571,6 +584,7 @@ func (o *EstimatedInfracost) HasDiffTotalMonthlyUsageCost() bool {
 func (o *EstimatedInfracost) SetDiffTotalMonthlyUsageCost(v string) {
 	o.DiffTotalMonthlyUsageCost.Set(&v)
 }
+
 // SetDiffTotalMonthlyUsageCostNil sets the value for DiffTotalMonthlyUsageCost to be an explicit nil
 func (o *EstimatedInfracost) SetDiffTotalMonthlyUsageCostNil() {
 	o.DiffTotalMonthlyUsageCost.Set(nil)
@@ -613,6 +627,7 @@ func (o *EstimatedInfracost) HasTimeGenerated() bool {
 func (o *EstimatedInfracost) SetTimeGenerated(v string) {
 	o.TimeGenerated.Set(&v)
 }
+
 // SetTimeGeneratedNil sets the value for TimeGenerated to be an explicit nil
 func (o *EstimatedInfracost) SetTimeGeneratedNil() {
 	o.TimeGenerated.Set(nil)
@@ -656,7 +671,7 @@ func (o *EstimatedInfracost) SetSummary(v Summary) {
 }
 
 func (o EstimatedInfracost) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -710,7 +725,47 @@ func (o EstimatedInfracost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Summary) {
 		toSerialize["summary"] = o.Summary
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EstimatedInfracost) UnmarshalJSON(data []byte) (err error) {
+	varEstimatedInfracost := _EstimatedInfracost{}
+
+	err = json.Unmarshal(data, &varEstimatedInfracost)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EstimatedInfracost(varEstimatedInfracost)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "metadata")
+		delete(additionalProperties, "currency")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "totalHourlyCost")
+		delete(additionalProperties, "totalMonthlyCost")
+		delete(additionalProperties, "totalMonthlyUsageCost")
+		delete(additionalProperties, "pastTotalHourlyCost")
+		delete(additionalProperties, "pastTotalMonthlyCost")
+		delete(additionalProperties, "pastTotalMonthlyUsageCost")
+		delete(additionalProperties, "diffTotalHourlyCost")
+		delete(additionalProperties, "diffTotalMonthlyCost")
+		delete(additionalProperties, "diffTotalMonthlyUsageCost")
+		delete(additionalProperties, "timeGenerated")
+		delete(additionalProperties, "summary")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEstimatedInfracost struct {
@@ -748,5 +803,3 @@ func (v *NullableEstimatedInfracost) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,9 +21,10 @@ var _ MappedNullable = &CatalogsForProjectDto{}
 
 // CatalogsForProjectDto struct for CatalogsForProjectDto
 type CatalogsForProjectDto struct {
-	CatalogId int32 `json:"catalogId"`
-	CatalogName NullableString `json:"catalogName"`
-	IsBound bool `json:"isBound"`
+	CatalogId            int32          `json:"catalogId"`
+	CatalogName          NullableString `json:"catalogName"`
+	IsBound              bool           `json:"isBound"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CatalogsForProjectDto CatalogsForProjectDto
@@ -124,7 +124,7 @@ func (o *CatalogsForProjectDto) SetIsBound(v bool) {
 }
 
 func (o CatalogsForProjectDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -136,6 +136,11 @@ func (o CatalogsForProjectDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["catalogId"] = o.CatalogId
 	toSerialize["catalogName"] = o.CatalogName.Get()
 	toSerialize["isBound"] = o.IsBound
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -154,10 +159,10 @@ func (o *CatalogsForProjectDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -165,15 +170,22 @@ func (o *CatalogsForProjectDto) UnmarshalJSON(data []byte) (err error) {
 
 	varCatalogsForProjectDto := _CatalogsForProjectDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCatalogsForProjectDto)
+	err = json.Unmarshal(data, &varCatalogsForProjectDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CatalogsForProjectDto(varCatalogsForProjectDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "catalogId")
+		delete(additionalProperties, "catalogName")
+		delete(additionalProperties, "isBound")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -213,5 +225,3 @@ func (v *NullableCatalogsForProjectDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,24 +21,25 @@ var _ MappedNullable = &ZadaraCredentialsListDto{}
 
 // ZadaraCredentialsListDto struct for ZadaraCredentialsListDto
 type ZadaraCredentialsListDto struct {
-	Id int32 `json:"id"`
-	ProjectCount int32 `json:"projectCount"`
-	IsLocked bool `json:"isLocked"`
-	Name string `json:"name"`
-	Region string `json:"region"`
-	AvailabilityZones []string `json:"availabilityZones"`
-	AvailabilityZonesCount int32 `json:"availabilityZonesCount"`
-	Projects []CommonDropdownDto `json:"projects"`
-	CreatedBy NullableString `json:"createdBy"`
-	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
-	IsDefault bool `json:"isDefault"`
-	OrganizationId int32 `json:"organizationId"`
-	OrganizationName string `json:"organizationName"`
-	CreatedAt NullableString `json:"createdAt"`
-	ContinentName NullableString `json:"continentName"`
-	ZadaraApiUrl string `json:"zadaraApiUrl"`
-	ZadaraVolumeType string `json:"zadaraVolumeType"`
+	Id                     int32               `json:"id"`
+	ProjectCount           int32               `json:"projectCount"`
+	IsLocked               bool                `json:"isLocked"`
+	Name                   string              `json:"name"`
+	Region                 string              `json:"region"`
+	AvailabilityZones      []string            `json:"availabilityZones"`
+	AvailabilityZonesCount int32               `json:"availabilityZonesCount"`
+	Projects               []CommonDropdownDto `json:"projects"`
+	CreatedBy              NullableString      `json:"createdBy"`
+	LastModified           NullableString      `json:"lastModified"`
+	LastModifiedBy         NullableString      `json:"lastModifiedBy"`
+	IsDefault              bool                `json:"isDefault"`
+	OrganizationId         int32               `json:"organizationId"`
+	OrganizationName       string              `json:"organizationName"`
+	CreatedAt              NullableString      `json:"createdAt"`
+	ContinentName          NullableString      `json:"continentName"`
+	ZadaraApiUrl           string              `json:"zadaraApiUrl"`
+	ZadaraVolumeType       string              `json:"zadaraVolumeType"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _ZadaraCredentialsListDto ZadaraCredentialsListDto
@@ -522,7 +522,7 @@ func (o *ZadaraCredentialsListDto) SetZadaraVolumeType(v string) {
 }
 
 func (o ZadaraCredentialsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -549,6 +549,11 @@ func (o ZadaraCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["continentName"] = o.ContinentName.Get()
 	toSerialize["zadaraApiUrl"] = o.ZadaraApiUrl
 	toSerialize["zadaraVolumeType"] = o.ZadaraVolumeType
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -582,10 +587,10 @@ func (o *ZadaraCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -593,15 +598,37 @@ func (o *ZadaraCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varZadaraCredentialsListDto := _ZadaraCredentialsListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varZadaraCredentialsListDto)
+	err = json.Unmarshal(data, &varZadaraCredentialsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ZadaraCredentialsListDto(varZadaraCredentialsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "projectCount")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "region")
+		delete(additionalProperties, "availabilityZones")
+		delete(additionalProperties, "availabilityZonesCount")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "continentName")
+		delete(additionalProperties, "zadaraApiUrl")
+		delete(additionalProperties, "zadaraVolumeType")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -641,5 +668,3 @@ func (v *NullableZadaraCredentialsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

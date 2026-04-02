@@ -20,10 +20,13 @@ var _ MappedNullable = &AzureSubscriptionListCommand{}
 
 // AzureSubscriptionListCommand struct for AzureSubscriptionListCommand
 type AzureSubscriptionListCommand struct {
-	ClientId NullableString `json:"clientId,omitempty"`
-	ClientSecret NullableString `json:"clientSecret,omitempty"`
-	TenantId NullableString `json:"tenantId,omitempty"`
+	ClientId             NullableString `json:"clientId,omitempty"`
+	ClientSecret         NullableString `json:"clientSecret,omitempty"`
+	TenantId             NullableString `json:"tenantId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AzureSubscriptionListCommand AzureSubscriptionListCommand
 
 // NewAzureSubscriptionListCommand instantiates a new AzureSubscriptionListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *AzureSubscriptionListCommand) HasClientId() bool {
 func (o *AzureSubscriptionListCommand) SetClientId(v string) {
 	o.ClientId.Set(&v)
 }
+
 // SetClientIdNil sets the value for ClientId to be an explicit nil
 func (o *AzureSubscriptionListCommand) SetClientIdNil() {
 	o.ClientId.Set(nil)
@@ -116,6 +120,7 @@ func (o *AzureSubscriptionListCommand) HasClientSecret() bool {
 func (o *AzureSubscriptionListCommand) SetClientSecret(v string) {
 	o.ClientSecret.Set(&v)
 }
+
 // SetClientSecretNil sets the value for ClientSecret to be an explicit nil
 func (o *AzureSubscriptionListCommand) SetClientSecretNil() {
 	o.ClientSecret.Set(nil)
@@ -158,6 +163,7 @@ func (o *AzureSubscriptionListCommand) HasTenantId() bool {
 func (o *AzureSubscriptionListCommand) SetTenantId(v string) {
 	o.TenantId.Set(&v)
 }
+
 // SetTenantIdNil sets the value for TenantId to be an explicit nil
 func (o *AzureSubscriptionListCommand) SetTenantIdNil() {
 	o.TenantId.Set(nil)
@@ -169,7 +175,7 @@ func (o *AzureSubscriptionListCommand) UnsetTenantId() {
 }
 
 func (o AzureSubscriptionListCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -187,7 +193,35 @@ func (o AzureSubscriptionListCommand) ToMap() (map[string]interface{}, error) {
 	if o.TenantId.IsSet() {
 		toSerialize["tenantId"] = o.TenantId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AzureSubscriptionListCommand) UnmarshalJSON(data []byte) (err error) {
+	varAzureSubscriptionListCommand := _AzureSubscriptionListCommand{}
+
+	err = json.Unmarshal(data, &varAzureSubscriptionListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AzureSubscriptionListCommand(varAzureSubscriptionListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "clientId")
+		delete(additionalProperties, "clientSecret")
+		delete(additionalProperties, "tenantId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAzureSubscriptionListCommand struct {
@@ -225,5 +259,3 @@ func (v *NullableAzureSubscriptionListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

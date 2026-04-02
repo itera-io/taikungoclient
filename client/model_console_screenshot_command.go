@@ -20,8 +20,11 @@ var _ MappedNullable = &ConsoleScreenshotCommand{}
 
 // ConsoleScreenshotCommand struct for ConsoleScreenshotCommand
 type ConsoleScreenshotCommand struct {
-	ServerId *int32 `json:"serverId,omitempty"`
+	ServerId             *int32 `json:"serverId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ConsoleScreenshotCommand ConsoleScreenshotCommand
 
 // NewConsoleScreenshotCommand instantiates a new ConsoleScreenshotCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,7 +76,7 @@ func (o *ConsoleScreenshotCommand) SetServerId(v int32) {
 }
 
 func (o ConsoleScreenshotCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -85,7 +88,33 @@ func (o ConsoleScreenshotCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ServerId) {
 		toSerialize["serverId"] = o.ServerId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ConsoleScreenshotCommand) UnmarshalJSON(data []byte) (err error) {
+	varConsoleScreenshotCommand := _ConsoleScreenshotCommand{}
+
+	err = json.Unmarshal(data, &varConsoleScreenshotCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConsoleScreenshotCommand(varConsoleScreenshotCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "serverId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableConsoleScreenshotCommand struct {
@@ -123,5 +152,3 @@ func (v *NullableConsoleScreenshotCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

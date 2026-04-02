@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,8 +21,9 @@ var _ MappedNullable = &KubernetesDashboardDto{}
 
 // KubernetesDashboardDto struct for KubernetesDashboardDto
 type KubernetesDashboardDto struct {
-	Pods []PodDto `json:"pods"`
-	Nodes []NodeDto `json:"nodes"`
+	Pods                 []PodDto  `json:"pods"`
+	Nodes                []NodeDto `json:"nodes"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _KubernetesDashboardDto KubernetesDashboardDto
@@ -100,7 +100,7 @@ func (o *KubernetesDashboardDto) SetNodes(v []NodeDto) {
 }
 
 func (o KubernetesDashboardDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -115,6 +115,11 @@ func (o KubernetesDashboardDto) ToMap() (map[string]interface{}, error) {
 	if o.Nodes != nil {
 		toSerialize["nodes"] = o.Nodes
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -132,10 +137,10 @@ func (o *KubernetesDashboardDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -143,15 +148,21 @@ func (o *KubernetesDashboardDto) UnmarshalJSON(data []byte) (err error) {
 
 	varKubernetesDashboardDto := _KubernetesDashboardDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKubernetesDashboardDto)
+	err = json.Unmarshal(data, &varKubernetesDashboardDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubernetesDashboardDto(varKubernetesDashboardDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pods")
+		delete(additionalProperties, "nodes")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -191,5 +202,3 @@ func (v *NullableKubernetesDashboardDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

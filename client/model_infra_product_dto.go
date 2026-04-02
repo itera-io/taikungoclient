@@ -20,13 +20,16 @@ var _ MappedNullable = &InfraProductDto{}
 
 // InfraProductDto struct for InfraProductDto
 type InfraProductDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Price *float64 `json:"price,omitempty"`
-	PriceId NullableString `json:"priceId,omitempty"`
-	YearlyPriceId NullableString `json:"yearlyPriceId,omitempty"`
-	ProductId NullableString `json:"productId,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Price                *float64       `json:"price,omitempty"`
+	PriceId              NullableString `json:"priceId,omitempty"`
+	YearlyPriceId        NullableString `json:"yearlyPriceId,omitempty"`
+	ProductId            NullableString `json:"productId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _InfraProductDto InfraProductDto
 
 // NewInfraProductDto instantiates a new InfraProductDto object
 // This constructor will assign default values to properties that have it defined,
@@ -109,6 +112,7 @@ func (o *InfraProductDto) HasName() bool {
 func (o *InfraProductDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *InfraProductDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -183,6 +187,7 @@ func (o *InfraProductDto) HasPriceId() bool {
 func (o *InfraProductDto) SetPriceId(v string) {
 	o.PriceId.Set(&v)
 }
+
 // SetPriceIdNil sets the value for PriceId to be an explicit nil
 func (o *InfraProductDto) SetPriceIdNil() {
 	o.PriceId.Set(nil)
@@ -225,6 +230,7 @@ func (o *InfraProductDto) HasYearlyPriceId() bool {
 func (o *InfraProductDto) SetYearlyPriceId(v string) {
 	o.YearlyPriceId.Set(&v)
 }
+
 // SetYearlyPriceIdNil sets the value for YearlyPriceId to be an explicit nil
 func (o *InfraProductDto) SetYearlyPriceIdNil() {
 	o.YearlyPriceId.Set(nil)
@@ -267,6 +273,7 @@ func (o *InfraProductDto) HasProductId() bool {
 func (o *InfraProductDto) SetProductId(v string) {
 	o.ProductId.Set(&v)
 }
+
 // SetProductIdNil sets the value for ProductId to be an explicit nil
 func (o *InfraProductDto) SetProductIdNil() {
 	o.ProductId.Set(nil)
@@ -278,7 +285,7 @@ func (o *InfraProductDto) UnsetProductId() {
 }
 
 func (o InfraProductDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -305,7 +312,38 @@ func (o InfraProductDto) ToMap() (map[string]interface{}, error) {
 	if o.ProductId.IsSet() {
 		toSerialize["productId"] = o.ProductId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *InfraProductDto) UnmarshalJSON(data []byte) (err error) {
+	varInfraProductDto := _InfraProductDto{}
+
+	err = json.Unmarshal(data, &varInfraProductDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InfraProductDto(varInfraProductDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "price")
+		delete(additionalProperties, "priceId")
+		delete(additionalProperties, "yearlyPriceId")
+		delete(additionalProperties, "productId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableInfraProductDto struct {
@@ -343,5 +381,3 @@ func (v *NullableInfraProductDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

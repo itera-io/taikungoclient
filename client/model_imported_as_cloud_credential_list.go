@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,8 +21,9 @@ var _ MappedNullable = &ImportedAsCloudCredentialList{}
 
 // ImportedAsCloudCredentialList struct for ImportedAsCloudCredentialList
 type ImportedAsCloudCredentialList struct {
-	Visibility ImportedAsCloudCredentialVisibility `json:"visibility"`
-	Data ImportedClusterDetailsDto `json:"data"`
+	Visibility           ImportedAsCloudCredentialVisibility `json:"visibility"`
+	Data                 ImportedClusterDetailsDto           `json:"data"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ImportedAsCloudCredentialList ImportedAsCloudCredentialList
@@ -96,7 +96,7 @@ func (o *ImportedAsCloudCredentialList) SetData(v ImportedClusterDetailsDto) {
 }
 
 func (o ImportedAsCloudCredentialList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -107,6 +107,11 @@ func (o ImportedAsCloudCredentialList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["visibility"] = o.Visibility
 	toSerialize["data"] = o.Data
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -124,10 +129,10 @@ func (o *ImportedAsCloudCredentialList) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -135,15 +140,21 @@ func (o *ImportedAsCloudCredentialList) UnmarshalJSON(data []byte) (err error) {
 
 	varImportedAsCloudCredentialList := _ImportedAsCloudCredentialList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varImportedAsCloudCredentialList)
+	err = json.Unmarshal(data, &varImportedAsCloudCredentialList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ImportedAsCloudCredentialList(varImportedAsCloudCredentialList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "visibility")
+		delete(additionalProperties, "data")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -183,5 +194,3 @@ func (v *NullableImportedAsCloudCredentialList) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

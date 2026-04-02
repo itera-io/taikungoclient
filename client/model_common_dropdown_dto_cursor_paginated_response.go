@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,11 +21,12 @@ var _ MappedNullable = &CommonDropdownDtoCursorPaginatedResponse{}
 
 // CommonDropdownDtoCursorPaginatedResponse struct for CommonDropdownDtoCursorPaginatedResponse
 type CommonDropdownDtoCursorPaginatedResponse struct {
-	Data []CommonDropdownDto `json:"data"`
-	Limit int32 `json:"limit"`
-	HasMore bool `json:"hasMore"`
-	TotalCount int64 `json:"totalCount"`
-	NextCursor NullableInt32 `json:"nextCursor,omitempty"`
+	Data                 []CommonDropdownDto `json:"data"`
+	Limit                int32               `json:"limit"`
+	HasMore              bool                `json:"hasMore"`
+	TotalCount           int64               `json:"totalCount"`
+	NextCursor           NullableInt32       `json:"nextCursor,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CommonDropdownDtoCursorPaginatedResponse CommonDropdownDtoCursorPaginatedResponse
@@ -182,6 +182,7 @@ func (o *CommonDropdownDtoCursorPaginatedResponse) HasNextCursor() bool {
 func (o *CommonDropdownDtoCursorPaginatedResponse) SetNextCursor(v int32) {
 	o.NextCursor.Set(&v)
 }
+
 // SetNextCursorNil sets the value for NextCursor to be an explicit nil
 func (o *CommonDropdownDtoCursorPaginatedResponse) SetNextCursorNil() {
 	o.NextCursor.Set(nil)
@@ -193,7 +194,7 @@ func (o *CommonDropdownDtoCursorPaginatedResponse) UnsetNextCursor() {
 }
 
 func (o CommonDropdownDtoCursorPaginatedResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -211,6 +212,11 @@ func (o CommonDropdownDtoCursorPaginatedResponse) ToMap() (map[string]interface{
 	if o.NextCursor.IsSet() {
 		toSerialize["nextCursor"] = o.NextCursor.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -230,10 +236,10 @@ func (o *CommonDropdownDtoCursorPaginatedResponse) UnmarshalJSON(data []byte) (e
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -241,15 +247,24 @@ func (o *CommonDropdownDtoCursorPaginatedResponse) UnmarshalJSON(data []byte) (e
 
 	varCommonDropdownDtoCursorPaginatedResponse := _CommonDropdownDtoCursorPaginatedResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCommonDropdownDtoCursorPaginatedResponse)
+	err = json.Unmarshal(data, &varCommonDropdownDtoCursorPaginatedResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CommonDropdownDtoCursorPaginatedResponse(varCommonDropdownDtoCursorPaginatedResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "hasMore")
+		delete(additionalProperties, "totalCount")
+		delete(additionalProperties, "nextCursor")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -289,5 +304,3 @@ func (v *NullableCommonDropdownDtoCursorPaginatedResponse) UnmarshalJSON(src []b
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

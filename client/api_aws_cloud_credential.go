@@ -20,13 +20,12 @@ import (
 	"strings"
 )
 
-
 // AWSCloudCredentialAPIService AWSCloudCredentialAPI service
 type AWSCloudCredentialAPIService service
 
 type ApiAwsCreateRequest struct {
-	ctx context.Context
-	ApiService *AWSCloudCredentialAPIService
+	ctx                   context.Context
+	ApiService            *AWSCloudCredentialAPIService
 	createAwsCloudCommand *CreateAwsCloudCommand
 }
 
@@ -42,24 +41,25 @@ func (r ApiAwsCreateRequest) Execute() (*ApiResponse, *http.Response, error) {
 /*
 AwsCreate Add Aws credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAwsCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAwsCreateRequest
 */
 func (a *AWSCloudCredentialAPIService) AwsCreate(ctx context.Context) ApiAwsCreateRequest {
 	return ApiAwsCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ApiResponse
+//
+//	@return ApiResponse
 func (a *AWSCloudCredentialAPIService) AwsCreateExecute(r ApiAwsCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ApiResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AWSCloudCredentialAPIService.AwsCreate")
@@ -135,8 +135,8 @@ func (a *AWSCloudCredentialAPIService) AwsCreateExecute(r ApiAwsCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -146,8 +146,8 @@ func (a *AWSCloudCredentialAPIService) AwsCreateExecute(r ApiAwsCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -157,8 +157,8 @@ func (a *AWSCloudCredentialAPIService) AwsCreateExecute(r ApiAwsCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -168,8 +168,8 @@ func (a *AWSCloudCredentialAPIService) AwsCreateExecute(r ApiAwsCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -179,8 +179,8 @@ func (a *AWSCloudCredentialAPIService) AwsCreateExecute(r ApiAwsCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -190,8 +190,193 @@ func (a *AWSCloudCredentialAPIService) AwsCreateExecute(r ApiAwsCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiAwsEfsFileSystemByVpcListRequest struct {
+	ctx                   context.Context
+	ApiService            *AWSCloudCredentialAPIService
+	awsFileSystemsCommand *AwsFileSystemsCommand
+}
+
+func (r ApiAwsEfsFileSystemByVpcListRequest) AwsFileSystemsCommand(awsFileSystemsCommand AwsFileSystemsCommand) ApiAwsEfsFileSystemByVpcListRequest {
+	r.awsFileSystemsCommand = &awsFileSystemsCommand
+	return r
+}
+
+func (r ApiAwsEfsFileSystemByVpcListRequest) Execute() ([]EfsFileSystemDto, *http.Response, error) {
+	return r.ApiService.AwsEfsFileSystemByVpcListExecute(r)
+}
+
+/*
+AwsEfsFileSystemByVpcList Retrieve aws efs file system by vpc list
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAwsEfsFileSystemByVpcListRequest
+*/
+func (a *AWSCloudCredentialAPIService) AwsEfsFileSystemByVpcList(ctx context.Context) ApiAwsEfsFileSystemByVpcListRequest {
+	return ApiAwsEfsFileSystemByVpcListRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []EfsFileSystemDto
+func (a *AWSCloudCredentialAPIService) AwsEfsFileSystemByVpcListExecute(r ApiAwsEfsFileSystemByVpcListRequest) ([]EfsFileSystemDto, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []EfsFileSystemDto
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AWSCloudCredentialAPIService.AwsEfsFileSystemByVpcList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/aws/efs-file-system-by-vpc-list"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.awsFileSystemsCommand
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -209,10 +394,10 @@ func (a *AWSCloudCredentialAPIService) AwsCreateExecute(r ApiAwsCreateRequest) (
 }
 
 type ApiAwsEksClustersRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AWSCloudCredentialAPIService
-	cloudId int32
-	region *string
+	cloudId    int32
+	region     *string
 }
 
 func (r ApiAwsEksClustersRequest) Region(region string) ApiAwsEksClustersRequest {
@@ -227,26 +412,27 @@ func (r ApiAwsEksClustersRequest) Execute() ([]string, *http.Response, error) {
 /*
 AwsEksClusters Retrieve eks clusters list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiAwsEksClustersRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@return ApiAwsEksClustersRequest
 */
 func (a *AWSCloudCredentialAPIService) AwsEksClusters(ctx context.Context, cloudId int32) ApiAwsEksClustersRequest {
 	return ApiAwsEksClustersRequest{
 		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
+		ctx:        ctx,
+		cloudId:    cloudId,
 	}
 }
 
 // Execute executes the request
-//  @return []string
+//
+//	@return []string
 func (a *AWSCloudCredentialAPIService) AwsEksClustersExecute(r ApiAwsEksClustersRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []string
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AWSCloudCredentialAPIService.AwsEksClusters")
@@ -324,8 +510,8 @@ func (a *AWSCloudCredentialAPIService) AwsEksClustersExecute(r ApiAwsEksClusters
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -335,8 +521,8 @@ func (a *AWSCloudCredentialAPIService) AwsEksClustersExecute(r ApiAwsEksClusters
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -346,8 +532,8 @@ func (a *AWSCloudCredentialAPIService) AwsEksClustersExecute(r ApiAwsEksClusters
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -357,8 +543,8 @@ func (a *AWSCloudCredentialAPIService) AwsEksClustersExecute(r ApiAwsEksClusters
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -368,8 +554,8 @@ func (a *AWSCloudCredentialAPIService) AwsEksClustersExecute(r ApiAwsEksClusters
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -379,8 +565,8 @@ func (a *AWSCloudCredentialAPIService) AwsEksClustersExecute(r ApiAwsEksClusters
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -398,9 +584,9 @@ func (a *AWSCloudCredentialAPIService) AwsEksClustersExecute(r ApiAwsEksClusters
 }
 
 type ApiAwsEksNodeGroupsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AWSCloudCredentialAPIService
-	projectId int32
+	projectId  int32
 }
 
 func (r ApiAwsEksNodeGroupsRequest) Execute() ([]AwsEksNodeGroupDto, *http.Response, error) {
@@ -410,26 +596,27 @@ func (r ApiAwsEksNodeGroupsRequest) Execute() ([]AwsEksNodeGroupDto, *http.Respo
 /*
 AwsEksNodeGroups Retrieve eks node group list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiAwsEksNodeGroupsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiAwsEksNodeGroupsRequest
 */
 func (a *AWSCloudCredentialAPIService) AwsEksNodeGroups(ctx context.Context, projectId int32) ApiAwsEksNodeGroupsRequest {
 	return ApiAwsEksNodeGroupsRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return []AwsEksNodeGroupDto
+//
+//	@return []AwsEksNodeGroupDto
 func (a *AWSCloudCredentialAPIService) AwsEksNodeGroupsExecute(r ApiAwsEksNodeGroupsRequest) ([]AwsEksNodeGroupDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []AwsEksNodeGroupDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []AwsEksNodeGroupDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AWSCloudCredentialAPIService.AwsEksNodeGroups")
@@ -504,8 +691,8 @@ func (a *AWSCloudCredentialAPIService) AwsEksNodeGroupsExecute(r ApiAwsEksNodeGr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -515,8 +702,8 @@ func (a *AWSCloudCredentialAPIService) AwsEksNodeGroupsExecute(r ApiAwsEksNodeGr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -526,8 +713,8 @@ func (a *AWSCloudCredentialAPIService) AwsEksNodeGroupsExecute(r ApiAwsEksNodeGr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -537,8 +724,8 @@ func (a *AWSCloudCredentialAPIService) AwsEksNodeGroupsExecute(r ApiAwsEksNodeGr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -548,8 +735,8 @@ func (a *AWSCloudCredentialAPIService) AwsEksNodeGroupsExecute(r ApiAwsEksNodeGr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -559,8 +746,8 @@ func (a *AWSCloudCredentialAPIService) AwsEksNodeGroupsExecute(r ApiAwsEksNodeGr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -578,8 +765,8 @@ func (a *AWSCloudCredentialAPIService) AwsEksNodeGroupsExecute(r ApiAwsEksNodeGr
 }
 
 type ApiAwsGetEksAuthInfoRequest struct {
-	ctx context.Context
-	ApiService *AWSCloudCredentialAPIService
+	ctx                      context.Context
+	ApiService               *AWSCloudCredentialAPIService
 	getEksClusterAuthCommand *GetEksClusterAuthCommand
 }
 
@@ -595,24 +782,25 @@ func (r ApiAwsGetEksAuthInfoRequest) Execute() (*AwsEksClusterDto, *http.Respons
 /*
 AwsGetEksAuthInfo Get EKS auth info
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAwsGetEksAuthInfoRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAwsGetEksAuthInfoRequest
 */
 func (a *AWSCloudCredentialAPIService) AwsGetEksAuthInfo(ctx context.Context) ApiAwsGetEksAuthInfoRequest {
 	return ApiAwsGetEksAuthInfoRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return AwsEksClusterDto
+//
+//	@return AwsEksClusterDto
 func (a *AWSCloudCredentialAPIService) AwsGetEksAuthInfoExecute(r ApiAwsGetEksAuthInfoRequest) (*AwsEksClusterDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AwsEksClusterDto
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AwsEksClusterDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AWSCloudCredentialAPIService.AwsGetEksAuthInfo")
@@ -688,8 +876,8 @@ func (a *AWSCloudCredentialAPIService) AwsGetEksAuthInfoExecute(r ApiAwsGetEksAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -699,8 +887,8 @@ func (a *AWSCloudCredentialAPIService) AwsGetEksAuthInfoExecute(r ApiAwsGetEksAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -710,8 +898,8 @@ func (a *AWSCloudCredentialAPIService) AwsGetEksAuthInfoExecute(r ApiAwsGetEksAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -721,8 +909,8 @@ func (a *AWSCloudCredentialAPIService) AwsGetEksAuthInfoExecute(r ApiAwsGetEksAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -732,8 +920,8 @@ func (a *AWSCloudCredentialAPIService) AwsGetEksAuthInfoExecute(r ApiAwsGetEksAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -743,8 +931,8 @@ func (a *AWSCloudCredentialAPIService) AwsGetEksAuthInfoExecute(r ApiAwsGetEksAu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -762,17 +950,17 @@ func (a *AWSCloudCredentialAPIService) AwsGetEksAuthInfoExecute(r ApiAwsGetEksAu
 }
 
 type ApiAwsListRequest struct {
-	ctx context.Context
-	ApiService *AWSCloudCredentialAPIService
+	ctx            context.Context
+	ApiService     *AWSCloudCredentialAPIService
 	organizationId *int32
-	sortBy *string
-	sortDirection *string
-	search *string
-	searchId *string
-	id *int32
-	accountId *int32
-	limit *int32
-	offset *int32
+	sortBy         *string
+	sortDirection  *string
+	search         *string
+	searchId       *string
+	id             *int32
+	accountId      *int32
+	limit          *int32
+	offset         *int32
 }
 
 func (r ApiAwsListRequest) OrganizationId(organizationId int32) ApiAwsListRequest {
@@ -827,24 +1015,25 @@ func (r ApiAwsListRequest) Execute() (*AwsCredentialList, *http.Response, error)
 /*
 AwsList Retrieve list of aws cloud credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAwsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAwsListRequest
 */
 func (a *AWSCloudCredentialAPIService) AwsList(ctx context.Context) ApiAwsListRequest {
 	return ApiAwsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return AwsCredentialList
+//
+//	@return AwsCredentialList
 func (a *AWSCloudCredentialAPIService) AwsListExecute(r ApiAwsListRequest) (*AwsCredentialList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AwsCredentialList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AwsCredentialList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AWSCloudCredentialAPIService.AwsList")
@@ -953,8 +1142,8 @@ func (a *AWSCloudCredentialAPIService) AwsListExecute(r ApiAwsListRequest) (*Aws
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -964,8 +1153,8 @@ func (a *AWSCloudCredentialAPIService) AwsListExecute(r ApiAwsListRequest) (*Aws
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -975,8 +1164,8 @@ func (a *AWSCloudCredentialAPIService) AwsListExecute(r ApiAwsListRequest) (*Aws
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -986,8 +1175,8 @@ func (a *AWSCloudCredentialAPIService) AwsListExecute(r ApiAwsListRequest) (*Aws
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -997,8 +1186,8 @@ func (a *AWSCloudCredentialAPIService) AwsListExecute(r ApiAwsListRequest) (*Aws
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1008,8 +1197,8 @@ func (a *AWSCloudCredentialAPIService) AwsListExecute(r ApiAwsListRequest) (*Aws
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1027,7 +1216,7 @@ func (a *AWSCloudCredentialAPIService) AwsListExecute(r ApiAwsListRequest) (*Aws
 }
 
 type ApiAwsOwnersRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AWSCloudCredentialAPIService
 }
 
@@ -1038,24 +1227,25 @@ func (r ApiAwsOwnersRequest) Execute() ([]CommonStringBasedDropdownDto, *http.Re
 /*
 AwsOwners Retrieve aws verified owner list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAwsOwnersRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAwsOwnersRequest
 */
 func (a *AWSCloudCredentialAPIService) AwsOwners(ctx context.Context) ApiAwsOwnersRequest {
 	return ApiAwsOwnersRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []CommonStringBasedDropdownDto
+//
+//	@return []CommonStringBasedDropdownDto
 func (a *AWSCloudCredentialAPIService) AwsOwnersExecute(r ApiAwsOwnersRequest) ([]CommonStringBasedDropdownDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CommonStringBasedDropdownDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []CommonStringBasedDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AWSCloudCredentialAPIService.AwsOwners")
@@ -1129,8 +1319,8 @@ func (a *AWSCloudCredentialAPIService) AwsOwnersExecute(r ApiAwsOwnersRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1140,8 +1330,8 @@ func (a *AWSCloudCredentialAPIService) AwsOwnersExecute(r ApiAwsOwnersRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1151,8 +1341,8 @@ func (a *AWSCloudCredentialAPIService) AwsOwnersExecute(r ApiAwsOwnersRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1162,8 +1352,8 @@ func (a *AWSCloudCredentialAPIService) AwsOwnersExecute(r ApiAwsOwnersRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1173,8 +1363,8 @@ func (a *AWSCloudCredentialAPIService) AwsOwnersExecute(r ApiAwsOwnersRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1184,8 +1374,8 @@ func (a *AWSCloudCredentialAPIService) AwsOwnersExecute(r ApiAwsOwnersRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1203,8 +1393,8 @@ func (a *AWSCloudCredentialAPIService) AwsOwnersExecute(r ApiAwsOwnersRequest) (
 }
 
 type ApiAwsRegionlistRequest struct {
-	ctx context.Context
-	ApiService *AWSCloudCredentialAPIService
+	ctx               context.Context
+	ApiService        *AWSCloudCredentialAPIService
 	regionListCommand *RegionListCommand
 }
 
@@ -1220,24 +1410,25 @@ func (r ApiAwsRegionlistRequest) Execute() ([]AwsRegionDto, *http.Response, erro
 /*
 AwsRegionlist Retrieve aws regions list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAwsRegionlistRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAwsRegionlistRequest
 */
 func (a *AWSCloudCredentialAPIService) AwsRegionlist(ctx context.Context) ApiAwsRegionlistRequest {
 	return ApiAwsRegionlistRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []AwsRegionDto
+//
+//	@return []AwsRegionDto
 func (a *AWSCloudCredentialAPIService) AwsRegionlistExecute(r ApiAwsRegionlistRequest) ([]AwsRegionDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []AwsRegionDto
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []AwsRegionDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AWSCloudCredentialAPIService.AwsRegionlist")
@@ -1313,8 +1504,8 @@ func (a *AWSCloudCredentialAPIService) AwsRegionlistExecute(r ApiAwsRegionlistRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1324,8 +1515,8 @@ func (a *AWSCloudCredentialAPIService) AwsRegionlistExecute(r ApiAwsRegionlistRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1335,8 +1526,8 @@ func (a *AWSCloudCredentialAPIService) AwsRegionlistExecute(r ApiAwsRegionlistRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1346,8 +1537,8 @@ func (a *AWSCloudCredentialAPIService) AwsRegionlistExecute(r ApiAwsRegionlistRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1357,8 +1548,8 @@ func (a *AWSCloudCredentialAPIService) AwsRegionlistExecute(r ApiAwsRegionlistRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1368,8 +1559,8 @@ func (a *AWSCloudCredentialAPIService) AwsRegionlistExecute(r ApiAwsRegionlistRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1387,8 +1578,8 @@ func (a *AWSCloudCredentialAPIService) AwsRegionlistExecute(r ApiAwsRegionlistRe
 }
 
 type ApiAwsSubnetListRequest struct {
-	ctx context.Context
-	ApiService *AWSCloudCredentialAPIService
+	ctx                  context.Context
+	ApiService           *AWSCloudCredentialAPIService
 	awsSubnetListCommand *AwsSubnetListCommand
 }
 
@@ -1404,24 +1595,25 @@ func (r ApiAwsSubnetListRequest) Execute() ([]AwsSubnetDto, *http.Response, erro
 /*
 AwsSubnetList Retrieve aws subnet list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAwsSubnetListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAwsSubnetListRequest
 */
 func (a *AWSCloudCredentialAPIService) AwsSubnetList(ctx context.Context) ApiAwsSubnetListRequest {
 	return ApiAwsSubnetListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []AwsSubnetDto
+//
+//	@return []AwsSubnetDto
 func (a *AWSCloudCredentialAPIService) AwsSubnetListExecute(r ApiAwsSubnetListRequest) ([]AwsSubnetDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []AwsSubnetDto
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []AwsSubnetDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AWSCloudCredentialAPIService.AwsSubnetList")
@@ -1497,8 +1689,8 @@ func (a *AWSCloudCredentialAPIService) AwsSubnetListExecute(r ApiAwsSubnetListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1508,8 +1700,8 @@ func (a *AWSCloudCredentialAPIService) AwsSubnetListExecute(r ApiAwsSubnetListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1519,8 +1711,8 @@ func (a *AWSCloudCredentialAPIService) AwsSubnetListExecute(r ApiAwsSubnetListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1530,8 +1722,8 @@ func (a *AWSCloudCredentialAPIService) AwsSubnetListExecute(r ApiAwsSubnetListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1541,8 +1733,8 @@ func (a *AWSCloudCredentialAPIService) AwsSubnetListExecute(r ApiAwsSubnetListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1552,8 +1744,8 @@ func (a *AWSCloudCredentialAPIService) AwsSubnetListExecute(r ApiAwsSubnetListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1571,8 +1763,8 @@ func (a *AWSCloudCredentialAPIService) AwsSubnetListExecute(r ApiAwsSubnetListRe
 }
 
 type ApiAwsUpdateRequest struct {
-	ctx context.Context
-	ApiService *AWSCloudCredentialAPIService
+	ctx              context.Context
+	ApiService       *AWSCloudCredentialAPIService
 	updateAwsCommand *UpdateAwsCommand
 }
 
@@ -1588,22 +1780,22 @@ func (r ApiAwsUpdateRequest) Execute() (*http.Response, error) {
 /*
 AwsUpdate Update AWS credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAwsUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAwsUpdateRequest
 */
 func (a *AWSCloudCredentialAPIService) AwsUpdate(ctx context.Context) ApiAwsUpdateRequest {
 	return ApiAwsUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AWSCloudCredentialAPIService) AwsUpdateExecute(r ApiAwsUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AWSCloudCredentialAPIService.AwsUpdate")
@@ -1679,8 +1871,8 @@ func (a *AWSCloudCredentialAPIService) AwsUpdateExecute(r ApiAwsUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1690,8 +1882,8 @@ func (a *AWSCloudCredentialAPIService) AwsUpdateExecute(r ApiAwsUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1701,8 +1893,8 @@ func (a *AWSCloudCredentialAPIService) AwsUpdateExecute(r ApiAwsUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1712,8 +1904,8 @@ func (a *AWSCloudCredentialAPIService) AwsUpdateExecute(r ApiAwsUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1723,8 +1915,8 @@ func (a *AWSCloudCredentialAPIService) AwsUpdateExecute(r ApiAwsUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1734,8 +1926,8 @@ func (a *AWSCloudCredentialAPIService) AwsUpdateExecute(r ApiAwsUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1744,8 +1936,8 @@ func (a *AWSCloudCredentialAPIService) AwsUpdateExecute(r ApiAwsUpdateRequest) (
 }
 
 type ApiAwsValidateOwnersRequest struct {
-	ctx context.Context
-	ApiService *AWSCloudCredentialAPIService
+	ctx                     context.Context
+	ApiService              *AWSCloudCredentialAPIService
 	awsValidateOwnerCommand *AwsValidateOwnerCommand
 }
 
@@ -1761,22 +1953,22 @@ func (r ApiAwsValidateOwnersRequest) Execute() (*http.Response, error) {
 /*
 AwsValidateOwners Aws validate owners
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAwsValidateOwnersRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAwsValidateOwnersRequest
 */
 func (a *AWSCloudCredentialAPIService) AwsValidateOwners(ctx context.Context) ApiAwsValidateOwnersRequest {
 	return ApiAwsValidateOwnersRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AWSCloudCredentialAPIService) AwsValidateOwnersExecute(r ApiAwsValidateOwnersRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AWSCloudCredentialAPIService.AwsValidateOwners")
@@ -1852,8 +2044,8 @@ func (a *AWSCloudCredentialAPIService) AwsValidateOwnersExecute(r ApiAwsValidate
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1863,8 +2055,8 @@ func (a *AWSCloudCredentialAPIService) AwsValidateOwnersExecute(r ApiAwsValidate
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1874,8 +2066,8 @@ func (a *AWSCloudCredentialAPIService) AwsValidateOwnersExecute(r ApiAwsValidate
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1885,8 +2077,8 @@ func (a *AWSCloudCredentialAPIService) AwsValidateOwnersExecute(r ApiAwsValidate
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1896,8 +2088,8 @@ func (a *AWSCloudCredentialAPIService) AwsValidateOwnersExecute(r ApiAwsValidate
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1907,8 +2099,8 @@ func (a *AWSCloudCredentialAPIService) AwsValidateOwnersExecute(r ApiAwsValidate
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1917,8 +2109,8 @@ func (a *AWSCloudCredentialAPIService) AwsValidateOwnersExecute(r ApiAwsValidate
 }
 
 type ApiAwsVpcListRequest struct {
-	ctx context.Context
-	ApiService *AWSCloudCredentialAPIService
+	ctx               context.Context
+	ApiService        *AWSCloudCredentialAPIService
 	awsVpcListCommand *AwsVpcListCommand
 }
 
@@ -1934,24 +2126,25 @@ func (r ApiAwsVpcListRequest) Execute() ([]AwsVpcDto, *http.Response, error) {
 /*
 AwsVpcList Retrieve aws vpc list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAwsVpcListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAwsVpcListRequest
 */
 func (a *AWSCloudCredentialAPIService) AwsVpcList(ctx context.Context) ApiAwsVpcListRequest {
 	return ApiAwsVpcListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []AwsVpcDto
+//
+//	@return []AwsVpcDto
 func (a *AWSCloudCredentialAPIService) AwsVpcListExecute(r ApiAwsVpcListRequest) ([]AwsVpcDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []AwsVpcDto
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []AwsVpcDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AWSCloudCredentialAPIService.AwsVpcList")
@@ -2027,8 +2220,8 @@ func (a *AWSCloudCredentialAPIService) AwsVpcListExecute(r ApiAwsVpcListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2038,8 +2231,8 @@ func (a *AWSCloudCredentialAPIService) AwsVpcListExecute(r ApiAwsVpcListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2049,8 +2242,8 @@ func (a *AWSCloudCredentialAPIService) AwsVpcListExecute(r ApiAwsVpcListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2060,8 +2253,8 @@ func (a *AWSCloudCredentialAPIService) AwsVpcListExecute(r ApiAwsVpcListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2071,8 +2264,8 @@ func (a *AWSCloudCredentialAPIService) AwsVpcListExecute(r ApiAwsVpcListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2082,8 +2275,8 @@ func (a *AWSCloudCredentialAPIService) AwsVpcListExecute(r ApiAwsVpcListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2101,8 +2294,8 @@ func (a *AWSCloudCredentialAPIService) AwsVpcListExecute(r ApiAwsVpcListRequest)
 }
 
 type ApiAwsZonesRequest struct {
-	ctx context.Context
-	ApiService *AWSCloudCredentialAPIService
+	ctx                            context.Context
+	ApiService                     *AWSCloudCredentialAPIService
 	amazonAvailabilityZonesCommand *AmazonAvailabilityZonesCommand
 }
 
@@ -2118,24 +2311,25 @@ func (r ApiAwsZonesRequest) Execute() (*AzResult, *http.Response, error) {
 /*
 AwsZones Fetch Aws zones
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAwsZonesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAwsZonesRequest
 */
 func (a *AWSCloudCredentialAPIService) AwsZones(ctx context.Context) ApiAwsZonesRequest {
 	return ApiAwsZonesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return AzResult
+//
+//	@return AzResult
 func (a *AWSCloudCredentialAPIService) AwsZonesExecute(r ApiAwsZonesRequest) (*AzResult, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AzResult
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AzResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AWSCloudCredentialAPIService.AwsZones")
@@ -2211,8 +2405,8 @@ func (a *AWSCloudCredentialAPIService) AwsZonesExecute(r ApiAwsZonesRequest) (*A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2222,8 +2416,8 @@ func (a *AWSCloudCredentialAPIService) AwsZonesExecute(r ApiAwsZonesRequest) (*A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2233,8 +2427,8 @@ func (a *AWSCloudCredentialAPIService) AwsZonesExecute(r ApiAwsZonesRequest) (*A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2244,8 +2438,8 @@ func (a *AWSCloudCredentialAPIService) AwsZonesExecute(r ApiAwsZonesRequest) (*A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2255,8 +2449,8 @@ func (a *AWSCloudCredentialAPIService) AwsZonesExecute(r ApiAwsZonesRequest) (*A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2266,8 +2460,8 @@ func (a *AWSCloudCredentialAPIService) AwsZonesExecute(r ApiAwsZonesRequest) (*A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -20,11 +20,14 @@ var _ MappedNullable = &ProjectMetadata{}
 
 // ProjectMetadata struct for ProjectMetadata
 type ProjectMetadata struct {
-	Path NullableString `json:"path,omitempty"`
-	Type NullableString `json:"type,omitempty"`
-	VcsSubPath NullableString `json:"vcsSubPath,omitempty"`
-	Providers []Provider `json:"providers,omitempty"`
+	Path                 NullableString `json:"path,omitempty"`
+	Type                 NullableString `json:"type,omitempty"`
+	VcsSubPath           NullableString `json:"vcsSubPath,omitempty"`
+	Providers            []Provider     `json:"providers,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectMetadata ProjectMetadata
 
 // NewProjectMetadata instantiates a new ProjectMetadata object
 // This constructor will assign default values to properties that have it defined,
@@ -75,6 +78,7 @@ func (o *ProjectMetadata) HasPath() bool {
 func (o *ProjectMetadata) SetPath(v string) {
 	o.Path.Set(&v)
 }
+
 // SetPathNil sets the value for Path to be an explicit nil
 func (o *ProjectMetadata) SetPathNil() {
 	o.Path.Set(nil)
@@ -117,6 +121,7 @@ func (o *ProjectMetadata) HasType() bool {
 func (o *ProjectMetadata) SetType(v string) {
 	o.Type.Set(&v)
 }
+
 // SetTypeNil sets the value for Type to be an explicit nil
 func (o *ProjectMetadata) SetTypeNil() {
 	o.Type.Set(nil)
@@ -159,6 +164,7 @@ func (o *ProjectMetadata) HasVcsSubPath() bool {
 func (o *ProjectMetadata) SetVcsSubPath(v string) {
 	o.VcsSubPath.Set(&v)
 }
+
 // SetVcsSubPathNil sets the value for VcsSubPath to be an explicit nil
 func (o *ProjectMetadata) SetVcsSubPathNil() {
 	o.VcsSubPath.Set(nil)
@@ -203,7 +209,7 @@ func (o *ProjectMetadata) SetProviders(v []Provider) {
 }
 
 func (o ProjectMetadata) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -224,7 +230,36 @@ func (o ProjectMetadata) ToMap() (map[string]interface{}, error) {
 	if o.Providers != nil {
 		toSerialize["providers"] = o.Providers
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectMetadata) UnmarshalJSON(data []byte) (err error) {
+	varProjectMetadata := _ProjectMetadata{}
+
+	err = json.Unmarshal(data, &varProjectMetadata)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectMetadata(varProjectMetadata)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "path")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "vcsSubPath")
+		delete(additionalProperties, "providers")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectMetadata struct {
@@ -262,5 +297,3 @@ func (v *NullableProjectMetadata) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -13,9 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"time"
-	"bytes"
 	"fmt"
+	"time"
 )
 
 // checks if the CBackupDto type satisfies the MappedNullable interface at compile time
@@ -23,13 +22,14 @@ var _ MappedNullable = &CBackupDto{}
 
 // CBackupDto struct for CBackupDto
 type CBackupDto struct {
-	MetadataName string `json:"metadataName"`
-	CreatedAt NullableTime `json:"createdAt"`
-	Expiration NullableTime `json:"expiration"`
-	ScheduleName NullableString `json:"scheduleName"`
-	Namespace string `json:"namespace"`
-	Location NullableString `json:"location"`
-	Phase NullableString `json:"phase"`
+	MetadataName         string         `json:"metadataName"`
+	CreatedAt            NullableTime   `json:"createdAt"`
+	Expiration           NullableTime   `json:"expiration"`
+	ScheduleName         NullableString `json:"scheduleName"`
+	Namespace            string         `json:"namespace"`
+	Location             NullableString `json:"location"`
+	Phase                NullableString `json:"phase"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CBackupDto CBackupDto
@@ -237,7 +237,7 @@ func (o *CBackupDto) SetPhase(v string) {
 }
 
 func (o CBackupDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -253,6 +253,11 @@ func (o CBackupDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["namespace"] = o.Namespace
 	toSerialize["location"] = o.Location.Get()
 	toSerialize["phase"] = o.Phase.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -275,10 +280,10 @@ func (o *CBackupDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -286,15 +291,26 @@ func (o *CBackupDto) UnmarshalJSON(data []byte) (err error) {
 
 	varCBackupDto := _CBackupDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCBackupDto)
+	err = json.Unmarshal(data, &varCBackupDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CBackupDto(varCBackupDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "metadataName")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "expiration")
+		delete(additionalProperties, "scheduleName")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "location")
+		delete(additionalProperties, "phase")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -334,5 +350,3 @@ func (v *NullableCBackupDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

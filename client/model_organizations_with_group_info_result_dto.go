@@ -20,12 +20,15 @@ var _ MappedNullable = &OrganizationsWithGroupInfoResultDto{}
 
 // OrganizationsWithGroupInfoResultDto struct for OrganizationsWithGroupInfoResultDto
 type OrganizationsWithGroupInfoResultDto struct {
-	OrgId *int32 `json:"orgId,omitempty"`
-	OrgName *string `json:"orgName,omitempty"`
-	IsBound *bool `json:"isBound,omitempty"`
-	AccessLevel NullableString `json:"accessLevel,omitempty"`
-	Projects []OrganizationDropdownProjectDto `json:"projects,omitempty"`
+	OrgId                *int32                           `json:"orgId,omitempty"`
+	OrgName              *string                          `json:"orgName,omitempty"`
+	IsBound              *bool                            `json:"isBound,omitempty"`
+	AccessLevel          NullableString                   `json:"accessLevel,omitempty"`
+	Projects             []OrganizationDropdownProjectDto `json:"projects,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OrganizationsWithGroupInfoResultDto OrganizationsWithGroupInfoResultDto
 
 // NewOrganizationsWithGroupInfoResultDto instantiates a new OrganizationsWithGroupInfoResultDto object
 // This constructor will assign default values to properties that have it defined,
@@ -172,6 +175,7 @@ func (o *OrganizationsWithGroupInfoResultDto) HasAccessLevel() bool {
 func (o *OrganizationsWithGroupInfoResultDto) SetAccessLevel(v string) {
 	o.AccessLevel.Set(&v)
 }
+
 // SetAccessLevelNil sets the value for AccessLevel to be an explicit nil
 func (o *OrganizationsWithGroupInfoResultDto) SetAccessLevelNil() {
 	o.AccessLevel.Set(nil)
@@ -215,7 +219,7 @@ func (o *OrganizationsWithGroupInfoResultDto) SetProjects(v []OrganizationDropdo
 }
 
 func (o OrganizationsWithGroupInfoResultDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -239,7 +243,37 @@ func (o OrganizationsWithGroupInfoResultDto) ToMap() (map[string]interface{}, er
 	if !IsNil(o.Projects) {
 		toSerialize["projects"] = o.Projects
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OrganizationsWithGroupInfoResultDto) UnmarshalJSON(data []byte) (err error) {
+	varOrganizationsWithGroupInfoResultDto := _OrganizationsWithGroupInfoResultDto{}
+
+	err = json.Unmarshal(data, &varOrganizationsWithGroupInfoResultDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationsWithGroupInfoResultDto(varOrganizationsWithGroupInfoResultDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "orgId")
+		delete(additionalProperties, "orgName")
+		delete(additionalProperties, "isBound")
+		delete(additionalProperties, "accessLevel")
+		delete(additionalProperties, "projects")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOrganizationsWithGroupInfoResultDto struct {
@@ -277,5 +311,3 @@ func (v *NullableOrganizationsWithGroupInfoResultDto) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,9 +20,12 @@ var _ MappedNullable = &VirtualClusterEnableOpaCommand{}
 
 // VirtualClusterEnableOpaCommand struct for VirtualClusterEnableOpaCommand
 type VirtualClusterEnableOpaCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	OpaProfileId *int32 `json:"opaProfileId,omitempty"`
+	ProjectId            *int32 `json:"projectId,omitempty"`
+	OpaProfileId         *int32 `json:"opaProfileId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _VirtualClusterEnableOpaCommand VirtualClusterEnableOpaCommand
 
 // NewVirtualClusterEnableOpaCommand instantiates a new VirtualClusterEnableOpaCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -106,7 +109,7 @@ func (o *VirtualClusterEnableOpaCommand) SetOpaProfileId(v int32) {
 }
 
 func (o VirtualClusterEnableOpaCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -121,7 +124,34 @@ func (o VirtualClusterEnableOpaCommand) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.OpaProfileId) {
 		toSerialize["opaProfileId"] = o.OpaProfileId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *VirtualClusterEnableOpaCommand) UnmarshalJSON(data []byte) (err error) {
+	varVirtualClusterEnableOpaCommand := _VirtualClusterEnableOpaCommand{}
+
+	err = json.Unmarshal(data, &varVirtualClusterEnableOpaCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VirtualClusterEnableOpaCommand(varVirtualClusterEnableOpaCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "opaProfileId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableVirtualClusterEnableOpaCommand struct {
@@ -159,5 +189,3 @@ func (v *NullableVirtualClusterEnableOpaCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

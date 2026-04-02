@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,11 +21,12 @@ var _ MappedNullable = &NodeDto{}
 
 // NodeDto struct for NodeDto
 type NodeDto struct {
-	MetadataName interface{} `json:"metadataName"`
-	KubeletReady interface{} `json:"kubeletReady"`
-	KubeletSufficient interface{} `json:"kubeletSufficient"`
-	KubeletDiskPressure interface{} `json:"kubeletDiskPressure"`
-	KubeletMemory interface{} `json:"kubeletMemory"`
+	MetadataName         interface{} `json:"metadataName"`
+	KubeletReady         interface{} `json:"kubeletReady"`
+	KubeletSufficient    interface{} `json:"kubeletSufficient"`
+	KubeletDiskPressure  interface{} `json:"kubeletDiskPressure"`
+	KubeletMemory        interface{} `json:"kubeletMemory"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _NodeDto NodeDto
@@ -184,7 +184,7 @@ func (o *NodeDto) SetKubeletMemory(v interface{}) {
 }
 
 func (o NodeDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -208,6 +208,11 @@ func (o NodeDto) ToMap() (map[string]interface{}, error) {
 	if o.KubeletMemory != nil {
 		toSerialize["kubeletMemory"] = o.KubeletMemory
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -228,10 +233,10 @@ func (o *NodeDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -239,15 +244,24 @@ func (o *NodeDto) UnmarshalJSON(data []byte) (err error) {
 
 	varNodeDto := _NodeDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varNodeDto)
+	err = json.Unmarshal(data, &varNodeDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = NodeDto(varNodeDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "metadataName")
+		delete(additionalProperties, "kubeletReady")
+		delete(additionalProperties, "kubeletSufficient")
+		delete(additionalProperties, "kubeletDiskPressure")
+		delete(additionalProperties, "kubeletMemory")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -287,5 +301,3 @@ func (v *NullableNodeDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

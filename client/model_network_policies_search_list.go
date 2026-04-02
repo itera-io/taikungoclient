@@ -20,9 +20,12 @@ var _ MappedNullable = &NetworkPoliciesSearchList{}
 
 // NetworkPoliciesSearchList struct for NetworkPoliciesSearchList
 type NetworkPoliciesSearchList struct {
-	Data []CommonSearchKubernetesResponseData `json:"data,omitempty"`
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	Data                 []CommonSearchKubernetesResponseData `json:"data,omitempty"`
+	TotalCount           *int32                               `json:"totalCount,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _NetworkPoliciesSearchList NetworkPoliciesSearchList
 
 // NewNetworkPoliciesSearchList instantiates a new NetworkPoliciesSearchList object
 // This constructor will assign default values to properties that have it defined,
@@ -107,7 +110,7 @@ func (o *NetworkPoliciesSearchList) SetTotalCount(v int32) {
 }
 
 func (o NetworkPoliciesSearchList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -122,7 +125,34 @@ func (o NetworkPoliciesSearchList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *NetworkPoliciesSearchList) UnmarshalJSON(data []byte) (err error) {
+	varNetworkPoliciesSearchList := _NetworkPoliciesSearchList{}
+
+	err = json.Unmarshal(data, &varNetworkPoliciesSearchList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NetworkPoliciesSearchList(varNetworkPoliciesSearchList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableNetworkPoliciesSearchList struct {
@@ -160,5 +190,3 @@ func (v *NullableNetworkPoliciesSearchList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

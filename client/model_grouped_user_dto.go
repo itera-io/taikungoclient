@@ -20,10 +20,13 @@ var _ MappedNullable = &GroupedUserDto{}
 
 // GroupedUserDto struct for GroupedUserDto
 type GroupedUserDto struct {
-	Id NullableString `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Email NullableString `json:"email,omitempty"`
+	Id                   NullableString `json:"id,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Email                NullableString `json:"email,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _GroupedUserDto GroupedUserDto
 
 // NewGroupedUserDto instantiates a new GroupedUserDto object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *GroupedUserDto) HasId() bool {
 func (o *GroupedUserDto) SetId(v string) {
 	o.Id.Set(&v)
 }
+
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *GroupedUserDto) SetIdNil() {
 	o.Id.Set(nil)
@@ -116,6 +120,7 @@ func (o *GroupedUserDto) HasName() bool {
 func (o *GroupedUserDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *GroupedUserDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -158,6 +163,7 @@ func (o *GroupedUserDto) HasEmail() bool {
 func (o *GroupedUserDto) SetEmail(v string) {
 	o.Email.Set(&v)
 }
+
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *GroupedUserDto) SetEmailNil() {
 	o.Email.Set(nil)
@@ -169,7 +175,7 @@ func (o *GroupedUserDto) UnsetEmail() {
 }
 
 func (o GroupedUserDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -187,7 +193,35 @@ func (o GroupedUserDto) ToMap() (map[string]interface{}, error) {
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *GroupedUserDto) UnmarshalJSON(data []byte) (err error) {
+	varGroupedUserDto := _GroupedUserDto{}
+
+	err = json.Unmarshal(data, &varGroupedUserDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GroupedUserDto(varGroupedUserDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "email")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableGroupedUserDto struct {
@@ -225,5 +259,3 @@ func (v *NullableGroupedUserDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

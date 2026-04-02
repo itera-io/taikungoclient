@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,11 +21,12 @@ var _ MappedNullable = &StandaloneProfileListDto{}
 
 // StandaloneProfileListDto struct for StandaloneProfileListDto
 type StandaloneProfileListDto struct {
-	Id int32 `json:"id"`
-	Name NullableString `json:"name"`
-	Revision int32 `json:"revision"`
-	IsLocked bool `json:"isLocked"`
+	Id                              int32                                   `json:"id"`
+	Name                            NullableString                          `json:"name"`
+	Revision                        int32                                   `json:"revision"`
+	IsLocked                        bool                                    `json:"isLocked"`
 	StandAloneProfileSecurityGroups []StandaloneProfileSecurityGroupListDto `json:"standAloneProfileSecurityGroups"`
+	AdditionalProperties            map[string]interface{}
 }
 
 type _StandaloneProfileListDto StandaloneProfileListDto
@@ -178,7 +178,7 @@ func (o *StandaloneProfileListDto) SetStandAloneProfileSecurityGroups(v []Standa
 }
 
 func (o StandaloneProfileListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,6 +194,11 @@ func (o StandaloneProfileListDto) ToMap() (map[string]interface{}, error) {
 	if o.StandAloneProfileSecurityGroups != nil {
 		toSerialize["standAloneProfileSecurityGroups"] = o.StandAloneProfileSecurityGroups
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -214,10 +219,10 @@ func (o *StandaloneProfileListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -225,15 +230,24 @@ func (o *StandaloneProfileListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varStandaloneProfileListDto := _StandaloneProfileListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStandaloneProfileListDto)
+	err = json.Unmarshal(data, &varStandaloneProfileListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StandaloneProfileListDto(varStandaloneProfileListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "revision")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "standAloneProfileSecurityGroups")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -273,5 +287,3 @@ func (v *NullableStandaloneProfileListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,8 +20,11 @@ var _ MappedNullable = &DeploymentDisableMonitoringCommand{}
 
 // DeploymentDisableMonitoringCommand struct for DeploymentDisableMonitoringCommand
 type DeploymentDisableMonitoringCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
+	ProjectId            *int32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeploymentDisableMonitoringCommand DeploymentDisableMonitoringCommand
 
 // NewDeploymentDisableMonitoringCommand instantiates a new DeploymentDisableMonitoringCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,7 +76,7 @@ func (o *DeploymentDisableMonitoringCommand) SetProjectId(v int32) {
 }
 
 func (o DeploymentDisableMonitoringCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -85,7 +88,33 @@ func (o DeploymentDisableMonitoringCommand) ToMap() (map[string]interface{}, err
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeploymentDisableMonitoringCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeploymentDisableMonitoringCommand := _DeploymentDisableMonitoringCommand{}
+
+	err = json.Unmarshal(data, &varDeploymentDisableMonitoringCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeploymentDisableMonitoringCommand(varDeploymentDisableMonitoringCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeploymentDisableMonitoringCommand struct {
@@ -123,5 +152,3 @@ func (v *NullableDeploymentDisableMonitoringCommand) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

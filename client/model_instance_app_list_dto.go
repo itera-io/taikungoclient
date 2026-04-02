@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,25 +21,26 @@ var _ MappedNullable = &InstanceAppListDto{}
 
 // InstanceAppListDto struct for InstanceAppListDto
 type InstanceAppListDto struct {
-	Id int32 `json:"id"`
-	Name NullableString `json:"name"`
-	Namespace NullableString `json:"namespace"`
-	Status EInstanceStatus `json:"status"`
-	Version NullableString `json:"version"`
-	CatalogId int32 `json:"catalogId"`
-	CatalogName NullableString `json:"catalogName"`
-	CatalogAppName NullableString `json:"catalogAppName"`
-	CatalogAppId int32 `json:"catalogAppId"`
-	AppRepoName NullableString `json:"appRepoName"`
-	Logo NullableString `json:"logo"`
-	AutoSync bool `json:"autoSync"`
-	Created NullableString `json:"created"`
-	CreatedBy NullableString `json:"createdBy"`
-	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
-	ProjectId int32 `json:"projectId"`
-	ProjectName NullableString `json:"projectName"`
-	Logs NullableString `json:"logs"`
+	Id                   int32           `json:"id"`
+	Name                 NullableString  `json:"name"`
+	Namespace            NullableString  `json:"namespace"`
+	Status               EInstanceStatus `json:"status"`
+	Version              NullableString  `json:"version"`
+	CatalogId            int32           `json:"catalogId"`
+	CatalogName          NullableString  `json:"catalogName"`
+	CatalogAppName       NullableString  `json:"catalogAppName"`
+	CatalogAppId         int32           `json:"catalogAppId"`
+	AppRepoName          NullableString  `json:"appRepoName"`
+	Logo                 NullableString  `json:"logo"`
+	AutoSync             bool            `json:"autoSync"`
+	Created              NullableString  `json:"created"`
+	CreatedBy            NullableString  `json:"createdBy"`
+	LastModified         NullableString  `json:"lastModified"`
+	LastModifiedBy       NullableString  `json:"lastModifiedBy"`
+	ProjectId            int32           `json:"projectId"`
+	ProjectName          NullableString  `json:"projectName"`
+	Logs                 NullableString  `json:"logs"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _InstanceAppListDto InstanceAppListDto
@@ -564,7 +564,7 @@ func (o *InstanceAppListDto) SetLogs(v string) {
 }
 
 func (o InstanceAppListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -592,6 +592,11 @@ func (o InstanceAppListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["projectId"] = o.ProjectId
 	toSerialize["projectName"] = o.ProjectName.Get()
 	toSerialize["logs"] = o.Logs.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -626,10 +631,10 @@ func (o *InstanceAppListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -637,15 +642,38 @@ func (o *InstanceAppListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varInstanceAppListDto := _InstanceAppListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varInstanceAppListDto)
+	err = json.Unmarshal(data, &varInstanceAppListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = InstanceAppListDto(varInstanceAppListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "catalogId")
+		delete(additionalProperties, "catalogName")
+		delete(additionalProperties, "catalogAppName")
+		delete(additionalProperties, "catalogAppId")
+		delete(additionalProperties, "appRepoName")
+		delete(additionalProperties, "logo")
+		delete(additionalProperties, "autoSync")
+		delete(additionalProperties, "created")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "projectName")
+		delete(additionalProperties, "logs")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -685,5 +713,3 @@ func (v *NullableInstanceAppListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

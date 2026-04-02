@@ -20,8 +20,11 @@ var _ MappedNullable = &DeleteImageFromProjectCommand{}
 
 // DeleteImageFromProjectCommand struct for DeleteImageFromProjectCommand
 type DeleteImageFromProjectCommand struct {
-	Ids []int32 `json:"ids,omitempty"`
+	Ids                  []int32 `json:"ids,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeleteImageFromProjectCommand DeleteImageFromProjectCommand
 
 // NewDeleteImageFromProjectCommand instantiates a new DeleteImageFromProjectCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -74,7 +77,7 @@ func (o *DeleteImageFromProjectCommand) SetIds(v []int32) {
 }
 
 func (o DeleteImageFromProjectCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -86,7 +89,33 @@ func (o DeleteImageFromProjectCommand) ToMap() (map[string]interface{}, error) {
 	if o.Ids != nil {
 		toSerialize["ids"] = o.Ids
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeleteImageFromProjectCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeleteImageFromProjectCommand := _DeleteImageFromProjectCommand{}
+
+	err = json.Unmarshal(data, &varDeleteImageFromProjectCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeleteImageFromProjectCommand(varDeleteImageFromProjectCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "ids")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeleteImageFromProjectCommand struct {
@@ -124,5 +153,3 @@ func (v *NullableDeleteImageFromProjectCommand) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,9 +21,10 @@ var _ MappedNullable = &GroupListItem{}
 
 // GroupListItem struct for GroupListItem
 type GroupListItem struct {
-	Id int32 `json:"id"`
-	Name NullableString `json:"name"`
-	ClaimValue NullableString `json:"claimValue,omitempty"`
+	Id                   int32          `json:"id"`
+	Name                 string         `json:"name"`
+	ClaimValue           NullableString `json:"claimValue,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GroupListItem GroupListItem
@@ -33,7 +33,7 @@ type _GroupListItem GroupListItem
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroupListItem(id int32, name NullableString) *GroupListItem {
+func NewGroupListItem(id int32, name string) *GroupListItem {
 	this := GroupListItem{}
 	this.Id = id
 	this.Name = name
@@ -73,29 +73,27 @@ func (o *GroupListItem) SetId(v int32) {
 }
 
 // GetName returns the Name field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *GroupListItem) GetName() string {
-	if o == nil || o.Name.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.Name.Get()
+	return o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GroupListItem) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return &o.Name, true
 }
 
 // SetName sets field value
 func (o *GroupListItem) SetName(v string) {
-	o.Name.Set(&v)
+	o.Name = v
 }
 
 // GetClaimValue returns the ClaimValue field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -130,6 +128,7 @@ func (o *GroupListItem) HasClaimValue() bool {
 func (o *GroupListItem) SetClaimValue(v string) {
 	o.ClaimValue.Set(&v)
 }
+
 // SetClaimValueNil sets the value for ClaimValue to be an explicit nil
 func (o *GroupListItem) SetClaimValueNil() {
 	o.ClaimValue.Set(nil)
@@ -141,7 +140,7 @@ func (o *GroupListItem) UnsetClaimValue() {
 }
 
 func (o GroupListItem) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -151,10 +150,15 @@ func (o GroupListItem) MarshalJSON() ([]byte, error) {
 func (o GroupListItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name.Get()
+	toSerialize["name"] = o.Name
 	if o.ClaimValue.IsSet() {
 		toSerialize["claimValue"] = o.ClaimValue.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -172,10 +176,10 @@ func (o *GroupListItem) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -183,15 +187,22 @@ func (o *GroupListItem) UnmarshalJSON(data []byte) (err error) {
 
 	varGroupListItem := _GroupListItem{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGroupListItem)
+	err = json.Unmarshal(data, &varGroupListItem)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GroupListItem(varGroupListItem)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "claimValue")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -231,5 +242,3 @@ func (v *NullableGroupListItem) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

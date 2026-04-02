@@ -20,8 +20,11 @@ var _ MappedNullable = &UnshelveStandaloneVmCommand{}
 
 // UnshelveStandaloneVmCommand struct for UnshelveStandaloneVmCommand
 type UnshelveStandaloneVmCommand struct {
-	Id *int32 `json:"id,omitempty"`
+	Id                   *int32 `json:"id,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UnshelveStandaloneVmCommand UnshelveStandaloneVmCommand
 
 // NewUnshelveStandaloneVmCommand instantiates a new UnshelveStandaloneVmCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,7 +76,7 @@ func (o *UnshelveStandaloneVmCommand) SetId(v int32) {
 }
 
 func (o UnshelveStandaloneVmCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -85,7 +88,33 @@ func (o UnshelveStandaloneVmCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UnshelveStandaloneVmCommand) UnmarshalJSON(data []byte) (err error) {
+	varUnshelveStandaloneVmCommand := _UnshelveStandaloneVmCommand{}
+
+	err = json.Unmarshal(data, &varUnshelveStandaloneVmCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UnshelveStandaloneVmCommand(varUnshelveStandaloneVmCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUnshelveStandaloneVmCommand struct {
@@ -123,5 +152,3 @@ func (v *NullableUnshelveStandaloneVmCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -173,6 +173,62 @@ paths:
       summary: Add Aws credentials
       tags:
       - AWS cloud credential
+  /api/v1/aws/efs-file-system-by-vpc-list:
+    post:
+      operationId: aws-efs-file-system-by-vpc-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AwsFileSystemsCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/EfsFileSystemDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve aws efs file system by vpc list
+      tags:
+      - AWS cloud credential
   /api/v1/aws/eks-auth-info:
     post:
       operationId: aws-get-eks-auth-info
@@ -1704,7 +1760,90 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
-      summary: Retrieve account users dropdown list
+      summary: Retrieve account users dropdown list by cursor-based pagination
+      tags:
+      - Accounts
+  /api/v1/accounts/{accountId}/user/offset-based/dropdown:
+    get:
+      operationId: accounts-account-user-offset-based-dropdown
+      parameters:
+      - explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 100
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserOffsetPaginationDropdownList"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve account users dropdown list by offset-based pagination
       tags:
       - Accounts
   /api/v1/accounts/{accountId}/users/available:
@@ -1919,7 +2058,90 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
-      summary: Retrieve account projects dropdown list
+      summary: Retrieve account projects dropdown list by cursor-based pagination
+      tags:
+      - Accounts
+  /api/v1/accounts/{accountId}/projects/offset-based/dropdown:
+    get:
+      operationId: accounts-account-projects-offset-based-dropdown
+      parameters:
+      - explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 100
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectOffsetPaginationList"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve account projects dropdown list by offset-based pagination
       tags:
       - Accounts
   /api/v1/accounts/{accountId}/organizations/{id}:
@@ -2074,7 +2296,98 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
-      summary: Retrieve account organizations with group list
+      summary: Retrieve account organizations with group list by cursor-based pagination
+      tags:
+      - Accounts
+  /api/v1/accounts/{accountId}/organizations/offset-based/with/group:
+    get:
+      operationId: accounts-account-offset-based-organizations-with-group
+      parameters:
+      - explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: GroupId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 100
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrganizationOffsetPaginationWithGroupList"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve account organizations with group list by offset-based pagination
       tags:
       - Accounts
   /api/v1/accounts/{accountId}/organizations/available:
@@ -2420,7 +2733,90 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
-      summary: Retrieve account groups dropdown list
+      summary: Retrieve account groups dropdown list by cursor-based pagination
+      tags:
+      - Accounts
+  /api/v1/accounts/{accountId}/groups/offset-based/dropdown:
+    get:
+      operationId: accounts-account-groups-offset-based-dropdown
+      parameters:
+      - explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 100
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GroupOffsetPaginationDropdownList"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve account groups dropdown list by offset-based pagination
       tags:
       - Accounts
   /api/v1/accounts/{id}:
@@ -14434,7 +14830,294 @@ paths:
       summary: Retrieve list of generic kubernetes cloud credentials
       tags:
       - Generic kubernetes cloud credential
-  /api/v1/global-configurations/create-ai-backend:
+  /api/v1/global-configurations/slack/create:
+    post:
+      operationId: global-configurations-create-slack-configuration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateGlobalSlackConfigurationCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Create slack configuration
+      tags:
+      - Global Configuration
+  /api/v1/global-configurations/slack/{id}:
+    delete:
+      operationId: global-configurations-delete-slack-configuration
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Remove global slack configuration
+      tags:
+      - Global Configuration
+  /api/v1/global-configurations/slack/status:
+    post:
+      operationId: global-configurations-update-status-slack-configuration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GlobalSlackConfigurationStatusManagementCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Activate/Deactivate global slack configuration
+      tags:
+      - Global Configuration
+  /api/v1/global-configurations/slack/list:
+    get:
+      operationId: global-configurations-list-slack-configuration
+      parameters:
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 100
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GlobalSlackConfigurationList"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve slack configuration list
+      tags:
+      - Global Configuration
+  /api/v1/global-configurations/email-validator-config/create:
+    post:
+      operationId: global-configurations-create-email-config
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateEmailConfigurationCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Create email config
+      tags:
+      - Global Configuration
+  /api/v1/global-configurations/ai-backend/create:
     post:
       operationId: global-configurations-create-ai-backend
       requestBody:
@@ -14484,6 +15167,189 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
       summary: Create AI backend
+      tags:
+      - Global Configuration
+  /api/v1/global-configurations/ai-backend/{id}:
+    delete:
+      operationId: global-configurations-delete-ai-backend
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Remove global ai backend configuration
+      tags:
+      - Global Configuration
+  /api/v1/global-configurations/ai-backend/status:
+    post:
+      operationId: global-configurations-update-status-ai-backend
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GlobalAiBackendConfigurationStatusManagementCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Activate/Deactivate global ai-backend configuration
+      tags:
+      - Global Configuration
+  /api/v1/global-configurations/ai-backend/list:
+    get:
+      operationId: global-configurations-list-ai-backend-configuration
+      parameters:
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 100
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GlobalAiBackendConfigurationList"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve ai backend configuration list
       tags:
       - Global Configuration
   /api/v1/googlecloud/billing-accounts:
@@ -24777,58 +25643,6 @@ paths:
       summary: Unbind prometheus rule(s) from organization
       tags:
       - Organizations
-  /api/v1/organizations/accept-offer:
-    post:
-      operationId: organizations-accept-offer
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/AcceptOfferCommand"
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Accept discount offer
-      tags:
-      - Organizations
   /api/v1/organizations:
     get:
       operationId: organizations-list
@@ -24982,60 +25796,6 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
       summary: Add a new organization. Only available for admins.
-      tags:
-      - Organizations
-  /api/v1/organizations/leave:
-    post:
-      operationId: organizations-leave
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/LeaveTaikunCommand"
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/LeaveTaikunDto"
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Leave taikun
       tags:
       - Organizations
   /api/v1/organizations/update:
@@ -35540,6 +36300,51 @@ paths:
       summary: Retrieve all slack configs
       tags:
       - Slack
+  /api/v1/sse/health:
+    get:
+      operationId: sse-health
+      responses:
+        "200":
+          content:
+            text/event-stream:
+              schema:
+                $ref: "#/components/schemas/Void"
+          description: OK
+        "401":
+          description: Unauthorized
+      summary: Subscribe to real-time infrastructure health state changes
+      tags:
+      - Sse
+  /api/v1/sse/notifications:
+    get:
+      operationId: sse-notifications
+      responses:
+        "200":
+          content:
+            text/event-stream:
+              schema:
+                $ref: "#/components/schemas/Void"
+          description: OK
+        "401":
+          description: Unauthorized
+      summary: Subscribe to real-time notification messages for the current user
+      tags:
+      - Sse
+  /api/v1/sse/update-user-permission:
+    get:
+      operationId: sse-update-user-permission
+      responses:
+        "200":
+          content:
+            text/event-stream:
+              schema:
+                $ref: "#/components/schemas/Void"
+          description: OK
+        "401":
+          description: Unauthorized
+      summary: Subscribe to real-time cache invalidation events for the current user
+      tags:
+      - Sse
   /api/v1/sshusers/create:
     post:
       operationId: sshusers-create
@@ -39149,24 +39954,17 @@ paths:
       summary: Retrieve user info
       tags:
       - Users
-  /api/v1/users/list:
+  /api/v1/users/dropdown:
     get:
       operationId: users-dropdown
       parameters:
       - explode: true
         in: query
         name: OrganizationId
-        required: false
+        required: true
         schema:
           format: int32
           type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
         style: form
       - explode: true
         in: query
@@ -39176,63 +39974,12 @@ paths:
           format: int32
           type: integer
         style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: "#/components/schemas/CommonStringDropdownIsBoundDto"
-                type: array
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Not Found
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Conflict
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ProblemDetails"
-          description: Internal Server Error
-      summary: Retrieve users as dropdown
-      tags:
-      - Users
-  /api/v1/users:
-    get:
-      operationId: users-list
-      parameters:
       - explode: true
         in: query
         name: Limit
         required: false
         schema:
+          default: 500
           format: int32
           type: integer
         style: form
@@ -39241,63 +39988,13 @@ paths:
         name: Offset
         required: false
         schema:
+          default: 0
           format: int32
           type: integer
-        style: form
-      - explode: true
-        in: query
-        name: AccountId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: OrganizationId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
         style: form
       - explode: true
         in: query
         name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SearchId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Id
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: FilterBy
         required: false
         schema:
           type: string
@@ -39307,7 +40004,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UsersList"
+                $ref: "#/components/schemas/UserByOrgProjectDropdownList"
           description: OK
         "400":
           content:
@@ -39345,37 +40042,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
-      summary: Retrieve all users
-      tags:
-      - Users
-  /api/v1/users/me/notifications:
-    get:
-      operationId: users-notifications
-      responses:
-        "200":
-          content:
-            text/event-stream:
-              schema:
-                $ref: "#/components/schemas/Void"
-          description: OK
-        "401":
-          description: Unauthorized
-      summary: Subscribe to real-time notification messages for the current user
-      tags:
-      - Users
-  /api/v1/users/me/sse:
-    get:
-      operationId: users-me-events
-      responses:
-        "200":
-          content:
-            text/event-stream:
-              schema:
-                $ref: "#/components/schemas/Void"
-          description: OK
-        "401":
-          description: Unauthorized
-      summary: Subscribe to real-time cache invalidation events for the current user
+      summary: Retrieve user info
       tags:
       - Users
   /api/v1/users/{id}:
@@ -41329,8 +41996,6 @@ paths:
       - Zadara cloud credential
 components:
   schemas:
-    AcceptOfferCommand:
-      type: object
     AccessLevel:
       enum:
       - Public
@@ -42926,9 +43591,11 @@ components:
         availabilityZones:
         - availabilityZones
         - availabilityZones
+        efsFileSystemName: efsFileSystemName
         organizationId: 5
         createdAt: createdAt
         isDefault: true
+        efsFileSystemId: efsFileSystemId
         createdBy: createdBy
         isLocked: true
         name: name
@@ -42937,6 +43604,7 @@ components:
         lastModified: lastModified
         region: region
         continentName: continentName
+        sharedFileSystemEnabled: true
       properties:
         id:
           format: int32
@@ -42983,6 +43651,14 @@ components:
         continentName:
           nullable: true
           type: string
+        efsFileSystemId:
+          nullable: true
+          type: string
+        efsFileSystemName:
+          nullable: true
+          type: string
+        sharedFileSystemEnabled:
+          type: boolean
       required:
       - availabilityZones
       - availabilityZonesCount
@@ -43455,9 +44131,11 @@ components:
           availabilityZones:
           - availabilityZones
           - availabilityZones
+          efsFileSystemName: efsFileSystemName
           organizationId: 5
           createdAt: createdAt
           isDefault: true
+          efsFileSystemId: efsFileSystemId
           createdBy: createdBy
           isLocked: true
           name: name
@@ -43466,6 +44144,7 @@ components:
           lastModified: lastModified
           region: region
           continentName: continentName
+          sharedFileSystemEnabled: true
         - projectCount: 6
           projects:
           - name: name
@@ -43477,9 +44156,11 @@ components:
           availabilityZones:
           - availabilityZones
           - availabilityZones
+          efsFileSystemName: efsFileSystemName
           organizationId: 5
           createdAt: createdAt
           isDefault: true
+          efsFileSystemId: efsFileSystemId
           createdBy: createdBy
           isLocked: true
           name: name
@@ -43488,6 +44169,7 @@ components:
           lastModified: lastModified
           region: region
           continentName: continentName
+          sharedFileSystemEnabled: true
         totalCount: 2
       properties:
         data:
@@ -43589,6 +44271,26 @@ components:
             type: string
           nullable: true
           type: array
+      type: object
+    AwsFileSystemsCommand:
+      example:
+        awsRegion: awsRegion
+        awsAccessKeyId: awsAccessKeyId
+        vpcId: vpcId
+        awsSecretAccessKey: awsSecretAccessKey
+      properties:
+        awsAccessKeyId:
+          nullable: true
+          type: string
+        awsSecretAccessKey:
+          nullable: true
+          type: string
+        awsRegion:
+          nullable: true
+          type: string
+        vpcId:
+          nullable: true
+          type: string
       type: object
     AwsFlavorList:
       example:
@@ -44732,6 +45434,7 @@ components:
           type: array
         organizationId:
           format: int32
+          nullable: true
           type: integer
       type: object
     BindFlavorToProjectCommand:
@@ -47029,21 +47732,6 @@ components:
           nullable: true
           type: string
       type: object
-    CommonStringDropdownIsBoundDto:
-      example:
-        isBound: true
-        name: name
-        id: id
-      properties:
-        id:
-          nullable: true
-          type: string
-        name:
-          nullable: true
-          type: string
-        isBound:
-          type: boolean
-      type: object
     ConfigMapSearchCommand:
       example:
         searchTerm: searchTerm
@@ -47582,12 +48270,14 @@ components:
       type: object
     CreateAwsCloudCommand:
       example:
-        organizationId: 6
-        ipMode: Ipv4
         awsRegion: awsRegion
-        importedVpcId: importedVpcId
         awsAccessKeyId: awsAccessKeyId
         azCount: 0
+        privateOnly: true
+        organizationId: 6
+        ipMode: Ipv4
+        efsFileSystemId: efsFileSystemId
+        importedVpcId: importedVpcId
         name: name
         vpcMode: Create
         subnets:
@@ -47595,7 +48285,7 @@ components:
           subnetType: Public
         - awsSubnetId: awsSubnetId
           subnetType: Public
-        privateOnly: true
+        sharedFileSystemEnabled: true
         awsSecretAccessKey: awsSecretAccessKey
       properties:
         name:
@@ -47632,6 +48322,11 @@ components:
             $ref: "#/components/schemas/CreateAwsSubnetDto"
           nullable: true
           type: array
+        sharedFileSystemEnabled:
+          type: boolean
+        efsFileSystemId:
+          nullable: true
+          type: string
       required:
       - awsAccessKeyId
       - awsRegion
@@ -47797,6 +48492,22 @@ components:
           format: int32
           type: integer
       type: object
+    CreateEmailConfigurationCommand:
+      example:
+        apiKey: apiKey
+        name: name
+        host: host
+      properties:
+        name:
+          nullable: true
+          type: string
+        host:
+          nullable: true
+          type: string
+        apiKey:
+          nullable: true
+          type: string
+      type: object
     CreateExecutorCommand:
       example:
         continent: continent
@@ -47828,6 +48539,26 @@ components:
           nullable: true
           type: string
         svcNamespace:
+          nullable: true
+          type: string
+      type: object
+    CreateGlobalSlackConfigurationCommand:
+      example:
+        name: name
+        channel: channel
+        userName: userName
+        url: url
+      properties:
+        name:
+          nullable: true
+          type: string
+        url:
+          nullable: true
+          type: string
+        userName:
+          nullable: true
+          type: string
+        channel:
           nullable: true
           type: string
       type: object
@@ -48233,7 +48964,9 @@ components:
       type: object
     CreateProjectAppCommand:
       example:
+        pullSecretName: pullSecretName
         extraValues: extraValues
+        createPullSecret: true
         taikunLinkEnabled: true
         name: name
         namespace: namespace
@@ -48246,6 +48979,11 @@ components:
         - value: value
           key: key
         timeout: 1
+        labels:
+        - value: value
+          key: key
+        - value: value
+          key: key
       properties:
         name:
           nullable: true
@@ -48270,9 +49008,19 @@ components:
           format: int32
           nullable: true
           type: integer
+        createPullSecret:
+          type: boolean
+        pullSecretName:
+          nullable: true
+          type: string
         parameters:
           items:
             $ref: "#/components/schemas/ProjectAppParamsDto"
+          nullable: true
+          type: array
+        labels:
+          items:
+            $ref: "#/components/schemas/PullSecretLabels"
           nullable: true
           type: array
       type: object
@@ -51406,6 +52154,26 @@ components:
       - maxPvcs
       - maxTotalPvcSize
       type: object
+    EfsFileSystemDto:
+      example:
+        lifecycleState: lifecycleState
+        sizeInBytes: 0
+        name: name
+        filesystemId: filesystemId
+      properties:
+        filesystemId:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        lifecycleState:
+          nullable: true
+          type: string
+        sizeInBytes:
+          format: int64
+          type: integer
+      type: object
     EmailMode:
       enum:
       - Confirm
@@ -53335,6 +54103,87 @@ components:
           format: int32
           type: integer
       type: object
+    GlobalAiBackendConfigurationDto:
+      example:
+        name: name
+        model: model
+        id: 0
+        isActive: true
+        url: url
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        url:
+          nullable: true
+          type: string
+        model:
+          nullable: true
+          type: string
+        isActive:
+          type: boolean
+      type: object
+    GlobalAiBackendConfigurationList:
+      example:
+        data:
+        - name: name
+          model: model
+          id: 0
+          isActive: true
+          url: url
+        - name: name
+          model: model
+          id: 0
+          isActive: true
+          url: url
+        offset: 5
+        limit: 6
+        hasMore: true
+        totalCount: 1
+        nextOffset: 5
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/GlobalAiBackendConfigurationDto"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - data
+      - hasMore
+      - limit
+      - offset
+      - totalCount
+      type: object
+    GlobalAiBackendConfigurationStatusManagementCommand:
+      example:
+        mode: mode
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+        mode:
+          nullable: true
+          type: string
+      type: object
     GlobalRole:
       enum:
       - None
@@ -53345,6 +54194,93 @@ components:
       - OnlyMember
       - Robot
       type: string
+    GlobalSlackConfigurationDto:
+      example:
+        name: name
+        channel: channel
+        id: 0
+        userName: userName
+        isActive: true
+        url: url
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        url:
+          nullable: true
+          type: string
+        userName:
+          nullable: true
+          type: string
+        channel:
+          nullable: true
+          type: string
+        isActive:
+          type: boolean
+      type: object
+    GlobalSlackConfigurationList:
+      example:
+        data:
+        - name: name
+          channel: channel
+          id: 0
+          userName: userName
+          isActive: true
+          url: url
+        - name: name
+          channel: channel
+          id: 0
+          userName: userName
+          isActive: true
+          url: url
+        offset: 5
+        limit: 6
+        hasMore: true
+        totalCount: 1
+        nextOffset: 5
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/GlobalSlackConfigurationDto"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - data
+      - hasMore
+      - limit
+      - offset
+      - totalCount
+      type: object
+    GlobalSlackConfigurationStatusManagementCommand:
+      example:
+        mode: mode
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+        mode:
+          nullable: true
+          type: string
+      type: object
     GoogleBillingAccountListCommand:
       properties:
         config:
@@ -53828,7 +54764,6 @@ components:
         data:
           items:
             $ref: "#/components/schemas/GroupListItem"
-          nullable: true
           type: array
       type: object
     GroupListItem:
@@ -53841,7 +54776,6 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         claimValue:
           nullable: true
@@ -53849,6 +54783,46 @@ components:
       required:
       - id
       - name
+      type: object
+    GroupOffsetPaginationDropdownList:
+      example:
+        data:
+        - name: name
+          id: 5
+        - name: name
+          id: 5
+        offset: 1
+        limit: 0
+        hasMore: true
+        totalCount: 6
+        nextOffset: 5
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/CommonDropdownDto"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - data
+      - hasMore
+      - limit
+      - offset
+      - totalCount
       type: object
     GroupedBillingInfo:
       example:
@@ -56782,18 +57756,6 @@ components:
       - amphora
       - ovn
       type: string
-    LeaveTaikunCommand:
-      example:
-        reason: reason
-        message: message
-      properties:
-        reason:
-          nullable: true
-          type: string
-        message:
-          nullable: true
-          type: string
-      type: object
     LeaveTaikunDto:
       example:
         paymentIntentId: paymentIntentId
@@ -59253,8 +60215,10 @@ components:
         organizationName: organizationName
       properties:
         role:
+          nullable: true
           type: string
         organizationName:
+          nullable: true
           type: string
       required:
       - organizationName
@@ -59288,42 +60252,21 @@ components:
       type: object
     OrganizationDetailsDto:
       example:
-        country: country
-        discountRate: 9.301444243932576
-        projects: 1
-        city: city
-        cloudCredentials: 5
-        isEligibleUpdateSubscription: true
         createdAt: createdAt
-        isReadOnly: true
-        servers: 5
-        billingEmail: billingEmail
-        isLocked: true
-        id: 0
-        email: email
-        address: address
-        partnerName: partnerName
+        projects: 6
+        servers: 1
         boundRules:
         - prometheusRuleName: prometheusRuleName
-          ruleDiscountRate: 2.027123023002322
-          prometheusRuleId: 3
+          ruleDiscountRate: 2.3021358869347655
+          prometheusRuleId: 5
         - prometheusRuleName: prometheusRuleName
-          ruleDiscountRate: 2.027123023002322
-          prometheusRuleId: 3
-        trialEnded: true
-        fullName: fullName
-        isNew: true
-        users: 6
-        partner:
-          domain: domain
-          name: name
-          link: link
-          logo: logo
-          id: 7
-        phone: phone
+          ruleDiscountRate: 2.3021358869347655
+          prometheusRuleId: 5
         name: name
-        partnerId: 2
-        vatNumber: vatNumber
+        fullName: fullName
+        cloudCredentials: 5
+        id: 0
+        email: email
       properties:
         id:
           format: int32
@@ -59337,37 +60280,6 @@ components:
         email:
           nullable: true
           type: string
-        billingEmail:
-          nullable: true
-          type: string
-        phone:
-          nullable: true
-          type: string
-        country:
-          nullable: true
-          type: string
-        city:
-          nullable: true
-          type: string
-        vatNumber:
-          nullable: true
-          type: string
-        address:
-          nullable: true
-          type: string
-        isEligibleUpdateSubscription:
-          type: boolean
-        isLocked:
-          type: boolean
-        isReadOnly:
-          type: boolean
-        isNew:
-          type: boolean
-        trialEnded:
-          type: boolean
-        users:
-          format: int32
-          type: integer
         projects:
           format: int32
           type: integer
@@ -59380,18 +60292,6 @@ components:
         createdAt:
           nullable: true
           type: string
-        partnerId:
-          format: int32
-          nullable: true
-          type: integer
-        partnerName:
-          nullable: true
-          type: string
-        partner:
-          $ref: "#/components/schemas/PartnerDetailsForOrganizationsDto"
-        discountRate:
-          format: double
-          type: number
         boundRules:
           items:
             $ref: "#/components/schemas/PrometheusEntity"
@@ -59538,11 +60438,78 @@ components:
       type: object
     OrganizationNameCheckerCommand:
       example:
+        accountId: 0
         name: name
+        fullName: fullName
       properties:
+        accountId:
+          format: int32
+          nullable: true
+          type: integer
         name:
           nullable: true
           type: string
+        fullName:
+          nullable: true
+          type: string
+      type: object
+    OrganizationOffsetPaginationWithGroupList:
+      example:
+        data:
+        - orgName: orgName
+          projects:
+          - isBound: true
+            name: name
+            id: 6
+          - isBound: true
+            name: name
+            id: 6
+          accessLevel: accessLevel
+          isBound: true
+          orgId: 0
+        - orgName: orgName
+          projects:
+          - isBound: true
+            name: name
+            id: 6
+          - isBound: true
+            name: name
+            id: 6
+          accessLevel: accessLevel
+          isBound: true
+          orgId: 0
+        offset: 1
+        limit: 0
+        hasMore: true
+        totalCount: 6
+        nextOffset: 5
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/OrganizationsWithGroupInfoResultDto"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - data
+      - hasMore
+      - limit
+      - offset
+      - totalCount
       type: object
     OrganizationSearchCommand:
       example:
@@ -59656,79 +60623,37 @@ components:
     OrganizationsList:
       example:
         data:
-        - country: country
-          discountRate: 9.301444243932576
-          projects: 1
-          city: city
-          cloudCredentials: 5
-          isEligibleUpdateSubscription: true
-          createdAt: createdAt
-          isReadOnly: true
-          servers: 5
-          billingEmail: billingEmail
-          isLocked: true
-          id: 0
-          email: email
-          address: address
-          partnerName: partnerName
+        - createdAt: createdAt
+          projects: 6
+          servers: 1
           boundRules:
           - prometheusRuleName: prometheusRuleName
-            ruleDiscountRate: 2.027123023002322
-            prometheusRuleId: 3
+            ruleDiscountRate: 2.3021358869347655
+            prometheusRuleId: 5
           - prometheusRuleName: prometheusRuleName
-            ruleDiscountRate: 2.027123023002322
-            prometheusRuleId: 3
-          trialEnded: true
-          fullName: fullName
-          isNew: true
-          users: 6
-          partner:
-            domain: domain
-            name: name
-            link: link
-            logo: logo
-            id: 7
-          phone: phone
+            ruleDiscountRate: 2.3021358869347655
+            prometheusRuleId: 5
           name: name
-          partnerId: 2
-          vatNumber: vatNumber
-        - country: country
-          discountRate: 9.301444243932576
-          projects: 1
-          city: city
+          fullName: fullName
           cloudCredentials: 5
-          isEligibleUpdateSubscription: true
-          createdAt: createdAt
-          isReadOnly: true
-          servers: 5
-          billingEmail: billingEmail
-          isLocked: true
           id: 0
           email: email
-          address: address
-          partnerName: partnerName
+        - createdAt: createdAt
+          projects: 6
+          servers: 1
           boundRules:
           - prometheusRuleName: prometheusRuleName
-            ruleDiscountRate: 2.027123023002322
-            prometheusRuleId: 3
+            ruleDiscountRate: 2.3021358869347655
+            prometheusRuleId: 5
           - prometheusRuleName: prometheusRuleName
-            ruleDiscountRate: 2.027123023002322
-            prometheusRuleId: 3
-          trialEnded: true
-          fullName: fullName
-          isNew: true
-          users: 6
-          partner:
-            domain: domain
-            name: name
-            link: link
-            logo: logo
-            id: 7
-          phone: phone
+            ruleDiscountRate: 2.3021358869347655
+            prometheusRuleId: 5
           name: name
-          partnerId: 2
-          vatNumber: vatNumber
-        totalCount: 4
+          fullName: fullName
+          cloudCredentials: 5
+          id: 0
+          email: email
+        totalCount: 7
       properties:
         data:
           items:
@@ -59888,30 +60813,6 @@ components:
       - Array
       - Multiline
       type: string
-    PartnerDetailsForOrganizationsDto:
-      example:
-        domain: domain
-        name: name
-        link: link
-        logo: logo
-        id: 7
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          nullable: true
-          type: string
-        link:
-          nullable: true
-          type: string
-        domain:
-          nullable: true
-          type: string
-        logo:
-          nullable: true
-          type: string
-      type: object
     PatchKubernetesResourceCommand:
       example:
         name: name
@@ -61508,6 +62409,7 @@ components:
         cloudType:
           $ref: "#/components/schemas/ECloudCredentialType"
         cloudName:
+          nullable: true
           type: string
         cloudId:
           format: int32
@@ -61597,20 +62499,6 @@ components:
       - projectCloudRevision
       - status
       - totalHourlyCost
-      type: object
-    ProjectDto:
-      example:
-        projectName: projectName
-        projectId: 6
-      properties:
-        projectId:
-          format: int32
-          type: integer
-        projectName:
-          type: string
-      required:
-      - projectId
-      - projectName
       type: object
     ProjectExtendLifeTimeCommand:
       example:
@@ -62714,6 +63602,46 @@ components:
         data:
           $ref: "#/components/schemas/AlertData"
       type: object
+    ProjectOffsetPaginationList:
+      example:
+        data:
+        - name: name
+          id: 5
+        - name: name
+          id: 5
+        offset: 1
+        limit: 0
+        hasMore: true
+        totalCount: 6
+        nextOffset: 5
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/CommonDropdownDto"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - data
+      - hasMore
+      - limit
+      - offset
+      - totalCount
+      type: object
     ProjectQuotaList:
       example:
         data:
@@ -63532,8 +64460,8 @@ components:
     PrometheusEntity:
       example:
         prometheusRuleName: prometheusRuleName
-        ruleDiscountRate: 2.027123023002322
-        prometheusRuleId: 3
+        ruleDiscountRate: 2.3021358869347655
+        prometheusRuleId: 5
       properties:
         prometheusRuleId:
           format: int32
@@ -63931,11 +64859,14 @@ components:
       type: string
     PromoteUserCommand:
       example:
+        isAdmin: true
         userId: userId
       properties:
         userId:
           nullable: true
           type: string
+        isAdmin:
+          type: boolean
       type: object
     Provider:
       example:
@@ -64332,6 +65263,18 @@ components:
       - data
       - totalCount
       type: object
+    PullSecretLabels:
+      example:
+        value: value
+        key: key
+      properties:
+        key:
+          nullable: true
+          type: string
+        value:
+          nullable: true
+          type: string
+      type: object
     PurgeExpiredProjectsCommand:
       type: object
     PvcListDto:
@@ -64620,6 +65563,7 @@ components:
       type: object
     ResetPasswordCommand:
       example:
+        accountName: accountName
         newPassword: newPassword
         email: email
         token: token
@@ -64628,6 +65572,9 @@ components:
           nullable: true
           type: string
         email:
+          nullable: true
+          type: string
+        accountName:
           nullable: true
           type: string
         newPassword:
@@ -66035,6 +66982,7 @@ components:
         status:
           type: string
         createdAt:
+          nullable: true
           type: string
         cloudType:
           $ref: "#/components/schemas/CloudType"
@@ -66110,7 +67058,6 @@ components:
       - hypervisorId
       - id
       - instanceId
-      - ipAddress
       - kubernetesHealth
       - kubernetesNodeLabels
       - lastModified
@@ -69415,7 +70362,6 @@ components:
       type: object
     UpdateUserCommand:
       example:
-        isApprovedByPartner: true
         displayName: displayName
         disable: true
         forceToResetPassword: true
@@ -69438,8 +70384,6 @@ components:
         forceToResetPassword:
           type: boolean
         disable:
-          type: boolean
-        isApprovedByPartner:
           type: boolean
       type: object
     UpdateVsphereCommand:
@@ -69616,44 +70560,70 @@ components:
       - limit
       - totalCount
       type: object
+    UserByOrgProjectDropdownList:
+      example:
+        data:
+        - name: name
+          id: id
+        - name: name
+          id: id
+        offset: 1
+        limit: 0
+        hasMore: true
+        totalCount: 6
+        nextOffset: 5
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/CommonStringBasedDropdownDto"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - data
+      - hasMore
+      - limit
+      - offset
+      - totalCount
+      type: object
     UserDetails:
       example:
-        trialDays: 1
+        trialDays: 6
         data:
-          role: None
-          displayName: displayName
-          hasCustomerId: true
-          boundProjects:
-          - projectName: projectName
-            projectId: 6
-          - projectName: projectName
-            projectId: 6
-          isEligibleUpdateSubscription: true
-          isCsm: true
-          createdAt: createdAt
-          isReadOnly: true
-          isLocked: true
-          id: id
-          email: email
-          isForcedToEnableTwoFactorAuthentication: true
           owner: true
           is2FAEnabled: true
-          hasRepo: true
-          hasPaymentMethod: true
+          role: None
+          displayName: displayName
           isForcedToResetPassword: true
-          isNewOrganization: true
-          lastLoginAt: lastLoginAt
-          isApprovedByPartner: true
+          createdAt: createdAt
+          isLocked: true
           organizations:
             key:
               role: role
               organizationName: organizationName
+          id: id
+          email: email
           account:
             accountId: 0
             domain: domain
             name: name
             logo: logo
           isEmailNotificationEnabled: true
+          isForcedToEnableTwoFactorAuthentication: true
           username: username
           isEmailConfirmed: true
         isMaintenanceModeEnabled: true
@@ -69717,6 +70687,7 @@ components:
         globalRole:
           $ref: "#/components/schemas/EGlobalRole"
         createdAt:
+          nullable: true
           type: string
         is2FAEnabled:
           type: boolean
@@ -69755,40 +70726,26 @@ components:
       type: object
     UserForListDto:
       example:
-        role: None
-        displayName: displayName
-        hasCustomerId: true
-        boundProjects:
-        - projectName: projectName
-          projectId: 6
-        - projectName: projectName
-          projectId: 6
-        isEligibleUpdateSubscription: true
-        isCsm: true
-        createdAt: createdAt
-        isReadOnly: true
-        isLocked: true
-        id: id
-        email: email
-        isForcedToEnableTwoFactorAuthentication: true
         owner: true
         is2FAEnabled: true
-        hasRepo: true
-        hasPaymentMethod: true
+        role: None
+        displayName: displayName
         isForcedToResetPassword: true
-        isNewOrganization: true
-        lastLoginAt: lastLoginAt
-        isApprovedByPartner: true
+        createdAt: createdAt
+        isLocked: true
         organizations:
           key:
             role: role
             organizationName: organizationName
+        id: id
+        email: email
         account:
           accountId: 0
           domain: domain
           name: name
           logo: logo
         isEmailNotificationEnabled: true
+        isForcedToEnableTwoFactorAuthentication: true
         username: username
         isEmailConfirmed: true
       properties:
@@ -69813,66 +70770,78 @@ components:
           additionalProperties:
             $ref: "#/components/schemas/OrganizationContextDto"
           type: object
-        hasCustomerId:
-          type: boolean
-        hasPaymentMethod:
-          type: boolean
         isEmailConfirmed:
           type: boolean
         isEmailNotificationEnabled:
           type: boolean
         isForcedToResetPassword:
           type: boolean
-        isCsm:
-          type: boolean
-        isEligibleUpdateSubscription:
-          type: boolean
         isLocked:
-          type: boolean
-        isApprovedByPartner:
           type: boolean
         owner:
           type: boolean
-        isReadOnly:
-          type: boolean
-        hasRepo:
-          type: boolean
-        isNewOrganization:
-          type: boolean
-        lastLoginAt:
-          nullable: true
-          type: string
         isForcedToEnableTwoFactorAuthentication:
           type: boolean
-        boundProjects:
-          items:
-            $ref: "#/components/schemas/ProjectDto"
-          type: array
       required:
       - account
-      - boundProjects
       - createdAt
       - displayName
       - email
-      - hasCustomerId
-      - hasPaymentMethod
-      - hasRepo
       - id
       - is2FAEnabled
-      - isApprovedByPartner
-      - isCsm
-      - isEligibleUpdateSubscription
       - isEmailConfirmed
       - isEmailNotificationEnabled
       - isForcedToEnableTwoFactorAuthentication
       - isForcedToResetPassword
       - isLocked
-      - isNewOrganization
-      - isReadOnly
       - organizations
       - owner
       - role
       - username
+      type: object
+    UserOffsetPaginationDropdownList:
+      example:
+        data:
+        - displayName: displayName
+          name: name
+          id: id
+          timestamp: 0
+        - displayName: displayName
+          name: name
+          id: id
+          timestamp: 0
+        offset: 1
+        limit: 0
+        hasMore: true
+        totalCount: 6
+        nextOffset: 5
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/UserBriefDto"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - data
+      - hasMore
+      - limit
+      - offset
+      - totalCount
       type: object
     UserOrganizationDto:
       example:
@@ -69953,95 +70922,6 @@ components:
           type: string
         role:
           $ref: "#/components/schemas/EGlobalRole"
-      type: object
-    UsersList:
-      example:
-        data:
-        - role: None
-          displayName: displayName
-          hasCustomerId: true
-          boundProjects:
-          - projectName: projectName
-            projectId: 6
-          - projectName: projectName
-            projectId: 6
-          isEligibleUpdateSubscription: true
-          isCsm: true
-          createdAt: createdAt
-          isReadOnly: true
-          isLocked: true
-          id: id
-          email: email
-          isForcedToEnableTwoFactorAuthentication: true
-          owner: true
-          is2FAEnabled: true
-          hasRepo: true
-          hasPaymentMethod: true
-          isForcedToResetPassword: true
-          isNewOrganization: true
-          lastLoginAt: lastLoginAt
-          isApprovedByPartner: true
-          organizations:
-            key:
-              role: role
-              organizationName: organizationName
-          account:
-            accountId: 0
-            domain: domain
-            name: name
-            logo: logo
-          isEmailNotificationEnabled: true
-          username: username
-          isEmailConfirmed: true
-        - role: None
-          displayName: displayName
-          hasCustomerId: true
-          boundProjects:
-          - projectName: projectName
-            projectId: 6
-          - projectName: projectName
-            projectId: 6
-          isEligibleUpdateSubscription: true
-          isCsm: true
-          createdAt: createdAt
-          isReadOnly: true
-          isLocked: true
-          id: id
-          email: email
-          isForcedToEnableTwoFactorAuthentication: true
-          owner: true
-          is2FAEnabled: true
-          hasRepo: true
-          hasPaymentMethod: true
-          isForcedToResetPassword: true
-          isNewOrganization: true
-          lastLoginAt: lastLoginAt
-          isApprovedByPartner: true
-          organizations:
-            key:
-              role: role
-              organizationName: organizationName
-          account:
-            accountId: 0
-            domain: domain
-            name: name
-            logo: logo
-          isEmailNotificationEnabled: true
-          username: username
-          isEmailConfirmed: true
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: "#/components/schemas/UserForListDto"
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      required:
-      - data
-      - totalCount
       type: object
     UsersSearchCommand:
       example:

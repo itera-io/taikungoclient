@@ -20,8 +20,11 @@ var _ MappedNullable = &TwoFactorAuthVerifyCommand{}
 
 // TwoFactorAuthVerifyCommand struct for TwoFactorAuthVerifyCommand
 type TwoFactorAuthVerifyCommand struct {
-	VerificationCode NullableString `json:"verificationCode,omitempty"`
+	VerificationCode     NullableString `json:"verificationCode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _TwoFactorAuthVerifyCommand TwoFactorAuthVerifyCommand
 
 // NewTwoFactorAuthVerifyCommand instantiates a new TwoFactorAuthVerifyCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -72,6 +75,7 @@ func (o *TwoFactorAuthVerifyCommand) HasVerificationCode() bool {
 func (o *TwoFactorAuthVerifyCommand) SetVerificationCode(v string) {
 	o.VerificationCode.Set(&v)
 }
+
 // SetVerificationCodeNil sets the value for VerificationCode to be an explicit nil
 func (o *TwoFactorAuthVerifyCommand) SetVerificationCodeNil() {
 	o.VerificationCode.Set(nil)
@@ -83,7 +87,7 @@ func (o *TwoFactorAuthVerifyCommand) UnsetVerificationCode() {
 }
 
 func (o TwoFactorAuthVerifyCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -95,7 +99,33 @@ func (o TwoFactorAuthVerifyCommand) ToMap() (map[string]interface{}, error) {
 	if o.VerificationCode.IsSet() {
 		toSerialize["verificationCode"] = o.VerificationCode.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *TwoFactorAuthVerifyCommand) UnmarshalJSON(data []byte) (err error) {
+	varTwoFactorAuthVerifyCommand := _TwoFactorAuthVerifyCommand{}
+
+	err = json.Unmarshal(data, &varTwoFactorAuthVerifyCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TwoFactorAuthVerifyCommand(varTwoFactorAuthVerifyCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "verificationCode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableTwoFactorAuthVerifyCommand struct {
@@ -133,5 +163,3 @@ func (v *NullableTwoFactorAuthVerifyCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,11 +20,14 @@ var _ MappedNullable = &BridgeListCommand{}
 
 // BridgeListCommand struct for BridgeListCommand
 type BridgeListCommand struct {
-	Url NullableString `json:"url,omitempty"`
-	TokenId NullableString `json:"tokenId,omitempty"`
-	TokenSecret NullableString `json:"tokenSecret,omitempty"`
-	Hypervisor NullableString `json:"hypervisor,omitempty"`
+	Url                  NullableString `json:"url,omitempty"`
+	TokenId              NullableString `json:"tokenId,omitempty"`
+	TokenSecret          NullableString `json:"tokenSecret,omitempty"`
+	Hypervisor           NullableString `json:"hypervisor,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _BridgeListCommand BridgeListCommand
 
 // NewBridgeListCommand instantiates a new BridgeListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -75,6 +78,7 @@ func (o *BridgeListCommand) HasUrl() bool {
 func (o *BridgeListCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *BridgeListCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -117,6 +121,7 @@ func (o *BridgeListCommand) HasTokenId() bool {
 func (o *BridgeListCommand) SetTokenId(v string) {
 	o.TokenId.Set(&v)
 }
+
 // SetTokenIdNil sets the value for TokenId to be an explicit nil
 func (o *BridgeListCommand) SetTokenIdNil() {
 	o.TokenId.Set(nil)
@@ -159,6 +164,7 @@ func (o *BridgeListCommand) HasTokenSecret() bool {
 func (o *BridgeListCommand) SetTokenSecret(v string) {
 	o.TokenSecret.Set(&v)
 }
+
 // SetTokenSecretNil sets the value for TokenSecret to be an explicit nil
 func (o *BridgeListCommand) SetTokenSecretNil() {
 	o.TokenSecret.Set(nil)
@@ -201,6 +207,7 @@ func (o *BridgeListCommand) HasHypervisor() bool {
 func (o *BridgeListCommand) SetHypervisor(v string) {
 	o.Hypervisor.Set(&v)
 }
+
 // SetHypervisorNil sets the value for Hypervisor to be an explicit nil
 func (o *BridgeListCommand) SetHypervisorNil() {
 	o.Hypervisor.Set(nil)
@@ -212,7 +219,7 @@ func (o *BridgeListCommand) UnsetHypervisor() {
 }
 
 func (o BridgeListCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,7 +240,36 @@ func (o BridgeListCommand) ToMap() (map[string]interface{}, error) {
 	if o.Hypervisor.IsSet() {
 		toSerialize["hypervisor"] = o.Hypervisor.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *BridgeListCommand) UnmarshalJSON(data []byte) (err error) {
+	varBridgeListCommand := _BridgeListCommand{}
+
+	err = json.Unmarshal(data, &varBridgeListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BridgeListCommand(varBridgeListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "tokenId")
+		delete(additionalProperties, "tokenSecret")
+		delete(additionalProperties, "hypervisor")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableBridgeListCommand struct {
@@ -271,5 +307,3 @@ func (v *NullableBridgeListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

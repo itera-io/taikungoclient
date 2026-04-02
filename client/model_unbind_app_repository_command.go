@@ -20,9 +20,12 @@ var _ MappedNullable = &UnbindAppRepositoryCommand{}
 
 // UnbindAppRepositoryCommand struct for UnbindAppRepositoryCommand
 type UnbindAppRepositoryCommand struct {
-	Ids []string `json:"ids,omitempty"`
-	OrganizationId *int32 `json:"organizationId,omitempty"`
+	Ids                  []string `json:"ids,omitempty"`
+	OrganizationId       *int32   `json:"organizationId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UnbindAppRepositoryCommand UnbindAppRepositoryCommand
 
 // NewUnbindAppRepositoryCommand instantiates a new UnbindAppRepositoryCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -107,7 +110,7 @@ func (o *UnbindAppRepositoryCommand) SetOrganizationId(v int32) {
 }
 
 func (o UnbindAppRepositoryCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -122,7 +125,34 @@ func (o UnbindAppRepositoryCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UnbindAppRepositoryCommand) UnmarshalJSON(data []byte) (err error) {
+	varUnbindAppRepositoryCommand := _UnbindAppRepositoryCommand{}
+
+	err = json.Unmarshal(data, &varUnbindAppRepositoryCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UnbindAppRepositoryCommand(varUnbindAppRepositoryCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "ids")
+		delete(additionalProperties, "organizationId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUnbindAppRepositoryCommand struct {
@@ -160,5 +190,3 @@ func (v *NullableUnbindAppRepositoryCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

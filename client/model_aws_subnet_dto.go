@@ -20,12 +20,15 @@ var _ MappedNullable = &AwsSubnetDto{}
 
 // AwsSubnetDto struct for AwsSubnetDto
 type AwsSubnetDto struct {
-	SubnetId NullableString `json:"subnetId,omitempty"`
-	Zone NullableString `json:"zone,omitempty"`
-	State NullableString `json:"state,omitempty"`
-	HasIpv6 *bool `json:"hasIpv6,omitempty"`
-	Cidr NullableString `json:"cidr,omitempty"`
+	SubnetId             NullableString `json:"subnetId,omitempty"`
+	Zone                 NullableString `json:"zone,omitempty"`
+	State                NullableString `json:"state,omitempty"`
+	HasIpv6              *bool          `json:"hasIpv6,omitempty"`
+	Cidr                 NullableString `json:"cidr,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AwsSubnetDto AwsSubnetDto
 
 // NewAwsSubnetDto instantiates a new AwsSubnetDto object
 // This constructor will assign default values to properties that have it defined,
@@ -76,6 +79,7 @@ func (o *AwsSubnetDto) HasSubnetId() bool {
 func (o *AwsSubnetDto) SetSubnetId(v string) {
 	o.SubnetId.Set(&v)
 }
+
 // SetSubnetIdNil sets the value for SubnetId to be an explicit nil
 func (o *AwsSubnetDto) SetSubnetIdNil() {
 	o.SubnetId.Set(nil)
@@ -118,6 +122,7 @@ func (o *AwsSubnetDto) HasZone() bool {
 func (o *AwsSubnetDto) SetZone(v string) {
 	o.Zone.Set(&v)
 }
+
 // SetZoneNil sets the value for Zone to be an explicit nil
 func (o *AwsSubnetDto) SetZoneNil() {
 	o.Zone.Set(nil)
@@ -160,6 +165,7 @@ func (o *AwsSubnetDto) HasState() bool {
 func (o *AwsSubnetDto) SetState(v string) {
 	o.State.Set(&v)
 }
+
 // SetStateNil sets the value for State to be an explicit nil
 func (o *AwsSubnetDto) SetStateNil() {
 	o.State.Set(nil)
@@ -234,6 +240,7 @@ func (o *AwsSubnetDto) HasCidr() bool {
 func (o *AwsSubnetDto) SetCidr(v string) {
 	o.Cidr.Set(&v)
 }
+
 // SetCidrNil sets the value for Cidr to be an explicit nil
 func (o *AwsSubnetDto) SetCidrNil() {
 	o.Cidr.Set(nil)
@@ -245,7 +252,7 @@ func (o *AwsSubnetDto) UnsetCidr() {
 }
 
 func (o AwsSubnetDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -269,7 +276,37 @@ func (o AwsSubnetDto) ToMap() (map[string]interface{}, error) {
 	if o.Cidr.IsSet() {
 		toSerialize["cidr"] = o.Cidr.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AwsSubnetDto) UnmarshalJSON(data []byte) (err error) {
+	varAwsSubnetDto := _AwsSubnetDto{}
+
+	err = json.Unmarshal(data, &varAwsSubnetDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AwsSubnetDto(varAwsSubnetDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "subnetId")
+		delete(additionalProperties, "zone")
+		delete(additionalProperties, "state")
+		delete(additionalProperties, "hasIpv6")
+		delete(additionalProperties, "cidr")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAwsSubnetDto struct {
@@ -307,5 +344,3 @@ func (v *NullableAwsSubnetDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

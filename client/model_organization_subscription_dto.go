@@ -21,17 +21,20 @@ var _ MappedNullable = &OrganizationSubscriptionDto{}
 
 // OrganizationSubscriptionDto struct for OrganizationSubscriptionDto
 type OrganizationSubscriptionDto struct {
-	Id *int32 `json:"id,omitempty"`
-	OrganizationId *int32 `json:"organizationId,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	SubscriptionId *int32 `json:"subscriptionId,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	OrganizationId       *int32         `json:"organizationId,omitempty"`
+	OrganizationName     NullableString `json:"organizationName,omitempty"`
+	SubscriptionId       *int32         `json:"subscriptionId,omitempty"`
 	StripeSubscriptionId NullableString `json:"stripeSubscriptionId,omitempty"`
-	SubscriptionType NullableString `json:"subscriptionType,omitempty"`
-	SubscriptionName NullableString `json:"subscriptionName,omitempty"`
-	StartDate *time.Time `json:"startDate,omitempty"`
-	EndDate NullableTime `json:"endDate,omitempty"`
-	Invoices []InvoiceDto `json:"invoices,omitempty"`
+	SubscriptionType     NullableString `json:"subscriptionType,omitempty"`
+	SubscriptionName     NullableString `json:"subscriptionName,omitempty"`
+	StartDate            *time.Time     `json:"startDate,omitempty"`
+	EndDate              NullableTime   `json:"endDate,omitempty"`
+	Invoices             []InvoiceDto   `json:"invoices,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OrganizationSubscriptionDto OrganizationSubscriptionDto
 
 // NewOrganizationSubscriptionDto instantiates a new OrganizationSubscriptionDto object
 // This constructor will assign default values to properties that have it defined,
@@ -146,6 +149,7 @@ func (o *OrganizationSubscriptionDto) HasOrganizationName() bool {
 func (o *OrganizationSubscriptionDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
+
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *OrganizationSubscriptionDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -220,6 +224,7 @@ func (o *OrganizationSubscriptionDto) HasStripeSubscriptionId() bool {
 func (o *OrganizationSubscriptionDto) SetStripeSubscriptionId(v string) {
 	o.StripeSubscriptionId.Set(&v)
 }
+
 // SetStripeSubscriptionIdNil sets the value for StripeSubscriptionId to be an explicit nil
 func (o *OrganizationSubscriptionDto) SetStripeSubscriptionIdNil() {
 	o.StripeSubscriptionId.Set(nil)
@@ -262,6 +267,7 @@ func (o *OrganizationSubscriptionDto) HasSubscriptionType() bool {
 func (o *OrganizationSubscriptionDto) SetSubscriptionType(v string) {
 	o.SubscriptionType.Set(&v)
 }
+
 // SetSubscriptionTypeNil sets the value for SubscriptionType to be an explicit nil
 func (o *OrganizationSubscriptionDto) SetSubscriptionTypeNil() {
 	o.SubscriptionType.Set(nil)
@@ -304,6 +310,7 @@ func (o *OrganizationSubscriptionDto) HasSubscriptionName() bool {
 func (o *OrganizationSubscriptionDto) SetSubscriptionName(v string) {
 	o.SubscriptionName.Set(&v)
 }
+
 // SetSubscriptionNameNil sets the value for SubscriptionName to be an explicit nil
 func (o *OrganizationSubscriptionDto) SetSubscriptionNameNil() {
 	o.SubscriptionName.Set(nil)
@@ -378,6 +385,7 @@ func (o *OrganizationSubscriptionDto) HasEndDate() bool {
 func (o *OrganizationSubscriptionDto) SetEndDate(v time.Time) {
 	o.EndDate.Set(&v)
 }
+
 // SetEndDateNil sets the value for EndDate to be an explicit nil
 func (o *OrganizationSubscriptionDto) SetEndDateNil() {
 	o.EndDate.Set(nil)
@@ -422,7 +430,7 @@ func (o *OrganizationSubscriptionDto) SetInvoices(v []InvoiceDto) {
 }
 
 func (o OrganizationSubscriptionDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -461,7 +469,42 @@ func (o OrganizationSubscriptionDto) ToMap() (map[string]interface{}, error) {
 	if o.Invoices != nil {
 		toSerialize["invoices"] = o.Invoices
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OrganizationSubscriptionDto) UnmarshalJSON(data []byte) (err error) {
+	varOrganizationSubscriptionDto := _OrganizationSubscriptionDto{}
+
+	err = json.Unmarshal(data, &varOrganizationSubscriptionDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationSubscriptionDto(varOrganizationSubscriptionDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "subscriptionId")
+		delete(additionalProperties, "stripeSubscriptionId")
+		delete(additionalProperties, "subscriptionType")
+		delete(additionalProperties, "subscriptionName")
+		delete(additionalProperties, "startDate")
+		delete(additionalProperties, "endDate")
+		delete(additionalProperties, "invoices")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOrganizationSubscriptionDto struct {
@@ -499,5 +542,3 @@ func (v *NullableOrganizationSubscriptionDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

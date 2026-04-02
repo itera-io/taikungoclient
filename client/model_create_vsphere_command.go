@@ -20,23 +20,26 @@ var _ MappedNullable = &CreateVsphereCommand{}
 
 // CreateVsphereCommand struct for CreateVsphereCommand
 type CreateVsphereCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Url NullableString `json:"url,omitempty"`
-	Password NullableString `json:"password,omitempty"`
-	DatacenterId NullableString `json:"datacenterId,omitempty"`
-	DatacenterName NullableString `json:"datacenterName,omitempty"`
-	DatastoreName NullableString `json:"datastoreName,omitempty"`
-	ResourcePoolName NullableString `json:"resourcePoolName,omitempty"`
-	DrsEnabled *bool `json:"drsEnabled,omitempty"`
-	VmTemplateName NullableString `json:"vmTemplateName,omitempty"`
-	Continent NullableString `json:"continent,omitempty"`
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	Hypervisors []string `json:"hypervisors,omitempty"`
-	PublicNetwork *CreateVsphereNetworkDto `json:"publicNetwork,omitempty"`
-	PrivateNetwork *CreateVsphereNetworkDto `json:"privateNetwork,omitempty"`
-	SkipTlsFlag *bool `json:"skipTlsFlag,omitempty"`
+	Name                 NullableString           `json:"name,omitempty"`
+	Username             NullableString           `json:"username,omitempty"`
+	Url                  NullableString           `json:"url,omitempty"`
+	Password             NullableString           `json:"password,omitempty"`
+	DatacenterId         NullableString           `json:"datacenterId,omitempty"`
+	DatacenterName       NullableString           `json:"datacenterName,omitempty"`
+	DatastoreName        NullableString           `json:"datastoreName,omitempty"`
+	ResourcePoolName     NullableString           `json:"resourcePoolName,omitempty"`
+	DrsEnabled           *bool                    `json:"drsEnabled,omitempty"`
+	VmTemplateName       NullableString           `json:"vmTemplateName,omitempty"`
+	Continent            NullableString           `json:"continent,omitempty"`
+	OrganizationId       NullableInt32            `json:"organizationId,omitempty"`
+	Hypervisors          []string                 `json:"hypervisors,omitempty"`
+	PublicNetwork        *CreateVsphereNetworkDto `json:"publicNetwork,omitempty"`
+	PrivateNetwork       *CreateVsphereNetworkDto `json:"privateNetwork,omitempty"`
+	SkipTlsFlag          *bool                    `json:"skipTlsFlag,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateVsphereCommand CreateVsphereCommand
 
 // NewCreateVsphereCommand instantiates a new CreateVsphereCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -87,6 +90,7 @@ func (o *CreateVsphereCommand) HasName() bool {
 func (o *CreateVsphereCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateVsphereCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -129,6 +133,7 @@ func (o *CreateVsphereCommand) HasUsername() bool {
 func (o *CreateVsphereCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *CreateVsphereCommand) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -171,6 +176,7 @@ func (o *CreateVsphereCommand) HasUrl() bool {
 func (o *CreateVsphereCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *CreateVsphereCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -213,6 +219,7 @@ func (o *CreateVsphereCommand) HasPassword() bool {
 func (o *CreateVsphereCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *CreateVsphereCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -255,6 +262,7 @@ func (o *CreateVsphereCommand) HasDatacenterId() bool {
 func (o *CreateVsphereCommand) SetDatacenterId(v string) {
 	o.DatacenterId.Set(&v)
 }
+
 // SetDatacenterIdNil sets the value for DatacenterId to be an explicit nil
 func (o *CreateVsphereCommand) SetDatacenterIdNil() {
 	o.DatacenterId.Set(nil)
@@ -297,6 +305,7 @@ func (o *CreateVsphereCommand) HasDatacenterName() bool {
 func (o *CreateVsphereCommand) SetDatacenterName(v string) {
 	o.DatacenterName.Set(&v)
 }
+
 // SetDatacenterNameNil sets the value for DatacenterName to be an explicit nil
 func (o *CreateVsphereCommand) SetDatacenterNameNil() {
 	o.DatacenterName.Set(nil)
@@ -339,6 +348,7 @@ func (o *CreateVsphereCommand) HasDatastoreName() bool {
 func (o *CreateVsphereCommand) SetDatastoreName(v string) {
 	o.DatastoreName.Set(&v)
 }
+
 // SetDatastoreNameNil sets the value for DatastoreName to be an explicit nil
 func (o *CreateVsphereCommand) SetDatastoreNameNil() {
 	o.DatastoreName.Set(nil)
@@ -381,6 +391,7 @@ func (o *CreateVsphereCommand) HasResourcePoolName() bool {
 func (o *CreateVsphereCommand) SetResourcePoolName(v string) {
 	o.ResourcePoolName.Set(&v)
 }
+
 // SetResourcePoolNameNil sets the value for ResourcePoolName to be an explicit nil
 func (o *CreateVsphereCommand) SetResourcePoolNameNil() {
 	o.ResourcePoolName.Set(nil)
@@ -455,6 +466,7 @@ func (o *CreateVsphereCommand) HasVmTemplateName() bool {
 func (o *CreateVsphereCommand) SetVmTemplateName(v string) {
 	o.VmTemplateName.Set(&v)
 }
+
 // SetVmTemplateNameNil sets the value for VmTemplateName to be an explicit nil
 func (o *CreateVsphereCommand) SetVmTemplateNameNil() {
 	o.VmTemplateName.Set(nil)
@@ -497,6 +509,7 @@ func (o *CreateVsphereCommand) HasContinent() bool {
 func (o *CreateVsphereCommand) SetContinent(v string) {
 	o.Continent.Set(&v)
 }
+
 // SetContinentNil sets the value for Continent to be an explicit nil
 func (o *CreateVsphereCommand) SetContinentNil() {
 	o.Continent.Set(nil)
@@ -539,6 +552,7 @@ func (o *CreateVsphereCommand) HasOrganizationId() bool {
 func (o *CreateVsphereCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
+
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateVsphereCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -679,7 +693,7 @@ func (o *CreateVsphereCommand) SetSkipTlsFlag(v bool) {
 }
 
 func (o CreateVsphereCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -736,7 +750,48 @@ func (o CreateVsphereCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SkipTlsFlag) {
 		toSerialize["skipTlsFlag"] = o.SkipTlsFlag
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateVsphereCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateVsphereCommand := _CreateVsphereCommand{}
+
+	err = json.Unmarshal(data, &varCreateVsphereCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateVsphereCommand(varCreateVsphereCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "datacenterId")
+		delete(additionalProperties, "datacenterName")
+		delete(additionalProperties, "datastoreName")
+		delete(additionalProperties, "resourcePoolName")
+		delete(additionalProperties, "drsEnabled")
+		delete(additionalProperties, "vmTemplateName")
+		delete(additionalProperties, "continent")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "hypervisors")
+		delete(additionalProperties, "publicNetwork")
+		delete(additionalProperties, "privateNetwork")
+		delete(additionalProperties, "skipTlsFlag")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateVsphereCommand struct {
@@ -774,5 +829,3 @@ func (v *NullableCreateVsphereCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

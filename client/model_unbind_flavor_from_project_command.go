@@ -20,8 +20,11 @@ var _ MappedNullable = &UnbindFlavorFromProjectCommand{}
 
 // UnbindFlavorFromProjectCommand struct for UnbindFlavorFromProjectCommand
 type UnbindFlavorFromProjectCommand struct {
-	Ids []int32 `json:"ids,omitempty"`
+	Ids                  []int32 `json:"ids,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UnbindFlavorFromProjectCommand UnbindFlavorFromProjectCommand
 
 // NewUnbindFlavorFromProjectCommand instantiates a new UnbindFlavorFromProjectCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -74,7 +77,7 @@ func (o *UnbindFlavorFromProjectCommand) SetIds(v []int32) {
 }
 
 func (o UnbindFlavorFromProjectCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -86,7 +89,33 @@ func (o UnbindFlavorFromProjectCommand) ToMap() (map[string]interface{}, error) 
 	if o.Ids != nil {
 		toSerialize["ids"] = o.Ids
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UnbindFlavorFromProjectCommand) UnmarshalJSON(data []byte) (err error) {
+	varUnbindFlavorFromProjectCommand := _UnbindFlavorFromProjectCommand{}
+
+	err = json.Unmarshal(data, &varUnbindFlavorFromProjectCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UnbindFlavorFromProjectCommand(varUnbindFlavorFromProjectCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "ids")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUnbindFlavorFromProjectCommand struct {
@@ -124,5 +153,3 @@ func (v *NullableUnbindFlavorFromProjectCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

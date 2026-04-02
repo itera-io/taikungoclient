@@ -21,12 +21,15 @@ var _ MappedNullable = &EditRobotUserCommand{}
 
 // EditRobotUserCommand struct for EditRobotUserCommand
 type EditRobotUserCommand struct {
-	Id NullableString `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Description NullableString `json:"description,omitempty"`
-	ExpiresAt NullableTime `json:"expiresAt,omitempty"`
-	Ips []string `json:"ips,omitempty"`
+	Id                   NullableString `json:"id,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Description          NullableString `json:"description,omitempty"`
+	ExpiresAt            NullableTime   `json:"expiresAt,omitempty"`
+	Ips                  []string       `json:"ips,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EditRobotUserCommand EditRobotUserCommand
 
 // NewEditRobotUserCommand instantiates a new EditRobotUserCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +80,7 @@ func (o *EditRobotUserCommand) HasId() bool {
 func (o *EditRobotUserCommand) SetId(v string) {
 	o.Id.Set(&v)
 }
+
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *EditRobotUserCommand) SetIdNil() {
 	o.Id.Set(nil)
@@ -119,6 +123,7 @@ func (o *EditRobotUserCommand) HasName() bool {
 func (o *EditRobotUserCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *EditRobotUserCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -161,6 +166,7 @@ func (o *EditRobotUserCommand) HasDescription() bool {
 func (o *EditRobotUserCommand) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *EditRobotUserCommand) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -203,6 +209,7 @@ func (o *EditRobotUserCommand) HasExpiresAt() bool {
 func (o *EditRobotUserCommand) SetExpiresAt(v time.Time) {
 	o.ExpiresAt.Set(&v)
 }
+
 // SetExpiresAtNil sets the value for ExpiresAt to be an explicit nil
 func (o *EditRobotUserCommand) SetExpiresAtNil() {
 	o.ExpiresAt.Set(nil)
@@ -247,7 +254,7 @@ func (o *EditRobotUserCommand) SetIps(v []string) {
 }
 
 func (o EditRobotUserCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -271,7 +278,37 @@ func (o EditRobotUserCommand) ToMap() (map[string]interface{}, error) {
 	if o.Ips != nil {
 		toSerialize["ips"] = o.Ips
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EditRobotUserCommand) UnmarshalJSON(data []byte) (err error) {
+	varEditRobotUserCommand := _EditRobotUserCommand{}
+
+	err = json.Unmarshal(data, &varEditRobotUserCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EditRobotUserCommand(varEditRobotUserCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "expiresAt")
+		delete(additionalProperties, "ips")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEditRobotUserCommand struct {
@@ -309,5 +346,3 @@ func (v *NullableEditRobotUserCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

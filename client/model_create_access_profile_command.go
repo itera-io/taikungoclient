@@ -20,15 +20,18 @@ var _ MappedNullable = &CreateAccessProfileCommand{}
 
 // CreateAccessProfileCommand struct for CreateAccessProfileCommand
 type CreateAccessProfileCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	HttpProxy NullableString `json:"httpProxy,omitempty"`
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	SshUsers []SshUserCreateDto `json:"sshUsers,omitempty"`
-	DnsServers []DnsServerCreateDto `json:"dnsServers,omitempty"`
-	TrustedRegistries []TrustedRegisteredCreateDto `json:"trustedRegistries,omitempty"`
-	NtpServers []NtpServerCreateDto `json:"ntpServers,omitempty"`
-	AllowedHosts []AllowedHostCreateDto `json:"allowedHosts,omitempty"`
+	Name                 NullableString               `json:"name,omitempty"`
+	HttpProxy            NullableString               `json:"httpProxy,omitempty"`
+	OrganizationId       NullableInt32                `json:"organizationId,omitempty"`
+	SshUsers             []SshUserCreateDto           `json:"sshUsers,omitempty"`
+	DnsServers           []DnsServerCreateDto         `json:"dnsServers,omitempty"`
+	TrustedRegistries    []TrustedRegisteredCreateDto `json:"trustedRegistries,omitempty"`
+	NtpServers           []NtpServerCreateDto         `json:"ntpServers,omitempty"`
+	AllowedHosts         []AllowedHostCreateDto       `json:"allowedHosts,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateAccessProfileCommand CreateAccessProfileCommand
 
 // NewCreateAccessProfileCommand instantiates a new CreateAccessProfileCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -79,6 +82,7 @@ func (o *CreateAccessProfileCommand) HasName() bool {
 func (o *CreateAccessProfileCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateAccessProfileCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -121,6 +125,7 @@ func (o *CreateAccessProfileCommand) HasHttpProxy() bool {
 func (o *CreateAccessProfileCommand) SetHttpProxy(v string) {
 	o.HttpProxy.Set(&v)
 }
+
 // SetHttpProxyNil sets the value for HttpProxy to be an explicit nil
 func (o *CreateAccessProfileCommand) SetHttpProxyNil() {
 	o.HttpProxy.Set(nil)
@@ -163,6 +168,7 @@ func (o *CreateAccessProfileCommand) HasOrganizationId() bool {
 func (o *CreateAccessProfileCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
+
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateAccessProfileCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -339,7 +345,7 @@ func (o *CreateAccessProfileCommand) SetAllowedHosts(v []AllowedHostCreateDto) {
 }
 
 func (o CreateAccessProfileCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -372,7 +378,40 @@ func (o CreateAccessProfileCommand) ToMap() (map[string]interface{}, error) {
 	if o.AllowedHosts != nil {
 		toSerialize["allowedHosts"] = o.AllowedHosts
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateAccessProfileCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateAccessProfileCommand := _CreateAccessProfileCommand{}
+
+	err = json.Unmarshal(data, &varCreateAccessProfileCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateAccessProfileCommand(varCreateAccessProfileCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "httpProxy")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "sshUsers")
+		delete(additionalProperties, "dnsServers")
+		delete(additionalProperties, "trustedRegistries")
+		delete(additionalProperties, "ntpServers")
+		delete(additionalProperties, "allowedHosts")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateAccessProfileCommand struct {
@@ -410,5 +449,3 @@ func (v *NullableCreateAccessProfileCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

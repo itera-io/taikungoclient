@@ -20,14 +20,16 @@ var _ MappedNullable = &UpdateUserCommand{}
 
 // UpdateUserCommand struct for UpdateUserCommand
 type UpdateUserCommand struct {
-	Id NullableString `json:"id,omitempty"`
-	DisplayName NullableString `json:"displayName,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Email NullableString `json:"email,omitempty"`
-	ForceToResetPassword *bool `json:"forceToResetPassword,omitempty"`
-	Disable *bool `json:"disable,omitempty"`
-	IsApprovedByPartner *bool `json:"isApprovedByPartner,omitempty"`
+	Id                   NullableString `json:"id,omitempty"`
+	DisplayName          NullableString `json:"displayName,omitempty"`
+	Username             NullableString `json:"username,omitempty"`
+	Email                NullableString `json:"email,omitempty"`
+	ForceToResetPassword *bool          `json:"forceToResetPassword,omitempty"`
+	Disable              *bool          `json:"disable,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateUserCommand UpdateUserCommand
 
 // NewUpdateUserCommand instantiates a new UpdateUserCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -78,6 +80,7 @@ func (o *UpdateUserCommand) HasId() bool {
 func (o *UpdateUserCommand) SetId(v string) {
 	o.Id.Set(&v)
 }
+
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *UpdateUserCommand) SetIdNil() {
 	o.Id.Set(nil)
@@ -120,6 +123,7 @@ func (o *UpdateUserCommand) HasDisplayName() bool {
 func (o *UpdateUserCommand) SetDisplayName(v string) {
 	o.DisplayName.Set(&v)
 }
+
 // SetDisplayNameNil sets the value for DisplayName to be an explicit nil
 func (o *UpdateUserCommand) SetDisplayNameNil() {
 	o.DisplayName.Set(nil)
@@ -162,6 +166,7 @@ func (o *UpdateUserCommand) HasUsername() bool {
 func (o *UpdateUserCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *UpdateUserCommand) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -204,6 +209,7 @@ func (o *UpdateUserCommand) HasEmail() bool {
 func (o *UpdateUserCommand) SetEmail(v string) {
 	o.Email.Set(&v)
 }
+
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *UpdateUserCommand) SetEmailNil() {
 	o.Email.Set(nil)
@@ -278,40 +284,8 @@ func (o *UpdateUserCommand) SetDisable(v bool) {
 	o.Disable = &v
 }
 
-// GetIsApprovedByPartner returns the IsApprovedByPartner field value if set, zero value otherwise.
-func (o *UpdateUserCommand) GetIsApprovedByPartner() bool {
-	if o == nil || IsNil(o.IsApprovedByPartner) {
-		var ret bool
-		return ret
-	}
-	return *o.IsApprovedByPartner
-}
-
-// GetIsApprovedByPartnerOk returns a tuple with the IsApprovedByPartner field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateUserCommand) GetIsApprovedByPartnerOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsApprovedByPartner) {
-		return nil, false
-	}
-	return o.IsApprovedByPartner, true
-}
-
-// HasIsApprovedByPartner returns a boolean if a field has been set.
-func (o *UpdateUserCommand) HasIsApprovedByPartner() bool {
-	if o != nil && !IsNil(o.IsApprovedByPartner) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsApprovedByPartner gets a reference to the given bool and assigns it to the IsApprovedByPartner field.
-func (o *UpdateUserCommand) SetIsApprovedByPartner(v bool) {
-	o.IsApprovedByPartner = &v
-}
-
 func (o UpdateUserCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -338,10 +312,38 @@ func (o UpdateUserCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable
 	}
-	if !IsNil(o.IsApprovedByPartner) {
-		toSerialize["isApprovedByPartner"] = o.IsApprovedByPartner
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
 	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateUserCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateUserCommand := _UpdateUserCommand{}
+
+	err = json.Unmarshal(data, &varUpdateUserCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateUserCommand(varUpdateUserCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "displayName")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "forceToResetPassword")
+		delete(additionalProperties, "disable")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateUserCommand struct {
@@ -379,5 +381,3 @@ func (v *NullableUpdateUserCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

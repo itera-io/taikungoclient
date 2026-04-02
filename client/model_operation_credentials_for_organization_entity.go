@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,9 +21,10 @@ var _ MappedNullable = &OperationCredentialsForOrganizationEntity{}
 
 // OperationCredentialsForOrganizationEntity struct for OperationCredentialsForOrganizationEntity
 type OperationCredentialsForOrganizationEntity struct {
-	OperationCredentialId NullableInt32 `json:"operationCredentialId"`
-	Name NullableString `json:"name"`
-	IsDefault bool `json:"isDefault"`
+	OperationCredentialId NullableInt32  `json:"operationCredentialId"`
+	Name                  NullableString `json:"name"`
+	IsDefault             bool           `json:"isDefault"`
+	AdditionalProperties  map[string]interface{}
 }
 
 type _OperationCredentialsForOrganizationEntity OperationCredentialsForOrganizationEntity
@@ -126,7 +126,7 @@ func (o *OperationCredentialsForOrganizationEntity) SetIsDefault(v bool) {
 }
 
 func (o OperationCredentialsForOrganizationEntity) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -138,6 +138,11 @@ func (o OperationCredentialsForOrganizationEntity) ToMap() (map[string]interface
 	toSerialize["operationCredentialId"] = o.OperationCredentialId.Get()
 	toSerialize["name"] = o.Name.Get()
 	toSerialize["isDefault"] = o.IsDefault
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -156,10 +161,10 @@ func (o *OperationCredentialsForOrganizationEntity) UnmarshalJSON(data []byte) (
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -167,15 +172,22 @@ func (o *OperationCredentialsForOrganizationEntity) UnmarshalJSON(data []byte) (
 
 	varOperationCredentialsForOrganizationEntity := _OperationCredentialsForOrganizationEntity{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOperationCredentialsForOrganizationEntity)
+	err = json.Unmarshal(data, &varOperationCredentialsForOrganizationEntity)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OperationCredentialsForOrganizationEntity(varOperationCredentialsForOrganizationEntity)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "operationCredentialId")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "isDefault")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -215,5 +227,3 @@ func (v *NullableOperationCredentialsForOrganizationEntity) UnmarshalJSON(src []
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

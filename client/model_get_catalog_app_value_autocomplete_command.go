@@ -20,11 +20,14 @@ var _ MappedNullable = &GetCatalogAppValueAutocompleteCommand{}
 
 // GetCatalogAppValueAutocompleteCommand struct for GetCatalogAppValueAutocompleteCommand
 type GetCatalogAppValueAutocompleteCommand struct {
-	PackageId NullableString `json:"packageId,omitempty"`
-	Version NullableString `json:"version,omitempty"`
-	CatalogAppId NullableInt32 `json:"catalogAppId,omitempty"`
-	IsQuestion NullableBool `json:"isQuestion,omitempty"`
+	PackageId            NullableString `json:"packageId,omitempty"`
+	Version              NullableString `json:"version,omitempty"`
+	CatalogAppId         NullableInt32  `json:"catalogAppId,omitempty"`
+	IsQuestion           NullableBool   `json:"isQuestion,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _GetCatalogAppValueAutocompleteCommand GetCatalogAppValueAutocompleteCommand
 
 // NewGetCatalogAppValueAutocompleteCommand instantiates a new GetCatalogAppValueAutocompleteCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -75,6 +78,7 @@ func (o *GetCatalogAppValueAutocompleteCommand) HasPackageId() bool {
 func (o *GetCatalogAppValueAutocompleteCommand) SetPackageId(v string) {
 	o.PackageId.Set(&v)
 }
+
 // SetPackageIdNil sets the value for PackageId to be an explicit nil
 func (o *GetCatalogAppValueAutocompleteCommand) SetPackageIdNil() {
 	o.PackageId.Set(nil)
@@ -117,6 +121,7 @@ func (o *GetCatalogAppValueAutocompleteCommand) HasVersion() bool {
 func (o *GetCatalogAppValueAutocompleteCommand) SetVersion(v string) {
 	o.Version.Set(&v)
 }
+
 // SetVersionNil sets the value for Version to be an explicit nil
 func (o *GetCatalogAppValueAutocompleteCommand) SetVersionNil() {
 	o.Version.Set(nil)
@@ -159,6 +164,7 @@ func (o *GetCatalogAppValueAutocompleteCommand) HasCatalogAppId() bool {
 func (o *GetCatalogAppValueAutocompleteCommand) SetCatalogAppId(v int32) {
 	o.CatalogAppId.Set(&v)
 }
+
 // SetCatalogAppIdNil sets the value for CatalogAppId to be an explicit nil
 func (o *GetCatalogAppValueAutocompleteCommand) SetCatalogAppIdNil() {
 	o.CatalogAppId.Set(nil)
@@ -201,6 +207,7 @@ func (o *GetCatalogAppValueAutocompleteCommand) HasIsQuestion() bool {
 func (o *GetCatalogAppValueAutocompleteCommand) SetIsQuestion(v bool) {
 	o.IsQuestion.Set(&v)
 }
+
 // SetIsQuestionNil sets the value for IsQuestion to be an explicit nil
 func (o *GetCatalogAppValueAutocompleteCommand) SetIsQuestionNil() {
 	o.IsQuestion.Set(nil)
@@ -212,7 +219,7 @@ func (o *GetCatalogAppValueAutocompleteCommand) UnsetIsQuestion() {
 }
 
 func (o GetCatalogAppValueAutocompleteCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,7 +240,36 @@ func (o GetCatalogAppValueAutocompleteCommand) ToMap() (map[string]interface{}, 
 	if o.IsQuestion.IsSet() {
 		toSerialize["isQuestion"] = o.IsQuestion.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *GetCatalogAppValueAutocompleteCommand) UnmarshalJSON(data []byte) (err error) {
+	varGetCatalogAppValueAutocompleteCommand := _GetCatalogAppValueAutocompleteCommand{}
+
+	err = json.Unmarshal(data, &varGetCatalogAppValueAutocompleteCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GetCatalogAppValueAutocompleteCommand(varGetCatalogAppValueAutocompleteCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "packageId")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "catalogAppId")
+		delete(additionalProperties, "isQuestion")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableGetCatalogAppValueAutocompleteCommand struct {
@@ -271,5 +307,3 @@ func (v *NullableGetCatalogAppValueAutocompleteCommand) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

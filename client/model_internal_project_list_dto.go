@@ -20,22 +20,25 @@ var _ MappedNullable = &InternalProjectListDto{}
 
 // InternalProjectListDto struct for InternalProjectListDto
 type InternalProjectListDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Token NullableString `json:"token,omitempty"`
-	Status *int32 `json:"status,omitempty"`
-	OrganizationId *int32 `json:"organizationId,omitempty"`
-	Health *int32 `json:"health,omitempty"`
-	ImportClusterType *int32 `json:"importClusterType,omitempty"`
-	KubernetesVersion NullableString `json:"kubernetesVersion,omitempty"`
-	AccessIp NullableString `json:"accessIp,omitempty"`
-	IsMonitoringEnabled *bool `json:"isMonitoringEnabled,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Password NullableString `json:"password,omitempty"`
-	PrometheusUrl NullableString `json:"prometheusUrl,omitempty"`
-	AlertManagerUrl NullableString `json:"alertManagerUrl,omitempty"`
-	LokiUrl NullableString `json:"lokiUrl,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Name                 *string        `json:"name,omitempty"`
+	Token                NullableString `json:"token,omitempty"`
+	Status               *int32         `json:"status,omitempty"`
+	OrganizationId       *int32         `json:"organizationId,omitempty"`
+	Health               *int32         `json:"health,omitempty"`
+	ImportClusterType    *int32         `json:"importClusterType,omitempty"`
+	KubernetesVersion    NullableString `json:"kubernetesVersion,omitempty"`
+	AccessIp             NullableString `json:"accessIp,omitempty"`
+	IsMonitoringEnabled  *bool          `json:"isMonitoringEnabled,omitempty"`
+	Username             NullableString `json:"username,omitempty"`
+	Password             NullableString `json:"password,omitempty"`
+	PrometheusUrl        NullableString `json:"prometheusUrl,omitempty"`
+	AlertManagerUrl      NullableString `json:"alertManagerUrl,omitempty"`
+	LokiUrl              NullableString `json:"lokiUrl,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _InternalProjectListDto InternalProjectListDto
 
 // NewInternalProjectListDto instantiates a new InternalProjectListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -150,6 +153,7 @@ func (o *InternalProjectListDto) HasToken() bool {
 func (o *InternalProjectListDto) SetToken(v string) {
 	o.Token.Set(&v)
 }
+
 // SetTokenNil sets the value for Token to be an explicit nil
 func (o *InternalProjectListDto) SetTokenNil() {
 	o.Token.Set(nil)
@@ -320,6 +324,7 @@ func (o *InternalProjectListDto) HasKubernetesVersion() bool {
 func (o *InternalProjectListDto) SetKubernetesVersion(v string) {
 	o.KubernetesVersion.Set(&v)
 }
+
 // SetKubernetesVersionNil sets the value for KubernetesVersion to be an explicit nil
 func (o *InternalProjectListDto) SetKubernetesVersionNil() {
 	o.KubernetesVersion.Set(nil)
@@ -362,6 +367,7 @@ func (o *InternalProjectListDto) HasAccessIp() bool {
 func (o *InternalProjectListDto) SetAccessIp(v string) {
 	o.AccessIp.Set(&v)
 }
+
 // SetAccessIpNil sets the value for AccessIp to be an explicit nil
 func (o *InternalProjectListDto) SetAccessIpNil() {
 	o.AccessIp.Set(nil)
@@ -436,6 +442,7 @@ func (o *InternalProjectListDto) HasUsername() bool {
 func (o *InternalProjectListDto) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *InternalProjectListDto) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -478,6 +485,7 @@ func (o *InternalProjectListDto) HasPassword() bool {
 func (o *InternalProjectListDto) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *InternalProjectListDto) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -520,6 +528,7 @@ func (o *InternalProjectListDto) HasPrometheusUrl() bool {
 func (o *InternalProjectListDto) SetPrometheusUrl(v string) {
 	o.PrometheusUrl.Set(&v)
 }
+
 // SetPrometheusUrlNil sets the value for PrometheusUrl to be an explicit nil
 func (o *InternalProjectListDto) SetPrometheusUrlNil() {
 	o.PrometheusUrl.Set(nil)
@@ -562,6 +571,7 @@ func (o *InternalProjectListDto) HasAlertManagerUrl() bool {
 func (o *InternalProjectListDto) SetAlertManagerUrl(v string) {
 	o.AlertManagerUrl.Set(&v)
 }
+
 // SetAlertManagerUrlNil sets the value for AlertManagerUrl to be an explicit nil
 func (o *InternalProjectListDto) SetAlertManagerUrlNil() {
 	o.AlertManagerUrl.Set(nil)
@@ -604,6 +614,7 @@ func (o *InternalProjectListDto) HasLokiUrl() bool {
 func (o *InternalProjectListDto) SetLokiUrl(v string) {
 	o.LokiUrl.Set(&v)
 }
+
 // SetLokiUrlNil sets the value for LokiUrl to be an explicit nil
 func (o *InternalProjectListDto) SetLokiUrlNil() {
 	o.LokiUrl.Set(nil)
@@ -615,7 +626,7 @@ func (o *InternalProjectListDto) UnsetLokiUrl() {
 }
 
 func (o InternalProjectListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -669,7 +680,47 @@ func (o InternalProjectListDto) ToMap() (map[string]interface{}, error) {
 	if o.LokiUrl.IsSet() {
 		toSerialize["lokiUrl"] = o.LokiUrl.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *InternalProjectListDto) UnmarshalJSON(data []byte) (err error) {
+	varInternalProjectListDto := _InternalProjectListDto{}
+
+	err = json.Unmarshal(data, &varInternalProjectListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InternalProjectListDto(varInternalProjectListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "health")
+		delete(additionalProperties, "importClusterType")
+		delete(additionalProperties, "kubernetesVersion")
+		delete(additionalProperties, "accessIp")
+		delete(additionalProperties, "isMonitoringEnabled")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "prometheusUrl")
+		delete(additionalProperties, "alertManagerUrl")
+		delete(additionalProperties, "lokiUrl")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableInternalProjectListDto struct {
@@ -707,5 +758,3 @@ func (v *NullableInternalProjectListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

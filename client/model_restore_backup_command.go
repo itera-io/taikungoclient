@@ -20,12 +20,15 @@ var _ MappedNullable = &RestoreBackupCommand{}
 
 // RestoreBackupCommand struct for RestoreBackupCommand
 type RestoreBackupCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	BackupName NullableString `json:"backupName,omitempty"`
-	RestoreName NullableString `json:"restoreName,omitempty"`
-	IncludeNamespaces []string `json:"includeNamespaces,omitempty"`
-	ExcludeNamespaces []string `json:"excludeNamespaces,omitempty"`
+	ProjectId            *int32         `json:"projectId,omitempty"`
+	BackupName           NullableString `json:"backupName,omitempty"`
+	RestoreName          NullableString `json:"restoreName,omitempty"`
+	IncludeNamespaces    []string       `json:"includeNamespaces,omitempty"`
+	ExcludeNamespaces    []string       `json:"excludeNamespaces,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _RestoreBackupCommand RestoreBackupCommand
 
 // NewRestoreBackupCommand instantiates a new RestoreBackupCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -108,6 +111,7 @@ func (o *RestoreBackupCommand) HasBackupName() bool {
 func (o *RestoreBackupCommand) SetBackupName(v string) {
 	o.BackupName.Set(&v)
 }
+
 // SetBackupNameNil sets the value for BackupName to be an explicit nil
 func (o *RestoreBackupCommand) SetBackupNameNil() {
 	o.BackupName.Set(nil)
@@ -150,6 +154,7 @@ func (o *RestoreBackupCommand) HasRestoreName() bool {
 func (o *RestoreBackupCommand) SetRestoreName(v string) {
 	o.RestoreName.Set(&v)
 }
+
 // SetRestoreNameNil sets the value for RestoreName to be an explicit nil
 func (o *RestoreBackupCommand) SetRestoreNameNil() {
 	o.RestoreName.Set(nil)
@@ -227,7 +232,7 @@ func (o *RestoreBackupCommand) SetExcludeNamespaces(v []string) {
 }
 
 func (o RestoreBackupCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -251,7 +256,37 @@ func (o RestoreBackupCommand) ToMap() (map[string]interface{}, error) {
 	if o.ExcludeNamespaces != nil {
 		toSerialize["excludeNamespaces"] = o.ExcludeNamespaces
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *RestoreBackupCommand) UnmarshalJSON(data []byte) (err error) {
+	varRestoreBackupCommand := _RestoreBackupCommand{}
+
+	err = json.Unmarshal(data, &varRestoreBackupCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RestoreBackupCommand(varRestoreBackupCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "backupName")
+		delete(additionalProperties, "restoreName")
+		delete(additionalProperties, "includeNamespaces")
+		delete(additionalProperties, "excludeNamespaces")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableRestoreBackupCommand struct {
@@ -289,5 +324,3 @@ func (v *NullableRestoreBackupCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,11 +20,14 @@ var _ MappedNullable = &AzureLocationsCommand{}
 
 // AzureLocationsCommand struct for AzureLocationsCommand
 type AzureLocationsCommand struct {
-	AzureSubscriptionId NullableString `json:"azureSubscriptionId,omitempty"`
-	AzureClientId NullableString `json:"azureClientId,omitempty"`
-	AzureClientSecret NullableString `json:"azureClientSecret,omitempty"`
-	AzureTenantId NullableString `json:"azureTenantId,omitempty"`
+	AzureSubscriptionId  NullableString `json:"azureSubscriptionId,omitempty"`
+	AzureClientId        NullableString `json:"azureClientId,omitempty"`
+	AzureClientSecret    NullableString `json:"azureClientSecret,omitempty"`
+	AzureTenantId        NullableString `json:"azureTenantId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AzureLocationsCommand AzureLocationsCommand
 
 // NewAzureLocationsCommand instantiates a new AzureLocationsCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -75,6 +78,7 @@ func (o *AzureLocationsCommand) HasAzureSubscriptionId() bool {
 func (o *AzureLocationsCommand) SetAzureSubscriptionId(v string) {
 	o.AzureSubscriptionId.Set(&v)
 }
+
 // SetAzureSubscriptionIdNil sets the value for AzureSubscriptionId to be an explicit nil
 func (o *AzureLocationsCommand) SetAzureSubscriptionIdNil() {
 	o.AzureSubscriptionId.Set(nil)
@@ -117,6 +121,7 @@ func (o *AzureLocationsCommand) HasAzureClientId() bool {
 func (o *AzureLocationsCommand) SetAzureClientId(v string) {
 	o.AzureClientId.Set(&v)
 }
+
 // SetAzureClientIdNil sets the value for AzureClientId to be an explicit nil
 func (o *AzureLocationsCommand) SetAzureClientIdNil() {
 	o.AzureClientId.Set(nil)
@@ -159,6 +164,7 @@ func (o *AzureLocationsCommand) HasAzureClientSecret() bool {
 func (o *AzureLocationsCommand) SetAzureClientSecret(v string) {
 	o.AzureClientSecret.Set(&v)
 }
+
 // SetAzureClientSecretNil sets the value for AzureClientSecret to be an explicit nil
 func (o *AzureLocationsCommand) SetAzureClientSecretNil() {
 	o.AzureClientSecret.Set(nil)
@@ -201,6 +207,7 @@ func (o *AzureLocationsCommand) HasAzureTenantId() bool {
 func (o *AzureLocationsCommand) SetAzureTenantId(v string) {
 	o.AzureTenantId.Set(&v)
 }
+
 // SetAzureTenantIdNil sets the value for AzureTenantId to be an explicit nil
 func (o *AzureLocationsCommand) SetAzureTenantIdNil() {
 	o.AzureTenantId.Set(nil)
@@ -212,7 +219,7 @@ func (o *AzureLocationsCommand) UnsetAzureTenantId() {
 }
 
 func (o AzureLocationsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,7 +240,36 @@ func (o AzureLocationsCommand) ToMap() (map[string]interface{}, error) {
 	if o.AzureTenantId.IsSet() {
 		toSerialize["azureTenantId"] = o.AzureTenantId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AzureLocationsCommand) UnmarshalJSON(data []byte) (err error) {
+	varAzureLocationsCommand := _AzureLocationsCommand{}
+
+	err = json.Unmarshal(data, &varAzureLocationsCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AzureLocationsCommand(varAzureLocationsCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "azureSubscriptionId")
+		delete(additionalProperties, "azureClientId")
+		delete(additionalProperties, "azureClientSecret")
+		delete(additionalProperties, "azureTenantId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAzureLocationsCommand struct {
@@ -271,5 +307,3 @@ func (v *NullableAzureLocationsCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

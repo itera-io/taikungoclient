@@ -20,9 +20,12 @@ var _ MappedNullable = &BackupLockManagerCommand{}
 
 // BackupLockManagerCommand struct for BackupLockManagerCommand
 type BackupLockManagerCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Mode NullableString `json:"mode,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Mode                 NullableString `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _BackupLockManagerCommand BackupLockManagerCommand
 
 // NewBackupLockManagerCommand instantiates a new BackupLockManagerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,7 @@ func (o *BackupLockManagerCommand) HasMode() bool {
 func (o *BackupLockManagerCommand) SetMode(v string) {
 	o.Mode.Set(&v)
 }
+
 // SetModeNil sets the value for Mode to be an explicit nil
 func (o *BackupLockManagerCommand) SetModeNil() {
 	o.Mode.Set(nil)
@@ -116,7 +120,7 @@ func (o *BackupLockManagerCommand) UnsetMode() {
 }
 
 func (o BackupLockManagerCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o BackupLockManagerCommand) ToMap() (map[string]interface{}, error) {
 	if o.Mode.IsSet() {
 		toSerialize["mode"] = o.Mode.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *BackupLockManagerCommand) UnmarshalJSON(data []byte) (err error) {
+	varBackupLockManagerCommand := _BackupLockManagerCommand{}
+
+	err = json.Unmarshal(data, &varBackupLockManagerCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BackupLockManagerCommand(varBackupLockManagerCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableBackupLockManagerCommand struct {
@@ -169,5 +200,3 @@ func (v *NullableBackupLockManagerCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,10 +21,11 @@ var _ MappedNullable = &PrometheusOrganizationDiscountDto{}
 
 // PrometheusOrganizationDiscountDto struct for PrometheusOrganizationDiscountDto
 type PrometheusOrganizationDiscountDto struct {
-	Id int32 `json:"id"`
-	Name string `json:"name"`
-	RuleDiscountRate float64 `json:"ruleDiscountRate"`
-	GlobalDiscountRate float64 `json:"globalDiscountRate"`
+	Id                   int32   `json:"id"`
+	Name                 string  `json:"name"`
+	RuleDiscountRate     float64 `json:"ruleDiscountRate"`
+	GlobalDiscountRate   float64 `json:"globalDiscountRate"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PrometheusOrganizationDiscountDto PrometheusOrganizationDiscountDto
@@ -148,7 +148,7 @@ func (o *PrometheusOrganizationDiscountDto) SetGlobalDiscountRate(v float64) {
 }
 
 func (o PrometheusOrganizationDiscountDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -161,6 +161,11 @@ func (o PrometheusOrganizationDiscountDto) ToMap() (map[string]interface{}, erro
 	toSerialize["name"] = o.Name
 	toSerialize["ruleDiscountRate"] = o.RuleDiscountRate
 	toSerialize["globalDiscountRate"] = o.GlobalDiscountRate
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -180,10 +185,10 @@ func (o *PrometheusOrganizationDiscountDto) UnmarshalJSON(data []byte) (err erro
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -191,15 +196,23 @@ func (o *PrometheusOrganizationDiscountDto) UnmarshalJSON(data []byte) (err erro
 
 	varPrometheusOrganizationDiscountDto := _PrometheusOrganizationDiscountDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPrometheusOrganizationDiscountDto)
+	err = json.Unmarshal(data, &varPrometheusOrganizationDiscountDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PrometheusOrganizationDiscountDto(varPrometheusOrganizationDiscountDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "ruleDiscountRate")
+		delete(additionalProperties, "globalDiscountRate")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -239,5 +252,3 @@ func (v *NullablePrometheusOrganizationDiscountDto) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

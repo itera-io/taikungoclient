@@ -20,9 +20,12 @@ var _ MappedNullable = &KubernetesProfilesLockManagerCommand{}
 
 // KubernetesProfilesLockManagerCommand struct for KubernetesProfilesLockManagerCommand
 type KubernetesProfilesLockManagerCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Mode NullableString `json:"mode,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Mode                 NullableString `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _KubernetesProfilesLockManagerCommand KubernetesProfilesLockManagerCommand
 
 // NewKubernetesProfilesLockManagerCommand instantiates a new KubernetesProfilesLockManagerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,7 @@ func (o *KubernetesProfilesLockManagerCommand) HasMode() bool {
 func (o *KubernetesProfilesLockManagerCommand) SetMode(v string) {
 	o.Mode.Set(&v)
 }
+
 // SetModeNil sets the value for Mode to be an explicit nil
 func (o *KubernetesProfilesLockManagerCommand) SetModeNil() {
 	o.Mode.Set(nil)
@@ -116,7 +120,7 @@ func (o *KubernetesProfilesLockManagerCommand) UnsetMode() {
 }
 
 func (o KubernetesProfilesLockManagerCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o KubernetesProfilesLockManagerCommand) ToMap() (map[string]interface{}, e
 	if o.Mode.IsSet() {
 		toSerialize["mode"] = o.Mode.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *KubernetesProfilesLockManagerCommand) UnmarshalJSON(data []byte) (err error) {
+	varKubernetesProfilesLockManagerCommand := _KubernetesProfilesLockManagerCommand{}
+
+	err = json.Unmarshal(data, &varKubernetesProfilesLockManagerCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubernetesProfilesLockManagerCommand(varKubernetesProfilesLockManagerCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableKubernetesProfilesLockManagerCommand struct {
@@ -169,5 +200,3 @@ func (v *NullableKubernetesProfilesLockManagerCommand) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

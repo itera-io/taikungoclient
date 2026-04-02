@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,30 +21,31 @@ var _ MappedNullable = &VsphereListDto{}
 
 // VsphereListDto struct for VsphereListDto
 type VsphereListDto struct {
-	Id int32 `json:"id"`
-	ProjectCount int32 `json:"projectCount"`
-	IsLocked bool `json:"isLocked"`
-	Name string `json:"name"`
-	Projects []CommonDropdownDto `json:"projects"`
-	CreatedBy string `json:"createdBy"`
-	CreatedAt string `json:"createdAt"`
-	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
-	IsDefault bool `json:"isDefault"`
-	DrsEnabled bool `json:"drsEnabled"`
-	ResourcePool string `json:"resourcePool"`
-	OrganizationId int32 `json:"organizationId"`
-	OrganizationName string `json:"organizationName"`
-	ContinentName NullableString `json:"continentName"`
-	Hypervisors []CommonStringBasedDropdownDto `json:"hypervisors"`
-	Username string `json:"username"`
-	Url string `json:"url"`
-	DatacenterId string `json:"datacenterId"`
-	DatacenterName string `json:"datacenterName"`
-	Datastore string `json:"datastore"`
-	VmTemplateName string `json:"vmTemplateName"`
-	VsphereNetworks []VsphereNetworkListDto `json:"vsphereNetworks"`
-	SkipTlsFlag bool `json:"skipTlsFlag"`
+	Id                   int32                          `json:"id"`
+	ProjectCount         int32                          `json:"projectCount"`
+	IsLocked             bool                           `json:"isLocked"`
+	Name                 string                         `json:"name"`
+	Projects             []CommonDropdownDto            `json:"projects"`
+	CreatedBy            string                         `json:"createdBy"`
+	CreatedAt            string                         `json:"createdAt"`
+	LastModified         NullableString                 `json:"lastModified"`
+	LastModifiedBy       NullableString                 `json:"lastModifiedBy"`
+	IsDefault            bool                           `json:"isDefault"`
+	DrsEnabled           bool                           `json:"drsEnabled"`
+	ResourcePool         string                         `json:"resourcePool"`
+	OrganizationId       int32                          `json:"organizationId"`
+	OrganizationName     string                         `json:"organizationName"`
+	ContinentName        NullableString                 `json:"continentName"`
+	Hypervisors          []CommonStringBasedDropdownDto `json:"hypervisors"`
+	Username             string                         `json:"username"`
+	Url                  string                         `json:"url"`
+	DatacenterId         string                         `json:"datacenterId"`
+	DatacenterName       string                         `json:"datacenterName"`
+	Datastore            string                         `json:"datastore"`
+	VmTemplateName       string                         `json:"vmTemplateName"`
+	VsphereNetworks      []VsphereNetworkListDto        `json:"vsphereNetworks"`
+	SkipTlsFlag          bool                           `json:"skipTlsFlag"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _VsphereListDto VsphereListDto
@@ -674,7 +674,7 @@ func (o *VsphereListDto) SetSkipTlsFlag(v bool) {
 }
 
 func (o VsphereListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -707,6 +707,11 @@ func (o VsphereListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["vmTemplateName"] = o.VmTemplateName
 	toSerialize["vsphereNetworks"] = o.VsphereNetworks
 	toSerialize["skipTlsFlag"] = o.SkipTlsFlag
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -746,10 +751,10 @@ func (o *VsphereListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -757,15 +762,43 @@ func (o *VsphereListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varVsphereListDto := _VsphereListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVsphereListDto)
+	err = json.Unmarshal(data, &varVsphereListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = VsphereListDto(varVsphereListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "projectCount")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "drsEnabled")
+		delete(additionalProperties, "resourcePool")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "continentName")
+		delete(additionalProperties, "hypervisors")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "datacenterId")
+		delete(additionalProperties, "datacenterName")
+		delete(additionalProperties, "datastore")
+		delete(additionalProperties, "vmTemplateName")
+		delete(additionalProperties, "vsphereNetworks")
+		delete(additionalProperties, "skipTlsFlag")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -805,5 +838,3 @@ func (v *NullableVsphereListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

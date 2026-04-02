@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,7 +21,8 @@ var _ MappedNullable = &CreateGroupUserDto{}
 
 // CreateGroupUserDto struct for CreateGroupUserDto
 type CreateGroupUserDto struct {
-	Id NullableString `json:"id"`
+	Id                   NullableString `json:"id"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CreateGroupUserDto CreateGroupUserDto
@@ -72,7 +72,7 @@ func (o *CreateGroupUserDto) SetId(v string) {
 }
 
 func (o CreateGroupUserDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -82,6 +82,11 @@ func (o CreateGroupUserDto) MarshalJSON() ([]byte, error) {
 func (o CreateGroupUserDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -98,10 +103,10 @@ func (o *CreateGroupUserDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -109,15 +114,20 @@ func (o *CreateGroupUserDto) UnmarshalJSON(data []byte) (err error) {
 
 	varCreateGroupUserDto := _CreateGroupUserDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCreateGroupUserDto)
+	err = json.Unmarshal(data, &varCreateGroupUserDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CreateGroupUserDto(varCreateGroupUserDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -157,5 +167,3 @@ func (v *NullableCreateGroupUserDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

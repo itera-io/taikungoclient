@@ -20,9 +20,12 @@ var _ MappedNullable = &OpaProfileLockManagerCommand{}
 
 // OpaProfileLockManagerCommand struct for OpaProfileLockManagerCommand
 type OpaProfileLockManagerCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Mode NullableString `json:"mode,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Mode                 NullableString `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OpaProfileLockManagerCommand OpaProfileLockManagerCommand
 
 // NewOpaProfileLockManagerCommand instantiates a new OpaProfileLockManagerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,7 @@ func (o *OpaProfileLockManagerCommand) HasMode() bool {
 func (o *OpaProfileLockManagerCommand) SetMode(v string) {
 	o.Mode.Set(&v)
 }
+
 // SetModeNil sets the value for Mode to be an explicit nil
 func (o *OpaProfileLockManagerCommand) SetModeNil() {
 	o.Mode.Set(nil)
@@ -116,7 +120,7 @@ func (o *OpaProfileLockManagerCommand) UnsetMode() {
 }
 
 func (o OpaProfileLockManagerCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o OpaProfileLockManagerCommand) ToMap() (map[string]interface{}, error) {
 	if o.Mode.IsSet() {
 		toSerialize["mode"] = o.Mode.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OpaProfileLockManagerCommand) UnmarshalJSON(data []byte) (err error) {
+	varOpaProfileLockManagerCommand := _OpaProfileLockManagerCommand{}
+
+	err = json.Unmarshal(data, &varOpaProfileLockManagerCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OpaProfileLockManagerCommand(varOpaProfileLockManagerCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOpaProfileLockManagerCommand struct {
@@ -169,5 +200,3 @@ func (v *NullableOpaProfileLockManagerCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

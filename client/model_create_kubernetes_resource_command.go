@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,8 +21,9 @@ var _ MappedNullable = &CreateKubernetesResourceCommand{}
 
 // CreateKubernetesResourceCommand struct for CreateKubernetesResourceCommand
 type CreateKubernetesResourceCommand struct {
-	ProjectId int32 `json:"projectId"`
-	Yaml NullableString `json:"yaml"`
+	ProjectId            int32          `json:"projectId"`
+	Yaml                 NullableString `json:"yaml"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CreateKubernetesResourceCommand CreateKubernetesResourceCommand
@@ -98,7 +98,7 @@ func (o *CreateKubernetesResourceCommand) SetYaml(v string) {
 }
 
 func (o CreateKubernetesResourceCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -109,6 +109,11 @@ func (o CreateKubernetesResourceCommand) ToMap() (map[string]interface{}, error)
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
 	toSerialize["yaml"] = o.Yaml.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -126,10 +131,10 @@ func (o *CreateKubernetesResourceCommand) UnmarshalJSON(data []byte) (err error)
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -137,15 +142,21 @@ func (o *CreateKubernetesResourceCommand) UnmarshalJSON(data []byte) (err error)
 
 	varCreateKubernetesResourceCommand := _CreateKubernetesResourceCommand{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCreateKubernetesResourceCommand)
+	err = json.Unmarshal(data, &varCreateKubernetesResourceCommand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CreateKubernetesResourceCommand(varCreateKubernetesResourceCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "yaml")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -185,5 +196,3 @@ func (v *NullableCreateKubernetesResourceCommand) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

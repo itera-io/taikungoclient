@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,10 +21,11 @@ var _ MappedNullable = &RamLimitsDto{}
 
 // RamLimitsDto struct for RamLimitsDto
 type RamLimitsDto struct {
-	MaxClusterRequests int64 `json:"maxClusterRequests"`
-	MaxClusterLimits int64 `json:"maxClusterLimits"`
+	MaxClusterRequests      int64 `json:"maxClusterRequests"`
+	MaxClusterLimits        int64 `json:"maxClusterLimits"`
 	DefaultContainerRequest int64 `json:"defaultContainerRequest"`
-	DefaultContainerLimit int64 `json:"defaultContainerLimit"`
+	DefaultContainerLimit   int64 `json:"defaultContainerLimit"`
+	AdditionalProperties    map[string]interface{}
 }
 
 type _RamLimitsDto RamLimitsDto
@@ -148,7 +148,7 @@ func (o *RamLimitsDto) SetDefaultContainerLimit(v int64) {
 }
 
 func (o RamLimitsDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -161,6 +161,11 @@ func (o RamLimitsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["maxClusterLimits"] = o.MaxClusterLimits
 	toSerialize["defaultContainerRequest"] = o.DefaultContainerRequest
 	toSerialize["defaultContainerLimit"] = o.DefaultContainerLimit
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -180,10 +185,10 @@ func (o *RamLimitsDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -191,15 +196,23 @@ func (o *RamLimitsDto) UnmarshalJSON(data []byte) (err error) {
 
 	varRamLimitsDto := _RamLimitsDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRamLimitsDto)
+	err = json.Unmarshal(data, &varRamLimitsDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RamLimitsDto(varRamLimitsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "maxClusterRequests")
+		delete(additionalProperties, "maxClusterLimits")
+		delete(additionalProperties, "defaultContainerRequest")
+		delete(additionalProperties, "defaultContainerLimit")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -239,5 +252,3 @@ func (v *NullableRamLimitsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

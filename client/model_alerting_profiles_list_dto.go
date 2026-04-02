@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,21 +21,22 @@ var _ MappedNullable = &AlertingProfilesListDto{}
 
 // AlertingProfilesListDto struct for AlertingProfilesListDto
 type AlertingProfilesListDto struct {
-	Id int32 `json:"id"`
-	Name string `json:"name"`
-	OrganizationId NullableInt32 `json:"organizationId"`
-	OrganizationName NullableString `json:"organizationName"`
-	SlackConfigurationId NullableInt32 `json:"slackConfigurationId"`
-	SlackConfigurationName NullableString `json:"slackConfigurationName"`
-	IsLocked bool `json:"isLocked"`
-	Emails []AlertingEmailDto `json:"emails"`
-	Webhooks []AlertingWebhookDto `json:"webhooks"`
-	Projects []CommonDropdownDto `json:"projects"`
-	CreatedBy NullableString `json:"createdBy"`
-	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
-	Reminder AlertingReminder `json:"reminder"`
-	CreatedAt string `json:"createdAt"`
+	Id                     int32                `json:"id"`
+	Name                   string               `json:"name"`
+	OrganizationId         NullableInt32        `json:"organizationId"`
+	OrganizationName       NullableString       `json:"organizationName"`
+	SlackConfigurationId   NullableInt32        `json:"slackConfigurationId"`
+	SlackConfigurationName NullableString       `json:"slackConfigurationName"`
+	IsLocked               bool                 `json:"isLocked"`
+	Emails                 []AlertingEmailDto   `json:"emails"`
+	Webhooks               []AlertingWebhookDto `json:"webhooks"`
+	Projects               []CommonDropdownDto  `json:"projects"`
+	CreatedBy              NullableString       `json:"createdBy"`
+	LastModified           NullableString       `json:"lastModified"`
+	LastModifiedBy         NullableString       `json:"lastModifiedBy"`
+	Reminder               AlertingReminder     `json:"reminder"`
+	CreatedAt              string               `json:"createdAt"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _AlertingProfilesListDto AlertingProfilesListDto
@@ -448,7 +448,7 @@ func (o *AlertingProfilesListDto) SetCreatedAt(v string) {
 }
 
 func (o AlertingProfilesListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -472,6 +472,11 @@ func (o AlertingProfilesListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
 	toSerialize["reminder"] = o.Reminder
 	toSerialize["createdAt"] = o.CreatedAt
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -502,10 +507,10 @@ func (o *AlertingProfilesListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -513,15 +518,34 @@ func (o *AlertingProfilesListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varAlertingProfilesListDto := _AlertingProfilesListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAlertingProfilesListDto)
+	err = json.Unmarshal(data, &varAlertingProfilesListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AlertingProfilesListDto(varAlertingProfilesListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "slackConfigurationId")
+		delete(additionalProperties, "slackConfigurationName")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "emails")
+		delete(additionalProperties, "webhooks")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "reminder")
+		delete(additionalProperties, "createdAt")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -561,5 +585,3 @@ func (v *NullableAlertingProfilesListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

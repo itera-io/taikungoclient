@@ -20,8 +20,11 @@ var _ MappedNullable = &DeleteStandAloneProfileCommand{}
 
 // DeleteStandAloneProfileCommand struct for DeleteStandAloneProfileCommand
 type DeleteStandAloneProfileCommand struct {
-	Id *int32 `json:"id,omitempty"`
+	Id                   *int32 `json:"id,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeleteStandAloneProfileCommand DeleteStandAloneProfileCommand
 
 // NewDeleteStandAloneProfileCommand instantiates a new DeleteStandAloneProfileCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,7 +76,7 @@ func (o *DeleteStandAloneProfileCommand) SetId(v int32) {
 }
 
 func (o DeleteStandAloneProfileCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -85,7 +88,33 @@ func (o DeleteStandAloneProfileCommand) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeleteStandAloneProfileCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeleteStandAloneProfileCommand := _DeleteStandAloneProfileCommand{}
+
+	err = json.Unmarshal(data, &varDeleteStandAloneProfileCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeleteStandAloneProfileCommand(varDeleteStandAloneProfileCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeleteStandAloneProfileCommand struct {
@@ -123,5 +152,3 @@ func (v *NullableDeleteStandAloneProfileCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

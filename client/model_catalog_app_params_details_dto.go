@@ -20,16 +20,19 @@ var _ MappedNullable = &CatalogAppParamsDetailsDto{}
 
 // CatalogAppParamsDetailsDto struct for CatalogAppParamsDetailsDto
 type CatalogAppParamsDetailsDto struct {
-	Id *int32 `json:"id,omitempty"`
-	CatalogAppName NullableString `json:"catalogAppName,omitempty"`
-	Key NullableString `json:"key,omitempty"`
-	Value NullableString `json:"value,omitempty"`
-	IsEditableWhenInstalling *bool `json:"isEditableWhenInstalling,omitempty"`
-	IsEditableAfterInstallation *bool `json:"isEditableAfterInstallation,omitempty"`
-	IsMandatory *bool `json:"isMandatory,omitempty"`
-	HasJsonSchema *bool `json:"hasJsonSchema,omitempty"`
-	IsTaikunLink *bool `json:"isTaikunLink,omitempty"`
+	Id                          *int32         `json:"id,omitempty"`
+	CatalogAppName              NullableString `json:"catalogAppName,omitempty"`
+	Key                         NullableString `json:"key,omitempty"`
+	Value                       NullableString `json:"value,omitempty"`
+	IsEditableWhenInstalling    *bool          `json:"isEditableWhenInstalling,omitempty"`
+	IsEditableAfterInstallation *bool          `json:"isEditableAfterInstallation,omitempty"`
+	IsMandatory                 *bool          `json:"isMandatory,omitempty"`
+	HasJsonSchema               *bool          `json:"hasJsonSchema,omitempty"`
+	IsTaikunLink                *bool          `json:"isTaikunLink,omitempty"`
+	AdditionalProperties        map[string]interface{}
 }
+
+type _CatalogAppParamsDetailsDto CatalogAppParamsDetailsDto
 
 // NewCatalogAppParamsDetailsDto instantiates a new CatalogAppParamsDetailsDto object
 // This constructor will assign default values to properties that have it defined,
@@ -112,6 +115,7 @@ func (o *CatalogAppParamsDetailsDto) HasCatalogAppName() bool {
 func (o *CatalogAppParamsDetailsDto) SetCatalogAppName(v string) {
 	o.CatalogAppName.Set(&v)
 }
+
 // SetCatalogAppNameNil sets the value for CatalogAppName to be an explicit nil
 func (o *CatalogAppParamsDetailsDto) SetCatalogAppNameNil() {
 	o.CatalogAppName.Set(nil)
@@ -154,6 +158,7 @@ func (o *CatalogAppParamsDetailsDto) HasKey() bool {
 func (o *CatalogAppParamsDetailsDto) SetKey(v string) {
 	o.Key.Set(&v)
 }
+
 // SetKeyNil sets the value for Key to be an explicit nil
 func (o *CatalogAppParamsDetailsDto) SetKeyNil() {
 	o.Key.Set(nil)
@@ -196,6 +201,7 @@ func (o *CatalogAppParamsDetailsDto) HasValue() bool {
 func (o *CatalogAppParamsDetailsDto) SetValue(v string) {
 	o.Value.Set(&v)
 }
+
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *CatalogAppParamsDetailsDto) SetValueNil() {
 	o.Value.Set(nil)
@@ -367,7 +373,7 @@ func (o *CatalogAppParamsDetailsDto) SetIsTaikunLink(v bool) {
 }
 
 func (o CatalogAppParamsDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -403,7 +409,41 @@ func (o CatalogAppParamsDetailsDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsTaikunLink) {
 		toSerialize["isTaikunLink"] = o.IsTaikunLink
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CatalogAppParamsDetailsDto) UnmarshalJSON(data []byte) (err error) {
+	varCatalogAppParamsDetailsDto := _CatalogAppParamsDetailsDto{}
+
+	err = json.Unmarshal(data, &varCatalogAppParamsDetailsDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CatalogAppParamsDetailsDto(varCatalogAppParamsDetailsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "catalogAppName")
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "value")
+		delete(additionalProperties, "isEditableWhenInstalling")
+		delete(additionalProperties, "isEditableAfterInstallation")
+		delete(additionalProperties, "isMandatory")
+		delete(additionalProperties, "hasJsonSchema")
+		delete(additionalProperties, "isTaikunLink")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCatalogAppParamsDetailsDto struct {
@@ -441,5 +481,3 @@ func (v *NullableCatalogAppParamsDetailsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

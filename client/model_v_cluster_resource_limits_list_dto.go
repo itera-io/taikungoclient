@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,11 +21,12 @@ var _ MappedNullable = &VClusterResourceLimitsListDto{}
 
 // VClusterResourceLimitsListDto struct for VClusterResourceLimitsListDto
 type VClusterResourceLimitsListDto struct {
-	ResourceUnit NullableString `json:"resourceUnit"`
-	MaxClusterRequests float64 `json:"maxClusterRequests"`
-	MaxClusterLimits float64 `json:"maxClusterLimits"`
-	DefaultContainerLimit float64 `json:"defaultContainerLimit"`
-	DefaultContainerRequest float64 `json:"defaultContainerRequest"`
+	ResourceUnit            NullableString `json:"resourceUnit"`
+	MaxClusterRequests      float64        `json:"maxClusterRequests"`
+	MaxClusterLimits        float64        `json:"maxClusterLimits"`
+	DefaultContainerLimit   float64        `json:"defaultContainerLimit"`
+	DefaultContainerRequest float64        `json:"defaultContainerRequest"`
+	AdditionalProperties    map[string]interface{}
 }
 
 type _VClusterResourceLimitsListDto VClusterResourceLimitsListDto
@@ -176,7 +176,7 @@ func (o *VClusterResourceLimitsListDto) SetDefaultContainerRequest(v float64) {
 }
 
 func (o VClusterResourceLimitsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -190,6 +190,11 @@ func (o VClusterResourceLimitsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["maxClusterLimits"] = o.MaxClusterLimits
 	toSerialize["defaultContainerLimit"] = o.DefaultContainerLimit
 	toSerialize["defaultContainerRequest"] = o.DefaultContainerRequest
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -210,10 +215,10 @@ func (o *VClusterResourceLimitsListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -221,15 +226,24 @@ func (o *VClusterResourceLimitsListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varVClusterResourceLimitsListDto := _VClusterResourceLimitsListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVClusterResourceLimitsListDto)
+	err = json.Unmarshal(data, &varVClusterResourceLimitsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = VClusterResourceLimitsListDto(varVClusterResourceLimitsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "resourceUnit")
+		delete(additionalProperties, "maxClusterRequests")
+		delete(additionalProperties, "maxClusterLimits")
+		delete(additionalProperties, "defaultContainerLimit")
+		delete(additionalProperties, "defaultContainerRequest")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -269,5 +283,3 @@ func (v *NullableVClusterResourceLimitsListDto) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

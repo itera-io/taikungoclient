@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,11 +21,12 @@ var _ MappedNullable = &DeploymentListDtoCursorStringPaginatedResponse{}
 
 // DeploymentListDtoCursorStringPaginatedResponse struct for DeploymentListDtoCursorStringPaginatedResponse
 type DeploymentListDtoCursorStringPaginatedResponse struct {
-	Data []DeploymentListDto `json:"data"`
-	Limit int32 `json:"limit"`
-	HasMore bool `json:"hasMore"`
-	TotalCount int64 `json:"totalCount"`
-	NextCursor NullableString `json:"nextCursor,omitempty"`
+	Data                 []DeploymentListDto `json:"data"`
+	Limit                int32               `json:"limit"`
+	HasMore              bool                `json:"hasMore"`
+	TotalCount           int64               `json:"totalCount"`
+	NextCursor           NullableString      `json:"nextCursor,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeploymentListDtoCursorStringPaginatedResponse DeploymentListDtoCursorStringPaginatedResponse
@@ -182,6 +182,7 @@ func (o *DeploymentListDtoCursorStringPaginatedResponse) HasNextCursor() bool {
 func (o *DeploymentListDtoCursorStringPaginatedResponse) SetNextCursor(v string) {
 	o.NextCursor.Set(&v)
 }
+
 // SetNextCursorNil sets the value for NextCursor to be an explicit nil
 func (o *DeploymentListDtoCursorStringPaginatedResponse) SetNextCursorNil() {
 	o.NextCursor.Set(nil)
@@ -193,7 +194,7 @@ func (o *DeploymentListDtoCursorStringPaginatedResponse) UnsetNextCursor() {
 }
 
 func (o DeploymentListDtoCursorStringPaginatedResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -211,6 +212,11 @@ func (o DeploymentListDtoCursorStringPaginatedResponse) ToMap() (map[string]inte
 	if o.NextCursor.IsSet() {
 		toSerialize["nextCursor"] = o.NextCursor.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -230,10 +236,10 @@ func (o *DeploymentListDtoCursorStringPaginatedResponse) UnmarshalJSON(data []by
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -241,15 +247,24 @@ func (o *DeploymentListDtoCursorStringPaginatedResponse) UnmarshalJSON(data []by
 
 	varDeploymentListDtoCursorStringPaginatedResponse := _DeploymentListDtoCursorStringPaginatedResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeploymentListDtoCursorStringPaginatedResponse)
+	err = json.Unmarshal(data, &varDeploymentListDtoCursorStringPaginatedResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeploymentListDtoCursorStringPaginatedResponse(varDeploymentListDtoCursorStringPaginatedResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "hasMore")
+		delete(additionalProperties, "totalCount")
+		delete(additionalProperties, "nextCursor")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -289,5 +304,3 @@ func (v *NullableDeploymentListDtoCursorStringPaginatedResponse) UnmarshalJSON(s
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

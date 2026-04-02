@@ -20,12 +20,15 @@ var _ MappedNullable = &Subresource{}
 
 // Subresource struct for Subresource
 type Subresource struct {
-	Name NullableString `json:"name,omitempty"`
-	Metadata map[string]interface{} `json:"metadata,omitempty"`
-	HourlyCost NullableString `json:"hourlyCost,omitempty"`
-	MonthlyCost NullableString `json:"monthlyCost,omitempty"`
-	CostComponents []CostComponent `json:"costComponents,omitempty"`
+	Name                 NullableString         `json:"name,omitempty"`
+	Metadata             map[string]interface{} `json:"metadata,omitempty"`
+	HourlyCost           NullableString         `json:"hourlyCost,omitempty"`
+	MonthlyCost          NullableString         `json:"monthlyCost,omitempty"`
+	CostComponents       []CostComponent        `json:"costComponents,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Subresource Subresource
 
 // NewSubresource instantiates a new Subresource object
 // This constructor will assign default values to properties that have it defined,
@@ -76,6 +79,7 @@ func (o *Subresource) HasName() bool {
 func (o *Subresource) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *Subresource) SetNameNil() {
 	o.Name.Set(nil)
@@ -151,6 +155,7 @@ func (o *Subresource) HasHourlyCost() bool {
 func (o *Subresource) SetHourlyCost(v string) {
 	o.HourlyCost.Set(&v)
 }
+
 // SetHourlyCostNil sets the value for HourlyCost to be an explicit nil
 func (o *Subresource) SetHourlyCostNil() {
 	o.HourlyCost.Set(nil)
@@ -193,6 +198,7 @@ func (o *Subresource) HasMonthlyCost() bool {
 func (o *Subresource) SetMonthlyCost(v string) {
 	o.MonthlyCost.Set(&v)
 }
+
 // SetMonthlyCostNil sets the value for MonthlyCost to be an explicit nil
 func (o *Subresource) SetMonthlyCostNil() {
 	o.MonthlyCost.Set(nil)
@@ -237,7 +243,7 @@ func (o *Subresource) SetCostComponents(v []CostComponent) {
 }
 
 func (o Subresource) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -261,7 +267,37 @@ func (o Subresource) ToMap() (map[string]interface{}, error) {
 	if o.CostComponents != nil {
 		toSerialize["costComponents"] = o.CostComponents
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Subresource) UnmarshalJSON(data []byte) (err error) {
+	varSubresource := _Subresource{}
+
+	err = json.Unmarshal(data, &varSubresource)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Subresource(varSubresource)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "metadata")
+		delete(additionalProperties, "hourlyCost")
+		delete(additionalProperties, "monthlyCost")
+		delete(additionalProperties, "costComponents")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableSubresource struct {
@@ -299,5 +335,3 @@ func (v *NullableSubresource) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

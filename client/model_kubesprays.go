@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,8 +21,9 @@ var _ MappedNullable = &Kubesprays{}
 
 // Kubesprays struct for Kubesprays
 type Kubesprays struct {
-	Data []KubesprayListDto `json:"data"`
-	TotalCount int32 `json:"totalCount"`
+	Data                 []KubesprayListDto `json:"data"`
+	TotalCount           int32              `json:"totalCount"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Kubesprays Kubesprays
@@ -98,7 +98,7 @@ func (o *Kubesprays) SetTotalCount(v int32) {
 }
 
 func (o Kubesprays) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -111,6 +111,11 @@ func (o Kubesprays) ToMap() (map[string]interface{}, error) {
 		toSerialize["data"] = o.Data
 	}
 	toSerialize["totalCount"] = o.TotalCount
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -128,10 +133,10 @@ func (o *Kubesprays) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -139,15 +144,21 @@ func (o *Kubesprays) UnmarshalJSON(data []byte) (err error) {
 
 	varKubesprays := _Kubesprays{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKubesprays)
+	err = json.Unmarshal(data, &varKubesprays)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Kubesprays(varKubesprays)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -187,5 +198,3 @@ func (v *NullableKubesprays) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

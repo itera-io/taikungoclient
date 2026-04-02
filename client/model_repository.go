@@ -20,17 +20,20 @@ var _ MappedNullable = &Repository{}
 
 // Repository struct for Repository
 type Repository struct {
-	Url NullableString `json:"url,omitempty"`
-	Kind *int64 `json:"kind,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Official *bool `json:"official,omitempty"`
-	RepositoryId NullableString `json:"repositoryId,omitempty"`
-	ScannerDisabled *bool `json:"scannerDisabled,omitempty"`
-	IsImported *bool `json:"isImported,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	VerifiedPublisher *bool `json:"verifiedPublisher,omitempty"`
+	Url                     NullableString `json:"url,omitempty"`
+	Kind                    *int64         `json:"kind,omitempty"`
+	Name                    NullableString `json:"name,omitempty"`
+	Official                *bool          `json:"official,omitempty"`
+	RepositoryId            NullableString `json:"repositoryId,omitempty"`
+	ScannerDisabled         *bool          `json:"scannerDisabled,omitempty"`
+	IsImported              *bool          `json:"isImported,omitempty"`
+	OrganizationName        NullableString `json:"organizationName,omitempty"`
+	VerifiedPublisher       *bool          `json:"verifiedPublisher,omitempty"`
 	OrganizationDisplayName NullableString `json:"organizationDisplayName,omitempty"`
+	AdditionalProperties    map[string]interface{}
 }
+
+type _Repository Repository
 
 // NewRepository instantiates a new Repository object
 // This constructor will assign default values to properties that have it defined,
@@ -81,6 +84,7 @@ func (o *Repository) HasUrl() bool {
 func (o *Repository) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *Repository) SetUrlNil() {
 	o.Url.Set(nil)
@@ -155,6 +159,7 @@ func (o *Repository) HasName() bool {
 func (o *Repository) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *Repository) SetNameNil() {
 	o.Name.Set(nil)
@@ -229,6 +234,7 @@ func (o *Repository) HasRepositoryId() bool {
 func (o *Repository) SetRepositoryId(v string) {
 	o.RepositoryId.Set(&v)
 }
+
 // SetRepositoryIdNil sets the value for RepositoryId to be an explicit nil
 func (o *Repository) SetRepositoryIdNil() {
 	o.RepositoryId.Set(nil)
@@ -335,6 +341,7 @@ func (o *Repository) HasOrganizationName() bool {
 func (o *Repository) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
+
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *Repository) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -409,6 +416,7 @@ func (o *Repository) HasOrganizationDisplayName() bool {
 func (o *Repository) SetOrganizationDisplayName(v string) {
 	o.OrganizationDisplayName.Set(&v)
 }
+
 // SetOrganizationDisplayNameNil sets the value for OrganizationDisplayName to be an explicit nil
 func (o *Repository) SetOrganizationDisplayNameNil() {
 	o.OrganizationDisplayName.Set(nil)
@@ -420,7 +428,7 @@ func (o *Repository) UnsetOrganizationDisplayName() {
 }
 
 func (o Repository) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -459,7 +467,42 @@ func (o Repository) ToMap() (map[string]interface{}, error) {
 	if o.OrganizationDisplayName.IsSet() {
 		toSerialize["organizationDisplayName"] = o.OrganizationDisplayName.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Repository) UnmarshalJSON(data []byte) (err error) {
+	varRepository := _Repository{}
+
+	err = json.Unmarshal(data, &varRepository)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Repository(varRepository)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "kind")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "official")
+		delete(additionalProperties, "repositoryId")
+		delete(additionalProperties, "scannerDisabled")
+		delete(additionalProperties, "isImported")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "verifiedPublisher")
+		delete(additionalProperties, "organizationDisplayName")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableRepository struct {
@@ -497,5 +540,3 @@ func (v *NullableRepository) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

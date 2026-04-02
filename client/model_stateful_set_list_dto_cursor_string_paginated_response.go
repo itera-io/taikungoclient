@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,11 +21,12 @@ var _ MappedNullable = &StatefulSetListDtoCursorStringPaginatedResponse{}
 
 // StatefulSetListDtoCursorStringPaginatedResponse struct for StatefulSetListDtoCursorStringPaginatedResponse
 type StatefulSetListDtoCursorStringPaginatedResponse struct {
-	Data []StatefulSetListDto `json:"data"`
-	Limit int32 `json:"limit"`
-	HasMore bool `json:"hasMore"`
-	TotalCount int64 `json:"totalCount"`
-	NextCursor NullableString `json:"nextCursor,omitempty"`
+	Data                 []StatefulSetListDto `json:"data"`
+	Limit                int32                `json:"limit"`
+	HasMore              bool                 `json:"hasMore"`
+	TotalCount           int64                `json:"totalCount"`
+	NextCursor           NullableString       `json:"nextCursor,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StatefulSetListDtoCursorStringPaginatedResponse StatefulSetListDtoCursorStringPaginatedResponse
@@ -182,6 +182,7 @@ func (o *StatefulSetListDtoCursorStringPaginatedResponse) HasNextCursor() bool {
 func (o *StatefulSetListDtoCursorStringPaginatedResponse) SetNextCursor(v string) {
 	o.NextCursor.Set(&v)
 }
+
 // SetNextCursorNil sets the value for NextCursor to be an explicit nil
 func (o *StatefulSetListDtoCursorStringPaginatedResponse) SetNextCursorNil() {
 	o.NextCursor.Set(nil)
@@ -193,7 +194,7 @@ func (o *StatefulSetListDtoCursorStringPaginatedResponse) UnsetNextCursor() {
 }
 
 func (o StatefulSetListDtoCursorStringPaginatedResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -211,6 +212,11 @@ func (o StatefulSetListDtoCursorStringPaginatedResponse) ToMap() (map[string]int
 	if o.NextCursor.IsSet() {
 		toSerialize["nextCursor"] = o.NextCursor.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -230,10 +236,10 @@ func (o *StatefulSetListDtoCursorStringPaginatedResponse) UnmarshalJSON(data []b
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -241,15 +247,24 @@ func (o *StatefulSetListDtoCursorStringPaginatedResponse) UnmarshalJSON(data []b
 
 	varStatefulSetListDtoCursorStringPaginatedResponse := _StatefulSetListDtoCursorStringPaginatedResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStatefulSetListDtoCursorStringPaginatedResponse)
+	err = json.Unmarshal(data, &varStatefulSetListDtoCursorStringPaginatedResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StatefulSetListDtoCursorStringPaginatedResponse(varStatefulSetListDtoCursorStringPaginatedResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "hasMore")
+		delete(additionalProperties, "totalCount")
+		delete(additionalProperties, "nextCursor")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -289,5 +304,3 @@ func (v *NullableStatefulSetListDtoCursorStringPaginatedResponse) UnmarshalJSON(
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

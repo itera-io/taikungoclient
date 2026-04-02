@@ -20,8 +20,11 @@ var _ MappedNullable = &InvoiceSecret{}
 
 // InvoiceSecret struct for InvoiceSecret
 type InvoiceSecret struct {
-	Secret NullableString `json:"secret,omitempty"`
+	Secret               NullableString `json:"secret,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _InvoiceSecret InvoiceSecret
 
 // NewInvoiceSecret instantiates a new InvoiceSecret object
 // This constructor will assign default values to properties that have it defined,
@@ -72,6 +75,7 @@ func (o *InvoiceSecret) HasSecret() bool {
 func (o *InvoiceSecret) SetSecret(v string) {
 	o.Secret.Set(&v)
 }
+
 // SetSecretNil sets the value for Secret to be an explicit nil
 func (o *InvoiceSecret) SetSecretNil() {
 	o.Secret.Set(nil)
@@ -83,7 +87,7 @@ func (o *InvoiceSecret) UnsetSecret() {
 }
 
 func (o InvoiceSecret) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -95,7 +99,33 @@ func (o InvoiceSecret) ToMap() (map[string]interface{}, error) {
 	if o.Secret.IsSet() {
 		toSerialize["secret"] = o.Secret.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *InvoiceSecret) UnmarshalJSON(data []byte) (err error) {
+	varInvoiceSecret := _InvoiceSecret{}
+
+	err = json.Unmarshal(data, &varInvoiceSecret)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InvoiceSecret(varInvoiceSecret)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "secret")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableInvoiceSecret struct {
@@ -133,5 +163,3 @@ func (v *NullableInvoiceSecret) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

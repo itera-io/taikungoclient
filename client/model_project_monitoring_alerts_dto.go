@@ -20,9 +20,12 @@ var _ MappedNullable = &ProjectMonitoringAlertsDto{}
 
 // ProjectMonitoringAlertsDto struct for ProjectMonitoringAlertsDto
 type ProjectMonitoringAlertsDto struct {
-	Status NullableString `json:"status,omitempty"`
-	Data *AlertData `json:"data,omitempty"`
+	Status               NullableString `json:"status,omitempty"`
+	Data                 *AlertData     `json:"data,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectMonitoringAlertsDto ProjectMonitoringAlertsDto
 
 // NewProjectMonitoringAlertsDto instantiates a new ProjectMonitoringAlertsDto object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *ProjectMonitoringAlertsDto) HasStatus() bool {
 func (o *ProjectMonitoringAlertsDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
+
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *ProjectMonitoringAlertsDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -116,7 +120,7 @@ func (o *ProjectMonitoringAlertsDto) SetData(v AlertData) {
 }
 
 func (o ProjectMonitoringAlertsDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o ProjectMonitoringAlertsDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Data) {
 		toSerialize["data"] = o.Data
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectMonitoringAlertsDto) UnmarshalJSON(data []byte) (err error) {
+	varProjectMonitoringAlertsDto := _ProjectMonitoringAlertsDto{}
+
+	err = json.Unmarshal(data, &varProjectMonitoringAlertsDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectMonitoringAlertsDto(varProjectMonitoringAlertsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "data")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectMonitoringAlertsDto struct {
@@ -169,5 +200,3 @@ func (v *NullableProjectMonitoringAlertsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

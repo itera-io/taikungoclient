@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,13 +21,14 @@ var _ MappedNullable = &StandaloneVisibilityDto{}
 
 // StandaloneVisibilityDto struct for StandaloneVisibilityDto
 type StandaloneVisibilityDto struct {
-	ShowStatus bool `json:"showStatus"`
-	ShowConsole bool `json:"showConsole"`
-	Shelve bool `json:"shelve"`
-	Unshelve bool `json:"unshelve"`
-	Start bool `json:"start"`
-	Stop bool `json:"stop"`
-	Reboot bool `json:"reboot"`
+	ShowStatus           bool `json:"showStatus"`
+	ShowConsole          bool `json:"showConsole"`
+	Shelve               bool `json:"shelve"`
+	Unshelve             bool `json:"unshelve"`
+	Start                bool `json:"start"`
+	Stop                 bool `json:"stop"`
+	Reboot               bool `json:"reboot"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StandaloneVisibilityDto StandaloneVisibilityDto
@@ -226,7 +226,7 @@ func (o *StandaloneVisibilityDto) SetReboot(v bool) {
 }
 
 func (o StandaloneVisibilityDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -242,6 +242,11 @@ func (o StandaloneVisibilityDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["start"] = o.Start
 	toSerialize["stop"] = o.Stop
 	toSerialize["reboot"] = o.Reboot
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -264,10 +269,10 @@ func (o *StandaloneVisibilityDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -275,15 +280,26 @@ func (o *StandaloneVisibilityDto) UnmarshalJSON(data []byte) (err error) {
 
 	varStandaloneVisibilityDto := _StandaloneVisibilityDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStandaloneVisibilityDto)
+	err = json.Unmarshal(data, &varStandaloneVisibilityDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StandaloneVisibilityDto(varStandaloneVisibilityDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "showStatus")
+		delete(additionalProperties, "showConsole")
+		delete(additionalProperties, "shelve")
+		delete(additionalProperties, "unshelve")
+		delete(additionalProperties, "start")
+		delete(additionalProperties, "stop")
+		delete(additionalProperties, "reboot")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -323,5 +339,3 @@ func (v *NullableStandaloneVisibilityDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

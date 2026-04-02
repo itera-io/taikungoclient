@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,24 +21,25 @@ var _ MappedNullable = &KubernetesResourcesDto{}
 
 // KubernetesResourcesDto struct for KubernetesResourcesDto
 type KubernetesResourcesDto struct {
-	Pods int64 `json:"pods"`
-	Crds int64 `json:"crds"`
-	Helmreleases int64 `json:"helmreleases"`
-	DaemonSets int64 `json:"daemonSets"`
-	Deployments int64 `json:"deployments"`
-	StatefulSets int64 `json:"statefulSets"`
-	Jobs int64 `json:"jobs"`
-	CronJobs int64 `json:"cronJobs"`
-	ConfigMaps int64 `json:"configMaps"`
-	Namespaces int64 `json:"namespaces"`
-	Nodes int64 `json:"nodes"`
-	Pvcs int64 `json:"pvcs"`
-	Secrets int64 `json:"secrets"`
-	Services int64 `json:"services"`
-	Ingresses int64 `json:"ingresses"`
-	NetworkPolicies int64 `json:"networkPolicies"`
-	Pdbs int64 `json:"pdbs"`
-	StorageClasses int64 `json:"storageClasses"`
+	Pods                 int64 `json:"pods"`
+	Crds                 int64 `json:"crds"`
+	Helmreleases         int64 `json:"helmreleases"`
+	DaemonSets           int64 `json:"daemonSets"`
+	Deployments          int64 `json:"deployments"`
+	StatefulSets         int64 `json:"statefulSets"`
+	Jobs                 int64 `json:"jobs"`
+	CronJobs             int64 `json:"cronJobs"`
+	ConfigMaps           int64 `json:"configMaps"`
+	Namespaces           int64 `json:"namespaces"`
+	Nodes                int64 `json:"nodes"`
+	Pvcs                 int64 `json:"pvcs"`
+	Secrets              int64 `json:"secrets"`
+	Services             int64 `json:"services"`
+	Ingresses            int64 `json:"ingresses"`
+	NetworkPolicies      int64 `json:"networkPolicies"`
+	Pdbs                 int64 `json:"pdbs"`
+	StorageClasses       int64 `json:"storageClasses"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _KubernetesResourcesDto KubernetesResourcesDto
@@ -512,7 +512,7 @@ func (o *KubernetesResourcesDto) SetStorageClasses(v int64) {
 }
 
 func (o KubernetesResourcesDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -539,6 +539,11 @@ func (o KubernetesResourcesDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["networkPolicies"] = o.NetworkPolicies
 	toSerialize["pdbs"] = o.Pdbs
 	toSerialize["storageClasses"] = o.StorageClasses
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -572,10 +577,10 @@ func (o *KubernetesResourcesDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -583,15 +588,37 @@ func (o *KubernetesResourcesDto) UnmarshalJSON(data []byte) (err error) {
 
 	varKubernetesResourcesDto := _KubernetesResourcesDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKubernetesResourcesDto)
+	err = json.Unmarshal(data, &varKubernetesResourcesDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubernetesResourcesDto(varKubernetesResourcesDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "pods")
+		delete(additionalProperties, "crds")
+		delete(additionalProperties, "helmreleases")
+		delete(additionalProperties, "daemonSets")
+		delete(additionalProperties, "deployments")
+		delete(additionalProperties, "statefulSets")
+		delete(additionalProperties, "jobs")
+		delete(additionalProperties, "cronJobs")
+		delete(additionalProperties, "configMaps")
+		delete(additionalProperties, "namespaces")
+		delete(additionalProperties, "nodes")
+		delete(additionalProperties, "pvcs")
+		delete(additionalProperties, "secrets")
+		delete(additionalProperties, "services")
+		delete(additionalProperties, "ingresses")
+		delete(additionalProperties, "networkPolicies")
+		delete(additionalProperties, "pdbs")
+		delete(additionalProperties, "storageClasses")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -631,5 +658,3 @@ func (v *NullableKubernetesResourcesDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

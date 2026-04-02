@@ -20,16 +20,19 @@ var _ MappedNullable = &CreateSubscriptionCommand{}
 
 // CreateSubscriptionCommand struct for CreateSubscriptionCommand
 type CreateSubscriptionCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	ProjectLimit *int32 `json:"projectLimit,omitempty"`
-	ServerLimit *int32 `json:"serverLimit,omitempty"`
-	UserLimit *int32 `json:"userLimit,omitempty"`
-	CloudCredentialLimit *int32 `json:"cloudCredentialLimit,omitempty"`
-	TrialDays *int32 `json:"trialDays,omitempty"`
-	MonthlyPrice NullableFloat64 `json:"monthlyPrice,omitempty"`
-	TcuPrice NullableFloat64 `json:"tcuPrice,omitempty"`
-	YearlyPrice NullableFloat64 `json:"yearlyPrice,omitempty"`
+	Name                 NullableString  `json:"name,omitempty"`
+	ProjectLimit         *int32          `json:"projectLimit,omitempty"`
+	ServerLimit          *int32          `json:"serverLimit,omitempty"`
+	UserLimit            *int32          `json:"userLimit,omitempty"`
+	CloudCredentialLimit *int32          `json:"cloudCredentialLimit,omitempty"`
+	TrialDays            *int32          `json:"trialDays,omitempty"`
+	MonthlyPrice         NullableFloat64 `json:"monthlyPrice,omitempty"`
+	TcuPrice             NullableFloat64 `json:"tcuPrice,omitempty"`
+	YearlyPrice          NullableFloat64 `json:"yearlyPrice,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateSubscriptionCommand CreateSubscriptionCommand
 
 // NewCreateSubscriptionCommand instantiates a new CreateSubscriptionCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -80,6 +83,7 @@ func (o *CreateSubscriptionCommand) HasName() bool {
 func (o *CreateSubscriptionCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateSubscriptionCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -282,6 +286,7 @@ func (o *CreateSubscriptionCommand) HasMonthlyPrice() bool {
 func (o *CreateSubscriptionCommand) SetMonthlyPrice(v float64) {
 	o.MonthlyPrice.Set(&v)
 }
+
 // SetMonthlyPriceNil sets the value for MonthlyPrice to be an explicit nil
 func (o *CreateSubscriptionCommand) SetMonthlyPriceNil() {
 	o.MonthlyPrice.Set(nil)
@@ -324,6 +329,7 @@ func (o *CreateSubscriptionCommand) HasTcuPrice() bool {
 func (o *CreateSubscriptionCommand) SetTcuPrice(v float64) {
 	o.TcuPrice.Set(&v)
 }
+
 // SetTcuPriceNil sets the value for TcuPrice to be an explicit nil
 func (o *CreateSubscriptionCommand) SetTcuPriceNil() {
 	o.TcuPrice.Set(nil)
@@ -366,6 +372,7 @@ func (o *CreateSubscriptionCommand) HasYearlyPrice() bool {
 func (o *CreateSubscriptionCommand) SetYearlyPrice(v float64) {
 	o.YearlyPrice.Set(&v)
 }
+
 // SetYearlyPriceNil sets the value for YearlyPrice to be an explicit nil
 func (o *CreateSubscriptionCommand) SetYearlyPriceNil() {
 	o.YearlyPrice.Set(nil)
@@ -377,7 +384,7 @@ func (o *CreateSubscriptionCommand) UnsetYearlyPrice() {
 }
 
 func (o CreateSubscriptionCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -413,7 +420,41 @@ func (o CreateSubscriptionCommand) ToMap() (map[string]interface{}, error) {
 	if o.YearlyPrice.IsSet() {
 		toSerialize["yearlyPrice"] = o.YearlyPrice.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateSubscriptionCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateSubscriptionCommand := _CreateSubscriptionCommand{}
+
+	err = json.Unmarshal(data, &varCreateSubscriptionCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateSubscriptionCommand(varCreateSubscriptionCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "projectLimit")
+		delete(additionalProperties, "serverLimit")
+		delete(additionalProperties, "userLimit")
+		delete(additionalProperties, "cloudCredentialLimit")
+		delete(additionalProperties, "trialDays")
+		delete(additionalProperties, "monthlyPrice")
+		delete(additionalProperties, "tcuPrice")
+		delete(additionalProperties, "yearlyPrice")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateSubscriptionCommand struct {
@@ -451,5 +492,3 @@ func (v *NullableCreateSubscriptionCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

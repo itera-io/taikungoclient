@@ -20,8 +20,11 @@ var _ MappedNullable = &GroupList{}
 
 // GroupList struct for GroupList
 type GroupList struct {
-	Data []GroupListItem `json:"data,omitempty"`
+	Data                 []GroupListItem `json:"data,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _GroupList GroupList
 
 // NewGroupList instantiates a new GroupList object
 // This constructor will assign default values to properties that have it defined,
@@ -40,9 +43,9 @@ func NewGroupListWithDefaults() *GroupList {
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetData returns the Data field value if set, zero value otherwise.
 func (o *GroupList) GetData() []GroupListItem {
-	if o == nil {
+	if o == nil || IsNil(o.Data) {
 		var ret []GroupListItem
 		return ret
 	}
@@ -51,7 +54,6 @@ func (o *GroupList) GetData() []GroupListItem {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GroupList) GetDataOk() ([]GroupListItem, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
@@ -74,7 +76,7 @@ func (o *GroupList) SetData(v []GroupListItem) {
 }
 
 func (o GroupList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -83,10 +85,36 @@ func (o GroupList) MarshalJSON() ([]byte, error) {
 
 func (o GroupList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Data != nil {
+	if !IsNil(o.Data) {
 		toSerialize["data"] = o.Data
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *GroupList) UnmarshalJSON(data []byte) (err error) {
+	varGroupList := _GroupList{}
+
+	err = json.Unmarshal(data, &varGroupList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GroupList(varGroupList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableGroupList struct {
@@ -124,5 +152,3 @@ func (v *NullableGroupList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

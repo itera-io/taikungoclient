@@ -20,9 +20,12 @@ var _ MappedNullable = &PrometheusMetricListDto{}
 
 // PrometheusMetricListDto struct for PrometheusMetricListDto
 type PrometheusMetricListDto struct {
-	Status NullableString `json:"status,omitempty"`
-	Data *MetricData `json:"data,omitempty"`
+	Status               NullableString `json:"status,omitempty"`
+	Data                 *MetricData    `json:"data,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PrometheusMetricListDto PrometheusMetricListDto
 
 // NewPrometheusMetricListDto instantiates a new PrometheusMetricListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *PrometheusMetricListDto) HasStatus() bool {
 func (o *PrometheusMetricListDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
+
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *PrometheusMetricListDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -116,7 +120,7 @@ func (o *PrometheusMetricListDto) SetData(v MetricData) {
 }
 
 func (o PrometheusMetricListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o PrometheusMetricListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Data) {
 		toSerialize["data"] = o.Data
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PrometheusMetricListDto) UnmarshalJSON(data []byte) (err error) {
+	varPrometheusMetricListDto := _PrometheusMetricListDto{}
+
+	err = json.Unmarshal(data, &varPrometheusMetricListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PrometheusMetricListDto(varPrometheusMetricListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "data")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePrometheusMetricListDto struct {
@@ -169,5 +200,3 @@ func (v *NullablePrometheusMetricListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

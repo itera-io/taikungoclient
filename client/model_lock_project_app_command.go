@@ -20,9 +20,12 @@ var _ MappedNullable = &LockProjectAppCommand{}
 
 // LockProjectAppCommand struct for LockProjectAppCommand
 type LockProjectAppCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Mode NullableString `json:"mode,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Mode                 NullableString `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _LockProjectAppCommand LockProjectAppCommand
 
 // NewLockProjectAppCommand instantiates a new LockProjectAppCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,7 @@ func (o *LockProjectAppCommand) HasMode() bool {
 func (o *LockProjectAppCommand) SetMode(v string) {
 	o.Mode.Set(&v)
 }
+
 // SetModeNil sets the value for Mode to be an explicit nil
 func (o *LockProjectAppCommand) SetModeNil() {
 	o.Mode.Set(nil)
@@ -116,7 +120,7 @@ func (o *LockProjectAppCommand) UnsetMode() {
 }
 
 func (o LockProjectAppCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o LockProjectAppCommand) ToMap() (map[string]interface{}, error) {
 	if o.Mode.IsSet() {
 		toSerialize["mode"] = o.Mode.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *LockProjectAppCommand) UnmarshalJSON(data []byte) (err error) {
+	varLockProjectAppCommand := _LockProjectAppCommand{}
+
+	err = json.Unmarshal(data, &varLockProjectAppCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LockProjectAppCommand(varLockProjectAppCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableLockProjectAppCommand struct {
@@ -169,5 +200,3 @@ func (v *NullableLockProjectAppCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

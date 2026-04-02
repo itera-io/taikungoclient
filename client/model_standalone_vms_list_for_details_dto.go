@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,34 +21,35 @@ var _ MappedNullable = &StandaloneVmsListForDetailsDto{}
 
 // StandaloneVmsListForDetailsDto struct for StandaloneVmsListForDetailsDto
 type StandaloneVmsListForDetailsDto struct {
-	Id int32 `json:"id"`
-	Name string `json:"name"`
-	ImageName string `json:"imageName"`
-	ImageId string `json:"imageId"`
-	Status string `json:"status"`
-	CloudInit NullableString `json:"cloudInit"`
-	VolumeType string `json:"volumeType"`
-	VolumeSize int64 `json:"volumeSize"`
-	CreatedAt string `json:"createdAt"`
-	CreatedBy string `json:"createdBy"`
-	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
-	SshPublicKey string `json:"sshPublicKey"`
-	CurrentFlavor string `json:"currentFlavor"`
-	TargetFlavor NullableString `json:"targetFlavor"`
-	PublicIpEnabled bool `json:"publicIpEnabled"`
-	PublicIp NullableString `json:"publicIp"`
-	Hypervisor NullableString `json:"hypervisor"`
-	HypervisorId NullableString `json:"hypervisorId"`
-	IpAddress NullableString `json:"ipAddress"`
-	SpotPrice float64 `json:"spotPrice"`
-	SpotInstance bool `json:"spotInstance"`
-	AvailabilityZone NullableString `json:"availabilityZone"`
-	ActionButtons StandaloneVisibilityDto `json:"actionButtons"`
-	IsWindows bool `json:"isWindows"`
-	Disks []StandAloneVmDiskForDetailsDto `json:"disks"`
-	StandAloneMetaDatas []StandAloneMetaDataDtoForVm `json:"standAloneMetaDatas"`
-	Profile StandAloneProfileForDetailsDto `json:"profile"`
+	Id                   int32                           `json:"id"`
+	Name                 string                          `json:"name"`
+	ImageName            string                          `json:"imageName"`
+	ImageId              string                          `json:"imageId"`
+	Status               string                          `json:"status"`
+	CloudInit            NullableString                  `json:"cloudInit"`
+	VolumeType           string                          `json:"volumeType"`
+	VolumeSize           int64                           `json:"volumeSize"`
+	CreatedAt            string                          `json:"createdAt"`
+	CreatedBy            string                          `json:"createdBy"`
+	LastModified         NullableString                  `json:"lastModified"`
+	LastModifiedBy       NullableString                  `json:"lastModifiedBy"`
+	SshPublicKey         string                          `json:"sshPublicKey"`
+	CurrentFlavor        string                          `json:"currentFlavor"`
+	TargetFlavor         NullableString                  `json:"targetFlavor"`
+	PublicIpEnabled      bool                            `json:"publicIpEnabled"`
+	PublicIp             NullableString                  `json:"publicIp"`
+	Hypervisor           NullableString                  `json:"hypervisor"`
+	HypervisorId         NullableString                  `json:"hypervisorId"`
+	IpAddress            NullableString                  `json:"ipAddress"`
+	SpotPrice            float64                         `json:"spotPrice"`
+	SpotInstance         bool                            `json:"spotInstance"`
+	AvailabilityZone     NullableString                  `json:"availabilityZone"`
+	ActionButtons        StandaloneVisibilityDto         `json:"actionButtons"`
+	IsWindows            bool                            `json:"isWindows"`
+	Disks                []StandAloneVmDiskForDetailsDto `json:"disks"`
+	StandAloneMetaDatas  []StandAloneMetaDataDtoForVm    `json:"standAloneMetaDatas"`
+	Profile              StandAloneProfileForDetailsDto  `json:"profile"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StandaloneVmsListForDetailsDto StandaloneVmsListForDetailsDto
@@ -790,7 +790,7 @@ func (o *StandaloneVmsListForDetailsDto) SetProfile(v StandAloneProfileForDetail
 }
 
 func (o StandaloneVmsListForDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -827,6 +827,11 @@ func (o StandaloneVmsListForDetailsDto) ToMap() (map[string]interface{}, error) 
 	toSerialize["disks"] = o.Disks
 	toSerialize["standAloneMetaDatas"] = o.StandAloneMetaDatas
 	toSerialize["profile"] = o.Profile
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -870,10 +875,10 @@ func (o *StandaloneVmsListForDetailsDto) UnmarshalJSON(data []byte) (err error) 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -881,15 +886,47 @@ func (o *StandaloneVmsListForDetailsDto) UnmarshalJSON(data []byte) (err error) 
 
 	varStandaloneVmsListForDetailsDto := _StandaloneVmsListForDetailsDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStandaloneVmsListForDetailsDto)
+	err = json.Unmarshal(data, &varStandaloneVmsListForDetailsDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StandaloneVmsListForDetailsDto(varStandaloneVmsListForDetailsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "imageName")
+		delete(additionalProperties, "imageId")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "cloudInit")
+		delete(additionalProperties, "volumeType")
+		delete(additionalProperties, "volumeSize")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "sshPublicKey")
+		delete(additionalProperties, "currentFlavor")
+		delete(additionalProperties, "targetFlavor")
+		delete(additionalProperties, "publicIpEnabled")
+		delete(additionalProperties, "publicIp")
+		delete(additionalProperties, "hypervisor")
+		delete(additionalProperties, "hypervisorId")
+		delete(additionalProperties, "ipAddress")
+		delete(additionalProperties, "spotPrice")
+		delete(additionalProperties, "spotInstance")
+		delete(additionalProperties, "availabilityZone")
+		delete(additionalProperties, "actionButtons")
+		delete(additionalProperties, "isWindows")
+		delete(additionalProperties, "disks")
+		delete(additionalProperties, "standAloneMetaDatas")
+		delete(additionalProperties, "profile")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -929,5 +966,3 @@ func (v *NullableStandaloneVmsListForDetailsDto) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,10 +21,11 @@ var _ MappedNullable = &KubesprayListDto{}
 
 // KubesprayListDto struct for KubesprayListDto
 type KubesprayListDto struct {
-	Id int32 `json:"id"`
-	Version NullableString `json:"version"`
-	KubernetesVersion NullableString `json:"kubernetesVersion"`
-	IsDeprecated bool `json:"isDeprecated"`
+	Id                   int32          `json:"id"`
+	Version              NullableString `json:"version"`
+	KubernetesVersion    NullableString `json:"kubernetesVersion"`
+	IsDeprecated         bool           `json:"isDeprecated"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _KubesprayListDto KubesprayListDto
@@ -152,7 +152,7 @@ func (o *KubesprayListDto) SetIsDeprecated(v bool) {
 }
 
 func (o KubesprayListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -165,6 +165,11 @@ func (o KubesprayListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["version"] = o.Version.Get()
 	toSerialize["kubernetesVersion"] = o.KubernetesVersion.Get()
 	toSerialize["isDeprecated"] = o.IsDeprecated
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -184,10 +189,10 @@ func (o *KubesprayListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -195,15 +200,23 @@ func (o *KubesprayListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varKubesprayListDto := _KubesprayListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKubesprayListDto)
+	err = json.Unmarshal(data, &varKubesprayListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubesprayListDto(varKubesprayListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "kubernetesVersion")
+		delete(additionalProperties, "isDeprecated")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -243,5 +256,3 @@ func (v *NullableKubesprayListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

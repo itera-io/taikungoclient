@@ -20,16 +20,19 @@ var _ MappedNullable = &CatalogDetails{}
 
 // CatalogDetails struct for CatalogDetails
 type CatalogDetails struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Description NullableString `json:"description,omitempty"`
-	IsLocked *bool `json:"isLocked,omitempty"`
-	IsDefault *bool `json:"isDefault,omitempty"`
-	OrganizationId *int32 `json:"organizationId,omitempty"`
-	PackageIds []string `json:"packageIds,omitempty"`
-	BoundProjects []ProjectCatalogDto `json:"boundProjects,omitempty"`
-	BoundApplications []AvailablePackagesDto `json:"boundApplications,omitempty"`
+	Id                   *int32                 `json:"id,omitempty"`
+	Name                 NullableString         `json:"name,omitempty"`
+	Description          NullableString         `json:"description,omitempty"`
+	IsLocked             *bool                  `json:"isLocked,omitempty"`
+	IsDefault            *bool                  `json:"isDefault,omitempty"`
+	OrganizationId       *int32                 `json:"organizationId,omitempty"`
+	PackageIds           []string               `json:"packageIds,omitempty"`
+	BoundProjects        []ProjectCatalogDto    `json:"boundProjects,omitempty"`
+	BoundApplications    []AvailablePackagesDto `json:"boundApplications,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CatalogDetails CatalogDetails
 
 // NewCatalogDetails instantiates a new CatalogDetails object
 // This constructor will assign default values to properties that have it defined,
@@ -112,6 +115,7 @@ func (o *CatalogDetails) HasName() bool {
 func (o *CatalogDetails) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CatalogDetails) SetNameNil() {
 	o.Name.Set(nil)
@@ -154,6 +158,7 @@ func (o *CatalogDetails) HasDescription() bool {
 func (o *CatalogDetails) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *CatalogDetails) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -360,7 +365,7 @@ func (o *CatalogDetails) SetBoundApplications(v []AvailablePackagesDto) {
 }
 
 func (o CatalogDetails) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -396,7 +401,41 @@ func (o CatalogDetails) ToMap() (map[string]interface{}, error) {
 	if o.BoundApplications != nil {
 		toSerialize["boundApplications"] = o.BoundApplications
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CatalogDetails) UnmarshalJSON(data []byte) (err error) {
+	varCatalogDetails := _CatalogDetails{}
+
+	err = json.Unmarshal(data, &varCatalogDetails)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CatalogDetails(varCatalogDetails)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "packageIds")
+		delete(additionalProperties, "boundProjects")
+		delete(additionalProperties, "boundApplications")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCatalogDetails struct {
@@ -434,5 +473,3 @@ func (v *NullableCatalogDetails) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

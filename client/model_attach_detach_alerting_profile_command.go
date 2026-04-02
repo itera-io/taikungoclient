@@ -20,9 +20,12 @@ var _ MappedNullable = &AttachDetachAlertingProfileCommand{}
 
 // AttachDetachAlertingProfileCommand struct for AttachDetachAlertingProfileCommand
 type AttachDetachAlertingProfileCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	AlertingProfileId NullableInt32 `json:"alertingProfileId,omitempty"`
+	ProjectId            *int32        `json:"projectId,omitempty"`
+	AlertingProfileId    NullableInt32 `json:"alertingProfileId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AttachDetachAlertingProfileCommand AttachDetachAlertingProfileCommand
 
 // NewAttachDetachAlertingProfileCommand instantiates a new AttachDetachAlertingProfileCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,7 @@ func (o *AttachDetachAlertingProfileCommand) HasAlertingProfileId() bool {
 func (o *AttachDetachAlertingProfileCommand) SetAlertingProfileId(v int32) {
 	o.AlertingProfileId.Set(&v)
 }
+
 // SetAlertingProfileIdNil sets the value for AlertingProfileId to be an explicit nil
 func (o *AttachDetachAlertingProfileCommand) SetAlertingProfileIdNil() {
 	o.AlertingProfileId.Set(nil)
@@ -116,7 +120,7 @@ func (o *AttachDetachAlertingProfileCommand) UnsetAlertingProfileId() {
 }
 
 func (o AttachDetachAlertingProfileCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o AttachDetachAlertingProfileCommand) ToMap() (map[string]interface{}, err
 	if o.AlertingProfileId.IsSet() {
 		toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AttachDetachAlertingProfileCommand) UnmarshalJSON(data []byte) (err error) {
+	varAttachDetachAlertingProfileCommand := _AttachDetachAlertingProfileCommand{}
+
+	err = json.Unmarshal(data, &varAttachDetachAlertingProfileCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AttachDetachAlertingProfileCommand(varAttachDetachAlertingProfileCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "alertingProfileId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAttachDetachAlertingProfileCommand struct {
@@ -169,5 +200,3 @@ func (v *NullableAttachDetachAlertingProfileCommand) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

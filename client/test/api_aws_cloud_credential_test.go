@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_AWSCloudCredentialAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_AWSCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test AWSCloudCredentialAPIService AwsCreate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.AWSCloudCredentialAPI.AwsCreate(context.Background()).Execute()
 
@@ -34,9 +34,21 @@ func Test_taikuncore_AWSCloudCredentialAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AWSCloudCredentialAPIService AwsEfsFileSystemByVpcList", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.AWSCloudCredentialAPI.AwsEfsFileSystemByVpcList(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AWSCloudCredentialAPIService AwsEksClusters", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var cloudId int32
 
@@ -50,7 +62,7 @@ func Test_taikuncore_AWSCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test AWSCloudCredentialAPIService AwsEksNodeGroups", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId int32
 
@@ -64,7 +76,7 @@ func Test_taikuncore_AWSCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test AWSCloudCredentialAPIService AwsGetEksAuthInfo", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.AWSCloudCredentialAPI.AwsGetEksAuthInfo(context.Background()).Execute()
 
@@ -76,7 +88,7 @@ func Test_taikuncore_AWSCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test AWSCloudCredentialAPIService AwsList", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.AWSCloudCredentialAPI.AwsList(context.Background()).Execute()
 
@@ -88,7 +100,7 @@ func Test_taikuncore_AWSCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test AWSCloudCredentialAPIService AwsOwners", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.AWSCloudCredentialAPI.AwsOwners(context.Background()).Execute()
 
@@ -100,7 +112,7 @@ func Test_taikuncore_AWSCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test AWSCloudCredentialAPIService AwsRegionlist", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.AWSCloudCredentialAPI.AwsRegionlist(context.Background()).Execute()
 
@@ -110,9 +122,21 @@ func Test_taikuncore_AWSCloudCredentialAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AWSCloudCredentialAPIService AwsSubnetList", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.AWSCloudCredentialAPI.AwsSubnetList(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AWSCloudCredentialAPIService AwsUpdate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.AWSCloudCredentialAPI.AwsUpdate(context.Background()).Execute()
 
@@ -123,7 +147,7 @@ func Test_taikuncore_AWSCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test AWSCloudCredentialAPIService AwsValidateOwners", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.AWSCloudCredentialAPI.AwsValidateOwners(context.Background()).Execute()
 
@@ -132,9 +156,21 @@ func Test_taikuncore_AWSCloudCredentialAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AWSCloudCredentialAPIService AwsVpcList", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.AWSCloudCredentialAPI.AwsVpcList(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AWSCloudCredentialAPIService AwsZones", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.AWSCloudCredentialAPI.AwsZones(context.Background()).Execute()
 

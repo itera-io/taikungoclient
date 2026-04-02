@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,11 +21,12 @@ var _ MappedNullable = &AlertingIntegrationsListDto{}
 
 // AlertingIntegrationsListDto struct for AlertingIntegrationsListDto
 type AlertingIntegrationsListDto struct {
-	Id int32 `json:"id"`
-	Url string `json:"url"`
-	Token NullableString `json:"token"`
+	Id                      int32                   `json:"id"`
+	Url                     string                  `json:"url"`
+	Token                   NullableString          `json:"token"`
 	AlertingIntegrationType AlertingIntegrationType `json:"alertingIntegrationType"`
-	AlertingProfileName string `json:"alertingProfileName"`
+	AlertingProfileName     string                  `json:"alertingProfileName"`
+	AdditionalProperties    map[string]interface{}
 }
 
 type _AlertingIntegrationsListDto AlertingIntegrationsListDto
@@ -176,7 +176,7 @@ func (o *AlertingIntegrationsListDto) SetAlertingProfileName(v string) {
 }
 
 func (o AlertingIntegrationsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -190,6 +190,11 @@ func (o AlertingIntegrationsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["token"] = o.Token.Get()
 	toSerialize["alertingIntegrationType"] = o.AlertingIntegrationType
 	toSerialize["alertingProfileName"] = o.AlertingProfileName
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -210,10 +215,10 @@ func (o *AlertingIntegrationsListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -221,15 +226,24 @@ func (o *AlertingIntegrationsListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varAlertingIntegrationsListDto := _AlertingIntegrationsListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAlertingIntegrationsListDto)
+	err = json.Unmarshal(data, &varAlertingIntegrationsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AlertingIntegrationsListDto(varAlertingIntegrationsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "alertingIntegrationType")
+		delete(additionalProperties, "alertingProfileName")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -269,5 +283,3 @@ func (v *NullableAlertingIntegrationsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

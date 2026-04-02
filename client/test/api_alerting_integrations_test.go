@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_AlertingIntegrationsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_AlertingIntegrationsAPIService(t *testing.T) {
 
 	t.Run("Test AlertingIntegrationsAPIService AlertingintegrationsCreate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.AlertingIntegrationsAPI.AlertingintegrationsCreate(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_taikuncore_AlertingIntegrationsAPIService(t *testing.T) {
 
 	t.Run("Test AlertingIntegrationsAPIService AlertingintegrationsDelete", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id int32
 
@@ -49,7 +49,7 @@ func Test_taikuncore_AlertingIntegrationsAPIService(t *testing.T) {
 
 	t.Run("Test AlertingIntegrationsAPIService AlertingintegrationsEdit", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.AlertingIntegrationsAPI.AlertingintegrationsEdit(context.Background()).Execute()
 
@@ -60,23 +60,11 @@ func Test_taikuncore_AlertingIntegrationsAPIService(t *testing.T) {
 
 	t.Run("Test AlertingIntegrationsAPIService AlertingintegrationsList", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var alertingProfileId int32
 
 		resp, httpRes, err := apiClient.AlertingIntegrationsAPI.AlertingintegrationsList(context.Background(), alertingProfileId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AlertingIntegrationsAPIService DocumentationList", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.AlertingIntegrationsAPI.DocumentationList(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

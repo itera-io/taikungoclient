@@ -20,17 +20,20 @@ var _ MappedNullable = &UpdateSubscriptionCommand{}
 
 // UpdateSubscriptionCommand struct for UpdateSubscriptionCommand
 type UpdateSubscriptionCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	ProjectLimit *int32 `json:"projectLimit,omitempty"`
-	ServerLimit *int32 `json:"serverLimit,omitempty"`
-	UserLimit *int32 `json:"userLimit,omitempty"`
-	CloudCredentialLimit *int32 `json:"cloudCredentialLimit,omitempty"`
-	MonthlyPrice *float64 `json:"monthlyPrice,omitempty"`
-	YearlyPrice *float64 `json:"yearlyPrice,omitempty"`
-	TcuPrice *float64 `json:"tcuPrice,omitempty"`
-	TrialDays *int32 `json:"trialDays,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	ProjectLimit         *int32         `json:"projectLimit,omitempty"`
+	ServerLimit          *int32         `json:"serverLimit,omitempty"`
+	UserLimit            *int32         `json:"userLimit,omitempty"`
+	CloudCredentialLimit *int32         `json:"cloudCredentialLimit,omitempty"`
+	MonthlyPrice         *float64       `json:"monthlyPrice,omitempty"`
+	YearlyPrice          *float64       `json:"yearlyPrice,omitempty"`
+	TcuPrice             *float64       `json:"tcuPrice,omitempty"`
+	TrialDays            *int32         `json:"trialDays,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateSubscriptionCommand UpdateSubscriptionCommand
 
 // NewUpdateSubscriptionCommand instantiates a new UpdateSubscriptionCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -113,6 +116,7 @@ func (o *UpdateSubscriptionCommand) HasName() bool {
 func (o *UpdateSubscriptionCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UpdateSubscriptionCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -380,7 +384,7 @@ func (o *UpdateSubscriptionCommand) SetTrialDays(v int32) {
 }
 
 func (o UpdateSubscriptionCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -419,7 +423,42 @@ func (o UpdateSubscriptionCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TrialDays) {
 		toSerialize["trialDays"] = o.TrialDays
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateSubscriptionCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateSubscriptionCommand := _UpdateSubscriptionCommand{}
+
+	err = json.Unmarshal(data, &varUpdateSubscriptionCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateSubscriptionCommand(varUpdateSubscriptionCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "projectLimit")
+		delete(additionalProperties, "serverLimit")
+		delete(additionalProperties, "userLimit")
+		delete(additionalProperties, "cloudCredentialLimit")
+		delete(additionalProperties, "monthlyPrice")
+		delete(additionalProperties, "yearlyPrice")
+		delete(additionalProperties, "tcuPrice")
+		delete(additionalProperties, "trialDays")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateSubscriptionCommand struct {
@@ -457,5 +496,3 @@ func (v *NullableUpdateSubscriptionCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

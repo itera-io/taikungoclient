@@ -20,10 +20,13 @@ var _ MappedNullable = &VsphereVmTemplateData{}
 
 // VsphereVmTemplateData struct for VsphereVmTemplateData
 type VsphereVmTemplateData struct {
-	Name NullableString `json:"name,omitempty"`
-	Size *int32 `json:"size,omitempty"`
-	Uuid NullableString `json:"uuid,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Size                 *int32         `json:"size,omitempty"`
+	Uuid                 NullableString `json:"uuid,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _VsphereVmTemplateData VsphereVmTemplateData
 
 // NewVsphereVmTemplateData instantiates a new VsphereVmTemplateData object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *VsphereVmTemplateData) HasName() bool {
 func (o *VsphereVmTemplateData) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *VsphereVmTemplateData) SetNameNil() {
 	o.Name.Set(nil)
@@ -148,6 +152,7 @@ func (o *VsphereVmTemplateData) HasUuid() bool {
 func (o *VsphereVmTemplateData) SetUuid(v string) {
 	o.Uuid.Set(&v)
 }
+
 // SetUuidNil sets the value for Uuid to be an explicit nil
 func (o *VsphereVmTemplateData) SetUuidNil() {
 	o.Uuid.Set(nil)
@@ -159,7 +164,7 @@ func (o *VsphereVmTemplateData) UnsetUuid() {
 }
 
 func (o VsphereVmTemplateData) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -177,7 +182,35 @@ func (o VsphereVmTemplateData) ToMap() (map[string]interface{}, error) {
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *VsphereVmTemplateData) UnmarshalJSON(data []byte) (err error) {
+	varVsphereVmTemplateData := _VsphereVmTemplateData{}
+
+	err = json.Unmarshal(data, &varVsphereVmTemplateData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VsphereVmTemplateData(varVsphereVmTemplateData)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "size")
+		delete(additionalProperties, "uuid")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableVsphereVmTemplateData struct {
@@ -215,5 +248,3 @@ func (v *NullableVsphereVmTemplateData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

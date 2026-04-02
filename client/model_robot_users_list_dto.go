@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,21 +21,22 @@ var _ MappedNullable = &RobotUsersListDto{}
 
 // RobotUsersListDto struct for RobotUsersListDto
 type RobotUsersListDto struct {
-	UserId string `json:"userId"`
-	AccountId int32 `json:"accountId"`
-	AccountName string `json:"accountName"`
-	AccessKey string `json:"accessKey"`
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	CreatedBy string `json:"createdBy"`
-	Name string `json:"name"`
-	Description NullableString `json:"description,omitempty"`
-	Scopes []string `json:"scopes"`
-	Ips []string `json:"ips,omitempty"`
-	IsActive bool `json:"isActive"`
-	CreatedAt string `json:"createdAt"`
-	ExpiresAt NullableString `json:"expiresAt,omitempty"`
-	LastUsedAt NullableString `json:"lastUsedAt,omitempty"`
+	UserId               string         `json:"userId"`
+	AccountId            int32          `json:"accountId"`
+	AccountName          string         `json:"accountName"`
+	AccessKey            string         `json:"accessKey"`
+	OrganizationId       NullableInt32  `json:"organizationId,omitempty"`
+	OrganizationName     NullableString `json:"organizationName,omitempty"`
+	CreatedBy            string         `json:"createdBy"`
+	Name                 string         `json:"name"`
+	Description          NullableString `json:"description,omitempty"`
+	Scopes               []string       `json:"scopes"`
+	Ips                  []string       `json:"ips,omitempty"`
+	IsActive             bool           `json:"isActive"`
+	CreatedAt            string         `json:"createdAt"`
+	ExpiresAt            NullableString `json:"expiresAt,omitempty"`
+	LastUsedAt           NullableString `json:"lastUsedAt,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _RobotUsersListDto RobotUsersListDto
@@ -195,6 +195,7 @@ func (o *RobotUsersListDto) HasOrganizationId() bool {
 func (o *RobotUsersListDto) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
+
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *RobotUsersListDto) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -237,6 +238,7 @@ func (o *RobotUsersListDto) HasOrganizationName() bool {
 func (o *RobotUsersListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
+
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *RobotUsersListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -327,6 +329,7 @@ func (o *RobotUsersListDto) HasDescription() bool {
 func (o *RobotUsersListDto) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *RobotUsersListDto) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -474,6 +477,7 @@ func (o *RobotUsersListDto) HasExpiresAt() bool {
 func (o *RobotUsersListDto) SetExpiresAt(v string) {
 	o.ExpiresAt.Set(&v)
 }
+
 // SetExpiresAtNil sets the value for ExpiresAt to be an explicit nil
 func (o *RobotUsersListDto) SetExpiresAtNil() {
 	o.ExpiresAt.Set(nil)
@@ -516,6 +520,7 @@ func (o *RobotUsersListDto) HasLastUsedAt() bool {
 func (o *RobotUsersListDto) SetLastUsedAt(v string) {
 	o.LastUsedAt.Set(&v)
 }
+
 // SetLastUsedAtNil sets the value for LastUsedAt to be an explicit nil
 func (o *RobotUsersListDto) SetLastUsedAtNil() {
 	o.LastUsedAt.Set(nil)
@@ -527,7 +532,7 @@ func (o *RobotUsersListDto) UnsetLastUsedAt() {
 }
 
 func (o RobotUsersListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -563,6 +568,11 @@ func (o RobotUsersListDto) ToMap() (map[string]interface{}, error) {
 	if o.LastUsedAt.IsSet() {
 		toSerialize["lastUsedAt"] = o.LastUsedAt.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -587,10 +597,10 @@ func (o *RobotUsersListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -598,15 +608,34 @@ func (o *RobotUsersListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varRobotUsersListDto := _RobotUsersListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRobotUsersListDto)
+	err = json.Unmarshal(data, &varRobotUsersListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RobotUsersListDto(varRobotUsersListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "userId")
+		delete(additionalProperties, "accountId")
+		delete(additionalProperties, "accountName")
+		delete(additionalProperties, "accessKey")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "scopes")
+		delete(additionalProperties, "ips")
+		delete(additionalProperties, "isActive")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "expiresAt")
+		delete(additionalProperties, "lastUsedAt")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -646,5 +675,3 @@ func (v *NullableRobotUsersListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

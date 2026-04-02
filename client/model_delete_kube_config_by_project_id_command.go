@@ -20,8 +20,11 @@ var _ MappedNullable = &DeleteKubeConfigByProjectIdCommand{}
 
 // DeleteKubeConfigByProjectIdCommand struct for DeleteKubeConfigByProjectIdCommand
 type DeleteKubeConfigByProjectIdCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
+	ProjectId            *int32 `json:"projectId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeleteKubeConfigByProjectIdCommand DeleteKubeConfigByProjectIdCommand
 
 // NewDeleteKubeConfigByProjectIdCommand instantiates a new DeleteKubeConfigByProjectIdCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,7 +76,7 @@ func (o *DeleteKubeConfigByProjectIdCommand) SetProjectId(v int32) {
 }
 
 func (o DeleteKubeConfigByProjectIdCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -85,7 +88,33 @@ func (o DeleteKubeConfigByProjectIdCommand) ToMap() (map[string]interface{}, err
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeleteKubeConfigByProjectIdCommand) UnmarshalJSON(data []byte) (err error) {
+	varDeleteKubeConfigByProjectIdCommand := _DeleteKubeConfigByProjectIdCommand{}
+
+	err = json.Unmarshal(data, &varDeleteKubeConfigByProjectIdCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeleteKubeConfigByProjectIdCommand(varDeleteKubeConfigByProjectIdCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeleteKubeConfigByProjectIdCommand struct {
@@ -123,5 +152,3 @@ func (v *NullableDeleteKubeConfigByProjectIdCommand) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,9 +20,12 @@ var _ MappedNullable = &ResourcePoolSummary{}
 
 // ResourcePoolSummary struct for ResourcePoolSummary
 type ResourcePoolSummary struct {
-	Name NullableString `json:"name,omitempty"`
-	ResourcePool NullableString `json:"resourcePool,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	ResourcePool         NullableString `json:"resourcePool,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ResourcePoolSummary ResourcePoolSummary
 
 // NewResourcePoolSummary instantiates a new ResourcePoolSummary object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *ResourcePoolSummary) HasName() bool {
 func (o *ResourcePoolSummary) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ResourcePoolSummary) SetNameNil() {
 	o.Name.Set(nil)
@@ -115,6 +119,7 @@ func (o *ResourcePoolSummary) HasResourcePool() bool {
 func (o *ResourcePoolSummary) SetResourcePool(v string) {
 	o.ResourcePool.Set(&v)
 }
+
 // SetResourcePoolNil sets the value for ResourcePool to be an explicit nil
 func (o *ResourcePoolSummary) SetResourcePoolNil() {
 	o.ResourcePool.Set(nil)
@@ -126,7 +131,7 @@ func (o *ResourcePoolSummary) UnsetResourcePool() {
 }
 
 func (o ResourcePoolSummary) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,7 +146,34 @@ func (o ResourcePoolSummary) ToMap() (map[string]interface{}, error) {
 	if o.ResourcePool.IsSet() {
 		toSerialize["resourcePool"] = o.ResourcePool.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ResourcePoolSummary) UnmarshalJSON(data []byte) (err error) {
+	varResourcePoolSummary := _ResourcePoolSummary{}
+
+	err = json.Unmarshal(data, &varResourcePoolSummary)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ResourcePoolSummary(varResourcePoolSummary)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "resourcePool")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableResourcePoolSummary struct {
@@ -179,5 +211,3 @@ func (v *NullableResourcePoolSummary) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

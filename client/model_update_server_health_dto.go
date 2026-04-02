@@ -20,9 +20,12 @@ var _ MappedNullable = &UpdateServerHealthDto{}
 
 // UpdateServerHealthDto struct for UpdateServerHealthDto
 type UpdateServerHealthDto struct {
-	IpAddress NullableString `json:"ipAddress,omitempty"`
-	ServerHealth NullableString `json:"serverHealth,omitempty"`
+	IpAddress            NullableString `json:"ipAddress,omitempty"`
+	ServerHealth         NullableString `json:"serverHealth,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateServerHealthDto UpdateServerHealthDto
 
 // NewUpdateServerHealthDto instantiates a new UpdateServerHealthDto object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *UpdateServerHealthDto) HasIpAddress() bool {
 func (o *UpdateServerHealthDto) SetIpAddress(v string) {
 	o.IpAddress.Set(&v)
 }
+
 // SetIpAddressNil sets the value for IpAddress to be an explicit nil
 func (o *UpdateServerHealthDto) SetIpAddressNil() {
 	o.IpAddress.Set(nil)
@@ -115,6 +119,7 @@ func (o *UpdateServerHealthDto) HasServerHealth() bool {
 func (o *UpdateServerHealthDto) SetServerHealth(v string) {
 	o.ServerHealth.Set(&v)
 }
+
 // SetServerHealthNil sets the value for ServerHealth to be an explicit nil
 func (o *UpdateServerHealthDto) SetServerHealthNil() {
 	o.ServerHealth.Set(nil)
@@ -126,7 +131,7 @@ func (o *UpdateServerHealthDto) UnsetServerHealth() {
 }
 
 func (o UpdateServerHealthDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,7 +146,34 @@ func (o UpdateServerHealthDto) ToMap() (map[string]interface{}, error) {
 	if o.ServerHealth.IsSet() {
 		toSerialize["serverHealth"] = o.ServerHealth.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateServerHealthDto) UnmarshalJSON(data []byte) (err error) {
+	varUpdateServerHealthDto := _UpdateServerHealthDto{}
+
+	err = json.Unmarshal(data, &varUpdateServerHealthDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateServerHealthDto(varUpdateServerHealthDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "ipAddress")
+		delete(additionalProperties, "serverHealth")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateServerHealthDto struct {
@@ -179,5 +211,3 @@ func (v *NullableUpdateServerHealthDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

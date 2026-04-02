@@ -20,12 +20,15 @@ var _ MappedNullable = &CreateBackupPolicyCommand{}
 
 // CreateBackupPolicyCommand struct for CreateBackupPolicyCommand
 type CreateBackupPolicyCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	IncludeNamespaces []string `json:"includeNamespaces,omitempty"`
-	CronPeriod NullableString `json:"cronPeriod,omitempty"`
-	ProjectId *int32 `json:"projectId,omitempty"`
-	RetentionPeriod NullableString `json:"retentionPeriod,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	IncludeNamespaces    []string       `json:"includeNamespaces,omitempty"`
+	CronPeriod           NullableString `json:"cronPeriod,omitempty"`
+	ProjectId            *int32         `json:"projectId,omitempty"`
+	RetentionPeriod      NullableString `json:"retentionPeriod,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateBackupPolicyCommand CreateBackupPolicyCommand
 
 // NewCreateBackupPolicyCommand instantiates a new CreateBackupPolicyCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -76,6 +79,7 @@ func (o *CreateBackupPolicyCommand) HasName() bool {
 func (o *CreateBackupPolicyCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateBackupPolicyCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -151,6 +155,7 @@ func (o *CreateBackupPolicyCommand) HasCronPeriod() bool {
 func (o *CreateBackupPolicyCommand) SetCronPeriod(v string) {
 	o.CronPeriod.Set(&v)
 }
+
 // SetCronPeriodNil sets the value for CronPeriod to be an explicit nil
 func (o *CreateBackupPolicyCommand) SetCronPeriodNil() {
 	o.CronPeriod.Set(nil)
@@ -225,6 +230,7 @@ func (o *CreateBackupPolicyCommand) HasRetentionPeriod() bool {
 func (o *CreateBackupPolicyCommand) SetRetentionPeriod(v string) {
 	o.RetentionPeriod.Set(&v)
 }
+
 // SetRetentionPeriodNil sets the value for RetentionPeriod to be an explicit nil
 func (o *CreateBackupPolicyCommand) SetRetentionPeriodNil() {
 	o.RetentionPeriod.Set(nil)
@@ -236,7 +242,7 @@ func (o *CreateBackupPolicyCommand) UnsetRetentionPeriod() {
 }
 
 func (o CreateBackupPolicyCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -260,7 +266,37 @@ func (o CreateBackupPolicyCommand) ToMap() (map[string]interface{}, error) {
 	if o.RetentionPeriod.IsSet() {
 		toSerialize["retentionPeriod"] = o.RetentionPeriod.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateBackupPolicyCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateBackupPolicyCommand := _CreateBackupPolicyCommand{}
+
+	err = json.Unmarshal(data, &varCreateBackupPolicyCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateBackupPolicyCommand(varCreateBackupPolicyCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "includeNamespaces")
+		delete(additionalProperties, "cronPeriod")
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "retentionPeriod")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateBackupPolicyCommand struct {
@@ -298,5 +334,3 @@ func (v *NullableCreateBackupPolicyCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

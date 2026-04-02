@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,9 +21,10 @@ var _ MappedNullable = &StandAloneMetaDataDtoForVm{}
 
 // StandAloneMetaDataDtoForVm struct for StandAloneMetaDataDtoForVm
 type StandAloneMetaDataDtoForVm struct {
-	Id int32 `json:"id"`
-	Key NullableString `json:"key"`
-	Value NullableString `json:"value"`
+	Id                   int32          `json:"id"`
+	Key                  NullableString `json:"key"`
+	Value                NullableString `json:"value"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StandAloneMetaDataDtoForVm StandAloneMetaDataDtoForVm
@@ -126,7 +126,7 @@ func (o *StandAloneMetaDataDtoForVm) SetValue(v string) {
 }
 
 func (o StandAloneMetaDataDtoForVm) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -138,6 +138,11 @@ func (o StandAloneMetaDataDtoForVm) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["key"] = o.Key.Get()
 	toSerialize["value"] = o.Value.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -156,10 +161,10 @@ func (o *StandAloneMetaDataDtoForVm) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -167,15 +172,22 @@ func (o *StandAloneMetaDataDtoForVm) UnmarshalJSON(data []byte) (err error) {
 
 	varStandAloneMetaDataDtoForVm := _StandAloneMetaDataDtoForVm{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStandAloneMetaDataDtoForVm)
+	err = json.Unmarshal(data, &varStandAloneMetaDataDtoForVm)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StandAloneMetaDataDtoForVm(varStandAloneMetaDataDtoForVm)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "value")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -215,5 +227,3 @@ func (v *NullableStandAloneMetaDataDtoForVm) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

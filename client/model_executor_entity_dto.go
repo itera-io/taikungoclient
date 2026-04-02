@@ -20,12 +20,15 @@ var _ MappedNullable = &ExecutorEntityDto{}
 
 // ExecutorEntityDto struct for ExecutorEntityDto
 type ExecutorEntityDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Health *ExecutorHealth `json:"health,omitempty"`
-	KubeConfig NullableString `json:"kubeConfig,omitempty"`
-	IsLocal *bool `json:"isLocal,omitempty"`
+	Id                   *int32          `json:"id,omitempty"`
+	Name                 NullableString  `json:"name,omitempty"`
+	Health               *ExecutorHealth `json:"health,omitempty"`
+	KubeConfig           NullableString  `json:"kubeConfig,omitempty"`
+	IsLocal              *bool           `json:"isLocal,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ExecutorEntityDto ExecutorEntityDto
 
 // NewExecutorEntityDto instantiates a new ExecutorEntityDto object
 // This constructor will assign default values to properties that have it defined,
@@ -108,6 +111,7 @@ func (o *ExecutorEntityDto) HasName() bool {
 func (o *ExecutorEntityDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ExecutorEntityDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -182,6 +186,7 @@ func (o *ExecutorEntityDto) HasKubeConfig() bool {
 func (o *ExecutorEntityDto) SetKubeConfig(v string) {
 	o.KubeConfig.Set(&v)
 }
+
 // SetKubeConfigNil sets the value for KubeConfig to be an explicit nil
 func (o *ExecutorEntityDto) SetKubeConfigNil() {
 	o.KubeConfig.Set(nil)
@@ -225,7 +230,7 @@ func (o *ExecutorEntityDto) SetIsLocal(v bool) {
 }
 
 func (o ExecutorEntityDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -249,7 +254,37 @@ func (o ExecutorEntityDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsLocal) {
 		toSerialize["isLocal"] = o.IsLocal
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ExecutorEntityDto) UnmarshalJSON(data []byte) (err error) {
+	varExecutorEntityDto := _ExecutorEntityDto{}
+
+	err = json.Unmarshal(data, &varExecutorEntityDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ExecutorEntityDto(varExecutorEntityDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "health")
+		delete(additionalProperties, "kubeConfig")
+		delete(additionalProperties, "isLocal")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableExecutorEntityDto struct {
@@ -287,5 +322,3 @@ func (v *NullableExecutorEntityDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

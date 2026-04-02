@@ -20,11 +20,14 @@ var _ MappedNullable = &UpdateRepoPasswordCommand{}
 
 // UpdateRepoPasswordCommand struct for UpdateRepoPasswordCommand
 type UpdateRepoPasswordCommand struct {
-	Username NullableString `json:"username,omitempty"`
-	Password NullableString `json:"password,omitempty"`
-	RepositoryId NullableString `json:"repositoryId,omitempty"`
-	OrganizationId *int32 `json:"organizationId,omitempty"`
+	Username             NullableString `json:"username,omitempty"`
+	Password             NullableString `json:"password,omitempty"`
+	RepositoryId         NullableString `json:"repositoryId,omitempty"`
+	OrganizationId       *int32         `json:"organizationId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateRepoPasswordCommand UpdateRepoPasswordCommand
 
 // NewUpdateRepoPasswordCommand instantiates a new UpdateRepoPasswordCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -75,6 +78,7 @@ func (o *UpdateRepoPasswordCommand) HasUsername() bool {
 func (o *UpdateRepoPasswordCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *UpdateRepoPasswordCommand) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -117,6 +121,7 @@ func (o *UpdateRepoPasswordCommand) HasPassword() bool {
 func (o *UpdateRepoPasswordCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *UpdateRepoPasswordCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -159,6 +164,7 @@ func (o *UpdateRepoPasswordCommand) HasRepositoryId() bool {
 func (o *UpdateRepoPasswordCommand) SetRepositoryId(v string) {
 	o.RepositoryId.Set(&v)
 }
+
 // SetRepositoryIdNil sets the value for RepositoryId to be an explicit nil
 func (o *UpdateRepoPasswordCommand) SetRepositoryIdNil() {
 	o.RepositoryId.Set(nil)
@@ -202,7 +208,7 @@ func (o *UpdateRepoPasswordCommand) SetOrganizationId(v int32) {
 }
 
 func (o UpdateRepoPasswordCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -223,7 +229,36 @@ func (o UpdateRepoPasswordCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateRepoPasswordCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateRepoPasswordCommand := _UpdateRepoPasswordCommand{}
+
+	err = json.Unmarshal(data, &varUpdateRepoPasswordCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateRepoPasswordCommand(varUpdateRepoPasswordCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "repositoryId")
+		delete(additionalProperties, "organizationId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateRepoPasswordCommand struct {
@@ -261,5 +296,3 @@ func (v *NullableUpdateRepoPasswordCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

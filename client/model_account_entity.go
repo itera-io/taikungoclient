@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,9 +21,10 @@ var _ MappedNullable = &AccountEntity{}
 
 // AccountEntity struct for AccountEntity
 type AccountEntity struct {
-	AccountId int32 `json:"accountId"`
-	AccountName string `json:"accountName"`
-	Logo NullableString `json:"logo,omitempty"`
+	AccountId            int32          `json:"accountId"`
+	AccountName          string         `json:"accountName"`
+	Logo                 NullableString `json:"logo,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AccountEntity AccountEntity
@@ -128,6 +128,7 @@ func (o *AccountEntity) HasLogo() bool {
 func (o *AccountEntity) SetLogo(v string) {
 	o.Logo.Set(&v)
 }
+
 // SetLogoNil sets the value for Logo to be an explicit nil
 func (o *AccountEntity) SetLogoNil() {
 	o.Logo.Set(nil)
@@ -139,7 +140,7 @@ func (o *AccountEntity) UnsetLogo() {
 }
 
 func (o AccountEntity) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -153,6 +154,11 @@ func (o AccountEntity) ToMap() (map[string]interface{}, error) {
 	if o.Logo.IsSet() {
 		toSerialize["logo"] = o.Logo.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -170,10 +176,10 @@ func (o *AccountEntity) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -181,15 +187,22 @@ func (o *AccountEntity) UnmarshalJSON(data []byte) (err error) {
 
 	varAccountEntity := _AccountEntity{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAccountEntity)
+	err = json.Unmarshal(data, &varAccountEntity)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AccountEntity(varAccountEntity)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accountId")
+		delete(additionalProperties, "accountName")
+		delete(additionalProperties, "logo")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -229,5 +242,3 @@ func (v *NullableAccountEntity) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

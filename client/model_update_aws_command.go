@@ -20,11 +20,14 @@ var _ MappedNullable = &UpdateAwsCommand{}
 
 // UpdateAwsCommand struct for UpdateAwsCommand
 type UpdateAwsCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey,omitempty"`
-	AwsAccessKeyId NullableString `json:"awsAccessKeyId,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	AwsSecretAccessKey   NullableString `json:"awsSecretAccessKey,omitempty"`
+	AwsAccessKeyId       NullableString `json:"awsAccessKeyId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateAwsCommand UpdateAwsCommand
 
 // NewUpdateAwsCommand instantiates a new UpdateAwsCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -107,6 +110,7 @@ func (o *UpdateAwsCommand) HasName() bool {
 func (o *UpdateAwsCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UpdateAwsCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -149,6 +153,7 @@ func (o *UpdateAwsCommand) HasAwsSecretAccessKey() bool {
 func (o *UpdateAwsCommand) SetAwsSecretAccessKey(v string) {
 	o.AwsSecretAccessKey.Set(&v)
 }
+
 // SetAwsSecretAccessKeyNil sets the value for AwsSecretAccessKey to be an explicit nil
 func (o *UpdateAwsCommand) SetAwsSecretAccessKeyNil() {
 	o.AwsSecretAccessKey.Set(nil)
@@ -191,6 +196,7 @@ func (o *UpdateAwsCommand) HasAwsAccessKeyId() bool {
 func (o *UpdateAwsCommand) SetAwsAccessKeyId(v string) {
 	o.AwsAccessKeyId.Set(&v)
 }
+
 // SetAwsAccessKeyIdNil sets the value for AwsAccessKeyId to be an explicit nil
 func (o *UpdateAwsCommand) SetAwsAccessKeyIdNil() {
 	o.AwsAccessKeyId.Set(nil)
@@ -202,7 +208,7 @@ func (o *UpdateAwsCommand) UnsetAwsAccessKeyId() {
 }
 
 func (o UpdateAwsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -223,7 +229,36 @@ func (o UpdateAwsCommand) ToMap() (map[string]interface{}, error) {
 	if o.AwsAccessKeyId.IsSet() {
 		toSerialize["awsAccessKeyId"] = o.AwsAccessKeyId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateAwsCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateAwsCommand := _UpdateAwsCommand{}
+
+	err = json.Unmarshal(data, &varUpdateAwsCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateAwsCommand(varUpdateAwsCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "awsSecretAccessKey")
+		delete(additionalProperties, "awsAccessKeyId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateAwsCommand struct {
@@ -261,5 +296,3 @@ func (v *NullableUpdateAwsCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

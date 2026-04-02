@@ -20,9 +20,12 @@ var _ MappedNullable = &InfraBillingListCommand{}
 
 // InfraBillingListCommand struct for InfraBillingListCommand
 type InfraBillingListCommand struct {
-	OrganizationId *int32 `json:"organizationId,omitempty"`
-	Filter *DateFilter `json:"filter,omitempty"`
+	OrganizationId       *int32      `json:"organizationId,omitempty"`
+	Filter               *DateFilter `json:"filter,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _InfraBillingListCommand InfraBillingListCommand
 
 // NewInfraBillingListCommand instantiates a new InfraBillingListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -106,7 +109,7 @@ func (o *InfraBillingListCommand) SetFilter(v DateFilter) {
 }
 
 func (o InfraBillingListCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -121,7 +124,34 @@ func (o InfraBillingListCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Filter) {
 		toSerialize["filter"] = o.Filter
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *InfraBillingListCommand) UnmarshalJSON(data []byte) (err error) {
+	varInfraBillingListCommand := _InfraBillingListCommand{}
+
+	err = json.Unmarshal(data, &varInfraBillingListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InfraBillingListCommand(varInfraBillingListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "filter")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableInfraBillingListCommand struct {
@@ -159,5 +189,3 @@ func (v *NullableInfraBillingListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,10 +20,13 @@ var _ MappedNullable = &AwsVpcListCommand{}
 
 // AwsVpcListCommand struct for AwsVpcListCommand
 type AwsVpcListCommand struct {
-	AwsAccessKeyId NullableString `json:"awsAccessKeyId,omitempty"`
-	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey,omitempty"`
-	AwsRegion NullableString `json:"awsRegion,omitempty"`
+	AwsAccessKeyId       NullableString `json:"awsAccessKeyId,omitempty"`
+	AwsSecretAccessKey   NullableString `json:"awsSecretAccessKey,omitempty"`
+	AwsRegion            NullableString `json:"awsRegion,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AwsVpcListCommand AwsVpcListCommand
 
 // NewAwsVpcListCommand instantiates a new AwsVpcListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *AwsVpcListCommand) HasAwsAccessKeyId() bool {
 func (o *AwsVpcListCommand) SetAwsAccessKeyId(v string) {
 	o.AwsAccessKeyId.Set(&v)
 }
+
 // SetAwsAccessKeyIdNil sets the value for AwsAccessKeyId to be an explicit nil
 func (o *AwsVpcListCommand) SetAwsAccessKeyIdNil() {
 	o.AwsAccessKeyId.Set(nil)
@@ -116,6 +120,7 @@ func (o *AwsVpcListCommand) HasAwsSecretAccessKey() bool {
 func (o *AwsVpcListCommand) SetAwsSecretAccessKey(v string) {
 	o.AwsSecretAccessKey.Set(&v)
 }
+
 // SetAwsSecretAccessKeyNil sets the value for AwsSecretAccessKey to be an explicit nil
 func (o *AwsVpcListCommand) SetAwsSecretAccessKeyNil() {
 	o.AwsSecretAccessKey.Set(nil)
@@ -158,6 +163,7 @@ func (o *AwsVpcListCommand) HasAwsRegion() bool {
 func (o *AwsVpcListCommand) SetAwsRegion(v string) {
 	o.AwsRegion.Set(&v)
 }
+
 // SetAwsRegionNil sets the value for AwsRegion to be an explicit nil
 func (o *AwsVpcListCommand) SetAwsRegionNil() {
 	o.AwsRegion.Set(nil)
@@ -169,7 +175,7 @@ func (o *AwsVpcListCommand) UnsetAwsRegion() {
 }
 
 func (o AwsVpcListCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -187,7 +193,35 @@ func (o AwsVpcListCommand) ToMap() (map[string]interface{}, error) {
 	if o.AwsRegion.IsSet() {
 		toSerialize["awsRegion"] = o.AwsRegion.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AwsVpcListCommand) UnmarshalJSON(data []byte) (err error) {
+	varAwsVpcListCommand := _AwsVpcListCommand{}
+
+	err = json.Unmarshal(data, &varAwsVpcListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AwsVpcListCommand(varAwsVpcListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "awsAccessKeyId")
+		delete(additionalProperties, "awsSecretAccessKey")
+		delete(additionalProperties, "awsRegion")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAwsVpcListCommand struct {
@@ -225,5 +259,3 @@ func (v *NullableAwsVpcListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

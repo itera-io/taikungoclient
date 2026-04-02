@@ -20,10 +20,14 @@ var _ MappedNullable = &ResetPasswordCommand{}
 
 // ResetPasswordCommand struct for ResetPasswordCommand
 type ResetPasswordCommand struct {
-	Token NullableString `json:"token,omitempty"`
-	Email NullableString `json:"email,omitempty"`
-	NewPassword NullableString `json:"newPassword,omitempty"`
+	Token                NullableString `json:"token,omitempty"`
+	Email                NullableString `json:"email,omitempty"`
+	AccountName          NullableString `json:"accountName,omitempty"`
+	NewPassword          NullableString `json:"newPassword,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ResetPasswordCommand ResetPasswordCommand
 
 // NewResetPasswordCommand instantiates a new ResetPasswordCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +78,7 @@ func (o *ResetPasswordCommand) HasToken() bool {
 func (o *ResetPasswordCommand) SetToken(v string) {
 	o.Token.Set(&v)
 }
+
 // SetTokenNil sets the value for Token to be an explicit nil
 func (o *ResetPasswordCommand) SetTokenNil() {
 	o.Token.Set(nil)
@@ -116,6 +121,7 @@ func (o *ResetPasswordCommand) HasEmail() bool {
 func (o *ResetPasswordCommand) SetEmail(v string) {
 	o.Email.Set(&v)
 }
+
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *ResetPasswordCommand) SetEmailNil() {
 	o.Email.Set(nil)
@@ -124,6 +130,49 @@ func (o *ResetPasswordCommand) SetEmailNil() {
 // UnsetEmail ensures that no value is present for Email, not even an explicit nil
 func (o *ResetPasswordCommand) UnsetEmail() {
 	o.Email.Unset()
+}
+
+// GetAccountName returns the AccountName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ResetPasswordCommand) GetAccountName() string {
+	if o == nil || IsNil(o.AccountName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AccountName.Get()
+}
+
+// GetAccountNameOk returns a tuple with the AccountName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ResetPasswordCommand) GetAccountNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AccountName.Get(), o.AccountName.IsSet()
+}
+
+// HasAccountName returns a boolean if a field has been set.
+func (o *ResetPasswordCommand) HasAccountName() bool {
+	if o != nil && o.AccountName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountName gets a reference to the given NullableString and assigns it to the AccountName field.
+func (o *ResetPasswordCommand) SetAccountName(v string) {
+	o.AccountName.Set(&v)
+}
+
+// SetAccountNameNil sets the value for AccountName to be an explicit nil
+func (o *ResetPasswordCommand) SetAccountNameNil() {
+	o.AccountName.Set(nil)
+}
+
+// UnsetAccountName ensures that no value is present for AccountName, not even an explicit nil
+func (o *ResetPasswordCommand) UnsetAccountName() {
+	o.AccountName.Unset()
 }
 
 // GetNewPassword returns the NewPassword field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -158,6 +207,7 @@ func (o *ResetPasswordCommand) HasNewPassword() bool {
 func (o *ResetPasswordCommand) SetNewPassword(v string) {
 	o.NewPassword.Set(&v)
 }
+
 // SetNewPasswordNil sets the value for NewPassword to be an explicit nil
 func (o *ResetPasswordCommand) SetNewPasswordNil() {
 	o.NewPassword.Set(nil)
@@ -169,7 +219,7 @@ func (o *ResetPasswordCommand) UnsetNewPassword() {
 }
 
 func (o ResetPasswordCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -184,10 +234,42 @@ func (o ResetPasswordCommand) ToMap() (map[string]interface{}, error) {
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
 	}
+	if o.AccountName.IsSet() {
+		toSerialize["accountName"] = o.AccountName.Get()
+	}
 	if o.NewPassword.IsSet() {
 		toSerialize["newPassword"] = o.NewPassword.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ResetPasswordCommand) UnmarshalJSON(data []byte) (err error) {
+	varResetPasswordCommand := _ResetPasswordCommand{}
+
+	err = json.Unmarshal(data, &varResetPasswordCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ResetPasswordCommand(varResetPasswordCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "accountName")
+		delete(additionalProperties, "newPassword")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableResetPasswordCommand struct {
@@ -225,5 +307,3 @@ func (v *NullableResetPasswordCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

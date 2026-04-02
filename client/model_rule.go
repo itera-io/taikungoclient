@@ -21,18 +21,21 @@ var _ MappedNullable = &Rule{}
 
 // Rule struct for Rule
 type Rule struct {
-	State NullableString `json:"state,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Query NullableString `json:"query,omitempty"`
-	Duration *int64 `json:"duration,omitempty"`
-	Labels *RuleLabels `json:"labels,omitempty"`
-	Annotations *Annotations `json:"annotations,omitempty"`
-	Alerts []Alert `json:"alerts,omitempty"`
-	Health NullableString `json:"health,omitempty"`
-	EvaluationTime *float64 `json:"evaluationTime,omitempty"`
-	LastEvaluation *time.Time `json:"lastEvaluation,omitempty"`
-	Type NullableString `json:"type,omitempty"`
+	State                NullableString `json:"state,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Query                NullableString `json:"query,omitempty"`
+	Duration             *int64         `json:"duration,omitempty"`
+	Labels               *RuleLabels    `json:"labels,omitempty"`
+	Annotations          *Annotations   `json:"annotations,omitempty"`
+	Alerts               []Alert        `json:"alerts,omitempty"`
+	Health               NullableString `json:"health,omitempty"`
+	EvaluationTime       *float64       `json:"evaluationTime,omitempty"`
+	LastEvaluation       *time.Time     `json:"lastEvaluation,omitempty"`
+	Type                 NullableString `json:"type,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Rule Rule
 
 // NewRule instantiates a new Rule object
 // This constructor will assign default values to properties that have it defined,
@@ -83,6 +86,7 @@ func (o *Rule) HasState() bool {
 func (o *Rule) SetState(v string) {
 	o.State.Set(&v)
 }
+
 // SetStateNil sets the value for State to be an explicit nil
 func (o *Rule) SetStateNil() {
 	o.State.Set(nil)
@@ -125,6 +129,7 @@ func (o *Rule) HasName() bool {
 func (o *Rule) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *Rule) SetNameNil() {
 	o.Name.Set(nil)
@@ -167,6 +172,7 @@ func (o *Rule) HasQuery() bool {
 func (o *Rule) SetQuery(v string) {
 	o.Query.Set(&v)
 }
+
 // SetQueryNil sets the value for Query to be an explicit nil
 func (o *Rule) SetQueryNil() {
 	o.Query.Set(nil)
@@ -338,6 +344,7 @@ func (o *Rule) HasHealth() bool {
 func (o *Rule) SetHealth(v string) {
 	o.Health.Set(&v)
 }
+
 // SetHealthNil sets the value for Health to be an explicit nil
 func (o *Rule) SetHealthNil() {
 	o.Health.Set(nil)
@@ -444,6 +451,7 @@ func (o *Rule) HasType() bool {
 func (o *Rule) SetType(v string) {
 	o.Type.Set(&v)
 }
+
 // SetTypeNil sets the value for Type to be an explicit nil
 func (o *Rule) SetTypeNil() {
 	o.Type.Set(nil)
@@ -455,7 +463,7 @@ func (o *Rule) UnsetType() {
 }
 
 func (o Rule) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -497,7 +505,43 @@ func (o Rule) ToMap() (map[string]interface{}, error) {
 	if o.Type.IsSet() {
 		toSerialize["type"] = o.Type.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Rule) UnmarshalJSON(data []byte) (err error) {
+	varRule := _Rule{}
+
+	err = json.Unmarshal(data, &varRule)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Rule(varRule)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "state")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "query")
+		delete(additionalProperties, "duration")
+		delete(additionalProperties, "labels")
+		delete(additionalProperties, "annotations")
+		delete(additionalProperties, "alerts")
+		delete(additionalProperties, "health")
+		delete(additionalProperties, "evaluationTime")
+		delete(additionalProperties, "lastEvaluation")
+		delete(additionalProperties, "type")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableRule struct {
@@ -535,5 +579,3 @@ func (v *NullableRule) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

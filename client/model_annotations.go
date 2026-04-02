@@ -20,9 +20,12 @@ var _ MappedNullable = &Annotations{}
 
 // Annotations struct for Annotations
 type Annotations struct {
-	Description NullableString `json:"description,omitempty"`
-	Title NullableString `json:"title,omitempty"`
+	Description          NullableString `json:"description,omitempty"`
+	Title                NullableString `json:"title,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Annotations Annotations
 
 // NewAnnotations instantiates a new Annotations object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *Annotations) HasDescription() bool {
 func (o *Annotations) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *Annotations) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -115,6 +119,7 @@ func (o *Annotations) HasTitle() bool {
 func (o *Annotations) SetTitle(v string) {
 	o.Title.Set(&v)
 }
+
 // SetTitleNil sets the value for Title to be an explicit nil
 func (o *Annotations) SetTitleNil() {
 	o.Title.Set(nil)
@@ -126,7 +131,7 @@ func (o *Annotations) UnsetTitle() {
 }
 
 func (o Annotations) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,7 +146,34 @@ func (o Annotations) ToMap() (map[string]interface{}, error) {
 	if o.Title.IsSet() {
 		toSerialize["title"] = o.Title.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Annotations) UnmarshalJSON(data []byte) (err error) {
+	varAnnotations := _Annotations{}
+
+	err = json.Unmarshal(data, &varAnnotations)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Annotations(varAnnotations)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "title")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAnnotations struct {
@@ -179,5 +211,3 @@ func (v *NullableAnnotations) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

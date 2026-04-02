@@ -20,9 +20,12 @@ var _ MappedNullable = &DatacenterSummary{}
 
 // DatacenterSummary struct for DatacenterSummary
 type DatacenterSummary struct {
-	Datacenter NullableString `json:"datacenter,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Datacenter           NullableString `json:"datacenter,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DatacenterSummary DatacenterSummary
 
 // NewDatacenterSummary instantiates a new DatacenterSummary object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *DatacenterSummary) HasDatacenter() bool {
 func (o *DatacenterSummary) SetDatacenter(v string) {
 	o.Datacenter.Set(&v)
 }
+
 // SetDatacenterNil sets the value for Datacenter to be an explicit nil
 func (o *DatacenterSummary) SetDatacenterNil() {
 	o.Datacenter.Set(nil)
@@ -115,6 +119,7 @@ func (o *DatacenterSummary) HasName() bool {
 func (o *DatacenterSummary) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *DatacenterSummary) SetNameNil() {
 	o.Name.Set(nil)
@@ -126,7 +131,7 @@ func (o *DatacenterSummary) UnsetName() {
 }
 
 func (o DatacenterSummary) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,7 +146,34 @@ func (o DatacenterSummary) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DatacenterSummary) UnmarshalJSON(data []byte) (err error) {
+	varDatacenterSummary := _DatacenterSummary{}
+
+	err = json.Unmarshal(data, &varDatacenterSummary)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DatacenterSummary(varDatacenterSummary)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "datacenter")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDatacenterSummary struct {
@@ -179,5 +211,3 @@ func (v *NullableDatacenterSummary) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

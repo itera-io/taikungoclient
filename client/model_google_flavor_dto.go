@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,15 +21,16 @@ var _ MappedNullable = &GoogleFlavorDto{}
 
 // GoogleFlavorDto struct for GoogleFlavorDto
 type GoogleFlavorDto struct {
-	Name string `json:"name"`
-	Cpu NullableInt32 `json:"cpu"`
-	Ram NullableFloat64 `json:"ram"`
-	LinuxPrice NullableFloat64 `json:"linuxPrice"`
-	WindowsPrice NullableFloat64 `json:"windowsPrice"`
-	LinuxSpotPrice NullableFloat64 `json:"linuxSpotPrice"`
-	WindowsSpotPrice NullableFloat64 `json:"windowsSpotPrice"`
-	HasGpuSupport *bool `json:"hasGpuSupport,omitempty"`
-	Description interface{} `json:"description"`
+	Name                 string          `json:"name"`
+	Cpu                  NullableInt32   `json:"cpu"`
+	Ram                  NullableFloat64 `json:"ram"`
+	LinuxPrice           NullableFloat64 `json:"linuxPrice"`
+	WindowsPrice         NullableFloat64 `json:"windowsPrice"`
+	LinuxSpotPrice       NullableFloat64 `json:"linuxSpotPrice"`
+	WindowsSpotPrice     NullableFloat64 `json:"windowsSpotPrice"`
+	HasGpuSupport        *bool           `json:"hasGpuSupport,omitempty"`
+	Description          interface{}     `json:"description"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GoogleFlavorDto GoogleFlavorDto
@@ -299,7 +299,7 @@ func (o *GoogleFlavorDto) SetDescription(v interface{}) {
 }
 
 func (o GoogleFlavorDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -321,6 +321,11 @@ func (o GoogleFlavorDto) ToMap() (map[string]interface{}, error) {
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -344,10 +349,10 @@ func (o *GoogleFlavorDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -355,15 +360,28 @@ func (o *GoogleFlavorDto) UnmarshalJSON(data []byte) (err error) {
 
 	varGoogleFlavorDto := _GoogleFlavorDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGoogleFlavorDto)
+	err = json.Unmarshal(data, &varGoogleFlavorDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GoogleFlavorDto(varGoogleFlavorDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "ram")
+		delete(additionalProperties, "linuxPrice")
+		delete(additionalProperties, "windowsPrice")
+		delete(additionalProperties, "linuxSpotPrice")
+		delete(additionalProperties, "windowsSpotPrice")
+		delete(additionalProperties, "hasGpuSupport")
+		delete(additionalProperties, "description")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -403,5 +421,3 @@ func (v *NullableGoogleFlavorDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

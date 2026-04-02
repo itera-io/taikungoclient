@@ -20,9 +20,12 @@ var _ MappedNullable = &UpdateStageCommand{}
 
 // UpdateStageCommand struct for UpdateStageCommand
 type UpdateStageCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	Stage NullableString `json:"stage,omitempty"`
+	ProjectId            *int32         `json:"projectId,omitempty"`
+	Stage                NullableString `json:"stage,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateStageCommand UpdateStageCommand
 
 // NewUpdateStageCommand instantiates a new UpdateStageCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,7 @@ func (o *UpdateStageCommand) HasStage() bool {
 func (o *UpdateStageCommand) SetStage(v string) {
 	o.Stage.Set(&v)
 }
+
 // SetStageNil sets the value for Stage to be an explicit nil
 func (o *UpdateStageCommand) SetStageNil() {
 	o.Stage.Set(nil)
@@ -116,7 +120,7 @@ func (o *UpdateStageCommand) UnsetStage() {
 }
 
 func (o UpdateStageCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o UpdateStageCommand) ToMap() (map[string]interface{}, error) {
 	if o.Stage.IsSet() {
 		toSerialize["stage"] = o.Stage.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateStageCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateStageCommand := _UpdateStageCommand{}
+
+	err = json.Unmarshal(data, &varUpdateStageCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateStageCommand(varUpdateStageCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "stage")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateStageCommand struct {
@@ -169,5 +200,3 @@ func (v *NullableUpdateStageCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

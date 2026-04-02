@@ -20,10 +20,13 @@ var _ MappedNullable = &CheckOpenstackAvailabilityResponse{}
 
 // CheckOpenstackAvailabilityResponse struct for CheckOpenstackAvailabilityResponse
 type CheckOpenstackAvailabilityResponse struct {
-	IsOpenstackAvailable *bool `json:"isOpenstackAvailable,omitempty"`
-	IsManilaAvailable *bool `json:"isManilaAvailable,omitempty"`
-	ErrorMessage NullableString `json:"errorMessage,omitempty"`
+	IsOpenstackAvailable *bool          `json:"isOpenstackAvailable,omitempty"`
+	IsManilaAvailable    *bool          `json:"isManilaAvailable,omitempty"`
+	ErrorMessage         NullableString `json:"errorMessage,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CheckOpenstackAvailabilityResponse CheckOpenstackAvailabilityResponse
 
 // NewCheckOpenstackAvailabilityResponse instantiates a new CheckOpenstackAvailabilityResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -138,6 +141,7 @@ func (o *CheckOpenstackAvailabilityResponse) HasErrorMessage() bool {
 func (o *CheckOpenstackAvailabilityResponse) SetErrorMessage(v string) {
 	o.ErrorMessage.Set(&v)
 }
+
 // SetErrorMessageNil sets the value for ErrorMessage to be an explicit nil
 func (o *CheckOpenstackAvailabilityResponse) SetErrorMessageNil() {
 	o.ErrorMessage.Set(nil)
@@ -149,7 +153,7 @@ func (o *CheckOpenstackAvailabilityResponse) UnsetErrorMessage() {
 }
 
 func (o CheckOpenstackAvailabilityResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -167,7 +171,35 @@ func (o CheckOpenstackAvailabilityResponse) ToMap() (map[string]interface{}, err
 	if o.ErrorMessage.IsSet() {
 		toSerialize["errorMessage"] = o.ErrorMessage.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CheckOpenstackAvailabilityResponse) UnmarshalJSON(data []byte) (err error) {
+	varCheckOpenstackAvailabilityResponse := _CheckOpenstackAvailabilityResponse{}
+
+	err = json.Unmarshal(data, &varCheckOpenstackAvailabilityResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CheckOpenstackAvailabilityResponse(varCheckOpenstackAvailabilityResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "isOpenstackAvailable")
+		delete(additionalProperties, "isManilaAvailable")
+		delete(additionalProperties, "errorMessage")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCheckOpenstackAvailabilityResponse struct {
@@ -205,5 +237,3 @@ func (v *NullableCheckOpenstackAvailabilityResponse) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

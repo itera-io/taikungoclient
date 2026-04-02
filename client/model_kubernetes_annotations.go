@@ -20,9 +20,12 @@ var _ MappedNullable = &KubernetesAnnotations{}
 
 // KubernetesAnnotations struct for KubernetesAnnotations
 type KubernetesAnnotations struct {
-	Description NullableString `json:"description,omitempty"`
-	Title NullableString `json:"title,omitempty"`
+	Description          NullableString `json:"description,omitempty"`
+	Title                NullableString `json:"title,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _KubernetesAnnotations KubernetesAnnotations
 
 // NewKubernetesAnnotations instantiates a new KubernetesAnnotations object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *KubernetesAnnotations) HasDescription() bool {
 func (o *KubernetesAnnotations) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *KubernetesAnnotations) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -115,6 +119,7 @@ func (o *KubernetesAnnotations) HasTitle() bool {
 func (o *KubernetesAnnotations) SetTitle(v string) {
 	o.Title.Set(&v)
 }
+
 // SetTitleNil sets the value for Title to be an explicit nil
 func (o *KubernetesAnnotations) SetTitleNil() {
 	o.Title.Set(nil)
@@ -126,7 +131,7 @@ func (o *KubernetesAnnotations) UnsetTitle() {
 }
 
 func (o KubernetesAnnotations) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,7 +146,34 @@ func (o KubernetesAnnotations) ToMap() (map[string]interface{}, error) {
 	if o.Title.IsSet() {
 		toSerialize["title"] = o.Title.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *KubernetesAnnotations) UnmarshalJSON(data []byte) (err error) {
+	varKubernetesAnnotations := _KubernetesAnnotations{}
+
+	err = json.Unmarshal(data, &varKubernetesAnnotations)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubernetesAnnotations(varKubernetesAnnotations)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "title")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableKubernetesAnnotations struct {
@@ -179,5 +211,3 @@ func (v *NullableKubernetesAnnotations) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

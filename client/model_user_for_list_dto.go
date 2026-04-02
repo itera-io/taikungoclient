@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,31 +21,22 @@ var _ MappedNullable = &UserForListDto{}
 
 // UserForListDto struct for UserForListDto
 type UserForListDto struct {
-	Id string `json:"id"`
-	Username string `json:"username"`
-	Email string `json:"email"`
-	DisplayName NullableString `json:"displayName"`
-	CreatedAt string `json:"createdAt"`
-	Is2FAEnabled bool `json:"is2FAEnabled"`
-	Account AccountDetailsForUserDto `json:"account"`
-	Role EGlobalRole `json:"role"`
-	Organizations map[string]OrganizationContextDto `json:"organizations"`
-	HasCustomerId bool `json:"hasCustomerId"`
-	HasPaymentMethod bool `json:"hasPaymentMethod"`
-	IsEmailConfirmed bool `json:"isEmailConfirmed"`
-	IsEmailNotificationEnabled bool `json:"isEmailNotificationEnabled"`
-	IsForcedToResetPassword bool `json:"isForcedToResetPassword"`
-	IsCsm bool `json:"isCsm"`
-	IsEligibleUpdateSubscription bool `json:"isEligibleUpdateSubscription"`
-	IsLocked bool `json:"isLocked"`
-	IsApprovedByPartner bool `json:"isApprovedByPartner"`
-	Owner bool `json:"owner"`
-	IsReadOnly bool `json:"isReadOnly"`
-	HasRepo bool `json:"hasRepo"`
-	IsNewOrganization bool `json:"isNewOrganization"`
-	LastLoginAt NullableString `json:"lastLoginAt,omitempty"`
-	IsForcedToEnableTwoFactorAuthentication bool `json:"isForcedToEnableTwoFactorAuthentication"`
-	BoundProjects []ProjectDto `json:"boundProjects"`
+	Id                                      string                            `json:"id"`
+	Username                                string                            `json:"username"`
+	Email                                   string                            `json:"email"`
+	DisplayName                             NullableString                    `json:"displayName"`
+	CreatedAt                               string                            `json:"createdAt"`
+	Is2FAEnabled                            bool                              `json:"is2FAEnabled"`
+	Account                                 AccountDetailsForUserDto          `json:"account"`
+	Role                                    EGlobalRole                       `json:"role"`
+	Organizations                           map[string]OrganizationContextDto `json:"organizations"`
+	IsEmailConfirmed                        bool                              `json:"isEmailConfirmed"`
+	IsEmailNotificationEnabled              bool                              `json:"isEmailNotificationEnabled"`
+	IsForcedToResetPassword                 bool                              `json:"isForcedToResetPassword"`
+	IsLocked                                bool                              `json:"isLocked"`
+	Owner                                   bool                              `json:"owner"`
+	IsForcedToEnableTwoFactorAuthentication bool                              `json:"isForcedToEnableTwoFactorAuthentication"`
+	AdditionalProperties                    map[string]interface{}
 }
 
 type _UserForListDto UserForListDto
@@ -55,7 +45,7 @@ type _UserForListDto UserForListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserForListDto(id string, username string, email string, displayName NullableString, createdAt string, is2FAEnabled bool, account AccountDetailsForUserDto, role EGlobalRole, organizations map[string]OrganizationContextDto, hasCustomerId bool, hasPaymentMethod bool, isEmailConfirmed bool, isEmailNotificationEnabled bool, isForcedToResetPassword bool, isCsm bool, isEligibleUpdateSubscription bool, isLocked bool, isApprovedByPartner bool, owner bool, isReadOnly bool, hasRepo bool, isNewOrganization bool, isForcedToEnableTwoFactorAuthentication bool, boundProjects []ProjectDto) *UserForListDto {
+func NewUserForListDto(id string, username string, email string, displayName NullableString, createdAt string, is2FAEnabled bool, account AccountDetailsForUserDto, role EGlobalRole, organizations map[string]OrganizationContextDto, isEmailConfirmed bool, isEmailNotificationEnabled bool, isForcedToResetPassword bool, isLocked bool, owner bool, isForcedToEnableTwoFactorAuthentication bool) *UserForListDto {
 	this := UserForListDto{}
 	this.Id = id
 	this.Username = username
@@ -66,21 +56,12 @@ func NewUserForListDto(id string, username string, email string, displayName Nul
 	this.Account = account
 	this.Role = role
 	this.Organizations = organizations
-	this.HasCustomerId = hasCustomerId
-	this.HasPaymentMethod = hasPaymentMethod
 	this.IsEmailConfirmed = isEmailConfirmed
 	this.IsEmailNotificationEnabled = isEmailNotificationEnabled
 	this.IsForcedToResetPassword = isForcedToResetPassword
-	this.IsCsm = isCsm
-	this.IsEligibleUpdateSubscription = isEligibleUpdateSubscription
 	this.IsLocked = isLocked
-	this.IsApprovedByPartner = isApprovedByPartner
 	this.Owner = owner
-	this.IsReadOnly = isReadOnly
-	this.HasRepo = hasRepo
-	this.IsNewOrganization = isNewOrganization
 	this.IsForcedToEnableTwoFactorAuthentication = isForcedToEnableTwoFactorAuthentication
-	this.BoundProjects = boundProjects
 	return &this
 }
 
@@ -310,54 +291,6 @@ func (o *UserForListDto) SetOrganizations(v map[string]OrganizationContextDto) {
 	o.Organizations = v
 }
 
-// GetHasCustomerId returns the HasCustomerId field value
-func (o *UserForListDto) GetHasCustomerId() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.HasCustomerId
-}
-
-// GetHasCustomerIdOk returns a tuple with the HasCustomerId field value
-// and a boolean to check if the value has been set.
-func (o *UserForListDto) GetHasCustomerIdOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.HasCustomerId, true
-}
-
-// SetHasCustomerId sets field value
-func (o *UserForListDto) SetHasCustomerId(v bool) {
-	o.HasCustomerId = v
-}
-
-// GetHasPaymentMethod returns the HasPaymentMethod field value
-func (o *UserForListDto) GetHasPaymentMethod() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.HasPaymentMethod
-}
-
-// GetHasPaymentMethodOk returns a tuple with the HasPaymentMethod field value
-// and a boolean to check if the value has been set.
-func (o *UserForListDto) GetHasPaymentMethodOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.HasPaymentMethod, true
-}
-
-// SetHasPaymentMethod sets field value
-func (o *UserForListDto) SetHasPaymentMethod(v bool) {
-	o.HasPaymentMethod = v
-}
-
 // GetIsEmailConfirmed returns the IsEmailConfirmed field value
 func (o *UserForListDto) GetIsEmailConfirmed() bool {
 	if o == nil {
@@ -430,54 +363,6 @@ func (o *UserForListDto) SetIsForcedToResetPassword(v bool) {
 	o.IsForcedToResetPassword = v
 }
 
-// GetIsCsm returns the IsCsm field value
-func (o *UserForListDto) GetIsCsm() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.IsCsm
-}
-
-// GetIsCsmOk returns a tuple with the IsCsm field value
-// and a boolean to check if the value has been set.
-func (o *UserForListDto) GetIsCsmOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.IsCsm, true
-}
-
-// SetIsCsm sets field value
-func (o *UserForListDto) SetIsCsm(v bool) {
-	o.IsCsm = v
-}
-
-// GetIsEligibleUpdateSubscription returns the IsEligibleUpdateSubscription field value
-func (o *UserForListDto) GetIsEligibleUpdateSubscription() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.IsEligibleUpdateSubscription
-}
-
-// GetIsEligibleUpdateSubscriptionOk returns a tuple with the IsEligibleUpdateSubscription field value
-// and a boolean to check if the value has been set.
-func (o *UserForListDto) GetIsEligibleUpdateSubscriptionOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.IsEligibleUpdateSubscription, true
-}
-
-// SetIsEligibleUpdateSubscription sets field value
-func (o *UserForListDto) SetIsEligibleUpdateSubscription(v bool) {
-	o.IsEligibleUpdateSubscription = v
-}
-
 // GetIsLocked returns the IsLocked field value
 func (o *UserForListDto) GetIsLocked() bool {
 	if o == nil {
@@ -500,30 +385,6 @@ func (o *UserForListDto) GetIsLockedOk() (*bool, bool) {
 // SetIsLocked sets field value
 func (o *UserForListDto) SetIsLocked(v bool) {
 	o.IsLocked = v
-}
-
-// GetIsApprovedByPartner returns the IsApprovedByPartner field value
-func (o *UserForListDto) GetIsApprovedByPartner() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.IsApprovedByPartner
-}
-
-// GetIsApprovedByPartnerOk returns a tuple with the IsApprovedByPartner field value
-// and a boolean to check if the value has been set.
-func (o *UserForListDto) GetIsApprovedByPartnerOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.IsApprovedByPartner, true
-}
-
-// SetIsApprovedByPartner sets field value
-func (o *UserForListDto) SetIsApprovedByPartner(v bool) {
-	o.IsApprovedByPartner = v
 }
 
 // GetOwner returns the Owner field value
@@ -550,120 +411,6 @@ func (o *UserForListDto) SetOwner(v bool) {
 	o.Owner = v
 }
 
-// GetIsReadOnly returns the IsReadOnly field value
-func (o *UserForListDto) GetIsReadOnly() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.IsReadOnly
-}
-
-// GetIsReadOnlyOk returns a tuple with the IsReadOnly field value
-// and a boolean to check if the value has been set.
-func (o *UserForListDto) GetIsReadOnlyOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.IsReadOnly, true
-}
-
-// SetIsReadOnly sets field value
-func (o *UserForListDto) SetIsReadOnly(v bool) {
-	o.IsReadOnly = v
-}
-
-// GetHasRepo returns the HasRepo field value
-func (o *UserForListDto) GetHasRepo() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.HasRepo
-}
-
-// GetHasRepoOk returns a tuple with the HasRepo field value
-// and a boolean to check if the value has been set.
-func (o *UserForListDto) GetHasRepoOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.HasRepo, true
-}
-
-// SetHasRepo sets field value
-func (o *UserForListDto) SetHasRepo(v bool) {
-	o.HasRepo = v
-}
-
-// GetIsNewOrganization returns the IsNewOrganization field value
-func (o *UserForListDto) GetIsNewOrganization() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.IsNewOrganization
-}
-
-// GetIsNewOrganizationOk returns a tuple with the IsNewOrganization field value
-// and a boolean to check if the value has been set.
-func (o *UserForListDto) GetIsNewOrganizationOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.IsNewOrganization, true
-}
-
-// SetIsNewOrganization sets field value
-func (o *UserForListDto) SetIsNewOrganization(v bool) {
-	o.IsNewOrganization = v
-}
-
-// GetLastLoginAt returns the LastLoginAt field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *UserForListDto) GetLastLoginAt() string {
-	if o == nil || IsNil(o.LastLoginAt.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.LastLoginAt.Get()
-}
-
-// GetLastLoginAtOk returns a tuple with the LastLoginAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *UserForListDto) GetLastLoginAtOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.LastLoginAt.Get(), o.LastLoginAt.IsSet()
-}
-
-// HasLastLoginAt returns a boolean if a field has been set.
-func (o *UserForListDto) HasLastLoginAt() bool {
-	if o != nil && o.LastLoginAt.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastLoginAt gets a reference to the given NullableString and assigns it to the LastLoginAt field.
-func (o *UserForListDto) SetLastLoginAt(v string) {
-	o.LastLoginAt.Set(&v)
-}
-// SetLastLoginAtNil sets the value for LastLoginAt to be an explicit nil
-func (o *UserForListDto) SetLastLoginAtNil() {
-	o.LastLoginAt.Set(nil)
-}
-
-// UnsetLastLoginAt ensures that no value is present for LastLoginAt, not even an explicit nil
-func (o *UserForListDto) UnsetLastLoginAt() {
-	o.LastLoginAt.Unset()
-}
-
 // GetIsForcedToEnableTwoFactorAuthentication returns the IsForcedToEnableTwoFactorAuthentication field value
 func (o *UserForListDto) GetIsForcedToEnableTwoFactorAuthentication() bool {
 	if o == nil {
@@ -688,32 +435,8 @@ func (o *UserForListDto) SetIsForcedToEnableTwoFactorAuthentication(v bool) {
 	o.IsForcedToEnableTwoFactorAuthentication = v
 }
 
-// GetBoundProjects returns the BoundProjects field value
-func (o *UserForListDto) GetBoundProjects() []ProjectDto {
-	if o == nil {
-		var ret []ProjectDto
-		return ret
-	}
-
-	return o.BoundProjects
-}
-
-// GetBoundProjectsOk returns a tuple with the BoundProjects field value
-// and a boolean to check if the value has been set.
-func (o *UserForListDto) GetBoundProjectsOk() ([]ProjectDto, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.BoundProjects, true
-}
-
-// SetBoundProjects sets field value
-func (o *UserForListDto) SetBoundProjects(v []ProjectDto) {
-	o.BoundProjects = v
-}
-
 func (o UserForListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -731,24 +454,17 @@ func (o UserForListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["account"] = o.Account
 	toSerialize["role"] = o.Role
 	toSerialize["organizations"] = o.Organizations
-	toSerialize["hasCustomerId"] = o.HasCustomerId
-	toSerialize["hasPaymentMethod"] = o.HasPaymentMethod
 	toSerialize["isEmailConfirmed"] = o.IsEmailConfirmed
 	toSerialize["isEmailNotificationEnabled"] = o.IsEmailNotificationEnabled
 	toSerialize["isForcedToResetPassword"] = o.IsForcedToResetPassword
-	toSerialize["isCsm"] = o.IsCsm
-	toSerialize["isEligibleUpdateSubscription"] = o.IsEligibleUpdateSubscription
 	toSerialize["isLocked"] = o.IsLocked
-	toSerialize["isApprovedByPartner"] = o.IsApprovedByPartner
 	toSerialize["owner"] = o.Owner
-	toSerialize["isReadOnly"] = o.IsReadOnly
-	toSerialize["hasRepo"] = o.HasRepo
-	toSerialize["isNewOrganization"] = o.IsNewOrganization
-	if o.LastLoginAt.IsSet() {
-		toSerialize["lastLoginAt"] = o.LastLoginAt.Get()
-	}
 	toSerialize["isForcedToEnableTwoFactorAuthentication"] = o.IsForcedToEnableTwoFactorAuthentication
-	toSerialize["boundProjects"] = o.BoundProjects
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -766,21 +482,12 @@ func (o *UserForListDto) UnmarshalJSON(data []byte) (err error) {
 		"account",
 		"role",
 		"organizations",
-		"hasCustomerId",
-		"hasPaymentMethod",
 		"isEmailConfirmed",
 		"isEmailNotificationEnabled",
 		"isForcedToResetPassword",
-		"isCsm",
-		"isEligibleUpdateSubscription",
 		"isLocked",
-		"isApprovedByPartner",
 		"owner",
-		"isReadOnly",
-		"hasRepo",
-		"isNewOrganization",
 		"isForcedToEnableTwoFactorAuthentication",
-		"boundProjects",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -788,10 +495,10 @@ func (o *UserForListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -799,15 +506,34 @@ func (o *UserForListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varUserForListDto := _UserForListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUserForListDto)
+	err = json.Unmarshal(data, &varUserForListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserForListDto(varUserForListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "displayName")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "is2FAEnabled")
+		delete(additionalProperties, "account")
+		delete(additionalProperties, "role")
+		delete(additionalProperties, "organizations")
+		delete(additionalProperties, "isEmailConfirmed")
+		delete(additionalProperties, "isEmailNotificationEnabled")
+		delete(additionalProperties, "isForcedToResetPassword")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "owner")
+		delete(additionalProperties, "isForcedToEnableTwoFactorAuthentication")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -847,5 +573,3 @@ func (v *NullableUserForListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

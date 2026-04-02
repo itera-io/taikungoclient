@@ -20,11 +20,14 @@ var _ MappedNullable = &CreateAiBackendsConfigurationCommand{}
 
 // CreateAiBackendsConfigurationCommand struct for CreateAiBackendsConfigurationCommand
 type CreateAiBackendsConfigurationCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	Url NullableString `json:"url,omitempty"`
-	Model NullableString `json:"model,omitempty"`
-	ApiKey NullableString `json:"apiKey,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Url                  NullableString `json:"url,omitempty"`
+	Model                NullableString `json:"model,omitempty"`
+	ApiKey               NullableString `json:"apiKey,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateAiBackendsConfigurationCommand CreateAiBackendsConfigurationCommand
 
 // NewCreateAiBackendsConfigurationCommand instantiates a new CreateAiBackendsConfigurationCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -75,6 +78,7 @@ func (o *CreateAiBackendsConfigurationCommand) HasName() bool {
 func (o *CreateAiBackendsConfigurationCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateAiBackendsConfigurationCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -117,6 +121,7 @@ func (o *CreateAiBackendsConfigurationCommand) HasUrl() bool {
 func (o *CreateAiBackendsConfigurationCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *CreateAiBackendsConfigurationCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -159,6 +164,7 @@ func (o *CreateAiBackendsConfigurationCommand) HasModel() bool {
 func (o *CreateAiBackendsConfigurationCommand) SetModel(v string) {
 	o.Model.Set(&v)
 }
+
 // SetModelNil sets the value for Model to be an explicit nil
 func (o *CreateAiBackendsConfigurationCommand) SetModelNil() {
 	o.Model.Set(nil)
@@ -201,6 +207,7 @@ func (o *CreateAiBackendsConfigurationCommand) HasApiKey() bool {
 func (o *CreateAiBackendsConfigurationCommand) SetApiKey(v string) {
 	o.ApiKey.Set(&v)
 }
+
 // SetApiKeyNil sets the value for ApiKey to be an explicit nil
 func (o *CreateAiBackendsConfigurationCommand) SetApiKeyNil() {
 	o.ApiKey.Set(nil)
@@ -212,7 +219,7 @@ func (o *CreateAiBackendsConfigurationCommand) UnsetApiKey() {
 }
 
 func (o CreateAiBackendsConfigurationCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,7 +240,36 @@ func (o CreateAiBackendsConfigurationCommand) ToMap() (map[string]interface{}, e
 	if o.ApiKey.IsSet() {
 		toSerialize["apiKey"] = o.ApiKey.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateAiBackendsConfigurationCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateAiBackendsConfigurationCommand := _CreateAiBackendsConfigurationCommand{}
+
+	err = json.Unmarshal(data, &varCreateAiBackendsConfigurationCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateAiBackendsConfigurationCommand(varCreateAiBackendsConfigurationCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "model")
+		delete(additionalProperties, "apiKey")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateAiBackendsConfigurationCommand struct {
@@ -271,5 +307,3 @@ func (v *NullableCreateAiBackendsConfigurationCommand) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

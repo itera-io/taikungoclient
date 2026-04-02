@@ -20,8 +20,11 @@ var _ MappedNullable = &SshKeyCommand{}
 
 // SshKeyCommand struct for SshKeyCommand
 type SshKeyCommand struct {
-	SshPublicKey NullableString `json:"sshPublicKey,omitempty"`
+	SshPublicKey         NullableString `json:"sshPublicKey,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _SshKeyCommand SshKeyCommand
 
 // NewSshKeyCommand instantiates a new SshKeyCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -72,6 +75,7 @@ func (o *SshKeyCommand) HasSshPublicKey() bool {
 func (o *SshKeyCommand) SetSshPublicKey(v string) {
 	o.SshPublicKey.Set(&v)
 }
+
 // SetSshPublicKeyNil sets the value for SshPublicKey to be an explicit nil
 func (o *SshKeyCommand) SetSshPublicKeyNil() {
 	o.SshPublicKey.Set(nil)
@@ -83,7 +87,7 @@ func (o *SshKeyCommand) UnsetSshPublicKey() {
 }
 
 func (o SshKeyCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -95,7 +99,33 @@ func (o SshKeyCommand) ToMap() (map[string]interface{}, error) {
 	if o.SshPublicKey.IsSet() {
 		toSerialize["sshPublicKey"] = o.SshPublicKey.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *SshKeyCommand) UnmarshalJSON(data []byte) (err error) {
+	varSshKeyCommand := _SshKeyCommand{}
+
+	err = json.Unmarshal(data, &varSshKeyCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SshKeyCommand(varSshKeyCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "sshPublicKey")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableSshKeyCommand struct {
@@ -133,5 +163,3 @@ func (v *NullableSshKeyCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,11 +20,14 @@ var _ MappedNullable = &PodsSearchCommand{}
 
 // PodsSearchCommand struct for PodsSearchCommand
 type PodsSearchCommand struct {
-	Limit NullableInt32 `json:"limit,omitempty"`
-	Offset NullableInt32 `json:"offset,omitempty"`
-	SearchTerm NullableString `json:"searchTerm,omitempty"`
-	IncludePublicImportedClusters NullableBool `json:"includePublicImportedClusters,omitempty"`
+	Limit                         NullableInt32  `json:"limit,omitempty"`
+	Offset                        NullableInt32  `json:"offset,omitempty"`
+	SearchTerm                    NullableString `json:"searchTerm,omitempty"`
+	IncludePublicImportedClusters NullableBool   `json:"includePublicImportedClusters,omitempty"`
+	AdditionalProperties          map[string]interface{}
 }
+
+type _PodsSearchCommand PodsSearchCommand
 
 // NewPodsSearchCommand instantiates a new PodsSearchCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -75,6 +78,7 @@ func (o *PodsSearchCommand) HasLimit() bool {
 func (o *PodsSearchCommand) SetLimit(v int32) {
 	o.Limit.Set(&v)
 }
+
 // SetLimitNil sets the value for Limit to be an explicit nil
 func (o *PodsSearchCommand) SetLimitNil() {
 	o.Limit.Set(nil)
@@ -117,6 +121,7 @@ func (o *PodsSearchCommand) HasOffset() bool {
 func (o *PodsSearchCommand) SetOffset(v int32) {
 	o.Offset.Set(&v)
 }
+
 // SetOffsetNil sets the value for Offset to be an explicit nil
 func (o *PodsSearchCommand) SetOffsetNil() {
 	o.Offset.Set(nil)
@@ -159,6 +164,7 @@ func (o *PodsSearchCommand) HasSearchTerm() bool {
 func (o *PodsSearchCommand) SetSearchTerm(v string) {
 	o.SearchTerm.Set(&v)
 }
+
 // SetSearchTermNil sets the value for SearchTerm to be an explicit nil
 func (o *PodsSearchCommand) SetSearchTermNil() {
 	o.SearchTerm.Set(nil)
@@ -201,6 +207,7 @@ func (o *PodsSearchCommand) HasIncludePublicImportedClusters() bool {
 func (o *PodsSearchCommand) SetIncludePublicImportedClusters(v bool) {
 	o.IncludePublicImportedClusters.Set(&v)
 }
+
 // SetIncludePublicImportedClustersNil sets the value for IncludePublicImportedClusters to be an explicit nil
 func (o *PodsSearchCommand) SetIncludePublicImportedClustersNil() {
 	o.IncludePublicImportedClusters.Set(nil)
@@ -212,7 +219,7 @@ func (o *PodsSearchCommand) UnsetIncludePublicImportedClusters() {
 }
 
 func (o PodsSearchCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,7 +240,36 @@ func (o PodsSearchCommand) ToMap() (map[string]interface{}, error) {
 	if o.IncludePublicImportedClusters.IsSet() {
 		toSerialize["includePublicImportedClusters"] = o.IncludePublicImportedClusters.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *PodsSearchCommand) UnmarshalJSON(data []byte) (err error) {
+	varPodsSearchCommand := _PodsSearchCommand{}
+
+	err = json.Unmarshal(data, &varPodsSearchCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PodsSearchCommand(varPodsSearchCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "limit")
+		delete(additionalProperties, "offset")
+		delete(additionalProperties, "searchTerm")
+		delete(additionalProperties, "includePublicImportedClusters")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePodsSearchCommand struct {
@@ -271,5 +307,3 @@ func (v *NullablePodsSearchCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

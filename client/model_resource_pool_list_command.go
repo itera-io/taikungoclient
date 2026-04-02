@@ -20,11 +20,14 @@ var _ MappedNullable = &ResourcePoolListCommand{}
 
 // ResourcePoolListCommand struct for ResourcePoolListCommand
 type ResourcePoolListCommand struct {
-	Url NullableString `json:"url,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Password NullableString `json:"password,omitempty"`
-	DatacenterId NullableString `json:"datacenterId,omitempty"`
+	Url                  NullableString `json:"url,omitempty"`
+	Username             NullableString `json:"username,omitempty"`
+	Password             NullableString `json:"password,omitempty"`
+	DatacenterId         NullableString `json:"datacenterId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ResourcePoolListCommand ResourcePoolListCommand
 
 // NewResourcePoolListCommand instantiates a new ResourcePoolListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -75,6 +78,7 @@ func (o *ResourcePoolListCommand) HasUrl() bool {
 func (o *ResourcePoolListCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *ResourcePoolListCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -117,6 +121,7 @@ func (o *ResourcePoolListCommand) HasUsername() bool {
 func (o *ResourcePoolListCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *ResourcePoolListCommand) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -159,6 +164,7 @@ func (o *ResourcePoolListCommand) HasPassword() bool {
 func (o *ResourcePoolListCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *ResourcePoolListCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -201,6 +207,7 @@ func (o *ResourcePoolListCommand) HasDatacenterId() bool {
 func (o *ResourcePoolListCommand) SetDatacenterId(v string) {
 	o.DatacenterId.Set(&v)
 }
+
 // SetDatacenterIdNil sets the value for DatacenterId to be an explicit nil
 func (o *ResourcePoolListCommand) SetDatacenterIdNil() {
 	o.DatacenterId.Set(nil)
@@ -212,7 +219,7 @@ func (o *ResourcePoolListCommand) UnsetDatacenterId() {
 }
 
 func (o ResourcePoolListCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,7 +240,36 @@ func (o ResourcePoolListCommand) ToMap() (map[string]interface{}, error) {
 	if o.DatacenterId.IsSet() {
 		toSerialize["datacenterId"] = o.DatacenterId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ResourcePoolListCommand) UnmarshalJSON(data []byte) (err error) {
+	varResourcePoolListCommand := _ResourcePoolListCommand{}
+
+	err = json.Unmarshal(data, &varResourcePoolListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ResourcePoolListCommand(varResourcePoolListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "datacenterId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableResourcePoolListCommand struct {
@@ -271,5 +307,3 @@ func (v *NullableResourcePoolListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

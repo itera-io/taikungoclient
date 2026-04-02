@@ -20,8 +20,11 @@ var _ MappedNullable = &SsoInitCommand{}
 
 // SsoInitCommand struct for SsoInitCommand
 type SsoInitCommand struct {
-	AccountName NullableString `json:"accountName,omitempty"`
+	AccountName          NullableString `json:"accountName,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _SsoInitCommand SsoInitCommand
 
 // NewSsoInitCommand instantiates a new SsoInitCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -72,6 +75,7 @@ func (o *SsoInitCommand) HasAccountName() bool {
 func (o *SsoInitCommand) SetAccountName(v string) {
 	o.AccountName.Set(&v)
 }
+
 // SetAccountNameNil sets the value for AccountName to be an explicit nil
 func (o *SsoInitCommand) SetAccountNameNil() {
 	o.AccountName.Set(nil)
@@ -83,7 +87,7 @@ func (o *SsoInitCommand) UnsetAccountName() {
 }
 
 func (o SsoInitCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -95,7 +99,33 @@ func (o SsoInitCommand) ToMap() (map[string]interface{}, error) {
 	if o.AccountName.IsSet() {
 		toSerialize["accountName"] = o.AccountName.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *SsoInitCommand) UnmarshalJSON(data []byte) (err error) {
+	varSsoInitCommand := _SsoInitCommand{}
+
+	err = json.Unmarshal(data, &varSsoInitCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SsoInitCommand(varSsoInitCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accountName")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableSsoInitCommand struct {
@@ -133,5 +163,3 @@ func (v *NullableSsoInitCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

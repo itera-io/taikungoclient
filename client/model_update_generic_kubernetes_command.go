@@ -20,9 +20,12 @@ var _ MappedNullable = &UpdateGenericKubernetesCommand{}
 
 // UpdateGenericKubernetesCommand struct for UpdateGenericKubernetesCommand
 type UpdateGenericKubernetesCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UpdateGenericKubernetesCommand UpdateGenericKubernetesCommand
 
 // NewUpdateGenericKubernetesCommand instantiates a new UpdateGenericKubernetesCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,7 @@ func (o *UpdateGenericKubernetesCommand) HasName() bool {
 func (o *UpdateGenericKubernetesCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UpdateGenericKubernetesCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -116,7 +120,7 @@ func (o *UpdateGenericKubernetesCommand) UnsetName() {
 }
 
 func (o UpdateGenericKubernetesCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o UpdateGenericKubernetesCommand) ToMap() (map[string]interface{}, error) 
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UpdateGenericKubernetesCommand) UnmarshalJSON(data []byte) (err error) {
+	varUpdateGenericKubernetesCommand := _UpdateGenericKubernetesCommand{}
+
+	err = json.Unmarshal(data, &varUpdateGenericKubernetesCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateGenericKubernetesCommand(varUpdateGenericKubernetesCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUpdateGenericKubernetesCommand struct {
@@ -169,5 +200,3 @@ func (v *NullableUpdateGenericKubernetesCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

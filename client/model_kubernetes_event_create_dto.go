@@ -21,16 +21,19 @@ var _ MappedNullable = &KubernetesEventCreateDto{}
 
 // KubernetesEventCreateDto struct for KubernetesEventCreateDto
 type KubernetesEventCreateDto struct {
-	Type NullableString `json:"type,omitempty"`
-	Reason NullableString `json:"reason,omitempty"`
-	Message NullableString `json:"message,omitempty"`
-	Metadata interface{} `json:"metadata,omitempty"`
-	Source interface{} `json:"source,omitempty"`
-	InvolvedObject interface{} `json:"involvedObject,omitempty"`
-	FirstTimeStamp NullableTime `json:"firstTimeStamp,omitempty"`
-	LastTimeStamp NullableTime `json:"lastTimeStamp,omitempty"`
-	Count *int32 `json:"count,omitempty"`
+	Type                 NullableString `json:"type,omitempty"`
+	Reason               NullableString `json:"reason,omitempty"`
+	Message              NullableString `json:"message,omitempty"`
+	Metadata             interface{}    `json:"metadata,omitempty"`
+	Source               interface{}    `json:"source,omitempty"`
+	InvolvedObject       interface{}    `json:"involvedObject,omitempty"`
+	FirstTimeStamp       NullableTime   `json:"firstTimeStamp,omitempty"`
+	LastTimeStamp        NullableTime   `json:"lastTimeStamp,omitempty"`
+	Count                *int32         `json:"count,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _KubernetesEventCreateDto KubernetesEventCreateDto
 
 // NewKubernetesEventCreateDto instantiates a new KubernetesEventCreateDto object
 // This constructor will assign default values to properties that have it defined,
@@ -81,6 +84,7 @@ func (o *KubernetesEventCreateDto) HasType() bool {
 func (o *KubernetesEventCreateDto) SetType(v string) {
 	o.Type.Set(&v)
 }
+
 // SetTypeNil sets the value for Type to be an explicit nil
 func (o *KubernetesEventCreateDto) SetTypeNil() {
 	o.Type.Set(nil)
@@ -123,6 +127,7 @@ func (o *KubernetesEventCreateDto) HasReason() bool {
 func (o *KubernetesEventCreateDto) SetReason(v string) {
 	o.Reason.Set(&v)
 }
+
 // SetReasonNil sets the value for Reason to be an explicit nil
 func (o *KubernetesEventCreateDto) SetReasonNil() {
 	o.Reason.Set(nil)
@@ -165,6 +170,7 @@ func (o *KubernetesEventCreateDto) HasMessage() bool {
 func (o *KubernetesEventCreateDto) SetMessage(v string) {
 	o.Message.Set(&v)
 }
+
 // SetMessageNil sets the value for Message to be an explicit nil
 func (o *KubernetesEventCreateDto) SetMessageNil() {
 	o.Message.Set(nil)
@@ -306,6 +312,7 @@ func (o *KubernetesEventCreateDto) HasFirstTimeStamp() bool {
 func (o *KubernetesEventCreateDto) SetFirstTimeStamp(v time.Time) {
 	o.FirstTimeStamp.Set(&v)
 }
+
 // SetFirstTimeStampNil sets the value for FirstTimeStamp to be an explicit nil
 func (o *KubernetesEventCreateDto) SetFirstTimeStampNil() {
 	o.FirstTimeStamp.Set(nil)
@@ -348,6 +355,7 @@ func (o *KubernetesEventCreateDto) HasLastTimeStamp() bool {
 func (o *KubernetesEventCreateDto) SetLastTimeStamp(v time.Time) {
 	o.LastTimeStamp.Set(&v)
 }
+
 // SetLastTimeStampNil sets the value for LastTimeStamp to be an explicit nil
 func (o *KubernetesEventCreateDto) SetLastTimeStampNil() {
 	o.LastTimeStamp.Set(nil)
@@ -391,7 +399,7 @@ func (o *KubernetesEventCreateDto) SetCount(v int32) {
 }
 
 func (o KubernetesEventCreateDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -427,7 +435,41 @@ func (o KubernetesEventCreateDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Count) {
 		toSerialize["count"] = o.Count
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *KubernetesEventCreateDto) UnmarshalJSON(data []byte) (err error) {
+	varKubernetesEventCreateDto := _KubernetesEventCreateDto{}
+
+	err = json.Unmarshal(data, &varKubernetesEventCreateDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubernetesEventCreateDto(varKubernetesEventCreateDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "reason")
+		delete(additionalProperties, "message")
+		delete(additionalProperties, "metadata")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "involvedObject")
+		delete(additionalProperties, "firstTimeStamp")
+		delete(additionalProperties, "lastTimeStamp")
+		delete(additionalProperties, "count")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableKubernetesEventCreateDto struct {
@@ -465,5 +507,3 @@ func (v *NullableKubernetesEventCreateDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

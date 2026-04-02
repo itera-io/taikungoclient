@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,8 +21,9 @@ var _ MappedNullable = &StandaloneVmsList{}
 
 // StandaloneVmsList struct for StandaloneVmsList
 type StandaloneVmsList struct {
-	Data []StandaloneVmListDto `json:"data"`
-	TotalCount int32 `json:"totalCount"`
+	Data                 []StandaloneVmListDto `json:"data"`
+	TotalCount           int32                 `json:"totalCount"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StandaloneVmsList StandaloneVmsList
@@ -98,7 +98,7 @@ func (o *StandaloneVmsList) SetTotalCount(v int32) {
 }
 
 func (o StandaloneVmsList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -111,6 +111,11 @@ func (o StandaloneVmsList) ToMap() (map[string]interface{}, error) {
 		toSerialize["data"] = o.Data
 	}
 	toSerialize["totalCount"] = o.TotalCount
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -128,10 +133,10 @@ func (o *StandaloneVmsList) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -139,15 +144,21 @@ func (o *StandaloneVmsList) UnmarshalJSON(data []byte) (err error) {
 
 	varStandaloneVmsList := _StandaloneVmsList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStandaloneVmsList)
+	err = json.Unmarshal(data, &varStandaloneVmsList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StandaloneVmsList(varStandaloneVmsList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -187,5 +198,3 @@ func (v *NullableStandaloneVmsList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

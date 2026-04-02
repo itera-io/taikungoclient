@@ -20,9 +20,12 @@ var _ MappedNullable = &CreateAwsSubnetDto{}
 
 // CreateAwsSubnetDto struct for CreateAwsSubnetDto
 type CreateAwsSubnetDto struct {
-	AwsSubnetId NullableString `json:"awsSubnetId,omitempty"`
-	SubnetType *AccessLevel `json:"subnetType,omitempty"`
+	AwsSubnetId          NullableString `json:"awsSubnetId,omitempty"`
+	SubnetType           *AccessLevel   `json:"subnetType,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateAwsSubnetDto CreateAwsSubnetDto
 
 // NewCreateAwsSubnetDto instantiates a new CreateAwsSubnetDto object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *CreateAwsSubnetDto) HasAwsSubnetId() bool {
 func (o *CreateAwsSubnetDto) SetAwsSubnetId(v string) {
 	o.AwsSubnetId.Set(&v)
 }
+
 // SetAwsSubnetIdNil sets the value for AwsSubnetId to be an explicit nil
 func (o *CreateAwsSubnetDto) SetAwsSubnetIdNil() {
 	o.AwsSubnetId.Set(nil)
@@ -116,7 +120,7 @@ func (o *CreateAwsSubnetDto) SetSubnetType(v AccessLevel) {
 }
 
 func (o CreateAwsSubnetDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o CreateAwsSubnetDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SubnetType) {
 		toSerialize["subnetType"] = o.SubnetType
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateAwsSubnetDto) UnmarshalJSON(data []byte) (err error) {
+	varCreateAwsSubnetDto := _CreateAwsSubnetDto{}
+
+	err = json.Unmarshal(data, &varCreateAwsSubnetDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateAwsSubnetDto(varCreateAwsSubnetDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "awsSubnetId")
+		delete(additionalProperties, "subnetType")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateAwsSubnetDto struct {
@@ -169,5 +200,3 @@ func (v *NullableCreateAwsSubnetDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

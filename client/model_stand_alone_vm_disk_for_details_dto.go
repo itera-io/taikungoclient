@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,14 +21,15 @@ var _ MappedNullable = &StandAloneVmDiskForDetailsDto{}
 
 // StandAloneVmDiskForDetailsDto struct for StandAloneVmDiskForDetailsDto
 type StandAloneVmDiskForDetailsDto struct {
-	Id int32 `json:"id"`
-	Name NullableString `json:"name"`
-	CurrentSize int64 `json:"currentSize"`
-	TargetSize int64 `json:"targetSize"`
-	VolumeType NullableString `json:"volumeType"`
-	DeviceName NullableString `json:"deviceName"`
-	LunId NullableString `json:"lunId"`
-	Status StandAloneVmDiskStatus `json:"status"`
+	Id                   int32                  `json:"id"`
+	Name                 NullableString         `json:"name"`
+	CurrentSize          int64                  `json:"currentSize"`
+	TargetSize           int64                  `json:"targetSize"`
+	VolumeType           NullableString         `json:"volumeType"`
+	DeviceName           NullableString         `json:"deviceName"`
+	LunId                NullableString         `json:"lunId"`
+	Status               StandAloneVmDiskStatus `json:"status"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StandAloneVmDiskForDetailsDto StandAloneVmDiskForDetailsDto
@@ -260,7 +260,7 @@ func (o *StandAloneVmDiskForDetailsDto) SetStatus(v StandAloneVmDiskStatus) {
 }
 
 func (o StandAloneVmDiskForDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -277,6 +277,11 @@ func (o StandAloneVmDiskForDetailsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["deviceName"] = o.DeviceName.Get()
 	toSerialize["lunId"] = o.LunId.Get()
 	toSerialize["status"] = o.Status
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -300,10 +305,10 @@ func (o *StandAloneVmDiskForDetailsDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -311,15 +316,27 @@ func (o *StandAloneVmDiskForDetailsDto) UnmarshalJSON(data []byte) (err error) {
 
 	varStandAloneVmDiskForDetailsDto := _StandAloneVmDiskForDetailsDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStandAloneVmDiskForDetailsDto)
+	err = json.Unmarshal(data, &varStandAloneVmDiskForDetailsDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StandAloneVmDiskForDetailsDto(varStandAloneVmDiskForDetailsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "currentSize")
+		delete(additionalProperties, "targetSize")
+		delete(additionalProperties, "volumeType")
+		delete(additionalProperties, "deviceName")
+		delete(additionalProperties, "lunId")
+		delete(additionalProperties, "status")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -359,5 +376,3 @@ func (v *NullableStandAloneVmDiskForDetailsDto) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

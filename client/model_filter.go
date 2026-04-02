@@ -20,9 +20,12 @@ var _ MappedNullable = &Filter{}
 
 // Filter struct for Filter
 type Filter struct {
-	Operator NullableString `json:"operator,omitempty"`
-	Value NullableString `json:"value,omitempty"`
+	Operator             NullableString `json:"operator,omitempty"`
+	Value                NullableString `json:"value,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Filter Filter
 
 // NewFilter instantiates a new Filter object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *Filter) HasOperator() bool {
 func (o *Filter) SetOperator(v string) {
 	o.Operator.Set(&v)
 }
+
 // SetOperatorNil sets the value for Operator to be an explicit nil
 func (o *Filter) SetOperatorNil() {
 	o.Operator.Set(nil)
@@ -115,6 +119,7 @@ func (o *Filter) HasValue() bool {
 func (o *Filter) SetValue(v string) {
 	o.Value.Set(&v)
 }
+
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *Filter) SetValueNil() {
 	o.Value.Set(nil)
@@ -126,7 +131,7 @@ func (o *Filter) UnsetValue() {
 }
 
 func (o Filter) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,7 +146,34 @@ func (o Filter) ToMap() (map[string]interface{}, error) {
 	if o.Value.IsSet() {
 		toSerialize["value"] = o.Value.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Filter) UnmarshalJSON(data []byte) (err error) {
+	varFilter := _Filter{}
+
+	err = json.Unmarshal(data, &varFilter)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Filter(varFilter)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "operator")
+		delete(additionalProperties, "value")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFilter struct {
@@ -179,5 +211,3 @@ func (v *NullableFilter) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

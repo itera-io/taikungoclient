@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,22 +21,26 @@ var _ MappedNullable = &AmazonCredentialsListDto{}
 
 // AmazonCredentialsListDto struct for AmazonCredentialsListDto
 type AmazonCredentialsListDto struct {
-	Id int32 `json:"id"`
-	ProjectCount int32 `json:"projectCount"`
-	IsLocked bool `json:"isLocked"`
-	Name string `json:"name"`
-	Region string `json:"region"`
-	AvailabilityZones []string `json:"availabilityZones"`
-	AvailabilityZonesCount int32 `json:"availabilityZonesCount"`
-	Projects []CommonDropdownDto `json:"projects"`
-	CreatedBy NullableString `json:"createdBy"`
-	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
-	IsDefault bool `json:"isDefault"`
-	OrganizationId int32 `json:"organizationId"`
-	OrganizationName string `json:"organizationName"`
-	CreatedAt NullableString `json:"createdAt"`
-	ContinentName NullableString `json:"continentName"`
+	Id                      int32               `json:"id"`
+	ProjectCount            int32               `json:"projectCount"`
+	IsLocked                bool                `json:"isLocked"`
+	Name                    string              `json:"name"`
+	Region                  string              `json:"region"`
+	AvailabilityZones       []string            `json:"availabilityZones"`
+	AvailabilityZonesCount  int32               `json:"availabilityZonesCount"`
+	Projects                []CommonDropdownDto `json:"projects"`
+	CreatedBy               NullableString      `json:"createdBy"`
+	LastModified            NullableString      `json:"lastModified"`
+	LastModifiedBy          NullableString      `json:"lastModifiedBy"`
+	IsDefault               bool                `json:"isDefault"`
+	OrganizationId          int32               `json:"organizationId"`
+	OrganizationName        string              `json:"organizationName"`
+	CreatedAt               NullableString      `json:"createdAt"`
+	ContinentName           NullableString      `json:"continentName"`
+	EfsFileSystemId         NullableString      `json:"efsFileSystemId,omitempty"`
+	EfsFileSystemName       NullableString      `json:"efsFileSystemName,omitempty"`
+	SharedFileSystemEnabled *bool               `json:"sharedFileSystemEnabled,omitempty"`
+	AdditionalProperties    map[string]interface{}
 }
 
 type _AmazonCredentialsListDto AmazonCredentialsListDto
@@ -469,8 +472,126 @@ func (o *AmazonCredentialsListDto) SetContinentName(v string) {
 	o.ContinentName.Set(&v)
 }
 
+// GetEfsFileSystemId returns the EfsFileSystemId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AmazonCredentialsListDto) GetEfsFileSystemId() string {
+	if o == nil || IsNil(o.EfsFileSystemId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.EfsFileSystemId.Get()
+}
+
+// GetEfsFileSystemIdOk returns a tuple with the EfsFileSystemId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AmazonCredentialsListDto) GetEfsFileSystemIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.EfsFileSystemId.Get(), o.EfsFileSystemId.IsSet()
+}
+
+// HasEfsFileSystemId returns a boolean if a field has been set.
+func (o *AmazonCredentialsListDto) HasEfsFileSystemId() bool {
+	if o != nil && o.EfsFileSystemId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEfsFileSystemId gets a reference to the given NullableString and assigns it to the EfsFileSystemId field.
+func (o *AmazonCredentialsListDto) SetEfsFileSystemId(v string) {
+	o.EfsFileSystemId.Set(&v)
+}
+
+// SetEfsFileSystemIdNil sets the value for EfsFileSystemId to be an explicit nil
+func (o *AmazonCredentialsListDto) SetEfsFileSystemIdNil() {
+	o.EfsFileSystemId.Set(nil)
+}
+
+// UnsetEfsFileSystemId ensures that no value is present for EfsFileSystemId, not even an explicit nil
+func (o *AmazonCredentialsListDto) UnsetEfsFileSystemId() {
+	o.EfsFileSystemId.Unset()
+}
+
+// GetEfsFileSystemName returns the EfsFileSystemName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AmazonCredentialsListDto) GetEfsFileSystemName() string {
+	if o == nil || IsNil(o.EfsFileSystemName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.EfsFileSystemName.Get()
+}
+
+// GetEfsFileSystemNameOk returns a tuple with the EfsFileSystemName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AmazonCredentialsListDto) GetEfsFileSystemNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.EfsFileSystemName.Get(), o.EfsFileSystemName.IsSet()
+}
+
+// HasEfsFileSystemName returns a boolean if a field has been set.
+func (o *AmazonCredentialsListDto) HasEfsFileSystemName() bool {
+	if o != nil && o.EfsFileSystemName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEfsFileSystemName gets a reference to the given NullableString and assigns it to the EfsFileSystemName field.
+func (o *AmazonCredentialsListDto) SetEfsFileSystemName(v string) {
+	o.EfsFileSystemName.Set(&v)
+}
+
+// SetEfsFileSystemNameNil sets the value for EfsFileSystemName to be an explicit nil
+func (o *AmazonCredentialsListDto) SetEfsFileSystemNameNil() {
+	o.EfsFileSystemName.Set(nil)
+}
+
+// UnsetEfsFileSystemName ensures that no value is present for EfsFileSystemName, not even an explicit nil
+func (o *AmazonCredentialsListDto) UnsetEfsFileSystemName() {
+	o.EfsFileSystemName.Unset()
+}
+
+// GetSharedFileSystemEnabled returns the SharedFileSystemEnabled field value if set, zero value otherwise.
+func (o *AmazonCredentialsListDto) GetSharedFileSystemEnabled() bool {
+	if o == nil || IsNil(o.SharedFileSystemEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.SharedFileSystemEnabled
+}
+
+// GetSharedFileSystemEnabledOk returns a tuple with the SharedFileSystemEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AmazonCredentialsListDto) GetSharedFileSystemEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.SharedFileSystemEnabled) {
+		return nil, false
+	}
+	return o.SharedFileSystemEnabled, true
+}
+
+// HasSharedFileSystemEnabled returns a boolean if a field has been set.
+func (o *AmazonCredentialsListDto) HasSharedFileSystemEnabled() bool {
+	if o != nil && !IsNil(o.SharedFileSystemEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetSharedFileSystemEnabled gets a reference to the given bool and assigns it to the SharedFileSystemEnabled field.
+func (o *AmazonCredentialsListDto) SetSharedFileSystemEnabled(v bool) {
+	o.SharedFileSystemEnabled = &v
+}
+
 func (o AmazonCredentialsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -495,6 +616,20 @@ func (o AmazonCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["organizationName"] = o.OrganizationName
 	toSerialize["createdAt"] = o.CreatedAt.Get()
 	toSerialize["continentName"] = o.ContinentName.Get()
+	if o.EfsFileSystemId.IsSet() {
+		toSerialize["efsFileSystemId"] = o.EfsFileSystemId.Get()
+	}
+	if o.EfsFileSystemName.IsSet() {
+		toSerialize["efsFileSystemName"] = o.EfsFileSystemName.Get()
+	}
+	if !IsNil(o.SharedFileSystemEnabled) {
+		toSerialize["sharedFileSystemEnabled"] = o.SharedFileSystemEnabled
+	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -526,10 +661,10 @@ func (o *AmazonCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -537,15 +672,38 @@ func (o *AmazonCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varAmazonCredentialsListDto := _AmazonCredentialsListDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAmazonCredentialsListDto)
+	err = json.Unmarshal(data, &varAmazonCredentialsListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AmazonCredentialsListDto(varAmazonCredentialsListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "projectCount")
+		delete(additionalProperties, "isLocked")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "region")
+		delete(additionalProperties, "availabilityZones")
+		delete(additionalProperties, "availabilityZonesCount")
+		delete(additionalProperties, "projects")
+		delete(additionalProperties, "createdBy")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "continentName")
+		delete(additionalProperties, "efsFileSystemId")
+		delete(additionalProperties, "efsFileSystemName")
+		delete(additionalProperties, "sharedFileSystemEnabled")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -585,5 +743,3 @@ func (v *NullableAmazonCredentialsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

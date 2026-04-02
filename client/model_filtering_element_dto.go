@@ -20,9 +20,12 @@ var _ MappedNullable = &FilteringElementDto{}
 
 // FilteringElementDto struct for FilteringElementDto
 type FilteringElementDto struct {
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	OrganizationName     NullableString `json:"organizationName,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _FilteringElementDto FilteringElementDto
 
 // NewFilteringElementDto instantiates a new FilteringElementDto object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *FilteringElementDto) HasOrganizationName() bool {
 func (o *FilteringElementDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
+
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *FilteringElementDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -115,6 +119,7 @@ func (o *FilteringElementDto) HasName() bool {
 func (o *FilteringElementDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *FilteringElementDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -126,7 +131,7 @@ func (o *FilteringElementDto) UnsetName() {
 }
 
 func (o FilteringElementDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,7 +146,34 @@ func (o FilteringElementDto) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *FilteringElementDto) UnmarshalJSON(data []byte) (err error) {
+	varFilteringElementDto := _FilteringElementDto{}
+
+	err = json.Unmarshal(data, &varFilteringElementDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FilteringElementDto(varFilteringElementDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "organizationName")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableFilteringElementDto struct {
@@ -179,5 +211,3 @@ func (v *NullableFilteringElementDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

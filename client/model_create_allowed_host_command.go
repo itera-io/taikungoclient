@@ -20,11 +20,14 @@ var _ MappedNullable = &CreateAllowedHostCommand{}
 
 // CreateAllowedHostCommand struct for CreateAllowedHostCommand
 type CreateAllowedHostCommand struct {
-	AccessProfileId *int32 `json:"accessProfileId,omitempty"`
-	Description NullableString `json:"description,omitempty"`
-	IpAddress NullableString `json:"ipAddress,omitempty"`
-	MaskBits *int32 `json:"maskBits,omitempty"`
+	AccessProfileId      *int32         `json:"accessProfileId,omitempty"`
+	Description          NullableString `json:"description,omitempty"`
+	IpAddress            NullableString `json:"ipAddress,omitempty"`
+	MaskBits             *int32         `json:"maskBits,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateAllowedHostCommand CreateAllowedHostCommand
 
 // NewCreateAllowedHostCommand instantiates a new CreateAllowedHostCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -107,6 +110,7 @@ func (o *CreateAllowedHostCommand) HasDescription() bool {
 func (o *CreateAllowedHostCommand) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *CreateAllowedHostCommand) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -149,6 +153,7 @@ func (o *CreateAllowedHostCommand) HasIpAddress() bool {
 func (o *CreateAllowedHostCommand) SetIpAddress(v string) {
 	o.IpAddress.Set(&v)
 }
+
 // SetIpAddressNil sets the value for IpAddress to be an explicit nil
 func (o *CreateAllowedHostCommand) SetIpAddressNil() {
 	o.IpAddress.Set(nil)
@@ -192,7 +197,7 @@ func (o *CreateAllowedHostCommand) SetMaskBits(v int32) {
 }
 
 func (o CreateAllowedHostCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -213,7 +218,36 @@ func (o CreateAllowedHostCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MaskBits) {
 		toSerialize["maskBits"] = o.MaskBits
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateAllowedHostCommand) UnmarshalJSON(data []byte) (err error) {
+	varCreateAllowedHostCommand := _CreateAllowedHostCommand{}
+
+	err = json.Unmarshal(data, &varCreateAllowedHostCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateAllowedHostCommand(varCreateAllowedHostCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accessProfileId")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "ipAddress")
+		delete(additionalProperties, "maskBits")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateAllowedHostCommand struct {
@@ -251,5 +285,3 @@ func (v *NullableCreateAllowedHostCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

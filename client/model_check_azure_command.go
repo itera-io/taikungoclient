@@ -20,10 +20,13 @@ var _ MappedNullable = &CheckAzureCommand{}
 
 // CheckAzureCommand struct for CheckAzureCommand
 type CheckAzureCommand struct {
-	AzureClientId NullableString `json:"azureClientId,omitempty"`
-	AzureClientSecret NullableString `json:"azureClientSecret,omitempty"`
-	AzureTenantId NullableString `json:"azureTenantId,omitempty"`
+	AzureClientId        NullableString `json:"azureClientId,omitempty"`
+	AzureClientSecret    NullableString `json:"azureClientSecret,omitempty"`
+	AzureTenantId        NullableString `json:"azureTenantId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CheckAzureCommand CheckAzureCommand
 
 // NewCheckAzureCommand instantiates a new CheckAzureCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *CheckAzureCommand) HasAzureClientId() bool {
 func (o *CheckAzureCommand) SetAzureClientId(v string) {
 	o.AzureClientId.Set(&v)
 }
+
 // SetAzureClientIdNil sets the value for AzureClientId to be an explicit nil
 func (o *CheckAzureCommand) SetAzureClientIdNil() {
 	o.AzureClientId.Set(nil)
@@ -116,6 +120,7 @@ func (o *CheckAzureCommand) HasAzureClientSecret() bool {
 func (o *CheckAzureCommand) SetAzureClientSecret(v string) {
 	o.AzureClientSecret.Set(&v)
 }
+
 // SetAzureClientSecretNil sets the value for AzureClientSecret to be an explicit nil
 func (o *CheckAzureCommand) SetAzureClientSecretNil() {
 	o.AzureClientSecret.Set(nil)
@@ -158,6 +163,7 @@ func (o *CheckAzureCommand) HasAzureTenantId() bool {
 func (o *CheckAzureCommand) SetAzureTenantId(v string) {
 	o.AzureTenantId.Set(&v)
 }
+
 // SetAzureTenantIdNil sets the value for AzureTenantId to be an explicit nil
 func (o *CheckAzureCommand) SetAzureTenantIdNil() {
 	o.AzureTenantId.Set(nil)
@@ -169,7 +175,7 @@ func (o *CheckAzureCommand) UnsetAzureTenantId() {
 }
 
 func (o CheckAzureCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -187,7 +193,35 @@ func (o CheckAzureCommand) ToMap() (map[string]interface{}, error) {
 	if o.AzureTenantId.IsSet() {
 		toSerialize["azureTenantId"] = o.AzureTenantId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CheckAzureCommand) UnmarshalJSON(data []byte) (err error) {
+	varCheckAzureCommand := _CheckAzureCommand{}
+
+	err = json.Unmarshal(data, &varCheckAzureCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CheckAzureCommand(varCheckAzureCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "azureClientId")
+		delete(additionalProperties, "azureClientSecret")
+		delete(additionalProperties, "azureTenantId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCheckAzureCommand struct {
@@ -225,5 +259,3 @@ func (v *NullableCheckAzureCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,10 +20,13 @@ var _ MappedNullable = &RegionListCommand{}
 
 // RegionListCommand struct for RegionListCommand
 type RegionListCommand struct {
-	AwsAccessKeyId NullableString `json:"awsAccessKeyId,omitempty"`
-	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey,omitempty"`
-	CloudId NullableInt32 `json:"cloudId,omitempty"`
+	AwsAccessKeyId       NullableString `json:"awsAccessKeyId,omitempty"`
+	AwsSecretAccessKey   NullableString `json:"awsSecretAccessKey,omitempty"`
+	CloudId              NullableInt32  `json:"cloudId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _RegionListCommand RegionListCommand
 
 // NewRegionListCommand instantiates a new RegionListCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *RegionListCommand) HasAwsAccessKeyId() bool {
 func (o *RegionListCommand) SetAwsAccessKeyId(v string) {
 	o.AwsAccessKeyId.Set(&v)
 }
+
 // SetAwsAccessKeyIdNil sets the value for AwsAccessKeyId to be an explicit nil
 func (o *RegionListCommand) SetAwsAccessKeyIdNil() {
 	o.AwsAccessKeyId.Set(nil)
@@ -116,6 +120,7 @@ func (o *RegionListCommand) HasAwsSecretAccessKey() bool {
 func (o *RegionListCommand) SetAwsSecretAccessKey(v string) {
 	o.AwsSecretAccessKey.Set(&v)
 }
+
 // SetAwsSecretAccessKeyNil sets the value for AwsSecretAccessKey to be an explicit nil
 func (o *RegionListCommand) SetAwsSecretAccessKeyNil() {
 	o.AwsSecretAccessKey.Set(nil)
@@ -158,6 +163,7 @@ func (o *RegionListCommand) HasCloudId() bool {
 func (o *RegionListCommand) SetCloudId(v int32) {
 	o.CloudId.Set(&v)
 }
+
 // SetCloudIdNil sets the value for CloudId to be an explicit nil
 func (o *RegionListCommand) SetCloudIdNil() {
 	o.CloudId.Set(nil)
@@ -169,7 +175,7 @@ func (o *RegionListCommand) UnsetCloudId() {
 }
 
 func (o RegionListCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -187,7 +193,35 @@ func (o RegionListCommand) ToMap() (map[string]interface{}, error) {
 	if o.CloudId.IsSet() {
 		toSerialize["cloudId"] = o.CloudId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *RegionListCommand) UnmarshalJSON(data []byte) (err error) {
+	varRegionListCommand := _RegionListCommand{}
+
+	err = json.Unmarshal(data, &varRegionListCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RegionListCommand(varRegionListCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "awsAccessKeyId")
+		delete(additionalProperties, "awsSecretAccessKey")
+		delete(additionalProperties, "cloudId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableRegionListCommand struct {
@@ -225,5 +259,3 @@ func (v *NullableRegionListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

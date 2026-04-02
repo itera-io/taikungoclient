@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,7 +21,8 @@ var _ MappedNullable = &SsoInitResult{}
 
 // SsoInitResult struct for SsoInitResult
 type SsoInitResult struct {
-	RedirectUrl NullableString `json:"redirectUrl"`
+	RedirectUrl          NullableString `json:"redirectUrl"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SsoInitResult SsoInitResult
@@ -72,7 +72,7 @@ func (o *SsoInitResult) SetRedirectUrl(v string) {
 }
 
 func (o SsoInitResult) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -82,6 +82,11 @@ func (o SsoInitResult) MarshalJSON() ([]byte, error) {
 func (o SsoInitResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["redirectUrl"] = o.RedirectUrl.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -98,10 +103,10 @@ func (o *SsoInitResult) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -109,15 +114,20 @@ func (o *SsoInitResult) UnmarshalJSON(data []byte) (err error) {
 
 	varSsoInitResult := _SsoInitResult{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSsoInitResult)
+	err = json.Unmarshal(data, &varSsoInitResult)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SsoInitResult(varSsoInitResult)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "redirectUrl")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -157,5 +167,3 @@ func (v *NullableSsoInitResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

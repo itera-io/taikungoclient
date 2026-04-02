@@ -20,8 +20,11 @@ var _ MappedNullable = &BackupMakeDefaultCommand{}
 
 // BackupMakeDefaultCommand struct for BackupMakeDefaultCommand
 type BackupMakeDefaultCommand struct {
-	Id *int32 `json:"id,omitempty"`
+	Id                   *int32 `json:"id,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _BackupMakeDefaultCommand BackupMakeDefaultCommand
 
 // NewBackupMakeDefaultCommand instantiates a new BackupMakeDefaultCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -73,7 +76,7 @@ func (o *BackupMakeDefaultCommand) SetId(v int32) {
 }
 
 func (o BackupMakeDefaultCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -85,7 +88,33 @@ func (o BackupMakeDefaultCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *BackupMakeDefaultCommand) UnmarshalJSON(data []byte) (err error) {
+	varBackupMakeDefaultCommand := _BackupMakeDefaultCommand{}
+
+	err = json.Unmarshal(data, &varBackupMakeDefaultCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BackupMakeDefaultCommand(varBackupMakeDefaultCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableBackupMakeDefaultCommand struct {
@@ -123,5 +152,3 @@ func (v *NullableBackupMakeDefaultCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

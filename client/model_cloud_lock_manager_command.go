@@ -20,9 +20,12 @@ var _ MappedNullable = &CloudLockManagerCommand{}
 
 // CloudLockManagerCommand struct for CloudLockManagerCommand
 type CloudLockManagerCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Mode NullableString `json:"mode,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Mode                 NullableString `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CloudLockManagerCommand CloudLockManagerCommand
 
 // NewCloudLockManagerCommand instantiates a new CloudLockManagerCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,7 @@ func (o *CloudLockManagerCommand) HasMode() bool {
 func (o *CloudLockManagerCommand) SetMode(v string) {
 	o.Mode.Set(&v)
 }
+
 // SetModeNil sets the value for Mode to be an explicit nil
 func (o *CloudLockManagerCommand) SetModeNil() {
 	o.Mode.Set(nil)
@@ -116,7 +120,7 @@ func (o *CloudLockManagerCommand) UnsetMode() {
 }
 
 func (o CloudLockManagerCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o CloudLockManagerCommand) ToMap() (map[string]interface{}, error) {
 	if o.Mode.IsSet() {
 		toSerialize["mode"] = o.Mode.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CloudLockManagerCommand) UnmarshalJSON(data []byte) (err error) {
+	varCloudLockManagerCommand := _CloudLockManagerCommand{}
+
+	err = json.Unmarshal(data, &varCloudLockManagerCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CloudLockManagerCommand(varCloudLockManagerCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCloudLockManagerCommand struct {
@@ -169,5 +200,3 @@ func (v *NullableCloudLockManagerCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,8 +21,9 @@ var _ MappedNullable = &ImportedAsFullyManagedList{}
 
 // ImportedAsFullyManagedList struct for ImportedAsFullyManagedList
 type ImportedAsFullyManagedList struct {
-	Visibility ImportedAsFullyManagedVisibility `json:"visibility"`
-	Data ImportedClusterDetailsDto `json:"data"`
+	Visibility           ImportedAsFullyManagedVisibility `json:"visibility"`
+	Data                 ImportedClusterDetailsDto        `json:"data"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ImportedAsFullyManagedList ImportedAsFullyManagedList
@@ -96,7 +96,7 @@ func (o *ImportedAsFullyManagedList) SetData(v ImportedClusterDetailsDto) {
 }
 
 func (o ImportedAsFullyManagedList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -107,6 +107,11 @@ func (o ImportedAsFullyManagedList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["visibility"] = o.Visibility
 	toSerialize["data"] = o.Data
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -124,10 +129,10 @@ func (o *ImportedAsFullyManagedList) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -135,15 +140,21 @@ func (o *ImportedAsFullyManagedList) UnmarshalJSON(data []byte) (err error) {
 
 	varImportedAsFullyManagedList := _ImportedAsFullyManagedList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varImportedAsFullyManagedList)
+	err = json.Unmarshal(data, &varImportedAsFullyManagedList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ImportedAsFullyManagedList(varImportedAsFullyManagedList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "visibility")
+		delete(additionalProperties, "data")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -183,5 +194,3 @@ func (v *NullableImportedAsFullyManagedList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

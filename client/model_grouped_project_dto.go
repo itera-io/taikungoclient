@@ -20,11 +20,14 @@ var _ MappedNullable = &GroupedProjectDto{}
 
 // GroupedProjectDto struct for GroupedProjectDto
 type GroupedProjectDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Status *ProjectStatus `json:"status,omitempty"`
-	Health *ProjectHealth `json:"health,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Status               *ProjectStatus `json:"status,omitempty"`
+	Health               *ProjectHealth `json:"health,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _GroupedProjectDto GroupedProjectDto
 
 // NewGroupedProjectDto instantiates a new GroupedProjectDto object
 // This constructor will assign default values to properties that have it defined,
@@ -107,6 +110,7 @@ func (o *GroupedProjectDto) HasName() bool {
 func (o *GroupedProjectDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *GroupedProjectDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -182,7 +186,7 @@ func (o *GroupedProjectDto) SetHealth(v ProjectHealth) {
 }
 
 func (o GroupedProjectDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -203,7 +207,36 @@ func (o GroupedProjectDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Health) {
 		toSerialize["health"] = o.Health
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *GroupedProjectDto) UnmarshalJSON(data []byte) (err error) {
+	varGroupedProjectDto := _GroupedProjectDto{}
+
+	err = json.Unmarshal(data, &varGroupedProjectDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GroupedProjectDto(varGroupedProjectDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "health")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableGroupedProjectDto struct {
@@ -241,5 +274,3 @@ func (v *NullableGroupedProjectDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

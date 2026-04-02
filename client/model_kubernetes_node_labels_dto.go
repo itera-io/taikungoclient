@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,8 +21,9 @@ var _ MappedNullable = &KubernetesNodeLabelsDto{}
 
 // KubernetesNodeLabelsDto struct for KubernetesNodeLabelsDto
 type KubernetesNodeLabelsDto struct {
-	Key NullableString `json:"key"`
-	Value NullableString `json:"value"`
+	Key                  NullableString `json:"key"`
+	Value                NullableString `json:"value"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _KubernetesNodeLabelsDto KubernetesNodeLabelsDto
@@ -100,7 +100,7 @@ func (o *KubernetesNodeLabelsDto) SetValue(v string) {
 }
 
 func (o KubernetesNodeLabelsDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -111,6 +111,11 @@ func (o KubernetesNodeLabelsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["key"] = o.Key.Get()
 	toSerialize["value"] = o.Value.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -128,10 +133,10 @@ func (o *KubernetesNodeLabelsDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -139,15 +144,21 @@ func (o *KubernetesNodeLabelsDto) UnmarshalJSON(data []byte) (err error) {
 
 	varKubernetesNodeLabelsDto := _KubernetesNodeLabelsDto{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varKubernetesNodeLabelsDto)
+	err = json.Unmarshal(data, &varKubernetesNodeLabelsDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubernetesNodeLabelsDto(varKubernetesNodeLabelsDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "value")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -187,5 +198,3 @@ func (v *NullableKubernetesNodeLabelsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

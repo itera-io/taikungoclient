@@ -20,10 +20,13 @@ var _ MappedNullable = &CommonExtendedDropdownDto{}
 
 // CommonExtendedDropdownDto struct for CommonExtendedDropdownDto
 type CommonExtendedDropdownDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	IsDefault *bool `json:"isDefault,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	IsDefault            *bool          `json:"isDefault,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CommonExtendedDropdownDto CommonExtendedDropdownDto
 
 // NewCommonExtendedDropdownDto instantiates a new CommonExtendedDropdownDto object
 // This constructor will assign default values to properties that have it defined,
@@ -106,6 +109,7 @@ func (o *CommonExtendedDropdownDto) HasName() bool {
 func (o *CommonExtendedDropdownDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CommonExtendedDropdownDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -149,7 +153,7 @@ func (o *CommonExtendedDropdownDto) SetIsDefault(v bool) {
 }
 
 func (o CommonExtendedDropdownDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -167,7 +171,35 @@ func (o CommonExtendedDropdownDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsDefault) {
 		toSerialize["isDefault"] = o.IsDefault
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CommonExtendedDropdownDto) UnmarshalJSON(data []byte) (err error) {
+	varCommonExtendedDropdownDto := _CommonExtendedDropdownDto{}
+
+	err = json.Unmarshal(data, &varCommonExtendedDropdownDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CommonExtendedDropdownDto(varCommonExtendedDropdownDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "isDefault")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCommonExtendedDropdownDto struct {
@@ -205,5 +237,3 @@ func (v *NullableCommonExtendedDropdownDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

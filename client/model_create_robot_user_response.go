@@ -20,9 +20,12 @@ var _ MappedNullable = &CreateRobotUserResponse{}
 
 // CreateRobotUserResponse struct for CreateRobotUserResponse
 type CreateRobotUserResponse struct {
-	AccessKey NullableString `json:"accessKey,omitempty"`
-	SecretKey NullableString `json:"secretKey,omitempty"`
+	AccessKey            NullableString `json:"accessKey,omitempty"`
+	SecretKey            NullableString `json:"secretKey,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreateRobotUserResponse CreateRobotUserResponse
 
 // NewCreateRobotUserResponse instantiates a new CreateRobotUserResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -73,6 +76,7 @@ func (o *CreateRobotUserResponse) HasAccessKey() bool {
 func (o *CreateRobotUserResponse) SetAccessKey(v string) {
 	o.AccessKey.Set(&v)
 }
+
 // SetAccessKeyNil sets the value for AccessKey to be an explicit nil
 func (o *CreateRobotUserResponse) SetAccessKeyNil() {
 	o.AccessKey.Set(nil)
@@ -115,6 +119,7 @@ func (o *CreateRobotUserResponse) HasSecretKey() bool {
 func (o *CreateRobotUserResponse) SetSecretKey(v string) {
 	o.SecretKey.Set(&v)
 }
+
 // SetSecretKeyNil sets the value for SecretKey to be an explicit nil
 func (o *CreateRobotUserResponse) SetSecretKeyNil() {
 	o.SecretKey.Set(nil)
@@ -126,7 +131,7 @@ func (o *CreateRobotUserResponse) UnsetSecretKey() {
 }
 
 func (o CreateRobotUserResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -141,7 +146,34 @@ func (o CreateRobotUserResponse) ToMap() (map[string]interface{}, error) {
 	if o.SecretKey.IsSet() {
 		toSerialize["secretKey"] = o.SecretKey.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreateRobotUserResponse) UnmarshalJSON(data []byte) (err error) {
+	varCreateRobotUserResponse := _CreateRobotUserResponse{}
+
+	err = json.Unmarshal(data, &varCreateRobotUserResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateRobotUserResponse(varCreateRobotUserResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "accessKey")
+		delete(additionalProperties, "secretKey")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreateRobotUserResponse struct {
@@ -179,5 +211,3 @@ func (v *NullableCreateRobotUserResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

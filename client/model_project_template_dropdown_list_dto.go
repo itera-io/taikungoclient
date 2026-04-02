@@ -20,10 +20,13 @@ var _ MappedNullable = &ProjectTemplateDropdownListDto{}
 
 // ProjectTemplateDropdownListDto struct for ProjectTemplateDropdownListDto
 type ProjectTemplateDropdownListDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	CanCommit *bool `json:"canCommit,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	CanCommit            *bool          `json:"canCommit,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectTemplateDropdownListDto ProjectTemplateDropdownListDto
 
 // NewProjectTemplateDropdownListDto instantiates a new ProjectTemplateDropdownListDto object
 // This constructor will assign default values to properties that have it defined,
@@ -106,6 +109,7 @@ func (o *ProjectTemplateDropdownListDto) HasName() bool {
 func (o *ProjectTemplateDropdownListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ProjectTemplateDropdownListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -149,7 +153,7 @@ func (o *ProjectTemplateDropdownListDto) SetCanCommit(v bool) {
 }
 
 func (o ProjectTemplateDropdownListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -167,7 +171,35 @@ func (o ProjectTemplateDropdownListDto) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.CanCommit) {
 		toSerialize["canCommit"] = o.CanCommit
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectTemplateDropdownListDto) UnmarshalJSON(data []byte) (err error) {
+	varProjectTemplateDropdownListDto := _ProjectTemplateDropdownListDto{}
+
+	err = json.Unmarshal(data, &varProjectTemplateDropdownListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectTemplateDropdownListDto(varProjectTemplateDropdownListDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "canCommit")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectTemplateDropdownListDto struct {
@@ -205,5 +237,3 @@ func (v *NullableProjectTemplateDropdownListDto) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

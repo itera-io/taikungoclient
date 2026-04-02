@@ -1,4 +1,5 @@
 .gitignore
+.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -80,4 +81,8 @@ model_showback_rule_list.go
 model_showback_rules_list_dto.go
 model_update_showback_rule_command.go
 response.go
+test/api_projects_test.go
+test/api_showback_credentials_test.go
+test/api_showback_rules_test.go
+test/api_showback_summaries_test.go
 utils.go

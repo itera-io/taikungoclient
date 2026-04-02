@@ -20,10 +20,13 @@ var _ MappedNullable = &EditAllowedHostDto{}
 
 // EditAllowedHostDto struct for EditAllowedHostDto
 type EditAllowedHostDto struct {
-	Description NullableString `json:"description,omitempty"`
-	IpAddress NullableString `json:"ipAddress,omitempty"`
-	MaskBits *int32 `json:"maskBits,omitempty"`
+	Description          NullableString `json:"description,omitempty"`
+	IpAddress            NullableString `json:"ipAddress,omitempty"`
+	MaskBits             *int32         `json:"maskBits,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EditAllowedHostDto EditAllowedHostDto
 
 // NewEditAllowedHostDto instantiates a new EditAllowedHostDto object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +77,7 @@ func (o *EditAllowedHostDto) HasDescription() bool {
 func (o *EditAllowedHostDto) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *EditAllowedHostDto) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -116,6 +120,7 @@ func (o *EditAllowedHostDto) HasIpAddress() bool {
 func (o *EditAllowedHostDto) SetIpAddress(v string) {
 	o.IpAddress.Set(&v)
 }
+
 // SetIpAddressNil sets the value for IpAddress to be an explicit nil
 func (o *EditAllowedHostDto) SetIpAddressNil() {
 	o.IpAddress.Set(nil)
@@ -159,7 +164,7 @@ func (o *EditAllowedHostDto) SetMaskBits(v int32) {
 }
 
 func (o EditAllowedHostDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -177,7 +182,35 @@ func (o EditAllowedHostDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MaskBits) {
 		toSerialize["maskBits"] = o.MaskBits
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EditAllowedHostDto) UnmarshalJSON(data []byte) (err error) {
+	varEditAllowedHostDto := _EditAllowedHostDto{}
+
+	err = json.Unmarshal(data, &varEditAllowedHostDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EditAllowedHostDto(varEditAllowedHostDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "ipAddress")
+		delete(additionalProperties, "maskBits")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEditAllowedHostDto struct {
@@ -215,5 +248,3 @@ func (v *NullableEditAllowedHostDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

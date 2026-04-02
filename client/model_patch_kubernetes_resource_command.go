@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,10 +21,11 @@ var _ MappedNullable = &PatchKubernetesResourceCommand{}
 
 // PatchKubernetesResourceCommand struct for PatchKubernetesResourceCommand
 type PatchKubernetesResourceCommand struct {
-	ProjectId int32 `json:"projectId"`
-	Yaml string `json:"yaml"`
-	Name string `json:"name"`
-	Namespace NullableString `json:"namespace,omitempty"`
+	ProjectId            int32          `json:"projectId"`
+	Yaml                 string         `json:"yaml"`
+	Name                 string         `json:"name"`
+	Namespace            NullableString `json:"namespace,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PatchKubernetesResourceCommand PatchKubernetesResourceCommand
@@ -154,6 +154,7 @@ func (o *PatchKubernetesResourceCommand) HasNamespace() bool {
 func (o *PatchKubernetesResourceCommand) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
+
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *PatchKubernetesResourceCommand) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -165,7 +166,7 @@ func (o *PatchKubernetesResourceCommand) UnsetNamespace() {
 }
 
 func (o PatchKubernetesResourceCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -180,6 +181,11 @@ func (o PatchKubernetesResourceCommand) ToMap() (map[string]interface{}, error) 
 	if o.Namespace.IsSet() {
 		toSerialize["namespace"] = o.Namespace.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -198,10 +204,10 @@ func (o *PatchKubernetesResourceCommand) UnmarshalJSON(data []byte) (err error) 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -209,15 +215,23 @@ func (o *PatchKubernetesResourceCommand) UnmarshalJSON(data []byte) (err error) 
 
 	varPatchKubernetesResourceCommand := _PatchKubernetesResourceCommand{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPatchKubernetesResourceCommand)
+	err = json.Unmarshal(data, &varPatchKubernetesResourceCommand)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PatchKubernetesResourceCommand(varPatchKubernetesResourceCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "yaml")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "namespace")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -257,5 +271,3 @@ func (v *NullablePatchKubernetesResourceCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

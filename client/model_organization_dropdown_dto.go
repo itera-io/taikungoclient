@@ -20,13 +20,16 @@ var _ MappedNullable = &OrganizationDropdownDto{}
 
 // OrganizationDropdownDto struct for OrganizationDropdownDto
 type OrganizationDropdownDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	IsInfra *bool `json:"isInfra,omitempty"`
-	DiscountRate *float64 `json:"discountRate,omitempty"`
-	AccountId *int32 `json:"accountId,omitempty"`
-	AccountName NullableString `json:"accountName,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	IsInfra              *bool          `json:"isInfra,omitempty"`
+	DiscountRate         *float64       `json:"discountRate,omitempty"`
+	AccountId            *int32         `json:"accountId,omitempty"`
+	AccountName          NullableString `json:"accountName,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OrganizationDropdownDto OrganizationDropdownDto
 
 // NewOrganizationDropdownDto instantiates a new OrganizationDropdownDto object
 // This constructor will assign default values to properties that have it defined,
@@ -109,6 +112,7 @@ func (o *OrganizationDropdownDto) HasName() bool {
 func (o *OrganizationDropdownDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *OrganizationDropdownDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -247,6 +251,7 @@ func (o *OrganizationDropdownDto) HasAccountName() bool {
 func (o *OrganizationDropdownDto) SetAccountName(v string) {
 	o.AccountName.Set(&v)
 }
+
 // SetAccountNameNil sets the value for AccountName to be an explicit nil
 func (o *OrganizationDropdownDto) SetAccountNameNil() {
 	o.AccountName.Set(nil)
@@ -258,7 +263,7 @@ func (o *OrganizationDropdownDto) UnsetAccountName() {
 }
 
 func (o OrganizationDropdownDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -285,7 +290,38 @@ func (o OrganizationDropdownDto) ToMap() (map[string]interface{}, error) {
 	if o.AccountName.IsSet() {
 		toSerialize["accountName"] = o.AccountName.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OrganizationDropdownDto) UnmarshalJSON(data []byte) (err error) {
+	varOrganizationDropdownDto := _OrganizationDropdownDto{}
+
+	err = json.Unmarshal(data, &varOrganizationDropdownDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationDropdownDto(varOrganizationDropdownDto)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "isInfra")
+		delete(additionalProperties, "discountRate")
+		delete(additionalProperties, "accountId")
+		delete(additionalProperties, "accountName")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOrganizationDropdownDto struct {
@@ -323,5 +359,3 @@ func (v *NullableOrganizationDropdownDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

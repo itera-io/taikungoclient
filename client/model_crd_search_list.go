@@ -20,9 +20,12 @@ var _ MappedNullable = &CrdSearchList{}
 
 // CrdSearchList struct for CrdSearchList
 type CrdSearchList struct {
-	Data []CommonSearchKubernetesResponseData `json:"data,omitempty"`
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	Data                 []CommonSearchKubernetesResponseData `json:"data,omitempty"`
+	TotalCount           *int32                               `json:"totalCount,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CrdSearchList CrdSearchList
 
 // NewCrdSearchList instantiates a new CrdSearchList object
 // This constructor will assign default values to properties that have it defined,
@@ -107,7 +110,7 @@ func (o *CrdSearchList) SetTotalCount(v int32) {
 }
 
 func (o CrdSearchList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -122,7 +125,34 @@ func (o CrdSearchList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CrdSearchList) UnmarshalJSON(data []byte) (err error) {
+	varCrdSearchList := _CrdSearchList{}
+
+	err = json.Unmarshal(data, &varCrdSearchList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CrdSearchList(varCrdSearchList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "totalCount")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCrdSearchList struct {
@@ -160,5 +190,3 @@ func (v *NullableCrdSearchList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

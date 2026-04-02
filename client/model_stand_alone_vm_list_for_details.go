@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,8 +21,9 @@ var _ MappedNullable = &StandAloneVmListForDetails{}
 
 // StandAloneVmListForDetails struct for StandAloneVmListForDetails
 type StandAloneVmListForDetails struct {
-	Data []StandaloneVmsListForDetailsDto `json:"data"`
-	Project ProjectDetailsForVmsDto `json:"project"`
+	Data                 []StandaloneVmsListForDetailsDto `json:"data"`
+	Project              ProjectDetailsForVmsDto          `json:"project"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _StandAloneVmListForDetails StandAloneVmListForDetails
@@ -98,7 +98,7 @@ func (o *StandAloneVmListForDetails) SetProject(v ProjectDetailsForVmsDto) {
 }
 
 func (o StandAloneVmListForDetails) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -111,6 +111,11 @@ func (o StandAloneVmListForDetails) ToMap() (map[string]interface{}, error) {
 		toSerialize["data"] = o.Data
 	}
 	toSerialize["project"] = o.Project
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -128,10 +133,10 @@ func (o *StandAloneVmListForDetails) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -139,15 +144,21 @@ func (o *StandAloneVmListForDetails) UnmarshalJSON(data []byte) (err error) {
 
 	varStandAloneVmListForDetails := _StandAloneVmListForDetails{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStandAloneVmListForDetails)
+	err = json.Unmarshal(data, &varStandAloneVmListForDetails)
 
 	if err != nil {
 		return err
 	}
 
 	*o = StandAloneVmListForDetails(varStandAloneVmListForDetails)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "data")
+		delete(additionalProperties, "project")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -187,5 +198,3 @@ func (v *NullableStandAloneVmListForDetails) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

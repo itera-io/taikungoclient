@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -22,9 +21,10 @@ var _ MappedNullable = &PrometheusEntity{}
 
 // PrometheusEntity struct for PrometheusEntity
 type PrometheusEntity struct {
-	PrometheusRuleId int32 `json:"prometheusRuleId"`
-	PrometheusRuleName NullableString `json:"prometheusRuleName"`
-	RuleDiscountRate NullableFloat64 `json:"ruleDiscountRate"`
+	PrometheusRuleId     int32           `json:"prometheusRuleId"`
+	PrometheusRuleName   NullableString  `json:"prometheusRuleName"`
+	RuleDiscountRate     NullableFloat64 `json:"ruleDiscountRate"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PrometheusEntity PrometheusEntity
@@ -126,7 +126,7 @@ func (o *PrometheusEntity) SetRuleDiscountRate(v float64) {
 }
 
 func (o PrometheusEntity) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -138,6 +138,11 @@ func (o PrometheusEntity) ToMap() (map[string]interface{}, error) {
 	toSerialize["prometheusRuleId"] = o.PrometheusRuleId
 	toSerialize["prometheusRuleName"] = o.PrometheusRuleName.Get()
 	toSerialize["ruleDiscountRate"] = o.RuleDiscountRate.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -156,10 +161,10 @@ func (o *PrometheusEntity) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -167,15 +172,22 @@ func (o *PrometheusEntity) UnmarshalJSON(data []byte) (err error) {
 
 	varPrometheusEntity := _PrometheusEntity{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPrometheusEntity)
+	err = json.Unmarshal(data, &varPrometheusEntity)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PrometheusEntity(varPrometheusEntity)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "prometheusRuleId")
+		delete(additionalProperties, "prometheusRuleName")
+		delete(additionalProperties, "ruleDiscountRate")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
@@ -215,5 +227,3 @@ func (v *NullablePrometheusEntity) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

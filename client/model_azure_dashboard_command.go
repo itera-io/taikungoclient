@@ -20,9 +20,12 @@ var _ MappedNullable = &AzureDashboardCommand{}
 
 // AzureDashboardCommand struct for AzureDashboardCommand
 type AzureDashboardCommand struct {
-	CloudId *int32 `json:"cloudId,omitempty"`
-	FilterBy NullableString `json:"filterBy,omitempty"`
+	CloudId              *int32         `json:"cloudId,omitempty"`
+	FilterBy             NullableString `json:"filterBy,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AzureDashboardCommand AzureDashboardCommand
 
 // NewAzureDashboardCommand instantiates a new AzureDashboardCommand object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,7 @@ func (o *AzureDashboardCommand) HasFilterBy() bool {
 func (o *AzureDashboardCommand) SetFilterBy(v string) {
 	o.FilterBy.Set(&v)
 }
+
 // SetFilterByNil sets the value for FilterBy to be an explicit nil
 func (o *AzureDashboardCommand) SetFilterByNil() {
 	o.FilterBy.Set(nil)
@@ -116,7 +120,7 @@ func (o *AzureDashboardCommand) UnsetFilterBy() {
 }
 
 func (o AzureDashboardCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,7 +135,34 @@ func (o AzureDashboardCommand) ToMap() (map[string]interface{}, error) {
 	if o.FilterBy.IsSet() {
 		toSerialize["filterBy"] = o.FilterBy.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AzureDashboardCommand) UnmarshalJSON(data []byte) (err error) {
+	varAzureDashboardCommand := _AzureDashboardCommand{}
+
+	err = json.Unmarshal(data, &varAzureDashboardCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AzureDashboardCommand(varAzureDashboardCommand)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cloudId")
+		delete(additionalProperties, "filterBy")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAzureDashboardCommand struct {
@@ -169,5 +200,3 @@ func (v *NullableAzureDashboardCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
