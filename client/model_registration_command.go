@@ -20,7 +20,7 @@ var _ MappedNullable = &RegistrationCommand{}
 
 // RegistrationCommand struct for RegistrationCommand
 type RegistrationCommand struct {
-	AccountName          NullableString `json:"accountName,omitempty"`
+	DomainName           NullableString `json:"domainName,omitempty"`
 	Username             NullableString `json:"username,omitempty"`
 	Email                NullableString `json:"email,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -45,47 +45,47 @@ func NewRegistrationCommandWithDefaults() *RegistrationCommand {
 	return &this
 }
 
-// GetAccountName returns the AccountName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *RegistrationCommand) GetAccountName() string {
-	if o == nil || IsNil(o.AccountName.Get()) {
+// GetDomainName returns the DomainName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RegistrationCommand) GetDomainName() string {
+	if o == nil || IsNil(o.DomainName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AccountName.Get()
+	return *o.DomainName.Get()
 }
 
-// GetAccountNameOk returns a tuple with the AccountName field value if set, nil otherwise
+// GetDomainNameOk returns a tuple with the DomainName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RegistrationCommand) GetAccountNameOk() (*string, bool) {
+func (o *RegistrationCommand) GetDomainNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AccountName.Get(), o.AccountName.IsSet()
+	return o.DomainName.Get(), o.DomainName.IsSet()
 }
 
-// HasAccountName returns a boolean if a field has been set.
-func (o *RegistrationCommand) HasAccountName() bool {
-	if o != nil && o.AccountName.IsSet() {
+// HasDomainName returns a boolean if a field has been set.
+func (o *RegistrationCommand) HasDomainName() bool {
+	if o != nil && o.DomainName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAccountName gets a reference to the given NullableString and assigns it to the AccountName field.
-func (o *RegistrationCommand) SetAccountName(v string) {
-	o.AccountName.Set(&v)
+// SetDomainName gets a reference to the given NullableString and assigns it to the DomainName field.
+func (o *RegistrationCommand) SetDomainName(v string) {
+	o.DomainName.Set(&v)
 }
 
-// SetAccountNameNil sets the value for AccountName to be an explicit nil
-func (o *RegistrationCommand) SetAccountNameNil() {
-	o.AccountName.Set(nil)
+// SetDomainNameNil sets the value for DomainName to be an explicit nil
+func (o *RegistrationCommand) SetDomainNameNil() {
+	o.DomainName.Set(nil)
 }
 
-// UnsetAccountName ensures that no value is present for AccountName, not even an explicit nil
-func (o *RegistrationCommand) UnsetAccountName() {
-	o.AccountName.Unset()
+// UnsetDomainName ensures that no value is present for DomainName, not even an explicit nil
+func (o *RegistrationCommand) UnsetDomainName() {
+	o.DomainName.Unset()
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -184,8 +184,8 @@ func (o RegistrationCommand) MarshalJSON() ([]byte, error) {
 
 func (o RegistrationCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AccountName.IsSet() {
-		toSerialize["accountName"] = o.AccountName.Get()
+	if o.DomainName.IsSet() {
+		toSerialize["domainName"] = o.DomainName.Get()
 	}
 	if o.Username.IsSet() {
 		toSerialize["username"] = o.Username.Get()
@@ -215,7 +215,7 @@ func (o *RegistrationCommand) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "accountName")
+		delete(additionalProperties, "domainName")
 		delete(additionalProperties, "username")
 		delete(additionalProperties, "email")
 		o.AdditionalProperties = additionalProperties

@@ -20,7 +20,7 @@ var _ MappedNullable = &CheckDuplicateGroupCommand{}
 
 // CheckDuplicateGroupCommand struct for CheckDuplicateGroupCommand
 type CheckDuplicateGroupCommand struct {
-	AccountId            NullableInt32  `json:"accountId,omitempty"`
+	DomainId             NullableInt32  `json:"domainId,omitempty"`
 	Name                 NullableString `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -44,47 +44,47 @@ func NewCheckDuplicateGroupCommandWithDefaults() *CheckDuplicateGroupCommand {
 	return &this
 }
 
-// GetAccountId returns the AccountId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CheckDuplicateGroupCommand) GetAccountId() int32 {
-	if o == nil || IsNil(o.AccountId.Get()) {
+// GetDomainId returns the DomainId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CheckDuplicateGroupCommand) GetDomainId() int32 {
+	if o == nil || IsNil(o.DomainId.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.AccountId.Get()
+	return *o.DomainId.Get()
 }
 
-// GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
+// GetDomainIdOk returns a tuple with the DomainId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CheckDuplicateGroupCommand) GetAccountIdOk() (*int32, bool) {
+func (o *CheckDuplicateGroupCommand) GetDomainIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AccountId.Get(), o.AccountId.IsSet()
+	return o.DomainId.Get(), o.DomainId.IsSet()
 }
 
-// HasAccountId returns a boolean if a field has been set.
-func (o *CheckDuplicateGroupCommand) HasAccountId() bool {
-	if o != nil && o.AccountId.IsSet() {
+// HasDomainId returns a boolean if a field has been set.
+func (o *CheckDuplicateGroupCommand) HasDomainId() bool {
+	if o != nil && o.DomainId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAccountId gets a reference to the given NullableInt32 and assigns it to the AccountId field.
-func (o *CheckDuplicateGroupCommand) SetAccountId(v int32) {
-	o.AccountId.Set(&v)
+// SetDomainId gets a reference to the given NullableInt32 and assigns it to the DomainId field.
+func (o *CheckDuplicateGroupCommand) SetDomainId(v int32) {
+	o.DomainId.Set(&v)
 }
 
-// SetAccountIdNil sets the value for AccountId to be an explicit nil
-func (o *CheckDuplicateGroupCommand) SetAccountIdNil() {
-	o.AccountId.Set(nil)
+// SetDomainIdNil sets the value for DomainId to be an explicit nil
+func (o *CheckDuplicateGroupCommand) SetDomainIdNil() {
+	o.DomainId.Set(nil)
 }
 
-// UnsetAccountId ensures that no value is present for AccountId, not even an explicit nil
-func (o *CheckDuplicateGroupCommand) UnsetAccountId() {
-	o.AccountId.Unset()
+// UnsetDomainId ensures that no value is present for DomainId, not even an explicit nil
+func (o *CheckDuplicateGroupCommand) UnsetDomainId() {
+	o.DomainId.Unset()
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -140,8 +140,8 @@ func (o CheckDuplicateGroupCommand) MarshalJSON() ([]byte, error) {
 
 func (o CheckDuplicateGroupCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AccountId.IsSet() {
-		toSerialize["accountId"] = o.AccountId.Get()
+	if o.DomainId.IsSet() {
+		toSerialize["domainId"] = o.DomainId.Get()
 	}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
@@ -168,7 +168,7 @@ func (o *CheckDuplicateGroupCommand) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "accountId")
+		delete(additionalProperties, "domainId")
 		delete(additionalProperties, "name")
 		o.AdditionalProperties = additionalProperties
 	}

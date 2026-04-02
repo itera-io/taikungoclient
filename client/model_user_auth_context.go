@@ -24,8 +24,8 @@ type UserAuthContext struct {
 	UserId                 NullableString       `json:"userId,omitempty"`
 	UserName               NullableString       `json:"userName,omitempty"`
 	Email                  NullableString       `json:"email,omitempty"`
-	AccountId              *int32               `json:"accountId,omitempty"`
-	AccountName            NullableString       `json:"accountName,omitempty"`
+	DomainId               *int32               `json:"domainId,omitempty"`
+	DomainName             NullableString       `json:"domainName,omitempty"`
 	LogoUrl                NullableString       `json:"logoUrl,omitempty"`
 	Domain                 NullableString       `json:"domain,omitempty"`
 	MaintenanceModeEnabled *bool                `json:"maintenanceModeEnabled,omitempty"`
@@ -185,79 +185,79 @@ func (o *UserAuthContext) UnsetEmail() {
 	o.Email.Unset()
 }
 
-// GetAccountId returns the AccountId field value if set, zero value otherwise.
-func (o *UserAuthContext) GetAccountId() int32 {
-	if o == nil || IsNil(o.AccountId) {
+// GetDomainId returns the DomainId field value if set, zero value otherwise.
+func (o *UserAuthContext) GetDomainId() int32 {
+	if o == nil || IsNil(o.DomainId) {
 		var ret int32
 		return ret
 	}
-	return *o.AccountId
+	return *o.DomainId
 }
 
-// GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
+// GetDomainIdOk returns a tuple with the DomainId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserAuthContext) GetAccountIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.AccountId) {
+func (o *UserAuthContext) GetDomainIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.DomainId) {
 		return nil, false
 	}
-	return o.AccountId, true
+	return o.DomainId, true
 }
 
-// HasAccountId returns a boolean if a field has been set.
-func (o *UserAuthContext) HasAccountId() bool {
-	if o != nil && !IsNil(o.AccountId) {
+// HasDomainId returns a boolean if a field has been set.
+func (o *UserAuthContext) HasDomainId() bool {
+	if o != nil && !IsNil(o.DomainId) {
 		return true
 	}
 
 	return false
 }
 
-// SetAccountId gets a reference to the given int32 and assigns it to the AccountId field.
-func (o *UserAuthContext) SetAccountId(v int32) {
-	o.AccountId = &v
+// SetDomainId gets a reference to the given int32 and assigns it to the DomainId field.
+func (o *UserAuthContext) SetDomainId(v int32) {
+	o.DomainId = &v
 }
 
-// GetAccountName returns the AccountName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *UserAuthContext) GetAccountName() string {
-	if o == nil || IsNil(o.AccountName.Get()) {
+// GetDomainName returns the DomainName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UserAuthContext) GetDomainName() string {
+	if o == nil || IsNil(o.DomainName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AccountName.Get()
+	return *o.DomainName.Get()
 }
 
-// GetAccountNameOk returns a tuple with the AccountName field value if set, nil otherwise
+// GetDomainNameOk returns a tuple with the DomainName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *UserAuthContext) GetAccountNameOk() (*string, bool) {
+func (o *UserAuthContext) GetDomainNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AccountName.Get(), o.AccountName.IsSet()
+	return o.DomainName.Get(), o.DomainName.IsSet()
 }
 
-// HasAccountName returns a boolean if a field has been set.
-func (o *UserAuthContext) HasAccountName() bool {
-	if o != nil && o.AccountName.IsSet() {
+// HasDomainName returns a boolean if a field has been set.
+func (o *UserAuthContext) HasDomainName() bool {
+	if o != nil && o.DomainName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAccountName gets a reference to the given NullableString and assigns it to the AccountName field.
-func (o *UserAuthContext) SetAccountName(v string) {
-	o.AccountName.Set(&v)
+// SetDomainName gets a reference to the given NullableString and assigns it to the DomainName field.
+func (o *UserAuthContext) SetDomainName(v string) {
+	o.DomainName.Set(&v)
 }
 
-// SetAccountNameNil sets the value for AccountName to be an explicit nil
-func (o *UserAuthContext) SetAccountNameNil() {
-	o.AccountName.Set(nil)
+// SetDomainNameNil sets the value for DomainName to be an explicit nil
+func (o *UserAuthContext) SetDomainNameNil() {
+	o.DomainName.Set(nil)
 }
 
-// UnsetAccountName ensures that no value is present for AccountName, not even an explicit nil
-func (o *UserAuthContext) UnsetAccountName() {
-	o.AccountName.Unset()
+// UnsetDomainName ensures that no value is present for DomainName, not even an explicit nil
+func (o *UserAuthContext) UnsetDomainName() {
+	o.DomainName.Unset()
 }
 
 // GetLogoUrl returns the LogoUrl field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -580,11 +580,11 @@ func (o UserAuthContext) ToMap() (map[string]interface{}, error) {
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
 	}
-	if !IsNil(o.AccountId) {
-		toSerialize["accountId"] = o.AccountId
+	if !IsNil(o.DomainId) {
+		toSerialize["domainId"] = o.DomainId
 	}
-	if o.AccountName.IsSet() {
-		toSerialize["accountName"] = o.AccountName.Get()
+	if o.DomainName.IsSet() {
+		toSerialize["domainName"] = o.DomainName.Get()
 	}
 	if o.LogoUrl.IsSet() {
 		toSerialize["logoUrl"] = o.LogoUrl.Get()
@@ -635,8 +635,8 @@ func (o *UserAuthContext) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "userId")
 		delete(additionalProperties, "userName")
 		delete(additionalProperties, "email")
-		delete(additionalProperties, "accountId")
-		delete(additionalProperties, "accountName")
+		delete(additionalProperties, "domainId")
+		delete(additionalProperties, "domainName")
 		delete(additionalProperties, "logoUrl")
 		delete(additionalProperties, "domain")
 		delete(additionalProperties, "maintenanceModeEnabled")

@@ -958,7 +958,7 @@ type ApiAwsListRequest struct {
 	search         *string
 	searchId       *string
 	id             *int32
-	accountId      *int32
+	domainId       *int32
 	limit          *int32
 	offset         *int32
 }
@@ -993,8 +993,8 @@ func (r ApiAwsListRequest) Id(id int32) ApiAwsListRequest {
 	return r
 }
 
-func (r ApiAwsListRequest) AccountId(accountId int32) ApiAwsListRequest {
-	r.accountId = &accountId
+func (r ApiAwsListRequest) DomainId(domainId int32) ApiAwsListRequest {
+	r.domainId = &domainId
 	return r
 }
 
@@ -1065,8 +1065,8 @@ func (a *AWSCloudCredentialAPIService) AwsListExecute(r ApiAwsListRequest) (*Aws
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
-	if r.accountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
+	if r.domainId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "DomainId", r.domainId, "form", "")
 	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")

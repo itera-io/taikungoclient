@@ -20,22 +20,21 @@ import (
 	"strings"
 )
 
-
 // CloudCredentialAPIService CloudCredentialAPI service
 type CloudCredentialAPIService service
 
 type ApiCloudcredentialsAllFlavorsRequest struct {
-	ctx context.Context
-	ApiService *CloudCredentialAPIService
-	cloudId int32
-	limit *int32
-	offset *int32
-	startRam *float64
-	endRam *float64
-	startCpu *int32
-	endCpu *int32
-	search *string
-	sortBy *string
+	ctx           context.Context
+	ApiService    *CloudCredentialAPIService
+	cloudId       int32
+	limit         *int32
+	offset        *int32
+	startRam      *float64
+	endRam        *float64
+	startCpu      *int32
+	endCpu        *int32
+	search        *string
+	sortBy        *string
 	sortDirection *string
 	hasGpuSupport *bool
 }
@@ -97,26 +96,27 @@ func (r ApiCloudcredentialsAllFlavorsRequest) Execute() (*AllFlavorsList, *http.
 /*
 CloudcredentialsAllFlavors Retrieve all flavors
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiCloudcredentialsAllFlavorsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@return ApiCloudcredentialsAllFlavorsRequest
 */
 func (a *CloudCredentialAPIService) CloudcredentialsAllFlavors(ctx context.Context, cloudId int32) ApiCloudcredentialsAllFlavorsRequest {
 	return ApiCloudcredentialsAllFlavorsRequest{
 		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
+		ctx:        ctx,
+		cloudId:    cloudId,
 	}
 }
 
 // Execute executes the request
-//  @return AllFlavorsList
+//
+//	@return AllFlavorsList
 func (a *CloudCredentialAPIService) CloudcredentialsAllFlavorsExecute(r ApiCloudcredentialsAllFlavorsRequest) (*AllFlavorsList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AllFlavorsList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AllFlavorsList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudCredentialAPIService.CloudcredentialsAllFlavors")
@@ -221,8 +221,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsAllFlavorsExecute(r ApiCloud
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -232,8 +232,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsAllFlavorsExecute(r ApiCloud
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -243,8 +243,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsAllFlavorsExecute(r ApiCloud
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -254,8 +254,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsAllFlavorsExecute(r ApiCloud
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -265,8 +265,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsAllFlavorsExecute(r ApiCloud
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -276,8 +276,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsAllFlavorsExecute(r ApiCloud
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -295,9 +295,9 @@ func (a *CloudCredentialAPIService) CloudcredentialsAllFlavorsExecute(r ApiCloud
 }
 
 type ApiCloudcredentialsDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CloudCredentialAPIService
-	cloudId int32
+	cloudId    int32
 }
 
 func (r ApiCloudcredentialsDeleteRequest) Execute() (*http.Response, error) {
@@ -307,24 +307,24 @@ func (r ApiCloudcredentialsDeleteRequest) Execute() (*http.Response, error) {
 /*
 CloudcredentialsDelete Remove cloud credential by cloud Id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiCloudcredentialsDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@return ApiCloudcredentialsDeleteRequest
 */
 func (a *CloudCredentialAPIService) CloudcredentialsDelete(ctx context.Context, cloudId int32) ApiCloudcredentialsDeleteRequest {
 	return ApiCloudcredentialsDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
+		ctx:        ctx,
+		cloudId:    cloudId,
 	}
 }
 
 // Execute executes the request
 func (a *CloudCredentialAPIService) CloudcredentialsDeleteExecute(r ApiCloudcredentialsDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudCredentialAPIService.CloudcredentialsDelete")
@@ -399,8 +399,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsDeleteExecute(r ApiCloudcred
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -410,8 +410,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsDeleteExecute(r ApiCloudcred
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -421,8 +421,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsDeleteExecute(r ApiCloudcred
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -432,8 +432,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsDeleteExecute(r ApiCloudcred
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -443,8 +443,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsDeleteExecute(r ApiCloudcred
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -454,8 +454,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsDeleteExecute(r ApiCloudcred
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -464,8 +464,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsDeleteExecute(r ApiCloudcred
 }
 
 type ApiCloudcredentialsExceededRequest struct {
-	ctx context.Context
-	ApiService *CloudCredentialAPIService
+	ctx            context.Context
+	ApiService     *CloudCredentialAPIService
 	organizationId *int32
 }
 
@@ -481,24 +481,25 @@ func (r ApiCloudcredentialsExceededRequest) Execute() (*ExceededQuotaList, *http
 /*
 CloudcredentialsExceeded Retrieve cloud credentials exceeded quotas
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCloudcredentialsExceededRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCloudcredentialsExceededRequest
 */
 func (a *CloudCredentialAPIService) CloudcredentialsExceeded(ctx context.Context) ApiCloudcredentialsExceededRequest {
 	return ApiCloudcredentialsExceededRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ExceededQuotaList
+//
+//	@return ExceededQuotaList
 func (a *CloudCredentialAPIService) CloudcredentialsExceededExecute(r ApiCloudcredentialsExceededRequest) (*ExceededQuotaList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ExceededQuotaList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ExceededQuotaList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudCredentialAPIService.CloudcredentialsExceeded")
@@ -575,8 +576,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsExceededExecute(r ApiCloudcr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -586,8 +587,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsExceededExecute(r ApiCloudcr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -597,8 +598,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsExceededExecute(r ApiCloudcr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -608,8 +609,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsExceededExecute(r ApiCloudcr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -619,8 +620,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsExceededExecute(r ApiCloudcr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -630,8 +631,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsExceededExecute(r ApiCloudcr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -649,8 +650,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsExceededExecute(r ApiCloudcr
 }
 
 type ApiCloudcredentialsLockManagerRequest struct {
-	ctx context.Context
-	ApiService *CloudCredentialAPIService
+	ctx                     context.Context
+	ApiService              *CloudCredentialAPIService
 	cloudLockManagerCommand *CloudLockManagerCommand
 }
 
@@ -666,22 +667,22 @@ func (r ApiCloudcredentialsLockManagerRequest) Execute() (*http.Response, error)
 /*
 CloudcredentialsLockManager Lock/Unlock cloud credential
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCloudcredentialsLockManagerRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCloudcredentialsLockManagerRequest
 */
 func (a *CloudCredentialAPIService) CloudcredentialsLockManager(ctx context.Context) ApiCloudcredentialsLockManagerRequest {
 	return ApiCloudcredentialsLockManagerRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CloudCredentialAPIService) CloudcredentialsLockManagerExecute(r ApiCloudcredentialsLockManagerRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudCredentialAPIService.CloudcredentialsLockManager")
@@ -757,8 +758,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsLockManagerExecute(r ApiClou
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -768,8 +769,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsLockManagerExecute(r ApiClou
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -779,8 +780,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsLockManagerExecute(r ApiClou
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -790,8 +791,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsLockManagerExecute(r ApiClou
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -801,8 +802,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsLockManagerExecute(r ApiClou
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -812,8 +813,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsLockManagerExecute(r ApiClou
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -822,8 +823,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsLockManagerExecute(r ApiClou
 }
 
 type ApiCloudcredentialsMakeDefaultRequest struct {
-	ctx context.Context
-	ApiService *CloudCredentialAPIService
+	ctx                          context.Context
+	ApiService                   *CloudCredentialAPIService
 	credentialMakeDefaultCommand *CredentialMakeDefaultCommand
 }
 
@@ -839,22 +840,22 @@ func (r ApiCloudcredentialsMakeDefaultRequest) Execute() (*http.Response, error)
 /*
 CloudcredentialsMakeDefault Make cloud credentials default
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCloudcredentialsMakeDefaultRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCloudcredentialsMakeDefaultRequest
 */
 func (a *CloudCredentialAPIService) CloudcredentialsMakeDefault(ctx context.Context) ApiCloudcredentialsMakeDefaultRequest {
 	return ApiCloudcredentialsMakeDefaultRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CloudCredentialAPIService) CloudcredentialsMakeDefaultExecute(r ApiCloudcredentialsMakeDefaultRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudCredentialAPIService.CloudcredentialsMakeDefault")
@@ -930,8 +931,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsMakeDefaultExecute(r ApiClou
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -941,8 +942,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsMakeDefaultExecute(r ApiClou
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -952,8 +953,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsMakeDefaultExecute(r ApiClou
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -963,8 +964,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsMakeDefaultExecute(r ApiClou
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -974,8 +975,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsMakeDefaultExecute(r ApiClou
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -985,8 +986,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsMakeDefaultExecute(r ApiClou
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -995,15 +996,15 @@ func (a *CloudCredentialAPIService) CloudcredentialsMakeDefaultExecute(r ApiClou
 }
 
 type ApiCloudcredentialsOrgListRequest struct {
-	ctx context.Context
-	ApiService *CloudCredentialAPIService
-	isAdmin *bool
-	accountId *int32
+	ctx            context.Context
+	ApiService     *CloudCredentialAPIService
+	isAdmin        *bool
+	domainId       *int32
 	organizationId *int32
-	search *string
-	isInfra *bool
-	id *int32
-	cloudType *CloudType
+	search         *string
+	isInfra        *bool
+	id             *int32
+	cloudType      *CloudType
 }
 
 func (r ApiCloudcredentialsOrgListRequest) IsAdmin(isAdmin bool) ApiCloudcredentialsOrgListRequest {
@@ -1011,8 +1012,8 @@ func (r ApiCloudcredentialsOrgListRequest) IsAdmin(isAdmin bool) ApiCloudcredent
 	return r
 }
 
-func (r ApiCloudcredentialsOrgListRequest) AccountId(accountId int32) ApiCloudcredentialsOrgListRequest {
-	r.accountId = &accountId
+func (r ApiCloudcredentialsOrgListRequest) DomainId(domainId int32) ApiCloudcredentialsOrgListRequest {
+	r.domainId = &domainId
 	return r
 }
 
@@ -1048,24 +1049,25 @@ func (r ApiCloudcredentialsOrgListRequest) Execute() ([]CloudCredentialsForOrgan
 /*
 CloudcredentialsOrgList Retrieve a list of cloud credentials by organization Id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCloudcredentialsOrgListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCloudcredentialsOrgListRequest
 */
 func (a *CloudCredentialAPIService) CloudcredentialsOrgList(ctx context.Context) ApiCloudcredentialsOrgListRequest {
 	return ApiCloudcredentialsOrgListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []CloudCredentialsForOrganizationEntity
+//
+//	@return []CloudCredentialsForOrganizationEntity
 func (a *CloudCredentialAPIService) CloudcredentialsOrgListExecute(r ApiCloudcredentialsOrgListRequest) ([]CloudCredentialsForOrganizationEntity, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CloudCredentialsForOrganizationEntity
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []CloudCredentialsForOrganizationEntity
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudCredentialAPIService.CloudcredentialsOrgList")
@@ -1082,8 +1084,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsOrgListExecute(r ApiCloudcre
 		return localVarReturnValue, nil, reportError("isAdmin is required and must be specified")
 	}
 
-	if r.accountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
+	if r.domainId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "DomainId", r.domainId, "form", "")
 	}
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
@@ -1161,8 +1163,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsOrgListExecute(r ApiCloudcre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1172,8 +1174,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsOrgListExecute(r ApiCloudcre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1183,8 +1185,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsOrgListExecute(r ApiCloudcre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1194,8 +1196,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsOrgListExecute(r ApiCloudcre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1205,8 +1207,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsOrgListExecute(r ApiCloudcre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1216,8 +1218,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsOrgListExecute(r ApiCloudcre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1235,8 +1237,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsOrgListExecute(r ApiCloudcre
 }
 
 type ApiCloudcredentialsUpdateIpAddressesRequest struct {
-	ctx context.Context
-	ApiService *CloudCredentialAPIService
+	ctx                          context.Context
+	ApiService                   *CloudCredentialAPIService
 	updateUsedIpAddressesCommand *UpdateUsedIpAddressesCommand
 }
 
@@ -1252,22 +1254,22 @@ func (r ApiCloudcredentialsUpdateIpAddressesRequest) Execute() (*http.Response, 
 /*
 CloudcredentialsUpdateIpAddresses Update cloud credential's allocated ip addresses
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCloudcredentialsUpdateIpAddressesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCloudcredentialsUpdateIpAddressesRequest
 */
 func (a *CloudCredentialAPIService) CloudcredentialsUpdateIpAddresses(ctx context.Context) ApiCloudcredentialsUpdateIpAddressesRequest {
 	return ApiCloudcredentialsUpdateIpAddressesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CloudCredentialAPIService) CloudcredentialsUpdateIpAddressesExecute(r ApiCloudcredentialsUpdateIpAddressesRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudCredentialAPIService.CloudcredentialsUpdateIpAddresses")
@@ -1343,8 +1345,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsUpdateIpAddressesExecute(r A
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1354,8 +1356,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsUpdateIpAddressesExecute(r A
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1365,8 +1367,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsUpdateIpAddressesExecute(r A
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1376,8 +1378,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsUpdateIpAddressesExecute(r A
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1387,8 +1389,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsUpdateIpAddressesExecute(r A
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1398,8 +1400,8 @@ func (a *CloudCredentialAPIService) CloudcredentialsUpdateIpAddressesExecute(r A
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

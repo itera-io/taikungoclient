@@ -22,7 +22,7 @@ var _ MappedNullable = &LoginCommand{}
 type LoginCommand struct {
 	Email                NullableString `json:"email,omitempty"`
 	Password             NullableString `json:"password,omitempty"`
-	AccountName          NullableString `json:"accountName,omitempty"`
+	DomainName           NullableString `json:"domainName,omitempty"`
 	Mode                 NullableString `json:"mode,omitempty"`
 	AccessKey            NullableString `json:"accessKey,omitempty"`
 	SecretKey            NullableString `json:"secretKey,omitempty"`
@@ -134,47 +134,47 @@ func (o *LoginCommand) UnsetPassword() {
 	o.Password.Unset()
 }
 
-// GetAccountName returns the AccountName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *LoginCommand) GetAccountName() string {
-	if o == nil || IsNil(o.AccountName.Get()) {
+// GetDomainName returns the DomainName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *LoginCommand) GetDomainName() string {
+	if o == nil || IsNil(o.DomainName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AccountName.Get()
+	return *o.DomainName.Get()
 }
 
-// GetAccountNameOk returns a tuple with the AccountName field value if set, nil otherwise
+// GetDomainNameOk returns a tuple with the DomainName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *LoginCommand) GetAccountNameOk() (*string, bool) {
+func (o *LoginCommand) GetDomainNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AccountName.Get(), o.AccountName.IsSet()
+	return o.DomainName.Get(), o.DomainName.IsSet()
 }
 
-// HasAccountName returns a boolean if a field has been set.
-func (o *LoginCommand) HasAccountName() bool {
-	if o != nil && o.AccountName.IsSet() {
+// HasDomainName returns a boolean if a field has been set.
+func (o *LoginCommand) HasDomainName() bool {
+	if o != nil && o.DomainName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAccountName gets a reference to the given NullableString and assigns it to the AccountName field.
-func (o *LoginCommand) SetAccountName(v string) {
-	o.AccountName.Set(&v)
+// SetDomainName gets a reference to the given NullableString and assigns it to the DomainName field.
+func (o *LoginCommand) SetDomainName(v string) {
+	o.DomainName.Set(&v)
 }
 
-// SetAccountNameNil sets the value for AccountName to be an explicit nil
-func (o *LoginCommand) SetAccountNameNil() {
-	o.AccountName.Set(nil)
+// SetDomainNameNil sets the value for DomainName to be an explicit nil
+func (o *LoginCommand) SetDomainNameNil() {
+	o.DomainName.Set(nil)
 }
 
-// UnsetAccountName ensures that no value is present for AccountName, not even an explicit nil
-func (o *LoginCommand) UnsetAccountName() {
-	o.AccountName.Unset()
+// UnsetDomainName ensures that no value is present for DomainName, not even an explicit nil
+func (o *LoginCommand) UnsetDomainName() {
+	o.DomainName.Unset()
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -322,8 +322,8 @@ func (o LoginCommand) ToMap() (map[string]interface{}, error) {
 	if o.Password.IsSet() {
 		toSerialize["password"] = o.Password.Get()
 	}
-	if o.AccountName.IsSet() {
-		toSerialize["accountName"] = o.AccountName.Get()
+	if o.DomainName.IsSet() {
+		toSerialize["domainName"] = o.DomainName.Get()
 	}
 	if o.Mode.IsSet() {
 		toSerialize["mode"] = o.Mode.Get()
@@ -358,7 +358,7 @@ func (o *LoginCommand) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "email")
 		delete(additionalProperties, "password")
-		delete(additionalProperties, "accountName")
+		delete(additionalProperties, "domainName")
 		delete(additionalProperties, "mode")
 		delete(additionalProperties, "accessKey")
 		delete(additionalProperties, "secretKey")

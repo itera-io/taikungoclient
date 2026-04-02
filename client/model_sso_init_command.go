@@ -20,7 +20,7 @@ var _ MappedNullable = &SsoInitCommand{}
 
 // SsoInitCommand struct for SsoInitCommand
 type SsoInitCommand struct {
-	AccountName          NullableString `json:"accountName,omitempty"`
+	DomainName           NullableString `json:"domainName,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -43,47 +43,47 @@ func NewSsoInitCommandWithDefaults() *SsoInitCommand {
 	return &this
 }
 
-// GetAccountName returns the AccountName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SsoInitCommand) GetAccountName() string {
-	if o == nil || IsNil(o.AccountName.Get()) {
+// GetDomainName returns the DomainName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SsoInitCommand) GetDomainName() string {
+	if o == nil || IsNil(o.DomainName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AccountName.Get()
+	return *o.DomainName.Get()
 }
 
-// GetAccountNameOk returns a tuple with the AccountName field value if set, nil otherwise
+// GetDomainNameOk returns a tuple with the DomainName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SsoInitCommand) GetAccountNameOk() (*string, bool) {
+func (o *SsoInitCommand) GetDomainNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AccountName.Get(), o.AccountName.IsSet()
+	return o.DomainName.Get(), o.DomainName.IsSet()
 }
 
-// HasAccountName returns a boolean if a field has been set.
-func (o *SsoInitCommand) HasAccountName() bool {
-	if o != nil && o.AccountName.IsSet() {
+// HasDomainName returns a boolean if a field has been set.
+func (o *SsoInitCommand) HasDomainName() bool {
+	if o != nil && o.DomainName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAccountName gets a reference to the given NullableString and assigns it to the AccountName field.
-func (o *SsoInitCommand) SetAccountName(v string) {
-	o.AccountName.Set(&v)
+// SetDomainName gets a reference to the given NullableString and assigns it to the DomainName field.
+func (o *SsoInitCommand) SetDomainName(v string) {
+	o.DomainName.Set(&v)
 }
 
-// SetAccountNameNil sets the value for AccountName to be an explicit nil
-func (o *SsoInitCommand) SetAccountNameNil() {
-	o.AccountName.Set(nil)
+// SetDomainNameNil sets the value for DomainName to be an explicit nil
+func (o *SsoInitCommand) SetDomainNameNil() {
+	o.DomainName.Set(nil)
 }
 
-// UnsetAccountName ensures that no value is present for AccountName, not even an explicit nil
-func (o *SsoInitCommand) UnsetAccountName() {
-	o.AccountName.Unset()
+// UnsetDomainName ensures that no value is present for DomainName, not even an explicit nil
+func (o *SsoInitCommand) UnsetDomainName() {
+	o.DomainName.Unset()
 }
 
 func (o SsoInitCommand) MarshalJSON() ([]byte, error) {
@@ -96,8 +96,8 @@ func (o SsoInitCommand) MarshalJSON() ([]byte, error) {
 
 func (o SsoInitCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AccountName.IsSet() {
-		toSerialize["accountName"] = o.AccountName.Get()
+	if o.DomainName.IsSet() {
+		toSerialize["domainName"] = o.DomainName.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -121,7 +121,7 @@ func (o *SsoInitCommand) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "accountName")
+		delete(additionalProperties, "domainName")
 		o.AdditionalProperties = additionalProperties
 	}
 

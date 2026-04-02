@@ -22,8 +22,8 @@ var _ MappedNullable = &RobotUsersListDto{}
 // RobotUsersListDto struct for RobotUsersListDto
 type RobotUsersListDto struct {
 	UserId               string         `json:"userId"`
-	AccountId            int32          `json:"accountId"`
-	AccountName          string         `json:"accountName"`
+	DomainId             int32          `json:"domainId"`
+	DomainName           string         `json:"domainName"`
 	AccessKey            string         `json:"accessKey"`
 	OrganizationId       NullableInt32  `json:"organizationId,omitempty"`
 	OrganizationName     NullableString `json:"organizationName,omitempty"`
@@ -45,11 +45,11 @@ type _RobotUsersListDto RobotUsersListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRobotUsersListDto(userId string, accountId int32, accountName string, accessKey string, createdBy string, name string, scopes []string, isActive bool, createdAt string) *RobotUsersListDto {
+func NewRobotUsersListDto(userId string, domainId int32, domainName string, accessKey string, createdBy string, name string, scopes []string, isActive bool, createdAt string) *RobotUsersListDto {
 	this := RobotUsersListDto{}
 	this.UserId = userId
-	this.AccountId = accountId
-	this.AccountName = accountName
+	this.DomainId = domainId
+	this.DomainName = domainName
 	this.AccessKey = accessKey
 	this.CreatedBy = createdBy
 	this.Name = name
@@ -91,52 +91,52 @@ func (o *RobotUsersListDto) SetUserId(v string) {
 	o.UserId = v
 }
 
-// GetAccountId returns the AccountId field value
-func (o *RobotUsersListDto) GetAccountId() int32 {
+// GetDomainId returns the DomainId field value
+func (o *RobotUsersListDto) GetDomainId() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.AccountId
+	return o.DomainId
 }
 
-// GetAccountIdOk returns a tuple with the AccountId field value
+// GetDomainIdOk returns a tuple with the DomainId field value
 // and a boolean to check if the value has been set.
-func (o *RobotUsersListDto) GetAccountIdOk() (*int32, bool) {
+func (o *RobotUsersListDto) GetDomainIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AccountId, true
+	return &o.DomainId, true
 }
 
-// SetAccountId sets field value
-func (o *RobotUsersListDto) SetAccountId(v int32) {
-	o.AccountId = v
+// SetDomainId sets field value
+func (o *RobotUsersListDto) SetDomainId(v int32) {
+	o.DomainId = v
 }
 
-// GetAccountName returns the AccountName field value
-func (o *RobotUsersListDto) GetAccountName() string {
+// GetDomainName returns the DomainName field value
+func (o *RobotUsersListDto) GetDomainName() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.AccountName
+	return o.DomainName
 }
 
-// GetAccountNameOk returns a tuple with the AccountName field value
+// GetDomainNameOk returns a tuple with the DomainName field value
 // and a boolean to check if the value has been set.
-func (o *RobotUsersListDto) GetAccountNameOk() (*string, bool) {
+func (o *RobotUsersListDto) GetDomainNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AccountName, true
+	return &o.DomainName, true
 }
 
-// SetAccountName sets field value
-func (o *RobotUsersListDto) SetAccountName(v string) {
-	o.AccountName = v
+// SetDomainName sets field value
+func (o *RobotUsersListDto) SetDomainName(v string) {
+	o.DomainName = v
 }
 
 // GetAccessKey returns the AccessKey field value
@@ -542,8 +542,8 @@ func (o RobotUsersListDto) MarshalJSON() ([]byte, error) {
 func (o RobotUsersListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["userId"] = o.UserId
-	toSerialize["accountId"] = o.AccountId
-	toSerialize["accountName"] = o.AccountName
+	toSerialize["domainId"] = o.DomainId
+	toSerialize["domainName"] = o.DomainName
 	toSerialize["accessKey"] = o.AccessKey
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
@@ -582,8 +582,8 @@ func (o *RobotUsersListDto) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"userId",
-		"accountId",
-		"accountName",
+		"domainId",
+		"domainName",
 		"accessKey",
 		"createdBy",
 		"name",
@@ -620,8 +620,8 @@ func (o *RobotUsersListDto) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "userId")
-		delete(additionalProperties, "accountId")
-		delete(additionalProperties, "accountName")
+		delete(additionalProperties, "domainId")
+		delete(additionalProperties, "domainName")
 		delete(additionalProperties, "accessKey")
 		delete(additionalProperties, "organizationId")
 		delete(additionalProperties, "organizationName")

@@ -25,7 +25,7 @@ const TaikunAuthMode = "TAIKUN_AUTH_MODE"
 const TaikunAccessKey = "TAIKUN_ACCESS_KEY"
 const TaikunSecretKey = "TAIKUN_SECRET_KEY"
 const TaikunApiHostEnvVar = "TAIKUN_API_HOST"
-const TaikunAccountName = "TAIKUN_ACCOUNT_NAME"
+const TaikunDomainName = "TAIKUN_DOMAIN_NAME"
 
 type jwtData struct {
 	Nameid     string `json:"nameid"`
@@ -63,12 +63,12 @@ type Client struct {
 	refreshToken    string
 
 	// Set by user
-	accountName string
-	email       string
-	password    string
-	accessKey   string
-	secretKey   string
-	authMode    string
+	domainName string
+	email      string
+	password   string
+	accessKey  string
+	secretKey  string
+	authMode   string
 }
 
 // Getter for token (Used in CLI usertoken get-bearer)
@@ -88,9 +88,9 @@ func (c *customTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 		if c.Client.token == "" {
 			// No token yet: login with email + password
 			loginCmd := taikuncore.LoginCommand{
-				AccountName: *taikuncore.NewNullableString(&c.Client.accountName),
-				Email:       *taikuncore.NewNullableString(&c.Client.email),
-				Password:    *taikuncore.NewNullableString(&c.Client.password),
+				DomainName: *taikuncore.NewNullableString(&c.Client.domainName),
+				Email:      *taikuncore.NewNullableString(&c.Client.email),
+				Password:   *taikuncore.NewNullableString(&c.Client.password),
 			}
 			if c.Client.authMode != "" {
 				loginCmd.Mode = *taikuncore.NewNullableString(&c.Client.authMode)
@@ -326,9 +326,9 @@ func NewClientFromToken(token string, apiHost string) *Client {
 // NewClientFromCredentials creates a client using email + password authentication.
 // authMode is optional — pass an empty string for the default mode, or a custom
 // mode such as "autoscaler".
-func NewClientFromCredentials(accountName, email string, password string, authMode string, apiHost string) *Client {
+func NewClientFromCredentials(domainName, email string, password string, authMode string, apiHost string) *Client {
 	return newClient(apiHost, func(c *Client) {
-		c.accountName = accountName
+		c.domainName = domainName
 		c.email = email
 		c.password = password
 		c.authMode = strings.TrimSpace(authMode)
@@ -337,9 +337,9 @@ func NewClientFromCredentials(accountName, email string, password string, authMo
 
 // NewClientFromAccessKey creates a client using robot user credentials (access key + secret key).
 // Robot users authenticate via HTTP Basic Auth on every request — no JWT or refresh tokens.
-func NewClientFromAccessKey(accountName, accessKey string, secretKey string, apiHost string) *Client {
+func NewClientFromAccessKey(domainName, accessKey string, secretKey string, apiHost string) *Client {
 	return newClient(apiHost, func(c *Client) {
-		c.accountName = accountName
+		c.domainName = domainName
 		c.accessKey = accessKey
 		c.secretKey = secretKey
 	})
@@ -386,10 +386,10 @@ func NewClient() *Client {
 		apiHost = "api.taikun.cloud"
 	}
 
-	// check for account name
-	accountName := os.Getenv(TaikunAccountName)
-	if accountName == "" {
-		fmt.Printf("Taikun account name must be set in '%s'\n", TaikunAccountName)
+	// check for domain name
+	domainName := os.Getenv(TaikunDomainName)
+	if domainName == "" {
+		fmt.Printf("Taikun domain name must be set in '%s'\n", TaikunDomainName)
 		os.Exit(1)
 		return nil
 	}
@@ -398,7 +398,7 @@ func NewClient() *Client {
 	accessKey := os.Getenv(TaikunAccessKey)
 	secretKey := os.Getenv(TaikunSecretKey)
 	if accessKey != "" && secretKey != "" {
-		return NewClientFromAccessKey(accountName, accessKey, secretKey, apiHost)
+		return NewClientFromAccessKey(domainName, accessKey, secretKey, apiHost)
 	}
 
 	// Fall back to email + password authentication
@@ -406,7 +406,7 @@ func NewClient() *Client {
 	password := os.Getenv(TaikunPasswordEnvVar)
 	if email != "" && password != "" {
 		authMode := os.Getenv(TaikunAuthMode)
-		return NewClientFromCredentials(accountName, email, password, authMode, apiHost)
+		return NewClientFromCredentials(domainName, email, password, authMode, apiHost)
 	}
 
 	fmt.Printf("Please set your Taikun credentials. Either '%s' + '%s' or '%s' + '%s' must be set.\n",

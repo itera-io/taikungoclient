@@ -22,7 +22,7 @@ var _ MappedNullable = &ResetPasswordCommand{}
 type ResetPasswordCommand struct {
 	Token                NullableString `json:"token,omitempty"`
 	Email                NullableString `json:"email,omitempty"`
-	AccountName          NullableString `json:"accountName,omitempty"`
+	DomainName           NullableString `json:"domainName,omitempty"`
 	NewPassword          NullableString `json:"newPassword,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -132,47 +132,47 @@ func (o *ResetPasswordCommand) UnsetEmail() {
 	o.Email.Unset()
 }
 
-// GetAccountName returns the AccountName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ResetPasswordCommand) GetAccountName() string {
-	if o == nil || IsNil(o.AccountName.Get()) {
+// GetDomainName returns the DomainName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ResetPasswordCommand) GetDomainName() string {
+	if o == nil || IsNil(o.DomainName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AccountName.Get()
+	return *o.DomainName.Get()
 }
 
-// GetAccountNameOk returns a tuple with the AccountName field value if set, nil otherwise
+// GetDomainNameOk returns a tuple with the DomainName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ResetPasswordCommand) GetAccountNameOk() (*string, bool) {
+func (o *ResetPasswordCommand) GetDomainNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AccountName.Get(), o.AccountName.IsSet()
+	return o.DomainName.Get(), o.DomainName.IsSet()
 }
 
-// HasAccountName returns a boolean if a field has been set.
-func (o *ResetPasswordCommand) HasAccountName() bool {
-	if o != nil && o.AccountName.IsSet() {
+// HasDomainName returns a boolean if a field has been set.
+func (o *ResetPasswordCommand) HasDomainName() bool {
+	if o != nil && o.DomainName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAccountName gets a reference to the given NullableString and assigns it to the AccountName field.
-func (o *ResetPasswordCommand) SetAccountName(v string) {
-	o.AccountName.Set(&v)
+// SetDomainName gets a reference to the given NullableString and assigns it to the DomainName field.
+func (o *ResetPasswordCommand) SetDomainName(v string) {
+	o.DomainName.Set(&v)
 }
 
-// SetAccountNameNil sets the value for AccountName to be an explicit nil
-func (o *ResetPasswordCommand) SetAccountNameNil() {
-	o.AccountName.Set(nil)
+// SetDomainNameNil sets the value for DomainName to be an explicit nil
+func (o *ResetPasswordCommand) SetDomainNameNil() {
+	o.DomainName.Set(nil)
 }
 
-// UnsetAccountName ensures that no value is present for AccountName, not even an explicit nil
-func (o *ResetPasswordCommand) UnsetAccountName() {
-	o.AccountName.Unset()
+// UnsetDomainName ensures that no value is present for DomainName, not even an explicit nil
+func (o *ResetPasswordCommand) UnsetDomainName() {
+	o.DomainName.Unset()
 }
 
 // GetNewPassword returns the NewPassword field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -234,8 +234,8 @@ func (o ResetPasswordCommand) ToMap() (map[string]interface{}, error) {
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
 	}
-	if o.AccountName.IsSet() {
-		toSerialize["accountName"] = o.AccountName.Get()
+	if o.DomainName.IsSet() {
+		toSerialize["domainName"] = o.DomainName.Get()
 	}
 	if o.NewPassword.IsSet() {
 		toSerialize["newPassword"] = o.NewPassword.Get()
@@ -264,7 +264,7 @@ func (o *ResetPasswordCommand) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "token")
 		delete(additionalProperties, "email")
-		delete(additionalProperties, "accountName")
+		delete(additionalProperties, "domainName")
 		delete(additionalProperties, "newPassword")
 		o.AdditionalProperties = additionalProperties
 	}

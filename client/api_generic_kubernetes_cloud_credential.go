@@ -19,22 +19,21 @@ import (
 	"net/url"
 )
 
-
 // GenericKubernetesCloudCredentialAPIService GenericKubernetesCloudCredentialAPI service
 type GenericKubernetesCloudCredentialAPIService service
 
 type ApiGenericKubernetesListRequest struct {
-	ctx context.Context
-	ApiService *GenericKubernetesCloudCredentialAPIService
-	limit *int32
-	offset *int32
+	ctx            context.Context
+	ApiService     *GenericKubernetesCloudCredentialAPIService
+	limit          *int32
+	offset         *int32
 	organizationId *int32
-	sortBy *string
-	sortDirection *string
-	search *string
-	searchId *string
-	id *int32
-	accountId *int32
+	sortBy         *string
+	sortDirection  *string
+	search         *string
+	searchId       *string
+	id             *int32
+	domainId       *int32
 }
 
 func (r ApiGenericKubernetesListRequest) Limit(limit int32) ApiGenericKubernetesListRequest {
@@ -77,8 +76,8 @@ func (r ApiGenericKubernetesListRequest) Id(id int32) ApiGenericKubernetesListRe
 	return r
 }
 
-func (r ApiGenericKubernetesListRequest) AccountId(accountId int32) ApiGenericKubernetesListRequest {
-	r.accountId = &accountId
+func (r ApiGenericKubernetesListRequest) DomainId(domainId int32) ApiGenericKubernetesListRequest {
+	r.domainId = &domainId
 	return r
 }
 
@@ -89,24 +88,25 @@ func (r ApiGenericKubernetesListRequest) Execute() (*GenericKubernetesList, *htt
 /*
 GenericKubernetesList Retrieve list of generic kubernetes cloud credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGenericKubernetesListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGenericKubernetesListRequest
 */
 func (a *GenericKubernetesCloudCredentialAPIService) GenericKubernetesList(ctx context.Context) ApiGenericKubernetesListRequest {
 	return ApiGenericKubernetesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return GenericKubernetesList
+//
+//	@return GenericKubernetesList
 func (a *GenericKubernetesCloudCredentialAPIService) GenericKubernetesListExecute(r ApiGenericKubernetesListRequest) (*GenericKubernetesList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GenericKubernetesList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GenericKubernetesList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GenericKubernetesCloudCredentialAPIService.GenericKubernetesList")
@@ -144,8 +144,8 @@ func (a *GenericKubernetesCloudCredentialAPIService) GenericKubernetesListExecut
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
-	if r.accountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
+	if r.domainId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "DomainId", r.domainId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -207,8 +207,8 @@ func (a *GenericKubernetesCloudCredentialAPIService) GenericKubernetesListExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -218,8 +218,8 @@ func (a *GenericKubernetesCloudCredentialAPIService) GenericKubernetesListExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -229,8 +229,8 @@ func (a *GenericKubernetesCloudCredentialAPIService) GenericKubernetesListExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -240,8 +240,8 @@ func (a *GenericKubernetesCloudCredentialAPIService) GenericKubernetesListExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -251,8 +251,8 @@ func (a *GenericKubernetesCloudCredentialAPIService) GenericKubernetesListExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -262,8 +262,8 @@ func (a *GenericKubernetesCloudCredentialAPIService) GenericKubernetesListExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -281,8 +281,8 @@ func (a *GenericKubernetesCloudCredentialAPIService) GenericKubernetesListExecut
 }
 
 type ApiGenericKubernetesUpdateRequest struct {
-	ctx context.Context
-	ApiService *GenericKubernetesCloudCredentialAPIService
+	ctx                            context.Context
+	ApiService                     *GenericKubernetesCloudCredentialAPIService
 	updateGenericKubernetesCommand *UpdateGenericKubernetesCommand
 }
 
@@ -298,24 +298,25 @@ func (r ApiGenericKubernetesUpdateRequest) Execute() (*TaikunResult, *http.Respo
 /*
 GenericKubernetesUpdate Update Generic kubernetes credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGenericKubernetesUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGenericKubernetesUpdateRequest
 */
 func (a *GenericKubernetesCloudCredentialAPIService) GenericKubernetesUpdate(ctx context.Context) ApiGenericKubernetesUpdateRequest {
 	return ApiGenericKubernetesUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return TaikunResult
+//
+//	@return TaikunResult
 func (a *GenericKubernetesCloudCredentialAPIService) GenericKubernetesUpdateExecute(r ApiGenericKubernetesUpdateRequest) (*TaikunResult, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TaikunResult
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TaikunResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GenericKubernetesCloudCredentialAPIService.GenericKubernetesUpdate")
@@ -391,8 +392,8 @@ func (a *GenericKubernetesCloudCredentialAPIService) GenericKubernetesUpdateExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -402,8 +403,8 @@ func (a *GenericKubernetesCloudCredentialAPIService) GenericKubernetesUpdateExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -413,8 +414,8 @@ func (a *GenericKubernetesCloudCredentialAPIService) GenericKubernetesUpdateExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -424,8 +425,8 @@ func (a *GenericKubernetesCloudCredentialAPIService) GenericKubernetesUpdateExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -435,8 +436,8 @@ func (a *GenericKubernetesCloudCredentialAPIService) GenericKubernetesUpdateExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -446,8 +447,8 @@ func (a *GenericKubernetesCloudCredentialAPIService) GenericKubernetesUpdateExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

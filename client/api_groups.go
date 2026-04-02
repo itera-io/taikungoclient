@@ -1253,12 +1253,12 @@ func (a *GroupsAPIService) GroupsDeleteUsersExecute(r ApiGroupsDeleteUsersReques
 type ApiGroupsListRequest struct {
 	ctx        context.Context
 	ApiService *GroupsAPIService
-	accountId  *int32
+	domainId   *int32
 	search     *string
 }
 
-func (r ApiGroupsListRequest) AccountId(accountId int32) ApiGroupsListRequest {
-	r.accountId = &accountId
+func (r ApiGroupsListRequest) DomainId(domainId int32) ApiGroupsListRequest {
+	r.domainId = &domainId
 	return r
 }
 
@@ -1306,8 +1306,8 @@ func (a *GroupsAPIService) GroupsListExecute(r ApiGroupsListRequest) (*GroupList
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.accountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
+	if r.domainId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "DomainId", r.domainId, "form", "")
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
