@@ -60373,11 +60373,11 @@ components:
     OrganizationDropdownDto:
       example:
         discountRate: 6.027456183070403
-        accountId: 1
         isInfra: true
-        accountName: accountName
+        domainName: domainName
         name: name
         id: 0
+        domainId: 1
       properties:
         id:
           format: int32
@@ -60390,10 +60390,10 @@ components:
         discountRate:
           format: double
           type: number
-        accountId:
+        domainId:
           format: int32
           type: integer
-        accountName:
+        domainName:
           nullable: true
           type: string
       type: object
@@ -64618,13 +64618,13 @@ components:
         password: password
         createdBy: createdBy
         price: 5.637376656633329
-        name: name
-        id: 0
-        lastModified: lastModified
-        account:
+        domain:
           domainName: domainName
           logo: logo
           domainId: 2
+        name: name
+        id: 0
+        lastModified: lastModified
       properties:
         id:
           format: int32
@@ -64661,7 +64661,7 @@ components:
         createdAt:
           nullable: true
           type: string
-        account:
+        domain:
           $ref: "#/components/schemas/DomainEntity"
         operationCredential:
           $ref: "#/components/schemas/OperationCredentialsForOrganizationEntity"
@@ -64674,11 +64674,11 @@ components:
           nullable: true
           type: string
       required:
-      - account
       - billingStartDate
       - boundOrganizations
       - createdAt
       - createdBy
+      - domain
       - id
       - labels
       - lastModified
@@ -64723,13 +64723,13 @@ components:
           password: password
           createdBy: createdBy
           price: 5.637376656633329
-          name: name
-          id: 0
-          lastModified: lastModified
-          account:
+          domain:
             domainName: domainName
             logo: logo
             domainId: 2
+          name: name
+          id: 0
+          lastModified: lastModified
         - metricName: metricName
           lastModifiedBy: lastModifiedBy
           userName: userName
@@ -64758,13 +64758,13 @@ components:
           password: password
           createdBy: createdBy
           price: 5.637376656633329
-          name: name
-          id: 0
-          lastModified: lastModified
-          account:
+          domain:
             domainName: domainName
             logo: logo
             domainId: 2
+          name: name
+          id: 0
+          lastModified: lastModified
         offset: 3
         limit: 7
         hasMore: true

@@ -24,8 +24,8 @@ type OrganizationDropdownDto struct {
 	Name                 NullableString `json:"name,omitempty"`
 	IsInfra              *bool          `json:"isInfra,omitempty"`
 	DiscountRate         *float64       `json:"discountRate,omitempty"`
-	AccountId            *int32         `json:"accountId,omitempty"`
-	AccountName          NullableString `json:"accountName,omitempty"`
+	DomainId             *int32         `json:"domainId,omitempty"`
+	DomainName           NullableString `json:"domainName,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -187,79 +187,79 @@ func (o *OrganizationDropdownDto) SetDiscountRate(v float64) {
 	o.DiscountRate = &v
 }
 
-// GetAccountId returns the AccountId field value if set, zero value otherwise.
-func (o *OrganizationDropdownDto) GetAccountId() int32 {
-	if o == nil || IsNil(o.AccountId) {
+// GetDomainId returns the DomainId field value if set, zero value otherwise.
+func (o *OrganizationDropdownDto) GetDomainId() int32 {
+	if o == nil || IsNil(o.DomainId) {
 		var ret int32
 		return ret
 	}
-	return *o.AccountId
+	return *o.DomainId
 }
 
-// GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
+// GetDomainIdOk returns a tuple with the DomainId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationDropdownDto) GetAccountIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.AccountId) {
+func (o *OrganizationDropdownDto) GetDomainIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.DomainId) {
 		return nil, false
 	}
-	return o.AccountId, true
+	return o.DomainId, true
 }
 
-// HasAccountId returns a boolean if a field has been set.
-func (o *OrganizationDropdownDto) HasAccountId() bool {
-	if o != nil && !IsNil(o.AccountId) {
+// HasDomainId returns a boolean if a field has been set.
+func (o *OrganizationDropdownDto) HasDomainId() bool {
+	if o != nil && !IsNil(o.DomainId) {
 		return true
 	}
 
 	return false
 }
 
-// SetAccountId gets a reference to the given int32 and assigns it to the AccountId field.
-func (o *OrganizationDropdownDto) SetAccountId(v int32) {
-	o.AccountId = &v
+// SetDomainId gets a reference to the given int32 and assigns it to the DomainId field.
+func (o *OrganizationDropdownDto) SetDomainId(v int32) {
+	o.DomainId = &v
 }
 
-// GetAccountName returns the AccountName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationDropdownDto) GetAccountName() string {
-	if o == nil || IsNil(o.AccountName.Get()) {
+// GetDomainName returns the DomainName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OrganizationDropdownDto) GetDomainName() string {
+	if o == nil || IsNil(o.DomainName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AccountName.Get()
+	return *o.DomainName.Get()
 }
 
-// GetAccountNameOk returns a tuple with the AccountName field value if set, nil otherwise
+// GetDomainNameOk returns a tuple with the DomainName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationDropdownDto) GetAccountNameOk() (*string, bool) {
+func (o *OrganizationDropdownDto) GetDomainNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AccountName.Get(), o.AccountName.IsSet()
+	return o.DomainName.Get(), o.DomainName.IsSet()
 }
 
-// HasAccountName returns a boolean if a field has been set.
-func (o *OrganizationDropdownDto) HasAccountName() bool {
-	if o != nil && o.AccountName.IsSet() {
+// HasDomainName returns a boolean if a field has been set.
+func (o *OrganizationDropdownDto) HasDomainName() bool {
+	if o != nil && o.DomainName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAccountName gets a reference to the given NullableString and assigns it to the AccountName field.
-func (o *OrganizationDropdownDto) SetAccountName(v string) {
-	o.AccountName.Set(&v)
+// SetDomainName gets a reference to the given NullableString and assigns it to the DomainName field.
+func (o *OrganizationDropdownDto) SetDomainName(v string) {
+	o.DomainName.Set(&v)
 }
 
-// SetAccountNameNil sets the value for AccountName to be an explicit nil
-func (o *OrganizationDropdownDto) SetAccountNameNil() {
-	o.AccountName.Set(nil)
+// SetDomainNameNil sets the value for DomainName to be an explicit nil
+func (o *OrganizationDropdownDto) SetDomainNameNil() {
+	o.DomainName.Set(nil)
 }
 
-// UnsetAccountName ensures that no value is present for AccountName, not even an explicit nil
-func (o *OrganizationDropdownDto) UnsetAccountName() {
-	o.AccountName.Unset()
+// UnsetDomainName ensures that no value is present for DomainName, not even an explicit nil
+func (o *OrganizationDropdownDto) UnsetDomainName() {
+	o.DomainName.Unset()
 }
 
 func (o OrganizationDropdownDto) MarshalJSON() ([]byte, error) {
@@ -284,11 +284,11 @@ func (o OrganizationDropdownDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DiscountRate) {
 		toSerialize["discountRate"] = o.DiscountRate
 	}
-	if !IsNil(o.AccountId) {
-		toSerialize["accountId"] = o.AccountId
+	if !IsNil(o.DomainId) {
+		toSerialize["domainId"] = o.DomainId
 	}
-	if o.AccountName.IsSet() {
-		toSerialize["accountName"] = o.AccountName.Get()
+	if o.DomainName.IsSet() {
+		toSerialize["domainName"] = o.DomainName.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -316,8 +316,8 @@ func (o *OrganizationDropdownDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "isInfra")
 		delete(additionalProperties, "discountRate")
-		delete(additionalProperties, "accountId")
-		delete(additionalProperties, "accountName")
+		delete(additionalProperties, "domainId")
+		delete(additionalProperties, "domainName")
 		o.AdditionalProperties = additionalProperties
 	}
 
