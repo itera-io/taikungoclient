@@ -216,7 +216,6 @@ type ApiZadaraListRequest struct {
 	search *string
 	searchId *string
 	id *int32
-	accountId *int32
 	limit *int32
 	offset *int32
 }
@@ -251,11 +250,6 @@ func (r ApiZadaraListRequest) Id(id int32) ApiZadaraListRequest {
 	return r
 }
 
-func (r ApiZadaraListRequest) AccountId(accountId int32) ApiZadaraListRequest {
-	r.accountId = &accountId
-	return r
-}
-
 func (r ApiZadaraListRequest) Limit(limit int32) ApiZadaraListRequest {
 	r.limit = &limit
 	return r
@@ -272,6 +266,10 @@ func (r ApiZadaraListRequest) Execute() (*ZadaraCredentialList, *http.Response, 
 
 /*
 ZadaraList Retrieve list of Zadara cloud credentials
+
+<div style='font-family: Arial, sans-serif;'>
+                        <h2 style='color: #4A90E2;'>Description</h2>
+                        <ul><li><b>SortBy</b> - Options: <i>zadaraRegion</i>, <i>organizationName</i>, <i>createdAt</i><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></ul></div>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiZadaraListRequest
@@ -321,9 +319,6 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraListExecute(r ApiZadaraListReque
 	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
-	}
-	if r.accountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
 	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")

@@ -23,11 +23,7 @@ var _ MappedNullable = &StandAloneProfiles{}
 // StandAloneProfiles struct for StandAloneProfiles
 type StandAloneProfiles struct {
 	Data []StandAloneProfilesListDto `json:"data"`
-	Limit int32 `json:"limit"`
-	HasMore bool `json:"hasMore"`
-	TotalCount int64 `json:"totalCount"`
-	Offset int32 `json:"offset"`
-	NextOffset NullableInt32 `json:"nextOffset,omitempty"`
+	TotalCount int32 `json:"totalCount"`
 }
 
 type _StandAloneProfiles StandAloneProfiles
@@ -36,13 +32,10 @@ type _StandAloneProfiles StandAloneProfiles
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStandAloneProfiles(data []StandAloneProfilesListDto, limit int32, hasMore bool, totalCount int64, offset int32) *StandAloneProfiles {
+func NewStandAloneProfiles(data []StandAloneProfilesListDto, totalCount int32) *StandAloneProfiles {
 	this := StandAloneProfiles{}
 	this.Data = data
-	this.Limit = limit
-	this.HasMore = hasMore
 	this.TotalCount = totalCount
-	this.Offset = offset
 	return &this
 }
 
@@ -80,58 +73,10 @@ func (o *StandAloneProfiles) SetData(v []StandAloneProfilesListDto) {
 	o.Data = v
 }
 
-// GetLimit returns the Limit field value
-func (o *StandAloneProfiles) GetLimit() int32 {
+// GetTotalCount returns the TotalCount field value
+func (o *StandAloneProfiles) GetTotalCount() int32 {
 	if o == nil {
 		var ret int32
-		return ret
-	}
-
-	return o.Limit
-}
-
-// GetLimitOk returns a tuple with the Limit field value
-// and a boolean to check if the value has been set.
-func (o *StandAloneProfiles) GetLimitOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Limit, true
-}
-
-// SetLimit sets field value
-func (o *StandAloneProfiles) SetLimit(v int32) {
-	o.Limit = v
-}
-
-// GetHasMore returns the HasMore field value
-func (o *StandAloneProfiles) GetHasMore() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.HasMore
-}
-
-// GetHasMoreOk returns a tuple with the HasMore field value
-// and a boolean to check if the value has been set.
-func (o *StandAloneProfiles) GetHasMoreOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.HasMore, true
-}
-
-// SetHasMore sets field value
-func (o *StandAloneProfiles) SetHasMore(v bool) {
-	o.HasMore = v
-}
-
-// GetTotalCount returns the TotalCount field value
-func (o *StandAloneProfiles) GetTotalCount() int64 {
-	if o == nil {
-		var ret int64
 		return ret
 	}
 
@@ -140,7 +85,7 @@ func (o *StandAloneProfiles) GetTotalCount() int64 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value
 // and a boolean to check if the value has been set.
-func (o *StandAloneProfiles) GetTotalCountOk() (*int64, bool) {
+func (o *StandAloneProfiles) GetTotalCountOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -148,74 +93,8 @@ func (o *StandAloneProfiles) GetTotalCountOk() (*int64, bool) {
 }
 
 // SetTotalCount sets field value
-func (o *StandAloneProfiles) SetTotalCount(v int64) {
+func (o *StandAloneProfiles) SetTotalCount(v int32) {
 	o.TotalCount = v
-}
-
-// GetOffset returns the Offset field value
-func (o *StandAloneProfiles) GetOffset() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Offset
-}
-
-// GetOffsetOk returns a tuple with the Offset field value
-// and a boolean to check if the value has been set.
-func (o *StandAloneProfiles) GetOffsetOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Offset, true
-}
-
-// SetOffset sets field value
-func (o *StandAloneProfiles) SetOffset(v int32) {
-	o.Offset = v
-}
-
-// GetNextOffset returns the NextOffset field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *StandAloneProfiles) GetNextOffset() int32 {
-	if o == nil || IsNil(o.NextOffset.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.NextOffset.Get()
-}
-
-// GetNextOffsetOk returns a tuple with the NextOffset field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StandAloneProfiles) GetNextOffsetOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.NextOffset.Get(), o.NextOffset.IsSet()
-}
-
-// HasNextOffset returns a boolean if a field has been set.
-func (o *StandAloneProfiles) HasNextOffset() bool {
-	if o != nil && o.NextOffset.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetNextOffset gets a reference to the given NullableInt32 and assigns it to the NextOffset field.
-func (o *StandAloneProfiles) SetNextOffset(v int32) {
-	o.NextOffset.Set(&v)
-}
-// SetNextOffsetNil sets the value for NextOffset to be an explicit nil
-func (o *StandAloneProfiles) SetNextOffsetNil() {
-	o.NextOffset.Set(nil)
-}
-
-// UnsetNextOffset ensures that no value is present for NextOffset, not even an explicit nil
-func (o *StandAloneProfiles) UnsetNextOffset() {
-	o.NextOffset.Unset()
 }
 
 func (o StandAloneProfiles) MarshalJSON() ([]byte, error) {
@@ -231,13 +110,7 @@ func (o StandAloneProfiles) ToMap() (map[string]interface{}, error) {
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
 	}
-	toSerialize["limit"] = o.Limit
-	toSerialize["hasMore"] = o.HasMore
 	toSerialize["totalCount"] = o.TotalCount
-	toSerialize["offset"] = o.Offset
-	if o.NextOffset.IsSet() {
-		toSerialize["nextOffset"] = o.NextOffset.Get()
-	}
 	return toSerialize, nil
 }
 
@@ -247,10 +120,7 @@ func (o *StandAloneProfiles) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"data",
-		"limit",
-		"hasMore",
 		"totalCount",
-		"offset",
 	}
 
 	allProperties := make(map[string]interface{})

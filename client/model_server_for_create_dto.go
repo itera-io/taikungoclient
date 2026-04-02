@@ -37,7 +37,6 @@ type ServerForCreateDto struct {
 	KubernetesNodeLabels []KubernetesNodeLabelsDto `json:"kubernetesNodeLabels,omitempty"`
 	ReplicaCount NullableInt32 `json:"replicaCount,omitempty"`
 	UseLocalDisk *bool `json:"useLocalDisk,omitempty"`
-	CskVersion NullableString `json:"cskVersion,omitempty"`
 }
 
 // NewServerForCreateDto instantiates a new ServerForCreateDto object
@@ -672,48 +671,6 @@ func (o *ServerForCreateDto) SetUseLocalDisk(v bool) {
 	o.UseLocalDisk = &v
 }
 
-// GetCskVersion returns the CskVersion field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerForCreateDto) GetCskVersion() string {
-	if o == nil || IsNil(o.CskVersion.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.CskVersion.Get()
-}
-
-// GetCskVersionOk returns a tuple with the CskVersion field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerForCreateDto) GetCskVersionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.CskVersion.Get(), o.CskVersion.IsSet()
-}
-
-// HasCskVersion returns a boolean if a field has been set.
-func (o *ServerForCreateDto) HasCskVersion() bool {
-	if o != nil && o.CskVersion.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCskVersion gets a reference to the given NullableString and assigns it to the CskVersion field.
-func (o *ServerForCreateDto) SetCskVersion(v string) {
-	o.CskVersion.Set(&v)
-}
-// SetCskVersionNil sets the value for CskVersion to be an explicit nil
-func (o *ServerForCreateDto) SetCskVersionNil() {
-	o.CskVersion.Set(nil)
-}
-
-// UnsetCskVersion ensures that no value is present for CskVersion, not even an explicit nil
-func (o *ServerForCreateDto) UnsetCskVersion() {
-	o.CskVersion.Unset()
-}
-
 func (o ServerForCreateDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -774,9 +731,6 @@ func (o ServerForCreateDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UseLocalDisk) {
 		toSerialize["useLocalDisk"] = o.UseLocalDisk
-	}
-	if o.CskVersion.IsSet() {
-		toSerialize["cskVersion"] = o.CskVersion.Get()
 	}
 	return toSerialize, nil
 }

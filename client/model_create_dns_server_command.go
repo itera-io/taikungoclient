@@ -20,9 +20,7 @@ var _ MappedNullable = &CreateDnsServerCommand{}
 
 // CreateDnsServerCommand struct for CreateDnsServerCommand
 type CreateDnsServerCommand struct {
-	// Dns address example: 8.8.8.8
 	Address NullableString `json:"address,omitempty"`
-	// Id should be positive integer
 	AccessProfileId *int32 `json:"accessProfileId,omitempty"`
 }
 

@@ -1233,13 +1233,23 @@ func (a *TicketAPIService) TicketEditMessageExecute(r ApiTicketEditMessageReques
 type ApiTicketListRequest struct {
 	ctx context.Context
 	ApiService *TicketAPIService
+	limit *int32
+	offset *int32
 	organizationId *int32
 	search *string
 	startDate *time.Time
 	endDate *time.Time
 	ticketId *string
-	offset *int32
-	limit *int32
+}
+
+func (r ApiTicketListRequest) Limit(limit int32) ApiTicketListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiTicketListRequest) Offset(offset int32) ApiTicketListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiTicketListRequest) OrganizationId(organizationId int32) ApiTicketListRequest {
@@ -1264,16 +1274,6 @@ func (r ApiTicketListRequest) EndDate(endDate time.Time) ApiTicketListRequest {
 
 func (r ApiTicketListRequest) TicketId(ticketId string) ApiTicketListRequest {
 	r.ticketId = &ticketId
-	return r
-}
-
-func (r ApiTicketListRequest) Offset(offset int32) ApiTicketListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiTicketListRequest) Limit(limit int32) ApiTicketListRequest {
-	r.limit = &limit
 	return r
 }
 
@@ -1315,6 +1315,12 @@ func (a *TicketAPIService) TicketListExecute(r ApiTicketListRequest) (*AllTicket
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	}
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
@@ -1329,12 +1335,6 @@ func (a *TicketAPIService) TicketListExecute(r ApiTicketListRequest) (*AllTicket
 	}
 	if r.ticketId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "TicketId", r.ticketId, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1473,17 +1473,17 @@ type ApiTicketMessagesRequest struct {
 	ctx context.Context
 	ApiService *TicketAPIService
 	ticketId string
-	offset *int32
 	limit *int32
-}
-
-func (r ApiTicketMessagesRequest) Offset(offset int32) ApiTicketMessagesRequest {
-	r.offset = &offset
-	return r
+	offset *int32
 }
 
 func (r ApiTicketMessagesRequest) Limit(limit int32) ApiTicketMessagesRequest {
 	r.limit = &limit
+	return r
+}
+
+func (r ApiTicketMessagesRequest) Offset(offset int32) ApiTicketMessagesRequest {
+	r.offset = &offset
 	return r
 }
 
@@ -1528,11 +1528,11 @@ func (a *TicketAPIService) TicketMessagesExecute(r ApiTicketMessagesRequest) (*A
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

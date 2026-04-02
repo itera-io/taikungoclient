@@ -401,6 +401,10 @@ func (r ApiS3credentialsDropdownRequest) Execute() ([]BackupCredentialsForOrgani
 /*
 S3credentialsDropdown Retrieve all S3 credentials for organization
 
+<div style='font-family: Arial, sans-serif;'>
+                        <h2 style='color: #4A90E2;'>Description</h2>
+                        <ul><li><b>Search</b> - Options: <i>name</i></ul></div>
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiS3credentialsDropdownRequest
 */
@@ -575,7 +579,6 @@ type ApiS3credentialsListRequest struct {
 	ctx context.Context
 	ApiService *S3CredentialsAPIService
 	organizationId *int32
-	accountId *int32
 	search *string
 	searchId *string
 	id *int32
@@ -587,11 +590,6 @@ type ApiS3credentialsListRequest struct {
 
 func (r ApiS3credentialsListRequest) OrganizationId(organizationId int32) ApiS3credentialsListRequest {
 	r.organizationId = &organizationId
-	return r
-}
-
-func (r ApiS3credentialsListRequest) AccountId(accountId int32) ApiS3credentialsListRequest {
-	r.accountId = &accountId
 	return r
 }
 
@@ -637,6 +635,10 @@ func (r ApiS3credentialsListRequest) Execute() (*BackupCredentials, *http.Respon
 /*
 S3credentialsList Retrieve all S3 credentials
 
+<div style='font-family: Arial, sans-serif;'>
+                        <h2 style='color: #4A90E2;'>Description</h2>
+                        <ul><li><b>SortBy</b> - Options: <i>name</i>, <i>url</i>, <i>region</i>, <i>organizationName</i>, <i>createdAt</i><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></ul></div>
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiS3credentialsListRequest
 */
@@ -670,9 +672,6 @@ func (a *S3CredentialsAPIService) S3credentialsListExecute(r ApiS3credentialsLis
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
-	}
-	if r.accountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")

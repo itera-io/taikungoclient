@@ -22,7 +22,6 @@ var _ MappedNullable = &LoginCommand{}
 type LoginCommand struct {
 	Email NullableString `json:"email,omitempty"`
 	Password NullableString `json:"password,omitempty"`
-	AccountName NullableString `json:"accountName,omitempty"`
 	Mode NullableString `json:"mode,omitempty"`
 	AccessKey NullableString `json:"accessKey,omitempty"`
 	SecretKey NullableString `json:"secretKey,omitempty"`
@@ -127,48 +126,6 @@ func (o *LoginCommand) SetPasswordNil() {
 // UnsetPassword ensures that no value is present for Password, not even an explicit nil
 func (o *LoginCommand) UnsetPassword() {
 	o.Password.Unset()
-}
-
-// GetAccountName returns the AccountName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *LoginCommand) GetAccountName() string {
-	if o == nil || IsNil(o.AccountName.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.AccountName.Get()
-}
-
-// GetAccountNameOk returns a tuple with the AccountName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *LoginCommand) GetAccountNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.AccountName.Get(), o.AccountName.IsSet()
-}
-
-// HasAccountName returns a boolean if a field has been set.
-func (o *LoginCommand) HasAccountName() bool {
-	if o != nil && o.AccountName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAccountName gets a reference to the given NullableString and assigns it to the AccountName field.
-func (o *LoginCommand) SetAccountName(v string) {
-	o.AccountName.Set(&v)
-}
-// SetAccountNameNil sets the value for AccountName to be an explicit nil
-func (o *LoginCommand) SetAccountNameNil() {
-	o.AccountName.Set(nil)
-}
-
-// UnsetAccountName ensures that no value is present for AccountName, not even an explicit nil
-func (o *LoginCommand) UnsetAccountName() {
-	o.AccountName.Unset()
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -312,9 +269,6 @@ func (o LoginCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Password.IsSet() {
 		toSerialize["password"] = o.Password.Get()
-	}
-	if o.AccountName.IsSet() {
-		toSerialize["accountName"] = o.AccountName.Get()
 	}
 	if o.Mode.IsSet() {
 		toSerialize["mode"] = o.Mode.Get()

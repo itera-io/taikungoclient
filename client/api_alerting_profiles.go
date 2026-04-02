@@ -1459,7 +1459,6 @@ type ApiAlertingprofilesListRequest struct {
 	ctx context.Context
 	ApiService *AlertingProfilesAPIService
 	organizationId *int32
-	accountId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
@@ -1471,11 +1470,6 @@ type ApiAlertingprofilesListRequest struct {
 
 func (r ApiAlertingprofilesListRequest) OrganizationId(organizationId int32) ApiAlertingprofilesListRequest {
 	r.organizationId = &organizationId
-	return r
-}
-
-func (r ApiAlertingprofilesListRequest) AccountId(accountId int32) ApiAlertingprofilesListRequest {
-	r.accountId = &accountId
 	return r
 }
 
@@ -1554,9 +1548,6 @@ func (a *AlertingProfilesAPIService) AlertingprofilesListExecute(r ApiAlertingpr
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
-	}
-	if r.accountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
 	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")

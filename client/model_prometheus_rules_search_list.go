@@ -21,7 +21,7 @@ var _ MappedNullable = &PrometheusRulesSearchList{}
 // PrometheusRulesSearchList struct for PrometheusRulesSearchList
 type PrometheusRulesSearchList struct {
 	Data []PrometheusRulesSearchResponseData `json:"data,omitempty"`
-	TotalCount *int64 `json:"totalCount,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewPrometheusRulesSearchList instantiates a new PrometheusRulesSearchList object
@@ -75,9 +75,9 @@ func (o *PrometheusRulesSearchList) SetData(v []PrometheusRulesSearchResponseDat
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
-func (o *PrometheusRulesSearchList) GetTotalCount() int64 {
+func (o *PrometheusRulesSearchList) GetTotalCount() int32 {
 	if o == nil || IsNil(o.TotalCount) {
-		var ret int64
+		var ret int32
 		return ret
 	}
 	return *o.TotalCount
@@ -85,7 +85,7 @@ func (o *PrometheusRulesSearchList) GetTotalCount() int64 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PrometheusRulesSearchList) GetTotalCountOk() (*int64, bool) {
+func (o *PrometheusRulesSearchList) GetTotalCountOk() (*int32, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -101,8 +101,8 @@ func (o *PrometheusRulesSearchList) HasTotalCount() bool {
 	return false
 }
 
-// SetTotalCount gets a reference to the given int64 and assigns it to the TotalCount field.
-func (o *PrometheusRulesSearchList) SetTotalCount(v int64) {
+// SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
+func (o *PrometheusRulesSearchList) SetTotalCount(v int32) {
 	o.TotalCount = &v
 }
 

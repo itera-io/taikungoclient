@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -26,7 +27,6 @@ type EndpointElements struct {
 	Description NullableString `json:"description"`
 	Method NullableString `json:"method"`
 	Path NullableString `json:"path"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _EndpointElements EndpointElements
@@ -196,11 +196,6 @@ func (o EndpointElements) ToMap() (map[string]interface{}, error) {
 	toSerialize["description"] = o.Description.Get()
 	toSerialize["method"] = o.Method.Get()
 	toSerialize["path"] = o.Path.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -232,24 +227,15 @@ func (o *EndpointElements) UnmarshalJSON(data []byte) (err error) {
 
 	varEndpointElements := _EndpointElements{}
 
-	err = json.Unmarshal(data, &varEndpointElements)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEndpointElements)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EndpointElements(varEndpointElements)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "controller")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "method")
-		delete(additionalProperties, "path")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

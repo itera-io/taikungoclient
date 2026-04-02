@@ -22,7 +22,6 @@ var _ MappedNullable = &UserExistCommand{}
 type UserExistCommand struct {
 	Email NullableString `json:"email,omitempty"`
 	UserName NullableString `json:"userName,omitempty"`
-	AccountId NullableInt32 `json:"accountId,omitempty"`
 }
 
 // NewUserExistCommand instantiates a new UserExistCommand object
@@ -126,48 +125,6 @@ func (o *UserExistCommand) UnsetUserName() {
 	o.UserName.Unset()
 }
 
-// GetAccountId returns the AccountId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *UserExistCommand) GetAccountId() int32 {
-	if o == nil || IsNil(o.AccountId.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.AccountId.Get()
-}
-
-// GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *UserExistCommand) GetAccountIdOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.AccountId.Get(), o.AccountId.IsSet()
-}
-
-// HasAccountId returns a boolean if a field has been set.
-func (o *UserExistCommand) HasAccountId() bool {
-	if o != nil && o.AccountId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAccountId gets a reference to the given NullableInt32 and assigns it to the AccountId field.
-func (o *UserExistCommand) SetAccountId(v int32) {
-	o.AccountId.Set(&v)
-}
-// SetAccountIdNil sets the value for AccountId to be an explicit nil
-func (o *UserExistCommand) SetAccountIdNil() {
-	o.AccountId.Set(nil)
-}
-
-// UnsetAccountId ensures that no value is present for AccountId, not even an explicit nil
-func (o *UserExistCommand) UnsetAccountId() {
-	o.AccountId.Unset()
-}
-
 func (o UserExistCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -183,9 +140,6 @@ func (o UserExistCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.UserName.IsSet() {
 		toSerialize["userName"] = o.UserName.Get()
-	}
-	if o.AccountId.IsSet() {
-		toSerialize["accountId"] = o.AccountId.Get()
 	}
 	return toSerialize, nil
 }

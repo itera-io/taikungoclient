@@ -21,7 +21,6 @@ var _ MappedNullable = &ForgotPasswordCommand{}
 // ForgotPasswordCommand struct for ForgotPasswordCommand
 type ForgotPasswordCommand struct {
 	Email NullableString `json:"email,omitempty"`
-	AccountName NullableString `json:"accountName,omitempty"`
 }
 
 // NewForgotPasswordCommand instantiates a new ForgotPasswordCommand object
@@ -83,48 +82,6 @@ func (o *ForgotPasswordCommand) UnsetEmail() {
 	o.Email.Unset()
 }
 
-// GetAccountName returns the AccountName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ForgotPasswordCommand) GetAccountName() string {
-	if o == nil || IsNil(o.AccountName.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.AccountName.Get()
-}
-
-// GetAccountNameOk returns a tuple with the AccountName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ForgotPasswordCommand) GetAccountNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.AccountName.Get(), o.AccountName.IsSet()
-}
-
-// HasAccountName returns a boolean if a field has been set.
-func (o *ForgotPasswordCommand) HasAccountName() bool {
-	if o != nil && o.AccountName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAccountName gets a reference to the given NullableString and assigns it to the AccountName field.
-func (o *ForgotPasswordCommand) SetAccountName(v string) {
-	o.AccountName.Set(&v)
-}
-// SetAccountNameNil sets the value for AccountName to be an explicit nil
-func (o *ForgotPasswordCommand) SetAccountNameNil() {
-	o.AccountName.Set(nil)
-}
-
-// UnsetAccountName ensures that no value is present for AccountName, not even an explicit nil
-func (o *ForgotPasswordCommand) UnsetAccountName() {
-	o.AccountName.Unset()
-}
-
 func (o ForgotPasswordCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -137,9 +94,6 @@ func (o ForgotPasswordCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
-	}
-	if o.AccountName.IsSet() {
-		toSerialize["accountName"] = o.AccountName.Get()
 	}
 	return toSerialize, nil
 }

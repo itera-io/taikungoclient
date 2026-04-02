@@ -66,6 +66,7 @@ type ProjectListDetailDto struct {
 	AnyVm bool `json:"anyVm"`
 	IsBackupEnabled bool `json:"isBackupEnabled"`
 	IsProjectMaintenanceModeEnabled bool `json:"isProjectMaintenanceModeEnabled"`
+	AllUsers []string `json:"allUsers"`
 	ParentProjectId NullableInt32 `json:"parentProjectId"`
 	AlertingProfileId NullableInt32 `json:"alertingProfileId"`
 	OpaProfileId NullableInt32 `json:"opaProfileId"`
@@ -85,7 +86,7 @@ type _ProjectListDetailDto ProjectListDetailDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectListDetailDto(id int32, name string, isKubernetes bool, isLocked bool, isVirtualCluster bool, isMonitoringEnabled bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, status ProjectStatus, health ProjectHealth, cloudType ECloudCredentialType, kubesprayCurrentVersion string, kubesprayTargetVersion string, kubernetesCurrentVersion string, kubernetesTargetVersion string, createdAt string, alertsCount int32, totalServersCount int32, totalStandaloneVmsCount int32, boundUsers []UserDto, createdBy string, lastModified NullableString, expiredAt NullableString, deleteOnExpiration bool, certificateExpiredAt NullableString, lastModifiedBy NullableString, quotaId int32, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, maxSpotPrice NullableFloat64, projectAction bool, hasExpirationWarning bool, totalHourlyCost float64, isAutoscalingEnabled bool, isAutoscalingSpotEnabled bool, aiEnabled bool, anyServer bool, anyVm bool, isBackupEnabled bool, isProjectMaintenanceModeEnabled bool, parentProjectId NullableInt32, alertingProfileId NullableInt32, opaProfileId NullableInt32, importClusterType ImportClusterType) *ProjectListDetailDto {
+func NewProjectListDetailDto(id int32, name string, isKubernetes bool, isLocked bool, isVirtualCluster bool, isMonitoringEnabled bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, status ProjectStatus, health ProjectHealth, cloudType ECloudCredentialType, kubesprayCurrentVersion string, kubesprayTargetVersion string, kubernetesCurrentVersion string, kubernetesTargetVersion string, createdAt string, alertsCount int32, totalServersCount int32, totalStandaloneVmsCount int32, boundUsers []UserDto, createdBy string, lastModified NullableString, expiredAt NullableString, deleteOnExpiration bool, certificateExpiredAt NullableString, lastModifiedBy NullableString, quotaId int32, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, maxSpotPrice NullableFloat64, projectAction bool, hasExpirationWarning bool, totalHourlyCost float64, isAutoscalingEnabled bool, isAutoscalingSpotEnabled bool, aiEnabled bool, anyServer bool, anyVm bool, isBackupEnabled bool, isProjectMaintenanceModeEnabled bool, allUsers []string, parentProjectId NullableInt32, alertingProfileId NullableInt32, opaProfileId NullableInt32, importClusterType ImportClusterType) *ProjectListDetailDto {
 	this := ProjectListDetailDto{}
 	this.Id = id
 	this.Name = name
@@ -130,6 +131,7 @@ func NewProjectListDetailDto(id int32, name string, isKubernetes bool, isLocked 
 	this.AnyVm = anyVm
 	this.IsBackupEnabled = isBackupEnabled
 	this.IsProjectMaintenanceModeEnabled = isProjectMaintenanceModeEnabled
+	this.AllUsers = allUsers
 	this.ParentProjectId = parentProjectId
 	this.AlertingProfileId = alertingProfileId
 	this.OpaProfileId = opaProfileId
@@ -1229,6 +1231,30 @@ func (o *ProjectListDetailDto) SetIsProjectMaintenanceModeEnabled(v bool) {
 	o.IsProjectMaintenanceModeEnabled = v
 }
 
+// GetAllUsers returns the AllUsers field value
+func (o *ProjectListDetailDto) GetAllUsers() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.AllUsers
+}
+
+// GetAllUsersOk returns a tuple with the AllUsers field value
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetAllUsersOk() ([]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AllUsers, true
+}
+
+// SetAllUsers sets field value
+func (o *ProjectListDetailDto) SetAllUsers(v []string) {
+	o.AllUsers = v
+}
+
 // GetParentProjectId returns the ParentProjectId field value
 // If the value is explicit nil, the zero value for int32 will be returned
 func (o *ProjectListDetailDto) GetParentProjectId() int32 {
@@ -1611,6 +1637,7 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["anyVm"] = o.AnyVm
 	toSerialize["isBackupEnabled"] = o.IsBackupEnabled
 	toSerialize["isProjectMaintenanceModeEnabled"] = o.IsProjectMaintenanceModeEnabled
+	toSerialize["allUsers"] = o.AllUsers
 	toSerialize["parentProjectId"] = o.ParentProjectId.Get()
 	toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
 	toSerialize["opaProfileId"] = o.OpaProfileId.Get()
@@ -1687,6 +1714,7 @@ func (o *ProjectListDetailDto) UnmarshalJSON(data []byte) (err error) {
 		"anyVm",
 		"isBackupEnabled",
 		"isProjectMaintenanceModeEnabled",
+		"allUsers",
 		"parentProjectId",
 		"alertingProfileId",
 		"opaProfileId",

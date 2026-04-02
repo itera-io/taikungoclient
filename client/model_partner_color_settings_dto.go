@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -29,7 +30,6 @@ type PartnerColorSettingsDto struct {
 	ItemTextActive NullableString `json:"itemTextActive"`
 	ItemBgActive NullableString `json:"itemBgActive"`
 	ItemBgActiveHover NullableString `json:"itemBgActiveHover"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _PartnerColorSettingsDto PartnerColorSettingsDto
@@ -285,11 +285,6 @@ func (o PartnerColorSettingsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["itemTextActive"] = o.ItemTextActive.Get()
 	toSerialize["itemBgActive"] = o.ItemBgActive.Get()
 	toSerialize["itemBgActiveHover"] = o.ItemBgActiveHover.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -324,27 +319,15 @@ func (o *PartnerColorSettingsDto) UnmarshalJSON(data []byte) (err error) {
 
 	varPartnerColorSettingsDto := _PartnerColorSettingsDto{}
 
-	err = json.Unmarshal(data, &varPartnerColorSettingsDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPartnerColorSettingsDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PartnerColorSettingsDto(varPartnerColorSettingsDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "bg")
-		delete(additionalProperties, "bgCollapsedSubItem")
-		delete(additionalProperties, "itemText")
-		delete(additionalProperties, "itemBg")
-		delete(additionalProperties, "itemBgHover")
-		delete(additionalProperties, "itemTextActive")
-		delete(additionalProperties, "itemBgActive")
-		delete(additionalProperties, "itemBgActiveHover")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

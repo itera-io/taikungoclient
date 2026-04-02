@@ -579,7 +579,6 @@ type ApiAiCredentialListRequest struct {
 	searchId *string
 	id *int32
 	sortBy *string
-	accountId *int32
 	sortDirection *string
 	limit *int32
 	offset *int32
@@ -607,11 +606,6 @@ func (r ApiAiCredentialListRequest) Id(id int32) ApiAiCredentialListRequest {
 
 func (r ApiAiCredentialListRequest) SortBy(sortBy string) ApiAiCredentialListRequest {
 	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiAiCredentialListRequest) AccountId(accountId int32) ApiAiCredentialListRequest {
-	r.accountId = &accountId
 	return r
 }
 
@@ -682,9 +676,6 @@ func (a *AiCredentialsAPIService) AiCredentialListExecute(r ApiAiCredentialListR
 	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.accountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
 	}
 	if r.sortDirection != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")

@@ -12,6 +12,7 @@ Contact: noreply@taikun.cloud
 package taikuncore
 
 import (
+	"net/textproto"
 	"bytes"
 	"context"
 	"encoding/json"
@@ -54,7 +55,7 @@ type APIClient struct {
 
 	AccessProfilesAPI *AccessProfilesAPIService
 
-	AccountsAPI *AccountsAPIService
+	AdminAPI *AdminAPIService
 
 	AiCredentialsAPI *AiCredentialsAPIService
 
@@ -90,19 +91,13 @@ type APIClient struct {
 
 	DnsServersAPI *DnsServersAPIService
 
-	DocumentationAPI *DocumentationAPIService
-
 	ExecutorsAPI *ExecutorsAPIService
 
 	FlavorsAPI *FlavorsAPIService
 
 	GenericKubernetesCloudCredentialAPI *GenericKubernetesCloudCredentialAPIService
 
-	GlobalConfigurationAPI *GlobalConfigurationAPIService
-
 	GoogleAPI *GoogleAPIService
-
-	GroupsAPI *GroupsAPIService
 
 	ImagesAPI *ImagesAPIService
 
@@ -112,9 +107,9 @@ type APIClient struct {
 
 	InfraBillingSummaryAPI *InfraBillingSummaryAPIService
 
-	InternalAPI *InternalAPIService
-
 	InvoicesAPI *InvoicesAPIService
+
+	KeycloakAPI *KeycloakAPIService
 
 	KubeConfigAPI *KubeConfigAPIService
 
@@ -144,6 +139,8 @@ type APIClient struct {
 
 	PackageAPI *PackageAPIService
 
+	PartnersAPI *PartnersAPIService
+
 	PaymentsAPI *PaymentsAPIService
 
 	PreDefinedQueriesAPI *PreDefinedQueriesAPIService
@@ -153,6 +150,8 @@ type APIClient struct {
 	ProjectAppsAPI *ProjectAppsAPIService
 
 	ProjectDeploymentAPI *ProjectDeploymentAPIService
+
+	ProjectGroupsAPI *ProjectGroupsAPIService
 
 	ProjectInfracostsAPI *ProjectInfracostsAPIService
 
@@ -168,8 +167,6 @@ type APIClient struct {
 
 	ProxmoxCloudCredentialAPI *ProxmoxCloudCredentialAPIService
 
-	RobotAPI *RobotAPIService
-
 	S3CredentialsAPI *S3CredentialsAPIService
 
 	SearchAPI *SearchAPIService
@@ -181,8 +178,6 @@ type APIClient struct {
 	SlackAPI *SlackAPIService
 
 	SshUsersAPI *SshUsersAPIService
-
-	SsoConfigAPI *SsoConfigAPIService
 
 	StandaloneAPI *StandaloneAPIService
 
@@ -198,7 +193,17 @@ type APIClient struct {
 
 	TaikunLBAPI *TaikunLBAPIService
 
+	TanzuAPI *TanzuAPIService
+
+	TicketAPI *TicketAPIService
+
 	TrustedRegistriesAPI *TrustedRegistriesAPIService
+
+	UserGroupAPI *UserGroupAPIService
+
+	UserProjectsAPI *UserProjectsAPIService
+
+	UserTokenAPI *UserTokenAPIService
 
 	UsersAPI *UsersAPIService
 
@@ -207,6 +212,8 @@ type APIClient struct {
 	VsphereCloudCredentialAPI *VsphereCloudCredentialAPIService
 
 	ZadaraCloudCredentialAPI *ZadaraCloudCredentialAPIService
+
+	ZededaCloudCredentialAPI *ZededaCloudCredentialAPIService
 }
 
 type service struct {
@@ -227,7 +234,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.AWSCloudCredentialAPI = (*AWSCloudCredentialAPIService)(&c.common)
 	c.AccessProfilesAPI = (*AccessProfilesAPIService)(&c.common)
-	c.AccountsAPI = (*AccountsAPIService)(&c.common)
+	c.AdminAPI = (*AdminAPIService)(&c.common)
 	c.AiCredentialsAPI = (*AiCredentialsAPIService)(&c.common)
 	c.AlertingIntegrationsAPI = (*AlertingIntegrationsAPIService)(&c.common)
 	c.AlertingProfilesAPI = (*AlertingProfilesAPIService)(&c.common)
@@ -245,19 +252,16 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CommonAPI = (*CommonAPIService)(&c.common)
 	c.CronJobServiceAPI = (*CronJobServiceAPIService)(&c.common)
 	c.DnsServersAPI = (*DnsServersAPIService)(&c.common)
-	c.DocumentationAPI = (*DocumentationAPIService)(&c.common)
 	c.ExecutorsAPI = (*ExecutorsAPIService)(&c.common)
 	c.FlavorsAPI = (*FlavorsAPIService)(&c.common)
 	c.GenericKubernetesCloudCredentialAPI = (*GenericKubernetesCloudCredentialAPIService)(&c.common)
-	c.GlobalConfigurationAPI = (*GlobalConfigurationAPIService)(&c.common)
 	c.GoogleAPI = (*GoogleAPIService)(&c.common)
-	c.GroupsAPI = (*GroupsAPIService)(&c.common)
 	c.ImagesAPI = (*ImagesAPIService)(&c.common)
 	c.ImportedClusterAPI = (*ImportedClusterAPIService)(&c.common)
 	c.InfraAPI = (*InfraAPIService)(&c.common)
 	c.InfraBillingSummaryAPI = (*InfraBillingSummaryAPIService)(&c.common)
-	c.InternalAPI = (*InternalAPIService)(&c.common)
 	c.InvoicesAPI = (*InvoicesAPIService)(&c.common)
+	c.KeycloakAPI = (*KeycloakAPIService)(&c.common)
 	c.KubeConfigAPI = (*KubeConfigAPIService)(&c.common)
 	c.KubeConfigRoleAPI = (*KubeConfigRoleAPIService)(&c.common)
 	c.KubernetesAPI = (*KubernetesAPIService)(&c.common)
@@ -272,11 +276,13 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.OrganizationSubscriptionsAPI = (*OrganizationSubscriptionsAPIService)(&c.common)
 	c.OrganizationsAPI = (*OrganizationsAPIService)(&c.common)
 	c.PackageAPI = (*PackageAPIService)(&c.common)
+	c.PartnersAPI = (*PartnersAPIService)(&c.common)
 	c.PaymentsAPI = (*PaymentsAPIService)(&c.common)
 	c.PreDefinedQueriesAPI = (*PreDefinedQueriesAPIService)(&c.common)
 	c.ProjectAppParamsAPI = (*ProjectAppParamsAPIService)(&c.common)
 	c.ProjectAppsAPI = (*ProjectAppsAPIService)(&c.common)
 	c.ProjectDeploymentAPI = (*ProjectDeploymentAPIService)(&c.common)
+	c.ProjectGroupsAPI = (*ProjectGroupsAPIService)(&c.common)
 	c.ProjectInfracostsAPI = (*ProjectInfracostsAPIService)(&c.common)
 	c.ProjectQuotasAPI = (*ProjectQuotasAPIService)(&c.common)
 	c.ProjectTemplatesAPI = (*ProjectTemplatesAPIService)(&c.common)
@@ -284,14 +290,12 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PrometheusBillingsAPI = (*PrometheusBillingsAPIService)(&c.common)
 	c.PrometheusRulesAPI = (*PrometheusRulesAPIService)(&c.common)
 	c.ProxmoxCloudCredentialAPI = (*ProxmoxCloudCredentialAPIService)(&c.common)
-	c.RobotAPI = (*RobotAPIService)(&c.common)
 	c.S3CredentialsAPI = (*S3CredentialsAPIService)(&c.common)
 	c.SearchAPI = (*SearchAPIService)(&c.common)
 	c.SecurityGroupAPI = (*SecurityGroupAPIService)(&c.common)
 	c.ServersAPI = (*ServersAPIService)(&c.common)
 	c.SlackAPI = (*SlackAPIService)(&c.common)
 	c.SshUsersAPI = (*SshUsersAPIService)(&c.common)
-	c.SsoConfigAPI = (*SsoConfigAPIService)(&c.common)
 	c.StandaloneAPI = (*StandaloneAPIService)(&c.common)
 	c.StandaloneActionsAPI = (*StandaloneActionsAPIService)(&c.common)
 	c.StandaloneProfileAPI = (*StandaloneProfileAPIService)(&c.common)
@@ -299,11 +303,17 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.StripeAPI = (*StripeAPIService)(&c.common)
 	c.SubscriptionAPI = (*SubscriptionAPIService)(&c.common)
 	c.TaikunLBAPI = (*TaikunLBAPIService)(&c.common)
+	c.TanzuAPI = (*TanzuAPIService)(&c.common)
+	c.TicketAPI = (*TicketAPIService)(&c.common)
 	c.TrustedRegistriesAPI = (*TrustedRegistriesAPIService)(&c.common)
+	c.UserGroupAPI = (*UserGroupAPIService)(&c.common)
+	c.UserProjectsAPI = (*UserProjectsAPIService)(&c.common)
+	c.UserTokenAPI = (*UserTokenAPIService)(&c.common)
 	c.UsersAPI = (*UsersAPIService)(&c.common)
 	c.VirtualClusterAPI = (*VirtualClusterAPIService)(&c.common)
 	c.VsphereCloudCredentialAPI = (*VsphereCloudCredentialAPIService)(&c.common)
 	c.ZadaraCloudCredentialAPI = (*ZadaraCloudCredentialAPIService)(&c.common)
+	c.ZededaCloudCredentialAPI = (*ZededaCloudCredentialAPIService)(&c.common)
 
 	return c
 }
@@ -565,7 +575,14 @@ func (c *APIClient) prepareRequest(
 		for _, formFile := range formFiles {
 			if len(formFile.fileBytes) > 0 && formFile.fileName != "" {
 				w.Boundary()
-				part, err := w.CreateFormFile(formFile.formFileName, filepath.Base(formFile.fileName))
+				// Custom replace to make Content-Type application/json - fixes GCP json upload
+				h := make(textproto.MIMEHeader)
+				h.Set("Content-Disposition",fmt.Sprintf(`form-data; name="%s"; filename="%s"`,escapeQuotes(formFile.formFileName),escapeQuotes(filepath.Base(formFile.fileName))))
+				h.Set("Content-Type", "application/json")
+				part, err := w.CreatePart(h)
+
+				// Old version
+				// part, err := w.CreateFormFile(formFile.formFileName, filepath.Base(formFile.fileName))
 				if err != nil {
 						return nil, err
 				}
@@ -652,11 +669,6 @@ func (c *APIClient) prepareRequest(
 		localVarRequest = localVarRequest.WithContext(ctx)
 
 		// Walk through any authentication.
-
-		// Basic HTTP Authentication
-		if auth, ok := ctx.Value(ContextBasicAuth).(BasicAuth); ok {
-			localVarRequest.SetBasicAuth(auth.UserName, auth.Password)
-		}
 
 	}
 
@@ -890,4 +902,9 @@ func formatErrorMessage(status string, v interface{}) string {
 	}
 
 	return strings.TrimSpace(fmt.Sprintf("%s %s", status, str))
+}
+
+func escapeQuotes(s string) string {
+  var quoteEscaper = strings.NewReplacer("\\", "\\\\", `"`, "\\\"")
+  return quoteEscaper.Replace(s)
 }

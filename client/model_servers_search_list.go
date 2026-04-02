@@ -21,7 +21,7 @@ var _ MappedNullable = &ServersSearchList{}
 // ServersSearchList struct for ServersSearchList
 type ServersSearchList struct {
 	Data []ServersSearchResponseData `json:"data,omitempty"`
-	TotalCount *int64 `json:"totalCount,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewServersSearchList instantiates a new ServersSearchList object
@@ -75,9 +75,9 @@ func (o *ServersSearchList) SetData(v []ServersSearchResponseData) {
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
-func (o *ServersSearchList) GetTotalCount() int64 {
+func (o *ServersSearchList) GetTotalCount() int32 {
 	if o == nil || IsNil(o.TotalCount) {
-		var ret int64
+		var ret int32
 		return ret
 	}
 	return *o.TotalCount
@@ -85,7 +85,7 @@ func (o *ServersSearchList) GetTotalCount() int64 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServersSearchList) GetTotalCountOk() (*int64, bool) {
+func (o *ServersSearchList) GetTotalCountOk() (*int32, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -101,8 +101,8 @@ func (o *ServersSearchList) HasTotalCount() bool {
 	return false
 }
 
-// SetTotalCount gets a reference to the given int64 and assigns it to the TotalCount field.
-func (o *ServersSearchList) SetTotalCount(v int64) {
+// SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
+func (o *ServersSearchList) SetTotalCount(v int32) {
 	o.TotalCount = &v
 }
 

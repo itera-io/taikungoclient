@@ -27,7 +27,6 @@ type FlavorsListDto struct {
 	Name string `json:"name"`
 	Description interface{} `json:"description"`
 	MaxDataDiskCount NullableFloat64 `json:"maxDataDiskCount"`
-	HasGpuSupport *bool `json:"hasGpuSupport,omitempty"`
 }
 
 type _FlavorsListDto FlavorsListDto
@@ -178,38 +177,6 @@ func (o *FlavorsListDto) SetMaxDataDiskCount(v float64) {
 	o.MaxDataDiskCount.Set(&v)
 }
 
-// GetHasGpuSupport returns the HasGpuSupport field value if set, zero value otherwise.
-func (o *FlavorsListDto) GetHasGpuSupport() bool {
-	if o == nil || IsNil(o.HasGpuSupport) {
-		var ret bool
-		return ret
-	}
-	return *o.HasGpuSupport
-}
-
-// GetHasGpuSupportOk returns a tuple with the HasGpuSupport field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FlavorsListDto) GetHasGpuSupportOk() (*bool, bool) {
-	if o == nil || IsNil(o.HasGpuSupport) {
-		return nil, false
-	}
-	return o.HasGpuSupport, true
-}
-
-// HasHasGpuSupport returns a boolean if a field has been set.
-func (o *FlavorsListDto) HasHasGpuSupport() bool {
-	if o != nil && !IsNil(o.HasGpuSupport) {
-		return true
-	}
-
-	return false
-}
-
-// SetHasGpuSupport gets a reference to the given bool and assigns it to the HasGpuSupport field.
-func (o *FlavorsListDto) SetHasGpuSupport(v bool) {
-	o.HasGpuSupport = &v
-}
-
 func (o FlavorsListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -227,9 +194,6 @@ func (o FlavorsListDto) ToMap() (map[string]interface{}, error) {
 		toSerialize["description"] = o.Description
 	}
 	toSerialize["maxDataDiskCount"] = o.MaxDataDiskCount.Get()
-	if !IsNil(o.HasGpuSupport) {
-		toSerialize["hasGpuSupport"] = o.HasGpuSupport
-	}
 	return toSerialize, nil
 }
 

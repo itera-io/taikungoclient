@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -23,7 +24,6 @@ var _ MappedNullable = &PartnerImageSettingsDto{}
 type PartnerImageSettingsDto struct {
 	Expanded NullableString `json:"expanded"`
 	Collapsed NullableString `json:"collapsed"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _PartnerImageSettingsDto PartnerImageSettingsDto
@@ -111,11 +111,6 @@ func (o PartnerImageSettingsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["expanded"] = o.Expanded.Get()
 	toSerialize["collapsed"] = o.Collapsed.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -144,21 +139,15 @@ func (o *PartnerImageSettingsDto) UnmarshalJSON(data []byte) (err error) {
 
 	varPartnerImageSettingsDto := _PartnerImageSettingsDto{}
 
-	err = json.Unmarshal(data, &varPartnerImageSettingsDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPartnerImageSettingsDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PartnerImageSettingsDto(varPartnerImageSettingsDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "expanded")
-		delete(additionalProperties, "collapsed")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

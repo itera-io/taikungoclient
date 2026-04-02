@@ -24,7 +24,7 @@ type ImportRepoCommand struct {
 	Password NullableString `json:"password,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	Url NullableString `json:"url,omitempty"`
-	OrganizationId *int32 `json:"organizationId,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 }
 
 // NewImportRepoCommand instantiates a new ImportRepoCommand object
@@ -212,36 +212,46 @@ func (o *ImportRepoCommand) UnsetUrl() {
 	o.Url.Unset()
 }
 
-// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
+// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ImportRepoCommand) GetOrganizationId() int32 {
-	if o == nil || IsNil(o.OrganizationId) {
+	if o == nil || IsNil(o.OrganizationId.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.OrganizationId
+	return *o.OrganizationId.Get()
 }
 
 // GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ImportRepoCommand) GetOrganizationIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.OrganizationId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationId, true
+	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
 }
 
 // HasOrganizationId returns a boolean if a field has been set.
 func (o *ImportRepoCommand) HasOrganizationId() bool {
-	if o != nil && !IsNil(o.OrganizationId) {
+	if o != nil && o.OrganizationId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationId gets a reference to the given int32 and assigns it to the OrganizationId field.
+// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
 func (o *ImportRepoCommand) SetOrganizationId(v int32) {
-	o.OrganizationId = &v
+	o.OrganizationId.Set(&v)
+}
+// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
+func (o *ImportRepoCommand) SetOrganizationIdNil() {
+	o.OrganizationId.Set(nil)
+}
+
+// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
+func (o *ImportRepoCommand) UnsetOrganizationId() {
+	o.OrganizationId.Unset()
 }
 
 func (o ImportRepoCommand) MarshalJSON() ([]byte, error) {
@@ -266,8 +276,8 @@ func (o ImportRepoCommand) ToMap() (map[string]interface{}, error) {
 	if o.Url.IsSet() {
 		toSerialize["url"] = o.Url.Get()
 	}
-	if !IsNil(o.OrganizationId) {
-		toSerialize["organizationId"] = o.OrganizationId
+	if o.OrganizationId.IsSet() {
+		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
 	return toSerialize, nil
 }

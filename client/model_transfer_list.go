@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -24,7 +25,6 @@ type TransferList struct {
 	UserId NullableString `json:"userId"`
 	UserName NullableString `json:"userName"`
 	Role UserRole `json:"role"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _TransferList TransferList
@@ -138,11 +138,6 @@ func (o TransferList) ToMap() (map[string]interface{}, error) {
 	toSerialize["userId"] = o.UserId.Get()
 	toSerialize["userName"] = o.UserName.Get()
 	toSerialize["role"] = o.Role
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -172,22 +167,15 @@ func (o *TransferList) UnmarshalJSON(data []byte) (err error) {
 
 	varTransferList := _TransferList{}
 
-	err = json.Unmarshal(data, &varTransferList)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTransferList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TransferList(varTransferList)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "userId")
-		delete(additionalProperties, "userName")
-		delete(additionalProperties, "role")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

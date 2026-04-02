@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -35,7 +36,6 @@ type AllTicketsDto struct {
 	Description string `json:"description"`
 	PartnerName NullableString `json:"partnerName"`
 	UserId string `json:"userId"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _AllTicketsDto AllTicketsDto
@@ -439,11 +439,6 @@ func (o AllTicketsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["description"] = o.Description
 	toSerialize["partnerName"] = o.PartnerName.Get()
 	toSerialize["userId"] = o.UserId
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -484,33 +479,15 @@ func (o *AllTicketsDto) UnmarshalJSON(data []byte) (err error) {
 
 	varAllTicketsDto := _AllTicketsDto{}
 
-	err = json.Unmarshal(data, &varAllTicketsDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAllTicketsDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AllTicketsDto(varAllTicketsDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "status")
-		delete(additionalProperties, "createdAt")
-		delete(additionalProperties, "organizationId")
-		delete(additionalProperties, "organizationName")
-		delete(additionalProperties, "createdBy")
-		delete(additionalProperties, "currentStatusDate")
-		delete(additionalProperties, "lastModifier")
-		delete(additionalProperties, "number")
-		delete(additionalProperties, "partnerLogo")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "partnerName")
-		delete(additionalProperties, "userId")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

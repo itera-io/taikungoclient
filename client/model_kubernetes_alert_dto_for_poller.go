@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -36,7 +37,6 @@ type KubernetesAlertDtoForPoller struct {
 	IsSilenced bool `json:"isSilenced"`
 	SilenceReason NullableString `json:"silenceReason"`
 	LastModifiedBy NullableString `json:"lastModifiedBy"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _KubernetesAlertDtoForPoller KubernetesAlertDtoForPoller
@@ -482,11 +482,6 @@ func (o KubernetesAlertDtoForPoller) ToMap() (map[string]interface{}, error) {
 	toSerialize["isSilenced"] = o.IsSilenced
 	toSerialize["silenceReason"] = o.SilenceReason.Get()
 	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -528,34 +523,15 @@ func (o *KubernetesAlertDtoForPoller) UnmarshalJSON(data []byte) (err error) {
 
 	varKubernetesAlertDtoForPoller := _KubernetesAlertDtoForPoller{}
 
-	err = json.Unmarshal(data, &varKubernetesAlertDtoForPoller)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varKubernetesAlertDtoForPoller)
 
 	if err != nil {
 		return err
 	}
 
 	*o = KubernetesAlertDtoForPoller(varKubernetesAlertDtoForPoller)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "labels")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "title")
-		delete(additionalProperties, "severity")
-		delete(additionalProperties, "fingerprint")
-		delete(additionalProperties, "status")
-		delete(additionalProperties, "startsAt")
-		delete(additionalProperties, "endAt")
-		delete(additionalProperties, "isSolved")
-		delete(additionalProperties, "projectId")
-		delete(additionalProperties, "projectName")
-		delete(additionalProperties, "isSilenced")
-		delete(additionalProperties, "silenceReason")
-		delete(additionalProperties, "lastModifiedBy")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

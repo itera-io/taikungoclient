@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -32,7 +33,6 @@ type AdminProjectsResponseData struct {
 	Tcu int32 `json:"tcu"`
 	CreatedAt NullableString `json:"createdAt"`
 	CloudType CloudType `json:"cloudType"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _AdminProjectsResponseData AdminProjectsResponseData
@@ -360,11 +360,6 @@ func (o AdminProjectsResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize["tcu"] = o.Tcu
 	toSerialize["createdAt"] = o.CreatedAt.Get()
 	toSerialize["cloudType"] = o.CloudType
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -402,30 +397,15 @@ func (o *AdminProjectsResponseData) UnmarshalJSON(data []byte) (err error) {
 
 	varAdminProjectsResponseData := _AdminProjectsResponseData{}
 
-	err = json.Unmarshal(data, &varAdminProjectsResponseData)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAdminProjectsResponseData)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AdminProjectsResponseData(varAdminProjectsResponseData)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "organizationName")
-		delete(additionalProperties, "isLocked")
-		delete(additionalProperties, "kubernetesCurrentVersion")
-		delete(additionalProperties, "kubesprayCurrentVersion")
-		delete(additionalProperties, "status")
-		delete(additionalProperties, "serversCount")
-		delete(additionalProperties, "tcu")
-		delete(additionalProperties, "createdAt")
-		delete(additionalProperties, "cloudType")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -27,7 +28,6 @@ type ArticlesListDto struct {
 	Body NullableString `json:"body"`
 	MessageId NullableString `json:"messageId"`
 	UserId NullableString `json:"userId"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _ArticlesListDto ArticlesListDto
@@ -225,11 +225,6 @@ func (o ArticlesListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["body"] = o.Body.Get()
 	toSerialize["messageId"] = o.MessageId.Get()
 	toSerialize["userId"] = o.UserId.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -262,25 +257,15 @@ func (o *ArticlesListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varArticlesListDto := _ArticlesListDto{}
 
-	err = json.Unmarshal(data, &varArticlesListDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varArticlesListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ArticlesListDto(varArticlesListDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "senderName")
-		delete(additionalProperties, "isCsm")
-		delete(additionalProperties, "createAt")
-		delete(additionalProperties, "body")
-		delete(additionalProperties, "messageId")
-		delete(additionalProperties, "userId")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

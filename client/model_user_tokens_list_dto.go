@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -27,7 +28,6 @@ type UserTokensListDto struct {
 	IsReadonly bool `json:"isReadonly"`
 	ExpireDate NullableString `json:"expireDate"`
 	AccessKey NullableString `json:"accessKey"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _UserTokensListDto UserTokensListDto
@@ -225,11 +225,6 @@ func (o UserTokensListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["isReadonly"] = o.IsReadonly
 	toSerialize["expireDate"] = o.ExpireDate.Get()
 	toSerialize["accessKey"] = o.AccessKey.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -262,25 +257,15 @@ func (o *UserTokensListDto) UnmarshalJSON(data []byte) (err error) {
 
 	varUserTokensListDto := _UserTokensListDto{}
 
-	err = json.Unmarshal(data, &varUserTokensListDto)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUserTokensListDto)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UserTokensListDto(varUserTokensListDto)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "createdAt")
-		delete(additionalProperties, "isReadonly")
-		delete(additionalProperties, "expireDate")
-		delete(additionalProperties, "accessKey")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

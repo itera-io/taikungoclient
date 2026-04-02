@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -29,7 +30,6 @@ type AdminUsersResponseData struct {
 	Owner bool `json:"owner"`
 	Csm bool `json:"csm"`
 	Is2FaEnabled bool `json:"is2FaEnabled"`
-	AdditionalProperties map[string]interface{}
 }
 
 type _AdminUsersResponseData AdminUsersResponseData
@@ -277,11 +277,6 @@ func (o AdminUsersResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize["owner"] = o.Owner
 	toSerialize["csm"] = o.Csm
 	toSerialize["is2FaEnabled"] = o.Is2FaEnabled
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
 }
 
@@ -316,27 +311,15 @@ func (o *AdminUsersResponseData) UnmarshalJSON(data []byte) (err error) {
 
 	varAdminUsersResponseData := _AdminUsersResponseData{}
 
-	err = json.Unmarshal(data, &varAdminUsersResponseData)
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAdminUsersResponseData)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AdminUsersResponseData(varAdminUsersResponseData)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "email")
-		delete(additionalProperties, "role")
-		delete(additionalProperties, "organizationName")
-		delete(additionalProperties, "owner")
-		delete(additionalProperties, "csm")
-		delete(additionalProperties, "is2FaEnabled")
-		o.AdditionalProperties = additionalProperties
-	}
 
 	return err
 }

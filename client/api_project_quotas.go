@@ -39,7 +39,6 @@ type ApiProjectquotasListRequest struct {
 	endCpu *int32
 	organizationId *int32
 	id *int32
-	accountId *int32
 }
 
 func (r ApiProjectquotasListRequest) Limit(limit int32) ApiProjectquotasListRequest {
@@ -104,11 +103,6 @@ func (r ApiProjectquotasListRequest) OrganizationId(organizationId int32) ApiPro
 
 func (r ApiProjectquotasListRequest) Id(id int32) ApiProjectquotasListRequest {
 	r.id = &id
-	return r
-}
-
-func (r ApiProjectquotasListRequest) AccountId(accountId int32) ApiProjectquotasListRequest {
-	r.accountId = &accountId
 	return r
 }
 
@@ -188,9 +182,6 @@ func (a *ProjectQuotasAPIService) ProjectquotasListExecute(r ApiProjectquotasLis
 	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
-	}
-	if r.accountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

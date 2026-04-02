@@ -24,6 +24,7 @@ type UpdateUserCommand struct {
 	DisplayName NullableString `json:"displayName,omitempty"`
 	Username NullableString `json:"username,omitempty"`
 	Email NullableString `json:"email,omitempty"`
+	Role *UserRole `json:"role,omitempty"`
 	ForceToResetPassword *bool `json:"forceToResetPassword,omitempty"`
 	Disable *bool `json:"disable,omitempty"`
 	IsApprovedByPartner *bool `json:"isApprovedByPartner,omitempty"`
@@ -214,6 +215,38 @@ func (o *UpdateUserCommand) UnsetEmail() {
 	o.Email.Unset()
 }
 
+// GetRole returns the Role field value if set, zero value otherwise.
+func (o *UpdateUserCommand) GetRole() UserRole {
+	if o == nil || IsNil(o.Role) {
+		var ret UserRole
+		return ret
+	}
+	return *o.Role
+}
+
+// GetRoleOk returns a tuple with the Role field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateUserCommand) GetRoleOk() (*UserRole, bool) {
+	if o == nil || IsNil(o.Role) {
+		return nil, false
+	}
+	return o.Role, true
+}
+
+// HasRole returns a boolean if a field has been set.
+func (o *UpdateUserCommand) HasRole() bool {
+	if o != nil && !IsNil(o.Role) {
+		return true
+	}
+
+	return false
+}
+
+// SetRole gets a reference to the given UserRole and assigns it to the Role field.
+func (o *UpdateUserCommand) SetRole(v UserRole) {
+	o.Role = &v
+}
+
 // GetForceToResetPassword returns the ForceToResetPassword field value if set, zero value otherwise.
 func (o *UpdateUserCommand) GetForceToResetPassword() bool {
 	if o == nil || IsNil(o.ForceToResetPassword) {
@@ -331,6 +364,9 @@ func (o UpdateUserCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
+	}
+	if !IsNil(o.Role) {
+		toSerialize["role"] = o.Role
 	}
 	if !IsNil(o.ForceToResetPassword) {
 		toSerialize["forceToResetPassword"] = o.ForceToResetPassword

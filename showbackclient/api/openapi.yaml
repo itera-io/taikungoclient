@@ -165,10 +165,13 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/ShowbackCredentialLockCommand"
+        required: true
       responses:
         "200":
           content:
-            application/json: {}
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/Void"
           description: OK
         "400":
           content:
@@ -460,10 +463,13 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/DeleteRulesCommand"
+        required: true
       responses:
         "200":
           content:
-            application/json: {}
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/Void"
           description: OK
         "400":
           content:
@@ -509,7 +515,9 @@ paths:
       responses:
         "200":
           content:
-            application/json: {}
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/Void"
           description: OK
         "400":
           content:
@@ -699,10 +707,13 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/CreateShowbackSummaryCommand"
+        required: true
       responses:
         "200":
           content:
-            application/json: {}
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/Void"
           description: OK
         "400":
           content:
@@ -1146,6 +1157,7 @@ components:
           type: string
         organizationId:
           format: int32
+          nullable: true
           type: integer
       type: object
     CreateShowbackRuleCommand:
@@ -1194,6 +1206,7 @@ components:
           type: integer
         organizationId:
           format: int32
+          nullable: true
           type: integer
         labels:
           items:
@@ -2071,6 +2084,9 @@ components:
             $ref: "#/components/schemas/ShowbackLabelCreateDto"
           nullable: true
           type: array
+      type: object
+    Void:
+      additionalProperties: false
       type: object
   securitySchemes:
     Bearer:

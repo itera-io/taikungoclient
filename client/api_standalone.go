@@ -607,7 +607,6 @@ type ApiStandaloneListRequest struct {
 	id *int32
 	searchId *string
 	filterBy *string
-	accountId *int32
 }
 
 func (r ApiStandaloneListRequest) Limit(limit int32) ApiStandaloneListRequest {
@@ -687,11 +686,6 @@ func (r ApiStandaloneListRequest) SearchId(searchId string) ApiStandaloneListReq
 
 func (r ApiStandaloneListRequest) FilterBy(filterBy string) ApiStandaloneListRequest {
 	r.filterBy = &filterBy
-	return r
-}
-
-func (r ApiStandaloneListRequest) AccountId(accountId int32) ApiStandaloneListRequest {
-	r.accountId = &accountId
 	return r
 }
 
@@ -780,9 +774,6 @@ func (a *StandaloneAPIService) StandaloneListExecute(r ApiStandaloneListRequest)
 	}
 	if r.filterBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
-	}
-	if r.accountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

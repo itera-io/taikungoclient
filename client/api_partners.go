@@ -2233,13 +2233,23 @@ func (a *PartnersAPIService) PartnerInfoExecute(r ApiPartnerInfoRequest) (*Partn
 type ApiPartnerListRequest struct {
 	ctx context.Context
 	ApiService *PartnersAPIService
+	offset *int32
+	limit *int32
 	organizationId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
-	offset *int32
-	limit *int32
+}
+
+func (r ApiPartnerListRequest) Offset(offset int32) ApiPartnerListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiPartnerListRequest) Limit(limit int32) ApiPartnerListRequest {
+	r.limit = &limit
+	return r
 }
 
 func (r ApiPartnerListRequest) OrganizationId(organizationId int32) ApiPartnerListRequest {
@@ -2264,16 +2274,6 @@ func (r ApiPartnerListRequest) Search(search string) ApiPartnerListRequest {
 
 func (r ApiPartnerListRequest) SearchId(searchId string) ApiPartnerListRequest {
 	r.searchId = &searchId
-	return r
-}
-
-func (r ApiPartnerListRequest) Offset(offset int32) ApiPartnerListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiPartnerListRequest) Limit(limit int32) ApiPartnerListRequest {
-	r.limit = &limit
 	return r
 }
 
@@ -2315,6 +2315,12 @@ func (a *PartnersAPIService) PartnerListExecute(r ApiPartnerListRequest) (*Partn
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
+	}
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
@@ -2329,12 +2335,6 @@ func (a *PartnersAPIService) PartnerListExecute(r ApiPartnerListRequest) (*Partn
 	}
 	if r.searchId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

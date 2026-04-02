@@ -20,8 +20,8 @@ var _ MappedNullable = &OrganizationSearchList{}
 
 // OrganizationSearchList struct for OrganizationSearchList
 type OrganizationSearchList struct {
-	Data []OrganizationsSearchResponseData `json:"data,omitempty"`
-	TotalCount *int64 `json:"totalCount,omitempty"`
+	Data []CommonSearchResponseData `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewOrganizationSearchList instantiates a new OrganizationSearchList object
@@ -42,9 +42,9 @@ func NewOrganizationSearchListWithDefaults() *OrganizationSearchList {
 }
 
 // GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationSearchList) GetData() []OrganizationsSearchResponseData {
+func (o *OrganizationSearchList) GetData() []CommonSearchResponseData {
 	if o == nil {
-		var ret []OrganizationsSearchResponseData
+		var ret []CommonSearchResponseData
 		return ret
 	}
 	return o.Data
@@ -53,7 +53,7 @@ func (o *OrganizationSearchList) GetData() []OrganizationsSearchResponseData {
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationSearchList) GetDataOk() ([]OrganizationsSearchResponseData, bool) {
+func (o *OrganizationSearchList) GetDataOk() ([]CommonSearchResponseData, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -69,15 +69,15 @@ func (o *OrganizationSearchList) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given []OrganizationsSearchResponseData and assigns it to the Data field.
-func (o *OrganizationSearchList) SetData(v []OrganizationsSearchResponseData) {
+// SetData gets a reference to the given []CommonSearchResponseData and assigns it to the Data field.
+func (o *OrganizationSearchList) SetData(v []CommonSearchResponseData) {
 	o.Data = v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
-func (o *OrganizationSearchList) GetTotalCount() int64 {
+func (o *OrganizationSearchList) GetTotalCount() int32 {
 	if o == nil || IsNil(o.TotalCount) {
-		var ret int64
+		var ret int32
 		return ret
 	}
 	return *o.TotalCount
@@ -85,7 +85,7 @@ func (o *OrganizationSearchList) GetTotalCount() int64 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationSearchList) GetTotalCountOk() (*int64, bool) {
+func (o *OrganizationSearchList) GetTotalCountOk() (*int32, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -101,8 +101,8 @@ func (o *OrganizationSearchList) HasTotalCount() bool {
 	return false
 }
 
-// SetTotalCount gets a reference to the given int64 and assigns it to the TotalCount field.
-func (o *OrganizationSearchList) SetTotalCount(v int64) {
+// SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
+func (o *OrganizationSearchList) SetTotalCount(v int32) {
 	o.TotalCount = &v
 }
 

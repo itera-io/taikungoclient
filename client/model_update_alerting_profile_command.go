@@ -23,6 +23,7 @@ type UpdateAlertingProfileCommand struct {
 	Id *int32 `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	SlackConfigurationId NullableInt32 `json:"slackConfigurationId,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	Reminder *AlertingReminder `json:"reminder,omitempty"`
 }
 
@@ -159,6 +160,48 @@ func (o *UpdateAlertingProfileCommand) UnsetSlackConfigurationId() {
 	o.SlackConfigurationId.Unset()
 }
 
+// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UpdateAlertingProfileCommand) GetOrganizationId() int32 {
+	if o == nil || IsNil(o.OrganizationId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.OrganizationId.Get()
+}
+
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UpdateAlertingProfileCommand) GetOrganizationIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
+}
+
+// HasOrganizationId returns a boolean if a field has been set.
+func (o *UpdateAlertingProfileCommand) HasOrganizationId() bool {
+	if o != nil && o.OrganizationId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
+func (o *UpdateAlertingProfileCommand) SetOrganizationId(v int32) {
+	o.OrganizationId.Set(&v)
+}
+// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
+func (o *UpdateAlertingProfileCommand) SetOrganizationIdNil() {
+	o.OrganizationId.Set(nil)
+}
+
+// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
+func (o *UpdateAlertingProfileCommand) UnsetOrganizationId() {
+	o.OrganizationId.Unset()
+}
+
 // GetReminder returns the Reminder field value if set, zero value otherwise.
 func (o *UpdateAlertingProfileCommand) GetReminder() AlertingReminder {
 	if o == nil || IsNil(o.Reminder) {
@@ -209,6 +252,9 @@ func (o UpdateAlertingProfileCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.SlackConfigurationId.IsSet() {
 		toSerialize["slackConfigurationId"] = o.SlackConfigurationId.Get()
+	}
+	if o.OrganizationId.IsSet() {
+		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
 	if !IsNil(o.Reminder) {
 		toSerialize["reminder"] = o.Reminder

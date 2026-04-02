@@ -20,7 +20,6 @@ var _ MappedNullable = &DnsNtpAddressEditDto{}
 
 // DnsNtpAddressEditDto struct for DnsNtpAddressEditDto
 type DnsNtpAddressEditDto struct {
-	// Dns address example: 8.8.8.8
 	Address NullableString `json:"address,omitempty"`
 }
 

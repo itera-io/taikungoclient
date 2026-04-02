@@ -675,7 +675,6 @@ type ApiGooglecloudListRequest struct {
 	sortDirection *string
 	search *string
 	searchId *string
-	accountId *int32
 	id *int32
 }
 
@@ -711,11 +710,6 @@ func (r ApiGooglecloudListRequest) Search(search string) ApiGooglecloudListReque
 
 func (r ApiGooglecloudListRequest) SearchId(searchId string) ApiGooglecloudListRequest {
 	r.searchId = &searchId
-	return r
-}
-
-func (r ApiGooglecloudListRequest) AccountId(accountId int32) ApiGooglecloudListRequest {
-	r.accountId = &accountId
 	return r
 }
 
@@ -782,9 +776,6 @@ func (a *GoogleAPIService) GooglecloudListExecute(r ApiGooglecloudListRequest) (
 	}
 	if r.searchId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	}
-	if r.accountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
 	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")

@@ -582,7 +582,6 @@ type ApiOpaprofilesListRequest struct {
 	search *string
 	id *int32
 	searchId *string
-	accountId *int32
 }
 
 func (r ApiOpaprofilesListRequest) OrganizationId(organizationId int32) ApiOpaprofilesListRequest {
@@ -622,11 +621,6 @@ func (r ApiOpaprofilesListRequest) Id(id int32) ApiOpaprofilesListRequest {
 
 func (r ApiOpaprofilesListRequest) SearchId(searchId string) ApiOpaprofilesListRequest {
 	r.searchId = &searchId
-	return r
-}
-
-func (r ApiOpaprofilesListRequest) AccountId(accountId int32) ApiOpaprofilesListRequest {
-	r.accountId = &accountId
 	return r
 }
 
@@ -691,9 +685,6 @@ func (a *OpaProfilesAPIService) OpaprofilesListExecute(r ApiOpaprofilesListReque
 	}
 	if r.searchId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	}
-	if r.accountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

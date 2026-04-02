@@ -244,11 +244,10 @@ func (a *InfraAPIService) InfraDetailsExecute(r ApiInfraDetailsRequest) (*Openst
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.organizationId == nil {
-		return localVarReturnValue, nil, reportError("organizationId is required and must be specified")
-	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
+	if r.organizationId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
