@@ -1338,14 +1338,14 @@ func (a *OrganizationsAPIService) OrganizationsListExecute(r ApiOrganizationsLis
 type ApiOrganizationsOrganizationListRequest struct {
 	ctx              context.Context
 	ApiService       *OrganizationsAPIService
-	accountId        *int32
+	domainId         *int32
 	search           *string
 	isInfra          *bool
 	prometheusRuleId *int32
 }
 
-func (r ApiOrganizationsOrganizationListRequest) AccountId(accountId int32) ApiOrganizationsOrganizationListRequest {
-	r.accountId = &accountId
+func (r ApiOrganizationsOrganizationListRequest) DomainId(domainId int32) ApiOrganizationsOrganizationListRequest {
+	r.domainId = &domainId
 	return r
 }
 
@@ -1403,8 +1403,8 @@ func (a *OrganizationsAPIService) OrganizationsOrganizationListExecute(r ApiOrga
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.accountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
+	if r.domainId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "DomainId", r.domainId, "form", "")
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")

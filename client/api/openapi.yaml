@@ -328,7 +328,7 @@ paths:
       - description: Id should be positive integer
         explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           description: Id should be positive integer
@@ -623,7 +623,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -1508,7 +1508,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -3990,7 +3990,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -4494,7 +4494,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -9129,7 +9129,7 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -14778,7 +14778,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -15686,7 +15686,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -16219,7 +16219,7 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -22569,7 +22569,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -23511,7 +23511,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -24189,7 +24189,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -24902,7 +24902,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -25230,7 +25230,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -26015,7 +26015,7 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -29141,7 +29141,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -29718,7 +29718,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -31587,7 +31587,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -32336,7 +32336,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -32718,7 +32718,7 @@ paths:
       parameters:
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -33250,7 +33250,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -35793,7 +35793,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -36203,7 +36203,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -37375,7 +37375,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -38254,7 +38254,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -41547,7 +41547,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -41873,7 +41873,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: AccountId
+        name: DomainId
         required: false
         schema:
           format: int32
@@ -46919,10 +46919,10 @@ components:
       type: object
     CheckDuplicateGroupCommand:
       example:
-        accountId: 0
         name: name
+        domainId: 0
       properties:
-        accountId:
+        domainId:
           format: int32
           nullable: true
           type: integer
@@ -47048,12 +47048,12 @@ components:
     CheckerRobotCommand:
       example:
         organizationId: 6
-        accountId: 0
         name: name
         description: description
+        domainId: 0
         expiresAt: 2000-01-23T04:56:07.000+00:00
       properties:
-        accountId:
+        domainId:
           format: int32
           nullable: true
           type: integer
@@ -49030,7 +49030,6 @@ components:
     CreateRobotUserCommand:
       example:
         organizationId: 6
-        accountId: 0
         name: name
         description: description
         scopes:
@@ -49039,9 +49038,10 @@ components:
         ips:
         - ips
         - ips
+        domainId: 0
         expiresAt: 2000-01-23T04:56:07.000+00:00
       properties:
-        accountId:
+        domainId:
           format: int32
           nullable: true
           type: integer
@@ -53847,13 +53847,13 @@ components:
       type: object
     ForgotPasswordCommand:
       example:
-        accountName: accountName
+        domainName: domainName
         email: email
       properties:
         email:
           nullable: true
           type: string
-        accountName:
+        domainName:
           nullable: true
           type: string
       type: object
@@ -58093,8 +58093,8 @@ components:
         mode: mode
         password: password
         secretKey: secretKey
-        accountName: accountName
         accessKey: accessKey
+        domainName: domainName
         email: email
       properties:
         email:
@@ -58103,7 +58103,7 @@ components:
         password:
           nullable: true
           type: string
-        accountName:
+        domainName:
           nullable: true
           type: string
         mode:
@@ -60438,11 +60438,11 @@ components:
       type: object
     OrganizationNameCheckerCommand:
       example:
-        accountId: 0
         name: name
         fullName: fullName
+        domainId: 0
       properties:
-        accountId:
+        domainId:
           format: int32
           nullable: true
           type: integer
@@ -60532,14 +60532,14 @@ components:
     OrganizationSearchList:
       example:
         data:
-        - accountId: 6
-          accountName: accountName
+        - domainName: domainName
           name: name
           id: 0
-        - accountId: 6
-          accountName: accountName
+          domainId: 6
+        - domainName: domainName
           name: name
           id: 0
+          domainId: 6
         totalCount: 1
       properties:
         data:
@@ -60669,10 +60669,10 @@ components:
       type: object
     OrganizationsSearchResponseData:
       example:
-        accountId: 6
-        accountName: accountName
+        domainName: domainName
         name: name
         id: 0
+        domainId: 6
       properties:
         id:
           format: int32
@@ -60680,11 +60680,11 @@ components:
         name:
           nullable: true
           type: string
-        accountId:
+        domainId:
           format: int32
           nullable: true
           type: integer
-        accountName:
+        domainName:
           nullable: true
           type: string
       type: object
@@ -65500,11 +65500,11 @@ components:
       type: object
     RegistrationCommand:
       example:
-        accountName: accountName
+        domainName: domainName
         email: email
         username: username
       properties:
-        accountName:
+        domainName:
           nullable: true
           type: string
         username:
@@ -65563,7 +65563,7 @@ components:
       type: object
     ResetPasswordCommand:
       example:
-        accountName: accountName
+        domainName: domainName
         newPassword: newPassword
         email: email
         token: token
@@ -65574,7 +65574,7 @@ components:
         email:
           nullable: true
           type: string
-        accountName:
+        domainName:
           nullable: true
           type: string
         newPassword:
@@ -65897,39 +65897,39 @@ components:
       example:
         data:
         - organizationName: organizationName
-          accountName: accountName
           description: description
           isActive: true
           userId: userId
           ips:
           - ips
           - ips
+          domainId: 0
           expiresAt: expiresAt
           organizationId: 6
-          accountId: 0
           createdAt: createdAt
           accessKey: accessKey
           createdBy: createdBy
           lastUsedAt: lastUsedAt
+          domainName: domainName
           name: name
           scopes:
           - scopes
           - scopes
         - organizationName: organizationName
-          accountName: accountName
           description: description
           isActive: true
           userId: userId
           ips:
           - ips
           - ips
+          domainId: 0
           expiresAt: expiresAt
           organizationId: 6
-          accountId: 0
           createdAt: createdAt
           accessKey: accessKey
           createdBy: createdBy
           lastUsedAt: lastUsedAt
+          domainName: domainName
           name: name
           scopes:
           - scopes
@@ -65970,20 +65970,20 @@ components:
     RobotUsersListDto:
       example:
         organizationName: organizationName
-        accountName: accountName
         description: description
         isActive: true
         userId: userId
         ips:
         - ips
         - ips
+        domainId: 0
         expiresAt: expiresAt
         organizationId: 6
-        accountId: 0
         createdAt: createdAt
         accessKey: accessKey
         createdBy: createdBy
         lastUsedAt: lastUsedAt
+        domainName: domainName
         name: name
         scopes:
         - scopes
@@ -65991,10 +65991,10 @@ components:
       properties:
         userId:
           type: string
-        accountId:
+        domainId:
           format: int32
           type: integer
-        accountName:
+        domainName:
           type: string
         accessKey:
           type: string
@@ -66033,10 +66033,10 @@ components:
           type: string
       required:
       - accessKey
-      - accountId
-      - accountName
       - createdAt
       - createdBy
+      - domainId
+      - domainName
       - isActive
       - name
       - scopes
@@ -66158,13 +66158,13 @@ components:
         organizationId:
         - 5
         - 5
-        accountId: 6
         metricName: metricName
         price: 0.8008281904610115
         ruleDiscountRate: 5
         name: name
         operationCredentialId: 1
         type: Count
+        domainId: 6
         labels:
         - label: label
           value: value
@@ -66187,7 +66187,7 @@ components:
         price:
           format: double
           type: number
-        accountId:
+        domainId:
           format: int32
           nullable: true
           type: integer
@@ -67768,9 +67768,9 @@ components:
       type: object
     SsoInitCommand:
       example:
-        accountName: accountName
+        domainName: domainName
       properties:
-        accountName:
+        domainName:
           nullable: true
           type: string
       type: object
@@ -70444,15 +70444,15 @@ components:
       type: object
     UserAuthContext:
       example:
-        accountName: accountName
         displayName: displayName
         userName: userName
         userId: userId
+        domainId: 0
         logoUrl: logoUrl
-        accountId: 0
         twoFactorEnabled: true
         createdAt: 2000-01-23T04:56:07.000+00:00
         globalRole: None
+        domainName: domainName
         domain: domain
         orgRoles:
           key:
@@ -70473,10 +70473,10 @@ components:
         email:
           nullable: true
           type: string
-        accountId:
+        domainId:
           format: int32
           type: integer
-        accountName:
+        domainName:
           nullable: true
           type: string
         logoUrl:
@@ -70709,9 +70709,9 @@ components:
       type: object
     UserExistCommand:
       example:
-        accountId: 0
         userName: userName
         email: email
+        domainId: 0
       properties:
         email:
           nullable: true
@@ -70719,7 +70719,7 @@ components:
         userName:
           nullable: true
           type: string
-        accountId:
+        domainId:
           format: int32
           nullable: true
           type: integer
@@ -70944,16 +70944,16 @@ components:
     UsersSearchList:
       example:
         data:
-        - accountId: 0
-          accountName: accountName
+        - domainName: domainName
           name: name
           id: id
           email: email
-        - accountId: 0
-          accountName: accountName
+          domainId: 0
+        - domainName: domainName
           name: name
           id: id
           email: email
+          domainId: 0
         totalCount: 6
       properties:
         data:
@@ -70967,11 +70967,11 @@ components:
       type: object
     UsersSearchResponseData:
       example:
-        accountId: 0
-        accountName: accountName
+        domainName: domainName
         name: name
         id: id
         email: email
+        domainId: 0
       properties:
         id:
           nullable: true
@@ -70982,10 +70982,10 @@ components:
         email:
           nullable: true
           type: string
-        accountId:
+        domainId:
           format: int32
           type: integer
-        accountName:
+        domainName:
           nullable: true
           type: string
       type: object

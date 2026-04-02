@@ -20,13 +20,12 @@ import (
 	"strings"
 )
 
-
 // SlackAPIService SlackAPI service
 type SlackAPIService service
 
 type ApiSlackCreateRequest struct {
-	ctx context.Context
-	ApiService *SlackAPIService
+	ctx                             context.Context
+	ApiService                      *SlackAPIService
 	createSlackConfigurationCommand *CreateSlackConfigurationCommand
 }
 
@@ -42,24 +41,25 @@ func (r ApiSlackCreateRequest) Execute() (*ApiResponse, *http.Response, error) {
 /*
 SlackCreate Create slack configuration
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSlackCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSlackCreateRequest
 */
 func (a *SlackAPIService) SlackCreate(ctx context.Context) ApiSlackCreateRequest {
 	return ApiSlackCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ApiResponse
+//
+//	@return ApiResponse
 func (a *SlackAPIService) SlackCreateExecute(r ApiSlackCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ApiResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SlackAPIService.SlackCreate")
@@ -135,8 +135,8 @@ func (a *SlackAPIService) SlackCreateExecute(r ApiSlackCreateRequest) (*ApiRespo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -146,8 +146,8 @@ func (a *SlackAPIService) SlackCreateExecute(r ApiSlackCreateRequest) (*ApiRespo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -157,8 +157,8 @@ func (a *SlackAPIService) SlackCreateExecute(r ApiSlackCreateRequest) (*ApiRespo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -168,8 +168,8 @@ func (a *SlackAPIService) SlackCreateExecute(r ApiSlackCreateRequest) (*ApiRespo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -179,8 +179,8 @@ func (a *SlackAPIService) SlackCreateExecute(r ApiSlackCreateRequest) (*ApiRespo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -190,8 +190,8 @@ func (a *SlackAPIService) SlackCreateExecute(r ApiSlackCreateRequest) (*ApiRespo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -209,8 +209,8 @@ func (a *SlackAPIService) SlackCreateExecute(r ApiSlackCreateRequest) (*ApiRespo
 }
 
 type ApiSlackDeleteMultipleRequest struct {
-	ctx context.Context
-	ApiService *SlackAPIService
+	ctx                      context.Context
+	ApiService               *SlackAPIService
 	deleteSlackConfigCommand *DeleteSlackConfigCommand
 }
 
@@ -226,22 +226,22 @@ func (r ApiSlackDeleteMultipleRequest) Execute() (*http.Response, error) {
 /*
 SlackDeleteMultiple Delete slack configuration(s)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSlackDeleteMultipleRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSlackDeleteMultipleRequest
 */
 func (a *SlackAPIService) SlackDeleteMultiple(ctx context.Context) ApiSlackDeleteMultipleRequest {
 	return ApiSlackDeleteMultipleRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *SlackAPIService) SlackDeleteMultipleExecute(r ApiSlackDeleteMultipleRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SlackAPIService.SlackDeleteMultiple")
@@ -317,8 +317,8 @@ func (a *SlackAPIService) SlackDeleteMultipleExecute(r ApiSlackDeleteMultipleReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -328,8 +328,8 @@ func (a *SlackAPIService) SlackDeleteMultipleExecute(r ApiSlackDeleteMultipleReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -339,8 +339,8 @@ func (a *SlackAPIService) SlackDeleteMultipleExecute(r ApiSlackDeleteMultipleReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -350,8 +350,8 @@ func (a *SlackAPIService) SlackDeleteMultipleExecute(r ApiSlackDeleteMultipleReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -361,8 +361,8 @@ func (a *SlackAPIService) SlackDeleteMultipleExecute(r ApiSlackDeleteMultipleReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -372,8 +372,8 @@ func (a *SlackAPIService) SlackDeleteMultipleExecute(r ApiSlackDeleteMultipleReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -382,10 +382,10 @@ func (a *SlackAPIService) SlackDeleteMultipleExecute(r ApiSlackDeleteMultipleReq
 }
 
 type ApiSlackDropdownRequest struct {
-	ctx context.Context
-	ApiService *SlackAPIService
+	ctx            context.Context
+	ApiService     *SlackAPIService
 	organizationId *int32
-	search *string
+	search         *string
 }
 
 func (r ApiSlackDropdownRequest) OrganizationId(organizationId int32) ApiSlackDropdownRequest {
@@ -405,24 +405,25 @@ func (r ApiSlackDropdownRequest) Execute() ([]CommonDropdownDto, *http.Response,
 /*
 SlackDropdown Retrieve all slack configs for organization
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSlackDropdownRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSlackDropdownRequest
 */
 func (a *SlackAPIService) SlackDropdown(ctx context.Context) ApiSlackDropdownRequest {
 	return ApiSlackDropdownRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []CommonDropdownDto
+//
+//	@return []CommonDropdownDto
 func (a *SlackAPIService) SlackDropdownExecute(r ApiSlackDropdownRequest) ([]CommonDropdownDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CommonDropdownDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []CommonDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SlackAPIService.SlackDropdown")
@@ -502,8 +503,8 @@ func (a *SlackAPIService) SlackDropdownExecute(r ApiSlackDropdownRequest) ([]Com
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -513,8 +514,8 @@ func (a *SlackAPIService) SlackDropdownExecute(r ApiSlackDropdownRequest) ([]Com
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -524,8 +525,8 @@ func (a *SlackAPIService) SlackDropdownExecute(r ApiSlackDropdownRequest) ([]Com
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -535,8 +536,8 @@ func (a *SlackAPIService) SlackDropdownExecute(r ApiSlackDropdownRequest) ([]Com
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -546,8 +547,8 @@ func (a *SlackAPIService) SlackDropdownExecute(r ApiSlackDropdownRequest) ([]Com
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -557,8 +558,8 @@ func (a *SlackAPIService) SlackDropdownExecute(r ApiSlackDropdownRequest) ([]Com
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -576,16 +577,16 @@ func (a *SlackAPIService) SlackDropdownExecute(r ApiSlackDropdownRequest) ([]Com
 }
 
 type ApiSlackListRequest struct {
-	ctx context.Context
-	ApiService *SlackAPIService
+	ctx            context.Context
+	ApiService     *SlackAPIService
 	organizationId *int32
-	accountId *int32
-	limit *int32
-	offset *int32
-	sortBy *string
-	sortDirection *string
-	search *string
-	id *int32
+	domainId       *int32
+	limit          *int32
+	offset         *int32
+	sortBy         *string
+	sortDirection  *string
+	search         *string
+	id             *int32
 }
 
 func (r ApiSlackListRequest) OrganizationId(organizationId int32) ApiSlackListRequest {
@@ -593,8 +594,8 @@ func (r ApiSlackListRequest) OrganizationId(organizationId int32) ApiSlackListRe
 	return r
 }
 
-func (r ApiSlackListRequest) AccountId(accountId int32) ApiSlackListRequest {
-	r.accountId = &accountId
+func (r ApiSlackListRequest) DomainId(domainId int32) ApiSlackListRequest {
+	r.domainId = &domainId
 	return r
 }
 
@@ -635,24 +636,25 @@ func (r ApiSlackListRequest) Execute() (*SlackConfigurationList, *http.Response,
 /*
 SlackList Retrieve all slack configs
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSlackListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSlackListRequest
 */
 func (a *SlackAPIService) SlackList(ctx context.Context) ApiSlackListRequest {
 	return ApiSlackListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return SlackConfigurationList
+//
+//	@return SlackConfigurationList
 func (a *SlackAPIService) SlackListExecute(r ApiSlackListRequest) (*SlackConfigurationList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SlackConfigurationList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SlackConfigurationList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SlackAPIService.SlackList")
@@ -669,8 +671,8 @@ func (a *SlackAPIService) SlackListExecute(r ApiSlackListRequest) (*SlackConfigu
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	if r.accountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
+	if r.domainId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "DomainId", r.domainId, "form", "")
 	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -750,8 +752,8 @@ func (a *SlackAPIService) SlackListExecute(r ApiSlackListRequest) (*SlackConfigu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -761,8 +763,8 @@ func (a *SlackAPIService) SlackListExecute(r ApiSlackListRequest) (*SlackConfigu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -772,8 +774,8 @@ func (a *SlackAPIService) SlackListExecute(r ApiSlackListRequest) (*SlackConfigu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -783,8 +785,8 @@ func (a *SlackAPIService) SlackListExecute(r ApiSlackListRequest) (*SlackConfigu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -794,8 +796,8 @@ func (a *SlackAPIService) SlackListExecute(r ApiSlackListRequest) (*SlackConfigu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -805,8 +807,8 @@ func (a *SlackAPIService) SlackListExecute(r ApiSlackListRequest) (*SlackConfigu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -824,9 +826,9 @@ func (a *SlackAPIService) SlackListExecute(r ApiSlackListRequest) (*SlackConfigu
 }
 
 type ApiSlackUpdateRequest struct {
-	ctx context.Context
-	ApiService *SlackAPIService
-	id int32
+	ctx                         context.Context
+	ApiService                  *SlackAPIService
+	id                          int32
 	updateSlackConfigurationDto *UpdateSlackConfigurationDto
 }
 
@@ -842,24 +844,24 @@ func (r ApiSlackUpdateRequest) Execute() (*http.Response, error) {
 /*
 SlackUpdate Update slack configuration
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiSlackUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiSlackUpdateRequest
 */
 func (a *SlackAPIService) SlackUpdate(ctx context.Context, id int32) ApiSlackUpdateRequest {
 	return ApiSlackUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *SlackAPIService) SlackUpdateExecute(r ApiSlackUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SlackAPIService.SlackUpdate")
@@ -936,8 +938,8 @@ func (a *SlackAPIService) SlackUpdateExecute(r ApiSlackUpdateRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -947,8 +949,8 @@ func (a *SlackAPIService) SlackUpdateExecute(r ApiSlackUpdateRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -958,8 +960,8 @@ func (a *SlackAPIService) SlackUpdateExecute(r ApiSlackUpdateRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -969,8 +971,8 @@ func (a *SlackAPIService) SlackUpdateExecute(r ApiSlackUpdateRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -980,8 +982,8 @@ func (a *SlackAPIService) SlackUpdateExecute(r ApiSlackUpdateRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -991,8 +993,8 @@ func (a *SlackAPIService) SlackUpdateExecute(r ApiSlackUpdateRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1001,8 +1003,8 @@ func (a *SlackAPIService) SlackUpdateExecute(r ApiSlackUpdateRequest) (*http.Res
 }
 
 type ApiSlackVerifyRequest struct {
-	ctx context.Context
-	ApiService *SlackAPIService
+	ctx                           context.Context
+	ApiService                    *SlackAPIService
 	verifySlackCredentialsCommand *VerifySlackCredentialsCommand
 }
 
@@ -1018,22 +1020,22 @@ func (r ApiSlackVerifyRequest) Execute() (*http.Response, error) {
 /*
 SlackVerify Verify slack configuration
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSlackVerifyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSlackVerifyRequest
 */
 func (a *SlackAPIService) SlackVerify(ctx context.Context) ApiSlackVerifyRequest {
 	return ApiSlackVerifyRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *SlackAPIService) SlackVerifyExecute(r ApiSlackVerifyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SlackAPIService.SlackVerify")
@@ -1109,8 +1111,8 @@ func (a *SlackAPIService) SlackVerifyExecute(r ApiSlackVerifyRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1120,8 +1122,8 @@ func (a *SlackAPIService) SlackVerifyExecute(r ApiSlackVerifyRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1131,8 +1133,8 @@ func (a *SlackAPIService) SlackVerifyExecute(r ApiSlackVerifyRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1142,8 +1144,8 @@ func (a *SlackAPIService) SlackVerifyExecute(r ApiSlackVerifyRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1153,8 +1155,8 @@ func (a *SlackAPIService) SlackVerifyExecute(r ApiSlackVerifyRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1164,8 +1166,8 @@ func (a *SlackAPIService) SlackVerifyExecute(r ApiSlackVerifyRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

@@ -20,13 +20,12 @@ import (
 	"strings"
 )
 
-
 // OperationCredentialsAPIService OperationCredentialsAPI service
 type OperationCredentialsAPIService service
 
 type ApiOpscredentialsCreateRequest struct {
-	ctx context.Context
-	ApiService *OperationCredentialsAPIService
+	ctx                               context.Context
+	ApiService                        *OperationCredentialsAPIService
 	operationCredentialsCreateCommand *OperationCredentialsCreateCommand
 }
 
@@ -42,24 +41,25 @@ func (r ApiOpscredentialsCreateRequest) Execute() (*ApiResponse, *http.Response,
 /*
 OpscredentialsCreate Add Operation credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOpscredentialsCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOpscredentialsCreateRequest
 */
 func (a *OperationCredentialsAPIService) OpscredentialsCreate(ctx context.Context) ApiOpscredentialsCreateRequest {
 	return ApiOpscredentialsCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ApiResponse
+//
+//	@return ApiResponse
 func (a *OperationCredentialsAPIService) OpscredentialsCreateExecute(r ApiOpscredentialsCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ApiResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OperationCredentialsAPIService.OpscredentialsCreate")
@@ -135,8 +135,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsCreateExecute(r ApiOpscre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -146,8 +146,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsCreateExecute(r ApiOpscre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -157,8 +157,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsCreateExecute(r ApiOpscre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -168,8 +168,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsCreateExecute(r ApiOpscre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -179,8 +179,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsCreateExecute(r ApiOpscre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -190,8 +190,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsCreateExecute(r ApiOpscre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -209,9 +209,9 @@ func (a *OperationCredentialsAPIService) OpscredentialsCreateExecute(r ApiOpscre
 }
 
 type ApiOpscredentialsDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *OperationCredentialsAPIService
-	id int32
+	id         int32
 }
 
 func (r ApiOpscredentialsDeleteRequest) Execute() (*http.Response, error) {
@@ -221,24 +221,24 @@ func (r ApiOpscredentialsDeleteRequest) Execute() (*http.Response, error) {
 /*
 OpscredentialsDelete Remove Operation credential by Id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiOpscredentialsDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiOpscredentialsDeleteRequest
 */
 func (a *OperationCredentialsAPIService) OpscredentialsDelete(ctx context.Context, id int32) ApiOpscredentialsDeleteRequest {
 	return ApiOpscredentialsDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *OperationCredentialsAPIService) OpscredentialsDeleteExecute(r ApiOpscredentialsDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OperationCredentialsAPIService.OpscredentialsDelete")
@@ -313,8 +313,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsDeleteExecute(r ApiOpscre
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -324,8 +324,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsDeleteExecute(r ApiOpscre
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -335,8 +335,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsDeleteExecute(r ApiOpscre
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -346,8 +346,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsDeleteExecute(r ApiOpscre
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -357,8 +357,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsDeleteExecute(r ApiOpscre
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -368,8 +368,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsDeleteExecute(r ApiOpscre
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -378,17 +378,17 @@ func (a *OperationCredentialsAPIService) OpscredentialsDeleteExecute(r ApiOpscre
 }
 
 type ApiOpscredentialsListRequest struct {
-	ctx context.Context
-	ApiService *OperationCredentialsAPIService
-	limit *int32
-	offset *int32
+	ctx            context.Context
+	ApiService     *OperationCredentialsAPIService
+	limit          *int32
+	offset         *int32
 	organizationId *int32
-	search *string
-	searchId *string
-	id *int32
-	accountId *int32
-	sortBy *string
-	sortDirection *string
+	search         *string
+	searchId       *string
+	id             *int32
+	domainId       *int32
+	sortBy         *string
+	sortDirection  *string
 }
 
 func (r ApiOpscredentialsListRequest) Limit(limit int32) ApiOpscredentialsListRequest {
@@ -421,8 +421,8 @@ func (r ApiOpscredentialsListRequest) Id(id int32) ApiOpscredentialsListRequest 
 	return r
 }
 
-func (r ApiOpscredentialsListRequest) AccountId(accountId int32) ApiOpscredentialsListRequest {
-	r.accountId = &accountId
+func (r ApiOpscredentialsListRequest) DomainId(domainId int32) ApiOpscredentialsListRequest {
+	r.domainId = &domainId
 	return r
 }
 
@@ -443,24 +443,25 @@ func (r ApiOpscredentialsListRequest) Execute() (*OperationCredentials, *http.Re
 /*
 OpscredentialsList Retrieve all operation credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOpscredentialsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOpscredentialsListRequest
 */
 func (a *OperationCredentialsAPIService) OpscredentialsList(ctx context.Context) ApiOpscredentialsListRequest {
 	return ApiOpscredentialsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return OperationCredentials
+//
+//	@return OperationCredentials
 func (a *OperationCredentialsAPIService) OpscredentialsListExecute(r ApiOpscredentialsListRequest) (*OperationCredentials, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *OperationCredentials
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *OperationCredentials
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OperationCredentialsAPIService.OpscredentialsList")
@@ -492,8 +493,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsListExecute(r ApiOpscrede
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
-	if r.accountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
+	if r.domainId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "DomainId", r.domainId, "form", "")
 	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
@@ -561,8 +562,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsListExecute(r ApiOpscrede
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -572,8 +573,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsListExecute(r ApiOpscrede
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -583,8 +584,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsListExecute(r ApiOpscrede
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -594,8 +595,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsListExecute(r ApiOpscrede
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -605,8 +606,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsListExecute(r ApiOpscrede
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -616,8 +617,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsListExecute(r ApiOpscrede
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -635,10 +636,10 @@ func (a *OperationCredentialsAPIService) OpscredentialsListExecute(r ApiOpscrede
 }
 
 type ApiOpscredentialsListByOrganizationIdRequest struct {
-	ctx context.Context
-	ApiService *OperationCredentialsAPIService
+	ctx            context.Context
+	ApiService     *OperationCredentialsAPIService
 	organizationId *int32
-	search *string
+	search         *string
 }
 
 func (r ApiOpscredentialsListByOrganizationIdRequest) OrganizationId(organizationId int32) ApiOpscredentialsListByOrganizationIdRequest {
@@ -658,24 +659,25 @@ func (r ApiOpscredentialsListByOrganizationIdRequest) Execute() ([]OperationCred
 /*
 OpscredentialsListByOrganizationId Retrieve operation credentials by organization Id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOpscredentialsListByOrganizationIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOpscredentialsListByOrganizationIdRequest
 */
 func (a *OperationCredentialsAPIService) OpscredentialsListByOrganizationId(ctx context.Context) ApiOpscredentialsListByOrganizationIdRequest {
 	return ApiOpscredentialsListByOrganizationIdRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []OperationCredentialsForOrganizationEntity
+//
+//	@return []OperationCredentialsForOrganizationEntity
 func (a *OperationCredentialsAPIService) OpscredentialsListByOrganizationIdExecute(r ApiOpscredentialsListByOrganizationIdRequest) ([]OperationCredentialsForOrganizationEntity, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []OperationCredentialsForOrganizationEntity
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []OperationCredentialsForOrganizationEntity
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OperationCredentialsAPIService.OpscredentialsListByOrganizationId")
@@ -755,8 +757,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsListByOrganizationIdExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -766,8 +768,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsListByOrganizationIdExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -777,8 +779,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsListByOrganizationIdExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -788,8 +790,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsListByOrganizationIdExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -799,8 +801,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsListByOrganizationIdExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -810,8 +812,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsListByOrganizationIdExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -829,8 +831,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsListByOrganizationIdExecu
 }
 
 type ApiOpscredentialsLockManagerRequest struct {
-	ctx context.Context
-	ApiService *OperationCredentialsAPIService
+	ctx                                   context.Context
+	ApiService                            *OperationCredentialsAPIService
 	operationCredentialLockManagerCommand *OperationCredentialLockManagerCommand
 }
 
@@ -846,22 +848,22 @@ func (r ApiOpscredentialsLockManagerRequest) Execute() (*http.Response, error) {
 /*
 OpscredentialsLockManager Lock/Unlock operation credential
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOpscredentialsLockManagerRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOpscredentialsLockManagerRequest
 */
 func (a *OperationCredentialsAPIService) OpscredentialsLockManager(ctx context.Context) ApiOpscredentialsLockManagerRequest {
 	return ApiOpscredentialsLockManagerRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *OperationCredentialsAPIService) OpscredentialsLockManagerExecute(r ApiOpscredentialsLockManagerRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OperationCredentialsAPIService.OpscredentialsLockManager")
@@ -937,8 +939,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsLockManagerExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -948,8 +950,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsLockManagerExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -959,8 +961,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsLockManagerExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -970,8 +972,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsLockManagerExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -981,8 +983,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsLockManagerExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -992,8 +994,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsLockManagerExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1002,8 +1004,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsLockManagerExecute(r ApiO
 }
 
 type ApiOpscredentialsMakeDefaultRequest struct {
-	ctx context.Context
-	ApiService *OperationCredentialsAPIService
+	ctx                                    context.Context
+	ApiService                             *OperationCredentialsAPIService
 	operationCredentialsMakeDefaultCommand *OperationCredentialsMakeDefaultCommand
 }
 
@@ -1019,22 +1021,22 @@ func (r ApiOpscredentialsMakeDefaultRequest) Execute() (*http.Response, error) {
 /*
 OpscredentialsMakeDefault Choose default operation credential
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOpscredentialsMakeDefaultRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOpscredentialsMakeDefaultRequest
 */
 func (a *OperationCredentialsAPIService) OpscredentialsMakeDefault(ctx context.Context) ApiOpscredentialsMakeDefaultRequest {
 	return ApiOpscredentialsMakeDefaultRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *OperationCredentialsAPIService) OpscredentialsMakeDefaultExecute(r ApiOpscredentialsMakeDefaultRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OperationCredentialsAPIService.OpscredentialsMakeDefault")
@@ -1110,8 +1112,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsMakeDefaultExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1121,8 +1123,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsMakeDefaultExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1132,8 +1134,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsMakeDefaultExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1143,8 +1145,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsMakeDefaultExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1154,8 +1156,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsMakeDefaultExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1165,8 +1167,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsMakeDefaultExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1175,9 +1177,9 @@ func (a *OperationCredentialsAPIService) OpscredentialsMakeDefaultExecute(r ApiO
 }
 
 type ApiOpscredentialsMetricNamesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *OperationCredentialsAPIService
-	id int32
+	id         int32
 }
 
 func (r ApiOpscredentialsMetricNamesRequest) Execute() ([]string, *http.Response, error) {
@@ -1187,26 +1189,27 @@ func (r ApiOpscredentialsMetricNamesRequest) Execute() ([]string, *http.Response
 /*
 OpscredentialsMetricNames Fetch prometheus metric names
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiOpscredentialsMetricNamesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiOpscredentialsMetricNamesRequest
 */
 func (a *OperationCredentialsAPIService) OpscredentialsMetricNames(ctx context.Context, id int32) ApiOpscredentialsMetricNamesRequest {
 	return ApiOpscredentialsMetricNamesRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return []string
+//
+//	@return []string
 func (a *OperationCredentialsAPIService) OpscredentialsMetricNamesExecute(r ApiOpscredentialsMetricNamesRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []string
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OperationCredentialsAPIService.OpscredentialsMetricNames")
@@ -1281,8 +1284,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsMetricNamesExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1292,8 +1295,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsMetricNamesExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1303,8 +1306,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsMetricNamesExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1314,8 +1317,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsMetricNamesExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1325,8 +1328,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsMetricNamesExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1336,8 +1339,8 @@ func (a *OperationCredentialsAPIService) OpscredentialsMetricNamesExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
