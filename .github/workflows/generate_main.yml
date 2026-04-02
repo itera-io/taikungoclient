@@ -7,8 +7,8 @@ on:
         type: boolean
         description: 'Force client generation'
         default: false
-  schedule:
-    - cron: "0 0 * * *"
+#  schedule:
+#    - cron: "0 0 * * *"
 
 jobs:
   generate-client:
