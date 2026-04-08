@@ -31,7 +31,6 @@ type CreateProjectAppCommand struct {
 	CreatePullSecret     *bool                 `json:"createPullSecret,omitempty"`
 	PullSecretName       NullableString        `json:"pullSecretName,omitempty"`
 	Parameters           []ProjectAppParamsDto `json:"parameters,omitempty"`
-	Labels               []PullSecretLabels    `json:"labels,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -462,39 +461,6 @@ func (o *CreateProjectAppCommand) SetParameters(v []ProjectAppParamsDto) {
 	o.Parameters = v
 }
 
-// GetLabels returns the Labels field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateProjectAppCommand) GetLabels() []PullSecretLabels {
-	if o == nil {
-		var ret []PullSecretLabels
-		return ret
-	}
-	return o.Labels
-}
-
-// GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateProjectAppCommand) GetLabelsOk() ([]PullSecretLabels, bool) {
-	if o == nil || IsNil(o.Labels) {
-		return nil, false
-	}
-	return o.Labels, true
-}
-
-// HasLabels returns a boolean if a field has been set.
-func (o *CreateProjectAppCommand) HasLabels() bool {
-	if o != nil && !IsNil(o.Labels) {
-		return true
-	}
-
-	return false
-}
-
-// SetLabels gets a reference to the given []PullSecretLabels and assigns it to the Labels field.
-func (o *CreateProjectAppCommand) SetLabels(v []PullSecretLabels) {
-	o.Labels = v
-}
-
 func (o CreateProjectAppCommand) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -538,9 +504,6 @@ func (o CreateProjectAppCommand) ToMap() (map[string]interface{}, error) {
 	if o.Parameters != nil {
 		toSerialize["parameters"] = o.Parameters
 	}
-	if o.Labels != nil {
-		toSerialize["labels"] = o.Labels
-	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -574,7 +537,6 @@ func (o *CreateProjectAppCommand) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "createPullSecret")
 		delete(additionalProperties, "pullSecretName")
 		delete(additionalProperties, "parameters")
-		delete(additionalProperties, "labels")
 		o.AdditionalProperties = additionalProperties
 	}
 

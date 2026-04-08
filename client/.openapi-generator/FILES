@@ -788,7 +788,6 @@ docs/ProxmoxNetworkListDto.md
 docs/ProxmoxRole.md
 docs/ProxmoxStorage.md
 docs/PublicImageList.md
-docs/PullSecretLabels.md
 docs/PvcListDto.md
 docs/PvcListDtoCursorStringPaginatedResponse.md
 docs/PvcSearchCommand.md
@@ -1677,7 +1676,6 @@ model_proxmox_network_list_dto.go
 model_proxmox_role.go
 model_proxmox_storage.go
 model_public_image_list.go
-model_pull_secret_labels.go
 model_pvc_list_dto.go
 model_pvc_list_dto_cursor_string_paginated_response.go
 model_pvc_search_command.go

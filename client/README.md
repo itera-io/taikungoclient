@@ -470,7 +470,7 @@ Class | Method | HTTP request | Description
 *OrganizationSubscriptionsAPI* | [**OrganizationsubcriptionsUpdate**](docs/OrganizationSubscriptionsAPI.md#organizationsubcriptionsupdate) | **Post** /api/v1/organizationsubcriptions/update | Update subscription
 *OrganizationsAPI* | [**OrganizationsAddPrometheusrules**](docs/OrganizationsAPI.md#organizationsaddprometheusrules) | **Post** /api/v1/organizations/{id}/prometheusrules | Add prometheus rule(s) to organization
 *OrganizationsAPI* | [**OrganizationsCreate**](docs/OrganizationsAPI.md#organizationscreate) | **Post** /api/v1/organizations | Add a new organization. Only available for admins.
-*OrganizationsAPI* | [**OrganizationsDelete**](docs/OrganizationsAPI.md#organizationsdelete) | **Delete** /api/v1/organizations/{id} | Delete the specified organization. Only available for admins.
+*OrganizationsAPI* | [**OrganizationsDelete**](docs/OrganizationsAPI.md#organizationsdelete) | **Delete** /api/v1/organizations/{id} | Delete the specified organization. Only available for global roles.
 *OrganizationsAPI* | [**OrganizationsDeletePrometheusrules**](docs/OrganizationsAPI.md#organizationsdeleteprometheusrules) | **Put** /api/v1/organizations/{id}/prometheusrules | Unbind prometheus rule(s) from organization
 *OrganizationsAPI* | [**OrganizationsDetails**](docs/OrganizationsAPI.md#organizationsdetails) | **Get** /api/v1/organizations/details | Retrieve all data about current organization by Id
 *OrganizationsAPI* | [**OrganizationsExportCsv**](docs/OrganizationsAPI.md#organizationsexportcsv) | **Get** /api/v1/organizations/export | Export Csv file
@@ -1393,7 +1393,6 @@ Class | Method | HTTP request | Description
  - [ProxmoxRole](docs/ProxmoxRole.md)
  - [ProxmoxStorage](docs/ProxmoxStorage.md)
  - [PublicImageList](docs/PublicImageList.md)
- - [PullSecretLabels](docs/PullSecretLabels.md)
  - [PvcListDto](docs/PvcListDto.md)
  - [PvcListDtoCursorStringPaginatedResponse](docs/PvcListDtoCursorStringPaginatedResponse.md)
  - [PvcSearchCommand](docs/PvcSearchCommand.md)

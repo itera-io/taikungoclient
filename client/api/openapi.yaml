@@ -26093,6 +26093,8 @@ paths:
       - Organizations
   /api/v1/organizations/{id}:
     delete:
+      description: This endpoint allows deleting an organization by its ID. Requires
+        global role permissions.
       operationId: organizations-delete
       parameters:
       - explode: false
@@ -26144,7 +26146,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
-      summary: Delete the specified organization. Only available for admins.
+      summary: Delete the specified organization. Only available for global roles.
       tags:
       - Organizations
   /api/v1/package/value:
@@ -48979,11 +48981,6 @@ components:
         - value: value
           key: key
         timeout: 1
-        labels:
-        - value: value
-          key: key
-        - value: value
-          key: key
       properties:
         name:
           nullable: true
@@ -49016,11 +49013,6 @@ components:
         parameters:
           items:
             $ref: "#/components/schemas/ProjectAppParamsDto"
-          nullable: true
-          type: array
-        labels:
-          items:
-            $ref: "#/components/schemas/PullSecretLabels"
           nullable: true
           type: array
       type: object
@@ -65262,18 +65254,6 @@ components:
       required:
       - data
       - totalCount
-      type: object
-    PullSecretLabels:
-      example:
-        value: value
-        key: key
-      properties:
-        key:
-          nullable: true
-          type: string
-        value:
-          nullable: true
-          type: string
       type: object
     PurgeExpiredProjectsCommand:
       type: object

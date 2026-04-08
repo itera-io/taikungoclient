@@ -396,7 +396,9 @@ func (r ApiOrganizationsDeleteRequest) Execute() (*http.Response, error) {
 }
 
 /*
-OrganizationsDelete Delete the specified organization. Only available for admins.
+OrganizationsDelete Delete the specified organization. Only available for global roles.
+
+This endpoint allows deleting an organization by its ID. Requires global role permissions.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id
