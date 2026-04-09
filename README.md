@@ -17,6 +17,7 @@ openapi-generator generate -i ./swagger-taikun.json \
 -g go \
 --additional-properties=packageName=taikuncore \
 --additional-properties=enumClassPrefix=true \
+--additional-properties=disallowAdditionalPropertiesIfNotPresent=false \
 --git-user-id=itera-io \
 --git-repo-id=taikungoclient/client \
 -o ./client
@@ -25,6 +26,7 @@ openapi-generator generate -i ./swagger-showback.json \
 -g go \
 --additional-properties=packageName=taikunshowback  \
 --additional-properties=enumClassPrefix=true \
+--additional-properties=disallowAdditionalPropertiesIfNotPresent=false \
 --git-user-id=itera-io \
 --git-repo-id=taikungoclient/showbackclient \
 -o ./showbackclient
