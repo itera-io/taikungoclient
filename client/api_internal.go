@@ -19,15 +19,14 @@ import (
 	"net/url"
 )
 
-
 // InternalAPIService InternalAPI service
 type InternalAPIService service
 
 type ApiInternalAlertsListRequest struct {
-	ctx context.Context
-	ApiService *InternalAPIService
-	projectId *int32
-	limit *int32
+	ctx         context.Context
+	ApiService  *InternalAPIService
+	projectId   *int32
+	limit       *int32
 	lastAlertId *int32
 }
 
@@ -53,24 +52,25 @@ func (r ApiInternalAlertsListRequest) Execute() ([]InternalAlertDto, *http.Respo
 /*
 InternalAlertsList Retrieve alerts list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiInternalAlertsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiInternalAlertsListRequest
 */
 func (a *InternalAPIService) InternalAlertsList(ctx context.Context) ApiInternalAlertsListRequest {
 	return ApiInternalAlertsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []InternalAlertDto
+//
+//	@return []InternalAlertDto
 func (a *InternalAPIService) InternalAlertsListExecute(r ApiInternalAlertsListRequest) ([]InternalAlertDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []InternalAlertDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []InternalAlertDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InternalAPIService.InternalAlertsList")
@@ -155,8 +155,8 @@ func (a *InternalAPIService) InternalAlertsListExecute(r ApiInternalAlertsListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -166,8 +166,8 @@ func (a *InternalAPIService) InternalAlertsListExecute(r ApiInternalAlertsListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -177,8 +177,8 @@ func (a *InternalAPIService) InternalAlertsListExecute(r ApiInternalAlertsListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -188,8 +188,8 @@ func (a *InternalAPIService) InternalAlertsListExecute(r ApiInternalAlertsListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -199,8 +199,8 @@ func (a *InternalAPIService) InternalAlertsListExecute(r ApiInternalAlertsListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -210,8 +210,8 @@ func (a *InternalAPIService) InternalAlertsListExecute(r ApiInternalAlertsListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -229,8 +229,8 @@ func (a *InternalAPIService) InternalAlertsListExecute(r ApiInternalAlertsListRe
 }
 
 type ApiInternalGetUserInfoRequest struct {
-	ctx context.Context
-	ApiService *InternalAPIService
+	ctx                         context.Context
+	ApiService                  *InternalAPIService
 	internalUserInfoListCommand *InternalUserInfoListCommand
 }
 
@@ -246,24 +246,25 @@ func (r ApiInternalGetUserInfoRequest) Execute() (*UserAuthContext, *http.Respon
 /*
 InternalGetUserInfo Get user info
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiInternalGetUserInfoRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiInternalGetUserInfoRequest
 */
 func (a *InternalAPIService) InternalGetUserInfo(ctx context.Context) ApiInternalGetUserInfoRequest {
 	return ApiInternalGetUserInfoRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return UserAuthContext
+//
+//	@return UserAuthContext
 func (a *InternalAPIService) InternalGetUserInfoExecute(r ApiInternalGetUserInfoRequest) (*UserAuthContext, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *UserAuthContext
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserAuthContext
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InternalAPIService.InternalGetUserInfo")
@@ -339,8 +340,8 @@ func (a *InternalAPIService) InternalGetUserInfoExecute(r ApiInternalGetUserInfo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -350,8 +351,8 @@ func (a *InternalAPIService) InternalGetUserInfoExecute(r ApiInternalGetUserInfo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -361,8 +362,8 @@ func (a *InternalAPIService) InternalGetUserInfoExecute(r ApiInternalGetUserInfo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -372,8 +373,8 @@ func (a *InternalAPIService) InternalGetUserInfoExecute(r ApiInternalGetUserInfo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -383,8 +384,8 @@ func (a *InternalAPIService) InternalGetUserInfoExecute(r ApiInternalGetUserInfo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -394,8 +395,8 @@ func (a *InternalAPIService) InternalGetUserInfoExecute(r ApiInternalGetUserInfo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -413,10 +414,10 @@ func (a *InternalAPIService) InternalGetUserInfoExecute(r ApiInternalGetUserInfo
 }
 
 type ApiInternalProjectsListRequest struct {
-	ctx context.Context
-	ApiService *InternalAPIService
-	limit *int32
-	projectId *int32
+	ctx           context.Context
+	ApiService    *InternalAPIService
+	limit         *int32
+	projectId     *int32
 	lastProjectId *int32
 }
 
@@ -442,24 +443,25 @@ func (r ApiInternalProjectsListRequest) Execute() ([]InternalProjectListDto, *ht
 /*
 InternalProjectsList Retrieve projects list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiInternalProjectsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiInternalProjectsListRequest
 */
 func (a *InternalAPIService) InternalProjectsList(ctx context.Context) ApiInternalProjectsListRequest {
 	return ApiInternalProjectsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []InternalProjectListDto
+//
+//	@return []InternalProjectListDto
 func (a *InternalAPIService) InternalProjectsListExecute(r ApiInternalProjectsListRequest) ([]InternalProjectListDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []InternalProjectListDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []InternalProjectListDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InternalAPIService.InternalProjectsList")
@@ -543,8 +545,8 @@ func (a *InternalAPIService) InternalProjectsListExecute(r ApiInternalProjectsLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -554,8 +556,8 @@ func (a *InternalAPIService) InternalProjectsListExecute(r ApiInternalProjectsLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -565,8 +567,8 @@ func (a *InternalAPIService) InternalProjectsListExecute(r ApiInternalProjectsLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -576,8 +578,8 @@ func (a *InternalAPIService) InternalProjectsListExecute(r ApiInternalProjectsLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -587,8 +589,8 @@ func (a *InternalAPIService) InternalProjectsListExecute(r ApiInternalProjectsLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -598,8 +600,8 @@ func (a *InternalAPIService) InternalProjectsListExecute(r ApiInternalProjectsLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

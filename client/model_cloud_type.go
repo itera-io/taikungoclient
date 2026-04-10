@@ -21,15 +21,15 @@ type CloudType string
 
 // List of CloudType
 const (
-	CLOUDTYPE_NONE CloudType = "NONE"
-	CLOUDTYPE_AWS CloudType = "AWS"
-	CLOUDTYPE_AZURE CloudType = "AZURE"
-	CLOUDTYPE_GOOGLE CloudType = "GOOGLE"
-	CLOUDTYPE_OPENSTACK CloudType = "OPENSTACK"
-	CLOUDTYPE_PROXMOX CloudType = "PROXMOX"
-	CLOUDTYPE_OPENSHIFT CloudType = "OPENSHIFT"
-	CLOUDTYPE_VSPHERE CloudType = "VSPHERE"
-	CLOUDTYPE_ZADARA CloudType = "ZADARA"
+	CLOUDTYPE_NONE              CloudType = "NONE"
+	CLOUDTYPE_AWS               CloudType = "AWS"
+	CLOUDTYPE_AZURE             CloudType = "AZURE"
+	CLOUDTYPE_GOOGLE            CloudType = "GOOGLE"
+	CLOUDTYPE_OPENSTACK         CloudType = "OPENSTACK"
+	CLOUDTYPE_PROXMOX           CloudType = "PROXMOX"
+	CLOUDTYPE_OPENSHIFT         CloudType = "OPENSHIFT"
+	CLOUDTYPE_VSPHERE           CloudType = "VSPHERE"
+	CLOUDTYPE_ZADARA            CloudType = "ZADARA"
 	CLOUDTYPE_GENERICKUBERNETES CloudType = "GENERICKUBERNETES"
 )
 
@@ -125,4 +125,3 @@ func (v *NullableCloudType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

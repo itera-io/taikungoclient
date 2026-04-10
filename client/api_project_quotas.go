@@ -19,27 +19,26 @@ import (
 	"net/url"
 )
 
-
 // ProjectQuotasAPIService ProjectQuotasAPI service
 type ProjectQuotasAPIService service
 
 type ApiProjectquotasListRequest struct {
-	ctx context.Context
-	ApiService *ProjectQuotasAPIService
-	limit *int32
-	offset *int32
-	sortBy *string
-	sortDirection *string
-	search *string
-	startRam *float64
-	endRam *float64
-	startDiskSize *int64
-	endDiskSize *int64
-	startCpu *int32
-	endCpu *int32
+	ctx            context.Context
+	ApiService     *ProjectQuotasAPIService
+	limit          *int32
+	offset         *int32
+	sortBy         *string
+	sortDirection  *string
+	search         *string
+	startRam       *float64
+	endRam         *float64
+	startDiskSize  *int64
+	endDiskSize    *int64
+	startCpu       *int32
+	endCpu         *int32
 	organizationId *int32
-	id *int32
-	accountId *int32
+	id             *int32
+	accountId      *int32
 }
 
 func (r ApiProjectquotasListRequest) Limit(limit int32) ApiProjectquotasListRequest {
@@ -119,24 +118,25 @@ func (r ApiProjectquotasListRequest) Execute() (*ProjectQuotaList, *http.Respons
 /*
 ProjectquotasList Retrieve all project quotas
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProjectquotasListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProjectquotasListRequest
 */
 func (a *ProjectQuotasAPIService) ProjectquotasList(ctx context.Context) ApiProjectquotasListRequest {
 	return ApiProjectquotasListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ProjectQuotaList
+//
+//	@return ProjectQuotaList
 func (a *ProjectQuotasAPIService) ProjectquotasListExecute(r ApiProjectquotasListRequest) (*ProjectQuotaList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ProjectQuotaList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ProjectQuotaList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectQuotasAPIService.ProjectquotasList")
@@ -252,8 +252,8 @@ func (a *ProjectQuotasAPIService) ProjectquotasListExecute(r ApiProjectquotasLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -263,8 +263,8 @@ func (a *ProjectQuotasAPIService) ProjectquotasListExecute(r ApiProjectquotasLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -274,8 +274,8 @@ func (a *ProjectQuotasAPIService) ProjectquotasListExecute(r ApiProjectquotasLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -285,8 +285,8 @@ func (a *ProjectQuotasAPIService) ProjectquotasListExecute(r ApiProjectquotasLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -296,8 +296,8 @@ func (a *ProjectQuotasAPIService) ProjectquotasListExecute(r ApiProjectquotasLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -307,8 +307,8 @@ func (a *ProjectQuotasAPIService) ProjectquotasListExecute(r ApiProjectquotasLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -326,8 +326,8 @@ func (a *ProjectQuotasAPIService) ProjectquotasListExecute(r ApiProjectquotasLis
 }
 
 type ApiProjectquotasUpdateRequest struct {
-	ctx context.Context
-	ApiService *ProjectQuotasAPIService
+	ctx                context.Context
+	ApiService         *ProjectQuotasAPIService
 	updateQuotaCommand *UpdateQuotaCommand
 }
 
@@ -343,22 +343,22 @@ func (r ApiProjectquotasUpdateRequest) Execute() (*http.Response, error) {
 /*
 ProjectquotasUpdate Edit project quota
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProjectquotasUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiProjectquotasUpdateRequest
 */
 func (a *ProjectQuotasAPIService) ProjectquotasUpdate(ctx context.Context) ApiProjectquotasUpdateRequest {
 	return ApiProjectquotasUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectQuotasAPIService) ProjectquotasUpdateExecute(r ApiProjectquotasUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectQuotasAPIService.ProjectquotasUpdate")
@@ -434,8 +434,8 @@ func (a *ProjectQuotasAPIService) ProjectquotasUpdateExecute(r ApiProjectquotasU
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -445,8 +445,8 @@ func (a *ProjectQuotasAPIService) ProjectquotasUpdateExecute(r ApiProjectquotasU
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -456,8 +456,8 @@ func (a *ProjectQuotasAPIService) ProjectquotasUpdateExecute(r ApiProjectquotasU
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -467,8 +467,8 @@ func (a *ProjectQuotasAPIService) ProjectquotasUpdateExecute(r ApiProjectquotasU
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -478,8 +478,8 @@ func (a *ProjectQuotasAPIService) ProjectquotasUpdateExecute(r ApiProjectquotasU
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -489,8 +489,8 @@ func (a *ProjectQuotasAPIService) ProjectquotasUpdateExecute(r ApiProjectquotasU
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

@@ -20,13 +20,12 @@ import (
 	"time"
 )
 
-
 // BillingAPIService BillingAPI service
 type BillingAPIService service
 
 type ApiBillingCreateRequest struct {
-	ctx context.Context
-	ApiService *BillingAPIService
+	ctx                         context.Context
+	ApiService                  *BillingAPIService
 	createBillingSummaryCommand *CreateBillingSummaryCommand
 }
 
@@ -42,22 +41,22 @@ func (r ApiBillingCreateRequest) Execute() (*http.Response, error) {
 /*
 BillingCreate Add billing summary
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiBillingCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiBillingCreateRequest
 */
 func (a *BillingAPIService) BillingCreate(ctx context.Context) ApiBillingCreateRequest {
 	return ApiBillingCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *BillingAPIService) BillingCreateExecute(r ApiBillingCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.BillingCreate")
@@ -133,8 +132,8 @@ func (a *BillingAPIService) BillingCreateExecute(r ApiBillingCreateRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -144,8 +143,8 @@ func (a *BillingAPIService) BillingCreateExecute(r ApiBillingCreateRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -155,8 +154,8 @@ func (a *BillingAPIService) BillingCreateExecute(r ApiBillingCreateRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -166,8 +165,8 @@ func (a *BillingAPIService) BillingCreateExecute(r ApiBillingCreateRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -177,8 +176,8 @@ func (a *BillingAPIService) BillingCreateExecute(r ApiBillingCreateRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -188,8 +187,8 @@ func (a *BillingAPIService) BillingCreateExecute(r ApiBillingCreateRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -198,13 +197,13 @@ func (a *BillingAPIService) BillingCreateExecute(r ApiBillingCreateRequest) (*ht
 }
 
 type ApiBillingExportCsvRequest struct {
-	ctx context.Context
-	ApiService *BillingAPIService
+	ctx            context.Context
+	ApiService     *BillingAPIService
 	isEmailEnabled *bool
 	organizationId *int32
-	startDate *time.Time
-	endDate *time.Time
-	isDeleted *bool
+	startDate      *time.Time
+	endDate        *time.Time
+	isDeleted      *bool
 }
 
 func (r ApiBillingExportCsvRequest) IsEmailEnabled(isEmailEnabled bool) ApiBillingExportCsvRequest {
@@ -239,24 +238,25 @@ func (r ApiBillingExportCsvRequest) Execute() (*CsvExporter, *http.Response, err
 /*
 BillingExportCsv Export Csv
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiBillingExportCsvRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiBillingExportCsvRequest
 */
 func (a *BillingAPIService) BillingExportCsv(ctx context.Context) ApiBillingExportCsvRequest {
 	return ApiBillingExportCsvRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CsvExporter
+//
+//	@return CsvExporter
 func (a *BillingAPIService) BillingExportCsvExecute(r ApiBillingExportCsvRequest) (*CsvExporter, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CsvExporter
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CsvExporter
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.BillingExportCsv")
@@ -346,8 +346,8 @@ func (a *BillingAPIService) BillingExportCsvExecute(r ApiBillingExportCsvRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -357,8 +357,8 @@ func (a *BillingAPIService) BillingExportCsvExecute(r ApiBillingExportCsvRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -368,8 +368,8 @@ func (a *BillingAPIService) BillingExportCsvExecute(r ApiBillingExportCsvRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -379,8 +379,8 @@ func (a *BillingAPIService) BillingExportCsvExecute(r ApiBillingExportCsvRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -390,8 +390,8 @@ func (a *BillingAPIService) BillingExportCsvExecute(r ApiBillingExportCsvRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -401,8 +401,8 @@ func (a *BillingAPIService) BillingExportCsvExecute(r ApiBillingExportCsvRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -420,8 +420,8 @@ func (a *BillingAPIService) BillingExportCsvExecute(r ApiBillingExportCsvRequest
 }
 
 type ApiBillingGroupedListRequest struct {
-	ctx context.Context
-	ApiService *BillingAPIService
+	ctx                     context.Context
+	ApiService              *BillingAPIService
 	groupedBillingListQuery *GroupedBillingListQuery
 }
 
@@ -437,24 +437,25 @@ func (r ApiBillingGroupedListRequest) Execute() ([]GroupedBillingInfo, *http.Res
 /*
 BillingGroupedList Retrieve a grouped list of billing summaries
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiBillingGroupedListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiBillingGroupedListRequest
 */
 func (a *BillingAPIService) BillingGroupedList(ctx context.Context) ApiBillingGroupedListRequest {
 	return ApiBillingGroupedListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []GroupedBillingInfo
+//
+//	@return []GroupedBillingInfo
 func (a *BillingAPIService) BillingGroupedListExecute(r ApiBillingGroupedListRequest) ([]GroupedBillingInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []GroupedBillingInfo
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []GroupedBillingInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.BillingGroupedList")
@@ -530,8 +531,8 @@ func (a *BillingAPIService) BillingGroupedListExecute(r ApiBillingGroupedListReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -541,8 +542,8 @@ func (a *BillingAPIService) BillingGroupedListExecute(r ApiBillingGroupedListReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -552,8 +553,8 @@ func (a *BillingAPIService) BillingGroupedListExecute(r ApiBillingGroupedListReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -563,8 +564,8 @@ func (a *BillingAPIService) BillingGroupedListExecute(r ApiBillingGroupedListReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -574,8 +575,8 @@ func (a *BillingAPIService) BillingGroupedListExecute(r ApiBillingGroupedListReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -585,8 +586,8 @@ func (a *BillingAPIService) BillingGroupedListExecute(r ApiBillingGroupedListReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -604,17 +605,17 @@ func (a *BillingAPIService) BillingGroupedListExecute(r ApiBillingGroupedListReq
 }
 
 type ApiBillingListRequest struct {
-	ctx context.Context
-	ApiService *BillingAPIService
-	limit *int32
-	offset *int32
-	sortBy *string
-	sortDirection *string
-	startDate *time.Time
-	endDate *time.Time
+	ctx            context.Context
+	ApiService     *BillingAPIService
+	limit          *int32
+	offset         *int32
+	sortBy         *string
+	sortDirection  *string
+	startDate      *time.Time
+	endDate        *time.Time
 	organizationId *int32
-	isDeleted *bool
-	projectId *int32
+	isDeleted      *bool
+	projectId      *int32
 }
 
 func (r ApiBillingListRequest) Limit(limit int32) ApiBillingListRequest {
@@ -669,24 +670,25 @@ func (r ApiBillingListRequest) Execute() (*BillingInfo, *http.Response, error) {
 /*
 BillingList Retrieve billing info
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiBillingListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiBillingListRequest
 */
 func (a *BillingAPIService) BillingList(ctx context.Context) ApiBillingListRequest {
 	return ApiBillingListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return BillingInfo
+//
+//	@return BillingInfo
 func (a *BillingAPIService) BillingListExecute(r ApiBillingListRequest) (*BillingInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *BillingInfo
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *BillingInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.BillingList")
@@ -787,8 +789,8 @@ func (a *BillingAPIService) BillingListExecute(r ApiBillingListRequest) (*Billin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -798,8 +800,8 @@ func (a *BillingAPIService) BillingListExecute(r ApiBillingListRequest) (*Billin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -809,8 +811,8 @@ func (a *BillingAPIService) BillingListExecute(r ApiBillingListRequest) (*Billin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -820,8 +822,8 @@ func (a *BillingAPIService) BillingListExecute(r ApiBillingListRequest) (*Billin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -831,8 +833,8 @@ func (a *BillingAPIService) BillingListExecute(r ApiBillingListRequest) (*Billin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -842,8 +844,8 @@ func (a *BillingAPIService) BillingListExecute(r ApiBillingListRequest) (*Billin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

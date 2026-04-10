@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_PrometheusRulesAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_PrometheusRulesAPIService(t *testing.T) {
 
 	t.Run("Test PrometheusRulesAPIService PrometheusrulesAddOrganizations", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id int32
 
@@ -37,7 +37,7 @@ func Test_taikuncore_PrometheusRulesAPIService(t *testing.T) {
 
 	t.Run("Test PrometheusRulesAPIService PrometheusrulesCreate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.PrometheusRulesAPI.PrometheusrulesCreate(context.Background()).Execute()
 
@@ -49,7 +49,7 @@ func Test_taikuncore_PrometheusRulesAPIService(t *testing.T) {
 
 	t.Run("Test PrometheusRulesAPIService PrometheusrulesDelete", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id int32
 
@@ -62,7 +62,7 @@ func Test_taikuncore_PrometheusRulesAPIService(t *testing.T) {
 
 	t.Run("Test PrometheusRulesAPIService PrometheusrulesDeleteOrganizations", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id int32
 
@@ -75,7 +75,7 @@ func Test_taikuncore_PrometheusRulesAPIService(t *testing.T) {
 
 	t.Run("Test PrometheusRulesAPIService PrometheusrulesDetails", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.PrometheusRulesAPI.PrometheusrulesDetails(context.Background()).Execute()
 
@@ -87,7 +87,7 @@ func Test_taikuncore_PrometheusRulesAPIService(t *testing.T) {
 
 	t.Run("Test PrometheusRulesAPIService PrometheusrulesList", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.PrometheusRulesAPI.PrometheusrulesList(context.Background()).Execute()
 
@@ -99,7 +99,7 @@ func Test_taikuncore_PrometheusRulesAPIService(t *testing.T) {
 
 	t.Run("Test PrometheusRulesAPIService PrometheusrulesUpdate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id int32
 

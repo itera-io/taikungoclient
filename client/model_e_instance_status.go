@@ -21,13 +21,13 @@ type EInstanceStatus string
 
 // List of EInstanceStatus
 const (
-	EINSTANCESTATUS_NONE EInstanceStatus = "None"
-	EINSTANCESTATUS_INSTALLING EInstanceStatus = "Installing"
+	EINSTANCESTATUS_NONE         EInstanceStatus = "None"
+	EINSTANCESTATUS_INSTALLING   EInstanceStatus = "Installing"
 	EINSTANCESTATUS_UNINSTALLING EInstanceStatus = "Uninstalling"
-	EINSTANCESTATUS_READY EInstanceStatus = "Ready"
-	EINSTANCESTATUS_NOT_READY EInstanceStatus = "NotReady"
-	EINSTANCESTATUS_FAILURE EInstanceStatus = "Failure"
-	EINSTANCESTATUS_CANCELLED EInstanceStatus = "Cancelled"
+	EINSTANCESTATUS_READY        EInstanceStatus = "Ready"
+	EINSTANCESTATUS_NOT_READY    EInstanceStatus = "NotReady"
+	EINSTANCESTATUS_FAILURE      EInstanceStatus = "Failure"
+	EINSTANCESTATUS_CANCELLED    EInstanceStatus = "Cancelled"
 )
 
 // All allowed values of EInstanceStatus enum
@@ -119,4 +119,3 @@ func (v *NullableEInstanceStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

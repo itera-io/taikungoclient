@@ -21,11 +21,11 @@ type ExecutorHealth string
 
 // List of ExecutorHealth
 const (
-	EXECUTORHEALTH_NONE ExecutorHealth = "None"
-	EXECUTORHEALTH_UNKNOWN ExecutorHealth = "Unknown"
-	EXECUTORHEALTH_HEALTHY ExecutorHealth = "Healthy"
+	EXECUTORHEALTH_NONE      ExecutorHealth = "None"
+	EXECUTORHEALTH_UNKNOWN   ExecutorHealth = "Unknown"
+	EXECUTORHEALTH_HEALTHY   ExecutorHealth = "Healthy"
 	EXECUTORHEALTH_UNHEALTHY ExecutorHealth = "Unhealthy"
-	EXECUTORHEALTH_WARNING ExecutorHealth = "Warning"
+	EXECUTORHEALTH_WARNING   ExecutorHealth = "Warning"
 )
 
 // All allowed values of ExecutorHealth enum
@@ -115,4 +115,3 @@ func (v *NullableExecutorHealth) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

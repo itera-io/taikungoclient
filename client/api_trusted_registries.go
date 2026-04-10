@@ -20,13 +20,12 @@ import (
 	"strings"
 )
 
-
 // TrustedRegistriesAPIService TrustedRegistriesAPI service
 type TrustedRegistriesAPIService service
 
 type ApiTrustedregistriesCreateRequest struct {
-	ctx context.Context
-	ApiService *TrustedRegistriesAPIService
+	ctx                            context.Context
+	ApiService                     *TrustedRegistriesAPIService
 	createTrustedRegistriesCommand *CreateTrustedRegistriesCommand
 }
 
@@ -42,24 +41,25 @@ func (r ApiTrustedregistriesCreateRequest) Execute() (*ApiResponse, *http.Respon
 /*
 TrustedregistriesCreate Create trusted registries for access profile
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiTrustedregistriesCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiTrustedregistriesCreateRequest
 */
 func (a *TrustedRegistriesAPIService) TrustedregistriesCreate(ctx context.Context) ApiTrustedregistriesCreateRequest {
 	return ApiTrustedregistriesCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ApiResponse
+//
+//	@return ApiResponse
 func (a *TrustedRegistriesAPIService) TrustedregistriesCreateExecute(r ApiTrustedregistriesCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ApiResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TrustedRegistriesAPIService.TrustedregistriesCreate")
@@ -135,8 +135,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesCreateExecute(r ApiTruste
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -146,8 +146,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesCreateExecute(r ApiTruste
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -157,8 +157,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesCreateExecute(r ApiTruste
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -168,8 +168,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesCreateExecute(r ApiTruste
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -179,8 +179,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesCreateExecute(r ApiTruste
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -190,8 +190,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesCreateExecute(r ApiTruste
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -209,9 +209,9 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesCreateExecute(r ApiTruste
 }
 
 type ApiTrustedregistriesDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *TrustedRegistriesAPIService
-	id int32
+	id         int32
 }
 
 func (r ApiTrustedregistriesDeleteRequest) Execute() (*http.Response, error) {
@@ -221,24 +221,24 @@ func (r ApiTrustedregistriesDeleteRequest) Execute() (*http.Response, error) {
 /*
 TrustedregistriesDelete Delete trusted registry
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiTrustedregistriesDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiTrustedregistriesDeleteRequest
 */
 func (a *TrustedRegistriesAPIService) TrustedregistriesDelete(ctx context.Context, id int32) ApiTrustedregistriesDeleteRequest {
 	return ApiTrustedregistriesDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *TrustedRegistriesAPIService) TrustedregistriesDeleteExecute(r ApiTrustedregistriesDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TrustedRegistriesAPIService.TrustedregistriesDelete")
@@ -313,8 +313,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesDeleteExecute(r ApiTruste
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -324,8 +324,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesDeleteExecute(r ApiTruste
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -335,8 +335,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesDeleteExecute(r ApiTruste
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -346,8 +346,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesDeleteExecute(r ApiTruste
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -357,8 +357,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesDeleteExecute(r ApiTruste
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -368,8 +368,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesDeleteExecute(r ApiTruste
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -378,9 +378,9 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesDeleteExecute(r ApiTruste
 }
 
 type ApiTrustedregistriesEditRequest struct {
-	ctx context.Context
-	ApiService *TrustedRegistriesAPIService
-	id int32
+	ctx                    context.Context
+	ApiService             *TrustedRegistriesAPIService
+	id                     int32
 	trustedRegistryEditDto *TrustedRegistryEditDto
 }
 
@@ -396,24 +396,24 @@ func (r ApiTrustedregistriesEditRequest) Execute() (*http.Response, error) {
 /*
 TrustedregistriesEdit Edit trusted registry
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiTrustedregistriesEditRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiTrustedregistriesEditRequest
 */
 func (a *TrustedRegistriesAPIService) TrustedregistriesEdit(ctx context.Context, id int32) ApiTrustedregistriesEditRequest {
 	return ApiTrustedregistriesEditRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *TrustedRegistriesAPIService) TrustedregistriesEditExecute(r ApiTrustedregistriesEditRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TrustedRegistriesAPIService.TrustedregistriesEdit")
@@ -490,8 +490,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesEditExecute(r ApiTrustedr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -501,8 +501,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesEditExecute(r ApiTrustedr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -512,8 +512,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesEditExecute(r ApiTrustedr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -523,8 +523,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesEditExecute(r ApiTrustedr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -534,8 +534,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesEditExecute(r ApiTrustedr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -545,8 +545,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesEditExecute(r ApiTrustedr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -555,10 +555,10 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesEditExecute(r ApiTrustedr
 }
 
 type ApiTrustedregistriesListRequest struct {
-	ctx context.Context
-	ApiService *TrustedRegistriesAPIService
+	ctx             context.Context
+	ApiService      *TrustedRegistriesAPIService
 	accessProfileId int32
-	search *string
+	search          *string
 }
 
 func (r ApiTrustedregistriesListRequest) Search(search string) ApiTrustedregistriesListRequest {
@@ -573,26 +573,27 @@ func (r ApiTrustedregistriesListRequest) Execute() ([]TrustedRegistriesListDto, 
 /*
 TrustedregistriesList List trusted registries by profile id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accessProfileId
- @return ApiTrustedregistriesListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accessProfileId
+	@return ApiTrustedregistriesListRequest
 */
 func (a *TrustedRegistriesAPIService) TrustedregistriesList(ctx context.Context, accessProfileId int32) ApiTrustedregistriesListRequest {
 	return ApiTrustedregistriesListRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:      a,
+		ctx:             ctx,
 		accessProfileId: accessProfileId,
 	}
 }
 
 // Execute executes the request
-//  @return []TrustedRegistriesListDto
+//
+//	@return []TrustedRegistriesListDto
 func (a *TrustedRegistriesAPIService) TrustedregistriesListExecute(r ApiTrustedregistriesListRequest) ([]TrustedRegistriesListDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []TrustedRegistriesListDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []TrustedRegistriesListDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TrustedRegistriesAPIService.TrustedregistriesList")
@@ -670,8 +671,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesListExecute(r ApiTrustedr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -681,8 +682,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesListExecute(r ApiTrustedr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -692,8 +693,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesListExecute(r ApiTrustedr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -703,8 +704,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesListExecute(r ApiTrustedr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -714,8 +715,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesListExecute(r ApiTrustedr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -725,8 +726,8 @@ func (a *TrustedRegistriesAPIService) TrustedregistriesListExecute(r ApiTrustedr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

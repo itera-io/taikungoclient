@@ -20,12 +20,11 @@ import (
 	"strings"
 )
 
-
 // PaymentsAPIService PaymentsAPI service
 type PaymentsAPIService service
 
 type ApiPaymentBillingInfoRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *PaymentsAPIService
 }
 
@@ -36,24 +35,25 @@ func (r ApiPaymentBillingInfoRequest) Execute() (*BillingInfoDto, *http.Response
 /*
 PaymentBillingInfo Get billing info for organization
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPaymentBillingInfoRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPaymentBillingInfoRequest
 */
 func (a *PaymentsAPIService) PaymentBillingInfo(ctx context.Context) ApiPaymentBillingInfoRequest {
 	return ApiPaymentBillingInfoRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return BillingInfoDto
+//
+//	@return BillingInfoDto
 func (a *PaymentsAPIService) PaymentBillingInfoExecute(r ApiPaymentBillingInfoRequest) (*BillingInfoDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *BillingInfoDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *BillingInfoDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentsAPIService.PaymentBillingInfo")
@@ -127,8 +127,8 @@ func (a *PaymentsAPIService) PaymentBillingInfoExecute(r ApiPaymentBillingInfoRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -138,8 +138,8 @@ func (a *PaymentsAPIService) PaymentBillingInfoExecute(r ApiPaymentBillingInfoRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -149,8 +149,8 @@ func (a *PaymentsAPIService) PaymentBillingInfoExecute(r ApiPaymentBillingInfoRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -160,8 +160,8 @@ func (a *PaymentsAPIService) PaymentBillingInfoExecute(r ApiPaymentBillingInfoRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -171,8 +171,8 @@ func (a *PaymentsAPIService) PaymentBillingInfoExecute(r ApiPaymentBillingInfoRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -182,8 +182,8 @@ func (a *PaymentsAPIService) PaymentBillingInfoExecute(r ApiPaymentBillingInfoRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -201,8 +201,8 @@ func (a *PaymentsAPIService) PaymentBillingInfoExecute(r ApiPaymentBillingInfoRe
 }
 
 type ApiPaymentCardinfoRequest struct {
-	ctx context.Context
-	ApiService *PaymentsAPIService
+	ctx            context.Context
+	ApiService     *PaymentsAPIService
 	organizationId *int32
 }
 
@@ -218,24 +218,25 @@ func (r ApiPaymentCardinfoRequest) Execute() (*CardInformationDto, *http.Respons
 /*
 PaymentCardinfo Get card information
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPaymentCardinfoRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPaymentCardinfoRequest
 */
 func (a *PaymentsAPIService) PaymentCardinfo(ctx context.Context) ApiPaymentCardinfoRequest {
 	return ApiPaymentCardinfoRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CardInformationDto
+//
+//	@return CardInformationDto
 func (a *PaymentsAPIService) PaymentCardinfoExecute(r ApiPaymentCardinfoRequest) (*CardInformationDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CardInformationDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CardInformationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentsAPIService.PaymentCardinfo")
@@ -312,8 +313,8 @@ func (a *PaymentsAPIService) PaymentCardinfoExecute(r ApiPaymentCardinfoRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -323,8 +324,8 @@ func (a *PaymentsAPIService) PaymentCardinfoExecute(r ApiPaymentCardinfoRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -334,8 +335,8 @@ func (a *PaymentsAPIService) PaymentCardinfoExecute(r ApiPaymentCardinfoRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -345,8 +346,8 @@ func (a *PaymentsAPIService) PaymentCardinfoExecute(r ApiPaymentCardinfoRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -356,8 +357,8 @@ func (a *PaymentsAPIService) PaymentCardinfoExecute(r ApiPaymentCardinfoRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -367,8 +368,8 @@ func (a *PaymentsAPIService) PaymentCardinfoExecute(r ApiPaymentCardinfoRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -386,9 +387,9 @@ func (a *PaymentsAPIService) PaymentCardinfoExecute(r ApiPaymentCardinfoRequest)
 }
 
 type ApiPaymentClearRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *PaymentsAPIService
-	body *map[string]interface{}
+	body       *map[string]interface{}
 }
 
 func (r ApiPaymentClearRequest) Body(body map[string]interface{}) ApiPaymentClearRequest {
@@ -403,22 +404,22 @@ func (r ApiPaymentClearRequest) Execute() (*http.Response, error) {
 /*
 PaymentClear Clear payment
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPaymentClearRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPaymentClearRequest
 */
 func (a *PaymentsAPIService) PaymentClear(ctx context.Context) ApiPaymentClearRequest {
 	return ApiPaymentClearRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *PaymentsAPIService) PaymentClearExecute(r ApiPaymentClearRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentsAPIService.PaymentClear")
@@ -494,8 +495,8 @@ func (a *PaymentsAPIService) PaymentClearExecute(r ApiPaymentClearRequest) (*htt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -505,8 +506,8 @@ func (a *PaymentsAPIService) PaymentClearExecute(r ApiPaymentClearRequest) (*htt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -516,8 +517,8 @@ func (a *PaymentsAPIService) PaymentClearExecute(r ApiPaymentClearRequest) (*htt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -527,8 +528,8 @@ func (a *PaymentsAPIService) PaymentClearExecute(r ApiPaymentClearRequest) (*htt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -538,8 +539,8 @@ func (a *PaymentsAPIService) PaymentClearExecute(r ApiPaymentClearRequest) (*htt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -549,8 +550,8 @@ func (a *PaymentsAPIService) PaymentClearExecute(r ApiPaymentClearRequest) (*htt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -559,8 +560,8 @@ func (a *PaymentsAPIService) PaymentClearExecute(r ApiPaymentClearRequest) (*htt
 }
 
 type ApiPaymentCreateCustomerRequest struct {
-	ctx context.Context
-	ApiService *PaymentsAPIService
+	ctx                         context.Context
+	ApiService                  *PaymentsAPIService
 	createStripeCustomerCommand *CreateStripeCustomerCommand
 }
 
@@ -576,22 +577,22 @@ func (r ApiPaymentCreateCustomerRequest) Execute() (*http.Response, error) {
 /*
 PaymentCreateCustomer Create customer
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPaymentCreateCustomerRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPaymentCreateCustomerRequest
 */
 func (a *PaymentsAPIService) PaymentCreateCustomer(ctx context.Context) ApiPaymentCreateCustomerRequest {
 	return ApiPaymentCreateCustomerRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *PaymentsAPIService) PaymentCreateCustomerExecute(r ApiPaymentCreateCustomerRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentsAPIService.PaymentCreateCustomer")
@@ -667,8 +668,8 @@ func (a *PaymentsAPIService) PaymentCreateCustomerExecute(r ApiPaymentCreateCust
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -678,8 +679,8 @@ func (a *PaymentsAPIService) PaymentCreateCustomerExecute(r ApiPaymentCreateCust
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -689,8 +690,8 @@ func (a *PaymentsAPIService) PaymentCreateCustomerExecute(r ApiPaymentCreateCust
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -700,8 +701,8 @@ func (a *PaymentsAPIService) PaymentCreateCustomerExecute(r ApiPaymentCreateCust
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -711,8 +712,8 @@ func (a *PaymentsAPIService) PaymentCreateCustomerExecute(r ApiPaymentCreateCust
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -722,8 +723,8 @@ func (a *PaymentsAPIService) PaymentCreateCustomerExecute(r ApiPaymentCreateCust
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -732,8 +733,8 @@ func (a *PaymentsAPIService) PaymentCreateCustomerExecute(r ApiPaymentCreateCust
 }
 
 type ApiPaymentFinalPriceRequest struct {
-	ctx context.Context
-	ApiService *PaymentsAPIService
+	ctx               context.Context
+	ApiService        *PaymentsAPIService
 	finalPriceCommand *FinalPriceCommand
 }
 
@@ -749,24 +750,25 @@ func (r ApiPaymentFinalPriceRequest) Execute() (*FinalPriceDto, *http.Response, 
 /*
 PaymentFinalPrice Fetch final price
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPaymentFinalPriceRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPaymentFinalPriceRequest
 */
 func (a *PaymentsAPIService) PaymentFinalPrice(ctx context.Context) ApiPaymentFinalPriceRequest {
 	return ApiPaymentFinalPriceRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return FinalPriceDto
+//
+//	@return FinalPriceDto
 func (a *PaymentsAPIService) PaymentFinalPriceExecute(r ApiPaymentFinalPriceRequest) (*FinalPriceDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *FinalPriceDto
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FinalPriceDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentsAPIService.PaymentFinalPrice")
@@ -842,8 +844,8 @@ func (a *PaymentsAPIService) PaymentFinalPriceExecute(r ApiPaymentFinalPriceRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -853,8 +855,8 @@ func (a *PaymentsAPIService) PaymentFinalPriceExecute(r ApiPaymentFinalPriceRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -864,8 +866,8 @@ func (a *PaymentsAPIService) PaymentFinalPriceExecute(r ApiPaymentFinalPriceRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -875,8 +877,8 @@ func (a *PaymentsAPIService) PaymentFinalPriceExecute(r ApiPaymentFinalPriceRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -886,8 +888,8 @@ func (a *PaymentsAPIService) PaymentFinalPriceExecute(r ApiPaymentFinalPriceRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -897,8 +899,8 @@ func (a *PaymentsAPIService) PaymentFinalPriceExecute(r ApiPaymentFinalPriceRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -916,8 +918,8 @@ func (a *PaymentsAPIService) PaymentFinalPriceExecute(r ApiPaymentFinalPriceRequ
 }
 
 type ApiPaymentGetStripeInvoicesRequest struct {
-	ctx context.Context
-	ApiService *PaymentsAPIService
+	ctx            context.Context
+	ApiService     *PaymentsAPIService
 	subscriptionId string
 }
 
@@ -928,26 +930,27 @@ func (r ApiPaymentGetStripeInvoicesRequest) Execute() (*StripeInvoices, *http.Re
 /*
 PaymentGetStripeInvoices Get required stripe invoices by stripe subscription id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param subscriptionId
- @return ApiPaymentGetStripeInvoicesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param subscriptionId
+	@return ApiPaymentGetStripeInvoicesRequest
 */
 func (a *PaymentsAPIService) PaymentGetStripeInvoices(ctx context.Context, subscriptionId string) ApiPaymentGetStripeInvoicesRequest {
 	return ApiPaymentGetStripeInvoicesRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		subscriptionId: subscriptionId,
 	}
 }
 
 // Execute executes the request
-//  @return StripeInvoices
+//
+//	@return StripeInvoices
 func (a *PaymentsAPIService) PaymentGetStripeInvoicesExecute(r ApiPaymentGetStripeInvoicesRequest) (*StripeInvoices, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *StripeInvoices
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *StripeInvoices
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentsAPIService.PaymentGetStripeInvoices")
@@ -1022,8 +1025,8 @@ func (a *PaymentsAPIService) PaymentGetStripeInvoicesExecute(r ApiPaymentGetStri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1033,8 +1036,8 @@ func (a *PaymentsAPIService) PaymentGetStripeInvoicesExecute(r ApiPaymentGetStri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1044,8 +1047,8 @@ func (a *PaymentsAPIService) PaymentGetStripeInvoicesExecute(r ApiPaymentGetStri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1055,8 +1058,8 @@ func (a *PaymentsAPIService) PaymentGetStripeInvoicesExecute(r ApiPaymentGetStri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1066,8 +1069,8 @@ func (a *PaymentsAPIService) PaymentGetStripeInvoicesExecute(r ApiPaymentGetStri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1077,8 +1080,8 @@ func (a *PaymentsAPIService) PaymentGetStripeInvoicesExecute(r ApiPaymentGetStri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1096,8 +1099,8 @@ func (a *PaymentsAPIService) PaymentGetStripeInvoicesExecute(r ApiPaymentGetStri
 }
 
 type ApiPaymentPayRequest struct {
-	ctx context.Context
-	ApiService *PaymentsAPIService
+	ctx               context.Context
+	ApiService        *PaymentsAPIService
 	payInvoiceCommand *PayInvoiceCommand
 }
 
@@ -1113,24 +1116,25 @@ func (r ApiPaymentPayRequest) Execute() (*InvoiceSecret, *http.Response, error) 
 /*
 PaymentPay Pay invoice
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPaymentPayRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPaymentPayRequest
 */
 func (a *PaymentsAPIService) PaymentPay(ctx context.Context) ApiPaymentPayRequest {
 	return ApiPaymentPayRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return InvoiceSecret
+//
+//	@return InvoiceSecret
 func (a *PaymentsAPIService) PaymentPayExecute(r ApiPaymentPayRequest) (*InvoiceSecret, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *InvoiceSecret
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *InvoiceSecret
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentsAPIService.PaymentPay")
@@ -1206,8 +1210,8 @@ func (a *PaymentsAPIService) PaymentPayExecute(r ApiPaymentPayRequest) (*Invoice
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1217,8 +1221,8 @@ func (a *PaymentsAPIService) PaymentPayExecute(r ApiPaymentPayRequest) (*Invoice
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1228,8 +1232,8 @@ func (a *PaymentsAPIService) PaymentPayExecute(r ApiPaymentPayRequest) (*Invoice
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1239,8 +1243,8 @@ func (a *PaymentsAPIService) PaymentPayExecute(r ApiPaymentPayRequest) (*Invoice
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1250,8 +1254,8 @@ func (a *PaymentsAPIService) PaymentPayExecute(r ApiPaymentPayRequest) (*Invoice
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1261,8 +1265,8 @@ func (a *PaymentsAPIService) PaymentPayExecute(r ApiPaymentPayRequest) (*Invoice
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1280,8 +1284,8 @@ func (a *PaymentsAPIService) PaymentPayExecute(r ApiPaymentPayRequest) (*Invoice
 }
 
 type ApiPaymentUpdateCardRequest struct {
-	ctx context.Context
-	ApiService *PaymentsAPIService
+	ctx               context.Context
+	ApiService        *PaymentsAPIService
 	changeCardCommand *ChangeCardCommand
 }
 
@@ -1297,22 +1301,22 @@ func (r ApiPaymentUpdateCardRequest) Execute() (*http.Response, error) {
 /*
 PaymentUpdateCard Update payment card
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPaymentUpdateCardRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPaymentUpdateCardRequest
 */
 func (a *PaymentsAPIService) PaymentUpdateCard(ctx context.Context) ApiPaymentUpdateCardRequest {
 	return ApiPaymentUpdateCardRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *PaymentsAPIService) PaymentUpdateCardExecute(r ApiPaymentUpdateCardRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentsAPIService.PaymentUpdateCard")
@@ -1388,8 +1392,8 @@ func (a *PaymentsAPIService) PaymentUpdateCardExecute(r ApiPaymentUpdateCardRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1399,8 +1403,8 @@ func (a *PaymentsAPIService) PaymentUpdateCardExecute(r ApiPaymentUpdateCardRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1410,8 +1414,8 @@ func (a *PaymentsAPIService) PaymentUpdateCardExecute(r ApiPaymentUpdateCardRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1421,8 +1425,8 @@ func (a *PaymentsAPIService) PaymentUpdateCardExecute(r ApiPaymentUpdateCardRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1432,8 +1436,8 @@ func (a *PaymentsAPIService) PaymentUpdateCardExecute(r ApiPaymentUpdateCardRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1443,8 +1447,8 @@ func (a *PaymentsAPIService) PaymentUpdateCardExecute(r ApiPaymentUpdateCardRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1453,9 +1457,9 @@ func (a *PaymentsAPIService) PaymentUpdateCardExecute(r ApiPaymentUpdateCardRequ
 }
 
 type ApiPaymentWebhookRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *PaymentsAPIService
-	body *map[string]interface{}
+	body       *map[string]interface{}
 }
 
 func (r ApiPaymentWebhookRequest) Body(body map[string]interface{}) ApiPaymentWebhookRequest {
@@ -1470,22 +1474,22 @@ func (r ApiPaymentWebhookRequest) Execute() (*http.Response, error) {
 /*
 PaymentWebhook Listen to payment webhook
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPaymentWebhookRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPaymentWebhookRequest
 */
 func (a *PaymentsAPIService) PaymentWebhook(ctx context.Context) ApiPaymentWebhookRequest {
 	return ApiPaymentWebhookRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *PaymentsAPIService) PaymentWebhookExecute(r ApiPaymentWebhookRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentsAPIService.PaymentWebhook")
@@ -1561,8 +1565,8 @@ func (a *PaymentsAPIService) PaymentWebhookExecute(r ApiPaymentWebhookRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1572,8 +1576,8 @@ func (a *PaymentsAPIService) PaymentWebhookExecute(r ApiPaymentWebhookRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1583,8 +1587,8 @@ func (a *PaymentsAPIService) PaymentWebhookExecute(r ApiPaymentWebhookRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1594,8 +1598,8 @@ func (a *PaymentsAPIService) PaymentWebhookExecute(r ApiPaymentWebhookRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1605,8 +1609,8 @@ func (a *PaymentsAPIService) PaymentWebhookExecute(r ApiPaymentWebhookRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1616,8 +1620,8 @@ func (a *PaymentsAPIService) PaymentWebhookExecute(r ApiPaymentWebhookRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

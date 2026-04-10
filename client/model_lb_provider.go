@@ -22,7 +22,7 @@ type LbProvider string
 // List of LbProvider
 const (
 	LBPROVIDER_AMPHORA LbProvider = "amphora"
-	LBPROVIDER_OVN LbProvider = "ovn"
+	LBPROVIDER_OVN     LbProvider = "ovn"
 )
 
 // All allowed values of LbProvider enum
@@ -109,4 +109,3 @@ func (v *NullableLbProvider) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

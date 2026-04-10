@@ -21,7 +21,7 @@ type IpMode string
 
 // List of IpMode
 const (
-	IPMODE_IPV4 IpMode = "Ipv4"
+	IPMODE_IPV4       IpMode = "Ipv4"
 	IPMODE_DUAL_STACK IpMode = "DualStack"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableIpMode) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
