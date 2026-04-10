@@ -1,0 +1,6 @@
+environment:
+  name: radek-env-test
+  identifier: radekenvtest
+  orgIdentifier: taikun
+  projectIdentifier: taikunapitest
+  type: Production
