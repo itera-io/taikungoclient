@@ -21,17 +21,17 @@ type ECloudCredentialType string
 
 // List of ECloudCredentialType
 const (
-	ECLOUDCREDENTIALTYPE_AWS ECloudCredentialType = "AWS"
-	ECLOUDCREDENTIALTYPE_AZURE ECloudCredentialType = "AZURE"
-	ECLOUDCREDENTIALTYPE_GOOGLE ECloudCredentialType = "GOOGLE"
-	ECLOUDCREDENTIALTYPE_OPENSTACK ECloudCredentialType = "OPENSTACK"
-	ECLOUDCREDENTIALTYPE_PROXMOX ECloudCredentialType = "PROXMOX"
-	ECLOUDCREDENTIALTYPE_OPENSHIFT ECloudCredentialType = "OPENSHIFT"
-	ECLOUDCREDENTIALTYPE_VSPHERE ECloudCredentialType = "VSPHERE"
-	ECLOUDCREDENTIALTYPE_ZADARA ECloudCredentialType = "ZADARA"
-	ECLOUDCREDENTIALTYPE_EKS ECloudCredentialType = "EKS"
-	ECLOUDCREDENTIALTYPE_AKS ECloudCredentialType = "AKS"
-	ECLOUDCREDENTIALTYPE_GKE ECloudCredentialType = "GKE"
+	ECLOUDCREDENTIALTYPE_AWS               ECloudCredentialType = "AWS"
+	ECLOUDCREDENTIALTYPE_AZURE             ECloudCredentialType = "AZURE"
+	ECLOUDCREDENTIALTYPE_GOOGLE            ECloudCredentialType = "GOOGLE"
+	ECLOUDCREDENTIALTYPE_OPENSTACK         ECloudCredentialType = "OPENSTACK"
+	ECLOUDCREDENTIALTYPE_PROXMOX           ECloudCredentialType = "PROXMOX"
+	ECLOUDCREDENTIALTYPE_OPENSHIFT         ECloudCredentialType = "OPENSHIFT"
+	ECLOUDCREDENTIALTYPE_VSPHERE           ECloudCredentialType = "VSPHERE"
+	ECLOUDCREDENTIALTYPE_ZADARA            ECloudCredentialType = "ZADARA"
+	ECLOUDCREDENTIALTYPE_EKS               ECloudCredentialType = "EKS"
+	ECLOUDCREDENTIALTYPE_AKS               ECloudCredentialType = "AKS"
+	ECLOUDCREDENTIALTYPE_GKE               ECloudCredentialType = "GKE"
 	ECLOUDCREDENTIALTYPE_GENERICKUBERNETES ECloudCredentialType = "GENERICKUBERNETES"
 )
 
@@ -129,4 +129,3 @@ func (v *NullableECloudCredentialType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

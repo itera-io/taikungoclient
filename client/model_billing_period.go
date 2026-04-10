@@ -21,10 +21,10 @@ type BillingPeriod string
 
 // List of BillingPeriod
 const (
-	BILLINGPERIOD_NONE BillingPeriod = "none"
-	BILLINGPERIOD_DAILY BillingPeriod = "daily"
+	BILLINGPERIOD_NONE    BillingPeriod = "none"
+	BILLINGPERIOD_DAILY   BillingPeriod = "daily"
 	BILLINGPERIOD_MONTHLY BillingPeriod = "monthly"
-	BILLINGPERIOD_YEARLY BillingPeriod = "yearly"
+	BILLINGPERIOD_YEARLY  BillingPeriod = "yearly"
 )
 
 // All allowed values of BillingPeriod enum
@@ -113,4 +113,3 @@ func (v *NullableBillingPeriod) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

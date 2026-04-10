@@ -21,10 +21,10 @@ type EDeploymentAction string
 
 // List of EDeploymentAction
 const (
-	EDEPLOYMENTACTION_PAUSE EDeploymentAction = "Pause"
-	EDEPLOYMENTACTION_RESUME EDeploymentAction = "Resume"
-	EDEPLOYMENTACTION_RESTART EDeploymentAction = "Restart"
-	EDEPLOYMENTACTION_SCALE EDeploymentAction = "Scale"
+	EDEPLOYMENTACTION_PAUSE    EDeploymentAction = "Pause"
+	EDEPLOYMENTACTION_RESUME   EDeploymentAction = "Resume"
+	EDEPLOYMENTACTION_RESTART  EDeploymentAction = "Restart"
+	EDEPLOYMENTACTION_SCALE    EDeploymentAction = "Scale"
 	EDEPLOYMENTACTION_ROLLBACK EDeploymentAction = "Rollback"
 )
 
@@ -115,4 +115,3 @@ func (v *NullableEDeploymentAction) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

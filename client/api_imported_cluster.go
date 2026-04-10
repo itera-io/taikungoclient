@@ -20,14 +20,13 @@ import (
 	"strings"
 )
 
-
 // ImportedClusterAPIService ImportedClusterAPI service
 type ImportedClusterAPIService service
 
 type ApiImportedClusterAsCloudCredentialRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ImportedClusterAPIService
-	projectId int32
+	projectId  int32
 }
 
 func (r ApiImportedClusterAsCloudCredentialRequest) Execute() (*ImportedAsCloudCredentialList, *http.Response, error) {
@@ -37,26 +36,27 @@ func (r ApiImportedClusterAsCloudCredentialRequest) Execute() (*ImportedAsCloudC
 /*
 ImportedClusterAsCloudCredential Imported cluster as cloud credential
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiImportedClusterAsCloudCredentialRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiImportedClusterAsCloudCredentialRequest
 */
 func (a *ImportedClusterAPIService) ImportedClusterAsCloudCredential(ctx context.Context, projectId int32) ApiImportedClusterAsCloudCredentialRequest {
 	return ApiImportedClusterAsCloudCredentialRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return ImportedAsCloudCredentialList
+//
+//	@return ImportedAsCloudCredentialList
 func (a *ImportedClusterAPIService) ImportedClusterAsCloudCredentialExecute(r ApiImportedClusterAsCloudCredentialRequest) (*ImportedAsCloudCredentialList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ImportedAsCloudCredentialList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ImportedAsCloudCredentialList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImportedClusterAPIService.ImportedClusterAsCloudCredential")
@@ -131,8 +131,8 @@ func (a *ImportedClusterAPIService) ImportedClusterAsCloudCredentialExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -142,8 +142,8 @@ func (a *ImportedClusterAPIService) ImportedClusterAsCloudCredentialExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -153,8 +153,8 @@ func (a *ImportedClusterAPIService) ImportedClusterAsCloudCredentialExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -164,8 +164,8 @@ func (a *ImportedClusterAPIService) ImportedClusterAsCloudCredentialExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -175,8 +175,8 @@ func (a *ImportedClusterAPIService) ImportedClusterAsCloudCredentialExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -186,8 +186,8 @@ func (a *ImportedClusterAPIService) ImportedClusterAsCloudCredentialExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -205,9 +205,9 @@ func (a *ImportedClusterAPIService) ImportedClusterAsCloudCredentialExecute(r Ap
 }
 
 type ApiImportedClusterAsFullyManagedRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ImportedClusterAPIService
-	projectId int32
+	projectId  int32
 }
 
 func (r ApiImportedClusterAsFullyManagedRequest) Execute() (*ImportedAsFullyManagedList, *http.Response, error) {
@@ -217,26 +217,27 @@ func (r ApiImportedClusterAsFullyManagedRequest) Execute() (*ImportedAsFullyMana
 /*
 ImportedClusterAsFullyManaged Imported cluster as fully managed
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiImportedClusterAsFullyManagedRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiImportedClusterAsFullyManagedRequest
 */
 func (a *ImportedClusterAPIService) ImportedClusterAsFullyManaged(ctx context.Context, projectId int32) ApiImportedClusterAsFullyManagedRequest {
 	return ApiImportedClusterAsFullyManagedRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return ImportedAsFullyManagedList
+//
+//	@return ImportedAsFullyManagedList
 func (a *ImportedClusterAPIService) ImportedClusterAsFullyManagedExecute(r ApiImportedClusterAsFullyManagedRequest) (*ImportedAsFullyManagedList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ImportedAsFullyManagedList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ImportedAsFullyManagedList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImportedClusterAPIService.ImportedClusterAsFullyManaged")
@@ -320,9 +321,9 @@ func (a *ImportedClusterAPIService) ImportedClusterAsFullyManagedExecute(r ApiIm
 }
 
 type ApiImportedClusterAsReadOnlyRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ImportedClusterAPIService
-	projectId int32
+	projectId  int32
 }
 
 func (r ApiImportedClusterAsReadOnlyRequest) Execute() (*ImportedAsReadOnlyList, *http.Response, error) {
@@ -332,26 +333,27 @@ func (r ApiImportedClusterAsReadOnlyRequest) Execute() (*ImportedAsReadOnlyList,
 /*
 ImportedClusterAsReadOnly Imported cluster as read only
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiImportedClusterAsReadOnlyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiImportedClusterAsReadOnlyRequest
 */
 func (a *ImportedClusterAPIService) ImportedClusterAsReadOnly(ctx context.Context, projectId int32) ApiImportedClusterAsReadOnlyRequest {
 	return ApiImportedClusterAsReadOnlyRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return ImportedAsReadOnlyList
+//
+//	@return ImportedAsReadOnlyList
 func (a *ImportedClusterAPIService) ImportedClusterAsReadOnlyExecute(r ApiImportedClusterAsReadOnlyRequest) (*ImportedAsReadOnlyList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ImportedAsReadOnlyList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ImportedAsReadOnlyList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImportedClusterAPIService.ImportedClusterAsReadOnly")
@@ -435,8 +437,8 @@ func (a *ImportedClusterAPIService) ImportedClusterAsReadOnlyExecute(r ApiImport
 }
 
 type ApiImportedClusterDeleteRequest struct {
-	ctx context.Context
-	ApiService *ImportedClusterAPIService
+	ctx                          context.Context
+	ApiService                   *ImportedClusterAPIService
 	deleteImportedProjectCommand *DeleteImportedProjectCommand
 }
 
@@ -452,22 +454,22 @@ func (r ApiImportedClusterDeleteRequest) Execute() (*http.Response, error) {
 /*
 ImportedClusterDelete Delete imported cluster
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiImportedClusterDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiImportedClusterDeleteRequest
 */
 func (a *ImportedClusterAPIService) ImportedClusterDelete(ctx context.Context) ApiImportedClusterDeleteRequest {
 	return ApiImportedClusterDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ImportedClusterAPIService) ImportedClusterDeleteExecute(r ApiImportedClusterDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImportedClusterAPIService.ImportedClusterDelete")
@@ -543,8 +545,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDeleteExecute(r ApiImportedCl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -554,8 +556,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDeleteExecute(r ApiImportedCl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -565,8 +567,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDeleteExecute(r ApiImportedCl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -576,8 +578,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDeleteExecute(r ApiImportedCl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -587,8 +589,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDeleteExecute(r ApiImportedCl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -598,8 +600,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDeleteExecute(r ApiImportedCl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -608,15 +610,15 @@ func (a *ImportedClusterAPIService) ImportedClusterDeleteExecute(r ApiImportedCl
 }
 
 type ApiImportedClusterDetailsRequest struct {
-	ctx context.Context
-	ApiService *ImportedClusterAPIService
-	id int32
-	limit *int32
-	offset *int32
-	sortBy *string
+	ctx           context.Context
+	ApiService    *ImportedClusterAPIService
+	id            int32
+	limit         *int32
+	offset        *int32
+	sortBy        *string
 	sortDirection *string
-	search *string
-	searchId *string
+	search        *string
+	searchId      *string
 }
 
 func (r ApiImportedClusterDetailsRequest) Limit(limit int32) ApiImportedClusterDetailsRequest {
@@ -656,26 +658,27 @@ func (r ApiImportedClusterDetailsRequest) Execute() (*ImportedClusterList, *http
 /*
 ImportedClusterDetails Retrieve imported-cluster by given id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiImportedClusterDetailsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiImportedClusterDetailsRequest
 */
 func (a *ImportedClusterAPIService) ImportedClusterDetails(ctx context.Context, id int32) ApiImportedClusterDetailsRequest {
 	return ApiImportedClusterDetailsRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return ImportedClusterList
+//
+//	@return ImportedClusterList
 func (a *ImportedClusterAPIService) ImportedClusterDetailsExecute(r ApiImportedClusterDetailsRequest) (*ImportedClusterList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ImportedClusterList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ImportedClusterList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImportedClusterAPIService.ImportedClusterDetails")
@@ -768,8 +771,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDetailsExecute(r ApiImportedC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -779,8 +782,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDetailsExecute(r ApiImportedC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -790,8 +793,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDetailsExecute(r ApiImportedC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -801,8 +804,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDetailsExecute(r ApiImportedC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -812,8 +815,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDetailsExecute(r ApiImportedC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -823,8 +826,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDetailsExecute(r ApiImportedC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -842,8 +845,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDetailsExecute(r ApiImportedC
 }
 
 type ApiImportedClusterDisableAiRequest struct {
-	ctx context.Context
-	ApiService *ImportedClusterAPIService
+	ctx                             context.Context
+	ApiService                      *ImportedClusterAPIService
 	importedClusterDisableAiCommand *ImportedClusterDisableAiCommand
 }
 
@@ -859,22 +862,22 @@ func (r ApiImportedClusterDisableAiRequest) Execute() (*http.Response, error) {
 /*
 ImportedClusterDisableAi Disable ai for imported cluster
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiImportedClusterDisableAiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiImportedClusterDisableAiRequest
 */
 func (a *ImportedClusterAPIService) ImportedClusterDisableAi(ctx context.Context) ApiImportedClusterDisableAiRequest {
 	return ApiImportedClusterDisableAiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ImportedClusterAPIService) ImportedClusterDisableAiExecute(r ApiImportedClusterDisableAiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImportedClusterAPIService.ImportedClusterDisableAi")
@@ -950,8 +953,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableAiExecute(r ApiImporte
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -961,8 +964,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableAiExecute(r ApiImporte
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -972,8 +975,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableAiExecute(r ApiImporte
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -983,8 +986,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableAiExecute(r ApiImporte
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -994,8 +997,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableAiExecute(r ApiImporte
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1005,8 +1008,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableAiExecute(r ApiImporte
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1015,8 +1018,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableAiExecute(r ApiImporte
 }
 
 type ApiImportedClusterDisableBackupRequest struct {
-	ctx context.Context
-	ApiService *ImportedClusterAPIService
+	ctx                                 context.Context
+	ApiService                          *ImportedClusterAPIService
 	importedClusterDisableBackupCommand *ImportedClusterDisableBackupCommand
 }
 
@@ -1032,22 +1035,22 @@ func (r ApiImportedClusterDisableBackupRequest) Execute() (*http.Response, error
 /*
 ImportedClusterDisableBackup Disable backup for imported cluster
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiImportedClusterDisableBackupRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiImportedClusterDisableBackupRequest
 */
 func (a *ImportedClusterAPIService) ImportedClusterDisableBackup(ctx context.Context) ApiImportedClusterDisableBackupRequest {
 	return ApiImportedClusterDisableBackupRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ImportedClusterAPIService) ImportedClusterDisableBackupExecute(r ApiImportedClusterDisableBackupRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImportedClusterAPIService.ImportedClusterDisableBackup")
@@ -1123,8 +1126,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableBackupExecute(r ApiImp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1134,8 +1137,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableBackupExecute(r ApiImp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1145,8 +1148,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableBackupExecute(r ApiImp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1156,8 +1159,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableBackupExecute(r ApiImp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1167,8 +1170,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableBackupExecute(r ApiImp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1178,8 +1181,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableBackupExecute(r ApiImp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1188,8 +1191,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableBackupExecute(r ApiImp
 }
 
 type ApiImportedClusterDisableMonitoringRequest struct {
-	ctx context.Context
-	ApiService *ImportedClusterAPIService
+	ctx                                     context.Context
+	ApiService                              *ImportedClusterAPIService
 	importedClusterDisableMonitoringCommand *ImportedClusterDisableMonitoringCommand
 }
 
@@ -1205,22 +1208,22 @@ func (r ApiImportedClusterDisableMonitoringRequest) Execute() (*http.Response, e
 /*
 ImportedClusterDisableMonitoring Disable monitoring for imported cluster
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiImportedClusterDisableMonitoringRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiImportedClusterDisableMonitoringRequest
 */
 func (a *ImportedClusterAPIService) ImportedClusterDisableMonitoring(ctx context.Context) ApiImportedClusterDisableMonitoringRequest {
 	return ApiImportedClusterDisableMonitoringRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ImportedClusterAPIService) ImportedClusterDisableMonitoringExecute(r ApiImportedClusterDisableMonitoringRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImportedClusterAPIService.ImportedClusterDisableMonitoring")
@@ -1296,8 +1299,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableMonitoringExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1307,8 +1310,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableMonitoringExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1318,8 +1321,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableMonitoringExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1329,8 +1332,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableMonitoringExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1340,8 +1343,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableMonitoringExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1351,8 +1354,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableMonitoringExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1361,8 +1364,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableMonitoringExecute(r Ap
 }
 
 type ApiImportedClusterDisableOpaRequest struct {
-	ctx context.Context
-	ApiService *ImportedClusterAPIService
+	ctx                              context.Context
+	ApiService                       *ImportedClusterAPIService
 	importedClusterDisableOpaCommand *ImportedClusterDisableOpaCommand
 }
 
@@ -1378,22 +1381,22 @@ func (r ApiImportedClusterDisableOpaRequest) Execute() (*http.Response, error) {
 /*
 ImportedClusterDisableOpa Disable opa for imported cluster
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiImportedClusterDisableOpaRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiImportedClusterDisableOpaRequest
 */
 func (a *ImportedClusterAPIService) ImportedClusterDisableOpa(ctx context.Context) ApiImportedClusterDisableOpaRequest {
 	return ApiImportedClusterDisableOpaRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ImportedClusterAPIService) ImportedClusterDisableOpaExecute(r ApiImportedClusterDisableOpaRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImportedClusterAPIService.ImportedClusterDisableOpa")
@@ -1469,8 +1472,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableOpaExecute(r ApiImport
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1480,8 +1483,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableOpaExecute(r ApiImport
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1491,8 +1494,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableOpaExecute(r ApiImport
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1502,8 +1505,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableOpaExecute(r ApiImport
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1513,8 +1516,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableOpaExecute(r ApiImport
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1524,8 +1527,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableOpaExecute(r ApiImport
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1534,8 +1537,8 @@ func (a *ImportedClusterAPIService) ImportedClusterDisableOpaExecute(r ApiImport
 }
 
 type ApiImportedClusterEnableAiRequest struct {
-	ctx context.Context
-	ApiService *ImportedClusterAPIService
+	ctx                            context.Context
+	ApiService                     *ImportedClusterAPIService
 	importedClusterEnableAiCommand *ImportedClusterEnableAiCommand
 }
 
@@ -1551,22 +1554,22 @@ func (r ApiImportedClusterEnableAiRequest) Execute() (*http.Response, error) {
 /*
 ImportedClusterEnableAi Enable ai for imported cluster
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiImportedClusterEnableAiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiImportedClusterEnableAiRequest
 */
 func (a *ImportedClusterAPIService) ImportedClusterEnableAi(ctx context.Context) ApiImportedClusterEnableAiRequest {
 	return ApiImportedClusterEnableAiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ImportedClusterAPIService) ImportedClusterEnableAiExecute(r ApiImportedClusterEnableAiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImportedClusterAPIService.ImportedClusterEnableAi")
@@ -1642,8 +1645,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableAiExecute(r ApiImported
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1653,8 +1656,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableAiExecute(r ApiImported
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1664,8 +1667,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableAiExecute(r ApiImported
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1675,8 +1678,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableAiExecute(r ApiImported
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1686,8 +1689,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableAiExecute(r ApiImported
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1697,8 +1700,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableAiExecute(r ApiImported
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1707,8 +1710,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableAiExecute(r ApiImported
 }
 
 type ApiImportedClusterEnableBackupRequest struct {
-	ctx context.Context
-	ApiService *ImportedClusterAPIService
+	ctx                                context.Context
+	ApiService                         *ImportedClusterAPIService
 	importedClusterEnableBackupCommand *ImportedClusterEnableBackupCommand
 }
 
@@ -1724,22 +1727,22 @@ func (r ApiImportedClusterEnableBackupRequest) Execute() (*http.Response, error)
 /*
 ImportedClusterEnableBackup Enable backup for imported cluster
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiImportedClusterEnableBackupRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiImportedClusterEnableBackupRequest
 */
 func (a *ImportedClusterAPIService) ImportedClusterEnableBackup(ctx context.Context) ApiImportedClusterEnableBackupRequest {
 	return ApiImportedClusterEnableBackupRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ImportedClusterAPIService) ImportedClusterEnableBackupExecute(r ApiImportedClusterEnableBackupRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImportedClusterAPIService.ImportedClusterEnableBackup")
@@ -1815,8 +1818,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableBackupExecute(r ApiImpo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1826,8 +1829,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableBackupExecute(r ApiImpo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1837,8 +1840,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableBackupExecute(r ApiImpo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1848,8 +1851,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableBackupExecute(r ApiImpo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1859,8 +1862,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableBackupExecute(r ApiImpo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1870,8 +1873,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableBackupExecute(r ApiImpo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1880,8 +1883,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableBackupExecute(r ApiImpo
 }
 
 type ApiImportedClusterEnableMonitoringRequest struct {
-	ctx context.Context
-	ApiService *ImportedClusterAPIService
+	ctx                                    context.Context
+	ApiService                             *ImportedClusterAPIService
 	importedClusterEnableMonitoringCommand *ImportedClusterEnableMonitoringCommand
 }
 
@@ -1897,22 +1900,22 @@ func (r ApiImportedClusterEnableMonitoringRequest) Execute() (*http.Response, er
 /*
 ImportedClusterEnableMonitoring Enable monitoring for imported cluster
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiImportedClusterEnableMonitoringRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiImportedClusterEnableMonitoringRequest
 */
 func (a *ImportedClusterAPIService) ImportedClusterEnableMonitoring(ctx context.Context) ApiImportedClusterEnableMonitoringRequest {
 	return ApiImportedClusterEnableMonitoringRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ImportedClusterAPIService) ImportedClusterEnableMonitoringExecute(r ApiImportedClusterEnableMonitoringRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImportedClusterAPIService.ImportedClusterEnableMonitoring")
@@ -1988,8 +1991,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableMonitoringExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1999,8 +2002,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableMonitoringExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2010,8 +2013,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableMonitoringExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2021,8 +2024,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableMonitoringExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2032,8 +2035,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableMonitoringExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2043,8 +2046,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableMonitoringExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2053,8 +2056,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableMonitoringExecute(r Api
 }
 
 type ApiImportedClusterEnableOpaRequest struct {
-	ctx context.Context
-	ApiService *ImportedClusterAPIService
+	ctx                             context.Context
+	ApiService                      *ImportedClusterAPIService
 	importedClusterEnableOpaCommand *ImportedClusterEnableOpaCommand
 }
 
@@ -2070,22 +2073,22 @@ func (r ApiImportedClusterEnableOpaRequest) Execute() (*http.Response, error) {
 /*
 ImportedClusterEnableOpa Enable opa for imported cluster
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiImportedClusterEnableOpaRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiImportedClusterEnableOpaRequest
 */
 func (a *ImportedClusterAPIService) ImportedClusterEnableOpa(ctx context.Context) ApiImportedClusterEnableOpaRequest {
 	return ApiImportedClusterEnableOpaRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ImportedClusterAPIService) ImportedClusterEnableOpaExecute(r ApiImportedClusterEnableOpaRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImportedClusterAPIService.ImportedClusterEnableOpa")
@@ -2161,8 +2164,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableOpaExecute(r ApiImporte
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2172,8 +2175,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableOpaExecute(r ApiImporte
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2183,8 +2186,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableOpaExecute(r ApiImporte
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2194,8 +2197,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableOpaExecute(r ApiImporte
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2205,8 +2208,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableOpaExecute(r ApiImporte
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2216,8 +2219,8 @@ func (a *ImportedClusterAPIService) ImportedClusterEnableOpaExecute(r ApiImporte
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

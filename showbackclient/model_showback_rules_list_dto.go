@@ -20,25 +20,25 @@ var _ MappedNullable = &ShowbackRulesListDto{}
 
 // ShowbackRulesListDto struct for ShowbackRulesListDto
 type ShowbackRulesListDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	ByLabel NullableString `json:"byLabel,omitempty"`
-	MetricName NullableString `json:"metricName,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
-	Kind NullableString `json:"kind,omitempty"`
-	Type NullableString `json:"type,omitempty"`
-	Price *float64 `json:"price,omitempty"`
-	ProjectAlertLimit *int32 `json:"projectAlertLimit,omitempty"`
-	GlobalAlertLimit *int32 `json:"globalAlertLimit,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	OrganizationId *int32 `json:"organizationId,omitempty"`
-	BillingStartDate NullableString `json:"billingStartDate,omitempty"`
-	Labels []ShowbackLabelCreateDto `json:"labels,omitempty"`
-	ShowbackCredentialName NullableString `json:"showbackCredentialName,omitempty"`
-	ShowbackCredentialId NullableInt32 `json:"showbackCredentialId,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	LastModified NullableString `json:"lastModified,omitempty"`
-	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	Id                     *int32                   `json:"id,omitempty"`
+	Name                   NullableString           `json:"name,omitempty"`
+	ByLabel                NullableString           `json:"byLabel,omitempty"`
+	MetricName             NullableString           `json:"metricName,omitempty"`
+	CreatedAt              NullableString           `json:"createdAt,omitempty"`
+	Kind                   NullableString           `json:"kind,omitempty"`
+	Type                   NullableString           `json:"type,omitempty"`
+	Price                  *float64                 `json:"price,omitempty"`
+	ProjectAlertLimit      *int32                   `json:"projectAlertLimit,omitempty"`
+	GlobalAlertLimit       *int32                   `json:"globalAlertLimit,omitempty"`
+	OrganizationName       NullableString           `json:"organizationName,omitempty"`
+	OrganizationId         *int32                   `json:"organizationId,omitempty"`
+	BillingStartDate       NullableString           `json:"billingStartDate,omitempty"`
+	Labels                 []ShowbackLabelCreateDto `json:"labels,omitempty"`
+	ShowbackCredentialName NullableString           `json:"showbackCredentialName,omitempty"`
+	ShowbackCredentialId   NullableInt32            `json:"showbackCredentialId,omitempty"`
+	CreatedBy              NullableString           `json:"createdBy,omitempty"`
+	LastModified           NullableString           `json:"lastModified,omitempty"`
+	LastModifiedBy         NullableString           `json:"lastModifiedBy,omitempty"`
 }
 
 // NewShowbackRulesListDto instantiates a new ShowbackRulesListDto object
@@ -122,6 +122,7 @@ func (o *ShowbackRulesListDto) HasName() bool {
 func (o *ShowbackRulesListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ShowbackRulesListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -164,6 +165,7 @@ func (o *ShowbackRulesListDto) HasByLabel() bool {
 func (o *ShowbackRulesListDto) SetByLabel(v string) {
 	o.ByLabel.Set(&v)
 }
+
 // SetByLabelNil sets the value for ByLabel to be an explicit nil
 func (o *ShowbackRulesListDto) SetByLabelNil() {
 	o.ByLabel.Set(nil)
@@ -206,6 +208,7 @@ func (o *ShowbackRulesListDto) HasMetricName() bool {
 func (o *ShowbackRulesListDto) SetMetricName(v string) {
 	o.MetricName.Set(&v)
 }
+
 // SetMetricNameNil sets the value for MetricName to be an explicit nil
 func (o *ShowbackRulesListDto) SetMetricNameNil() {
 	o.MetricName.Set(nil)
@@ -248,6 +251,7 @@ func (o *ShowbackRulesListDto) HasCreatedAt() bool {
 func (o *ShowbackRulesListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
+
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *ShowbackRulesListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -290,6 +294,7 @@ func (o *ShowbackRulesListDto) HasKind() bool {
 func (o *ShowbackRulesListDto) SetKind(v string) {
 	o.Kind.Set(&v)
 }
+
 // SetKindNil sets the value for Kind to be an explicit nil
 func (o *ShowbackRulesListDto) SetKindNil() {
 	o.Kind.Set(nil)
@@ -332,6 +337,7 @@ func (o *ShowbackRulesListDto) HasType() bool {
 func (o *ShowbackRulesListDto) SetType(v string) {
 	o.Type.Set(&v)
 }
+
 // SetTypeNil sets the value for Type to be an explicit nil
 func (o *ShowbackRulesListDto) SetTypeNil() {
 	o.Type.Set(nil)
@@ -470,6 +476,7 @@ func (o *ShowbackRulesListDto) HasOrganizationName() bool {
 func (o *ShowbackRulesListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
+
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *ShowbackRulesListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -544,6 +551,7 @@ func (o *ShowbackRulesListDto) HasBillingStartDate() bool {
 func (o *ShowbackRulesListDto) SetBillingStartDate(v string) {
 	o.BillingStartDate.Set(&v)
 }
+
 // SetBillingStartDateNil sets the value for BillingStartDate to be an explicit nil
 func (o *ShowbackRulesListDto) SetBillingStartDateNil() {
 	o.BillingStartDate.Set(nil)
@@ -619,6 +627,7 @@ func (o *ShowbackRulesListDto) HasShowbackCredentialName() bool {
 func (o *ShowbackRulesListDto) SetShowbackCredentialName(v string) {
 	o.ShowbackCredentialName.Set(&v)
 }
+
 // SetShowbackCredentialNameNil sets the value for ShowbackCredentialName to be an explicit nil
 func (o *ShowbackRulesListDto) SetShowbackCredentialNameNil() {
 	o.ShowbackCredentialName.Set(nil)
@@ -661,6 +670,7 @@ func (o *ShowbackRulesListDto) HasShowbackCredentialId() bool {
 func (o *ShowbackRulesListDto) SetShowbackCredentialId(v int32) {
 	o.ShowbackCredentialId.Set(&v)
 }
+
 // SetShowbackCredentialIdNil sets the value for ShowbackCredentialId to be an explicit nil
 func (o *ShowbackRulesListDto) SetShowbackCredentialIdNil() {
 	o.ShowbackCredentialId.Set(nil)
@@ -703,6 +713,7 @@ func (o *ShowbackRulesListDto) HasCreatedBy() bool {
 func (o *ShowbackRulesListDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
+
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *ShowbackRulesListDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -745,6 +756,7 @@ func (o *ShowbackRulesListDto) HasLastModified() bool {
 func (o *ShowbackRulesListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
+
 // SetLastModifiedNil sets the value for LastModified to be an explicit nil
 func (o *ShowbackRulesListDto) SetLastModifiedNil() {
 	o.LastModified.Set(nil)
@@ -787,6 +799,7 @@ func (o *ShowbackRulesListDto) HasLastModifiedBy() bool {
 func (o *ShowbackRulesListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
+
 // SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
 func (o *ShowbackRulesListDto) SetLastModifiedByNil() {
 	o.LastModifiedBy.Set(nil)
@@ -798,7 +811,7 @@ func (o *ShowbackRulesListDto) UnsetLastModifiedBy() {
 }
 
 func (o ShowbackRulesListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -902,5 +915,3 @@ func (v *NullableShowbackRulesListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -21,7 +21,7 @@ type AccessLevel string
 
 // List of AccessLevel
 const (
-	ACCESSLEVEL_PUBLIC AccessLevel = "Public"
+	ACCESSLEVEL_PUBLIC  AccessLevel = "Public"
 	ACCESSLEVEL_PRIVATE AccessLevel = "Private"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableAccessLevel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

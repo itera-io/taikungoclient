@@ -21,13 +21,13 @@ type ETaikunHttpError string
 
 // List of ETaikunHttpError
 const (
-	ETAIKUNHTTPERROR_UNKNOWN ETaikunHttpError = "Unknown"
-	ETAIKUNHTTPERROR_BAD_REQUEST ETaikunHttpError = "BadRequest"
-	ETAIKUNHTTPERROR_UNAUTHORIZED ETaikunHttpError = "Unauthorized"
-	ETAIKUNHTTPERROR_FORBIDDEN ETaikunHttpError = "Forbidden"
-	ETAIKUNHTTPERROR_NOT_FOUND ETaikunHttpError = "NotFound"
+	ETAIKUNHTTPERROR_UNKNOWN           ETaikunHttpError = "Unknown"
+	ETAIKUNHTTPERROR_BAD_REQUEST       ETaikunHttpError = "BadRequest"
+	ETAIKUNHTTPERROR_UNAUTHORIZED      ETaikunHttpError = "Unauthorized"
+	ETAIKUNHTTPERROR_FORBIDDEN         ETaikunHttpError = "Forbidden"
+	ETAIKUNHTTPERROR_NOT_FOUND         ETaikunHttpError = "NotFound"
 	ETAIKUNHTTPERROR_TOO_MANY_REQUESTS ETaikunHttpError = "TooManyRequests"
-	ETAIKUNHTTPERROR_INTERNAL ETaikunHttpError = "Internal"
+	ETAIKUNHTTPERROR_INTERNAL          ETaikunHttpError = "Internal"
 )
 
 // All allowed values of ETaikunHttpError enum
@@ -119,4 +119,3 @@ func (v *NullableETaikunHttpError) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

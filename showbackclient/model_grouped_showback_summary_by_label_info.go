@@ -20,13 +20,13 @@ var _ MappedNullable = &GroupedShowbackSummaryByLabelInfo{}
 
 // GroupedShowbackSummaryByLabelInfo struct for GroupedShowbackSummaryByLabelInfo
 type GroupedShowbackSummaryByLabelInfo struct {
-	RuleName NullableString `json:"ruleName,omitempty"`
-	CredentialName NullableString `json:"credentialName,omitempty"`
-	TotalPrice NullableFloat64 `json:"totalPrice,omitempty"`
-	LabelName NullableString `json:"labelName,omitempty"`
-	LabelValue NullableString `json:"labelValue,omitempty"`
-	MetricName NullableString `json:"metricName,omitempty"`
-	Data []GroupedShowbackSummariesByLabelDto `json:"data,omitempty"`
+	RuleName       NullableString                       `json:"ruleName,omitempty"`
+	CredentialName NullableString                       `json:"credentialName,omitempty"`
+	TotalPrice     NullableFloat64                      `json:"totalPrice,omitempty"`
+	LabelName      NullableString                       `json:"labelName,omitempty"`
+	LabelValue     NullableString                       `json:"labelValue,omitempty"`
+	MetricName     NullableString                       `json:"metricName,omitempty"`
+	Data           []GroupedShowbackSummariesByLabelDto `json:"data,omitempty"`
 }
 
 // NewGroupedShowbackSummaryByLabelInfo instantiates a new GroupedShowbackSummaryByLabelInfo object
@@ -78,6 +78,7 @@ func (o *GroupedShowbackSummaryByLabelInfo) HasRuleName() bool {
 func (o *GroupedShowbackSummaryByLabelInfo) SetRuleName(v string) {
 	o.RuleName.Set(&v)
 }
+
 // SetRuleNameNil sets the value for RuleName to be an explicit nil
 func (o *GroupedShowbackSummaryByLabelInfo) SetRuleNameNil() {
 	o.RuleName.Set(nil)
@@ -120,6 +121,7 @@ func (o *GroupedShowbackSummaryByLabelInfo) HasCredentialName() bool {
 func (o *GroupedShowbackSummaryByLabelInfo) SetCredentialName(v string) {
 	o.CredentialName.Set(&v)
 }
+
 // SetCredentialNameNil sets the value for CredentialName to be an explicit nil
 func (o *GroupedShowbackSummaryByLabelInfo) SetCredentialNameNil() {
 	o.CredentialName.Set(nil)
@@ -162,6 +164,7 @@ func (o *GroupedShowbackSummaryByLabelInfo) HasTotalPrice() bool {
 func (o *GroupedShowbackSummaryByLabelInfo) SetTotalPrice(v float64) {
 	o.TotalPrice.Set(&v)
 }
+
 // SetTotalPriceNil sets the value for TotalPrice to be an explicit nil
 func (o *GroupedShowbackSummaryByLabelInfo) SetTotalPriceNil() {
 	o.TotalPrice.Set(nil)
@@ -204,6 +207,7 @@ func (o *GroupedShowbackSummaryByLabelInfo) HasLabelName() bool {
 func (o *GroupedShowbackSummaryByLabelInfo) SetLabelName(v string) {
 	o.LabelName.Set(&v)
 }
+
 // SetLabelNameNil sets the value for LabelName to be an explicit nil
 func (o *GroupedShowbackSummaryByLabelInfo) SetLabelNameNil() {
 	o.LabelName.Set(nil)
@@ -246,6 +250,7 @@ func (o *GroupedShowbackSummaryByLabelInfo) HasLabelValue() bool {
 func (o *GroupedShowbackSummaryByLabelInfo) SetLabelValue(v string) {
 	o.LabelValue.Set(&v)
 }
+
 // SetLabelValueNil sets the value for LabelValue to be an explicit nil
 func (o *GroupedShowbackSummaryByLabelInfo) SetLabelValueNil() {
 	o.LabelValue.Set(nil)
@@ -288,6 +293,7 @@ func (o *GroupedShowbackSummaryByLabelInfo) HasMetricName() bool {
 func (o *GroupedShowbackSummaryByLabelInfo) SetMetricName(v string) {
 	o.MetricName.Set(&v)
 }
+
 // SetMetricNameNil sets the value for MetricName to be an explicit nil
 func (o *GroupedShowbackSummaryByLabelInfo) SetMetricNameNil() {
 	o.MetricName.Set(nil)
@@ -332,7 +338,7 @@ func (o *GroupedShowbackSummaryByLabelInfo) SetData(v []GroupedShowbackSummaries
 }
 
 func (o GroupedShowbackSummaryByLabelInfo) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -400,5 +406,3 @@ func (v *NullableGroupedShowbackSummaryByLabelInfo) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

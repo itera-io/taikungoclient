@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_ExecutorsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_ExecutorsAPIService(t *testing.T) {
 
 	t.Run("Test ExecutorsAPIService ExecutorsCreate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.ExecutorsAPI.ExecutorsCreate(context.Background()).Execute()
 
@@ -35,7 +35,7 @@ func Test_taikuncore_ExecutorsAPIService(t *testing.T) {
 
 	t.Run("Test ExecutorsAPIService ExecutorsDelete", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.ExecutorsAPI.ExecutorsDelete(context.Background()).Execute()
 
@@ -46,7 +46,7 @@ func Test_taikuncore_ExecutorsAPIService(t *testing.T) {
 
 	t.Run("Test ExecutorsAPIService ExecutorsEditHealth", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.ExecutorsAPI.ExecutorsEditHealth(context.Background()).Execute()
 
@@ -57,7 +57,7 @@ func Test_taikuncore_ExecutorsAPIService(t *testing.T) {
 
 	t.Run("Test ExecutorsAPIService ExecutorsList", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.ExecutorsAPI.ExecutorsList(context.Background()).Execute()
 
@@ -69,7 +69,7 @@ func Test_taikuncore_ExecutorsAPIService(t *testing.T) {
 
 	t.Run("Test ExecutorsAPIService ExecutorsToggle", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.ExecutorsAPI.ExecutorsToggle(context.Background()).Execute()
 

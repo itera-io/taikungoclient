@@ -17,19 +17,18 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"os"
 	"strings"
 	"time"
-	"os"
 )
-
 
 // KubernetesAPIService KubernetesAPI service
 type KubernetesAPIService service
 
 type ApiKubernetesAddK8sAlertRequest struct {
-	ctx context.Context
-	ApiService *KubernetesAPIService
-	projectId int32
+	ctx            context.Context
+	ApiService     *KubernetesAPIService
+	projectId      int32
 	createAlertDto *CreateAlertDto
 }
 
@@ -45,24 +44,24 @@ func (r ApiKubernetesAddK8sAlertRequest) Execute() (*http.Response, error) {
 /*
 KubernetesAddK8sAlert Add k8s alert
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiKubernetesAddK8sAlertRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiKubernetesAddK8sAlertRequest
 */
 func (a *KubernetesAPIService) KubernetesAddK8sAlert(ctx context.Context, projectId int32) ApiKubernetesAddK8sAlertRequest {
 	return ApiKubernetesAddK8sAlertRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
 func (a *KubernetesAPIService) KubernetesAddK8sAlertExecute(r ApiKubernetesAddK8sAlertRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesAddK8sAlert")
@@ -139,8 +138,8 @@ func (a *KubernetesAPIService) KubernetesAddK8sAlertExecute(r ApiKubernetesAddK8
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -150,8 +149,8 @@ func (a *KubernetesAPIService) KubernetesAddK8sAlertExecute(r ApiKubernetesAddK8
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -161,8 +160,8 @@ func (a *KubernetesAPIService) KubernetesAddK8sAlertExecute(r ApiKubernetesAddK8
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -172,8 +171,8 @@ func (a *KubernetesAPIService) KubernetesAddK8sAlertExecute(r ApiKubernetesAddK8
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -183,8 +182,8 @@ func (a *KubernetesAPIService) KubernetesAddK8sAlertExecute(r ApiKubernetesAddK8
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -194,8 +193,8 @@ func (a *KubernetesAPIService) KubernetesAddK8sAlertExecute(r ApiKubernetesAddK8
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -204,9 +203,9 @@ func (a *KubernetesAPIService) KubernetesAddK8sAlertExecute(r ApiKubernetesAddK8
 }
 
 type ApiKubernetesAddK8sEventsRequest struct {
-	ctx context.Context
-	ApiService *KubernetesAPIService
-	projectId int32
+	ctx                      context.Context
+	ApiService               *KubernetesAPIService
+	projectId                int32
 	kubernetesEventCreateDto *KubernetesEventCreateDto
 }
 
@@ -222,24 +221,24 @@ func (r ApiKubernetesAddK8sEventsRequest) Execute() (*http.Response, error) {
 /*
 KubernetesAddK8sEvents Add k8s event
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiKubernetesAddK8sEventsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiKubernetesAddK8sEventsRequest
 */
 func (a *KubernetesAPIService) KubernetesAddK8sEvents(ctx context.Context, projectId int32) ApiKubernetesAddK8sEventsRequest {
 	return ApiKubernetesAddK8sEventsRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
 func (a *KubernetesAPIService) KubernetesAddK8sEventsExecute(r ApiKubernetesAddK8sEventsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesAddK8sEvents")
@@ -316,8 +315,8 @@ func (a *KubernetesAPIService) KubernetesAddK8sEventsExecute(r ApiKubernetesAddK
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -327,8 +326,8 @@ func (a *KubernetesAPIService) KubernetesAddK8sEventsExecute(r ApiKubernetesAddK
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -338,8 +337,8 @@ func (a *KubernetesAPIService) KubernetesAddK8sEventsExecute(r ApiKubernetesAddK
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -349,8 +348,8 @@ func (a *KubernetesAPIService) KubernetesAddK8sEventsExecute(r ApiKubernetesAddK
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -360,8 +359,8 @@ func (a *KubernetesAPIService) KubernetesAddK8sEventsExecute(r ApiKubernetesAddK
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -371,8 +370,8 @@ func (a *KubernetesAPIService) KubernetesAddK8sEventsExecute(r ApiKubernetesAddK
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -381,17 +380,17 @@ func (a *KubernetesAPIService) KubernetesAddK8sEventsExecute(r ApiKubernetesAddK
 }
 
 type ApiKubernetesAlertListRequest struct {
-	ctx context.Context
-	ApiService *KubernetesAPIService
-	projectId int32
-	limit *int32
-	offset *int32
-	sortBy *string
+	ctx           context.Context
+	ApiService    *KubernetesAPIService
+	projectId     int32
+	limit         *int32
+	offset        *int32
+	sortBy        *string
 	sortDirection *string
-	search *string
-	type_ *string
-	startDate *time.Time
-	endDate *time.Time
+	search        *string
+	type_         *string
+	startDate     *time.Time
+	endDate       *time.Time
 }
 
 func (r ApiKubernetesAlertListRequest) Limit(limit int32) ApiKubernetesAlertListRequest {
@@ -441,26 +440,27 @@ func (r ApiKubernetesAlertListRequest) Execute() (*KubernetesAlertList, *http.Re
 /*
 KubernetesAlertList Retrieve a list of alerts for project
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiKubernetesAlertListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiKubernetesAlertListRequest
 */
 func (a *KubernetesAPIService) KubernetesAlertList(ctx context.Context, projectId int32) ApiKubernetesAlertListRequest {
 	return ApiKubernetesAlertListRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return KubernetesAlertList
+//
+//	@return KubernetesAlertList
 func (a *KubernetesAPIService) KubernetesAlertListExecute(r ApiKubernetesAlertListRequest) (*KubernetesAlertList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *KubernetesAlertList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *KubernetesAlertList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesAlertList")
@@ -559,8 +559,8 @@ func (a *KubernetesAPIService) KubernetesAlertListExecute(r ApiKubernetesAlertLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -570,8 +570,8 @@ func (a *KubernetesAPIService) KubernetesAlertListExecute(r ApiKubernetesAlertLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -581,8 +581,8 @@ func (a *KubernetesAPIService) KubernetesAlertListExecute(r ApiKubernetesAlertLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -592,8 +592,8 @@ func (a *KubernetesAPIService) KubernetesAlertListExecute(r ApiKubernetesAlertLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -603,8 +603,8 @@ func (a *KubernetesAPIService) KubernetesAlertListExecute(r ApiKubernetesAlertLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -614,8 +614,8 @@ func (a *KubernetesAPIService) KubernetesAlertListExecute(r ApiKubernetesAlertLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -633,8 +633,8 @@ func (a *KubernetesAPIService) KubernetesAlertListExecute(r ApiKubernetesAlertLi
 }
 
 type ApiKubernetesCliRequest struct {
-	ctx context.Context
-	ApiService *KubernetesAPIService
+	ctx                  context.Context
+	ApiService           *KubernetesAPIService
 	kubernetesCliCommand *KubernetesCliCommand
 }
 
@@ -650,24 +650,25 @@ func (r ApiKubernetesCliRequest) Execute() (string, *http.Response, error) {
 /*
 KubernetesCli Execute k8s web socket namespaced pod
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubernetesCliRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubernetesCliRequest
 */
 func (a *KubernetesAPIService) KubernetesCli(ctx context.Context) ApiKubernetesCliRequest {
 	return ApiKubernetesCliRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return string
+//
+//	@return string
 func (a *KubernetesAPIService) KubernetesCliExecute(r ApiKubernetesCliRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  string
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesCli")
@@ -743,8 +744,8 @@ func (a *KubernetesAPIService) KubernetesCliExecute(r ApiKubernetesCliRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -754,8 +755,8 @@ func (a *KubernetesAPIService) KubernetesCliExecute(r ApiKubernetesCliRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -765,8 +766,8 @@ func (a *KubernetesAPIService) KubernetesCliExecute(r ApiKubernetesCliRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -776,8 +777,8 @@ func (a *KubernetesAPIService) KubernetesCliExecute(r ApiKubernetesCliRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -787,8 +788,8 @@ func (a *KubernetesAPIService) KubernetesCliExecute(r ApiKubernetesCliRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -798,8 +799,8 @@ func (a *KubernetesAPIService) KubernetesCliExecute(r ApiKubernetesCliRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -817,11 +818,11 @@ func (a *KubernetesAPIService) KubernetesCliExecute(r ApiKubernetesCliRequest) (
 }
 
 type ApiKubernetesConfigmapListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *KubernetesAPIService
-	projectId int32
-	limit *int32
-	cursor *string
+	projectId  int32
+	limit      *int32
+	cursor     *string
 	searchTerm *string
 }
 
@@ -847,26 +848,27 @@ func (r ApiKubernetesConfigmapListRequest) Execute() (*ConfigmapListDtoCursorStr
 /*
 KubernetesConfigmapList K8s configmap list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiKubernetesConfigmapListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiKubernetesConfigmapListRequest
 */
 func (a *KubernetesAPIService) KubernetesConfigmapList(ctx context.Context, projectId int32) ApiKubernetesConfigmapListRequest {
 	return ApiKubernetesConfigmapListRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return ConfigmapListDtoCursorStringPaginatedResponse
+//
+//	@return ConfigmapListDtoCursorStringPaginatedResponse
 func (a *KubernetesAPIService) KubernetesConfigmapListExecute(r ApiKubernetesConfigmapListRequest) (*ConfigmapListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ConfigmapListDtoCursorStringPaginatedResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ConfigmapListDtoCursorStringPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesConfigmapList")
@@ -954,8 +956,8 @@ func (a *KubernetesAPIService) KubernetesConfigmapListExecute(r ApiKubernetesCon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -965,8 +967,8 @@ func (a *KubernetesAPIService) KubernetesConfigmapListExecute(r ApiKubernetesCon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -976,8 +978,8 @@ func (a *KubernetesAPIService) KubernetesConfigmapListExecute(r ApiKubernetesCon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -987,8 +989,8 @@ func (a *KubernetesAPIService) KubernetesConfigmapListExecute(r ApiKubernetesCon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -998,8 +1000,8 @@ func (a *KubernetesAPIService) KubernetesConfigmapListExecute(r ApiKubernetesCon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1009,8 +1011,8 @@ func (a *KubernetesAPIService) KubernetesConfigmapListExecute(r ApiKubernetesCon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1028,8 +1030,8 @@ func (a *KubernetesAPIService) KubernetesConfigmapListExecute(r ApiKubernetesCon
 }
 
 type ApiKubernetesCreateResourceRequest struct {
-	ctx context.Context
-	ApiService *KubernetesAPIService
+	ctx                             context.Context
+	ApiService                      *KubernetesAPIService
 	createKubernetesResourceCommand *CreateKubernetesResourceCommand
 }
 
@@ -1045,22 +1047,22 @@ func (r ApiKubernetesCreateResourceRequest) Execute() (*http.Response, error) {
 /*
 KubernetesCreateResource Create kubernetes resource
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubernetesCreateResourceRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubernetesCreateResourceRequest
 */
 func (a *KubernetesAPIService) KubernetesCreateResource(ctx context.Context) ApiKubernetesCreateResourceRequest {
 	return ApiKubernetesCreateResourceRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *KubernetesAPIService) KubernetesCreateResourceExecute(r ApiKubernetesCreateResourceRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesCreateResource")
@@ -1136,8 +1138,8 @@ func (a *KubernetesAPIService) KubernetesCreateResourceExecute(r ApiKubernetesCr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1147,8 +1149,8 @@ func (a *KubernetesAPIService) KubernetesCreateResourceExecute(r ApiKubernetesCr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1158,8 +1160,8 @@ func (a *KubernetesAPIService) KubernetesCreateResourceExecute(r ApiKubernetesCr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1169,8 +1171,8 @@ func (a *KubernetesAPIService) KubernetesCreateResourceExecute(r ApiKubernetesCr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1180,8 +1182,8 @@ func (a *KubernetesAPIService) KubernetesCreateResourceExecute(r ApiKubernetesCr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1191,8 +1193,8 @@ func (a *KubernetesAPIService) KubernetesCreateResourceExecute(r ApiKubernetesCr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1201,8 +1203,8 @@ func (a *KubernetesAPIService) KubernetesCreateResourceExecute(r ApiKubernetesCr
 }
 
 type ApiKubernetesCronjobActionsRequest struct {
-	ctx context.Context
-	ApiService *KubernetesAPIService
+	ctx                  context.Context
+	ApiService           *KubernetesAPIService
 	cronjobActionCommand *CronjobActionCommand
 }
 
@@ -1218,24 +1220,25 @@ func (r ApiKubernetesCronjobActionsRequest) Execute() (*KubernetesActionResponse
 /*
 KubernetesCronjobActions Cronjob actions
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubernetesCronjobActionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubernetesCronjobActionsRequest
 */
 func (a *KubernetesAPIService) KubernetesCronjobActions(ctx context.Context) ApiKubernetesCronjobActionsRequest {
 	return ApiKubernetesCronjobActionsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return KubernetesActionResponse
+//
+//	@return KubernetesActionResponse
 func (a *KubernetesAPIService) KubernetesCronjobActionsExecute(r ApiKubernetesCronjobActionsRequest) (*KubernetesActionResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *KubernetesActionResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *KubernetesActionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesCronjobActions")
@@ -1311,8 +1314,8 @@ func (a *KubernetesAPIService) KubernetesCronjobActionsExecute(r ApiKubernetesCr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1322,8 +1325,8 @@ func (a *KubernetesAPIService) KubernetesCronjobActionsExecute(r ApiKubernetesCr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1333,8 +1336,8 @@ func (a *KubernetesAPIService) KubernetesCronjobActionsExecute(r ApiKubernetesCr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1344,8 +1347,8 @@ func (a *KubernetesAPIService) KubernetesCronjobActionsExecute(r ApiKubernetesCr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1355,8 +1358,8 @@ func (a *KubernetesAPIService) KubernetesCronjobActionsExecute(r ApiKubernetesCr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1366,8 +1369,8 @@ func (a *KubernetesAPIService) KubernetesCronjobActionsExecute(r ApiKubernetesCr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1385,8 +1388,8 @@ func (a *KubernetesAPIService) KubernetesCronjobActionsExecute(r ApiKubernetesCr
 }
 
 type ApiKubernetesDaemonsetActionsRequest struct {
-	ctx context.Context
-	ApiService *KubernetesAPIService
+	ctx                    context.Context
+	ApiService             *KubernetesAPIService
 	daemonsetActionCommand *DaemonsetActionCommand
 }
 
@@ -1402,22 +1405,22 @@ func (r ApiKubernetesDaemonsetActionsRequest) Execute() (*http.Response, error) 
 /*
 KubernetesDaemonsetActions Daemonset actions
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubernetesDaemonsetActionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubernetesDaemonsetActionsRequest
 */
 func (a *KubernetesAPIService) KubernetesDaemonsetActions(ctx context.Context) ApiKubernetesDaemonsetActionsRequest {
 	return ApiKubernetesDaemonsetActionsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *KubernetesAPIService) KubernetesDaemonsetActionsExecute(r ApiKubernetesDaemonsetActionsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesDaemonsetActions")
@@ -1493,8 +1496,8 @@ func (a *KubernetesAPIService) KubernetesDaemonsetActionsExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1504,8 +1507,8 @@ func (a *KubernetesAPIService) KubernetesDaemonsetActionsExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1515,8 +1518,8 @@ func (a *KubernetesAPIService) KubernetesDaemonsetActionsExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1526,8 +1529,8 @@ func (a *KubernetesAPIService) KubernetesDaemonsetActionsExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1537,8 +1540,8 @@ func (a *KubernetesAPIService) KubernetesDaemonsetActionsExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1548,8 +1551,8 @@ func (a *KubernetesAPIService) KubernetesDaemonsetActionsExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1558,11 +1561,11 @@ func (a *KubernetesAPIService) KubernetesDaemonsetActionsExecute(r ApiKubernetes
 }
 
 type ApiKubernetesDaemonsetListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *KubernetesAPIService
-	projectId int32
-	limit *int32
-	cursor *string
+	projectId  int32
+	limit      *int32
+	cursor     *string
 	searchTerm *string
 }
 
@@ -1588,26 +1591,27 @@ func (r ApiKubernetesDaemonsetListRequest) Execute() (*DaemonsetListDtoCursorStr
 /*
 KubernetesDaemonsetList K8s daemonset list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiKubernetesDaemonsetListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiKubernetesDaemonsetListRequest
 */
 func (a *KubernetesAPIService) KubernetesDaemonsetList(ctx context.Context, projectId int32) ApiKubernetesDaemonsetListRequest {
 	return ApiKubernetesDaemonsetListRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return DaemonsetListDtoCursorStringPaginatedResponse
+//
+//	@return DaemonsetListDtoCursorStringPaginatedResponse
 func (a *KubernetesAPIService) KubernetesDaemonsetListExecute(r ApiKubernetesDaemonsetListRequest) (*DaemonsetListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DaemonsetListDtoCursorStringPaginatedResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DaemonsetListDtoCursorStringPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesDaemonsetList")
@@ -1695,8 +1699,8 @@ func (a *KubernetesAPIService) KubernetesDaemonsetListExecute(r ApiKubernetesDae
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1706,8 +1710,8 @@ func (a *KubernetesAPIService) KubernetesDaemonsetListExecute(r ApiKubernetesDae
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1717,8 +1721,8 @@ func (a *KubernetesAPIService) KubernetesDaemonsetListExecute(r ApiKubernetesDae
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1728,8 +1732,8 @@ func (a *KubernetesAPIService) KubernetesDaemonsetListExecute(r ApiKubernetesDae
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1739,8 +1743,8 @@ func (a *KubernetesAPIService) KubernetesDaemonsetListExecute(r ApiKubernetesDae
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1750,8 +1754,8 @@ func (a *KubernetesAPIService) KubernetesDaemonsetListExecute(r ApiKubernetesDae
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1769,9 +1773,9 @@ func (a *KubernetesAPIService) KubernetesDaemonsetListExecute(r ApiKubernetesDae
 }
 
 type ApiKubernetesDashboardListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *KubernetesAPIService
-	projectId int32
+	projectId  int32
 }
 
 func (r ApiKubernetesDashboardListRequest) Execute() (*KubernetesDashboardDto, *http.Response, error) {
@@ -1781,26 +1785,27 @@ func (r ApiKubernetesDashboardListRequest) Execute() (*KubernetesDashboardDto, *
 /*
 KubernetesDashboardList Retrieve a list of crd
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiKubernetesDashboardListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiKubernetesDashboardListRequest
 */
 func (a *KubernetesAPIService) KubernetesDashboardList(ctx context.Context, projectId int32) ApiKubernetesDashboardListRequest {
 	return ApiKubernetesDashboardListRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return KubernetesDashboardDto
+//
+//	@return KubernetesDashboardDto
 func (a *KubernetesAPIService) KubernetesDashboardListExecute(r ApiKubernetesDashboardListRequest) (*KubernetesDashboardDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *KubernetesDashboardDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *KubernetesDashboardDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesDashboardList")
@@ -1875,8 +1880,8 @@ func (a *KubernetesAPIService) KubernetesDashboardListExecute(r ApiKubernetesDas
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1886,8 +1891,8 @@ func (a *KubernetesAPIService) KubernetesDashboardListExecute(r ApiKubernetesDas
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1897,8 +1902,8 @@ func (a *KubernetesAPIService) KubernetesDashboardListExecute(r ApiKubernetesDas
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1908,8 +1913,8 @@ func (a *KubernetesAPIService) KubernetesDashboardListExecute(r ApiKubernetesDas
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1919,8 +1924,8 @@ func (a *KubernetesAPIService) KubernetesDashboardListExecute(r ApiKubernetesDas
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1930,8 +1935,8 @@ func (a *KubernetesAPIService) KubernetesDashboardListExecute(r ApiKubernetesDas
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1949,8 +1954,8 @@ func (a *KubernetesAPIService) KubernetesDashboardListExecute(r ApiKubernetesDas
 }
 
 type ApiKubernetesDeleteResourceRequest struct {
-	ctx context.Context
-	ApiService *KubernetesAPIService
+	ctx                             context.Context
+	ApiService                      *KubernetesAPIService
 	deleteKubernetesResourceCommand *DeleteKubernetesResourceCommand
 }
 
@@ -1966,24 +1971,25 @@ func (r ApiKubernetesDeleteResourceRequest) Execute() (*KubernetesActionResponse
 /*
 KubernetesDeleteResource Delete kubernetes resource
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubernetesDeleteResourceRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubernetesDeleteResourceRequest
 */
 func (a *KubernetesAPIService) KubernetesDeleteResource(ctx context.Context) ApiKubernetesDeleteResourceRequest {
 	return ApiKubernetesDeleteResourceRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return KubernetesActionResponse
+//
+//	@return KubernetesActionResponse
 func (a *KubernetesAPIService) KubernetesDeleteResourceExecute(r ApiKubernetesDeleteResourceRequest) (*KubernetesActionResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *KubernetesActionResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *KubernetesActionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesDeleteResource")
@@ -2059,8 +2065,8 @@ func (a *KubernetesAPIService) KubernetesDeleteResourceExecute(r ApiKubernetesDe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2070,8 +2076,8 @@ func (a *KubernetesAPIService) KubernetesDeleteResourceExecute(r ApiKubernetesDe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2081,8 +2087,8 @@ func (a *KubernetesAPIService) KubernetesDeleteResourceExecute(r ApiKubernetesDe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2092,8 +2098,8 @@ func (a *KubernetesAPIService) KubernetesDeleteResourceExecute(r ApiKubernetesDe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2103,8 +2109,8 @@ func (a *KubernetesAPIService) KubernetesDeleteResourceExecute(r ApiKubernetesDe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2114,8 +2120,8 @@ func (a *KubernetesAPIService) KubernetesDeleteResourceExecute(r ApiKubernetesDe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2133,8 +2139,8 @@ func (a *KubernetesAPIService) KubernetesDeleteResourceExecute(r ApiKubernetesDe
 }
 
 type ApiKubernetesDeploymentActionsRequest struct {
-	ctx context.Context
-	ApiService *KubernetesAPIService
+	ctx                     context.Context
+	ApiService              *KubernetesAPIService
 	deploymentActionCommand *DeploymentActionCommand
 }
 
@@ -2150,22 +2156,22 @@ func (r ApiKubernetesDeploymentActionsRequest) Execute() (*http.Response, error)
 /*
 KubernetesDeploymentActions Deployment actions
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubernetesDeploymentActionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubernetesDeploymentActionsRequest
 */
 func (a *KubernetesAPIService) KubernetesDeploymentActions(ctx context.Context) ApiKubernetesDeploymentActionsRequest {
 	return ApiKubernetesDeploymentActionsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *KubernetesAPIService) KubernetesDeploymentActionsExecute(r ApiKubernetesDeploymentActionsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesDeploymentActions")
@@ -2241,8 +2247,8 @@ func (a *KubernetesAPIService) KubernetesDeploymentActionsExecute(r ApiKubernete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2252,8 +2258,8 @@ func (a *KubernetesAPIService) KubernetesDeploymentActionsExecute(r ApiKubernete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2263,8 +2269,8 @@ func (a *KubernetesAPIService) KubernetesDeploymentActionsExecute(r ApiKubernete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2274,8 +2280,8 @@ func (a *KubernetesAPIService) KubernetesDeploymentActionsExecute(r ApiKubernete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2285,8 +2291,8 @@ func (a *KubernetesAPIService) KubernetesDeploymentActionsExecute(r ApiKubernete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2296,8 +2302,8 @@ func (a *KubernetesAPIService) KubernetesDeploymentActionsExecute(r ApiKubernete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2306,11 +2312,11 @@ func (a *KubernetesAPIService) KubernetesDeploymentActionsExecute(r ApiKubernete
 }
 
 type ApiKubernetesDeploymentsListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *KubernetesAPIService
-	projectId int32
-	limit *int32
-	cursor *string
+	projectId  int32
+	limit      *int32
+	cursor     *string
 	searchTerm *string
 }
 
@@ -2336,26 +2342,27 @@ func (r ApiKubernetesDeploymentsListRequest) Execute() (*DeploymentListDtoCursor
 /*
 KubernetesDeploymentsList K8s deployment list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiKubernetesDeploymentsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiKubernetesDeploymentsListRequest
 */
 func (a *KubernetesAPIService) KubernetesDeploymentsList(ctx context.Context, projectId int32) ApiKubernetesDeploymentsListRequest {
 	return ApiKubernetesDeploymentsListRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return DeploymentListDtoCursorStringPaginatedResponse
+//
+//	@return DeploymentListDtoCursorStringPaginatedResponse
 func (a *KubernetesAPIService) KubernetesDeploymentsListExecute(r ApiKubernetesDeploymentsListRequest) (*DeploymentListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DeploymentListDtoCursorStringPaginatedResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DeploymentListDtoCursorStringPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesDeploymentsList")
@@ -2443,8 +2450,8 @@ func (a *KubernetesAPIService) KubernetesDeploymentsListExecute(r ApiKubernetesD
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2454,8 +2461,8 @@ func (a *KubernetesAPIService) KubernetesDeploymentsListExecute(r ApiKubernetesD
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2465,8 +2472,8 @@ func (a *KubernetesAPIService) KubernetesDeploymentsListExecute(r ApiKubernetesD
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2476,8 +2483,8 @@ func (a *KubernetesAPIService) KubernetesDeploymentsListExecute(r ApiKubernetesD
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2487,8 +2494,8 @@ func (a *KubernetesAPIService) KubernetesDeploymentsListExecute(r ApiKubernetesD
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2498,8 +2505,8 @@ func (a *KubernetesAPIService) KubernetesDeploymentsListExecute(r ApiKubernetesD
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2517,8 +2524,8 @@ func (a *KubernetesAPIService) KubernetesDeploymentsListExecute(r ApiKubernetesD
 }
 
 type ApiKubernetesDescribeResourceRequest struct {
-	ctx context.Context
-	ApiService *KubernetesAPIService
+	ctx                               context.Context
+	ApiService                        *KubernetesAPIService
 	describeKubernetesResourceCommand *DescribeKubernetesResourceCommand
 }
 
@@ -2534,24 +2541,25 @@ func (r ApiKubernetesDescribeResourceRequest) Execute() (string, *http.Response,
 /*
 KubernetesDescribeResource Describe kubernetes resource
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubernetesDescribeResourceRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubernetesDescribeResourceRequest
 */
 func (a *KubernetesAPIService) KubernetesDescribeResource(ctx context.Context) ApiKubernetesDescribeResourceRequest {
 	return ApiKubernetesDescribeResourceRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return string
+//
+//	@return string
 func (a *KubernetesAPIService) KubernetesDescribeResourceExecute(r ApiKubernetesDescribeResourceRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  string
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesDescribeResource")
@@ -2627,8 +2635,8 @@ func (a *KubernetesAPIService) KubernetesDescribeResourceExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2638,8 +2646,8 @@ func (a *KubernetesAPIService) KubernetesDescribeResourceExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2649,8 +2657,8 @@ func (a *KubernetesAPIService) KubernetesDescribeResourceExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2660,8 +2668,8 @@ func (a *KubernetesAPIService) KubernetesDescribeResourceExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2671,8 +2679,8 @@ func (a *KubernetesAPIService) KubernetesDescribeResourceExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2682,8 +2690,8 @@ func (a *KubernetesAPIService) KubernetesDescribeResourceExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2701,9 +2709,9 @@ func (a *KubernetesAPIService) KubernetesDescribeResourceExecute(r ApiKubernetes
 }
 
 type ApiKubernetesDownloadRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *KubernetesAPIService
-	projectId int32
+	projectId  int32
 }
 
 func (r ApiKubernetesDownloadRequest) Execute() (interface{}, *http.Response, error) {
@@ -2713,26 +2721,27 @@ func (r ApiKubernetesDownloadRequest) Execute() (interface{}, *http.Response, er
 /*
 KubernetesDownload Download kube config file
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiKubernetesDownloadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiKubernetesDownloadRequest
 */
 func (a *KubernetesAPIService) KubernetesDownload(ctx context.Context, projectId int32) ApiKubernetesDownloadRequest {
 	return ApiKubernetesDownloadRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return interface{}
+//
+//	@return interface{}
 func (a *KubernetesAPIService) KubernetesDownloadExecute(r ApiKubernetesDownloadRequest) (interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  interface{}
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesDownload")
@@ -2807,8 +2816,8 @@ func (a *KubernetesAPIService) KubernetesDownloadExecute(r ApiKubernetesDownload
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2818,8 +2827,8 @@ func (a *KubernetesAPIService) KubernetesDownloadExecute(r ApiKubernetesDownload
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2829,8 +2838,8 @@ func (a *KubernetesAPIService) KubernetesDownloadExecute(r ApiKubernetesDownload
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2840,8 +2849,8 @@ func (a *KubernetesAPIService) KubernetesDownloadExecute(r ApiKubernetesDownload
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2851,8 +2860,8 @@ func (a *KubernetesAPIService) KubernetesDownloadExecute(r ApiKubernetesDownload
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2862,8 +2871,8 @@ func (a *KubernetesAPIService) KubernetesDownloadExecute(r ApiKubernetesDownload
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2881,8 +2890,8 @@ func (a *KubernetesAPIService) KubernetesDownloadExecute(r ApiKubernetesDownload
 }
 
 type ApiKubernetesDownloadManifestRequest struct {
-	ctx context.Context
-	ApiService *KubernetesAPIService
+	ctx                               context.Context
+	ApiService                        *KubernetesAPIService
 	downloadKubernetesResourceCommand *DownloadKubernetesResourceCommand
 }
 
@@ -2898,24 +2907,25 @@ func (r ApiKubernetesDownloadManifestRequest) Execute() (*CsvExporter, *http.Res
 /*
 KubernetesDownloadManifest Download manifest
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubernetesDownloadManifestRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubernetesDownloadManifestRequest
 */
 func (a *KubernetesAPIService) KubernetesDownloadManifest(ctx context.Context) ApiKubernetesDownloadManifestRequest {
 	return ApiKubernetesDownloadManifestRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CsvExporter
+//
+//	@return CsvExporter
 func (a *KubernetesAPIService) KubernetesDownloadManifestExecute(r ApiKubernetesDownloadManifestRequest) (*CsvExporter, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CsvExporter
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CsvExporter
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesDownloadManifest")
@@ -2991,8 +3001,8 @@ func (a *KubernetesAPIService) KubernetesDownloadManifestExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3002,8 +3012,8 @@ func (a *KubernetesAPIService) KubernetesDownloadManifestExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3013,8 +3023,8 @@ func (a *KubernetesAPIService) KubernetesDownloadManifestExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3024,8 +3034,8 @@ func (a *KubernetesAPIService) KubernetesDownloadManifestExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3035,8 +3045,8 @@ func (a *KubernetesAPIService) KubernetesDownloadManifestExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3046,8 +3056,8 @@ func (a *KubernetesAPIService) KubernetesDownloadManifestExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3065,9 +3075,9 @@ func (a *KubernetesAPIService) KubernetesDownloadManifestExecute(r ApiKubernetes
 }
 
 type ApiKubernetesExportRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *KubernetesAPIService
-	projectId *int32
+	projectId  *int32
 }
 
 func (r ApiKubernetesExportRequest) ProjectId(projectId int32) ApiKubernetesExportRequest {
@@ -3082,24 +3092,25 @@ func (r ApiKubernetesExportRequest) Execute() (*CsvExporter, *http.Response, err
 /*
 KubernetesExport Export
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubernetesExportRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubernetesExportRequest
 */
 func (a *KubernetesAPIService) KubernetesExport(ctx context.Context) ApiKubernetesExportRequest {
 	return ApiKubernetesExportRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CsvExporter
+//
+//	@return CsvExporter
 func (a *KubernetesAPIService) KubernetesExportExecute(r ApiKubernetesExportRequest) (*CsvExporter, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CsvExporter
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CsvExporter
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesExport")
@@ -3177,8 +3188,8 @@ func (a *KubernetesAPIService) KubernetesExportExecute(r ApiKubernetesExportRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3188,8 +3199,8 @@ func (a *KubernetesAPIService) KubernetesExportExecute(r ApiKubernetesExportRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3199,8 +3210,8 @@ func (a *KubernetesAPIService) KubernetesExportExecute(r ApiKubernetesExportRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3210,8 +3221,8 @@ func (a *KubernetesAPIService) KubernetesExportExecute(r ApiKubernetesExportRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3221,8 +3232,8 @@ func (a *KubernetesAPIService) KubernetesExportExecute(r ApiKubernetesExportRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3232,8 +3243,8 @@ func (a *KubernetesAPIService) KubernetesExportExecute(r ApiKubernetesExportRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3251,9 +3262,9 @@ func (a *KubernetesAPIService) KubernetesExportExecute(r ApiKubernetesExportRequ
 }
 
 type ApiKubernetesForbiddenNamespacesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *KubernetesAPIService
-	projectId int32
+	projectId  int32
 }
 
 func (r ApiKubernetesForbiddenNamespacesRequest) Execute() ([]string, *http.Response, error) {
@@ -3263,26 +3274,27 @@ func (r ApiKubernetesForbiddenNamespacesRequest) Execute() ([]string, *http.Resp
 /*
 KubernetesForbiddenNamespaces Forbidden namespaces for k8s actions
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiKubernetesForbiddenNamespacesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiKubernetesForbiddenNamespacesRequest
 */
 func (a *KubernetesAPIService) KubernetesForbiddenNamespaces(ctx context.Context, projectId int32) ApiKubernetesForbiddenNamespacesRequest {
 	return ApiKubernetesForbiddenNamespacesRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return []string
+//
+//	@return []string
 func (a *KubernetesAPIService) KubernetesForbiddenNamespacesExecute(r ApiKubernetesForbiddenNamespacesRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []string
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesForbiddenNamespaces")
@@ -3357,8 +3369,8 @@ func (a *KubernetesAPIService) KubernetesForbiddenNamespacesExecute(r ApiKuberne
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3368,8 +3380,8 @@ func (a *KubernetesAPIService) KubernetesForbiddenNamespacesExecute(r ApiKuberne
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3379,8 +3391,8 @@ func (a *KubernetesAPIService) KubernetesForbiddenNamespacesExecute(r ApiKuberne
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3390,8 +3402,8 @@ func (a *KubernetesAPIService) KubernetesForbiddenNamespacesExecute(r ApiKuberne
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3401,8 +3413,8 @@ func (a *KubernetesAPIService) KubernetesForbiddenNamespacesExecute(r ApiKuberne
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3412,8 +3424,8 @@ func (a *KubernetesAPIService) KubernetesForbiddenNamespacesExecute(r ApiKuberne
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3431,7 +3443,7 @@ func (a *KubernetesAPIService) KubernetesForbiddenNamespacesExecute(r ApiKuberne
 }
 
 type ApiKubernetesGetSupportedListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *KubernetesAPIService
 }
 
@@ -3442,24 +3454,25 @@ func (r ApiKubernetesGetSupportedListRequest) Execute() ([]KubernetesVersionList
 /*
 KubernetesGetSupportedList Retrieve Taikun supported kubernetes versions
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubernetesGetSupportedListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubernetesGetSupportedListRequest
 */
 func (a *KubernetesAPIService) KubernetesGetSupportedList(ctx context.Context) ApiKubernetesGetSupportedListRequest {
 	return ApiKubernetesGetSupportedListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []KubernetesVersionListDto
+//
+//	@return []KubernetesVersionListDto
 func (a *KubernetesAPIService) KubernetesGetSupportedListExecute(r ApiKubernetesGetSupportedListRequest) ([]KubernetesVersionListDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []KubernetesVersionListDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []KubernetesVersionListDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesGetSupportedList")
@@ -3533,8 +3546,8 @@ func (a *KubernetesAPIService) KubernetesGetSupportedListExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3544,8 +3557,8 @@ func (a *KubernetesAPIService) KubernetesGetSupportedListExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3555,8 +3568,8 @@ func (a *KubernetesAPIService) KubernetesGetSupportedListExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3566,8 +3579,8 @@ func (a *KubernetesAPIService) KubernetesGetSupportedListExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3577,8 +3590,8 @@ func (a *KubernetesAPIService) KubernetesGetSupportedListExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3588,8 +3601,8 @@ func (a *KubernetesAPIService) KubernetesGetSupportedListExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3607,11 +3620,11 @@ func (a *KubernetesAPIService) KubernetesGetSupportedListExecute(r ApiKubernetes
 }
 
 type ApiKubernetesIngressClassesRequest struct {
-	ctx context.Context
-	ApiService *KubernetesAPIService
-	config *os.File
-	cloudId *int32
-	region *string
+	ctx               context.Context
+	ApiService        *KubernetesAPIService
+	config            *os.File
+	cloudId           *int32
+	region            *string
 	importClusterName *string
 	resourceGroupName *string
 }
@@ -3648,24 +3661,25 @@ func (r ApiKubernetesIngressClassesRequest) Execute() ([]string, *http.Response,
 /*
 KubernetesIngressClasses List of ingress classes
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubernetesIngressClassesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubernetesIngressClassesRequest
 */
 func (a *KubernetesAPIService) KubernetesIngressClasses(ctx context.Context) ApiKubernetesIngressClassesRequest {
 	return ApiKubernetesIngressClassesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []string
+//
+//	@return []string
 func (a *KubernetesAPIService) KubernetesIngressClassesExecute(r ApiKubernetesIngressClassesRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []string
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesIngressClasses")
@@ -3697,8 +3711,8 @@ func (a *KubernetesAPIService) KubernetesIngressClassesExecute(r ApiKubernetesIn
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	var configLocalVarFormFileName string
-	var configLocalVarFileName     string
-	var configLocalVarFileBytes    []byte
+	var configLocalVarFileName string
+	var configLocalVarFileBytes []byte
 
 	configLocalVarFormFileName = "config"
 	configLocalVarFile := r.config
@@ -3766,8 +3780,8 @@ func (a *KubernetesAPIService) KubernetesIngressClassesExecute(r ApiKubernetesIn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3777,8 +3791,8 @@ func (a *KubernetesAPIService) KubernetesIngressClassesExecute(r ApiKubernetesIn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3788,8 +3802,8 @@ func (a *KubernetesAPIService) KubernetesIngressClassesExecute(r ApiKubernetesIn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3799,8 +3813,8 @@ func (a *KubernetesAPIService) KubernetesIngressClassesExecute(r ApiKubernetesIn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3810,8 +3824,8 @@ func (a *KubernetesAPIService) KubernetesIngressClassesExecute(r ApiKubernetesIn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3821,8 +3835,8 @@ func (a *KubernetesAPIService) KubernetesIngressClassesExecute(r ApiKubernetesIn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3840,11 +3854,11 @@ func (a *KubernetesAPIService) KubernetesIngressClassesExecute(r ApiKubernetesIn
 }
 
 type ApiKubernetesIngressListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *KubernetesAPIService
-	projectId int32
-	limit *int32
-	cursor *string
+	projectId  int32
+	limit      *int32
+	cursor     *string
 	searchTerm *string
 }
 
@@ -3870,26 +3884,27 @@ func (r ApiKubernetesIngressListRequest) Execute() (*IngressListDtoCursorStringP
 /*
 KubernetesIngressList K8s ingress list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiKubernetesIngressListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiKubernetesIngressListRequest
 */
 func (a *KubernetesAPIService) KubernetesIngressList(ctx context.Context, projectId int32) ApiKubernetesIngressListRequest {
 	return ApiKubernetesIngressListRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return IngressListDtoCursorStringPaginatedResponse
+//
+//	@return IngressListDtoCursorStringPaginatedResponse
 func (a *KubernetesAPIService) KubernetesIngressListExecute(r ApiKubernetesIngressListRequest) (*IngressListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *IngressListDtoCursorStringPaginatedResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *IngressListDtoCursorStringPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesIngressList")
@@ -3977,8 +3992,8 @@ func (a *KubernetesAPIService) KubernetesIngressListExecute(r ApiKubernetesIngre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3988,8 +4003,8 @@ func (a *KubernetesAPIService) KubernetesIngressListExecute(r ApiKubernetesIngre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3999,8 +4014,8 @@ func (a *KubernetesAPIService) KubernetesIngressListExecute(r ApiKubernetesIngre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4010,8 +4025,8 @@ func (a *KubernetesAPIService) KubernetesIngressListExecute(r ApiKubernetesIngre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4021,8 +4036,8 @@ func (a *KubernetesAPIService) KubernetesIngressListExecute(r ApiKubernetesIngre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4032,8 +4047,8 @@ func (a *KubernetesAPIService) KubernetesIngressListExecute(r ApiKubernetesIngre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4051,8 +4066,8 @@ func (a *KubernetesAPIService) KubernetesIngressListExecute(r ApiKubernetesIngre
 }
 
 type ApiKubernetesInteractiveShellRequest struct {
-	ctx context.Context
-	ApiService *KubernetesAPIService
+	ctx                         context.Context
+	ApiService                  *KubernetesAPIService
 	interactiveShellSendCommand *InteractiveShellSendCommand
 }
 
@@ -4068,24 +4083,25 @@ func (r ApiKubernetesInteractiveShellRequest) Execute() (*KubernetesInteractiveS
 /*
 KubernetesInteractiveShell Produce interactive shell command
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubernetesInteractiveShellRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubernetesInteractiveShellRequest
 */
 func (a *KubernetesAPIService) KubernetesInteractiveShell(ctx context.Context) ApiKubernetesInteractiveShellRequest {
 	return ApiKubernetesInteractiveShellRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return KubernetesInteractiveShellDto
+//
+//	@return KubernetesInteractiveShellDto
 func (a *KubernetesAPIService) KubernetesInteractiveShellExecute(r ApiKubernetesInteractiveShellRequest) (*KubernetesInteractiveShellDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *KubernetesInteractiveShellDto
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *KubernetesInteractiveShellDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesInteractiveShell")
@@ -4161,8 +4177,8 @@ func (a *KubernetesAPIService) KubernetesInteractiveShellExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4172,8 +4188,8 @@ func (a *KubernetesAPIService) KubernetesInteractiveShellExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4183,8 +4199,8 @@ func (a *KubernetesAPIService) KubernetesInteractiveShellExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4194,8 +4210,8 @@ func (a *KubernetesAPIService) KubernetesInteractiveShellExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4205,8 +4221,8 @@ func (a *KubernetesAPIService) KubernetesInteractiveShellExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4216,8 +4232,8 @@ func (a *KubernetesAPIService) KubernetesInteractiveShellExecute(r ApiKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4235,9 +4251,9 @@ func (a *KubernetesAPIService) KubernetesInteractiveShellExecute(r ApiKubernetes
 }
 
 type ApiKubernetesKubeConfigRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *KubernetesAPIService
-	projectId int32
+	projectId  int32
 }
 
 func (r ApiKubernetesKubeConfigRequest) Execute() (*KubeConfigResponse, *http.Response, error) {
@@ -4247,26 +4263,27 @@ func (r ApiKubernetesKubeConfigRequest) Execute() (*KubeConfigResponse, *http.Re
 /*
 KubernetesKubeConfig Retrieve kube config file
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiKubernetesKubeConfigRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiKubernetesKubeConfigRequest
 */
 func (a *KubernetesAPIService) KubernetesKubeConfig(ctx context.Context, projectId int32) ApiKubernetesKubeConfigRequest {
 	return ApiKubernetesKubeConfigRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return KubeConfigResponse
+//
+//	@return KubeConfigResponse
 func (a *KubernetesAPIService) KubernetesKubeConfigExecute(r ApiKubernetesKubeConfigRequest) (*KubeConfigResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *KubeConfigResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *KubeConfigResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesKubeConfig")
@@ -4341,8 +4358,8 @@ func (a *KubernetesAPIService) KubernetesKubeConfigExecute(r ApiKubernetesKubeCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4352,8 +4369,8 @@ func (a *KubernetesAPIService) KubernetesKubeConfigExecute(r ApiKubernetesKubeCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4363,8 +4380,8 @@ func (a *KubernetesAPIService) KubernetesKubeConfigExecute(r ApiKubernetesKubeCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4374,8 +4391,8 @@ func (a *KubernetesAPIService) KubernetesKubeConfigExecute(r ApiKubernetesKubeCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4385,8 +4402,8 @@ func (a *KubernetesAPIService) KubernetesKubeConfigExecute(r ApiKubernetesKubeCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4396,8 +4413,8 @@ func (a *KubernetesAPIService) KubernetesKubeConfigExecute(r ApiKubernetesKubeCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4415,9 +4432,9 @@ func (a *KubernetesAPIService) KubernetesKubeConfigExecute(r ApiKubernetesKubeCo
 }
 
 type ApiKubernetesNamespaceListRequest struct {
-	ctx context.Context
-	ApiService *KubernetesAPIService
-	projectId int32
+	ctx          context.Context
+	ApiService   *KubernetesAPIService
+	projectId    int32
 	installation *bool
 }
 
@@ -4433,26 +4450,27 @@ func (r ApiKubernetesNamespaceListRequest) Execute() ([]string, *http.Response, 
 /*
 KubernetesNamespaceList Retrieve kube config file
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiKubernetesNamespaceListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiKubernetesNamespaceListRequest
 */
 func (a *KubernetesAPIService) KubernetesNamespaceList(ctx context.Context, projectId int32) ApiKubernetesNamespaceListRequest {
 	return ApiKubernetesNamespaceListRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return []string
+//
+//	@return []string
 func (a *KubernetesAPIService) KubernetesNamespaceListExecute(r ApiKubernetesNamespaceListRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []string
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesNamespaceList")
@@ -4530,8 +4548,8 @@ func (a *KubernetesAPIService) KubernetesNamespaceListExecute(r ApiKubernetesNam
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4541,8 +4559,8 @@ func (a *KubernetesAPIService) KubernetesNamespaceListExecute(r ApiKubernetesNam
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4552,8 +4570,8 @@ func (a *KubernetesAPIService) KubernetesNamespaceListExecute(r ApiKubernetesNam
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4563,8 +4581,8 @@ func (a *KubernetesAPIService) KubernetesNamespaceListExecute(r ApiKubernetesNam
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4574,8 +4592,8 @@ func (a *KubernetesAPIService) KubernetesNamespaceListExecute(r ApiKubernetesNam
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4585,8 +4603,8 @@ func (a *KubernetesAPIService) KubernetesNamespaceListExecute(r ApiKubernetesNam
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4604,11 +4622,11 @@ func (a *KubernetesAPIService) KubernetesNamespaceListExecute(r ApiKubernetesNam
 }
 
 type ApiKubernetesNetworkPolicyListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *KubernetesAPIService
-	projectId int32
-	limit *int32
-	cursor *string
+	projectId  int32
+	limit      *int32
+	cursor     *string
 	searchTerm *string
 }
 
@@ -4634,26 +4652,27 @@ func (r ApiKubernetesNetworkPolicyListRequest) Execute() (*NetworkPolicyListDtoC
 /*
 KubernetesNetworkPolicyList K8s network policy list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiKubernetesNetworkPolicyListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiKubernetesNetworkPolicyListRequest
 */
 func (a *KubernetesAPIService) KubernetesNetworkPolicyList(ctx context.Context, projectId int32) ApiKubernetesNetworkPolicyListRequest {
 	return ApiKubernetesNetworkPolicyListRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return NetworkPolicyListDtoCursorStringPaginatedResponse
+//
+//	@return NetworkPolicyListDtoCursorStringPaginatedResponse
 func (a *KubernetesAPIService) KubernetesNetworkPolicyListExecute(r ApiKubernetesNetworkPolicyListRequest) (*NetworkPolicyListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *NetworkPolicyListDtoCursorStringPaginatedResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *NetworkPolicyListDtoCursorStringPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesNetworkPolicyList")
@@ -4741,8 +4760,8 @@ func (a *KubernetesAPIService) KubernetesNetworkPolicyListExecute(r ApiKubernete
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4752,8 +4771,8 @@ func (a *KubernetesAPIService) KubernetesNetworkPolicyListExecute(r ApiKubernete
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4763,8 +4782,8 @@ func (a *KubernetesAPIService) KubernetesNetworkPolicyListExecute(r ApiKubernete
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4774,8 +4793,8 @@ func (a *KubernetesAPIService) KubernetesNetworkPolicyListExecute(r ApiKubernete
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4785,8 +4804,8 @@ func (a *KubernetesAPIService) KubernetesNetworkPolicyListExecute(r ApiKubernete
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4796,8 +4815,8 @@ func (a *KubernetesAPIService) KubernetesNetworkPolicyListExecute(r ApiKubernete
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4815,8 +4834,8 @@ func (a *KubernetesAPIService) KubernetesNetworkPolicyListExecute(r ApiKubernete
 }
 
 type ApiKubernetesNodeActionsRequest struct {
-	ctx context.Context
-	ApiService *KubernetesAPIService
+	ctx               context.Context
+	ApiService        *KubernetesAPIService
 	nodeActionCommand *NodeActionCommand
 }
 
@@ -4832,22 +4851,22 @@ func (r ApiKubernetesNodeActionsRequest) Execute() (*http.Response, error) {
 /*
 KubernetesNodeActions Node actions
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubernetesNodeActionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubernetesNodeActionsRequest
 */
 func (a *KubernetesAPIService) KubernetesNodeActions(ctx context.Context) ApiKubernetesNodeActionsRequest {
 	return ApiKubernetesNodeActionsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *KubernetesAPIService) KubernetesNodeActionsExecute(r ApiKubernetesNodeActionsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesNodeActions")
@@ -4923,8 +4942,8 @@ func (a *KubernetesAPIService) KubernetesNodeActionsExecute(r ApiKubernetesNodeA
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4934,8 +4953,8 @@ func (a *KubernetesAPIService) KubernetesNodeActionsExecute(r ApiKubernetesNodeA
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4945,8 +4964,8 @@ func (a *KubernetesAPIService) KubernetesNodeActionsExecute(r ApiKubernetesNodeA
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4956,8 +4975,8 @@ func (a *KubernetesAPIService) KubernetesNodeActionsExecute(r ApiKubernetesNodeA
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4967,8 +4986,8 @@ func (a *KubernetesAPIService) KubernetesNodeActionsExecute(r ApiKubernetesNodeA
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4978,8 +4997,8 @@ func (a *KubernetesAPIService) KubernetesNodeActionsExecute(r ApiKubernetesNodeA
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -4988,11 +5007,11 @@ func (a *KubernetesAPIService) KubernetesNodeActionsExecute(r ApiKubernetesNodeA
 }
 
 type ApiKubernetesNodeListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *KubernetesAPIService
-	projectId int32
-	limit *int32
-	cursor *string
+	projectId  int32
+	limit      *int32
+	cursor     *string
 	searchTerm *string
 }
 
@@ -5018,26 +5037,27 @@ func (r ApiKubernetesNodeListRequest) Execute() (*NodeListDtoCursorStringPaginat
 /*
 KubernetesNodeList K8s node list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiKubernetesNodeListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiKubernetesNodeListRequest
 */
 func (a *KubernetesAPIService) KubernetesNodeList(ctx context.Context, projectId int32) ApiKubernetesNodeListRequest {
 	return ApiKubernetesNodeListRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return NodeListDtoCursorStringPaginatedResponse
+//
+//	@return NodeListDtoCursorStringPaginatedResponse
 func (a *KubernetesAPIService) KubernetesNodeListExecute(r ApiKubernetesNodeListRequest) (*NodeListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *NodeListDtoCursorStringPaginatedResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *NodeListDtoCursorStringPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesNodeList")
@@ -5125,8 +5145,8 @@ func (a *KubernetesAPIService) KubernetesNodeListExecute(r ApiKubernetesNodeList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -5136,8 +5156,8 @@ func (a *KubernetesAPIService) KubernetesNodeListExecute(r ApiKubernetesNodeList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -5147,8 +5167,8 @@ func (a *KubernetesAPIService) KubernetesNodeListExecute(r ApiKubernetesNodeList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -5158,8 +5178,8 @@ func (a *KubernetesAPIService) KubernetesNodeListExecute(r ApiKubernetesNodeList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -5169,8 +5189,8 @@ func (a *KubernetesAPIService) KubernetesNodeListExecute(r ApiKubernetesNodeList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -5180,8 +5200,8 @@ func (a *KubernetesAPIService) KubernetesNodeListExecute(r ApiKubernetesNodeList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -5199,8 +5219,8 @@ func (a *KubernetesAPIService) KubernetesNodeListExecute(r ApiKubernetesNodeList
 }
 
 type ApiKubernetesOverviewRequest struct {
-	ctx context.Context
-	ApiService *KubernetesAPIService
+	ctx            context.Context
+	ApiService     *KubernetesAPIService
 	organizationId *int32
 }
 
@@ -5216,24 +5236,25 @@ func (r ApiKubernetesOverviewRequest) Execute() ([]KubernetesOverviewDto, *http.
 /*
 KubernetesOverview Overview kubernetes nodes and pods by organization id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubernetesOverviewRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubernetesOverviewRequest
 */
 func (a *KubernetesAPIService) KubernetesOverview(ctx context.Context) ApiKubernetesOverviewRequest {
 	return ApiKubernetesOverviewRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []KubernetesOverviewDto
+//
+//	@return []KubernetesOverviewDto
 func (a *KubernetesAPIService) KubernetesOverviewExecute(r ApiKubernetesOverviewRequest) ([]KubernetesOverviewDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []KubernetesOverviewDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []KubernetesOverviewDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesOverview")
@@ -5311,8 +5332,8 @@ func (a *KubernetesAPIService) KubernetesOverviewExecute(r ApiKubernetesOverview
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -5322,8 +5343,8 @@ func (a *KubernetesAPIService) KubernetesOverviewExecute(r ApiKubernetesOverview
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -5333,8 +5354,8 @@ func (a *KubernetesAPIService) KubernetesOverviewExecute(r ApiKubernetesOverview
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -5344,8 +5365,8 @@ func (a *KubernetesAPIService) KubernetesOverviewExecute(r ApiKubernetesOverview
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -5355,8 +5376,8 @@ func (a *KubernetesAPIService) KubernetesOverviewExecute(r ApiKubernetesOverview
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -5366,8 +5387,8 @@ func (a *KubernetesAPIService) KubernetesOverviewExecute(r ApiKubernetesOverview
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -5385,8 +5406,8 @@ func (a *KubernetesAPIService) KubernetesOverviewExecute(r ApiKubernetesOverview
 }
 
 type ApiKubernetesPatchResourceRequest struct {
-	ctx context.Context
-	ApiService *KubernetesAPIService
+	ctx                            context.Context
+	ApiService                     *KubernetesAPIService
 	patchKubernetesResourceCommand *PatchKubernetesResourceCommand
 }
 
@@ -5402,22 +5423,22 @@ func (r ApiKubernetesPatchResourceRequest) Execute() (*http.Response, error) {
 /*
 KubernetesPatchResource Patch kubernetes resource
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubernetesPatchResourceRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubernetesPatchResourceRequest
 */
 func (a *KubernetesAPIService) KubernetesPatchResource(ctx context.Context) ApiKubernetesPatchResourceRequest {
 	return ApiKubernetesPatchResourceRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *KubernetesAPIService) KubernetesPatchResourceExecute(r ApiKubernetesPatchResourceRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesPatchResource")
@@ -5493,8 +5514,8 @@ func (a *KubernetesAPIService) KubernetesPatchResourceExecute(r ApiKubernetesPat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -5504,8 +5525,8 @@ func (a *KubernetesAPIService) KubernetesPatchResourceExecute(r ApiKubernetesPat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -5515,8 +5536,8 @@ func (a *KubernetesAPIService) KubernetesPatchResourceExecute(r ApiKubernetesPat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -5526,8 +5547,8 @@ func (a *KubernetesAPIService) KubernetesPatchResourceExecute(r ApiKubernetesPat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -5537,8 +5558,8 @@ func (a *KubernetesAPIService) KubernetesPatchResourceExecute(r ApiKubernetesPat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -5548,8 +5569,8 @@ func (a *KubernetesAPIService) KubernetesPatchResourceExecute(r ApiKubernetesPat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -5558,8 +5579,8 @@ func (a *KubernetesAPIService) KubernetesPatchResourceExecute(r ApiKubernetesPat
 }
 
 type ApiKubernetesPodLogsRequest struct {
-	ctx context.Context
-	ApiService *KubernetesAPIService
+	ctx                      context.Context
+	ApiService               *KubernetesAPIService
 	kubernetesPodLogsCommand *KubernetesPodLogsCommand
 }
 
@@ -5575,24 +5596,25 @@ func (r ApiKubernetesPodLogsRequest) Execute() (string, *http.Response, error) {
 /*
 KubernetesPodLogs Retrieve k8s pod logs
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubernetesPodLogsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubernetesPodLogsRequest
 */
 func (a *KubernetesAPIService) KubernetesPodLogs(ctx context.Context) ApiKubernetesPodLogsRequest {
 	return ApiKubernetesPodLogsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return string
+//
+//	@return string
 func (a *KubernetesAPIService) KubernetesPodLogsExecute(r ApiKubernetesPodLogsRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  string
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesPodLogs")
@@ -5668,8 +5690,8 @@ func (a *KubernetesAPIService) KubernetesPodLogsExecute(r ApiKubernetesPodLogsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -5679,8 +5701,8 @@ func (a *KubernetesAPIService) KubernetesPodLogsExecute(r ApiKubernetesPodLogsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -5690,8 +5712,8 @@ func (a *KubernetesAPIService) KubernetesPodLogsExecute(r ApiKubernetesPodLogsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -5701,8 +5723,8 @@ func (a *KubernetesAPIService) KubernetesPodLogsExecute(r ApiKubernetesPodLogsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -5712,8 +5734,8 @@ func (a *KubernetesAPIService) KubernetesPodLogsExecute(r ApiKubernetesPodLogsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -5723,8 +5745,8 @@ func (a *KubernetesAPIService) KubernetesPodLogsExecute(r ApiKubernetesPodLogsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -5742,11 +5764,11 @@ func (a *KubernetesAPIService) KubernetesPodLogsExecute(r ApiKubernetesPodLogsRe
 }
 
 type ApiKubernetesPodsListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *KubernetesAPIService
-	projectId int32
-	limit *int32
-	cursor *string
+	projectId  int32
+	limit      *int32
+	cursor     *string
 	searchTerm *string
 }
 
@@ -5772,26 +5794,27 @@ func (r ApiKubernetesPodsListRequest) Execute() (*PodsListDtoCursorStringPaginat
 /*
 KubernetesPodsList K8s pods list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiKubernetesPodsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiKubernetesPodsListRequest
 */
 func (a *KubernetesAPIService) KubernetesPodsList(ctx context.Context, projectId int32) ApiKubernetesPodsListRequest {
 	return ApiKubernetesPodsListRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return PodsListDtoCursorStringPaginatedResponse
+//
+//	@return PodsListDtoCursorStringPaginatedResponse
 func (a *KubernetesAPIService) KubernetesPodsListExecute(r ApiKubernetesPodsListRequest) (*PodsListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PodsListDtoCursorStringPaginatedResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PodsListDtoCursorStringPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesPodsList")
@@ -5879,8 +5902,8 @@ func (a *KubernetesAPIService) KubernetesPodsListExecute(r ApiKubernetesPodsList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -5890,8 +5913,8 @@ func (a *KubernetesAPIService) KubernetesPodsListExecute(r ApiKubernetesPodsList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -5901,8 +5924,8 @@ func (a *KubernetesAPIService) KubernetesPodsListExecute(r ApiKubernetesPodsList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -5912,8 +5935,8 @@ func (a *KubernetesAPIService) KubernetesPodsListExecute(r ApiKubernetesPodsList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -5923,8 +5946,8 @@ func (a *KubernetesAPIService) KubernetesPodsListExecute(r ApiKubernetesPodsList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -5934,8 +5957,8 @@ func (a *KubernetesAPIService) KubernetesPodsListExecute(r ApiKubernetesPodsList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -5953,11 +5976,11 @@ func (a *KubernetesAPIService) KubernetesPodsListExecute(r ApiKubernetesPodsList
 }
 
 type ApiKubernetesPvcListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *KubernetesAPIService
-	projectId int32
-	limit *int32
-	cursor *string
+	projectId  int32
+	limit      *int32
+	cursor     *string
 	searchTerm *string
 }
 
@@ -5983,26 +6006,27 @@ func (r ApiKubernetesPvcListRequest) Execute() (*PvcListDtoCursorStringPaginated
 /*
 KubernetesPvcList K8s pvc list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiKubernetesPvcListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiKubernetesPvcListRequest
 */
 func (a *KubernetesAPIService) KubernetesPvcList(ctx context.Context, projectId int32) ApiKubernetesPvcListRequest {
 	return ApiKubernetesPvcListRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return PvcListDtoCursorStringPaginatedResponse
+//
+//	@return PvcListDtoCursorStringPaginatedResponse
 func (a *KubernetesAPIService) KubernetesPvcListExecute(r ApiKubernetesPvcListRequest) (*PvcListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PvcListDtoCursorStringPaginatedResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PvcListDtoCursorStringPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesPvcList")
@@ -6090,8 +6114,8 @@ func (a *KubernetesAPIService) KubernetesPvcListExecute(r ApiKubernetesPvcListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -6101,8 +6125,8 @@ func (a *KubernetesAPIService) KubernetesPvcListExecute(r ApiKubernetesPvcListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -6112,8 +6136,8 @@ func (a *KubernetesAPIService) KubernetesPvcListExecute(r ApiKubernetesPvcListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -6123,8 +6147,8 @@ func (a *KubernetesAPIService) KubernetesPvcListExecute(r ApiKubernetesPvcListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -6134,8 +6158,8 @@ func (a *KubernetesAPIService) KubernetesPvcListExecute(r ApiKubernetesPvcListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -6145,8 +6169,8 @@ func (a *KubernetesAPIService) KubernetesPvcListExecute(r ApiKubernetesPvcListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -6164,9 +6188,9 @@ func (a *KubernetesAPIService) KubernetesPvcListExecute(r ApiKubernetesPvcListRe
 }
 
 type ApiKubernetesQuotaRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *KubernetesAPIService
-	projectId int32
+	projectId  int32
 }
 
 func (r ApiKubernetesQuotaRequest) Execute() (*KubernetesQuotaListDto, *http.Response, error) {
@@ -6176,26 +6200,27 @@ func (r ApiKubernetesQuotaRequest) Execute() (*KubernetesQuotaListDto, *http.Res
 /*
 KubernetesQuota K8s quota usage
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiKubernetesQuotaRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiKubernetesQuotaRequest
 */
 func (a *KubernetesAPIService) KubernetesQuota(ctx context.Context, projectId int32) ApiKubernetesQuotaRequest {
 	return ApiKubernetesQuotaRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return KubernetesQuotaListDto
+//
+//	@return KubernetesQuotaListDto
 func (a *KubernetesAPIService) KubernetesQuotaExecute(r ApiKubernetesQuotaRequest) (*KubernetesQuotaListDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *KubernetesQuotaListDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *KubernetesQuotaListDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesQuota")
@@ -6270,8 +6295,8 @@ func (a *KubernetesAPIService) KubernetesQuotaExecute(r ApiKubernetesQuotaReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -6281,8 +6306,8 @@ func (a *KubernetesAPIService) KubernetesQuotaExecute(r ApiKubernetesQuotaReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -6292,8 +6317,8 @@ func (a *KubernetesAPIService) KubernetesQuotaExecute(r ApiKubernetesQuotaReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -6303,8 +6328,8 @@ func (a *KubernetesAPIService) KubernetesQuotaExecute(r ApiKubernetesQuotaReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -6314,8 +6339,8 @@ func (a *KubernetesAPIService) KubernetesQuotaExecute(r ApiKubernetesQuotaReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -6325,8 +6350,8 @@ func (a *KubernetesAPIService) KubernetesQuotaExecute(r ApiKubernetesQuotaReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -6344,8 +6369,8 @@ func (a *KubernetesAPIService) KubernetesQuotaExecute(r ApiKubernetesQuotaReques
 }
 
 type ApiKubernetesRemovealertsRequest struct {
-	ctx context.Context
-	ApiService *KubernetesAPIService
+	ctx                context.Context
+	ApiService         *KubernetesAPIService
 	deleteAlertCommand *DeleteAlertCommand
 }
 
@@ -6361,22 +6386,22 @@ func (r ApiKubernetesRemovealertsRequest) Execute() (*http.Response, error) {
 /*
 KubernetesRemovealerts Remove k8s alerts
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubernetesRemovealertsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubernetesRemovealertsRequest
 */
 func (a *KubernetesAPIService) KubernetesRemovealerts(ctx context.Context) ApiKubernetesRemovealertsRequest {
 	return ApiKubernetesRemovealertsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *KubernetesAPIService) KubernetesRemovealertsExecute(r ApiKubernetesRemovealertsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesRemovealerts")
@@ -6452,8 +6477,8 @@ func (a *KubernetesAPIService) KubernetesRemovealertsExecute(r ApiKubernetesRemo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -6463,8 +6488,8 @@ func (a *KubernetesAPIService) KubernetesRemovealertsExecute(r ApiKubernetesRemo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -6474,8 +6499,8 @@ func (a *KubernetesAPIService) KubernetesRemovealertsExecute(r ApiKubernetesRemo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -6485,8 +6510,8 @@ func (a *KubernetesAPIService) KubernetesRemovealertsExecute(r ApiKubernetesRemo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -6496,8 +6521,8 @@ func (a *KubernetesAPIService) KubernetesRemovealertsExecute(r ApiKubernetesRemo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -6507,8 +6532,8 @@ func (a *KubernetesAPIService) KubernetesRemovealertsExecute(r ApiKubernetesRemo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -6517,9 +6542,9 @@ func (a *KubernetesAPIService) KubernetesRemovealertsExecute(r ApiKubernetesRemo
 }
 
 type ApiKubernetesResourcesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *KubernetesAPIService
-	projectId int32
+	projectId  int32
 }
 
 func (r ApiKubernetesResourcesRequest) Execute() (*KubernetesResourcesDto, *http.Response, error) {
@@ -6529,26 +6554,27 @@ func (r ApiKubernetesResourcesRequest) Execute() (*KubernetesResourcesDto, *http
 /*
 KubernetesResources Retrieve all total count
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiKubernetesResourcesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiKubernetesResourcesRequest
 */
 func (a *KubernetesAPIService) KubernetesResources(ctx context.Context, projectId int32) ApiKubernetesResourcesRequest {
 	return ApiKubernetesResourcesRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return KubernetesResourcesDto
+//
+//	@return KubernetesResourcesDto
 func (a *KubernetesAPIService) KubernetesResourcesExecute(r ApiKubernetesResourcesRequest) (*KubernetesResourcesDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *KubernetesResourcesDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *KubernetesResourcesDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesResources")
@@ -6623,8 +6649,8 @@ func (a *KubernetesAPIService) KubernetesResourcesExecute(r ApiKubernetesResourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -6634,8 +6660,8 @@ func (a *KubernetesAPIService) KubernetesResourcesExecute(r ApiKubernetesResourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -6645,8 +6671,8 @@ func (a *KubernetesAPIService) KubernetesResourcesExecute(r ApiKubernetesResourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -6656,8 +6682,8 @@ func (a *KubernetesAPIService) KubernetesResourcesExecute(r ApiKubernetesResourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -6667,8 +6693,8 @@ func (a *KubernetesAPIService) KubernetesResourcesExecute(r ApiKubernetesResourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -6678,8 +6704,8 @@ func (a *KubernetesAPIService) KubernetesResourcesExecute(r ApiKubernetesResourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -6697,11 +6723,11 @@ func (a *KubernetesAPIService) KubernetesResourcesExecute(r ApiKubernetesResourc
 }
 
 type ApiKubernetesSecretListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *KubernetesAPIService
-	projectId int32
-	limit *int32
-	cursor *string
+	projectId  int32
+	limit      *int32
+	cursor     *string
 	searchTerm *string
 }
 
@@ -6727,26 +6753,27 @@ func (r ApiKubernetesSecretListRequest) Execute() (*SecretListDtoCursorStringPag
 /*
 KubernetesSecretList K8s secret list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiKubernetesSecretListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiKubernetesSecretListRequest
 */
 func (a *KubernetesAPIService) KubernetesSecretList(ctx context.Context, projectId int32) ApiKubernetesSecretListRequest {
 	return ApiKubernetesSecretListRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return SecretListDtoCursorStringPaginatedResponse
+//
+//	@return SecretListDtoCursorStringPaginatedResponse
 func (a *KubernetesAPIService) KubernetesSecretListExecute(r ApiKubernetesSecretListRequest) (*SecretListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SecretListDtoCursorStringPaginatedResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SecretListDtoCursorStringPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesSecretList")
@@ -6834,8 +6861,8 @@ func (a *KubernetesAPIService) KubernetesSecretListExecute(r ApiKubernetesSecret
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -6845,8 +6872,8 @@ func (a *KubernetesAPIService) KubernetesSecretListExecute(r ApiKubernetesSecret
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -6856,8 +6883,8 @@ func (a *KubernetesAPIService) KubernetesSecretListExecute(r ApiKubernetesSecret
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -6867,8 +6894,8 @@ func (a *KubernetesAPIService) KubernetesSecretListExecute(r ApiKubernetesSecret
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -6878,8 +6905,8 @@ func (a *KubernetesAPIService) KubernetesSecretListExecute(r ApiKubernetesSecret
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -6889,8 +6916,8 @@ func (a *KubernetesAPIService) KubernetesSecretListExecute(r ApiKubernetesSecret
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -6908,11 +6935,11 @@ func (a *KubernetesAPIService) KubernetesSecretListExecute(r ApiKubernetesSecret
 }
 
 type ApiKubernetesServicesListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *KubernetesAPIService
-	projectId int32
-	limit *int32
-	cursor *string
+	projectId  int32
+	limit      *int32
+	cursor     *string
 	searchTerm *string
 }
 
@@ -6938,26 +6965,27 @@ func (r ApiKubernetesServicesListRequest) Execute() (*ServiceListDtoCursorString
 /*
 KubernetesServicesList K8s service list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiKubernetesServicesListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiKubernetesServicesListRequest
 */
 func (a *KubernetesAPIService) KubernetesServicesList(ctx context.Context, projectId int32) ApiKubernetesServicesListRequest {
 	return ApiKubernetesServicesListRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return ServiceListDtoCursorStringPaginatedResponse
+//
+//	@return ServiceListDtoCursorStringPaginatedResponse
 func (a *KubernetesAPIService) KubernetesServicesListExecute(r ApiKubernetesServicesListRequest) (*ServiceListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ServiceListDtoCursorStringPaginatedResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServiceListDtoCursorStringPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesServicesList")
@@ -7045,8 +7073,8 @@ func (a *KubernetesAPIService) KubernetesServicesListExecute(r ApiKubernetesServ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -7056,8 +7084,8 @@ func (a *KubernetesAPIService) KubernetesServicesListExecute(r ApiKubernetesServ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -7067,8 +7095,8 @@ func (a *KubernetesAPIService) KubernetesServicesListExecute(r ApiKubernetesServ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -7078,8 +7106,8 @@ func (a *KubernetesAPIService) KubernetesServicesListExecute(r ApiKubernetesServ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -7089,8 +7117,8 @@ func (a *KubernetesAPIService) KubernetesServicesListExecute(r ApiKubernetesServ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -7100,8 +7128,8 @@ func (a *KubernetesAPIService) KubernetesServicesListExecute(r ApiKubernetesServ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -7119,8 +7147,8 @@ func (a *KubernetesAPIService) KubernetesServicesListExecute(r ApiKubernetesServ
 }
 
 type ApiKubernetesSilenceManagerRequest struct {
-	ctx context.Context
-	ApiService *KubernetesAPIService
+	ctx                      context.Context
+	ApiService               *KubernetesAPIService
 	silenceOperationsCommand *SilenceOperationsCommand
 }
 
@@ -7136,22 +7164,22 @@ func (r ApiKubernetesSilenceManagerRequest) Execute() (*http.Response, error) {
 /*
 KubernetesSilenceManager Silence management for k8s alerts
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubernetesSilenceManagerRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubernetesSilenceManagerRequest
 */
 func (a *KubernetesAPIService) KubernetesSilenceManager(ctx context.Context) ApiKubernetesSilenceManagerRequest {
 	return ApiKubernetesSilenceManagerRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *KubernetesAPIService) KubernetesSilenceManagerExecute(r ApiKubernetesSilenceManagerRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesSilenceManager")
@@ -7227,8 +7255,8 @@ func (a *KubernetesAPIService) KubernetesSilenceManagerExecute(r ApiKubernetesSi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -7238,8 +7266,8 @@ func (a *KubernetesAPIService) KubernetesSilenceManagerExecute(r ApiKubernetesSi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -7249,8 +7277,8 @@ func (a *KubernetesAPIService) KubernetesSilenceManagerExecute(r ApiKubernetesSi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -7260,8 +7288,8 @@ func (a *KubernetesAPIService) KubernetesSilenceManagerExecute(r ApiKubernetesSi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -7271,8 +7299,8 @@ func (a *KubernetesAPIService) KubernetesSilenceManagerExecute(r ApiKubernetesSi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -7282,8 +7310,8 @@ func (a *KubernetesAPIService) KubernetesSilenceManagerExecute(r ApiKubernetesSi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -7292,8 +7320,8 @@ func (a *KubernetesAPIService) KubernetesSilenceManagerExecute(r ApiKubernetesSi
 }
 
 type ApiKubernetesStsActionsRequest struct {
-	ctx context.Context
-	ApiService *KubernetesAPIService
+	ctx              context.Context
+	ApiService       *KubernetesAPIService
 	stsActionCommand *StsActionCommand
 }
 
@@ -7309,22 +7337,22 @@ func (r ApiKubernetesStsActionsRequest) Execute() (*http.Response, error) {
 /*
 KubernetesStsActions Stateful set actions
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubernetesStsActionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubernetesStsActionsRequest
 */
 func (a *KubernetesAPIService) KubernetesStsActions(ctx context.Context) ApiKubernetesStsActionsRequest {
 	return ApiKubernetesStsActionsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *KubernetesAPIService) KubernetesStsActionsExecute(r ApiKubernetesStsActionsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesStsActions")
@@ -7400,8 +7428,8 @@ func (a *KubernetesAPIService) KubernetesStsActionsExecute(r ApiKubernetesStsAct
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -7411,8 +7439,8 @@ func (a *KubernetesAPIService) KubernetesStsActionsExecute(r ApiKubernetesStsAct
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -7422,8 +7450,8 @@ func (a *KubernetesAPIService) KubernetesStsActionsExecute(r ApiKubernetesStsAct
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -7433,8 +7461,8 @@ func (a *KubernetesAPIService) KubernetesStsActionsExecute(r ApiKubernetesStsAct
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -7444,8 +7472,8 @@ func (a *KubernetesAPIService) KubernetesStsActionsExecute(r ApiKubernetesStsAct
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -7455,8 +7483,8 @@ func (a *KubernetesAPIService) KubernetesStsActionsExecute(r ApiKubernetesStsAct
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -7465,11 +7493,11 @@ func (a *KubernetesAPIService) KubernetesStsActionsExecute(r ApiKubernetesStsAct
 }
 
 type ApiKubernetesStsListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *KubernetesAPIService
-	projectId int32
-	limit *int32
-	cursor *string
+	projectId  int32
+	limit      *int32
+	cursor     *string
 	searchTerm *string
 }
 
@@ -7495,26 +7523,27 @@ func (r ApiKubernetesStsListRequest) Execute() (*StatefulSetListDtoCursorStringP
 /*
 KubernetesStsList K8s sts list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiKubernetesStsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiKubernetesStsListRequest
 */
 func (a *KubernetesAPIService) KubernetesStsList(ctx context.Context, projectId int32) ApiKubernetesStsListRequest {
 	return ApiKubernetesStsListRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return StatefulSetListDtoCursorStringPaginatedResponse
+//
+//	@return StatefulSetListDtoCursorStringPaginatedResponse
 func (a *KubernetesAPIService) KubernetesStsListExecute(r ApiKubernetesStsListRequest) (*StatefulSetListDtoCursorStringPaginatedResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *StatefulSetListDtoCursorStringPaginatedResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *StatefulSetListDtoCursorStringPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesStsList")
@@ -7602,8 +7631,8 @@ func (a *KubernetesAPIService) KubernetesStsListExecute(r ApiKubernetesStsListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -7613,8 +7642,8 @@ func (a *KubernetesAPIService) KubernetesStsListExecute(r ApiKubernetesStsListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -7624,8 +7653,8 @@ func (a *KubernetesAPIService) KubernetesStsListExecute(r ApiKubernetesStsListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -7635,8 +7664,8 @@ func (a *KubernetesAPIService) KubernetesStsListExecute(r ApiKubernetesStsListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -7646,8 +7675,8 @@ func (a *KubernetesAPIService) KubernetesStsListExecute(r ApiKubernetesStsListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -7657,8 +7686,8 @@ func (a *KubernetesAPIService) KubernetesStsListExecute(r ApiKubernetesStsListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -7676,9 +7705,9 @@ func (a *KubernetesAPIService) KubernetesStsListExecute(r ApiKubernetesStsListRe
 }
 
 type ApiKubernetesUpdateAlertRequest struct {
-	ctx context.Context
-	ApiService *KubernetesAPIService
-	alertId int32
+	ctx                      context.Context
+	ApiService               *KubernetesAPIService
+	alertId                  int32
 	updateKubernetesAlertDto *UpdateKubernetesAlertDto
 }
 
@@ -7694,24 +7723,24 @@ func (r ApiKubernetesUpdateAlertRequest) Execute() (*http.Response, error) {
 /*
 KubernetesUpdateAlert Update k8s alert
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param alertId
- @return ApiKubernetesUpdateAlertRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param alertId
+	@return ApiKubernetesUpdateAlertRequest
 */
 func (a *KubernetesAPIService) KubernetesUpdateAlert(ctx context.Context, alertId int32) ApiKubernetesUpdateAlertRequest {
 	return ApiKubernetesUpdateAlertRequest{
 		ApiService: a,
-		ctx: ctx,
-		alertId: alertId,
+		ctx:        ctx,
+		alertId:    alertId,
 	}
 }
 
 // Execute executes the request
 func (a *KubernetesAPIService) KubernetesUpdateAlertExecute(r ApiKubernetesUpdateAlertRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesUpdateAlert")
@@ -7788,8 +7817,8 @@ func (a *KubernetesAPIService) KubernetesUpdateAlertExecute(r ApiKubernetesUpdat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -7799,8 +7828,8 @@ func (a *KubernetesAPIService) KubernetesUpdateAlertExecute(r ApiKubernetesUpdat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -7810,8 +7839,8 @@ func (a *KubernetesAPIService) KubernetesUpdateAlertExecute(r ApiKubernetesUpdat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -7821,8 +7850,8 @@ func (a *KubernetesAPIService) KubernetesUpdateAlertExecute(r ApiKubernetesUpdat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -7832,8 +7861,8 @@ func (a *KubernetesAPIService) KubernetesUpdateAlertExecute(r ApiKubernetesUpdat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -7843,8 +7872,8 @@ func (a *KubernetesAPIService) KubernetesUpdateAlertExecute(r ApiKubernetesUpdat
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
