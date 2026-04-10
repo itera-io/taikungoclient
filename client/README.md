@@ -706,6 +706,7 @@ Class | Method | HTTP request | Description
 *UsersAPI* | [**UsersDowngradeRole**](docs/UsersAPI.md#usersdowngraderole) | **Post** /api/v1/users/downgrade | Downgrade user role
 *UsersAPI* | [**UsersDropdown**](docs/UsersAPI.md#usersdropdown) | **Get** /api/v1/users/dropdown | Retrieve user info
 *UsersAPI* | [**UsersForceToResetPassword**](docs/UsersAPI.md#usersforcetoresetpassword) | **Post** /api/v1/users/force-to-reset | Force to reset password
+*UsersAPI* | [**UsersManageRole**](docs/UsersAPI.md#usersmanagerole) | **Post** /api/v1/users/manage-role | Manage user role
 *UsersAPI* | [**UsersPromoteRole**](docs/UsersAPI.md#userspromoterole) | **Post** /api/v1/users/promote-role | Promote user role
 *UsersAPI* | [**UsersToggleMaintenanceMode**](docs/UsersAPI.md#userstogglemaintenancemode) | **Post** /api/v1/users/togglemaintenancemode | Toggle maintenance mode
 *UsersAPI* | [**UsersToggleNotificationMode**](docs/UsersAPI.md#userstogglenotificationmode) | **Post** /api/v1/users/togglenotificationmode | Toggle notification mode
@@ -1230,6 +1231,7 @@ Class | Method | HTTP request | Description
  - [LokiLogsQuery](docs/LokiLogsQuery.md)
  - [LokiResult](docs/LokiResult.md)
  - [MainProjectDto](docs/MainProjectDto.md)
+ - [ManageRoleCommand](docs/ManageRoleCommand.md)
  - [Metadata](docs/Metadata.md)
  - [MetricData](docs/MetricData.md)
  - [MetricResult](docs/MetricResult.md)

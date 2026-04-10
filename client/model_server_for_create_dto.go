@@ -35,6 +35,7 @@ type ServerForCreateDto struct {
 	ProxmoxRole          *ProxmoxRole              `json:"proxmoxRole,omitempty"`
 	Hypervisor           NullableString            `json:"hypervisor,omitempty"`
 	KubernetesNodeLabels []KubernetesNodeLabelsDto `json:"kubernetesNodeLabels,omitempty"`
+	SubnetId             NullableString            `json:"subnetId,omitempty"`
 	ReplicaCount         NullableInt32             `json:"replicaCount,omitempty"`
 	UseLocalDisk         *bool                     `json:"useLocalDisk,omitempty"`
 	CskVersion           NullableString            `json:"cskVersion,omitempty"`
@@ -607,6 +608,49 @@ func (o *ServerForCreateDto) SetKubernetesNodeLabels(v []KubernetesNodeLabelsDto
 	o.KubernetesNodeLabels = v
 }
 
+// GetSubnetId returns the SubnetId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ServerForCreateDto) GetSubnetId() string {
+	if o == nil || IsNil(o.SubnetId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.SubnetId.Get()
+}
+
+// GetSubnetIdOk returns a tuple with the SubnetId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ServerForCreateDto) GetSubnetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SubnetId.Get(), o.SubnetId.IsSet()
+}
+
+// HasSubnetId returns a boolean if a field has been set.
+func (o *ServerForCreateDto) HasSubnetId() bool {
+	if o != nil && o.SubnetId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSubnetId gets a reference to the given NullableString and assigns it to the SubnetId field.
+func (o *ServerForCreateDto) SetSubnetId(v string) {
+	o.SubnetId.Set(&v)
+}
+
+// SetSubnetIdNil sets the value for SubnetId to be an explicit nil
+func (o *ServerForCreateDto) SetSubnetIdNil() {
+	o.SubnetId.Set(nil)
+}
+
+// UnsetSubnetId ensures that no value is present for SubnetId, not even an explicit nil
+func (o *ServerForCreateDto) UnsetSubnetId() {
+	o.SubnetId.Unset()
+}
+
 // GetReplicaCount returns the ReplicaCount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServerForCreateDto) GetReplicaCount() int32 {
 	if o == nil || IsNil(o.ReplicaCount.Get()) {
@@ -780,6 +824,9 @@ func (o ServerForCreateDto) ToMap() (map[string]interface{}, error) {
 	if o.KubernetesNodeLabels != nil {
 		toSerialize["kubernetesNodeLabels"] = o.KubernetesNodeLabels
 	}
+	if o.SubnetId.IsSet() {
+		toSerialize["subnetId"] = o.SubnetId.Get()
+	}
 	if o.ReplicaCount.IsSet() {
 		toSerialize["replicaCount"] = o.ReplicaCount.Get()
 	}
@@ -826,6 +873,7 @@ func (o *ServerForCreateDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "proxmoxRole")
 		delete(additionalProperties, "hypervisor")
 		delete(additionalProperties, "kubernetesNodeLabels")
+		delete(additionalProperties, "subnetId")
 		delete(additionalProperties, "replicaCount")
 		delete(additionalProperties, "useLocalDisk")
 		delete(additionalProperties, "cskVersion")

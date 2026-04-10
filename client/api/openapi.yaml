@@ -32864,6 +32864,15 @@ paths:
   /api/v1/robot/scope-list:
     get:
       operationId: robot-scope-list
+      parameters:
+      - explode: true
+        in: query
+        name: GlobalRobot
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -39593,6 +39602,58 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
       summary: Force to reset password
+      tags:
+      - Users
+  /api/v1/users/manage-role:
+    post:
+      operationId: users-manage-role
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ManageRoleCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Manage user role
       tags:
       - Users
   /api/v1/users/promote-role:
@@ -58189,6 +58250,17 @@ components:
         status:
           $ref: "#/components/schemas/ProjectStatus"
       type: object
+    ManageRoleCommand:
+      example:
+        targetRole: None
+        userId: userId
+      properties:
+        userId:
+          nullable: true
+          type: string
+        targetRole:
+          $ref: "#/components/schemas/EGlobalRole"
+      type: object
     Metadata:
       example:
         vcsCommitTimestamp: vcsCommitTimestamp
@@ -66805,6 +66877,7 @@ components:
     ServerForCreateDto:
       example:
         proxmoxExtraDiskSize: 5
+        subnetId: subnetId
         role: Bastion
         spotPrice: 5.962133916683182
         count: 1
@@ -66871,6 +66944,9 @@ components:
             $ref: "#/components/schemas/KubernetesNodeLabelsDto"
           nullable: true
           type: array
+        subnetId:
+          nullable: true
+          type: string
         replicaCount:
           format: int32
           nullable: true
