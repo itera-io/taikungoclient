@@ -21,7 +21,7 @@ type EDaemonSetAction string
 
 // List of EDaemonSetAction
 const (
-	EDAEMONSETACTION_RESTART EDaemonSetAction = "Restart"
+	EDAEMONSETACTION_RESTART  EDaemonSetAction = "Restart"
 	EDAEMONSETACTION_ROLLBACK EDaemonSetAction = "Rollback"
 )
 
@@ -109,4 +109,3 @@ func (v *NullableEDaemonSetAction) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

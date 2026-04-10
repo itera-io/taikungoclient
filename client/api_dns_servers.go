@@ -20,13 +20,12 @@ import (
 	"strings"
 )
 
-
 // DnsServersAPIService DnsServersAPI service
 type DnsServersAPIService service
 
 type ApiDnsserversCreateRequest struct {
-	ctx context.Context
-	ApiService *DnsServersAPIService
+	ctx                    context.Context
+	ApiService             *DnsServersAPIService
 	createDnsServerCommand *CreateDnsServerCommand
 }
 
@@ -42,24 +41,25 @@ func (r ApiDnsserversCreateRequest) Execute() (*ApiResponse, *http.Response, err
 /*
 DnsserversCreate Create dns servers for access profile
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiDnsserversCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiDnsserversCreateRequest
 */
 func (a *DnsServersAPIService) DnsserversCreate(ctx context.Context) ApiDnsserversCreateRequest {
 	return ApiDnsserversCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ApiResponse
+//
+//	@return ApiResponse
 func (a *DnsServersAPIService) DnsserversCreateExecute(r ApiDnsserversCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ApiResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DnsServersAPIService.DnsserversCreate")
@@ -135,8 +135,8 @@ func (a *DnsServersAPIService) DnsserversCreateExecute(r ApiDnsserversCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -146,8 +146,8 @@ func (a *DnsServersAPIService) DnsserversCreateExecute(r ApiDnsserversCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -157,8 +157,8 @@ func (a *DnsServersAPIService) DnsserversCreateExecute(r ApiDnsserversCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -168,8 +168,8 @@ func (a *DnsServersAPIService) DnsserversCreateExecute(r ApiDnsserversCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -179,8 +179,8 @@ func (a *DnsServersAPIService) DnsserversCreateExecute(r ApiDnsserversCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -190,8 +190,8 @@ func (a *DnsServersAPIService) DnsserversCreateExecute(r ApiDnsserversCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -209,9 +209,9 @@ func (a *DnsServersAPIService) DnsserversCreateExecute(r ApiDnsserversCreateRequ
 }
 
 type ApiDnsserversDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *DnsServersAPIService
-	id int32
+	id         int32
 }
 
 func (r ApiDnsserversDeleteRequest) Execute() (*http.Response, error) {
@@ -221,24 +221,24 @@ func (r ApiDnsserversDeleteRequest) Execute() (*http.Response, error) {
 /*
 DnsserversDelete Delete DNS server
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiDnsserversDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiDnsserversDeleteRequest
 */
 func (a *DnsServersAPIService) DnsserversDelete(ctx context.Context, id int32) ApiDnsserversDeleteRequest {
 	return ApiDnsserversDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *DnsServersAPIService) DnsserversDeleteExecute(r ApiDnsserversDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DnsServersAPIService.DnsserversDelete")
@@ -313,8 +313,8 @@ func (a *DnsServersAPIService) DnsserversDeleteExecute(r ApiDnsserversDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -324,8 +324,8 @@ func (a *DnsServersAPIService) DnsserversDeleteExecute(r ApiDnsserversDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -335,8 +335,8 @@ func (a *DnsServersAPIService) DnsserversDeleteExecute(r ApiDnsserversDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -346,8 +346,8 @@ func (a *DnsServersAPIService) DnsserversDeleteExecute(r ApiDnsserversDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -357,8 +357,8 @@ func (a *DnsServersAPIService) DnsserversDeleteExecute(r ApiDnsserversDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -368,8 +368,8 @@ func (a *DnsServersAPIService) DnsserversDeleteExecute(r ApiDnsserversDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -378,9 +378,9 @@ func (a *DnsServersAPIService) DnsserversDeleteExecute(r ApiDnsserversDeleteRequ
 }
 
 type ApiDnsserversEditRequest struct {
-	ctx context.Context
-	ApiService *DnsServersAPIService
-	id int32
+	ctx                  context.Context
+	ApiService           *DnsServersAPIService
+	id                   int32
 	dnsNtpAddressEditDto *DnsNtpAddressEditDto
 }
 
@@ -396,24 +396,24 @@ func (r ApiDnsserversEditRequest) Execute() (*http.Response, error) {
 /*
 DnsserversEdit Edit dns server
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiDnsserversEditRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiDnsserversEditRequest
 */
 func (a *DnsServersAPIService) DnsserversEdit(ctx context.Context, id int32) ApiDnsserversEditRequest {
 	return ApiDnsserversEditRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *DnsServersAPIService) DnsserversEditExecute(r ApiDnsserversEditRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DnsServersAPIService.DnsserversEdit")
@@ -490,8 +490,8 @@ func (a *DnsServersAPIService) DnsserversEditExecute(r ApiDnsserversEditRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -501,8 +501,8 @@ func (a *DnsServersAPIService) DnsserversEditExecute(r ApiDnsserversEditRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -512,8 +512,8 @@ func (a *DnsServersAPIService) DnsserversEditExecute(r ApiDnsserversEditRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -523,8 +523,8 @@ func (a *DnsServersAPIService) DnsserversEditExecute(r ApiDnsserversEditRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -534,8 +534,8 @@ func (a *DnsServersAPIService) DnsserversEditExecute(r ApiDnsserversEditRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -545,8 +545,8 @@ func (a *DnsServersAPIService) DnsserversEditExecute(r ApiDnsserversEditRequest)
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -555,10 +555,10 @@ func (a *DnsServersAPIService) DnsserversEditExecute(r ApiDnsserversEditRequest)
 }
 
 type ApiDnsserversListRequest struct {
-	ctx context.Context
-	ApiService *DnsServersAPIService
+	ctx             context.Context
+	ApiService      *DnsServersAPIService
 	accessProfileId int32
-	search *string
+	search          *string
 }
 
 // Search related data
@@ -574,26 +574,27 @@ func (r ApiDnsserversListRequest) Execute() ([]DnsServersListDto, *http.Response
 /*
 DnsserversList List dns servers by profile id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param accessProfileId Id should be positive integer
- @return ApiDnsserversListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param accessProfileId Id should be positive integer
+	@return ApiDnsserversListRequest
 */
 func (a *DnsServersAPIService) DnsserversList(ctx context.Context, accessProfileId int32) ApiDnsserversListRequest {
 	return ApiDnsserversListRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:      a,
+		ctx:             ctx,
 		accessProfileId: accessProfileId,
 	}
 }
 
 // Execute executes the request
-//  @return []DnsServersListDto
+//
+//	@return []DnsServersListDto
 func (a *DnsServersAPIService) DnsserversListExecute(r ApiDnsserversListRequest) ([]DnsServersListDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []DnsServersListDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []DnsServersListDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DnsServersAPIService.DnsserversList")
@@ -671,8 +672,8 @@ func (a *DnsServersAPIService) DnsserversListExecute(r ApiDnsserversListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -682,8 +683,8 @@ func (a *DnsServersAPIService) DnsserversListExecute(r ApiDnsserversListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -693,8 +694,8 @@ func (a *DnsServersAPIService) DnsserversListExecute(r ApiDnsserversListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -704,8 +705,8 @@ func (a *DnsServersAPIService) DnsserversListExecute(r ApiDnsserversListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -715,8 +716,8 @@ func (a *DnsServersAPIService) DnsserversListExecute(r ApiDnsserversListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -726,8 +727,8 @@ func (a *DnsServersAPIService) DnsserversListExecute(r ApiDnsserversListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

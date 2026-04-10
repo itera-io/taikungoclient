@@ -20,13 +20,12 @@ import (
 	"strings"
 )
 
-
 // VirtualClusterAPIService VirtualClusterAPI service
 type VirtualClusterAPIService service
 
 type ApiVirtualClusterCreateRequest struct {
-	ctx context.Context
-	ApiService *VirtualClusterAPIService
+	ctx                         context.Context
+	ApiService                  *VirtualClusterAPIService
 	createVirtualClusterCommand *CreateVirtualClusterCommand
 }
 
@@ -42,22 +41,22 @@ func (r ApiVirtualClusterCreateRequest) Execute() (*http.Response, error) {
 /*
 VirtualClusterCreate Create virtual cluster
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVirtualClusterCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVirtualClusterCreateRequest
 */
 func (a *VirtualClusterAPIService) VirtualClusterCreate(ctx context.Context) ApiVirtualClusterCreateRequest {
 	return ApiVirtualClusterCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *VirtualClusterAPIService) VirtualClusterCreateExecute(r ApiVirtualClusterCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VirtualClusterAPIService.VirtualClusterCreate")
@@ -133,8 +132,8 @@ func (a *VirtualClusterAPIService) VirtualClusterCreateExecute(r ApiVirtualClust
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -144,8 +143,8 @@ func (a *VirtualClusterAPIService) VirtualClusterCreateExecute(r ApiVirtualClust
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -155,8 +154,8 @@ func (a *VirtualClusterAPIService) VirtualClusterCreateExecute(r ApiVirtualClust
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -166,8 +165,8 @@ func (a *VirtualClusterAPIService) VirtualClusterCreateExecute(r ApiVirtualClust
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -177,8 +176,8 @@ func (a *VirtualClusterAPIService) VirtualClusterCreateExecute(r ApiVirtualClust
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -188,8 +187,8 @@ func (a *VirtualClusterAPIService) VirtualClusterCreateExecute(r ApiVirtualClust
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -198,8 +197,8 @@ func (a *VirtualClusterAPIService) VirtualClusterCreateExecute(r ApiVirtualClust
 }
 
 type ApiVirtualClusterDeleteRequest struct {
-	ctx context.Context
-	ApiService *VirtualClusterAPIService
+	ctx                         context.Context
+	ApiService                  *VirtualClusterAPIService
 	deleteVirtualClusterCommand *DeleteVirtualClusterCommand
 }
 
@@ -215,22 +214,22 @@ func (r ApiVirtualClusterDeleteRequest) Execute() (*http.Response, error) {
 /*
 VirtualClusterDelete Delete virtual cluster
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVirtualClusterDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVirtualClusterDeleteRequest
 */
 func (a *VirtualClusterAPIService) VirtualClusterDelete(ctx context.Context) ApiVirtualClusterDeleteRequest {
 	return ApiVirtualClusterDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *VirtualClusterAPIService) VirtualClusterDeleteExecute(r ApiVirtualClusterDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VirtualClusterAPIService.VirtualClusterDelete")
@@ -306,8 +305,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDeleteExecute(r ApiVirtualClust
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -317,8 +316,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDeleteExecute(r ApiVirtualClust
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -328,8 +327,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDeleteExecute(r ApiVirtualClust
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -339,8 +338,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDeleteExecute(r ApiVirtualClust
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -350,8 +349,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDeleteExecute(r ApiVirtualClust
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -361,8 +360,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDeleteExecute(r ApiVirtualClust
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -371,8 +370,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDeleteExecute(r ApiVirtualClust
 }
 
 type ApiVirtualClusterDisableAiRequest struct {
-	ctx context.Context
-	ApiService *VirtualClusterAPIService
+	ctx                            context.Context
+	ApiService                     *VirtualClusterAPIService
 	virtualClusterDisableAiCommand *VirtualClusterDisableAiCommand
 }
 
@@ -388,22 +387,22 @@ func (r ApiVirtualClusterDisableAiRequest) Execute() (*http.Response, error) {
 /*
 VirtualClusterDisableAi Disable ai for virtual cluster
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVirtualClusterDisableAiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVirtualClusterDisableAiRequest
 */
 func (a *VirtualClusterAPIService) VirtualClusterDisableAi(ctx context.Context) ApiVirtualClusterDisableAiRequest {
 	return ApiVirtualClusterDisableAiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *VirtualClusterAPIService) VirtualClusterDisableAiExecute(r ApiVirtualClusterDisableAiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VirtualClusterAPIService.VirtualClusterDisableAi")
@@ -479,8 +478,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableAiExecute(r ApiVirtualCl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -490,8 +489,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableAiExecute(r ApiVirtualCl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -501,8 +500,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableAiExecute(r ApiVirtualCl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -512,8 +511,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableAiExecute(r ApiVirtualCl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -523,8 +522,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableAiExecute(r ApiVirtualCl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -534,8 +533,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableAiExecute(r ApiVirtualCl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -544,8 +543,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableAiExecute(r ApiVirtualCl
 }
 
 type ApiVirtualClusterDisableBackupRequest struct {
-	ctx context.Context
-	ApiService *VirtualClusterAPIService
+	ctx                                context.Context
+	ApiService                         *VirtualClusterAPIService
 	virtualClusterDisableBackupCommand *VirtualClusterDisableBackupCommand
 }
 
@@ -561,22 +560,22 @@ func (r ApiVirtualClusterDisableBackupRequest) Execute() (*http.Response, error)
 /*
 VirtualClusterDisableBackup Disable backup for virtual cluster
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVirtualClusterDisableBackupRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVirtualClusterDisableBackupRequest
 */
 func (a *VirtualClusterAPIService) VirtualClusterDisableBackup(ctx context.Context) ApiVirtualClusterDisableBackupRequest {
 	return ApiVirtualClusterDisableBackupRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *VirtualClusterAPIService) VirtualClusterDisableBackupExecute(r ApiVirtualClusterDisableBackupRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VirtualClusterAPIService.VirtualClusterDisableBackup")
@@ -652,8 +651,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableBackupExecute(r ApiVirtu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -663,8 +662,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableBackupExecute(r ApiVirtu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -674,8 +673,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableBackupExecute(r ApiVirtu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -685,8 +684,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableBackupExecute(r ApiVirtu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -696,8 +695,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableBackupExecute(r ApiVirtu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -707,8 +706,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableBackupExecute(r ApiVirtu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -717,8 +716,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableBackupExecute(r ApiVirtu
 }
 
 type ApiVirtualClusterDisableMonitoringRequest struct {
-	ctx context.Context
-	ApiService *VirtualClusterAPIService
+	ctx                                    context.Context
+	ApiService                             *VirtualClusterAPIService
 	virtualClusterDisableMonitoringCommand *VirtualClusterDisableMonitoringCommand
 }
 
@@ -734,22 +733,22 @@ func (r ApiVirtualClusterDisableMonitoringRequest) Execute() (*http.Response, er
 /*
 VirtualClusterDisableMonitoring Disable monitoring for virtual cluster
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVirtualClusterDisableMonitoringRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVirtualClusterDisableMonitoringRequest
 */
 func (a *VirtualClusterAPIService) VirtualClusterDisableMonitoring(ctx context.Context) ApiVirtualClusterDisableMonitoringRequest {
 	return ApiVirtualClusterDisableMonitoringRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *VirtualClusterAPIService) VirtualClusterDisableMonitoringExecute(r ApiVirtualClusterDisableMonitoringRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VirtualClusterAPIService.VirtualClusterDisableMonitoring")
@@ -825,8 +824,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableMonitoringExecute(r ApiV
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -836,8 +835,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableMonitoringExecute(r ApiV
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -847,8 +846,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableMonitoringExecute(r ApiV
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -858,8 +857,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableMonitoringExecute(r ApiV
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -869,8 +868,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableMonitoringExecute(r ApiV
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -880,8 +879,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableMonitoringExecute(r ApiV
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -890,8 +889,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableMonitoringExecute(r ApiV
 }
 
 type ApiVirtualClusterDisableOpaRequest struct {
-	ctx context.Context
-	ApiService *VirtualClusterAPIService
+	ctx                             context.Context
+	ApiService                      *VirtualClusterAPIService
 	virtualClusterDisableOpaCommand *VirtualClusterDisableOpaCommand
 }
 
@@ -907,22 +906,22 @@ func (r ApiVirtualClusterDisableOpaRequest) Execute() (*http.Response, error) {
 /*
 VirtualClusterDisableOpa Disable opa for virtual cluster
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVirtualClusterDisableOpaRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVirtualClusterDisableOpaRequest
 */
 func (a *VirtualClusterAPIService) VirtualClusterDisableOpa(ctx context.Context) ApiVirtualClusterDisableOpaRequest {
 	return ApiVirtualClusterDisableOpaRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *VirtualClusterAPIService) VirtualClusterDisableOpaExecute(r ApiVirtualClusterDisableOpaRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VirtualClusterAPIService.VirtualClusterDisableOpa")
@@ -998,8 +997,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableOpaExecute(r ApiVirtualC
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1009,8 +1008,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableOpaExecute(r ApiVirtualC
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1020,8 +1019,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableOpaExecute(r ApiVirtualC
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1031,8 +1030,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableOpaExecute(r ApiVirtualC
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1042,8 +1041,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableOpaExecute(r ApiVirtualC
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1053,8 +1052,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableOpaExecute(r ApiVirtualC
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1063,8 +1062,8 @@ func (a *VirtualClusterAPIService) VirtualClusterDisableOpaExecute(r ApiVirtualC
 }
 
 type ApiVirtualClusterEditQuotasRequest struct {
-	ctx context.Context
-	ApiService *VirtualClusterAPIService
+	ctx                             context.Context
+	ApiService                      *VirtualClusterAPIService
 	editVirtualClusterQuotasCommand *EditVirtualClusterQuotasCommand
 }
 
@@ -1080,22 +1079,22 @@ func (r ApiVirtualClusterEditQuotasRequest) Execute() (*http.Response, error) {
 /*
 VirtualClusterEditQuotas Edit virtual cluster resource quotas and limit ranges
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVirtualClusterEditQuotasRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVirtualClusterEditQuotasRequest
 */
 func (a *VirtualClusterAPIService) VirtualClusterEditQuotas(ctx context.Context) ApiVirtualClusterEditQuotasRequest {
 	return ApiVirtualClusterEditQuotasRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *VirtualClusterAPIService) VirtualClusterEditQuotasExecute(r ApiVirtualClusterEditQuotasRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VirtualClusterAPIService.VirtualClusterEditQuotas")
@@ -1171,8 +1170,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEditQuotasExecute(r ApiVirtualC
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1182,8 +1181,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEditQuotasExecute(r ApiVirtualC
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1193,8 +1192,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEditQuotasExecute(r ApiVirtualC
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1204,8 +1203,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEditQuotasExecute(r ApiVirtualC
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1215,8 +1214,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEditQuotasExecute(r ApiVirtualC
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1226,8 +1225,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEditQuotasExecute(r ApiVirtualC
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1236,8 +1235,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEditQuotasExecute(r ApiVirtualC
 }
 
 type ApiVirtualClusterEnableAiRequest struct {
-	ctx context.Context
-	ApiService *VirtualClusterAPIService
+	ctx                           context.Context
+	ApiService                    *VirtualClusterAPIService
 	virtualClusterEnableAiCommand *VirtualClusterEnableAiCommand
 }
 
@@ -1253,22 +1252,22 @@ func (r ApiVirtualClusterEnableAiRequest) Execute() (*http.Response, error) {
 /*
 VirtualClusterEnableAi Enable ai for virtual cluster
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVirtualClusterEnableAiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVirtualClusterEnableAiRequest
 */
 func (a *VirtualClusterAPIService) VirtualClusterEnableAi(ctx context.Context) ApiVirtualClusterEnableAiRequest {
 	return ApiVirtualClusterEnableAiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *VirtualClusterAPIService) VirtualClusterEnableAiExecute(r ApiVirtualClusterEnableAiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VirtualClusterAPIService.VirtualClusterEnableAi")
@@ -1344,8 +1343,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableAiExecute(r ApiVirtualClu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1355,8 +1354,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableAiExecute(r ApiVirtualClu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1366,8 +1365,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableAiExecute(r ApiVirtualClu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1377,8 +1376,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableAiExecute(r ApiVirtualClu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1388,8 +1387,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableAiExecute(r ApiVirtualClu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1399,8 +1398,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableAiExecute(r ApiVirtualClu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1409,8 +1408,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableAiExecute(r ApiVirtualClu
 }
 
 type ApiVirtualClusterEnableBackupRequest struct {
-	ctx context.Context
-	ApiService *VirtualClusterAPIService
+	ctx                               context.Context
+	ApiService                        *VirtualClusterAPIService
 	virtualClusterEnableBackupCommand *VirtualClusterEnableBackupCommand
 }
 
@@ -1426,22 +1425,22 @@ func (r ApiVirtualClusterEnableBackupRequest) Execute() (*http.Response, error) 
 /*
 VirtualClusterEnableBackup Enable backup for virtual cluster
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVirtualClusterEnableBackupRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVirtualClusterEnableBackupRequest
 */
 func (a *VirtualClusterAPIService) VirtualClusterEnableBackup(ctx context.Context) ApiVirtualClusterEnableBackupRequest {
 	return ApiVirtualClusterEnableBackupRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *VirtualClusterAPIService) VirtualClusterEnableBackupExecute(r ApiVirtualClusterEnableBackupRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VirtualClusterAPIService.VirtualClusterEnableBackup")
@@ -1517,8 +1516,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableBackupExecute(r ApiVirtua
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1528,8 +1527,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableBackupExecute(r ApiVirtua
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1539,8 +1538,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableBackupExecute(r ApiVirtua
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1550,8 +1549,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableBackupExecute(r ApiVirtua
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1561,8 +1560,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableBackupExecute(r ApiVirtua
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1572,8 +1571,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableBackupExecute(r ApiVirtua
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1582,8 +1581,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableBackupExecute(r ApiVirtua
 }
 
 type ApiVirtualClusterEnableMonitoringRequest struct {
-	ctx context.Context
-	ApiService *VirtualClusterAPIService
+	ctx                                   context.Context
+	ApiService                            *VirtualClusterAPIService
 	virtualClusterEnableMonitoringCommand *VirtualClusterEnableMonitoringCommand
 }
 
@@ -1599,22 +1598,22 @@ func (r ApiVirtualClusterEnableMonitoringRequest) Execute() (*http.Response, err
 /*
 VirtualClusterEnableMonitoring Enable monitoring for virtual cluster
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVirtualClusterEnableMonitoringRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVirtualClusterEnableMonitoringRequest
 */
 func (a *VirtualClusterAPIService) VirtualClusterEnableMonitoring(ctx context.Context) ApiVirtualClusterEnableMonitoringRequest {
 	return ApiVirtualClusterEnableMonitoringRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *VirtualClusterAPIService) VirtualClusterEnableMonitoringExecute(r ApiVirtualClusterEnableMonitoringRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VirtualClusterAPIService.VirtualClusterEnableMonitoring")
@@ -1690,8 +1689,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableMonitoringExecute(r ApiVi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1701,8 +1700,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableMonitoringExecute(r ApiVi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1712,8 +1711,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableMonitoringExecute(r ApiVi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1723,8 +1722,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableMonitoringExecute(r ApiVi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1734,8 +1733,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableMonitoringExecute(r ApiVi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1745,8 +1744,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableMonitoringExecute(r ApiVi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1755,8 +1754,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableMonitoringExecute(r ApiVi
 }
 
 type ApiVirtualClusterEnableOpaRequest struct {
-	ctx context.Context
-	ApiService *VirtualClusterAPIService
+	ctx                            context.Context
+	ApiService                     *VirtualClusterAPIService
 	virtualClusterEnableOpaCommand *VirtualClusterEnableOpaCommand
 }
 
@@ -1772,22 +1771,22 @@ func (r ApiVirtualClusterEnableOpaRequest) Execute() (*http.Response, error) {
 /*
 VirtualClusterEnableOpa Enable opa for virtual cluster
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVirtualClusterEnableOpaRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVirtualClusterEnableOpaRequest
 */
 func (a *VirtualClusterAPIService) VirtualClusterEnableOpa(ctx context.Context) ApiVirtualClusterEnableOpaRequest {
 	return ApiVirtualClusterEnableOpaRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *VirtualClusterAPIService) VirtualClusterEnableOpaExecute(r ApiVirtualClusterEnableOpaRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VirtualClusterAPIService.VirtualClusterEnableOpa")
@@ -1863,8 +1862,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableOpaExecute(r ApiVirtualCl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1874,8 +1873,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableOpaExecute(r ApiVirtualCl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1885,8 +1884,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableOpaExecute(r ApiVirtualCl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1896,8 +1895,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableOpaExecute(r ApiVirtualCl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1907,8 +1906,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableOpaExecute(r ApiVirtualCl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1918,8 +1917,8 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableOpaExecute(r ApiVirtualCl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1928,16 +1927,16 @@ func (a *VirtualClusterAPIService) VirtualClusterEnableOpaExecute(r ApiVirtualCl
 }
 
 type ApiVirtualClusterListRequest struct {
-	ctx context.Context
-	ApiService *VirtualClusterAPIService
+	ctx             context.Context
+	ApiService      *VirtualClusterAPIService
 	parentProjectId int32
-	limit *int32
-	offset *int32
-	sortBy *string
-	sortDirection *string
-	search *string
-	searchId *string
-	id *int32
+	limit           *int32
+	offset          *int32
+	sortBy          *string
+	sortDirection   *string
+	search          *string
+	searchId        *string
+	id              *int32
 }
 
 func (r ApiVirtualClusterListRequest) Limit(limit int32) ApiVirtualClusterListRequest {
@@ -1982,26 +1981,27 @@ func (r ApiVirtualClusterListRequest) Execute() (*VClusterList, *http.Response, 
 /*
 VirtualClusterList Retrieve all vCluster by given project
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param parentProjectId
- @return ApiVirtualClusterListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param parentProjectId
+	@return ApiVirtualClusterListRequest
 */
 func (a *VirtualClusterAPIService) VirtualClusterList(ctx context.Context, parentProjectId int32) ApiVirtualClusterListRequest {
 	return ApiVirtualClusterListRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:      a,
+		ctx:             ctx,
 		parentProjectId: parentProjectId,
 	}
 }
 
 // Execute executes the request
-//  @return VClusterList
+//
+//	@return VClusterList
 func (a *VirtualClusterAPIService) VirtualClusterListExecute(r ApiVirtualClusterListRequest) (*VClusterList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *VClusterList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *VClusterList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VirtualClusterAPIService.VirtualClusterList")
@@ -2097,8 +2097,8 @@ func (a *VirtualClusterAPIService) VirtualClusterListExecute(r ApiVirtualCluster
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2108,8 +2108,8 @@ func (a *VirtualClusterAPIService) VirtualClusterListExecute(r ApiVirtualCluster
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2119,8 +2119,8 @@ func (a *VirtualClusterAPIService) VirtualClusterListExecute(r ApiVirtualCluster
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2130,8 +2130,8 @@ func (a *VirtualClusterAPIService) VirtualClusterListExecute(r ApiVirtualCluster
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2141,8 +2141,8 @@ func (a *VirtualClusterAPIService) VirtualClusterListExecute(r ApiVirtualCluster
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2152,8 +2152,8 @@ func (a *VirtualClusterAPIService) VirtualClusterListExecute(r ApiVirtualCluster
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2171,9 +2171,9 @@ func (a *VirtualClusterAPIService) VirtualClusterListExecute(r ApiVirtualCluster
 }
 
 type ApiVirtualClusterQuotaRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *VirtualClusterAPIService
-	projectId int32
+	projectId  int32
 }
 
 func (r ApiVirtualClusterQuotaRequest) Execute() (*KubernetesQuotaListDto, *http.Response, error) {
@@ -2183,26 +2183,27 @@ func (r ApiVirtualClusterQuotaRequest) Execute() (*KubernetesQuotaListDto, *http
 /*
 VirtualClusterQuota Retrieve vcluster quota details
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiVirtualClusterQuotaRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiVirtualClusterQuotaRequest
 */
 func (a *VirtualClusterAPIService) VirtualClusterQuota(ctx context.Context, projectId int32) ApiVirtualClusterQuotaRequest {
 	return ApiVirtualClusterQuotaRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return KubernetesQuotaListDto
+//
+//	@return KubernetesQuotaListDto
 func (a *VirtualClusterAPIService) VirtualClusterQuotaExecute(r ApiVirtualClusterQuotaRequest) (*KubernetesQuotaListDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *KubernetesQuotaListDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *KubernetesQuotaListDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VirtualClusterAPIService.VirtualClusterQuota")
@@ -2277,8 +2278,8 @@ func (a *VirtualClusterAPIService) VirtualClusterQuotaExecute(r ApiVirtualCluste
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2288,8 +2289,8 @@ func (a *VirtualClusterAPIService) VirtualClusterQuotaExecute(r ApiVirtualCluste
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2299,8 +2300,8 @@ func (a *VirtualClusterAPIService) VirtualClusterQuotaExecute(r ApiVirtualCluste
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2310,8 +2311,8 @@ func (a *VirtualClusterAPIService) VirtualClusterQuotaExecute(r ApiVirtualCluste
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2321,8 +2322,8 @@ func (a *VirtualClusterAPIService) VirtualClusterQuotaExecute(r ApiVirtualCluste
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2332,8 +2333,8 @@ func (a *VirtualClusterAPIService) VirtualClusterQuotaExecute(r ApiVirtualCluste
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2351,7 +2352,7 @@ func (a *VirtualClusterAPIService) VirtualClusterQuotaExecute(r ApiVirtualCluste
 }
 
 type ApiVirtualClusterQuotaPresetsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *VirtualClusterAPIService
 }
 
@@ -2362,24 +2363,25 @@ func (r ApiVirtualClusterQuotaPresetsRequest) Execute() (*VirtualClusterQuotasDt
 /*
 VirtualClusterQuotaPresets Retrieve vCluster quota presets
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVirtualClusterQuotaPresetsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVirtualClusterQuotaPresetsRequest
 */
 func (a *VirtualClusterAPIService) VirtualClusterQuotaPresets(ctx context.Context) ApiVirtualClusterQuotaPresetsRequest {
 	return ApiVirtualClusterQuotaPresetsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return VirtualClusterQuotasDto
+//
+//	@return VirtualClusterQuotasDto
 func (a *VirtualClusterAPIService) VirtualClusterQuotaPresetsExecute(r ApiVirtualClusterQuotaPresetsRequest) (*VirtualClusterQuotasDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *VirtualClusterQuotasDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *VirtualClusterQuotasDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VirtualClusterAPIService.VirtualClusterQuotaPresets")
@@ -2453,8 +2455,8 @@ func (a *VirtualClusterAPIService) VirtualClusterQuotaPresetsExecute(r ApiVirtua
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2464,8 +2466,8 @@ func (a *VirtualClusterAPIService) VirtualClusterQuotaPresetsExecute(r ApiVirtua
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2475,8 +2477,8 @@ func (a *VirtualClusterAPIService) VirtualClusterQuotaPresetsExecute(r ApiVirtua
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2486,8 +2488,8 @@ func (a *VirtualClusterAPIService) VirtualClusterQuotaPresetsExecute(r ApiVirtua
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2497,8 +2499,8 @@ func (a *VirtualClusterAPIService) VirtualClusterQuotaPresetsExecute(r ApiVirtua
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2508,8 +2510,8 @@ func (a *VirtualClusterAPIService) VirtualClusterQuotaPresetsExecute(r ApiVirtua
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2527,9 +2529,9 @@ func (a *VirtualClusterAPIService) VirtualClusterQuotaPresetsExecute(r ApiVirtua
 }
 
 type ApiVirtualClusterVisibilityRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *VirtualClusterAPIService
-	projectId int32
+	projectId  int32
 }
 
 func (r ApiVirtualClusterVisibilityRequest) Execute() (*VClusterActionVisibilityDto, *http.Response, error) {
@@ -2539,26 +2541,27 @@ func (r ApiVirtualClusterVisibilityRequest) Execute() (*VClusterActionVisibility
 /*
 VirtualClusterVisibility Create button condition visibility
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiVirtualClusterVisibilityRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiVirtualClusterVisibilityRequest
 */
 func (a *VirtualClusterAPIService) VirtualClusterVisibility(ctx context.Context, projectId int32) ApiVirtualClusterVisibilityRequest {
 	return ApiVirtualClusterVisibilityRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return VClusterActionVisibilityDto
+//
+//	@return VClusterActionVisibilityDto
 func (a *VirtualClusterAPIService) VirtualClusterVisibilityExecute(r ApiVirtualClusterVisibilityRequest) (*VClusterActionVisibilityDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *VClusterActionVisibilityDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *VClusterActionVisibilityDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VirtualClusterAPIService.VirtualClusterVisibility")
@@ -2633,8 +2636,8 @@ func (a *VirtualClusterAPIService) VirtualClusterVisibilityExecute(r ApiVirtualC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2644,8 +2647,8 @@ func (a *VirtualClusterAPIService) VirtualClusterVisibilityExecute(r ApiVirtualC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2655,8 +2658,8 @@ func (a *VirtualClusterAPIService) VirtualClusterVisibilityExecute(r ApiVirtualC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2666,8 +2669,8 @@ func (a *VirtualClusterAPIService) VirtualClusterVisibilityExecute(r ApiVirtualC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2677,8 +2680,8 @@ func (a *VirtualClusterAPIService) VirtualClusterVisibilityExecute(r ApiVirtualC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2688,8 +2691,8 @@ func (a *VirtualClusterAPIService) VirtualClusterVisibilityExecute(r ApiVirtualC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

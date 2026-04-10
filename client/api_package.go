@@ -20,15 +20,14 @@ import (
 	"strings"
 )
 
-
 // PackageAPIService PackageAPI service
 type PackageAPIService service
 
 type ApiPackageDetailsRequest struct {
-	ctx context.Context
-	ApiService *PackageAPIService
-	repoName string
-	packageName string
+	ctx            context.Context
+	ApiService     *PackageAPIService
+	repoName       string
+	packageName    string
 	organizationId *int32
 }
 
@@ -44,28 +43,29 @@ func (r ApiPackageDetailsRequest) Execute() (*AvailablePackageDetailsDto, *http.
 /*
 PackageDetails Available helm package details
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param repoName
- @param packageName
- @return ApiPackageDetailsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param repoName
+	@param packageName
+	@return ApiPackageDetailsRequest
 */
 func (a *PackageAPIService) PackageDetails(ctx context.Context, repoName string, packageName string) ApiPackageDetailsRequest {
 	return ApiPackageDetailsRequest{
-		ApiService: a,
-		ctx: ctx,
-		repoName: repoName,
+		ApiService:  a,
+		ctx:         ctx,
+		repoName:    repoName,
 		packageName: packageName,
 	}
 }
 
 // Execute executes the request
-//  @return AvailablePackageDetailsDto
+//
+//	@return AvailablePackageDetailsDto
 func (a *PackageAPIService) PackageDetailsExecute(r ApiPackageDetailsRequest) (*AvailablePackageDetailsDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AvailablePackageDetailsDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AvailablePackageDetailsDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PackageAPIService.PackageDetails")
@@ -144,8 +144,8 @@ func (a *PackageAPIService) PackageDetailsExecute(r ApiPackageDetailsRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -155,8 +155,8 @@ func (a *PackageAPIService) PackageDetailsExecute(r ApiPackageDetailsRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -166,8 +166,8 @@ func (a *PackageAPIService) PackageDetailsExecute(r ApiPackageDetailsRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -177,8 +177,8 @@ func (a *PackageAPIService) PackageDetailsExecute(r ApiPackageDetailsRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -188,8 +188,8 @@ func (a *PackageAPIService) PackageDetailsExecute(r ApiPackageDetailsRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -199,8 +199,8 @@ func (a *PackageAPIService) PackageDetailsExecute(r ApiPackageDetailsRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -218,17 +218,17 @@ func (a *PackageAPIService) PackageDetailsExecute(r ApiPackageDetailsRequest) (*
 }
 
 type ApiPackageListRequest struct {
-	ctx context.Context
-	ApiService *PackageAPIService
-	offset *int32
-	limit *int32
-	sortBy *string
-	sortDirection *string
-	search *string
-	id *string
-	catalogId *int32
-	isPrivate *bool
-	filterBy *string
+	ctx            context.Context
+	ApiService     *PackageAPIService
+	offset         *int32
+	limit          *int32
+	sortBy         *string
+	sortDirection  *string
+	search         *string
+	id             *string
+	catalogId      *int32
+	isPrivate      *bool
+	filterBy       *string
 	organizationId *int32
 }
 
@@ -289,24 +289,25 @@ func (r ApiPackageListRequest) Execute() (*AvailablePackagesList, *http.Response
 /*
 PackageList Retrieve all available packages
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPackageListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPackageListRequest
 */
 func (a *PackageAPIService) PackageList(ctx context.Context) ApiPackageListRequest {
 	return ApiPackageListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return AvailablePackagesList
+//
+//	@return AvailablePackagesList
 func (a *PackageAPIService) PackageListExecute(r ApiPackageListRequest) (*AvailablePackagesList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AvailablePackagesList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AvailablePackagesList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PackageAPIService.PackageList")
@@ -410,8 +411,8 @@ func (a *PackageAPIService) PackageListExecute(r ApiPackageListRequest) (*Availa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -421,8 +422,8 @@ func (a *PackageAPIService) PackageListExecute(r ApiPackageListRequest) (*Availa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -432,8 +433,8 @@ func (a *PackageAPIService) PackageListExecute(r ApiPackageListRequest) (*Availa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -443,8 +444,8 @@ func (a *PackageAPIService) PackageListExecute(r ApiPackageListRequest) (*Availa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -454,8 +455,8 @@ func (a *PackageAPIService) PackageListExecute(r ApiPackageListRequest) (*Availa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -465,8 +466,8 @@ func (a *PackageAPIService) PackageListExecute(r ApiPackageListRequest) (*Availa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -484,8 +485,8 @@ func (a *PackageAPIService) PackageListExecute(r ApiPackageListRequest) (*Availa
 }
 
 type ApiPackageValueRequest struct {
-	ctx context.Context
-	ApiService *PackageAPIService
+	ctx                       context.Context
+	ApiService                *PackageAPIService
 	getCatalogAppValueCommand *GetCatalogAppValueCommand
 }
 
@@ -501,24 +502,25 @@ func (r ApiPackageValueRequest) Execute() (string, *http.Response, error) {
 /*
 PackageValue Get yaml based value
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPackageValueRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPackageValueRequest
 */
 func (a *PackageAPIService) PackageValue(ctx context.Context) ApiPackageValueRequest {
 	return ApiPackageValueRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return string
+//
+//	@return string
 func (a *PackageAPIService) PackageValueExecute(r ApiPackageValueRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  string
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PackageAPIService.PackageValue")
@@ -594,8 +596,8 @@ func (a *PackageAPIService) PackageValueExecute(r ApiPackageValueRequest) (strin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -605,8 +607,8 @@ func (a *PackageAPIService) PackageValueExecute(r ApiPackageValueRequest) (strin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -616,8 +618,8 @@ func (a *PackageAPIService) PackageValueExecute(r ApiPackageValueRequest) (strin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -627,8 +629,8 @@ func (a *PackageAPIService) PackageValueExecute(r ApiPackageValueRequest) (strin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -638,8 +640,8 @@ func (a *PackageAPIService) PackageValueExecute(r ApiPackageValueRequest) (strin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -649,8 +651,8 @@ func (a *PackageAPIService) PackageValueExecute(r ApiPackageValueRequest) (strin
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -668,8 +670,8 @@ func (a *PackageAPIService) PackageValueExecute(r ApiPackageValueRequest) (strin
 }
 
 type ApiPackageValueAutocompleteRequest struct {
-	ctx context.Context
-	ApiService *PackageAPIService
+	ctx                                   context.Context
+	ApiService                            *PackageAPIService
 	getCatalogAppValueAutocompleteCommand *GetCatalogAppValueAutocompleteCommand
 }
 
@@ -685,24 +687,25 @@ func (r ApiPackageValueAutocompleteRequest) Execute() ([]PackageAutocompleteDto,
 /*
 PackageValueAutocomplete Get autocomplete dictionary
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPackageValueAutocompleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPackageValueAutocompleteRequest
 */
 func (a *PackageAPIService) PackageValueAutocomplete(ctx context.Context) ApiPackageValueAutocompleteRequest {
 	return ApiPackageValueAutocompleteRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []PackageAutocompleteDto
+//
+//	@return []PackageAutocompleteDto
 func (a *PackageAPIService) PackageValueAutocompleteExecute(r ApiPackageValueAutocompleteRequest) ([]PackageAutocompleteDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []PackageAutocompleteDto
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []PackageAutocompleteDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PackageAPIService.PackageValueAutocomplete")
@@ -778,8 +781,8 @@ func (a *PackageAPIService) PackageValueAutocompleteExecute(r ApiPackageValueAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -789,8 +792,8 @@ func (a *PackageAPIService) PackageValueAutocompleteExecute(r ApiPackageValueAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -800,8 +803,8 @@ func (a *PackageAPIService) PackageValueAutocompleteExecute(r ApiPackageValueAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -811,8 +814,8 @@ func (a *PackageAPIService) PackageValueAutocompleteExecute(r ApiPackageValueAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -822,8 +825,8 @@ func (a *PackageAPIService) PackageValueAutocompleteExecute(r ApiPackageValueAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -833,8 +836,8 @@ func (a *PackageAPIService) PackageValueAutocompleteExecute(r ApiPackageValueAut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -852,8 +855,8 @@ func (a *PackageAPIService) PackageValueAutocompleteExecute(r ApiPackageValueAut
 }
 
 type ApiPackageVersionsRequest struct {
-	ctx context.Context
-	ApiService *PackageAPIService
+	ctx                                    context.Context
+	ApiService                             *PackageAPIService
 	listCatalogAppAvailableVersionsCommand *ListCatalogAppAvailableVersionsCommand
 }
 
@@ -869,24 +872,25 @@ func (r ApiPackageVersionsRequest) Execute() ([]string, *http.Response, error) {
 /*
 PackageVersions Get available versions
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPackageVersionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPackageVersionsRequest
 */
 func (a *PackageAPIService) PackageVersions(ctx context.Context) ApiPackageVersionsRequest {
 	return ApiPackageVersionsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []string
+//
+//	@return []string
 func (a *PackageAPIService) PackageVersionsExecute(r ApiPackageVersionsRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []string
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PackageAPIService.PackageVersions")
@@ -962,8 +966,8 @@ func (a *PackageAPIService) PackageVersionsExecute(r ApiPackageVersionsRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -973,8 +977,8 @@ func (a *PackageAPIService) PackageVersionsExecute(r ApiPackageVersionsRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -984,8 +988,8 @@ func (a *PackageAPIService) PackageVersionsExecute(r ApiPackageVersionsRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -995,8 +999,8 @@ func (a *PackageAPIService) PackageVersionsExecute(r ApiPackageVersionsRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1006,8 +1010,8 @@ func (a *PackageAPIService) PackageVersionsExecute(r ApiPackageVersionsRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1017,8 +1021,8 @@ func (a *PackageAPIService) PackageVersionsExecute(r ApiPackageVersionsRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

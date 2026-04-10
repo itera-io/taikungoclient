@@ -21,13 +21,12 @@ import (
 	"time"
 )
 
-
 // InvoicesAPIService InvoicesAPI service
 type InvoicesAPIService service
 
 type ApiInvoicesCreateRequest struct {
-	ctx context.Context
-	ApiService *InvoicesAPIService
+	ctx                  context.Context
+	ApiService           *InvoicesAPIService
 	createInvoiceCommand *CreateInvoiceCommand
 }
 
@@ -43,24 +42,25 @@ func (r ApiInvoicesCreateRequest) Execute() (int32, *http.Response, error) {
 /*
 InvoicesCreate Create invoice
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiInvoicesCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiInvoicesCreateRequest
 */
 func (a *InvoicesAPIService) InvoicesCreate(ctx context.Context) ApiInvoicesCreateRequest {
 	return ApiInvoicesCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return int32
+//
+//	@return int32
 func (a *InvoicesAPIService) InvoicesCreateExecute(r ApiInvoicesCreateRequest) (int32, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  int32
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue int32
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesAPIService.InvoicesCreate")
@@ -136,8 +136,8 @@ func (a *InvoicesAPIService) InvoicesCreateExecute(r ApiInvoicesCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -147,8 +147,8 @@ func (a *InvoicesAPIService) InvoicesCreateExecute(r ApiInvoicesCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -158,8 +158,8 @@ func (a *InvoicesAPIService) InvoicesCreateExecute(r ApiInvoicesCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -169,8 +169,8 @@ func (a *InvoicesAPIService) InvoicesCreateExecute(r ApiInvoicesCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -180,8 +180,8 @@ func (a *InvoicesAPIService) InvoicesCreateExecute(r ApiInvoicesCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -191,8 +191,8 @@ func (a *InvoicesAPIService) InvoicesCreateExecute(r ApiInvoicesCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -210,8 +210,8 @@ func (a *InvoicesAPIService) InvoicesCreateExecute(r ApiInvoicesCreateRequest) (
 }
 
 type ApiInvoicesDownloadRequest struct {
-	ctx context.Context
-	ApiService *InvoicesAPIService
+	ctx                    context.Context
+	ApiService             *InvoicesAPIService
 	downloadInvoiceCommand *DownloadInvoiceCommand
 }
 
@@ -227,24 +227,25 @@ func (r ApiInvoicesDownloadRequest) Execute() (*CsvExporter, *http.Response, err
 /*
 InvoicesDownload Download invoice
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiInvoicesDownloadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiInvoicesDownloadRequest
 */
 func (a *InvoicesAPIService) InvoicesDownload(ctx context.Context) ApiInvoicesDownloadRequest {
 	return ApiInvoicesDownloadRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CsvExporter
+//
+//	@return CsvExporter
 func (a *InvoicesAPIService) InvoicesDownloadExecute(r ApiInvoicesDownloadRequest) (*CsvExporter, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CsvExporter
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CsvExporter
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesAPIService.InvoicesDownload")
@@ -320,8 +321,8 @@ func (a *InvoicesAPIService) InvoicesDownloadExecute(r ApiInvoicesDownloadReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -331,8 +332,8 @@ func (a *InvoicesAPIService) InvoicesDownloadExecute(r ApiInvoicesDownloadReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -342,8 +343,8 @@ func (a *InvoicesAPIService) InvoicesDownloadExecute(r ApiInvoicesDownloadReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -353,8 +354,8 @@ func (a *InvoicesAPIService) InvoicesDownloadExecute(r ApiInvoicesDownloadReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -364,8 +365,8 @@ func (a *InvoicesAPIService) InvoicesDownloadExecute(r ApiInvoicesDownloadReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -375,8 +376,8 @@ func (a *InvoicesAPIService) InvoicesDownloadExecute(r ApiInvoicesDownloadReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -394,18 +395,18 @@ func (a *InvoicesAPIService) InvoicesDownloadExecute(r ApiInvoicesDownloadReques
 }
 
 type ApiInvoicesListRequest struct {
-	ctx context.Context
-	ApiService *InvoicesAPIService
-	offset *int32
-	limit *int32
-	startDate *time.Time
-	endDate *time.Time
-	search *string
-	filterBy *string
-	sortBy *string
-	sortDirection *string
+	ctx            context.Context
+	ApiService     *InvoicesAPIService
+	offset         *int32
+	limit          *int32
+	startDate      *time.Time
+	endDate        *time.Time
+	search         *string
+	filterBy       *string
+	sortBy         *string
+	sortDirection  *string
 	organizationId *int32
-	partnerId *int32
+	partnerId      *int32
 }
 
 func (r ApiInvoicesListRequest) Offset(offset int32) ApiInvoicesListRequest {
@@ -465,24 +466,25 @@ func (r ApiInvoicesListRequest) Execute() (*Invoices, *http.Response, error) {
 /*
 InvoicesList Invoices list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiInvoicesListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiInvoicesListRequest
 */
 func (a *InvoicesAPIService) InvoicesList(ctx context.Context) ApiInvoicesListRequest {
 	return ApiInvoicesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return Invoices
+//
+//	@return Invoices
 func (a *InvoicesAPIService) InvoicesListExecute(r ApiInvoicesListRequest) (*Invoices, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Invoices
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Invoices
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesAPIService.InvoicesList")
@@ -586,8 +588,8 @@ func (a *InvoicesAPIService) InvoicesListExecute(r ApiInvoicesListRequest) (*Inv
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -597,8 +599,8 @@ func (a *InvoicesAPIService) InvoicesListExecute(r ApiInvoicesListRequest) (*Inv
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -608,8 +610,8 @@ func (a *InvoicesAPIService) InvoicesListExecute(r ApiInvoicesListRequest) (*Inv
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -619,8 +621,8 @@ func (a *InvoicesAPIService) InvoicesListExecute(r ApiInvoicesListRequest) (*Inv
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -630,8 +632,8 @@ func (a *InvoicesAPIService) InvoicesListExecute(r ApiInvoicesListRequest) (*Inv
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -641,8 +643,8 @@ func (a *InvoicesAPIService) InvoicesListExecute(r ApiInvoicesListRequest) (*Inv
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -660,9 +662,9 @@ func (a *InvoicesAPIService) InvoicesListExecute(r ApiInvoicesListRequest) (*Inv
 }
 
 type ApiInvoicesUpdateRequest struct {
-	ctx context.Context
-	ApiService *InvoicesAPIService
-	invoiceId int32
+	ctx              context.Context
+	ApiService       *InvoicesAPIService
+	invoiceId        int32
 	updateInvoiceDto *UpdateInvoiceDto
 }
 
@@ -678,24 +680,24 @@ func (r ApiInvoicesUpdateRequest) Execute() (*http.Response, error) {
 /*
 InvoicesUpdate Update invoice
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param invoiceId
- @return ApiInvoicesUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param invoiceId
+	@return ApiInvoicesUpdateRequest
 */
 func (a *InvoicesAPIService) InvoicesUpdate(ctx context.Context, invoiceId int32) ApiInvoicesUpdateRequest {
 	return ApiInvoicesUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		invoiceId: invoiceId,
+		ctx:        ctx,
+		invoiceId:  invoiceId,
 	}
 }
 
 // Execute executes the request
 func (a *InvoicesAPIService) InvoicesUpdateExecute(r ApiInvoicesUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesAPIService.InvoicesUpdate")
@@ -772,8 +774,8 @@ func (a *InvoicesAPIService) InvoicesUpdateExecute(r ApiInvoicesUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -783,8 +785,8 @@ func (a *InvoicesAPIService) InvoicesUpdateExecute(r ApiInvoicesUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -794,8 +796,8 @@ func (a *InvoicesAPIService) InvoicesUpdateExecute(r ApiInvoicesUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -805,8 +807,8 @@ func (a *InvoicesAPIService) InvoicesUpdateExecute(r ApiInvoicesUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -816,8 +818,8 @@ func (a *InvoicesAPIService) InvoicesUpdateExecute(r ApiInvoicesUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -827,8 +829,8 @@ func (a *InvoicesAPIService) InvoicesUpdateExecute(r ApiInvoicesUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

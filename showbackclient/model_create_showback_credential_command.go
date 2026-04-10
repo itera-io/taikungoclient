@@ -20,11 +20,11 @@ var _ MappedNullable = &CreateShowbackCredentialCommand{}
 
 // CreateShowbackCredentialCommand struct for CreateShowbackCredentialCommand
 type CreateShowbackCredentialCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	Url NullableString `json:"url,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Password NullableString `json:"password,omitempty"`
-	OrganizationId *int32 `json:"organizationId,omitempty"`
+	Name           NullableString `json:"name,omitempty"`
+	Url            NullableString `json:"url,omitempty"`
+	Username       NullableString `json:"username,omitempty"`
+	Password       NullableString `json:"password,omitempty"`
+	OrganizationId *int32         `json:"organizationId,omitempty"`
 }
 
 // NewCreateShowbackCredentialCommand instantiates a new CreateShowbackCredentialCommand object
@@ -76,6 +76,7 @@ func (o *CreateShowbackCredentialCommand) HasName() bool {
 func (o *CreateShowbackCredentialCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateShowbackCredentialCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -118,6 +119,7 @@ func (o *CreateShowbackCredentialCommand) HasUrl() bool {
 func (o *CreateShowbackCredentialCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *CreateShowbackCredentialCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -160,6 +162,7 @@ func (o *CreateShowbackCredentialCommand) HasUsername() bool {
 func (o *CreateShowbackCredentialCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *CreateShowbackCredentialCommand) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -202,6 +205,7 @@ func (o *CreateShowbackCredentialCommand) HasPassword() bool {
 func (o *CreateShowbackCredentialCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *CreateShowbackCredentialCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -245,7 +249,7 @@ func (o *CreateShowbackCredentialCommand) SetOrganizationId(v int32) {
 }
 
 func (o CreateShowbackCredentialCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -307,5 +311,3 @@ func (v *NullableCreateShowbackCredentialCommand) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

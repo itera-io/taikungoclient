@@ -20,13 +20,12 @@ import (
 	"strings"
 )
 
-
 // AccessProfilesAPIService AccessProfilesAPI service
 type AccessProfilesAPIService service
 
 type ApiAccessprofilesCreateRequest struct {
-	ctx context.Context
-	ApiService *AccessProfilesAPIService
+	ctx                        context.Context
+	ApiService                 *AccessProfilesAPIService
 	createAccessProfileCommand *CreateAccessProfileCommand
 }
 
@@ -42,24 +41,25 @@ func (r ApiAccessprofilesCreateRequest) Execute() (*ApiResponse, *http.Response,
 /*
 AccessprofilesCreate Create access profile
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAccessprofilesCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAccessprofilesCreateRequest
 */
 func (a *AccessProfilesAPIService) AccessprofilesCreate(ctx context.Context) ApiAccessprofilesCreateRequest {
 	return ApiAccessprofilesCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ApiResponse
+//
+//	@return ApiResponse
 func (a *AccessProfilesAPIService) AccessprofilesCreateExecute(r ApiAccessprofilesCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ApiResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesAPIService.AccessprofilesCreate")
@@ -135,8 +135,8 @@ func (a *AccessProfilesAPIService) AccessprofilesCreateExecute(r ApiAccessprofil
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -146,8 +146,8 @@ func (a *AccessProfilesAPIService) AccessprofilesCreateExecute(r ApiAccessprofil
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -157,8 +157,8 @@ func (a *AccessProfilesAPIService) AccessprofilesCreateExecute(r ApiAccessprofil
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -168,8 +168,8 @@ func (a *AccessProfilesAPIService) AccessprofilesCreateExecute(r ApiAccessprofil
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -179,8 +179,8 @@ func (a *AccessProfilesAPIService) AccessprofilesCreateExecute(r ApiAccessprofil
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -190,8 +190,8 @@ func (a *AccessProfilesAPIService) AccessprofilesCreateExecute(r ApiAccessprofil
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -209,9 +209,9 @@ func (a *AccessProfilesAPIService) AccessprofilesCreateExecute(r ApiAccessprofil
 }
 
 type ApiAccessprofilesDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccessProfilesAPIService
-	id int32
+	id         int32
 }
 
 func (r ApiAccessprofilesDeleteRequest) Execute() (*http.Response, error) {
@@ -221,24 +221,24 @@ func (r ApiAccessprofilesDeleteRequest) Execute() (*http.Response, error) {
 /*
 AccessprofilesDelete Delete access profile by Id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiAccessprofilesDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiAccessprofilesDeleteRequest
 */
 func (a *AccessProfilesAPIService) AccessprofilesDelete(ctx context.Context, id int32) ApiAccessprofilesDeleteRequest {
 	return ApiAccessprofilesDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *AccessProfilesAPIService) AccessprofilesDeleteExecute(r ApiAccessprofilesDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesAPIService.AccessprofilesDelete")
@@ -313,8 +313,8 @@ func (a *AccessProfilesAPIService) AccessprofilesDeleteExecute(r ApiAccessprofil
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -324,8 +324,8 @@ func (a *AccessProfilesAPIService) AccessprofilesDeleteExecute(r ApiAccessprofil
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -335,8 +335,8 @@ func (a *AccessProfilesAPIService) AccessprofilesDeleteExecute(r ApiAccessprofil
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -346,8 +346,8 @@ func (a *AccessProfilesAPIService) AccessprofilesDeleteExecute(r ApiAccessprofil
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -357,8 +357,8 @@ func (a *AccessProfilesAPIService) AccessprofilesDeleteExecute(r ApiAccessprofil
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -368,8 +368,8 @@ func (a *AccessProfilesAPIService) AccessprofilesDeleteExecute(r ApiAccessprofil
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -378,12 +378,12 @@ func (a *AccessProfilesAPIService) AccessprofilesDeleteExecute(r ApiAccessprofil
 }
 
 type ApiAccessprofilesDropdownRequest struct {
-	ctx context.Context
-	ApiService *AccessProfilesAPIService
+	ctx            context.Context
+	ApiService     *AccessProfilesAPIService
 	organizationId *int32
-	search *string
-	offset *int32
-	limit *int32
+	search         *string
+	offset         *int32
+	limit          *int32
 }
 
 func (r ApiAccessprofilesDropdownRequest) OrganizationId(organizationId int32) ApiAccessprofilesDropdownRequest {
@@ -413,24 +413,25 @@ func (r ApiAccessprofilesDropdownRequest) Execute() ([]CommonDropdownDto, *http.
 /*
 AccessprofilesDropdown Retrieve access profiles by organization Id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAccessprofilesDropdownRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAccessprofilesDropdownRequest
 */
 func (a *AccessProfilesAPIService) AccessprofilesDropdown(ctx context.Context) ApiAccessprofilesDropdownRequest {
 	return ApiAccessprofilesDropdownRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []CommonDropdownDto
+//
+//	@return []CommonDropdownDto
 func (a *AccessProfilesAPIService) AccessprofilesDropdownExecute(r ApiAccessprofilesDropdownRequest) ([]CommonDropdownDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CommonDropdownDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []CommonDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesAPIService.AccessprofilesDropdown")
@@ -524,8 +525,8 @@ func (a *AccessProfilesAPIService) AccessprofilesDropdownExecute(r ApiAccessprof
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -535,8 +536,8 @@ func (a *AccessProfilesAPIService) AccessprofilesDropdownExecute(r ApiAccessprof
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -546,8 +547,8 @@ func (a *AccessProfilesAPIService) AccessprofilesDropdownExecute(r ApiAccessprof
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -557,8 +558,8 @@ func (a *AccessProfilesAPIService) AccessprofilesDropdownExecute(r ApiAccessprof
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -568,8 +569,8 @@ func (a *AccessProfilesAPIService) AccessprofilesDropdownExecute(r ApiAccessprof
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -579,8 +580,8 @@ func (a *AccessProfilesAPIService) AccessprofilesDropdownExecute(r ApiAccessprof
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -598,17 +599,17 @@ func (a *AccessProfilesAPIService) AccessprofilesDropdownExecute(r ApiAccessprof
 }
 
 type ApiAccessprofilesListRequest struct {
-	ctx context.Context
-	ApiService *AccessProfilesAPIService
+	ctx            context.Context
+	ApiService     *AccessProfilesAPIService
 	organizationId *int32
-	sortBy *string
-	sortDirection *string
-	search *string
-	searchId *string
-	id *int32
-	accountId *int32
-	offset *int32
-	limit *int32
+	sortBy         *string
+	sortDirection  *string
+	search         *string
+	searchId       *string
+	id             *int32
+	accountId      *int32
+	offset         *int32
+	limit          *int32
 }
 
 // Id should be positive integer
@@ -672,24 +673,25 @@ func (r ApiAccessprofilesListRequest) Execute() (*AccessProfilesList, *http.Resp
 /*
 AccessprofilesList Retrieve all access profiles
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAccessprofilesListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAccessprofilesListRequest
 */
 func (a *AccessProfilesAPIService) AccessprofilesList(ctx context.Context) ApiAccessprofilesListRequest {
 	return ApiAccessprofilesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return AccessProfilesList
+//
+//	@return AccessProfilesList
 func (a *AccessProfilesAPIService) AccessprofilesListExecute(r ApiAccessprofilesListRequest) (*AccessProfilesList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AccessProfilesList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AccessProfilesList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesAPIService.AccessprofilesList")
@@ -798,8 +800,8 @@ func (a *AccessProfilesAPIService) AccessprofilesListExecute(r ApiAccessprofiles
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -809,8 +811,8 @@ func (a *AccessProfilesAPIService) AccessprofilesListExecute(r ApiAccessprofiles
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -820,8 +822,8 @@ func (a *AccessProfilesAPIService) AccessprofilesListExecute(r ApiAccessprofiles
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -831,8 +833,8 @@ func (a *AccessProfilesAPIService) AccessprofilesListExecute(r ApiAccessprofiles
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -842,8 +844,8 @@ func (a *AccessProfilesAPIService) AccessprofilesListExecute(r ApiAccessprofiles
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -853,8 +855,8 @@ func (a *AccessProfilesAPIService) AccessprofilesListExecute(r ApiAccessprofiles
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -872,8 +874,8 @@ func (a *AccessProfilesAPIService) AccessprofilesListExecute(r ApiAccessprofiles
 }
 
 type ApiAccessprofilesLockManagerRequest struct {
-	ctx context.Context
-	ApiService *AccessProfilesAPIService
+	ctx                                 context.Context
+	ApiService                          *AccessProfilesAPIService
 	accessProfilesLockManagementCommand *AccessProfilesLockManagementCommand
 }
 
@@ -889,22 +891,22 @@ func (r ApiAccessprofilesLockManagerRequest) Execute() (*http.Response, error) {
 /*
 AccessprofilesLockManager Lock/unlock access profiles
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAccessprofilesLockManagerRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAccessprofilesLockManagerRequest
 */
 func (a *AccessProfilesAPIService) AccessprofilesLockManager(ctx context.Context) ApiAccessprofilesLockManagerRequest {
 	return ApiAccessprofilesLockManagerRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AccessProfilesAPIService) AccessprofilesLockManagerExecute(r ApiAccessprofilesLockManagerRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesAPIService.AccessprofilesLockManager")
@@ -980,8 +982,8 @@ func (a *AccessProfilesAPIService) AccessprofilesLockManagerExecute(r ApiAccessp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -991,8 +993,8 @@ func (a *AccessProfilesAPIService) AccessprofilesLockManagerExecute(r ApiAccessp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1002,8 +1004,8 @@ func (a *AccessProfilesAPIService) AccessprofilesLockManagerExecute(r ApiAccessp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1013,8 +1015,8 @@ func (a *AccessProfilesAPIService) AccessprofilesLockManagerExecute(r ApiAccessp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1024,8 +1026,8 @@ func (a *AccessProfilesAPIService) AccessprofilesLockManagerExecute(r ApiAccessp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1035,8 +1037,8 @@ func (a *AccessProfilesAPIService) AccessprofilesLockManagerExecute(r ApiAccessp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1045,9 +1047,9 @@ func (a *AccessProfilesAPIService) AccessprofilesLockManagerExecute(r ApiAccessp
 }
 
 type ApiAccessprofilesUpdateRequest struct {
-	ctx context.Context
-	ApiService *AccessProfilesAPIService
-	id int32
+	ctx                    context.Context
+	ApiService             *AccessProfilesAPIService
+	id                     int32
 	updateAccessProfileDto *UpdateAccessProfileDto
 }
 
@@ -1063,24 +1065,24 @@ func (r ApiAccessprofilesUpdateRequest) Execute() (*http.Response, error) {
 /*
 AccessprofilesUpdate Update access profile
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiAccessprofilesUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiAccessprofilesUpdateRequest
 */
 func (a *AccessProfilesAPIService) AccessprofilesUpdate(ctx context.Context, id int32) ApiAccessprofilesUpdateRequest {
 	return ApiAccessprofilesUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *AccessProfilesAPIService) AccessprofilesUpdateExecute(r ApiAccessprofilesUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesAPIService.AccessprofilesUpdate")
@@ -1157,8 +1159,8 @@ func (a *AccessProfilesAPIService) AccessprofilesUpdateExecute(r ApiAccessprofil
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1168,8 +1170,8 @@ func (a *AccessProfilesAPIService) AccessprofilesUpdateExecute(r ApiAccessprofil
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1179,8 +1181,8 @@ func (a *AccessProfilesAPIService) AccessprofilesUpdateExecute(r ApiAccessprofil
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1190,8 +1192,8 @@ func (a *AccessProfilesAPIService) AccessprofilesUpdateExecute(r ApiAccessprofil
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1201,8 +1203,8 @@ func (a *AccessProfilesAPIService) AccessprofilesUpdateExecute(r ApiAccessprofil
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1212,8 +1214,8 @@ func (a *AccessProfilesAPIService) AccessprofilesUpdateExecute(r ApiAccessprofil
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

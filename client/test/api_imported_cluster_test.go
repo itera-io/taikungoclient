@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 	t.Run("Test ImportedClusterAPIService ImportedClusterAsCloudCredential", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId int32
 
@@ -38,7 +38,7 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 	t.Run("Test ImportedClusterAPIService ImportedClusterAsFullyManaged", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId int32
 
@@ -52,7 +52,7 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 	t.Run("Test ImportedClusterAPIService ImportedClusterAsReadOnly", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId int32
 
@@ -66,7 +66,7 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 	t.Run("Test ImportedClusterAPIService ImportedClusterDelete", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterDelete(context.Background()).Execute()
 
@@ -77,7 +77,7 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 	t.Run("Test ImportedClusterAPIService ImportedClusterDetails", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id int32
 
@@ -91,7 +91,7 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 	t.Run("Test ImportedClusterAPIService ImportedClusterDisableAi", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterDisableAi(context.Background()).Execute()
 
@@ -102,7 +102,7 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 	t.Run("Test ImportedClusterAPIService ImportedClusterDisableBackup", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterDisableBackup(context.Background()).Execute()
 
@@ -113,7 +113,7 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 	t.Run("Test ImportedClusterAPIService ImportedClusterDisableMonitoring", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterDisableMonitoring(context.Background()).Execute()
 
@@ -124,7 +124,7 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 	t.Run("Test ImportedClusterAPIService ImportedClusterDisableOpa", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterDisableOpa(context.Background()).Execute()
 
@@ -135,7 +135,7 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 	t.Run("Test ImportedClusterAPIService ImportedClusterEnableAi", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterEnableAi(context.Background()).Execute()
 
@@ -146,7 +146,7 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 	t.Run("Test ImportedClusterAPIService ImportedClusterEnableBackup", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterEnableBackup(context.Background()).Execute()
 
@@ -157,7 +157,7 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 	t.Run("Test ImportedClusterAPIService ImportedClusterEnableMonitoring", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterEnableMonitoring(context.Background()).Execute()
 
@@ -168,7 +168,7 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 	t.Run("Test ImportedClusterAPIService ImportedClusterEnableOpa", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterEnableOpa(context.Background()).Execute()
 

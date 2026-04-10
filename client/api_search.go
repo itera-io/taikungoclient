@@ -19,13 +19,12 @@ import (
 	"net/url"
 )
 
-
 // SearchAPIService SearchAPI service
 type SearchAPIService service
 
 type ApiSearchAccessProfilesRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx                         context.Context
+	ApiService                  *SearchAPIService
 	accessProfilesSearchCommand *AccessProfilesSearchCommand
 }
 
@@ -41,24 +40,25 @@ func (r ApiSearchAccessProfilesRequest) Execute() (*AccessProfilesSearchList, *h
 /*
 SearchAccessProfiles Global search for access-profiles
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchAccessProfilesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchAccessProfilesRequest
 */
 func (a *SearchAPIService) SearchAccessProfiles(ctx context.Context) ApiSearchAccessProfilesRequest {
 	return ApiSearchAccessProfilesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return AccessProfilesSearchList
+//
+//	@return AccessProfilesSearchList
 func (a *SearchAPIService) SearchAccessProfilesExecute(r ApiSearchAccessProfilesRequest) (*AccessProfilesSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AccessProfilesSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AccessProfilesSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchAccessProfiles")
@@ -134,8 +134,8 @@ func (a *SearchAPIService) SearchAccessProfilesExecute(r ApiSearchAccessProfiles
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -145,8 +145,8 @@ func (a *SearchAPIService) SearchAccessProfilesExecute(r ApiSearchAccessProfiles
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -156,8 +156,8 @@ func (a *SearchAPIService) SearchAccessProfilesExecute(r ApiSearchAccessProfiles
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -167,8 +167,8 @@ func (a *SearchAPIService) SearchAccessProfilesExecute(r ApiSearchAccessProfiles
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -178,8 +178,8 @@ func (a *SearchAPIService) SearchAccessProfilesExecute(r ApiSearchAccessProfiles
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -189,8 +189,8 @@ func (a *SearchAPIService) SearchAccessProfilesExecute(r ApiSearchAccessProfiles
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -208,8 +208,8 @@ func (a *SearchAPIService) SearchAccessProfilesExecute(r ApiSearchAccessProfiles
 }
 
 type ApiSearchBackupCredentialsRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx                            context.Context
+	ApiService                     *SearchAPIService
 	backupCredentialsSearchCommand *BackupCredentialsSearchCommand
 }
 
@@ -225,24 +225,25 @@ func (r ApiSearchBackupCredentialsRequest) Execute() (*BackupCredentialsSearchLi
 /*
 SearchBackupCredentials Global search for backup-credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchBackupCredentialsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchBackupCredentialsRequest
 */
 func (a *SearchAPIService) SearchBackupCredentials(ctx context.Context) ApiSearchBackupCredentialsRequest {
 	return ApiSearchBackupCredentialsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return BackupCredentialsSearchList
+//
+//	@return BackupCredentialsSearchList
 func (a *SearchAPIService) SearchBackupCredentialsExecute(r ApiSearchBackupCredentialsRequest) (*BackupCredentialsSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *BackupCredentialsSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *BackupCredentialsSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchBackupCredentials")
@@ -318,8 +319,8 @@ func (a *SearchAPIService) SearchBackupCredentialsExecute(r ApiSearchBackupCrede
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -329,8 +330,8 @@ func (a *SearchAPIService) SearchBackupCredentialsExecute(r ApiSearchBackupCrede
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -340,8 +341,8 @@ func (a *SearchAPIService) SearchBackupCredentialsExecute(r ApiSearchBackupCrede
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -351,8 +352,8 @@ func (a *SearchAPIService) SearchBackupCredentialsExecute(r ApiSearchBackupCrede
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -362,8 +363,8 @@ func (a *SearchAPIService) SearchBackupCredentialsExecute(r ApiSearchBackupCrede
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -373,8 +374,8 @@ func (a *SearchAPIService) SearchBackupCredentialsExecute(r ApiSearchBackupCrede
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -392,8 +393,8 @@ func (a *SearchAPIService) SearchBackupCredentialsExecute(r ApiSearchBackupCrede
 }
 
 type ApiSearchBillingCredentialsRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx                             context.Context
+	ApiService                      *SearchAPIService
 	billingCredentialsSearchCommand *BillingCredentialsSearchCommand
 }
 
@@ -409,24 +410,25 @@ func (r ApiSearchBillingCredentialsRequest) Execute() (*BillingCredentialsSearch
 /*
 SearchBillingCredentials Global search for billing-credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchBillingCredentialsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchBillingCredentialsRequest
 */
 func (a *SearchAPIService) SearchBillingCredentials(ctx context.Context) ApiSearchBillingCredentialsRequest {
 	return ApiSearchBillingCredentialsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return BillingCredentialsSearchList
+//
+//	@return BillingCredentialsSearchList
 func (a *SearchAPIService) SearchBillingCredentialsExecute(r ApiSearchBillingCredentialsRequest) (*BillingCredentialsSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *BillingCredentialsSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *BillingCredentialsSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchBillingCredentials")
@@ -502,8 +504,8 @@ func (a *SearchAPIService) SearchBillingCredentialsExecute(r ApiSearchBillingCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -513,8 +515,8 @@ func (a *SearchAPIService) SearchBillingCredentialsExecute(r ApiSearchBillingCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -524,8 +526,8 @@ func (a *SearchAPIService) SearchBillingCredentialsExecute(r ApiSearchBillingCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -535,8 +537,8 @@ func (a *SearchAPIService) SearchBillingCredentialsExecute(r ApiSearchBillingCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -546,8 +548,8 @@ func (a *SearchAPIService) SearchBillingCredentialsExecute(r ApiSearchBillingCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -557,8 +559,8 @@ func (a *SearchAPIService) SearchBillingCredentialsExecute(r ApiSearchBillingCre
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -576,8 +578,8 @@ func (a *SearchAPIService) SearchBillingCredentialsExecute(r ApiSearchBillingCre
 }
 
 type ApiSearchCloudCredentialsRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx                           context.Context
+	ApiService                    *SearchAPIService
 	cloudCredentialsSearchCommand *CloudCredentialsSearchCommand
 }
 
@@ -593,24 +595,25 @@ func (r ApiSearchCloudCredentialsRequest) Execute() (*CloudCredentialsSearchList
 /*
 SearchCloudCredentials Global search for cloud-credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchCloudCredentialsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchCloudCredentialsRequest
 */
 func (a *SearchAPIService) SearchCloudCredentials(ctx context.Context) ApiSearchCloudCredentialsRequest {
 	return ApiSearchCloudCredentialsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CloudCredentialsSearchList
+//
+//	@return CloudCredentialsSearchList
 func (a *SearchAPIService) SearchCloudCredentialsExecute(r ApiSearchCloudCredentialsRequest) (*CloudCredentialsSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CloudCredentialsSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CloudCredentialsSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchCloudCredentials")
@@ -686,8 +689,8 @@ func (a *SearchAPIService) SearchCloudCredentialsExecute(r ApiSearchCloudCredent
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -697,8 +700,8 @@ func (a *SearchAPIService) SearchCloudCredentialsExecute(r ApiSearchCloudCredent
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -708,8 +711,8 @@ func (a *SearchAPIService) SearchCloudCredentialsExecute(r ApiSearchCloudCredent
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -719,8 +722,8 @@ func (a *SearchAPIService) SearchCloudCredentialsExecute(r ApiSearchCloudCredent
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -730,8 +733,8 @@ func (a *SearchAPIService) SearchCloudCredentialsExecute(r ApiSearchCloudCredent
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -741,8 +744,8 @@ func (a *SearchAPIService) SearchCloudCredentialsExecute(r ApiSearchCloudCredent
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -760,8 +763,8 @@ func (a *SearchAPIService) SearchCloudCredentialsExecute(r ApiSearchCloudCredent
 }
 
 type ApiSearchConfigMapsRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx                    context.Context
+	ApiService             *SearchAPIService
 	configMapSearchCommand *ConfigMapSearchCommand
 }
 
@@ -777,24 +780,25 @@ func (r ApiSearchConfigMapsRequest) Execute() (*ConfigMapSearchList, *http.Respo
 /*
 SearchConfigMaps Global search for config-maps
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchConfigMapsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchConfigMapsRequest
 */
 func (a *SearchAPIService) SearchConfigMaps(ctx context.Context) ApiSearchConfigMapsRequest {
 	return ApiSearchConfigMapsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ConfigMapSearchList
+//
+//	@return ConfigMapSearchList
 func (a *SearchAPIService) SearchConfigMapsExecute(r ApiSearchConfigMapsRequest) (*ConfigMapSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ConfigMapSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ConfigMapSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchConfigMaps")
@@ -870,8 +874,8 @@ func (a *SearchAPIService) SearchConfigMapsExecute(r ApiSearchConfigMapsRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -881,8 +885,8 @@ func (a *SearchAPIService) SearchConfigMapsExecute(r ApiSearchConfigMapsRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -892,8 +896,8 @@ func (a *SearchAPIService) SearchConfigMapsExecute(r ApiSearchConfigMapsRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -903,8 +907,8 @@ func (a *SearchAPIService) SearchConfigMapsExecute(r ApiSearchConfigMapsRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -914,8 +918,8 @@ func (a *SearchAPIService) SearchConfigMapsExecute(r ApiSearchConfigMapsRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -925,8 +929,8 @@ func (a *SearchAPIService) SearchConfigMapsExecute(r ApiSearchConfigMapsRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -944,8 +948,8 @@ func (a *SearchAPIService) SearchConfigMapsExecute(r ApiSearchConfigMapsRequest)
 }
 
 type ApiSearchCrdsRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx              context.Context
+	ApiService       *SearchAPIService
 	crdSearchCommand *CrdSearchCommand
 }
 
@@ -961,24 +965,25 @@ func (r ApiSearchCrdsRequest) Execute() (*CrdSearchList, *http.Response, error) 
 /*
 SearchCrds Global search for crds
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchCrdsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchCrdsRequest
 */
 func (a *SearchAPIService) SearchCrds(ctx context.Context) ApiSearchCrdsRequest {
 	return ApiSearchCrdsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CrdSearchList
+//
+//	@return CrdSearchList
 func (a *SearchAPIService) SearchCrdsExecute(r ApiSearchCrdsRequest) (*CrdSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CrdSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CrdSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchCrds")
@@ -1054,8 +1059,8 @@ func (a *SearchAPIService) SearchCrdsExecute(r ApiSearchCrdsRequest) (*CrdSearch
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1065,8 +1070,8 @@ func (a *SearchAPIService) SearchCrdsExecute(r ApiSearchCrdsRequest) (*CrdSearch
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1076,8 +1081,8 @@ func (a *SearchAPIService) SearchCrdsExecute(r ApiSearchCrdsRequest) (*CrdSearch
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1087,8 +1092,8 @@ func (a *SearchAPIService) SearchCrdsExecute(r ApiSearchCrdsRequest) (*CrdSearch
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1098,8 +1103,8 @@ func (a *SearchAPIService) SearchCrdsExecute(r ApiSearchCrdsRequest) (*CrdSearch
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1109,8 +1114,8 @@ func (a *SearchAPIService) SearchCrdsExecute(r ApiSearchCrdsRequest) (*CrdSearch
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1128,8 +1133,8 @@ func (a *SearchAPIService) SearchCrdsExecute(r ApiSearchCrdsRequest) (*CrdSearch
 }
 
 type ApiSearchCronJobsRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx                   context.Context
+	ApiService            *SearchAPIService
 	cronjobsSearchCommand *CronjobsSearchCommand
 }
 
@@ -1145,24 +1150,25 @@ func (r ApiSearchCronJobsRequest) Execute() (*CronjobsSearchList, *http.Response
 /*
 SearchCronJobs Global search for jobs
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchCronJobsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchCronJobsRequest
 */
 func (a *SearchAPIService) SearchCronJobs(ctx context.Context) ApiSearchCronJobsRequest {
 	return ApiSearchCronJobsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CronjobsSearchList
+//
+//	@return CronjobsSearchList
 func (a *SearchAPIService) SearchCronJobsExecute(r ApiSearchCronJobsRequest) (*CronjobsSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CronjobsSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CronjobsSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchCronJobs")
@@ -1238,8 +1244,8 @@ func (a *SearchAPIService) SearchCronJobsExecute(r ApiSearchCronJobsRequest) (*C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1249,8 +1255,8 @@ func (a *SearchAPIService) SearchCronJobsExecute(r ApiSearchCronJobsRequest) (*C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1260,8 +1266,8 @@ func (a *SearchAPIService) SearchCronJobsExecute(r ApiSearchCronJobsRequest) (*C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1271,8 +1277,8 @@ func (a *SearchAPIService) SearchCronJobsExecute(r ApiSearchCronJobsRequest) (*C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1282,8 +1288,8 @@ func (a *SearchAPIService) SearchCronJobsExecute(r ApiSearchCronJobsRequest) (*C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1293,8 +1299,8 @@ func (a *SearchAPIService) SearchCronJobsExecute(r ApiSearchCronJobsRequest) (*C
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1312,8 +1318,8 @@ func (a *SearchAPIService) SearchCronJobsExecute(r ApiSearchCronJobsRequest) (*C
 }
 
 type ApiSearchDaemonSetsRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx                    context.Context
+	ApiService             *SearchAPIService
 	daemonSetSearchCommand *DaemonSetSearchCommand
 }
 
@@ -1329,24 +1335,25 @@ func (r ApiSearchDaemonSetsRequest) Execute() (*DaemonSetSearchList, *http.Respo
 /*
 SearchDaemonSets Global search for daemon-sets
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchDaemonSetsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchDaemonSetsRequest
 */
 func (a *SearchAPIService) SearchDaemonSets(ctx context.Context) ApiSearchDaemonSetsRequest {
 	return ApiSearchDaemonSetsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return DaemonSetSearchList
+//
+//	@return DaemonSetSearchList
 func (a *SearchAPIService) SearchDaemonSetsExecute(r ApiSearchDaemonSetsRequest) (*DaemonSetSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DaemonSetSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DaemonSetSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchDaemonSets")
@@ -1422,8 +1429,8 @@ func (a *SearchAPIService) SearchDaemonSetsExecute(r ApiSearchDaemonSetsRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1433,8 +1440,8 @@ func (a *SearchAPIService) SearchDaemonSetsExecute(r ApiSearchDaemonSetsRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1444,8 +1451,8 @@ func (a *SearchAPIService) SearchDaemonSetsExecute(r ApiSearchDaemonSetsRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1455,8 +1462,8 @@ func (a *SearchAPIService) SearchDaemonSetsExecute(r ApiSearchDaemonSetsRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1466,8 +1473,8 @@ func (a *SearchAPIService) SearchDaemonSetsExecute(r ApiSearchDaemonSetsRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1477,8 +1484,8 @@ func (a *SearchAPIService) SearchDaemonSetsExecute(r ApiSearchDaemonSetsRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1496,8 +1503,8 @@ func (a *SearchAPIService) SearchDaemonSetsExecute(r ApiSearchDaemonSetsRequest)
 }
 
 type ApiSearchDeploymentsRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx                     context.Context
+	ApiService              *SearchAPIService
 	deploymentSearchCommand *DeploymentSearchCommand
 }
 
@@ -1513,24 +1520,25 @@ func (r ApiSearchDeploymentsRequest) Execute() (*DeploymentSearchList, *http.Res
 /*
 SearchDeployments Global search for deployments
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchDeploymentsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchDeploymentsRequest
 */
 func (a *SearchAPIService) SearchDeployments(ctx context.Context) ApiSearchDeploymentsRequest {
 	return ApiSearchDeploymentsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return DeploymentSearchList
+//
+//	@return DeploymentSearchList
 func (a *SearchAPIService) SearchDeploymentsExecute(r ApiSearchDeploymentsRequest) (*DeploymentSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DeploymentSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DeploymentSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchDeployments")
@@ -1606,8 +1614,8 @@ func (a *SearchAPIService) SearchDeploymentsExecute(r ApiSearchDeploymentsReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1617,8 +1625,8 @@ func (a *SearchAPIService) SearchDeploymentsExecute(r ApiSearchDeploymentsReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1628,8 +1636,8 @@ func (a *SearchAPIService) SearchDeploymentsExecute(r ApiSearchDeploymentsReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1639,8 +1647,8 @@ func (a *SearchAPIService) SearchDeploymentsExecute(r ApiSearchDeploymentsReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1650,8 +1658,8 @@ func (a *SearchAPIService) SearchDeploymentsExecute(r ApiSearchDeploymentsReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1661,8 +1669,8 @@ func (a *SearchAPIService) SearchDeploymentsExecute(r ApiSearchDeploymentsReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1680,8 +1688,8 @@ func (a *SearchAPIService) SearchDeploymentsExecute(r ApiSearchDeploymentsReques
 }
 
 type ApiSearchHelmReleasesRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx                       context.Context
+	ApiService                *SearchAPIService
 	helmReleasesSearchCommand *HelmReleasesSearchCommand
 }
 
@@ -1697,24 +1705,25 @@ func (r ApiSearchHelmReleasesRequest) Execute() (*HelmReleasesSearchList, *http.
 /*
 SearchHelmReleases Global search for helm-releases
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchHelmReleasesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchHelmReleasesRequest
 */
 func (a *SearchAPIService) SearchHelmReleases(ctx context.Context) ApiSearchHelmReleasesRequest {
 	return ApiSearchHelmReleasesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return HelmReleasesSearchList
+//
+//	@return HelmReleasesSearchList
 func (a *SearchAPIService) SearchHelmReleasesExecute(r ApiSearchHelmReleasesRequest) (*HelmReleasesSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *HelmReleasesSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *HelmReleasesSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchHelmReleases")
@@ -1790,8 +1799,8 @@ func (a *SearchAPIService) SearchHelmReleasesExecute(r ApiSearchHelmReleasesRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1801,8 +1810,8 @@ func (a *SearchAPIService) SearchHelmReleasesExecute(r ApiSearchHelmReleasesRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1812,8 +1821,8 @@ func (a *SearchAPIService) SearchHelmReleasesExecute(r ApiSearchHelmReleasesRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1823,8 +1832,8 @@ func (a *SearchAPIService) SearchHelmReleasesExecute(r ApiSearchHelmReleasesRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1834,8 +1843,8 @@ func (a *SearchAPIService) SearchHelmReleasesExecute(r ApiSearchHelmReleasesRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1845,8 +1854,8 @@ func (a *SearchAPIService) SearchHelmReleasesExecute(r ApiSearchHelmReleasesRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1864,8 +1873,8 @@ func (a *SearchAPIService) SearchHelmReleasesExecute(r ApiSearchHelmReleasesRequ
 }
 
 type ApiSearchIngressRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx                  context.Context
+	ApiService           *SearchAPIService
 	ingressSearchCommand *IngressSearchCommand
 }
 
@@ -1881,24 +1890,25 @@ func (r ApiSearchIngressRequest) Execute() (*IngressSearchList, *http.Response, 
 /*
 SearchIngress Global search for ingress
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchIngressRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchIngressRequest
 */
 func (a *SearchAPIService) SearchIngress(ctx context.Context) ApiSearchIngressRequest {
 	return ApiSearchIngressRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return IngressSearchList
+//
+//	@return IngressSearchList
 func (a *SearchAPIService) SearchIngressExecute(r ApiSearchIngressRequest) (*IngressSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *IngressSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *IngressSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchIngress")
@@ -1974,8 +1984,8 @@ func (a *SearchAPIService) SearchIngressExecute(r ApiSearchIngressRequest) (*Ing
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1985,8 +1995,8 @@ func (a *SearchAPIService) SearchIngressExecute(r ApiSearchIngressRequest) (*Ing
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1996,8 +2006,8 @@ func (a *SearchAPIService) SearchIngressExecute(r ApiSearchIngressRequest) (*Ing
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2007,8 +2017,8 @@ func (a *SearchAPIService) SearchIngressExecute(r ApiSearchIngressRequest) (*Ing
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2018,8 +2028,8 @@ func (a *SearchAPIService) SearchIngressExecute(r ApiSearchIngressRequest) (*Ing
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2029,8 +2039,8 @@ func (a *SearchAPIService) SearchIngressExecute(r ApiSearchIngressRequest) (*Ing
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2048,8 +2058,8 @@ func (a *SearchAPIService) SearchIngressExecute(r ApiSearchIngressRequest) (*Ing
 }
 
 type ApiSearchJobsRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx               context.Context
+	ApiService        *SearchAPIService
 	jobsSearchCommand *JobsSearchCommand
 }
 
@@ -2065,24 +2075,25 @@ func (r ApiSearchJobsRequest) Execute() (*JobsSearchList, *http.Response, error)
 /*
 SearchJobs Global search for jobs
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchJobsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchJobsRequest
 */
 func (a *SearchAPIService) SearchJobs(ctx context.Context) ApiSearchJobsRequest {
 	return ApiSearchJobsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return JobsSearchList
+//
+//	@return JobsSearchList
 func (a *SearchAPIService) SearchJobsExecute(r ApiSearchJobsRequest) (*JobsSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *JobsSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *JobsSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchJobs")
@@ -2158,8 +2169,8 @@ func (a *SearchAPIService) SearchJobsExecute(r ApiSearchJobsRequest) (*JobsSearc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2169,8 +2180,8 @@ func (a *SearchAPIService) SearchJobsExecute(r ApiSearchJobsRequest) (*JobsSearc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2180,8 +2191,8 @@ func (a *SearchAPIService) SearchJobsExecute(r ApiSearchJobsRequest) (*JobsSearc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2191,8 +2202,8 @@ func (a *SearchAPIService) SearchJobsExecute(r ApiSearchJobsRequest) (*JobsSearc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2202,8 +2213,8 @@ func (a *SearchAPIService) SearchJobsExecute(r ApiSearchJobsRequest) (*JobsSearc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2213,8 +2224,8 @@ func (a *SearchAPIService) SearchJobsExecute(r ApiSearchJobsRequest) (*JobsSearc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2232,8 +2243,8 @@ func (a *SearchAPIService) SearchJobsExecute(r ApiSearchJobsRequest) (*JobsSearc
 }
 
 type ApiSearchKubernetesProfilesRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx                             context.Context
+	ApiService                      *SearchAPIService
 	kubernetesProfilesSearchCommand *KubernetesProfilesSearchCommand
 }
 
@@ -2249,24 +2260,25 @@ func (r ApiSearchKubernetesProfilesRequest) Execute() (*KubernetesProfilesSearch
 /*
 SearchKubernetesProfiles Global search for kubernetes-profiles
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchKubernetesProfilesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchKubernetesProfilesRequest
 */
 func (a *SearchAPIService) SearchKubernetesProfiles(ctx context.Context) ApiSearchKubernetesProfilesRequest {
 	return ApiSearchKubernetesProfilesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return KubernetesProfilesSearchList
+//
+//	@return KubernetesProfilesSearchList
 func (a *SearchAPIService) SearchKubernetesProfilesExecute(r ApiSearchKubernetesProfilesRequest) (*KubernetesProfilesSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *KubernetesProfilesSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *KubernetesProfilesSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchKubernetesProfiles")
@@ -2342,8 +2354,8 @@ func (a *SearchAPIService) SearchKubernetesProfilesExecute(r ApiSearchKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2353,8 +2365,8 @@ func (a *SearchAPIService) SearchKubernetesProfilesExecute(r ApiSearchKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2364,8 +2376,8 @@ func (a *SearchAPIService) SearchKubernetesProfilesExecute(r ApiSearchKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2375,8 +2387,8 @@ func (a *SearchAPIService) SearchKubernetesProfilesExecute(r ApiSearchKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2386,8 +2398,8 @@ func (a *SearchAPIService) SearchKubernetesProfilesExecute(r ApiSearchKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2397,8 +2409,8 @@ func (a *SearchAPIService) SearchKubernetesProfilesExecute(r ApiSearchKubernetes
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2416,8 +2428,8 @@ func (a *SearchAPIService) SearchKubernetesProfilesExecute(r ApiSearchKubernetes
 }
 
 type ApiSearchNamespacesRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx                    context.Context
+	ApiService             *SearchAPIService
 	namespaceSearchCommand *NamespaceSearchCommand
 }
 
@@ -2433,24 +2445,25 @@ func (r ApiSearchNamespacesRequest) Execute() (*NamespaceSearchList, *http.Respo
 /*
 SearchNamespaces Global search for namespaces
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchNamespacesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchNamespacesRequest
 */
 func (a *SearchAPIService) SearchNamespaces(ctx context.Context) ApiSearchNamespacesRequest {
 	return ApiSearchNamespacesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return NamespaceSearchList
+//
+//	@return NamespaceSearchList
 func (a *SearchAPIService) SearchNamespacesExecute(r ApiSearchNamespacesRequest) (*NamespaceSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *NamespaceSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *NamespaceSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchNamespaces")
@@ -2526,8 +2539,8 @@ func (a *SearchAPIService) SearchNamespacesExecute(r ApiSearchNamespacesRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2537,8 +2550,8 @@ func (a *SearchAPIService) SearchNamespacesExecute(r ApiSearchNamespacesRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2548,8 +2561,8 @@ func (a *SearchAPIService) SearchNamespacesExecute(r ApiSearchNamespacesRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2559,8 +2572,8 @@ func (a *SearchAPIService) SearchNamespacesExecute(r ApiSearchNamespacesRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2570,8 +2583,8 @@ func (a *SearchAPIService) SearchNamespacesExecute(r ApiSearchNamespacesRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2581,8 +2594,8 @@ func (a *SearchAPIService) SearchNamespacesExecute(r ApiSearchNamespacesRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2600,8 +2613,8 @@ func (a *SearchAPIService) SearchNamespacesExecute(r ApiSearchNamespacesRequest)
 }
 
 type ApiSearchNetworkPoliciesRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx                          context.Context
+	ApiService                   *SearchAPIService
 	networkPoliciesSearchCommand *NetworkPoliciesSearchCommand
 }
 
@@ -2617,24 +2630,25 @@ func (r ApiSearchNetworkPoliciesRequest) Execute() (*NetworkPoliciesSearchList, 
 /*
 SearchNetworkPolicies Global search for namespaces
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchNetworkPoliciesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchNetworkPoliciesRequest
 */
 func (a *SearchAPIService) SearchNetworkPolicies(ctx context.Context) ApiSearchNetworkPoliciesRequest {
 	return ApiSearchNetworkPoliciesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return NetworkPoliciesSearchList
+//
+//	@return NetworkPoliciesSearchList
 func (a *SearchAPIService) SearchNetworkPoliciesExecute(r ApiSearchNetworkPoliciesRequest) (*NetworkPoliciesSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *NetworkPoliciesSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *NetworkPoliciesSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchNetworkPolicies")
@@ -2710,8 +2724,8 @@ func (a *SearchAPIService) SearchNetworkPoliciesExecute(r ApiSearchNetworkPolici
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2721,8 +2735,8 @@ func (a *SearchAPIService) SearchNetworkPoliciesExecute(r ApiSearchNetworkPolici
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2732,8 +2746,8 @@ func (a *SearchAPIService) SearchNetworkPoliciesExecute(r ApiSearchNetworkPolici
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2743,8 +2757,8 @@ func (a *SearchAPIService) SearchNetworkPoliciesExecute(r ApiSearchNetworkPolici
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2754,8 +2768,8 @@ func (a *SearchAPIService) SearchNetworkPoliciesExecute(r ApiSearchNetworkPolici
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2765,8 +2779,8 @@ func (a *SearchAPIService) SearchNetworkPoliciesExecute(r ApiSearchNetworkPolici
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2784,8 +2798,8 @@ func (a *SearchAPIService) SearchNetworkPoliciesExecute(r ApiSearchNetworkPolici
 }
 
 type ApiSearchNodesRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx                context.Context
+	ApiService         *SearchAPIService
 	nodesSearchCommand *NodesSearchCommand
 }
 
@@ -2801,24 +2815,25 @@ func (r ApiSearchNodesRequest) Execute() (*NodesSearchList, *http.Response, erro
 /*
 SearchNodes Global search for nodes
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchNodesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchNodesRequest
 */
 func (a *SearchAPIService) SearchNodes(ctx context.Context) ApiSearchNodesRequest {
 	return ApiSearchNodesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return NodesSearchList
+//
+//	@return NodesSearchList
 func (a *SearchAPIService) SearchNodesExecute(r ApiSearchNodesRequest) (*NodesSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *NodesSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *NodesSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchNodes")
@@ -2894,8 +2909,8 @@ func (a *SearchAPIService) SearchNodesExecute(r ApiSearchNodesRequest) (*NodesSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2905,8 +2920,8 @@ func (a *SearchAPIService) SearchNodesExecute(r ApiSearchNodesRequest) (*NodesSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2916,8 +2931,8 @@ func (a *SearchAPIService) SearchNodesExecute(r ApiSearchNodesRequest) (*NodesSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2927,8 +2942,8 @@ func (a *SearchAPIService) SearchNodesExecute(r ApiSearchNodesRequest) (*NodesSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2938,8 +2953,8 @@ func (a *SearchAPIService) SearchNodesExecute(r ApiSearchNodesRequest) (*NodesSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2949,8 +2964,8 @@ func (a *SearchAPIService) SearchNodesExecute(r ApiSearchNodesRequest) (*NodesSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2968,8 +2983,8 @@ func (a *SearchAPIService) SearchNodesExecute(r ApiSearchNodesRequest) (*NodesSe
 }
 
 type ApiSearchOrganizationsRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx                       context.Context
+	ApiService                *SearchAPIService
 	organizationSearchCommand *OrganizationSearchCommand
 }
 
@@ -2985,24 +3000,25 @@ func (r ApiSearchOrganizationsRequest) Execute() (*OrganizationSearchList, *http
 /*
 SearchOrganizations Global search for organizations
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchOrganizationsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchOrganizationsRequest
 */
 func (a *SearchAPIService) SearchOrganizations(ctx context.Context) ApiSearchOrganizationsRequest {
 	return ApiSearchOrganizationsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return OrganizationSearchList
+//
+//	@return OrganizationSearchList
 func (a *SearchAPIService) SearchOrganizationsExecute(r ApiSearchOrganizationsRequest) (*OrganizationSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *OrganizationSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *OrganizationSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchOrganizations")
@@ -3078,8 +3094,8 @@ func (a *SearchAPIService) SearchOrganizationsExecute(r ApiSearchOrganizationsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3089,8 +3105,8 @@ func (a *SearchAPIService) SearchOrganizationsExecute(r ApiSearchOrganizationsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3100,8 +3116,8 @@ func (a *SearchAPIService) SearchOrganizationsExecute(r ApiSearchOrganizationsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3111,8 +3127,8 @@ func (a *SearchAPIService) SearchOrganizationsExecute(r ApiSearchOrganizationsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3122,8 +3138,8 @@ func (a *SearchAPIService) SearchOrganizationsExecute(r ApiSearchOrganizationsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3133,8 +3149,8 @@ func (a *SearchAPIService) SearchOrganizationsExecute(r ApiSearchOrganizationsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3152,8 +3168,8 @@ func (a *SearchAPIService) SearchOrganizationsExecute(r ApiSearchOrganizationsRe
 }
 
 type ApiSearchPdbRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx              context.Context
+	ApiService       *SearchAPIService
 	pdbSearchCommand *PdbSearchCommand
 }
 
@@ -3169,24 +3185,25 @@ func (r ApiSearchPdbRequest) Execute() (*PdbSearchList, *http.Response, error) {
 /*
 SearchPdb Global search for pdb
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchPdbRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchPdbRequest
 */
 func (a *SearchAPIService) SearchPdb(ctx context.Context) ApiSearchPdbRequest {
 	return ApiSearchPdbRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return PdbSearchList
+//
+//	@return PdbSearchList
 func (a *SearchAPIService) SearchPdbExecute(r ApiSearchPdbRequest) (*PdbSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PdbSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PdbSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchPdb")
@@ -3262,8 +3279,8 @@ func (a *SearchAPIService) SearchPdbExecute(r ApiSearchPdbRequest) (*PdbSearchLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3273,8 +3290,8 @@ func (a *SearchAPIService) SearchPdbExecute(r ApiSearchPdbRequest) (*PdbSearchLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3284,8 +3301,8 @@ func (a *SearchAPIService) SearchPdbExecute(r ApiSearchPdbRequest) (*PdbSearchLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3295,8 +3312,8 @@ func (a *SearchAPIService) SearchPdbExecute(r ApiSearchPdbRequest) (*PdbSearchLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3306,8 +3323,8 @@ func (a *SearchAPIService) SearchPdbExecute(r ApiSearchPdbRequest) (*PdbSearchLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3317,8 +3334,8 @@ func (a *SearchAPIService) SearchPdbExecute(r ApiSearchPdbRequest) (*PdbSearchLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3336,8 +3353,8 @@ func (a *SearchAPIService) SearchPdbExecute(r ApiSearchPdbRequest) (*PdbSearchLi
 }
 
 type ApiSearchPodsRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx               context.Context
+	ApiService        *SearchAPIService
 	podsSearchCommand *PodsSearchCommand
 }
 
@@ -3353,24 +3370,25 @@ func (r ApiSearchPodsRequest) Execute() (*PodsSearchList, *http.Response, error)
 /*
 SearchPods Global search for pods
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchPodsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchPodsRequest
 */
 func (a *SearchAPIService) SearchPods(ctx context.Context) ApiSearchPodsRequest {
 	return ApiSearchPodsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return PodsSearchList
+//
+//	@return PodsSearchList
 func (a *SearchAPIService) SearchPodsExecute(r ApiSearchPodsRequest) (*PodsSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PodsSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PodsSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchPods")
@@ -3446,8 +3464,8 @@ func (a *SearchAPIService) SearchPodsExecute(r ApiSearchPodsRequest) (*PodsSearc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3457,8 +3475,8 @@ func (a *SearchAPIService) SearchPodsExecute(r ApiSearchPodsRequest) (*PodsSearc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3468,8 +3486,8 @@ func (a *SearchAPIService) SearchPodsExecute(r ApiSearchPodsRequest) (*PodsSearc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3479,8 +3497,8 @@ func (a *SearchAPIService) SearchPodsExecute(r ApiSearchPodsRequest) (*PodsSearc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3490,8 +3508,8 @@ func (a *SearchAPIService) SearchPodsExecute(r ApiSearchPodsRequest) (*PodsSearc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3501,8 +3519,8 @@ func (a *SearchAPIService) SearchPodsExecute(r ApiSearchPodsRequest) (*PodsSearc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3520,8 +3538,8 @@ func (a *SearchAPIService) SearchPodsExecute(r ApiSearchPodsRequest) (*PodsSearc
 }
 
 type ApiSearchProjectsRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx                   context.Context
+	ApiService            *SearchAPIService
 	projectsSearchCommand *ProjectsSearchCommand
 }
 
@@ -3537,24 +3555,25 @@ func (r ApiSearchProjectsRequest) Execute() (*ProjectsSearchList, *http.Response
 /*
 SearchProjects Global search for projects
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchProjectsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchProjectsRequest
 */
 func (a *SearchAPIService) SearchProjects(ctx context.Context) ApiSearchProjectsRequest {
 	return ApiSearchProjectsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ProjectsSearchList
+//
+//	@return ProjectsSearchList
 func (a *SearchAPIService) SearchProjectsExecute(r ApiSearchProjectsRequest) (*ProjectsSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ProjectsSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ProjectsSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchProjects")
@@ -3630,8 +3649,8 @@ func (a *SearchAPIService) SearchProjectsExecute(r ApiSearchProjectsRequest) (*P
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3641,8 +3660,8 @@ func (a *SearchAPIService) SearchProjectsExecute(r ApiSearchProjectsRequest) (*P
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3652,8 +3671,8 @@ func (a *SearchAPIService) SearchProjectsExecute(r ApiSearchProjectsRequest) (*P
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3663,8 +3682,8 @@ func (a *SearchAPIService) SearchProjectsExecute(r ApiSearchProjectsRequest) (*P
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3674,8 +3693,8 @@ func (a *SearchAPIService) SearchProjectsExecute(r ApiSearchProjectsRequest) (*P
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3685,8 +3704,8 @@ func (a *SearchAPIService) SearchProjectsExecute(r ApiSearchProjectsRequest) (*P
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3704,8 +3723,8 @@ func (a *SearchAPIService) SearchProjectsExecute(r ApiSearchProjectsRequest) (*P
 }
 
 type ApiSearchPrometheusRulesRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx                          context.Context
+	ApiService                   *SearchAPIService
 	prometheusRulesSearchCommand *PrometheusRulesSearchCommand
 }
 
@@ -3721,24 +3740,25 @@ func (r ApiSearchPrometheusRulesRequest) Execute() (*PrometheusRulesSearchList, 
 /*
 SearchPrometheusRules Global search for prometheus-rules
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchPrometheusRulesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchPrometheusRulesRequest
 */
 func (a *SearchAPIService) SearchPrometheusRules(ctx context.Context) ApiSearchPrometheusRulesRequest {
 	return ApiSearchPrometheusRulesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return PrometheusRulesSearchList
+//
+//	@return PrometheusRulesSearchList
 func (a *SearchAPIService) SearchPrometheusRulesExecute(r ApiSearchPrometheusRulesRequest) (*PrometheusRulesSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PrometheusRulesSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PrometheusRulesSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchPrometheusRules")
@@ -3814,8 +3834,8 @@ func (a *SearchAPIService) SearchPrometheusRulesExecute(r ApiSearchPrometheusRul
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3825,8 +3845,8 @@ func (a *SearchAPIService) SearchPrometheusRulesExecute(r ApiSearchPrometheusRul
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3836,8 +3856,8 @@ func (a *SearchAPIService) SearchPrometheusRulesExecute(r ApiSearchPrometheusRul
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3847,8 +3867,8 @@ func (a *SearchAPIService) SearchPrometheusRulesExecute(r ApiSearchPrometheusRul
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3858,8 +3878,8 @@ func (a *SearchAPIService) SearchPrometheusRulesExecute(r ApiSearchPrometheusRul
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3869,8 +3889,8 @@ func (a *SearchAPIService) SearchPrometheusRulesExecute(r ApiSearchPrometheusRul
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3888,8 +3908,8 @@ func (a *SearchAPIService) SearchPrometheusRulesExecute(r ApiSearchPrometheusRul
 }
 
 type ApiSearchPvcsRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx              context.Context
+	ApiService       *SearchAPIService
 	pvcSearchCommand *PvcSearchCommand
 }
 
@@ -3905,24 +3925,25 @@ func (r ApiSearchPvcsRequest) Execute() (*PvcSearchList, *http.Response, error) 
 /*
 SearchPvcs Global search for pvcs
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchPvcsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchPvcsRequest
 */
 func (a *SearchAPIService) SearchPvcs(ctx context.Context) ApiSearchPvcsRequest {
 	return ApiSearchPvcsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return PvcSearchList
+//
+//	@return PvcSearchList
 func (a *SearchAPIService) SearchPvcsExecute(r ApiSearchPvcsRequest) (*PvcSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PvcSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PvcSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchPvcs")
@@ -3998,8 +4019,8 @@ func (a *SearchAPIService) SearchPvcsExecute(r ApiSearchPvcsRequest) (*PvcSearch
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4009,8 +4030,8 @@ func (a *SearchAPIService) SearchPvcsExecute(r ApiSearchPvcsRequest) (*PvcSearch
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4020,8 +4041,8 @@ func (a *SearchAPIService) SearchPvcsExecute(r ApiSearchPvcsRequest) (*PvcSearch
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4031,8 +4052,8 @@ func (a *SearchAPIService) SearchPvcsExecute(r ApiSearchPvcsRequest) (*PvcSearch
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4042,8 +4063,8 @@ func (a *SearchAPIService) SearchPvcsExecute(r ApiSearchPvcsRequest) (*PvcSearch
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4053,8 +4074,8 @@ func (a *SearchAPIService) SearchPvcsExecute(r ApiSearchPvcsRequest) (*PvcSearch
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4072,8 +4093,8 @@ func (a *SearchAPIService) SearchPvcsExecute(r ApiSearchPvcsRequest) (*PvcSearch
 }
 
 type ApiSearchSecretsRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx                 context.Context
+	ApiService          *SearchAPIService
 	secretSearchCommand *SecretSearchCommand
 }
 
@@ -4089,24 +4110,25 @@ func (r ApiSearchSecretsRequest) Execute() (*SecretSearchList, *http.Response, e
 /*
 SearchSecrets Global search for secrets
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchSecretsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchSecretsRequest
 */
 func (a *SearchAPIService) SearchSecrets(ctx context.Context) ApiSearchSecretsRequest {
 	return ApiSearchSecretsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return SecretSearchList
+//
+//	@return SecretSearchList
 func (a *SearchAPIService) SearchSecretsExecute(r ApiSearchSecretsRequest) (*SecretSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SecretSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SecretSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchSecrets")
@@ -4182,8 +4204,8 @@ func (a *SearchAPIService) SearchSecretsExecute(r ApiSearchSecretsRequest) (*Sec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4193,8 +4215,8 @@ func (a *SearchAPIService) SearchSecretsExecute(r ApiSearchSecretsRequest) (*Sec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4204,8 +4226,8 @@ func (a *SearchAPIService) SearchSecretsExecute(r ApiSearchSecretsRequest) (*Sec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4215,8 +4237,8 @@ func (a *SearchAPIService) SearchSecretsExecute(r ApiSearchSecretsRequest) (*Sec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4226,8 +4248,8 @@ func (a *SearchAPIService) SearchSecretsExecute(r ApiSearchSecretsRequest) (*Sec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4237,8 +4259,8 @@ func (a *SearchAPIService) SearchSecretsExecute(r ApiSearchSecretsRequest) (*Sec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4256,8 +4278,8 @@ func (a *SearchAPIService) SearchSecretsExecute(r ApiSearchSecretsRequest) (*Sec
 }
 
 type ApiSearchServersRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx                  context.Context
+	ApiService           *SearchAPIService
 	serversSearchCommand *ServersSearchCommand
 }
 
@@ -4273,24 +4295,25 @@ func (r ApiSearchServersRequest) Execute() (*ServersSearchList, *http.Response, 
 /*
 SearchServers Global search for servers
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchServersRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchServersRequest
 */
 func (a *SearchAPIService) SearchServers(ctx context.Context) ApiSearchServersRequest {
 	return ApiSearchServersRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ServersSearchList
+//
+//	@return ServersSearchList
 func (a *SearchAPIService) SearchServersExecute(r ApiSearchServersRequest) (*ServersSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ServersSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServersSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchServers")
@@ -4366,8 +4389,8 @@ func (a *SearchAPIService) SearchServersExecute(r ApiSearchServersRequest) (*Ser
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4377,8 +4400,8 @@ func (a *SearchAPIService) SearchServersExecute(r ApiSearchServersRequest) (*Ser
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4388,8 +4411,8 @@ func (a *SearchAPIService) SearchServersExecute(r ApiSearchServersRequest) (*Ser
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4399,8 +4422,8 @@ func (a *SearchAPIService) SearchServersExecute(r ApiSearchServersRequest) (*Ser
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4410,8 +4433,8 @@ func (a *SearchAPIService) SearchServersExecute(r ApiSearchServersRequest) (*Ser
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4421,8 +4444,8 @@ func (a *SearchAPIService) SearchServersExecute(r ApiSearchServersRequest) (*Ser
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4440,8 +4463,8 @@ func (a *SearchAPIService) SearchServersExecute(r ApiSearchServersRequest) (*Ser
 }
 
 type ApiSearchServicesRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx                  context.Context
+	ApiService           *SearchAPIService
 	serviceSearchCommand *ServiceSearchCommand
 }
 
@@ -4457,24 +4480,25 @@ func (r ApiSearchServicesRequest) Execute() (*ServiceSearchList, *http.Response,
 /*
 SearchServices Global search for services
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchServicesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchServicesRequest
 */
 func (a *SearchAPIService) SearchServices(ctx context.Context) ApiSearchServicesRequest {
 	return ApiSearchServicesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ServiceSearchList
+//
+//	@return ServiceSearchList
 func (a *SearchAPIService) SearchServicesExecute(r ApiSearchServicesRequest) (*ServiceSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ServiceSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServiceSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchServices")
@@ -4550,8 +4574,8 @@ func (a *SearchAPIService) SearchServicesExecute(r ApiSearchServicesRequest) (*S
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4561,8 +4585,8 @@ func (a *SearchAPIService) SearchServicesExecute(r ApiSearchServicesRequest) (*S
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4572,8 +4596,8 @@ func (a *SearchAPIService) SearchServicesExecute(r ApiSearchServicesRequest) (*S
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4583,8 +4607,8 @@ func (a *SearchAPIService) SearchServicesExecute(r ApiSearchServicesRequest) (*S
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4594,8 +4618,8 @@ func (a *SearchAPIService) SearchServicesExecute(r ApiSearchServicesRequest) (*S
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4605,8 +4629,8 @@ func (a *SearchAPIService) SearchServicesExecute(r ApiSearchServicesRequest) (*S
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4624,8 +4648,8 @@ func (a *SearchAPIService) SearchServicesExecute(r ApiSearchServicesRequest) (*S
 }
 
 type ApiSearchStandAloneProfilesRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx                             context.Context
+	ApiService                      *SearchAPIService
 	standAloneProfilesSearchCommand *StandAloneProfilesSearchCommand
 }
 
@@ -4641,24 +4665,25 @@ func (r ApiSearchStandAloneProfilesRequest) Execute() (*StandAloneProfilesSearch
 /*
 SearchStandAloneProfiles Global search for stand-alone-profiles
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchStandAloneProfilesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchStandAloneProfilesRequest
 */
 func (a *SearchAPIService) SearchStandAloneProfiles(ctx context.Context) ApiSearchStandAloneProfilesRequest {
 	return ApiSearchStandAloneProfilesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return StandAloneProfilesSearchList
+//
+//	@return StandAloneProfilesSearchList
 func (a *SearchAPIService) SearchStandAloneProfilesExecute(r ApiSearchStandAloneProfilesRequest) (*StandAloneProfilesSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *StandAloneProfilesSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *StandAloneProfilesSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchStandAloneProfiles")
@@ -4734,8 +4759,8 @@ func (a *SearchAPIService) SearchStandAloneProfilesExecute(r ApiSearchStandAlone
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4745,8 +4770,8 @@ func (a *SearchAPIService) SearchStandAloneProfilesExecute(r ApiSearchStandAlone
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4756,8 +4781,8 @@ func (a *SearchAPIService) SearchStandAloneProfilesExecute(r ApiSearchStandAlone
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4767,8 +4792,8 @@ func (a *SearchAPIService) SearchStandAloneProfilesExecute(r ApiSearchStandAlone
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4778,8 +4803,8 @@ func (a *SearchAPIService) SearchStandAloneProfilesExecute(r ApiSearchStandAlone
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4789,8 +4814,8 @@ func (a *SearchAPIService) SearchStandAloneProfilesExecute(r ApiSearchStandAlone
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4808,8 +4833,8 @@ func (a *SearchAPIService) SearchStandAloneProfilesExecute(r ApiSearchStandAlone
 }
 
 type ApiSearchStorageClassesRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx                         context.Context
+	ApiService                  *SearchAPIService
 	storageClassesSearchCommand *StorageClassesSearchCommand
 }
 
@@ -4825,24 +4850,25 @@ func (r ApiSearchStorageClassesRequest) Execute() (*StorageClassesSearchList, *h
 /*
 SearchStorageClasses Global search for storage classes.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchStorageClassesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchStorageClassesRequest
 */
 func (a *SearchAPIService) SearchStorageClasses(ctx context.Context) ApiSearchStorageClassesRequest {
 	return ApiSearchStorageClassesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return StorageClassesSearchList
+//
+//	@return StorageClassesSearchList
 func (a *SearchAPIService) SearchStorageClassesExecute(r ApiSearchStorageClassesRequest) (*StorageClassesSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *StorageClassesSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *StorageClassesSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchStorageClasses")
@@ -4918,8 +4944,8 @@ func (a *SearchAPIService) SearchStorageClassesExecute(r ApiSearchStorageClasses
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4929,8 +4955,8 @@ func (a *SearchAPIService) SearchStorageClassesExecute(r ApiSearchStorageClasses
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4940,8 +4966,8 @@ func (a *SearchAPIService) SearchStorageClassesExecute(r ApiSearchStorageClasses
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4951,8 +4977,8 @@ func (a *SearchAPIService) SearchStorageClassesExecute(r ApiSearchStorageClasses
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4962,8 +4988,8 @@ func (a *SearchAPIService) SearchStorageClassesExecute(r ApiSearchStorageClasses
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4973,8 +4999,8 @@ func (a *SearchAPIService) SearchStorageClassesExecute(r ApiSearchStorageClasses
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4992,8 +5018,8 @@ func (a *SearchAPIService) SearchStorageClassesExecute(r ApiSearchStorageClasses
 }
 
 type ApiSearchStsRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx              context.Context
+	ApiService       *SearchAPIService
 	stsSearchCommand *StsSearchCommand
 }
 
@@ -5009,24 +5035,25 @@ func (r ApiSearchStsRequest) Execute() (*StsSearchList, *http.Response, error) {
 /*
 SearchSts Global search for sts
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchStsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchStsRequest
 */
 func (a *SearchAPIService) SearchSts(ctx context.Context) ApiSearchStsRequest {
 	return ApiSearchStsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return StsSearchList
+//
+//	@return StsSearchList
 func (a *SearchAPIService) SearchStsExecute(r ApiSearchStsRequest) (*StsSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *StsSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *StsSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchSts")
@@ -5102,8 +5129,8 @@ func (a *SearchAPIService) SearchStsExecute(r ApiSearchStsRequest) (*StsSearchLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -5113,8 +5140,8 @@ func (a *SearchAPIService) SearchStsExecute(r ApiSearchStsRequest) (*StsSearchLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -5124,8 +5151,8 @@ func (a *SearchAPIService) SearchStsExecute(r ApiSearchStsRequest) (*StsSearchLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -5135,8 +5162,8 @@ func (a *SearchAPIService) SearchStsExecute(r ApiSearchStsRequest) (*StsSearchLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -5146,8 +5173,8 @@ func (a *SearchAPIService) SearchStsExecute(r ApiSearchStsRequest) (*StsSearchLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -5157,8 +5184,8 @@ func (a *SearchAPIService) SearchStsExecute(r ApiSearchStsRequest) (*StsSearchLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -5176,8 +5203,8 @@ func (a *SearchAPIService) SearchStsExecute(r ApiSearchStsRequest) (*StsSearchLi
 }
 
 type ApiSearchUsersRequest struct {
-	ctx context.Context
-	ApiService *SearchAPIService
+	ctx                context.Context
+	ApiService         *SearchAPIService
 	usersSearchCommand *UsersSearchCommand
 }
 
@@ -5193,24 +5220,25 @@ func (r ApiSearchUsersRequest) Execute() (*UsersSearchList, *http.Response, erro
 /*
 SearchUsers Global search for users
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchUsersRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSearchUsersRequest
 */
 func (a *SearchAPIService) SearchUsers(ctx context.Context) ApiSearchUsersRequest {
 	return ApiSearchUsersRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return UsersSearchList
+//
+//	@return UsersSearchList
 func (a *SearchAPIService) SearchUsersExecute(r ApiSearchUsersRequest) (*UsersSearchList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *UsersSearchList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UsersSearchList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchUsers")
@@ -5286,8 +5314,8 @@ func (a *SearchAPIService) SearchUsersExecute(r ApiSearchUsersRequest) (*UsersSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -5297,8 +5325,8 @@ func (a *SearchAPIService) SearchUsersExecute(r ApiSearchUsersRequest) (*UsersSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -5308,8 +5336,8 @@ func (a *SearchAPIService) SearchUsersExecute(r ApiSearchUsersRequest) (*UsersSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -5319,8 +5347,8 @@ func (a *SearchAPIService) SearchUsersExecute(r ApiSearchUsersRequest) (*UsersSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -5330,8 +5358,8 @@ func (a *SearchAPIService) SearchUsersExecute(r ApiSearchUsersRequest) (*UsersSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -5341,8 +5369,8 @@ func (a *SearchAPIService) SearchUsersExecute(r ApiSearchUsersRequest) (*UsersSe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

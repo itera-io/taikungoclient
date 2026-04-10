@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_OpaProfilesAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_OpaProfilesAPIService(t *testing.T) {
 
 	t.Run("Test OpaProfilesAPIService OpaprofilesCreate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.OpaProfilesAPI.OpaprofilesCreate(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_taikuncore_OpaProfilesAPIService(t *testing.T) {
 
 	t.Run("Test OpaProfilesAPIService OpaprofilesDelete", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id int32
 
@@ -49,7 +49,7 @@ func Test_taikuncore_OpaProfilesAPIService(t *testing.T) {
 
 	t.Run("Test OpaProfilesAPIService OpaprofilesDropdown", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.OpaProfilesAPI.OpaprofilesDropdown(context.Background()).Execute()
 
@@ -61,7 +61,7 @@ func Test_taikuncore_OpaProfilesAPIService(t *testing.T) {
 
 	t.Run("Test OpaProfilesAPIService OpaprofilesList", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.OpaProfilesAPI.OpaprofilesList(context.Background()).Execute()
 
@@ -73,7 +73,7 @@ func Test_taikuncore_OpaProfilesAPIService(t *testing.T) {
 
 	t.Run("Test OpaProfilesAPIService OpaprofilesLockManager", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.OpaProfilesAPI.OpaprofilesLockManager(context.Background()).Execute()
 
@@ -84,7 +84,7 @@ func Test_taikuncore_OpaProfilesAPIService(t *testing.T) {
 
 	t.Run("Test OpaProfilesAPIService OpaprofilesMakeDefault", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.OpaProfilesAPI.OpaprofilesMakeDefault(context.Background()).Execute()
 
@@ -95,7 +95,7 @@ func Test_taikuncore_OpaProfilesAPIService(t *testing.T) {
 
 	t.Run("Test OpaProfilesAPIService OpaprofilesSync", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.OpaProfilesAPI.OpaprofilesSync(context.Background()).Execute()
 
@@ -106,7 +106,7 @@ func Test_taikuncore_OpaProfilesAPIService(t *testing.T) {
 
 	t.Run("Test OpaProfilesAPIService OpaprofilesUpdate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.OpaProfilesAPI.OpaprofilesUpdate(context.Background()).Execute()
 

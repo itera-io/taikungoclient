@@ -20,13 +20,12 @@ import (
 	"strings"
 )
 
-
 // SsoConfigAPIService SsoConfigAPI service
 type SsoConfigAPIService service
 
 type ApiSsoConfigCheckRequest struct {
-	ctx context.Context
-	ApiService *SsoConfigAPIService
+	ctx                          context.Context
+	ApiService                   *SsoConfigAPIService
 	checkAccountSsoConfigCommand *CheckAccountSsoConfigCommand
 }
 
@@ -42,22 +41,22 @@ func (r ApiSsoConfigCheckRequest) Execute() (*http.Response, error) {
 /*
 SsoConfigCheck Verify that an SSO configuration's issuer URL is reachable and returns a valid OIDC discovery document
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSsoConfigCheckRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSsoConfigCheckRequest
 */
 func (a *SsoConfigAPIService) SsoConfigCheck(ctx context.Context) ApiSsoConfigCheckRequest {
 	return ApiSsoConfigCheckRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *SsoConfigAPIService) SsoConfigCheckExecute(r ApiSsoConfigCheckRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoConfigAPIService.SsoConfigCheck")
@@ -133,8 +132,8 @@ func (a *SsoConfigAPIService) SsoConfigCheckExecute(r ApiSsoConfigCheckRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -144,8 +143,8 @@ func (a *SsoConfigAPIService) SsoConfigCheckExecute(r ApiSsoConfigCheckRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -155,8 +154,8 @@ func (a *SsoConfigAPIService) SsoConfigCheckExecute(r ApiSsoConfigCheckRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -166,8 +165,8 @@ func (a *SsoConfigAPIService) SsoConfigCheckExecute(r ApiSsoConfigCheckRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -177,8 +176,8 @@ func (a *SsoConfigAPIService) SsoConfigCheckExecute(r ApiSsoConfigCheckRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -188,8 +187,8 @@ func (a *SsoConfigAPIService) SsoConfigCheckExecute(r ApiSsoConfigCheckRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -198,8 +197,8 @@ func (a *SsoConfigAPIService) SsoConfigCheckExecute(r ApiSsoConfigCheckRequest) 
 }
 
 type ApiSsoConfigCreateRequest struct {
-	ctx context.Context
-	ApiService *SsoConfigAPIService
+	ctx                           context.Context
+	ApiService                    *SsoConfigAPIService
 	createAccountSsoConfigCommand *CreateAccountSsoConfigCommand
 }
 
@@ -215,24 +214,25 @@ func (r ApiSsoConfigCreateRequest) Execute() (int32, *http.Response, error) {
 /*
 SsoConfigCreate Create SSO configuration
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSsoConfigCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSsoConfigCreateRequest
 */
 func (a *SsoConfigAPIService) SsoConfigCreate(ctx context.Context) ApiSsoConfigCreateRequest {
 	return ApiSsoConfigCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return int32
+//
+//	@return int32
 func (a *SsoConfigAPIService) SsoConfigCreateExecute(r ApiSsoConfigCreateRequest) (int32, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  int32
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue int32
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoConfigAPIService.SsoConfigCreate")
@@ -308,8 +308,8 @@ func (a *SsoConfigAPIService) SsoConfigCreateExecute(r ApiSsoConfigCreateRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -319,8 +319,8 @@ func (a *SsoConfigAPIService) SsoConfigCreateExecute(r ApiSsoConfigCreateRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -330,8 +330,8 @@ func (a *SsoConfigAPIService) SsoConfigCreateExecute(r ApiSsoConfigCreateRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -341,8 +341,8 @@ func (a *SsoConfigAPIService) SsoConfigCreateExecute(r ApiSsoConfigCreateRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -352,8 +352,8 @@ func (a *SsoConfigAPIService) SsoConfigCreateExecute(r ApiSsoConfigCreateRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -363,8 +363,8 @@ func (a *SsoConfigAPIService) SsoConfigCreateExecute(r ApiSsoConfigCreateRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -382,9 +382,9 @@ func (a *SsoConfigAPIService) SsoConfigCreateExecute(r ApiSsoConfigCreateRequest
 }
 
 type ApiSsoConfigDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *SsoConfigAPIService
-	id int32
+	id         int32
 }
 
 func (r ApiSsoConfigDeleteRequest) Execute() (*http.Response, error) {
@@ -394,24 +394,24 @@ func (r ApiSsoConfigDeleteRequest) Execute() (*http.Response, error) {
 /*
 SsoConfigDelete Delete SSO configuration
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiSsoConfigDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiSsoConfigDeleteRequest
 */
 func (a *SsoConfigAPIService) SsoConfigDelete(ctx context.Context, id int32) ApiSsoConfigDeleteRequest {
 	return ApiSsoConfigDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *SsoConfigAPIService) SsoConfigDeleteExecute(r ApiSsoConfigDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoConfigAPIService.SsoConfigDelete")
@@ -486,8 +486,8 @@ func (a *SsoConfigAPIService) SsoConfigDeleteExecute(r ApiSsoConfigDeleteRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -497,8 +497,8 @@ func (a *SsoConfigAPIService) SsoConfigDeleteExecute(r ApiSsoConfigDeleteRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -508,8 +508,8 @@ func (a *SsoConfigAPIService) SsoConfigDeleteExecute(r ApiSsoConfigDeleteRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -519,8 +519,8 @@ func (a *SsoConfigAPIService) SsoConfigDeleteExecute(r ApiSsoConfigDeleteRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -530,8 +530,8 @@ func (a *SsoConfigAPIService) SsoConfigDeleteExecute(r ApiSsoConfigDeleteRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -541,8 +541,8 @@ func (a *SsoConfigAPIService) SsoConfigDeleteExecute(r ApiSsoConfigDeleteRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -551,9 +551,9 @@ func (a *SsoConfigAPIService) SsoConfigDeleteExecute(r ApiSsoConfigDeleteRequest
 }
 
 type ApiSsoConfigDetailsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *SsoConfigAPIService
-	id *int32
+	id         *int32
 }
 
 func (r ApiSsoConfigDetailsRequest) Id(id int32) ApiSsoConfigDetailsRequest {
@@ -568,24 +568,25 @@ func (r ApiSsoConfigDetailsRequest) Execute() (*AccountSsoConfigDto, *http.Respo
 /*
 SsoConfigDetails Retrieve a single SSO configuration by id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSsoConfigDetailsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSsoConfigDetailsRequest
 */
 func (a *SsoConfigAPIService) SsoConfigDetails(ctx context.Context) ApiSsoConfigDetailsRequest {
 	return ApiSsoConfigDetailsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return AccountSsoConfigDto
+//
+//	@return AccountSsoConfigDto
 func (a *SsoConfigAPIService) SsoConfigDetailsExecute(r ApiSsoConfigDetailsRequest) (*AccountSsoConfigDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AccountSsoConfigDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AccountSsoConfigDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoConfigAPIService.SsoConfigDetails")
@@ -663,8 +664,8 @@ func (a *SsoConfigAPIService) SsoConfigDetailsExecute(r ApiSsoConfigDetailsReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -674,8 +675,8 @@ func (a *SsoConfigAPIService) SsoConfigDetailsExecute(r ApiSsoConfigDetailsReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -685,8 +686,8 @@ func (a *SsoConfigAPIService) SsoConfigDetailsExecute(r ApiSsoConfigDetailsReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -696,8 +697,8 @@ func (a *SsoConfigAPIService) SsoConfigDetailsExecute(r ApiSsoConfigDetailsReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -707,8 +708,8 @@ func (a *SsoConfigAPIService) SsoConfigDetailsExecute(r ApiSsoConfigDetailsReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -718,8 +719,8 @@ func (a *SsoConfigAPIService) SsoConfigDetailsExecute(r ApiSsoConfigDetailsReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -737,15 +738,15 @@ func (a *SsoConfigAPIService) SsoConfigDetailsExecute(r ApiSsoConfigDetailsReque
 }
 
 type ApiSsoConfigListRequest struct {
-	ctx context.Context
-	ApiService *SsoConfigAPIService
-	accountId *int32
-	limit *int32
-	offset *int32
-	sortBy *string
+	ctx           context.Context
+	ApiService    *SsoConfigAPIService
+	accountId     *int32
+	limit         *int32
+	offset        *int32
+	sortBy        *string
 	sortDirection *string
-	search *string
-	id *int32
+	search        *string
+	id            *int32
 }
 
 func (r ApiSsoConfigListRequest) AccountId(accountId int32) ApiSsoConfigListRequest {
@@ -790,24 +791,25 @@ func (r ApiSsoConfigListRequest) Execute() (*AccountSsoConfigList, *http.Respons
 /*
 SsoConfigList Retrieve all SSO configurations for an account
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSsoConfigListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSsoConfigListRequest
 */
 func (a *SsoConfigAPIService) SsoConfigList(ctx context.Context) ApiSsoConfigListRequest {
 	return ApiSsoConfigListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return AccountSsoConfigList
+//
+//	@return AccountSsoConfigList
 func (a *SsoConfigAPIService) SsoConfigListExecute(r ApiSsoConfigListRequest) (*AccountSsoConfigList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AccountSsoConfigList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AccountSsoConfigList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoConfigAPIService.SsoConfigList")
@@ -902,8 +904,8 @@ func (a *SsoConfigAPIService) SsoConfigListExecute(r ApiSsoConfigListRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -913,8 +915,8 @@ func (a *SsoConfigAPIService) SsoConfigListExecute(r ApiSsoConfigListRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -924,8 +926,8 @@ func (a *SsoConfigAPIService) SsoConfigListExecute(r ApiSsoConfigListRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -935,8 +937,8 @@ func (a *SsoConfigAPIService) SsoConfigListExecute(r ApiSsoConfigListRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -946,8 +948,8 @@ func (a *SsoConfigAPIService) SsoConfigListExecute(r ApiSsoConfigListRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -957,8 +959,8 @@ func (a *SsoConfigAPIService) SsoConfigListExecute(r ApiSsoConfigListRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -976,9 +978,9 @@ func (a *SsoConfigAPIService) SsoConfigListExecute(r ApiSsoConfigListRequest) (*
 }
 
 type ApiSsoConfigUpdateRequest struct {
-	ctx context.Context
-	ApiService *SsoConfigAPIService
-	id int32
+	ctx                       context.Context
+	ApiService                *SsoConfigAPIService
+	id                        int32
 	updateAccountSsoConfigDto *UpdateAccountSsoConfigDto
 }
 
@@ -994,24 +996,24 @@ func (r ApiSsoConfigUpdateRequest) Execute() (*http.Response, error) {
 /*
 SsoConfigUpdate Update SSO configuration
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiSsoConfigUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiSsoConfigUpdateRequest
 */
 func (a *SsoConfigAPIService) SsoConfigUpdate(ctx context.Context, id int32) ApiSsoConfigUpdateRequest {
 	return ApiSsoConfigUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *SsoConfigAPIService) SsoConfigUpdateExecute(r ApiSsoConfigUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoConfigAPIService.SsoConfigUpdate")
@@ -1088,8 +1090,8 @@ func (a *SsoConfigAPIService) SsoConfigUpdateExecute(r ApiSsoConfigUpdateRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1099,8 +1101,8 @@ func (a *SsoConfigAPIService) SsoConfigUpdateExecute(r ApiSsoConfigUpdateRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1110,8 +1112,8 @@ func (a *SsoConfigAPIService) SsoConfigUpdateExecute(r ApiSsoConfigUpdateRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1121,8 +1123,8 @@ func (a *SsoConfigAPIService) SsoConfigUpdateExecute(r ApiSsoConfigUpdateRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1132,8 +1134,8 @@ func (a *SsoConfigAPIService) SsoConfigUpdateExecute(r ApiSsoConfigUpdateRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1143,8 +1145,8 @@ func (a *SsoConfigAPIService) SsoConfigUpdateExecute(r ApiSsoConfigUpdateRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

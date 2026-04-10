@@ -21,8 +21,8 @@ type EStsAction string
 
 // List of EStsAction
 const (
-	ESTSACTION_RESTART EStsAction = "Restart"
-	ESTSACTION_SCALE EStsAction = "Scale"
+	ESTSACTION_RESTART  EStsAction = "Restart"
+	ESTSACTION_SCALE    EStsAction = "Scale"
 	ESTSACTION_ROLLBACK EStsAction = "Rollback"
 )
 
@@ -111,4 +111,3 @@ func (v *NullableEStsAction) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -20,14 +20,13 @@ import (
 	"strings"
 )
 
-
 // TaikunLBAPIService TaikunLBAPI service
 type TaikunLBAPIService service
 
 type ApiTaikunLbCreateTaikunLbRequest struct {
-	ctx context.Context
-	ApiService *TaikunLBAPIService
-	projectId int32
+	ctx                      context.Context
+	ApiService               *TaikunLBAPIService
+	projectId                int32
 	createGenericTaikunLbDto *CreateGenericTaikunLbDto
 }
 
@@ -43,26 +42,27 @@ func (r ApiTaikunLbCreateTaikunLbRequest) Execute() (*TaikunLbResponseDto, *http
 /*
 TaikunLbCreateTaikunLb Create Taikun LB
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiTaikunLbCreateTaikunLbRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiTaikunLbCreateTaikunLbRequest
 */
 func (a *TaikunLBAPIService) TaikunLbCreateTaikunLb(ctx context.Context, projectId int32) ApiTaikunLbCreateTaikunLbRequest {
 	return ApiTaikunLbCreateTaikunLbRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return TaikunLbResponseDto
+//
+//	@return TaikunLbResponseDto
 func (a *TaikunLBAPIService) TaikunLbCreateTaikunLbExecute(r ApiTaikunLbCreateTaikunLbRequest) (*TaikunLbResponseDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TaikunLbResponseDto
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TaikunLbResponseDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaikunLBAPIService.TaikunLbCreateTaikunLb")
@@ -139,8 +139,8 @@ func (a *TaikunLBAPIService) TaikunLbCreateTaikunLbExecute(r ApiTaikunLbCreateTa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -150,8 +150,8 @@ func (a *TaikunLBAPIService) TaikunLbCreateTaikunLbExecute(r ApiTaikunLbCreateTa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -161,8 +161,8 @@ func (a *TaikunLBAPIService) TaikunLbCreateTaikunLbExecute(r ApiTaikunLbCreateTa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -172,8 +172,8 @@ func (a *TaikunLBAPIService) TaikunLbCreateTaikunLbExecute(r ApiTaikunLbCreateTa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -183,8 +183,8 @@ func (a *TaikunLBAPIService) TaikunLbCreateTaikunLbExecute(r ApiTaikunLbCreateTa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -194,8 +194,8 @@ func (a *TaikunLBAPIService) TaikunLbCreateTaikunLbExecute(r ApiTaikunLbCreateTa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -213,9 +213,9 @@ func (a *TaikunLBAPIService) TaikunLbCreateTaikunLbExecute(r ApiTaikunLbCreateTa
 }
 
 type ApiTaikunLbDeleteTaikunLbRequest struct {
-	ctx context.Context
-	ApiService *TaikunLBAPIService
-	projectId int32
+	ctx                      context.Context
+	ApiService               *TaikunLBAPIService
+	projectId                int32
 	createGenericTaikunLbDto *CreateGenericTaikunLbDto
 }
 
@@ -231,24 +231,24 @@ func (r ApiTaikunLbDeleteTaikunLbRequest) Execute() (*http.Response, error) {
 /*
 TaikunLbDeleteTaikunLb Delete Taikun LB
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiTaikunLbDeleteTaikunLbRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiTaikunLbDeleteTaikunLbRequest
 */
 func (a *TaikunLBAPIService) TaikunLbDeleteTaikunLb(ctx context.Context, projectId int32) ApiTaikunLbDeleteTaikunLbRequest {
 	return ApiTaikunLbDeleteTaikunLbRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
 func (a *TaikunLBAPIService) TaikunLbDeleteTaikunLbExecute(r ApiTaikunLbDeleteTaikunLbRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaikunLBAPIService.TaikunLbDeleteTaikunLb")
@@ -325,8 +325,8 @@ func (a *TaikunLBAPIService) TaikunLbDeleteTaikunLbExecute(r ApiTaikunLbDeleteTa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -336,8 +336,8 @@ func (a *TaikunLBAPIService) TaikunLbDeleteTaikunLbExecute(r ApiTaikunLbDeleteTa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -347,8 +347,8 @@ func (a *TaikunLBAPIService) TaikunLbDeleteTaikunLbExecute(r ApiTaikunLbDeleteTa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -358,8 +358,8 @@ func (a *TaikunLBAPIService) TaikunLbDeleteTaikunLbExecute(r ApiTaikunLbDeleteTa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -369,8 +369,8 @@ func (a *TaikunLBAPIService) TaikunLbDeleteTaikunLbExecute(r ApiTaikunLbDeleteTa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -380,8 +380,8 @@ func (a *TaikunLBAPIService) TaikunLbDeleteTaikunLbExecute(r ApiTaikunLbDeleteTa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -390,10 +390,10 @@ func (a *TaikunLBAPIService) TaikunLbDeleteTaikunLbExecute(r ApiTaikunLbDeleteTa
 }
 
 type ApiTaikunLbListTaikunLbRequest struct {
-	ctx context.Context
-	ApiService *TaikunLBAPIService
-	projectId int32
-	svcName *string
+	ctx          context.Context
+	ApiService   *TaikunLBAPIService
+	projectId    int32
+	svcName      *string
 	svcNameSpace *string
 }
 
@@ -414,26 +414,27 @@ func (r ApiTaikunLbListTaikunLbRequest) Execute() ([]TaikunLbResponseDto, *http.
 /*
 TaikunLbListTaikunLb Retrieve taikun lbs for project
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiTaikunLbListTaikunLbRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId
+	@return ApiTaikunLbListTaikunLbRequest
 */
 func (a *TaikunLBAPIService) TaikunLbListTaikunLb(ctx context.Context, projectId int32) ApiTaikunLbListTaikunLbRequest {
 	return ApiTaikunLbListTaikunLbRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
-//  @return []TaikunLbResponseDto
+//
+//	@return []TaikunLbResponseDto
 func (a *TaikunLBAPIService) TaikunLbListTaikunLbExecute(r ApiTaikunLbListTaikunLbRequest) ([]TaikunLbResponseDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []TaikunLbResponseDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []TaikunLbResponseDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaikunLBAPIService.TaikunLbListTaikunLb")
@@ -514,8 +515,8 @@ func (a *TaikunLBAPIService) TaikunLbListTaikunLbExecute(r ApiTaikunLbListTaikun
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -525,8 +526,8 @@ func (a *TaikunLBAPIService) TaikunLbListTaikunLbExecute(r ApiTaikunLbListTaikun
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -536,8 +537,8 @@ func (a *TaikunLBAPIService) TaikunLbListTaikunLbExecute(r ApiTaikunLbListTaikun
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -547,8 +548,8 @@ func (a *TaikunLBAPIService) TaikunLbListTaikunLbExecute(r ApiTaikunLbListTaikun
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -558,8 +559,8 @@ func (a *TaikunLBAPIService) TaikunLbListTaikunLbExecute(r ApiTaikunLbListTaikun
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -569,8 +570,8 @@ func (a *TaikunLBAPIService) TaikunLbListTaikunLbExecute(r ApiTaikunLbListTaikun
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

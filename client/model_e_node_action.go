@@ -21,9 +21,9 @@ type ENodeAction string
 
 // List of ENodeAction
 const (
-	ENODEACTION_CORDON ENodeAction = "Cordon"
+	ENODEACTION_CORDON   ENodeAction = "Cordon"
 	ENODEACTION_UNCORDON ENodeAction = "Uncordon"
-	ENODEACTION_DRAIN ENodeAction = "Drain"
+	ENODEACTION_DRAIN    ENodeAction = "Drain"
 )
 
 // All allowed values of ENodeAction enum
@@ -111,4 +111,3 @@ func (v *NullableENodeAction) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
