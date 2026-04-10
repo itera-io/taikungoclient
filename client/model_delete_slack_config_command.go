@@ -20,7 +20,7 @@ var _ MappedNullable = &DeleteSlackConfigCommand{}
 
 // DeleteSlackConfigCommand struct for DeleteSlackConfigCommand
 type DeleteSlackConfigCommand struct {
-	Ids                  []int32 `json:"ids,omitempty"`
+	Ids []int32 `json:"ids,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,7 +77,7 @@ func (o *DeleteSlackConfigCommand) SetIds(v []int32) {
 }
 
 func (o DeleteSlackConfigCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -153,3 +153,5 @@ func (v *NullableDeleteSlackConfigCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

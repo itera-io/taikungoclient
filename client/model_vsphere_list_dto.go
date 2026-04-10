@@ -21,30 +21,30 @@ var _ MappedNullable = &VsphereListDto{}
 
 // VsphereListDto struct for VsphereListDto
 type VsphereListDto struct {
-	Id                   int32                          `json:"id"`
-	ProjectCount         int32                          `json:"projectCount"`
-	IsLocked             bool                           `json:"isLocked"`
-	Name                 string                         `json:"name"`
-	Projects             []CommonDropdownDto            `json:"projects"`
-	CreatedBy            string                         `json:"createdBy"`
-	CreatedAt            string                         `json:"createdAt"`
-	LastModified         NullableString                 `json:"lastModified"`
-	LastModifiedBy       NullableString                 `json:"lastModifiedBy"`
-	IsDefault            bool                           `json:"isDefault"`
-	DrsEnabled           bool                           `json:"drsEnabled"`
-	ResourcePool         string                         `json:"resourcePool"`
-	OrganizationId       int32                          `json:"organizationId"`
-	OrganizationName     string                         `json:"organizationName"`
-	ContinentName        NullableString                 `json:"continentName"`
-	Hypervisors          []CommonStringBasedDropdownDto `json:"hypervisors"`
-	Username             string                         `json:"username"`
-	Url                  string                         `json:"url"`
-	DatacenterId         string                         `json:"datacenterId"`
-	DatacenterName       string                         `json:"datacenterName"`
-	Datastore            string                         `json:"datastore"`
-	VmTemplateName       string                         `json:"vmTemplateName"`
-	VsphereNetworks      []VsphereNetworkListDto        `json:"vsphereNetworks"`
-	SkipTlsFlag          bool                           `json:"skipTlsFlag"`
+	Id int32 `json:"id"`
+	ProjectCount int32 `json:"projectCount"`
+	IsLocked bool `json:"isLocked"`
+	Name string `json:"name"`
+	Projects []CommonDropdownDto `json:"projects"`
+	CreatedBy string `json:"createdBy"`
+	CreatedAt string `json:"createdAt"`
+	LastModified NullableString `json:"lastModified"`
+	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	IsDefault bool `json:"isDefault"`
+	DrsEnabled bool `json:"drsEnabled"`
+	ResourcePool string `json:"resourcePool"`
+	OrganizationId int32 `json:"organizationId"`
+	OrganizationName string `json:"organizationName"`
+	ContinentName NullableString `json:"continentName"`
+	Hypervisors []CommonStringBasedDropdownDto `json:"hypervisors"`
+	Username string `json:"username"`
+	Url string `json:"url"`
+	DatacenterId string `json:"datacenterId"`
+	DatacenterName string `json:"datacenterName"`
+	Datastore string `json:"datastore"`
+	VmTemplateName string `json:"vmTemplateName"`
+	VsphereNetworks []VsphereNetworkListDto `json:"vsphereNetworks"`
+	SkipTlsFlag bool `json:"skipTlsFlag"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -674,7 +674,7 @@ func (o *VsphereListDto) SetSkipTlsFlag(v bool) {
 }
 
 func (o VsphereListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -751,10 +751,10 @@ func (o *VsphereListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -838,3 +838,5 @@ func (v *NullableVsphereListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

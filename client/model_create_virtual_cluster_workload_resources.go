@@ -21,11 +21,11 @@ var _ MappedNullable = &CreateVirtualClusterWorkloadResources{}
 
 // CreateVirtualClusterWorkloadResources struct for CreateVirtualClusterWorkloadResources
 type CreateVirtualClusterWorkloadResources struct {
-	MaxPods              int32 `json:"maxPods"`
-	MaxPvcs              int32 `json:"maxPvcs"`
-	MaxTotalPvcSize      int64 `json:"maxTotalPvcSize"`
-	MaxIngresses         int32 `json:"maxIngresses"`
-	MaxLoadBalancers     int32 `json:"maxLoadBalancers"`
+	MaxPods int32 `json:"maxPods"`
+	MaxPvcs int32 `json:"maxPvcs"`
+	MaxTotalPvcSize int64 `json:"maxTotalPvcSize"`
+	MaxIngresses int32 `json:"maxIngresses"`
+	MaxLoadBalancers int32 `json:"maxLoadBalancers"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -174,7 +174,7 @@ func (o *CreateVirtualClusterWorkloadResources) SetMaxLoadBalancers(v int32) {
 }
 
 func (o CreateVirtualClusterWorkloadResources) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -213,10 +213,10 @@ func (o *CreateVirtualClusterWorkloadResources) UnmarshalJSON(data []byte) (err 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -281,3 +281,5 @@ func (v *NullableCreateVirtualClusterWorkloadResources) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

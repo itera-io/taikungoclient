@@ -20,12 +20,12 @@ var _ MappedNullable = &UpdateUserCommand{}
 
 // UpdateUserCommand struct for UpdateUserCommand
 type UpdateUserCommand struct {
-	Id                   NullableString `json:"id,omitempty"`
-	DisplayName          NullableString `json:"displayName,omitempty"`
-	Username             NullableString `json:"username,omitempty"`
-	Email                NullableString `json:"email,omitempty"`
-	ForceToResetPassword *bool          `json:"forceToResetPassword,omitempty"`
-	Disable              *bool          `json:"disable,omitempty"`
+	Id NullableString `json:"id,omitempty"`
+	DisplayName NullableString `json:"displayName,omitempty"`
+	Username NullableString `json:"username,omitempty"`
+	Email NullableString `json:"email,omitempty"`
+	ForceToResetPassword *bool `json:"forceToResetPassword,omitempty"`
+	Disable *bool `json:"disable,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -80,7 +80,6 @@ func (o *UpdateUserCommand) HasId() bool {
 func (o *UpdateUserCommand) SetId(v string) {
 	o.Id.Set(&v)
 }
-
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *UpdateUserCommand) SetIdNil() {
 	o.Id.Set(nil)
@@ -123,7 +122,6 @@ func (o *UpdateUserCommand) HasDisplayName() bool {
 func (o *UpdateUserCommand) SetDisplayName(v string) {
 	o.DisplayName.Set(&v)
 }
-
 // SetDisplayNameNil sets the value for DisplayName to be an explicit nil
 func (o *UpdateUserCommand) SetDisplayNameNil() {
 	o.DisplayName.Set(nil)
@@ -166,7 +164,6 @@ func (o *UpdateUserCommand) HasUsername() bool {
 func (o *UpdateUserCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
-
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *UpdateUserCommand) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -209,7 +206,6 @@ func (o *UpdateUserCommand) HasEmail() bool {
 func (o *UpdateUserCommand) SetEmail(v string) {
 	o.Email.Set(&v)
 }
-
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *UpdateUserCommand) SetEmailNil() {
 	o.Email.Set(nil)
@@ -285,7 +281,7 @@ func (o *UpdateUserCommand) SetDisable(v bool) {
 }
 
 func (o UpdateUserCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -381,3 +377,5 @@ func (v *NullableUpdateUserCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

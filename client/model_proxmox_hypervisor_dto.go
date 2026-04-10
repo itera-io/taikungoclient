@@ -20,9 +20,9 @@ var _ MappedNullable = &ProxmoxHypervisorDto{}
 
 // ProxmoxHypervisorDto struct for ProxmoxHypervisorDto
 type ProxmoxHypervisorDto struct {
-	Name                 NullableString `json:"name,omitempty"`
-	IsBound              *bool          `json:"isBound,omitempty"`
-	UsedByServer         *bool          `json:"usedByServer,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	IsBound *bool `json:"isBound,omitempty"`
+	UsedByServer *bool `json:"usedByServer,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,7 +77,6 @@ func (o *ProxmoxHypervisorDto) HasName() bool {
 func (o *ProxmoxHypervisorDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ProxmoxHypervisorDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -153,7 +152,7 @@ func (o *ProxmoxHypervisorDto) SetUsedByServer(v bool) {
 }
 
 func (o ProxmoxHypervisorDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -237,3 +236,5 @@ func (v *NullableProxmoxHypervisorDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

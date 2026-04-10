@@ -20,12 +20,12 @@ var _ MappedNullable = &OpenshiftCreateCommand{}
 
 // OpenshiftCreateCommand struct for OpenshiftCreateCommand
 type OpenshiftCreateCommand struct {
-	Name                 NullableString `json:"name,omitempty"`
-	KubeConfig           NullableString `json:"kubeConfig,omitempty"`
-	PullSecret           NullableString `json:"pullSecret,omitempty"`
-	StorageClass         NullableString `json:"storageClass,omitempty"`
-	BaseDomain           NullableString `json:"baseDomain,omitempty"`
-	OrganizationId       NullableInt32  `json:"organizationId,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	KubeConfig NullableString `json:"kubeConfig,omitempty"`
+	PullSecret NullableString `json:"pullSecret,omitempty"`
+	StorageClass NullableString `json:"storageClass,omitempty"`
+	BaseDomain NullableString `json:"baseDomain,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -80,7 +80,6 @@ func (o *OpenshiftCreateCommand) HasName() bool {
 func (o *OpenshiftCreateCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *OpenshiftCreateCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -123,7 +122,6 @@ func (o *OpenshiftCreateCommand) HasKubeConfig() bool {
 func (o *OpenshiftCreateCommand) SetKubeConfig(v string) {
 	o.KubeConfig.Set(&v)
 }
-
 // SetKubeConfigNil sets the value for KubeConfig to be an explicit nil
 func (o *OpenshiftCreateCommand) SetKubeConfigNil() {
 	o.KubeConfig.Set(nil)
@@ -166,7 +164,6 @@ func (o *OpenshiftCreateCommand) HasPullSecret() bool {
 func (o *OpenshiftCreateCommand) SetPullSecret(v string) {
 	o.PullSecret.Set(&v)
 }
-
 // SetPullSecretNil sets the value for PullSecret to be an explicit nil
 func (o *OpenshiftCreateCommand) SetPullSecretNil() {
 	o.PullSecret.Set(nil)
@@ -209,7 +206,6 @@ func (o *OpenshiftCreateCommand) HasStorageClass() bool {
 func (o *OpenshiftCreateCommand) SetStorageClass(v string) {
 	o.StorageClass.Set(&v)
 }
-
 // SetStorageClassNil sets the value for StorageClass to be an explicit nil
 func (o *OpenshiftCreateCommand) SetStorageClassNil() {
 	o.StorageClass.Set(nil)
@@ -252,7 +248,6 @@ func (o *OpenshiftCreateCommand) HasBaseDomain() bool {
 func (o *OpenshiftCreateCommand) SetBaseDomain(v string) {
 	o.BaseDomain.Set(&v)
 }
-
 // SetBaseDomainNil sets the value for BaseDomain to be an explicit nil
 func (o *OpenshiftCreateCommand) SetBaseDomainNil() {
 	o.BaseDomain.Set(nil)
@@ -295,7 +290,6 @@ func (o *OpenshiftCreateCommand) HasOrganizationId() bool {
 func (o *OpenshiftCreateCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *OpenshiftCreateCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -307,7 +301,7 @@ func (o *OpenshiftCreateCommand) UnsetOrganizationId() {
 }
 
 func (o OpenshiftCreateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -403,3 +397,5 @@ func (v *NullableOpenshiftCreateCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

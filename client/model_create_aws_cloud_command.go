@@ -21,20 +21,20 @@ var _ MappedNullable = &CreateAwsCloudCommand{}
 
 // CreateAwsCloudCommand struct for CreateAwsCloudCommand
 type CreateAwsCloudCommand struct {
-	Name                    NullableString       `json:"name"`
-	AwsSecretAccessKey      NullableString       `json:"awsSecretAccessKey"`
-	AwsAccessKeyId          NullableString       `json:"awsAccessKeyId"`
-	AzCount                 NullableInt32        `json:"azCount,omitempty"`
-	AwsRegion               NullableString       `json:"awsRegion"`
-	OrganizationId          NullableInt32        `json:"organizationId,omitempty"`
-	ImportedVpcId           NullableString       `json:"importedVpcId,omitempty"`
-	PrivateOnly             *bool                `json:"privateOnly,omitempty"`
-	IpMode                  *IpMode              `json:"ipMode,omitempty"`
-	VpcMode                 *VpcMode             `json:"vpcMode,omitempty"`
-	Subnets                 []CreateAwsSubnetDto `json:"subnets,omitempty"`
-	SharedFileSystemEnabled *bool                `json:"sharedFileSystemEnabled,omitempty"`
-	EfsFileSystemId         NullableString       `json:"efsFileSystemId,omitempty"`
-	AdditionalProperties    map[string]interface{}
+	Name NullableString `json:"name"`
+	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey"`
+	AwsAccessKeyId NullableString `json:"awsAccessKeyId"`
+	AzCount NullableInt32 `json:"azCount,omitempty"`
+	AwsRegion NullableString `json:"awsRegion"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	ImportedVpcId NullableString `json:"importedVpcId,omitempty"`
+	PrivateOnly *bool `json:"privateOnly,omitempty"`
+	IpMode *IpMode `json:"ipMode,omitempty"`
+	VpcMode *VpcMode `json:"vpcMode,omitempty"`
+	Subnets []CreateAwsSubnetDto `json:"subnets,omitempty"`
+	SharedFileSystemEnabled *bool `json:"sharedFileSystemEnabled,omitempty"`
+	EfsFileSystemId NullableString `json:"efsFileSystemId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CreateAwsCloudCommand CreateAwsCloudCommand
@@ -170,7 +170,6 @@ func (o *CreateAwsCloudCommand) HasAzCount() bool {
 func (o *CreateAwsCloudCommand) SetAzCount(v int32) {
 	o.AzCount.Set(&v)
 }
-
 // SetAzCountNil sets the value for AzCount to be an explicit nil
 func (o *CreateAwsCloudCommand) SetAzCountNil() {
 	o.AzCount.Set(nil)
@@ -239,7 +238,6 @@ func (o *CreateAwsCloudCommand) HasOrganizationId() bool {
 func (o *CreateAwsCloudCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateAwsCloudCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -282,7 +280,6 @@ func (o *CreateAwsCloudCommand) HasImportedVpcId() bool {
 func (o *CreateAwsCloudCommand) SetImportedVpcId(v string) {
 	o.ImportedVpcId.Set(&v)
 }
-
 // SetImportedVpcIdNil sets the value for ImportedVpcId to be an explicit nil
 func (o *CreateAwsCloudCommand) SetImportedVpcIdNil() {
 	o.ImportedVpcId.Set(nil)
@@ -486,7 +483,6 @@ func (o *CreateAwsCloudCommand) HasEfsFileSystemId() bool {
 func (o *CreateAwsCloudCommand) SetEfsFileSystemId(v string) {
 	o.EfsFileSystemId.Set(&v)
 }
-
 // SetEfsFileSystemIdNil sets the value for EfsFileSystemId to be an explicit nil
 func (o *CreateAwsCloudCommand) SetEfsFileSystemIdNil() {
 	o.EfsFileSystemId.Set(nil)
@@ -498,7 +494,7 @@ func (o *CreateAwsCloudCommand) UnsetEfsFileSystemId() {
 }
 
 func (o CreateAwsCloudCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -562,10 +558,10 @@ func (o *CreateAwsCloudCommand) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -638,3 +634,5 @@ func (v *NullableCreateAwsCloudCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

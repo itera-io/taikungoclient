@@ -21,10 +21,10 @@ var _ MappedNullable = &AlertingIntegrationDto{}
 
 // AlertingIntegrationDto struct for AlertingIntegrationDto
 type AlertingIntegrationDto struct {
-	Url                     string                  `json:"url"`
-	Token                   NullableString          `json:"token"`
+	Url string `json:"url"`
+	Token NullableString `json:"token"`
 	AlertingIntegrationType AlertingIntegrationType `json:"alertingIntegrationType"`
-	AdditionalProperties    map[string]interface{}
+	AdditionalProperties map[string]interface{}
 }
 
 type _AlertingIntegrationDto AlertingIntegrationDto
@@ -124,7 +124,7 @@ func (o *AlertingIntegrationDto) SetAlertingIntegrationType(v AlertingIntegratio
 }
 
 func (o AlertingIntegrationDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,10 +159,10 @@ func (o *AlertingIntegrationDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -225,3 +225,5 @@ func (v *NullableAlertingIntegrationDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,9 +20,9 @@ var _ MappedNullable = &CreateEmailConfigurationCommand{}
 
 // CreateEmailConfigurationCommand struct for CreateEmailConfigurationCommand
 type CreateEmailConfigurationCommand struct {
-	Name                 NullableString `json:"name,omitempty"`
-	Host                 NullableString `json:"host,omitempty"`
-	ApiKey               NullableString `json:"apiKey,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Host NullableString `json:"host,omitempty"`
+	ApiKey NullableString `json:"apiKey,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,7 +77,6 @@ func (o *CreateEmailConfigurationCommand) HasName() bool {
 func (o *CreateEmailConfigurationCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateEmailConfigurationCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -120,7 +119,6 @@ func (o *CreateEmailConfigurationCommand) HasHost() bool {
 func (o *CreateEmailConfigurationCommand) SetHost(v string) {
 	o.Host.Set(&v)
 }
-
 // SetHostNil sets the value for Host to be an explicit nil
 func (o *CreateEmailConfigurationCommand) SetHostNil() {
 	o.Host.Set(nil)
@@ -163,7 +161,6 @@ func (o *CreateEmailConfigurationCommand) HasApiKey() bool {
 func (o *CreateEmailConfigurationCommand) SetApiKey(v string) {
 	o.ApiKey.Set(&v)
 }
-
 // SetApiKeyNil sets the value for ApiKey to be an explicit nil
 func (o *CreateEmailConfigurationCommand) SetApiKeyNil() {
 	o.ApiKey.Set(nil)
@@ -175,7 +172,7 @@ func (o *CreateEmailConfigurationCommand) UnsetApiKey() {
 }
 
 func (o CreateEmailConfigurationCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -259,3 +256,5 @@ func (v *NullableCreateEmailConfigurationCommand) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

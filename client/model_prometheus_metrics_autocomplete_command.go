@@ -20,7 +20,7 @@ var _ MappedNullable = &PrometheusMetricsAutocompleteCommand{}
 
 // PrometheusMetricsAutocompleteCommand struct for PrometheusMetricsAutocompleteCommand
 type PrometheusMetricsAutocompleteCommand struct {
-	ProjectId            *int32 `json:"projectId,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,7 @@ func (o *PrometheusMetricsAutocompleteCommand) SetProjectId(v int32) {
 }
 
 func (o PrometheusMetricsAutocompleteCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -152,3 +152,5 @@ func (v *NullablePrometheusMetricsAutocompleteCommand) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

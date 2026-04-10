@@ -20,11 +20,11 @@ var _ MappedNullable = &OperationCredentialsCreateCommand{}
 
 // OperationCredentialsCreateCommand struct for OperationCredentialsCreateCommand
 type OperationCredentialsCreateCommand struct {
-	Name                 NullableString `json:"name,omitempty"`
-	PrometheusUsername   NullableString `json:"prometheusUsername,omitempty"`
-	PrometheusPassword   NullableString `json:"prometheusPassword,omitempty"`
-	PrometheusUrl        NullableString `json:"prometheusUrl,omitempty"`
-	OrganizationId       NullableInt32  `json:"organizationId,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	PrometheusUsername NullableString `json:"prometheusUsername,omitempty"`
+	PrometheusPassword NullableString `json:"prometheusPassword,omitempty"`
+	PrometheusUrl NullableString `json:"prometheusUrl,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -79,7 +79,6 @@ func (o *OperationCredentialsCreateCommand) HasName() bool {
 func (o *OperationCredentialsCreateCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *OperationCredentialsCreateCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -122,7 +121,6 @@ func (o *OperationCredentialsCreateCommand) HasPrometheusUsername() bool {
 func (o *OperationCredentialsCreateCommand) SetPrometheusUsername(v string) {
 	o.PrometheusUsername.Set(&v)
 }
-
 // SetPrometheusUsernameNil sets the value for PrometheusUsername to be an explicit nil
 func (o *OperationCredentialsCreateCommand) SetPrometheusUsernameNil() {
 	o.PrometheusUsername.Set(nil)
@@ -165,7 +163,6 @@ func (o *OperationCredentialsCreateCommand) HasPrometheusPassword() bool {
 func (o *OperationCredentialsCreateCommand) SetPrometheusPassword(v string) {
 	o.PrometheusPassword.Set(&v)
 }
-
 // SetPrometheusPasswordNil sets the value for PrometheusPassword to be an explicit nil
 func (o *OperationCredentialsCreateCommand) SetPrometheusPasswordNil() {
 	o.PrometheusPassword.Set(nil)
@@ -208,7 +205,6 @@ func (o *OperationCredentialsCreateCommand) HasPrometheusUrl() bool {
 func (o *OperationCredentialsCreateCommand) SetPrometheusUrl(v string) {
 	o.PrometheusUrl.Set(&v)
 }
-
 // SetPrometheusUrlNil sets the value for PrometheusUrl to be an explicit nil
 func (o *OperationCredentialsCreateCommand) SetPrometheusUrlNil() {
 	o.PrometheusUrl.Set(nil)
@@ -251,7 +247,6 @@ func (o *OperationCredentialsCreateCommand) HasOrganizationId() bool {
 func (o *OperationCredentialsCreateCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *OperationCredentialsCreateCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -263,7 +258,7 @@ func (o *OperationCredentialsCreateCommand) UnsetOrganizationId() {
 }
 
 func (o OperationCredentialsCreateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -355,3 +350,5 @@ func (v *NullableOperationCredentialsCreateCommand) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

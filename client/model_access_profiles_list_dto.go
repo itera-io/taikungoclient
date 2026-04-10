@@ -21,21 +21,21 @@ var _ MappedNullable = &AccessProfilesListDto{}
 
 // AccessProfilesListDto struct for AccessProfilesListDto
 type AccessProfilesListDto struct {
-	Id                   int32                    `json:"id"`
-	Name                 string                   `json:"name"`
-	HttpProxy            NullableString           `json:"httpProxy"`
-	OrganizationId       NullableInt32            `json:"organizationId"`
-	OrganizationName     string                   `json:"organizationName"`
-	IsLocked             bool                     `json:"isLocked"`
-	DnsServers           []DnsServerListDto       `json:"dnsServers"`
-	TrustedRegistries    []TrustedRegistryListDto `json:"trustedRegistries"`
-	NtpServers           []NtpServerListDto       `json:"ntpServers"`
-	AllowedHosts         []AllowedHostListDto     `json:"allowedHosts"`
-	Projects             []CommonDropdownDto      `json:"projects"`
-	CreatedBy            NullableString           `json:"createdBy"`
-	LastModified         NullableString           `json:"lastModified"`
-	LastModifiedBy       NullableString           `json:"lastModifiedBy"`
-	CreatedAt            string                   `json:"createdAt"`
+	Id int32 `json:"id"`
+	Name string `json:"name"`
+	HttpProxy NullableString `json:"httpProxy"`
+	OrganizationId NullableInt32 `json:"organizationId"`
+	OrganizationName string `json:"organizationName"`
+	IsLocked bool `json:"isLocked"`
+	DnsServers []DnsServerListDto `json:"dnsServers"`
+	TrustedRegistries []TrustedRegistryListDto `json:"trustedRegistries"`
+	NtpServers []NtpServerListDto `json:"ntpServers"`
+	AllowedHosts []AllowedHostListDto `json:"allowedHosts"`
+	Projects []CommonDropdownDto `json:"projects"`
+	CreatedBy NullableString `json:"createdBy"`
+	LastModified NullableString `json:"lastModified"`
+	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	CreatedAt string `json:"createdAt"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -444,7 +444,7 @@ func (o *AccessProfilesListDto) SetCreatedAt(v string) {
 }
 
 func (o AccessProfilesListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -503,10 +503,10 @@ func (o *AccessProfilesListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -581,3 +581,5 @@ func (v *NullableAccessProfilesListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

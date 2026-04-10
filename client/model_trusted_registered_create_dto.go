@@ -20,7 +20,7 @@ var _ MappedNullable = &TrustedRegisteredCreateDto{}
 
 // TrustedRegisteredCreateDto struct for TrustedRegisteredCreateDto
 type TrustedRegisteredCreateDto struct {
-	Registry             NullableString `json:"registry,omitempty"`
+	Registry NullableString `json:"registry,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,7 +75,6 @@ func (o *TrustedRegisteredCreateDto) HasRegistry() bool {
 func (o *TrustedRegisteredCreateDto) SetRegistry(v string) {
 	o.Registry.Set(&v)
 }
-
 // SetRegistryNil sets the value for Registry to be an explicit nil
 func (o *TrustedRegisteredCreateDto) SetRegistryNil() {
 	o.Registry.Set(nil)
@@ -87,7 +86,7 @@ func (o *TrustedRegisteredCreateDto) UnsetRegistry() {
 }
 
 func (o TrustedRegisteredCreateDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -163,3 +162,5 @@ func (v *NullableTrustedRegisteredCreateDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

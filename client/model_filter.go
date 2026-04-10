@@ -20,8 +20,8 @@ var _ MappedNullable = &Filter{}
 
 // Filter struct for Filter
 type Filter struct {
-	Operator             NullableString `json:"operator,omitempty"`
-	Value                NullableString `json:"value,omitempty"`
+	Operator NullableString `json:"operator,omitempty"`
+	Value NullableString `json:"value,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,6 @@ func (o *Filter) HasOperator() bool {
 func (o *Filter) SetOperator(v string) {
 	o.Operator.Set(&v)
 }
-
 // SetOperatorNil sets the value for Operator to be an explicit nil
 func (o *Filter) SetOperatorNil() {
 	o.Operator.Set(nil)
@@ -119,7 +118,6 @@ func (o *Filter) HasValue() bool {
 func (o *Filter) SetValue(v string) {
 	o.Value.Set(&v)
 }
-
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *Filter) SetValueNil() {
 	o.Value.Set(nil)
@@ -131,7 +129,7 @@ func (o *Filter) UnsetValue() {
 }
 
 func (o Filter) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -211,3 +209,5 @@ func (v *NullableFilter) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

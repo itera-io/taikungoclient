@@ -20,8 +20,8 @@ var _ MappedNullable = &DeploymentEnableBackupCommand{}
 
 // DeploymentEnableBackupCommand struct for DeploymentEnableBackupCommand
 type DeploymentEnableBackupCommand struct {
-	ProjectId            *int32 `json:"projectId,omitempty"`
-	S3CredentialId       *int32 `json:"s3CredentialId,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	S3CredentialId *int32 `json:"s3CredentialId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,7 +109,7 @@ func (o *DeploymentEnableBackupCommand) SetS3CredentialId(v int32) {
 }
 
 func (o DeploymentEnableBackupCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -189,3 +189,5 @@ func (v *NullableDeploymentEnableBackupCommand) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

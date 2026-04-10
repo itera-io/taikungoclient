@@ -20,8 +20,8 @@ var _ MappedNullable = &SsoCallbackCommand{}
 
 // SsoCallbackCommand struct for SsoCallbackCommand
 type SsoCallbackCommand struct {
-	Code                 NullableString `json:"code,omitempty"`
-	State                NullableString `json:"state,omitempty"`
+	Code NullableString `json:"code,omitempty"`
+	State NullableString `json:"state,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,6 @@ func (o *SsoCallbackCommand) HasCode() bool {
 func (o *SsoCallbackCommand) SetCode(v string) {
 	o.Code.Set(&v)
 }
-
 // SetCodeNil sets the value for Code to be an explicit nil
 func (o *SsoCallbackCommand) SetCodeNil() {
 	o.Code.Set(nil)
@@ -119,7 +118,6 @@ func (o *SsoCallbackCommand) HasState() bool {
 func (o *SsoCallbackCommand) SetState(v string) {
 	o.State.Set(&v)
 }
-
 // SetStateNil sets the value for State to be an explicit nil
 func (o *SsoCallbackCommand) SetStateNil() {
 	o.State.Set(nil)
@@ -131,7 +129,7 @@ func (o *SsoCallbackCommand) UnsetState() {
 }
 
 func (o SsoCallbackCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -211,3 +209,5 @@ func (v *NullableSsoCallbackCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

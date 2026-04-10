@@ -21,12 +21,12 @@ var _ MappedNullable = &OrganizationOffsetPaginationWithGroupList{}
 
 // OrganizationOffsetPaginationWithGroupList struct for OrganizationOffsetPaginationWithGroupList
 type OrganizationOffsetPaginationWithGroupList struct {
-	Data                 []OrganizationsWithGroupInfoResultDto `json:"data"`
-	Limit                int32                                 `json:"limit"`
-	HasMore              bool                                  `json:"hasMore"`
-	TotalCount           int64                                 `json:"totalCount"`
-	Offset               int32                                 `json:"offset"`
-	NextOffset           NullableInt32                         `json:"nextOffset,omitempty"`
+	Data []OrganizationsWithGroupInfoResultDto `json:"data"`
+	Limit int32 `json:"limit"`
+	HasMore bool `json:"hasMore"`
+	TotalCount int64 `json:"totalCount"`
+	Offset int32 `json:"offset"`
+	NextOffset NullableInt32 `json:"nextOffset,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -208,7 +208,6 @@ func (o *OrganizationOffsetPaginationWithGroupList) HasNextOffset() bool {
 func (o *OrganizationOffsetPaginationWithGroupList) SetNextOffset(v int32) {
 	o.NextOffset.Set(&v)
 }
-
 // SetNextOffsetNil sets the value for NextOffset to be an explicit nil
 func (o *OrganizationOffsetPaginationWithGroupList) SetNextOffsetNil() {
 	o.NextOffset.Set(nil)
@@ -220,7 +219,7 @@ func (o *OrganizationOffsetPaginationWithGroupList) UnsetNextOffset() {
 }
 
 func (o OrganizationOffsetPaginationWithGroupList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -264,10 +263,10 @@ func (o *OrganizationOffsetPaginationWithGroupList) UnmarshalJSON(data []byte) (
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -333,3 +332,5 @@ func (v *NullableOrganizationOffsetPaginationWithGroupList) UnmarshalJSON(src []
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

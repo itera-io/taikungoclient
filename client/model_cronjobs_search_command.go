@@ -20,11 +20,11 @@ var _ MappedNullable = &CronjobsSearchCommand{}
 
 // CronjobsSearchCommand struct for CronjobsSearchCommand
 type CronjobsSearchCommand struct {
-	Limit                         NullableInt32  `json:"limit,omitempty"`
-	Offset                        NullableInt32  `json:"offset,omitempty"`
-	SearchTerm                    NullableString `json:"searchTerm,omitempty"`
-	IncludePublicImportedClusters NullableBool   `json:"includePublicImportedClusters,omitempty"`
-	AdditionalProperties          map[string]interface{}
+	Limit NullableInt32 `json:"limit,omitempty"`
+	Offset NullableInt32 `json:"offset,omitempty"`
+	SearchTerm NullableString `json:"searchTerm,omitempty"`
+	IncludePublicImportedClusters NullableBool `json:"includePublicImportedClusters,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CronjobsSearchCommand CronjobsSearchCommand
@@ -78,7 +78,6 @@ func (o *CronjobsSearchCommand) HasLimit() bool {
 func (o *CronjobsSearchCommand) SetLimit(v int32) {
 	o.Limit.Set(&v)
 }
-
 // SetLimitNil sets the value for Limit to be an explicit nil
 func (o *CronjobsSearchCommand) SetLimitNil() {
 	o.Limit.Set(nil)
@@ -121,7 +120,6 @@ func (o *CronjobsSearchCommand) HasOffset() bool {
 func (o *CronjobsSearchCommand) SetOffset(v int32) {
 	o.Offset.Set(&v)
 }
-
 // SetOffsetNil sets the value for Offset to be an explicit nil
 func (o *CronjobsSearchCommand) SetOffsetNil() {
 	o.Offset.Set(nil)
@@ -164,7 +162,6 @@ func (o *CronjobsSearchCommand) HasSearchTerm() bool {
 func (o *CronjobsSearchCommand) SetSearchTerm(v string) {
 	o.SearchTerm.Set(&v)
 }
-
 // SetSearchTermNil sets the value for SearchTerm to be an explicit nil
 func (o *CronjobsSearchCommand) SetSearchTermNil() {
 	o.SearchTerm.Set(nil)
@@ -207,7 +204,6 @@ func (o *CronjobsSearchCommand) HasIncludePublicImportedClusters() bool {
 func (o *CronjobsSearchCommand) SetIncludePublicImportedClusters(v bool) {
 	o.IncludePublicImportedClusters.Set(&v)
 }
-
 // SetIncludePublicImportedClustersNil sets the value for IncludePublicImportedClusters to be an explicit nil
 func (o *CronjobsSearchCommand) SetIncludePublicImportedClustersNil() {
 	o.IncludePublicImportedClusters.Set(nil)
@@ -219,7 +215,7 @@ func (o *CronjobsSearchCommand) UnsetIncludePublicImportedClusters() {
 }
 
 func (o CronjobsSearchCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -307,3 +303,5 @@ func (v *NullableCronjobsSearchCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

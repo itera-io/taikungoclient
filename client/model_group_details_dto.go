@@ -20,12 +20,12 @@ var _ MappedNullable = &GroupDetailsDto{}
 
 // GroupDetailsDto struct for GroupDetailsDto
 type GroupDetailsDto struct {
-	Id                   *int32                   `json:"id,omitempty"`
-	Name                 NullableString           `json:"name,omitempty"`
-	ClaimName            NullableString           `json:"claimName,omitempty"`
-	CreatedAt            NullableString           `json:"createdAt,omitempty"`
-	Organizations        []GroupedOrganizationDto `json:"organizations,omitempty"`
-	Users                []GroupedUserDto         `json:"users,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	ClaimName NullableString `json:"claimName,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	Organizations []GroupedOrganizationDto `json:"organizations,omitempty"`
+	Users []GroupedUserDto `json:"users,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -112,7 +112,6 @@ func (o *GroupDetailsDto) HasName() bool {
 func (o *GroupDetailsDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *GroupDetailsDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -155,7 +154,6 @@ func (o *GroupDetailsDto) HasClaimName() bool {
 func (o *GroupDetailsDto) SetClaimName(v string) {
 	o.ClaimName.Set(&v)
 }
-
 // SetClaimNameNil sets the value for ClaimName to be an explicit nil
 func (o *GroupDetailsDto) SetClaimNameNil() {
 	o.ClaimName.Set(nil)
@@ -198,7 +196,6 @@ func (o *GroupDetailsDto) HasCreatedAt() bool {
 func (o *GroupDetailsDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *GroupDetailsDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -276,7 +273,7 @@ func (o *GroupDetailsDto) SetUsers(v []GroupedUserDto) {
 }
 
 func (o GroupDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -372,3 +369,5 @@ func (v *NullableGroupDetailsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

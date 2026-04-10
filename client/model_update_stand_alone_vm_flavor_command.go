@@ -20,8 +20,8 @@ var _ MappedNullable = &UpdateStandAloneVmFlavorCommand{}
 
 // UpdateStandAloneVmFlavorCommand struct for UpdateStandAloneVmFlavorCommand
 type UpdateStandAloneVmFlavorCommand struct {
-	Id                   *int32         `json:"id,omitempty"`
-	Flavor               NullableString `json:"flavor,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Flavor NullableString `json:"flavor,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,7 +108,6 @@ func (o *UpdateStandAloneVmFlavorCommand) HasFlavor() bool {
 func (o *UpdateStandAloneVmFlavorCommand) SetFlavor(v string) {
 	o.Flavor.Set(&v)
 }
-
 // SetFlavorNil sets the value for Flavor to be an explicit nil
 func (o *UpdateStandAloneVmFlavorCommand) SetFlavorNil() {
 	o.Flavor.Set(nil)
@@ -120,7 +119,7 @@ func (o *UpdateStandAloneVmFlavorCommand) UnsetFlavor() {
 }
 
 func (o UpdateStandAloneVmFlavorCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -200,3 +199,5 @@ func (v *NullableUpdateStandAloneVmFlavorCommand) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

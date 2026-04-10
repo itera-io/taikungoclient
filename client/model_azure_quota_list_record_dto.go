@@ -20,9 +20,9 @@ var _ MappedNullable = &AzureQuotaListRecordDto{}
 
 // AzureQuotaListRecordDto struct for AzureQuotaListRecordDto
 type AzureQuotaListRecordDto struct {
-	TotalCores           *int64         `json:"totalCores,omitempty"`
-	CurrentUsage         *int32         `json:"currentUsage,omitempty"`
-	Name                 NullableString `json:"name,omitempty"`
+	TotalCores *int64 `json:"totalCores,omitempty"`
+	CurrentUsage *int32 `json:"currentUsage,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -141,7 +141,6 @@ func (o *AzureQuotaListRecordDto) HasName() bool {
 func (o *AzureQuotaListRecordDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *AzureQuotaListRecordDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -153,7 +152,7 @@ func (o *AzureQuotaListRecordDto) UnsetName() {
 }
 
 func (o AzureQuotaListRecordDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -237,3 +236,5 @@ func (v *NullableAzureQuotaListRecordDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

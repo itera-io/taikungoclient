@@ -20,8 +20,8 @@ var _ MappedNullable = &ProjectAlertsQuery{}
 
 // ProjectAlertsQuery struct for ProjectAlertsQuery
 type ProjectAlertsQuery struct {
-	ProjectId            *int32       `json:"projectId,omitempty"`
-	Mode                 *ProjectType `json:"mode,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	Mode *ProjectType `json:"mode,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,7 +109,7 @@ func (o *ProjectAlertsQuery) SetMode(v ProjectType) {
 }
 
 func (o ProjectAlertsQuery) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -189,3 +189,5 @@ func (v *NullableProjectAlertsQuery) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

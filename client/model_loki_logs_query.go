@@ -21,13 +21,13 @@ var _ MappedNullable = &LokiLogsQuery{}
 
 // LokiLogsQuery struct for LokiLogsQuery
 type LokiLogsQuery struct {
-	ProjectId            *int32         `json:"projectId,omitempty"`
-	Parameters           NullableString `json:"parameters,omitempty"`
-	Filters              []Filter       `json:"filters,omitempty"`
-	StartDate            NullableTime   `json:"startDate,omitempty"`
-	EndDate              NullableTime   `json:"endDate,omitempty"`
-	Limit                NullableInt32  `json:"limit,omitempty"`
-	Direction            NullableString `json:"direction,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	Parameters NullableString `json:"parameters,omitempty"`
+	Filters []Filter `json:"filters,omitempty"`
+	StartDate NullableTime `json:"startDate,omitempty"`
+	EndDate NullableTime `json:"endDate,omitempty"`
+	Limit NullableInt32 `json:"limit,omitempty"`
+	Direction NullableString `json:"direction,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -114,7 +114,6 @@ func (o *LokiLogsQuery) HasParameters() bool {
 func (o *LokiLogsQuery) SetParameters(v string) {
 	o.Parameters.Set(&v)
 }
-
 // SetParametersNil sets the value for Parameters to be an explicit nil
 func (o *LokiLogsQuery) SetParametersNil() {
 	o.Parameters.Set(nil)
@@ -190,7 +189,6 @@ func (o *LokiLogsQuery) HasStartDate() bool {
 func (o *LokiLogsQuery) SetStartDate(v time.Time) {
 	o.StartDate.Set(&v)
 }
-
 // SetStartDateNil sets the value for StartDate to be an explicit nil
 func (o *LokiLogsQuery) SetStartDateNil() {
 	o.StartDate.Set(nil)
@@ -233,7 +231,6 @@ func (o *LokiLogsQuery) HasEndDate() bool {
 func (o *LokiLogsQuery) SetEndDate(v time.Time) {
 	o.EndDate.Set(&v)
 }
-
 // SetEndDateNil sets the value for EndDate to be an explicit nil
 func (o *LokiLogsQuery) SetEndDateNil() {
 	o.EndDate.Set(nil)
@@ -276,7 +273,6 @@ func (o *LokiLogsQuery) HasLimit() bool {
 func (o *LokiLogsQuery) SetLimit(v int32) {
 	o.Limit.Set(&v)
 }
-
 // SetLimitNil sets the value for Limit to be an explicit nil
 func (o *LokiLogsQuery) SetLimitNil() {
 	o.Limit.Set(nil)
@@ -319,7 +315,6 @@ func (o *LokiLogsQuery) HasDirection() bool {
 func (o *LokiLogsQuery) SetDirection(v string) {
 	o.Direction.Set(&v)
 }
-
 // SetDirectionNil sets the value for Direction to be an explicit nil
 func (o *LokiLogsQuery) SetDirectionNil() {
 	o.Direction.Set(nil)
@@ -331,7 +326,7 @@ func (o *LokiLogsQuery) UnsetDirection() {
 }
 
 func (o LokiLogsQuery) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -431,3 +426,5 @@ func (v *NullableLokiLogsQuery) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

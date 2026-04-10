@@ -20,11 +20,11 @@ var _ MappedNullable = &UsersSearchResponseData{}
 
 // UsersSearchResponseData struct for UsersSearchResponseData
 type UsersSearchResponseData struct {
-	Id                   NullableString `json:"id,omitempty"`
-	Name                 NullableString `json:"name,omitempty"`
-	Email                NullableString `json:"email,omitempty"`
-	AccountId            *int32         `json:"accountId,omitempty"`
-	AccountName          NullableString `json:"accountName,omitempty"`
+	Id NullableString `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Email NullableString `json:"email,omitempty"`
+	AccountId *int32 `json:"accountId,omitempty"`
+	AccountName NullableString `json:"accountName,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -79,7 +79,6 @@ func (o *UsersSearchResponseData) HasId() bool {
 func (o *UsersSearchResponseData) SetId(v string) {
 	o.Id.Set(&v)
 }
-
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *UsersSearchResponseData) SetIdNil() {
 	o.Id.Set(nil)
@@ -122,7 +121,6 @@ func (o *UsersSearchResponseData) HasName() bool {
 func (o *UsersSearchResponseData) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UsersSearchResponseData) SetNameNil() {
 	o.Name.Set(nil)
@@ -165,7 +163,6 @@ func (o *UsersSearchResponseData) HasEmail() bool {
 func (o *UsersSearchResponseData) SetEmail(v string) {
 	o.Email.Set(&v)
 }
-
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *UsersSearchResponseData) SetEmailNil() {
 	o.Email.Set(nil)
@@ -240,7 +237,6 @@ func (o *UsersSearchResponseData) HasAccountName() bool {
 func (o *UsersSearchResponseData) SetAccountName(v string) {
 	o.AccountName.Set(&v)
 }
-
 // SetAccountNameNil sets the value for AccountName to be an explicit nil
 func (o *UsersSearchResponseData) SetAccountNameNil() {
 	o.AccountName.Set(nil)
@@ -252,7 +248,7 @@ func (o *UsersSearchResponseData) UnsetAccountName() {
 }
 
 func (o UsersSearchResponseData) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -344,3 +340,5 @@ func (v *NullableUsersSearchResponseData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

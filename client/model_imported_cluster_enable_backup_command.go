@@ -20,8 +20,8 @@ var _ MappedNullable = &ImportedClusterEnableBackupCommand{}
 
 // ImportedClusterEnableBackupCommand struct for ImportedClusterEnableBackupCommand
 type ImportedClusterEnableBackupCommand struct {
-	ProjectId            *int32 `json:"projectId,omitempty"`
-	BackupCredentialId   *int32 `json:"backupCredentialId,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	BackupCredentialId *int32 `json:"backupCredentialId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,7 +109,7 @@ func (o *ImportedClusterEnableBackupCommand) SetBackupCredentialId(v int32) {
 }
 
 func (o ImportedClusterEnableBackupCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -189,3 +189,5 @@ func (v *NullableImportedClusterEnableBackupCommand) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

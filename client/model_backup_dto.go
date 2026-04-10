@@ -21,8 +21,8 @@ var _ MappedNullable = &BackupDto{}
 
 // BackupDto struct for BackupDto
 type BackupDto struct {
-	IncludedNamespace    []string `json:"includedNamespace"`
-	ExcludedNamespace    []string `json:"excludedNamespace"`
+	IncludedNamespace []string `json:"includedNamespace"`
+	ExcludedNamespace []string `json:"excludedNamespace"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -100,7 +100,7 @@ func (o *BackupDto) SetExcludedNamespace(v []string) {
 }
 
 func (o BackupDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -137,10 +137,10 @@ func (o *BackupDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -202,3 +202,5 @@ func (v *NullableBackupDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,10 +20,10 @@ var _ MappedNullable = &CreateStandAloneDiskCommand{}
 
 // CreateStandAloneDiskCommand struct for CreateStandAloneDiskCommand
 type CreateStandAloneDiskCommand struct {
-	StandaloneVmId       *int32         `json:"standaloneVmId,omitempty"`
-	Name                 NullableString `json:"name,omitempty"`
-	Size                 *int64         `json:"size,omitempty"`
-	VolumeType           NullableString `json:"volumeType,omitempty"`
+	StandaloneVmId *int32 `json:"standaloneVmId,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Size *int64 `json:"size,omitempty"`
+	VolumeType NullableString `json:"volumeType,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -110,7 +110,6 @@ func (o *CreateStandAloneDiskCommand) HasName() bool {
 func (o *CreateStandAloneDiskCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateStandAloneDiskCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -185,7 +184,6 @@ func (o *CreateStandAloneDiskCommand) HasVolumeType() bool {
 func (o *CreateStandAloneDiskCommand) SetVolumeType(v string) {
 	o.VolumeType.Set(&v)
 }
-
 // SetVolumeTypeNil sets the value for VolumeType to be an explicit nil
 func (o *CreateStandAloneDiskCommand) SetVolumeTypeNil() {
 	o.VolumeType.Set(nil)
@@ -197,7 +195,7 @@ func (o *CreateStandAloneDiskCommand) UnsetVolumeType() {
 }
 
 func (o CreateStandAloneDiskCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -285,3 +283,5 @@ func (v *NullableCreateStandAloneDiskCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

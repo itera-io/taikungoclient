@@ -21,10 +21,10 @@ var _ MappedNullable = &KubesprayListDto{}
 
 // KubesprayListDto struct for KubesprayListDto
 type KubesprayListDto struct {
-	Id                   int32          `json:"id"`
-	Version              NullableString `json:"version"`
-	KubernetesVersion    NullableString `json:"kubernetesVersion"`
-	IsDeprecated         bool           `json:"isDeprecated"`
+	Id int32 `json:"id"`
+	Version NullableString `json:"version"`
+	KubernetesVersion NullableString `json:"kubernetesVersion"`
+	IsDeprecated bool `json:"isDeprecated"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -152,7 +152,7 @@ func (o *KubesprayListDto) SetIsDeprecated(v bool) {
 }
 
 func (o KubesprayListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -189,10 +189,10 @@ func (o *KubesprayListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -256,3 +256,5 @@ func (v *NullableKubesprayListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

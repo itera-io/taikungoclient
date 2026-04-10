@@ -20,16 +20,16 @@ var _ MappedNullable = &AccountDetailsDto{}
 
 // AccountDetailsDto struct for AccountDetailsDto
 type AccountDetailsDto struct {
-	Id                   *int32                  `json:"id,omitempty"`
-	Name                 NullableString          `json:"name,omitempty"`
-	Email                NullableString          `json:"email,omitempty"`
-	OrganizationsCount   *int64                  `json:"organizationsCount,omitempty"`
-	UsersCount           *int64                  `json:"usersCount,omitempty"`
-	GroupsCount          *int64                  `json:"groupsCount,omitempty"`
-	ProjectsCount        *int64                  `json:"projectsCount,omitempty"`
-	CreatedAt            NullableString          `json:"createdAt,omitempty"`
-	Is2FAEnabled         *bool                   `json:"is2FAEnabled,omitempty"`
-	UserWithGlobalRoles  []UserWithGlobalRoleDto `json:"userWithGlobalRoles,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Email NullableString `json:"email,omitempty"`
+	OrganizationsCount *int64 `json:"organizationsCount,omitempty"`
+	UsersCount *int64 `json:"usersCount,omitempty"`
+	GroupsCount *int64 `json:"groupsCount,omitempty"`
+	ProjectsCount *int64 `json:"projectsCount,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	Is2FAEnabled *bool `json:"is2FAEnabled,omitempty"`
+	UserWithGlobalRoles []UserWithGlobalRoleDto `json:"userWithGlobalRoles,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -116,7 +116,6 @@ func (o *AccountDetailsDto) HasName() bool {
 func (o *AccountDetailsDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *AccountDetailsDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -159,7 +158,6 @@ func (o *AccountDetailsDto) HasEmail() bool {
 func (o *AccountDetailsDto) SetEmail(v string) {
 	o.Email.Set(&v)
 }
-
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *AccountDetailsDto) SetEmailNil() {
 	o.Email.Set(nil)
@@ -330,7 +328,6 @@ func (o *AccountDetailsDto) HasCreatedAt() bool {
 func (o *AccountDetailsDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *AccountDetailsDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -407,7 +404,7 @@ func (o *AccountDetailsDto) SetUserWithGlobalRoles(v []UserWithGlobalRoleDto) {
 }
 
 func (o AccountDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -519,3 +516,5 @@ func (v *NullableAccountDetailsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

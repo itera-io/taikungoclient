@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_GroupsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_GroupsAPIService(t *testing.T) {
 
 	t.Run("Test GroupsAPIService GroupsAddOrganizations", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int32
 
@@ -37,7 +37,7 @@ func Test_taikuncore_GroupsAPIService(t *testing.T) {
 
 	t.Run("Test GroupsAPIService GroupsAddUsers", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int32
 
@@ -50,7 +50,7 @@ func Test_taikuncore_GroupsAPIService(t *testing.T) {
 
 	t.Run("Test GroupsAPIService GroupsCheckDuplicateEntity", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.GroupsAPI.GroupsCheckDuplicateEntity(context.Background()).Execute()
 
@@ -61,7 +61,7 @@ func Test_taikuncore_GroupsAPIService(t *testing.T) {
 
 	t.Run("Test GroupsAPIService GroupsCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.GroupsAPI.GroupsCreate(context.Background()).Execute()
 
@@ -73,7 +73,7 @@ func Test_taikuncore_GroupsAPIService(t *testing.T) {
 
 	t.Run("Test GroupsAPIService GroupsDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int32
 
@@ -86,7 +86,7 @@ func Test_taikuncore_GroupsAPIService(t *testing.T) {
 
 	t.Run("Test GroupsAPIService GroupsDeleteOrganizations", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.GroupsAPI.GroupsDeleteOrganizations(context.Background()).Execute()
 
@@ -97,7 +97,7 @@ func Test_taikuncore_GroupsAPIService(t *testing.T) {
 
 	t.Run("Test GroupsAPIService GroupsDeleteUsers", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.GroupsAPI.GroupsDeleteUsers(context.Background()).Execute()
 
@@ -108,7 +108,7 @@ func Test_taikuncore_GroupsAPIService(t *testing.T) {
 
 	t.Run("Test GroupsAPIService GroupsList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.GroupsAPI.GroupsList(context.Background()).Execute()
 
@@ -120,7 +120,7 @@ func Test_taikuncore_GroupsAPIService(t *testing.T) {
 
 	t.Run("Test GroupsAPIService GroupsUpdate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int32
 
@@ -133,7 +133,7 @@ func Test_taikuncore_GroupsAPIService(t *testing.T) {
 
 	t.Run("Test GroupsAPIService GroupsUpdateGroupOrganization", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var groupId int32
 		var organizationId int32

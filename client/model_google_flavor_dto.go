@@ -21,15 +21,15 @@ var _ MappedNullable = &GoogleFlavorDto{}
 
 // GoogleFlavorDto struct for GoogleFlavorDto
 type GoogleFlavorDto struct {
-	Name                 string          `json:"name"`
-	Cpu                  NullableInt32   `json:"cpu"`
-	Ram                  NullableFloat64 `json:"ram"`
-	LinuxPrice           NullableFloat64 `json:"linuxPrice"`
-	WindowsPrice         NullableFloat64 `json:"windowsPrice"`
-	LinuxSpotPrice       NullableFloat64 `json:"linuxSpotPrice"`
-	WindowsSpotPrice     NullableFloat64 `json:"windowsSpotPrice"`
-	HasGpuSupport        *bool           `json:"hasGpuSupport,omitempty"`
-	Description          interface{}     `json:"description"`
+	Name string `json:"name"`
+	Cpu NullableInt32 `json:"cpu"`
+	Ram NullableFloat64 `json:"ram"`
+	LinuxPrice NullableFloat64 `json:"linuxPrice"`
+	WindowsPrice NullableFloat64 `json:"windowsPrice"`
+	LinuxSpotPrice NullableFloat64 `json:"linuxSpotPrice"`
+	WindowsSpotPrice NullableFloat64 `json:"windowsSpotPrice"`
+	HasGpuSupport *bool `json:"hasGpuSupport,omitempty"`
+	Description interface{} `json:"description"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -299,7 +299,7 @@ func (o *GoogleFlavorDto) SetDescription(v interface{}) {
 }
 
 func (o GoogleFlavorDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -349,10 +349,10 @@ func (o *GoogleFlavorDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -421,3 +421,5 @@ func (v *NullableGoogleFlavorDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

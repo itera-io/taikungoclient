@@ -21,9 +21,9 @@ var _ MappedNullable = &DnsServersListDto{}
 
 // DnsServersListDto struct for DnsServersListDto
 type DnsServersListDto struct {
-	Id                   int32          `json:"id"`
-	Address              NullableString `json:"address"`
-	AccessProfileName    NullableString `json:"accessProfileName"`
+	Id int32 `json:"id"`
+	Address NullableString `json:"address"`
+	AccessProfileName NullableString `json:"accessProfileName"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -126,7 +126,7 @@ func (o *DnsServersListDto) SetAccessProfileName(v string) {
 }
 
 func (o DnsServersListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -161,10 +161,10 @@ func (o *DnsServersListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -227,3 +227,5 @@ func (v *NullableDnsServersListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

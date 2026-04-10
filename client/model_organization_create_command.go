@@ -20,12 +20,12 @@ var _ MappedNullable = &OrganizationCreateCommand{}
 
 // OrganizationCreateCommand struct for OrganizationCreateCommand
 type OrganizationCreateCommand struct {
-	Name                   NullableString `json:"name,omitempty"`
-	FullName               NullableString `json:"fullName,omitempty"`
-	Email                  NullableString `json:"email,omitempty"`
-	AccountId              NullableInt32  `json:"accountId,omitempty"`
-	AdminCloudCredentialId NullableInt32  `json:"adminCloudCredentialId,omitempty"`
-	AdditionalProperties   map[string]interface{}
+	Name NullableString `json:"name,omitempty"`
+	FullName NullableString `json:"fullName,omitempty"`
+	Email NullableString `json:"email,omitempty"`
+	AccountId NullableInt32 `json:"accountId,omitempty"`
+	AdminCloudCredentialId NullableInt32 `json:"adminCloudCredentialId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OrganizationCreateCommand OrganizationCreateCommand
@@ -79,7 +79,6 @@ func (o *OrganizationCreateCommand) HasName() bool {
 func (o *OrganizationCreateCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *OrganizationCreateCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -122,7 +121,6 @@ func (o *OrganizationCreateCommand) HasFullName() bool {
 func (o *OrganizationCreateCommand) SetFullName(v string) {
 	o.FullName.Set(&v)
 }
-
 // SetFullNameNil sets the value for FullName to be an explicit nil
 func (o *OrganizationCreateCommand) SetFullNameNil() {
 	o.FullName.Set(nil)
@@ -165,7 +163,6 @@ func (o *OrganizationCreateCommand) HasEmail() bool {
 func (o *OrganizationCreateCommand) SetEmail(v string) {
 	o.Email.Set(&v)
 }
-
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *OrganizationCreateCommand) SetEmailNil() {
 	o.Email.Set(nil)
@@ -208,7 +205,6 @@ func (o *OrganizationCreateCommand) HasAccountId() bool {
 func (o *OrganizationCreateCommand) SetAccountId(v int32) {
 	o.AccountId.Set(&v)
 }
-
 // SetAccountIdNil sets the value for AccountId to be an explicit nil
 func (o *OrganizationCreateCommand) SetAccountIdNil() {
 	o.AccountId.Set(nil)
@@ -251,7 +247,6 @@ func (o *OrganizationCreateCommand) HasAdminCloudCredentialId() bool {
 func (o *OrganizationCreateCommand) SetAdminCloudCredentialId(v int32) {
 	o.AdminCloudCredentialId.Set(&v)
 }
-
 // SetAdminCloudCredentialIdNil sets the value for AdminCloudCredentialId to be an explicit nil
 func (o *OrganizationCreateCommand) SetAdminCloudCredentialIdNil() {
 	o.AdminCloudCredentialId.Set(nil)
@@ -263,7 +258,7 @@ func (o *OrganizationCreateCommand) UnsetAdminCloudCredentialId() {
 }
 
 func (o OrganizationCreateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -355,3 +350,5 @@ func (v *NullableOrganizationCreateCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

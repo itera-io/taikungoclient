@@ -20,12 +20,12 @@ var _ MappedNullable = &InfraProductDto{}
 
 // InfraProductDto struct for InfraProductDto
 type InfraProductDto struct {
-	Id                   *int32         `json:"id,omitempty"`
-	Name                 NullableString `json:"name,omitempty"`
-	Price                *float64       `json:"price,omitempty"`
-	PriceId              NullableString `json:"priceId,omitempty"`
-	YearlyPriceId        NullableString `json:"yearlyPriceId,omitempty"`
-	ProductId            NullableString `json:"productId,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Price *float64 `json:"price,omitempty"`
+	PriceId NullableString `json:"priceId,omitempty"`
+	YearlyPriceId NullableString `json:"yearlyPriceId,omitempty"`
+	ProductId NullableString `json:"productId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -112,7 +112,6 @@ func (o *InfraProductDto) HasName() bool {
 func (o *InfraProductDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *InfraProductDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -187,7 +186,6 @@ func (o *InfraProductDto) HasPriceId() bool {
 func (o *InfraProductDto) SetPriceId(v string) {
 	o.PriceId.Set(&v)
 }
-
 // SetPriceIdNil sets the value for PriceId to be an explicit nil
 func (o *InfraProductDto) SetPriceIdNil() {
 	o.PriceId.Set(nil)
@@ -230,7 +228,6 @@ func (o *InfraProductDto) HasYearlyPriceId() bool {
 func (o *InfraProductDto) SetYearlyPriceId(v string) {
 	o.YearlyPriceId.Set(&v)
 }
-
 // SetYearlyPriceIdNil sets the value for YearlyPriceId to be an explicit nil
 func (o *InfraProductDto) SetYearlyPriceIdNil() {
 	o.YearlyPriceId.Set(nil)
@@ -273,7 +270,6 @@ func (o *InfraProductDto) HasProductId() bool {
 func (o *InfraProductDto) SetProductId(v string) {
 	o.ProductId.Set(&v)
 }
-
 // SetProductIdNil sets the value for ProductId to be an explicit nil
 func (o *InfraProductDto) SetProductIdNil() {
 	o.ProductId.Set(nil)
@@ -285,7 +281,7 @@ func (o *InfraProductDto) UnsetProductId() {
 }
 
 func (o InfraProductDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -381,3 +377,5 @@ func (v *NullableInfraProductDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

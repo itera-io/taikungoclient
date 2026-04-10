@@ -20,8 +20,8 @@ var _ MappedNullable = &VirtualClusterEnableOpaCommand{}
 
 // VirtualClusterEnableOpaCommand struct for VirtualClusterEnableOpaCommand
 type VirtualClusterEnableOpaCommand struct {
-	ProjectId            *int32 `json:"projectId,omitempty"`
-	OpaProfileId         *int32 `json:"opaProfileId,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	OpaProfileId *int32 `json:"opaProfileId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,7 +109,7 @@ func (o *VirtualClusterEnableOpaCommand) SetOpaProfileId(v int32) {
 }
 
 func (o VirtualClusterEnableOpaCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -189,3 +189,5 @@ func (v *NullableVirtualClusterEnableOpaCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

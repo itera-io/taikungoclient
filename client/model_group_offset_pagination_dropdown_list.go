@@ -21,12 +21,12 @@ var _ MappedNullable = &GroupOffsetPaginationDropdownList{}
 
 // GroupOffsetPaginationDropdownList struct for GroupOffsetPaginationDropdownList
 type GroupOffsetPaginationDropdownList struct {
-	Data                 []CommonDropdownDto `json:"data"`
-	Limit                int32               `json:"limit"`
-	HasMore              bool                `json:"hasMore"`
-	TotalCount           int64               `json:"totalCount"`
-	Offset               int32               `json:"offset"`
-	NextOffset           NullableInt32       `json:"nextOffset,omitempty"`
+	Data []CommonDropdownDto `json:"data"`
+	Limit int32 `json:"limit"`
+	HasMore bool `json:"hasMore"`
+	TotalCount int64 `json:"totalCount"`
+	Offset int32 `json:"offset"`
+	NextOffset NullableInt32 `json:"nextOffset,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -208,7 +208,6 @@ func (o *GroupOffsetPaginationDropdownList) HasNextOffset() bool {
 func (o *GroupOffsetPaginationDropdownList) SetNextOffset(v int32) {
 	o.NextOffset.Set(&v)
 }
-
 // SetNextOffsetNil sets the value for NextOffset to be an explicit nil
 func (o *GroupOffsetPaginationDropdownList) SetNextOffsetNil() {
 	o.NextOffset.Set(nil)
@@ -220,7 +219,7 @@ func (o *GroupOffsetPaginationDropdownList) UnsetNextOffset() {
 }
 
 func (o GroupOffsetPaginationDropdownList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -264,10 +263,10 @@ func (o *GroupOffsetPaginationDropdownList) UnmarshalJSON(data []byte) (err erro
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -333,3 +332,5 @@ func (v *NullableGroupOffsetPaginationDropdownList) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,8 +20,8 @@ var _ MappedNullable = &DatacenterSummary{}
 
 // DatacenterSummary struct for DatacenterSummary
 type DatacenterSummary struct {
-	Datacenter           NullableString `json:"datacenter,omitempty"`
-	Name                 NullableString `json:"name,omitempty"`
+	Datacenter NullableString `json:"datacenter,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,6 @@ func (o *DatacenterSummary) HasDatacenter() bool {
 func (o *DatacenterSummary) SetDatacenter(v string) {
 	o.Datacenter.Set(&v)
 }
-
 // SetDatacenterNil sets the value for Datacenter to be an explicit nil
 func (o *DatacenterSummary) SetDatacenterNil() {
 	o.Datacenter.Set(nil)
@@ -119,7 +118,6 @@ func (o *DatacenterSummary) HasName() bool {
 func (o *DatacenterSummary) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *DatacenterSummary) SetNameNil() {
 	o.Name.Set(nil)
@@ -131,7 +129,7 @@ func (o *DatacenterSummary) UnsetName() {
 }
 
 func (o DatacenterSummary) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -211,3 +209,5 @@ func (v *NullableDatacenterSummary) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,7 +20,7 @@ var _ MappedNullable = &DeleteKubeConfigByProjectIdCommand{}
 
 // DeleteKubeConfigByProjectIdCommand struct for DeleteKubeConfigByProjectIdCommand
 type DeleteKubeConfigByProjectIdCommand struct {
-	ProjectId            *int32 `json:"projectId,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,7 @@ func (o *DeleteKubeConfigByProjectIdCommand) SetProjectId(v int32) {
 }
 
 func (o DeleteKubeConfigByProjectIdCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -152,3 +152,5 @@ func (v *NullableDeleteKubeConfigByProjectIdCommand) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

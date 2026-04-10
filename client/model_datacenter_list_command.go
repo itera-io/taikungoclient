@@ -20,10 +20,10 @@ var _ MappedNullable = &DatacenterListCommand{}
 
 // DatacenterListCommand struct for DatacenterListCommand
 type DatacenterListCommand struct {
-	Url                  NullableString `json:"url,omitempty"`
-	Username             NullableString `json:"username,omitempty"`
-	Password             NullableString `json:"password,omitempty"`
-	DatacenterName       NullableString `json:"datacenterName,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	Username NullableString `json:"username,omitempty"`
+	Password NullableString `json:"password,omitempty"`
+	DatacenterName NullableString `json:"datacenterName,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,7 +78,6 @@ func (o *DatacenterListCommand) HasUrl() bool {
 func (o *DatacenterListCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *DatacenterListCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -121,7 +120,6 @@ func (o *DatacenterListCommand) HasUsername() bool {
 func (o *DatacenterListCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
-
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *DatacenterListCommand) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -164,7 +162,6 @@ func (o *DatacenterListCommand) HasPassword() bool {
 func (o *DatacenterListCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
-
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *DatacenterListCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -207,7 +204,6 @@ func (o *DatacenterListCommand) HasDatacenterName() bool {
 func (o *DatacenterListCommand) SetDatacenterName(v string) {
 	o.DatacenterName.Set(&v)
 }
-
 // SetDatacenterNameNil sets the value for DatacenterName to be an explicit nil
 func (o *DatacenterListCommand) SetDatacenterNameNil() {
 	o.DatacenterName.Set(nil)
@@ -219,7 +215,7 @@ func (o *DatacenterListCommand) UnsetDatacenterName() {
 }
 
 func (o DatacenterListCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -307,3 +303,5 @@ func (v *NullableDatacenterListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

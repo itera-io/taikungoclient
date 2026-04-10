@@ -21,8 +21,8 @@ var _ MappedNullable = &ExecutorListResponse{}
 
 // ExecutorListResponse struct for ExecutorListResponse
 type ExecutorListResponse struct {
-	Data                 []ExecutorEntityDto `json:"data"`
-	TotalCount           int32               `json:"totalCount"`
+	Data []ExecutorEntityDto `json:"data"`
+	TotalCount int32 `json:"totalCount"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -98,7 +98,7 @@ func (o *ExecutorListResponse) SetTotalCount(v int32) {
 }
 
 func (o ExecutorListResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -133,10 +133,10 @@ func (o *ExecutorListResponse) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -198,3 +198,5 @@ func (v *NullableExecutorListResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

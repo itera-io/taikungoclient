@@ -20,8 +20,8 @@ var _ MappedNullable = &AddPrometheusRulesToOrganizationDto{}
 
 // AddPrometheusRulesToOrganizationDto struct for AddPrometheusRulesToOrganizationDto
 type AddPrometheusRulesToOrganizationDto struct {
-	Id                   *int32          `json:"id,omitempty"`
-	DiscountRate         NullableFloat64 `json:"discountRate,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	DiscountRate NullableFloat64 `json:"discountRate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,7 +108,6 @@ func (o *AddPrometheusRulesToOrganizationDto) HasDiscountRate() bool {
 func (o *AddPrometheusRulesToOrganizationDto) SetDiscountRate(v float64) {
 	o.DiscountRate.Set(&v)
 }
-
 // SetDiscountRateNil sets the value for DiscountRate to be an explicit nil
 func (o *AddPrometheusRulesToOrganizationDto) SetDiscountRateNil() {
 	o.DiscountRate.Set(nil)
@@ -120,7 +119,7 @@ func (o *AddPrometheusRulesToOrganizationDto) UnsetDiscountRate() {
 }
 
 func (o AddPrometheusRulesToOrganizationDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -200,3 +199,5 @@ func (v *NullableAddPrometheusRulesToOrganizationDto) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

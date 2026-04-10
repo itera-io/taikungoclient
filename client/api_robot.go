@@ -20,12 +20,13 @@ import (
 	"strings"
 )
 
+
 // RobotAPIService RobotAPI service
 type RobotAPIService service
 
 type ApiRobotCheckerRequest struct {
-	ctx                 context.Context
-	ApiService          *RobotAPIService
+	ctx context.Context
+	ApiService *RobotAPIService
 	checkerRobotCommand *CheckerRobotCommand
 }
 
@@ -41,22 +42,22 @@ func (r ApiRobotCheckerRequest) Execute() (*http.Response, error) {
 /*
 RobotChecker Dry run robot user create
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiRobotCheckerRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRobotCheckerRequest
 */
 func (a *RobotAPIService) RobotChecker(ctx context.Context) ApiRobotCheckerRequest {
 	return ApiRobotCheckerRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *RobotAPIService) RobotCheckerExecute(r ApiRobotCheckerRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RobotAPIService.RobotChecker")
@@ -132,8 +133,8 @@ func (a *RobotAPIService) RobotCheckerExecute(r ApiRobotCheckerRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -143,8 +144,8 @@ func (a *RobotAPIService) RobotCheckerExecute(r ApiRobotCheckerRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -154,8 +155,8 @@ func (a *RobotAPIService) RobotCheckerExecute(r ApiRobotCheckerRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -165,8 +166,8 @@ func (a *RobotAPIService) RobotCheckerExecute(r ApiRobotCheckerRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -176,8 +177,8 @@ func (a *RobotAPIService) RobotCheckerExecute(r ApiRobotCheckerRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -187,8 +188,8 @@ func (a *RobotAPIService) RobotCheckerExecute(r ApiRobotCheckerRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -197,8 +198,8 @@ func (a *RobotAPIService) RobotCheckerExecute(r ApiRobotCheckerRequest) (*http.R
 }
 
 type ApiRobotCreateRequest struct {
-	ctx                    context.Context
-	ApiService             *RobotAPIService
+	ctx context.Context
+	ApiService *RobotAPIService
 	createRobotUserCommand *CreateRobotUserCommand
 }
 
@@ -214,25 +215,24 @@ func (r ApiRobotCreateRequest) Execute() (*CreateRobotUserResponse, *http.Respon
 /*
 RobotCreate Add new robot user
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiRobotCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRobotCreateRequest
 */
 func (a *RobotAPIService) RobotCreate(ctx context.Context) ApiRobotCreateRequest {
 	return ApiRobotCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return CreateRobotUserResponse
+//  @return CreateRobotUserResponse
 func (a *RobotAPIService) RobotCreateExecute(r ApiRobotCreateRequest) (*CreateRobotUserResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *CreateRobotUserResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CreateRobotUserResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RobotAPIService.RobotCreate")
@@ -308,8 +308,8 @@ func (a *RobotAPIService) RobotCreateExecute(r ApiRobotCreateRequest) (*CreateRo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -319,8 +319,8 @@ func (a *RobotAPIService) RobotCreateExecute(r ApiRobotCreateRequest) (*CreateRo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -330,8 +330,8 @@ func (a *RobotAPIService) RobotCreateExecute(r ApiRobotCreateRequest) (*CreateRo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -341,8 +341,8 @@ func (a *RobotAPIService) RobotCreateExecute(r ApiRobotCreateRequest) (*CreateRo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -352,8 +352,8 @@ func (a *RobotAPIService) RobotCreateExecute(r ApiRobotCreateRequest) (*CreateRo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -363,8 +363,8 @@ func (a *RobotAPIService) RobotCreateExecute(r ApiRobotCreateRequest) (*CreateRo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -382,9 +382,9 @@ func (a *RobotAPIService) RobotCreateExecute(r ApiRobotCreateRequest) (*CreateRo
 }
 
 type ApiRobotDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RobotAPIService
-	id         string
+	id string
 }
 
 func (r ApiRobotDeleteRequest) Execute() (*http.Response, error) {
@@ -394,24 +394,24 @@ func (r ApiRobotDeleteRequest) Execute() (*http.Response, error) {
 /*
 RobotDelete Delete robot user
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiRobotDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiRobotDeleteRequest
 */
 func (a *RobotAPIService) RobotDelete(ctx context.Context, id string) ApiRobotDeleteRequest {
 	return ApiRobotDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *RobotAPIService) RobotDeleteExecute(r ApiRobotDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RobotAPIService.RobotDelete")
@@ -486,8 +486,8 @@ func (a *RobotAPIService) RobotDeleteExecute(r ApiRobotDeleteRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -497,8 +497,8 @@ func (a *RobotAPIService) RobotDeleteExecute(r ApiRobotDeleteRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -508,8 +508,8 @@ func (a *RobotAPIService) RobotDeleteExecute(r ApiRobotDeleteRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -519,8 +519,8 @@ func (a *RobotAPIService) RobotDeleteExecute(r ApiRobotDeleteRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -530,8 +530,8 @@ func (a *RobotAPIService) RobotDeleteExecute(r ApiRobotDeleteRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -541,8 +541,8 @@ func (a *RobotAPIService) RobotDeleteExecute(r ApiRobotDeleteRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -551,7 +551,7 @@ func (a *RobotAPIService) RobotDeleteExecute(r ApiRobotDeleteRequest) (*http.Res
 }
 
 type ApiRobotDetailsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RobotAPIService
 }
 
@@ -562,25 +562,24 @@ func (r ApiRobotDetailsRequest) Execute() (*RobotUsersListDto, *http.Response, e
 /*
 RobotDetails Retrieve robot user info
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiRobotDetailsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRobotDetailsRequest
 */
 func (a *RobotAPIService) RobotDetails(ctx context.Context) ApiRobotDetailsRequest {
 	return ApiRobotDetailsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return RobotUsersListDto
+//  @return RobotUsersListDto
 func (a *RobotAPIService) RobotDetailsExecute(r ApiRobotDetailsRequest) (*RobotUsersListDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *RobotUsersListDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RobotUsersListDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RobotAPIService.RobotDetails")
@@ -654,8 +653,8 @@ func (a *RobotAPIService) RobotDetailsExecute(r ApiRobotDetailsRequest) (*RobotU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -665,8 +664,8 @@ func (a *RobotAPIService) RobotDetailsExecute(r ApiRobotDetailsRequest) (*RobotU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -676,8 +675,8 @@ func (a *RobotAPIService) RobotDetailsExecute(r ApiRobotDetailsRequest) (*RobotU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -687,8 +686,8 @@ func (a *RobotAPIService) RobotDetailsExecute(r ApiRobotDetailsRequest) (*RobotU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -698,8 +697,8 @@ func (a *RobotAPIService) RobotDetailsExecute(r ApiRobotDetailsRequest) (*RobotU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -709,8 +708,8 @@ func (a *RobotAPIService) RobotDetailsExecute(r ApiRobotDetailsRequest) (*RobotU
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -728,14 +727,14 @@ func (a *RobotAPIService) RobotDetailsExecute(r ApiRobotDetailsRequest) (*RobotU
 }
 
 type ApiRobotListRequest struct {
-	ctx            context.Context
-	ApiService     *RobotAPIService
-	accountId      *int32
+	ctx context.Context
+	ApiService *RobotAPIService
+	accountId *int32
 	organizationId *int32
-	search         *string
-	searchId       *string
-	limit          *int32
-	offset         *int32
+	search *string
+	searchId *string
+	limit *int32
+	offset *int32
 }
 
 func (r ApiRobotListRequest) AccountId(accountId int32) ApiRobotListRequest {
@@ -775,25 +774,24 @@ func (r ApiRobotListRequest) Execute() (*RobotUsersList, *http.Response, error) 
 /*
 RobotList Retrieve robot users
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiRobotListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRobotListRequest
 */
 func (a *RobotAPIService) RobotList(ctx context.Context) ApiRobotListRequest {
 	return ApiRobotListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return RobotUsersList
+//  @return RobotUsersList
 func (a *RobotAPIService) RobotListExecute(r ApiRobotListRequest) (*RobotUsersList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *RobotUsersList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RobotUsersList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RobotAPIService.RobotList")
@@ -893,8 +891,8 @@ func (a *RobotAPIService) RobotListExecute(r ApiRobotListRequest) (*RobotUsersLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -904,8 +902,8 @@ func (a *RobotAPIService) RobotListExecute(r ApiRobotListRequest) (*RobotUsersLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -915,8 +913,8 @@ func (a *RobotAPIService) RobotListExecute(r ApiRobotListRequest) (*RobotUsersLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -926,8 +924,8 @@ func (a *RobotAPIService) RobotListExecute(r ApiRobotListRequest) (*RobotUsersLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -937,8 +935,8 @@ func (a *RobotAPIService) RobotListExecute(r ApiRobotListRequest) (*RobotUsersLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -948,8 +946,8 @@ func (a *RobotAPIService) RobotListExecute(r ApiRobotListRequest) (*RobotUsersLi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -967,8 +965,8 @@ func (a *RobotAPIService) RobotListExecute(r ApiRobotListRequest) (*RobotUsersLi
 }
 
 type ApiRobotRegenerateRequest struct {
-	ctx                         context.Context
-	ApiService                  *RobotAPIService
+	ctx context.Context
+	ApiService *RobotAPIService
 	regenerateRobotTokenCommand *RegenerateRobotTokenCommand
 }
 
@@ -984,25 +982,24 @@ func (r ApiRobotRegenerateRequest) Execute() (*CreateRobotUserResponse, *http.Re
 /*
 RobotRegenerate Regenerate new token credentials for robot user
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiRobotRegenerateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRobotRegenerateRequest
 */
 func (a *RobotAPIService) RobotRegenerate(ctx context.Context) ApiRobotRegenerateRequest {
 	return ApiRobotRegenerateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return CreateRobotUserResponse
+//  @return CreateRobotUserResponse
 func (a *RobotAPIService) RobotRegenerateExecute(r ApiRobotRegenerateRequest) (*CreateRobotUserResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *CreateRobotUserResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CreateRobotUserResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RobotAPIService.RobotRegenerate")
@@ -1078,8 +1075,8 @@ func (a *RobotAPIService) RobotRegenerateExecute(r ApiRobotRegenerateRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1089,8 +1086,8 @@ func (a *RobotAPIService) RobotRegenerateExecute(r ApiRobotRegenerateRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1100,8 +1097,8 @@ func (a *RobotAPIService) RobotRegenerateExecute(r ApiRobotRegenerateRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1111,8 +1108,8 @@ func (a *RobotAPIService) RobotRegenerateExecute(r ApiRobotRegenerateRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1122,8 +1119,8 @@ func (a *RobotAPIService) RobotRegenerateExecute(r ApiRobotRegenerateRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1133,8 +1130,8 @@ func (a *RobotAPIService) RobotRegenerateExecute(r ApiRobotRegenerateRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1152,8 +1149,8 @@ func (a *RobotAPIService) RobotRegenerateExecute(r ApiRobotRegenerateRequest) (*
 }
 
 type ApiRobotScopeListRequest struct {
-	ctx         context.Context
-	ApiService  *RobotAPIService
+	ctx context.Context
+	ApiService *RobotAPIService
 	globalRobot *bool
 }
 
@@ -1169,25 +1166,24 @@ func (r ApiRobotScopeListRequest) Execute() ([]RobotUserScopeData, *http.Respons
 /*
 RobotScopeList Retrieve available scope list flavors
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiRobotScopeListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRobotScopeListRequest
 */
 func (a *RobotAPIService) RobotScopeList(ctx context.Context) ApiRobotScopeListRequest {
 	return ApiRobotScopeListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []RobotUserScopeData
+//  @return []RobotUserScopeData
 func (a *RobotAPIService) RobotScopeListExecute(r ApiRobotScopeListRequest) ([]RobotUserScopeData, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []RobotUserScopeData
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []RobotUserScopeData
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RobotAPIService.RobotScopeList")
@@ -1268,8 +1264,8 @@ func (a *RobotAPIService) RobotScopeListExecute(r ApiRobotScopeListRequest) ([]R
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1279,8 +1275,8 @@ func (a *RobotAPIService) RobotScopeListExecute(r ApiRobotScopeListRequest) ([]R
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1290,8 +1286,8 @@ func (a *RobotAPIService) RobotScopeListExecute(r ApiRobotScopeListRequest) ([]R
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1301,8 +1297,8 @@ func (a *RobotAPIService) RobotScopeListExecute(r ApiRobotScopeListRequest) ([]R
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1312,8 +1308,8 @@ func (a *RobotAPIService) RobotScopeListExecute(r ApiRobotScopeListRequest) ([]R
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1323,8 +1319,8 @@ func (a *RobotAPIService) RobotScopeListExecute(r ApiRobotScopeListRequest) ([]R
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1342,8 +1338,8 @@ func (a *RobotAPIService) RobotScopeListExecute(r ApiRobotScopeListRequest) ([]R
 }
 
 type ApiRobotStatusRequest struct {
-	ctx                              context.Context
-	ApiService                       *RobotAPIService
+	ctx context.Context
+	ApiService *RobotAPIService
 	robotUserStatusManagementCommand *RobotUserStatusManagementCommand
 }
 
@@ -1359,22 +1355,22 @@ func (r ApiRobotStatusRequest) Execute() (*http.Response, error) {
 /*
 RobotStatus Activate/Deactivate robot user
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiRobotStatusRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRobotStatusRequest
 */
 func (a *RobotAPIService) RobotStatus(ctx context.Context) ApiRobotStatusRequest {
 	return ApiRobotStatusRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *RobotAPIService) RobotStatusExecute(r ApiRobotStatusRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RobotAPIService.RobotStatus")
@@ -1450,8 +1446,8 @@ func (a *RobotAPIService) RobotStatusExecute(r ApiRobotStatusRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1461,8 +1457,8 @@ func (a *RobotAPIService) RobotStatusExecute(r ApiRobotStatusRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1472,8 +1468,8 @@ func (a *RobotAPIService) RobotStatusExecute(r ApiRobotStatusRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1483,8 +1479,8 @@ func (a *RobotAPIService) RobotStatusExecute(r ApiRobotStatusRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1494,8 +1490,8 @@ func (a *RobotAPIService) RobotStatusExecute(r ApiRobotStatusRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1505,8 +1501,8 @@ func (a *RobotAPIService) RobotStatusExecute(r ApiRobotStatusRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1515,8 +1511,8 @@ func (a *RobotAPIService) RobotStatusExecute(r ApiRobotStatusRequest) (*http.Res
 }
 
 type ApiRobotUpdateRequest struct {
-	ctx                  context.Context
-	ApiService           *RobotAPIService
+	ctx context.Context
+	ApiService *RobotAPIService
 	editRobotUserCommand *EditRobotUserCommand
 }
 
@@ -1532,22 +1528,22 @@ func (r ApiRobotUpdateRequest) Execute() (*http.Response, error) {
 /*
 RobotUpdate Update robot user's details
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiRobotUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRobotUpdateRequest
 */
 func (a *RobotAPIService) RobotUpdate(ctx context.Context) ApiRobotUpdateRequest {
 	return ApiRobotUpdateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *RobotAPIService) RobotUpdateExecute(r ApiRobotUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RobotAPIService.RobotUpdate")
@@ -1623,8 +1619,8 @@ func (a *RobotAPIService) RobotUpdateExecute(r ApiRobotUpdateRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1634,8 +1630,8 @@ func (a *RobotAPIService) RobotUpdateExecute(r ApiRobotUpdateRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1645,8 +1641,8 @@ func (a *RobotAPIService) RobotUpdateExecute(r ApiRobotUpdateRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1656,8 +1652,8 @@ func (a *RobotAPIService) RobotUpdateExecute(r ApiRobotUpdateRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1667,8 +1663,8 @@ func (a *RobotAPIService) RobotUpdateExecute(r ApiRobotUpdateRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1678,8 +1674,8 @@ func (a *RobotAPIService) RobotUpdateExecute(r ApiRobotUpdateRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1688,8 +1684,8 @@ func (a *RobotAPIService) RobotUpdateExecute(r ApiRobotUpdateRequest) (*http.Res
 }
 
 type ApiRobotUpdateScopeRequest struct {
-	ctx                     context.Context
-	ApiService              *RobotAPIService
+	ctx context.Context
+	ApiService *RobotAPIService
 	updateRobotScopeCommand *UpdateRobotScopeCommand
 }
 
@@ -1705,22 +1701,22 @@ func (r ApiRobotUpdateScopeRequest) Execute() (*http.Response, error) {
 /*
 RobotUpdateScope Update robot user's scope
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiRobotUpdateScopeRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRobotUpdateScopeRequest
 */
 func (a *RobotAPIService) RobotUpdateScope(ctx context.Context) ApiRobotUpdateScopeRequest {
 	return ApiRobotUpdateScopeRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *RobotAPIService) RobotUpdateScopeExecute(r ApiRobotUpdateScopeRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RobotAPIService.RobotUpdateScope")
@@ -1796,8 +1792,8 @@ func (a *RobotAPIService) RobotUpdateScopeExecute(r ApiRobotUpdateScopeRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1807,8 +1803,8 @@ func (a *RobotAPIService) RobotUpdateScopeExecute(r ApiRobotUpdateScopeRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1818,8 +1814,8 @@ func (a *RobotAPIService) RobotUpdateScopeExecute(r ApiRobotUpdateScopeRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1829,8 +1825,8 @@ func (a *RobotAPIService) RobotUpdateScopeExecute(r ApiRobotUpdateScopeRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1840,8 +1836,8 @@ func (a *RobotAPIService) RobotUpdateScopeExecute(r ApiRobotUpdateScopeRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1851,8 +1847,8 @@ func (a *RobotAPIService) RobotUpdateScopeExecute(r ApiRobotUpdateScopeRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

@@ -21,13 +21,13 @@ var _ MappedNullable = &StandaloneVisibilityDto{}
 
 // StandaloneVisibilityDto struct for StandaloneVisibilityDto
 type StandaloneVisibilityDto struct {
-	ShowStatus           bool `json:"showStatus"`
-	ShowConsole          bool `json:"showConsole"`
-	Shelve               bool `json:"shelve"`
-	Unshelve             bool `json:"unshelve"`
-	Start                bool `json:"start"`
-	Stop                 bool `json:"stop"`
-	Reboot               bool `json:"reboot"`
+	ShowStatus bool `json:"showStatus"`
+	ShowConsole bool `json:"showConsole"`
+	Shelve bool `json:"shelve"`
+	Unshelve bool `json:"unshelve"`
+	Start bool `json:"start"`
+	Stop bool `json:"stop"`
+	Reboot bool `json:"reboot"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -226,7 +226,7 @@ func (o *StandaloneVisibilityDto) SetReboot(v bool) {
 }
 
 func (o StandaloneVisibilityDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -269,10 +269,10 @@ func (o *StandaloneVisibilityDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -339,3 +339,5 @@ func (v *NullableStandaloneVisibilityDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

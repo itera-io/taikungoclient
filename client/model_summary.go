@@ -20,14 +20,14 @@ var _ MappedNullable = &Summary{}
 
 // Summary struct for Summary
 type Summary struct {
-	TotalDetectedResources    *int32           `json:"totalDetectedResources,omitempty"`
-	TotalSupportedResources   *int32           `json:"totalSupportedResources,omitempty"`
-	TotalUnsupportedResources *int32           `json:"totalUnsupportedResources,omitempty"`
-	TotalUsageBasedResources  *int32           `json:"totalUsageBasedResources,omitempty"`
-	TotalNoPriceResources     *int32           `json:"totalNoPriceResources,omitempty"`
+	TotalDetectedResources *int32 `json:"totalDetectedResources,omitempty"`
+	TotalSupportedResources *int32 `json:"totalSupportedResources,omitempty"`
+	TotalUnsupportedResources *int32 `json:"totalUnsupportedResources,omitempty"`
+	TotalUsageBasedResources *int32 `json:"totalUsageBasedResources,omitempty"`
+	TotalNoPriceResources *int32 `json:"totalNoPriceResources,omitempty"`
 	UnsupportedResourceCounts map[string]int32 `json:"unsupportedResourceCounts,omitempty"`
-	NoPriceResourceCounts     map[string]int32 `json:"noPriceResourceCounts,omitempty"`
-	AdditionalProperties      map[string]interface{}
+	NoPriceResourceCounts map[string]int32 `json:"noPriceResourceCounts,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Summary Summary
@@ -276,7 +276,7 @@ func (o *Summary) SetNoPriceResourceCounts(v map[string]int32) {
 }
 
 func (o Summary) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -376,3 +376,5 @@ func (v *NullableSummary) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

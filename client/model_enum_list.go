@@ -21,35 +21,35 @@ var _ MappedNullable = &EnumList{}
 
 // EnumList struct for EnumList
 type EnumList struct {
-	CloudTypes               []CommonDropdownDto            `json:"cloudTypes"`
-	ProjectStatuses          []CommonDropdownDto            `json:"projectStatuses"`
-	ServerRoles              []CommonDropdownDto            `json:"serverRoles"`
-	ServerStatuses           []CommonDropdownDto            `json:"serverStatuses"`
-	SecurityGroupRules       []CommonDropdownDto            `json:"securityGroupRules"`
-	PrometheusTypes          []CommonDropdownDto            `json:"prometheusTypes"`
-	AuditLogs                []CommonDropdownDto            `json:"auditLogs"`
-	RebootOptions            []CommonDropdownDto            `json:"rebootOptions"`
-	Availability             []CommonAvailabilityDto        `json:"availability"`
-	SlackTypes               []CommonDropdownDto            `json:"slackTypes"`
-	RequestLogs              []CommonDropdownDto            `json:"requestLogs"`
-	AzureQuotas              []CommonDropdownDto            `json:"azureQuotas"`
-	ShowbackKinds            []CommonDropdownDto            `json:"showbackKinds"`
-	AlertTypes               []CommonDropdownDto            `json:"alertTypes"`
-	ReminderTypes            []CommonDropdownDto            `json:"reminderTypes"`
-	AwsPlatforms             []CommonStringBasedDropdownDto `json:"awsPlatforms"`
-	CronPeriods              []CommonStringBasedDropdownDto `json:"cronPeriods"`
-	ValidityPeriods          []CommonDropdownDto            `json:"validityPeriods"`
-	AlertingIntegrationTypes []CommonDropdownDto            `json:"alertingIntegrationTypes"`
-	GoogleImageTypes         []CommonDropdownDto            `json:"googleImageTypes"`
-	StandaloneVmStatuses     []CommonDropdownDto            `json:"standaloneVmStatuses"`
-	OpenstackContinents      []CommonStringBasedDropdownDto `json:"openstackContinents"`
-	RetentionPeriods         []CommonStringBasedDropdownDto `json:"retentionPeriods"`
-	ProxmoxRoles             []CommonDropdownDto            `json:"proxmoxRoles"`
-	ProjectResourceTypes     []CommonDropdownDto            `json:"projectResourceTypes"`
-	ProjectResourceUnits     []CommonDropdownDto            `json:"projectResourceUnits"`
-	NonGlobalRoles           []CommonDropdownDto            `json:"nonGlobalRoles"`
-	LbProviders              []CommonDropdownDto            `json:"lbProviders"`
-	AdditionalProperties     map[string]interface{}
+	CloudTypes []CommonDropdownDto `json:"cloudTypes"`
+	ProjectStatuses []CommonDropdownDto `json:"projectStatuses"`
+	ServerRoles []CommonDropdownDto `json:"serverRoles"`
+	ServerStatuses []CommonDropdownDto `json:"serverStatuses"`
+	SecurityGroupRules []CommonDropdownDto `json:"securityGroupRules"`
+	PrometheusTypes []CommonDropdownDto `json:"prometheusTypes"`
+	AuditLogs []CommonDropdownDto `json:"auditLogs"`
+	RebootOptions []CommonDropdownDto `json:"rebootOptions"`
+	Availability []CommonAvailabilityDto `json:"availability"`
+	SlackTypes []CommonDropdownDto `json:"slackTypes"`
+	RequestLogs []CommonDropdownDto `json:"requestLogs"`
+	AzureQuotas []CommonDropdownDto `json:"azureQuotas"`
+	ShowbackKinds []CommonDropdownDto `json:"showbackKinds"`
+	AlertTypes []CommonDropdownDto `json:"alertTypes"`
+	ReminderTypes []CommonDropdownDto `json:"reminderTypes"`
+	AwsPlatforms []CommonStringBasedDropdownDto `json:"awsPlatforms"`
+	CronPeriods []CommonStringBasedDropdownDto `json:"cronPeriods"`
+	ValidityPeriods []CommonDropdownDto `json:"validityPeriods"`
+	AlertingIntegrationTypes []CommonDropdownDto `json:"alertingIntegrationTypes"`
+	GoogleImageTypes []CommonDropdownDto `json:"googleImageTypes"`
+	StandaloneVmStatuses []CommonDropdownDto `json:"standaloneVmStatuses"`
+	OpenstackContinents []CommonStringBasedDropdownDto `json:"openstackContinents"`
+	RetentionPeriods []CommonStringBasedDropdownDto `json:"retentionPeriods"`
+	ProxmoxRoles []CommonDropdownDto `json:"proxmoxRoles"`
+	ProjectResourceTypes []CommonDropdownDto `json:"projectResourceTypes"`
+	ProjectResourceUnits []CommonDropdownDto `json:"projectResourceUnits"`
+	NonGlobalRoles []CommonDropdownDto `json:"nonGlobalRoles"`
+	LbProviders []CommonDropdownDto `json:"lbProviders"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EnumList EnumList
@@ -828,7 +828,7 @@ func (o *EnumList) SetLbProviders(v []CommonDropdownDto) {
 }
 
 func (o EnumList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -969,10 +969,10 @@ func (o *EnumList) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -1060,3 +1060,5 @@ func (v *NullableEnumList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

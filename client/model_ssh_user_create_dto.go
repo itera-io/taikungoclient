@@ -20,8 +20,8 @@ var _ MappedNullable = &SshUserCreateDto{}
 
 // SshUserCreateDto struct for SshUserCreateDto
 type SshUserCreateDto struct {
-	Name                 NullableString `json:"name,omitempty"`
-	SshPublicKey         NullableString `json:"sshPublicKey,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	SshPublicKey NullableString `json:"sshPublicKey,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,6 @@ func (o *SshUserCreateDto) HasName() bool {
 func (o *SshUserCreateDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *SshUserCreateDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -119,7 +118,6 @@ func (o *SshUserCreateDto) HasSshPublicKey() bool {
 func (o *SshUserCreateDto) SetSshPublicKey(v string) {
 	o.SshPublicKey.Set(&v)
 }
-
 // SetSshPublicKeyNil sets the value for SshPublicKey to be an explicit nil
 func (o *SshUserCreateDto) SetSshPublicKeyNil() {
 	o.SshPublicKey.Set(nil)
@@ -131,7 +129,7 @@ func (o *SshUserCreateDto) UnsetSshPublicKey() {
 }
 
 func (o SshUserCreateDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -211,3 +209,5 @@ func (v *NullableSshUserCreateDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

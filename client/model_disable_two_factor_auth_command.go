@@ -20,8 +20,8 @@ var _ MappedNullable = &DisableTwoFactorAuthCommand{}
 
 // DisableTwoFactorAuthCommand struct for DisableTwoFactorAuthCommand
 type DisableTwoFactorAuthCommand struct {
-	Code                 NullableString `json:"code,omitempty"`
-	IsRecoveryCode       *bool          `json:"isRecoveryCode,omitempty"`
+	Code NullableString `json:"code,omitempty"`
+	IsRecoveryCode *bool `json:"isRecoveryCode,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,6 @@ func (o *DisableTwoFactorAuthCommand) HasCode() bool {
 func (o *DisableTwoFactorAuthCommand) SetCode(v string) {
 	o.Code.Set(&v)
 }
-
 // SetCodeNil sets the value for Code to be an explicit nil
 func (o *DisableTwoFactorAuthCommand) SetCodeNil() {
 	o.Code.Set(nil)
@@ -120,7 +119,7 @@ func (o *DisableTwoFactorAuthCommand) SetIsRecoveryCode(v bool) {
 }
 
 func (o DisableTwoFactorAuthCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -200,3 +199,5 @@ func (v *NullableDisableTwoFactorAuthCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

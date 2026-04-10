@@ -20,10 +20,10 @@ var _ MappedNullable = &DatastoreListCommand{}
 
 // DatastoreListCommand struct for DatastoreListCommand
 type DatastoreListCommand struct {
-	Url                  NullableString `json:"url,omitempty"`
-	Username             NullableString `json:"username,omitempty"`
-	Password             NullableString `json:"password,omitempty"`
-	DatacenterId         NullableString `json:"datacenterId,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	Username NullableString `json:"username,omitempty"`
+	Password NullableString `json:"password,omitempty"`
+	DatacenterId NullableString `json:"datacenterId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,7 +78,6 @@ func (o *DatastoreListCommand) HasUrl() bool {
 func (o *DatastoreListCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *DatastoreListCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -121,7 +120,6 @@ func (o *DatastoreListCommand) HasUsername() bool {
 func (o *DatastoreListCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
-
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *DatastoreListCommand) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -164,7 +162,6 @@ func (o *DatastoreListCommand) HasPassword() bool {
 func (o *DatastoreListCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
-
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *DatastoreListCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -207,7 +204,6 @@ func (o *DatastoreListCommand) HasDatacenterId() bool {
 func (o *DatastoreListCommand) SetDatacenterId(v string) {
 	o.DatacenterId.Set(&v)
 }
-
 // SetDatacenterIdNil sets the value for DatacenterId to be an explicit nil
 func (o *DatastoreListCommand) SetDatacenterIdNil() {
 	o.DatacenterId.Set(nil)
@@ -219,7 +215,7 @@ func (o *DatastoreListCommand) UnsetDatacenterId() {
 }
 
 func (o DatastoreListCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -307,3 +303,5 @@ func (v *NullableDatastoreListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -21,13 +21,13 @@ var _ MappedNullable = &CreateRobotUserCommand{}
 
 // CreateRobotUserCommand struct for CreateRobotUserCommand
 type CreateRobotUserCommand struct {
-	AccountId            NullableInt32  `json:"accountId,omitempty"`
-	OrganizationId       NullableInt32  `json:"organizationId,omitempty"`
-	Name                 NullableString `json:"name,omitempty"`
-	Description          NullableString `json:"description,omitempty"`
-	ExpiresAt            NullableTime   `json:"expiresAt,omitempty"`
-	Scopes               []string       `json:"scopes,omitempty"`
-	Ips                  []string       `json:"ips,omitempty"`
+	AccountId NullableInt32 `json:"accountId,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	ExpiresAt NullableTime `json:"expiresAt,omitempty"`
+	Scopes []string `json:"scopes,omitempty"`
+	Ips []string `json:"ips,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -82,7 +82,6 @@ func (o *CreateRobotUserCommand) HasAccountId() bool {
 func (o *CreateRobotUserCommand) SetAccountId(v int32) {
 	o.AccountId.Set(&v)
 }
-
 // SetAccountIdNil sets the value for AccountId to be an explicit nil
 func (o *CreateRobotUserCommand) SetAccountIdNil() {
 	o.AccountId.Set(nil)
@@ -125,7 +124,6 @@ func (o *CreateRobotUserCommand) HasOrganizationId() bool {
 func (o *CreateRobotUserCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateRobotUserCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -168,7 +166,6 @@ func (o *CreateRobotUserCommand) HasName() bool {
 func (o *CreateRobotUserCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateRobotUserCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -211,7 +208,6 @@ func (o *CreateRobotUserCommand) HasDescription() bool {
 func (o *CreateRobotUserCommand) SetDescription(v string) {
 	o.Description.Set(&v)
 }
-
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *CreateRobotUserCommand) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -254,7 +250,6 @@ func (o *CreateRobotUserCommand) HasExpiresAt() bool {
 func (o *CreateRobotUserCommand) SetExpiresAt(v time.Time) {
 	o.ExpiresAt.Set(&v)
 }
-
 // SetExpiresAtNil sets the value for ExpiresAt to be an explicit nil
 func (o *CreateRobotUserCommand) SetExpiresAtNil() {
 	o.ExpiresAt.Set(nil)
@@ -332,7 +327,7 @@ func (o *CreateRobotUserCommand) SetIps(v []string) {
 }
 
 func (o CreateRobotUserCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -432,3 +427,5 @@ func (v *NullableCreateRobotUserCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

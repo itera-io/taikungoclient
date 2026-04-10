@@ -21,13 +21,13 @@ var _ MappedNullable = &StandAloneProfileSecurityGroupForDetailsDto{}
 
 // StandAloneProfileSecurityGroupForDetailsDto struct for StandAloneProfileSecurityGroupForDetailsDto
 type StandAloneProfileSecurityGroupForDetailsDto struct {
-	Id                   int32          `json:"id"`
-	Name                 NullableString `json:"name"`
-	Protocol             NullableString `json:"protocol"`
-	PortMinRange         int32          `json:"portMinRange"`
-	PortMaxRange         int32          `json:"portMaxRange"`
-	RemoteIpPrefix       NullableString `json:"remoteIpPrefix"`
-	IsRdpPortEnabled     bool           `json:"isRdpPortEnabled"`
+	Id int32 `json:"id"`
+	Name NullableString `json:"name"`
+	Protocol NullableString `json:"protocol"`
+	PortMinRange int32 `json:"portMinRange"`
+	PortMaxRange int32 `json:"portMaxRange"`
+	RemoteIpPrefix NullableString `json:"remoteIpPrefix"`
+	IsRdpPortEnabled bool `json:"isRdpPortEnabled"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -232,7 +232,7 @@ func (o *StandAloneProfileSecurityGroupForDetailsDto) SetIsRdpPortEnabled(v bool
 }
 
 func (o StandAloneProfileSecurityGroupForDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -275,10 +275,10 @@ func (o *StandAloneProfileSecurityGroupForDetailsDto) UnmarshalJSON(data []byte)
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -345,3 +345,5 @@ func (v *NullableStandAloneProfileSecurityGroupForDetailsDto) UnmarshalJSON(src 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

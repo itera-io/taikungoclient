@@ -20,11 +20,11 @@ var _ MappedNullable = &CreateBackupPolicyCommand{}
 
 // CreateBackupPolicyCommand struct for CreateBackupPolicyCommand
 type CreateBackupPolicyCommand struct {
-	Name                 NullableString `json:"name,omitempty"`
-	IncludeNamespaces    []string       `json:"includeNamespaces,omitempty"`
-	CronPeriod           NullableString `json:"cronPeriod,omitempty"`
-	ProjectId            *int32         `json:"projectId,omitempty"`
-	RetentionPeriod      NullableString `json:"retentionPeriod,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	IncludeNamespaces []string `json:"includeNamespaces,omitempty"`
+	CronPeriod NullableString `json:"cronPeriod,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	RetentionPeriod NullableString `json:"retentionPeriod,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -79,7 +79,6 @@ func (o *CreateBackupPolicyCommand) HasName() bool {
 func (o *CreateBackupPolicyCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateBackupPolicyCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -155,7 +154,6 @@ func (o *CreateBackupPolicyCommand) HasCronPeriod() bool {
 func (o *CreateBackupPolicyCommand) SetCronPeriod(v string) {
 	o.CronPeriod.Set(&v)
 }
-
 // SetCronPeriodNil sets the value for CronPeriod to be an explicit nil
 func (o *CreateBackupPolicyCommand) SetCronPeriodNil() {
 	o.CronPeriod.Set(nil)
@@ -230,7 +228,6 @@ func (o *CreateBackupPolicyCommand) HasRetentionPeriod() bool {
 func (o *CreateBackupPolicyCommand) SetRetentionPeriod(v string) {
 	o.RetentionPeriod.Set(&v)
 }
-
 // SetRetentionPeriodNil sets the value for RetentionPeriod to be an explicit nil
 func (o *CreateBackupPolicyCommand) SetRetentionPeriodNil() {
 	o.RetentionPeriod.Set(nil)
@@ -242,7 +239,7 @@ func (o *CreateBackupPolicyCommand) UnsetRetentionPeriod() {
 }
 
 func (o CreateBackupPolicyCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -334,3 +331,5 @@ func (v *NullableCreateBackupPolicyCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

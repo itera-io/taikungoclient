@@ -20,11 +20,11 @@ var _ MappedNullable = &UpdateZadaraCommand{}
 
 // UpdateZadaraCommand struct for UpdateZadaraCommand
 type UpdateZadaraCommand struct {
-	Id                    *int32         `json:"id,omitempty"`
-	Name                  NullableString `json:"name,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	ZadaraSecretAccessKey NullableString `json:"zadaraSecretAccessKey,omitempty"`
-	ZadaraAccessKeyId     NullableString `json:"zadaraAccessKeyId,omitempty"`
-	AdditionalProperties  map[string]interface{}
+	ZadaraAccessKeyId NullableString `json:"zadaraAccessKeyId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UpdateZadaraCommand UpdateZadaraCommand
@@ -110,7 +110,6 @@ func (o *UpdateZadaraCommand) HasName() bool {
 func (o *UpdateZadaraCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UpdateZadaraCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -153,7 +152,6 @@ func (o *UpdateZadaraCommand) HasZadaraSecretAccessKey() bool {
 func (o *UpdateZadaraCommand) SetZadaraSecretAccessKey(v string) {
 	o.ZadaraSecretAccessKey.Set(&v)
 }
-
 // SetZadaraSecretAccessKeyNil sets the value for ZadaraSecretAccessKey to be an explicit nil
 func (o *UpdateZadaraCommand) SetZadaraSecretAccessKeyNil() {
 	o.ZadaraSecretAccessKey.Set(nil)
@@ -196,7 +194,6 @@ func (o *UpdateZadaraCommand) HasZadaraAccessKeyId() bool {
 func (o *UpdateZadaraCommand) SetZadaraAccessKeyId(v string) {
 	o.ZadaraAccessKeyId.Set(&v)
 }
-
 // SetZadaraAccessKeyIdNil sets the value for ZadaraAccessKeyId to be an explicit nil
 func (o *UpdateZadaraCommand) SetZadaraAccessKeyIdNil() {
 	o.ZadaraAccessKeyId.Set(nil)
@@ -208,7 +205,7 @@ func (o *UpdateZadaraCommand) UnsetZadaraAccessKeyId() {
 }
 
 func (o UpdateZadaraCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -296,3 +293,5 @@ func (v *NullableUpdateZadaraCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,8 +20,8 @@ var _ MappedNullable = &PromoteUserCommand{}
 
 // PromoteUserCommand struct for PromoteUserCommand
 type PromoteUserCommand struct {
-	UserId               NullableString `json:"userId,omitempty"`
-	IsAdmin              *bool          `json:"isAdmin,omitempty"`
+	UserId NullableString `json:"userId,omitempty"`
+	IsAdmin *bool `json:"isAdmin,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,6 @@ func (o *PromoteUserCommand) HasUserId() bool {
 func (o *PromoteUserCommand) SetUserId(v string) {
 	o.UserId.Set(&v)
 }
-
 // SetUserIdNil sets the value for UserId to be an explicit nil
 func (o *PromoteUserCommand) SetUserIdNil() {
 	o.UserId.Set(nil)
@@ -120,7 +119,7 @@ func (o *PromoteUserCommand) SetIsAdmin(v bool) {
 }
 
 func (o PromoteUserCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -200,3 +199,5 @@ func (v *NullablePromoteUserCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,7 +20,7 @@ var _ MappedNullable = &TwoFactorAuthLoginCommand{}
 
 // TwoFactorAuthLoginCommand struct for TwoFactorAuthLoginCommand
 type TwoFactorAuthLoginCommand struct {
-	VerificationCode     NullableString `json:"verificationCode,omitempty"`
+	VerificationCode NullableString `json:"verificationCode,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,7 +75,6 @@ func (o *TwoFactorAuthLoginCommand) HasVerificationCode() bool {
 func (o *TwoFactorAuthLoginCommand) SetVerificationCode(v string) {
 	o.VerificationCode.Set(&v)
 }
-
 // SetVerificationCodeNil sets the value for VerificationCode to be an explicit nil
 func (o *TwoFactorAuthLoginCommand) SetVerificationCodeNil() {
 	o.VerificationCode.Set(nil)
@@ -87,7 +86,7 @@ func (o *TwoFactorAuthLoginCommand) UnsetVerificationCode() {
 }
 
 func (o TwoFactorAuthLoginCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -163,3 +162,5 @@ func (v *NullableTwoFactorAuthLoginCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

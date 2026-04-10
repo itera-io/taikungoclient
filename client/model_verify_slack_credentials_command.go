@@ -20,9 +20,9 @@ var _ MappedNullable = &VerifySlackCredentialsCommand{}
 
 // VerifySlackCredentialsCommand struct for VerifySlackCredentialsCommand
 type VerifySlackCredentialsCommand struct {
-	Name                 NullableString `json:"name,omitempty"`
-	Url                  NullableString `json:"url,omitempty"`
-	Channel              NullableString `json:"channel,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	Channel NullableString `json:"channel,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,7 +77,6 @@ func (o *VerifySlackCredentialsCommand) HasName() bool {
 func (o *VerifySlackCredentialsCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *VerifySlackCredentialsCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -120,7 +119,6 @@ func (o *VerifySlackCredentialsCommand) HasUrl() bool {
 func (o *VerifySlackCredentialsCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *VerifySlackCredentialsCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -163,7 +161,6 @@ func (o *VerifySlackCredentialsCommand) HasChannel() bool {
 func (o *VerifySlackCredentialsCommand) SetChannel(v string) {
 	o.Channel.Set(&v)
 }
-
 // SetChannelNil sets the value for Channel to be an explicit nil
 func (o *VerifySlackCredentialsCommand) SetChannelNil() {
 	o.Channel.Set(nil)
@@ -175,7 +172,7 @@ func (o *VerifySlackCredentialsCommand) UnsetChannel() {
 }
 
 func (o VerifySlackCredentialsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -259,3 +256,5 @@ func (v *NullableVerifySlackCredentialsCommand) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

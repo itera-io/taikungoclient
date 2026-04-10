@@ -20,7 +20,7 @@ var _ MappedNullable = &SyncProjectAppsCommand{}
 
 // SyncProjectAppsCommand struct for SyncProjectAppsCommand
 type SyncProjectAppsCommand struct {
-	ProjectAppId         NullableInt32 `json:"projectAppId,omitempty"`
+	ProjectAppId NullableInt32 `json:"projectAppId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,7 +75,6 @@ func (o *SyncProjectAppsCommand) HasProjectAppId() bool {
 func (o *SyncProjectAppsCommand) SetProjectAppId(v int32) {
 	o.ProjectAppId.Set(&v)
 }
-
 // SetProjectAppIdNil sets the value for ProjectAppId to be an explicit nil
 func (o *SyncProjectAppsCommand) SetProjectAppIdNil() {
 	o.ProjectAppId.Set(nil)
@@ -87,7 +86,7 @@ func (o *SyncProjectAppsCommand) UnsetProjectAppId() {
 }
 
 func (o SyncProjectAppsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -163,3 +162,5 @@ func (v *NullableSyncProjectAppsCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

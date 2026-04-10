@@ -21,42 +21,42 @@ var _ MappedNullable = &ServerListDto{}
 
 // ServerListDto struct for ServerListDto
 type ServerListDto struct {
-	Id                   int32                            `json:"id"`
-	Name                 string                           `json:"name"`
-	ProjectName          string                           `json:"projectName"`
-	OrganizationName     string                           `json:"organizationName"`
-	OrganizationId       int32                            `json:"organizationId"`
-	ProjectId            int32                            `json:"projectId"`
-	IpAddress            NullableString                   `json:"ipAddress,omitempty"`
-	DiskSize             float64                          `json:"diskSize"`
-	KubernetesHealth     NullableString                   `json:"kubernetesHealth"`
-	Cpu                  int32                            `json:"cpu"`
-	Ram                  float64                          `json:"ram"`
-	Role                 CloudRole                        `json:"role"`
-	Status               string                           `json:"status"`
-	CreatedAt            NullableString                   `json:"createdAt"`
-	CloudType            CloudType                        `json:"cloudType"`
-	CreatedBy            string                           `json:"createdBy"`
-	LastModified         NullableString                   `json:"lastModified"`
-	LastModifiedBy       NullableString                   `json:"lastModifiedBy"`
-	SpotPrice            float64                          `json:"spotPrice"`
-	SpotInstance         bool                             `json:"spotInstance"`
-	ShutOff              bool                             `json:"shutOff"`
-	UseLocalDisk         *bool                            `json:"useLocalDisk,omitempty"`
-	AutoscalingGroup     NullableString                   `json:"autoscalingGroup"`
-	ProviderID           NullableString                   `json:"providerID"`
-	InstanceId           NullableString                   `json:"instanceId"`
-	AwsHostName          NullableString                   `json:"awsHostName"`
-	AvailabilityZone     NullableString                   `json:"availabilityZone"`
-	Hypervisor           NullableString                   `json:"hypervisor"`
-	HypervisorId         NullableString                   `json:"hypervisorId"`
-	ProxmoxRole          ProxmoxRole                      `json:"proxmoxRole"`
-	ProxmoxExtraDiskSize int32                            `json:"proxmoxExtraDiskSize"`
-	ActionButtons        *ServerActionButtonVisibilityDto `json:"actionButtons,omitempty"`
-	KubernetesNodeLabels []KubernetesNodeLabelsDto        `json:"kubernetesNodeLabels"`
-	ReplicaCount         NullableInt32                    `json:"replicaCount"`
-	WasmEnabled          bool                             `json:"wasmEnabled"`
-	Flavor               NullableString                   `json:"flavor"`
+	Id int32 `json:"id"`
+	Name string `json:"name"`
+	ProjectName string `json:"projectName"`
+	OrganizationName string `json:"organizationName"`
+	OrganizationId int32 `json:"organizationId"`
+	ProjectId int32 `json:"projectId"`
+	IpAddress NullableString `json:"ipAddress,omitempty"`
+	DiskSize float64 `json:"diskSize"`
+	KubernetesHealth NullableString `json:"kubernetesHealth"`
+	Cpu int32 `json:"cpu"`
+	Ram float64 `json:"ram"`
+	Role CloudRole `json:"role"`
+	Status string `json:"status"`
+	CreatedAt NullableString `json:"createdAt"`
+	CloudType CloudType `json:"cloudType"`
+	CreatedBy string `json:"createdBy"`
+	LastModified NullableString `json:"lastModified"`
+	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	SpotPrice float64 `json:"spotPrice"`
+	SpotInstance bool `json:"spotInstance"`
+	ShutOff bool `json:"shutOff"`
+	UseLocalDisk *bool `json:"useLocalDisk,omitempty"`
+	AutoscalingGroup NullableString `json:"autoscalingGroup"`
+	ProviderID NullableString `json:"providerID"`
+	InstanceId NullableString `json:"instanceId"`
+	AwsHostName NullableString `json:"awsHostName"`
+	AvailabilityZone NullableString `json:"availabilityZone"`
+	Hypervisor NullableString `json:"hypervisor"`
+	HypervisorId NullableString `json:"hypervisorId"`
+	ProxmoxRole ProxmoxRole `json:"proxmoxRole"`
+	ProxmoxExtraDiskSize int32 `json:"proxmoxExtraDiskSize"`
+	ActionButtons *ServerActionButtonVisibilityDto `json:"actionButtons,omitempty"`
+	KubernetesNodeLabels []KubernetesNodeLabelsDto `json:"kubernetesNodeLabels"`
+	ReplicaCount NullableInt32 `json:"replicaCount"`
+	WasmEnabled bool `json:"wasmEnabled"`
+	Flavor NullableString `json:"flavor"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -288,7 +288,6 @@ func (o *ServerListDto) HasIpAddress() bool {
 func (o *ServerListDto) SetIpAddress(v string) {
 	o.IpAddress.Set(&v)
 }
-
 // SetIpAddressNil sets the value for IpAddress to be an explicit nil
 func (o *ServerListDto) SetIpAddressNil() {
 	o.IpAddress.Set(nil)
@@ -1038,7 +1037,7 @@ func (o *ServerListDto) SetFlavor(v string) {
 }
 
 func (o ServerListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1142,10 +1141,10 @@ func (o *ServerListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -1241,3 +1240,5 @@ func (v *NullableServerListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

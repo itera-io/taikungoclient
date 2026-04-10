@@ -20,8 +20,8 @@ var _ MappedNullable = &CreateTrustedRegistriesCommand{}
 
 // CreateTrustedRegistriesCommand struct for CreateTrustedRegistriesCommand
 type CreateTrustedRegistriesCommand struct {
-	Registry             NullableString `json:"registry,omitempty"`
-	AccessProfileId      *int32         `json:"accessProfileId,omitempty"`
+	Registry NullableString `json:"registry,omitempty"`
+	AccessProfileId *int32 `json:"accessProfileId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,6 @@ func (o *CreateTrustedRegistriesCommand) HasRegistry() bool {
 func (o *CreateTrustedRegistriesCommand) SetRegistry(v string) {
 	o.Registry.Set(&v)
 }
-
 // SetRegistryNil sets the value for Registry to be an explicit nil
 func (o *CreateTrustedRegistriesCommand) SetRegistryNil() {
 	o.Registry.Set(nil)
@@ -120,7 +119,7 @@ func (o *CreateTrustedRegistriesCommand) SetAccessProfileId(v int32) {
 }
 
 func (o CreateTrustedRegistriesCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -200,3 +199,5 @@ func (v *NullableCreateTrustedRegistriesCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

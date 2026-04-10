@@ -21,11 +21,11 @@ var _ MappedNullable = &DeploymentActionCommand{}
 
 // DeploymentActionCommand struct for DeploymentActionCommand
 type DeploymentActionCommand struct {
-	ProjectId            int32             `json:"projectId"`
-	Name                 NullableString    `json:"name"`
-	Namespace            NullableString    `json:"namespace"`
-	ScaleReplicaCount    NullableInt32     `json:"scaleReplicaCount,omitempty"`
-	Action               EDeploymentAction `json:"action"`
+	ProjectId int32 `json:"projectId"`
+	Name NullableString `json:"name"`
+	Namespace NullableString `json:"namespace"`
+	ScaleReplicaCount NullableInt32 `json:"scaleReplicaCount,omitempty"`
+	Action EDeploymentAction `json:"action"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -160,7 +160,6 @@ func (o *DeploymentActionCommand) HasScaleReplicaCount() bool {
 func (o *DeploymentActionCommand) SetScaleReplicaCount(v int32) {
 	o.ScaleReplicaCount.Set(&v)
 }
-
 // SetScaleReplicaCountNil sets the value for ScaleReplicaCount to be an explicit nil
 func (o *DeploymentActionCommand) SetScaleReplicaCountNil() {
 	o.ScaleReplicaCount.Set(nil)
@@ -196,7 +195,7 @@ func (o *DeploymentActionCommand) SetAction(v EDeploymentAction) {
 }
 
 func (o DeploymentActionCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -236,10 +235,10 @@ func (o *DeploymentActionCommand) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -304,3 +303,5 @@ func (v *NullableDeploymentActionCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

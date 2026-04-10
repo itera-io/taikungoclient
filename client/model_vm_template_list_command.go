@@ -20,10 +20,10 @@ var _ MappedNullable = &VmTemplateListCommand{}
 
 // VmTemplateListCommand struct for VmTemplateListCommand
 type VmTemplateListCommand struct {
-	CloudId              NullableInt32  `json:"cloudId,omitempty"`
-	Url                  NullableString `json:"url,omitempty"`
-	TokenId              NullableString `json:"tokenId,omitempty"`
-	TokenSecret          NullableString `json:"tokenSecret,omitempty"`
+	CloudId NullableInt32 `json:"cloudId,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	TokenId NullableString `json:"tokenId,omitempty"`
+	TokenSecret NullableString `json:"tokenSecret,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,7 +78,6 @@ func (o *VmTemplateListCommand) HasCloudId() bool {
 func (o *VmTemplateListCommand) SetCloudId(v int32) {
 	o.CloudId.Set(&v)
 }
-
 // SetCloudIdNil sets the value for CloudId to be an explicit nil
 func (o *VmTemplateListCommand) SetCloudIdNil() {
 	o.CloudId.Set(nil)
@@ -121,7 +120,6 @@ func (o *VmTemplateListCommand) HasUrl() bool {
 func (o *VmTemplateListCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *VmTemplateListCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -164,7 +162,6 @@ func (o *VmTemplateListCommand) HasTokenId() bool {
 func (o *VmTemplateListCommand) SetTokenId(v string) {
 	o.TokenId.Set(&v)
 }
-
 // SetTokenIdNil sets the value for TokenId to be an explicit nil
 func (o *VmTemplateListCommand) SetTokenIdNil() {
 	o.TokenId.Set(nil)
@@ -207,7 +204,6 @@ func (o *VmTemplateListCommand) HasTokenSecret() bool {
 func (o *VmTemplateListCommand) SetTokenSecret(v string) {
 	o.TokenSecret.Set(&v)
 }
-
 // SetTokenSecretNil sets the value for TokenSecret to be an explicit nil
 func (o *VmTemplateListCommand) SetTokenSecretNil() {
 	o.TokenSecret.Set(nil)
@@ -219,7 +215,7 @@ func (o *VmTemplateListCommand) UnsetTokenSecret() {
 }
 
 func (o VmTemplateListCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -307,3 +303,5 @@ func (v *NullableVmTemplateListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

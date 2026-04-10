@@ -20,7 +20,7 @@ var _ MappedNullable = &ImportedClusterDisableOpaCommand{}
 
 // ImportedClusterDisableOpaCommand struct for ImportedClusterDisableOpaCommand
 type ImportedClusterDisableOpaCommand struct {
-	ProjectId            *int32 `json:"projectId,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,7 @@ func (o *ImportedClusterDisableOpaCommand) SetProjectId(v int32) {
 }
 
 func (o ImportedClusterDisableOpaCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -152,3 +152,5 @@ func (v *NullableImportedClusterDisableOpaCommand) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

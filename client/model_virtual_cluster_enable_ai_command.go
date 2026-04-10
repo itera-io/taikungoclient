@@ -20,8 +20,8 @@ var _ MappedNullable = &VirtualClusterEnableAiCommand{}
 
 // VirtualClusterEnableAiCommand struct for VirtualClusterEnableAiCommand
 type VirtualClusterEnableAiCommand struct {
-	ProjectId            *int32 `json:"projectId,omitempty"`
-	AiCredentialId       *int32 `json:"aiCredentialId,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	AiCredentialId *int32 `json:"aiCredentialId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,7 +109,7 @@ func (o *VirtualClusterEnableAiCommand) SetAiCredentialId(v int32) {
 }
 
 func (o VirtualClusterEnableAiCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -189,3 +189,5 @@ func (v *NullableVirtualClusterEnableAiCommand) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,12 +20,12 @@ var _ MappedNullable = &BillingSummaryDto{}
 
 // BillingSummaryDto struct for BillingSummaryDto
 type BillingSummaryDto struct {
-	ProjectId            *int32         `json:"projectId,omitempty"`
-	ProjectName          NullableString `json:"projectName,omitempty"`
-	StartDate            NullableString `json:"startDate,omitempty"`
-	EndDate              NullableString `json:"endDate,omitempty"`
-	Tcu                  *float64       `json:"tcu,omitempty"`
-	IsDeleted            *bool          `json:"isDeleted,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
+	StartDate NullableString `json:"startDate,omitempty"`
+	EndDate NullableString `json:"endDate,omitempty"`
+	Tcu *float64 `json:"tcu,omitempty"`
+	IsDeleted *bool `json:"isDeleted,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -112,7 +112,6 @@ func (o *BillingSummaryDto) HasProjectName() bool {
 func (o *BillingSummaryDto) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *BillingSummaryDto) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -155,7 +154,6 @@ func (o *BillingSummaryDto) HasStartDate() bool {
 func (o *BillingSummaryDto) SetStartDate(v string) {
 	o.StartDate.Set(&v)
 }
-
 // SetStartDateNil sets the value for StartDate to be an explicit nil
 func (o *BillingSummaryDto) SetStartDateNil() {
 	o.StartDate.Set(nil)
@@ -198,7 +196,6 @@ func (o *BillingSummaryDto) HasEndDate() bool {
 func (o *BillingSummaryDto) SetEndDate(v string) {
 	o.EndDate.Set(&v)
 }
-
 // SetEndDateNil sets the value for EndDate to be an explicit nil
 func (o *BillingSummaryDto) SetEndDateNil() {
 	o.EndDate.Set(nil)
@@ -274,7 +271,7 @@ func (o *BillingSummaryDto) SetIsDeleted(v bool) {
 }
 
 func (o BillingSummaryDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -370,3 +367,5 @@ func (v *NullableBillingSummaryDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -13,8 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
+	"fmt"
 )
 
 // checks if the CRestoreDto type satisfies the MappedNullable interface at compile time
@@ -22,17 +22,17 @@ var _ MappedNullable = &CRestoreDto{}
 
 // CRestoreDto struct for CRestoreDto
 type CRestoreDto struct {
-	MetadataName         string         `json:"metadataName"`
-	BackupName           string         `json:"backupName"`
-	ScheduleName         string         `json:"scheduleName"`
-	Namespace            string         `json:"namespace"`
-	ExcludeNamespaces    []string       `json:"excludeNamespaces"`
-	IncludeNamespaces    []string       `json:"includeNamespaces"`
-	CompletionDateTime   time.Time      `json:"completionDateTime"`
-	StartTimeStamp       time.Time      `json:"startTimeStamp"`
-	CreatedAt            NullableTime   `json:"createdAt"`
-	Warnings             int64          `json:"warnings"`
-	Phase                NullableString `json:"phase"`
+	MetadataName string `json:"metadataName"`
+	BackupName string `json:"backupName"`
+	ScheduleName string `json:"scheduleName"`
+	Namespace string `json:"namespace"`
+	ExcludeNamespaces []string `json:"excludeNamespaces"`
+	IncludeNamespaces []string `json:"includeNamespaces"`
+	CompletionDateTime time.Time `json:"completionDateTime"`
+	StartTimeStamp time.Time `json:"startTimeStamp"`
+	CreatedAt NullableTime `json:"createdAt"`
+	Warnings int64 `json:"warnings"`
+	Phase NullableString `json:"phase"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -335,7 +335,7 @@ func (o *CRestoreDto) SetPhase(v string) {
 }
 
 func (o CRestoreDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -386,10 +386,10 @@ func (o *CRestoreDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -460,3 +460,5 @@ func (v *NullableCRestoreDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

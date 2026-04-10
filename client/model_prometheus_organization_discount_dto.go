@@ -21,10 +21,10 @@ var _ MappedNullable = &PrometheusOrganizationDiscountDto{}
 
 // PrometheusOrganizationDiscountDto struct for PrometheusOrganizationDiscountDto
 type PrometheusOrganizationDiscountDto struct {
-	Id                   int32   `json:"id"`
-	Name                 string  `json:"name"`
-	RuleDiscountRate     float64 `json:"ruleDiscountRate"`
-	GlobalDiscountRate   float64 `json:"globalDiscountRate"`
+	Id int32 `json:"id"`
+	Name string `json:"name"`
+	RuleDiscountRate float64 `json:"ruleDiscountRate"`
+	GlobalDiscountRate float64 `json:"globalDiscountRate"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -148,7 +148,7 @@ func (o *PrometheusOrganizationDiscountDto) SetGlobalDiscountRate(v float64) {
 }
 
 func (o PrometheusOrganizationDiscountDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -185,10 +185,10 @@ func (o *PrometheusOrganizationDiscountDto) UnmarshalJSON(data []byte) (err erro
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -252,3 +252,5 @@ func (v *NullablePrometheusOrganizationDiscountDto) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

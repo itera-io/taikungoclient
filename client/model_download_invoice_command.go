@@ -20,8 +20,8 @@ var _ MappedNullable = &DownloadInvoiceCommand{}
 
 // DownloadInvoiceCommand struct for DownloadInvoiceCommand
 type DownloadInvoiceCommand struct {
-	Id                   *int32         `json:"id,omitempty"`
-	Name                 NullableString `json:"name,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,7 +108,6 @@ func (o *DownloadInvoiceCommand) HasName() bool {
 func (o *DownloadInvoiceCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *DownloadInvoiceCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -120,7 +119,7 @@ func (o *DownloadInvoiceCommand) UnsetName() {
 }
 
 func (o DownloadInvoiceCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -200,3 +199,5 @@ func (v *NullableDownloadInvoiceCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

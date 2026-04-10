@@ -20,16 +20,16 @@ var _ MappedNullable = &AwsFlavorListDto{}
 
 // AwsFlavorListDto struct for AwsFlavorListDto
 type AwsFlavorListDto struct {
-	Ram                  *float64       `json:"ram,omitempty"`
-	Cpu                  *int32         `json:"cpu,omitempty"`
-	Name                 NullableString `json:"name,omitempty"`
-	Description          interface{}    `json:"description,omitempty"`
-	LinuxPrice           NullableString `json:"linuxPrice,omitempty"`
-	WindowsPrice         NullableString `json:"windowsPrice,omitempty"`
-	WindowsSpotPrice     NullableString `json:"windowsSpotPrice,omitempty"`
-	LinuxSpotPrice       NullableString `json:"linuxSpotPrice,omitempty"`
-	Zones                []string       `json:"zones,omitempty"`
-	HasGpuSupport        *bool          `json:"hasGpuSupport,omitempty"`
+	Ram *float64 `json:"ram,omitempty"`
+	Cpu *int32 `json:"cpu,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Description interface{} `json:"description,omitempty"`
+	LinuxPrice NullableString `json:"linuxPrice,omitempty"`
+	WindowsPrice NullableString `json:"windowsPrice,omitempty"`
+	WindowsSpotPrice NullableString `json:"windowsSpotPrice,omitempty"`
+	LinuxSpotPrice NullableString `json:"linuxSpotPrice,omitempty"`
+	Zones []string `json:"zones,omitempty"`
+	HasGpuSupport *bool `json:"hasGpuSupport,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -148,7 +148,6 @@ func (o *AwsFlavorListDto) HasName() bool {
 func (o *AwsFlavorListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *AwsFlavorListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -224,7 +223,6 @@ func (o *AwsFlavorListDto) HasLinuxPrice() bool {
 func (o *AwsFlavorListDto) SetLinuxPrice(v string) {
 	o.LinuxPrice.Set(&v)
 }
-
 // SetLinuxPriceNil sets the value for LinuxPrice to be an explicit nil
 func (o *AwsFlavorListDto) SetLinuxPriceNil() {
 	o.LinuxPrice.Set(nil)
@@ -267,7 +265,6 @@ func (o *AwsFlavorListDto) HasWindowsPrice() bool {
 func (o *AwsFlavorListDto) SetWindowsPrice(v string) {
 	o.WindowsPrice.Set(&v)
 }
-
 // SetWindowsPriceNil sets the value for WindowsPrice to be an explicit nil
 func (o *AwsFlavorListDto) SetWindowsPriceNil() {
 	o.WindowsPrice.Set(nil)
@@ -310,7 +307,6 @@ func (o *AwsFlavorListDto) HasWindowsSpotPrice() bool {
 func (o *AwsFlavorListDto) SetWindowsSpotPrice(v string) {
 	o.WindowsSpotPrice.Set(&v)
 }
-
 // SetWindowsSpotPriceNil sets the value for WindowsSpotPrice to be an explicit nil
 func (o *AwsFlavorListDto) SetWindowsSpotPriceNil() {
 	o.WindowsSpotPrice.Set(nil)
@@ -353,7 +349,6 @@ func (o *AwsFlavorListDto) HasLinuxSpotPrice() bool {
 func (o *AwsFlavorListDto) SetLinuxSpotPrice(v string) {
 	o.LinuxSpotPrice.Set(&v)
 }
-
 // SetLinuxSpotPriceNil sets the value for LinuxSpotPrice to be an explicit nil
 func (o *AwsFlavorListDto) SetLinuxSpotPriceNil() {
 	o.LinuxSpotPrice.Set(nil)
@@ -430,7 +425,7 @@ func (o *AwsFlavorListDto) SetHasGpuSupport(v bool) {
 }
 
 func (o AwsFlavorListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -542,3 +537,5 @@ func (v *NullableAwsFlavorListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

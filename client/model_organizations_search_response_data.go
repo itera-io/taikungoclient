@@ -20,10 +20,10 @@ var _ MappedNullable = &OrganizationsSearchResponseData{}
 
 // OrganizationsSearchResponseData struct for OrganizationsSearchResponseData
 type OrganizationsSearchResponseData struct {
-	Id                   *int32         `json:"id,omitempty"`
-	Name                 NullableString `json:"name,omitempty"`
-	AccountId            NullableInt32  `json:"accountId,omitempty"`
-	AccountName          NullableString `json:"accountName,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	AccountId NullableInt32 `json:"accountId,omitempty"`
+	AccountName NullableString `json:"accountName,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -110,7 +110,6 @@ func (o *OrganizationsSearchResponseData) HasName() bool {
 func (o *OrganizationsSearchResponseData) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *OrganizationsSearchResponseData) SetNameNil() {
 	o.Name.Set(nil)
@@ -153,7 +152,6 @@ func (o *OrganizationsSearchResponseData) HasAccountId() bool {
 func (o *OrganizationsSearchResponseData) SetAccountId(v int32) {
 	o.AccountId.Set(&v)
 }
-
 // SetAccountIdNil sets the value for AccountId to be an explicit nil
 func (o *OrganizationsSearchResponseData) SetAccountIdNil() {
 	o.AccountId.Set(nil)
@@ -196,7 +194,6 @@ func (o *OrganizationsSearchResponseData) HasAccountName() bool {
 func (o *OrganizationsSearchResponseData) SetAccountName(v string) {
 	o.AccountName.Set(&v)
 }
-
 // SetAccountNameNil sets the value for AccountName to be an explicit nil
 func (o *OrganizationsSearchResponseData) SetAccountNameNil() {
 	o.AccountName.Set(nil)
@@ -208,7 +205,7 @@ func (o *OrganizationsSearchResponseData) UnsetAccountName() {
 }
 
 func (o OrganizationsSearchResponseData) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -296,3 +293,5 @@ func (v *NullableOrganizationsSearchResponseData) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -21,9 +21,9 @@ var _ MappedNullable = &CheckZadaraCommand{}
 // CheckZadaraCommand struct for CheckZadaraCommand
 type CheckZadaraCommand struct {
 	ZadaraSecretAccessKey NullableString `json:"zadaraSecretAccessKey,omitempty"`
-	ZadaraAccessKeyId     NullableString `json:"zadaraAccessKeyId,omitempty"`
-	ZadaraUrl             NullableString `json:"zadaraUrl,omitempty"`
-	AdditionalProperties  map[string]interface{}
+	ZadaraAccessKeyId NullableString `json:"zadaraAccessKeyId,omitempty"`
+	ZadaraUrl NullableString `json:"zadaraUrl,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CheckZadaraCommand CheckZadaraCommand
@@ -77,7 +77,6 @@ func (o *CheckZadaraCommand) HasZadaraSecretAccessKey() bool {
 func (o *CheckZadaraCommand) SetZadaraSecretAccessKey(v string) {
 	o.ZadaraSecretAccessKey.Set(&v)
 }
-
 // SetZadaraSecretAccessKeyNil sets the value for ZadaraSecretAccessKey to be an explicit nil
 func (o *CheckZadaraCommand) SetZadaraSecretAccessKeyNil() {
 	o.ZadaraSecretAccessKey.Set(nil)
@@ -120,7 +119,6 @@ func (o *CheckZadaraCommand) HasZadaraAccessKeyId() bool {
 func (o *CheckZadaraCommand) SetZadaraAccessKeyId(v string) {
 	o.ZadaraAccessKeyId.Set(&v)
 }
-
 // SetZadaraAccessKeyIdNil sets the value for ZadaraAccessKeyId to be an explicit nil
 func (o *CheckZadaraCommand) SetZadaraAccessKeyIdNil() {
 	o.ZadaraAccessKeyId.Set(nil)
@@ -163,7 +161,6 @@ func (o *CheckZadaraCommand) HasZadaraUrl() bool {
 func (o *CheckZadaraCommand) SetZadaraUrl(v string) {
 	o.ZadaraUrl.Set(&v)
 }
-
 // SetZadaraUrlNil sets the value for ZadaraUrl to be an explicit nil
 func (o *CheckZadaraCommand) SetZadaraUrlNil() {
 	o.ZadaraUrl.Set(nil)
@@ -175,7 +172,7 @@ func (o *CheckZadaraCommand) UnsetZadaraUrl() {
 }
 
 func (o CheckZadaraCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -259,3 +256,5 @@ func (v *NullableCheckZadaraCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,11 +20,11 @@ var _ MappedNullable = &DaemonSetSearchCommand{}
 
 // DaemonSetSearchCommand struct for DaemonSetSearchCommand
 type DaemonSetSearchCommand struct {
-	Limit                         NullableInt32  `json:"limit,omitempty"`
-	Offset                        NullableInt32  `json:"offset,omitempty"`
-	SearchTerm                    NullableString `json:"searchTerm,omitempty"`
-	IncludePublicImportedClusters NullableBool   `json:"includePublicImportedClusters,omitempty"`
-	AdditionalProperties          map[string]interface{}
+	Limit NullableInt32 `json:"limit,omitempty"`
+	Offset NullableInt32 `json:"offset,omitempty"`
+	SearchTerm NullableString `json:"searchTerm,omitempty"`
+	IncludePublicImportedClusters NullableBool `json:"includePublicImportedClusters,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DaemonSetSearchCommand DaemonSetSearchCommand
@@ -78,7 +78,6 @@ func (o *DaemonSetSearchCommand) HasLimit() bool {
 func (o *DaemonSetSearchCommand) SetLimit(v int32) {
 	o.Limit.Set(&v)
 }
-
 // SetLimitNil sets the value for Limit to be an explicit nil
 func (o *DaemonSetSearchCommand) SetLimitNil() {
 	o.Limit.Set(nil)
@@ -121,7 +120,6 @@ func (o *DaemonSetSearchCommand) HasOffset() bool {
 func (o *DaemonSetSearchCommand) SetOffset(v int32) {
 	o.Offset.Set(&v)
 }
-
 // SetOffsetNil sets the value for Offset to be an explicit nil
 func (o *DaemonSetSearchCommand) SetOffsetNil() {
 	o.Offset.Set(nil)
@@ -164,7 +162,6 @@ func (o *DaemonSetSearchCommand) HasSearchTerm() bool {
 func (o *DaemonSetSearchCommand) SetSearchTerm(v string) {
 	o.SearchTerm.Set(&v)
 }
-
 // SetSearchTermNil sets the value for SearchTerm to be an explicit nil
 func (o *DaemonSetSearchCommand) SetSearchTermNil() {
 	o.SearchTerm.Set(nil)
@@ -207,7 +204,6 @@ func (o *DaemonSetSearchCommand) HasIncludePublicImportedClusters() bool {
 func (o *DaemonSetSearchCommand) SetIncludePublicImportedClusters(v bool) {
 	o.IncludePublicImportedClusters.Set(&v)
 }
-
 // SetIncludePublicImportedClustersNil sets the value for IncludePublicImportedClusters to be an explicit nil
 func (o *DaemonSetSearchCommand) SetIncludePublicImportedClustersNil() {
 	o.IncludePublicImportedClusters.Set(nil)
@@ -219,7 +215,7 @@ func (o *DaemonSetSearchCommand) UnsetIncludePublicImportedClusters() {
 }
 
 func (o DaemonSetSearchCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -307,3 +303,5 @@ func (v *NullableDaemonSetSearchCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

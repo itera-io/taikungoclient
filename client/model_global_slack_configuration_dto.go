@@ -20,12 +20,12 @@ var _ MappedNullable = &GlobalSlackConfigurationDto{}
 
 // GlobalSlackConfigurationDto struct for GlobalSlackConfigurationDto
 type GlobalSlackConfigurationDto struct {
-	Id                   *int32         `json:"id,omitempty"`
-	Name                 NullableString `json:"name,omitempty"`
-	Url                  NullableString `json:"url,omitempty"`
-	UserName             NullableString `json:"userName,omitempty"`
-	Channel              NullableString `json:"channel,omitempty"`
-	IsActive             *bool          `json:"isActive,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	UserName NullableString `json:"userName,omitempty"`
+	Channel NullableString `json:"channel,omitempty"`
+	IsActive *bool `json:"isActive,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -112,7 +112,6 @@ func (o *GlobalSlackConfigurationDto) HasName() bool {
 func (o *GlobalSlackConfigurationDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *GlobalSlackConfigurationDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -155,7 +154,6 @@ func (o *GlobalSlackConfigurationDto) HasUrl() bool {
 func (o *GlobalSlackConfigurationDto) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *GlobalSlackConfigurationDto) SetUrlNil() {
 	o.Url.Set(nil)
@@ -198,7 +196,6 @@ func (o *GlobalSlackConfigurationDto) HasUserName() bool {
 func (o *GlobalSlackConfigurationDto) SetUserName(v string) {
 	o.UserName.Set(&v)
 }
-
 // SetUserNameNil sets the value for UserName to be an explicit nil
 func (o *GlobalSlackConfigurationDto) SetUserNameNil() {
 	o.UserName.Set(nil)
@@ -241,7 +238,6 @@ func (o *GlobalSlackConfigurationDto) HasChannel() bool {
 func (o *GlobalSlackConfigurationDto) SetChannel(v string) {
 	o.Channel.Set(&v)
 }
-
 // SetChannelNil sets the value for Channel to be an explicit nil
 func (o *GlobalSlackConfigurationDto) SetChannelNil() {
 	o.Channel.Set(nil)
@@ -285,7 +281,7 @@ func (o *GlobalSlackConfigurationDto) SetIsActive(v bool) {
 }
 
 func (o GlobalSlackConfigurationDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -381,3 +377,5 @@ func (v *NullableGlobalSlackConfigurationDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

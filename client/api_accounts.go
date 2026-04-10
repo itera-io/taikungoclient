@@ -20,14 +20,15 @@ import (
 	"strings"
 )
 
+
 // AccountsAPIService AccountsAPI service
 type AccountsAPIService service
 
 type ApiAccountsAccountGroupDetailsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AccountsAPIService
-	accountId  int32
-	id         int32
+	accountId int32
+	id int32
 }
 
 func (r ApiAccountsAccountGroupDetailsRequest) Execute() (*GroupDetailsDto, *http.Response, error) {
@@ -37,29 +38,28 @@ func (r ApiAccountsAccountGroupDetailsRequest) Execute() (*GroupDetailsDto, *htt
 /*
 AccountsAccountGroupDetails Get group details by accountId
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param accountId
-	@param id
-	@return ApiAccountsAccountGroupDetailsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountId
+ @param id
+ @return ApiAccountsAccountGroupDetailsRequest
 */
 func (a *AccountsAPIService) AccountsAccountGroupDetails(ctx context.Context, accountId int32, id int32) ApiAccountsAccountGroupDetailsRequest {
 	return ApiAccountsAccountGroupDetailsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		accountId:  accountId,
-		id:         id,
+		ctx: ctx,
+		accountId: accountId,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return GroupDetailsDto
+//  @return GroupDetailsDto
 func (a *AccountsAPIService) AccountsAccountGroupDetailsExecute(r ApiAccountsAccountGroupDetailsRequest) (*GroupDetailsDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *GroupDetailsDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GroupDetailsDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsAccountGroupDetails")
@@ -135,8 +135,8 @@ func (a *AccountsAPIService) AccountsAccountGroupDetailsExecute(r ApiAccountsAcc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -146,8 +146,8 @@ func (a *AccountsAPIService) AccountsAccountGroupDetailsExecute(r ApiAccountsAcc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -157,8 +157,8 @@ func (a *AccountsAPIService) AccountsAccountGroupDetailsExecute(r ApiAccountsAcc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -168,8 +168,8 @@ func (a *AccountsAPIService) AccountsAccountGroupDetailsExecute(r ApiAccountsAcc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -179,8 +179,8 @@ func (a *AccountsAPIService) AccountsAccountGroupDetailsExecute(r ApiAccountsAcc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -190,8 +190,8 @@ func (a *AccountsAPIService) AccountsAccountGroupDetailsExecute(r ApiAccountsAcc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -209,12 +209,12 @@ func (a *AccountsAPIService) AccountsAccountGroupDetailsExecute(r ApiAccountsAcc
 }
 
 type ApiAccountsAccountGroupsDropdownRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AccountsAPIService
-	accountId  int32
-	limit      *int32
-	cursorId   *int32
-	search     *string
+	accountId int32
+	limit *int32
+	cursorId *int32
+	search *string
 }
 
 func (r ApiAccountsAccountGroupsDropdownRequest) Limit(limit int32) ApiAccountsAccountGroupsDropdownRequest {
@@ -239,27 +239,26 @@ func (r ApiAccountsAccountGroupsDropdownRequest) Execute() (*CommonDropdownDtoCu
 /*
 AccountsAccountGroupsDropdown Retrieve account groups dropdown list by cursor-based pagination
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param accountId
-	@return ApiAccountsAccountGroupsDropdownRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountId
+ @return ApiAccountsAccountGroupsDropdownRequest
 */
 func (a *AccountsAPIService) AccountsAccountGroupsDropdown(ctx context.Context, accountId int32) ApiAccountsAccountGroupsDropdownRequest {
 	return ApiAccountsAccountGroupsDropdownRequest{
 		ApiService: a,
-		ctx:        ctx,
-		accountId:  accountId,
+		ctx: ctx,
+		accountId: accountId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return CommonDropdownDtoCursorPaginatedResponse
+//  @return CommonDropdownDtoCursorPaginatedResponse
 func (a *AccountsAPIService) AccountsAccountGroupsDropdownExecute(r ApiAccountsAccountGroupsDropdownRequest) (*CommonDropdownDtoCursorPaginatedResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *CommonDropdownDtoCursorPaginatedResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CommonDropdownDtoCursorPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsAccountGroupsDropdown")
@@ -344,8 +343,8 @@ func (a *AccountsAPIService) AccountsAccountGroupsDropdownExecute(r ApiAccountsA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -355,8 +354,8 @@ func (a *AccountsAPIService) AccountsAccountGroupsDropdownExecute(r ApiAccountsA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -366,8 +365,8 @@ func (a *AccountsAPIService) AccountsAccountGroupsDropdownExecute(r ApiAccountsA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -377,8 +376,8 @@ func (a *AccountsAPIService) AccountsAccountGroupsDropdownExecute(r ApiAccountsA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -388,8 +387,8 @@ func (a *AccountsAPIService) AccountsAccountGroupsDropdownExecute(r ApiAccountsA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -399,8 +398,8 @@ func (a *AccountsAPIService) AccountsAccountGroupsDropdownExecute(r ApiAccountsA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -418,12 +417,12 @@ func (a *AccountsAPIService) AccountsAccountGroupsDropdownExecute(r ApiAccountsA
 }
 
 type ApiAccountsAccountGroupsOffsetBasedDropdownRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AccountsAPIService
-	accountId  int32
-	limit      *int32
-	offset     *int32
-	search     *string
+	accountId int32
+	limit *int32
+	offset *int32
+	search *string
 }
 
 func (r ApiAccountsAccountGroupsOffsetBasedDropdownRequest) Limit(limit int32) ApiAccountsAccountGroupsOffsetBasedDropdownRequest {
@@ -448,27 +447,26 @@ func (r ApiAccountsAccountGroupsOffsetBasedDropdownRequest) Execute() (*GroupOff
 /*
 AccountsAccountGroupsOffsetBasedDropdown Retrieve account groups dropdown list by offset-based pagination
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param accountId
-	@return ApiAccountsAccountGroupsOffsetBasedDropdownRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountId
+ @return ApiAccountsAccountGroupsOffsetBasedDropdownRequest
 */
 func (a *AccountsAPIService) AccountsAccountGroupsOffsetBasedDropdown(ctx context.Context, accountId int32) ApiAccountsAccountGroupsOffsetBasedDropdownRequest {
 	return ApiAccountsAccountGroupsOffsetBasedDropdownRequest{
 		ApiService: a,
-		ctx:        ctx,
-		accountId:  accountId,
+		ctx: ctx,
+		accountId: accountId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return GroupOffsetPaginationDropdownList
+//  @return GroupOffsetPaginationDropdownList
 func (a *AccountsAPIService) AccountsAccountGroupsOffsetBasedDropdownExecute(r ApiAccountsAccountGroupsOffsetBasedDropdownRequest) (*GroupOffsetPaginationDropdownList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *GroupOffsetPaginationDropdownList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GroupOffsetPaginationDropdownList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsAccountGroupsOffsetBasedDropdown")
@@ -560,8 +558,8 @@ func (a *AccountsAPIService) AccountsAccountGroupsOffsetBasedDropdownExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -571,8 +569,8 @@ func (a *AccountsAPIService) AccountsAccountGroupsOffsetBasedDropdownExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -582,8 +580,8 @@ func (a *AccountsAPIService) AccountsAccountGroupsOffsetBasedDropdownExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -593,8 +591,8 @@ func (a *AccountsAPIService) AccountsAccountGroupsOffsetBasedDropdownExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -604,8 +602,8 @@ func (a *AccountsAPIService) AccountsAccountGroupsOffsetBasedDropdownExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -615,8 +613,8 @@ func (a *AccountsAPIService) AccountsAccountGroupsOffsetBasedDropdownExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -634,13 +632,13 @@ func (a *AccountsAPIService) AccountsAccountGroupsOffsetBasedDropdownExecute(r A
 }
 
 type ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AccountsAPIService
-	accountId  int32
-	groupId    *int32
-	limit      *int32
-	offset     *int32
-	search     *string
+	accountId int32
+	groupId *int32
+	limit *int32
+	offset *int32
+	search *string
 }
 
 func (r ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest) GroupId(groupId int32) ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest {
@@ -670,27 +668,26 @@ func (r ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest) Execute() (*
 /*
 AccountsAccountOffsetBasedOrganizationsWithGroup Retrieve account organizations with group list by offset-based pagination
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param accountId
-	@return ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountId
+ @return ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest
 */
 func (a *AccountsAPIService) AccountsAccountOffsetBasedOrganizationsWithGroup(ctx context.Context, accountId int32) ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest {
 	return ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest{
 		ApiService: a,
-		ctx:        ctx,
-		accountId:  accountId,
+		ctx: ctx,
+		accountId: accountId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return OrganizationOffsetPaginationWithGroupList
+//  @return OrganizationOffsetPaginationWithGroupList
 func (a *AccountsAPIService) AccountsAccountOffsetBasedOrganizationsWithGroupExecute(r ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest) (*OrganizationOffsetPaginationWithGroupList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *OrganizationOffsetPaginationWithGroupList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *OrganizationOffsetPaginationWithGroupList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsAccountOffsetBasedOrganizationsWithGroup")
@@ -785,8 +782,8 @@ func (a *AccountsAPIService) AccountsAccountOffsetBasedOrganizationsWithGroupExe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -796,8 +793,8 @@ func (a *AccountsAPIService) AccountsAccountOffsetBasedOrganizationsWithGroupExe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -807,8 +804,8 @@ func (a *AccountsAPIService) AccountsAccountOffsetBasedOrganizationsWithGroupExe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -818,8 +815,8 @@ func (a *AccountsAPIService) AccountsAccountOffsetBasedOrganizationsWithGroupExe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -829,8 +826,8 @@ func (a *AccountsAPIService) AccountsAccountOffsetBasedOrganizationsWithGroupExe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -840,8 +837,8 @@ func (a *AccountsAPIService) AccountsAccountOffsetBasedOrganizationsWithGroupExe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -859,10 +856,10 @@ func (a *AccountsAPIService) AccountsAccountOffsetBasedOrganizationsWithGroupExe
 }
 
 type ApiAccountsAccountOrganizationDetailsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AccountsAPIService
-	accountId  int32
-	id         int32
+	accountId int32
+	id int32
 }
 
 func (r ApiAccountsAccountOrganizationDetailsRequest) Execute() (*OrganizationDetailsDtoForAccount, *http.Response, error) {
@@ -872,29 +869,28 @@ func (r ApiAccountsAccountOrganizationDetailsRequest) Execute() (*OrganizationDe
 /*
 AccountsAccountOrganizationDetails Get organization details by accountId
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param accountId
-	@param id
-	@return ApiAccountsAccountOrganizationDetailsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountId
+ @param id
+ @return ApiAccountsAccountOrganizationDetailsRequest
 */
 func (a *AccountsAPIService) AccountsAccountOrganizationDetails(ctx context.Context, accountId int32, id int32) ApiAccountsAccountOrganizationDetailsRequest {
 	return ApiAccountsAccountOrganizationDetailsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		accountId:  accountId,
-		id:         id,
+		ctx: ctx,
+		accountId: accountId,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return OrganizationDetailsDtoForAccount
+//  @return OrganizationDetailsDtoForAccount
 func (a *AccountsAPIService) AccountsAccountOrganizationDetailsExecute(r ApiAccountsAccountOrganizationDetailsRequest) (*OrganizationDetailsDtoForAccount, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *OrganizationDetailsDtoForAccount
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *OrganizationDetailsDtoForAccount
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsAccountOrganizationDetails")
@@ -970,8 +966,8 @@ func (a *AccountsAPIService) AccountsAccountOrganizationDetailsExecute(r ApiAcco
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -981,8 +977,8 @@ func (a *AccountsAPIService) AccountsAccountOrganizationDetailsExecute(r ApiAcco
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -992,8 +988,8 @@ func (a *AccountsAPIService) AccountsAccountOrganizationDetailsExecute(r ApiAcco
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1003,8 +999,8 @@ func (a *AccountsAPIService) AccountsAccountOrganizationDetailsExecute(r ApiAcco
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1014,8 +1010,8 @@ func (a *AccountsAPIService) AccountsAccountOrganizationDetailsExecute(r ApiAcco
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1025,8 +1021,8 @@ func (a *AccountsAPIService) AccountsAccountOrganizationDetailsExecute(r ApiAcco
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1044,10 +1040,10 @@ func (a *AccountsAPIService) AccountsAccountOrganizationDetailsExecute(r ApiAcco
 }
 
 type ApiAccountsAccountOrganizationsAvailableRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AccountsAPIService
-	accountId  int32
-	groupId    *int32
+	accountId int32
+	groupId *int32
 }
 
 func (r ApiAccountsAccountOrganizationsAvailableRequest) GroupId(groupId int32) ApiAccountsAccountOrganizationsAvailableRequest {
@@ -1062,27 +1058,26 @@ func (r ApiAccountsAccountOrganizationsAvailableRequest) Execute() ([]CommonDrop
 /*
 AccountsAccountOrganizationsAvailable Retrieve available organizations for adding to a group
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param accountId
-	@return ApiAccountsAccountOrganizationsAvailableRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountId
+ @return ApiAccountsAccountOrganizationsAvailableRequest
 */
 func (a *AccountsAPIService) AccountsAccountOrganizationsAvailable(ctx context.Context, accountId int32) ApiAccountsAccountOrganizationsAvailableRequest {
 	return ApiAccountsAccountOrganizationsAvailableRequest{
 		ApiService: a,
-		ctx:        ctx,
-		accountId:  accountId,
+		ctx: ctx,
+		accountId: accountId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []CommonDropdownDto
+//  @return []CommonDropdownDto
 func (a *AccountsAPIService) AccountsAccountOrganizationsAvailableExecute(r ApiAccountsAccountOrganizationsAvailableRequest) ([]CommonDropdownDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []CommonDropdownDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []CommonDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsAccountOrganizationsAvailable")
@@ -1160,8 +1155,8 @@ func (a *AccountsAPIService) AccountsAccountOrganizationsAvailableExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1171,8 +1166,8 @@ func (a *AccountsAPIService) AccountsAccountOrganizationsAvailableExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1182,8 +1177,8 @@ func (a *AccountsAPIService) AccountsAccountOrganizationsAvailableExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1193,8 +1188,8 @@ func (a *AccountsAPIService) AccountsAccountOrganizationsAvailableExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1204,8 +1199,8 @@ func (a *AccountsAPIService) AccountsAccountOrganizationsAvailableExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1215,8 +1210,8 @@ func (a *AccountsAPIService) AccountsAccountOrganizationsAvailableExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1234,13 +1229,13 @@ func (a *AccountsAPIService) AccountsAccountOrganizationsAvailableExecute(r ApiA
 }
 
 type ApiAccountsAccountOrganizationsWithGroupRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AccountsAPIService
-	accountId  int32
-	groupId    *int32
-	limit      *int32
-	cursorId   *int32
-	search     *string
+	accountId int32
+	groupId *int32
+	limit *int32
+	cursorId *int32
+	search *string
 }
 
 func (r ApiAccountsAccountOrganizationsWithGroupRequest) GroupId(groupId int32) ApiAccountsAccountOrganizationsWithGroupRequest {
@@ -1270,27 +1265,26 @@ func (r ApiAccountsAccountOrganizationsWithGroupRequest) Execute() (*Organizatio
 /*
 AccountsAccountOrganizationsWithGroup Retrieve account organizations with group list by cursor-based pagination
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param accountId
-	@return ApiAccountsAccountOrganizationsWithGroupRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountId
+ @return ApiAccountsAccountOrganizationsWithGroupRequest
 */
 func (a *AccountsAPIService) AccountsAccountOrganizationsWithGroup(ctx context.Context, accountId int32) ApiAccountsAccountOrganizationsWithGroupRequest {
 	return ApiAccountsAccountOrganizationsWithGroupRequest{
 		ApiService: a,
-		ctx:        ctx,
-		accountId:  accountId,
+		ctx: ctx,
+		accountId: accountId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return OrganizationsWithGroupInfoResultDtoCursorPaginatedResponse
+//  @return OrganizationsWithGroupInfoResultDtoCursorPaginatedResponse
 func (a *AccountsAPIService) AccountsAccountOrganizationsWithGroupExecute(r ApiAccountsAccountOrganizationsWithGroupRequest) (*OrganizationsWithGroupInfoResultDtoCursorPaginatedResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *OrganizationsWithGroupInfoResultDtoCursorPaginatedResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *OrganizationsWithGroupInfoResultDtoCursorPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsAccountOrganizationsWithGroup")
@@ -1377,8 +1371,8 @@ func (a *AccountsAPIService) AccountsAccountOrganizationsWithGroupExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1388,8 +1382,8 @@ func (a *AccountsAPIService) AccountsAccountOrganizationsWithGroupExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1399,8 +1393,8 @@ func (a *AccountsAPIService) AccountsAccountOrganizationsWithGroupExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1410,8 +1404,8 @@ func (a *AccountsAPIService) AccountsAccountOrganizationsWithGroupExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1421,8 +1415,8 @@ func (a *AccountsAPIService) AccountsAccountOrganizationsWithGroupExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1432,8 +1426,8 @@ func (a *AccountsAPIService) AccountsAccountOrganizationsWithGroupExecute(r ApiA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1451,10 +1445,10 @@ func (a *AccountsAPIService) AccountsAccountOrganizationsWithGroupExecute(r ApiA
 }
 
 type ApiAccountsAccountProjectDetailsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AccountsAPIService
-	accountId  int32
-	id         int32
+	accountId int32
+	id int32
 }
 
 func (r ApiAccountsAccountProjectDetailsRequest) Execute() (*ProjectDetailsDto, *http.Response, error) {
@@ -1464,29 +1458,28 @@ func (r ApiAccountsAccountProjectDetailsRequest) Execute() (*ProjectDetailsDto, 
 /*
 AccountsAccountProjectDetails Get project details by accountId
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param accountId
-	@param id
-	@return ApiAccountsAccountProjectDetailsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountId
+ @param id
+ @return ApiAccountsAccountProjectDetailsRequest
 */
 func (a *AccountsAPIService) AccountsAccountProjectDetails(ctx context.Context, accountId int32, id int32) ApiAccountsAccountProjectDetailsRequest {
 	return ApiAccountsAccountProjectDetailsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		accountId:  accountId,
-		id:         id,
+		ctx: ctx,
+		accountId: accountId,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ProjectDetailsDto
+//  @return ProjectDetailsDto
 func (a *AccountsAPIService) AccountsAccountProjectDetailsExecute(r ApiAccountsAccountProjectDetailsRequest) (*ProjectDetailsDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ProjectDetailsDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ProjectDetailsDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsAccountProjectDetails")
@@ -1562,8 +1555,8 @@ func (a *AccountsAPIService) AccountsAccountProjectDetailsExecute(r ApiAccountsA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1573,8 +1566,8 @@ func (a *AccountsAPIService) AccountsAccountProjectDetailsExecute(r ApiAccountsA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1584,8 +1577,8 @@ func (a *AccountsAPIService) AccountsAccountProjectDetailsExecute(r ApiAccountsA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1595,8 +1588,8 @@ func (a *AccountsAPIService) AccountsAccountProjectDetailsExecute(r ApiAccountsA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1606,8 +1599,8 @@ func (a *AccountsAPIService) AccountsAccountProjectDetailsExecute(r ApiAccountsA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1617,8 +1610,8 @@ func (a *AccountsAPIService) AccountsAccountProjectDetailsExecute(r ApiAccountsA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1636,12 +1629,12 @@ func (a *AccountsAPIService) AccountsAccountProjectDetailsExecute(r ApiAccountsA
 }
 
 type ApiAccountsAccountProjectsDropdownRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AccountsAPIService
-	accountId  int32
-	limit      *int32
-	cursorId   *int32
-	search     *string
+	accountId int32
+	limit *int32
+	cursorId *int32
+	search *string
 }
 
 func (r ApiAccountsAccountProjectsDropdownRequest) Limit(limit int32) ApiAccountsAccountProjectsDropdownRequest {
@@ -1666,27 +1659,26 @@ func (r ApiAccountsAccountProjectsDropdownRequest) Execute() (*CommonDropdownDto
 /*
 AccountsAccountProjectsDropdown Retrieve account projects dropdown list by cursor-based pagination
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param accountId
-	@return ApiAccountsAccountProjectsDropdownRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountId
+ @return ApiAccountsAccountProjectsDropdownRequest
 */
 func (a *AccountsAPIService) AccountsAccountProjectsDropdown(ctx context.Context, accountId int32) ApiAccountsAccountProjectsDropdownRequest {
 	return ApiAccountsAccountProjectsDropdownRequest{
 		ApiService: a,
-		ctx:        ctx,
-		accountId:  accountId,
+		ctx: ctx,
+		accountId: accountId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return CommonDropdownDtoCursorPaginatedResponse
+//  @return CommonDropdownDtoCursorPaginatedResponse
 func (a *AccountsAPIService) AccountsAccountProjectsDropdownExecute(r ApiAccountsAccountProjectsDropdownRequest) (*CommonDropdownDtoCursorPaginatedResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *CommonDropdownDtoCursorPaginatedResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CommonDropdownDtoCursorPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsAccountProjectsDropdown")
@@ -1771,8 +1763,8 @@ func (a *AccountsAPIService) AccountsAccountProjectsDropdownExecute(r ApiAccount
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1782,8 +1774,8 @@ func (a *AccountsAPIService) AccountsAccountProjectsDropdownExecute(r ApiAccount
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1793,8 +1785,8 @@ func (a *AccountsAPIService) AccountsAccountProjectsDropdownExecute(r ApiAccount
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1804,8 +1796,8 @@ func (a *AccountsAPIService) AccountsAccountProjectsDropdownExecute(r ApiAccount
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1815,8 +1807,8 @@ func (a *AccountsAPIService) AccountsAccountProjectsDropdownExecute(r ApiAccount
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1826,8 +1818,8 @@ func (a *AccountsAPIService) AccountsAccountProjectsDropdownExecute(r ApiAccount
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1845,12 +1837,12 @@ func (a *AccountsAPIService) AccountsAccountProjectsDropdownExecute(r ApiAccount
 }
 
 type ApiAccountsAccountProjectsOffsetBasedDropdownRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AccountsAPIService
-	accountId  int32
-	limit      *int32
-	offset     *int32
-	search     *string
+	accountId int32
+	limit *int32
+	offset *int32
+	search *string
 }
 
 func (r ApiAccountsAccountProjectsOffsetBasedDropdownRequest) Limit(limit int32) ApiAccountsAccountProjectsOffsetBasedDropdownRequest {
@@ -1875,27 +1867,26 @@ func (r ApiAccountsAccountProjectsOffsetBasedDropdownRequest) Execute() (*Projec
 /*
 AccountsAccountProjectsOffsetBasedDropdown Retrieve account projects dropdown list by offset-based pagination
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param accountId
-	@return ApiAccountsAccountProjectsOffsetBasedDropdownRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountId
+ @return ApiAccountsAccountProjectsOffsetBasedDropdownRequest
 */
 func (a *AccountsAPIService) AccountsAccountProjectsOffsetBasedDropdown(ctx context.Context, accountId int32) ApiAccountsAccountProjectsOffsetBasedDropdownRequest {
 	return ApiAccountsAccountProjectsOffsetBasedDropdownRequest{
 		ApiService: a,
-		ctx:        ctx,
-		accountId:  accountId,
+		ctx: ctx,
+		accountId: accountId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ProjectOffsetPaginationList
+//  @return ProjectOffsetPaginationList
 func (a *AccountsAPIService) AccountsAccountProjectsOffsetBasedDropdownExecute(r ApiAccountsAccountProjectsOffsetBasedDropdownRequest) (*ProjectOffsetPaginationList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ProjectOffsetPaginationList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ProjectOffsetPaginationList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsAccountProjectsOffsetBasedDropdown")
@@ -1987,8 +1978,8 @@ func (a *AccountsAPIService) AccountsAccountProjectsOffsetBasedDropdownExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1998,8 +1989,8 @@ func (a *AccountsAPIService) AccountsAccountProjectsOffsetBasedDropdownExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2009,8 +2000,8 @@ func (a *AccountsAPIService) AccountsAccountProjectsOffsetBasedDropdownExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2020,8 +2011,8 @@ func (a *AccountsAPIService) AccountsAccountProjectsOffsetBasedDropdownExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2031,8 +2022,8 @@ func (a *AccountsAPIService) AccountsAccountProjectsOffsetBasedDropdownExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2042,8 +2033,8 @@ func (a *AccountsAPIService) AccountsAccountProjectsOffsetBasedDropdownExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2061,10 +2052,10 @@ func (a *AccountsAPIService) AccountsAccountProjectsOffsetBasedDropdownExecute(r
 }
 
 type ApiAccountsAccountUserDetailsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AccountsAPIService
-	accountId  int32
-	id         string
+	accountId int32
+	id string
 }
 
 func (r ApiAccountsAccountUserDetailsRequest) Execute() (*UserDetailsDto, *http.Response, error) {
@@ -2074,29 +2065,28 @@ func (r ApiAccountsAccountUserDetailsRequest) Execute() (*UserDetailsDto, *http.
 /*
 AccountsAccountUserDetails Get user details by accountId
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param accountId
-	@param id
-	@return ApiAccountsAccountUserDetailsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountId
+ @param id
+ @return ApiAccountsAccountUserDetailsRequest
 */
 func (a *AccountsAPIService) AccountsAccountUserDetails(ctx context.Context, accountId int32, id string) ApiAccountsAccountUserDetailsRequest {
 	return ApiAccountsAccountUserDetailsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		accountId:  accountId,
-		id:         id,
+		ctx: ctx,
+		accountId: accountId,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return UserDetailsDto
+//  @return UserDetailsDto
 func (a *AccountsAPIService) AccountsAccountUserDetailsExecute(r ApiAccountsAccountUserDetailsRequest) (*UserDetailsDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *UserDetailsDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *UserDetailsDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsAccountUserDetails")
@@ -2172,8 +2162,8 @@ func (a *AccountsAPIService) AccountsAccountUserDetailsExecute(r ApiAccountsAcco
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2183,8 +2173,8 @@ func (a *AccountsAPIService) AccountsAccountUserDetailsExecute(r ApiAccountsAcco
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2194,8 +2184,8 @@ func (a *AccountsAPIService) AccountsAccountUserDetailsExecute(r ApiAccountsAcco
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2205,8 +2195,8 @@ func (a *AccountsAPIService) AccountsAccountUserDetailsExecute(r ApiAccountsAcco
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2216,8 +2206,8 @@ func (a *AccountsAPIService) AccountsAccountUserDetailsExecute(r ApiAccountsAcco
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2227,8 +2217,8 @@ func (a *AccountsAPIService) AccountsAccountUserDetailsExecute(r ApiAccountsAcco
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2246,12 +2236,12 @@ func (a *AccountsAPIService) AccountsAccountUserDetailsExecute(r ApiAccountsAcco
 }
 
 type ApiAccountsAccountUserDropdownRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AccountsAPIService
-	accountId  int32
-	limit      *int32
-	cursorId   *int64
-	search     *string
+	accountId int32
+	limit *int32
+	cursorId *int64
+	search *string
 }
 
 func (r ApiAccountsAccountUserDropdownRequest) Limit(limit int32) ApiAccountsAccountUserDropdownRequest {
@@ -2276,27 +2266,26 @@ func (r ApiAccountsAccountUserDropdownRequest) Execute() (*UserBriefDtoCursorTim
 /*
 AccountsAccountUserDropdown Retrieve account users dropdown list by cursor-based pagination
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param accountId
-	@return ApiAccountsAccountUserDropdownRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountId
+ @return ApiAccountsAccountUserDropdownRequest
 */
 func (a *AccountsAPIService) AccountsAccountUserDropdown(ctx context.Context, accountId int32) ApiAccountsAccountUserDropdownRequest {
 	return ApiAccountsAccountUserDropdownRequest{
 		ApiService: a,
-		ctx:        ctx,
-		accountId:  accountId,
+		ctx: ctx,
+		accountId: accountId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return UserBriefDtoCursorTimestampPaginatedResponse
+//  @return UserBriefDtoCursorTimestampPaginatedResponse
 func (a *AccountsAPIService) AccountsAccountUserDropdownExecute(r ApiAccountsAccountUserDropdownRequest) (*UserBriefDtoCursorTimestampPaginatedResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *UserBriefDtoCursorTimestampPaginatedResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *UserBriefDtoCursorTimestampPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsAccountUserDropdown")
@@ -2381,8 +2370,8 @@ func (a *AccountsAPIService) AccountsAccountUserDropdownExecute(r ApiAccountsAcc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2392,8 +2381,8 @@ func (a *AccountsAPIService) AccountsAccountUserDropdownExecute(r ApiAccountsAcc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2403,8 +2392,8 @@ func (a *AccountsAPIService) AccountsAccountUserDropdownExecute(r ApiAccountsAcc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2414,8 +2403,8 @@ func (a *AccountsAPIService) AccountsAccountUserDropdownExecute(r ApiAccountsAcc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2425,8 +2414,8 @@ func (a *AccountsAPIService) AccountsAccountUserDropdownExecute(r ApiAccountsAcc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2436,8 +2425,8 @@ func (a *AccountsAPIService) AccountsAccountUserDropdownExecute(r ApiAccountsAcc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2455,12 +2444,12 @@ func (a *AccountsAPIService) AccountsAccountUserDropdownExecute(r ApiAccountsAcc
 }
 
 type ApiAccountsAccountUserOffsetBasedDropdownRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AccountsAPIService
-	accountId  int32
-	limit      *int32
-	offset     *int32
-	search     *string
+	accountId int32
+	limit *int32
+	offset *int32
+	search *string
 }
 
 func (r ApiAccountsAccountUserOffsetBasedDropdownRequest) Limit(limit int32) ApiAccountsAccountUserOffsetBasedDropdownRequest {
@@ -2485,27 +2474,26 @@ func (r ApiAccountsAccountUserOffsetBasedDropdownRequest) Execute() (*UserOffset
 /*
 AccountsAccountUserOffsetBasedDropdown Retrieve account users dropdown list by offset-based pagination
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param accountId
-	@return ApiAccountsAccountUserOffsetBasedDropdownRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountId
+ @return ApiAccountsAccountUserOffsetBasedDropdownRequest
 */
 func (a *AccountsAPIService) AccountsAccountUserOffsetBasedDropdown(ctx context.Context, accountId int32) ApiAccountsAccountUserOffsetBasedDropdownRequest {
 	return ApiAccountsAccountUserOffsetBasedDropdownRequest{
 		ApiService: a,
-		ctx:        ctx,
-		accountId:  accountId,
+		ctx: ctx,
+		accountId: accountId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return UserOffsetPaginationDropdownList
+//  @return UserOffsetPaginationDropdownList
 func (a *AccountsAPIService) AccountsAccountUserOffsetBasedDropdownExecute(r ApiAccountsAccountUserOffsetBasedDropdownRequest) (*UserOffsetPaginationDropdownList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *UserOffsetPaginationDropdownList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *UserOffsetPaginationDropdownList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsAccountUserOffsetBasedDropdown")
@@ -2597,8 +2585,8 @@ func (a *AccountsAPIService) AccountsAccountUserOffsetBasedDropdownExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2608,8 +2596,8 @@ func (a *AccountsAPIService) AccountsAccountUserOffsetBasedDropdownExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2619,8 +2607,8 @@ func (a *AccountsAPIService) AccountsAccountUserOffsetBasedDropdownExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2630,8 +2618,8 @@ func (a *AccountsAPIService) AccountsAccountUserOffsetBasedDropdownExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2641,8 +2629,8 @@ func (a *AccountsAPIService) AccountsAccountUserOffsetBasedDropdownExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2652,8 +2640,8 @@ func (a *AccountsAPIService) AccountsAccountUserOffsetBasedDropdownExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2671,10 +2659,10 @@ func (a *AccountsAPIService) AccountsAccountUserOffsetBasedDropdownExecute(r Api
 }
 
 type ApiAccountsAccountUsersAvailableRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AccountsAPIService
-	accountId  int32
-	groupId    *int32
+	accountId int32
+	groupId *int32
 }
 
 func (r ApiAccountsAccountUsersAvailableRequest) GroupId(groupId int32) ApiAccountsAccountUsersAvailableRequest {
@@ -2689,27 +2677,26 @@ func (r ApiAccountsAccountUsersAvailableRequest) Execute() ([]CommonStringBasedD
 /*
 AccountsAccountUsersAvailable Retrieve available users for adding to a group
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param accountId
-	@return ApiAccountsAccountUsersAvailableRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountId
+ @return ApiAccountsAccountUsersAvailableRequest
 */
 func (a *AccountsAPIService) AccountsAccountUsersAvailable(ctx context.Context, accountId int32) ApiAccountsAccountUsersAvailableRequest {
 	return ApiAccountsAccountUsersAvailableRequest{
 		ApiService: a,
-		ctx:        ctx,
-		accountId:  accountId,
+		ctx: ctx,
+		accountId: accountId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []CommonStringBasedDropdownDto
+//  @return []CommonStringBasedDropdownDto
 func (a *AccountsAPIService) AccountsAccountUsersAvailableExecute(r ApiAccountsAccountUsersAvailableRequest) ([]CommonStringBasedDropdownDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []CommonStringBasedDropdownDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []CommonStringBasedDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsAccountUsersAvailable")
@@ -2787,8 +2774,8 @@ func (a *AccountsAPIService) AccountsAccountUsersAvailableExecute(r ApiAccountsA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2798,8 +2785,8 @@ func (a *AccountsAPIService) AccountsAccountUsersAvailableExecute(r ApiAccountsA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2809,8 +2796,8 @@ func (a *AccountsAPIService) AccountsAccountUsersAvailableExecute(r ApiAccountsA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2820,8 +2807,8 @@ func (a *AccountsAPIService) AccountsAccountUsersAvailableExecute(r ApiAccountsA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2831,8 +2818,8 @@ func (a *AccountsAPIService) AccountsAccountUsersAvailableExecute(r ApiAccountsA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2842,8 +2829,8 @@ func (a *AccountsAPIService) AccountsAccountUsersAvailableExecute(r ApiAccountsA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2861,8 +2848,8 @@ func (a *AccountsAPIService) AccountsAccountUsersAvailableExecute(r ApiAccountsA
 }
 
 type ApiAccountsAddAccountAdminRequest struct {
-	ctx                    context.Context
-	ApiService             *AccountsAPIService
+	ctx context.Context
+	ApiService *AccountsAPIService
 	addAccountAdminCommand *AddAccountAdminCommand
 }
 
@@ -2878,22 +2865,22 @@ func (r ApiAccountsAddAccountAdminRequest) Execute() (*http.Response, error) {
 /*
 AccountsAddAccountAdmin Add account admin to account
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAccountsAddAccountAdminRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAccountsAddAccountAdminRequest
 */
 func (a *AccountsAPIService) AccountsAddAccountAdmin(ctx context.Context) ApiAccountsAddAccountAdminRequest {
 	return ApiAccountsAddAccountAdminRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AccountsAPIService) AccountsAddAccountAdminExecute(r ApiAccountsAddAccountAdminRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsAddAccountAdmin")
@@ -2969,8 +2956,8 @@ func (a *AccountsAPIService) AccountsAddAccountAdminExecute(r ApiAccountsAddAcco
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2980,8 +2967,8 @@ func (a *AccountsAPIService) AccountsAddAccountAdminExecute(r ApiAccountsAddAcco
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2991,8 +2978,8 @@ func (a *AccountsAPIService) AccountsAddAccountAdminExecute(r ApiAccountsAddAcco
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3002,8 +2989,8 @@ func (a *AccountsAPIService) AccountsAddAccountAdminExecute(r ApiAccountsAddAcco
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3013,8 +3000,8 @@ func (a *AccountsAPIService) AccountsAddAccountAdminExecute(r ApiAccountsAddAcco
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3024,8 +3011,8 @@ func (a *AccountsAPIService) AccountsAddAccountAdminExecute(r ApiAccountsAddAcco
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3034,8 +3021,8 @@ func (a *AccountsAPIService) AccountsAddAccountAdminExecute(r ApiAccountsAddAcco
 }
 
 type ApiAccountsCheckDuplicateEntityRequest struct {
-	ctx                          context.Context
-	ApiService                   *AccountsAPIService
+	ctx context.Context
+	ApiService *AccountsAPIService
 	checkDuplicateAccountCommand *CheckDuplicateAccountCommand
 }
 
@@ -3051,22 +3038,22 @@ func (r ApiAccountsCheckDuplicateEntityRequest) Execute() (*http.Response, error
 /*
 AccountsCheckDuplicateEntity Check duplicate entity
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAccountsCheckDuplicateEntityRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAccountsCheckDuplicateEntityRequest
 */
 func (a *AccountsAPIService) AccountsCheckDuplicateEntity(ctx context.Context) ApiAccountsCheckDuplicateEntityRequest {
 	return ApiAccountsCheckDuplicateEntityRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AccountsAPIService) AccountsCheckDuplicateEntityExecute(r ApiAccountsCheckDuplicateEntityRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsCheckDuplicateEntity")
@@ -3142,8 +3129,8 @@ func (a *AccountsAPIService) AccountsCheckDuplicateEntityExecute(r ApiAccountsCh
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3153,8 +3140,8 @@ func (a *AccountsAPIService) AccountsCheckDuplicateEntityExecute(r ApiAccountsCh
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3164,8 +3151,8 @@ func (a *AccountsAPIService) AccountsCheckDuplicateEntityExecute(r ApiAccountsCh
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3175,8 +3162,8 @@ func (a *AccountsAPIService) AccountsCheckDuplicateEntityExecute(r ApiAccountsCh
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3186,8 +3173,8 @@ func (a *AccountsAPIService) AccountsCheckDuplicateEntityExecute(r ApiAccountsCh
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3197,8 +3184,8 @@ func (a *AccountsAPIService) AccountsCheckDuplicateEntityExecute(r ApiAccountsCh
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3207,8 +3194,8 @@ func (a *AccountsAPIService) AccountsCheckDuplicateEntityExecute(r ApiAccountsCh
 }
 
 type ApiAccountsCreateRequest struct {
-	ctx                  context.Context
-	ApiService           *AccountsAPIService
+	ctx context.Context
+	ApiService *AccountsAPIService
 	createAccountCommand *CreateAccountCommand
 }
 
@@ -3224,25 +3211,24 @@ func (r ApiAccountsCreateRequest) Execute() (int32, *http.Response, error) {
 /*
 AccountsCreate Create account
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAccountsCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAccountsCreateRequest
 */
 func (a *AccountsAPIService) AccountsCreate(ctx context.Context) ApiAccountsCreateRequest {
 	return ApiAccountsCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return int32
+//  @return int32
 func (a *AccountsAPIService) AccountsCreateExecute(r ApiAccountsCreateRequest) (int32, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue int32
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  int32
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsCreate")
@@ -3318,8 +3304,8 @@ func (a *AccountsAPIService) AccountsCreateExecute(r ApiAccountsCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3329,8 +3315,8 @@ func (a *AccountsAPIService) AccountsCreateExecute(r ApiAccountsCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3340,8 +3326,8 @@ func (a *AccountsAPIService) AccountsCreateExecute(r ApiAccountsCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3351,8 +3337,8 @@ func (a *AccountsAPIService) AccountsCreateExecute(r ApiAccountsCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3362,8 +3348,8 @@ func (a *AccountsAPIService) AccountsCreateExecute(r ApiAccountsCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3373,8 +3359,8 @@ func (a *AccountsAPIService) AccountsCreateExecute(r ApiAccountsCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3392,9 +3378,9 @@ func (a *AccountsAPIService) AccountsCreateExecute(r ApiAccountsCreateRequest) (
 }
 
 type ApiAccountsDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AccountsAPIService
-	id         int32
+	id int32
 }
 
 func (r ApiAccountsDeleteRequest) Execute() (*http.Response, error) {
@@ -3404,24 +3390,24 @@ func (r ApiAccountsDeleteRequest) Execute() (*http.Response, error) {
 /*
 AccountsDelete Delete account
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiAccountsDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiAccountsDeleteRequest
 */
 func (a *AccountsAPIService) AccountsDelete(ctx context.Context, id int32) ApiAccountsDeleteRequest {
 	return ApiAccountsDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *AccountsAPIService) AccountsDeleteExecute(r ApiAccountsDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsDelete")
@@ -3496,8 +3482,8 @@ func (a *AccountsAPIService) AccountsDeleteExecute(r ApiAccountsDeleteRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3507,8 +3493,8 @@ func (a *AccountsAPIService) AccountsDeleteExecute(r ApiAccountsDeleteRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3518,8 +3504,8 @@ func (a *AccountsAPIService) AccountsDeleteExecute(r ApiAccountsDeleteRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3529,8 +3515,8 @@ func (a *AccountsAPIService) AccountsDeleteExecute(r ApiAccountsDeleteRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3540,8 +3526,8 @@ func (a *AccountsAPIService) AccountsDeleteExecute(r ApiAccountsDeleteRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3551,8 +3537,8 @@ func (a *AccountsAPIService) AccountsDeleteExecute(r ApiAccountsDeleteRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3561,9 +3547,9 @@ func (a *AccountsAPIService) AccountsDeleteExecute(r ApiAccountsDeleteRequest) (
 }
 
 type ApiAccountsDetailsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AccountsAPIService
-	accountId  int32
+	accountId int32
 }
 
 func (r ApiAccountsDetailsRequest) Execute() (*AccountDetailsDto, *http.Response, error) {
@@ -3573,27 +3559,26 @@ func (r ApiAccountsDetailsRequest) Execute() (*AccountDetailsDto, *http.Response
 /*
 AccountsDetails Get account details by accountId
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param accountId
-	@return ApiAccountsDetailsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accountId
+ @return ApiAccountsDetailsRequest
 */
 func (a *AccountsAPIService) AccountsDetails(ctx context.Context, accountId int32) ApiAccountsDetailsRequest {
 	return ApiAccountsDetailsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		accountId:  accountId,
+		ctx: ctx,
+		accountId: accountId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return AccountDetailsDto
+//  @return AccountDetailsDto
 func (a *AccountsAPIService) AccountsDetailsExecute(r ApiAccountsDetailsRequest) (*AccountDetailsDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *AccountDetailsDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AccountDetailsDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsDetails")
@@ -3668,8 +3653,8 @@ func (a *AccountsAPIService) AccountsDetailsExecute(r ApiAccountsDetailsRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3679,8 +3664,8 @@ func (a *AccountsAPIService) AccountsDetailsExecute(r ApiAccountsDetailsRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3690,8 +3675,8 @@ func (a *AccountsAPIService) AccountsDetailsExecute(r ApiAccountsDetailsRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3701,8 +3686,8 @@ func (a *AccountsAPIService) AccountsDetailsExecute(r ApiAccountsDetailsRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3712,8 +3697,8 @@ func (a *AccountsAPIService) AccountsDetailsExecute(r ApiAccountsDetailsRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3723,8 +3708,8 @@ func (a *AccountsAPIService) AccountsDetailsExecute(r ApiAccountsDetailsRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3742,8 +3727,8 @@ func (a *AccountsAPIService) AccountsDetailsExecute(r ApiAccountsDetailsRequest)
 }
 
 type ApiAccountsDisable2faManagementRequest struct {
-	ctx                           context.Context
-	ApiService                    *AccountsAPIService
+	ctx context.Context
+	ApiService *AccountsAPIService
 	disableTwoFaManagementCommand *DisableTwoFaManagementCommand
 }
 
@@ -3759,22 +3744,22 @@ func (r ApiAccountsDisable2faManagementRequest) Execute() (*http.Response, error
 /*
 AccountsDisable2faManagement Disable 2fa management
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAccountsDisable2faManagementRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAccountsDisable2faManagementRequest
 */
 func (a *AccountsAPIService) AccountsDisable2faManagement(ctx context.Context) ApiAccountsDisable2faManagementRequest {
 	return ApiAccountsDisable2faManagementRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AccountsAPIService) AccountsDisable2faManagementExecute(r ApiAccountsDisable2faManagementRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsDisable2faManagement")
@@ -3850,8 +3835,8 @@ func (a *AccountsAPIService) AccountsDisable2faManagementExecute(r ApiAccountsDi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3861,8 +3846,8 @@ func (a *AccountsAPIService) AccountsDisable2faManagementExecute(r ApiAccountsDi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3872,8 +3857,8 @@ func (a *AccountsAPIService) AccountsDisable2faManagementExecute(r ApiAccountsDi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3883,8 +3868,8 @@ func (a *AccountsAPIService) AccountsDisable2faManagementExecute(r ApiAccountsDi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3894,8 +3879,8 @@ func (a *AccountsAPIService) AccountsDisable2faManagementExecute(r ApiAccountsDi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3905,8 +3890,8 @@ func (a *AccountsAPIService) AccountsDisable2faManagementExecute(r ApiAccountsDi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3915,9 +3900,9 @@ func (a *AccountsAPIService) AccountsDisable2faManagementExecute(r ApiAccountsDi
 }
 
 type ApiAccountsEnable2faManagementRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AccountsAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiAccountsEnable2faManagementRequest) Body(body map[string]interface{}) ApiAccountsEnable2faManagementRequest {
@@ -3932,22 +3917,22 @@ func (r ApiAccountsEnable2faManagementRequest) Execute() (*http.Response, error)
 /*
 AccountsEnable2faManagement Enable 2fa management
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAccountsEnable2faManagementRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAccountsEnable2faManagementRequest
 */
 func (a *AccountsAPIService) AccountsEnable2faManagement(ctx context.Context) ApiAccountsEnable2faManagementRequest {
 	return ApiAccountsEnable2faManagementRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AccountsAPIService) AccountsEnable2faManagementExecute(r ApiAccountsEnable2faManagementRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsEnable2faManagement")
@@ -4023,8 +4008,8 @@ func (a *AccountsAPIService) AccountsEnable2faManagementExecute(r ApiAccountsEna
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4034,8 +4019,8 @@ func (a *AccountsAPIService) AccountsEnable2faManagementExecute(r ApiAccountsEna
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4045,8 +4030,8 @@ func (a *AccountsAPIService) AccountsEnable2faManagementExecute(r ApiAccountsEna
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4056,8 +4041,8 @@ func (a *AccountsAPIService) AccountsEnable2faManagementExecute(r ApiAccountsEna
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4067,8 +4052,8 @@ func (a *AccountsAPIService) AccountsEnable2faManagementExecute(r ApiAccountsEna
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4078,8 +4063,8 @@ func (a *AccountsAPIService) AccountsEnable2faManagementExecute(r ApiAccountsEna
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -4088,11 +4073,11 @@ func (a *AccountsAPIService) AccountsEnable2faManagementExecute(r ApiAccountsEna
 }
 
 type ApiAccountsListAccountsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AccountsAPIService
-	limit      *int32
-	cursorId   *int32
-	search     *string
+	limit *int32
+	cursorId *int32
+	search *string
 }
 
 func (r ApiAccountsListAccountsRequest) Limit(limit int32) ApiAccountsListAccountsRequest {
@@ -4117,25 +4102,24 @@ func (r ApiAccountsListAccountsRequest) Execute() (*AccountListCursorPaginatedRe
 /*
 AccountsListAccounts Retrieve accounts list
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAccountsListAccountsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAccountsListAccountsRequest
 */
 func (a *AccountsAPIService) AccountsListAccounts(ctx context.Context) ApiAccountsListAccountsRequest {
 	return ApiAccountsListAccountsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return AccountListCursorPaginatedResponse
+//  @return AccountListCursorPaginatedResponse
 func (a *AccountsAPIService) AccountsListAccountsExecute(r ApiAccountsListAccountsRequest) (*AccountListCursorPaginatedResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *AccountListCursorPaginatedResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AccountListCursorPaginatedResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsListAccounts")
@@ -4218,8 +4202,8 @@ func (a *AccountsAPIService) AccountsListAccountsExecute(r ApiAccountsListAccoun
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4229,8 +4213,8 @@ func (a *AccountsAPIService) AccountsListAccountsExecute(r ApiAccountsListAccoun
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4240,8 +4224,8 @@ func (a *AccountsAPIService) AccountsListAccountsExecute(r ApiAccountsListAccoun
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4251,8 +4235,8 @@ func (a *AccountsAPIService) AccountsListAccountsExecute(r ApiAccountsListAccoun
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4262,8 +4246,8 @@ func (a *AccountsAPIService) AccountsListAccountsExecute(r ApiAccountsListAccoun
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4273,8 +4257,8 @@ func (a *AccountsAPIService) AccountsListAccountsExecute(r ApiAccountsListAccoun
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4292,8 +4276,8 @@ func (a *AccountsAPIService) AccountsListAccountsExecute(r ApiAccountsListAccoun
 }
 
 type ApiAccountsTransferOwnershipRequest struct {
-	ctx                      context.Context
-	ApiService               *AccountsAPIService
+	ctx context.Context
+	ApiService *AccountsAPIService
 	transferOwnershipCommand *TransferOwnershipCommand
 }
 
@@ -4309,22 +4293,22 @@ func (r ApiAccountsTransferOwnershipRequest) Execute() (*http.Response, error) {
 /*
 AccountsTransferOwnership Transfer ownership
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAccountsTransferOwnershipRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAccountsTransferOwnershipRequest
 */
 func (a *AccountsAPIService) AccountsTransferOwnership(ctx context.Context) ApiAccountsTransferOwnershipRequest {
 	return ApiAccountsTransferOwnershipRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AccountsAPIService) AccountsTransferOwnershipExecute(r ApiAccountsTransferOwnershipRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsTransferOwnership")
@@ -4400,8 +4384,8 @@ func (a *AccountsAPIService) AccountsTransferOwnershipExecute(r ApiAccountsTrans
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4411,8 +4395,8 @@ func (a *AccountsAPIService) AccountsTransferOwnershipExecute(r ApiAccountsTrans
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4422,8 +4406,8 @@ func (a *AccountsAPIService) AccountsTransferOwnershipExecute(r ApiAccountsTrans
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4433,8 +4417,8 @@ func (a *AccountsAPIService) AccountsTransferOwnershipExecute(r ApiAccountsTrans
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4444,8 +4428,8 @@ func (a *AccountsAPIService) AccountsTransferOwnershipExecute(r ApiAccountsTrans
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4455,8 +4439,8 @@ func (a *AccountsAPIService) AccountsTransferOwnershipExecute(r ApiAccountsTrans
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -4465,8 +4449,8 @@ func (a *AccountsAPIService) AccountsTransferOwnershipExecute(r ApiAccountsTrans
 }
 
 type ApiAccountsUpdateRequest struct {
-	ctx                  context.Context
-	ApiService           *AccountsAPIService
+	ctx context.Context
+	ApiService *AccountsAPIService
 	updateAccountCommand *UpdateAccountCommand
 }
 
@@ -4482,25 +4466,24 @@ func (r ApiAccountsUpdateRequest) Execute() (int32, *http.Response, error) {
 /*
 AccountsUpdate Update account
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAccountsUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAccountsUpdateRequest
 */
 func (a *AccountsAPIService) AccountsUpdate(ctx context.Context) ApiAccountsUpdateRequest {
 	return ApiAccountsUpdateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return int32
+//  @return int32
 func (a *AccountsAPIService) AccountsUpdateExecute(r ApiAccountsUpdateRequest) (int32, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue int32
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  int32
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.AccountsUpdate")
@@ -4576,8 +4559,8 @@ func (a *AccountsAPIService) AccountsUpdateExecute(r ApiAccountsUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -4587,8 +4570,8 @@ func (a *AccountsAPIService) AccountsUpdateExecute(r ApiAccountsUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -4598,8 +4581,8 @@ func (a *AccountsAPIService) AccountsUpdateExecute(r ApiAccountsUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4609,8 +4592,8 @@ func (a *AccountsAPIService) AccountsUpdateExecute(r ApiAccountsUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4620,8 +4603,8 @@ func (a *AccountsAPIService) AccountsUpdateExecute(r ApiAccountsUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -4631,8 +4614,8 @@ func (a *AccountsAPIService) AccountsUpdateExecute(r ApiAccountsUpdateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

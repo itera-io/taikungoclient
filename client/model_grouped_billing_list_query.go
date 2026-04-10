@@ -20,9 +20,9 @@ var _ MappedNullable = &GroupedBillingListQuery{}
 
 // GroupedBillingListQuery struct for GroupedBillingListQuery
 type GroupedBillingListQuery struct {
-	OrganizationId       NullableInt32  `json:"organizationId,omitempty"`
-	PeriodDuration       *BillingPeriod `json:"periodDuration,omitempty"`
-	IsDeleted            NullableBool   `json:"isDeleted,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	PeriodDuration *BillingPeriod `json:"periodDuration,omitempty"`
+	IsDeleted NullableBool `json:"isDeleted,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,7 +77,6 @@ func (o *GroupedBillingListQuery) HasOrganizationId() bool {
 func (o *GroupedBillingListQuery) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *GroupedBillingListQuery) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -152,7 +151,6 @@ func (o *GroupedBillingListQuery) HasIsDeleted() bool {
 func (o *GroupedBillingListQuery) SetIsDeleted(v bool) {
 	o.IsDeleted.Set(&v)
 }
-
 // SetIsDeletedNil sets the value for IsDeleted to be an explicit nil
 func (o *GroupedBillingListQuery) SetIsDeletedNil() {
 	o.IsDeleted.Set(nil)
@@ -164,7 +162,7 @@ func (o *GroupedBillingListQuery) UnsetIsDeleted() {
 }
 
 func (o GroupedBillingListQuery) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -248,3 +246,5 @@ func (v *NullableGroupedBillingListQuery) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

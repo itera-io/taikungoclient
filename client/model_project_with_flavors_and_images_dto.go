@@ -21,12 +21,12 @@ var _ MappedNullable = &ProjectWithFlavorsAndImagesDto{}
 
 // ProjectWithFlavorsAndImagesDto struct for ProjectWithFlavorsAndImagesDto
 type ProjectWithFlavorsAndImagesDto struct {
-	Id                   int32          `json:"id"`
-	Name                 NullableString `json:"name"`
-	Flavors              []string       `json:"flavors"`
-	Images               []string       `json:"images"`
-	ImageNames           []string       `json:"imageNames"`
-	IsReady              bool           `json:"isReady"`
+	Id int32 `json:"id"`
+	Name NullableString `json:"name"`
+	Flavors []string `json:"flavors"`
+	Images []string `json:"images"`
+	ImageNames []string `json:"imageNames"`
+	IsReady bool `json:"isReady"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -208,7 +208,7 @@ func (o *ProjectWithFlavorsAndImagesDto) SetIsReady(v bool) {
 }
 
 func (o ProjectWithFlavorsAndImagesDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -255,10 +255,10 @@ func (o *ProjectWithFlavorsAndImagesDto) UnmarshalJSON(data []byte) (err error) 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -324,3 +324,5 @@ func (v *NullableProjectWithFlavorsAndImagesDto) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

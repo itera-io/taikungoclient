@@ -20,10 +20,10 @@ var _ MappedNullable = &HypervisorListCommand{}
 
 // HypervisorListCommand struct for HypervisorListCommand
 type HypervisorListCommand struct {
-	Url                  NullableString `json:"url,omitempty"`
-	TokenId              NullableString `json:"tokenId,omitempty"`
-	TokenSecret          NullableString `json:"tokenSecret,omitempty"`
-	CloudId              NullableInt32  `json:"cloudId,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	TokenId NullableString `json:"tokenId,omitempty"`
+	TokenSecret NullableString `json:"tokenSecret,omitempty"`
+	CloudId NullableInt32 `json:"cloudId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,7 +78,6 @@ func (o *HypervisorListCommand) HasUrl() bool {
 func (o *HypervisorListCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *HypervisorListCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -121,7 +120,6 @@ func (o *HypervisorListCommand) HasTokenId() bool {
 func (o *HypervisorListCommand) SetTokenId(v string) {
 	o.TokenId.Set(&v)
 }
-
 // SetTokenIdNil sets the value for TokenId to be an explicit nil
 func (o *HypervisorListCommand) SetTokenIdNil() {
 	o.TokenId.Set(nil)
@@ -164,7 +162,6 @@ func (o *HypervisorListCommand) HasTokenSecret() bool {
 func (o *HypervisorListCommand) SetTokenSecret(v string) {
 	o.TokenSecret.Set(&v)
 }
-
 // SetTokenSecretNil sets the value for TokenSecret to be an explicit nil
 func (o *HypervisorListCommand) SetTokenSecretNil() {
 	o.TokenSecret.Set(nil)
@@ -207,7 +204,6 @@ func (o *HypervisorListCommand) HasCloudId() bool {
 func (o *HypervisorListCommand) SetCloudId(v int32) {
 	o.CloudId.Set(&v)
 }
-
 // SetCloudIdNil sets the value for CloudId to be an explicit nil
 func (o *HypervisorListCommand) SetCloudIdNil() {
 	o.CloudId.Set(nil)
@@ -219,7 +215,7 @@ func (o *HypervisorListCommand) UnsetCloudId() {
 }
 
 func (o HypervisorListCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -307,3 +303,5 @@ func (v *NullableHypervisorListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

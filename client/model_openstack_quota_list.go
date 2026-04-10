@@ -20,10 +20,10 @@ var _ MappedNullable = &OpenstackQuotaList{}
 
 // OpenstackQuotaList struct for OpenstackQuotaList
 type OpenstackQuotaList struct {
-	Compute              *OpenstackComputeQuotaDto `json:"compute,omitempty"`
-	Volume               *OpenstackVolumeQuotaDto  `json:"volume,omitempty"`
-	Network              *OpenstackNetworkDto      `json:"network,omitempty"`
-	IsInfra              *bool                     `json:"isInfra,omitempty"`
+	Compute *OpenstackComputeQuotaDto `json:"compute,omitempty"`
+	Volume *OpenstackVolumeQuotaDto `json:"volume,omitempty"`
+	Network *OpenstackNetworkDto `json:"network,omitempty"`
+	IsInfra *bool `json:"isInfra,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -175,7 +175,7 @@ func (o *OpenstackQuotaList) SetIsInfra(v bool) {
 }
 
 func (o OpenstackQuotaList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -263,3 +263,5 @@ func (v *NullableOpenstackQuotaList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

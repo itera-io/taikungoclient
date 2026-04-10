@@ -20,10 +20,10 @@ var _ MappedNullable = &NetworkPolicyListDto{}
 
 // NetworkPolicyListDto struct for NetworkPolicyListDto
 type NetworkPolicyListDto struct {
-	Name                 NullableString `json:"name,omitempty"`
-	Namespace            NullableString `json:"namespace,omitempty"`
-	PodSelector          NullableString `json:"podSelector,omitempty"`
-	CreatedAt            NullableString `json:"createdAt,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	PodSelector NullableString `json:"podSelector,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,7 +78,6 @@ func (o *NetworkPolicyListDto) HasName() bool {
 func (o *NetworkPolicyListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *NetworkPolicyListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -121,7 +120,6 @@ func (o *NetworkPolicyListDto) HasNamespace() bool {
 func (o *NetworkPolicyListDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *NetworkPolicyListDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -164,7 +162,6 @@ func (o *NetworkPolicyListDto) HasPodSelector() bool {
 func (o *NetworkPolicyListDto) SetPodSelector(v string) {
 	o.PodSelector.Set(&v)
 }
-
 // SetPodSelectorNil sets the value for PodSelector to be an explicit nil
 func (o *NetworkPolicyListDto) SetPodSelectorNil() {
 	o.PodSelector.Set(nil)
@@ -207,7 +204,6 @@ func (o *NetworkPolicyListDto) HasCreatedAt() bool {
 func (o *NetworkPolicyListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *NetworkPolicyListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -219,7 +215,7 @@ func (o *NetworkPolicyListDto) UnsetCreatedAt() {
 }
 
 func (o NetworkPolicyListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -307,3 +303,5 @@ func (v *NullableNetworkPolicyListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

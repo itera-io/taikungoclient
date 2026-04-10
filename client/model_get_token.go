@@ -13,8 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
+	"fmt"
 )
 
 // checks if the GetToken type satisfies the MappedNullable interface at compile time
@@ -22,12 +22,12 @@ var _ MappedNullable = &GetToken{}
 
 // GetToken struct for GetToken
 type GetToken struct {
-	Token                  string         `json:"token"`
-	RefreshToken           NullableString `json:"refreshToken,omitempty"`
-	RefreshTokenExpireTime *time.Time     `json:"refreshTokenExpireTime,omitempty"`
-	TwoFaEnabled           NullableBool   `json:"twoFaEnabled,omitempty"`
-	IsForcedToEnabled2Fa   NullableBool   `json:"isForcedToEnabled2Fa,omitempty"`
-	AdditionalProperties   map[string]interface{}
+	Token string `json:"token"`
+	RefreshToken NullableString `json:"refreshToken,omitempty"`
+	RefreshTokenExpireTime *time.Time `json:"refreshTokenExpireTime,omitempty"`
+	TwoFaEnabled NullableBool `json:"twoFaEnabled,omitempty"`
+	IsForcedToEnabled2Fa NullableBool `json:"isForcedToEnabled2Fa,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GetToken GetToken
@@ -106,7 +106,6 @@ func (o *GetToken) HasRefreshToken() bool {
 func (o *GetToken) SetRefreshToken(v string) {
 	o.RefreshToken.Set(&v)
 }
-
 // SetRefreshTokenNil sets the value for RefreshToken to be an explicit nil
 func (o *GetToken) SetRefreshTokenNil() {
 	o.RefreshToken.Set(nil)
@@ -181,7 +180,6 @@ func (o *GetToken) HasTwoFaEnabled() bool {
 func (o *GetToken) SetTwoFaEnabled(v bool) {
 	o.TwoFaEnabled.Set(&v)
 }
-
 // SetTwoFaEnabledNil sets the value for TwoFaEnabled to be an explicit nil
 func (o *GetToken) SetTwoFaEnabledNil() {
 	o.TwoFaEnabled.Set(nil)
@@ -224,7 +222,6 @@ func (o *GetToken) HasIsForcedToEnabled2Fa() bool {
 func (o *GetToken) SetIsForcedToEnabled2Fa(v bool) {
 	o.IsForcedToEnabled2Fa.Set(&v)
 }
-
 // SetIsForcedToEnabled2FaNil sets the value for IsForcedToEnabled2Fa to be an explicit nil
 func (o *GetToken) SetIsForcedToEnabled2FaNil() {
 	o.IsForcedToEnabled2Fa.Set(nil)
@@ -236,7 +233,7 @@ func (o *GetToken) UnsetIsForcedToEnabled2Fa() {
 }
 
 func (o GetToken) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -279,10 +276,10 @@ func (o *GetToken) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -347,3 +344,5 @@ func (v *NullableGetToken) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

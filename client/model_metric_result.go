@@ -20,9 +20,9 @@ var _ MappedNullable = &MetricResult{}
 
 // MetricResult struct for MetricResult
 type MetricResult struct {
-	Metric               map[string]string `json:"metric,omitempty"`
-	Value                interface{}       `json:"value,omitempty"`
-	Values               [][]float64       `json:"values,omitempty"`
+	Metric map[string]string `json:"metric,omitempty"`
+	Value interface{} `json:"value,omitempty"`
+	Values [][]float64 `json:"values,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -145,7 +145,7 @@ func (o *MetricResult) SetValues(v [][]float64) {
 }
 
 func (o MetricResult) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -229,3 +229,5 @@ func (v *NullableMetricResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

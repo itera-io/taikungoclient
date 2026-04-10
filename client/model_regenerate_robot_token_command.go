@@ -21,8 +21,8 @@ var _ MappedNullable = &RegenerateRobotTokenCommand{}
 
 // RegenerateRobotTokenCommand struct for RegenerateRobotTokenCommand
 type RegenerateRobotTokenCommand struct {
-	Id                   NullableString `json:"id,omitempty"`
-	ExpiresAt            NullableTime   `json:"expiresAt,omitempty"`
+	Id NullableString `json:"id,omitempty"`
+	ExpiresAt NullableTime `json:"expiresAt,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,7 +77,6 @@ func (o *RegenerateRobotTokenCommand) HasId() bool {
 func (o *RegenerateRobotTokenCommand) SetId(v string) {
 	o.Id.Set(&v)
 }
-
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *RegenerateRobotTokenCommand) SetIdNil() {
 	o.Id.Set(nil)
@@ -120,7 +119,6 @@ func (o *RegenerateRobotTokenCommand) HasExpiresAt() bool {
 func (o *RegenerateRobotTokenCommand) SetExpiresAt(v time.Time) {
 	o.ExpiresAt.Set(&v)
 }
-
 // SetExpiresAtNil sets the value for ExpiresAt to be an explicit nil
 func (o *RegenerateRobotTokenCommand) SetExpiresAtNil() {
 	o.ExpiresAt.Set(nil)
@@ -132,7 +130,7 @@ func (o *RegenerateRobotTokenCommand) UnsetExpiresAt() {
 }
 
 func (o RegenerateRobotTokenCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -212,3 +210,5 @@ func (v *NullableRegenerateRobotTokenCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

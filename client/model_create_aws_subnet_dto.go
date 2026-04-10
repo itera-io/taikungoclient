@@ -20,8 +20,8 @@ var _ MappedNullable = &CreateAwsSubnetDto{}
 
 // CreateAwsSubnetDto struct for CreateAwsSubnetDto
 type CreateAwsSubnetDto struct {
-	AwsSubnetId          NullableString `json:"awsSubnetId,omitempty"`
-	SubnetType           *AccessLevel   `json:"subnetType,omitempty"`
+	AwsSubnetId NullableString `json:"awsSubnetId,omitempty"`
+	SubnetType *AccessLevel `json:"subnetType,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,6 @@ func (o *CreateAwsSubnetDto) HasAwsSubnetId() bool {
 func (o *CreateAwsSubnetDto) SetAwsSubnetId(v string) {
 	o.AwsSubnetId.Set(&v)
 }
-
 // SetAwsSubnetIdNil sets the value for AwsSubnetId to be an explicit nil
 func (o *CreateAwsSubnetDto) SetAwsSubnetIdNil() {
 	o.AwsSubnetId.Set(nil)
@@ -120,7 +119,7 @@ func (o *CreateAwsSubnetDto) SetSubnetType(v AccessLevel) {
 }
 
 func (o CreateAwsSubnetDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -200,3 +199,5 @@ func (v *NullableCreateAwsSubnetDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

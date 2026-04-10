@@ -20,8 +20,8 @@ var _ MappedNullable = &GetCatalogAppValueCommand{}
 
 // GetCatalogAppValueCommand struct for GetCatalogAppValueCommand
 type GetCatalogAppValueCommand struct {
-	PackageId            NullableString `json:"packageId,omitempty"`
-	Version              NullableString `json:"version,omitempty"`
+	PackageId NullableString `json:"packageId,omitempty"`
+	Version NullableString `json:"version,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,6 @@ func (o *GetCatalogAppValueCommand) HasPackageId() bool {
 func (o *GetCatalogAppValueCommand) SetPackageId(v string) {
 	o.PackageId.Set(&v)
 }
-
 // SetPackageIdNil sets the value for PackageId to be an explicit nil
 func (o *GetCatalogAppValueCommand) SetPackageIdNil() {
 	o.PackageId.Set(nil)
@@ -119,7 +118,6 @@ func (o *GetCatalogAppValueCommand) HasVersion() bool {
 func (o *GetCatalogAppValueCommand) SetVersion(v string) {
 	o.Version.Set(&v)
 }
-
 // SetVersionNil sets the value for Version to be an explicit nil
 func (o *GetCatalogAppValueCommand) SetVersionNil() {
 	o.Version.Set(nil)
@@ -131,7 +129,7 @@ func (o *GetCatalogAppValueCommand) UnsetVersion() {
 }
 
 func (o GetCatalogAppValueCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -211,3 +209,5 @@ func (v *NullableGetCatalogAppValueCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

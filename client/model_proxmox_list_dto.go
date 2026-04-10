@@ -21,26 +21,26 @@ var _ MappedNullable = &ProxmoxListDto{}
 
 // ProxmoxListDto struct for ProxmoxListDto
 type ProxmoxListDto struct {
-	Id                   int32                   `json:"id"`
-	ProjectCount         int32                   `json:"projectCount"`
-	IsLocked             bool                    `json:"isLocked"`
-	Name                 NullableString          `json:"name"`
-	Projects             []CommonDropdownDto     `json:"projects"`
-	CreatedBy            NullableString          `json:"createdBy"`
-	CreatedAt            NullableString          `json:"createdAt"`
-	LastModified         NullableString          `json:"lastModified"`
-	LastModifiedBy       NullableString          `json:"lastModifiedBy"`
-	IsDefault            bool                    `json:"isDefault"`
-	OrganizationId       int32                   `json:"organizationId"`
-	OrganizationName     NullableString          `json:"organizationName"`
-	ContinentName        NullableString          `json:"continentName"`
-	Hypervisors          []CommonDropdownDto     `json:"hypervisors"`
-	TokenId              NullableString          `json:"tokenId"`
-	Url                  NullableString          `json:"url"`
-	Storage              NullableString          `json:"storage"`
-	VmTemplateName       NullableString          `json:"vmTemplateName"`
-	ProxmoxNetworks      []ProxmoxNetworkListDto `json:"proxmoxNetworks"`
-	SkipTlsFlag          bool                    `json:"skipTlsFlag"`
+	Id int32 `json:"id"`
+	ProjectCount int32 `json:"projectCount"`
+	IsLocked bool `json:"isLocked"`
+	Name NullableString `json:"name"`
+	Projects []CommonDropdownDto `json:"projects"`
+	CreatedBy NullableString `json:"createdBy"`
+	CreatedAt NullableString `json:"createdAt"`
+	LastModified NullableString `json:"lastModified"`
+	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	IsDefault bool `json:"isDefault"`
+	OrganizationId int32 `json:"organizationId"`
+	OrganizationName NullableString `json:"organizationName"`
+	ContinentName NullableString `json:"continentName"`
+	Hypervisors []CommonDropdownDto `json:"hypervisors"`
+	TokenId NullableString `json:"tokenId"`
+	Url NullableString `json:"url"`
+	Storage NullableString `json:"storage"`
+	VmTemplateName NullableString `json:"vmTemplateName"`
+	ProxmoxNetworks []ProxmoxNetworkListDto `json:"proxmoxNetworks"`
+	SkipTlsFlag bool `json:"skipTlsFlag"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -592,7 +592,7 @@ func (o *ProxmoxListDto) SetSkipTlsFlag(v bool) {
 }
 
 func (o ProxmoxListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -667,10 +667,10 @@ func (o *ProxmoxListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -750,3 +750,5 @@ func (v *NullableProxmoxListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,9 +20,9 @@ var _ MappedNullable = &KubernetesProfilesSearchCommand{}
 
 // KubernetesProfilesSearchCommand struct for KubernetesProfilesSearchCommand
 type KubernetesProfilesSearchCommand struct {
-	Limit                NullableInt32  `json:"limit,omitempty"`
-	Offset               NullableInt32  `json:"offset,omitempty"`
-	SearchTerm           NullableString `json:"searchTerm,omitempty"`
+	Limit NullableInt32 `json:"limit,omitempty"`
+	Offset NullableInt32 `json:"offset,omitempty"`
+	SearchTerm NullableString `json:"searchTerm,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,7 +77,6 @@ func (o *KubernetesProfilesSearchCommand) HasLimit() bool {
 func (o *KubernetesProfilesSearchCommand) SetLimit(v int32) {
 	o.Limit.Set(&v)
 }
-
 // SetLimitNil sets the value for Limit to be an explicit nil
 func (o *KubernetesProfilesSearchCommand) SetLimitNil() {
 	o.Limit.Set(nil)
@@ -120,7 +119,6 @@ func (o *KubernetesProfilesSearchCommand) HasOffset() bool {
 func (o *KubernetesProfilesSearchCommand) SetOffset(v int32) {
 	o.Offset.Set(&v)
 }
-
 // SetOffsetNil sets the value for Offset to be an explicit nil
 func (o *KubernetesProfilesSearchCommand) SetOffsetNil() {
 	o.Offset.Set(nil)
@@ -163,7 +161,6 @@ func (o *KubernetesProfilesSearchCommand) HasSearchTerm() bool {
 func (o *KubernetesProfilesSearchCommand) SetSearchTerm(v string) {
 	o.SearchTerm.Set(&v)
 }
-
 // SetSearchTermNil sets the value for SearchTerm to be an explicit nil
 func (o *KubernetesProfilesSearchCommand) SetSearchTermNil() {
 	o.SearchTerm.Set(nil)
@@ -175,7 +172,7 @@ func (o *KubernetesProfilesSearchCommand) UnsetSearchTerm() {
 }
 
 func (o KubernetesProfilesSearchCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -259,3 +256,5 @@ func (v *NullableKubernetesProfilesSearchCommand) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

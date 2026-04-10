@@ -20,7 +20,7 @@ var _ MappedNullable = &DowngradeUserCommand{}
 
 // DowngradeUserCommand struct for DowngradeUserCommand
 type DowngradeUserCommand struct {
-	UserId               NullableString `json:"userId,omitempty"`
+	UserId NullableString `json:"userId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,7 +75,6 @@ func (o *DowngradeUserCommand) HasUserId() bool {
 func (o *DowngradeUserCommand) SetUserId(v string) {
 	o.UserId.Set(&v)
 }
-
 // SetUserIdNil sets the value for UserId to be an explicit nil
 func (o *DowngradeUserCommand) SetUserIdNil() {
 	o.UserId.Set(nil)
@@ -87,7 +86,7 @@ func (o *DowngradeUserCommand) UnsetUserId() {
 }
 
 func (o DowngradeUserCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -163,3 +162,5 @@ func (v *NullableDowngradeUserCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

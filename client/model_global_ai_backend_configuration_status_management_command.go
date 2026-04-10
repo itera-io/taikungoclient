@@ -20,8 +20,8 @@ var _ MappedNullable = &GlobalAiBackendConfigurationStatusManagementCommand{}
 
 // GlobalAiBackendConfigurationStatusManagementCommand struct for GlobalAiBackendConfigurationStatusManagementCommand
 type GlobalAiBackendConfigurationStatusManagementCommand struct {
-	Id                   *int32         `json:"id,omitempty"`
-	Mode                 NullableString `json:"mode,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Mode NullableString `json:"mode,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,7 +108,6 @@ func (o *GlobalAiBackendConfigurationStatusManagementCommand) HasMode() bool {
 func (o *GlobalAiBackendConfigurationStatusManagementCommand) SetMode(v string) {
 	o.Mode.Set(&v)
 }
-
 // SetModeNil sets the value for Mode to be an explicit nil
 func (o *GlobalAiBackendConfigurationStatusManagementCommand) SetModeNil() {
 	o.Mode.Set(nil)
@@ -120,7 +119,7 @@ func (o *GlobalAiBackendConfigurationStatusManagementCommand) UnsetMode() {
 }
 
 func (o GlobalAiBackendConfigurationStatusManagementCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -200,3 +199,5 @@ func (v *NullableGlobalAiBackendConfigurationStatusManagementCommand) UnmarshalJ
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

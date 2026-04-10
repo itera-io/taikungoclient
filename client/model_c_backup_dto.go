@@ -13,8 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
+	"fmt"
 )
 
 // checks if the CBackupDto type satisfies the MappedNullable interface at compile time
@@ -22,13 +22,13 @@ var _ MappedNullable = &CBackupDto{}
 
 // CBackupDto struct for CBackupDto
 type CBackupDto struct {
-	MetadataName         string         `json:"metadataName"`
-	CreatedAt            NullableTime   `json:"createdAt"`
-	Expiration           NullableTime   `json:"expiration"`
-	ScheduleName         NullableString `json:"scheduleName"`
-	Namespace            string         `json:"namespace"`
-	Location             NullableString `json:"location"`
-	Phase                NullableString `json:"phase"`
+	MetadataName string `json:"metadataName"`
+	CreatedAt NullableTime `json:"createdAt"`
+	Expiration NullableTime `json:"expiration"`
+	ScheduleName NullableString `json:"scheduleName"`
+	Namespace string `json:"namespace"`
+	Location NullableString `json:"location"`
+	Phase NullableString `json:"phase"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -237,7 +237,7 @@ func (o *CBackupDto) SetPhase(v string) {
 }
 
 func (o CBackupDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -280,10 +280,10 @@ func (o *CBackupDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -350,3 +350,5 @@ func (v *NullableCBackupDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

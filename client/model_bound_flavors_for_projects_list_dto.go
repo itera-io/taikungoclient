@@ -21,23 +21,23 @@ var _ MappedNullable = &BoundFlavorsForProjectsListDto{}
 
 // BoundFlavorsForProjectsListDto struct for BoundFlavorsForProjectsListDto
 type BoundFlavorsForProjectsListDto struct {
-	Id                     int32          `json:"id"`
-	Name                   string         `json:"name"`
-	Cpu                    int32          `json:"cpu"`
-	Ram                    float64        `json:"ram"`
-	ProjectId              NullableInt32  `json:"projectId"`
-	ProjectName            string         `json:"projectName"`
-	MaxDataDiskCount       NullableInt32  `json:"maxDataDiskCount"`
-	ExistsLinuxSpotPrice   bool           `json:"existsLinuxSpotPrice"`
-	ExistsWindowsSpotPrice bool           `json:"existsWindowsSpotPrice"`
-	LinuxSpotPrice         NullableString `json:"linuxSpotPrice"`
-	LinuxPrice             NullableString `json:"linuxPrice"`
-	WindowsSpotPrice       NullableString `json:"windowsSpotPrice"`
-	WindowsPrice           NullableString `json:"windowsPrice"`
-	HasGpuSupport          *bool          `json:"hasGpuSupport,omitempty"`
-	CloudType              CloudType      `json:"cloudType"`
-	LocalDiskSize          *int32         `json:"localDiskSize,omitempty"`
-	AdditionalProperties   map[string]interface{}
+	Id int32 `json:"id"`
+	Name string `json:"name"`
+	Cpu int32 `json:"cpu"`
+	Ram float64 `json:"ram"`
+	ProjectId NullableInt32 `json:"projectId"`
+	ProjectName string `json:"projectName"`
+	MaxDataDiskCount NullableInt32 `json:"maxDataDiskCount"`
+	ExistsLinuxSpotPrice bool `json:"existsLinuxSpotPrice"`
+	ExistsWindowsSpotPrice bool `json:"existsWindowsSpotPrice"`
+	LinuxSpotPrice NullableString `json:"linuxSpotPrice"`
+	LinuxPrice NullableString `json:"linuxPrice"`
+	WindowsSpotPrice NullableString `json:"windowsSpotPrice"`
+	WindowsPrice NullableString `json:"windowsPrice"`
+	HasGpuSupport *bool `json:"hasGpuSupport,omitempty"`
+	CloudType CloudType `json:"cloudType"`
+	LocalDiskSize *int32 `json:"localDiskSize,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _BoundFlavorsForProjectsListDto BoundFlavorsForProjectsListDto
@@ -486,7 +486,7 @@ func (o *BoundFlavorsForProjectsListDto) SetLocalDiskSize(v int32) {
 }
 
 func (o BoundFlavorsForProjectsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -549,10 +549,10 @@ func (o *BoundFlavorsForProjectsListDto) UnmarshalJSON(data []byte) (err error) 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -628,3 +628,5 @@ func (v *NullableBoundFlavorsForProjectsListDto) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

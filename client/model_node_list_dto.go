@@ -20,11 +20,11 @@ var _ MappedNullable = &NodeListDto{}
 
 // NodeListDto struct for NodeListDto
 type NodeListDto struct {
-	State                NullableString `json:"state,omitempty"`
-	Name                 NullableString `json:"name,omitempty"`
-	Role                 NullableString `json:"role,omitempty"`
-	Version              NullableString `json:"version,omitempty"`
-	Ip                   NullableString `json:"ip,omitempty"`
+	State NullableString `json:"state,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Role NullableString `json:"role,omitempty"`
+	Version NullableString `json:"version,omitempty"`
+	Ip NullableString `json:"ip,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -79,7 +79,6 @@ func (o *NodeListDto) HasState() bool {
 func (o *NodeListDto) SetState(v string) {
 	o.State.Set(&v)
 }
-
 // SetStateNil sets the value for State to be an explicit nil
 func (o *NodeListDto) SetStateNil() {
 	o.State.Set(nil)
@@ -122,7 +121,6 @@ func (o *NodeListDto) HasName() bool {
 func (o *NodeListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *NodeListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -165,7 +163,6 @@ func (o *NodeListDto) HasRole() bool {
 func (o *NodeListDto) SetRole(v string) {
 	o.Role.Set(&v)
 }
-
 // SetRoleNil sets the value for Role to be an explicit nil
 func (o *NodeListDto) SetRoleNil() {
 	o.Role.Set(nil)
@@ -208,7 +205,6 @@ func (o *NodeListDto) HasVersion() bool {
 func (o *NodeListDto) SetVersion(v string) {
 	o.Version.Set(&v)
 }
-
 // SetVersionNil sets the value for Version to be an explicit nil
 func (o *NodeListDto) SetVersionNil() {
 	o.Version.Set(nil)
@@ -251,7 +247,6 @@ func (o *NodeListDto) HasIp() bool {
 func (o *NodeListDto) SetIp(v string) {
 	o.Ip.Set(&v)
 }
-
 // SetIpNil sets the value for Ip to be an explicit nil
 func (o *NodeListDto) SetIpNil() {
 	o.Ip.Set(nil)
@@ -263,7 +258,7 @@ func (o *NodeListDto) UnsetIp() {
 }
 
 func (o NodeListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -355,3 +350,5 @@ func (v *NullableNodeListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

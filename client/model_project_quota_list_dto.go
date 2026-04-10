@@ -21,14 +21,14 @@ var _ MappedNullable = &ProjectQuotaListDto{}
 
 // ProjectQuotaListDto struct for ProjectQuotaListDto
 type ProjectQuotaListDto struct {
-	ServerCpu            int64          `json:"serverCpu"`
-	ServerRam            float64        `json:"serverRam"`
-	ServerDiskSize       float64        `json:"serverDiskSize"`
-	VmCpu                int64          `json:"vmCpu"`
-	VmRam                float64        `json:"vmRam"`
-	VmVolumeSize         float64        `json:"vmVolumeSize"`
-	ProjectId            int32          `json:"projectId"`
-	ProjectName          NullableString `json:"projectName"`
+	ServerCpu int64 `json:"serverCpu"`
+	ServerRam float64 `json:"serverRam"`
+	ServerDiskSize float64 `json:"serverDiskSize"`
+	VmCpu int64 `json:"vmCpu"`
+	VmRam float64 `json:"vmRam"`
+	VmVolumeSize float64 `json:"vmVolumeSize"`
+	ProjectId int32 `json:"projectId"`
+	ProjectName NullableString `json:"projectName"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -254,7 +254,7 @@ func (o *ProjectQuotaListDto) SetProjectName(v string) {
 }
 
 func (o ProjectQuotaListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -299,10 +299,10 @@ func (o *ProjectQuotaListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -370,3 +370,5 @@ func (v *NullableProjectQuotaListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -21,12 +21,12 @@ var _ MappedNullable = &AllowedHostListDto{}
 
 // AllowedHostListDto struct for AllowedHostListDto
 type AllowedHostListDto struct {
-	Id                   int32          `json:"id"`
-	Description          NullableString `json:"description"`
-	IpAddress            string         `json:"ipAddress"`
-	MaskBits             int32          `json:"maskBits"`
-	AccessProfileId      int32          `json:"accessProfileId"`
-	AccessProfileName    string         `json:"accessProfileName"`
+	Id int32 `json:"id"`
+	Description NullableString `json:"description"`
+	IpAddress string `json:"ipAddress"`
+	MaskBits int32 `json:"maskBits"`
+	AccessProfileId int32 `json:"accessProfileId"`
+	AccessProfileName string `json:"accessProfileName"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -202,7 +202,7 @@ func (o *AllowedHostListDto) SetAccessProfileName(v string) {
 }
 
 func (o AllowedHostListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -243,10 +243,10 @@ func (o *AllowedHostListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -312,3 +312,5 @@ func (v *NullableAllowedHostListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

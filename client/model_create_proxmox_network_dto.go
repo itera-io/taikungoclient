@@ -20,12 +20,12 @@ var _ MappedNullable = &CreateProxmoxNetworkDto{}
 
 // CreateProxmoxNetworkDto struct for CreateProxmoxNetworkDto
 type CreateProxmoxNetworkDto struct {
-	Bridge               NullableString `json:"bridge,omitempty"`
-	Gateway              NullableString `json:"gateway,omitempty"`
-	IpAddress            NullableString `json:"ipAddress,omitempty"`
-	NetMask              *int32         `json:"netMask,omitempty"`
+	Bridge NullableString `json:"bridge,omitempty"`
+	Gateway NullableString `json:"gateway,omitempty"`
+	IpAddress NullableString `json:"ipAddress,omitempty"`
+	NetMask *int32 `json:"netMask,omitempty"`
 	BeginAllocationRange NullableString `json:"beginAllocationRange,omitempty"`
-	EndAllocationRange   NullableString `json:"endAllocationRange,omitempty"`
+	EndAllocationRange NullableString `json:"endAllocationRange,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -80,7 +80,6 @@ func (o *CreateProxmoxNetworkDto) HasBridge() bool {
 func (o *CreateProxmoxNetworkDto) SetBridge(v string) {
 	o.Bridge.Set(&v)
 }
-
 // SetBridgeNil sets the value for Bridge to be an explicit nil
 func (o *CreateProxmoxNetworkDto) SetBridgeNil() {
 	o.Bridge.Set(nil)
@@ -123,7 +122,6 @@ func (o *CreateProxmoxNetworkDto) HasGateway() bool {
 func (o *CreateProxmoxNetworkDto) SetGateway(v string) {
 	o.Gateway.Set(&v)
 }
-
 // SetGatewayNil sets the value for Gateway to be an explicit nil
 func (o *CreateProxmoxNetworkDto) SetGatewayNil() {
 	o.Gateway.Set(nil)
@@ -166,7 +164,6 @@ func (o *CreateProxmoxNetworkDto) HasIpAddress() bool {
 func (o *CreateProxmoxNetworkDto) SetIpAddress(v string) {
 	o.IpAddress.Set(&v)
 }
-
 // SetIpAddressNil sets the value for IpAddress to be an explicit nil
 func (o *CreateProxmoxNetworkDto) SetIpAddressNil() {
 	o.IpAddress.Set(nil)
@@ -241,7 +238,6 @@ func (o *CreateProxmoxNetworkDto) HasBeginAllocationRange() bool {
 func (o *CreateProxmoxNetworkDto) SetBeginAllocationRange(v string) {
 	o.BeginAllocationRange.Set(&v)
 }
-
 // SetBeginAllocationRangeNil sets the value for BeginAllocationRange to be an explicit nil
 func (o *CreateProxmoxNetworkDto) SetBeginAllocationRangeNil() {
 	o.BeginAllocationRange.Set(nil)
@@ -284,7 +280,6 @@ func (o *CreateProxmoxNetworkDto) HasEndAllocationRange() bool {
 func (o *CreateProxmoxNetworkDto) SetEndAllocationRange(v string) {
 	o.EndAllocationRange.Set(&v)
 }
-
 // SetEndAllocationRangeNil sets the value for EndAllocationRange to be an explicit nil
 func (o *CreateProxmoxNetworkDto) SetEndAllocationRangeNil() {
 	o.EndAllocationRange.Set(nil)
@@ -296,7 +291,7 @@ func (o *CreateProxmoxNetworkDto) UnsetEndAllocationRange() {
 }
 
 func (o CreateProxmoxNetworkDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -392,3 +387,5 @@ func (v *NullableCreateProxmoxNetworkDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

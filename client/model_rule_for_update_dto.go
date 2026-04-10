@@ -20,13 +20,13 @@ var _ MappedNullable = &RuleForUpdateDto{}
 
 // RuleForUpdateDto struct for RuleForUpdateDto
 type RuleForUpdateDto struct {
-	Name                  NullableString           `json:"name,omitempty"`
-	MetricName            NullableString           `json:"metricName,omitempty"`
-	Type                  *PrometheusType          `json:"type,omitempty"`
-	Price                 NullableFloat64          `json:"price,omitempty"`
-	Labels                []PrometheusLabelListDto `json:"labels,omitempty"`
-	OperationCredentialId NullableInt32            `json:"operationCredentialId,omitempty"`
-	AdditionalProperties  map[string]interface{}
+	Name NullableString `json:"name,omitempty"`
+	MetricName NullableString `json:"metricName,omitempty"`
+	Type *PrometheusType `json:"type,omitempty"`
+	Price NullableFloat64 `json:"price,omitempty"`
+	Labels []PrometheusLabelListDto `json:"labels,omitempty"`
+	OperationCredentialId NullableInt32 `json:"operationCredentialId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _RuleForUpdateDto RuleForUpdateDto
@@ -80,7 +80,6 @@ func (o *RuleForUpdateDto) HasName() bool {
 func (o *RuleForUpdateDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *RuleForUpdateDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -123,7 +122,6 @@ func (o *RuleForUpdateDto) HasMetricName() bool {
 func (o *RuleForUpdateDto) SetMetricName(v string) {
 	o.MetricName.Set(&v)
 }
-
 // SetMetricNameNil sets the value for MetricName to be an explicit nil
 func (o *RuleForUpdateDto) SetMetricNameNil() {
 	o.MetricName.Set(nil)
@@ -198,7 +196,6 @@ func (o *RuleForUpdateDto) HasPrice() bool {
 func (o *RuleForUpdateDto) SetPrice(v float64) {
 	o.Price.Set(&v)
 }
-
 // SetPriceNil sets the value for Price to be an explicit nil
 func (o *RuleForUpdateDto) SetPriceNil() {
 	o.Price.Set(nil)
@@ -274,7 +271,6 @@ func (o *RuleForUpdateDto) HasOperationCredentialId() bool {
 func (o *RuleForUpdateDto) SetOperationCredentialId(v int32) {
 	o.OperationCredentialId.Set(&v)
 }
-
 // SetOperationCredentialIdNil sets the value for OperationCredentialId to be an explicit nil
 func (o *RuleForUpdateDto) SetOperationCredentialIdNil() {
 	o.OperationCredentialId.Set(nil)
@@ -286,7 +282,7 @@ func (o *RuleForUpdateDto) UnsetOperationCredentialId() {
 }
 
 func (o RuleForUpdateDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -382,3 +378,5 @@ func (v *NullableRuleForUpdateDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

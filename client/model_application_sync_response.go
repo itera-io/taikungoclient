@@ -20,7 +20,7 @@ var _ MappedNullable = &ApplicationSyncResponse{}
 
 // ApplicationSyncResponse struct for ApplicationSyncResponse
 type ApplicationSyncResponse struct {
-	IsSyncStarted        *bool `json:"isSyncStarted,omitempty"`
+	IsSyncStarted *bool `json:"isSyncStarted,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,7 @@ func (o *ApplicationSyncResponse) SetIsSyncStarted(v bool) {
 }
 
 func (o ApplicationSyncResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -152,3 +152,5 @@ func (v *NullableApplicationSyncResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

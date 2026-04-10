@@ -20,15 +20,15 @@ var _ MappedNullable = &CreateSubscriptionCommand{}
 
 // CreateSubscriptionCommand struct for CreateSubscriptionCommand
 type CreateSubscriptionCommand struct {
-	Name                 NullableString  `json:"name,omitempty"`
-	ProjectLimit         *int32          `json:"projectLimit,omitempty"`
-	ServerLimit          *int32          `json:"serverLimit,omitempty"`
-	UserLimit            *int32          `json:"userLimit,omitempty"`
-	CloudCredentialLimit *int32          `json:"cloudCredentialLimit,omitempty"`
-	TrialDays            *int32          `json:"trialDays,omitempty"`
-	MonthlyPrice         NullableFloat64 `json:"monthlyPrice,omitempty"`
-	TcuPrice             NullableFloat64 `json:"tcuPrice,omitempty"`
-	YearlyPrice          NullableFloat64 `json:"yearlyPrice,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	ProjectLimit *int32 `json:"projectLimit,omitempty"`
+	ServerLimit *int32 `json:"serverLimit,omitempty"`
+	UserLimit *int32 `json:"userLimit,omitempty"`
+	CloudCredentialLimit *int32 `json:"cloudCredentialLimit,omitempty"`
+	TrialDays *int32 `json:"trialDays,omitempty"`
+	MonthlyPrice NullableFloat64 `json:"monthlyPrice,omitempty"`
+	TcuPrice NullableFloat64 `json:"tcuPrice,omitempty"`
+	YearlyPrice NullableFloat64 `json:"yearlyPrice,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -83,7 +83,6 @@ func (o *CreateSubscriptionCommand) HasName() bool {
 func (o *CreateSubscriptionCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateSubscriptionCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -286,7 +285,6 @@ func (o *CreateSubscriptionCommand) HasMonthlyPrice() bool {
 func (o *CreateSubscriptionCommand) SetMonthlyPrice(v float64) {
 	o.MonthlyPrice.Set(&v)
 }
-
 // SetMonthlyPriceNil sets the value for MonthlyPrice to be an explicit nil
 func (o *CreateSubscriptionCommand) SetMonthlyPriceNil() {
 	o.MonthlyPrice.Set(nil)
@@ -329,7 +327,6 @@ func (o *CreateSubscriptionCommand) HasTcuPrice() bool {
 func (o *CreateSubscriptionCommand) SetTcuPrice(v float64) {
 	o.TcuPrice.Set(&v)
 }
-
 // SetTcuPriceNil sets the value for TcuPrice to be an explicit nil
 func (o *CreateSubscriptionCommand) SetTcuPriceNil() {
 	o.TcuPrice.Set(nil)
@@ -372,7 +369,6 @@ func (o *CreateSubscriptionCommand) HasYearlyPrice() bool {
 func (o *CreateSubscriptionCommand) SetYearlyPrice(v float64) {
 	o.YearlyPrice.Set(&v)
 }
-
 // SetYearlyPriceNil sets the value for YearlyPrice to be an explicit nil
 func (o *CreateSubscriptionCommand) SetYearlyPriceNil() {
 	o.YearlyPrice.Set(nil)
@@ -384,7 +380,7 @@ func (o *CreateSubscriptionCommand) UnsetYearlyPrice() {
 }
 
 func (o CreateSubscriptionCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -492,3 +488,5 @@ func (v *NullableCreateSubscriptionCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

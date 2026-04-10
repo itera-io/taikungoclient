@@ -13,8 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
+	"fmt"
 )
 
 // checks if the ProjectsForBillingDto type satisfies the MappedNullable interface at compile time
@@ -22,15 +22,15 @@ var _ MappedNullable = &ProjectsForBillingDto{}
 
 // ProjectsForBillingDto struct for ProjectsForBillingDto
 type ProjectsForBillingDto struct {
-	Id                   int32                        `json:"id"`
-	Name                 NullableString               `json:"name"`
-	CreatedAt            NullableTime                 `json:"createdAt"`
-	BillingStartDate     NullableTime                 `json:"billingStartDate"`
-	OrganizationName     NullableString               `json:"organizationName"`
-	Price                float64                      `json:"price"`
-	Servers              []ServersForBillingDto       `json:"servers"`
-	StandaloneVms        []StandaloneVmsForBillingDto `json:"standaloneVms"`
-	BillingEnabled       bool                         `json:"billingEnabled"`
+	Id int32 `json:"id"`
+	Name NullableString `json:"name"`
+	CreatedAt NullableTime `json:"createdAt"`
+	BillingStartDate NullableTime `json:"billingStartDate"`
+	OrganizationName NullableString `json:"organizationName"`
+	Price float64 `json:"price"`
+	Servers []ServersForBillingDto `json:"servers"`
+	StandaloneVms []StandaloneVmsForBillingDto `json:"standaloneVms"`
+	BillingEnabled bool `json:"billingEnabled"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -291,7 +291,7 @@ func (o *ProjectsForBillingDto) SetBillingEnabled(v bool) {
 }
 
 func (o ProjectsForBillingDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -342,10 +342,10 @@ func (o *ProjectsForBillingDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -414,3 +414,5 @@ func (v *NullableProjectsForBillingDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

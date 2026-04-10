@@ -23,7 +23,7 @@ type CreateDnsServerCommand struct {
 	// Dns address example: 8.8.8.8
 	Address NullableString `json:"address,omitempty"`
 	// Id should be positive integer
-	AccessProfileId      *int32 `json:"accessProfileId,omitempty"`
+	AccessProfileId *int32 `json:"accessProfileId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,7 +78,6 @@ func (o *CreateDnsServerCommand) HasAddress() bool {
 func (o *CreateDnsServerCommand) SetAddress(v string) {
 	o.Address.Set(&v)
 }
-
 // SetAddressNil sets the value for Address to be an explicit nil
 func (o *CreateDnsServerCommand) SetAddressNil() {
 	o.Address.Set(nil)
@@ -122,7 +121,7 @@ func (o *CreateDnsServerCommand) SetAccessProfileId(v int32) {
 }
 
 func (o CreateDnsServerCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -202,3 +201,5 @@ func (v *NullableCreateDnsServerCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

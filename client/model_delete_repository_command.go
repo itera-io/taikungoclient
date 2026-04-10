@@ -20,7 +20,7 @@ var _ MappedNullable = &DeleteRepositoryCommand{}
 
 // DeleteRepositoryCommand struct for DeleteRepositoryCommand
 type DeleteRepositoryCommand struct {
-	AppRepoId            *int32 `json:"appRepoId,omitempty"`
+	AppRepoId *int32 `json:"appRepoId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,7 @@ func (o *DeleteRepositoryCommand) SetAppRepoId(v int32) {
 }
 
 func (o DeleteRepositoryCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -152,3 +152,5 @@ func (v *NullableDeleteRepositoryCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

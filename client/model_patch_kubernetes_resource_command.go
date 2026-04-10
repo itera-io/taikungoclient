@@ -21,10 +21,10 @@ var _ MappedNullable = &PatchKubernetesResourceCommand{}
 
 // PatchKubernetesResourceCommand struct for PatchKubernetesResourceCommand
 type PatchKubernetesResourceCommand struct {
-	ProjectId            int32          `json:"projectId"`
-	Yaml                 string         `json:"yaml"`
-	Name                 string         `json:"name"`
-	Namespace            NullableString `json:"namespace,omitempty"`
+	ProjectId int32 `json:"projectId"`
+	Yaml string `json:"yaml"`
+	Name string `json:"name"`
+	Namespace NullableString `json:"namespace,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -154,7 +154,6 @@ func (o *PatchKubernetesResourceCommand) HasNamespace() bool {
 func (o *PatchKubernetesResourceCommand) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *PatchKubernetesResourceCommand) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -166,7 +165,7 @@ func (o *PatchKubernetesResourceCommand) UnsetNamespace() {
 }
 
 func (o PatchKubernetesResourceCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -204,10 +203,10 @@ func (o *PatchKubernetesResourceCommand) UnmarshalJSON(data []byte) (err error) 
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -271,3 +270,5 @@ func (v *NullablePatchKubernetesResourceCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

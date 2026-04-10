@@ -20,9 +20,9 @@ var _ MappedNullable = &IpAddressRangeListCommand{}
 
 // IpAddressRangeListCommand struct for IpAddressRangeListCommand
 type IpAddressRangeListCommand struct {
-	IpAddress            NullableString `json:"ipAddress,omitempty"`
-	NetMask              *int32         `json:"netMask,omitempty"`
-	Gateway              NullableString `json:"gateway,omitempty"`
+	IpAddress NullableString `json:"ipAddress,omitempty"`
+	NetMask *int32 `json:"netMask,omitempty"`
+	Gateway NullableString `json:"gateway,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,7 +77,6 @@ func (o *IpAddressRangeListCommand) HasIpAddress() bool {
 func (o *IpAddressRangeListCommand) SetIpAddress(v string) {
 	o.IpAddress.Set(&v)
 }
-
 // SetIpAddressNil sets the value for IpAddress to be an explicit nil
 func (o *IpAddressRangeListCommand) SetIpAddressNil() {
 	o.IpAddress.Set(nil)
@@ -152,7 +151,6 @@ func (o *IpAddressRangeListCommand) HasGateway() bool {
 func (o *IpAddressRangeListCommand) SetGateway(v string) {
 	o.Gateway.Set(&v)
 }
-
 // SetGatewayNil sets the value for Gateway to be an explicit nil
 func (o *IpAddressRangeListCommand) SetGatewayNil() {
 	o.Gateway.Set(nil)
@@ -164,7 +162,7 @@ func (o *IpAddressRangeListCommand) UnsetGateway() {
 }
 
 func (o IpAddressRangeListCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -248,3 +246,5 @@ func (v *NullableIpAddressRangeListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

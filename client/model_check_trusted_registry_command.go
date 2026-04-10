@@ -20,7 +20,7 @@ var _ MappedNullable = &CheckTrustedRegistryCommand{}
 
 // CheckTrustedRegistryCommand struct for CheckTrustedRegistryCommand
 type CheckTrustedRegistryCommand struct {
-	Registry             NullableString `json:"registry,omitempty"`
+	Registry NullableString `json:"registry,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,7 +75,6 @@ func (o *CheckTrustedRegistryCommand) HasRegistry() bool {
 func (o *CheckTrustedRegistryCommand) SetRegistry(v string) {
 	o.Registry.Set(&v)
 }
-
 // SetRegistryNil sets the value for Registry to be an explicit nil
 func (o *CheckTrustedRegistryCommand) SetRegistryNil() {
 	o.Registry.Set(nil)
@@ -87,7 +86,7 @@ func (o *CheckTrustedRegistryCommand) UnsetRegistry() {
 }
 
 func (o CheckTrustedRegistryCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -163,3 +162,5 @@ func (v *NullableCheckTrustedRegistryCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

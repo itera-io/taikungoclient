@@ -21,11 +21,11 @@ var _ MappedNullable = &OrganizationsWithGroupInfoResultDtoCursorPaginatedRespon
 
 // OrganizationsWithGroupInfoResultDtoCursorPaginatedResponse struct for OrganizationsWithGroupInfoResultDtoCursorPaginatedResponse
 type OrganizationsWithGroupInfoResultDtoCursorPaginatedResponse struct {
-	Data                 []OrganizationsWithGroupInfoResultDto `json:"data"`
-	Limit                int32                                 `json:"limit"`
-	HasMore              bool                                  `json:"hasMore"`
-	TotalCount           int64                                 `json:"totalCount"`
-	NextCursor           NullableInt32                         `json:"nextCursor,omitempty"`
+	Data []OrganizationsWithGroupInfoResultDto `json:"data"`
+	Limit int32 `json:"limit"`
+	HasMore bool `json:"hasMore"`
+	TotalCount int64 `json:"totalCount"`
+	NextCursor NullableInt32 `json:"nextCursor,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -182,7 +182,6 @@ func (o *OrganizationsWithGroupInfoResultDtoCursorPaginatedResponse) HasNextCurs
 func (o *OrganizationsWithGroupInfoResultDtoCursorPaginatedResponse) SetNextCursor(v int32) {
 	o.NextCursor.Set(&v)
 }
-
 // SetNextCursorNil sets the value for NextCursor to be an explicit nil
 func (o *OrganizationsWithGroupInfoResultDtoCursorPaginatedResponse) SetNextCursorNil() {
 	o.NextCursor.Set(nil)
@@ -194,7 +193,7 @@ func (o *OrganizationsWithGroupInfoResultDtoCursorPaginatedResponse) UnsetNextCu
 }
 
 func (o OrganizationsWithGroupInfoResultDtoCursorPaginatedResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -236,10 +235,10 @@ func (o *OrganizationsWithGroupInfoResultDtoCursorPaginatedResponse) UnmarshalJS
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -304,3 +303,5 @@ func (v *NullableOrganizationsWithGroupInfoResultDtoCursorPaginatedResponse) Unm
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

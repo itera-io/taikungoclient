@@ -20,7 +20,7 @@ var _ MappedNullable = &DeleteStandAloneProfileCommand{}
 
 // DeleteStandAloneProfileCommand struct for DeleteStandAloneProfileCommand
 type DeleteStandAloneProfileCommand struct {
-	Id                   *int32 `json:"id,omitempty"`
+	Id *int32 `json:"id,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,7 @@ func (o *DeleteStandAloneProfileCommand) SetId(v int32) {
 }
 
 func (o DeleteStandAloneProfileCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -152,3 +152,5 @@ func (v *NullableDeleteStandAloneProfileCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

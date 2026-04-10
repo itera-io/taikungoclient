@@ -20,15 +20,15 @@ var _ MappedNullable = &OpenstackStorageTypeListQuery{}
 
 // OpenstackStorageTypeListQuery struct for OpenstackStorageTypeListQuery
 type OpenstackStorageTypeListQuery struct {
-	OpenStackUser          NullableString `json:"openStackUser,omitempty"`
-	OpenStackPassword      NullableString `json:"openStackPassword,omitempty"`
-	OpenStackUrl           NullableString `json:"openStackUrl,omitempty"`
-	OpenStackDomain        NullableString `json:"openStackDomain,omitempty"`
-	OpenStackRegion        NullableString `json:"openStackRegion,omitempty"`
-	ApplicationCredEnabled *bool          `json:"applicationCredEnabled,omitempty"`
-	IsAdmin                *bool          `json:"isAdmin,omitempty"`
-	OpenstackProject       NullableString `json:"openstackProject,omitempty"`
-	AdditionalProperties   map[string]interface{}
+	OpenStackUser NullableString `json:"openStackUser,omitempty"`
+	OpenStackPassword NullableString `json:"openStackPassword,omitempty"`
+	OpenStackUrl NullableString `json:"openStackUrl,omitempty"`
+	OpenStackDomain NullableString `json:"openStackDomain,omitempty"`
+	OpenStackRegion NullableString `json:"openStackRegion,omitempty"`
+	ApplicationCredEnabled *bool `json:"applicationCredEnabled,omitempty"`
+	IsAdmin *bool `json:"isAdmin,omitempty"`
+	OpenstackProject NullableString `json:"openstackProject,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OpenstackStorageTypeListQuery OpenstackStorageTypeListQuery
@@ -82,7 +82,6 @@ func (o *OpenstackStorageTypeListQuery) HasOpenStackUser() bool {
 func (o *OpenstackStorageTypeListQuery) SetOpenStackUser(v string) {
 	o.OpenStackUser.Set(&v)
 }
-
 // SetOpenStackUserNil sets the value for OpenStackUser to be an explicit nil
 func (o *OpenstackStorageTypeListQuery) SetOpenStackUserNil() {
 	o.OpenStackUser.Set(nil)
@@ -125,7 +124,6 @@ func (o *OpenstackStorageTypeListQuery) HasOpenStackPassword() bool {
 func (o *OpenstackStorageTypeListQuery) SetOpenStackPassword(v string) {
 	o.OpenStackPassword.Set(&v)
 }
-
 // SetOpenStackPasswordNil sets the value for OpenStackPassword to be an explicit nil
 func (o *OpenstackStorageTypeListQuery) SetOpenStackPasswordNil() {
 	o.OpenStackPassword.Set(nil)
@@ -168,7 +166,6 @@ func (o *OpenstackStorageTypeListQuery) HasOpenStackUrl() bool {
 func (o *OpenstackStorageTypeListQuery) SetOpenStackUrl(v string) {
 	o.OpenStackUrl.Set(&v)
 }
-
 // SetOpenStackUrlNil sets the value for OpenStackUrl to be an explicit nil
 func (o *OpenstackStorageTypeListQuery) SetOpenStackUrlNil() {
 	o.OpenStackUrl.Set(nil)
@@ -211,7 +208,6 @@ func (o *OpenstackStorageTypeListQuery) HasOpenStackDomain() bool {
 func (o *OpenstackStorageTypeListQuery) SetOpenStackDomain(v string) {
 	o.OpenStackDomain.Set(&v)
 }
-
 // SetOpenStackDomainNil sets the value for OpenStackDomain to be an explicit nil
 func (o *OpenstackStorageTypeListQuery) SetOpenStackDomainNil() {
 	o.OpenStackDomain.Set(nil)
@@ -254,7 +250,6 @@ func (o *OpenstackStorageTypeListQuery) HasOpenStackRegion() bool {
 func (o *OpenstackStorageTypeListQuery) SetOpenStackRegion(v string) {
 	o.OpenStackRegion.Set(&v)
 }
-
 // SetOpenStackRegionNil sets the value for OpenStackRegion to be an explicit nil
 func (o *OpenstackStorageTypeListQuery) SetOpenStackRegionNil() {
 	o.OpenStackRegion.Set(nil)
@@ -361,7 +356,6 @@ func (o *OpenstackStorageTypeListQuery) HasOpenstackProject() bool {
 func (o *OpenstackStorageTypeListQuery) SetOpenstackProject(v string) {
 	o.OpenstackProject.Set(&v)
 }
-
 // SetOpenstackProjectNil sets the value for OpenstackProject to be an explicit nil
 func (o *OpenstackStorageTypeListQuery) SetOpenstackProjectNil() {
 	o.OpenstackProject.Set(nil)
@@ -373,7 +367,7 @@ func (o *OpenstackStorageTypeListQuery) UnsetOpenstackProject() {
 }
 
 func (o OpenstackStorageTypeListQuery) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -477,3 +471,5 @@ func (v *NullableOpenstackStorageTypeListQuery) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

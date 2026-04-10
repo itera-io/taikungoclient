@@ -20,8 +20,8 @@ var _ MappedNullable = &BindAppRepositoryCommand{}
 
 // BindAppRepositoryCommand struct for BindAppRepositoryCommand
 type BindAppRepositoryCommand struct {
-	FilteringElements    []FilteringElementDto `json:"filteringElements,omitempty"`
-	OrganizationId       NullableInt32         `json:"organizationId,omitempty"`
+	FilteringElements []FilteringElementDto `json:"filteringElements,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,7 +109,6 @@ func (o *BindAppRepositoryCommand) HasOrganizationId() bool {
 func (o *BindAppRepositoryCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *BindAppRepositoryCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -121,7 +120,7 @@ func (o *BindAppRepositoryCommand) UnsetOrganizationId() {
 }
 
 func (o BindAppRepositoryCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -201,3 +200,5 @@ func (v *NullableBindAppRepositoryCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

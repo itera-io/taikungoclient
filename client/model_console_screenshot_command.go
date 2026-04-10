@@ -20,7 +20,7 @@ var _ MappedNullable = &ConsoleScreenshotCommand{}
 
 // ConsoleScreenshotCommand struct for ConsoleScreenshotCommand
 type ConsoleScreenshotCommand struct {
-	ServerId             *int32 `json:"serverId,omitempty"`
+	ServerId *int32 `json:"serverId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,7 @@ func (o *ConsoleScreenshotCommand) SetServerId(v int32) {
 }
 
 func (o ConsoleScreenshotCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -152,3 +152,5 @@ func (v *NullableConsoleScreenshotCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

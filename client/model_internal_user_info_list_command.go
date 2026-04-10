@@ -20,7 +20,7 @@ var _ MappedNullable = &InternalUserInfoListCommand{}
 
 // InternalUserInfoListCommand struct for InternalUserInfoListCommand
 type InternalUserInfoListCommand struct {
-	Token                NullableString `json:"token,omitempty"`
+	Token NullableString `json:"token,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,7 +75,6 @@ func (o *InternalUserInfoListCommand) HasToken() bool {
 func (o *InternalUserInfoListCommand) SetToken(v string) {
 	o.Token.Set(&v)
 }
-
 // SetTokenNil sets the value for Token to be an explicit nil
 func (o *InternalUserInfoListCommand) SetTokenNil() {
 	o.Token.Set(nil)
@@ -87,7 +86,7 @@ func (o *InternalUserInfoListCommand) UnsetToken() {
 }
 
 func (o InternalUserInfoListCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -163,3 +162,5 @@ func (v *NullableInternalUserInfoListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

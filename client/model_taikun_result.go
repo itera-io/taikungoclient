@@ -20,11 +20,11 @@ var _ MappedNullable = &TaikunResult{}
 
 // TaikunResult struct for TaikunResult
 type TaikunResult struct {
-	IsSuccess            *bool             `json:"isSuccess,omitempty"`
-	ErrorMessage         NullableString    `json:"errorMessage,omitempty"`
-	ProblemDetails       *ProblemDetails   `json:"problemDetails,omitempty"`
-	HttpError            *ETaikunHttpError `json:"httpError,omitempty"`
-	RedirectUrl          *string           `json:"redirectUrl,omitempty"`
+	IsSuccess *bool `json:"isSuccess,omitempty"`
+	ErrorMessage NullableString `json:"errorMessage,omitempty"`
+	ProblemDetails *ProblemDetails `json:"problemDetails,omitempty"`
+	HttpError *ETaikunHttpError `json:"httpError,omitempty"`
+	RedirectUrl *string `json:"redirectUrl,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -111,7 +111,6 @@ func (o *TaikunResult) HasErrorMessage() bool {
 func (o *TaikunResult) SetErrorMessage(v string) {
 	o.ErrorMessage.Set(&v)
 }
-
 // SetErrorMessageNil sets the value for ErrorMessage to be an explicit nil
 func (o *TaikunResult) SetErrorMessageNil() {
 	o.ErrorMessage.Set(nil)
@@ -219,7 +218,7 @@ func (o *TaikunResult) SetRedirectUrl(v string) {
 }
 
 func (o TaikunResult) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -311,3 +310,5 @@ func (v *NullableTaikunResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

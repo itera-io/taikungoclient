@@ -20,20 +20,20 @@ var _ MappedNullable = &ProjectDescribeDto{}
 
 // ProjectDescribeDto struct for ProjectDescribeDto
 type ProjectDescribeDto struct {
-	ProjectId            *int32         `json:"projectId,omitempty"`
-	ProjectName          NullableString `json:"projectName,omitempty"`
-	IsMonitoringEnabled  *bool          `json:"isMonitoringEnabled,omitempty"`
-	IsBackupEnabled      *bool          `json:"isBackupEnabled,omitempty"`
-	IsAutoUpgradeEnabled *bool          `json:"isAutoUpgradeEnabled,omitempty"`
-	ServersCount         *int32         `json:"serversCount,omitempty"`
-	VmsCount             *int32         `json:"vmsCount,omitempty"`
-	AlertsCount          *int32         `json:"alertsCount,omitempty"`
-	LastModifiedBy       NullableString `json:"lastModifiedBy,omitempty"`
-	CreatedBy            NullableString `json:"createdBy,omitempty"`
-	LastModified         NullableString `json:"lastModified,omitempty"`
-	Flavors              []string       `json:"flavors,omitempty"`
-	Images               []string       `json:"images,omitempty"`
-	AccessIp             NullableString `json:"accessIp,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
+	IsMonitoringEnabled *bool `json:"isMonitoringEnabled,omitempty"`
+	IsBackupEnabled *bool `json:"isBackupEnabled,omitempty"`
+	IsAutoUpgradeEnabled *bool `json:"isAutoUpgradeEnabled,omitempty"`
+	ServersCount *int32 `json:"serversCount,omitempty"`
+	VmsCount *int32 `json:"vmsCount,omitempty"`
+	AlertsCount *int32 `json:"alertsCount,omitempty"`
+	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	LastModified NullableString `json:"lastModified,omitempty"`
+	Flavors []string `json:"flavors,omitempty"`
+	Images []string `json:"images,omitempty"`
+	AccessIp NullableString `json:"accessIp,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -120,7 +120,6 @@ func (o *ProjectDescribeDto) HasProjectName() bool {
 func (o *ProjectDescribeDto) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *ProjectDescribeDto) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -355,7 +354,6 @@ func (o *ProjectDescribeDto) HasLastModifiedBy() bool {
 func (o *ProjectDescribeDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-
 // SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
 func (o *ProjectDescribeDto) SetLastModifiedByNil() {
 	o.LastModifiedBy.Set(nil)
@@ -398,7 +396,6 @@ func (o *ProjectDescribeDto) HasCreatedBy() bool {
 func (o *ProjectDescribeDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *ProjectDescribeDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -441,7 +438,6 @@ func (o *ProjectDescribeDto) HasLastModified() bool {
 func (o *ProjectDescribeDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-
 // SetLastModifiedNil sets the value for LastModified to be an explicit nil
 func (o *ProjectDescribeDto) SetLastModifiedNil() {
 	o.LastModified.Set(nil)
@@ -550,7 +546,6 @@ func (o *ProjectDescribeDto) HasAccessIp() bool {
 func (o *ProjectDescribeDto) SetAccessIp(v string) {
 	o.AccessIp.Set(&v)
 }
-
 // SetAccessIpNil sets the value for AccessIp to be an explicit nil
 func (o *ProjectDescribeDto) SetAccessIpNil() {
 	o.AccessIp.Set(nil)
@@ -562,7 +557,7 @@ func (o *ProjectDescribeDto) UnsetAccessIp() {
 }
 
 func (o ProjectDescribeDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -690,3 +685,5 @@ func (v *NullableProjectDescribeDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,10 +20,10 @@ var _ MappedNullable = &AzureLocationsCommand{}
 
 // AzureLocationsCommand struct for AzureLocationsCommand
 type AzureLocationsCommand struct {
-	AzureSubscriptionId  NullableString `json:"azureSubscriptionId,omitempty"`
-	AzureClientId        NullableString `json:"azureClientId,omitempty"`
-	AzureClientSecret    NullableString `json:"azureClientSecret,omitempty"`
-	AzureTenantId        NullableString `json:"azureTenantId,omitempty"`
+	AzureSubscriptionId NullableString `json:"azureSubscriptionId,omitempty"`
+	AzureClientId NullableString `json:"azureClientId,omitempty"`
+	AzureClientSecret NullableString `json:"azureClientSecret,omitempty"`
+	AzureTenantId NullableString `json:"azureTenantId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,7 +78,6 @@ func (o *AzureLocationsCommand) HasAzureSubscriptionId() bool {
 func (o *AzureLocationsCommand) SetAzureSubscriptionId(v string) {
 	o.AzureSubscriptionId.Set(&v)
 }
-
 // SetAzureSubscriptionIdNil sets the value for AzureSubscriptionId to be an explicit nil
 func (o *AzureLocationsCommand) SetAzureSubscriptionIdNil() {
 	o.AzureSubscriptionId.Set(nil)
@@ -121,7 +120,6 @@ func (o *AzureLocationsCommand) HasAzureClientId() bool {
 func (o *AzureLocationsCommand) SetAzureClientId(v string) {
 	o.AzureClientId.Set(&v)
 }
-
 // SetAzureClientIdNil sets the value for AzureClientId to be an explicit nil
 func (o *AzureLocationsCommand) SetAzureClientIdNil() {
 	o.AzureClientId.Set(nil)
@@ -164,7 +162,6 @@ func (o *AzureLocationsCommand) HasAzureClientSecret() bool {
 func (o *AzureLocationsCommand) SetAzureClientSecret(v string) {
 	o.AzureClientSecret.Set(&v)
 }
-
 // SetAzureClientSecretNil sets the value for AzureClientSecret to be an explicit nil
 func (o *AzureLocationsCommand) SetAzureClientSecretNil() {
 	o.AzureClientSecret.Set(nil)
@@ -207,7 +204,6 @@ func (o *AzureLocationsCommand) HasAzureTenantId() bool {
 func (o *AzureLocationsCommand) SetAzureTenantId(v string) {
 	o.AzureTenantId.Set(&v)
 }
-
 // SetAzureTenantIdNil sets the value for AzureTenantId to be an explicit nil
 func (o *AzureLocationsCommand) SetAzureTenantIdNil() {
 	o.AzureTenantId.Set(nil)
@@ -219,7 +215,7 @@ func (o *AzureLocationsCommand) UnsetAzureTenantId() {
 }
 
 func (o AzureLocationsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -307,3 +303,5 @@ func (v *NullableAzureLocationsCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -21,21 +21,21 @@ var _ MappedNullable = &InvoiceListDto{}
 
 // InvoiceListDto struct for InvoiceListDto
 type InvoiceListDto struct {
-	Id                         int32          `json:"id"`
-	Name                       string         `json:"name"`
-	StartDate                  NullableString `json:"startDate"`
-	EndDate                    NullableString `json:"endDate"`
-	RequiredPaymentAction      bool           `json:"requiredPaymentAction"`
-	IsPaid                     bool           `json:"isPaid"`
-	InvoiceId                  string         `json:"invoiceId"`
-	SubscriptionType           string         `json:"subscriptionType"`
-	SubscriptionName           string         `json:"subscriptionName"`
-	Price                      float64        `json:"price"`
-	OrganizationId             int32          `json:"organizationId"`
-	OrganizationName           string         `json:"organizationName"`
-	InvoiceNumber              string         `json:"invoiceNumber"`
-	OrganizationSubscriptionId int32          `json:"organizationSubscriptionId"`
-	AdditionalProperties       map[string]interface{}
+	Id int32 `json:"id"`
+	Name string `json:"name"`
+	StartDate NullableString `json:"startDate"`
+	EndDate NullableString `json:"endDate"`
+	RequiredPaymentAction bool `json:"requiredPaymentAction"`
+	IsPaid bool `json:"isPaid"`
+	InvoiceId string `json:"invoiceId"`
+	SubscriptionType string `json:"subscriptionType"`
+	SubscriptionName string `json:"subscriptionName"`
+	Price float64 `json:"price"`
+	OrganizationId int32 `json:"organizationId"`
+	OrganizationName string `json:"organizationName"`
+	InvoiceNumber string `json:"invoiceNumber"`
+	OrganizationSubscriptionId int32 `json:"organizationSubscriptionId"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _InvoiceListDto InvoiceListDto
@@ -412,7 +412,7 @@ func (o *InvoiceListDto) SetOrganizationSubscriptionId(v int32) {
 }
 
 func (o InvoiceListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -469,10 +469,10 @@ func (o *InvoiceListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -546,3 +546,5 @@ func (v *NullableInvoiceListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

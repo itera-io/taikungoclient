@@ -20,7 +20,7 @@ var _ MappedNullable = &YamlValidatorCommand{}
 
 // YamlValidatorCommand struct for YamlValidatorCommand
 type YamlValidatorCommand struct {
-	Yaml                 NullableString `json:"yaml,omitempty"`
+	Yaml NullableString `json:"yaml,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,7 +75,6 @@ func (o *YamlValidatorCommand) HasYaml() bool {
 func (o *YamlValidatorCommand) SetYaml(v string) {
 	o.Yaml.Set(&v)
 }
-
 // SetYamlNil sets the value for Yaml to be an explicit nil
 func (o *YamlValidatorCommand) SetYamlNil() {
 	o.Yaml.Set(nil)
@@ -87,7 +86,7 @@ func (o *YamlValidatorCommand) UnsetYaml() {
 }
 
 func (o YamlValidatorCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -163,3 +162,5 @@ func (v *NullableYamlValidatorCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

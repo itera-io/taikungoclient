@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_SseAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_SseAPIService(t *testing.T) {
 
 	t.Run("Test SseAPIService SseHealth", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SseAPI.SseHealth(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_taikuncore_SseAPIService(t *testing.T) {
 
 	t.Run("Test SseAPIService SseNotifications", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SseAPI.SseNotifications(context.Background()).Execute()
 
@@ -48,7 +48,7 @@ func Test_taikuncore_SseAPIService(t *testing.T) {
 
 	t.Run("Test SseAPIService SseUpdateUserPermission", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SseAPI.SseUpdateUserPermission(context.Background()).Execute()
 

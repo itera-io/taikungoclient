@@ -21,11 +21,11 @@ var _ MappedNullable = &CheckerRobotCommand{}
 
 // CheckerRobotCommand struct for CheckerRobotCommand
 type CheckerRobotCommand struct {
-	AccountId            NullableInt32  `json:"accountId,omitempty"`
-	OrganizationId       NullableInt32  `json:"organizationId,omitempty"`
-	ExpiresAt            NullableTime   `json:"expiresAt,omitempty"`
-	Name                 NullableString `json:"name,omitempty"`
-	Description          NullableString `json:"description,omitempty"`
+	AccountId NullableInt32 `json:"accountId,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	ExpiresAt NullableTime `json:"expiresAt,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Description NullableString `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -80,7 +80,6 @@ func (o *CheckerRobotCommand) HasAccountId() bool {
 func (o *CheckerRobotCommand) SetAccountId(v int32) {
 	o.AccountId.Set(&v)
 }
-
 // SetAccountIdNil sets the value for AccountId to be an explicit nil
 func (o *CheckerRobotCommand) SetAccountIdNil() {
 	o.AccountId.Set(nil)
@@ -123,7 +122,6 @@ func (o *CheckerRobotCommand) HasOrganizationId() bool {
 func (o *CheckerRobotCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CheckerRobotCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -166,7 +164,6 @@ func (o *CheckerRobotCommand) HasExpiresAt() bool {
 func (o *CheckerRobotCommand) SetExpiresAt(v time.Time) {
 	o.ExpiresAt.Set(&v)
 }
-
 // SetExpiresAtNil sets the value for ExpiresAt to be an explicit nil
 func (o *CheckerRobotCommand) SetExpiresAtNil() {
 	o.ExpiresAt.Set(nil)
@@ -209,7 +206,6 @@ func (o *CheckerRobotCommand) HasName() bool {
 func (o *CheckerRobotCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CheckerRobotCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -252,7 +248,6 @@ func (o *CheckerRobotCommand) HasDescription() bool {
 func (o *CheckerRobotCommand) SetDescription(v string) {
 	o.Description.Set(&v)
 }
-
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *CheckerRobotCommand) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -264,7 +259,7 @@ func (o *CheckerRobotCommand) UnsetDescription() {
 }
 
 func (o CheckerRobotCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -356,3 +351,5 @@ func (v *NullableCheckerRobotCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

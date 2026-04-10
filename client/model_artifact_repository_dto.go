@@ -21,20 +21,20 @@ var _ MappedNullable = &ArtifactRepositoryDto{}
 
 // ArtifactRepositoryDto struct for ArtifactRepositoryDto
 type ArtifactRepositoryDto struct {
-	RepositoryId         NullableString `json:"repositoryId"`
-	AppRepoId            int32          `json:"appRepoId"`
-	Name                 string         `json:"name"`
-	DisplayName          NullableString `json:"displayName"`
-	Url                  string         `json:"url"`
-	OrganizationName     string         `json:"organizationName"`
-	Disabled             bool           `json:"disabled"`
-	VerifiedPublisher    bool           `json:"verifiedPublisher"`
-	Official             bool           `json:"official"`
-	IsBound              bool           `json:"isBound"`
-	IsPrivate            *bool          `json:"isPrivate,omitempty"`
-	IsTaikun             bool           `json:"isTaikun"`
-	HasCatalogApp        bool           `json:"hasCatalogApp"`
-	PasswordProtected    *bool          `json:"passwordProtected,omitempty"`
+	RepositoryId NullableString `json:"repositoryId"`
+	AppRepoId int32 `json:"appRepoId"`
+	Name string `json:"name"`
+	DisplayName NullableString `json:"displayName"`
+	Url string `json:"url"`
+	OrganizationName string `json:"organizationName"`
+	Disabled bool `json:"disabled"`
+	VerifiedPublisher bool `json:"verifiedPublisher"`
+	Official bool `json:"official"`
+	IsBound bool `json:"isBound"`
+	IsPrivate *bool `json:"isPrivate,omitempty"`
+	IsTaikun bool `json:"isTaikun"`
+	HasCatalogApp bool `json:"hasCatalogApp"`
+	PasswordProtected *bool `json:"passwordProtected,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -426,7 +426,7 @@ func (o *ArtifactRepositoryDto) SetPasswordProtected(v bool) {
 }
 
 func (o ArtifactRepositoryDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -485,10 +485,10 @@ func (o *ArtifactRepositoryDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -562,3 +562,5 @@ func (v *NullableArtifactRepositoryDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

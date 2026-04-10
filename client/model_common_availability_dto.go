@@ -20,8 +20,8 @@ var _ MappedNullable = &CommonAvailabilityDto{}
 
 // CommonAvailabilityDto struct for CommonAvailabilityDto
 type CommonAvailabilityDto struct {
-	Id                   *bool          `json:"id,omitempty"`
-	Name                 NullableString `json:"name,omitempty"`
+	Id *bool `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,7 +108,6 @@ func (o *CommonAvailabilityDto) HasName() bool {
 func (o *CommonAvailabilityDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CommonAvailabilityDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -120,7 +119,7 @@ func (o *CommonAvailabilityDto) UnsetName() {
 }
 
 func (o CommonAvailabilityDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -200,3 +199,5 @@ func (v *NullableCommonAvailabilityDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

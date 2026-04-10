@@ -20,12 +20,12 @@ var _ MappedNullable = &CatalogAppParamsDto{}
 
 // CatalogAppParamsDto struct for CatalogAppParamsDto
 type CatalogAppParamsDto struct {
-	Key                         NullableString `json:"key,omitempty"`
-	Value                       NullableString `json:"value,omitempty"`
-	IsEditableWhenInstalling    *bool          `json:"isEditableWhenInstalling,omitempty"`
-	IsEditableAfterInstallation *bool          `json:"isEditableAfterInstallation,omitempty"`
-	IsMandatory                 *bool          `json:"isMandatory,omitempty"`
-	AdditionalProperties        map[string]interface{}
+	Key NullableString `json:"key,omitempty"`
+	Value NullableString `json:"value,omitempty"`
+	IsEditableWhenInstalling *bool `json:"isEditableWhenInstalling,omitempty"`
+	IsEditableAfterInstallation *bool `json:"isEditableAfterInstallation,omitempty"`
+	IsMandatory *bool `json:"isMandatory,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CatalogAppParamsDto CatalogAppParamsDto
@@ -79,7 +79,6 @@ func (o *CatalogAppParamsDto) HasKey() bool {
 func (o *CatalogAppParamsDto) SetKey(v string) {
 	o.Key.Set(&v)
 }
-
 // SetKeyNil sets the value for Key to be an explicit nil
 func (o *CatalogAppParamsDto) SetKeyNil() {
 	o.Key.Set(nil)
@@ -122,7 +121,6 @@ func (o *CatalogAppParamsDto) HasValue() bool {
 func (o *CatalogAppParamsDto) SetValue(v string) {
 	o.Value.Set(&v)
 }
-
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *CatalogAppParamsDto) SetValueNil() {
 	o.Value.Set(nil)
@@ -230,7 +228,7 @@ func (o *CatalogAppParamsDto) SetIsMandatory(v bool) {
 }
 
 func (o CatalogAppParamsDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -322,3 +320,5 @@ func (v *NullableCatalogAppParamsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,16 +20,16 @@ var _ MappedNullable = &OpenstackVolumeTypeListQuery{}
 
 // OpenstackVolumeTypeListQuery struct for OpenstackVolumeTypeListQuery
 type OpenstackVolumeTypeListQuery struct {
-	ProjectId              NullableInt32  `json:"projectId,omitempty"`
-	OpenStackUser          NullableString `json:"openStackUser,omitempty"`
-	OpenStackPassword      NullableString `json:"openStackPassword,omitempty"`
-	OpenStackUrl           NullableString `json:"openStackUrl,omitempty"`
-	OpenStackDomain        NullableString `json:"openStackDomain,omitempty"`
-	OpenStackRegion        NullableString `json:"openStackRegion,omitempty"`
-	ApplicationCredEnabled *bool          `json:"applicationCredEnabled,omitempty"`
-	IsAdmin                *bool          `json:"isAdmin,omitempty"`
-	OpenstackProject       NullableString `json:"openstackProject,omitempty"`
-	AdditionalProperties   map[string]interface{}
+	ProjectId NullableInt32 `json:"projectId,omitempty"`
+	OpenStackUser NullableString `json:"openStackUser,omitempty"`
+	OpenStackPassword NullableString `json:"openStackPassword,omitempty"`
+	OpenStackUrl NullableString `json:"openStackUrl,omitempty"`
+	OpenStackDomain NullableString `json:"openStackDomain,omitempty"`
+	OpenStackRegion NullableString `json:"openStackRegion,omitempty"`
+	ApplicationCredEnabled *bool `json:"applicationCredEnabled,omitempty"`
+	IsAdmin *bool `json:"isAdmin,omitempty"`
+	OpenstackProject NullableString `json:"openstackProject,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OpenstackVolumeTypeListQuery OpenstackVolumeTypeListQuery
@@ -83,7 +83,6 @@ func (o *OpenstackVolumeTypeListQuery) HasProjectId() bool {
 func (o *OpenstackVolumeTypeListQuery) SetProjectId(v int32) {
 	o.ProjectId.Set(&v)
 }
-
 // SetProjectIdNil sets the value for ProjectId to be an explicit nil
 func (o *OpenstackVolumeTypeListQuery) SetProjectIdNil() {
 	o.ProjectId.Set(nil)
@@ -126,7 +125,6 @@ func (o *OpenstackVolumeTypeListQuery) HasOpenStackUser() bool {
 func (o *OpenstackVolumeTypeListQuery) SetOpenStackUser(v string) {
 	o.OpenStackUser.Set(&v)
 }
-
 // SetOpenStackUserNil sets the value for OpenStackUser to be an explicit nil
 func (o *OpenstackVolumeTypeListQuery) SetOpenStackUserNil() {
 	o.OpenStackUser.Set(nil)
@@ -169,7 +167,6 @@ func (o *OpenstackVolumeTypeListQuery) HasOpenStackPassword() bool {
 func (o *OpenstackVolumeTypeListQuery) SetOpenStackPassword(v string) {
 	o.OpenStackPassword.Set(&v)
 }
-
 // SetOpenStackPasswordNil sets the value for OpenStackPassword to be an explicit nil
 func (o *OpenstackVolumeTypeListQuery) SetOpenStackPasswordNil() {
 	o.OpenStackPassword.Set(nil)
@@ -212,7 +209,6 @@ func (o *OpenstackVolumeTypeListQuery) HasOpenStackUrl() bool {
 func (o *OpenstackVolumeTypeListQuery) SetOpenStackUrl(v string) {
 	o.OpenStackUrl.Set(&v)
 }
-
 // SetOpenStackUrlNil sets the value for OpenStackUrl to be an explicit nil
 func (o *OpenstackVolumeTypeListQuery) SetOpenStackUrlNil() {
 	o.OpenStackUrl.Set(nil)
@@ -255,7 +251,6 @@ func (o *OpenstackVolumeTypeListQuery) HasOpenStackDomain() bool {
 func (o *OpenstackVolumeTypeListQuery) SetOpenStackDomain(v string) {
 	o.OpenStackDomain.Set(&v)
 }
-
 // SetOpenStackDomainNil sets the value for OpenStackDomain to be an explicit nil
 func (o *OpenstackVolumeTypeListQuery) SetOpenStackDomainNil() {
 	o.OpenStackDomain.Set(nil)
@@ -298,7 +293,6 @@ func (o *OpenstackVolumeTypeListQuery) HasOpenStackRegion() bool {
 func (o *OpenstackVolumeTypeListQuery) SetOpenStackRegion(v string) {
 	o.OpenStackRegion.Set(&v)
 }
-
 // SetOpenStackRegionNil sets the value for OpenStackRegion to be an explicit nil
 func (o *OpenstackVolumeTypeListQuery) SetOpenStackRegionNil() {
 	o.OpenStackRegion.Set(nil)
@@ -405,7 +399,6 @@ func (o *OpenstackVolumeTypeListQuery) HasOpenstackProject() bool {
 func (o *OpenstackVolumeTypeListQuery) SetOpenstackProject(v string) {
 	o.OpenstackProject.Set(&v)
 }
-
 // SetOpenstackProjectNil sets the value for OpenstackProject to be an explicit nil
 func (o *OpenstackVolumeTypeListQuery) SetOpenstackProjectNil() {
 	o.OpenstackProject.Set(nil)
@@ -417,7 +410,7 @@ func (o *OpenstackVolumeTypeListQuery) UnsetOpenstackProject() {
 }
 
 func (o OpenstackVolumeTypeListQuery) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -525,3 +518,5 @@ func (v *NullableOpenstackVolumeTypeListQuery) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

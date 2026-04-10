@@ -20,21 +20,21 @@ var _ MappedNullable = &AwsEksNodeGroupDto{}
 
 // AwsEksNodeGroupDto struct for AwsEksNodeGroupDto
 type AwsEksNodeGroupDto struct {
-	Name                 NullableString `json:"name,omitempty"`
-	Role                 NullableString `json:"role,omitempty"`
-	AmiType              NullableString `json:"amiType,omitempty"`
-	AmiReleaseVersion    NullableString `json:"amiReleaseVersion,omitempty"`
-	Arn                  NullableString `json:"arn,omitempty"`
-	CapacityType         NullableString `json:"capacityType,omitempty"`
-	HealthIssues         []string       `json:"healthIssues,omitempty"`
-	Status               NullableString `json:"status,omitempty"`
-	Version              NullableString `json:"version,omitempty"`
-	Created              NullableString `json:"created,omitempty"`
-	DiskSize             *int32         `json:"diskSize,omitempty"`
-	DesiredSize          *int32         `json:"desiredSize,omitempty"`
-	MaxSize              *int32         `json:"maxSize,omitempty"`
-	MinSize              *int32         `json:"minSize,omitempty"`
-	InstanceTypes        []string       `json:"instanceTypes,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Role NullableString `json:"role,omitempty"`
+	AmiType NullableString `json:"amiType,omitempty"`
+	AmiReleaseVersion NullableString `json:"amiReleaseVersion,omitempty"`
+	Arn NullableString `json:"arn,omitempty"`
+	CapacityType NullableString `json:"capacityType,omitempty"`
+	HealthIssues []string `json:"healthIssues,omitempty"`
+	Status NullableString `json:"status,omitempty"`
+	Version NullableString `json:"version,omitempty"`
+	Created NullableString `json:"created,omitempty"`
+	DiskSize *int32 `json:"diskSize,omitempty"`
+	DesiredSize *int32 `json:"desiredSize,omitempty"`
+	MaxSize *int32 `json:"maxSize,omitempty"`
+	MinSize *int32 `json:"minSize,omitempty"`
+	InstanceTypes []string `json:"instanceTypes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -89,7 +89,6 @@ func (o *AwsEksNodeGroupDto) HasName() bool {
 func (o *AwsEksNodeGroupDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *AwsEksNodeGroupDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -132,7 +131,6 @@ func (o *AwsEksNodeGroupDto) HasRole() bool {
 func (o *AwsEksNodeGroupDto) SetRole(v string) {
 	o.Role.Set(&v)
 }
-
 // SetRoleNil sets the value for Role to be an explicit nil
 func (o *AwsEksNodeGroupDto) SetRoleNil() {
 	o.Role.Set(nil)
@@ -175,7 +173,6 @@ func (o *AwsEksNodeGroupDto) HasAmiType() bool {
 func (o *AwsEksNodeGroupDto) SetAmiType(v string) {
 	o.AmiType.Set(&v)
 }
-
 // SetAmiTypeNil sets the value for AmiType to be an explicit nil
 func (o *AwsEksNodeGroupDto) SetAmiTypeNil() {
 	o.AmiType.Set(nil)
@@ -218,7 +215,6 @@ func (o *AwsEksNodeGroupDto) HasAmiReleaseVersion() bool {
 func (o *AwsEksNodeGroupDto) SetAmiReleaseVersion(v string) {
 	o.AmiReleaseVersion.Set(&v)
 }
-
 // SetAmiReleaseVersionNil sets the value for AmiReleaseVersion to be an explicit nil
 func (o *AwsEksNodeGroupDto) SetAmiReleaseVersionNil() {
 	o.AmiReleaseVersion.Set(nil)
@@ -261,7 +257,6 @@ func (o *AwsEksNodeGroupDto) HasArn() bool {
 func (o *AwsEksNodeGroupDto) SetArn(v string) {
 	o.Arn.Set(&v)
 }
-
 // SetArnNil sets the value for Arn to be an explicit nil
 func (o *AwsEksNodeGroupDto) SetArnNil() {
 	o.Arn.Set(nil)
@@ -304,7 +299,6 @@ func (o *AwsEksNodeGroupDto) HasCapacityType() bool {
 func (o *AwsEksNodeGroupDto) SetCapacityType(v string) {
 	o.CapacityType.Set(&v)
 }
-
 // SetCapacityTypeNil sets the value for CapacityType to be an explicit nil
 func (o *AwsEksNodeGroupDto) SetCapacityTypeNil() {
 	o.CapacityType.Set(nil)
@@ -380,7 +374,6 @@ func (o *AwsEksNodeGroupDto) HasStatus() bool {
 func (o *AwsEksNodeGroupDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *AwsEksNodeGroupDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -423,7 +416,6 @@ func (o *AwsEksNodeGroupDto) HasVersion() bool {
 func (o *AwsEksNodeGroupDto) SetVersion(v string) {
 	o.Version.Set(&v)
 }
-
 // SetVersionNil sets the value for Version to be an explicit nil
 func (o *AwsEksNodeGroupDto) SetVersionNil() {
 	o.Version.Set(nil)
@@ -466,7 +458,6 @@ func (o *AwsEksNodeGroupDto) HasCreated() bool {
 func (o *AwsEksNodeGroupDto) SetCreated(v string) {
 	o.Created.Set(&v)
 }
-
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *AwsEksNodeGroupDto) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -639,7 +630,7 @@ func (o *AwsEksNodeGroupDto) SetInstanceTypes(v []string) {
 }
 
 func (o AwsEksNodeGroupDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -771,3 +762,5 @@ func (v *NullableAwsEksNodeGroupDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

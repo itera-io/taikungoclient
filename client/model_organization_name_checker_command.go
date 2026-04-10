@@ -20,9 +20,9 @@ var _ MappedNullable = &OrganizationNameCheckerCommand{}
 
 // OrganizationNameCheckerCommand struct for OrganizationNameCheckerCommand
 type OrganizationNameCheckerCommand struct {
-	AccountId            NullableInt32  `json:"accountId,omitempty"`
-	Name                 NullableString `json:"name,omitempty"`
-	FullName             NullableString `json:"fullName,omitempty"`
+	AccountId NullableInt32 `json:"accountId,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	FullName NullableString `json:"fullName,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,7 +77,6 @@ func (o *OrganizationNameCheckerCommand) HasAccountId() bool {
 func (o *OrganizationNameCheckerCommand) SetAccountId(v int32) {
 	o.AccountId.Set(&v)
 }
-
 // SetAccountIdNil sets the value for AccountId to be an explicit nil
 func (o *OrganizationNameCheckerCommand) SetAccountIdNil() {
 	o.AccountId.Set(nil)
@@ -120,7 +119,6 @@ func (o *OrganizationNameCheckerCommand) HasName() bool {
 func (o *OrganizationNameCheckerCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *OrganizationNameCheckerCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -163,7 +161,6 @@ func (o *OrganizationNameCheckerCommand) HasFullName() bool {
 func (o *OrganizationNameCheckerCommand) SetFullName(v string) {
 	o.FullName.Set(&v)
 }
-
 // SetFullNameNil sets the value for FullName to be an explicit nil
 func (o *OrganizationNameCheckerCommand) SetFullNameNil() {
 	o.FullName.Set(nil)
@@ -175,7 +172,7 @@ func (o *OrganizationNameCheckerCommand) UnsetFullName() {
 }
 
 func (o OrganizationNameCheckerCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -259,3 +256,5 @@ func (v *NullableOrganizationNameCheckerCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

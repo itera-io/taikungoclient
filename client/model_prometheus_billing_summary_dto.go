@@ -13,8 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
+	"fmt"
 )
 
 // checks if the PrometheusBillingSummaryDto type satisfies the MappedNullable interface at compile time
@@ -22,14 +22,14 @@ var _ MappedNullable = &PrometheusBillingSummaryDto{}
 
 // PrometheusBillingSummaryDto struct for PrometheusBillingSummaryDto
 type PrometheusBillingSummaryDto struct {
-	Price                float64        `json:"price"`
-	StartDate            time.Time      `json:"startDate"`
-	EndDate              NullableTime   `json:"endDate"`
-	PrometheusRuleId     int32          `json:"prometheusRuleId"`
-	RuleName             string         `json:"ruleName"`
-	CreatedBy            NullableString `json:"createdBy"`
-	LastModified         NullableString `json:"lastModified"`
-	LastModifiedBy       NullableString `json:"lastModifiedBy"`
+	Price float64 `json:"price"`
+	StartDate time.Time `json:"startDate"`
+	EndDate NullableTime `json:"endDate"`
+	PrometheusRuleId int32 `json:"prometheusRuleId"`
+	RuleName string `json:"ruleName"`
+	CreatedBy NullableString `json:"createdBy"`
+	LastModified NullableString `json:"lastModified"`
+	LastModifiedBy NullableString `json:"lastModifiedBy"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -261,7 +261,7 @@ func (o *PrometheusBillingSummaryDto) SetLastModifiedBy(v string) {
 }
 
 func (o PrometheusBillingSummaryDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -306,10 +306,10 @@ func (o *PrometheusBillingSummaryDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -377,3 +377,5 @@ func (v *NullablePrometheusBillingSummaryDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

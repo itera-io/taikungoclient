@@ -20,11 +20,11 @@ var _ MappedNullable = &NetworkPoliciesSearchCommand{}
 
 // NetworkPoliciesSearchCommand struct for NetworkPoliciesSearchCommand
 type NetworkPoliciesSearchCommand struct {
-	Limit                         NullableInt32  `json:"limit,omitempty"`
-	Offset                        NullableInt32  `json:"offset,omitempty"`
-	SearchTerm                    NullableString `json:"searchTerm,omitempty"`
-	IncludePublicImportedClusters NullableBool   `json:"includePublicImportedClusters,omitempty"`
-	AdditionalProperties          map[string]interface{}
+	Limit NullableInt32 `json:"limit,omitempty"`
+	Offset NullableInt32 `json:"offset,omitempty"`
+	SearchTerm NullableString `json:"searchTerm,omitempty"`
+	IncludePublicImportedClusters NullableBool `json:"includePublicImportedClusters,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _NetworkPoliciesSearchCommand NetworkPoliciesSearchCommand
@@ -78,7 +78,6 @@ func (o *NetworkPoliciesSearchCommand) HasLimit() bool {
 func (o *NetworkPoliciesSearchCommand) SetLimit(v int32) {
 	o.Limit.Set(&v)
 }
-
 // SetLimitNil sets the value for Limit to be an explicit nil
 func (o *NetworkPoliciesSearchCommand) SetLimitNil() {
 	o.Limit.Set(nil)
@@ -121,7 +120,6 @@ func (o *NetworkPoliciesSearchCommand) HasOffset() bool {
 func (o *NetworkPoliciesSearchCommand) SetOffset(v int32) {
 	o.Offset.Set(&v)
 }
-
 // SetOffsetNil sets the value for Offset to be an explicit nil
 func (o *NetworkPoliciesSearchCommand) SetOffsetNil() {
 	o.Offset.Set(nil)
@@ -164,7 +162,6 @@ func (o *NetworkPoliciesSearchCommand) HasSearchTerm() bool {
 func (o *NetworkPoliciesSearchCommand) SetSearchTerm(v string) {
 	o.SearchTerm.Set(&v)
 }
-
 // SetSearchTermNil sets the value for SearchTerm to be an explicit nil
 func (o *NetworkPoliciesSearchCommand) SetSearchTermNil() {
 	o.SearchTerm.Set(nil)
@@ -207,7 +204,6 @@ func (o *NetworkPoliciesSearchCommand) HasIncludePublicImportedClusters() bool {
 func (o *NetworkPoliciesSearchCommand) SetIncludePublicImportedClusters(v bool) {
 	o.IncludePublicImportedClusters.Set(&v)
 }
-
 // SetIncludePublicImportedClustersNil sets the value for IncludePublicImportedClusters to be an explicit nil
 func (o *NetworkPoliciesSearchCommand) SetIncludePublicImportedClustersNil() {
 	o.IncludePublicImportedClusters.Set(nil)
@@ -219,7 +215,7 @@ func (o *NetworkPoliciesSearchCommand) UnsetIncludePublicImportedClusters() {
 }
 
 func (o NetworkPoliciesSearchCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -307,3 +303,5 @@ func (v *NullableNetworkPoliciesSearchCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

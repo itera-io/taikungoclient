@@ -21,9 +21,9 @@ var _ MappedNullable = &AccountEntity{}
 
 // AccountEntity struct for AccountEntity
 type AccountEntity struct {
-	AccountId            int32          `json:"accountId"`
-	AccountName          string         `json:"accountName"`
-	Logo                 NullableString `json:"logo,omitempty"`
+	AccountId int32 `json:"accountId"`
+	AccountName string `json:"accountName"`
+	Logo NullableString `json:"logo,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -128,7 +128,6 @@ func (o *AccountEntity) HasLogo() bool {
 func (o *AccountEntity) SetLogo(v string) {
 	o.Logo.Set(&v)
 }
-
 // SetLogoNil sets the value for Logo to be an explicit nil
 func (o *AccountEntity) SetLogoNil() {
 	o.Logo.Set(nil)
@@ -140,7 +139,7 @@ func (o *AccountEntity) UnsetLogo() {
 }
 
 func (o AccountEntity) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -176,10 +175,10 @@ func (o *AccountEntity) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -242,3 +241,5 @@ func (v *NullableAccountEntity) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

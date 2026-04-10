@@ -20,10 +20,10 @@ var _ MappedNullable = &ProjectMetadata{}
 
 // ProjectMetadata struct for ProjectMetadata
 type ProjectMetadata struct {
-	Path                 NullableString `json:"path,omitempty"`
-	Type                 NullableString `json:"type,omitempty"`
-	VcsSubPath           NullableString `json:"vcsSubPath,omitempty"`
-	Providers            []Provider     `json:"providers,omitempty"`
+	Path NullableString `json:"path,omitempty"`
+	Type NullableString `json:"type,omitempty"`
+	VcsSubPath NullableString `json:"vcsSubPath,omitempty"`
+	Providers []Provider `json:"providers,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,7 +78,6 @@ func (o *ProjectMetadata) HasPath() bool {
 func (o *ProjectMetadata) SetPath(v string) {
 	o.Path.Set(&v)
 }
-
 // SetPathNil sets the value for Path to be an explicit nil
 func (o *ProjectMetadata) SetPathNil() {
 	o.Path.Set(nil)
@@ -121,7 +120,6 @@ func (o *ProjectMetadata) HasType() bool {
 func (o *ProjectMetadata) SetType(v string) {
 	o.Type.Set(&v)
 }
-
 // SetTypeNil sets the value for Type to be an explicit nil
 func (o *ProjectMetadata) SetTypeNil() {
 	o.Type.Set(nil)
@@ -164,7 +162,6 @@ func (o *ProjectMetadata) HasVcsSubPath() bool {
 func (o *ProjectMetadata) SetVcsSubPath(v string) {
 	o.VcsSubPath.Set(&v)
 }
-
 // SetVcsSubPathNil sets the value for VcsSubPath to be an explicit nil
 func (o *ProjectMetadata) SetVcsSubPathNil() {
 	o.VcsSubPath.Set(nil)
@@ -209,7 +206,7 @@ func (o *ProjectMetadata) SetProviders(v []Provider) {
 }
 
 func (o ProjectMetadata) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -297,3 +294,5 @@ func (v *NullableProjectMetadata) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

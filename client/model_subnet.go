@@ -20,9 +20,9 @@ var _ MappedNullable = &Subnet{}
 
 // Subnet struct for Subnet
 type Subnet struct {
-	Id                   NullableString `json:"id,omitempty"`
-	Name                 NullableString `json:"name,omitempty"`
-	Cidr                 NullableString `json:"cidr,omitempty"`
+	Id NullableString `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Cidr NullableString `json:"cidr,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,7 +77,6 @@ func (o *Subnet) HasId() bool {
 func (o *Subnet) SetId(v string) {
 	o.Id.Set(&v)
 }
-
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *Subnet) SetIdNil() {
 	o.Id.Set(nil)
@@ -120,7 +119,6 @@ func (o *Subnet) HasName() bool {
 func (o *Subnet) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *Subnet) SetNameNil() {
 	o.Name.Set(nil)
@@ -163,7 +161,6 @@ func (o *Subnet) HasCidr() bool {
 func (o *Subnet) SetCidr(v string) {
 	o.Cidr.Set(&v)
 }
-
 // SetCidrNil sets the value for Cidr to be an explicit nil
 func (o *Subnet) SetCidrNil() {
 	o.Cidr.Set(nil)
@@ -175,7 +172,7 @@ func (o *Subnet) UnsetCidr() {
 }
 
 func (o Subnet) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -259,3 +256,5 @@ func (v *NullableSubnet) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

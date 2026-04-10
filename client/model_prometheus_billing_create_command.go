@@ -21,10 +21,10 @@ var _ MappedNullable = &PrometheusBillingCreateCommand{}
 
 // PrometheusBillingCreateCommand struct for PrometheusBillingCreateCommand
 type PrometheusBillingCreateCommand struct {
-	OrganizationId       *int32     `json:"organizationId,omitempty"`
-	PrometheusRuleId     *int32     `json:"prometheusRuleId,omitempty"`
-	StartDate            *time.Time `json:"startDate,omitempty"`
-	Price                *float64   `json:"price,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	PrometheusRuleId *int32 `json:"prometheusRuleId,omitempty"`
+	StartDate *time.Time `json:"startDate,omitempty"`
+	Price *float64 `json:"price,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -176,7 +176,7 @@ func (o *PrometheusBillingCreateCommand) SetPrice(v float64) {
 }
 
 func (o PrometheusBillingCreateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -264,3 +264,5 @@ func (v *NullablePrometheusBillingCreateCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

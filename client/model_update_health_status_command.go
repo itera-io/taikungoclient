@@ -20,8 +20,8 @@ var _ MappedNullable = &UpdateHealthStatusCommand{}
 
 // UpdateHealthStatusCommand struct for UpdateHealthStatusCommand
 type UpdateHealthStatusCommand struct {
-	ProjectId            *int32         `json:"projectId,omitempty"`
-	Health               *ProjectHealth `json:"health,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	Health *ProjectHealth `json:"health,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,7 +109,7 @@ func (o *UpdateHealthStatusCommand) SetHealth(v ProjectHealth) {
 }
 
 func (o UpdateHealthStatusCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -189,3 +189,5 @@ func (v *NullableUpdateHealthStatusCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

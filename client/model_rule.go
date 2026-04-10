@@ -21,17 +21,17 @@ var _ MappedNullable = &Rule{}
 
 // Rule struct for Rule
 type Rule struct {
-	State                NullableString `json:"state,omitempty"`
-	Name                 NullableString `json:"name,omitempty"`
-	Query                NullableString `json:"query,omitempty"`
-	Duration             *int64         `json:"duration,omitempty"`
-	Labels               *RuleLabels    `json:"labels,omitempty"`
-	Annotations          *Annotations   `json:"annotations,omitempty"`
-	Alerts               []Alert        `json:"alerts,omitempty"`
-	Health               NullableString `json:"health,omitempty"`
-	EvaluationTime       *float64       `json:"evaluationTime,omitempty"`
-	LastEvaluation       *time.Time     `json:"lastEvaluation,omitempty"`
-	Type                 NullableString `json:"type,omitempty"`
+	State NullableString `json:"state,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Query NullableString `json:"query,omitempty"`
+	Duration *int64 `json:"duration,omitempty"`
+	Labels *RuleLabels `json:"labels,omitempty"`
+	Annotations *Annotations `json:"annotations,omitempty"`
+	Alerts []Alert `json:"alerts,omitempty"`
+	Health NullableString `json:"health,omitempty"`
+	EvaluationTime *float64 `json:"evaluationTime,omitempty"`
+	LastEvaluation *time.Time `json:"lastEvaluation,omitempty"`
+	Type NullableString `json:"type,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -86,7 +86,6 @@ func (o *Rule) HasState() bool {
 func (o *Rule) SetState(v string) {
 	o.State.Set(&v)
 }
-
 // SetStateNil sets the value for State to be an explicit nil
 func (o *Rule) SetStateNil() {
 	o.State.Set(nil)
@@ -129,7 +128,6 @@ func (o *Rule) HasName() bool {
 func (o *Rule) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *Rule) SetNameNil() {
 	o.Name.Set(nil)
@@ -172,7 +170,6 @@ func (o *Rule) HasQuery() bool {
 func (o *Rule) SetQuery(v string) {
 	o.Query.Set(&v)
 }
-
 // SetQueryNil sets the value for Query to be an explicit nil
 func (o *Rule) SetQueryNil() {
 	o.Query.Set(nil)
@@ -344,7 +341,6 @@ func (o *Rule) HasHealth() bool {
 func (o *Rule) SetHealth(v string) {
 	o.Health.Set(&v)
 }
-
 // SetHealthNil sets the value for Health to be an explicit nil
 func (o *Rule) SetHealthNil() {
 	o.Health.Set(nil)
@@ -451,7 +447,6 @@ func (o *Rule) HasType() bool {
 func (o *Rule) SetType(v string) {
 	o.Type.Set(&v)
 }
-
 // SetTypeNil sets the value for Type to be an explicit nil
 func (o *Rule) SetTypeNil() {
 	o.Type.Set(nil)
@@ -463,7 +458,7 @@ func (o *Rule) UnsetType() {
 }
 
 func (o Rule) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -579,3 +574,5 @@ func (v *NullableRule) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

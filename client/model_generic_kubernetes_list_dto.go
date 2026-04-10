@@ -21,20 +21,20 @@ var _ MappedNullable = &GenericKubernetesListDto{}
 
 // GenericKubernetesListDto struct for GenericKubernetesListDto
 type GenericKubernetesListDto struct {
-	Id                   int32               `json:"id"`
-	ProjectCount         int32               `json:"projectCount"`
-	IsLocked             bool                `json:"isLocked"`
-	Name                 NullableString      `json:"name"`
-	MainProject          MainProjectDto      `json:"mainProject"`
-	AssociatedVClusters  []CommonDropdownDto `json:"associatedVClusters"`
-	CreatedBy            NullableString      `json:"createdBy"`
-	CreatedAt            NullableString      `json:"createdAt"`
-	LastModified         NullableString      `json:"lastModified"`
-	LastModifiedBy       NullableString      `json:"lastModifiedBy"`
-	IsDefault            bool                `json:"isDefault"`
-	OrganizationId       int32               `json:"organizationId"`
-	OrganizationName     NullableString      `json:"organizationName"`
-	ContinentName        NullableString      `json:"continentName"`
+	Id int32 `json:"id"`
+	ProjectCount int32 `json:"projectCount"`
+	IsLocked bool `json:"isLocked"`
+	Name NullableString `json:"name"`
+	MainProject MainProjectDto `json:"mainProject"`
+	AssociatedVClusters []CommonDropdownDto `json:"associatedVClusters"`
+	CreatedBy NullableString `json:"createdBy"`
+	CreatedAt NullableString `json:"createdAt"`
+	LastModified NullableString `json:"lastModified"`
+	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	IsDefault bool `json:"isDefault"`
+	OrganizationId int32 `json:"organizationId"`
+	OrganizationName NullableString `json:"organizationName"`
+	ContinentName NullableString `json:"continentName"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -424,7 +424,7 @@ func (o *GenericKubernetesListDto) SetContinentName(v string) {
 }
 
 func (o GenericKubernetesListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -483,10 +483,10 @@ func (o *GenericKubernetesListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -560,3 +560,5 @@ func (v *NullableGenericKubernetesListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

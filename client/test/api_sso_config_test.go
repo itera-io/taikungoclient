@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_SsoConfigAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_SsoConfigAPIService(t *testing.T) {
 
 	t.Run("Test SsoConfigAPIService SsoConfigCheck", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.SsoConfigAPI.SsoConfigCheck(context.Background()).Execute()
 
@@ -35,7 +35,7 @@ func Test_taikuncore_SsoConfigAPIService(t *testing.T) {
 
 	t.Run("Test SsoConfigAPIService SsoConfigCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SsoConfigAPI.SsoConfigCreate(context.Background()).Execute()
 
@@ -47,7 +47,7 @@ func Test_taikuncore_SsoConfigAPIService(t *testing.T) {
 
 	t.Run("Test SsoConfigAPIService SsoConfigDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int32
 
@@ -60,7 +60,7 @@ func Test_taikuncore_SsoConfigAPIService(t *testing.T) {
 
 	t.Run("Test SsoConfigAPIService SsoConfigDetails", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SsoConfigAPI.SsoConfigDetails(context.Background()).Execute()
 
@@ -72,7 +72,7 @@ func Test_taikuncore_SsoConfigAPIService(t *testing.T) {
 
 	t.Run("Test SsoConfigAPIService SsoConfigList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SsoConfigAPI.SsoConfigList(context.Background()).Execute()
 
@@ -84,7 +84,7 @@ func Test_taikuncore_SsoConfigAPIService(t *testing.T) {
 
 	t.Run("Test SsoConfigAPIService SsoConfigUpdate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int32
 

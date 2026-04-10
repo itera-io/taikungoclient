@@ -13,8 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
+	"fmt"
 )
 
 // checks if the InvoiceDto type satisfies the MappedNullable interface at compile time
@@ -22,18 +22,18 @@ var _ MappedNullable = &InvoiceDto{}
 
 // InvoiceDto struct for InvoiceDto
 type InvoiceDto struct {
-	Id                         int32          `json:"id"`
-	Name                       NullableString `json:"name"`
-	DocumentNumber             NullableString `json:"documentNumber"`
-	OrganizationSubscriptionId int32          `json:"organizationSubscriptionId"`
-	IsPaid                     bool           `json:"isPaid"`
-	RequiredPaymentAction      bool           `json:"requiredPaymentAction"`
-	StripeInvoiceId            NullableString `json:"stripeInvoiceId"`
-	Price                      float64        `json:"price"`
-	StartDate                  time.Time      `json:"startDate"`
-	EndDate                    time.Time      `json:"endDate"`
-	DueDate                    time.Time      `json:"dueDate"`
-	AdditionalProperties       map[string]interface{}
+	Id int32 `json:"id"`
+	Name NullableString `json:"name"`
+	DocumentNumber NullableString `json:"documentNumber"`
+	OrganizationSubscriptionId int32 `json:"organizationSubscriptionId"`
+	IsPaid bool `json:"isPaid"`
+	RequiredPaymentAction bool `json:"requiredPaymentAction"`
+	StripeInvoiceId NullableString `json:"stripeInvoiceId"`
+	Price float64 `json:"price"`
+	StartDate time.Time `json:"startDate"`
+	EndDate time.Time `json:"endDate"`
+	DueDate time.Time `json:"dueDate"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _InvoiceDto InvoiceDto
@@ -337,7 +337,7 @@ func (o *InvoiceDto) SetDueDate(v time.Time) {
 }
 
 func (o InvoiceDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -388,10 +388,10 @@ func (o *InvoiceDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -462,3 +462,5 @@ func (v *NullableInvoiceDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

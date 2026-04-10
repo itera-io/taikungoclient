@@ -20,17 +20,17 @@ var _ MappedNullable = &CreateProjectAppCommand{}
 
 // CreateProjectAppCommand struct for CreateProjectAppCommand
 type CreateProjectAppCommand struct {
-	Name                 NullableString        `json:"name,omitempty"`
-	Namespace            NullableString        `json:"namespace,omitempty"`
-	ProjectId            *int32                `json:"projectId,omitempty"`
-	CatalogAppId         *int32                `json:"catalogAppId,omitempty"`
-	ExtraValues          NullableString        `json:"extraValues,omitempty"`
-	AutoSync             *bool                 `json:"autoSync,omitempty"`
-	TaikunLinkEnabled    *bool                 `json:"taikunLinkEnabled,omitempty"`
-	Timeout              NullableInt32         `json:"timeout,omitempty"`
-	CreatePullSecret     *bool                 `json:"createPullSecret,omitempty"`
-	PullSecretName       NullableString        `json:"pullSecretName,omitempty"`
-	Parameters           []ProjectAppParamsDto `json:"parameters,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	CatalogAppId *int32 `json:"catalogAppId,omitempty"`
+	ExtraValues NullableString `json:"extraValues,omitempty"`
+	AutoSync *bool `json:"autoSync,omitempty"`
+	TaikunLinkEnabled *bool `json:"taikunLinkEnabled,omitempty"`
+	Timeout NullableInt32 `json:"timeout,omitempty"`
+	CreatePullSecret *bool `json:"createPullSecret,omitempty"`
+	PullSecretName NullableString `json:"pullSecretName,omitempty"`
+	Parameters []ProjectAppParamsDto `json:"parameters,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -85,7 +85,6 @@ func (o *CreateProjectAppCommand) HasName() bool {
 func (o *CreateProjectAppCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateProjectAppCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -128,7 +127,6 @@ func (o *CreateProjectAppCommand) HasNamespace() bool {
 func (o *CreateProjectAppCommand) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *CreateProjectAppCommand) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -235,7 +233,6 @@ func (o *CreateProjectAppCommand) HasExtraValues() bool {
 func (o *CreateProjectAppCommand) SetExtraValues(v string) {
 	o.ExtraValues.Set(&v)
 }
-
 // SetExtraValuesNil sets the value for ExtraValues to be an explicit nil
 func (o *CreateProjectAppCommand) SetExtraValuesNil() {
 	o.ExtraValues.Set(nil)
@@ -342,7 +339,6 @@ func (o *CreateProjectAppCommand) HasTimeout() bool {
 func (o *CreateProjectAppCommand) SetTimeout(v int32) {
 	o.Timeout.Set(&v)
 }
-
 // SetTimeoutNil sets the value for Timeout to be an explicit nil
 func (o *CreateProjectAppCommand) SetTimeoutNil() {
 	o.Timeout.Set(nil)
@@ -417,7 +413,6 @@ func (o *CreateProjectAppCommand) HasPullSecretName() bool {
 func (o *CreateProjectAppCommand) SetPullSecretName(v string) {
 	o.PullSecretName.Set(&v)
 }
-
 // SetPullSecretNameNil sets the value for PullSecretName to be an explicit nil
 func (o *CreateProjectAppCommand) SetPullSecretNameNil() {
 	o.PullSecretName.Set(nil)
@@ -462,7 +457,7 @@ func (o *CreateProjectAppCommand) SetParameters(v []ProjectAppParamsDto) {
 }
 
 func (o CreateProjectAppCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -578,3 +573,5 @@ func (v *NullableCreateProjectAppCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

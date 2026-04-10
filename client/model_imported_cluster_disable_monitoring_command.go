@@ -20,7 +20,7 @@ var _ MappedNullable = &ImportedClusterDisableMonitoringCommand{}
 
 // ImportedClusterDisableMonitoringCommand struct for ImportedClusterDisableMonitoringCommand
 type ImportedClusterDisableMonitoringCommand struct {
-	ProjectId            *int32 `json:"projectId,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,7 @@ func (o *ImportedClusterDisableMonitoringCommand) SetProjectId(v int32) {
 }
 
 func (o ImportedClusterDisableMonitoringCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -152,3 +152,5 @@ func (v *NullableImportedClusterDisableMonitoringCommand) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -21,25 +21,25 @@ var _ MappedNullable = &ZadaraCredentialsListDto{}
 
 // ZadaraCredentialsListDto struct for ZadaraCredentialsListDto
 type ZadaraCredentialsListDto struct {
-	Id                     int32               `json:"id"`
-	ProjectCount           int32               `json:"projectCount"`
-	IsLocked               bool                `json:"isLocked"`
-	Name                   string              `json:"name"`
-	Region                 string              `json:"region"`
-	AvailabilityZones      []string            `json:"availabilityZones"`
-	AvailabilityZonesCount int32               `json:"availabilityZonesCount"`
-	Projects               []CommonDropdownDto `json:"projects"`
-	CreatedBy              NullableString      `json:"createdBy"`
-	LastModified           NullableString      `json:"lastModified"`
-	LastModifiedBy         NullableString      `json:"lastModifiedBy"`
-	IsDefault              bool                `json:"isDefault"`
-	OrganizationId         int32               `json:"organizationId"`
-	OrganizationName       string              `json:"organizationName"`
-	CreatedAt              NullableString      `json:"createdAt"`
-	ContinentName          NullableString      `json:"continentName"`
-	ZadaraApiUrl           string              `json:"zadaraApiUrl"`
-	ZadaraVolumeType       string              `json:"zadaraVolumeType"`
-	AdditionalProperties   map[string]interface{}
+	Id int32 `json:"id"`
+	ProjectCount int32 `json:"projectCount"`
+	IsLocked bool `json:"isLocked"`
+	Name string `json:"name"`
+	Region string `json:"region"`
+	AvailabilityZones []string `json:"availabilityZones"`
+	AvailabilityZonesCount int32 `json:"availabilityZonesCount"`
+	Projects []CommonDropdownDto `json:"projects"`
+	CreatedBy NullableString `json:"createdBy"`
+	LastModified NullableString `json:"lastModified"`
+	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	IsDefault bool `json:"isDefault"`
+	OrganizationId int32 `json:"organizationId"`
+	OrganizationName string `json:"organizationName"`
+	CreatedAt NullableString `json:"createdAt"`
+	ContinentName NullableString `json:"continentName"`
+	ZadaraApiUrl string `json:"zadaraApiUrl"`
+	ZadaraVolumeType string `json:"zadaraVolumeType"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ZadaraCredentialsListDto ZadaraCredentialsListDto
@@ -522,7 +522,7 @@ func (o *ZadaraCredentialsListDto) SetZadaraVolumeType(v string) {
 }
 
 func (o ZadaraCredentialsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -587,10 +587,10 @@ func (o *ZadaraCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -668,3 +668,5 @@ func (v *NullableZadaraCredentialsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

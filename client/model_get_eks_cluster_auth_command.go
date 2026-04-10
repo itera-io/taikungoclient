@@ -20,9 +20,9 @@ var _ MappedNullable = &GetEksClusterAuthCommand{}
 
 // GetEksClusterAuthCommand struct for GetEksClusterAuthCommand
 type GetEksClusterAuthCommand struct {
-	ProjectId            *int32         `json:"projectId,omitempty"`
-	KubeConfigName       NullableString `json:"kubeConfigName,omitempty"`
-	ConfigToken          NullableString `json:"configToken,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	KubeConfigName NullableString `json:"kubeConfigName,omitempty"`
+	ConfigToken NullableString `json:"configToken,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,7 +109,6 @@ func (o *GetEksClusterAuthCommand) HasKubeConfigName() bool {
 func (o *GetEksClusterAuthCommand) SetKubeConfigName(v string) {
 	o.KubeConfigName.Set(&v)
 }
-
 // SetKubeConfigNameNil sets the value for KubeConfigName to be an explicit nil
 func (o *GetEksClusterAuthCommand) SetKubeConfigNameNil() {
 	o.KubeConfigName.Set(nil)
@@ -152,7 +151,6 @@ func (o *GetEksClusterAuthCommand) HasConfigToken() bool {
 func (o *GetEksClusterAuthCommand) SetConfigToken(v string) {
 	o.ConfigToken.Set(&v)
 }
-
 // SetConfigTokenNil sets the value for ConfigToken to be an explicit nil
 func (o *GetEksClusterAuthCommand) SetConfigTokenNil() {
 	o.ConfigToken.Set(nil)
@@ -164,7 +162,7 @@ func (o *GetEksClusterAuthCommand) UnsetConfigToken() {
 }
 
 func (o GetEksClusterAuthCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -248,3 +246,5 @@ func (v *NullableGetEksClusterAuthCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

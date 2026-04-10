@@ -20,17 +20,17 @@ var _ MappedNullable = &CreateKubernetesProfileCommand{}
 
 // CreateKubernetesProfileCommand struct for CreateKubernetesProfileCommand
 type CreateKubernetesProfileCommand struct {
-	Name                     NullableString  `json:"name,omitempty"`
-	OctaviaEnabled           *bool           `json:"octaviaEnabled,omitempty"`
-	ExposeNodePortOnBastion  *bool           `json:"exposeNodePortOnBastion,omitempty"`
-	OrganizationId           NullableInt32   `json:"organizationId,omitempty"`
-	TaikunLBEnabled          *bool           `json:"taikunLBEnabled,omitempty"`
-	AllowSchedulingOnMaster  *bool           `json:"allowSchedulingOnMaster,omitempty"`
-	UniqueClusterName        *bool           `json:"uniqueClusterName,omitempty"`
-	ProxmoxStorage           *ProxmoxStorage `json:"proxmoxStorage,omitempty"`
-	NvidiaGpuOperatorEnabled *bool           `json:"nvidiaGpuOperatorEnabled,omitempty"`
-	WasmEnabled              *bool           `json:"wasmEnabled,omitempty"`
-	AdditionalProperties     map[string]interface{}
+	Name NullableString `json:"name,omitempty"`
+	OctaviaEnabled *bool `json:"octaviaEnabled,omitempty"`
+	ExposeNodePortOnBastion *bool `json:"exposeNodePortOnBastion,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	TaikunLBEnabled *bool `json:"taikunLBEnabled,omitempty"`
+	AllowSchedulingOnMaster *bool `json:"allowSchedulingOnMaster,omitempty"`
+	UniqueClusterName *bool `json:"uniqueClusterName,omitempty"`
+	ProxmoxStorage *ProxmoxStorage `json:"proxmoxStorage,omitempty"`
+	NvidiaGpuOperatorEnabled *bool `json:"nvidiaGpuOperatorEnabled,omitempty"`
+	WasmEnabled *bool `json:"wasmEnabled,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CreateKubernetesProfileCommand CreateKubernetesProfileCommand
@@ -84,7 +84,6 @@ func (o *CreateKubernetesProfileCommand) HasName() bool {
 func (o *CreateKubernetesProfileCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateKubernetesProfileCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -191,7 +190,6 @@ func (o *CreateKubernetesProfileCommand) HasOrganizationId() bool {
 func (o *CreateKubernetesProfileCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateKubernetesProfileCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -395,7 +393,7 @@ func (o *CreateKubernetesProfileCommand) SetWasmEnabled(v bool) {
 }
 
 func (o CreateKubernetesProfileCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -507,3 +505,5 @@ func (v *NullableCreateKubernetesProfileCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

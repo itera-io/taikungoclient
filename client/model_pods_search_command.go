@@ -20,11 +20,11 @@ var _ MappedNullable = &PodsSearchCommand{}
 
 // PodsSearchCommand struct for PodsSearchCommand
 type PodsSearchCommand struct {
-	Limit                         NullableInt32  `json:"limit,omitempty"`
-	Offset                        NullableInt32  `json:"offset,omitempty"`
-	SearchTerm                    NullableString `json:"searchTerm,omitempty"`
-	IncludePublicImportedClusters NullableBool   `json:"includePublicImportedClusters,omitempty"`
-	AdditionalProperties          map[string]interface{}
+	Limit NullableInt32 `json:"limit,omitempty"`
+	Offset NullableInt32 `json:"offset,omitempty"`
+	SearchTerm NullableString `json:"searchTerm,omitempty"`
+	IncludePublicImportedClusters NullableBool `json:"includePublicImportedClusters,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PodsSearchCommand PodsSearchCommand
@@ -78,7 +78,6 @@ func (o *PodsSearchCommand) HasLimit() bool {
 func (o *PodsSearchCommand) SetLimit(v int32) {
 	o.Limit.Set(&v)
 }
-
 // SetLimitNil sets the value for Limit to be an explicit nil
 func (o *PodsSearchCommand) SetLimitNil() {
 	o.Limit.Set(nil)
@@ -121,7 +120,6 @@ func (o *PodsSearchCommand) HasOffset() bool {
 func (o *PodsSearchCommand) SetOffset(v int32) {
 	o.Offset.Set(&v)
 }
-
 // SetOffsetNil sets the value for Offset to be an explicit nil
 func (o *PodsSearchCommand) SetOffsetNil() {
 	o.Offset.Set(nil)
@@ -164,7 +162,6 @@ func (o *PodsSearchCommand) HasSearchTerm() bool {
 func (o *PodsSearchCommand) SetSearchTerm(v string) {
 	o.SearchTerm.Set(&v)
 }
-
 // SetSearchTermNil sets the value for SearchTerm to be an explicit nil
 func (o *PodsSearchCommand) SetSearchTermNil() {
 	o.SearchTerm.Set(nil)
@@ -207,7 +204,6 @@ func (o *PodsSearchCommand) HasIncludePublicImportedClusters() bool {
 func (o *PodsSearchCommand) SetIncludePublicImportedClusters(v bool) {
 	o.IncludePublicImportedClusters.Set(&v)
 }
-
 // SetIncludePublicImportedClustersNil sets the value for IncludePublicImportedClusters to be an explicit nil
 func (o *PodsSearchCommand) SetIncludePublicImportedClustersNil() {
 	o.IncludePublicImportedClusters.Set(nil)
@@ -219,7 +215,7 @@ func (o *PodsSearchCommand) UnsetIncludePublicImportedClusters() {
 }
 
 func (o PodsSearchCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -307,3 +303,5 @@ func (v *NullablePodsSearchCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

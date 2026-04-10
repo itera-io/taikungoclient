@@ -20,8 +20,8 @@ var _ MappedNullable = &Annotations{}
 
 // Annotations struct for Annotations
 type Annotations struct {
-	Description          NullableString `json:"description,omitempty"`
-	Title                NullableString `json:"title,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	Title NullableString `json:"title,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,6 @@ func (o *Annotations) HasDescription() bool {
 func (o *Annotations) SetDescription(v string) {
 	o.Description.Set(&v)
 }
-
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *Annotations) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -119,7 +118,6 @@ func (o *Annotations) HasTitle() bool {
 func (o *Annotations) SetTitle(v string) {
 	o.Title.Set(&v)
 }
-
 // SetTitleNil sets the value for Title to be an explicit nil
 func (o *Annotations) SetTitleNil() {
 	o.Title.Set(nil)
@@ -131,7 +129,7 @@ func (o *Annotations) UnsetTitle() {
 }
 
 func (o Annotations) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -211,3 +209,5 @@ func (v *NullableAnnotations) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

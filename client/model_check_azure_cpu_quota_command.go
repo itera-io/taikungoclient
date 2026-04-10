@@ -20,7 +20,7 @@ var _ MappedNullable = &CheckAzureCpuQuotaCommand{}
 
 // CheckAzureCpuQuotaCommand struct for CheckAzureCpuQuotaCommand
 type CheckAzureCpuQuotaCommand struct {
-	CloudId              *int32 `json:"cloudId,omitempty"`
+	CloudId *int32 `json:"cloudId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,7 @@ func (o *CheckAzureCpuQuotaCommand) SetCloudId(v int32) {
 }
 
 func (o CheckAzureCpuQuotaCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -152,3 +152,5 @@ func (v *NullableCheckAzureCpuQuotaCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

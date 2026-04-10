@@ -21,14 +21,14 @@ var _ MappedNullable = &StandAloneVmDiskForDetailsDto{}
 
 // StandAloneVmDiskForDetailsDto struct for StandAloneVmDiskForDetailsDto
 type StandAloneVmDiskForDetailsDto struct {
-	Id                   int32                  `json:"id"`
-	Name                 NullableString         `json:"name"`
-	CurrentSize          int64                  `json:"currentSize"`
-	TargetSize           int64                  `json:"targetSize"`
-	VolumeType           NullableString         `json:"volumeType"`
-	DeviceName           NullableString         `json:"deviceName"`
-	LunId                NullableString         `json:"lunId"`
-	Status               StandAloneVmDiskStatus `json:"status"`
+	Id int32 `json:"id"`
+	Name NullableString `json:"name"`
+	CurrentSize int64 `json:"currentSize"`
+	TargetSize int64 `json:"targetSize"`
+	VolumeType NullableString `json:"volumeType"`
+	DeviceName NullableString `json:"deviceName"`
+	LunId NullableString `json:"lunId"`
+	Status StandAloneVmDiskStatus `json:"status"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -260,7 +260,7 @@ func (o *StandAloneVmDiskForDetailsDto) SetStatus(v StandAloneVmDiskStatus) {
 }
 
 func (o StandAloneVmDiskForDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -305,10 +305,10 @@ func (o *StandAloneVmDiskForDetailsDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -376,3 +376,5 @@ func (v *NullableStandAloneVmDiskForDetailsDto) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

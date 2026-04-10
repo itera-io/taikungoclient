@@ -20,7 +20,7 @@ var _ MappedNullable = &TwoFactorAuthVerifyResult{}
 
 // TwoFactorAuthVerifyResult struct for TwoFactorAuthVerifyResult
 type TwoFactorAuthVerifyResult struct {
-	RecoveryCodes        []string `json:"recoveryCodes,omitempty"`
+	RecoveryCodes []string `json:"recoveryCodes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,7 +77,7 @@ func (o *TwoFactorAuthVerifyResult) SetRecoveryCodes(v []string) {
 }
 
 func (o TwoFactorAuthVerifyResult) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -153,3 +153,5 @@ func (v *NullableTwoFactorAuthVerifyResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,10 +20,10 @@ var _ MappedNullable = &CreateGlobalSlackConfigurationCommand{}
 
 // CreateGlobalSlackConfigurationCommand struct for CreateGlobalSlackConfigurationCommand
 type CreateGlobalSlackConfigurationCommand struct {
-	Name                 NullableString `json:"name,omitempty"`
-	Url                  NullableString `json:"url,omitempty"`
-	UserName             NullableString `json:"userName,omitempty"`
-	Channel              NullableString `json:"channel,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	UserName NullableString `json:"userName,omitempty"`
+	Channel NullableString `json:"channel,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,7 +78,6 @@ func (o *CreateGlobalSlackConfigurationCommand) HasName() bool {
 func (o *CreateGlobalSlackConfigurationCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateGlobalSlackConfigurationCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -121,7 +120,6 @@ func (o *CreateGlobalSlackConfigurationCommand) HasUrl() bool {
 func (o *CreateGlobalSlackConfigurationCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *CreateGlobalSlackConfigurationCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -164,7 +162,6 @@ func (o *CreateGlobalSlackConfigurationCommand) HasUserName() bool {
 func (o *CreateGlobalSlackConfigurationCommand) SetUserName(v string) {
 	o.UserName.Set(&v)
 }
-
 // SetUserNameNil sets the value for UserName to be an explicit nil
 func (o *CreateGlobalSlackConfigurationCommand) SetUserNameNil() {
 	o.UserName.Set(nil)
@@ -207,7 +204,6 @@ func (o *CreateGlobalSlackConfigurationCommand) HasChannel() bool {
 func (o *CreateGlobalSlackConfigurationCommand) SetChannel(v string) {
 	o.Channel.Set(&v)
 }
-
 // SetChannelNil sets the value for Channel to be an explicit nil
 func (o *CreateGlobalSlackConfigurationCommand) SetChannelNil() {
 	o.Channel.Set(nil)
@@ -219,7 +215,7 @@ func (o *CreateGlobalSlackConfigurationCommand) UnsetChannel() {
 }
 
 func (o CreateGlobalSlackConfigurationCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -307,3 +303,5 @@ func (v *NullableCreateGlobalSlackConfigurationCommand) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

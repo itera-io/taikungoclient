@@ -20,7 +20,7 @@ var _ MappedNullable = &UninstallProjectAppResult{}
 
 // UninstallProjectAppResult struct for UninstallProjectAppResult
 type UninstallProjectAppResult struct {
-	IsJobSkipped         *bool `json:"isJobSkipped,omitempty"`
+	IsJobSkipped *bool `json:"isJobSkipped,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,7 @@ func (o *UninstallProjectAppResult) SetIsJobSkipped(v bool) {
 }
 
 func (o UninstallProjectAppResult) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -152,3 +152,5 @@ func (v *NullableUninstallProjectAppResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

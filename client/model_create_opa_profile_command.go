@@ -20,21 +20,21 @@ var _ MappedNullable = &CreateOpaProfileCommand{}
 
 // CreateOpaProfileCommand struct for CreateOpaProfileCommand
 type CreateOpaProfileCommand struct {
-	Name                           NullableString `json:"name,omitempty"`
-	ForbidNodePort                 *bool          `json:"forbidNodePort,omitempty"`
-	ForbidHttpIngress              *bool          `json:"forbidHttpIngress,omitempty"`
-	RequireProbe                   *bool          `json:"requireProbe,omitempty"`
-	UniqueIngresses                *bool          `json:"uniqueIngresses,omitempty"`
-	UniqueServiceSelector          *bool          `json:"uniqueServiceSelector,omitempty"`
-	ForcePodResource               *bool          `json:"forcePodResource,omitempty"`
-	IsNodeNameForbiddenInVC        *bool          `json:"isNodeNameForbiddenInVC,omitempty"`
-	IsMasterTaintEnforced          *bool          `json:"isMasterTaintEnforced,omitempty"`
-	AllowedRepo                    []string       `json:"allowedRepo,omitempty"`
-	ForbidSpecificTags             []string       `json:"forbidSpecificTags,omitempty"`
-	IngressWhitelist               []string       `json:"ingressWhitelist,omitempty"`
-	WhitelistMasterTaintNamespaces []string       `json:"whitelistMasterTaintNamespaces,omitempty"`
-	OrganizationId                 NullableInt32  `json:"organizationId,omitempty"`
-	AdditionalProperties           map[string]interface{}
+	Name NullableString `json:"name,omitempty"`
+	ForbidNodePort *bool `json:"forbidNodePort,omitempty"`
+	ForbidHttpIngress *bool `json:"forbidHttpIngress,omitempty"`
+	RequireProbe *bool `json:"requireProbe,omitempty"`
+	UniqueIngresses *bool `json:"uniqueIngresses,omitempty"`
+	UniqueServiceSelector *bool `json:"uniqueServiceSelector,omitempty"`
+	ForcePodResource *bool `json:"forcePodResource,omitempty"`
+	IsNodeNameForbiddenInVC *bool `json:"isNodeNameForbiddenInVC,omitempty"`
+	IsMasterTaintEnforced *bool `json:"isMasterTaintEnforced,omitempty"`
+	AllowedRepo []string `json:"allowedRepo,omitempty"`
+	ForbidSpecificTags []string `json:"forbidSpecificTags,omitempty"`
+	IngressWhitelist []string `json:"ingressWhitelist,omitempty"`
+	WhitelistMasterTaintNamespaces []string `json:"whitelistMasterTaintNamespaces,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CreateOpaProfileCommand CreateOpaProfileCommand
@@ -88,7 +88,6 @@ func (o *CreateOpaProfileCommand) HasName() bool {
 func (o *CreateOpaProfileCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateOpaProfileCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -519,7 +518,6 @@ func (o *CreateOpaProfileCommand) HasOrganizationId() bool {
 func (o *CreateOpaProfileCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateOpaProfileCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -531,7 +529,7 @@ func (o *CreateOpaProfileCommand) UnsetOrganizationId() {
 }
 
 func (o CreateOpaProfileCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -659,3 +657,5 @@ func (v *NullableCreateOpaProfileCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,8 +20,8 @@ var _ MappedNullable = &ProjectMonitoringAlertsDto{}
 
 // ProjectMonitoringAlertsDto struct for ProjectMonitoringAlertsDto
 type ProjectMonitoringAlertsDto struct {
-	Status               NullableString `json:"status,omitempty"`
-	Data                 *AlertData     `json:"data,omitempty"`
+	Status NullableString `json:"status,omitempty"`
+	Data *AlertData `json:"data,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,6 @@ func (o *ProjectMonitoringAlertsDto) HasStatus() bool {
 func (o *ProjectMonitoringAlertsDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *ProjectMonitoringAlertsDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -120,7 +119,7 @@ func (o *ProjectMonitoringAlertsDto) SetData(v AlertData) {
 }
 
 func (o ProjectMonitoringAlertsDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -200,3 +199,5 @@ func (v *NullableProjectMonitoringAlertsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

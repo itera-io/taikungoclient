@@ -21,7 +21,7 @@ var _ MappedNullable = &CreateGroupUserDto{}
 
 // CreateGroupUserDto struct for CreateGroupUserDto
 type CreateGroupUserDto struct {
-	Id                   NullableString `json:"id"`
+	Id NullableString `json:"id"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -72,7 +72,7 @@ func (o *CreateGroupUserDto) SetId(v string) {
 }
 
 func (o CreateGroupUserDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -103,10 +103,10 @@ func (o *CreateGroupUserDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -167,3 +167,5 @@ func (v *NullableCreateGroupUserDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

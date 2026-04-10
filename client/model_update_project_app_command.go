@@ -20,8 +20,8 @@ var _ MappedNullable = &UpdateProjectAppCommand{}
 
 // UpdateProjectAppCommand struct for UpdateProjectAppCommand
 type UpdateProjectAppCommand struct {
-	ProjectAppId         *int32         `json:"projectAppId,omitempty"`
-	Status               NullableString `json:"status,omitempty"`
+	ProjectAppId *int32 `json:"projectAppId,omitempty"`
+	Status NullableString `json:"status,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,7 +108,6 @@ func (o *UpdateProjectAppCommand) HasStatus() bool {
 func (o *UpdateProjectAppCommand) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *UpdateProjectAppCommand) SetStatusNil() {
 	o.Status.Set(nil)
@@ -120,7 +119,7 @@ func (o *UpdateProjectAppCommand) UnsetStatus() {
 }
 
 func (o UpdateProjectAppCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -200,3 +199,5 @@ func (v *NullableUpdateProjectAppCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

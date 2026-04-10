@@ -21,8 +21,8 @@ var _ MappedNullable = &AddAccountAdminCommand{}
 
 // AddAccountAdminCommand struct for AddAccountAdminCommand
 type AddAccountAdminCommand struct {
-	AccountId            NullableInt32  `json:"accountId,omitempty"`
-	UserId               NullableString `json:"userId"`
+	AccountId NullableInt32 `json:"accountId,omitempty"`
+	UserId NullableString `json:"userId"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,7 +78,6 @@ func (o *AddAccountAdminCommand) HasAccountId() bool {
 func (o *AddAccountAdminCommand) SetAccountId(v int32) {
 	o.AccountId.Set(&v)
 }
-
 // SetAccountIdNil sets the value for AccountId to be an explicit nil
 func (o *AddAccountAdminCommand) SetAccountIdNil() {
 	o.AccountId.Set(nil)
@@ -116,7 +115,7 @@ func (o *AddAccountAdminCommand) SetUserId(v string) {
 }
 
 func (o AddAccountAdminCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -150,10 +149,10 @@ func (o *AddAccountAdminCommand) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -215,3 +214,5 @@ func (v *NullableAddAccountAdminCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

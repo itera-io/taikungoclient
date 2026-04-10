@@ -20,10 +20,10 @@ var _ MappedNullable = &UpdateProxmoxCommand{}
 
 // UpdateProxmoxCommand struct for UpdateProxmoxCommand
 type UpdateProxmoxCommand struct {
-	Id                   *int32         `json:"id,omitempty"`
-	Name                 NullableString `json:"name,omitempty"`
-	TokenId              NullableString `json:"tokenId,omitempty"`
-	TokenSecret          NullableString `json:"tokenSecret,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	TokenId NullableString `json:"tokenId,omitempty"`
+	TokenSecret NullableString `json:"tokenSecret,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -110,7 +110,6 @@ func (o *UpdateProxmoxCommand) HasName() bool {
 func (o *UpdateProxmoxCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UpdateProxmoxCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -153,7 +152,6 @@ func (o *UpdateProxmoxCommand) HasTokenId() bool {
 func (o *UpdateProxmoxCommand) SetTokenId(v string) {
 	o.TokenId.Set(&v)
 }
-
 // SetTokenIdNil sets the value for TokenId to be an explicit nil
 func (o *UpdateProxmoxCommand) SetTokenIdNil() {
 	o.TokenId.Set(nil)
@@ -196,7 +194,6 @@ func (o *UpdateProxmoxCommand) HasTokenSecret() bool {
 func (o *UpdateProxmoxCommand) SetTokenSecret(v string) {
 	o.TokenSecret.Set(&v)
 }
-
 // SetTokenSecretNil sets the value for TokenSecret to be an explicit nil
 func (o *UpdateProxmoxCommand) SetTokenSecretNil() {
 	o.TokenSecret.Set(nil)
@@ -208,7 +205,7 @@ func (o *UpdateProxmoxCommand) UnsetTokenSecret() {
 }
 
 func (o UpdateProxmoxCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -296,3 +293,5 @@ func (v *NullableUpdateProxmoxCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

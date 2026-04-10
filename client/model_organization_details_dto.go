@@ -20,15 +20,15 @@ var _ MappedNullable = &OrganizationDetailsDto{}
 
 // OrganizationDetailsDto struct for OrganizationDetailsDto
 type OrganizationDetailsDto struct {
-	Id                   *int32             `json:"id,omitempty"`
-	Name                 NullableString     `json:"name,omitempty"`
-	FullName             NullableString     `json:"fullName,omitempty"`
-	Email                NullableString     `json:"email,omitempty"`
-	Projects             *int32             `json:"projects,omitempty"`
-	Servers              *int32             `json:"servers,omitempty"`
-	CloudCredentials     *int32             `json:"cloudCredentials,omitempty"`
-	CreatedAt            NullableString     `json:"createdAt,omitempty"`
-	BoundRules           []PrometheusEntity `json:"boundRules,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	FullName NullableString `json:"fullName,omitempty"`
+	Email NullableString `json:"email,omitempty"`
+	Projects *int32 `json:"projects,omitempty"`
+	Servers *int32 `json:"servers,omitempty"`
+	CloudCredentials *int32 `json:"cloudCredentials,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	BoundRules []PrometheusEntity `json:"boundRules,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -115,7 +115,6 @@ func (o *OrganizationDetailsDto) HasName() bool {
 func (o *OrganizationDetailsDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *OrganizationDetailsDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -158,7 +157,6 @@ func (o *OrganizationDetailsDto) HasFullName() bool {
 func (o *OrganizationDetailsDto) SetFullName(v string) {
 	o.FullName.Set(&v)
 }
-
 // SetFullNameNil sets the value for FullName to be an explicit nil
 func (o *OrganizationDetailsDto) SetFullNameNil() {
 	o.FullName.Set(nil)
@@ -201,7 +199,6 @@ func (o *OrganizationDetailsDto) HasEmail() bool {
 func (o *OrganizationDetailsDto) SetEmail(v string) {
 	o.Email.Set(&v)
 }
-
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *OrganizationDetailsDto) SetEmailNil() {
 	o.Email.Set(nil)
@@ -340,7 +337,6 @@ func (o *OrganizationDetailsDto) HasCreatedAt() bool {
 func (o *OrganizationDetailsDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *OrganizationDetailsDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -385,7 +381,7 @@ func (o *OrganizationDetailsDto) SetBoundRules(v []PrometheusEntity) {
 }
 
 func (o OrganizationDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -493,3 +489,5 @@ func (v *NullableOrganizationDetailsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

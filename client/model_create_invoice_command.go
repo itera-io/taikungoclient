@@ -21,16 +21,16 @@ var _ MappedNullable = &CreateInvoiceCommand{}
 
 // CreateInvoiceCommand struct for CreateInvoiceCommand
 type CreateInvoiceCommand struct {
-	Name                       NullableString `json:"name,omitempty"`
-	OrganizationSubscriptionId *int32         `json:"organizationSubscriptionId,omitempty"`
-	StartDate                  *time.Time     `json:"startDate,omitempty"`
-	EndDate                    *time.Time     `json:"endDate,omitempty"`
-	DueDate                    *time.Time     `json:"dueDate,omitempty"`
-	IsPaid                     *bool          `json:"isPaid,omitempty"`
-	RequiredPaymentAction      *bool          `json:"requiredPaymentAction,omitempty"`
-	StripeInvoiceId            NullableString `json:"stripeInvoiceId,omitempty"`
-	Price                      *float64       `json:"price,omitempty"`
-	AdditionalProperties       map[string]interface{}
+	Name NullableString `json:"name,omitempty"`
+	OrganizationSubscriptionId *int32 `json:"organizationSubscriptionId,omitempty"`
+	StartDate *time.Time `json:"startDate,omitempty"`
+	EndDate *time.Time `json:"endDate,omitempty"`
+	DueDate *time.Time `json:"dueDate,omitempty"`
+	IsPaid *bool `json:"isPaid,omitempty"`
+	RequiredPaymentAction *bool `json:"requiredPaymentAction,omitempty"`
+	StripeInvoiceId NullableString `json:"stripeInvoiceId,omitempty"`
+	Price *float64 `json:"price,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CreateInvoiceCommand CreateInvoiceCommand
@@ -84,7 +84,6 @@ func (o *CreateInvoiceCommand) HasName() bool {
 func (o *CreateInvoiceCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateInvoiceCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -319,7 +318,6 @@ func (o *CreateInvoiceCommand) HasStripeInvoiceId() bool {
 func (o *CreateInvoiceCommand) SetStripeInvoiceId(v string) {
 	o.StripeInvoiceId.Set(&v)
 }
-
 // SetStripeInvoiceIdNil sets the value for StripeInvoiceId to be an explicit nil
 func (o *CreateInvoiceCommand) SetStripeInvoiceIdNil() {
 	o.StripeInvoiceId.Set(nil)
@@ -363,7 +361,7 @@ func (o *CreateInvoiceCommand) SetPrice(v float64) {
 }
 
 func (o CreateInvoiceCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -471,3 +469,5 @@ func (v *NullableCreateInvoiceCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

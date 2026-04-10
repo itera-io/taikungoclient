@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_AccountsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsAccountGroupDetails", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var accountId int32
 		var id int32
@@ -39,7 +39,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsAccountGroupsDropdown", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var accountId int32
 
@@ -53,7 +53,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsAccountGroupsOffsetBasedDropdown", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var accountId int32
 
@@ -67,7 +67,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsAccountOffsetBasedOrganizationsWithGroup", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var accountId int32
 
@@ -81,7 +81,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsAccountOrganizationDetails", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var accountId int32
 		var id int32
@@ -96,7 +96,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsAccountOrganizationsAvailable", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var accountId int32
 
@@ -110,7 +110,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsAccountOrganizationsWithGroup", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var accountId int32
 
@@ -124,7 +124,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsAccountProjectDetails", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var accountId int32
 		var id int32
@@ -139,7 +139,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsAccountProjectsDropdown", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var accountId int32
 
@@ -153,7 +153,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsAccountProjectsOffsetBasedDropdown", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var accountId int32
 
@@ -167,7 +167,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsAccountUserDetails", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var accountId int32
 		var id string
@@ -182,7 +182,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsAccountUserDropdown", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var accountId int32
 
@@ -196,7 +196,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsAccountUserOffsetBasedDropdown", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var accountId int32
 
@@ -210,7 +210,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsAccountUsersAvailable", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var accountId int32
 
@@ -224,7 +224,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsAddAccountAdmin", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AccountsAPI.AccountsAddAccountAdmin(context.Background()).Execute()
 
@@ -235,7 +235,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsCheckDuplicateEntity", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AccountsAPI.AccountsCheckDuplicateEntity(context.Background()).Execute()
 
@@ -246,7 +246,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AccountsAPI.AccountsCreate(context.Background()).Execute()
 
@@ -258,7 +258,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int32
 
@@ -271,7 +271,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsDetails", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var accountId int32
 
@@ -285,7 +285,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsDisable2faManagement", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AccountsAPI.AccountsDisable2faManagement(context.Background()).Execute()
 
@@ -296,7 +296,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsEnable2faManagement", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AccountsAPI.AccountsEnable2faManagement(context.Background()).Execute()
 
@@ -307,7 +307,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsListAccounts", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AccountsAPI.AccountsListAccounts(context.Background()).Execute()
 
@@ -319,7 +319,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsTransferOwnership", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AccountsAPI.AccountsTransferOwnership(context.Background()).Execute()
 
@@ -330,7 +330,7 @@ func Test_taikuncore_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService AccountsUpdate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AccountsAPI.AccountsUpdate(context.Background()).Execute()
 

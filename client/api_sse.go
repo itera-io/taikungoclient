@@ -19,11 +19,12 @@ import (
 	"net/url"
 )
 
+
 // SseAPIService SseAPI service
 type SseAPIService service
 
 type ApiSseHealthRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SseAPIService
 }
 
@@ -34,25 +35,24 @@ func (r ApiSseHealthRequest) Execute() (map[string]interface{}, *http.Response, 
 /*
 SseHealth Subscribe to real-time infrastructure health state changes
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSseHealthRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiSseHealthRequest
 */
 func (a *SseAPIService) SseHealth(ctx context.Context) ApiSseHealthRequest {
 	return ApiSseHealthRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *SseAPIService) SseHealthExecute(r ApiSseHealthRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SseAPIService.SseHealth")
@@ -135,7 +135,7 @@ func (a *SseAPIService) SseHealthExecute(r ApiSseHealthRequest) (map[string]inte
 }
 
 type ApiSseNotificationsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SseAPIService
 }
 
@@ -146,25 +146,24 @@ func (r ApiSseNotificationsRequest) Execute() (map[string]interface{}, *http.Res
 /*
 SseNotifications Subscribe to real-time notification messages for the current user
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSseNotificationsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiSseNotificationsRequest
 */
 func (a *SseAPIService) SseNotifications(ctx context.Context) ApiSseNotificationsRequest {
 	return ApiSseNotificationsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *SseAPIService) SseNotificationsExecute(r ApiSseNotificationsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SseAPIService.SseNotifications")
@@ -247,7 +246,7 @@ func (a *SseAPIService) SseNotificationsExecute(r ApiSseNotificationsRequest) (m
 }
 
 type ApiSseUpdateUserPermissionRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SseAPIService
 }
 
@@ -258,25 +257,24 @@ func (r ApiSseUpdateUserPermissionRequest) Execute() (map[string]interface{}, *h
 /*
 SseUpdateUserPermission Subscribe to real-time cache invalidation events for the current user
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSseUpdateUserPermissionRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiSseUpdateUserPermissionRequest
 */
 func (a *SseAPIService) SseUpdateUserPermission(ctx context.Context) ApiSseUpdateUserPermissionRequest {
 	return ApiSseUpdateUserPermissionRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *SseAPIService) SseUpdateUserPermissionExecute(r ApiSseUpdateUserPermissionRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SseAPIService.SseUpdateUserPermission")

@@ -21,9 +21,9 @@ var _ MappedNullable = &CronjobActionCommand{}
 
 // CronjobActionCommand struct for CronjobActionCommand
 type CronjobActionCommand struct {
-	ProjectId            int32                            `json:"projectId"`
-	Data                 []KubernetesCronjobActionRequest `json:"data"`
-	Action               ECronJobAction                   `json:"action"`
+	ProjectId int32 `json:"projectId"`
+	Data []KubernetesCronjobActionRequest `json:"data"`
+	Action ECronJobAction `json:"action"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -124,7 +124,7 @@ func (o *CronjobActionCommand) SetAction(v ECronJobAction) {
 }
 
 func (o CronjobActionCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -161,10 +161,10 @@ func (o *CronjobActionCommand) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -227,3 +227,5 @@ func (v *NullableCronjobActionCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

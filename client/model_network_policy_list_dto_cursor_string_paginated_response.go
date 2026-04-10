@@ -21,11 +21,11 @@ var _ MappedNullable = &NetworkPolicyListDtoCursorStringPaginatedResponse{}
 
 // NetworkPolicyListDtoCursorStringPaginatedResponse struct for NetworkPolicyListDtoCursorStringPaginatedResponse
 type NetworkPolicyListDtoCursorStringPaginatedResponse struct {
-	Data                 []NetworkPolicyListDto `json:"data"`
-	Limit                int32                  `json:"limit"`
-	HasMore              bool                   `json:"hasMore"`
-	TotalCount           int64                  `json:"totalCount"`
-	NextCursor           NullableString         `json:"nextCursor,omitempty"`
+	Data []NetworkPolicyListDto `json:"data"`
+	Limit int32 `json:"limit"`
+	HasMore bool `json:"hasMore"`
+	TotalCount int64 `json:"totalCount"`
+	NextCursor NullableString `json:"nextCursor,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -182,7 +182,6 @@ func (o *NetworkPolicyListDtoCursorStringPaginatedResponse) HasNextCursor() bool
 func (o *NetworkPolicyListDtoCursorStringPaginatedResponse) SetNextCursor(v string) {
 	o.NextCursor.Set(&v)
 }
-
 // SetNextCursorNil sets the value for NextCursor to be an explicit nil
 func (o *NetworkPolicyListDtoCursorStringPaginatedResponse) SetNextCursorNil() {
 	o.NextCursor.Set(nil)
@@ -194,7 +193,7 @@ func (o *NetworkPolicyListDtoCursorStringPaginatedResponse) UnsetNextCursor() {
 }
 
 func (o NetworkPolicyListDtoCursorStringPaginatedResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -236,10 +235,10 @@ func (o *NetworkPolicyListDtoCursorStringPaginatedResponse) UnmarshalJSON(data [
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -304,3 +303,5 @@ func (v *NullableNetworkPolicyListDtoCursorStringPaginatedResponse) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

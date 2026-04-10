@@ -20,11 +20,11 @@ var _ MappedNullable = &GlobalAiBackendConfigurationDto{}
 
 // GlobalAiBackendConfigurationDto struct for GlobalAiBackendConfigurationDto
 type GlobalAiBackendConfigurationDto struct {
-	Id                   *int32         `json:"id,omitempty"`
-	Name                 NullableString `json:"name,omitempty"`
-	Url                  NullableString `json:"url,omitempty"`
-	Model                NullableString `json:"model,omitempty"`
-	IsActive             *bool          `json:"isActive,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	Model NullableString `json:"model,omitempty"`
+	IsActive *bool `json:"isActive,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -111,7 +111,6 @@ func (o *GlobalAiBackendConfigurationDto) HasName() bool {
 func (o *GlobalAiBackendConfigurationDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *GlobalAiBackendConfigurationDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -154,7 +153,6 @@ func (o *GlobalAiBackendConfigurationDto) HasUrl() bool {
 func (o *GlobalAiBackendConfigurationDto) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *GlobalAiBackendConfigurationDto) SetUrlNil() {
 	o.Url.Set(nil)
@@ -197,7 +195,6 @@ func (o *GlobalAiBackendConfigurationDto) HasModel() bool {
 func (o *GlobalAiBackendConfigurationDto) SetModel(v string) {
 	o.Model.Set(&v)
 }
-
 // SetModelNil sets the value for Model to be an explicit nil
 func (o *GlobalAiBackendConfigurationDto) SetModelNil() {
 	o.Model.Set(nil)
@@ -241,7 +238,7 @@ func (o *GlobalAiBackendConfigurationDto) SetIsActive(v bool) {
 }
 
 func (o GlobalAiBackendConfigurationDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -333,3 +330,5 @@ func (v *NullableGlobalAiBackendConfigurationDto) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

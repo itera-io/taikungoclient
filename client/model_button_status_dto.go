@@ -20,9 +20,9 @@ var _ MappedNullable = &ButtonStatusDto{}
 
 // ButtonStatusDto struct for ButtonStatusDto
 type ButtonStatusDto struct {
-	Enable               *bool    `json:"enable,omitempty"`
-	Reasons              []string `json:"reasons,omitempty"`
-	Hidden               *bool    `json:"hidden,omitempty"`
+	Enable *bool `json:"enable,omitempty"`
+	Reasons []string `json:"reasons,omitempty"`
+	Hidden *bool `json:"hidden,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -143,7 +143,7 @@ func (o *ButtonStatusDto) SetHidden(v bool) {
 }
 
 func (o ButtonStatusDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -227,3 +227,5 @@ func (v *NullableButtonStatusDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

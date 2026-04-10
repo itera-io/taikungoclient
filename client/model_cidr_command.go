@@ -20,7 +20,7 @@ var _ MappedNullable = &CidrCommand{}
 
 // CidrCommand struct for CidrCommand
 type CidrCommand struct {
-	Cidr                 NullableString `json:"cidr,omitempty"`
+	Cidr NullableString `json:"cidr,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,7 +75,6 @@ func (o *CidrCommand) HasCidr() bool {
 func (o *CidrCommand) SetCidr(v string) {
 	o.Cidr.Set(&v)
 }
-
 // SetCidrNil sets the value for Cidr to be an explicit nil
 func (o *CidrCommand) SetCidrNil() {
 	o.Cidr.Set(nil)
@@ -87,7 +86,7 @@ func (o *CidrCommand) UnsetCidr() {
 }
 
 func (o CidrCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -163,3 +162,5 @@ func (v *NullableCidrCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

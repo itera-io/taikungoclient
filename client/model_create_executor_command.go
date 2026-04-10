@@ -20,11 +20,11 @@ var _ MappedNullable = &CreateExecutorCommand{}
 
 // CreateExecutorCommand struct for CreateExecutorCommand
 type CreateExecutorCommand struct {
-	Name                 NullableString `json:"name,omitempty"`
-	Enabled              *bool          `json:"enabled,omitempty"`
-	LocalCluster         *bool          `json:"localCluster,omitempty"`
-	Continent            NullableString `json:"continent,omitempty"`
-	KubeConfig           NullableString `json:"kubeConfig,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
+	LocalCluster *bool `json:"localCluster,omitempty"`
+	Continent NullableString `json:"continent,omitempty"`
+	KubeConfig NullableString `json:"kubeConfig,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -79,7 +79,6 @@ func (o *CreateExecutorCommand) HasName() bool {
 func (o *CreateExecutorCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateExecutorCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -186,7 +185,6 @@ func (o *CreateExecutorCommand) HasContinent() bool {
 func (o *CreateExecutorCommand) SetContinent(v string) {
 	o.Continent.Set(&v)
 }
-
 // SetContinentNil sets the value for Continent to be an explicit nil
 func (o *CreateExecutorCommand) SetContinentNil() {
 	o.Continent.Set(nil)
@@ -229,7 +227,6 @@ func (o *CreateExecutorCommand) HasKubeConfig() bool {
 func (o *CreateExecutorCommand) SetKubeConfig(v string) {
 	o.KubeConfig.Set(&v)
 }
-
 // SetKubeConfigNil sets the value for KubeConfig to be an explicit nil
 func (o *CreateExecutorCommand) SetKubeConfigNil() {
 	o.KubeConfig.Set(nil)
@@ -241,7 +238,7 @@ func (o *CreateExecutorCommand) UnsetKubeConfig() {
 }
 
 func (o CreateExecutorCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -333,3 +330,5 @@ func (v *NullableCreateExecutorCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

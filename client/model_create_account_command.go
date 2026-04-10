@@ -20,9 +20,9 @@ var _ MappedNullable = &CreateAccountCommand{}
 
 // CreateAccountCommand struct for CreateAccountCommand
 type CreateAccountCommand struct {
-	Name                 NullableString `json:"name,omitempty"`
-	Email                NullableString `json:"email,omitempty"`
-	CreateOrganization   *bool          `json:"createOrganization,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Email NullableString `json:"email,omitempty"`
+	CreateOrganization *bool `json:"createOrganization,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,7 +77,6 @@ func (o *CreateAccountCommand) HasName() bool {
 func (o *CreateAccountCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateAccountCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -120,7 +119,6 @@ func (o *CreateAccountCommand) HasEmail() bool {
 func (o *CreateAccountCommand) SetEmail(v string) {
 	o.Email.Set(&v)
 }
-
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *CreateAccountCommand) SetEmailNil() {
 	o.Email.Set(nil)
@@ -164,7 +162,7 @@ func (o *CreateAccountCommand) SetCreateOrganization(v bool) {
 }
 
 func (o CreateAccountCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -248,3 +246,5 @@ func (v *NullableCreateAccountCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,7 +20,7 @@ var _ MappedNullable = &SshKeyCommand{}
 
 // SshKeyCommand struct for SshKeyCommand
 type SshKeyCommand struct {
-	SshPublicKey         NullableString `json:"sshPublicKey,omitempty"`
+	SshPublicKey NullableString `json:"sshPublicKey,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,7 +75,6 @@ func (o *SshKeyCommand) HasSshPublicKey() bool {
 func (o *SshKeyCommand) SetSshPublicKey(v string) {
 	o.SshPublicKey.Set(&v)
 }
-
 // SetSshPublicKeyNil sets the value for SshPublicKey to be an explicit nil
 func (o *SshKeyCommand) SetSshPublicKeyNil() {
 	o.SshPublicKey.Set(nil)
@@ -87,7 +86,7 @@ func (o *SshKeyCommand) UnsetSshPublicKey() {
 }
 
 func (o SshKeyCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -163,3 +162,5 @@ func (v *NullableSshKeyCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

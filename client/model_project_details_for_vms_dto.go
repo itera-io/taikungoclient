@@ -21,33 +21,33 @@ var _ MappedNullable = &ProjectDetailsForVmsDto{}
 
 // ProjectDetailsForVmsDto struct for ProjectDetailsForVmsDto
 type ProjectDetailsForVmsDto struct {
-	Status                          ProjectStatus           `json:"status"`
-	Name                            string                  `json:"name"`
-	Id                              int32                   `json:"id"`
-	CloudType                       ECloudCredentialType    `json:"cloudType"`
-	CloudName                       NullableString          `json:"cloudName"`
-	CloudId                         NullableInt32           `json:"cloudId"`
-	OrganizationName                string                  `json:"organizationName"`
-	OrganizationId                  int32                   `json:"organizationId"`
-	IsLocked                        bool                    `json:"isLocked"`
-	IsProjectMaintenanceModeEnabled bool                    `json:"isProjectMaintenanceModeEnabled"`
-	HasSelectedFlavors              NullableBool            `json:"hasSelectedFlavors"`
-	IsMaintenanceModeEnabled        bool                    `json:"isMaintenanceModeEnabled"`
-	IsDrsEnabled                    bool                    `json:"isDrsEnabled"`
-	ProjectCloudRevision            NullableInt32           `json:"projectCloudRevision"`
-	CloudCredentialRevision         NullableInt32           `json:"cloudCredentialRevision"`
-	AllowFullSpotKubernetes         bool                    `json:"allowFullSpotKubernetes"`
-	AllowSpotWorkers                bool                    `json:"allowSpotWorkers"`
-	AllowSpotVMs                    bool                    `json:"allowSpotVMs"`
-	MaxSpotPrice                    NullableFloat64         `json:"maxSpotPrice"`
-	TotalHourlyCost                 float64                 `json:"totalHourlyCost"`
-	AvailabilityZones               []string                `json:"availabilityZones"`
-	Hypervisors                     []string                `json:"hypervisors"`
-	ExpiredAt                       NullableString          `json:"expiredAt"`
-	VpcMode                         *VpcMode                `json:"vpcMode,omitempty"`
-	CloudSubnets                    []CloudSubnetDetailsDto `json:"cloudSubnets,omitempty"`
-	PrivateOnly                     NullableBool            `json:"privateOnly,omitempty"`
-	AdditionalProperties            map[string]interface{}
+	Status ProjectStatus `json:"status"`
+	Name string `json:"name"`
+	Id int32 `json:"id"`
+	CloudType ECloudCredentialType `json:"cloudType"`
+	CloudName NullableString `json:"cloudName"`
+	CloudId NullableInt32 `json:"cloudId"`
+	OrganizationName string `json:"organizationName"`
+	OrganizationId int32 `json:"organizationId"`
+	IsLocked bool `json:"isLocked"`
+	IsProjectMaintenanceModeEnabled bool `json:"isProjectMaintenanceModeEnabled"`
+	HasSelectedFlavors NullableBool `json:"hasSelectedFlavors"`
+	IsMaintenanceModeEnabled bool `json:"isMaintenanceModeEnabled"`
+	IsDrsEnabled bool `json:"isDrsEnabled"`
+	ProjectCloudRevision NullableInt32 `json:"projectCloudRevision"`
+	CloudCredentialRevision NullableInt32 `json:"cloudCredentialRevision"`
+	AllowFullSpotKubernetes bool `json:"allowFullSpotKubernetes"`
+	AllowSpotWorkers bool `json:"allowSpotWorkers"`
+	AllowSpotVMs bool `json:"allowSpotVMs"`
+	MaxSpotPrice NullableFloat64 `json:"maxSpotPrice"`
+	TotalHourlyCost float64 `json:"totalHourlyCost"`
+	AvailabilityZones []string `json:"availabilityZones"`
+	Hypervisors []string `json:"hypervisors"`
+	ExpiredAt NullableString `json:"expiredAt"`
+	VpcMode *VpcMode `json:"vpcMode,omitempty"`
+	CloudSubnets []CloudSubnetDetailsDto `json:"cloudSubnets,omitempty"`
+	PrivateOnly NullableBool `json:"privateOnly,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProjectDetailsForVmsDto ProjectDetailsForVmsDto
@@ -759,7 +759,6 @@ func (o *ProjectDetailsForVmsDto) HasPrivateOnly() bool {
 func (o *ProjectDetailsForVmsDto) SetPrivateOnly(v bool) {
 	o.PrivateOnly.Set(&v)
 }
-
 // SetPrivateOnlyNil sets the value for PrivateOnly to be an explicit nil
 func (o *ProjectDetailsForVmsDto) SetPrivateOnlyNil() {
 	o.PrivateOnly.Set(nil)
@@ -771,7 +770,7 @@ func (o *ProjectDetailsForVmsDto) UnsetPrivateOnly() {
 }
 
 func (o ProjectDetailsForVmsDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -859,10 +858,10 @@ func (o *ProjectDetailsForVmsDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -948,3 +947,5 @@ func (v *NullableProjectDetailsForVmsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

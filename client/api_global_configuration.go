@@ -20,12 +20,13 @@ import (
 	"strings"
 )
 
+
 // GlobalConfigurationAPIService GlobalConfigurationAPI service
 type GlobalConfigurationAPIService service
 
 type ApiGlobalConfigurationsCreateAiBackendRequest struct {
-	ctx                                  context.Context
-	ApiService                           *GlobalConfigurationAPIService
+	ctx context.Context
+	ApiService *GlobalConfigurationAPIService
 	createAiBackendsConfigurationCommand *CreateAiBackendsConfigurationCommand
 }
 
@@ -41,22 +42,22 @@ func (r ApiGlobalConfigurationsCreateAiBackendRequest) Execute() (*http.Response
 /*
 GlobalConfigurationsCreateAiBackend Create AI backend
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGlobalConfigurationsCreateAiBackendRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGlobalConfigurationsCreateAiBackendRequest
 */
 func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateAiBackend(ctx context.Context) ApiGlobalConfigurationsCreateAiBackendRequest {
 	return ApiGlobalConfigurationsCreateAiBackendRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateAiBackendExecute(r ApiGlobalConfigurationsCreateAiBackendRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalConfigurationAPIService.GlobalConfigurationsCreateAiBackend")
@@ -132,8 +133,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateAiBackendExecu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -143,8 +144,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateAiBackendExecu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -154,8 +155,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateAiBackendExecu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -165,8 +166,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateAiBackendExecu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -176,8 +177,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateAiBackendExecu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -187,8 +188,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateAiBackendExecu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -197,8 +198,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateAiBackendExecu
 }
 
 type ApiGlobalConfigurationsCreateEmailConfigRequest struct {
-	ctx                             context.Context
-	ApiService                      *GlobalConfigurationAPIService
+	ctx context.Context
+	ApiService *GlobalConfigurationAPIService
 	createEmailConfigurationCommand *CreateEmailConfigurationCommand
 }
 
@@ -214,22 +215,22 @@ func (r ApiGlobalConfigurationsCreateEmailConfigRequest) Execute() (*http.Respon
 /*
 GlobalConfigurationsCreateEmailConfig Create email config
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGlobalConfigurationsCreateEmailConfigRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGlobalConfigurationsCreateEmailConfigRequest
 */
 func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateEmailConfig(ctx context.Context) ApiGlobalConfigurationsCreateEmailConfigRequest {
 	return ApiGlobalConfigurationsCreateEmailConfigRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateEmailConfigExecute(r ApiGlobalConfigurationsCreateEmailConfigRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalConfigurationAPIService.GlobalConfigurationsCreateEmailConfig")
@@ -305,8 +306,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateEmailConfigExe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -316,8 +317,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateEmailConfigExe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -327,8 +328,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateEmailConfigExe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -338,8 +339,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateEmailConfigExe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -349,8 +350,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateEmailConfigExe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -360,8 +361,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateEmailConfigExe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -370,8 +371,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateEmailConfigExe
 }
 
 type ApiGlobalConfigurationsCreateSlackConfigurationRequest struct {
-	ctx                                   context.Context
-	ApiService                            *GlobalConfigurationAPIService
+	ctx context.Context
+	ApiService *GlobalConfigurationAPIService
 	createGlobalSlackConfigurationCommand *CreateGlobalSlackConfigurationCommand
 }
 
@@ -387,22 +388,22 @@ func (r ApiGlobalConfigurationsCreateSlackConfigurationRequest) Execute() (*http
 /*
 GlobalConfigurationsCreateSlackConfiguration Create slack configuration
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGlobalConfigurationsCreateSlackConfigurationRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGlobalConfigurationsCreateSlackConfigurationRequest
 */
 func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateSlackConfiguration(ctx context.Context) ApiGlobalConfigurationsCreateSlackConfigurationRequest {
 	return ApiGlobalConfigurationsCreateSlackConfigurationRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateSlackConfigurationExecute(r ApiGlobalConfigurationsCreateSlackConfigurationRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalConfigurationAPIService.GlobalConfigurationsCreateSlackConfiguration")
@@ -478,8 +479,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateSlackConfigura
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -489,8 +490,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateSlackConfigura
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -500,8 +501,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateSlackConfigura
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -511,8 +512,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateSlackConfigura
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -522,8 +523,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateSlackConfigura
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -533,8 +534,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateSlackConfigura
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -543,9 +544,9 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsCreateSlackConfigura
 }
 
 type ApiGlobalConfigurationsDeleteAiBackendRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *GlobalConfigurationAPIService
-	id         int32
+	id int32
 }
 
 func (r ApiGlobalConfigurationsDeleteAiBackendRequest) Execute() (*http.Response, error) {
@@ -555,24 +556,24 @@ func (r ApiGlobalConfigurationsDeleteAiBackendRequest) Execute() (*http.Response
 /*
 GlobalConfigurationsDeleteAiBackend Remove global ai backend configuration
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiGlobalConfigurationsDeleteAiBackendRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiGlobalConfigurationsDeleteAiBackendRequest
 */
 func (a *GlobalConfigurationAPIService) GlobalConfigurationsDeleteAiBackend(ctx context.Context, id int32) ApiGlobalConfigurationsDeleteAiBackendRequest {
 	return ApiGlobalConfigurationsDeleteAiBackendRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *GlobalConfigurationAPIService) GlobalConfigurationsDeleteAiBackendExecute(r ApiGlobalConfigurationsDeleteAiBackendRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalConfigurationAPIService.GlobalConfigurationsDeleteAiBackend")
@@ -647,8 +648,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsDeleteAiBackendExecu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -658,8 +659,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsDeleteAiBackendExecu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -669,8 +670,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsDeleteAiBackendExecu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -680,8 +681,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsDeleteAiBackendExecu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -691,8 +692,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsDeleteAiBackendExecu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -702,8 +703,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsDeleteAiBackendExecu
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -712,9 +713,9 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsDeleteAiBackendExecu
 }
 
 type ApiGlobalConfigurationsDeleteSlackConfigurationRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *GlobalConfigurationAPIService
-	id         int32
+	id int32
 }
 
 func (r ApiGlobalConfigurationsDeleteSlackConfigurationRequest) Execute() (*http.Response, error) {
@@ -724,24 +725,24 @@ func (r ApiGlobalConfigurationsDeleteSlackConfigurationRequest) Execute() (*http
 /*
 GlobalConfigurationsDeleteSlackConfiguration Remove global slack configuration
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiGlobalConfigurationsDeleteSlackConfigurationRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiGlobalConfigurationsDeleteSlackConfigurationRequest
 */
 func (a *GlobalConfigurationAPIService) GlobalConfigurationsDeleteSlackConfiguration(ctx context.Context, id int32) ApiGlobalConfigurationsDeleteSlackConfigurationRequest {
 	return ApiGlobalConfigurationsDeleteSlackConfigurationRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *GlobalConfigurationAPIService) GlobalConfigurationsDeleteSlackConfigurationExecute(r ApiGlobalConfigurationsDeleteSlackConfigurationRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalConfigurationAPIService.GlobalConfigurationsDeleteSlackConfiguration")
@@ -816,8 +817,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsDeleteSlackConfigura
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -827,8 +828,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsDeleteSlackConfigura
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -838,8 +839,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsDeleteSlackConfigura
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -849,8 +850,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsDeleteSlackConfigura
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -860,8 +861,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsDeleteSlackConfigura
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -871,8 +872,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsDeleteSlackConfigura
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -881,11 +882,11 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsDeleteSlackConfigura
 }
 
 type ApiGlobalConfigurationsListAiBackendConfigurationRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *GlobalConfigurationAPIService
-	limit      *int32
-	offset     *int32
-	search     *string
+	limit *int32
+	offset *int32
+	search *string
 }
 
 func (r ApiGlobalConfigurationsListAiBackendConfigurationRequest) Limit(limit int32) ApiGlobalConfigurationsListAiBackendConfigurationRequest {
@@ -910,25 +911,24 @@ func (r ApiGlobalConfigurationsListAiBackendConfigurationRequest) Execute() (*Gl
 /*
 GlobalConfigurationsListAiBackendConfiguration Retrieve ai backend configuration list
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGlobalConfigurationsListAiBackendConfigurationRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGlobalConfigurationsListAiBackendConfigurationRequest
 */
 func (a *GlobalConfigurationAPIService) GlobalConfigurationsListAiBackendConfiguration(ctx context.Context) ApiGlobalConfigurationsListAiBackendConfigurationRequest {
 	return ApiGlobalConfigurationsListAiBackendConfigurationRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return GlobalAiBackendConfigurationList
+//  @return GlobalAiBackendConfigurationList
 func (a *GlobalConfigurationAPIService) GlobalConfigurationsListAiBackendConfigurationExecute(r ApiGlobalConfigurationsListAiBackendConfigurationRequest) (*GlobalAiBackendConfigurationList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *GlobalAiBackendConfigurationList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GlobalAiBackendConfigurationList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalConfigurationAPIService.GlobalConfigurationsListAiBackendConfiguration")
@@ -1019,8 +1019,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsListAiBackendConfigu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1030,8 +1030,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsListAiBackendConfigu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1041,8 +1041,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsListAiBackendConfigu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1052,8 +1052,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsListAiBackendConfigu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1063,8 +1063,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsListAiBackendConfigu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1074,8 +1074,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsListAiBackendConfigu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1093,11 +1093,11 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsListAiBackendConfigu
 }
 
 type ApiGlobalConfigurationsListSlackConfigurationRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *GlobalConfigurationAPIService
-	limit      *int32
-	offset     *int32
-	search     *string
+	limit *int32
+	offset *int32
+	search *string
 }
 
 func (r ApiGlobalConfigurationsListSlackConfigurationRequest) Limit(limit int32) ApiGlobalConfigurationsListSlackConfigurationRequest {
@@ -1122,25 +1122,24 @@ func (r ApiGlobalConfigurationsListSlackConfigurationRequest) Execute() (*Global
 /*
 GlobalConfigurationsListSlackConfiguration Retrieve slack configuration list
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGlobalConfigurationsListSlackConfigurationRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGlobalConfigurationsListSlackConfigurationRequest
 */
 func (a *GlobalConfigurationAPIService) GlobalConfigurationsListSlackConfiguration(ctx context.Context) ApiGlobalConfigurationsListSlackConfigurationRequest {
 	return ApiGlobalConfigurationsListSlackConfigurationRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return GlobalSlackConfigurationList
+//  @return GlobalSlackConfigurationList
 func (a *GlobalConfigurationAPIService) GlobalConfigurationsListSlackConfigurationExecute(r ApiGlobalConfigurationsListSlackConfigurationRequest) (*GlobalSlackConfigurationList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *GlobalSlackConfigurationList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GlobalSlackConfigurationList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalConfigurationAPIService.GlobalConfigurationsListSlackConfiguration")
@@ -1231,8 +1230,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsListSlackConfigurati
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1242,8 +1241,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsListSlackConfigurati
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1253,8 +1252,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsListSlackConfigurati
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1264,8 +1263,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsListSlackConfigurati
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1275,8 +1274,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsListSlackConfigurati
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1286,8 +1285,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsListSlackConfigurati
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1305,8 +1304,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsListSlackConfigurati
 }
 
 type ApiGlobalConfigurationsUpdateStatusAiBackendRequest struct {
-	ctx                                                 context.Context
-	ApiService                                          *GlobalConfigurationAPIService
+	ctx context.Context
+	ApiService *GlobalConfigurationAPIService
 	globalAiBackendConfigurationStatusManagementCommand *GlobalAiBackendConfigurationStatusManagementCommand
 }
 
@@ -1322,22 +1321,22 @@ func (r ApiGlobalConfigurationsUpdateStatusAiBackendRequest) Execute() (*http.Re
 /*
 GlobalConfigurationsUpdateStatusAiBackend Activate/Deactivate global ai-backend configuration
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGlobalConfigurationsUpdateStatusAiBackendRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGlobalConfigurationsUpdateStatusAiBackendRequest
 */
 func (a *GlobalConfigurationAPIService) GlobalConfigurationsUpdateStatusAiBackend(ctx context.Context) ApiGlobalConfigurationsUpdateStatusAiBackendRequest {
 	return ApiGlobalConfigurationsUpdateStatusAiBackendRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *GlobalConfigurationAPIService) GlobalConfigurationsUpdateStatusAiBackendExecute(r ApiGlobalConfigurationsUpdateStatusAiBackendRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalConfigurationAPIService.GlobalConfigurationsUpdateStatusAiBackend")
@@ -1413,8 +1412,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsUpdateStatusAiBacken
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1424,8 +1423,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsUpdateStatusAiBacken
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1435,8 +1434,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsUpdateStatusAiBacken
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1446,8 +1445,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsUpdateStatusAiBacken
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1457,8 +1456,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsUpdateStatusAiBacken
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1468,8 +1467,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsUpdateStatusAiBacken
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1478,8 +1477,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsUpdateStatusAiBacken
 }
 
 type ApiGlobalConfigurationsUpdateStatusSlackConfigurationRequest struct {
-	ctx                                             context.Context
-	ApiService                                      *GlobalConfigurationAPIService
+	ctx context.Context
+	ApiService *GlobalConfigurationAPIService
 	globalSlackConfigurationStatusManagementCommand *GlobalSlackConfigurationStatusManagementCommand
 }
 
@@ -1495,22 +1494,22 @@ func (r ApiGlobalConfigurationsUpdateStatusSlackConfigurationRequest) Execute() 
 /*
 GlobalConfigurationsUpdateStatusSlackConfiguration Activate/Deactivate global slack configuration
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGlobalConfigurationsUpdateStatusSlackConfigurationRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGlobalConfigurationsUpdateStatusSlackConfigurationRequest
 */
 func (a *GlobalConfigurationAPIService) GlobalConfigurationsUpdateStatusSlackConfiguration(ctx context.Context) ApiGlobalConfigurationsUpdateStatusSlackConfigurationRequest {
 	return ApiGlobalConfigurationsUpdateStatusSlackConfigurationRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *GlobalConfigurationAPIService) GlobalConfigurationsUpdateStatusSlackConfigurationExecute(r ApiGlobalConfigurationsUpdateStatusSlackConfigurationRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalConfigurationAPIService.GlobalConfigurationsUpdateStatusSlackConfiguration")
@@ -1586,8 +1585,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsUpdateStatusSlackCon
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1597,8 +1596,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsUpdateStatusSlackCon
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1608,8 +1607,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsUpdateStatusSlackCon
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1619,8 +1618,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsUpdateStatusSlackCon
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1630,8 +1629,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsUpdateStatusSlackCon
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1641,8 +1640,8 @@ func (a *GlobalConfigurationAPIService) GlobalConfigurationsUpdateStatusSlackCon
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

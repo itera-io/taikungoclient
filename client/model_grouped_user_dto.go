@@ -20,9 +20,9 @@ var _ MappedNullable = &GroupedUserDto{}
 
 // GroupedUserDto struct for GroupedUserDto
 type GroupedUserDto struct {
-	Id                   NullableString `json:"id,omitempty"`
-	Name                 NullableString `json:"name,omitempty"`
-	Email                NullableString `json:"email,omitempty"`
+	Id NullableString `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Email NullableString `json:"email,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,7 +77,6 @@ func (o *GroupedUserDto) HasId() bool {
 func (o *GroupedUserDto) SetId(v string) {
 	o.Id.Set(&v)
 }
-
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *GroupedUserDto) SetIdNil() {
 	o.Id.Set(nil)
@@ -120,7 +119,6 @@ func (o *GroupedUserDto) HasName() bool {
 func (o *GroupedUserDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *GroupedUserDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -163,7 +161,6 @@ func (o *GroupedUserDto) HasEmail() bool {
 func (o *GroupedUserDto) SetEmail(v string) {
 	o.Email.Set(&v)
 }
-
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *GroupedUserDto) SetEmailNil() {
 	o.Email.Set(nil)
@@ -175,7 +172,7 @@ func (o *GroupedUserDto) UnsetEmail() {
 }
 
 func (o GroupedUserDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -259,3 +256,5 @@ func (v *NullableGroupedUserDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
