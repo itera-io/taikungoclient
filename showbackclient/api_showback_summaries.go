@@ -20,16 +20,15 @@ import (
 	"time"
 )
 
-
 // ShowbackSummariesAPIService ShowbackSummariesAPI service
 type ShowbackSummariesAPIService service
 
 type ApiShowbacksummariesByLabelRequest struct {
-	ctx context.Context
-	ApiService *ShowbackSummariesAPIService
+	ctx            context.Context
+	ApiService     *ShowbackSummariesAPIService
 	organizationId *int32
-	fromDate *time.Time
-	toDate *time.Time
+	fromDate       *time.Time
+	toDate         *time.Time
 }
 
 func (r ApiShowbacksummariesByLabelRequest) OrganizationId(organizationId int32) ApiShowbacksummariesByLabelRequest {
@@ -54,24 +53,25 @@ func (r ApiShowbacksummariesByLabelRequest) Execute() (*GroupedShowbackByLabelLi
 /*
 ShowbacksummariesByLabel Grouped showback summary by label
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiShowbacksummariesByLabelRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiShowbacksummariesByLabelRequest
 */
 func (a *ShowbackSummariesAPIService) ShowbacksummariesByLabel(ctx context.Context) ApiShowbacksummariesByLabelRequest {
 	return ApiShowbacksummariesByLabelRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return GroupedShowbackByLabelList
+//
+//	@return GroupedShowbackByLabelList
 func (a *ShowbackSummariesAPIService) ShowbacksummariesByLabelExecute(r ApiShowbacksummariesByLabelRequest) (*GroupedShowbackByLabelList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GroupedShowbackByLabelList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GroupedShowbackByLabelList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShowbackSummariesAPIService.ShowbacksummariesByLabel")
@@ -154,8 +154,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesByLabelExecute(r ApiShowb
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -165,8 +165,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesByLabelExecute(r ApiShowb
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -176,8 +176,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesByLabelExecute(r ApiShowb
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -187,8 +187,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesByLabelExecute(r ApiShowb
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -198,8 +198,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesByLabelExecute(r ApiShowb
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -217,12 +217,12 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesByLabelExecute(r ApiShowb
 }
 
 type ApiShowbacksummariesByProjectRequest struct {
-	ctx context.Context
-	ApiService *ShowbackSummariesAPIService
+	ctx            context.Context
+	ApiService     *ShowbackSummariesAPIService
 	organizationId *int32
-	isDeleted *bool
-	fromDate *time.Time
-	toDate *time.Time
+	isDeleted      *bool
+	fromDate       *time.Time
+	toDate         *time.Time
 }
 
 func (r ApiShowbacksummariesByProjectRequest) OrganizationId(organizationId int32) ApiShowbacksummariesByProjectRequest {
@@ -252,24 +252,25 @@ func (r ApiShowbacksummariesByProjectRequest) Execute() (*GroupedShowbackByProje
 /*
 ShowbacksummariesByProject Grouped showback summary by project
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiShowbacksummariesByProjectRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiShowbacksummariesByProjectRequest
 */
 func (a *ShowbackSummariesAPIService) ShowbacksummariesByProject(ctx context.Context) ApiShowbacksummariesByProjectRequest {
 	return ApiShowbacksummariesByProjectRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return GroupedShowbackByProjectList
+//
+//	@return GroupedShowbackByProjectList
 func (a *ShowbackSummariesAPIService) ShowbacksummariesByProjectExecute(r ApiShowbacksummariesByProjectRequest) (*GroupedShowbackByProjectList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GroupedShowbackByProjectList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GroupedShowbackByProjectList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShowbackSummariesAPIService.ShowbacksummariesByProject")
@@ -355,8 +356,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesByProjectExecute(r ApiSho
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -366,8 +367,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesByProjectExecute(r ApiSho
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -377,8 +378,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesByProjectExecute(r ApiSho
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -388,8 +389,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesByProjectExecute(r ApiSho
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -399,8 +400,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesByProjectExecute(r ApiSho
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -418,8 +419,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesByProjectExecute(r ApiSho
 }
 
 type ApiShowbacksummariesCreateRequest struct {
-	ctx context.Context
-	ApiService *ShowbackSummariesAPIService
+	ctx                          context.Context
+	ApiService                   *ShowbackSummariesAPIService
 	createShowbackSummaryCommand *CreateShowbackSummaryCommand
 }
 
@@ -435,22 +436,22 @@ func (r ApiShowbacksummariesCreateRequest) Execute() (*http.Response, error) {
 /*
 ShowbacksummariesCreate Create showback summary
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiShowbacksummariesCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiShowbacksummariesCreateRequest
 */
 func (a *ShowbackSummariesAPIService) ShowbacksummariesCreate(ctx context.Context) ApiShowbacksummariesCreateRequest {
 	return ApiShowbacksummariesCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ShowbackSummariesAPIService) ShowbacksummariesCreateExecute(r ApiShowbacksummariesCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShowbackSummariesAPIService.ShowbacksummariesCreate")
@@ -526,8 +527,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesCreateExecute(r ApiShowba
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -537,8 +538,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesCreateExecute(r ApiShowba
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -548,8 +549,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesCreateExecute(r ApiShowba
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -559,8 +560,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesCreateExecute(r ApiShowba
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -570,8 +571,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesCreateExecute(r ApiShowba
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -580,8 +581,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesCreateExecute(r ApiShowba
 }
 
 type ApiShowbacksummariesExportCsvRequest struct {
-	ctx context.Context
-	ApiService *ShowbackSummariesAPIService
+	ctx            context.Context
+	ApiService     *ShowbackSummariesAPIService
 	isEmailEnabled *bool
 	organizationId *int32
 }
@@ -603,24 +604,25 @@ func (r ApiShowbacksummariesExportCsvRequest) Execute() (*CsvExporter, *http.Res
 /*
 ShowbacksummariesExportCsv Export Csv
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiShowbacksummariesExportCsvRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiShowbacksummariesExportCsvRequest
 */
 func (a *ShowbackSummariesAPIService) ShowbacksummariesExportCsv(ctx context.Context) ApiShowbacksummariesExportCsvRequest {
 	return ApiShowbacksummariesExportCsvRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CsvExporter
+//
+//	@return CsvExporter
 func (a *ShowbackSummariesAPIService) ShowbacksummariesExportCsvExecute(r ApiShowbacksummariesExportCsvRequest) (*CsvExporter, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CsvExporter
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CsvExporter
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShowbackSummariesAPIService.ShowbacksummariesExportCsv")
@@ -701,8 +703,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesExportCsvExecute(r ApiSho
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -712,8 +714,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesExportCsvExecute(r ApiSho
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -723,8 +725,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesExportCsvExecute(r ApiSho
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -734,8 +736,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesExportCsvExecute(r ApiSho
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -745,8 +747,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesExportCsvExecute(r ApiSho
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -764,12 +766,12 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesExportCsvExecute(r ApiSho
 }
 
 type ApiShowbacksummariesGroupedRequest struct {
-	ctx context.Context
-	ApiService *ShowbackSummariesAPIService
+	ctx            context.Context
+	ApiService     *ShowbackSummariesAPIService
 	organizationId *int32
-	fromDate *time.Time
-	toDate *time.Time
-	isDeleted *bool
+	fromDate       *time.Time
+	toDate         *time.Time
+	isDeleted      *bool
 }
 
 func (r ApiShowbacksummariesGroupedRequest) OrganizationId(organizationId int32) ApiShowbacksummariesGroupedRequest {
@@ -799,24 +801,25 @@ func (r ApiShowbacksummariesGroupedRequest) Execute() ([]GroupedShowbackSummaryL
 /*
 ShowbacksummariesGrouped Grouped showback summary
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiShowbacksummariesGroupedRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiShowbacksummariesGroupedRequest
 */
 func (a *ShowbackSummariesAPIService) ShowbacksummariesGrouped(ctx context.Context) ApiShowbacksummariesGroupedRequest {
 	return ApiShowbacksummariesGroupedRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []GroupedShowbackSummaryListDto
+//
+//	@return []GroupedShowbackSummaryListDto
 func (a *ShowbackSummariesAPIService) ShowbacksummariesGroupedExecute(r ApiShowbacksummariesGroupedRequest) ([]GroupedShowbackSummaryListDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []GroupedShowbackSummaryListDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []GroupedShowbackSummaryListDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShowbackSummariesAPIService.ShowbacksummariesGrouped")
@@ -902,8 +905,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesGroupedExecute(r ApiShowb
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -913,8 +916,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesGroupedExecute(r ApiShowb
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -924,8 +927,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesGroupedExecute(r ApiShowb
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -935,8 +938,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesGroupedExecute(r ApiShowb
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -946,8 +949,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesGroupedExecute(r ApiShowb
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -965,13 +968,13 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesGroupedExecute(r ApiShowb
 }
 
 type ApiShowbacksummariesGroupedListRequest struct {
-	ctx context.Context
-	ApiService *ShowbackSummariesAPIService
+	ctx            context.Context
+	ApiService     *ShowbackSummariesAPIService
 	organizationId *int32
 	periodDuration *string
-	isDeleted *bool
-	fromDate *time.Time
-	toDate *time.Time
+	isDeleted      *bool
+	fromDate       *time.Time
+	toDate         *time.Time
 }
 
 func (r ApiShowbacksummariesGroupedListRequest) OrganizationId(organizationId int32) ApiShowbacksummariesGroupedListRequest {
@@ -1006,24 +1009,25 @@ func (r ApiShowbacksummariesGroupedListRequest) Execute() (*GroupedShowbackList,
 /*
 ShowbacksummariesGroupedList Grouped list of showback summary
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiShowbacksummariesGroupedListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiShowbacksummariesGroupedListRequest
 */
 func (a *ShowbackSummariesAPIService) ShowbacksummariesGroupedList(ctx context.Context) ApiShowbacksummariesGroupedListRequest {
 	return ApiShowbacksummariesGroupedListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return GroupedShowbackList
+//
+//	@return GroupedShowbackList
 func (a *ShowbackSummariesAPIService) ShowbacksummariesGroupedListExecute(r ApiShowbacksummariesGroupedListRequest) (*GroupedShowbackList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GroupedShowbackList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GroupedShowbackList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShowbackSummariesAPIService.ShowbacksummariesGroupedList")
@@ -1112,8 +1116,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesGroupedListExecute(r ApiS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1123,8 +1127,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesGroupedListExecute(r ApiS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1134,8 +1138,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesGroupedListExecute(r ApiS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1145,8 +1149,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesGroupedListExecute(r ApiS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1156,8 +1160,8 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesGroupedListExecute(r ApiS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

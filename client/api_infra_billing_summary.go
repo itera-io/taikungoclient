@@ -19,13 +19,12 @@ import (
 	"net/url"
 )
 
-
 // InfraBillingSummaryAPIService InfraBillingSummaryAPI service
 type InfraBillingSummaryAPIService service
 
 type ApiInfraBillingSummaryCreateRequest struct {
-	ctx context.Context
-	ApiService *InfraBillingSummaryAPIService
+	ctx                                context.Context
+	ApiService                         *InfraBillingSummaryAPIService
 	infraBillingSummariesCreateCommand *InfraBillingSummariesCreateCommand
 }
 
@@ -41,22 +40,22 @@ func (r ApiInfraBillingSummaryCreateRequest) Execute() (*http.Response, error) {
 /*
 InfraBillingSummaryCreate Add infra billing summary
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiInfraBillingSummaryCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiInfraBillingSummaryCreateRequest
 */
 func (a *InfraBillingSummaryAPIService) InfraBillingSummaryCreate(ctx context.Context) ApiInfraBillingSummaryCreateRequest {
 	return ApiInfraBillingSummaryCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *InfraBillingSummaryAPIService) InfraBillingSummaryCreateExecute(r ApiInfraBillingSummaryCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InfraBillingSummaryAPIService.InfraBillingSummaryCreate")
@@ -132,8 +131,8 @@ func (a *InfraBillingSummaryAPIService) InfraBillingSummaryCreateExecute(r ApiIn
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -143,8 +142,8 @@ func (a *InfraBillingSummaryAPIService) InfraBillingSummaryCreateExecute(r ApiIn
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -154,8 +153,8 @@ func (a *InfraBillingSummaryAPIService) InfraBillingSummaryCreateExecute(r ApiIn
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -165,8 +164,8 @@ func (a *InfraBillingSummaryAPIService) InfraBillingSummaryCreateExecute(r ApiIn
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -176,8 +175,8 @@ func (a *InfraBillingSummaryAPIService) InfraBillingSummaryCreateExecute(r ApiIn
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -187,8 +186,8 @@ func (a *InfraBillingSummaryAPIService) InfraBillingSummaryCreateExecute(r ApiIn
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -197,8 +196,8 @@ func (a *InfraBillingSummaryAPIService) InfraBillingSummaryCreateExecute(r ApiIn
 }
 
 type ApiInfraBillingSummaryListRequest struct {
-	ctx context.Context
-	ApiService *InfraBillingSummaryAPIService
+	ctx                     context.Context
+	ApiService              *InfraBillingSummaryAPIService
 	infraBillingListCommand *InfraBillingListCommand
 }
 
@@ -214,24 +213,25 @@ func (r ApiInfraBillingSummaryListRequest) Execute() ([]InfraBillingSummaryDto, 
 /*
 InfraBillingSummaryList Retrieve infra billing info
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiInfraBillingSummaryListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiInfraBillingSummaryListRequest
 */
 func (a *InfraBillingSummaryAPIService) InfraBillingSummaryList(ctx context.Context) ApiInfraBillingSummaryListRequest {
 	return ApiInfraBillingSummaryListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []InfraBillingSummaryDto
+//
+//	@return []InfraBillingSummaryDto
 func (a *InfraBillingSummaryAPIService) InfraBillingSummaryListExecute(r ApiInfraBillingSummaryListRequest) ([]InfraBillingSummaryDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []InfraBillingSummaryDto
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []InfraBillingSummaryDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InfraBillingSummaryAPIService.InfraBillingSummaryList")
@@ -307,8 +307,8 @@ func (a *InfraBillingSummaryAPIService) InfraBillingSummaryListExecute(r ApiInfr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -318,8 +318,8 @@ func (a *InfraBillingSummaryAPIService) InfraBillingSummaryListExecute(r ApiInfr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -329,8 +329,8 @@ func (a *InfraBillingSummaryAPIService) InfraBillingSummaryListExecute(r ApiInfr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -340,8 +340,8 @@ func (a *InfraBillingSummaryAPIService) InfraBillingSummaryListExecute(r ApiInfr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -351,8 +351,8 @@ func (a *InfraBillingSummaryAPIService) InfraBillingSummaryListExecute(r ApiInfr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -362,8 +362,8 @@ func (a *InfraBillingSummaryAPIService) InfraBillingSummaryListExecute(r ApiInfr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

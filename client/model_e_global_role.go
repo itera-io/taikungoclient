@@ -21,8 +21,8 @@ type EGlobalRole string
 
 // List of EGlobalRole
 const (
-	EGLOBALROLE_NONE EGlobalRole = "None"
-	EGLOBALROLE_ADMIN EGlobalRole = "Admin"
+	EGLOBALROLE_NONE          EGlobalRole = "None"
+	EGLOBALROLE_ADMIN         EGlobalRole = "Admin"
 	EGLOBALROLE_ACCOUNT_ADMIN EGlobalRole = "AccountAdmin"
 	EGLOBALROLE_ACCOUNT_OWNER EGlobalRole = "AccountOwner"
 )
@@ -113,4 +113,3 @@ func (v *NullableEGlobalRole) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

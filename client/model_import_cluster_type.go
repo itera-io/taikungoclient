@@ -21,10 +21,10 @@ type ImportClusterType string
 
 // List of ImportClusterType
 const (
-	IMPORTCLUSTERTYPE_NONE ImportClusterType = "None"
+	IMPORTCLUSTERTYPE_NONE             ImportClusterType = "None"
 	IMPORTCLUSTERTYPE_CLOUD_CREDENTIAL ImportClusterType = "CloudCredential"
-	IMPORTCLUSTERTYPE_READ_ONLY ImportClusterType = "ReadOnly"
-	IMPORTCLUSTERTYPE_FULLY_MANAGED ImportClusterType = "FullyManaged"
+	IMPORTCLUSTERTYPE_READ_ONLY        ImportClusterType = "ReadOnly"
+	IMPORTCLUSTERTYPE_FULLY_MANAGED    ImportClusterType = "FullyManaged"
 )
 
 // All allowed values of ImportClusterType enum
@@ -113,4 +113,3 @@ func (v *NullableImportClusterType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

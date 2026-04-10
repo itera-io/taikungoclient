@@ -20,14 +20,13 @@ import (
 	"strings"
 )
 
-
 // ProjectAppParamsAPIService ProjectAppParamsAPI service
 type ProjectAppParamsAPIService service
 
 type ApiProjectappparamEditRequest struct {
-	ctx context.Context
-	ApiService *ProjectAppParamsAPIService
-	projectAppId int32
+	ctx                     context.Context
+	ApiService              *ProjectAppParamsAPIService
+	projectAppId            int32
 	editProjectAppParamsDto *[]EditProjectAppParamsDto
 }
 
@@ -43,26 +42,27 @@ func (r ApiProjectappparamEditRequest) Execute() (*ApplicationSyncResponse, *htt
 /*
 ProjectappparamEdit Edit project app params
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectAppId
- @return ApiProjectappparamEditRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectAppId
+	@return ApiProjectappparamEditRequest
 */
 func (a *ProjectAppParamsAPIService) ProjectappparamEdit(ctx context.Context, projectAppId int32) ApiProjectappparamEditRequest {
 	return ApiProjectappparamEditRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		projectAppId: projectAppId,
 	}
 }
 
 // Execute executes the request
-//  @return ApplicationSyncResponse
+//
+//	@return ApplicationSyncResponse
 func (a *ProjectAppParamsAPIService) ProjectappparamEditExecute(r ApiProjectappparamEditRequest) (*ApplicationSyncResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ApplicationSyncResponse
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApplicationSyncResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAppParamsAPIService.ProjectappparamEdit")
@@ -139,8 +139,8 @@ func (a *ProjectAppParamsAPIService) ProjectappparamEditExecute(r ApiProjectappp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -150,8 +150,8 @@ func (a *ProjectAppParamsAPIService) ProjectappparamEditExecute(r ApiProjectappp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -161,8 +161,8 @@ func (a *ProjectAppParamsAPIService) ProjectappparamEditExecute(r ApiProjectappp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -172,8 +172,8 @@ func (a *ProjectAppParamsAPIService) ProjectappparamEditExecute(r ApiProjectappp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -183,8 +183,8 @@ func (a *ProjectAppParamsAPIService) ProjectappparamEditExecute(r ApiProjectappp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -194,8 +194,8 @@ func (a *ProjectAppParamsAPIService) ProjectappparamEditExecute(r ApiProjectappp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

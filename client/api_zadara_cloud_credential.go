@@ -19,13 +19,12 @@ import (
 	"net/url"
 )
 
-
 // ZadaraCloudCredentialAPIService ZadaraCloudCredentialAPI service
 type ZadaraCloudCredentialAPIService service
 
 type ApiZadaraCreateRequest struct {
-	ctx context.Context
-	ApiService *ZadaraCloudCredentialAPIService
+	ctx                      context.Context
+	ApiService               *ZadaraCloudCredentialAPIService
 	createZadaraCloudCommand *CreateZadaraCloudCommand
 }
 
@@ -41,24 +40,25 @@ func (r ApiZadaraCreateRequest) Execute() (*ApiResponse, *http.Response, error) 
 /*
 ZadaraCreate Add Zadara credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiZadaraCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiZadaraCreateRequest
 */
 func (a *ZadaraCloudCredentialAPIService) ZadaraCreate(ctx context.Context) ApiZadaraCreateRequest {
 	return ApiZadaraCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ApiResponse
+//
+//	@return ApiResponse
 func (a *ZadaraCloudCredentialAPIService) ZadaraCreateExecute(r ApiZadaraCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ApiResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZadaraCloudCredentialAPIService.ZadaraCreate")
@@ -134,8 +134,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraCreateExecute(r ApiZadaraCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -145,8 +145,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraCreateExecute(r ApiZadaraCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -156,8 +156,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraCreateExecute(r ApiZadaraCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -167,8 +167,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraCreateExecute(r ApiZadaraCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -178,8 +178,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraCreateExecute(r ApiZadaraCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -189,8 +189,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraCreateExecute(r ApiZadaraCreateR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -208,17 +208,17 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraCreateExecute(r ApiZadaraCreateR
 }
 
 type ApiZadaraListRequest struct {
-	ctx context.Context
-	ApiService *ZadaraCloudCredentialAPIService
+	ctx            context.Context
+	ApiService     *ZadaraCloudCredentialAPIService
 	organizationId *int32
-	sortBy *string
-	sortDirection *string
-	search *string
-	searchId *string
-	id *int32
-	accountId *int32
-	limit *int32
-	offset *int32
+	sortBy         *string
+	sortDirection  *string
+	search         *string
+	searchId       *string
+	id             *int32
+	accountId      *int32
+	limit          *int32
+	offset         *int32
 }
 
 func (r ApiZadaraListRequest) OrganizationId(organizationId int32) ApiZadaraListRequest {
@@ -273,24 +273,25 @@ func (r ApiZadaraListRequest) Execute() (*ZadaraCredentialList, *http.Response, 
 /*
 ZadaraList Retrieve list of Zadara cloud credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiZadaraListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiZadaraListRequest
 */
 func (a *ZadaraCloudCredentialAPIService) ZadaraList(ctx context.Context) ApiZadaraListRequest {
 	return ApiZadaraListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ZadaraCredentialList
+//
+//	@return ZadaraCredentialList
 func (a *ZadaraCloudCredentialAPIService) ZadaraListExecute(r ApiZadaraListRequest) (*ZadaraCredentialList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ZadaraCredentialList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ZadaraCredentialList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZadaraCloudCredentialAPIService.ZadaraList")
@@ -399,8 +400,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraListExecute(r ApiZadaraListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -410,8 +411,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraListExecute(r ApiZadaraListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -421,8 +422,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraListExecute(r ApiZadaraListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -432,8 +433,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraListExecute(r ApiZadaraListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -443,8 +444,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraListExecute(r ApiZadaraListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -454,8 +455,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraListExecute(r ApiZadaraListReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -473,8 +474,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraListExecute(r ApiZadaraListReque
 }
 
 type ApiZadaraRegionlistRequest struct {
-	ctx context.Context
-	ApiService *ZadaraCloudCredentialAPIService
+	ctx                     context.Context
+	ApiService              *ZadaraCloudCredentialAPIService
 	zadaraRegionListCommand *ZadaraRegionListCommand
 }
 
@@ -490,24 +491,25 @@ func (r ApiZadaraRegionlistRequest) Execute() ([]AwsRegionDto, *http.Response, e
 /*
 ZadaraRegionlist Retrieve zadara regions list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiZadaraRegionlistRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiZadaraRegionlistRequest
 */
 func (a *ZadaraCloudCredentialAPIService) ZadaraRegionlist(ctx context.Context) ApiZadaraRegionlistRequest {
 	return ApiZadaraRegionlistRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []AwsRegionDto
+//
+//	@return []AwsRegionDto
 func (a *ZadaraCloudCredentialAPIService) ZadaraRegionlistExecute(r ApiZadaraRegionlistRequest) ([]AwsRegionDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []AwsRegionDto
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []AwsRegionDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZadaraCloudCredentialAPIService.ZadaraRegionlist")
@@ -583,8 +585,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraRegionlistExecute(r ApiZadaraReg
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -594,8 +596,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraRegionlistExecute(r ApiZadaraReg
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -605,8 +607,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraRegionlistExecute(r ApiZadaraReg
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -616,8 +618,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraRegionlistExecute(r ApiZadaraReg
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -627,8 +629,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraRegionlistExecute(r ApiZadaraReg
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -638,8 +640,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraRegionlistExecute(r ApiZadaraReg
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -657,8 +659,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraRegionlistExecute(r ApiZadaraReg
 }
 
 type ApiZadaraUpdateRequest struct {
-	ctx context.Context
-	ApiService *ZadaraCloudCredentialAPIService
+	ctx                 context.Context
+	ApiService          *ZadaraCloudCredentialAPIService
 	updateZadaraCommand *UpdateZadaraCommand
 }
 
@@ -674,22 +676,22 @@ func (r ApiZadaraUpdateRequest) Execute() (*http.Response, error) {
 /*
 ZadaraUpdate Update zadara cloud credential
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiZadaraUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiZadaraUpdateRequest
 */
 func (a *ZadaraCloudCredentialAPIService) ZadaraUpdate(ctx context.Context) ApiZadaraUpdateRequest {
 	return ApiZadaraUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ZadaraCloudCredentialAPIService) ZadaraUpdateExecute(r ApiZadaraUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZadaraCloudCredentialAPIService.ZadaraUpdate")
@@ -765,8 +767,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraUpdateExecute(r ApiZadaraUpdateR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -776,8 +778,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraUpdateExecute(r ApiZadaraUpdateR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -787,8 +789,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraUpdateExecute(r ApiZadaraUpdateR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -798,8 +800,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraUpdateExecute(r ApiZadaraUpdateR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -809,8 +811,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraUpdateExecute(r ApiZadaraUpdateR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -820,8 +822,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraUpdateExecute(r ApiZadaraUpdateR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -830,7 +832,7 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraUpdateExecute(r ApiZadaraUpdateR
 }
 
 type ApiZadaraVolumeTypeListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ZadaraCloudCredentialAPIService
 }
 
@@ -841,24 +843,25 @@ func (r ApiZadaraVolumeTypeListRequest) Execute() ([]string, *http.Response, err
 /*
 ZadaraVolumeTypeList Retrieve volume type list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiZadaraVolumeTypeListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiZadaraVolumeTypeListRequest
 */
 func (a *ZadaraCloudCredentialAPIService) ZadaraVolumeTypeList(ctx context.Context) ApiZadaraVolumeTypeListRequest {
 	return ApiZadaraVolumeTypeListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []string
+//
+//	@return []string
 func (a *ZadaraCloudCredentialAPIService) ZadaraVolumeTypeListExecute(r ApiZadaraVolumeTypeListRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []string
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZadaraCloudCredentialAPIService.ZadaraVolumeTypeList")
@@ -932,8 +935,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraVolumeTypeListExecute(r ApiZadar
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -943,8 +946,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraVolumeTypeListExecute(r ApiZadar
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -954,8 +957,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraVolumeTypeListExecute(r ApiZadar
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -965,8 +968,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraVolumeTypeListExecute(r ApiZadar
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -976,8 +979,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraVolumeTypeListExecute(r ApiZadar
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -987,8 +990,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraVolumeTypeListExecute(r ApiZadar
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1006,8 +1009,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraVolumeTypeListExecute(r ApiZadar
 }
 
 type ApiZadaraZonelistRequest struct {
-	ctx context.Context
-	ApiService *ZadaraCloudCredentialAPIService
+	ctx                            context.Context
+	ApiService                     *ZadaraCloudCredentialAPIService
 	zadaraAvailabilityZonesCommand *ZadaraAvailabilityZonesCommand
 }
 
@@ -1023,24 +1026,25 @@ func (r ApiZadaraZonelistRequest) Execute() (*AzResult, *http.Response, error) {
 /*
 ZadaraZonelist Retrieve zadara zone list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiZadaraZonelistRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiZadaraZonelistRequest
 */
 func (a *ZadaraCloudCredentialAPIService) ZadaraZonelist(ctx context.Context) ApiZadaraZonelistRequest {
 	return ApiZadaraZonelistRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return AzResult
+//
+//	@return AzResult
 func (a *ZadaraCloudCredentialAPIService) ZadaraZonelistExecute(r ApiZadaraZonelistRequest) (*AzResult, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AzResult
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AzResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZadaraCloudCredentialAPIService.ZadaraZonelist")
@@ -1116,8 +1120,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraZonelistExecute(r ApiZadaraZonel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1127,8 +1131,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraZonelistExecute(r ApiZadaraZonel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1138,8 +1142,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraZonelistExecute(r ApiZadaraZonel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1149,8 +1153,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraZonelistExecute(r ApiZadaraZonel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1160,8 +1164,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraZonelistExecute(r ApiZadaraZonel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1171,8 +1175,8 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraZonelistExecute(r ApiZadaraZonel
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

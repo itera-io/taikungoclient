@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_ZadaraCloudCredentialAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_ZadaraCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test ZadaraCloudCredentialAPIService ZadaraCreate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.ZadaraCloudCredentialAPI.ZadaraCreate(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_taikuncore_ZadaraCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test ZadaraCloudCredentialAPIService ZadaraList", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.ZadaraCloudCredentialAPI.ZadaraList(context.Background()).Execute()
 
@@ -48,7 +48,7 @@ func Test_taikuncore_ZadaraCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test ZadaraCloudCredentialAPIService ZadaraRegionlist", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.ZadaraCloudCredentialAPI.ZadaraRegionlist(context.Background()).Execute()
 
@@ -60,7 +60,7 @@ func Test_taikuncore_ZadaraCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test ZadaraCloudCredentialAPIService ZadaraUpdate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.ZadaraCloudCredentialAPI.ZadaraUpdate(context.Background()).Execute()
 
@@ -71,7 +71,7 @@ func Test_taikuncore_ZadaraCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test ZadaraCloudCredentialAPIService ZadaraVolumeTypeList", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.ZadaraCloudCredentialAPI.ZadaraVolumeTypeList(context.Background()).Execute()
 
@@ -83,7 +83,7 @@ func Test_taikuncore_ZadaraCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test ZadaraCloudCredentialAPIService ZadaraZonelist", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.ZadaraCloudCredentialAPI.ZadaraZonelist(context.Background()).Execute()
 

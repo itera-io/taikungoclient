@@ -19,13 +19,12 @@ import (
 	"net/url"
 )
 
-
 // StandaloneVMDisksAPIService StandaloneVMDisksAPI service
 type StandaloneVMDisksAPIService service
 
 type ApiStandalonevmdisksCreateRequest struct {
-	ctx context.Context
-	ApiService *StandaloneVMDisksAPIService
+	ctx                         context.Context
+	ApiService                  *StandaloneVMDisksAPIService
 	createStandAloneDiskCommand *CreateStandAloneDiskCommand
 }
 
@@ -41,24 +40,25 @@ func (r ApiStandalonevmdisksCreateRequest) Execute() (*ApiResponse, *http.Respon
 /*
 StandalonevmdisksCreate Add disk for standalone vm
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiStandalonevmdisksCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiStandalonevmdisksCreateRequest
 */
 func (a *StandaloneVMDisksAPIService) StandalonevmdisksCreate(ctx context.Context) ApiStandalonevmdisksCreateRequest {
 	return ApiStandalonevmdisksCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ApiResponse
+//
+//	@return ApiResponse
 func (a *StandaloneVMDisksAPIService) StandalonevmdisksCreateExecute(r ApiStandalonevmdisksCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ApiResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StandaloneVMDisksAPIService.StandalonevmdisksCreate")
@@ -134,8 +134,8 @@ func (a *StandaloneVMDisksAPIService) StandalonevmdisksCreateExecute(r ApiStanda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -145,8 +145,8 @@ func (a *StandaloneVMDisksAPIService) StandalonevmdisksCreateExecute(r ApiStanda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -156,8 +156,8 @@ func (a *StandaloneVMDisksAPIService) StandalonevmdisksCreateExecute(r ApiStanda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -167,8 +167,8 @@ func (a *StandaloneVMDisksAPIService) StandalonevmdisksCreateExecute(r ApiStanda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -178,8 +178,8 @@ func (a *StandaloneVMDisksAPIService) StandalonevmdisksCreateExecute(r ApiStanda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -189,8 +189,8 @@ func (a *StandaloneVMDisksAPIService) StandalonevmdisksCreateExecute(r ApiStanda
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -208,8 +208,8 @@ func (a *StandaloneVMDisksAPIService) StandalonevmdisksCreateExecute(r ApiStanda
 }
 
 type ApiStandalonevmdisksUpdateSizeRequest struct {
-	ctx context.Context
-	ApiService *StandaloneVMDisksAPIService
+	ctx                               context.Context
+	ApiService                        *StandaloneVMDisksAPIService
 	updateStandaloneVmDiskSizeCommand *UpdateStandaloneVmDiskSizeCommand
 }
 
@@ -225,22 +225,22 @@ func (r ApiStandalonevmdisksUpdateSizeRequest) Execute() (*http.Response, error)
 /*
 StandalonevmdisksUpdateSize Update disk size
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiStandalonevmdisksUpdateSizeRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiStandalonevmdisksUpdateSizeRequest
 */
 func (a *StandaloneVMDisksAPIService) StandalonevmdisksUpdateSize(ctx context.Context) ApiStandalonevmdisksUpdateSizeRequest {
 	return ApiStandalonevmdisksUpdateSizeRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *StandaloneVMDisksAPIService) StandalonevmdisksUpdateSizeExecute(r ApiStandalonevmdisksUpdateSizeRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StandaloneVMDisksAPIService.StandalonevmdisksUpdateSize")
@@ -316,8 +316,8 @@ func (a *StandaloneVMDisksAPIService) StandalonevmdisksUpdateSizeExecute(r ApiSt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -327,8 +327,8 @@ func (a *StandaloneVMDisksAPIService) StandalonevmdisksUpdateSizeExecute(r ApiSt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -338,8 +338,8 @@ func (a *StandaloneVMDisksAPIService) StandalonevmdisksUpdateSizeExecute(r ApiSt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -349,8 +349,8 @@ func (a *StandaloneVMDisksAPIService) StandalonevmdisksUpdateSizeExecute(r ApiSt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -360,8 +360,8 @@ func (a *StandaloneVMDisksAPIService) StandalonevmdisksUpdateSizeExecute(r ApiSt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -371,8 +371,8 @@ func (a *StandaloneVMDisksAPIService) StandalonevmdisksUpdateSizeExecute(r ApiSt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

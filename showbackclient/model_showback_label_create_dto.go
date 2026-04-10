@@ -73,6 +73,7 @@ func (o *ShowbackLabelCreateDto) HasLabel() bool {
 func (o *ShowbackLabelCreateDto) SetLabel(v string) {
 	o.Label.Set(&v)
 }
+
 // SetLabelNil sets the value for Label to be an explicit nil
 func (o *ShowbackLabelCreateDto) SetLabelNil() {
 	o.Label.Set(nil)
@@ -115,6 +116,7 @@ func (o *ShowbackLabelCreateDto) HasValue() bool {
 func (o *ShowbackLabelCreateDto) SetValue(v string) {
 	o.Value.Set(&v)
 }
+
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *ShowbackLabelCreateDto) SetValueNil() {
 	o.Value.Set(nil)
@@ -126,7 +128,7 @@ func (o *ShowbackLabelCreateDto) UnsetValue() {
 }
 
 func (o ShowbackLabelCreateDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -179,5 +181,3 @@ func (v *NullableShowbackLabelCreateDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

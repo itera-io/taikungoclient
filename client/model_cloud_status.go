@@ -21,14 +21,14 @@ type CloudStatus string
 
 // List of CloudStatus
 const (
-	CLOUDSTATUS_DELETING CloudStatus = "Deleting"
-	CLOUDSTATUS_FAILURE CloudStatus = "Failure"
+	CLOUDSTATUS_DELETING       CloudStatus = "Deleting"
+	CLOUDSTATUS_FAILURE        CloudStatus = "Failure"
 	CLOUDSTATUS_FAILED_UPGRADE CloudStatus = "FailedUpgrade"
-	CLOUDSTATUS_WAITING CloudStatus = "Waiting"
-	CLOUDSTATUS_READY CloudStatus = "Ready"
-	CLOUDSTATUS_UPDATING CloudStatus = "Updating"
-	CLOUDSTATUS_UPGRADING CloudStatus = "Upgrading"
-	CLOUDSTATUS_REPAIRING CloudStatus = "Repairing"
+	CLOUDSTATUS_WAITING        CloudStatus = "Waiting"
+	CLOUDSTATUS_READY          CloudStatus = "Ready"
+	CLOUDSTATUS_UPDATING       CloudStatus = "Updating"
+	CLOUDSTATUS_UPGRADING      CloudStatus = "Upgrading"
+	CLOUDSTATUS_REPAIRING      CloudStatus = "Repairing"
 )
 
 // All allowed values of CloudStatus enum
@@ -121,4 +121,3 @@ func (v *NullableCloudStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

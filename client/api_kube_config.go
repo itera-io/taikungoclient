@@ -19,13 +19,12 @@ import (
 	"net/url"
 )
 
-
 // KubeConfigAPIService KubeConfigAPI service
 type KubeConfigAPIService service
 
 type ApiKubeconfigCreateRequest struct {
-	ctx context.Context
-	ApiService *KubeConfigAPIService
+	ctx                     context.Context
+	ApiService              *KubeConfigAPIService
 	createKubeConfigCommand *CreateKubeConfigCommand
 }
 
@@ -41,24 +40,25 @@ func (r ApiKubeconfigCreateRequest) Execute() (*ApiResponse, *http.Response, err
 /*
 KubeconfigCreate Create kube config
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubeconfigCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubeconfigCreateRequest
 */
 func (a *KubeConfigAPIService) KubeconfigCreate(ctx context.Context) ApiKubeconfigCreateRequest {
 	return ApiKubeconfigCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ApiResponse
+//
+//	@return ApiResponse
 func (a *KubeConfigAPIService) KubeconfigCreateExecute(r ApiKubeconfigCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ApiResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubeConfigAPIService.KubeconfigCreate")
@@ -134,8 +134,8 @@ func (a *KubeConfigAPIService) KubeconfigCreateExecute(r ApiKubeconfigCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -145,8 +145,8 @@ func (a *KubeConfigAPIService) KubeconfigCreateExecute(r ApiKubeconfigCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -156,8 +156,8 @@ func (a *KubeConfigAPIService) KubeconfigCreateExecute(r ApiKubeconfigCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -167,8 +167,8 @@ func (a *KubeConfigAPIService) KubeconfigCreateExecute(r ApiKubeconfigCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -178,8 +178,8 @@ func (a *KubeConfigAPIService) KubeconfigCreateExecute(r ApiKubeconfigCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -189,8 +189,8 @@ func (a *KubeConfigAPIService) KubeconfigCreateExecute(r ApiKubeconfigCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -208,8 +208,8 @@ func (a *KubeConfigAPIService) KubeconfigCreateExecute(r ApiKubeconfigCreateRequ
 }
 
 type ApiKubeconfigDeleteRequest struct {
-	ctx context.Context
-	ApiService *KubeConfigAPIService
+	ctx                     context.Context
+	ApiService              *KubeConfigAPIService
 	deleteKubeConfigCommand *DeleteKubeConfigCommand
 }
 
@@ -225,22 +225,22 @@ func (r ApiKubeconfigDeleteRequest) Execute() (*http.Response, error) {
 /*
 KubeconfigDelete Delete kube config
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubeconfigDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubeconfigDeleteRequest
 */
 func (a *KubeConfigAPIService) KubeconfigDelete(ctx context.Context) ApiKubeconfigDeleteRequest {
 	return ApiKubeconfigDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *KubeConfigAPIService) KubeconfigDeleteExecute(r ApiKubeconfigDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubeConfigAPIService.KubeconfigDelete")
@@ -316,8 +316,8 @@ func (a *KubeConfigAPIService) KubeconfigDeleteExecute(r ApiKubeconfigDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -327,8 +327,8 @@ func (a *KubeConfigAPIService) KubeconfigDeleteExecute(r ApiKubeconfigDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -338,8 +338,8 @@ func (a *KubeConfigAPIService) KubeconfigDeleteExecute(r ApiKubeconfigDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -349,8 +349,8 @@ func (a *KubeConfigAPIService) KubeconfigDeleteExecute(r ApiKubeconfigDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -360,8 +360,8 @@ func (a *KubeConfigAPIService) KubeconfigDeleteExecute(r ApiKubeconfigDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -371,8 +371,8 @@ func (a *KubeConfigAPIService) KubeconfigDeleteExecute(r ApiKubeconfigDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -381,8 +381,8 @@ func (a *KubeConfigAPIService) KubeconfigDeleteExecute(r ApiKubeconfigDeleteRequ
 }
 
 type ApiKubeconfigDeleteByProjectIdRequest struct {
-	ctx context.Context
-	ApiService *KubeConfigAPIService
+	ctx                                context.Context
+	ApiService                         *KubeConfigAPIService
 	deleteKubeConfigByProjectIdCommand *DeleteKubeConfigByProjectIdCommand
 }
 
@@ -398,22 +398,22 @@ func (r ApiKubeconfigDeleteByProjectIdRequest) Execute() (*http.Response, error)
 /*
 KubeconfigDeleteByProjectId Delete kube config by project id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubeconfigDeleteByProjectIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubeconfigDeleteByProjectIdRequest
 */
 func (a *KubeConfigAPIService) KubeconfigDeleteByProjectId(ctx context.Context) ApiKubeconfigDeleteByProjectIdRequest {
 	return ApiKubeconfigDeleteByProjectIdRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *KubeConfigAPIService) KubeconfigDeleteByProjectIdExecute(r ApiKubeconfigDeleteByProjectIdRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubeConfigAPIService.KubeconfigDeleteByProjectId")
@@ -489,8 +489,8 @@ func (a *KubeConfigAPIService) KubeconfigDeleteByProjectIdExecute(r ApiKubeconfi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -500,8 +500,8 @@ func (a *KubeConfigAPIService) KubeconfigDeleteByProjectIdExecute(r ApiKubeconfi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -511,8 +511,8 @@ func (a *KubeConfigAPIService) KubeconfigDeleteByProjectIdExecute(r ApiKubeconfi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -522,8 +522,8 @@ func (a *KubeConfigAPIService) KubeconfigDeleteByProjectIdExecute(r ApiKubeconfi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -533,8 +533,8 @@ func (a *KubeConfigAPIService) KubeconfigDeleteByProjectIdExecute(r ApiKubeconfi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -544,8 +544,8 @@ func (a *KubeConfigAPIService) KubeconfigDeleteByProjectIdExecute(r ApiKubeconfi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -554,8 +554,8 @@ func (a *KubeConfigAPIService) KubeconfigDeleteByProjectIdExecute(r ApiKubeconfi
 }
 
 type ApiKubeconfigDownloadRequest struct {
-	ctx context.Context
-	ApiService *KubeConfigAPIService
+	ctx                       context.Context
+	ApiService                *KubeConfigAPIService
 	downloadKubeConfigCommand *DownloadKubeConfigCommand
 }
 
@@ -571,24 +571,25 @@ func (r ApiKubeconfigDownloadRequest) Execute() (string, *http.Response, error) 
 /*
 KubeconfigDownload Download kube config file for user by project Id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubeconfigDownloadRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubeconfigDownloadRequest
 */
 func (a *KubeConfigAPIService) KubeconfigDownload(ctx context.Context) ApiKubeconfigDownloadRequest {
 	return ApiKubeconfigDownloadRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return string
+//
+//	@return string
 func (a *KubeConfigAPIService) KubeconfigDownloadExecute(r ApiKubeconfigDownloadRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  string
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubeConfigAPIService.KubeconfigDownload")
@@ -664,8 +665,8 @@ func (a *KubeConfigAPIService) KubeconfigDownloadExecute(r ApiKubeconfigDownload
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -675,8 +676,8 @@ func (a *KubeConfigAPIService) KubeconfigDownloadExecute(r ApiKubeconfigDownload
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -686,8 +687,8 @@ func (a *KubeConfigAPIService) KubeconfigDownloadExecute(r ApiKubeconfigDownload
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -697,8 +698,8 @@ func (a *KubeConfigAPIService) KubeconfigDownloadExecute(r ApiKubeconfigDownload
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -708,8 +709,8 @@ func (a *KubeConfigAPIService) KubeconfigDownloadExecute(r ApiKubeconfigDownload
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -719,8 +720,8 @@ func (a *KubeConfigAPIService) KubeconfigDownloadExecute(r ApiKubeconfigDownload
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -738,8 +739,8 @@ func (a *KubeConfigAPIService) KubeconfigDownloadExecute(r ApiKubeconfigDownload
 }
 
 type ApiKubeconfigExportRequest struct {
-	ctx context.Context
-	ApiService *KubeConfigAPIService
+	ctx                     context.Context
+	ApiService              *KubeConfigAPIService
 	exportKubeConfigCommand *ExportKubeConfigCommand
 }
 
@@ -755,24 +756,25 @@ func (r ApiKubeconfigExportRequest) Execute() (*CsvExporter, *http.Response, err
 /*
 KubeconfigExport Export
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubeconfigExportRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubeconfigExportRequest
 */
 func (a *KubeConfigAPIService) KubeconfigExport(ctx context.Context) ApiKubeconfigExportRequest {
 	return ApiKubeconfigExportRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CsvExporter
+//
+//	@return CsvExporter
 func (a *KubeConfigAPIService) KubeconfigExportExecute(r ApiKubeconfigExportRequest) (*CsvExporter, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CsvExporter
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CsvExporter
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubeConfigAPIService.KubeconfigExport")
@@ -848,8 +850,8 @@ func (a *KubeConfigAPIService) KubeconfigExportExecute(r ApiKubeconfigExportRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -859,8 +861,8 @@ func (a *KubeConfigAPIService) KubeconfigExportExecute(r ApiKubeconfigExportRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -870,8 +872,8 @@ func (a *KubeConfigAPIService) KubeconfigExportExecute(r ApiKubeconfigExportRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -881,8 +883,8 @@ func (a *KubeConfigAPIService) KubeconfigExportExecute(r ApiKubeconfigExportRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -892,8 +894,8 @@ func (a *KubeConfigAPIService) KubeconfigExportExecute(r ApiKubeconfigExportRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -903,8 +905,8 @@ func (a *KubeConfigAPIService) KubeconfigExportExecute(r ApiKubeconfigExportRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -922,8 +924,8 @@ func (a *KubeConfigAPIService) KubeconfigExportExecute(r ApiKubeconfigExportRequ
 }
 
 type ApiKubeconfigInteractiveShellRequest struct {
-	ctx context.Context
-	ApiService *KubeConfigAPIService
+	ctx                               context.Context
+	ApiService                        *KubeConfigAPIService
 	kubeConfigInteractiveShellCommand *KubeConfigInteractiveShellCommand
 }
 
@@ -939,24 +941,25 @@ func (r ApiKubeconfigInteractiveShellRequest) Execute() (*InteractiveShellDto, *
 /*
 KubeconfigInteractiveShell Interactive shell for user kube config
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubeconfigInteractiveShellRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubeconfigInteractiveShellRequest
 */
 func (a *KubeConfigAPIService) KubeconfigInteractiveShell(ctx context.Context) ApiKubeconfigInteractiveShellRequest {
 	return ApiKubeconfigInteractiveShellRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return InteractiveShellDto
+//
+//	@return InteractiveShellDto
 func (a *KubeConfigAPIService) KubeconfigInteractiveShellExecute(r ApiKubeconfigInteractiveShellRequest) (*InteractiveShellDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *InteractiveShellDto
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *InteractiveShellDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubeConfigAPIService.KubeconfigInteractiveShell")
@@ -1032,8 +1035,8 @@ func (a *KubeConfigAPIService) KubeconfigInteractiveShellExecute(r ApiKubeconfig
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1043,8 +1046,8 @@ func (a *KubeConfigAPIService) KubeconfigInteractiveShellExecute(r ApiKubeconfig
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1054,8 +1057,8 @@ func (a *KubeConfigAPIService) KubeconfigInteractiveShellExecute(r ApiKubeconfig
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1065,8 +1068,8 @@ func (a *KubeConfigAPIService) KubeconfigInteractiveShellExecute(r ApiKubeconfig
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1076,8 +1079,8 @@ func (a *KubeConfigAPIService) KubeconfigInteractiveShellExecute(r ApiKubeconfig
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1087,8 +1090,8 @@ func (a *KubeConfigAPIService) KubeconfigInteractiveShellExecute(r ApiKubeconfig
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1106,16 +1109,16 @@ func (a *KubeConfigAPIService) KubeconfigInteractiveShellExecute(r ApiKubeconfig
 }
 
 type ApiKubeconfigListRequest struct {
-	ctx context.Context
-	ApiService *KubeConfigAPIService
-	projectId *int32
+	ctx            context.Context
+	ApiService     *KubeConfigAPIService
+	projectId      *int32
 	organizationId *int32
-	limit *int32
-	offset *int32
-	sortBy *string
-	sortDirection *string
-	search *string
-	id *int32
+	limit          *int32
+	offset         *int32
+	sortBy         *string
+	sortDirection  *string
+	search         *string
+	id             *int32
 }
 
 func (r ApiKubeconfigListRequest) ProjectId(projectId int32) ApiKubeconfigListRequest {
@@ -1165,24 +1168,25 @@ func (r ApiKubeconfigListRequest) Execute() (*KubeConfigForUserList, *http.Respo
 /*
 KubeconfigList Retrieve a list of kube configs for project
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiKubeconfigListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiKubeconfigListRequest
 */
 func (a *KubeConfigAPIService) KubeconfigList(ctx context.Context) ApiKubeconfigListRequest {
 	return ApiKubeconfigListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return KubeConfigForUserList
+//
+//	@return KubeConfigForUserList
 func (a *KubeConfigAPIService) KubeconfigListExecute(r ApiKubeconfigListRequest) (*KubeConfigForUserList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *KubeConfigForUserList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *KubeConfigForUserList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubeConfigAPIService.KubeconfigList")
@@ -1281,8 +1285,8 @@ func (a *KubeConfigAPIService) KubeconfigListExecute(r ApiKubeconfigListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1292,8 +1296,8 @@ func (a *KubeConfigAPIService) KubeconfigListExecute(r ApiKubeconfigListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1303,8 +1307,8 @@ func (a *KubeConfigAPIService) KubeconfigListExecute(r ApiKubeconfigListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1314,8 +1318,8 @@ func (a *KubeConfigAPIService) KubeconfigListExecute(r ApiKubeconfigListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1325,8 +1329,8 @@ func (a *KubeConfigAPIService) KubeconfigListExecute(r ApiKubeconfigListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1336,8 +1340,8 @@ func (a *KubeConfigAPIService) KubeconfigListExecute(r ApiKubeconfigListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

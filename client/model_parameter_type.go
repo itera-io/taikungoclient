@@ -21,12 +21,12 @@ type ParameterType string
 
 // List of ParameterType
 const (
-	PARAMETERTYPE_UNKNOWN ParameterType = "Unknown"
-	PARAMETERTYPE_STRING ParameterType = "String"
-	PARAMETERTYPE_BOOLEAN ParameterType = "Boolean"
-	PARAMETERTYPE_INTEGER ParameterType = "Integer"
-	PARAMETERTYPE_OBJECT ParameterType = "Object"
-	PARAMETERTYPE_ARRAY ParameterType = "Array"
+	PARAMETERTYPE_UNKNOWN   ParameterType = "Unknown"
+	PARAMETERTYPE_STRING    ParameterType = "String"
+	PARAMETERTYPE_BOOLEAN   ParameterType = "Boolean"
+	PARAMETERTYPE_INTEGER   ParameterType = "Integer"
+	PARAMETERTYPE_OBJECT    ParameterType = "Object"
+	PARAMETERTYPE_ARRAY     ParameterType = "Array"
 	PARAMETERTYPE_MULTILINE ParameterType = "Multiline"
 )
 
@@ -119,4 +119,3 @@ func (v *NullableParameterType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
