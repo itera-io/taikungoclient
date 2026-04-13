@@ -18871,6 +18871,282 @@ paths:
       summary: Retrieve alerts list
       tags:
       - Internal
+  /api/v1/internal/prometheus-exporter/accounts:
+    get:
+      operationId: internal-exporter-accounts-list
+      parameters:
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 5000
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: LastAccountId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/InternalExporterAccountDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve exporter accounts list
+      tags:
+      - Internal
+  /api/v1/internal/prometheus-exporter/projects:
+    get:
+      operationId: internal-exporter-projects-list
+      parameters:
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 5000
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: LastProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/InternalExporterProjectDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve exporter projects list
+      tags:
+      - Internal
+  /api/v1/internal/prometheus-exporter/servers:
+    get:
+      operationId: internal-exporter-servers-list
+      parameters:
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 5000
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: LastServerId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/InternalExporterServerDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve exporter servers list
+      tags:
+      - Internal
+  /api/v1/internal/prometheus-exporter/standalone:
+    get:
+      operationId: internal-exporter-standalone-vms-list
+      parameters:
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 5000
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: LastStandaloneVmId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/InternalExporterStandaloneVmDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve exporter standalone VMs list
+      tags:
+      - Internal
   /api/v1/internal/projects:
     get:
       operationId: internal-projects-list
@@ -56409,6 +56685,134 @@ components:
           format: date-time
           type: string
         projectId:
+          format: int32
+          type: integer
+      type: object
+    InternalExporterAccountDto:
+      example:
+        name: name
+        usersCount: 6
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        usersCount:
+          format: int32
+          type: integer
+      type: object
+    InternalExporterProjectDto:
+      example:
+        organizationId: 1
+        projectAction: true
+        organizationName: organizationName
+        cloudType: 5
+        name: name
+        id: 0
+        status: 6
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        status:
+          format: int32
+          type: integer
+        organizationId:
+          format: int32
+          type: integer
+        organizationName:
+          nullable: true
+          type: string
+        cloudType:
+          format: int32
+          nullable: true
+          type: integer
+        projectAction:
+          type: boolean
+      type: object
+    InternalExporterServerDto:
+      example:
+        flavor: flavor
+        organizationId: 5
+        organizationName: organizationName
+        cloudType: 5
+        name: name
+        id: 0
+        projectName: projectName
+        projectId: 1
+        status: 6
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        status:
+          format: int32
+          type: integer
+        flavor:
+          nullable: true
+          type: string
+        projectId:
+          format: int32
+          type: integer
+        projectName:
+          nullable: true
+          type: string
+        organizationId:
+          format: int32
+          type: integer
+        organizationName:
+          nullable: true
+          type: string
+        cloudType:
+          format: int32
+          type: integer
+      type: object
+    InternalExporterStandaloneVmDto:
+      example:
+        organizationId: 5
+        organizationName: organizationName
+        cloudType: 5
+        name: name
+        flavorId: flavorId
+        id: 0
+        projectName: projectName
+        projectId: 1
+        status: 6
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        status:
+          format: int32
+          type: integer
+        flavorId:
+          nullable: true
+          type: string
+        projectId:
+          format: int32
+          type: integer
+        projectName:
+          nullable: true
+          type: string
+        organizationId:
+          format: int32
+          type: integer
+        organizationName:
+          nullable: true
+          type: string
+        cloudType:
           format: int32
           type: integer
       type: object
