@@ -21,8 +21,8 @@ var _ MappedNullable = &SlackConfigurationList{}
 
 // SlackConfigurationList struct for SlackConfigurationList
 type SlackConfigurationList struct {
-	Data []SlackConfigurationDto `json:"data"`
-	TotalCount int32 `json:"totalCount"`
+	Data                 []SlackConfigurationDto `json:"data"`
+	TotalCount           int32                   `json:"totalCount"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -98,7 +98,7 @@ func (o *SlackConfigurationList) SetTotalCount(v int32) {
 }
 
 func (o SlackConfigurationList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -133,10 +133,10 @@ func (o *SlackConfigurationList) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -198,5 +198,3 @@ func (v *NullableSlackConfigurationList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

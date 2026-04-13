@@ -21,11 +21,11 @@ var _ MappedNullable = &StatefulSetListDtoCursorStringPaginatedResponse{}
 
 // StatefulSetListDtoCursorStringPaginatedResponse struct for StatefulSetListDtoCursorStringPaginatedResponse
 type StatefulSetListDtoCursorStringPaginatedResponse struct {
-	Data []StatefulSetListDto `json:"data"`
-	Limit int32 `json:"limit"`
-	HasMore bool `json:"hasMore"`
-	TotalCount int64 `json:"totalCount"`
-	NextCursor NullableString `json:"nextCursor,omitempty"`
+	Data                 []StatefulSetListDto `json:"data"`
+	Limit                int32                `json:"limit"`
+	HasMore              bool                 `json:"hasMore"`
+	TotalCount           int64                `json:"totalCount"`
+	NextCursor           NullableString       `json:"nextCursor,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -182,6 +182,7 @@ func (o *StatefulSetListDtoCursorStringPaginatedResponse) HasNextCursor() bool {
 func (o *StatefulSetListDtoCursorStringPaginatedResponse) SetNextCursor(v string) {
 	o.NextCursor.Set(&v)
 }
+
 // SetNextCursorNil sets the value for NextCursor to be an explicit nil
 func (o *StatefulSetListDtoCursorStringPaginatedResponse) SetNextCursorNil() {
 	o.NextCursor.Set(nil)
@@ -193,7 +194,7 @@ func (o *StatefulSetListDtoCursorStringPaginatedResponse) UnsetNextCursor() {
 }
 
 func (o StatefulSetListDtoCursorStringPaginatedResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -235,10 +236,10 @@ func (o *StatefulSetListDtoCursorStringPaginatedResponse) UnmarshalJSON(data []b
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -303,5 +304,3 @@ func (v *NullableStatefulSetListDtoCursorStringPaginatedResponse) UnmarshalJSON(
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

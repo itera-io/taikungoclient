@@ -20,13 +20,13 @@ var _ MappedNullable = &OpenStackProjectListQuery{}
 
 // OpenStackProjectListQuery struct for OpenStackProjectListQuery
 type OpenStackProjectListQuery struct {
-	OpenStackUser NullableString `json:"openStackUser,omitempty"`
-	OpenStackPassword NullableString `json:"openStackPassword,omitempty"`
-	OpenStackUrl NullableString `json:"openStackUrl,omitempty"`
-	OpenStackDomain NullableString `json:"openStackDomain,omitempty"`
-	ApplicationCredEnabled *bool `json:"applicationCredEnabled,omitempty"`
-	IsAdmin *bool `json:"isAdmin,omitempty"`
-	AdditionalProperties map[string]interface{}
+	OpenStackUser          NullableString `json:"openStackUser,omitempty"`
+	OpenStackPassword      NullableString `json:"openStackPassword,omitempty"`
+	OpenStackUrl           NullableString `json:"openStackUrl,omitempty"`
+	OpenStackDomain        NullableString `json:"openStackDomain,omitempty"`
+	ApplicationCredEnabled *bool          `json:"applicationCredEnabled,omitempty"`
+	IsAdmin                *bool          `json:"isAdmin,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _OpenStackProjectListQuery OpenStackProjectListQuery
@@ -80,6 +80,7 @@ func (o *OpenStackProjectListQuery) HasOpenStackUser() bool {
 func (o *OpenStackProjectListQuery) SetOpenStackUser(v string) {
 	o.OpenStackUser.Set(&v)
 }
+
 // SetOpenStackUserNil sets the value for OpenStackUser to be an explicit nil
 func (o *OpenStackProjectListQuery) SetOpenStackUserNil() {
 	o.OpenStackUser.Set(nil)
@@ -122,6 +123,7 @@ func (o *OpenStackProjectListQuery) HasOpenStackPassword() bool {
 func (o *OpenStackProjectListQuery) SetOpenStackPassword(v string) {
 	o.OpenStackPassword.Set(&v)
 }
+
 // SetOpenStackPasswordNil sets the value for OpenStackPassword to be an explicit nil
 func (o *OpenStackProjectListQuery) SetOpenStackPasswordNil() {
 	o.OpenStackPassword.Set(nil)
@@ -164,6 +166,7 @@ func (o *OpenStackProjectListQuery) HasOpenStackUrl() bool {
 func (o *OpenStackProjectListQuery) SetOpenStackUrl(v string) {
 	o.OpenStackUrl.Set(&v)
 }
+
 // SetOpenStackUrlNil sets the value for OpenStackUrl to be an explicit nil
 func (o *OpenStackProjectListQuery) SetOpenStackUrlNil() {
 	o.OpenStackUrl.Set(nil)
@@ -206,6 +209,7 @@ func (o *OpenStackProjectListQuery) HasOpenStackDomain() bool {
 func (o *OpenStackProjectListQuery) SetOpenStackDomain(v string) {
 	o.OpenStackDomain.Set(&v)
 }
+
 // SetOpenStackDomainNil sets the value for OpenStackDomain to be an explicit nil
 func (o *OpenStackProjectListQuery) SetOpenStackDomainNil() {
 	o.OpenStackDomain.Set(nil)
@@ -281,7 +285,7 @@ func (o *OpenStackProjectListQuery) SetIsAdmin(v bool) {
 }
 
 func (o OpenStackProjectListQuery) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -377,5 +381,3 @@ func (v *NullableOpenStackProjectListQuery) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

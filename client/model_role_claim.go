@@ -20,9 +20,9 @@ var _ MappedNullable = &RoleClaim{}
 
 // RoleClaim struct for RoleClaim
 type RoleClaim struct {
-	Role NullableString `json:"role,omitempty"`
-	Claim []string `json:"claim,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
+	Role                 NullableString `json:"role,omitempty"`
+	Claim                []string       `json:"claim,omitempty"`
+	OrganizationName     NullableString `json:"organizationName,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,6 +77,7 @@ func (o *RoleClaim) HasRole() bool {
 func (o *RoleClaim) SetRole(v string) {
 	o.Role.Set(&v)
 }
+
 // SetRoleNil sets the value for Role to be an explicit nil
 func (o *RoleClaim) SetRoleNil() {
 	o.Role.Set(nil)
@@ -152,6 +153,7 @@ func (o *RoleClaim) HasOrganizationName() bool {
 func (o *RoleClaim) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
+
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *RoleClaim) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -163,7 +165,7 @@ func (o *RoleClaim) UnsetOrganizationName() {
 }
 
 func (o RoleClaim) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -247,5 +249,3 @@ func (v *NullableRoleClaim) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

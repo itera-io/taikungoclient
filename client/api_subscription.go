@@ -19,13 +19,12 @@ import (
 	"net/url"
 )
 
-
 // SubscriptionAPIService SubscriptionAPI service
 type SubscriptionAPIService service
 
 type ApiSubscriptionBindRequest struct {
-	ctx context.Context
-	ApiService *SubscriptionAPIService
+	ctx                     context.Context
+	ApiService              *SubscriptionAPIService
 	bindSubscriptionCommand *BindSubscriptionCommand
 }
 
@@ -41,24 +40,25 @@ func (r ApiSubscriptionBindRequest) Execute() (*BindSubscriptionResponseDto, *ht
 /*
 SubscriptionBind Bind subscription
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSubscriptionBindRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSubscriptionBindRequest
 */
 func (a *SubscriptionAPIService) SubscriptionBind(ctx context.Context) ApiSubscriptionBindRequest {
 	return ApiSubscriptionBindRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return BindSubscriptionResponseDto
+//
+//	@return BindSubscriptionResponseDto
 func (a *SubscriptionAPIService) SubscriptionBindExecute(r ApiSubscriptionBindRequest) (*BindSubscriptionResponseDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *BindSubscriptionResponseDto
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *BindSubscriptionResponseDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionAPIService.SubscriptionBind")
@@ -134,8 +134,8 @@ func (a *SubscriptionAPIService) SubscriptionBindExecute(r ApiSubscriptionBindRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -145,8 +145,8 @@ func (a *SubscriptionAPIService) SubscriptionBindExecute(r ApiSubscriptionBindRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -156,8 +156,8 @@ func (a *SubscriptionAPIService) SubscriptionBindExecute(r ApiSubscriptionBindRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -167,8 +167,8 @@ func (a *SubscriptionAPIService) SubscriptionBindExecute(r ApiSubscriptionBindRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -178,8 +178,8 @@ func (a *SubscriptionAPIService) SubscriptionBindExecute(r ApiSubscriptionBindRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -189,8 +189,8 @@ func (a *SubscriptionAPIService) SubscriptionBindExecute(r ApiSubscriptionBindRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -208,9 +208,9 @@ func (a *SubscriptionAPIService) SubscriptionBindExecute(r ApiSubscriptionBindRe
 }
 
 type ApiSubscriptionBoundListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *SubscriptionAPIService
-	search *string
+	search     *string
 }
 
 func (r ApiSubscriptionBoundListRequest) Search(search string) ApiSubscriptionBoundListRequest {
@@ -225,24 +225,25 @@ func (r ApiSubscriptionBoundListRequest) Execute() ([]ListForOrganizationEditDto
 /*
 SubscriptionBoundList Retrieve subscription for organization bound
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSubscriptionBoundListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSubscriptionBoundListRequest
 */
 func (a *SubscriptionAPIService) SubscriptionBoundList(ctx context.Context) ApiSubscriptionBoundListRequest {
 	return ApiSubscriptionBoundListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []ListForOrganizationEditDto
+//
+//	@return []ListForOrganizationEditDto
 func (a *SubscriptionAPIService) SubscriptionBoundListExecute(r ApiSubscriptionBoundListRequest) ([]ListForOrganizationEditDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []ListForOrganizationEditDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []ListForOrganizationEditDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionAPIService.SubscriptionBoundList")
@@ -319,8 +320,8 @@ func (a *SubscriptionAPIService) SubscriptionBoundListExecute(r ApiSubscriptionB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -330,8 +331,8 @@ func (a *SubscriptionAPIService) SubscriptionBoundListExecute(r ApiSubscriptionB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -341,8 +342,8 @@ func (a *SubscriptionAPIService) SubscriptionBoundListExecute(r ApiSubscriptionB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -352,8 +353,8 @@ func (a *SubscriptionAPIService) SubscriptionBoundListExecute(r ApiSubscriptionB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -363,8 +364,8 @@ func (a *SubscriptionAPIService) SubscriptionBoundListExecute(r ApiSubscriptionB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -374,8 +375,8 @@ func (a *SubscriptionAPIService) SubscriptionBoundListExecute(r ApiSubscriptionB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -393,8 +394,8 @@ func (a *SubscriptionAPIService) SubscriptionBoundListExecute(r ApiSubscriptionB
 }
 
 type ApiSubscriptionDeleteRequest struct {
-	ctx context.Context
-	ApiService *SubscriptionAPIService
+	ctx                       context.Context
+	ApiService                *SubscriptionAPIService
 	deleteSubscriptionCommand *DeleteSubscriptionCommand
 }
 
@@ -410,22 +411,22 @@ func (r ApiSubscriptionDeleteRequest) Execute() (*http.Response, error) {
 /*
 SubscriptionDelete Delete subscription package
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSubscriptionDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSubscriptionDeleteRequest
 */
 func (a *SubscriptionAPIService) SubscriptionDelete(ctx context.Context) ApiSubscriptionDeleteRequest {
 	return ApiSubscriptionDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *SubscriptionAPIService) SubscriptionDeleteExecute(r ApiSubscriptionDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionAPIService.SubscriptionDelete")
@@ -501,8 +502,8 @@ func (a *SubscriptionAPIService) SubscriptionDeleteExecute(r ApiSubscriptionDele
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -512,8 +513,8 @@ func (a *SubscriptionAPIService) SubscriptionDeleteExecute(r ApiSubscriptionDele
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -523,8 +524,8 @@ func (a *SubscriptionAPIService) SubscriptionDeleteExecute(r ApiSubscriptionDele
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -534,8 +535,8 @@ func (a *SubscriptionAPIService) SubscriptionDeleteExecute(r ApiSubscriptionDele
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -545,8 +546,8 @@ func (a *SubscriptionAPIService) SubscriptionDeleteExecute(r ApiSubscriptionDele
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -556,8 +557,8 @@ func (a *SubscriptionAPIService) SubscriptionDeleteExecute(r ApiSubscriptionDele
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -566,7 +567,7 @@ func (a *SubscriptionAPIService) SubscriptionDeleteExecute(r ApiSubscriptionDele
 }
 
 type ApiSubscriptionPublicRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *SubscriptionAPIService
 }
 
@@ -577,24 +578,25 @@ func (r ApiSubscriptionPublicRequest) Execute() ([]ListForLandingPageDto, *http.
 /*
 SubscriptionPublic Retrieve subscription for organization bound
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSubscriptionPublicRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSubscriptionPublicRequest
 */
 func (a *SubscriptionAPIService) SubscriptionPublic(ctx context.Context) ApiSubscriptionPublicRequest {
 	return ApiSubscriptionPublicRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []ListForLandingPageDto
+//
+//	@return []ListForLandingPageDto
 func (a *SubscriptionAPIService) SubscriptionPublicExecute(r ApiSubscriptionPublicRequest) ([]ListForLandingPageDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []ListForLandingPageDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []ListForLandingPageDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionAPIService.SubscriptionPublic")
@@ -668,8 +670,8 @@ func (a *SubscriptionAPIService) SubscriptionPublicExecute(r ApiSubscriptionPubl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -679,8 +681,8 @@ func (a *SubscriptionAPIService) SubscriptionPublicExecute(r ApiSubscriptionPubl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -690,8 +692,8 @@ func (a *SubscriptionAPIService) SubscriptionPublicExecute(r ApiSubscriptionPubl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -701,8 +703,8 @@ func (a *SubscriptionAPIService) SubscriptionPublicExecute(r ApiSubscriptionPubl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -712,8 +714,8 @@ func (a *SubscriptionAPIService) SubscriptionPublicExecute(r ApiSubscriptionPubl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -723,8 +725,8 @@ func (a *SubscriptionAPIService) SubscriptionPublicExecute(r ApiSubscriptionPubl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -742,8 +744,8 @@ func (a *SubscriptionAPIService) SubscriptionPublicExecute(r ApiSubscriptionPubl
 }
 
 type ApiSubscriptionSubscriptionRequest struct {
-	ctx context.Context
-	ApiService *SubscriptionAPIService
+	ctx                       context.Context
+	ApiService                *SubscriptionAPIService
 	createSubscriptionCommand *CreateSubscriptionCommand
 }
 
@@ -759,22 +761,22 @@ func (r ApiSubscriptionSubscriptionRequest) Execute() (*http.Response, error) {
 /*
 SubscriptionSubscription Add new subscription package
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSubscriptionSubscriptionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSubscriptionSubscriptionRequest
 */
 func (a *SubscriptionAPIService) SubscriptionSubscription(ctx context.Context) ApiSubscriptionSubscriptionRequest {
 	return ApiSubscriptionSubscriptionRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *SubscriptionAPIService) SubscriptionSubscriptionExecute(r ApiSubscriptionSubscriptionRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionAPIService.SubscriptionSubscription")
@@ -850,8 +852,8 @@ func (a *SubscriptionAPIService) SubscriptionSubscriptionExecute(r ApiSubscripti
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -861,8 +863,8 @@ func (a *SubscriptionAPIService) SubscriptionSubscriptionExecute(r ApiSubscripti
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -872,8 +874,8 @@ func (a *SubscriptionAPIService) SubscriptionSubscriptionExecute(r ApiSubscripti
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -883,8 +885,8 @@ func (a *SubscriptionAPIService) SubscriptionSubscriptionExecute(r ApiSubscripti
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -894,8 +896,8 @@ func (a *SubscriptionAPIService) SubscriptionSubscriptionExecute(r ApiSubscripti
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -905,8 +907,8 @@ func (a *SubscriptionAPIService) SubscriptionSubscriptionExecute(r ApiSubscripti
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -915,8 +917,8 @@ func (a *SubscriptionAPIService) SubscriptionSubscriptionExecute(r ApiSubscripti
 }
 
 type ApiSubscriptionUpdateRequest struct {
-	ctx context.Context
-	ApiService *SubscriptionAPIService
+	ctx                       context.Context
+	ApiService                *SubscriptionAPIService
 	updateSubscriptionCommand *UpdateSubscriptionCommand
 }
 
@@ -932,22 +934,22 @@ func (r ApiSubscriptionUpdateRequest) Execute() (*http.Response, error) {
 /*
 SubscriptionUpdate Update subscription
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSubscriptionUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSubscriptionUpdateRequest
 */
 func (a *SubscriptionAPIService) SubscriptionUpdate(ctx context.Context) ApiSubscriptionUpdateRequest {
 	return ApiSubscriptionUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *SubscriptionAPIService) SubscriptionUpdateExecute(r ApiSubscriptionUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionAPIService.SubscriptionUpdate")
@@ -1023,8 +1025,8 @@ func (a *SubscriptionAPIService) SubscriptionUpdateExecute(r ApiSubscriptionUpda
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1034,8 +1036,8 @@ func (a *SubscriptionAPIService) SubscriptionUpdateExecute(r ApiSubscriptionUpda
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1045,8 +1047,8 @@ func (a *SubscriptionAPIService) SubscriptionUpdateExecute(r ApiSubscriptionUpda
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1056,8 +1058,8 @@ func (a *SubscriptionAPIService) SubscriptionUpdateExecute(r ApiSubscriptionUpda
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1067,8 +1069,8 @@ func (a *SubscriptionAPIService) SubscriptionUpdateExecute(r ApiSubscriptionUpda
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1078,8 +1080,8 @@ func (a *SubscriptionAPIService) SubscriptionUpdateExecute(r ApiSubscriptionUpda
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

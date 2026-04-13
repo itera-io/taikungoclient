@@ -21,12 +21,12 @@ var _ MappedNullable = &GlobalSlackConfigurationList{}
 
 // GlobalSlackConfigurationList struct for GlobalSlackConfigurationList
 type GlobalSlackConfigurationList struct {
-	Data []GlobalSlackConfigurationDto `json:"data"`
-	Limit int32 `json:"limit"`
-	HasMore bool `json:"hasMore"`
-	TotalCount int64 `json:"totalCount"`
-	Offset int32 `json:"offset"`
-	NextOffset NullableInt32 `json:"nextOffset,omitempty"`
+	Data                 []GlobalSlackConfigurationDto `json:"data"`
+	Limit                int32                         `json:"limit"`
+	HasMore              bool                          `json:"hasMore"`
+	TotalCount           int64                         `json:"totalCount"`
+	Offset               int32                         `json:"offset"`
+	NextOffset           NullableInt32                 `json:"nextOffset,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -208,6 +208,7 @@ func (o *GlobalSlackConfigurationList) HasNextOffset() bool {
 func (o *GlobalSlackConfigurationList) SetNextOffset(v int32) {
 	o.NextOffset.Set(&v)
 }
+
 // SetNextOffsetNil sets the value for NextOffset to be an explicit nil
 func (o *GlobalSlackConfigurationList) SetNextOffsetNil() {
 	o.NextOffset.Set(nil)
@@ -219,7 +220,7 @@ func (o *GlobalSlackConfigurationList) UnsetNextOffset() {
 }
 
 func (o GlobalSlackConfigurationList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -263,10 +264,10 @@ func (o *GlobalSlackConfigurationList) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -332,5 +333,3 @@ func (v *NullableGlobalSlackConfigurationList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,11 +20,11 @@ var _ MappedNullable = &UpdateSlackConfigurationDto{}
 
 // UpdateSlackConfigurationDto struct for UpdateSlackConfigurationDto
 type UpdateSlackConfigurationDto struct {
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Url NullableString `json:"url,omitempty"`
-	Channel NullableString `json:"channel,omitempty"`
-	SlackType *SlackType `json:"slackType,omitempty"`
+	OrganizationId       NullableInt32  `json:"organizationId,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Url                  NullableString `json:"url,omitempty"`
+	Channel              NullableString `json:"channel,omitempty"`
+	SlackType            *SlackType     `json:"slackType,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -79,6 +79,7 @@ func (o *UpdateSlackConfigurationDto) HasOrganizationId() bool {
 func (o *UpdateSlackConfigurationDto) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
+
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *UpdateSlackConfigurationDto) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -121,6 +122,7 @@ func (o *UpdateSlackConfigurationDto) HasName() bool {
 func (o *UpdateSlackConfigurationDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UpdateSlackConfigurationDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -163,6 +165,7 @@ func (o *UpdateSlackConfigurationDto) HasUrl() bool {
 func (o *UpdateSlackConfigurationDto) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *UpdateSlackConfigurationDto) SetUrlNil() {
 	o.Url.Set(nil)
@@ -205,6 +208,7 @@ func (o *UpdateSlackConfigurationDto) HasChannel() bool {
 func (o *UpdateSlackConfigurationDto) SetChannel(v string) {
 	o.Channel.Set(&v)
 }
+
 // SetChannelNil sets the value for Channel to be an explicit nil
 func (o *UpdateSlackConfigurationDto) SetChannelNil() {
 	o.Channel.Set(nil)
@@ -248,7 +252,7 @@ func (o *UpdateSlackConfigurationDto) SetSlackType(v SlackType) {
 }
 
 func (o UpdateSlackConfigurationDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -340,5 +344,3 @@ func (v *NullableUpdateSlackConfigurationDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

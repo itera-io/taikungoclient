@@ -20,9 +20,9 @@ var _ MappedNullable = &EditAutoscalingCommand{}
 
 // EditAutoscalingCommand struct for EditAutoscalingCommand
 type EditAutoscalingCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	MinSize *int32 `json:"minSize,omitempty"`
-	MaxSize *int32 `json:"maxSize,omitempty"`
+	ProjectId            *int32 `json:"projectId,omitempty"`
+	MinSize              *int32 `json:"minSize,omitempty"`
+	MaxSize              *int32 `json:"maxSize,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -142,7 +142,7 @@ func (o *EditAutoscalingCommand) SetMaxSize(v int32) {
 }
 
 func (o EditAutoscalingCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -226,5 +226,3 @@ func (v *NullableEditAutoscalingCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

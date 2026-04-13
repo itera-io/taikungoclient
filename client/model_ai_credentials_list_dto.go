@@ -21,14 +21,14 @@ var _ MappedNullable = &AiCredentialsListDto{}
 
 // AiCredentialsListDto struct for AiCredentialsListDto
 type AiCredentialsListDto struct {
-	Id int32 `json:"id"`
-	Url NullableString `json:"url"`
-	Name NullableString `json:"name"`
-	Type AiType `json:"type"`
-	OrganizationId NullableInt32 `json:"organizationId"`
-	OrganizationName NullableString `json:"organizationName"`
-	Projects []CommonDropdownDto `json:"projects"`
-	IsDefault bool `json:"isDefault"`
+	Id                   int32               `json:"id"`
+	Url                  NullableString      `json:"url"`
+	Name                 NullableString      `json:"name"`
+	Type                 AiType              `json:"type"`
+	OrganizationId       NullableInt32       `json:"organizationId"`
+	OrganizationName     NullableString      `json:"organizationName"`
+	Projects             []CommonDropdownDto `json:"projects"`
+	IsDefault            bool                `json:"isDefault"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -262,7 +262,7 @@ func (o *AiCredentialsListDto) SetIsDefault(v bool) {
 }
 
 func (o AiCredentialsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -309,10 +309,10 @@ func (o *AiCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -380,5 +380,3 @@ func (v *NullableAiCredentialsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

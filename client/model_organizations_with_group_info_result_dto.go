@@ -20,11 +20,11 @@ var _ MappedNullable = &OrganizationsWithGroupInfoResultDto{}
 
 // OrganizationsWithGroupInfoResultDto struct for OrganizationsWithGroupInfoResultDto
 type OrganizationsWithGroupInfoResultDto struct {
-	OrgId *int32 `json:"orgId,omitempty"`
-	OrgName *string `json:"orgName,omitempty"`
-	IsBound *bool `json:"isBound,omitempty"`
-	AccessLevel NullableString `json:"accessLevel,omitempty"`
-	Projects []OrganizationDropdownProjectDto `json:"projects,omitempty"`
+	OrgId                *int32                           `json:"orgId,omitempty"`
+	OrgName              *string                          `json:"orgName,omitempty"`
+	IsBound              *bool                            `json:"isBound,omitempty"`
+	AccessLevel          NullableString                   `json:"accessLevel,omitempty"`
+	Projects             []OrganizationDropdownProjectDto `json:"projects,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -175,6 +175,7 @@ func (o *OrganizationsWithGroupInfoResultDto) HasAccessLevel() bool {
 func (o *OrganizationsWithGroupInfoResultDto) SetAccessLevel(v string) {
 	o.AccessLevel.Set(&v)
 }
+
 // SetAccessLevelNil sets the value for AccessLevel to be an explicit nil
 func (o *OrganizationsWithGroupInfoResultDto) SetAccessLevelNil() {
 	o.AccessLevel.Set(nil)
@@ -218,7 +219,7 @@ func (o *OrganizationsWithGroupInfoResultDto) SetProjects(v []OrganizationDropdo
 }
 
 func (o OrganizationsWithGroupInfoResultDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -310,5 +311,3 @@ func (v *NullableOrganizationsWithGroupInfoResultDto) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

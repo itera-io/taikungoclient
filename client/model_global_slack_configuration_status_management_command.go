@@ -20,8 +20,8 @@ var _ MappedNullable = &GlobalSlackConfigurationStatusManagementCommand{}
 
 // GlobalSlackConfigurationStatusManagementCommand struct for GlobalSlackConfigurationStatusManagementCommand
 type GlobalSlackConfigurationStatusManagementCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Mode NullableString `json:"mode,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Mode                 NullableString `json:"mode,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,6 +108,7 @@ func (o *GlobalSlackConfigurationStatusManagementCommand) HasMode() bool {
 func (o *GlobalSlackConfigurationStatusManagementCommand) SetMode(v string) {
 	o.Mode.Set(&v)
 }
+
 // SetModeNil sets the value for Mode to be an explicit nil
 func (o *GlobalSlackConfigurationStatusManagementCommand) SetModeNil() {
 	o.Mode.Set(nil)
@@ -119,7 +120,7 @@ func (o *GlobalSlackConfigurationStatusManagementCommand) UnsetMode() {
 }
 
 func (o GlobalSlackConfigurationStatusManagementCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -199,5 +200,3 @@ func (v *NullableGlobalSlackConfigurationStatusManagementCommand) UnmarshalJSON(
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

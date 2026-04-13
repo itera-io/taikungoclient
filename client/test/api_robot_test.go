@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_RobotAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_RobotAPIService(t *testing.T) {
 
 	t.Run("Test RobotAPIService RobotChecker", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.RobotAPI.RobotChecker(context.Background()).Execute()
 
@@ -35,7 +35,7 @@ func Test_taikuncore_RobotAPIService(t *testing.T) {
 
 	t.Run("Test RobotAPIService RobotCreate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.RobotAPI.RobotCreate(context.Background()).Execute()
 
@@ -47,7 +47,7 @@ func Test_taikuncore_RobotAPIService(t *testing.T) {
 
 	t.Run("Test RobotAPIService RobotDelete", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -60,7 +60,7 @@ func Test_taikuncore_RobotAPIService(t *testing.T) {
 
 	t.Run("Test RobotAPIService RobotDetails", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.RobotAPI.RobotDetails(context.Background()).Execute()
 
@@ -72,7 +72,7 @@ func Test_taikuncore_RobotAPIService(t *testing.T) {
 
 	t.Run("Test RobotAPIService RobotList", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.RobotAPI.RobotList(context.Background()).Execute()
 
@@ -84,7 +84,7 @@ func Test_taikuncore_RobotAPIService(t *testing.T) {
 
 	t.Run("Test RobotAPIService RobotRegenerate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.RobotAPI.RobotRegenerate(context.Background()).Execute()
 
@@ -96,7 +96,7 @@ func Test_taikuncore_RobotAPIService(t *testing.T) {
 
 	t.Run("Test RobotAPIService RobotScopeList", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.RobotAPI.RobotScopeList(context.Background()).Execute()
 
@@ -108,7 +108,7 @@ func Test_taikuncore_RobotAPIService(t *testing.T) {
 
 	t.Run("Test RobotAPIService RobotStatus", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.RobotAPI.RobotStatus(context.Background()).Execute()
 
@@ -119,7 +119,7 @@ func Test_taikuncore_RobotAPIService(t *testing.T) {
 
 	t.Run("Test RobotAPIService RobotUpdate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.RobotAPI.RobotUpdate(context.Background()).Execute()
 
@@ -130,7 +130,7 @@ func Test_taikuncore_RobotAPIService(t *testing.T) {
 
 	t.Run("Test RobotAPIService RobotUpdateScope", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.RobotAPI.RobotUpdateScope(context.Background()).Execute()
 

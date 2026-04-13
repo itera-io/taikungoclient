@@ -22,7 +22,7 @@ type CNI string
 // List of CNI
 const (
 	CNI_DEFAULT CNI = "Default"
-	CNI_CALICO CNI = "Calico"
+	CNI_CALICO  CNI = "Calico"
 	CNI_FLANNEL CNI = "Flannel"
 )
 
@@ -111,4 +111,3 @@ func (v *NullableCNI) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

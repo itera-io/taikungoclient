@@ -20,10 +20,10 @@ var _ MappedNullable = &ResetPasswordCommand{}
 
 // ResetPasswordCommand struct for ResetPasswordCommand
 type ResetPasswordCommand struct {
-	Token NullableString `json:"token,omitempty"`
-	Email NullableString `json:"email,omitempty"`
-	AccountName NullableString `json:"accountName,omitempty"`
-	NewPassword NullableString `json:"newPassword,omitempty"`
+	Token                NullableString `json:"token,omitempty"`
+	Email                NullableString `json:"email,omitempty"`
+	AccountName          NullableString `json:"accountName,omitempty"`
+	NewPassword          NullableString `json:"newPassword,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,6 +78,7 @@ func (o *ResetPasswordCommand) HasToken() bool {
 func (o *ResetPasswordCommand) SetToken(v string) {
 	o.Token.Set(&v)
 }
+
 // SetTokenNil sets the value for Token to be an explicit nil
 func (o *ResetPasswordCommand) SetTokenNil() {
 	o.Token.Set(nil)
@@ -120,6 +121,7 @@ func (o *ResetPasswordCommand) HasEmail() bool {
 func (o *ResetPasswordCommand) SetEmail(v string) {
 	o.Email.Set(&v)
 }
+
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *ResetPasswordCommand) SetEmailNil() {
 	o.Email.Set(nil)
@@ -162,6 +164,7 @@ func (o *ResetPasswordCommand) HasAccountName() bool {
 func (o *ResetPasswordCommand) SetAccountName(v string) {
 	o.AccountName.Set(&v)
 }
+
 // SetAccountNameNil sets the value for AccountName to be an explicit nil
 func (o *ResetPasswordCommand) SetAccountNameNil() {
 	o.AccountName.Set(nil)
@@ -204,6 +207,7 @@ func (o *ResetPasswordCommand) HasNewPassword() bool {
 func (o *ResetPasswordCommand) SetNewPassword(v string) {
 	o.NewPassword.Set(&v)
 }
+
 // SetNewPasswordNil sets the value for NewPassword to be an explicit nil
 func (o *ResetPasswordCommand) SetNewPasswordNil() {
 	o.NewPassword.Set(nil)
@@ -215,7 +219,7 @@ func (o *ResetPasswordCommand) UnsetNewPassword() {
 }
 
 func (o ResetPasswordCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -303,5 +307,3 @@ func (v *NullableResetPasswordCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

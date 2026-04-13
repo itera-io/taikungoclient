@@ -20,9 +20,9 @@ var _ MappedNullable = &ValidateVsphereCommand{}
 
 // ValidateVsphereCommand struct for ValidateVsphereCommand
 type ValidateVsphereCommand struct {
-	Url NullableString `json:"url,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Password NullableString `json:"password,omitempty"`
+	Url                  NullableString `json:"url,omitempty"`
+	Username             NullableString `json:"username,omitempty"`
+	Password             NullableString `json:"password,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,6 +77,7 @@ func (o *ValidateVsphereCommand) HasUrl() bool {
 func (o *ValidateVsphereCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *ValidateVsphereCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -119,6 +120,7 @@ func (o *ValidateVsphereCommand) HasUsername() bool {
 func (o *ValidateVsphereCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *ValidateVsphereCommand) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -161,6 +163,7 @@ func (o *ValidateVsphereCommand) HasPassword() bool {
 func (o *ValidateVsphereCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *ValidateVsphereCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -172,7 +175,7 @@ func (o *ValidateVsphereCommand) UnsetPassword() {
 }
 
 func (o ValidateVsphereCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -256,5 +259,3 @@ func (v *NullableValidateVsphereCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

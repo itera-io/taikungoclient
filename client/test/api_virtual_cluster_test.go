@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_VirtualClusterAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_VirtualClusterAPIService(t *testing.T) {
 
 	t.Run("Test VirtualClusterAPIService VirtualClusterCreate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.VirtualClusterAPI.VirtualClusterCreate(context.Background()).Execute()
 
@@ -35,7 +35,7 @@ func Test_taikuncore_VirtualClusterAPIService(t *testing.T) {
 
 	t.Run("Test VirtualClusterAPIService VirtualClusterDelete", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.VirtualClusterAPI.VirtualClusterDelete(context.Background()).Execute()
 
@@ -46,7 +46,7 @@ func Test_taikuncore_VirtualClusterAPIService(t *testing.T) {
 
 	t.Run("Test VirtualClusterAPIService VirtualClusterDisableAi", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.VirtualClusterAPI.VirtualClusterDisableAi(context.Background()).Execute()
 
@@ -57,7 +57,7 @@ func Test_taikuncore_VirtualClusterAPIService(t *testing.T) {
 
 	t.Run("Test VirtualClusterAPIService VirtualClusterDisableBackup", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.VirtualClusterAPI.VirtualClusterDisableBackup(context.Background()).Execute()
 
@@ -68,7 +68,7 @@ func Test_taikuncore_VirtualClusterAPIService(t *testing.T) {
 
 	t.Run("Test VirtualClusterAPIService VirtualClusterDisableMonitoring", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.VirtualClusterAPI.VirtualClusterDisableMonitoring(context.Background()).Execute()
 
@@ -79,7 +79,7 @@ func Test_taikuncore_VirtualClusterAPIService(t *testing.T) {
 
 	t.Run("Test VirtualClusterAPIService VirtualClusterDisableOpa", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.VirtualClusterAPI.VirtualClusterDisableOpa(context.Background()).Execute()
 
@@ -90,7 +90,7 @@ func Test_taikuncore_VirtualClusterAPIService(t *testing.T) {
 
 	t.Run("Test VirtualClusterAPIService VirtualClusterEditQuotas", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.VirtualClusterAPI.VirtualClusterEditQuotas(context.Background()).Execute()
 
@@ -101,7 +101,7 @@ func Test_taikuncore_VirtualClusterAPIService(t *testing.T) {
 
 	t.Run("Test VirtualClusterAPIService VirtualClusterEnableAi", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.VirtualClusterAPI.VirtualClusterEnableAi(context.Background()).Execute()
 
@@ -112,7 +112,7 @@ func Test_taikuncore_VirtualClusterAPIService(t *testing.T) {
 
 	t.Run("Test VirtualClusterAPIService VirtualClusterEnableBackup", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.VirtualClusterAPI.VirtualClusterEnableBackup(context.Background()).Execute()
 
@@ -123,7 +123,7 @@ func Test_taikuncore_VirtualClusterAPIService(t *testing.T) {
 
 	t.Run("Test VirtualClusterAPIService VirtualClusterEnableMonitoring", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.VirtualClusterAPI.VirtualClusterEnableMonitoring(context.Background()).Execute()
 
@@ -134,7 +134,7 @@ func Test_taikuncore_VirtualClusterAPIService(t *testing.T) {
 
 	t.Run("Test VirtualClusterAPIService VirtualClusterEnableOpa", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.VirtualClusterAPI.VirtualClusterEnableOpa(context.Background()).Execute()
 
@@ -145,7 +145,7 @@ func Test_taikuncore_VirtualClusterAPIService(t *testing.T) {
 
 	t.Run("Test VirtualClusterAPIService VirtualClusterList", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var parentProjectId int32
 
@@ -159,7 +159,7 @@ func Test_taikuncore_VirtualClusterAPIService(t *testing.T) {
 
 	t.Run("Test VirtualClusterAPIService VirtualClusterQuota", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId int32
 
@@ -173,7 +173,7 @@ func Test_taikuncore_VirtualClusterAPIService(t *testing.T) {
 
 	t.Run("Test VirtualClusterAPIService VirtualClusterQuotaPresets", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.VirtualClusterAPI.VirtualClusterQuotaPresets(context.Background()).Execute()
 
@@ -185,7 +185,7 @@ func Test_taikuncore_VirtualClusterAPIService(t *testing.T) {
 
 	t.Run("Test VirtualClusterAPIService VirtualClusterVisibility", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var projectId int32
 

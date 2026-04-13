@@ -20,11 +20,11 @@ var _ MappedNullable = &Subresource{}
 
 // Subresource struct for Subresource
 type Subresource struct {
-	Name NullableString `json:"name,omitempty"`
-	Metadata map[string]interface{} `json:"metadata,omitempty"`
-	HourlyCost NullableString `json:"hourlyCost,omitempty"`
-	MonthlyCost NullableString `json:"monthlyCost,omitempty"`
-	CostComponents []CostComponent `json:"costComponents,omitempty"`
+	Name                 NullableString         `json:"name,omitempty"`
+	Metadata             map[string]interface{} `json:"metadata,omitempty"`
+	HourlyCost           NullableString         `json:"hourlyCost,omitempty"`
+	MonthlyCost          NullableString         `json:"monthlyCost,omitempty"`
+	CostComponents       []CostComponent        `json:"costComponents,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -79,6 +79,7 @@ func (o *Subresource) HasName() bool {
 func (o *Subresource) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *Subresource) SetNameNil() {
 	o.Name.Set(nil)
@@ -154,6 +155,7 @@ func (o *Subresource) HasHourlyCost() bool {
 func (o *Subresource) SetHourlyCost(v string) {
 	o.HourlyCost.Set(&v)
 }
+
 // SetHourlyCostNil sets the value for HourlyCost to be an explicit nil
 func (o *Subresource) SetHourlyCostNil() {
 	o.HourlyCost.Set(nil)
@@ -196,6 +198,7 @@ func (o *Subresource) HasMonthlyCost() bool {
 func (o *Subresource) SetMonthlyCost(v string) {
 	o.MonthlyCost.Set(&v)
 }
+
 // SetMonthlyCostNil sets the value for MonthlyCost to be an explicit nil
 func (o *Subresource) SetMonthlyCostNil() {
 	o.MonthlyCost.Set(nil)
@@ -240,7 +243,7 @@ func (o *Subresource) SetCostComponents(v []CostComponent) {
 }
 
 func (o Subresource) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -332,5 +335,3 @@ func (v *NullableSubresource) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

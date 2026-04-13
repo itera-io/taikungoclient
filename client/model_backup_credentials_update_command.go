@@ -20,10 +20,10 @@ var _ MappedNullable = &BackupCredentialsUpdateCommand{}
 
 // BackupCredentialsUpdateCommand struct for BackupCredentialsUpdateCommand
 type BackupCredentialsUpdateCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	S3Name NullableString `json:"s3Name,omitempty"`
-	S3AccessKeyId NullableString `json:"s3AccessKeyId,omitempty"`
-	S3SecretKey NullableString `json:"s3SecretKey,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	S3Name               NullableString `json:"s3Name,omitempty"`
+	S3AccessKeyId        NullableString `json:"s3AccessKeyId,omitempty"`
+	S3SecretKey          NullableString `json:"s3SecretKey,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -110,6 +110,7 @@ func (o *BackupCredentialsUpdateCommand) HasS3Name() bool {
 func (o *BackupCredentialsUpdateCommand) SetS3Name(v string) {
 	o.S3Name.Set(&v)
 }
+
 // SetS3NameNil sets the value for S3Name to be an explicit nil
 func (o *BackupCredentialsUpdateCommand) SetS3NameNil() {
 	o.S3Name.Set(nil)
@@ -152,6 +153,7 @@ func (o *BackupCredentialsUpdateCommand) HasS3AccessKeyId() bool {
 func (o *BackupCredentialsUpdateCommand) SetS3AccessKeyId(v string) {
 	o.S3AccessKeyId.Set(&v)
 }
+
 // SetS3AccessKeyIdNil sets the value for S3AccessKeyId to be an explicit nil
 func (o *BackupCredentialsUpdateCommand) SetS3AccessKeyIdNil() {
 	o.S3AccessKeyId.Set(nil)
@@ -194,6 +196,7 @@ func (o *BackupCredentialsUpdateCommand) HasS3SecretKey() bool {
 func (o *BackupCredentialsUpdateCommand) SetS3SecretKey(v string) {
 	o.S3SecretKey.Set(&v)
 }
+
 // SetS3SecretKeyNil sets the value for S3SecretKey to be an explicit nil
 func (o *BackupCredentialsUpdateCommand) SetS3SecretKeyNil() {
 	o.S3SecretKey.Set(nil)
@@ -205,7 +208,7 @@ func (o *BackupCredentialsUpdateCommand) UnsetS3SecretKey() {
 }
 
 func (o BackupCredentialsUpdateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -293,5 +296,3 @@ func (v *NullableBackupCredentialsUpdateCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

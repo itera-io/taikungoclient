@@ -20,9 +20,9 @@ var _ MappedNullable = &OrganizationDropdownProjectDto{}
 
 // OrganizationDropdownProjectDto struct for OrganizationDropdownProjectDto
 type OrganizationDropdownProjectDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	IsBound *bool `json:"isBound,omitempty"`
+	Id                   *int32  `json:"id,omitempty"`
+	Name                 *string `json:"name,omitempty"`
+	IsBound              *bool   `json:"isBound,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -142,7 +142,7 @@ func (o *OrganizationDropdownProjectDto) SetIsBound(v bool) {
 }
 
 func (o OrganizationDropdownProjectDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -226,5 +226,3 @@ func (v *NullableOrganizationDropdownProjectDto) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

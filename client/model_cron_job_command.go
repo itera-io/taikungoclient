@@ -20,7 +20,7 @@ var _ MappedNullable = &CronJobCommand{}
 
 // CronJobCommand struct for CronJobCommand
 type CronJobCommand struct {
-	CronPeriod NullableString `json:"cronPeriod,omitempty"`
+	CronPeriod           NullableString `json:"cronPeriod,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,6 +75,7 @@ func (o *CronJobCommand) HasCronPeriod() bool {
 func (o *CronJobCommand) SetCronPeriod(v string) {
 	o.CronPeriod.Set(&v)
 }
+
 // SetCronPeriodNil sets the value for CronPeriod to be an explicit nil
 func (o *CronJobCommand) SetCronPeriodNil() {
 	o.CronPeriod.Set(nil)
@@ -86,7 +87,7 @@ func (o *CronJobCommand) UnsetCronPeriod() {
 }
 
 func (o CronJobCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -162,5 +163,3 @@ func (v *NullableCronJobCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

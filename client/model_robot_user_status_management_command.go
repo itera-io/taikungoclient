@@ -20,8 +20,8 @@ var _ MappedNullable = &RobotUserStatusManagementCommand{}
 
 // RobotUserStatusManagementCommand struct for RobotUserStatusManagementCommand
 type RobotUserStatusManagementCommand struct {
-	Id NullableString `json:"id,omitempty"`
-	Mode NullableString `json:"mode,omitempty"`
+	Id                   NullableString `json:"id,omitempty"`
+	Mode                 NullableString `json:"mode,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,6 +76,7 @@ func (o *RobotUserStatusManagementCommand) HasId() bool {
 func (o *RobotUserStatusManagementCommand) SetId(v string) {
 	o.Id.Set(&v)
 }
+
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *RobotUserStatusManagementCommand) SetIdNil() {
 	o.Id.Set(nil)
@@ -118,6 +119,7 @@ func (o *RobotUserStatusManagementCommand) HasMode() bool {
 func (o *RobotUserStatusManagementCommand) SetMode(v string) {
 	o.Mode.Set(&v)
 }
+
 // SetModeNil sets the value for Mode to be an explicit nil
 func (o *RobotUserStatusManagementCommand) SetModeNil() {
 	o.Mode.Set(nil)
@@ -129,7 +131,7 @@ func (o *RobotUserStatusManagementCommand) UnsetMode() {
 }
 
 func (o RobotUserStatusManagementCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -209,5 +211,3 @@ func (v *NullableRobotUserStatusManagementCommand) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

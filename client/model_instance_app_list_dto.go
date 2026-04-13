@@ -21,25 +21,25 @@ var _ MappedNullable = &InstanceAppListDto{}
 
 // InstanceAppListDto struct for InstanceAppListDto
 type InstanceAppListDto struct {
-	Id int32 `json:"id"`
-	Name NullableString `json:"name"`
-	Namespace NullableString `json:"namespace"`
-	Status EInstanceStatus `json:"status"`
-	Version NullableString `json:"version"`
-	CatalogId int32 `json:"catalogId"`
-	CatalogName NullableString `json:"catalogName"`
-	CatalogAppName NullableString `json:"catalogAppName"`
-	CatalogAppId int32 `json:"catalogAppId"`
-	AppRepoName NullableString `json:"appRepoName"`
-	Logo NullableString `json:"logo"`
-	AutoSync bool `json:"autoSync"`
-	Created NullableString `json:"created"`
-	CreatedBy NullableString `json:"createdBy"`
-	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
-	ProjectId int32 `json:"projectId"`
-	ProjectName NullableString `json:"projectName"`
-	Logs NullableString `json:"logs"`
+	Id                   int32           `json:"id"`
+	Name                 NullableString  `json:"name"`
+	Namespace            NullableString  `json:"namespace"`
+	Status               EInstanceStatus `json:"status"`
+	Version              NullableString  `json:"version"`
+	CatalogId            int32           `json:"catalogId"`
+	CatalogName          NullableString  `json:"catalogName"`
+	CatalogAppName       NullableString  `json:"catalogAppName"`
+	CatalogAppId         int32           `json:"catalogAppId"`
+	AppRepoName          NullableString  `json:"appRepoName"`
+	Logo                 NullableString  `json:"logo"`
+	AutoSync             bool            `json:"autoSync"`
+	Created              NullableString  `json:"created"`
+	CreatedBy            NullableString  `json:"createdBy"`
+	LastModified         NullableString  `json:"lastModified"`
+	LastModifiedBy       NullableString  `json:"lastModifiedBy"`
+	ProjectId            int32           `json:"projectId"`
+	ProjectName          NullableString  `json:"projectName"`
+	Logs                 NullableString  `json:"logs"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -564,7 +564,7 @@ func (o *InstanceAppListDto) SetLogs(v string) {
 }
 
 func (o InstanceAppListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -631,10 +631,10 @@ func (o *InstanceAppListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -713,5 +713,3 @@ func (v *NullableInstanceAppListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

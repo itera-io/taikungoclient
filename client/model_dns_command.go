@@ -20,7 +20,7 @@ var _ MappedNullable = &DnsCommand{}
 
 // DnsCommand struct for DnsCommand
 type DnsCommand struct {
-	Address NullableString `json:"address,omitempty"`
+	Address              NullableString `json:"address,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,6 +75,7 @@ func (o *DnsCommand) HasAddress() bool {
 func (o *DnsCommand) SetAddress(v string) {
 	o.Address.Set(&v)
 }
+
 // SetAddressNil sets the value for Address to be an explicit nil
 func (o *DnsCommand) SetAddressNil() {
 	o.Address.Set(nil)
@@ -86,7 +87,7 @@ func (o *DnsCommand) UnsetAddress() {
 }
 
 func (o DnsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -162,5 +163,3 @@ func (v *NullableDnsCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

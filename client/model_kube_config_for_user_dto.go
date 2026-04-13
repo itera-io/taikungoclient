@@ -21,24 +21,24 @@ var _ MappedNullable = &KubeConfigForUserDto{}
 
 // KubeConfigForUserDto struct for KubeConfigForUserDto
 type KubeConfigForUserDto struct {
-	Id int32 `json:"id"`
-	UserId NullableString `json:"userId"`
-	DisplayName NullableString `json:"displayName"`
-	ProjectId int32 `json:"projectId"`
-	OrganizationId int32 `json:"organizationId"`
-	PartnerId int32 `json:"partnerId"`
-	ProjectName string `json:"projectName"`
-	IsAccessibleForAll bool `json:"isAccessibleForAll"`
-	IsAccessibleForManager bool `json:"isAccessibleForManager"`
-	KubeConfigRoleName string `json:"kubeConfigRoleName"`
-	CreatedBy string `json:"createdBy"`
-	CreatedAt NullableString `json:"createdAt"`
-	Namespace NullableString `json:"namespace"`
-	ExpirationDate NullableString `json:"expirationDate"`
-	CanDownload bool `json:"canDownload"`
-	CanAccessTerminal bool `json:"canAccessTerminal"`
-	CanDelete bool `json:"canDelete"`
-	AdditionalProperties map[string]interface{}
+	Id                     int32          `json:"id"`
+	UserId                 NullableString `json:"userId"`
+	DisplayName            NullableString `json:"displayName"`
+	ProjectId              int32          `json:"projectId"`
+	OrganizationId         int32          `json:"organizationId"`
+	PartnerId              int32          `json:"partnerId"`
+	ProjectName            string         `json:"projectName"`
+	IsAccessibleForAll     bool           `json:"isAccessibleForAll"`
+	IsAccessibleForManager bool           `json:"isAccessibleForManager"`
+	KubeConfigRoleName     string         `json:"kubeConfigRoleName"`
+	CreatedBy              string         `json:"createdBy"`
+	CreatedAt              NullableString `json:"createdAt"`
+	Namespace              NullableString `json:"namespace"`
+	ExpirationDate         NullableString `json:"expirationDate"`
+	CanDownload            bool           `json:"canDownload"`
+	CanAccessTerminal      bool           `json:"canAccessTerminal"`
+	CanDelete              bool           `json:"canDelete"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _KubeConfigForUserDto KubeConfigForUserDto
@@ -496,7 +496,7 @@ func (o *KubeConfigForUserDto) SetCanDelete(v bool) {
 }
 
 func (o KubeConfigForUserDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -559,10 +559,10 @@ func (o *KubeConfigForUserDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -639,5 +639,3 @@ func (v *NullableKubeConfigForUserDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

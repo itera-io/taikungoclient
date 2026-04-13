@@ -20,10 +20,10 @@ var _ MappedNullable = &CheckS3Command{}
 
 // CheckS3Command struct for CheckS3Command
 type CheckS3Command struct {
-	S3AccessKeyId NullableString `json:"s3AccessKeyId,omitempty"`
-	S3SecretKey NullableString `json:"s3SecretKey,omitempty"`
-	S3Endpoint NullableString `json:"s3Endpoint,omitempty"`
-	S3Region NullableString `json:"s3Region,omitempty"`
+	S3AccessKeyId        NullableString `json:"s3AccessKeyId,omitempty"`
+	S3SecretKey          NullableString `json:"s3SecretKey,omitempty"`
+	S3Endpoint           NullableString `json:"s3Endpoint,omitempty"`
+	S3Region             NullableString `json:"s3Region,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,6 +78,7 @@ func (o *CheckS3Command) HasS3AccessKeyId() bool {
 func (o *CheckS3Command) SetS3AccessKeyId(v string) {
 	o.S3AccessKeyId.Set(&v)
 }
+
 // SetS3AccessKeyIdNil sets the value for S3AccessKeyId to be an explicit nil
 func (o *CheckS3Command) SetS3AccessKeyIdNil() {
 	o.S3AccessKeyId.Set(nil)
@@ -120,6 +121,7 @@ func (o *CheckS3Command) HasS3SecretKey() bool {
 func (o *CheckS3Command) SetS3SecretKey(v string) {
 	o.S3SecretKey.Set(&v)
 }
+
 // SetS3SecretKeyNil sets the value for S3SecretKey to be an explicit nil
 func (o *CheckS3Command) SetS3SecretKeyNil() {
 	o.S3SecretKey.Set(nil)
@@ -162,6 +164,7 @@ func (o *CheckS3Command) HasS3Endpoint() bool {
 func (o *CheckS3Command) SetS3Endpoint(v string) {
 	o.S3Endpoint.Set(&v)
 }
+
 // SetS3EndpointNil sets the value for S3Endpoint to be an explicit nil
 func (o *CheckS3Command) SetS3EndpointNil() {
 	o.S3Endpoint.Set(nil)
@@ -204,6 +207,7 @@ func (o *CheckS3Command) HasS3Region() bool {
 func (o *CheckS3Command) SetS3Region(v string) {
 	o.S3Region.Set(&v)
 }
+
 // SetS3RegionNil sets the value for S3Region to be an explicit nil
 func (o *CheckS3Command) SetS3RegionNil() {
 	o.S3Region.Set(nil)
@@ -215,7 +219,7 @@ func (o *CheckS3Command) UnsetS3Region() {
 }
 
 func (o CheckS3Command) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -303,5 +307,3 @@ func (v *NullableCheckS3Command) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

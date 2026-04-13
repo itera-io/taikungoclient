@@ -20,8 +20,8 @@ var _ MappedNullable = &ManageRoleCommand{}
 
 // ManageRoleCommand struct for ManageRoleCommand
 type ManageRoleCommand struct {
-	UserId NullableString `json:"userId,omitempty"`
-	TargetRole *EGlobalRole `json:"targetRole,omitempty"`
+	UserId               NullableString `json:"userId,omitempty"`
+	TargetRole           *EGlobalRole   `json:"targetRole,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,6 +76,7 @@ func (o *ManageRoleCommand) HasUserId() bool {
 func (o *ManageRoleCommand) SetUserId(v string) {
 	o.UserId.Set(&v)
 }
+
 // SetUserIdNil sets the value for UserId to be an explicit nil
 func (o *ManageRoleCommand) SetUserIdNil() {
 	o.UserId.Set(nil)
@@ -119,7 +120,7 @@ func (o *ManageRoleCommand) SetTargetRole(v EGlobalRole) {
 }
 
 func (o ManageRoleCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -199,5 +200,3 @@ func (v *NullableManageRoleCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

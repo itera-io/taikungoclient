@@ -21,18 +21,18 @@ var _ MappedNullable = &CreateVirtualClusterCommand{}
 
 // CreateVirtualClusterCommand struct for CreateVirtualClusterCommand
 type CreateVirtualClusterCommand struct {
-	CloudId NullableInt32 `json:"cloudId,omitempty"`
-	ProjectId *int32 `json:"projectId,omitempty"`
-	Name *string `json:"name,omitempty"`
-	ExpiredAt NullableTime `json:"expiredAt,omitempty"`
-	DeleteOnExpiration *bool `json:"deleteOnExpiration,omitempty"`
-	AlertingProfileId NullableInt32 `json:"alertingProfileId,omitempty"`
-	ExposeHostname *string `json:"exposeHostname,omitempty"`
-	WorkloadResources *CreateVirtualClusterWorkloadResources `json:"workloadResources,omitempty"`
-	CpuLimits *CreateVirtualClusterResourceLimits `json:"cpuLimits,omitempty"`
-	RamLimits *CreateVirtualClusterResourceLimits `json:"ramLimits,omitempty"`
-	EphemeralStorageLimits *CreateVirtualClusterResourceLimits `json:"ephemeralStorageLimits,omitempty"`
-	AdditionalProperties map[string]interface{}
+	CloudId                NullableInt32                          `json:"cloudId,omitempty"`
+	ProjectId              *int32                                 `json:"projectId,omitempty"`
+	Name                   *string                                `json:"name,omitempty"`
+	ExpiredAt              NullableTime                           `json:"expiredAt,omitempty"`
+	DeleteOnExpiration     *bool                                  `json:"deleteOnExpiration,omitempty"`
+	AlertingProfileId      NullableInt32                          `json:"alertingProfileId,omitempty"`
+	ExposeHostname         *string                                `json:"exposeHostname,omitempty"`
+	WorkloadResources      *CreateVirtualClusterWorkloadResources `json:"workloadResources,omitempty"`
+	CpuLimits              *CreateVirtualClusterResourceLimits    `json:"cpuLimits,omitempty"`
+	RamLimits              *CreateVirtualClusterResourceLimits    `json:"ramLimits,omitempty"`
+	EphemeralStorageLimits *CreateVirtualClusterResourceLimits    `json:"ephemeralStorageLimits,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _CreateVirtualClusterCommand CreateVirtualClusterCommand
@@ -86,6 +86,7 @@ func (o *CreateVirtualClusterCommand) HasCloudId() bool {
 func (o *CreateVirtualClusterCommand) SetCloudId(v int32) {
 	o.CloudId.Set(&v)
 }
+
 // SetCloudIdNil sets the value for CloudId to be an explicit nil
 func (o *CreateVirtualClusterCommand) SetCloudIdNil() {
 	o.CloudId.Set(nil)
@@ -192,6 +193,7 @@ func (o *CreateVirtualClusterCommand) HasExpiredAt() bool {
 func (o *CreateVirtualClusterCommand) SetExpiredAt(v time.Time) {
 	o.ExpiredAt.Set(&v)
 }
+
 // SetExpiredAtNil sets the value for ExpiredAt to be an explicit nil
 func (o *CreateVirtualClusterCommand) SetExpiredAtNil() {
 	o.ExpiredAt.Set(nil)
@@ -266,6 +268,7 @@ func (o *CreateVirtualClusterCommand) HasAlertingProfileId() bool {
 func (o *CreateVirtualClusterCommand) SetAlertingProfileId(v int32) {
 	o.AlertingProfileId.Set(&v)
 }
+
 // SetAlertingProfileIdNil sets the value for AlertingProfileId to be an explicit nil
 func (o *CreateVirtualClusterCommand) SetAlertingProfileIdNil() {
 	o.AlertingProfileId.Set(nil)
@@ -437,7 +440,7 @@ func (o *CreateVirtualClusterCommand) SetEphemeralStorageLimits(v CreateVirtualC
 }
 
 func (o CreateVirtualClusterCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -553,5 +556,3 @@ func (v *NullableCreateVirtualClusterCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

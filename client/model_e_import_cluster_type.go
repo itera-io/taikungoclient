@@ -22,8 +22,8 @@ type EImportClusterType string
 // List of EImportClusterType
 const (
 	EIMPORTCLUSTERTYPE_CLOUD_CREDENTIAL EImportClusterType = "CloudCredential"
-	EIMPORTCLUSTERTYPE_READ_ONLY EImportClusterType = "ReadOnly"
-	EIMPORTCLUSTERTYPE_FULLY_MANAGED EImportClusterType = "FullyManaged"
+	EIMPORTCLUSTERTYPE_READ_ONLY        EImportClusterType = "ReadOnly"
+	EIMPORTCLUSTERTYPE_FULLY_MANAGED    EImportClusterType = "FullyManaged"
 )
 
 // All allowed values of EImportClusterType enum
@@ -111,4 +111,3 @@ func (v *NullableEImportClusterType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

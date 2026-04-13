@@ -20,10 +20,10 @@ var _ MappedNullable = &EfsFileSystemDto{}
 
 // EfsFileSystemDto struct for EfsFileSystemDto
 type EfsFileSystemDto struct {
-	FilesystemId NullableString `json:"filesystemId,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	LifecycleState NullableString `json:"lifecycleState,omitempty"`
-	SizeInBytes *int64 `json:"sizeInBytes,omitempty"`
+	FilesystemId         NullableString `json:"filesystemId,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	LifecycleState       NullableString `json:"lifecycleState,omitempty"`
+	SizeInBytes          *int64         `json:"sizeInBytes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,6 +78,7 @@ func (o *EfsFileSystemDto) HasFilesystemId() bool {
 func (o *EfsFileSystemDto) SetFilesystemId(v string) {
 	o.FilesystemId.Set(&v)
 }
+
 // SetFilesystemIdNil sets the value for FilesystemId to be an explicit nil
 func (o *EfsFileSystemDto) SetFilesystemIdNil() {
 	o.FilesystemId.Set(nil)
@@ -120,6 +121,7 @@ func (o *EfsFileSystemDto) HasName() bool {
 func (o *EfsFileSystemDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *EfsFileSystemDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -162,6 +164,7 @@ func (o *EfsFileSystemDto) HasLifecycleState() bool {
 func (o *EfsFileSystemDto) SetLifecycleState(v string) {
 	o.LifecycleState.Set(&v)
 }
+
 // SetLifecycleStateNil sets the value for LifecycleState to be an explicit nil
 func (o *EfsFileSystemDto) SetLifecycleStateNil() {
 	o.LifecycleState.Set(nil)
@@ -205,7 +208,7 @@ func (o *EfsFileSystemDto) SetSizeInBytes(v int64) {
 }
 
 func (o EfsFileSystemDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -293,5 +296,3 @@ func (v *NullableEfsFileSystemDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

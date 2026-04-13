@@ -21,20 +21,20 @@ var _ MappedNullable = &UserAuthContext{}
 
 // UserAuthContext struct for UserAuthContext
 type UserAuthContext struct {
-	UserId NullableString `json:"userId,omitempty"`
-	UserName NullableString `json:"userName,omitempty"`
-	Email NullableString `json:"email,omitempty"`
-	AccountId *int32 `json:"accountId,omitempty"`
-	AccountName NullableString `json:"accountName,omitempty"`
-	LogoUrl NullableString `json:"logoUrl,omitempty"`
-	Domain NullableString `json:"domain,omitempty"`
-	MaintenanceModeEnabled *bool `json:"maintenanceModeEnabled,omitempty"`
-	TwoFactorEnabled *bool `json:"twoFactorEnabled,omitempty"`
-	GlobalRole *GlobalRole `json:"globalRole,omitempty"`
-	OrgRoles map[string]RoleClaim `json:"orgRoles,omitempty"`
-	DisplayName NullableString `json:"displayName,omitempty"`
-	CreatedAt NullableTime `json:"createdAt,omitempty"`
-	AdditionalProperties map[string]interface{}
+	UserId                 NullableString       `json:"userId,omitempty"`
+	UserName               NullableString       `json:"userName,omitempty"`
+	Email                  NullableString       `json:"email,omitempty"`
+	AccountId              *int32               `json:"accountId,omitempty"`
+	AccountName            NullableString       `json:"accountName,omitempty"`
+	LogoUrl                NullableString       `json:"logoUrl,omitempty"`
+	Domain                 NullableString       `json:"domain,omitempty"`
+	MaintenanceModeEnabled *bool                `json:"maintenanceModeEnabled,omitempty"`
+	TwoFactorEnabled       *bool                `json:"twoFactorEnabled,omitempty"`
+	GlobalRole             *GlobalRole          `json:"globalRole,omitempty"`
+	OrgRoles               map[string]RoleClaim `json:"orgRoles,omitempty"`
+	DisplayName            NullableString       `json:"displayName,omitempty"`
+	CreatedAt              NullableTime         `json:"createdAt,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _UserAuthContext UserAuthContext
@@ -88,6 +88,7 @@ func (o *UserAuthContext) HasUserId() bool {
 func (o *UserAuthContext) SetUserId(v string) {
 	o.UserId.Set(&v)
 }
+
 // SetUserIdNil sets the value for UserId to be an explicit nil
 func (o *UserAuthContext) SetUserIdNil() {
 	o.UserId.Set(nil)
@@ -130,6 +131,7 @@ func (o *UserAuthContext) HasUserName() bool {
 func (o *UserAuthContext) SetUserName(v string) {
 	o.UserName.Set(&v)
 }
+
 // SetUserNameNil sets the value for UserName to be an explicit nil
 func (o *UserAuthContext) SetUserNameNil() {
 	o.UserName.Set(nil)
@@ -172,6 +174,7 @@ func (o *UserAuthContext) HasEmail() bool {
 func (o *UserAuthContext) SetEmail(v string) {
 	o.Email.Set(&v)
 }
+
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *UserAuthContext) SetEmailNil() {
 	o.Email.Set(nil)
@@ -246,6 +249,7 @@ func (o *UserAuthContext) HasAccountName() bool {
 func (o *UserAuthContext) SetAccountName(v string) {
 	o.AccountName.Set(&v)
 }
+
 // SetAccountNameNil sets the value for AccountName to be an explicit nil
 func (o *UserAuthContext) SetAccountNameNil() {
 	o.AccountName.Set(nil)
@@ -288,6 +292,7 @@ func (o *UserAuthContext) HasLogoUrl() bool {
 func (o *UserAuthContext) SetLogoUrl(v string) {
 	o.LogoUrl.Set(&v)
 }
+
 // SetLogoUrlNil sets the value for LogoUrl to be an explicit nil
 func (o *UserAuthContext) SetLogoUrlNil() {
 	o.LogoUrl.Set(nil)
@@ -330,6 +335,7 @@ func (o *UserAuthContext) HasDomain() bool {
 func (o *UserAuthContext) SetDomain(v string) {
 	o.Domain.Set(&v)
 }
+
 // SetDomainNil sets the value for Domain to be an explicit nil
 func (o *UserAuthContext) SetDomainNil() {
 	o.Domain.Set(nil)
@@ -501,6 +507,7 @@ func (o *UserAuthContext) HasDisplayName() bool {
 func (o *UserAuthContext) SetDisplayName(v string) {
 	o.DisplayName.Set(&v)
 }
+
 // SetDisplayNameNil sets the value for DisplayName to be an explicit nil
 func (o *UserAuthContext) SetDisplayNameNil() {
 	o.DisplayName.Set(nil)
@@ -543,6 +550,7 @@ func (o *UserAuthContext) HasCreatedAt() bool {
 func (o *UserAuthContext) SetCreatedAt(v time.Time) {
 	o.CreatedAt.Set(&v)
 }
+
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *UserAuthContext) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -554,7 +562,7 @@ func (o *UserAuthContext) UnsetCreatedAt() {
 }
 
 func (o UserAuthContext) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -678,5 +686,3 @@ func (v *NullableUserAuthContext) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

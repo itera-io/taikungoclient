@@ -20,24 +20,23 @@ import (
 	"strings"
 )
 
-
 // FlavorsAPIService FlavorsAPI service
 type FlavorsAPIService service
 
 type ApiFlavorsAwsInstanceTypesRequest struct {
-	ctx context.Context
-	ApiService *FlavorsAPIService
-	cloudId int32
-	limit *int32
-	offset *int32
-	startRam *float64
-	endRam *float64
-	startCpu *int32
-	endCpu *int32
-	search *string
-	sortBy *string
+	ctx           context.Context
+	ApiService    *FlavorsAPIService
+	cloudId       int32
+	limit         *int32
+	offset        *int32
+	startRam      *float64
+	endRam        *float64
+	startCpu      *int32
+	endCpu        *int32
+	search        *string
+	sortBy        *string
 	sortDirection *string
-	projectId *int32
+	projectId     *int32
 	hasGpuSupport *bool
 }
 
@@ -103,26 +102,27 @@ func (r ApiFlavorsAwsInstanceTypesRequest) Execute() (*AwsFlavorList, *http.Resp
 /*
 FlavorsAwsInstanceTypes Retrieve awz instance types
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiFlavorsAwsInstanceTypesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@return ApiFlavorsAwsInstanceTypesRequest
 */
 func (a *FlavorsAPIService) FlavorsAwsInstanceTypes(ctx context.Context, cloudId int32) ApiFlavorsAwsInstanceTypesRequest {
 	return ApiFlavorsAwsInstanceTypesRequest{
 		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
+		ctx:        ctx,
+		cloudId:    cloudId,
 	}
 }
 
 // Execute executes the request
-//  @return AwsFlavorList
+//
+//	@return AwsFlavorList
 func (a *FlavorsAPIService) FlavorsAwsInstanceTypesExecute(r ApiFlavorsAwsInstanceTypesRequest) (*AwsFlavorList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AwsFlavorList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AwsFlavorList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlavorsAPIService.FlavorsAwsInstanceTypes")
@@ -230,8 +230,8 @@ func (a *FlavorsAPIService) FlavorsAwsInstanceTypesExecute(r ApiFlavorsAwsInstan
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -241,8 +241,8 @@ func (a *FlavorsAPIService) FlavorsAwsInstanceTypesExecute(r ApiFlavorsAwsInstan
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -252,8 +252,8 @@ func (a *FlavorsAPIService) FlavorsAwsInstanceTypesExecute(r ApiFlavorsAwsInstan
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -263,8 +263,8 @@ func (a *FlavorsAPIService) FlavorsAwsInstanceTypesExecute(r ApiFlavorsAwsInstan
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -274,8 +274,8 @@ func (a *FlavorsAPIService) FlavorsAwsInstanceTypesExecute(r ApiFlavorsAwsInstan
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -285,8 +285,8 @@ func (a *FlavorsAPIService) FlavorsAwsInstanceTypesExecute(r ApiFlavorsAwsInstan
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -304,19 +304,19 @@ func (a *FlavorsAPIService) FlavorsAwsInstanceTypesExecute(r ApiFlavorsAwsInstan
 }
 
 type ApiFlavorsAzureVmSizesRequest struct {
-	ctx context.Context
-	ApiService *FlavorsAPIService
-	cloudId int32
-	limit *int32
-	offset *int32
-	startRam *float64
-	endRam *float64
-	startCpu *int32
-	endCpu *int32
-	search *string
-	sortBy *string
+	ctx           context.Context
+	ApiService    *FlavorsAPIService
+	cloudId       int32
+	limit         *int32
+	offset        *int32
+	startRam      *float64
+	endRam        *float64
+	startCpu      *int32
+	endCpu        *int32
+	search        *string
+	sortBy        *string
 	sortDirection *string
-	projectId *int32
+	projectId     *int32
 	hasGpuSupport *bool
 }
 
@@ -382,26 +382,27 @@ func (r ApiFlavorsAzureVmSizesRequest) Execute() (*AzureFlavorList, *http.Respon
 /*
 FlavorsAzureVmSizes Retrieve azure vm sizes
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiFlavorsAzureVmSizesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@return ApiFlavorsAzureVmSizesRequest
 */
 func (a *FlavorsAPIService) FlavorsAzureVmSizes(ctx context.Context, cloudId int32) ApiFlavorsAzureVmSizesRequest {
 	return ApiFlavorsAzureVmSizesRequest{
 		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
+		ctx:        ctx,
+		cloudId:    cloudId,
 	}
 }
 
 // Execute executes the request
-//  @return AzureFlavorList
+//
+//	@return AzureFlavorList
 func (a *FlavorsAPIService) FlavorsAzureVmSizesExecute(r ApiFlavorsAzureVmSizesRequest) (*AzureFlavorList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AzureFlavorList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AzureFlavorList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlavorsAPIService.FlavorsAzureVmSizes")
@@ -509,8 +510,8 @@ func (a *FlavorsAPIService) FlavorsAzureVmSizesExecute(r ApiFlavorsAzureVmSizesR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -520,8 +521,8 @@ func (a *FlavorsAPIService) FlavorsAzureVmSizesExecute(r ApiFlavorsAzureVmSizesR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -531,8 +532,8 @@ func (a *FlavorsAPIService) FlavorsAzureVmSizesExecute(r ApiFlavorsAzureVmSizesR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -542,8 +543,8 @@ func (a *FlavorsAPIService) FlavorsAzureVmSizesExecute(r ApiFlavorsAzureVmSizesR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -553,8 +554,8 @@ func (a *FlavorsAPIService) FlavorsAzureVmSizesExecute(r ApiFlavorsAzureVmSizesR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -564,8 +565,8 @@ func (a *FlavorsAPIService) FlavorsAzureVmSizesExecute(r ApiFlavorsAzureVmSizesR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -583,8 +584,8 @@ func (a *FlavorsAPIService) FlavorsAzureVmSizesExecute(r ApiFlavorsAzureVmSizesR
 }
 
 type ApiFlavorsBindToProjectRequest struct {
-	ctx context.Context
-	ApiService *FlavorsAPIService
+	ctx                        context.Context
+	ApiService                 *FlavorsAPIService
 	bindFlavorToProjectCommand *BindFlavorToProjectCommand
 }
 
@@ -600,22 +601,22 @@ func (r ApiFlavorsBindToProjectRequest) Execute() (*http.Response, error) {
 /*
 FlavorsBindToProject Bind flavors to project
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiFlavorsBindToProjectRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiFlavorsBindToProjectRequest
 */
 func (a *FlavorsAPIService) FlavorsBindToProject(ctx context.Context) ApiFlavorsBindToProjectRequest {
 	return ApiFlavorsBindToProjectRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *FlavorsAPIService) FlavorsBindToProjectExecute(r ApiFlavorsBindToProjectRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlavorsAPIService.FlavorsBindToProject")
@@ -691,8 +692,8 @@ func (a *FlavorsAPIService) FlavorsBindToProjectExecute(r ApiFlavorsBindToProjec
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -702,8 +703,8 @@ func (a *FlavorsAPIService) FlavorsBindToProjectExecute(r ApiFlavorsBindToProjec
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -713,8 +714,8 @@ func (a *FlavorsAPIService) FlavorsBindToProjectExecute(r ApiFlavorsBindToProjec
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -724,8 +725,8 @@ func (a *FlavorsAPIService) FlavorsBindToProjectExecute(r ApiFlavorsBindToProjec
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -735,8 +736,8 @@ func (a *FlavorsAPIService) FlavorsBindToProjectExecute(r ApiFlavorsBindToProjec
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -746,8 +747,8 @@ func (a *FlavorsAPIService) FlavorsBindToProjectExecute(r ApiFlavorsBindToProjec
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -756,12 +757,12 @@ func (a *FlavorsAPIService) FlavorsBindToProjectExecute(r ApiFlavorsBindToProjec
 }
 
 type ApiFlavorsDropdownFlavorsRequest struct {
-	ctx context.Context
-	ApiService *FlavorsAPIService
+	ctx            context.Context
+	ApiService     *FlavorsAPIService
 	organizationId *int32
-	filterBy *string
-	search *string
-	isInfra *bool
+	filterBy       *string
+	search         *string
+	isInfra        *bool
 }
 
 func (r ApiFlavorsDropdownFlavorsRequest) OrganizationId(organizationId int32) ApiFlavorsDropdownFlavorsRequest {
@@ -791,24 +792,25 @@ func (r ApiFlavorsDropdownFlavorsRequest) Execute() ([]CloudCredentialsDropdownR
 /*
 FlavorsDropdownFlavors Retrieve cloud credentials dropdown list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiFlavorsDropdownFlavorsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiFlavorsDropdownFlavorsRequest
 */
 func (a *FlavorsAPIService) FlavorsDropdownFlavors(ctx context.Context) ApiFlavorsDropdownFlavorsRequest {
 	return ApiFlavorsDropdownFlavorsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []CloudCredentialsDropdownRecordDto
+//
+//	@return []CloudCredentialsDropdownRecordDto
 func (a *FlavorsAPIService) FlavorsDropdownFlavorsExecute(r ApiFlavorsDropdownFlavorsRequest) ([]CloudCredentialsDropdownRecordDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CloudCredentialsDropdownRecordDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []CloudCredentialsDropdownRecordDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlavorsAPIService.FlavorsDropdownFlavors")
@@ -894,8 +896,8 @@ func (a *FlavorsAPIService) FlavorsDropdownFlavorsExecute(r ApiFlavorsDropdownFl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -905,8 +907,8 @@ func (a *FlavorsAPIService) FlavorsDropdownFlavorsExecute(r ApiFlavorsDropdownFl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -916,8 +918,8 @@ func (a *FlavorsAPIService) FlavorsDropdownFlavorsExecute(r ApiFlavorsDropdownFl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -927,8 +929,8 @@ func (a *FlavorsAPIService) FlavorsDropdownFlavorsExecute(r ApiFlavorsDropdownFl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -938,8 +940,8 @@ func (a *FlavorsAPIService) FlavorsDropdownFlavorsExecute(r ApiFlavorsDropdownFl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -949,8 +951,8 @@ func (a *FlavorsAPIService) FlavorsDropdownFlavorsExecute(r ApiFlavorsDropdownFl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -968,19 +970,19 @@ func (a *FlavorsAPIService) FlavorsDropdownFlavorsExecute(r ApiFlavorsDropdownFl
 }
 
 type ApiFlavorsGoogleMachineTypesRequest struct {
-	ctx context.Context
-	ApiService *FlavorsAPIService
-	cloudId int32
-	limit *int32
-	offset *int32
-	startRam *float64
-	endRam *float64
-	startCpu *int32
-	endCpu *int32
-	search *string
-	sortBy *string
+	ctx           context.Context
+	ApiService    *FlavorsAPIService
+	cloudId       int32
+	limit         *int32
+	offset        *int32
+	startRam      *float64
+	endRam        *float64
+	startCpu      *int32
+	endCpu        *int32
+	search        *string
+	sortBy        *string
 	sortDirection *string
-	projectId *int32
+	projectId     *int32
 	hasGpuSupport *bool
 }
 
@@ -1046,26 +1048,27 @@ func (r ApiFlavorsGoogleMachineTypesRequest) Execute() (*GoogleFlavorList, *http
 /*
 FlavorsGoogleMachineTypes Retrieve google machine types
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiFlavorsGoogleMachineTypesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@return ApiFlavorsGoogleMachineTypesRequest
 */
 func (a *FlavorsAPIService) FlavorsGoogleMachineTypes(ctx context.Context, cloudId int32) ApiFlavorsGoogleMachineTypesRequest {
 	return ApiFlavorsGoogleMachineTypesRequest{
 		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
+		ctx:        ctx,
+		cloudId:    cloudId,
 	}
 }
 
 // Execute executes the request
-//  @return GoogleFlavorList
+//
+//	@return GoogleFlavorList
 func (a *FlavorsAPIService) FlavorsGoogleMachineTypesExecute(r ApiFlavorsGoogleMachineTypesRequest) (*GoogleFlavorList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GoogleFlavorList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GoogleFlavorList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlavorsAPIService.FlavorsGoogleMachineTypes")
@@ -1173,8 +1176,8 @@ func (a *FlavorsAPIService) FlavorsGoogleMachineTypesExecute(r ApiFlavorsGoogleM
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1184,8 +1187,8 @@ func (a *FlavorsAPIService) FlavorsGoogleMachineTypesExecute(r ApiFlavorsGoogleM
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1195,8 +1198,8 @@ func (a *FlavorsAPIService) FlavorsGoogleMachineTypesExecute(r ApiFlavorsGoogleM
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1206,8 +1209,8 @@ func (a *FlavorsAPIService) FlavorsGoogleMachineTypesExecute(r ApiFlavorsGoogleM
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1217,8 +1220,8 @@ func (a *FlavorsAPIService) FlavorsGoogleMachineTypesExecute(r ApiFlavorsGoogleM
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1228,8 +1231,8 @@ func (a *FlavorsAPIService) FlavorsGoogleMachineTypesExecute(r ApiFlavorsGoogleM
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1247,19 +1250,19 @@ func (a *FlavorsAPIService) FlavorsGoogleMachineTypesExecute(r ApiFlavorsGoogleM
 }
 
 type ApiFlavorsOpenshiftFlavorsRequest struct {
-	ctx context.Context
-	ApiService *FlavorsAPIService
-	cloudId int32
-	limit *int32
-	offset *int32
-	startRam *float64
-	endRam *float64
-	startCpu *int32
-	endCpu *int32
-	search *string
-	sortBy *string
+	ctx           context.Context
+	ApiService    *FlavorsAPIService
+	cloudId       int32
+	limit         *int32
+	offset        *int32
+	startRam      *float64
+	endRam        *float64
+	startCpu      *int32
+	endCpu        *int32
+	search        *string
+	sortBy        *string
 	sortDirection *string
-	projectId *int32
+	projectId     *int32
 }
 
 func (r ApiFlavorsOpenshiftFlavorsRequest) Limit(limit int32) ApiFlavorsOpenshiftFlavorsRequest {
@@ -1319,26 +1322,27 @@ func (r ApiFlavorsOpenshiftFlavorsRequest) Execute() (*OpenshiftFlavorList, *htt
 /*
 FlavorsOpenshiftFlavors Retrieve openshift flavors
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiFlavorsOpenshiftFlavorsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@return ApiFlavorsOpenshiftFlavorsRequest
 */
 func (a *FlavorsAPIService) FlavorsOpenshiftFlavors(ctx context.Context, cloudId int32) ApiFlavorsOpenshiftFlavorsRequest {
 	return ApiFlavorsOpenshiftFlavorsRequest{
 		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
+		ctx:        ctx,
+		cloudId:    cloudId,
 	}
 }
 
 // Execute executes the request
-//  @return OpenshiftFlavorList
+//
+//	@return OpenshiftFlavorList
 func (a *FlavorsAPIService) FlavorsOpenshiftFlavorsExecute(r ApiFlavorsOpenshiftFlavorsRequest) (*OpenshiftFlavorList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *OpenshiftFlavorList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *OpenshiftFlavorList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlavorsAPIService.FlavorsOpenshiftFlavors")
@@ -1443,8 +1447,8 @@ func (a *FlavorsAPIService) FlavorsOpenshiftFlavorsExecute(r ApiFlavorsOpenshift
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1454,8 +1458,8 @@ func (a *FlavorsAPIService) FlavorsOpenshiftFlavorsExecute(r ApiFlavorsOpenshift
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1465,8 +1469,8 @@ func (a *FlavorsAPIService) FlavorsOpenshiftFlavorsExecute(r ApiFlavorsOpenshift
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1476,8 +1480,8 @@ func (a *FlavorsAPIService) FlavorsOpenshiftFlavorsExecute(r ApiFlavorsOpenshift
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1487,8 +1491,8 @@ func (a *FlavorsAPIService) FlavorsOpenshiftFlavorsExecute(r ApiFlavorsOpenshift
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1498,8 +1502,8 @@ func (a *FlavorsAPIService) FlavorsOpenshiftFlavorsExecute(r ApiFlavorsOpenshift
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1517,19 +1521,19 @@ func (a *FlavorsAPIService) FlavorsOpenshiftFlavorsExecute(r ApiFlavorsOpenshift
 }
 
 type ApiFlavorsOpenstackFlavorsRequest struct {
-	ctx context.Context
-	ApiService *FlavorsAPIService
-	cloudId int32
-	limit *int32
-	offset *int32
-	startRam *float64
-	endRam *float64
-	startCpu *int32
-	endCpu *int32
-	search *string
-	sortBy *string
+	ctx           context.Context
+	ApiService    *FlavorsAPIService
+	cloudId       int32
+	limit         *int32
+	offset        *int32
+	startRam      *float64
+	endRam        *float64
+	startCpu      *int32
+	endCpu        *int32
+	search        *string
+	sortBy        *string
 	sortDirection *string
-	projectId *int32
+	projectId     *int32
 	hasGpuSupport *bool
 }
 
@@ -1595,26 +1599,27 @@ func (r ApiFlavorsOpenstackFlavorsRequest) Execute() (*OpenstackFlavorList, *htt
 /*
 FlavorsOpenstackFlavors Retrieve openstack flavors
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiFlavorsOpenstackFlavorsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@return ApiFlavorsOpenstackFlavorsRequest
 */
 func (a *FlavorsAPIService) FlavorsOpenstackFlavors(ctx context.Context, cloudId int32) ApiFlavorsOpenstackFlavorsRequest {
 	return ApiFlavorsOpenstackFlavorsRequest{
 		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
+		ctx:        ctx,
+		cloudId:    cloudId,
 	}
 }
 
 // Execute executes the request
-//  @return OpenstackFlavorList
+//
+//	@return OpenstackFlavorList
 func (a *FlavorsAPIService) FlavorsOpenstackFlavorsExecute(r ApiFlavorsOpenstackFlavorsRequest) (*OpenstackFlavorList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *OpenstackFlavorList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *OpenstackFlavorList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlavorsAPIService.FlavorsOpenstackFlavors")
@@ -1722,8 +1727,8 @@ func (a *FlavorsAPIService) FlavorsOpenstackFlavorsExecute(r ApiFlavorsOpenstack
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1733,8 +1738,8 @@ func (a *FlavorsAPIService) FlavorsOpenstackFlavorsExecute(r ApiFlavorsOpenstack
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1744,8 +1749,8 @@ func (a *FlavorsAPIService) FlavorsOpenstackFlavorsExecute(r ApiFlavorsOpenstack
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1755,8 +1760,8 @@ func (a *FlavorsAPIService) FlavorsOpenstackFlavorsExecute(r ApiFlavorsOpenstack
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1766,8 +1771,8 @@ func (a *FlavorsAPIService) FlavorsOpenstackFlavorsExecute(r ApiFlavorsOpenstack
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1777,8 +1782,8 @@ func (a *FlavorsAPIService) FlavorsOpenstackFlavorsExecute(r ApiFlavorsOpenstack
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1796,19 +1801,19 @@ func (a *FlavorsAPIService) FlavorsOpenstackFlavorsExecute(r ApiFlavorsOpenstack
 }
 
 type ApiFlavorsProxmoxFlavorsRequest struct {
-	ctx context.Context
-	ApiService *FlavorsAPIService
-	cloudId int32
-	limit *int32
-	offset *int32
-	startRam *float64
-	endRam *float64
-	startCpu *int32
-	endCpu *int32
-	search *string
-	sortBy *string
+	ctx           context.Context
+	ApiService    *FlavorsAPIService
+	cloudId       int32
+	limit         *int32
+	offset        *int32
+	startRam      *float64
+	endRam        *float64
+	startCpu      *int32
+	endCpu        *int32
+	search        *string
+	sortBy        *string
 	sortDirection *string
-	projectId *int32
+	projectId     *int32
 }
 
 func (r ApiFlavorsProxmoxFlavorsRequest) Limit(limit int32) ApiFlavorsProxmoxFlavorsRequest {
@@ -1868,26 +1873,27 @@ func (r ApiFlavorsProxmoxFlavorsRequest) Execute() (*ProxmoxFlavorList, *http.Re
 /*
 FlavorsProxmoxFlavors Retrieve proxmox flavors
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiFlavorsProxmoxFlavorsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@return ApiFlavorsProxmoxFlavorsRequest
 */
 func (a *FlavorsAPIService) FlavorsProxmoxFlavors(ctx context.Context, cloudId int32) ApiFlavorsProxmoxFlavorsRequest {
 	return ApiFlavorsProxmoxFlavorsRequest{
 		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
+		ctx:        ctx,
+		cloudId:    cloudId,
 	}
 }
 
 // Execute executes the request
-//  @return ProxmoxFlavorList
+//
+//	@return ProxmoxFlavorList
 func (a *FlavorsAPIService) FlavorsProxmoxFlavorsExecute(r ApiFlavorsProxmoxFlavorsRequest) (*ProxmoxFlavorList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ProxmoxFlavorList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ProxmoxFlavorList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlavorsAPIService.FlavorsProxmoxFlavors")
@@ -1992,8 +1998,8 @@ func (a *FlavorsAPIService) FlavorsProxmoxFlavorsExecute(r ApiFlavorsProxmoxFlav
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2003,8 +2009,8 @@ func (a *FlavorsAPIService) FlavorsProxmoxFlavorsExecute(r ApiFlavorsProxmoxFlav
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2014,8 +2020,8 @@ func (a *FlavorsAPIService) FlavorsProxmoxFlavorsExecute(r ApiFlavorsProxmoxFlav
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2025,8 +2031,8 @@ func (a *FlavorsAPIService) FlavorsProxmoxFlavorsExecute(r ApiFlavorsProxmoxFlav
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2036,8 +2042,8 @@ func (a *FlavorsAPIService) FlavorsProxmoxFlavorsExecute(r ApiFlavorsProxmoxFlav
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2047,8 +2053,8 @@ func (a *FlavorsAPIService) FlavorsProxmoxFlavorsExecute(r ApiFlavorsProxmoxFlav
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2066,19 +2072,19 @@ func (a *FlavorsAPIService) FlavorsProxmoxFlavorsExecute(r ApiFlavorsProxmoxFlav
 }
 
 type ApiFlavorsSelectedFlavorsForProjectRequest struct {
-	ctx context.Context
-	ApiService *FlavorsAPIService
-	limit *int32
-	offset *int32
-	projectId *int32
-	sortBy *string
-	sortDirection *string
-	search *string
-	filterBy *string
+	ctx            context.Context
+	ApiService     *FlavorsAPIService
+	limit          *int32
+	offset         *int32
+	projectId      *int32
+	sortBy         *string
+	sortDirection  *string
+	search         *string
+	filterBy       *string
 	organizationId *int32
-	flavorName *string
-	withPrice *bool
-	hasGpuSupport *bool
+	flavorName     *string
+	withPrice      *bool
+	hasGpuSupport  *bool
 }
 
 func (r ApiFlavorsSelectedFlavorsForProjectRequest) Limit(limit int32) ApiFlavorsSelectedFlavorsForProjectRequest {
@@ -2143,24 +2149,25 @@ func (r ApiFlavorsSelectedFlavorsForProjectRequest) Execute() (*BoundFlavorsForP
 /*
 FlavorsSelectedFlavorsForProject Retrieve selected flavors for project
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiFlavorsSelectedFlavorsForProjectRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiFlavorsSelectedFlavorsForProjectRequest
 */
 func (a *FlavorsAPIService) FlavorsSelectedFlavorsForProject(ctx context.Context) ApiFlavorsSelectedFlavorsForProjectRequest {
 	return ApiFlavorsSelectedFlavorsForProjectRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return BoundFlavorsForProjectsList
+//
+//	@return BoundFlavorsForProjectsList
 func (a *FlavorsAPIService) FlavorsSelectedFlavorsForProjectExecute(r ApiFlavorsSelectedFlavorsForProjectRequest) (*BoundFlavorsForProjectsList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *BoundFlavorsForProjectsList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *BoundFlavorsForProjectsList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlavorsAPIService.FlavorsSelectedFlavorsForProject")
@@ -2267,8 +2274,8 @@ func (a *FlavorsAPIService) FlavorsSelectedFlavorsForProjectExecute(r ApiFlavors
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2278,8 +2285,8 @@ func (a *FlavorsAPIService) FlavorsSelectedFlavorsForProjectExecute(r ApiFlavors
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2289,8 +2296,8 @@ func (a *FlavorsAPIService) FlavorsSelectedFlavorsForProjectExecute(r ApiFlavors
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2300,8 +2307,8 @@ func (a *FlavorsAPIService) FlavorsSelectedFlavorsForProjectExecute(r ApiFlavors
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2311,8 +2318,8 @@ func (a *FlavorsAPIService) FlavorsSelectedFlavorsForProjectExecute(r ApiFlavors
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2322,8 +2329,8 @@ func (a *FlavorsAPIService) FlavorsSelectedFlavorsForProjectExecute(r ApiFlavors
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2341,8 +2348,8 @@ func (a *FlavorsAPIService) FlavorsSelectedFlavorsForProjectExecute(r ApiFlavors
 }
 
 type ApiFlavorsUnbindFromProjectRequest struct {
-	ctx context.Context
-	ApiService *FlavorsAPIService
+	ctx                            context.Context
+	ApiService                     *FlavorsAPIService
 	unbindFlavorFromProjectCommand *UnbindFlavorFromProjectCommand
 }
 
@@ -2358,22 +2365,22 @@ func (r ApiFlavorsUnbindFromProjectRequest) Execute() (*http.Response, error) {
 /*
 FlavorsUnbindFromProject Unbind flavors from project
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiFlavorsUnbindFromProjectRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiFlavorsUnbindFromProjectRequest
 */
 func (a *FlavorsAPIService) FlavorsUnbindFromProject(ctx context.Context) ApiFlavorsUnbindFromProjectRequest {
 	return ApiFlavorsUnbindFromProjectRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *FlavorsAPIService) FlavorsUnbindFromProjectExecute(r ApiFlavorsUnbindFromProjectRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlavorsAPIService.FlavorsUnbindFromProject")
@@ -2449,8 +2456,8 @@ func (a *FlavorsAPIService) FlavorsUnbindFromProjectExecute(r ApiFlavorsUnbindFr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2460,8 +2467,8 @@ func (a *FlavorsAPIService) FlavorsUnbindFromProjectExecute(r ApiFlavorsUnbindFr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2471,8 +2478,8 @@ func (a *FlavorsAPIService) FlavorsUnbindFromProjectExecute(r ApiFlavorsUnbindFr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2482,8 +2489,8 @@ func (a *FlavorsAPIService) FlavorsUnbindFromProjectExecute(r ApiFlavorsUnbindFr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2493,8 +2500,8 @@ func (a *FlavorsAPIService) FlavorsUnbindFromProjectExecute(r ApiFlavorsUnbindFr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2504,8 +2511,8 @@ func (a *FlavorsAPIService) FlavorsUnbindFromProjectExecute(r ApiFlavorsUnbindFr
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2514,19 +2521,19 @@ func (a *FlavorsAPIService) FlavorsUnbindFromProjectExecute(r ApiFlavorsUnbindFr
 }
 
 type ApiFlavorsVsphereFlavorsRequest struct {
-	ctx context.Context
-	ApiService *FlavorsAPIService
-	cloudId int32
-	limit *int32
-	offset *int32
-	startRam *float64
-	endRam *float64
-	startCpu *int32
-	endCpu *int32
-	search *string
-	sortBy *string
+	ctx           context.Context
+	ApiService    *FlavorsAPIService
+	cloudId       int32
+	limit         *int32
+	offset        *int32
+	startRam      *float64
+	endRam        *float64
+	startCpu      *int32
+	endCpu        *int32
+	search        *string
+	sortBy        *string
 	sortDirection *string
-	projectId *int32
+	projectId     *int32
 }
 
 func (r ApiFlavorsVsphereFlavorsRequest) Limit(limit int32) ApiFlavorsVsphereFlavorsRequest {
@@ -2586,26 +2593,27 @@ func (r ApiFlavorsVsphereFlavorsRequest) Execute() (*VsphereFlavorList, *http.Re
 /*
 FlavorsVsphereFlavors Retrieve vsphere flavors
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiFlavorsVsphereFlavorsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@return ApiFlavorsVsphereFlavorsRequest
 */
 func (a *FlavorsAPIService) FlavorsVsphereFlavors(ctx context.Context, cloudId int32) ApiFlavorsVsphereFlavorsRequest {
 	return ApiFlavorsVsphereFlavorsRequest{
 		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
+		ctx:        ctx,
+		cloudId:    cloudId,
 	}
 }
 
 // Execute executes the request
-//  @return VsphereFlavorList
+//
+//	@return VsphereFlavorList
 func (a *FlavorsAPIService) FlavorsVsphereFlavorsExecute(r ApiFlavorsVsphereFlavorsRequest) (*VsphereFlavorList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *VsphereFlavorList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *VsphereFlavorList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlavorsAPIService.FlavorsVsphereFlavors")
@@ -2710,8 +2718,8 @@ func (a *FlavorsAPIService) FlavorsVsphereFlavorsExecute(r ApiFlavorsVsphereFlav
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2721,8 +2729,8 @@ func (a *FlavorsAPIService) FlavorsVsphereFlavorsExecute(r ApiFlavorsVsphereFlav
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2732,8 +2740,8 @@ func (a *FlavorsAPIService) FlavorsVsphereFlavorsExecute(r ApiFlavorsVsphereFlav
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2743,8 +2751,8 @@ func (a *FlavorsAPIService) FlavorsVsphereFlavorsExecute(r ApiFlavorsVsphereFlav
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2754,8 +2762,8 @@ func (a *FlavorsAPIService) FlavorsVsphereFlavorsExecute(r ApiFlavorsVsphereFlav
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2765,8 +2773,8 @@ func (a *FlavorsAPIService) FlavorsVsphereFlavorsExecute(r ApiFlavorsVsphereFlav
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2784,19 +2792,19 @@ func (a *FlavorsAPIService) FlavorsVsphereFlavorsExecute(r ApiFlavorsVsphereFlav
 }
 
 type ApiFlavorsZadaraInstanceTypesRequest struct {
-	ctx context.Context
-	ApiService *FlavorsAPIService
-	cloudId int32
-	limit *int32
-	offset *int32
-	startRam *float64
-	endRam *float64
-	startCpu *int32
-	endCpu *int32
-	search *string
-	sortBy *string
+	ctx           context.Context
+	ApiService    *FlavorsAPIService
+	cloudId       int32
+	limit         *int32
+	offset        *int32
+	startRam      *float64
+	endRam        *float64
+	startCpu      *int32
+	endCpu        *int32
+	search        *string
+	sortBy        *string
 	sortDirection *string
-	projectId *int32
+	projectId     *int32
 }
 
 func (r ApiFlavorsZadaraInstanceTypesRequest) Limit(limit int32) ApiFlavorsZadaraInstanceTypesRequest {
@@ -2856,26 +2864,27 @@ func (r ApiFlavorsZadaraInstanceTypesRequest) Execute() (*AwsFlavorList, *http.R
 /*
 FlavorsZadaraInstanceTypes Retrieve zadara instance types
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiFlavorsZadaraInstanceTypesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@return ApiFlavorsZadaraInstanceTypesRequest
 */
 func (a *FlavorsAPIService) FlavorsZadaraInstanceTypes(ctx context.Context, cloudId int32) ApiFlavorsZadaraInstanceTypesRequest {
 	return ApiFlavorsZadaraInstanceTypesRequest{
 		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
+		ctx:        ctx,
+		cloudId:    cloudId,
 	}
 }
 
 // Execute executes the request
-//  @return AwsFlavorList
+//
+//	@return AwsFlavorList
 func (a *FlavorsAPIService) FlavorsZadaraInstanceTypesExecute(r ApiFlavorsZadaraInstanceTypesRequest) (*AwsFlavorList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AwsFlavorList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AwsFlavorList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlavorsAPIService.FlavorsZadaraInstanceTypes")
@@ -2980,8 +2989,8 @@ func (a *FlavorsAPIService) FlavorsZadaraInstanceTypesExecute(r ApiFlavorsZadara
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2991,8 +3000,8 @@ func (a *FlavorsAPIService) FlavorsZadaraInstanceTypesExecute(r ApiFlavorsZadara
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3002,8 +3011,8 @@ func (a *FlavorsAPIService) FlavorsZadaraInstanceTypesExecute(r ApiFlavorsZadara
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3013,8 +3022,8 @@ func (a *FlavorsAPIService) FlavorsZadaraInstanceTypesExecute(r ApiFlavorsZadara
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3024,8 +3033,8 @@ func (a *FlavorsAPIService) FlavorsZadaraInstanceTypesExecute(r ApiFlavorsZadara
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3035,8 +3044,8 @@ func (a *FlavorsAPIService) FlavorsZadaraInstanceTypesExecute(r ApiFlavorsZadara
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -21,24 +21,24 @@ var _ MappedNullable = &AzureCredentialsListDto{}
 
 // AzureCredentialsListDto struct for AzureCredentialsListDto
 type AzureCredentialsListDto struct {
-	Id int32 `json:"id"`
-	ProjectCount int32 `json:"projectCount"`
-	IsLocked bool `json:"isLocked"`
-	Name string `json:"name"`
-	TenantId string `json:"tenantId"`
-	Location string `json:"location"`
-	AvailabilityZones []string `json:"availabilityZones"`
-	AvailabilityZonesCount int32 `json:"availabilityZonesCount"`
-	Projects []CommonDropdownDto `json:"projects"`
-	CreatedBy NullableString `json:"createdBy"`
-	CreatedAt NullableString `json:"createdAt"`
-	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
-	IsDefault bool `json:"isDefault"`
-	OrganizationId int32 `json:"organizationId"`
-	OrganizationName string `json:"organizationName"`
-	ContinentName NullableString `json:"continentName"`
-	AdditionalProperties map[string]interface{}
+	Id                     int32               `json:"id"`
+	ProjectCount           int32               `json:"projectCount"`
+	IsLocked               bool                `json:"isLocked"`
+	Name                   string              `json:"name"`
+	TenantId               string              `json:"tenantId"`
+	Location               string              `json:"location"`
+	AvailabilityZones      []string            `json:"availabilityZones"`
+	AvailabilityZonesCount int32               `json:"availabilityZonesCount"`
+	Projects               []CommonDropdownDto `json:"projects"`
+	CreatedBy              NullableString      `json:"createdBy"`
+	CreatedAt              NullableString      `json:"createdAt"`
+	LastModified           NullableString      `json:"lastModified"`
+	LastModifiedBy         NullableString      `json:"lastModifiedBy"`
+	IsDefault              bool                `json:"isDefault"`
+	OrganizationId         int32               `json:"organizationId"`
+	OrganizationName       string              `json:"organizationName"`
+	ContinentName          NullableString      `json:"continentName"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _AzureCredentialsListDto AzureCredentialsListDto
@@ -496,7 +496,7 @@ func (o *AzureCredentialsListDto) SetContinentName(v string) {
 }
 
 func (o AzureCredentialsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -559,10 +559,10 @@ func (o *AzureCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -639,5 +639,3 @@ func (v *NullableAzureCredentialsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

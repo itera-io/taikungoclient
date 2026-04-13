@@ -20,11 +20,11 @@ var _ MappedNullable = &NamespaceSearchCommand{}
 
 // NamespaceSearchCommand struct for NamespaceSearchCommand
 type NamespaceSearchCommand struct {
-	Limit NullableInt32 `json:"limit,omitempty"`
-	Offset NullableInt32 `json:"offset,omitempty"`
-	SearchTerm NullableString `json:"searchTerm,omitempty"`
-	IncludePublicImportedClusters NullableBool `json:"includePublicImportedClusters,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Limit                         NullableInt32  `json:"limit,omitempty"`
+	Offset                        NullableInt32  `json:"offset,omitempty"`
+	SearchTerm                    NullableString `json:"searchTerm,omitempty"`
+	IncludePublicImportedClusters NullableBool   `json:"includePublicImportedClusters,omitempty"`
+	AdditionalProperties          map[string]interface{}
 }
 
 type _NamespaceSearchCommand NamespaceSearchCommand
@@ -78,6 +78,7 @@ func (o *NamespaceSearchCommand) HasLimit() bool {
 func (o *NamespaceSearchCommand) SetLimit(v int32) {
 	o.Limit.Set(&v)
 }
+
 // SetLimitNil sets the value for Limit to be an explicit nil
 func (o *NamespaceSearchCommand) SetLimitNil() {
 	o.Limit.Set(nil)
@@ -120,6 +121,7 @@ func (o *NamespaceSearchCommand) HasOffset() bool {
 func (o *NamespaceSearchCommand) SetOffset(v int32) {
 	o.Offset.Set(&v)
 }
+
 // SetOffsetNil sets the value for Offset to be an explicit nil
 func (o *NamespaceSearchCommand) SetOffsetNil() {
 	o.Offset.Set(nil)
@@ -162,6 +164,7 @@ func (o *NamespaceSearchCommand) HasSearchTerm() bool {
 func (o *NamespaceSearchCommand) SetSearchTerm(v string) {
 	o.SearchTerm.Set(&v)
 }
+
 // SetSearchTermNil sets the value for SearchTerm to be an explicit nil
 func (o *NamespaceSearchCommand) SetSearchTermNil() {
 	o.SearchTerm.Set(nil)
@@ -204,6 +207,7 @@ func (o *NamespaceSearchCommand) HasIncludePublicImportedClusters() bool {
 func (o *NamespaceSearchCommand) SetIncludePublicImportedClusters(v bool) {
 	o.IncludePublicImportedClusters.Set(&v)
 }
+
 // SetIncludePublicImportedClustersNil sets the value for IncludePublicImportedClusters to be an explicit nil
 func (o *NamespaceSearchCommand) SetIncludePublicImportedClustersNil() {
 	o.IncludePublicImportedClusters.Set(nil)
@@ -215,7 +219,7 @@ func (o *NamespaceSearchCommand) UnsetIncludePublicImportedClusters() {
 }
 
 func (o NamespaceSearchCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -303,5 +307,3 @@ func (v *NullableNamespaceSearchCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

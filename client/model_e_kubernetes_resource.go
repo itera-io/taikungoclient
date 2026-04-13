@@ -21,27 +21,27 @@ type EKubernetesResource string
 
 // List of EKubernetesResource
 const (
-	EKUBERNETESRESOURCE_NONE EKubernetesResource = "None"
-	EKUBERNETESRESOURCE_DAEMON_SET EKubernetesResource = "DaemonSet"
-	EKUBERNETESRESOURCE_PVC EKubernetesResource = "Pvc"
-	EKUBERNETESRESOURCE_DEPLOYMENT EKubernetesResource = "Deployment"
-	EKUBERNETESRESOURCE_CONFIG_MAP EKubernetesResource = "ConfigMap"
-	EKUBERNETESRESOURCE_SECRET EKubernetesResource = "Secret"
-	EKUBERNETESRESOURCE_STS EKubernetesResource = "Sts"
-	EKUBERNETESRESOURCE_SERVICE EKubernetesResource = "Service"
-	EKUBERNETESRESOURCE_NODE EKubernetesResource = "Node"
-	EKUBERNETESRESOURCE_CRD EKubernetesResource = "Crd"
-	EKUBERNETESRESOURCE_STORAGE_CLASS EKubernetesResource = "StorageClass"
-	EKUBERNETESRESOURCE_POD EKubernetesResource = "Pod"
-	EKUBERNETESRESOURCE_INGRESS EKubernetesResource = "Ingress"
-	EKUBERNETESRESOURCE_PDB EKubernetesResource = "Pdb"
-	EKUBERNETESRESOURCE_CRON_JOB EKubernetesResource = "CronJob"
-	EKUBERNETESRESOURCE_JOB EKubernetesResource = "Job"
-	EKUBERNETESRESOURCE_NETWORK_POLICY EKubernetesResource = "NetworkPolicy"
-	EKUBERNETESRESOURCE_NAMESPACE EKubernetesResource = "Namespace"
+	EKUBERNETESRESOURCE_NONE              EKubernetesResource = "None"
+	EKUBERNETESRESOURCE_DAEMON_SET        EKubernetesResource = "DaemonSet"
+	EKUBERNETESRESOURCE_PVC               EKubernetesResource = "Pvc"
+	EKUBERNETESRESOURCE_DEPLOYMENT        EKubernetesResource = "Deployment"
+	EKUBERNETESRESOURCE_CONFIG_MAP        EKubernetesResource = "ConfigMap"
+	EKUBERNETESRESOURCE_SECRET            EKubernetesResource = "Secret"
+	EKUBERNETESRESOURCE_STS               EKubernetesResource = "Sts"
+	EKUBERNETESRESOURCE_SERVICE           EKubernetesResource = "Service"
+	EKUBERNETESRESOURCE_NODE              EKubernetesResource = "Node"
+	EKUBERNETESRESOURCE_CRD               EKubernetesResource = "Crd"
+	EKUBERNETESRESOURCE_STORAGE_CLASS     EKubernetesResource = "StorageClass"
+	EKUBERNETESRESOURCE_POD               EKubernetesResource = "Pod"
+	EKUBERNETESRESOURCE_INGRESS           EKubernetesResource = "Ingress"
+	EKUBERNETESRESOURCE_PDB               EKubernetesResource = "Pdb"
+	EKUBERNETESRESOURCE_CRON_JOB          EKubernetesResource = "CronJob"
+	EKUBERNETESRESOURCE_JOB               EKubernetesResource = "Job"
+	EKUBERNETESRESOURCE_NETWORK_POLICY    EKubernetesResource = "NetworkPolicy"
+	EKUBERNETESRESOURCE_NAMESPACE         EKubernetesResource = "Namespace"
 	EKUBERNETESRESOURCE_PERSISTENT_VOLUME EKubernetesResource = "PersistentVolume"
-	EKUBERNETESRESOURCE_LIMIT_RANGE EKubernetesResource = "LimitRange"
-	EKUBERNETESRESOURCE_RESOURCE_QUOTA EKubernetesResource = "ResourceQuota"
+	EKUBERNETESRESOURCE_LIMIT_RANGE       EKubernetesResource = "LimitRange"
+	EKUBERNETESRESOURCE_RESOURCE_QUOTA    EKubernetesResource = "ResourceQuota"
 )
 
 // All allowed values of EKubernetesResource enum
@@ -147,4 +147,3 @@ func (v *NullableEKubernetesResource) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

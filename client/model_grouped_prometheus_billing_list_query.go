@@ -20,8 +20,8 @@ var _ MappedNullable = &GroupedPrometheusBillingListQuery{}
 
 // GroupedPrometheusBillingListQuery struct for GroupedPrometheusBillingListQuery
 type GroupedPrometheusBillingListQuery struct {
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	PeriodDuration *BillingPeriod `json:"periodDuration,omitempty"`
+	OrganizationId       NullableInt32  `json:"organizationId,omitempty"`
+	PeriodDuration       *BillingPeriod `json:"periodDuration,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,6 +76,7 @@ func (o *GroupedPrometheusBillingListQuery) HasOrganizationId() bool {
 func (o *GroupedPrometheusBillingListQuery) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
+
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *GroupedPrometheusBillingListQuery) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -119,7 +120,7 @@ func (o *GroupedPrometheusBillingListQuery) SetPeriodDuration(v BillingPeriod) {
 }
 
 func (o GroupedPrometheusBillingListQuery) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -199,5 +200,3 @@ func (v *NullableGroupedPrometheusBillingListQuery) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

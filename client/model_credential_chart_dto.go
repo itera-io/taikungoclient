@@ -20,16 +20,16 @@ var _ MappedNullable = &CredentialChartDto{}
 
 // CredentialChartDto struct for CredentialChartDto
 type CredentialChartDto struct {
-	Aws *int32 `json:"aws,omitempty"`
-	Azure *int32 `json:"azure,omitempty"`
-	Openstack *int32 `json:"openstack,omitempty"`
-	Google *int32 `json:"google,omitempty"`
-	Proxmox *int32 `json:"proxmox,omitempty"`
-	Openshift *int32 `json:"openshift,omitempty"`
-	Vsphere *int32 `json:"vsphere,omitempty"`
-	Zadara *int32 `json:"zadara,omitempty"`
-	GenericK8S *int32 `json:"genericK8S,omitempty"`
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	Aws                  *int32 `json:"aws,omitempty"`
+	Azure                *int32 `json:"azure,omitempty"`
+	Openstack            *int32 `json:"openstack,omitempty"`
+	Google               *int32 `json:"google,omitempty"`
+	Proxmox              *int32 `json:"proxmox,omitempty"`
+	Openshift            *int32 `json:"openshift,omitempty"`
+	Vsphere              *int32 `json:"vsphere,omitempty"`
+	Zadara               *int32 `json:"zadara,omitempty"`
+	GenericK8S           *int32 `json:"genericK8S,omitempty"`
+	TotalCount           *int32 `json:"totalCount,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -373,7 +373,7 @@ func (o *CredentialChartDto) SetTotalCount(v int32) {
 }
 
 func (o CredentialChartDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -485,5 +485,3 @@ func (v *NullableCredentialChartDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

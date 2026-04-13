@@ -20,11 +20,11 @@ var _ MappedNullable = &ProjectDeploymentDeleteServersCommand{}
 
 // ProjectDeploymentDeleteServersCommand struct for ProjectDeploymentDeleteServersCommand
 type ProjectDeploymentDeleteServersCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	ServerIds []int32 `json:"serverIds,omitempty"`
-	ForceDeleteVClusters *bool `json:"forceDeleteVClusters,omitempty"`
-	DeleteAutoscalingServers *bool `json:"deleteAutoscalingServers,omitempty"`
-	AdditionalProperties map[string]interface{}
+	ProjectId                *int32  `json:"projectId,omitempty"`
+	ServerIds                []int32 `json:"serverIds,omitempty"`
+	ForceDeleteVClusters     *bool   `json:"forceDeleteVClusters,omitempty"`
+	DeleteAutoscalingServers *bool   `json:"deleteAutoscalingServers,omitempty"`
+	AdditionalProperties     map[string]interface{}
 }
 
 type _ProjectDeploymentDeleteServersCommand ProjectDeploymentDeleteServersCommand
@@ -176,7 +176,7 @@ func (o *ProjectDeploymentDeleteServersCommand) SetDeleteAutoscalingServers(v bo
 }
 
 func (o ProjectDeploymentDeleteServersCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -264,5 +264,3 @@ func (v *NullableProjectDeploymentDeleteServersCommand) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

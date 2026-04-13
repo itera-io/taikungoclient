@@ -21,11 +21,11 @@ type StandAloneVmStatus string
 
 // List of StandAloneVmStatus
 const (
-	STANDALONEVMSTATUS_DELETING StandAloneVmStatus = "Deleting"
-	STANDALONEVMSTATUS_FAILURE StandAloneVmStatus = "Failure"
-	STANDALONEVMSTATUS_WAITING StandAloneVmStatus = "Waiting"
-	STANDALONEVMSTATUS_READY StandAloneVmStatus = "Ready"
-	STANDALONEVMSTATUS_UPDATING StandAloneVmStatus = "Updating"
+	STANDALONEVMSTATUS_DELETING  StandAloneVmStatus = "Deleting"
+	STANDALONEVMSTATUS_FAILURE   StandAloneVmStatus = "Failure"
+	STANDALONEVMSTATUS_WAITING   StandAloneVmStatus = "Waiting"
+	STANDALONEVMSTATUS_READY     StandAloneVmStatus = "Ready"
+	STANDALONEVMSTATUS_UPDATING  StandAloneVmStatus = "Updating"
 	STANDALONEVMSTATUS_REPAIRING StandAloneVmStatus = "Repairing"
 )
 
@@ -117,4 +117,3 @@ func (v *NullableStandAloneVmStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

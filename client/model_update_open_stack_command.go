@@ -20,10 +20,10 @@ var _ MappedNullable = &UpdateOpenStackCommand{}
 
 // UpdateOpenStackCommand struct for UpdateOpenStackCommand
 type UpdateOpenStackCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	OpenStackUser NullableString `json:"openStackUser,omitempty"`
-	OpenStackPassword NullableString `json:"openStackPassword,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	OpenStackUser        NullableString `json:"openStackUser,omitempty"`
+	OpenStackPassword    NullableString `json:"openStackPassword,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -110,6 +110,7 @@ func (o *UpdateOpenStackCommand) HasName() bool {
 func (o *UpdateOpenStackCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UpdateOpenStackCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -152,6 +153,7 @@ func (o *UpdateOpenStackCommand) HasOpenStackUser() bool {
 func (o *UpdateOpenStackCommand) SetOpenStackUser(v string) {
 	o.OpenStackUser.Set(&v)
 }
+
 // SetOpenStackUserNil sets the value for OpenStackUser to be an explicit nil
 func (o *UpdateOpenStackCommand) SetOpenStackUserNil() {
 	o.OpenStackUser.Set(nil)
@@ -194,6 +196,7 @@ func (o *UpdateOpenStackCommand) HasOpenStackPassword() bool {
 func (o *UpdateOpenStackCommand) SetOpenStackPassword(v string) {
 	o.OpenStackPassword.Set(&v)
 }
+
 // SetOpenStackPasswordNil sets the value for OpenStackPassword to be an explicit nil
 func (o *UpdateOpenStackCommand) SetOpenStackPasswordNil() {
 	o.OpenStackPassword.Set(nil)
@@ -205,7 +208,7 @@ func (o *UpdateOpenStackCommand) UnsetOpenStackPassword() {
 }
 
 func (o UpdateOpenStackCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -293,5 +296,3 @@ func (v *NullableUpdateOpenStackCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

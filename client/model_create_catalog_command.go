@@ -20,9 +20,9 @@ var _ MappedNullable = &CreateCatalogCommand{}
 
 // CreateCatalogCommand struct for CreateCatalogCommand
 type CreateCatalogCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	Description NullableString `json:"description,omitempty"`
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Description          NullableString `json:"description,omitempty"`
+	OrganizationId       NullableInt32  `json:"organizationId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,6 +77,7 @@ func (o *CreateCatalogCommand) HasName() bool {
 func (o *CreateCatalogCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateCatalogCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -119,6 +120,7 @@ func (o *CreateCatalogCommand) HasDescription() bool {
 func (o *CreateCatalogCommand) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *CreateCatalogCommand) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -161,6 +163,7 @@ func (o *CreateCatalogCommand) HasOrganizationId() bool {
 func (o *CreateCatalogCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
+
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateCatalogCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -172,7 +175,7 @@ func (o *CreateCatalogCommand) UnsetOrganizationId() {
 }
 
 func (o CreateCatalogCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -256,5 +259,3 @@ func (v *NullableCreateCatalogCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

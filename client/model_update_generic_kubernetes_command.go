@@ -20,8 +20,8 @@ var _ MappedNullable = &UpdateGenericKubernetesCommand{}
 
 // UpdateGenericKubernetesCommand struct for UpdateGenericKubernetesCommand
 type UpdateGenericKubernetesCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,6 +108,7 @@ func (o *UpdateGenericKubernetesCommand) HasName() bool {
 func (o *UpdateGenericKubernetesCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UpdateGenericKubernetesCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -119,7 +120,7 @@ func (o *UpdateGenericKubernetesCommand) UnsetName() {
 }
 
 func (o UpdateGenericKubernetesCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -199,5 +200,3 @@ func (v *NullableUpdateGenericKubernetesCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

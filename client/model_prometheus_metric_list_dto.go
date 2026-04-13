@@ -20,8 +20,8 @@ var _ MappedNullable = &PrometheusMetricListDto{}
 
 // PrometheusMetricListDto struct for PrometheusMetricListDto
 type PrometheusMetricListDto struct {
-	Status NullableString `json:"status,omitempty"`
-	Data *MetricData `json:"data,omitempty"`
+	Status               NullableString `json:"status,omitempty"`
+	Data                 *MetricData    `json:"data,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,6 +76,7 @@ func (o *PrometheusMetricListDto) HasStatus() bool {
 func (o *PrometheusMetricListDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
+
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *PrometheusMetricListDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -119,7 +120,7 @@ func (o *PrometheusMetricListDto) SetData(v MetricData) {
 }
 
 func (o PrometheusMetricListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -199,5 +200,3 @@ func (v *NullablePrometheusMetricListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

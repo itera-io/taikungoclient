@@ -20,9 +20,9 @@ var _ MappedNullable = &AwsEksClusterDto{}
 
 // AwsEksClusterDto struct for AwsEksClusterDto
 type AwsEksClusterDto struct {
-	Token NullableString `json:"token,omitempty"`
-	TargetUrl NullableString `json:"targetUrl,omitempty"`
-	Certificate NullableString `json:"certificate,omitempty"`
+	Token                NullableString `json:"token,omitempty"`
+	TargetUrl            NullableString `json:"targetUrl,omitempty"`
+	Certificate          NullableString `json:"certificate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,6 +77,7 @@ func (o *AwsEksClusterDto) HasToken() bool {
 func (o *AwsEksClusterDto) SetToken(v string) {
 	o.Token.Set(&v)
 }
+
 // SetTokenNil sets the value for Token to be an explicit nil
 func (o *AwsEksClusterDto) SetTokenNil() {
 	o.Token.Set(nil)
@@ -119,6 +120,7 @@ func (o *AwsEksClusterDto) HasTargetUrl() bool {
 func (o *AwsEksClusterDto) SetTargetUrl(v string) {
 	o.TargetUrl.Set(&v)
 }
+
 // SetTargetUrlNil sets the value for TargetUrl to be an explicit nil
 func (o *AwsEksClusterDto) SetTargetUrlNil() {
 	o.TargetUrl.Set(nil)
@@ -161,6 +163,7 @@ func (o *AwsEksClusterDto) HasCertificate() bool {
 func (o *AwsEksClusterDto) SetCertificate(v string) {
 	o.Certificate.Set(&v)
 }
+
 // SetCertificateNil sets the value for Certificate to be an explicit nil
 func (o *AwsEksClusterDto) SetCertificateNil() {
 	o.Certificate.Set(nil)
@@ -172,7 +175,7 @@ func (o *AwsEksClusterDto) UnsetCertificate() {
 }
 
 func (o AwsEksClusterDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -256,5 +259,3 @@ func (v *NullableAwsEksClusterDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

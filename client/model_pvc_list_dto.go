@@ -20,14 +20,14 @@ var _ MappedNullable = &PvcListDto{}
 
 // PvcListDto struct for PvcListDto
 type PvcListDto struct {
-	Name NullableString `json:"name,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	Status NullableString `json:"status,omitempty"`
-	Volume NullableString `json:"volume,omitempty"`
-	Capacity NullableString `json:"capacity,omitempty"`
-	AccessModes NullableString `json:"accessModes,omitempty"`
-	StorageClass NullableString `json:"storageClass,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Namespace            NullableString `json:"namespace,omitempty"`
+	Status               NullableString `json:"status,omitempty"`
+	Volume               NullableString `json:"volume,omitempty"`
+	Capacity             NullableString `json:"capacity,omitempty"`
+	AccessModes          NullableString `json:"accessModes,omitempty"`
+	StorageClass         NullableString `json:"storageClass,omitempty"`
+	CreatedAt            NullableString `json:"createdAt,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -82,6 +82,7 @@ func (o *PvcListDto) HasName() bool {
 func (o *PvcListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PvcListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -124,6 +125,7 @@ func (o *PvcListDto) HasNamespace() bool {
 func (o *PvcListDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
+
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *PvcListDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -166,6 +168,7 @@ func (o *PvcListDto) HasStatus() bool {
 func (o *PvcListDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
+
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *PvcListDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -208,6 +211,7 @@ func (o *PvcListDto) HasVolume() bool {
 func (o *PvcListDto) SetVolume(v string) {
 	o.Volume.Set(&v)
 }
+
 // SetVolumeNil sets the value for Volume to be an explicit nil
 func (o *PvcListDto) SetVolumeNil() {
 	o.Volume.Set(nil)
@@ -250,6 +254,7 @@ func (o *PvcListDto) HasCapacity() bool {
 func (o *PvcListDto) SetCapacity(v string) {
 	o.Capacity.Set(&v)
 }
+
 // SetCapacityNil sets the value for Capacity to be an explicit nil
 func (o *PvcListDto) SetCapacityNil() {
 	o.Capacity.Set(nil)
@@ -292,6 +297,7 @@ func (o *PvcListDto) HasAccessModes() bool {
 func (o *PvcListDto) SetAccessModes(v string) {
 	o.AccessModes.Set(&v)
 }
+
 // SetAccessModesNil sets the value for AccessModes to be an explicit nil
 func (o *PvcListDto) SetAccessModesNil() {
 	o.AccessModes.Set(nil)
@@ -334,6 +340,7 @@ func (o *PvcListDto) HasStorageClass() bool {
 func (o *PvcListDto) SetStorageClass(v string) {
 	o.StorageClass.Set(&v)
 }
+
 // SetStorageClassNil sets the value for StorageClass to be an explicit nil
 func (o *PvcListDto) SetStorageClassNil() {
 	o.StorageClass.Set(nil)
@@ -376,6 +383,7 @@ func (o *PvcListDto) HasCreatedAt() bool {
 func (o *PvcListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
+
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *PvcListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -387,7 +395,7 @@ func (o *PvcListDto) UnsetCreatedAt() {
 }
 
 func (o PvcListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -491,5 +499,3 @@ func (v *NullablePvcListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

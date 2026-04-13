@@ -21,17 +21,17 @@ var _ MappedNullable = &KubernetesQuotaListDto{}
 
 // KubernetesQuotaListDto struct for KubernetesQuotaListDto
 type KubernetesQuotaListDto struct {
-	SumOfCpu NullableFloat64 `json:"sumOfCpu"`
-	SumOfCpuUsage float64 `json:"sumOfCpuUsage"`
-	SumOfCpuRequests NullableFloat64 `json:"sumOfCpuRequests"`
-	SumOfCpuRequestsUsage float64 `json:"sumOfCpuRequestsUsage"`
-	SumOfRamInGb NullableFloat64 `json:"sumOfRamInGb"`
-	SumOfRamUsage float64 `json:"sumOfRamUsage"`
-	SumOfRamRequestsInGb NullableFloat64 `json:"sumOfRamRequestsInGb"`
-	SumOfRamRequestsUsage float64 `json:"sumOfRamRequestsUsage"`
-	PodsCapacity NullableInt32 `json:"podsCapacity"`
-	PodsTotalCount int32 `json:"podsTotalCount"`
-	AdditionalProperties map[string]interface{}
+	SumOfCpu              NullableFloat64 `json:"sumOfCpu"`
+	SumOfCpuUsage         float64         `json:"sumOfCpuUsage"`
+	SumOfCpuRequests      NullableFloat64 `json:"sumOfCpuRequests"`
+	SumOfCpuRequestsUsage float64         `json:"sumOfCpuRequestsUsage"`
+	SumOfRamInGb          NullableFloat64 `json:"sumOfRamInGb"`
+	SumOfRamUsage         float64         `json:"sumOfRamUsage"`
+	SumOfRamRequestsInGb  NullableFloat64 `json:"sumOfRamRequestsInGb"`
+	SumOfRamRequestsUsage float64         `json:"sumOfRamRequestsUsage"`
+	PodsCapacity          NullableInt32   `json:"podsCapacity"`
+	PodsTotalCount        int32           `json:"podsTotalCount"`
+	AdditionalProperties  map[string]interface{}
 }
 
 type _KubernetesQuotaListDto KubernetesQuotaListDto
@@ -314,7 +314,7 @@ func (o *KubernetesQuotaListDto) SetPodsTotalCount(v int32) {
 }
 
 func (o KubernetesQuotaListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -363,10 +363,10 @@ func (o *KubernetesQuotaListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -436,5 +436,3 @@ func (v *NullableKubernetesQuotaListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

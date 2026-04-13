@@ -20,8 +20,8 @@ var _ MappedNullable = &LokiResult{}
 
 // LokiResult struct for LokiResult
 type LokiResult struct {
-	Stream *Stream `json:"stream,omitempty"`
-	Values []string `json:"values,omitempty"`
+	Stream               *Stream  `json:"stream,omitempty"`
+	Values               []string `json:"values,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -110,7 +110,7 @@ func (o *LokiResult) SetValues(v []string) {
 }
 
 func (o LokiResult) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -190,5 +190,3 @@ func (v *NullableLokiResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

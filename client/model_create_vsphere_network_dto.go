@@ -20,12 +20,12 @@ var _ MappedNullable = &CreateVsphereNetworkDto{}
 
 // CreateVsphereNetworkDto struct for CreateVsphereNetworkDto
 type CreateVsphereNetworkDto struct {
-	Name NullableString `json:"name,omitempty"`
-	Gateway NullableString `json:"gateway,omitempty"`
-	IpAddress NullableString `json:"ipAddress,omitempty"`
-	NetMask *int32 `json:"netMask,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Gateway              NullableString `json:"gateway,omitempty"`
+	IpAddress            NullableString `json:"ipAddress,omitempty"`
+	NetMask              *int32         `json:"netMask,omitempty"`
 	BeginAllocationRange NullableString `json:"beginAllocationRange,omitempty"`
-	EndAllocationRange NullableString `json:"endAllocationRange,omitempty"`
+	EndAllocationRange   NullableString `json:"endAllocationRange,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -80,6 +80,7 @@ func (o *CreateVsphereNetworkDto) HasName() bool {
 func (o *CreateVsphereNetworkDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateVsphereNetworkDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -122,6 +123,7 @@ func (o *CreateVsphereNetworkDto) HasGateway() bool {
 func (o *CreateVsphereNetworkDto) SetGateway(v string) {
 	o.Gateway.Set(&v)
 }
+
 // SetGatewayNil sets the value for Gateway to be an explicit nil
 func (o *CreateVsphereNetworkDto) SetGatewayNil() {
 	o.Gateway.Set(nil)
@@ -164,6 +166,7 @@ func (o *CreateVsphereNetworkDto) HasIpAddress() bool {
 func (o *CreateVsphereNetworkDto) SetIpAddress(v string) {
 	o.IpAddress.Set(&v)
 }
+
 // SetIpAddressNil sets the value for IpAddress to be an explicit nil
 func (o *CreateVsphereNetworkDto) SetIpAddressNil() {
 	o.IpAddress.Set(nil)
@@ -238,6 +241,7 @@ func (o *CreateVsphereNetworkDto) HasBeginAllocationRange() bool {
 func (o *CreateVsphereNetworkDto) SetBeginAllocationRange(v string) {
 	o.BeginAllocationRange.Set(&v)
 }
+
 // SetBeginAllocationRangeNil sets the value for BeginAllocationRange to be an explicit nil
 func (o *CreateVsphereNetworkDto) SetBeginAllocationRangeNil() {
 	o.BeginAllocationRange.Set(nil)
@@ -280,6 +284,7 @@ func (o *CreateVsphereNetworkDto) HasEndAllocationRange() bool {
 func (o *CreateVsphereNetworkDto) SetEndAllocationRange(v string) {
 	o.EndAllocationRange.Set(&v)
 }
+
 // SetEndAllocationRangeNil sets the value for EndAllocationRange to be an explicit nil
 func (o *CreateVsphereNetworkDto) SetEndAllocationRangeNil() {
 	o.EndAllocationRange.Set(nil)
@@ -291,7 +296,7 @@ func (o *CreateVsphereNetworkDto) UnsetEndAllocationRange() {
 }
 
 func (o CreateVsphereNetworkDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -387,5 +392,3 @@ func (v *NullableCreateVsphereNetworkDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

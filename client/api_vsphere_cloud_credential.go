@@ -19,13 +19,12 @@ import (
 	"net/url"
 )
 
-
 // VsphereCloudCredentialAPIService VsphereCloudCredentialAPI service
 type VsphereCloudCredentialAPIService service
 
 type ApiVsphereCreateRequest struct {
-	ctx context.Context
-	ApiService *VsphereCloudCredentialAPIService
+	ctx                  context.Context
+	ApiService           *VsphereCloudCredentialAPIService
 	createVsphereCommand *CreateVsphereCommand
 }
 
@@ -41,24 +40,25 @@ func (r ApiVsphereCreateRequest) Execute() (*ApiResponse, *http.Response, error)
 /*
 VsphereCreate Add Vsphere credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVsphereCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVsphereCreateRequest
 */
 func (a *VsphereCloudCredentialAPIService) VsphereCreate(ctx context.Context) ApiVsphereCreateRequest {
 	return ApiVsphereCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ApiResponse
+//
+//	@return ApiResponse
 func (a *VsphereCloudCredentialAPIService) VsphereCreateExecute(r ApiVsphereCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ApiResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VsphereCloudCredentialAPIService.VsphereCreate")
@@ -134,8 +134,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereCreateExecute(r ApiVsphereCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -145,8 +145,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereCreateExecute(r ApiVsphereCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -156,8 +156,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereCreateExecute(r ApiVsphereCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -167,8 +167,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereCreateExecute(r ApiVsphereCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -178,8 +178,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereCreateExecute(r ApiVsphereCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -189,8 +189,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereCreateExecute(r ApiVsphereCrea
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -208,8 +208,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereCreateExecute(r ApiVsphereCrea
 }
 
 type ApiVsphereDatacenterListRequest struct {
-	ctx context.Context
-	ApiService *VsphereCloudCredentialAPIService
+	ctx                   context.Context
+	ApiService            *VsphereCloudCredentialAPIService
 	datacenterListCommand *DatacenterListCommand
 }
 
@@ -225,24 +225,25 @@ func (r ApiVsphereDatacenterListRequest) Execute() ([]DatacenterSummary, *http.R
 /*
 VsphereDatacenterList Fetch Vsphere datacenter list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVsphereDatacenterListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVsphereDatacenterListRequest
 */
 func (a *VsphereCloudCredentialAPIService) VsphereDatacenterList(ctx context.Context) ApiVsphereDatacenterListRequest {
 	return ApiVsphereDatacenterListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []DatacenterSummary
+//
+//	@return []DatacenterSummary
 func (a *VsphereCloudCredentialAPIService) VsphereDatacenterListExecute(r ApiVsphereDatacenterListRequest) ([]DatacenterSummary, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []DatacenterSummary
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []DatacenterSummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VsphereCloudCredentialAPIService.VsphereDatacenterList")
@@ -318,8 +319,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereDatacenterListExecute(r ApiVsp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -329,8 +330,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereDatacenterListExecute(r ApiVsp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -340,8 +341,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereDatacenterListExecute(r ApiVsp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -351,8 +352,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereDatacenterListExecute(r ApiVsp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -362,8 +363,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereDatacenterListExecute(r ApiVsp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -373,8 +374,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereDatacenterListExecute(r ApiVsp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -392,8 +393,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereDatacenterListExecute(r ApiVsp
 }
 
 type ApiVsphereDatastoreListRequest struct {
-	ctx context.Context
-	ApiService *VsphereCloudCredentialAPIService
+	ctx                  context.Context
+	ApiService           *VsphereCloudCredentialAPIService
 	datastoreListCommand *DatastoreListCommand
 }
 
@@ -409,24 +410,25 @@ func (r ApiVsphereDatastoreListRequest) Execute() ([]DatastoreSummary, *http.Res
 /*
 VsphereDatastoreList Fetch Vsphere datastore list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVsphereDatastoreListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVsphereDatastoreListRequest
 */
 func (a *VsphereCloudCredentialAPIService) VsphereDatastoreList(ctx context.Context) ApiVsphereDatastoreListRequest {
 	return ApiVsphereDatastoreListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []DatastoreSummary
+//
+//	@return []DatastoreSummary
 func (a *VsphereCloudCredentialAPIService) VsphereDatastoreListExecute(r ApiVsphereDatastoreListRequest) ([]DatastoreSummary, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []DatastoreSummary
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []DatastoreSummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VsphereCloudCredentialAPIService.VsphereDatastoreList")
@@ -502,8 +504,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereDatastoreListExecute(r ApiVsph
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -513,8 +515,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereDatastoreListExecute(r ApiVsph
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -524,8 +526,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereDatastoreListExecute(r ApiVsph
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -535,8 +537,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereDatastoreListExecute(r ApiVsph
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -546,8 +548,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereDatastoreListExecute(r ApiVsph
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -557,8 +559,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereDatastoreListExecute(r ApiVsph
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -576,8 +578,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereDatastoreListExecute(r ApiVsph
 }
 
 type ApiVsphereHypervisorListRequest struct {
-	ctx context.Context
-	ApiService *VsphereCloudCredentialAPIService
+	ctx                          context.Context
+	ApiService                   *VsphereCloudCredentialAPIService
 	vsphereHypervisorListCommand *VsphereHypervisorListCommand
 }
 
@@ -593,24 +595,25 @@ func (r ApiVsphereHypervisorListRequest) Execute() ([]ProxmoxHypervisorDto, *htt
 /*
 VsphereHypervisorList Fetch Vsphere hypervisor list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVsphereHypervisorListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVsphereHypervisorListRequest
 */
 func (a *VsphereCloudCredentialAPIService) VsphereHypervisorList(ctx context.Context) ApiVsphereHypervisorListRequest {
 	return ApiVsphereHypervisorListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []ProxmoxHypervisorDto
+//
+//	@return []ProxmoxHypervisorDto
 func (a *VsphereCloudCredentialAPIService) VsphereHypervisorListExecute(r ApiVsphereHypervisorListRequest) ([]ProxmoxHypervisorDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []ProxmoxHypervisorDto
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []ProxmoxHypervisorDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VsphereCloudCredentialAPIService.VsphereHypervisorList")
@@ -686,8 +689,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereHypervisorListExecute(r ApiVsp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -697,8 +700,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereHypervisorListExecute(r ApiVsp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -708,8 +711,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereHypervisorListExecute(r ApiVsp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -719,8 +722,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereHypervisorListExecute(r ApiVsp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -730,8 +733,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereHypervisorListExecute(r ApiVsp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -741,8 +744,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereHypervisorListExecute(r ApiVsp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -760,17 +763,17 @@ func (a *VsphereCloudCredentialAPIService) VsphereHypervisorListExecute(r ApiVsp
 }
 
 type ApiVsphereListRequest struct {
-	ctx context.Context
-	ApiService *VsphereCloudCredentialAPIService
-	limit *int32
-	offset *int32
+	ctx            context.Context
+	ApiService     *VsphereCloudCredentialAPIService
+	limit          *int32
+	offset         *int32
 	organizationId *int32
-	sortBy *string
-	sortDirection *string
-	search *string
-	searchId *string
-	accountId *int32
-	id *int32
+	sortBy         *string
+	sortDirection  *string
+	search         *string
+	searchId       *string
+	accountId      *int32
+	id             *int32
 }
 
 func (r ApiVsphereListRequest) Limit(limit int32) ApiVsphereListRequest {
@@ -825,24 +828,25 @@ func (r ApiVsphereListRequest) Execute() (*VsphereList, *http.Response, error) {
 /*
 VsphereList Retrieve list of vsphere cloud credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVsphereListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVsphereListRequest
 */
 func (a *VsphereCloudCredentialAPIService) VsphereList(ctx context.Context) ApiVsphereListRequest {
 	return ApiVsphereListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return VsphereList
+//
+//	@return VsphereList
 func (a *VsphereCloudCredentialAPIService) VsphereListExecute(r ApiVsphereListRequest) (*VsphereList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *VsphereList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *VsphereList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VsphereCloudCredentialAPIService.VsphereList")
@@ -943,8 +947,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereListExecute(r ApiVsphereListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -954,8 +958,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereListExecute(r ApiVsphereListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -965,8 +969,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereListExecute(r ApiVsphereListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -976,8 +980,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereListExecute(r ApiVsphereListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -987,8 +991,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereListExecute(r ApiVsphereListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -998,8 +1002,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereListExecute(r ApiVsphereListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1017,8 +1021,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereListExecute(r ApiVsphereListRe
 }
 
 type ApiVsphereNetworkListRequest struct {
-	ctx context.Context
-	ApiService *VsphereCloudCredentialAPIService
+	ctx                context.Context
+	ApiService         *VsphereCloudCredentialAPIService
 	networkListCommand *NetworkListCommand
 }
 
@@ -1034,24 +1038,25 @@ func (r ApiVsphereNetworkListRequest) Execute() ([]NetworkSummary, *http.Respons
 /*
 VsphereNetworkList Fetch Vsphere network list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVsphereNetworkListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVsphereNetworkListRequest
 */
 func (a *VsphereCloudCredentialAPIService) VsphereNetworkList(ctx context.Context) ApiVsphereNetworkListRequest {
 	return ApiVsphereNetworkListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []NetworkSummary
+//
+//	@return []NetworkSummary
 func (a *VsphereCloudCredentialAPIService) VsphereNetworkListExecute(r ApiVsphereNetworkListRequest) ([]NetworkSummary, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []NetworkSummary
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []NetworkSummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VsphereCloudCredentialAPIService.VsphereNetworkList")
@@ -1127,8 +1132,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereNetworkListExecute(r ApiVspher
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1138,8 +1143,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereNetworkListExecute(r ApiVspher
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1149,8 +1154,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereNetworkListExecute(r ApiVspher
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1160,8 +1165,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereNetworkListExecute(r ApiVspher
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1171,8 +1176,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereNetworkListExecute(r ApiVspher
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1182,8 +1187,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereNetworkListExecute(r ApiVspher
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1201,8 +1206,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereNetworkListExecute(r ApiVspher
 }
 
 type ApiVsphereResourcePoolListRequest struct {
-	ctx context.Context
-	ApiService *VsphereCloudCredentialAPIService
+	ctx                     context.Context
+	ApiService              *VsphereCloudCredentialAPIService
 	resourcePoolListCommand *ResourcePoolListCommand
 }
 
@@ -1218,24 +1223,25 @@ func (r ApiVsphereResourcePoolListRequest) Execute() ([]ResourcePoolSummary, *ht
 /*
 VsphereResourcePoolList Fetch Vsphere resource pool list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVsphereResourcePoolListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVsphereResourcePoolListRequest
 */
 func (a *VsphereCloudCredentialAPIService) VsphereResourcePoolList(ctx context.Context) ApiVsphereResourcePoolListRequest {
 	return ApiVsphereResourcePoolListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []ResourcePoolSummary
+//
+//	@return []ResourcePoolSummary
 func (a *VsphereCloudCredentialAPIService) VsphereResourcePoolListExecute(r ApiVsphereResourcePoolListRequest) ([]ResourcePoolSummary, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []ResourcePoolSummary
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []ResourcePoolSummary
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VsphereCloudCredentialAPIService.VsphereResourcePoolList")
@@ -1311,8 +1317,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereResourcePoolListExecute(r ApiV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1322,8 +1328,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereResourcePoolListExecute(r ApiV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1333,8 +1339,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereResourcePoolListExecute(r ApiV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1344,8 +1350,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereResourcePoolListExecute(r ApiV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1355,8 +1361,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereResourcePoolListExecute(r ApiV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1366,8 +1372,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereResourcePoolListExecute(r ApiV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1385,8 +1391,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereResourcePoolListExecute(r ApiV
 }
 
 type ApiVsphereUpdateRequest struct {
-	ctx context.Context
-	ApiService *VsphereCloudCredentialAPIService
+	ctx                  context.Context
+	ApiService           *VsphereCloudCredentialAPIService
 	updateVsphereCommand *UpdateVsphereCommand
 }
 
@@ -1402,22 +1408,22 @@ func (r ApiVsphereUpdateRequest) Execute() (*http.Response, error) {
 /*
 VsphereUpdate Update Vsphere credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVsphereUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVsphereUpdateRequest
 */
 func (a *VsphereCloudCredentialAPIService) VsphereUpdate(ctx context.Context) ApiVsphereUpdateRequest {
 	return ApiVsphereUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *VsphereCloudCredentialAPIService) VsphereUpdateExecute(r ApiVsphereUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VsphereCloudCredentialAPIService.VsphereUpdate")
@@ -1493,8 +1499,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereUpdateExecute(r ApiVsphereUpda
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1504,8 +1510,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereUpdateExecute(r ApiVsphereUpda
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1515,8 +1521,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereUpdateExecute(r ApiVsphereUpda
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1526,8 +1532,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereUpdateExecute(r ApiVsphereUpda
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1537,8 +1543,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereUpdateExecute(r ApiVsphereUpda
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1548,8 +1554,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereUpdateExecute(r ApiVsphereUpda
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1558,8 +1564,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereUpdateExecute(r ApiVsphereUpda
 }
 
 type ApiVsphereUpdateVsphereHypervisorsRequest struct {
-	ctx context.Context
-	ApiService *VsphereCloudCredentialAPIService
+	ctx                             context.Context
+	ApiService                      *VsphereCloudCredentialAPIService
 	updateVsphereHypervisorsCommand *UpdateVsphereHypervisorsCommand
 }
 
@@ -1575,22 +1581,22 @@ func (r ApiVsphereUpdateVsphereHypervisorsRequest) Execute() (*http.Response, er
 /*
 VsphereUpdateVsphereHypervisors Update Vsphere credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVsphereUpdateVsphereHypervisorsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVsphereUpdateVsphereHypervisorsRequest
 */
 func (a *VsphereCloudCredentialAPIService) VsphereUpdateVsphereHypervisors(ctx context.Context) ApiVsphereUpdateVsphereHypervisorsRequest {
 	return ApiVsphereUpdateVsphereHypervisorsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *VsphereCloudCredentialAPIService) VsphereUpdateVsphereHypervisorsExecute(r ApiVsphereUpdateVsphereHypervisorsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VsphereCloudCredentialAPIService.VsphereUpdateVsphereHypervisors")
@@ -1666,8 +1672,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereUpdateVsphereHypervisorsExecut
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1677,8 +1683,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereUpdateVsphereHypervisorsExecut
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1688,8 +1694,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereUpdateVsphereHypervisorsExecut
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1699,8 +1705,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereUpdateVsphereHypervisorsExecut
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1710,8 +1716,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereUpdateVsphereHypervisorsExecut
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1721,8 +1727,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereUpdateVsphereHypervisorsExecut
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1731,8 +1737,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereUpdateVsphereHypervisorsExecut
 }
 
 type ApiVsphereValidateRequest struct {
-	ctx context.Context
-	ApiService *VsphereCloudCredentialAPIService
+	ctx                    context.Context
+	ApiService             *VsphereCloudCredentialAPIService
 	validateVsphereCommand *ValidateVsphereCommand
 }
 
@@ -1748,22 +1754,22 @@ func (r ApiVsphereValidateRequest) Execute() (*http.Response, error) {
 /*
 VsphereValidate Validate Vsphere credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVsphereValidateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVsphereValidateRequest
 */
 func (a *VsphereCloudCredentialAPIService) VsphereValidate(ctx context.Context) ApiVsphereValidateRequest {
 	return ApiVsphereValidateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *VsphereCloudCredentialAPIService) VsphereValidateExecute(r ApiVsphereValidateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VsphereCloudCredentialAPIService.VsphereValidate")
@@ -1839,8 +1845,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereValidateExecute(r ApiVsphereVa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1850,8 +1856,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereValidateExecute(r ApiVsphereVa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1861,8 +1867,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereValidateExecute(r ApiVsphereVa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1872,8 +1878,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereValidateExecute(r ApiVsphereVa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1883,8 +1889,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereValidateExecute(r ApiVsphereVa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1894,8 +1900,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereValidateExecute(r ApiVsphereVa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1904,8 +1910,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereValidateExecute(r ApiVsphereVa
 }
 
 type ApiVsphereVmTemplateListRequest struct {
-	ctx context.Context
-	ApiService *VsphereCloudCredentialAPIService
+	ctx                          context.Context
+	ApiService                   *VsphereCloudCredentialAPIService
 	vsphereVmTemplateListCommand *VsphereVmTemplateListCommand
 }
 
@@ -1921,24 +1927,25 @@ func (r ApiVsphereVmTemplateListRequest) Execute() ([]VsphereVmTemplateData, *ht
 /*
 VsphereVmTemplateList Fetch Vsphere vm template list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVsphereVmTemplateListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVsphereVmTemplateListRequest
 */
 func (a *VsphereCloudCredentialAPIService) VsphereVmTemplateList(ctx context.Context) ApiVsphereVmTemplateListRequest {
 	return ApiVsphereVmTemplateListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []VsphereVmTemplateData
+//
+//	@return []VsphereVmTemplateData
 func (a *VsphereCloudCredentialAPIService) VsphereVmTemplateListExecute(r ApiVsphereVmTemplateListRequest) ([]VsphereVmTemplateData, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []VsphereVmTemplateData
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []VsphereVmTemplateData
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VsphereCloudCredentialAPIService.VsphereVmTemplateList")
@@ -2014,8 +2021,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereVmTemplateListExecute(r ApiVsp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2025,8 +2032,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereVmTemplateListExecute(r ApiVsp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2036,8 +2043,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereVmTemplateListExecute(r ApiVsp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2047,8 +2054,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereVmTemplateListExecute(r ApiVsp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2058,8 +2065,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereVmTemplateListExecute(r ApiVsp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2069,8 +2076,8 @@ func (a *VsphereCloudCredentialAPIService) VsphereVmTemplateListExecute(r ApiVsp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

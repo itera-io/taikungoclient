@@ -20,7 +20,7 @@ var _ MappedNullable = &DeploymentEnableMonitoringCommand{}
 
 // DeploymentEnableMonitoringCommand struct for DeploymentEnableMonitoringCommand
 type DeploymentEnableMonitoringCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
+	ProjectId            *int32 `json:"projectId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,7 @@ func (o *DeploymentEnableMonitoringCommand) SetProjectId(v int32) {
 }
 
 func (o DeploymentEnableMonitoringCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -152,5 +152,3 @@ func (v *NullableDeploymentEnableMonitoringCommand) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

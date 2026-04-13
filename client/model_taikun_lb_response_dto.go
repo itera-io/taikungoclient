@@ -21,18 +21,18 @@ var _ MappedNullable = &TaikunLbResponseDto{}
 
 // TaikunLbResponseDto struct for TaikunLbResponseDto
 type TaikunLbResponseDto struct {
-	Id int32 `json:"id"`
-	PublicIp NullableString `json:"publicIp"`
-	VirtualLbIpFirst NullableString `json:"virtualLbIpFirst"`
-	VirtualLbIpSecond NullableString `json:"virtualLbIpSecond"`
-	PrivateIpFirst NullableString `json:"privateIpFirst"`
-	PrivateIpSecond NullableString `json:"privateIpSecond"`
-	VirtualRouterId NullableString `json:"virtualRouterId"`
-	HypervisorFirst NullableString `json:"hypervisorFirst"`
-	HypervisorSecond NullableString `json:"hypervisorSecond"`
-	SvcName NullableString `json:"svcName"`
-	SvcNamespace NullableString `json:"svcNamespace"`
-	ProjectName NullableString `json:"projectName"`
+	Id                   int32          `json:"id"`
+	PublicIp             NullableString `json:"publicIp"`
+	VirtualLbIpFirst     NullableString `json:"virtualLbIpFirst"`
+	VirtualLbIpSecond    NullableString `json:"virtualLbIpSecond"`
+	PrivateIpFirst       NullableString `json:"privateIpFirst"`
+	PrivateIpSecond      NullableString `json:"privateIpSecond"`
+	VirtualRouterId      NullableString `json:"virtualRouterId"`
+	HypervisorFirst      NullableString `json:"hypervisorFirst"`
+	HypervisorSecond     NullableString `json:"hypervisorSecond"`
+	SvcName              NullableString `json:"svcName"`
+	SvcNamespace         NullableString `json:"svcNamespace"`
+	ProjectName          NullableString `json:"projectName"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -378,7 +378,7 @@ func (o *TaikunLbResponseDto) SetProjectName(v string) {
 }
 
 func (o TaikunLbResponseDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -431,10 +431,10 @@ func (o *TaikunLbResponseDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -506,5 +506,3 @@ func (v *NullableTaikunLbResponseDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

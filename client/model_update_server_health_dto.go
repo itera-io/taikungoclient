@@ -20,8 +20,8 @@ var _ MappedNullable = &UpdateServerHealthDto{}
 
 // UpdateServerHealthDto struct for UpdateServerHealthDto
 type UpdateServerHealthDto struct {
-	IpAddress NullableString `json:"ipAddress,omitempty"`
-	ServerHealth NullableString `json:"serverHealth,omitempty"`
+	IpAddress            NullableString `json:"ipAddress,omitempty"`
+	ServerHealth         NullableString `json:"serverHealth,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,6 +76,7 @@ func (o *UpdateServerHealthDto) HasIpAddress() bool {
 func (o *UpdateServerHealthDto) SetIpAddress(v string) {
 	o.IpAddress.Set(&v)
 }
+
 // SetIpAddressNil sets the value for IpAddress to be an explicit nil
 func (o *UpdateServerHealthDto) SetIpAddressNil() {
 	o.IpAddress.Set(nil)
@@ -118,6 +119,7 @@ func (o *UpdateServerHealthDto) HasServerHealth() bool {
 func (o *UpdateServerHealthDto) SetServerHealth(v string) {
 	o.ServerHealth.Set(&v)
 }
+
 // SetServerHealthNil sets the value for ServerHealth to be an explicit nil
 func (o *UpdateServerHealthDto) SetServerHealthNil() {
 	o.ServerHealth.Set(nil)
@@ -129,7 +131,7 @@ func (o *UpdateServerHealthDto) UnsetServerHealth() {
 }
 
 func (o UpdateServerHealthDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -209,5 +211,3 @@ func (v *NullableUpdateServerHealthDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

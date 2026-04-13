@@ -20,8 +20,8 @@ var _ MappedNullable = &UpdateVsphereHypervisorsCommand{}
 
 // UpdateVsphereHypervisorsCommand struct for UpdateVsphereHypervisorsCommand
 type UpdateVsphereHypervisorsCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Hypervisors []string `json:"hypervisors,omitempty"`
+	Id                   *int32   `json:"id,omitempty"`
+	Hypervisors          []string `json:"hypervisors,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -110,7 +110,7 @@ func (o *UpdateVsphereHypervisorsCommand) SetHypervisors(v []string) {
 }
 
 func (o UpdateVsphereHypervisorsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -190,5 +190,3 @@ func (v *NullableUpdateVsphereHypervisorsCommand) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

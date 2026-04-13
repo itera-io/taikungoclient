@@ -21,11 +21,11 @@ var _ MappedNullable = &AccountListCursorPaginatedResponse{}
 
 // AccountListCursorPaginatedResponse struct for AccountListCursorPaginatedResponse
 type AccountListCursorPaginatedResponse struct {
-	Data []AccountList `json:"data"`
-	Limit int32 `json:"limit"`
-	HasMore bool `json:"hasMore"`
-	TotalCount int64 `json:"totalCount"`
-	NextCursor NullableInt32 `json:"nextCursor,omitempty"`
+	Data                 []AccountList `json:"data"`
+	Limit                int32         `json:"limit"`
+	HasMore              bool          `json:"hasMore"`
+	TotalCount           int64         `json:"totalCount"`
+	NextCursor           NullableInt32 `json:"nextCursor,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -182,6 +182,7 @@ func (o *AccountListCursorPaginatedResponse) HasNextCursor() bool {
 func (o *AccountListCursorPaginatedResponse) SetNextCursor(v int32) {
 	o.NextCursor.Set(&v)
 }
+
 // SetNextCursorNil sets the value for NextCursor to be an explicit nil
 func (o *AccountListCursorPaginatedResponse) SetNextCursorNil() {
 	o.NextCursor.Set(nil)
@@ -193,7 +194,7 @@ func (o *AccountListCursorPaginatedResponse) UnsetNextCursor() {
 }
 
 func (o AccountListCursorPaginatedResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -235,10 +236,10 @@ func (o *AccountListCursorPaginatedResponse) UnmarshalJSON(data []byte) (err err
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -303,5 +304,3 @@ func (v *NullableAccountListCursorPaginatedResponse) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

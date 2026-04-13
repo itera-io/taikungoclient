@@ -21,8 +21,8 @@ var _ MappedNullable = &ServersListForDetails{}
 
 // ServersListForDetails struct for ServersListForDetails
 type ServersListForDetails struct {
-	Data []ServerListDto `json:"data"`
-	Project ProjectDetailsForServersDto `json:"project"`
+	Data                 []ServerListDto             `json:"data"`
+	Project              ProjectDetailsForServersDto `json:"project"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -96,7 +96,7 @@ func (o *ServersListForDetails) SetProject(v ProjectDetailsForServersDto) {
 }
 
 func (o ServersListForDetails) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -129,10 +129,10 @@ func (o *ServersListForDetails) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -194,5 +194,3 @@ func (v *NullableServersListForDetails) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

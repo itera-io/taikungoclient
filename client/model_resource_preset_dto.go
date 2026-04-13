@@ -21,11 +21,11 @@ var _ MappedNullable = &ResourcePresetDto{}
 
 // ResourcePresetDto struct for ResourcePresetDto
 type ResourcePresetDto struct {
-	Name NullableString `json:"name"`
-	Cpu CpuLimitsDto `json:"cpu"`
-	Ram RamLimitsDto `json:"ram"`
-	EphemeralStorage EphemeralStorageLimitsDto `json:"ephemeralStorage"`
-	WorkloadResources WorkloadResourceLimitsDto `json:"workloadResources"`
+	Name                 NullableString            `json:"name"`
+	Cpu                  CpuLimitsDto              `json:"cpu"`
+	Ram                  RamLimitsDto              `json:"ram"`
+	EphemeralStorage     EphemeralStorageLimitsDto `json:"ephemeralStorage"`
+	WorkloadResources    WorkloadResourceLimitsDto `json:"workloadResources"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -176,7 +176,7 @@ func (o *ResourcePresetDto) SetWorkloadResources(v WorkloadResourceLimitsDto) {
 }
 
 func (o ResourcePresetDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -215,10 +215,10 @@ func (o *ResourcePresetDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -283,5 +283,3 @@ func (v *NullableResourcePresetDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

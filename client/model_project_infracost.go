@@ -20,13 +20,13 @@ var _ MappedNullable = &ProjectInfracost{}
 
 // ProjectInfracost struct for ProjectInfracost
 type ProjectInfracost struct {
-	Name NullableString `json:"name,omitempty"`
-	DisplayName NullableString `json:"displayName,omitempty"`
-	Metadata *ProjectMetadata `json:"metadata,omitempty"`
-	PastBreakdown *Breakdown `json:"pastBreakdown,omitempty"`
-	Breakdown *Breakdown `json:"breakdown,omitempty"`
-	Diff *Diff `json:"diff,omitempty"`
-	Summary *Summary `json:"summary,omitempty"`
+	Name                 NullableString   `json:"name,omitempty"`
+	DisplayName          NullableString   `json:"displayName,omitempty"`
+	Metadata             *ProjectMetadata `json:"metadata,omitempty"`
+	PastBreakdown        *Breakdown       `json:"pastBreakdown,omitempty"`
+	Breakdown            *Breakdown       `json:"breakdown,omitempty"`
+	Diff                 *Diff            `json:"diff,omitempty"`
+	Summary              *Summary         `json:"summary,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -81,6 +81,7 @@ func (o *ProjectInfracost) HasName() bool {
 func (o *ProjectInfracost) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ProjectInfracost) SetNameNil() {
 	o.Name.Set(nil)
@@ -123,6 +124,7 @@ func (o *ProjectInfracost) HasDisplayName() bool {
 func (o *ProjectInfracost) SetDisplayName(v string) {
 	o.DisplayName.Set(&v)
 }
+
 // SetDisplayNameNil sets the value for DisplayName to be an explicit nil
 func (o *ProjectInfracost) SetDisplayNameNil() {
 	o.DisplayName.Set(nil)
@@ -294,7 +296,7 @@ func (o *ProjectInfracost) SetSummary(v Summary) {
 }
 
 func (o ProjectInfracost) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -394,5 +396,3 @@ func (v *NullableProjectInfracost) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -21,9 +21,9 @@ var _ MappedNullable = &ImportedAsCloudCredentialVisibility{}
 
 // ImportedAsCloudCredentialVisibility struct for ImportedAsCloudCredentialVisibility
 type ImportedAsCloudCredentialVisibility struct {
-	Lock ButtonStatusDto `json:"lock"`
-	Unlock ButtonStatusDto `json:"unlock"`
-	AddVCluster ButtonStatusDto `json:"addVCluster"`
+	Lock                 ButtonStatusDto `json:"lock"`
+	Unlock               ButtonStatusDto `json:"unlock"`
+	AddVCluster          ButtonStatusDto `json:"addVCluster"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -122,7 +122,7 @@ func (o *ImportedAsCloudCredentialVisibility) SetAddVCluster(v ButtonStatusDto) 
 }
 
 func (o ImportedAsCloudCredentialVisibility) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -157,10 +157,10 @@ func (o *ImportedAsCloudCredentialVisibility) UnmarshalJSON(data []byte) (err er
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -223,5 +223,3 @@ func (v *NullableImportedAsCloudCredentialVisibility) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -21,30 +21,30 @@ var _ MappedNullable = &ProjectAppDetailsDto{}
 
 // ProjectAppDetailsDto struct for ProjectAppDetailsDto
 type ProjectAppDetailsDto struct {
-	Id int32 `json:"id"`
-	Name string `json:"name"`
-	Namespace string `json:"namespace"`
-	Status EInstanceStatus `json:"status"`
-	Version string `json:"version"`
-	CatalogId int32 `json:"catalogId"`
-	CatalogName string `json:"catalogName"`
-	CatalogAppName string `json:"catalogAppName"`
-	AppRepoName string `json:"appRepoName"`
-	Logo NullableString `json:"logo"`
-	Values string `json:"values"`
-	AutoSync bool `json:"autoSync"`
-	ReleaseNotes NullableString `json:"releaseNotes"`
-	ProjectName string `json:"projectName"`
-	HelmResult string `json:"helmResult"`
-	ProjectId int32 `json:"projectId"`
-	Ttl int32 `json:"ttl"`
-	HasJsonSchema bool `json:"hasJsonSchema"`
-	CatalogAppId int32 `json:"catalogAppId"`
-	PackageId string `json:"packageId"`
-	Logs NullableString `json:"logs"`
-	TaikunLinkUrl NullableString `json:"taikunLinkUrl,omitempty"`
-	TaikunLinkEnabled *bool `json:"taikunLinkEnabled,omitempty"`
-	ProjectAppParams []ProjectAppParamDto `json:"projectAppParams"`
+	Id                   int32                `json:"id"`
+	Name                 string               `json:"name"`
+	Namespace            string               `json:"namespace"`
+	Status               EInstanceStatus      `json:"status"`
+	Version              string               `json:"version"`
+	CatalogId            int32                `json:"catalogId"`
+	CatalogName          string               `json:"catalogName"`
+	CatalogAppName       string               `json:"catalogAppName"`
+	AppRepoName          string               `json:"appRepoName"`
+	Logo                 NullableString       `json:"logo"`
+	Values               string               `json:"values"`
+	AutoSync             bool                 `json:"autoSync"`
+	ReleaseNotes         NullableString       `json:"releaseNotes"`
+	ProjectName          string               `json:"projectName"`
+	HelmResult           string               `json:"helmResult"`
+	ProjectId            int32                `json:"projectId"`
+	Ttl                  int32                `json:"ttl"`
+	HasJsonSchema        bool                 `json:"hasJsonSchema"`
+	CatalogAppId         int32                `json:"catalogAppId"`
+	PackageId            string               `json:"packageId"`
+	Logs                 NullableString       `json:"logs"`
+	TaikunLinkUrl        NullableString       `json:"taikunLinkUrl,omitempty"`
+	TaikunLinkEnabled    *bool                `json:"taikunLinkEnabled,omitempty"`
+	ProjectAppParams     []ProjectAppParamDto `json:"projectAppParams"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -631,6 +631,7 @@ func (o *ProjectAppDetailsDto) HasTaikunLinkUrl() bool {
 func (o *ProjectAppDetailsDto) SetTaikunLinkUrl(v string) {
 	o.TaikunLinkUrl.Set(&v)
 }
+
 // SetTaikunLinkUrlNil sets the value for TaikunLinkUrl to be an explicit nil
 func (o *ProjectAppDetailsDto) SetTaikunLinkUrlNil() {
 	o.TaikunLinkUrl.Set(nil)
@@ -700,7 +701,7 @@ func (o *ProjectAppDetailsDto) SetProjectAppParams(v []ProjectAppParamDto) {
 }
 
 func (o ProjectAppDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -781,10 +782,10 @@ func (o *ProjectAppDetailsDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -868,5 +869,3 @@ func (v *NullableProjectAppDetailsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

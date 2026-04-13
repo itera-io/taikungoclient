@@ -20,13 +20,13 @@ var _ MappedNullable = &PackageAutocompleteDto{}
 
 // PackageAutocompleteDto struct for PackageAutocompleteDto
 type PackageAutocompleteDto struct {
-	Key NullableString `json:"key,omitempty"`
-	Value NullableString `json:"value,omitempty"`
-	Description NullableString `json:"description,omitempty"`
-	Type *ParameterType `json:"type,omitempty"`
-	IsQuestion *bool `json:"isQuestion,omitempty"`
-	Options []string `json:"options,omitempty"`
-	IsTaikunLink *bool `json:"isTaikunLink,omitempty"`
+	Key                  NullableString `json:"key,omitempty"`
+	Value                NullableString `json:"value,omitempty"`
+	Description          NullableString `json:"description,omitempty"`
+	Type                 *ParameterType `json:"type,omitempty"`
+	IsQuestion           *bool          `json:"isQuestion,omitempty"`
+	Options              []string       `json:"options,omitempty"`
+	IsTaikunLink         *bool          `json:"isTaikunLink,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -81,6 +81,7 @@ func (o *PackageAutocompleteDto) HasKey() bool {
 func (o *PackageAutocompleteDto) SetKey(v string) {
 	o.Key.Set(&v)
 }
+
 // SetKeyNil sets the value for Key to be an explicit nil
 func (o *PackageAutocompleteDto) SetKeyNil() {
 	o.Key.Set(nil)
@@ -123,6 +124,7 @@ func (o *PackageAutocompleteDto) HasValue() bool {
 func (o *PackageAutocompleteDto) SetValue(v string) {
 	o.Value.Set(&v)
 }
+
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *PackageAutocompleteDto) SetValueNil() {
 	o.Value.Set(nil)
@@ -165,6 +167,7 @@ func (o *PackageAutocompleteDto) HasDescription() bool {
 func (o *PackageAutocompleteDto) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *PackageAutocompleteDto) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -305,7 +308,7 @@ func (o *PackageAutocompleteDto) SetIsTaikunLink(v bool) {
 }
 
 func (o PackageAutocompleteDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -405,5 +408,3 @@ func (v *NullablePackageAutocompleteDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

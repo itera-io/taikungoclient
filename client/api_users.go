@@ -20,13 +20,12 @@ import (
 	"strings"
 )
 
-
 // UsersAPIService UsersAPI service
 type UsersAPIService service
 
 type ApiUsersChangePasswordRequest struct {
-	ctx context.Context
-	ApiService *UsersAPIService
+	ctx                   context.Context
+	ApiService            *UsersAPIService
 	changePasswordCommand *ChangePasswordCommand
 }
 
@@ -42,22 +41,22 @@ func (r ApiUsersChangePasswordRequest) Execute() (*http.Response, error) {
 /*
 UsersChangePassword Change user password
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUsersChangePasswordRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUsersChangePasswordRequest
 */
 func (a *UsersAPIService) UsersChangePassword(ctx context.Context) ApiUsersChangePasswordRequest {
 	return ApiUsersChangePasswordRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *UsersAPIService) UsersChangePasswordExecute(r ApiUsersChangePasswordRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.UsersChangePassword")
@@ -133,8 +132,8 @@ func (a *UsersAPIService) UsersChangePasswordExecute(r ApiUsersChangePasswordReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -144,8 +143,8 @@ func (a *UsersAPIService) UsersChangePasswordExecute(r ApiUsersChangePasswordReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -155,8 +154,8 @@ func (a *UsersAPIService) UsersChangePasswordExecute(r ApiUsersChangePasswordReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -166,8 +165,8 @@ func (a *UsersAPIService) UsersChangePasswordExecute(r ApiUsersChangePasswordReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -177,8 +176,8 @@ func (a *UsersAPIService) UsersChangePasswordExecute(r ApiUsersChangePasswordReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -188,8 +187,8 @@ func (a *UsersAPIService) UsersChangePasswordExecute(r ApiUsersChangePasswordReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -198,8 +197,8 @@ func (a *UsersAPIService) UsersChangePasswordExecute(r ApiUsersChangePasswordReq
 }
 
 type ApiUsersConfirmEmailRequest struct {
-	ctx context.Context
-	ApiService *UsersAPIService
+	ctx                 context.Context
+	ApiService          *UsersAPIService
 	confirmEmailCommand *ConfirmEmailCommand
 }
 
@@ -215,22 +214,22 @@ func (r ApiUsersConfirmEmailRequest) Execute() (*http.Response, error) {
 /*
 UsersConfirmEmail Confirm user email
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUsersConfirmEmailRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUsersConfirmEmailRequest
 */
 func (a *UsersAPIService) UsersConfirmEmail(ctx context.Context) ApiUsersConfirmEmailRequest {
 	return ApiUsersConfirmEmailRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *UsersAPIService) UsersConfirmEmailExecute(r ApiUsersConfirmEmailRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.UsersConfirmEmail")
@@ -306,8 +305,8 @@ func (a *UsersAPIService) UsersConfirmEmailExecute(r ApiUsersConfirmEmailRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -317,8 +316,8 @@ func (a *UsersAPIService) UsersConfirmEmailExecute(r ApiUsersConfirmEmailRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -328,8 +327,8 @@ func (a *UsersAPIService) UsersConfirmEmailExecute(r ApiUsersConfirmEmailRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -339,8 +338,8 @@ func (a *UsersAPIService) UsersConfirmEmailExecute(r ApiUsersConfirmEmailRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -350,8 +349,8 @@ func (a *UsersAPIService) UsersConfirmEmailExecute(r ApiUsersConfirmEmailRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -361,8 +360,8 @@ func (a *UsersAPIService) UsersConfirmEmailExecute(r ApiUsersConfirmEmailRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -371,8 +370,8 @@ func (a *UsersAPIService) UsersConfirmEmailExecute(r ApiUsersConfirmEmailRequest
 }
 
 type ApiUsersCreateRequest struct {
-	ctx context.Context
-	ApiService *UsersAPIService
+	ctx               context.Context
+	ApiService        *UsersAPIService
 	createUserCommand *CreateUserCommand
 }
 
@@ -388,24 +387,25 @@ func (r ApiUsersCreateRequest) Execute() (*ApiResponse, *http.Response, error) {
 /*
 UsersCreate Create user
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUsersCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUsersCreateRequest
 */
 func (a *UsersAPIService) UsersCreate(ctx context.Context) ApiUsersCreateRequest {
 	return ApiUsersCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ApiResponse
+//
+//	@return ApiResponse
 func (a *UsersAPIService) UsersCreateExecute(r ApiUsersCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ApiResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.UsersCreate")
@@ -481,8 +481,8 @@ func (a *UsersAPIService) UsersCreateExecute(r ApiUsersCreateRequest) (*ApiRespo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -492,8 +492,8 @@ func (a *UsersAPIService) UsersCreateExecute(r ApiUsersCreateRequest) (*ApiRespo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -503,8 +503,8 @@ func (a *UsersAPIService) UsersCreateExecute(r ApiUsersCreateRequest) (*ApiRespo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -514,8 +514,8 @@ func (a *UsersAPIService) UsersCreateExecute(r ApiUsersCreateRequest) (*ApiRespo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -525,8 +525,8 @@ func (a *UsersAPIService) UsersCreateExecute(r ApiUsersCreateRequest) (*ApiRespo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -536,8 +536,8 @@ func (a *UsersAPIService) UsersCreateExecute(r ApiUsersCreateRequest) (*ApiRespo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -555,9 +555,9 @@ func (a *UsersAPIService) UsersCreateExecute(r ApiUsersCreateRequest) (*ApiRespo
 }
 
 type ApiUsersDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *UsersAPIService
-	id string
+	id         string
 }
 
 func (r ApiUsersDeleteRequest) Execute() (*http.Response, error) {
@@ -567,24 +567,24 @@ func (r ApiUsersDeleteRequest) Execute() (*http.Response, error) {
 /*
 UsersDelete Delete user
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiUsersDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiUsersDeleteRequest
 */
 func (a *UsersAPIService) UsersDelete(ctx context.Context, id string) ApiUsersDeleteRequest {
 	return ApiUsersDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *UsersAPIService) UsersDeleteExecute(r ApiUsersDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.UsersDelete")
@@ -659,8 +659,8 @@ func (a *UsersAPIService) UsersDeleteExecute(r ApiUsersDeleteRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -670,8 +670,8 @@ func (a *UsersAPIService) UsersDeleteExecute(r ApiUsersDeleteRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -681,8 +681,8 @@ func (a *UsersAPIService) UsersDeleteExecute(r ApiUsersDeleteRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -692,8 +692,8 @@ func (a *UsersAPIService) UsersDeleteExecute(r ApiUsersDeleteRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -703,8 +703,8 @@ func (a *UsersAPIService) UsersDeleteExecute(r ApiUsersDeleteRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -714,8 +714,8 @@ func (a *UsersAPIService) UsersDeleteExecute(r ApiUsersDeleteRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -724,9 +724,9 @@ func (a *UsersAPIService) UsersDeleteExecute(r ApiUsersDeleteRequest) (*http.Res
 }
 
 type ApiUsersDeleteMyAccountRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *UsersAPIService
-	body *map[string]interface{}
+	body       *map[string]interface{}
 }
 
 func (r ApiUsersDeleteMyAccountRequest) Body(body map[string]interface{}) ApiUsersDeleteMyAccountRequest {
@@ -741,22 +741,22 @@ func (r ApiUsersDeleteMyAccountRequest) Execute() (*http.Response, error) {
 /*
 UsersDeleteMyAccount Delete my account
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUsersDeleteMyAccountRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUsersDeleteMyAccountRequest
 */
 func (a *UsersAPIService) UsersDeleteMyAccount(ctx context.Context) ApiUsersDeleteMyAccountRequest {
 	return ApiUsersDeleteMyAccountRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *UsersAPIService) UsersDeleteMyAccountExecute(r ApiUsersDeleteMyAccountRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.UsersDeleteMyAccount")
@@ -832,8 +832,8 @@ func (a *UsersAPIService) UsersDeleteMyAccountExecute(r ApiUsersDeleteMyAccountR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -843,8 +843,8 @@ func (a *UsersAPIService) UsersDeleteMyAccountExecute(r ApiUsersDeleteMyAccountR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -854,8 +854,8 @@ func (a *UsersAPIService) UsersDeleteMyAccountExecute(r ApiUsersDeleteMyAccountR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -865,8 +865,8 @@ func (a *UsersAPIService) UsersDeleteMyAccountExecute(r ApiUsersDeleteMyAccountR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -876,8 +876,8 @@ func (a *UsersAPIService) UsersDeleteMyAccountExecute(r ApiUsersDeleteMyAccountR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -887,8 +887,8 @@ func (a *UsersAPIService) UsersDeleteMyAccountExecute(r ApiUsersDeleteMyAccountR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -897,8 +897,8 @@ func (a *UsersAPIService) UsersDeleteMyAccountExecute(r ApiUsersDeleteMyAccountR
 }
 
 type ApiUsersDisableRequest struct {
-	ctx context.Context
-	ApiService *UsersAPIService
+	ctx                context.Context
+	ApiService         *UsersAPIService
 	disableUserCommand *DisableUserCommand
 }
 
@@ -914,22 +914,22 @@ func (r ApiUsersDisableRequest) Execute() (*http.Response, error) {
 /*
 UsersDisable Disable user
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUsersDisableRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUsersDisableRequest
 */
 func (a *UsersAPIService) UsersDisable(ctx context.Context) ApiUsersDisableRequest {
 	return ApiUsersDisableRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *UsersAPIService) UsersDisableExecute(r ApiUsersDisableRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.UsersDisable")
@@ -1005,8 +1005,8 @@ func (a *UsersAPIService) UsersDisableExecute(r ApiUsersDisableRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1016,8 +1016,8 @@ func (a *UsersAPIService) UsersDisableExecute(r ApiUsersDisableRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1027,8 +1027,8 @@ func (a *UsersAPIService) UsersDisableExecute(r ApiUsersDisableRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1038,8 +1038,8 @@ func (a *UsersAPIService) UsersDisableExecute(r ApiUsersDisableRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1049,8 +1049,8 @@ func (a *UsersAPIService) UsersDisableExecute(r ApiUsersDisableRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1060,8 +1060,8 @@ func (a *UsersAPIService) UsersDisableExecute(r ApiUsersDisableRequest) (*http.R
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1070,8 +1070,8 @@ func (a *UsersAPIService) UsersDisableExecute(r ApiUsersDisableRequest) (*http.R
 }
 
 type ApiUsersDowngradeRoleRequest struct {
-	ctx context.Context
-	ApiService *UsersAPIService
+	ctx                  context.Context
+	ApiService           *UsersAPIService
 	downgradeUserCommand *DowngradeUserCommand
 }
 
@@ -1087,22 +1087,22 @@ func (r ApiUsersDowngradeRoleRequest) Execute() (*http.Response, error) {
 /*
 UsersDowngradeRole Downgrade user role
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUsersDowngradeRoleRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUsersDowngradeRoleRequest
 */
 func (a *UsersAPIService) UsersDowngradeRole(ctx context.Context) ApiUsersDowngradeRoleRequest {
 	return ApiUsersDowngradeRoleRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *UsersAPIService) UsersDowngradeRoleExecute(r ApiUsersDowngradeRoleRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.UsersDowngradeRole")
@@ -1178,8 +1178,8 @@ func (a *UsersAPIService) UsersDowngradeRoleExecute(r ApiUsersDowngradeRoleReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1189,8 +1189,8 @@ func (a *UsersAPIService) UsersDowngradeRoleExecute(r ApiUsersDowngradeRoleReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1200,8 +1200,8 @@ func (a *UsersAPIService) UsersDowngradeRoleExecute(r ApiUsersDowngradeRoleReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1211,8 +1211,8 @@ func (a *UsersAPIService) UsersDowngradeRoleExecute(r ApiUsersDowngradeRoleReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1222,8 +1222,8 @@ func (a *UsersAPIService) UsersDowngradeRoleExecute(r ApiUsersDowngradeRoleReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1233,8 +1233,8 @@ func (a *UsersAPIService) UsersDowngradeRoleExecute(r ApiUsersDowngradeRoleReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1243,13 +1243,13 @@ func (a *UsersAPIService) UsersDowngradeRoleExecute(r ApiUsersDowngradeRoleReque
 }
 
 type ApiUsersDropdownRequest struct {
-	ctx context.Context
-	ApiService *UsersAPIService
+	ctx            context.Context
+	ApiService     *UsersAPIService
 	organizationId *int32
-	projectId *int32
-	limit *int32
-	offset *int32
-	search *string
+	projectId      *int32
+	limit          *int32
+	offset         *int32
+	search         *string
 }
 
 func (r ApiUsersDropdownRequest) OrganizationId(organizationId int32) ApiUsersDropdownRequest {
@@ -1284,24 +1284,25 @@ func (r ApiUsersDropdownRequest) Execute() (*UserByOrgProjectDropdownList, *http
 /*
 UsersDropdown Retrieve user info
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUsersDropdownRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUsersDropdownRequest
 */
 func (a *UsersAPIService) UsersDropdown(ctx context.Context) ApiUsersDropdownRequest {
 	return ApiUsersDropdownRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return UserByOrgProjectDropdownList
+//
+//	@return UserByOrgProjectDropdownList
 func (a *UsersAPIService) UsersDropdownExecute(r ApiUsersDropdownRequest) (*UserByOrgProjectDropdownList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *UserByOrgProjectDropdownList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserByOrgProjectDropdownList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.UsersDropdown")
@@ -1399,8 +1400,8 @@ func (a *UsersAPIService) UsersDropdownExecute(r ApiUsersDropdownRequest) (*User
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1410,8 +1411,8 @@ func (a *UsersAPIService) UsersDropdownExecute(r ApiUsersDropdownRequest) (*User
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1421,8 +1422,8 @@ func (a *UsersAPIService) UsersDropdownExecute(r ApiUsersDropdownRequest) (*User
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1432,8 +1433,8 @@ func (a *UsersAPIService) UsersDropdownExecute(r ApiUsersDropdownRequest) (*User
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1443,8 +1444,8 @@ func (a *UsersAPIService) UsersDropdownExecute(r ApiUsersDropdownRequest) (*User
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1454,8 +1455,8 @@ func (a *UsersAPIService) UsersDropdownExecute(r ApiUsersDropdownRequest) (*User
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1473,8 +1474,8 @@ func (a *UsersAPIService) UsersDropdownExecute(r ApiUsersDropdownRequest) (*User
 }
 
 type ApiUsersForceToResetPasswordRequest struct {
-	ctx context.Context
-	ApiService *UsersAPIService
+	ctx                         context.Context
+	ApiService                  *UsersAPIService
 	forceToResetPasswordCommand *ForceToResetPasswordCommand
 }
 
@@ -1490,22 +1491,22 @@ func (r ApiUsersForceToResetPasswordRequest) Execute() (*http.Response, error) {
 /*
 UsersForceToResetPassword Force to reset password
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUsersForceToResetPasswordRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUsersForceToResetPasswordRequest
 */
 func (a *UsersAPIService) UsersForceToResetPassword(ctx context.Context) ApiUsersForceToResetPasswordRequest {
 	return ApiUsersForceToResetPasswordRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *UsersAPIService) UsersForceToResetPasswordExecute(r ApiUsersForceToResetPasswordRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.UsersForceToResetPassword")
@@ -1581,8 +1582,8 @@ func (a *UsersAPIService) UsersForceToResetPasswordExecute(r ApiUsersForceToRese
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1592,8 +1593,8 @@ func (a *UsersAPIService) UsersForceToResetPasswordExecute(r ApiUsersForceToRese
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1603,8 +1604,8 @@ func (a *UsersAPIService) UsersForceToResetPasswordExecute(r ApiUsersForceToRese
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1614,8 +1615,8 @@ func (a *UsersAPIService) UsersForceToResetPasswordExecute(r ApiUsersForceToRese
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1625,8 +1626,8 @@ func (a *UsersAPIService) UsersForceToResetPasswordExecute(r ApiUsersForceToRese
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1636,8 +1637,8 @@ func (a *UsersAPIService) UsersForceToResetPasswordExecute(r ApiUsersForceToRese
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1646,8 +1647,8 @@ func (a *UsersAPIService) UsersForceToResetPasswordExecute(r ApiUsersForceToRese
 }
 
 type ApiUsersManageRoleRequest struct {
-	ctx context.Context
-	ApiService *UsersAPIService
+	ctx               context.Context
+	ApiService        *UsersAPIService
 	manageRoleCommand *ManageRoleCommand
 }
 
@@ -1663,22 +1664,22 @@ func (r ApiUsersManageRoleRequest) Execute() (*http.Response, error) {
 /*
 UsersManageRole Manage user role
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUsersManageRoleRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUsersManageRoleRequest
 */
 func (a *UsersAPIService) UsersManageRole(ctx context.Context) ApiUsersManageRoleRequest {
 	return ApiUsersManageRoleRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *UsersAPIService) UsersManageRoleExecute(r ApiUsersManageRoleRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.UsersManageRole")
@@ -1754,8 +1755,8 @@ func (a *UsersAPIService) UsersManageRoleExecute(r ApiUsersManageRoleRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1765,8 +1766,8 @@ func (a *UsersAPIService) UsersManageRoleExecute(r ApiUsersManageRoleRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1776,8 +1777,8 @@ func (a *UsersAPIService) UsersManageRoleExecute(r ApiUsersManageRoleRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1787,8 +1788,8 @@ func (a *UsersAPIService) UsersManageRoleExecute(r ApiUsersManageRoleRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1798,8 +1799,8 @@ func (a *UsersAPIService) UsersManageRoleExecute(r ApiUsersManageRoleRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1809,8 +1810,8 @@ func (a *UsersAPIService) UsersManageRoleExecute(r ApiUsersManageRoleRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1819,8 +1820,8 @@ func (a *UsersAPIService) UsersManageRoleExecute(r ApiUsersManageRoleRequest) (*
 }
 
 type ApiUsersPromoteRoleRequest struct {
-	ctx context.Context
-	ApiService *UsersAPIService
+	ctx                context.Context
+	ApiService         *UsersAPIService
 	promoteUserCommand *PromoteUserCommand
 }
 
@@ -1836,22 +1837,22 @@ func (r ApiUsersPromoteRoleRequest) Execute() (*http.Response, error) {
 /*
 UsersPromoteRole Promote user role
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUsersPromoteRoleRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUsersPromoteRoleRequest
 */
 func (a *UsersAPIService) UsersPromoteRole(ctx context.Context) ApiUsersPromoteRoleRequest {
 	return ApiUsersPromoteRoleRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *UsersAPIService) UsersPromoteRoleExecute(r ApiUsersPromoteRoleRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.UsersPromoteRole")
@@ -1927,8 +1928,8 @@ func (a *UsersAPIService) UsersPromoteRoleExecute(r ApiUsersPromoteRoleRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1938,8 +1939,8 @@ func (a *UsersAPIService) UsersPromoteRoleExecute(r ApiUsersPromoteRoleRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1949,8 +1950,8 @@ func (a *UsersAPIService) UsersPromoteRoleExecute(r ApiUsersPromoteRoleRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1960,8 +1961,8 @@ func (a *UsersAPIService) UsersPromoteRoleExecute(r ApiUsersPromoteRoleRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1971,8 +1972,8 @@ func (a *UsersAPIService) UsersPromoteRoleExecute(r ApiUsersPromoteRoleRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1982,8 +1983,8 @@ func (a *UsersAPIService) UsersPromoteRoleExecute(r ApiUsersPromoteRoleRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1992,8 +1993,8 @@ func (a *UsersAPIService) UsersPromoteRoleExecute(r ApiUsersPromoteRoleRequest) 
 }
 
 type ApiUsersToggleMaintenanceModeRequest struct {
-	ctx context.Context
-	ApiService *UsersAPIService
+	ctx                          context.Context
+	ApiService                   *UsersAPIService
 	toggleMaintenanceModeCommand *ToggleMaintenanceModeCommand
 }
 
@@ -2009,22 +2010,22 @@ func (r ApiUsersToggleMaintenanceModeRequest) Execute() (*http.Response, error) 
 /*
 UsersToggleMaintenanceMode Toggle maintenance mode
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUsersToggleMaintenanceModeRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUsersToggleMaintenanceModeRequest
 */
 func (a *UsersAPIService) UsersToggleMaintenanceMode(ctx context.Context) ApiUsersToggleMaintenanceModeRequest {
 	return ApiUsersToggleMaintenanceModeRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *UsersAPIService) UsersToggleMaintenanceModeExecute(r ApiUsersToggleMaintenanceModeRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.UsersToggleMaintenanceMode")
@@ -2100,8 +2101,8 @@ func (a *UsersAPIService) UsersToggleMaintenanceModeExecute(r ApiUsersToggleMain
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2111,8 +2112,8 @@ func (a *UsersAPIService) UsersToggleMaintenanceModeExecute(r ApiUsersToggleMain
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2122,8 +2123,8 @@ func (a *UsersAPIService) UsersToggleMaintenanceModeExecute(r ApiUsersToggleMain
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2133,8 +2134,8 @@ func (a *UsersAPIService) UsersToggleMaintenanceModeExecute(r ApiUsersToggleMain
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2144,8 +2145,8 @@ func (a *UsersAPIService) UsersToggleMaintenanceModeExecute(r ApiUsersToggleMain
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2155,8 +2156,8 @@ func (a *UsersAPIService) UsersToggleMaintenanceModeExecute(r ApiUsersToggleMain
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2165,8 +2166,8 @@ func (a *UsersAPIService) UsersToggleMaintenanceModeExecute(r ApiUsersToggleMain
 }
 
 type ApiUsersToggleNotificationModeRequest struct {
-	ctx context.Context
-	ApiService *UsersAPIService
+	ctx                           context.Context
+	ApiService                    *UsersAPIService
 	toggleNotificationModeCommand *ToggleNotificationModeCommand
 }
 
@@ -2182,22 +2183,22 @@ func (r ApiUsersToggleNotificationModeRequest) Execute() (*http.Response, error)
 /*
 UsersToggleNotificationMode Toggle notification mode
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUsersToggleNotificationModeRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUsersToggleNotificationModeRequest
 */
 func (a *UsersAPIService) UsersToggleNotificationMode(ctx context.Context) ApiUsersToggleNotificationModeRequest {
 	return ApiUsersToggleNotificationModeRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *UsersAPIService) UsersToggleNotificationModeExecute(r ApiUsersToggleNotificationModeRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.UsersToggleNotificationMode")
@@ -2273,8 +2274,8 @@ func (a *UsersAPIService) UsersToggleNotificationModeExecute(r ApiUsersToggleNot
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2284,8 +2285,8 @@ func (a *UsersAPIService) UsersToggleNotificationModeExecute(r ApiUsersToggleNot
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2295,8 +2296,8 @@ func (a *UsersAPIService) UsersToggleNotificationModeExecute(r ApiUsersToggleNot
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2306,8 +2307,8 @@ func (a *UsersAPIService) UsersToggleNotificationModeExecute(r ApiUsersToggleNot
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2317,8 +2318,8 @@ func (a *UsersAPIService) UsersToggleNotificationModeExecute(r ApiUsersToggleNot
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2328,8 +2329,8 @@ func (a *UsersAPIService) UsersToggleNotificationModeExecute(r ApiUsersToggleNot
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2338,8 +2339,8 @@ func (a *UsersAPIService) UsersToggleNotificationModeExecute(r ApiUsersToggleNot
 }
 
 type ApiUsersUnlock2faRequest struct {
-	ctx context.Context
-	ApiService *UsersAPIService
+	ctx              context.Context
+	ApiService       *UsersAPIService
 	unlock2FaCommand *Unlock2FaCommand
 }
 
@@ -2355,22 +2356,22 @@ func (r ApiUsersUnlock2faRequest) Execute() (*http.Response, error) {
 /*
 UsersUnlock2fa Unlock 2fa mode
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUsersUnlock2faRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUsersUnlock2faRequest
 */
 func (a *UsersAPIService) UsersUnlock2fa(ctx context.Context) ApiUsersUnlock2faRequest {
 	return ApiUsersUnlock2faRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *UsersAPIService) UsersUnlock2faExecute(r ApiUsersUnlock2faRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.UsersUnlock2fa")
@@ -2446,8 +2447,8 @@ func (a *UsersAPIService) UsersUnlock2faExecute(r ApiUsersUnlock2faRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2457,8 +2458,8 @@ func (a *UsersAPIService) UsersUnlock2faExecute(r ApiUsersUnlock2faRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2468,8 +2469,8 @@ func (a *UsersAPIService) UsersUnlock2faExecute(r ApiUsersUnlock2faRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2479,8 +2480,8 @@ func (a *UsersAPIService) UsersUnlock2faExecute(r ApiUsersUnlock2faRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2490,8 +2491,8 @@ func (a *UsersAPIService) UsersUnlock2faExecute(r ApiUsersUnlock2faRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2501,8 +2502,8 @@ func (a *UsersAPIService) UsersUnlock2faExecute(r ApiUsersUnlock2faRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2511,8 +2512,8 @@ func (a *UsersAPIService) UsersUnlock2faExecute(r ApiUsersUnlock2faRequest) (*ht
 }
 
 type ApiUsersUpdateUserRequest struct {
-	ctx context.Context
-	ApiService *UsersAPIService
+	ctx               context.Context
+	ApiService        *UsersAPIService
 	updateUserCommand *UpdateUserCommand
 }
 
@@ -2528,22 +2529,22 @@ func (r ApiUsersUpdateUserRequest) Execute() (*http.Response, error) {
 /*
 UsersUpdateUser Update user
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUsersUpdateUserRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUsersUpdateUserRequest
 */
 func (a *UsersAPIService) UsersUpdateUser(ctx context.Context) ApiUsersUpdateUserRequest {
 	return ApiUsersUpdateUserRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *UsersAPIService) UsersUpdateUserExecute(r ApiUsersUpdateUserRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.UsersUpdateUser")
@@ -2619,8 +2620,8 @@ func (a *UsersAPIService) UsersUpdateUserExecute(r ApiUsersUpdateUserRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2630,8 +2631,8 @@ func (a *UsersAPIService) UsersUpdateUserExecute(r ApiUsersUpdateUserRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2641,8 +2642,8 @@ func (a *UsersAPIService) UsersUpdateUserExecute(r ApiUsersUpdateUserRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2652,8 +2653,8 @@ func (a *UsersAPIService) UsersUpdateUserExecute(r ApiUsersUpdateUserRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2663,8 +2664,8 @@ func (a *UsersAPIService) UsersUpdateUserExecute(r ApiUsersUpdateUserRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2674,8 +2675,8 @@ func (a *UsersAPIService) UsersUpdateUserExecute(r ApiUsersUpdateUserRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2684,7 +2685,7 @@ func (a *UsersAPIService) UsersUpdateUserExecute(r ApiUsersUpdateUserRequest) (*
 }
 
 type ApiUsersUserInfoRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *UsersAPIService
 }
 
@@ -2695,24 +2696,25 @@ func (r ApiUsersUserInfoRequest) Execute() (*UserDetails, *http.Response, error)
 /*
 UsersUserInfo Retrieve user info
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUsersUserInfoRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUsersUserInfoRequest
 */
 func (a *UsersAPIService) UsersUserInfo(ctx context.Context) ApiUsersUserInfoRequest {
 	return ApiUsersUserInfoRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return UserDetails
+//
+//	@return UserDetails
 func (a *UsersAPIService) UsersUserInfoExecute(r ApiUsersUserInfoRequest) (*UserDetails, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *UserDetails
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserDetails
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.UsersUserInfo")
@@ -2786,8 +2788,8 @@ func (a *UsersAPIService) UsersUserInfoExecute(r ApiUsersUserInfoRequest) (*User
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2797,8 +2799,8 @@ func (a *UsersAPIService) UsersUserInfoExecute(r ApiUsersUserInfoRequest) (*User
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2808,8 +2810,8 @@ func (a *UsersAPIService) UsersUserInfoExecute(r ApiUsersUserInfoRequest) (*User
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2819,8 +2821,8 @@ func (a *UsersAPIService) UsersUserInfoExecute(r ApiUsersUserInfoRequest) (*User
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2830,8 +2832,8 @@ func (a *UsersAPIService) UsersUserInfoExecute(r ApiUsersUserInfoRequest) (*User
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2841,8 +2843,8 @@ func (a *UsersAPIService) UsersUserInfoExecute(r ApiUsersUserInfoRequest) (*User
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2860,8 +2862,8 @@ func (a *UsersAPIService) UsersUserInfoExecute(r ApiUsersUserInfoRequest) (*User
 }
 
 type ApiUsersVerifyEmailRequest struct {
-	ctx context.Context
-	ApiService *UsersAPIService
+	ctx                context.Context
+	ApiService         *UsersAPIService
 	verifyEmailCommand *VerifyEmailCommand
 }
 
@@ -2877,22 +2879,22 @@ func (r ApiUsersVerifyEmailRequest) Execute() (*http.Response, error) {
 /*
 UsersVerifyEmail Verify user email
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUsersVerifyEmailRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUsersVerifyEmailRequest
 */
 func (a *UsersAPIService) UsersVerifyEmail(ctx context.Context) ApiUsersVerifyEmailRequest {
 	return ApiUsersVerifyEmailRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *UsersAPIService) UsersVerifyEmailExecute(r ApiUsersVerifyEmailRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.UsersVerifyEmail")
@@ -2968,8 +2970,8 @@ func (a *UsersAPIService) UsersVerifyEmailExecute(r ApiUsersVerifyEmailRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2979,8 +2981,8 @@ func (a *UsersAPIService) UsersVerifyEmailExecute(r ApiUsersVerifyEmailRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2990,8 +2992,8 @@ func (a *UsersAPIService) UsersVerifyEmailExecute(r ApiUsersVerifyEmailRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3001,8 +3003,8 @@ func (a *UsersAPIService) UsersVerifyEmailExecute(r ApiUsersVerifyEmailRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3012,8 +3014,8 @@ func (a *UsersAPIService) UsersVerifyEmailExecute(r ApiUsersVerifyEmailRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3023,8 +3025,8 @@ func (a *UsersAPIService) UsersVerifyEmailExecute(r ApiUsersVerifyEmailRequest) 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

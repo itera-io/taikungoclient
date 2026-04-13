@@ -20,9 +20,9 @@ var _ MappedNullable = &GroupedCredentialForShowbackSummary{}
 
 // GroupedCredentialForShowbackSummary struct for GroupedCredentialForShowbackSummary
 type GroupedCredentialForShowbackSummary struct {
-	Id NullableInt32 `json:"id,omitempty"`
-	ProjectId NullableInt32 `json:"projectId,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Id        NullableInt32  `json:"id,omitempty"`
+	ProjectId NullableInt32  `json:"projectId,omitempty"`
+	Name      NullableString `json:"name,omitempty"`
 }
 
 // NewGroupedCredentialForShowbackSummary instantiates a new GroupedCredentialForShowbackSummary object
@@ -74,6 +74,7 @@ func (o *GroupedCredentialForShowbackSummary) HasId() bool {
 func (o *GroupedCredentialForShowbackSummary) SetId(v int32) {
 	o.Id.Set(&v)
 }
+
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *GroupedCredentialForShowbackSummary) SetIdNil() {
 	o.Id.Set(nil)
@@ -116,6 +117,7 @@ func (o *GroupedCredentialForShowbackSummary) HasProjectId() bool {
 func (o *GroupedCredentialForShowbackSummary) SetProjectId(v int32) {
 	o.ProjectId.Set(&v)
 }
+
 // SetProjectIdNil sets the value for ProjectId to be an explicit nil
 func (o *GroupedCredentialForShowbackSummary) SetProjectIdNil() {
 	o.ProjectId.Set(nil)
@@ -158,6 +160,7 @@ func (o *GroupedCredentialForShowbackSummary) HasName() bool {
 func (o *GroupedCredentialForShowbackSummary) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *GroupedCredentialForShowbackSummary) SetNameNil() {
 	o.Name.Set(nil)
@@ -169,7 +172,7 @@ func (o *GroupedCredentialForShowbackSummary) UnsetName() {
 }
 
 func (o GroupedCredentialForShowbackSummary) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -225,5 +228,3 @@ func (v *NullableGroupedCredentialForShowbackSummary) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

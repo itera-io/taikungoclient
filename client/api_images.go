@@ -20,15 +20,14 @@ import (
 	"strings"
 )
 
-
 // ImagesAPIService ImagesAPI service
 type ImagesAPIService service
 
 type ApiImagesAwsCommonImagesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ImagesAPIService
-	cloudId int32
-	projectId *int32
+	cloudId    int32
+	projectId  *int32
 }
 
 func (r ApiImagesAwsCommonImagesRequest) ProjectId(projectId int32) ApiImagesAwsCommonImagesRequest {
@@ -43,26 +42,27 @@ func (r ApiImagesAwsCommonImagesRequest) Execute() ([]CommonStringBasedDropdownD
 /*
 ImagesAwsCommonImages Commonly used aws images (v1)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiImagesAwsCommonImagesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@return ApiImagesAwsCommonImagesRequest
 */
 func (a *ImagesAPIService) ImagesAwsCommonImages(ctx context.Context, cloudId int32) ApiImagesAwsCommonImagesRequest {
 	return ApiImagesAwsCommonImagesRequest{
 		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
+		ctx:        ctx,
+		cloudId:    cloudId,
 	}
 }
 
 // Execute executes the request
-//  @return []CommonStringBasedDropdownDto
+//
+//	@return []CommonStringBasedDropdownDto
 func (a *ImagesAPIService) ImagesAwsCommonImagesExecute(r ApiImagesAwsCommonImagesRequest) ([]CommonStringBasedDropdownDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CommonStringBasedDropdownDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []CommonStringBasedDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesAwsCommonImages")
@@ -140,8 +140,8 @@ func (a *ImagesAPIService) ImagesAwsCommonImagesExecute(r ApiImagesAwsCommonImag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -151,8 +151,8 @@ func (a *ImagesAPIService) ImagesAwsCommonImagesExecute(r ApiImagesAwsCommonImag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -162,8 +162,8 @@ func (a *ImagesAPIService) ImagesAwsCommonImagesExecute(r ApiImagesAwsCommonImag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -173,8 +173,8 @@ func (a *ImagesAPIService) ImagesAwsCommonImagesExecute(r ApiImagesAwsCommonImag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -184,8 +184,8 @@ func (a *ImagesAPIService) ImagesAwsCommonImagesExecute(r ApiImagesAwsCommonImag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -195,8 +195,8 @@ func (a *ImagesAPIService) ImagesAwsCommonImagesExecute(r ApiImagesAwsCommonImag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -214,8 +214,8 @@ func (a *ImagesAPIService) ImagesAwsCommonImagesExecute(r ApiImagesAwsCommonImag
 }
 
 type ApiImagesAwsImagesListRequest struct {
-	ctx context.Context
-	ApiService *ImagesAPIService
+	ctx                      context.Context
+	ApiService               *ImagesAPIService
 	awsImagesPostListCommand *AwsImagesPostListCommand
 }
 
@@ -231,24 +231,25 @@ func (r ApiImagesAwsImagesListRequest) Execute() (*PublicImageList, *http.Respon
 /*
 ImagesAwsImagesList Retrieve aws images
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiImagesAwsImagesListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiImagesAwsImagesListRequest
 */
 func (a *ImagesAPIService) ImagesAwsImagesList(ctx context.Context) ApiImagesAwsImagesListRequest {
 	return ApiImagesAwsImagesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return PublicImageList
+//
+//	@return PublicImageList
 func (a *ImagesAPIService) ImagesAwsImagesListExecute(r ApiImagesAwsImagesListRequest) (*PublicImageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PublicImageList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PublicImageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesAwsImagesList")
@@ -324,8 +325,8 @@ func (a *ImagesAPIService) ImagesAwsImagesListExecute(r ApiImagesAwsImagesListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -335,8 +336,8 @@ func (a *ImagesAPIService) ImagesAwsImagesListExecute(r ApiImagesAwsImagesListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -346,8 +347,8 @@ func (a *ImagesAPIService) ImagesAwsImagesListExecute(r ApiImagesAwsImagesListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -357,8 +358,8 @@ func (a *ImagesAPIService) ImagesAwsImagesListExecute(r ApiImagesAwsImagesListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -368,8 +369,8 @@ func (a *ImagesAPIService) ImagesAwsImagesListExecute(r ApiImagesAwsImagesListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -379,8 +380,8 @@ func (a *ImagesAPIService) ImagesAwsImagesListExecute(r ApiImagesAwsImagesListRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -398,11 +399,11 @@ func (a *ImagesAPIService) ImagesAwsImagesListExecute(r ApiImagesAwsImagesListRe
 }
 
 type ApiImagesAwsPersonalImagesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ImagesAPIService
-	cloudId int32
-	search *string
-	projectId *int32
+	cloudId    int32
+	search     *string
+	projectId  *int32
 }
 
 func (r ApiImagesAwsPersonalImagesRequest) Search(search string) ApiImagesAwsPersonalImagesRequest {
@@ -422,26 +423,27 @@ func (r ApiImagesAwsPersonalImagesRequest) Execute() ([]CommonStringBasedDropdow
 /*
 ImagesAwsPersonalImages Aws personal images
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiImagesAwsPersonalImagesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@return ApiImagesAwsPersonalImagesRequest
 */
 func (a *ImagesAPIService) ImagesAwsPersonalImages(ctx context.Context, cloudId int32) ApiImagesAwsPersonalImagesRequest {
 	return ApiImagesAwsPersonalImagesRequest{
 		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
+		ctx:        ctx,
+		cloudId:    cloudId,
 	}
 }
 
 // Execute executes the request
-//  @return []CommonStringBasedDropdownDto
+//
+//	@return []CommonStringBasedDropdownDto
 func (a *ImagesAPIService) ImagesAwsPersonalImagesExecute(r ApiImagesAwsPersonalImagesRequest) ([]CommonStringBasedDropdownDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CommonStringBasedDropdownDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []CommonStringBasedDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesAwsPersonalImages")
@@ -522,8 +524,8 @@ func (a *ImagesAPIService) ImagesAwsPersonalImagesExecute(r ApiImagesAwsPersonal
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -533,8 +535,8 @@ func (a *ImagesAPIService) ImagesAwsPersonalImagesExecute(r ApiImagesAwsPersonal
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -544,8 +546,8 @@ func (a *ImagesAPIService) ImagesAwsPersonalImagesExecute(r ApiImagesAwsPersonal
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -555,8 +557,8 @@ func (a *ImagesAPIService) ImagesAwsPersonalImagesExecute(r ApiImagesAwsPersonal
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -566,8 +568,8 @@ func (a *ImagesAPIService) ImagesAwsPersonalImagesExecute(r ApiImagesAwsPersonal
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -577,8 +579,8 @@ func (a *ImagesAPIService) ImagesAwsPersonalImagesExecute(r ApiImagesAwsPersonal
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -596,10 +598,10 @@ func (a *ImagesAPIService) ImagesAwsPersonalImagesExecute(r ApiImagesAwsPersonal
 }
 
 type ApiImagesAzureCommonImagesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ImagesAPIService
-	cloudId int32
-	projectId *int32
+	cloudId    int32
+	projectId  *int32
 }
 
 func (r ApiImagesAzureCommonImagesRequest) ProjectId(projectId int32) ApiImagesAzureCommonImagesRequest {
@@ -614,26 +616,27 @@ func (r ApiImagesAzureCommonImagesRequest) Execute() ([]CommonStringBasedDropdow
 /*
 ImagesAzureCommonImages Commonly used azure images
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiImagesAzureCommonImagesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@return ApiImagesAzureCommonImagesRequest
 */
 func (a *ImagesAPIService) ImagesAzureCommonImages(ctx context.Context, cloudId int32) ApiImagesAzureCommonImagesRequest {
 	return ApiImagesAzureCommonImagesRequest{
 		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
+		ctx:        ctx,
+		cloudId:    cloudId,
 	}
 }
 
 // Execute executes the request
-//  @return []CommonStringBasedDropdownDto
+//
+//	@return []CommonStringBasedDropdownDto
 func (a *ImagesAPIService) ImagesAzureCommonImagesExecute(r ApiImagesAzureCommonImagesRequest) ([]CommonStringBasedDropdownDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CommonStringBasedDropdownDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []CommonStringBasedDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesAzureCommonImages")
@@ -711,8 +714,8 @@ func (a *ImagesAPIService) ImagesAzureCommonImagesExecute(r ApiImagesAzureCommon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -722,8 +725,8 @@ func (a *ImagesAPIService) ImagesAzureCommonImagesExecute(r ApiImagesAzureCommon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -733,8 +736,8 @@ func (a *ImagesAPIService) ImagesAzureCommonImagesExecute(r ApiImagesAzureCommon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -744,8 +747,8 @@ func (a *ImagesAPIService) ImagesAzureCommonImagesExecute(r ApiImagesAzureCommon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -755,8 +758,8 @@ func (a *ImagesAPIService) ImagesAzureCommonImagesExecute(r ApiImagesAzureCommon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -766,8 +769,8 @@ func (a *ImagesAPIService) ImagesAzureCommonImagesExecute(r ApiImagesAzureCommon
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -785,19 +788,19 @@ func (a *ImagesAPIService) ImagesAzureCommonImagesExecute(r ApiImagesAzureCommon
 }
 
 type ApiImagesAzureImagesRequest struct {
-	ctx context.Context
-	ApiService *ImagesAPIService
-	cloudId int32
+	ctx           context.Context
+	ApiService    *ImagesAPIService
+	cloudId       int32
 	publisherName string
-	offer string
-	sku string
-	limit *int32
-	offset *int32
-	sortBy *string
+	offer         string
+	sku           string
+	limit         *int32
+	offset        *int32
+	sortBy        *string
 	sortDirection *string
-	search *string
-	projectId *int32
-	latest *bool
+	search        *string
+	projectId     *int32
+	latest        *bool
 }
 
 func (r ApiImagesAzureImagesRequest) Limit(limit int32) ApiImagesAzureImagesRequest {
@@ -842,32 +845,33 @@ func (r ApiImagesAzureImagesRequest) Execute() (*PublicImageList, *http.Response
 /*
 ImagesAzureImages Retrieve azure images
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @param publisherName
- @param offer
- @param sku
- @return ApiImagesAzureImagesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@param publisherName
+	@param offer
+	@param sku
+	@return ApiImagesAzureImagesRequest
 */
 func (a *ImagesAPIService) ImagesAzureImages(ctx context.Context, cloudId int32, publisherName string, offer string, sku string) ApiImagesAzureImagesRequest {
 	return ApiImagesAzureImagesRequest{
-		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
+		ApiService:    a,
+		ctx:           ctx,
+		cloudId:       cloudId,
 		publisherName: publisherName,
-		offer: offer,
-		sku: sku,
+		offer:         offer,
+		sku:           sku,
 	}
 }
 
 // Execute executes the request
-//  @return PublicImageList
+//
+//	@return PublicImageList
 func (a *ImagesAPIService) ImagesAzureImagesExecute(r ApiImagesAzureImagesRequest) (*PublicImageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PublicImageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PublicImageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesAzureImages")
@@ -970,8 +974,8 @@ func (a *ImagesAPIService) ImagesAzureImagesExecute(r ApiImagesAzureImagesReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -981,8 +985,8 @@ func (a *ImagesAPIService) ImagesAzureImagesExecute(r ApiImagesAzureImagesReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -992,8 +996,8 @@ func (a *ImagesAPIService) ImagesAzureImagesExecute(r ApiImagesAzureImagesReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1003,8 +1007,8 @@ func (a *ImagesAPIService) ImagesAzureImagesExecute(r ApiImagesAzureImagesReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1014,8 +1018,8 @@ func (a *ImagesAPIService) ImagesAzureImagesExecute(r ApiImagesAzureImagesReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1025,8 +1029,8 @@ func (a *ImagesAPIService) ImagesAzureImagesExecute(r ApiImagesAzureImagesReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1044,10 +1048,10 @@ func (a *ImagesAPIService) ImagesAzureImagesExecute(r ApiImagesAzureImagesReques
 }
 
 type ApiImagesAzurePersonalImagesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ImagesAPIService
-	cloudId int32
-	projectId *int32
+	cloudId    int32
+	projectId  *int32
 }
 
 func (r ApiImagesAzurePersonalImagesRequest) ProjectId(projectId int32) ApiImagesAzurePersonalImagesRequest {
@@ -1062,26 +1066,27 @@ func (r ApiImagesAzurePersonalImagesRequest) Execute() ([]CommonStringBasedDropd
 /*
 ImagesAzurePersonalImages Azure personal images
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiImagesAzurePersonalImagesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@return ApiImagesAzurePersonalImagesRequest
 */
 func (a *ImagesAPIService) ImagesAzurePersonalImages(ctx context.Context, cloudId int32) ApiImagesAzurePersonalImagesRequest {
 	return ApiImagesAzurePersonalImagesRequest{
 		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
+		ctx:        ctx,
+		cloudId:    cloudId,
 	}
 }
 
 // Execute executes the request
-//  @return []CommonStringBasedDropdownDto
+//
+//	@return []CommonStringBasedDropdownDto
 func (a *ImagesAPIService) ImagesAzurePersonalImagesExecute(r ApiImagesAzurePersonalImagesRequest) ([]CommonStringBasedDropdownDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CommonStringBasedDropdownDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []CommonStringBasedDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesAzurePersonalImages")
@@ -1159,8 +1164,8 @@ func (a *ImagesAPIService) ImagesAzurePersonalImagesExecute(r ApiImagesAzurePers
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1170,8 +1175,8 @@ func (a *ImagesAPIService) ImagesAzurePersonalImagesExecute(r ApiImagesAzurePers
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1181,8 +1186,8 @@ func (a *ImagesAPIService) ImagesAzurePersonalImagesExecute(r ApiImagesAzurePers
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1192,8 +1197,8 @@ func (a *ImagesAPIService) ImagesAzurePersonalImagesExecute(r ApiImagesAzurePers
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1203,8 +1208,8 @@ func (a *ImagesAPIService) ImagesAzurePersonalImagesExecute(r ApiImagesAzurePers
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1214,8 +1219,8 @@ func (a *ImagesAPIService) ImagesAzurePersonalImagesExecute(r ApiImagesAzurePers
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1233,8 +1238,8 @@ func (a *ImagesAPIService) ImagesAzurePersonalImagesExecute(r ApiImagesAzurePers
 }
 
 type ApiImagesBindImagesToProjectRequest struct {
-	ctx context.Context
-	ApiService *ImagesAPIService
+	ctx                       context.Context
+	ApiService                *ImagesAPIService
 	bindImageToProjectCommand *BindImageToProjectCommand
 }
 
@@ -1250,22 +1255,22 @@ func (r ApiImagesBindImagesToProjectRequest) Execute() (*http.Response, error) {
 /*
 ImagesBindImagesToProject Bind images to project
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiImagesBindImagesToProjectRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiImagesBindImagesToProjectRequest
 */
 func (a *ImagesAPIService) ImagesBindImagesToProject(ctx context.Context) ApiImagesBindImagesToProjectRequest {
 	return ApiImagesBindImagesToProjectRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ImagesAPIService) ImagesBindImagesToProjectExecute(r ApiImagesBindImagesToProjectRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesBindImagesToProject")
@@ -1341,8 +1346,8 @@ func (a *ImagesAPIService) ImagesBindImagesToProjectExecute(r ApiImagesBindImage
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1352,8 +1357,8 @@ func (a *ImagesAPIService) ImagesBindImagesToProjectExecute(r ApiImagesBindImage
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1363,8 +1368,8 @@ func (a *ImagesAPIService) ImagesBindImagesToProjectExecute(r ApiImagesBindImage
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1374,8 +1379,8 @@ func (a *ImagesAPIService) ImagesBindImagesToProjectExecute(r ApiImagesBindImage
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1385,8 +1390,8 @@ func (a *ImagesAPIService) ImagesBindImagesToProjectExecute(r ApiImagesBindImage
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1396,8 +1401,8 @@ func (a *ImagesAPIService) ImagesBindImagesToProjectExecute(r ApiImagesBindImage
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1406,10 +1411,10 @@ func (a *ImagesAPIService) ImagesBindImagesToProjectExecute(r ApiImagesBindImage
 }
 
 type ApiImagesCommonGoogleImagesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ImagesAPIService
-	cloudId int32
-	projectId *int32
+	cloudId    int32
+	projectId  *int32
 }
 
 func (r ApiImagesCommonGoogleImagesRequest) ProjectId(projectId int32) ApiImagesCommonGoogleImagesRequest {
@@ -1424,26 +1429,27 @@ func (r ApiImagesCommonGoogleImagesRequest) Execute() ([]CommonStringBasedDropdo
 /*
 ImagesCommonGoogleImages Commonly used google images
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiImagesCommonGoogleImagesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@return ApiImagesCommonGoogleImagesRequest
 */
 func (a *ImagesAPIService) ImagesCommonGoogleImages(ctx context.Context, cloudId int32) ApiImagesCommonGoogleImagesRequest {
 	return ApiImagesCommonGoogleImagesRequest{
 		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
+		ctx:        ctx,
+		cloudId:    cloudId,
 	}
 }
 
 // Execute executes the request
-//  @return []CommonStringBasedDropdownDto
+//
+//	@return []CommonStringBasedDropdownDto
 func (a *ImagesAPIService) ImagesCommonGoogleImagesExecute(r ApiImagesCommonGoogleImagesRequest) ([]CommonStringBasedDropdownDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CommonStringBasedDropdownDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []CommonStringBasedDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesCommonGoogleImages")
@@ -1521,8 +1527,8 @@ func (a *ImagesAPIService) ImagesCommonGoogleImagesExecute(r ApiImagesCommonGoog
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1532,8 +1538,8 @@ func (a *ImagesAPIService) ImagesCommonGoogleImagesExecute(r ApiImagesCommonGoog
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1543,8 +1549,8 @@ func (a *ImagesAPIService) ImagesCommonGoogleImagesExecute(r ApiImagesCommonGoog
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1554,8 +1560,8 @@ func (a *ImagesAPIService) ImagesCommonGoogleImagesExecute(r ApiImagesCommonGoog
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1565,8 +1571,8 @@ func (a *ImagesAPIService) ImagesCommonGoogleImagesExecute(r ApiImagesCommonGoog
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1576,8 +1582,8 @@ func (a *ImagesAPIService) ImagesCommonGoogleImagesExecute(r ApiImagesCommonGoog
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1595,17 +1601,17 @@ func (a *ImagesAPIService) ImagesCommonGoogleImagesExecute(r ApiImagesCommonGoog
 }
 
 type ApiImagesGoogleImagesRequest struct {
-	ctx context.Context
-	ApiService *ImagesAPIService
-	cloudId int32
-	type_ string
-	latest *bool
-	limit *int32
-	offset *int32
-	sortBy *string
+	ctx           context.Context
+	ApiService    *ImagesAPIService
+	cloudId       int32
+	type_         string
+	latest        *bool
+	limit         *int32
+	offset        *int32
+	sortBy        *string
 	sortDirection *string
-	search *string
-	projectId *int32
+	search        *string
+	projectId     *int32
 }
 
 func (r ApiImagesGoogleImagesRequest) Latest(latest bool) ApiImagesGoogleImagesRequest {
@@ -1650,28 +1656,29 @@ func (r ApiImagesGoogleImagesRequest) Execute() (*PublicImageList, *http.Respons
 /*
 ImagesGoogleImages Retrieve google images
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @param type_
- @return ApiImagesGoogleImagesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@param type_
+	@return ApiImagesGoogleImagesRequest
 */
 func (a *ImagesAPIService) ImagesGoogleImages(ctx context.Context, cloudId int32, type_ string) ApiImagesGoogleImagesRequest {
 	return ApiImagesGoogleImagesRequest{
 		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
-		type_: type_,
+		ctx:        ctx,
+		cloudId:    cloudId,
+		type_:      type_,
 	}
 }
 
 // Execute executes the request
-//  @return PublicImageList
+//
+//	@return PublicImageList
 func (a *ImagesAPIService) ImagesGoogleImagesExecute(r ApiImagesGoogleImagesRequest) (*PublicImageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PublicImageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PublicImageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesGoogleImages")
@@ -1769,8 +1776,8 @@ func (a *ImagesAPIService) ImagesGoogleImagesExecute(r ApiImagesGoogleImagesRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1780,8 +1787,8 @@ func (a *ImagesAPIService) ImagesGoogleImagesExecute(r ApiImagesGoogleImagesRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1791,8 +1798,8 @@ func (a *ImagesAPIService) ImagesGoogleImagesExecute(r ApiImagesGoogleImagesRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1802,8 +1809,8 @@ func (a *ImagesAPIService) ImagesGoogleImagesExecute(r ApiImagesGoogleImagesRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1813,8 +1820,8 @@ func (a *ImagesAPIService) ImagesGoogleImagesExecute(r ApiImagesGoogleImagesRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1824,8 +1831,8 @@ func (a *ImagesAPIService) ImagesGoogleImagesExecute(r ApiImagesGoogleImagesRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1843,8 +1850,8 @@ func (a *ImagesAPIService) ImagesGoogleImagesExecute(r ApiImagesGoogleImagesRequ
 }
 
 type ApiImagesImageDetailsRequest struct {
-	ctx context.Context
-	ApiService *ImagesAPIService
+	ctx              context.Context
+	ApiService       *ImagesAPIService
 	imageByIdCommand *ImageByIdCommand
 }
 
@@ -1860,24 +1867,25 @@ func (r ApiImagesImageDetailsRequest) Execute() (string, *http.Response, error) 
 /*
 ImagesImageDetails Get image details
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiImagesImageDetailsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiImagesImageDetailsRequest
 */
 func (a *ImagesAPIService) ImagesImageDetails(ctx context.Context) ApiImagesImageDetailsRequest {
 	return ApiImagesImageDetailsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return string
+//
+//	@return string
 func (a *ImagesAPIService) ImagesImageDetailsExecute(r ApiImagesImageDetailsRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  string
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesImageDetails")
@@ -1953,8 +1961,8 @@ func (a *ImagesAPIService) ImagesImageDetailsExecute(r ApiImagesImageDetailsRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1964,8 +1972,8 @@ func (a *ImagesAPIService) ImagesImageDetailsExecute(r ApiImagesImageDetailsRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1975,8 +1983,8 @@ func (a *ImagesAPIService) ImagesImageDetailsExecute(r ApiImagesImageDetailsRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1986,8 +1994,8 @@ func (a *ImagesAPIService) ImagesImageDetailsExecute(r ApiImagesImageDetailsRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1997,8 +2005,8 @@ func (a *ImagesAPIService) ImagesImageDetailsExecute(r ApiImagesImageDetailsRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2008,8 +2016,8 @@ func (a *ImagesAPIService) ImagesImageDetailsExecute(r ApiImagesImageDetailsRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2027,15 +2035,15 @@ func (a *ImagesAPIService) ImagesImageDetailsExecute(r ApiImagesImageDetailsRequ
 }
 
 type ApiImagesOpenshiftImagesRequest struct {
-	ctx context.Context
-	ApiService *ImagesAPIService
-	cloudId int32
-	limit *int32
-	offset *int32
-	sortBy *string
+	ctx           context.Context
+	ApiService    *ImagesAPIService
+	cloudId       int32
+	limit         *int32
+	offset        *int32
+	sortBy        *string
 	sortDirection *string
-	search *string
-	projectId *int32
+	search        *string
+	projectId     *int32
 }
 
 func (r ApiImagesOpenshiftImagesRequest) Limit(limit int32) ApiImagesOpenshiftImagesRequest {
@@ -2075,26 +2083,27 @@ func (r ApiImagesOpenshiftImagesRequest) Execute() (*PublicImageList, *http.Resp
 /*
 ImagesOpenshiftImages Retrieve openshift images
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiImagesOpenshiftImagesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@return ApiImagesOpenshiftImagesRequest
 */
 func (a *ImagesAPIService) ImagesOpenshiftImages(ctx context.Context, cloudId int32) ApiImagesOpenshiftImagesRequest {
 	return ApiImagesOpenshiftImagesRequest{
 		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
+		ctx:        ctx,
+		cloudId:    cloudId,
 	}
 }
 
 // Execute executes the request
-//  @return PublicImageList
+//
+//	@return PublicImageList
 func (a *ImagesAPIService) ImagesOpenshiftImagesExecute(r ApiImagesOpenshiftImagesRequest) (*PublicImageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PublicImageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PublicImageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesOpenshiftImages")
@@ -2187,8 +2196,8 @@ func (a *ImagesAPIService) ImagesOpenshiftImagesExecute(r ApiImagesOpenshiftImag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2198,8 +2207,8 @@ func (a *ImagesAPIService) ImagesOpenshiftImagesExecute(r ApiImagesOpenshiftImag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2209,8 +2218,8 @@ func (a *ImagesAPIService) ImagesOpenshiftImagesExecute(r ApiImagesOpenshiftImag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2220,8 +2229,8 @@ func (a *ImagesAPIService) ImagesOpenshiftImagesExecute(r ApiImagesOpenshiftImag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2231,8 +2240,8 @@ func (a *ImagesAPIService) ImagesOpenshiftImagesExecute(r ApiImagesOpenshiftImag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2242,8 +2251,8 @@ func (a *ImagesAPIService) ImagesOpenshiftImagesExecute(r ApiImagesOpenshiftImag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2261,16 +2270,16 @@ func (a *ImagesAPIService) ImagesOpenshiftImagesExecute(r ApiImagesOpenshiftImag
 }
 
 type ApiImagesOpenstackImagesRequest struct {
-	ctx context.Context
-	ApiService *ImagesAPIService
-	cloudId int32
-	limit *int32
-	offset *int32
-	sortBy *string
+	ctx           context.Context
+	ApiService    *ImagesAPIService
+	cloudId       int32
+	limit         *int32
+	offset        *int32
+	sortBy        *string
 	sortDirection *string
-	search *string
-	projectId *int32
-	personal *bool
+	search        *string
+	projectId     *int32
+	personal      *bool
 }
 
 func (r ApiImagesOpenstackImagesRequest) Limit(limit int32) ApiImagesOpenstackImagesRequest {
@@ -2315,26 +2324,27 @@ func (r ApiImagesOpenstackImagesRequest) Execute() (*PublicImageList, *http.Resp
 /*
 ImagesOpenstackImages Retrieve openstack images
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiImagesOpenstackImagesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@return ApiImagesOpenstackImagesRequest
 */
 func (a *ImagesAPIService) ImagesOpenstackImages(ctx context.Context, cloudId int32) ApiImagesOpenstackImagesRequest {
 	return ApiImagesOpenstackImagesRequest{
 		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
+		ctx:        ctx,
+		cloudId:    cloudId,
 	}
 }
 
 // Execute executes the request
-//  @return PublicImageList
+//
+//	@return PublicImageList
 func (a *ImagesAPIService) ImagesOpenstackImagesExecute(r ApiImagesOpenstackImagesRequest) (*PublicImageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PublicImageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PublicImageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesOpenstackImages")
@@ -2434,8 +2444,8 @@ func (a *ImagesAPIService) ImagesOpenstackImagesExecute(r ApiImagesOpenstackImag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2445,8 +2455,8 @@ func (a *ImagesAPIService) ImagesOpenstackImagesExecute(r ApiImagesOpenstackImag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2456,8 +2466,8 @@ func (a *ImagesAPIService) ImagesOpenstackImagesExecute(r ApiImagesOpenstackImag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2467,8 +2477,8 @@ func (a *ImagesAPIService) ImagesOpenstackImagesExecute(r ApiImagesOpenstackImag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2478,8 +2488,8 @@ func (a *ImagesAPIService) ImagesOpenstackImagesExecute(r ApiImagesOpenstackImag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2489,8 +2499,8 @@ func (a *ImagesAPIService) ImagesOpenstackImagesExecute(r ApiImagesOpenstackImag
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2508,15 +2518,15 @@ func (a *ImagesAPIService) ImagesOpenstackImagesExecute(r ApiImagesOpenstackImag
 }
 
 type ApiImagesProxmoxImagesRequest struct {
-	ctx context.Context
-	ApiService *ImagesAPIService
-	cloudId int32
-	limit *int32
-	offset *int32
-	sortBy *string
+	ctx           context.Context
+	ApiService    *ImagesAPIService
+	cloudId       int32
+	limit         *int32
+	offset        *int32
+	sortBy        *string
 	sortDirection *string
-	search *string
-	projectId *int32
+	search        *string
+	projectId     *int32
 }
 
 func (r ApiImagesProxmoxImagesRequest) Limit(limit int32) ApiImagesProxmoxImagesRequest {
@@ -2556,26 +2566,27 @@ func (r ApiImagesProxmoxImagesRequest) Execute() (*PublicImageList, *http.Respon
 /*
 ImagesProxmoxImages Retrieve proxmox images
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiImagesProxmoxImagesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@return ApiImagesProxmoxImagesRequest
 */
 func (a *ImagesAPIService) ImagesProxmoxImages(ctx context.Context, cloudId int32) ApiImagesProxmoxImagesRequest {
 	return ApiImagesProxmoxImagesRequest{
 		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
+		ctx:        ctx,
+		cloudId:    cloudId,
 	}
 }
 
 // Execute executes the request
-//  @return PublicImageList
+//
+//	@return PublicImageList
 func (a *ImagesAPIService) ImagesProxmoxImagesExecute(r ApiImagesProxmoxImagesRequest) (*PublicImageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PublicImageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PublicImageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesProxmoxImages")
@@ -2668,8 +2679,8 @@ func (a *ImagesAPIService) ImagesProxmoxImagesExecute(r ApiImagesProxmoxImagesRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2679,8 +2690,8 @@ func (a *ImagesAPIService) ImagesProxmoxImagesExecute(r ApiImagesProxmoxImagesRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2690,8 +2701,8 @@ func (a *ImagesAPIService) ImagesProxmoxImagesExecute(r ApiImagesProxmoxImagesRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2701,8 +2712,8 @@ func (a *ImagesAPIService) ImagesProxmoxImagesExecute(r ApiImagesProxmoxImagesRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2712,8 +2723,8 @@ func (a *ImagesAPIService) ImagesProxmoxImagesExecute(r ApiImagesProxmoxImagesRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2723,8 +2734,8 @@ func (a *ImagesAPIService) ImagesProxmoxImagesExecute(r ApiImagesProxmoxImagesRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2742,15 +2753,15 @@ func (a *ImagesAPIService) ImagesProxmoxImagesExecute(r ApiImagesProxmoxImagesRe
 }
 
 type ApiImagesSelectedImagesForProjectRequest struct {
-	ctx context.Context
-	ApiService *ImagesAPIService
-	limit *int32
-	offset *int32
-	projectId *int32
-	sortBy *string
-	sortDirection *string
-	search *string
-	filterBy *string
+	ctx            context.Context
+	ApiService     *ImagesAPIService
+	limit          *int32
+	offset         *int32
+	projectId      *int32
+	sortBy         *string
+	sortDirection  *string
+	search         *string
+	filterBy       *string
 	organizationId *int32
 }
 
@@ -2801,24 +2812,25 @@ func (r ApiImagesSelectedImagesForProjectRequest) Execute() (*BoundImagesForProj
 /*
 ImagesSelectedImagesForProject Retrieve selected images for projects
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiImagesSelectedImagesForProjectRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiImagesSelectedImagesForProjectRequest
 */
 func (a *ImagesAPIService) ImagesSelectedImagesForProject(ctx context.Context) ApiImagesSelectedImagesForProjectRequest {
 	return ApiImagesSelectedImagesForProjectRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return BoundImagesForProjectsList
+//
+//	@return BoundImagesForProjectsList
 func (a *ImagesAPIService) ImagesSelectedImagesForProjectExecute(r ApiImagesSelectedImagesForProjectRequest) (*BoundImagesForProjectsList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *BoundImagesForProjectsList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *BoundImagesForProjectsList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesSelectedImagesForProject")
@@ -2916,8 +2928,8 @@ func (a *ImagesAPIService) ImagesSelectedImagesForProjectExecute(r ApiImagesSele
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2927,8 +2939,8 @@ func (a *ImagesAPIService) ImagesSelectedImagesForProjectExecute(r ApiImagesSele
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2938,8 +2950,8 @@ func (a *ImagesAPIService) ImagesSelectedImagesForProjectExecute(r ApiImagesSele
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2949,8 +2961,8 @@ func (a *ImagesAPIService) ImagesSelectedImagesForProjectExecute(r ApiImagesSele
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2960,8 +2972,8 @@ func (a *ImagesAPIService) ImagesSelectedImagesForProjectExecute(r ApiImagesSele
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2971,8 +2983,8 @@ func (a *ImagesAPIService) ImagesSelectedImagesForProjectExecute(r ApiImagesSele
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2990,8 +3002,8 @@ func (a *ImagesAPIService) ImagesSelectedImagesForProjectExecute(r ApiImagesSele
 }
 
 type ApiImagesUnbindImagesFromProjectRequest struct {
-	ctx context.Context
-	ApiService *ImagesAPIService
+	ctx                           context.Context
+	ApiService                    *ImagesAPIService
 	deleteImageFromProjectCommand *DeleteImageFromProjectCommand
 }
 
@@ -3007,22 +3019,22 @@ func (r ApiImagesUnbindImagesFromProjectRequest) Execute() (*http.Response, erro
 /*
 ImagesUnbindImagesFromProject Unbind images from project
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiImagesUnbindImagesFromProjectRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiImagesUnbindImagesFromProjectRequest
 */
 func (a *ImagesAPIService) ImagesUnbindImagesFromProject(ctx context.Context) ApiImagesUnbindImagesFromProjectRequest {
 	return ApiImagesUnbindImagesFromProjectRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ImagesAPIService) ImagesUnbindImagesFromProjectExecute(r ApiImagesUnbindImagesFromProjectRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesUnbindImagesFromProject")
@@ -3098,8 +3110,8 @@ func (a *ImagesAPIService) ImagesUnbindImagesFromProjectExecute(r ApiImagesUnbin
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3109,8 +3121,8 @@ func (a *ImagesAPIService) ImagesUnbindImagesFromProjectExecute(r ApiImagesUnbin
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3120,8 +3132,8 @@ func (a *ImagesAPIService) ImagesUnbindImagesFromProjectExecute(r ApiImagesUnbin
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3131,8 +3143,8 @@ func (a *ImagesAPIService) ImagesUnbindImagesFromProjectExecute(r ApiImagesUnbin
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3142,8 +3154,8 @@ func (a *ImagesAPIService) ImagesUnbindImagesFromProjectExecute(r ApiImagesUnbin
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3153,8 +3165,8 @@ func (a *ImagesAPIService) ImagesUnbindImagesFromProjectExecute(r ApiImagesUnbin
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3163,15 +3175,15 @@ func (a *ImagesAPIService) ImagesUnbindImagesFromProjectExecute(r ApiImagesUnbin
 }
 
 type ApiImagesVsphereImagesRequest struct {
-	ctx context.Context
-	ApiService *ImagesAPIService
-	cloudId int32
-	limit *int32
-	offset *int32
-	sortBy *string
+	ctx           context.Context
+	ApiService    *ImagesAPIService
+	cloudId       int32
+	limit         *int32
+	offset        *int32
+	sortBy        *string
 	sortDirection *string
-	search *string
-	projectId *int32
+	search        *string
+	projectId     *int32
 }
 
 func (r ApiImagesVsphereImagesRequest) Limit(limit int32) ApiImagesVsphereImagesRequest {
@@ -3211,26 +3223,27 @@ func (r ApiImagesVsphereImagesRequest) Execute() (*PublicImageList, *http.Respon
 /*
 ImagesVsphereImages Retrieve vsphere images
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiImagesVsphereImagesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@return ApiImagesVsphereImagesRequest
 */
 func (a *ImagesAPIService) ImagesVsphereImages(ctx context.Context, cloudId int32) ApiImagesVsphereImagesRequest {
 	return ApiImagesVsphereImagesRequest{
 		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
+		ctx:        ctx,
+		cloudId:    cloudId,
 	}
 }
 
 // Execute executes the request
-//  @return PublicImageList
+//
+//	@return PublicImageList
 func (a *ImagesAPIService) ImagesVsphereImagesExecute(r ApiImagesVsphereImagesRequest) (*PublicImageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PublicImageList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PublicImageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesVsphereImages")
@@ -3323,8 +3336,8 @@ func (a *ImagesAPIService) ImagesVsphereImagesExecute(r ApiImagesVsphereImagesRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3334,8 +3347,8 @@ func (a *ImagesAPIService) ImagesVsphereImagesExecute(r ApiImagesVsphereImagesRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3345,8 +3358,8 @@ func (a *ImagesAPIService) ImagesVsphereImagesExecute(r ApiImagesVsphereImagesRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3356,8 +3369,8 @@ func (a *ImagesAPIService) ImagesVsphereImagesExecute(r ApiImagesVsphereImagesRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3367,8 +3380,8 @@ func (a *ImagesAPIService) ImagesVsphereImagesExecute(r ApiImagesVsphereImagesRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3378,8 +3391,8 @@ func (a *ImagesAPIService) ImagesVsphereImagesExecute(r ApiImagesVsphereImagesRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3397,16 +3410,16 @@ func (a *ImagesAPIService) ImagesVsphereImagesExecute(r ApiImagesVsphereImagesRe
 }
 
 type ApiImagesZadaraImagesListRequest struct {
-	ctx context.Context
-	ApiService *ImagesAPIService
-	cloudId int32
-	latest *bool
-	limit *int32
-	offset *int32
-	sortBy *string
+	ctx           context.Context
+	ApiService    *ImagesAPIService
+	cloudId       int32
+	latest        *bool
+	limit         *int32
+	offset        *int32
+	sortBy        *string
 	sortDirection *string
-	search *string
-	projectId *int32
+	search        *string
+	projectId     *int32
 }
 
 func (r ApiImagesZadaraImagesListRequest) Latest(latest bool) ApiImagesZadaraImagesListRequest {
@@ -3451,26 +3464,27 @@ func (r ApiImagesZadaraImagesListRequest) Execute() (*PublicImageList, *http.Res
 /*
 ImagesZadaraImagesList Retrieve zadara images
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiImagesZadaraImagesListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@return ApiImagesZadaraImagesListRequest
 */
 func (a *ImagesAPIService) ImagesZadaraImagesList(ctx context.Context, cloudId int32) ApiImagesZadaraImagesListRequest {
 	return ApiImagesZadaraImagesListRequest{
 		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
+		ctx:        ctx,
+		cloudId:    cloudId,
 	}
 }
 
 // Execute executes the request
-//  @return PublicImageList
+//
+//	@return PublicImageList
 func (a *ImagesAPIService) ImagesZadaraImagesListExecute(r ApiImagesZadaraImagesListRequest) (*PublicImageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PublicImageList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PublicImageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesZadaraImagesList")
@@ -3567,8 +3581,8 @@ func (a *ImagesAPIService) ImagesZadaraImagesListExecute(r ApiImagesZadaraImages
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3578,8 +3592,8 @@ func (a *ImagesAPIService) ImagesZadaraImagesListExecute(r ApiImagesZadaraImages
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3589,8 +3603,8 @@ func (a *ImagesAPIService) ImagesZadaraImagesListExecute(r ApiImagesZadaraImages
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3600,8 +3614,8 @@ func (a *ImagesAPIService) ImagesZadaraImagesListExecute(r ApiImagesZadaraImages
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3611,8 +3625,8 @@ func (a *ImagesAPIService) ImagesZadaraImagesListExecute(r ApiImagesZadaraImages
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3622,8 +3636,8 @@ func (a *ImagesAPIService) ImagesZadaraImagesListExecute(r ApiImagesZadaraImages
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3641,11 +3655,11 @@ func (a *ImagesAPIService) ImagesZadaraImagesListExecute(r ApiImagesZadaraImages
 }
 
 type ApiImagesZadaraPersonalImagesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ImagesAPIService
-	cloudId int32
-	search *string
-	projectId *int32
+	cloudId    int32
+	search     *string
+	projectId  *int32
 }
 
 func (r ApiImagesZadaraPersonalImagesRequest) Search(search string) ApiImagesZadaraPersonalImagesRequest {
@@ -3665,26 +3679,27 @@ func (r ApiImagesZadaraPersonalImagesRequest) Execute() ([]CommonStringBasedDrop
 /*
 ImagesZadaraPersonalImages Zadara personal images
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiImagesZadaraPersonalImagesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param cloudId
+	@return ApiImagesZadaraPersonalImagesRequest
 */
 func (a *ImagesAPIService) ImagesZadaraPersonalImages(ctx context.Context, cloudId int32) ApiImagesZadaraPersonalImagesRequest {
 	return ApiImagesZadaraPersonalImagesRequest{
 		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
+		ctx:        ctx,
+		cloudId:    cloudId,
 	}
 }
 
 // Execute executes the request
-//  @return []CommonStringBasedDropdownDto
+//
+//	@return []CommonStringBasedDropdownDto
 func (a *ImagesAPIService) ImagesZadaraPersonalImagesExecute(r ApiImagesZadaraPersonalImagesRequest) ([]CommonStringBasedDropdownDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CommonStringBasedDropdownDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []CommonStringBasedDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesZadaraPersonalImages")
@@ -3765,8 +3780,8 @@ func (a *ImagesAPIService) ImagesZadaraPersonalImagesExecute(r ApiImagesZadaraPe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3776,8 +3791,8 @@ func (a *ImagesAPIService) ImagesZadaraPersonalImagesExecute(r ApiImagesZadaraPe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3787,8 +3802,8 @@ func (a *ImagesAPIService) ImagesZadaraPersonalImagesExecute(r ApiImagesZadaraPe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3798,8 +3813,8 @@ func (a *ImagesAPIService) ImagesZadaraPersonalImagesExecute(r ApiImagesZadaraPe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3809,8 +3824,8 @@ func (a *ImagesAPIService) ImagesZadaraPersonalImagesExecute(r ApiImagesZadaraPe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3820,8 +3835,8 @@ func (a *ImagesAPIService) ImagesZadaraPersonalImagesExecute(r ApiImagesZadaraPe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

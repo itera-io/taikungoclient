@@ -21,12 +21,12 @@ var _ MappedNullable = &AccountList{}
 
 // AccountList struct for AccountList
 type AccountList struct {
-	Id int32 `json:"id"`
-	Name NullableString `json:"name"`
-	OrganizationsCount *int64 `json:"organizationsCount,omitempty"`
-	UsersCount *int64 `json:"usersCount,omitempty"`
-	GroupsCount *int64 `json:"groupsCount,omitempty"`
-	ProjectsCount *int64 `json:"projectsCount,omitempty"`
+	Id                   int32          `json:"id"`
+	Name                 NullableString `json:"name"`
+	OrganizationsCount   *int64         `json:"organizationsCount,omitempty"`
+	UsersCount           *int64         `json:"usersCount,omitempty"`
+	GroupsCount          *int64         `json:"groupsCount,omitempty"`
+	ProjectsCount        *int64         `json:"projectsCount,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -230,7 +230,7 @@ func (o *AccountList) SetProjectsCount(v int64) {
 }
 
 func (o AccountList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -275,10 +275,10 @@ func (o *AccountList) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -344,5 +344,3 @@ func (v *NullableAccountList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

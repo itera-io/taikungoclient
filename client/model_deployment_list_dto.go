@@ -20,12 +20,12 @@ var _ MappedNullable = &DeploymentListDto{}
 
 // DeploymentListDto struct for DeploymentListDto
 type DeploymentListDto struct {
-	State NullableString `json:"state,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Ready NullableString `json:"ready,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	Images []string `json:"images,omitempty"`
+	State                NullableString `json:"state,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Ready                NullableString `json:"ready,omitempty"`
+	CreatedAt            NullableString `json:"createdAt,omitempty"`
+	Namespace            NullableString `json:"namespace,omitempty"`
+	Images               []string       `json:"images,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -80,6 +80,7 @@ func (o *DeploymentListDto) HasState() bool {
 func (o *DeploymentListDto) SetState(v string) {
 	o.State.Set(&v)
 }
+
 // SetStateNil sets the value for State to be an explicit nil
 func (o *DeploymentListDto) SetStateNil() {
 	o.State.Set(nil)
@@ -122,6 +123,7 @@ func (o *DeploymentListDto) HasName() bool {
 func (o *DeploymentListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *DeploymentListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -164,6 +166,7 @@ func (o *DeploymentListDto) HasReady() bool {
 func (o *DeploymentListDto) SetReady(v string) {
 	o.Ready.Set(&v)
 }
+
 // SetReadyNil sets the value for Ready to be an explicit nil
 func (o *DeploymentListDto) SetReadyNil() {
 	o.Ready.Set(nil)
@@ -206,6 +209,7 @@ func (o *DeploymentListDto) HasCreatedAt() bool {
 func (o *DeploymentListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
+
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *DeploymentListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -248,6 +252,7 @@ func (o *DeploymentListDto) HasNamespace() bool {
 func (o *DeploymentListDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
+
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *DeploymentListDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -292,7 +297,7 @@ func (o *DeploymentListDto) SetImages(v []string) {
 }
 
 func (o DeploymentListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -388,5 +393,3 @@ func (v *NullableDeploymentListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

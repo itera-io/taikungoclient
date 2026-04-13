@@ -20,8 +20,8 @@ var _ MappedNullable = &StandAloneMetaDataDto{}
 
 // StandAloneMetaDataDto struct for StandAloneMetaDataDto
 type StandAloneMetaDataDto struct {
-	Key NullableString `json:"key,omitempty"`
-	Value NullableString `json:"value,omitempty"`
+	Key                  NullableString `json:"key,omitempty"`
+	Value                NullableString `json:"value,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,6 +76,7 @@ func (o *StandAloneMetaDataDto) HasKey() bool {
 func (o *StandAloneMetaDataDto) SetKey(v string) {
 	o.Key.Set(&v)
 }
+
 // SetKeyNil sets the value for Key to be an explicit nil
 func (o *StandAloneMetaDataDto) SetKeyNil() {
 	o.Key.Set(nil)
@@ -118,6 +119,7 @@ func (o *StandAloneMetaDataDto) HasValue() bool {
 func (o *StandAloneMetaDataDto) SetValue(v string) {
 	o.Value.Set(&v)
 }
+
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *StandAloneMetaDataDto) SetValueNil() {
 	o.Value.Set(nil)
@@ -129,7 +131,7 @@ func (o *StandAloneMetaDataDto) UnsetValue() {
 }
 
 func (o StandAloneMetaDataDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -209,5 +211,3 @@ func (v *NullableStandAloneMetaDataDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

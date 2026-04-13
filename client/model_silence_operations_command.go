@@ -20,9 +20,9 @@ var _ MappedNullable = &SilenceOperationsCommand{}
 
 // SilenceOperationsCommand struct for SilenceOperationsCommand
 type SilenceOperationsCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Mode NullableString `json:"mode,omitempty"`
-	Reason NullableString `json:"reason,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Mode                 NullableString `json:"mode,omitempty"`
+	Reason               NullableString `json:"reason,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,6 +109,7 @@ func (o *SilenceOperationsCommand) HasMode() bool {
 func (o *SilenceOperationsCommand) SetMode(v string) {
 	o.Mode.Set(&v)
 }
+
 // SetModeNil sets the value for Mode to be an explicit nil
 func (o *SilenceOperationsCommand) SetModeNil() {
 	o.Mode.Set(nil)
@@ -151,6 +152,7 @@ func (o *SilenceOperationsCommand) HasReason() bool {
 func (o *SilenceOperationsCommand) SetReason(v string) {
 	o.Reason.Set(&v)
 }
+
 // SetReasonNil sets the value for Reason to be an explicit nil
 func (o *SilenceOperationsCommand) SetReasonNil() {
 	o.Reason.Set(nil)
@@ -162,7 +164,7 @@ func (o *SilenceOperationsCommand) UnsetReason() {
 }
 
 func (o SilenceOperationsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -246,5 +248,3 @@ func (v *NullableSilenceOperationsCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,13 +19,12 @@ import (
 	"net/url"
 )
 
-
 // ExecutorsAPIService ExecutorsAPI service
 type ExecutorsAPIService service
 
 type ApiExecutorsCreateRequest struct {
-	ctx context.Context
-	ApiService *ExecutorsAPIService
+	ctx                   context.Context
+	ApiService            *ExecutorsAPIService
 	createExecutorCommand *CreateExecutorCommand
 }
 
@@ -41,22 +40,22 @@ func (r ApiExecutorsCreateRequest) Execute() (*http.Response, error) {
 /*
 ExecutorsCreate Create an executor
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiExecutorsCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiExecutorsCreateRequest
 */
 func (a *ExecutorsAPIService) ExecutorsCreate(ctx context.Context) ApiExecutorsCreateRequest {
 	return ApiExecutorsCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ExecutorsAPIService) ExecutorsCreateExecute(r ApiExecutorsCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutorsAPIService.ExecutorsCreate")
@@ -132,8 +131,8 @@ func (a *ExecutorsAPIService) ExecutorsCreateExecute(r ApiExecutorsCreateRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -143,8 +142,8 @@ func (a *ExecutorsAPIService) ExecutorsCreateExecute(r ApiExecutorsCreateRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -154,8 +153,8 @@ func (a *ExecutorsAPIService) ExecutorsCreateExecute(r ApiExecutorsCreateRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -165,8 +164,8 @@ func (a *ExecutorsAPIService) ExecutorsCreateExecute(r ApiExecutorsCreateRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -176,8 +175,8 @@ func (a *ExecutorsAPIService) ExecutorsCreateExecute(r ApiExecutorsCreateRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -187,8 +186,8 @@ func (a *ExecutorsAPIService) ExecutorsCreateExecute(r ApiExecutorsCreateRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -197,8 +196,8 @@ func (a *ExecutorsAPIService) ExecutorsCreateExecute(r ApiExecutorsCreateRequest
 }
 
 type ApiExecutorsDeleteRequest struct {
-	ctx context.Context
-	ApiService *ExecutorsAPIService
+	ctx                   context.Context
+	ApiService            *ExecutorsAPIService
 	deleteExecutorCommand *DeleteExecutorCommand
 }
 
@@ -214,22 +213,22 @@ func (r ApiExecutorsDeleteRequest) Execute() (*http.Response, error) {
 /*
 ExecutorsDelete Delete an executor
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiExecutorsDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiExecutorsDeleteRequest
 */
 func (a *ExecutorsAPIService) ExecutorsDelete(ctx context.Context) ApiExecutorsDeleteRequest {
 	return ApiExecutorsDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ExecutorsAPIService) ExecutorsDeleteExecute(r ApiExecutorsDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutorsAPIService.ExecutorsDelete")
@@ -305,8 +304,8 @@ func (a *ExecutorsAPIService) ExecutorsDeleteExecute(r ApiExecutorsDeleteRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -316,8 +315,8 @@ func (a *ExecutorsAPIService) ExecutorsDeleteExecute(r ApiExecutorsDeleteRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -327,8 +326,8 @@ func (a *ExecutorsAPIService) ExecutorsDeleteExecute(r ApiExecutorsDeleteRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -338,8 +337,8 @@ func (a *ExecutorsAPIService) ExecutorsDeleteExecute(r ApiExecutorsDeleteRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -349,8 +348,8 @@ func (a *ExecutorsAPIService) ExecutorsDeleteExecute(r ApiExecutorsDeleteRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -360,8 +359,8 @@ func (a *ExecutorsAPIService) ExecutorsDeleteExecute(r ApiExecutorsDeleteRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -370,8 +369,8 @@ func (a *ExecutorsAPIService) ExecutorsDeleteExecute(r ApiExecutorsDeleteRequest
 }
 
 type ApiExecutorsEditHealthRequest struct {
-	ctx context.Context
-	ApiService *ExecutorsAPIService
+	ctx                               context.Context
+	ApiService                        *ExecutorsAPIService
 	updateExecutorHealthStatusCommand *UpdateExecutorHealthStatusCommand
 }
 
@@ -387,22 +386,22 @@ func (r ApiExecutorsEditHealthRequest) Execute() (*http.Response, error) {
 /*
 ExecutorsEditHealth Update health status of the executor by Id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiExecutorsEditHealthRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiExecutorsEditHealthRequest
 */
 func (a *ExecutorsAPIService) ExecutorsEditHealth(ctx context.Context) ApiExecutorsEditHealthRequest {
 	return ApiExecutorsEditHealthRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ExecutorsAPIService) ExecutorsEditHealthExecute(r ApiExecutorsEditHealthRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutorsAPIService.ExecutorsEditHealth")
@@ -478,8 +477,8 @@ func (a *ExecutorsAPIService) ExecutorsEditHealthExecute(r ApiExecutorsEditHealt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -489,8 +488,8 @@ func (a *ExecutorsAPIService) ExecutorsEditHealthExecute(r ApiExecutorsEditHealt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -500,8 +499,8 @@ func (a *ExecutorsAPIService) ExecutorsEditHealthExecute(r ApiExecutorsEditHealt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -511,8 +510,8 @@ func (a *ExecutorsAPIService) ExecutorsEditHealthExecute(r ApiExecutorsEditHealt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -522,8 +521,8 @@ func (a *ExecutorsAPIService) ExecutorsEditHealthExecute(r ApiExecutorsEditHealt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -533,8 +532,8 @@ func (a *ExecutorsAPIService) ExecutorsEditHealthExecute(r ApiExecutorsEditHealt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -543,14 +542,14 @@ func (a *ExecutorsAPIService) ExecutorsEditHealthExecute(r ApiExecutorsEditHealt
 }
 
 type ApiExecutorsListRequest struct {
-	ctx context.Context
-	ApiService *ExecutorsAPIService
-	offset *int32
-	limit *int32
-	sortBy *string
+	ctx           context.Context
+	ApiService    *ExecutorsAPIService
+	offset        *int32
+	limit         *int32
+	sortBy        *string
 	sortDirection *string
-	search *string
-	id *int32
+	search        *string
+	id            *int32
 }
 
 func (r ApiExecutorsListRequest) Offset(offset int32) ApiExecutorsListRequest {
@@ -590,24 +589,25 @@ func (r ApiExecutorsListRequest) Execute() (*ExecutorListResponse, *http.Respons
 /*
 ExecutorsList Retrieve a list of kube configs of executors
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiExecutorsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiExecutorsListRequest
 */
 func (a *ExecutorsAPIService) ExecutorsList(ctx context.Context) ApiExecutorsListRequest {
 	return ApiExecutorsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ExecutorListResponse
+//
+//	@return ExecutorListResponse
 func (a *ExecutorsAPIService) ExecutorsListExecute(r ApiExecutorsListRequest) (*ExecutorListResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ExecutorListResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ExecutorListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutorsAPIService.ExecutorsList")
@@ -699,8 +699,8 @@ func (a *ExecutorsAPIService) ExecutorsListExecute(r ApiExecutorsListRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -710,8 +710,8 @@ func (a *ExecutorsAPIService) ExecutorsListExecute(r ApiExecutorsListRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -721,8 +721,8 @@ func (a *ExecutorsAPIService) ExecutorsListExecute(r ApiExecutorsListRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -732,8 +732,8 @@ func (a *ExecutorsAPIService) ExecutorsListExecute(r ApiExecutorsListRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -743,8 +743,8 @@ func (a *ExecutorsAPIService) ExecutorsListExecute(r ApiExecutorsListRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -754,8 +754,8 @@ func (a *ExecutorsAPIService) ExecutorsListExecute(r ApiExecutorsListRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -773,8 +773,8 @@ func (a *ExecutorsAPIService) ExecutorsListExecute(r ApiExecutorsListRequest) (*
 }
 
 type ApiExecutorsToggleRequest struct {
-	ctx context.Context
-	ApiService *ExecutorsAPIService
+	ctx                   context.Context
+	ApiService            *ExecutorsAPIService
 	toggleExecutorCommand *ToggleExecutorCommand
 }
 
@@ -790,22 +790,22 @@ func (r ApiExecutorsToggleRequest) Execute() (*http.Response, error) {
 /*
 ExecutorsToggle Toggle an executor
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiExecutorsToggleRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiExecutorsToggleRequest
 */
 func (a *ExecutorsAPIService) ExecutorsToggle(ctx context.Context) ApiExecutorsToggleRequest {
 	return ApiExecutorsToggleRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ExecutorsAPIService) ExecutorsToggleExecute(r ApiExecutorsToggleRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutorsAPIService.ExecutorsToggle")
@@ -881,8 +881,8 @@ func (a *ExecutorsAPIService) ExecutorsToggleExecute(r ApiExecutorsToggleRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -892,8 +892,8 @@ func (a *ExecutorsAPIService) ExecutorsToggleExecute(r ApiExecutorsToggleRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -903,8 +903,8 @@ func (a *ExecutorsAPIService) ExecutorsToggleExecute(r ApiExecutorsToggleRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -914,8 +914,8 @@ func (a *ExecutorsAPIService) ExecutorsToggleExecute(r ApiExecutorsToggleRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -925,8 +925,8 @@ func (a *ExecutorsAPIService) ExecutorsToggleExecute(r ApiExecutorsToggleRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -936,8 +936,8 @@ func (a *ExecutorsAPIService) ExecutorsToggleExecute(r ApiExecutorsToggleRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

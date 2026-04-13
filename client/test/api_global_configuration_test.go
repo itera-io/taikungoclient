@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_GlobalConfigurationAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_GlobalConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test GlobalConfigurationAPIService GlobalConfigurationsCreateAiBackend", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.GlobalConfigurationAPI.GlobalConfigurationsCreateAiBackend(context.Background()).Execute()
 
@@ -35,7 +35,7 @@ func Test_taikuncore_GlobalConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test GlobalConfigurationAPIService GlobalConfigurationsCreateEmailConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.GlobalConfigurationAPI.GlobalConfigurationsCreateEmailConfig(context.Background()).Execute()
 
@@ -46,7 +46,7 @@ func Test_taikuncore_GlobalConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test GlobalConfigurationAPIService GlobalConfigurationsCreateSlackConfiguration", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.GlobalConfigurationAPI.GlobalConfigurationsCreateSlackConfiguration(context.Background()).Execute()
 
@@ -57,7 +57,7 @@ func Test_taikuncore_GlobalConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test GlobalConfigurationAPIService GlobalConfigurationsDeleteAiBackend", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id int32
 
@@ -70,7 +70,7 @@ func Test_taikuncore_GlobalConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test GlobalConfigurationAPIService GlobalConfigurationsDeleteSlackConfiguration", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id int32
 
@@ -83,7 +83,7 @@ func Test_taikuncore_GlobalConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test GlobalConfigurationAPIService GlobalConfigurationsListAiBackendConfiguration", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.GlobalConfigurationAPI.GlobalConfigurationsListAiBackendConfiguration(context.Background()).Execute()
 
@@ -95,7 +95,7 @@ func Test_taikuncore_GlobalConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test GlobalConfigurationAPIService GlobalConfigurationsListSlackConfiguration", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.GlobalConfigurationAPI.GlobalConfigurationsListSlackConfiguration(context.Background()).Execute()
 
@@ -107,7 +107,7 @@ func Test_taikuncore_GlobalConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test GlobalConfigurationAPIService GlobalConfigurationsUpdateStatusAiBackend", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.GlobalConfigurationAPI.GlobalConfigurationsUpdateStatusAiBackend(context.Background()).Execute()
 
@@ -118,7 +118,7 @@ func Test_taikuncore_GlobalConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test GlobalConfigurationAPIService GlobalConfigurationsUpdateStatusSlackConfiguration", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.GlobalConfigurationAPI.GlobalConfigurationsUpdateStatusSlackConfiguration(context.Background()).Execute()
 

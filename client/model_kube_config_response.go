@@ -21,7 +21,7 @@ var _ MappedNullable = &KubeConfigResponse{}
 
 // KubeConfigResponse struct for KubeConfigResponse
 type KubeConfigResponse struct {
-	Data NullableString `json:"data"`
+	Data                 NullableString `json:"data"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -72,7 +72,7 @@ func (o *KubeConfigResponse) SetData(v string) {
 }
 
 func (o KubeConfigResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -103,10 +103,10 @@ func (o *KubeConfigResponse) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -167,5 +167,3 @@ func (v *NullableKubeConfigResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

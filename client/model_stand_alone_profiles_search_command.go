@@ -20,9 +20,9 @@ var _ MappedNullable = &StandAloneProfilesSearchCommand{}
 
 // StandAloneProfilesSearchCommand struct for StandAloneProfilesSearchCommand
 type StandAloneProfilesSearchCommand struct {
-	Limit NullableInt32 `json:"limit,omitempty"`
-	Offset NullableInt32 `json:"offset,omitempty"`
-	SearchTerm NullableString `json:"searchTerm,omitempty"`
+	Limit                NullableInt32  `json:"limit,omitempty"`
+	Offset               NullableInt32  `json:"offset,omitempty"`
+	SearchTerm           NullableString `json:"searchTerm,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,6 +77,7 @@ func (o *StandAloneProfilesSearchCommand) HasLimit() bool {
 func (o *StandAloneProfilesSearchCommand) SetLimit(v int32) {
 	o.Limit.Set(&v)
 }
+
 // SetLimitNil sets the value for Limit to be an explicit nil
 func (o *StandAloneProfilesSearchCommand) SetLimitNil() {
 	o.Limit.Set(nil)
@@ -119,6 +120,7 @@ func (o *StandAloneProfilesSearchCommand) HasOffset() bool {
 func (o *StandAloneProfilesSearchCommand) SetOffset(v int32) {
 	o.Offset.Set(&v)
 }
+
 // SetOffsetNil sets the value for Offset to be an explicit nil
 func (o *StandAloneProfilesSearchCommand) SetOffsetNil() {
 	o.Offset.Set(nil)
@@ -161,6 +163,7 @@ func (o *StandAloneProfilesSearchCommand) HasSearchTerm() bool {
 func (o *StandAloneProfilesSearchCommand) SetSearchTerm(v string) {
 	o.SearchTerm.Set(&v)
 }
+
 // SetSearchTermNil sets the value for SearchTerm to be an explicit nil
 func (o *StandAloneProfilesSearchCommand) SetSearchTermNil() {
 	o.SearchTerm.Set(nil)
@@ -172,7 +175,7 @@ func (o *StandAloneProfilesSearchCommand) UnsetSearchTerm() {
 }
 
 func (o StandAloneProfilesSearchCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -256,5 +259,3 @@ func (v *NullableStandAloneProfilesSearchCommand) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

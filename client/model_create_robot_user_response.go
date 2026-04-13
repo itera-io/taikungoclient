@@ -20,8 +20,8 @@ var _ MappedNullable = &CreateRobotUserResponse{}
 
 // CreateRobotUserResponse struct for CreateRobotUserResponse
 type CreateRobotUserResponse struct {
-	AccessKey NullableString `json:"accessKey,omitempty"`
-	SecretKey NullableString `json:"secretKey,omitempty"`
+	AccessKey            NullableString `json:"accessKey,omitempty"`
+	SecretKey            NullableString `json:"secretKey,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,6 +76,7 @@ func (o *CreateRobotUserResponse) HasAccessKey() bool {
 func (o *CreateRobotUserResponse) SetAccessKey(v string) {
 	o.AccessKey.Set(&v)
 }
+
 // SetAccessKeyNil sets the value for AccessKey to be an explicit nil
 func (o *CreateRobotUserResponse) SetAccessKeyNil() {
 	o.AccessKey.Set(nil)
@@ -118,6 +119,7 @@ func (o *CreateRobotUserResponse) HasSecretKey() bool {
 func (o *CreateRobotUserResponse) SetSecretKey(v string) {
 	o.SecretKey.Set(&v)
 }
+
 // SetSecretKeyNil sets the value for SecretKey to be an explicit nil
 func (o *CreateRobotUserResponse) SetSecretKeyNil() {
 	o.SecretKey.Set(nil)
@@ -129,7 +131,7 @@ func (o *CreateRobotUserResponse) UnsetSecretKey() {
 }
 
 func (o CreateRobotUserResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -209,5 +211,3 @@ func (v *NullableCreateRobotUserResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

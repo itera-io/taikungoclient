@@ -20,10 +20,10 @@ var _ MappedNullable = &SecretListDto{}
 
 // SecretListDto struct for SecretListDto
 type SecretListDto struct {
-	Name NullableString `json:"name,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	Type NullableString `json:"type,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Namespace            NullableString `json:"namespace,omitempty"`
+	Type                 NullableString `json:"type,omitempty"`
+	CreatedAt            NullableString `json:"createdAt,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,6 +78,7 @@ func (o *SecretListDto) HasName() bool {
 func (o *SecretListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *SecretListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -120,6 +121,7 @@ func (o *SecretListDto) HasNamespace() bool {
 func (o *SecretListDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
+
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *SecretListDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -162,6 +164,7 @@ func (o *SecretListDto) HasType() bool {
 func (o *SecretListDto) SetType(v string) {
 	o.Type.Set(&v)
 }
+
 // SetTypeNil sets the value for Type to be an explicit nil
 func (o *SecretListDto) SetTypeNil() {
 	o.Type.Set(nil)
@@ -204,6 +207,7 @@ func (o *SecretListDto) HasCreatedAt() bool {
 func (o *SecretListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
+
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *SecretListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -215,7 +219,7 @@ func (o *SecretListDto) UnsetCreatedAt() {
 }
 
 func (o SecretListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -303,5 +307,3 @@ func (v *NullableSecretListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

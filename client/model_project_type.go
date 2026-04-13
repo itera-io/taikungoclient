@@ -22,7 +22,7 @@ type ProjectType string
 // List of ProjectType
 const (
 	PROJECTTYPE_K8_S ProjectType = "K8S"
-	PROJECTTYPE_VM ProjectType = "VM"
+	PROJECTTYPE_VM   ProjectType = "VM"
 )
 
 // All allowed values of ProjectType enum
@@ -109,4 +109,3 @@ func (v *NullableProjectType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

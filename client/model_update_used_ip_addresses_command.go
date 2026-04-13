@@ -20,7 +20,7 @@ var _ MappedNullable = &UpdateUsedIpAddressesCommand{}
 
 // UpdateUsedIpAddressesCommand struct for UpdateUsedIpAddressesCommand
 type UpdateUsedIpAddressesCommand struct {
-	IpAddress []string `json:"ipAddress,omitempty"`
+	IpAddress            []string `json:"ipAddress,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,7 +77,7 @@ func (o *UpdateUsedIpAddressesCommand) SetIpAddress(v []string) {
 }
 
 func (o UpdateUsedIpAddressesCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -153,5 +153,3 @@ func (v *NullableUpdateUsedIpAddressesCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

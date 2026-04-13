@@ -21,11 +21,11 @@ var _ MappedNullable = &InfraBillingSummariesCreateCommand{}
 
 // InfraBillingSummariesCreateCommand struct for InfraBillingSummariesCreateCommand
 type InfraBillingSummariesCreateCommand struct {
-	Price *float64 `json:"price,omitempty"`
-	OrganizationId *int32 `json:"organizationId,omitempty"`
-	BeginApply NullableTime `json:"beginApply,omitempty"`
-	EndApply NullableTime `json:"endApply,omitempty"`
-	ProductId *int32 `json:"productId,omitempty"`
+	Price                *float64     `json:"price,omitempty"`
+	OrganizationId       *int32       `json:"organizationId,omitempty"`
+	BeginApply           NullableTime `json:"beginApply,omitempty"`
+	EndApply             NullableTime `json:"endApply,omitempty"`
+	ProductId            *int32       `json:"productId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -144,6 +144,7 @@ func (o *InfraBillingSummariesCreateCommand) HasBeginApply() bool {
 func (o *InfraBillingSummariesCreateCommand) SetBeginApply(v time.Time) {
 	o.BeginApply.Set(&v)
 }
+
 // SetBeginApplyNil sets the value for BeginApply to be an explicit nil
 func (o *InfraBillingSummariesCreateCommand) SetBeginApplyNil() {
 	o.BeginApply.Set(nil)
@@ -186,6 +187,7 @@ func (o *InfraBillingSummariesCreateCommand) HasEndApply() bool {
 func (o *InfraBillingSummariesCreateCommand) SetEndApply(v time.Time) {
 	o.EndApply.Set(&v)
 }
+
 // SetEndApplyNil sets the value for EndApply to be an explicit nil
 func (o *InfraBillingSummariesCreateCommand) SetEndApplyNil() {
 	o.EndApply.Set(nil)
@@ -229,7 +231,7 @@ func (o *InfraBillingSummariesCreateCommand) SetProductId(v int32) {
 }
 
 func (o InfraBillingSummariesCreateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -321,5 +323,3 @@ func (v *NullableInfraBillingSummariesCreateCommand) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

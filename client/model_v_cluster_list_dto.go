@@ -21,40 +21,40 @@ var _ MappedNullable = &VClusterListDto{}
 
 // VClusterListDto struct for VClusterListDto
 type VClusterListDto struct {
-	Id int32 `json:"id"`
-	Name string `json:"name"`
-	IsVirtualCluster bool `json:"isVirtualCluster"`
-	IsLocked bool `json:"isLocked"`
-	HasKubeConfigFile bool `json:"hasKubeConfigFile"`
-	IsMaintenanceModeEnabled bool `json:"isMaintenanceModeEnabled"`
-	OrganizationName string `json:"organizationName"`
-	OrganizationId int32 `json:"organizationId"`
-	KubernetesVersion string `json:"kubernetesVersion"`
-	CreatedAt string `json:"createdAt"`
-	CreatedBy string `json:"createdBy"`
-	LastModified string `json:"lastModified"`
-	LastModifiedBy string `json:"lastModifiedBy"`
-	AlertsCount int32 `json:"alertsCount"`
-	ExpiredAt string `json:"expiredAt"`
-	DeleteOnExpiration bool `json:"deleteOnExpiration"`
-	WasmEnabled bool `json:"wasmEnabled"`
-	AlertingProfileId NullableInt32 `json:"alertingProfileId"`
-	AlertingProfileName NullableString `json:"alertingProfileName"`
-	AccessIp string `json:"accessIp"`
-	CloudType ECloudCredentialType `json:"cloudType"`
-	Status ProjectStatus `json:"status"`
-	Health ProjectHealth `json:"health"`
-	WorkloadResources *VClusterWorkloadResourcesListDto `json:"workloadResources,omitempty"`
-	CpuLimits *VClusterResourceLimitsListDto `json:"cpuLimits,omitempty"`
-	RamLimits *VClusterResourceLimitsListDto `json:"ramLimits,omitempty"`
-	EphemeralStorageLimits *VClusterResourceLimitsListDto `json:"ephemeralStorageLimits,omitempty"`
-	LockButton ButtonStatusDto `json:"lockButton"`
-	UnlockButton ButtonStatusDto `json:"unlockButton"`
-	DeleteButton ButtonStatusDto `json:"deleteButton"`
-	KubeInfoButton ButtonStatusDto `json:"kubeInfoButton"`
-	SetExpirationDateButton ButtonStatusDto `json:"setExpirationDateButton"`
-	ResetStatusButton ButtonStatusDto `json:"resetStatusButton"`
-	AdditionalProperties map[string]interface{}
+	Id                       int32                             `json:"id"`
+	Name                     string                            `json:"name"`
+	IsVirtualCluster         bool                              `json:"isVirtualCluster"`
+	IsLocked                 bool                              `json:"isLocked"`
+	HasKubeConfigFile        bool                              `json:"hasKubeConfigFile"`
+	IsMaintenanceModeEnabled bool                              `json:"isMaintenanceModeEnabled"`
+	OrganizationName         string                            `json:"organizationName"`
+	OrganizationId           int32                             `json:"organizationId"`
+	KubernetesVersion        string                            `json:"kubernetesVersion"`
+	CreatedAt                string                            `json:"createdAt"`
+	CreatedBy                string                            `json:"createdBy"`
+	LastModified             string                            `json:"lastModified"`
+	LastModifiedBy           string                            `json:"lastModifiedBy"`
+	AlertsCount              int32                             `json:"alertsCount"`
+	ExpiredAt                string                            `json:"expiredAt"`
+	DeleteOnExpiration       bool                              `json:"deleteOnExpiration"`
+	WasmEnabled              bool                              `json:"wasmEnabled"`
+	AlertingProfileId        NullableInt32                     `json:"alertingProfileId"`
+	AlertingProfileName      NullableString                    `json:"alertingProfileName"`
+	AccessIp                 string                            `json:"accessIp"`
+	CloudType                ECloudCredentialType              `json:"cloudType"`
+	Status                   ProjectStatus                     `json:"status"`
+	Health                   ProjectHealth                     `json:"health"`
+	WorkloadResources        *VClusterWorkloadResourcesListDto `json:"workloadResources,omitempty"`
+	CpuLimits                *VClusterResourceLimitsListDto    `json:"cpuLimits,omitempty"`
+	RamLimits                *VClusterResourceLimitsListDto    `json:"ramLimits,omitempty"`
+	EphemeralStorageLimits   *VClusterResourceLimitsListDto    `json:"ephemeralStorageLimits,omitempty"`
+	LockButton               ButtonStatusDto                   `json:"lockButton"`
+	UnlockButton             ButtonStatusDto                   `json:"unlockButton"`
+	DeleteButton             ButtonStatusDto                   `json:"deleteButton"`
+	KubeInfoButton           ButtonStatusDto                   `json:"kubeInfoButton"`
+	SetExpirationDateButton  ButtonStatusDto                   `json:"setExpirationDateButton"`
+	ResetStatusButton        ButtonStatusDto                   `json:"resetStatusButton"`
+	AdditionalProperties     map[string]interface{}
 }
 
 type _VClusterListDto VClusterListDto
@@ -934,7 +934,7 @@ func (o *VClusterListDto) SetResetStatusButton(v ButtonStatusDto) {
 }
 
 func (o VClusterListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1033,10 +1033,10 @@ func (o *VClusterListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -1129,5 +1129,3 @@ func (v *NullableVClusterListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

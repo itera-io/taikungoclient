@@ -20,7 +20,7 @@ var _ MappedNullable = &VirtualClusterDisableMonitoringCommand{}
 
 // VirtualClusterDisableMonitoringCommand struct for VirtualClusterDisableMonitoringCommand
 type VirtualClusterDisableMonitoringCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
+	ProjectId            *int32 `json:"projectId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,7 @@ func (o *VirtualClusterDisableMonitoringCommand) SetProjectId(v int32) {
 }
 
 func (o VirtualClusterDisableMonitoringCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -152,5 +152,3 @@ func (v *NullableVirtualClusterDisableMonitoringCommand) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

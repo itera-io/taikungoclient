@@ -20,8 +20,8 @@ var _ MappedNullable = &UpdateStageCommand{}
 
 // UpdateStageCommand struct for UpdateStageCommand
 type UpdateStageCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	Stage NullableString `json:"stage,omitempty"`
+	ProjectId            *int32         `json:"projectId,omitempty"`
+	Stage                NullableString `json:"stage,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,6 +108,7 @@ func (o *UpdateStageCommand) HasStage() bool {
 func (o *UpdateStageCommand) SetStage(v string) {
 	o.Stage.Set(&v)
 }
+
 // SetStageNil sets the value for Stage to be an explicit nil
 func (o *UpdateStageCommand) SetStageNil() {
 	o.Stage.Set(nil)
@@ -119,7 +120,7 @@ func (o *UpdateStageCommand) UnsetStage() {
 }
 
 func (o UpdateStageCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -199,5 +200,3 @@ func (v *NullableUpdateStageCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

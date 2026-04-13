@@ -20,10 +20,10 @@ var _ MappedNullable = &UpdateAlertingProfileCommand{}
 
 // UpdateAlertingProfileCommand struct for UpdateAlertingProfileCommand
 type UpdateAlertingProfileCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	SlackConfigurationId NullableInt32 `json:"slackConfigurationId,omitempty"`
-	Reminder *AlertingReminder `json:"reminder,omitempty"`
+	Id                   *int32            `json:"id,omitempty"`
+	Name                 NullableString    `json:"name,omitempty"`
+	SlackConfigurationId NullableInt32     `json:"slackConfigurationId,omitempty"`
+	Reminder             *AlertingReminder `json:"reminder,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -110,6 +110,7 @@ func (o *UpdateAlertingProfileCommand) HasName() bool {
 func (o *UpdateAlertingProfileCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UpdateAlertingProfileCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -152,6 +153,7 @@ func (o *UpdateAlertingProfileCommand) HasSlackConfigurationId() bool {
 func (o *UpdateAlertingProfileCommand) SetSlackConfigurationId(v int32) {
 	o.SlackConfigurationId.Set(&v)
 }
+
 // SetSlackConfigurationIdNil sets the value for SlackConfigurationId to be an explicit nil
 func (o *UpdateAlertingProfileCommand) SetSlackConfigurationIdNil() {
 	o.SlackConfigurationId.Set(nil)
@@ -195,7 +197,7 @@ func (o *UpdateAlertingProfileCommand) SetReminder(v AlertingReminder) {
 }
 
 func (o UpdateAlertingProfileCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -283,5 +285,3 @@ func (v *NullableUpdateAlertingProfileCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

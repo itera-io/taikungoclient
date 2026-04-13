@@ -20,8 +20,8 @@ var _ MappedNullable = &ImageByIdCommand{}
 
 // ImageByIdCommand struct for ImageByIdCommand
 type ImageByIdCommand struct {
-	CloudId *int32 `json:"cloudId,omitempty"`
-	ImageId NullableString `json:"imageId,omitempty"`
+	CloudId              *int32         `json:"cloudId,omitempty"`
+	ImageId              NullableString `json:"imageId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,6 +108,7 @@ func (o *ImageByIdCommand) HasImageId() bool {
 func (o *ImageByIdCommand) SetImageId(v string) {
 	o.ImageId.Set(&v)
 }
+
 // SetImageIdNil sets the value for ImageId to be an explicit nil
 func (o *ImageByIdCommand) SetImageIdNil() {
 	o.ImageId.Set(nil)
@@ -119,7 +120,7 @@ func (o *ImageByIdCommand) UnsetImageId() {
 }
 
 func (o ImageByIdCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -199,5 +200,3 @@ func (v *NullableImageByIdCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

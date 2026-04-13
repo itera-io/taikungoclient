@@ -20,8 +20,8 @@ var _ MappedNullable = &StandAloneProfileUpdateCommand{}
 
 // StandAloneProfileUpdateCommand struct for StandAloneProfileUpdateCommand
 type StandAloneProfileUpdateCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,6 +108,7 @@ func (o *StandAloneProfileUpdateCommand) HasName() bool {
 func (o *StandAloneProfileUpdateCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *StandAloneProfileUpdateCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -119,7 +120,7 @@ func (o *StandAloneProfileUpdateCommand) UnsetName() {
 }
 
 func (o StandAloneProfileUpdateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -199,5 +200,3 @@ func (v *NullableStandAloneProfileUpdateCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

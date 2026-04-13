@@ -21,18 +21,18 @@ var _ MappedNullable = &OperationCredentialsListDto{}
 
 // OperationCredentialsListDto struct for OperationCredentialsListDto
 type OperationCredentialsListDto struct {
-	Id int32 `json:"id"`
-	Name string `json:"name"`
-	PrometheusUsername string `json:"prometheusUsername"`
-	PrometheusUrl string `json:"prometheusUrl"`
-	OrganizationId NullableInt32 `json:"organizationId"`
-	OrganizationName string `json:"organizationName"`
-	IsLocked bool `json:"isLocked"`
-	Rules []SimplePrometheusEntity `json:"rules"`
-	CreatedBy NullableString `json:"createdBy"`
-	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
-	IsDefault bool `json:"isDefault"`
+	Id                   int32                    `json:"id"`
+	Name                 string                   `json:"name"`
+	PrometheusUsername   string                   `json:"prometheusUsername"`
+	PrometheusUrl        string                   `json:"prometheusUrl"`
+	OrganizationId       NullableInt32            `json:"organizationId"`
+	OrganizationName     string                   `json:"organizationName"`
+	IsLocked             bool                     `json:"isLocked"`
+	Rules                []SimplePrometheusEntity `json:"rules"`
+	CreatedBy            NullableString           `json:"createdBy"`
+	LastModified         NullableString           `json:"lastModified"`
+	LastModifiedBy       NullableString           `json:"lastModifiedBy"`
+	IsDefault            bool                     `json:"isDefault"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -364,7 +364,7 @@ func (o *OperationCredentialsListDto) SetIsDefault(v bool) {
 }
 
 func (o OperationCredentialsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -417,10 +417,10 @@ func (o *OperationCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -492,5 +492,3 @@ func (v *NullableOperationCredentialsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

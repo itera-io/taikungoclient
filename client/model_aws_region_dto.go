@@ -20,8 +20,8 @@ var _ MappedNullable = &AwsRegionDto{}
 
 // AwsRegionDto struct for AwsRegionDto
 type AwsRegionDto struct {
-	Name NullableString `json:"name,omitempty"`
-	Region NullableString `json:"region,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Region               NullableString `json:"region,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,6 +76,7 @@ func (o *AwsRegionDto) HasName() bool {
 func (o *AwsRegionDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *AwsRegionDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -118,6 +119,7 @@ func (o *AwsRegionDto) HasRegion() bool {
 func (o *AwsRegionDto) SetRegion(v string) {
 	o.Region.Set(&v)
 }
+
 // SetRegionNil sets the value for Region to be an explicit nil
 func (o *AwsRegionDto) SetRegionNil() {
 	o.Region.Set(nil)
@@ -129,7 +131,7 @@ func (o *AwsRegionDto) UnsetRegion() {
 }
 
 func (o AwsRegionDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -209,5 +211,3 @@ func (v *NullableAwsRegionDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

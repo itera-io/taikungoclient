@@ -21,15 +21,15 @@ var _ MappedNullable = &AccountSsoConfigDto{}
 
 // AccountSsoConfigDto struct for AccountSsoConfigDto
 type AccountSsoConfigDto struct {
-	Id int32 `json:"id"`
-	Name string `json:"name"`
-	PartnerId int32 `json:"partnerId"`
-	IssuerUrl string `json:"issuerUrl"`
-	ClientId string `json:"clientId"`
-	GroupFromIdp bool `json:"groupFromIdp"`
-	GroupClaimName NullableString `json:"groupClaimName,omitempty"`
-	GroupScopeName NullableString `json:"groupScopeName,omitempty"`
-	IsEnabled bool `json:"isEnabled"`
+	Id                   int32          `json:"id"`
+	Name                 string         `json:"name"`
+	PartnerId            int32          `json:"partnerId"`
+	IssuerUrl            string         `json:"issuerUrl"`
+	ClientId             string         `json:"clientId"`
+	GroupFromIdp         bool           `json:"groupFromIdp"`
+	GroupClaimName       NullableString `json:"groupClaimName,omitempty"`
+	GroupScopeName       NullableString `json:"groupScopeName,omitempty"`
+	IsEnabled            bool           `json:"isEnabled"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -235,6 +235,7 @@ func (o *AccountSsoConfigDto) HasGroupClaimName() bool {
 func (o *AccountSsoConfigDto) SetGroupClaimName(v string) {
 	o.GroupClaimName.Set(&v)
 }
+
 // SetGroupClaimNameNil sets the value for GroupClaimName to be an explicit nil
 func (o *AccountSsoConfigDto) SetGroupClaimNameNil() {
 	o.GroupClaimName.Set(nil)
@@ -277,6 +278,7 @@ func (o *AccountSsoConfigDto) HasGroupScopeName() bool {
 func (o *AccountSsoConfigDto) SetGroupScopeName(v string) {
 	o.GroupScopeName.Set(&v)
 }
+
 // SetGroupScopeNameNil sets the value for GroupScopeName to be an explicit nil
 func (o *AccountSsoConfigDto) SetGroupScopeNameNil() {
 	o.GroupScopeName.Set(nil)
@@ -312,7 +314,7 @@ func (o *AccountSsoConfigDto) SetIsEnabled(v bool) {
 }
 
 func (o AccountSsoConfigDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -361,10 +363,10 @@ func (o *AccountSsoConfigDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -433,5 +435,3 @@ func (v *NullableAccountSsoConfigDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

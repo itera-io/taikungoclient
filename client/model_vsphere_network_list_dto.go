@@ -21,14 +21,14 @@ var _ MappedNullable = &VsphereNetworkListDto{}
 
 // VsphereNetworkListDto struct for VsphereNetworkListDto
 type VsphereNetworkListDto struct {
-	Name NullableString `json:"name"`
-	Gateway string `json:"gateway"`
-	IpAddress string `json:"ipAddress"`
-	NetMask int32 `json:"netMask"`
-	BeginAllocationRange string `json:"beginAllocationRange"`
-	EndAllocationRange string `json:"endAllocationRange"`
-	IsPrivate bool `json:"isPrivate"`
-	IsVirtualLbNetwork bool `json:"isVirtualLbNetwork"`
+	Name                 NullableString `json:"name"`
+	Gateway              string         `json:"gateway"`
+	IpAddress            string         `json:"ipAddress"`
+	NetMask              int32          `json:"netMask"`
+	BeginAllocationRange string         `json:"beginAllocationRange"`
+	EndAllocationRange   string         `json:"endAllocationRange"`
+	IsPrivate            bool           `json:"isPrivate"`
+	IsVirtualLbNetwork   bool           `json:"isVirtualLbNetwork"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -254,7 +254,7 @@ func (o *VsphereNetworkListDto) SetIsVirtualLbNetwork(v bool) {
 }
 
 func (o VsphereNetworkListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -299,10 +299,10 @@ func (o *VsphereNetworkListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -370,5 +370,3 @@ func (v *NullableVsphereNetworkListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

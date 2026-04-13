@@ -20,7 +20,7 @@ var _ MappedNullable = &CheckDuplicateAccountCommand{}
 
 // CheckDuplicateAccountCommand struct for CheckDuplicateAccountCommand
 type CheckDuplicateAccountCommand struct {
-	Name NullableString `json:"name,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,6 +75,7 @@ func (o *CheckDuplicateAccountCommand) HasName() bool {
 func (o *CheckDuplicateAccountCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CheckDuplicateAccountCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -86,7 +87,7 @@ func (o *CheckDuplicateAccountCommand) UnsetName() {
 }
 
 func (o CheckDuplicateAccountCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -162,5 +163,3 @@ func (v *NullableCheckDuplicateAccountCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,15 +20,15 @@ var _ MappedNullable = &AwsImagesPostListCommand{}
 
 // AwsImagesPostListCommand struct for AwsImagesPostListCommand
 type AwsImagesPostListCommand struct {
-	CloudId *int32 `json:"cloudId,omitempty"`
-	Limit NullableInt32 `json:"limit,omitempty"`
-	Offset NullableInt32 `json:"offset,omitempty"`
-	SortBy NullableString `json:"sortBy,omitempty"`
-	SortDirection NullableString `json:"sortDirection,omitempty"`
-	Search NullableString `json:"search,omitempty"`
-	Latest *bool `json:"latest,omitempty"`
-	Owners []string `json:"owners,omitempty"`
-	ProjectId NullableInt32 `json:"projectId,omitempty"`
+	CloudId              *int32         `json:"cloudId,omitempty"`
+	Limit                NullableInt32  `json:"limit,omitempty"`
+	Offset               NullableInt32  `json:"offset,omitempty"`
+	SortBy               NullableString `json:"sortBy,omitempty"`
+	SortDirection        NullableString `json:"sortDirection,omitempty"`
+	Search               NullableString `json:"search,omitempty"`
+	Latest               *bool          `json:"latest,omitempty"`
+	Owners               []string       `json:"owners,omitempty"`
+	ProjectId            NullableInt32  `json:"projectId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -115,6 +115,7 @@ func (o *AwsImagesPostListCommand) HasLimit() bool {
 func (o *AwsImagesPostListCommand) SetLimit(v int32) {
 	o.Limit.Set(&v)
 }
+
 // SetLimitNil sets the value for Limit to be an explicit nil
 func (o *AwsImagesPostListCommand) SetLimitNil() {
 	o.Limit.Set(nil)
@@ -157,6 +158,7 @@ func (o *AwsImagesPostListCommand) HasOffset() bool {
 func (o *AwsImagesPostListCommand) SetOffset(v int32) {
 	o.Offset.Set(&v)
 }
+
 // SetOffsetNil sets the value for Offset to be an explicit nil
 func (o *AwsImagesPostListCommand) SetOffsetNil() {
 	o.Offset.Set(nil)
@@ -199,6 +201,7 @@ func (o *AwsImagesPostListCommand) HasSortBy() bool {
 func (o *AwsImagesPostListCommand) SetSortBy(v string) {
 	o.SortBy.Set(&v)
 }
+
 // SetSortByNil sets the value for SortBy to be an explicit nil
 func (o *AwsImagesPostListCommand) SetSortByNil() {
 	o.SortBy.Set(nil)
@@ -241,6 +244,7 @@ func (o *AwsImagesPostListCommand) HasSortDirection() bool {
 func (o *AwsImagesPostListCommand) SetSortDirection(v string) {
 	o.SortDirection.Set(&v)
 }
+
 // SetSortDirectionNil sets the value for SortDirection to be an explicit nil
 func (o *AwsImagesPostListCommand) SetSortDirectionNil() {
 	o.SortDirection.Set(nil)
@@ -283,6 +287,7 @@ func (o *AwsImagesPostListCommand) HasSearch() bool {
 func (o *AwsImagesPostListCommand) SetSearch(v string) {
 	o.Search.Set(&v)
 }
+
 // SetSearchNil sets the value for Search to be an explicit nil
 func (o *AwsImagesPostListCommand) SetSearchNil() {
 	o.Search.Set(nil)
@@ -390,6 +395,7 @@ func (o *AwsImagesPostListCommand) HasProjectId() bool {
 func (o *AwsImagesPostListCommand) SetProjectId(v int32) {
 	o.ProjectId.Set(&v)
 }
+
 // SetProjectIdNil sets the value for ProjectId to be an explicit nil
 func (o *AwsImagesPostListCommand) SetProjectIdNil() {
 	o.ProjectId.Set(nil)
@@ -401,7 +407,7 @@ func (o *AwsImagesPostListCommand) UnsetProjectId() {
 }
 
 func (o AwsImagesPostListCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -509,5 +515,3 @@ func (v *NullableAwsImagesPostListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

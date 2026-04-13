@@ -20,13 +20,13 @@ var _ MappedNullable = &CreateAlertingProfileCommand{}
 
 // CreateAlertingProfileCommand struct for CreateAlertingProfileCommand
 type CreateAlertingProfileCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	SlackConfigurationId NullableInt32 `json:"slackConfigurationId,omitempty"`
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	Emails []AlertingEmailDto `json:"emails,omitempty"`
-	Webhooks []AlertingWebhookDto `json:"webhooks,omitempty"`
+	Name                 NullableString           `json:"name,omitempty"`
+	SlackConfigurationId NullableInt32            `json:"slackConfigurationId,omitempty"`
+	OrganizationId       NullableInt32            `json:"organizationId,omitempty"`
+	Emails               []AlertingEmailDto       `json:"emails,omitempty"`
+	Webhooks             []AlertingWebhookDto     `json:"webhooks,omitempty"`
 	AlertingIntegrations []AlertingIntegrationDto `json:"alertingIntegrations,omitempty"`
-	Reminder *AlertingReminder `json:"reminder,omitempty"`
+	Reminder             *AlertingReminder        `json:"reminder,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -81,6 +81,7 @@ func (o *CreateAlertingProfileCommand) HasName() bool {
 func (o *CreateAlertingProfileCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateAlertingProfileCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -123,6 +124,7 @@ func (o *CreateAlertingProfileCommand) HasSlackConfigurationId() bool {
 func (o *CreateAlertingProfileCommand) SetSlackConfigurationId(v int32) {
 	o.SlackConfigurationId.Set(&v)
 }
+
 // SetSlackConfigurationIdNil sets the value for SlackConfigurationId to be an explicit nil
 func (o *CreateAlertingProfileCommand) SetSlackConfigurationIdNil() {
 	o.SlackConfigurationId.Set(nil)
@@ -165,6 +167,7 @@ func (o *CreateAlertingProfileCommand) HasOrganizationId() bool {
 func (o *CreateAlertingProfileCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
+
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateAlertingProfileCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -307,7 +310,7 @@ func (o *CreateAlertingProfileCommand) SetReminder(v AlertingReminder) {
 }
 
 func (o CreateAlertingProfileCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -407,5 +410,3 @@ func (v *NullableCreateAlertingProfileCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,10 +20,10 @@ var _ MappedNullable = &OpenstackVolumeQuotaDto{}
 
 // OpenstackVolumeQuotaDto struct for OpenstackVolumeQuotaDto
 type OpenstackVolumeQuotaDto struct {
-	MaxTotalVolumeSize *int64 `json:"maxTotalVolumeSize,omitempty"`
-	UsedVolumeSize *int64 `json:"usedVolumeSize,omitempty"`
-	MaxCountVolumeSize *int64 `json:"maxCountVolumeSize,omitempty"`
-	CountVolumeSize *int64 `json:"countVolumeSize,omitempty"`
+	MaxTotalVolumeSize   *int64 `json:"maxTotalVolumeSize,omitempty"`
+	UsedVolumeSize       *int64 `json:"usedVolumeSize,omitempty"`
+	MaxCountVolumeSize   *int64 `json:"maxCountVolumeSize,omitempty"`
+	CountVolumeSize      *int64 `json:"countVolumeSize,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -175,7 +175,7 @@ func (o *OpenstackVolumeQuotaDto) SetCountVolumeSize(v int64) {
 }
 
 func (o OpenstackVolumeQuotaDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -263,5 +263,3 @@ func (v *NullableOpenstackVolumeQuotaDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

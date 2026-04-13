@@ -22,7 +22,7 @@ type ECronJobAction string
 // List of ECronJobAction
 const (
 	ECRONJOBACTION_SUSPEND ECronJobAction = "Suspend"
-	ECRONJOBACTION_RESUME ECronJobAction = "Resume"
+	ECRONJOBACTION_RESUME  ECronJobAction = "Resume"
 	ECRONJOBACTION_TRIGGER ECronJobAction = "Trigger"
 )
 
@@ -111,4 +111,3 @@ func (v *NullableECronJobAction) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

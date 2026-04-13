@@ -20,13 +20,13 @@ var _ MappedNullable = &UpdateQuotaCommand{}
 
 // UpdateQuotaCommand struct for UpdateQuotaCommand
 type UpdateQuotaCommand struct {
-	QuotaId *int32 `json:"quotaId,omitempty"`
-	ServerCpu *int64 `json:"serverCpu,omitempty"`
-	ServerRam *float64 `json:"serverRam,omitempty"`
-	ServerDiskSize *float64 `json:"serverDiskSize,omitempty"`
-	VmCpu *int64 `json:"vmCpu,omitempty"`
-	VmRam *float64 `json:"vmRam,omitempty"`
-	VmVolumeSize *float64 `json:"vmVolumeSize,omitempty"`
+	QuotaId              *int32   `json:"quotaId,omitempty"`
+	ServerCpu            *int64   `json:"serverCpu,omitempty"`
+	ServerRam            *float64 `json:"serverRam,omitempty"`
+	ServerDiskSize       *float64 `json:"serverDiskSize,omitempty"`
+	VmCpu                *int64   `json:"vmCpu,omitempty"`
+	VmRam                *float64 `json:"vmRam,omitempty"`
+	VmVolumeSize         *float64 `json:"vmVolumeSize,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -274,7 +274,7 @@ func (o *UpdateQuotaCommand) SetVmVolumeSize(v float64) {
 }
 
 func (o UpdateQuotaCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -374,5 +374,3 @@ func (v *NullableUpdateQuotaCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
