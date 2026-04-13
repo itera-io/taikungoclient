@@ -13,8 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
+	"time"
 )
 
 // checks if the BackupStorageLocationDto type satisfies the MappedNullable interface at compile time
@@ -22,14 +22,14 @@ var _ MappedNullable = &BackupStorageLocationDto{}
 
 // BackupStorageLocationDto struct for BackupStorageLocationDto
 type BackupStorageLocationDto struct {
-	MetadataName string `json:"metadataName"`
-	Provider string `json:"provider"`
-	Namespace string `json:"namespace"`
-	LastValidated NullableTime `json:"lastValidated"`
-	CreatedAt NullableTime `json:"createdAt"`
-	AccessMode string `json:"accessMode"`
-	Phase NullableString `json:"phase"`
-	BackupCredentialId NullableInt32 `json:"backupCredentialId"`
+	MetadataName         string         `json:"metadataName"`
+	Provider             string         `json:"provider"`
+	Namespace            string         `json:"namespace"`
+	LastValidated        NullableTime   `json:"lastValidated"`
+	CreatedAt            NullableTime   `json:"createdAt"`
+	AccessMode           string         `json:"accessMode"`
+	Phase                NullableString `json:"phase"`
+	BackupCredentialId   NullableInt32  `json:"backupCredentialId"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -261,7 +261,7 @@ func (o *BackupStorageLocationDto) SetBackupCredentialId(v int32) {
 }
 
 func (o BackupStorageLocationDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -306,10 +306,10 @@ func (o *BackupStorageLocationDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -377,5 +377,3 @@ func (v *NullableBackupStorageLocationDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -21,14 +21,14 @@ var _ MappedNullable = &ProxmoxNetworkListDto{}
 
 // ProxmoxNetworkListDto struct for ProxmoxNetworkListDto
 type ProxmoxNetworkListDto struct {
-	Bridge NullableString `json:"bridge"`
-	Gateway NullableString `json:"gateway"`
-	IpAddress NullableString `json:"ipAddress"`
-	NetMask int32 `json:"netMask"`
+	Bridge               NullableString `json:"bridge"`
+	Gateway              NullableString `json:"gateway"`
+	IpAddress            NullableString `json:"ipAddress"`
+	NetMask              int32          `json:"netMask"`
 	BeginAllocationRange NullableString `json:"beginAllocationRange"`
-	EndAllocationRange NullableString `json:"endAllocationRange"`
-	IsPrivate bool `json:"isPrivate"`
-	IsVirtualLbNetwork bool `json:"isVirtualLbNetwork"`
+	EndAllocationRange   NullableString `json:"endAllocationRange"`
+	IsPrivate            bool           `json:"isPrivate"`
+	IsVirtualLbNetwork   bool           `json:"isVirtualLbNetwork"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -262,7 +262,7 @@ func (o *ProxmoxNetworkListDto) SetIsVirtualLbNetwork(v bool) {
 }
 
 func (o ProxmoxNetworkListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -307,10 +307,10 @@ func (o *ProxmoxNetworkListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -378,5 +378,3 @@ func (v *NullableProxmoxNetworkListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

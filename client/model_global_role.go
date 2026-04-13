@@ -21,13 +21,13 @@ type GlobalRole string
 
 // List of GlobalRole
 const (
-	GLOBALROLE_NONE GlobalRole = "None"
-	GLOBALROLE_ADMIN GlobalRole = "Admin"
+	GLOBALROLE_NONE          GlobalRole = "None"
+	GLOBALROLE_ADMIN         GlobalRole = "Admin"
 	GLOBALROLE_ACCOUNT_ADMIN GlobalRole = "AccountAdmin"
 	GLOBALROLE_ACCOUNT_OWNER GlobalRole = "AccountOwner"
-	GLOBALROLE_AUTOSCALER GlobalRole = "Autoscaler"
-	GLOBALROLE_ONLY_MEMBER GlobalRole = "OnlyMember"
-	GLOBALROLE_ROBOT GlobalRole = "Robot"
+	GLOBALROLE_AUTOSCALER    GlobalRole = "Autoscaler"
+	GLOBALROLE_ONLY_MEMBER   GlobalRole = "OnlyMember"
+	GLOBALROLE_ROBOT         GlobalRole = "Robot"
 )
 
 // All allowed values of GlobalRole enum
@@ -119,4 +119,3 @@ func (v *NullableGlobalRole) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

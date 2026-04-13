@@ -21,21 +21,21 @@ var _ MappedNullable = &ImportedAsFullyManagedVisibility{}
 
 // ImportedAsFullyManagedVisibility struct for ImportedAsFullyManagedVisibility
 type ImportedAsFullyManagedVisibility struct {
-	Lock ButtonStatusDto `json:"lock"`
-	Unlock ButtonStatusDto `json:"unlock"`
-	AddVCluster ButtonStatusDto `json:"addVCluster"`
+	Lock                  ButtonStatusDto `json:"lock"`
+	Unlock                ButtonStatusDto `json:"unlock"`
+	AddVCluster           ButtonStatusDto `json:"addVCluster"`
 	AttachAlertingProfile ButtonStatusDto `json:"attachAlertingProfile"`
 	DetachAlertingProfile ButtonStatusDto `json:"detachAlertingProfile"`
-	EnableMonitoring ButtonStatusDto `json:"enableMonitoring"`
-	DisableMonitoring ButtonStatusDto `json:"disableMonitoring"`
-	EnableAi ButtonStatusDto `json:"enableAi"`
-	DisableAi ButtonStatusDto `json:"disableAi"`
-	EnableOpa ButtonStatusDto `json:"enableOpa"`
-	DisableOpa ButtonStatusDto `json:"disableOpa"`
-	EnableBackup ButtonStatusDto `json:"enableBackup"`
-	DisableBackup ButtonStatusDto `json:"disableBackup"`
-	AiAssistant ButtonStatusDto `json:"aiAssistant"`
-	AdditionalProperties map[string]interface{}
+	EnableMonitoring      ButtonStatusDto `json:"enableMonitoring"`
+	DisableMonitoring     ButtonStatusDto `json:"disableMonitoring"`
+	EnableAi              ButtonStatusDto `json:"enableAi"`
+	DisableAi             ButtonStatusDto `json:"disableAi"`
+	EnableOpa             ButtonStatusDto `json:"enableOpa"`
+	DisableOpa            ButtonStatusDto `json:"disableOpa"`
+	EnableBackup          ButtonStatusDto `json:"enableBackup"`
+	DisableBackup         ButtonStatusDto `json:"disableBackup"`
+	AiAssistant           ButtonStatusDto `json:"aiAssistant"`
+	AdditionalProperties  map[string]interface{}
 }
 
 type _ImportedAsFullyManagedVisibility ImportedAsFullyManagedVisibility
@@ -408,7 +408,7 @@ func (o *ImportedAsFullyManagedVisibility) SetAiAssistant(v ButtonStatusDto) {
 }
 
 func (o ImportedAsFullyManagedVisibility) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -465,10 +465,10 @@ func (o *ImportedAsFullyManagedVisibility) UnmarshalJSON(data []byte) (err error
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -542,5 +542,3 @@ func (v *NullableImportedAsFullyManagedVisibility) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

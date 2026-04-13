@@ -365,6 +365,10 @@ Class | Method | HTTP request | Description
 *InfraBillingSummaryAPI* | [**InfraBillingSummaryCreate**](docs/InfraBillingSummaryAPI.md#infrabillingsummarycreate) | **Post** /api/v1/infra-billing-summary/create | Add infra billing summary
 *InfraBillingSummaryAPI* | [**InfraBillingSummaryList**](docs/InfraBillingSummaryAPI.md#infrabillingsummarylist) | **Post** /api/v1/infra-billing-summary/list | Retrieve infra billing info
 *InternalAPI* | [**InternalAlertsList**](docs/InternalAPI.md#internalalertslist) | **Get** /api/v1/internal/alerts | Retrieve alerts list
+*InternalAPI* | [**InternalExporterAccountsList**](docs/InternalAPI.md#internalexporteraccountslist) | **Get** /api/v1/internal/prometheus-exporter/accounts | Retrieve exporter accounts list
+*InternalAPI* | [**InternalExporterProjectsList**](docs/InternalAPI.md#internalexporterprojectslist) | **Get** /api/v1/internal/prometheus-exporter/projects | Retrieve exporter projects list
+*InternalAPI* | [**InternalExporterServersList**](docs/InternalAPI.md#internalexporterserverslist) | **Get** /api/v1/internal/prometheus-exporter/servers | Retrieve exporter servers list
+*InternalAPI* | [**InternalExporterStandaloneVmsList**](docs/InternalAPI.md#internalexporterstandalonevmslist) | **Get** /api/v1/internal/prometheus-exporter/standalone | Retrieve exporter standalone VMs list
 *InternalAPI* | [**InternalGetUserInfo**](docs/InternalAPI.md#internalgetuserinfo) | **Post** /api/v1/internal/get-user-info | Get user info
 *InternalAPI* | [**InternalProjectsList**](docs/InternalAPI.md#internalprojectslist) | **Get** /api/v1/internal/projects | Retrieve projects list
 *InvoicesAPI* | [**InvoicesCreate**](docs/InvoicesAPI.md#invoicescreate) | **Post** /api/v1/invoices/create | Create invoice
@@ -1174,6 +1178,10 @@ Class | Method | HTTP request | Description
  - [InteractiveShellDto](docs/InteractiveShellDto.md)
  - [InteractiveShellSendCommand](docs/InteractiveShellSendCommand.md)
  - [InternalAlertDto](docs/InternalAlertDto.md)
+ - [InternalExporterAccountDto](docs/InternalExporterAccountDto.md)
+ - [InternalExporterProjectDto](docs/InternalExporterProjectDto.md)
+ - [InternalExporterServerDto](docs/InternalExporterServerDto.md)
+ - [InternalExporterStandaloneVmDto](docs/InternalExporterStandaloneVmDto.md)
  - [InternalProjectListDto](docs/InternalProjectListDto.md)
  - [InternalUserInfoListCommand](docs/InternalUserInfoListCommand.md)
  - [InvoiceDto](docs/InvoiceDto.md)

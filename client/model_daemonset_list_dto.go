@@ -20,15 +20,15 @@ var _ MappedNullable = &DaemonsetListDto{}
 
 // DaemonsetListDto struct for DaemonsetListDto
 type DaemonsetListDto struct {
-	Status NullableString `json:"status,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Desired *int32 `json:"desired,omitempty"`
-	Current *int32 `json:"current,omitempty"`
-	Ready *int32 `json:"ready,omitempty"`
-	Available NullableString `json:"available,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	Image NullableString `json:"image,omitempty"`
+	Status               NullableString `json:"status,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Desired              *int32         `json:"desired,omitempty"`
+	Current              *int32         `json:"current,omitempty"`
+	Ready                *int32         `json:"ready,omitempty"`
+	Available            NullableString `json:"available,omitempty"`
+	CreatedAt            NullableString `json:"createdAt,omitempty"`
+	Namespace            NullableString `json:"namespace,omitempty"`
+	Image                NullableString `json:"image,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -83,6 +83,7 @@ func (o *DaemonsetListDto) HasStatus() bool {
 func (o *DaemonsetListDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
+
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *DaemonsetListDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -125,6 +126,7 @@ func (o *DaemonsetListDto) HasName() bool {
 func (o *DaemonsetListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *DaemonsetListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -263,6 +265,7 @@ func (o *DaemonsetListDto) HasAvailable() bool {
 func (o *DaemonsetListDto) SetAvailable(v string) {
 	o.Available.Set(&v)
 }
+
 // SetAvailableNil sets the value for Available to be an explicit nil
 func (o *DaemonsetListDto) SetAvailableNil() {
 	o.Available.Set(nil)
@@ -305,6 +308,7 @@ func (o *DaemonsetListDto) HasCreatedAt() bool {
 func (o *DaemonsetListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
+
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *DaemonsetListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -347,6 +351,7 @@ func (o *DaemonsetListDto) HasNamespace() bool {
 func (o *DaemonsetListDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
+
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *DaemonsetListDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -389,6 +394,7 @@ func (o *DaemonsetListDto) HasImage() bool {
 func (o *DaemonsetListDto) SetImage(v string) {
 	o.Image.Set(&v)
 }
+
 // SetImageNil sets the value for Image to be an explicit nil
 func (o *DaemonsetListDto) SetImageNil() {
 	o.Image.Set(nil)
@@ -400,7 +406,7 @@ func (o *DaemonsetListDto) UnsetImage() {
 }
 
 func (o DaemonsetListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -508,5 +514,3 @@ func (v *NullableDaemonsetListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

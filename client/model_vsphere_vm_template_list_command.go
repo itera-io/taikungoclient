@@ -20,10 +20,10 @@ var _ MappedNullable = &VsphereVmTemplateListCommand{}
 
 // VsphereVmTemplateListCommand struct for VsphereVmTemplateListCommand
 type VsphereVmTemplateListCommand struct {
-	Url NullableString `json:"url,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Password NullableString `json:"password,omitempty"`
-	DatacenterId NullableString `json:"datacenterId,omitempty"`
+	Url                  NullableString `json:"url,omitempty"`
+	Username             NullableString `json:"username,omitempty"`
+	Password             NullableString `json:"password,omitempty"`
+	DatacenterId         NullableString `json:"datacenterId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,6 +78,7 @@ func (o *VsphereVmTemplateListCommand) HasUrl() bool {
 func (o *VsphereVmTemplateListCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *VsphereVmTemplateListCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -120,6 +121,7 @@ func (o *VsphereVmTemplateListCommand) HasUsername() bool {
 func (o *VsphereVmTemplateListCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
+
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *VsphereVmTemplateListCommand) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -162,6 +164,7 @@ func (o *VsphereVmTemplateListCommand) HasPassword() bool {
 func (o *VsphereVmTemplateListCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
+
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *VsphereVmTemplateListCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -204,6 +207,7 @@ func (o *VsphereVmTemplateListCommand) HasDatacenterId() bool {
 func (o *VsphereVmTemplateListCommand) SetDatacenterId(v string) {
 	o.DatacenterId.Set(&v)
 }
+
 // SetDatacenterIdNil sets the value for DatacenterId to be an explicit nil
 func (o *VsphereVmTemplateListCommand) SetDatacenterIdNil() {
 	o.DatacenterId.Set(nil)
@@ -215,7 +219,7 @@ func (o *VsphereVmTemplateListCommand) UnsetDatacenterId() {
 }
 
 func (o VsphereVmTemplateListCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -303,5 +307,3 @@ func (v *NullableVsphereVmTemplateListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

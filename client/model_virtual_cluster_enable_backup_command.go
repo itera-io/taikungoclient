@@ -20,8 +20,8 @@ var _ MappedNullable = &VirtualClusterEnableBackupCommand{}
 
 // VirtualClusterEnableBackupCommand struct for VirtualClusterEnableBackupCommand
 type VirtualClusterEnableBackupCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	BackupCredentialId *int32 `json:"backupCredentialId,omitempty"`
+	ProjectId            *int32 `json:"projectId,omitempty"`
+	BackupCredentialId   *int32 `json:"backupCredentialId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,7 +109,7 @@ func (o *VirtualClusterEnableBackupCommand) SetBackupCredentialId(v int32) {
 }
 
 func (o VirtualClusterEnableBackupCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -189,5 +189,3 @@ func (v *NullableVirtualClusterEnableBackupCommand) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

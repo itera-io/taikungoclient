@@ -20,8 +20,8 @@ var _ MappedNullable = &KubesprayCreateCommand{}
 
 // KubesprayCreateCommand struct for KubesprayCreateCommand
 type KubesprayCreateCommand struct {
-	Version NullableString `json:"version,omitempty"`
-	KubernetesVersion NullableString `json:"kubernetesVersion,omitempty"`
+	Version              NullableString `json:"version,omitempty"`
+	KubernetesVersion    NullableString `json:"kubernetesVersion,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,6 +76,7 @@ func (o *KubesprayCreateCommand) HasVersion() bool {
 func (o *KubesprayCreateCommand) SetVersion(v string) {
 	o.Version.Set(&v)
 }
+
 // SetVersionNil sets the value for Version to be an explicit nil
 func (o *KubesprayCreateCommand) SetVersionNil() {
 	o.Version.Set(nil)
@@ -118,6 +119,7 @@ func (o *KubesprayCreateCommand) HasKubernetesVersion() bool {
 func (o *KubesprayCreateCommand) SetKubernetesVersion(v string) {
 	o.KubernetesVersion.Set(&v)
 }
+
 // SetKubernetesVersionNil sets the value for KubernetesVersion to be an explicit nil
 func (o *KubesprayCreateCommand) SetKubernetesVersionNil() {
 	o.KubernetesVersion.Set(nil)
@@ -129,7 +131,7 @@ func (o *KubesprayCreateCommand) UnsetKubernetesVersion() {
 }
 
 func (o KubesprayCreateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -209,5 +211,3 @@ func (v *NullableKubesprayCreateCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

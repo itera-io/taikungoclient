@@ -21,21 +21,21 @@ var _ MappedNullable = &RobotUsersListDto{}
 
 // RobotUsersListDto struct for RobotUsersListDto
 type RobotUsersListDto struct {
-	UserId string `json:"userId"`
-	AccountId int32 `json:"accountId"`
-	AccountName string `json:"accountName"`
-	AccessKey string `json:"accessKey"`
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	CreatedBy string `json:"createdBy"`
-	Name string `json:"name"`
-	Description NullableString `json:"description,omitempty"`
-	Scopes []string `json:"scopes"`
-	Ips []string `json:"ips,omitempty"`
-	IsActive bool `json:"isActive"`
-	CreatedAt string `json:"createdAt"`
-	ExpiresAt NullableString `json:"expiresAt,omitempty"`
-	LastUsedAt NullableString `json:"lastUsedAt,omitempty"`
+	UserId               string         `json:"userId"`
+	AccountId            int32          `json:"accountId"`
+	AccountName          string         `json:"accountName"`
+	AccessKey            string         `json:"accessKey"`
+	OrganizationId       NullableInt32  `json:"organizationId,omitempty"`
+	OrganizationName     NullableString `json:"organizationName,omitempty"`
+	CreatedBy            string         `json:"createdBy"`
+	Name                 string         `json:"name"`
+	Description          NullableString `json:"description,omitempty"`
+	Scopes               []string       `json:"scopes"`
+	Ips                  []string       `json:"ips,omitempty"`
+	IsActive             bool           `json:"isActive"`
+	CreatedAt            string         `json:"createdAt"`
+	ExpiresAt            NullableString `json:"expiresAt,omitempty"`
+	LastUsedAt           NullableString `json:"lastUsedAt,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -195,6 +195,7 @@ func (o *RobotUsersListDto) HasOrganizationId() bool {
 func (o *RobotUsersListDto) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
+
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *RobotUsersListDto) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -237,6 +238,7 @@ func (o *RobotUsersListDto) HasOrganizationName() bool {
 func (o *RobotUsersListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
+
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *RobotUsersListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -327,6 +329,7 @@ func (o *RobotUsersListDto) HasDescription() bool {
 func (o *RobotUsersListDto) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *RobotUsersListDto) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -474,6 +477,7 @@ func (o *RobotUsersListDto) HasExpiresAt() bool {
 func (o *RobotUsersListDto) SetExpiresAt(v string) {
 	o.ExpiresAt.Set(&v)
 }
+
 // SetExpiresAtNil sets the value for ExpiresAt to be an explicit nil
 func (o *RobotUsersListDto) SetExpiresAtNil() {
 	o.ExpiresAt.Set(nil)
@@ -516,6 +520,7 @@ func (o *RobotUsersListDto) HasLastUsedAt() bool {
 func (o *RobotUsersListDto) SetLastUsedAt(v string) {
 	o.LastUsedAt.Set(&v)
 }
+
 // SetLastUsedAtNil sets the value for LastUsedAt to be an explicit nil
 func (o *RobotUsersListDto) SetLastUsedAtNil() {
 	o.LastUsedAt.Set(nil)
@@ -527,7 +532,7 @@ func (o *RobotUsersListDto) UnsetLastUsedAt() {
 }
 
 func (o RobotUsersListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -592,10 +597,10 @@ func (o *RobotUsersListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -670,5 +675,3 @@ func (v *NullableRobotUsersListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

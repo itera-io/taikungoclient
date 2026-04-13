@@ -20,9 +20,9 @@ var _ MappedNullable = &CloudCredentialsSearchCommand{}
 
 // CloudCredentialsSearchCommand struct for CloudCredentialsSearchCommand
 type CloudCredentialsSearchCommand struct {
-	Limit NullableInt32 `json:"limit,omitempty"`
-	Offset NullableInt32 `json:"offset,omitempty"`
-	SearchTerm NullableString `json:"searchTerm,omitempty"`
+	Limit                NullableInt32  `json:"limit,omitempty"`
+	Offset               NullableInt32  `json:"offset,omitempty"`
+	SearchTerm           NullableString `json:"searchTerm,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,6 +77,7 @@ func (o *CloudCredentialsSearchCommand) HasLimit() bool {
 func (o *CloudCredentialsSearchCommand) SetLimit(v int32) {
 	o.Limit.Set(&v)
 }
+
 // SetLimitNil sets the value for Limit to be an explicit nil
 func (o *CloudCredentialsSearchCommand) SetLimitNil() {
 	o.Limit.Set(nil)
@@ -119,6 +120,7 @@ func (o *CloudCredentialsSearchCommand) HasOffset() bool {
 func (o *CloudCredentialsSearchCommand) SetOffset(v int32) {
 	o.Offset.Set(&v)
 }
+
 // SetOffsetNil sets the value for Offset to be an explicit nil
 func (o *CloudCredentialsSearchCommand) SetOffsetNil() {
 	o.Offset.Set(nil)
@@ -161,6 +163,7 @@ func (o *CloudCredentialsSearchCommand) HasSearchTerm() bool {
 func (o *CloudCredentialsSearchCommand) SetSearchTerm(v string) {
 	o.SearchTerm.Set(&v)
 }
+
 // SetSearchTermNil sets the value for SearchTerm to be an explicit nil
 func (o *CloudCredentialsSearchCommand) SetSearchTermNil() {
 	o.SearchTerm.Set(nil)
@@ -172,7 +175,7 @@ func (o *CloudCredentialsSearchCommand) UnsetSearchTerm() {
 }
 
 func (o CloudCredentialsSearchCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -256,5 +259,3 @@ func (v *NullableCloudCredentialsSearchCommand) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

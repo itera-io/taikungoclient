@@ -23,7 +23,7 @@ type CreateNtpServerCommand struct {
 	// Ntp address example: 8.8.8.8
 	Address NullableString `json:"address,omitempty"`
 	// Id should be positive integer
-	AccessProfileId *int32 `json:"accessProfileId,omitempty"`
+	AccessProfileId      *int32 `json:"accessProfileId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,6 +78,7 @@ func (o *CreateNtpServerCommand) HasAddress() bool {
 func (o *CreateNtpServerCommand) SetAddress(v string) {
 	o.Address.Set(&v)
 }
+
 // SetAddressNil sets the value for Address to be an explicit nil
 func (o *CreateNtpServerCommand) SetAddressNil() {
 	o.Address.Set(nil)
@@ -121,7 +122,7 @@ func (o *CreateNtpServerCommand) SetAccessProfileId(v int32) {
 }
 
 func (o CreateNtpServerCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -201,5 +202,3 @@ func (v *NullableCreateNtpServerCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

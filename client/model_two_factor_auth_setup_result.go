@@ -21,8 +21,8 @@ var _ MappedNullable = &TwoFactorAuthSetupResult{}
 
 // TwoFactorAuthSetupResult struct for TwoFactorAuthSetupResult
 type TwoFactorAuthSetupResult struct {
-	SharedKey NullableString `json:"sharedKey"`
-	QrCodeUri NullableString `json:"qrCodeUri"`
+	SharedKey            NullableString `json:"sharedKey"`
+	QrCodeUri            NullableString `json:"qrCodeUri"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -100,7 +100,7 @@ func (o *TwoFactorAuthSetupResult) SetQrCodeUri(v string) {
 }
 
 func (o TwoFactorAuthSetupResult) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -133,10 +133,10 @@ func (o *TwoFactorAuthSetupResult) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -198,5 +198,3 @@ func (v *NullableTwoFactorAuthSetupResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -21,8 +21,8 @@ var _ MappedNullable = &DeleteUserFromGroupCommand{}
 
 // DeleteUserFromGroupCommand struct for DeleteUserFromGroupCommand
 type DeleteUserFromGroupCommand struct {
-	GroupId int32 `json:"groupId"`
-	Users []string `json:"users"`
+	GroupId              int32    `json:"groupId"`
+	Users                []string `json:"users"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -98,7 +98,7 @@ func (o *DeleteUserFromGroupCommand) SetUsers(v []string) {
 }
 
 func (o DeleteUserFromGroupCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -133,10 +133,10 @@ func (o *DeleteUserFromGroupCommand) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -198,5 +198,3 @@ func (v *NullableDeleteUserFromGroupCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,8 +20,8 @@ var _ MappedNullable = &DeleteBackupStorageLocationCommand{}
 
 // DeleteBackupStorageLocationCommand struct for DeleteBackupStorageLocationCommand
 type DeleteBackupStorageLocationCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	StorageLocation NullableString `json:"storageLocation,omitempty"`
+	ProjectId            *int32         `json:"projectId,omitempty"`
+	StorageLocation      NullableString `json:"storageLocation,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,6 +108,7 @@ func (o *DeleteBackupStorageLocationCommand) HasStorageLocation() bool {
 func (o *DeleteBackupStorageLocationCommand) SetStorageLocation(v string) {
 	o.StorageLocation.Set(&v)
 }
+
 // SetStorageLocationNil sets the value for StorageLocation to be an explicit nil
 func (o *DeleteBackupStorageLocationCommand) SetStorageLocationNil() {
 	o.StorageLocation.Set(nil)
@@ -119,7 +120,7 @@ func (o *DeleteBackupStorageLocationCommand) UnsetStorageLocation() {
 }
 
 func (o DeleteBackupStorageLocationCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -199,5 +200,3 @@ func (v *NullableDeleteBackupStorageLocationCommand) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

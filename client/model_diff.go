@@ -20,11 +20,11 @@ var _ MappedNullable = &Diff{}
 
 // Diff struct for Diff
 type Diff struct {
-	Resources []Resource `json:"resources,omitempty"`
-	TotalHourlyCost NullableString `json:"totalHourlyCost,omitempty"`
-	TotalMonthlyCost NullableString `json:"totalMonthlyCost,omitempty"`
+	Resources             []Resource     `json:"resources,omitempty"`
+	TotalHourlyCost       NullableString `json:"totalHourlyCost,omitempty"`
+	TotalMonthlyCost      NullableString `json:"totalMonthlyCost,omitempty"`
 	TotalMonthlyUsageCost NullableString `json:"totalMonthlyUsageCost,omitempty"`
-	AdditionalProperties map[string]interface{}
+	AdditionalProperties  map[string]interface{}
 }
 
 type _Diff Diff
@@ -111,6 +111,7 @@ func (o *Diff) HasTotalHourlyCost() bool {
 func (o *Diff) SetTotalHourlyCost(v string) {
 	o.TotalHourlyCost.Set(&v)
 }
+
 // SetTotalHourlyCostNil sets the value for TotalHourlyCost to be an explicit nil
 func (o *Diff) SetTotalHourlyCostNil() {
 	o.TotalHourlyCost.Set(nil)
@@ -153,6 +154,7 @@ func (o *Diff) HasTotalMonthlyCost() bool {
 func (o *Diff) SetTotalMonthlyCost(v string) {
 	o.TotalMonthlyCost.Set(&v)
 }
+
 // SetTotalMonthlyCostNil sets the value for TotalMonthlyCost to be an explicit nil
 func (o *Diff) SetTotalMonthlyCostNil() {
 	o.TotalMonthlyCost.Set(nil)
@@ -195,6 +197,7 @@ func (o *Diff) HasTotalMonthlyUsageCost() bool {
 func (o *Diff) SetTotalMonthlyUsageCost(v string) {
 	o.TotalMonthlyUsageCost.Set(&v)
 }
+
 // SetTotalMonthlyUsageCostNil sets the value for TotalMonthlyUsageCost to be an explicit nil
 func (o *Diff) SetTotalMonthlyUsageCostNil() {
 	o.TotalMonthlyUsageCost.Set(nil)
@@ -206,7 +209,7 @@ func (o *Diff) UnsetTotalMonthlyUsageCost() {
 }
 
 func (o Diff) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -294,5 +297,3 @@ func (v *NullableDiff) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

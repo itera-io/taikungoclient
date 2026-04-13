@@ -21,26 +21,26 @@ var _ MappedNullable = &AmazonCredentialsListDto{}
 
 // AmazonCredentialsListDto struct for AmazonCredentialsListDto
 type AmazonCredentialsListDto struct {
-	Id int32 `json:"id"`
-	ProjectCount int32 `json:"projectCount"`
-	IsLocked bool `json:"isLocked"`
-	Name string `json:"name"`
-	Region string `json:"region"`
-	AvailabilityZones []string `json:"availabilityZones"`
-	AvailabilityZonesCount int32 `json:"availabilityZonesCount"`
-	Projects []CommonDropdownDto `json:"projects"`
-	CreatedBy NullableString `json:"createdBy"`
-	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
-	IsDefault bool `json:"isDefault"`
-	OrganizationId int32 `json:"organizationId"`
-	OrganizationName string `json:"organizationName"`
-	CreatedAt NullableString `json:"createdAt"`
-	ContinentName NullableString `json:"continentName"`
-	EfsFileSystemId NullableString `json:"efsFileSystemId,omitempty"`
-	EfsFileSystemName NullableString `json:"efsFileSystemName,omitempty"`
-	SharedFileSystemEnabled *bool `json:"sharedFileSystemEnabled,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Id                      int32               `json:"id"`
+	ProjectCount            int32               `json:"projectCount"`
+	IsLocked                bool                `json:"isLocked"`
+	Name                    string              `json:"name"`
+	Region                  string              `json:"region"`
+	AvailabilityZones       []string            `json:"availabilityZones"`
+	AvailabilityZonesCount  int32               `json:"availabilityZonesCount"`
+	Projects                []CommonDropdownDto `json:"projects"`
+	CreatedBy               NullableString      `json:"createdBy"`
+	LastModified            NullableString      `json:"lastModified"`
+	LastModifiedBy          NullableString      `json:"lastModifiedBy"`
+	IsDefault               bool                `json:"isDefault"`
+	OrganizationId          int32               `json:"organizationId"`
+	OrganizationName        string              `json:"organizationName"`
+	CreatedAt               NullableString      `json:"createdAt"`
+	ContinentName           NullableString      `json:"continentName"`
+	EfsFileSystemId         NullableString      `json:"efsFileSystemId,omitempty"`
+	EfsFileSystemName       NullableString      `json:"efsFileSystemName,omitempty"`
+	SharedFileSystemEnabled *bool               `json:"sharedFileSystemEnabled,omitempty"`
+	AdditionalProperties    map[string]interface{}
 }
 
 type _AmazonCredentialsListDto AmazonCredentialsListDto
@@ -504,6 +504,7 @@ func (o *AmazonCredentialsListDto) HasEfsFileSystemId() bool {
 func (o *AmazonCredentialsListDto) SetEfsFileSystemId(v string) {
 	o.EfsFileSystemId.Set(&v)
 }
+
 // SetEfsFileSystemIdNil sets the value for EfsFileSystemId to be an explicit nil
 func (o *AmazonCredentialsListDto) SetEfsFileSystemIdNil() {
 	o.EfsFileSystemId.Set(nil)
@@ -546,6 +547,7 @@ func (o *AmazonCredentialsListDto) HasEfsFileSystemName() bool {
 func (o *AmazonCredentialsListDto) SetEfsFileSystemName(v string) {
 	o.EfsFileSystemName.Set(&v)
 }
+
 // SetEfsFileSystemNameNil sets the value for EfsFileSystemName to be an explicit nil
 func (o *AmazonCredentialsListDto) SetEfsFileSystemNameNil() {
 	o.EfsFileSystemName.Set(nil)
@@ -589,7 +591,7 @@ func (o *AmazonCredentialsListDto) SetSharedFileSystemEnabled(v bool) {
 }
 
 func (o AmazonCredentialsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -659,10 +661,10 @@ func (o *AmazonCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -741,5 +743,3 @@ func (v *NullableAmazonCredentialsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

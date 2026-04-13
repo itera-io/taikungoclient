@@ -20,13 +20,12 @@ import (
 	"strings"
 )
 
-
 // ShowbackRulesAPIService ShowbackRulesAPI service
 type ShowbackRulesAPIService service
 
 type ApiShowbackrulesCreateRequest struct {
-	ctx context.Context
-	ApiService *ShowbackRulesAPIService
+	ctx                       context.Context
+	ApiService                *ShowbackRulesAPIService
 	createShowbackRuleCommand *CreateShowbackRuleCommand
 }
 
@@ -42,24 +41,25 @@ func (r ApiShowbackrulesCreateRequest) Execute() (*ApiResponse, *http.Response, 
 /*
 ShowbackrulesCreate Create showback rule
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiShowbackrulesCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiShowbackrulesCreateRequest
 */
 func (a *ShowbackRulesAPIService) ShowbackrulesCreate(ctx context.Context) ApiShowbackrulesCreateRequest {
 	return ApiShowbackrulesCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ApiResponse
+//
+//	@return ApiResponse
 func (a *ShowbackRulesAPIService) ShowbackrulesCreateExecute(r ApiShowbackrulesCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ApiResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShowbackRulesAPIService.ShowbackrulesCreate")
@@ -135,8 +135,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesCreateExecute(r ApiShowbackrulesC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -146,8 +146,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesCreateExecute(r ApiShowbackrulesC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -157,8 +157,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesCreateExecute(r ApiShowbackrulesC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -168,8 +168,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesCreateExecute(r ApiShowbackrulesC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -179,8 +179,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesCreateExecute(r ApiShowbackrulesC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -198,9 +198,9 @@ func (a *ShowbackRulesAPIService) ShowbackrulesCreateExecute(r ApiShowbackrulesC
 }
 
 type ApiShowbackrulesDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ShowbackRulesAPIService
-	id int32
+	id         int32
 }
 
 func (r ApiShowbackrulesDeleteRequest) Execute() (*http.Response, error) {
@@ -210,24 +210,24 @@ func (r ApiShowbackrulesDeleteRequest) Execute() (*http.Response, error) {
 /*
 ShowbackrulesDelete Delete showback rule
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiShowbackrulesDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiShowbackrulesDeleteRequest
 */
 func (a *ShowbackRulesAPIService) ShowbackrulesDelete(ctx context.Context, id int32) ApiShowbackrulesDeleteRequest {
 	return ApiShowbackrulesDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *ShowbackRulesAPIService) ShowbackrulesDeleteExecute(r ApiShowbackrulesDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShowbackRulesAPIService.ShowbackrulesDelete")
@@ -302,8 +302,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesDeleteExecute(r ApiShowbackrulesD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -313,8 +313,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesDeleteExecute(r ApiShowbackrulesD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -324,8 +324,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesDeleteExecute(r ApiShowbackrulesD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -335,8 +335,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesDeleteExecute(r ApiShowbackrulesD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -346,8 +346,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesDeleteExecute(r ApiShowbackrulesD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -356,8 +356,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesDeleteExecute(r ApiShowbackrulesD
 }
 
 type ApiShowbackrulesDeleteAllRequest struct {
-	ctx context.Context
-	ApiService *ShowbackRulesAPIService
+	ctx                context.Context
+	ApiService         *ShowbackRulesAPIService
 	deleteRulesCommand *DeleteRulesCommand
 }
 
@@ -373,22 +373,22 @@ func (r ApiShowbackrulesDeleteAllRequest) Execute() (*http.Response, error) {
 /*
 ShowbackrulesDeleteAll Delete multiple showback rule
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiShowbackrulesDeleteAllRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiShowbackrulesDeleteAllRequest
 */
 func (a *ShowbackRulesAPIService) ShowbackrulesDeleteAll(ctx context.Context) ApiShowbackrulesDeleteAllRequest {
 	return ApiShowbackrulesDeleteAllRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ShowbackRulesAPIService) ShowbackrulesDeleteAllExecute(r ApiShowbackrulesDeleteAllRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShowbackRulesAPIService.ShowbackrulesDeleteAll")
@@ -464,8 +464,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesDeleteAllExecute(r ApiShowbackrul
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -475,8 +475,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesDeleteAllExecute(r ApiShowbackrul
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -486,8 +486,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesDeleteAllExecute(r ApiShowbackrul
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -497,8 +497,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesDeleteAllExecute(r ApiShowbackrul
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -508,8 +508,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesDeleteAllExecute(r ApiShowbackrul
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -518,15 +518,15 @@ func (a *ShowbackRulesAPIService) ShowbackrulesDeleteAllExecute(r ApiShowbackrul
 }
 
 type ApiShowbackrulesListRequest struct {
-	ctx context.Context
-	ApiService *ShowbackRulesAPIService
-	limit *int32
-	offset *int32
+	ctx            context.Context
+	ApiService     *ShowbackRulesAPIService
+	limit          *int32
+	offset         *int32
 	organizationId *int32
-	sortBy *string
-	sortDirection *string
-	search *string
-	id *int32
+	sortBy         *string
+	sortDirection  *string
+	search         *string
+	id             *int32
 }
 
 func (r ApiShowbackrulesListRequest) Limit(limit int32) ApiShowbackrulesListRequest {
@@ -571,24 +571,25 @@ func (r ApiShowbackrulesListRequest) Execute() (*ShowbackRuleList, *http.Respons
 /*
 ShowbackrulesList Retrieve all showback rules
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiShowbackrulesListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiShowbackrulesListRequest
 */
 func (a *ShowbackRulesAPIService) ShowbackrulesList(ctx context.Context) ApiShowbackrulesListRequest {
 	return ApiShowbackrulesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ShowbackRuleList
+//
+//	@return ShowbackRuleList
 func (a *ShowbackRulesAPIService) ShowbackrulesListExecute(r ApiShowbackrulesListRequest) (*ShowbackRuleList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ShowbackRuleList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ShowbackRuleList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShowbackRulesAPIService.ShowbackrulesList")
@@ -683,8 +684,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesListExecute(r ApiShowbackrulesLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -694,8 +695,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesListExecute(r ApiShowbackrulesLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -705,8 +706,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesListExecute(r ApiShowbackrulesLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -716,8 +717,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesListExecute(r ApiShowbackrulesLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -727,8 +728,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesListExecute(r ApiShowbackrulesLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -746,8 +747,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesListExecute(r ApiShowbackrulesLis
 }
 
 type ApiShowbackrulesUpdateRequest struct {
-	ctx context.Context
-	ApiService *ShowbackRulesAPIService
+	ctx                       context.Context
+	ApiService                *ShowbackRulesAPIService
 	updateShowbackRuleCommand *UpdateShowbackRuleCommand
 }
 
@@ -763,22 +764,22 @@ func (r ApiShowbackrulesUpdateRequest) Execute() (*http.Response, error) {
 /*
 ShowbackrulesUpdate Create showback rule
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiShowbackrulesUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiShowbackrulesUpdateRequest
 */
 func (a *ShowbackRulesAPIService) ShowbackrulesUpdate(ctx context.Context) ApiShowbackrulesUpdateRequest {
 	return ApiShowbackrulesUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ShowbackRulesAPIService) ShowbackrulesUpdateExecute(r ApiShowbackrulesUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ShowbackRulesAPIService.ShowbackrulesUpdate")
@@ -854,8 +855,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesUpdateExecute(r ApiShowbackrulesU
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -865,8 +866,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesUpdateExecute(r ApiShowbackrulesU
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -876,8 +877,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesUpdateExecute(r ApiShowbackrulesU
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -887,8 +888,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesUpdateExecute(r ApiShowbackrulesU
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -898,8 +899,8 @@ func (a *ShowbackRulesAPIService) ShowbackrulesUpdateExecute(r ApiShowbackrulesU
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

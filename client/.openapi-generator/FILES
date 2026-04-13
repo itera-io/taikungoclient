@@ -541,6 +541,10 @@ docs/InteractiveShellDto.md
 docs/InteractiveShellSendCommand.md
 docs/InternalAPI.md
 docs/InternalAlertDto.md
+docs/InternalExporterAccountDto.md
+docs/InternalExporterProjectDto.md
+docs/InternalExporterServerDto.md
+docs/InternalExporterStandaloneVmDto.md
 docs/InternalProjectListDto.md
 docs/InternalUserInfoListCommand.md
 docs/InvoiceDto.md
@@ -1457,6 +1461,10 @@ model_instance_app_list_dto.go
 model_interactive_shell_dto.go
 model_interactive_shell_send_command.go
 model_internal_alert_dto.go
+model_internal_exporter_account_dto.go
+model_internal_exporter_project_dto.go
+model_internal_exporter_server_dto.go
+model_internal_exporter_standalone_vm_dto.go
 model_internal_project_list_dto.go
 model_internal_user_info_list_command.go
 model_invoice_dto.go

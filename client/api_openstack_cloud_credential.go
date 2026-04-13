@@ -19,13 +19,12 @@ import (
 	"net/url"
 )
 
-
 // OpenstackCloudCredentialAPIService OpenstackCloudCredentialAPI service
 type OpenstackCloudCredentialAPIService service
 
 type ApiOpenstackCreateRequest struct {
-	ctx context.Context
-	ApiService *OpenstackCloudCredentialAPIService
+	ctx                         context.Context
+	ApiService                  *OpenstackCloudCredentialAPIService
 	createOpenstackCloudCommand *CreateOpenstackCloudCommand
 }
 
@@ -41,24 +40,25 @@ func (r ApiOpenstackCreateRequest) Execute() (*ApiResponse, *http.Response, erro
 /*
 OpenstackCreate Add Openstack credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOpenstackCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOpenstackCreateRequest
 */
 func (a *OpenstackCloudCredentialAPIService) OpenstackCreate(ctx context.Context) ApiOpenstackCreateRequest {
 	return ApiOpenstackCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ApiResponse
+//
+//	@return ApiResponse
 func (a *OpenstackCloudCredentialAPIService) OpenstackCreateExecute(r ApiOpenstackCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ApiResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpenstackCloudCredentialAPIService.OpenstackCreate")
@@ -134,8 +134,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackCreateExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -145,8 +145,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackCreateExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -156,8 +156,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackCreateExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -167,8 +167,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackCreateExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -178,8 +178,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackCreateExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -189,8 +189,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackCreateExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -208,18 +208,18 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackCreateExecute(r ApiOpensta
 }
 
 type ApiOpenstackListRequest struct {
-	ctx context.Context
-	ApiService *OpenstackCloudCredentialAPIService
-	limit *int32
-	offset *int32
+	ctx            context.Context
+	ApiService     *OpenstackCloudCredentialAPIService
+	limit          *int32
+	offset         *int32
 	organizationId *int32
-	sortBy *string
-	sortDirection *string
-	search *string
-	searchId *string
-	id *int32
-	isInfra *bool
-	accountId *int32
+	sortBy         *string
+	sortDirection  *string
+	search         *string
+	searchId       *string
+	id             *int32
+	isInfra        *bool
+	accountId      *int32
 }
 
 func (r ApiOpenstackListRequest) Limit(limit int32) ApiOpenstackListRequest {
@@ -279,24 +279,25 @@ func (r ApiOpenstackListRequest) Execute() (*OpenstackCredentialList, *http.Resp
 /*
 OpenstackList Retrieve list of openstack cloud credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOpenstackListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOpenstackListRequest
 */
 func (a *OpenstackCloudCredentialAPIService) OpenstackList(ctx context.Context) ApiOpenstackListRequest {
 	return ApiOpenstackListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return OpenstackCredentialList
+//
+//	@return OpenstackCredentialList
 func (a *OpenstackCloudCredentialAPIService) OpenstackListExecute(r ApiOpenstackListRequest) (*OpenstackCredentialList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *OpenstackCredentialList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *OpenstackCredentialList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpenstackCloudCredentialAPIService.OpenstackList")
@@ -400,8 +401,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackListExecute(r ApiOpenstack
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -411,8 +412,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackListExecute(r ApiOpenstack
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -422,8 +423,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackListExecute(r ApiOpenstack
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -433,8 +434,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackListExecute(r ApiOpenstack
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -444,8 +445,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackListExecute(r ApiOpenstack
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -455,8 +456,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackListExecute(r ApiOpenstack
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -474,8 +475,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackListExecute(r ApiOpenstack
 }
 
 type ApiOpenstackNetworksRequest struct {
-	ctx context.Context
-	ApiService *OpenstackCloudCredentialAPIService
+	ctx                       context.Context
+	ApiService                *OpenstackCloudCredentialAPIService
 	openStackNetworkListQuery *OpenStackNetworkListQuery
 }
 
@@ -491,24 +492,25 @@ func (r ApiOpenstackNetworksRequest) Execute() ([]CommonStringBasedDropdownDto, 
 /*
 OpenstackNetworks Openstack network list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOpenstackNetworksRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOpenstackNetworksRequest
 */
 func (a *OpenstackCloudCredentialAPIService) OpenstackNetworks(ctx context.Context) ApiOpenstackNetworksRequest {
 	return ApiOpenstackNetworksRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []CommonStringBasedDropdownDto
+//
+//	@return []CommonStringBasedDropdownDto
 func (a *OpenstackCloudCredentialAPIService) OpenstackNetworksExecute(r ApiOpenstackNetworksRequest) ([]CommonStringBasedDropdownDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CommonStringBasedDropdownDto
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []CommonStringBasedDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpenstackCloudCredentialAPIService.OpenstackNetworks")
@@ -584,8 +586,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackNetworksExecute(r ApiOpens
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -595,8 +597,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackNetworksExecute(r ApiOpens
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -606,8 +608,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackNetworksExecute(r ApiOpens
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -617,8 +619,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackNetworksExecute(r ApiOpens
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -628,8 +630,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackNetworksExecute(r ApiOpens
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -639,8 +641,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackNetworksExecute(r ApiOpens
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -658,8 +660,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackNetworksExecute(r ApiOpens
 }
 
 type ApiOpenstackProjectsRequest struct {
-	ctx context.Context
-	ApiService *OpenstackCloudCredentialAPIService
+	ctx                       context.Context
+	ApiService                *OpenstackCloudCredentialAPIService
 	openStackProjectListQuery *OpenStackProjectListQuery
 }
 
@@ -675,24 +677,25 @@ func (r ApiOpenstackProjectsRequest) Execute() ([]CommonStringBasedDropdownDto, 
 /*
 OpenstackProjects Openstack project list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOpenstackProjectsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOpenstackProjectsRequest
 */
 func (a *OpenstackCloudCredentialAPIService) OpenstackProjects(ctx context.Context) ApiOpenstackProjectsRequest {
 	return ApiOpenstackProjectsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []CommonStringBasedDropdownDto
+//
+//	@return []CommonStringBasedDropdownDto
 func (a *OpenstackCloudCredentialAPIService) OpenstackProjectsExecute(r ApiOpenstackProjectsRequest) ([]CommonStringBasedDropdownDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CommonStringBasedDropdownDto
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []CommonStringBasedDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpenstackCloudCredentialAPIService.OpenstackProjects")
@@ -768,8 +771,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackProjectsExecute(r ApiOpens
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -779,8 +782,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackProjectsExecute(r ApiOpens
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -790,8 +793,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackProjectsExecute(r ApiOpens
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -801,8 +804,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackProjectsExecute(r ApiOpens
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -812,8 +815,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackProjectsExecute(r ApiOpens
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -823,8 +826,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackProjectsExecute(r ApiOpens
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -842,8 +845,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackProjectsExecute(r ApiOpens
 }
 
 type ApiOpenstackQuotasRequest struct {
-	ctx context.Context
-	ApiService *OpenstackCloudCredentialAPIService
+	ctx                    context.Context
+	ApiService             *OpenstackCloudCredentialAPIService
 	openstackQuotasCommand *OpenstackQuotasCommand
 }
 
@@ -859,24 +862,25 @@ func (r ApiOpenstackQuotasRequest) Execute() (*OpenstackQuotaList, *http.Respons
 /*
 OpenstackQuotas Openstack quota list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOpenstackQuotasRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOpenstackQuotasRequest
 */
 func (a *OpenstackCloudCredentialAPIService) OpenstackQuotas(ctx context.Context) ApiOpenstackQuotasRequest {
 	return ApiOpenstackQuotasRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return OpenstackQuotaList
+//
+//	@return OpenstackQuotaList
 func (a *OpenstackCloudCredentialAPIService) OpenstackQuotasExecute(r ApiOpenstackQuotasRequest) (*OpenstackQuotaList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *OpenstackQuotaList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *OpenstackQuotaList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpenstackCloudCredentialAPIService.OpenstackQuotas")
@@ -952,8 +956,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackQuotasExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -963,8 +967,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackQuotasExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -974,8 +978,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackQuotasExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -985,8 +989,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackQuotasExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -996,8 +1000,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackQuotasExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1007,8 +1011,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackQuotasExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1026,8 +1030,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackQuotasExecute(r ApiOpensta
 }
 
 type ApiOpenstackRegionListRequest struct {
-	ctx context.Context
-	ApiService *OpenstackCloudCredentialAPIService
+	ctx                      context.Context
+	ApiService               *OpenstackCloudCredentialAPIService
 	openStackRegionListQuery *OpenStackRegionListQuery
 }
 
@@ -1043,24 +1047,25 @@ func (r ApiOpenstackRegionListRequest) Execute() ([]string, *http.Response, erro
 /*
 OpenstackRegionList Retrieve Openstack regions
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOpenstackRegionListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOpenstackRegionListRequest
 */
 func (a *OpenstackCloudCredentialAPIService) OpenstackRegionList(ctx context.Context) ApiOpenstackRegionListRequest {
 	return ApiOpenstackRegionListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []string
+//
+//	@return []string
 func (a *OpenstackCloudCredentialAPIService) OpenstackRegionListExecute(r ApiOpenstackRegionListRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []string
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpenstackCloudCredentialAPIService.OpenstackRegionList")
@@ -1136,8 +1141,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackRegionListExecute(r ApiOpe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1147,8 +1152,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackRegionListExecute(r ApiOpe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1158,8 +1163,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackRegionListExecute(r ApiOpe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1169,8 +1174,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackRegionListExecute(r ApiOpe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1180,8 +1185,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackRegionListExecute(r ApiOpe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1191,8 +1196,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackRegionListExecute(r ApiOpe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1210,8 +1215,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackRegionListExecute(r ApiOpe
 }
 
 type ApiOpenstackStorageTypesRequest struct {
-	ctx context.Context
-	ApiService *OpenstackCloudCredentialAPIService
+	ctx                           context.Context
+	ApiService                    *OpenstackCloudCredentialAPIService
 	openstackStorageTypeListQuery *OpenstackStorageTypeListQuery
 }
 
@@ -1227,24 +1232,25 @@ func (r ApiOpenstackStorageTypesRequest) Execute() ([]string, *http.Response, er
 /*
 OpenstackStorageTypes Openstack storage type list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOpenstackStorageTypesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOpenstackStorageTypesRequest
 */
 func (a *OpenstackCloudCredentialAPIService) OpenstackStorageTypes(ctx context.Context) ApiOpenstackStorageTypesRequest {
 	return ApiOpenstackStorageTypesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []string
+//
+//	@return []string
 func (a *OpenstackCloudCredentialAPIService) OpenstackStorageTypesExecute(r ApiOpenstackStorageTypesRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []string
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpenstackCloudCredentialAPIService.OpenstackStorageTypes")
@@ -1320,8 +1326,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackStorageTypesExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1331,8 +1337,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackStorageTypesExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1342,8 +1348,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackStorageTypesExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1353,8 +1359,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackStorageTypesExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1364,8 +1370,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackStorageTypesExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1375,8 +1381,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackStorageTypesExecute(r ApiO
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1394,8 +1400,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackStorageTypesExecute(r ApiO
 }
 
 type ApiOpenstackSubnetRequest struct {
-	ctx context.Context
-	ApiService *OpenstackCloudCredentialAPIService
+	ctx                      context.Context
+	ApiService               *OpenstackCloudCredentialAPIService
 	openstackSubnetListQuery *OpenstackSubnetListQuery
 }
 
@@ -1411,24 +1417,25 @@ func (r ApiOpenstackSubnetRequest) Execute() ([]Subnet, *http.Response, error) {
 /*
 OpenstackSubnet Retrieve Openstack subnets
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOpenstackSubnetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOpenstackSubnetRequest
 */
 func (a *OpenstackCloudCredentialAPIService) OpenstackSubnet(ctx context.Context) ApiOpenstackSubnetRequest {
 	return ApiOpenstackSubnetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []Subnet
+//
+//	@return []Subnet
 func (a *OpenstackCloudCredentialAPIService) OpenstackSubnetExecute(r ApiOpenstackSubnetRequest) ([]Subnet, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []Subnet
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []Subnet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpenstackCloudCredentialAPIService.OpenstackSubnet")
@@ -1504,8 +1511,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackSubnetExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1515,8 +1522,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackSubnetExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1526,8 +1533,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackSubnetExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1537,8 +1544,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackSubnetExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1548,8 +1555,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackSubnetExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1559,8 +1566,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackSubnetExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1578,8 +1585,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackSubnetExecute(r ApiOpensta
 }
 
 type ApiOpenstackUpdateRequest struct {
-	ctx context.Context
-	ApiService *OpenstackCloudCredentialAPIService
+	ctx                    context.Context
+	ApiService             *OpenstackCloudCredentialAPIService
 	updateOpenStackCommand *UpdateOpenStackCommand
 }
 
@@ -1595,22 +1602,22 @@ func (r ApiOpenstackUpdateRequest) Execute() (*http.Response, error) {
 /*
 OpenstackUpdate Update Openstack credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOpenstackUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOpenstackUpdateRequest
 */
 func (a *OpenstackCloudCredentialAPIService) OpenstackUpdate(ctx context.Context) ApiOpenstackUpdateRequest {
 	return ApiOpenstackUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *OpenstackCloudCredentialAPIService) OpenstackUpdateExecute(r ApiOpenstackUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpenstackCloudCredentialAPIService.OpenstackUpdate")
@@ -1686,8 +1693,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackUpdateExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1697,8 +1704,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackUpdateExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1708,8 +1715,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackUpdateExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1719,8 +1726,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackUpdateExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1730,8 +1737,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackUpdateExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1741,8 +1748,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackUpdateExecute(r ApiOpensta
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1751,8 +1758,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackUpdateExecute(r ApiOpensta
 }
 
 type ApiOpenstackVolumesRequest struct {
-	ctx context.Context
-	ApiService *OpenstackCloudCredentialAPIService
+	ctx                          context.Context
+	ApiService                   *OpenstackCloudCredentialAPIService
 	openstackVolumeTypeListQuery *OpenstackVolumeTypeListQuery
 }
 
@@ -1768,24 +1775,25 @@ func (r ApiOpenstackVolumesRequest) Execute() ([]string, *http.Response, error) 
 /*
 OpenstackVolumes Openstack volume list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOpenstackVolumesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOpenstackVolumesRequest
 */
 func (a *OpenstackCloudCredentialAPIService) OpenstackVolumes(ctx context.Context) ApiOpenstackVolumesRequest {
 	return ApiOpenstackVolumesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []string
+//
+//	@return []string
 func (a *OpenstackCloudCredentialAPIService) OpenstackVolumesExecute(r ApiOpenstackVolumesRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []string
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpenstackCloudCredentialAPIService.OpenstackVolumes")
@@ -1861,8 +1869,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackVolumesExecute(r ApiOpenst
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1872,8 +1880,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackVolumesExecute(r ApiOpenst
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1883,8 +1891,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackVolumesExecute(r ApiOpenst
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1894,8 +1902,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackVolumesExecute(r ApiOpenst
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1905,8 +1913,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackVolumesExecute(r ApiOpenst
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1916,8 +1924,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackVolumesExecute(r ApiOpenst
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1935,8 +1943,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackVolumesExecute(r ApiOpenst
 }
 
 type ApiOpenstackZonesRequest struct {
-	ctx context.Context
-	ApiService *OpenstackCloudCredentialAPIService
+	ctx                    context.Context
+	ApiService             *OpenstackCloudCredentialAPIService
 	openStackZoneListQuery *OpenStackZoneListQuery
 }
 
@@ -1952,24 +1960,25 @@ func (r ApiOpenstackZonesRequest) Execute() ([]string, *http.Response, error) {
 /*
 OpenstackZones Fetch Openstack zones
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOpenstackZonesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOpenstackZonesRequest
 */
 func (a *OpenstackCloudCredentialAPIService) OpenstackZones(ctx context.Context) ApiOpenstackZonesRequest {
 	return ApiOpenstackZonesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []string
+//
+//	@return []string
 func (a *OpenstackCloudCredentialAPIService) OpenstackZonesExecute(r ApiOpenstackZonesRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []string
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpenstackCloudCredentialAPIService.OpenstackZones")
@@ -2045,8 +2054,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackZonesExecute(r ApiOpenstac
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2056,8 +2065,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackZonesExecute(r ApiOpenstac
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2067,8 +2076,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackZonesExecute(r ApiOpenstac
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2078,8 +2087,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackZonesExecute(r ApiOpenstac
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2089,8 +2098,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackZonesExecute(r ApiOpenstac
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2100,8 +2109,8 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackZonesExecute(r ApiOpenstac
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

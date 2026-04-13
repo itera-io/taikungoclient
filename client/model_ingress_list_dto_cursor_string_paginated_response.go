@@ -21,11 +21,11 @@ var _ MappedNullable = &IngressListDtoCursorStringPaginatedResponse{}
 
 // IngressListDtoCursorStringPaginatedResponse struct for IngressListDtoCursorStringPaginatedResponse
 type IngressListDtoCursorStringPaginatedResponse struct {
-	Data []IngressListDto `json:"data"`
-	Limit int32 `json:"limit"`
-	HasMore bool `json:"hasMore"`
-	TotalCount int64 `json:"totalCount"`
-	NextCursor NullableString `json:"nextCursor,omitempty"`
+	Data                 []IngressListDto `json:"data"`
+	Limit                int32            `json:"limit"`
+	HasMore              bool             `json:"hasMore"`
+	TotalCount           int64            `json:"totalCount"`
+	NextCursor           NullableString   `json:"nextCursor,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -182,6 +182,7 @@ func (o *IngressListDtoCursorStringPaginatedResponse) HasNextCursor() bool {
 func (o *IngressListDtoCursorStringPaginatedResponse) SetNextCursor(v string) {
 	o.NextCursor.Set(&v)
 }
+
 // SetNextCursorNil sets the value for NextCursor to be an explicit nil
 func (o *IngressListDtoCursorStringPaginatedResponse) SetNextCursorNil() {
 	o.NextCursor.Set(nil)
@@ -193,7 +194,7 @@ func (o *IngressListDtoCursorStringPaginatedResponse) UnsetNextCursor() {
 }
 
 func (o IngressListDtoCursorStringPaginatedResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -235,10 +236,10 @@ func (o *IngressListDtoCursorStringPaginatedResponse) UnmarshalJSON(data []byte)
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -303,5 +304,3 @@ func (v *NullableIngressListDtoCursorStringPaginatedResponse) UnmarshalJSON(src 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

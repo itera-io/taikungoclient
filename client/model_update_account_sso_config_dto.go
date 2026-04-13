@@ -20,14 +20,14 @@ var _ MappedNullable = &UpdateAccountSsoConfigDto{}
 
 // UpdateAccountSsoConfigDto struct for UpdateAccountSsoConfigDto
 type UpdateAccountSsoConfigDto struct {
-	Name NullableString `json:"name,omitempty"`
-	IssuerUrl NullableString `json:"issuerUrl,omitempty"`
-	ClientId NullableString `json:"clientId,omitempty"`
-	ClientSecret NullableString `json:"clientSecret,omitempty"`
-	GroupFromIdp NullableBool `json:"groupFromIdp,omitempty"`
-	GroupClaimName NullableString `json:"groupClaimName,omitempty"`
-	GroupScopeName NullableString `json:"groupScopeName,omitempty"`
-	IsEnabled NullableBool `json:"isEnabled,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	IssuerUrl            NullableString `json:"issuerUrl,omitempty"`
+	ClientId             NullableString `json:"clientId,omitempty"`
+	ClientSecret         NullableString `json:"clientSecret,omitempty"`
+	GroupFromIdp         NullableBool   `json:"groupFromIdp,omitempty"`
+	GroupClaimName       NullableString `json:"groupClaimName,omitempty"`
+	GroupScopeName       NullableString `json:"groupScopeName,omitempty"`
+	IsEnabled            NullableBool   `json:"isEnabled,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -82,6 +82,7 @@ func (o *UpdateAccountSsoConfigDto) HasName() bool {
 func (o *UpdateAccountSsoConfigDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UpdateAccountSsoConfigDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -124,6 +125,7 @@ func (o *UpdateAccountSsoConfigDto) HasIssuerUrl() bool {
 func (o *UpdateAccountSsoConfigDto) SetIssuerUrl(v string) {
 	o.IssuerUrl.Set(&v)
 }
+
 // SetIssuerUrlNil sets the value for IssuerUrl to be an explicit nil
 func (o *UpdateAccountSsoConfigDto) SetIssuerUrlNil() {
 	o.IssuerUrl.Set(nil)
@@ -166,6 +168,7 @@ func (o *UpdateAccountSsoConfigDto) HasClientId() bool {
 func (o *UpdateAccountSsoConfigDto) SetClientId(v string) {
 	o.ClientId.Set(&v)
 }
+
 // SetClientIdNil sets the value for ClientId to be an explicit nil
 func (o *UpdateAccountSsoConfigDto) SetClientIdNil() {
 	o.ClientId.Set(nil)
@@ -208,6 +211,7 @@ func (o *UpdateAccountSsoConfigDto) HasClientSecret() bool {
 func (o *UpdateAccountSsoConfigDto) SetClientSecret(v string) {
 	o.ClientSecret.Set(&v)
 }
+
 // SetClientSecretNil sets the value for ClientSecret to be an explicit nil
 func (o *UpdateAccountSsoConfigDto) SetClientSecretNil() {
 	o.ClientSecret.Set(nil)
@@ -250,6 +254,7 @@ func (o *UpdateAccountSsoConfigDto) HasGroupFromIdp() bool {
 func (o *UpdateAccountSsoConfigDto) SetGroupFromIdp(v bool) {
 	o.GroupFromIdp.Set(&v)
 }
+
 // SetGroupFromIdpNil sets the value for GroupFromIdp to be an explicit nil
 func (o *UpdateAccountSsoConfigDto) SetGroupFromIdpNil() {
 	o.GroupFromIdp.Set(nil)
@@ -292,6 +297,7 @@ func (o *UpdateAccountSsoConfigDto) HasGroupClaimName() bool {
 func (o *UpdateAccountSsoConfigDto) SetGroupClaimName(v string) {
 	o.GroupClaimName.Set(&v)
 }
+
 // SetGroupClaimNameNil sets the value for GroupClaimName to be an explicit nil
 func (o *UpdateAccountSsoConfigDto) SetGroupClaimNameNil() {
 	o.GroupClaimName.Set(nil)
@@ -334,6 +340,7 @@ func (o *UpdateAccountSsoConfigDto) HasGroupScopeName() bool {
 func (o *UpdateAccountSsoConfigDto) SetGroupScopeName(v string) {
 	o.GroupScopeName.Set(&v)
 }
+
 // SetGroupScopeNameNil sets the value for GroupScopeName to be an explicit nil
 func (o *UpdateAccountSsoConfigDto) SetGroupScopeNameNil() {
 	o.GroupScopeName.Set(nil)
@@ -376,6 +383,7 @@ func (o *UpdateAccountSsoConfigDto) HasIsEnabled() bool {
 func (o *UpdateAccountSsoConfigDto) SetIsEnabled(v bool) {
 	o.IsEnabled.Set(&v)
 }
+
 // SetIsEnabledNil sets the value for IsEnabled to be an explicit nil
 func (o *UpdateAccountSsoConfigDto) SetIsEnabledNil() {
 	o.IsEnabled.Set(nil)
@@ -387,7 +395,7 @@ func (o *UpdateAccountSsoConfigDto) UnsetIsEnabled() {
 }
 
 func (o UpdateAccountSsoConfigDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -491,5 +499,3 @@ func (v *NullableUpdateAccountSsoConfigDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -21,38 +21,38 @@ var _ MappedNullable = &OpenstackCredentialsListDto{}
 
 // OpenstackCredentialsListDto struct for OpenstackCredentialsListDto
 type OpenstackCredentialsListDto struct {
-	Id int32 `json:"id"`
-	ProjectCount int32 `json:"projectCount"`
-	IsLocked bool `json:"isLocked"`
-	Name string `json:"name"`
-	User string `json:"user"`
-	Url string `json:"url"`
-	Project string `json:"project"`
-	Domain string `json:"domain"`
-	Region string `json:"region"`
-	PublicNetwork string `json:"publicNetwork"`
-	ImportNetwork bool `json:"importNetwork"`
-	TenantId string `json:"tenantId"`
-	AvailabilityZone NullableString `json:"availabilityZone"`
-	VolumeType NullableString `json:"volumeType"`
-	InternalSubnetId NullableString `json:"internalSubnetId"`
-	Projects []CommonDropdownDto `json:"projects"`
-	CreatedBy string `json:"createdBy"`
-	LastModified string `json:"lastModified"`
-	LastModifiedBy string `json:"lastModifiedBy"`
-	IsDefault bool `json:"isDefault"`
-	OrganizationId int32 `json:"organizationId"`
-	OrganizationName string `json:"organizationName"`
-	CreatedAt string `json:"createdAt"`
-	ContinentName string `json:"continentName"`
-	IsAdmin bool `json:"isAdmin"`
-	IsInfra bool `json:"isInfra"`
-	ApplicationCredEnabled bool `json:"applicationCredEnabled"`
-	SkipTlsFlag bool `json:"skipTlsFlag"`
-	ManilaEnabled *bool `json:"manilaEnabled,omitempty"`
-	ManilaStorageType NullableString `json:"manilaStorageType,omitempty"`
-	LbProvider NullableString `json:"lbProvider,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Id                     int32               `json:"id"`
+	ProjectCount           int32               `json:"projectCount"`
+	IsLocked               bool                `json:"isLocked"`
+	Name                   string              `json:"name"`
+	User                   string              `json:"user"`
+	Url                    string              `json:"url"`
+	Project                string              `json:"project"`
+	Domain                 string              `json:"domain"`
+	Region                 string              `json:"region"`
+	PublicNetwork          string              `json:"publicNetwork"`
+	ImportNetwork          bool                `json:"importNetwork"`
+	TenantId               string              `json:"tenantId"`
+	AvailabilityZone       NullableString      `json:"availabilityZone"`
+	VolumeType             NullableString      `json:"volumeType"`
+	InternalSubnetId       NullableString      `json:"internalSubnetId"`
+	Projects               []CommonDropdownDto `json:"projects"`
+	CreatedBy              string              `json:"createdBy"`
+	LastModified           string              `json:"lastModified"`
+	LastModifiedBy         string              `json:"lastModifiedBy"`
+	IsDefault              bool                `json:"isDefault"`
+	OrganizationId         int32               `json:"organizationId"`
+	OrganizationName       string              `json:"organizationName"`
+	CreatedAt              string              `json:"createdAt"`
+	ContinentName          string              `json:"continentName"`
+	IsAdmin                bool                `json:"isAdmin"`
+	IsInfra                bool                `json:"isInfra"`
+	ApplicationCredEnabled bool                `json:"applicationCredEnabled"`
+	SkipTlsFlag            bool                `json:"skipTlsFlag"`
+	ManilaEnabled          *bool               `json:"manilaEnabled,omitempty"`
+	ManilaStorageType      NullableString      `json:"manilaStorageType,omitempty"`
+	LbProvider             NullableString      `json:"lbProvider,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _OpenstackCredentialsListDto OpenstackCredentialsListDto
@@ -844,6 +844,7 @@ func (o *OpenstackCredentialsListDto) HasManilaStorageType() bool {
 func (o *OpenstackCredentialsListDto) SetManilaStorageType(v string) {
 	o.ManilaStorageType.Set(&v)
 }
+
 // SetManilaStorageTypeNil sets the value for ManilaStorageType to be an explicit nil
 func (o *OpenstackCredentialsListDto) SetManilaStorageTypeNil() {
 	o.ManilaStorageType.Set(nil)
@@ -886,6 +887,7 @@ func (o *OpenstackCredentialsListDto) HasLbProvider() bool {
 func (o *OpenstackCredentialsListDto) SetLbProvider(v string) {
 	o.LbProvider.Set(&v)
 }
+
 // SetLbProviderNil sets the value for LbProvider to be an explicit nil
 func (o *OpenstackCredentialsListDto) SetLbProviderNil() {
 	o.LbProvider.Set(nil)
@@ -897,7 +899,7 @@ func (o *OpenstackCredentialsListDto) UnsetLbProvider() {
 }
 
 func (o OpenstackCredentialsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -991,10 +993,10 @@ func (o *OpenstackCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -1085,5 +1087,3 @@ func (v *NullableOpenstackCredentialsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

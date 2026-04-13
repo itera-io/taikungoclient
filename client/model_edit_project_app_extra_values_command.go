@@ -20,9 +20,9 @@ var _ MappedNullable = &EditProjectAppExtraValuesCommand{}
 
 // EditProjectAppExtraValuesCommand struct for EditProjectAppExtraValuesCommand
 type EditProjectAppExtraValuesCommand struct {
-	ProjectAppId *int32 `json:"projectAppId,omitempty"`
-	ExtraValues NullableString `json:"extraValues,omitempty"`
-	Timeout NullableInt32 `json:"timeout,omitempty"`
+	ProjectAppId         *int32         `json:"projectAppId,omitempty"`
+	ExtraValues          NullableString `json:"extraValues,omitempty"`
+	Timeout              NullableInt32  `json:"timeout,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,6 +109,7 @@ func (o *EditProjectAppExtraValuesCommand) HasExtraValues() bool {
 func (o *EditProjectAppExtraValuesCommand) SetExtraValues(v string) {
 	o.ExtraValues.Set(&v)
 }
+
 // SetExtraValuesNil sets the value for ExtraValues to be an explicit nil
 func (o *EditProjectAppExtraValuesCommand) SetExtraValuesNil() {
 	o.ExtraValues.Set(nil)
@@ -151,6 +152,7 @@ func (o *EditProjectAppExtraValuesCommand) HasTimeout() bool {
 func (o *EditProjectAppExtraValuesCommand) SetTimeout(v int32) {
 	o.Timeout.Set(&v)
 }
+
 // SetTimeoutNil sets the value for Timeout to be an explicit nil
 func (o *EditProjectAppExtraValuesCommand) SetTimeoutNil() {
 	o.Timeout.Set(nil)
@@ -162,7 +164,7 @@ func (o *EditProjectAppExtraValuesCommand) UnsetTimeout() {
 }
 
 func (o EditProjectAppExtraValuesCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -246,5 +248,3 @@ func (v *NullableEditProjectAppExtraValuesCommand) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

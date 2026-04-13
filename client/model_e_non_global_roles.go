@@ -21,8 +21,8 @@ type ENonGlobalRoles string
 
 // List of ENonGlobalRoles
 const (
-	ENONGLOBALROLES_NONE ENonGlobalRoles = "None"
-	ENONGLOBALROLES_MEMBER ENonGlobalRoles = "Member"
+	ENONGLOBALROLES_NONE    ENonGlobalRoles = "None"
+	ENONGLOBALROLES_MEMBER  ENonGlobalRoles = "Member"
 	ENONGLOBALROLES_MANAGER ENonGlobalRoles = "Manager"
 )
 
@@ -111,4 +111,3 @@ func (v *NullableENonGlobalRoles) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

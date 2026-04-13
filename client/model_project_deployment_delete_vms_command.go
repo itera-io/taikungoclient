@@ -20,8 +20,8 @@ var _ MappedNullable = &ProjectDeploymentDeleteVmsCommand{}
 
 // ProjectDeploymentDeleteVmsCommand struct for ProjectDeploymentDeleteVmsCommand
 type ProjectDeploymentDeleteVmsCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	VmIds []int32 `json:"vmIds,omitempty"`
+	ProjectId            *int32  `json:"projectId,omitempty"`
+	VmIds                []int32 `json:"vmIds,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -110,7 +110,7 @@ func (o *ProjectDeploymentDeleteVmsCommand) SetVmIds(v []int32) {
 }
 
 func (o ProjectDeploymentDeleteVmsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -190,5 +190,3 @@ func (v *NullableProjectDeploymentDeleteVmsCommand) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

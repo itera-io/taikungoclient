@@ -20,7 +20,7 @@ var _ MappedNullable = &SsoInitCommand{}
 
 // SsoInitCommand struct for SsoInitCommand
 type SsoInitCommand struct {
-	AccountName NullableString `json:"accountName,omitempty"`
+	AccountName          NullableString `json:"accountName,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,6 +75,7 @@ func (o *SsoInitCommand) HasAccountName() bool {
 func (o *SsoInitCommand) SetAccountName(v string) {
 	o.AccountName.Set(&v)
 }
+
 // SetAccountNameNil sets the value for AccountName to be an explicit nil
 func (o *SsoInitCommand) SetAccountNameNil() {
 	o.AccountName.Set(nil)
@@ -86,7 +87,7 @@ func (o *SsoInitCommand) UnsetAccountName() {
 }
 
 func (o SsoInitCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -162,5 +163,3 @@ func (v *NullableSsoInitCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

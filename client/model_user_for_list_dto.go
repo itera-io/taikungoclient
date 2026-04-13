@@ -21,22 +21,22 @@ var _ MappedNullable = &UserForListDto{}
 
 // UserForListDto struct for UserForListDto
 type UserForListDto struct {
-	Id string `json:"id"`
-	Username string `json:"username"`
-	Email string `json:"email"`
-	DisplayName NullableString `json:"displayName"`
-	CreatedAt string `json:"createdAt"`
-	Is2FAEnabled bool `json:"is2FAEnabled"`
-	Account AccountDetailsForUserDto `json:"account"`
-	Role EGlobalRole `json:"role"`
-	Organizations map[string]OrganizationContextDto `json:"organizations"`
-	IsEmailConfirmed bool `json:"isEmailConfirmed"`
-	IsEmailNotificationEnabled bool `json:"isEmailNotificationEnabled"`
-	IsForcedToResetPassword bool `json:"isForcedToResetPassword"`
-	IsLocked bool `json:"isLocked"`
-	Owner bool `json:"owner"`
-	IsForcedToEnableTwoFactorAuthentication bool `json:"isForcedToEnableTwoFactorAuthentication"`
-	AdditionalProperties map[string]interface{}
+	Id                                      string                            `json:"id"`
+	Username                                string                            `json:"username"`
+	Email                                   string                            `json:"email"`
+	DisplayName                             NullableString                    `json:"displayName"`
+	CreatedAt                               string                            `json:"createdAt"`
+	Is2FAEnabled                            bool                              `json:"is2FAEnabled"`
+	Account                                 AccountDetailsForUserDto          `json:"account"`
+	Role                                    EGlobalRole                       `json:"role"`
+	Organizations                           map[string]OrganizationContextDto `json:"organizations"`
+	IsEmailConfirmed                        bool                              `json:"isEmailConfirmed"`
+	IsEmailNotificationEnabled              bool                              `json:"isEmailNotificationEnabled"`
+	IsForcedToResetPassword                 bool                              `json:"isForcedToResetPassword"`
+	IsLocked                                bool                              `json:"isLocked"`
+	Owner                                   bool                              `json:"owner"`
+	IsForcedToEnableTwoFactorAuthentication bool                              `json:"isForcedToEnableTwoFactorAuthentication"`
+	AdditionalProperties                    map[string]interface{}
 }
 
 type _UserForListDto UserForListDto
@@ -436,7 +436,7 @@ func (o *UserForListDto) SetIsForcedToEnableTwoFactorAuthentication(v bool) {
 }
 
 func (o UserForListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -495,10 +495,10 @@ func (o *UserForListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -573,5 +573,3 @@ func (v *NullableUserForListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

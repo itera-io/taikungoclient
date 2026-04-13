@@ -21,15 +21,15 @@ var _ MappedNullable = &StandAloneProfilesListDto{}
 
 // StandAloneProfilesListDto struct for StandAloneProfilesListDto
 type StandAloneProfilesListDto struct {
-	Id int32 `json:"id"`
-	Name NullableString `json:"name"`
-	PublicKey NullableString `json:"publicKey"`
-	IsLocked bool `json:"isLocked"`
-	StandaloneVms []StandAloneVmSmallDetailDto `json:"standaloneVms"`
-	OrganizationId int32 `json:"organizationId"`
-	OrganizationName NullableString `json:"organizationName"`
-	PartnerLogo NullableString `json:"partnerLogo"`
-	CreatedAt NullableString `json:"createdAt"`
+	Id                   int32                        `json:"id"`
+	Name                 NullableString               `json:"name"`
+	PublicKey            NullableString               `json:"publicKey"`
+	IsLocked             bool                         `json:"isLocked"`
+	StandaloneVms        []StandAloneVmSmallDetailDto `json:"standaloneVms"`
+	OrganizationId       int32                        `json:"organizationId"`
+	OrganizationName     NullableString               `json:"organizationName"`
+	PartnerLogo          NullableString               `json:"partnerLogo"`
+	CreatedAt            NullableString               `json:"createdAt"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -290,7 +290,7 @@ func (o *StandAloneProfilesListDto) SetCreatedAt(v string) {
 }
 
 func (o StandAloneProfilesListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -339,10 +339,10 @@ func (o *StandAloneProfilesListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -411,5 +411,3 @@ func (v *NullableStandAloneProfilesListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

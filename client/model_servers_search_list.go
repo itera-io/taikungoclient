@@ -20,8 +20,8 @@ var _ MappedNullable = &ServersSearchList{}
 
 // ServersSearchList struct for ServersSearchList
 type ServersSearchList struct {
-	Data []ServersSearchResponseData `json:"data,omitempty"`
-	TotalCount *int64 `json:"totalCount,omitempty"`
+	Data                 []ServersSearchResponseData `json:"data,omitempty"`
+	TotalCount           *int64                      `json:"totalCount,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -110,7 +110,7 @@ func (o *ServersSearchList) SetTotalCount(v int64) {
 }
 
 func (o ServersSearchList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -190,5 +190,3 @@ func (v *NullableServersSearchList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

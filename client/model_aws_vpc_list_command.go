@@ -20,9 +20,9 @@ var _ MappedNullable = &AwsVpcListCommand{}
 
 // AwsVpcListCommand struct for AwsVpcListCommand
 type AwsVpcListCommand struct {
-	AwsAccessKeyId NullableString `json:"awsAccessKeyId,omitempty"`
-	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey,omitempty"`
-	AwsRegion NullableString `json:"awsRegion,omitempty"`
+	AwsAccessKeyId       NullableString `json:"awsAccessKeyId,omitempty"`
+	AwsSecretAccessKey   NullableString `json:"awsSecretAccessKey,omitempty"`
+	AwsRegion            NullableString `json:"awsRegion,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,6 +77,7 @@ func (o *AwsVpcListCommand) HasAwsAccessKeyId() bool {
 func (o *AwsVpcListCommand) SetAwsAccessKeyId(v string) {
 	o.AwsAccessKeyId.Set(&v)
 }
+
 // SetAwsAccessKeyIdNil sets the value for AwsAccessKeyId to be an explicit nil
 func (o *AwsVpcListCommand) SetAwsAccessKeyIdNil() {
 	o.AwsAccessKeyId.Set(nil)
@@ -119,6 +120,7 @@ func (o *AwsVpcListCommand) HasAwsSecretAccessKey() bool {
 func (o *AwsVpcListCommand) SetAwsSecretAccessKey(v string) {
 	o.AwsSecretAccessKey.Set(&v)
 }
+
 // SetAwsSecretAccessKeyNil sets the value for AwsSecretAccessKey to be an explicit nil
 func (o *AwsVpcListCommand) SetAwsSecretAccessKeyNil() {
 	o.AwsSecretAccessKey.Set(nil)
@@ -161,6 +163,7 @@ func (o *AwsVpcListCommand) HasAwsRegion() bool {
 func (o *AwsVpcListCommand) SetAwsRegion(v string) {
 	o.AwsRegion.Set(&v)
 }
+
 // SetAwsRegionNil sets the value for AwsRegion to be an explicit nil
 func (o *AwsVpcListCommand) SetAwsRegionNil() {
 	o.AwsRegion.Set(nil)
@@ -172,7 +175,7 @@ func (o *AwsVpcListCommand) UnsetAwsRegion() {
 }
 
 func (o AwsVpcListCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -256,5 +259,3 @@ func (v *NullableAwsVpcListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

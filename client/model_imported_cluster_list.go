@@ -21,9 +21,9 @@ var _ MappedNullable = &ImportedClusterList{}
 
 // ImportedClusterList struct for ImportedClusterList
 type ImportedClusterList struct {
-	Data []ImportedClusterListDto `json:"data"`
-	Project ImportedClusterDetailsDto `json:"project"`
-	TotalCount NullableInt64 `json:"totalCount,omitempty"`
+	Data                 []ImportedClusterListDto  `json:"data"`
+	Project              ImportedClusterDetailsDto `json:"project"`
+	TotalCount           NullableInt64             `json:"totalCount,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -130,6 +130,7 @@ func (o *ImportedClusterList) HasTotalCount() bool {
 func (o *ImportedClusterList) SetTotalCount(v int64) {
 	o.TotalCount.Set(&v)
 }
+
 // SetTotalCountNil sets the value for TotalCount to be an explicit nil
 func (o *ImportedClusterList) SetTotalCountNil() {
 	o.TotalCount.Set(nil)
@@ -141,7 +142,7 @@ func (o *ImportedClusterList) UnsetTotalCount() {
 }
 
 func (o ImportedClusterList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -179,10 +180,10 @@ func (o *ImportedClusterList) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -245,5 +246,3 @@ func (v *NullableImportedClusterList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

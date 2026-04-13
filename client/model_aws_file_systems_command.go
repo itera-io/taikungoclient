@@ -20,10 +20,10 @@ var _ MappedNullable = &AwsFileSystemsCommand{}
 
 // AwsFileSystemsCommand struct for AwsFileSystemsCommand
 type AwsFileSystemsCommand struct {
-	AwsAccessKeyId NullableString `json:"awsAccessKeyId,omitempty"`
-	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey,omitempty"`
-	AwsRegion NullableString `json:"awsRegion,omitempty"`
-	VpcId NullableString `json:"vpcId,omitempty"`
+	AwsAccessKeyId       NullableString `json:"awsAccessKeyId,omitempty"`
+	AwsSecretAccessKey   NullableString `json:"awsSecretAccessKey,omitempty"`
+	AwsRegion            NullableString `json:"awsRegion,omitempty"`
+	VpcId                NullableString `json:"vpcId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,6 +78,7 @@ func (o *AwsFileSystemsCommand) HasAwsAccessKeyId() bool {
 func (o *AwsFileSystemsCommand) SetAwsAccessKeyId(v string) {
 	o.AwsAccessKeyId.Set(&v)
 }
+
 // SetAwsAccessKeyIdNil sets the value for AwsAccessKeyId to be an explicit nil
 func (o *AwsFileSystemsCommand) SetAwsAccessKeyIdNil() {
 	o.AwsAccessKeyId.Set(nil)
@@ -120,6 +121,7 @@ func (o *AwsFileSystemsCommand) HasAwsSecretAccessKey() bool {
 func (o *AwsFileSystemsCommand) SetAwsSecretAccessKey(v string) {
 	o.AwsSecretAccessKey.Set(&v)
 }
+
 // SetAwsSecretAccessKeyNil sets the value for AwsSecretAccessKey to be an explicit nil
 func (o *AwsFileSystemsCommand) SetAwsSecretAccessKeyNil() {
 	o.AwsSecretAccessKey.Set(nil)
@@ -162,6 +164,7 @@ func (o *AwsFileSystemsCommand) HasAwsRegion() bool {
 func (o *AwsFileSystemsCommand) SetAwsRegion(v string) {
 	o.AwsRegion.Set(&v)
 }
+
 // SetAwsRegionNil sets the value for AwsRegion to be an explicit nil
 func (o *AwsFileSystemsCommand) SetAwsRegionNil() {
 	o.AwsRegion.Set(nil)
@@ -204,6 +207,7 @@ func (o *AwsFileSystemsCommand) HasVpcId() bool {
 func (o *AwsFileSystemsCommand) SetVpcId(v string) {
 	o.VpcId.Set(&v)
 }
+
 // SetVpcIdNil sets the value for VpcId to be an explicit nil
 func (o *AwsFileSystemsCommand) SetVpcIdNil() {
 	o.VpcId.Set(nil)
@@ -215,7 +219,7 @@ func (o *AwsFileSystemsCommand) UnsetVpcId() {
 }
 
 func (o AwsFileSystemsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -303,5 +307,3 @@ func (v *NullableAwsFileSystemsCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,11 +20,11 @@ var _ MappedNullable = &PrometheusDashboardCreateCommand{}
 
 // PrometheusDashboardCreateCommand struct for PrometheusDashboardCreateCommand
 type PrometheusDashboardCreateCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Expression NullableString `json:"expression,omitempty"`
-	Description NullableString `json:"description,omitempty"`
-	CategoryName NullableString `json:"categoryName,omitempty"`
+	ProjectId            *int32         `json:"projectId,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Expression           NullableString `json:"expression,omitempty"`
+	Description          NullableString `json:"description,omitempty"`
+	CategoryName         NullableString `json:"categoryName,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -111,6 +111,7 @@ func (o *PrometheusDashboardCreateCommand) HasName() bool {
 func (o *PrometheusDashboardCreateCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PrometheusDashboardCreateCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -153,6 +154,7 @@ func (o *PrometheusDashboardCreateCommand) HasExpression() bool {
 func (o *PrometheusDashboardCreateCommand) SetExpression(v string) {
 	o.Expression.Set(&v)
 }
+
 // SetExpressionNil sets the value for Expression to be an explicit nil
 func (o *PrometheusDashboardCreateCommand) SetExpressionNil() {
 	o.Expression.Set(nil)
@@ -195,6 +197,7 @@ func (o *PrometheusDashboardCreateCommand) HasDescription() bool {
 func (o *PrometheusDashboardCreateCommand) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *PrometheusDashboardCreateCommand) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -237,6 +240,7 @@ func (o *PrometheusDashboardCreateCommand) HasCategoryName() bool {
 func (o *PrometheusDashboardCreateCommand) SetCategoryName(v string) {
 	o.CategoryName.Set(&v)
 }
+
 // SetCategoryNameNil sets the value for CategoryName to be an explicit nil
 func (o *PrometheusDashboardCreateCommand) SetCategoryNameNil() {
 	o.CategoryName.Set(nil)
@@ -248,7 +252,7 @@ func (o *PrometheusDashboardCreateCommand) UnsetCategoryName() {
 }
 
 func (o PrometheusDashboardCreateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -340,5 +344,3 @@ func (v *NullablePrometheusDashboardCreateCommand) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

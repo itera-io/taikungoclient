@@ -20,18 +20,18 @@ var _ MappedNullable = &CreateProxmoxCommand{}
 
 // CreateProxmoxCommand struct for CreateProxmoxCommand
 type CreateProxmoxCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	TokenId NullableString `json:"tokenId,omitempty"`
-	Url NullableString `json:"url,omitempty"`
-	TokenSecret NullableString `json:"tokenSecret,omitempty"`
-	Storage NullableString `json:"storage,omitempty"`
-	VmTemplateName NullableString `json:"vmTemplateName,omitempty"`
-	Continent NullableString `json:"continent,omitempty"`
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	Hypervisors []string `json:"hypervisors,omitempty"`
-	PublicNetwork *CreateProxmoxNetworkDto `json:"publicNetwork,omitempty"`
-	PrivateNetwork *CreateProxmoxNetworkDto `json:"privateNetwork,omitempty"`
-	SkipTlsFlag *bool `json:"skipTlsFlag,omitempty"`
+	Name                 NullableString           `json:"name,omitempty"`
+	TokenId              NullableString           `json:"tokenId,omitempty"`
+	Url                  NullableString           `json:"url,omitempty"`
+	TokenSecret          NullableString           `json:"tokenSecret,omitempty"`
+	Storage              NullableString           `json:"storage,omitempty"`
+	VmTemplateName       NullableString           `json:"vmTemplateName,omitempty"`
+	Continent            NullableString           `json:"continent,omitempty"`
+	OrganizationId       NullableInt32            `json:"organizationId,omitempty"`
+	Hypervisors          []string                 `json:"hypervisors,omitempty"`
+	PublicNetwork        *CreateProxmoxNetworkDto `json:"publicNetwork,omitempty"`
+	PrivateNetwork       *CreateProxmoxNetworkDto `json:"privateNetwork,omitempty"`
+	SkipTlsFlag          *bool                    `json:"skipTlsFlag,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -86,6 +86,7 @@ func (o *CreateProxmoxCommand) HasName() bool {
 func (o *CreateProxmoxCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateProxmoxCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -128,6 +129,7 @@ func (o *CreateProxmoxCommand) HasTokenId() bool {
 func (o *CreateProxmoxCommand) SetTokenId(v string) {
 	o.TokenId.Set(&v)
 }
+
 // SetTokenIdNil sets the value for TokenId to be an explicit nil
 func (o *CreateProxmoxCommand) SetTokenIdNil() {
 	o.TokenId.Set(nil)
@@ -170,6 +172,7 @@ func (o *CreateProxmoxCommand) HasUrl() bool {
 func (o *CreateProxmoxCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
+
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *CreateProxmoxCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -212,6 +215,7 @@ func (o *CreateProxmoxCommand) HasTokenSecret() bool {
 func (o *CreateProxmoxCommand) SetTokenSecret(v string) {
 	o.TokenSecret.Set(&v)
 }
+
 // SetTokenSecretNil sets the value for TokenSecret to be an explicit nil
 func (o *CreateProxmoxCommand) SetTokenSecretNil() {
 	o.TokenSecret.Set(nil)
@@ -254,6 +258,7 @@ func (o *CreateProxmoxCommand) HasStorage() bool {
 func (o *CreateProxmoxCommand) SetStorage(v string) {
 	o.Storage.Set(&v)
 }
+
 // SetStorageNil sets the value for Storage to be an explicit nil
 func (o *CreateProxmoxCommand) SetStorageNil() {
 	o.Storage.Set(nil)
@@ -296,6 +301,7 @@ func (o *CreateProxmoxCommand) HasVmTemplateName() bool {
 func (o *CreateProxmoxCommand) SetVmTemplateName(v string) {
 	o.VmTemplateName.Set(&v)
 }
+
 // SetVmTemplateNameNil sets the value for VmTemplateName to be an explicit nil
 func (o *CreateProxmoxCommand) SetVmTemplateNameNil() {
 	o.VmTemplateName.Set(nil)
@@ -338,6 +344,7 @@ func (o *CreateProxmoxCommand) HasContinent() bool {
 func (o *CreateProxmoxCommand) SetContinent(v string) {
 	o.Continent.Set(&v)
 }
+
 // SetContinentNil sets the value for Continent to be an explicit nil
 func (o *CreateProxmoxCommand) SetContinentNil() {
 	o.Continent.Set(nil)
@@ -380,6 +387,7 @@ func (o *CreateProxmoxCommand) HasOrganizationId() bool {
 func (o *CreateProxmoxCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
+
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateProxmoxCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -520,7 +528,7 @@ func (o *CreateProxmoxCommand) SetSkipTlsFlag(v bool) {
 }
 
 func (o CreateProxmoxCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -640,5 +648,3 @@ func (v *NullableCreateProxmoxCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

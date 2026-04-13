@@ -20,8 +20,8 @@ var _ MappedNullable = &EditCatalogAppVersionCommand{}
 
 // EditCatalogAppVersionCommand struct for EditCatalogAppVersionCommand
 type EditCatalogAppVersionCommand struct {
-	CatalogAppId *int32 `json:"catalogAppId,omitempty"`
-	Version NullableString `json:"version,omitempty"`
+	CatalogAppId         *int32         `json:"catalogAppId,omitempty"`
+	Version              NullableString `json:"version,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,6 +108,7 @@ func (o *EditCatalogAppVersionCommand) HasVersion() bool {
 func (o *EditCatalogAppVersionCommand) SetVersion(v string) {
 	o.Version.Set(&v)
 }
+
 // SetVersionNil sets the value for Version to be an explicit nil
 func (o *EditCatalogAppVersionCommand) SetVersionNil() {
 	o.Version.Set(nil)
@@ -119,7 +120,7 @@ func (o *EditCatalogAppVersionCommand) UnsetVersion() {
 }
 
 func (o EditCatalogAppVersionCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -199,5 +200,3 @@ func (v *NullableEditCatalogAppVersionCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

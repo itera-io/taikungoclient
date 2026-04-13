@@ -21,13 +21,13 @@ var _ MappedNullable = &VClusterActionVisibilityDto{}
 
 // VClusterActionVisibilityDto struct for VClusterActionVisibilityDto
 type VClusterActionVisibilityDto struct {
-	AttachAlertingProfile ButtonStatusDto `json:"attachAlertingProfile"`
-	DetachAlertingProfile ButtonStatusDto `json:"detachAlertingProfile"`
+	AttachAlertingProfile  ButtonStatusDto `json:"attachAlertingProfile"`
+	DetachAlertingProfile  ButtonStatusDto `json:"detachAlertingProfile"`
 	ProjectMaintenanceMode ButtonStatusDto `json:"projectMaintenanceMode"`
-	Lock ButtonStatusDto `json:"lock"`
-	Unlock ButtonStatusDto `json:"unlock"`
-	QuotaPresets ButtonStatusDto `json:"quotaPresets"`
-	AdditionalProperties map[string]interface{}
+	Lock                   ButtonStatusDto `json:"lock"`
+	Unlock                 ButtonStatusDto `json:"unlock"`
+	QuotaPresets           ButtonStatusDto `json:"quotaPresets"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _VClusterActionVisibilityDto VClusterActionVisibilityDto
@@ -200,7 +200,7 @@ func (o *VClusterActionVisibilityDto) SetQuotaPresets(v ButtonStatusDto) {
 }
 
 func (o VClusterActionVisibilityDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -241,10 +241,10 @@ func (o *VClusterActionVisibilityDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -310,5 +310,3 @@ func (v *NullableVClusterActionVisibilityDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

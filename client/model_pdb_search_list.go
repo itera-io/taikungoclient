@@ -20,8 +20,8 @@ var _ MappedNullable = &PdbSearchList{}
 
 // PdbSearchList struct for PdbSearchList
 type PdbSearchList struct {
-	Data []CommonSearchKubernetesResponseData `json:"data,omitempty"`
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	Data                 []CommonSearchKubernetesResponseData `json:"data,omitempty"`
+	TotalCount           *int32                               `json:"totalCount,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -110,7 +110,7 @@ func (o *PdbSearchList) SetTotalCount(v int32) {
 }
 
 func (o PdbSearchList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -190,5 +190,3 @@ func (v *NullablePdbSearchList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

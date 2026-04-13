@@ -20,7 +20,7 @@ var _ MappedNullable = &DeleteVirtualClusterCommand{}
 
 // DeleteVirtualClusterCommand struct for DeleteVirtualClusterCommand
 type DeleteVirtualClusterCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
+	ProjectId            *int32 `json:"projectId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,7 @@ func (o *DeleteVirtualClusterCommand) SetProjectId(v int32) {
 }
 
 func (o DeleteVirtualClusterCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -152,5 +152,3 @@ func (v *NullableDeleteVirtualClusterCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

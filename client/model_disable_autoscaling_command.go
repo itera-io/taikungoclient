@@ -20,7 +20,7 @@ var _ MappedNullable = &DisableAutoscalingCommand{}
 
 // DisableAutoscalingCommand struct for DisableAutoscalingCommand
 type DisableAutoscalingCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
+	ProjectId            *int32 `json:"projectId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,7 @@ func (o *DisableAutoscalingCommand) SetProjectId(v int32) {
 }
 
 func (o DisableAutoscalingCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -152,5 +152,3 @@ func (v *NullableDisableAutoscalingCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

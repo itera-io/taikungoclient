@@ -21,36 +21,36 @@ var _ MappedNullable = &ProjectActionVisibilityDto{}
 
 // ProjectActionVisibilityDto struct for ProjectActionVisibilityDto
 type ProjectActionVisibilityDto struct {
-	Commit ButtonStatusDto `json:"commit"`
-	Repair ButtonStatusDto `json:"repair"`
-	Upgrade ButtonStatusDto `json:"upgrade"`
-	EnableMonitoring ButtonStatusDto `json:"enableMonitoring"`
-	DisableMonitoring ButtonStatusDto `json:"disableMonitoring"`
-	EnableBackup ButtonStatusDto `json:"enableBackup"`
-	DisableBackup ButtonStatusDto `json:"disableBackup"`
-	EnableOpa ButtonStatusDto `json:"enableOpa"`
-	DisableOpa ButtonStatusDto `json:"disableOpa"`
-	EnableAutoscaler ButtonStatusDto `json:"enableAutoscaler"`
-	DisableAutoscaler ButtonStatusDto `json:"disableAutoscaler"`
-	VmRepair ButtonStatusDto `json:"vmRepair"`
-	VmCommit ButtonStatusDto `json:"vmCommit"`
-	Lock ButtonStatusDto `json:"lock"`
-	Unlock ButtonStatusDto `json:"unlock"`
-	EnableSpotWorker ButtonStatusDto `json:"enableSpotWorker"`
-	DisableSpotWorker ButtonStatusDto `json:"disableSpotWorker"`
-	EnableFullSpot ButtonStatusDto `json:"enableFullSpot"`
-	DisableFullSpot ButtonStatusDto `json:"disableFullSpot"`
-	EnableSpotVm ButtonStatusDto `json:"enableSpotVm"`
-	DisableSpotVm ButtonStatusDto `json:"disableSpotVm"`
-	AttachAlertingProfile ButtonStatusDto `json:"attachAlertingProfile"`
-	DetachAlertingProfile ButtonStatusDto `json:"detachAlertingProfile"`
-	EnableAi ButtonStatusDto `json:"enableAi"`
-	DisableAi ButtonStatusDto `json:"disableAi"`
-	AiAssistant ButtonStatusDto `json:"aiAssistant"`
+	Commit                 ButtonStatusDto `json:"commit"`
+	Repair                 ButtonStatusDto `json:"repair"`
+	Upgrade                ButtonStatusDto `json:"upgrade"`
+	EnableMonitoring       ButtonStatusDto `json:"enableMonitoring"`
+	DisableMonitoring      ButtonStatusDto `json:"disableMonitoring"`
+	EnableBackup           ButtonStatusDto `json:"enableBackup"`
+	DisableBackup          ButtonStatusDto `json:"disableBackup"`
+	EnableOpa              ButtonStatusDto `json:"enableOpa"`
+	DisableOpa             ButtonStatusDto `json:"disableOpa"`
+	EnableAutoscaler       ButtonStatusDto `json:"enableAutoscaler"`
+	DisableAutoscaler      ButtonStatusDto `json:"disableAutoscaler"`
+	VmRepair               ButtonStatusDto `json:"vmRepair"`
+	VmCommit               ButtonStatusDto `json:"vmCommit"`
+	Lock                   ButtonStatusDto `json:"lock"`
+	Unlock                 ButtonStatusDto `json:"unlock"`
+	EnableSpotWorker       ButtonStatusDto `json:"enableSpotWorker"`
+	DisableSpotWorker      ButtonStatusDto `json:"disableSpotWorker"`
+	EnableFullSpot         ButtonStatusDto `json:"enableFullSpot"`
+	DisableFullSpot        ButtonStatusDto `json:"disableFullSpot"`
+	EnableSpotVm           ButtonStatusDto `json:"enableSpotVm"`
+	DisableSpotVm          ButtonStatusDto `json:"disableSpotVm"`
+	AttachAlertingProfile  ButtonStatusDto `json:"attachAlertingProfile"`
+	DetachAlertingProfile  ButtonStatusDto `json:"detachAlertingProfile"`
+	EnableAi               ButtonStatusDto `json:"enableAi"`
+	DisableAi              ButtonStatusDto `json:"disableAi"`
+	AiAssistant            ButtonStatusDto `json:"aiAssistant"`
 	ProjectMaintenanceMode ButtonStatusDto `json:"projectMaintenanceMode"`
-	AddServer ButtonStatusDto `json:"addServer"`
-	AddVm ButtonStatusDto `json:"addVm"`
-	AdditionalProperties map[string]interface{}
+	AddServer              ButtonStatusDto `json:"addServer"`
+	AddVm                  ButtonStatusDto `json:"addVm"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _ProjectActionVisibilityDto ProjectActionVisibilityDto
@@ -798,7 +798,7 @@ func (o *ProjectActionVisibilityDto) SetAddVm(v ButtonStatusDto) {
 }
 
 func (o ProjectActionVisibilityDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -885,10 +885,10 @@ func (o *ProjectActionVisibilityDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -977,5 +977,3 @@ func (v *NullableProjectActionVisibilityDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

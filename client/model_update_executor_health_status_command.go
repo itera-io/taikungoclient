@@ -21,8 +21,8 @@ var _ MappedNullable = &UpdateExecutorHealthStatusCommand{}
 
 // UpdateExecutorHealthStatusCommand struct for UpdateExecutorHealthStatusCommand
 type UpdateExecutorHealthStatusCommand struct {
-	ExecutorId int32 `json:"executorId"`
-	Health ExecutorHealth `json:"health"`
+	ExecutorId           int32          `json:"executorId"`
+	Health               ExecutorHealth `json:"health"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -96,7 +96,7 @@ func (o *UpdateExecutorHealthStatusCommand) SetHealth(v ExecutorHealth) {
 }
 
 func (o UpdateExecutorHealthStatusCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -129,10 +129,10 @@ func (o *UpdateExecutorHealthStatusCommand) UnmarshalJSON(data []byte) (err erro
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -194,5 +194,3 @@ func (v *NullableUpdateExecutorHealthStatusCommand) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

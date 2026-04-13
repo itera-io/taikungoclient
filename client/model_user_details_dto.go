@@ -20,14 +20,14 @@ var _ MappedNullable = &UserDetailsDto{}
 
 // UserDetailsDto struct for UserDetailsDto
 type UserDetailsDto struct {
-	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	DisplayName *string `json:"displayName,omitempty"`
-	Email *string `json:"email,omitempty"`
-	Organizations []UserOrganizationDto `json:"organizations,omitempty"`
-	GlobalRole *EGlobalRole `json:"globalRole,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
-	Is2FAEnabled *bool `json:"is2FAEnabled,omitempty"`
+	Id                   *string               `json:"id,omitempty"`
+	Name                 *string               `json:"name,omitempty"`
+	DisplayName          *string               `json:"displayName,omitempty"`
+	Email                *string               `json:"email,omitempty"`
+	Organizations        []UserOrganizationDto `json:"organizations,omitempty"`
+	GlobalRole           *EGlobalRole          `json:"globalRole,omitempty"`
+	CreatedAt            NullableString        `json:"createdAt,omitempty"`
+	Is2FAEnabled         *bool                 `json:"is2FAEnabled,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -274,6 +274,7 @@ func (o *UserDetailsDto) HasCreatedAt() bool {
 func (o *UserDetailsDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
+
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *UserDetailsDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -317,7 +318,7 @@ func (o *UserDetailsDto) SetIs2FAEnabled(v bool) {
 }
 
 func (o UserDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -421,5 +422,3 @@ func (v *NullableUserDetailsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

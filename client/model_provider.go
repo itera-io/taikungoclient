@@ -20,7 +20,7 @@ var _ MappedNullable = &Provider{}
 
 // Provider struct for Provider
 type Provider struct {
-	Name NullableString `json:"name,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,6 +75,7 @@ func (o *Provider) HasName() bool {
 func (o *Provider) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *Provider) SetNameNil() {
 	o.Name.Set(nil)
@@ -86,7 +87,7 @@ func (o *Provider) UnsetName() {
 }
 
 func (o Provider) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -162,5 +163,3 @@ func (v *NullableProvider) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

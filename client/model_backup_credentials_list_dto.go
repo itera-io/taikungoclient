@@ -21,21 +21,21 @@ var _ MappedNullable = &BackupCredentialsListDto{}
 
 // BackupCredentialsListDto struct for BackupCredentialsListDto
 type BackupCredentialsListDto struct {
-	Id int32 `json:"id"`
-	S3Name string `json:"s3Name"`
-	S3AccessKeyId string `json:"s3AccessKeyId"`
-	S3Endpoint string `json:"s3Endpoint"`
-	S3Region string `json:"s3Region"`
-	OrganizationId NullableInt32 `json:"organizationId"`
-	OrganizationName NullableString `json:"organizationName"`
-	Projects []CommonDropdownDto `json:"projects"`
-	IsLocked bool `json:"isLocked"`
-	CreatedBy NullableString `json:"createdBy"`
-	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
-	CreatedAt NullableString `json:"createdAt"`
-	IsDefault bool `json:"isDefault"`
-	IsInfra bool `json:"isInfra"`
+	Id                   int32               `json:"id"`
+	S3Name               string              `json:"s3Name"`
+	S3AccessKeyId        string              `json:"s3AccessKeyId"`
+	S3Endpoint           string              `json:"s3Endpoint"`
+	S3Region             string              `json:"s3Region"`
+	OrganizationId       NullableInt32       `json:"organizationId"`
+	OrganizationName     NullableString      `json:"organizationName"`
+	Projects             []CommonDropdownDto `json:"projects"`
+	IsLocked             bool                `json:"isLocked"`
+	CreatedBy            NullableString      `json:"createdBy"`
+	LastModified         NullableString      `json:"lastModified"`
+	LastModifiedBy       NullableString      `json:"lastModifiedBy"`
+	CreatedAt            NullableString      `json:"createdAt"`
+	IsDefault            bool                `json:"isDefault"`
+	IsInfra              bool                `json:"isInfra"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -446,7 +446,7 @@ func (o *BackupCredentialsListDto) SetIsInfra(v bool) {
 }
 
 func (o BackupCredentialsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -505,10 +505,10 @@ func (o *BackupCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -583,5 +583,3 @@ func (v *NullableBackupCredentialsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

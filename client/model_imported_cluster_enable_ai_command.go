@@ -20,8 +20,8 @@ var _ MappedNullable = &ImportedClusterEnableAiCommand{}
 
 // ImportedClusterEnableAiCommand struct for ImportedClusterEnableAiCommand
 type ImportedClusterEnableAiCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	AiCredentialId *int32 `json:"aiCredentialId,omitempty"`
+	ProjectId            *int32 `json:"projectId,omitempty"`
+	AiCredentialId       *int32 `json:"aiCredentialId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,7 +109,7 @@ func (o *ImportedClusterEnableAiCommand) SetAiCredentialId(v int32) {
 }
 
 func (o ImportedClusterEnableAiCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -189,5 +189,3 @@ func (v *NullableImportedClusterEnableAiCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

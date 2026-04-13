@@ -21,7 +21,7 @@ var _ MappedNullable = &ProjectCanAddVClusterDto{}
 
 // ProjectCanAddVClusterDto struct for ProjectCanAddVClusterDto
 type ProjectCanAddVClusterDto struct {
-	AddVCluster ButtonStatusDto `json:"addVCluster"`
+	AddVCluster          ButtonStatusDto `json:"addVCluster"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -70,7 +70,7 @@ func (o *ProjectCanAddVClusterDto) SetAddVCluster(v ButtonStatusDto) {
 }
 
 func (o ProjectCanAddVClusterDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -101,10 +101,10 @@ func (o *ProjectCanAddVClusterDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -165,5 +165,3 @@ func (v *NullableProjectCanAddVClusterDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

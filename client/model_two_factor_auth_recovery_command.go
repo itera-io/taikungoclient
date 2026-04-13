@@ -20,7 +20,7 @@ var _ MappedNullable = &TwoFactorAuthRecoveryCommand{}
 
 // TwoFactorAuthRecoveryCommand struct for TwoFactorAuthRecoveryCommand
 type TwoFactorAuthRecoveryCommand struct {
-	RecoveryCode NullableString `json:"recoveryCode,omitempty"`
+	RecoveryCode         NullableString `json:"recoveryCode,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,6 +75,7 @@ func (o *TwoFactorAuthRecoveryCommand) HasRecoveryCode() bool {
 func (o *TwoFactorAuthRecoveryCommand) SetRecoveryCode(v string) {
 	o.RecoveryCode.Set(&v)
 }
+
 // SetRecoveryCodeNil sets the value for RecoveryCode to be an explicit nil
 func (o *TwoFactorAuthRecoveryCommand) SetRecoveryCodeNil() {
 	o.RecoveryCode.Set(nil)
@@ -86,7 +87,7 @@ func (o *TwoFactorAuthRecoveryCommand) UnsetRecoveryCode() {
 }
 
 func (o TwoFactorAuthRecoveryCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -162,5 +163,3 @@ func (v *NullableTwoFactorAuthRecoveryCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

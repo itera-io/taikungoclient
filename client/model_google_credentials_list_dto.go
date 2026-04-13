@@ -21,25 +21,25 @@ var _ MappedNullable = &GoogleCredentialsListDto{}
 
 // GoogleCredentialsListDto struct for GoogleCredentialsListDto
 type GoogleCredentialsListDto struct {
-	Id int32 `json:"id"`
-	Name string `json:"name"`
-	Projects []CommonDropdownDto `json:"projects"`
-	OrganizationId int32 `json:"organizationId"`
-	OrganizationName string `json:"organizationName"`
-	PartnerLogo NullableString `json:"partnerLogo"`
-	PartnerName NullableString `json:"partnerName"`
-	FolderId NullableString `json:"folderId"`
-	ProjectId NullableString `json:"projectId"`
-	BillingAccountId NullableString `json:"billingAccountId"`
-	Zones []string `json:"zones"`
-	AvailabilityZonesCount int32 `json:"availabilityZonesCount"`
-	Region string `json:"region"`
-	IsLocked bool `json:"isLocked"`
-	IsDefault bool `json:"isDefault"`
-	BillingAccountName NullableString `json:"billingAccountName"`
-	CreatedAt NullableString `json:"createdAt"`
-	ContinentName NullableString `json:"continentName"`
-	AdditionalProperties map[string]interface{}
+	Id                     int32               `json:"id"`
+	Name                   string              `json:"name"`
+	Projects               []CommonDropdownDto `json:"projects"`
+	OrganizationId         int32               `json:"organizationId"`
+	OrganizationName       string              `json:"organizationName"`
+	PartnerLogo            NullableString      `json:"partnerLogo"`
+	PartnerName            NullableString      `json:"partnerName"`
+	FolderId               NullableString      `json:"folderId"`
+	ProjectId              NullableString      `json:"projectId"`
+	BillingAccountId       NullableString      `json:"billingAccountId"`
+	Zones                  []string            `json:"zones"`
+	AvailabilityZonesCount int32               `json:"availabilityZonesCount"`
+	Region                 string              `json:"region"`
+	IsLocked               bool                `json:"isLocked"`
+	IsDefault              bool                `json:"isDefault"`
+	BillingAccountName     NullableString      `json:"billingAccountName"`
+	CreatedAt              NullableString      `json:"createdAt"`
+	ContinentName          NullableString      `json:"continentName"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _GoogleCredentialsListDto GoogleCredentialsListDto
@@ -528,7 +528,7 @@ func (o *GoogleCredentialsListDto) SetContinentName(v string) {
 }
 
 func (o GoogleCredentialsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -593,10 +593,10 @@ func (o *GoogleCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -674,5 +674,3 @@ func (v *NullableGoogleCredentialsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

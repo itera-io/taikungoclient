@@ -21,12 +21,12 @@ var _ MappedNullable = &KubernetesAlertCreateDto{}
 
 // KubernetesAlertCreateDto struct for KubernetesAlertCreateDto
 type KubernetesAlertCreateDto struct {
-	Status NullableString `json:"status,omitempty"`
-	Labels interface{} `json:"labels,omitempty"`
-	Annotations *KubernetesAnnotations `json:"annotations,omitempty"`
-	StartsAt *time.Time `json:"startsAt,omitempty"`
-	EndsAt *time.Time `json:"endsAt,omitempty"`
-	Fingerprint NullableString `json:"fingerprint,omitempty"`
+	Status               NullableString         `json:"status,omitempty"`
+	Labels               interface{}            `json:"labels,omitempty"`
+	Annotations          *KubernetesAnnotations `json:"annotations,omitempty"`
+	StartsAt             *time.Time             `json:"startsAt,omitempty"`
+	EndsAt               *time.Time             `json:"endsAt,omitempty"`
+	Fingerprint          NullableString         `json:"fingerprint,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -81,6 +81,7 @@ func (o *KubernetesAlertCreateDto) HasStatus() bool {
 func (o *KubernetesAlertCreateDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
+
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *KubernetesAlertCreateDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -252,6 +253,7 @@ func (o *KubernetesAlertCreateDto) HasFingerprint() bool {
 func (o *KubernetesAlertCreateDto) SetFingerprint(v string) {
 	o.Fingerprint.Set(&v)
 }
+
 // SetFingerprintNil sets the value for Fingerprint to be an explicit nil
 func (o *KubernetesAlertCreateDto) SetFingerprintNil() {
 	o.Fingerprint.Set(nil)
@@ -263,7 +265,7 @@ func (o *KubernetesAlertCreateDto) UnsetFingerprint() {
 }
 
 func (o KubernetesAlertCreateDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -359,5 +361,3 @@ func (v *NullableKubernetesAlertCreateDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

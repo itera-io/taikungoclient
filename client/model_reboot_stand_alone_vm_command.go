@@ -20,8 +20,8 @@ var _ MappedNullable = &RebootStandAloneVmCommand{}
 
 // RebootStandAloneVmCommand struct for RebootStandAloneVmCommand
 type RebootStandAloneVmCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	Type NullableString `json:"type,omitempty"`
+	Id                   *int32         `json:"id,omitempty"`
+	Type                 NullableString `json:"type,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,6 +108,7 @@ func (o *RebootStandAloneVmCommand) HasType() bool {
 func (o *RebootStandAloneVmCommand) SetType(v string) {
 	o.Type.Set(&v)
 }
+
 // SetTypeNil sets the value for Type to be an explicit nil
 func (o *RebootStandAloneVmCommand) SetTypeNil() {
 	o.Type.Set(nil)
@@ -119,7 +120,7 @@ func (o *RebootStandAloneVmCommand) UnsetType() {
 }
 
 func (o RebootStandAloneVmCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -199,5 +200,3 @@ func (v *NullableRebootStandAloneVmCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

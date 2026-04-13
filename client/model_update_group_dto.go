@@ -20,8 +20,8 @@ var _ MappedNullable = &UpdateGroupDto{}
 
 // UpdateGroupDto struct for UpdateGroupDto
 type UpdateGroupDto struct {
-	Name NullableString `json:"name,omitempty"`
-	ClaimValue NullableString `json:"claimValue,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	ClaimValue           NullableString `json:"claimValue,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,6 +76,7 @@ func (o *UpdateGroupDto) HasName() bool {
 func (o *UpdateGroupDto) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UpdateGroupDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -118,6 +119,7 @@ func (o *UpdateGroupDto) HasClaimValue() bool {
 func (o *UpdateGroupDto) SetClaimValue(v string) {
 	o.ClaimValue.Set(&v)
 }
+
 // SetClaimValueNil sets the value for ClaimValue to be an explicit nil
 func (o *UpdateGroupDto) SetClaimValueNil() {
 	o.ClaimValue.Set(nil)
@@ -129,7 +131,7 @@ func (o *UpdateGroupDto) UnsetClaimValue() {
 }
 
 func (o UpdateGroupDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -209,5 +211,3 @@ func (v *NullableUpdateGroupDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,7 +20,7 @@ var _ MappedNullable = &ProjectDeploymentRepairVmCommand{}
 
 // ProjectDeploymentRepairVmCommand struct for ProjectDeploymentRepairVmCommand
 type ProjectDeploymentRepairVmCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
+	ProjectId            *int32 `json:"projectId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,7 @@ func (o *ProjectDeploymentRepairVmCommand) SetProjectId(v int32) {
 }
 
 func (o ProjectDeploymentRepairVmCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -152,5 +152,3 @@ func (v *NullableProjectDeploymentRepairVmCommand) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

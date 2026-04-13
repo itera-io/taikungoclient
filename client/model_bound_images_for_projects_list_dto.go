@@ -21,15 +21,15 @@ var _ MappedNullable = &BoundImagesForProjectsListDto{}
 
 // BoundImagesForProjectsListDto struct for BoundImagesForProjectsListDto
 type BoundImagesForProjectsListDto struct {
-	Id int32 `json:"id"`
-	Name NullableString `json:"name"`
-	ProjectId NullableInt32 `json:"projectId"`
-	ProjectName NullableString `json:"projectName"`
-	Size NullableFloat64 `json:"size"`
-	ImageId NullableString `json:"imageId"`
-	CloudId NullableInt32 `json:"cloudId"`
-	IsWindows bool `json:"isWindows"`
-	CloudType CloudType `json:"cloudType"`
+	Id                   int32           `json:"id"`
+	Name                 NullableString  `json:"name"`
+	ProjectId            NullableInt32   `json:"projectId"`
+	ProjectName          NullableString  `json:"projectName"`
+	Size                 NullableFloat64 `json:"size"`
+	ImageId              NullableString  `json:"imageId"`
+	CloudId              NullableInt32   `json:"cloudId"`
+	IsWindows            bool            `json:"isWindows"`
+	CloudType            CloudType       `json:"cloudType"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -290,7 +290,7 @@ func (o *BoundImagesForProjectsListDto) SetCloudType(v CloudType) {
 }
 
 func (o BoundImagesForProjectsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -337,10 +337,10 @@ func (o *BoundImagesForProjectsListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -409,5 +409,3 @@ func (v *NullableBoundImagesForProjectsListDto) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

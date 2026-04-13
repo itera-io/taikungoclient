@@ -20,11 +20,11 @@ var _ MappedNullable = &JobsSearchCommand{}
 
 // JobsSearchCommand struct for JobsSearchCommand
 type JobsSearchCommand struct {
-	Limit NullableInt32 `json:"limit,omitempty"`
-	Offset NullableInt32 `json:"offset,omitempty"`
-	SearchTerm NullableString `json:"searchTerm,omitempty"`
-	IncludePublicImportedClusters NullableBool `json:"includePublicImportedClusters,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Limit                         NullableInt32  `json:"limit,omitempty"`
+	Offset                        NullableInt32  `json:"offset,omitempty"`
+	SearchTerm                    NullableString `json:"searchTerm,omitempty"`
+	IncludePublicImportedClusters NullableBool   `json:"includePublicImportedClusters,omitempty"`
+	AdditionalProperties          map[string]interface{}
 }
 
 type _JobsSearchCommand JobsSearchCommand
@@ -78,6 +78,7 @@ func (o *JobsSearchCommand) HasLimit() bool {
 func (o *JobsSearchCommand) SetLimit(v int32) {
 	o.Limit.Set(&v)
 }
+
 // SetLimitNil sets the value for Limit to be an explicit nil
 func (o *JobsSearchCommand) SetLimitNil() {
 	o.Limit.Set(nil)
@@ -120,6 +121,7 @@ func (o *JobsSearchCommand) HasOffset() bool {
 func (o *JobsSearchCommand) SetOffset(v int32) {
 	o.Offset.Set(&v)
 }
+
 // SetOffsetNil sets the value for Offset to be an explicit nil
 func (o *JobsSearchCommand) SetOffsetNil() {
 	o.Offset.Set(nil)
@@ -162,6 +164,7 @@ func (o *JobsSearchCommand) HasSearchTerm() bool {
 func (o *JobsSearchCommand) SetSearchTerm(v string) {
 	o.SearchTerm.Set(&v)
 }
+
 // SetSearchTermNil sets the value for SearchTerm to be an explicit nil
 func (o *JobsSearchCommand) SetSearchTermNil() {
 	o.SearchTerm.Set(nil)
@@ -204,6 +207,7 @@ func (o *JobsSearchCommand) HasIncludePublicImportedClusters() bool {
 func (o *JobsSearchCommand) SetIncludePublicImportedClusters(v bool) {
 	o.IncludePublicImportedClusters.Set(&v)
 }
+
 // SetIncludePublicImportedClustersNil sets the value for IncludePublicImportedClusters to be an explicit nil
 func (o *JobsSearchCommand) SetIncludePublicImportedClustersNil() {
 	o.IncludePublicImportedClusters.Set(nil)
@@ -215,7 +219,7 @@ func (o *JobsSearchCommand) UnsetIncludePublicImportedClusters() {
 }
 
 func (o JobsSearchCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -303,5 +307,3 @@ func (v *NullableJobsSearchCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

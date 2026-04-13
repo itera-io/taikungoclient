@@ -20,7 +20,7 @@ var _ MappedNullable = &GroupList{}
 
 // GroupList struct for GroupList
 type GroupList struct {
-	Data []GroupListItem `json:"data,omitempty"`
+	Data                 []GroupListItem `json:"data,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,7 @@ func (o *GroupList) SetData(v []GroupListItem) {
 }
 
 func (o GroupList) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -152,5 +152,3 @@ func (v *NullableGroupList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

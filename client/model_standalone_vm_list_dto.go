@@ -21,29 +21,29 @@ var _ MappedNullable = &StandaloneVmListDto{}
 
 // StandaloneVmListDto struct for StandaloneVmListDto
 type StandaloneVmListDto struct {
-	Id int32 `json:"id"`
-	Name string `json:"name"`
-	FlavorId string `json:"flavorId"`
-	VolumeSize int64 `json:"volumeSize"`
-	OrganizationName string `json:"organizationName"`
-	OrganizationId int32 `json:"organizationId"`
-	Ram int64 `json:"ram"`
-	Cpu int32 `json:"cpu"`
-	VolumeType NullableString `json:"volumeType"`
-	PublicIpEnabled bool `json:"publicIpEnabled"`
-	PublicIp NullableString `json:"publicIp"`
-	IpAddress NullableString `json:"ipAddress"`
-	CloudType CloudType `json:"cloudType"`
-	ImageName NullableString `json:"imageName"`
-	Revision int32 `json:"revision"`
-	IsWindows bool `json:"isWindows"`
-	Status StandAloneVmStatus `json:"status"`
-	ProjectName string `json:"projectName"`
-	ProjectId int32 `json:"projectId"`
-	StandAloneProfile StandaloneProfileListDto `json:"standAloneProfile"`
-	CreatedAt NullableString `json:"createdAt"`
-	CreatedBy NullableString `json:"createdBy"`
-	LastModified NullableString `json:"lastModified"`
+	Id                   int32                    `json:"id"`
+	Name                 string                   `json:"name"`
+	FlavorId             string                   `json:"flavorId"`
+	VolumeSize           int64                    `json:"volumeSize"`
+	OrganizationName     string                   `json:"organizationName"`
+	OrganizationId       int32                    `json:"organizationId"`
+	Ram                  int64                    `json:"ram"`
+	Cpu                  int32                    `json:"cpu"`
+	VolumeType           NullableString           `json:"volumeType"`
+	PublicIpEnabled      bool                     `json:"publicIpEnabled"`
+	PublicIp             NullableString           `json:"publicIp"`
+	IpAddress            NullableString           `json:"ipAddress"`
+	CloudType            CloudType                `json:"cloudType"`
+	ImageName            NullableString           `json:"imageName"`
+	Revision             int32                    `json:"revision"`
+	IsWindows            bool                     `json:"isWindows"`
+	Status               StandAloneVmStatus       `json:"status"`
+	ProjectName          string                   `json:"projectName"`
+	ProjectId            int32                    `json:"projectId"`
+	StandAloneProfile    StandaloneProfileListDto `json:"standAloneProfile"`
+	CreatedAt            NullableString           `json:"createdAt"`
+	CreatedBy            NullableString           `json:"createdBy"`
+	LastModified         NullableString           `json:"lastModified"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -656,7 +656,7 @@ func (o *StandaloneVmListDto) SetLastModified(v string) {
 }
 
 func (o StandaloneVmListDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -731,10 +731,10 @@ func (o *StandaloneVmListDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -817,5 +817,3 @@ func (v *NullableStandaloneVmListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

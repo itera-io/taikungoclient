@@ -20,7 +20,7 @@ var _ MappedNullable = &RuleLabels{}
 
 // RuleLabels struct for RuleLabels
 type RuleLabels struct {
-	Severity NullableString `json:"severity,omitempty"`
+	Severity             NullableString `json:"severity,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,6 +75,7 @@ func (o *RuleLabels) HasSeverity() bool {
 func (o *RuleLabels) SetSeverity(v string) {
 	o.Severity.Set(&v)
 }
+
 // SetSeverityNil sets the value for Severity to be an explicit nil
 func (o *RuleLabels) SetSeverityNil() {
 	o.Severity.Set(nil)
@@ -86,7 +87,7 @@ func (o *RuleLabels) UnsetSeverity() {
 }
 
 func (o RuleLabels) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -162,5 +163,3 @@ func (v *NullableRuleLabels) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

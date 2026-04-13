@@ -21,10 +21,10 @@ var _ MappedNullable = &OperationCredentialsForOrganizationEntity{}
 
 // OperationCredentialsForOrganizationEntity struct for OperationCredentialsForOrganizationEntity
 type OperationCredentialsForOrganizationEntity struct {
-	OperationCredentialId NullableInt32 `json:"operationCredentialId"`
-	Name NullableString `json:"name"`
-	IsDefault bool `json:"isDefault"`
-	AdditionalProperties map[string]interface{}
+	OperationCredentialId NullableInt32  `json:"operationCredentialId"`
+	Name                  NullableString `json:"name"`
+	IsDefault             bool           `json:"isDefault"`
+	AdditionalProperties  map[string]interface{}
 }
 
 type _OperationCredentialsForOrganizationEntity OperationCredentialsForOrganizationEntity
@@ -126,7 +126,7 @@ func (o *OperationCredentialsForOrganizationEntity) SetIsDefault(v bool) {
 }
 
 func (o OperationCredentialsForOrganizationEntity) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -161,10 +161,10 @@ func (o *OperationCredentialsForOrganizationEntity) UnmarshalJSON(data []byte) (
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -227,5 +227,3 @@ func (v *NullableOperationCredentialsForOrganizationEntity) UnmarshalJSON(src []
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

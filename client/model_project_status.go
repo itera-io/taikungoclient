@@ -21,29 +21,29 @@ type ProjectStatus string
 
 // List of ProjectStatus
 const (
-	PROJECTSTATUS_NULL ProjectStatus = "Null"
-	PROJECTSTATUS_DELETING ProjectStatus = "Deleting"
-	PROJECTSTATUS_DISABLE_AI ProjectStatus = "DisableAi"
-	PROJECTSTATUS_DISABLE_GATEKEEPER ProjectStatus = "DisableGatekeeper"
-	PROJECTSTATUS_DELETING_BACKUP_POLICIES ProjectStatus = "DeletingBackupPolicies"
-	PROJECTSTATUS_DISABLE_BACKUP ProjectStatus = "DisableBackup"
-	PROJECTSTATUS_DISABLE_MONITORING ProjectStatus = "DisableMonitoring"
-	PROJECTSTATUS_ENABLE_BACKUP ProjectStatus = "EnableBackup"
-	PROJECTSTATUS_ENABLE_MONITORING ProjectStatus = "EnableMonitoring"
-	PROJECTSTATUS_ENABLE_AI ProjectStatus = "EnableAi"
-	PROJECTSTATUS_ENABLE_GATEKEEPER ProjectStatus = "EnableGatekeeper"
-	PROJECTSTATUS_FAILURE ProjectStatus = "Failure"
-	PROJECTSTATUS_FAILED_UPGRADE ProjectStatus = "FailedUpgrade"
-	PROJECTSTATUS_PURGING ProjectStatus = "Purging"
-	PROJECTSTATUS_READY ProjectStatus = "Ready"
-	PROJECTSTATUS_UPDATING ProjectStatus = "Updating"
-	PROJECTSTATUS_UPGRADING ProjectStatus = "Upgrading"
-	PROJECTSTATUS_UPDATING_CREDENTIALS ProjectStatus = "UpdatingCredentials"
+	PROJECTSTATUS_NULL                      ProjectStatus = "Null"
+	PROJECTSTATUS_DELETING                  ProjectStatus = "Deleting"
+	PROJECTSTATUS_DISABLE_AI                ProjectStatus = "DisableAi"
+	PROJECTSTATUS_DISABLE_GATEKEEPER        ProjectStatus = "DisableGatekeeper"
+	PROJECTSTATUS_DELETING_BACKUP_POLICIES  ProjectStatus = "DeletingBackupPolicies"
+	PROJECTSTATUS_DISABLE_BACKUP            ProjectStatus = "DisableBackup"
+	PROJECTSTATUS_DISABLE_MONITORING        ProjectStatus = "DisableMonitoring"
+	PROJECTSTATUS_ENABLE_BACKUP             ProjectStatus = "EnableBackup"
+	PROJECTSTATUS_ENABLE_MONITORING         ProjectStatus = "EnableMonitoring"
+	PROJECTSTATUS_ENABLE_AI                 ProjectStatus = "EnableAi"
+	PROJECTSTATUS_ENABLE_GATEKEEPER         ProjectStatus = "EnableGatekeeper"
+	PROJECTSTATUS_FAILURE                   ProjectStatus = "Failure"
+	PROJECTSTATUS_FAILED_UPGRADE            ProjectStatus = "FailedUpgrade"
+	PROJECTSTATUS_PURGING                   ProjectStatus = "Purging"
+	PROJECTSTATUS_READY                     ProjectStatus = "Ready"
+	PROJECTSTATUS_UPDATING                  ProjectStatus = "Updating"
+	PROJECTSTATUS_UPGRADING                 ProjectStatus = "Upgrading"
+	PROJECTSTATUS_UPDATING_CREDENTIALS      ProjectStatus = "UpdatingCredentials"
 	PROJECTSTATUS_UNINSTALL_VIRTUAL_CLUSTER ProjectStatus = "UninstallVirtualCluster"
-	PROJECTSTATUS_REPAIRING ProjectStatus = "Repairing"
-	PROJECTSTATUS_IMPORTING ProjectStatus = "Importing"
-	PROJECTSTATUS_FAILED_TO_IMPORT ProjectStatus = "FailedToImport"
-	PROJECTSTATUS_MIGRATING ProjectStatus = "Migrating"
+	PROJECTSTATUS_REPAIRING                 ProjectStatus = "Repairing"
+	PROJECTSTATUS_IMPORTING                 ProjectStatus = "Importing"
+	PROJECTSTATUS_FAILED_TO_IMPORT          ProjectStatus = "FailedToImport"
+	PROJECTSTATUS_MIGRATING                 ProjectStatus = "Migrating"
 )
 
 // All allowed values of ProjectStatus enum
@@ -151,4 +151,3 @@ func (v *NullableProjectStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

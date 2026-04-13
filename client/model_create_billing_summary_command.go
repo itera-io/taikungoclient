@@ -21,9 +21,9 @@ var _ MappedNullable = &CreateBillingSummaryCommand{}
 
 // CreateBillingSummaryCommand struct for CreateBillingSummaryCommand
 type CreateBillingSummaryCommand struct {
-	Icu *int32 `json:"icu,omitempty"`
-	BeginApply *time.Time `json:"beginApply,omitempty"`
-	ProjectId *int32 `json:"projectId,omitempty"`
+	Icu                  *int32     `json:"icu,omitempty"`
+	BeginApply           *time.Time `json:"beginApply,omitempty"`
+	ProjectId            *int32     `json:"projectId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -143,7 +143,7 @@ func (o *CreateBillingSummaryCommand) SetProjectId(v int32) {
 }
 
 func (o CreateBillingSummaryCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -227,5 +227,3 @@ func (v *NullableCreateBillingSummaryCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

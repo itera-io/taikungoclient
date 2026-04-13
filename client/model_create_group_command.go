@@ -21,11 +21,11 @@ var _ MappedNullable = &CreateGroupCommand{}
 
 // CreateGroupCommand struct for CreateGroupCommand
 type CreateGroupCommand struct {
-	Name string `json:"name"`
-	ClaimValue NullableString `json:"claimValue,omitempty"`
-	AccountId int32 `json:"accountId"`
-	Organizations []CreateGroupOrganizationDto `json:"organizations,omitempty"`
-	Users []CreateGroupUserDto `json:"users,omitempty"`
+	Name                 string                       `json:"name"`
+	ClaimValue           NullableString               `json:"claimValue,omitempty"`
+	AccountId            int32                        `json:"accountId"`
+	Organizations        []CreateGroupOrganizationDto `json:"organizations,omitempty"`
+	Users                []CreateGroupUserDto         `json:"users,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -106,6 +106,7 @@ func (o *CreateGroupCommand) HasClaimValue() bool {
 func (o *CreateGroupCommand) SetClaimValue(v string) {
 	o.ClaimValue.Set(&v)
 }
+
 // SetClaimValueNil sets the value for ClaimValue to be an explicit nil
 func (o *CreateGroupCommand) SetClaimValueNil() {
 	o.ClaimValue.Set(nil)
@@ -207,7 +208,7 @@ func (o *CreateGroupCommand) SetUsers(v []CreateGroupUserDto) {
 }
 
 func (o CreateGroupCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -249,10 +250,10 @@ func (o *CreateGroupCommand) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -317,5 +318,3 @@ func (v *NullableCreateGroupCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,14 +20,14 @@ var _ MappedNullable = &OpenstackComputeQuotaDto{}
 
 // OpenstackComputeQuotaDto struct for OpenstackComputeQuotaDto
 type OpenstackComputeQuotaDto struct {
-	MaxTotalRamSize *int64 `json:"maxTotalRamSize,omitempty"`
-	MaxServerGroups *int64 `json:"maxServerGroups,omitempty"`
-	MaxTotalInstances *int64 `json:"maxTotalInstances,omitempty"`
-	MaxTotalCores *int64 `json:"maxTotalCores,omitempty"`
-	UsedRamSize *int64 `json:"usedRamSize,omitempty"`
-	UsedCpuSize *int64 `json:"usedCpuSize,omitempty"`
-	UsedInstanceSize *int64 `json:"usedInstanceSize,omitempty"`
-	UsedServerGroups *int64 `json:"usedServerGroups,omitempty"`
+	MaxTotalRamSize      *int64 `json:"maxTotalRamSize,omitempty"`
+	MaxServerGroups      *int64 `json:"maxServerGroups,omitempty"`
+	MaxTotalInstances    *int64 `json:"maxTotalInstances,omitempty"`
+	MaxTotalCores        *int64 `json:"maxTotalCores,omitempty"`
+	UsedRamSize          *int64 `json:"usedRamSize,omitempty"`
+	UsedCpuSize          *int64 `json:"usedCpuSize,omitempty"`
+	UsedInstanceSize     *int64 `json:"usedInstanceSize,omitempty"`
+	UsedServerGroups     *int64 `json:"usedServerGroups,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -307,7 +307,7 @@ func (o *OpenstackComputeQuotaDto) SetUsedServerGroups(v int64) {
 }
 
 func (o OpenstackComputeQuotaDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -411,5 +411,3 @@ func (v *NullableOpenstackComputeQuotaDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

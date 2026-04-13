@@ -20,7 +20,7 @@ var _ MappedNullable = &RemindUsersByAlertingProfileCommand{}
 
 // RemindUsersByAlertingProfileCommand struct for RemindUsersByAlertingProfileCommand
 type RemindUsersByAlertingProfileCommand struct {
-	Reminder *AlertingReminder `json:"reminder,omitempty"`
+	Reminder             *AlertingReminder `json:"reminder,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,7 @@ func (o *RemindUsersByAlertingProfileCommand) SetReminder(v AlertingReminder) {
 }
 
 func (o RemindUsersByAlertingProfileCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -152,5 +152,3 @@ func (v *NullableRemindUsersByAlertingProfileCommand) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -21,12 +21,12 @@ var _ MappedNullable = &CardInformationDto{}
 
 // CardInformationDto struct for CardInformationDto
 type CardInformationDto struct {
-	ExpirationMonth NullableString `json:"expirationMonth"`
-	ExpirationYear NullableString `json:"expirationYear"`
-	Last4 NullableString `json:"last4"`
-	Brand NullableString `json:"brand"`
-	HolderName NullableString `json:"holderName"`
-	Balance int64 `json:"balance"`
+	ExpirationMonth      NullableString `json:"expirationMonth"`
+	ExpirationYear       NullableString `json:"expirationYear"`
+	Last4                NullableString `json:"last4"`
+	Brand                NullableString `json:"brand"`
+	HolderName           NullableString `json:"holderName"`
+	Balance              int64          `json:"balance"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -210,7 +210,7 @@ func (o *CardInformationDto) SetBalance(v int64) {
 }
 
 func (o CardInformationDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -251,10 +251,10 @@ func (o *CardInformationDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -320,5 +320,3 @@ func (v *NullableCardInformationDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

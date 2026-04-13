@@ -20,8 +20,8 @@ var _ MappedNullable = &AddOrganizationsToRuleDto{}
 
 // AddOrganizationsToRuleDto struct for AddOrganizationsToRuleDto
 type AddOrganizationsToRuleDto struct {
-	OrganizationId *int32 `json:"organizationId,omitempty"`
-	RuleDiscountRate NullableFloat64 `json:"ruleDiscountRate,omitempty"`
+	OrganizationId       *int32          `json:"organizationId,omitempty"`
+	RuleDiscountRate     NullableFloat64 `json:"ruleDiscountRate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,6 +108,7 @@ func (o *AddOrganizationsToRuleDto) HasRuleDiscountRate() bool {
 func (o *AddOrganizationsToRuleDto) SetRuleDiscountRate(v float64) {
 	o.RuleDiscountRate.Set(&v)
 }
+
 // SetRuleDiscountRateNil sets the value for RuleDiscountRate to be an explicit nil
 func (o *AddOrganizationsToRuleDto) SetRuleDiscountRateNil() {
 	o.RuleDiscountRate.Set(nil)
@@ -119,7 +120,7 @@ func (o *AddOrganizationsToRuleDto) UnsetRuleDiscountRate() {
 }
 
 func (o AddOrganizationsToRuleDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -199,5 +200,3 @@ func (v *NullableAddOrganizationsToRuleDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

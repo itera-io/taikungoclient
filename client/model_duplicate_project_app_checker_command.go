@@ -20,9 +20,9 @@ var _ MappedNullable = &DuplicateProjectAppCheckerCommand{}
 
 // DuplicateProjectAppCheckerCommand struct for DuplicateProjectAppCheckerCommand
 type DuplicateProjectAppCheckerCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
+	ProjectId            *int32         `json:"projectId,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Namespace            NullableString `json:"namespace,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,6 +109,7 @@ func (o *DuplicateProjectAppCheckerCommand) HasName() bool {
 func (o *DuplicateProjectAppCheckerCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *DuplicateProjectAppCheckerCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -151,6 +152,7 @@ func (o *DuplicateProjectAppCheckerCommand) HasNamespace() bool {
 func (o *DuplicateProjectAppCheckerCommand) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
+
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *DuplicateProjectAppCheckerCommand) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -162,7 +164,7 @@ func (o *DuplicateProjectAppCheckerCommand) UnsetNamespace() {
 }
 
 func (o DuplicateProjectAppCheckerCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -246,5 +248,3 @@ func (v *NullableDuplicateProjectAppCheckerCommand) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,9 +20,9 @@ var _ MappedNullable = &DeploymentCompletedCommand{}
 
 // DeploymentCompletedCommand struct for DeploymentCompletedCommand
 type DeploymentCompletedCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	Result NullableString `json:"result,omitempty"`
-	FromCronJob *bool `json:"fromCronJob,omitempty"`
+	ProjectId            *int32         `json:"projectId,omitempty"`
+	Result               NullableString `json:"result,omitempty"`
+	FromCronJob          *bool          `json:"fromCronJob,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,6 +109,7 @@ func (o *DeploymentCompletedCommand) HasResult() bool {
 func (o *DeploymentCompletedCommand) SetResult(v string) {
 	o.Result.Set(&v)
 }
+
 // SetResultNil sets the value for Result to be an explicit nil
 func (o *DeploymentCompletedCommand) SetResultNil() {
 	o.Result.Set(nil)
@@ -152,7 +153,7 @@ func (o *DeploymentCompletedCommand) SetFromCronJob(v bool) {
 }
 
 func (o DeploymentCompletedCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -236,5 +237,3 @@ func (v *NullableDeploymentCompletedCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

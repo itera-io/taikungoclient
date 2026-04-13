@@ -20,8 +20,8 @@ var _ MappedNullable = &KubernetesInteractiveShellDto{}
 
 // KubernetesInteractiveShellDto struct for KubernetesInteractiveShellDto
 type KubernetesInteractiveShellDto struct {
-	KubeConfig NullableString `json:"kubeConfig,omitempty"`
-	PodName NullableString `json:"podName,omitempty"`
+	KubeConfig           NullableString `json:"kubeConfig,omitempty"`
+	PodName              NullableString `json:"podName,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,6 +76,7 @@ func (o *KubernetesInteractiveShellDto) HasKubeConfig() bool {
 func (o *KubernetesInteractiveShellDto) SetKubeConfig(v string) {
 	o.KubeConfig.Set(&v)
 }
+
 // SetKubeConfigNil sets the value for KubeConfig to be an explicit nil
 func (o *KubernetesInteractiveShellDto) SetKubeConfigNil() {
 	o.KubeConfig.Set(nil)
@@ -118,6 +119,7 @@ func (o *KubernetesInteractiveShellDto) HasPodName() bool {
 func (o *KubernetesInteractiveShellDto) SetPodName(v string) {
 	o.PodName.Set(&v)
 }
+
 // SetPodNameNil sets the value for PodName to be an explicit nil
 func (o *KubernetesInteractiveShellDto) SetPodNameNil() {
 	o.PodName.Set(nil)
@@ -129,7 +131,7 @@ func (o *KubernetesInteractiveShellDto) UnsetPodName() {
 }
 
 func (o KubernetesInteractiveShellDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -209,5 +211,3 @@ func (v *NullableKubernetesInteractiveShellDto) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

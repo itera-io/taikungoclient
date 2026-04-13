@@ -21,30 +21,30 @@ var _ MappedNullable = &ImportedClusterDetailsDto{}
 
 // ImportedClusterDetailsDto struct for ImportedClusterDetailsDto
 type ImportedClusterDetailsDto struct {
-	Id int32 `json:"id"`
-	Name string `json:"name"`
-	IsLocked bool `json:"isLocked"`
-	AccessIp NullableString `json:"accessIp"`
-	KubernetesVersion NullableString `json:"kubernetesVersion"`
-	ImportClusterType ImportClusterType `json:"importClusterType"`
-	OrganizationId int32 `json:"organizationId"`
-	OrganizationName string `json:"organizationName"`
-	CloudCredentialName NullableString `json:"cloudCredentialName,omitempty"`
-	CloudCredentialId NullableInt32 `json:"cloudCredentialId,omitempty"`
-	Health ProjectHealth `json:"health"`
-	CloudType ECloudCredentialType `json:"cloudType"`
-	Status ProjectStatus `json:"status"`
-	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
-	AlertingProfileId NullableInt32 `json:"alertingProfileId"`
-	AlertingProfileName NullableString `json:"alertingProfileName"`
-	IsOpaEnabled bool `json:"isOpaEnabled"`
-	OpaProfileId NullableInt32 `json:"opaProfileId"`
-	IsBackupEnabled bool `json:"isBackupEnabled"`
-	S3CredentialId NullableInt32 `json:"s3CredentialId"`
-	AiEnabled bool `json:"aiEnabled"`
-	AiCredentialId NullableInt32 `json:"aiCredentialId"`
-	ExpiredAt string `json:"expiredAt"`
-	AlertsCount int32 `json:"alertsCount"`
+	Id                   int32                `json:"id"`
+	Name                 string               `json:"name"`
+	IsLocked             bool                 `json:"isLocked"`
+	AccessIp             NullableString       `json:"accessIp"`
+	KubernetesVersion    NullableString       `json:"kubernetesVersion"`
+	ImportClusterType    ImportClusterType    `json:"importClusterType"`
+	OrganizationId       int32                `json:"organizationId"`
+	OrganizationName     string               `json:"organizationName"`
+	CloudCredentialName  NullableString       `json:"cloudCredentialName,omitempty"`
+	CloudCredentialId    NullableInt32        `json:"cloudCredentialId,omitempty"`
+	Health               ProjectHealth        `json:"health"`
+	CloudType            ECloudCredentialType `json:"cloudType"`
+	Status               ProjectStatus        `json:"status"`
+	IsMonitoringEnabled  bool                 `json:"isMonitoringEnabled"`
+	AlertingProfileId    NullableInt32        `json:"alertingProfileId"`
+	AlertingProfileName  NullableString       `json:"alertingProfileName"`
+	IsOpaEnabled         bool                 `json:"isOpaEnabled"`
+	OpaProfileId         NullableInt32        `json:"opaProfileId"`
+	IsBackupEnabled      bool                 `json:"isBackupEnabled"`
+	S3CredentialId       NullableInt32        `json:"s3CredentialId"`
+	AiEnabled            bool                 `json:"aiEnabled"`
+	AiCredentialId       NullableInt32        `json:"aiCredentialId"`
+	ExpiredAt            string               `json:"expiredAt"`
+	AlertsCount          int32                `json:"alertsCount"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -317,6 +317,7 @@ func (o *ImportedClusterDetailsDto) HasCloudCredentialName() bool {
 func (o *ImportedClusterDetailsDto) SetCloudCredentialName(v string) {
 	o.CloudCredentialName.Set(&v)
 }
+
 // SetCloudCredentialNameNil sets the value for CloudCredentialName to be an explicit nil
 func (o *ImportedClusterDetailsDto) SetCloudCredentialNameNil() {
 	o.CloudCredentialName.Set(nil)
@@ -359,6 +360,7 @@ func (o *ImportedClusterDetailsDto) HasCloudCredentialId() bool {
 func (o *ImportedClusterDetailsDto) SetCloudCredentialId(v int32) {
 	o.CloudCredentialId.Set(&v)
 }
+
 // SetCloudCredentialIdNil sets the value for CloudCredentialId to be an explicit nil
 func (o *ImportedClusterDetailsDto) SetCloudCredentialIdNil() {
 	o.CloudCredentialId.Set(nil)
@@ -716,7 +718,7 @@ func (o *ImportedClusterDetailsDto) SetAlertsCount(v int32) {
 }
 
 func (o ImportedClusterDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -795,10 +797,10 @@ func (o *ImportedClusterDetailsDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -882,5 +884,3 @@ func (v *NullableImportedClusterDetailsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

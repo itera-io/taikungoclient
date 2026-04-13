@@ -20,9 +20,9 @@ var _ MappedNullable = &CsvExporter{}
 
 // CsvExporter struct for CsvExporter
 type CsvExporter struct {
-	FileName NullableString `json:"fileName,omitempty"`
+	FileName    NullableString `json:"fileName,omitempty"`
 	ContentType NullableString `json:"contentType,omitempty"`
-	Content NullableString `json:"content,omitempty"`
+	Content     NullableString `json:"content,omitempty"`
 }
 
 // NewCsvExporter instantiates a new CsvExporter object
@@ -74,6 +74,7 @@ func (o *CsvExporter) HasFileName() bool {
 func (o *CsvExporter) SetFileName(v string) {
 	o.FileName.Set(&v)
 }
+
 // SetFileNameNil sets the value for FileName to be an explicit nil
 func (o *CsvExporter) SetFileNameNil() {
 	o.FileName.Set(nil)
@@ -116,6 +117,7 @@ func (o *CsvExporter) HasContentType() bool {
 func (o *CsvExporter) SetContentType(v string) {
 	o.ContentType.Set(&v)
 }
+
 // SetContentTypeNil sets the value for ContentType to be an explicit nil
 func (o *CsvExporter) SetContentTypeNil() {
 	o.ContentType.Set(nil)
@@ -158,6 +160,7 @@ func (o *CsvExporter) HasContent() bool {
 func (o *CsvExporter) SetContent(v string) {
 	o.Content.Set(&v)
 }
+
 // SetContentNil sets the value for Content to be an explicit nil
 func (o *CsvExporter) SetContentNil() {
 	o.Content.Set(nil)
@@ -169,7 +172,7 @@ func (o *CsvExporter) UnsetContent() {
 }
 
 func (o CsvExporter) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -225,5 +228,3 @@ func (v *NullableCsvExporter) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

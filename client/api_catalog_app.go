@@ -20,13 +20,12 @@ import (
 	"strings"
 )
 
-
 // CatalogAppAPIService CatalogAppAPI service
 type CatalogAppAPIService service
 
 type ApiCatalogAppCreateRequest struct {
-	ctx context.Context
-	ApiService *CatalogAppAPIService
+	ctx                     context.Context
+	ApiService              *CatalogAppAPIService
 	createCatalogAppCommand *CreateCatalogAppCommand
 }
 
@@ -42,24 +41,25 @@ func (r ApiCatalogAppCreateRequest) Execute() (*CatalogAppDetailsDto, *http.Resp
 /*
 CatalogAppCreate Create catalog app
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCatalogAppCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCatalogAppCreateRequest
 */
 func (a *CatalogAppAPIService) CatalogAppCreate(ctx context.Context) ApiCatalogAppCreateRequest {
 	return ApiCatalogAppCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CatalogAppDetailsDto
+//
+//	@return CatalogAppDetailsDto
 func (a *CatalogAppAPIService) CatalogAppCreateExecute(r ApiCatalogAppCreateRequest) (*CatalogAppDetailsDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CatalogAppDetailsDto
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CatalogAppDetailsDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogAppAPIService.CatalogAppCreate")
@@ -135,8 +135,8 @@ func (a *CatalogAppAPIService) CatalogAppCreateExecute(r ApiCatalogAppCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -146,8 +146,8 @@ func (a *CatalogAppAPIService) CatalogAppCreateExecute(r ApiCatalogAppCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -157,8 +157,8 @@ func (a *CatalogAppAPIService) CatalogAppCreateExecute(r ApiCatalogAppCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -168,8 +168,8 @@ func (a *CatalogAppAPIService) CatalogAppCreateExecute(r ApiCatalogAppCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -179,8 +179,8 @@ func (a *CatalogAppAPIService) CatalogAppCreateExecute(r ApiCatalogAppCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -190,8 +190,8 @@ func (a *CatalogAppAPIService) CatalogAppCreateExecute(r ApiCatalogAppCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -209,9 +209,9 @@ func (a *CatalogAppAPIService) CatalogAppCreateExecute(r ApiCatalogAppCreateRequ
 }
 
 type ApiCatalogAppDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *CatalogAppAPIService
-	id int32
+	id         int32
 }
 
 func (r ApiCatalogAppDeleteRequest) Execute() (*http.Response, error) {
@@ -221,24 +221,24 @@ func (r ApiCatalogAppDeleteRequest) Execute() (*http.Response, error) {
 /*
 CatalogAppDelete Delete catalog app
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiCatalogAppDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiCatalogAppDeleteRequest
 */
 func (a *CatalogAppAPIService) CatalogAppDelete(ctx context.Context, id int32) ApiCatalogAppDeleteRequest {
 	return ApiCatalogAppDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *CatalogAppAPIService) CatalogAppDeleteExecute(r ApiCatalogAppDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogAppAPIService.CatalogAppDelete")
@@ -313,8 +313,8 @@ func (a *CatalogAppAPIService) CatalogAppDeleteExecute(r ApiCatalogAppDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -324,8 +324,8 @@ func (a *CatalogAppAPIService) CatalogAppDeleteExecute(r ApiCatalogAppDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -335,8 +335,8 @@ func (a *CatalogAppAPIService) CatalogAppDeleteExecute(r ApiCatalogAppDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -346,8 +346,8 @@ func (a *CatalogAppAPIService) CatalogAppDeleteExecute(r ApiCatalogAppDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -357,8 +357,8 @@ func (a *CatalogAppAPIService) CatalogAppDeleteExecute(r ApiCatalogAppDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -368,8 +368,8 @@ func (a *CatalogAppAPIService) CatalogAppDeleteExecute(r ApiCatalogAppDeleteRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -378,8 +378,8 @@ func (a *CatalogAppAPIService) CatalogAppDeleteExecute(r ApiCatalogAppDeleteRequ
 }
 
 type ApiCatalogAppDetailsRequest struct {
-	ctx context.Context
-	ApiService *CatalogAppAPIService
+	ctx          context.Context
+	ApiService   *CatalogAppAPIService
 	catalogAppId int32
 }
 
@@ -390,26 +390,27 @@ func (r ApiCatalogAppDetailsRequest) Execute() (*CatalogAppDetailsDto, *http.Res
 /*
 CatalogAppDetails Catalog App details
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param catalogAppId
- @return ApiCatalogAppDetailsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param catalogAppId
+	@return ApiCatalogAppDetailsRequest
 */
 func (a *CatalogAppAPIService) CatalogAppDetails(ctx context.Context, catalogAppId int32) ApiCatalogAppDetailsRequest {
 	return ApiCatalogAppDetailsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		catalogAppId: catalogAppId,
 	}
 }
 
 // Execute executes the request
-//  @return CatalogAppDetailsDto
+//
+//	@return CatalogAppDetailsDto
 func (a *CatalogAppAPIService) CatalogAppDetailsExecute(r ApiCatalogAppDetailsRequest) (*CatalogAppDetailsDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CatalogAppDetailsDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CatalogAppDetailsDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogAppAPIService.CatalogAppDetails")
@@ -484,8 +485,8 @@ func (a *CatalogAppAPIService) CatalogAppDetailsExecute(r ApiCatalogAppDetailsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -495,8 +496,8 @@ func (a *CatalogAppAPIService) CatalogAppDetailsExecute(r ApiCatalogAppDetailsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -506,8 +507,8 @@ func (a *CatalogAppAPIService) CatalogAppDetailsExecute(r ApiCatalogAppDetailsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -517,8 +518,8 @@ func (a *CatalogAppAPIService) CatalogAppDetailsExecute(r ApiCatalogAppDetailsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -528,8 +529,8 @@ func (a *CatalogAppAPIService) CatalogAppDetailsExecute(r ApiCatalogAppDetailsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -539,8 +540,8 @@ func (a *CatalogAppAPIService) CatalogAppDetailsExecute(r ApiCatalogAppDetailsRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -558,8 +559,8 @@ func (a *CatalogAppAPIService) CatalogAppDetailsExecute(r ApiCatalogAppDetailsRe
 }
 
 type ApiCatalogAppEditParamsRequest struct {
-	ctx context.Context
-	ApiService *CatalogAppAPIService
+	ctx                        context.Context
+	ApiService                 *CatalogAppAPIService
 	editCatalogAppParamCommand *EditCatalogAppParamCommand
 }
 
@@ -575,22 +576,22 @@ func (r ApiCatalogAppEditParamsRequest) Execute() (*http.Response, error) {
 /*
 CatalogAppEditParams Edit catalog app params
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCatalogAppEditParamsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCatalogAppEditParamsRequest
 */
 func (a *CatalogAppAPIService) CatalogAppEditParams(ctx context.Context) ApiCatalogAppEditParamsRequest {
 	return ApiCatalogAppEditParamsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CatalogAppAPIService) CatalogAppEditParamsExecute(r ApiCatalogAppEditParamsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogAppAPIService.CatalogAppEditParams")
@@ -666,8 +667,8 @@ func (a *CatalogAppAPIService) CatalogAppEditParamsExecute(r ApiCatalogAppEditPa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -677,8 +678,8 @@ func (a *CatalogAppAPIService) CatalogAppEditParamsExecute(r ApiCatalogAppEditPa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -688,8 +689,8 @@ func (a *CatalogAppAPIService) CatalogAppEditParamsExecute(r ApiCatalogAppEditPa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -699,8 +700,8 @@ func (a *CatalogAppAPIService) CatalogAppEditParamsExecute(r ApiCatalogAppEditPa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -710,8 +711,8 @@ func (a *CatalogAppAPIService) CatalogAppEditParamsExecute(r ApiCatalogAppEditPa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -721,8 +722,8 @@ func (a *CatalogAppAPIService) CatalogAppEditParamsExecute(r ApiCatalogAppEditPa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -731,8 +732,8 @@ func (a *CatalogAppAPIService) CatalogAppEditParamsExecute(r ApiCatalogAppEditPa
 }
 
 type ApiCatalogAppEditVersionRequest struct {
-	ctx context.Context
-	ApiService *CatalogAppAPIService
+	ctx                          context.Context
+	ApiService                   *CatalogAppAPIService
 	editCatalogAppVersionCommand *EditCatalogAppVersionCommand
 }
 
@@ -748,22 +749,22 @@ func (r ApiCatalogAppEditVersionRequest) Execute() (*http.Response, error) {
 /*
 CatalogAppEditVersion Edit catalog app version
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCatalogAppEditVersionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCatalogAppEditVersionRequest
 */
 func (a *CatalogAppAPIService) CatalogAppEditVersion(ctx context.Context) ApiCatalogAppEditVersionRequest {
 	return ApiCatalogAppEditVersionRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CatalogAppAPIService) CatalogAppEditVersionExecute(r ApiCatalogAppEditVersionRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogAppAPIService.CatalogAppEditVersion")
@@ -839,8 +840,8 @@ func (a *CatalogAppAPIService) CatalogAppEditVersionExecute(r ApiCatalogAppEditV
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -850,8 +851,8 @@ func (a *CatalogAppAPIService) CatalogAppEditVersionExecute(r ApiCatalogAppEditV
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -861,8 +862,8 @@ func (a *CatalogAppAPIService) CatalogAppEditVersionExecute(r ApiCatalogAppEditV
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -872,8 +873,8 @@ func (a *CatalogAppAPIService) CatalogAppEditVersionExecute(r ApiCatalogAppEditV
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -883,8 +884,8 @@ func (a *CatalogAppAPIService) CatalogAppEditVersionExecute(r ApiCatalogAppEditV
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -894,8 +895,8 @@ func (a *CatalogAppAPIService) CatalogAppEditVersionExecute(r ApiCatalogAppEditV
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -904,15 +905,15 @@ func (a *CatalogAppAPIService) CatalogAppEditVersionExecute(r ApiCatalogAppEditV
 }
 
 type ApiCatalogAppListRequest struct {
-	ctx context.Context
-	ApiService *CatalogAppAPIService
+	ctx            context.Context
+	ApiService     *CatalogAppAPIService
 	organizationId *int32
-	catalogId *int32
-	search *string
-	sortBy *string
-	sortDirection *string
-	offset *int32
-	limit *int32
+	catalogId      *int32
+	search         *string
+	sortBy         *string
+	sortDirection  *string
+	offset         *int32
+	limit          *int32
 }
 
 func (r ApiCatalogAppListRequest) OrganizationId(organizationId int32) ApiCatalogAppListRequest {
@@ -957,24 +958,25 @@ func (r ApiCatalogAppListRequest) Execute() (*CatalogAppList, *http.Response, er
 /*
 CatalogAppList Catalog App list
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCatalogAppListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCatalogAppListRequest
 */
 func (a *CatalogAppAPIService) CatalogAppList(ctx context.Context) ApiCatalogAppListRequest {
 	return ApiCatalogAppListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CatalogAppList
+//
+//	@return CatalogAppList
 func (a *CatalogAppAPIService) CatalogAppListExecute(r ApiCatalogAppListRequest) (*CatalogAppList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CatalogAppList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CatalogAppList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogAppAPIService.CatalogAppList")
@@ -1077,8 +1079,8 @@ func (a *CatalogAppAPIService) CatalogAppListExecute(r ApiCatalogAppListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1088,8 +1090,8 @@ func (a *CatalogAppAPIService) CatalogAppListExecute(r ApiCatalogAppListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1099,8 +1101,8 @@ func (a *CatalogAppAPIService) CatalogAppListExecute(r ApiCatalogAppListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1110,8 +1112,8 @@ func (a *CatalogAppAPIService) CatalogAppListExecute(r ApiCatalogAppListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1121,8 +1123,8 @@ func (a *CatalogAppAPIService) CatalogAppListExecute(r ApiCatalogAppListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1132,8 +1134,8 @@ func (a *CatalogAppAPIService) CatalogAppListExecute(r ApiCatalogAppListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1151,8 +1153,8 @@ func (a *CatalogAppAPIService) CatalogAppListExecute(r ApiCatalogAppListRequest)
 }
 
 type ApiCatalogAppLockManagerRequest struct {
-	ctx context.Context
-	ApiService *CatalogAppAPIService
+	ctx                      context.Context
+	ApiService               *CatalogAppAPIService
 	catalogAppLockManagement *CatalogAppLockManagement
 }
 
@@ -1168,22 +1170,22 @@ func (r ApiCatalogAppLockManagerRequest) Execute() (*http.Response, error) {
 /*
 CatalogAppLockManager Lock catalog app
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCatalogAppLockManagerRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCatalogAppLockManagerRequest
 */
 func (a *CatalogAppAPIService) CatalogAppLockManager(ctx context.Context) ApiCatalogAppLockManagerRequest {
 	return ApiCatalogAppLockManagerRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *CatalogAppAPIService) CatalogAppLockManagerExecute(r ApiCatalogAppLockManagerRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogAppAPIService.CatalogAppLockManager")
@@ -1259,8 +1261,8 @@ func (a *CatalogAppAPIService) CatalogAppLockManagerExecute(r ApiCatalogAppLockM
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1270,8 +1272,8 @@ func (a *CatalogAppAPIService) CatalogAppLockManagerExecute(r ApiCatalogAppLockM
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1281,8 +1283,8 @@ func (a *CatalogAppAPIService) CatalogAppLockManagerExecute(r ApiCatalogAppLockM
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1292,8 +1294,8 @@ func (a *CatalogAppAPIService) CatalogAppLockManagerExecute(r ApiCatalogAppLockM
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1303,8 +1305,8 @@ func (a *CatalogAppAPIService) CatalogAppLockManagerExecute(r ApiCatalogAppLockM
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1314,8 +1316,8 @@ func (a *CatalogAppAPIService) CatalogAppLockManagerExecute(r ApiCatalogAppLockM
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1324,8 +1326,8 @@ func (a *CatalogAppAPIService) CatalogAppLockManagerExecute(r ApiCatalogAppLockM
 }
 
 type ApiCatalogAppParamDetailsRequest struct {
-	ctx context.Context
-	ApiService *CatalogAppAPIService
+	ctx          context.Context
+	ApiService   *CatalogAppAPIService
 	catalogAppId int32
 	isTaikunLink *bool
 }
@@ -1342,26 +1344,27 @@ func (r ApiCatalogAppParamDetailsRequest) Execute() ([]CatalogAppParamsDetailsDt
 /*
 CatalogAppParamDetails Catalog App param details
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param catalogAppId
- @return ApiCatalogAppParamDetailsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param catalogAppId
+	@return ApiCatalogAppParamDetailsRequest
 */
 func (a *CatalogAppAPIService) CatalogAppParamDetails(ctx context.Context, catalogAppId int32) ApiCatalogAppParamDetailsRequest {
 	return ApiCatalogAppParamDetailsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:   a,
+		ctx:          ctx,
 		catalogAppId: catalogAppId,
 	}
 }
 
 // Execute executes the request
-//  @return []CatalogAppParamsDetailsDto
+//
+//	@return []CatalogAppParamsDetailsDto
 func (a *CatalogAppAPIService) CatalogAppParamDetailsExecute(r ApiCatalogAppParamDetailsRequest) ([]CatalogAppParamsDetailsDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CatalogAppParamsDetailsDto
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []CatalogAppParamsDetailsDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogAppAPIService.CatalogAppParamDetails")
@@ -1439,8 +1442,8 @@ func (a *CatalogAppAPIService) CatalogAppParamDetailsExecute(r ApiCatalogAppPara
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1450,8 +1453,8 @@ func (a *CatalogAppAPIService) CatalogAppParamDetailsExecute(r ApiCatalogAppPara
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1461,8 +1464,8 @@ func (a *CatalogAppAPIService) CatalogAppParamDetailsExecute(r ApiCatalogAppPara
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1472,8 +1475,8 @@ func (a *CatalogAppAPIService) CatalogAppParamDetailsExecute(r ApiCatalogAppPara
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1483,8 +1486,8 @@ func (a *CatalogAppAPIService) CatalogAppParamDetailsExecute(r ApiCatalogAppPara
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1494,8 +1497,8 @@ func (a *CatalogAppAPIService) CatalogAppParamDetailsExecute(r ApiCatalogAppPara
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

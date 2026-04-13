@@ -20,10 +20,10 @@ var _ MappedNullable = &KubernetesPodLogsCommand{}
 
 // KubernetesPodLogsCommand struct for KubernetesPodLogsCommand
 type KubernetesPodLogsCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	Container NullableString `json:"container,omitempty"`
+	ProjectId            *int32         `json:"projectId,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	Namespace            NullableString `json:"namespace,omitempty"`
+	Container            NullableString `json:"container,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -110,6 +110,7 @@ func (o *KubernetesPodLogsCommand) HasName() bool {
 func (o *KubernetesPodLogsCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *KubernetesPodLogsCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -152,6 +153,7 @@ func (o *KubernetesPodLogsCommand) HasNamespace() bool {
 func (o *KubernetesPodLogsCommand) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
+
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *KubernetesPodLogsCommand) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -194,6 +196,7 @@ func (o *KubernetesPodLogsCommand) HasContainer() bool {
 func (o *KubernetesPodLogsCommand) SetContainer(v string) {
 	o.Container.Set(&v)
 }
+
 // SetContainerNil sets the value for Container to be an explicit nil
 func (o *KubernetesPodLogsCommand) SetContainerNil() {
 	o.Container.Set(nil)
@@ -205,7 +208,7 @@ func (o *KubernetesPodLogsCommand) UnsetContainer() {
 }
 
 func (o KubernetesPodLogsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -293,5 +296,3 @@ func (v *NullableKubernetesPodLogsCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

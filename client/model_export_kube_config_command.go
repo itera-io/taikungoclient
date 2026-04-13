@@ -20,8 +20,8 @@ var _ MappedNullable = &ExportKubeConfigCommand{}
 
 // ExportKubeConfigCommand struct for ExportKubeConfigCommand
 type ExportKubeConfigCommand struct {
-	Id *int32 `json:"id,omitempty"`
-	ProjectId *int32 `json:"projectId,omitempty"`
+	Id                   *int32 `json:"id,omitempty"`
+	ProjectId            *int32 `json:"projectId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,7 +109,7 @@ func (o *ExportKubeConfigCommand) SetProjectId(v int32) {
 }
 
 func (o ExportKubeConfigCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -189,5 +189,3 @@ func (v *NullableExportKubeConfigCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -20,7 +20,7 @@ var _ MappedNullable = &CskRegisterNodeCommand{}
 
 // CskRegisterNodeCommand struct for CskRegisterNodeCommand
 type CskRegisterNodeCommand struct {
-	ServerId *int32 `json:"serverId,omitempty"`
+	ServerId             *int32 `json:"serverId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,7 @@ func (o *CskRegisterNodeCommand) SetServerId(v int32) {
 }
 
 func (o CskRegisterNodeCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -152,5 +152,3 @@ func (v *NullableCskRegisterNodeCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

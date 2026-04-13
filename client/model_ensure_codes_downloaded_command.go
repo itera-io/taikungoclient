@@ -20,7 +20,7 @@ var _ MappedNullable = &EnsureCodesDownloadedCommand{}
 
 // EnsureCodesDownloadedCommand struct for EnsureCodesDownloadedCommand
 type EnsureCodesDownloadedCommand struct {
-	Data *TwoFactorAuthVerifyResult `json:"data,omitempty"`
+	Data                 *TwoFactorAuthVerifyResult `json:"data,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,7 +76,7 @@ func (o *EnsureCodesDownloadedCommand) SetData(v TwoFactorAuthVerifyResult) {
 }
 
 func (o EnsureCodesDownloadedCommand) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -152,5 +152,3 @@ func (v *NullableEnsureCodesDownloadedCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -21,12 +21,12 @@ var _ MappedNullable = &Group{}
 
 // Group struct for Group
 type Group struct {
-	Name NullableString `json:"name,omitempty"`
-	File NullableString `json:"file,omitempty"`
-	Rules []Rule `json:"rules,omitempty"`
-	Interval *int64 `json:"interval,omitempty"`
-	EvaluationTime *float64 `json:"evaluationTime,omitempty"`
-	LastEvaluation *time.Time `json:"lastEvaluation,omitempty"`
+	Name                 NullableString `json:"name,omitempty"`
+	File                 NullableString `json:"file,omitempty"`
+	Rules                []Rule         `json:"rules,omitempty"`
+	Interval             *int64         `json:"interval,omitempty"`
+	EvaluationTime       *float64       `json:"evaluationTime,omitempty"`
+	LastEvaluation       *time.Time     `json:"lastEvaluation,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -81,6 +81,7 @@ func (o *Group) HasName() bool {
 func (o *Group) SetName(v string) {
 	o.Name.Set(&v)
 }
+
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *Group) SetNameNil() {
 	o.Name.Set(nil)
@@ -123,6 +124,7 @@ func (o *Group) HasFile() bool {
 func (o *Group) SetFile(v string) {
 	o.File.Set(&v)
 }
+
 // SetFileNil sets the value for File to be an explicit nil
 func (o *Group) SetFileNil() {
 	o.File.Set(nil)
@@ -263,7 +265,7 @@ func (o *Group) SetLastEvaluation(v time.Time) {
 }
 
 func (o Group) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -359,5 +361,3 @@ func (v *NullableGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -21,9 +21,9 @@ var _ MappedNullable = &CatalogsForProjectDto{}
 
 // CatalogsForProjectDto struct for CatalogsForProjectDto
 type CatalogsForProjectDto struct {
-	CatalogId int32 `json:"catalogId"`
-	CatalogName NullableString `json:"catalogName"`
-	IsBound bool `json:"isBound"`
+	CatalogId            int32          `json:"catalogId"`
+	CatalogName          NullableString `json:"catalogName"`
+	IsBound              bool           `json:"isBound"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -124,7 +124,7 @@ func (o *CatalogsForProjectDto) SetIsBound(v bool) {
 }
 
 func (o CatalogsForProjectDto) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,10 +159,10 @@ func (o *CatalogsForProjectDto) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -225,5 +225,3 @@ func (v *NullableCatalogsForProjectDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

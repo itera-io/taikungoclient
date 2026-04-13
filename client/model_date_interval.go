@@ -21,9 +21,9 @@ var _ MappedNullable = &DateInterval{}
 
 // DateInterval struct for DateInterval
 type DateInterval struct {
-	Start *time.Time `json:"start,omitempty"`
-	End *time.Time `json:"end,omitempty"`
-	Price *float64 `json:"price,omitempty"`
+	Start                *time.Time `json:"start,omitempty"`
+	End                  *time.Time `json:"end,omitempty"`
+	Price                *float64   `json:"price,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -143,7 +143,7 @@ func (o *DateInterval) SetPrice(v float64) {
 }
 
 func (o DateInterval) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -227,5 +227,3 @@ func (v *NullableDateInterval) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
