@@ -3534,11 +3534,12 @@
             }
           },
           {
-            "name": "GroupId",
+            "name": "Offset",
             "in": "query",
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "int32",
+              "default": 0
             }
           },
           {
@@ -3551,16 +3552,38 @@
             }
           },
           {
-            "name": "Offset",
+            "name": "Search",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 0
+              "type": "string"
             }
           },
           {
-            "name": "Search",
+            "name": "SortDescending",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "ProjectId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "GroupId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "UserId",
             "in": "query",
             "schema": {
               "type": "string"
@@ -79885,6 +79908,35 @@
           }
         }
       },
+      "OrganizationListItemDto": {
+        "type": "object",
+        "properties": {
+          "organizationId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "organizationName": {
+            "type": "string",
+            "nullable": true
+          },
+          "domainId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "projectsCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "groupsCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "usersCount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
       "OrganizationNameCheckerCommand": {
         "type": "object",
         "properties": {
@@ -79916,7 +79968,7 @@
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/OrganizationsWithGroupInfoResultDto"
+              "$ref": "#/components/schemas/OrganizationListItemDto"
             },
             "nullable": true
           },

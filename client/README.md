@@ -1306,6 +1306,7 @@ Class | Method | HTTP request | Description
  - [OrganizationDropdownDto](docs/OrganizationDropdownDto.md)
  - [OrganizationDropdownProjectDto](docs/OrganizationDropdownProjectDto.md)
  - [OrganizationEntityForDashboard](docs/OrganizationEntityForDashboard.md)
+ - [OrganizationListItemDto](docs/OrganizationListItemDto.md)
  - [OrganizationNameCheckerCommand](docs/OrganizationNameCheckerCommand.md)
  - [OrganizationOffsetPaginationWithGroupList](docs/OrganizationOffsetPaginationWithGroupList.md)
  - [OrganizationSearchCommand](docs/OrganizationSearchCommand.md)

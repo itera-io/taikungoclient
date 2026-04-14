@@ -2313,9 +2313,10 @@ paths:
         style: simple
       - explode: true
         in: query
-        name: GroupId
+        name: Offset
         required: false
         schema:
+          default: 0
           format: int32
           type: integer
         style: form
@@ -2330,16 +2331,38 @@ paths:
         style: form
       - explode: true
         in: query
-        name: Offset
+        name: Search
         required: false
         schema:
-          default: 0
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDescending
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
           format: int32
           type: integer
         style: form
       - explode: true
         in: query
-        name: Search
+        name: GroupId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: UserId
         required: false
         schema:
           type: string
@@ -60904,6 +60927,34 @@ components:
       - partnerId
       - users
       type: object
+    OrganizationListItemDto:
+      example:
+        organizationId: 0
+        groupsCount: 5
+        organizationName: organizationName
+        usersCount: 5
+        projectsCount: 1
+        domainId: 6
+      properties:
+        organizationId:
+          format: int32
+          type: integer
+        organizationName:
+          nullable: true
+          type: string
+        domainId:
+          format: int32
+          type: integer
+        projectsCount:
+          format: int32
+          type: integer
+        groupsCount:
+          format: int32
+          type: integer
+        usersCount:
+          format: int32
+          type: integer
+      type: object
     OrganizationNameCheckerCommand:
       example:
         accountId: 0
@@ -60924,37 +60975,27 @@ components:
     OrganizationOffsetPaginationWithGroupList:
       example:
         data:
-        - orgName: orgName
-          projects:
-          - isBound: true
-            name: name
-            id: 6
-          - isBound: true
-            name: name
-            id: 6
-          accessLevel: accessLevel
-          isBound: true
-          orgId: 0
-        - orgName: orgName
-          projects:
-          - isBound: true
-            name: name
-            id: 6
-          - isBound: true
-            name: name
-            id: 6
-          accessLevel: accessLevel
-          isBound: true
-          orgId: 0
-        offset: 1
-        limit: 0
+        - organizationId: 0
+          groupsCount: 5
+          organizationName: organizationName
+          usersCount: 5
+          projectsCount: 1
+          domainId: 6
+        - organizationId: 0
+          groupsCount: 5
+          organizationName: organizationName
+          usersCount: 5
+          projectsCount: 1
+          domainId: 6
+        offset: 9
+        limit: 2
         hasMore: true
-        totalCount: 6
-        nextOffset: 5
+        totalCount: 7
+        nextOffset: 3
       properties:
         data:
           items:
-            $ref: "#/components/schemas/OrganizationsWithGroupInfoResultDto"
+            $ref: "#/components/schemas/OrganizationListItemDto"
           nullable: true
           type: array
         limit:

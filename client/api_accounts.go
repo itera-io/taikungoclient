@@ -635,14 +635,17 @@ type ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest struct {
 	ctx context.Context
 	ApiService *AccountsAPIService
 	accountId int32
-	groupId *int32
-	limit *int32
 	offset *int32
+	limit *int32
 	search *string
+	sortDescending *bool
+	projectId *int32
+	groupId *int32
+	userId *string
 }
 
-func (r ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest) GroupId(groupId int32) ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest {
-	r.groupId = &groupId
+func (r ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest) Offset(offset int32) ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest {
+	r.offset = &offset
 	return r
 }
 
@@ -651,13 +654,28 @@ func (r ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest) Limit(limit 
 	return r
 }
 
-func (r ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest) Offset(offset int32) ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest {
-	r.offset = &offset
+func (r ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest) Search(search string) ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest {
+	r.search = &search
 	return r
 }
 
-func (r ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest) Search(search string) ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest {
-	r.search = &search
+func (r ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest) SortDescending(sortDescending bool) ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest {
+	r.sortDescending = &sortDescending
+	return r
+}
+
+func (r ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest) ProjectId(projectId int32) ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest {
+	r.projectId = &projectId
+	return r
+}
+
+func (r ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest) GroupId(groupId int32) ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest {
+	r.groupId = &groupId
+	return r
+}
+
+func (r ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest) UserId(userId string) ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest {
+	r.userId = &userId
 	return r
 }
 
@@ -702,8 +720,12 @@ func (a *AccountsAPIService) AccountsAccountOffsetBasedOrganizationsWithGroupExe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.groupId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "GroupId", r.groupId, "form", "")
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	} else {
+		var defaultValue int32 = 0
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", defaultValue, "form", "")
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -712,15 +734,24 @@ func (a *AccountsAPIService) AccountsAccountOffsetBasedOrganizationsWithGroupExe
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	} else {
-		var defaultValue int32 = 0
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", defaultValue, "form", "")
-		r.offset = &defaultValue
-	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.sortDescending != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDescending", r.sortDescending, "form", "")
+	} else {
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDescending", defaultValue, "form", "")
+		r.sortDescending = &defaultValue
+	}
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
+	}
+	if r.groupId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "GroupId", r.groupId, "form", "")
+	}
+	if r.userId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "UserId", r.userId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
