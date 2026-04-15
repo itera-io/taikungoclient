@@ -420,14 +420,14 @@ type ApiAccountsAccountGroupsOffsetBasedDropdownRequest struct {
 	ctx context.Context
 	ApiService *AccountsAPIService
 	accountId int32
-	limit *int32
 	offset *int32
+	limit *int32
 	search *string
-}
-
-func (r ApiAccountsAccountGroupsOffsetBasedDropdownRequest) Limit(limit int32) ApiAccountsAccountGroupsOffsetBasedDropdownRequest {
-	r.limit = &limit
-	return r
+	sortBy *string
+	sortDirection *string
+	organizationId *int32
+	userId *string
+	accessLevel *AccessLevelRoles
 }
 
 func (r ApiAccountsAccountGroupsOffsetBasedDropdownRequest) Offset(offset int32) ApiAccountsAccountGroupsOffsetBasedDropdownRequest {
@@ -435,8 +435,38 @@ func (r ApiAccountsAccountGroupsOffsetBasedDropdownRequest) Offset(offset int32)
 	return r
 }
 
+func (r ApiAccountsAccountGroupsOffsetBasedDropdownRequest) Limit(limit int32) ApiAccountsAccountGroupsOffsetBasedDropdownRequest {
+	r.limit = &limit
+	return r
+}
+
 func (r ApiAccountsAccountGroupsOffsetBasedDropdownRequest) Search(search string) ApiAccountsAccountGroupsOffsetBasedDropdownRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiAccountsAccountGroupsOffsetBasedDropdownRequest) SortBy(sortBy string) ApiAccountsAccountGroupsOffsetBasedDropdownRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiAccountsAccountGroupsOffsetBasedDropdownRequest) SortDirection(sortDirection string) ApiAccountsAccountGroupsOffsetBasedDropdownRequest {
+	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiAccountsAccountGroupsOffsetBasedDropdownRequest) OrganizationId(organizationId int32) ApiAccountsAccountGroupsOffsetBasedDropdownRequest {
+	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiAccountsAccountGroupsOffsetBasedDropdownRequest) UserId(userId string) ApiAccountsAccountGroupsOffsetBasedDropdownRequest {
+	r.userId = &userId
+	return r
+}
+
+func (r ApiAccountsAccountGroupsOffsetBasedDropdownRequest) AccessLevel(accessLevel AccessLevelRoles) ApiAccountsAccountGroupsOffsetBasedDropdownRequest {
+	r.accessLevel = &accessLevel
 	return r
 }
 
@@ -481,13 +511,6 @@ func (a *AccountsAPIService) AccountsAccountGroupsOffsetBasedDropdownExecute(r A
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
-	} else {
-		var defaultValue int32 = 100
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", defaultValue, "form", "")
-		r.limit = &defaultValue
-	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	} else {
@@ -495,8 +518,30 @@ func (a *AccountsAPIService) AccountsAccountGroupsOffsetBasedDropdownExecute(r A
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", defaultValue, "form", "")
 		r.offset = &defaultValue
 	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
+	} else {
+		var defaultValue int32 = 100
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", defaultValue, "form", "")
+		r.limit = &defaultValue
+	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.organizationId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
+	}
+	if r.userId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "UserId", r.userId, "form", "")
+	}
+	if r.accessLevel != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "AccessLevel", r.accessLevel, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -635,14 +680,17 @@ type ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest struct {
 	ctx context.Context
 	ApiService *AccountsAPIService
 	accountId int32
-	groupId *int32
-	limit *int32
 	offset *int32
+	limit *int32
 	search *string
+	projectId *int32
+	groupId *int32
+	userId *string
+	sortDirection *string
 }
 
-func (r ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest) GroupId(groupId int32) ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest {
-	r.groupId = &groupId
+func (r ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest) Offset(offset int32) ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest {
+	r.offset = &offset
 	return r
 }
 
@@ -651,13 +699,28 @@ func (r ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest) Limit(limit 
 	return r
 }
 
-func (r ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest) Offset(offset int32) ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest {
-	r.offset = &offset
+func (r ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest) Search(search string) ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest {
+	r.search = &search
 	return r
 }
 
-func (r ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest) Search(search string) ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest {
-	r.search = &search
+func (r ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest) ProjectId(projectId int32) ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest {
+	r.projectId = &projectId
+	return r
+}
+
+func (r ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest) GroupId(groupId int32) ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest {
+	r.groupId = &groupId
+	return r
+}
+
+func (r ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest) UserId(userId string) ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest {
+	r.userId = &userId
+	return r
+}
+
+func (r ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest) SortDirection(sortDirection string) ApiAccountsAccountOffsetBasedOrganizationsWithGroupRequest {
+	r.sortDirection = &sortDirection
 	return r
 }
 
@@ -702,8 +765,12 @@ func (a *AccountsAPIService) AccountsAccountOffsetBasedOrganizationsWithGroupExe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.groupId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "GroupId", r.groupId, "form", "")
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	} else {
+		var defaultValue int32 = 0
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", defaultValue, "form", "")
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -712,15 +779,20 @@ func (a *AccountsAPIService) AccountsAccountOffsetBasedOrganizationsWithGroupExe
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
-	} else {
-		var defaultValue int32 = 0
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", defaultValue, "form", "")
-		r.offset = &defaultValue
-	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
+	}
+	if r.groupId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "GroupId", r.groupId, "form", "")
+	}
+	if r.userId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "UserId", r.userId, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1840,14 +1912,16 @@ type ApiAccountsAccountProjectsOffsetBasedDropdownRequest struct {
 	ctx context.Context
 	ApiService *AccountsAPIService
 	accountId int32
-	limit *int32
 	offset *int32
+	limit *int32
 	search *string
-}
-
-func (r ApiAccountsAccountProjectsOffsetBasedDropdownRequest) Limit(limit int32) ApiAccountsAccountProjectsOffsetBasedDropdownRequest {
-	r.limit = &limit
-	return r
+	sortBy *string
+	sortDirection *string
+	status *ProjectStatus
+	health *ProjectHealth
+	organizationId *int32
+	userId *string
+	groupId *int32
 }
 
 func (r ApiAccountsAccountProjectsOffsetBasedDropdownRequest) Offset(offset int32) ApiAccountsAccountProjectsOffsetBasedDropdownRequest {
@@ -1855,8 +1929,48 @@ func (r ApiAccountsAccountProjectsOffsetBasedDropdownRequest) Offset(offset int3
 	return r
 }
 
+func (r ApiAccountsAccountProjectsOffsetBasedDropdownRequest) Limit(limit int32) ApiAccountsAccountProjectsOffsetBasedDropdownRequest {
+	r.limit = &limit
+	return r
+}
+
 func (r ApiAccountsAccountProjectsOffsetBasedDropdownRequest) Search(search string) ApiAccountsAccountProjectsOffsetBasedDropdownRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiAccountsAccountProjectsOffsetBasedDropdownRequest) SortBy(sortBy string) ApiAccountsAccountProjectsOffsetBasedDropdownRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiAccountsAccountProjectsOffsetBasedDropdownRequest) SortDirection(sortDirection string) ApiAccountsAccountProjectsOffsetBasedDropdownRequest {
+	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiAccountsAccountProjectsOffsetBasedDropdownRequest) Status(status ProjectStatus) ApiAccountsAccountProjectsOffsetBasedDropdownRequest {
+	r.status = &status
+	return r
+}
+
+func (r ApiAccountsAccountProjectsOffsetBasedDropdownRequest) Health(health ProjectHealth) ApiAccountsAccountProjectsOffsetBasedDropdownRequest {
+	r.health = &health
+	return r
+}
+
+func (r ApiAccountsAccountProjectsOffsetBasedDropdownRequest) OrganizationId(organizationId int32) ApiAccountsAccountProjectsOffsetBasedDropdownRequest {
+	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiAccountsAccountProjectsOffsetBasedDropdownRequest) UserId(userId string) ApiAccountsAccountProjectsOffsetBasedDropdownRequest {
+	r.userId = &userId
+	return r
+}
+
+func (r ApiAccountsAccountProjectsOffsetBasedDropdownRequest) GroupId(groupId int32) ApiAccountsAccountProjectsOffsetBasedDropdownRequest {
+	r.groupId = &groupId
 	return r
 }
 
@@ -1901,13 +2015,6 @@ func (a *AccountsAPIService) AccountsAccountProjectsOffsetBasedDropdownExecute(r
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
-	} else {
-		var defaultValue int32 = 100
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", defaultValue, "form", "")
-		r.limit = &defaultValue
-	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	} else {
@@ -1915,8 +2022,36 @@ func (a *AccountsAPIService) AccountsAccountProjectsOffsetBasedDropdownExecute(r
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", defaultValue, "form", "")
 		r.offset = &defaultValue
 	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
+	} else {
+		var defaultValue int32 = 100
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", defaultValue, "form", "")
+		r.limit = &defaultValue
+	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.status != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Status", r.status, "form", "")
+	}
+	if r.health != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Health", r.health, "form", "")
+	}
+	if r.organizationId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
+	}
+	if r.userId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "UserId", r.userId, "form", "")
+	}
+	if r.groupId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "GroupId", r.groupId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2450,6 +2585,12 @@ type ApiAccountsAccountUserOffsetBasedDropdownRequest struct {
 	limit *int32
 	offset *int32
 	search *string
+	sortBy *string
+	sortDirection *string
+	filterRole *int32
+	filterOrganizationId *int32
+	filterProjectId *int32
+	filterGroupId *int32
 }
 
 func (r ApiAccountsAccountUserOffsetBasedDropdownRequest) Limit(limit int32) ApiAccountsAccountUserOffsetBasedDropdownRequest {
@@ -2464,6 +2605,36 @@ func (r ApiAccountsAccountUserOffsetBasedDropdownRequest) Offset(offset int32) A
 
 func (r ApiAccountsAccountUserOffsetBasedDropdownRequest) Search(search string) ApiAccountsAccountUserOffsetBasedDropdownRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiAccountsAccountUserOffsetBasedDropdownRequest) SortBy(sortBy string) ApiAccountsAccountUserOffsetBasedDropdownRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiAccountsAccountUserOffsetBasedDropdownRequest) SortDirection(sortDirection string) ApiAccountsAccountUserOffsetBasedDropdownRequest {
+	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiAccountsAccountUserOffsetBasedDropdownRequest) FilterRole(filterRole int32) ApiAccountsAccountUserOffsetBasedDropdownRequest {
+	r.filterRole = &filterRole
+	return r
+}
+
+func (r ApiAccountsAccountUserOffsetBasedDropdownRequest) FilterOrganizationId(filterOrganizationId int32) ApiAccountsAccountUserOffsetBasedDropdownRequest {
+	r.filterOrganizationId = &filterOrganizationId
+	return r
+}
+
+func (r ApiAccountsAccountUserOffsetBasedDropdownRequest) FilterProjectId(filterProjectId int32) ApiAccountsAccountUserOffsetBasedDropdownRequest {
+	r.filterProjectId = &filterProjectId
+	return r
+}
+
+func (r ApiAccountsAccountUserOffsetBasedDropdownRequest) FilterGroupId(filterGroupId int32) ApiAccountsAccountUserOffsetBasedDropdownRequest {
+	r.filterGroupId = &filterGroupId
 	return r
 }
 
@@ -2511,7 +2682,7 @@ func (a *AccountsAPIService) AccountsAccountUserOffsetBasedDropdownExecute(r Api
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int32 = 50
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", defaultValue, "form", "")
 		r.limit = &defaultValue
 	}
@@ -2524,6 +2695,24 @@ func (a *AccountsAPIService) AccountsAccountUserOffsetBasedDropdownExecute(r Api
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.filterRole != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterRole", r.filterRole, "form", "")
+	}
+	if r.filterOrganizationId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterOrganizationId", r.filterOrganizationId, "form", "")
+	}
+	if r.filterProjectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterProjectId", r.filterProjectId, "form", "")
+	}
+	if r.filterGroupId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterGroupId", r.filterGroupId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

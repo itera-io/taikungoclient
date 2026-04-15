@@ -1780,7 +1780,7 @@ paths:
         name: Limit
         required: false
         schema:
-          default: 100
+          default: 50
           format: int32
           type: integer
         style: form
@@ -1799,6 +1799,52 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: FilterRole
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: FilterOrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: FilterProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: FilterGroupId
+        required: false
+        schema:
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -2075,15 +2121,6 @@ paths:
         style: simple
       - explode: true
         in: query
-        name: Limit
-        required: false
-        schema:
-          default: 100
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: Offset
         required: false
         schema:
@@ -2093,10 +2130,70 @@ paths:
         style: form
       - explode: true
         in: query
+        name: Limit
+        required: false
+        schema:
+          default: 100
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
         name: Search
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Status
+        required: false
+        schema:
+          $ref: "#/components/schemas/ProjectStatus"
+        style: form
+      - explode: true
+        in: query
+        name: Health
+        required: false
+        schema:
+          $ref: "#/components/schemas/ProjectHealth"
+        style: form
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: UserId
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: GroupId
+        required: false
+        schema:
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -2313,9 +2410,10 @@ paths:
         style: simple
       - explode: true
         in: query
-        name: GroupId
+        name: Offset
         required: false
         schema:
+          default: 0
           format: int32
           type: integer
         style: form
@@ -2330,16 +2428,37 @@ paths:
         style: form
       - explode: true
         in: query
-        name: Offset
+        name: Search
         required: false
         schema:
-          default: 0
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
           format: int32
           type: integer
         style: form
       - explode: true
         in: query
-        name: Search
+        name: GroupId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: UserId
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
         required: false
         schema:
           type: string
@@ -2750,15 +2869,6 @@ paths:
         style: simple
       - explode: true
         in: query
-        name: Limit
-        required: false
-        schema:
-          default: 100
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: Offset
         required: false
         schema:
@@ -2768,10 +2878,55 @@ paths:
         style: form
       - explode: true
         in: query
+        name: Limit
+        required: false
+        schema:
+          default: 100
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
         name: Search
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: UserId
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: AccessLevel
+        required: false
+        schema:
+          $ref: "#/components/schemas/AccessLevelRoles"
         style: form
       responses:
         "200":
@@ -55113,22 +55268,64 @@ components:
       - id
       - name
       type: object
+    GroupListItemDto:
+      example:
+        organizationsCount: 1
+        groupName: groupName
+        groupId: 0
+        roles:
+        - None
+        - None
+        usersCount: 5
+        domainId: 6
+      properties:
+        groupId:
+          format: int32
+          type: integer
+        groupName:
+          type: string
+        domainId:
+          format: int32
+          type: integer
+        organizationsCount:
+          format: int32
+          type: integer
+        usersCount:
+          format: int32
+          type: integer
+        roles:
+          items:
+            $ref: "#/components/schemas/ENonGlobalRoles"
+          type: array
+      type: object
     GroupOffsetPaginationDropdownList:
       example:
         data:
-        - name: name
-          id: 5
-        - name: name
-          id: 5
-        offset: 1
-        limit: 0
+        - organizationsCount: 1
+          groupName: groupName
+          groupId: 0
+          roles:
+          - None
+          - None
+          usersCount: 5
+          domainId: 6
+        - organizationsCount: 1
+          groupName: groupName
+          groupId: 0
+          roles:
+          - None
+          - None
+          usersCount: 5
+          domainId: 6
+        offset: 7
+        limit: 5
         hasMore: true
-        totalCount: 6
-        nextOffset: 5
+        totalCount: 2
+        nextOffset: 9
       properties:
         data:
           items:
-            $ref: "#/components/schemas/CommonDropdownDto"
+            $ref: "#/components/schemas/GroupListItemDto"
           nullable: true
           type: array
         limit:
@@ -60904,6 +61101,34 @@ components:
       - partnerId
       - users
       type: object
+    OrganizationListItemDto:
+      example:
+        organizationId: 0
+        groupsCount: 5
+        organizationName: organizationName
+        usersCount: 5
+        projectsCount: 1
+        domainId: 6
+      properties:
+        organizationId:
+          format: int32
+          type: integer
+        organizationName:
+          nullable: true
+          type: string
+        domainId:
+          format: int32
+          type: integer
+        projectsCount:
+          format: int32
+          type: integer
+        groupsCount:
+          format: int32
+          type: integer
+        usersCount:
+          format: int32
+          type: integer
+      type: object
     OrganizationNameCheckerCommand:
       example:
         accountId: 0
@@ -60924,37 +61149,27 @@ components:
     OrganizationOffsetPaginationWithGroupList:
       example:
         data:
-        - orgName: orgName
-          projects:
-          - isBound: true
-            name: name
-            id: 6
-          - isBound: true
-            name: name
-            id: 6
-          accessLevel: accessLevel
-          isBound: true
-          orgId: 0
-        - orgName: orgName
-          projects:
-          - isBound: true
-            name: name
-            id: 6
-          - isBound: true
-            name: name
-            id: 6
-          accessLevel: accessLevel
-          isBound: true
-          orgId: 0
-        offset: 1
-        limit: 0
+        - organizationId: 0
+          groupsCount: 5
+          organizationName: organizationName
+          usersCount: 5
+          projectsCount: 1
+          domainId: 6
+        - organizationId: 0
+          groupsCount: 5
+          organizationName: organizationName
+          usersCount: 5
+          projectsCount: 1
+          domainId: 6
+        offset: 9
+        limit: 2
         hasMore: true
-        totalCount: 6
-        nextOffset: 5
+        totalCount: 7
+        nextOffset: 3
       properties:
         data:
           items:
-            $ref: "#/components/schemas/OrganizationsWithGroupInfoResultDto"
+            $ref: "#/components/schemas/OrganizationListItemDto"
           nullable: true
           type: array
         limit:
@@ -63782,6 +63997,47 @@ components:
       - totalServersCount
       - totalStandaloneVmsCount
       type: object
+    ProjectListItemDto:
+      example:
+        organizationId: 1
+        groupsCount: 5
+        organizationName: organizationName
+        cloudType: NONE
+        health: "Null"
+        usersCount: 5
+        projectName: projectName
+        projectId: 0
+        domainId: 6
+        status: "Null"
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        projectName:
+          nullable: true
+          type: string
+        cloudType:
+          $ref: "#/components/schemas/CloudType"
+        domainId:
+          format: int32
+          type: integer
+        organizationId:
+          format: int32
+          type: integer
+        organizationName:
+          nullable: true
+          type: string
+        status:
+          $ref: "#/components/schemas/ProjectStatus"
+        health:
+          $ref: "#/components/schemas/ProjectHealth"
+        usersCount:
+          format: int32
+          type: integer
+        groupsCount:
+          format: int32
+          type: integer
+      type: object
     ProjectLockManagerCommand:
       example:
         mode: mode
@@ -64073,19 +64329,35 @@ components:
     ProjectOffsetPaginationList:
       example:
         data:
-        - name: name
-          id: 5
-        - name: name
-          id: 5
-        offset: 1
-        limit: 0
+        - organizationId: 1
+          groupsCount: 5
+          organizationName: organizationName
+          cloudType: NONE
+          health: "Null"
+          usersCount: 5
+          projectName: projectName
+          projectId: 0
+          domainId: 6
+          status: "Null"
+        - organizationId: 1
+          groupsCount: 5
+          organizationName: organizationName
+          cloudType: NONE
+          health: "Null"
+          usersCount: 5
+          projectName: projectName
+          projectId: 0
+          domainId: 6
+          status: "Null"
+        offset: 9
+        limit: 2
         hasMore: true
-        totalCount: 6
-        nextOffset: 5
+        totalCount: 7
+        nextOffset: 3
       properties:
         data:
           items:
-            $ref: "#/components/schemas/CommonDropdownDto"
+            $ref: "#/components/schemas/ProjectListItemDto"
           nullable: true
           type: array
         limit:
@@ -71259,26 +71531,79 @@ components:
       - role
       - username
       type: object
+    UserListItemDto:
+      example:
+        organizationsCount: 6
+        groupsCount: 0
+        nonGlobalRoles:
+        - None
+        - None
+        globalRole: None
+        userName: userName
+        projectsCount: 1
+        userId: userId
+      properties:
+        userId:
+          nullable: true
+          type: string
+        userName:
+          nullable: true
+          type: string
+        globalRole:
+          $ref: "#/components/schemas/EGlobalRole"
+        nonGlobalRoles:
+          items:
+            $ref: "#/components/schemas/ENonGlobalRoles"
+          nullable: true
+          type: array
+        groupsCount:
+          format: int32
+          type: integer
+        organizationsCount:
+          format: int32
+          type: integer
+        projectsCount:
+          format: int32
+          type: integer
+      required:
+      - globalRole
+      - groupsCount
+      - nonGlobalRoles
+      - organizationsCount
+      - projectsCount
+      - userId
+      - userName
+      type: object
     UserOffsetPaginationDropdownList:
       example:
         data:
-        - displayName: displayName
-          name: name
-          id: id
-          timestamp: 0
-        - displayName: displayName
-          name: name
-          id: id
-          timestamp: 0
-        offset: 1
-        limit: 0
+        - organizationsCount: 6
+          groupsCount: 0
+          nonGlobalRoles:
+          - None
+          - None
+          globalRole: None
+          userName: userName
+          projectsCount: 1
+          userId: userId
+        - organizationsCount: 6
+          groupsCount: 0
+          nonGlobalRoles:
+          - None
+          - None
+          globalRole: None
+          userName: userName
+          projectsCount: 1
+          userId: userId
+        offset: 2
+        limit: 5
         hasMore: true
-        totalCount: 6
-        nextOffset: 5
+        totalCount: 5
+        nextOffset: 7
       properties:
         data:
           items:
-            $ref: "#/components/schemas/UserBriefDto"
+            $ref: "#/components/schemas/UserListItemDto"
           nullable: true
           type: array
         limit:

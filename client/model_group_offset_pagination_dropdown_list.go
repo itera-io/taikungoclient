@@ -21,7 +21,7 @@ var _ MappedNullable = &GroupOffsetPaginationDropdownList{}
 
 // GroupOffsetPaginationDropdownList struct for GroupOffsetPaginationDropdownList
 type GroupOffsetPaginationDropdownList struct {
-	Data []CommonDropdownDto `json:"data"`
+	Data []GroupListItemDto `json:"data"`
 	Limit int32 `json:"limit"`
 	HasMore bool `json:"hasMore"`
 	TotalCount int64 `json:"totalCount"`
@@ -36,7 +36,7 @@ type _GroupOffsetPaginationDropdownList GroupOffsetPaginationDropdownList
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroupOffsetPaginationDropdownList(data []CommonDropdownDto, limit int32, hasMore bool, totalCount int64, offset int32) *GroupOffsetPaginationDropdownList {
+func NewGroupOffsetPaginationDropdownList(data []GroupListItemDto, limit int32, hasMore bool, totalCount int64, offset int32) *GroupOffsetPaginationDropdownList {
 	this := GroupOffsetPaginationDropdownList{}
 	this.Data = data
 	this.Limit = limit
@@ -55,10 +55,10 @@ func NewGroupOffsetPaginationDropdownListWithDefaults() *GroupOffsetPaginationDr
 }
 
 // GetData returns the Data field value
-// If the value is explicit nil, the zero value for []CommonDropdownDto will be returned
-func (o *GroupOffsetPaginationDropdownList) GetData() []CommonDropdownDto {
+// If the value is explicit nil, the zero value for []GroupListItemDto will be returned
+func (o *GroupOffsetPaginationDropdownList) GetData() []GroupListItemDto {
 	if o == nil {
-		var ret []CommonDropdownDto
+		var ret []GroupListItemDto
 		return ret
 	}
 
@@ -68,7 +68,7 @@ func (o *GroupOffsetPaginationDropdownList) GetData() []CommonDropdownDto {
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GroupOffsetPaginationDropdownList) GetDataOk() ([]CommonDropdownDto, bool) {
+func (o *GroupOffsetPaginationDropdownList) GetDataOk() ([]GroupListItemDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -76,7 +76,7 @@ func (o *GroupOffsetPaginationDropdownList) GetDataOk() ([]CommonDropdownDto, bo
 }
 
 // SetData sets field value
-func (o *GroupOffsetPaginationDropdownList) SetData(v []CommonDropdownDto) {
+func (o *GroupOffsetPaginationDropdownList) SetData(v []GroupListItemDto) {
 	o.Data = v
 }
 

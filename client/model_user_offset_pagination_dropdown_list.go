@@ -21,7 +21,7 @@ var _ MappedNullable = &UserOffsetPaginationDropdownList{}
 
 // UserOffsetPaginationDropdownList struct for UserOffsetPaginationDropdownList
 type UserOffsetPaginationDropdownList struct {
-	Data []UserBriefDto `json:"data"`
+	Data []UserListItemDto `json:"data"`
 	Limit int32 `json:"limit"`
 	HasMore bool `json:"hasMore"`
 	TotalCount int64 `json:"totalCount"`
@@ -36,7 +36,7 @@ type _UserOffsetPaginationDropdownList UserOffsetPaginationDropdownList
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserOffsetPaginationDropdownList(data []UserBriefDto, limit int32, hasMore bool, totalCount int64, offset int32) *UserOffsetPaginationDropdownList {
+func NewUserOffsetPaginationDropdownList(data []UserListItemDto, limit int32, hasMore bool, totalCount int64, offset int32) *UserOffsetPaginationDropdownList {
 	this := UserOffsetPaginationDropdownList{}
 	this.Data = data
 	this.Limit = limit
@@ -55,10 +55,10 @@ func NewUserOffsetPaginationDropdownListWithDefaults() *UserOffsetPaginationDrop
 }
 
 // GetData returns the Data field value
-// If the value is explicit nil, the zero value for []UserBriefDto will be returned
-func (o *UserOffsetPaginationDropdownList) GetData() []UserBriefDto {
+// If the value is explicit nil, the zero value for []UserListItemDto will be returned
+func (o *UserOffsetPaginationDropdownList) GetData() []UserListItemDto {
 	if o == nil {
-		var ret []UserBriefDto
+		var ret []UserListItemDto
 		return ret
 	}
 
@@ -68,7 +68,7 @@ func (o *UserOffsetPaginationDropdownList) GetData() []UserBriefDto {
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *UserOffsetPaginationDropdownList) GetDataOk() ([]UserBriefDto, bool) {
+func (o *UserOffsetPaginationDropdownList) GetDataOk() ([]UserListItemDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -76,7 +76,7 @@ func (o *UserOffsetPaginationDropdownList) GetDataOk() ([]UserBriefDto, bool) {
 }
 
 // SetData sets field value
-func (o *UserOffsetPaginationDropdownList) SetData(v []UserBriefDto) {
+func (o *UserOffsetPaginationDropdownList) SetData(v []UserListItemDto) {
 	o.Data = v
 }
 

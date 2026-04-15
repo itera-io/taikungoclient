@@ -2761,7 +2761,7 @@
             "schema": {
               "type": "integer",
               "format": "int32",
-              "default": 100
+              "default": 50
             }
           },
           {
@@ -2778,6 +2778,52 @@
             "in": "query",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "SortBy",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SortDirection",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "FilterRole",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "FilterOrganizationId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "FilterProjectId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "FilterGroupId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
             }
           }
         ],
@@ -3193,15 +3239,6 @@
             }
           },
           {
-            "name": "Limit",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 100
-            }
-          },
-          {
             "name": "Offset",
             "in": "query",
             "schema": {
@@ -3211,10 +3248,70 @@
             }
           },
           {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 100
+            }
+          },
+          {
             "name": "Search",
             "in": "query",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "SortBy",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SortDirection",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Status",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/ProjectStatus"
+            }
+          },
+          {
+            "name": "Health",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/ProjectHealth"
+            }
+          },
+          {
+            "name": "OrganizationId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "UserId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "GroupId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
             }
           }
         ],
@@ -3534,11 +3631,12 @@
             }
           },
           {
-            "name": "GroupId",
+            "name": "Offset",
             "in": "query",
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "int32",
+              "default": 0
             }
           },
           {
@@ -3551,16 +3649,37 @@
             }
           },
           {
-            "name": "Offset",
+            "name": "Search",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 0
+              "type": "string"
             }
           },
           {
-            "name": "Search",
+            "name": "ProjectId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "GroupId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "UserId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SortDirection",
             "in": "query",
             "schema": {
               "type": "string"
@@ -4177,15 +4296,6 @@
             }
           },
           {
-            "name": "Limit",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 100
-            }
-          },
-          {
             "name": "Offset",
             "in": "query",
             "schema": {
@@ -4195,10 +4305,55 @@
             }
           },
           {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 100
+            }
+          },
+          {
             "name": "Search",
             "in": "query",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "SortBy",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SortDirection",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "OrganizationId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "UserId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "AccessLevel",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/AccessLevelRoles"
             }
           }
         ],
@@ -74899,6 +75054,36 @@
           }
         }
       },
+      "GroupListItemDto": {
+        "type": "object",
+        "properties": {
+          "groupId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "groupName": {
+            "type": "string"
+          },
+          "domainId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "organizationsCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "usersCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ENonGlobalRoles"
+            }
+          }
+        }
+      },
       "GroupOffsetPaginationDropdownList": {
         "required": [
           "data",
@@ -74912,7 +75097,7 @@
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/CommonDropdownDto"
+              "$ref": "#/components/schemas/GroupListItemDto"
             },
             "nullable": true
           },
@@ -79885,6 +80070,35 @@
           }
         }
       },
+      "OrganizationListItemDto": {
+        "type": "object",
+        "properties": {
+          "organizationId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "organizationName": {
+            "type": "string",
+            "nullable": true
+          },
+          "domainId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "projectsCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "groupsCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "usersCount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
       "OrganizationNameCheckerCommand": {
         "type": "object",
         "properties": {
@@ -79916,7 +80130,7 @@
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/OrganizationsWithGroupInfoResultDto"
+              "$ref": "#/components/schemas/OrganizationListItemDto"
             },
             "nullable": true
           },
@@ -81909,6 +82123,48 @@
           }
         }
       },
+      "ProjectListItemDto": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "projectName": {
+            "type": "string",
+            "nullable": true
+          },
+          "cloudType": {
+            "$ref": "#/components/schemas/CloudType"
+          },
+          "domainId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "organizationId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "organizationName": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/ProjectStatus"
+          },
+          "health": {
+            "$ref": "#/components/schemas/ProjectHealth"
+          },
+          "usersCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "groupsCount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
       "ProjectLockManagerCommand": {
         "type": "object",
         "properties": {
@@ -81984,7 +82240,7 @@
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/CommonDropdownDto"
+              "$ref": "#/components/schemas/ProjectListItemDto"
             },
             "nullable": true
           },
@@ -87767,6 +88023,50 @@
           }
         }
       },
+      "UserListItemDto": {
+        "required": [
+          "globalRole",
+          "groupsCount",
+          "nonGlobalRoles",
+          "organizationsCount",
+          "projectsCount",
+          "userId",
+          "userName"
+        ],
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "nullable": true
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "globalRole": {
+            "$ref": "#/components/schemas/EGlobalRole"
+          },
+          "nonGlobalRoles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ENonGlobalRoles"
+            },
+            "nullable": true
+          },
+          "groupsCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "organizationsCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "projectsCount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
       "UserOffsetPaginationDropdownList": {
         "required": [
           "data",
@@ -87780,7 +88080,7 @@
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/UserBriefDto"
+              "$ref": "#/components/schemas/UserListItemDto"
             },
             "nullable": true
           },

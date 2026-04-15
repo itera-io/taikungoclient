@@ -21,7 +21,7 @@ var _ MappedNullable = &OrganizationOffsetPaginationWithGroupList{}
 
 // OrganizationOffsetPaginationWithGroupList struct for OrganizationOffsetPaginationWithGroupList
 type OrganizationOffsetPaginationWithGroupList struct {
-	Data []OrganizationsWithGroupInfoResultDto `json:"data"`
+	Data []OrganizationListItemDto `json:"data"`
 	Limit int32 `json:"limit"`
 	HasMore bool `json:"hasMore"`
 	TotalCount int64 `json:"totalCount"`
@@ -36,7 +36,7 @@ type _OrganizationOffsetPaginationWithGroupList OrganizationOffsetPaginationWith
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationOffsetPaginationWithGroupList(data []OrganizationsWithGroupInfoResultDto, limit int32, hasMore bool, totalCount int64, offset int32) *OrganizationOffsetPaginationWithGroupList {
+func NewOrganizationOffsetPaginationWithGroupList(data []OrganizationListItemDto, limit int32, hasMore bool, totalCount int64, offset int32) *OrganizationOffsetPaginationWithGroupList {
 	this := OrganizationOffsetPaginationWithGroupList{}
 	this.Data = data
 	this.Limit = limit
@@ -55,10 +55,10 @@ func NewOrganizationOffsetPaginationWithGroupListWithDefaults() *OrganizationOff
 }
 
 // GetData returns the Data field value
-// If the value is explicit nil, the zero value for []OrganizationsWithGroupInfoResultDto will be returned
-func (o *OrganizationOffsetPaginationWithGroupList) GetData() []OrganizationsWithGroupInfoResultDto {
+// If the value is explicit nil, the zero value for []OrganizationListItemDto will be returned
+func (o *OrganizationOffsetPaginationWithGroupList) GetData() []OrganizationListItemDto {
 	if o == nil {
-		var ret []OrganizationsWithGroupInfoResultDto
+		var ret []OrganizationListItemDto
 		return ret
 	}
 
@@ -68,7 +68,7 @@ func (o *OrganizationOffsetPaginationWithGroupList) GetData() []OrganizationsWit
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationOffsetPaginationWithGroupList) GetDataOk() ([]OrganizationsWithGroupInfoResultDto, bool) {
+func (o *OrganizationOffsetPaginationWithGroupList) GetDataOk() ([]OrganizationListItemDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -76,7 +76,7 @@ func (o *OrganizationOffsetPaginationWithGroupList) GetDataOk() ([]Organizations
 }
 
 // SetData sets field value
-func (o *OrganizationOffsetPaginationWithGroupList) SetData(v []OrganizationsWithGroupInfoResultDto) {
+func (o *OrganizationOffsetPaginationWithGroupList) SetData(v []OrganizationListItemDto) {
 	o.Data = v
 }
 

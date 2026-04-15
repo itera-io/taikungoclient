@@ -21,7 +21,7 @@ var _ MappedNullable = &ProjectOffsetPaginationList{}
 
 // ProjectOffsetPaginationList struct for ProjectOffsetPaginationList
 type ProjectOffsetPaginationList struct {
-	Data []CommonDropdownDto `json:"data"`
+	Data []ProjectListItemDto `json:"data"`
 	Limit int32 `json:"limit"`
 	HasMore bool `json:"hasMore"`
 	TotalCount int64 `json:"totalCount"`
@@ -36,7 +36,7 @@ type _ProjectOffsetPaginationList ProjectOffsetPaginationList
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectOffsetPaginationList(data []CommonDropdownDto, limit int32, hasMore bool, totalCount int64, offset int32) *ProjectOffsetPaginationList {
+func NewProjectOffsetPaginationList(data []ProjectListItemDto, limit int32, hasMore bool, totalCount int64, offset int32) *ProjectOffsetPaginationList {
 	this := ProjectOffsetPaginationList{}
 	this.Data = data
 	this.Limit = limit
@@ -55,10 +55,10 @@ func NewProjectOffsetPaginationListWithDefaults() *ProjectOffsetPaginationList {
 }
 
 // GetData returns the Data field value
-// If the value is explicit nil, the zero value for []CommonDropdownDto will be returned
-func (o *ProjectOffsetPaginationList) GetData() []CommonDropdownDto {
+// If the value is explicit nil, the zero value for []ProjectListItemDto will be returned
+func (o *ProjectOffsetPaginationList) GetData() []ProjectListItemDto {
 	if o == nil {
-		var ret []CommonDropdownDto
+		var ret []ProjectListItemDto
 		return ret
 	}
 
@@ -68,7 +68,7 @@ func (o *ProjectOffsetPaginationList) GetData() []CommonDropdownDto {
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectOffsetPaginationList) GetDataOk() ([]CommonDropdownDto, bool) {
+func (o *ProjectOffsetPaginationList) GetDataOk() ([]ProjectListItemDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -76,7 +76,7 @@ func (o *ProjectOffsetPaginationList) GetDataOk() ([]CommonDropdownDto, bool) {
 }
 
 // SetData sets field value
-func (o *ProjectOffsetPaginationList) SetData(v []CommonDropdownDto) {
+func (o *ProjectOffsetPaginationList) SetData(v []ProjectListItemDto) {
 	o.Data = v
 }
 
