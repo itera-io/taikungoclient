@@ -653,6 +653,7 @@ Class | Method | HTTP request | Description
 *SlackAPI* | [**SlackVerify**](docs/SlackAPI.md#slackverify) | **Post** /api/v1/slack/verify | Verify slack configuration
 *SseAPI* | [**SseHealth**](docs/SseAPI.md#ssehealth) | **Get** /api/v1/sse/health | Subscribe to real-time infrastructure health state changes
 *SseAPI* | [**SseNotifications**](docs/SseAPI.md#ssenotifications) | **Get** /api/v1/sse/notifications | Subscribe to real-time notification messages for the current user
+*SseAPI* | [**SseRecentEvents**](docs/SseAPI.md#sserecentevents) | **Get** /api/v1/sse/recent-events/{organizationId} | Subscribe to real-time audit log events
 *SseAPI* | [**SseUpdateUserPermission**](docs/SseAPI.md#sseupdateuserpermission) | **Get** /api/v1/sse/update-user-permission | Subscribe to real-time cache invalidation events for the current user
 *SshUsersAPI* | [**SshusersCreate**](docs/SshUsersAPI.md#sshuserscreate) | **Post** /api/v1/sshusers/create | Create access profile ssh user
 *SshUsersAPI* | [**SshusersDelete**](docs/SshUsersAPI.md#sshusersdelete) | **Post** /api/v1/sshusers/delete | Delete access profile ssh user

@@ -36772,6 +36772,54 @@ paths:
       summary: Subscribe to real-time notification messages for the current user
       tags:
       - Sse
+  /api/v1/sse/recent-events/{organizationId}:
+    get:
+      operationId: sse-recent-events
+      parameters:
+      - explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Status
+        required: false
+        schema:
+          $ref: "#/components/schemas/ActionStatus"
+        style: form
+      - explode: true
+        in: query
+        name: Category
+        required: false
+        schema:
+          $ref: "#/components/schemas/ActionType"
+        style: form
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            text/event-stream:
+              schema:
+                $ref: "#/components/schemas/Void"
+          description: OK
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+      summary: Subscribe to real-time audit log events
+      tags:
+      - Sse
   /api/v1/sse/update-user-permission:
     get:
       operationId: sse-update-user-permission

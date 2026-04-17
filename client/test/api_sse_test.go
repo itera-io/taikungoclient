@@ -46,6 +46,20 @@ func Test_taikuncore_SseAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test SseAPIService SseRecentEvents", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var organizationId int32
+
+		resp, httpRes, err := apiClient.SseAPI.SseRecentEvents(context.Background(), organizationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SseAPIService SseUpdateUserPermission", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
