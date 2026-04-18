@@ -113,6 +113,9 @@ docs/AiCredentialsForOrganizationEntity.md
 docs/AiCredentialsListDto.md
 docs/AiListDto.md
 docs/AiType.md
+docs/AirgapGlobalConfigurationDto.md
+docs/AirgapGlobalConfigurationList.md
+docs/AirgapGlobalConfigurationStatusManagementCommand.md
 docs/AksClusterListCommand.md
 docs/Alert.md
 docs/AlertData.md
@@ -285,6 +288,7 @@ docs/CreateAccountCommand.md
 docs/CreateAccountSsoConfigCommand.md
 docs/CreateAiBackendsConfigurationCommand.md
 docs/CreateAiCredentialCommand.md
+docs/CreateAirgapGlobalConfigurationCommand.md
 docs/CreateAlertDto.md
 docs/CreateAlertingIntegrationCommand.md
 docs/CreateAlertingProfileCommand.md
@@ -710,6 +714,7 @@ docs/PodsSearchList.md
 docs/PreDefinedQueriesAPI.md
 docs/ProblemDetails.md
 docs/ProjectActionVisibilityDto.md
+docs/ProjectAirgapOverrideDto.md
 docs/ProjectAlertsQuery.md
 docs/ProjectAppDetailsDto.md
 docs/ProjectAppDto.md
@@ -855,6 +860,7 @@ docs/ServiceListDto.md
 docs/ServiceListDtoCursorStringPaginatedResponse.md
 docs/ServiceSearchCommand.md
 docs/ServiceSearchList.md
+docs/SetProjectAirgapOverrideCommand.md
 docs/ShelveStandAloneVmCommand.md
 docs/SilenceOperationsCommand.md
 docs/SimplePrometheusEntity.md
@@ -950,6 +956,7 @@ docs/UnshelveStandaloneVmCommand.md
 docs/UpdateAccessProfileDto.md
 docs/UpdateAccountCommand.md
 docs/UpdateAccountSsoConfigDto.md
+docs/UpdateAirgapGlobalConfigurationCommand.md
 docs/UpdateAlertingProfileCommand.md
 docs/UpdateAwsCommand.md
 docs/UpdateAzureCommand.md
@@ -1065,6 +1072,9 @@ model_ai_credentials_for_organization_entity.go
 model_ai_credentials_list_dto.go
 model_ai_list_dto.go
 model_ai_type.go
+model_airgap_global_configuration_dto.go
+model_airgap_global_configuration_list.go
+model_airgap_global_configuration_status_management_command.go
 model_aks_cluster_list_command.go
 model_alert.go
 model_alert_data.go
@@ -1223,6 +1233,7 @@ model_create_account_command.go
 model_create_account_sso_config_command.go
 model_create_ai_backends_configuration_command.go
 model_create_ai_credential_command.go
+model_create_airgap_global_configuration_command.go
 model_create_alert_dto.go
 model_create_alerting_integration_command.go
 model_create_alerting_profile_command.go
@@ -1617,6 +1628,7 @@ model_pods_search_command.go
 model_pods_search_list.go
 model_problem_details.go
 model_project_action_visibility_dto.go
+model_project_airgap_override_dto.go
 model_project_alerts_query.go
 model_project_app_details_dto.go
 model_project_app_dto.go
@@ -1747,6 +1759,7 @@ model_service_list_dto.go
 model_service_list_dto_cursor_string_paginated_response.go
 model_service_search_command.go
 model_service_search_list.go
+model_set_project_airgap_override_command.go
 model_shelve_stand_alone_vm_command.go
 model_silence_operations_command.go
 model_simple_prometheus_entity.go
@@ -1830,6 +1843,7 @@ model_unshelve_standalone_vm_command.go
 model_update_access_profile_dto.go
 model_update_account_command.go
 model_update_account_sso_config_dto.go
+model_update_airgap_global_configuration_command.go
 model_update_alerting_profile_command.go
 model_update_aws_command.go
 model_update_azure_command.go

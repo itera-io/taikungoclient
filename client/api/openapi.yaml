@@ -15272,6 +15272,293 @@ paths:
       summary: Create email config
       tags:
       - Global Configuration
+  /api/v1/global-configurations/airgap/update:
+    put:
+      operationId: global-configurations-update-airgap-configuration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateAirgapGlobalConfigurationCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Update airgap global configuration
+      tags:
+      - Global Configuration
+  /api/v1/global-configurations/airgap/create:
+    post:
+      operationId: global-configurations-create-airgap-configuration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateAirgapGlobalConfigurationCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Create airgap global configuration
+      tags:
+      - Global Configuration
+  /api/v1/global-configurations/airgap/{id}:
+    delete:
+      operationId: global-configurations-delete-airgap-configuration
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Delete airgap global configuration
+      tags:
+      - Global Configuration
+  /api/v1/global-configurations/airgap/status:
+    post:
+      operationId: global-configurations-update-status-airgap-configuration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AirgapGlobalConfigurationStatusManagementCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Activate/Deactivate airgap global configuration
+      tags:
+      - Global Configuration
+  /api/v1/global-configurations/airgap/list:
+    get:
+      operationId: global-configurations-list-airgap-configuration
+      parameters:
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 100
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AirgapGlobalConfigurationList"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: List airgap global configurations
+      tags:
+      - Global Configuration
   /api/v1/global-configurations/ai-backend/create:
     post:
       operationId: global-configurations-create-ai-backend
@@ -31522,6 +31809,171 @@ paths:
       summary: Visibility of adding vcluster
       tags:
       - Projects
+  /api/v1/projects/airgap-override/{projectId}:
+    delete:
+      operationId: projects-clear-airgap-override
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Remove per-project airgap registry override (reverts to global default)
+      tags:
+      - Projects
+    get:
+      operationId: projects-get-airgap-override
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProjectAirgapOverrideDto"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Get per-project airgap registry override
+      tags:
+      - Projects
+  /api/v1/projects/airgap-override/set:
+    post:
+      operationId: projects-set-airgap-override
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SetProjectAirgapOverrideCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Set per-project airgap registry override
+      tags:
+      - Projects
   /api/v1/prometheusbillings:
     get:
       operationId: prometheusbillings-list
@@ -43343,6 +43795,86 @@ components:
       - Taikun
       - OpenAi
       type: string
+    AirgapGlobalConfigurationDto:
+      example:
+        name: name
+        ociRegistryHost: ociRegistryHost
+        id: 0
+        isActive: true
+        ociPlainHttp: true
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        ociRegistryHost:
+          nullable: true
+          type: string
+        ociPlainHttp:
+          type: boolean
+        isActive:
+          type: boolean
+      type: object
+    AirgapGlobalConfigurationList:
+      example:
+        data:
+        - name: name
+          ociRegistryHost: ociRegistryHost
+          id: 0
+          isActive: true
+          ociPlainHttp: true
+        - name: name
+          ociRegistryHost: ociRegistryHost
+          id: 0
+          isActive: true
+          ociPlainHttp: true
+        offset: 5
+        limit: 6
+        hasMore: true
+        totalCount: 1
+        nextOffset: 5
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/AirgapGlobalConfigurationDto"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - data
+      - hasMore
+      - limit
+      - offset
+      - totalCount
+      type: object
+    AirgapGlobalConfigurationStatusManagementCommand:
+      example:
+        mode: mode
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+        mode:
+          nullable: true
+          type: string
+      type: object
     AksClusterListCommand:
       example:
         cloudId: 0
@@ -48675,6 +49207,21 @@ components:
           format: int32
           nullable: true
           type: integer
+      type: object
+    CreateAirgapGlobalConfigurationCommand:
+      example:
+        name: name
+        ociRegistryHost: ociRegistryHost
+        ociPlainHttp: true
+      properties:
+        name:
+          nullable: true
+          type: string
+        ociRegistryHost:
+          nullable: true
+          type: string
+        ociPlainHttp:
+          type: boolean
       type: object
     CreateAlertDto:
       example:
@@ -62085,6 +62632,21 @@ components:
       - vmCommit
       - vmRepair
       type: object
+    ProjectAirgapOverrideDto:
+      example:
+        ociRegistryHost: ociRegistryHost
+        projectId: 0
+        ociPlainHttp: true
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        ociRegistryHost:
+          nullable: true
+          type: string
+        ociPlainHttp:
+          type: boolean
+      type: object
     ProjectAlertsQuery:
       example:
         mode: K8S
@@ -68350,6 +68912,21 @@ components:
           format: int32
           type: integer
       type: object
+    SetProjectAirgapOverrideCommand:
+      example:
+        ociRegistryHost: ociRegistryHost
+        projectId: 0
+        ociPlainHttp: true
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        ociRegistryHost:
+          nullable: true
+          type: string
+        ociPlainHttp:
+          type: boolean
+      type: object
     ShelveStandAloneVmCommand:
       example:
         id: 0
@@ -70628,6 +71205,25 @@ components:
           type: string
         isEnabled:
           nullable: true
+          type: boolean
+      type: object
+    UpdateAirgapGlobalConfigurationCommand:
+      example:
+        name: name
+        ociRegistryHost: ociRegistryHost
+        id: 0
+        ociPlainHttp: true
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        ociRegistryHost:
+          nullable: true
+          type: string
+        ociPlainHttp:
           type: boolean
       type: object
     UpdateAlertingProfileCommand:

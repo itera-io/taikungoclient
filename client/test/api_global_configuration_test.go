@@ -33,6 +33,17 @@ func Test_taikuncore_GlobalConfigurationAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test GlobalConfigurationAPIService GlobalConfigurationsCreateAirgapConfiguration", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.GlobalConfigurationAPI.GlobalConfigurationsCreateAirgapConfiguration(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test GlobalConfigurationAPIService GlobalConfigurationsCreateEmailConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -68,6 +79,19 @@ func Test_taikuncore_GlobalConfigurationAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test GlobalConfigurationAPIService GlobalConfigurationsDeleteAirgapConfiguration", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int32
+
+		httpRes, err := apiClient.GlobalConfigurationAPI.GlobalConfigurationsDeleteAirgapConfiguration(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test GlobalConfigurationAPIService GlobalConfigurationsDeleteSlackConfiguration", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -93,6 +117,18 @@ func Test_taikuncore_GlobalConfigurationAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test GlobalConfigurationAPIService GlobalConfigurationsListAirgapConfiguration", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.GlobalConfigurationAPI.GlobalConfigurationsListAirgapConfiguration(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test GlobalConfigurationAPIService GlobalConfigurationsListSlackConfiguration", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -105,11 +141,33 @@ func Test_taikuncore_GlobalConfigurationAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test GlobalConfigurationAPIService GlobalConfigurationsUpdateAirgapConfiguration", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.GlobalConfigurationAPI.GlobalConfigurationsUpdateAirgapConfiguration(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test GlobalConfigurationAPIService GlobalConfigurationsUpdateStatusAiBackend", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.GlobalConfigurationAPI.GlobalConfigurationsUpdateStatusAiBackend(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GlobalConfigurationAPIService GlobalConfigurationsUpdateStatusAirgapConfiguration", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.GlobalConfigurationAPI.GlobalConfigurationsUpdateStatusAirgapConfiguration(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

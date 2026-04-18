@@ -303,13 +303,18 @@ Class | Method | HTTP request | Description
 *GenericKubernetesCloudCredentialAPI* | [**GenericKubernetesList**](docs/GenericKubernetesCloudCredentialAPI.md#generickuberneteslist) | **Get** /api/v1/generic-kubernetes/list | Retrieve list of generic kubernetes cloud credentials
 *GenericKubernetesCloudCredentialAPI* | [**GenericKubernetesUpdate**](docs/GenericKubernetesCloudCredentialAPI.md#generickubernetesupdate) | **Put** /api/v1/generic-kubernetes/update | Update Generic kubernetes credentials
 *GlobalConfigurationAPI* | [**GlobalConfigurationsCreateAiBackend**](docs/GlobalConfigurationAPI.md#globalconfigurationscreateaibackend) | **Post** /api/v1/global-configurations/ai-backend/create | Create AI backend
+*GlobalConfigurationAPI* | [**GlobalConfigurationsCreateAirgapConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationscreateairgapconfiguration) | **Post** /api/v1/global-configurations/airgap/create | Create airgap global configuration
 *GlobalConfigurationAPI* | [**GlobalConfigurationsCreateEmailConfig**](docs/GlobalConfigurationAPI.md#globalconfigurationscreateemailconfig) | **Post** /api/v1/global-configurations/email-validator-config/create | Create email config
 *GlobalConfigurationAPI* | [**GlobalConfigurationsCreateSlackConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationscreateslackconfiguration) | **Post** /api/v1/global-configurations/slack/create | Create slack configuration
 *GlobalConfigurationAPI* | [**GlobalConfigurationsDeleteAiBackend**](docs/GlobalConfigurationAPI.md#globalconfigurationsdeleteaibackend) | **Delete** /api/v1/global-configurations/ai-backend/{id} | Remove global ai backend configuration
+*GlobalConfigurationAPI* | [**GlobalConfigurationsDeleteAirgapConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationsdeleteairgapconfiguration) | **Delete** /api/v1/global-configurations/airgap/{id} | Delete airgap global configuration
 *GlobalConfigurationAPI* | [**GlobalConfigurationsDeleteSlackConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationsdeleteslackconfiguration) | **Delete** /api/v1/global-configurations/slack/{id} | Remove global slack configuration
 *GlobalConfigurationAPI* | [**GlobalConfigurationsListAiBackendConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationslistaibackendconfiguration) | **Get** /api/v1/global-configurations/ai-backend/list | Retrieve ai backend configuration list
+*GlobalConfigurationAPI* | [**GlobalConfigurationsListAirgapConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationslistairgapconfiguration) | **Get** /api/v1/global-configurations/airgap/list | List airgap global configurations
 *GlobalConfigurationAPI* | [**GlobalConfigurationsListSlackConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationslistslackconfiguration) | **Get** /api/v1/global-configurations/slack/list | Retrieve slack configuration list
+*GlobalConfigurationAPI* | [**GlobalConfigurationsUpdateAirgapConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationsupdateairgapconfiguration) | **Put** /api/v1/global-configurations/airgap/update | Update airgap global configuration
 *GlobalConfigurationAPI* | [**GlobalConfigurationsUpdateStatusAiBackend**](docs/GlobalConfigurationAPI.md#globalconfigurationsupdatestatusaibackend) | **Post** /api/v1/global-configurations/ai-backend/status | Activate/Deactivate global ai-backend configuration
+*GlobalConfigurationAPI* | [**GlobalConfigurationsUpdateStatusAirgapConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationsupdatestatusairgapconfiguration) | **Post** /api/v1/global-configurations/airgap/status | Activate/Deactivate airgap global configuration
 *GlobalConfigurationAPI* | [**GlobalConfigurationsUpdateStatusSlackConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationsupdatestatusslackconfiguration) | **Post** /api/v1/global-configurations/slack/status | Activate/Deactivate global slack configuration
 *GoogleAPI* | [**GooglecloudBillingAccountList**](docs/GoogleAPI.md#googlecloudbillingaccountlist) | **Post** /api/v1/googlecloud/billing-accounts | Retrieve google billing accounts list
 *GoogleAPI* | [**GooglecloudCreate**](docs/GoogleAPI.md#googlecloudcreate) | **Post** /api/v1/googlecloud/create | Create google cloud credential
@@ -543,6 +548,7 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsCanAddVcluster**](docs/ProjectsAPI.md#projectscanaddvcluster) | **Get** /api/v1/projects/can-add-vcluster/{projectId} | Visibility of adding vcluster
 *ProjectsAPI* | [**ProjectsCatalogs**](docs/ProjectsAPI.md#projectscatalogs) | **Get** /api/v1/projects/catalogs/{projectId} | Catalogs for project
 *ProjectsAPI* | [**ProjectsChatCompletions**](docs/ProjectsAPI.md#projectschatcompletions) | **Post** /api/v1/projects/chat/completions | AI Chat completions
+*ProjectsAPI* | [**ProjectsClearAirgapOverride**](docs/ProjectsAPI.md#projectsclearairgapoverride) | **Delete** /api/v1/projects/airgap-override/{projectId} | Remove per-project airgap registry override (reverts to global default)
 *ProjectsAPI* | [**ProjectsCreate**](docs/ProjectsAPI.md#projectscreate) | **Post** /api/v1/projects | Create a new project
 *ProjectsAPI* | [**ProjectsDelete**](docs/ProjectsAPI.md#projectsdelete) | **Post** /api/v1/projects/delete | Delete the project. The project must be empty (no server) and in READY state
 *ProjectsAPI* | [**ProjectsDescribe**](docs/ProjectsAPI.md#projectsdescribe) | **Get** /api/v1/projects/describe/{projectId} | Describe project by Id
@@ -553,6 +559,7 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsExtendLifetime**](docs/ProjectsAPI.md#projectsextendlifetime) | **Post** /api/v1/projects/extend/lifetime | Extend life time of project
 *ProjectsAPI* | [**ProjectsForBilling**](docs/ProjectsAPI.md#projectsforbilling) | **Get** /api/v1/projects/forbilling | Retrieve a list of projects for billing
 *ProjectsAPI* | [**ProjectsGetAccessibleUsers**](docs/ProjectsAPI.md#projectsgetaccessibleusers) | **Get** /api/v1/projects/get-accessible-users | Get accessible users for project
+*ProjectsAPI* | [**ProjectsGetAirgapOverride**](docs/ProjectsAPI.md#projectsgetairgapoverride) | **Get** /api/v1/projects/airgap-override/{projectId} | Get per-project airgap registry override
 *ProjectsAPI* | [**ProjectsImportedClusterDetails**](docs/ProjectsAPI.md#projectsimportedclusterdetails) | **Get** /api/v1/projects/imported/details/{projectId} | Imported cluster details
 *ProjectsAPI* | [**ProjectsList**](docs/ProjectsAPI.md#projectslist) | **Get** /api/v1/projects | Retrieve all projects
 *ProjectsAPI* | [**ProjectsLockManager**](docs/ProjectsAPI.md#projectslockmanager) | **Post** /api/v1/projects/lockmanager | Lock/Unlock project
@@ -561,6 +568,7 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsMonitoringAlerts**](docs/ProjectsAPI.md#projectsmonitoringalerts) | **Post** /api/v1/projects/monitoringalerts | Monitoring alerts for project
 *ProjectsAPI* | [**ProjectsPrometheusMetrics**](docs/ProjectsAPI.md#projectsprometheusmetrics) | **Post** /api/v1/projects/prometheusmetrics | Prometheus metrics data project
 *ProjectsAPI* | [**ProjectsPrometheusMetricsAutocomplete**](docs/ProjectsAPI.md#projectsprometheusmetricsautocomplete) | **Post** /api/v1/projects/prometheusmetrics/autocomplete | Prometheus metrics autocomplete values
+*ProjectsAPI* | [**ProjectsSetAirgapOverride**](docs/ProjectsAPI.md#projectssetairgapoverride) | **Post** /api/v1/projects/airgap-override/set | Set per-project airgap registry override
 *ProjectsAPI* | [**ProjectsToggleFullSpot**](docs/ProjectsAPI.md#projectstogglefullspot) | **Post** /api/v1/projects/toggle-full-spot | Full spot operations enable/disable
 *ProjectsAPI* | [**ProjectsToggleSpotVms**](docs/ProjectsAPI.md#projectstogglespotvms) | **Post** /api/v1/projects/toggle-spot-vms | Spot vm(s) operations enable/disable
 *ProjectsAPI* | [**ProjectsToggleSpotWorkers**](docs/ProjectsAPI.md#projectstogglespotworkers) | **Post** /api/v1/projects/toggle-spot-workers | Spot worker(s) operations enable/disable
@@ -779,6 +787,9 @@ Class | Method | HTTP request | Description
  - [AiCredentialsListDto](docs/AiCredentialsListDto.md)
  - [AiListDto](docs/AiListDto.md)
  - [AiType](docs/AiType.md)
+ - [AirgapGlobalConfigurationDto](docs/AirgapGlobalConfigurationDto.md)
+ - [AirgapGlobalConfigurationList](docs/AirgapGlobalConfigurationList.md)
+ - [AirgapGlobalConfigurationStatusManagementCommand](docs/AirgapGlobalConfigurationStatusManagementCommand.md)
  - [AksClusterListCommand](docs/AksClusterListCommand.md)
  - [Alert](docs/Alert.md)
  - [AlertData](docs/AlertData.md)
@@ -937,6 +948,7 @@ Class | Method | HTTP request | Description
  - [CreateAccountSsoConfigCommand](docs/CreateAccountSsoConfigCommand.md)
  - [CreateAiBackendsConfigurationCommand](docs/CreateAiBackendsConfigurationCommand.md)
  - [CreateAiCredentialCommand](docs/CreateAiCredentialCommand.md)
+ - [CreateAirgapGlobalConfigurationCommand](docs/CreateAirgapGlobalConfigurationCommand.md)
  - [CreateAlertDto](docs/CreateAlertDto.md)
  - [CreateAlertingIntegrationCommand](docs/CreateAlertingIntegrationCommand.md)
  - [CreateAlertingProfileCommand](docs/CreateAlertingProfileCommand.md)
@@ -1331,6 +1343,7 @@ Class | Method | HTTP request | Description
  - [PodsSearchList](docs/PodsSearchList.md)
  - [ProblemDetails](docs/ProblemDetails.md)
  - [ProjectActionVisibilityDto](docs/ProjectActionVisibilityDto.md)
+ - [ProjectAirgapOverrideDto](docs/ProjectAirgapOverrideDto.md)
  - [ProjectAlertsQuery](docs/ProjectAlertsQuery.md)
  - [ProjectAppDetailsDto](docs/ProjectAppDetailsDto.md)
  - [ProjectAppDto](docs/ProjectAppDto.md)
@@ -1461,6 +1474,7 @@ Class | Method | HTTP request | Description
  - [ServiceListDtoCursorStringPaginatedResponse](docs/ServiceListDtoCursorStringPaginatedResponse.md)
  - [ServiceSearchCommand](docs/ServiceSearchCommand.md)
  - [ServiceSearchList](docs/ServiceSearchList.md)
+ - [SetProjectAirgapOverrideCommand](docs/SetProjectAirgapOverrideCommand.md)
  - [ShelveStandAloneVmCommand](docs/ShelveStandAloneVmCommand.md)
  - [SilenceOperationsCommand](docs/SilenceOperationsCommand.md)
  - [SimplePrometheusEntity](docs/SimplePrometheusEntity.md)
@@ -1544,6 +1558,7 @@ Class | Method | HTTP request | Description
  - [UpdateAccessProfileDto](docs/UpdateAccessProfileDto.md)
  - [UpdateAccountCommand](docs/UpdateAccountCommand.md)
  - [UpdateAccountSsoConfigDto](docs/UpdateAccountSsoConfigDto.md)
+ - [UpdateAirgapGlobalConfigurationCommand](docs/UpdateAirgapGlobalConfigurationCommand.md)
  - [UpdateAlertingProfileCommand](docs/UpdateAlertingProfileCommand.md)
  - [UpdateAwsCommand](docs/UpdateAwsCommand.md)
  - [UpdateAzureCommand](docs/UpdateAzureCommand.md)
