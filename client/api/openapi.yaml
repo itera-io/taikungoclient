@@ -63164,6 +63164,7 @@ components:
         isMonitoringEnabled: true
         createdBy: createdBy
         isAutoUpgradeEnabled: true
+        failureReason: failureReason
         isBackupEnabled: true
         serversCount: 6
         lastModified: lastModified
@@ -63211,6 +63212,9 @@ components:
           nullable: true
           type: array
         accessIp:
+          nullable: true
+          type: string
+        failureReason:
           nullable: true
           type: string
       type: object

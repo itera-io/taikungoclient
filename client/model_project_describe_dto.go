@@ -34,6 +34,7 @@ type ProjectDescribeDto struct {
 	Flavors []string `json:"flavors,omitempty"`
 	Images []string `json:"images,omitempty"`
 	AccessIp NullableString `json:"accessIp,omitempty"`
+	FailureReason NullableString `json:"failureReason,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -556,6 +557,48 @@ func (o *ProjectDescribeDto) UnsetAccessIp() {
 	o.AccessIp.Unset()
 }
 
+// GetFailureReason returns the FailureReason field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProjectDescribeDto) GetFailureReason() string {
+	if o == nil || IsNil(o.FailureReason.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.FailureReason.Get()
+}
+
+// GetFailureReasonOk returns a tuple with the FailureReason field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectDescribeDto) GetFailureReasonOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FailureReason.Get(), o.FailureReason.IsSet()
+}
+
+// HasFailureReason returns a boolean if a field has been set.
+func (o *ProjectDescribeDto) HasFailureReason() bool {
+	if o != nil && o.FailureReason.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFailureReason gets a reference to the given NullableString and assigns it to the FailureReason field.
+func (o *ProjectDescribeDto) SetFailureReason(v string) {
+	o.FailureReason.Set(&v)
+}
+// SetFailureReasonNil sets the value for FailureReason to be an explicit nil
+func (o *ProjectDescribeDto) SetFailureReasonNil() {
+	o.FailureReason.Set(nil)
+}
+
+// UnsetFailureReason ensures that no value is present for FailureReason, not even an explicit nil
+func (o *ProjectDescribeDto) UnsetFailureReason() {
+	o.FailureReason.Unset()
+}
+
 func (o ProjectDescribeDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -608,6 +651,9 @@ func (o ProjectDescribeDto) ToMap() (map[string]interface{}, error) {
 	if o.AccessIp.IsSet() {
 		toSerialize["accessIp"] = o.AccessIp.Get()
 	}
+	if o.FailureReason.IsSet() {
+		toSerialize["failureReason"] = o.FailureReason.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -644,6 +690,7 @@ func (o *ProjectDescribeDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "flavors")
 		delete(additionalProperties, "images")
 		delete(additionalProperties, "accessIp")
+		delete(additionalProperties, "failureReason")
 		o.AdditionalProperties = additionalProperties
 	}
 
