@@ -45244,18 +45244,37 @@ components:
           region: region
           continentName: continentName
           sharedFileSystemEnabled: true
-        totalCount: 2
+        offset: 9
+        limit: 2
+        hasMore: true
+        totalCount: 7
+        nextOffset: 3
       properties:
         data:
           items:
             $ref: "#/components/schemas/AmazonCredentialsListDto"
           nullable: true
           type: array
-        totalCount:
+        limit:
           format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     AwsEksClusterDto:
@@ -45689,18 +45708,37 @@ components:
           id: 0
           lastModified: lastModified
           continentName: continentName
-        totalCount: 5
+        offset: 7
+        limit: 5
+        hasMore: true
+        totalCount: 2
+        nextOffset: 9
       properties:
         data:
           items:
             $ref: "#/components/schemas/AzureCredentialsListDto"
           nullable: true
           type: array
-        totalCount:
+        limit:
           format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     AzureCredentialsListDto:
@@ -46066,18 +46104,37 @@ components:
           id: 0
           s3Name: s3Name
           lastModified: lastModified
-        totalCount: 1
+        offset: 5
+        limit: 1
+        hasMore: true
+        totalCount: 5
+        nextOffset: 2
       properties:
         data:
           items:
             $ref: "#/components/schemas/BackupCredentialsListDto"
           nullable: true
           type: array
-        totalCount:
+        limit:
           format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     BackupCredentialsCreateCommand:
@@ -54993,18 +55050,37 @@ components:
           id: 0
           lastModified: lastModified
           continentName: continentName
-        totalCount: 5
+        offset: 7
+        limit: 5
+        hasMore: true
+        totalCount: 2
+        nextOffset: 9
       properties:
         data:
           items:
             $ref: "#/components/schemas/GenericKubernetesListDto"
           nullable: true
           type: array
-        totalCount:
+        limit:
           format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     GenericKubernetesListDto:
@@ -55418,18 +55494,37 @@ components:
           region: region
           continentName: continentName
           projectId: projectId
+        offset: 2
+        limit: 5
+        hasMore: true
         totalCount: 5
+        nextOffset: 7
       properties:
         data:
           items:
             $ref: "#/components/schemas/GoogleCredentialsListDto"
           nullable: true
           type: array
-        totalCount:
+        limit:
           format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     GoogleCredentialsListDto:
@@ -57842,18 +57937,37 @@ components:
           invoiceId: invoiceId
           id: 0
           startDate: startDate
-        totalCount: 5
+        offset: 7
+        limit: 5
+        hasMore: true
+        totalCount: 2
+        nextOffset: 9
       properties:
         data:
           items:
             $ref: "#/components/schemas/InvoiceListDto"
           nullable: true
           type: array
-        totalCount:
+        limit:
           format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     IpAddressRangeCountCommand:
@@ -58613,18 +58727,37 @@ components:
           nvidiaGpuOperatorEnabled: true
           uniqueClusterName: true
           cni: Default
-        totalCount: 1
+        offset: 5
+        limit: 1
+        hasMore: true
+        totalCount: 5
+        nextOffset: 2
       properties:
         data:
           items:
             $ref: "#/components/schemas/KubernetesProfilesListDto"
           nullable: true
           type: array
-        totalCount:
+        limit:
           format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     KubernetesProfilesListDto:
@@ -59953,18 +60086,37 @@ components:
           projectName: projectName
           projectId: 0
           username: username
-        totalCount: 6
+        offset: 5
+        limit: 6
+        hasMore: true
+        totalCount: 1
+        nextOffset: 5
       properties:
         data:
           items:
             $ref: "#/components/schemas/NotificationListDto"
           nullable: true
           type: array
-        totalCount:
+        limit:
           format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     NotificationListDto:
@@ -60844,18 +60996,37 @@ components:
           region: region
           continentName: continentName
           user: user
+        offset: 2
+        limit: 5
+        hasMore: true
         totalCount: 5
+        nextOffset: 7
       properties:
         data:
           items:
             $ref: "#/components/schemas/OpenstackCredentialsListDto"
           nullable: true
           type: array
-        totalCount:
+        limit:
           format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     OpenstackCredentialsListDto:
@@ -61337,18 +61508,37 @@ components:
             prometheusRuleId: 1
           id: 0
           lastModified: lastModified
+        offset: 2
+        limit: 5
+        hasMore: true
         totalCount: 5
+        nextOffset: 7
       properties:
         data:
           items:
             $ref: "#/components/schemas/OperationCredentialsListDto"
           nullable: true
           type: array
-        totalCount:
+        limit:
           format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     OperationCredentialsCreateCommand:
@@ -61931,18 +62121,37 @@ components:
           cloudCredentials: 5
           id: 0
           email: email
-        totalCount: 7
+        offset: 3
+        limit: 7
+        hasMore: true
+        totalCount: 9
+        nextOffset: 2
       properties:
         data:
           items:
             $ref: "#/components/schemas/OrganizationDetailsDto"
           nullable: true
           type: array
-        totalCount:
+        limit:
           format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     OrganizationsSearchResponseData:
@@ -65015,18 +65224,37 @@ components:
           projectName: projectName
           projectId: 7
           serverCpu: 0
-        totalCount: 9
+        offset: 2
+        limit: 9
+        hasMore: true
+        totalCount: 3
+        nextOffset: 4
       properties:
         data:
           items:
             $ref: "#/components/schemas/ProjectQuotaListDto"
           nullable: true
           type: array
-        totalCount:
+        limit:
           format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     ProjectQuotaListDto:
@@ -65517,18 +65745,37 @@ components:
             hidden: true
             enable: true
           isMaintenanceModeEnabled: true
-        totalCount: 7
+        offset: 1
+        limit: 7
+        hasMore: true
+        totalCount: 1
+        nextOffset: 1
       properties:
         data:
           items:
             $ref: "#/components/schemas/ProjectListDetailDto"
           nullable: true
           type: array
-        totalCount:
+        limit:
           format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     ProjectsLogsCommand:
@@ -66394,18 +66641,37 @@ components:
           lastModified: lastModified
           continentName: continentName
           vmTemplateName: vmTemplateName
-        totalCount: 5
+        offset: 7
+        limit: 5
+        hasMore: true
+        totalCount: 2
+        nextOffset: 9
       properties:
         data:
           items:
             $ref: "#/components/schemas/ProxmoxListDto"
           nullable: true
           type: array
-        totalCount:
+        limit:
           format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     ProxmoxListDto:
@@ -68529,18 +68795,37 @@ components:
           projectName: projectName
           projectId: 1
           status: status
-        totalCount: 0
+        offset: 1
+        limit: 0
+        hasMore: true
+        totalCount: 6
+        nextOffset: 5
       properties:
         data:
           items:
             $ref: "#/components/schemas/ServerListDto"
           nullable: true
           type: array
-        totalCount:
+        limit:
           format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     ServersListForDetails:
@@ -69027,18 +69312,37 @@ components:
           id: 0
           url: url
           slackType: Alert
-        totalCount: 1
+        offset: 5
+        limit: 1
+        hasMore: true
+        totalCount: 5
+        nextOffset: 2
       properties:
         data:
           items:
             $ref: "#/components/schemas/SlackConfigurationDto"
           nullable: true
           type: array
-        totalCount:
+        limit:
           format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     SlackType:
@@ -70156,18 +70460,37 @@ components:
             revision: 3
           ram: 5
           status: Deleting
+        offset: 1
+        limit: 1
+        hasMore: true
         totalCount: 1
+        nextOffset: 6
       properties:
         data:
           items:
             $ref: "#/components/schemas/StandaloneVmListDto"
           nullable: true
           type: array
-        totalCount:
+        limit:
           format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     StandaloneVmsListForDetailsDto:
@@ -73337,18 +73660,37 @@ components:
             isVirtualLbNetwork: true
           resourcePool: resourcePool
           username: username
-        totalCount: 5
+        offset: 7
+        limit: 5
+        hasMore: true
+        totalCount: 2
+        nextOffset: 9
       properties:
         data:
           items:
             $ref: "#/components/schemas/VsphereListDto"
           nullable: true
           type: array
-        totalCount:
+        limit:
           format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     VsphereListDto:
@@ -73702,18 +74044,37 @@ components:
           continentName: continentName
           zadaraVolumeType: zadaraVolumeType
           zadaraApiUrl: zadaraApiUrl
-        totalCount: 5
+        offset: 7
+        limit: 5
+        hasMore: true
+        totalCount: 2
+        nextOffset: 9
       properties:
         data:
           items:
             $ref: "#/components/schemas/ZadaraCredentialsListDto"
           nullable: true
           type: array
-        totalCount:
+        limit:
           format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
           type: integer
       required:
       - data
+      - hasMore
+      - limit
+      - offset
       - totalCount
       type: object
     ZadaraCredentialsListDto:

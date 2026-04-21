@@ -67995,6 +67995,9 @@
       "AwsCredentialList": {
         "required": [
           "data",
+          "hasMore",
+          "limit",
+          "offset",
           "totalCount"
         ],
         "type": "object",
@@ -68006,9 +68009,25 @@
             },
             "nullable": true
           },
-          "totalCount": {
+          "limit": {
             "type": "integer",
             "format": "int32"
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         }
       },
@@ -68384,6 +68403,9 @@
       "AzureCredentialList": {
         "required": [
           "data",
+          "hasMore",
+          "limit",
+          "offset",
           "totalCount"
         ],
         "type": "object",
@@ -68395,9 +68417,25 @@
             },
             "nullable": true
           },
-          "totalCount": {
+          "limit": {
             "type": "integer",
             "format": "int32"
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         }
       },
@@ -68716,6 +68754,9 @@
       "BackupCredentials": {
         "required": [
           "data",
+          "hasMore",
+          "limit",
+          "offset",
           "totalCount"
         ],
         "type": "object",
@@ -68727,9 +68768,25 @@
             },
             "nullable": true
           },
-          "totalCount": {
+          "limit": {
             "type": "integer",
             "format": "int32"
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         }
       },
@@ -75233,6 +75290,9 @@
       "GenericKubernetesList": {
         "required": [
           "data",
+          "hasMore",
+          "limit",
+          "offset",
           "totalCount"
         ],
         "type": "object",
@@ -75244,9 +75304,25 @@
             },
             "nullable": true
           },
-          "totalCount": {
+          "limit": {
             "type": "integer",
             "format": "int32"
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         }
       },
@@ -75609,6 +75685,9 @@
       "GoogleCredentialList": {
         "required": [
           "data",
+          "hasMore",
+          "limit",
+          "offset",
           "totalCount"
         ],
         "type": "object",
@@ -75620,9 +75699,25 @@
             },
             "nullable": true
           },
-          "totalCount": {
+          "limit": {
             "type": "integer",
             "format": "int32"
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         }
       },
@@ -77560,6 +77655,9 @@
       "Invoices": {
         "required": [
           "data",
+          "hasMore",
+          "limit",
+          "offset",
           "totalCount"
         ],
         "type": "object",
@@ -77571,9 +77669,25 @@
             },
             "nullable": true
           },
-          "totalCount": {
+          "limit": {
             "type": "integer",
             "format": "int32"
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         }
       },
@@ -78223,6 +78337,9 @@
       "KubernetesProfilesList": {
         "required": [
           "data",
+          "hasMore",
+          "limit",
+          "offset",
           "totalCount"
         ],
         "type": "object",
@@ -78234,9 +78351,25 @@
             },
             "nullable": true
           },
-          "totalCount": {
+          "limit": {
             "type": "integer",
             "format": "int32"
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         }
       },
@@ -79418,6 +79551,9 @@
       "NotificationHistory": {
         "required": [
           "data",
+          "hasMore",
+          "limit",
+          "offset",
           "totalCount"
         ],
         "type": "object",
@@ -79429,9 +79565,25 @@
             },
             "nullable": true
           },
-          "totalCount": {
+          "limit": {
             "type": "integer",
             "format": "int32"
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         }
       },
@@ -80161,6 +80313,9 @@
       "OpenstackCredentialList": {
         "required": [
           "data",
+          "hasMore",
+          "limit",
+          "offset",
           "totalCount"
         ],
         "type": "object",
@@ -80172,9 +80327,25 @@
             },
             "nullable": true
           },
-          "totalCount": {
+          "limit": {
             "type": "integer",
             "format": "int32"
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         }
       },
@@ -80601,6 +80772,9 @@
       "OperationCredentials": {
         "required": [
           "data",
+          "hasMore",
+          "limit",
+          "offset",
           "totalCount"
         ],
         "type": "object",
@@ -80612,9 +80786,25 @@
             },
             "nullable": true
           },
-          "totalCount": {
+          "limit": {
             "type": "integer",
             "format": "int32"
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         }
       },
@@ -81112,6 +81302,9 @@
       "OrganizationsList": {
         "required": [
           "data",
+          "hasMore",
+          "limit",
+          "offset",
           "totalCount"
         ],
         "type": "object",
@@ -81123,9 +81316,25 @@
             },
             "nullable": true
           },
-          "totalCount": {
+          "limit": {
             "type": "integer",
             "format": "int32"
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         }
       },
@@ -83158,6 +83367,9 @@
       "ProjectQuotaList": {
         "required": [
           "data",
+          "hasMore",
+          "limit",
+          "offset",
           "totalCount"
         ],
         "type": "object",
@@ -83169,9 +83381,25 @@
             },
             "nullable": true
           },
-          "totalCount": {
+          "limit": {
             "type": "integer",
             "format": "int32"
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         }
       },
@@ -83472,6 +83700,9 @@
       "ProjectsList": {
         "required": [
           "data",
+          "hasMore",
+          "limit",
+          "offset",
           "totalCount"
         ],
         "type": "object",
@@ -83483,9 +83714,25 @@
             },
             "nullable": true
           },
-          "totalCount": {
+          "limit": {
             "type": "integer",
             "format": "int32"
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         }
       },
@@ -84148,6 +84395,9 @@
       "ProxmoxList": {
         "required": [
           "data",
+          "hasMore",
+          "limit",
+          "offset",
           "totalCount"
         ],
         "type": "object",
@@ -84159,9 +84409,25 @@
             },
             "nullable": true
           },
-          "totalCount": {
+          "limit": {
             "type": "integer",
             "format": "int32"
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         }
       },
@@ -85866,6 +86132,9 @@
       "ServersList": {
         "required": [
           "data",
+          "hasMore",
+          "limit",
+          "offset",
           "totalCount"
         ],
         "type": "object",
@@ -85877,9 +86146,25 @@
             },
             "nullable": true
           },
-          "totalCount": {
+          "limit": {
             "type": "integer",
             "format": "int32"
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         }
       },
@@ -86171,6 +86456,9 @@
       "SlackConfigurationList": {
         "required": [
           "data",
+          "hasMore",
+          "limit",
+          "offset",
           "totalCount"
         ],
         "type": "object",
@@ -86182,9 +86470,25 @@
             },
             "nullable": true
           },
-          "totalCount": {
+          "limit": {
             "type": "integer",
             "format": "int32"
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         }
       },
@@ -87000,6 +87304,9 @@
       "StandaloneVmsList": {
         "required": [
           "data",
+          "hasMore",
+          "limit",
+          "offset",
           "totalCount"
         ],
         "type": "object",
@@ -87011,9 +87318,25 @@
             },
             "nullable": true
           },
-          "totalCount": {
+          "limit": {
             "type": "integer",
             "format": "int32"
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         }
       },
@@ -89697,6 +90020,9 @@
       "VsphereList": {
         "required": [
           "data",
+          "hasMore",
+          "limit",
+          "offset",
           "totalCount"
         ],
         "type": "object",
@@ -89708,9 +90034,25 @@
             },
             "nullable": true
           },
-          "totalCount": {
+          "limit": {
             "type": "integer",
             "format": "int32"
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         }
       },
@@ -90012,6 +90354,9 @@
       "ZadaraCredentialList": {
         "required": [
           "data",
+          "hasMore",
+          "limit",
+          "offset",
           "totalCount"
         ],
         "type": "object",
@@ -90023,9 +90368,25 @@
             },
             "nullable": true
           },
-          "totalCount": {
+          "limit": {
             "type": "integer",
             "format": "int32"
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         }
       },
