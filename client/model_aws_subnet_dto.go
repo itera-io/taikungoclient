@@ -25,6 +25,10 @@ type AwsSubnetDto struct {
 	State NullableString `json:"state,omitempty"`
 	HasIpv6 *bool `json:"hasIpv6,omitempty"`
 	Cidr NullableString `json:"cidr,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	AvailableIpCount *int32 `json:"availableIpCount,omitempty"`
+	IsDefault *bool `json:"isDefault,omitempty"`
+	OwnerId NullableString `json:"ownerId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -247,6 +251,154 @@ func (o *AwsSubnetDto) UnsetCidr() {
 	o.Cidr.Unset()
 }
 
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AwsSubnetDto) GetName() string {
+	if o == nil || IsNil(o.Name.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Name.Get()
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AwsSubnetDto) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Name.Get(), o.Name.IsSet()
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *AwsSubnetDto) HasName() bool {
+	if o != nil && o.Name.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
+func (o *AwsSubnetDto) SetName(v string) {
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *AwsSubnetDto) SetNameNil() {
+	o.Name.Set(nil)
+}
+
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *AwsSubnetDto) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetAvailableIpCount returns the AvailableIpCount field value if set, zero value otherwise.
+func (o *AwsSubnetDto) GetAvailableIpCount() int32 {
+	if o == nil || IsNil(o.AvailableIpCount) {
+		var ret int32
+		return ret
+	}
+	return *o.AvailableIpCount
+}
+
+// GetAvailableIpCountOk returns a tuple with the AvailableIpCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsSubnetDto) GetAvailableIpCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.AvailableIpCount) {
+		return nil, false
+	}
+	return o.AvailableIpCount, true
+}
+
+// HasAvailableIpCount returns a boolean if a field has been set.
+func (o *AwsSubnetDto) HasAvailableIpCount() bool {
+	if o != nil && !IsNil(o.AvailableIpCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetAvailableIpCount gets a reference to the given int32 and assigns it to the AvailableIpCount field.
+func (o *AwsSubnetDto) SetAvailableIpCount(v int32) {
+	o.AvailableIpCount = &v
+}
+
+// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
+func (o *AwsSubnetDto) GetIsDefault() bool {
+	if o == nil || IsNil(o.IsDefault) {
+		var ret bool
+		return ret
+	}
+	return *o.IsDefault
+}
+
+// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsSubnetDto) GetIsDefaultOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsDefault) {
+		return nil, false
+	}
+	return o.IsDefault, true
+}
+
+// HasIsDefault returns a boolean if a field has been set.
+func (o *AwsSubnetDto) HasIsDefault() bool {
+	if o != nil && !IsNil(o.IsDefault) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
+func (o *AwsSubnetDto) SetIsDefault(v bool) {
+	o.IsDefault = &v
+}
+
+// GetOwnerId returns the OwnerId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AwsSubnetDto) GetOwnerId() string {
+	if o == nil || IsNil(o.OwnerId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.OwnerId.Get()
+}
+
+// GetOwnerIdOk returns a tuple with the OwnerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AwsSubnetDto) GetOwnerIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OwnerId.Get(), o.OwnerId.IsSet()
+}
+
+// HasOwnerId returns a boolean if a field has been set.
+func (o *AwsSubnetDto) HasOwnerId() bool {
+	if o != nil && o.OwnerId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOwnerId gets a reference to the given NullableString and assigns it to the OwnerId field.
+func (o *AwsSubnetDto) SetOwnerId(v string) {
+	o.OwnerId.Set(&v)
+}
+// SetOwnerIdNil sets the value for OwnerId to be an explicit nil
+func (o *AwsSubnetDto) SetOwnerIdNil() {
+	o.OwnerId.Set(nil)
+}
+
+// UnsetOwnerId ensures that no value is present for OwnerId, not even an explicit nil
+func (o *AwsSubnetDto) UnsetOwnerId() {
+	o.OwnerId.Unset()
+}
+
 func (o AwsSubnetDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -271,6 +423,18 @@ func (o AwsSubnetDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Cidr.IsSet() {
 		toSerialize["cidr"] = o.Cidr.Get()
+	}
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
+	}
+	if !IsNil(o.AvailableIpCount) {
+		toSerialize["availableIpCount"] = o.AvailableIpCount
+	}
+	if !IsNil(o.IsDefault) {
+		toSerialize["isDefault"] = o.IsDefault
+	}
+	if o.OwnerId.IsSet() {
+		toSerialize["ownerId"] = o.OwnerId.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -299,6 +463,10 @@ func (o *AwsSubnetDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "state")
 		delete(additionalProperties, "hasIpv6")
 		delete(additionalProperties, "cidr")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "availableIpCount")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "ownerId")
 		o.AdditionalProperties = additionalProperties
 	}
 

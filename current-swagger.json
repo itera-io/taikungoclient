@@ -68286,6 +68286,21 @@
           "cidr": {
             "type": "string",
             "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "availableIpCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isDefault": {
+            "type": "boolean"
+          },
+          "ownerId": {
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -70674,6 +70689,29 @@
           },
           "subnetType": {
             "$ref": "#/components/schemas/AccessLevel"
+          },
+          "name": {
+            "type": "string"
+          },
+          "zone": {
+            "type": "string"
+          },
+          "cidr": {
+            "type": "string"
+          },
+          "availableIpCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nodeCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isDefault": {
+            "type": "boolean"
+          },
+          "ownerId": {
+            "type": "string"
           }
         }
       },

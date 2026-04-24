@@ -22,6 +22,13 @@ var _ MappedNullable = &CloudSubnetDetailsDto{}
 type CloudSubnetDetailsDto struct {
 	SubnetId *string `json:"subnetId,omitempty"`
 	SubnetType *AccessLevel `json:"subnetType,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Zone *string `json:"zone,omitempty"`
+	Cidr *string `json:"cidr,omitempty"`
+	AvailableIpCount *int32 `json:"availableIpCount,omitempty"`
+	NodeCount *int32 `json:"nodeCount,omitempty"`
+	IsDefault *bool `json:"isDefault,omitempty"`
+	OwnerId *string `json:"ownerId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,6 +115,230 @@ func (o *CloudSubnetDetailsDto) SetSubnetType(v AccessLevel) {
 	o.SubnetType = &v
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *CloudSubnetDetailsDto) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudSubnetDetailsDto) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *CloudSubnetDetailsDto) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *CloudSubnetDetailsDto) SetName(v string) {
+	o.Name = &v
+}
+
+// GetZone returns the Zone field value if set, zero value otherwise.
+func (o *CloudSubnetDetailsDto) GetZone() string {
+	if o == nil || IsNil(o.Zone) {
+		var ret string
+		return ret
+	}
+	return *o.Zone
+}
+
+// GetZoneOk returns a tuple with the Zone field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudSubnetDetailsDto) GetZoneOk() (*string, bool) {
+	if o == nil || IsNil(o.Zone) {
+		return nil, false
+	}
+	return o.Zone, true
+}
+
+// HasZone returns a boolean if a field has been set.
+func (o *CloudSubnetDetailsDto) HasZone() bool {
+	if o != nil && !IsNil(o.Zone) {
+		return true
+	}
+
+	return false
+}
+
+// SetZone gets a reference to the given string and assigns it to the Zone field.
+func (o *CloudSubnetDetailsDto) SetZone(v string) {
+	o.Zone = &v
+}
+
+// GetCidr returns the Cidr field value if set, zero value otherwise.
+func (o *CloudSubnetDetailsDto) GetCidr() string {
+	if o == nil || IsNil(o.Cidr) {
+		var ret string
+		return ret
+	}
+	return *o.Cidr
+}
+
+// GetCidrOk returns a tuple with the Cidr field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudSubnetDetailsDto) GetCidrOk() (*string, bool) {
+	if o == nil || IsNil(o.Cidr) {
+		return nil, false
+	}
+	return o.Cidr, true
+}
+
+// HasCidr returns a boolean if a field has been set.
+func (o *CloudSubnetDetailsDto) HasCidr() bool {
+	if o != nil && !IsNil(o.Cidr) {
+		return true
+	}
+
+	return false
+}
+
+// SetCidr gets a reference to the given string and assigns it to the Cidr field.
+func (o *CloudSubnetDetailsDto) SetCidr(v string) {
+	o.Cidr = &v
+}
+
+// GetAvailableIpCount returns the AvailableIpCount field value if set, zero value otherwise.
+func (o *CloudSubnetDetailsDto) GetAvailableIpCount() int32 {
+	if o == nil || IsNil(o.AvailableIpCount) {
+		var ret int32
+		return ret
+	}
+	return *o.AvailableIpCount
+}
+
+// GetAvailableIpCountOk returns a tuple with the AvailableIpCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudSubnetDetailsDto) GetAvailableIpCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.AvailableIpCount) {
+		return nil, false
+	}
+	return o.AvailableIpCount, true
+}
+
+// HasAvailableIpCount returns a boolean if a field has been set.
+func (o *CloudSubnetDetailsDto) HasAvailableIpCount() bool {
+	if o != nil && !IsNil(o.AvailableIpCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetAvailableIpCount gets a reference to the given int32 and assigns it to the AvailableIpCount field.
+func (o *CloudSubnetDetailsDto) SetAvailableIpCount(v int32) {
+	o.AvailableIpCount = &v
+}
+
+// GetNodeCount returns the NodeCount field value if set, zero value otherwise.
+func (o *CloudSubnetDetailsDto) GetNodeCount() int32 {
+	if o == nil || IsNil(o.NodeCount) {
+		var ret int32
+		return ret
+	}
+	return *o.NodeCount
+}
+
+// GetNodeCountOk returns a tuple with the NodeCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudSubnetDetailsDto) GetNodeCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.NodeCount) {
+		return nil, false
+	}
+	return o.NodeCount, true
+}
+
+// HasNodeCount returns a boolean if a field has been set.
+func (o *CloudSubnetDetailsDto) HasNodeCount() bool {
+	if o != nil && !IsNil(o.NodeCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetNodeCount gets a reference to the given int32 and assigns it to the NodeCount field.
+func (o *CloudSubnetDetailsDto) SetNodeCount(v int32) {
+	o.NodeCount = &v
+}
+
+// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
+func (o *CloudSubnetDetailsDto) GetIsDefault() bool {
+	if o == nil || IsNil(o.IsDefault) {
+		var ret bool
+		return ret
+	}
+	return *o.IsDefault
+}
+
+// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudSubnetDetailsDto) GetIsDefaultOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsDefault) {
+		return nil, false
+	}
+	return o.IsDefault, true
+}
+
+// HasIsDefault returns a boolean if a field has been set.
+func (o *CloudSubnetDetailsDto) HasIsDefault() bool {
+	if o != nil && !IsNil(o.IsDefault) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
+func (o *CloudSubnetDetailsDto) SetIsDefault(v bool) {
+	o.IsDefault = &v
+}
+
+// GetOwnerId returns the OwnerId field value if set, zero value otherwise.
+func (o *CloudSubnetDetailsDto) GetOwnerId() string {
+	if o == nil || IsNil(o.OwnerId) {
+		var ret string
+		return ret
+	}
+	return *o.OwnerId
+}
+
+// GetOwnerIdOk returns a tuple with the OwnerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudSubnetDetailsDto) GetOwnerIdOk() (*string, bool) {
+	if o == nil || IsNil(o.OwnerId) {
+		return nil, false
+	}
+	return o.OwnerId, true
+}
+
+// HasOwnerId returns a boolean if a field has been set.
+func (o *CloudSubnetDetailsDto) HasOwnerId() bool {
+	if o != nil && !IsNil(o.OwnerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetOwnerId gets a reference to the given string and assigns it to the OwnerId field.
+func (o *CloudSubnetDetailsDto) SetOwnerId(v string) {
+	o.OwnerId = &v
+}
+
 func (o CloudSubnetDetailsDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -123,6 +354,27 @@ func (o CloudSubnetDetailsDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SubnetType) {
 		toSerialize["subnetType"] = o.SubnetType
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Zone) {
+		toSerialize["zone"] = o.Zone
+	}
+	if !IsNil(o.Cidr) {
+		toSerialize["cidr"] = o.Cidr
+	}
+	if !IsNil(o.AvailableIpCount) {
+		toSerialize["availableIpCount"] = o.AvailableIpCount
+	}
+	if !IsNil(o.NodeCount) {
+		toSerialize["nodeCount"] = o.NodeCount
+	}
+	if !IsNil(o.IsDefault) {
+		toSerialize["isDefault"] = o.IsDefault
+	}
+	if !IsNil(o.OwnerId) {
+		toSerialize["ownerId"] = o.OwnerId
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -148,6 +400,13 @@ func (o *CloudSubnetDetailsDto) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "subnetId")
 		delete(additionalProperties, "subnetType")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "zone")
+		delete(additionalProperties, "cidr")
+		delete(additionalProperties, "availableIpCount")
+		delete(additionalProperties, "nodeCount")
+		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "ownerId")
 		o.AdditionalProperties = additionalProperties
 	}
 

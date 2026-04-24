@@ -45533,10 +45533,14 @@ components:
     AwsSubnetDto:
       example:
         subnetId: subnetId
+        isDefault: true
         hasIpv6: true
         zone: zone
+        name: name
         cidr: cidr
+        availableIpCount: 0
         state: state
+        ownerId: ownerId
       properties:
         subnetId:
           nullable: true
@@ -45550,6 +45554,17 @@ components:
         hasIpv6:
           type: boolean
         cidr:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        availableIpCount:
+          format: int32
+          type: integer
+        isDefault:
+          type: boolean
+        ownerId:
           nullable: true
           type: string
       type: object
@@ -48646,12 +48661,35 @@ components:
     CloudSubnetDetailsDto:
       example:
         subnetId: subnetId
+        isDefault: true
+        zone: zone
+        name: name
+        cidr: cidr
+        availableIpCount: 0
+        nodeCount: 4
+        ownerId: ownerId
         subnetType: Public
       properties:
         subnetId:
           type: string
         subnetType:
           $ref: "#/components/schemas/AccessLevel"
+        name:
+          type: string
+        zone:
+          type: string
+        cidr:
+          type: string
+        availableIpCount:
+          format: int32
+          type: integer
+        nodeCount:
+          format: int32
+          type: integer
+        isDefault:
+          type: boolean
+        ownerId:
+          type: string
       type: object
     CloudType:
       enum:
@@ -63577,8 +63615,22 @@ components:
         allowSpotVMs: true
         cloudSubnets:
         - subnetId: subnetId
+          isDefault: true
+          zone: zone
+          name: name
+          cidr: cidr
+          availableIpCount: 0
+          nodeCount: 4
+          ownerId: ownerId
           subnetType: Public
         - subnetId: subnetId
+          isDefault: true
+          zone: zone
+          name: name
+          cidr: cidr
+          availableIpCount: 0
+          nodeCount: 4
+          ownerId: ownerId
           subnetType: Public
         vmCpuLimit: 8
         aiCredentialId: 6
@@ -63889,8 +63941,22 @@ components:
         allowSpotVMs: true
         cloudSubnets:
         - subnetId: subnetId
+          isDefault: true
+          zone: zone
+          name: name
+          cidr: cidr
+          availableIpCount: 0
+          nodeCount: 4
+          ownerId: ownerId
           subnetType: Public
         - subnetId: subnetId
+          isDefault: true
+          zone: zone
+          name: name
+          cidr: cidr
+          availableIpCount: 0
+          nodeCount: 4
+          ownerId: ownerId
           subnetType: Public
         allowSpotWorkers: true
         maxSpotPrice: 7.457744773683766
@@ -68978,8 +69044,22 @@ components:
           allowSpotVMs: true
           cloudSubnets:
           - subnetId: subnetId
+            isDefault: true
+            zone: zone
+            name: name
+            cidr: cidr
+            availableIpCount: 0
+            nodeCount: 4
+            ownerId: ownerId
             subnetType: Public
           - subnetId: subnetId
+            isDefault: true
+            zone: zone
+            name: name
+            cidr: cidr
+            availableIpCount: 0
+            nodeCount: 4
+            ownerId: ownerId
             subnetType: Public
           vmCpuLimit: 8
           aiCredentialId: 6
@@ -70067,8 +70147,22 @@ components:
           allowSpotVMs: true
           cloudSubnets:
           - subnetId: subnetId
+            isDefault: true
+            zone: zone
+            name: name
+            cidr: cidr
+            availableIpCount: 0
+            nodeCount: 4
+            ownerId: ownerId
             subnetType: Public
           - subnetId: subnetId
+            isDefault: true
+            zone: zone
+            name: name
+            cidr: cidr
+            availableIpCount: 0
+            nodeCount: 4
+            ownerId: ownerId
             subnetType: Public
           allowSpotWorkers: true
           maxSpotPrice: 7.457744773683766
@@ -72993,8 +73087,22 @@ components:
           allowSpotVMs: true
           cloudSubnets:
           - subnetId: subnetId
+            isDefault: true
+            zone: zone
+            name: name
+            cidr: cidr
+            availableIpCount: 0
+            nodeCount: 4
+            ownerId: ownerId
             subnetType: Public
           - subnetId: subnetId
+            isDefault: true
+            zone: zone
+            name: name
+            cidr: cidr
+            availableIpCount: 0
+            nodeCount: 4
+            ownerId: ownerId
             subnetType: Public
           allowSpotWorkers: true
           maxSpotPrice: 7.457744773683766
