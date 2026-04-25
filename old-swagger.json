@@ -2756,6 +2756,13 @@
             }
           },
           {
+            "name": "FilterRole",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/EFilteredUserRole"
+            }
+          },
+          {
             "name": "Limit",
             "in": "query",
             "schema": {
@@ -2792,14 +2799,6 @@
             "in": "query",
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "FilterRole",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
             }
           },
           {
@@ -68301,6 +68300,10 @@
           "ownerId": {
             "type": "string",
             "nullable": true
+          },
+          "vpcId": {
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -70711,6 +70714,9 @@
             "type": "boolean"
           },
           "ownerId": {
+            "type": "string"
+          },
+          "vpcId": {
             "type": "string"
           }
         }
@@ -74291,6 +74297,17 @@
         ],
         "type": "string"
       },
+      "EFilteredUserRole": {
+        "enum": [
+          "None",
+          "Admin",
+          "AccountAdmin",
+          "AccountOwner",
+          "Member",
+          "Manager"
+        ],
+        "type": "string"
+      },
       "EGlobalRole": {
         "enum": [
           "None",
@@ -74771,6 +74788,7 @@
           "azureQuotas",
           "cloudTypes",
           "cronPeriods",
+          "filteredUserRoles",
           "googleImageTypes",
           "lbProviders",
           "nonGlobalRoles",
@@ -74984,6 +75002,13 @@
             "nullable": true
           },
           "lbProviders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CommonDropdownDto"
+            },
+            "nullable": true
+          },
+          "filteredUserRoles": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/CommonDropdownDto"

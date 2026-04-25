@@ -49,6 +49,7 @@ type EnumList struct {
 	ProjectResourceUnits []CommonDropdownDto `json:"projectResourceUnits"`
 	NonGlobalRoles []CommonDropdownDto `json:"nonGlobalRoles"`
 	LbProviders []CommonDropdownDto `json:"lbProviders"`
+	FilteredUserRoles []CommonDropdownDto `json:"filteredUserRoles"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -58,7 +59,7 @@ type _EnumList EnumList
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnumList(cloudTypes []CommonDropdownDto, projectStatuses []CommonDropdownDto, serverRoles []CommonDropdownDto, serverStatuses []CommonDropdownDto, securityGroupRules []CommonDropdownDto, prometheusTypes []CommonDropdownDto, auditLogs []CommonDropdownDto, rebootOptions []CommonDropdownDto, availability []CommonAvailabilityDto, slackTypes []CommonDropdownDto, requestLogs []CommonDropdownDto, azureQuotas []CommonDropdownDto, showbackKinds []CommonDropdownDto, alertTypes []CommonDropdownDto, reminderTypes []CommonDropdownDto, awsPlatforms []CommonStringBasedDropdownDto, cronPeriods []CommonStringBasedDropdownDto, validityPeriods []CommonDropdownDto, alertingIntegrationTypes []CommonDropdownDto, googleImageTypes []CommonDropdownDto, standaloneVmStatuses []CommonDropdownDto, openstackContinents []CommonStringBasedDropdownDto, retentionPeriods []CommonStringBasedDropdownDto, proxmoxRoles []CommonDropdownDto, projectResourceTypes []CommonDropdownDto, projectResourceUnits []CommonDropdownDto, nonGlobalRoles []CommonDropdownDto, lbProviders []CommonDropdownDto) *EnumList {
+func NewEnumList(cloudTypes []CommonDropdownDto, projectStatuses []CommonDropdownDto, serverRoles []CommonDropdownDto, serverStatuses []CommonDropdownDto, securityGroupRules []CommonDropdownDto, prometheusTypes []CommonDropdownDto, auditLogs []CommonDropdownDto, rebootOptions []CommonDropdownDto, availability []CommonAvailabilityDto, slackTypes []CommonDropdownDto, requestLogs []CommonDropdownDto, azureQuotas []CommonDropdownDto, showbackKinds []CommonDropdownDto, alertTypes []CommonDropdownDto, reminderTypes []CommonDropdownDto, awsPlatforms []CommonStringBasedDropdownDto, cronPeriods []CommonStringBasedDropdownDto, validityPeriods []CommonDropdownDto, alertingIntegrationTypes []CommonDropdownDto, googleImageTypes []CommonDropdownDto, standaloneVmStatuses []CommonDropdownDto, openstackContinents []CommonStringBasedDropdownDto, retentionPeriods []CommonStringBasedDropdownDto, proxmoxRoles []CommonDropdownDto, projectResourceTypes []CommonDropdownDto, projectResourceUnits []CommonDropdownDto, nonGlobalRoles []CommonDropdownDto, lbProviders []CommonDropdownDto, filteredUserRoles []CommonDropdownDto) *EnumList {
 	this := EnumList{}
 	this.CloudTypes = cloudTypes
 	this.ProjectStatuses = projectStatuses
@@ -88,6 +89,7 @@ func NewEnumList(cloudTypes []CommonDropdownDto, projectStatuses []CommonDropdow
 	this.ProjectResourceUnits = projectResourceUnits
 	this.NonGlobalRoles = nonGlobalRoles
 	this.LbProviders = lbProviders
+	this.FilteredUserRoles = filteredUserRoles
 	return &this
 }
 
@@ -827,6 +829,32 @@ func (o *EnumList) SetLbProviders(v []CommonDropdownDto) {
 	o.LbProviders = v
 }
 
+// GetFilteredUserRoles returns the FilteredUserRoles field value
+// If the value is explicit nil, the zero value for []CommonDropdownDto will be returned
+func (o *EnumList) GetFilteredUserRoles() []CommonDropdownDto {
+	if o == nil {
+		var ret []CommonDropdownDto
+		return ret
+	}
+
+	return o.FilteredUserRoles
+}
+
+// GetFilteredUserRolesOk returns a tuple with the FilteredUserRoles field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EnumList) GetFilteredUserRolesOk() ([]CommonDropdownDto, bool) {
+	if o == nil || IsNil(o.FilteredUserRoles) {
+		return nil, false
+	}
+	return o.FilteredUserRoles, true
+}
+
+// SetFilteredUserRoles sets field value
+func (o *EnumList) SetFilteredUserRoles(v []CommonDropdownDto) {
+	o.FilteredUserRoles = v
+}
+
 func (o EnumList) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -921,6 +949,9 @@ func (o EnumList) ToMap() (map[string]interface{}, error) {
 	if o.LbProviders != nil {
 		toSerialize["lbProviders"] = o.LbProviders
 	}
+	if o.FilteredUserRoles != nil {
+		toSerialize["filteredUserRoles"] = o.FilteredUserRoles
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -962,6 +993,7 @@ func (o *EnumList) UnmarshalJSON(data []byte) (err error) {
 		"projectResourceUnits",
 		"nonGlobalRoles",
 		"lbProviders",
+		"filteredUserRoles",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -1019,6 +1051,7 @@ func (o *EnumList) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "projectResourceUnits")
 		delete(additionalProperties, "nonGlobalRoles")
 		delete(additionalProperties, "lbProviders")
+		delete(additionalProperties, "filteredUserRoles")
 		o.AdditionalProperties = additionalProperties
 	}
 

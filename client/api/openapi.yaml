@@ -1777,6 +1777,13 @@ paths:
         style: simple
       - explode: true
         in: query
+        name: FilterRole
+        required: false
+        schema:
+          $ref: "#/components/schemas/EFilteredUserRole"
+        style: form
+      - explode: true
+        in: query
         name: Limit
         required: false
         schema:
@@ -1813,14 +1820,6 @@ paths:
         required: false
         schema:
           type: string
-        style: form
-      - explode: true
-        in: query
-        name: FilterRole
-        required: false
-        schema:
-          format: int32
-          type: integer
         style: form
       - explode: true
         in: query
@@ -45536,6 +45535,7 @@ components:
         isDefault: true
         hasIpv6: true
         zone: zone
+        vpcId: vpcId
         name: name
         cidr: cidr
         availableIpCount: 0
@@ -45565,6 +45565,9 @@ components:
         isDefault:
           type: boolean
         ownerId:
+          nullable: true
+          type: string
+        vpcId:
           nullable: true
           type: string
       type: object
@@ -48663,6 +48666,7 @@ components:
         subnetId: subnetId
         isDefault: true
         zone: zone
+        vpcId: vpcId
         name: name
         cidr: cidr
         availableIpCount: 0
@@ -48689,6 +48693,8 @@ components:
         isDefault:
           type: boolean
         ownerId:
+          type: string
+        vpcId:
           type: string
       type: object
     CloudType:
@@ -52930,6 +52936,15 @@ components:
       - Scale
       - Rollback
       type: string
+    EFilteredUserRole:
+      enum:
+      - None
+      - Admin
+      - AccountAdmin
+      - AccountOwner
+      - Member
+      - Manager
+      type: string
     EGlobalRole:
       enum:
       - None
@@ -53439,6 +53454,11 @@ components:
           id: id
         - name: name
           id: id
+        filteredUserRoles:
+        - name: name
+          id: 5
+        - name: name
+          id: 5
         awsPlatforms:
         - name: name
           id: id
@@ -53675,6 +53695,11 @@ components:
             $ref: "#/components/schemas/CommonDropdownDto"
           nullable: true
           type: array
+        filteredUserRoles:
+          items:
+            $ref: "#/components/schemas/CommonDropdownDto"
+          nullable: true
+          type: array
       required:
       - alertTypes
       - alertingIntegrationTypes
@@ -53684,6 +53709,7 @@ components:
       - azureQuotas
       - cloudTypes
       - cronPeriods
+      - filteredUserRoles
       - googleImageTypes
       - lbProviders
       - nonGlobalRoles
@@ -63617,6 +63643,7 @@ components:
         - subnetId: subnetId
           isDefault: true
           zone: zone
+          vpcId: vpcId
           name: name
           cidr: cidr
           availableIpCount: 0
@@ -63626,6 +63653,7 @@ components:
         - subnetId: subnetId
           isDefault: true
           zone: zone
+          vpcId: vpcId
           name: name
           cidr: cidr
           availableIpCount: 0
@@ -63943,6 +63971,7 @@ components:
         - subnetId: subnetId
           isDefault: true
           zone: zone
+          vpcId: vpcId
           name: name
           cidr: cidr
           availableIpCount: 0
@@ -63952,6 +63981,7 @@ components:
         - subnetId: subnetId
           isDefault: true
           zone: zone
+          vpcId: vpcId
           name: name
           cidr: cidr
           availableIpCount: 0
@@ -69046,6 +69076,7 @@ components:
           - subnetId: subnetId
             isDefault: true
             zone: zone
+            vpcId: vpcId
             name: name
             cidr: cidr
             availableIpCount: 0
@@ -69055,6 +69086,7 @@ components:
           - subnetId: subnetId
             isDefault: true
             zone: zone
+            vpcId: vpcId
             name: name
             cidr: cidr
             availableIpCount: 0
@@ -70149,6 +70181,7 @@ components:
           - subnetId: subnetId
             isDefault: true
             zone: zone
+            vpcId: vpcId
             name: name
             cidr: cidr
             availableIpCount: 0
@@ -70158,6 +70191,7 @@ components:
           - subnetId: subnetId
             isDefault: true
             zone: zone
+            vpcId: vpcId
             name: name
             cidr: cidr
             availableIpCount: 0
@@ -73089,6 +73123,7 @@ components:
           - subnetId: subnetId
             isDefault: true
             zone: zone
+            vpcId: vpcId
             name: name
             cidr: cidr
             availableIpCount: 0
@@ -73098,6 +73133,7 @@ components:
           - subnetId: subnetId
             isDefault: true
             zone: zone
+            vpcId: vpcId
             name: name
             cidr: cidr
             availableIpCount: 0

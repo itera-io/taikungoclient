@@ -29,6 +29,7 @@ type CloudSubnetDetailsDto struct {
 	NodeCount *int32 `json:"nodeCount,omitempty"`
 	IsDefault *bool `json:"isDefault,omitempty"`
 	OwnerId *string `json:"ownerId,omitempty"`
+	VpcId *string `json:"vpcId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -339,6 +340,38 @@ func (o *CloudSubnetDetailsDto) SetOwnerId(v string) {
 	o.OwnerId = &v
 }
 
+// GetVpcId returns the VpcId field value if set, zero value otherwise.
+func (o *CloudSubnetDetailsDto) GetVpcId() string {
+	if o == nil || IsNil(o.VpcId) {
+		var ret string
+		return ret
+	}
+	return *o.VpcId
+}
+
+// GetVpcIdOk returns a tuple with the VpcId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudSubnetDetailsDto) GetVpcIdOk() (*string, bool) {
+	if o == nil || IsNil(o.VpcId) {
+		return nil, false
+	}
+	return o.VpcId, true
+}
+
+// HasVpcId returns a boolean if a field has been set.
+func (o *CloudSubnetDetailsDto) HasVpcId() bool {
+	if o != nil && !IsNil(o.VpcId) {
+		return true
+	}
+
+	return false
+}
+
+// SetVpcId gets a reference to the given string and assigns it to the VpcId field.
+func (o *CloudSubnetDetailsDto) SetVpcId(v string) {
+	o.VpcId = &v
+}
+
 func (o CloudSubnetDetailsDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -376,6 +409,9 @@ func (o CloudSubnetDetailsDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OwnerId) {
 		toSerialize["ownerId"] = o.OwnerId
 	}
+	if !IsNil(o.VpcId) {
+		toSerialize["vpcId"] = o.VpcId
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -407,6 +443,7 @@ func (o *CloudSubnetDetailsDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "nodeCount")
 		delete(additionalProperties, "isDefault")
 		delete(additionalProperties, "ownerId")
+		delete(additionalProperties, "vpcId")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -29,6 +29,7 @@ type AwsSubnetDto struct {
 	AvailableIpCount *int32 `json:"availableIpCount,omitempty"`
 	IsDefault *bool `json:"isDefault,omitempty"`
 	OwnerId NullableString `json:"ownerId,omitempty"`
+	VpcId NullableString `json:"vpcId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -399,6 +400,48 @@ func (o *AwsSubnetDto) UnsetOwnerId() {
 	o.OwnerId.Unset()
 }
 
+// GetVpcId returns the VpcId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AwsSubnetDto) GetVpcId() string {
+	if o == nil || IsNil(o.VpcId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.VpcId.Get()
+}
+
+// GetVpcIdOk returns a tuple with the VpcId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AwsSubnetDto) GetVpcIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.VpcId.Get(), o.VpcId.IsSet()
+}
+
+// HasVpcId returns a boolean if a field has been set.
+func (o *AwsSubnetDto) HasVpcId() bool {
+	if o != nil && o.VpcId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetVpcId gets a reference to the given NullableString and assigns it to the VpcId field.
+func (o *AwsSubnetDto) SetVpcId(v string) {
+	o.VpcId.Set(&v)
+}
+// SetVpcIdNil sets the value for VpcId to be an explicit nil
+func (o *AwsSubnetDto) SetVpcIdNil() {
+	o.VpcId.Set(nil)
+}
+
+// UnsetVpcId ensures that no value is present for VpcId, not even an explicit nil
+func (o *AwsSubnetDto) UnsetVpcId() {
+	o.VpcId.Unset()
+}
+
 func (o AwsSubnetDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -436,6 +479,9 @@ func (o AwsSubnetDto) ToMap() (map[string]interface{}, error) {
 	if o.OwnerId.IsSet() {
 		toSerialize["ownerId"] = o.OwnerId.Get()
 	}
+	if o.VpcId.IsSet() {
+		toSerialize["vpcId"] = o.VpcId.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -467,6 +513,7 @@ func (o *AwsSubnetDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "availableIpCount")
 		delete(additionalProperties, "isDefault")
 		delete(additionalProperties, "ownerId")
+		delete(additionalProperties, "vpcId")
 		o.AdditionalProperties = additionalProperties
 	}
 

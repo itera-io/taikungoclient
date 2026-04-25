@@ -2582,15 +2582,20 @@ type ApiAccountsAccountUserOffsetBasedDropdownRequest struct {
 	ctx context.Context
 	ApiService *AccountsAPIService
 	accountId int32
+	filterRole *EFilteredUserRole
 	limit *int32
 	offset *int32
 	search *string
 	sortBy *string
 	sortDirection *string
-	filterRole *int32
 	filterOrganizationId *int32
 	filterProjectId *int32
 	filterGroupId *int32
+}
+
+func (r ApiAccountsAccountUserOffsetBasedDropdownRequest) FilterRole(filterRole EFilteredUserRole) ApiAccountsAccountUserOffsetBasedDropdownRequest {
+	r.filterRole = &filterRole
+	return r
 }
 
 func (r ApiAccountsAccountUserOffsetBasedDropdownRequest) Limit(limit int32) ApiAccountsAccountUserOffsetBasedDropdownRequest {
@@ -2615,11 +2620,6 @@ func (r ApiAccountsAccountUserOffsetBasedDropdownRequest) SortBy(sortBy string) 
 
 func (r ApiAccountsAccountUserOffsetBasedDropdownRequest) SortDirection(sortDirection string) ApiAccountsAccountUserOffsetBasedDropdownRequest {
 	r.sortDirection = &sortDirection
-	return r
-}
-
-func (r ApiAccountsAccountUserOffsetBasedDropdownRequest) FilterRole(filterRole int32) ApiAccountsAccountUserOffsetBasedDropdownRequest {
-	r.filterRole = &filterRole
 	return r
 }
 
@@ -2679,6 +2679,9 @@ func (a *AccountsAPIService) AccountsAccountUserOffsetBasedDropdownExecute(r Api
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.filterRole != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterRole", r.filterRole, "form", "")
+	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	} else {
@@ -2701,9 +2704,6 @@ func (a *AccountsAPIService) AccountsAccountUserOffsetBasedDropdownExecute(r Api
 	}
 	if r.sortDirection != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
-	if r.filterRole != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterRole", r.filterRole, "form", "")
 	}
 	if r.filterOrganizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterOrganizationId", r.filterOrganizationId, "form", "")

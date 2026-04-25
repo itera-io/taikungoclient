@@ -1076,6 +1076,7 @@ Class | Method | HTTP request | Description
  - [ECronJobAction](docs/ECronJobAction.md)
  - [EDaemonSetAction](docs/EDaemonSetAction.md)
  - [EDeploymentAction](docs/EDeploymentAction.md)
+ - [EFilteredUserRole](docs/EFilteredUserRole.md)
  - [EGlobalRole](docs/EGlobalRole.md)
  - [EImportClusterType](docs/EImportClusterType.md)
  - [EInstanceStatus](docs/EInstanceStatus.md)

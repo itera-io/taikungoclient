@@ -419,6 +419,7 @@ docs/ECloudCredentialType.md
 docs/ECronJobAction.md
 docs/EDaemonSetAction.md
 docs/EDeploymentAction.md
+docs/EFilteredUserRole.md
 docs/EGlobalRole.md
 docs/EImportClusterType.md
 docs/EInstanceStatus.md
@@ -1361,6 +1362,7 @@ model_e_cloud_credential_type.go
 model_e_cron_job_action.go
 model_e_daemon_set_action.go
 model_e_deployment_action.go
+model_e_filtered_user_role.go
 model_e_global_role.go
 model_e_import_cluster_type.go
 model_e_instance_status.go
