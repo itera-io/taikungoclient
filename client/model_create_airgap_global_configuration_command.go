@@ -23,6 +23,8 @@ type CreateAirgapGlobalConfigurationCommand struct {
 	Name NullableString `json:"name,omitempty"`
 	OciRegistryHost NullableString `json:"ociRegistryHost,omitempty"`
 	OciPlainHttp *bool `json:"ociPlainHttp,omitempty"`
+	Username NullableString `json:"username,omitempty"`
+	Password NullableString `json:"password,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -161,6 +163,90 @@ func (o *CreateAirgapGlobalConfigurationCommand) SetOciPlainHttp(v bool) {
 	o.OciPlainHttp = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateAirgapGlobalConfigurationCommand) GetUsername() string {
+	if o == nil || IsNil(o.Username.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Username.Get()
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateAirgapGlobalConfigurationCommand) GetUsernameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Username.Get(), o.Username.IsSet()
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *CreateAirgapGlobalConfigurationCommand) HasUsername() bool {
+	if o != nil && o.Username.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given NullableString and assigns it to the Username field.
+func (o *CreateAirgapGlobalConfigurationCommand) SetUsername(v string) {
+	o.Username.Set(&v)
+}
+// SetUsernameNil sets the value for Username to be an explicit nil
+func (o *CreateAirgapGlobalConfigurationCommand) SetUsernameNil() {
+	o.Username.Set(nil)
+}
+
+// UnsetUsername ensures that no value is present for Username, not even an explicit nil
+func (o *CreateAirgapGlobalConfigurationCommand) UnsetUsername() {
+	o.Username.Unset()
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateAirgapGlobalConfigurationCommand) GetPassword() string {
+	if o == nil || IsNil(o.Password.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Password.Get()
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateAirgapGlobalConfigurationCommand) GetPasswordOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Password.Get(), o.Password.IsSet()
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *CreateAirgapGlobalConfigurationCommand) HasPassword() bool {
+	if o != nil && o.Password.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given NullableString and assigns it to the Password field.
+func (o *CreateAirgapGlobalConfigurationCommand) SetPassword(v string) {
+	o.Password.Set(&v)
+}
+// SetPasswordNil sets the value for Password to be an explicit nil
+func (o *CreateAirgapGlobalConfigurationCommand) SetPasswordNil() {
+	o.Password.Set(nil)
+}
+
+// UnsetPassword ensures that no value is present for Password, not even an explicit nil
+func (o *CreateAirgapGlobalConfigurationCommand) UnsetPassword() {
+	o.Password.Unset()
+}
+
 func (o CreateAirgapGlobalConfigurationCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -179,6 +265,12 @@ func (o CreateAirgapGlobalConfigurationCommand) ToMap() (map[string]interface{},
 	}
 	if !IsNil(o.OciPlainHttp) {
 		toSerialize["ociPlainHttp"] = o.OciPlainHttp
+	}
+	if o.Username.IsSet() {
+		toSerialize["username"] = o.Username.Get()
+	}
+	if o.Password.IsSet() {
+		toSerialize["password"] = o.Password.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -205,6 +297,8 @@ func (o *CreateAirgapGlobalConfigurationCommand) UnmarshalJSON(data []byte) (err
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "ociRegistryHost")
 		delete(additionalProperties, "ociPlainHttp")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
 		o.AdditionalProperties = additionalProperties
 	}
 

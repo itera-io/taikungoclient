@@ -67062,6 +67062,14 @@
           },
           "isActive": {
             "type": "boolean"
+          },
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -71337,6 +71345,14 @@
           },
           "ociPlainHttp": {
             "type": "boolean"
+          },
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -88400,6 +88416,14 @@
           },
           "ociPlainHttp": {
             "type": "boolean"
+          },
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
           }
         }
       },

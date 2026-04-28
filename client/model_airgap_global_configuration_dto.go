@@ -25,6 +25,8 @@ type AirgapGlobalConfigurationDto struct {
 	OciRegistryHost NullableString `json:"ociRegistryHost,omitempty"`
 	OciPlainHttp *bool `json:"ociPlainHttp,omitempty"`
 	IsActive *bool `json:"isActive,omitempty"`
+	Username NullableString `json:"username,omitempty"`
+	Password NullableString `json:"password,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -227,6 +229,90 @@ func (o *AirgapGlobalConfigurationDto) SetIsActive(v bool) {
 	o.IsActive = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AirgapGlobalConfigurationDto) GetUsername() string {
+	if o == nil || IsNil(o.Username.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Username.Get()
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AirgapGlobalConfigurationDto) GetUsernameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Username.Get(), o.Username.IsSet()
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *AirgapGlobalConfigurationDto) HasUsername() bool {
+	if o != nil && o.Username.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given NullableString and assigns it to the Username field.
+func (o *AirgapGlobalConfigurationDto) SetUsername(v string) {
+	o.Username.Set(&v)
+}
+// SetUsernameNil sets the value for Username to be an explicit nil
+func (o *AirgapGlobalConfigurationDto) SetUsernameNil() {
+	o.Username.Set(nil)
+}
+
+// UnsetUsername ensures that no value is present for Username, not even an explicit nil
+func (o *AirgapGlobalConfigurationDto) UnsetUsername() {
+	o.Username.Unset()
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AirgapGlobalConfigurationDto) GetPassword() string {
+	if o == nil || IsNil(o.Password.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Password.Get()
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AirgapGlobalConfigurationDto) GetPasswordOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Password.Get(), o.Password.IsSet()
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *AirgapGlobalConfigurationDto) HasPassword() bool {
+	if o != nil && o.Password.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given NullableString and assigns it to the Password field.
+func (o *AirgapGlobalConfigurationDto) SetPassword(v string) {
+	o.Password.Set(&v)
+}
+// SetPasswordNil sets the value for Password to be an explicit nil
+func (o *AirgapGlobalConfigurationDto) SetPasswordNil() {
+	o.Password.Set(nil)
+}
+
+// UnsetPassword ensures that no value is present for Password, not even an explicit nil
+func (o *AirgapGlobalConfigurationDto) UnsetPassword() {
+	o.Password.Unset()
+}
+
 func (o AirgapGlobalConfigurationDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -251,6 +337,12 @@ func (o AirgapGlobalConfigurationDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsActive) {
 		toSerialize["isActive"] = o.IsActive
+	}
+	if o.Username.IsSet() {
+		toSerialize["username"] = o.Username.Get()
+	}
+	if o.Password.IsSet() {
+		toSerialize["password"] = o.Password.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -279,6 +371,8 @@ func (o *AirgapGlobalConfigurationDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "ociRegistryHost")
 		delete(additionalProperties, "ociPlainHttp")
 		delete(additionalProperties, "isActive")
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
 		o.AdditionalProperties = additionalProperties
 	}
 

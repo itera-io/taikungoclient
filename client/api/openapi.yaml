@@ -43796,11 +43796,13 @@ components:
       type: string
     AirgapGlobalConfigurationDto:
       example:
+        password: password
         name: name
         ociRegistryHost: ociRegistryHost
         id: 0
         isActive: true
         ociPlainHttp: true
+        username: username
       properties:
         id:
           format: int32
@@ -43815,20 +43817,30 @@ components:
           type: boolean
         isActive:
           type: boolean
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
       type: object
     AirgapGlobalConfigurationList:
       example:
         data:
-        - name: name
+        - password: password
+          name: name
           ociRegistryHost: ociRegistryHost
           id: 0
           isActive: true
           ociPlainHttp: true
-        - name: name
+          username: username
+        - password: password
+          name: name
           ociRegistryHost: ociRegistryHost
           id: 0
           isActive: true
           ociPlainHttp: true
+          username: username
         offset: 5
         limit: 6
         hasMore: true
@@ -49311,9 +49323,11 @@ components:
       type: object
     CreateAirgapGlobalConfigurationCommand:
       example:
+        password: password
         name: name
         ociRegistryHost: ociRegistryHost
         ociPlainHttp: true
+        username: username
       properties:
         name:
           nullable: true
@@ -49323,6 +49337,12 @@ components:
           type: string
         ociPlainHttp:
           type: boolean
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
       type: object
     CreateAlertDto:
       example:
@@ -71664,10 +71684,12 @@ components:
       type: object
     UpdateAirgapGlobalConfigurationCommand:
       example:
+        password: password
         name: name
         ociRegistryHost: ociRegistryHost
         id: 0
         ociPlainHttp: true
+        username: username
       properties:
         id:
           format: int32
@@ -71680,6 +71702,12 @@ components:
           type: string
         ociPlainHttp:
           type: boolean
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
       type: object
     UpdateAlertingProfileCommand:
       example:
