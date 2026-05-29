@@ -172,6 +172,9 @@ Class | Method | HTTP request | Description
 *AzureCloudCredentialAPI* | [**AzureSkus**](docs/AzureCloudCredentialAPI.md#azureskus) | **Get** /api/v1/azure/skus/{cloudId}/{publisher}/{offer} | List Azure skus list by publisher and offer
 *AzureCloudCredentialAPI* | [**AzureSubscriptions**](docs/AzureCloudCredentialAPI.md#azuresubscriptions) | **Post** /api/v1/azure/subscriptions | Azure subscriptions list
 *AzureCloudCredentialAPI* | [**AzureUpdate**](docs/AzureCloudCredentialAPI.md#azureupdate) | **Post** /api/v1/azure/update | Update Azure credentials
+*AzureCloudCredentialAPI* | [**AzureVnetList**](docs/AzureCloudCredentialAPI.md#azurevnetlist) | **Post** /api/v1/azure/vnet-list | Retrieve VNets within an Azure resource group
+*AzureCloudCredentialAPI* | [**AzureVnetResourceGroupList**](docs/AzureCloudCredentialAPI.md#azurevnetresourcegrouplist) | **Post** /api/v1/azure/vnet-resource-group-list | Retrieve Azure resource groups that contain VNets
+*AzureCloudCredentialAPI* | [**AzureVnetSubnetList**](docs/AzureCloudCredentialAPI.md#azurevnetsubnetlist) | **Post** /api/v1/azure/vnet-subnet-list | Retrieve subnets within an Azure VNet
 *AzureCloudCredentialAPI* | [**AzureZones**](docs/AzureCloudCredentialAPI.md#azurezones) | **Post** /api/v1/azure/zones | Fetch Azure zone list
 *BackupPolicyAPI* | [**BackupByName**](docs/BackupPolicyAPI.md#backupbyname) | **Get** /api/v1/backup/{projectId}/{name} | Get backup info by name
 *BackupPolicyAPI* | [**BackupCreate**](docs/BackupPolicyAPI.md#backupcreate) | **Post** /api/v1/backup/create | Add backup policy
@@ -278,6 +281,27 @@ Class | Method | HTTP request | Description
 *CronJobServiceAPI* | [**CronjobTektonPipelines**](docs/CronJobServiceAPI.md#cronjobtektonpipelines) | **Post** /api/v1/cronjob/tekton-pipelines | Tekton pipelines
 *CronJobServiceAPI* | [**CronjobUpdateProjectAppStatus**](docs/CronJobServiceAPI.md#cronjobupdateprojectappstatus) | **Post** /api/v1/cronjob/update-project-app-status | Update project app status
 *CronJobServiceAPI* | [**CronjobUpdateProjectQuotaMessage**](docs/CronJobServiceAPI.md#cronjobupdateprojectquotamessage) | **Post** /api/v1/cronjob/update-project-quota-message | Update project quota message
+*CustomCAsAPI* | [**CustomCasCreate**](docs/CustomCAsAPI.md#customcascreate) | **Post** /api/v1/custom-cas | Add custom certificate authority
+*CustomCAsAPI* | [**CustomCasDelete**](docs/CustomCAsAPI.md#customcasdelete) | **Delete** /api/v1/custom-cas/{id} | Delete custom certificate authority
+*CustomCAsAPI* | [**CustomCasDropdown**](docs/CustomCAsAPI.md#customcasdropdown) | **Get** /api/v1/custom-cas | Retrieve custom CAs for organization dropdown
+*CustomCAsAPI* | [**CustomCasList**](docs/CustomCAsAPI.md#customcaslist) | **Get** /api/v1/custom-cas/list | Retrieve all custom certificate authorities
+*CustomCAsAPI* | [**CustomCasLockManagement**](docs/CustomCAsAPI.md#customcaslockmanagement) | **Post** /api/v1/custom-cas/lockmanager | Lock/unlock custom certificate authority
+*CustomCAsAPI* | [**CustomCasMakeDefault**](docs/CustomCAsAPI.md#customcasmakedefault) | **Post** /api/v1/custom-cas/makedefault | Make default custom certificate authority
+*CustomCAsAPI* | [**CustomCasUpdate**](docs/CustomCAsAPI.md#customcasupdate) | **Put** /api/v1/custom-cas | Update custom CA name/description
+*CustomCAsAPI* | [**CustomCasValidate**](docs/CustomCAsAPI.md#customcasvalidate) | **Post** /api/v1/custom-cas/validate | Validate custom CA cert/key pair (PEM x509, key match, CA:TRUE, not expired)
+*DNSCredentialsAPI* | [**DnscredentialsCreate**](docs/DNSCredentialsAPI.md#dnscredentialscreate) | **Post** /api/v1/dnscredentials | Add DNS credential
+*DNSCredentialsAPI* | [**DnscredentialsDelete**](docs/DNSCredentialsAPI.md#dnscredentialsdelete) | **Delete** /api/v1/dnscredentials/{id} | Delete DNS credential
+*DNSCredentialsAPI* | [**DnscredentialsDropdown**](docs/DNSCredentialsAPI.md#dnscredentialsdropdown) | **Get** /api/v1/dnscredentials | Retrieve DNS credentials for organization dropdown
+*DNSCredentialsAPI* | [**DnscredentialsList**](docs/DNSCredentialsAPI.md#dnscredentialslist) | **Get** /api/v1/dnscredentials/list | Retrieve all DNS credentials
+*DNSCredentialsAPI* | [**DnscredentialsLockManagement**](docs/DNSCredentialsAPI.md#dnscredentialslockmanagement) | **Post** /api/v1/dnscredentials/lockmanager | Lock/unlock DNS credential
+*DNSCredentialsAPI* | [**DnscredentialsMakeDefault**](docs/DNSCredentialsAPI.md#dnscredentialsmakedefault) | **Post** /api/v1/dnscredentials/makedefault | Make default DNS credential
+*DNSCredentialsAPI* | [**DnscredentialsUpdate**](docs/DNSCredentialsAPI.md#dnscredentialsupdate) | **Put** /api/v1/dnscredentials | Update DNS credential
+*DNSCredentialsAPI* | [**DnscredentialsValidate**](docs/DNSCredentialsAPI.md#dnscredentialsvalidate) | **Post** /api/v1/dnscredentials/validate | Validate DNS provider credentials
+*DnsCertAPI* | [**DnsCertDisable**](docs/DnsCertAPI.md#dnscertdisable) | **Post** /api/v1/dns-cert/disable | Disable DNS/Cert automation
+*DnsCertAPI* | [**DnsCertEnable**](docs/DnsCertAPI.md#dnscertenable) | **Post** /api/v1/dns-cert/enable | Enable DNS/Cert automation
+*DnsCertAPI* | [**DnsCertStatus**](docs/DnsCertAPI.md#dnscertstatus) | **Get** /api/v1/dns-cert/{projectId} | Get DNS/Cert status for project
+*DnsCertAPI* | [**DnsCertSync**](docs/DnsCertAPI.md#dnscertsync) | **Post** /api/v1/dns-cert/sync | Sync DNS/Cert to cluster
+*DnsCertAPI* | [**DnsCertValidate**](docs/DnsCertAPI.md#dnscertvalidate) | **Post** /api/v1/dns-cert/validate | Validate DNS provider credentials
 *DnsServersAPI* | [**DnsserversCreate**](docs/DnsServersAPI.md#dnsserverscreate) | **Post** /api/v1/dnsservers/create | Create dns servers for access profile
 *DnsServersAPI* | [**DnsserversDelete**](docs/DnsServersAPI.md#dnsserversdelete) | **Delete** /api/v1/dnsservers/{id} | Delete DNS server
 *DnsServersAPI* | [**DnsserversEdit**](docs/DnsServersAPI.md#dnsserversedit) | **Put** /api/v1/dnsservers/edit/{id} | Edit dns server
@@ -304,17 +328,21 @@ Class | Method | HTTP request | Description
 *GenericKubernetesCloudCredentialAPI* | [**GenericKubernetesUpdate**](docs/GenericKubernetesCloudCredentialAPI.md#generickubernetesupdate) | **Put** /api/v1/generic-kubernetes/update | Update Generic kubernetes credentials
 *GlobalConfigurationAPI* | [**GlobalConfigurationsCreateAiBackend**](docs/GlobalConfigurationAPI.md#globalconfigurationscreateaibackend) | **Post** /api/v1/global-configurations/ai-backend/create | Create AI backend
 *GlobalConfigurationAPI* | [**GlobalConfigurationsCreateAirgapConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationscreateairgapconfiguration) | **Post** /api/v1/global-configurations/airgap/create | Create airgap global configuration
+*GlobalConfigurationAPI* | [**GlobalConfigurationsCreateDnsCertConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationscreatednscertconfiguration) | **Post** /api/v1/global-configurations/dns-cert/create | Create DNS/Cert global configuration
 *GlobalConfigurationAPI* | [**GlobalConfigurationsCreateEmailConfig**](docs/GlobalConfigurationAPI.md#globalconfigurationscreateemailconfig) | **Post** /api/v1/global-configurations/email-validator-config/create | Create email config
 *GlobalConfigurationAPI* | [**GlobalConfigurationsCreateSlackConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationscreateslackconfiguration) | **Post** /api/v1/global-configurations/slack/create | Create slack configuration
 *GlobalConfigurationAPI* | [**GlobalConfigurationsDeleteAiBackend**](docs/GlobalConfigurationAPI.md#globalconfigurationsdeleteaibackend) | **Delete** /api/v1/global-configurations/ai-backend/{id} | Remove global ai backend configuration
 *GlobalConfigurationAPI* | [**GlobalConfigurationsDeleteAirgapConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationsdeleteairgapconfiguration) | **Delete** /api/v1/global-configurations/airgap/{id} | Delete airgap global configuration
+*GlobalConfigurationAPI* | [**GlobalConfigurationsDeleteDnsCertConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationsdeletednscertconfiguration) | **Delete** /api/v1/global-configurations/dns-cert/{id} | Delete DNS/Cert global configuration
 *GlobalConfigurationAPI* | [**GlobalConfigurationsDeleteSlackConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationsdeleteslackconfiguration) | **Delete** /api/v1/global-configurations/slack/{id} | Remove global slack configuration
 *GlobalConfigurationAPI* | [**GlobalConfigurationsListAiBackendConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationslistaibackendconfiguration) | **Get** /api/v1/global-configurations/ai-backend/list | Retrieve ai backend configuration list
 *GlobalConfigurationAPI* | [**GlobalConfigurationsListAirgapConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationslistairgapconfiguration) | **Get** /api/v1/global-configurations/airgap/list | List airgap global configurations
+*GlobalConfigurationAPI* | [**GlobalConfigurationsListDnsCertConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationslistdnscertconfiguration) | **Get** /api/v1/global-configurations/dns-cert/list | List DNS/Cert global configurations
 *GlobalConfigurationAPI* | [**GlobalConfigurationsListSlackConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationslistslackconfiguration) | **Get** /api/v1/global-configurations/slack/list | Retrieve slack configuration list
 *GlobalConfigurationAPI* | [**GlobalConfigurationsUpdateAirgapConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationsupdateairgapconfiguration) | **Put** /api/v1/global-configurations/airgap/update | Update airgap global configuration
 *GlobalConfigurationAPI* | [**GlobalConfigurationsUpdateStatusAiBackend**](docs/GlobalConfigurationAPI.md#globalconfigurationsupdatestatusaibackend) | **Post** /api/v1/global-configurations/ai-backend/status | Activate/Deactivate global ai-backend configuration
 *GlobalConfigurationAPI* | [**GlobalConfigurationsUpdateStatusAirgapConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationsupdatestatusairgapconfiguration) | **Post** /api/v1/global-configurations/airgap/status | Activate/Deactivate airgap global configuration
+*GlobalConfigurationAPI* | [**GlobalConfigurationsUpdateStatusDnsCertConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationsupdatestatusdnscertconfiguration) | **Post** /api/v1/global-configurations/dns-cert/status | Activate/Deactivate DNS/Cert global configuration
 *GlobalConfigurationAPI* | [**GlobalConfigurationsUpdateStatusSlackConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationsupdatestatusslackconfiguration) | **Post** /api/v1/global-configurations/slack/status | Activate/Deactivate global slack configuration
 *GoogleAPI* | [**GooglecloudBillingAccountList**](docs/GoogleAPI.md#googlecloudbillingaccountlist) | **Post** /api/v1/googlecloud/billing-accounts | Retrieve google billing accounts list
 *GoogleAPI* | [**GooglecloudCreate**](docs/GoogleAPI.md#googlecloudcreate) | **Post** /api/v1/googlecloud/create | Create google cloud credential
@@ -845,7 +873,12 @@ Class | Method | HTTP request | Description
  - [AzurePublishersList](docs/AzurePublishersList.md)
  - [AzureQuotaListRecordDto](docs/AzureQuotaListRecordDto.md)
  - [AzureSkusList](docs/AzureSkusList.md)
+ - [AzureSubnetDto](docs/AzureSubnetDto.md)
  - [AzureSubscriptionListCommand](docs/AzureSubscriptionListCommand.md)
+ - [AzureVnetDto](docs/AzureVnetDto.md)
+ - [AzureVnetListCommand](docs/AzureVnetListCommand.md)
+ - [AzureVnetResourceGroupListCommand](docs/AzureVnetResourceGroupListCommand.md)
+ - [AzureVnetSubnetListCommand](docs/AzureVnetSubnetListCommand.md)
  - [AzureZonesCommand](docs/AzureZonesCommand.md)
  - [BackupCredentials](docs/BackupCredentials.md)
  - [BackupCredentialsCreateCommand](docs/BackupCredentialsCreateCommand.md)
@@ -960,6 +993,7 @@ Class | Method | HTTP request | Description
  - [CreateBillingSummaryCommand](docs/CreateBillingSummaryCommand.md)
  - [CreateCatalogAppCommand](docs/CreateCatalogAppCommand.md)
  - [CreateCatalogCommand](docs/CreateCatalogCommand.md)
+ - [CreateDnsCertGlobalConfigurationCommand](docs/CreateDnsCertGlobalConfigurationCommand.md)
  - [CreateDnsServerCommand](docs/CreateDnsServerCommand.md)
  - [CreateEmailConfigurationCommand](docs/CreateEmailConfigurationCommand.md)
  - [CreateExecutorCommand](docs/CreateExecutorCommand.md)
@@ -1006,6 +1040,14 @@ Class | Method | HTTP request | Description
  - [CronjobsSearchList](docs/CronjobsSearchList.md)
  - [CskRegisterNodeCommand](docs/CskRegisterNodeCommand.md)
  - [CsvExporter](docs/CsvExporter.md)
+ - [CustomCertificateAuthorityCreateCommand](docs/CustomCertificateAuthorityCreateCommand.md)
+ - [CustomCertificateAuthorityDropdownDto](docs/CustomCertificateAuthorityDropdownDto.md)
+ - [CustomCertificateAuthorityListDto](docs/CustomCertificateAuthorityListDto.md)
+ - [CustomCertificateAuthorityListResponse](docs/CustomCertificateAuthorityListResponse.md)
+ - [CustomCertificateAuthorityLockCommand](docs/CustomCertificateAuthorityLockCommand.md)
+ - [CustomCertificateAuthorityMakeDefaultCommand](docs/CustomCertificateAuthorityMakeDefaultCommand.md)
+ - [CustomCertificateAuthorityUpdateCommand](docs/CustomCertificateAuthorityUpdateCommand.md)
+ - [CustomCertificateAuthorityValidateCommand](docs/CustomCertificateAuthorityValidateCommand.md)
  - [DaemonSetSearchCommand](docs/DaemonSetSearchCommand.md)
  - [DaemonSetSearchList](docs/DaemonSetSearchList.md)
  - [DaemonsetActionCommand](docs/DaemonsetActionCommand.md)
@@ -1057,10 +1099,22 @@ Class | Method | HTTP request | Description
  - [DescribeKubernetesResourceCommand](docs/DescribeKubernetesResourceCommand.md)
  - [Diff](docs/Diff.md)
  - [DisableAutoscalingCommand](docs/DisableAutoscalingCommand.md)
+ - [DisableDnsCertCommand](docs/DisableDnsCertCommand.md)
  - [DisableTwoFaManagementCommand](docs/DisableTwoFaManagementCommand.md)
  - [DisableTwoFactorAuthCommand](docs/DisableTwoFactorAuthCommand.md)
  - [DisableUserCommand](docs/DisableUserCommand.md)
+ - [DnsCertGlobalConfigurationDto](docs/DnsCertGlobalConfigurationDto.md)
+ - [DnsCertGlobalConfigurationList](docs/DnsCertGlobalConfigurationList.md)
+ - [DnsCertGlobalConfigurationStatusCommand](docs/DnsCertGlobalConfigurationStatusCommand.md)
+ - [DnsCertSyncCommand](docs/DnsCertSyncCommand.md)
  - [DnsCommand](docs/DnsCommand.md)
+ - [DnsCredentialCreateCommand](docs/DnsCredentialCreateCommand.md)
+ - [DnsCredentialDropdownDto](docs/DnsCredentialDropdownDto.md)
+ - [DnsCredentialListDto](docs/DnsCredentialListDto.md)
+ - [DnsCredentialListResponse](docs/DnsCredentialListResponse.md)
+ - [DnsCredentialLockCommand](docs/DnsCredentialLockCommand.md)
+ - [DnsCredentialMakeDefaultCommand](docs/DnsCredentialMakeDefaultCommand.md)
+ - [DnsCredentialUpdateCommand](docs/DnsCredentialUpdateCommand.md)
  - [DnsNtpAddressEditDto](docs/DnsNtpAddressEditDto.md)
  - [DnsServerCreateDto](docs/DnsServerCreateDto.md)
  - [DnsServerListDto](docs/DnsServerListDto.md)
@@ -1103,6 +1157,7 @@ Class | Method | HTTP request | Description
  - [EfsFileSystemDto](docs/EfsFileSystemDto.md)
  - [EmailMode](docs/EmailMode.md)
  - [EnableAutoscalingCommand](docs/EnableAutoscalingCommand.md)
+ - [EnableDnsCertCommand](docs/EnableDnsCertCommand.md)
  - [EnsureCodesDownloadedCommand](docs/EnsureCodesDownloadedCommand.md)
  - [EnumList](docs/EnumList.md)
  - [EphemeralStorageLimitsDto](docs/EphemeralStorageLimitsDto.md)
@@ -1118,6 +1173,8 @@ Class | Method | HTTP request | Description
  - [FilteringElementDto](docs/FilteringElementDto.md)
  - [FinalPriceCommand](docs/FinalPriceCommand.md)
  - [FinalPriceDto](docs/FinalPriceDto.md)
+ - [FlavorGpuDetailsDto](docs/FlavorGpuDetailsDto.md)
+ - [FlavorGpuDeviceDetailDto](docs/FlavorGpuDeviceDetailDto.md)
  - [FlavorsListDto](docs/FlavorsListDto.md)
  - [ForceToResetPasswordCommand](docs/ForceToResetPasswordCommand.md)
  - [ForgotPasswordCommand](docs/ForgotPasswordCommand.md)
@@ -1126,6 +1183,7 @@ Class | Method | HTTP request | Description
  - [GenericKubernetesListDto](docs/GenericKubernetesListDto.md)
  - [GetCatalogAppValueAutocompleteCommand](docs/GetCatalogAppValueAutocompleteCommand.md)
  - [GetCatalogAppValueCommand](docs/GetCatalogAppValueCommand.md)
+ - [GetDnsCertStatusResponse](docs/GetDnsCertStatusResponse.md)
  - [GetEksClusterAuthCommand](docs/GetEksClusterAuthCommand.md)
  - [GetToken](docs/GetToken.md)
  - [GkeClusterDto](docs/GkeClusterDto.md)
@@ -1613,6 +1671,7 @@ Class | Method | HTTP request | Description
  - [VClusterListDto](docs/VClusterListDto.md)
  - [VClusterResourceLimitsListDto](docs/VClusterResourceLimitsListDto.md)
  - [VClusterWorkloadResourcesListDto](docs/VClusterWorkloadResourcesListDto.md)
+ - [ValidateDnsCertCommand](docs/ValidateDnsCertCommand.md)
  - [ValidateVsphereCommand](docs/ValidateVsphereCommand.md)
  - [VerifyEmailCommand](docs/VerifyEmailCommand.md)
  - [VerifySlackCredentialsCommand](docs/VerifySlackCredentialsCommand.md)
@@ -1628,6 +1687,7 @@ Class | Method | HTTP request | Description
  - [VirtualClusterQuotasDto](docs/VirtualClusterQuotasDto.md)
  - [VmConsoleScreenshotCommand](docs/VmConsoleScreenshotCommand.md)
  - [VmTemplateListCommand](docs/VmTemplateListCommand.md)
+ - [VnetMode](docs/VnetMode.md)
  - [VpcMode](docs/VpcMode.md)
  - [VsphereFlavorData](docs/VsphereFlavorData.md)
  - [VsphereFlavorList](docs/VsphereFlavorList.md)

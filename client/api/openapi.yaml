@@ -6172,6 +6172,174 @@ paths:
       summary: Update Azure credentials
       tags:
       - Azure cloud credential
+  /api/v1/azure/vnet-list:
+    post:
+      operationId: azure-vnet-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AzureVnetListCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/AzureVnetDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve VNets within an Azure resource group
+      tags:
+      - Azure cloud credential
+  /api/v1/azure/vnet-resource-group-list:
+    post:
+      operationId: azure-vnet-resource-group-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AzureVnetResourceGroupListCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve Azure resource groups that contain VNets
+      tags:
+      - Azure cloud credential
+  /api/v1/azure/vnet-subnet-list:
+    post:
+      operationId: azure-vnet-subnet-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AzureVnetSubnetListCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/AzureSubnetDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve subnets within an Azure VNet
+      tags:
+      - Azure cloud credential
   /api/v1/azure/zones:
     post:
       operationId: azure-zones
@@ -10859,6 +11027,21 @@ paths:
         schema:
           type: boolean
         style: form
+      - explode: true
+        in: query
+        name: GpuCount
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: GpuModel
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -12749,6 +12932,1013 @@ paths:
       summary: Update project app status
       tags:
       - Cron Job Service
+  /api/v1/custom-cas:
+    get:
+      operationId: custom-cas-dropdown
+      parameters:
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/CustomCertificateAuthorityDropdownDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve custom CAs for organization dropdown
+      tags:
+      - Custom CAs
+    post:
+      operationId: custom-cas-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CustomCertificateAuthorityCreateCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Add custom certificate authority
+      tags:
+      - Custom CAs
+    put:
+      operationId: custom-cas-update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CustomCertificateAuthorityUpdateCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Update custom CA name/description
+      tags:
+      - Custom CAs
+  /api/v1/custom-cas/lockmanager:
+    post:
+      operationId: custom-cas-lock-management
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CustomCertificateAuthorityLockCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Lock/unlock custom certificate authority
+      tags:
+      - Custom CAs
+  /api/v1/custom-cas/makedefault:
+    post:
+      operationId: custom-cas-make-default
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CustomCertificateAuthorityMakeDefaultCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Make default custom certificate authority
+      tags:
+      - Custom CAs
+  /api/v1/custom-cas/validate:
+    post:
+      operationId: custom-cas-validate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CustomCertificateAuthorityValidateCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: "Validate custom CA cert/key pair (PEM x509, key match, CA:TRUE, not\
+        \ expired)"
+      tags:
+      - Custom CAs
+  /api/v1/custom-cas/list:
+    get:
+      operationId: custom-cas-list
+      parameters:
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: AccountId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchId
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CustomCertificateAuthorityListResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve all custom certificate authorities
+      tags:
+      - Custom CAs
+  /api/v1/custom-cas/{id}:
+    delete:
+      operationId: custom-cas-delete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Delete custom certificate authority
+      tags:
+      - Custom CAs
+  /api/v1/dnscredentials:
+    get:
+      operationId: dnscredentials-dropdown
+      parameters:
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/DnsCredentialDropdownDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve DNS credentials for organization dropdown
+      tags:
+      - DNS Credentials
+    post:
+      operationId: dnscredentials-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DnsCredentialCreateCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Add DNS credential
+      tags:
+      - DNS Credentials
+    put:
+      operationId: dnscredentials-update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DnsCredentialUpdateCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Update DNS credential
+      tags:
+      - DNS Credentials
+  /api/v1/dnscredentials/lockmanager:
+    post:
+      operationId: dnscredentials-lock-management
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DnsCredentialLockCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Lock/unlock DNS credential
+      tags:
+      - DNS Credentials
+  /api/v1/dnscredentials/makedefault:
+    post:
+      operationId: dnscredentials-make-default
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DnsCredentialMakeDefaultCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Make default DNS credential
+      tags:
+      - DNS Credentials
+  /api/v1/dnscredentials/validate:
+    post:
+      operationId: dnscredentials-validate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ValidateDnsCertCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Validate DNS provider credentials
+      tags:
+      - DNS Credentials
+  /api/v1/dnscredentials/list:
+    get:
+      operationId: dnscredentials-list
+      parameters:
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: AccountId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchId
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DnsCredentialListResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve all DNS credentials
+      tags:
+      - DNS Credentials
+  /api/v1/dnscredentials/{id}:
+    delete:
+      operationId: dnscredentials-delete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Delete DNS credential
+      tags:
+      - DNS Credentials
   /api/v1/dnsservers/edit/{id}:
     put:
       operationId: dnsservers-edit
@@ -12991,6 +14181,272 @@ paths:
       summary: Delete DNS server
       tags:
       - Dns Servers
+  /api/v1/dns-cert/disable:
+    post:
+      operationId: dns-cert-disable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DisableDnsCertCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Disable DNS/Cert automation
+      tags:
+      - DnsCert
+  /api/v1/dns-cert/enable:
+    post:
+      operationId: dns-cert-enable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EnableDnsCertCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Enable DNS/Cert automation
+      tags:
+      - DnsCert
+  /api/v1/dns-cert/sync:
+    post:
+      operationId: dns-cert-sync
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DnsCertSyncCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Sync DNS/Cert to cluster
+      tags:
+      - DnsCert
+  /api/v1/dns-cert/validate:
+    post:
+      operationId: dns-cert-validate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ValidateDnsCertCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Validate DNS provider credentials
+      tags:
+      - DnsCert
+  /api/v1/dns-cert/{projectId}:
+    get:
+      operationId: dns-cert-status
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetDnsCertStatusResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Get DNS/Cert status for project
+      tags:
+      - DnsCert
   /api/v1/documentation:
     get:
       operationId: documentation-list
@@ -13588,6 +15044,21 @@ paths:
         schema:
           type: boolean
         style: form
+      - explode: true
+        in: query
+        name: GpuCount
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: GpuModel
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -13729,6 +15200,21 @@ paths:
         required: false
         schema:
           type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: GpuCount
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: GpuModel
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -14083,6 +15569,21 @@ paths:
         required: false
         schema:
           type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: GpuCount
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: GpuModel
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -15269,6 +16770,241 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
       summary: Create email config
+      tags:
+      - Global Configuration
+  /api/v1/global-configurations/dns-cert/create:
+    post:
+      operationId: global-configurations-create-dns-cert-configuration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateDnsCertGlobalConfigurationCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Create DNS/Cert global configuration
+      tags:
+      - Global Configuration
+  /api/v1/global-configurations/dns-cert/{id}:
+    delete:
+      operationId: global-configurations-delete-dns-cert-configuration
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Delete DNS/Cert global configuration
+      tags:
+      - Global Configuration
+  /api/v1/global-configurations/dns-cert/status:
+    post:
+      operationId: global-configurations-update-status-dns-cert-configuration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DnsCertGlobalConfigurationStatusCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Activate/Deactivate DNS/Cert global configuration
+      tags:
+      - Global Configuration
+  /api/v1/global-configurations/dns-cert/list:
+    get:
+      operationId: global-configurations-list-dns-cert-configuration
+      parameters:
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 100
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DnsCertGlobalConfigurationList"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: List DNS/Cert global configurations
       tags:
       - Global Configuration
   /api/v1/global-configurations/airgap/update:
@@ -44538,15 +46274,37 @@ components:
           name: name
           cpu: 6
           description: ""
+          gpuDetails:
+            devices:
+            - acceleratorType: acceleratorType
+              deviceCount: 5
+              vendor: vendor
+              memoryMiBPerUnit: 2
+            - acceleratorType: acceleratorType
+              deviceCount: 5
+              vendor: vendor
+              memoryMiBPerUnit: 2
+            gpuDeviceTotal: 5
           ram: 0.8008281904610115
         - maxDataDiskCount: 1.4658129805029452
           hasGpuSupport: true
           name: name
           cpu: 6
           description: ""
+          gpuDetails:
+            devices:
+            - acceleratorType: acceleratorType
+              deviceCount: 5
+              vendor: vendor
+              memoryMiBPerUnit: 2
+            - acceleratorType: acceleratorType
+              deviceCount: 5
+              vendor: vendor
+              memoryMiBPerUnit: 2
+            gpuDeviceTotal: 5
           ram: 0.8008281904610115
         cloudType: cloudType
-        totalCount: 5
+        totalCount: 7
       properties:
         data:
           items:
@@ -45409,6 +47167,17 @@ components:
           zones:
           - zones
           - zones
+          gpuDetails:
+            devices:
+            - acceleratorType: acceleratorType
+              deviceCount: 5
+              vendor: vendor
+              memoryMiBPerUnit: 2
+            - acceleratorType: acceleratorType
+              deviceCount: 5
+              vendor: vendor
+              memoryMiBPerUnit: 2
+            gpuDeviceTotal: 5
           ram: 0.8008281904610115
           linuxSpotPrice: linuxSpotPrice
         - windowsSpotPrice: windowsSpotPrice
@@ -45421,6 +47190,17 @@ components:
           zones:
           - zones
           - zones
+          gpuDetails:
+            devices:
+            - acceleratorType: acceleratorType
+              deviceCount: 5
+              vendor: vendor
+              memoryMiBPerUnit: 2
+            - acceleratorType: acceleratorType
+              deviceCount: 5
+              vendor: vendor
+              memoryMiBPerUnit: 2
+            gpuDeviceTotal: 5
           ram: 0.8008281904610115
           linuxSpotPrice: linuxSpotPrice
         totalCount: 1
@@ -45449,6 +47229,17 @@ components:
         zones:
         - zones
         - zones
+        gpuDetails:
+          devices:
+          - acceleratorType: acceleratorType
+            deviceCount: 5
+            vendor: vendor
+            memoryMiBPerUnit: 2
+          - acceleratorType: acceleratorType
+            deviceCount: 5
+            vendor: vendor
+            memoryMiBPerUnit: 2
+          gpuDeviceTotal: 5
         ram: 0.8008281904610115
         linuxSpotPrice: linuxSpotPrice
       properties:
@@ -45482,6 +47273,8 @@ components:
           type: array
         hasGpuSupport:
           type: boolean
+        gpuDetails:
+          $ref: "#/components/schemas/FlavorGpuDetailsDto"
       type: object
     AwsImagesPostListCommand:
       example:
@@ -45640,6 +47433,7 @@ components:
       type: object
     AwsVpcListCommand:
       example:
+        ipMode: Ipv4
         awsRegion: awsRegion
         awsAccessKeyId: awsAccessKeyId
         awsSecretAccessKey: awsSecretAccessKey
@@ -45653,6 +47447,8 @@ components:
         awsRegion:
           nullable: true
           type: string
+        ipMode:
+          $ref: "#/components/schemas/IpMode"
       type: object
     AzResult:
       example:
@@ -45692,7 +47488,9 @@ components:
     AzureCredentialList:
       example:
         data:
-        - projectCount: 6
+        - existingVirtualNetworkResourceGroupName: existingVirtualNetworkResourceGroupName
+          existingVirtualNetworkName: existingVirtualNetworkName
+          projectCount: 6
           projects:
           - name: name
             id: 5
@@ -45703,9 +47501,11 @@ components:
           availabilityZones:
           - availabilityZones
           - availabilityZones
+          vnetDeploymentMode: vnetDeploymentMode
           organizationId: 5
           createdAt: createdAt
           isDefault: true
+          existingSubnetName: existingSubnetName
           createdBy: createdBy
           isLocked: true
           name: name
@@ -45715,7 +47515,9 @@ components:
           id: 0
           lastModified: lastModified
           continentName: continentName
-        - projectCount: 6
+        - existingVirtualNetworkResourceGroupName: existingVirtualNetworkResourceGroupName
+          existingVirtualNetworkName: existingVirtualNetworkName
+          projectCount: 6
           projects:
           - name: name
             id: 5
@@ -45726,9 +47528,11 @@ components:
           availabilityZones:
           - availabilityZones
           - availabilityZones
+          vnetDeploymentMode: vnetDeploymentMode
           organizationId: 5
           createdAt: createdAt
           isDefault: true
+          existingSubnetName: existingSubnetName
           createdBy: createdBy
           isLocked: true
           name: name
@@ -45773,6 +47577,8 @@ components:
       type: object
     AzureCredentialsListDto:
       example:
+        existingVirtualNetworkResourceGroupName: existingVirtualNetworkResourceGroupName
+        existingVirtualNetworkName: existingVirtualNetworkName
         projectCount: 6
         projects:
         - name: name
@@ -45784,9 +47590,11 @@ components:
         availabilityZones:
         - availabilityZones
         - availabilityZones
+        vnetDeploymentMode: vnetDeploymentMode
         organizationId: 5
         createdAt: createdAt
         isDefault: true
+        existingSubnetName: existingSubnetName
         createdBy: createdBy
         isLocked: true
         name: name
@@ -45844,12 +47652,26 @@ components:
         continentName:
           nullable: true
           type: string
+        vnetDeploymentMode:
+          type: string
+        existingVirtualNetworkResourceGroupName:
+          nullable: true
+          type: string
+        existingVirtualNetworkName:
+          nullable: true
+          type: string
+        existingSubnetName:
+          nullable: true
+          type: string
       required:
       - availabilityZones
       - availabilityZonesCount
       - continentName
       - createdAt
       - createdBy
+      - existingSubnetName
+      - existingVirtualNetworkName
+      - existingVirtualNetworkResourceGroupName
       - id
       - isDefault
       - isLocked
@@ -45862,6 +47684,7 @@ components:
       - projectCount
       - projects
       - tenantId
+      - vnetDeploymentMode
       type: object
     AzureDashboardCommand:
       example:
@@ -45886,6 +47709,17 @@ components:
           description: ""
           windowsPrice: windowsPrice
           linuxPrice: linuxPrice
+          gpuDetails:
+            devices:
+            - acceleratorType: acceleratorType
+              deviceCount: 5
+              vendor: vendor
+              memoryMiBPerUnit: 2
+            - acceleratorType: acceleratorType
+              deviceCount: 5
+              vendor: vendor
+              memoryMiBPerUnit: 2
+            gpuDeviceTotal: 5
           linuxSpotPrice: linuxSpotPrice
           ram: 6.027456183070403
         - maxDataDiskCount: 1.4658129805029452
@@ -45896,6 +47730,17 @@ components:
           description: ""
           windowsPrice: windowsPrice
           linuxPrice: linuxPrice
+          gpuDetails:
+            devices:
+            - acceleratorType: acceleratorType
+              deviceCount: 5
+              vendor: vendor
+              memoryMiBPerUnit: 2
+            - acceleratorType: acceleratorType
+              deviceCount: 5
+              vendor: vendor
+              memoryMiBPerUnit: 2
+            gpuDeviceTotal: 5
           linuxSpotPrice: linuxSpotPrice
           ram: 6.027456183070403
         totalCount: 5
@@ -45922,6 +47767,17 @@ components:
         description: ""
         windowsPrice: windowsPrice
         linuxPrice: linuxPrice
+        gpuDetails:
+          devices:
+          - acceleratorType: acceleratorType
+            deviceCount: 5
+            vendor: vendor
+            memoryMiBPerUnit: 2
+          - acceleratorType: acceleratorType
+            deviceCount: 5
+            vendor: vendor
+            memoryMiBPerUnit: 2
+          gpuDeviceTotal: 5
         linuxSpotPrice: linuxSpotPrice
         ram: 6.027456183070403
       properties:
@@ -45954,6 +47810,8 @@ components:
           type: number
         hasGpuSupport:
           type: boolean
+        gpuDetails:
+          $ref: "#/components/schemas/FlavorGpuDetailsDto"
       type: object
     AzureLocationsCommand:
       example:
@@ -46048,21 +47906,132 @@ components:
       - data
       - totalCount
       type: object
+    AzureSubnetDto:
+      example:
+        addressPrefix: addressPrefix
+        name: name
+      properties:
+        name:
+          nullable: true
+          type: string
+        addressPrefix:
+          nullable: true
+          type: string
+      type: object
     AzureSubscriptionListCommand:
       example:
-        clientId: clientId
-        tenantId: tenantId
-        clientSecret: clientSecret
+        azureClientSecret: azureClientSecret
+        azureClientId: azureClientId
+        azureTenantId: azureTenantId
       properties:
-        clientId:
+        azureClientId:
           nullable: true
           type: string
-        clientSecret:
+        azureClientSecret:
           nullable: true
           type: string
-        tenantId:
+        azureTenantId:
           nullable: true
           type: string
+      type: object
+    AzureVnetDto:
+      example:
+        addressSpace: addressSpace
+        name: name
+      properties:
+        name:
+          nullable: true
+          type: string
+        addressSpace:
+          nullable: true
+          type: string
+      type: object
+    AzureVnetListCommand:
+      example:
+        azureClientSecret: azureClientSecret
+        azureClientId: azureClientId
+        resourceGroupName: resourceGroupName
+        cloudId: 0
+        azureTenantId: azureTenantId
+        azureSubscriptionId: azureSubscriptionId
+      properties:
+        azureClientId:
+          nullable: true
+          type: string
+        azureClientSecret:
+          nullable: true
+          type: string
+        azureTenantId:
+          nullable: true
+          type: string
+        azureSubscriptionId:
+          nullable: true
+          type: string
+        resourceGroupName:
+          nullable: true
+          type: string
+        cloudId:
+          format: int32
+          nullable: true
+          type: integer
+      type: object
+    AzureVnetResourceGroupListCommand:
+      example:
+        azureClientSecret: azureClientSecret
+        azureClientId: azureClientId
+        cloudId: 0
+        azureTenantId: azureTenantId
+        azureSubscriptionId: azureSubscriptionId
+      properties:
+        azureClientId:
+          nullable: true
+          type: string
+        azureClientSecret:
+          nullable: true
+          type: string
+        azureTenantId:
+          nullable: true
+          type: string
+        azureSubscriptionId:
+          nullable: true
+          type: string
+        cloudId:
+          format: int32
+          nullable: true
+          type: integer
+      type: object
+    AzureVnetSubnetListCommand:
+      example:
+        azureClientSecret: azureClientSecret
+        azureClientId: azureClientId
+        resourceGroupName: resourceGroupName
+        cloudId: 0
+        azureTenantId: azureTenantId
+        vnetName: vnetName
+        azureSubscriptionId: azureSubscriptionId
+      properties:
+        azureClientId:
+          nullable: true
+          type: string
+        azureClientSecret:
+          nullable: true
+          type: string
+        azureTenantId:
+          nullable: true
+          type: string
+        azureSubscriptionId:
+          nullable: true
+          type: string
+        resourceGroupName:
+          nullable: true
+          type: string
+        vnetName:
+          nullable: true
+          type: string
+        cloudId:
+          format: int32
+          nullable: true
+          type: integer
       type: object
     AzureZonesCommand:
       example:
@@ -49557,8 +51526,12 @@ components:
     CreateAzureCloudCommand:
       example:
         organizationId: 6
+        existingVirtualNetworkResourceGroupName: existingVirtualNetworkResourceGroupName
         azureClientSecret: azureClientSecret
+        existingVirtualNetworkName: existingVirtualNetworkName
         azureClientId: azureClientId
+        vnetMode: Create
+        existingSubnetName: existingSubnetName
         azureLocation: azureLocation
         azCount: 0
         name: name
@@ -49590,6 +51563,17 @@ components:
           format: int32
           nullable: true
           type: integer
+        vnetMode:
+          $ref: "#/components/schemas/VnetMode"
+        existingVirtualNetworkResourceGroupName:
+          nullable: true
+          type: string
+        existingVirtualNetworkName:
+          nullable: true
+          type: string
+        existingSubnetName:
+          nullable: true
+          type: string
       type: object
     CreateBackupPolicyCommand:
       example:
@@ -49687,6 +51671,50 @@ components:
           format: int32
           nullable: true
           type: integer
+      type: object
+    CreateDnsCertGlobalConfigurationCommand:
+      example:
+        defaultCertIssuer: defaultCertIssuer
+        supportedProviders: supportedProviders
+        certManagerRepoUrl: certManagerRepoUrl
+        defaultAcmeServer: defaultAcmeServer
+        externalDnsRepoUrl: externalDnsRepoUrl
+        name: name
+        certManagerVersion: certManagerVersion
+        externalDnsVersion: externalDnsVersion
+        certManagerChartName: certManagerChartName
+        externalDnsChartName: externalDnsChartName
+      properties:
+        name:
+          nullable: true
+          type: string
+        externalDnsChartName:
+          nullable: true
+          type: string
+        externalDnsRepoUrl:
+          nullable: true
+          type: string
+        externalDnsVersion:
+          nullable: true
+          type: string
+        certManagerChartName:
+          nullable: true
+          type: string
+        certManagerRepoUrl:
+          nullable: true
+          type: string
+        certManagerVersion:
+          nullable: true
+          type: string
+        defaultCertIssuer:
+          nullable: true
+          type: string
+        defaultAcmeServer:
+          nullable: true
+          type: string
+        supportedProviders:
+          nullable: true
+          type: string
       type: object
     CreateDnsServerCommand:
       example:
@@ -51249,6 +53277,220 @@ components:
       - contentType
       - fileName
       type: object
+    CustomCertificateAuthorityCreateCommand:
+      example:
+        organizationId: 0
+        caKey: caKey
+        caCert: caCert
+        name: name
+        description: description
+      properties:
+        name:
+          nullable: true
+          type: string
+        organizationId:
+          format: int32
+          nullable: true
+          type: integer
+        description:
+          nullable: true
+          type: string
+        caCert:
+          nullable: true
+          type: string
+        caKey:
+          nullable: true
+          type: string
+      type: object
+    CustomCertificateAuthorityDropdownDto:
+      example:
+        isDefault: true
+        name: name
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        isDefault:
+          type: boolean
+      required:
+      - id
+      - isDefault
+      - name
+      type: object
+    CustomCertificateAuthorityListDto:
+      example:
+        organizationId: 6
+        isDefault: true
+        organizationName: organizationName
+        isInfra: true
+        createdBy: createdBy
+        isLocked: true
+        lastModifiedBy: lastModifiedBy
+        name: name
+        inUseCount: 1
+        description: description
+        id: 0
+        lastModified: lastModified
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          type: string
+        description:
+          nullable: true
+          type: string
+        organizationId:
+          format: int32
+          nullable: true
+          type: integer
+        organizationName:
+          nullable: true
+          type: string
+        isLocked:
+          type: boolean
+        isDefault:
+          type: boolean
+        isInfra:
+          type: boolean
+        createdBy:
+          nullable: true
+          type: string
+        lastModified:
+          nullable: true
+          type: string
+        lastModifiedBy:
+          nullable: true
+          type: string
+        inUseCount:
+          format: int32
+          type: integer
+      required:
+      - createdBy
+      - description
+      - id
+      - inUseCount
+      - isDefault
+      - isInfra
+      - isLocked
+      - lastModified
+      - lastModifiedBy
+      - name
+      - organizationId
+      - organizationName
+      type: object
+    CustomCertificateAuthorityListResponse:
+      example:
+        data:
+        - organizationId: 6
+          isDefault: true
+          organizationName: organizationName
+          isInfra: true
+          createdBy: createdBy
+          isLocked: true
+          lastModifiedBy: lastModifiedBy
+          name: name
+          inUseCount: 1
+          description: description
+          id: 0
+          lastModified: lastModified
+        - organizationId: 6
+          isDefault: true
+          organizationName: organizationName
+          isInfra: true
+          createdBy: createdBy
+          isLocked: true
+          lastModifiedBy: lastModifiedBy
+          name: name
+          inUseCount: 1
+          description: description
+          id: 0
+          lastModified: lastModified
+        offset: 2
+        limit: 5
+        hasMore: true
+        totalCount: 5
+        nextOffset: 7
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/CustomCertificateAuthorityListDto"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - data
+      - hasMore
+      - limit
+      - offset
+      - totalCount
+      type: object
+    CustomCertificateAuthorityLockCommand:
+      example:
+        mode: mode
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+        mode:
+          nullable: true
+          type: string
+      type: object
+    CustomCertificateAuthorityMakeDefaultCommand:
+      example:
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+      type: object
+    CustomCertificateAuthorityUpdateCommand:
+      example:
+        name: name
+        description: description
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        description:
+          nullable: true
+          type: string
+      type: object
+    CustomCertificateAuthorityValidateCommand:
+      example:
+        caKey: caKey
+        caCert: caCert
+      properties:
+        caCert:
+          nullable: true
+          type: string
+        caKey:
+          nullable: true
+          type: string
+      type: object
     DaemonSetSearchCommand:
       example:
         searchTerm: searchTerm
@@ -52717,6 +54959,14 @@ components:
           format: int32
           type: integer
       type: object
+    DisableDnsCertCommand:
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
     DisableTwoFaManagementCommand:
       example:
         verificationCode: verificationCode
@@ -52747,6 +54997,137 @@ components:
         disable:
           type: boolean
       type: object
+    DnsCertGlobalConfigurationDto:
+      example:
+        defaultCertIssuer: defaultCertIssuer
+        supportedProviders: supportedProviders
+        certManagerRepoUrl: certManagerRepoUrl
+        defaultAcmeServer: defaultAcmeServer
+        externalDnsRepoUrl: externalDnsRepoUrl
+        name: name
+        certManagerVersion: certManagerVersion
+        id: 0
+        externalDnsVersion: externalDnsVersion
+        certManagerChartName: certManagerChartName
+        isActive: true
+        externalDnsChartName: externalDnsChartName
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        isActive:
+          type: boolean
+        externalDnsChartName:
+          nullable: true
+          type: string
+        externalDnsRepoUrl:
+          nullable: true
+          type: string
+        externalDnsVersion:
+          nullable: true
+          type: string
+        certManagerChartName:
+          nullable: true
+          type: string
+        certManagerRepoUrl:
+          nullable: true
+          type: string
+        certManagerVersion:
+          nullable: true
+          type: string
+        defaultCertIssuer:
+          nullable: true
+          type: string
+        defaultAcmeServer:
+          nullable: true
+          type: string
+        supportedProviders:
+          nullable: true
+          type: string
+      type: object
+    DnsCertGlobalConfigurationList:
+      example:
+        data:
+        - defaultCertIssuer: defaultCertIssuer
+          supportedProviders: supportedProviders
+          certManagerRepoUrl: certManagerRepoUrl
+          defaultAcmeServer: defaultAcmeServer
+          externalDnsRepoUrl: externalDnsRepoUrl
+          name: name
+          certManagerVersion: certManagerVersion
+          id: 0
+          externalDnsVersion: externalDnsVersion
+          certManagerChartName: certManagerChartName
+          isActive: true
+          externalDnsChartName: externalDnsChartName
+        - defaultCertIssuer: defaultCertIssuer
+          supportedProviders: supportedProviders
+          certManagerRepoUrl: certManagerRepoUrl
+          defaultAcmeServer: defaultAcmeServer
+          externalDnsRepoUrl: externalDnsRepoUrl
+          name: name
+          certManagerVersion: certManagerVersion
+          id: 0
+          externalDnsVersion: externalDnsVersion
+          certManagerChartName: certManagerChartName
+          isActive: true
+          externalDnsChartName: externalDnsChartName
+        offset: 5
+        limit: 6
+        hasMore: true
+        totalCount: 1
+        nextOffset: 5
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/DnsCertGlobalConfigurationDto"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - data
+      - hasMore
+      - limit
+      - offset
+      - totalCount
+      type: object
+    DnsCertGlobalConfigurationStatusCommand:
+      example:
+        mode: mode
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+        mode:
+          nullable: true
+          type: string
+      type: object
+    DnsCertSyncCommand:
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
     DnsCommand:
       example:
         address: address
@@ -52754,6 +55135,279 @@ components:
         address:
           nullable: true
           type: string
+      type: object
+    DnsCredentialCreateCommand:
+      example:
+        accessKeyId: accessKeyId
+        useLetsEncrypt: true
+        tsigKeyName: tsigKeyName
+        domainFilter: domainFilter
+        providerType: providerType
+        tsigSecret: tsigSecret
+        organizationId: 0
+        secretAccessKey: secretAccessKey
+        hostedZoneId: hostedZoneId
+        apiToken: apiToken
+        nameServer: nameServer
+        name: name
+        tsigAlgorithm: tsigAlgorithm
+        region: region
+      properties:
+        name:
+          nullable: true
+          type: string
+        providerType:
+          nullable: true
+          type: string
+        organizationId:
+          format: int32
+          nullable: true
+          type: integer
+        domainFilter:
+          nullable: true
+          type: string
+        useLetsEncrypt:
+          type: boolean
+        apiToken:
+          nullable: true
+          type: string
+        accessKeyId:
+          nullable: true
+          type: string
+        secretAccessKey:
+          nullable: true
+          type: string
+        region:
+          nullable: true
+          type: string
+        hostedZoneId:
+          nullable: true
+          type: string
+        tsigKeyName:
+          nullable: true
+          type: string
+        tsigSecret:
+          nullable: true
+          type: string
+        tsigAlgorithm:
+          nullable: true
+          type: string
+        nameServer:
+          nullable: true
+          type: string
+      type: object
+    DnsCredentialDropdownDto:
+      example:
+        isDefault: true
+        name: name
+        id: 0
+        domainFilter: domainFilter
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        domainFilter:
+          nullable: true
+          type: string
+        isDefault:
+          type: boolean
+      required:
+      - domainFilter
+      - id
+      - isDefault
+      - name
+      type: object
+    DnsCredentialListDto:
+      example:
+        projects:
+        - name: name
+          id: 5
+        - name: name
+          id: 5
+        organizationName: organizationName
+        useLetsEncrypt: true
+        isInfra: true
+        lastModifiedBy: lastModifiedBy
+        domainFilter: domainFilter
+        providerType: providerType
+        organizationId: 6
+        isDefault: true
+        createdBy: createdBy
+        isLocked: true
+        name: name
+        id: 0
+        lastModified: lastModified
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          type: string
+        providerType:
+          type: string
+        organizationId:
+          format: int32
+          nullable: true
+          type: integer
+        organizationName:
+          nullable: true
+          type: string
+        domainFilter:
+          type: string
+        useLetsEncrypt:
+          type: boolean
+        isLocked:
+          type: boolean
+        isDefault:
+          type: boolean
+        isInfra:
+          type: boolean
+        createdBy:
+          nullable: true
+          type: string
+        lastModified:
+          nullable: true
+          type: string
+        lastModifiedBy:
+          nullable: true
+          type: string
+        projects:
+          items:
+            $ref: "#/components/schemas/CommonDropdownDto"
+          type: array
+      required:
+      - createdBy
+      - domainFilter
+      - id
+      - isDefault
+      - isInfra
+      - isLocked
+      - lastModified
+      - lastModifiedBy
+      - name
+      - organizationId
+      - organizationName
+      - projects
+      - providerType
+      - useLetsEncrypt
+      type: object
+    DnsCredentialListResponse:
+      example:
+        data:
+        - projects:
+          - name: name
+            id: 5
+          - name: name
+            id: 5
+          organizationName: organizationName
+          useLetsEncrypt: true
+          isInfra: true
+          lastModifiedBy: lastModifiedBy
+          domainFilter: domainFilter
+          providerType: providerType
+          organizationId: 6
+          isDefault: true
+          createdBy: createdBy
+          isLocked: true
+          name: name
+          id: 0
+          lastModified: lastModified
+        - projects:
+          - name: name
+            id: 5
+          - name: name
+            id: 5
+          organizationName: organizationName
+          useLetsEncrypt: true
+          isInfra: true
+          lastModifiedBy: lastModifiedBy
+          domainFilter: domainFilter
+          providerType: providerType
+          organizationId: 6
+          isDefault: true
+          createdBy: createdBy
+          isLocked: true
+          name: name
+          id: 0
+          lastModified: lastModified
+        offset: 5
+        limit: 1
+        hasMore: true
+        totalCount: 5
+        nextOffset: 2
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/DnsCredentialListDto"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - data
+      - hasMore
+      - limit
+      - offset
+      - totalCount
+      type: object
+    DnsCredentialLockCommand:
+      example:
+        mode: mode
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+        mode:
+          nullable: true
+          type: string
+      type: object
+    DnsCredentialMakeDefaultCommand:
+      example:
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+      type: object
+    DnsCredentialUpdateCommand:
+      example:
+        useLetsEncrypt: true
+        name: name
+        id: 0
+        domainFilter: domainFilter
+        providerType: providerType
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        providerType:
+          nullable: true
+          type: string
+        domainFilter:
+          nullable: true
+          type: string
+        useLetsEncrypt:
+          type: boolean
       type: object
     DnsNtpAddressEditDto:
       example:
@@ -53414,6 +56068,35 @@ components:
           type: string
         spotEnabled:
           type: boolean
+      type: object
+    EnableDnsCertCommand:
+      example:
+        acmeEmail: acmeEmail
+        customCertificateAuthorityId: 1
+        domain: domain
+        projectId: 0
+        certIssuerType: certIssuerType
+        dnsCredentialId: 6
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        dnsCredentialId:
+          format: int32
+          type: integer
+        certIssuerType:
+          nullable: true
+          type: string
+        acmeEmail:
+          nullable: true
+          type: string
+        domain:
+          nullable: true
+          type: string
+        customCertificateAuthorityId:
+          format: int32
+          nullable: true
+          type: integer
       type: object
     EnableTwoFaManagementCommand:
       type: object
@@ -55025,6 +57708,53 @@ components:
           format: double
           type: number
       type: object
+    FlavorGpuDetailsDto:
+      example:
+        devices:
+        - acceleratorType: acceleratorType
+          deviceCount: 5
+          vendor: vendor
+          memoryMiBPerUnit: 2
+        - acceleratorType: acceleratorType
+          deviceCount: 5
+          vendor: vendor
+          memoryMiBPerUnit: 2
+        gpuDeviceTotal: 5
+      properties:
+        gpuDeviceTotal:
+          format: int32
+          type: integer
+        devices:
+          items:
+            $ref: "#/components/schemas/FlavorGpuDeviceDetailDto"
+          type: array
+      required:
+      - devices
+      - gpuDeviceTotal
+      type: object
+    FlavorGpuDeviceDetailDto:
+      example:
+        acceleratorType: acceleratorType
+        deviceCount: 5
+        vendor: vendor
+        memoryMiBPerUnit: 2
+      properties:
+        acceleratorType:
+          type: string
+        vendor:
+          nullable: true
+          type: string
+        deviceCount:
+          format: int32
+          type: integer
+        memoryMiBPerUnit:
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - acceleratorType
+      - deviceCount
+      type: object
     FlavorsListDto:
       example:
         maxDataDiskCount: 1.4658129805029452
@@ -55032,6 +57762,17 @@ components:
         name: name
         cpu: 6
         description: ""
+        gpuDetails:
+          devices:
+          - acceleratorType: acceleratorType
+            deviceCount: 5
+            vendor: vendor
+            memoryMiBPerUnit: 2
+          - acceleratorType: acceleratorType
+            deviceCount: 5
+            vendor: vendor
+            memoryMiBPerUnit: 2
+          gpuDeviceTotal: 5
         ram: 0.8008281904610115
       properties:
         ram:
@@ -55050,6 +57791,8 @@ components:
           type: number
         hasGpuSupport:
           type: boolean
+        gpuDetails:
+          $ref: "#/components/schemas/FlavorGpuDetailsDto"
       required:
       - cpu
       - description
@@ -55280,6 +58023,42 @@ components:
         version:
           nullable: true
           type: string
+      type: object
+    GetDnsCertStatusResponse:
+      example:
+        acmeEmail: acmeEmail
+        externalDnsSynced: true
+        certManagerSynced: true
+        issuerName: issuerName
+        domain: domain
+        dnsProvider: dnsProvider
+        certIssuerType: certIssuerType
+        enabled: true
+        clusterIssuerSynced: true
+      properties:
+        enabled:
+          type: boolean
+        dnsProvider:
+          nullable: true
+          type: string
+        certIssuerType:
+          nullable: true
+          type: string
+        domain:
+          nullable: true
+          type: string
+        acmeEmail:
+          nullable: true
+          type: string
+        issuerName:
+          nullable: true
+          type: string
+        externalDnsSynced:
+          type: boolean
+        certManagerSynced:
+          type: boolean
+        clusterIssuerSynced:
+          type: boolean
       type: object
     GetEksClusterAuthCommand:
       example:
@@ -55718,6 +58497,17 @@ components:
         description: ""
         windowsPrice: 5.962133916683182
         linuxPrice: 1.4658129805029452
+        gpuDetails:
+          devices:
+          - acceleratorType: acceleratorType
+            deviceCount: 5
+            vendor: vendor
+            memoryMiBPerUnit: 2
+          - acceleratorType: acceleratorType
+            deviceCount: 5
+            vendor: vendor
+            memoryMiBPerUnit: 2
+          gpuDeviceTotal: 5
         ram: 6.027456183070403
         linuxSpotPrice: 5.637376656633329
       properties:
@@ -55751,6 +58541,8 @@ components:
           type: boolean
         description:
           nullable: true
+        gpuDetails:
+          $ref: "#/components/schemas/FlavorGpuDetailsDto"
       required:
       - cpu
       - description
@@ -55771,6 +58563,17 @@ components:
           description: ""
           windowsPrice: 5.962133916683182
           linuxPrice: 1.4658129805029452
+          gpuDetails:
+            devices:
+            - acceleratorType: acceleratorType
+              deviceCount: 5
+              vendor: vendor
+              memoryMiBPerUnit: 2
+            - acceleratorType: acceleratorType
+              deviceCount: 5
+              vendor: vendor
+              memoryMiBPerUnit: 2
+            gpuDeviceTotal: 5
           ram: 6.027456183070403
           linuxSpotPrice: 5.637376656633329
         - windowsSpotPrice: 2.3021358869347655
@@ -55780,6 +58583,17 @@ components:
           description: ""
           windowsPrice: 5.962133916683182
           linuxPrice: 1.4658129805029452
+          gpuDetails:
+            devices:
+            - acceleratorType: acceleratorType
+              deviceCount: 5
+              vendor: vendor
+              memoryMiBPerUnit: 2
+            - acceleratorType: acceleratorType
+              deviceCount: 5
+              vendor: vendor
+              memoryMiBPerUnit: 2
+            gpuDeviceTotal: 5
           ram: 6.027456183070403
           linuxSpotPrice: 5.637376656633329
         totalCount: 7
@@ -73446,6 +76260,66 @@ components:
       - maxPvcs
       - maxTotalPvcSize
       type: object
+    ValidateDnsCertCommand:
+      example:
+        accessKeyId: accessKeyId
+        caKey: caKey
+        caCert: caCert
+        tsigKeyName: tsigKeyName
+        tsigSecret: tsigSecret
+        secretAccessKey: secretAccessKey
+        hostedZoneId: hostedZoneId
+        apiToken: apiToken
+        domain: domain
+        nameServer: nameServer
+        zoneId: zoneId
+        dnsProvider: dnsProvider
+        region: region
+        certIssuerType: certIssuerType
+      properties:
+        dnsProvider:
+          nullable: true
+          type: string
+        certIssuerType:
+          nullable: true
+          type: string
+        domain:
+          nullable: true
+          type: string
+        apiToken:
+          nullable: true
+          type: string
+        zoneId:
+          nullable: true
+          type: string
+        accessKeyId:
+          nullable: true
+          type: string
+        secretAccessKey:
+          nullable: true
+          type: string
+        region:
+          nullable: true
+          type: string
+        hostedZoneId:
+          nullable: true
+          type: string
+        tsigKeyName:
+          nullable: true
+          type: string
+        tsigSecret:
+          nullable: true
+          type: string
+        nameServer:
+          nullable: true
+          type: string
+        caCert:
+          nullable: true
+          type: string
+        caKey:
+          nullable: true
+          type: string
+      type: object
     ValidateVsphereCommand:
       example:
         password: password
@@ -73658,6 +76532,11 @@ components:
           nullable: true
           type: string
       type: object
+    VnetMode:
+      enum:
+      - Create
+      - Existing
+      type: string
     Void:
       type: object
     VpcMode:

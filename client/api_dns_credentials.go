@@ -21,148 +21,667 @@ import (
 )
 
 
-// CloudCredentialAPIService CloudCredentialAPI service
-type CloudCredentialAPIService service
+// DNSCredentialsAPIService DNSCredentialsAPI service
+type DNSCredentialsAPIService service
 
-type ApiCloudcredentialsAllFlavorsRequest struct {
+type ApiDnscredentialsCreateRequest struct {
 	ctx context.Context
-	ApiService *CloudCredentialAPIService
-	cloudId int32
-	limit *int32
-	offset *int32
-	startRam *float64
-	endRam *float64
-	startCpu *int32
-	endCpu *int32
-	search *string
-	sortBy *string
-	sortDirection *string
-	hasGpuSupport *bool
-	gpuCount *int32
-	gpuModel *string
+	ApiService *DNSCredentialsAPIService
+	dnsCredentialCreateCommand *DnsCredentialCreateCommand
 }
 
-func (r ApiCloudcredentialsAllFlavorsRequest) Limit(limit int32) ApiCloudcredentialsAllFlavorsRequest {
-	r.limit = &limit
+func (r ApiDnscredentialsCreateRequest) DnsCredentialCreateCommand(dnsCredentialCreateCommand DnsCredentialCreateCommand) ApiDnscredentialsCreateRequest {
+	r.dnsCredentialCreateCommand = &dnsCredentialCreateCommand
 	return r
 }
 
-func (r ApiCloudcredentialsAllFlavorsRequest) Offset(offset int32) ApiCloudcredentialsAllFlavorsRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiCloudcredentialsAllFlavorsRequest) StartRam(startRam float64) ApiCloudcredentialsAllFlavorsRequest {
-	r.startRam = &startRam
-	return r
-}
-
-func (r ApiCloudcredentialsAllFlavorsRequest) EndRam(endRam float64) ApiCloudcredentialsAllFlavorsRequest {
-	r.endRam = &endRam
-	return r
-}
-
-func (r ApiCloudcredentialsAllFlavorsRequest) StartCpu(startCpu int32) ApiCloudcredentialsAllFlavorsRequest {
-	r.startCpu = &startCpu
-	return r
-}
-
-func (r ApiCloudcredentialsAllFlavorsRequest) EndCpu(endCpu int32) ApiCloudcredentialsAllFlavorsRequest {
-	r.endCpu = &endCpu
-	return r
-}
-
-func (r ApiCloudcredentialsAllFlavorsRequest) Search(search string) ApiCloudcredentialsAllFlavorsRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiCloudcredentialsAllFlavorsRequest) SortBy(sortBy string) ApiCloudcredentialsAllFlavorsRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiCloudcredentialsAllFlavorsRequest) SortDirection(sortDirection string) ApiCloudcredentialsAllFlavorsRequest {
-	r.sortDirection = &sortDirection
-	return r
-}
-
-func (r ApiCloudcredentialsAllFlavorsRequest) HasGpuSupport(hasGpuSupport bool) ApiCloudcredentialsAllFlavorsRequest {
-	r.hasGpuSupport = &hasGpuSupport
-	return r
-}
-
-func (r ApiCloudcredentialsAllFlavorsRequest) GpuCount(gpuCount int32) ApiCloudcredentialsAllFlavorsRequest {
-	r.gpuCount = &gpuCount
-	return r
-}
-
-func (r ApiCloudcredentialsAllFlavorsRequest) GpuModel(gpuModel string) ApiCloudcredentialsAllFlavorsRequest {
-	r.gpuModel = &gpuModel
-	return r
-}
-
-func (r ApiCloudcredentialsAllFlavorsRequest) Execute() (*AllFlavorsList, *http.Response, error) {
-	return r.ApiService.CloudcredentialsAllFlavorsExecute(r)
+func (r ApiDnscredentialsCreateRequest) Execute() (*ApiResponse, *http.Response, error) {
+	return r.ApiService.DnscredentialsCreateExecute(r)
 }
 
 /*
-CloudcredentialsAllFlavors Retrieve all flavors
+DnscredentialsCreate Add DNS credential
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiCloudcredentialsAllFlavorsRequest
+ @return ApiDnscredentialsCreateRequest
 */
-func (a *CloudCredentialAPIService) CloudcredentialsAllFlavors(ctx context.Context, cloudId int32) ApiCloudcredentialsAllFlavorsRequest {
-	return ApiCloudcredentialsAllFlavorsRequest{
+func (a *DNSCredentialsAPIService) DnscredentialsCreate(ctx context.Context) ApiDnscredentialsCreateRequest {
+	return ApiDnscredentialsCreateRequest{
 		ApiService: a,
 		ctx: ctx,
-		cloudId: cloudId,
 	}
 }
 
 // Execute executes the request
-//  @return AllFlavorsList
-func (a *CloudCredentialAPIService) CloudcredentialsAllFlavorsExecute(r ApiCloudcredentialsAllFlavorsRequest) (*AllFlavorsList, *http.Response, error) {
+//  @return ApiResponse
+func (a *DNSCredentialsAPIService) DnscredentialsCreateExecute(r ApiDnscredentialsCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *AllFlavorsList
+		localVarReturnValue  *ApiResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudCredentialAPIService.CloudcredentialsAllFlavors")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSCredentialsAPIService.DnscredentialsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/cloudcredentials/flavors/{cloudId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cloudId"+"}", url.PathEscape(parameterValueToString(r.cloudId, "cloudId")), -1)
+	localVarPath := localBasePath + "/api/v1/dnscredentials"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
 	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.startRam != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "form", "")
+	// body params
+	localVarPostBody = r.dnsCredentialCreateCommand
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
 	}
-	if r.endRam != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "EndRam", r.endRam, "form", "")
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
 	}
-	if r.startCpu != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "StartCpu", r.startCpu, "form", "")
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
-	if r.endCpu != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "form", "")
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiDnscredentialsDeleteRequest struct {
+	ctx context.Context
+	ApiService *DNSCredentialsAPIService
+	id int32
+}
+
+func (r ApiDnscredentialsDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DnscredentialsDeleteExecute(r)
+}
+
+/*
+DnscredentialsDelete Delete DNS credential
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiDnscredentialsDeleteRequest
+*/
+func (a *DNSCredentialsAPIService) DnscredentialsDelete(ctx context.Context, id int32) ApiDnscredentialsDeleteRequest {
+	return ApiDnscredentialsDeleteRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *DNSCredentialsAPIService) DnscredentialsDeleteExecute(r ApiDnscredentialsDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSCredentialsAPIService.DnscredentialsDelete")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/dnscredentials/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiDnscredentialsDropdownRequest struct {
+	ctx context.Context
+	ApiService *DNSCredentialsAPIService
+	organizationId *int32
+	search *string
+}
+
+func (r ApiDnscredentialsDropdownRequest) OrganizationId(organizationId int32) ApiDnscredentialsDropdownRequest {
+	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiDnscredentialsDropdownRequest) Search(search string) ApiDnscredentialsDropdownRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiDnscredentialsDropdownRequest) Execute() ([]DnsCredentialDropdownDto, *http.Response, error) {
+	return r.ApiService.DnscredentialsDropdownExecute(r)
+}
+
+/*
+DnscredentialsDropdown Retrieve DNS credentials for organization dropdown
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiDnscredentialsDropdownRequest
+*/
+func (a *DNSCredentialsAPIService) DnscredentialsDropdown(ctx context.Context) ApiDnscredentialsDropdownRequest {
+	return ApiDnscredentialsDropdownRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return []DnsCredentialDropdownDto
+func (a *DNSCredentialsAPIService) DnscredentialsDropdownExecute(r ApiDnscredentialsDropdownRequest) ([]DnsCredentialDropdownDto, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []DnsCredentialDropdownDto
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSCredentialsAPIService.DnscredentialsDropdown")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/dnscredentials"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.organizationId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiDnscredentialsListRequest struct {
+	ctx context.Context
+	ApiService *DNSCredentialsAPIService
+	organizationId *int32
+	accountId *int32
+	search *string
+	searchId *string
+	id *int32
+	sortBy *string
+	sortDirection *string
+	limit *int32
+	offset *int32
+}
+
+func (r ApiDnscredentialsListRequest) OrganizationId(organizationId int32) ApiDnscredentialsListRequest {
+	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiDnscredentialsListRequest) AccountId(accountId int32) ApiDnscredentialsListRequest {
+	r.accountId = &accountId
+	return r
+}
+
+func (r ApiDnscredentialsListRequest) Search(search string) ApiDnscredentialsListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiDnscredentialsListRequest) SearchId(searchId string) ApiDnscredentialsListRequest {
+	r.searchId = &searchId
+	return r
+}
+
+func (r ApiDnscredentialsListRequest) Id(id int32) ApiDnscredentialsListRequest {
+	r.id = &id
+	return r
+}
+
+func (r ApiDnscredentialsListRequest) SortBy(sortBy string) ApiDnscredentialsListRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiDnscredentialsListRequest) SortDirection(sortDirection string) ApiDnscredentialsListRequest {
+	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiDnscredentialsListRequest) Limit(limit int32) ApiDnscredentialsListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiDnscredentialsListRequest) Offset(offset int32) ApiDnscredentialsListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiDnscredentialsListRequest) Execute() (*DnsCredentialListResponse, *http.Response, error) {
+	return r.ApiService.DnscredentialsListExecute(r)
+}
+
+/*
+DnscredentialsList Retrieve all DNS credentials
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiDnscredentialsListRequest
+*/
+func (a *DNSCredentialsAPIService) DnscredentialsList(ctx context.Context) ApiDnscredentialsListRequest {
+	return ApiDnscredentialsListRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return DnsCredentialListResponse
+func (a *DNSCredentialsAPIService) DnscredentialsListExecute(r ApiDnscredentialsListRequest) (*DnsCredentialListResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *DnsCredentialListResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSCredentialsAPIService.DnscredentialsList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/dnscredentials/list"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.organizationId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
+	}
+	if r.accountId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
+	if r.id != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
@@ -170,368 +689,19 @@ func (a *CloudCredentialAPIService) CloudcredentialsAllFlavorsExecute(r ApiCloud
 	if r.sortDirection != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	}
-	if r.hasGpuSupport != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "HasGpuSupport", r.hasGpuSupport, "form", "")
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
+	} else {
+		var defaultValue int32 = 50
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", defaultValue, "form", "")
+		r.limit = &defaultValue
 	}
-	if r.gpuCount != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "GpuCount", r.gpuCount, "form", "")
-	}
-	if r.gpuModel != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "GpuModel", r.gpuModel, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["Bearer"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiCloudcredentialsDeleteRequest struct {
-	ctx context.Context
-	ApiService *CloudCredentialAPIService
-	cloudId int32
-}
-
-func (r ApiCloudcredentialsDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.CloudcredentialsDeleteExecute(r)
-}
-
-/*
-CloudcredentialsDelete Remove cloud credential by cloud Id
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param cloudId
- @return ApiCloudcredentialsDeleteRequest
-*/
-func (a *CloudCredentialAPIService) CloudcredentialsDelete(ctx context.Context, cloudId int32) ApiCloudcredentialsDeleteRequest {
-	return ApiCloudcredentialsDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
-		cloudId: cloudId,
-	}
-}
-
-// Execute executes the request
-func (a *CloudCredentialAPIService) CloudcredentialsDeleteExecute(r ApiCloudcredentialsDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudCredentialAPIService.CloudcredentialsDelete")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/v1/cloudcredentials/{cloudId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cloudId"+"}", url.PathEscape(parameterValueToString(r.cloudId, "cloudId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["Bearer"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiCloudcredentialsExceededRequest struct {
-	ctx context.Context
-	ApiService *CloudCredentialAPIService
-	organizationId *int32
-}
-
-func (r ApiCloudcredentialsExceededRequest) OrganizationId(organizationId int32) ApiCloudcredentialsExceededRequest {
-	r.organizationId = &organizationId
-	return r
-}
-
-func (r ApiCloudcredentialsExceededRequest) Execute() (*ExceededQuotaList, *http.Response, error) {
-	return r.ApiService.CloudcredentialsExceededExecute(r)
-}
-
-/*
-CloudcredentialsExceeded Retrieve cloud credentials exceeded quotas
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCloudcredentialsExceededRequest
-*/
-func (a *CloudCredentialAPIService) CloudcredentialsExceeded(ctx context.Context) ApiCloudcredentialsExceededRequest {
-	return ApiCloudcredentialsExceededRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return ExceededQuotaList
-func (a *CloudCredentialAPIService) CloudcredentialsExceededExecute(r ApiCloudcredentialsExceededRequest) (*ExceededQuotaList, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ExceededQuotaList
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudCredentialAPIService.CloudcredentialsExceeded")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/v1/cloudcredentials/exceeded-quotas"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	} else {
+		var defaultValue int32 = 0
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", defaultValue, "form", "")
+		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -666,48 +836,48 @@ func (a *CloudCredentialAPIService) CloudcredentialsExceededExecute(r ApiCloudcr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCloudcredentialsLockManagerRequest struct {
+type ApiDnscredentialsLockManagementRequest struct {
 	ctx context.Context
-	ApiService *CloudCredentialAPIService
-	cloudLockManagerCommand *CloudLockManagerCommand
+	ApiService *DNSCredentialsAPIService
+	dnsCredentialLockCommand *DnsCredentialLockCommand
 }
 
-func (r ApiCloudcredentialsLockManagerRequest) CloudLockManagerCommand(cloudLockManagerCommand CloudLockManagerCommand) ApiCloudcredentialsLockManagerRequest {
-	r.cloudLockManagerCommand = &cloudLockManagerCommand
+func (r ApiDnscredentialsLockManagementRequest) DnsCredentialLockCommand(dnsCredentialLockCommand DnsCredentialLockCommand) ApiDnscredentialsLockManagementRequest {
+	r.dnsCredentialLockCommand = &dnsCredentialLockCommand
 	return r
 }
 
-func (r ApiCloudcredentialsLockManagerRequest) Execute() (*http.Response, error) {
-	return r.ApiService.CloudcredentialsLockManagerExecute(r)
+func (r ApiDnscredentialsLockManagementRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DnscredentialsLockManagementExecute(r)
 }
 
 /*
-CloudcredentialsLockManager Lock/Unlock cloud credential
+DnscredentialsLockManagement Lock/unlock DNS credential
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCloudcredentialsLockManagerRequest
+ @return ApiDnscredentialsLockManagementRequest
 */
-func (a *CloudCredentialAPIService) CloudcredentialsLockManager(ctx context.Context) ApiCloudcredentialsLockManagerRequest {
-	return ApiCloudcredentialsLockManagerRequest{
+func (a *DNSCredentialsAPIService) DnscredentialsLockManagement(ctx context.Context) ApiDnscredentialsLockManagementRequest {
+	return ApiDnscredentialsLockManagementRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *CloudCredentialAPIService) CloudcredentialsLockManagerExecute(r ApiCloudcredentialsLockManagerRequest) (*http.Response, error) {
+func (a *DNSCredentialsAPIService) DnscredentialsLockManagementExecute(r ApiDnscredentialsLockManagementRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudCredentialAPIService.CloudcredentialsLockManager")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSCredentialsAPIService.DnscredentialsLockManagement")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/cloudcredentials/lockmanager"
+	localVarPath := localBasePath + "/api/v1/dnscredentials/lockmanager"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -731,7 +901,7 @@ func (a *CloudCredentialAPIService) CloudcredentialsLockManagerExecute(r ApiClou
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.cloudLockManagerCommand
+	localVarPostBody = r.dnsCredentialLockCommand
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -839,48 +1009,48 @@ func (a *CloudCredentialAPIService) CloudcredentialsLockManagerExecute(r ApiClou
 	return localVarHTTPResponse, nil
 }
 
-type ApiCloudcredentialsMakeDefaultRequest struct {
+type ApiDnscredentialsMakeDefaultRequest struct {
 	ctx context.Context
-	ApiService *CloudCredentialAPIService
-	credentialMakeDefaultCommand *CredentialMakeDefaultCommand
+	ApiService *DNSCredentialsAPIService
+	dnsCredentialMakeDefaultCommand *DnsCredentialMakeDefaultCommand
 }
 
-func (r ApiCloudcredentialsMakeDefaultRequest) CredentialMakeDefaultCommand(credentialMakeDefaultCommand CredentialMakeDefaultCommand) ApiCloudcredentialsMakeDefaultRequest {
-	r.credentialMakeDefaultCommand = &credentialMakeDefaultCommand
+func (r ApiDnscredentialsMakeDefaultRequest) DnsCredentialMakeDefaultCommand(dnsCredentialMakeDefaultCommand DnsCredentialMakeDefaultCommand) ApiDnscredentialsMakeDefaultRequest {
+	r.dnsCredentialMakeDefaultCommand = &dnsCredentialMakeDefaultCommand
 	return r
 }
 
-func (r ApiCloudcredentialsMakeDefaultRequest) Execute() (*http.Response, error) {
-	return r.ApiService.CloudcredentialsMakeDefaultExecute(r)
+func (r ApiDnscredentialsMakeDefaultRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DnscredentialsMakeDefaultExecute(r)
 }
 
 /*
-CloudcredentialsMakeDefault Make cloud credentials default
+DnscredentialsMakeDefault Make default DNS credential
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCloudcredentialsMakeDefaultRequest
+ @return ApiDnscredentialsMakeDefaultRequest
 */
-func (a *CloudCredentialAPIService) CloudcredentialsMakeDefault(ctx context.Context) ApiCloudcredentialsMakeDefaultRequest {
-	return ApiCloudcredentialsMakeDefaultRequest{
+func (a *DNSCredentialsAPIService) DnscredentialsMakeDefault(ctx context.Context) ApiDnscredentialsMakeDefaultRequest {
+	return ApiDnscredentialsMakeDefaultRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *CloudCredentialAPIService) CloudcredentialsMakeDefaultExecute(r ApiCloudcredentialsMakeDefaultRequest) (*http.Response, error) {
+func (a *DNSCredentialsAPIService) DnscredentialsMakeDefaultExecute(r ApiDnscredentialsMakeDefaultRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudCredentialAPIService.CloudcredentialsMakeDefault")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSCredentialsAPIService.DnscredentialsMakeDefault")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/cloudcredentials/makedefault"
+	localVarPath := localBasePath + "/api/v1/dnscredentials/makedefault"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -904,7 +1074,7 @@ func (a *CloudCredentialAPIService) CloudcredentialsMakeDefaultExecute(r ApiClou
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.credentialMakeDefaultCommand
+	localVarPostBody = r.dnsCredentialMakeDefaultCommand
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1012,288 +1182,48 @@ func (a *CloudCredentialAPIService) CloudcredentialsMakeDefaultExecute(r ApiClou
 	return localVarHTTPResponse, nil
 }
 
-type ApiCloudcredentialsOrgListRequest struct {
+type ApiDnscredentialsUpdateRequest struct {
 	ctx context.Context
-	ApiService *CloudCredentialAPIService
-	isAdmin *bool
-	accountId *int32
-	organizationId *int32
-	search *string
-	isInfra *bool
-	id *int32
-	cloudType *CloudType
+	ApiService *DNSCredentialsAPIService
+	dnsCredentialUpdateCommand *DnsCredentialUpdateCommand
 }
 
-func (r ApiCloudcredentialsOrgListRequest) IsAdmin(isAdmin bool) ApiCloudcredentialsOrgListRequest {
-	r.isAdmin = &isAdmin
+func (r ApiDnscredentialsUpdateRequest) DnsCredentialUpdateCommand(dnsCredentialUpdateCommand DnsCredentialUpdateCommand) ApiDnscredentialsUpdateRequest {
+	r.dnsCredentialUpdateCommand = &dnsCredentialUpdateCommand
 	return r
 }
 
-func (r ApiCloudcredentialsOrgListRequest) AccountId(accountId int32) ApiCloudcredentialsOrgListRequest {
-	r.accountId = &accountId
-	return r
-}
-
-func (r ApiCloudcredentialsOrgListRequest) OrganizationId(organizationId int32) ApiCloudcredentialsOrgListRequest {
-	r.organizationId = &organizationId
-	return r
-}
-
-func (r ApiCloudcredentialsOrgListRequest) Search(search string) ApiCloudcredentialsOrgListRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiCloudcredentialsOrgListRequest) IsInfra(isInfra bool) ApiCloudcredentialsOrgListRequest {
-	r.isInfra = &isInfra
-	return r
-}
-
-func (r ApiCloudcredentialsOrgListRequest) Id(id int32) ApiCloudcredentialsOrgListRequest {
-	r.id = &id
-	return r
-}
-
-func (r ApiCloudcredentialsOrgListRequest) CloudType(cloudType CloudType) ApiCloudcredentialsOrgListRequest {
-	r.cloudType = &cloudType
-	return r
-}
-
-func (r ApiCloudcredentialsOrgListRequest) Execute() ([]CloudCredentialsForOrganizationEntity, *http.Response, error) {
-	return r.ApiService.CloudcredentialsOrgListExecute(r)
+func (r ApiDnscredentialsUpdateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DnscredentialsUpdateExecute(r)
 }
 
 /*
-CloudcredentialsOrgList Retrieve a list of cloud credentials by organization Id
+DnscredentialsUpdate Update DNS credential
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCloudcredentialsOrgListRequest
+ @return ApiDnscredentialsUpdateRequest
 */
-func (a *CloudCredentialAPIService) CloudcredentialsOrgList(ctx context.Context) ApiCloudcredentialsOrgListRequest {
-	return ApiCloudcredentialsOrgListRequest{
+func (a *DNSCredentialsAPIService) DnscredentialsUpdate(ctx context.Context) ApiDnscredentialsUpdateRequest {
+	return ApiDnscredentialsUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []CloudCredentialsForOrganizationEntity
-func (a *CloudCredentialAPIService) CloudcredentialsOrgListExecute(r ApiCloudcredentialsOrgListRequest) ([]CloudCredentialsForOrganizationEntity, *http.Response, error) {
+func (a *DNSCredentialsAPIService) DnscredentialsUpdateExecute(r ApiDnscredentialsUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []CloudCredentialsForOrganizationEntity
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudCredentialAPIService.CloudcredentialsOrgList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/v1/cloudcredentials"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.isAdmin == nil {
-		return localVarReturnValue, nil, reportError("isAdmin is required and must be specified")
-	}
-
-	if r.accountId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
-	}
-	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "IsAdmin", r.isAdmin, "form", "")
-	if r.isInfra != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "IsInfra", r.isInfra, "form", "")
-	}
-	if r.id != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
-	}
-	if r.cloudType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "CloudType", r.cloudType, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["Bearer"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiCloudcredentialsUpdateIpAddressesRequest struct {
-	ctx context.Context
-	ApiService *CloudCredentialAPIService
-	updateUsedIpAddressesCommand *UpdateUsedIpAddressesCommand
-}
-
-func (r ApiCloudcredentialsUpdateIpAddressesRequest) UpdateUsedIpAddressesCommand(updateUsedIpAddressesCommand UpdateUsedIpAddressesCommand) ApiCloudcredentialsUpdateIpAddressesRequest {
-	r.updateUsedIpAddressesCommand = &updateUsedIpAddressesCommand
-	return r
-}
-
-func (r ApiCloudcredentialsUpdateIpAddressesRequest) Execute() (*http.Response, error) {
-	return r.ApiService.CloudcredentialsUpdateIpAddressesExecute(r)
-}
-
-/*
-CloudcredentialsUpdateIpAddresses Update cloud credential's allocated ip addresses
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCloudcredentialsUpdateIpAddressesRequest
-*/
-func (a *CloudCredentialAPIService) CloudcredentialsUpdateIpAddresses(ctx context.Context) ApiCloudcredentialsUpdateIpAddressesRequest {
-	return ApiCloudcredentialsUpdateIpAddressesRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-func (a *CloudCredentialAPIService) CloudcredentialsUpdateIpAddressesExecute(r ApiCloudcredentialsUpdateIpAddressesRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudCredentialAPIService.CloudcredentialsUpdateIpAddresses")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSCredentialsAPIService.DnscredentialsUpdate")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/cloudcredentials/network/ip-addresses"
+	localVarPath := localBasePath + "/api/v1/dnscredentials"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1317,7 +1247,180 @@ func (a *CloudCredentialAPIService) CloudcredentialsUpdateIpAddressesExecute(r A
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.updateUsedIpAddressesCommand
+	localVarPostBody = r.dnsCredentialUpdateCommand
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiDnscredentialsValidateRequest struct {
+	ctx context.Context
+	ApiService *DNSCredentialsAPIService
+	validateDnsCertCommand *ValidateDnsCertCommand
+}
+
+func (r ApiDnscredentialsValidateRequest) ValidateDnsCertCommand(validateDnsCertCommand ValidateDnsCertCommand) ApiDnscredentialsValidateRequest {
+	r.validateDnsCertCommand = &validateDnsCertCommand
+	return r
+}
+
+func (r ApiDnscredentialsValidateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DnscredentialsValidateExecute(r)
+}
+
+/*
+DnscredentialsValidate Validate DNS provider credentials
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiDnscredentialsValidateRequest
+*/
+func (a *DNSCredentialsAPIService) DnscredentialsValidate(ctx context.Context) ApiDnscredentialsValidateRequest {
+	return ApiDnscredentialsValidateRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *DNSCredentialsAPIService) DnscredentialsValidateExecute(r ApiDnscredentialsValidateRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSCredentialsAPIService.DnscredentialsValidate")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/dnscredentials/validate"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.validateDnsCertCommand
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

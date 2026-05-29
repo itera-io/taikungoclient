@@ -30,6 +30,7 @@ type GoogleFlavorDto struct {
 	WindowsSpotPrice NullableFloat64 `json:"windowsSpotPrice"`
 	HasGpuSupport *bool `json:"hasGpuSupport,omitempty"`
 	Description interface{} `json:"description"`
+	GpuDetails *FlavorGpuDetailsDto `json:"gpuDetails,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -298,6 +299,38 @@ func (o *GoogleFlavorDto) SetDescription(v interface{}) {
 	o.Description = v
 }
 
+// GetGpuDetails returns the GpuDetails field value if set, zero value otherwise.
+func (o *GoogleFlavorDto) GetGpuDetails() FlavorGpuDetailsDto {
+	if o == nil || IsNil(o.GpuDetails) {
+		var ret FlavorGpuDetailsDto
+		return ret
+	}
+	return *o.GpuDetails
+}
+
+// GetGpuDetailsOk returns a tuple with the GpuDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GoogleFlavorDto) GetGpuDetailsOk() (*FlavorGpuDetailsDto, bool) {
+	if o == nil || IsNil(o.GpuDetails) {
+		return nil, false
+	}
+	return o.GpuDetails, true
+}
+
+// HasGpuDetails returns a boolean if a field has been set.
+func (o *GoogleFlavorDto) HasGpuDetails() bool {
+	if o != nil && !IsNil(o.GpuDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetGpuDetails gets a reference to the given FlavorGpuDetailsDto and assigns it to the GpuDetails field.
+func (o *GoogleFlavorDto) SetGpuDetails(v FlavorGpuDetailsDto) {
+	o.GpuDetails = &v
+}
+
 func (o GoogleFlavorDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -320,6 +353,9 @@ func (o GoogleFlavorDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.GpuDetails) {
+		toSerialize["gpuDetails"] = o.GpuDetails
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -380,6 +416,7 @@ func (o *GoogleFlavorDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "windowsSpotPrice")
 		delete(additionalProperties, "hasGpuSupport")
 		delete(additionalProperties, "description")
+		delete(additionalProperties, "gpuDetails")
 		o.AdditionalProperties = additionalProperties
 	}
 

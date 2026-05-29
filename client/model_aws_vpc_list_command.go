@@ -23,6 +23,7 @@ type AwsVpcListCommand struct {
 	AwsAccessKeyId NullableString `json:"awsAccessKeyId,omitempty"`
 	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey,omitempty"`
 	AwsRegion NullableString `json:"awsRegion,omitempty"`
+	IpMode *IpMode `json:"ipMode,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -171,6 +172,38 @@ func (o *AwsVpcListCommand) UnsetAwsRegion() {
 	o.AwsRegion.Unset()
 }
 
+// GetIpMode returns the IpMode field value if set, zero value otherwise.
+func (o *AwsVpcListCommand) GetIpMode() IpMode {
+	if o == nil || IsNil(o.IpMode) {
+		var ret IpMode
+		return ret
+	}
+	return *o.IpMode
+}
+
+// GetIpModeOk returns a tuple with the IpMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsVpcListCommand) GetIpModeOk() (*IpMode, bool) {
+	if o == nil || IsNil(o.IpMode) {
+		return nil, false
+	}
+	return o.IpMode, true
+}
+
+// HasIpMode returns a boolean if a field has been set.
+func (o *AwsVpcListCommand) HasIpMode() bool {
+	if o != nil && !IsNil(o.IpMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetIpMode gets a reference to the given IpMode and assigns it to the IpMode field.
+func (o *AwsVpcListCommand) SetIpMode(v IpMode) {
+	o.IpMode = &v
+}
+
 func (o AwsVpcListCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -189,6 +222,9 @@ func (o AwsVpcListCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.AwsRegion.IsSet() {
 		toSerialize["awsRegion"] = o.AwsRegion.Get()
+	}
+	if !IsNil(o.IpMode) {
+		toSerialize["ipMode"] = o.IpMode
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -215,6 +251,7 @@ func (o *AwsVpcListCommand) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "awsAccessKeyId")
 		delete(additionalProperties, "awsSecretAccessKey")
 		delete(additionalProperties, "awsRegion")
+		delete(additionalProperties, "ipMode")
 		o.AdditionalProperties = additionalProperties
 	}
 

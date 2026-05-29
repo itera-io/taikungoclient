@@ -39,6 +39,8 @@ type ApiFlavorsAwsInstanceTypesRequest struct {
 	sortDirection *string
 	projectId *int32
 	hasGpuSupport *bool
+	gpuCount *int32
+	gpuModel *string
 }
 
 func (r ApiFlavorsAwsInstanceTypesRequest) Limit(limit int32) ApiFlavorsAwsInstanceTypesRequest {
@@ -93,6 +95,16 @@ func (r ApiFlavorsAwsInstanceTypesRequest) ProjectId(projectId int32) ApiFlavors
 
 func (r ApiFlavorsAwsInstanceTypesRequest) HasGpuSupport(hasGpuSupport bool) ApiFlavorsAwsInstanceTypesRequest {
 	r.hasGpuSupport = &hasGpuSupport
+	return r
+}
+
+func (r ApiFlavorsAwsInstanceTypesRequest) GpuCount(gpuCount int32) ApiFlavorsAwsInstanceTypesRequest {
+	r.gpuCount = &gpuCount
+	return r
+}
+
+func (r ApiFlavorsAwsInstanceTypesRequest) GpuModel(gpuModel string) ApiFlavorsAwsInstanceTypesRequest {
+	r.gpuModel = &gpuModel
 	return r
 }
 
@@ -169,6 +181,12 @@ func (a *FlavorsAPIService) FlavorsAwsInstanceTypesExecute(r ApiFlavorsAwsInstan
 	}
 	if r.hasGpuSupport != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "HasGpuSupport", r.hasGpuSupport, "form", "")
+	}
+	if r.gpuCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "GpuCount", r.gpuCount, "form", "")
+	}
+	if r.gpuModel != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "GpuModel", r.gpuModel, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -318,6 +336,8 @@ type ApiFlavorsAzureVmSizesRequest struct {
 	sortDirection *string
 	projectId *int32
 	hasGpuSupport *bool
+	gpuCount *int32
+	gpuModel *string
 }
 
 func (r ApiFlavorsAzureVmSizesRequest) Limit(limit int32) ApiFlavorsAzureVmSizesRequest {
@@ -372,6 +392,16 @@ func (r ApiFlavorsAzureVmSizesRequest) ProjectId(projectId int32) ApiFlavorsAzur
 
 func (r ApiFlavorsAzureVmSizesRequest) HasGpuSupport(hasGpuSupport bool) ApiFlavorsAzureVmSizesRequest {
 	r.hasGpuSupport = &hasGpuSupport
+	return r
+}
+
+func (r ApiFlavorsAzureVmSizesRequest) GpuCount(gpuCount int32) ApiFlavorsAzureVmSizesRequest {
+	r.gpuCount = &gpuCount
+	return r
+}
+
+func (r ApiFlavorsAzureVmSizesRequest) GpuModel(gpuModel string) ApiFlavorsAzureVmSizesRequest {
+	r.gpuModel = &gpuModel
 	return r
 }
 
@@ -448,6 +478,12 @@ func (a *FlavorsAPIService) FlavorsAzureVmSizesExecute(r ApiFlavorsAzureVmSizesR
 	}
 	if r.hasGpuSupport != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "HasGpuSupport", r.hasGpuSupport, "form", "")
+	}
+	if r.gpuCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "GpuCount", r.gpuCount, "form", "")
+	}
+	if r.gpuModel != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "GpuModel", r.gpuModel, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -982,6 +1018,8 @@ type ApiFlavorsGoogleMachineTypesRequest struct {
 	sortDirection *string
 	projectId *int32
 	hasGpuSupport *bool
+	gpuCount *int32
+	gpuModel *string
 }
 
 func (r ApiFlavorsGoogleMachineTypesRequest) Limit(limit int32) ApiFlavorsGoogleMachineTypesRequest {
@@ -1036,6 +1074,16 @@ func (r ApiFlavorsGoogleMachineTypesRequest) ProjectId(projectId int32) ApiFlavo
 
 func (r ApiFlavorsGoogleMachineTypesRequest) HasGpuSupport(hasGpuSupport bool) ApiFlavorsGoogleMachineTypesRequest {
 	r.hasGpuSupport = &hasGpuSupport
+	return r
+}
+
+func (r ApiFlavorsGoogleMachineTypesRequest) GpuCount(gpuCount int32) ApiFlavorsGoogleMachineTypesRequest {
+	r.gpuCount = &gpuCount
+	return r
+}
+
+func (r ApiFlavorsGoogleMachineTypesRequest) GpuModel(gpuModel string) ApiFlavorsGoogleMachineTypesRequest {
+	r.gpuModel = &gpuModel
 	return r
 }
 
@@ -1112,6 +1160,12 @@ func (a *FlavorsAPIService) FlavorsGoogleMachineTypesExecute(r ApiFlavorsGoogleM
 	}
 	if r.hasGpuSupport != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "HasGpuSupport", r.hasGpuSupport, "form", "")
+	}
+	if r.gpuCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "GpuCount", r.gpuCount, "form", "")
+	}
+	if r.gpuModel != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "GpuModel", r.gpuModel, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

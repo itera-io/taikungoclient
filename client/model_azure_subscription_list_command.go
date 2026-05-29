@@ -20,9 +20,9 @@ var _ MappedNullable = &AzureSubscriptionListCommand{}
 
 // AzureSubscriptionListCommand struct for AzureSubscriptionListCommand
 type AzureSubscriptionListCommand struct {
-	ClientId NullableString `json:"clientId,omitempty"`
-	ClientSecret NullableString `json:"clientSecret,omitempty"`
-	TenantId NullableString `json:"tenantId,omitempty"`
+	AzureClientId NullableString `json:"azureClientId,omitempty"`
+	AzureClientSecret NullableString `json:"azureClientSecret,omitempty"`
+	AzureTenantId NullableString `json:"azureTenantId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -45,130 +45,130 @@ func NewAzureSubscriptionListCommandWithDefaults() *AzureSubscriptionListCommand
 	return &this
 }
 
-// GetClientId returns the ClientId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AzureSubscriptionListCommand) GetClientId() string {
-	if o == nil || IsNil(o.ClientId.Get()) {
+// GetAzureClientId returns the AzureClientId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AzureSubscriptionListCommand) GetAzureClientId() string {
+	if o == nil || IsNil(o.AzureClientId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ClientId.Get()
+	return *o.AzureClientId.Get()
 }
 
-// GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
+// GetAzureClientIdOk returns a tuple with the AzureClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AzureSubscriptionListCommand) GetClientIdOk() (*string, bool) {
+func (o *AzureSubscriptionListCommand) GetAzureClientIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ClientId.Get(), o.ClientId.IsSet()
+	return o.AzureClientId.Get(), o.AzureClientId.IsSet()
 }
 
-// HasClientId returns a boolean if a field has been set.
-func (o *AzureSubscriptionListCommand) HasClientId() bool {
-	if o != nil && o.ClientId.IsSet() {
+// HasAzureClientId returns a boolean if a field has been set.
+func (o *AzureSubscriptionListCommand) HasAzureClientId() bool {
+	if o != nil && o.AzureClientId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetClientId gets a reference to the given NullableString and assigns it to the ClientId field.
-func (o *AzureSubscriptionListCommand) SetClientId(v string) {
-	o.ClientId.Set(&v)
+// SetAzureClientId gets a reference to the given NullableString and assigns it to the AzureClientId field.
+func (o *AzureSubscriptionListCommand) SetAzureClientId(v string) {
+	o.AzureClientId.Set(&v)
 }
-// SetClientIdNil sets the value for ClientId to be an explicit nil
-func (o *AzureSubscriptionListCommand) SetClientIdNil() {
-	o.ClientId.Set(nil)
-}
-
-// UnsetClientId ensures that no value is present for ClientId, not even an explicit nil
-func (o *AzureSubscriptionListCommand) UnsetClientId() {
-	o.ClientId.Unset()
+// SetAzureClientIdNil sets the value for AzureClientId to be an explicit nil
+func (o *AzureSubscriptionListCommand) SetAzureClientIdNil() {
+	o.AzureClientId.Set(nil)
 }
 
-// GetClientSecret returns the ClientSecret field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AzureSubscriptionListCommand) GetClientSecret() string {
-	if o == nil || IsNil(o.ClientSecret.Get()) {
+// UnsetAzureClientId ensures that no value is present for AzureClientId, not even an explicit nil
+func (o *AzureSubscriptionListCommand) UnsetAzureClientId() {
+	o.AzureClientId.Unset()
+}
+
+// GetAzureClientSecret returns the AzureClientSecret field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AzureSubscriptionListCommand) GetAzureClientSecret() string {
+	if o == nil || IsNil(o.AzureClientSecret.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ClientSecret.Get()
+	return *o.AzureClientSecret.Get()
 }
 
-// GetClientSecretOk returns a tuple with the ClientSecret field value if set, nil otherwise
+// GetAzureClientSecretOk returns a tuple with the AzureClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AzureSubscriptionListCommand) GetClientSecretOk() (*string, bool) {
+func (o *AzureSubscriptionListCommand) GetAzureClientSecretOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ClientSecret.Get(), o.ClientSecret.IsSet()
+	return o.AzureClientSecret.Get(), o.AzureClientSecret.IsSet()
 }
 
-// HasClientSecret returns a boolean if a field has been set.
-func (o *AzureSubscriptionListCommand) HasClientSecret() bool {
-	if o != nil && o.ClientSecret.IsSet() {
+// HasAzureClientSecret returns a boolean if a field has been set.
+func (o *AzureSubscriptionListCommand) HasAzureClientSecret() bool {
+	if o != nil && o.AzureClientSecret.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetClientSecret gets a reference to the given NullableString and assigns it to the ClientSecret field.
-func (o *AzureSubscriptionListCommand) SetClientSecret(v string) {
-	o.ClientSecret.Set(&v)
+// SetAzureClientSecret gets a reference to the given NullableString and assigns it to the AzureClientSecret field.
+func (o *AzureSubscriptionListCommand) SetAzureClientSecret(v string) {
+	o.AzureClientSecret.Set(&v)
 }
-// SetClientSecretNil sets the value for ClientSecret to be an explicit nil
-func (o *AzureSubscriptionListCommand) SetClientSecretNil() {
-	o.ClientSecret.Set(nil)
-}
-
-// UnsetClientSecret ensures that no value is present for ClientSecret, not even an explicit nil
-func (o *AzureSubscriptionListCommand) UnsetClientSecret() {
-	o.ClientSecret.Unset()
+// SetAzureClientSecretNil sets the value for AzureClientSecret to be an explicit nil
+func (o *AzureSubscriptionListCommand) SetAzureClientSecretNil() {
+	o.AzureClientSecret.Set(nil)
 }
 
-// GetTenantId returns the TenantId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AzureSubscriptionListCommand) GetTenantId() string {
-	if o == nil || IsNil(o.TenantId.Get()) {
+// UnsetAzureClientSecret ensures that no value is present for AzureClientSecret, not even an explicit nil
+func (o *AzureSubscriptionListCommand) UnsetAzureClientSecret() {
+	o.AzureClientSecret.Unset()
+}
+
+// GetAzureTenantId returns the AzureTenantId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AzureSubscriptionListCommand) GetAzureTenantId() string {
+	if o == nil || IsNil(o.AzureTenantId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.TenantId.Get()
+	return *o.AzureTenantId.Get()
 }
 
-// GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
+// GetAzureTenantIdOk returns a tuple with the AzureTenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AzureSubscriptionListCommand) GetTenantIdOk() (*string, bool) {
+func (o *AzureSubscriptionListCommand) GetAzureTenantIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.TenantId.Get(), o.TenantId.IsSet()
+	return o.AzureTenantId.Get(), o.AzureTenantId.IsSet()
 }
 
-// HasTenantId returns a boolean if a field has been set.
-func (o *AzureSubscriptionListCommand) HasTenantId() bool {
-	if o != nil && o.TenantId.IsSet() {
+// HasAzureTenantId returns a boolean if a field has been set.
+func (o *AzureSubscriptionListCommand) HasAzureTenantId() bool {
+	if o != nil && o.AzureTenantId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTenantId gets a reference to the given NullableString and assigns it to the TenantId field.
-func (o *AzureSubscriptionListCommand) SetTenantId(v string) {
-	o.TenantId.Set(&v)
+// SetAzureTenantId gets a reference to the given NullableString and assigns it to the AzureTenantId field.
+func (o *AzureSubscriptionListCommand) SetAzureTenantId(v string) {
+	o.AzureTenantId.Set(&v)
 }
-// SetTenantIdNil sets the value for TenantId to be an explicit nil
-func (o *AzureSubscriptionListCommand) SetTenantIdNil() {
-	o.TenantId.Set(nil)
+// SetAzureTenantIdNil sets the value for AzureTenantId to be an explicit nil
+func (o *AzureSubscriptionListCommand) SetAzureTenantIdNil() {
+	o.AzureTenantId.Set(nil)
 }
 
-// UnsetTenantId ensures that no value is present for TenantId, not even an explicit nil
-func (o *AzureSubscriptionListCommand) UnsetTenantId() {
-	o.TenantId.Unset()
+// UnsetAzureTenantId ensures that no value is present for AzureTenantId, not even an explicit nil
+func (o *AzureSubscriptionListCommand) UnsetAzureTenantId() {
+	o.AzureTenantId.Unset()
 }
 
 func (o AzureSubscriptionListCommand) MarshalJSON() ([]byte, error) {
@@ -181,14 +181,14 @@ func (o AzureSubscriptionListCommand) MarshalJSON() ([]byte, error) {
 
 func (o AzureSubscriptionListCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ClientId.IsSet() {
-		toSerialize["clientId"] = o.ClientId.Get()
+	if o.AzureClientId.IsSet() {
+		toSerialize["azureClientId"] = o.AzureClientId.Get()
 	}
-	if o.ClientSecret.IsSet() {
-		toSerialize["clientSecret"] = o.ClientSecret.Get()
+	if o.AzureClientSecret.IsSet() {
+		toSerialize["azureClientSecret"] = o.AzureClientSecret.Get()
 	}
-	if o.TenantId.IsSet() {
-		toSerialize["tenantId"] = o.TenantId.Get()
+	if o.AzureTenantId.IsSet() {
+		toSerialize["azureTenantId"] = o.AzureTenantId.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -212,9 +212,9 @@ func (o *AzureSubscriptionListCommand) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "clientId")
-		delete(additionalProperties, "clientSecret")
-		delete(additionalProperties, "tenantId")
+		delete(additionalProperties, "azureClientId")
+		delete(additionalProperties, "azureClientSecret")
+		delete(additionalProperties, "azureTenantId")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -89,6 +89,12 @@ type APIClient struct {
 
 	CronJobServiceAPI *CronJobServiceAPIService
 
+	CustomCAsAPI *CustomCAsAPIService
+
+	DNSCredentialsAPI *DNSCredentialsAPIService
+
+	DnsCertAPI *DnsCertAPIService
+
 	DnsServersAPI *DnsServersAPIService
 
 	DocumentationAPI *DocumentationAPIService
@@ -247,6 +253,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CloudCredentialAPI = (*CloudCredentialAPIService)(&c.common)
 	c.CommonAPI = (*CommonAPIService)(&c.common)
 	c.CronJobServiceAPI = (*CronJobServiceAPIService)(&c.common)
+	c.CustomCAsAPI = (*CustomCAsAPIService)(&c.common)
+	c.DNSCredentialsAPI = (*DNSCredentialsAPIService)(&c.common)
+	c.DnsCertAPI = (*DnsCertAPIService)(&c.common)
 	c.DnsServersAPI = (*DnsServersAPIService)(&c.common)
 	c.DocumentationAPI = (*DocumentationAPIService)(&c.common)
 	c.ExecutorsAPI = (*ExecutorsAPIService)(&c.common)

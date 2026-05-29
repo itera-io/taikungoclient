@@ -27,6 +27,7 @@ type FlavorsListDto struct {
 	Description interface{} `json:"description"`
 	MaxDataDiskCount NullableFloat64 `json:"maxDataDiskCount"`
 	HasGpuSupport *bool `json:"hasGpuSupport,omitempty"`
+	GpuDetails *FlavorGpuDetailsDto `json:"gpuDetails,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -210,6 +211,38 @@ func (o *FlavorsListDto) SetHasGpuSupport(v bool) {
 	o.HasGpuSupport = &v
 }
 
+// GetGpuDetails returns the GpuDetails field value if set, zero value otherwise.
+func (o *FlavorsListDto) GetGpuDetails() FlavorGpuDetailsDto {
+	if o == nil || IsNil(o.GpuDetails) {
+		var ret FlavorGpuDetailsDto
+		return ret
+	}
+	return *o.GpuDetails
+}
+
+// GetGpuDetailsOk returns a tuple with the GpuDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FlavorsListDto) GetGpuDetailsOk() (*FlavorGpuDetailsDto, bool) {
+	if o == nil || IsNil(o.GpuDetails) {
+		return nil, false
+	}
+	return o.GpuDetails, true
+}
+
+// HasGpuDetails returns a boolean if a field has been set.
+func (o *FlavorsListDto) HasGpuDetails() bool {
+	if o != nil && !IsNil(o.GpuDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetGpuDetails gets a reference to the given FlavorGpuDetailsDto and assigns it to the GpuDetails field.
+func (o *FlavorsListDto) SetGpuDetails(v FlavorGpuDetailsDto) {
+	o.GpuDetails = &v
+}
+
 func (o FlavorsListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -229,6 +262,9 @@ func (o FlavorsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["maxDataDiskCount"] = o.MaxDataDiskCount.Get()
 	if !IsNil(o.HasGpuSupport) {
 		toSerialize["hasGpuSupport"] = o.HasGpuSupport
+	}
+	if !IsNil(o.GpuDetails) {
+		toSerialize["gpuDetails"] = o.GpuDetails
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -283,6 +319,7 @@ func (o *FlavorsListDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "maxDataDiskCount")
 		delete(additionalProperties, "hasGpuSupport")
+		delete(additionalProperties, "gpuDetails")
 		o.AdditionalProperties = additionalProperties
 	}
 

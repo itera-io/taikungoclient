@@ -28,6 +28,10 @@ type CreateAzureCloudCommand struct {
 	AzureLocation NullableString `json:"azureLocation,omitempty"`
 	AzCount *int32 `json:"azCount,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	VnetMode *VnetMode `json:"vnetMode,omitempty"`
+	ExistingVirtualNetworkResourceGroupName NullableString `json:"existingVirtualNetworkResourceGroupName,omitempty"`
+	ExistingVirtualNetworkName NullableString `json:"existingVirtualNetworkName,omitempty"`
+	ExistingSubnetName NullableString `json:"existingSubnetName,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -376,6 +380,164 @@ func (o *CreateAzureCloudCommand) UnsetOrganizationId() {
 	o.OrganizationId.Unset()
 }
 
+// GetVnetMode returns the VnetMode field value if set, zero value otherwise.
+func (o *CreateAzureCloudCommand) GetVnetMode() VnetMode {
+	if o == nil || IsNil(o.VnetMode) {
+		var ret VnetMode
+		return ret
+	}
+	return *o.VnetMode
+}
+
+// GetVnetModeOk returns a tuple with the VnetMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAzureCloudCommand) GetVnetModeOk() (*VnetMode, bool) {
+	if o == nil || IsNil(o.VnetMode) {
+		return nil, false
+	}
+	return o.VnetMode, true
+}
+
+// HasVnetMode returns a boolean if a field has been set.
+func (o *CreateAzureCloudCommand) HasVnetMode() bool {
+	if o != nil && !IsNil(o.VnetMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetVnetMode gets a reference to the given VnetMode and assigns it to the VnetMode field.
+func (o *CreateAzureCloudCommand) SetVnetMode(v VnetMode) {
+	o.VnetMode = &v
+}
+
+// GetExistingVirtualNetworkResourceGroupName returns the ExistingVirtualNetworkResourceGroupName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateAzureCloudCommand) GetExistingVirtualNetworkResourceGroupName() string {
+	if o == nil || IsNil(o.ExistingVirtualNetworkResourceGroupName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ExistingVirtualNetworkResourceGroupName.Get()
+}
+
+// GetExistingVirtualNetworkResourceGroupNameOk returns a tuple with the ExistingVirtualNetworkResourceGroupName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateAzureCloudCommand) GetExistingVirtualNetworkResourceGroupNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ExistingVirtualNetworkResourceGroupName.Get(), o.ExistingVirtualNetworkResourceGroupName.IsSet()
+}
+
+// HasExistingVirtualNetworkResourceGroupName returns a boolean if a field has been set.
+func (o *CreateAzureCloudCommand) HasExistingVirtualNetworkResourceGroupName() bool {
+	if o != nil && o.ExistingVirtualNetworkResourceGroupName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetExistingVirtualNetworkResourceGroupName gets a reference to the given NullableString and assigns it to the ExistingVirtualNetworkResourceGroupName field.
+func (o *CreateAzureCloudCommand) SetExistingVirtualNetworkResourceGroupName(v string) {
+	o.ExistingVirtualNetworkResourceGroupName.Set(&v)
+}
+// SetExistingVirtualNetworkResourceGroupNameNil sets the value for ExistingVirtualNetworkResourceGroupName to be an explicit nil
+func (o *CreateAzureCloudCommand) SetExistingVirtualNetworkResourceGroupNameNil() {
+	o.ExistingVirtualNetworkResourceGroupName.Set(nil)
+}
+
+// UnsetExistingVirtualNetworkResourceGroupName ensures that no value is present for ExistingVirtualNetworkResourceGroupName, not even an explicit nil
+func (o *CreateAzureCloudCommand) UnsetExistingVirtualNetworkResourceGroupName() {
+	o.ExistingVirtualNetworkResourceGroupName.Unset()
+}
+
+// GetExistingVirtualNetworkName returns the ExistingVirtualNetworkName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateAzureCloudCommand) GetExistingVirtualNetworkName() string {
+	if o == nil || IsNil(o.ExistingVirtualNetworkName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ExistingVirtualNetworkName.Get()
+}
+
+// GetExistingVirtualNetworkNameOk returns a tuple with the ExistingVirtualNetworkName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateAzureCloudCommand) GetExistingVirtualNetworkNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ExistingVirtualNetworkName.Get(), o.ExistingVirtualNetworkName.IsSet()
+}
+
+// HasExistingVirtualNetworkName returns a boolean if a field has been set.
+func (o *CreateAzureCloudCommand) HasExistingVirtualNetworkName() bool {
+	if o != nil && o.ExistingVirtualNetworkName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetExistingVirtualNetworkName gets a reference to the given NullableString and assigns it to the ExistingVirtualNetworkName field.
+func (o *CreateAzureCloudCommand) SetExistingVirtualNetworkName(v string) {
+	o.ExistingVirtualNetworkName.Set(&v)
+}
+// SetExistingVirtualNetworkNameNil sets the value for ExistingVirtualNetworkName to be an explicit nil
+func (o *CreateAzureCloudCommand) SetExistingVirtualNetworkNameNil() {
+	o.ExistingVirtualNetworkName.Set(nil)
+}
+
+// UnsetExistingVirtualNetworkName ensures that no value is present for ExistingVirtualNetworkName, not even an explicit nil
+func (o *CreateAzureCloudCommand) UnsetExistingVirtualNetworkName() {
+	o.ExistingVirtualNetworkName.Unset()
+}
+
+// GetExistingSubnetName returns the ExistingSubnetName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateAzureCloudCommand) GetExistingSubnetName() string {
+	if o == nil || IsNil(o.ExistingSubnetName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ExistingSubnetName.Get()
+}
+
+// GetExistingSubnetNameOk returns a tuple with the ExistingSubnetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateAzureCloudCommand) GetExistingSubnetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ExistingSubnetName.Get(), o.ExistingSubnetName.IsSet()
+}
+
+// HasExistingSubnetName returns a boolean if a field has been set.
+func (o *CreateAzureCloudCommand) HasExistingSubnetName() bool {
+	if o != nil && o.ExistingSubnetName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetExistingSubnetName gets a reference to the given NullableString and assigns it to the ExistingSubnetName field.
+func (o *CreateAzureCloudCommand) SetExistingSubnetName(v string) {
+	o.ExistingSubnetName.Set(&v)
+}
+// SetExistingSubnetNameNil sets the value for ExistingSubnetName to be an explicit nil
+func (o *CreateAzureCloudCommand) SetExistingSubnetNameNil() {
+	o.ExistingSubnetName.Set(nil)
+}
+
+// UnsetExistingSubnetName ensures that no value is present for ExistingSubnetName, not even an explicit nil
+func (o *CreateAzureCloudCommand) UnsetExistingSubnetName() {
+	o.ExistingSubnetName.Unset()
+}
+
 func (o CreateAzureCloudCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -410,6 +572,18 @@ func (o CreateAzureCloudCommand) ToMap() (map[string]interface{}, error) {
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
+	if !IsNil(o.VnetMode) {
+		toSerialize["vnetMode"] = o.VnetMode
+	}
+	if o.ExistingVirtualNetworkResourceGroupName.IsSet() {
+		toSerialize["existingVirtualNetworkResourceGroupName"] = o.ExistingVirtualNetworkResourceGroupName.Get()
+	}
+	if o.ExistingVirtualNetworkName.IsSet() {
+		toSerialize["existingVirtualNetworkName"] = o.ExistingVirtualNetworkName.Get()
+	}
+	if o.ExistingSubnetName.IsSet() {
+		toSerialize["existingSubnetName"] = o.ExistingSubnetName.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -440,6 +614,10 @@ func (o *CreateAzureCloudCommand) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "azureLocation")
 		delete(additionalProperties, "azCount")
 		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "vnetMode")
+		delete(additionalProperties, "existingVirtualNetworkResourceGroupName")
+		delete(additionalProperties, "existingVirtualNetworkName")
+		delete(additionalProperties, "existingSubnetName")
 		o.AdditionalProperties = additionalProperties
 	}
 

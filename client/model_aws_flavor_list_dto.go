@@ -30,6 +30,7 @@ type AwsFlavorListDto struct {
 	LinuxSpotPrice NullableString `json:"linuxSpotPrice,omitempty"`
 	Zones []string `json:"zones,omitempty"`
 	HasGpuSupport *bool `json:"hasGpuSupport,omitempty"`
+	GpuDetails *FlavorGpuDetailsDto `json:"gpuDetails,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -424,6 +425,38 @@ func (o *AwsFlavorListDto) SetHasGpuSupport(v bool) {
 	o.HasGpuSupport = &v
 }
 
+// GetGpuDetails returns the GpuDetails field value if set, zero value otherwise.
+func (o *AwsFlavorListDto) GetGpuDetails() FlavorGpuDetailsDto {
+	if o == nil || IsNil(o.GpuDetails) {
+		var ret FlavorGpuDetailsDto
+		return ret
+	}
+	return *o.GpuDetails
+}
+
+// GetGpuDetailsOk returns a tuple with the GpuDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsFlavorListDto) GetGpuDetailsOk() (*FlavorGpuDetailsDto, bool) {
+	if o == nil || IsNil(o.GpuDetails) {
+		return nil, false
+	}
+	return o.GpuDetails, true
+}
+
+// HasGpuDetails returns a boolean if a field has been set.
+func (o *AwsFlavorListDto) HasGpuDetails() bool {
+	if o != nil && !IsNil(o.GpuDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetGpuDetails gets a reference to the given FlavorGpuDetailsDto and assigns it to the GpuDetails field.
+func (o *AwsFlavorListDto) SetGpuDetails(v FlavorGpuDetailsDto) {
+	o.GpuDetails = &v
+}
+
 func (o AwsFlavorListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -464,6 +497,9 @@ func (o AwsFlavorListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HasGpuSupport) {
 		toSerialize["hasGpuSupport"] = o.HasGpuSupport
 	}
+	if !IsNil(o.GpuDetails) {
+		toSerialize["gpuDetails"] = o.GpuDetails
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -496,6 +532,7 @@ func (o *AwsFlavorListDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "linuxSpotPrice")
 		delete(additionalProperties, "zones")
 		delete(additionalProperties, "hasGpuSupport")
+		delete(additionalProperties, "gpuDetails")
 		o.AdditionalProperties = additionalProperties
 	}
 
