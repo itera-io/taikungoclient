@@ -26,7 +26,7 @@ type CreateAzureCloudCommand struct {
 	AzureClientSecret NullableString `json:"azureClientSecret,omitempty"`
 	AzureTenantId NullableString `json:"azureTenantId,omitempty"`
 	AzureLocation NullableString `json:"azureLocation,omitempty"`
-	AzCount *int32 `json:"azCount,omitempty"`
+	AzCount NullableInt32 `json:"azCount,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	VnetMode *VnetMode `json:"vnetMode,omitempty"`
 	ExistingVirtualNetworkResourceGroupName NullableString `json:"existingVirtualNetworkResourceGroupName,omitempty"`
@@ -306,36 +306,46 @@ func (o *CreateAzureCloudCommand) UnsetAzureLocation() {
 	o.AzureLocation.Unset()
 }
 
-// GetAzCount returns the AzCount field value if set, zero value otherwise.
+// GetAzCount returns the AzCount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateAzureCloudCommand) GetAzCount() int32 {
-	if o == nil || IsNil(o.AzCount) {
+	if o == nil || IsNil(o.AzCount.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.AzCount
+	return *o.AzCount.Get()
 }
 
 // GetAzCountOk returns a tuple with the AzCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAzureCloudCommand) GetAzCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.AzCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AzCount, true
+	return o.AzCount.Get(), o.AzCount.IsSet()
 }
 
 // HasAzCount returns a boolean if a field has been set.
 func (o *CreateAzureCloudCommand) HasAzCount() bool {
-	if o != nil && !IsNil(o.AzCount) {
+	if o != nil && o.AzCount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAzCount gets a reference to the given int32 and assigns it to the AzCount field.
+// SetAzCount gets a reference to the given NullableInt32 and assigns it to the AzCount field.
 func (o *CreateAzureCloudCommand) SetAzCount(v int32) {
-	o.AzCount = &v
+	o.AzCount.Set(&v)
+}
+// SetAzCountNil sets the value for AzCount to be an explicit nil
+func (o *CreateAzureCloudCommand) SetAzCountNil() {
+	o.AzCount.Set(nil)
+}
+
+// UnsetAzCount ensures that no value is present for AzCount, not even an explicit nil
+func (o *CreateAzureCloudCommand) UnsetAzCount() {
+	o.AzCount.Unset()
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -566,8 +576,8 @@ func (o CreateAzureCloudCommand) ToMap() (map[string]interface{}, error) {
 	if o.AzureLocation.IsSet() {
 		toSerialize["azureLocation"] = o.AzureLocation.Get()
 	}
-	if !IsNil(o.AzCount) {
-		toSerialize["azCount"] = o.AzCount
+	if o.AzCount.IsSet() {
+		toSerialize["azCount"] = o.AzCount.Get()
 	}
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()

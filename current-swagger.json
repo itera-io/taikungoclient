@@ -74392,7 +74392,8 @@
           },
           "azCount": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "organizationId": {
             "type": "integer",

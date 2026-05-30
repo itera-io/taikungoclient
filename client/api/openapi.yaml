@@ -51558,6 +51558,7 @@ components:
           type: string
         azCount:
           format: int32
+          nullable: true
           type: integer
         organizationId:
           format: int32
