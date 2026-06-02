@@ -17284,6 +17284,98 @@
         }
       }
     },
+    "/api/v1/cloudcredentials/flavors/gpu-filter-metadata/{cloudId}": {
+      "get": {
+        "tags": [
+          "Cloud credential"
+        ],
+        "summary": "Retrieve GPU filter metadata for a cloud credential",
+        "operationId": "cloudcredentials-gpu-filter-metadata",
+        "parameters": [
+          {
+            "name": "cloudId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FlavorGpuFilterMetadataList"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/cloudcredentials/{cloudId}": {
       "delete": {
         "tags": [
@@ -18258,6 +18350,92 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/SyncBackupCredentialsCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/cronjob/sync-dns-cert-configs": {
+      "post": {
+        "tags": [
+          "Cron Job Service"
+        ],
+        "summary": "Sync DNS/Cert configs (drift cron — re-fires kubevap addons pipeline when Applied < Desired)",
+        "operationId": "cronjob-sync-dns-cert-configs",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SyncDnsCertConfigsCommand"
               }
             }
           }
@@ -69565,7 +69743,11 @@
           "StartImportCluster",
           "StartMigrationCluster",
           "KubernetesAction",
-          "DeletedProject"
+          "DeletedProject",
+          "StartedSyncDnsCert",
+          "SyncedDnsCert",
+          "StartedDisableDnsCert",
+          "DisabledDnsCert"
         ],
         "type": "string"
       },
@@ -78832,6 +79014,42 @@
           }
         }
       },
+      "FlavorGpuFilterMetadataDto": {
+        "type": "object",
+        "properties": {
+          "supportedGpuModels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "minGpuCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "maxGpuCount": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        }
+      },
+      "FlavorGpuFilterMetadataList": {
+        "required": [
+          "cloudType"
+        ],
+        "type": "object",
+        "properties": {
+          "cloudType": {
+            "type": "string"
+          },
+          "gpuFilterMetadata": {
+            "$ref": "#/components/schemas/FlavorGpuFilterMetadataDto"
+          }
+        }
+      },
       "FlavorsListDto": {
         "required": [
           "cpu",
@@ -79081,13 +79299,15 @@
             "type": "string",
             "nullable": true
           },
-          "externalDnsSynced": {
-            "type": "boolean"
+          "desiredConfigVersion": {
+            "type": "integer",
+            "format": "int32"
           },
-          "certManagerSynced": {
-            "type": "boolean"
+          "appliedConfigVersion": {
+            "type": "integer",
+            "format": "int32"
           },
-          "clusterIssuerSynced": {
+          "synced": {
             "type": "boolean"
           }
         }
@@ -85384,6 +85604,7 @@
           "disableAi",
           "disableAutoscaler",
           "disableBackup",
+          "disableDnsCert",
           "disableFullSpot",
           "disableMonitoring",
           "disableOpa",
@@ -85392,6 +85613,7 @@
           "enableAi",
           "enableAutoscaler",
           "enableBackup",
+          "enableDnsCert",
           "enableFullSpot",
           "enableMonitoring",
           "enableOpa",
@@ -85492,6 +85714,12 @@
             "$ref": "#/components/schemas/ButtonStatusDto"
           },
           "addVm": {
+            "$ref": "#/components/schemas/ButtonStatusDto"
+          },
+          "enableDnsCert": {
+            "$ref": "#/components/schemas/ButtonStatusDto"
+          },
+          "disableDnsCert": {
             "$ref": "#/components/schemas/ButtonStatusDto"
           }
         }
@@ -87120,6 +87348,8 @@
           "EnableMonitoring",
           "EnableAi",
           "EnableGatekeeper",
+          "SyncDnsCert",
+          "DisableDnsCert",
           "Failure",
           "FailedUpgrade",
           "Purging",
@@ -91570,6 +91800,9 @@
         }
       },
       "SyncBackupCredentialsCommand": {
+        "type": "object"
+      },
+      "SyncDnsCertConfigsCommand": {
         "type": "object"
       },
       "SyncOpaProfilesCommand": {

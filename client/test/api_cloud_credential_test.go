@@ -61,6 +61,20 @@ func Test_taikuncore_CloudCredentialAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test CloudCredentialAPIService CloudcredentialsGpuFilterMetadata", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var cloudId int32
+
+		resp, httpRes, err := apiClient.CloudCredentialAPI.CloudcredentialsGpuFilterMetadata(context.Background(), cloudId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test CloudCredentialAPIService CloudcredentialsLockManager", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

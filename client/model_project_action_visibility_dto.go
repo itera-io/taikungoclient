@@ -50,6 +50,8 @@ type ProjectActionVisibilityDto struct {
 	ProjectMaintenanceMode ButtonStatusDto `json:"projectMaintenanceMode"`
 	AddServer ButtonStatusDto `json:"addServer"`
 	AddVm ButtonStatusDto `json:"addVm"`
+	EnableDnsCert ButtonStatusDto `json:"enableDnsCert"`
+	DisableDnsCert ButtonStatusDto `json:"disableDnsCert"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -59,7 +61,7 @@ type _ProjectActionVisibilityDto ProjectActionVisibilityDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectActionVisibilityDto(commit ButtonStatusDto, repair ButtonStatusDto, upgrade ButtonStatusDto, enableMonitoring ButtonStatusDto, disableMonitoring ButtonStatusDto, enableBackup ButtonStatusDto, disableBackup ButtonStatusDto, enableOpa ButtonStatusDto, disableOpa ButtonStatusDto, enableAutoscaler ButtonStatusDto, disableAutoscaler ButtonStatusDto, vmRepair ButtonStatusDto, vmCommit ButtonStatusDto, lock ButtonStatusDto, unlock ButtonStatusDto, enableSpotWorker ButtonStatusDto, disableSpotWorker ButtonStatusDto, enableFullSpot ButtonStatusDto, disableFullSpot ButtonStatusDto, enableSpotVm ButtonStatusDto, disableSpotVm ButtonStatusDto, attachAlertingProfile ButtonStatusDto, detachAlertingProfile ButtonStatusDto, enableAi ButtonStatusDto, disableAi ButtonStatusDto, aiAssistant ButtonStatusDto, projectMaintenanceMode ButtonStatusDto, addServer ButtonStatusDto, addVm ButtonStatusDto) *ProjectActionVisibilityDto {
+func NewProjectActionVisibilityDto(commit ButtonStatusDto, repair ButtonStatusDto, upgrade ButtonStatusDto, enableMonitoring ButtonStatusDto, disableMonitoring ButtonStatusDto, enableBackup ButtonStatusDto, disableBackup ButtonStatusDto, enableOpa ButtonStatusDto, disableOpa ButtonStatusDto, enableAutoscaler ButtonStatusDto, disableAutoscaler ButtonStatusDto, vmRepair ButtonStatusDto, vmCommit ButtonStatusDto, lock ButtonStatusDto, unlock ButtonStatusDto, enableSpotWorker ButtonStatusDto, disableSpotWorker ButtonStatusDto, enableFullSpot ButtonStatusDto, disableFullSpot ButtonStatusDto, enableSpotVm ButtonStatusDto, disableSpotVm ButtonStatusDto, attachAlertingProfile ButtonStatusDto, detachAlertingProfile ButtonStatusDto, enableAi ButtonStatusDto, disableAi ButtonStatusDto, aiAssistant ButtonStatusDto, projectMaintenanceMode ButtonStatusDto, addServer ButtonStatusDto, addVm ButtonStatusDto, enableDnsCert ButtonStatusDto, disableDnsCert ButtonStatusDto) *ProjectActionVisibilityDto {
 	this := ProjectActionVisibilityDto{}
 	this.Commit = commit
 	this.Repair = repair
@@ -90,6 +92,8 @@ func NewProjectActionVisibilityDto(commit ButtonStatusDto, repair ButtonStatusDt
 	this.ProjectMaintenanceMode = projectMaintenanceMode
 	this.AddServer = addServer
 	this.AddVm = addVm
+	this.EnableDnsCert = enableDnsCert
+	this.DisableDnsCert = disableDnsCert
 	return &this
 }
 
@@ -797,6 +801,54 @@ func (o *ProjectActionVisibilityDto) SetAddVm(v ButtonStatusDto) {
 	o.AddVm = v
 }
 
+// GetEnableDnsCert returns the EnableDnsCert field value
+func (o *ProjectActionVisibilityDto) GetEnableDnsCert() ButtonStatusDto {
+	if o == nil {
+		var ret ButtonStatusDto
+		return ret
+	}
+
+	return o.EnableDnsCert
+}
+
+// GetEnableDnsCertOk returns a tuple with the EnableDnsCert field value
+// and a boolean to check if the value has been set.
+func (o *ProjectActionVisibilityDto) GetEnableDnsCertOk() (*ButtonStatusDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EnableDnsCert, true
+}
+
+// SetEnableDnsCert sets field value
+func (o *ProjectActionVisibilityDto) SetEnableDnsCert(v ButtonStatusDto) {
+	o.EnableDnsCert = v
+}
+
+// GetDisableDnsCert returns the DisableDnsCert field value
+func (o *ProjectActionVisibilityDto) GetDisableDnsCert() ButtonStatusDto {
+	if o == nil {
+		var ret ButtonStatusDto
+		return ret
+	}
+
+	return o.DisableDnsCert
+}
+
+// GetDisableDnsCertOk returns a tuple with the DisableDnsCert field value
+// and a boolean to check if the value has been set.
+func (o *ProjectActionVisibilityDto) GetDisableDnsCertOk() (*ButtonStatusDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DisableDnsCert, true
+}
+
+// SetDisableDnsCert sets field value
+func (o *ProjectActionVisibilityDto) SetDisableDnsCert(v ButtonStatusDto) {
+	o.DisableDnsCert = v
+}
+
 func (o ProjectActionVisibilityDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -836,6 +888,8 @@ func (o ProjectActionVisibilityDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["projectMaintenanceMode"] = o.ProjectMaintenanceMode
 	toSerialize["addServer"] = o.AddServer
 	toSerialize["addVm"] = o.AddVm
+	toSerialize["enableDnsCert"] = o.EnableDnsCert
+	toSerialize["disableDnsCert"] = o.DisableDnsCert
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -878,6 +932,8 @@ func (o *ProjectActionVisibilityDto) UnmarshalJSON(data []byte) (err error) {
 		"projectMaintenanceMode",
 		"addServer",
 		"addVm",
+		"enableDnsCert",
+		"disableDnsCert",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -936,6 +992,8 @@ func (o *ProjectActionVisibilityDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "projectMaintenanceMode")
 		delete(additionalProperties, "addServer")
 		delete(additionalProperties, "addVm")
+		delete(additionalProperties, "enableDnsCert")
+		delete(additionalProperties, "disableDnsCert")
 		o.AdditionalProperties = additionalProperties
 	}
 

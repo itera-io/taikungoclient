@@ -244,6 +244,7 @@ Class | Method | HTTP request | Description
 *CloudCredentialAPI* | [**CloudcredentialsAllFlavors**](docs/CloudCredentialAPI.md#cloudcredentialsallflavors) | **Get** /api/v1/cloudcredentials/flavors/{cloudId} | Retrieve all flavors
 *CloudCredentialAPI* | [**CloudcredentialsDelete**](docs/CloudCredentialAPI.md#cloudcredentialsdelete) | **Delete** /api/v1/cloudcredentials/{cloudId} | Remove cloud credential by cloud Id
 *CloudCredentialAPI* | [**CloudcredentialsExceeded**](docs/CloudCredentialAPI.md#cloudcredentialsexceeded) | **Get** /api/v1/cloudcredentials/exceeded-quotas | Retrieve cloud credentials exceeded quotas
+*CloudCredentialAPI* | [**CloudcredentialsGpuFilterMetadata**](docs/CloudCredentialAPI.md#cloudcredentialsgpufiltermetadata) | **Get** /api/v1/cloudcredentials/flavors/gpu-filter-metadata/{cloudId} | Retrieve GPU filter metadata for a cloud credential
 *CloudCredentialAPI* | [**CloudcredentialsLockManager**](docs/CloudCredentialAPI.md#cloudcredentialslockmanager) | **Post** /api/v1/cloudcredentials/lockmanager | Lock/Unlock cloud credential
 *CloudCredentialAPI* | [**CloudcredentialsMakeDefault**](docs/CloudCredentialAPI.md#cloudcredentialsmakedefault) | **Post** /api/v1/cloudcredentials/makedefault | Make cloud credentials default
 *CloudCredentialAPI* | [**CloudcredentialsOrgList**](docs/CloudCredentialAPI.md#cloudcredentialsorglist) | **Get** /api/v1/cloudcredentials | Retrieve a list of cloud credentials by organization Id
@@ -274,6 +275,7 @@ Class | Method | HTTP request | Description
 *CronJobServiceAPI* | [**CronjobPurgeExpiredProjects**](docs/CronJobServiceAPI.md#cronjobpurgeexpiredprojects) | **Post** /api/v1/cronjob/purge-expired-projects | Purge expired projects
 *CronJobServiceAPI* | [**CronjobRemindUsersByAlertingProfile**](docs/CronJobServiceAPI.md#cronjobremindusersbyalertingprofile) | **Post** /api/v1/cronjob/remind-users-by-alerting-profile | Remind users by alerting profile
 *CronJobServiceAPI* | [**CronjobSyncBackupCredentials**](docs/CronJobServiceAPI.md#cronjobsyncbackupcredentials) | **Post** /api/v1/cronjob/sync-backup-credentials | Sync backup credentials
+*CronJobServiceAPI* | [**CronjobSyncDnsCertConfigs**](docs/CronJobServiceAPI.md#cronjobsyncdnscertconfigs) | **Post** /api/v1/cronjob/sync-dns-cert-configs | Sync DNS/Cert configs (drift cron — re-fires kubevap addons pipeline when Applied &lt; Desired)
 *CronJobServiceAPI* | [**CronjobSyncOpaProfiles**](docs/CronJobServiceAPI.md#cronjobsyncopaprofiles) | **Post** /api/v1/cronjob/sync-opa-profiles | Sync opa profiles
 *CronJobServiceAPI* | [**CronjobSyncOrganizations**](docs/CronJobServiceAPI.md#cronjobsyncorganizations) | **Post** /api/v1/cronjob/sync-organizations | Sync organizations
 *CronJobServiceAPI* | [**CronjobSyncProjectApps**](docs/CronJobServiceAPI.md#cronjobsyncprojectapps) | **Post** /api/v1/cronjob/sync-project-apps | Sync project apps
@@ -1175,6 +1177,8 @@ Class | Method | HTTP request | Description
  - [FinalPriceDto](docs/FinalPriceDto.md)
  - [FlavorGpuDetailsDto](docs/FlavorGpuDetailsDto.md)
  - [FlavorGpuDeviceDetailDto](docs/FlavorGpuDeviceDetailDto.md)
+ - [FlavorGpuFilterMetadataDto](docs/FlavorGpuFilterMetadataDto.md)
+ - [FlavorGpuFilterMetadataList](docs/FlavorGpuFilterMetadataList.md)
  - [FlavorsListDto](docs/FlavorsListDto.md)
  - [ForceToResetPasswordCommand](docs/ForceToResetPasswordCommand.md)
  - [ForgotPasswordCommand](docs/ForgotPasswordCommand.md)

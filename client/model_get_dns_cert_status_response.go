@@ -26,9 +26,9 @@ type GetDnsCertStatusResponse struct {
 	Domain NullableString `json:"domain,omitempty"`
 	AcmeEmail NullableString `json:"acmeEmail,omitempty"`
 	IssuerName NullableString `json:"issuerName,omitempty"`
-	ExternalDnsSynced *bool `json:"externalDnsSynced,omitempty"`
-	CertManagerSynced *bool `json:"certManagerSynced,omitempty"`
-	ClusterIssuerSynced *bool `json:"clusterIssuerSynced,omitempty"`
+	DesiredConfigVersion *int32 `json:"desiredConfigVersion,omitempty"`
+	AppliedConfigVersion *int32 `json:"appliedConfigVersion,omitempty"`
+	Synced *bool `json:"synced,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -293,100 +293,100 @@ func (o *GetDnsCertStatusResponse) UnsetIssuerName() {
 	o.IssuerName.Unset()
 }
 
-// GetExternalDnsSynced returns the ExternalDnsSynced field value if set, zero value otherwise.
-func (o *GetDnsCertStatusResponse) GetExternalDnsSynced() bool {
-	if o == nil || IsNil(o.ExternalDnsSynced) {
-		var ret bool
+// GetDesiredConfigVersion returns the DesiredConfigVersion field value if set, zero value otherwise.
+func (o *GetDnsCertStatusResponse) GetDesiredConfigVersion() int32 {
+	if o == nil || IsNil(o.DesiredConfigVersion) {
+		var ret int32
 		return ret
 	}
-	return *o.ExternalDnsSynced
+	return *o.DesiredConfigVersion
 }
 
-// GetExternalDnsSyncedOk returns a tuple with the ExternalDnsSynced field value if set, nil otherwise
+// GetDesiredConfigVersionOk returns a tuple with the DesiredConfigVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetDnsCertStatusResponse) GetExternalDnsSyncedOk() (*bool, bool) {
-	if o == nil || IsNil(o.ExternalDnsSynced) {
+func (o *GetDnsCertStatusResponse) GetDesiredConfigVersionOk() (*int32, bool) {
+	if o == nil || IsNil(o.DesiredConfigVersion) {
 		return nil, false
 	}
-	return o.ExternalDnsSynced, true
+	return o.DesiredConfigVersion, true
 }
 
-// HasExternalDnsSynced returns a boolean if a field has been set.
-func (o *GetDnsCertStatusResponse) HasExternalDnsSynced() bool {
-	if o != nil && !IsNil(o.ExternalDnsSynced) {
+// HasDesiredConfigVersion returns a boolean if a field has been set.
+func (o *GetDnsCertStatusResponse) HasDesiredConfigVersion() bool {
+	if o != nil && !IsNil(o.DesiredConfigVersion) {
 		return true
 	}
 
 	return false
 }
 
-// SetExternalDnsSynced gets a reference to the given bool and assigns it to the ExternalDnsSynced field.
-func (o *GetDnsCertStatusResponse) SetExternalDnsSynced(v bool) {
-	o.ExternalDnsSynced = &v
+// SetDesiredConfigVersion gets a reference to the given int32 and assigns it to the DesiredConfigVersion field.
+func (o *GetDnsCertStatusResponse) SetDesiredConfigVersion(v int32) {
+	o.DesiredConfigVersion = &v
 }
 
-// GetCertManagerSynced returns the CertManagerSynced field value if set, zero value otherwise.
-func (o *GetDnsCertStatusResponse) GetCertManagerSynced() bool {
-	if o == nil || IsNil(o.CertManagerSynced) {
-		var ret bool
+// GetAppliedConfigVersion returns the AppliedConfigVersion field value if set, zero value otherwise.
+func (o *GetDnsCertStatusResponse) GetAppliedConfigVersion() int32 {
+	if o == nil || IsNil(o.AppliedConfigVersion) {
+		var ret int32
 		return ret
 	}
-	return *o.CertManagerSynced
+	return *o.AppliedConfigVersion
 }
 
-// GetCertManagerSyncedOk returns a tuple with the CertManagerSynced field value if set, nil otherwise
+// GetAppliedConfigVersionOk returns a tuple with the AppliedConfigVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetDnsCertStatusResponse) GetCertManagerSyncedOk() (*bool, bool) {
-	if o == nil || IsNil(o.CertManagerSynced) {
+func (o *GetDnsCertStatusResponse) GetAppliedConfigVersionOk() (*int32, bool) {
+	if o == nil || IsNil(o.AppliedConfigVersion) {
 		return nil, false
 	}
-	return o.CertManagerSynced, true
+	return o.AppliedConfigVersion, true
 }
 
-// HasCertManagerSynced returns a boolean if a field has been set.
-func (o *GetDnsCertStatusResponse) HasCertManagerSynced() bool {
-	if o != nil && !IsNil(o.CertManagerSynced) {
+// HasAppliedConfigVersion returns a boolean if a field has been set.
+func (o *GetDnsCertStatusResponse) HasAppliedConfigVersion() bool {
+	if o != nil && !IsNil(o.AppliedConfigVersion) {
 		return true
 	}
 
 	return false
 }
 
-// SetCertManagerSynced gets a reference to the given bool and assigns it to the CertManagerSynced field.
-func (o *GetDnsCertStatusResponse) SetCertManagerSynced(v bool) {
-	o.CertManagerSynced = &v
+// SetAppliedConfigVersion gets a reference to the given int32 and assigns it to the AppliedConfigVersion field.
+func (o *GetDnsCertStatusResponse) SetAppliedConfigVersion(v int32) {
+	o.AppliedConfigVersion = &v
 }
 
-// GetClusterIssuerSynced returns the ClusterIssuerSynced field value if set, zero value otherwise.
-func (o *GetDnsCertStatusResponse) GetClusterIssuerSynced() bool {
-	if o == nil || IsNil(o.ClusterIssuerSynced) {
+// GetSynced returns the Synced field value if set, zero value otherwise.
+func (o *GetDnsCertStatusResponse) GetSynced() bool {
+	if o == nil || IsNil(o.Synced) {
 		var ret bool
 		return ret
 	}
-	return *o.ClusterIssuerSynced
+	return *o.Synced
 }
 
-// GetClusterIssuerSyncedOk returns a tuple with the ClusterIssuerSynced field value if set, nil otherwise
+// GetSyncedOk returns a tuple with the Synced field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetDnsCertStatusResponse) GetClusterIssuerSyncedOk() (*bool, bool) {
-	if o == nil || IsNil(o.ClusterIssuerSynced) {
+func (o *GetDnsCertStatusResponse) GetSyncedOk() (*bool, bool) {
+	if o == nil || IsNil(o.Synced) {
 		return nil, false
 	}
-	return o.ClusterIssuerSynced, true
+	return o.Synced, true
 }
 
-// HasClusterIssuerSynced returns a boolean if a field has been set.
-func (o *GetDnsCertStatusResponse) HasClusterIssuerSynced() bool {
-	if o != nil && !IsNil(o.ClusterIssuerSynced) {
+// HasSynced returns a boolean if a field has been set.
+func (o *GetDnsCertStatusResponse) HasSynced() bool {
+	if o != nil && !IsNil(o.Synced) {
 		return true
 	}
 
 	return false
 }
 
-// SetClusterIssuerSynced gets a reference to the given bool and assigns it to the ClusterIssuerSynced field.
-func (o *GetDnsCertStatusResponse) SetClusterIssuerSynced(v bool) {
-	o.ClusterIssuerSynced = &v
+// SetSynced gets a reference to the given bool and assigns it to the Synced field.
+func (o *GetDnsCertStatusResponse) SetSynced(v bool) {
+	o.Synced = &v
 }
 
 func (o GetDnsCertStatusResponse) MarshalJSON() ([]byte, error) {
@@ -417,14 +417,14 @@ func (o GetDnsCertStatusResponse) ToMap() (map[string]interface{}, error) {
 	if o.IssuerName.IsSet() {
 		toSerialize["issuerName"] = o.IssuerName.Get()
 	}
-	if !IsNil(o.ExternalDnsSynced) {
-		toSerialize["externalDnsSynced"] = o.ExternalDnsSynced
+	if !IsNil(o.DesiredConfigVersion) {
+		toSerialize["desiredConfigVersion"] = o.DesiredConfigVersion
 	}
-	if !IsNil(o.CertManagerSynced) {
-		toSerialize["certManagerSynced"] = o.CertManagerSynced
+	if !IsNil(o.AppliedConfigVersion) {
+		toSerialize["appliedConfigVersion"] = o.AppliedConfigVersion
 	}
-	if !IsNil(o.ClusterIssuerSynced) {
-		toSerialize["clusterIssuerSynced"] = o.ClusterIssuerSynced
+	if !IsNil(o.Synced) {
+		toSerialize["synced"] = o.Synced
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -454,9 +454,9 @@ func (o *GetDnsCertStatusResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "domain")
 		delete(additionalProperties, "acmeEmail")
 		delete(additionalProperties, "issuerName")
-		delete(additionalProperties, "externalDnsSynced")
-		delete(additionalProperties, "certManagerSynced")
-		delete(additionalProperties, "clusterIssuerSynced")
+		delete(additionalProperties, "desiredConfigVersion")
+		delete(additionalProperties, "appliedConfigVersion")
+		delete(additionalProperties, "synced")
 		o.AdditionalProperties = additionalProperties
 	}
 

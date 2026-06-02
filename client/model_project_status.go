@@ -32,6 +32,8 @@ const (
 	PROJECTSTATUS_ENABLE_MONITORING ProjectStatus = "EnableMonitoring"
 	PROJECTSTATUS_ENABLE_AI ProjectStatus = "EnableAi"
 	PROJECTSTATUS_ENABLE_GATEKEEPER ProjectStatus = "EnableGatekeeper"
+	PROJECTSTATUS_SYNC_DNS_CERT ProjectStatus = "SyncDnsCert"
+	PROJECTSTATUS_DISABLE_DNS_CERT ProjectStatus = "DisableDnsCert"
 	PROJECTSTATUS_FAILURE ProjectStatus = "Failure"
 	PROJECTSTATUS_FAILED_UPGRADE ProjectStatus = "FailedUpgrade"
 	PROJECTSTATUS_PURGING ProjectStatus = "Purging"
@@ -59,6 +61,8 @@ var AllowedProjectStatusEnumValues = []ProjectStatus{
 	"EnableMonitoring",
 	"EnableAi",
 	"EnableGatekeeper",
+	"SyncDnsCert",
+	"DisableDnsCert",
 	"Failure",
 	"FailedUpgrade",
 	"Purging",

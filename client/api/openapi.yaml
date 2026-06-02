@@ -11250,6 +11250,64 @@ paths:
       summary: Retrieve cloud credentials exceeded quotas
       tags:
       - Cloud credential
+  /api/v1/cloudcredentials/flavors/gpu-filter-metadata/{cloudId}:
+    get:
+      operationId: cloudcredentials-gpu-filter-metadata
+      parameters:
+      - explode: false
+        in: path
+        name: cloudId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FlavorGpuFilterMetadataList"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve GPU filter metadata for a cloud credential
+      tags:
+      - Cloud credential
   /api/v1/cloudcredentials/{cloudId}:
     delete:
       operationId: cloudcredentials-delete
@@ -11890,6 +11948,59 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
       summary: Sync backup credentials
+      tags:
+      - Cron Job Service
+  /api/v1/cronjob/sync-dns-cert-configs:
+    post:
+      operationId: cronjob-sync-dns-cert-configs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SyncDnsCertConfigsCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Sync DNS/Cert configs (drift cron — re-fires kubevap addons pipeline
+        when Applied < Desired)
       tags:
       - Cron Job Service
   /api/v1/cronjob/sync-opa-profiles:
@@ -45356,6 +45467,10 @@ components:
       - StartMigrationCluster
       - KubernetesAction
       - DeletedProject
+      - StartedSyncDnsCert
+      - SyncedDnsCert
+      - StartedDisableDnsCert
+      - DisabledDnsCert
       type: string
     AddAccountAdminCommand:
       example:
@@ -57756,6 +57871,45 @@ components:
       - acceleratorType
       - deviceCount
       type: object
+    FlavorGpuFilterMetadataDto:
+      example:
+        supportedGpuModels:
+        - supportedGpuModels
+        - supportedGpuModels
+        maxGpuCount: 6
+        minGpuCount: 0
+      properties:
+        supportedGpuModels:
+          items:
+            type: string
+          nullable: true
+          type: array
+        minGpuCount:
+          format: int32
+          nullable: true
+          type: integer
+        maxGpuCount:
+          format: int32
+          nullable: true
+          type: integer
+      type: object
+    FlavorGpuFilterMetadataList:
+      example:
+        gpuFilterMetadata:
+          supportedGpuModels:
+          - supportedGpuModels
+          - supportedGpuModels
+          maxGpuCount: 6
+          minGpuCount: 0
+        cloudType: cloudType
+      properties:
+        cloudType:
+          type: string
+        gpuFilterMetadata:
+          $ref: "#/components/schemas/FlavorGpuFilterMetadataDto"
+      required:
+      - cloudType
+      type: object
     FlavorsListDto:
       example:
         maxDataDiskCount: 1.4658129805029452
@@ -58028,14 +58182,14 @@ components:
     GetDnsCertStatusResponse:
       example:
         acmeEmail: acmeEmail
-        externalDnsSynced: true
-        certManagerSynced: true
+        desiredConfigVersion: 0
+        synced: true
         issuerName: issuerName
         domain: domain
         dnsProvider: dnsProvider
+        appliedConfigVersion: 6
         certIssuerType: certIssuerType
         enabled: true
-        clusterIssuerSynced: true
       properties:
         enabled:
           type: boolean
@@ -58054,11 +58208,13 @@ components:
         issuerName:
           nullable: true
           type: string
-        externalDnsSynced:
-          type: boolean
-        certManagerSynced:
-          type: boolean
-        clusterIssuerSynced:
+        desiredConfigVersion:
+          format: int32
+          type: integer
+        appliedConfigVersion:
+          format: int32
+          type: integer
+        synced:
           type: boolean
       type: object
     GetEksClusterAuthCommand:
@@ -65566,6 +65722,12 @@ components:
           - reasons
           hidden: true
           enable: true
+        disableDnsCert:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
         enableAutoscaler:
           reasons:
           - reasons
@@ -65621,6 +65783,12 @@ components:
           hidden: true
           enable: true
         disableSpotWorker:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        enableDnsCert:
           reasons:
           - reasons
           - reasons
@@ -65709,6 +65877,10 @@ components:
           $ref: "#/components/schemas/ButtonStatusDto"
         addVm:
           $ref: "#/components/schemas/ButtonStatusDto"
+        enableDnsCert:
+          $ref: "#/components/schemas/ButtonStatusDto"
+        disableDnsCert:
+          $ref: "#/components/schemas/ButtonStatusDto"
       required:
       - addServer
       - addVm
@@ -65719,6 +65891,7 @@ components:
       - disableAi
       - disableAutoscaler
       - disableBackup
+      - disableDnsCert
       - disableFullSpot
       - disableMonitoring
       - disableOpa
@@ -65727,6 +65900,7 @@ components:
       - enableAi
       - enableAutoscaler
       - enableBackup
+      - enableDnsCert
       - enableFullSpot
       - enableMonitoring
       - enableOpa
@@ -68246,6 +68420,8 @@ components:
       - EnableMonitoring
       - EnableAi
       - EnableGatekeeper
+      - SyncDnsCert
+      - DisableDnsCert
       - Failure
       - FailedUpgrade
       - Purging
@@ -74117,6 +74293,8 @@ components:
           type: object
       type: object
     SyncBackupCredentialsCommand:
+      type: object
+    SyncDnsCertConfigsCommand:
       type: object
     SyncOpaProfilesCommand:
       type: object

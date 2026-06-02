@@ -497,6 +497,8 @@ docs/FinalPriceCommand.md
 docs/FinalPriceDto.md
 docs/FlavorGpuDetailsDto.md
 docs/FlavorGpuDeviceDetailDto.md
+docs/FlavorGpuFilterMetadataDto.md
+docs/FlavorGpuFilterMetadataList.md
 docs/FlavorsAPI.md
 docs/FlavorsListDto.md
 docs/ForceToResetPasswordCommand.md
@@ -1471,6 +1473,8 @@ model_final_price_command.go
 model_final_price_dto.go
 model_flavor_gpu_details_dto.go
 model_flavor_gpu_device_detail_dto.go
+model_flavor_gpu_filter_metadata_dto.go
+model_flavor_gpu_filter_metadata_list.go
 model_flavors_list_dto.go
 model_force_to_reset_password_command.go
 model_forgot_password_command.go

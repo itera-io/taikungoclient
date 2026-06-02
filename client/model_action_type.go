@@ -105,6 +105,10 @@ const (
 	ACTIONTYPE_START_MIGRATION_CLUSTER ActionType = "StartMigrationCluster"
 	ACTIONTYPE_KUBERNETES_ACTION ActionType = "KubernetesAction"
 	ACTIONTYPE_DELETED_PROJECT ActionType = "DeletedProject"
+	ACTIONTYPE_STARTED_SYNC_DNS_CERT ActionType = "StartedSyncDnsCert"
+	ACTIONTYPE_SYNCED_DNS_CERT ActionType = "SyncedDnsCert"
+	ACTIONTYPE_STARTED_DISABLE_DNS_CERT ActionType = "StartedDisableDnsCert"
+	ACTIONTYPE_DISABLED_DNS_CERT ActionType = "DisabledDnsCert"
 )
 
 // All allowed values of ActionType enum
@@ -193,6 +197,10 @@ var AllowedActionTypeEnumValues = []ActionType{
 	"StartMigrationCluster",
 	"KubernetesAction",
 	"DeletedProject",
+	"StartedSyncDnsCert",
+	"SyncedDnsCert",
+	"StartedDisableDnsCert",
+	"DisabledDnsCert",
 }
 
 func (v *ActionType) UnmarshalJSON(src []byte) error {
