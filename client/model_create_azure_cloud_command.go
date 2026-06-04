@@ -28,10 +28,14 @@ type CreateAzureCloudCommand struct {
 	AzureLocation NullableString `json:"azureLocation,omitempty"`
 	AzCount NullableInt32 `json:"azCount,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	IpMode *IpMode `json:"ipMode,omitempty"`
 	VnetMode *VnetMode `json:"vnetMode,omitempty"`
 	ExistingVirtualNetworkResourceGroupName NullableString `json:"existingVirtualNetworkResourceGroupName,omitempty"`
 	ExistingVirtualNetworkName NullableString `json:"existingVirtualNetworkName,omitempty"`
 	ExistingSubnetName NullableString `json:"existingSubnetName,omitempty"`
+	SharedFileSystemEnabled *bool `json:"sharedFileSystemEnabled,omitempty"`
+	ImportedFileShareId NullableString `json:"importedFileShareId,omitempty"`
+	Subnets []CreateAzureSubnetDto `json:"subnets,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -390,6 +394,38 @@ func (o *CreateAzureCloudCommand) UnsetOrganizationId() {
 	o.OrganizationId.Unset()
 }
 
+// GetIpMode returns the IpMode field value if set, zero value otherwise.
+func (o *CreateAzureCloudCommand) GetIpMode() IpMode {
+	if o == nil || IsNil(o.IpMode) {
+		var ret IpMode
+		return ret
+	}
+	return *o.IpMode
+}
+
+// GetIpModeOk returns a tuple with the IpMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAzureCloudCommand) GetIpModeOk() (*IpMode, bool) {
+	if o == nil || IsNil(o.IpMode) {
+		return nil, false
+	}
+	return o.IpMode, true
+}
+
+// HasIpMode returns a boolean if a field has been set.
+func (o *CreateAzureCloudCommand) HasIpMode() bool {
+	if o != nil && !IsNil(o.IpMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetIpMode gets a reference to the given IpMode and assigns it to the IpMode field.
+func (o *CreateAzureCloudCommand) SetIpMode(v IpMode) {
+	o.IpMode = &v
+}
+
 // GetVnetMode returns the VnetMode field value if set, zero value otherwise.
 func (o *CreateAzureCloudCommand) GetVnetMode() VnetMode {
 	if o == nil || IsNil(o.VnetMode) {
@@ -548,6 +584,113 @@ func (o *CreateAzureCloudCommand) UnsetExistingSubnetName() {
 	o.ExistingSubnetName.Unset()
 }
 
+// GetSharedFileSystemEnabled returns the SharedFileSystemEnabled field value if set, zero value otherwise.
+func (o *CreateAzureCloudCommand) GetSharedFileSystemEnabled() bool {
+	if o == nil || IsNil(o.SharedFileSystemEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.SharedFileSystemEnabled
+}
+
+// GetSharedFileSystemEnabledOk returns a tuple with the SharedFileSystemEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAzureCloudCommand) GetSharedFileSystemEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.SharedFileSystemEnabled) {
+		return nil, false
+	}
+	return o.SharedFileSystemEnabled, true
+}
+
+// HasSharedFileSystemEnabled returns a boolean if a field has been set.
+func (o *CreateAzureCloudCommand) HasSharedFileSystemEnabled() bool {
+	if o != nil && !IsNil(o.SharedFileSystemEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetSharedFileSystemEnabled gets a reference to the given bool and assigns it to the SharedFileSystemEnabled field.
+func (o *CreateAzureCloudCommand) SetSharedFileSystemEnabled(v bool) {
+	o.SharedFileSystemEnabled = &v
+}
+
+// GetImportedFileShareId returns the ImportedFileShareId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateAzureCloudCommand) GetImportedFileShareId() string {
+	if o == nil || IsNil(o.ImportedFileShareId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ImportedFileShareId.Get()
+}
+
+// GetImportedFileShareIdOk returns a tuple with the ImportedFileShareId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateAzureCloudCommand) GetImportedFileShareIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ImportedFileShareId.Get(), o.ImportedFileShareId.IsSet()
+}
+
+// HasImportedFileShareId returns a boolean if a field has been set.
+func (o *CreateAzureCloudCommand) HasImportedFileShareId() bool {
+	if o != nil && o.ImportedFileShareId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetImportedFileShareId gets a reference to the given NullableString and assigns it to the ImportedFileShareId field.
+func (o *CreateAzureCloudCommand) SetImportedFileShareId(v string) {
+	o.ImportedFileShareId.Set(&v)
+}
+// SetImportedFileShareIdNil sets the value for ImportedFileShareId to be an explicit nil
+func (o *CreateAzureCloudCommand) SetImportedFileShareIdNil() {
+	o.ImportedFileShareId.Set(nil)
+}
+
+// UnsetImportedFileShareId ensures that no value is present for ImportedFileShareId, not even an explicit nil
+func (o *CreateAzureCloudCommand) UnsetImportedFileShareId() {
+	o.ImportedFileShareId.Unset()
+}
+
+// GetSubnets returns the Subnets field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateAzureCloudCommand) GetSubnets() []CreateAzureSubnetDto {
+	if o == nil {
+		var ret []CreateAzureSubnetDto
+		return ret
+	}
+	return o.Subnets
+}
+
+// GetSubnetsOk returns a tuple with the Subnets field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateAzureCloudCommand) GetSubnetsOk() ([]CreateAzureSubnetDto, bool) {
+	if o == nil || IsNil(o.Subnets) {
+		return nil, false
+	}
+	return o.Subnets, true
+}
+
+// HasSubnets returns a boolean if a field has been set.
+func (o *CreateAzureCloudCommand) HasSubnets() bool {
+	if o != nil && !IsNil(o.Subnets) {
+		return true
+	}
+
+	return false
+}
+
+// SetSubnets gets a reference to the given []CreateAzureSubnetDto and assigns it to the Subnets field.
+func (o *CreateAzureCloudCommand) SetSubnets(v []CreateAzureSubnetDto) {
+	o.Subnets = v
+}
+
 func (o CreateAzureCloudCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -582,6 +725,9 @@ func (o CreateAzureCloudCommand) ToMap() (map[string]interface{}, error) {
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
+	if !IsNil(o.IpMode) {
+		toSerialize["ipMode"] = o.IpMode
+	}
 	if !IsNil(o.VnetMode) {
 		toSerialize["vnetMode"] = o.VnetMode
 	}
@@ -593,6 +739,15 @@ func (o CreateAzureCloudCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.ExistingSubnetName.IsSet() {
 		toSerialize["existingSubnetName"] = o.ExistingSubnetName.Get()
+	}
+	if !IsNil(o.SharedFileSystemEnabled) {
+		toSerialize["sharedFileSystemEnabled"] = o.SharedFileSystemEnabled
+	}
+	if o.ImportedFileShareId.IsSet() {
+		toSerialize["importedFileShareId"] = o.ImportedFileShareId.Get()
+	}
+	if o.Subnets != nil {
+		toSerialize["subnets"] = o.Subnets
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -624,10 +779,14 @@ func (o *CreateAzureCloudCommand) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "azureLocation")
 		delete(additionalProperties, "azCount")
 		delete(additionalProperties, "organizationId")
+		delete(additionalProperties, "ipMode")
 		delete(additionalProperties, "vnetMode")
 		delete(additionalProperties, "existingVirtualNetworkResourceGroupName")
 		delete(additionalProperties, "existingVirtualNetworkName")
 		delete(additionalProperties, "existingSubnetName")
+		delete(additionalProperties, "sharedFileSystemEnabled")
+		delete(additionalProperties, "importedFileShareId")
+		delete(additionalProperties, "subnets")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -165,6 +165,7 @@ Class | Method | HTTP request | Description
 *AzureCloudCredentialAPI* | [**AzureAksClusters**](docs/AzureCloudCredentialAPI.md#azureaksclusters) | **Post** /api/v1/azure/aks-clusters | Fetch AKS cluster list
 *AzureCloudCredentialAPI* | [**AzureCreate**](docs/AzureCloudCredentialAPI.md#azurecreate) | **Post** /api/v1/azure/create | Add Azure credentials
 *AzureCloudCredentialAPI* | [**AzureDashboard**](docs/AzureCloudCredentialAPI.md#azuredashboard) | **Post** /api/v1/azure/quota/list | Fetch Azure quota list
+*AzureCloudCredentialAPI* | [**AzureFileShareList**](docs/AzureCloudCredentialAPI.md#azurefilesharelist) | **Post** /api/v1/azure/file-share-list | Retrieve Azure File Shares within a resource group
 *AzureCloudCredentialAPI* | [**AzureList**](docs/AzureCloudCredentialAPI.md#azurelist) | **Get** /api/v1/azure/list | Retrieve list of azure cloud credentials
 *AzureCloudCredentialAPI* | [**AzureLocations**](docs/AzureCloudCredentialAPI.md#azurelocations) | **Post** /api/v1/azure/locations | Fetch Azure location list
 *AzureCloudCredentialAPI* | [**AzureOffers**](docs/AzureCloudCredentialAPI.md#azureoffers) | **Get** /api/v1/azure/offers/{cloudId}/{publisher} | List Azure offer list by publisher
@@ -868,6 +869,8 @@ Class | Method | HTTP request | Description
  - [AzureCredentialList](docs/AzureCredentialList.md)
  - [AzureCredentialsListDto](docs/AzureCredentialsListDto.md)
  - [AzureDashboardCommand](docs/AzureDashboardCommand.md)
+ - [AzureFileShareDto](docs/AzureFileShareDto.md)
+ - [AzureFileShareListCommand](docs/AzureFileShareListCommand.md)
  - [AzureFlavorList](docs/AzureFlavorList.md)
  - [AzureFlavorsWithPriceDto](docs/AzureFlavorsWithPriceDto.md)
  - [AzureLocationsCommand](docs/AzureLocationsCommand.md)
@@ -991,6 +994,7 @@ Class | Method | HTTP request | Description
  - [CreateAwsCloudCommand](docs/CreateAwsCloudCommand.md)
  - [CreateAwsSubnetDto](docs/CreateAwsSubnetDto.md)
  - [CreateAzureCloudCommand](docs/CreateAzureCloudCommand.md)
+ - [CreateAzureSubnetDto](docs/CreateAzureSubnetDto.md)
  - [CreateBackupPolicyCommand](docs/CreateBackupPolicyCommand.md)
  - [CreateBillingSummaryCommand](docs/CreateBillingSummaryCommand.md)
  - [CreateCatalogAppCommand](docs/CreateCatalogAppCommand.md)

@@ -15,42 +15,41 @@ import (
 	"encoding/json"
 )
 
-// checks if the AzureVnetListCommand type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AzureVnetListCommand{}
+// checks if the AzureFileShareListCommand type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AzureFileShareListCommand{}
 
-// AzureVnetListCommand struct for AzureVnetListCommand
-type AzureVnetListCommand struct {
+// AzureFileShareListCommand struct for AzureFileShareListCommand
+type AzureFileShareListCommand struct {
 	AzureClientId NullableString `json:"azureClientId,omitempty"`
 	AzureClientSecret NullableString `json:"azureClientSecret,omitempty"`
 	AzureTenantId NullableString `json:"azureTenantId,omitempty"`
 	AzureSubscriptionId NullableString `json:"azureSubscriptionId,omitempty"`
 	ResourceGroupName NullableString `json:"resourceGroupName,omitempty"`
 	CloudId NullableInt32 `json:"cloudId,omitempty"`
-	IpMode *IpMode `json:"ipMode,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _AzureVnetListCommand AzureVnetListCommand
+type _AzureFileShareListCommand AzureFileShareListCommand
 
-// NewAzureVnetListCommand instantiates a new AzureVnetListCommand object
+// NewAzureFileShareListCommand instantiates a new AzureFileShareListCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAzureVnetListCommand() *AzureVnetListCommand {
-	this := AzureVnetListCommand{}
+func NewAzureFileShareListCommand() *AzureFileShareListCommand {
+	this := AzureFileShareListCommand{}
 	return &this
 }
 
-// NewAzureVnetListCommandWithDefaults instantiates a new AzureVnetListCommand object
+// NewAzureFileShareListCommandWithDefaults instantiates a new AzureFileShareListCommand object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAzureVnetListCommandWithDefaults() *AzureVnetListCommand {
-	this := AzureVnetListCommand{}
+func NewAzureFileShareListCommandWithDefaults() *AzureFileShareListCommand {
+	this := AzureFileShareListCommand{}
 	return &this
 }
 
 // GetAzureClientId returns the AzureClientId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AzureVnetListCommand) GetAzureClientId() string {
+func (o *AzureFileShareListCommand) GetAzureClientId() string {
 	if o == nil || IsNil(o.AzureClientId.Get()) {
 		var ret string
 		return ret
@@ -61,7 +60,7 @@ func (o *AzureVnetListCommand) GetAzureClientId() string {
 // GetAzureClientIdOk returns a tuple with the AzureClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AzureVnetListCommand) GetAzureClientIdOk() (*string, bool) {
+func (o *AzureFileShareListCommand) GetAzureClientIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,7 +68,7 @@ func (o *AzureVnetListCommand) GetAzureClientIdOk() (*string, bool) {
 }
 
 // HasAzureClientId returns a boolean if a field has been set.
-func (o *AzureVnetListCommand) HasAzureClientId() bool {
+func (o *AzureFileShareListCommand) HasAzureClientId() bool {
 	if o != nil && o.AzureClientId.IsSet() {
 		return true
 	}
@@ -78,21 +77,21 @@ func (o *AzureVnetListCommand) HasAzureClientId() bool {
 }
 
 // SetAzureClientId gets a reference to the given NullableString and assigns it to the AzureClientId field.
-func (o *AzureVnetListCommand) SetAzureClientId(v string) {
+func (o *AzureFileShareListCommand) SetAzureClientId(v string) {
 	o.AzureClientId.Set(&v)
 }
 // SetAzureClientIdNil sets the value for AzureClientId to be an explicit nil
-func (o *AzureVnetListCommand) SetAzureClientIdNil() {
+func (o *AzureFileShareListCommand) SetAzureClientIdNil() {
 	o.AzureClientId.Set(nil)
 }
 
 // UnsetAzureClientId ensures that no value is present for AzureClientId, not even an explicit nil
-func (o *AzureVnetListCommand) UnsetAzureClientId() {
+func (o *AzureFileShareListCommand) UnsetAzureClientId() {
 	o.AzureClientId.Unset()
 }
 
 // GetAzureClientSecret returns the AzureClientSecret field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AzureVnetListCommand) GetAzureClientSecret() string {
+func (o *AzureFileShareListCommand) GetAzureClientSecret() string {
 	if o == nil || IsNil(o.AzureClientSecret.Get()) {
 		var ret string
 		return ret
@@ -103,7 +102,7 @@ func (o *AzureVnetListCommand) GetAzureClientSecret() string {
 // GetAzureClientSecretOk returns a tuple with the AzureClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AzureVnetListCommand) GetAzureClientSecretOk() (*string, bool) {
+func (o *AzureFileShareListCommand) GetAzureClientSecretOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -111,7 +110,7 @@ func (o *AzureVnetListCommand) GetAzureClientSecretOk() (*string, bool) {
 }
 
 // HasAzureClientSecret returns a boolean if a field has been set.
-func (o *AzureVnetListCommand) HasAzureClientSecret() bool {
+func (o *AzureFileShareListCommand) HasAzureClientSecret() bool {
 	if o != nil && o.AzureClientSecret.IsSet() {
 		return true
 	}
@@ -120,21 +119,21 @@ func (o *AzureVnetListCommand) HasAzureClientSecret() bool {
 }
 
 // SetAzureClientSecret gets a reference to the given NullableString and assigns it to the AzureClientSecret field.
-func (o *AzureVnetListCommand) SetAzureClientSecret(v string) {
+func (o *AzureFileShareListCommand) SetAzureClientSecret(v string) {
 	o.AzureClientSecret.Set(&v)
 }
 // SetAzureClientSecretNil sets the value for AzureClientSecret to be an explicit nil
-func (o *AzureVnetListCommand) SetAzureClientSecretNil() {
+func (o *AzureFileShareListCommand) SetAzureClientSecretNil() {
 	o.AzureClientSecret.Set(nil)
 }
 
 // UnsetAzureClientSecret ensures that no value is present for AzureClientSecret, not even an explicit nil
-func (o *AzureVnetListCommand) UnsetAzureClientSecret() {
+func (o *AzureFileShareListCommand) UnsetAzureClientSecret() {
 	o.AzureClientSecret.Unset()
 }
 
 // GetAzureTenantId returns the AzureTenantId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AzureVnetListCommand) GetAzureTenantId() string {
+func (o *AzureFileShareListCommand) GetAzureTenantId() string {
 	if o == nil || IsNil(o.AzureTenantId.Get()) {
 		var ret string
 		return ret
@@ -145,7 +144,7 @@ func (o *AzureVnetListCommand) GetAzureTenantId() string {
 // GetAzureTenantIdOk returns a tuple with the AzureTenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AzureVnetListCommand) GetAzureTenantIdOk() (*string, bool) {
+func (o *AzureFileShareListCommand) GetAzureTenantIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -153,7 +152,7 @@ func (o *AzureVnetListCommand) GetAzureTenantIdOk() (*string, bool) {
 }
 
 // HasAzureTenantId returns a boolean if a field has been set.
-func (o *AzureVnetListCommand) HasAzureTenantId() bool {
+func (o *AzureFileShareListCommand) HasAzureTenantId() bool {
 	if o != nil && o.AzureTenantId.IsSet() {
 		return true
 	}
@@ -162,21 +161,21 @@ func (o *AzureVnetListCommand) HasAzureTenantId() bool {
 }
 
 // SetAzureTenantId gets a reference to the given NullableString and assigns it to the AzureTenantId field.
-func (o *AzureVnetListCommand) SetAzureTenantId(v string) {
+func (o *AzureFileShareListCommand) SetAzureTenantId(v string) {
 	o.AzureTenantId.Set(&v)
 }
 // SetAzureTenantIdNil sets the value for AzureTenantId to be an explicit nil
-func (o *AzureVnetListCommand) SetAzureTenantIdNil() {
+func (o *AzureFileShareListCommand) SetAzureTenantIdNil() {
 	o.AzureTenantId.Set(nil)
 }
 
 // UnsetAzureTenantId ensures that no value is present for AzureTenantId, not even an explicit nil
-func (o *AzureVnetListCommand) UnsetAzureTenantId() {
+func (o *AzureFileShareListCommand) UnsetAzureTenantId() {
 	o.AzureTenantId.Unset()
 }
 
 // GetAzureSubscriptionId returns the AzureSubscriptionId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AzureVnetListCommand) GetAzureSubscriptionId() string {
+func (o *AzureFileShareListCommand) GetAzureSubscriptionId() string {
 	if o == nil || IsNil(o.AzureSubscriptionId.Get()) {
 		var ret string
 		return ret
@@ -187,7 +186,7 @@ func (o *AzureVnetListCommand) GetAzureSubscriptionId() string {
 // GetAzureSubscriptionIdOk returns a tuple with the AzureSubscriptionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AzureVnetListCommand) GetAzureSubscriptionIdOk() (*string, bool) {
+func (o *AzureFileShareListCommand) GetAzureSubscriptionIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -195,7 +194,7 @@ func (o *AzureVnetListCommand) GetAzureSubscriptionIdOk() (*string, bool) {
 }
 
 // HasAzureSubscriptionId returns a boolean if a field has been set.
-func (o *AzureVnetListCommand) HasAzureSubscriptionId() bool {
+func (o *AzureFileShareListCommand) HasAzureSubscriptionId() bool {
 	if o != nil && o.AzureSubscriptionId.IsSet() {
 		return true
 	}
@@ -204,21 +203,21 @@ func (o *AzureVnetListCommand) HasAzureSubscriptionId() bool {
 }
 
 // SetAzureSubscriptionId gets a reference to the given NullableString and assigns it to the AzureSubscriptionId field.
-func (o *AzureVnetListCommand) SetAzureSubscriptionId(v string) {
+func (o *AzureFileShareListCommand) SetAzureSubscriptionId(v string) {
 	o.AzureSubscriptionId.Set(&v)
 }
 // SetAzureSubscriptionIdNil sets the value for AzureSubscriptionId to be an explicit nil
-func (o *AzureVnetListCommand) SetAzureSubscriptionIdNil() {
+func (o *AzureFileShareListCommand) SetAzureSubscriptionIdNil() {
 	o.AzureSubscriptionId.Set(nil)
 }
 
 // UnsetAzureSubscriptionId ensures that no value is present for AzureSubscriptionId, not even an explicit nil
-func (o *AzureVnetListCommand) UnsetAzureSubscriptionId() {
+func (o *AzureFileShareListCommand) UnsetAzureSubscriptionId() {
 	o.AzureSubscriptionId.Unset()
 }
 
 // GetResourceGroupName returns the ResourceGroupName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AzureVnetListCommand) GetResourceGroupName() string {
+func (o *AzureFileShareListCommand) GetResourceGroupName() string {
 	if o == nil || IsNil(o.ResourceGroupName.Get()) {
 		var ret string
 		return ret
@@ -229,7 +228,7 @@ func (o *AzureVnetListCommand) GetResourceGroupName() string {
 // GetResourceGroupNameOk returns a tuple with the ResourceGroupName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AzureVnetListCommand) GetResourceGroupNameOk() (*string, bool) {
+func (o *AzureFileShareListCommand) GetResourceGroupNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -237,7 +236,7 @@ func (o *AzureVnetListCommand) GetResourceGroupNameOk() (*string, bool) {
 }
 
 // HasResourceGroupName returns a boolean if a field has been set.
-func (o *AzureVnetListCommand) HasResourceGroupName() bool {
+func (o *AzureFileShareListCommand) HasResourceGroupName() bool {
 	if o != nil && o.ResourceGroupName.IsSet() {
 		return true
 	}
@@ -246,21 +245,21 @@ func (o *AzureVnetListCommand) HasResourceGroupName() bool {
 }
 
 // SetResourceGroupName gets a reference to the given NullableString and assigns it to the ResourceGroupName field.
-func (o *AzureVnetListCommand) SetResourceGroupName(v string) {
+func (o *AzureFileShareListCommand) SetResourceGroupName(v string) {
 	o.ResourceGroupName.Set(&v)
 }
 // SetResourceGroupNameNil sets the value for ResourceGroupName to be an explicit nil
-func (o *AzureVnetListCommand) SetResourceGroupNameNil() {
+func (o *AzureFileShareListCommand) SetResourceGroupNameNil() {
 	o.ResourceGroupName.Set(nil)
 }
 
 // UnsetResourceGroupName ensures that no value is present for ResourceGroupName, not even an explicit nil
-func (o *AzureVnetListCommand) UnsetResourceGroupName() {
+func (o *AzureFileShareListCommand) UnsetResourceGroupName() {
 	o.ResourceGroupName.Unset()
 }
 
 // GetCloudId returns the CloudId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AzureVnetListCommand) GetCloudId() int32 {
+func (o *AzureFileShareListCommand) GetCloudId() int32 {
 	if o == nil || IsNil(o.CloudId.Get()) {
 		var ret int32
 		return ret
@@ -271,7 +270,7 @@ func (o *AzureVnetListCommand) GetCloudId() int32 {
 // GetCloudIdOk returns a tuple with the CloudId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AzureVnetListCommand) GetCloudIdOk() (*int32, bool) {
+func (o *AzureFileShareListCommand) GetCloudIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -279,7 +278,7 @@ func (o *AzureVnetListCommand) GetCloudIdOk() (*int32, bool) {
 }
 
 // HasCloudId returns a boolean if a field has been set.
-func (o *AzureVnetListCommand) HasCloudId() bool {
+func (o *AzureFileShareListCommand) HasCloudId() bool {
 	if o != nil && o.CloudId.IsSet() {
 		return true
 	}
@@ -288,52 +287,20 @@ func (o *AzureVnetListCommand) HasCloudId() bool {
 }
 
 // SetCloudId gets a reference to the given NullableInt32 and assigns it to the CloudId field.
-func (o *AzureVnetListCommand) SetCloudId(v int32) {
+func (o *AzureFileShareListCommand) SetCloudId(v int32) {
 	o.CloudId.Set(&v)
 }
 // SetCloudIdNil sets the value for CloudId to be an explicit nil
-func (o *AzureVnetListCommand) SetCloudIdNil() {
+func (o *AzureFileShareListCommand) SetCloudIdNil() {
 	o.CloudId.Set(nil)
 }
 
 // UnsetCloudId ensures that no value is present for CloudId, not even an explicit nil
-func (o *AzureVnetListCommand) UnsetCloudId() {
+func (o *AzureFileShareListCommand) UnsetCloudId() {
 	o.CloudId.Unset()
 }
 
-// GetIpMode returns the IpMode field value if set, zero value otherwise.
-func (o *AzureVnetListCommand) GetIpMode() IpMode {
-	if o == nil || IsNil(o.IpMode) {
-		var ret IpMode
-		return ret
-	}
-	return *o.IpMode
-}
-
-// GetIpModeOk returns a tuple with the IpMode field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AzureVnetListCommand) GetIpModeOk() (*IpMode, bool) {
-	if o == nil || IsNil(o.IpMode) {
-		return nil, false
-	}
-	return o.IpMode, true
-}
-
-// HasIpMode returns a boolean if a field has been set.
-func (o *AzureVnetListCommand) HasIpMode() bool {
-	if o != nil && !IsNil(o.IpMode) {
-		return true
-	}
-
-	return false
-}
-
-// SetIpMode gets a reference to the given IpMode and assigns it to the IpMode field.
-func (o *AzureVnetListCommand) SetIpMode(v IpMode) {
-	o.IpMode = &v
-}
-
-func (o AzureVnetListCommand) MarshalJSON() ([]byte, error) {
+func (o AzureFileShareListCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -341,7 +308,7 @@ func (o AzureVnetListCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o AzureVnetListCommand) ToMap() (map[string]interface{}, error) {
+func (o AzureFileShareListCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AzureClientId.IsSet() {
 		toSerialize["azureClientId"] = o.AzureClientId.Get()
@@ -361,9 +328,6 @@ func (o AzureVnetListCommand) ToMap() (map[string]interface{}, error) {
 	if o.CloudId.IsSet() {
 		toSerialize["cloudId"] = o.CloudId.Get()
 	}
-	if !IsNil(o.IpMode) {
-		toSerialize["ipMode"] = o.IpMode
-	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -372,16 +336,16 @@ func (o AzureVnetListCommand) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AzureVnetListCommand) UnmarshalJSON(data []byte) (err error) {
-	varAzureVnetListCommand := _AzureVnetListCommand{}
+func (o *AzureFileShareListCommand) UnmarshalJSON(data []byte) (err error) {
+	varAzureFileShareListCommand := _AzureFileShareListCommand{}
 
-	err = json.Unmarshal(data, &varAzureVnetListCommand)
+	err = json.Unmarshal(data, &varAzureFileShareListCommand)
 
 	if err != nil {
 		return err
 	}
 
-	*o = AzureVnetListCommand(varAzureVnetListCommand)
+	*o = AzureFileShareListCommand(varAzureFileShareListCommand)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -392,45 +356,44 @@ func (o *AzureVnetListCommand) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "azureSubscriptionId")
 		delete(additionalProperties, "resourceGroupName")
 		delete(additionalProperties, "cloudId")
-		delete(additionalProperties, "ipMode")
 		o.AdditionalProperties = additionalProperties
 	}
 
 	return err
 }
 
-type NullableAzureVnetListCommand struct {
-	value *AzureVnetListCommand
+type NullableAzureFileShareListCommand struct {
+	value *AzureFileShareListCommand
 	isSet bool
 }
 
-func (v NullableAzureVnetListCommand) Get() *AzureVnetListCommand {
+func (v NullableAzureFileShareListCommand) Get() *AzureFileShareListCommand {
 	return v.value
 }
 
-func (v *NullableAzureVnetListCommand) Set(val *AzureVnetListCommand) {
+func (v *NullableAzureFileShareListCommand) Set(val *AzureFileShareListCommand) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableAzureVnetListCommand) IsSet() bool {
+func (v NullableAzureFileShareListCommand) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableAzureVnetListCommand) Unset() {
+func (v *NullableAzureFileShareListCommand) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableAzureVnetListCommand(val *AzureVnetListCommand) *NullableAzureVnetListCommand {
-	return &NullableAzureVnetListCommand{value: val, isSet: true}
+func NewNullableAzureFileShareListCommand(val *AzureFileShareListCommand) *NullableAzureFileShareListCommand {
+	return &NullableAzureFileShareListCommand{value: val, isSet: true}
 }
 
-func (v NullableAzureVnetListCommand) MarshalJSON() ([]byte, error) {
+func (v NullableAzureFileShareListCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableAzureVnetListCommand) UnmarshalJSON(src []byte) error {
+func (v *NullableAzureFileShareListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

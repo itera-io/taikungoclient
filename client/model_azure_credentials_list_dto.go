@@ -42,6 +42,9 @@ type AzureCredentialsListDto struct {
 	ExistingVirtualNetworkResourceGroupName NullableString `json:"existingVirtualNetworkResourceGroupName"`
 	ExistingVirtualNetworkName NullableString `json:"existingVirtualNetworkName"`
 	ExistingSubnetName NullableString `json:"existingSubnetName"`
+	SharedFileSystemEnabled bool `json:"sharedFileSystemEnabled"`
+	ImportedFileShareId NullableString `json:"importedFileShareId"`
+	ImportedFileShareName NullableString `json:"importedFileShareName"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -51,7 +54,7 @@ type _AzureCredentialsListDto AzureCredentialsListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAzureCredentialsListDto(id int32, projectCount int32, isLocked bool, name string, tenantId string, location string, availabilityZones []string, availabilityZonesCount int32, projects []CommonDropdownDto, createdBy NullableString, createdAt NullableString, lastModified NullableString, lastModifiedBy NullableString, isDefault bool, organizationId int32, organizationName string, continentName NullableString, vnetDeploymentMode string, existingVirtualNetworkResourceGroupName NullableString, existingVirtualNetworkName NullableString, existingSubnetName NullableString) *AzureCredentialsListDto {
+func NewAzureCredentialsListDto(id int32, projectCount int32, isLocked bool, name string, tenantId string, location string, availabilityZones []string, availabilityZonesCount int32, projects []CommonDropdownDto, createdBy NullableString, createdAt NullableString, lastModified NullableString, lastModifiedBy NullableString, isDefault bool, organizationId int32, organizationName string, continentName NullableString, vnetDeploymentMode string, existingVirtualNetworkResourceGroupName NullableString, existingVirtualNetworkName NullableString, existingSubnetName NullableString, sharedFileSystemEnabled bool, importedFileShareId NullableString, importedFileShareName NullableString) *AzureCredentialsListDto {
 	this := AzureCredentialsListDto{}
 	this.Id = id
 	this.ProjectCount = projectCount
@@ -74,6 +77,9 @@ func NewAzureCredentialsListDto(id int32, projectCount int32, isLocked bool, nam
 	this.ExistingVirtualNetworkResourceGroupName = existingVirtualNetworkResourceGroupName
 	this.ExistingVirtualNetworkName = existingVirtualNetworkName
 	this.ExistingSubnetName = existingSubnetName
+	this.SharedFileSystemEnabled = sharedFileSystemEnabled
+	this.ImportedFileShareId = importedFileShareId
+	this.ImportedFileShareName = importedFileShareName
 	return &this
 }
 
@@ -605,6 +611,82 @@ func (o *AzureCredentialsListDto) SetExistingSubnetName(v string) {
 	o.ExistingSubnetName.Set(&v)
 }
 
+// GetSharedFileSystemEnabled returns the SharedFileSystemEnabled field value
+func (o *AzureCredentialsListDto) GetSharedFileSystemEnabled() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.SharedFileSystemEnabled
+}
+
+// GetSharedFileSystemEnabledOk returns a tuple with the SharedFileSystemEnabled field value
+// and a boolean to check if the value has been set.
+func (o *AzureCredentialsListDto) GetSharedFileSystemEnabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SharedFileSystemEnabled, true
+}
+
+// SetSharedFileSystemEnabled sets field value
+func (o *AzureCredentialsListDto) SetSharedFileSystemEnabled(v bool) {
+	o.SharedFileSystemEnabled = v
+}
+
+// GetImportedFileShareId returns the ImportedFileShareId field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *AzureCredentialsListDto) GetImportedFileShareId() string {
+	if o == nil || o.ImportedFileShareId.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.ImportedFileShareId.Get()
+}
+
+// GetImportedFileShareIdOk returns a tuple with the ImportedFileShareId field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AzureCredentialsListDto) GetImportedFileShareIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ImportedFileShareId.Get(), o.ImportedFileShareId.IsSet()
+}
+
+// SetImportedFileShareId sets field value
+func (o *AzureCredentialsListDto) SetImportedFileShareId(v string) {
+	o.ImportedFileShareId.Set(&v)
+}
+
+// GetImportedFileShareName returns the ImportedFileShareName field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *AzureCredentialsListDto) GetImportedFileShareName() string {
+	if o == nil || o.ImportedFileShareName.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.ImportedFileShareName.Get()
+}
+
+// GetImportedFileShareNameOk returns a tuple with the ImportedFileShareName field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AzureCredentialsListDto) GetImportedFileShareNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ImportedFileShareName.Get(), o.ImportedFileShareName.IsSet()
+}
+
+// SetImportedFileShareName sets field value
+func (o *AzureCredentialsListDto) SetImportedFileShareName(v string) {
+	o.ImportedFileShareName.Set(&v)
+}
+
 func (o AzureCredentialsListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -636,6 +718,9 @@ func (o AzureCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["existingVirtualNetworkResourceGroupName"] = o.ExistingVirtualNetworkResourceGroupName.Get()
 	toSerialize["existingVirtualNetworkName"] = o.ExistingVirtualNetworkName.Get()
 	toSerialize["existingSubnetName"] = o.ExistingSubnetName.Get()
+	toSerialize["sharedFileSystemEnabled"] = o.SharedFileSystemEnabled
+	toSerialize["importedFileShareId"] = o.ImportedFileShareId.Get()
+	toSerialize["importedFileShareName"] = o.ImportedFileShareName.Get()
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -670,6 +755,9 @@ func (o *AzureCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 		"existingVirtualNetworkResourceGroupName",
 		"existingVirtualNetworkName",
 		"existingSubnetName",
+		"sharedFileSystemEnabled",
+		"importedFileShareId",
+		"importedFileShareName",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -720,6 +808,9 @@ func (o *AzureCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "existingVirtualNetworkResourceGroupName")
 		delete(additionalProperties, "existingVirtualNetworkName")
 		delete(additionalProperties, "existingSubnetName")
+		delete(additionalProperties, "sharedFileSystemEnabled")
+		delete(additionalProperties, "importedFileShareId")
+		delete(additionalProperties, "importedFileShareName")
 		o.AdditionalProperties = additionalProperties
 	}
 

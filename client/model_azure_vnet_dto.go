@@ -22,6 +22,7 @@ var _ MappedNullable = &AzureVnetDto{}
 type AzureVnetDto struct {
 	Name NullableString `json:"name,omitempty"`
 	AddressSpace NullableString `json:"addressSpace,omitempty"`
+	IpMode *IpMode `json:"ipMode,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -128,6 +129,38 @@ func (o *AzureVnetDto) UnsetAddressSpace() {
 	o.AddressSpace.Unset()
 }
 
+// GetIpMode returns the IpMode field value if set, zero value otherwise.
+func (o *AzureVnetDto) GetIpMode() IpMode {
+	if o == nil || IsNil(o.IpMode) {
+		var ret IpMode
+		return ret
+	}
+	return *o.IpMode
+}
+
+// GetIpModeOk returns a tuple with the IpMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureVnetDto) GetIpModeOk() (*IpMode, bool) {
+	if o == nil || IsNil(o.IpMode) {
+		return nil, false
+	}
+	return o.IpMode, true
+}
+
+// HasIpMode returns a boolean if a field has been set.
+func (o *AzureVnetDto) HasIpMode() bool {
+	if o != nil && !IsNil(o.IpMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetIpMode gets a reference to the given IpMode and assigns it to the IpMode field.
+func (o *AzureVnetDto) SetIpMode(v IpMode) {
+	o.IpMode = &v
+}
+
 func (o AzureVnetDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -143,6 +176,9 @@ func (o AzureVnetDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.AddressSpace.IsSet() {
 		toSerialize["addressSpace"] = o.AddressSpace.Get()
+	}
+	if !IsNil(o.IpMode) {
+		toSerialize["ipMode"] = o.IpMode
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -168,6 +204,7 @@ func (o *AzureVnetDto) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "addressSpace")
+		delete(additionalProperties, "ipMode")
 		o.AdditionalProperties = additionalProperties
 	}
 

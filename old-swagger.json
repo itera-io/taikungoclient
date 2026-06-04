@@ -9225,6 +9225,99 @@
         }
       }
     },
+    "/api/v1/azure/file-share-list": {
+      "post": {
+        "tags": [
+          "Azure cloud credential"
+        ],
+        "summary": "Retrieve Azure File Shares within a resource group",
+        "operationId": "azure-file-share-list",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AzureFileShareListCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AzureFileShareDto"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/azure/locations": {
       "post": {
         "tags": [
@@ -21195,6 +21288,14 @@
             "in": "query",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "IncludeLocked",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
             }
           }
         ],
@@ -71351,6 +71452,8 @@
           "existingVirtualNetworkName",
           "existingVirtualNetworkResourceGroupName",
           "id",
+          "importedFileShareId",
+          "importedFileShareName",
           "isDefault",
           "isLocked",
           "lastModified",
@@ -71361,6 +71464,7 @@
           "organizationName",
           "projectCount",
           "projects",
+          "sharedFileSystemEnabled",
           "tenantId",
           "vnetDeploymentMode"
         ],
@@ -71446,6 +71550,17 @@
           "existingSubnetName": {
             "type": "string",
             "nullable": true
+          },
+          "sharedFileSystemEnabled": {
+            "type": "boolean"
+          },
+          "importedFileShareId": {
+            "type": "string",
+            "nullable": true
+          },
+          "importedFileShareName": {
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -71458,6 +71573,49 @@
           },
           "filterBy": {
             "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "AzureFileShareDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "AzureFileShareListCommand": {
+        "type": "object",
+        "properties": {
+          "azureClientId": {
+            "type": "string",
+            "nullable": true
+          },
+          "azureClientSecret": {
+            "type": "string",
+            "nullable": true
+          },
+          "azureTenantId": {
+            "type": "string",
+            "nullable": true
+          },
+          "azureSubscriptionId": {
+            "type": "string",
+            "nullable": true
+          },
+          "resourceGroupName": {
+            "type": "string",
+            "nullable": true
+          },
+          "cloudId": {
+            "type": "integer",
+            "format": "int32",
             "nullable": true
           }
         }
@@ -71637,6 +71795,12 @@
           "addressPrefix": {
             "type": "string",
             "nullable": true
+          },
+          "isPublic": {
+            "type": "boolean"
+          },
+          "ipMode": {
+            "$ref": "#/components/schemas/IpMode"
           }
         }
       },
@@ -71667,6 +71831,9 @@
           "addressSpace": {
             "type": "string",
             "nullable": true
+          },
+          "ipMode": {
+            "$ref": "#/components/schemas/IpMode"
           }
         }
       },
@@ -71697,6 +71864,9 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
+          },
+          "ipMode": {
+            "$ref": "#/components/schemas/IpMode"
           }
         }
       },
@@ -74582,6 +74752,9 @@
             "format": "int32",
             "nullable": true
           },
+          "ipMode": {
+            "$ref": "#/components/schemas/IpMode"
+          },
           "vnetMode": {
             "$ref": "#/components/schemas/VnetMode"
           },
@@ -74596,6 +74769,32 @@
           "existingSubnetName": {
             "type": "string",
             "nullable": true
+          },
+          "sharedFileSystemEnabled": {
+            "type": "boolean"
+          },
+          "importedFileShareId": {
+            "type": "string",
+            "nullable": true
+          },
+          "subnets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateAzureSubnetDto"
+            },
+            "nullable": true
+          }
+        }
+      },
+      "CreateAzureSubnetDto": {
+        "type": "object",
+        "properties": {
+          "subnetName": {
+            "type": "string",
+            "nullable": true
+          },
+          "subnetType": {
+            "$ref": "#/components/schemas/AccessLevel"
           }
         }
       },
@@ -77560,6 +77759,7 @@
           "domainFilter",
           "id",
           "isDefault",
+          "isLocked",
           "name"
         ],
         "type": "object",
@@ -77577,6 +77777,9 @@
             "nullable": true
           },
           "isDefault": {
+            "type": "boolean"
+          },
+          "isLocked": {
             "type": "boolean"
           }
         }
@@ -86346,6 +86549,8 @@
           "cpuLimit",
           "diskSize",
           "diskSizeLimit",
+          "dnsCredentialId",
+          "dnsCredentialName",
           "expiredAt",
           "flavor",
           "hasKubeConfigFile",
@@ -86568,6 +86773,14 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
+          },
+          "dnsCredentialId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "dnsCredentialName": {
+            "type": "string"
           },
           "expiredAt": {
             "type": "string"
@@ -93901,7 +94114,8 @@
       "VnetMode": {
         "enum": [
           "Create",
-          "Existing"
+          "Existing",
+          "Import"
         ],
         "type": "string"
       },

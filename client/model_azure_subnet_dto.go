@@ -22,6 +22,8 @@ var _ MappedNullable = &AzureSubnetDto{}
 type AzureSubnetDto struct {
 	Name NullableString `json:"name,omitempty"`
 	AddressPrefix NullableString `json:"addressPrefix,omitempty"`
+	IsPublic *bool `json:"isPublic,omitempty"`
+	IpMode *IpMode `json:"ipMode,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -128,6 +130,70 @@ func (o *AzureSubnetDto) UnsetAddressPrefix() {
 	o.AddressPrefix.Unset()
 }
 
+// GetIsPublic returns the IsPublic field value if set, zero value otherwise.
+func (o *AzureSubnetDto) GetIsPublic() bool {
+	if o == nil || IsNil(o.IsPublic) {
+		var ret bool
+		return ret
+	}
+	return *o.IsPublic
+}
+
+// GetIsPublicOk returns a tuple with the IsPublic field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureSubnetDto) GetIsPublicOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsPublic) {
+		return nil, false
+	}
+	return o.IsPublic, true
+}
+
+// HasIsPublic returns a boolean if a field has been set.
+func (o *AzureSubnetDto) HasIsPublic() bool {
+	if o != nil && !IsNil(o.IsPublic) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsPublic gets a reference to the given bool and assigns it to the IsPublic field.
+func (o *AzureSubnetDto) SetIsPublic(v bool) {
+	o.IsPublic = &v
+}
+
+// GetIpMode returns the IpMode field value if set, zero value otherwise.
+func (o *AzureSubnetDto) GetIpMode() IpMode {
+	if o == nil || IsNil(o.IpMode) {
+		var ret IpMode
+		return ret
+	}
+	return *o.IpMode
+}
+
+// GetIpModeOk returns a tuple with the IpMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureSubnetDto) GetIpModeOk() (*IpMode, bool) {
+	if o == nil || IsNil(o.IpMode) {
+		return nil, false
+	}
+	return o.IpMode, true
+}
+
+// HasIpMode returns a boolean if a field has been set.
+func (o *AzureSubnetDto) HasIpMode() bool {
+	if o != nil && !IsNil(o.IpMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetIpMode gets a reference to the given IpMode and assigns it to the IpMode field.
+func (o *AzureSubnetDto) SetIpMode(v IpMode) {
+	o.IpMode = &v
+}
+
 func (o AzureSubnetDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -143,6 +209,12 @@ func (o AzureSubnetDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.AddressPrefix.IsSet() {
 		toSerialize["addressPrefix"] = o.AddressPrefix.Get()
+	}
+	if !IsNil(o.IsPublic) {
+		toSerialize["isPublic"] = o.IsPublic
+	}
+	if !IsNil(o.IpMode) {
+		toSerialize["ipMode"] = o.IpMode
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -168,6 +240,8 @@ func (o *AzureSubnetDto) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "addressPrefix")
+		delete(additionalProperties, "isPublic")
+		delete(additionalProperties, "ipMode")
 		o.AdditionalProperties = additionalProperties
 	}
 

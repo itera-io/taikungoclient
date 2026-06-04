@@ -23,12 +23,14 @@ type VnetMode string
 const (
 	VNETMODE_CREATE VnetMode = "Create"
 	VNETMODE_EXISTING VnetMode = "Existing"
+	VNETMODE_IMPORT VnetMode = "Import"
 )
 
 // All allowed values of VnetMode enum
 var AllowedVnetModeEnumValues = []VnetMode{
 	"Create",
 	"Existing",
+	"Import",
 }
 
 func (v *VnetMode) UnmarshalJSON(src []byte) error {

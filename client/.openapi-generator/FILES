@@ -174,6 +174,8 @@ docs/AzureCloudCredentialAPI.md
 docs/AzureCredentialList.md
 docs/AzureCredentialsListDto.md
 docs/AzureDashboardCommand.md
+docs/AzureFileShareDto.md
+docs/AzureFileShareListCommand.md
 docs/AzureFlavorList.md
 docs/AzureFlavorsWithPriceDto.md
 docs/AzureLocationsCommand.md
@@ -304,6 +306,7 @@ docs/CreateAllowedHostCommand.md
 docs/CreateAwsCloudCommand.md
 docs/CreateAwsSubnetDto.md
 docs/CreateAzureCloudCommand.md
+docs/CreateAzureSubnetDto.md
 docs/CreateBackupPolicyCommand.md
 docs/CreateBillingSummaryCommand.md
 docs/CreateCatalogAppCommand.md
@@ -1164,6 +1167,8 @@ model_azure_aks_cluster_dto.go
 model_azure_credential_list.go
 model_azure_credentials_list_dto.go
 model_azure_dashboard_command.go
+model_azure_file_share_dto.go
+model_azure_file_share_list_command.go
 model_azure_flavor_list.go
 model_azure_flavors_with_price_dto.go
 model_azure_locations_command.go
@@ -1287,6 +1292,7 @@ model_create_allowed_host_command.go
 model_create_aws_cloud_command.go
 model_create_aws_subnet_dto.go
 model_create_azure_cloud_command.go
+model_create_azure_subnet_dto.go
 model_create_backup_policy_command.go
 model_create_billing_summary_command.go
 model_create_catalog_app_command.go

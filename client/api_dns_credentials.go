@@ -382,6 +382,7 @@ type ApiDnscredentialsDropdownRequest struct {
 	ApiService *DNSCredentialsAPIService
 	organizationId *int32
 	search *string
+	includeLocked *bool
 }
 
 func (r ApiDnscredentialsDropdownRequest) OrganizationId(organizationId int32) ApiDnscredentialsDropdownRequest {
@@ -391,6 +392,11 @@ func (r ApiDnscredentialsDropdownRequest) OrganizationId(organizationId int32) A
 
 func (r ApiDnscredentialsDropdownRequest) Search(search string) ApiDnscredentialsDropdownRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiDnscredentialsDropdownRequest) IncludeLocked(includeLocked bool) ApiDnscredentialsDropdownRequest {
+	r.includeLocked = &includeLocked
 	return r
 }
 
@@ -437,6 +443,13 @@ func (a *DNSCredentialsAPIService) DnscredentialsDropdownExecute(r ApiDnscredent
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.includeLocked != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "IncludeLocked", r.includeLocked, "form", "")
+	} else {
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "IncludeLocked", defaultValue, "form", "")
+		r.includeLocked = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

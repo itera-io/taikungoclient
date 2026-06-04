@@ -68,6 +68,8 @@ type ProjectDetailsForServersDto struct {
 	AlertingProfileId NullableInt32 `json:"alertingProfileId"`
 	S3CredentialId NullableInt32 `json:"s3CredentialId"`
 	AiCredentialId NullableInt32 `json:"aiCredentialId"`
+	DnsCredentialId NullableInt32 `json:"dnsCredentialId"`
+	DnsCredentialName string `json:"dnsCredentialName"`
 	ExpiredAt string `json:"expiredAt"`
 	CertificationExpiredAt string `json:"certificationExpiredAt"`
 	OpaProfileId NullableInt32 `json:"opaProfileId"`
@@ -103,7 +105,7 @@ type _ProjectDetailsForServersDto ProjectDetailsForServersDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectDetailsForServersDto(alertsCount int32, worker int32, bastion int32, status ProjectStatus, name string, accessIp string, id int32, masterReady int32, cloudType ECloudCredentialType, cloudName string, cloudId int32, quotaId int32, organizationName string, organizationId int32, kubernetesVersion string, isBackupEnabled bool, aiEnabled bool, isLocked bool, isAutoUpgrade bool, isMonitoringEnabled bool, isOpaEnabled bool, hasKubeConfigFile bool, hasSelectedFlavors bool, isMaintenanceModeEnabled bool, isProjectMaintenanceModeEnabled bool, isDeprecated bool, cpuLimit int64, ramLimit int64, diskSizeLimit int64, usedCpu int64, usedRam int64, usedDiskSize int64, vmCpuLimit int64, vmRamLimit int64, vmVolumeSizeLimit int64, vmUsedCpu int64, vmUsedRam int64, vmUsedVolumeSize int64, accessProfileName string, accessProfileId NullableInt32, kubernetesProfileName string, kubernetesProfileId NullableInt32, alertingProfileName string, health ProjectHealth, alertingProfileId NullableInt32, s3CredentialId NullableInt32, aiCredentialId NullableInt32, expiredAt string, certificationExpiredAt string, opaProfileId NullableInt32, opaProfileName string, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, totalHourlyCost float64, autoscalingGroupName string, minSize NullableInt32, maxSize NullableInt32, diskSize NullableFloat64, flavor NullableString, spotEnabled NullableBool, isAutoscalingEnabled bool, isAutoscalingSpotEnabled bool, hasNfsServer bool, wasmEnabled bool, availabilityZones []string, hypervisors []string, proxmoxStorage ProxmoxStorage, isDrsEnabled bool, maxSpotPrice NullableFloat64) *ProjectDetailsForServersDto {
+func NewProjectDetailsForServersDto(alertsCount int32, worker int32, bastion int32, status ProjectStatus, name string, accessIp string, id int32, masterReady int32, cloudType ECloudCredentialType, cloudName string, cloudId int32, quotaId int32, organizationName string, organizationId int32, kubernetesVersion string, isBackupEnabled bool, aiEnabled bool, isLocked bool, isAutoUpgrade bool, isMonitoringEnabled bool, isOpaEnabled bool, hasKubeConfigFile bool, hasSelectedFlavors bool, isMaintenanceModeEnabled bool, isProjectMaintenanceModeEnabled bool, isDeprecated bool, cpuLimit int64, ramLimit int64, diskSizeLimit int64, usedCpu int64, usedRam int64, usedDiskSize int64, vmCpuLimit int64, vmRamLimit int64, vmVolumeSizeLimit int64, vmUsedCpu int64, vmUsedRam int64, vmUsedVolumeSize int64, accessProfileName string, accessProfileId NullableInt32, kubernetesProfileName string, kubernetesProfileId NullableInt32, alertingProfileName string, health ProjectHealth, alertingProfileId NullableInt32, s3CredentialId NullableInt32, aiCredentialId NullableInt32, dnsCredentialId NullableInt32, dnsCredentialName string, expiredAt string, certificationExpiredAt string, opaProfileId NullableInt32, opaProfileName string, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, totalHourlyCost float64, autoscalingGroupName string, minSize NullableInt32, maxSize NullableInt32, diskSize NullableFloat64, flavor NullableString, spotEnabled NullableBool, isAutoscalingEnabled bool, isAutoscalingSpotEnabled bool, hasNfsServer bool, wasmEnabled bool, availabilityZones []string, hypervisors []string, proxmoxStorage ProxmoxStorage, isDrsEnabled bool, maxSpotPrice NullableFloat64) *ProjectDetailsForServersDto {
 	this := ProjectDetailsForServersDto{}
 	this.AlertsCount = alertsCount
 	this.Worker = worker
@@ -152,6 +154,8 @@ func NewProjectDetailsForServersDto(alertsCount int32, worker int32, bastion int
 	this.AlertingProfileId = alertingProfileId
 	this.S3CredentialId = s3CredentialId
 	this.AiCredentialId = aiCredentialId
+	this.DnsCredentialId = dnsCredentialId
+	this.DnsCredentialName = dnsCredentialName
 	this.ExpiredAt = expiredAt
 	this.CertificationExpiredAt = certificationExpiredAt
 	this.OpaProfileId = opaProfileId
@@ -1324,6 +1328,56 @@ func (o *ProjectDetailsForServersDto) SetAiCredentialId(v int32) {
 	o.AiCredentialId.Set(&v)
 }
 
+// GetDnsCredentialId returns the DnsCredentialId field value
+// If the value is explicit nil, the zero value for int32 will be returned
+func (o *ProjectDetailsForServersDto) GetDnsCredentialId() int32 {
+	if o == nil || o.DnsCredentialId.Get() == nil {
+		var ret int32
+		return ret
+	}
+
+	return *o.DnsCredentialId.Get()
+}
+
+// GetDnsCredentialIdOk returns a tuple with the DnsCredentialId field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectDetailsForServersDto) GetDnsCredentialIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DnsCredentialId.Get(), o.DnsCredentialId.IsSet()
+}
+
+// SetDnsCredentialId sets field value
+func (o *ProjectDetailsForServersDto) SetDnsCredentialId(v int32) {
+	o.DnsCredentialId.Set(&v)
+}
+
+// GetDnsCredentialName returns the DnsCredentialName field value
+func (o *ProjectDetailsForServersDto) GetDnsCredentialName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.DnsCredentialName
+}
+
+// GetDnsCredentialNameOk returns a tuple with the DnsCredentialName field value
+// and a boolean to check if the value has been set.
+func (o *ProjectDetailsForServersDto) GetDnsCredentialNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DnsCredentialName, true
+}
+
+// SetDnsCredentialName sets field value
+func (o *ProjectDetailsForServersDto) SetDnsCredentialName(v string) {
+	o.DnsCredentialName = v
+}
+
 // GetExpiredAt returns the ExpiredAt field value
 func (o *ProjectDetailsForServersDto) GetExpiredAt() string {
 	if o == nil {
@@ -2054,6 +2108,8 @@ func (o ProjectDetailsForServersDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
 	toSerialize["s3CredentialId"] = o.S3CredentialId.Get()
 	toSerialize["aiCredentialId"] = o.AiCredentialId.Get()
+	toSerialize["dnsCredentialId"] = o.DnsCredentialId.Get()
+	toSerialize["dnsCredentialName"] = o.DnsCredentialName
 	toSerialize["expiredAt"] = o.ExpiredAt
 	toSerialize["certificationExpiredAt"] = o.CertificationExpiredAt
 	toSerialize["opaProfileId"] = o.OpaProfileId.Get()
@@ -2146,6 +2202,8 @@ func (o *ProjectDetailsForServersDto) UnmarshalJSON(data []byte) (err error) {
 		"alertingProfileId",
 		"s3CredentialId",
 		"aiCredentialId",
+		"dnsCredentialId",
+		"dnsCredentialName",
 		"expiredAt",
 		"certificationExpiredAt",
 		"opaProfileId",
@@ -2245,6 +2303,8 @@ func (o *ProjectDetailsForServersDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "alertingProfileId")
 		delete(additionalProperties, "s3CredentialId")
 		delete(additionalProperties, "aiCredentialId")
+		delete(additionalProperties, "dnsCredentialId")
+		delete(additionalProperties, "dnsCredentialName")
 		delete(additionalProperties, "expiredAt")
 		delete(additionalProperties, "certificationExpiredAt")
 		delete(additionalProperties, "opaProfileId")

@@ -25,6 +25,7 @@ type DnsCredentialDropdownDto struct {
 	Name NullableString `json:"name"`
 	DomainFilter NullableString `json:"domainFilter"`
 	IsDefault bool `json:"isDefault"`
+	IsLocked bool `json:"isLocked"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -34,12 +35,13 @@ type _DnsCredentialDropdownDto DnsCredentialDropdownDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDnsCredentialDropdownDto(id int32, name NullableString, domainFilter NullableString, isDefault bool) *DnsCredentialDropdownDto {
+func NewDnsCredentialDropdownDto(id int32, name NullableString, domainFilter NullableString, isDefault bool, isLocked bool) *DnsCredentialDropdownDto {
 	this := DnsCredentialDropdownDto{}
 	this.Id = id
 	this.Name = name
 	this.DomainFilter = domainFilter
 	this.IsDefault = isDefault
+	this.IsLocked = isLocked
 	return &this
 }
 
@@ -151,6 +153,30 @@ func (o *DnsCredentialDropdownDto) SetIsDefault(v bool) {
 	o.IsDefault = v
 }
 
+// GetIsLocked returns the IsLocked field value
+func (o *DnsCredentialDropdownDto) GetIsLocked() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.IsLocked
+}
+
+// GetIsLockedOk returns a tuple with the IsLocked field value
+// and a boolean to check if the value has been set.
+func (o *DnsCredentialDropdownDto) GetIsLockedOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IsLocked, true
+}
+
+// SetIsLocked sets field value
+func (o *DnsCredentialDropdownDto) SetIsLocked(v bool) {
+	o.IsLocked = v
+}
+
 func (o DnsCredentialDropdownDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -165,6 +191,7 @@ func (o DnsCredentialDropdownDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name.Get()
 	toSerialize["domainFilter"] = o.DomainFilter.Get()
 	toSerialize["isDefault"] = o.IsDefault
+	toSerialize["isLocked"] = o.IsLocked
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -182,6 +209,7 @@ func (o *DnsCredentialDropdownDto) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"domainFilter",
 		"isDefault",
+		"isLocked",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -215,6 +243,7 @@ func (o *DnsCredentialDropdownDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "domainFilter")
 		delete(additionalProperties, "isDefault")
+		delete(additionalProperties, "isLocked")
 		o.AdditionalProperties = additionalProperties
 	}
 

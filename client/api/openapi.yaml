@@ -6008,6 +6008,62 @@ paths:
       summary: Fetch Azure quota list
       tags:
       - Azure cloud credential
+  /api/v1/azure/file-share-list:
+    post:
+      operationId: azure-file-share-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AzureFileShareListCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/AzureFileShareDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve Azure File Shares within a resource group
+      tags:
+      - Azure cloud credential
   /api/v1/azure/locations:
     post:
       operationId: azure-locations
@@ -13565,6 +13621,14 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: IncludeLocked
+        required: false
+        schema:
+          default: false
+          type: boolean
         style: form
       responses:
         "200":
@@ -47604,6 +47668,7 @@ components:
       example:
         data:
         - existingVirtualNetworkResourceGroupName: existingVirtualNetworkResourceGroupName
+          importedFileShareName: importedFileShareName
           existingVirtualNetworkName: existingVirtualNetworkName
           projectCount: 6
           projects:
@@ -47629,8 +47694,11 @@ components:
           location: location
           id: 0
           lastModified: lastModified
+          importedFileShareId: importedFileShareId
           continentName: continentName
+          sharedFileSystemEnabled: true
         - existingVirtualNetworkResourceGroupName: existingVirtualNetworkResourceGroupName
+          importedFileShareName: importedFileShareName
           existingVirtualNetworkName: existingVirtualNetworkName
           projectCount: 6
           projects:
@@ -47656,7 +47724,9 @@ components:
           location: location
           id: 0
           lastModified: lastModified
+          importedFileShareId: importedFileShareId
           continentName: continentName
+          sharedFileSystemEnabled: true
         offset: 7
         limit: 5
         hasMore: true
@@ -47693,6 +47763,7 @@ components:
     AzureCredentialsListDto:
       example:
         existingVirtualNetworkResourceGroupName: existingVirtualNetworkResourceGroupName
+        importedFileShareName: importedFileShareName
         existingVirtualNetworkName: existingVirtualNetworkName
         projectCount: 6
         projects:
@@ -47718,7 +47789,9 @@ components:
         location: location
         id: 0
         lastModified: lastModified
+        importedFileShareId: importedFileShareId
         continentName: continentName
+        sharedFileSystemEnabled: true
       properties:
         id:
           format: int32
@@ -47778,6 +47851,14 @@ components:
         existingSubnetName:
           nullable: true
           type: string
+        sharedFileSystemEnabled:
+          type: boolean
+        importedFileShareId:
+          nullable: true
+          type: string
+        importedFileShareName:
+          nullable: true
+          type: string
       required:
       - availabilityZones
       - availabilityZonesCount
@@ -47788,6 +47869,8 @@ components:
       - existingVirtualNetworkName
       - existingVirtualNetworkResourceGroupName
       - id
+      - importedFileShareId
+      - importedFileShareName
       - isDefault
       - isLocked
       - lastModified
@@ -47798,6 +47881,7 @@ components:
       - organizationName
       - projectCount
       - projects
+      - sharedFileSystemEnabled
       - tenantId
       - vnetDeploymentMode
       type: object
@@ -47812,6 +47896,47 @@ components:
         filterBy:
           nullable: true
           type: string
+      type: object
+    AzureFileShareDto:
+      example:
+        name: name
+        id: id
+      properties:
+        name:
+          nullable: true
+          type: string
+        id:
+          nullable: true
+          type: string
+      type: object
+    AzureFileShareListCommand:
+      example:
+        azureClientSecret: azureClientSecret
+        azureClientId: azureClientId
+        resourceGroupName: resourceGroupName
+        cloudId: 0
+        azureTenantId: azureTenantId
+        azureSubscriptionId: azureSubscriptionId
+      properties:
+        azureClientId:
+          nullable: true
+          type: string
+        azureClientSecret:
+          nullable: true
+          type: string
+        azureTenantId:
+          nullable: true
+          type: string
+        azureSubscriptionId:
+          nullable: true
+          type: string
+        resourceGroupName:
+          nullable: true
+          type: string
+        cloudId:
+          format: int32
+          nullable: true
+          type: integer
       type: object
     AzureFlavorList:
       example:
@@ -48023,8 +48148,10 @@ components:
       type: object
     AzureSubnetDto:
       example:
+        ipMode: Ipv4
         addressPrefix: addressPrefix
         name: name
+        isPublic: true
       properties:
         name:
           nullable: true
@@ -48032,6 +48159,10 @@ components:
         addressPrefix:
           nullable: true
           type: string
+        isPublic:
+          type: boolean
+        ipMode:
+          $ref: "#/components/schemas/IpMode"
       type: object
     AzureSubscriptionListCommand:
       example:
@@ -48051,6 +48182,7 @@ components:
       type: object
     AzureVnetDto:
       example:
+        ipMode: Ipv4
         addressSpace: addressSpace
         name: name
       properties:
@@ -48060,10 +48192,13 @@ components:
         addressSpace:
           nullable: true
           type: string
+        ipMode:
+          $ref: "#/components/schemas/IpMode"
       type: object
     AzureVnetListCommand:
       example:
         azureClientSecret: azureClientSecret
+        ipMode: Ipv4
         azureClientId: azureClientId
         resourceGroupName: resourceGroupName
         cloudId: 0
@@ -48089,6 +48224,8 @@ components:
           format: int32
           nullable: true
           type: integer
+        ipMode:
+          $ref: "#/components/schemas/IpMode"
       type: object
     AzureVnetResourceGroupListCommand:
       example:
@@ -50765,8 +50902,8 @@ components:
         vpcId: vpcId
         name: name
         cidr: cidr
-        availableIpCount: 0
-        nodeCount: 4
+        availableIpCount: 4
+        nodeCount: 8
         ownerId: ownerId
         subnetType: Public
       properties:
@@ -51640,18 +51777,26 @@ components:
       type: object
     CreateAzureCloudCommand:
       example:
-        organizationId: 6
         existingVirtualNetworkResourceGroupName: existingVirtualNetworkResourceGroupName
         azureClientSecret: azureClientSecret
         existingVirtualNetworkName: existingVirtualNetworkName
+        azCount: 0
+        azureTenantId: azureTenantId
+        azureSubscriptionId: azureSubscriptionId
+        organizationId: 6
+        ipMode: Ipv4
         azureClientId: azureClientId
         vnetMode: Create
         existingSubnetName: existingSubnetName
         azureLocation: azureLocation
-        azCount: 0
         name: name
-        azureTenantId: azureTenantId
-        azureSubscriptionId: azureSubscriptionId
+        subnets:
+        - subnetName: subnetName
+          subnetType: Public
+        - subnetName: subnetName
+          subnetType: Public
+        importedFileShareId: importedFileShareId
+        sharedFileSystemEnabled: true
       properties:
         name:
           nullable: true
@@ -51679,6 +51824,8 @@ components:
           format: int32
           nullable: true
           type: integer
+        ipMode:
+          $ref: "#/components/schemas/IpMode"
         vnetMode:
           $ref: "#/components/schemas/VnetMode"
         existingVirtualNetworkResourceGroupName:
@@ -51690,6 +51837,27 @@ components:
         existingSubnetName:
           nullable: true
           type: string
+        sharedFileSystemEnabled:
+          type: boolean
+        importedFileShareId:
+          nullable: true
+          type: string
+        subnets:
+          items:
+            $ref: "#/components/schemas/CreateAzureSubnetDto"
+          nullable: true
+          type: array
+      type: object
+    CreateAzureSubnetDto:
+      example:
+        subnetName: subnetName
+        subnetType: Public
+      properties:
+        subnetName:
+          nullable: true
+          type: string
+        subnetType:
+          $ref: "#/components/schemas/AccessLevel"
       type: object
     CreateBackupPolicyCommand:
       example:
@@ -55315,6 +55483,7 @@ components:
     DnsCredentialDropdownDto:
       example:
         isDefault: true
+        isLocked: true
         name: name
         id: 0
         domainFilter: domainFilter
@@ -55330,10 +55499,13 @@ components:
           type: string
         isDefault:
           type: boolean
+        isLocked:
+          type: boolean
       required:
       - domainFilter
       - id
       - isDefault
+      - isLocked
       - name
       type: object
     DnsCredentialListDto:
@@ -66596,15 +66768,16 @@ components:
         availabilityZones:
         - availabilityZones
         - availabilityZones
+        dnsCredentialId: 3
         organizationId: 7
-        diskSize: 7.058770351582356
+        diskSize: 6.519180951018382
         usedRam: 9
         cloudType: AWS
         cloudId: 1
         isLocked: true
         accessProfileName: accessProfileName
         kubernetesProfileId: 6
-        minSize: 7
+        minSize: 0
         bastion: 7
         id: 1
         worker: 4
@@ -66623,7 +66796,7 @@ components:
         quotaId: 6
         vmUsedCpu: 3
         allowSpotWorkers: true
-        maxSpotPrice: 6.519180951018382
+        maxSpotPrice: 0.10263654006109402
         vmRamLimit: 9
         flavor: flavor
         vmUsedRam: 6
@@ -66634,13 +66807,14 @@ components:
         allowFullSpotKubernetes: true
         status: "Null"
         accessProfileId: 2
-        maxSize: 0
+        maxSize: 7
         privateOnly: true
         autoscalingGroupName: autoscalingGroupName
         expiredAt: expiredAt
         alertingProfileName: alertingProfileName
         hasNfsServer: true
-        totalHourlyCost: 3.0937452626664474
+        dnsCredentialName: dnsCredentialName
+        totalHourlyCost: 7.143538047012306
         ramLimit: 4
         opaProfileName: opaProfileName
         s3CredentialId: 5
@@ -66655,8 +66829,8 @@ components:
           vpcId: vpcId
           name: name
           cidr: cidr
-          availableIpCount: 0
-          nodeCount: 4
+          availableIpCount: 4
+          nodeCount: 8
           ownerId: ownerId
           subnetType: Public
         - subnetId: subnetId
@@ -66665,8 +66839,8 @@ components:
           vpcId: vpcId
           name: name
           cidr: cidr
-          availableIpCount: 0
-          nodeCount: 4
+          availableIpCount: 4
+          nodeCount: 8
           ownerId: ownerId
           subnetType: Public
         vmCpuLimit: 8
@@ -66812,6 +66986,12 @@ components:
           format: int32
           nullable: true
           type: integer
+        dnsCredentialId:
+          format: int32
+          nullable: true
+          type: integer
+        dnsCredentialName:
+          type: string
         expiredAt:
           type: string
         certificationExpiredAt:
@@ -66907,6 +67087,8 @@ components:
       - cpuLimit
       - diskSize
       - diskSizeLimit
+      - dnsCredentialId
+      - dnsCredentialName
       - expiredAt
       - flavor
       - hasKubeConfigFile
@@ -66983,8 +67165,8 @@ components:
           vpcId: vpcId
           name: name
           cidr: cidr
-          availableIpCount: 0
-          nodeCount: 4
+          availableIpCount: 4
+          nodeCount: 8
           ownerId: ownerId
           subnetType: Public
         - subnetId: subnetId
@@ -66993,8 +67175,8 @@ components:
           vpcId: vpcId
           name: name
           cidr: cidr
-          availableIpCount: 0
-          nodeCount: 4
+          availableIpCount: 4
+          nodeCount: 8
           ownerId: ownerId
           subnetType: Public
         allowSpotWorkers: true
@@ -72031,15 +72213,16 @@ components:
           availabilityZones:
           - availabilityZones
           - availabilityZones
+          dnsCredentialId: 3
           organizationId: 7
-          diskSize: 7.058770351582356
+          diskSize: 6.519180951018382
           usedRam: 9
           cloudType: AWS
           cloudId: 1
           isLocked: true
           accessProfileName: accessProfileName
           kubernetesProfileId: 6
-          minSize: 7
+          minSize: 0
           bastion: 7
           id: 1
           worker: 4
@@ -72058,7 +72241,7 @@ components:
           quotaId: 6
           vmUsedCpu: 3
           allowSpotWorkers: true
-          maxSpotPrice: 6.519180951018382
+          maxSpotPrice: 0.10263654006109402
           vmRamLimit: 9
           flavor: flavor
           vmUsedRam: 6
@@ -72069,13 +72252,14 @@ components:
           allowFullSpotKubernetes: true
           status: "Null"
           accessProfileId: 2
-          maxSize: 0
+          maxSize: 7
           privateOnly: true
           autoscalingGroupName: autoscalingGroupName
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
           hasNfsServer: true
-          totalHourlyCost: 3.0937452626664474
+          dnsCredentialName: dnsCredentialName
+          totalHourlyCost: 7.143538047012306
           ramLimit: 4
           opaProfileName: opaProfileName
           s3CredentialId: 5
@@ -72090,8 +72274,8 @@ components:
             vpcId: vpcId
             name: name
             cidr: cidr
-            availableIpCount: 0
-            nodeCount: 4
+            availableIpCount: 4
+            nodeCount: 8
             ownerId: ownerId
             subnetType: Public
           - subnetId: subnetId
@@ -72100,8 +72284,8 @@ components:
             vpcId: vpcId
             name: name
             cidr: cidr
-            availableIpCount: 0
-            nodeCount: 4
+            availableIpCount: 4
+            nodeCount: 8
             ownerId: ownerId
             subnetType: Public
           vmCpuLimit: 8
@@ -73195,8 +73379,8 @@ components:
             vpcId: vpcId
             name: name
             cidr: cidr
-            availableIpCount: 0
-            nodeCount: 4
+            availableIpCount: 4
+            nodeCount: 8
             ownerId: ownerId
             subnetType: Public
           - subnetId: subnetId
@@ -73205,8 +73389,8 @@ components:
             vpcId: vpcId
             name: name
             cidr: cidr
-            availableIpCount: 0
-            nodeCount: 4
+            availableIpCount: 4
+            nodeCount: 8
             ownerId: ownerId
             subnetType: Public
           allowSpotWorkers: true
@@ -76147,8 +76331,8 @@ components:
             vpcId: vpcId
             name: name
             cidr: cidr
-            availableIpCount: 0
-            nodeCount: 4
+            availableIpCount: 4
+            nodeCount: 8
             ownerId: ownerId
             subnetType: Public
           - subnetId: subnetId
@@ -76157,8 +76341,8 @@ components:
             vpcId: vpcId
             name: name
             cidr: cidr
-            availableIpCount: 0
-            nodeCount: 4
+            availableIpCount: 4
+            nodeCount: 8
             ownerId: ownerId
             subnetType: Public
           allowSpotWorkers: true
@@ -76715,6 +76899,7 @@ components:
       enum:
       - Create
       - Existing
+      - Import
       type: string
     Void:
       type: object
