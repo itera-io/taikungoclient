@@ -47685,7 +47685,6 @@ components:
           organizationId: 5
           createdAt: createdAt
           isDefault: true
-          existingSubnetName: existingSubnetName
           createdBy: createdBy
           isLocked: true
           name: name
@@ -47715,7 +47714,6 @@ components:
           organizationId: 5
           createdAt: createdAt
           isDefault: true
-          existingSubnetName: existingSubnetName
           createdBy: createdBy
           isLocked: true
           name: name
@@ -47780,7 +47778,6 @@ components:
         organizationId: 5
         createdAt: createdAt
         isDefault: true
-        existingSubnetName: existingSubnetName
         createdBy: createdBy
         isLocked: true
         name: name
@@ -47848,9 +47845,6 @@ components:
         existingVirtualNetworkName:
           nullable: true
           type: string
-        existingSubnetName:
-          nullable: true
-          type: string
         sharedFileSystemEnabled:
           type: boolean
         importedFileShareId:
@@ -47865,7 +47859,6 @@ components:
       - continentName
       - createdAt
       - createdBy
-      - existingSubnetName
       - existingVirtualNetworkName
       - existingVirtualNetworkResourceGroupName
       - id
@@ -51787,7 +51780,6 @@ components:
         ipMode: Ipv4
         azureClientId: azureClientId
         vnetMode: Create
-        existingSubnetName: existingSubnetName
         azureLocation: azureLocation
         name: name
         subnets:
@@ -51832,9 +51824,6 @@ components:
           nullable: true
           type: string
         existingVirtualNetworkName:
-          nullable: true
-          type: string
-        existingSubnetName:
           nullable: true
           type: string
         sharedFileSystemEnabled:

@@ -32,7 +32,6 @@ type CreateAzureCloudCommand struct {
 	VnetMode *VnetMode `json:"vnetMode,omitempty"`
 	ExistingVirtualNetworkResourceGroupName NullableString `json:"existingVirtualNetworkResourceGroupName,omitempty"`
 	ExistingVirtualNetworkName NullableString `json:"existingVirtualNetworkName,omitempty"`
-	ExistingSubnetName NullableString `json:"existingSubnetName,omitempty"`
 	SharedFileSystemEnabled *bool `json:"sharedFileSystemEnabled,omitempty"`
 	ImportedFileShareId NullableString `json:"importedFileShareId,omitempty"`
 	Subnets []CreateAzureSubnetDto `json:"subnets,omitempty"`
@@ -542,48 +541,6 @@ func (o *CreateAzureCloudCommand) UnsetExistingVirtualNetworkName() {
 	o.ExistingVirtualNetworkName.Unset()
 }
 
-// GetExistingSubnetName returns the ExistingSubnetName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateAzureCloudCommand) GetExistingSubnetName() string {
-	if o == nil || IsNil(o.ExistingSubnetName.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.ExistingSubnetName.Get()
-}
-
-// GetExistingSubnetNameOk returns a tuple with the ExistingSubnetName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateAzureCloudCommand) GetExistingSubnetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ExistingSubnetName.Get(), o.ExistingSubnetName.IsSet()
-}
-
-// HasExistingSubnetName returns a boolean if a field has been set.
-func (o *CreateAzureCloudCommand) HasExistingSubnetName() bool {
-	if o != nil && o.ExistingSubnetName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetExistingSubnetName gets a reference to the given NullableString and assigns it to the ExistingSubnetName field.
-func (o *CreateAzureCloudCommand) SetExistingSubnetName(v string) {
-	o.ExistingSubnetName.Set(&v)
-}
-// SetExistingSubnetNameNil sets the value for ExistingSubnetName to be an explicit nil
-func (o *CreateAzureCloudCommand) SetExistingSubnetNameNil() {
-	o.ExistingSubnetName.Set(nil)
-}
-
-// UnsetExistingSubnetName ensures that no value is present for ExistingSubnetName, not even an explicit nil
-func (o *CreateAzureCloudCommand) UnsetExistingSubnetName() {
-	o.ExistingSubnetName.Unset()
-}
-
 // GetSharedFileSystemEnabled returns the SharedFileSystemEnabled field value if set, zero value otherwise.
 func (o *CreateAzureCloudCommand) GetSharedFileSystemEnabled() bool {
 	if o == nil || IsNil(o.SharedFileSystemEnabled) {
@@ -737,9 +694,6 @@ func (o CreateAzureCloudCommand) ToMap() (map[string]interface{}, error) {
 	if o.ExistingVirtualNetworkName.IsSet() {
 		toSerialize["existingVirtualNetworkName"] = o.ExistingVirtualNetworkName.Get()
 	}
-	if o.ExistingSubnetName.IsSet() {
-		toSerialize["existingSubnetName"] = o.ExistingSubnetName.Get()
-	}
 	if !IsNil(o.SharedFileSystemEnabled) {
 		toSerialize["sharedFileSystemEnabled"] = o.SharedFileSystemEnabled
 	}
@@ -783,7 +737,6 @@ func (o *CreateAzureCloudCommand) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "vnetMode")
 		delete(additionalProperties, "existingVirtualNetworkResourceGroupName")
 		delete(additionalProperties, "existingVirtualNetworkName")
-		delete(additionalProperties, "existingSubnetName")
 		delete(additionalProperties, "sharedFileSystemEnabled")
 		delete(additionalProperties, "importedFileShareId")
 		delete(additionalProperties, "subnets")

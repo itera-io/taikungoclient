@@ -71448,7 +71448,6 @@
           "continentName",
           "createdAt",
           "createdBy",
-          "existingSubnetName",
           "existingVirtualNetworkName",
           "existingVirtualNetworkResourceGroupName",
           "id",
@@ -71544,10 +71543,6 @@
             "nullable": true
           },
           "existingVirtualNetworkName": {
-            "type": "string",
-            "nullable": true
-          },
-          "existingSubnetName": {
             "type": "string",
             "nullable": true
           },
@@ -74763,10 +74758,6 @@
             "nullable": true
           },
           "existingVirtualNetworkName": {
-            "type": "string",
-            "nullable": true
-          },
-          "existingSubnetName": {
             "type": "string",
             "nullable": true
           },

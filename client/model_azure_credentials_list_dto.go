@@ -41,7 +41,6 @@ type AzureCredentialsListDto struct {
 	VnetDeploymentMode string `json:"vnetDeploymentMode"`
 	ExistingVirtualNetworkResourceGroupName NullableString `json:"existingVirtualNetworkResourceGroupName"`
 	ExistingVirtualNetworkName NullableString `json:"existingVirtualNetworkName"`
-	ExistingSubnetName NullableString `json:"existingSubnetName"`
 	SharedFileSystemEnabled bool `json:"sharedFileSystemEnabled"`
 	ImportedFileShareId NullableString `json:"importedFileShareId"`
 	ImportedFileShareName NullableString `json:"importedFileShareName"`
@@ -54,7 +53,7 @@ type _AzureCredentialsListDto AzureCredentialsListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAzureCredentialsListDto(id int32, projectCount int32, isLocked bool, name string, tenantId string, location string, availabilityZones []string, availabilityZonesCount int32, projects []CommonDropdownDto, createdBy NullableString, createdAt NullableString, lastModified NullableString, lastModifiedBy NullableString, isDefault bool, organizationId int32, organizationName string, continentName NullableString, vnetDeploymentMode string, existingVirtualNetworkResourceGroupName NullableString, existingVirtualNetworkName NullableString, existingSubnetName NullableString, sharedFileSystemEnabled bool, importedFileShareId NullableString, importedFileShareName NullableString) *AzureCredentialsListDto {
+func NewAzureCredentialsListDto(id int32, projectCount int32, isLocked bool, name string, tenantId string, location string, availabilityZones []string, availabilityZonesCount int32, projects []CommonDropdownDto, createdBy NullableString, createdAt NullableString, lastModified NullableString, lastModifiedBy NullableString, isDefault bool, organizationId int32, organizationName string, continentName NullableString, vnetDeploymentMode string, existingVirtualNetworkResourceGroupName NullableString, existingVirtualNetworkName NullableString, sharedFileSystemEnabled bool, importedFileShareId NullableString, importedFileShareName NullableString) *AzureCredentialsListDto {
 	this := AzureCredentialsListDto{}
 	this.Id = id
 	this.ProjectCount = projectCount
@@ -76,7 +75,6 @@ func NewAzureCredentialsListDto(id int32, projectCount int32, isLocked bool, nam
 	this.VnetDeploymentMode = vnetDeploymentMode
 	this.ExistingVirtualNetworkResourceGroupName = existingVirtualNetworkResourceGroupName
 	this.ExistingVirtualNetworkName = existingVirtualNetworkName
-	this.ExistingSubnetName = existingSubnetName
 	this.SharedFileSystemEnabled = sharedFileSystemEnabled
 	this.ImportedFileShareId = importedFileShareId
 	this.ImportedFileShareName = importedFileShareName
@@ -585,32 +583,6 @@ func (o *AzureCredentialsListDto) SetExistingVirtualNetworkName(v string) {
 	o.ExistingVirtualNetworkName.Set(&v)
 }
 
-// GetExistingSubnetName returns the ExistingSubnetName field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *AzureCredentialsListDto) GetExistingSubnetName() string {
-	if o == nil || o.ExistingSubnetName.Get() == nil {
-		var ret string
-		return ret
-	}
-
-	return *o.ExistingSubnetName.Get()
-}
-
-// GetExistingSubnetNameOk returns a tuple with the ExistingSubnetName field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AzureCredentialsListDto) GetExistingSubnetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ExistingSubnetName.Get(), o.ExistingSubnetName.IsSet()
-}
-
-// SetExistingSubnetName sets field value
-func (o *AzureCredentialsListDto) SetExistingSubnetName(v string) {
-	o.ExistingSubnetName.Set(&v)
-}
-
 // GetSharedFileSystemEnabled returns the SharedFileSystemEnabled field value
 func (o *AzureCredentialsListDto) GetSharedFileSystemEnabled() bool {
 	if o == nil {
@@ -717,7 +689,6 @@ func (o AzureCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["vnetDeploymentMode"] = o.VnetDeploymentMode
 	toSerialize["existingVirtualNetworkResourceGroupName"] = o.ExistingVirtualNetworkResourceGroupName.Get()
 	toSerialize["existingVirtualNetworkName"] = o.ExistingVirtualNetworkName.Get()
-	toSerialize["existingSubnetName"] = o.ExistingSubnetName.Get()
 	toSerialize["sharedFileSystemEnabled"] = o.SharedFileSystemEnabled
 	toSerialize["importedFileShareId"] = o.ImportedFileShareId.Get()
 	toSerialize["importedFileShareName"] = o.ImportedFileShareName.Get()
@@ -754,7 +725,6 @@ func (o *AzureCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 		"vnetDeploymentMode",
 		"existingVirtualNetworkResourceGroupName",
 		"existingVirtualNetworkName",
-		"existingSubnetName",
 		"sharedFileSystemEnabled",
 		"importedFileShareId",
 		"importedFileShareName",
@@ -807,7 +777,6 @@ func (o *AzureCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "vnetDeploymentMode")
 		delete(additionalProperties, "existingVirtualNetworkResourceGroupName")
 		delete(additionalProperties, "existingVirtualNetworkName")
-		delete(additionalProperties, "existingSubnetName")
 		delete(additionalProperties, "sharedFileSystemEnabled")
 		delete(additionalProperties, "importedFileShareId")
 		delete(additionalProperties, "importedFileShareName")
