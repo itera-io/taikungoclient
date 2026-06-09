@@ -21,7 +21,7 @@ var _ MappedNullable = &EnableDnsCertCommand{}
 // EnableDnsCertCommand struct for EnableDnsCertCommand
 type EnableDnsCertCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
-	DnsCredentialId *int32 `json:"dnsCredentialId,omitempty"`
+	DnsCredentialId NullableInt32 `json:"dnsCredentialId,omitempty"`
 	CertIssuerType NullableString `json:"certIssuerType,omitempty"`
 	AcmeEmail NullableString `json:"acmeEmail,omitempty"`
 	Domain NullableString `json:"domain,omitempty"`
@@ -80,36 +80,46 @@ func (o *EnableDnsCertCommand) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-// GetDnsCredentialId returns the DnsCredentialId field value if set, zero value otherwise.
+// GetDnsCredentialId returns the DnsCredentialId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnableDnsCertCommand) GetDnsCredentialId() int32 {
-	if o == nil || IsNil(o.DnsCredentialId) {
+	if o == nil || IsNil(o.DnsCredentialId.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.DnsCredentialId
+	return *o.DnsCredentialId.Get()
 }
 
 // GetDnsCredentialIdOk returns a tuple with the DnsCredentialId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnableDnsCertCommand) GetDnsCredentialIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.DnsCredentialId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DnsCredentialId, true
+	return o.DnsCredentialId.Get(), o.DnsCredentialId.IsSet()
 }
 
 // HasDnsCredentialId returns a boolean if a field has been set.
 func (o *EnableDnsCertCommand) HasDnsCredentialId() bool {
-	if o != nil && !IsNil(o.DnsCredentialId) {
+	if o != nil && o.DnsCredentialId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDnsCredentialId gets a reference to the given int32 and assigns it to the DnsCredentialId field.
+// SetDnsCredentialId gets a reference to the given NullableInt32 and assigns it to the DnsCredentialId field.
 func (o *EnableDnsCertCommand) SetDnsCredentialId(v int32) {
-	o.DnsCredentialId = &v
+	o.DnsCredentialId.Set(&v)
+}
+// SetDnsCredentialIdNil sets the value for DnsCredentialId to be an explicit nil
+func (o *EnableDnsCertCommand) SetDnsCredentialIdNil() {
+	o.DnsCredentialId.Set(nil)
+}
+
+// UnsetDnsCredentialId ensures that no value is present for DnsCredentialId, not even an explicit nil
+func (o *EnableDnsCertCommand) UnsetDnsCredentialId() {
+	o.DnsCredentialId.Unset()
 }
 
 // GetCertIssuerType returns the CertIssuerType field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -293,8 +303,8 @@ func (o EnableDnsCertCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if !IsNil(o.DnsCredentialId) {
-		toSerialize["dnsCredentialId"] = o.DnsCredentialId
+	if o.DnsCredentialId.IsSet() {
+		toSerialize["dnsCredentialId"] = o.DnsCredentialId.Get()
 	}
 	if o.CertIssuerType.IsSet() {
 		toSerialize["certIssuerType"] = o.CertIssuerType.Get()

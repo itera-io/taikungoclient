@@ -17181,7 +17181,6 @@
           {
             "name": "IsAdmin",
             "in": "query",
-            "required": true,
             "schema": {
               "type": "boolean"
             }
@@ -21311,6 +21310,178 @@
                   }
                 }
               }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dnscredentials/attach-project": {
+      "post": {
+        "tags": [
+          "DNS Credentials"
+        ],
+        "summary": "Attach a DNS credential to a project",
+        "operationId": "dnscredentials-attach-project",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AttachDetachDnsCredentialCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dnscredentials/detach-project": {
+      "post": {
+        "tags": [
+          "DNS Credentials"
+        ],
+        "summary": "Detach the DNS credential from a project",
+        "operationId": "dnscredentials-detach-project",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AttachDetachDnsCredentialCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { }
             }
           },
           "400": {
@@ -32818,6 +32989,109 @@
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/InternalProjectListDto"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/internal/projects-for-billing": {
+      "get": {
+        "tags": [
+          "Internal"
+        ],
+        "summary": "Retrieve projects list for internal billing",
+        "operationId": "internal-projects-for-billing",
+        "parameters": [
+          {
+            "name": "Limit",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "LastProjectId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectsForBillingDto"
                   }
                 }
               }
@@ -70790,6 +71064,20 @@
           }
         }
       },
+      "AttachDetachDnsCredentialCommand": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dnsCredentialId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        }
+      },
       "AutoSyncManagementCommand": {
         "type": "object",
         "properties": {
@@ -75542,6 +75830,11 @@
             "format": "int32",
             "nullable": true
           },
+          "dnsCredentialId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
           "taikunLBFlavor": {
             "type": "string",
             "nullable": true
@@ -77742,6 +78035,34 @@
           "nameServer": {
             "type": "string",
             "nullable": true
+          },
+          "azureTenantId": {
+            "type": "string",
+            "nullable": true
+          },
+          "azureSubscriptionId": {
+            "type": "string",
+            "nullable": true
+          },
+          "azureResourceGroup": {
+            "type": "string",
+            "nullable": true
+          },
+          "azureClientId": {
+            "type": "string",
+            "nullable": true
+          },
+          "azureClientSecret": {
+            "type": "string",
+            "nullable": true
+          },
+          "gcpProject": {
+            "type": "string",
+            "nullable": true
+          },
+          "gcpServiceAccountJson": {
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -78629,7 +78950,8 @@
           },
           "dnsCredentialId": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "certIssuerType": {
             "type": "string",
@@ -79503,6 +79825,15 @@
           },
           "synced": {
             "type": "boolean"
+          },
+          "dnsCredentialId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "dnsCredentialName": {
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -93904,6 +94235,34 @@
             "nullable": true
           },
           "nameServer": {
+            "type": "string",
+            "nullable": true
+          },
+          "azureTenantId": {
+            "type": "string",
+            "nullable": true
+          },
+          "azureSubscriptionId": {
+            "type": "string",
+            "nullable": true
+          },
+          "azureResourceGroup": {
+            "type": "string",
+            "nullable": true
+          },
+          "azureClientId": {
+            "type": "string",
+            "nullable": true
+          },
+          "azureClientSecret": {
+            "type": "string",
+            "nullable": true
+          },
+          "gcpProject": {
+            "type": "string",
+            "nullable": true
+          },
+          "gcpServiceAccountJson": {
             "type": "string",
             "nullable": true
           },

@@ -1103,11 +1103,11 @@ components:
     ApiResponse:
       additionalProperties: false
       example:
-        result: ""
-        isError: true
         id: id
-        message: message
         status: 0
+        message: message
+        isError: true
+        result: ""
       properties:
         id:
           nullable: true
@@ -1126,11 +1126,11 @@ components:
     CreateShowbackCredentialCommand:
       additionalProperties: false
       example:
-        organizationId: 0
-        password: password
         name: name
         url: url
         username: username
+        password: password
+        organizationId: 0
       properties:
         name:
           nullable: true
@@ -1151,21 +1151,21 @@ components:
     CreateShowbackRuleCommand:
       additionalProperties: false
       example:
-        projectAlertLimit: 6
-        organizationId: 5
-        globalAlertLimit: 1
+        name: name
         metricName: metricName
         byLabel: byLabel
         kind: General
-        price: 0.8008281904610115
-        name: name
         type: Count
-        showbackCredentialId: 5
+        price: 0.8008281904610115
+        projectAlertLimit: 6
+        globalAlertLimit: 1
+        organizationId: 5
         labels:
         - label: label
           value: value
         - label: label
           value: value
+        showbackCredentialId: 5
       properties:
         name:
           nullable: true
@@ -1208,11 +1208,11 @@ components:
     CreateShowbackSummaryCommand:
       additionalProperties: false
       example:
+        beginApply: 2000-01-23T04:56:07.000+00:00
         price: 0.8008281904610115
         showbackRuleId: 6
-        beginApply: 2000-01-23T04:56:07.000+00:00
-        byLabelValue: byLabelValue
         projectId: 1
+        byLabelValue: byLabelValue
       properties:
         beginApply:
           format: date-time
@@ -1276,9 +1276,9 @@ components:
     GroupedCredentialForShowbackSummary:
       additionalProperties: false
       example:
-        name: name
         id: 5
         projectId: 2
+        name: name
       properties:
         id:
           format: int32
@@ -1295,10 +1295,10 @@ components:
     GroupedProjectForShowbackSummary:
       additionalProperties: false
       example:
-        isDeleted: true
-        totalPrice: 5.962133916683182
-        name: name
         id: 1
+        name: name
+        totalPrice: 5.962133916683182
+        isDeleted: true
       properties:
         id:
           format: int32
@@ -1318,28 +1318,28 @@ components:
       additionalProperties: false
       example:
         byLabelValues:
-        - metricName: metricName
+        - ruleName: ruleName
+          credentialName: credentialName
+          totalPrice: 0.8008281904610115
+          labelName: labelName
+          labelValue: labelValue
+          metricName: metricName
           data:
           - byLabel: byLabel
             totalPrice: 6.027456183070403
           - byLabel: byLabel
             totalPrice: 6.027456183070403
-          totalPrice: 0.8008281904610115
-          ruleName: ruleName
-          labelValue: labelValue
+        - ruleName: ruleName
           credentialName: credentialName
+          totalPrice: 0.8008281904610115
           labelName: labelName
-        - metricName: metricName
+          labelValue: labelValue
+          metricName: metricName
           data:
           - byLabel: byLabel
             totalPrice: 6.027456183070403
           - byLabel: byLabel
             totalPrice: 6.027456183070403
-          totalPrice: 0.8008281904610115
-          ruleName: ruleName
-          labelValue: labelValue
-          credentialName: credentialName
-          labelName: labelName
       properties:
         byLabelValues:
           items:
@@ -1352,21 +1352,21 @@ components:
       example:
         byProjects:
         - data:
-          - totalPrice: 0.8008281904610115
-            projectName: projectName
-          - totalPrice: 0.8008281904610115
-            projectName: projectName
-          totalPrice: 6.027456183070403
+          - projectName: projectName
+            totalPrice: 0.8008281904610115
+          - projectName: projectName
+            totalPrice: 0.8008281904610115
           ruleName: ruleName
           credentialName: credentialName
+          totalPrice: 6.027456183070403
         - data:
-          - totalPrice: 0.8008281904610115
-            projectName: projectName
-          - totalPrice: 0.8008281904610115
-            projectName: projectName
-          totalPrice: 6.027456183070403
+          - projectName: projectName
+            totalPrice: 0.8008281904610115
+          - projectName: projectName
+            totalPrice: 0.8008281904610115
           ruleName: ruleName
           credentialName: credentialName
+          totalPrice: 6.027456183070403
       properties:
         byProjects:
           items:
@@ -1377,57 +1377,57 @@ components:
     GroupedShowbackList:
       additionalProperties: false
       example:
-        byLabelValues:
-        - data:
-          - price: 0.8008281904610115
-            startDate: startDate
-          - price: 0.8008281904610115
-            startDate: startDate
-          totalPrice: 1.4658129805029452
-          name: name
-          id: 6
-        - data:
-          - price: 0.8008281904610115
-            startDate: startDate
-          - price: 0.8008281904610115
-            startDate: startDate
-          totalPrice: 1.4658129805029452
-          name: name
-          id: 6
         projects:
         - data:
-          - price: 0.8008281904610115
-            startDate: startDate
-          - price: 0.8008281904610115
-            startDate: startDate
-          totalPrice: 1.4658129805029452
-          name: name
+          - startDate: startDate
+            price: 0.8008281904610115
+          - startDate: startDate
+            price: 0.8008281904610115
           id: 6
+          name: name
+          totalPrice: 1.4658129805029452
         - data:
-          - price: 0.8008281904610115
-            startDate: startDate
-          - price: 0.8008281904610115
-            startDate: startDate
-          totalPrice: 1.4658129805029452
-          name: name
+          - startDate: startDate
+            price: 0.8008281904610115
+          - startDate: startDate
+            price: 0.8008281904610115
           id: 6
+          name: name
+          totalPrice: 1.4658129805029452
         credentials:
         - data:
-          - price: 0.8008281904610115
-            startDate: startDate
-          - price: 0.8008281904610115
-            startDate: startDate
-          totalPrice: 1.4658129805029452
-          name: name
+          - startDate: startDate
+            price: 0.8008281904610115
+          - startDate: startDate
+            price: 0.8008281904610115
           id: 6
+          name: name
+          totalPrice: 1.4658129805029452
         - data:
-          - price: 0.8008281904610115
-            startDate: startDate
-          - price: 0.8008281904610115
-            startDate: startDate
-          totalPrice: 1.4658129805029452
-          name: name
+          - startDate: startDate
+            price: 0.8008281904610115
+          - startDate: startDate
+            price: 0.8008281904610115
           id: 6
+          name: name
+          totalPrice: 1.4658129805029452
+        byLabelValues:
+        - data:
+          - startDate: startDate
+            price: 0.8008281904610115
+          - startDate: startDate
+            price: 0.8008281904610115
+          id: 6
+          name: name
+          totalPrice: 1.4658129805029452
+        - data:
+          - startDate: startDate
+            price: 0.8008281904610115
+          - startDate: startDate
+            price: 0.8008281904610115
+          id: 6
+          name: name
+          totalPrice: 1.4658129805029452
       properties:
         projects:
           items:
@@ -1448,8 +1448,8 @@ components:
     GroupedShowbackSummaries:
       additionalProperties: false
       example:
-        price: 0.8008281904610115
         startDate: startDate
+        price: 0.8008281904610115
       properties:
         startDate:
           nullable: true
@@ -1475,8 +1475,8 @@ components:
     GroupedShowbackSummariesByProjectDto:
       additionalProperties: false
       example:
-        totalPrice: 0.8008281904610115
         projectName: projectName
+        totalPrice: 0.8008281904610115
       properties:
         projectName:
           nullable: true
@@ -1489,17 +1489,17 @@ components:
     GroupedShowbackSummaryByLabelInfo:
       additionalProperties: false
       example:
+        ruleName: ruleName
+        credentialName: credentialName
+        totalPrice: 0.8008281904610115
+        labelName: labelName
+        labelValue: labelValue
         metricName: metricName
         data:
         - byLabel: byLabel
           totalPrice: 6.027456183070403
         - byLabel: byLabel
           totalPrice: 6.027456183070403
-        totalPrice: 0.8008281904610115
-        ruleName: ruleName
-        labelValue: labelValue
-        credentialName: credentialName
-        labelName: labelName
       properties:
         ruleName:
           nullable: true
@@ -1530,13 +1530,13 @@ components:
       additionalProperties: false
       example:
         data:
-        - totalPrice: 0.8008281904610115
-          projectName: projectName
-        - totalPrice: 0.8008281904610115
-          projectName: projectName
-        totalPrice: 6.027456183070403
+        - projectName: projectName
+          totalPrice: 0.8008281904610115
+        - projectName: projectName
+          totalPrice: 0.8008281904610115
         ruleName: ruleName
         credentialName: credentialName
+        totalPrice: 6.027456183070403
       properties:
         data:
           items:
@@ -1558,13 +1558,13 @@ components:
       additionalProperties: false
       example:
         data:
-        - price: 0.8008281904610115
-          startDate: startDate
-        - price: 0.8008281904610115
-          startDate: startDate
-        totalPrice: 1.4658129805029452
-        name: name
+        - startDate: startDate
+          price: 0.8008281904610115
+        - startDate: startDate
+          price: 0.8008281904610115
         id: 6
+        name: name
+        totalPrice: 1.4658129805029452
       properties:
         data:
           items:
@@ -1586,22 +1586,22 @@ components:
     GroupedShowbackSummaryListDto:
       additionalProperties: false
       example:
+        ruleId: 0
+        ruleName: ruleName
+        totalPrice: 6.027456183070403
         projects:
-        - isDeleted: true
-          totalPrice: 5.962133916683182
+        - id: 1
           name: name
-          id: 1
-        - isDeleted: true
           totalPrice: 5.962133916683182
+          isDeleted: true
+        - id: 1
           name: name
-          id: 1
+          totalPrice: 5.962133916683182
+          isDeleted: true
         credential:
-          name: name
           id: 5
           projectId: 2
-        totalPrice: 6.027456183070403
-        ruleName: ruleName
-        ruleId: 0
+          name: name
       properties:
         ruleId:
           format: int32
@@ -1623,11 +1623,11 @@ components:
     ProblemDetails:
       additionalProperties: {}
       example:
-        instance: instance
-        detail: detail
         type: type
         title: title
         status: 1
+        detail: detail
+        instance: instance
       properties:
         type:
           nullable: true
@@ -1649,8 +1649,8 @@ components:
     ShowbackCredentialLockCommand:
       additionalProperties: false
       example:
-        mode: mode
         id: 0
+        mode: mode
       properties:
         id:
           format: int32
@@ -1662,8 +1662,8 @@ components:
     ShowbackCredentialsDetailsDto:
       additionalProperties: false
       example:
-        name: name
         id: 0
+        name: name
       properties:
         id:
           format: int32
@@ -1676,40 +1676,40 @@ components:
       additionalProperties: false
       example:
         data:
-        - organizationName: organizationName
+        - id: 0
+          name: name
+          url: url
+          createdAt: createdAt
+          username: username
+          password: password
+          isLocked: true
+          organizationName: organizationName
+          organizationId: 6
+          createdBy: createdBy
+          lastModified: lastModified
           lastModifiedBy: lastModifiedBy
           rules:
-          - name: name
-            id: 1
-          - name: name
-            id: 1
-          url: url
-          organizationId: 6
-          createdAt: createdAt
-          password: password
-          createdBy: createdBy
-          isLocked: true
+          - id: 1
+            name: name
+          - id: 1
+            name: name
+        - id: 0
           name: name
-          id: 0
-          lastModified: lastModified
+          url: url
+          createdAt: createdAt
           username: username
-        - organizationName: organizationName
+          password: password
+          isLocked: true
+          organizationName: organizationName
+          organizationId: 6
+          createdBy: createdBy
+          lastModified: lastModified
           lastModifiedBy: lastModifiedBy
           rules:
-          - name: name
-            id: 1
-          - name: name
-            id: 1
-          url: url
-          organizationId: 6
-          createdAt: createdAt
-          password: password
-          createdBy: createdBy
-          isLocked: true
-          name: name
-          id: 0
-          lastModified: lastModified
-          username: username
+          - id: 1
+            name: name
+          - id: 1
+            name: name
         totalCount: 5
       properties:
         data:
@@ -1724,23 +1724,23 @@ components:
     ShowbackCredentialsListDto:
       additionalProperties: false
       example:
+        id: 0
+        name: name
+        url: url
+        createdAt: createdAt
+        username: username
+        password: password
+        isLocked: true
         organizationName: organizationName
+        organizationId: 6
+        createdBy: createdBy
+        lastModified: lastModified
         lastModifiedBy: lastModifiedBy
         rules:
-        - name: name
-          id: 1
-        - name: name
-          id: 1
-        url: url
-        organizationId: 6
-        createdAt: createdAt
-        password: password
-        createdBy: createdBy
-        isLocked: true
-        name: name
-        id: 0
-        lastModified: lastModified
-        username: username
+        - id: 1
+          name: name
+        - id: 1
+          name: name
       properties:
         id:
           format: int32
@@ -1800,20 +1800,20 @@ components:
       additionalProperties: false
       example:
         data:
-        - monitoringPassword: monitoringPassword
-          monitoringUrlHeader: monitoringUrlHeader
+        - id: 0
           name: name
-          kubernetesCurrentVersion: kubernetesCurrentVersion
-          id: 0
           monitoringUrl: monitoringUrl
-          monitoringUsername: monitoringUsername
-        - monitoringPassword: monitoringPassword
           monitoringUrlHeader: monitoringUrlHeader
-          name: name
-          kubernetesCurrentVersion: kubernetesCurrentVersion
-          id: 0
-          monitoringUrl: monitoringUrl
           monitoringUsername: monitoringUsername
+          monitoringPassword: monitoringPassword
+          kubernetesCurrentVersion: kubernetesCurrentVersion
+        - id: 0
+          name: name
+          monitoringUrl: monitoringUrl
+          monitoringUrlHeader: monitoringUrlHeader
+          monitoringUsername: monitoringUsername
+          monitoringPassword: monitoringPassword
+          kubernetesCurrentVersion: kubernetesCurrentVersion
         totalCount: 6
       properties:
         data:
@@ -1828,13 +1828,13 @@ components:
     ShowbackProjectsListDto:
       additionalProperties: false
       example:
-        monitoringPassword: monitoringPassword
-        monitoringUrlHeader: monitoringUrlHeader
-        name: name
-        kubernetesCurrentVersion: kubernetesCurrentVersion
         id: 0
+        name: name
         monitoringUrl: monitoringUrl
+        monitoringUrlHeader: monitoringUrlHeader
         monitoringUsername: monitoringUsername
+        monitoringPassword: monitoringPassword
+        kubernetesCurrentVersion: kubernetesCurrentVersion
       properties:
         id:
           format: int32
@@ -1861,8 +1861,8 @@ components:
     ShowbackRuleEntityDto:
       additionalProperties: false
       example:
-        name: name
         id: 1
+        name: name
       properties:
         id:
           format: int32
@@ -1875,52 +1875,52 @@ components:
       additionalProperties: false
       example:
         data:
-        - projectAlertLimit: 1
-          metricName: metricName
+        - id: 0
+          name: name
           byLabel: byLabel
-          organizationName: organizationName
+          metricName: metricName
+          createdAt: createdAt
           kind: kind
-          lastModifiedBy: lastModifiedBy
-          showbackCredentialName: showbackCredentialName
           type: type
-          showbackCredentialId: 2
+          price: 6.027456183070403
+          projectAlertLimit: 1
+          globalAlertLimit: 5
+          organizationName: organizationName
+          organizationId: 5
           billingStartDate: billingStartDate
           labels:
           - label: label
             value: value
           - label: label
             value: value
-          organizationId: 5
-          createdAt: createdAt
-          globalAlertLimit: 5
-          createdBy: createdBy
-          price: 6.027456183070403
-          name: name
-          id: 0
-          lastModified: lastModified
-        - projectAlertLimit: 1
-          metricName: metricName
-          byLabel: byLabel
-          organizationName: organizationName
-          kind: kind
-          lastModifiedBy: lastModifiedBy
           showbackCredentialName: showbackCredentialName
-          type: type
           showbackCredentialId: 2
+          createdBy: createdBy
+          lastModified: lastModified
+          lastModifiedBy: lastModifiedBy
+        - id: 0
+          name: name
+          byLabel: byLabel
+          metricName: metricName
+          createdAt: createdAt
+          kind: kind
+          type: type
+          price: 6.027456183070403
+          projectAlertLimit: 1
+          globalAlertLimit: 5
+          organizationName: organizationName
+          organizationId: 5
           billingStartDate: billingStartDate
           labels:
           - label: label
             value: value
           - label: label
             value: value
-          organizationId: 5
-          createdAt: createdAt
-          globalAlertLimit: 5
+          showbackCredentialName: showbackCredentialName
+          showbackCredentialId: 2
           createdBy: createdBy
-          price: 6.027456183070403
-          name: name
-          id: 0
           lastModified: lastModified
+          lastModifiedBy: lastModifiedBy
         totalCount: 7
       properties:
         data:
@@ -1935,29 +1935,29 @@ components:
     ShowbackRulesListDto:
       additionalProperties: false
       example:
-        projectAlertLimit: 1
-        metricName: metricName
+        id: 0
+        name: name
         byLabel: byLabel
-        organizationName: organizationName
+        metricName: metricName
+        createdAt: createdAt
         kind: kind
-        lastModifiedBy: lastModifiedBy
-        showbackCredentialName: showbackCredentialName
         type: type
-        showbackCredentialId: 2
+        price: 6.027456183070403
+        projectAlertLimit: 1
+        globalAlertLimit: 5
+        organizationName: organizationName
+        organizationId: 5
         billingStartDate: billingStartDate
         labels:
         - label: label
           value: value
         - label: label
           value: value
-        organizationId: 5
-        createdAt: createdAt
-        globalAlertLimit: 5
+        showbackCredentialName: showbackCredentialName
+        showbackCredentialId: 2
         createdBy: createdBy
-        price: 6.027456183070403
-        name: name
-        id: 0
         lastModified: lastModified
+        lastModifiedBy: lastModifiedBy
       properties:
         id:
           format: int32
@@ -2023,15 +2023,15 @@ components:
     UpdateShowbackRuleCommand:
       additionalProperties: false
       example:
+        id: 0
+        name: name
+        byLabel: byLabel
+        metricName: metricName
+        kind: General
+        type: Count
+        price: 6.027456183070403
         projectAlertLimit: 1
         globalAlertLimit: 5
-        metricName: metricName
-        byLabel: byLabel
-        kind: General
-        price: 6.027456183070403
-        name: name
-        id: 0
-        type: Count
         labels:
         - label: label
           value: value

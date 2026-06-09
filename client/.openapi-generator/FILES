@@ -149,6 +149,7 @@ docs/ApplicationSyncResponse.md
 docs/ArtifactRepositoryDto.md
 docs/ArtifactUrlCheckerCommand.md
 docs/AttachDetachAlertingProfileCommand.md
+docs/AttachDetachDnsCredentialCommand.md
 docs/AuthManagementAPI.md
 docs/AutoSyncManagementCommand.md
 docs/AutoscalingAPI.md
@@ -1145,6 +1146,7 @@ model_application_sync_response.go
 model_artifact_repository_dto.go
 model_artifact_url_checker_command.go
 model_attach_detach_alerting_profile_command.go
+model_attach_detach_dns_credential_command.go
 model_auto_sync_management_command.go
 model_available_package_details_dto.go
 model_available_packages_dto.go

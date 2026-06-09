@@ -34,6 +34,13 @@ type DnsCredentialCreateCommand struct {
 	TsigSecret NullableString `json:"tsigSecret,omitempty"`
 	TsigAlgorithm NullableString `json:"tsigAlgorithm,omitempty"`
 	NameServer NullableString `json:"nameServer,omitempty"`
+	AzureTenantId NullableString `json:"azureTenantId,omitempty"`
+	AzureSubscriptionId NullableString `json:"azureSubscriptionId,omitempty"`
+	AzureResourceGroup NullableString `json:"azureResourceGroup,omitempty"`
+	AzureClientId NullableString `json:"azureClientId,omitempty"`
+	AzureClientSecret NullableString `json:"azureClientSecret,omitempty"`
+	GcpProject NullableString `json:"gcpProject,omitempty"`
+	GcpServiceAccountJson NullableString `json:"gcpServiceAccountJson,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -634,6 +641,300 @@ func (o *DnsCredentialCreateCommand) UnsetNameServer() {
 	o.NameServer.Unset()
 }
 
+// GetAzureTenantId returns the AzureTenantId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DnsCredentialCreateCommand) GetAzureTenantId() string {
+	if o == nil || IsNil(o.AzureTenantId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AzureTenantId.Get()
+}
+
+// GetAzureTenantIdOk returns a tuple with the AzureTenantId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DnsCredentialCreateCommand) GetAzureTenantIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AzureTenantId.Get(), o.AzureTenantId.IsSet()
+}
+
+// HasAzureTenantId returns a boolean if a field has been set.
+func (o *DnsCredentialCreateCommand) HasAzureTenantId() bool {
+	if o != nil && o.AzureTenantId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureTenantId gets a reference to the given NullableString and assigns it to the AzureTenantId field.
+func (o *DnsCredentialCreateCommand) SetAzureTenantId(v string) {
+	o.AzureTenantId.Set(&v)
+}
+// SetAzureTenantIdNil sets the value for AzureTenantId to be an explicit nil
+func (o *DnsCredentialCreateCommand) SetAzureTenantIdNil() {
+	o.AzureTenantId.Set(nil)
+}
+
+// UnsetAzureTenantId ensures that no value is present for AzureTenantId, not even an explicit nil
+func (o *DnsCredentialCreateCommand) UnsetAzureTenantId() {
+	o.AzureTenantId.Unset()
+}
+
+// GetAzureSubscriptionId returns the AzureSubscriptionId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DnsCredentialCreateCommand) GetAzureSubscriptionId() string {
+	if o == nil || IsNil(o.AzureSubscriptionId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AzureSubscriptionId.Get()
+}
+
+// GetAzureSubscriptionIdOk returns a tuple with the AzureSubscriptionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DnsCredentialCreateCommand) GetAzureSubscriptionIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AzureSubscriptionId.Get(), o.AzureSubscriptionId.IsSet()
+}
+
+// HasAzureSubscriptionId returns a boolean if a field has been set.
+func (o *DnsCredentialCreateCommand) HasAzureSubscriptionId() bool {
+	if o != nil && o.AzureSubscriptionId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureSubscriptionId gets a reference to the given NullableString and assigns it to the AzureSubscriptionId field.
+func (o *DnsCredentialCreateCommand) SetAzureSubscriptionId(v string) {
+	o.AzureSubscriptionId.Set(&v)
+}
+// SetAzureSubscriptionIdNil sets the value for AzureSubscriptionId to be an explicit nil
+func (o *DnsCredentialCreateCommand) SetAzureSubscriptionIdNil() {
+	o.AzureSubscriptionId.Set(nil)
+}
+
+// UnsetAzureSubscriptionId ensures that no value is present for AzureSubscriptionId, not even an explicit nil
+func (o *DnsCredentialCreateCommand) UnsetAzureSubscriptionId() {
+	o.AzureSubscriptionId.Unset()
+}
+
+// GetAzureResourceGroup returns the AzureResourceGroup field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DnsCredentialCreateCommand) GetAzureResourceGroup() string {
+	if o == nil || IsNil(o.AzureResourceGroup.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AzureResourceGroup.Get()
+}
+
+// GetAzureResourceGroupOk returns a tuple with the AzureResourceGroup field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DnsCredentialCreateCommand) GetAzureResourceGroupOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AzureResourceGroup.Get(), o.AzureResourceGroup.IsSet()
+}
+
+// HasAzureResourceGroup returns a boolean if a field has been set.
+func (o *DnsCredentialCreateCommand) HasAzureResourceGroup() bool {
+	if o != nil && o.AzureResourceGroup.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureResourceGroup gets a reference to the given NullableString and assigns it to the AzureResourceGroup field.
+func (o *DnsCredentialCreateCommand) SetAzureResourceGroup(v string) {
+	o.AzureResourceGroup.Set(&v)
+}
+// SetAzureResourceGroupNil sets the value for AzureResourceGroup to be an explicit nil
+func (o *DnsCredentialCreateCommand) SetAzureResourceGroupNil() {
+	o.AzureResourceGroup.Set(nil)
+}
+
+// UnsetAzureResourceGroup ensures that no value is present for AzureResourceGroup, not even an explicit nil
+func (o *DnsCredentialCreateCommand) UnsetAzureResourceGroup() {
+	o.AzureResourceGroup.Unset()
+}
+
+// GetAzureClientId returns the AzureClientId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DnsCredentialCreateCommand) GetAzureClientId() string {
+	if o == nil || IsNil(o.AzureClientId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AzureClientId.Get()
+}
+
+// GetAzureClientIdOk returns a tuple with the AzureClientId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DnsCredentialCreateCommand) GetAzureClientIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AzureClientId.Get(), o.AzureClientId.IsSet()
+}
+
+// HasAzureClientId returns a boolean if a field has been set.
+func (o *DnsCredentialCreateCommand) HasAzureClientId() bool {
+	if o != nil && o.AzureClientId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureClientId gets a reference to the given NullableString and assigns it to the AzureClientId field.
+func (o *DnsCredentialCreateCommand) SetAzureClientId(v string) {
+	o.AzureClientId.Set(&v)
+}
+// SetAzureClientIdNil sets the value for AzureClientId to be an explicit nil
+func (o *DnsCredentialCreateCommand) SetAzureClientIdNil() {
+	o.AzureClientId.Set(nil)
+}
+
+// UnsetAzureClientId ensures that no value is present for AzureClientId, not even an explicit nil
+func (o *DnsCredentialCreateCommand) UnsetAzureClientId() {
+	o.AzureClientId.Unset()
+}
+
+// GetAzureClientSecret returns the AzureClientSecret field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DnsCredentialCreateCommand) GetAzureClientSecret() string {
+	if o == nil || IsNil(o.AzureClientSecret.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AzureClientSecret.Get()
+}
+
+// GetAzureClientSecretOk returns a tuple with the AzureClientSecret field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DnsCredentialCreateCommand) GetAzureClientSecretOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AzureClientSecret.Get(), o.AzureClientSecret.IsSet()
+}
+
+// HasAzureClientSecret returns a boolean if a field has been set.
+func (o *DnsCredentialCreateCommand) HasAzureClientSecret() bool {
+	if o != nil && o.AzureClientSecret.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureClientSecret gets a reference to the given NullableString and assigns it to the AzureClientSecret field.
+func (o *DnsCredentialCreateCommand) SetAzureClientSecret(v string) {
+	o.AzureClientSecret.Set(&v)
+}
+// SetAzureClientSecretNil sets the value for AzureClientSecret to be an explicit nil
+func (o *DnsCredentialCreateCommand) SetAzureClientSecretNil() {
+	o.AzureClientSecret.Set(nil)
+}
+
+// UnsetAzureClientSecret ensures that no value is present for AzureClientSecret, not even an explicit nil
+func (o *DnsCredentialCreateCommand) UnsetAzureClientSecret() {
+	o.AzureClientSecret.Unset()
+}
+
+// GetGcpProject returns the GcpProject field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DnsCredentialCreateCommand) GetGcpProject() string {
+	if o == nil || IsNil(o.GcpProject.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.GcpProject.Get()
+}
+
+// GetGcpProjectOk returns a tuple with the GcpProject field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DnsCredentialCreateCommand) GetGcpProjectOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.GcpProject.Get(), o.GcpProject.IsSet()
+}
+
+// HasGcpProject returns a boolean if a field has been set.
+func (o *DnsCredentialCreateCommand) HasGcpProject() bool {
+	if o != nil && o.GcpProject.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpProject gets a reference to the given NullableString and assigns it to the GcpProject field.
+func (o *DnsCredentialCreateCommand) SetGcpProject(v string) {
+	o.GcpProject.Set(&v)
+}
+// SetGcpProjectNil sets the value for GcpProject to be an explicit nil
+func (o *DnsCredentialCreateCommand) SetGcpProjectNil() {
+	o.GcpProject.Set(nil)
+}
+
+// UnsetGcpProject ensures that no value is present for GcpProject, not even an explicit nil
+func (o *DnsCredentialCreateCommand) UnsetGcpProject() {
+	o.GcpProject.Unset()
+}
+
+// GetGcpServiceAccountJson returns the GcpServiceAccountJson field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DnsCredentialCreateCommand) GetGcpServiceAccountJson() string {
+	if o == nil || IsNil(o.GcpServiceAccountJson.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.GcpServiceAccountJson.Get()
+}
+
+// GetGcpServiceAccountJsonOk returns a tuple with the GcpServiceAccountJson field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DnsCredentialCreateCommand) GetGcpServiceAccountJsonOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.GcpServiceAccountJson.Get(), o.GcpServiceAccountJson.IsSet()
+}
+
+// HasGcpServiceAccountJson returns a boolean if a field has been set.
+func (o *DnsCredentialCreateCommand) HasGcpServiceAccountJson() bool {
+	if o != nil && o.GcpServiceAccountJson.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpServiceAccountJson gets a reference to the given NullableString and assigns it to the GcpServiceAccountJson field.
+func (o *DnsCredentialCreateCommand) SetGcpServiceAccountJson(v string) {
+	o.GcpServiceAccountJson.Set(&v)
+}
+// SetGcpServiceAccountJsonNil sets the value for GcpServiceAccountJson to be an explicit nil
+func (o *DnsCredentialCreateCommand) SetGcpServiceAccountJsonNil() {
+	o.GcpServiceAccountJson.Set(nil)
+}
+
+// UnsetGcpServiceAccountJson ensures that no value is present for GcpServiceAccountJson, not even an explicit nil
+func (o *DnsCredentialCreateCommand) UnsetGcpServiceAccountJson() {
+	o.GcpServiceAccountJson.Unset()
+}
+
 func (o DnsCredentialCreateCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -686,6 +987,27 @@ func (o DnsCredentialCreateCommand) ToMap() (map[string]interface{}, error) {
 	if o.NameServer.IsSet() {
 		toSerialize["nameServer"] = o.NameServer.Get()
 	}
+	if o.AzureTenantId.IsSet() {
+		toSerialize["azureTenantId"] = o.AzureTenantId.Get()
+	}
+	if o.AzureSubscriptionId.IsSet() {
+		toSerialize["azureSubscriptionId"] = o.AzureSubscriptionId.Get()
+	}
+	if o.AzureResourceGroup.IsSet() {
+		toSerialize["azureResourceGroup"] = o.AzureResourceGroup.Get()
+	}
+	if o.AzureClientId.IsSet() {
+		toSerialize["azureClientId"] = o.AzureClientId.Get()
+	}
+	if o.AzureClientSecret.IsSet() {
+		toSerialize["azureClientSecret"] = o.AzureClientSecret.Get()
+	}
+	if o.GcpProject.IsSet() {
+		toSerialize["gcpProject"] = o.GcpProject.Get()
+	}
+	if o.GcpServiceAccountJson.IsSet() {
+		toSerialize["gcpServiceAccountJson"] = o.GcpServiceAccountJson.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -722,6 +1044,13 @@ func (o *DnsCredentialCreateCommand) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "tsigSecret")
 		delete(additionalProperties, "tsigAlgorithm")
 		delete(additionalProperties, "nameServer")
+		delete(additionalProperties, "azureTenantId")
+		delete(additionalProperties, "azureSubscriptionId")
+		delete(additionalProperties, "azureResourceGroup")
+		delete(additionalProperties, "azureClientId")
+		delete(additionalProperties, "azureClientSecret")
+		delete(additionalProperties, "gcpProject")
+		delete(additionalProperties, "gcpServiceAccountJson")
 		o.AdditionalProperties = additionalProperties
 	}
 

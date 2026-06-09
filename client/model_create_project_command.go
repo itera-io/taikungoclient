@@ -36,6 +36,7 @@ type CreateProjectCommand struct {
 	AiCredentialId NullableInt32 `json:"aiCredentialId,omitempty"`
 	Flavors []string `json:"flavors,omitempty"`
 	AlertingProfileId NullableInt32 `json:"alertingProfileId,omitempty"`
+	DnsCredentialId NullableInt32 `json:"dnsCredentialId,omitempty"`
 	TaikunLBFlavor NullableString `json:"taikunLBFlavor,omitempty"`
 	RouterIdStartRange NullableInt32 `json:"routerIdStartRange,omitempty"`
 	RouterIdEndRange NullableInt32 `json:"routerIdEndRange,omitempty"`
@@ -635,6 +636,48 @@ func (o *CreateProjectCommand) SetAlertingProfileIdNil() {
 // UnsetAlertingProfileId ensures that no value is present for AlertingProfileId, not even an explicit nil
 func (o *CreateProjectCommand) UnsetAlertingProfileId() {
 	o.AlertingProfileId.Unset()
+}
+
+// GetDnsCredentialId returns the DnsCredentialId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateProjectCommand) GetDnsCredentialId() int32 {
+	if o == nil || IsNil(o.DnsCredentialId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.DnsCredentialId.Get()
+}
+
+// GetDnsCredentialIdOk returns a tuple with the DnsCredentialId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateProjectCommand) GetDnsCredentialIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DnsCredentialId.Get(), o.DnsCredentialId.IsSet()
+}
+
+// HasDnsCredentialId returns a boolean if a field has been set.
+func (o *CreateProjectCommand) HasDnsCredentialId() bool {
+	if o != nil && o.DnsCredentialId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDnsCredentialId gets a reference to the given NullableInt32 and assigns it to the DnsCredentialId field.
+func (o *CreateProjectCommand) SetDnsCredentialId(v int32) {
+	o.DnsCredentialId.Set(&v)
+}
+// SetDnsCredentialIdNil sets the value for DnsCredentialId to be an explicit nil
+func (o *CreateProjectCommand) SetDnsCredentialIdNil() {
+	o.DnsCredentialId.Set(nil)
+}
+
+// UnsetDnsCredentialId ensures that no value is present for DnsCredentialId, not even an explicit nil
+func (o *CreateProjectCommand) UnsetDnsCredentialId() {
+	o.DnsCredentialId.Unset()
 }
 
 // GetTaikunLBFlavor returns the TaikunLBFlavor field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1348,6 +1391,9 @@ func (o CreateProjectCommand) ToMap() (map[string]interface{}, error) {
 	if o.AlertingProfileId.IsSet() {
 		toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
 	}
+	if o.DnsCredentialId.IsSet() {
+		toSerialize["dnsCredentialId"] = o.DnsCredentialId.Get()
+	}
 	if o.TaikunLBFlavor.IsSet() {
 		toSerialize["taikunLBFlavor"] = o.TaikunLBFlavor.Get()
 	}
@@ -1439,6 +1485,7 @@ func (o *CreateProjectCommand) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "aiCredentialId")
 		delete(additionalProperties, "flavors")
 		delete(additionalProperties, "alertingProfileId")
+		delete(additionalProperties, "dnsCredentialId")
 		delete(additionalProperties, "taikunLBFlavor")
 		delete(additionalProperties, "routerIdStartRange")
 		delete(additionalProperties, "routerIdEndRange")

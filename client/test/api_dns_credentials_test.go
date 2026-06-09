@@ -22,6 +22,17 @@ func Test_taikuncore_DNSCredentialsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test DNSCredentialsAPIService DnscredentialsAttachProject", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.DNSCredentialsAPI.DnscredentialsAttachProject(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test DNSCredentialsAPIService DnscredentialsCreate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -41,6 +52,17 @@ func Test_taikuncore_DNSCredentialsAPIService(t *testing.T) {
 		var id int32
 
 		httpRes, err := apiClient.DNSCredentialsAPI.DnscredentialsDelete(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test DNSCredentialsAPIService DnscredentialsDetachProject", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.DNSCredentialsAPI.DnscredentialsDetachProject(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

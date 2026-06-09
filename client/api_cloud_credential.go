@@ -1195,18 +1195,13 @@ func (a *CloudCredentialAPIService) CloudcredentialsMakeDefaultExecute(r ApiClou
 type ApiCloudcredentialsOrgListRequest struct {
 	ctx context.Context
 	ApiService *CloudCredentialAPIService
-	isAdmin *bool
 	accountId *int32
 	organizationId *int32
 	search *string
+	isAdmin *bool
 	isInfra *bool
 	id *int32
 	cloudType *CloudType
-}
-
-func (r ApiCloudcredentialsOrgListRequest) IsAdmin(isAdmin bool) ApiCloudcredentialsOrgListRequest {
-	r.isAdmin = &isAdmin
-	return r
 }
 
 func (r ApiCloudcredentialsOrgListRequest) AccountId(accountId int32) ApiCloudcredentialsOrgListRequest {
@@ -1221,6 +1216,11 @@ func (r ApiCloudcredentialsOrgListRequest) OrganizationId(organizationId int32) 
 
 func (r ApiCloudcredentialsOrgListRequest) Search(search string) ApiCloudcredentialsOrgListRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiCloudcredentialsOrgListRequest) IsAdmin(isAdmin bool) ApiCloudcredentialsOrgListRequest {
+	r.isAdmin = &isAdmin
 	return r
 }
 
@@ -1276,9 +1276,6 @@ func (a *CloudCredentialAPIService) CloudcredentialsOrgListExecute(r ApiCloudcre
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.isAdmin == nil {
-		return localVarReturnValue, nil, reportError("isAdmin is required and must be specified")
-	}
 
 	if r.accountId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "AccountId", r.accountId, "form", "")
@@ -1289,7 +1286,9 @@ func (a *CloudCredentialAPIService) CloudcredentialsOrgListExecute(r ApiCloudcre
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "IsAdmin", r.isAdmin, "form", "")
+	if r.isAdmin != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "IsAdmin", r.isAdmin, "form", "")
+	}
 	if r.isInfra != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "IsInfra", r.isInfra, "form", "")
 	}

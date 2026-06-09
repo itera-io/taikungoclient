@@ -29,6 +29,8 @@ type GetDnsCertStatusResponse struct {
 	DesiredConfigVersion *int32 `json:"desiredConfigVersion,omitempty"`
 	AppliedConfigVersion *int32 `json:"appliedConfigVersion,omitempty"`
 	Synced *bool `json:"synced,omitempty"`
+	DnsCredentialId NullableInt32 `json:"dnsCredentialId,omitempty"`
+	DnsCredentialName NullableString `json:"dnsCredentialName,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -389,6 +391,90 @@ func (o *GetDnsCertStatusResponse) SetSynced(v bool) {
 	o.Synced = &v
 }
 
+// GetDnsCredentialId returns the DnsCredentialId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetDnsCertStatusResponse) GetDnsCredentialId() int32 {
+	if o == nil || IsNil(o.DnsCredentialId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.DnsCredentialId.Get()
+}
+
+// GetDnsCredentialIdOk returns a tuple with the DnsCredentialId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GetDnsCertStatusResponse) GetDnsCredentialIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DnsCredentialId.Get(), o.DnsCredentialId.IsSet()
+}
+
+// HasDnsCredentialId returns a boolean if a field has been set.
+func (o *GetDnsCertStatusResponse) HasDnsCredentialId() bool {
+	if o != nil && o.DnsCredentialId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDnsCredentialId gets a reference to the given NullableInt32 and assigns it to the DnsCredentialId field.
+func (o *GetDnsCertStatusResponse) SetDnsCredentialId(v int32) {
+	o.DnsCredentialId.Set(&v)
+}
+// SetDnsCredentialIdNil sets the value for DnsCredentialId to be an explicit nil
+func (o *GetDnsCertStatusResponse) SetDnsCredentialIdNil() {
+	o.DnsCredentialId.Set(nil)
+}
+
+// UnsetDnsCredentialId ensures that no value is present for DnsCredentialId, not even an explicit nil
+func (o *GetDnsCertStatusResponse) UnsetDnsCredentialId() {
+	o.DnsCredentialId.Unset()
+}
+
+// GetDnsCredentialName returns the DnsCredentialName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetDnsCertStatusResponse) GetDnsCredentialName() string {
+	if o == nil || IsNil(o.DnsCredentialName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.DnsCredentialName.Get()
+}
+
+// GetDnsCredentialNameOk returns a tuple with the DnsCredentialName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GetDnsCertStatusResponse) GetDnsCredentialNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DnsCredentialName.Get(), o.DnsCredentialName.IsSet()
+}
+
+// HasDnsCredentialName returns a boolean if a field has been set.
+func (o *GetDnsCertStatusResponse) HasDnsCredentialName() bool {
+	if o != nil && o.DnsCredentialName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDnsCredentialName gets a reference to the given NullableString and assigns it to the DnsCredentialName field.
+func (o *GetDnsCertStatusResponse) SetDnsCredentialName(v string) {
+	o.DnsCredentialName.Set(&v)
+}
+// SetDnsCredentialNameNil sets the value for DnsCredentialName to be an explicit nil
+func (o *GetDnsCertStatusResponse) SetDnsCredentialNameNil() {
+	o.DnsCredentialName.Set(nil)
+}
+
+// UnsetDnsCredentialName ensures that no value is present for DnsCredentialName, not even an explicit nil
+func (o *GetDnsCertStatusResponse) UnsetDnsCredentialName() {
+	o.DnsCredentialName.Unset()
+}
+
 func (o GetDnsCertStatusResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -426,6 +512,12 @@ func (o GetDnsCertStatusResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Synced) {
 		toSerialize["synced"] = o.Synced
 	}
+	if o.DnsCredentialId.IsSet() {
+		toSerialize["dnsCredentialId"] = o.DnsCredentialId.Get()
+	}
+	if o.DnsCredentialName.IsSet() {
+		toSerialize["dnsCredentialName"] = o.DnsCredentialName.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -457,6 +549,8 @@ func (o *GetDnsCertStatusResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "desiredConfigVersion")
 		delete(additionalProperties, "appliedConfigVersion")
 		delete(additionalProperties, "synced")
+		delete(additionalProperties, "dnsCredentialId")
+		delete(additionalProperties, "dnsCredentialName")
 		o.AdditionalProperties = additionalProperties
 	}
 
