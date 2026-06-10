@@ -76755,8 +76755,7 @@
         "type": "object",
         "properties": {
           "name": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "organizationId": {
             "type": "integer",
@@ -76768,12 +76767,10 @@
             "nullable": true
           },
           "caCert": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "caKey": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           }
         }
       },
@@ -77981,12 +77978,10 @@
         "type": "object",
         "properties": {
           "name": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "providerType": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "organizationId": {
             "type": "integer",
@@ -77994,8 +77989,7 @@
             "nullable": true
           },
           "domainFilter": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "useLetsEncrypt": {
             "type": "boolean"
@@ -94191,16 +94185,13 @@
         "type": "object",
         "properties": {
           "dnsProvider": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "certIssuerType": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "domain": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "apiToken": {
             "type": "string",

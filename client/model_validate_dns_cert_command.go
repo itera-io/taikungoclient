@@ -20,9 +20,9 @@ var _ MappedNullable = &ValidateDnsCertCommand{}
 
 // ValidateDnsCertCommand struct for ValidateDnsCertCommand
 type ValidateDnsCertCommand struct {
-	DnsProvider NullableString `json:"dnsProvider,omitempty"`
-	CertIssuerType NullableString `json:"certIssuerType,omitempty"`
-	Domain NullableString `json:"domain,omitempty"`
+	DnsProvider *string `json:"dnsProvider,omitempty"`
+	CertIssuerType *string `json:"certIssuerType,omitempty"`
+	Domain *string `json:"domain,omitempty"`
 	ApiToken NullableString `json:"apiToken,omitempty"`
 	ZoneId NullableString `json:"zoneId,omitempty"`
 	AccessKeyId NullableString `json:"accessKeyId,omitempty"`
@@ -63,130 +63,100 @@ func NewValidateDnsCertCommandWithDefaults() *ValidateDnsCertCommand {
 	return &this
 }
 
-// GetDnsProvider returns the DnsProvider field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDnsProvider returns the DnsProvider field value if set, zero value otherwise.
 func (o *ValidateDnsCertCommand) GetDnsProvider() string {
-	if o == nil || IsNil(o.DnsProvider.Get()) {
+	if o == nil || IsNil(o.DnsProvider) {
 		var ret string
 		return ret
 	}
-	return *o.DnsProvider.Get()
+	return *o.DnsProvider
 }
 
 // GetDnsProviderOk returns a tuple with the DnsProvider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ValidateDnsCertCommand) GetDnsProviderOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DnsProvider) {
 		return nil, false
 	}
-	return o.DnsProvider.Get(), o.DnsProvider.IsSet()
+	return o.DnsProvider, true
 }
 
 // HasDnsProvider returns a boolean if a field has been set.
 func (o *ValidateDnsCertCommand) HasDnsProvider() bool {
-	if o != nil && o.DnsProvider.IsSet() {
+	if o != nil && !IsNil(o.DnsProvider) {
 		return true
 	}
 
 	return false
 }
 
-// SetDnsProvider gets a reference to the given NullableString and assigns it to the DnsProvider field.
+// SetDnsProvider gets a reference to the given string and assigns it to the DnsProvider field.
 func (o *ValidateDnsCertCommand) SetDnsProvider(v string) {
-	o.DnsProvider.Set(&v)
-}
-// SetDnsProviderNil sets the value for DnsProvider to be an explicit nil
-func (o *ValidateDnsCertCommand) SetDnsProviderNil() {
-	o.DnsProvider.Set(nil)
+	o.DnsProvider = &v
 }
 
-// UnsetDnsProvider ensures that no value is present for DnsProvider, not even an explicit nil
-func (o *ValidateDnsCertCommand) UnsetDnsProvider() {
-	o.DnsProvider.Unset()
-}
-
-// GetCertIssuerType returns the CertIssuerType field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCertIssuerType returns the CertIssuerType field value if set, zero value otherwise.
 func (o *ValidateDnsCertCommand) GetCertIssuerType() string {
-	if o == nil || IsNil(o.CertIssuerType.Get()) {
+	if o == nil || IsNil(o.CertIssuerType) {
 		var ret string
 		return ret
 	}
-	return *o.CertIssuerType.Get()
+	return *o.CertIssuerType
 }
 
 // GetCertIssuerTypeOk returns a tuple with the CertIssuerType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ValidateDnsCertCommand) GetCertIssuerTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CertIssuerType) {
 		return nil, false
 	}
-	return o.CertIssuerType.Get(), o.CertIssuerType.IsSet()
+	return o.CertIssuerType, true
 }
 
 // HasCertIssuerType returns a boolean if a field has been set.
 func (o *ValidateDnsCertCommand) HasCertIssuerType() bool {
-	if o != nil && o.CertIssuerType.IsSet() {
+	if o != nil && !IsNil(o.CertIssuerType) {
 		return true
 	}
 
 	return false
 }
 
-// SetCertIssuerType gets a reference to the given NullableString and assigns it to the CertIssuerType field.
+// SetCertIssuerType gets a reference to the given string and assigns it to the CertIssuerType field.
 func (o *ValidateDnsCertCommand) SetCertIssuerType(v string) {
-	o.CertIssuerType.Set(&v)
-}
-// SetCertIssuerTypeNil sets the value for CertIssuerType to be an explicit nil
-func (o *ValidateDnsCertCommand) SetCertIssuerTypeNil() {
-	o.CertIssuerType.Set(nil)
+	o.CertIssuerType = &v
 }
 
-// UnsetCertIssuerType ensures that no value is present for CertIssuerType, not even an explicit nil
-func (o *ValidateDnsCertCommand) UnsetCertIssuerType() {
-	o.CertIssuerType.Unset()
-}
-
-// GetDomain returns the Domain field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDomain returns the Domain field value if set, zero value otherwise.
 func (o *ValidateDnsCertCommand) GetDomain() string {
-	if o == nil || IsNil(o.Domain.Get()) {
+	if o == nil || IsNil(o.Domain) {
 		var ret string
 		return ret
 	}
-	return *o.Domain.Get()
+	return *o.Domain
 }
 
 // GetDomainOk returns a tuple with the Domain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ValidateDnsCertCommand) GetDomainOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Domain) {
 		return nil, false
 	}
-	return o.Domain.Get(), o.Domain.IsSet()
+	return o.Domain, true
 }
 
 // HasDomain returns a boolean if a field has been set.
 func (o *ValidateDnsCertCommand) HasDomain() bool {
-	if o != nil && o.Domain.IsSet() {
+	if o != nil && !IsNil(o.Domain) {
 		return true
 	}
 
 	return false
 }
 
-// SetDomain gets a reference to the given NullableString and assigns it to the Domain field.
+// SetDomain gets a reference to the given string and assigns it to the Domain field.
 func (o *ValidateDnsCertCommand) SetDomain(v string) {
-	o.Domain.Set(&v)
-}
-// SetDomainNil sets the value for Domain to be an explicit nil
-func (o *ValidateDnsCertCommand) SetDomainNil() {
-	o.Domain.Set(nil)
-}
-
-// UnsetDomain ensures that no value is present for Domain, not even an explicit nil
-func (o *ValidateDnsCertCommand) UnsetDomain() {
-	o.Domain.Unset()
+	o.Domain = &v
 }
 
 // GetApiToken returns the ApiToken field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -955,14 +925,14 @@ func (o ValidateDnsCertCommand) MarshalJSON() ([]byte, error) {
 
 func (o ValidateDnsCertCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.DnsProvider.IsSet() {
-		toSerialize["dnsProvider"] = o.DnsProvider.Get()
+	if !IsNil(o.DnsProvider) {
+		toSerialize["dnsProvider"] = o.DnsProvider
 	}
-	if o.CertIssuerType.IsSet() {
-		toSerialize["certIssuerType"] = o.CertIssuerType.Get()
+	if !IsNil(o.CertIssuerType) {
+		toSerialize["certIssuerType"] = o.CertIssuerType
 	}
-	if o.Domain.IsSet() {
-		toSerialize["domain"] = o.Domain.Get()
+	if !IsNil(o.Domain) {
+		toSerialize["domain"] = o.Domain
 	}
 	if o.ApiToken.IsSet() {
 		toSerialize["apiToken"] = o.ApiToken.Get()

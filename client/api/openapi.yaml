@@ -53749,7 +53749,6 @@ components:
         caKey: caKey
       properties:
         name:
-          nullable: true
           type: string
         organizationId:
           format: int32
@@ -53759,10 +53758,8 @@ components:
           nullable: true
           type: string
         caCert:
-          nullable: true
           type: string
         caKey:
-          nullable: true
           type: string
       type: object
     CustomCertificateAuthorityDropdownDto:
@@ -55624,17 +55621,14 @@ components:
         gcpServiceAccountJson: gcpServiceAccountJson
       properties:
         name:
-          nullable: true
           type: string
         providerType:
-          nullable: true
           type: string
         organizationId:
           format: int32
           nullable: true
           type: integer
         domainFilter:
-          nullable: true
           type: string
         useLetsEncrypt:
           type: boolean
@@ -76865,13 +76859,10 @@ components:
         caKey: caKey
       properties:
         dnsProvider:
-          nullable: true
           type: string
         certIssuerType:
-          nullable: true
           type: string
         domain:
-          nullable: true
           type: string
         apiToken:
           nullable: true

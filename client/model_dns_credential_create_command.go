@@ -20,10 +20,10 @@ var _ MappedNullable = &DnsCredentialCreateCommand{}
 
 // DnsCredentialCreateCommand struct for DnsCredentialCreateCommand
 type DnsCredentialCreateCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	ProviderType NullableString `json:"providerType,omitempty"`
+	Name *string `json:"name,omitempty"`
+	ProviderType *string `json:"providerType,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	DomainFilter NullableString `json:"domainFilter,omitempty"`
+	DomainFilter *string `json:"domainFilter,omitempty"`
 	UseLetsEncrypt *bool `json:"useLetsEncrypt,omitempty"`
 	ApiToken NullableString `json:"apiToken,omitempty"`
 	AccessKeyId NullableString `json:"accessKeyId,omitempty"`
@@ -63,88 +63,68 @@ func NewDnsCredentialCreateCommandWithDefaults() *DnsCredentialCreateCommand {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *DnsCredentialCreateCommand) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DnsCredentialCreateCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *DnsCredentialCreateCommand) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DnsCredentialCreateCommand) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *DnsCredentialCreateCommand) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *DnsCredentialCreateCommand) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetProviderType returns the ProviderType field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProviderType returns the ProviderType field value if set, zero value otherwise.
 func (o *DnsCredentialCreateCommand) GetProviderType() string {
-	if o == nil || IsNil(o.ProviderType.Get()) {
+	if o == nil || IsNil(o.ProviderType) {
 		var ret string
 		return ret
 	}
-	return *o.ProviderType.Get()
+	return *o.ProviderType
 }
 
 // GetProviderTypeOk returns a tuple with the ProviderType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DnsCredentialCreateCommand) GetProviderTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProviderType) {
 		return nil, false
 	}
-	return o.ProviderType.Get(), o.ProviderType.IsSet()
+	return o.ProviderType, true
 }
 
 // HasProviderType returns a boolean if a field has been set.
 func (o *DnsCredentialCreateCommand) HasProviderType() bool {
-	if o != nil && o.ProviderType.IsSet() {
+	if o != nil && !IsNil(o.ProviderType) {
 		return true
 	}
 
 	return false
 }
 
-// SetProviderType gets a reference to the given NullableString and assigns it to the ProviderType field.
+// SetProviderType gets a reference to the given string and assigns it to the ProviderType field.
 func (o *DnsCredentialCreateCommand) SetProviderType(v string) {
-	o.ProviderType.Set(&v)
-}
-// SetProviderTypeNil sets the value for ProviderType to be an explicit nil
-func (o *DnsCredentialCreateCommand) SetProviderTypeNil() {
-	o.ProviderType.Set(nil)
-}
-
-// UnsetProviderType ensures that no value is present for ProviderType, not even an explicit nil
-func (o *DnsCredentialCreateCommand) UnsetProviderType() {
-	o.ProviderType.Unset()
+	o.ProviderType = &v
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -189,46 +169,36 @@ func (o *DnsCredentialCreateCommand) UnsetOrganizationId() {
 	o.OrganizationId.Unset()
 }
 
-// GetDomainFilter returns the DomainFilter field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDomainFilter returns the DomainFilter field value if set, zero value otherwise.
 func (o *DnsCredentialCreateCommand) GetDomainFilter() string {
-	if o == nil || IsNil(o.DomainFilter.Get()) {
+	if o == nil || IsNil(o.DomainFilter) {
 		var ret string
 		return ret
 	}
-	return *o.DomainFilter.Get()
+	return *o.DomainFilter
 }
 
 // GetDomainFilterOk returns a tuple with the DomainFilter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DnsCredentialCreateCommand) GetDomainFilterOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DomainFilter) {
 		return nil, false
 	}
-	return o.DomainFilter.Get(), o.DomainFilter.IsSet()
+	return o.DomainFilter, true
 }
 
 // HasDomainFilter returns a boolean if a field has been set.
 func (o *DnsCredentialCreateCommand) HasDomainFilter() bool {
-	if o != nil && o.DomainFilter.IsSet() {
+	if o != nil && !IsNil(o.DomainFilter) {
 		return true
 	}
 
 	return false
 }
 
-// SetDomainFilter gets a reference to the given NullableString and assigns it to the DomainFilter field.
+// SetDomainFilter gets a reference to the given string and assigns it to the DomainFilter field.
 func (o *DnsCredentialCreateCommand) SetDomainFilter(v string) {
-	o.DomainFilter.Set(&v)
-}
-// SetDomainFilterNil sets the value for DomainFilter to be an explicit nil
-func (o *DnsCredentialCreateCommand) SetDomainFilterNil() {
-	o.DomainFilter.Set(nil)
-}
-
-// UnsetDomainFilter ensures that no value is present for DomainFilter, not even an explicit nil
-func (o *DnsCredentialCreateCommand) UnsetDomainFilter() {
-	o.DomainFilter.Unset()
+	o.DomainFilter = &v
 }
 
 // GetUseLetsEncrypt returns the UseLetsEncrypt field value if set, zero value otherwise.
@@ -945,17 +915,17 @@ func (o DnsCredentialCreateCommand) MarshalJSON() ([]byte, error) {
 
 func (o DnsCredentialCreateCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.ProviderType.IsSet() {
-		toSerialize["providerType"] = o.ProviderType.Get()
+	if !IsNil(o.ProviderType) {
+		toSerialize["providerType"] = o.ProviderType
 	}
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
-	if o.DomainFilter.IsSet() {
-		toSerialize["domainFilter"] = o.DomainFilter.Get()
+	if !IsNil(o.DomainFilter) {
+		toSerialize["domainFilter"] = o.DomainFilter
 	}
 	if !IsNil(o.UseLetsEncrypt) {
 		toSerialize["useLetsEncrypt"] = o.UseLetsEncrypt
