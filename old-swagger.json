@@ -74924,9 +74924,7 @@
       },
       "CreateAwsCloudCommand": {
         "required": [
-          "awsAccessKeyId",
           "awsRegion",
-          "awsSecretAccessKey",
           "name"
         ],
         "type": "object",
@@ -74940,6 +74938,14 @@
             "nullable": true
           },
           "awsAccessKeyId": {
+            "type": "string",
+            "nullable": true
+          },
+          "roleArn": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalId": {
             "type": "string",
             "nullable": true
           },
@@ -92804,6 +92810,14 @@
             "nullable": true
           },
           "awsAccessKeyId": {
+            "type": "string",
+            "nullable": true
+          },
+          "roleArn": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalId": {
             "type": "string",
             "nullable": true
           }

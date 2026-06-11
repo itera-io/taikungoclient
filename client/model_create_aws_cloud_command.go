@@ -22,8 +22,10 @@ var _ MappedNullable = &CreateAwsCloudCommand{}
 // CreateAwsCloudCommand struct for CreateAwsCloudCommand
 type CreateAwsCloudCommand struct {
 	Name NullableString `json:"name"`
-	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey"`
-	AwsAccessKeyId NullableString `json:"awsAccessKeyId"`
+	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey,omitempty"`
+	AwsAccessKeyId NullableString `json:"awsAccessKeyId,omitempty"`
+	RoleArn NullableString `json:"roleArn,omitempty"`
+	ExternalId NullableString `json:"externalId,omitempty"`
 	AzCount NullableInt32 `json:"azCount,omitempty"`
 	AwsRegion NullableString `json:"awsRegion"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
@@ -43,11 +45,9 @@ type _CreateAwsCloudCommand CreateAwsCloudCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateAwsCloudCommand(name NullableString, awsSecretAccessKey NullableString, awsAccessKeyId NullableString, awsRegion NullableString) *CreateAwsCloudCommand {
+func NewCreateAwsCloudCommand(name NullableString, awsRegion NullableString) *CreateAwsCloudCommand {
 	this := CreateAwsCloudCommand{}
 	this.Name = name
-	this.AwsSecretAccessKey = awsSecretAccessKey
-	this.AwsAccessKeyId = awsAccessKeyId
 	this.AwsRegion = awsRegion
 	return &this
 }
@@ -86,18 +86,16 @@ func (o *CreateAwsCloudCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
 
-// GetAwsSecretAccessKey returns the AwsSecretAccessKey field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetAwsSecretAccessKey returns the AwsSecretAccessKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateAwsCloudCommand) GetAwsSecretAccessKey() string {
-	if o == nil || o.AwsSecretAccessKey.Get() == nil {
+	if o == nil || IsNil(o.AwsSecretAccessKey.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.AwsSecretAccessKey.Get()
 }
 
-// GetAwsSecretAccessKeyOk returns a tuple with the AwsSecretAccessKey field value
+// GetAwsSecretAccessKeyOk returns a tuple with the AwsSecretAccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAwsCloudCommand) GetAwsSecretAccessKeyOk() (*string, bool) {
@@ -107,23 +105,39 @@ func (o *CreateAwsCloudCommand) GetAwsSecretAccessKeyOk() (*string, bool) {
 	return o.AwsSecretAccessKey.Get(), o.AwsSecretAccessKey.IsSet()
 }
 
-// SetAwsSecretAccessKey sets field value
+// HasAwsSecretAccessKey returns a boolean if a field has been set.
+func (o *CreateAwsCloudCommand) HasAwsSecretAccessKey() bool {
+	if o != nil && o.AwsSecretAccessKey.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsSecretAccessKey gets a reference to the given NullableString and assigns it to the AwsSecretAccessKey field.
 func (o *CreateAwsCloudCommand) SetAwsSecretAccessKey(v string) {
 	o.AwsSecretAccessKey.Set(&v)
 }
+// SetAwsSecretAccessKeyNil sets the value for AwsSecretAccessKey to be an explicit nil
+func (o *CreateAwsCloudCommand) SetAwsSecretAccessKeyNil() {
+	o.AwsSecretAccessKey.Set(nil)
+}
 
-// GetAwsAccessKeyId returns the AwsAccessKeyId field value
-// If the value is explicit nil, the zero value for string will be returned
+// UnsetAwsSecretAccessKey ensures that no value is present for AwsSecretAccessKey, not even an explicit nil
+func (o *CreateAwsCloudCommand) UnsetAwsSecretAccessKey() {
+	o.AwsSecretAccessKey.Unset()
+}
+
+// GetAwsAccessKeyId returns the AwsAccessKeyId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateAwsCloudCommand) GetAwsAccessKeyId() string {
-	if o == nil || o.AwsAccessKeyId.Get() == nil {
+	if o == nil || IsNil(o.AwsAccessKeyId.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.AwsAccessKeyId.Get()
 }
 
-// GetAwsAccessKeyIdOk returns a tuple with the AwsAccessKeyId field value
+// GetAwsAccessKeyIdOk returns a tuple with the AwsAccessKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAwsCloudCommand) GetAwsAccessKeyIdOk() (*string, bool) {
@@ -133,9 +147,111 @@ func (o *CreateAwsCloudCommand) GetAwsAccessKeyIdOk() (*string, bool) {
 	return o.AwsAccessKeyId.Get(), o.AwsAccessKeyId.IsSet()
 }
 
-// SetAwsAccessKeyId sets field value
+// HasAwsAccessKeyId returns a boolean if a field has been set.
+func (o *CreateAwsCloudCommand) HasAwsAccessKeyId() bool {
+	if o != nil && o.AwsAccessKeyId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsAccessKeyId gets a reference to the given NullableString and assigns it to the AwsAccessKeyId field.
 func (o *CreateAwsCloudCommand) SetAwsAccessKeyId(v string) {
 	o.AwsAccessKeyId.Set(&v)
+}
+// SetAwsAccessKeyIdNil sets the value for AwsAccessKeyId to be an explicit nil
+func (o *CreateAwsCloudCommand) SetAwsAccessKeyIdNil() {
+	o.AwsAccessKeyId.Set(nil)
+}
+
+// UnsetAwsAccessKeyId ensures that no value is present for AwsAccessKeyId, not even an explicit nil
+func (o *CreateAwsCloudCommand) UnsetAwsAccessKeyId() {
+	o.AwsAccessKeyId.Unset()
+}
+
+// GetRoleArn returns the RoleArn field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateAwsCloudCommand) GetRoleArn() string {
+	if o == nil || IsNil(o.RoleArn.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.RoleArn.Get()
+}
+
+// GetRoleArnOk returns a tuple with the RoleArn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateAwsCloudCommand) GetRoleArnOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.RoleArn.Get(), o.RoleArn.IsSet()
+}
+
+// HasRoleArn returns a boolean if a field has been set.
+func (o *CreateAwsCloudCommand) HasRoleArn() bool {
+	if o != nil && o.RoleArn.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleArn gets a reference to the given NullableString and assigns it to the RoleArn field.
+func (o *CreateAwsCloudCommand) SetRoleArn(v string) {
+	o.RoleArn.Set(&v)
+}
+// SetRoleArnNil sets the value for RoleArn to be an explicit nil
+func (o *CreateAwsCloudCommand) SetRoleArnNil() {
+	o.RoleArn.Set(nil)
+}
+
+// UnsetRoleArn ensures that no value is present for RoleArn, not even an explicit nil
+func (o *CreateAwsCloudCommand) UnsetRoleArn() {
+	o.RoleArn.Unset()
+}
+
+// GetExternalId returns the ExternalId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateAwsCloudCommand) GetExternalId() string {
+	if o == nil || IsNil(o.ExternalId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ExternalId.Get()
+}
+
+// GetExternalIdOk returns a tuple with the ExternalId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateAwsCloudCommand) GetExternalIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ExternalId.Get(), o.ExternalId.IsSet()
+}
+
+// HasExternalId returns a boolean if a field has been set.
+func (o *CreateAwsCloudCommand) HasExternalId() bool {
+	if o != nil && o.ExternalId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalId gets a reference to the given NullableString and assigns it to the ExternalId field.
+func (o *CreateAwsCloudCommand) SetExternalId(v string) {
+	o.ExternalId.Set(&v)
+}
+// SetExternalIdNil sets the value for ExternalId to be an explicit nil
+func (o *CreateAwsCloudCommand) SetExternalIdNil() {
+	o.ExternalId.Set(nil)
+}
+
+// UnsetExternalId ensures that no value is present for ExternalId, not even an explicit nil
+func (o *CreateAwsCloudCommand) UnsetExternalId() {
+	o.ExternalId.Unset()
 }
 
 // GetAzCount returns the AzCount field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -504,8 +620,18 @@ func (o CreateAwsCloudCommand) MarshalJSON() ([]byte, error) {
 func (o CreateAwsCloudCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name.Get()
-	toSerialize["awsSecretAccessKey"] = o.AwsSecretAccessKey.Get()
-	toSerialize["awsAccessKeyId"] = o.AwsAccessKeyId.Get()
+	if o.AwsSecretAccessKey.IsSet() {
+		toSerialize["awsSecretAccessKey"] = o.AwsSecretAccessKey.Get()
+	}
+	if o.AwsAccessKeyId.IsSet() {
+		toSerialize["awsAccessKeyId"] = o.AwsAccessKeyId.Get()
+	}
+	if o.RoleArn.IsSet() {
+		toSerialize["roleArn"] = o.RoleArn.Get()
+	}
+	if o.ExternalId.IsSet() {
+		toSerialize["externalId"] = o.ExternalId.Get()
+	}
 	if o.AzCount.IsSet() {
 		toSerialize["azCount"] = o.AzCount.Get()
 	}
@@ -548,8 +674,6 @@ func (o *CreateAwsCloudCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"name",
-		"awsSecretAccessKey",
-		"awsAccessKeyId",
 		"awsRegion",
 	}
 
@@ -583,6 +707,8 @@ func (o *CreateAwsCloudCommand) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "awsSecretAccessKey")
 		delete(additionalProperties, "awsAccessKeyId")
+		delete(additionalProperties, "roleArn")
+		delete(additionalProperties, "externalId")
 		delete(additionalProperties, "azCount")
 		delete(additionalProperties, "awsRegion")
 		delete(additionalProperties, "organizationId")

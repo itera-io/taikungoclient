@@ -4,58 +4,27 @@
 ### Deleted Endpoints: None
 ---------------------------
 
-### Modified Endpoints: 4
+### Modified Endpoints: 2
 -------------------------
-POST /api/v1/custom-cas
+POST /api/v1/aws/create
 - Request body changed
   - Content changed
     - Modified media type: application/json
       - Schema changed
+        - Required changed
+          - New required property: awsAccessKeyId
+          - New required property: awsSecretAccessKey
         - Properties changed
-          - Modified property: caCert
-            - Nullable changed from false to true
-          - Modified property: caKey
-            - Nullable changed from false to true
-          - Modified property: name
-            - Nullable changed from false to true
+          - Deleted property: externalId
+          - Deleted property: roleArn
 
-POST /api/v1/dns-cert/validate
+POST /api/v1/aws/update
 - Request body changed
   - Content changed
     - Modified media type: application/json
       - Schema changed
         - Properties changed
-          - Modified property: certIssuerType
-            - Nullable changed from false to true
-          - Modified property: dnsProvider
-            - Nullable changed from false to true
-          - Modified property: domain
-            - Nullable changed from false to true
-
-POST /api/v1/dnscredentials
-- Request body changed
-  - Content changed
-    - Modified media type: application/json
-      - Schema changed
-        - Properties changed
-          - Modified property: domainFilter
-            - Nullable changed from false to true
-          - Modified property: name
-            - Nullable changed from false to true
-          - Modified property: providerType
-            - Nullable changed from false to true
-
-POST /api/v1/dnscredentials/validate
-- Request body changed
-  - Content changed
-    - Modified media type: application/json
-      - Schema changed
-        - Properties changed
-          - Modified property: certIssuerType
-            - Nullable changed from false to true
-          - Modified property: dnsProvider
-            - Nullable changed from false to true
-          - Modified property: domain
-            - Nullable changed from false to true
+          - Deleted property: externalId
+          - Deleted property: roleArn
 
 

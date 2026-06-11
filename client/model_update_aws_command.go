@@ -24,6 +24,8 @@ type UpdateAwsCommand struct {
 	Name NullableString `json:"name,omitempty"`
 	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey,omitempty"`
 	AwsAccessKeyId NullableString `json:"awsAccessKeyId,omitempty"`
+	RoleArn NullableString `json:"roleArn,omitempty"`
+	ExternalId NullableString `json:"externalId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -204,6 +206,90 @@ func (o *UpdateAwsCommand) UnsetAwsAccessKeyId() {
 	o.AwsAccessKeyId.Unset()
 }
 
+// GetRoleArn returns the RoleArn field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UpdateAwsCommand) GetRoleArn() string {
+	if o == nil || IsNil(o.RoleArn.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.RoleArn.Get()
+}
+
+// GetRoleArnOk returns a tuple with the RoleArn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UpdateAwsCommand) GetRoleArnOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.RoleArn.Get(), o.RoleArn.IsSet()
+}
+
+// HasRoleArn returns a boolean if a field has been set.
+func (o *UpdateAwsCommand) HasRoleArn() bool {
+	if o != nil && o.RoleArn.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleArn gets a reference to the given NullableString and assigns it to the RoleArn field.
+func (o *UpdateAwsCommand) SetRoleArn(v string) {
+	o.RoleArn.Set(&v)
+}
+// SetRoleArnNil sets the value for RoleArn to be an explicit nil
+func (o *UpdateAwsCommand) SetRoleArnNil() {
+	o.RoleArn.Set(nil)
+}
+
+// UnsetRoleArn ensures that no value is present for RoleArn, not even an explicit nil
+func (o *UpdateAwsCommand) UnsetRoleArn() {
+	o.RoleArn.Unset()
+}
+
+// GetExternalId returns the ExternalId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UpdateAwsCommand) GetExternalId() string {
+	if o == nil || IsNil(o.ExternalId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ExternalId.Get()
+}
+
+// GetExternalIdOk returns a tuple with the ExternalId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UpdateAwsCommand) GetExternalIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ExternalId.Get(), o.ExternalId.IsSet()
+}
+
+// HasExternalId returns a boolean if a field has been set.
+func (o *UpdateAwsCommand) HasExternalId() bool {
+	if o != nil && o.ExternalId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalId gets a reference to the given NullableString and assigns it to the ExternalId field.
+func (o *UpdateAwsCommand) SetExternalId(v string) {
+	o.ExternalId.Set(&v)
+}
+// SetExternalIdNil sets the value for ExternalId to be an explicit nil
+func (o *UpdateAwsCommand) SetExternalIdNil() {
+	o.ExternalId.Set(nil)
+}
+
+// UnsetExternalId ensures that no value is present for ExternalId, not even an explicit nil
+func (o *UpdateAwsCommand) UnsetExternalId() {
+	o.ExternalId.Unset()
+}
+
 func (o UpdateAwsCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -225,6 +311,12 @@ func (o UpdateAwsCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.AwsAccessKeyId.IsSet() {
 		toSerialize["awsAccessKeyId"] = o.AwsAccessKeyId.Get()
+	}
+	if o.RoleArn.IsSet() {
+		toSerialize["roleArn"] = o.RoleArn.Get()
+	}
+	if o.ExternalId.IsSet() {
+		toSerialize["externalId"] = o.ExternalId.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -252,6 +344,8 @@ func (o *UpdateAwsCommand) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "awsSecretAccessKey")
 		delete(additionalProperties, "awsAccessKeyId")
+		delete(additionalProperties, "roleArn")
+		delete(additionalProperties, "externalId")
 		o.AdditionalProperties = additionalProperties
 	}
 

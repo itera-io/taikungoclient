@@ -51882,6 +51882,8 @@ components:
         name: name
         awsSecretAccessKey: awsSecretAccessKey
         awsAccessKeyId: awsAccessKeyId
+        roleArn: roleArn
+        externalId: externalId
         azCount: 0
         awsRegion: awsRegion
         organizationId: 6
@@ -51904,6 +51906,12 @@ components:
           nullable: true
           type: string
         awsAccessKeyId:
+          nullable: true
+          type: string
+        roleArn:
+          nullable: true
+          type: string
+        externalId:
           nullable: true
           type: string
         azCount:
@@ -51937,9 +51945,7 @@ components:
           nullable: true
           type: string
       required:
-      - awsAccessKeyId
       - awsRegion
-      - awsSecretAccessKey
       - name
       type: object
     CreateAwsSubnetDto:
@@ -75123,6 +75129,8 @@ components:
         name: name
         awsSecretAccessKey: awsSecretAccessKey
         awsAccessKeyId: awsAccessKeyId
+        roleArn: roleArn
+        externalId: externalId
       properties:
         id:
           format: int32
@@ -75134,6 +75142,12 @@ components:
           nullable: true
           type: string
         awsAccessKeyId:
+          nullable: true
+          type: string
+        roleArn:
+          nullable: true
+          type: string
+        externalId:
           nullable: true
           type: string
       type: object
