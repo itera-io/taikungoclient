@@ -35363,6 +35363,212 @@ paths:
       summary: Retrieve list of proxmox cloud credentials
       tags:
       - Proxmox cloud credential
+  /api/v1/qa/sessions/end:
+    post:
+      operationId: qa-end-session
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TaikunResult"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: End an active QA session without seeded tenant
+      tags:
+      - QA testing
+  /api/v1/qa/seed:
+    post:
+      operationId: qa-seed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SeedQaTenantCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SeedQaTenantResult"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: "Seed account, organization, and account-admin or robot user for QA"
+      tags:
+      - QA testing
+  /api/v1/qa/sessions/start:
+    post:
+      operationId: qa-start-session
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StartQaSessionResult"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Start an ephemeral QA session and receive a short-lived session token
+      tags:
+      - QA testing
+  /api/v1/qa/teardown:
+    post:
+      operationId: qa-teardown
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TeardownQaTenantCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TaikunResult"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Teardown seeded QA tenant for the current session
+      tags:
+      - QA testing
   /api/v1/robot/update:
     put:
       operationId: robot-update
@@ -71567,6 +71773,62 @@ components:
           format: int64
           type: integer
       type: object
+    SeedQaTenantCommand:
+      example:
+        template: template
+      properties:
+        template:
+          nullable: true
+          type: string
+      type: object
+    SeedQaTenantResult:
+      example:
+        runId: runId
+        template: template
+        accountId: 0
+        organizationId: 6
+        userId: userId
+        accountName: accountName
+        cleanupToken: cleanupToken
+        email: email
+        password: password
+        accessKey: accessKey
+        secretKey: secretKey
+      properties:
+        runId:
+          nullable: true
+          type: string
+        template:
+          nullable: true
+          type: string
+        accountId:
+          format: int32
+          type: integer
+        organizationId:
+          format: int32
+          type: integer
+        userId:
+          nullable: true
+          type: string
+        accountName:
+          nullable: true
+          type: string
+        cleanupToken:
+          nullable: true
+          type: string
+        email:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+        accessKey:
+          nullable: true
+          type: string
+        secretKey:
+          nullable: true
+          type: string
+      type: object
     SendEmailAboutProjectExpirationCommand:
       type: object
     ServerActionButtonVisibilityDto:
@@ -74213,6 +74475,26 @@ components:
       - volumeSize
       - volumeType
       type: object
+    StartQaSessionResult:
+      example:
+        sessionId: sessionId
+        runId: runId
+        sessionToken: sessionToken
+        expiresIn: 0
+      properties:
+        sessionId:
+          nullable: true
+          type: string
+        runId:
+          nullable: true
+          type: string
+        sessionToken:
+          nullable: true
+          type: string
+        expiresIn:
+          format: int32
+          type: integer
+      type: object
     StartStandaloneVmCommand:
       example:
         id: 0
@@ -74816,6 +75098,14 @@ components:
           $ref: "#/components/schemas/ETaikunHttpError"
         redirectUrl:
           readOnly: true
+          type: string
+      type: object
+    TeardownQaTenantCommand:
+      example:
+        cleanupToken: cleanupToken
+      properties:
+        cleanupToken:
+          nullable: true
           type: string
       type: object
     TektonPipelinesCommand:

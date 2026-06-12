@@ -65,6 +65,7 @@ api_projects.go
 api_prometheus_billings.go
 api_prometheus_rules.go
 api_proxmox_cloud_credential.go
+api_qa_testing.go
 api_robot.go
 api_s3_credentials.go
 api_search.go
@@ -848,6 +849,7 @@ docs/PvcListDto.md
 docs/PvcListDtoCursorStringPaginatedResponse.md
 docs/PvcSearchCommand.md
 docs/PvcSearchList.md
+docs/QATestingAPI.md
 docs/RamLimitsDto.md
 docs/RebootServerCommand.md
 docs/RebootStandAloneVmCommand.md
@@ -887,6 +889,8 @@ docs/SecurityGroupListDto.md
 docs/SecurityGroupProtocol.md
 docs/SecurityReportSummary.md
 docs/SecurityReportSummaryDto.md
+docs/SeedQaTenantCommand.md
+docs/SeedQaTenantResult.md
 docs/ServerActionButtonVisibilityDto.md
 docs/ServerChartDto.md
 docs/ServerCommonRecordDto.md
@@ -952,6 +956,7 @@ docs/StandaloneVmListDto.md
 docs/StandaloneVmsForBillingDto.md
 docs/StandaloneVmsList.md
 docs/StandaloneVmsListForDetailsDto.md
+docs/StartQaSessionResult.md
 docs/StartStandaloneVmCommand.md
 docs/StatefulSetListDto.md
 docs/StatefulSetListDtoCursorStringPaginatedResponse.md
@@ -977,6 +982,7 @@ docs/SyncProjectAppsCommand.md
 docs/TaikunLBAPI.md
 docs/TaikunLbResponseDto.md
 docs/TaikunResult.md
+docs/TeardownQaTenantCommand.md
 docs/ToggleExecutorCommand.md
 docs/ToggleMaintenanceModeCommand.md
 docs/ToggleNotificationModeCommand.md
@@ -1826,6 +1832,8 @@ model_security_group_list_dto.go
 model_security_group_protocol.go
 model_security_report_summary.go
 model_security_report_summary_dto.go
+model_seed_qa_tenant_command.go
+model_seed_qa_tenant_result.go
 model_server_action_button_visibility_dto.go
 model_server_chart_dto.go
 model_server_common_record_dto.go
@@ -1882,6 +1890,7 @@ model_standalone_vm_list_dto.go
 model_standalone_vms_for_billing_dto.go
 model_standalone_vms_list.go
 model_standalone_vms_list_for_details_dto.go
+model_start_qa_session_result.go
 model_start_standalone_vm_command.go
 model_stateful_set_list_dto.go
 model_stateful_set_list_dto_cursor_string_paginated_response.go
@@ -1904,6 +1913,7 @@ model_sync_project_app_command.go
 model_sync_project_apps_command.go
 model_taikun_lb_response_dto.go
 model_taikun_result.go
+model_teardown_qa_tenant_command.go
 model_toggle_executor_command.go
 model_toggle_maintenance_mode_command.go
 model_toggle_notification_mode_command.go
@@ -2075,6 +2085,7 @@ test/api_projects_test.go
 test/api_prometheus_billings_test.go
 test/api_prometheus_rules_test.go
 test/api_proxmox_cloud_credential_test.go
+test/api_qa_testing_test.go
 test/api_robot_test.go
 test/api_s3_credentials_test.go
 test/api_search_test.go

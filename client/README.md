@@ -627,6 +627,10 @@ Class | Method | HTTP request | Description
 *ProxmoxCloudCredentialAPI* | [**ProxmoxUpdateHypervisors**](docs/ProxmoxCloudCredentialAPI.md#proxmoxupdatehypervisors) | **Post** /api/v1/proxmox/update/hypervisors | Update proxmox credentials
 *ProxmoxCloudCredentialAPI* | [**ProxmoxUpdateIpAddresses**](docs/ProxmoxCloudCredentialAPI.md#proxmoxupdateipaddresses) | **Post** /api/v1/proxmox/update/ip-addresses | Update proxmox network used ip addresses
 *ProxmoxCloudCredentialAPI* | [**ProxmoxVmTemplateList**](docs/ProxmoxCloudCredentialAPI.md#proxmoxvmtemplatelist) | **Post** /api/v1/proxmox/vm-template-list | Fetch proxmox vm template list
+*QATestingAPI* | [**QaEndSession**](docs/QATestingAPI.md#qaendsession) | **Post** /api/v1/qa/sessions/end | End an active QA session without seeded tenant
+*QATestingAPI* | [**QaSeed**](docs/QATestingAPI.md#qaseed) | **Post** /api/v1/qa/seed | Seed account, organization, and account-admin or robot user for QA
+*QATestingAPI* | [**QaStartSession**](docs/QATestingAPI.md#qastartsession) | **Post** /api/v1/qa/sessions/start | Start an ephemeral QA session and receive a short-lived session token
+*QATestingAPI* | [**QaTeardown**](docs/QATestingAPI.md#qateardown) | **Post** /api/v1/qa/teardown | Teardown seeded QA tenant for the current session
 *RobotAPI* | [**RobotChecker**](docs/RobotAPI.md#robotchecker) | **Post** /api/v1/robot/checker | Dry run robot user create
 *RobotAPI* | [**RobotCreate**](docs/RobotAPI.md#robotcreate) | **Post** /api/v1/robot/create | Add new robot user
 *RobotAPI* | [**RobotDelete**](docs/RobotAPI.md#robotdelete) | **Delete** /api/v1/robot/{id} | Delete robot user
@@ -1530,6 +1534,8 @@ Class | Method | HTTP request | Description
  - [SecurityGroupProtocol](docs/SecurityGroupProtocol.md)
  - [SecurityReportSummary](docs/SecurityReportSummary.md)
  - [SecurityReportSummaryDto](docs/SecurityReportSummaryDto.md)
+ - [SeedQaTenantCommand](docs/SeedQaTenantCommand.md)
+ - [SeedQaTenantResult](docs/SeedQaTenantResult.md)
  - [ServerActionButtonVisibilityDto](docs/ServerActionButtonVisibilityDto.md)
  - [ServerChartDto](docs/ServerChartDto.md)
  - [ServerCommonRecordDto](docs/ServerCommonRecordDto.md)
@@ -1586,6 +1592,7 @@ Class | Method | HTTP request | Description
  - [StandaloneVmsForBillingDto](docs/StandaloneVmsForBillingDto.md)
  - [StandaloneVmsList](docs/StandaloneVmsList.md)
  - [StandaloneVmsListForDetailsDto](docs/StandaloneVmsListForDetailsDto.md)
+ - [StartQaSessionResult](docs/StartQaSessionResult.md)
  - [StartStandaloneVmCommand](docs/StartStandaloneVmCommand.md)
  - [StatefulSetListDto](docs/StatefulSetListDto.md)
  - [StatefulSetListDtoCursorStringPaginatedResponse](docs/StatefulSetListDtoCursorStringPaginatedResponse.md)
@@ -1608,6 +1615,7 @@ Class | Method | HTTP request | Description
  - [SyncProjectAppsCommand](docs/SyncProjectAppsCommand.md)
  - [TaikunLbResponseDto](docs/TaikunLbResponseDto.md)
  - [TaikunResult](docs/TaikunResult.md)
+ - [TeardownQaTenantCommand](docs/TeardownQaTenantCommand.md)
  - [ToggleExecutorCommand](docs/ToggleExecutorCommand.md)
  - [ToggleMaintenanceModeCommand](docs/ToggleMaintenanceModeCommand.md)
  - [ToggleNotificationModeCommand](docs/ToggleNotificationModeCommand.md)
