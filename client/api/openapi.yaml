@@ -11085,7 +11085,15 @@ paths:
         style: form
       - explode: true
         in: query
-        name: GpuCount
+        name: StartGpuCount
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: EndGpuCount
         required: false
         schema:
           format: int32
@@ -15325,7 +15333,15 @@ paths:
         style: form
       - explode: true
         in: query
-        name: GpuCount
+        name: StartGpuCount
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: EndGpuCount
         required: false
         schema:
           format: int32
@@ -15482,7 +15498,15 @@ paths:
         style: form
       - explode: true
         in: query
-        name: GpuCount
+        name: StartGpuCount
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: EndGpuCount
         required: false
         schema:
           format: int32
@@ -15851,7 +15875,15 @@ paths:
         style: form
       - explode: true
         in: query
-        name: GpuCount
+        name: StartGpuCount
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: EndGpuCount
         required: false
         schema:
           format: int32

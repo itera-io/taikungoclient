@@ -38,7 +38,8 @@ type ApiCloudcredentialsAllFlavorsRequest struct {
 	sortBy *string
 	sortDirection *string
 	hasGpuSupport *bool
-	gpuCount *int32
+	startGpuCount *int32
+	endGpuCount *int32
 	gpuModel *string
 }
 
@@ -92,8 +93,13 @@ func (r ApiCloudcredentialsAllFlavorsRequest) HasGpuSupport(hasGpuSupport bool) 
 	return r
 }
 
-func (r ApiCloudcredentialsAllFlavorsRequest) GpuCount(gpuCount int32) ApiCloudcredentialsAllFlavorsRequest {
-	r.gpuCount = &gpuCount
+func (r ApiCloudcredentialsAllFlavorsRequest) StartGpuCount(startGpuCount int32) ApiCloudcredentialsAllFlavorsRequest {
+	r.startGpuCount = &startGpuCount
+	return r
+}
+
+func (r ApiCloudcredentialsAllFlavorsRequest) EndGpuCount(endGpuCount int32) ApiCloudcredentialsAllFlavorsRequest {
+	r.endGpuCount = &endGpuCount
 	return r
 }
 
@@ -173,8 +179,11 @@ func (a *CloudCredentialAPIService) CloudcredentialsAllFlavorsExecute(r ApiCloud
 	if r.hasGpuSupport != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "HasGpuSupport", r.hasGpuSupport, "form", "")
 	}
-	if r.gpuCount != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "GpuCount", r.gpuCount, "form", "")
+	if r.startGpuCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartGpuCount", r.startGpuCount, "form", "")
+	}
+	if r.endGpuCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndGpuCount", r.endGpuCount, "form", "")
 	}
 	if r.gpuModel != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "GpuModel", r.gpuModel, "form", "")

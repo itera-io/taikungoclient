@@ -17058,7 +17058,15 @@
             }
           },
           {
-            "name": "GpuCount",
+            "name": "StartGpuCount",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "EndGpuCount",
             "in": "query",
             "schema": {
               "type": "integer",
@@ -23736,7 +23744,15 @@
             }
           },
           {
-            "name": "GpuCount",
+            "name": "StartGpuCount",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "EndGpuCount",
             "in": "query",
             "schema": {
               "type": "integer",
@@ -23927,7 +23943,15 @@
             }
           },
           {
-            "name": "GpuCount",
+            "name": "StartGpuCount",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "EndGpuCount",
             "in": "query",
             "schema": {
               "type": "integer",
@@ -24397,7 +24421,15 @@
             }
           },
           {
-            "name": "GpuCount",
+            "name": "StartGpuCount",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "EndGpuCount",
             "in": "query",
             "schema": {
               "type": "integer",

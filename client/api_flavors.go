@@ -39,7 +39,8 @@ type ApiFlavorsAwsInstanceTypesRequest struct {
 	sortDirection *string
 	projectId *int32
 	hasGpuSupport *bool
-	gpuCount *int32
+	startGpuCount *int32
+	endGpuCount *int32
 	gpuModel *string
 }
 
@@ -98,8 +99,13 @@ func (r ApiFlavorsAwsInstanceTypesRequest) HasGpuSupport(hasGpuSupport bool) Api
 	return r
 }
 
-func (r ApiFlavorsAwsInstanceTypesRequest) GpuCount(gpuCount int32) ApiFlavorsAwsInstanceTypesRequest {
-	r.gpuCount = &gpuCount
+func (r ApiFlavorsAwsInstanceTypesRequest) StartGpuCount(startGpuCount int32) ApiFlavorsAwsInstanceTypesRequest {
+	r.startGpuCount = &startGpuCount
+	return r
+}
+
+func (r ApiFlavorsAwsInstanceTypesRequest) EndGpuCount(endGpuCount int32) ApiFlavorsAwsInstanceTypesRequest {
+	r.endGpuCount = &endGpuCount
 	return r
 }
 
@@ -182,8 +188,11 @@ func (a *FlavorsAPIService) FlavorsAwsInstanceTypesExecute(r ApiFlavorsAwsInstan
 	if r.hasGpuSupport != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "HasGpuSupport", r.hasGpuSupport, "form", "")
 	}
-	if r.gpuCount != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "GpuCount", r.gpuCount, "form", "")
+	if r.startGpuCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartGpuCount", r.startGpuCount, "form", "")
+	}
+	if r.endGpuCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndGpuCount", r.endGpuCount, "form", "")
 	}
 	if r.gpuModel != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "GpuModel", r.gpuModel, "form", "")
@@ -336,7 +345,8 @@ type ApiFlavorsAzureVmSizesRequest struct {
 	sortDirection *string
 	projectId *int32
 	hasGpuSupport *bool
-	gpuCount *int32
+	startGpuCount *int32
+	endGpuCount *int32
 	gpuModel *string
 }
 
@@ -395,8 +405,13 @@ func (r ApiFlavorsAzureVmSizesRequest) HasGpuSupport(hasGpuSupport bool) ApiFlav
 	return r
 }
 
-func (r ApiFlavorsAzureVmSizesRequest) GpuCount(gpuCount int32) ApiFlavorsAzureVmSizesRequest {
-	r.gpuCount = &gpuCount
+func (r ApiFlavorsAzureVmSizesRequest) StartGpuCount(startGpuCount int32) ApiFlavorsAzureVmSizesRequest {
+	r.startGpuCount = &startGpuCount
+	return r
+}
+
+func (r ApiFlavorsAzureVmSizesRequest) EndGpuCount(endGpuCount int32) ApiFlavorsAzureVmSizesRequest {
+	r.endGpuCount = &endGpuCount
 	return r
 }
 
@@ -479,8 +494,11 @@ func (a *FlavorsAPIService) FlavorsAzureVmSizesExecute(r ApiFlavorsAzureVmSizesR
 	if r.hasGpuSupport != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "HasGpuSupport", r.hasGpuSupport, "form", "")
 	}
-	if r.gpuCount != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "GpuCount", r.gpuCount, "form", "")
+	if r.startGpuCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartGpuCount", r.startGpuCount, "form", "")
+	}
+	if r.endGpuCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndGpuCount", r.endGpuCount, "form", "")
 	}
 	if r.gpuModel != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "GpuModel", r.gpuModel, "form", "")
@@ -1018,7 +1036,8 @@ type ApiFlavorsGoogleMachineTypesRequest struct {
 	sortDirection *string
 	projectId *int32
 	hasGpuSupport *bool
-	gpuCount *int32
+	startGpuCount *int32
+	endGpuCount *int32
 	gpuModel *string
 }
 
@@ -1077,8 +1096,13 @@ func (r ApiFlavorsGoogleMachineTypesRequest) HasGpuSupport(hasGpuSupport bool) A
 	return r
 }
 
-func (r ApiFlavorsGoogleMachineTypesRequest) GpuCount(gpuCount int32) ApiFlavorsGoogleMachineTypesRequest {
-	r.gpuCount = &gpuCount
+func (r ApiFlavorsGoogleMachineTypesRequest) StartGpuCount(startGpuCount int32) ApiFlavorsGoogleMachineTypesRequest {
+	r.startGpuCount = &startGpuCount
+	return r
+}
+
+func (r ApiFlavorsGoogleMachineTypesRequest) EndGpuCount(endGpuCount int32) ApiFlavorsGoogleMachineTypesRequest {
+	r.endGpuCount = &endGpuCount
 	return r
 }
 
@@ -1161,8 +1185,11 @@ func (a *FlavorsAPIService) FlavorsGoogleMachineTypesExecute(r ApiFlavorsGoogleM
 	if r.hasGpuSupport != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "HasGpuSupport", r.hasGpuSupport, "form", "")
 	}
-	if r.gpuCount != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "GpuCount", r.gpuCount, "form", "")
+	if r.startGpuCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartGpuCount", r.startGpuCount, "form", "")
+	}
+	if r.endGpuCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndGpuCount", r.endGpuCount, "form", "")
 	}
 	if r.gpuModel != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "GpuModel", r.gpuModel, "form", "")
