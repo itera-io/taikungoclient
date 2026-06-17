@@ -11064,6 +11064,13 @@ paths:
         style: form
       - explode: true
         in: query
+        name: FlavorName
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: SortBy
         required: false
         schema:

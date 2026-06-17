@@ -35,6 +35,7 @@ type ApiCloudcredentialsAllFlavorsRequest struct {
 	startCpu *int32
 	endCpu *int32
 	search *string
+	flavorName *string
 	sortBy *string
 	sortDirection *string
 	hasGpuSupport *bool
@@ -75,6 +76,11 @@ func (r ApiCloudcredentialsAllFlavorsRequest) EndCpu(endCpu int32) ApiCloudcrede
 
 func (r ApiCloudcredentialsAllFlavorsRequest) Search(search string) ApiCloudcredentialsAllFlavorsRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiCloudcredentialsAllFlavorsRequest) FlavorName(flavorName string) ApiCloudcredentialsAllFlavorsRequest {
+	r.flavorName = &flavorName
 	return r
 }
 
@@ -169,6 +175,9 @@ func (a *CloudCredentialAPIService) CloudcredentialsAllFlavorsExecute(r ApiCloud
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.flavorName != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FlavorName", r.flavorName, "form", "")
 	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")

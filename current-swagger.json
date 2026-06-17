@@ -17037,6 +17037,13 @@
             }
           },
           {
+            "name": "FlavorName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "SortBy",
             "in": "query",
             "schema": {
