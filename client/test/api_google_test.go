@@ -46,6 +46,18 @@ func Test_taikuncore_GoogleAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test GoogleAPIService GooglecloudFilestoreList", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.GoogleAPI.GooglecloudFilestoreList(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test GoogleAPIService GooglecloudGkeClusters", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -75,6 +87,30 @@ func Test_taikuncore_GoogleAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.GoogleAPI.GooglecloudRegionList(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GoogleAPIService GooglecloudSubnetworkList", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.GoogleAPI.GooglecloudSubnetworkList(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GoogleAPIService GooglecloudVpcList", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.GoogleAPI.GooglecloudVpcList(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -17957,6 +17957,62 @@ paths:
       summary: Create google cloud credential
       tags:
       - Google
+  /api/v1/googlecloud/filestore-list:
+    post:
+      operationId: googlecloud-filestore-list
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/GcpFilestoreListCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/GcpFilestoreDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve list of GCP Filestore instances for a given project and region
+      tags:
+      - Google
   /api/v1/googlecloud/gke-clusters:
     post:
       operationId: googlecloud-gke-clusters
@@ -18067,6 +18123,118 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
       summary: Retrieve google region list
+      tags:
+      - Google
+  /api/v1/googlecloud/subnetwork-list:
+    post:
+      operationId: googlecloud-subnetwork-list
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/GcpSubnetworkListCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/GcpSubnetworkDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve list of GCP subnetworks for a given project and region
+      tags:
+      - Google
+  /api/v1/googlecloud/vpc-list:
+    post:
+      operationId: googlecloud-vpc-list
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/GcpVpcListCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/GcpVpcDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve list of GCP VPC networks
       tags:
       - Google
   /api/v1/googlecloud/zones:
@@ -52536,6 +52704,20 @@ components:
           format: int32
           nullable: true
           type: integer
+        vpcMode:
+          $ref: "#/components/schemas/VpcMode"
+        importedGcpProjectId:
+          nullable: true
+          type: string
+        importedVpcName:
+          nullable: true
+          type: string
+        importedSubnetworkName:
+          nullable: true
+          type: string
+        importedFilestoreId:
+          nullable: true
+          type: string
       type: object
     CreateGroupCommand:
       example:
@@ -58612,6 +58794,125 @@ components:
           nullable: true
           type: string
       type: object
+    GcpFilestoreDto:
+      example:
+        instanceId: instanceId
+        name: name
+        tier: tier
+        fileShareName: fileShareName
+        network: network
+      properties:
+        instanceId:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        tier:
+          nullable: true
+          type: string
+        fileShareName:
+          nullable: true
+          type: string
+        network:
+          nullable: true
+          type: string
+      type: object
+    GcpFilestoreListCommand:
+      properties:
+        config:
+          format: binary
+          nullable: true
+          type: string
+        gcpProjectId:
+          nullable: true
+          type: string
+        region:
+          nullable: true
+          type: string
+        cloudId:
+          format: int32
+          nullable: true
+          type: integer
+      type: object
+    GcpSubnetworkDto:
+      example:
+        name: name
+        selfLink: selfLink
+        region: region
+        ipCidrRange: ipCidrRange
+        hasIpv6: true
+        availableIpCount: 0
+      properties:
+        name:
+          nullable: true
+          type: string
+        selfLink:
+          nullable: true
+          type: string
+        region:
+          nullable: true
+          type: string
+        ipCidrRange:
+          nullable: true
+          type: string
+        hasIpv6:
+          type: boolean
+        availableIpCount:
+          format: int32
+          type: integer
+      type: object
+    GcpSubnetworkListCommand:
+      properties:
+        config:
+          format: binary
+          nullable: true
+          type: string
+        gcpProjectId:
+          nullable: true
+          type: string
+        region:
+          nullable: true
+          type: string
+        networkName:
+          nullable: true
+          type: string
+        cloudId:
+          format: int32
+          nullable: true
+          type: integer
+      type: object
+    GcpVpcDto:
+      example:
+        name: name
+        selfLink: selfLink
+        ipMode: Ipv4
+      properties:
+        name:
+          nullable: true
+          type: string
+        selfLink:
+          nullable: true
+          type: string
+        ipMode:
+          $ref: "#/components/schemas/IpMode"
+      type: object
+    GcpVpcListCommand:
+      properties:
+        config:
+          format: binary
+          nullable: true
+          type: string
+        gcpProjectId:
+          nullable: true
+          type: string
+        cloudId:
+          format: int32
+          nullable: true
+          type: integer
+        ipMode:
+          $ref: "#/components/schemas/IpMode"
+      type: object
     GenericKubernetesList:
       example:
         data:
@@ -59124,6 +59425,14 @@ components:
           billingAccountName: billingAccountName
           createdAt: createdAt
           continentName: continentName
+          vpcMode: Create
+          ipMode: Ipv4
+          importedGcpProjectId: importedGcpProjectId
+          importedVpcName: importedVpcName
+          importedSubnetworkName: importedSubnetworkName
+          sharedFileSystemEnabled: true
+          importedFilestoreId: importedFilestoreId
+          importedFilestoreName: importedFilestoreName
         - id: 0
           name: name
           projects:
@@ -59148,6 +59457,14 @@ components:
           billingAccountName: billingAccountName
           createdAt: createdAt
           continentName: continentName
+          vpcMode: Create
+          ipMode: Ipv4
+          importedGcpProjectId: importedGcpProjectId
+          importedVpcName: importedVpcName
+          importedSubnetworkName: importedSubnetworkName
+          sharedFileSystemEnabled: true
+          importedFilestoreId: importedFilestoreId
+          importedFilestoreName: importedFilestoreName
         limit: 5
         hasMore: true
         totalCount: 5
@@ -59207,6 +59524,14 @@ components:
         billingAccountName: billingAccountName
         createdAt: createdAt
         continentName: continentName
+        vpcMode: Create
+        ipMode: Ipv4
+        importedGcpProjectId: importedGcpProjectId
+        importedVpcName: importedVpcName
+        importedSubnetworkName: importedSubnetworkName
+        sharedFileSystemEnabled: true
+        importedFilestoreId: importedFilestoreId
+        importedFilestoreName: importedFilestoreName
       properties:
         id:
           format: int32
@@ -59257,6 +59582,28 @@ components:
           nullable: true
           type: string
         continentName:
+          nullable: true
+          type: string
+        vpcMode:
+          $ref: "#/components/schemas/VpcMode"
+        ipMode:
+          $ref: "#/components/schemas/IpMode"
+        importedGcpProjectId:
+          nullable: true
+          type: string
+        importedVpcName:
+          nullable: true
+          type: string
+        importedSubnetworkName:
+          nullable: true
+          type: string
+        sharedFileSystemEnabled:
+          nullable: true
+          type: boolean
+        importedFilestoreId:
+          nullable: true
+          type: string
+        importedFilestoreName:
           nullable: true
           type: string
       required:

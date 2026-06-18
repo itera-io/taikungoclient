@@ -509,6 +509,9 @@ docs/FlavorsListDto.md
 docs/ForceToResetPasswordCommand.md
 docs/ForgotPasswordCommand.md
 docs/FullSpotOperationCommand.md
+docs/GcpFilestoreDto.md
+docs/GcpSubnetworkDto.md
+docs/GcpVpcDto.md
 docs/GenericKubernetesCloudCredentialAPI.md
 docs/GenericKubernetesList.md
 docs/GenericKubernetesListDto.md
@@ -1493,6 +1496,9 @@ model_flavors_list_dto.go
 model_force_to_reset_password_command.go
 model_forgot_password_command.go
 model_full_spot_operation_command.go
+model_gcp_filestore_dto.go
+model_gcp_subnetwork_dto.go
+model_gcp_vpc_dto.go
 model_generic_kubernetes_list.go
 model_generic_kubernetes_list_dto.go
 model_get_catalog_app_value_autocomplete_command.go

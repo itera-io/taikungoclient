@@ -39,6 +39,14 @@ type GoogleCredentialsListDto struct {
 	BillingAccountName NullableString `json:"billingAccountName"`
 	CreatedAt NullableString `json:"createdAt"`
 	ContinentName NullableString `json:"continentName"`
+	VpcMode *VpcMode `json:"vpcMode,omitempty"`
+	IpMode *IpMode `json:"ipMode,omitempty"`
+	ImportedGcpProjectId NullableString `json:"importedGcpProjectId,omitempty"`
+	ImportedVpcName NullableString `json:"importedVpcName,omitempty"`
+	ImportedSubnetworkName NullableString `json:"importedSubnetworkName,omitempty"`
+	SharedFileSystemEnabled NullableBool `json:"sharedFileSystemEnabled,omitempty"`
+	ImportedFilestoreId NullableString `json:"importedFilestoreId,omitempty"`
+	ImportedFilestoreName NullableString `json:"importedFilestoreName,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -527,6 +535,322 @@ func (o *GoogleCredentialsListDto) SetContinentName(v string) {
 	o.ContinentName.Set(&v)
 }
 
+// GetVpcMode returns the VpcMode field value if set, zero value otherwise.
+func (o *GoogleCredentialsListDto) GetVpcMode() VpcMode {
+	if o == nil || IsNil(o.VpcMode) {
+		var ret VpcMode
+		return ret
+	}
+	return *o.VpcMode
+}
+
+// GetVpcModeOk returns a tuple with the VpcMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GoogleCredentialsListDto) GetVpcModeOk() (*VpcMode, bool) {
+	if o == nil || IsNil(o.VpcMode) {
+		return nil, false
+	}
+	return o.VpcMode, true
+}
+
+// HasVpcMode returns a boolean if a field has been set.
+func (o *GoogleCredentialsListDto) HasVpcMode() bool {
+	if o != nil && !IsNil(o.VpcMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetVpcMode gets a reference to the given VpcMode and assigns it to the VpcMode field.
+func (o *GoogleCredentialsListDto) SetVpcMode(v VpcMode) {
+	o.VpcMode = &v
+}
+
+// GetIpMode returns the IpMode field value if set, zero value otherwise.
+func (o *GoogleCredentialsListDto) GetIpMode() IpMode {
+	if o == nil || IsNil(o.IpMode) {
+		var ret IpMode
+		return ret
+	}
+	return *o.IpMode
+}
+
+// GetIpModeOk returns a tuple with the IpMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GoogleCredentialsListDto) GetIpModeOk() (*IpMode, bool) {
+	if o == nil || IsNil(o.IpMode) {
+		return nil, false
+	}
+	return o.IpMode, true
+}
+
+// HasIpMode returns a boolean if a field has been set.
+func (o *GoogleCredentialsListDto) HasIpMode() bool {
+	if o != nil && !IsNil(o.IpMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetIpMode gets a reference to the given IpMode and assigns it to the IpMode field.
+func (o *GoogleCredentialsListDto) SetIpMode(v IpMode) {
+	o.IpMode = &v
+}
+
+// GetImportedGcpProjectId returns the ImportedGcpProjectId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GoogleCredentialsListDto) GetImportedGcpProjectId() string {
+	if o == nil || IsNil(o.ImportedGcpProjectId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ImportedGcpProjectId.Get()
+}
+
+// GetImportedGcpProjectIdOk returns a tuple with the ImportedGcpProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GoogleCredentialsListDto) GetImportedGcpProjectIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ImportedGcpProjectId.Get(), o.ImportedGcpProjectId.IsSet()
+}
+
+// HasImportedGcpProjectId returns a boolean if a field has been set.
+func (o *GoogleCredentialsListDto) HasImportedGcpProjectId() bool {
+	if o != nil && o.ImportedGcpProjectId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetImportedGcpProjectId gets a reference to the given NullableString and assigns it to the ImportedGcpProjectId field.
+func (o *GoogleCredentialsListDto) SetImportedGcpProjectId(v string) {
+	o.ImportedGcpProjectId.Set(&v)
+}
+// SetImportedGcpProjectIdNil sets the value for ImportedGcpProjectId to be an explicit nil
+func (o *GoogleCredentialsListDto) SetImportedGcpProjectIdNil() {
+	o.ImportedGcpProjectId.Set(nil)
+}
+
+// UnsetImportedGcpProjectId ensures that no value is present for ImportedGcpProjectId, not even an explicit nil
+func (o *GoogleCredentialsListDto) UnsetImportedGcpProjectId() {
+	o.ImportedGcpProjectId.Unset()
+}
+
+// GetImportedVpcName returns the ImportedVpcName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GoogleCredentialsListDto) GetImportedVpcName() string {
+	if o == nil || IsNil(o.ImportedVpcName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ImportedVpcName.Get()
+}
+
+// GetImportedVpcNameOk returns a tuple with the ImportedVpcName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GoogleCredentialsListDto) GetImportedVpcNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ImportedVpcName.Get(), o.ImportedVpcName.IsSet()
+}
+
+// HasImportedVpcName returns a boolean if a field has been set.
+func (o *GoogleCredentialsListDto) HasImportedVpcName() bool {
+	if o != nil && o.ImportedVpcName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetImportedVpcName gets a reference to the given NullableString and assigns it to the ImportedVpcName field.
+func (o *GoogleCredentialsListDto) SetImportedVpcName(v string) {
+	o.ImportedVpcName.Set(&v)
+}
+// SetImportedVpcNameNil sets the value for ImportedVpcName to be an explicit nil
+func (o *GoogleCredentialsListDto) SetImportedVpcNameNil() {
+	o.ImportedVpcName.Set(nil)
+}
+
+// UnsetImportedVpcName ensures that no value is present for ImportedVpcName, not even an explicit nil
+func (o *GoogleCredentialsListDto) UnsetImportedVpcName() {
+	o.ImportedVpcName.Unset()
+}
+
+// GetImportedSubnetworkName returns the ImportedSubnetworkName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GoogleCredentialsListDto) GetImportedSubnetworkName() string {
+	if o == nil || IsNil(o.ImportedSubnetworkName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ImportedSubnetworkName.Get()
+}
+
+// GetImportedSubnetworkNameOk returns a tuple with the ImportedSubnetworkName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GoogleCredentialsListDto) GetImportedSubnetworkNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ImportedSubnetworkName.Get(), o.ImportedSubnetworkName.IsSet()
+}
+
+// HasImportedSubnetworkName returns a boolean if a field has been set.
+func (o *GoogleCredentialsListDto) HasImportedSubnetworkName() bool {
+	if o != nil && o.ImportedSubnetworkName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetImportedSubnetworkName gets a reference to the given NullableString and assigns it to the ImportedSubnetworkName field.
+func (o *GoogleCredentialsListDto) SetImportedSubnetworkName(v string) {
+	o.ImportedSubnetworkName.Set(&v)
+}
+// SetImportedSubnetworkNameNil sets the value for ImportedSubnetworkName to be an explicit nil
+func (o *GoogleCredentialsListDto) SetImportedSubnetworkNameNil() {
+	o.ImportedSubnetworkName.Set(nil)
+}
+
+// UnsetImportedSubnetworkName ensures that no value is present for ImportedSubnetworkName, not even an explicit nil
+func (o *GoogleCredentialsListDto) UnsetImportedSubnetworkName() {
+	o.ImportedSubnetworkName.Unset()
+}
+
+// GetSharedFileSystemEnabled returns the SharedFileSystemEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GoogleCredentialsListDto) GetSharedFileSystemEnabled() bool {
+	if o == nil || IsNil(o.SharedFileSystemEnabled.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.SharedFileSystemEnabled.Get()
+}
+
+// GetSharedFileSystemEnabledOk returns a tuple with the SharedFileSystemEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GoogleCredentialsListDto) GetSharedFileSystemEnabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SharedFileSystemEnabled.Get(), o.SharedFileSystemEnabled.IsSet()
+}
+
+// HasSharedFileSystemEnabled returns a boolean if a field has been set.
+func (o *GoogleCredentialsListDto) HasSharedFileSystemEnabled() bool {
+	if o != nil && o.SharedFileSystemEnabled.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSharedFileSystemEnabled gets a reference to the given NullableBool and assigns it to the SharedFileSystemEnabled field.
+func (o *GoogleCredentialsListDto) SetSharedFileSystemEnabled(v bool) {
+	o.SharedFileSystemEnabled.Set(&v)
+}
+// SetSharedFileSystemEnabledNil sets the value for SharedFileSystemEnabled to be an explicit nil
+func (o *GoogleCredentialsListDto) SetSharedFileSystemEnabledNil() {
+	o.SharedFileSystemEnabled.Set(nil)
+}
+
+// UnsetSharedFileSystemEnabled ensures that no value is present for SharedFileSystemEnabled, not even an explicit nil
+func (o *GoogleCredentialsListDto) UnsetSharedFileSystemEnabled() {
+	o.SharedFileSystemEnabled.Unset()
+}
+
+// GetImportedFilestoreId returns the ImportedFilestoreId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GoogleCredentialsListDto) GetImportedFilestoreId() string {
+	if o == nil || IsNil(o.ImportedFilestoreId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ImportedFilestoreId.Get()
+}
+
+// GetImportedFilestoreIdOk returns a tuple with the ImportedFilestoreId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GoogleCredentialsListDto) GetImportedFilestoreIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ImportedFilestoreId.Get(), o.ImportedFilestoreId.IsSet()
+}
+
+// HasImportedFilestoreId returns a boolean if a field has been set.
+func (o *GoogleCredentialsListDto) HasImportedFilestoreId() bool {
+	if o != nil && o.ImportedFilestoreId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetImportedFilestoreId gets a reference to the given NullableString and assigns it to the ImportedFilestoreId field.
+func (o *GoogleCredentialsListDto) SetImportedFilestoreId(v string) {
+	o.ImportedFilestoreId.Set(&v)
+}
+// SetImportedFilestoreIdNil sets the value for ImportedFilestoreId to be an explicit nil
+func (o *GoogleCredentialsListDto) SetImportedFilestoreIdNil() {
+	o.ImportedFilestoreId.Set(nil)
+}
+
+// UnsetImportedFilestoreId ensures that no value is present for ImportedFilestoreId, not even an explicit nil
+func (o *GoogleCredentialsListDto) UnsetImportedFilestoreId() {
+	o.ImportedFilestoreId.Unset()
+}
+
+// GetImportedFilestoreName returns the ImportedFilestoreName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GoogleCredentialsListDto) GetImportedFilestoreName() string {
+	if o == nil || IsNil(o.ImportedFilestoreName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ImportedFilestoreName.Get()
+}
+
+// GetImportedFilestoreNameOk returns a tuple with the ImportedFilestoreName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GoogleCredentialsListDto) GetImportedFilestoreNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ImportedFilestoreName.Get(), o.ImportedFilestoreName.IsSet()
+}
+
+// HasImportedFilestoreName returns a boolean if a field has been set.
+func (o *GoogleCredentialsListDto) HasImportedFilestoreName() bool {
+	if o != nil && o.ImportedFilestoreName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetImportedFilestoreName gets a reference to the given NullableString and assigns it to the ImportedFilestoreName field.
+func (o *GoogleCredentialsListDto) SetImportedFilestoreName(v string) {
+	o.ImportedFilestoreName.Set(&v)
+}
+// SetImportedFilestoreNameNil sets the value for ImportedFilestoreName to be an explicit nil
+func (o *GoogleCredentialsListDto) SetImportedFilestoreNameNil() {
+	o.ImportedFilestoreName.Set(nil)
+}
+
+// UnsetImportedFilestoreName ensures that no value is present for ImportedFilestoreName, not even an explicit nil
+func (o *GoogleCredentialsListDto) UnsetImportedFilestoreName() {
+	o.ImportedFilestoreName.Unset()
+}
+
 func (o GoogleCredentialsListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -555,6 +879,30 @@ func (o GoogleCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["billingAccountName"] = o.BillingAccountName.Get()
 	toSerialize["createdAt"] = o.CreatedAt.Get()
 	toSerialize["continentName"] = o.ContinentName.Get()
+	if !IsNil(o.VpcMode) {
+		toSerialize["vpcMode"] = o.VpcMode
+	}
+	if !IsNil(o.IpMode) {
+		toSerialize["ipMode"] = o.IpMode
+	}
+	if o.ImportedGcpProjectId.IsSet() {
+		toSerialize["importedGcpProjectId"] = o.ImportedGcpProjectId.Get()
+	}
+	if o.ImportedVpcName.IsSet() {
+		toSerialize["importedVpcName"] = o.ImportedVpcName.Get()
+	}
+	if o.ImportedSubnetworkName.IsSet() {
+		toSerialize["importedSubnetworkName"] = o.ImportedSubnetworkName.Get()
+	}
+	if o.SharedFileSystemEnabled.IsSet() {
+		toSerialize["sharedFileSystemEnabled"] = o.SharedFileSystemEnabled.Get()
+	}
+	if o.ImportedFilestoreId.IsSet() {
+		toSerialize["importedFilestoreId"] = o.ImportedFilestoreId.Get()
+	}
+	if o.ImportedFilestoreName.IsSet() {
+		toSerialize["importedFilestoreName"] = o.ImportedFilestoreName.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -633,6 +981,14 @@ func (o *GoogleCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "billingAccountName")
 		delete(additionalProperties, "createdAt")
 		delete(additionalProperties, "continentName")
+		delete(additionalProperties, "vpcMode")
+		delete(additionalProperties, "ipMode")
+		delete(additionalProperties, "importedGcpProjectId")
+		delete(additionalProperties, "importedVpcName")
+		delete(additionalProperties, "importedSubnetworkName")
+		delete(additionalProperties, "sharedFileSystemEnabled")
+		delete(additionalProperties, "importedFilestoreId")
+		delete(additionalProperties, "importedFilestoreName")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -351,9 +351,12 @@ Class | Method | HTTP request | Description
 *GlobalConfigurationAPI* | [**GlobalConfigurationsUpdateStatusSlackConfiguration**](docs/GlobalConfigurationAPI.md#globalconfigurationsupdatestatusslackconfiguration) | **Post** /api/v1/global-configurations/slack/status | Activate/Deactivate global slack configuration
 *GoogleAPI* | [**GooglecloudBillingAccountList**](docs/GoogleAPI.md#googlecloudbillingaccountlist) | **Post** /api/v1/googlecloud/billing-accounts | Retrieve google billing accounts list
 *GoogleAPI* | [**GooglecloudCreate**](docs/GoogleAPI.md#googlecloudcreate) | **Post** /api/v1/googlecloud/create | Create google cloud credential
+*GoogleAPI* | [**GooglecloudFilestoreList**](docs/GoogleAPI.md#googlecloudfilestorelist) | **Post** /api/v1/googlecloud/filestore-list | Retrieve list of GCP Filestore instances for a given project and region
 *GoogleAPI* | [**GooglecloudGkeClusters**](docs/GoogleAPI.md#googlecloudgkeclusters) | **Post** /api/v1/googlecloud/gke-clusters | List of gke clusters
 *GoogleAPI* | [**GooglecloudList**](docs/GoogleAPI.md#googlecloudlist) | **Get** /api/v1/googlecloud/list | Retrieve list of google cloud credentials
 *GoogleAPI* | [**GooglecloudRegionList**](docs/GoogleAPI.md#googlecloudregionlist) | **Post** /api/v1/googlecloud/regions | Retrieve google region list
+*GoogleAPI* | [**GooglecloudSubnetworkList**](docs/GoogleAPI.md#googlecloudsubnetworklist) | **Post** /api/v1/googlecloud/subnetwork-list | Retrieve list of GCP subnetworks for a given project and region
+*GoogleAPI* | [**GooglecloudVpcList**](docs/GoogleAPI.md#googlecloudvpclist) | **Post** /api/v1/googlecloud/vpc-list | Retrieve list of GCP VPC networks
 *GoogleAPI* | [**GooglecloudZoneList**](docs/GoogleAPI.md#googlecloudzonelist) | **Post** /api/v1/googlecloud/zones | Google zones list
 *GroupsAPI* | [**GroupsAddOrganizations**](docs/GroupsAPI.md#groupsaddorganizations) | **Post** /api/v1/groups/{id}/organizations | Add organizations to group
 *GroupsAPI* | [**GroupsAddUsers**](docs/GroupsAPI.md#groupsaddusers) | **Post** /api/v1/groups/{id}/users | Add users to group
@@ -1195,6 +1198,9 @@ Class | Method | HTTP request | Description
  - [ForceToResetPasswordCommand](docs/ForceToResetPasswordCommand.md)
  - [ForgotPasswordCommand](docs/ForgotPasswordCommand.md)
  - [FullSpotOperationCommand](docs/FullSpotOperationCommand.md)
+ - [GcpFilestoreDto](docs/GcpFilestoreDto.md)
+ - [GcpSubnetworkDto](docs/GcpSubnetworkDto.md)
+ - [GcpVpcDto](docs/GcpVpcDto.md)
  - [GenericKubernetesList](docs/GenericKubernetesList.md)
  - [GenericKubernetesListDto](docs/GenericKubernetesListDto.md)
  - [GetCatalogAppValueAutocompleteCommand](docs/GetCatalogAppValueAutocompleteCommand.md)

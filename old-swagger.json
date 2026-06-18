@@ -27445,6 +27445,99 @@
         }
       }
     },
+    "/api/v1/googlecloud/filestore-list": {
+      "post": {
+        "tags": [
+          "Google"
+        ],
+        "summary": "Retrieve list of GCP Filestore instances for a given project and region",
+        "operationId": "googlecloud-filestore-list",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/GcpFilestoreListCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GcpFilestoreDto"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/googlecloud/gke-clusters": {
       "post": {
         "tags": [
@@ -27563,6 +27656,192 @@
                   "type": "array",
                   "items": {
                     "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/googlecloud/subnetwork-list": {
+      "post": {
+        "tags": [
+          "Google"
+        ],
+        "summary": "Retrieve list of GCP subnetworks for a given project and region",
+        "operationId": "googlecloud-subnetwork-list",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/GcpSubnetworkListCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GcpSubnetworkDto"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/googlecloud/vpc-list": {
+      "post": {
+        "tags": [
+          "Google"
+        ],
+        "summary": "Retrieve list of GCP VPC networks",
+        "operationId": "googlecloud-vpc-list",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/GcpVpcListCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GcpVpcDto"
                   }
                 }
               }
@@ -75724,6 +76003,25 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
+          },
+          "vpcMode": {
+            "$ref": "#/components/schemas/VpcMode"
+          },
+          "importedGcpProjectId": {
+            "type": "string",
+            "nullable": true
+          },
+          "importedVpcName": {
+            "type": "string",
+            "nullable": true
+          },
+          "importedSubnetworkName": {
+            "type": "string",
+            "nullable": true
+          },
+          "importedFilestoreId": {
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -80019,6 +80317,147 @@
           }
         }
       },
+      "GcpFilestoreDto": {
+        "type": "object",
+        "properties": {
+          "instanceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "tier": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileShareName": {
+            "type": "string",
+            "nullable": true
+          },
+          "network": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "GcpFilestoreListCommand": {
+        "type": "object",
+        "properties": {
+          "config": {
+            "type": "string",
+            "format": "binary",
+            "nullable": true
+          },
+          "gcpProjectId": {
+            "type": "string",
+            "nullable": true
+          },
+          "region": {
+            "type": "string",
+            "nullable": true
+          },
+          "cloudId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        }
+      },
+      "GcpSubnetworkDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "selfLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "region": {
+            "type": "string",
+            "nullable": true
+          },
+          "ipCidrRange": {
+            "type": "string",
+            "nullable": true
+          },
+          "hasIpv6": {
+            "type": "boolean"
+          },
+          "availableIpCount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "GcpSubnetworkListCommand": {
+        "type": "object",
+        "properties": {
+          "config": {
+            "type": "string",
+            "format": "binary",
+            "nullable": true
+          },
+          "gcpProjectId": {
+            "type": "string",
+            "nullable": true
+          },
+          "region": {
+            "type": "string",
+            "nullable": true
+          },
+          "networkName": {
+            "type": "string",
+            "nullable": true
+          },
+          "cloudId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        }
+      },
+      "GcpVpcDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "selfLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "ipMode": {
+            "$ref": "#/components/schemas/IpMode"
+          }
+        }
+      },
+      "GcpVpcListCommand": {
+        "type": "object",
+        "properties": {
+          "config": {
+            "type": "string",
+            "format": "binary",
+            "nullable": true
+          },
+          "gcpProjectId": {
+            "type": "string",
+            "nullable": true
+          },
+          "cloudId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ipMode": {
+            "$ref": "#/components/schemas/IpMode"
+          }
+        }
+      },
       "GenericKubernetesList": {
         "required": [
           "data",
@@ -80592,6 +81031,36 @@
             "nullable": true
           },
           "continentName": {
+            "type": "string",
+            "nullable": true
+          },
+          "vpcMode": {
+            "$ref": "#/components/schemas/VpcMode"
+          },
+          "ipMode": {
+            "$ref": "#/components/schemas/IpMode"
+          },
+          "importedGcpProjectId": {
+            "type": "string",
+            "nullable": true
+          },
+          "importedVpcName": {
+            "type": "string",
+            "nullable": true
+          },
+          "importedSubnetworkName": {
+            "type": "string",
+            "nullable": true
+          },
+          "sharedFileSystemEnabled": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "importedFilestoreId": {
+            "type": "string",
+            "nullable": true
+          },
+          "importedFilestoreName": {
             "type": "string",
             "nullable": true
           }
