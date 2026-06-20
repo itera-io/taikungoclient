@@ -53719,15 +53719,11 @@ components:
       type: object
     CreateUserCommand:
       example:
-        username: username
         displayName: displayName
         email: email
         accountId: 0
         isAccountAdmin: true
       properties:
-        username:
-          nullable: true
-          type: string
         displayName:
           nullable: true
           type: string
@@ -58824,7 +58820,7 @@ components:
           format: binary
           nullable: true
           type: string
-        gcpProjectId:
+        importedGcpProjectId:
           nullable: true
           type: string
         region:
@@ -58868,7 +58864,7 @@ components:
           format: binary
           nullable: true
           type: string
-        gcpProjectId:
+        importedGcpProjectId:
           nullable: true
           type: string
         region:
@@ -58903,7 +58899,7 @@ components:
           format: binary
           nullable: true
           type: string
-        gcpProjectId:
+        importedGcpProjectId:
           nullable: true
           type: string
         cloudId:
@@ -76301,7 +76297,6 @@ components:
       example:
         id: id
         displayName: displayName
-        username: username
         email: email
         forceToResetPassword: true
         disable: true
@@ -76310,9 +76305,6 @@ components:
           nullable: true
           type: string
         displayName:
-          nullable: true
-          type: string
-        username:
           nullable: true
           type: string
         email:
@@ -76382,7 +76374,7 @@ components:
     UserAuthContext:
       example:
         userId: userId
-        userName: userName
+        displayName: displayName
         email: email
         accountId: 0
         accountName: accountName
@@ -76398,13 +76390,12 @@ components:
             - claim
             - claim
             organizationName: organizationName
-        displayName: displayName
         createdAt: 2000-01-23T04:56:07.000+00:00
       properties:
         userId:
           nullable: true
           type: string
-        userName:
+        displayName:
           nullable: true
           type: string
         email:
@@ -76433,9 +76424,6 @@ components:
             $ref: "#/components/schemas/RoleClaim"
           nullable: true
           type: object
-        displayName:
-          nullable: true
-          type: string
         createdAt:
           format: date-time
           nullable: true

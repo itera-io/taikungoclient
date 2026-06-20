@@ -20,7 +20,6 @@ var _ MappedNullable = &CreateUserCommand{}
 
 // CreateUserCommand struct for CreateUserCommand
 type CreateUserCommand struct {
-	Username NullableString `json:"username,omitempty"`
 	DisplayName NullableString `json:"displayName,omitempty"`
 	Email NullableString `json:"email,omitempty"`
 	AccountId NullableInt32 `json:"accountId,omitempty"`
@@ -45,48 +44,6 @@ func NewCreateUserCommand() *CreateUserCommand {
 func NewCreateUserCommandWithDefaults() *CreateUserCommand {
 	this := CreateUserCommand{}
 	return &this
-}
-
-// GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateUserCommand) GetUsername() string {
-	if o == nil || IsNil(o.Username.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Username.Get()
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateUserCommand) GetUsernameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Username.Get(), o.Username.IsSet()
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *CreateUserCommand) HasUsername() bool {
-	if o != nil && o.Username.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given NullableString and assigns it to the Username field.
-func (o *CreateUserCommand) SetUsername(v string) {
-	o.Username.Set(&v)
-}
-// SetUsernameNil sets the value for Username to be an explicit nil
-func (o *CreateUserCommand) SetUsernameNil() {
-	o.Username.Set(nil)
-}
-
-// UnsetUsername ensures that no value is present for Username, not even an explicit nil
-func (o *CreateUserCommand) UnsetUsername() {
-	o.Username.Unset()
 }
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -257,9 +214,6 @@ func (o CreateUserCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateUserCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Username.IsSet() {
-		toSerialize["username"] = o.Username.Get()
-	}
 	if o.DisplayName.IsSet() {
 		toSerialize["displayName"] = o.DisplayName.Get()
 	}
@@ -294,7 +248,6 @@ func (o *CreateUserCommand) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "username")
 		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "email")
 		delete(additionalProperties, "accountId")

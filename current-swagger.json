@@ -77011,10 +77011,6 @@
       "CreateUserCommand": {
         "type": "object",
         "properties": {
-          "username": {
-            "type": "string",
-            "nullable": true
-          },
           "displayName": {
             "type": "string",
             "nullable": true
@@ -80350,7 +80346,7 @@
             "format": "binary",
             "nullable": true
           },
-          "gcpProjectId": {
+          "importedGcpProjectId": {
             "type": "string",
             "nullable": true
           },
@@ -80401,7 +80397,7 @@
             "format": "binary",
             "nullable": true
           },
-          "gcpProjectId": {
+          "importedGcpProjectId": {
             "type": "string",
             "nullable": true
           },
@@ -80444,7 +80440,7 @@
             "format": "binary",
             "nullable": true
           },
-          "gcpProjectId": {
+          "importedGcpProjectId": {
             "type": "string",
             "nullable": true
           },
@@ -94267,10 +94263,6 @@
             "type": "string",
             "nullable": true
           },
-          "username": {
-            "type": "string",
-            "nullable": true
-          },
           "email": {
             "type": "string",
             "nullable": true
@@ -94348,7 +94340,7 @@
             "type": "string",
             "nullable": true
           },
-          "userName": {
+          "displayName": {
             "type": "string",
             "nullable": true
           },
@@ -94386,10 +94378,6 @@
             "additionalProperties": {
               "$ref": "#/components/schemas/RoleClaim"
             },
-            "nullable": true
-          },
-          "displayName": {
-            "type": "string",
             "nullable": true
           },
           "createdAt": {

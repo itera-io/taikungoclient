@@ -22,7 +22,7 @@ var _ MappedNullable = &UserAuthContext{}
 // UserAuthContext struct for UserAuthContext
 type UserAuthContext struct {
 	UserId NullableString `json:"userId,omitempty"`
-	UserName NullableString `json:"userName,omitempty"`
+	DisplayName NullableString `json:"displayName,omitempty"`
 	Email NullableString `json:"email,omitempty"`
 	AccountId *int32 `json:"accountId,omitempty"`
 	AccountName NullableString `json:"accountName,omitempty"`
@@ -32,7 +32,6 @@ type UserAuthContext struct {
 	TwoFactorEnabled *bool `json:"twoFactorEnabled,omitempty"`
 	GlobalRole *GlobalRole `json:"globalRole,omitempty"`
 	OrgRoles map[string]RoleClaim `json:"orgRoles,omitempty"`
-	DisplayName NullableString `json:"displayName,omitempty"`
 	CreatedAt NullableTime `json:"createdAt,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -98,46 +97,46 @@ func (o *UserAuthContext) UnsetUserId() {
 	o.UserId.Unset()
 }
 
-// GetUserName returns the UserName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *UserAuthContext) GetUserName() string {
-	if o == nil || IsNil(o.UserName.Get()) {
+// GetDisplayName returns the DisplayName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UserAuthContext) GetDisplayName() string {
+	if o == nil || IsNil(o.DisplayName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.UserName.Get()
+	return *o.DisplayName.Get()
 }
 
-// GetUserNameOk returns a tuple with the UserName field value if set, nil otherwise
+// GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *UserAuthContext) GetUserNameOk() (*string, bool) {
+func (o *UserAuthContext) GetDisplayNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.UserName.Get(), o.UserName.IsSet()
+	return o.DisplayName.Get(), o.DisplayName.IsSet()
 }
 
-// HasUserName returns a boolean if a field has been set.
-func (o *UserAuthContext) HasUserName() bool {
-	if o != nil && o.UserName.IsSet() {
+// HasDisplayName returns a boolean if a field has been set.
+func (o *UserAuthContext) HasDisplayName() bool {
+	if o != nil && o.DisplayName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUserName gets a reference to the given NullableString and assigns it to the UserName field.
-func (o *UserAuthContext) SetUserName(v string) {
-	o.UserName.Set(&v)
+// SetDisplayName gets a reference to the given NullableString and assigns it to the DisplayName field.
+func (o *UserAuthContext) SetDisplayName(v string) {
+	o.DisplayName.Set(&v)
 }
-// SetUserNameNil sets the value for UserName to be an explicit nil
-func (o *UserAuthContext) SetUserNameNil() {
-	o.UserName.Set(nil)
+// SetDisplayNameNil sets the value for DisplayName to be an explicit nil
+func (o *UserAuthContext) SetDisplayNameNil() {
+	o.DisplayName.Set(nil)
 }
 
-// UnsetUserName ensures that no value is present for UserName, not even an explicit nil
-func (o *UserAuthContext) UnsetUserName() {
-	o.UserName.Unset()
+// UnsetDisplayName ensures that no value is present for DisplayName, not even an explicit nil
+func (o *UserAuthContext) UnsetDisplayName() {
+	o.DisplayName.Unset()
 }
 
 // GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -469,48 +468,6 @@ func (o *UserAuthContext) SetOrgRoles(v map[string]RoleClaim) {
 	o.OrgRoles = v
 }
 
-// GetDisplayName returns the DisplayName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *UserAuthContext) GetDisplayName() string {
-	if o == nil || IsNil(o.DisplayName.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.DisplayName.Get()
-}
-
-// GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *UserAuthContext) GetDisplayNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.DisplayName.Get(), o.DisplayName.IsSet()
-}
-
-// HasDisplayName returns a boolean if a field has been set.
-func (o *UserAuthContext) HasDisplayName() bool {
-	if o != nil && o.DisplayName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDisplayName gets a reference to the given NullableString and assigns it to the DisplayName field.
-func (o *UserAuthContext) SetDisplayName(v string) {
-	o.DisplayName.Set(&v)
-}
-// SetDisplayNameNil sets the value for DisplayName to be an explicit nil
-func (o *UserAuthContext) SetDisplayNameNil() {
-	o.DisplayName.Set(nil)
-}
-
-// UnsetDisplayName ensures that no value is present for DisplayName, not even an explicit nil
-func (o *UserAuthContext) UnsetDisplayName() {
-	o.DisplayName.Unset()
-}
-
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserAuthContext) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt.Get()) {
@@ -566,8 +523,8 @@ func (o UserAuthContext) ToMap() (map[string]interface{}, error) {
 	if o.UserId.IsSet() {
 		toSerialize["userId"] = o.UserId.Get()
 	}
-	if o.UserName.IsSet() {
-		toSerialize["userName"] = o.UserName.Get()
+	if o.DisplayName.IsSet() {
+		toSerialize["displayName"] = o.DisplayName.Get()
 	}
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
@@ -596,9 +553,6 @@ func (o UserAuthContext) ToMap() (map[string]interface{}, error) {
 	if o.OrgRoles != nil {
 		toSerialize["orgRoles"] = o.OrgRoles
 	}
-	if o.DisplayName.IsSet() {
-		toSerialize["displayName"] = o.DisplayName.Get()
-	}
 	if o.CreatedAt.IsSet() {
 		toSerialize["createdAt"] = o.CreatedAt.Get()
 	}
@@ -625,7 +579,7 @@ func (o *UserAuthContext) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "userId")
-		delete(additionalProperties, "userName")
+		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "email")
 		delete(additionalProperties, "accountId")
 		delete(additionalProperties, "accountName")
@@ -635,7 +589,6 @@ func (o *UserAuthContext) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "twoFactorEnabled")
 		delete(additionalProperties, "globalRole")
 		delete(additionalProperties, "orgRoles")
-		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "createdAt")
 		o.AdditionalProperties = additionalProperties
 	}

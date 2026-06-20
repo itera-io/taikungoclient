@@ -22,7 +22,6 @@ var _ MappedNullable = &UpdateUserCommand{}
 type UpdateUserCommand struct {
 	Id NullableString `json:"id,omitempty"`
 	DisplayName NullableString `json:"displayName,omitempty"`
-	Username NullableString `json:"username,omitempty"`
 	Email NullableString `json:"email,omitempty"`
 	ForceToResetPassword *bool `json:"forceToResetPassword,omitempty"`
 	Disable *bool `json:"disable,omitempty"`
@@ -130,48 +129,6 @@ func (o *UpdateUserCommand) SetDisplayNameNil() {
 // UnsetDisplayName ensures that no value is present for DisplayName, not even an explicit nil
 func (o *UpdateUserCommand) UnsetDisplayName() {
 	o.DisplayName.Unset()
-}
-
-// GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *UpdateUserCommand) GetUsername() string {
-	if o == nil || IsNil(o.Username.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Username.Get()
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *UpdateUserCommand) GetUsernameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Username.Get(), o.Username.IsSet()
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *UpdateUserCommand) HasUsername() bool {
-	if o != nil && o.Username.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given NullableString and assigns it to the Username field.
-func (o *UpdateUserCommand) SetUsername(v string) {
-	o.Username.Set(&v)
-}
-// SetUsernameNil sets the value for Username to be an explicit nil
-func (o *UpdateUserCommand) SetUsernameNil() {
-	o.Username.Set(nil)
-}
-
-// UnsetUsername ensures that no value is present for Username, not even an explicit nil
-func (o *UpdateUserCommand) UnsetUsername() {
-	o.Username.Unset()
 }
 
 // GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -296,9 +253,6 @@ func (o UpdateUserCommand) ToMap() (map[string]interface{}, error) {
 	if o.DisplayName.IsSet() {
 		toSerialize["displayName"] = o.DisplayName.Get()
 	}
-	if o.Username.IsSet() {
-		toSerialize["username"] = o.Username.Get()
-	}
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
 	}
@@ -332,7 +286,6 @@ func (o *UpdateUserCommand) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "displayName")
-		delete(additionalProperties, "username")
 		delete(additionalProperties, "email")
 		delete(additionalProperties, "forceToResetPassword")
 		delete(additionalProperties, "disable")

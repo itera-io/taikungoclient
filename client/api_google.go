@@ -530,7 +530,7 @@ type ApiGooglecloudFilestoreListRequest struct {
 	ctx context.Context
 	ApiService *GoogleAPIService
 	config *os.File
-	gcpProjectId *string
+	importedGcpProjectId *string
 	region *string
 	cloudId *int32
 }
@@ -540,8 +540,8 @@ func (r ApiGooglecloudFilestoreListRequest) Config(config *os.File) ApiGoogleclo
 	return r
 }
 
-func (r ApiGooglecloudFilestoreListRequest) GcpProjectId(gcpProjectId string) ApiGooglecloudFilestoreListRequest {
-	r.gcpProjectId = &gcpProjectId
+func (r ApiGooglecloudFilestoreListRequest) ImportedGcpProjectId(importedGcpProjectId string) ApiGooglecloudFilestoreListRequest {
+	r.importedGcpProjectId = &importedGcpProjectId
 	return r
 }
 
@@ -625,8 +625,8 @@ func (a *GoogleAPIService) GooglecloudFilestoreListExecute(r ApiGooglecloudFiles
 		configLocalVarFile.Close()
 		formFiles = append(formFiles, formFile{fileBytes: configLocalVarFileBytes, fileName: configLocalVarFileName, formFileName: configLocalVarFormFileName})
 	}
-	if r.gcpProjectId != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "gcpProjectId", r.gcpProjectId, "", "")
+	if r.importedGcpProjectId != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "importedGcpProjectId", r.importedGcpProjectId, "", "")
 	}
 	if r.region != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "region", r.region, "", "")
@@ -1392,7 +1392,7 @@ type ApiGooglecloudSubnetworkListRequest struct {
 	ctx context.Context
 	ApiService *GoogleAPIService
 	config *os.File
-	gcpProjectId *string
+	importedGcpProjectId *string
 	region *string
 	networkName *string
 	cloudId *int32
@@ -1403,8 +1403,8 @@ func (r ApiGooglecloudSubnetworkListRequest) Config(config *os.File) ApiGooglecl
 	return r
 }
 
-func (r ApiGooglecloudSubnetworkListRequest) GcpProjectId(gcpProjectId string) ApiGooglecloudSubnetworkListRequest {
-	r.gcpProjectId = &gcpProjectId
+func (r ApiGooglecloudSubnetworkListRequest) ImportedGcpProjectId(importedGcpProjectId string) ApiGooglecloudSubnetworkListRequest {
+	r.importedGcpProjectId = &importedGcpProjectId
 	return r
 }
 
@@ -1493,8 +1493,8 @@ func (a *GoogleAPIService) GooglecloudSubnetworkListExecute(r ApiGooglecloudSubn
 		configLocalVarFile.Close()
 		formFiles = append(formFiles, formFile{fileBytes: configLocalVarFileBytes, fileName: configLocalVarFileName, formFileName: configLocalVarFormFileName})
 	}
-	if r.gcpProjectId != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "gcpProjectId", r.gcpProjectId, "", "")
+	if r.importedGcpProjectId != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "importedGcpProjectId", r.importedGcpProjectId, "", "")
 	}
 	if r.region != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "region", r.region, "", "")
@@ -1625,7 +1625,7 @@ type ApiGooglecloudVpcListRequest struct {
 	ctx context.Context
 	ApiService *GoogleAPIService
 	config *os.File
-	gcpProjectId *string
+	importedGcpProjectId *string
 	cloudId *int32
 	ipMode *IpMode
 }
@@ -1635,8 +1635,8 @@ func (r ApiGooglecloudVpcListRequest) Config(config *os.File) ApiGooglecloudVpcL
 	return r
 }
 
-func (r ApiGooglecloudVpcListRequest) GcpProjectId(gcpProjectId string) ApiGooglecloudVpcListRequest {
-	r.gcpProjectId = &gcpProjectId
+func (r ApiGooglecloudVpcListRequest) ImportedGcpProjectId(importedGcpProjectId string) ApiGooglecloudVpcListRequest {
+	r.importedGcpProjectId = &importedGcpProjectId
 	return r
 }
 
@@ -1720,8 +1720,8 @@ func (a *GoogleAPIService) GooglecloudVpcListExecute(r ApiGooglecloudVpcListRequ
 		configLocalVarFile.Close()
 		formFiles = append(formFiles, formFile{fileBytes: configLocalVarFileBytes, fileName: configLocalVarFileName, formFileName: configLocalVarFormFileName})
 	}
-	if r.gcpProjectId != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "gcpProjectId", r.gcpProjectId, "", "")
+	if r.importedGcpProjectId != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "importedGcpProjectId", r.importedGcpProjectId, "", "")
 	}
 	if r.cloudId != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "cloudId", r.cloudId, "", "")
