@@ -20,7 +20,7 @@ var _ MappedNullable = &MetricResult{}
 
 // MetricResult struct for MetricResult
 type MetricResult struct {
-	Metric map[string]string `json:"metric,omitempty"`
+	Metric map[string]*string `json:"metric,omitempty"`
 	Value interface{} `json:"value,omitempty"`
 	Values [][]float64 `json:"values,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -46,9 +46,9 @@ func NewMetricResultWithDefaults() *MetricResult {
 }
 
 // GetMetric returns the Metric field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *MetricResult) GetMetric() map[string]string {
+func (o *MetricResult) GetMetric() map[string]*string {
 	if o == nil {
-		var ret map[string]string
+		var ret map[string]*string
 		return ret
 	}
 	return o.Metric
@@ -57,7 +57,7 @@ func (o *MetricResult) GetMetric() map[string]string {
 // GetMetricOk returns a tuple with the Metric field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *MetricResult) GetMetricOk() (*map[string]string, bool) {
+func (o *MetricResult) GetMetricOk() (*map[string]*string, bool) {
 	if o == nil || IsNil(o.Metric) {
 		return nil, false
 	}
@@ -73,8 +73,8 @@ func (o *MetricResult) HasMetric() bool {
 	return false
 }
 
-// SetMetric gets a reference to the given map[string]string and assigns it to the Metric field.
-func (o *MetricResult) SetMetric(v map[string]string) {
+// SetMetric gets a reference to the given map[string]*string and assigns it to the Metric field.
+func (o *MetricResult) SetMetric(v map[string]*string) {
 	o.Metric = v
 }
 

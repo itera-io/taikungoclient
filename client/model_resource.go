@@ -22,8 +22,8 @@ var _ MappedNullable = &Resource{}
 type Resource struct {
 	Name NullableString `json:"name,omitempty"`
 	ResourceType NullableString `json:"resourceType,omitempty"`
-	Tags map[string]string `json:"tags,omitempty"`
-	Metadata map[string]interface{} `json:"metadata,omitempty"`
+	Tags map[string]*string `json:"tags,omitempty"`
+	Metadata map[string]*interface{} `json:"metadata,omitempty"`
 	HourlyCost NullableString `json:"hourlyCost,omitempty"`
 	MonthlyCost NullableString `json:"monthlyCost,omitempty"`
 	MonthlyUsageCost NullableString `json:"monthlyUsageCost,omitempty"`
@@ -136,9 +136,9 @@ func (o *Resource) UnsetResourceType() {
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Resource) GetTags() map[string]string {
+func (o *Resource) GetTags() map[string]*string {
 	if o == nil {
-		var ret map[string]string
+		var ret map[string]*string
 		return ret
 	}
 	return o.Tags
@@ -147,7 +147,7 @@ func (o *Resource) GetTags() map[string]string {
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Resource) GetTagsOk() (*map[string]string, bool) {
+func (o *Resource) GetTagsOk() (*map[string]*string, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
@@ -163,15 +163,15 @@ func (o *Resource) HasTags() bool {
 	return false
 }
 
-// SetTags gets a reference to the given map[string]string and assigns it to the Tags field.
-func (o *Resource) SetTags(v map[string]string) {
+// SetTags gets a reference to the given map[string]*string and assigns it to the Tags field.
+func (o *Resource) SetTags(v map[string]*string) {
 	o.Tags = v
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Resource) GetMetadata() map[string]interface{} {
+func (o *Resource) GetMetadata() map[string]*interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret map[string]*interface{}
 		return ret
 	}
 	return o.Metadata
@@ -180,9 +180,9 @@ func (o *Resource) GetMetadata() map[string]interface{} {
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Resource) GetMetadataOk() (map[string]interface{}, bool) {
+func (o *Resource) GetMetadataOk() (map[string]*interface{}, bool) {
 	if o == nil || IsNil(o.Metadata) {
-		return map[string]interface{}{}, false
+		return map[string]*interface{}{}, false
 	}
 	return o.Metadata, true
 }
@@ -196,8 +196,8 @@ func (o *Resource) HasMetadata() bool {
 	return false
 }
 
-// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
-func (o *Resource) SetMetadata(v map[string]interface{}) {
+// SetMetadata gets a reference to the given map[string]*interface{} and assigns it to the Metadata field.
+func (o *Resource) SetMetadata(v map[string]*interface{}) {
 	o.Metadata = v
 }
 
