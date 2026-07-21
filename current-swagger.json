@@ -4518,6 +4518,113 @@
         }
       }
     },
+    "/api/v1/users/toggleoverloadprotection": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "Set overload protection mode",
+        "operationId": "users-toggle-overload-protection",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ToggleOverloadProtectionCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/users/overload-protection": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "Get overload protection status",
+        "operationId": "users-overload-protection-status",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Void"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/ai-credential/create": {
       "post": {
         "tags": [
@@ -14368,6 +14475,785 @@
         }
       }
     },
+    "/api/v1/certificate-credentials": {
+      "put": {
+        "tags": [
+          "Certificate credentials"
+        ],
+        "summary": "Update custom CA name/description",
+        "operationId": "certificate-credentials-update",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CertificateCredentialUpdateCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Certificate credentials"
+        ],
+        "summary": "Add certificate credential",
+        "operationId": "certificate-credentials-create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CertificateCredentialCreateCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Certificate credentials"
+        ],
+        "summary": "Retrieve custom CAs for organization dropdown",
+        "operationId": "certificate-credentials-dropdown",
+        "parameters": [
+          {
+            "name": "OrganizationId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Kind",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CertificateCredentialDropdownDto"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/certificate-credentials/lockmanager": {
+      "post": {
+        "tags": [
+          "Certificate credentials"
+        ],
+        "summary": "Lock/unlock certificate credential",
+        "operationId": "certificate-credentials-lock-management",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CertificateCredentialLockCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/certificate-credentials/makedefault": {
+      "post": {
+        "tags": [
+          "Certificate credentials"
+        ],
+        "summary": "Make default certificate credential",
+        "operationId": "certificate-credentials-make-default",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CertificateCredentialMakeDefaultCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/certificate-credentials/validate": {
+      "post": {
+        "tags": [
+          "Certificate credentials"
+        ],
+        "summary": "Validate custom CA cert/key pair (PEM x509, key match, CA:TRUE, not expired)",
+        "operationId": "certificate-credentials-validate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CertificateCredentialValidateCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/certificate-credentials/list": {
+      "get": {
+        "tags": [
+          "Certificate credentials"
+        ],
+        "summary": "Retrieve all custom certificate authorities",
+        "operationId": "certificate-credentials-list",
+        "parameters": [
+          {
+            "name": "OrganizationId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "AccountId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SearchId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "SortBy",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SortDirection",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 50
+            }
+          },
+          {
+            "name": "Offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CertificateCredentialListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/certificate-credentials/{id}": {
+      "delete": {
+        "tags": [
+          "Certificate credentials"
+        ],
+        "summary": "Delete certificate credential",
+        "operationId": "certificate-credentials-delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/checker/openai": {
       "post": {
         "tags": [
@@ -18359,6 +19245,259 @@
         }
       }
     },
+    "/api/v1/cronjob/reconcile-partner-scopes": {
+      "post": {
+        "tags": [
+          "Cron Job Service"
+        ],
+        "summary": "Reconcile CCF partner scope holders (moves DEK rows off soft-deleted partner scope holders)",
+        "operationId": "cronjob-reconcile-partner-scopes",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PartnerScopeReconcileResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/cronjob/rotate-tenant-keks": {
+      "post": {
+        "tags": [
+          "Cron Job Service"
+        ],
+        "summary": "Rotate tenant KEKs via Transit rewrap",
+        "operationId": "cronjob-rotate-tenant-keks",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RotateTenantKeksCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/cronjob/scan-certificate-credential-expiry": {
+      "post": {
+        "tags": [
+          "Cron Job Service"
+        ],
+        "summary": "Scan certificate credentials approaching or past expiry and emit alert logs",
+        "operationId": "cronjob-scan-certificate-credential-expiry",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScanCertificateCredentialExpiryCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/cronjob/project-expiration": {
       "post": {
         "tags": [
@@ -18810,6 +19949,87 @@
             "description": "OK",
             "content": {
               "application/json": { }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/cronjob/ccf-crypto/status": {
+      "get": {
+        "tags": [
+          "Cron Job Service"
+        ],
+        "summary": "Rollback-safety survey: per-column $enc:v1: row counts and last Transit failure timestamp",
+        "operationId": "cronjob-ccf-crypto-status",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransitEncryptionStatusDto"
+                }
+              }
             }
           },
           "400": {
@@ -22528,6 +23748,264 @@
         }
       }
     },
+    "/api/v1/dns-cert/cert-manager/disable": {
+      "post": {
+        "tags": [
+          "DnsCert"
+        ],
+        "summary": "Disable cert-manager for a project",
+        "operationId": "dns-cert-cert-manager-disable",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DisableCertManagerCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dns-cert/external-dns/disable": {
+      "post": {
+        "tags": [
+          "DnsCert"
+        ],
+        "summary": "Disable external-dns for a project",
+        "operationId": "dns-cert-external-dns-disable",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DisableExternalDnsCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dns-cert/trust-manager/disable": {
+      "post": {
+        "tags": [
+          "DnsCert"
+        ],
+        "summary": "Disable trust-manager for a project",
+        "operationId": "dns-cert-trust-manager-disable",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DisableTrustManagerCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/dns-cert/enable": {
       "post": {
         "tags": [
@@ -22540,6 +24018,264 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/EnableDnsCertCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dns-cert/cert-manager/enable": {
+      "post": {
+        "tags": [
+          "DnsCert"
+        ],
+        "summary": "Enable cert-manager for a project",
+        "operationId": "dns-cert-cert-manager-enable",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnableCertManagerCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dns-cert/external-dns/enable": {
+      "post": {
+        "tags": [
+          "DnsCert"
+        ],
+        "summary": "Enable external-dns for a project",
+        "operationId": "dns-cert-external-dns-enable",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnableExternalDnsCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dns-cert/trust-manager/enable": {
+      "post": {
+        "tags": [
+          "DnsCert"
+        ],
+        "summary": "Enable trust-manager for a project",
+        "operationId": "dns-cert-trust-manager-enable",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnableTrustManagerCommand"
               }
             }
           }
@@ -25312,6 +27048,178 @@
                   "$ref": "#/components/schemas/AwsFlavorList"
                 }
               }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/gateway-api/disable": {
+      "post": {
+        "tags": [
+          "Gateway API"
+        ],
+        "summary": "Disable Gateway API modern CRD bundle",
+        "operationId": "gateway-api-disable",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DisableGatewayApiModernCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/gateway-api/enable": {
+      "post": {
+        "tags": [
+          "Gateway API"
+        ],
+        "summary": "Enable Gateway API modern CRD bundle",
+        "operationId": "gateway-api-enable",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnableGatewayApiModernCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": { }
             }
           },
           "400": {
@@ -70396,16 +72304,14 @@
             }
           },
           "createdBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "lastModified": {
             "type": "string",
             "nullable": true
           },
           "lastModifiedBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "createdAt": {
             "type": "string"
@@ -70752,6 +72658,8 @@
           "UninstallApplication",
           "EnableAutoscaling",
           "DisableAutoscaling",
+          "EnableGatewayApiModern",
+          "DisableGatewayApiModern",
           "BoundProject",
           "LockUnlockProject",
           "EnabledAi",
@@ -71287,16 +73195,14 @@
             }
           },
           "createdBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "lastModified": {
             "type": "string",
             "nullable": true
           },
           "lastModifiedBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "reminder": {
             "$ref": "#/components/schemas/AlertingReminder"
@@ -71460,6 +73366,14 @@
             "type": "string",
             "nullable": true
           },
+          "roleArn": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true
+          },
           "cloudId": {
             "type": "integer",
             "format": "int32",
@@ -71522,16 +73436,14 @@
             }
           },
           "createdBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "lastModified": {
             "type": "string",
             "nullable": true
           },
           "lastModifiedBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "isDefault": {
             "type": "boolean"
@@ -71735,6 +73647,27 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
+          }
+        }
+      },
+      "AuditUserDto": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "nullable": true
+          },
+          "displayName": {
+            "type": "string",
+            "nullable": true
+          },
+          "accountId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "isRobot": {
+            "type": "boolean"
           }
         }
       },
@@ -72055,6 +73988,14 @@
             "type": "string",
             "nullable": true
           },
+          "roleArn": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalId": {
+            "type": "string",
+            "nullable": true
+          },
           "awsRegion": {
             "type": "string",
             "nullable": true
@@ -72215,13 +74156,18 @@
             "type": "string",
             "nullable": true
           },
+          "ipv6Cidr": {
+            "type": "string",
+            "nullable": true
+          },
           "name": {
             "type": "string",
             "nullable": true
           },
           "availableIpCount": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "isDefault": {
             "type": "boolean"
@@ -72244,6 +74190,14 @@
             "nullable": true
           },
           "awsSecretAccessKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "roleArn": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalId": {
             "type": "string",
             "nullable": true
           },
@@ -72301,6 +74255,14 @@
             "nullable": true
           },
           "awsSecretAccessKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "roleArn": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalId": {
             "type": "string",
             "nullable": true
           },
@@ -72401,6 +74363,7 @@
           "id",
           "importedFileShareId",
           "importedFileShareName",
+          "importedFileShareResourceGroupName",
           "isDefault",
           "isLocked",
           "lastModified",
@@ -72454,8 +74417,7 @@
             }
           },
           "createdBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "createdAt": {
             "type": "string",
@@ -72466,8 +74428,7 @@
             "nullable": true
           },
           "lastModifiedBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "isDefault": {
             "type": "boolean"
@@ -72502,6 +74463,10 @@
             "nullable": true
           },
           "importedFileShareName": {
+            "type": "string",
+            "nullable": true
+          },
+          "importedFileShareResourceGroupName": {
             "type": "string",
             "nullable": true
           }
@@ -72870,6 +74835,9 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
+          },
+          "ipMode": {
+            "$ref": "#/components/schemas/IpMode"
           }
         }
       },
@@ -73046,16 +75014,14 @@
             "type": "boolean"
           },
           "createdBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "lastModified": {
             "type": "string",
             "nullable": true
           },
           "lastModifiedBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "createdAt": {
             "type": "string",
@@ -73548,6 +75514,9 @@
           },
           "hasGpuSupport": {
             "type": "boolean"
+          },
+          "gpuDetails": {
+            "$ref": "#/components/schemas/FlavorGpuDetailsDto"
           },
           "cloudType": {
             "$ref": "#/components/schemas/CloudType"
@@ -74380,6 +76349,300 @@
           }
         }
       },
+      "CertificateCredentialCreateCommand": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "organizationId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "kind": {
+            "type": "string",
+            "nullable": true
+          },
+          "certPem": {
+            "type": "string",
+            "nullable": true
+          },
+          "keyPem": {
+            "type": "string",
+            "nullable": true
+          },
+          "chainPem": {
+            "type": "string",
+            "nullable": true
+          },
+          "generateSelfSigned": {
+            "type": "boolean"
+          },
+          "commonName": {
+            "type": "string",
+            "nullable": true
+          },
+          "validityDays": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        }
+      },
+      "CertificateCredentialDropdownDto": {
+        "required": [
+          "id",
+          "isDefault",
+          "kind",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "kind": {
+            "$ref": "#/components/schemas/CertificateCredentialKind"
+          },
+          "isDefault": {
+            "type": "boolean"
+          },
+          "notAfter": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "expiryStatus": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "CertificateCredentialKind": {
+        "enum": [
+          "SigningCa",
+          "TrustAnchor",
+          "TlsLeaf"
+        ],
+        "type": "string"
+      },
+      "CertificateCredentialListDto": {
+        "required": [
+          "certPem",
+          "createdBy",
+          "description",
+          "id",
+          "inUseCount",
+          "isDefault",
+          "isInfra",
+          "isLocked",
+          "kind",
+          "lastModified",
+          "lastModifiedBy",
+          "name",
+          "organizationId",
+          "organizationName"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "kind": {
+            "$ref": "#/components/schemas/CertificateCredentialKind"
+          },
+          "certPem": {
+            "type": "string"
+          },
+          "organizationId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "organizationName": {
+            "type": "string",
+            "nullable": true
+          },
+          "notBefore": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "notAfter": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "subject": {
+            "type": "string",
+            "nullable": true
+          },
+          "issuer": {
+            "type": "string",
+            "nullable": true
+          },
+          "sans": {
+            "type": "string",
+            "nullable": true
+          },
+          "daysUntilExpiry": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "expiryStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "isLocked": {
+            "type": "boolean"
+          },
+          "isDefault": {
+            "type": "boolean"
+          },
+          "isInfra": {
+            "type": "boolean"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastModified": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastModifiedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "inUseCount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "CertificateCredentialListResponse": {
+        "required": [
+          "data",
+          "hasMore",
+          "limit",
+          "offset",
+          "totalCount"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CertificateCredentialListDto"
+            },
+            "nullable": true
+          },
+          "limit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hasMore": {
+            "type": "boolean"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        }
+      },
+      "CertificateCredentialLockCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "mode": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "CertificateCredentialMakeDefaultCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "CertificateCredentialUpdateCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "CertificateCredentialValidateCommand": {
+        "type": "object",
+        "properties": {
+          "certificateCredentialId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "kind": {
+            "type": "string",
+            "nullable": true
+          },
+          "certPem": {
+            "type": "string",
+            "nullable": true
+          },
+          "keyPem": {
+            "type": "string",
+            "nullable": true
+          },
+          "chainPem": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
       "ChangeCardCommand": {
         "type": "object",
         "properties": {
@@ -74435,6 +76698,14 @@
             "nullable": true
           },
           "awsSecretAccessKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "roleArn": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalId": {
             "type": "string",
             "nullable": true
           }
@@ -74836,9 +77107,13 @@
           "cidr": {
             "type": "string"
           },
+          "ipv6Cidr": {
+            "type": "string"
+          },
           "availableIpCount": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "nodeCount": {
             "type": "integer",
@@ -75722,6 +77997,10 @@
             "type": "string",
             "nullable": true
           },
+          "importedFileShareResourceGroupName": {
+            "type": "string",
+            "nullable": true
+          },
           "subnets": {
             "type": "array",
             "items": {
@@ -75737,9 +78016,6 @@
           "subnetName": {
             "type": "string",
             "nullable": true
-          },
-          "subnetType": {
-            "$ref": "#/components/schemas/AccessLevel"
           }
         }
       },
@@ -75973,31 +78249,26 @@
         "properties": {
           "config": {
             "type": "string",
-            "format": "binary",
-            "nullable": true
+            "format": "binary"
           },
           "name": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "importProject": {
             "type": "boolean"
           },
           "folderId": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "billingAccountId": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "azCount": {
             "type": "integer",
             "format": "int32"
           },
           "region": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "organizationId": {
             "type": "integer",
@@ -76015,11 +78286,17 @@
             "type": "string",
             "nullable": true
           },
-          "importedSubnetworkName": {
+          "subnets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "importedFilestoreId": {
             "type": "string",
             "nullable": true
           },
-          "importedFilestoreId": {
+          "importedFilestoreProjectId": {
             "type": "string",
             "nullable": true
           }
@@ -77448,10 +79725,24 @@
             "nullable": true
           },
           "caCert": {
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "caKey": {
-            "type": "string"
+            "type": "string",
+            "nullable": true
+          },
+          "generateSelfSigned": {
+            "type": "boolean"
+          },
+          "commonName": {
+            "type": "string",
+            "nullable": true
+          },
+          "validityDays": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         }
       },
@@ -77478,6 +79769,7 @@
       },
       "CustomCertificateAuthorityListDto": {
         "required": [
+          "caCert",
           "createdBy",
           "description",
           "id",
@@ -77503,6 +79795,9 @@
           "description": {
             "type": "string",
             "nullable": true
+          },
+          "caCert": {
+            "type": "string"
           },
           "organizationId": {
             "type": "integer",
@@ -78491,7 +80786,43 @@
           }
         }
       },
+      "DisableCertManagerCommand": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
       "DisableDnsCertCommand": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "DisableExternalDnsCommand": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "DisableGatewayApiModernCommand": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "DisableTrustManagerCommand": {
         "type": "object",
         "properties": {
           "projectId": {
@@ -78738,6 +81069,34 @@
           "gcpServiceAccountJson": {
             "type": "string",
             "nullable": true
+          },
+          "authMethod": {
+            "type": "string",
+            "nullable": true
+          },
+          "authVariant": {
+            "type": "string",
+            "nullable": true
+          },
+          "awsRoleArn": {
+            "type": "string",
+            "nullable": true
+          },
+          "gcpServiceAccountEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "pdnsApiUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "pdnsApiKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "pdnsServerId": {
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -78747,7 +81106,8 @@
           "id",
           "isDefault",
           "isLocked",
-          "name"
+          "name",
+          "providerType"
         ],
         "type": "object",
         "properties": {
@@ -78756,6 +81116,10 @@
             "format": "int32"
           },
           "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "providerType": {
             "type": "string",
             "nullable": true
           },
@@ -78773,6 +81137,8 @@
       },
       "DnsCredentialListDto": {
         "required": [
+          "authMethod",
+          "authVariant",
           "createdBy",
           "domainFilter",
           "id",
@@ -78824,17 +81190,22 @@
           "isInfra": {
             "type": "boolean"
           },
-          "createdBy": {
+          "authMethod": {
+            "type": "string"
+          },
+          "authVariant": {
             "type": "string",
             "nullable": true
+          },
+          "createdBy": {
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "lastModified": {
             "type": "string",
             "nullable": true
           },
           "lastModifiedBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "projects": {
             "type": "array",
@@ -78913,19 +81284,44 @@
             "format": "int32"
           },
           "name": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "providerType": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "domainFilter": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "useLetsEncrypt": {
             "type": "boolean"
+          },
+          "authMethod": {
+            "type": "string",
+            "nullable": true
+          },
+          "authVariant": {
+            "type": "string",
+            "nullable": true
+          },
+          "awsRoleArn": {
+            "type": "string",
+            "nullable": true
+          },
+          "gcpServiceAccountEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "pdnsApiUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "pdnsApiKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "pdnsServerId": {
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -79616,6 +82012,42 @@
           }
         }
       },
+      "EnableCertManagerCommand": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dnsCredentialId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "certIssuerType": {
+            "type": "string",
+            "nullable": true
+          },
+          "acmeEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "domain": {
+            "type": "string",
+            "nullable": true
+          },
+          "customCertificateAuthorityId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "certificateCredentialId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        }
+      },
       "EnableDnsCertCommand": {
         "type": "object",
         "properties": {
@@ -79644,11 +82076,74 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
+          },
+          "certificateCredentialId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        }
+      },
+      "EnableExternalDnsCommand": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dnsCredentialId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "domain": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "EnableGatewayApiModernCommand": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "EnableTrustManagerCommand": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "integer",
+            "format": "int32"
           }
         }
       },
       "EnableTwoFaManagementCommand": {
         "type": "object"
+      },
+      "EncryptedColumnStatusDto": {
+        "type": "object",
+        "properties": {
+          "entityName": {
+            "type": "string",
+            "nullable": true
+          },
+          "v1RowCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "oldestV1CreatedUtc": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "surveyError": {
+            "type": "string",
+            "nullable": true
+          }
+        }
       },
       "EnsureCodesDownloadedCommand": {
         "type": "object",
@@ -80335,6 +82830,10 @@
           "network": {
             "type": "string",
             "nullable": true
+          },
+          "ipAddress": {
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -80347,6 +82846,10 @@
             "nullable": true
           },
           "importedGcpProjectId": {
+            "type": "string",
+            "nullable": true
+          },
+          "importedFilestoreProjectId": {
             "type": "string",
             "nullable": true
           },
@@ -80413,6 +82916,9 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
+          },
+          "ipMode": {
+            "$ref": "#/components/schemas/IpMode"
           }
         }
       },
@@ -80538,8 +83044,7 @@
             "nullable": true
           },
           "createdBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "createdAt": {
             "type": "string",
@@ -80550,8 +83055,7 @@
             "nullable": true
           },
           "lastModifiedBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "isDefault": {
             "type": "boolean"
@@ -80608,7 +83112,13 @@
       "GetDnsCertStatusResponse": {
         "type": "object",
         "properties": {
-          "enabled": {
+          "certManagerEnabled": {
+            "type": "boolean"
+          },
+          "externalDnsEnabled": {
+            "type": "boolean"
+          },
+          "trustManagerEnabled": {
             "type": "boolean"
           },
           "dnsProvider": {
@@ -80639,6 +83149,38 @@
             "type": "integer",
             "format": "int32"
           },
+          "desiredCertManagerVersion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "appliedCertManagerVersion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "desiredTrustManagerVersion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "appliedTrustManagerVersion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "desiredExternalDnsVersion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "appliedExternalDnsVersion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "desiredIssuerVersion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "appliedIssuerVersion": {
+            "type": "integer",
+            "format": "int32"
+          },
           "synced": {
             "type": "boolean"
           },
@@ -80648,6 +83190,13 @@
             "nullable": true
           },
           "dnsCredentialName": {
+            "type": "string",
+            "nullable": true
+          },
+          "projectStatus": {
+            "$ref": "#/components/schemas/ProjectStatus"
+          },
+          "failureReason": {
             "type": "string",
             "nullable": true
           }
@@ -80943,10 +83492,13 @@
           "billingAccountName",
           "continentName",
           "createdAt",
+          "createdBy",
           "folderId",
           "id",
           "isDefault",
           "isLocked",
+          "lastModified",
+          "lastModifiedBy",
           "name",
           "organizationId",
           "organizationName",
@@ -81022,9 +83574,19 @@
             "type": "string",
             "nullable": true
           },
+          "createdBy": {
+            "$ref": "#/components/schemas/AuditUserDto"
+          },
           "createdAt": {
             "type": "string",
             "nullable": true
+          },
+          "lastModified": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastModifiedBy": {
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "continentName": {
             "type": "string",
@@ -81041,10 +83603,6 @@
             "nullable": true
           },
           "importedVpcName": {
-            "type": "string",
-            "nullable": true
-          },
-          "importedSubnetworkName": {
             "type": "string",
             "nullable": true
           },
@@ -83015,6 +85573,13 @@
           }
         }
       },
+      "KeyRotationMode": {
+        "enum": [
+          "KekOnly",
+          "Full"
+        ],
+        "type": "string"
+      },
       "KubeConfigForUserDto": {
         "required": [
           "canAccessTerminal",
@@ -83688,8 +86253,7 @@
             }
           },
           "createdBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "createdAt": {
             "type": "string",
@@ -83700,8 +86264,7 @@
             "nullable": true
           },
           "lastModifiedBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "proxmoxStorage": {
             "$ref": "#/components/schemas/ProxmoxStorage"
@@ -84859,8 +87422,7 @@
             "$ref": "#/components/schemas/ActionStatus"
           },
           "username": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "category": {
             "$ref": "#/components/schemas/ActionType"
@@ -85468,16 +88030,14 @@
             "type": "boolean"
           },
           "createdBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "lastModified": {
             "type": "string",
             "nullable": true
           },
           "lastModifiedBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "isDefault": {
             "type": "boolean"
@@ -85687,13 +88247,13 @@
             }
           },
           "createdBy": {
-            "type": "string"
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "lastModified": {
             "type": "string"
           },
           "lastModifiedBy": {
-            "type": "string"
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "isDefault": {
             "type": "boolean"
@@ -86667,6 +89227,15 @@
           }
         }
       },
+      "OverloadProtectionMode": {
+        "enum": [
+          "Normal",
+          "TightenRobots",
+          "ShedRobots",
+          "ShedAllExceptAdmin"
+        ],
+        "type": "string"
+      },
       "PackageAutocompleteDto": {
         "type": "object",
         "properties": {
@@ -86711,6 +89280,44 @@
           "Multiline"
         ],
         "type": "string"
+      },
+      "PartnerPoolDekAnomalyDto": {
+        "type": "object",
+        "properties": {
+          "partnerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dekRowCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "organizationIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        }
+      },
+      "PartnerScopeReconcileResult": {
+        "type": "object",
+        "properties": {
+          "examined": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "repointed": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "skipped": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
       },
       "PatchKubernetesResourceCommand": {
         "required": [
@@ -86975,21 +89582,29 @@
           "disableAi",
           "disableAutoscaler",
           "disableBackup",
+          "disableCertManager",
           "disableDnsCert",
+          "disableExternalDns",
           "disableFullSpot",
+          "disableGatewayApi",
           "disableMonitoring",
           "disableOpa",
           "disableSpotVm",
           "disableSpotWorker",
+          "disableTrustManager",
           "enableAi",
           "enableAutoscaler",
           "enableBackup",
+          "enableCertManager",
           "enableDnsCert",
+          "enableExternalDns",
           "enableFullSpot",
+          "enableGatewayApi",
           "enableMonitoring",
           "enableOpa",
           "enableSpotVm",
           "enableSpotWorker",
+          "enableTrustManager",
           "lock",
           "projectMaintenanceMode",
           "repair",
@@ -87031,6 +89646,12 @@
             "$ref": "#/components/schemas/ButtonStatusDto"
           },
           "disableAutoscaler": {
+            "$ref": "#/components/schemas/ButtonStatusDto"
+          },
+          "enableGatewayApi": {
+            "$ref": "#/components/schemas/ButtonStatusDto"
+          },
+          "disableGatewayApi": {
             "$ref": "#/components/schemas/ButtonStatusDto"
           },
           "vmRepair": {
@@ -87091,6 +89712,24 @@
             "$ref": "#/components/schemas/ButtonStatusDto"
           },
           "disableDnsCert": {
+            "$ref": "#/components/schemas/ButtonStatusDto"
+          },
+          "enableCertManager": {
+            "$ref": "#/components/schemas/ButtonStatusDto"
+          },
+          "disableCertManager": {
+            "$ref": "#/components/schemas/ButtonStatusDto"
+          },
+          "enableExternalDns": {
+            "$ref": "#/components/schemas/ButtonStatusDto"
+          },
+          "disableExternalDns": {
+            "$ref": "#/components/schemas/ButtonStatusDto"
+          },
+          "enableTrustManager": {
+            "$ref": "#/components/schemas/ButtonStatusDto"
+          },
+          "disableTrustManager": {
             "$ref": "#/components/schemas/ButtonStatusDto"
           }
         }
@@ -87721,6 +90360,7 @@
           "dnsCredentialName",
           "expiredAt",
           "flavor",
+          "gatewayApiModern",
           "hasKubeConfigFile",
           "hasNfsServer",
           "hasSelectedFlavors",
@@ -88009,6 +90649,9 @@
           "isAutoscalingSpotEnabled": {
             "type": "boolean"
           },
+          "gatewayApiModern": {
+            "type": "boolean"
+          },
           "hasNfsServer": {
             "type": "boolean"
           },
@@ -88262,6 +90905,7 @@
           "createdBy",
           "deleteOnExpiration",
           "expiredAt",
+          "gatewayApiModern",
           "hasExpirationWarning",
           "hasKubeConfigFile",
           "health",
@@ -88376,7 +91020,7 @@
             }
           },
           "createdBy": {
-            "type": "string"
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "lastModified": {
             "type": "string",
@@ -88394,8 +91038,7 @@
             "nullable": true
           },
           "lastModifiedBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "quotaId": {
             "type": "integer",
@@ -88429,6 +91072,9 @@
             "type": "boolean"
           },
           "isAutoscalingSpotEnabled": {
+            "type": "boolean"
+          },
+          "gatewayApiModern": {
             "type": "boolean"
           },
           "aiEnabled": {
@@ -89136,16 +91782,14 @@
             "type": "string"
           },
           "createdBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "lastModified": {
             "type": "string",
             "nullable": true
           },
           "lastModifiedBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           }
         }
       },
@@ -89747,8 +92391,7 @@
             "nullable": true
           },
           "createdBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "createdAt": {
             "type": "string",
@@ -89759,8 +92402,7 @@
             "nullable": true
           },
           "lastModifiedBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "isDefault": {
             "type": "boolean"
@@ -90094,6 +92736,14 @@
             "nullable": true
           },
           "awsSecretAccessKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "roleArn": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalId": {
             "type": "string",
             "nullable": true
           },
@@ -90506,7 +93156,7 @@
             "nullable": true
           },
           "createdBy": {
-            "type": "string"
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "name": {
             "type": "string"
@@ -90561,6 +93211,18 @@
           "organizationName": {
             "type": "string",
             "nullable": true
+          }
+        }
+      },
+      "RotateTenantKeksCommand": {
+        "type": "object",
+        "properties": {
+          "batchSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "mode": {
+            "$ref": "#/components/schemas/KeyRotationMode"
           }
         }
       },
@@ -90704,6 +93366,9 @@
             "nullable": true
           }
         }
+      },
+      "ScanCertificateCredentialExpiryCommand": {
+        "type": "object"
       },
       "SecretListDto": {
         "type": "object",
@@ -91357,15 +94022,14 @@
             "$ref": "#/components/schemas/CloudType"
           },
           "createdBy": {
-            "type": "string"
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "lastModified": {
             "type": "string",
             "nullable": true
           },
           "lastModifiedBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "spotPrice": {
             "type": "number",
@@ -92730,15 +95394,14 @@
             "type": "string"
           },
           "createdBy": {
-            "type": "string"
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "lastModified": {
             "type": "string",
             "nullable": true
           },
           "lastModifiedBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "sshPublicKey": {
             "type": "string"
@@ -93432,11 +96095,53 @@
           }
         }
       },
+      "ToggleOverloadProtectionCommand": {
+        "type": "object",
+        "properties": {
+          "mode": {
+            "$ref": "#/components/schemas/OverloadProtectionMode"
+          }
+        }
+      },
       "TransferOwnershipCommand": {
         "type": "object",
         "properties": {
           "userId": {
             "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "TransitEncryptionStatusDto": {
+        "type": "object",
+        "properties": {
+          "transitEnabled": {
+            "type": "boolean"
+          },
+          "tenantSecretsEncryptedAtCallSites": {
+            "type": "boolean"
+          },
+          "wrappedDekRowCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "columns": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EncryptedColumnStatusDto"
+            },
+            "nullable": true
+          },
+          "partnerPoolDekAnomalies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PartnerPoolDekAnomalyDto"
+            },
+            "nullable": true
+          },
+          "lastTransitFailureUtc": {
+            "type": "string",
+            "format": "date-time",
             "nullable": true
           }
         }
@@ -94384,6 +97089,10 @@
             "type": "string",
             "format": "date-time",
             "nullable": true
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -94983,13 +97692,13 @@
             "type": "string"
           },
           "createdBy": {
-            "type": "string"
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "lastModified": {
             "type": "string"
           },
           "lastModifiedBy": {
-            "type": "string"
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "alertsCount": {
             "type": "integer",
@@ -95165,6 +97874,10 @@
             "type": "string",
             "nullable": true
           },
+          "tsigAlgorithm": {
+            "type": "string",
+            "nullable": true
+          },
           "nameServer": {
             "type": "string",
             "nullable": true
@@ -95203,6 +97916,49 @@
           },
           "caKey": {
             "type": "string",
+            "nullable": true
+          },
+          "authMethod": {
+            "type": "string",
+            "nullable": true
+          },
+          "authVariant": {
+            "type": "string",
+            "nullable": true
+          },
+          "awsRoleArn": {
+            "type": "string",
+            "nullable": true
+          },
+          "gcpServiceAccountEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "pdnsApiUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "pdnsApiKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "pdnsServerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "dnsCredentialId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "certificateCredentialId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "customCertificateAuthorityId": {
+            "type": "integer",
+            "format": "int32",
             "nullable": true
           }
         }
@@ -95567,7 +98323,7 @@
             }
           },
           "createdBy": {
-            "type": "string"
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "createdAt": {
             "type": "string"
@@ -95577,8 +98333,7 @@
             "nullable": true
           },
           "lastModifiedBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "isDefault": {
             "type": "boolean"
@@ -95908,16 +98663,14 @@
             }
           },
           "createdBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "lastModified": {
             "type": "string",
             "nullable": true
           },
           "lastModifiedBy": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/AuditUserDto"
           },
           "isDefault": {
             "type": "boolean"

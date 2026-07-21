@@ -35,6 +35,7 @@ type BoundFlavorsForProjectsListDto struct {
 	WindowsSpotPrice NullableString `json:"windowsSpotPrice"`
 	WindowsPrice NullableString `json:"windowsPrice"`
 	HasGpuSupport *bool `json:"hasGpuSupport,omitempty"`
+	GpuDetails *FlavorGpuDetailsDto `json:"gpuDetails,omitempty"`
 	CloudType CloudType `json:"cloudType"`
 	LocalDiskSize *int32 `json:"localDiskSize,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -429,6 +430,38 @@ func (o *BoundFlavorsForProjectsListDto) SetHasGpuSupport(v bool) {
 	o.HasGpuSupport = &v
 }
 
+// GetGpuDetails returns the GpuDetails field value if set, zero value otherwise.
+func (o *BoundFlavorsForProjectsListDto) GetGpuDetails() FlavorGpuDetailsDto {
+	if o == nil || IsNil(o.GpuDetails) {
+		var ret FlavorGpuDetailsDto
+		return ret
+	}
+	return *o.GpuDetails
+}
+
+// GetGpuDetailsOk returns a tuple with the GpuDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BoundFlavorsForProjectsListDto) GetGpuDetailsOk() (*FlavorGpuDetailsDto, bool) {
+	if o == nil || IsNil(o.GpuDetails) {
+		return nil, false
+	}
+	return o.GpuDetails, true
+}
+
+// HasGpuDetails returns a boolean if a field has been set.
+func (o *BoundFlavorsForProjectsListDto) HasGpuDetails() bool {
+	if o != nil && !IsNil(o.GpuDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetGpuDetails gets a reference to the given FlavorGpuDetailsDto and assigns it to the GpuDetails field.
+func (o *BoundFlavorsForProjectsListDto) SetGpuDetails(v FlavorGpuDetailsDto) {
+	o.GpuDetails = &v
+}
+
 // GetCloudType returns the CloudType field value
 func (o *BoundFlavorsForProjectsListDto) GetCloudType() CloudType {
 	if o == nil {
@@ -511,6 +544,9 @@ func (o BoundFlavorsForProjectsListDto) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.HasGpuSupport) {
 		toSerialize["hasGpuSupport"] = o.HasGpuSupport
 	}
+	if !IsNil(o.GpuDetails) {
+		toSerialize["gpuDetails"] = o.GpuDetails
+	}
 	toSerialize["cloudType"] = o.CloudType
 	if !IsNil(o.LocalDiskSize) {
 		toSerialize["localDiskSize"] = o.LocalDiskSize
@@ -585,6 +621,7 @@ func (o *BoundFlavorsForProjectsListDto) UnmarshalJSON(data []byte) (err error) 
 		delete(additionalProperties, "windowsSpotPrice")
 		delete(additionalProperties, "windowsPrice")
 		delete(additionalProperties, "hasGpuSupport")
+		delete(additionalProperties, "gpuDetails")
 		delete(additionalProperties, "cloudType")
 		delete(additionalProperties, "localDiskSize")
 		o.AdditionalProperties = additionalProperties

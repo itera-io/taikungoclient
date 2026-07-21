@@ -30,9 +30,9 @@ type StandaloneVmsListForDetailsDto struct {
 	VolumeType string `json:"volumeType"`
 	VolumeSize int64 `json:"volumeSize"`
 	CreatedAt string `json:"createdAt"`
-	CreatedBy string `json:"createdBy"`
+	CreatedBy AuditUserDto `json:"createdBy"`
 	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	LastModifiedBy AuditUserDto `json:"lastModifiedBy"`
 	SshPublicKey string `json:"sshPublicKey"`
 	CurrentFlavor string `json:"currentFlavor"`
 	TargetFlavor NullableString `json:"targetFlavor"`
@@ -58,7 +58,7 @@ type _StandaloneVmsListForDetailsDto StandaloneVmsListForDetailsDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStandaloneVmsListForDetailsDto(id int32, name string, imageName string, imageId string, status string, cloudInit NullableString, volumeType string, volumeSize int64, createdAt string, createdBy string, lastModified NullableString, lastModifiedBy NullableString, sshPublicKey string, currentFlavor string, targetFlavor NullableString, publicIpEnabled bool, publicIp NullableString, hypervisor NullableString, hypervisorId NullableString, ipAddress NullableString, spotPrice float64, spotInstance bool, availabilityZone NullableString, actionButtons StandaloneVisibilityDto, isWindows bool, disks []StandAloneVmDiskForDetailsDto, standAloneMetaDatas []StandAloneMetaDataDtoForVm, profile StandAloneProfileForDetailsDto) *StandaloneVmsListForDetailsDto {
+func NewStandaloneVmsListForDetailsDto(id int32, name string, imageName string, imageId string, status string, cloudInit NullableString, volumeType string, volumeSize int64, createdAt string, createdBy AuditUserDto, lastModified NullableString, lastModifiedBy AuditUserDto, sshPublicKey string, currentFlavor string, targetFlavor NullableString, publicIpEnabled bool, publicIp NullableString, hypervisor NullableString, hypervisorId NullableString, ipAddress NullableString, spotPrice float64, spotInstance bool, availabilityZone NullableString, actionButtons StandaloneVisibilityDto, isWindows bool, disks []StandAloneVmDiskForDetailsDto, standAloneMetaDatas []StandAloneMetaDataDtoForVm, profile StandAloneProfileForDetailsDto) *StandaloneVmsListForDetailsDto {
 	this := StandaloneVmsListForDetailsDto{}
 	this.Id = id
 	this.Name = name
@@ -318,9 +318,9 @@ func (o *StandaloneVmsListForDetailsDto) SetCreatedAt(v string) {
 }
 
 // GetCreatedBy returns the CreatedBy field value
-func (o *StandaloneVmsListForDetailsDto) GetCreatedBy() string {
+func (o *StandaloneVmsListForDetailsDto) GetCreatedBy() AuditUserDto {
 	if o == nil {
-		var ret string
+		var ret AuditUserDto
 		return ret
 	}
 
@@ -329,7 +329,7 @@ func (o *StandaloneVmsListForDetailsDto) GetCreatedBy() string {
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-func (o *StandaloneVmsListForDetailsDto) GetCreatedByOk() (*string, bool) {
+func (o *StandaloneVmsListForDetailsDto) GetCreatedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -337,7 +337,7 @@ func (o *StandaloneVmsListForDetailsDto) GetCreatedByOk() (*string, bool) {
 }
 
 // SetCreatedBy sets field value
-func (o *StandaloneVmsListForDetailsDto) SetCreatedBy(v string) {
+func (o *StandaloneVmsListForDetailsDto) SetCreatedBy(v AuditUserDto) {
 	o.CreatedBy = v
 }
 
@@ -368,29 +368,27 @@ func (o *StandaloneVmsListForDetailsDto) SetLastModified(v string) {
 }
 
 // GetLastModifiedBy returns the LastModifiedBy field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *StandaloneVmsListForDetailsDto) GetLastModifiedBy() string {
-	if o == nil || o.LastModifiedBy.Get() == nil {
-		var ret string
+func (o *StandaloneVmsListForDetailsDto) GetLastModifiedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
 		return ret
 	}
 
-	return *o.LastModifiedBy.Get()
+	return o.LastModifiedBy
 }
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StandaloneVmsListForDetailsDto) GetLastModifiedByOk() (*string, bool) {
+func (o *StandaloneVmsListForDetailsDto) GetLastModifiedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
+	return &o.LastModifiedBy, true
 }
 
 // SetLastModifiedBy sets field value
-func (o *StandaloneVmsListForDetailsDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy.Set(&v)
+func (o *StandaloneVmsListForDetailsDto) SetLastModifiedBy(v AuditUserDto) {
+	o.LastModifiedBy = v
 }
 
 // GetSshPublicKey returns the SshPublicKey field value
@@ -810,7 +808,7 @@ func (o StandaloneVmsListForDetailsDto) ToMap() (map[string]interface{}, error) 
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["createdBy"] = o.CreatedBy
 	toSerialize["lastModified"] = o.LastModified.Get()
-	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	toSerialize["lastModifiedBy"] = o.LastModifiedBy
 	toSerialize["sshPublicKey"] = o.SshPublicKey
 	toSerialize["currentFlavor"] = o.CurrentFlavor
 	toSerialize["targetFlavor"] = o.TargetFlavor.Get()

@@ -115,6 +115,8 @@ Class | Method | HTTP request | Description
 *AccountsAPI* | [**AccountsListAccounts**](docs/AccountsAPI.md#accountslistaccounts) | **Get** /api/v1/accounts | Retrieve accounts list
 *AccountsAPI* | [**AccountsTransferOwnership**](docs/AccountsAPI.md#accountstransferownership) | **Post** /api/v1/accounts/transfer-ownership | Transfer ownership
 *AccountsAPI* | [**AccountsUpdate**](docs/AccountsAPI.md#accountsupdate) | **Post** /api/v1/accounts/update | Update account
+*AdminAPI* | [**UsersOverloadProtectionStatus**](docs/AdminAPI.md#usersoverloadprotectionstatus) | **Get** /api/v1/users/overload-protection | Get overload protection status
+*AdminAPI* | [**UsersToggleOverloadProtection**](docs/AdminAPI.md#userstoggleoverloadprotection) | **Post** /api/v1/users/toggleoverloadprotection | Set overload protection mode
 *AiCredentialsAPI* | [**AiCredentialCreate**](docs/AiCredentialsAPI.md#aicredentialcreate) | **Post** /api/v1/ai-credential/create | Create ai credential
 *AiCredentialsAPI* | [**AiCredentialDelete**](docs/AiCredentialsAPI.md#aicredentialdelete) | **Delete** /api/v1/ai-credential/{id} | Remove ai credential
 *AiCredentialsAPI* | [**AiCredentialDropdown**](docs/AiCredentialsAPI.md#aicredentialdropdown) | **Get** /api/v1/ai-credential | Retrieve all AI credentials for organization
@@ -215,6 +217,14 @@ Class | Method | HTTP request | Description
 *CatalogAppAPI* | [**CatalogAppList**](docs/CatalogAppAPI.md#catalogapplist) | **Get** /api/v1/catalog-app/list | Catalog App list
 *CatalogAppAPI* | [**CatalogAppLockManager**](docs/CatalogAppAPI.md#catalogapplockmanager) | **Post** /api/v1/catalog-app/lockmanager | Lock catalog app
 *CatalogAppAPI* | [**CatalogAppParamDetails**](docs/CatalogAppAPI.md#catalogappparamdetails) | **Get** /api/v1/catalog-app/params/{catalogAppId} | Catalog App param details
+*CertificateCredentialsAPI* | [**CertificateCredentialsCreate**](docs/CertificateCredentialsAPI.md#certificatecredentialscreate) | **Post** /api/v1/certificate-credentials | Add certificate credential
+*CertificateCredentialsAPI* | [**CertificateCredentialsDelete**](docs/CertificateCredentialsAPI.md#certificatecredentialsdelete) | **Delete** /api/v1/certificate-credentials/{id} | Delete certificate credential
+*CertificateCredentialsAPI* | [**CertificateCredentialsDropdown**](docs/CertificateCredentialsAPI.md#certificatecredentialsdropdown) | **Get** /api/v1/certificate-credentials | Retrieve custom CAs for organization dropdown
+*CertificateCredentialsAPI* | [**CertificateCredentialsList**](docs/CertificateCredentialsAPI.md#certificatecredentialslist) | **Get** /api/v1/certificate-credentials/list | Retrieve all custom certificate authorities
+*CertificateCredentialsAPI* | [**CertificateCredentialsLockManagement**](docs/CertificateCredentialsAPI.md#certificatecredentialslockmanagement) | **Post** /api/v1/certificate-credentials/lockmanager | Lock/unlock certificate credential
+*CertificateCredentialsAPI* | [**CertificateCredentialsMakeDefault**](docs/CertificateCredentialsAPI.md#certificatecredentialsmakedefault) | **Post** /api/v1/certificate-credentials/makedefault | Make default certificate credential
+*CertificateCredentialsAPI* | [**CertificateCredentialsUpdate**](docs/CertificateCredentialsAPI.md#certificatecredentialsupdate) | **Put** /api/v1/certificate-credentials | Update custom CA name/description
+*CertificateCredentialsAPI* | [**CertificateCredentialsValidate**](docs/CertificateCredentialsAPI.md#certificatecredentialsvalidate) | **Post** /api/v1/certificate-credentials/validate | Validate custom CA cert/key pair (PEM x509, key match, CA:TRUE, not expired)
 *CheckerAPI* | [**CheckerArtifact**](docs/CheckerAPI.md#checkerartifact) | **Post** /api/v1/checker/artifact | Check artifact url
 *CheckerAPI* | [**CheckerAws**](docs/CheckerAPI.md#checkeraws) | **Post** /api/v1/checker/aws | Check aws credential
 *CheckerAPI* | [**CheckerAzure**](docs/CheckerAPI.md#checkerazure) | **Post** /api/v1/checker/azure | Check azure credentials
@@ -258,6 +268,7 @@ Class | Method | HTTP request | Description
 *CronJobServiceAPI* | [**CronjobAutoUpgradeProjects**](docs/CronJobServiceAPI.md#cronjobautoupgradeprojects) | **Post** /api/v1/cronjob/auto-upgrade-projects | Upgrade projects that auto-upgrade option enabled
 *CronJobServiceAPI* | [**CronjobBlockOrganization**](docs/CronJobServiceAPI.md#cronjobblockorganization) | **Post** /api/v1/cronjob/block-organization | Block organization
 *CronJobServiceAPI* | [**CronjobCancelExpiredSubscriptions**](docs/CronJobServiceAPI.md#cronjobcancelexpiredsubscriptions) | **Post** /api/v1/cronjob/cancel-expired-subscriptions | Cancel expired subscriptions
+*CronJobServiceAPI* | [**CronjobCcfCryptoStatus**](docs/CronJobServiceAPI.md#cronjobccfcryptostatus) | **Get** /api/v1/cronjob/ccf-crypto/status | Rollback-safety survey: per-column $enc:v1: row counts and last Transit failure timestamp
 *CronJobServiceAPI* | [**CronjobCreateKeyPool**](docs/CronJobServiceAPI.md#cronjobcreatekeypool) | **Post** /api/v1/cronjob/create-key-pool | Create key pool
 *CronJobServiceAPI* | [**CronjobDeleteExpiredAlerts**](docs/CronJobServiceAPI.md#cronjobdeleteexpiredalerts) | **Post** /api/v1/cronjob/alerts | Delete expired alerts
 *CronJobServiceAPI* | [**CronjobDeleteExpiredHistoryLogs**](docs/CronJobServiceAPI.md#cronjobdeleteexpiredhistorylogs) | **Post** /api/v1/cronjob/history-logs | Delete expired history logs
@@ -274,7 +285,10 @@ Class | Method | HTTP request | Description
 *CronJobServiceAPI* | [**CronjobFetchK8sAlertData**](docs/CronJobServiceAPI.md#cronjobfetchk8salertdata) | **Post** /api/v1/cronjob/fetch-k8s-alert-data | Fetch k8s alert data
 *CronJobServiceAPI* | [**CronjobFetchK8sOverviewData**](docs/CronJobServiceAPI.md#cronjobfetchk8soverviewdata) | **Post** /api/v1/cronjob/fetch-k8s-overview-data | Fetch k8s overview data
 *CronJobServiceAPI* | [**CronjobPurgeExpiredProjects**](docs/CronJobServiceAPI.md#cronjobpurgeexpiredprojects) | **Post** /api/v1/cronjob/purge-expired-projects | Purge expired projects
+*CronJobServiceAPI* | [**CronjobReconcilePartnerScopes**](docs/CronJobServiceAPI.md#cronjobreconcilepartnerscopes) | **Post** /api/v1/cronjob/reconcile-partner-scopes | Reconcile CCF partner scope holders (moves DEK rows off soft-deleted partner scope holders)
 *CronJobServiceAPI* | [**CronjobRemindUsersByAlertingProfile**](docs/CronJobServiceAPI.md#cronjobremindusersbyalertingprofile) | **Post** /api/v1/cronjob/remind-users-by-alerting-profile | Remind users by alerting profile
+*CronJobServiceAPI* | [**CronjobRotateTenantKeks**](docs/CronJobServiceAPI.md#cronjobrotatetenantkeks) | **Post** /api/v1/cronjob/rotate-tenant-keks | Rotate tenant KEKs via Transit rewrap
+*CronJobServiceAPI* | [**CronjobScanCertificateCredentialExpiry**](docs/CronJobServiceAPI.md#cronjobscancertificatecredentialexpiry) | **Post** /api/v1/cronjob/scan-certificate-credential-expiry | Scan certificate credentials approaching or past expiry and emit alert logs
 *CronJobServiceAPI* | [**CronjobSyncBackupCredentials**](docs/CronJobServiceAPI.md#cronjobsyncbackupcredentials) | **Post** /api/v1/cronjob/sync-backup-credentials | Sync backup credentials
 *CronJobServiceAPI* | [**CronjobSyncDnsCertConfigs**](docs/CronJobServiceAPI.md#cronjobsyncdnscertconfigs) | **Post** /api/v1/cronjob/sync-dns-cert-configs | Sync DNS/Cert configs (drift cron — re-fires kubevap addons pipeline when Applied &lt; Desired)
 *CronJobServiceAPI* | [**CronjobSyncOpaProfiles**](docs/CronJobServiceAPI.md#cronjobsyncopaprofiles) | **Post** /api/v1/cronjob/sync-opa-profiles | Sync opa profiles
@@ -302,10 +316,16 @@ Class | Method | HTTP request | Description
 *DNSCredentialsAPI* | [**DnscredentialsMakeDefault**](docs/DNSCredentialsAPI.md#dnscredentialsmakedefault) | **Post** /api/v1/dnscredentials/makedefault | Make default DNS credential
 *DNSCredentialsAPI* | [**DnscredentialsUpdate**](docs/DNSCredentialsAPI.md#dnscredentialsupdate) | **Put** /api/v1/dnscredentials | Update DNS credential
 *DNSCredentialsAPI* | [**DnscredentialsValidate**](docs/DNSCredentialsAPI.md#dnscredentialsvalidate) | **Post** /api/v1/dnscredentials/validate | Validate DNS provider credentials
+*DnsCertAPI* | [**DnsCertCertManagerDisable**](docs/DnsCertAPI.md#dnscertcertmanagerdisable) | **Post** /api/v1/dns-cert/cert-manager/disable | Disable cert-manager for a project
+*DnsCertAPI* | [**DnsCertCertManagerEnable**](docs/DnsCertAPI.md#dnscertcertmanagerenable) | **Post** /api/v1/dns-cert/cert-manager/enable | Enable cert-manager for a project
 *DnsCertAPI* | [**DnsCertDisable**](docs/DnsCertAPI.md#dnscertdisable) | **Post** /api/v1/dns-cert/disable | Disable DNS/Cert automation
 *DnsCertAPI* | [**DnsCertEnable**](docs/DnsCertAPI.md#dnscertenable) | **Post** /api/v1/dns-cert/enable | Enable DNS/Cert automation
+*DnsCertAPI* | [**DnsCertExternalDnsDisable**](docs/DnsCertAPI.md#dnscertexternaldnsdisable) | **Post** /api/v1/dns-cert/external-dns/disable | Disable external-dns for a project
+*DnsCertAPI* | [**DnsCertExternalDnsEnable**](docs/DnsCertAPI.md#dnscertexternaldnsenable) | **Post** /api/v1/dns-cert/external-dns/enable | Enable external-dns for a project
 *DnsCertAPI* | [**DnsCertStatus**](docs/DnsCertAPI.md#dnscertstatus) | **Get** /api/v1/dns-cert/{projectId} | Get DNS/Cert status for project
 *DnsCertAPI* | [**DnsCertSync**](docs/DnsCertAPI.md#dnscertsync) | **Post** /api/v1/dns-cert/sync | Sync DNS/Cert to cluster
+*DnsCertAPI* | [**DnsCertTrustManagerDisable**](docs/DnsCertAPI.md#dnscerttrustmanagerdisable) | **Post** /api/v1/dns-cert/trust-manager/disable | Disable trust-manager for a project
+*DnsCertAPI* | [**DnsCertTrustManagerEnable**](docs/DnsCertAPI.md#dnscerttrustmanagerenable) | **Post** /api/v1/dns-cert/trust-manager/enable | Enable trust-manager for a project
 *DnsCertAPI* | [**DnsCertValidate**](docs/DnsCertAPI.md#dnscertvalidate) | **Post** /api/v1/dns-cert/validate | Validate DNS provider credentials
 *DnsServersAPI* | [**DnsserversCreate**](docs/DnsServersAPI.md#dnsserverscreate) | **Post** /api/v1/dnsservers/create | Create dns servers for access profile
 *DnsServersAPI* | [**DnsserversDelete**](docs/DnsServersAPI.md#dnsserversdelete) | **Delete** /api/v1/dnsservers/{id} | Delete DNS server
@@ -329,6 +349,8 @@ Class | Method | HTTP request | Description
 *FlavorsAPI* | [**FlavorsUnbindFromProject**](docs/FlavorsAPI.md#flavorsunbindfromproject) | **Post** /api/v1/flavors/unbind | Unbind flavors from project
 *FlavorsAPI* | [**FlavorsVsphereFlavors**](docs/FlavorsAPI.md#flavorsvsphereflavors) | **Get** /api/v1/flavors/vsphere/{cloudId} | Retrieve vsphere flavors
 *FlavorsAPI* | [**FlavorsZadaraInstanceTypes**](docs/FlavorsAPI.md#flavorszadarainstancetypes) | **Get** /api/v1/flavors/zadara/{cloudId} | Retrieve zadara instance types
+*GatewayAPIAPI* | [**GatewayApiDisable**](docs/GatewayAPIAPI.md#gatewayapidisable) | **Post** /api/v1/gateway-api/disable | Disable Gateway API modern CRD bundle
+*GatewayAPIAPI* | [**GatewayApiEnable**](docs/GatewayAPIAPI.md#gatewayapienable) | **Post** /api/v1/gateway-api/enable | Enable Gateway API modern CRD bundle
 *GenericKubernetesCloudCredentialAPI* | [**GenericKubernetesList**](docs/GenericKubernetesCloudCredentialAPI.md#generickuberneteslist) | **Get** /api/v1/generic-kubernetes/list | Retrieve list of generic kubernetes cloud credentials
 *GenericKubernetesCloudCredentialAPI* | [**GenericKubernetesUpdate**](docs/GenericKubernetesCloudCredentialAPI.md#generickubernetesupdate) | **Put** /api/v1/generic-kubernetes/update | Update Generic kubernetes credentials
 *GlobalConfigurationAPI* | [**GlobalConfigurationsCreateAiBackend**](docs/GlobalConfigurationAPI.md#globalconfigurationscreateaibackend) | **Post** /api/v1/global-configurations/ai-backend/create | Create AI backend
@@ -858,6 +880,7 @@ Class | Method | HTTP request | Description
  - [ArtifactUrlCheckerCommand](docs/ArtifactUrlCheckerCommand.md)
  - [AttachDetachAlertingProfileCommand](docs/AttachDetachAlertingProfileCommand.md)
  - [AttachDetachDnsCredentialCommand](docs/AttachDetachDnsCredentialCommand.md)
+ - [AuditUserDto](docs/AuditUserDto.md)
  - [AutoSyncManagementCommand](docs/AutoSyncManagementCommand.md)
  - [AvailablePackageDetailsDto](docs/AvailablePackageDetailsDto.md)
  - [AvailablePackagesDto](docs/AvailablePackagesDto.md)
@@ -945,6 +968,15 @@ Class | Method | HTTP request | Description
  - [CatalogLockManagementCommand](docs/CatalogLockManagementCommand.md)
  - [CatalogMakeDefaultCommand](docs/CatalogMakeDefaultCommand.md)
  - [CatalogsForProjectDto](docs/CatalogsForProjectDto.md)
+ - [CertificateCredentialCreateCommand](docs/CertificateCredentialCreateCommand.md)
+ - [CertificateCredentialDropdownDto](docs/CertificateCredentialDropdownDto.md)
+ - [CertificateCredentialKind](docs/CertificateCredentialKind.md)
+ - [CertificateCredentialListDto](docs/CertificateCredentialListDto.md)
+ - [CertificateCredentialListResponse](docs/CertificateCredentialListResponse.md)
+ - [CertificateCredentialLockCommand](docs/CertificateCredentialLockCommand.md)
+ - [CertificateCredentialMakeDefaultCommand](docs/CertificateCredentialMakeDefaultCommand.md)
+ - [CertificateCredentialUpdateCommand](docs/CertificateCredentialUpdateCommand.md)
+ - [CertificateCredentialValidateCommand](docs/CertificateCredentialValidateCommand.md)
  - [ChangeCardCommand](docs/ChangeCardCommand.md)
  - [ChangePasswordCommand](docs/ChangePasswordCommand.md)
  - [ChatCompletionsCommand](docs/ChatCompletionsCommand.md)
@@ -1116,7 +1148,11 @@ Class | Method | HTTP request | Description
  - [DescribeKubernetesResourceCommand](docs/DescribeKubernetesResourceCommand.md)
  - [Diff](docs/Diff.md)
  - [DisableAutoscalingCommand](docs/DisableAutoscalingCommand.md)
+ - [DisableCertManagerCommand](docs/DisableCertManagerCommand.md)
  - [DisableDnsCertCommand](docs/DisableDnsCertCommand.md)
+ - [DisableExternalDnsCommand](docs/DisableExternalDnsCommand.md)
+ - [DisableGatewayApiModernCommand](docs/DisableGatewayApiModernCommand.md)
+ - [DisableTrustManagerCommand](docs/DisableTrustManagerCommand.md)
  - [DisableTwoFaManagementCommand](docs/DisableTwoFaManagementCommand.md)
  - [DisableTwoFactorAuthCommand](docs/DisableTwoFactorAuthCommand.md)
  - [DisableUserCommand](docs/DisableUserCommand.md)
@@ -1174,7 +1210,12 @@ Class | Method | HTTP request | Description
  - [EfsFileSystemDto](docs/EfsFileSystemDto.md)
  - [EmailMode](docs/EmailMode.md)
  - [EnableAutoscalingCommand](docs/EnableAutoscalingCommand.md)
+ - [EnableCertManagerCommand](docs/EnableCertManagerCommand.md)
  - [EnableDnsCertCommand](docs/EnableDnsCertCommand.md)
+ - [EnableExternalDnsCommand](docs/EnableExternalDnsCommand.md)
+ - [EnableGatewayApiModernCommand](docs/EnableGatewayApiModernCommand.md)
+ - [EnableTrustManagerCommand](docs/EnableTrustManagerCommand.md)
+ - [EncryptedColumnStatusDto](docs/EncryptedColumnStatusDto.md)
  - [EnsureCodesDownloadedCommand](docs/EnsureCodesDownloadedCommand.md)
  - [EnumList](docs/EnumList.md)
  - [EphemeralStorageLimitsDto](docs/EphemeralStorageLimitsDto.md)
@@ -1288,6 +1329,7 @@ Class | Method | HTTP request | Description
  - [IpMode](docs/IpMode.md)
  - [JobsSearchCommand](docs/JobsSearchCommand.md)
  - [JobsSearchList](docs/JobsSearchList.md)
+ - [KeyRotationMode](docs/KeyRotationMode.md)
  - [KubeConfigForUserDto](docs/KubeConfigForUserDto.md)
  - [KubeConfigForUserList](docs/KubeConfigForUserList.md)
  - [KubeConfigInteractiveShellCommand](docs/KubeConfigInteractiveShellCommand.md)
@@ -1411,8 +1453,11 @@ Class | Method | HTTP request | Description
  - [OrganizationsSearchResponseData](docs/OrganizationsSearchResponseData.md)
  - [OrganizationsWithGroupInfoResultDto](docs/OrganizationsWithGroupInfoResultDto.md)
  - [OrganizationsWithGroupInfoResultDtoCursorPaginatedResponse](docs/OrganizationsWithGroupInfoResultDtoCursorPaginatedResponse.md)
+ - [OverloadProtectionMode](docs/OverloadProtectionMode.md)
  - [PackageAutocompleteDto](docs/PackageAutocompleteDto.md)
  - [ParameterType](docs/ParameterType.md)
+ - [PartnerPoolDekAnomalyDto](docs/PartnerPoolDekAnomalyDto.md)
+ - [PartnerScopeReconcileResult](docs/PartnerScopeReconcileResult.md)
  - [PatchKubernetesResourceCommand](docs/PatchKubernetesResourceCommand.md)
  - [PayInvoiceCommand](docs/PayInvoiceCommand.md)
  - [PdbSearchCommand](docs/PdbSearchCommand.md)
@@ -1528,6 +1573,7 @@ Class | Method | HTTP request | Description
  - [RobotUsersList](docs/RobotUsersList.md)
  - [RobotUsersListDto](docs/RobotUsersListDto.md)
  - [RoleClaim](docs/RoleClaim.md)
+ - [RotateTenantKeksCommand](docs/RotateTenantKeksCommand.md)
  - [Rule](docs/Rule.md)
  - [RuleCreateCommand](docs/RuleCreateCommand.md)
  - [RuleForUpdateDto](docs/RuleForUpdateDto.md)
@@ -1625,7 +1671,9 @@ Class | Method | HTTP request | Description
  - [ToggleExecutorCommand](docs/ToggleExecutorCommand.md)
  - [ToggleMaintenanceModeCommand](docs/ToggleMaintenanceModeCommand.md)
  - [ToggleNotificationModeCommand](docs/ToggleNotificationModeCommand.md)
+ - [ToggleOverloadProtectionCommand](docs/ToggleOverloadProtectionCommand.md)
  - [TransferOwnershipCommand](docs/TransferOwnershipCommand.md)
+ - [TransitEncryptionStatusDto](docs/TransitEncryptionStatusDto.md)
  - [TrustedRegisteredCreateDto](docs/TrustedRegisteredCreateDto.md)
  - [TrustedRegistriesListDto](docs/TrustedRegistriesListDto.md)
  - [TrustedRegistryEditDto](docs/TrustedRegistryEditDto.md)

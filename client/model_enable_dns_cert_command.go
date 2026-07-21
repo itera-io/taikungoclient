@@ -26,6 +26,7 @@ type EnableDnsCertCommand struct {
 	AcmeEmail NullableString `json:"acmeEmail,omitempty"`
 	Domain NullableString `json:"domain,omitempty"`
 	CustomCertificateAuthorityId NullableInt32 `json:"customCertificateAuthorityId,omitempty"`
+	CertificateCredentialId NullableInt32 `json:"certificateCredentialId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -290,6 +291,48 @@ func (o *EnableDnsCertCommand) UnsetCustomCertificateAuthorityId() {
 	o.CustomCertificateAuthorityId.Unset()
 }
 
+// GetCertificateCredentialId returns the CertificateCredentialId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *EnableDnsCertCommand) GetCertificateCredentialId() int32 {
+	if o == nil || IsNil(o.CertificateCredentialId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.CertificateCredentialId.Get()
+}
+
+// GetCertificateCredentialIdOk returns a tuple with the CertificateCredentialId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EnableDnsCertCommand) GetCertificateCredentialIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CertificateCredentialId.Get(), o.CertificateCredentialId.IsSet()
+}
+
+// HasCertificateCredentialId returns a boolean if a field has been set.
+func (o *EnableDnsCertCommand) HasCertificateCredentialId() bool {
+	if o != nil && o.CertificateCredentialId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateCredentialId gets a reference to the given NullableInt32 and assigns it to the CertificateCredentialId field.
+func (o *EnableDnsCertCommand) SetCertificateCredentialId(v int32) {
+	o.CertificateCredentialId.Set(&v)
+}
+// SetCertificateCredentialIdNil sets the value for CertificateCredentialId to be an explicit nil
+func (o *EnableDnsCertCommand) SetCertificateCredentialIdNil() {
+	o.CertificateCredentialId.Set(nil)
+}
+
+// UnsetCertificateCredentialId ensures that no value is present for CertificateCredentialId, not even an explicit nil
+func (o *EnableDnsCertCommand) UnsetCertificateCredentialId() {
+	o.CertificateCredentialId.Unset()
+}
+
 func (o EnableDnsCertCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -317,6 +360,9 @@ func (o EnableDnsCertCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.CustomCertificateAuthorityId.IsSet() {
 		toSerialize["customCertificateAuthorityId"] = o.CustomCertificateAuthorityId.Get()
+	}
+	if o.CertificateCredentialId.IsSet() {
+		toSerialize["certificateCredentialId"] = o.CertificateCredentialId.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -346,6 +392,7 @@ func (o *EnableDnsCertCommand) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "acmeEmail")
 		delete(additionalProperties, "domain")
 		delete(additionalProperties, "customCertificateAuthorityId")
+		delete(additionalProperties, "certificateCredentialId")
 		o.AdditionalProperties = additionalProperties
 	}
 

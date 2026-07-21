@@ -25,6 +25,7 @@ type GcpFilestoreDto struct {
 	Tier NullableString `json:"tier,omitempty"`
 	FileShareName NullableString `json:"fileShareName,omitempty"`
 	Network NullableString `json:"network,omitempty"`
+	IpAddress NullableString `json:"ipAddress,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -257,6 +258,48 @@ func (o *GcpFilestoreDto) UnsetNetwork() {
 	o.Network.Unset()
 }
 
+// GetIpAddress returns the IpAddress field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GcpFilestoreDto) GetIpAddress() string {
+	if o == nil || IsNil(o.IpAddress.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.IpAddress.Get()
+}
+
+// GetIpAddressOk returns a tuple with the IpAddress field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GcpFilestoreDto) GetIpAddressOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IpAddress.Get(), o.IpAddress.IsSet()
+}
+
+// HasIpAddress returns a boolean if a field has been set.
+func (o *GcpFilestoreDto) HasIpAddress() bool {
+	if o != nil && o.IpAddress.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIpAddress gets a reference to the given NullableString and assigns it to the IpAddress field.
+func (o *GcpFilestoreDto) SetIpAddress(v string) {
+	o.IpAddress.Set(&v)
+}
+// SetIpAddressNil sets the value for IpAddress to be an explicit nil
+func (o *GcpFilestoreDto) SetIpAddressNil() {
+	o.IpAddress.Set(nil)
+}
+
+// UnsetIpAddress ensures that no value is present for IpAddress, not even an explicit nil
+func (o *GcpFilestoreDto) UnsetIpAddress() {
+	o.IpAddress.Unset()
+}
+
 func (o GcpFilestoreDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -281,6 +324,9 @@ func (o GcpFilestoreDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Network.IsSet() {
 		toSerialize["network"] = o.Network.Get()
+	}
+	if o.IpAddress.IsSet() {
+		toSerialize["ipAddress"] = o.IpAddress.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -309,6 +355,7 @@ func (o *GcpFilestoreDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "tier")
 		delete(additionalProperties, "fileShareName")
 		delete(additionalProperties, "network")
+		delete(additionalProperties, "ipAddress")
 		o.AdditionalProperties = additionalProperties
 	}
 

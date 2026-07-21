@@ -26,10 +26,10 @@ type VsphereListDto struct {
 	IsLocked bool `json:"isLocked"`
 	Name string `json:"name"`
 	Projects []CommonDropdownDto `json:"projects"`
-	CreatedBy string `json:"createdBy"`
+	CreatedBy AuditUserDto `json:"createdBy"`
 	CreatedAt string `json:"createdAt"`
 	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	LastModifiedBy AuditUserDto `json:"lastModifiedBy"`
 	IsDefault bool `json:"isDefault"`
 	DrsEnabled bool `json:"drsEnabled"`
 	ResourcePool string `json:"resourcePool"`
@@ -54,7 +54,7 @@ type _VsphereListDto VsphereListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVsphereListDto(id int32, projectCount int32, isLocked bool, name string, projects []CommonDropdownDto, createdBy string, createdAt string, lastModified NullableString, lastModifiedBy NullableString, isDefault bool, drsEnabled bool, resourcePool string, organizationId int32, organizationName string, continentName NullableString, hypervisors []CommonStringBasedDropdownDto, username string, url string, datacenterId string, datacenterName string, datastore string, vmTemplateName string, vsphereNetworks []VsphereNetworkListDto, skipTlsFlag bool) *VsphereListDto {
+func NewVsphereListDto(id int32, projectCount int32, isLocked bool, name string, projects []CommonDropdownDto, createdBy AuditUserDto, createdAt string, lastModified NullableString, lastModifiedBy AuditUserDto, isDefault bool, drsEnabled bool, resourcePool string, organizationId int32, organizationName string, continentName NullableString, hypervisors []CommonStringBasedDropdownDto, username string, url string, datacenterId string, datacenterName string, datastore string, vmTemplateName string, vsphereNetworks []VsphereNetworkListDto, skipTlsFlag bool) *VsphereListDto {
 	this := VsphereListDto{}
 	this.Id = id
 	this.ProjectCount = projectCount
@@ -212,9 +212,9 @@ func (o *VsphereListDto) SetProjects(v []CommonDropdownDto) {
 }
 
 // GetCreatedBy returns the CreatedBy field value
-func (o *VsphereListDto) GetCreatedBy() string {
+func (o *VsphereListDto) GetCreatedBy() AuditUserDto {
 	if o == nil {
-		var ret string
+		var ret AuditUserDto
 		return ret
 	}
 
@@ -223,7 +223,7 @@ func (o *VsphereListDto) GetCreatedBy() string {
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-func (o *VsphereListDto) GetCreatedByOk() (*string, bool) {
+func (o *VsphereListDto) GetCreatedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -231,7 +231,7 @@ func (o *VsphereListDto) GetCreatedByOk() (*string, bool) {
 }
 
 // SetCreatedBy sets field value
-func (o *VsphereListDto) SetCreatedBy(v string) {
+func (o *VsphereListDto) SetCreatedBy(v AuditUserDto) {
 	o.CreatedBy = v
 }
 
@@ -286,29 +286,27 @@ func (o *VsphereListDto) SetLastModified(v string) {
 }
 
 // GetLastModifiedBy returns the LastModifiedBy field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *VsphereListDto) GetLastModifiedBy() string {
-	if o == nil || o.LastModifiedBy.Get() == nil {
-		var ret string
+func (o *VsphereListDto) GetLastModifiedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
 		return ret
 	}
 
-	return *o.LastModifiedBy.Get()
+	return o.LastModifiedBy
 }
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VsphereListDto) GetLastModifiedByOk() (*string, bool) {
+func (o *VsphereListDto) GetLastModifiedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
+	return &o.LastModifiedBy, true
 }
 
 // SetLastModifiedBy sets field value
-func (o *VsphereListDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy.Set(&v)
+func (o *VsphereListDto) SetLastModifiedBy(v AuditUserDto) {
+	o.LastModifiedBy = v
 }
 
 // GetIsDefault returns the IsDefault field value
@@ -691,7 +689,7 @@ func (o VsphereListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["createdBy"] = o.CreatedBy
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["lastModified"] = o.LastModified.Get()
-	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	toSerialize["lastModifiedBy"] = o.LastModifiedBy
 	toSerialize["isDefault"] = o.IsDefault
 	toSerialize["drsEnabled"] = o.DrsEnabled
 	toSerialize["resourcePool"] = o.ResourcePool

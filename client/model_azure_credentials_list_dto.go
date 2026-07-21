@@ -30,10 +30,10 @@ type AzureCredentialsListDto struct {
 	AvailabilityZones []string `json:"availabilityZones"`
 	AvailabilityZonesCount int32 `json:"availabilityZonesCount"`
 	Projects []CommonDropdownDto `json:"projects"`
-	CreatedBy NullableString `json:"createdBy"`
+	CreatedBy AuditUserDto `json:"createdBy"`
 	CreatedAt NullableString `json:"createdAt"`
 	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	LastModifiedBy AuditUserDto `json:"lastModifiedBy"`
 	IsDefault bool `json:"isDefault"`
 	OrganizationId int32 `json:"organizationId"`
 	OrganizationName string `json:"organizationName"`
@@ -44,6 +44,7 @@ type AzureCredentialsListDto struct {
 	SharedFileSystemEnabled bool `json:"sharedFileSystemEnabled"`
 	ImportedFileShareId NullableString `json:"importedFileShareId"`
 	ImportedFileShareName NullableString `json:"importedFileShareName"`
+	ImportedFileShareResourceGroupName NullableString `json:"importedFileShareResourceGroupName"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -53,7 +54,7 @@ type _AzureCredentialsListDto AzureCredentialsListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAzureCredentialsListDto(id int32, projectCount int32, isLocked bool, name string, tenantId string, location string, availabilityZones []string, availabilityZonesCount int32, projects []CommonDropdownDto, createdBy NullableString, createdAt NullableString, lastModified NullableString, lastModifiedBy NullableString, isDefault bool, organizationId int32, organizationName string, continentName NullableString, vnetDeploymentMode string, existingVirtualNetworkResourceGroupName NullableString, existingVirtualNetworkName NullableString, sharedFileSystemEnabled bool, importedFileShareId NullableString, importedFileShareName NullableString) *AzureCredentialsListDto {
+func NewAzureCredentialsListDto(id int32, projectCount int32, isLocked bool, name string, tenantId string, location string, availabilityZones []string, availabilityZonesCount int32, projects []CommonDropdownDto, createdBy AuditUserDto, createdAt NullableString, lastModified NullableString, lastModifiedBy AuditUserDto, isDefault bool, organizationId int32, organizationName string, continentName NullableString, vnetDeploymentMode string, existingVirtualNetworkResourceGroupName NullableString, existingVirtualNetworkName NullableString, sharedFileSystemEnabled bool, importedFileShareId NullableString, importedFileShareName NullableString, importedFileShareResourceGroupName NullableString) *AzureCredentialsListDto {
 	this := AzureCredentialsListDto{}
 	this.Id = id
 	this.ProjectCount = projectCount
@@ -78,6 +79,7 @@ func NewAzureCredentialsListDto(id int32, projectCount int32, isLocked bool, nam
 	this.SharedFileSystemEnabled = sharedFileSystemEnabled
 	this.ImportedFileShareId = importedFileShareId
 	this.ImportedFileShareName = importedFileShareName
+	this.ImportedFileShareResourceGroupName = importedFileShareResourceGroupName
 	return &this
 }
 
@@ -306,29 +308,27 @@ func (o *AzureCredentialsListDto) SetProjects(v []CommonDropdownDto) {
 }
 
 // GetCreatedBy returns the CreatedBy field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *AzureCredentialsListDto) GetCreatedBy() string {
-	if o == nil || o.CreatedBy.Get() == nil {
-		var ret string
+func (o *AzureCredentialsListDto) GetCreatedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
 		return ret
 	}
 
-	return *o.CreatedBy.Get()
+	return o.CreatedBy
 }
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AzureCredentialsListDto) GetCreatedByOk() (*string, bool) {
+func (o *AzureCredentialsListDto) GetCreatedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
+	return &o.CreatedBy, true
 }
 
 // SetCreatedBy sets field value
-func (o *AzureCredentialsListDto) SetCreatedBy(v string) {
-	o.CreatedBy.Set(&v)
+func (o *AzureCredentialsListDto) SetCreatedBy(v AuditUserDto) {
+	o.CreatedBy = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -384,29 +384,27 @@ func (o *AzureCredentialsListDto) SetLastModified(v string) {
 }
 
 // GetLastModifiedBy returns the LastModifiedBy field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *AzureCredentialsListDto) GetLastModifiedBy() string {
-	if o == nil || o.LastModifiedBy.Get() == nil {
-		var ret string
+func (o *AzureCredentialsListDto) GetLastModifiedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
 		return ret
 	}
 
-	return *o.LastModifiedBy.Get()
+	return o.LastModifiedBy
 }
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AzureCredentialsListDto) GetLastModifiedByOk() (*string, bool) {
+func (o *AzureCredentialsListDto) GetLastModifiedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
+	return &o.LastModifiedBy, true
 }
 
 // SetLastModifiedBy sets field value
-func (o *AzureCredentialsListDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy.Set(&v)
+func (o *AzureCredentialsListDto) SetLastModifiedBy(v AuditUserDto) {
+	o.LastModifiedBy = v
 }
 
 // GetIsDefault returns the IsDefault field value
@@ -659,6 +657,32 @@ func (o *AzureCredentialsListDto) SetImportedFileShareName(v string) {
 	o.ImportedFileShareName.Set(&v)
 }
 
+// GetImportedFileShareResourceGroupName returns the ImportedFileShareResourceGroupName field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *AzureCredentialsListDto) GetImportedFileShareResourceGroupName() string {
+	if o == nil || o.ImportedFileShareResourceGroupName.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.ImportedFileShareResourceGroupName.Get()
+}
+
+// GetImportedFileShareResourceGroupNameOk returns a tuple with the ImportedFileShareResourceGroupName field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AzureCredentialsListDto) GetImportedFileShareResourceGroupNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ImportedFileShareResourceGroupName.Get(), o.ImportedFileShareResourceGroupName.IsSet()
+}
+
+// SetImportedFileShareResourceGroupName sets field value
+func (o *AzureCredentialsListDto) SetImportedFileShareResourceGroupName(v string) {
+	o.ImportedFileShareResourceGroupName.Set(&v)
+}
+
 func (o AzureCredentialsListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -678,10 +702,10 @@ func (o AzureCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["availabilityZones"] = o.AvailabilityZones
 	toSerialize["availabilityZonesCount"] = o.AvailabilityZonesCount
 	toSerialize["projects"] = o.Projects
-	toSerialize["createdBy"] = o.CreatedBy.Get()
+	toSerialize["createdBy"] = o.CreatedBy
 	toSerialize["createdAt"] = o.CreatedAt.Get()
 	toSerialize["lastModified"] = o.LastModified.Get()
-	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	toSerialize["lastModifiedBy"] = o.LastModifiedBy
 	toSerialize["isDefault"] = o.IsDefault
 	toSerialize["organizationId"] = o.OrganizationId
 	toSerialize["organizationName"] = o.OrganizationName
@@ -692,6 +716,7 @@ func (o AzureCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["sharedFileSystemEnabled"] = o.SharedFileSystemEnabled
 	toSerialize["importedFileShareId"] = o.ImportedFileShareId.Get()
 	toSerialize["importedFileShareName"] = o.ImportedFileShareName.Get()
+	toSerialize["importedFileShareResourceGroupName"] = o.ImportedFileShareResourceGroupName.Get()
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -728,6 +753,7 @@ func (o *AzureCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 		"sharedFileSystemEnabled",
 		"importedFileShareId",
 		"importedFileShareName",
+		"importedFileShareResourceGroupName",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -780,6 +806,7 @@ func (o *AzureCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "sharedFileSystemEnabled")
 		delete(additionalProperties, "importedFileShareId")
 		delete(additionalProperties, "importedFileShareName")
+		delete(additionalProperties, "importedFileShareResourceGroupName")
 		o.AdditionalProperties = additionalProperties
 	}
 

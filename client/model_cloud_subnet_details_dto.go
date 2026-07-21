@@ -25,7 +25,8 @@ type CloudSubnetDetailsDto struct {
 	Name *string `json:"name,omitempty"`
 	Zone *string `json:"zone,omitempty"`
 	Cidr *string `json:"cidr,omitempty"`
-	AvailableIpCount *int32 `json:"availableIpCount,omitempty"`
+	Ipv6Cidr *string `json:"ipv6Cidr,omitempty"`
+	AvailableIpCount NullableInt32 `json:"availableIpCount,omitempty"`
 	NodeCount *int32 `json:"nodeCount,omitempty"`
 	IsDefault *bool `json:"isDefault,omitempty"`
 	OwnerId *string `json:"ownerId,omitempty"`
@@ -212,36 +213,78 @@ func (o *CloudSubnetDetailsDto) SetCidr(v string) {
 	o.Cidr = &v
 }
 
-// GetAvailableIpCount returns the AvailableIpCount field value if set, zero value otherwise.
-func (o *CloudSubnetDetailsDto) GetAvailableIpCount() int32 {
-	if o == nil || IsNil(o.AvailableIpCount) {
-		var ret int32
+// GetIpv6Cidr returns the Ipv6Cidr field value if set, zero value otherwise.
+func (o *CloudSubnetDetailsDto) GetIpv6Cidr() string {
+	if o == nil || IsNil(o.Ipv6Cidr) {
+		var ret string
 		return ret
 	}
-	return *o.AvailableIpCount
+	return *o.Ipv6Cidr
 }
 
-// GetAvailableIpCountOk returns a tuple with the AvailableIpCount field value if set, nil otherwise
+// GetIpv6CidrOk returns a tuple with the Ipv6Cidr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudSubnetDetailsDto) GetAvailableIpCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.AvailableIpCount) {
+func (o *CloudSubnetDetailsDto) GetIpv6CidrOk() (*string, bool) {
+	if o == nil || IsNil(o.Ipv6Cidr) {
 		return nil, false
 	}
-	return o.AvailableIpCount, true
+	return o.Ipv6Cidr, true
 }
 
-// HasAvailableIpCount returns a boolean if a field has been set.
-func (o *CloudSubnetDetailsDto) HasAvailableIpCount() bool {
-	if o != nil && !IsNil(o.AvailableIpCount) {
+// HasIpv6Cidr returns a boolean if a field has been set.
+func (o *CloudSubnetDetailsDto) HasIpv6Cidr() bool {
+	if o != nil && !IsNil(o.Ipv6Cidr) {
 		return true
 	}
 
 	return false
 }
 
-// SetAvailableIpCount gets a reference to the given int32 and assigns it to the AvailableIpCount field.
+// SetIpv6Cidr gets a reference to the given string and assigns it to the Ipv6Cidr field.
+func (o *CloudSubnetDetailsDto) SetIpv6Cidr(v string) {
+	o.Ipv6Cidr = &v
+}
+
+// GetAvailableIpCount returns the AvailableIpCount field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CloudSubnetDetailsDto) GetAvailableIpCount() int32 {
+	if o == nil || IsNil(o.AvailableIpCount.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.AvailableIpCount.Get()
+}
+
+// GetAvailableIpCountOk returns a tuple with the AvailableIpCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CloudSubnetDetailsDto) GetAvailableIpCountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AvailableIpCount.Get(), o.AvailableIpCount.IsSet()
+}
+
+// HasAvailableIpCount returns a boolean if a field has been set.
+func (o *CloudSubnetDetailsDto) HasAvailableIpCount() bool {
+	if o != nil && o.AvailableIpCount.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAvailableIpCount gets a reference to the given NullableInt32 and assigns it to the AvailableIpCount field.
 func (o *CloudSubnetDetailsDto) SetAvailableIpCount(v int32) {
-	o.AvailableIpCount = &v
+	o.AvailableIpCount.Set(&v)
+}
+// SetAvailableIpCountNil sets the value for AvailableIpCount to be an explicit nil
+func (o *CloudSubnetDetailsDto) SetAvailableIpCountNil() {
+	o.AvailableIpCount.Set(nil)
+}
+
+// UnsetAvailableIpCount ensures that no value is present for AvailableIpCount, not even an explicit nil
+func (o *CloudSubnetDetailsDto) UnsetAvailableIpCount() {
+	o.AvailableIpCount.Unset()
 }
 
 // GetNodeCount returns the NodeCount field value if set, zero value otherwise.
@@ -397,8 +440,11 @@ func (o CloudSubnetDetailsDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Cidr) {
 		toSerialize["cidr"] = o.Cidr
 	}
-	if !IsNil(o.AvailableIpCount) {
-		toSerialize["availableIpCount"] = o.AvailableIpCount
+	if !IsNil(o.Ipv6Cidr) {
+		toSerialize["ipv6Cidr"] = o.Ipv6Cidr
+	}
+	if o.AvailableIpCount.IsSet() {
+		toSerialize["availableIpCount"] = o.AvailableIpCount.Get()
 	}
 	if !IsNil(o.NodeCount) {
 		toSerialize["nodeCount"] = o.NodeCount
@@ -439,6 +485,7 @@ func (o *CloudSubnetDetailsDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "zone")
 		delete(additionalProperties, "cidr")
+		delete(additionalProperties, "ipv6Cidr")
 		delete(additionalProperties, "availableIpCount")
 		delete(additionalProperties, "nodeCount")
 		delete(additionalProperties, "isDefault")

@@ -27,7 +27,7 @@ type RobotUsersListDto struct {
 	AccessKey string `json:"accessKey"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
-	CreatedBy string `json:"createdBy"`
+	CreatedBy AuditUserDto `json:"createdBy"`
 	Name string `json:"name"`
 	Description NullableString `json:"description,omitempty"`
 	Scopes []string `json:"scopes"`
@@ -45,7 +45,7 @@ type _RobotUsersListDto RobotUsersListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRobotUsersListDto(userId string, accountId int32, accountName string, accessKey string, createdBy string, name string, scopes []string, isActive bool, createdAt string) *RobotUsersListDto {
+func NewRobotUsersListDto(userId string, accountId int32, accountName string, accessKey string, createdBy AuditUserDto, name string, scopes []string, isActive bool, createdAt string) *RobotUsersListDto {
 	this := RobotUsersListDto{}
 	this.UserId = userId
 	this.AccountId = accountId
@@ -248,9 +248,9 @@ func (o *RobotUsersListDto) UnsetOrganizationName() {
 }
 
 // GetCreatedBy returns the CreatedBy field value
-func (o *RobotUsersListDto) GetCreatedBy() string {
+func (o *RobotUsersListDto) GetCreatedBy() AuditUserDto {
 	if o == nil {
-		var ret string
+		var ret AuditUserDto
 		return ret
 	}
 
@@ -259,7 +259,7 @@ func (o *RobotUsersListDto) GetCreatedBy() string {
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-func (o *RobotUsersListDto) GetCreatedByOk() (*string, bool) {
+func (o *RobotUsersListDto) GetCreatedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -267,7 +267,7 @@ func (o *RobotUsersListDto) GetCreatedByOk() (*string, bool) {
 }
 
 // SetCreatedBy sets field value
-func (o *RobotUsersListDto) SetCreatedBy(v string) {
+func (o *RobotUsersListDto) SetCreatedBy(v AuditUserDto) {
 	o.CreatedBy = v
 }
 

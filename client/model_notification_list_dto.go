@@ -24,7 +24,7 @@ type NotificationListDto struct {
 	CreatedAt NullableString `json:"createdAt"`
 	ActionMessage string `json:"actionMessage"`
 	ActionStatus ActionStatus `json:"actionStatus"`
-	Username NullableString `json:"username"`
+	Username AuditUserDto `json:"username"`
 	Category ActionType `json:"category"`
 	ProjectName NullableString `json:"projectName"`
 	ProjectId NullableInt32 `json:"projectId"`
@@ -38,7 +38,7 @@ type _NotificationListDto NotificationListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNotificationListDto(createdAt NullableString, actionMessage string, actionStatus ActionStatus, username NullableString, category ActionType, projectName NullableString, projectId NullableInt32, isDeleted bool) *NotificationListDto {
+func NewNotificationListDto(createdAt NullableString, actionMessage string, actionStatus ActionStatus, username AuditUserDto, category ActionType, projectName NullableString, projectId NullableInt32, isDeleted bool) *NotificationListDto {
 	this := NotificationListDto{}
 	this.CreatedAt = createdAt
 	this.ActionMessage = actionMessage
@@ -134,29 +134,27 @@ func (o *NotificationListDto) SetActionStatus(v ActionStatus) {
 }
 
 // GetUsername returns the Username field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *NotificationListDto) GetUsername() string {
-	if o == nil || o.Username.Get() == nil {
-		var ret string
+func (o *NotificationListDto) GetUsername() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
 		return ret
 	}
 
-	return *o.Username.Get()
+	return o.Username
 }
 
 // GetUsernameOk returns a tuple with the Username field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *NotificationListDto) GetUsernameOk() (*string, bool) {
+func (o *NotificationListDto) GetUsernameOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Username.Get(), o.Username.IsSet()
+	return &o.Username, true
 }
 
 // SetUsername sets field value
-func (o *NotificationListDto) SetUsername(v string) {
-	o.Username.Set(&v)
+func (o *NotificationListDto) SetUsername(v AuditUserDto) {
+	o.Username = v
 }
 
 // GetCategory returns the Category field value
@@ -272,7 +270,7 @@ func (o NotificationListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["createdAt"] = o.CreatedAt.Get()
 	toSerialize["actionMessage"] = o.ActionMessage
 	toSerialize["actionStatus"] = o.ActionStatus
-	toSerialize["username"] = o.Username.Get()
+	toSerialize["username"] = o.Username
 	toSerialize["category"] = o.Category
 	toSerialize["projectName"] = o.ProjectName.Get()
 	toSerialize["projectId"] = o.ProjectId.Get()

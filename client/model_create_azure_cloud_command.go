@@ -34,6 +34,7 @@ type CreateAzureCloudCommand struct {
 	ExistingVirtualNetworkName NullableString `json:"existingVirtualNetworkName,omitempty"`
 	SharedFileSystemEnabled *bool `json:"sharedFileSystemEnabled,omitempty"`
 	ImportedFileShareId NullableString `json:"importedFileShareId,omitempty"`
+	ImportedFileShareResourceGroupName NullableString `json:"importedFileShareResourceGroupName,omitempty"`
 	Subnets []CreateAzureSubnetDto `json:"subnets,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -615,6 +616,48 @@ func (o *CreateAzureCloudCommand) UnsetImportedFileShareId() {
 	o.ImportedFileShareId.Unset()
 }
 
+// GetImportedFileShareResourceGroupName returns the ImportedFileShareResourceGroupName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateAzureCloudCommand) GetImportedFileShareResourceGroupName() string {
+	if o == nil || IsNil(o.ImportedFileShareResourceGroupName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ImportedFileShareResourceGroupName.Get()
+}
+
+// GetImportedFileShareResourceGroupNameOk returns a tuple with the ImportedFileShareResourceGroupName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateAzureCloudCommand) GetImportedFileShareResourceGroupNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ImportedFileShareResourceGroupName.Get(), o.ImportedFileShareResourceGroupName.IsSet()
+}
+
+// HasImportedFileShareResourceGroupName returns a boolean if a field has been set.
+func (o *CreateAzureCloudCommand) HasImportedFileShareResourceGroupName() bool {
+	if o != nil && o.ImportedFileShareResourceGroupName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetImportedFileShareResourceGroupName gets a reference to the given NullableString and assigns it to the ImportedFileShareResourceGroupName field.
+func (o *CreateAzureCloudCommand) SetImportedFileShareResourceGroupName(v string) {
+	o.ImportedFileShareResourceGroupName.Set(&v)
+}
+// SetImportedFileShareResourceGroupNameNil sets the value for ImportedFileShareResourceGroupName to be an explicit nil
+func (o *CreateAzureCloudCommand) SetImportedFileShareResourceGroupNameNil() {
+	o.ImportedFileShareResourceGroupName.Set(nil)
+}
+
+// UnsetImportedFileShareResourceGroupName ensures that no value is present for ImportedFileShareResourceGroupName, not even an explicit nil
+func (o *CreateAzureCloudCommand) UnsetImportedFileShareResourceGroupName() {
+	o.ImportedFileShareResourceGroupName.Unset()
+}
+
 // GetSubnets returns the Subnets field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateAzureCloudCommand) GetSubnets() []CreateAzureSubnetDto {
 	if o == nil {
@@ -700,6 +743,9 @@ func (o CreateAzureCloudCommand) ToMap() (map[string]interface{}, error) {
 	if o.ImportedFileShareId.IsSet() {
 		toSerialize["importedFileShareId"] = o.ImportedFileShareId.Get()
 	}
+	if o.ImportedFileShareResourceGroupName.IsSet() {
+		toSerialize["importedFileShareResourceGroupName"] = o.ImportedFileShareResourceGroupName.Get()
+	}
 	if o.Subnets != nil {
 		toSerialize["subnets"] = o.Subnets
 	}
@@ -739,6 +785,7 @@ func (o *CreateAzureCloudCommand) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "existingVirtualNetworkName")
 		delete(additionalProperties, "sharedFileSystemEnabled")
 		delete(additionalProperties, "importedFileShareId")
+		delete(additionalProperties, "importedFileShareResourceGroupName")
 		delete(additionalProperties, "subnets")
 		o.AdditionalProperties = additionalProperties
 	}

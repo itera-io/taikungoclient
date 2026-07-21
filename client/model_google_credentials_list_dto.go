@@ -37,13 +37,15 @@ type GoogleCredentialsListDto struct {
 	IsLocked bool `json:"isLocked"`
 	IsDefault bool `json:"isDefault"`
 	BillingAccountName NullableString `json:"billingAccountName"`
+	CreatedBy AuditUserDto `json:"createdBy"`
 	CreatedAt NullableString `json:"createdAt"`
+	LastModified NullableString `json:"lastModified"`
+	LastModifiedBy AuditUserDto `json:"lastModifiedBy"`
 	ContinentName NullableString `json:"continentName"`
 	VpcMode *VpcMode `json:"vpcMode,omitempty"`
 	IpMode *IpMode `json:"ipMode,omitempty"`
 	ImportedGcpProjectId NullableString `json:"importedGcpProjectId,omitempty"`
 	ImportedVpcName NullableString `json:"importedVpcName,omitempty"`
-	ImportedSubnetworkName NullableString `json:"importedSubnetworkName,omitempty"`
 	SharedFileSystemEnabled NullableBool `json:"sharedFileSystemEnabled,omitempty"`
 	ImportedFilestoreId NullableString `json:"importedFilestoreId,omitempty"`
 	ImportedFilestoreName NullableString `json:"importedFilestoreName,omitempty"`
@@ -56,7 +58,7 @@ type _GoogleCredentialsListDto GoogleCredentialsListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGoogleCredentialsListDto(id int32, name string, projects []CommonDropdownDto, organizationId int32, organizationName string, partnerLogo NullableString, partnerName NullableString, folderId NullableString, projectId NullableString, billingAccountId NullableString, zones []string, availabilityZonesCount int32, region string, isLocked bool, isDefault bool, billingAccountName NullableString, createdAt NullableString, continentName NullableString) *GoogleCredentialsListDto {
+func NewGoogleCredentialsListDto(id int32, name string, projects []CommonDropdownDto, organizationId int32, organizationName string, partnerLogo NullableString, partnerName NullableString, folderId NullableString, projectId NullableString, billingAccountId NullableString, zones []string, availabilityZonesCount int32, region string, isLocked bool, isDefault bool, billingAccountName NullableString, createdBy AuditUserDto, createdAt NullableString, lastModified NullableString, lastModifiedBy AuditUserDto, continentName NullableString) *GoogleCredentialsListDto {
 	this := GoogleCredentialsListDto{}
 	this.Id = id
 	this.Name = name
@@ -74,7 +76,10 @@ func NewGoogleCredentialsListDto(id int32, name string, projects []CommonDropdow
 	this.IsLocked = isLocked
 	this.IsDefault = isDefault
 	this.BillingAccountName = billingAccountName
+	this.CreatedBy = createdBy
 	this.CreatedAt = createdAt
+	this.LastModified = lastModified
+	this.LastModifiedBy = lastModifiedBy
 	this.ContinentName = continentName
 	return &this
 }
@@ -483,6 +488,30 @@ func (o *GoogleCredentialsListDto) SetBillingAccountName(v string) {
 	o.BillingAccountName.Set(&v)
 }
 
+// GetCreatedBy returns the CreatedBy field value
+func (o *GoogleCredentialsListDto) GetCreatedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
+		return ret
+	}
+
+	return o.CreatedBy
+}
+
+// GetCreatedByOk returns a tuple with the CreatedBy field value
+// and a boolean to check if the value has been set.
+func (o *GoogleCredentialsListDto) GetCreatedByOk() (*AuditUserDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CreatedBy, true
+}
+
+// SetCreatedBy sets field value
+func (o *GoogleCredentialsListDto) SetCreatedBy(v AuditUserDto) {
+	o.CreatedBy = v
+}
+
 // GetCreatedAt returns the CreatedAt field value
 // If the value is explicit nil, the zero value for string will be returned
 func (o *GoogleCredentialsListDto) GetCreatedAt() string {
@@ -507,6 +536,56 @@ func (o *GoogleCredentialsListDto) GetCreatedAtOk() (*string, bool) {
 // SetCreatedAt sets field value
 func (o *GoogleCredentialsListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
+}
+
+// GetLastModified returns the LastModified field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *GoogleCredentialsListDto) GetLastModified() string {
+	if o == nil || o.LastModified.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.LastModified.Get()
+}
+
+// GetLastModifiedOk returns a tuple with the LastModified field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GoogleCredentialsListDto) GetLastModifiedOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LastModified.Get(), o.LastModified.IsSet()
+}
+
+// SetLastModified sets field value
+func (o *GoogleCredentialsListDto) SetLastModified(v string) {
+	o.LastModified.Set(&v)
+}
+
+// GetLastModifiedBy returns the LastModifiedBy field value
+func (o *GoogleCredentialsListDto) GetLastModifiedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
+		return ret
+	}
+
+	return o.LastModifiedBy
+}
+
+// GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
+// and a boolean to check if the value has been set.
+func (o *GoogleCredentialsListDto) GetLastModifiedByOk() (*AuditUserDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LastModifiedBy, true
+}
+
+// SetLastModifiedBy sets field value
+func (o *GoogleCredentialsListDto) SetLastModifiedBy(v AuditUserDto) {
+	o.LastModifiedBy = v
 }
 
 // GetContinentName returns the ContinentName field value
@@ -683,48 +762,6 @@ func (o *GoogleCredentialsListDto) UnsetImportedVpcName() {
 	o.ImportedVpcName.Unset()
 }
 
-// GetImportedSubnetworkName returns the ImportedSubnetworkName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GoogleCredentialsListDto) GetImportedSubnetworkName() string {
-	if o == nil || IsNil(o.ImportedSubnetworkName.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.ImportedSubnetworkName.Get()
-}
-
-// GetImportedSubnetworkNameOk returns a tuple with the ImportedSubnetworkName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GoogleCredentialsListDto) GetImportedSubnetworkNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ImportedSubnetworkName.Get(), o.ImportedSubnetworkName.IsSet()
-}
-
-// HasImportedSubnetworkName returns a boolean if a field has been set.
-func (o *GoogleCredentialsListDto) HasImportedSubnetworkName() bool {
-	if o != nil && o.ImportedSubnetworkName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetImportedSubnetworkName gets a reference to the given NullableString and assigns it to the ImportedSubnetworkName field.
-func (o *GoogleCredentialsListDto) SetImportedSubnetworkName(v string) {
-	o.ImportedSubnetworkName.Set(&v)
-}
-// SetImportedSubnetworkNameNil sets the value for ImportedSubnetworkName to be an explicit nil
-func (o *GoogleCredentialsListDto) SetImportedSubnetworkNameNil() {
-	o.ImportedSubnetworkName.Set(nil)
-}
-
-// UnsetImportedSubnetworkName ensures that no value is present for ImportedSubnetworkName, not even an explicit nil
-func (o *GoogleCredentialsListDto) UnsetImportedSubnetworkName() {
-	o.ImportedSubnetworkName.Unset()
-}
-
 // GetSharedFileSystemEnabled returns the SharedFileSystemEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GoogleCredentialsListDto) GetSharedFileSystemEnabled() bool {
 	if o == nil || IsNil(o.SharedFileSystemEnabled.Get()) {
@@ -877,7 +914,10 @@ func (o GoogleCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["isLocked"] = o.IsLocked
 	toSerialize["isDefault"] = o.IsDefault
 	toSerialize["billingAccountName"] = o.BillingAccountName.Get()
+	toSerialize["createdBy"] = o.CreatedBy
 	toSerialize["createdAt"] = o.CreatedAt.Get()
+	toSerialize["lastModified"] = o.LastModified.Get()
+	toSerialize["lastModifiedBy"] = o.LastModifiedBy
 	toSerialize["continentName"] = o.ContinentName.Get()
 	if !IsNil(o.VpcMode) {
 		toSerialize["vpcMode"] = o.VpcMode
@@ -890,9 +930,6 @@ func (o GoogleCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.ImportedVpcName.IsSet() {
 		toSerialize["importedVpcName"] = o.ImportedVpcName.Get()
-	}
-	if o.ImportedSubnetworkName.IsSet() {
-		toSerialize["importedSubnetworkName"] = o.ImportedSubnetworkName.Get()
 	}
 	if o.SharedFileSystemEnabled.IsSet() {
 		toSerialize["sharedFileSystemEnabled"] = o.SharedFileSystemEnabled.Get()
@@ -932,7 +969,10 @@ func (o *GoogleCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 		"isLocked",
 		"isDefault",
 		"billingAccountName",
+		"createdBy",
 		"createdAt",
+		"lastModified",
+		"lastModifiedBy",
 		"continentName",
 	}
 
@@ -979,13 +1019,15 @@ func (o *GoogleCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "isLocked")
 		delete(additionalProperties, "isDefault")
 		delete(additionalProperties, "billingAccountName")
+		delete(additionalProperties, "createdBy")
 		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "lastModified")
+		delete(additionalProperties, "lastModifiedBy")
 		delete(additionalProperties, "continentName")
 		delete(additionalProperties, "vpcMode")
 		delete(additionalProperties, "ipMode")
 		delete(additionalProperties, "importedGcpProjectId")
 		delete(additionalProperties, "importedVpcName")
-		delete(additionalProperties, "importedSubnetworkName")
 		delete(additionalProperties, "sharedFileSystemEnabled")
 		delete(additionalProperties, "importedFilestoreId")
 		delete(additionalProperties, "importedFilestoreName")

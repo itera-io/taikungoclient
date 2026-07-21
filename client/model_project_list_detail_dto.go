@@ -44,12 +44,12 @@ type ProjectListDetailDto struct {
 	TotalServersCount int32 `json:"totalServersCount"`
 	TotalStandaloneVmsCount int32 `json:"totalStandaloneVmsCount"`
 	BoundUsers []UserDto `json:"boundUsers"`
-	CreatedBy string `json:"createdBy"`
+	CreatedBy AuditUserDto `json:"createdBy"`
 	LastModified NullableString `json:"lastModified"`
 	ExpiredAt NullableString `json:"expiredAt"`
 	DeleteOnExpiration bool `json:"deleteOnExpiration"`
 	CertificateExpiredAt NullableString `json:"certificateExpiredAt"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	LastModifiedBy AuditUserDto `json:"lastModifiedBy"`
 	QuotaId int32 `json:"quotaId"`
 	AllowFullSpotKubernetes bool `json:"allowFullSpotKubernetes"`
 	AllowSpotWorkers bool `json:"allowSpotWorkers"`
@@ -60,6 +60,7 @@ type ProjectListDetailDto struct {
 	TotalHourlyCost float64 `json:"totalHourlyCost"`
 	IsAutoscalingEnabled bool `json:"isAutoscalingEnabled"`
 	IsAutoscalingSpotEnabled bool `json:"isAutoscalingSpotEnabled"`
+	GatewayApiModern bool `json:"gatewayApiModern"`
 	AiEnabled bool `json:"aiEnabled"`
 	AnyServer bool `json:"anyServer"`
 	AnyVm bool `json:"anyVm"`
@@ -85,7 +86,7 @@ type _ProjectListDetailDto ProjectListDetailDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectListDetailDto(id int32, name string, isKubernetes bool, isLocked bool, isVirtualCluster bool, isMonitoringEnabled bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, status ProjectStatus, health ProjectHealth, cloudType ECloudCredentialType, kubesprayCurrentVersion string, kubesprayTargetVersion string, kubernetesCurrentVersion string, kubernetesTargetVersion string, createdAt string, alertsCount int32, totalServersCount int32, totalStandaloneVmsCount int32, boundUsers []UserDto, createdBy string, lastModified NullableString, expiredAt NullableString, deleteOnExpiration bool, certificateExpiredAt NullableString, lastModifiedBy NullableString, quotaId int32, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, maxSpotPrice NullableFloat64, projectAction bool, hasExpirationWarning bool, totalHourlyCost float64, isAutoscalingEnabled bool, isAutoscalingSpotEnabled bool, aiEnabled bool, anyServer bool, anyVm bool, isBackupEnabled bool, isProjectMaintenanceModeEnabled bool, parentProjectId NullableInt32, alertingProfileId NullableInt32, opaProfileId NullableInt32, importClusterType ImportClusterType) *ProjectListDetailDto {
+func NewProjectListDetailDto(id int32, name string, isKubernetes bool, isLocked bool, isVirtualCluster bool, isMonitoringEnabled bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, status ProjectStatus, health ProjectHealth, cloudType ECloudCredentialType, kubesprayCurrentVersion string, kubesprayTargetVersion string, kubernetesCurrentVersion string, kubernetesTargetVersion string, createdAt string, alertsCount int32, totalServersCount int32, totalStandaloneVmsCount int32, boundUsers []UserDto, createdBy AuditUserDto, lastModified NullableString, expiredAt NullableString, deleteOnExpiration bool, certificateExpiredAt NullableString, lastModifiedBy AuditUserDto, quotaId int32, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, maxSpotPrice NullableFloat64, projectAction bool, hasExpirationWarning bool, totalHourlyCost float64, isAutoscalingEnabled bool, isAutoscalingSpotEnabled bool, gatewayApiModern bool, aiEnabled bool, anyServer bool, anyVm bool, isBackupEnabled bool, isProjectMaintenanceModeEnabled bool, parentProjectId NullableInt32, alertingProfileId NullableInt32, opaProfileId NullableInt32, importClusterType ImportClusterType) *ProjectListDetailDto {
 	this := ProjectListDetailDto{}
 	this.Id = id
 	this.Name = name
@@ -125,6 +126,7 @@ func NewProjectListDetailDto(id int32, name string, isKubernetes bool, isLocked 
 	this.TotalHourlyCost = totalHourlyCost
 	this.IsAutoscalingEnabled = isAutoscalingEnabled
 	this.IsAutoscalingSpotEnabled = isAutoscalingSpotEnabled
+	this.GatewayApiModern = gatewayApiModern
 	this.AiEnabled = aiEnabled
 	this.AnyServer = anyServer
 	this.AnyVm = anyVm
@@ -716,9 +718,9 @@ func (o *ProjectListDetailDto) SetBoundUsers(v []UserDto) {
 }
 
 // GetCreatedBy returns the CreatedBy field value
-func (o *ProjectListDetailDto) GetCreatedBy() string {
+func (o *ProjectListDetailDto) GetCreatedBy() AuditUserDto {
 	if o == nil {
-		var ret string
+		var ret AuditUserDto
 		return ret
 	}
 
@@ -727,7 +729,7 @@ func (o *ProjectListDetailDto) GetCreatedBy() string {
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-func (o *ProjectListDetailDto) GetCreatedByOk() (*string, bool) {
+func (o *ProjectListDetailDto) GetCreatedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -735,7 +737,7 @@ func (o *ProjectListDetailDto) GetCreatedByOk() (*string, bool) {
 }
 
 // SetCreatedBy sets field value
-func (o *ProjectListDetailDto) SetCreatedBy(v string) {
+func (o *ProjectListDetailDto) SetCreatedBy(v AuditUserDto) {
 	o.CreatedBy = v
 }
 
@@ -842,29 +844,27 @@ func (o *ProjectListDetailDto) SetCertificateExpiredAt(v string) {
 }
 
 // GetLastModifiedBy returns the LastModifiedBy field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *ProjectListDetailDto) GetLastModifiedBy() string {
-	if o == nil || o.LastModifiedBy.Get() == nil {
-		var ret string
+func (o *ProjectListDetailDto) GetLastModifiedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
 		return ret
 	}
 
-	return *o.LastModifiedBy.Get()
+	return o.LastModifiedBy
 }
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectListDetailDto) GetLastModifiedByOk() (*string, bool) {
+func (o *ProjectListDetailDto) GetLastModifiedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
+	return &o.LastModifiedBy, true
 }
 
 // SetLastModifiedBy sets field value
-func (o *ProjectListDetailDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy.Set(&v)
+func (o *ProjectListDetailDto) SetLastModifiedBy(v AuditUserDto) {
+	o.LastModifiedBy = v
 }
 
 // GetQuotaId returns the QuotaId field value
@@ -1107,6 +1107,30 @@ func (o *ProjectListDetailDto) GetIsAutoscalingSpotEnabledOk() (*bool, bool) {
 // SetIsAutoscalingSpotEnabled sets field value
 func (o *ProjectListDetailDto) SetIsAutoscalingSpotEnabled(v bool) {
 	o.IsAutoscalingSpotEnabled = v
+}
+
+// GetGatewayApiModern returns the GatewayApiModern field value
+func (o *ProjectListDetailDto) GetGatewayApiModern() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.GatewayApiModern
+}
+
+// GetGatewayApiModernOk returns a tuple with the GatewayApiModern field value
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetGatewayApiModernOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.GatewayApiModern, true
+}
+
+// SetGatewayApiModern sets field value
+func (o *ProjectListDetailDto) SetGatewayApiModern(v bool) {
+	o.GatewayApiModern = v
 }
 
 // GetAiEnabled returns the AiEnabled field value
@@ -1595,7 +1619,7 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["expiredAt"] = o.ExpiredAt.Get()
 	toSerialize["deleteOnExpiration"] = o.DeleteOnExpiration
 	toSerialize["certificateExpiredAt"] = o.CertificateExpiredAt.Get()
-	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	toSerialize["lastModifiedBy"] = o.LastModifiedBy
 	toSerialize["quotaId"] = o.QuotaId
 	toSerialize["allowFullSpotKubernetes"] = o.AllowFullSpotKubernetes
 	toSerialize["allowSpotWorkers"] = o.AllowSpotWorkers
@@ -1606,6 +1630,7 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["totalHourlyCost"] = o.TotalHourlyCost
 	toSerialize["isAutoscalingEnabled"] = o.IsAutoscalingEnabled
 	toSerialize["isAutoscalingSpotEnabled"] = o.IsAutoscalingSpotEnabled
+	toSerialize["gatewayApiModern"] = o.GatewayApiModern
 	toSerialize["aiEnabled"] = o.AiEnabled
 	toSerialize["anyServer"] = o.AnyServer
 	toSerialize["anyVm"] = o.AnyVm
@@ -1687,6 +1712,7 @@ func (o *ProjectListDetailDto) UnmarshalJSON(data []byte) (err error) {
 		"totalHourlyCost",
 		"isAutoscalingEnabled",
 		"isAutoscalingSpotEnabled",
+		"gatewayApiModern",
 		"aiEnabled",
 		"anyServer",
 		"anyVm",
@@ -1764,6 +1790,7 @@ func (o *ProjectListDetailDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "totalHourlyCost")
 		delete(additionalProperties, "isAutoscalingEnabled")
 		delete(additionalProperties, "isAutoscalingSpotEnabled")
+		delete(additionalProperties, "gatewayApiModern")
 		delete(additionalProperties, "aiEnabled")
 		delete(additionalProperties, "anyServer")
 		delete(additionalProperties, "anyVm")

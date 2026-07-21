@@ -78,6 +78,8 @@ const (
 	ACTIONTYPE_UNINSTALL_APPLICATION ActionType = "UninstallApplication"
 	ACTIONTYPE_ENABLE_AUTOSCALING ActionType = "EnableAutoscaling"
 	ACTIONTYPE_DISABLE_AUTOSCALING ActionType = "DisableAutoscaling"
+	ACTIONTYPE_ENABLE_GATEWAY_API_MODERN ActionType = "EnableGatewayApiModern"
+	ACTIONTYPE_DISABLE_GATEWAY_API_MODERN ActionType = "DisableGatewayApiModern"
 	ACTIONTYPE_BOUND_PROJECT ActionType = "BoundProject"
 	ACTIONTYPE_LOCK_UNLOCK_PROJECT ActionType = "LockUnlockProject"
 	ACTIONTYPE_ENABLED_AI ActionType = "EnabledAi"
@@ -170,6 +172,8 @@ var AllowedActionTypeEnumValues = []ActionType{
 	"UninstallApplication",
 	"EnableAutoscaling",
 	"DisableAutoscaling",
+	"EnableGatewayApiModern",
+	"DisableGatewayApiModern",
 	"BoundProject",
 	"LockUnlockProject",
 	"EnabledAi",

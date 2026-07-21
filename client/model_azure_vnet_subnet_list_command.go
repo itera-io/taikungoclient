@@ -27,6 +27,7 @@ type AzureVnetSubnetListCommand struct {
 	ResourceGroupName NullableString `json:"resourceGroupName,omitempty"`
 	VnetName NullableString `json:"vnetName,omitempty"`
 	CloudId NullableInt32 `json:"cloudId,omitempty"`
+	IpMode *IpMode `json:"ipMode,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -343,6 +344,38 @@ func (o *AzureVnetSubnetListCommand) UnsetCloudId() {
 	o.CloudId.Unset()
 }
 
+// GetIpMode returns the IpMode field value if set, zero value otherwise.
+func (o *AzureVnetSubnetListCommand) GetIpMode() IpMode {
+	if o == nil || IsNil(o.IpMode) {
+		var ret IpMode
+		return ret
+	}
+	return *o.IpMode
+}
+
+// GetIpModeOk returns a tuple with the IpMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureVnetSubnetListCommand) GetIpModeOk() (*IpMode, bool) {
+	if o == nil || IsNil(o.IpMode) {
+		return nil, false
+	}
+	return o.IpMode, true
+}
+
+// HasIpMode returns a boolean if a field has been set.
+func (o *AzureVnetSubnetListCommand) HasIpMode() bool {
+	if o != nil && !IsNil(o.IpMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetIpMode gets a reference to the given IpMode and assigns it to the IpMode field.
+func (o *AzureVnetSubnetListCommand) SetIpMode(v IpMode) {
+	o.IpMode = &v
+}
+
 func (o AzureVnetSubnetListCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -374,6 +407,9 @@ func (o AzureVnetSubnetListCommand) ToMap() (map[string]interface{}, error) {
 	if o.CloudId.IsSet() {
 		toSerialize["cloudId"] = o.CloudId.Get()
 	}
+	if !IsNil(o.IpMode) {
+		toSerialize["ipMode"] = o.IpMode
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -403,6 +439,7 @@ func (o *AzureVnetSubnetListCommand) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "resourceGroupName")
 		delete(additionalProperties, "vnetName")
 		delete(additionalProperties, "cloudId")
+		delete(additionalProperties, "ipMode")
 		o.AdditionalProperties = additionalProperties
 	}
 

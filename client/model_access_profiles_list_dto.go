@@ -32,9 +32,9 @@ type AccessProfilesListDto struct {
 	NtpServers []NtpServerListDto `json:"ntpServers"`
 	AllowedHosts []AllowedHostListDto `json:"allowedHosts"`
 	Projects []CommonDropdownDto `json:"projects"`
-	CreatedBy NullableString `json:"createdBy"`
+	CreatedBy AuditUserDto `json:"createdBy"`
 	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	LastModifiedBy AuditUserDto `json:"lastModifiedBy"`
 	CreatedAt string `json:"createdAt"`
 	AdditionalProperties map[string]interface{}
 }
@@ -45,7 +45,7 @@ type _AccessProfilesListDto AccessProfilesListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessProfilesListDto(id int32, name string, httpProxy NullableString, organizationId NullableInt32, organizationName string, isLocked bool, dnsServers []DnsServerListDto, trustedRegistries []TrustedRegistryListDto, ntpServers []NtpServerListDto, allowedHosts []AllowedHostListDto, projects []CommonDropdownDto, createdBy NullableString, lastModified NullableString, lastModifiedBy NullableString, createdAt string) *AccessProfilesListDto {
+func NewAccessProfilesListDto(id int32, name string, httpProxy NullableString, organizationId NullableInt32, organizationName string, isLocked bool, dnsServers []DnsServerListDto, trustedRegistries []TrustedRegistryListDto, ntpServers []NtpServerListDto, allowedHosts []AllowedHostListDto, projects []CommonDropdownDto, createdBy AuditUserDto, lastModified NullableString, lastModifiedBy AuditUserDto, createdAt string) *AccessProfilesListDto {
 	this := AccessProfilesListDto{}
 	this.Id = id
 	this.Name = name
@@ -342,29 +342,27 @@ func (o *AccessProfilesListDto) SetProjects(v []CommonDropdownDto) {
 }
 
 // GetCreatedBy returns the CreatedBy field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *AccessProfilesListDto) GetCreatedBy() string {
-	if o == nil || o.CreatedBy.Get() == nil {
-		var ret string
+func (o *AccessProfilesListDto) GetCreatedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
 		return ret
 	}
 
-	return *o.CreatedBy.Get()
+	return o.CreatedBy
 }
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccessProfilesListDto) GetCreatedByOk() (*string, bool) {
+func (o *AccessProfilesListDto) GetCreatedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
+	return &o.CreatedBy, true
 }
 
 // SetCreatedBy sets field value
-func (o *AccessProfilesListDto) SetCreatedBy(v string) {
-	o.CreatedBy.Set(&v)
+func (o *AccessProfilesListDto) SetCreatedBy(v AuditUserDto) {
+	o.CreatedBy = v
 }
 
 // GetLastModified returns the LastModified field value
@@ -394,29 +392,27 @@ func (o *AccessProfilesListDto) SetLastModified(v string) {
 }
 
 // GetLastModifiedBy returns the LastModifiedBy field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *AccessProfilesListDto) GetLastModifiedBy() string {
-	if o == nil || o.LastModifiedBy.Get() == nil {
-		var ret string
+func (o *AccessProfilesListDto) GetLastModifiedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
 		return ret
 	}
 
-	return *o.LastModifiedBy.Get()
+	return o.LastModifiedBy
 }
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AccessProfilesListDto) GetLastModifiedByOk() (*string, bool) {
+func (o *AccessProfilesListDto) GetLastModifiedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
+	return &o.LastModifiedBy, true
 }
 
 // SetLastModifiedBy sets field value
-func (o *AccessProfilesListDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy.Set(&v)
+func (o *AccessProfilesListDto) SetLastModifiedBy(v AuditUserDto) {
+	o.LastModifiedBy = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -464,9 +460,9 @@ func (o AccessProfilesListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["ntpServers"] = o.NtpServers
 	toSerialize["allowedHosts"] = o.AllowedHosts
 	toSerialize["projects"] = o.Projects
-	toSerialize["createdBy"] = o.CreatedBy.Get()
+	toSerialize["createdBy"] = o.CreatedBy
 	toSerialize["lastModified"] = o.LastModified.Get()
-	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	toSerialize["lastModifiedBy"] = o.LastModifiedBy
 	toSerialize["createdAt"] = o.CreatedAt
 
 	for key, value := range o.AdditionalProperties {

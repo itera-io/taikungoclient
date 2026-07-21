@@ -5,6 +5,7 @@ README.md
 api/openapi.yaml
 api_access_profiles.go
 api_accounts.go
+api_admin.go
 api_ai_credentials.go
 api_alerting_integrations.go
 api_alerting_profiles.go
@@ -18,6 +19,7 @@ api_backup_policy.go
 api_billing.go
 api_catalog.go
 api_catalog_app.go
+api_certificate_credentials.go
 api_checker.go
 api_cloud_credential.go
 api_common.go
@@ -29,6 +31,7 @@ api_dns_servers.go
 api_documentation.go
 api_executors.go
 api_flavors.go
+api_gateway_api.go
 api_generic_kubernetes_cloud_credential.go
 api_global_configuration.go
 api_google.go
@@ -111,6 +114,7 @@ docs/ActionType.md
 docs/AddAccountAdminCommand.md
 docs/AddOrganizationsToRuleDto.md
 docs/AddPrometheusRulesToOrganizationDto.md
+docs/AdminAPI.md
 docs/AiCredentials.md
 docs/AiCredentialsAPI.md
 docs/AiCredentialsForOrganizationEntity.md
@@ -151,6 +155,7 @@ docs/ArtifactRepositoryDto.md
 docs/ArtifactUrlCheckerCommand.md
 docs/AttachDetachAlertingProfileCommand.md
 docs/AttachDetachDnsCredentialCommand.md
+docs/AuditUserDto.md
 docs/AuthManagementAPI.md
 docs/AutoSyncManagementCommand.md
 docs/AutoscalingAPI.md
@@ -245,6 +250,16 @@ docs/CatalogListDto.md
 docs/CatalogLockManagementCommand.md
 docs/CatalogMakeDefaultCommand.md
 docs/CatalogsForProjectDto.md
+docs/CertificateCredentialCreateCommand.md
+docs/CertificateCredentialDropdownDto.md
+docs/CertificateCredentialKind.md
+docs/CertificateCredentialListDto.md
+docs/CertificateCredentialListResponse.md
+docs/CertificateCredentialLockCommand.md
+docs/CertificateCredentialMakeDefaultCommand.md
+docs/CertificateCredentialUpdateCommand.md
+docs/CertificateCredentialValidateCommand.md
+docs/CertificateCredentialsAPI.md
 docs/ChangeCardCommand.md
 docs/ChangePasswordCommand.md
 docs/ChatCompletionsCommand.md
@@ -422,7 +437,11 @@ docs/DeploymentSearchList.md
 docs/DescribeKubernetesResourceCommand.md
 docs/Diff.md
 docs/DisableAutoscalingCommand.md
+docs/DisableCertManagerCommand.md
 docs/DisableDnsCertCommand.md
+docs/DisableExternalDnsCommand.md
+docs/DisableGatewayApiModernCommand.md
+docs/DisableTrustManagerCommand.md
 docs/DisableTwoFaManagementCommand.md
 docs/DisableTwoFactorAuthCommand.md
 docs/DisableUserCommand.md
@@ -483,7 +502,12 @@ docs/EditVirtualClusterWorkloadResources.md
 docs/EfsFileSystemDto.md
 docs/EmailMode.md
 docs/EnableAutoscalingCommand.md
+docs/EnableCertManagerCommand.md
 docs/EnableDnsCertCommand.md
+docs/EnableExternalDnsCommand.md
+docs/EnableGatewayApiModernCommand.md
+docs/EnableTrustManagerCommand.md
+docs/EncryptedColumnStatusDto.md
 docs/EnsureCodesDownloadedCommand.md
 docs/EnumList.md
 docs/EphemeralStorageLimitsDto.md
@@ -509,6 +533,7 @@ docs/FlavorsListDto.md
 docs/ForceToResetPasswordCommand.md
 docs/ForgotPasswordCommand.md
 docs/FullSpotOperationCommand.md
+docs/GatewayAPIAPI.md
 docs/GcpFilestoreDto.md
 docs/GcpSubnetworkDto.md
 docs/GcpVpcDto.md
@@ -609,6 +634,7 @@ docs/IpAddressRangeListCommand.md
 docs/IpMode.md
 docs/JobsSearchCommand.md
 docs/JobsSearchList.md
+docs/KeyRotationMode.md
 docs/KubeConfigAPI.md
 docs/KubeConfigForUserDto.md
 docs/KubeConfigForUserList.md
@@ -745,9 +771,12 @@ docs/OrganizationsList.md
 docs/OrganizationsSearchResponseData.md
 docs/OrganizationsWithGroupInfoResultDto.md
 docs/OrganizationsWithGroupInfoResultDtoCursorPaginatedResponse.md
+docs/OverloadProtectionMode.md
 docs/PackageAPI.md
 docs/PackageAutocompleteDto.md
 docs/ParameterType.md
+docs/PartnerPoolDekAnomalyDto.md
+docs/PartnerScopeReconcileResult.md
 docs/PatchKubernetesResourceCommand.md
 docs/PayInvoiceCommand.md
 docs/PaymentsAPI.md
@@ -877,6 +906,7 @@ docs/RobotUserStatusManagementCommand.md
 docs/RobotUsersList.md
 docs/RobotUsersListDto.md
 docs/RoleClaim.md
+docs/RotateTenantKeksCommand.md
 docs/Rule.md
 docs/RuleCreateCommand.md
 docs/RuleForUpdateDto.md
@@ -989,7 +1019,9 @@ docs/TeardownQaTenantCommand.md
 docs/ToggleExecutorCommand.md
 docs/ToggleMaintenanceModeCommand.md
 docs/ToggleNotificationModeCommand.md
+docs/ToggleOverloadProtectionCommand.md
 docs/TransferOwnershipCommand.md
+docs/TransitEncryptionStatusDto.md
 docs/TrustedRegisteredCreateDto.md
 docs/TrustedRegistriesAPI.md
 docs/TrustedRegistriesListDto.md
@@ -1156,6 +1188,7 @@ model_artifact_repository_dto.go
 model_artifact_url_checker_command.go
 model_attach_detach_alerting_profile_command.go
 model_attach_detach_dns_credential_command.go
+model_audit_user_dto.go
 model_auto_sync_management_command.go
 model_available_package_details_dto.go
 model_available_packages_dto.go
@@ -1242,6 +1275,15 @@ model_catalog_list_dto.go
 model_catalog_lock_management_command.go
 model_catalog_make_default_command.go
 model_catalogs_for_project_dto.go
+model_certificate_credential_create_command.go
+model_certificate_credential_dropdown_dto.go
+model_certificate_credential_kind.go
+model_certificate_credential_list_dto.go
+model_certificate_credential_list_response.go
+model_certificate_credential_lock_command.go
+model_certificate_credential_make_default_command.go
+model_certificate_credential_update_command.go
+model_certificate_credential_validate_command.go
 model_change_card_command.go
 model_change_password_command.go
 model_chat_completions_command.go
@@ -1414,7 +1456,11 @@ model_deployment_search_list.go
 model_describe_kubernetes_resource_command.go
 model_diff.go
 model_disable_autoscaling_command.go
+model_disable_cert_manager_command.go
 model_disable_dns_cert_command.go
+model_disable_external_dns_command.go
+model_disable_gateway_api_modern_command.go
+model_disable_trust_manager_command.go
 model_disable_two_fa_management_command.go
 model_disable_two_factor_auth_command.go
 model_disable_user_command.go
@@ -1472,7 +1518,12 @@ model_edit_virtual_cluster_workload_resources.go
 model_efs_file_system_dto.go
 model_email_mode.go
 model_enable_autoscaling_command.go
+model_enable_cert_manager_command.go
 model_enable_dns_cert_command.go
+model_enable_external_dns_command.go
+model_enable_gateway_api_modern_command.go
+model_enable_trust_manager_command.go
+model_encrypted_column_status_dto.go
 model_ensure_codes_downloaded_command.go
 model_enum_list.go
 model_ephemeral_storage_limits_dto.go
@@ -1586,6 +1637,7 @@ model_ip_address_range_list_command.go
 model_ip_mode.go
 model_jobs_search_command.go
 model_jobs_search_list.go
+model_key_rotation_mode.go
 model_kube_config_for_user_dto.go
 model_kube_config_for_user_list.go
 model_kube_config_interactive_shell_command.go
@@ -1709,8 +1761,11 @@ model_organizations_list.go
 model_organizations_search_response_data.go
 model_organizations_with_group_info_result_dto.go
 model_organizations_with_group_info_result_dto_cursor_paginated_response.go
+model_overload_protection_mode.go
 model_package_autocomplete_dto.go
 model_parameter_type.go
+model_partner_pool_dek_anomaly_dto.go
+model_partner_scope_reconcile_result.go
 model_patch_kubernetes_resource_command.go
 model_pay_invoice_command.go
 model_pdb_search_command.go
@@ -1826,6 +1881,7 @@ model_robot_user_status_management_command.go
 model_robot_users_list.go
 model_robot_users_list_dto.go
 model_role_claim.go
+model_rotate_tenant_keks_command.go
 model_rule.go
 model_rule_create_command.go
 model_rule_for_update_dto.go
@@ -1923,7 +1979,9 @@ model_teardown_qa_tenant_command.go
 model_toggle_executor_command.go
 model_toggle_maintenance_mode_command.go
 model_toggle_notification_mode_command.go
+model_toggle_overload_protection_command.go
 model_transfer_ownership_command.go
+model_transit_encryption_status_dto.go
 model_trusted_registered_create_dto.go
 model_trusted_registries_list_dto.go
 model_trusted_registry_edit_dto.go
@@ -2031,6 +2089,7 @@ model_zadara_region_list_command.go
 response.go
 test/api_access_profiles_test.go
 test/api_accounts_test.go
+test/api_admin_test.go
 test/api_ai_credentials_test.go
 test/api_alerting_integrations_test.go
 test/api_alerting_profiles_test.go
@@ -2044,6 +2103,7 @@ test/api_backup_policy_test.go
 test/api_billing_test.go
 test/api_catalog_app_test.go
 test/api_catalog_test.go
+test/api_certificate_credentials_test.go
 test/api_checker_test.go
 test/api_cloud_credential_test.go
 test/api_common_test.go
@@ -2055,6 +2115,7 @@ test/api_dns_servers_test.go
 test/api_documentation_test.go
 test/api_executors_test.go
 test/api_flavors_test.go
+test/api_gateway_api_test.go
 test/api_generic_kubernetes_cloud_credential_test.go
 test/api_global_configuration_test.go
 test/api_google_test.go

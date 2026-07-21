@@ -235,8 +235,9 @@ type ApiGooglecloudCreateRequest struct {
 	vpcMode *VpcMode
 	importedGcpProjectId *string
 	importedVpcName *string
-	importedSubnetworkName *string
+	subnets *[]string
 	importedFilestoreId *string
+	importedFilestoreProjectId *string
 }
 
 func (r ApiGooglecloudCreateRequest) Config(config *os.File) ApiGooglecloudCreateRequest {
@@ -294,13 +295,18 @@ func (r ApiGooglecloudCreateRequest) ImportedVpcName(importedVpcName string) Api
 	return r
 }
 
-func (r ApiGooglecloudCreateRequest) ImportedSubnetworkName(importedSubnetworkName string) ApiGooglecloudCreateRequest {
-	r.importedSubnetworkName = &importedSubnetworkName
+func (r ApiGooglecloudCreateRequest) Subnets(subnets []string) ApiGooglecloudCreateRequest {
+	r.subnets = &subnets
 	return r
 }
 
 func (r ApiGooglecloudCreateRequest) ImportedFilestoreId(importedFilestoreId string) ApiGooglecloudCreateRequest {
 	r.importedFilestoreId = &importedFilestoreId
+	return r
+}
+
+func (r ApiGooglecloudCreateRequest) ImportedFilestoreProjectId(importedFilestoreProjectId string) ApiGooglecloudCreateRequest {
+	r.importedFilestoreProjectId = &importedFilestoreProjectId
 	return r
 }
 
@@ -404,11 +410,14 @@ func (a *GoogleAPIService) GooglecloudCreateExecute(r ApiGooglecloudCreateReques
 	if r.importedVpcName != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "importedVpcName", r.importedVpcName, "", "")
 	}
-	if r.importedSubnetworkName != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "importedSubnetworkName", r.importedSubnetworkName, "", "")
+	if r.subnets != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "subnets", r.subnets, "", "csv")
 	}
 	if r.importedFilestoreId != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "importedFilestoreId", r.importedFilestoreId, "", "")
+	}
+	if r.importedFilestoreProjectId != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "importedFilestoreProjectId", r.importedFilestoreProjectId, "", "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -531,6 +540,7 @@ type ApiGooglecloudFilestoreListRequest struct {
 	ApiService *GoogleAPIService
 	config *os.File
 	importedGcpProjectId *string
+	importedFilestoreProjectId *string
 	region *string
 	cloudId *int32
 }
@@ -542,6 +552,11 @@ func (r ApiGooglecloudFilestoreListRequest) Config(config *os.File) ApiGoogleclo
 
 func (r ApiGooglecloudFilestoreListRequest) ImportedGcpProjectId(importedGcpProjectId string) ApiGooglecloudFilestoreListRequest {
 	r.importedGcpProjectId = &importedGcpProjectId
+	return r
+}
+
+func (r ApiGooglecloudFilestoreListRequest) ImportedFilestoreProjectId(importedFilestoreProjectId string) ApiGooglecloudFilestoreListRequest {
+	r.importedFilestoreProjectId = &importedFilestoreProjectId
 	return r
 }
 
@@ -627,6 +642,9 @@ func (a *GoogleAPIService) GooglecloudFilestoreListExecute(r ApiGooglecloudFiles
 	}
 	if r.importedGcpProjectId != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "importedGcpProjectId", r.importedGcpProjectId, "", "")
+	}
+	if r.importedFilestoreProjectId != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "importedFilestoreProjectId", r.importedFilestoreProjectId, "", "")
 	}
 	if r.region != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "region", r.region, "", "")
@@ -1396,6 +1414,7 @@ type ApiGooglecloudSubnetworkListRequest struct {
 	region *string
 	networkName *string
 	cloudId *int32
+	ipMode *IpMode
 }
 
 func (r ApiGooglecloudSubnetworkListRequest) Config(config *os.File) ApiGooglecloudSubnetworkListRequest {
@@ -1420,6 +1439,11 @@ func (r ApiGooglecloudSubnetworkListRequest) NetworkName(networkName string) Api
 
 func (r ApiGooglecloudSubnetworkListRequest) CloudId(cloudId int32) ApiGooglecloudSubnetworkListRequest {
 	r.cloudId = &cloudId
+	return r
+}
+
+func (r ApiGooglecloudSubnetworkListRequest) IpMode(ipMode IpMode) ApiGooglecloudSubnetworkListRequest {
+	r.ipMode = &ipMode
 	return r
 }
 
@@ -1504,6 +1528,9 @@ func (a *GoogleAPIService) GooglecloudSubnetworkListExecute(r ApiGooglecloudSubn
 	}
 	if r.cloudId != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "cloudId", r.cloudId, "", "")
+	}
+	if r.ipMode != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "ipMode", r.ipMode, "", "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication

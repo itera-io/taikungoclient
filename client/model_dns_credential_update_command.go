@@ -21,10 +21,17 @@ var _ MappedNullable = &DnsCredentialUpdateCommand{}
 // DnsCredentialUpdateCommand struct for DnsCredentialUpdateCommand
 type DnsCredentialUpdateCommand struct {
 	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	ProviderType NullableString `json:"providerType,omitempty"`
-	DomainFilter NullableString `json:"domainFilter,omitempty"`
+	Name *string `json:"name,omitempty"`
+	ProviderType *string `json:"providerType,omitempty"`
+	DomainFilter *string `json:"domainFilter,omitempty"`
 	UseLetsEncrypt *bool `json:"useLetsEncrypt,omitempty"`
+	AuthMethod NullableString `json:"authMethod,omitempty"`
+	AuthVariant NullableString `json:"authVariant,omitempty"`
+	AwsRoleArn NullableString `json:"awsRoleArn,omitempty"`
+	GcpServiceAccountEmail NullableString `json:"gcpServiceAccountEmail,omitempty"`
+	PdnsApiUrl NullableString `json:"pdnsApiUrl,omitempty"`
+	PdnsApiKey NullableString `json:"pdnsApiKey,omitempty"`
+	PdnsServerId NullableString `json:"pdnsServerId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -79,130 +86,100 @@ func (o *DnsCredentialUpdateCommand) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *DnsCredentialUpdateCommand) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DnsCredentialUpdateCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *DnsCredentialUpdateCommand) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DnsCredentialUpdateCommand) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *DnsCredentialUpdateCommand) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *DnsCredentialUpdateCommand) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetProviderType returns the ProviderType field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProviderType returns the ProviderType field value if set, zero value otherwise.
 func (o *DnsCredentialUpdateCommand) GetProviderType() string {
-	if o == nil || IsNil(o.ProviderType.Get()) {
+	if o == nil || IsNil(o.ProviderType) {
 		var ret string
 		return ret
 	}
-	return *o.ProviderType.Get()
+	return *o.ProviderType
 }
 
 // GetProviderTypeOk returns a tuple with the ProviderType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DnsCredentialUpdateCommand) GetProviderTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProviderType) {
 		return nil, false
 	}
-	return o.ProviderType.Get(), o.ProviderType.IsSet()
+	return o.ProviderType, true
 }
 
 // HasProviderType returns a boolean if a field has been set.
 func (o *DnsCredentialUpdateCommand) HasProviderType() bool {
-	if o != nil && o.ProviderType.IsSet() {
+	if o != nil && !IsNil(o.ProviderType) {
 		return true
 	}
 
 	return false
 }
 
-// SetProviderType gets a reference to the given NullableString and assigns it to the ProviderType field.
+// SetProviderType gets a reference to the given string and assigns it to the ProviderType field.
 func (o *DnsCredentialUpdateCommand) SetProviderType(v string) {
-	o.ProviderType.Set(&v)
-}
-// SetProviderTypeNil sets the value for ProviderType to be an explicit nil
-func (o *DnsCredentialUpdateCommand) SetProviderTypeNil() {
-	o.ProviderType.Set(nil)
+	o.ProviderType = &v
 }
 
-// UnsetProviderType ensures that no value is present for ProviderType, not even an explicit nil
-func (o *DnsCredentialUpdateCommand) UnsetProviderType() {
-	o.ProviderType.Unset()
-}
-
-// GetDomainFilter returns the DomainFilter field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDomainFilter returns the DomainFilter field value if set, zero value otherwise.
 func (o *DnsCredentialUpdateCommand) GetDomainFilter() string {
-	if o == nil || IsNil(o.DomainFilter.Get()) {
+	if o == nil || IsNil(o.DomainFilter) {
 		var ret string
 		return ret
 	}
-	return *o.DomainFilter.Get()
+	return *o.DomainFilter
 }
 
 // GetDomainFilterOk returns a tuple with the DomainFilter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DnsCredentialUpdateCommand) GetDomainFilterOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DomainFilter) {
 		return nil, false
 	}
-	return o.DomainFilter.Get(), o.DomainFilter.IsSet()
+	return o.DomainFilter, true
 }
 
 // HasDomainFilter returns a boolean if a field has been set.
 func (o *DnsCredentialUpdateCommand) HasDomainFilter() bool {
-	if o != nil && o.DomainFilter.IsSet() {
+	if o != nil && !IsNil(o.DomainFilter) {
 		return true
 	}
 
 	return false
 }
 
-// SetDomainFilter gets a reference to the given NullableString and assigns it to the DomainFilter field.
+// SetDomainFilter gets a reference to the given string and assigns it to the DomainFilter field.
 func (o *DnsCredentialUpdateCommand) SetDomainFilter(v string) {
-	o.DomainFilter.Set(&v)
-}
-// SetDomainFilterNil sets the value for DomainFilter to be an explicit nil
-func (o *DnsCredentialUpdateCommand) SetDomainFilterNil() {
-	o.DomainFilter.Set(nil)
-}
-
-// UnsetDomainFilter ensures that no value is present for DomainFilter, not even an explicit nil
-func (o *DnsCredentialUpdateCommand) UnsetDomainFilter() {
-	o.DomainFilter.Unset()
+	o.DomainFilter = &v
 }
 
 // GetUseLetsEncrypt returns the UseLetsEncrypt field value if set, zero value otherwise.
@@ -237,6 +214,300 @@ func (o *DnsCredentialUpdateCommand) SetUseLetsEncrypt(v bool) {
 	o.UseLetsEncrypt = &v
 }
 
+// GetAuthMethod returns the AuthMethod field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DnsCredentialUpdateCommand) GetAuthMethod() string {
+	if o == nil || IsNil(o.AuthMethod.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AuthMethod.Get()
+}
+
+// GetAuthMethodOk returns a tuple with the AuthMethod field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DnsCredentialUpdateCommand) GetAuthMethodOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AuthMethod.Get(), o.AuthMethod.IsSet()
+}
+
+// HasAuthMethod returns a boolean if a field has been set.
+func (o *DnsCredentialUpdateCommand) HasAuthMethod() bool {
+	if o != nil && o.AuthMethod.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthMethod gets a reference to the given NullableString and assigns it to the AuthMethod field.
+func (o *DnsCredentialUpdateCommand) SetAuthMethod(v string) {
+	o.AuthMethod.Set(&v)
+}
+// SetAuthMethodNil sets the value for AuthMethod to be an explicit nil
+func (o *DnsCredentialUpdateCommand) SetAuthMethodNil() {
+	o.AuthMethod.Set(nil)
+}
+
+// UnsetAuthMethod ensures that no value is present for AuthMethod, not even an explicit nil
+func (o *DnsCredentialUpdateCommand) UnsetAuthMethod() {
+	o.AuthMethod.Unset()
+}
+
+// GetAuthVariant returns the AuthVariant field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DnsCredentialUpdateCommand) GetAuthVariant() string {
+	if o == nil || IsNil(o.AuthVariant.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AuthVariant.Get()
+}
+
+// GetAuthVariantOk returns a tuple with the AuthVariant field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DnsCredentialUpdateCommand) GetAuthVariantOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AuthVariant.Get(), o.AuthVariant.IsSet()
+}
+
+// HasAuthVariant returns a boolean if a field has been set.
+func (o *DnsCredentialUpdateCommand) HasAuthVariant() bool {
+	if o != nil && o.AuthVariant.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthVariant gets a reference to the given NullableString and assigns it to the AuthVariant field.
+func (o *DnsCredentialUpdateCommand) SetAuthVariant(v string) {
+	o.AuthVariant.Set(&v)
+}
+// SetAuthVariantNil sets the value for AuthVariant to be an explicit nil
+func (o *DnsCredentialUpdateCommand) SetAuthVariantNil() {
+	o.AuthVariant.Set(nil)
+}
+
+// UnsetAuthVariant ensures that no value is present for AuthVariant, not even an explicit nil
+func (o *DnsCredentialUpdateCommand) UnsetAuthVariant() {
+	o.AuthVariant.Unset()
+}
+
+// GetAwsRoleArn returns the AwsRoleArn field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DnsCredentialUpdateCommand) GetAwsRoleArn() string {
+	if o == nil || IsNil(o.AwsRoleArn.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AwsRoleArn.Get()
+}
+
+// GetAwsRoleArnOk returns a tuple with the AwsRoleArn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DnsCredentialUpdateCommand) GetAwsRoleArnOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AwsRoleArn.Get(), o.AwsRoleArn.IsSet()
+}
+
+// HasAwsRoleArn returns a boolean if a field has been set.
+func (o *DnsCredentialUpdateCommand) HasAwsRoleArn() bool {
+	if o != nil && o.AwsRoleArn.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsRoleArn gets a reference to the given NullableString and assigns it to the AwsRoleArn field.
+func (o *DnsCredentialUpdateCommand) SetAwsRoleArn(v string) {
+	o.AwsRoleArn.Set(&v)
+}
+// SetAwsRoleArnNil sets the value for AwsRoleArn to be an explicit nil
+func (o *DnsCredentialUpdateCommand) SetAwsRoleArnNil() {
+	o.AwsRoleArn.Set(nil)
+}
+
+// UnsetAwsRoleArn ensures that no value is present for AwsRoleArn, not even an explicit nil
+func (o *DnsCredentialUpdateCommand) UnsetAwsRoleArn() {
+	o.AwsRoleArn.Unset()
+}
+
+// GetGcpServiceAccountEmail returns the GcpServiceAccountEmail field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DnsCredentialUpdateCommand) GetGcpServiceAccountEmail() string {
+	if o == nil || IsNil(o.GcpServiceAccountEmail.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.GcpServiceAccountEmail.Get()
+}
+
+// GetGcpServiceAccountEmailOk returns a tuple with the GcpServiceAccountEmail field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DnsCredentialUpdateCommand) GetGcpServiceAccountEmailOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.GcpServiceAccountEmail.Get(), o.GcpServiceAccountEmail.IsSet()
+}
+
+// HasGcpServiceAccountEmail returns a boolean if a field has been set.
+func (o *DnsCredentialUpdateCommand) HasGcpServiceAccountEmail() bool {
+	if o != nil && o.GcpServiceAccountEmail.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpServiceAccountEmail gets a reference to the given NullableString and assigns it to the GcpServiceAccountEmail field.
+func (o *DnsCredentialUpdateCommand) SetGcpServiceAccountEmail(v string) {
+	o.GcpServiceAccountEmail.Set(&v)
+}
+// SetGcpServiceAccountEmailNil sets the value for GcpServiceAccountEmail to be an explicit nil
+func (o *DnsCredentialUpdateCommand) SetGcpServiceAccountEmailNil() {
+	o.GcpServiceAccountEmail.Set(nil)
+}
+
+// UnsetGcpServiceAccountEmail ensures that no value is present for GcpServiceAccountEmail, not even an explicit nil
+func (o *DnsCredentialUpdateCommand) UnsetGcpServiceAccountEmail() {
+	o.GcpServiceAccountEmail.Unset()
+}
+
+// GetPdnsApiUrl returns the PdnsApiUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DnsCredentialUpdateCommand) GetPdnsApiUrl() string {
+	if o == nil || IsNil(o.PdnsApiUrl.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PdnsApiUrl.Get()
+}
+
+// GetPdnsApiUrlOk returns a tuple with the PdnsApiUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DnsCredentialUpdateCommand) GetPdnsApiUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PdnsApiUrl.Get(), o.PdnsApiUrl.IsSet()
+}
+
+// HasPdnsApiUrl returns a boolean if a field has been set.
+func (o *DnsCredentialUpdateCommand) HasPdnsApiUrl() bool {
+	if o != nil && o.PdnsApiUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPdnsApiUrl gets a reference to the given NullableString and assigns it to the PdnsApiUrl field.
+func (o *DnsCredentialUpdateCommand) SetPdnsApiUrl(v string) {
+	o.PdnsApiUrl.Set(&v)
+}
+// SetPdnsApiUrlNil sets the value for PdnsApiUrl to be an explicit nil
+func (o *DnsCredentialUpdateCommand) SetPdnsApiUrlNil() {
+	o.PdnsApiUrl.Set(nil)
+}
+
+// UnsetPdnsApiUrl ensures that no value is present for PdnsApiUrl, not even an explicit nil
+func (o *DnsCredentialUpdateCommand) UnsetPdnsApiUrl() {
+	o.PdnsApiUrl.Unset()
+}
+
+// GetPdnsApiKey returns the PdnsApiKey field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DnsCredentialUpdateCommand) GetPdnsApiKey() string {
+	if o == nil || IsNil(o.PdnsApiKey.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PdnsApiKey.Get()
+}
+
+// GetPdnsApiKeyOk returns a tuple with the PdnsApiKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DnsCredentialUpdateCommand) GetPdnsApiKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PdnsApiKey.Get(), o.PdnsApiKey.IsSet()
+}
+
+// HasPdnsApiKey returns a boolean if a field has been set.
+func (o *DnsCredentialUpdateCommand) HasPdnsApiKey() bool {
+	if o != nil && o.PdnsApiKey.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPdnsApiKey gets a reference to the given NullableString and assigns it to the PdnsApiKey field.
+func (o *DnsCredentialUpdateCommand) SetPdnsApiKey(v string) {
+	o.PdnsApiKey.Set(&v)
+}
+// SetPdnsApiKeyNil sets the value for PdnsApiKey to be an explicit nil
+func (o *DnsCredentialUpdateCommand) SetPdnsApiKeyNil() {
+	o.PdnsApiKey.Set(nil)
+}
+
+// UnsetPdnsApiKey ensures that no value is present for PdnsApiKey, not even an explicit nil
+func (o *DnsCredentialUpdateCommand) UnsetPdnsApiKey() {
+	o.PdnsApiKey.Unset()
+}
+
+// GetPdnsServerId returns the PdnsServerId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DnsCredentialUpdateCommand) GetPdnsServerId() string {
+	if o == nil || IsNil(o.PdnsServerId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PdnsServerId.Get()
+}
+
+// GetPdnsServerIdOk returns a tuple with the PdnsServerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DnsCredentialUpdateCommand) GetPdnsServerIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PdnsServerId.Get(), o.PdnsServerId.IsSet()
+}
+
+// HasPdnsServerId returns a boolean if a field has been set.
+func (o *DnsCredentialUpdateCommand) HasPdnsServerId() bool {
+	if o != nil && o.PdnsServerId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPdnsServerId gets a reference to the given NullableString and assigns it to the PdnsServerId field.
+func (o *DnsCredentialUpdateCommand) SetPdnsServerId(v string) {
+	o.PdnsServerId.Set(&v)
+}
+// SetPdnsServerIdNil sets the value for PdnsServerId to be an explicit nil
+func (o *DnsCredentialUpdateCommand) SetPdnsServerIdNil() {
+	o.PdnsServerId.Set(nil)
+}
+
+// UnsetPdnsServerId ensures that no value is present for PdnsServerId, not even an explicit nil
+func (o *DnsCredentialUpdateCommand) UnsetPdnsServerId() {
+	o.PdnsServerId.Unset()
+}
+
 func (o DnsCredentialUpdateCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -250,17 +521,38 @@ func (o DnsCredentialUpdateCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.ProviderType.IsSet() {
-		toSerialize["providerType"] = o.ProviderType.Get()
+	if !IsNil(o.ProviderType) {
+		toSerialize["providerType"] = o.ProviderType
 	}
-	if o.DomainFilter.IsSet() {
-		toSerialize["domainFilter"] = o.DomainFilter.Get()
+	if !IsNil(o.DomainFilter) {
+		toSerialize["domainFilter"] = o.DomainFilter
 	}
 	if !IsNil(o.UseLetsEncrypt) {
 		toSerialize["useLetsEncrypt"] = o.UseLetsEncrypt
+	}
+	if o.AuthMethod.IsSet() {
+		toSerialize["authMethod"] = o.AuthMethod.Get()
+	}
+	if o.AuthVariant.IsSet() {
+		toSerialize["authVariant"] = o.AuthVariant.Get()
+	}
+	if o.AwsRoleArn.IsSet() {
+		toSerialize["awsRoleArn"] = o.AwsRoleArn.Get()
+	}
+	if o.GcpServiceAccountEmail.IsSet() {
+		toSerialize["gcpServiceAccountEmail"] = o.GcpServiceAccountEmail.Get()
+	}
+	if o.PdnsApiUrl.IsSet() {
+		toSerialize["pdnsApiUrl"] = o.PdnsApiUrl.Get()
+	}
+	if o.PdnsApiKey.IsSet() {
+		toSerialize["pdnsApiKey"] = o.PdnsApiKey.Get()
+	}
+	if o.PdnsServerId.IsSet() {
+		toSerialize["pdnsServerId"] = o.PdnsServerId.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -289,6 +581,13 @@ func (o *DnsCredentialUpdateCommand) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "providerType")
 		delete(additionalProperties, "domainFilter")
 		delete(additionalProperties, "useLetsEncrypt")
+		delete(additionalProperties, "authMethod")
+		delete(additionalProperties, "authVariant")
+		delete(additionalProperties, "awsRoleArn")
+		delete(additionalProperties, "gcpServiceAccountEmail")
+		delete(additionalProperties, "pdnsApiUrl")
+		delete(additionalProperties, "pdnsApiKey")
+		delete(additionalProperties, "pdnsServerId")
 		o.AdditionalProperties = additionalProperties
 	}
 

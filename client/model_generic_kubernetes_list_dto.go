@@ -27,10 +27,10 @@ type GenericKubernetesListDto struct {
 	Name NullableString `json:"name"`
 	MainProject MainProjectDto `json:"mainProject"`
 	AssociatedVClusters []CommonDropdownDto `json:"associatedVClusters"`
-	CreatedBy NullableString `json:"createdBy"`
+	CreatedBy AuditUserDto `json:"createdBy"`
 	CreatedAt NullableString `json:"createdAt"`
 	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	LastModifiedBy AuditUserDto `json:"lastModifiedBy"`
 	IsDefault bool `json:"isDefault"`
 	OrganizationId int32 `json:"organizationId"`
 	OrganizationName NullableString `json:"organizationName"`
@@ -44,7 +44,7 @@ type _GenericKubernetesListDto GenericKubernetesListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGenericKubernetesListDto(id int32, projectCount int32, isLocked bool, name NullableString, mainProject MainProjectDto, associatedVClusters []CommonDropdownDto, createdBy NullableString, createdAt NullableString, lastModified NullableString, lastModifiedBy NullableString, isDefault bool, organizationId int32, organizationName NullableString, continentName NullableString) *GenericKubernetesListDto {
+func NewGenericKubernetesListDto(id int32, projectCount int32, isLocked bool, name NullableString, mainProject MainProjectDto, associatedVClusters []CommonDropdownDto, createdBy AuditUserDto, createdAt NullableString, lastModified NullableString, lastModifiedBy AuditUserDto, isDefault bool, organizationId int32, organizationName NullableString, continentName NullableString) *GenericKubernetesListDto {
 	this := GenericKubernetesListDto{}
 	this.Id = id
 	this.ProjectCount = projectCount
@@ -220,29 +220,27 @@ func (o *GenericKubernetesListDto) SetAssociatedVClusters(v []CommonDropdownDto)
 }
 
 // GetCreatedBy returns the CreatedBy field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *GenericKubernetesListDto) GetCreatedBy() string {
-	if o == nil || o.CreatedBy.Get() == nil {
-		var ret string
+func (o *GenericKubernetesListDto) GetCreatedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
 		return ret
 	}
 
-	return *o.CreatedBy.Get()
+	return o.CreatedBy
 }
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GenericKubernetesListDto) GetCreatedByOk() (*string, bool) {
+func (o *GenericKubernetesListDto) GetCreatedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
+	return &o.CreatedBy, true
 }
 
 // SetCreatedBy sets field value
-func (o *GenericKubernetesListDto) SetCreatedBy(v string) {
-	o.CreatedBy.Set(&v)
+func (o *GenericKubernetesListDto) SetCreatedBy(v AuditUserDto) {
+	o.CreatedBy = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -298,29 +296,27 @@ func (o *GenericKubernetesListDto) SetLastModified(v string) {
 }
 
 // GetLastModifiedBy returns the LastModifiedBy field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *GenericKubernetesListDto) GetLastModifiedBy() string {
-	if o == nil || o.LastModifiedBy.Get() == nil {
-		var ret string
+func (o *GenericKubernetesListDto) GetLastModifiedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
 		return ret
 	}
 
-	return *o.LastModifiedBy.Get()
+	return o.LastModifiedBy
 }
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GenericKubernetesListDto) GetLastModifiedByOk() (*string, bool) {
+func (o *GenericKubernetesListDto) GetLastModifiedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
+	return &o.LastModifiedBy, true
 }
 
 // SetLastModifiedBy sets field value
-func (o *GenericKubernetesListDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy.Set(&v)
+func (o *GenericKubernetesListDto) SetLastModifiedBy(v AuditUserDto) {
+	o.LastModifiedBy = v
 }
 
 // GetIsDefault returns the IsDefault field value
@@ -441,10 +437,10 @@ func (o GenericKubernetesListDto) ToMap() (map[string]interface{}, error) {
 	if o.AssociatedVClusters != nil {
 		toSerialize["associatedVClusters"] = o.AssociatedVClusters
 	}
-	toSerialize["createdBy"] = o.CreatedBy.Get()
+	toSerialize["createdBy"] = o.CreatedBy
 	toSerialize["createdAt"] = o.CreatedAt.Get()
 	toSerialize["lastModified"] = o.LastModified.Get()
-	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	toSerialize["lastModifiedBy"] = o.LastModifiedBy
 	toSerialize["isDefault"] = o.IsDefault
 	toSerialize["organizationId"] = o.OrganizationId
 	toSerialize["organizationName"] = o.OrganizationName.Get()

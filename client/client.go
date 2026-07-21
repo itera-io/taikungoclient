@@ -57,6 +57,8 @@ type APIClient struct {
 
 	AccountsAPI *AccountsAPIService
 
+	AdminAPI *AdminAPIService
+
 	AiCredentialsAPI *AiCredentialsAPIService
 
 	AlertingIntegrationsAPI *AlertingIntegrationsAPIService
@@ -81,6 +83,8 @@ type APIClient struct {
 
 	CatalogAppAPI *CatalogAppAPIService
 
+	CertificateCredentialsAPI *CertificateCredentialsAPIService
+
 	CheckerAPI *CheckerAPIService
 
 	CloudCredentialAPI *CloudCredentialAPIService
@@ -102,6 +106,8 @@ type APIClient struct {
 	ExecutorsAPI *ExecutorsAPIService
 
 	FlavorsAPI *FlavorsAPIService
+
+	GatewayAPIAPI *GatewayAPIAPIService
 
 	GenericKubernetesCloudCredentialAPI *GenericKubernetesCloudCredentialAPIService
 
@@ -239,6 +245,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AWSCloudCredentialAPI = (*AWSCloudCredentialAPIService)(&c.common)
 	c.AccessProfilesAPI = (*AccessProfilesAPIService)(&c.common)
 	c.AccountsAPI = (*AccountsAPIService)(&c.common)
+	c.AdminAPI = (*AdminAPIService)(&c.common)
 	c.AiCredentialsAPI = (*AiCredentialsAPIService)(&c.common)
 	c.AlertingIntegrationsAPI = (*AlertingIntegrationsAPIService)(&c.common)
 	c.AlertingProfilesAPI = (*AlertingProfilesAPIService)(&c.common)
@@ -251,6 +258,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.BillingAPI = (*BillingAPIService)(&c.common)
 	c.CatalogAPI = (*CatalogAPIService)(&c.common)
 	c.CatalogAppAPI = (*CatalogAppAPIService)(&c.common)
+	c.CertificateCredentialsAPI = (*CertificateCredentialsAPIService)(&c.common)
 	c.CheckerAPI = (*CheckerAPIService)(&c.common)
 	c.CloudCredentialAPI = (*CloudCredentialAPIService)(&c.common)
 	c.CommonAPI = (*CommonAPIService)(&c.common)
@@ -262,6 +270,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.DocumentationAPI = (*DocumentationAPIService)(&c.common)
 	c.ExecutorsAPI = (*ExecutorsAPIService)(&c.common)
 	c.FlavorsAPI = (*FlavorsAPIService)(&c.common)
+	c.GatewayAPIAPI = (*GatewayAPIAPIService)(&c.common)
 	c.GenericKubernetesCloudCredentialAPI = (*GenericKubernetesCloudCredentialAPIService)(&c.common)
 	c.GlobalConfigurationAPI = (*GlobalConfigurationAPIService)(&c.common)
 	c.GoogleAPI = (*GoogleAPIService)(&c.common)

@@ -31,9 +31,9 @@ type AlertingProfilesListDto struct {
 	Emails []AlertingEmailDto `json:"emails"`
 	Webhooks []AlertingWebhookDto `json:"webhooks"`
 	Projects []CommonDropdownDto `json:"projects"`
-	CreatedBy NullableString `json:"createdBy"`
+	CreatedBy AuditUserDto `json:"createdBy"`
 	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	LastModifiedBy AuditUserDto `json:"lastModifiedBy"`
 	Reminder AlertingReminder `json:"reminder"`
 	CreatedAt string `json:"createdAt"`
 	AdditionalProperties map[string]interface{}
@@ -45,7 +45,7 @@ type _AlertingProfilesListDto AlertingProfilesListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlertingProfilesListDto(id int32, name string, organizationId NullableInt32, organizationName NullableString, slackConfigurationId NullableInt32, slackConfigurationName NullableString, isLocked bool, emails []AlertingEmailDto, webhooks []AlertingWebhookDto, projects []CommonDropdownDto, createdBy NullableString, lastModified NullableString, lastModifiedBy NullableString, reminder AlertingReminder, createdAt string) *AlertingProfilesListDto {
+func NewAlertingProfilesListDto(id int32, name string, organizationId NullableInt32, organizationName NullableString, slackConfigurationId NullableInt32, slackConfigurationName NullableString, isLocked bool, emails []AlertingEmailDto, webhooks []AlertingWebhookDto, projects []CommonDropdownDto, createdBy AuditUserDto, lastModified NullableString, lastModifiedBy AuditUserDto, reminder AlertingReminder, createdAt string) *AlertingProfilesListDto {
 	this := AlertingProfilesListDto{}
 	this.Id = id
 	this.Name = name
@@ -322,29 +322,27 @@ func (o *AlertingProfilesListDto) SetProjects(v []CommonDropdownDto) {
 }
 
 // GetCreatedBy returns the CreatedBy field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *AlertingProfilesListDto) GetCreatedBy() string {
-	if o == nil || o.CreatedBy.Get() == nil {
-		var ret string
+func (o *AlertingProfilesListDto) GetCreatedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
 		return ret
 	}
 
-	return *o.CreatedBy.Get()
+	return o.CreatedBy
 }
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AlertingProfilesListDto) GetCreatedByOk() (*string, bool) {
+func (o *AlertingProfilesListDto) GetCreatedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
+	return &o.CreatedBy, true
 }
 
 // SetCreatedBy sets field value
-func (o *AlertingProfilesListDto) SetCreatedBy(v string) {
-	o.CreatedBy.Set(&v)
+func (o *AlertingProfilesListDto) SetCreatedBy(v AuditUserDto) {
+	o.CreatedBy = v
 }
 
 // GetLastModified returns the LastModified field value
@@ -374,29 +372,27 @@ func (o *AlertingProfilesListDto) SetLastModified(v string) {
 }
 
 // GetLastModifiedBy returns the LastModifiedBy field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *AlertingProfilesListDto) GetLastModifiedBy() string {
-	if o == nil || o.LastModifiedBy.Get() == nil {
-		var ret string
+func (o *AlertingProfilesListDto) GetLastModifiedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
 		return ret
 	}
 
-	return *o.LastModifiedBy.Get()
+	return o.LastModifiedBy
 }
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AlertingProfilesListDto) GetLastModifiedByOk() (*string, bool) {
+func (o *AlertingProfilesListDto) GetLastModifiedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
+	return &o.LastModifiedBy, true
 }
 
 // SetLastModifiedBy sets field value
-func (o *AlertingProfilesListDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy.Set(&v)
+func (o *AlertingProfilesListDto) SetLastModifiedBy(v AuditUserDto) {
+	o.LastModifiedBy = v
 }
 
 // GetReminder returns the Reminder field value
@@ -467,9 +463,9 @@ func (o AlertingProfilesListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["emails"] = o.Emails
 	toSerialize["webhooks"] = o.Webhooks
 	toSerialize["projects"] = o.Projects
-	toSerialize["createdBy"] = o.CreatedBy.Get()
+	toSerialize["createdBy"] = o.CreatedBy
 	toSerialize["lastModified"] = o.LastModified.Get()
-	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	toSerialize["lastModifiedBy"] = o.LastModifiedBy
 	toSerialize["reminder"] = o.Reminder
 	toSerialize["createdAt"] = o.CreatedAt
 

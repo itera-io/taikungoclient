@@ -37,9 +37,9 @@ type OpenstackCredentialsListDto struct {
 	VolumeType NullableString `json:"volumeType"`
 	InternalSubnetId NullableString `json:"internalSubnetId"`
 	Projects []CommonDropdownDto `json:"projects"`
-	CreatedBy string `json:"createdBy"`
+	CreatedBy AuditUserDto `json:"createdBy"`
 	LastModified string `json:"lastModified"`
-	LastModifiedBy string `json:"lastModifiedBy"`
+	LastModifiedBy AuditUserDto `json:"lastModifiedBy"`
 	IsDefault bool `json:"isDefault"`
 	OrganizationId int32 `json:"organizationId"`
 	OrganizationName string `json:"organizationName"`
@@ -61,7 +61,7 @@ type _OpenstackCredentialsListDto OpenstackCredentialsListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOpenstackCredentialsListDto(id int32, projectCount int32, isLocked bool, name string, user string, url string, project string, domain string, region string, publicNetwork string, importNetwork bool, tenantId string, availabilityZone NullableString, volumeType NullableString, internalSubnetId NullableString, projects []CommonDropdownDto, createdBy string, lastModified string, lastModifiedBy string, isDefault bool, organizationId int32, organizationName string, createdAt string, continentName string, isAdmin bool, isInfra bool, applicationCredEnabled bool, skipTlsFlag bool) *OpenstackCredentialsListDto {
+func NewOpenstackCredentialsListDto(id int32, projectCount int32, isLocked bool, name string, user string, url string, project string, domain string, region string, publicNetwork string, importNetwork bool, tenantId string, availabilityZone NullableString, volumeType NullableString, internalSubnetId NullableString, projects []CommonDropdownDto, createdBy AuditUserDto, lastModified string, lastModifiedBy AuditUserDto, isDefault bool, organizationId int32, organizationName string, createdAt string, continentName string, isAdmin bool, isInfra bool, applicationCredEnabled bool, skipTlsFlag bool) *OpenstackCredentialsListDto {
 	this := OpenstackCredentialsListDto{}
 	this.Id = id
 	this.ProjectCount = projectCount
@@ -493,9 +493,9 @@ func (o *OpenstackCredentialsListDto) SetProjects(v []CommonDropdownDto) {
 }
 
 // GetCreatedBy returns the CreatedBy field value
-func (o *OpenstackCredentialsListDto) GetCreatedBy() string {
+func (o *OpenstackCredentialsListDto) GetCreatedBy() AuditUserDto {
 	if o == nil {
-		var ret string
+		var ret AuditUserDto
 		return ret
 	}
 
@@ -504,7 +504,7 @@ func (o *OpenstackCredentialsListDto) GetCreatedBy() string {
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-func (o *OpenstackCredentialsListDto) GetCreatedByOk() (*string, bool) {
+func (o *OpenstackCredentialsListDto) GetCreatedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -512,7 +512,7 @@ func (o *OpenstackCredentialsListDto) GetCreatedByOk() (*string, bool) {
 }
 
 // SetCreatedBy sets field value
-func (o *OpenstackCredentialsListDto) SetCreatedBy(v string) {
+func (o *OpenstackCredentialsListDto) SetCreatedBy(v AuditUserDto) {
 	o.CreatedBy = v
 }
 
@@ -541,9 +541,9 @@ func (o *OpenstackCredentialsListDto) SetLastModified(v string) {
 }
 
 // GetLastModifiedBy returns the LastModifiedBy field value
-func (o *OpenstackCredentialsListDto) GetLastModifiedBy() string {
+func (o *OpenstackCredentialsListDto) GetLastModifiedBy() AuditUserDto {
 	if o == nil {
-		var ret string
+		var ret AuditUserDto
 		return ret
 	}
 
@@ -552,7 +552,7 @@ func (o *OpenstackCredentialsListDto) GetLastModifiedBy() string {
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
-func (o *OpenstackCredentialsListDto) GetLastModifiedByOk() (*string, bool) {
+func (o *OpenstackCredentialsListDto) GetLastModifiedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -560,7 +560,7 @@ func (o *OpenstackCredentialsListDto) GetLastModifiedByOk() (*string, bool) {
 }
 
 // SetLastModifiedBy sets field value
-func (o *OpenstackCredentialsListDto) SetLastModifiedBy(v string) {
+func (o *OpenstackCredentialsListDto) SetLastModifiedBy(v AuditUserDto) {
 	o.LastModifiedBy = v
 }
 

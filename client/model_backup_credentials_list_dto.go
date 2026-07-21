@@ -30,9 +30,9 @@ type BackupCredentialsListDto struct {
 	OrganizationName NullableString `json:"organizationName"`
 	Projects []CommonDropdownDto `json:"projects"`
 	IsLocked bool `json:"isLocked"`
-	CreatedBy NullableString `json:"createdBy"`
+	CreatedBy AuditUserDto `json:"createdBy"`
 	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	LastModifiedBy AuditUserDto `json:"lastModifiedBy"`
 	CreatedAt NullableString `json:"createdAt"`
 	IsDefault bool `json:"isDefault"`
 	IsInfra bool `json:"isInfra"`
@@ -45,7 +45,7 @@ type _BackupCredentialsListDto BackupCredentialsListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBackupCredentialsListDto(id int32, s3Name string, s3AccessKeyId string, s3Endpoint string, s3Region string, organizationId NullableInt32, organizationName NullableString, projects []CommonDropdownDto, isLocked bool, createdBy NullableString, lastModified NullableString, lastModifiedBy NullableString, createdAt NullableString, isDefault bool, isInfra bool) *BackupCredentialsListDto {
+func NewBackupCredentialsListDto(id int32, s3Name string, s3AccessKeyId string, s3Endpoint string, s3Region string, organizationId NullableInt32, organizationName NullableString, projects []CommonDropdownDto, isLocked bool, createdBy AuditUserDto, lastModified NullableString, lastModifiedBy AuditUserDto, createdAt NullableString, isDefault bool, isInfra bool) *BackupCredentialsListDto {
 	this := BackupCredentialsListDto{}
 	this.Id = id
 	this.S3Name = s3Name
@@ -294,29 +294,27 @@ func (o *BackupCredentialsListDto) SetIsLocked(v bool) {
 }
 
 // GetCreatedBy returns the CreatedBy field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *BackupCredentialsListDto) GetCreatedBy() string {
-	if o == nil || o.CreatedBy.Get() == nil {
-		var ret string
+func (o *BackupCredentialsListDto) GetCreatedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
 		return ret
 	}
 
-	return *o.CreatedBy.Get()
+	return o.CreatedBy
 }
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *BackupCredentialsListDto) GetCreatedByOk() (*string, bool) {
+func (o *BackupCredentialsListDto) GetCreatedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
+	return &o.CreatedBy, true
 }
 
 // SetCreatedBy sets field value
-func (o *BackupCredentialsListDto) SetCreatedBy(v string) {
-	o.CreatedBy.Set(&v)
+func (o *BackupCredentialsListDto) SetCreatedBy(v AuditUserDto) {
+	o.CreatedBy = v
 }
 
 // GetLastModified returns the LastModified field value
@@ -346,29 +344,27 @@ func (o *BackupCredentialsListDto) SetLastModified(v string) {
 }
 
 // GetLastModifiedBy returns the LastModifiedBy field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *BackupCredentialsListDto) GetLastModifiedBy() string {
-	if o == nil || o.LastModifiedBy.Get() == nil {
-		var ret string
+func (o *BackupCredentialsListDto) GetLastModifiedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
 		return ret
 	}
 
-	return *o.LastModifiedBy.Get()
+	return o.LastModifiedBy
 }
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *BackupCredentialsListDto) GetLastModifiedByOk() (*string, bool) {
+func (o *BackupCredentialsListDto) GetLastModifiedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
+	return &o.LastModifiedBy, true
 }
 
 // SetLastModifiedBy sets field value
-func (o *BackupCredentialsListDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy.Set(&v)
+func (o *BackupCredentialsListDto) SetLastModifiedBy(v AuditUserDto) {
+	o.LastModifiedBy = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -464,9 +460,9 @@ func (o BackupCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["organizationName"] = o.OrganizationName.Get()
 	toSerialize["projects"] = o.Projects
 	toSerialize["isLocked"] = o.IsLocked
-	toSerialize["createdBy"] = o.CreatedBy.Get()
+	toSerialize["createdBy"] = o.CreatedBy
 	toSerialize["lastModified"] = o.LastModified.Get()
-	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	toSerialize["lastModifiedBy"] = o.LastModifiedBy
 	toSerialize["createdAt"] = o.CreatedAt.Get()
 	toSerialize["isDefault"] = o.IsDefault
 	toSerialize["isInfra"] = o.IsInfra

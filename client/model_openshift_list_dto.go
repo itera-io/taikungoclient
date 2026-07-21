@@ -30,9 +30,9 @@ type OpenshiftListDto struct {
 	Projects []CommonDropdownDto `json:"projects"`
 	ProjectCount int32 `json:"projectCount"`
 	IsLocked bool `json:"isLocked"`
-	CreatedBy NullableString `json:"createdBy"`
+	CreatedBy AuditUserDto `json:"createdBy"`
 	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	LastModifiedBy AuditUserDto `json:"lastModifiedBy"`
 	IsDefault bool `json:"isDefault"`
 	CreatedAt NullableString `json:"createdAt"`
 	ContinentName string `json:"continentName"`
@@ -45,7 +45,7 @@ type _OpenshiftListDto OpenshiftListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOpenshiftListDto(id int32, name string, baseDomain string, storageClass string, organizationId int32, organizationName string, projects []CommonDropdownDto, projectCount int32, isLocked bool, createdBy NullableString, lastModified NullableString, lastModifiedBy NullableString, isDefault bool, createdAt NullableString, continentName string) *OpenshiftListDto {
+func NewOpenshiftListDto(id int32, name string, baseDomain string, storageClass string, organizationId int32, organizationName string, projects []CommonDropdownDto, projectCount int32, isLocked bool, createdBy AuditUserDto, lastModified NullableString, lastModifiedBy AuditUserDto, isDefault bool, createdAt NullableString, continentName string) *OpenshiftListDto {
 	this := OpenshiftListDto{}
 	this.Id = id
 	this.Name = name
@@ -290,29 +290,27 @@ func (o *OpenshiftListDto) SetIsLocked(v bool) {
 }
 
 // GetCreatedBy returns the CreatedBy field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *OpenshiftListDto) GetCreatedBy() string {
-	if o == nil || o.CreatedBy.Get() == nil {
-		var ret string
+func (o *OpenshiftListDto) GetCreatedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
 		return ret
 	}
 
-	return *o.CreatedBy.Get()
+	return o.CreatedBy
 }
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OpenshiftListDto) GetCreatedByOk() (*string, bool) {
+func (o *OpenshiftListDto) GetCreatedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
+	return &o.CreatedBy, true
 }
 
 // SetCreatedBy sets field value
-func (o *OpenshiftListDto) SetCreatedBy(v string) {
-	o.CreatedBy.Set(&v)
+func (o *OpenshiftListDto) SetCreatedBy(v AuditUserDto) {
+	o.CreatedBy = v
 }
 
 // GetLastModified returns the LastModified field value
@@ -342,29 +340,27 @@ func (o *OpenshiftListDto) SetLastModified(v string) {
 }
 
 // GetLastModifiedBy returns the LastModifiedBy field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *OpenshiftListDto) GetLastModifiedBy() string {
-	if o == nil || o.LastModifiedBy.Get() == nil {
-		var ret string
+func (o *OpenshiftListDto) GetLastModifiedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
 		return ret
 	}
 
-	return *o.LastModifiedBy.Get()
+	return o.LastModifiedBy
 }
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OpenshiftListDto) GetLastModifiedByOk() (*string, bool) {
+func (o *OpenshiftListDto) GetLastModifiedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
+	return &o.LastModifiedBy, true
 }
 
 // SetLastModifiedBy sets field value
-func (o *OpenshiftListDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy.Set(&v)
+func (o *OpenshiftListDto) SetLastModifiedBy(v AuditUserDto) {
+	o.LastModifiedBy = v
 }
 
 // GetIsDefault returns the IsDefault field value
@@ -460,9 +456,9 @@ func (o OpenshiftListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["projects"] = o.Projects
 	toSerialize["projectCount"] = o.ProjectCount
 	toSerialize["isLocked"] = o.IsLocked
-	toSerialize["createdBy"] = o.CreatedBy.Get()
+	toSerialize["createdBy"] = o.CreatedBy
 	toSerialize["lastModified"] = o.LastModified.Get()
-	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	toSerialize["lastModifiedBy"] = o.LastModifiedBy
 	toSerialize["isDefault"] = o.IsDefault
 	toSerialize["createdAt"] = o.CreatedAt.Get()
 	toSerialize["continentName"] = o.ContinentName

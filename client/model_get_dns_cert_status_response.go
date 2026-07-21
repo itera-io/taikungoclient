@@ -20,7 +20,9 @@ var _ MappedNullable = &GetDnsCertStatusResponse{}
 
 // GetDnsCertStatusResponse struct for GetDnsCertStatusResponse
 type GetDnsCertStatusResponse struct {
-	Enabled *bool `json:"enabled,omitempty"`
+	CertManagerEnabled *bool `json:"certManagerEnabled,omitempty"`
+	ExternalDnsEnabled *bool `json:"externalDnsEnabled,omitempty"`
+	TrustManagerEnabled *bool `json:"trustManagerEnabled,omitempty"`
 	DnsProvider NullableString `json:"dnsProvider,omitempty"`
 	CertIssuerType NullableString `json:"certIssuerType,omitempty"`
 	Domain NullableString `json:"domain,omitempty"`
@@ -28,9 +30,19 @@ type GetDnsCertStatusResponse struct {
 	IssuerName NullableString `json:"issuerName,omitempty"`
 	DesiredConfigVersion *int32 `json:"desiredConfigVersion,omitempty"`
 	AppliedConfigVersion *int32 `json:"appliedConfigVersion,omitempty"`
+	DesiredCertManagerVersion *int32 `json:"desiredCertManagerVersion,omitempty"`
+	AppliedCertManagerVersion *int32 `json:"appliedCertManagerVersion,omitempty"`
+	DesiredTrustManagerVersion *int32 `json:"desiredTrustManagerVersion,omitempty"`
+	AppliedTrustManagerVersion *int32 `json:"appliedTrustManagerVersion,omitempty"`
+	DesiredExternalDnsVersion *int32 `json:"desiredExternalDnsVersion,omitempty"`
+	AppliedExternalDnsVersion *int32 `json:"appliedExternalDnsVersion,omitempty"`
+	DesiredIssuerVersion *int32 `json:"desiredIssuerVersion,omitempty"`
+	AppliedIssuerVersion *int32 `json:"appliedIssuerVersion,omitempty"`
 	Synced *bool `json:"synced,omitempty"`
 	DnsCredentialId NullableInt32 `json:"dnsCredentialId,omitempty"`
 	DnsCredentialName NullableString `json:"dnsCredentialName,omitempty"`
+	ProjectStatus *ProjectStatus `json:"projectStatus,omitempty"`
+	FailureReason NullableString `json:"failureReason,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -53,36 +65,100 @@ func NewGetDnsCertStatusResponseWithDefaults() *GetDnsCertStatusResponse {
 	return &this
 }
 
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
-func (o *GetDnsCertStatusResponse) GetEnabled() bool {
-	if o == nil || IsNil(o.Enabled) {
+// GetCertManagerEnabled returns the CertManagerEnabled field value if set, zero value otherwise.
+func (o *GetDnsCertStatusResponse) GetCertManagerEnabled() bool {
+	if o == nil || IsNil(o.CertManagerEnabled) {
 		var ret bool
 		return ret
 	}
-	return *o.Enabled
+	return *o.CertManagerEnabled
 }
 
-// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
+// GetCertManagerEnabledOk returns a tuple with the CertManagerEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetDnsCertStatusResponse) GetEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.Enabled) {
+func (o *GetDnsCertStatusResponse) GetCertManagerEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.CertManagerEnabled) {
 		return nil, false
 	}
-	return o.Enabled, true
+	return o.CertManagerEnabled, true
 }
 
-// HasEnabled returns a boolean if a field has been set.
-func (o *GetDnsCertStatusResponse) HasEnabled() bool {
-	if o != nil && !IsNil(o.Enabled) {
+// HasCertManagerEnabled returns a boolean if a field has been set.
+func (o *GetDnsCertStatusResponse) HasCertManagerEnabled() bool {
+	if o != nil && !IsNil(o.CertManagerEnabled) {
 		return true
 	}
 
 	return false
 }
 
-// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
-func (o *GetDnsCertStatusResponse) SetEnabled(v bool) {
-	o.Enabled = &v
+// SetCertManagerEnabled gets a reference to the given bool and assigns it to the CertManagerEnabled field.
+func (o *GetDnsCertStatusResponse) SetCertManagerEnabled(v bool) {
+	o.CertManagerEnabled = &v
+}
+
+// GetExternalDnsEnabled returns the ExternalDnsEnabled field value if set, zero value otherwise.
+func (o *GetDnsCertStatusResponse) GetExternalDnsEnabled() bool {
+	if o == nil || IsNil(o.ExternalDnsEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.ExternalDnsEnabled
+}
+
+// GetExternalDnsEnabledOk returns a tuple with the ExternalDnsEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetDnsCertStatusResponse) GetExternalDnsEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.ExternalDnsEnabled) {
+		return nil, false
+	}
+	return o.ExternalDnsEnabled, true
+}
+
+// HasExternalDnsEnabled returns a boolean if a field has been set.
+func (o *GetDnsCertStatusResponse) HasExternalDnsEnabled() bool {
+	if o != nil && !IsNil(o.ExternalDnsEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalDnsEnabled gets a reference to the given bool and assigns it to the ExternalDnsEnabled field.
+func (o *GetDnsCertStatusResponse) SetExternalDnsEnabled(v bool) {
+	o.ExternalDnsEnabled = &v
+}
+
+// GetTrustManagerEnabled returns the TrustManagerEnabled field value if set, zero value otherwise.
+func (o *GetDnsCertStatusResponse) GetTrustManagerEnabled() bool {
+	if o == nil || IsNil(o.TrustManagerEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.TrustManagerEnabled
+}
+
+// GetTrustManagerEnabledOk returns a tuple with the TrustManagerEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetDnsCertStatusResponse) GetTrustManagerEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.TrustManagerEnabled) {
+		return nil, false
+	}
+	return o.TrustManagerEnabled, true
+}
+
+// HasTrustManagerEnabled returns a boolean if a field has been set.
+func (o *GetDnsCertStatusResponse) HasTrustManagerEnabled() bool {
+	if o != nil && !IsNil(o.TrustManagerEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetTrustManagerEnabled gets a reference to the given bool and assigns it to the TrustManagerEnabled field.
+func (o *GetDnsCertStatusResponse) SetTrustManagerEnabled(v bool) {
+	o.TrustManagerEnabled = &v
 }
 
 // GetDnsProvider returns the DnsProvider field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -359,6 +435,262 @@ func (o *GetDnsCertStatusResponse) SetAppliedConfigVersion(v int32) {
 	o.AppliedConfigVersion = &v
 }
 
+// GetDesiredCertManagerVersion returns the DesiredCertManagerVersion field value if set, zero value otherwise.
+func (o *GetDnsCertStatusResponse) GetDesiredCertManagerVersion() int32 {
+	if o == nil || IsNil(o.DesiredCertManagerVersion) {
+		var ret int32
+		return ret
+	}
+	return *o.DesiredCertManagerVersion
+}
+
+// GetDesiredCertManagerVersionOk returns a tuple with the DesiredCertManagerVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetDnsCertStatusResponse) GetDesiredCertManagerVersionOk() (*int32, bool) {
+	if o == nil || IsNil(o.DesiredCertManagerVersion) {
+		return nil, false
+	}
+	return o.DesiredCertManagerVersion, true
+}
+
+// HasDesiredCertManagerVersion returns a boolean if a field has been set.
+func (o *GetDnsCertStatusResponse) HasDesiredCertManagerVersion() bool {
+	if o != nil && !IsNil(o.DesiredCertManagerVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetDesiredCertManagerVersion gets a reference to the given int32 and assigns it to the DesiredCertManagerVersion field.
+func (o *GetDnsCertStatusResponse) SetDesiredCertManagerVersion(v int32) {
+	o.DesiredCertManagerVersion = &v
+}
+
+// GetAppliedCertManagerVersion returns the AppliedCertManagerVersion field value if set, zero value otherwise.
+func (o *GetDnsCertStatusResponse) GetAppliedCertManagerVersion() int32 {
+	if o == nil || IsNil(o.AppliedCertManagerVersion) {
+		var ret int32
+		return ret
+	}
+	return *o.AppliedCertManagerVersion
+}
+
+// GetAppliedCertManagerVersionOk returns a tuple with the AppliedCertManagerVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetDnsCertStatusResponse) GetAppliedCertManagerVersionOk() (*int32, bool) {
+	if o == nil || IsNil(o.AppliedCertManagerVersion) {
+		return nil, false
+	}
+	return o.AppliedCertManagerVersion, true
+}
+
+// HasAppliedCertManagerVersion returns a boolean if a field has been set.
+func (o *GetDnsCertStatusResponse) HasAppliedCertManagerVersion() bool {
+	if o != nil && !IsNil(o.AppliedCertManagerVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetAppliedCertManagerVersion gets a reference to the given int32 and assigns it to the AppliedCertManagerVersion field.
+func (o *GetDnsCertStatusResponse) SetAppliedCertManagerVersion(v int32) {
+	o.AppliedCertManagerVersion = &v
+}
+
+// GetDesiredTrustManagerVersion returns the DesiredTrustManagerVersion field value if set, zero value otherwise.
+func (o *GetDnsCertStatusResponse) GetDesiredTrustManagerVersion() int32 {
+	if o == nil || IsNil(o.DesiredTrustManagerVersion) {
+		var ret int32
+		return ret
+	}
+	return *o.DesiredTrustManagerVersion
+}
+
+// GetDesiredTrustManagerVersionOk returns a tuple with the DesiredTrustManagerVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetDnsCertStatusResponse) GetDesiredTrustManagerVersionOk() (*int32, bool) {
+	if o == nil || IsNil(o.DesiredTrustManagerVersion) {
+		return nil, false
+	}
+	return o.DesiredTrustManagerVersion, true
+}
+
+// HasDesiredTrustManagerVersion returns a boolean if a field has been set.
+func (o *GetDnsCertStatusResponse) HasDesiredTrustManagerVersion() bool {
+	if o != nil && !IsNil(o.DesiredTrustManagerVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetDesiredTrustManagerVersion gets a reference to the given int32 and assigns it to the DesiredTrustManagerVersion field.
+func (o *GetDnsCertStatusResponse) SetDesiredTrustManagerVersion(v int32) {
+	o.DesiredTrustManagerVersion = &v
+}
+
+// GetAppliedTrustManagerVersion returns the AppliedTrustManagerVersion field value if set, zero value otherwise.
+func (o *GetDnsCertStatusResponse) GetAppliedTrustManagerVersion() int32 {
+	if o == nil || IsNil(o.AppliedTrustManagerVersion) {
+		var ret int32
+		return ret
+	}
+	return *o.AppliedTrustManagerVersion
+}
+
+// GetAppliedTrustManagerVersionOk returns a tuple with the AppliedTrustManagerVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetDnsCertStatusResponse) GetAppliedTrustManagerVersionOk() (*int32, bool) {
+	if o == nil || IsNil(o.AppliedTrustManagerVersion) {
+		return nil, false
+	}
+	return o.AppliedTrustManagerVersion, true
+}
+
+// HasAppliedTrustManagerVersion returns a boolean if a field has been set.
+func (o *GetDnsCertStatusResponse) HasAppliedTrustManagerVersion() bool {
+	if o != nil && !IsNil(o.AppliedTrustManagerVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetAppliedTrustManagerVersion gets a reference to the given int32 and assigns it to the AppliedTrustManagerVersion field.
+func (o *GetDnsCertStatusResponse) SetAppliedTrustManagerVersion(v int32) {
+	o.AppliedTrustManagerVersion = &v
+}
+
+// GetDesiredExternalDnsVersion returns the DesiredExternalDnsVersion field value if set, zero value otherwise.
+func (o *GetDnsCertStatusResponse) GetDesiredExternalDnsVersion() int32 {
+	if o == nil || IsNil(o.DesiredExternalDnsVersion) {
+		var ret int32
+		return ret
+	}
+	return *o.DesiredExternalDnsVersion
+}
+
+// GetDesiredExternalDnsVersionOk returns a tuple with the DesiredExternalDnsVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetDnsCertStatusResponse) GetDesiredExternalDnsVersionOk() (*int32, bool) {
+	if o == nil || IsNil(o.DesiredExternalDnsVersion) {
+		return nil, false
+	}
+	return o.DesiredExternalDnsVersion, true
+}
+
+// HasDesiredExternalDnsVersion returns a boolean if a field has been set.
+func (o *GetDnsCertStatusResponse) HasDesiredExternalDnsVersion() bool {
+	if o != nil && !IsNil(o.DesiredExternalDnsVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetDesiredExternalDnsVersion gets a reference to the given int32 and assigns it to the DesiredExternalDnsVersion field.
+func (o *GetDnsCertStatusResponse) SetDesiredExternalDnsVersion(v int32) {
+	o.DesiredExternalDnsVersion = &v
+}
+
+// GetAppliedExternalDnsVersion returns the AppliedExternalDnsVersion field value if set, zero value otherwise.
+func (o *GetDnsCertStatusResponse) GetAppliedExternalDnsVersion() int32 {
+	if o == nil || IsNil(o.AppliedExternalDnsVersion) {
+		var ret int32
+		return ret
+	}
+	return *o.AppliedExternalDnsVersion
+}
+
+// GetAppliedExternalDnsVersionOk returns a tuple with the AppliedExternalDnsVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetDnsCertStatusResponse) GetAppliedExternalDnsVersionOk() (*int32, bool) {
+	if o == nil || IsNil(o.AppliedExternalDnsVersion) {
+		return nil, false
+	}
+	return o.AppliedExternalDnsVersion, true
+}
+
+// HasAppliedExternalDnsVersion returns a boolean if a field has been set.
+func (o *GetDnsCertStatusResponse) HasAppliedExternalDnsVersion() bool {
+	if o != nil && !IsNil(o.AppliedExternalDnsVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetAppliedExternalDnsVersion gets a reference to the given int32 and assigns it to the AppliedExternalDnsVersion field.
+func (o *GetDnsCertStatusResponse) SetAppliedExternalDnsVersion(v int32) {
+	o.AppliedExternalDnsVersion = &v
+}
+
+// GetDesiredIssuerVersion returns the DesiredIssuerVersion field value if set, zero value otherwise.
+func (o *GetDnsCertStatusResponse) GetDesiredIssuerVersion() int32 {
+	if o == nil || IsNil(o.DesiredIssuerVersion) {
+		var ret int32
+		return ret
+	}
+	return *o.DesiredIssuerVersion
+}
+
+// GetDesiredIssuerVersionOk returns a tuple with the DesiredIssuerVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetDnsCertStatusResponse) GetDesiredIssuerVersionOk() (*int32, bool) {
+	if o == nil || IsNil(o.DesiredIssuerVersion) {
+		return nil, false
+	}
+	return o.DesiredIssuerVersion, true
+}
+
+// HasDesiredIssuerVersion returns a boolean if a field has been set.
+func (o *GetDnsCertStatusResponse) HasDesiredIssuerVersion() bool {
+	if o != nil && !IsNil(o.DesiredIssuerVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetDesiredIssuerVersion gets a reference to the given int32 and assigns it to the DesiredIssuerVersion field.
+func (o *GetDnsCertStatusResponse) SetDesiredIssuerVersion(v int32) {
+	o.DesiredIssuerVersion = &v
+}
+
+// GetAppliedIssuerVersion returns the AppliedIssuerVersion field value if set, zero value otherwise.
+func (o *GetDnsCertStatusResponse) GetAppliedIssuerVersion() int32 {
+	if o == nil || IsNil(o.AppliedIssuerVersion) {
+		var ret int32
+		return ret
+	}
+	return *o.AppliedIssuerVersion
+}
+
+// GetAppliedIssuerVersionOk returns a tuple with the AppliedIssuerVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetDnsCertStatusResponse) GetAppliedIssuerVersionOk() (*int32, bool) {
+	if o == nil || IsNil(o.AppliedIssuerVersion) {
+		return nil, false
+	}
+	return o.AppliedIssuerVersion, true
+}
+
+// HasAppliedIssuerVersion returns a boolean if a field has been set.
+func (o *GetDnsCertStatusResponse) HasAppliedIssuerVersion() bool {
+	if o != nil && !IsNil(o.AppliedIssuerVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetAppliedIssuerVersion gets a reference to the given int32 and assigns it to the AppliedIssuerVersion field.
+func (o *GetDnsCertStatusResponse) SetAppliedIssuerVersion(v int32) {
+	o.AppliedIssuerVersion = &v
+}
+
 // GetSynced returns the Synced field value if set, zero value otherwise.
 func (o *GetDnsCertStatusResponse) GetSynced() bool {
 	if o == nil || IsNil(o.Synced) {
@@ -475,6 +807,80 @@ func (o *GetDnsCertStatusResponse) UnsetDnsCredentialName() {
 	o.DnsCredentialName.Unset()
 }
 
+// GetProjectStatus returns the ProjectStatus field value if set, zero value otherwise.
+func (o *GetDnsCertStatusResponse) GetProjectStatus() ProjectStatus {
+	if o == nil || IsNil(o.ProjectStatus) {
+		var ret ProjectStatus
+		return ret
+	}
+	return *o.ProjectStatus
+}
+
+// GetProjectStatusOk returns a tuple with the ProjectStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetDnsCertStatusResponse) GetProjectStatusOk() (*ProjectStatus, bool) {
+	if o == nil || IsNil(o.ProjectStatus) {
+		return nil, false
+	}
+	return o.ProjectStatus, true
+}
+
+// HasProjectStatus returns a boolean if a field has been set.
+func (o *GetDnsCertStatusResponse) HasProjectStatus() bool {
+	if o != nil && !IsNil(o.ProjectStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectStatus gets a reference to the given ProjectStatus and assigns it to the ProjectStatus field.
+func (o *GetDnsCertStatusResponse) SetProjectStatus(v ProjectStatus) {
+	o.ProjectStatus = &v
+}
+
+// GetFailureReason returns the FailureReason field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetDnsCertStatusResponse) GetFailureReason() string {
+	if o == nil || IsNil(o.FailureReason.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.FailureReason.Get()
+}
+
+// GetFailureReasonOk returns a tuple with the FailureReason field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GetDnsCertStatusResponse) GetFailureReasonOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FailureReason.Get(), o.FailureReason.IsSet()
+}
+
+// HasFailureReason returns a boolean if a field has been set.
+func (o *GetDnsCertStatusResponse) HasFailureReason() bool {
+	if o != nil && o.FailureReason.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFailureReason gets a reference to the given NullableString and assigns it to the FailureReason field.
+func (o *GetDnsCertStatusResponse) SetFailureReason(v string) {
+	o.FailureReason.Set(&v)
+}
+// SetFailureReasonNil sets the value for FailureReason to be an explicit nil
+func (o *GetDnsCertStatusResponse) SetFailureReasonNil() {
+	o.FailureReason.Set(nil)
+}
+
+// UnsetFailureReason ensures that no value is present for FailureReason, not even an explicit nil
+func (o *GetDnsCertStatusResponse) UnsetFailureReason() {
+	o.FailureReason.Unset()
+}
+
 func (o GetDnsCertStatusResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -485,8 +891,14 @@ func (o GetDnsCertStatusResponse) MarshalJSON() ([]byte, error) {
 
 func (o GetDnsCertStatusResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Enabled) {
-		toSerialize["enabled"] = o.Enabled
+	if !IsNil(o.CertManagerEnabled) {
+		toSerialize["certManagerEnabled"] = o.CertManagerEnabled
+	}
+	if !IsNil(o.ExternalDnsEnabled) {
+		toSerialize["externalDnsEnabled"] = o.ExternalDnsEnabled
+	}
+	if !IsNil(o.TrustManagerEnabled) {
+		toSerialize["trustManagerEnabled"] = o.TrustManagerEnabled
 	}
 	if o.DnsProvider.IsSet() {
 		toSerialize["dnsProvider"] = o.DnsProvider.Get()
@@ -509,6 +921,30 @@ func (o GetDnsCertStatusResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AppliedConfigVersion) {
 		toSerialize["appliedConfigVersion"] = o.AppliedConfigVersion
 	}
+	if !IsNil(o.DesiredCertManagerVersion) {
+		toSerialize["desiredCertManagerVersion"] = o.DesiredCertManagerVersion
+	}
+	if !IsNil(o.AppliedCertManagerVersion) {
+		toSerialize["appliedCertManagerVersion"] = o.AppliedCertManagerVersion
+	}
+	if !IsNil(o.DesiredTrustManagerVersion) {
+		toSerialize["desiredTrustManagerVersion"] = o.DesiredTrustManagerVersion
+	}
+	if !IsNil(o.AppliedTrustManagerVersion) {
+		toSerialize["appliedTrustManagerVersion"] = o.AppliedTrustManagerVersion
+	}
+	if !IsNil(o.DesiredExternalDnsVersion) {
+		toSerialize["desiredExternalDnsVersion"] = o.DesiredExternalDnsVersion
+	}
+	if !IsNil(o.AppliedExternalDnsVersion) {
+		toSerialize["appliedExternalDnsVersion"] = o.AppliedExternalDnsVersion
+	}
+	if !IsNil(o.DesiredIssuerVersion) {
+		toSerialize["desiredIssuerVersion"] = o.DesiredIssuerVersion
+	}
+	if !IsNil(o.AppliedIssuerVersion) {
+		toSerialize["appliedIssuerVersion"] = o.AppliedIssuerVersion
+	}
 	if !IsNil(o.Synced) {
 		toSerialize["synced"] = o.Synced
 	}
@@ -517,6 +953,12 @@ func (o GetDnsCertStatusResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if o.DnsCredentialName.IsSet() {
 		toSerialize["dnsCredentialName"] = o.DnsCredentialName.Get()
+	}
+	if !IsNil(o.ProjectStatus) {
+		toSerialize["projectStatus"] = o.ProjectStatus
+	}
+	if o.FailureReason.IsSet() {
+		toSerialize["failureReason"] = o.FailureReason.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -540,7 +982,9 @@ func (o *GetDnsCertStatusResponse) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "certManagerEnabled")
+		delete(additionalProperties, "externalDnsEnabled")
+		delete(additionalProperties, "trustManagerEnabled")
 		delete(additionalProperties, "dnsProvider")
 		delete(additionalProperties, "certIssuerType")
 		delete(additionalProperties, "domain")
@@ -548,9 +992,19 @@ func (o *GetDnsCertStatusResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "issuerName")
 		delete(additionalProperties, "desiredConfigVersion")
 		delete(additionalProperties, "appliedConfigVersion")
+		delete(additionalProperties, "desiredCertManagerVersion")
+		delete(additionalProperties, "appliedCertManagerVersion")
+		delete(additionalProperties, "desiredTrustManagerVersion")
+		delete(additionalProperties, "appliedTrustManagerVersion")
+		delete(additionalProperties, "desiredExternalDnsVersion")
+		delete(additionalProperties, "appliedExternalDnsVersion")
+		delete(additionalProperties, "desiredIssuerVersion")
+		delete(additionalProperties, "appliedIssuerVersion")
 		delete(additionalProperties, "synced")
 		delete(additionalProperties, "dnsCredentialId")
 		delete(additionalProperties, "dnsCredentialName")
+		delete(additionalProperties, "projectStatus")
+		delete(additionalProperties, "failureReason")
 		o.AdditionalProperties = additionalProperties
 	}
 

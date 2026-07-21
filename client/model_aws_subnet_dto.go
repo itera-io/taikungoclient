@@ -25,8 +25,9 @@ type AwsSubnetDto struct {
 	State NullableString `json:"state,omitempty"`
 	HasIpv6 *bool `json:"hasIpv6,omitempty"`
 	Cidr NullableString `json:"cidr,omitempty"`
+	Ipv6Cidr NullableString `json:"ipv6Cidr,omitempty"`
 	Name NullableString `json:"name,omitempty"`
-	AvailableIpCount *int32 `json:"availableIpCount,omitempty"`
+	AvailableIpCount NullableInt32 `json:"availableIpCount,omitempty"`
 	IsDefault *bool `json:"isDefault,omitempty"`
 	OwnerId NullableString `json:"ownerId,omitempty"`
 	VpcId NullableString `json:"vpcId,omitempty"`
@@ -252,6 +253,48 @@ func (o *AwsSubnetDto) UnsetCidr() {
 	o.Cidr.Unset()
 }
 
+// GetIpv6Cidr returns the Ipv6Cidr field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AwsSubnetDto) GetIpv6Cidr() string {
+	if o == nil || IsNil(o.Ipv6Cidr.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Ipv6Cidr.Get()
+}
+
+// GetIpv6CidrOk returns a tuple with the Ipv6Cidr field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AwsSubnetDto) GetIpv6CidrOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Ipv6Cidr.Get(), o.Ipv6Cidr.IsSet()
+}
+
+// HasIpv6Cidr returns a boolean if a field has been set.
+func (o *AwsSubnetDto) HasIpv6Cidr() bool {
+	if o != nil && o.Ipv6Cidr.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIpv6Cidr gets a reference to the given NullableString and assigns it to the Ipv6Cidr field.
+func (o *AwsSubnetDto) SetIpv6Cidr(v string) {
+	o.Ipv6Cidr.Set(&v)
+}
+// SetIpv6CidrNil sets the value for Ipv6Cidr to be an explicit nil
+func (o *AwsSubnetDto) SetIpv6CidrNil() {
+	o.Ipv6Cidr.Set(nil)
+}
+
+// UnsetIpv6Cidr ensures that no value is present for Ipv6Cidr, not even an explicit nil
+func (o *AwsSubnetDto) UnsetIpv6Cidr() {
+	o.Ipv6Cidr.Unset()
+}
+
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AwsSubnetDto) GetName() string {
 	if o == nil || IsNil(o.Name.Get()) {
@@ -294,36 +337,46 @@ func (o *AwsSubnetDto) UnsetName() {
 	o.Name.Unset()
 }
 
-// GetAvailableIpCount returns the AvailableIpCount field value if set, zero value otherwise.
+// GetAvailableIpCount returns the AvailableIpCount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AwsSubnetDto) GetAvailableIpCount() int32 {
-	if o == nil || IsNil(o.AvailableIpCount) {
+	if o == nil || IsNil(o.AvailableIpCount.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.AvailableIpCount
+	return *o.AvailableIpCount.Get()
 }
 
 // GetAvailableIpCountOk returns a tuple with the AvailableIpCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AwsSubnetDto) GetAvailableIpCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.AvailableIpCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AvailableIpCount, true
+	return o.AvailableIpCount.Get(), o.AvailableIpCount.IsSet()
 }
 
 // HasAvailableIpCount returns a boolean if a field has been set.
 func (o *AwsSubnetDto) HasAvailableIpCount() bool {
-	if o != nil && !IsNil(o.AvailableIpCount) {
+	if o != nil && o.AvailableIpCount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAvailableIpCount gets a reference to the given int32 and assigns it to the AvailableIpCount field.
+// SetAvailableIpCount gets a reference to the given NullableInt32 and assigns it to the AvailableIpCount field.
 func (o *AwsSubnetDto) SetAvailableIpCount(v int32) {
-	o.AvailableIpCount = &v
+	o.AvailableIpCount.Set(&v)
+}
+// SetAvailableIpCountNil sets the value for AvailableIpCount to be an explicit nil
+func (o *AwsSubnetDto) SetAvailableIpCountNil() {
+	o.AvailableIpCount.Set(nil)
+}
+
+// UnsetAvailableIpCount ensures that no value is present for AvailableIpCount, not even an explicit nil
+func (o *AwsSubnetDto) UnsetAvailableIpCount() {
+	o.AvailableIpCount.Unset()
 }
 
 // GetIsDefault returns the IsDefault field value if set, zero value otherwise.
@@ -467,11 +520,14 @@ func (o AwsSubnetDto) ToMap() (map[string]interface{}, error) {
 	if o.Cidr.IsSet() {
 		toSerialize["cidr"] = o.Cidr.Get()
 	}
+	if o.Ipv6Cidr.IsSet() {
+		toSerialize["ipv6Cidr"] = o.Ipv6Cidr.Get()
+	}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.AvailableIpCount) {
-		toSerialize["availableIpCount"] = o.AvailableIpCount
+	if o.AvailableIpCount.IsSet() {
+		toSerialize["availableIpCount"] = o.AvailableIpCount.Get()
 	}
 	if !IsNil(o.IsDefault) {
 		toSerialize["isDefault"] = o.IsDefault
@@ -509,6 +565,7 @@ func (o *AwsSubnetDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "state")
 		delete(additionalProperties, "hasIpv6")
 		delete(additionalProperties, "cidr")
+		delete(additionalProperties, "ipv6Cidr")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "availableIpCount")
 		delete(additionalProperties, "isDefault")

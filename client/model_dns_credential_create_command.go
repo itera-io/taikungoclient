@@ -41,6 +41,13 @@ type DnsCredentialCreateCommand struct {
 	AzureClientSecret NullableString `json:"azureClientSecret,omitempty"`
 	GcpProject NullableString `json:"gcpProject,omitempty"`
 	GcpServiceAccountJson NullableString `json:"gcpServiceAccountJson,omitempty"`
+	AuthMethod NullableString `json:"authMethod,omitempty"`
+	AuthVariant NullableString `json:"authVariant,omitempty"`
+	AwsRoleArn NullableString `json:"awsRoleArn,omitempty"`
+	GcpServiceAccountEmail NullableString `json:"gcpServiceAccountEmail,omitempty"`
+	PdnsApiUrl NullableString `json:"pdnsApiUrl,omitempty"`
+	PdnsApiKey NullableString `json:"pdnsApiKey,omitempty"`
+	PdnsServerId NullableString `json:"pdnsServerId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -905,6 +912,300 @@ func (o *DnsCredentialCreateCommand) UnsetGcpServiceAccountJson() {
 	o.GcpServiceAccountJson.Unset()
 }
 
+// GetAuthMethod returns the AuthMethod field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DnsCredentialCreateCommand) GetAuthMethod() string {
+	if o == nil || IsNil(o.AuthMethod.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AuthMethod.Get()
+}
+
+// GetAuthMethodOk returns a tuple with the AuthMethod field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DnsCredentialCreateCommand) GetAuthMethodOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AuthMethod.Get(), o.AuthMethod.IsSet()
+}
+
+// HasAuthMethod returns a boolean if a field has been set.
+func (o *DnsCredentialCreateCommand) HasAuthMethod() bool {
+	if o != nil && o.AuthMethod.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthMethod gets a reference to the given NullableString and assigns it to the AuthMethod field.
+func (o *DnsCredentialCreateCommand) SetAuthMethod(v string) {
+	o.AuthMethod.Set(&v)
+}
+// SetAuthMethodNil sets the value for AuthMethod to be an explicit nil
+func (o *DnsCredentialCreateCommand) SetAuthMethodNil() {
+	o.AuthMethod.Set(nil)
+}
+
+// UnsetAuthMethod ensures that no value is present for AuthMethod, not even an explicit nil
+func (o *DnsCredentialCreateCommand) UnsetAuthMethod() {
+	o.AuthMethod.Unset()
+}
+
+// GetAuthVariant returns the AuthVariant field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DnsCredentialCreateCommand) GetAuthVariant() string {
+	if o == nil || IsNil(o.AuthVariant.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AuthVariant.Get()
+}
+
+// GetAuthVariantOk returns a tuple with the AuthVariant field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DnsCredentialCreateCommand) GetAuthVariantOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AuthVariant.Get(), o.AuthVariant.IsSet()
+}
+
+// HasAuthVariant returns a boolean if a field has been set.
+func (o *DnsCredentialCreateCommand) HasAuthVariant() bool {
+	if o != nil && o.AuthVariant.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthVariant gets a reference to the given NullableString and assigns it to the AuthVariant field.
+func (o *DnsCredentialCreateCommand) SetAuthVariant(v string) {
+	o.AuthVariant.Set(&v)
+}
+// SetAuthVariantNil sets the value for AuthVariant to be an explicit nil
+func (o *DnsCredentialCreateCommand) SetAuthVariantNil() {
+	o.AuthVariant.Set(nil)
+}
+
+// UnsetAuthVariant ensures that no value is present for AuthVariant, not even an explicit nil
+func (o *DnsCredentialCreateCommand) UnsetAuthVariant() {
+	o.AuthVariant.Unset()
+}
+
+// GetAwsRoleArn returns the AwsRoleArn field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DnsCredentialCreateCommand) GetAwsRoleArn() string {
+	if o == nil || IsNil(o.AwsRoleArn.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AwsRoleArn.Get()
+}
+
+// GetAwsRoleArnOk returns a tuple with the AwsRoleArn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DnsCredentialCreateCommand) GetAwsRoleArnOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AwsRoleArn.Get(), o.AwsRoleArn.IsSet()
+}
+
+// HasAwsRoleArn returns a boolean if a field has been set.
+func (o *DnsCredentialCreateCommand) HasAwsRoleArn() bool {
+	if o != nil && o.AwsRoleArn.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsRoleArn gets a reference to the given NullableString and assigns it to the AwsRoleArn field.
+func (o *DnsCredentialCreateCommand) SetAwsRoleArn(v string) {
+	o.AwsRoleArn.Set(&v)
+}
+// SetAwsRoleArnNil sets the value for AwsRoleArn to be an explicit nil
+func (o *DnsCredentialCreateCommand) SetAwsRoleArnNil() {
+	o.AwsRoleArn.Set(nil)
+}
+
+// UnsetAwsRoleArn ensures that no value is present for AwsRoleArn, not even an explicit nil
+func (o *DnsCredentialCreateCommand) UnsetAwsRoleArn() {
+	o.AwsRoleArn.Unset()
+}
+
+// GetGcpServiceAccountEmail returns the GcpServiceAccountEmail field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DnsCredentialCreateCommand) GetGcpServiceAccountEmail() string {
+	if o == nil || IsNil(o.GcpServiceAccountEmail.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.GcpServiceAccountEmail.Get()
+}
+
+// GetGcpServiceAccountEmailOk returns a tuple with the GcpServiceAccountEmail field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DnsCredentialCreateCommand) GetGcpServiceAccountEmailOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.GcpServiceAccountEmail.Get(), o.GcpServiceAccountEmail.IsSet()
+}
+
+// HasGcpServiceAccountEmail returns a boolean if a field has been set.
+func (o *DnsCredentialCreateCommand) HasGcpServiceAccountEmail() bool {
+	if o != nil && o.GcpServiceAccountEmail.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpServiceAccountEmail gets a reference to the given NullableString and assigns it to the GcpServiceAccountEmail field.
+func (o *DnsCredentialCreateCommand) SetGcpServiceAccountEmail(v string) {
+	o.GcpServiceAccountEmail.Set(&v)
+}
+// SetGcpServiceAccountEmailNil sets the value for GcpServiceAccountEmail to be an explicit nil
+func (o *DnsCredentialCreateCommand) SetGcpServiceAccountEmailNil() {
+	o.GcpServiceAccountEmail.Set(nil)
+}
+
+// UnsetGcpServiceAccountEmail ensures that no value is present for GcpServiceAccountEmail, not even an explicit nil
+func (o *DnsCredentialCreateCommand) UnsetGcpServiceAccountEmail() {
+	o.GcpServiceAccountEmail.Unset()
+}
+
+// GetPdnsApiUrl returns the PdnsApiUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DnsCredentialCreateCommand) GetPdnsApiUrl() string {
+	if o == nil || IsNil(o.PdnsApiUrl.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PdnsApiUrl.Get()
+}
+
+// GetPdnsApiUrlOk returns a tuple with the PdnsApiUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DnsCredentialCreateCommand) GetPdnsApiUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PdnsApiUrl.Get(), o.PdnsApiUrl.IsSet()
+}
+
+// HasPdnsApiUrl returns a boolean if a field has been set.
+func (o *DnsCredentialCreateCommand) HasPdnsApiUrl() bool {
+	if o != nil && o.PdnsApiUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPdnsApiUrl gets a reference to the given NullableString and assigns it to the PdnsApiUrl field.
+func (o *DnsCredentialCreateCommand) SetPdnsApiUrl(v string) {
+	o.PdnsApiUrl.Set(&v)
+}
+// SetPdnsApiUrlNil sets the value for PdnsApiUrl to be an explicit nil
+func (o *DnsCredentialCreateCommand) SetPdnsApiUrlNil() {
+	o.PdnsApiUrl.Set(nil)
+}
+
+// UnsetPdnsApiUrl ensures that no value is present for PdnsApiUrl, not even an explicit nil
+func (o *DnsCredentialCreateCommand) UnsetPdnsApiUrl() {
+	o.PdnsApiUrl.Unset()
+}
+
+// GetPdnsApiKey returns the PdnsApiKey field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DnsCredentialCreateCommand) GetPdnsApiKey() string {
+	if o == nil || IsNil(o.PdnsApiKey.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PdnsApiKey.Get()
+}
+
+// GetPdnsApiKeyOk returns a tuple with the PdnsApiKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DnsCredentialCreateCommand) GetPdnsApiKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PdnsApiKey.Get(), o.PdnsApiKey.IsSet()
+}
+
+// HasPdnsApiKey returns a boolean if a field has been set.
+func (o *DnsCredentialCreateCommand) HasPdnsApiKey() bool {
+	if o != nil && o.PdnsApiKey.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPdnsApiKey gets a reference to the given NullableString and assigns it to the PdnsApiKey field.
+func (o *DnsCredentialCreateCommand) SetPdnsApiKey(v string) {
+	o.PdnsApiKey.Set(&v)
+}
+// SetPdnsApiKeyNil sets the value for PdnsApiKey to be an explicit nil
+func (o *DnsCredentialCreateCommand) SetPdnsApiKeyNil() {
+	o.PdnsApiKey.Set(nil)
+}
+
+// UnsetPdnsApiKey ensures that no value is present for PdnsApiKey, not even an explicit nil
+func (o *DnsCredentialCreateCommand) UnsetPdnsApiKey() {
+	o.PdnsApiKey.Unset()
+}
+
+// GetPdnsServerId returns the PdnsServerId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DnsCredentialCreateCommand) GetPdnsServerId() string {
+	if o == nil || IsNil(o.PdnsServerId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PdnsServerId.Get()
+}
+
+// GetPdnsServerIdOk returns a tuple with the PdnsServerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DnsCredentialCreateCommand) GetPdnsServerIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PdnsServerId.Get(), o.PdnsServerId.IsSet()
+}
+
+// HasPdnsServerId returns a boolean if a field has been set.
+func (o *DnsCredentialCreateCommand) HasPdnsServerId() bool {
+	if o != nil && o.PdnsServerId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPdnsServerId gets a reference to the given NullableString and assigns it to the PdnsServerId field.
+func (o *DnsCredentialCreateCommand) SetPdnsServerId(v string) {
+	o.PdnsServerId.Set(&v)
+}
+// SetPdnsServerIdNil sets the value for PdnsServerId to be an explicit nil
+func (o *DnsCredentialCreateCommand) SetPdnsServerIdNil() {
+	o.PdnsServerId.Set(nil)
+}
+
+// UnsetPdnsServerId ensures that no value is present for PdnsServerId, not even an explicit nil
+func (o *DnsCredentialCreateCommand) UnsetPdnsServerId() {
+	o.PdnsServerId.Unset()
+}
+
 func (o DnsCredentialCreateCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -978,6 +1279,27 @@ func (o DnsCredentialCreateCommand) ToMap() (map[string]interface{}, error) {
 	if o.GcpServiceAccountJson.IsSet() {
 		toSerialize["gcpServiceAccountJson"] = o.GcpServiceAccountJson.Get()
 	}
+	if o.AuthMethod.IsSet() {
+		toSerialize["authMethod"] = o.AuthMethod.Get()
+	}
+	if o.AuthVariant.IsSet() {
+		toSerialize["authVariant"] = o.AuthVariant.Get()
+	}
+	if o.AwsRoleArn.IsSet() {
+		toSerialize["awsRoleArn"] = o.AwsRoleArn.Get()
+	}
+	if o.GcpServiceAccountEmail.IsSet() {
+		toSerialize["gcpServiceAccountEmail"] = o.GcpServiceAccountEmail.Get()
+	}
+	if o.PdnsApiUrl.IsSet() {
+		toSerialize["pdnsApiUrl"] = o.PdnsApiUrl.Get()
+	}
+	if o.PdnsApiKey.IsSet() {
+		toSerialize["pdnsApiKey"] = o.PdnsApiKey.Get()
+	}
+	if o.PdnsServerId.IsSet() {
+		toSerialize["pdnsServerId"] = o.PdnsServerId.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1021,6 +1343,13 @@ func (o *DnsCredentialCreateCommand) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "azureClientSecret")
 		delete(additionalProperties, "gcpProject")
 		delete(additionalProperties, "gcpServiceAccountJson")
+		delete(additionalProperties, "authMethod")
+		delete(additionalProperties, "authVariant")
+		delete(additionalProperties, "awsRoleArn")
+		delete(additionalProperties, "gcpServiceAccountEmail")
+		delete(additionalProperties, "pdnsApiUrl")
+		delete(additionalProperties, "pdnsApiKey")
+		delete(additionalProperties, "pdnsServerId")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -27,9 +27,9 @@ type PrometheusBillingSummaryDto struct {
 	EndDate NullableTime `json:"endDate"`
 	PrometheusRuleId int32 `json:"prometheusRuleId"`
 	RuleName string `json:"ruleName"`
-	CreatedBy NullableString `json:"createdBy"`
+	CreatedBy AuditUserDto `json:"createdBy"`
 	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	LastModifiedBy AuditUserDto `json:"lastModifiedBy"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -39,7 +39,7 @@ type _PrometheusBillingSummaryDto PrometheusBillingSummaryDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrometheusBillingSummaryDto(price float64, startDate time.Time, endDate NullableTime, prometheusRuleId int32, ruleName string, createdBy NullableString, lastModified NullableString, lastModifiedBy NullableString) *PrometheusBillingSummaryDto {
+func NewPrometheusBillingSummaryDto(price float64, startDate time.Time, endDate NullableTime, prometheusRuleId int32, ruleName string, createdBy AuditUserDto, lastModified NullableString, lastModifiedBy AuditUserDto) *PrometheusBillingSummaryDto {
 	this := PrometheusBillingSummaryDto{}
 	this.Price = price
 	this.StartDate = startDate
@@ -183,29 +183,27 @@ func (o *PrometheusBillingSummaryDto) SetRuleName(v string) {
 }
 
 // GetCreatedBy returns the CreatedBy field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *PrometheusBillingSummaryDto) GetCreatedBy() string {
-	if o == nil || o.CreatedBy.Get() == nil {
-		var ret string
+func (o *PrometheusBillingSummaryDto) GetCreatedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
 		return ret
 	}
 
-	return *o.CreatedBy.Get()
+	return o.CreatedBy
 }
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PrometheusBillingSummaryDto) GetCreatedByOk() (*string, bool) {
+func (o *PrometheusBillingSummaryDto) GetCreatedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
+	return &o.CreatedBy, true
 }
 
 // SetCreatedBy sets field value
-func (o *PrometheusBillingSummaryDto) SetCreatedBy(v string) {
-	o.CreatedBy.Set(&v)
+func (o *PrometheusBillingSummaryDto) SetCreatedBy(v AuditUserDto) {
+	o.CreatedBy = v
 }
 
 // GetLastModified returns the LastModified field value
@@ -235,29 +233,27 @@ func (o *PrometheusBillingSummaryDto) SetLastModified(v string) {
 }
 
 // GetLastModifiedBy returns the LastModifiedBy field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *PrometheusBillingSummaryDto) GetLastModifiedBy() string {
-	if o == nil || o.LastModifiedBy.Get() == nil {
-		var ret string
+func (o *PrometheusBillingSummaryDto) GetLastModifiedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
 		return ret
 	}
 
-	return *o.LastModifiedBy.Get()
+	return o.LastModifiedBy
 }
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PrometheusBillingSummaryDto) GetLastModifiedByOk() (*string, bool) {
+func (o *PrometheusBillingSummaryDto) GetLastModifiedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
+	return &o.LastModifiedBy, true
 }
 
 // SetLastModifiedBy sets field value
-func (o *PrometheusBillingSummaryDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy.Set(&v)
+func (o *PrometheusBillingSummaryDto) SetLastModifiedBy(v AuditUserDto) {
+	o.LastModifiedBy = v
 }
 
 func (o PrometheusBillingSummaryDto) MarshalJSON() ([]byte, error) {
@@ -275,9 +271,9 @@ func (o PrometheusBillingSummaryDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["endDate"] = o.EndDate.Get()
 	toSerialize["prometheusRuleId"] = o.PrometheusRuleId
 	toSerialize["ruleName"] = o.RuleName
-	toSerialize["createdBy"] = o.CreatedBy.Get()
+	toSerialize["createdBy"] = o.CreatedBy
 	toSerialize["lastModified"] = o.LastModified.Get()
-	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	toSerialize["lastModifiedBy"] = o.LastModifiedBy
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value

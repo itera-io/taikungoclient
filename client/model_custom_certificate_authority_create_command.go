@@ -23,8 +23,11 @@ type CustomCertificateAuthorityCreateCommand struct {
 	Name *string `json:"name,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	Description NullableString `json:"description,omitempty"`
-	CaCert *string `json:"caCert,omitempty"`
-	CaKey *string `json:"caKey,omitempty"`
+	CaCert NullableString `json:"caCert,omitempty"`
+	CaKey NullableString `json:"caKey,omitempty"`
+	GenerateSelfSigned *bool `json:"generateSelfSigned,omitempty"`
+	CommonName NullableString `json:"commonName,omitempty"`
+	ValidityDays NullableInt32 `json:"validityDays,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -163,68 +166,204 @@ func (o *CustomCertificateAuthorityCreateCommand) UnsetDescription() {
 	o.Description.Unset()
 }
 
-// GetCaCert returns the CaCert field value if set, zero value otherwise.
+// GetCaCert returns the CaCert field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomCertificateAuthorityCreateCommand) GetCaCert() string {
-	if o == nil || IsNil(o.CaCert) {
+	if o == nil || IsNil(o.CaCert.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CaCert
+	return *o.CaCert.Get()
 }
 
 // GetCaCertOk returns a tuple with the CaCert field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomCertificateAuthorityCreateCommand) GetCaCertOk() (*string, bool) {
-	if o == nil || IsNil(o.CaCert) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CaCert, true
+	return o.CaCert.Get(), o.CaCert.IsSet()
 }
 
 // HasCaCert returns a boolean if a field has been set.
 func (o *CustomCertificateAuthorityCreateCommand) HasCaCert() bool {
-	if o != nil && !IsNil(o.CaCert) {
+	if o != nil && o.CaCert.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCaCert gets a reference to the given string and assigns it to the CaCert field.
+// SetCaCert gets a reference to the given NullableString and assigns it to the CaCert field.
 func (o *CustomCertificateAuthorityCreateCommand) SetCaCert(v string) {
-	o.CaCert = &v
+	o.CaCert.Set(&v)
+}
+// SetCaCertNil sets the value for CaCert to be an explicit nil
+func (o *CustomCertificateAuthorityCreateCommand) SetCaCertNil() {
+	o.CaCert.Set(nil)
 }
 
-// GetCaKey returns the CaKey field value if set, zero value otherwise.
+// UnsetCaCert ensures that no value is present for CaCert, not even an explicit nil
+func (o *CustomCertificateAuthorityCreateCommand) UnsetCaCert() {
+	o.CaCert.Unset()
+}
+
+// GetCaKey returns the CaKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CustomCertificateAuthorityCreateCommand) GetCaKey() string {
-	if o == nil || IsNil(o.CaKey) {
+	if o == nil || IsNil(o.CaKey.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CaKey
+	return *o.CaKey.Get()
 }
 
 // GetCaKeyOk returns a tuple with the CaKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CustomCertificateAuthorityCreateCommand) GetCaKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.CaKey) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CaKey, true
+	return o.CaKey.Get(), o.CaKey.IsSet()
 }
 
 // HasCaKey returns a boolean if a field has been set.
 func (o *CustomCertificateAuthorityCreateCommand) HasCaKey() bool {
-	if o != nil && !IsNil(o.CaKey) {
+	if o != nil && o.CaKey.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCaKey gets a reference to the given string and assigns it to the CaKey field.
+// SetCaKey gets a reference to the given NullableString and assigns it to the CaKey field.
 func (o *CustomCertificateAuthorityCreateCommand) SetCaKey(v string) {
-	o.CaKey = &v
+	o.CaKey.Set(&v)
+}
+// SetCaKeyNil sets the value for CaKey to be an explicit nil
+func (o *CustomCertificateAuthorityCreateCommand) SetCaKeyNil() {
+	o.CaKey.Set(nil)
+}
+
+// UnsetCaKey ensures that no value is present for CaKey, not even an explicit nil
+func (o *CustomCertificateAuthorityCreateCommand) UnsetCaKey() {
+	o.CaKey.Unset()
+}
+
+// GetGenerateSelfSigned returns the GenerateSelfSigned field value if set, zero value otherwise.
+func (o *CustomCertificateAuthorityCreateCommand) GetGenerateSelfSigned() bool {
+	if o == nil || IsNil(o.GenerateSelfSigned) {
+		var ret bool
+		return ret
+	}
+	return *o.GenerateSelfSigned
+}
+
+// GetGenerateSelfSignedOk returns a tuple with the GenerateSelfSigned field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomCertificateAuthorityCreateCommand) GetGenerateSelfSignedOk() (*bool, bool) {
+	if o == nil || IsNil(o.GenerateSelfSigned) {
+		return nil, false
+	}
+	return o.GenerateSelfSigned, true
+}
+
+// HasGenerateSelfSigned returns a boolean if a field has been set.
+func (o *CustomCertificateAuthorityCreateCommand) HasGenerateSelfSigned() bool {
+	if o != nil && !IsNil(o.GenerateSelfSigned) {
+		return true
+	}
+
+	return false
+}
+
+// SetGenerateSelfSigned gets a reference to the given bool and assigns it to the GenerateSelfSigned field.
+func (o *CustomCertificateAuthorityCreateCommand) SetGenerateSelfSigned(v bool) {
+	o.GenerateSelfSigned = &v
+}
+
+// GetCommonName returns the CommonName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CustomCertificateAuthorityCreateCommand) GetCommonName() string {
+	if o == nil || IsNil(o.CommonName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.CommonName.Get()
+}
+
+// GetCommonNameOk returns a tuple with the CommonName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CustomCertificateAuthorityCreateCommand) GetCommonNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CommonName.Get(), o.CommonName.IsSet()
+}
+
+// HasCommonName returns a boolean if a field has been set.
+func (o *CustomCertificateAuthorityCreateCommand) HasCommonName() bool {
+	if o != nil && o.CommonName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCommonName gets a reference to the given NullableString and assigns it to the CommonName field.
+func (o *CustomCertificateAuthorityCreateCommand) SetCommonName(v string) {
+	o.CommonName.Set(&v)
+}
+// SetCommonNameNil sets the value for CommonName to be an explicit nil
+func (o *CustomCertificateAuthorityCreateCommand) SetCommonNameNil() {
+	o.CommonName.Set(nil)
+}
+
+// UnsetCommonName ensures that no value is present for CommonName, not even an explicit nil
+func (o *CustomCertificateAuthorityCreateCommand) UnsetCommonName() {
+	o.CommonName.Unset()
+}
+
+// GetValidityDays returns the ValidityDays field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CustomCertificateAuthorityCreateCommand) GetValidityDays() int32 {
+	if o == nil || IsNil(o.ValidityDays.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.ValidityDays.Get()
+}
+
+// GetValidityDaysOk returns a tuple with the ValidityDays field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CustomCertificateAuthorityCreateCommand) GetValidityDaysOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ValidityDays.Get(), o.ValidityDays.IsSet()
+}
+
+// HasValidityDays returns a boolean if a field has been set.
+func (o *CustomCertificateAuthorityCreateCommand) HasValidityDays() bool {
+	if o != nil && o.ValidityDays.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetValidityDays gets a reference to the given NullableInt32 and assigns it to the ValidityDays field.
+func (o *CustomCertificateAuthorityCreateCommand) SetValidityDays(v int32) {
+	o.ValidityDays.Set(&v)
+}
+// SetValidityDaysNil sets the value for ValidityDays to be an explicit nil
+func (o *CustomCertificateAuthorityCreateCommand) SetValidityDaysNil() {
+	o.ValidityDays.Set(nil)
+}
+
+// UnsetValidityDays ensures that no value is present for ValidityDays, not even an explicit nil
+func (o *CustomCertificateAuthorityCreateCommand) UnsetValidityDays() {
+	o.ValidityDays.Unset()
 }
 
 func (o CustomCertificateAuthorityCreateCommand) MarshalJSON() ([]byte, error) {
@@ -246,11 +385,20 @@ func (o CustomCertificateAuthorityCreateCommand) ToMap() (map[string]interface{}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if !IsNil(o.CaCert) {
-		toSerialize["caCert"] = o.CaCert
+	if o.CaCert.IsSet() {
+		toSerialize["caCert"] = o.CaCert.Get()
 	}
-	if !IsNil(o.CaKey) {
-		toSerialize["caKey"] = o.CaKey
+	if o.CaKey.IsSet() {
+		toSerialize["caKey"] = o.CaKey.Get()
+	}
+	if !IsNil(o.GenerateSelfSigned) {
+		toSerialize["generateSelfSigned"] = o.GenerateSelfSigned
+	}
+	if o.CommonName.IsSet() {
+		toSerialize["commonName"] = o.CommonName.Get()
+	}
+	if o.ValidityDays.IsSet() {
+		toSerialize["validityDays"] = o.ValidityDays.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -279,6 +427,9 @@ func (o *CustomCertificateAuthorityCreateCommand) UnmarshalJSON(data []byte) (er
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "caCert")
 		delete(additionalProperties, "caKey")
+		delete(additionalProperties, "generateSelfSigned")
+		delete(additionalProperties, "commonName")
+		delete(additionalProperties, "validityDays")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -36,9 +36,9 @@ type ServerListDto struct {
 	Status string `json:"status"`
 	CreatedAt NullableString `json:"createdAt"`
 	CloudType CloudType `json:"cloudType"`
-	CreatedBy string `json:"createdBy"`
+	CreatedBy AuditUserDto `json:"createdBy"`
 	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	LastModifiedBy AuditUserDto `json:"lastModifiedBy"`
 	SpotPrice float64 `json:"spotPrice"`
 	SpotInstance bool `json:"spotInstance"`
 	ShutOff bool `json:"shutOff"`
@@ -66,7 +66,7 @@ type _ServerListDto ServerListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServerListDto(id int32, name string, projectName string, organizationName string, organizationId int32, projectId int32, diskSize float64, kubernetesHealth NullableString, cpu int32, ram float64, role CloudRole, status string, createdAt NullableString, cloudType CloudType, createdBy string, lastModified NullableString, lastModifiedBy NullableString, spotPrice float64, spotInstance bool, shutOff bool, autoscalingGroup NullableString, providerID NullableString, instanceId NullableString, awsHostName NullableString, availabilityZone NullableString, hypervisor NullableString, hypervisorId NullableString, proxmoxRole ProxmoxRole, proxmoxExtraDiskSize int32, kubernetesNodeLabels []KubernetesNodeLabelsDto, replicaCount NullableInt32, wasmEnabled bool, flavor NullableString) *ServerListDto {
+func NewServerListDto(id int32, name string, projectName string, organizationName string, organizationId int32, projectId int32, diskSize float64, kubernetesHealth NullableString, cpu int32, ram float64, role CloudRole, status string, createdAt NullableString, cloudType CloudType, createdBy AuditUserDto, lastModified NullableString, lastModifiedBy AuditUserDto, spotPrice float64, spotInstance bool, shutOff bool, autoscalingGroup NullableString, providerID NullableString, instanceId NullableString, awsHostName NullableString, availabilityZone NullableString, hypervisor NullableString, hypervisorId NullableString, proxmoxRole ProxmoxRole, proxmoxExtraDiskSize int32, kubernetesNodeLabels []KubernetesNodeLabelsDto, replicaCount NullableInt32, wasmEnabled bool, flavor NullableString) *ServerListDto {
 	this := ServerListDto{}
 	this.Id = id
 	this.Name = name
@@ -495,9 +495,9 @@ func (o *ServerListDto) SetCloudType(v CloudType) {
 }
 
 // GetCreatedBy returns the CreatedBy field value
-func (o *ServerListDto) GetCreatedBy() string {
+func (o *ServerListDto) GetCreatedBy() AuditUserDto {
 	if o == nil {
-		var ret string
+		var ret AuditUserDto
 		return ret
 	}
 
@@ -506,7 +506,7 @@ func (o *ServerListDto) GetCreatedBy() string {
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-func (o *ServerListDto) GetCreatedByOk() (*string, bool) {
+func (o *ServerListDto) GetCreatedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -514,7 +514,7 @@ func (o *ServerListDto) GetCreatedByOk() (*string, bool) {
 }
 
 // SetCreatedBy sets field value
-func (o *ServerListDto) SetCreatedBy(v string) {
+func (o *ServerListDto) SetCreatedBy(v AuditUserDto) {
 	o.CreatedBy = v
 }
 
@@ -545,29 +545,27 @@ func (o *ServerListDto) SetLastModified(v string) {
 }
 
 // GetLastModifiedBy returns the LastModifiedBy field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *ServerListDto) GetLastModifiedBy() string {
-	if o == nil || o.LastModifiedBy.Get() == nil {
-		var ret string
+func (o *ServerListDto) GetLastModifiedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
 		return ret
 	}
 
-	return *o.LastModifiedBy.Get()
+	return o.LastModifiedBy
 }
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerListDto) GetLastModifiedByOk() (*string, bool) {
+func (o *ServerListDto) GetLastModifiedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
+	return &o.LastModifiedBy, true
 }
 
 // SetLastModifiedBy sets field value
-func (o *ServerListDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy.Set(&v)
+func (o *ServerListDto) SetLastModifiedBy(v AuditUserDto) {
+	o.LastModifiedBy = v
 }
 
 // GetSpotPrice returns the SpotPrice field value
@@ -1065,7 +1063,7 @@ func (o ServerListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["cloudType"] = o.CloudType
 	toSerialize["createdBy"] = o.CreatedBy
 	toSerialize["lastModified"] = o.LastModified.Get()
-	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	toSerialize["lastModifiedBy"] = o.LastModifiedBy
 	toSerialize["spotPrice"] = o.SpotPrice
 	toSerialize["spotInstance"] = o.SpotInstance
 	toSerialize["shutOff"] = o.ShutOff

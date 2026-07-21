@@ -31,9 +31,9 @@ type VClusterListDto struct {
 	OrganizationId int32 `json:"organizationId"`
 	KubernetesVersion string `json:"kubernetesVersion"`
 	CreatedAt string `json:"createdAt"`
-	CreatedBy string `json:"createdBy"`
+	CreatedBy AuditUserDto `json:"createdBy"`
 	LastModified string `json:"lastModified"`
-	LastModifiedBy string `json:"lastModifiedBy"`
+	LastModifiedBy AuditUserDto `json:"lastModifiedBy"`
 	AlertsCount int32 `json:"alertsCount"`
 	ExpiredAt string `json:"expiredAt"`
 	DeleteOnExpiration bool `json:"deleteOnExpiration"`
@@ -63,7 +63,7 @@ type _VClusterListDto VClusterListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVClusterListDto(id int32, name string, isVirtualCluster bool, isLocked bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, kubernetesVersion string, createdAt string, createdBy string, lastModified string, lastModifiedBy string, alertsCount int32, expiredAt string, deleteOnExpiration bool, wasmEnabled bool, alertingProfileId NullableInt32, alertingProfileName NullableString, accessIp string, cloudType ECloudCredentialType, status ProjectStatus, health ProjectHealth, lockButton ButtonStatusDto, unlockButton ButtonStatusDto, deleteButton ButtonStatusDto, kubeInfoButton ButtonStatusDto, setExpirationDateButton ButtonStatusDto, resetStatusButton ButtonStatusDto) *VClusterListDto {
+func NewVClusterListDto(id int32, name string, isVirtualCluster bool, isLocked bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, kubernetesVersion string, createdAt string, createdBy AuditUserDto, lastModified string, lastModifiedBy AuditUserDto, alertsCount int32, expiredAt string, deleteOnExpiration bool, wasmEnabled bool, alertingProfileId NullableInt32, alertingProfileName NullableString, accessIp string, cloudType ECloudCredentialType, status ProjectStatus, health ProjectHealth, lockButton ButtonStatusDto, unlockButton ButtonStatusDto, deleteButton ButtonStatusDto, kubeInfoButton ButtonStatusDto, setExpirationDateButton ButtonStatusDto, resetStatusButton ButtonStatusDto) *VClusterListDto {
 	this := VClusterListDto{}
 	this.Id = id
 	this.Name = name
@@ -346,9 +346,9 @@ func (o *VClusterListDto) SetCreatedAt(v string) {
 }
 
 // GetCreatedBy returns the CreatedBy field value
-func (o *VClusterListDto) GetCreatedBy() string {
+func (o *VClusterListDto) GetCreatedBy() AuditUserDto {
 	if o == nil {
-		var ret string
+		var ret AuditUserDto
 		return ret
 	}
 
@@ -357,7 +357,7 @@ func (o *VClusterListDto) GetCreatedBy() string {
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-func (o *VClusterListDto) GetCreatedByOk() (*string, bool) {
+func (o *VClusterListDto) GetCreatedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -365,7 +365,7 @@ func (o *VClusterListDto) GetCreatedByOk() (*string, bool) {
 }
 
 // SetCreatedBy sets field value
-func (o *VClusterListDto) SetCreatedBy(v string) {
+func (o *VClusterListDto) SetCreatedBy(v AuditUserDto) {
 	o.CreatedBy = v
 }
 
@@ -394,9 +394,9 @@ func (o *VClusterListDto) SetLastModified(v string) {
 }
 
 // GetLastModifiedBy returns the LastModifiedBy field value
-func (o *VClusterListDto) GetLastModifiedBy() string {
+func (o *VClusterListDto) GetLastModifiedBy() AuditUserDto {
 	if o == nil {
-		var ret string
+		var ret AuditUserDto
 		return ret
 	}
 
@@ -405,7 +405,7 @@ func (o *VClusterListDto) GetLastModifiedBy() string {
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
-func (o *VClusterListDto) GetLastModifiedByOk() (*string, bool) {
+func (o *VClusterListDto) GetLastModifiedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -413,7 +413,7 @@ func (o *VClusterListDto) GetLastModifiedByOk() (*string, bool) {
 }
 
 // SetLastModifiedBy sets field value
-func (o *VClusterListDto) SetLastModifiedBy(v string) {
+func (o *VClusterListDto) SetLastModifiedBy(v AuditUserDto) {
 	o.LastModifiedBy = v
 }
 

@@ -21,7 +21,6 @@ var _ MappedNullable = &CreateAzureSubnetDto{}
 // CreateAzureSubnetDto struct for CreateAzureSubnetDto
 type CreateAzureSubnetDto struct {
 	SubnetName NullableString `json:"subnetName,omitempty"`
-	SubnetType *AccessLevel `json:"subnetType,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -86,38 +85,6 @@ func (o *CreateAzureSubnetDto) UnsetSubnetName() {
 	o.SubnetName.Unset()
 }
 
-// GetSubnetType returns the SubnetType field value if set, zero value otherwise.
-func (o *CreateAzureSubnetDto) GetSubnetType() AccessLevel {
-	if o == nil || IsNil(o.SubnetType) {
-		var ret AccessLevel
-		return ret
-	}
-	return *o.SubnetType
-}
-
-// GetSubnetTypeOk returns a tuple with the SubnetType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateAzureSubnetDto) GetSubnetTypeOk() (*AccessLevel, bool) {
-	if o == nil || IsNil(o.SubnetType) {
-		return nil, false
-	}
-	return o.SubnetType, true
-}
-
-// HasSubnetType returns a boolean if a field has been set.
-func (o *CreateAzureSubnetDto) HasSubnetType() bool {
-	if o != nil && !IsNil(o.SubnetType) {
-		return true
-	}
-
-	return false
-}
-
-// SetSubnetType gets a reference to the given AccessLevel and assigns it to the SubnetType field.
-func (o *CreateAzureSubnetDto) SetSubnetType(v AccessLevel) {
-	o.SubnetType = &v
-}
-
 func (o CreateAzureSubnetDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -130,9 +97,6 @@ func (o CreateAzureSubnetDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.SubnetName.IsSet() {
 		toSerialize["subnetName"] = o.SubnetName.Get()
-	}
-	if !IsNil(o.SubnetType) {
-		toSerialize["subnetType"] = o.SubnetType
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -157,7 +121,6 @@ func (o *CreateAzureSubnetDto) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "subnetName")
-		delete(additionalProperties, "subnetType")
 		o.AdditionalProperties = additionalProperties
 	}
 

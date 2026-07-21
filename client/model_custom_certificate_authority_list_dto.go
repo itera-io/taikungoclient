@@ -24,6 +24,7 @@ type CustomCertificateAuthorityListDto struct {
 	Id int32 `json:"id"`
 	Name string `json:"name"`
 	Description NullableString `json:"description"`
+	CaCert string `json:"caCert"`
 	OrganizationId NullableInt32 `json:"organizationId"`
 	OrganizationName NullableString `json:"organizationName"`
 	IsLocked bool `json:"isLocked"`
@@ -42,11 +43,12 @@ type _CustomCertificateAuthorityListDto CustomCertificateAuthorityListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomCertificateAuthorityListDto(id int32, name string, description NullableString, organizationId NullableInt32, organizationName NullableString, isLocked bool, isDefault bool, isInfra bool, createdBy NullableString, lastModified NullableString, lastModifiedBy NullableString, inUseCount int32) *CustomCertificateAuthorityListDto {
+func NewCustomCertificateAuthorityListDto(id int32, name string, description NullableString, caCert string, organizationId NullableInt32, organizationName NullableString, isLocked bool, isDefault bool, isInfra bool, createdBy NullableString, lastModified NullableString, lastModifiedBy NullableString, inUseCount int32) *CustomCertificateAuthorityListDto {
 	this := CustomCertificateAuthorityListDto{}
 	this.Id = id
 	this.Name = name
 	this.Description = description
+	this.CaCert = caCert
 	this.OrganizationId = organizationId
 	this.OrganizationName = organizationName
 	this.IsLocked = isLocked
@@ -139,6 +141,30 @@ func (o *CustomCertificateAuthorityListDto) GetDescriptionOk() (*string, bool) {
 // SetDescription sets field value
 func (o *CustomCertificateAuthorityListDto) SetDescription(v string) {
 	o.Description.Set(&v)
+}
+
+// GetCaCert returns the CaCert field value
+func (o *CustomCertificateAuthorityListDto) GetCaCert() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CaCert
+}
+
+// GetCaCertOk returns a tuple with the CaCert field value
+// and a boolean to check if the value has been set.
+func (o *CustomCertificateAuthorityListDto) GetCaCertOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CaCert, true
+}
+
+// SetCaCert sets field value
+func (o *CustomCertificateAuthorityListDto) SetCaCert(v string) {
+	o.CaCert = v
 }
 
 // GetOrganizationId returns the OrganizationId field value
@@ -380,6 +406,7 @@ func (o CustomCertificateAuthorityListDto) ToMap() (map[string]interface{}, erro
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
 	toSerialize["description"] = o.Description.Get()
+	toSerialize["caCert"] = o.CaCert
 	toSerialize["organizationId"] = o.OrganizationId.Get()
 	toSerialize["organizationName"] = o.OrganizationName.Get()
 	toSerialize["isLocked"] = o.IsLocked
@@ -405,6 +432,7 @@ func (o *CustomCertificateAuthorityListDto) UnmarshalJSON(data []byte) (err erro
 		"id",
 		"name",
 		"description",
+		"caCert",
 		"organizationId",
 		"organizationName",
 		"isLocked",
@@ -446,6 +474,7 @@ func (o *CustomCertificateAuthorityListDto) UnmarshalJSON(data []byte) (err erro
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
+		delete(additionalProperties, "caCert")
 		delete(additionalProperties, "organizationId")
 		delete(additionalProperties, "organizationName")
 		delete(additionalProperties, "isLocked")

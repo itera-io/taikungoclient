@@ -33,6 +33,7 @@ type UserAuthContext struct {
 	GlobalRole *GlobalRole `json:"globalRole,omitempty"`
 	OrgRoles map[string]RoleClaim `json:"orgRoles,omitempty"`
 	CreatedAt NullableTime `json:"createdAt,omitempty"`
+	UserName NullableString `json:"userName,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -510,6 +511,48 @@ func (o *UserAuthContext) UnsetCreatedAt() {
 	o.CreatedAt.Unset()
 }
 
+// GetUserName returns the UserName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UserAuthContext) GetUserName() string {
+	if o == nil || IsNil(o.UserName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.UserName.Get()
+}
+
+// GetUserNameOk returns a tuple with the UserName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UserAuthContext) GetUserNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.UserName.Get(), o.UserName.IsSet()
+}
+
+// HasUserName returns a boolean if a field has been set.
+func (o *UserAuthContext) HasUserName() bool {
+	if o != nil && o.UserName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetUserName gets a reference to the given NullableString and assigns it to the UserName field.
+func (o *UserAuthContext) SetUserName(v string) {
+	o.UserName.Set(&v)
+}
+// SetUserNameNil sets the value for UserName to be an explicit nil
+func (o *UserAuthContext) SetUserNameNil() {
+	o.UserName.Set(nil)
+}
+
+// UnsetUserName ensures that no value is present for UserName, not even an explicit nil
+func (o *UserAuthContext) UnsetUserName() {
+	o.UserName.Unset()
+}
+
 func (o UserAuthContext) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -556,6 +599,9 @@ func (o UserAuthContext) ToMap() (map[string]interface{}, error) {
 	if o.CreatedAt.IsSet() {
 		toSerialize["createdAt"] = o.CreatedAt.Get()
 	}
+	if o.UserName.IsSet() {
+		toSerialize["userName"] = o.UserName.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -590,6 +636,7 @@ func (o *UserAuthContext) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "globalRole")
 		delete(additionalProperties, "orgRoles")
 		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "userName")
 		o.AdditionalProperties = additionalProperties
 	}
 

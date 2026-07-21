@@ -22,6 +22,8 @@ var _ MappedNullable = &AwsVpcListCommand{}
 type AwsVpcListCommand struct {
 	AwsAccessKeyId NullableString `json:"awsAccessKeyId,omitempty"`
 	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey,omitempty"`
+	RoleArn NullableString `json:"roleArn,omitempty"`
+	ExternalId NullableString `json:"externalId,omitempty"`
 	AwsRegion NullableString `json:"awsRegion,omitempty"`
 	IpMode *IpMode `json:"ipMode,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -130,6 +132,90 @@ func (o *AwsVpcListCommand) UnsetAwsSecretAccessKey() {
 	o.AwsSecretAccessKey.Unset()
 }
 
+// GetRoleArn returns the RoleArn field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AwsVpcListCommand) GetRoleArn() string {
+	if o == nil || IsNil(o.RoleArn.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.RoleArn.Get()
+}
+
+// GetRoleArnOk returns a tuple with the RoleArn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AwsVpcListCommand) GetRoleArnOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.RoleArn.Get(), o.RoleArn.IsSet()
+}
+
+// HasRoleArn returns a boolean if a field has been set.
+func (o *AwsVpcListCommand) HasRoleArn() bool {
+	if o != nil && o.RoleArn.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleArn gets a reference to the given NullableString and assigns it to the RoleArn field.
+func (o *AwsVpcListCommand) SetRoleArn(v string) {
+	o.RoleArn.Set(&v)
+}
+// SetRoleArnNil sets the value for RoleArn to be an explicit nil
+func (o *AwsVpcListCommand) SetRoleArnNil() {
+	o.RoleArn.Set(nil)
+}
+
+// UnsetRoleArn ensures that no value is present for RoleArn, not even an explicit nil
+func (o *AwsVpcListCommand) UnsetRoleArn() {
+	o.RoleArn.Unset()
+}
+
+// GetExternalId returns the ExternalId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AwsVpcListCommand) GetExternalId() string {
+	if o == nil || IsNil(o.ExternalId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ExternalId.Get()
+}
+
+// GetExternalIdOk returns a tuple with the ExternalId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AwsVpcListCommand) GetExternalIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ExternalId.Get(), o.ExternalId.IsSet()
+}
+
+// HasExternalId returns a boolean if a field has been set.
+func (o *AwsVpcListCommand) HasExternalId() bool {
+	if o != nil && o.ExternalId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalId gets a reference to the given NullableString and assigns it to the ExternalId field.
+func (o *AwsVpcListCommand) SetExternalId(v string) {
+	o.ExternalId.Set(&v)
+}
+// SetExternalIdNil sets the value for ExternalId to be an explicit nil
+func (o *AwsVpcListCommand) SetExternalIdNil() {
+	o.ExternalId.Set(nil)
+}
+
+// UnsetExternalId ensures that no value is present for ExternalId, not even an explicit nil
+func (o *AwsVpcListCommand) UnsetExternalId() {
+	o.ExternalId.Unset()
+}
+
 // GetAwsRegion returns the AwsRegion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AwsVpcListCommand) GetAwsRegion() string {
 	if o == nil || IsNil(o.AwsRegion.Get()) {
@@ -220,6 +306,12 @@ func (o AwsVpcListCommand) ToMap() (map[string]interface{}, error) {
 	if o.AwsSecretAccessKey.IsSet() {
 		toSerialize["awsSecretAccessKey"] = o.AwsSecretAccessKey.Get()
 	}
+	if o.RoleArn.IsSet() {
+		toSerialize["roleArn"] = o.RoleArn.Get()
+	}
+	if o.ExternalId.IsSet() {
+		toSerialize["externalId"] = o.ExternalId.Get()
+	}
 	if o.AwsRegion.IsSet() {
 		toSerialize["awsRegion"] = o.AwsRegion.Get()
 	}
@@ -250,6 +342,8 @@ func (o *AwsVpcListCommand) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "awsAccessKeyId")
 		delete(additionalProperties, "awsSecretAccessKey")
+		delete(additionalProperties, "roleArn")
+		delete(additionalProperties, "externalId")
 		delete(additionalProperties, "awsRegion")
 		delete(additionalProperties, "ipMode")
 		o.AdditionalProperties = additionalProperties

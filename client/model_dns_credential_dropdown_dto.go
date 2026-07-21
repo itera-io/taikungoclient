@@ -23,6 +23,7 @@ var _ MappedNullable = &DnsCredentialDropdownDto{}
 type DnsCredentialDropdownDto struct {
 	Id int32 `json:"id"`
 	Name NullableString `json:"name"`
+	ProviderType NullableString `json:"providerType"`
 	DomainFilter NullableString `json:"domainFilter"`
 	IsDefault bool `json:"isDefault"`
 	IsLocked bool `json:"isLocked"`
@@ -35,10 +36,11 @@ type _DnsCredentialDropdownDto DnsCredentialDropdownDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDnsCredentialDropdownDto(id int32, name NullableString, domainFilter NullableString, isDefault bool, isLocked bool) *DnsCredentialDropdownDto {
+func NewDnsCredentialDropdownDto(id int32, name NullableString, providerType NullableString, domainFilter NullableString, isDefault bool, isLocked bool) *DnsCredentialDropdownDto {
 	this := DnsCredentialDropdownDto{}
 	this.Id = id
 	this.Name = name
+	this.ProviderType = providerType
 	this.DomainFilter = domainFilter
 	this.IsDefault = isDefault
 	this.IsLocked = isLocked
@@ -101,6 +103,32 @@ func (o *DnsCredentialDropdownDto) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *DnsCredentialDropdownDto) SetName(v string) {
 	o.Name.Set(&v)
+}
+
+// GetProviderType returns the ProviderType field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *DnsCredentialDropdownDto) GetProviderType() string {
+	if o == nil || o.ProviderType.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.ProviderType.Get()
+}
+
+// GetProviderTypeOk returns a tuple with the ProviderType field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DnsCredentialDropdownDto) GetProviderTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ProviderType.Get(), o.ProviderType.IsSet()
+}
+
+// SetProviderType sets field value
+func (o *DnsCredentialDropdownDto) SetProviderType(v string) {
+	o.ProviderType.Set(&v)
 }
 
 // GetDomainFilter returns the DomainFilter field value
@@ -189,6 +217,7 @@ func (o DnsCredentialDropdownDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name.Get()
+	toSerialize["providerType"] = o.ProviderType.Get()
 	toSerialize["domainFilter"] = o.DomainFilter.Get()
 	toSerialize["isDefault"] = o.IsDefault
 	toSerialize["isLocked"] = o.IsLocked
@@ -207,6 +236,7 @@ func (o *DnsCredentialDropdownDto) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"id",
 		"name",
+		"providerType",
 		"domainFilter",
 		"isDefault",
 		"isLocked",
@@ -241,6 +271,7 @@ func (o *DnsCredentialDropdownDto) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
+		delete(additionalProperties, "providerType")
 		delete(additionalProperties, "domainFilter")
 		delete(additionalProperties, "isDefault")
 		delete(additionalProperties, "isLocked")

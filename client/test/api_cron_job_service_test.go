@@ -55,6 +55,18 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test CronJobServiceAPIService CronjobCcfCryptoStatus", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobCcfCryptoStatus(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test CronJobServiceAPIService CronjobCreateKeyPool", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -231,11 +243,45 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test CronJobServiceAPIService CronjobReconcilePartnerScopes", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobReconcilePartnerScopes(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test CronJobServiceAPIService CronjobRemindUsersByAlertingProfile", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.CronJobServiceAPI.CronjobRemindUsersByAlertingProfile(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CronJobServiceAPIService CronjobRotateTenantKeks", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobRotateTenantKeks(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CronJobServiceAPIService CronjobScanCertificateCredentialExpiry", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobScanCertificateCredentialExpiry(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

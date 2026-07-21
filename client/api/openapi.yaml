@@ -3029,6 +3029,71 @@ paths:
       summary: Delete account
       tags:
       - Accounts
+  /api/v1/users/toggleoverloadprotection:
+    post:
+      operationId: users-toggle-overload-protection
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ToggleOverloadProtectionCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Set overload protection mode
+      tags:
+      - Admin
+  /api/v1/users/overload-protection:
+    get:
+      operationId: users-overload-protection-status
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Void"
+          description: OK
+      summary: Get overload protection status
+      tags:
+      - Admin
   /api/v1/ai-credential/create:
     post:
       operationId: ai-credential-create
@@ -9421,6 +9486,517 @@ paths:
       summary: Delete catalog app
       tags:
       - Catalog app
+  /api/v1/certificate-credentials:
+    get:
+      operationId: certificate-credentials-dropdown
+      parameters:
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Kind
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/CertificateCredentialDropdownDto"
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve custom CAs for organization dropdown
+      tags:
+      - Certificate credentials
+    post:
+      operationId: certificate-credentials-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CertificateCredentialCreateCommand"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Add certificate credential
+      tags:
+      - Certificate credentials
+    put:
+      operationId: certificate-credentials-update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CertificateCredentialUpdateCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Update custom CA name/description
+      tags:
+      - Certificate credentials
+  /api/v1/certificate-credentials/lockmanager:
+    post:
+      operationId: certificate-credentials-lock-management
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CertificateCredentialLockCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Lock/unlock certificate credential
+      tags:
+      - Certificate credentials
+  /api/v1/certificate-credentials/makedefault:
+    post:
+      operationId: certificate-credentials-make-default
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CertificateCredentialMakeDefaultCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Make default certificate credential
+      tags:
+      - Certificate credentials
+  /api/v1/certificate-credentials/validate:
+    post:
+      operationId: certificate-credentials-validate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CertificateCredentialValidateCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: "Validate custom CA cert/key pair (PEM x509, key match, CA:TRUE, not\
+        \ expired)"
+      tags:
+      - Certificate credentials
+  /api/v1/certificate-credentials/list:
+    get:
+      operationId: certificate-credentials-list
+      parameters:
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: AccountId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchId
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CertificateCredentialListResponse"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Retrieve all custom certificate authorities
+      tags:
+      - Certificate credentials
+  /api/v1/certificate-credentials/{id}:
+    delete:
+      operationId: certificate-credentials-delete
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Delete certificate credential
+      tags:
+      - Certificate credentials
   /api/v1/checker/openai:
     post:
       operationId: checker-open-ai
@@ -11917,6 +12493,161 @@ paths:
       summary: Purge expired projects
       tags:
       - Cron Job Service
+  /api/v1/cronjob/reconcile-partner-scopes:
+    post:
+      operationId: cronjob-reconcile-partner-scopes
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PartnerScopeReconcileResult"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Reconcile CCF partner scope holders (moves DEK rows off soft-deleted
+        partner scope holders)
+      tags:
+      - Cron Job Service
+  /api/v1/cronjob/rotate-tenant-keks:
+    post:
+      operationId: cronjob-rotate-tenant-keks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RotateTenantKeksCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Rotate tenant KEKs via Transit rewrap
+      tags:
+      - Cron Job Service
+  /api/v1/cronjob/scan-certificate-credential-expiry:
+    post:
+      operationId: cronjob-scan-certificate-credential-expiry
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ScanCertificateCredentialExpiryCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Scan certificate credentials approaching or past expiry and emit alert
+        logs
+      tags:
+      - Cron Job Service
   /api/v1/cronjob/project-expiration:
     post:
       operationId: cronjob-email-for-project-expiration
@@ -12228,6 +12959,56 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
       summary: Tekton pipelines
+      tags:
+      - Cron Job Service
+  /api/v1/cronjob/ccf-crypto/status:
+    get:
+      operationId: cronjob-ccf-crypto-status
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TransitEncryptionStatusDto"
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: "Rollback-safety survey: per-column $enc:v1: row counts and last Transit\
+        \ failure timestamp"
       tags:
       - Cron Job Service
   /api/v1/cronjob/update-project-quota-message:
@@ -14527,6 +15308,162 @@ paths:
       summary: Disable DNS/Cert automation
       tags:
       - DnsCert
+  /api/v1/dns-cert/cert-manager/disable:
+    post:
+      operationId: dns-cert-cert-manager-disable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DisableCertManagerCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Disable cert-manager for a project
+      tags:
+      - DnsCert
+  /api/v1/dns-cert/external-dns/disable:
+    post:
+      operationId: dns-cert-external-dns-disable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DisableExternalDnsCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Disable external-dns for a project
+      tags:
+      - DnsCert
+  /api/v1/dns-cert/trust-manager/disable:
+    post:
+      operationId: dns-cert-trust-manager-disable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DisableTrustManagerCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Disable trust-manager for a project
+      tags:
+      - DnsCert
   /api/v1/dns-cert/enable:
     post:
       operationId: dns-cert-enable
@@ -14577,6 +15514,162 @@ paths:
                 $ref: "#/components/schemas/ProblemDetails"
           description: Internal Server Error
       summary: Enable DNS/Cert automation
+      tags:
+      - DnsCert
+  /api/v1/dns-cert/cert-manager/enable:
+    post:
+      operationId: dns-cert-cert-manager-enable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EnableCertManagerCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Enable cert-manager for a project
+      tags:
+      - DnsCert
+  /api/v1/dns-cert/external-dns/enable:
+    post:
+      operationId: dns-cert-external-dns-enable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EnableExternalDnsCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Enable external-dns for a project
+      tags:
+      - DnsCert
+  /api/v1/dns-cert/trust-manager/enable:
+    post:
+      operationId: dns-cert-trust-manager-enable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EnableTrustManagerCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Enable trust-manager for a project
       tags:
       - DnsCert
   /api/v1/dns-cert/sync:
@@ -16631,6 +17724,110 @@ paths:
       summary: Retrieve zadara instance types
       tags:
       - Flavors
+  /api/v1/gateway-api/disable:
+    post:
+      operationId: gateway-api-disable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DisableGatewayApiModernCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Disable Gateway API modern CRD bundle
+      tags:
+      - Gateway API
+  /api/v1/gateway-api/enable:
+    post:
+      operationId: gateway-api-enable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EnableGatewayApiModernCommand"
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Not Found
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Conflict
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetails"
+          description: Internal Server Error
+      summary: Enable Gateway API modern CRD bundle
+      tags:
+      - Gateway API
   /api/v1/generic-kubernetes/update:
     put:
       operationId: generic-kubernetes-update
@@ -45537,9 +46734,17 @@ components:
             name: name
           - id: 5
             name: name
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           createdAt: createdAt
         - id: 0
           name: name
@@ -45580,9 +46785,17 @@ components:
             name: name
           - id: 5
             name: name
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           createdAt: createdAt
         limit: 3
         hasMore: true
@@ -45658,9 +46871,17 @@ components:
           name: name
         - id: 5
           name: name
-        createdBy: createdBy
+        createdBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         lastModified: lastModified
-        lastModifiedBy: lastModifiedBy
+        lastModifiedBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         createdAt: createdAt
       properties:
         id:
@@ -45700,14 +46921,12 @@ components:
             $ref: "#/components/schemas/CommonDropdownDto"
           type: array
         createdBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         lastModified:
           nullable: true
           type: string
         lastModifiedBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         createdAt:
           type: string
       required:
@@ -46089,6 +47308,8 @@ components:
       - UninstallApplication
       - EnableAutoscaling
       - DisableAutoscaling
+      - EnableGatewayApiModern
+      - DisableGatewayApiModern
       - BoundProject
       - LockUnlockProject
       - EnabledAi
@@ -46824,9 +48045,17 @@ components:
             name: name
           - id: 5
             name: name
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           reminder: HalfHour
           createdAt: createdAt
         - id: 0
@@ -46863,9 +48092,17 @@ components:
             name: name
           - id: 5
             name: name
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           reminder: HalfHour
           createdAt: createdAt
         totalCount: 5
@@ -46918,9 +48155,17 @@ components:
           name: name
         - id: 5
           name: name
-        createdBy: createdBy
+        createdBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         lastModified: lastModified
-        lastModifiedBy: lastModifiedBy
+        lastModifiedBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         reminder: HalfHour
         createdAt: createdAt
       properties:
@@ -46958,14 +48203,12 @@ components:
             $ref: "#/components/schemas/CommonDropdownDto"
           type: array
         createdBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         lastModified:
           nullable: true
           type: string
         lastModifiedBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         reminder:
           $ref: "#/components/schemas/AlertingReminder"
         createdAt:
@@ -47169,6 +48412,8 @@ components:
         region: region
         awsAccessKeyId: awsAccessKeyId
         awsSecretAccessKey: awsSecretAccessKey
+        roleArn: roleArn
+        externalId: externalId
         cloudId: 0
       properties:
         region:
@@ -47178,6 +48423,12 @@ components:
           nullable: true
           type: string
         awsSecretAccessKey:
+          nullable: true
+          type: string
+        roleArn:
+          nullable: true
+          type: string
+        externalId:
           nullable: true
           type: string
         cloudId:
@@ -47201,11 +48452,19 @@ components:
           name: name
         - id: 5
           name: name
-        createdBy: createdBy
+        createdBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         lastModified: lastModified
-        lastModifiedBy: lastModifiedBy
+        lastModifiedBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         isDefault: true
-        organizationId: 5
+        organizationId: 2
         organizationName: organizationName
         createdAt: createdAt
         continentName: continentName
@@ -47237,14 +48496,12 @@ components:
             $ref: "#/components/schemas/CommonDropdownDto"
           type: array
         createdBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         lastModified:
           nullable: true
           type: string
         lastModifiedBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         isDefault:
           type: boolean
         organizationId:
@@ -47474,6 +48731,26 @@ components:
           format: int32
           nullable: true
           type: integer
+      type: object
+    AuditUserDto:
+      example:
+        userId: userId
+        displayName: displayName
+        accountId: 5
+        isRobot: true
+      properties:
+        userId:
+          nullable: true
+          type: string
+        displayName:
+          nullable: true
+          type: string
+        accountId:
+          format: int32
+          nullable: true
+          type: integer
+        isRobot:
+          type: boolean
       type: object
     AutoSyncManagementCommand:
       example:
@@ -47754,11 +49031,19 @@ components:
             name: name
           - id: 5
             name: name
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           isDefault: true
-          organizationId: 5
+          organizationId: 2
           organizationName: organizationName
           createdAt: createdAt
           continentName: continentName
@@ -47779,22 +49064,30 @@ components:
             name: name
           - id: 5
             name: name
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           isDefault: true
-          organizationId: 5
+          organizationId: 2
           organizationName: organizationName
           createdAt: createdAt
           continentName: continentName
           efsFileSystemId: efsFileSystemId
           efsFileSystemName: efsFileSystemName
           sharedFileSystemEnabled: true
-        limit: 2
+        limit: 7
         hasMore: true
-        totalCount: 7
-        offset: 9
-        nextOffset: 3
+        totalCount: 9
+        offset: 3
+        nextOffset: 2
       properties:
         data:
           items:
@@ -47915,6 +49208,8 @@ components:
       example:
         awsAccessKeyId: awsAccessKeyId
         awsSecretAccessKey: awsSecretAccessKey
+        roleArn: roleArn
+        externalId: externalId
         awsRegion: awsRegion
         vpcId: vpcId
       properties:
@@ -47922,6 +49217,12 @@ components:
           nullable: true
           type: string
         awsSecretAccessKey:
+          nullable: true
+          type: string
+        roleArn:
+          nullable: true
+          type: string
+        externalId:
           nullable: true
           type: string
         awsRegion:
@@ -48118,6 +49419,7 @@ components:
         state: state
         hasIpv6: true
         cidr: cidr
+        ipv6Cidr: ipv6Cidr
         name: name
         availableIpCount: 0
         isDefault: true
@@ -48138,11 +49440,15 @@ components:
         cidr:
           nullable: true
           type: string
+        ipv6Cidr:
+          nullable: true
+          type: string
         name:
           nullable: true
           type: string
         availableIpCount:
           format: int32
+          nullable: true
           type: integer
         isDefault:
           type: boolean
@@ -48157,6 +49463,8 @@ components:
       example:
         awsAccessKeyId: awsAccessKeyId
         awsSecretAccessKey: awsSecretAccessKey
+        roleArn: roleArn
+        externalId: externalId
         awsRegion: awsRegion
         vpcId: vpcId
       properties:
@@ -48164,6 +49472,12 @@ components:
           nullable: true
           type: string
         awsSecretAccessKey:
+          nullable: true
+          type: string
+        roleArn:
+          nullable: true
+          type: string
+        externalId:
           nullable: true
           type: string
         awsRegion:
@@ -48212,6 +49526,8 @@ components:
       example:
         awsAccessKeyId: awsAccessKeyId
         awsSecretAccessKey: awsSecretAccessKey
+        roleArn: roleArn
+        externalId: externalId
         awsRegion: awsRegion
         ipMode: Ipv4
       properties:
@@ -48219,6 +49535,12 @@ components:
           nullable: true
           type: string
         awsSecretAccessKey:
+          nullable: true
+          type: string
+        roleArn:
+          nullable: true
+          type: string
+        externalId:
           nullable: true
           type: string
         awsRegion:
@@ -48280,10 +49602,18 @@ components:
             name: name
           - id: 5
             name: name
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           createdAt: createdAt
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           isDefault: true
           organizationId: 5
           organizationName: organizationName
@@ -48294,6 +49624,7 @@ components:
           sharedFileSystemEnabled: true
           importedFileShareId: importedFileShareId
           importedFileShareName: importedFileShareName
+          importedFileShareResourceGroupName: importedFileShareResourceGroupName
         - id: 0
           projectCount: 6
           isLocked: true
@@ -48309,10 +49640,18 @@ components:
             name: name
           - id: 5
             name: name
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           createdAt: createdAt
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           isDefault: true
           organizationId: 5
           organizationName: organizationName
@@ -48323,6 +49662,7 @@ components:
           sharedFileSystemEnabled: true
           importedFileShareId: importedFileShareId
           importedFileShareName: importedFileShareName
+          importedFileShareResourceGroupName: importedFileShareResourceGroupName
         limit: 5
         hasMore: true
         totalCount: 2
@@ -48373,10 +49713,18 @@ components:
           name: name
         - id: 5
           name: name
-        createdBy: createdBy
+        createdBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         createdAt: createdAt
         lastModified: lastModified
-        lastModifiedBy: lastModifiedBy
+        lastModifiedBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         isDefault: true
         organizationId: 5
         organizationName: organizationName
@@ -48387,6 +49735,7 @@ components:
         sharedFileSystemEnabled: true
         importedFileShareId: importedFileShareId
         importedFileShareName: importedFileShareName
+        importedFileShareResourceGroupName: importedFileShareResourceGroupName
       properties:
         id:
           format: int32
@@ -48414,8 +49763,7 @@ components:
             $ref: "#/components/schemas/CommonDropdownDto"
           type: array
         createdBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         createdAt:
           nullable: true
           type: string
@@ -48423,8 +49771,7 @@ components:
           nullable: true
           type: string
         lastModifiedBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         isDefault:
           type: boolean
         organizationId:
@@ -48451,6 +49798,9 @@ components:
         importedFileShareName:
           nullable: true
           type: string
+        importedFileShareResourceGroupName:
+          nullable: true
+          type: string
       required:
       - availabilityZones
       - availabilityZonesCount
@@ -48462,6 +49812,7 @@ components:
       - id
       - importedFileShareId
       - importedFileShareName
+      - importedFileShareResourceGroupName
       - isDefault
       - isLocked
       - lastModified
@@ -48852,6 +50203,7 @@ components:
         resourceGroupName: resourceGroupName
         vnetName: vnetName
         cloudId: 0
+        ipMode: Ipv4
       properties:
         azureClientId:
           nullable: true
@@ -48875,6 +50227,8 @@ components:
           format: int32
           nullable: true
           type: integer
+        ipMode:
+          $ref: "#/components/schemas/IpMode"
       type: object
     AzureZonesCommand:
       example:
@@ -48921,9 +50275,17 @@ components:
           - id: 5
             name: name
           isLocked: true
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           createdAt: createdAt
           isDefault: true
           isInfra: true
@@ -48940,9 +50302,17 @@ components:
           - id: 5
             name: name
           isLocked: true
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           createdAt: createdAt
           isDefault: true
           isInfra: true
@@ -49041,9 +50411,17 @@ components:
         - id: 5
           name: name
         isLocked: true
-        createdBy: createdBy
+        createdBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         lastModified: lastModified
-        lastModifiedBy: lastModifiedBy
+        lastModifiedBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         createdAt: createdAt
         isDefault: true
         isInfra: true
@@ -49073,14 +50451,12 @@ components:
         isLocked:
           type: boolean
         createdBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         lastModified:
           nullable: true
           type: string
         lastModifiedBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         createdAt:
           nullable: true
           type: string
@@ -49500,6 +50876,17 @@ components:
           windowsSpotPrice: windowsSpotPrice
           windowsPrice: windowsPrice
           hasGpuSupport: true
+          gpuDetails:
+            gpuDeviceTotal: 5
+            devices:
+            - acceleratorType: acceleratorType
+              vendor: vendor
+              deviceCount: 5
+              memoryMiBPerUnit: 2
+            - acceleratorType: acceleratorType
+              vendor: vendor
+              deviceCount: 5
+              memoryMiBPerUnit: 2
           cloudType: NONE
           localDiskSize: 2
         - id: 0
@@ -49516,6 +50903,17 @@ components:
           windowsSpotPrice: windowsSpotPrice
           windowsPrice: windowsPrice
           hasGpuSupport: true
+          gpuDetails:
+            gpuDeviceTotal: 5
+            devices:
+            - acceleratorType: acceleratorType
+              vendor: vendor
+              deviceCount: 5
+              memoryMiBPerUnit: 2
+            - acceleratorType: acceleratorType
+              vendor: vendor
+              deviceCount: 5
+              memoryMiBPerUnit: 2
           cloudType: NONE
           localDiskSize: 2
         limit: 7
@@ -49567,6 +50965,17 @@ components:
         windowsSpotPrice: windowsSpotPrice
         windowsPrice: windowsPrice
         hasGpuSupport: true
+        gpuDetails:
+          gpuDeviceTotal: 5
+          devices:
+          - acceleratorType: acceleratorType
+            vendor: vendor
+            deviceCount: 5
+            memoryMiBPerUnit: 2
+          - acceleratorType: acceleratorType
+            vendor: vendor
+            deviceCount: 5
+            memoryMiBPerUnit: 2
         cloudType: NONE
         localDiskSize: 2
       properties:
@@ -49609,6 +51018,8 @@ components:
           type: string
         hasGpuSupport:
           type: boolean
+        gpuDetails:
+          $ref: "#/components/schemas/FlavorGpuDetailsDto"
         cloudType:
           $ref: "#/components/schemas/CloudType"
         localDiskSize:
@@ -51048,6 +52459,328 @@ components:
       - catalogName
       - isBound
       type: object
+    CertificateCredentialCreateCommand:
+      example:
+        name: name
+        organizationId: 0
+        description: description
+        kind: kind
+        certPem: certPem
+        keyPem: keyPem
+        chainPem: chainPem
+        generateSelfSigned: true
+        commonName: commonName
+        validityDays: 6
+      properties:
+        name:
+          type: string
+        organizationId:
+          format: int32
+          nullable: true
+          type: integer
+        description:
+          nullable: true
+          type: string
+        kind:
+          nullable: true
+          type: string
+        certPem:
+          nullable: true
+          type: string
+        keyPem:
+          nullable: true
+          type: string
+        chainPem:
+          nullable: true
+          type: string
+        generateSelfSigned:
+          type: boolean
+        commonName:
+          nullable: true
+          type: string
+        validityDays:
+          format: int32
+          nullable: true
+          type: integer
+      type: object
+    CertificateCredentialDropdownDto:
+      example:
+        id: 0
+        name: name
+        kind: SigningCa
+        isDefault: true
+        notAfter: 2000-01-23T04:56:07.000+00:00
+        expiryStatus: expiryStatus
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        kind:
+          $ref: "#/components/schemas/CertificateCredentialKind"
+        isDefault:
+          type: boolean
+        notAfter:
+          format: date-time
+          nullable: true
+          type: string
+        expiryStatus:
+          nullable: true
+          type: string
+      required:
+      - id
+      - isDefault
+      - kind
+      - name
+      type: object
+    CertificateCredentialKind:
+      enum:
+      - SigningCa
+      - TrustAnchor
+      - TlsLeaf
+      type: string
+    CertificateCredentialListDto:
+      example:
+        id: 0
+        name: name
+        description: description
+        kind: SigningCa
+        certPem: certPem
+        organizationId: 6
+        organizationName: organizationName
+        notBefore: 2000-01-23T04:56:07.000+00:00
+        notAfter: 2000-01-23T04:56:07.000+00:00
+        subject: subject
+        issuer: issuer
+        sans: sans
+        daysUntilExpiry: 1
+        expiryStatus: expiryStatus
+        isLocked: true
+        isDefault: true
+        isInfra: true
+        createdBy: createdBy
+        lastModified: lastModified
+        lastModifiedBy: lastModifiedBy
+        inUseCount: 5
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          type: string
+        description:
+          nullable: true
+          type: string
+        kind:
+          $ref: "#/components/schemas/CertificateCredentialKind"
+        certPem:
+          type: string
+        organizationId:
+          format: int32
+          nullable: true
+          type: integer
+        organizationName:
+          nullable: true
+          type: string
+        notBefore:
+          format: date-time
+          nullable: true
+          type: string
+        notAfter:
+          format: date-time
+          nullable: true
+          type: string
+        subject:
+          nullable: true
+          type: string
+        issuer:
+          nullable: true
+          type: string
+        sans:
+          nullable: true
+          type: string
+        daysUntilExpiry:
+          format: int32
+          nullable: true
+          type: integer
+        expiryStatus:
+          nullable: true
+          type: string
+        isLocked:
+          type: boolean
+        isDefault:
+          type: boolean
+        isInfra:
+          type: boolean
+        createdBy:
+          nullable: true
+          type: string
+        lastModified:
+          nullable: true
+          type: string
+        lastModifiedBy:
+          nullable: true
+          type: string
+        inUseCount:
+          format: int32
+          type: integer
+      required:
+      - certPem
+      - createdBy
+      - description
+      - id
+      - inUseCount
+      - isDefault
+      - isInfra
+      - isLocked
+      - kind
+      - lastModified
+      - lastModifiedBy
+      - name
+      - organizationId
+      - organizationName
+      type: object
+    CertificateCredentialListResponse:
+      example:
+        data:
+        - id: 0
+          name: name
+          description: description
+          kind: SigningCa
+          certPem: certPem
+          organizationId: 6
+          organizationName: organizationName
+          notBefore: 2000-01-23T04:56:07.000+00:00
+          notAfter: 2000-01-23T04:56:07.000+00:00
+          subject: subject
+          issuer: issuer
+          sans: sans
+          daysUntilExpiry: 1
+          expiryStatus: expiryStatus
+          isLocked: true
+          isDefault: true
+          isInfra: true
+          createdBy: createdBy
+          lastModified: lastModified
+          lastModifiedBy: lastModifiedBy
+          inUseCount: 5
+        - id: 0
+          name: name
+          description: description
+          kind: SigningCa
+          certPem: certPem
+          organizationId: 6
+          organizationName: organizationName
+          notBefore: 2000-01-23T04:56:07.000+00:00
+          notAfter: 2000-01-23T04:56:07.000+00:00
+          subject: subject
+          issuer: issuer
+          sans: sans
+          daysUntilExpiry: 1
+          expiryStatus: expiryStatus
+          isLocked: true
+          isDefault: true
+          isInfra: true
+          createdBy: createdBy
+          lastModified: lastModified
+          lastModifiedBy: lastModifiedBy
+          inUseCount: 5
+        limit: 5
+        hasMore: true
+        totalCount: 2
+        offset: 7
+        nextOffset: 9
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/CertificateCredentialListDto"
+          nullable: true
+          type: array
+        limit:
+          format: int32
+          type: integer
+        hasMore:
+          type: boolean
+        totalCount:
+          format: int64
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        nextOffset:
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - data
+      - hasMore
+      - limit
+      - offset
+      - totalCount
+      type: object
+    CertificateCredentialLockCommand:
+      example:
+        id: 0
+        mode: mode
+      properties:
+        id:
+          format: int32
+          type: integer
+        mode:
+          nullable: true
+          type: string
+      type: object
+    CertificateCredentialMakeDefaultCommand:
+      example:
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+      type: object
+    CertificateCredentialUpdateCommand:
+      example:
+        id: 0
+        name: name
+        description: description
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        description:
+          nullable: true
+          type: string
+      type: object
+    CertificateCredentialValidateCommand:
+      example:
+        certificateCredentialId: 0
+        kind: kind
+        certPem: certPem
+        keyPem: keyPem
+        chainPem: chainPem
+      properties:
+        certificateCredentialId:
+          format: int32
+          nullable: true
+          type: integer
+        kind:
+          nullable: true
+          type: string
+        certPem:
+          nullable: true
+          type: string
+        keyPem:
+          nullable: true
+          type: string
+        chainPem:
+          nullable: true
+          type: string
+      type: object
     ChangeCardCommand:
       example:
         paymentMethodId: paymentMethodId
@@ -51095,11 +52828,19 @@ components:
       example:
         awsAccessKeyId: awsAccessKeyId
         awsSecretAccessKey: awsSecretAccessKey
+        roleArn: roleArn
+        externalId: externalId
       properties:
         awsAccessKeyId:
           nullable: true
           type: string
         awsSecretAccessKey:
+          nullable: true
+          type: string
+        roleArn:
+          nullable: true
+          type: string
+        externalId:
           nullable: true
           type: string
       type: object
@@ -51492,6 +53233,7 @@ components:
         name: name
         zone: zone
         cidr: cidr
+        ipv6Cidr: ipv6Cidr
         availableIpCount: 4
         nodeCount: 8
         isDefault: true
@@ -51508,8 +53250,11 @@ components:
           type: string
         cidr:
           type: string
+        ipv6Cidr:
+          type: string
         availableIpCount:
           format: int32
+          nullable: true
           type: integer
         nodeCount:
           format: int32
@@ -52388,11 +54133,10 @@ components:
         existingVirtualNetworkName: existingVirtualNetworkName
         sharedFileSystemEnabled: true
         importedFileShareId: importedFileShareId
+        importedFileShareResourceGroupName: importedFileShareResourceGroupName
         subnets:
         - subnetName: subnetName
-          subnetType: Public
         - subnetName: subnetName
-          subnetType: Public
       properties:
         name:
           nullable: true
@@ -52435,6 +54179,9 @@ components:
         importedFileShareId:
           nullable: true
           type: string
+        importedFileShareResourceGroupName:
+          nullable: true
+          type: string
         subnets:
           items:
             $ref: "#/components/schemas/CreateAzureSubnetDto"
@@ -52444,13 +54191,10 @@ components:
     CreateAzureSubnetDto:
       example:
         subnetName: subnetName
-        subnetType: Public
       properties:
         subnetName:
           nullable: true
           type: string
-        subnetType:
-          $ref: "#/components/schemas/AccessLevel"
       type: object
     CreateBackupPolicyCommand:
       example:
@@ -52681,24 +54425,19 @@ components:
       properties:
         config:
           format: binary
-          nullable: true
           type: string
         name:
-          nullable: true
           type: string
         importProject:
           type: boolean
         folderId:
-          nullable: true
           type: string
         billingAccountId:
-          nullable: true
           type: string
         azCount:
           format: int32
           type: integer
         region:
-          nullable: true
           type: string
         organizationId:
           format: int32
@@ -52712,10 +54451,14 @@ components:
         importedVpcName:
           nullable: true
           type: string
-        importedSubnetworkName:
+        subnets:
+          items:
+            type: string
+          type: array
+        importedFilestoreId:
           nullable: true
           type: string
-        importedFilestoreId:
+        importedFilestoreProjectId:
           nullable: true
           type: string
       type: object
@@ -54176,6 +55919,9 @@ components:
         description: description
         caCert: caCert
         caKey: caKey
+        generateSelfSigned: true
+        commonName: commonName
+        validityDays: 6
       properties:
         name:
           type: string
@@ -54187,9 +55933,20 @@ components:
           nullable: true
           type: string
         caCert:
+          nullable: true
           type: string
         caKey:
+          nullable: true
           type: string
+        generateSelfSigned:
+          type: boolean
+        commonName:
+          nullable: true
+          type: string
+        validityDays:
+          format: int32
+          nullable: true
+          type: integer
       type: object
     CustomCertificateAuthorityDropdownDto:
       example:
@@ -54215,6 +55972,7 @@ components:
         id: 0
         name: name
         description: description
+        caCert: caCert
         organizationId: 6
         organizationName: organizationName
         isLocked: true
@@ -54232,6 +55990,8 @@ components:
           type: string
         description:
           nullable: true
+          type: string
+        caCert:
           type: string
         organizationId:
           format: int32
@@ -54259,6 +56019,7 @@ components:
           format: int32
           type: integer
       required:
+      - caCert
       - createdBy
       - description
       - id
@@ -54278,6 +56039,7 @@ components:
         - id: 0
           name: name
           description: description
+          caCert: caCert
           organizationId: 6
           organizationName: organizationName
           isLocked: true
@@ -54290,6 +56052,7 @@ components:
         - id: 0
           name: name
           description: description
+          caCert: caCert
           organizationId: 6
           organizationName: organizationName
           isLocked: true
@@ -55848,7 +57611,39 @@ components:
           format: int32
           type: integer
       type: object
+    DisableCertManagerCommand:
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
     DisableDnsCertCommand:
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    DisableExternalDnsCommand:
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    DisableGatewayApiModernCommand:
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    DisableTrustManagerCommand:
       example:
         projectId: 0
       properties:
@@ -56048,6 +57843,13 @@ components:
         azureClientSecret: azureClientSecret
         gcpProject: gcpProject
         gcpServiceAccountJson: gcpServiceAccountJson
+        authMethod: authMethod
+        authVariant: authVariant
+        awsRoleArn: awsRoleArn
+        gcpServiceAccountEmail: gcpServiceAccountEmail
+        pdnsApiUrl: pdnsApiUrl
+        pdnsApiKey: pdnsApiKey
+        pdnsServerId: pdnsServerId
       properties:
         name:
           type: string
@@ -56109,11 +57911,33 @@ components:
         gcpServiceAccountJson:
           nullable: true
           type: string
+        authMethod:
+          nullable: true
+          type: string
+        authVariant:
+          nullable: true
+          type: string
+        awsRoleArn:
+          nullable: true
+          type: string
+        gcpServiceAccountEmail:
+          nullable: true
+          type: string
+        pdnsApiUrl:
+          nullable: true
+          type: string
+        pdnsApiKey:
+          nullable: true
+          type: string
+        pdnsServerId:
+          nullable: true
+          type: string
       type: object
     DnsCredentialDropdownDto:
       example:
         id: 0
         name: name
+        providerType: providerType
         domainFilter: domainFilter
         isDefault: true
         isLocked: true
@@ -56122,6 +57946,9 @@ components:
           format: int32
           type: integer
         name:
+          nullable: true
+          type: string
+        providerType:
           nullable: true
           type: string
         domainFilter:
@@ -56137,6 +57964,7 @@ components:
       - isDefault
       - isLocked
       - name
+      - providerType
       type: object
     DnsCredentialListDto:
       example:
@@ -56150,9 +57978,19 @@ components:
         isLocked: true
         isDefault: true
         isInfra: true
-        createdBy: createdBy
+        authMethod: authMethod
+        authVariant: authVariant
+        createdBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         lastModified: lastModified
-        lastModifiedBy: lastModifiedBy
+        lastModifiedBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         projects:
         - id: 5
           name: name
@@ -56183,20 +58021,25 @@ components:
           type: boolean
         isInfra:
           type: boolean
-        createdBy:
+        authMethod:
+          type: string
+        authVariant:
           nullable: true
           type: string
+        createdBy:
+          $ref: "#/components/schemas/AuditUserDto"
         lastModified:
           nullable: true
           type: string
         lastModifiedBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         projects:
           items:
             $ref: "#/components/schemas/CommonDropdownDto"
           type: array
       required:
+      - authMethod
+      - authVariant
       - createdBy
       - domainFilter
       - id
@@ -56225,9 +58068,19 @@ components:
           isLocked: true
           isDefault: true
           isInfra: true
-          createdBy: createdBy
+          authMethod: authMethod
+          authVariant: authVariant
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           projects:
           - id: 5
             name: name
@@ -56243,9 +58096,19 @@ components:
           isLocked: true
           isDefault: true
           isInfra: true
-          createdBy: createdBy
+          authMethod: authMethod
+          authVariant: authVariant
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           projects:
           - id: 5
             name: name
@@ -56311,21 +58174,46 @@ components:
         providerType: providerType
         domainFilter: domainFilter
         useLetsEncrypt: true
+        authMethod: authMethod
+        authVariant: authVariant
+        awsRoleArn: awsRoleArn
+        gcpServiceAccountEmail: gcpServiceAccountEmail
+        pdnsApiUrl: pdnsApiUrl
+        pdnsApiKey: pdnsApiKey
+        pdnsServerId: pdnsServerId
       properties:
         id:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         providerType:
-          nullable: true
           type: string
         domainFilter:
-          nullable: true
           type: string
         useLetsEncrypt:
           type: boolean
+        authMethod:
+          nullable: true
+          type: string
+        authVariant:
+          nullable: true
+          type: string
+        awsRoleArn:
+          nullable: true
+          type: string
+        gcpServiceAccountEmail:
+          nullable: true
+          type: string
+        pdnsApiUrl:
+          nullable: true
+          type: string
+        pdnsApiKey:
+          nullable: true
+          type: string
+        pdnsServerId:
+          nullable: true
+          type: string
       type: object
     DnsNtpAddressEditDto:
       example:
@@ -56987,7 +58875,7 @@ components:
         spotEnabled:
           type: boolean
       type: object
-    EnableDnsCertCommand:
+    EnableCertManagerCommand:
       example:
         projectId: 0
         dnsCredentialId: 6
@@ -56995,6 +58883,7 @@ components:
         acmeEmail: acmeEmail
         domain: domain
         customCertificateAuthorityId: 1
+        certificateCredentialId: 5
       properties:
         projectId:
           format: int32
@@ -57016,8 +58905,101 @@ components:
           format: int32
           nullable: true
           type: integer
+        certificateCredentialId:
+          format: int32
+          nullable: true
+          type: integer
+      type: object
+    EnableDnsCertCommand:
+      example:
+        projectId: 0
+        dnsCredentialId: 6
+        certIssuerType: certIssuerType
+        acmeEmail: acmeEmail
+        domain: domain
+        customCertificateAuthorityId: 1
+        certificateCredentialId: 5
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        dnsCredentialId:
+          format: int32
+          nullable: true
+          type: integer
+        certIssuerType:
+          nullable: true
+          type: string
+        acmeEmail:
+          nullable: true
+          type: string
+        domain:
+          nullable: true
+          type: string
+        customCertificateAuthorityId:
+          format: int32
+          nullable: true
+          type: integer
+        certificateCredentialId:
+          format: int32
+          nullable: true
+          type: integer
+      type: object
+    EnableExternalDnsCommand:
+      example:
+        projectId: 0
+        dnsCredentialId: 6
+        domain: domain
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        dnsCredentialId:
+          format: int32
+          nullable: true
+          type: integer
+        domain:
+          nullable: true
+          type: string
+      type: object
+    EnableGatewayApiModernCommand:
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    EnableTrustManagerCommand:
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
       type: object
     EnableTwoFaManagementCommand:
+      type: object
+    EncryptedColumnStatusDto:
+      example:
+        entityName: entityName
+        v1RowCount: 6
+        oldestV1CreatedUtc: 2000-01-23T04:56:07.000+00:00
+        surveyError: surveyError
+      properties:
+        entityName:
+          nullable: true
+          type: string
+        v1RowCount:
+          format: int64
+          type: integer
+        oldestV1CreatedUtc:
+          format: date-time
+          nullable: true
+          type: string
+        surveyError:
+          nullable: true
+          type: string
       type: object
     EnsureCodesDownloadedCommand:
       example:
@@ -58797,6 +60779,7 @@ components:
         tier: tier
         fileShareName: fileShareName
         network: network
+        ipAddress: ipAddress
       properties:
         instanceId:
           nullable: true
@@ -58813,6 +60796,9 @@ components:
         network:
           nullable: true
           type: string
+        ipAddress:
+          nullable: true
+          type: string
       type: object
     GcpFilestoreListCommand:
       properties:
@@ -58821,6 +60807,9 @@ components:
           nullable: true
           type: string
         importedGcpProjectId:
+          nullable: true
+          type: string
+        importedFilestoreProjectId:
           nullable: true
           type: string
         region:
@@ -58877,6 +60866,8 @@ components:
           format: int32
           nullable: true
           type: integer
+        ipMode:
+          $ref: "#/components/schemas/IpMode"
       type: object
     GcpVpcDto:
       example:
@@ -58925,10 +60916,18 @@ components:
             name: name
           - id: 5
             name: name
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           createdAt: createdAt
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           isDefault: true
           organizationId: 5
           organizationName: organizationName
@@ -58946,10 +60945,18 @@ components:
             name: name
           - id: 5
             name: name
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           createdAt: createdAt
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           isDefault: true
           organizationId: 5
           organizationName: organizationName
@@ -59002,10 +61009,18 @@ components:
           name: name
         - id: 5
           name: name
-        createdBy: createdBy
+        createdBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         createdAt: createdAt
         lastModified: lastModified
-        lastModifiedBy: lastModifiedBy
+        lastModifiedBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         isDefault: true
         organizationId: 5
         organizationName: organizationName
@@ -59030,8 +61045,7 @@ components:
           nullable: true
           type: array
         createdBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         createdAt:
           nullable: true
           type: string
@@ -59039,8 +61053,7 @@ components:
           nullable: true
           type: string
         lastModifiedBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         isDefault:
           type: boolean
         organizationId:
@@ -59103,7 +61116,9 @@ components:
       type: object
     GetDnsCertStatusResponse:
       example:
-        enabled: true
+        certManagerEnabled: true
+        externalDnsEnabled: true
+        trustManagerEnabled: true
         dnsProvider: dnsProvider
         certIssuerType: certIssuerType
         domain: domain
@@ -59111,11 +61126,25 @@ components:
         issuerName: issuerName
         desiredConfigVersion: 0
         appliedConfigVersion: 6
+        desiredCertManagerVersion: 1
+        appliedCertManagerVersion: 5
+        desiredTrustManagerVersion: 5
+        appliedTrustManagerVersion: 2
+        desiredExternalDnsVersion: 7
+        appliedExternalDnsVersion: 9
+        desiredIssuerVersion: 3
+        appliedIssuerVersion: 2
         synced: true
-        dnsCredentialId: 1
+        dnsCredentialId: 4
         dnsCredentialName: dnsCredentialName
+        projectStatus: "Null"
+        failureReason: failureReason
       properties:
-        enabled:
+        certManagerEnabled:
+          type: boolean
+        externalDnsEnabled:
+          type: boolean
+        trustManagerEnabled:
           type: boolean
         dnsProvider:
           nullable: true
@@ -59138,6 +61167,30 @@ components:
         appliedConfigVersion:
           format: int32
           type: integer
+        desiredCertManagerVersion:
+          format: int32
+          type: integer
+        appliedCertManagerVersion:
+          format: int32
+          type: integer
+        desiredTrustManagerVersion:
+          format: int32
+          type: integer
+        appliedTrustManagerVersion:
+          format: int32
+          type: integer
+        desiredExternalDnsVersion:
+          format: int32
+          type: integer
+        appliedExternalDnsVersion:
+          format: int32
+          type: integer
+        desiredIssuerVersion:
+          format: int32
+          type: integer
+        appliedIssuerVersion:
+          format: int32
+          type: integer
         synced:
           type: boolean
         dnsCredentialId:
@@ -59145,6 +61198,11 @@ components:
           nullable: true
           type: integer
         dnsCredentialName:
+          nullable: true
+          type: string
+        projectStatus:
+          $ref: "#/components/schemas/ProjectStatus"
+        failureReason:
           nullable: true
           type: string
       type: object
@@ -59419,13 +61477,23 @@ components:
           isLocked: true
           isDefault: true
           billingAccountName: billingAccountName
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           createdAt: createdAt
+          lastModified: lastModified
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           continentName: continentName
           vpcMode: Create
           ipMode: Ipv4
           importedGcpProjectId: importedGcpProjectId
           importedVpcName: importedVpcName
-          importedSubnetworkName: importedSubnetworkName
           sharedFileSystemEnabled: true
           importedFilestoreId: importedFilestoreId
           importedFilestoreName: importedFilestoreName
@@ -59451,13 +61519,23 @@ components:
           isLocked: true
           isDefault: true
           billingAccountName: billingAccountName
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           createdAt: createdAt
+          lastModified: lastModified
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           continentName: continentName
           vpcMode: Create
           ipMode: Ipv4
           importedGcpProjectId: importedGcpProjectId
           importedVpcName: importedVpcName
-          importedSubnetworkName: importedSubnetworkName
           sharedFileSystemEnabled: true
           importedFilestoreId: importedFilestoreId
           importedFilestoreName: importedFilestoreName
@@ -59518,13 +61596,23 @@ components:
         isLocked: true
         isDefault: true
         billingAccountName: billingAccountName
+        createdBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         createdAt: createdAt
+        lastModified: lastModified
+        lastModifiedBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         continentName: continentName
         vpcMode: Create
         ipMode: Ipv4
         importedGcpProjectId: importedGcpProjectId
         importedVpcName: importedVpcName
-        importedSubnetworkName: importedSubnetworkName
         sharedFileSystemEnabled: true
         importedFilestoreId: importedFilestoreId
         importedFilestoreName: importedFilestoreName
@@ -59574,9 +61662,16 @@ components:
         billingAccountName:
           nullable: true
           type: string
+        createdBy:
+          $ref: "#/components/schemas/AuditUserDto"
         createdAt:
           nullable: true
           type: string
+        lastModified:
+          nullable: true
+          type: string
+        lastModifiedBy:
+          $ref: "#/components/schemas/AuditUserDto"
         continentName:
           nullable: true
           type: string
@@ -59588,9 +61683,6 @@ components:
           nullable: true
           type: string
         importedVpcName:
-          nullable: true
-          type: string
-        importedSubnetworkName:
           nullable: true
           type: string
         sharedFileSystemEnabled:
@@ -59608,10 +61700,13 @@ components:
       - billingAccountName
       - continentName
       - createdAt
+      - createdBy
       - folderId
       - id
       - isDefault
       - isLocked
+      - lastModified
+      - lastModifiedBy
       - name
       - organizationId
       - organizationName
@@ -62083,6 +64178,11 @@ components:
           format: int32
           type: integer
       type: object
+    KeyRotationMode:
+      enum:
+      - KekOnly
+      - Full
+      type: string
     KubeConfigForUserDto:
       example:
         id: 0
@@ -62729,10 +64829,18 @@ components:
             name: name
           - id: 5
             name: name
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           createdAt: createdAt
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           proxmoxStorage: NFS
           nvidiaGpuOperatorEnabled: true
           wasmEnabled: true
@@ -62752,10 +64860,18 @@ components:
             name: name
           - id: 5
             name: name
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           createdAt: createdAt
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           proxmoxStorage: NFS
           nvidiaGpuOperatorEnabled: true
           wasmEnabled: true
@@ -62810,10 +64926,18 @@ components:
           name: name
         - id: 5
           name: name
-        createdBy: createdBy
+        createdBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         createdAt: createdAt
         lastModified: lastModified
-        lastModifiedBy: lastModifiedBy
+        lastModifiedBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         proxmoxStorage: NFS
         nvidiaGpuOperatorEnabled: true
         wasmEnabled: true
@@ -62848,8 +64972,7 @@ components:
             $ref: "#/components/schemas/CommonDropdownDto"
           type: array
         createdBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         createdAt:
           nullable: true
           type: string
@@ -62857,8 +64980,7 @@ components:
           nullable: true
           type: string
         lastModifiedBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         proxmoxStorage:
           $ref: "#/components/schemas/ProxmoxStorage"
         nvidiaGpuOperatorEnabled:
@@ -64105,7 +66227,11 @@ components:
         - createdAt: createdAt
           actionMessage: actionMessage
           actionStatus: succeeded
-          username: username
+          username:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           category: StartAddServer
           projectName: projectName
           projectId: 0
@@ -64113,7 +66239,11 @@ components:
         - createdAt: createdAt
           actionMessage: actionMessage
           actionStatus: succeeded
-          username: username
+          username:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           category: StartAddServer
           projectName: projectName
           projectId: 0
@@ -64156,7 +66286,11 @@ components:
         createdAt: createdAt
         actionMessage: actionMessage
         actionStatus: succeeded
-        username: username
+        username:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         category: StartAddServer
         projectName: projectName
         projectId: 0
@@ -64170,8 +66304,7 @@ components:
         actionStatus:
           $ref: "#/components/schemas/ActionStatus"
         username:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         category:
           $ref: "#/components/schemas/ActionType"
         projectName:
@@ -64762,9 +66895,17 @@ components:
             name: name
           projectCount: 1
           isLocked: true
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           isDefault: true
           createdAt: createdAt
           continentName: continentName
@@ -64781,9 +66922,17 @@ components:
             name: name
           projectCount: 1
           isLocked: true
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           isDefault: true
           createdAt: createdAt
           continentName: continentName
@@ -64835,9 +66984,17 @@ components:
           name: name
         projectCount: 1
         isLocked: true
-        createdBy: createdBy
+        createdBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         lastModified: lastModified
-        lastModifiedBy: lastModifiedBy
+        lastModifiedBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         isDefault: true
         createdAt: createdAt
         continentName: continentName
@@ -64866,14 +67023,12 @@ components:
         isLocked:
           type: boolean
         createdBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         lastModified:
           nullable: true
           type: string
         lastModifiedBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         isDefault:
           type: boolean
         createdAt:
@@ -64978,9 +67133,17 @@ components:
             name: name
           - id: 5
             name: name
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           isDefault: true
           organizationId: 1
           organizationName: organizationName
@@ -65013,9 +67176,17 @@ components:
             name: name
           - id: 5
             name: name
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           isDefault: true
           organizationId: 1
           organizationName: organizationName
@@ -65083,9 +67254,17 @@ components:
           name: name
         - id: 5
           name: name
-        createdBy: createdBy
+        createdBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         lastModified: lastModified
-        lastModifiedBy: lastModifiedBy
+        lastModifiedBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         isDefault: true
         organizationId: 1
         organizationName: organizationName
@@ -65139,11 +67318,11 @@ components:
             $ref: "#/components/schemas/CommonDropdownDto"
           type: array
         createdBy:
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         lastModified:
           type: string
         lastModifiedBy:
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         isDefault:
           type: boolean
         organizationId:
@@ -66289,6 +68468,13 @@ components:
       - limit
       - totalCount
       type: object
+    OverloadProtectionMode:
+      enum:
+      - Normal
+      - TightenRobots
+      - ShedRobots
+      - ShedAllExceptAdmin
+      type: string
     PackageAutocompleteDto:
       example:
         key: key
@@ -66332,6 +68518,43 @@ components:
       - Array
       - Multiline
       type: string
+    PartnerPoolDekAnomalyDto:
+      example:
+        partnerId: 1
+        dekRowCount: 5
+        organizationIds:
+        - 5
+        - 5
+      properties:
+        partnerId:
+          format: int32
+          type: integer
+        dekRowCount:
+          format: int32
+          type: integer
+        organizationIds:
+          items:
+            format: int32
+            type: integer
+          nullable: true
+          type: array
+      type: object
+    PartnerScopeReconcileResult:
+      example:
+        examined: 0
+        repointed: 6
+        skipped: 1
+      properties:
+        examined:
+          format: int32
+          type: integer
+        repointed:
+          format: int32
+          type: integer
+        skipped:
+          format: int32
+          type: integer
+      type: object
     PatchKubernetesResourceCommand:
       example:
         projectId: 0
@@ -66675,6 +68898,18 @@ components:
           - reasons
           - reasons
           hidden: true
+        enableGatewayApi:
+          enable: true
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+        disableGatewayApi:
+          enable: true
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
         vmRepair:
           enable: true
           reasons:
@@ -66790,6 +69025,42 @@ components:
           - reasons
           hidden: true
         disableDnsCert:
+          enable: true
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+        enableCertManager:
+          enable: true
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+        disableCertManager:
+          enable: true
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+        enableExternalDns:
+          enable: true
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+        disableExternalDns:
+          enable: true
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+        enableTrustManager:
+          enable: true
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+        disableTrustManager:
           enable: true
           reasons:
           - reasons
@@ -66818,6 +69089,10 @@ components:
           $ref: "#/components/schemas/ButtonStatusDto"
         disableAutoscaler:
           $ref: "#/components/schemas/ButtonStatusDto"
+        enableGatewayApi:
+          $ref: "#/components/schemas/ButtonStatusDto"
+        disableGatewayApi:
+          $ref: "#/components/schemas/ButtonStatusDto"
         vmRepair:
           $ref: "#/components/schemas/ButtonStatusDto"
         vmCommit:
@@ -66858,6 +69133,18 @@ components:
           $ref: "#/components/schemas/ButtonStatusDto"
         disableDnsCert:
           $ref: "#/components/schemas/ButtonStatusDto"
+        enableCertManager:
+          $ref: "#/components/schemas/ButtonStatusDto"
+        disableCertManager:
+          $ref: "#/components/schemas/ButtonStatusDto"
+        enableExternalDns:
+          $ref: "#/components/schemas/ButtonStatusDto"
+        disableExternalDns:
+          $ref: "#/components/schemas/ButtonStatusDto"
+        enableTrustManager:
+          $ref: "#/components/schemas/ButtonStatusDto"
+        disableTrustManager:
+          $ref: "#/components/schemas/ButtonStatusDto"
       required:
       - addServer
       - addVm
@@ -66868,21 +69155,29 @@ components:
       - disableAi
       - disableAutoscaler
       - disableBackup
+      - disableCertManager
       - disableDnsCert
+      - disableExternalDns
       - disableFullSpot
+      - disableGatewayApi
       - disableMonitoring
       - disableOpa
       - disableSpotVm
       - disableSpotWorker
+      - disableTrustManager
       - enableAi
       - enableAutoscaler
       - enableBackup
+      - enableCertManager
       - enableDnsCert
+      - enableExternalDns
       - enableFullSpot
+      - enableGatewayApi
       - enableMonitoring
       - enableOpa
       - enableSpotVm
       - enableSpotWorker
+      - enableTrustManager
       - lock
       - projectMaintenanceMode
       - repair
@@ -67632,6 +69927,7 @@ components:
         spotEnabled: true
         isAutoscalingEnabled: true
         isAutoscalingSpotEnabled: true
+        gatewayApiModern: true
         hasNfsServer: true
         wasmEnabled: true
         availabilityZones:
@@ -67650,6 +69946,7 @@ components:
           name: name
           zone: zone
           cidr: cidr
+          ipv6Cidr: ipv6Cidr
           availableIpCount: 4
           nodeCount: 8
           isDefault: true
@@ -67660,6 +69957,7 @@ components:
           name: name
           zone: zone
           cidr: cidr
+          ipv6Cidr: ipv6Cidr
           availableIpCount: 4
           nodeCount: 8
           isDefault: true
@@ -67840,6 +70138,8 @@ components:
           type: boolean
         isAutoscalingSpotEnabled:
           type: boolean
+        gatewayApiModern:
+          type: boolean
         hasNfsServer:
           type: boolean
         wasmEnabled:
@@ -67896,6 +70196,7 @@ components:
       - dnsCredentialName
       - expiredAt
       - flavor
+      - gatewayApiModern
       - hasKubeConfigFile
       - hasNfsServer
       - hasSelectedFlavors
@@ -67980,6 +70281,7 @@ components:
           name: name
           zone: zone
           cidr: cidr
+          ipv6Cidr: ipv6Cidr
           availableIpCount: 4
           nodeCount: 8
           isDefault: true
@@ -67990,6 +70292,7 @@ components:
           name: name
           zone: zone
           cidr: cidr
+          ipv6Cidr: ipv6Cidr
           availableIpCount: 4
           nodeCount: 8
           isDefault: true
@@ -68668,12 +70971,20 @@ components:
           userName: userName
         - userId: userId
           userName: userName
-        createdBy: createdBy
+        createdBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         lastModified: lastModified
         expiredAt: expiredAt
         deleteOnExpiration: true
         certificateExpiredAt: certificateExpiredAt
-        lastModifiedBy: lastModifiedBy
+        lastModifiedBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         quotaId: 2
         allowFullSpotKubernetes: true
         allowSpotWorkers: true
@@ -68684,6 +70995,7 @@ components:
         totalHourlyCost: 9.301444243932576
         isAutoscalingEnabled: true
         isAutoscalingSpotEnabled: true
+        gatewayApiModern: true
         aiEnabled: true
         anyServer: true
         anyVm: true
@@ -68786,7 +71098,7 @@ components:
             $ref: "#/components/schemas/UserDto"
           type: array
         createdBy:
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         lastModified:
           nullable: true
           type: string
@@ -68799,8 +71111,7 @@ components:
           nullable: true
           type: string
         lastModifiedBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         quotaId:
           format: int32
           type: integer
@@ -68824,6 +71135,8 @@ components:
         isAutoscalingEnabled:
           type: boolean
         isAutoscalingSpotEnabled:
+          type: boolean
+        gatewayApiModern:
           type: boolean
         aiEnabled:
           type: boolean
@@ -68879,6 +71192,7 @@ components:
       - createdBy
       - deleteOnExpiration
       - expiredAt
+      - gatewayApiModern
       - hasExpirationWarning
       - hasKubeConfigFile
       - health
@@ -69688,12 +72002,20 @@ components:
             userName: userName
           - userId: userId
             userName: userName
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
           expiredAt: expiredAt
           deleteOnExpiration: true
           certificateExpiredAt: certificateExpiredAt
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           quotaId: 2
           allowFullSpotKubernetes: true
           allowSpotWorkers: true
@@ -69704,6 +72026,7 @@ components:
           totalHourlyCost: 9.301444243932576
           isAutoscalingEnabled: true
           isAutoscalingSpotEnabled: true
+          gatewayApiModern: true
           aiEnabled: true
           anyServer: true
           anyVm: true
@@ -69777,12 +72100,20 @@ components:
             userName: userName
           - userId: userId
             userName: userName
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
           expiredAt: expiredAt
           deleteOnExpiration: true
           certificateExpiredAt: certificateExpiredAt
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           quotaId: 2
           allowFullSpotKubernetes: true
           allowSpotWorkers: true
@@ -69793,6 +72124,7 @@ components:
           totalHourlyCost: 9.301444243932576
           isAutoscalingEnabled: true
           isAutoscalingSpotEnabled: true
+          gatewayApiModern: true
           aiEnabled: true
           anyServer: true
           anyVm: true
@@ -69966,17 +72298,33 @@ components:
           endDate: 2000-01-23T04:56:07.000+00:00
           prometheusRuleId: 6
           ruleName: ruleName
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
         - price: 0.8008281904610115
           startDate: 2000-01-23T04:56:07.000+00:00
           endDate: 2000-01-23T04:56:07.000+00:00
           prometheusRuleId: 6
           ruleName: ruleName
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
         totalPrice: 1.4658129805029452
         totalCount: 5
       properties:
@@ -70003,9 +72351,17 @@ components:
         endDate: 2000-01-23T04:56:07.000+00:00
         prometheusRuleId: 6
         ruleName: ruleName
-        createdBy: createdBy
+        createdBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         lastModified: lastModified
-        lastModifiedBy: lastModifiedBy
+        lastModifiedBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
       properties:
         price:
           format: double
@@ -70023,14 +72379,12 @@ components:
         ruleName:
           type: string
         createdBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         lastModified:
           nullable: true
           type: string
         lastModifiedBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
       required:
       - createdBy
       - endDate
@@ -70656,10 +73010,18 @@ components:
             name: name
           - id: 5
             name: name
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           createdAt: createdAt
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           isDefault: true
           organizationId: 1
           organizationName: organizationName
@@ -70700,10 +73062,18 @@ components:
             name: name
           - id: 5
             name: name
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           createdAt: createdAt
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           isDefault: true
           organizationId: 1
           organizationName: organizationName
@@ -70779,10 +73149,18 @@ components:
           name: name
         - id: 5
           name: name
-        createdBy: createdBy
+        createdBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         createdAt: createdAt
         lastModified: lastModified
-        lastModifiedBy: lastModifiedBy
+        lastModifiedBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         isDefault: true
         organizationId: 1
         organizationName: organizationName
@@ -70832,8 +73210,7 @@ components:
           nullable: true
           type: array
         createdBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         createdAt:
           nullable: true
           type: string
@@ -70841,8 +73218,7 @@ components:
           nullable: true
           type: string
         lastModifiedBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         isDefault:
           type: boolean
         organizationId:
@@ -71187,12 +73563,20 @@ components:
       example:
         awsAccessKeyId: awsAccessKeyId
         awsSecretAccessKey: awsSecretAccessKey
+        roleArn: roleArn
+        externalId: externalId
         cloudId: 0
       properties:
         awsAccessKeyId:
           nullable: true
           type: string
         awsSecretAccessKey:
+          nullable: true
+          type: string
+        roleArn:
+          nullable: true
+          type: string
+        externalId:
           nullable: true
           type: string
         cloudId:
@@ -71604,7 +73988,11 @@ components:
           accessKey: accessKey
           organizationId: 6
           organizationName: organizationName
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           name: name
           description: description
           scopes:
@@ -71623,7 +74011,11 @@ components:
           accessKey: accessKey
           organizationId: 6
           organizationName: organizationName
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           name: name
           description: description
           scopes:
@@ -71677,7 +74069,11 @@ components:
         accessKey: accessKey
         organizationId: 6
         organizationName: organizationName
-        createdBy: createdBy
+        createdBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         name: name
         description: description
         scopes:
@@ -71708,7 +74104,7 @@ components:
           nullable: true
           type: string
         createdBy:
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         name:
           type: string
         description:
@@ -71763,6 +74159,17 @@ components:
         organizationName:
           nullable: true
           type: string
+      type: object
+    RotateTenantKeksCommand:
+      example:
+        batchSize: 0
+        mode: KekOnly
+      properties:
+        batchSize:
+          format: int32
+          type: integer
+        mode:
+          $ref: "#/components/schemas/KeyRotationMode"
       type: object
     Rule:
       example:
@@ -71949,6 +74356,8 @@ components:
         severity:
           nullable: true
           type: string
+      type: object
+    ScanCertificateCredentialExpiryCommand:
       type: object
     SecretListDto:
       example:
@@ -72680,9 +75089,17 @@ components:
         status: status
         createdAt: createdAt
         cloudType: NONE
-        createdBy: createdBy
+        createdBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         lastModified: lastModified
-        lastModifiedBy: lastModifiedBy
+        lastModifiedBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         spotPrice: 7.061401241503109
         spotInstance: true
         shutOff: true
@@ -72749,13 +75166,12 @@ components:
         cloudType:
           $ref: "#/components/schemas/CloudType"
         createdBy:
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         lastModified:
           nullable: true
           type: string
         lastModifiedBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         spotPrice:
           format: double
           type: number
@@ -72874,9 +75290,17 @@ components:
           status: status
           createdAt: createdAt
           cloudType: NONE
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           spotPrice: 7.061401241503109
           spotInstance: true
           shutOff: true
@@ -72917,9 +75341,17 @@ components:
           status: status
           createdAt: createdAt
           cloudType: NONE
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           spotPrice: 7.061401241503109
           spotInstance: true
           shutOff: true
@@ -72996,9 +75428,17 @@ components:
           status: status
           createdAt: createdAt
           cloudType: NONE
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           spotPrice: 7.061401241503109
           spotInstance: true
           shutOff: true
@@ -73039,9 +75479,17 @@ components:
           status: status
           createdAt: createdAt
           cloudType: NONE
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           spotPrice: 7.061401241503109
           spotInstance: true
           shutOff: true
@@ -73133,6 +75581,7 @@ components:
           spotEnabled: true
           isAutoscalingEnabled: true
           isAutoscalingSpotEnabled: true
+          gatewayApiModern: true
           hasNfsServer: true
           wasmEnabled: true
           availabilityZones:
@@ -73151,6 +75600,7 @@ components:
             name: name
             zone: zone
             cidr: cidr
+            ipv6Cidr: ipv6Cidr
             availableIpCount: 4
             nodeCount: 8
             isDefault: true
@@ -73161,6 +75611,7 @@ components:
             name: name
             zone: zone
             cidr: cidr
+            ipv6Cidr: ipv6Cidr
             availableIpCount: 4
             nodeCount: 8
             isDefault: true
@@ -74074,9 +76525,17 @@ components:
           volumeType: volumeType
           volumeSize: 6
           createdAt: createdAt
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           sshPublicKey: sshPublicKey
           currentFlavor: currentFlavor
           targetFlavor: targetFlavor
@@ -74149,9 +76608,17 @@ components:
           volumeType: volumeType
           volumeSize: 6
           createdAt: createdAt
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           sshPublicKey: sshPublicKey
           currentFlavor: currentFlavor
           targetFlavor: targetFlavor
@@ -74250,6 +76717,7 @@ components:
             name: name
             zone: zone
             cidr: cidr
+            ipv6Cidr: ipv6Cidr
             availableIpCount: 4
             nodeCount: 8
             isDefault: true
@@ -74260,6 +76728,7 @@ components:
             name: name
             zone: zone
             cidr: cidr
+            ipv6Cidr: ipv6Cidr
             availableIpCount: 4
             nodeCount: 8
             isDefault: true
@@ -74688,9 +77157,17 @@ components:
         volumeType: volumeType
         volumeSize: 6
         createdAt: createdAt
-        createdBy: createdBy
+        createdBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         lastModified: lastModified
-        lastModifiedBy: lastModifiedBy
+        lastModifiedBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         sshPublicKey: sshPublicKey
         currentFlavor: currentFlavor
         targetFlavor: targetFlavor
@@ -74777,13 +77254,12 @@ components:
         createdAt:
           type: string
         createdBy:
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         lastModified:
           nullable: true
           type: string
         lastModifiedBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         sshPublicKey:
           type: string
         currentFlavor:
@@ -75520,11 +77996,67 @@ components:
           nullable: true
           type: string
       type: object
+    ToggleOverloadProtectionCommand:
+      example:
+        mode: Normal
+      properties:
+        mode:
+          $ref: "#/components/schemas/OverloadProtectionMode"
+      type: object
     TransferOwnershipCommand:
       example:
         userId: userId
       properties:
         userId:
+          nullable: true
+          type: string
+      type: object
+    TransitEncryptionStatusDto:
+      example:
+        transitEnabled: true
+        tenantSecretsEncryptedAtCallSites: true
+        wrappedDekRowCount: 0
+        columns:
+        - entityName: entityName
+          v1RowCount: 6
+          oldestV1CreatedUtc: 2000-01-23T04:56:07.000+00:00
+          surveyError: surveyError
+        - entityName: entityName
+          v1RowCount: 6
+          oldestV1CreatedUtc: 2000-01-23T04:56:07.000+00:00
+          surveyError: surveyError
+        partnerPoolDekAnomalies:
+        - partnerId: 1
+          dekRowCount: 5
+          organizationIds:
+          - 5
+          - 5
+        - partnerId: 1
+          dekRowCount: 5
+          organizationIds:
+          - 5
+          - 5
+        lastTransitFailureUtc: 2000-01-23T04:56:07.000+00:00
+      properties:
+        transitEnabled:
+          type: boolean
+        tenantSecretsEncryptedAtCallSites:
+          type: boolean
+        wrappedDekRowCount:
+          format: int32
+          type: integer
+        columns:
+          items:
+            $ref: "#/components/schemas/EncryptedColumnStatusDto"
+          nullable: true
+          type: array
+        partnerPoolDekAnomalies:
+          items:
+            $ref: "#/components/schemas/PartnerPoolDekAnomalyDto"
+          nullable: true
+          type: array
+        lastTransitFailureUtc:
+          format: date-time
           nullable: true
           type: string
       type: object
@@ -76391,6 +78923,7 @@ components:
             - claim
             organizationName: organizationName
         createdAt: 2000-01-23T04:56:07.000+00:00
+        userName: userName
       properties:
         userId:
           nullable: true
@@ -76426,6 +78959,9 @@ components:
           type: object
         createdAt:
           format: date-time
+          nullable: true
+          type: string
+        userName:
           nullable: true
           type: string
       type: object
@@ -77039,9 +79575,17 @@ components:
           organizationId: 6
           kubernetesVersion: kubernetesVersion
           createdAt: createdAt
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           alertsCount: 1
           expiredAt: expiredAt
           deleteOnExpiration: true
@@ -77122,9 +79666,17 @@ components:
           organizationId: 6
           kubernetesVersion: kubernetesVersion
           createdAt: createdAt
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           alertsCount: 1
           expiredAt: expiredAt
           deleteOnExpiration: true
@@ -77231,6 +79783,7 @@ components:
             name: name
             zone: zone
             cidr: cidr
+            ipv6Cidr: ipv6Cidr
             availableIpCount: 4
             nodeCount: 8
             isDefault: true
@@ -77241,6 +79794,7 @@ components:
             name: name
             zone: zone
             cidr: cidr
+            ipv6Cidr: ipv6Cidr
             availableIpCount: 4
             nodeCount: 8
             isDefault: true
@@ -77275,9 +79829,17 @@ components:
         organizationId: 6
         kubernetesVersion: kubernetesVersion
         createdAt: createdAt
-        createdBy: createdBy
+        createdBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         lastModified: lastModified
-        lastModifiedBy: lastModifiedBy
+        lastModifiedBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         alertsCount: 1
         expiredAt: expiredAt
         deleteOnExpiration: true
@@ -77372,11 +79934,11 @@ components:
         createdAt:
           type: string
         createdBy:
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         lastModified:
           type: string
         lastModifiedBy:
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         alertsCount:
           format: int32
           type: integer
@@ -77525,6 +80087,7 @@ components:
         hostedZoneId: hostedZoneId
         tsigKeyName: tsigKeyName
         tsigSecret: tsigSecret
+        tsigAlgorithm: tsigAlgorithm
         nameServer: nameServer
         azureTenantId: azureTenantId
         azureSubscriptionId: azureSubscriptionId
@@ -77535,6 +80098,16 @@ components:
         gcpServiceAccountJson: gcpServiceAccountJson
         caCert: caCert
         caKey: caKey
+        authMethod: authMethod
+        authVariant: authVariant
+        awsRoleArn: awsRoleArn
+        gcpServiceAccountEmail: gcpServiceAccountEmail
+        pdnsApiUrl: pdnsApiUrl
+        pdnsApiKey: pdnsApiKey
+        pdnsServerId: pdnsServerId
+        dnsCredentialId: 0
+        certificateCredentialId: 6
+        customCertificateAuthorityId: 1
       properties:
         dnsProvider:
           type: string
@@ -77564,6 +80137,9 @@ components:
           nullable: true
           type: string
         tsigSecret:
+          nullable: true
+          type: string
+        tsigAlgorithm:
           nullable: true
           type: string
         nameServer:
@@ -77596,6 +80172,39 @@ components:
         caKey:
           nullable: true
           type: string
+        authMethod:
+          nullable: true
+          type: string
+        authVariant:
+          nullable: true
+          type: string
+        awsRoleArn:
+          nullable: true
+          type: string
+        gcpServiceAccountEmail:
+          nullable: true
+          type: string
+        pdnsApiUrl:
+          nullable: true
+          type: string
+        pdnsApiKey:
+          nullable: true
+          type: string
+        pdnsServerId:
+          nullable: true
+          type: string
+        dnsCredentialId:
+          format: int32
+          nullable: true
+          type: integer
+        certificateCredentialId:
+          format: int32
+          nullable: true
+          type: integer
+        customCertificateAuthorityId:
+          format: int32
+          nullable: true
+          type: integer
       type: object
     ValidateVsphereCommand:
       example:
@@ -77902,10 +80511,18 @@ components:
             name: name
           - id: 5
             name: name
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           createdAt: createdAt
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           isDefault: true
           drsEnabled: true
           resourcePool: resourcePool
@@ -77950,10 +80567,18 @@ components:
             name: name
           - id: 5
             name: name
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           createdAt: createdAt
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           isDefault: true
           drsEnabled: true
           resourcePool: resourcePool
@@ -78033,10 +80658,18 @@ components:
           name: name
         - id: 5
           name: name
-        createdBy: createdBy
+        createdBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         createdAt: createdAt
         lastModified: lastModified
-        lastModifiedBy: lastModifiedBy
+        lastModifiedBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         isDefault: true
         drsEnabled: true
         resourcePool: resourcePool
@@ -78088,15 +80721,14 @@ components:
             $ref: "#/components/schemas/CommonDropdownDto"
           type: array
         createdBy:
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         createdAt:
           type: string
         lastModified:
           nullable: true
           type: string
         lastModifiedBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         isDefault:
           type: boolean
         drsEnabled:
@@ -78339,9 +80971,17 @@ components:
             name: name
           - id: 5
             name: name
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           isDefault: true
           organizationId: 5
           organizationName: organizationName
@@ -78363,9 +81003,17 @@ components:
             name: name
           - id: 5
             name: name
-          createdBy: createdBy
+          createdBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           lastModified: lastModified
-          lastModifiedBy: lastModifiedBy
+          lastModifiedBy:
+            userId: userId
+            displayName: displayName
+            accountId: 5
+            isRobot: true
           isDefault: true
           organizationId: 5
           organizationName: organizationName
@@ -78422,9 +81070,17 @@ components:
           name: name
         - id: 5
           name: name
-        createdBy: createdBy
+        createdBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         lastModified: lastModified
-        lastModifiedBy: lastModifiedBy
+        lastModifiedBy:
+          userId: userId
+          displayName: displayName
+          accountId: 5
+          isRobot: true
         isDefault: true
         organizationId: 5
         organizationName: organizationName
@@ -78457,14 +81113,12 @@ components:
             $ref: "#/components/schemas/CommonDropdownDto"
           type: array
         createdBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         lastModified:
           nullable: true
           type: string
         lastModifiedBy:
-          nullable: true
-          type: string
+          $ref: "#/components/schemas/AuditUserDto"
         isDefault:
           type: boolean
         organizationId:

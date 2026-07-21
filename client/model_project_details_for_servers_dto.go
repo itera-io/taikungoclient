@@ -86,6 +86,7 @@ type ProjectDetailsForServersDto struct {
 	SpotEnabled NullableBool `json:"spotEnabled"`
 	IsAutoscalingEnabled bool `json:"isAutoscalingEnabled"`
 	IsAutoscalingSpotEnabled bool `json:"isAutoscalingSpotEnabled"`
+	GatewayApiModern bool `json:"gatewayApiModern"`
 	HasNfsServer bool `json:"hasNfsServer"`
 	WasmEnabled bool `json:"wasmEnabled"`
 	AvailabilityZones []string `json:"availabilityZones"`
@@ -105,7 +106,7 @@ type _ProjectDetailsForServersDto ProjectDetailsForServersDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectDetailsForServersDto(alertsCount int32, worker int32, bastion int32, status ProjectStatus, name string, accessIp string, id int32, masterReady int32, cloudType ECloudCredentialType, cloudName string, cloudId int32, quotaId int32, organizationName string, organizationId int32, kubernetesVersion string, isBackupEnabled bool, aiEnabled bool, isLocked bool, isAutoUpgrade bool, isMonitoringEnabled bool, isOpaEnabled bool, hasKubeConfigFile bool, hasSelectedFlavors bool, isMaintenanceModeEnabled bool, isProjectMaintenanceModeEnabled bool, isDeprecated bool, cpuLimit int64, ramLimit int64, diskSizeLimit int64, usedCpu int64, usedRam int64, usedDiskSize int64, vmCpuLimit int64, vmRamLimit int64, vmVolumeSizeLimit int64, vmUsedCpu int64, vmUsedRam int64, vmUsedVolumeSize int64, accessProfileName string, accessProfileId NullableInt32, kubernetesProfileName string, kubernetesProfileId NullableInt32, alertingProfileName string, health ProjectHealth, alertingProfileId NullableInt32, s3CredentialId NullableInt32, aiCredentialId NullableInt32, dnsCredentialId NullableInt32, dnsCredentialName string, expiredAt string, certificationExpiredAt string, opaProfileId NullableInt32, opaProfileName string, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, totalHourlyCost float64, autoscalingGroupName string, minSize NullableInt32, maxSize NullableInt32, diskSize NullableFloat64, flavor NullableString, spotEnabled NullableBool, isAutoscalingEnabled bool, isAutoscalingSpotEnabled bool, hasNfsServer bool, wasmEnabled bool, availabilityZones []string, hypervisors []string, proxmoxStorage ProxmoxStorage, isDrsEnabled bool, maxSpotPrice NullableFloat64) *ProjectDetailsForServersDto {
+func NewProjectDetailsForServersDto(alertsCount int32, worker int32, bastion int32, status ProjectStatus, name string, accessIp string, id int32, masterReady int32, cloudType ECloudCredentialType, cloudName string, cloudId int32, quotaId int32, organizationName string, organizationId int32, kubernetesVersion string, isBackupEnabled bool, aiEnabled bool, isLocked bool, isAutoUpgrade bool, isMonitoringEnabled bool, isOpaEnabled bool, hasKubeConfigFile bool, hasSelectedFlavors bool, isMaintenanceModeEnabled bool, isProjectMaintenanceModeEnabled bool, isDeprecated bool, cpuLimit int64, ramLimit int64, diskSizeLimit int64, usedCpu int64, usedRam int64, usedDiskSize int64, vmCpuLimit int64, vmRamLimit int64, vmVolumeSizeLimit int64, vmUsedCpu int64, vmUsedRam int64, vmUsedVolumeSize int64, accessProfileName string, accessProfileId NullableInt32, kubernetesProfileName string, kubernetesProfileId NullableInt32, alertingProfileName string, health ProjectHealth, alertingProfileId NullableInt32, s3CredentialId NullableInt32, aiCredentialId NullableInt32, dnsCredentialId NullableInt32, dnsCredentialName string, expiredAt string, certificationExpiredAt string, opaProfileId NullableInt32, opaProfileName string, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, totalHourlyCost float64, autoscalingGroupName string, minSize NullableInt32, maxSize NullableInt32, diskSize NullableFloat64, flavor NullableString, spotEnabled NullableBool, isAutoscalingEnabled bool, isAutoscalingSpotEnabled bool, gatewayApiModern bool, hasNfsServer bool, wasmEnabled bool, availabilityZones []string, hypervisors []string, proxmoxStorage ProxmoxStorage, isDrsEnabled bool, maxSpotPrice NullableFloat64) *ProjectDetailsForServersDto {
 	this := ProjectDetailsForServersDto{}
 	this.AlertsCount = alertsCount
 	this.Worker = worker
@@ -172,6 +173,7 @@ func NewProjectDetailsForServersDto(alertsCount int32, worker int32, bastion int
 	this.SpotEnabled = spotEnabled
 	this.IsAutoscalingEnabled = isAutoscalingEnabled
 	this.IsAutoscalingSpotEnabled = isAutoscalingSpotEnabled
+	this.GatewayApiModern = gatewayApiModern
 	this.HasNfsServer = hasNfsServer
 	this.WasmEnabled = wasmEnabled
 	this.AvailabilityZones = availabilityZones
@@ -1774,6 +1776,30 @@ func (o *ProjectDetailsForServersDto) SetIsAutoscalingSpotEnabled(v bool) {
 	o.IsAutoscalingSpotEnabled = v
 }
 
+// GetGatewayApiModern returns the GatewayApiModern field value
+func (o *ProjectDetailsForServersDto) GetGatewayApiModern() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.GatewayApiModern
+}
+
+// GetGatewayApiModernOk returns a tuple with the GatewayApiModern field value
+// and a boolean to check if the value has been set.
+func (o *ProjectDetailsForServersDto) GetGatewayApiModernOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.GatewayApiModern, true
+}
+
+// SetGatewayApiModern sets field value
+func (o *ProjectDetailsForServersDto) SetGatewayApiModern(v bool) {
+	o.GatewayApiModern = v
+}
+
 // GetHasNfsServer returns the HasNfsServer field value
 func (o *ProjectDetailsForServersDto) GetHasNfsServer() bool {
 	if o == nil {
@@ -2126,6 +2152,7 @@ func (o ProjectDetailsForServersDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["spotEnabled"] = o.SpotEnabled.Get()
 	toSerialize["isAutoscalingEnabled"] = o.IsAutoscalingEnabled
 	toSerialize["isAutoscalingSpotEnabled"] = o.IsAutoscalingSpotEnabled
+	toSerialize["gatewayApiModern"] = o.GatewayApiModern
 	toSerialize["hasNfsServer"] = o.HasNfsServer
 	toSerialize["wasmEnabled"] = o.WasmEnabled
 	toSerialize["availabilityZones"] = o.AvailabilityZones
@@ -2220,6 +2247,7 @@ func (o *ProjectDetailsForServersDto) UnmarshalJSON(data []byte) (err error) {
 		"spotEnabled",
 		"isAutoscalingEnabled",
 		"isAutoscalingSpotEnabled",
+		"gatewayApiModern",
 		"hasNfsServer",
 		"wasmEnabled",
 		"availabilityZones",
@@ -2321,6 +2349,7 @@ func (o *ProjectDetailsForServersDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "spotEnabled")
 		delete(additionalProperties, "isAutoscalingEnabled")
 		delete(additionalProperties, "isAutoscalingSpotEnabled")
+		delete(additionalProperties, "gatewayApiModern")
 		delete(additionalProperties, "hasNfsServer")
 		delete(additionalProperties, "wasmEnabled")
 		delete(additionalProperties, "availabilityZones")

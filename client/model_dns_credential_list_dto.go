@@ -31,9 +31,11 @@ type DnsCredentialListDto struct {
 	IsLocked bool `json:"isLocked"`
 	IsDefault bool `json:"isDefault"`
 	IsInfra bool `json:"isInfra"`
-	CreatedBy NullableString `json:"createdBy"`
+	AuthMethod string `json:"authMethod"`
+	AuthVariant NullableString `json:"authVariant"`
+	CreatedBy AuditUserDto `json:"createdBy"`
 	LastModified NullableString `json:"lastModified"`
-	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	LastModifiedBy AuditUserDto `json:"lastModifiedBy"`
 	Projects []CommonDropdownDto `json:"projects"`
 	AdditionalProperties map[string]interface{}
 }
@@ -44,7 +46,7 @@ type _DnsCredentialListDto DnsCredentialListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDnsCredentialListDto(id int32, name string, providerType string, organizationId NullableInt32, organizationName NullableString, domainFilter string, useLetsEncrypt bool, isLocked bool, isDefault bool, isInfra bool, createdBy NullableString, lastModified NullableString, lastModifiedBy NullableString, projects []CommonDropdownDto) *DnsCredentialListDto {
+func NewDnsCredentialListDto(id int32, name string, providerType string, organizationId NullableInt32, organizationName NullableString, domainFilter string, useLetsEncrypt bool, isLocked bool, isDefault bool, isInfra bool, authMethod string, authVariant NullableString, createdBy AuditUserDto, lastModified NullableString, lastModifiedBy AuditUserDto, projects []CommonDropdownDto) *DnsCredentialListDto {
 	this := DnsCredentialListDto{}
 	this.Id = id
 	this.Name = name
@@ -56,6 +58,8 @@ func NewDnsCredentialListDto(id int32, name string, providerType string, organiz
 	this.IsLocked = isLocked
 	this.IsDefault = isDefault
 	this.IsInfra = isInfra
+	this.AuthMethod = authMethod
+	this.AuthVariant = authVariant
 	this.CreatedBy = createdBy
 	this.LastModified = lastModified
 	this.LastModifiedBy = lastModifiedBy
@@ -315,30 +319,78 @@ func (o *DnsCredentialListDto) SetIsInfra(v bool) {
 	o.IsInfra = v
 }
 
-// GetCreatedBy returns the CreatedBy field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *DnsCredentialListDto) GetCreatedBy() string {
-	if o == nil || o.CreatedBy.Get() == nil {
+// GetAuthMethod returns the AuthMethod field value
+func (o *DnsCredentialListDto) GetAuthMethod() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.CreatedBy.Get()
+	return o.AuthMethod
+}
+
+// GetAuthMethodOk returns a tuple with the AuthMethod field value
+// and a boolean to check if the value has been set.
+func (o *DnsCredentialListDto) GetAuthMethodOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AuthMethod, true
+}
+
+// SetAuthMethod sets field value
+func (o *DnsCredentialListDto) SetAuthMethod(v string) {
+	o.AuthMethod = v
+}
+
+// GetAuthVariant returns the AuthVariant field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *DnsCredentialListDto) GetAuthVariant() string {
+	if o == nil || o.AuthVariant.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.AuthVariant.Get()
+}
+
+// GetAuthVariantOk returns a tuple with the AuthVariant field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DnsCredentialListDto) GetAuthVariantOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AuthVariant.Get(), o.AuthVariant.IsSet()
+}
+
+// SetAuthVariant sets field value
+func (o *DnsCredentialListDto) SetAuthVariant(v string) {
+	o.AuthVariant.Set(&v)
+}
+
+// GetCreatedBy returns the CreatedBy field value
+func (o *DnsCredentialListDto) GetCreatedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
+		return ret
+	}
+
+	return o.CreatedBy
 }
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DnsCredentialListDto) GetCreatedByOk() (*string, bool) {
+func (o *DnsCredentialListDto) GetCreatedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
+	return &o.CreatedBy, true
 }
 
 // SetCreatedBy sets field value
-func (o *DnsCredentialListDto) SetCreatedBy(v string) {
-	o.CreatedBy.Set(&v)
+func (o *DnsCredentialListDto) SetCreatedBy(v AuditUserDto) {
+	o.CreatedBy = v
 }
 
 // GetLastModified returns the LastModified field value
@@ -368,29 +420,27 @@ func (o *DnsCredentialListDto) SetLastModified(v string) {
 }
 
 // GetLastModifiedBy returns the LastModifiedBy field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *DnsCredentialListDto) GetLastModifiedBy() string {
-	if o == nil || o.LastModifiedBy.Get() == nil {
-		var ret string
+func (o *DnsCredentialListDto) GetLastModifiedBy() AuditUserDto {
+	if o == nil {
+		var ret AuditUserDto
 		return ret
 	}
 
-	return *o.LastModifiedBy.Get()
+	return o.LastModifiedBy
 }
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DnsCredentialListDto) GetLastModifiedByOk() (*string, bool) {
+func (o *DnsCredentialListDto) GetLastModifiedByOk() (*AuditUserDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
+	return &o.LastModifiedBy, true
 }
 
 // SetLastModifiedBy sets field value
-func (o *DnsCredentialListDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy.Set(&v)
+func (o *DnsCredentialListDto) SetLastModifiedBy(v AuditUserDto) {
+	o.LastModifiedBy = v
 }
 
 // GetProjects returns the Projects field value
@@ -437,9 +487,11 @@ func (o DnsCredentialListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["isLocked"] = o.IsLocked
 	toSerialize["isDefault"] = o.IsDefault
 	toSerialize["isInfra"] = o.IsInfra
-	toSerialize["createdBy"] = o.CreatedBy.Get()
+	toSerialize["authMethod"] = o.AuthMethod
+	toSerialize["authVariant"] = o.AuthVariant.Get()
+	toSerialize["createdBy"] = o.CreatedBy
 	toSerialize["lastModified"] = o.LastModified.Get()
-	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	toSerialize["lastModifiedBy"] = o.LastModifiedBy
 	toSerialize["projects"] = o.Projects
 
 	for key, value := range o.AdditionalProperties {
@@ -464,6 +516,8 @@ func (o *DnsCredentialListDto) UnmarshalJSON(data []byte) (err error) {
 		"isLocked",
 		"isDefault",
 		"isInfra",
+		"authMethod",
+		"authVariant",
 		"createdBy",
 		"lastModified",
 		"lastModifiedBy",
@@ -507,6 +561,8 @@ func (o *DnsCredentialListDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "isLocked")
 		delete(additionalProperties, "isDefault")
 		delete(additionalProperties, "isInfra")
+		delete(additionalProperties, "authMethod")
+		delete(additionalProperties, "authVariant")
 		delete(additionalProperties, "createdBy")
 		delete(additionalProperties, "lastModified")
 		delete(additionalProperties, "lastModifiedBy")
